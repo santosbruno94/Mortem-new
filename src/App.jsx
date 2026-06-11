@@ -1,11 +1,18 @@
-// Raiz da aplicação — será substituída pelo roteamento de fases nas próximas etapas
+import { useJogo } from './store/jogo.js';
+import TelaPersonagem from './components/TelaPersonagem.jsx';
+import Abertura from './components/Abertura.jsx';
+
+// Roteamento por fase de jogo: seleção → abertura → investigação.
+// A escrivaninha (hub permanente) entra na etapa 6.
 export default function App() {
+  const faseJogo = useJogo((s) => s.faseJogo);
+
+  if (faseJogo === 'selecao') return <TelaPersonagem />;
+  if (faseJogo === 'abertura') return <Abertura />;
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-stone-950">
-      <div className="text-center">
-        <h1 className="font-serif text-5xl tracking-[0.3em] text-amber-200">MORTEM</h1>
-        <p className="mt-4 text-stone-600 text-sm tracking-widest">§ Briarstone, outubro de 1893 §</p>
-      </div>
+    <div className="min-h-screen flex items-center justify-center">
+      <p className="text-stone-600 tracking-widest text-sm">— a escrivaninha aguarda a próxima etapa —</p>
     </div>
   );
 }
