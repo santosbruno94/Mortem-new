@@ -9,7 +9,8 @@ import GavetaCronos from './GavetaCronos.jsx';
 import GavetaAitiov from './GavetaAitiov.jsx';
 import GavetaNexo from './GavetaNexo.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
-import Overlay from './Overlay.jsx';
+import QuadroRevelacoes from './QuadroRevelacoes.jsx';
+import MonologoFinal from './MonologoFinal.jsx';
 
 const ROTULOS_DOMINIO = {
   temporal: 'Temporal',
@@ -147,11 +148,8 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'gaveta' && overlay.id === 'cronos' && <GavetaCronos />}
       {overlay?.tipo === 'gaveta' && overlay.id === 'aitiov' && <GavetaAitiov />}
       {overlay?.tipo === 'gaveta' && overlay.id === 'nexo' && <GavetaNexo />}
-      {overlay?.tipo === 'quadro' && (
-        <Overlay titulo="Quadro de Revelações">
-          <p className="text-stone-500 text-sm">— em construção na próxima etapa —</p>
-        </Overlay>
-      )}
+      {overlay?.tipo === 'quadro' && <QuadroRevelacoes />}
+      {overlay?.tipo === 'monologo' && <MonologoFinal />}
     </div>
   );
 }

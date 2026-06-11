@@ -7,24 +7,16 @@ import {
   validarHipoteseCena,
 } from '../logic/aitiov.js';
 import { formatHora } from '../logic/tempo.js';
+import {
+  ROTULOS_MECANISMO,
+  ROTULOS_INSTRUMENTO,
+  ROTULOS_ESTADO_CENA,
+} from '../data/rotulos.js';
 import GavetaBase from './GavetaBase.jsx';
 
-export const ROTULOS_MECANISMO = {
-  enforcamento: 'Enforcamento',
-  estrangulamento_ligadura: 'Estrangulamento por Ligadura',
-  estrangulamento_manual: 'Estrangulamento Manual',
-  envenenamento: 'Envenenamento',
-};
-
-export const ROTULOS_INSTRUMENTO = {
-  fibra_canhamo: 'corda de cânhamo',
-};
-
-const ROTULOS_ESTADO_CENA = {
-  cena_encenada: 'Cena Encenada',
-  roubo_interrompido: 'Roubo Interrompido',
-  crime_passional: 'Discussão Violenta',
-};
+function capitalizar(texto) {
+  return texto.charAt(0).toUpperCase() + texto.slice(1);
+}
 
 // Gaveta Aitiov — o pilar "Como", em duas seções (§7):
 // Seção 1 (causais → Mecanismo do Óbito) e Seção 2 (ambientais + Janela
@@ -51,7 +43,7 @@ export default function GavetaAitiov() {
       conclusao: {
         origem: 'aitiov',
         titulo: 'Mecanismo do Óbito',
-        resumo: `${ROTULOS_MECANISMO[r.mecanismo]}${instrumento}.`,
+        resumo: `${capitalizar(ROTULOS_MECANISMO[r.mecanismo])}${instrumento}.`,
         tagsOcultas: { tipo: 'mecanismo', mecanismo: r.mecanismo, instrumento: r.instrumento },
       },
     };
@@ -69,7 +61,7 @@ export default function GavetaAitiov() {
       conclusao: {
         origem: 'aitiov',
         titulo: 'Estado da Cena',
-        resumo: `${ROTULOS_ESTADO_CENA[r.estado]}${detalhe}.`,
+        resumo: `${capitalizar(ROTULOS_ESTADO_CENA[r.estado])}${detalhe}.`,
         tagsOcultas: { tipo: 'estado_cena', estado: r.estado, horaForjada: r.horaForjada },
       },
     };

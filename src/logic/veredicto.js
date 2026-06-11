@@ -152,6 +152,10 @@ export function calcularVeredicto(libelo, conclusoes, cartasRegistradas, seed) {
       janela,
       janelaPrecisa,
       mecanismoDeclarado,
+      instrumentoDeclarado:
+        conclusaoMecanismo && conclusaoMecanismo.tagsOcultas.tipo === 'mecanismo'
+          ? conclusaoMecanismo.tagsOcultas.instrumento
+          : null,
       mecanismoCorreto: seed.mecanismoCorreto,
       instrumentoCorreto: seed.instrumentoCorreto,
       motivacaoOk,

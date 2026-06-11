@@ -1,7 +1,7 @@
 import { useJogo } from '../store/jogo.js';
 import { HIPOTESES_NEXO, validarHipoteseNexo } from '../logic/nexo.js';
 import { obterSuspeito } from '../data/seed.js';
-import { ROTULOS_INSTRUMENTO } from './GavetaAitiov.jsx';
+import { ROTULOS_INSTRUMENTO } from '../data/rotulos.js';
 import GavetaBase from './GavetaBase.jsx';
 
 // Gaveta Nexo — o pilar "Presença" (§7).
