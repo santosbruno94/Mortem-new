@@ -5,6 +5,9 @@ import RelogioBolso from './RelogioBolso.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
+import GavetaCronos from './GavetaCronos.jsx';
+import GavetaAitiov from './GavetaAitiov.jsx';
+import GavetaNexo from './GavetaNexo.jsx';
 import Overlay from './Overlay.jsx';
 
 const ROTULOS_DOMINIO = {
@@ -144,11 +147,9 @@ export default function Escrivaninha() {
           <p className="text-stone-500 text-sm">— em construção na próxima etapa —</p>
         </Overlay>
       )}
-      {overlay?.tipo === 'gaveta' && (
-        <Overlay titulo="Gaveta">
-          <p className="text-stone-500 text-sm">— em construção na próxima etapa —</p>
-        </Overlay>
-      )}
+      {overlay?.tipo === 'gaveta' && overlay.id === 'cronos' && <GavetaCronos />}
+      {overlay?.tipo === 'gaveta' && overlay.id === 'aitiov' && <GavetaAitiov />}
+      {overlay?.tipo === 'gaveta' && overlay.id === 'nexo' && <GavetaNexo />}
       {overlay?.tipo === 'quadro' && (
         <Overlay titulo="Quadro de Revelações">
           <p className="text-stone-500 text-sm">— em construção na próxima etapa —</p>
