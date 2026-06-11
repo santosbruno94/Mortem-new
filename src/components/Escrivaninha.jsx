@@ -8,6 +8,7 @@ import ModalGlossario from './ModalGlossario.jsx';
 import GavetaCronos from './GavetaCronos.jsx';
 import GavetaAitiov from './GavetaAitiov.jsx';
 import GavetaNexo from './GavetaNexo.jsx';
+import PainelAlibis from './PainelAlibis.jsx';
 import Overlay from './Overlay.jsx';
 
 const ROTULOS_DOMINIO = {
@@ -142,11 +143,7 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'localidade' && <EventoLocalidade localidadeId={overlay.id} />}
       {overlay?.tipo === 'caderneta' && <Caderneta />}
       {overlay?.tipo === 'glossario' && <ModalGlossario />}
-      {overlay?.tipo === 'alibis' && (
-        <Overlay titulo="Declarações de Paradeiro">
-          <p className="text-stone-500 text-sm">— em construção na próxima etapa —</p>
-        </Overlay>
-      )}
+      {overlay?.tipo === 'alibis' && <PainelAlibis />}
       {overlay?.tipo === 'gaveta' && overlay.id === 'cronos' && <GavetaCronos />}
       {overlay?.tipo === 'gaveta' && overlay.id === 'aitiov' && <GavetaAitiov />}
       {overlay?.tipo === 'gaveta' && overlay.id === 'nexo' && <GavetaNexo />}
