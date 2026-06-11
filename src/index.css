@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fundo de mesa de madeira escura à luz de vela */
+body {
+  @apply bg-stone-950 text-stone-300 antialiased;
+}
+
+/* Termos clicáveis em negrito dentro da prosa imersiva */
+.termo-clicavel {
+  @apply font-bold text-amber-200 cursor-pointer underline decoration-dotted decoration-amber-900 underline-offset-4 hover:text-amber-100;
+}
+
+.termo-extraido {
+  @apply font-bold text-stone-600 cursor-default line-through decoration-stone-700;
+}
