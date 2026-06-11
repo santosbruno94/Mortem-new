@@ -29,7 +29,7 @@ export default function EventoLocalidade({ localidadeId }) {
     if (registrada) {
       return (
         <span key={chave} className="termo-extraido" title="Já registrado na mesa">
-          {estado.textoDisplay.toLowerCase()}
+          {estado.textoDisplay}
         </span>
       );
     }
@@ -40,7 +40,7 @@ export default function EventoLocalidade({ localidadeId }) {
         title={`Extrair e registrar (${definicao.custoTempo}h)`}
         onClick={() => extrairCarta(cartaId)}
       >
-        {estado.textoDisplay.toLowerCase()}
+        {estado.textoDisplay}
       </span>
     );
   }

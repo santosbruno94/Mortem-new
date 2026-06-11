@@ -1,0 +1,59 @@
+# Relatório de QA — "O Álibi de Corda"
+
+QA estático conforme §18 do contexto: os perfis abaixo foram traçados pelos dados e pelo
+motor (sem playtest interativo) com `node scripts/qa.mjs`, que dirige o store e as funções
+puras exatamente como a interface o faria. Verdade de ouro: morte às 22h00 de 13/out
+(hora absoluta −2); chegada às 11h00 de 14/out.
+
+## (a) Jogador Metódico → **Vitória Absoluta** ✓
+
+Corpo primeiro: mede a temperatura às 11h00 (**24°C → IPM 11–15h**, como fixa o §15),
+extrai rigor pleno (12–24h), livores fixos (≥12h), sulco horizontal, petéquias e fibras no
+sulco; depois cena, delegacia e os três interrogatórios. Relógio final: 08h00 de 15/out.
+
+- **Cronos:** a isca "morte às 09h da manhã" é **rejeitada** (a convergência não a acomoda).
+  A hipótese "noite de 13/out" registra a janela **20h00–00h00** (largura 4h, contém −2).
+- **Aitiov:** sulco + petéquias + fibras → *Estrangulamento por Ligadura* (instrumento:
+  corda de cânhamo). Relógio das 09h00 fora da janela → *Cena Encenada*.
+- **Nexo:** o fio de lã da Sra. Hudson é **rejeitado** como nexo (não corresponde ao
+  instrumento); as fibras de cânhamo na manga de Edgar fecham o nexo de presença.
+- **Libelo completo** (réu Edgar, motivação herança, descuidos, periféricos:
+  Blackwood `inocente_alibi`, Hudson `inocente_segredo`) → `vitoria_absoluta`, zero falhas.
+
+## (b) Jogador Apressado → **Erro Judiciário** ✓ (armadilhas 1–3)
+
+Vai à cena e aos três interrogatórios antes do corpo; só o examina 16h depois da chegada.
+
+- **Armadilha 1 (degradação):** rigor já em dissolução (24–36h) e corpo em equilíbrio
+  térmico (algor **inconclusivo**). A hipótese precisa "noite de 13/out" é **rejeitada**;
+  resta a janela ampla 15h00 de 13/out–03h00 de 14/out (largura 12h → `janela_imprecisa`).
+- **Armadilha 2 (Hudson):** seduzido pelo nervosismo e pela mentira da governanta, acusa-a
+  sem mecanismo nem nexo → `erro_judiciario`; o monólogo revela Edgar na galeria.
+- **Armadilha 3 (Blackwood):** o motivo público não vira acusação — o álibi corroborado
+  (20h–00h, doze testemunhas) o mantém periférico.
+
+Falhas registradas: `reu_errado, janela_imprecisa, sem_mecanismo, sem_nexo, sem_descuidos, sem_motivacao`.
+
+## (c) Jogador Intuitivo → **Impunidade** ✓ (armadilha 4)
+
+Acusa Edgar (réu certo) com rigor, livores e o testamento — **sem** janela registrada, sem
+mecanismo e sem nexo. O tripé pericial não se sustenta → `impunidade`: a defesa explora as
+lacunas (`sem_janela, sem_mecanismo, sem_nexo, …`) e Edgar agradece a lição de direito.
+
+## (d) Quarto desfecho → **Sucesso com Gafes** ✓
+
+Tripé completo (janela precisa + mecanismo + nexo em Edgar), mas libelo lacunoso (sem
+motivação, sem descuidos, sem juízo periférico) → `sucesso_gafes`. Condenação sustentada;
+as gafes nomeadas pelo monólogo.
+
+## Verificações transversais
+
+- Geração de monólogo testada para os 4 desfechos (blocos universais, sem texto exclusivo).
+- Regras e veredicto leem somente `tagsOcultas` + seed; nenhum indicador de acerto é
+  exibido antes do tribunal (gavetas devolvem apenas consistente/inconsistente).
+- Painel de Álibis neutro, com formatação "manhã seguinte" para a declaração da Sra. Hudson.
+- `npm run build` sem erros nem warnings de import; `npm run dev` serve o jogo.
+
+**Furo encontrado e corrigido durante o QA:** os termos clicáveis eram rebaixados para
+minúsculas na prosa, corrompendo nomes próprios ("moorford"); a renderização passou a
+preservar o nome da carta.
