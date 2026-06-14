@@ -4,11 +4,19 @@
 // pelas regras, que leem somente tags.
 // =====================================================================
 
+// Cobre todo o catálogo universal de causas (src/data/catalogo_causas.js),
+// pois o jogador pode cravar qualquer uma delas.
 export const ROTULOS_MECANISMO = {
-  enforcamento: 'enforcamento',
   estrangulamento_ligadura: 'estrangulamento por ligadura',
-  estrangulamento_manual: 'estrangulamento manual',
-  envenenamento: 'envenenamento',
+  enforcamento: 'enforcamento',
+  estrangulamento_manual: 'estrangulamento manual (esganadura)',
+  sufocacao: 'sufocação',
+  afogamento: 'afogamento',
+  envenenamento_cianeto: 'envenenamento por cianeto',
+  envenenamento_arsenico: 'envenenamento por arsênico',
+  trauma_contuso: 'trauma contuso',
+  ferida_arma_branca: 'ferida por arma branca',
+  arma_de_fogo: 'ferida por arma de fogo',
 };
 
 export const ROTULOS_INSTRUMENTO = {

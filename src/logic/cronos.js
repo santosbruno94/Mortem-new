@@ -1,85 +1,54 @@
 // =====================================================================
 // Gaveta Cronos — o pilar "Quando".
-// Calcula a Janela da Morte por sobreposição (interseção) dos
-// intervalos temporais das cartas inseridas. Funções puras: leem
-// SOMENTE tagsOcultas e a hora de registro de cada carta.
+// O jogador NÃO escolhe a hora de um menu: ele a CALCULA. Cada indicador
+// temporal coletado (algor, rigor, livor, última-vez-visto) vira uma
+// janela pelo modelo forense universal (src/logic/tempo_morte.js); a hora
+// da morte é a INTERSEÇÃO dessas janelas. Funções puras: leem SOMENTE
+// tagsOcultas e a hora de registro de cada carta.
 // =====================================================================
 
-// Hipóteses oferecidas ao jogador (tese-primeiro, §7), incluindo a isca
-// do relógio parado. Intervalos na escala absoluta do jogo.
-export const HIPOTESES_CRONOS = [
-  {
-    id: 'manha_14',
-    rotulo: 'A morte ocorreu na manhã do dia 14, por volta das 09h00.',
-    inicio: 8,
-    fim: 10,
-  },
-  {
-    id: 'noite_13',
-    rotulo: 'A morte ocorreu na noite de 13 de outubro, entre as 18h00 e a meia-noite.',
-    inicio: -6,
-    fim: 0,
-  },
-  {
-    id: 'tarde_13',
-    rotulo: 'A morte ocorreu na tarde de 13 de outubro, entre o meio-dia e as 18h00.',
-    inicio: -12,
-    fim: -6,
-  },
-  {
-    id: 'janela_ampla',
-    rotulo: 'Só é possível afirmar uma janela ampla: entre a tarde de 13 e a madrugada de 14.',
-    inicio: -12,
-    fim: 4,
-  },
-];
+import {
+  janelaAlgor,
+  janelaRigor,
+  janelaLivor,
+  travaUltimaVezVisto,
+  intersecaoJanelas,
+} from './tempo_morte.js';
 
-// Converte uma carta temporal registrada no intervalo absoluto de morte
-// que ela admite: a morte ocorreu entre (registro - máximo) e
-// (registro - mínimo) horas. Cartas inconclusivas não informam nada.
-export function intervaloDaCarta(carta) {
-  const tags = carta.tagsOcultas;
-  if (tags.dominio !== 'temporal' || tags.inconclusiva) return null;
-  if (typeof tags.valorMinimoHoras !== 'number') return null;
-  const fim = carta.horaRegistro - tags.valorMinimoHoras;
-  const inicio =
-    typeof tags.valorMaximoHoras === 'number' ? carta.horaRegistro - tags.valorMaximoHoras : -Infinity;
-  return { inicio, fim };
+// Converte uma carta temporal registrada na janela absoluta de morte que
+// ela admite, à luz do modelo universal. Cartas inconclusivas (sinais já
+// degradados) não informam nada e retornam null.
+export function janelaDaCarta(carta) {
+  const t = carta.tagsOcultas;
+  if (t.dominio !== 'temporal' || t.inconclusiva) return null;
+  const exame = carta.horaRegistro;
+  switch (t.subDominio) {
+    case 'algor_mortis':
+      return janelaAlgor(t.temperaturaCorpo, t.temperaturaAmbiente, exame);
+    case 'rigor_mortis':
+      return janelaRigor(t.estadoRigor, exame);
+    case 'livor_mortis':
+      return janelaLivor(t.estadoLivor, exame);
+    case 'ultima_vez_visto':
+      return travaUltimaVezVisto(t.horaAvistamento);
+    default:
+      return null;
+  }
 }
 
-// Interseção dos intervalos de 2+ cartas temporais.
-// Retorna { janela, motivo } — janela é null quando não há convergência.
+// Janela da Morte = interseção das janelas dos indicadores reunidos.
+// Quanto mais sinais conclusivos, mais estreita a janela; um sinal só a
+// deixa larga. Retorna { janela, motivo } — janela é null quando não há
+// indicador conclusivo ou quando os sinais se contradizem.
 export function calcularJanelaMorte(cartas) {
-  const temporais = cartas.filter((c) => c.tagsOcultas.dominio === 'temporal');
-  if (temporais.length < 2) {
-    return { janela: null, motivo: 'A convergência exige ao menos dois sinais temporais.' };
+  const temporais = (cartas || []).filter((c) => c.tagsOcultas.dominio === 'temporal');
+  const janelas = temporais.map(janelaDaCarta).filter(Boolean);
+  if (janelas.length === 0) {
+    return { janela: null, motivo: 'Nenhum sinal temporal conclusivo foi reunido.' };
   }
-  const intervalos = temporais.map(intervaloDaCarta).filter(Boolean);
-  if (intervalos.length < 2) {
-    return { janela: null, motivo: 'Sinais inconclusivos demais para estabelecer convergência.' };
+  const janela = intersecaoJanelas(janelas);
+  if (!janela) {
+    return { janela: null, motivo: 'Os sinais temporais reunidos contradizem-se entre si.' };
   }
-  const inicio = Math.max(...intervalos.map((i) => i.inicio));
-  const fim = Math.min(...intervalos.map((i) => i.fim));
-  if (inicio > fim) {
-    return { janela: null, motivo: 'Os sinais temporais inseridos contradizem-se entre si.' };
-  }
-  return { janela: { inicio, fim }, motivo: null };
-}
-
-// Tese-primeiro: a hipótese é consistente se a convergência das
-// evidências couber inteiramente dentro dela. Nunca se revela se a
-// hipótese é "a verdadeira" — apenas a consistência com o inserido.
-export function validarHipoteseCronos(hipotese, cartas) {
-  const { janela, motivo } = calcularJanelaMorte(cartas);
-  if (!janela) return { consistente: false, janela: null, motivo };
-  const cabe = hipotese.inicio <= janela.inicio && janela.fim <= hipotese.fim;
-  if (!cabe) {
-    return {
-      consistente: false,
-      janela: null,
-      motivo: 'A hipótese declarada não acomoda a convergência dos sinais inseridos.',
-    };
-  }
-  // A conclusão registra a CONVERGÊNCIA (interseção), não o rótulo da hipótese.
-  return { consistente: true, janela, motivo: null };
+  return { janela, motivo: null };
 }

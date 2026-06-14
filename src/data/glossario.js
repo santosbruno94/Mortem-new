@@ -47,19 +47,22 @@ export const GLOSSARIO = [
     termo: 'Intervalo Post-Mortem (convergência)',
     dominio: 'temporal',
     definicao:
-      'Nenhum sinal isolado data uma morte com segurança. A boa perícia sobrepõe os intervalos de cada sinal — rigor, livores, temperatura — e retém apenas o trecho comum a todos.',
+      'Nenhum sinal isolado data uma morte com segurança. Cada indicador — rigor, livores, temperatura, última vez visto com vida — admite uma FAIXA de horas. A boa perícia sobrepõe essas faixas e retém apenas o trecho comum a todas: a interseção.',
     sinalObservavel:
-      'A janela da morte é a interseção dos intervalos. Quanto mais sinais colhidos a tempo, mais estreita a janela.',
+      'A janela da morte é a interseção das faixas. Cada sinal a mais, colhido a tempo, estreita a janela; um sinal só a deixa larga. Sinais já degradados (rigor desfeito, corpo frio como o ambiente) nada acrescentam.',
   },
 
   // ===================== CAUSAL =====================
+  // O método discriminante: um sinal de FAMÍLIA (petéquias → asfixia) diz
+  // o gênero da morte; um sinal de ASSINATURA (o tipo de sulco, o odor, o
+  // tipo de ferida) crava a espécie e descarta as parecidas.
   {
     id: 'petequias_cianose',
     termo: 'Petéquias e Cianose',
     dominio: 'causal',
     definicao:
-      'Hemorragias puntiformes nas conjuntivas e coloração azulada da face, produzidas pela interrupção da respiração com o coração ainda em luta. Assinalam morte por asfixia, sem por si só indicar o meio.',
-    sinalObservavel: 'Pontos vermelhos no branco dos olhos; face e lábios azulados.',
+      'Hemorragias puntiformes nas conjuntivas e coloração azulada da face, produzidas pela interrupção da respiração com o coração ainda em luta. Assinalam a FAMÍLIA da asfixia — sem, por si só, dizer o meio (ligadura, enforcamento, esganadura, sufocação ou afogamento).',
+    sinalObservavel: 'Pontos vermelhos no branco dos olhos; face e lábios azulados. Excluem veneno e trauma; não distinguem entre as asfixias.',
   },
   {
     id: 'sulco_horizontal',
@@ -67,37 +70,85 @@ export const GLOSSARIO = [
     dominio: 'causal',
     definicao:
       'Marca deixada por ligadura (corda, cinto, cordão) apertada em volta do pescoço por mãos alheias: o sulco corre em plano horizontal e uniforme. É a assinatura do estrangulamento por ligadura.',
-    sinalObservavel: 'Sulco contínuo, de profundidade pareja, circundando o pescoço na horizontal.',
+    sinalObservavel: 'Sulco contínuo, de profundidade pareja, circundando o pescoço na horizontal. Sua presença afasta o enforcamento, a esganadura e tudo que não seja ligadura.',
   },
   {
     id: 'sulco_obliquo',
     termo: 'Sulco Oblíquo Ascendente',
     dominio: 'causal',
     definicao:
-      'No enforcamento, o peso do corpo suspenso puxa a ligadura para cima, em direção ao nó: o sulco sobe oblíquo e se interrompe. Distingue a suspensão — frequentemente voluntária — do estrangelamento por terceiros.',
+      'No enforcamento, o peso do corpo suspenso puxa a ligadura para cima, em direção ao nó: o sulco sobe oblíquo e se interrompe. Distingue a suspensão — frequentemente voluntária — do estrangulamento por terceiros.',
     sinalObservavel: 'Sulco que ascende em diagonal rumo à nuca ou à orelha, mais fundo no lado oposto ao nó.',
+  },
+  {
+    id: 'esganadura',
+    termo: 'Esganadura (Estrangulamento Manual)',
+    dominio: 'causal',
+    definicao:
+      'Pressão direta das mãos sobre o pescoço, sem ligadura. Deixa equimoses arredondadas dos polegares e escoriações em meia-lua das unhas, mas nenhum sulco contínuo.',
+    sinalObservavel: 'Dedadas e marcas de unha no pescoço, sem o sulco uniforme que uma corda deixaria.',
+  },
+  {
+    id: 'sufocacao',
+    termo: 'Sufocação',
+    dominio: 'causal',
+    definicao:
+      'Obstrução mecânica de boca e narinas — por mão, pano ou travesseiro. Asfixia sem marca no pescoço; por vezes deixa escoriações ao redor da boca ou fibras nos lábios.',
+    sinalObservavel: 'Pequenas escoriações em torno da boca e do nariz; ausência de sulco cervical.',
+  },
+  {
+    id: 'afogamento',
+    termo: 'Afogamento',
+    dominio: 'causal',
+    definicao:
+      'Asfixia por submersão. A água aspirada com esforço respiratório produz espuma fina e persistente nas vias aéreas e distende os pulmões.',
+    sinalObservavel: 'Cogumelo de espuma na boca e narinas; pulmões volumosos e encharcados.',
   },
   {
     id: 'reacao_vital',
     termo: 'Reação Vital',
     dominio: 'causal',
     definicao:
-      'Escoriações e equimoses só se formam em tecido vivo. Sua presença em torno de um ferimento prova que a vítima estava viva quando o recebeu; sua ausência denuncia lesão infligida após a morte.',
+      'Escoriações e equimoses só se formam em tecido vivo. Sua presença em torno de um ferimento prova que a vítima estava viva quando o recebeu; sua ausência denuncia lesão infligida após a morte. Não diz a causa — apenas que a lesão é perimortem.',
     sinalObservavel: 'Vermelhidão, inchaço e sangue infiltrado nas bordas de uma lesão.',
   },
   {
     id: 'odor_amendoas',
     termo: 'Odor de Amêndoas Amargas',
     dominio: 'causal',
-    definicao: 'Exalação característica do envenenamento por cianeto, perceptível na boca e nas vísceras do cadáver.',
-    sinalObservavel: 'Cheiro de amêndoas amargas ao exame da boca.',
+    definicao: 'Exalação característica do envenenamento por cianeto, perceptível na boca e nas vísceras do cadáver. Veneno de ação rápida.',
+    sinalObservavel: 'Cheiro de amêndoas amargas ao exame da boca. Afasta as asfixias e os traumas.',
   },
   {
     id: 'odor_alho',
     termo: 'Odor Aliáceo',
     dominio: 'causal',
-    definicao: 'Hálito cadavérico com cheiro de alho, próprio do envenenamento por arsênico — o veneno predileto dos pacientes.',
+    definicao: 'Hálito cadavérico com cheiro de alho, próprio do envenenamento por arsênico — veneno de ação lenta, predileto dos casos domésticos.',
     sinalObservavel: 'Cheiro de alho ao exame da boca e do conteúdo gástrico.',
+  },
+  {
+    id: 'trauma_contuso',
+    termo: 'Trauma Contuso',
+    dominio: 'causal',
+    definicao:
+      'Golpe por objeto rombo: fraturas, afundamentos de crânio e contusões com bordas irregulares. Distingue-se do corte pela ausência de margens nítidas.',
+    sinalObservavel: 'Afundamento ósseo, laceração de bordas irregulares, hematomas profundos.',
+  },
+  {
+    id: 'ferida_arma_branca',
+    termo: 'Ferida por Arma Branca',
+    dominio: 'causal',
+    definicao:
+      'Lesão por instrumento cortante ou perfurante: bordas nítidas e regulares. A profundidade costuma exceder o comprimento da abertura nas perfurações.',
+    sinalObservavel: 'Cortes de margens limpas e regulares; ferimentos perfurantes profundos.',
+  },
+  {
+    id: 'arma_de_fogo',
+    termo: 'Ferida por Arma de Fogo',
+    dominio: 'causal',
+    definicao:
+      'Lesão por projétil: orifício de entrada arredondado, por vezes com orla de contusão e tatuagem de pólvora à queima-roupa, e eventual orifício de saída maior.',
+    sinalObservavel: 'Orifício de entrada com orla escurecida; resíduos de pólvora na pele quando o tiro foi próximo.',
   },
 
   // ===================== AMBIENTAL =====================

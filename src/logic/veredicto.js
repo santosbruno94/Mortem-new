@@ -1,10 +1,16 @@
 // =====================================================================
 // O Tribunal — calcularVeredicto(libelo, conclusoes, cartasRegistradas, seed)
 //
-// Função pura. Compara as tagsOcultas das escolhas do Libelo contra a
-// Verdade de Ouro (seed) e devolve { tipo, acertos, falhas, perifericos,
-// dadosMonologo } para os 4 desfechos do §11. Nunca lê textos nem nomes:
-// apenas tags e seed.
+// Função pura. É a ÚNICA camada que valida: compara o que o jogador
+// AFIRMOU (tagsOcultas das conclusões e cartas do Libelo) contra a Verdade
+// de Ouro (seed). As afirmações chegam da gramática universal — a janela
+// pela triangulação do Cronos, o mecanismo pela eliminação no catálogo da
+// Aitiov — mas o motor não sabe disso: lê só tags. Julga:
+//   • réu afirmado vs. réu real;
+//   • janela afirmada vs. hora real (deve contê-la; largura ≤ 6h = precisa);
+//   • mecanismo cravado vs. mecanismo real (+ instrumento, no Nexo).
+// Devolve { tipo, acertos, falhas, perifericos, dadosMonologo } para os 4
+// desfechos do §11. Nunca lê textos nem nomes: apenas tags e seed.
 // =====================================================================
 
 const LARGURA_JANELA_PRECISA = 6; // horas: acima disso, a defesa fala em "estimativa frouxa"

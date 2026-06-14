@@ -1,23 +1,22 @@
 // =====================================================================
-// QA estático (§18): traça os três perfis de jogador pelos dados e pelo
-// motor, sem playtest interativo. Executar com: node scripts/qa.mjs
+// QA estático (§18): traça os perfis de jogador pelos dados e pelo motor,
+// sem playtest interativo. Executar com: node scripts/qa.mjs
+//
+// Tudo passa pela GRAMÁTICA UNIVERSAL:
+//   • Cronos calcula a janela por triangulação (interseção dos sinais);
+//   • Aitiov crava o mecanismo por eliminação no catálogo universal;
+//   • as gavetas são livro-caixa (registram a afirmação; não validam);
+//   • só o tribunal (calcularVeredicto) julga o afirmado vs. Verdade de Ouro.
 // =====================================================================
 
 import { useJogo } from '../src/store/jogo.js';
-import { SEED_TUTORIAL } from '../src/data/seed.js';
-import { HIPOTESES_CRONOS, validarHipoteseCronos } from '../src/logic/cronos.js';
-import {
-  HIPOTESES_MECANISMO,
-  HIPOTESES_CENA,
-  validarHipoteseMecanismo,
-  validarHipoteseCena,
-} from '../src/logic/aitiov.js';
-import { HIPOTESES_NEXO, validarHipoteseNexo } from '../src/logic/nexo.js';
+import { calcularJanelaMorte } from '../src/logic/cronos.js';
+import { causasCompativeis } from '../src/data/catalogo_causas.js';
+import { HIPOTESES_NEXO } from '../src/logic/nexo.js';
 import { formatJanela, formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 
 const monologos = [];
-
 const estadoInicial = { ...useJogo.getState() };
 
 function reiniciar() {
@@ -34,56 +33,73 @@ function cartas(...ids) {
   return s().cartasRegistradas.filter((c) => ids.includes(c.id));
 }
 
-function hip(lista, id) {
-  return lista.find((h) => h.id === id);
-}
-
-function registrarCronos(idHipotese) {
-  const temporais = s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal');
-  const r = validarHipoteseCronos(hip(HIPOTESES_CRONOS, idHipotese), temporais);
-  if (!r.consistente) return { erro: r.motivo };
+// --- Cronos: janela = interseção dos indicadores reunidos (sem menu) ---
+function registrarCronos(idsCartas) {
+  const temporais = idsCartas
+    ? s().cartasRegistradas.filter((c) => idsCartas.includes(c.id))
+    : s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal');
+  const { janela, motivo } = calcularJanelaMorte(temporais);
+  if (!janela) return { erro: motivo };
   return s().registrarConclusao({
     origem: 'cronos',
     titulo: 'Janela da Morte',
-    resumo: formatJanela(r.janela),
-    tagsOcultas: { tipo: 'janela', inicio: r.janela.inicio, fim: r.janela.fim },
+    resumo: formatJanela(janela),
+    tagsOcultas: { tipo: 'janela', inicio: janela.inicio, fim: janela.fim },
   });
 }
 
-function registrarMecanismo(idHipotese, idsCartas) {
-  const r = validarHipoteseMecanismo(hip(HIPOTESES_MECANISMO, idHipotese), cartas(...idsCartas));
-  if (!r.consistente) return { erro: r.motivo };
+// --- Aitiov §1: mecanismo por eliminação no catálogo universal ---
+function registrarMecanismo(idMecanismo, idsCartas) {
+  const causais = cartas(...idsCartas);
+  const sinais = causais.map((c) => c.tagsOcultas.sinal).filter(Boolean);
+  const compativeis = causasCompativeis(sinais).map((c) => c.id);
+  if (!compativeis.includes(idMecanismo)) {
+    return { erro: `causa eliminada pelos sinais (restam: ${compativeis.join(', ')})` };
+  }
+  const cartaInstr = causais.find((c) => c.tagsOcultas.instrumento);
   return s().registrarConclusao({
     origem: 'aitiov',
     titulo: 'Mecanismo do Óbito',
-    resumo: r.mecanismo,
-    tagsOcultas: { tipo: 'mecanismo', mecanismo: r.mecanismo, instrumento: r.instrumento },
+    resumo: idMecanismo,
+    tagsOcultas: {
+      tipo: 'mecanismo',
+      mecanismo: idMecanismo,
+      instrumento: cartaInstr ? cartaInstr.tagsOcultas.instrumento : null,
+    },
   });
 }
 
-function registrarCena(idHipotese, idsCartas) {
-  const janelaC = s().conclusoes.find((c) => c.tagsOcultas.tipo === 'janela');
-  const janela = janelaC ? { inicio: janelaC.tagsOcultas.inicio, fim: janelaC.tagsOcultas.fim } : null;
-  const r = validarHipoteseCena(hip(HIPOTESES_CENA, idHipotese), cartas(...idsCartas), janela);
-  if (!r.consistente) return { erro: r.motivo };
+// --- Aitiov §2: Estado da Cena (livro-caixa: registra a afirmação) ---
+function registrarCena(idEstado, idsCartas) {
+  const cartaHora = cartas(...idsCartas).find((c) => typeof c.tagsOcultas.horaAparente === 'number');
+  const horaForjada = idEstado === 'cena_encenada' && cartaHora ? cartaHora.tagsOcultas.horaAparente : null;
   return s().registrarConclusao({
     origem: 'aitiov',
     titulo: 'Estado da Cena',
-    resumo: r.estado,
-    tagsOcultas: { tipo: 'estado_cena', estado: r.estado, horaForjada: r.horaForjada },
+    resumo: idEstado,
+    tagsOcultas: { tipo: 'estado_cena', estado: idEstado, horaForjada },
   });
 }
 
+// --- Nexo: liga vestígio a suspeito (livro-caixa) ---
 function registrarNexo(idHipotese, idVestigio, idConclusaoApoio) {
-  const vestigio = cartas(idVestigio)[0];
+  const vestigio = cartas(idVestigio)[0] || null;
   const apoio = s().conclusoes.find((c) => c.id === idConclusaoApoio);
-  const r = validarHipoteseNexo(hip(HIPOTESES_NEXO, idHipotese), vestigio, apoio);
-  if (!r.consistente) return { erro: r.motivo };
+  const instrumento = apoio && apoio.tagsOcultas.tipo === 'mecanismo' ? apoio.tagsOcultas.instrumento : null;
+  const h = HIPOTESES_NEXO.find((x) => x.id === idHipotese);
+  if (h.id === 'alheio') {
+    return s().registrarConclusao({
+      origem: 'nexo',
+      titulo: 'Vestígio Alheio',
+      resumo: 'alheio',
+      tagsOcultas: { tipo: 'nexo_alheio', suspeitoId: vestigio ? vestigio.tagsOcultas.pertenceA || null : null },
+    });
+  }
   return s().registrarConclusao({
     origem: 'nexo',
     titulo: 'Nexo de Presença',
-    resumo: r.tipo,
-    tagsOcultas: { tipo: r.tipo, suspeitoId: r.suspeitoId, instrumento: r.instrumento || null },
+    resumo: 'nexo',
+    tagsOcultas: { tipo: 'nexo', suspeitoId: h.suspeitoId, instrumento },
   });
 }
 
@@ -91,15 +107,18 @@ function relatar(rotulo, veredicto) {
   console.log(`\n=== ${rotulo} ===`);
   console.log(`Relógio final: ${formatRelogio(s().horasJogo)}`);
   console.log(`Desfecho: ${veredicto.tipo}`);
-  console.log(`Falhas: ${veredicto.falhas.map((f) => f.codigo + (f.suspeitoId ? `(${f.suspeitoId})` : '')).join(', ') || '—'}`);
+  console.log(
+    `Falhas: ${veredicto.falhas.map((f) => f.codigo + (f.suspeitoId ? `(${f.suspeitoId})` : '')).join(', ') || '—'}`
+  );
   monologos.push({ rotulo, monologo: gerarMonologo(veredicto, s().detective) });
 }
 
 // ============================================================
-// (a) METÓDICO — corpo primeiro, três gavetas, libelo completo
+// (a) METÓDICO — corpo primeiro, triangula, crava por eliminação,
+// libelo completo. Esperado: vitoria_absoluta.
 // ============================================================
 reiniciar();
-s().medirTemperatura(); // 11h → 24°C → IPM 11–15
+s().medirTemperatura(); // 11h → 24°C → algor [-4, 0]
 ['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
 ['ev_relogio', 'ev_gavetas', 'ev_fechadura', 'ev_fio_la'].forEach((id) => s().extrairCarta(id));
 ['dep_testamento'].forEach((id) => s().extrairCarta(id));
@@ -107,22 +126,13 @@ s().medirTemperatura(); // 11h → 24°C → IPM 11–15
   s().extrairCarta(id)
 );
 
-console.log('--- Metódico: estados extraídos ---');
-console.log('algor:', cartas('ev_algor')[0].tagsOcultas);
-console.log('rigor:', cartas('ev_rigor')[0].tagsOcultas, 'registrado às', cartas('ev_rigor')[0].horaRegistro);
-
-const isca = registrarCronos('manha_14');
-console.log('Tentativa da isca (manhã 09h):', isca.erro ? `rejeitada — ${isca.erro}` : 'ACEITA (FURO!)');
-const janelaM = registrarCronos('noite_13');
-console.log('Janela registrada:', janelaM.resumo, janelaM.tagsOcultas);
+const janelaM = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor']);
+console.log('Janela por triangulação:', janelaM.resumo, janelaM.tagsOcultas);
+console.log('Catálogo após petéquias+sulco:', causasCompativeis(['petequias_cianose', 'sulco_horizontal']).map((c) => c.id).join(', '));
 const mecanismoM = registrarMecanismo('estrangulamento_ligadura', ['ev_sulco', 'ev_petequias', 'ev_fibras_sulco']);
-console.log('Mecanismo:', mecanismoM.resumo, mecanismoM.tagsOcultas);
+console.log('Mecanismo cravado:', mecanismoM.resumo, mecanismoM.tagsOcultas);
 const cenaM = registrarCena('cena_encenada', ['ev_relogio', 'ev_gavetas', 'ev_fechadura']);
-console.log('Estado da cena:', cenaM.resumo);
-const nexoHudson = registrarNexo('liga_sra_hudson', 'ev_fio_la', mecanismoM.id);
-console.log('Nexo com fio de lã (Hudson):', nexoHudson.erro ? `rejeitado — ${nexoHudson.erro}` : 'ACEITO (FURO!)');
 const nexoM = registrarNexo('liga_edgar_arthurs', 'ev_fibras_manga', mecanismoM.id);
-console.log('Nexo Edgar:', nexoM.resumo, nexoM.tagsOcultas);
 
 s().atualizarLibelo({
   reuId: 'edgar_arthurs',
@@ -138,12 +148,13 @@ s().atualizarLibelo({
   },
 });
 s().submeterLibelo();
-relatar('(a) METÓDICO — esperado: vitoria_absoluta', s().veredicto);
+const vMetodico = s().veredicto;
+relatar('(a) METÓDICO — esperado: vitoria_absoluta', vMetodico);
 
 // ============================================================
-// (b) APRESSADO — cena e interrogatórios antes do corpo;
-// cai nas armadilhas 1 (degradação), 2 (Hudson) e 3 (Blackwood é
-// descartado por ninguém: ele acusa a mentirosa nervosa)
+// (b) APRESSADO — cena e interrogatórios antes do corpo; chega tarde,
+// os sinais temporais já degradaram (rigor em resolução, algor inconclusivo),
+// e acusa a governanta nervosa. Esperado: erro_judiciario.
 // ============================================================
 reiniciar();
 ['ev_relogio', 'ev_gavetas', 'ev_fechadura', 'ev_fio_la'].forEach((id) => s().extrairCarta(id));
@@ -154,15 +165,10 @@ console.log('\n--- Apressado: chega ao corpo às', formatRelogio(s().horasJogo),
 s().extrairCarta('ev_rigor');
 s().extrairCarta('ev_livores');
 s().medirTemperatura();
-console.log('rigor degradado:', cartas('ev_rigor')[0].textoDisplay, cartas('ev_rigor')[0].tagsOcultas);
-console.log('algor degradado:', cartas('ev_algor')[0].textoDisplay, cartas('ev_algor')[0].tagsOcultas);
+console.log('rigor:', cartas('ev_rigor')[0].textoDisplay, '| algor:', cartas('ev_algor')[0].textoDisplay);
+const janelaA = registrarCronos();
+console.log('Janela (sinais degradados):', janelaA.erro ? `(${janelaA.erro})` : janelaA.resumo, janelaA.tagsOcultas || '');
 
-const precisaA = registrarCronos('noite_13');
-console.log('Janela precisa com sinais degradados:', precisaA.erro ? `rejeitada — ${precisaA.erro}` : 'ACEITA (FURO!)');
-const janelaA = registrarCronos('janela_ampla');
-console.log('Janela ampla registrada:', janelaA.resumo, janelaA.tagsOcultas);
-
-// Acusa a governanta nervosa que mentiu (armadilha 2), sem mecanismo nem nexo
 s().atualizarLibelo({
   reuId: 'sra_hudson',
   evidenciasCorpoIds: ['ev_rigor', 'ev_livores'],
@@ -174,10 +180,12 @@ s().atualizarLibelo({
   },
 });
 s().submeterLibelo();
-relatar('(b) APRESSADO — esperado: erro_judiciario', s().veredicto);
+const vApressado = s().veredicto;
+relatar('(b) APRESSADO — esperado: erro_judiciario', vApressado);
 
 // ============================================================
-// (c) INTUITIVO — acusa Edgar de imediato, sem materialidade
+// (c) INTUITIVO — acusa Edgar de imediato, sem materialidade.
+// Esperado: impunidade (réu certo, provas furadas).
 // ============================================================
 reiniciar();
 s().extrairCarta('ev_rigor');
@@ -190,17 +198,18 @@ s().atualizarLibelo({
   perifericos: {},
 });
 s().submeterLibelo();
-relatar('(c) INTUITIVO — esperado: impunidade', s().veredicto);
+const vIntuitivo = s().veredicto;
+relatar('(c) INTUITIVO — esperado: impunidade', vIntuitivo);
 
 // ============================================================
 // (d) PERICIAL DESATENTO — tripé completo, mas libelo lacunoso
-// (sem motivação, sem descuidos, sem juízo periférico)
+// (sem motivação, sem descuidos, sem juízo periférico). Esperado: sucesso_gafes.
 // ============================================================
 reiniciar();
 s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
 s().extrairCarta('ev_fibras_manga');
-const janelaD = registrarCronos('noite_13');
+const janelaD = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor']);
 const mecanismoD = registrarMecanismo('estrangulamento_ligadura', ['ev_sulco', 'ev_petequias', 'ev_fibras_sulco']);
 const nexoD = registrarNexo('liga_edgar_arthurs', 'ev_fibras_manga', mecanismoD.id);
 s().atualizarLibelo({
@@ -217,11 +226,27 @@ s().submeterLibelo();
 relatar('(d) PERICIAL DESATENTO — esperado: sucesso_gafes', s().veredicto);
 
 // ============================================================
-// Fumaça do monólogo: todos os 4 desfechos geram texto sem falha
+// Fumaça do monólogo: todos os desfechos geram texto.
 // ============================================================
 console.log('\n=== Monólogos gerados (fumaça) ===');
 for (const { rotulo, monologo } of monologos) {
-  console.log(`\n· ${rotulo} → "${monologo.titulo}", ${monologo.blocos.length} blocos`);
-  console.log(`  Abertura: ${monologo.blocos[0].slice(0, 90)}…`);
-  console.log(`  Fecho: ${monologo.blocos[monologo.blocos.length - 1].slice(0, 90)}…`);
+  console.log(`· ${rotulo} → "${monologo.titulo}", ${monologo.blocos.length} blocos`);
 }
+
+// ============================================================
+// Critério de validação do caso (§18 / ETAPA 5)
+// ============================================================
+const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
+const checagens = [
+  ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
+  ['Apressado cai em ≥1 armadilha', apressadoCaiEmArmadilha],
+  ['Intuitivo alcança Impunidade (réu certo, provas furadas)', vIntuitivo.tipo === 'impunidade'],
+];
+console.log('\n=== Critério de validação ===');
+let todasOk = true;
+for (const [rotulo, ok] of checagens) {
+  console.log(`${ok ? 'OK ' : 'FALHA'} — ${rotulo}`);
+  if (!ok) todasOk = false;
+}
+console.log(todasOk ? '\nCASO VÁLIDO.' : '\nCASO INVÁLIDO.');
+process.exit(todasOk ? 0 : 1);
