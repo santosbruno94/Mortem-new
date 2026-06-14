@@ -1,66 +1,12 @@
 // =====================================================================
 // Gaveta Aitiov — o pilar "Como", em duas seções (§7):
-//   Seção 1: cartas causais  → Mecanismo do Óbito
-//   Seção 2: cartas ambientais (+ Janela da Morte) → Estado da Cena
+//   Seção 1: Mecanismo do Óbito — deduzido por ELIMINAÇÃO contra o
+//            catálogo universal de causas (ver src/data/catalogo_causas.js
+//            e o componente GavetaAitiov). Não há mais lista de mecanismos
+//            por caso aqui.
+//   Seção 2: cartas ambientais (+ Janela da Morte) → Estado da Cena.
 // Funções puras: leem SOMENTE tagsOcultas e conclusões já registradas.
 // =====================================================================
-
-// ------------------------- Seção 1: Mecanismo -------------------------
-
-export const HIPOTESES_MECANISMO = [
-  {
-    id: 'enforcamento',
-    rotulo: 'Enforcamento — suspensão do corpo por laço (compatível com suicídio).',
-  },
-  {
-    id: 'estrangulamento_ligadura',
-    rotulo: 'Estrangulamento por ligadura — laço apertado por mãos alheias.',
-  },
-  {
-    id: 'estrangulamento_manual',
-    rotulo: 'Estrangulamento manual — pressão direta das mãos no pescoço.',
-  },
-  {
-    id: 'envenenamento',
-    rotulo: 'Envenenamento — administração de substância letal.',
-  },
-];
-
-// Mecanismos específicos apontados por cartas; 'asfixia_generica' apoia
-// qualquer asfixia, mas não basta para especificar o meio.
-const MECANISMOS_ESPECIFICOS = ['enforcamento', 'estrangulamento_ligadura', 'estrangulamento_manual', 'envenenamento'];
-
-export function validarHipoteseMecanismo(hipotese, cartas) {
-  const causais = cartas.filter((c) => c.tagsOcultas.dominio === 'causal');
-  if (causais.length === 0) {
-    return { consistente: false, motivo: 'Nenhuma evidência causal foi inserida.' };
-  }
-  const indicados = causais.map((c) => c.tagsOcultas.indicaMecanismo).filter(Boolean);
-  const especificos = indicados.filter((m) => MECANISMOS_ESPECIFICOS.includes(m));
-
-  // Alguma carta inserida deve apontar especificamente o mecanismo da hipótese…
-  if (!especificos.includes(hipotese.id)) {
-    return {
-      consistente: false,
-      motivo: 'Nenhuma evidência inserida especifica esse mecanismo.',
-    };
-  }
-  // …e nenhuma pode apontar especificamente outro mecanismo.
-  if (especificos.some((m) => m !== hipotese.id)) {
-    return {
-      consistente: false,
-      motivo: 'Evidências inseridas apontam mecanismo diverso do declarado.',
-    };
-  }
-  // O instrumento (se identificado por alguma carta) integra a conclusão.
-  const cartaInstrumento = causais.find((c) => c.tagsOcultas.instrumento);
-  return {
-    consistente: true,
-    motivo: null,
-    mecanismo: hipotese.id,
-    instrumento: cartaInstrumento ? cartaInstrumento.tagsOcultas.instrumento : null,
-  };
-}
 
 // ------------------------- Seção 2: Estado da Cena -------------------------
 

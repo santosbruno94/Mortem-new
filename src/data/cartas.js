@@ -86,10 +86,12 @@ export const CARTAS = [
     carimboPadrao: 'Sulco Cervical Horizontal',
     descricao:
       'Um sulco uniforme circunda o pescoço em plano horizontal, sem o trajeto ascendente que a suspensão de um corpo desenharia.',
+    // Sinal de ASSINATURA do catálogo universal: crava a ligadura e
+    // descarta as demais causas (ver src/data/catalogo_causas.js).
     tagsOcultas: {
       dominio: 'causal',
       subDominio: 'sulco_cervical',
-      indicaMecanismo: 'estrangulamento_ligadura',
+      sinal: 'sulco_horizontal',
     },
   },
   {
@@ -100,10 +102,12 @@ export const CARTAS = [
     carimboPadrao: 'Petéquias Conjuntivais',
     descricao:
       'Hemorragias puntiformes salpicam o branco dos olhos. A face guarda um tom azulado.',
+    // Sinal de FAMÍLIA: aponta asfixia (descarta veneno e trauma), mas não
+    // diz qual asfixia — é preciso o sinal de assinatura para cravar.
     tagsOcultas: {
       dominio: 'causal',
       subDominio: 'asfixia',
-      indicaMecanismo: 'asfixia_generica',
+      sinal: 'petequias_cianose',
     },
   },
   {

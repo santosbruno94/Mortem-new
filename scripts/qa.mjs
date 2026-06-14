@@ -6,12 +6,8 @@
 import { useJogo } from '../src/store/jogo.js';
 import { SEED_TUTORIAL } from '../src/data/seed.js';
 import { calcularJanelaMorte } from '../src/logic/cronos.js';
-import {
-  HIPOTESES_MECANISMO,
-  HIPOTESES_CENA,
-  validarHipoteseMecanismo,
-  validarHipoteseCena,
-} from '../src/logic/aitiov.js';
+import { HIPOTESES_CENA, validarHipoteseCena } from '../src/logic/aitiov.js';
+import { causasCompativeis } from '../src/data/catalogo_causas.js';
 import { HIPOTESES_NEXO, validarHipoteseNexo } from '../src/logic/nexo.js';
 import { formatJanela, formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
@@ -54,14 +50,25 @@ function registrarCronos(idsCartas) {
   });
 }
 
-function registrarMecanismo(idHipotese, idsCartas) {
-  const r = validarHipoteseMecanismo(hip(HIPOTESES_MECANISMO, idHipotese), cartas(...idsCartas));
-  if (!r.consistente) return { erro: r.motivo };
+// Mecanismo por eliminação: os sinais das cartas reunidas descartam causas
+// do catálogo universal; só se pode cravar uma das que sobram.
+function registrarMecanismo(idMecanismo, idsCartas) {
+  const causais = cartas(...idsCartas);
+  const sinais = causais.map((c) => c.tagsOcultas.sinal).filter(Boolean);
+  const compativeis = causasCompativeis(sinais).map((c) => c.id);
+  if (!compativeis.includes(idMecanismo)) {
+    return { erro: `causa eliminada pelos sinais (restam: ${compativeis.join(', ')})` };
+  }
+  const cartaInstr = causais.find((c) => c.tagsOcultas.instrumento);
   return s().registrarConclusao({
     origem: 'aitiov',
     titulo: 'Mecanismo do Óbito',
-    resumo: r.mecanismo,
-    tagsOcultas: { tipo: 'mecanismo', mecanismo: r.mecanismo, instrumento: r.instrumento },
+    resumo: idMecanismo,
+    tagsOcultas: {
+      tipo: 'mecanismo',
+      mecanismo: idMecanismo,
+      instrumento: cartaInstr ? cartaInstr.tagsOcultas.instrumento : null,
+    },
   });
 }
 
