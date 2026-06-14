@@ -3,9 +3,11 @@ import { useJogo } from '../store/jogo.js';
 import Overlay from './Overlay.jsx';
 
 // Processador lógico reutilizável (§7): Evidência → Hipótese → Conclusão.
-// Fluxo tese-primeiro: o jogador declara a hipótese ANTES de validá-la.
-// O único retorno possível é "consistente/inconsistente com as evidências
-// inseridas" — nunca um indicador de acerto. Conclusões podem ser desfeitas.
+// LIVRO-CAIXA, não oráculo (ETAPA 1): o jogador declara a hipótese e a
+// gaveta apenas a REGISTRA — sem avaliar, sem dar feedback de "certo/errado"
+// e sem bloquear. A conclusão gravada reflete o que o jogador AFIRMOU (suas
+// tags), nunca uma versão corrigida. Toda validação vive só no tribunal
+// (calcularVeredicto). Conclusões podem ser desfeitas.
 export default function GavetaBase({
   titulo,
   subtitulo,
@@ -14,7 +16,7 @@ export default function GavetaBase({
   selecaoUnicaCarta = false,
   conclusoesElegiveis = null, // se presente, exige escolher 1 conclusão de apoio
   hipoteses,
-  validar, // (hipotese, cartasSelecionadas, conclusaoSelecionada) → { consistente, motivo, conclusao }
+  montarConclusao, // (hipotese, cartasSelecionadas, conclusaoApoio) → conclusao (sempre a afirmação do jogador)
   origem,
   filtroConclusoesGaveta, // (conclusao) → bool — quais conclusões listar como já registradas aqui
 }) {
@@ -25,37 +27,37 @@ export default function GavetaBase({
   const [idsSelecionados, setIdsSelecionados] = useState([]);
   const [idConclusaoApoio, setIdConclusaoApoio] = useState(null);
   const [idHipotese, setIdHipotese] = useState(null);
-  const [resultado, setResultado] = useState(null);
 
   const registradasAqui = conclusoes.filter(
     (c) => c.origem === origem && (!filtroConclusoesGaveta || filtroConclusoesGaveta(c))
   );
 
+  // Pronto para registrar assim que há hipótese declarada (e, quando a
+  // gaveta exige apoio, uma conclusão de apoio escolhida). Não se exige
+  // "consistência": registrar uma conclusão frágil ou errada é permitido.
+  const podeRegistrar = !!idHipotese && (!conclusoesElegiveis || !!idConclusaoApoio);
+
   function alternarCarta(id) {
-    setResultado(null);
     setIdsSelecionados((atual) => {
       if (atual.includes(id)) return atual.filter((x) => x !== id);
       return selecaoUnicaCarta ? [id] : [...atual, id];
     });
   }
 
-  function verificar() {
+  function registrar() {
     const hipotese = hipoteses.find((h) => h.id === idHipotese);
     if (!hipotese) return;
+    if (conclusoesElegiveis && !idConclusaoApoio) return;
     const cartas = cartasElegiveis.filter((c) => idsSelecionados.includes(c.id));
     const apoio = conclusoesElegiveis
       ? conclusoesElegiveis.find((c) => c.id === idConclusaoApoio) || null
       : null;
-    setResultado(validar(hipotese, cartas, apoio));
-  }
-
-  function registrar() {
-    if (!resultado?.consistente || !resultado.conclusao) return;
-    registrarConclusao(resultado.conclusao);
+    const conclusao = montarConclusao(hipotese, cartas, apoio);
+    if (!conclusao) return;
+    registrarConclusao(conclusao);
     setIdsSelecionados([]);
     setIdConclusaoApoio(null);
     setIdHipotese(null);
-    setResultado(null);
   }
 
   return (
@@ -102,7 +104,6 @@ export default function GavetaBase({
                 <button
                   key={c.id}
                   onClick={() => {
-                    setResultado(null);
                     setIdConclusaoApoio((atual) => (atual === c.id ? null : c.id));
                   }}
                   className={`px-3 py-2 rounded-sm border text-sm text-left ${
@@ -137,7 +138,6 @@ export default function GavetaBase({
               className="mt-1 accent-amber-700"
               checked={idHipotese === h.id}
               onChange={() => {
-                setResultado(null);
                 setIdHipotese(h.id);
               }}
             />
@@ -146,37 +146,19 @@ export default function GavetaBase({
         ))}
       </div>
 
-      {/* 3. Validação de consistência */}
+      {/* 3. Registro da conclusão declarada — a gaveta não avalia nem bloqueia */}
       <div className="flex items-center gap-4">
         <button
-          onClick={verificar}
-          disabled={!idHipotese}
+          onClick={registrar}
+          disabled={!podeRegistrar}
           className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800 disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          Verificar consistência
+          Registrar conclusão
         </button>
-        {resultado && (
-          <p className={`text-sm ${resultado.consistente ? 'text-stone-300' : 'text-stone-500'}`}>
-            {resultado.consistente
-              ? 'Consistente com as evidências inseridas.'
-              : `Inconsistente — ${resultado.motivo}`}
-          </p>
-        )}
+        <p className="text-stone-600 text-xs">
+          A gaveta apenas registra a sua conclusão — quem a julga é o tribunal.
+        </p>
       </div>
-
-      {resultado?.consistente && (
-        <div className="mt-4 border border-stone-800 rounded-sm px-4 py-3 flex items-center justify-between gap-4">
-          <p className="text-stone-300 text-sm">
-            <span className="font-bold">{resultado.conclusao.titulo}:</span> {resultado.conclusao.resumo}
-          </p>
-          <button
-            onClick={registrar}
-            className="shrink-0 px-4 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800"
-          >
-            Registrar conclusão
-          </button>
-        </div>
-      )}
 
       {/* Conclusões já registradas nesta gaveta */}
       {registradasAqui.length > 0 && (

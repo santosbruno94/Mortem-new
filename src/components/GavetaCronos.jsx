@@ -1,25 +1,24 @@
 import { useJogo } from '../store/jogo.js';
-import { HIPOTESES_CRONOS, validarHipoteseCronos } from '../logic/cronos.js';
+import { HIPOTESES_CRONOS } from '../logic/cronos.js';
 import { formatJanela } from '../logic/tempo.js';
 import GavetaBase from './GavetaBase.jsx';
 
 // Gaveta Cronos — o pilar "Quando" (§7).
-// 2+ cartas temporais → Janela da Morte por sobreposição de intervalos.
+// LIVRO-CAIXA (ETAPA 1): a gaveta registra a hora que o jogador AFIRMA
+// (a faixa da hipótese declarada), sem confrontá-la com os sinais e sem
+// bloquear. Uma janela que não cobre a hora real fica gravada assim mesmo
+// — e será julgada no tribunal.
 export default function GavetaCronos() {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const temporais = cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal');
 
-  function validar(hipotese, cartas) {
-    const r = validarHipoteseCronos(hipotese, cartas);
-    if (!r.consistente) return r;
+  function montarConclusao(hipotese) {
+    const janela = { inicio: hipotese.inicio, fim: hipotese.fim };
     return {
-      ...r,
-      conclusao: {
-        origem: 'cronos',
-        titulo: 'Janela da Morte',
-        resumo: `O óbito ocorreu ${formatJanela(r.janela)}.`,
-        tagsOcultas: { tipo: 'janela', inicio: r.janela.inicio, fim: r.janela.fim },
-      },
+      origem: 'cronos',
+      titulo: 'Janela da Morte',
+      resumo: `O óbito ocorreu ${formatJanela(janela)}.`,
+      tagsOcultas: { tipo: 'janela', inicio: janela.inicio, fim: janela.fim },
     };
   }
 
@@ -27,10 +26,10 @@ export default function GavetaCronos() {
     <GavetaBase
       titulo="Gaveta Cronos"
       subtitulo="Quando — raciocinar não custa tempo"
-      instrucao="Insira ao menos dois sinais temporais e declare uma hipótese sobre a hora da morte. A gaveta confronta a hipótese com a convergência dos intervalos."
+      instrucao="Reúna os sinais temporais sobre a mesa e declare a janela da morte. A gaveta apenas registra a sua leitura."
       cartasElegiveis={temporais}
       hipoteses={HIPOTESES_CRONOS}
-      validar={validar}
+      montarConclusao={montarConclusao}
       origem="cronos"
     />
   );

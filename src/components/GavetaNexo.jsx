@@ -1,43 +1,42 @@
 import { useJogo } from '../store/jogo.js';
-import { HIPOTESES_NEXO, validarHipoteseNexo } from '../logic/nexo.js';
+import { HIPOTESES_NEXO } from '../logic/nexo.js';
 import { obterSuspeito } from '../data/seed.js';
 import { ROTULOS_INSTRUMENTO } from '../data/rotulos.js';
 import GavetaBase from './GavetaBase.jsx';
 
 // Gaveta Nexo — o pilar "Presença" (§7).
 // 1 carta de vestígio + 1 Conclusão registrada → Nexo de Presença.
+// LIVRO-CAIXA (ETAPA 1): registra a ligação que o jogador AFIRMA entre o
+// vestígio e uma pessoa, sem checar se o vestígio de fato corresponde ao
+// instrumento. O tribunal é que julga a materialidade.
 export default function GavetaNexo() {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const conclusoes = useJogo((s) => s.conclusoes);
 
   const vestigios = cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'vestigio');
 
-  function validar(hipotese, cartas, apoio) {
+  function montarConclusao(hipotese, cartas, apoio) {
     const vestigio = cartas[0] || null;
-    const r = validarHipoteseNexo(hipotese, vestigio, apoio);
-    if (!r.consistente) return r;
-    if (r.tipo === 'nexo') {
-      const suspeito = obterSuspeito(r.suspeitoId);
+    // O instrumento conhecido vem da conclusão de mecanismo usada como apoio.
+    const instrumento =
+      apoio && apoio.tagsOcultas.tipo === 'mecanismo' ? apoio.tagsOcultas.instrumento : null;
+
+    if (hipotese.id === 'alheio') {
       return {
-        ...r,
-        conclusao: {
-          origem: 'nexo',
-          titulo: 'Nexo de Presença',
-          resumo: `O vestígio liga ${suspeito ? suspeito.nome : 'pessoa incerta'} ao instrumento do óbito (${
-            ROTULOS_INSTRUMENTO[r.instrumento] || r.instrumento
-          }).`,
-          tagsOcultas: { tipo: 'nexo', suspeitoId: r.suspeitoId, instrumento: r.instrumento },
-        },
-      };
-    }
-    return {
-      ...r,
-      conclusao: {
         origem: 'nexo',
         titulo: 'Vestígio Alheio',
-        resumo: 'O vestígio inserido não corresponde ao mecanismo do óbito.',
-        tagsOcultas: { tipo: 'nexo_alheio', suspeitoId: r.suspeitoId },
-      },
+        resumo: 'O vestígio inserido é estranho ao mecanismo do óbito.',
+        tagsOcultas: { tipo: 'nexo_alheio', suspeitoId: vestigio ? vestigio.tagsOcultas.pertenceA || null : null },
+      };
+    }
+
+    const suspeito = obterSuspeito(hipotese.suspeitoId);
+    const sufixo = instrumento ? ` (${ROTULOS_INSTRUMENTO[instrumento] || instrumento})` : '';
+    return {
+      origem: 'nexo',
+      titulo: 'Nexo de Presença',
+      resumo: `O vestígio liga ${suspeito ? suspeito.nome : 'pessoa incerta'} ao instrumento do óbito${sufixo}.`,
+      tagsOcultas: { tipo: 'nexo', suspeitoId: hipotese.suspeitoId, instrumento },
     };
   }
 
@@ -45,12 +44,12 @@ export default function GavetaNexo() {
     <GavetaBase
       titulo="Gaveta Nexo"
       subtitulo="Presença — raciocinar não custa tempo"
-      instrucao="Insira um vestígio, apoie-o numa conclusão registrada e declare a quem o vestígio liga. A acusação sem materialidade morre no tribunal."
+      instrucao="Insira um vestígio, apoie-o numa conclusão registrada e declare a quem o vestígio liga. A gaveta apenas registra a sua afirmação; a acusação sem materialidade morre no tribunal."
       cartasElegiveis={vestigios}
       selecaoUnicaCarta
       conclusoesElegiveis={conclusoes.filter((c) => c.origem !== 'nexo')}
       hipoteses={HIPOTESES_NEXO}
-      validar={validar}
+      montarConclusao={montarConclusao}
       origem="nexo"
     />
   );
