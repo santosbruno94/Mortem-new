@@ -9,7 +9,11 @@
 // =====================================================================
 
 // ------------------------- Seção 2: Estado da Cena -------------------------
-
+// As leituras de cena são um pequeno conjunto UNIVERSAL (servem a qualquer
+// caso, não são alternativas escritas para este). A gaveta apenas registra
+// a leitura que o jogador AFIRMA (ETAPA 1, livro-caixa); o cotejo da
+// cronologia aparente com a Janela da Morte é raciocínio do jogador e o
+// julgamento final cabe ao tribunal.
 export const HIPOTESES_CENA = [
   {
     id: 'roubo_interrompido',
@@ -24,63 +28,3 @@ export const HIPOTESES_CENA = [
     rotulo: 'Discussão violenta: o crime irrompeu numa luta não premeditada.',
   },
 ];
-
-// `janela` é a conclusão Cronos já registrada (ou null). A seção 2 só
-// produz leitura confiável da cena à luz do "quando" estabelecido.
-export function validarHipoteseCena(hipotese, cartas, janela) {
-  const ambientais = cartas.filter((c) => c.tagsOcultas.dominio === 'ambiental');
-  if (ambientais.length === 0) {
-    return { consistente: false, motivo: 'Nenhuma evidência ambiental foi inserida.' };
-  }
-
-  if (hipotese.id === 'cena_encenada') {
-    if (!janela) {
-      return {
-        consistente: false,
-        motivo: 'Sem uma Janela da Morte registrada, a cronologia da cena não pode ser confrontada.',
-      };
-    }
-    const cartaHoraForjada = ambientais.find(
-      (c) =>
-        typeof c.tagsOcultas.horaAparente === 'number' &&
-        (c.tagsOcultas.horaAparente < janela.inicio || c.tagsOcultas.horaAparente > janela.fim)
-    );
-    if (!cartaHoraForjada) {
-      return {
-        consistente: false,
-        motivo: 'Nada na cena inserida contradiz a cronologia estabelecida.',
-      };
-    }
-    return {
-      consistente: true,
-      motivo: null,
-      estado: 'cena_encenada',
-      horaForjada: cartaHoraForjada.tagsOcultas.horaAparente,
-    };
-  }
-
-  if (hipotese.id === 'roubo_interrompido') {
-    const haRoubo = ambientais.some((c) => c.tagsOcultas.aparentaRoubo);
-    const valoresIntactos = ambientais.some((c) => c.tagsOcultas.valoresIntactos);
-    if (!haRoubo) {
-      return { consistente: false, motivo: 'Nada inserido sugere subtração de bens.' };
-    }
-    if (valoresIntactos) {
-      return {
-        consistente: false,
-        motivo: 'A desordem inserida poupa os objetos de valor — inconsistente com roubo.',
-      };
-    }
-    return { consistente: true, motivo: null, estado: 'roubo_interrompido', horaForjada: null };
-  }
-
-  if (hipotese.id === 'crime_passional') {
-    const haLuta = ambientais.some((c) => c.tagsOcultas.sinaisLuta);
-    if (!haLuta) {
-      return { consistente: false, motivo: 'Nenhum sinal de luta consta das evidências inseridas.' };
-    }
-    return { consistente: true, motivo: null, estado: 'crime_passional', horaForjada: null };
-  }
-
-  return { consistente: false, motivo: 'Hipótese desconhecida.' };
-}
