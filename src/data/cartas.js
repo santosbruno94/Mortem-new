@@ -26,11 +26,12 @@ export const CARTAS = [
         carimboPadrao: 'Rigor Mortis Pleno',
         descricao:
           'Mandíbula, pescoço e membros oferecem resistência total à flexão. A rigidez tomou o corpo inteiro.',
+        // A carta carrega o ESTADO observado bruto; quem o converte numa
+        // janela é o modelo forense universal (src/logic/tempo_morte.js).
         tagsOcultas: {
           dominio: 'temporal',
-          subDominio: 'post_mortem_interval',
-          valorMinimoHoras: 12,
-          valorMaximoHoras: 24,
+          subDominio: 'rigor_mortis',
+          estadoRigor: 'pleno',
           estadoDegradacao: 'ativo',
         },
       },
@@ -42,9 +43,8 @@ export const CARTAS = [
           'A mandíbula já cede; os joelhos ainda resistem. A rigidez se desfaz na mesma ordem em que veio.',
         tagsOcultas: {
           dominio: 'temporal',
-          subDominio: 'post_mortem_interval',
-          valorMinimoHoras: 24,
-          valorMaximoHoras: 36,
+          subDominio: 'rigor_mortis',
+          estadoRigor: 'resolucao',
           estadoDegradacao: 'degradado',
         },
       },
@@ -56,7 +56,7 @@ export const CARTAS = [
           'Nenhuma resistência articular. O que o rigor tinha a dizer, já não diz mais.',
         tagsOcultas: {
           dominio: 'temporal',
-          subDominio: 'post_mortem_interval',
+          subDominio: 'rigor_mortis',
           inconclusiva: true,
           estadoDegradacao: 'perdido',
         },
@@ -74,8 +74,7 @@ export const CARTAS = [
     tagsOcultas: {
       dominio: 'temporal',
       subDominio: 'livor_mortis',
-      valorMinimoHoras: 12,
-      valorMaximoHoras: null, // livores fixos: apenas piso (≥ 12h)
+      estadoLivor: 'fixo', // não esmaece sob pressão: morte de ≥12h (sem teto)
       posicaoCompativel: true,
     },
   },

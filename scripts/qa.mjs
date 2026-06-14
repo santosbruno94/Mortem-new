@@ -5,7 +5,7 @@
 
 import { useJogo } from '../src/store/jogo.js';
 import { SEED_TUTORIAL } from '../src/data/seed.js';
-import { HIPOTESES_CRONOS, validarHipoteseCronos } from '../src/logic/cronos.js';
+import { calcularJanelaMorte } from '../src/logic/cronos.js';
 import {
   HIPOTESES_MECANISMO,
   HIPOTESES_CENA,
@@ -38,15 +38,19 @@ function hip(lista, id) {
   return lista.find((h) => h.id === id);
 }
 
-function registrarCronos(idHipotese) {
-  const temporais = s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal');
-  const r = validarHipoteseCronos(hip(HIPOTESES_CRONOS, idHipotese), temporais);
-  if (!r.consistente) return { erro: r.motivo };
+// Cronos por triangulação: a janela é a interseção dos indicadores
+// reunidos (sem menu de horas). `idsCartas` opcional restringe os sinais.
+function registrarCronos(idsCartas) {
+  const temporais = idsCartas
+    ? s().cartasRegistradas.filter((c) => idsCartas.includes(c.id))
+    : s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal');
+  const { janela, motivo } = calcularJanelaMorte(temporais);
+  if (!janela) return { erro: motivo };
   return s().registrarConclusao({
     origem: 'cronos',
     titulo: 'Janela da Morte',
-    resumo: formatJanela(r.janela),
-    tagsOcultas: { tipo: 'janela', inicio: r.janela.inicio, fim: r.janela.fim },
+    resumo: formatJanela(janela),
+    tagsOcultas: { tipo: 'janela', inicio: janela.inicio, fim: janela.fim },
   });
 }
 
@@ -111,10 +115,8 @@ console.log('--- Metódico: estados extraídos ---');
 console.log('algor:', cartas('ev_algor')[0].tagsOcultas);
 console.log('rigor:', cartas('ev_rigor')[0].tagsOcultas, 'registrado às', cartas('ev_rigor')[0].horaRegistro);
 
-const isca = registrarCronos('manha_14');
-console.log('Tentativa da isca (manhã 09h):', isca.erro ? `rejeitada — ${isca.erro}` : 'ACEITA (FURO!)');
-const janelaM = registrarCronos('noite_13');
-console.log('Janela registrada:', janelaM.resumo, janelaM.tagsOcultas);
+const janelaM = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor']);
+console.log('Janela calculada por triangulação:', janelaM.resumo, janelaM.tagsOcultas);
 const mecanismoM = registrarMecanismo('estrangulamento_ligadura', ['ev_sulco', 'ev_petequias', 'ev_fibras_sulco']);
 console.log('Mecanismo:', mecanismoM.resumo, mecanismoM.tagsOcultas);
 const cenaM = registrarCena('cena_encenada', ['ev_relogio', 'ev_gavetas', 'ev_fechadura']);
@@ -157,10 +159,12 @@ s().medirTemperatura();
 console.log('rigor degradado:', cartas('ev_rigor')[0].textoDisplay, cartas('ev_rigor')[0].tagsOcultas);
 console.log('algor degradado:', cartas('ev_algor')[0].textoDisplay, cartas('ev_algor')[0].tagsOcultas);
 
-const precisaA = registrarCronos('noite_13');
-console.log('Janela precisa com sinais degradados:', precisaA.erro ? `rejeitada — ${precisaA.erro}` : 'ACEITA (FURO!)');
-const janelaA = registrarCronos('janela_ampla');
-console.log('Janela ampla registrada:', janelaA.resumo, janelaA.tagsOcultas);
+const janelaA = registrarCronos();
+console.log(
+  'Janela com sinais degradados:',
+  janelaA.erro ? `(${janelaA.erro})` : `${janelaA.resumo}`,
+  janelaA.tagsOcultas || ''
+);
 
 // Acusa a governanta nervosa que mentiu (armadilha 2), sem mecanismo nem nexo
 s().atualizarLibelo({
@@ -200,7 +204,7 @@ reiniciar();
 s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
 s().extrairCarta('ev_fibras_manga');
-const janelaD = registrarCronos('noite_13');
+const janelaD = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor']);
 const mecanismoD = registrarMecanismo('estrangulamento_ligadura', ['ev_sulco', 'ev_petequias', 'ev_fibras_sulco']);
 const nexoD = registrarNexo('liga_edgar_arthurs', 'ev_fibras_manga', mecanismoD.id);
 s().atualizarLibelo({

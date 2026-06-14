@@ -130,6 +130,7 @@ export const useJogo = create((set, get) => ({
         termoCarimbo: 'Algor Inconclusivo',
         descricao:
           'O termômetro marca a temperatura do próprio escritório: 11°C. O corpo nada mais tem a dizer sobre horas.',
+        // Equilíbrio térmico: a carta nasce inconclusiva (sem janela).
         tagsOcultas: { dominio: 'temporal', subDominio: 'algor_mortis', inconclusiva: true },
         horaRegistro: s.horasJogo,
       };
@@ -141,11 +142,13 @@ export const useJogo = create((set, get) => ({
         textoDisplay: `Temperatura Corporal: ${temperatura}°C`,
         termoCarimbo: `Algor Mortis: ${temperatura}°C (ambiente 11°C)`,
         descricao: `O mercúrio detém-se nos ${temperatura}°C, contra 11°C do escritório. A perda de calor, a um grau por hora, fala de ${horasEstimadas - 2} a ${horasEstimadas + 2} horas decorridas.`,
+        // Carrega a leitura BRUTA (temperatura medida + ambiente); a janela
+        // é calculada pelo modelo forense universal na gaveta Cronos.
         tagsOcultas: {
           dominio: 'temporal',
           subDominio: 'algor_mortis',
-          valorMinimoHoras: horasEstimadas - 2,
-          valorMaximoHoras: horasEstimadas + 2,
+          temperaturaCorpo: temperatura,
+          temperaturaAmbiente: 11,
         },
         horaRegistro: s.horasJogo,
       };
