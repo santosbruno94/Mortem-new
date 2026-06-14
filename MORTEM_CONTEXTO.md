@@ -1,6 +1,6 @@
 # MORTEM — Documento de Contexto Completo
 
-> Fonte única de verdade do design. Escrito para ser lido por humanos e por agentes de código (Claude Code). Consolida todas as decisões de design até o Playtest 6 (junho/2026). Em caso de conflito com qualquer outro documento, **este prevalece**.
+> Fonte única de verdade do design. Escrito para ser lido por humanos e por agentes de código (Claude Code). Consolida todas as decisões de design até a migração para a gramática de dedução universal (junho/2026). Em caso de conflito com qualquer outro documento, **este prevalece**.
 
 ---
 
@@ -23,7 +23,7 @@ MORTEM é um jogo de investigação forense baseado em texto e cartas, ambientad
 
 2. **O jogo nunca entrega conclusões.** O jogador recebe dados brutos ("articulações rígidas", "24°C corporal") e material de referência (Glossário Forense de época). A interpretação é dele. Não há personagem que resuma, não há highlight de "pista importante".
 
-3. **Tese-primeiro, anti força-bruta.** Nas gavetas, o jogador declara uma hipótese ANTES de validá-la. O sistema compara a hipótese contra as tags ocultas das cartas — nunca contra combinações exatas de cartas. Não existe vitória por tentativa e erro mecânico.
+3. **Dedução contra uma gramática universal, anti força-bruta.** As gavetas não oferecem um menu de respostas do caso: o jogador **deduz** contra um espaço universal (catálogo de causas + modelo de tempo, §6.1), estreitando-o ao combinar pistas — triangula a hora, elimina causas pelos sinais. A gaveta registra o que ele afirma sem validar. Não existe vitória por tentativa e erro mecânico, nem menu curto a adivinhar.
 
 4. **Zero feedback durante a investigação.** Nenhum ✓/✗, nenhum "correto!". Conclusões registradas nas gavetas são apenas registradas. A verdade só é revelada no tribunal final, de uma vez, com consequências.
 
@@ -105,13 +105,14 @@ Toda carta tem duas camadas:
   custoTempo: 2,
   tagsOcultas: {                                // camada lógica (motor lê)
     dominio: 'temporal',
-    subDominio: 'post_mortem_interval',
-    valorMinimoHoras: 12,
-    valorMaximoHoras: 24,
+    subDominio: 'rigor_mortis',
+    estadoRigor: 'pleno',                       // ESTADO observado bruto
     estadoDegradacao: 'ativo',
   },
 }
 ```
+
+A carta carrega o **estado observado bruto** (ex.: `estadoRigor: 'pleno'`, ou `temperaturaCorpo`/`temperaturaAmbiente` no algor, ou um `sinal` discriminante nas causais). Quem converte esse estado numa janela de horas ou numa causa é a **gramática universal** (§6.1), não a carta — é isso que permite gerar casos sem reescrever lógica.
 
 **Domínios:** `temporal`, `causal`, `ambiental`, `comportamental`, `vestigio`.
 
@@ -119,17 +120,28 @@ Toda carta tem duas camadas:
 
 **Regra inviolável:** funções de gaveta e de veredicto leem apenas `tagsOcultas` (e a seed). Nunca decidem por `id` ou `textoDisplay` de carta.
 
+### 6.1 Gramática Universal de Dedução (migração de junho/2026)
+
+O caso (seed) **não contém alternativas**. Cada caso traz só a **Verdade de Ouro** + as **pistas físicas** (cartas com `tagsOcultas`). O espaço de respostas é **universal**, igual para todo caso, e mora no motor:
+
+- **Catálogo universal de causas** (`src/data/catalogo_causas.js`): todas as causas que o jogo conhece (asfixias, intoxicações, traumas) e o vocabulário de **sinais**. Um sinal de *família* (ex.: petéquias → asfixia) aponta o gênero; um sinal de *assinatura* (ex.: sulco horizontal → ligadura) crava a espécie e descarta as parecidas. O jogador deduz por **eliminação**.
+- **Modelo forense de tempo** (`src/logic/tempo_morte.js`): converte cada indicador (algor, rigor, livor, última-vez-visto) numa **janela de horas**, determinístico nos dois sentidos (gera estados a partir da hora real — a degradação; e reconstrói a janela a partir dos estados). A Janela da Morte é a **interseção** das janelas.
+
+Consequência: dá para gerar infinitos casos sem escrever uma única "alternativa". A ambiguidade e a leitura-errada-coerente **emergem** do espaço universal — quem reúne poucas pistas fica com várias causas de pé e a janela larga.
+
 ---
 
-## 7. As Três Gavetas (consolidação do Playtest 5)
+## 7. As Três Gavetas (livro-caixa; migração de junho/2026)
 
-Funções puras, custo zero de tempo, sem API. Cada gaveta corresponde a um pilar pericial. Fluxo **tese-primeiro**: o jogador seleciona evidência(s) + uma hipótese dentre opções (incluindo armadilhas); a gaveta valida a hipótese contra as tags e, se consistente, registra uma Conclusão (que vira carta). Conclusões podem ser desfeitas. Nenhuma conclusão exibe se está "certa" — apenas se é *consistente com as evidências inseridas*.
+Funções puras, custo zero de tempo, sem API. Cada gaveta corresponde a um pilar pericial e é um **livro-caixa**, não um oráculo: o jogador **deduz** (não escolhe de um menu do caso) e a gaveta apenas **registra** a conclusão que ele afirma — **sem avaliar e sem bloquear**. Não há feedback de "consistente/inconsistente"; a conclusão gravada reflete o que o jogador afirmou, mesmo que errada. **Toda validação vive só no tribunal** (§11). Conclusões podem ser desfeitas.
 
-| Gaveta | Pilar | Entrada | Conclusão |
-|---|---|---|---|
-| **Cronos** | Quando | 2+ cartas `temporal` | **Janela da Morte** (sobreposição de intervalos) |
-| **Aitiov** | Como | Seção 1: cartas `causal` · Seção 2: cartas `ambiental` (+ Janela) | **Mecanismo do Óbito** · **Estado da Cena** (ex.: Cena Encenada) |
-| **Nexo** | Presença | 1 carta `vestigio` + 1 Conclusão | **Nexo de Presença** |
+| Gaveta | Pilar | Entrada | Como o jogador deduz | Conclusão |
+|---|---|---|---|---|
+| **Cronos** | Quando | cartas `temporal` | **triangulação**: cada indicador vira uma janela (modelo de tempo); a hora é a interseção | **Janela da Morte** |
+| **Aitiov** | Como | Seção 1: cartas `causal` · Seção 2: cartas `ambiental` | **eliminação** no catálogo universal pelos sinais discriminantes | **Mecanismo do Óbito** · **Estado da Cena** |
+| **Nexo** | Presença | 1 carta `vestigio` + 1 Conclusão de apoio | liga o vestígio a uma pessoa do elenco | **Nexo de Presença** |
+
+Não há mais listas de hipóteses por caso (`HIPOTESES_CRONOS`, `HIPOTESES_MECANISMO`): a Cronos calcula a janela e a Aitiov estreita o catálogo universal. As leituras de cena (Seção 2) e os suspeitos do Nexo são conjuntos universais/o elenco, não distratores escritos à mão.
 
 Histórico: o jogo tinha 5 gavetas. **Dinâmica** foi absorvida pela Aitiov (Estado da Cena é sua segunda seção). **Confronto** foi extinta — o cruzamento álibi × janela da morte é raciocínio manual do jogador, apoiado pelo Painel de Álibis (§8). Arquivos `GavetaConfronto.jsx`, `GavetaDinamica.jsx`, `confronto.js`, `dinamica.js` não existem mais.
 
@@ -268,8 +280,8 @@ Valores invioláveis — o jogo depende deles para ser resolúvel:
 **Estrutura de pastas:**
 ```
 src/
-  data/         seed.js · localidades.js · glossario.js · (cartas, depoimentos, eventos)
-  logic/        veredicto.js · cálculos das gavetas (janela, mecanismo, cena, nexo)
+  data/         seed.js · catalogo_causas.js · glossario.js · localidades.js · (cartas, depoimentos, eventos)
+  logic/        veredicto.js · tempo_morte.js (modelo forense universal) · cronos · aitiov · nexo
   store/        jogo.js (Zustand: fases, relógio, cartasRegistradas, conclusoes, log, detective)
   components/   Escrivaninha · GavetaBase · GavetaCronos · GavetaAitiov · GavetaNexo ·
                 PainelAlibis · QuadroRevelacoes · MonologoFinal · ModalGlossario ·
@@ -279,7 +291,7 @@ src/
 **Convenções:**
 - Estado central: `faseJogo`, `detective`, `horasJogo`, `horasChegadaCena`, `cartasRegistradas`, `conclusoes`, `log`, `temperaturaMedida`.
 - Conclusões são objetos com `origem` ('cronos' | 'aitiov' | 'nexo') e `tagsOcultas` próprias.
-- `GavetaBase` é o componente reutilizável (Evidência → Hipótese → Conclusão, com desfazer).
+- `GavetaBase` é o componente reutilizável de registro (livro-caixa, com desfazer); Cronos e Aitiov§1 têm UI própria de dedução (triangulação / eliminação).
 - Código e comentários em português.
 - Repositório: `github.com/santosbruno94/mortem`. Commits entre cada incremento maior.
 
@@ -295,6 +307,7 @@ src/
 | 6 | **Zero indicadores de acerto** (✓/✗) durante a investigação; verdade só no tribunal |
 | 6 | **Painel de Álibis** ("Declarações de Paradeiro") substitui o confronto automático — consulta neutra, cruzamento é raciocínio do jogador |
 | 6 | **Libelo como formulário narrativo** no Quadro de Revelações (réu, quando, como, evidências, nexo, descuidos, motivação, periféricos) gerando monólogo por templates universais |
+| jun/2026 | **Gramática de dedução universal** (§6.1, §7): o caso vira só Verdade de Ouro + pistas; o motor ganha catálogo universal de causas e modelo forense de tempo. Gavetas viram livro-caixa (registram sem validar); Cronos triangula a hora, Aitiov elimina causas no catálogo. Fim das listas de alternativas por caso |
 
 ---
 
