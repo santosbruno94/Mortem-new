@@ -17,7 +17,7 @@ export default function QuadroRevelacoes() {
   const cartasCorpo = cartasRegistradas.filter((c) => c.localidade === 'corpo');
   const conclusoesJanela = conclusoes.filter((c) => c.tagsOcultas.tipo === 'janela');
   const conclusoesMecanismo = conclusoes.filter((c) => c.tagsOcultas.tipo === 'mecanismo');
-  const conclusoesNexo = conclusoes.filter((c) => c.origem === 'nexo');
+  const conclusoesNexo = conclusoes.filter((c) => c.tagsOcultas.tipo === 'nexo');
   const itensDescuido = [
     ...cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'ambiental'),
     ...conclusoes.filter((c) => c.tagsOcultas.tipo === 'estado_cena'),
@@ -122,7 +122,7 @@ export default function QuadroRevelacoes() {
           itens={conclusoesNexo}
           selecionado={libelo.conclusaoNexoId}
           aoSelecionar={(id) => atualizarLibelo({ conclusaoNexoId: id })}
-          vazio="Nenhum Nexo de Presença registrado."
+          vazio="Nenhum nexo cravado — vá ao Confronto ligar o vestígio à arma."
         />
       </Campo>
 

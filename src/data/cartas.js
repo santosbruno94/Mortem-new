@@ -263,6 +263,26 @@ export const CARTAS = [
       horaAvistamento: -4, // 20h00 de 13/out na escala absoluta
     },
   },
+  {
+    id: 'dep_avistamento_falso',
+    localidade: 'delegacia',
+    custoTempo: 1,
+    textoDisplay: 'Vizinha Jura Tê-lo Visto à Janela',
+    carimboPadrao: 'Avistamento Declarado: 08h (14/out)',
+    descricao:
+      'A Sra. Gale, da casa em frente, afirma à polícia ter visto o Sr. Arthurs à janela, vivo, "lá pelas oito" da manhã do dia 14 — pouco antes de o sobrinho dar o alarme.',
+    // Alegação sobre a HORA, a ser confrontada com a janela da morte: jura a
+    // vítima viva na manhã do dia 14, quando o corpo diz que ela morreu na
+    // noite anterior. É a mentira a cravar no Confronto (Opção B). O motor
+    // não revela isto ao jogador — quem percebe a impossibilidade é ele.
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'avistamento',
+      declaranteId: 'sra_gale',
+      horaAvistamentoDeclarada: 8, // 08h00 de 14/out na escala absoluta
+      isca: true,
+    },
+  },
 
   // ===================== INTERROGATÓRIO: EDGAR ARTHURS =====================
   {

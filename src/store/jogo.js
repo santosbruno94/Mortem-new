@@ -45,7 +45,6 @@ export const useJogo = create((set, get) => ({
   conclusoes: [],
   log: [],
   temperaturaMedida: null,
-  gavetasDesbloqueadas: ['nexo'], // Cronos/Aitiov saíram (a leitura é falada pelo mestre); só o Nexo sobra até a Fase 4
   posicoesCartas: {},
 
   // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------

@@ -12,7 +12,7 @@
 // =====================================================================
 
 import { useJogo } from '../src/store/jogo.js';
-import { HIPOTESES_NEXO } from '../src/logic/nexo.js';
+import { nexoDeVestigio, contradicaoDeAlegacao } from '../src/logic/confronto.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { SEED_TUTORIAL } from '../src/data/seed.js';
@@ -38,18 +38,14 @@ function leitura(id) {
   return s().conclusoes.find((c) => c.id === id) || null;
 }
 
-// Nexo: liga vestígio a suspeito (livro-caixa). Ainda manual até a Fase 4.
-// Apoia-se na leitura de mecanismo do mestre para herdar o instrumento.
-function registrarNexo(idHipotese, idVestigio, idConclusaoApoio) {
-  const apoio = leitura(idConclusaoApoio);
-  const instrumento = apoio && apoio.tagsOcultas.tipo === 'mecanismo' ? apoio.tagsOcultas.instrumento : null;
-  const h = HIPOTESES_NEXO.find((x) => x.id === idHipotese);
-  return s().registrarConclusao({
-    origem: 'nexo',
-    titulo: 'Nexo de Presença',
-    resumo: 'nexo',
-    tagsOcultas: { tipo: 'nexo', suspeitoId: h.suspeitoId, instrumento },
-  });
+// Confronto: o jogador crava o nexo (vestígio → arma, pelo material) e a
+// contradição (uma fala sobre a hora que o corpo desmente → encenação).
+// Produzem as mesmas conclusões que o Libelo/tribunal já consomem.
+function cravarNexo(idVestigio) {
+  return s().registrarConclusao(nexoDeVestigio(cartas(idVestigio)[0]));
+}
+function cravarContradicao(idAlegacao) {
+  return s().registrarConclusao(contradicaoDeAlegacao(cartas(idAlegacao)[0]));
 }
 
 function relatar(rotulo, veredicto) {
@@ -73,7 +69,7 @@ s().medirTemperatura();
 s().viajarPara('cena');
 ['ev_relogio', 'ev_gavetas', 'ev_fechadura', 'ev_fio_la'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('delegacia'); // +1h
-['dep_testamento', 'dep_visto_vivo'].forEach((id) => s().extrairCarta(id));
+['dep_testamento', 'dep_visto_vivo', 'dep_avistamento_falso'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_edgar'); // +1h
 ['alibi_edgar', 'ev_fibras_manga'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_hudson'); // +1h
@@ -84,7 +80,10 @@ s().viajarPara('interrogatorio_blackwood'); // +1h
 // O mestre já consolidou quando/como ao longo dos exames:
 console.log('Mestre — janela:', leitura('leitura_mestre_janela')?.resumo || '(—)');
 console.log('Mestre — mecanismo:', leitura('leitura_mestre_mecanismo')?.resumo || '(—)');
-const nexoM = registrarNexo('liga_edgar_arthurs', 'ev_fibras_manga', 'leitura_mestre_mecanismo');
+// Confronto: crava a mentira (o avistamento falso, que o corpo desmente) e
+// o nexo (as fibras de cânhamo no punho de Edgar).
+const contradicaoM = cravarContradicao('dep_avistamento_falso');
+const nexoM = cravarNexo('ev_fibras_manga');
 
 s().atualizarLibelo({
   reuId: 'edgar_arthurs',
@@ -92,7 +91,7 @@ s().atualizarLibelo({
   conclusaoCronosId: 'leitura_mestre_janela',
   conclusaoMecanismoId: 'leitura_mestre_mecanismo',
   conclusaoNexoId: nexoM.id,
-  descuidosIds: ['ev_relogio'], // a carta ambiental já carrega encenado:true
+  descuidosIds: [contradicaoM.id], // a contradição cravada no Confronto expõe a encenação
   motivacaoId: 'dep_testamento',
   perifericos: {
     thomas_blackwood: { tipo: 'inocente_alibi', cartaId: 'alibi_blackwood' },
@@ -169,7 +168,7 @@ s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_edgar');
 s().extrairCarta('ev_fibras_manga');
-const nexoD = registrarNexo('liga_edgar_arthurs', 'ev_fibras_manga', 'leitura_mestre_mecanismo');
+const nexoD = cravarNexo('ev_fibras_manga');
 s().atualizarLibelo({
   reuId: 'edgar_arthurs',
   evidenciasCorpoIds: ['ev_rigor', 'ev_sulco'],

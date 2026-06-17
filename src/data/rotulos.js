@@ -23,6 +23,12 @@ export const ROTULOS_INSTRUMENTO = {
   fibra_canhamo: 'corda de cânhamo',
 };
 
+// Rótulos dos vestígios (material), usados no Confronto ao cravar o nexo.
+export const ROTULOS_VESTIGIO = {
+  fibra_canhamo: 'fibra de cânhamo',
+  la_cinzenta: 'lã cinzenta',
+};
+
 export const ROTULOS_ESTADO_CENA = {
   cena_encenada: 'cena encenada',
   roubo_interrompido: 'roubo interrompido',

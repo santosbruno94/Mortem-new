@@ -6,7 +6,7 @@ import RelogioBolso from './RelogioBolso.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
-import GavetaNexo from './GavetaNexo.jsx';
+import Confronto from './Confronto.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
 import QuadroRevelacoes from './QuadroRevelacoes.jsx';
 import MonologoFinal from './MonologoFinal.jsx';
@@ -18,12 +18,6 @@ const ROTULOS_DOMINIO = {
   comportamental: 'Comportamental',
   vestigio: 'Vestígio',
 };
-
-const GAVETAS = [
-  // Cronos e Aitiov saíram: o "quando" e o "como" são falados pelo legista
-  // (ver EventoLocalidade). Resta o Nexo até a Fase 4, quando vira o Confronto.
-  { id: 'nexo', nome: 'Nexo', pilar: 'Presença' },
-];
 
 // Posições de repouso na superfície, antes de o jogador arrastar.
 function posicaoPadraoLocalidade(indice) {
@@ -40,7 +34,6 @@ export default function Escrivaninha() {
   const abrirOverlay = useJogo((s) => s.abrirOverlay);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const posicoesCartas = useJogo((s) => s.posicoesCartas);
-  const gavetasDesbloqueadas = useJogo((s) => s.gavetasDesbloqueadas);
   const viajarPara = useJogo((s) => s.viajarPara);
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
 
@@ -121,28 +114,15 @@ export default function Escrivaninha() {
           ))}
         </div>
 
-        {/* Gaveta(s) restante(s) — só o Nexo, até a Fase 4 (§7) */}
+        {/* O Confronto (§6): cruzar a fala com o corpo — o ato dedutivo do jogador */}
         <div className="grid grid-cols-1 border-t border-stone-900">
-          {GAVETAS.map((g) => {
-            const aberta = gavetasDesbloqueadas.includes(g.id);
-            return (
-              <button
-                key={g.id}
-                disabled={!aberta}
-                onClick={() => abrirOverlay('gaveta', g.id)}
-                className={`py-4 border-r border-stone-900 last:border-r-0 text-center ${
-                  aberta ? 'bg-stone-900/60 hover:bg-stone-800' : 'bg-stone-950 cursor-not-allowed'
-                }`}
-              >
-                <p className={`font-serif tracking-[0.2em] ${aberta ? 'text-amber-200' : 'text-stone-700'}`}>
-                  {g.nome.toUpperCase()}
-                </p>
-                <p className={`text-xs mt-1 ${aberta ? 'text-stone-500' : 'text-stone-800'}`}>
-                  {aberta ? g.pilar : '― cerrada ―'}
-                </p>
-              </button>
-            );
-          })}
+          <button
+            onClick={() => abrirOverlay('confronto')}
+            className="py-4 text-center bg-stone-900/60 hover:bg-stone-800"
+          >
+            <p className="font-serif tracking-[0.2em] text-amber-200">CONFRONTO</p>
+            <p className="text-xs mt-1 text-stone-500">Cruzar a fala com o corpo — cravar a mentira e o nexo</p>
+          </button>
         </div>
 
         {/* Painéis de consulta — custo zero */}
@@ -158,7 +138,7 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'caderneta' && <Caderneta />}
       {overlay?.tipo === 'glossario' && <ModalGlossario />}
       {overlay?.tipo === 'alibis' && <PainelAlibis />}
-      {overlay?.tipo === 'gaveta' && overlay.id === 'nexo' && <GavetaNexo />}
+      {overlay?.tipo === 'confronto' && <Confronto />}
       {overlay?.tipo === 'quadro' && <QuadroRevelacoes />}
       {overlay?.tipo === 'monologo' && <MonologoFinal />}
     </div>
