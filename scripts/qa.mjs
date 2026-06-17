@@ -2,17 +2,24 @@
 // QA estático (§18): traça os perfis de jogador pelos dados e pelo motor,
 // sem playtest interativo. Executar com: node scripts/qa.mjs
 //
-// Novo loop (redesign do core):
+// ETAPA 1 (Construção da Acusação): o jogador não preenche mais um Libelo —
+// ele CONSTRÓI a cadeia, afirmando réu/janela/causa/motivo/juízos e LIGANDO
+// cartas (os "barbantes"). O julgamento é calcularVeredictoCadeia, lendo a
+// cadeia construída contra a Verdade de Ouro. Continua valendo:
 //   • o relógio só anda ao VIAJAR (viajarPara); examinar congela o relógio;
-//   • o MESTRE/legista FALA a leitura de quando/como — consolidada
-//     automaticamente em conclusões de id estável (leitura_mestre_janela e
-//     leitura_mestre_mecanismo). Não há mais gavetas Cronos/Aitiov;
-//   • o jogador ainda crava o NEXO (até a Fase 4 virar Confronto);
-//   • só o tribunal (calcularVeredicto) julga o afirmado vs. Verdade de Ouro.
+//   • o legista ainda FALA a leitura (dica), mas é a AFIRMAÇÃO do jogador
+//     que o veredicto lê — não a conclusão do mestre;
+//   • nada valida durante a investigação; só o julgamento final.
+//
+// As cinco checagens garantem o critério de validação do caso: solúvel pelo
+// Metódico, ≥1 armadilha para o Apressado, Impunidade para o Intuitivo, e o
+// perecível degrada perdendo precisão (não valor), com o durável resolvendo.
 // =====================================================================
 
 import { useJogo } from '../src/store/jogo.js';
-import { nexoDeVestigio, contradicaoDeAlegacao } from '../src/logic/confronto.js';
+import { ANCORAS } from '../src/logic/acusacao.js';
+import { janelaDaCarta } from '../src/logic/cronos.js';
+import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { SEED_TUTORIAL } from '../src/data/seed.js';
@@ -34,18 +41,9 @@ function cartas(...ids) {
   return s().cartasRegistradas.filter((c) => ids.includes(c.id));
 }
 
-function leitura(id) {
-  return s().conclusoes.find((c) => c.id === id) || null;
-}
-
-// Confronto: o jogador crava o nexo (vestígio → arma, pelo material) e a
-// contradição (uma fala sobre a hora que o corpo desmente → encenação).
-// Produzem as mesmas conclusões que o Libelo/tribunal já consomem.
-function cravarNexo(idVestigio) {
-  return s().registrarConclusao(nexoDeVestigio(cartas(idVestigio)[0]));
-}
-function cravarContradicao(idAlegacao) {
-  return s().registrarConclusao(contradicaoDeAlegacao(cartas(idAlegacao)[0]));
+// Desenhar um barbante entre dois nós (cartas ou âncoras).
+function ligar(de, para) {
+  return s().adicionarLigacao(de, para);
 }
 
 function relatar(rotulo, veredicto) {
@@ -59,11 +57,12 @@ function relatar(rotulo, veredicto) {
 }
 
 // ============================================================
-// (a) METÓDICO — corpo primeiro (fresco), ouve a leitura do mestre, crava o
-// nexo e redige libelo completo. Esperado: vitoria_absoluta.
+// (a) METÓDICO — corpo primeiro (fresco), reúne tudo, AFIRMA a janela e a
+// causa, liga as sustentações, refuta o avistamento falso e expõe a mentira
+// da governanta (mentiu, mas é inocente). Esperado: vitoria_absoluta.
 // ============================================================
 reiniciar();
-s().viajarPara('corpo'); // 0h a partir da cena — corpo fresco às 11h
+s().viajarPara('corpo'); // 0h — corpo fresco às 11h
 s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('cena');
@@ -77,35 +76,30 @@ s().viajarPara('interrogatorio_hudson'); // +1h
 s().viajarPara('interrogatorio_blackwood'); // +1h
 ['alibi_blackwood'].forEach((id) => s().extrairCarta(id));
 
-// O mestre já consolidou quando/como ao longo dos exames:
-console.log('Mestre — janela:', leitura('leitura_mestre_janela')?.resumo || '(—)');
-console.log('Mestre — mecanismo:', leitura('leitura_mestre_mecanismo')?.resumo || '(—)');
-// Confronto: crava a mentira (o avistamento falso, que o corpo desmente) e
-// o nexo (as fibras de cânhamo no punho de Edgar).
-const contradicaoM = cravarContradicao('dep_avistamento_falso');
-const nexoM = cravarNexo('ev_fibras_manga');
+// Afirmações estruturadas:
+s().definirReu('edgar_arthurs');
+s().definirJanela({ inicio: -4, fim: -1 }); // 20h–23h de 13/out: contém a verdade (-2), ≤6h
+s().definirCausa('estrangulamento_ligadura');
+s().definirMotivacao('dep_testamento');
+// Sustentações (barbantes para as âncoras):
+['ev_rigor', 'ev_livores', 'ev_algor', 'dep_visto_vivo'].forEach((id) => ligar(id, ANCORAS.quando));
+['ev_sulco', 'ev_petequias'].forEach((id) => ligar(id, ANCORAS.como));
+ligar('ev_fibras_manga', ANCORAS.presenca); // fibra de cânhamo no punho de Edgar
+// Refutação da hora: a vizinha jura tê-lo visto vivo de manhã (08h) — o corpo desmente.
+['ev_rigor', 'ev_livores'].forEach((id) => ligar(id, 'dep_avistamento_falso'));
+// Juízo sobre os não-acusados:
+s().definirJuizo('thomas_blackwood', 'inocente');
+s().definirJuizo('sra_hudson', 'inocente');
+// Expõe a mentira-segredo da governanta (lã na gaveta): mentiu, mas por vergonha.
+ligar('ev_xale', 'alibi_hudson');
 
-s().atualizarLibelo({
-  reuId: 'edgar_arthurs',
-  evidenciasCorpoIds: ['ev_rigor', 'ev_livores', 'ev_algor', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'],
-  conclusaoCronosId: 'leitura_mestre_janela',
-  conclusaoMecanismoId: 'leitura_mestre_mecanismo',
-  conclusaoNexoId: nexoM.id,
-  descuidosIds: [contradicaoM.id], // a contradição cravada no Confronto expõe a encenação
-  motivacaoId: 'dep_testamento',
-  perifericos: {
-    thomas_blackwood: { tipo: 'inocente_alibi', cartaId: 'alibi_blackwood' },
-    sra_hudson: { tipo: 'inocente_segredo', cartaId: 'ev_xale' },
-  },
-});
-s().submeterLibelo();
+s().submeterAcusacao();
 const vMetodico = s().veredicto;
 relatar('(a) METÓDICO — esperado: vitoria_absoluta', vMetodico);
 
 // ============================================================
-// (b) APRESSADO — persegue iscas (cena, interrogatórios e Moorford) e só
-// então chega ao corpo; acusa a governanta nervosa SEM materialidade
-// (ouve o "quando" do mestre, mas não tem mecanismo nem nexo).
+// (b) APRESSADO — persegue iscas, chega tarde ao corpo e acusa a governanta
+// nervosa: quebra a mentira dela e conclui "mentiu, logo matou". Réu errado.
 // Esperado: erro_judiciario.
 // ============================================================
 reiniciar();
@@ -122,44 +116,37 @@ s().viajarPara('corpo'); // +1h: só agora chega ao corpo
 console.log('\n--- Apressado: chega ao corpo às', formatRelogio(s().horasJogo), '---');
 ['ev_rigor', 'ev_livores'].forEach((id) => s().extrairCarta(id));
 s().medirTemperatura();
-console.log('rigor:', cartas('ev_rigor')[0].textoDisplay, '| algor:', cartas('ev_algor')[0].textoDisplay);
-console.log('Mestre — janela:', leitura('leitura_mestre_janela')?.resumo || '(—)');
 
-s().atualizarLibelo({
-  reuId: 'sra_hudson',
-  evidenciasCorpoIds: ['ev_rigor', 'ev_livores'],
-  conclusaoCronosId: 'leitura_mestre_janela',
-  perifericos: {
-    thomas_blackwood: { tipo: 'inocente_alibi', cartaId: 'alibi_blackwood' },
-  },
-});
-s().submeterLibelo();
+s().definirReu('sra_hudson');
+s().definirJanela({ inicio: -13, fim: 16 }); // larga (chegou tarde)
+['ev_rigor', 'ev_livores'].forEach((id) => ligar(id, ANCORAS.quando));
+ligar('ev_xale', 'alibi_hudson'); // quebra a mentira dela...
+s().definirJuizo('sra_hudson', 'culpado'); // ...e conclui errado (a armadilha)
+s().submeterAcusacao();
 const vApressado = s().veredicto;
 relatar('(b) APRESSADO — esperado: erro_judiciario', vApressado);
 
 // ============================================================
-// (c) INTUITIVO — acusa Edgar de imediato. O mestre lhe deu o "quando",
-// mas falta TODA a materialidade (mecanismo e nexo). Esperado: impunidade.
+// (c) INTUITIVO — acusa Edgar de imediato, com a janela larga e o móbil,
+// mas SEM materialidade (sem causa cravada, sem presença). Réu certo, tese
+// furada. Esperado: impunidade.
 // ============================================================
 reiniciar();
 s().viajarPara('corpo');
 ['ev_rigor', 'ev_livores'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('delegacia');
 s().extrairCarta('dep_testamento');
-s().atualizarLibelo({
-  reuId: 'edgar_arthurs',
-  evidenciasCorpoIds: ['ev_rigor', 'ev_livores'],
-  conclusaoCronosId: 'leitura_mestre_janela', // o mestre deu o tempo; falta o resto
-  motivacaoId: 'dep_testamento',
-  perifericos: {},
-});
-s().submeterLibelo();
+s().definirReu('edgar_arthurs');
+s().definirJanela({ inicio: -13, fim: -1 }); // cobre a verdade, mas larga
+['ev_rigor', 'ev_livores'].forEach((id) => ligar(id, ANCORAS.quando));
+s().definirMotivacao('dep_testamento');
+s().submeterAcusacao();
 const vIntuitivo = s().veredicto;
 relatar('(c) INTUITIVO — esperado: impunidade', vIntuitivo);
 
 // ============================================================
-// (d) PERICIAL DESATENTO — tripé completo (mestre dá quando/como + nexo),
-// mas libelo lacunoso (sem motivação, descuidos, juízo periférico).
+// (d) PERICIAL DESATENTO — tripé completo (janela precisa + causa cravada +
+// presença), mas cadeia lacunosa (sem móbil, sem encenação, sem juízos).
 // Esperado: sucesso_gafes.
 // ============================================================
 reiniciar();
@@ -168,25 +155,22 @@ s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_edgar');
 s().extrairCarta('ev_fibras_manga');
-const nexoD = cravarNexo('ev_fibras_manga');
-s().atualizarLibelo({
-  reuId: 'edgar_arthurs',
-  evidenciasCorpoIds: ['ev_rigor', 'ev_sulco'],
-  conclusaoCronosId: 'leitura_mestre_janela',
-  conclusaoMecanismoId: 'leitura_mestre_mecanismo',
-  conclusaoNexoId: nexoD.id,
-  descuidosIds: [],
-  motivacaoId: null,
-  perifericos: {},
-});
-s().submeterLibelo();
-relatar('(d) PERICIAL DESATENTO — esperado: sucesso_gafes', s().veredicto);
+s().definirReu('edgar_arthurs');
+s().definirJanela({ inicio: -4, fim: -1 });
+s().definirCausa('estrangulamento_ligadura');
+['ev_rigor', 'ev_livores', 'ev_algor'].forEach((id) => ligar(id, ANCORAS.quando));
+ligar('ev_sulco', ANCORAS.como);
+ligar('ev_fibras_manga', ANCORAS.presenca);
+// sem móbil, sem refutação da encenação, sem juízos → gafes
+s().submeterAcusacao();
+const vDesatento = s().veredicto;
+relatar('(d) PERICIAL DESATENTO — esperado: sucesso_gafes', vDesatento);
 
 // ============================================================
 // (e) DEGRADAÇÃO POR PRECISÃO + SOLVABILIDADE DURÁVEL (relógio mole).
-// Um perito que andou tempo demais (IPM bem alto): o rigor degrada para
-// uma leitura VAGA — mas não nula —, e a leitura do mestre (apoiada no
-// livor fixo + visto-vivo) ainda COBRE a hora real da morte.
+// Um perito que andou tempo demais (IPM bem alto): o rigor degrada para uma
+// leitura VAGA — mas não nula —, e a âncora durável (livor fixo + visto-vivo)
+// ainda fecha uma janela que COBRE a hora real da morte.
 // ============================================================
 reiniciar();
 useJogo.setState({ horasJogo: 52 }); // perito muito lento: IPM ~54h
@@ -196,13 +180,13 @@ s().medirTemperatura();
 s().viajarPara('delegacia');
 s().extrairCarta('dep_visto_vivo');
 const rigorTardio = cartas('ev_rigor')[0];
-const janelaTardia = leitura('leitura_mestre_janela');
-const jt = janelaTardia ? janelaTardia.tagsOcultas : null;
+const duraveis = cartas('ev_rigor', 'ev_livores', 'dep_visto_vivo');
+const janelaDuravel = intersecaoJanelas(duraveis.map(janelaDaCarta).filter(Boolean));
 const morte = SEED_TUTORIAL.horaMorteAbsoluta;
 const degradadoValido = !rigorTardio.tagsOcultas.inconclusiva && rigorTardio.textoDisplay === 'Corpo Flácido';
-const cobreVerdade = !!jt && jt.inicio <= morte && morte <= jt.fim;
+const cobreVerdade = !!janelaDuravel && janelaDuravel.inicio <= morte && morte <= janelaDuravel.fim;
 console.log('\n=== (e) DEGRADAÇÃO POR PRECISÃO ===');
-console.log('rigor tardio:', rigorTardio.textoDisplay, '| janela do mestre:', janelaTardia ? janelaTardia.resumo : '(—)');
+console.log('rigor tardio:', rigorTardio.textoDisplay, '| janela durável:', JSON.stringify(janelaDuravel));
 console.log('rigor degradado ainda é válido (não nulo):', degradadoValido);
 console.log('janela durável cobre a verdade:', cobreVerdade);
 
@@ -215,13 +199,14 @@ for (const { rotulo, monologo } of monologos) {
 }
 
 // ============================================================
-// Critério de validação do caso (§18 / ETAPA 5)
+// Critério de validação do caso (§18)
 // ============================================================
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
-  ['Apressado cai em ≥1 armadilha', apressadoCaiEmArmadilha],
+  ['Apressado cai em ≥1 armadilha (réu errado)', apressadoCaiEmArmadilha && vApressado.tipo === 'erro_judiciario'],
   ['Intuitivo alcança Impunidade (réu certo, provas furadas)', vIntuitivo.tipo === 'impunidade'],
+  ['Pericial desatento condena com gafes (sucesso_gafes)', vDesatento.tipo === 'sucesso_gafes'],
   ['Degradado perde precisão, não some (rigor resolvido válido)', degradadoValido],
   ['Durável sempre resolve (janela cobre a verdade mesmo tarde)', cobreVerdade],
 ];

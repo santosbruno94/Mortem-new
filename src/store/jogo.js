@@ -12,7 +12,7 @@ import { SEED_TUTORIAL } from '../data/seed.js';
 import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.js';
 import { HORAS_CHEGADA_CENA, ipmAtual } from '../logic/tempo.js';
-import { calcularVeredicto } from '../logic/veredicto.js';
+import { calcularVeredicto, calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 
 // Constrói o objeto detective do §12 a partir da escolha na tela inicial.
@@ -24,6 +24,7 @@ export function buildDetective(opcao) {
 }
 
 let proximoIdConclusao = 1;
+let proximoIdLigacao = 1;
 
 export const useJogo = create((set, get) => ({
   // ---------------- Fases e personagem ----------------
@@ -62,6 +63,19 @@ export const useJogo = create((set, get) => ({
     perifericos: {},
   },
   veredicto: null,
+
+  // ---------------- A Construção da Acusação (a cadeia que substitui o Libelo) ----------------
+  // O jogador AFIRMA (réu, janela, causa, motivo, juízos) e SUSTENTA ligando
+  // cartas (os "barbantes"). O significado de cada ligação é derivado das tags
+  // (ver src/logic/acusacao.js). Convive com o `libelo` antigo até a Etapa 4.
+  acusacao: {
+    reuId: null,
+    janela: { inicio: null, fim: null }, // afirmada pelo jogador (escala absoluta)
+    causaId: null, // id do catálogo universal de causas
+    motivacaoId: null, // carta de móbil ligada ao réu
+    juizos: {}, // { [suspeitoId]: 'culpado' | 'inocente' | 'sem_juizo' }
+    ligacoes: [], // [{ id, de, para }] — de/para são id de carta OU âncora
+  },
 
   // =====================================================================
   // Ações
@@ -255,6 +269,60 @@ export const useJogo = create((set, get) => ({
       veredicto,
       overlay: { tipo: 'monologo', id: null },
       log: [...s.log, { hora: s.horasJogo, texto: 'Libelo submetido ao tribunal.' }],
+    });
+  },
+
+  // ---------------- Ações da Construção da Acusação ----------------
+  // As afirmações estruturadas são campos diretos; as sustentações e
+  // refutações são ligações (os "barbantes"). Nada valida até o commit.
+  definirReu: (id) =>
+    set((s) => ({
+      acusacao: { ...s.acusacao, reuId: s.acusacao.reuId === id ? null : id, motivacaoId: null },
+    })),
+
+  definirJanela: (janela) =>
+    set((s) => ({ acusacao: { ...s.acusacao, janela: { ...s.acusacao.janela, ...janela } } })),
+
+  definirCausa: (id) =>
+    set((s) => ({ acusacao: { ...s.acusacao, causaId: s.acusacao.causaId === id ? null : id } })),
+
+  definirMotivacao: (id) =>
+    set((s) => ({
+      acusacao: { ...s.acusacao, motivacaoId: s.acusacao.motivacaoId === id ? null : id },
+    })),
+
+  definirJuizo: (suspeitoId, valor) =>
+    set((s) => ({
+      acusacao: { ...s.acusacao, juizos: { ...s.acusacao.juizos, [suspeitoId]: valor } },
+    })),
+
+  // Desenhar um barbante entre dois nós (cartas ou âncoras). Ignora duplicatas
+  // (o mesmo par, em qualquer ordem). Devolve a ligação (ou a já existente).
+  adicionarLigacao: (de, para) => {
+    const s = get();
+    const jaExiste = s.acusacao.ligacoes.find(
+      (l) => (l.de === de && l.para === para) || (l.de === para && l.para === de)
+    );
+    if (jaExiste) return jaExiste;
+    const nova = { id: `ligacao_${proximoIdLigacao++}`, de, para };
+    set({ acusacao: { ...s.acusacao, ligacoes: [...s.acusacao.ligacoes, nova] } });
+    return nova;
+  },
+
+  removerLigacao: (id) =>
+    set((s) => ({
+      acusacao: { ...s.acusacao, ligacoes: s.acusacao.ligacoes.filter((l) => l.id !== id) },
+    })),
+
+  // Levar a acusação construída a julgamento (substitui submeterLibelo no
+  // novo caminho). Só aqui o motor julga a cadeia contra a Verdade de Ouro.
+  submeterAcusacao: () => {
+    const s = get();
+    const veredicto = calcularVeredictoCadeia(s.acusacao, s.cartasRegistradas, SEED_TUTORIAL);
+    set({
+      veredicto,
+      overlay: { tipo: 'monologo', id: null },
+      log: [...s.log, { hora: s.horasJogo, texto: 'Acusação levada a julgamento.' }],
     });
   },
 
