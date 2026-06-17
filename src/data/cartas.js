@@ -51,14 +51,16 @@ export const CARTAS = [
       {
         ipmAte: null,
         textoDisplay: 'Corpo Flácido',
-        carimboPadrao: 'Sinal Inconclusivo',
+        carimboPadrao: 'Rigor Resolvido — morto há mais de um dia',
         descricao:
-          'Nenhuma resistência articular. O que o rigor tinha a dizer, já não diz mais.',
+          'Nenhuma resistência articular: o rigor já se desfez por completo. Não aponta mais a hora exata — apenas que a morte foi há mais de um dia. Perdeu a precisão, não o valor.',
+        // Degradado, porém AINDA VÁLIDO (relógio mole): o modelo o lê como
+        // janela larga [36h, +∞), jamais nula. Ver tempo_morte.js (rigor.resolvido).
         tagsOcultas: {
           dominio: 'temporal',
           subDominio: 'rigor_mortis',
-          inconclusiva: true,
-          estadoDegradacao: 'perdido',
+          estadoRigor: 'resolvido',
+          estadoDegradacao: 'resolvido',
         },
       },
     ],
@@ -234,6 +236,24 @@ export const CARTAS = [
       motivo: 'rancor',
       ligadoA: 'thomas_blackwood',
       isca: true,
+    },
+  },
+  {
+    id: 'dep_visto_vivo',
+    localidade: 'delegacia',
+    custoTempo: 1,
+    textoDisplay: 'Última Ceia Servida às Oito',
+    carimboPadrao: 'Visto com Vida às 20h (13/out)',
+    descricao:
+      'No registro de Wycliffe, a governanta declara ter servido a ceia ao patrão às oito da noite de 13 e recolhido a louça em seguida — a última a vê-lo com vida.',
+    // Âncora DURÁVEL de tempo: "última vez visto com vida" trava o INÍCIO da
+    // janela (a morte não pode anteceder as 20h). Não degrada. Junto do livor
+    // fixo (que dá o teto), o corpo sozinho fecha uma janela finita, em
+    // qualquer rota — é o que garante "o durável sempre resolve".
+    tagsOcultas: {
+      dominio: 'temporal',
+      subDominio: 'ultima_vez_visto',
+      horaAvistamento: -4, // 20h00 de 13/out na escala absoluta
     },
   },
 

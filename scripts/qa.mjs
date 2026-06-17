@@ -15,6 +15,7 @@ import { causasCompativeis } from '../src/data/catalogo_causas.js';
 import { HIPOTESES_NEXO } from '../src/logic/nexo.js';
 import { formatJanela, formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
+import { SEED_TUTORIAL } from '../src/data/seed.js';
 
 const monologos = [];
 const estadoInicial = { ...useJogo.getState() };
@@ -118,15 +119,21 @@ function relatar(rotulo, veredicto) {
 // libelo completo. Esperado: vitoria_absoluta.
 // ============================================================
 reiniciar();
+s().viajarPara('corpo'); // a relojoaria: 0h a partir da cena — corpo fresco às 11h
 s().medirTemperatura(); // 11h → 24°C → algor [-4, 0]
 ['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('cena'); // 0h (mesmo prédio)
 ['ev_relogio', 'ev_gavetas', 'ev_fechadura', 'ev_fio_la'].forEach((id) => s().extrairCarta(id));
-['dep_testamento'].forEach((id) => s().extrairCarta(id));
-['alibi_edgar', 'ev_fibras_manga', 'alibi_hudson', 'ev_xale', 'alibi_blackwood'].forEach((id) =>
-  s().extrairCarta(id)
-);
+s().viajarPara('delegacia'); // +1h
+['dep_testamento', 'dep_visto_vivo'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('interrogatorio_edgar'); // +1h
+['alibi_edgar', 'ev_fibras_manga'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('interrogatorio_hudson'); // +1h
+['alibi_hudson', 'ev_xale'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('interrogatorio_blackwood'); // +1h
+['alibi_blackwood'].forEach((id) => s().extrairCarta(id));
 
-const janelaM = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor']);
+const janelaM = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor', 'dep_visto_vivo']);
 console.log('Janela por triangulação:', janelaM.resumo, janelaM.tagsOcultas);
 console.log('Catálogo após petéquias+sulco:', causasCompativeis(['petequias_cianose', 'sulco_horizontal']).map((c) => c.id).join(', '));
 const mecanismoM = registrarMecanismo('estrangulamento_ligadura', ['ev_sulco', 'ev_petequias', 'ev_fibras_sulco']);
@@ -152,22 +159,30 @@ const vMetodico = s().veredicto;
 relatar('(a) METÓDICO — esperado: vitoria_absoluta', vMetodico);
 
 // ============================================================
-// (b) APRESSADO — cena e interrogatórios antes do corpo; chega tarde,
-// os sinais temporais já degradaram (rigor em resolução, algor inconclusivo),
-// e acusa a governanta nervosa. Esperado: erro_judiciario.
+// (b) APRESSADO — persegue iscas (cena, interrogatórios e até Moorford)
+// e só então chega ao corpo, acusando a governanta nervosa SEM
+// materialidade. Esperado: erro_judiciario. (Sob o relógio mole e estas
+// distâncias, o corpo mal degrada nessa rota — a falha do apressado é de
+// PERÍCIA, não de relógio.)
 // ============================================================
 reiniciar();
+s().viajarPara('cena');
 ['ev_relogio', 'ev_gavetas', 'ev_fechadura', 'ev_fio_la'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('interrogatorio_edgar'); // extrai o álibi → desbloqueia Moorford
 ['alibi_edgar', 'comp_edgar', 'ev_fibras_manga'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('clube_moorford'); // 3h atrás da isca de Moorford
+s().viajarPara('interrogatorio_hudson'); // 3h de volta à vila
 ['alibi_hudson', 'comp_hudson', 'ev_xale'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('interrogatorio_blackwood'); // +1h
 ['alibi_blackwood', 'comp_blackwood'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('corpo'); // +1h: só agora chega ao corpo
 console.log('\n--- Apressado: chega ao corpo às', formatRelogio(s().horasJogo), '---');
 s().extrairCarta('ev_rigor');
 s().extrairCarta('ev_livores');
 s().medirTemperatura();
 console.log('rigor:', cartas('ev_rigor')[0].textoDisplay, '| algor:', cartas('ev_algor')[0].textoDisplay);
-const janelaA = registrarCronos();
-console.log('Janela (sinais degradados):', janelaA.erro ? `(${janelaA.erro})` : janelaA.resumo, janelaA.tagsOcultas || '');
+const janelaA = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor']);
+console.log('Janela:', janelaA.erro ? `(${janelaA.erro})` : janelaA.resumo, janelaA.tagsOcultas || '');
 
 s().atualizarLibelo({
   reuId: 'sra_hudson',
@@ -188,8 +203,10 @@ relatar('(b) APRESSADO — esperado: erro_judiciario', vApressado);
 // Esperado: impunidade (réu certo, provas furadas).
 // ============================================================
 reiniciar();
+s().viajarPara('corpo');
 s().extrairCarta('ev_rigor');
 s().extrairCarta('ev_livores');
+s().viajarPara('delegacia');
 s().extrairCarta('dep_testamento');
 s().atualizarLibelo({
   reuId: 'edgar_arthurs',
@@ -206,8 +223,10 @@ relatar('(c) INTUITIVO — esperado: impunidade', vIntuitivo);
 // (sem motivação, sem descuidos, sem juízo periférico). Esperado: sucesso_gafes.
 // ============================================================
 reiniciar();
+s().viajarPara('corpo');
 s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('interrogatorio_edgar');
 s().extrairCarta('ev_fibras_manga');
 const janelaD = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor']);
 const mecanismoD = registrarMecanismo('estrangulamento_ligadura', ['ev_sulco', 'ev_petequias', 'ev_fibras_sulco']);
@@ -226,6 +245,30 @@ s().submeterLibelo();
 relatar('(d) PERICIAL DESATENTO — esperado: sucesso_gafes', s().veredicto);
 
 // ============================================================
+// (e) DEGRADAÇÃO POR PRECISÃO + SOLVABILIDADE DURÁVEL (relógio mole).
+// Um perito que andou tempo demais (IPM bem alto): o rigor degrada para
+// uma leitura VAGA — mas não nula —, e a âncora durável (livor fixo +
+// visto-vivo) ainda fecha uma janela que COBRE a hora real da morte.
+// ============================================================
+reiniciar();
+useJogo.setState({ horasJogo: 52 }); // perito muito lento: IPM ~54h
+s().viajarPara('corpo');
+['ev_rigor', 'ev_livores'].forEach((id) => s().extrairCarta(id));
+s().medirTemperatura();
+s().viajarPara('delegacia');
+s().extrairCarta('dep_visto_vivo');
+const rigorTardio = cartas('ev_rigor')[0];
+const janelaTardia = registrarCronos(['ev_rigor', 'ev_livores', 'ev_algor', 'dep_visto_vivo']);
+const jt = janelaTardia.tagsOcultas;
+const morte = SEED_TUTORIAL.horaMorteAbsoluta;
+const degradadoValido = !rigorTardio.tagsOcultas.inconclusiva && rigorTardio.textoDisplay === 'Corpo Flácido';
+const cobreVerdade = !!jt && jt.inicio <= morte && morte <= jt.fim;
+console.log('\n=== (e) DEGRADAÇÃO POR PRECISÃO ===');
+console.log('rigor tardio:', rigorTardio.textoDisplay, '| janela durável:', janelaTardia.resumo || janelaTardia.erro);
+console.log('rigor degradado ainda é válido (não nulo):', degradadoValido);
+console.log('janela durável cobre a verdade:', cobreVerdade);
+
+// ============================================================
 // Fumaça do monólogo: todos os desfechos geram texto.
 // ============================================================
 console.log('\n=== Monólogos gerados (fumaça) ===');
@@ -241,6 +284,8 @@ const checagens = [
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
   ['Apressado cai em ≥1 armadilha', apressadoCaiEmArmadilha],
   ['Intuitivo alcança Impunidade (réu certo, provas furadas)', vIntuitivo.tipo === 'impunidade'],
+  ['Degradado perde precisão, não some (rigor resolvido válido)', degradadoValido],
+  ['Durável sempre resolve (janela cobre a verdade mesmo tarde)', cobreVerdade],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

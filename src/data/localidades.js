@@ -47,6 +47,7 @@ export const LOCALIDADES = [
       'Entre os papéis do morto, recolhidos por precaução, está o [[dep_testamento]], lavrado há dois anos em favor do sobrinho.',
       'Numa pasta à parte, [[dep_dividas]] endereçadas a Edgar Arthurs — somas, observa Wycliffe, "que um escrevente não junta em dez anos de vida honesta".',
       'E no livro de ocorrências, com a tinta ainda fresca de três semanas, uma [[dep_briga]]: Thomas Blackwood e o relojoeiro, ameaças trocadas diante de meia taverna.',
+      'Num bilhete da primeira diligência, Wycliffe anotou a [[dep_visto_vivo]]: a governanta serviu-lhe a ceia antes de a casa adormecer, e foi a última a vê-lo com vida.',
     ],
   },
   {

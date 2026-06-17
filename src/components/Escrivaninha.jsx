@@ -1,5 +1,6 @@
 import { useJogo } from '../store/jogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
+import { custoViagem } from '../data/mapa.js';
 import CartaMesa from './CartaMesa.jsx';
 import RelogioBolso from './RelogioBolso.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
@@ -42,6 +43,8 @@ export default function Escrivaninha() {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const posicoesCartas = useJogo((s) => s.posicoesCartas);
   const gavetasDesbloqueadas = useJogo((s) => s.gavetasDesbloqueadas);
+  const viajarPara = useJogo((s) => s.viajarPara);
+  const localidadeAtual = useJogo((s) => s.localidadeAtual);
 
   const mesaDesfocada = overlay !== null;
 
@@ -70,22 +73,33 @@ export default function Escrivaninha() {
         <div className="relative flex-1 overflow-hidden bg-gradient-to-b from-stone-950 via-stone-900/60 to-stone-950 min-h-[440px]">
           <RelogioBolso />
 
-          {/* Localidades são cartas na superfície (§5) */}
-          {LOCALIDADES.map((loc, i) => (
-            <CartaMesa
-              key={loc.id}
-              id={`loc_${loc.id}`}
-              pos={posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)}
-              aoClicar={() => abrirOverlay('localidade', loc.id)}
-            >
-              <div className="w-40 bg-stone-900 border border-amber-900/60 rounded-sm px-3 py-3 hover:border-amber-700">
-                <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
-                  {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
-                </p>
-                <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
-              </div>
-            </CartaMesa>
-          ))}
+          {/* Localidades são nós do mapa (§5/§7). Clicar VIAJA até lá — e a
+              viagem é a única coisa que gasta o relógio. */}
+          {LOCALIDADES.map((loc, i) => {
+            const aqui = loc.id === localidadeAtual;
+            const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
+            return (
+              <CartaMesa
+                key={loc.id}
+                id={`loc_${loc.id}`}
+                pos={posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)}
+                aoClicar={() => {
+                  viajarPara(loc.id);
+                  abrirOverlay('localidade', loc.id);
+                }}
+              >
+                <div className="w-40 bg-stone-900 border border-amber-900/60 rounded-sm px-3 py-3 hover:border-amber-700">
+                  <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
+                    {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
+                  </p>
+                  <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
+                  <p className="text-stone-500 text-[10px] mt-2 tracking-wide">
+                    {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${custo}h`}
+                  </p>
+                </div>
+              </CartaMesa>
+            );
+          })}
 
           {/* Cartas extraídas e registradas */}
           {cartasRegistradas.map((carta, i) => (

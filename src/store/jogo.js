@@ -10,6 +10,7 @@
 import { create } from 'zustand';
 import { SEED_TUTORIAL } from '../data/seed.js';
 import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
+import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.js';
 import { HORAS_CHEGADA_CENA, ipmAtual } from '../logic/tempo.js';
 import { calcularVeredicto } from '../logic/veredicto.js';
 
@@ -32,6 +33,11 @@ export const useJogo = create((set, get) => ({
   // ---------------- Relógio ----------------
   horasJogo: HORAS_CHEGADA_CENA,
   horasChegadaCena: HORAS_CHEGADA_CENA,
+
+  // ---------------- Mapa (o "dia do perito") ----------------
+  // O relógio só avança ao VIAJAR entre nós; dentro do local, congela.
+  localidadeAtual: null, // definido ao iniciar a investigação
+  nosDesbloqueados: NOS_MAPA.filter((n) => n.desbloqueadoInicio).map((n) => n.id),
 
   // ---------------- Mesa e registros ----------------
   cartasRegistradas: [],
@@ -69,6 +75,7 @@ export const useJogo = create((set, get) => ({
   iniciarInvestigacao: () =>
     set((s) => ({
       faseJogo: 'investigacao',
+      localidadeAtual: 'cena', // o perito chega à cena (a relojoaria) às 11h
       log: [
         ...s.log,
         { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
@@ -84,6 +91,28 @@ export const useJogo = create((set, get) => ({
   abrirOverlay: (tipo, id = null) => set({ overlay: { tipo, id } }),
   fecharOverlay: () => set({ overlay: null }),
 
+  // Viagem entre nós do mapa: a ÚNICA ação que avança o relógio. Dentro de
+  // um local o tempo congela. O custo (horas) vem de src/data/mapa.js.
+  // Reabrir o local onde já se está custa 0.
+  viajarPara: (noId) => {
+    const s = get();
+    if (!s.nosDesbloqueados.includes(noId)) return;
+    const custo = s.localidadeAtual ? custoViagem(s.localidadeAtual, noId) : 0;
+    if (noId === s.localidadeAtual || custo === 0) {
+      set({ localidadeAtual: noId });
+      return;
+    }
+    const no = obterNo(noId);
+    set({
+      localidadeAtual: noId,
+      horasJogo: s.horasJogo + custo,
+      log: [
+        ...s.log,
+        { hora: s.horasJogo + custo, texto: `Deslocou-se para ${no ? no.rotulo : noId} (${custo}h de viagem).` },
+      ],
+    });
+  },
+
   // Extração com carimbo integrado (§6): clicar no negrito avança o
   // relógio pelo custoTempo e a carta nasce registrada. O estado da
   // evidência (degradação) é o do IPM no momento do clique.
@@ -94,7 +123,6 @@ export const useJogo = create((set, get) => ({
     if (!definicao) return;
     const ipm = ipmAtual(s.horasJogo, SEED_TUTORIAL.horasMorteAntesChegada);
     const estado = resolverEstadoCarta(definicao, ipm);
-    const custo = opcoes.custoZero ? 0 : definicao.custoTempo;
     const carta = {
       id: definicao.id,
       localidade: definicao.localidade,
@@ -104,13 +132,18 @@ export const useJogo = create((set, get) => ({
       tagsOcultas: estado.tagsOcultas,
       horaRegistro: s.horasJogo,
     };
+    // Examinar é de graça e CONGELA o relógio (relógio mole): o tempo só
+    // corre ao viajar. Aqui apenas registramos a carta — sem custo de tempo.
+    // Leads: certas cartas revelam novos nós no mapa ao serem extraídas.
+    const lead = LEADS_DESBLOQUEIO.find((l) => l.cartaId === definicao.id);
+    const nosDesbloqueados =
+      lead && !s.nosDesbloqueados.includes(lead.revelaNo)
+        ? [...s.nosDesbloqueados, lead.revelaNo]
+        : s.nosDesbloqueados;
     set({
       cartasRegistradas: [...s.cartasRegistradas, carta],
-      horasJogo: s.horasJogo + custo,
-      log: [
-        ...s.log,
-        { hora: s.horasJogo, texto: `Registrado: ${estado.carimboPadrao}.` },
-      ],
+      nosDesbloqueados,
+      log: [...s.log, { hora: s.horasJogo, texto: `Registrado: ${estado.carimboPadrao}.` }],
     });
   },
 
@@ -127,11 +160,17 @@ export const useJogo = create((set, get) => ({
         id: 'ev_algor',
         localidade: 'corpo',
         textoDisplay: 'Corpo em Equilíbrio Térmico',
-        termoCarimbo: 'Algor Inconclusivo',
+        termoCarimbo: 'Algor: equilíbrio térmico (≥26h)',
         descricao:
-          'O termômetro marca a temperatura do próprio escritório: 11°C. O corpo nada mais tem a dizer sobre horas.',
-        // Equilíbrio térmico: a carta nasce inconclusiva (sem janela).
-        tagsOcultas: { dominio: 'temporal', subDominio: 'algor_mortis', inconclusiva: true },
+          'O termômetro marca os 11°C do próprio escritório: o corpo já igualou a sala. O algor perdeu a precisão — agora só diz que a morte foi há mais de um dia. Não some, mas pouco aperta.',
+        // Equilíbrio: leitura VAGA, não nula. Carrega a temperatura medida
+        // (== ambiente); o modelo devolve um piso largo (perde precisão).
+        tagsOcultas: {
+          dominio: 'temporal',
+          subDominio: 'algor_mortis',
+          temperaturaCorpo: temperatura,
+          temperaturaAmbiente: 11,
+        },
         horaRegistro: s.horasJogo,
       };
     } else {
@@ -153,10 +192,10 @@ export const useJogo = create((set, get) => ({
         horaRegistro: s.horasJogo,
       };
     }
+    // Medir a temperatura é exame, não viagem: não custa tempo (relógio mole).
     set({
       temperaturaMedida: temperatura,
       cartasRegistradas: [...s.cartasRegistradas, carta],
-      horasJogo: s.horasJogo + 1,
       log: [...s.log, { hora: s.horasJogo, texto: `Registrado: ${carta.termoCarimbo}.` }],
     });
   },

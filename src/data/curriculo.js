@@ -35,7 +35,7 @@ export const HABITOS = [
     // Libera todo o vocabulário temporal: o que apura a janela da morte.
     desbloqueiaVocabulario: {
       dominio: 'temporal',
-      subDominios: ['livor_mortis', 'rigor_mortis', 'algor_mortis', 'visto_por_ultimo'],
+      subDominios: ['livor_mortis', 'rigor_mortis', 'algor_mortis', 'ultima_vez_visto'],
     },
   },
   {
