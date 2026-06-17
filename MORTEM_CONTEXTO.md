@@ -1,6 +1,6 @@
 # MORTEM — Documento de Contexto Completo
 
-> Fonte única de verdade do design. Escrito para ser lido por humanos e por agentes de código (Claude Code). Consolida todas as decisões de design até a migração para a gramática de dedução universal (junho/2026). Em caso de conflito com qualquer outro documento, **este prevalece**.
+> Fonte única de verdade do design. Escrito para ser lido por humanos e por agentes de código (Claude Code). Consolida as decisões de design até o **Redesign do Core Loop** (jun/2026+): relógio no mapa, voz do mestre no lugar das gavetas, e o Confronto. Em caso de conflito com qualquer outro documento, **este prevalece** — e, dentro deste, o **§1.1** prevalece sobre as seções escritas antes do redesign.
 
 ---
 
@@ -17,13 +17,26 @@ MORTEM é um jogo de investigação forense baseado em texto e cartas, ambientad
 
 ---
 
+## 1.1 Redesign do Core Loop (jun/2026+) — prevalece sobre o que vem antes
+
+Um redesign do loop central devolveu agência ao jogador. Onde as seções escritas antes (§5, §6, §7, §10…) descreverem as **gavetas**, o **relógio por exame** ou a **degradação que zera o sinal**, vale o que está aqui:
+
+- **Tempo no mapa (relógio MOLE).** O relógio CONGELA dentro de um local — examinar e pensar é ilimitado — e só avança ao **VIAJAR** entre nós do mapa (`src/data/mapa.js`). Sem fim de jogo por tempo. O mapa **cresce**: leads desbloqueiam nós (ex.: o Clube de Moorford, ao ler o álibi/dívidas de Edgar).
+- **Perecível perde PRECISÃO, nunca some.** Rigor e algor, ao degradar, viram leituras vagas mas válidas ("morto há mais de um dia"), jamais nulas. O caso é **sempre** solucionável pela âncora durável (livor fixo + "visto por última vez com vida", `dep_visto_vivo`), em qualquer rota — o perecível é só atalho/reforço. O corpo telegrafa e anuncia a perda (legibilidade). *Nota:* sob o relógio mole, a degradação é uma textura lenta — a falha do apressado é de perícia, não de relógio.
+- **A leitura forense é FALADA por um personagem.** As gavetas **Cronos e Aitiov foram REMOVIDAS**. O mestre/legista fala o "quando" e o "como" em linguagem natural (`src/logic/falaDoMestre.js`), a partir do que o jogador examinou; a carta na mesa mostra só a **observação crua** (sem carimbo técnico "§"). Por baixo, a conta é a mesma gramática universal (§6.1) — só que dada por um personagem, sem mostrador.
+- **O Confronto: o ato dedutivo do jogador** (`src/components/Confronto.jsx`, `src/logic/confronto.js`). O jogador LIGA, com a própria mão, uma fala ao fato físico que a derruba — cravando a **mentira** (uma alegação sobre a hora que o corpo desmente → expõe a encenação) e o **nexo** (o vestígio cujo material casa com a arma). Reintroduz, como ATO, o "Confronto" que o Playtest 6 havia automatizado. Sem feedback de acerto — só o tribunal julga. Substitui a gaveta Nexo.
+- **O motor de julgamento NÃO mudou.** `calcularVeredicto` segue lendo as mesmas conclusões (`{tipo:'janela'|'mecanismo'|'nexo'|'estado_cena'}`) — mudou apenas QUEM as produz (o mestre, via `consolidarLeituraMestre`, e o Confronto, no lugar das gavetas).
+- **Currículo (`src/data/curriculo.js`).** Os hábitos que o mestre ensina definem o vocabulário de pista que o gerador procedural poderá usar (contrato de currículo). Esqueleto da campanha mestre/aprendiz pendente.
+
+---
+
 ## 2. O que diferencia MORTEM dos demais jogos de detetive
 
 1. **"Nem todo mentiroso é culpado."** Inocentes mentem por razões próprias (vergonha, medo, autopreservação). A regra estrutural: *a mentira do assassino é inconsistente com a evidência FÍSICA; a mentira do inocente é inconsistente apenas com a MORAL*. O jogo pune pattern-matching preguiçoso ("mentiu → culpado") e recompensa perícia.
 
 2. **O jogo nunca entrega conclusões.** O jogador recebe dados brutos ("articulações rígidas", "24°C corporal") e material de referência (Glossário Forense de época). A interpretação é dele. Não há personagem que resuma, não há highlight de "pista importante".
 
-3. **Dedução contra uma gramática universal, anti força-bruta.** As gavetas não oferecem um menu de respostas do caso: o jogador **deduz** contra um espaço universal (catálogo de causas + modelo de tempo, §6.1), estreitando-o ao combinar pistas — triangula a hora, elimina causas pelos sinais. A gaveta registra o que ele afirma sem validar. Não existe vitória por tentativa e erro mecânico, nem menu curto a adivinhar.
+3. **Dedução contra uma gramática universal, anti força-bruta.** Não há menu de respostas do caso: a leitura sai de um espaço universal (catálogo de causas + modelo de tempo, §6.1). O legista **fala** a hora/causa (triangulação/eliminação por baixo) e o jogador **crava** o nexo e a mentira no Confronto (§1.1). Nada valida durante a investigação; só o tribunal. Sem vitória por tentativa e erro mecânico.
 
 4. **Zero feedback durante a investigação.** Nenhum ✓/✗, nenhum "correto!". Conclusões registradas nas gavetas são apenas registradas. A verdade só é revelada no tribunal final, de uma vez, com consequências.
 
@@ -33,7 +46,7 @@ MORTEM é um jogo de investigação forense baseado em texto e cartas, ambientad
 
 7. **Zero LLM em runtime.** Dados em JSON/JS, lógica em funções puras, monólogos finais gerados por templates universais com variáveis injetadas. O jogo roda offline e é totalmente reproduzível.
 
-8. **Tempo como recurso forense.** O relógio avança com ações periciais (extrair, interrogar) — não com pensamento (gavetas, glossário, organizar a mesa custam zero). Evidências não coletadas degradam de forma medicamente realista (rigor mortis passa; livores fixam). A pressão é forense, não arcade.
+8. **Tempo como recurso forense (relógio MOLE).** O relógio só avança ao **VIAJAR** no mapa; dentro do local, congela (examinar e pensar são ilimitados). Sem fim de jogo por tempo. O perecível degrada perdendo **precisão**, nunca valor — o durável sempre resolve (§1.1, §10). A pressão é de **rota**, não arcade.
 
 9. **"Tudo é mesa. Tudo é carta. Tudo é arrastar."** Sem troca de telas, sem menus profundos, sem árvores de diálogo aninhadas. Eventos (cena do crime, interrogatórios) abrem como overlays sobre a escrivaninha — a mesa nunca sai do DOM.
 
@@ -53,10 +66,10 @@ Texto do jogo inteiramente em **português (PT-BR)**, sem anacronismos. Eventos 
 
 1. **Abertura** — Escrivaninha vazia em Caulfield (pensão miserável: vela, garrafa, jornal). A Sra. Potts entrega uma carta do delegado de Briarstone. Aceitar transforma a escrivaninha no hub de investigação.
 2. **Briefing** — Chegada a Briarstone. O Delegado Wycliffe apresenta o caso (custo zero de tempo). Perguntas ao delegado plantam informações e iscas.
-3. **Investigação** — O relógio começa a contar (chegada às 11:00). O jogador alterna entre:
-   - **Examinar** localidades (Corpo, Cena, Delegacia) — extrair cartas clicando nos negritos (custa tempo);
-   - **Interrogar** suspeitos — depoimentos clicáveis viram cartas comportamentais (custa tempo);
-   - **Raciocinar** nas gavetas, consultar Glossário, Caderneta e Painel de Álibis (custo zero).
+3. **Investigação** — Chegada às 11:00. O relógio só corre ao **VIAJAR** no mapa (§1.1); dentro do local, congela. O jogador alterna entre:
+   - **Viajar** entre nós do mapa (custa horas; o mapa cresce por leads);
+   - **Examinar** localidades e **interrogar** suspeitos (clicar nos negritos extrai cartas; custo zero) — o legista vai falando a leitura do corpo;
+   - **Confrontar** (cravar a mentira e o nexo) e consultar Glossário, Caderneta, Painel de Álibis (custo zero).
 4. **Libelo** — No Quadro de Revelações, o jogador redige a acusação formal preenchendo um formulário narrativo.
 5. **Tribunal** — O motor compara o Libelo contra a Verdade de Ouro e gera o **Monólogo Final** correspondente a um dos 4 desfechos. Só aqui o jogador descobre o que acertou e errou.
 
@@ -73,17 +86,17 @@ O jogador nunca sai desta tela. Layout:
 |                                [Relógio]|
 |                                         |
 |        SUPERFÍCIE LIVRE                 |
-|        (cartas soltas + localidades)    |
+|        (cartas soltas + nós do mapa)    |
 |                                         |
 |-----------------------------------------|
-|     Cronos    |    Aitiov    |   Nexo   |
+|              [ CONFRONTO ]              |
 |-----------------------------------------|
 [Caderneta]   [Painel de Álibis]  [Glossário]
 ```
 
-- **Relógio de Bolso** (sup. direito): avança apenas com ações que custam tempo.
-- **Superfície Livre** (centro): cartas arrastáveis e organizáveis, custo zero. **Localidades são cartas** na superfície — não sidebar. Ao clicar numa localidade, a mesa recebe `blur(6px)` + `opacity 0.3` e o evento abre como overlay centralizado (`position: fixed`). Ao fechar, cartas novas extraídas surgem na superfície. Não existe troca de tela.
-- **3 Gavetas** (inferior): processadores lógicos. No tutorial, só Cronos visível no início; as demais desbloqueiam progressivamente.
+- **Relógio de Bolso** (sup. direito): avança apenas ao **VIAJAR** no mapa (§1.1); dentro do local, congela.
+- **Superfície Livre** (centro): cartas arrastáveis e organizáveis, custo zero. **Localidades são nós do mapa** na superfície — não sidebar; clicar **VIAJA** até lá (custa tempo) e abre o evento como overlay (`blur(6px)` + `opacity 0.3`, `position: fixed`). Só aparecem os nós **desbloqueados** (o mapa cresce). Não existe troca de tela.
+- **Confronto** (inferior): onde o jogador cruza a fala com o corpo e crava a mentira e o nexo (§1.1). As gavetas Cronos/Aitiov/Nexo não existem mais.
 - **Caderneta** (overlay, custo zero): log de tudo que foi extraído, registrado e concluído.
 - **Glossário Forense** (overlay, custo zero): referência de época, contexto-sensitivo.
 - **Painel de Álibis** (overlay, custo zero): ver §8.
@@ -116,9 +129,9 @@ A carta carrega o **estado observado bruto** (ex.: `estadoRigor: 'pleno'`, ou `t
 
 **Domínios:** `temporal`, `causal`, `ambiental`, `comportamental`, `vestigio`.
 
-**Extração com carimbo integrado:** clicar no termo em negrito avança o relógio pelo `custoTempo` e a carta já nasce registrada (`termoCarimbo = carimboPadrao`). Não existe estado intermediário "extraída mas não carimbada", não existe `ModalCarimbo`. Tudo vai direto para `cartasRegistradas`.
+**Extração (§1.1):** clicar no termo em negrito registra a carta direto em `cartasRegistradas`. **Examinar NÃO custa tempo** (relógio mole) — `custoTempo` ficou dormente. Na face da carta, a mesa mostra só a **observação crua** (`textoDisplay`); o `carimboPadrao`/`termoCarimbo` virou rótulo interno (usado no Libelo), não mais um "§" diegético. As cartas do corpo ganham um campo opcional **`vozMestre`** — a fala do legista sobre aquela observação, exibida no exame (na campanha; omitido no procedural).
 
-**Regra inviolável:** funções de gaveta e de veredicto leem apenas `tagsOcultas` (e a seed). Nunca decidem por `id` ou `textoDisplay` de carta.
+**Regra inviolável:** as funções de lógica e de veredicto leem apenas `tagsOcultas` (e a seed). Nunca decidem por `id` ou `textoDisplay` de carta.
 
 ### 6.1 Gramática Universal de Dedução (migração de junho/2026)
 
@@ -131,25 +144,28 @@ Consequência: dá para gerar infinitos casos sem escrever uma única "alternati
 
 ---
 
-## 7. As Três Gavetas (livro-caixa; migração de junho/2026)
+## 7. A leitura do mestre e o Confronto (substituem as gavetas — §1.1)
 
-Funções puras, custo zero de tempo, sem API. Cada gaveta corresponde a um pilar pericial e é um **livro-caixa**, não um oráculo: o jogador **deduz** (não escolhe de um menu do caso) e a gaveta apenas **registra** a conclusão que ele afirma — **sem avaliar e sem bloquear**. Não há feedback de "consistente/inconsistente"; a conclusão gravada reflete o que o jogador afirmou, mesmo que errada. **Toda validação vive só no tribunal** (§11). Conclusões podem ser desfeitas.
+As gavetas Cronos/Aitiov/Nexo foram **removidas**. O "quando" e o "como" deixaram de ser calculados pelo jogador num mostrador e passaram a ser **falados pelo mestre/legista**; o "nexo" e a "mentira" passaram a ser o **ato manual do jogador** no Confronto. O motor por baixo é o mesmo (gramática universal §6.1, funções puras, custo zero) — só mudou a interface, e nada valida durante a investigação (§11).
 
-| Gaveta | Pilar | Entrada | Como o jogador deduz | Conclusão |
-|---|---|---|---|---|
-| **Cronos** | Quando | cartas `temporal` | **triangulação**: cada indicador vira uma janela (modelo de tempo); a hora é a interseção | **Janela da Morte** |
-| **Aitiov** | Como | Seção 1: cartas `causal` · Seção 2: cartas `ambiental` | **eliminação** no catálogo universal pelos sinais discriminantes | **Mecanismo do Óbito** · **Estado da Cena** |
-| **Nexo** | Presença | 1 carta `vestigio` + 1 Conclusão de apoio | liga o vestígio a uma pessoa do elenco | **Nexo de Presença** |
+| Pilar | Antes (gaveta) | Agora |
+|---|---|---|
+| **Quando** | Cronos triangulava a janela | O legista **fala** a janela (`falaDoMestre.js` → `calcularJanelaMorte`); auto-consolidada em `{tipo:'janela'}` |
+| **Como** | Aitiov eliminava no catálogo | O legista **fala** o mecanismo (`mecanismoCravado`); auto-consolidada em `{tipo:'mecanismo'}` |
+| **Presença** | Nexo ligava vestígio→pessoa | O jogador crava o **nexo** no Confronto (vestígio cujo material casa com a arma) → `{tipo:'nexo'}` |
+| **Encenação** | Aitiov §2 (Estado da Cena) | O jogador crava a **mentira** no Confronto (alegação sobre a hora que o corpo desmente) → `{tipo:'estado_cena'}` |
 
-Não há mais listas de hipóteses por caso (`HIPOTESES_CRONOS`, `HIPOTESES_MECANISMO`): a Cronos calcula a janela e a Aitiov estreita o catálogo universal. As leituras de cena (Seção 2) e os suspeitos do Nexo são conjuntos universais/o elenco, não distratores escritos à mão.
+A leitura do mestre é refeita a cada exame (`consolidarLeituraMestre`, ids estáveis `leitura_mestre_janela`/`leitura_mestre_mecanismo`). O Confronto registra o que o jogador afirma **sem validar**. Continua valendo: nada de listas de hipóteses por caso — a janela vem da triangulação e o mecanismo da eliminação no catálogo universal.
 
-Histórico: o jogo tinha 5 gavetas. **Dinâmica** foi absorvida pela Aitiov (Estado da Cena é sua segunda seção). **Confronto** foi extinta — o cruzamento álibi × janela da morte é raciocínio manual do jogador, apoiado pelo Painel de Álibis (§8). Arquivos `GavetaConfronto.jsx`, `GavetaDinamica.jsx`, `confronto.js`, `dinamica.js` não existem mais.
+**Histórico:** 5 gavetas (Playtest 5: Dinâmica absorvida pela Aitiov; a Confronto automática extinta) → 3 livro-caixa (gramática universal, jun/2026) → **0 gavetas** (Redesign do Core Loop, §1.1): a leitura é falada pelo mestre e o **Confronto volta como ATO do jogador** (`Confronto.jsx`, `confronto.js`). Removidos: `GavetaCronos/Aitiov/Nexo/Base.jsx` e `logic/aitiov.js`, `logic/nexo.js`. **Reaproveitados intactos** (a conta por baixo): `logic/cronos.js`, `logic/tempo_morte.js`, `data/catalogo_causas.js`, `logic/veredicto.js`, `logic/monologo.js`.
 
 ---
 
 ## 8. Painel de Álibis (Playtest 6)
 
-Overlay de consulta intitulado **"Declarações de Paradeiro"**. Lista as cartas de depoimento de álibi já coletadas (`dominio: 'comportamental'`, `subDominio: 'alibi'`) de forma **estritamente neutra**: quem declarou, o que declarou, faixa horária declarada. **Sem marcadores de status** (válido/quebrado), sem cruzamento automático com o Cronos. O jogador compara mentalmente os horários declarados com a Janela da Morte que ele próprio calculou. Modelado sobre a estrutura do Glossário. Custo zero.
+Overlay de consulta intitulado **"Declarações de Paradeiro"**. Lista as cartas de depoimento de álibi já coletadas (`dominio: 'comportamental'`, `subDominio: 'alibi'`) de forma **estritamente neutra**: quem declarou, o que declarou, faixa horária declarada. **Sem marcadores de status** (válido/quebrado), sem cruzamento automático. O jogador compara mentalmente os horários declarados com a Janela da Morte. Modelado sobre a estrutura do Glossário. Custo zero.
+
+**Atualização (§1.1):** o painel segue neutro como referência, mas o **cruzamento ativo** — cravar a mentira ligando uma alegação sobre a hora ao fato do corpo — passou a ser um ATO do jogador no **Confronto**.
 
 ---
 
@@ -159,12 +175,12 @@ Referência de época, consulta gratuita, overlay com navegação por domínio (
 
 ---
 
-## 10. Tempo e Degradação
+## 10. Tempo e Degradação (relógio MOLE — §1.1)
 
-- Relógio global em horas (`horasJogo`), início da investigação às **11:00** (`horasChegadaCena: 11`, imutável — base para cálculos retroativos).
-- **Custa tempo:** extrair carta (clicar negrito), interrogar, medir temperatura (ação especial do Termômetro, gera carta de algor mortis).
-- **Custo zero:** arrastar/organizar, gavetas, Glossário, Caderneta, Painel de Álibis, Quadro.
-- **Degradação:** evidências não coletadas mudam de estado com o tempo, de forma medicamente realista ("Articulações Rígidas" → "Corpo Flácido" → carta Inconclusiva). Carta registrada no tempo certo fica segura para sempre. Pelo menos 1 evidência crítica por caso deve degradar se o jogador não priorizar o corpo.
+- Relógio global em horas (`horasJogo`), chegada às **11:00** (`horasChegadaCena: 11`, imutável).
+- **Custa tempo:** só **VIAJAR** entre nós do mapa (`viajarPara`; custos em `src/data/mapa.js`). Dentro do local, o relógio congela.
+- **Custo zero:** examinar (extrair), medir temperatura, interrogar, Confronto, Glossário, Caderneta (banco de anotações), Painel de Álibis, Quadro, arrastar/organizar.
+- **Degradação = perda de PRECISÃO, nunca de valor.** Rigor e algor, ao degradar, viram leituras vagas mas válidas (rigor `resolvido` → janela larga `[36h, +∞)`; algor em equilíbrio → piso largo), jamais nulas. A carta registrada congela no estado em que foi vista. **Garantia de solvabilidade:** a âncora durável (livor fixo + "visto por última vez com vida", `dep_visto_vivo`) sempre fecha uma janela finita que contém a hora real, em qualquer rota; o perecível só aperta essa janela quando colhido fresco. Sem fim de jogo por tempo. *Decisão:* a degradação fica branda (coerente com o relógio mole) — a falha do apressado é de perícia, não de relógio.
 
 ---
 
@@ -176,10 +192,10 @@ A acusação é redigida como peça formal, não como slots mecânicos. Campos (
 
 - **Réu** (`reuId`) — obrigatório
 - **Evidências do corpo** (`evidenciasCorpoIds[]`) — obrigatório, ≥ 1
-- **Quando** (`conclusaoCronosId`) — opcional, vem das conclusões Cronos
-- **Como** (`conclusaoMecanismoId`) — opcional, conclusões Aitiov com tag `mecanismo`
-- **Nexo** (`conclusaoNexoId`) — opcional, conclusões Nexo
-- **Descuidos do acusado** (`descuidosIds[]`) — opcional: cartas `ambiental` + conclusões de Estado da Cena
+- **Quando** (`conclusaoCronosId`) — opcional, vem da leitura do mestre (`{tipo:'janela'}`)
+- **Como** (`conclusaoMecanismoId`) — opcional, leitura do mestre (`{tipo:'mecanismo'}`)
+- **Nexo** (`conclusaoNexoId`) — opcional, cravado no Confronto (`{tipo:'nexo'}`)
+- **Descuidos do acusado** (`descuidosIds[]`) — opcional: cartas `ambiental` (`encenado:true`) + a contradição cravada no Confronto (`{tipo:'estado_cena'}`)
 - **Motivação** (`motivacaoId`) — opcional: carta `comportamental` ligada ao réu
 - **Periféricos** (`perifericos: { [suspeitoId]: { tipo, cartaId } }`) — veredicto sobre cada não-acusado: `inocente_alibi` | `inocente_segredo` | `sem_info`
 
@@ -217,9 +233,9 @@ Textos usam interpolação `{detective.campo}` (~20–30 pontos de variação no
 
 ## 13. Estrutura de progressão
 
-1. **Tutorial — "O Álibi de Corda"** (fixo): quatro armadilhas pedagógicas; gavetas desbloqueiam progressivamente; **resubmissão do Libelo permitida** — a falha mostra exatamente o que faltou (exceção exclusiva do tutorial).
-2. **Campanha — "A Ascensão de Blackwell"**: 3–5 casos artesanais, complexidade crescente, sem assistência, falha definitiva.
-3. **Modo roguelite** (casos procedurais): desbloqueado desde o início, recomendado após a campanha. Viável graças ao motor de tags.
+1. **Tutorial — "O Álibi de Corda"** (fixo): quatro armadilhas pedagógicas; **resubmissão do Libelo permitida** — a falha mostra exatamente o que faltou (exceção exclusiva do tutorial).
+2. **Campanha — arco mestre/aprendiz** (esqueleto pendente, §1.1): o jogador começa como assistente de um detetive mestre, que ensina **verbos e hábitos** (não fatos) e dá menos ajuda com o tempo; ao fim, o mestre morre e o jogador assume o lugar, com seu próprio assistente. A campanha é o **currículo completo** (`curriculo.js`): tudo que o gerador um dia usará é ensinado antes da morte do mestre (contrato de currículo). *Em aberto:* a morte do mestre como caso jogável (ler o corpo dele).
+3. **Procedural** (sandbox, casos gerados): o assistente embrulha o modo infinito (traz casos, faz presença, **sem ensinar**); a cena vem só com descrição física (sem `vozMestre`) — quem lê o corpo é o jogador, já perito. Viável graças ao motor de tags.
 
 ---
 
@@ -258,6 +274,8 @@ SEED_TUTORIAL = {
 3. **Blackwood como ruído** — motivo claro, álibi sólido. Motivo sem oportunidade não é prova.
 4. **Edgar sem provas** — intuição certa com processo errado = **Impunidade**. Acusar exige materialidade.
 
+**Adições do Redesign (§1.1):** o tutorial ganhou a âncora durável **"visto por última vez com vida"** (`dep_visto_vivo` — a ceia das 20h, na delegacia) e a testemunha do **avistamento falso** (`dep_avistamento_falso` — a Sra. Gale jura tê-lo visto vivo na manhã do dia 14), a mentira literal a cravar no Confronto. O Clube de Moorford virou nó distante por lead (corroboração opcional). Sob o relógio mole, a "armadilha do relógio" (#1) ficou branda: a falha do Apressado passou a ser de perícia (acusar sem materialidade), não de relógio.
+
 ---
 
 ## 15. Referência forense canônica (medicina legal de época)
@@ -267,7 +285,7 @@ Valores invioláveis — o jogo depende deles para ser resolúvel:
 - **Rigor mortis:** surge 2–4h post-mortem, pico ~12h, desaparece 24–36h. Sequência céfalo-caudal.
 - **Livor mortis:** surge 1–2h; fixa definitivamente após ~12h (antes disso, some sob pressão digital).
 - **Algor mortis:** resfriamento ~1°C/h a partir de 37°C, até a temperatura ambiente.
-- **IPM:** nenhum sinal isolado é definitivo; a convergência (sobreposição de intervalos) reduz a margem — é exatamente o que a gaveta Cronos faz.
+- **IPM:** nenhum sinal isolado é definitivo; a convergência (sobreposição de intervalos) reduz a margem — é exatamente o que a leitura do legista faz (triangulação por baixo, §1.1).
 - **Causa:** petéquias/cianose → asfixia; sulco cervical **horizontal** → ligadura; **oblíquo/ascendente** → enforcamento; escoriações/equimoses → reação vital; odor de amêndoas → cianeto; odor de alho → arsênico.
 - **Dinâmica:** espasmo cadavérico, marcas de arrasto, livores incompatíveis com a posição, conteúdo estomacal, ausência de lesões de defesa.
 
@@ -280,18 +298,18 @@ Valores invioláveis — o jogo depende deles para ser resolúvel:
 **Estrutura de pastas:**
 ```
 src/
-  data/         seed.js · catalogo_causas.js · glossario.js · localidades.js · (cartas, depoimentos, eventos)
-  logic/        veredicto.js · tempo_morte.js (modelo forense universal) · cronos · aitiov · nexo
-  store/        jogo.js (Zustand: fases, relógio, cartasRegistradas, conclusoes, log, detective)
-  components/   Escrivaninha · GavetaBase · GavetaCronos · GavetaAitiov · GavetaNexo ·
-                PainelAlibis · QuadroRevelacoes · MonologoFinal · ModalGlossario ·
-                Caderneta · TelaPersonagem · TermometroCorpo
+  data/         seed.js · catalogo_causas.js · cartas.js · localidades.js · mapa.js · curriculo.js · glossario.js · rotulos.js · abertura.js
+  logic/        veredicto.js · tempo_morte.js (modelo universal) · cronos.js · falaDoMestre.js · confronto.js · monologo.js · tempo.js · interpolar.js
+  store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes, log, detective)
+  components/   Escrivaninha · EventoLocalidade · Confronto · QuadroRevelacoes · MonologoFinal ·
+                PainelAlibis · ModalGlossario · Caderneta · TelaPersonagem · TermometroCorpo ·
+                Abertura · Overlay · CartaMesa · RelogioBolso
 ```
 
 **Convenções:**
-- Estado central: `faseJogo`, `detective`, `horasJogo`, `horasChegadaCena`, `cartasRegistradas`, `conclusoes`, `log`, `temperaturaMedida`.
-- Conclusões são objetos com `origem` ('cronos' | 'aitiov' | 'nexo') e `tagsOcultas` próprias.
-- `GavetaBase` é o componente reutilizável de registro (livro-caixa, com desfazer); Cronos e Aitiov§1 têm UI própria de dedução (triangulação / eliminação).
+- Estado central: `faseJogo`, `detective`, `horasJogo`, `horasChegadaCena`, `localidadeAtual`, `nosDesbloqueados`, `cartasRegistradas`, `conclusoes`, `log`, `temperaturaMedida`.
+- Conclusões são objetos com `origem` (`'mestre'` = leitura auto-consolidada do legista; `'confronto'` = nexo/mentira cravados pelo jogador) e `tagsOcultas` próprias (`tipo: 'janela'|'mecanismo'|'nexo'|'estado_cena'`).
+- A leitura do mestre (`falaDoMestre.js`) e o Confronto (`confronto.js`) são puros e reaproveitam `cronos.js`/`catalogo_causas.js`; nenhuma gaveta sobrou.
 - Código e comentários em português.
 - Repositório: `github.com/santosbruno94/mortem`. Commits entre cada incremento maior.
 
@@ -308,6 +326,7 @@ src/
 | 6 | **Painel de Álibis** ("Declarações de Paradeiro") substitui o confronto automático — consulta neutra, cruzamento é raciocínio do jogador |
 | 6 | **Libelo como formulário narrativo** no Quadro de Revelações (réu, quando, como, evidências, nexo, descuidos, motivação, periféricos) gerando monólogo por templates universais |
 | jun/2026 | **Gramática de dedução universal** (§6.1, §7): o caso vira só Verdade de Ouro + pistas; o motor ganha catálogo universal de causas e modelo forense de tempo. Gavetas viram livro-caixa (registram sem validar); Cronos triangula a hora, Aitiov elimina causas no catálogo. Fim das listas de alternativas por caso |
+| **Redesign Core Loop** (jun/2026+) | **§1.1**: relógio MOLE no mapa (tempo só na viagem; perecível perde precisão, durável sempre resolve); gavetas Cronos/Aitiov/Nexo **removidas** — o legista fala quando/como, o jogador crava nexo+mentira no **Confronto**; carta mostra observação crua; banco de anotações; mapa que cresce por leads. Veredicto/monólogo intactos |
 
 ---
 
