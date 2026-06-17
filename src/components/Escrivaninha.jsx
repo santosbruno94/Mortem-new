@@ -6,9 +6,8 @@ import RelogioBolso from './RelogioBolso.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
-import Confronto from './Confronto.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
-import QuadroRevelacoes from './QuadroRevelacoes.jsx';
+import MuralAcusacao from './MuralAcusacao.jsx';
 import MonologoFinal from './MonologoFinal.jsx';
 
 const ROTULOS_DOMINIO = {
@@ -49,10 +48,10 @@ export default function Escrivaninha() {
         }`}
       >
         <button
-          onClick={() => abrirOverlay('quadro')}
+          onClick={() => abrirOverlay('acusacao')}
           className="px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.2em] text-sm hover:bg-stone-800"
         >
-          QUADRO DE REVELAÇÕES
+          CONSTRUIR A ACUSAÇÃO
         </button>
       </div>
 
@@ -116,17 +115,6 @@ export default function Escrivaninha() {
           ))}
         </div>
 
-        {/* O Confronto (§6): cruzar a fala com o corpo — o ato dedutivo do jogador */}
-        <div className="grid grid-cols-1 border-t border-stone-900">
-          <button
-            onClick={() => abrirOverlay('confronto')}
-            className="py-4 text-center bg-stone-900/60 hover:bg-stone-800"
-          >
-            <p className="font-serif tracking-[0.2em] text-amber-200">CONFRONTO</p>
-            <p className="text-xs mt-1 text-stone-500">Cruzar a fala com o corpo — cravar a mentira e o nexo</p>
-          </button>
-        </div>
-
         {/* Painéis de consulta — custo zero */}
         <div className="flex justify-center gap-3 py-3 bg-stone-950 border-t border-stone-900">
           <BotaoPainel rotulo="Caderneta" aoClicar={() => abrirOverlay('caderneta')} />
@@ -140,8 +128,7 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'caderneta' && <Caderneta />}
       {overlay?.tipo === 'glossario' && <ModalGlossario />}
       {overlay?.tipo === 'alibis' && <PainelAlibis />}
-      {overlay?.tipo === 'confronto' && <Confronto />}
-      {overlay?.tipo === 'quadro' && <QuadroRevelacoes />}
+      {overlay?.tipo === 'acusacao' && <MuralAcusacao />}
       {overlay?.tipo === 'monologo' && <MonologoFinal />}
     </div>
   );

@@ -49,7 +49,7 @@ export const useJogo = create((set, get) => ({
   posicoesCartas: {},
 
   // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
-  overlay: null, // { tipo: 'localidade'|'gaveta'|'caderneta'|'glossario'|'alibis'|'quadro'|'monologo', id }
+  overlay: null, // { tipo: 'localidade'|'caderneta'|'glossario'|'alibis'|'acusacao'|'monologo', id }
 
   // ---------------- Libelo e tribunal ----------------
   libelo: {
