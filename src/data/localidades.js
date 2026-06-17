@@ -90,6 +90,18 @@ export const LOCALIDADES = [
       'Três fregueses, ouvidos em separado à porta, confirmam sem combinar: o taverneiro não deixou o balcão um minuto sequer.',
     ],
   },
+  {
+    id: 'clube_moorford',
+    rotuloMesa: 'Clube de Moorford',
+    titulo: 'Clube Comercial de Moorford',
+    subtitulo: 'A três horas de estrada — onde Edgar diz ter passado a noite',
+    acoesEspeciais: [],
+    prosa: [
+      'A estrada até Moorford é longa, e o salão de carvalho e fumo do Clube Comercial recebe {detective.title} {detective.surname} com a cortesia morna de quem nada tem a esconder. O porteiro, porém, lembra-se de Edgar Arthurs — e de mais do que ele gostaria.',
+      'Sobre a noite de 13, o livro de presença e a memória do porteiro contam a mesma história: [[corrob_moorford]]. O jantar terminou cedo, e a cadeira de Edgar esfriou muito antes das onze que ele jura.',
+      'Nada aqui prende ninguém. Mas a hora e meia de volta a Briarstone, essa, cabe de sobra entre o prato frio e a meia-noite.',
+    ],
+  },
 ];
 
 export function obterLocalidade(id) {

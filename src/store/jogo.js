@@ -113,9 +113,9 @@ export const useJogo = create((set, get) => ({
     });
   },
 
-  // Extração com carimbo integrado (§6): clicar no negrito avança o
-  // relógio pelo custoTempo e a carta nasce registrada. O estado da
-  // evidência (degradação) é o do IPM no momento do clique.
+  // Extração (§6): clicar no negrito registra a carta. Examinar é de graça
+  // (relógio mole) — o tempo só anda ao VIAJAR. O estado da evidência
+  // (degradação) é o do IPM no momento do clique.
   extrairCarta: (cartaId, opcoes = {}) => {
     const s = get();
     if (s.cartasRegistradas.some((c) => c.id === cartaId)) return;

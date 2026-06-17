@@ -9,6 +9,13 @@
 // possíveis em função do IPM (intervalo post-mortem) no momento da
 // extração. `ipmAte: null` significa "daqui em diante".
 //
+// NOTA: o campo `custoTempo` está DORMENTE desde o redesign (relógio mole):
+// examinar não custa mais tempo — o relógio só anda ao VIAJAR (ver mapa.js).
+// Mantido nos dados por ora; nenhuma lógica o lê.
+//
+// O campo opcional `vozMestre` (nas cartas do corpo) é a fala do legista
+// sobre aquela observação, na campanha — omitido no procedural.
+//
 // Horas declaradas em álibis usam a escala absoluta do jogo
 // (negativas = 13/out; ver src/data/seed.js).
 // =====================================================================
@@ -412,6 +419,25 @@ export const CARTAS = [
       dominio: 'comportamental',
       subDominio: 'comportamento',
       ligadoA: 'thomas_blackwood',
+    },
+  },
+
+  // ===================== CLUBE DE MOORFORD (nó distante, por lead) =====================
+  {
+    id: 'corrob_moorford',
+    localidade: 'clube_moorford',
+    custoTempo: 1,
+    textoDisplay: 'Edgar Saiu do Clube Antes das Nove',
+    carimboPadrao: 'Álibi de Edgar Furado',
+    descricao:
+      'O porteiro é categórico: o Sr. Arthurs deixou o jantar "lá pelas oito e meia", muito antes das onze que declarou. Hora de sobra para a estrada de volta.',
+    // Corroboração OPCIONAL (nó distante, desbloqueado por lead): reforça que
+    // Edgar teve oportunidade, mas NÃO é pilar do veredicto — o caso já fecha
+    // pelo corpo. É atalho/reforço, jamais a chave (relógio mole).
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'corroboracao',
+      ligadoA: 'edgar_arthurs',
     },
   },
 ];

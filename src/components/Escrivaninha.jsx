@@ -36,6 +36,7 @@ export default function Escrivaninha() {
   const posicoesCartas = useJogo((s) => s.posicoesCartas);
   const viajarPara = useJogo((s) => s.viajarPara);
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
+  const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
 
   const mesaDesfocada = overlay !== null;
 
@@ -65,8 +66,9 @@ export default function Escrivaninha() {
           <RelogioBolso />
 
           {/* Localidades são nós do mapa (§5/§7). Clicar VIAJA até lá — e a
-              viagem é a única coisa que gasta o relógio. */}
-          {LOCALIDADES.map((loc, i) => {
+              viagem é a única coisa que gasta o relógio. O mapa CRESCE: só
+              aparecem os nós desbloqueados (Moorford surge ao ler um lead). */}
+          {LOCALIDADES.filter((loc) => nosDesbloqueados.includes(loc.id)).map((loc, i) => {
             const aqui = loc.id === localidadeAtual;
             const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
             return (
