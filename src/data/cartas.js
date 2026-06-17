@@ -26,6 +26,7 @@ export const CARTAS = [
         carimboPadrao: 'Rigor Mortis Pleno',
         descricao:
           'Mandíbula, pescoço e membros oferecem resistência total à flexão. A rigidez tomou o corpo inteiro.',
+        vozMestre: 'Rígido dos maxilares aos joelhos — isto é de horas, não de minutos. Entre doze e vinte e quatro, eu diria.',
         // A carta carrega o ESTADO observado bruto; quem o converte numa
         // janela é o modelo forense universal (src/logic/tempo_morte.js).
         tagsOcultas: {
@@ -41,6 +42,7 @@ export const CARTAS = [
         carimboPadrao: 'Rigor Mortis em Resolução',
         descricao:
           'A mandíbula já cede; os joelhos ainda resistem. A rigidez se desfaz na mesma ordem em que veio.',
+        vozMestre: 'A rigidez já cede. Passou da véspera — e a hora exata começa a escapar entre os dedos.',
         tagsOcultas: {
           dominio: 'temporal',
           subDominio: 'rigor_mortis',
@@ -54,6 +56,7 @@ export const CARTAS = [
         carimboPadrao: 'Rigor Resolvido — morto há mais de um dia',
         descricao:
           'Nenhuma resistência articular: o rigor já se desfez por completo. Não aponta mais a hora exata — apenas que a morte foi há mais de um dia. Perdeu a precisão, não o valor.',
+        vozMestre: 'Frouxo de todo. O rigor já não me serve: só posso jurar que faz mais de um dia.',
         // Degradado, porém AINDA VÁLIDO (relógio mole): o modelo o lê como
         // janela larga [36h, +∞), jamais nula. Ver tempo_morte.js (rigor.resolvido).
         tagsOcultas: {
@@ -73,6 +76,7 @@ export const CARTAS = [
     carimboPadrao: 'Livores Fixos',
     descricao:
       'Manchas vinhosas cobrem as costas e a face posterior das pernas. Não esmaecem sob a pressão do polegar: estão fixas.',
+    vozMestre: 'As manchas fixaram-se nas costas e não cedem ao polegar — morto há meia jornada ao menos. E deitado assim desde então: ninguém o virou.',
     tagsOcultas: {
       dominio: 'temporal',
       subDominio: 'livor_mortis',
@@ -88,6 +92,7 @@ export const CARTAS = [
     carimboPadrao: 'Sulco Cervical Horizontal',
     descricao:
       'Um sulco uniforme circunda o pescoço em plano horizontal, sem o trajeto ascendente que a suspensão de um corpo desenharia.',
+    vozMestre: 'Repare no sulco: reto, horizontal. Não é de forca — é de laço apertado por trás, por mãos alheias.',
     // Sinal de ASSINATURA do catálogo universal: crava a ligadura e
     // descarta as demais causas (ver src/data/catalogo_causas.js).
     tagsOcultas: {
@@ -104,6 +109,7 @@ export const CARTAS = [
     carimboPadrao: 'Petéquias Conjuntivais',
     descricao:
       'Hemorragias puntiformes salpicam o branco dos olhos. A face guarda um tom azulado.',
+    vozMestre: 'Esses pontos nos olhos, esse azul na face — asfixia. Sufocou. De que modo, é o sulco que dirá.',
     // Sinal de FAMÍLIA: aponta asfixia (descarta veneno e trauma), mas não
     // diz qual asfixia — é preciso o sinal de assinatura para cravar.
     tagsOcultas: {
@@ -120,6 +126,7 @@ export const CARTAS = [
     carimboPadrao: 'Fibras de Cânhamo no Sulco',
     descricao:
       'Sob a lente, filamentos vegetais claros, torcidos, presos à pele do sulco. Cânhamo de corda comum.',
+    vozMestre: 'Cânhamo, preso no sulco. A corda que o matou era de cânhamo comum — guarde isso.',
     tagsOcultas: {
       dominio: 'causal',
       subDominio: 'instrumento',
@@ -406,6 +413,7 @@ export function resolverEstadoCarta(definicao, ipmAtual) {
       textoDisplay: definicao.textoDisplay,
       carimboPadrao: definicao.carimboPadrao,
       descricao: definicao.descricao,
+      vozMestre: definicao.vozMestre,
       tagsOcultas: definicao.tagsOcultas,
     };
   }

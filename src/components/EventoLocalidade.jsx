@@ -4,6 +4,7 @@ import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { SEED_TUTORIAL } from '../data/seed.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
+import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
 
@@ -60,12 +61,38 @@ export default function EventoLocalidade({ localidadeId }) {
   return (
     <Overlay titulo={interpolar(localidade.titulo, detective)} subtitulo={localidade.subtitulo}>
       <div className="space-y-4">{localidade.prosa.map(renderParagrafo)}</div>
+      {localidade.id === 'corpo' && <FalaDoLegista cartas={cartasRegistradas} />}
       {localidade.id === 'corpo' && <NotaFrescor ipm={ipm} />}
       {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
       <p className="mt-6 text-stone-600 text-xs tracking-wide">
         Termos em negrito são examinados e registrados na mesa — examinar não custa tempo; o relógio só corre quando você viaja.
       </p>
     </Overlay>
+  );
+}
+
+// A leitura forense FALADA pelo mestre/legista (§4): some o mostrador das
+// antigas gavetas; a interpretação vem por um personagem, em fala natural,
+// e CRESCE conforme o jogador examina (pull — responde ao que foi visto).
+// No procedural não há vozMestre nas cartas: este bloco fica vazio e o
+// jogador, já perito, lê o corpo por conta própria.
+function FalaDoLegista({ cartas }) {
+  const asides = cartas.filter((c) => c.localidade === 'corpo' && c.vozMestre);
+  const { tempo, causa } = falaDoMestre(lerCorpo(cartas));
+  if (asides.length === 0 && !tempo && !causa) return null;
+  return (
+    <div className="mt-5 border-l-2 border-amber-900/60 pl-4 space-y-2">
+      <p className="text-amber-200/70 text-[10px] tracking-[0.25em] uppercase">O legista, examinando</p>
+      {asides.map((c) => (
+        <p key={c.id} className="text-stone-300 text-sm italic leading-relaxed">“{c.vozMestre}”</p>
+      ))}
+      {(tempo || causa) && (
+        <div className="pt-2 mt-1 border-t border-stone-800 space-y-1">
+          {tempo && <p className="text-amber-100/90 text-sm leading-relaxed">“{tempo}”</p>}
+          {causa && <p className="text-amber-100/90 text-sm leading-relaxed">“{causa}”</p>}
+        </div>
+      )}
+    </div>
   );
 }
 

@@ -6,8 +6,6 @@ import RelogioBolso from './RelogioBolso.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
-import GavetaCronos from './GavetaCronos.jsx';
-import GavetaAitiov from './GavetaAitiov.jsx';
 import GavetaNexo from './GavetaNexo.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
 import QuadroRevelacoes from './QuadroRevelacoes.jsx';
@@ -22,8 +20,8 @@ const ROTULOS_DOMINIO = {
 };
 
 const GAVETAS = [
-  { id: 'cronos', nome: 'Cronos', pilar: 'Quando' },
-  { id: 'aitiov', nome: 'Aitiov', pilar: 'Como' },
+  // Cronos e Aitiov saíram: o "quando" e o "como" são falados pelo legista
+  // (ver EventoLocalidade). Resta o Nexo até a Fase 4, quando vira o Confronto.
   { id: 'nexo', nome: 'Nexo', pilar: 'Presença' },
 ];
 
@@ -115,15 +113,16 @@ export default function Escrivaninha() {
                 <p className="text-stone-600 text-[10px] tracking-[0.2em] uppercase">
                   {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}
                 </p>
+                {/* Só a observação CRUA na face da carta — a interpretação é
+                    falada pelo legista, não carimbada (§6 do redesign). */}
                 <p className="font-serif text-stone-200 text-sm mt-1 leading-snug">{carta.textoDisplay}</p>
-                <p className="text-amber-200/80 text-xs mt-2 italic leading-snug">§ {carta.termoCarimbo}</p>
               </div>
             </CartaMesa>
           ))}
         </div>
 
-        {/* As três gavetas (§7) */}
-        <div className="grid grid-cols-3 border-t border-stone-900">
+        {/* Gaveta(s) restante(s) — só o Nexo, até a Fase 4 (§7) */}
+        <div className="grid grid-cols-1 border-t border-stone-900">
           {GAVETAS.map((g) => {
             const aberta = gavetasDesbloqueadas.includes(g.id);
             return (
@@ -159,8 +158,6 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'caderneta' && <Caderneta />}
       {overlay?.tipo === 'glossario' && <ModalGlossario />}
       {overlay?.tipo === 'alibis' && <PainelAlibis />}
-      {overlay?.tipo === 'gaveta' && overlay.id === 'cronos' && <GavetaCronos />}
-      {overlay?.tipo === 'gaveta' && overlay.id === 'aitiov' && <GavetaAitiov />}
       {overlay?.tipo === 'gaveta' && overlay.id === 'nexo' && <GavetaNexo />}
       {overlay?.tipo === 'quadro' && <QuadroRevelacoes />}
       {overlay?.tipo === 'monologo' && <MonologoFinal />}

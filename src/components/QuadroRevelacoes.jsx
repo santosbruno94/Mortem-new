@@ -106,7 +106,7 @@ export default function QuadroRevelacoes() {
           itens={conclusoesJanela}
           selecionado={libelo.conclusaoCronosId}
           aoSelecionar={(id) => atualizarLibelo({ conclusaoCronosId: id })}
-          vazio="Nenhuma Janela da Morte registrada no Cronos."
+          vazio="O legista ainda não cravou a hora — examine mais o corpo."
         />
       </Campo>
       <Campo titulo="IV. De como se deu a morte">
@@ -114,7 +114,7 @@ export default function QuadroRevelacoes() {
           itens={conclusoesMecanismo}
           selecionado={libelo.conclusaoMecanismoId}
           aoSelecionar={(id) => atualizarLibelo({ conclusaoMecanismoId: id })}
-          vazio="Nenhum Mecanismo do Óbito registrado na Aitiov."
+          vazio="O legista ainda não cravou o mecanismo — falta sinal no corpo."
         />
       </Campo>
       <Campo titulo="V. Do nexo de presença">

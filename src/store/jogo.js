@@ -13,6 +13,7 @@ import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.js';
 import { HORAS_CHEGADA_CENA, ipmAtual } from '../logic/tempo.js';
 import { calcularVeredicto } from '../logic/veredicto.js';
+import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 
 // Constrói o objeto detective do §12 a partir da escolha na tela inicial.
 export function buildDetective(opcao) {
@@ -44,7 +45,7 @@ export const useJogo = create((set, get) => ({
   conclusoes: [],
   log: [],
   temperaturaMedida: null,
-  gavetasDesbloqueadas: ['cronos'], // desbloqueio progressivo no tutorial
+  gavetasDesbloqueadas: ['nexo'], // Cronos/Aitiov saíram (a leitura é falada pelo mestre); só o Nexo sobra até a Fase 4
   posicoesCartas: {},
 
   // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
@@ -129,6 +130,7 @@ export const useJogo = create((set, get) => ({
       textoDisplay: estado.textoDisplay,
       termoCarimbo: estado.carimboPadrao,
       descricao: estado.descricao,
+      vozMestre: estado.vozMestre, // fala do mestre sobre esta observação (só na campanha)
       tagsOcultas: estado.tagsOcultas,
       horaRegistro: s.horasJogo,
     };
@@ -145,6 +147,8 @@ export const useJogo = create((set, get) => ({
       nosDesbloqueados,
       log: [...s.log, { hora: s.horasJogo, texto: `Registrado: ${estado.carimboPadrao}.` }],
     });
+    // O mestre relê o corpo e atualiza, de cabeça, a leitura de quando/como.
+    get().consolidarLeituraMestre();
   },
 
   // Ação especial do Termômetro: gera a carta de algor mortis a partir
@@ -163,6 +167,7 @@ export const useJogo = create((set, get) => ({
         termoCarimbo: 'Algor: equilíbrio térmico (≥26h)',
         descricao:
           'O termômetro marca os 11°C do próprio escritório: o corpo já igualou a sala. O algor perdeu a precisão — agora só diz que a morte foi há mais de um dia. Não some, mas pouco aperta.',
+        vozMestre: 'Frio como a sala. O calor já não conta as horas — só diz que faz tempo.',
         // Equilíbrio: leitura VAGA, não nula. Carrega a temperatura medida
         // (== ambiente); o modelo devolve um piso largo (perde precisão).
         tagsOcultas: {
@@ -181,6 +186,7 @@ export const useJogo = create((set, get) => ({
         textoDisplay: `Temperatura Corporal: ${temperatura}°C`,
         termoCarimbo: `Algor Mortis: ${temperatura}°C (ambiente 11°C)`,
         descricao: `O mercúrio detém-se nos ${temperatura}°C, contra 11°C do escritório. A perda de calor, a um grau por hora, fala de ${horasEstimadas - 2} a ${horasEstimadas + 2} horas decorridas.`,
+        vozMestre: 'Ainda morno. O calor que perdeu conta as horas — um grau a cada uma delas.',
         // Carrega a leitura BRUTA (temperatura medida + ambiente); a janela
         // é calculada pelo modelo forense universal na gaveta Cronos.
         tagsOcultas: {
@@ -198,19 +204,25 @@ export const useJogo = create((set, get) => ({
       cartasRegistradas: [...s.cartasRegistradas, carta],
       log: [...s.log, { hora: s.horasJogo, texto: `Registrado: ${carta.termoCarimbo}.` }],
     });
+    get().consolidarLeituraMestre();
   },
 
-  // Conclusões de gaveta (custo zero). O desbloqueio progressivo do
-  // tutorial acompanha o avanço: Cronos → Aitiov → Nexo.
+  // O mestre/legista relê o corpo e FALA a leitura de quando/como. Faz upsert
+  // de duas conclusões de id estável (origem 'mestre'), preservando o que o
+  // jogador registrou por conta própria (ex.: o Nexo). Substitui as antigas
+  // gavetas Cronos/Aitiov: a conta é a mesma, mas agora dada por um personagem.
+  consolidarLeituraMestre: () => {
+    const s = get();
+    const base = s.conclusoes.filter((c) => c.origem !== 'mestre');
+    set({ conclusoes: [...base, ...conclusoesDoMestre(s.cartasRegistradas)] });
+  },
+
+  // Conclusão registrada pelo próprio jogador (hoje, o Nexo; custo zero).
   registrarConclusao: (conclusao) => {
     const s = get();
     const nova = { ...conclusao, id: `conclusao_${proximoIdConclusao++}` };
-    const desbloqueadas = new Set(s.gavetasDesbloqueadas);
-    if (nova.origem === 'cronos') desbloqueadas.add('aitiov');
-    if (nova.origem === 'aitiov') desbloqueadas.add('nexo');
     set({
       conclusoes: [...s.conclusoes, nova],
-      gavetasDesbloqueadas: [...desbloqueadas],
       log: [...s.log, { hora: s.horasJogo, texto: `Conclusão registrada: ${nova.titulo}.` }],
     });
     return nova;
