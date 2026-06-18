@@ -12,7 +12,7 @@ import { SEED_TUTORIAL } from '../data/seed.js';
 import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.js';
 import { HORAS_CHEGADA_CENA, ipmAtual } from '../logic/tempo.js';
-import { calcularVeredicto, calcularVeredictoCadeia } from '../logic/veredicto.js';
+import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 
 // Constrói o objeto detective do §12 a partir da escolha na tela inicial.
@@ -23,7 +23,6 @@ export function buildDetective(opcao) {
   return { name: 'Harlan', surname: 'Blackwell', pronoun: 'ele', treatment: 'Sr.', title: 'Dr.' };
 }
 
-let proximoIdConclusao = 1;
 let proximoIdLigacao = 1;
 
 export const useJogo = create((set, get) => ({
@@ -51,23 +50,12 @@ export const useJogo = create((set, get) => ({
   // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
   overlay: null, // { tipo: 'localidade'|'caderneta'|'glossario'|'alibis'|'acusacao'|'monologo', id }
 
-  // ---------------- Libelo e tribunal ----------------
-  libelo: {
-    reuId: null,
-    evidenciasCorpoIds: [],
-    conclusaoCronosId: null,
-    conclusaoMecanismoId: null,
-    conclusaoNexoId: null,
-    descuidosIds: [],
-    motivacaoId: null,
-    perifericos: {},
-  },
   veredicto: null,
 
-  // ---------------- A Construção da Acusação (a cadeia que substitui o Libelo) ----------------
+  // ---------------- A Construção da Acusação (a cadeia) ----------------
   // O jogador AFIRMA (réu, janela, causa, motivo, juízos) e SUSTENTA ligando
   // cartas (os "barbantes"). O significado de cada ligação é derivado das tags
-  // (ver src/logic/acusacao.js). Convive com o `libelo` antigo até a Etapa 4.
+  // (ver src/logic/acusacao.js).
   acusacao: {
     reuId: null,
     janela: { inicio: null, fim: null }, // afirmada pelo jogador (escala absoluta)
@@ -220,56 +208,13 @@ export const useJogo = create((set, get) => ({
     get().consolidarLeituraMestre();
   },
 
-  // O mestre/legista relê o corpo e FALA a leitura de quando/como. Faz upsert
-  // de duas conclusões de id estável (origem 'mestre'), preservando o que o
-  // jogador registrou por conta própria (ex.: o Nexo). Substitui as antigas
-  // gavetas Cronos/Aitiov: a conta é a mesma, mas agora dada por um personagem.
+  // O legista relê o corpo e FALA a leitura de quando/como (a "dica"): faz
+  // upsert de duas conclusões de id estável (origem 'mestre'), exibidas na
+  // Caderneta. NÃO vincula o veredicto — quem afirma a cadeia é o jogador.
   consolidarLeituraMestre: () => {
     const s = get();
     const base = s.conclusoes.filter((c) => c.origem !== 'mestre');
     set({ conclusoes: [...base, ...conclusoesDoMestre(s.cartasRegistradas)] });
-  },
-
-  // Conclusão registrada pelo próprio jogador (hoje, o Nexo; custo zero).
-  registrarConclusao: (conclusao) => {
-    const s = get();
-    const nova = { ...conclusao, id: `conclusao_${proximoIdConclusao++}` };
-    set({
-      conclusoes: [...s.conclusoes, nova],
-      log: [...s.log, { hora: s.horasJogo, texto: `Conclusão registrada: ${nova.titulo}.` }],
-    });
-    return nova;
-  },
-
-  desfazerConclusao: (id) => {
-    const s = get();
-    const conclusao = s.conclusoes.find((c) => c.id === id);
-    if (!conclusao) return;
-    // Limpa referências da conclusão desfeita no Libelo
-    const libelo = { ...s.libelo };
-    if (libelo.conclusaoCronosId === id) libelo.conclusaoCronosId = null;
-    if (libelo.conclusaoMecanismoId === id) libelo.conclusaoMecanismoId = null;
-    if (libelo.conclusaoNexoId === id) libelo.conclusaoNexoId = null;
-    libelo.descuidosIds = libelo.descuidosIds.filter((d) => d !== id);
-    set({
-      conclusoes: s.conclusoes.filter((c) => c.id !== id),
-      libelo,
-      log: [...s.log, { hora: s.horasJogo, texto: `Conclusão desfeita: ${conclusao.titulo}.` }],
-    });
-  },
-
-  atualizarLibelo: (parcial) => set((s) => ({ libelo: { ...s.libelo, ...parcial } })),
-
-  // Submete o Libelo ao tribunal. No tutorial a resubmissão é permitida:
-  // fechar o monólogo devolve o jogador à escrivaninha.
-  submeterLibelo: () => {
-    const s = get();
-    const veredicto = calcularVeredicto(s.libelo, s.conclusoes, s.cartasRegistradas, SEED_TUTORIAL);
-    set({
-      veredicto,
-      overlay: { tipo: 'monologo', id: null },
-      log: [...s.log, { hora: s.horasJogo, texto: 'Libelo submetido ao tribunal.' }],
-    });
   },
 
   // ---------------- Ações da Construção da Acusação ----------------
@@ -314,8 +259,8 @@ export const useJogo = create((set, get) => ({
       acusacao: { ...s.acusacao, ligacoes: s.acusacao.ligacoes.filter((l) => l.id !== id) },
     })),
 
-  // Levar a acusação construída a julgamento (substitui submeterLibelo no
-  // novo caminho). Só aqui o motor julga a cadeia contra a Verdade de Ouro.
+  // Levar a acusação construída a julgamento. Só aqui o motor julga a cadeia
+  // contra a Verdade de Ouro (calcularVeredictoCadeia).
   submeterAcusacao: () => {
     const s = get();
     const veredicto = calcularVeredictoCadeia(s.acusacao, s.cartasRegistradas, SEED_TUTORIAL);

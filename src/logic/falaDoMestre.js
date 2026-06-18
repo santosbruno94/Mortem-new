@@ -8,10 +8,10 @@
 //   • a janela da morte vem de calcularJanelaMorte (src/logic/cronos.js);
 //   • o mecanismo vem de mecanismoCravado (src/data/catalogo_causas.js).
 //
-// Este módulo é puro. `lerCorpo` faz a conta; `falaDoMestre` traduz em fala;
-// `conclusoesDoMestre` empacota a leitura nas mesmas conclusões {tipo:...}
-// que o tribunal (veredicto.js) e o Libelo (QuadroRevelacoes) já consomem —
-// por isso nada desses dois precisa mudar.
+// Este módulo é puro. `lerCorpo` faz a conta; `falaDoMestre` traduz em fala (a
+// DICA exibida no exame do corpo e no mural); `conclusoesDoMestre` empacota a
+// leitura para a Caderneta. NÃO vincula o veredicto — quem afirma a cadeia, e
+// responde por ela, é o jogador (ver src/logic/acusacao.js e veredicto.js).
 //
 // No modo PROCEDURAL não há mestre: a cena traz só a descrição física
 // (sem vozMestre nas cartas) e o jogador, já perito, lê por conta própria.
@@ -69,9 +69,8 @@ export function falaDoMestre(leitura) {
   return { tempo, causa };
 }
 
-// Empacota a leitura do mestre nas conclusões que o Libelo/tribunal leem.
-// IDs ESTÁVEIS para que reconsolidar (a cada exame) não invalide a seleção
-// já feita no Libelo. `origem: 'mestre'` distingue-as do Nexo do jogador.
+// Empacota a leitura do mestre em conclusões de id ESTÁVEL (para reconsolidar
+// a cada exame sem duplicar), exibidas na Caderneta como dica. `origem:'mestre'`.
 export function conclusoesDoMestre(cartas) {
   const { janela, causaId, instrumento } = lerCorpo(cartas);
   const out = [];

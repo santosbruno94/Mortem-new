@@ -10,11 +10,6 @@ export default function Caderneta() {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const conclusoes = useJogo((s) => s.conclusoes);
   const log = useJogo((s) => s.log);
-  const desfazerConclusao = useJogo((s) => s.desfazerConclusao);
-
-  // Só o que o jogador cravou de própria mão é desfazível (Confronto);
-  // a leitura do mestre se refaz sozinha a cada exame.
-  const desfazivel = (c) => c.origem === 'confronto';
 
   return (
     <Overlay titulo="Caderneta" subtitulo="Banco de anotações — reler não custa tempo">
@@ -39,29 +34,16 @@ export default function Caderneta() {
         </ul>
       )}
 
-      {/* Leituras do legista e ligações cravadas no Confronto */}
-      <h3 className="font-serif text-amber-200 text-lg mb-3">Leituras e ligações cravadas</h3>
+      {/* A leitura do legista (a "dica"): refaz-se sozinha a cada exame */}
+      <h3 className="font-serif text-amber-200 text-lg mb-3">Leitura do legista</h3>
       {conclusoes.length === 0 ? (
-        <p className="text-stone-600 text-sm">O legista ainda não cravou leitura, e nada foi ligado.</p>
+        <p className="text-stone-600 text-sm">O legista ainda não tem leitura — examine o corpo.</p>
       ) : (
         <ul className="space-y-2 mb-8">
           {conclusoes.map((c) => (
-            <li
-              key={c.id}
-              className="flex items-start justify-between gap-4 border border-stone-800 rounded-sm px-4 py-3"
-            >
-              <div>
-                <p className="text-stone-300 text-sm font-bold">{c.titulo}</p>
-                <p className="text-stone-500 text-sm">{c.resumo}</p>
-              </div>
-              {desfazivel(c) && (
-                <button
-                  onClick={() => desfazerConclusao(c.id)}
-                  className="text-stone-600 hover:text-amber-200 text-xs tracking-widest shrink-0"
-                >
-                  desfazer
-                </button>
-              )}
+            <li key={c.id} className="border border-stone-800 rounded-sm px-4 py-3">
+              <p className="text-stone-300 text-sm font-bold">{c.titulo}</p>
+              <p className="text-stone-500 text-sm">{c.resumo}</p>
             </li>
           ))}
         </ul>

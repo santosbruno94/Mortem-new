@@ -39,7 +39,7 @@ export default function PainelAlibis() {
       )}
       <p className="mt-6 text-stone-600 text-xs leading-relaxed">
         Este painel registra o que foi declarado, tal como foi declarado. Cotejar cada faixa com a
-        Janela da Morte é ofício de quem assina o libelo.
+        Janela da Morte é ofício de quem constrói a acusação.
       </p>
     </Overlay>
   );
