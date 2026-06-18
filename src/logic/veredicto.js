@@ -87,17 +87,25 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
   if (mecanismoOk) acertos.push({ codigo: 'mecanismo' });
 
   // ---------- Pilar Presença (o vestígio que põe o réu na cena) ----------
-  const vestigioNexo = sustentaPresenca.find(
+  // O vestígio INSTRUMENTAL (casa com a arma E pertence ao réu) é obrigatório:
+  // ligá-lo firma o nexo mesmo que outros vestígios também estejam ligados.
+  // Ligar um traço de TERCEIRO (que não é do réu) é GAFE — condena, mas custa
+  // a Vitória Absoluta. Ligar só o errado (sem o instrumental) falha o nexo.
+  const vestigiosLigados = sustentaPresenca.filter(
     (c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.tipoVestigio
   );
-  const nexoOk =
-    !!vestigioNexo &&
-    vestigioNexo.tagsOcultas.tipoVestigio === seed.instrumentoCorreto &&
-    vestigioNexo.tagsOcultas.pertenceA === acusacao.reuId &&
-    acusacao.reuId === seed.reuCorreto;
-  if (!vestigioNexo) falhas.push({ codigo: 'sem_nexo' });
+  const vestigioNexo = vestigiosLigados.find(
+    (c) =>
+      c.tagsOcultas.tipoVestigio === seed.instrumentoCorreto &&
+      c.tagsOcultas.pertenceA === acusacao.reuId
+  );
+  const nexoOk = !!vestigioNexo && acusacao.reuId === seed.reuCorreto;
+  const vestigioAcessorioErrado =
+    nexoOk && vestigiosLigados.some((c) => c.tagsOcultas.pertenceA !== acusacao.reuId);
+  if (vestigiosLigados.length === 0) falhas.push({ codigo: 'sem_nexo' });
   else if (!nexoOk) falhas.push({ codigo: 'nexo_errado' });
   if (nexoOk) acertos.push({ codigo: 'nexo' });
+  if (vestigioAcessorioErrado) falhas.push({ codigo: 'nexo_acessorio' });
 
   // ---------- Descuidos (a encenação exposta por refutação de hora) ----------
   let encenacaoExposta = false;
@@ -159,7 +167,7 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
     tipo = 'erro_judiciario';
   } else if (!sustentada) {
     tipo = 'impunidade';
-  } else if (janelaPrecisa && motivacaoOk && descuidosOk && perifericosOk) {
+  } else if (janelaPrecisa && motivacaoOk && descuidosOk && perifericosOk && !vestigioAcessorioErrado) {
     tipo = 'vitoria_absoluta';
   } else {
     tipo = 'sucesso_gafes';
@@ -177,7 +185,7 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       janela,
       janelaPrecisa,
       mecanismoDeclarado: causaId,
-      instrumentoDeclarado: vestigioNexo ? vestigioNexo.tagsOcultas.tipoVestigio : null,
+      instrumentoDeclarado: (vestigioNexo || vestigiosLigados[0])?.tagsOcultas.tipoVestigio || null,
       mecanismoCorreto: seed.mecanismoCorreto,
       instrumentoCorreto: seed.instrumentoCorreto,
       motivacaoOk,
