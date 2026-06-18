@@ -42,11 +42,12 @@ const ehVestigioOuAmbiental = (c) =>
 const ehMotivo = (c) => c.tagsOcultas.subDominio === 'motivo';
 
 // Geometria das estações de ligação (coordenadas conhecidas → barbante simples).
-const CARD_W = 168;
-const CARD_H = 72;
-const ESPACO = 18;
+const CARD_W = 176;
+const CARD_H = 78;
+const ESPACO = 22;
 const MARGEM = 16;
-const VAO_LINHAS = 92; // distância vertical entre a fileira de alvos e a de fontes
+const VAO_LINHAS = 104; // respiro vertical entre a fileira de alvos e a de fontes
+const ROTULO_H = 18; // faixa para o rótulo de cada fileira
 
 const ETAPAS = [
   { id: 'corpo', titulo: 'I · O Corpo', subtitulo: 'quando e como' },
@@ -287,7 +288,7 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
 
   return (
     <div className="absolute inset-0 z-50 bg-stone-950/80 flex items-center justify-center p-6">
-      <div className="w-full max-w-2xl max-h-full overflow-auto rounded-sm border-2 border-amber-800/70 bg-stone-900 p-6">
+      <div className="mortem-surgir w-full max-w-2xl max-h-full overflow-auto rounded-sm border-2 border-amber-800/70 bg-stone-900 p-6 shadow-2xl shadow-black/50">
         <h3 className="font-serif text-lg text-amber-200 mb-1">A acusação, como você a montou</h3>
         <p className="text-stone-500 text-xs mb-4">Releia antes de selar. Nada aqui diz se está certo — isso é o julgamento.</p>
 
@@ -419,7 +420,7 @@ function EstacaoAberta({ etapa, ultima, aoConcluir, ...p }) {
       <div className="flex justify-end px-4 pb-3">
         <button
           onClick={aoConcluir}
-          className="px-4 py-1.5 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-xs hover:bg-stone-800"
+          className="px-4 py-1.5 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-xs transition-colors hover:bg-stone-800 hover:border-amber-700"
         >
           {ultima ? 'Concluir' : 'Concluir esta parte →'}
         </button>
@@ -444,7 +445,7 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
         {acusacao.janela.inicio != null && acusacao.janela.fim != null && (
           <p className="text-amber-200/80 text-xs mt-2">{formatJanela(acusacao.janela)}</p>
         )}
-        <p className="text-stone-600 text-[10px] mt-3 mb-2">O que o corpo diz do tempo:</p>
+        <p className="text-stone-500 text-[10px] mt-3 mb-2">O que o corpo diz do tempo:</p>
         <div className="flex flex-col gap-2">
           {temporais.map((c) => (
             <CartaLeitura key={c.id} carta={c} />
@@ -461,7 +462,7 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
             <Opcao key={c.id} ativa={acusacao.causaId === c.id} aoClicar={() => definirCausa(c.id)} rotulo={c.nome} />
           ))}
         </div>
-        <p className="text-stone-600 text-[10px] mt-3 mb-2">O que o corpo diz da causa:</p>
+        <p className="text-stone-500 text-[10px] mt-3 mb-2">O que o corpo diz da causa:</p>
         <div className="flex flex-col gap-2">
           {causais.map((c) => (
             <CartaLeitura key={c.id} carta={c} />
@@ -476,7 +477,10 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
 // Carta de evidência só para leitura (o jogador lê e deduz; não se clica).
 function CartaLeitura({ carta }) {
   return (
-    <div title={carta.descricao} className="rounded-sm px-3 py-2 border border-stone-700 bg-stone-900">
+    <div
+      title={carta.descricao}
+      className="rounded-sm px-3 py-2 border border-stone-700 bg-stone-900 transition-colors hover:border-stone-600"
+    >
       <p className="font-serif text-stone-200 text-xs leading-snug">{carta.textoDisplay}</p>
     </div>
   );
@@ -495,7 +499,7 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
           <Opcao key={sp.id} ativa={acusacao.reuId === sp.id} aoClicar={() => definirReu(sp.id)} rotulo={sp.nome} />
         ))}
       </div>
-      <p className="text-stone-600 text-[10px] mb-2">
+      <p className="text-stone-500 text-[10px] mb-2">
         Ligue à Presença o(s) vestígio(s) que ligam o réu à arma do óbito (clique no vestígio, depois
         na âncora).
       </p>
@@ -505,6 +509,7 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
         ligacoes={acusacao.ligacoes}
         adicionarLigacao={adicionarLigacao}
         removerLigacao={removerLigacao}
+        rotuloFontes="Vestígios coletados"
       />
     </div>
   );
@@ -518,7 +523,7 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
 function EstacaoMentiras({ acusacao, mentirasAlvo, temporais, adicionarLigacao, removerLigacao }) {
   return (
     <div>
-      <p className="text-stone-600 text-[10px] mb-2">
+      <p className="text-stone-500 text-[10px] mb-2">
         Ligue um fato físico do corpo à mentira de hora que ele derruba (clique no fato, depois no depoimento).
       </p>
       <MesaLigacao
@@ -527,6 +532,8 @@ function EstacaoMentiras({ acusacao, mentirasAlvo, temporais, adicionarLigacao, 
         ligacoes={acusacao.ligacoes}
         adicionarLigacao={adicionarLigacao}
         removerLigacao={removerLigacao}
+        rotuloAlvos="As mentiras — depoimentos de hora"
+        rotuloFontes="Os fatos do corpo"
       />
     </div>
   );
@@ -536,13 +543,13 @@ function EstacaoMentiras({ acusacao, mentirasAlvo, temporais, adicionarLigacao, 
 // Mesa de ligação: alvos em cima, fontes embaixo, em posições conhecidas;
 // clique-clique liga (barbante do Estágio 1). Coordenadas fixas → sem medir.
 // ---------------------------------------------------------------------
-function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao }) {
+function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao, rotuloAlvos, rotuloFontes }) {
   const [origem, setOrigem] = useState(null);
 
   const colunas = Math.max(alvos.length, fontes.length, 1);
   const largura = MARGEM * 2 + colunas * (CARD_W + ESPACO) - ESPACO;
-  const yAlvos = MARGEM;
-  const yFontes = MARGEM + CARD_H + VAO_LINHAS;
+  const yAlvos = MARGEM + ROTULO_H;
+  const yFontes = yAlvos + CARD_H + VAO_LINHAS;
   const altura = yFontes + CARD_H + MARGEM;
 
   const idx = {};
@@ -576,6 +583,17 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
 
   // Só desenhamos as ligações cujos DOIS extremos pertencem a esta mesa.
   const linhas = ligacoes.filter((l) => idx[l.de] && idx[l.para]);
+  const conectando = !!origem; // uma carta "na mão" → os alvos acendem
+
+  const rotulo = (texto, y) =>
+    texto ? (
+      <span
+        className="absolute text-stone-500 text-[10px] tracking-[0.2em] uppercase"
+        style={{ left: MARGEM, top: y - ROTULO_H + 2 }}
+      >
+        {texto}
+      </span>
+    ) : null;
 
   return (
     <div
@@ -585,6 +603,9 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
         if (e.target === e.currentTarget) setOrigem(null);
       }}
     >
+      {rotulo(rotuloAlvos, yAlvos)}
+      {rotulo(rotuloFontes, yFontes)}
+
       <svg className="absolute inset-0" width={largura} height={altura} style={{ pointerEvents: 'none' }}>
         {linhas.map((l) => {
           const a = centro(l.de);
@@ -594,32 +615,38 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
         })}
       </svg>
 
-      {[...alvos.map((a) => ({ ...a, fila: 'alvo' })), ...fontes.map((f) => ({ ...f, carta: f, fila: 'fonte' }))].map(
-        (n) => {
-          const c = caixa(n.id);
-          if (!c) return null;
-          const sel = origem === n.id;
-          return (
-            <button
-              key={n.id}
-              onClick={() => aoClicar(n.id)}
-              title={n.ehAncora ? n.rotulo : n.descricao}
-              style={{ left: c.x, top: c.y, width: CARD_W, height: CARD_H }}
-              className={`absolute text-left rounded-sm px-3 py-2 overflow-hidden ${
-                n.ehAncora
-                  ? 'border-2 border-amber-800/70 bg-stone-900'
-                  : 'border bg-stone-900'
-              } ${sel ? 'border-amber-400 ring-2 ring-amber-400 z-20' : n.ehAncora ? '' : 'border-stone-700 hover:border-stone-500'}`}
-            >
-              {n.ehAncora ? (
-                <p className="text-amber-200/80 text-[10px] tracking-[0.15em] uppercase leading-snug">{n.rotulo}</p>
-              ) : (
-                <p className="font-serif text-stone-200 text-xs leading-snug">{n.textoDisplay}</p>
-              )}
-            </button>
-          );
-        }
-      )}
+      {[...alvos.map((a) => ({ ...a, fila: 'alvo' })), ...fontes.map((f) => ({ ...f, fila: 'fonte' }))].map((n) => {
+        const c = caixa(n.id);
+        if (!c) return null;
+        const sel = origem === n.id;
+        return (
+          <button
+            key={n.id}
+            onClick={() => aoClicar(n.id)}
+            title={n.ehAncora ? n.rotulo : n.descricao}
+            style={{ left: c.x, top: c.y, width: CARD_W, height: CARD_H }}
+            className={`absolute text-left rounded-sm px-3 py-2 overflow-hidden transition-all duration-150 ${
+              n.ehAncora ? 'border-2 bg-stone-900' : 'border bg-stone-900'
+            } ${
+              sel
+                ? 'border-amber-400 ring-2 ring-amber-400 z-20 shadow-lg shadow-amber-900/30'
+                : conectando
+                ? n.ehAncora
+                  ? 'border-amber-700/80 hover:border-amber-500'
+                  : 'border-stone-600 hover:border-amber-600/70'
+                : n.ehAncora
+                ? 'border-amber-800/70 hover:border-amber-700'
+                : 'border-stone-700 hover:border-stone-500'
+            }`}
+          >
+            {n.ehAncora ? (
+              <p className="text-amber-200/90 text-[10px] tracking-[0.15em] uppercase leading-snug">{n.rotulo}</p>
+            ) : (
+              <p className="font-serif text-stone-200 text-xs leading-snug">{n.textoDisplay}</p>
+            )}
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -753,10 +780,10 @@ function CartaSelecionavel({ carta, ativa, aoClicar }) {
     <button
       onClick={aoClicar}
       title={carta.descricao}
-      className={`text-left rounded-sm px-2 py-1 border text-xs ${
+      className={`text-left rounded-sm px-2 py-1 border text-xs transition-colors ${
         ativa
           ? 'border-amber-500 bg-stone-950 text-amber-200 ring-1 ring-amber-500/40'
-          : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
+          : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200 hover:border-stone-600'
       }`}
     >
       {carta.textoDisplay}
@@ -883,8 +910,10 @@ function Opcao({ ativa, aoClicar, rotulo }) {
   return (
     <button
       onClick={aoClicar}
-      className={`px-2 py-1 rounded-sm border text-xs text-left ${
-        ativa ? 'border-amber-700 bg-stone-950 text-amber-200' : 'border-stone-800 text-stone-400 hover:text-stone-200'
+      className={`px-2 py-1 rounded-sm border text-xs text-left transition-colors ${
+        ativa
+          ? 'border-amber-700 bg-stone-950 text-amber-200'
+          : 'border-stone-800 text-stone-400 hover:text-stone-200 hover:border-stone-600'
       }`}
     >
       {rotulo}
