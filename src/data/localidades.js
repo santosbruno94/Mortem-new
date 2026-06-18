@@ -49,6 +49,7 @@ export const LOCALIDADES = [
       'E no livro de ocorrências, com a tinta ainda fresca de três semanas, uma [[dep_briga]]: Thomas Blackwood e o relojoeiro, ameaças trocadas diante de meia taverna.',
       'Num bilhete da primeira diligência, Wycliffe anotou a [[dep_visto_vivo]]: a governanta serviu-lhe a ceia antes de a casa adormecer, e foi a última a vê-lo com vida.',
       'E dá fé, ainda, a uma vizinha — [[dep_avistamento_falso]]. "Se a Sra. Gale o viu à janela, o homem amanheceu vivo", repete ele, satisfeito com a sua cronologia.',
+      'Por fim, um relato que lhe acende os olhos: [[dep_acusa_hudson]]. "Se o Pruitt a viu sobre o corpo à meia-noite, {detective.title}, é só prender a governanta e ir jantar." Wycliffe já se vê com o caso fechado.',
     ],
   },
   {

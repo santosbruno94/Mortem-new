@@ -17,7 +17,7 @@
 // =====================================================================
 
 import { useJogo } from '../src/store/jogo.js';
-import { ANCORAS } from '../src/logic/acusacao.js';
+import { ANCORAS, analisarLigacoes, refutacaoDeHoraEstabelecida } from '../src/logic/acusacao.js';
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
@@ -191,6 +191,32 @@ console.log('rigor degradado ainda é válido (não nulo):', degradadoValido);
 console.log('janela durável cobre a verdade:', cobreVerdade);
 
 // ============================================================
+// (f) TESTEMUNHO FALSO + CONTRATO DE JUSTIÇA (Estágio 4).
+// O caseiro Pruitt jura ter visto a governanta matar à meia-noite (00h). O
+// corpo diz 22h: a janela que rigor+livor sustentam fecha por volta das 23h
+// e exclui a meia-noite. O metódico REFUTA pela janela (fato físico); o
+// crente que acredita e acusa a Hudson cai em erro judiciário (réu errado).
+// ============================================================
+reiniciar();
+s().viajarPara('corpo');
+['ev_rigor', 'ev_livores'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('delegacia');
+s().extrairCarta('dep_acusa_hudson');
+['ev_rigor', 'ev_livores'].forEach((id) => ligar(id, 'dep_acusa_hudson'));
+const refFalso = analisarLigacoes(s().acusacao, s().cartasRegistradas).refutaHora.get('dep_acusa_hudson');
+const testemunhoRefutavel = !!refFalso && refutacaoDeHoraEstabelecida(refFalso.alegacao, refFalso.fatos);
+
+reiniciar();
+s().viajarPara('delegacia');
+s().extrairCarta('dep_acusa_hudson');
+s().definirReu('sra_hudson'); // acredita no relato e acusa a governanta
+s().submeterAcusacao();
+const vCrente = s().veredicto;
+console.log('\n=== (f) TESTEMUNHO FALSO ===');
+console.log('falso testemunho refutável pela janela do corpo:', testemunhoRefutavel);
+console.log('crente que acusa a Hudson:', vCrente.tipo);
+
+// ============================================================
 // Fumaça do monólogo: todos os desfechos geram texto.
 // ============================================================
 console.log('\n=== Monólogos gerados (fumaça) ===');
@@ -209,6 +235,8 @@ const checagens = [
   ['Pericial desatento condena com gafes (sucesso_gafes)', vDesatento.tipo === 'sucesso_gafes'],
   ['Degradado perde precisão, não some (rigor resolvido válido)', degradadoValido],
   ['Durável sempre resolve (janela cobre a verdade mesmo tarde)', cobreVerdade],
+  ['Testemunho falso é refutável pela janela do corpo', testemunhoRefutavel],
+  ['Crente no testemunho falso acusa a Hudson → erro_judiciario', vCrente.tipo === 'erro_judiciario'],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

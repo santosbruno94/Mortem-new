@@ -290,6 +290,27 @@ export const CARTAS = [
       isca: true,
     },
   },
+  {
+    id: 'dep_acusa_hudson',
+    localidade: 'delegacia',
+    custoTempo: 1,
+    textoDisplay: 'Caseiro Jura Ter Visto a Governanta',
+    carimboPadrao: 'Relato: a governanta no crime, à meia-noite',
+    descricao:
+      'O Sr. Pruitt, caseiro de uma casa dos fundos, jura à polícia ter visto a Sra. Hudson debruçada sobre o patrão no escritório, "lá pela meia-noite", as mãos no pescoço dele. Vacila sobre o resto — a luz, a janela, a hora —, mas não sobre o nome.',
+    // TESTEMUNHO FALSO (isca): aponta a governanta como autora à meia-noite (00h).
+    // Mente; o corpo, não. É uma ALEGAÇÃO DE HORA — refutável pela gramática que já
+    // existe (refuta_hora): a janela que o corpo sustenta fecha por volta das 23h, e
+    // 00h cai fora dela. O jogador metódico liga um indicador do corpo a esta carta e
+    // a derruba; quem acredita e acusa a Hudson cai em Erro Judiciário (réu errado).
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'avistamento',
+      declaranteId: 'sr_pruitt',
+      horaAvistamentoDeclarada: 0, // 00h00 de 14/out — a morte foi às 22h de 13
+      isca: true,
+    },
+  },
 
   // ===================== INTERROGATÓRIO: EDGAR ARTHURS =====================
   {
