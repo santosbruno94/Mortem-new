@@ -10,7 +10,7 @@ import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
 // A MESA DE CONSTRUÇÃO — o mural com barbante (substitui o Libelo).
 //
 // O jogador AFIRMA a cadeia (réu, janela, causa, motivo, juízos) nas
-// âncoras e a SUSTENTA puxando BARBANTES das cartas até onde elas se
+// âncoras e a SUSTENTA amarrando BARBANTES das cartas até onde elas se
 // encaixam:
 //   • carta temporal → âncora "Quando"   (sustenta a janela)
 //   • carta causal    → âncora "Como"      (sustenta a causa)
@@ -18,6 +18,10 @@ import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
 //   • fato → depoimento (refutação: a mentira/encenação exposta)
 // O significado de cada barbante é DERIVADO das tags (src/logic/acusacao.js).
 // Nada valida até "Levar a julgamento": só o desfecho julga.
+//
+// A ligação é por CLIQUE → CLIQUE: clica-se numa carta (ela fica "na mão"),
+// depois no alvo (âncora ou outra carta), e o barbante se desenha sozinho.
+// Não há arrasto de fio. Arrastar o CORPO da carta apenas a reposiciona.
 // =====================================================================
 
 // Conversão entre o relógio humano (dia 13/14 + hora) e a escala absoluta
@@ -65,7 +69,9 @@ export default function MuralAcusacao() {
     cartasRegistradas.forEach((c, i) => (p[c.id] = posPadraoCarta(i)));
     return p;
   });
-  const [conexaoDe, setConexaoDe] = useState(null);
+  // `origem`: id da carta atualmente "na mão" (à espera do alvo), ou null.
+  // `ghost`: coordenada do cursor, só para desenhar o fio-prévia.
+  const [origem, setOrigem] = useState(null);
   const [ghost, setGhost] = useState(null);
 
   // Garante posição para cartas que apareçam depois (caso o mural seja
@@ -79,35 +85,42 @@ export default function MuralAcusacao() {
     });
   }, [cartasRegistradas]);
 
-  // Puxar o barbante: escuta o ponteiro na janela enquanto a conexão está ativa.
+  // Com uma carta na mão: o fio-prévia segue o cursor e Esc cancela a seleção.
+  // O alvo do clique é tratado pelos próprios nós (cartas e âncoras), não por
+  // escuta global — não há mais arrasto nem `elementFromPoint`.
   useEffect(() => {
-    if (!conexaoDe) return;
+    if (!origem) {
+      setGhost(null);
+      return;
+    }
     function mover(e) {
       const r = canvasRef.current.getBoundingClientRect();
       setGhost({ x: e.clientX - r.left, y: e.clientY - r.top });
     }
-    function soltar(e) {
-      const el = document.elementFromPoint(e.clientX, e.clientY);
-      const noEl = el && el.closest('[data-no]');
-      const para = noEl ? noEl.getAttribute('data-no') : null;
-      if (para && para !== conexaoDe) adicionarLigacao(conexaoDe, para);
-      setConexaoDe(null);
-      setGhost(null);
+    function tecla(e) {
+      if (e.key === 'Escape') setOrigem(null);
     }
     window.addEventListener('pointermove', mover);
-    window.addEventListener('pointerup', soltar);
+    window.addEventListener('keydown', tecla);
     return () => {
       window.removeEventListener('pointermove', mover);
-      window.removeEventListener('pointerup', soltar);
+      window.removeEventListener('keydown', tecla);
     };
-  }, [conexaoDe, adicionarLigacao]);
+  }, [origem]);
 
-  function iniciarConexao(e, id) {
-    e.stopPropagation();
-    e.preventDefault();
-    const r = canvasRef.current.getBoundingClientRect();
-    setGhost({ x: e.clientX - r.left, y: e.clientY - r.top });
-    setConexaoDe(id);
+  // Clique → clique: o 1º clique pega a carta (origem); o 2º amarra ao alvo
+  // (âncora ou outra carta). Clicar de novo na mesma carta cancela.
+  function aoClicarNo(id) {
+    if (!origem) {
+      setOrigem(id);
+      return;
+    }
+    if (origem === id) {
+      setOrigem(null);
+      return;
+    }
+    adicionarLigacao(origem, id);
+    setOrigem(null);
   }
 
   function moverCartaLocal(id, x, y) {
@@ -155,7 +168,7 @@ export default function MuralAcusacao() {
         <div>
           <h2 className="font-serif text-xl text-amber-200">A Construção da Acusação</h2>
           <p className="text-stone-500 text-xs mt-0.5">
-            Afirme nas âncoras; puxe um barbante (o ponto âmbar de cada carta) até onde ela se encaixa. Construir não custa tempo.
+            Clique numa carta para pegá-la; clique na âncora ou noutra carta para amarrar; clique de novo na carta (ou Esc) para soltar. Construir não custa tempo.
           </p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
@@ -192,33 +205,27 @@ export default function MuralAcusacao() {
 
       {/* A superfície (rolável) */}
       <div className="flex-1 overflow-auto bg-gradient-to-b from-stone-950 via-stone-900/40 to-stone-950">
-        <div ref={canvasRef} className="relative" style={{ width: 1360, height: 920 }}>
+        <div
+          ref={canvasRef}
+          className="relative"
+          style={{ width: 1360, height: 920 }}
+          onClick={(e) => {
+            // Clique no fundo da cortiça (não numa carta/âncora/fio) solta a seleção.
+            if (e.target === e.currentTarget) setOrigem(null);
+          }}
+        >
           {/* Camada dos barbantes (não intercepta o ponteiro; as linhas, sim) */}
           <svg className="absolute inset-0" width={1360} height={920} style={{ pointerEvents: 'none' }}>
             {acusacao.ligacoes.map((l) => {
               const a = centro(l.de);
               const b = centro(l.para);
               if (!a || !b) return null;
-              return (
-                <g key={l.id}>
-                  <line
-                    x1={a.x}
-                    y1={a.y}
-                    x2={b.x}
-                    y2={b.y}
-                    stroke="transparent"
-                    strokeWidth={14}
-                    style={{ pointerEvents: 'stroke', cursor: 'pointer' }}
-                    onClick={() => removerLigacao(l.id)}
-                  />
-                  <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#b45309" strokeWidth={2} />
-                </g>
-              );
+              return <Barbante key={l.id} a={a} b={b} aoRemover={() => removerLigacao(l.id)} />;
             })}
-            {conexaoDe &&
+            {origem &&
               ghost &&
               (() => {
-                const a = centro(conexaoDe);
+                const a = centro(origem);
                 if (!a) return null;
                 return (
                   <line x1={a.x} y1={a.y} x2={ghost.x} y2={ghost.y} stroke="#f59e0b" strokeWidth={2} strokeDasharray="4 4" />
@@ -235,25 +242,46 @@ export default function MuralAcusacao() {
             </div>
           </Box>
 
-          <Box pos={BOXES[ANCORAS.quando]} dataNo={ANCORAS.quando} titulo="Quando — a janela" alvo>
+          <Box
+            pos={BOXES[ANCORAS.quando]}
+            dataNo={ANCORAS.quando}
+            titulo="Quando — a janela"
+            alvo
+            conectando={!!origem}
+            aoAmarrar={() => aoClicarNo(ANCORAS.quando)}
+          >
             <SeletorJanela acusacao={acusacao} definirJanela={definirJanela} />
             {acusacao.janela.inicio != null && acusacao.janela.fim != null && (
               <p className="text-amber-200/80 text-xs mt-2">{formatJanela(acusacao.janela)}</p>
             )}
-            <p className="text-stone-600 text-[10px] mt-2">Puxe os indicadores (rigor, livor, algor, visto-vivo) para cá.</p>
+            <p className="text-stone-600 text-[10px] mt-2">Amarre aqui os indicadores (rigor, livor, algor, visto-vivo).</p>
           </Box>
 
-          <Box pos={BOXES[ANCORAS.como]} dataNo={ANCORAS.como} titulo="Como — a causa" alvo>
+          <Box
+            pos={BOXES[ANCORAS.como]}
+            dataNo={ANCORAS.como}
+            titulo="Como — a causa"
+            alvo
+            conectando={!!origem}
+            aoAmarrar={() => aoClicarNo(ANCORAS.como)}
+          >
             <div className="flex flex-col gap-1 max-h-40 overflow-y-auto pr-1">
               {CATALOGO_CAUSAS.map((c) => (
                 <Opcao key={c.id} ativa={acusacao.causaId === c.id} aoClicar={() => definirCausa(c.id)} rotulo={c.nome} />
               ))}
             </div>
-            <p className="text-stone-600 text-[10px] mt-2">Puxe os sinais do corpo para cá.</p>
+            <p className="text-stone-600 text-[10px] mt-2">Amarre aqui os sinais do corpo.</p>
           </Box>
 
-          <Box pos={BOXES[ANCORAS.presenca]} dataNo={ANCORAS.presenca} titulo="Presença — o réu na cena" alvo>
-            <p className="text-stone-500 text-xs">Puxe para cá o vestígio cujo material liga o réu à arma do óbito.</p>
+          <Box
+            pos={BOXES[ANCORAS.presenca]}
+            dataNo={ANCORAS.presenca}
+            titulo="Presença — o réu na cena"
+            alvo
+            conectando={!!origem}
+            aoAmarrar={() => aoClicarNo(ANCORAS.presenca)}
+          >
+            <p className="text-stone-500 text-xs">Amarre aqui o vestígio cujo material liga o réu à arma do óbito.</p>
             {sustentaPresenca.length > 0 && (
               <p className="text-amber-200/70 text-[10px] mt-2">{sustentaPresenca.length} vestígio(s) ligado(s).</p>
             )}
@@ -297,14 +325,15 @@ export default function MuralAcusacao() {
             </Box>
           ))}
 
-          {/* ---------------- Cartas (arrastáveis, com pino de barbante) ---------------- */}
+          {/* ---------------- Cartas (arrastáveis para reposicionar; clique para amarrar) ---------------- */}
           {cartasRegistradas.map((carta) => (
             <CartaNoMural
               key={carta.id}
               carta={carta}
               pos={posCartas[carta.id] || { x: 580, y: 20 }}
               mover={moverCartaLocal}
-              aoIniciarConexao={iniciarConexao}
+              selecionada={origem === carta.id}
+              aoClicar={aoClicarNo}
             />
           ))}
         </div>
@@ -314,20 +343,76 @@ export default function MuralAcusacao() {
 }
 
 // ---------------------------------------------------------------------
-// Âncora fixa (não se arrasta; suas opções recebem clique normalmente).
-// `alvo` marca-a como destino de barbante (data-no).
+// Um barbante já amarrado. Ao surgir, "se desenha sozinho" (a linha avança
+// da origem ao alvo). Depois vira uma linha comum, que acompanha as cartas
+// se elas forem reposicionadas. A linha grossa invisível por cima é a área
+// de clique para REMOVER o barbante.
 // ---------------------------------------------------------------------
-function Box({ pos, titulo, children, dataNo, alvo }) {
+function Barbante({ a, b, aoRemover }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const L = el.getTotalLength();
+    el.style.transition = 'none';
+    el.style.strokeDasharray = String(L);
+    el.style.strokeDashoffset = String(L);
+    void el.getBoundingClientRect(); // aplica o estado inicial antes de animar
+    el.style.transition = 'stroke-dashoffset 350ms ease-out';
+    el.style.strokeDashoffset = '0';
+    const t = setTimeout(() => {
+      const cur = ref.current;
+      if (cur) {
+        cur.style.strokeDasharray = 'none';
+        cur.style.transition = 'none';
+      }
+    }, 380);
+    return () => clearTimeout(t);
+    // animação só na montagem (barbante recém-amarrado)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <g>
+      <line
+        x1={a.x}
+        y1={a.y}
+        x2={b.x}
+        y2={b.y}
+        stroke="transparent"
+        strokeWidth={14}
+        style={{ pointerEvents: 'stroke', cursor: 'pointer' }}
+        onClick={aoRemover}
+      />
+      <line ref={ref} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#b45309" strokeWidth={2} />
+    </g>
+  );
+}
+
+// ---------------------------------------------------------------------
+// Âncora fixa (não se arrasta). Quando há uma carta na mão (`conectando`) e a
+// âncora é um destino (`alvo`), uma camada por cima captura o clique inteiro —
+// amarrar — protegendo os controles internos (causas, seletor de hora).
+// ---------------------------------------------------------------------
+function Box({ pos, titulo, children, dataNo, alvo, conectando, aoAmarrar }) {
   return (
     <div
       data-no={dataNo}
       className={`absolute w-60 rounded-sm px-3 py-2 bg-stone-900 ${
         alvo ? 'border-2 border-amber-800/70' : 'border border-stone-700'
-      }`}
+      } ${conectando ? 'ring-2 ring-amber-500/60' : ''}`}
       style={{ left: pos.x, top: pos.y }}
     >
       <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase mb-2">{titulo}</p>
       {children}
+      {conectando && (
+        <div
+          onClick={aoAmarrar}
+          title="Amarrar aqui"
+          className="absolute inset-0 z-10 cursor-pointer rounded-sm bg-amber-500/5"
+        />
+      )}
     </div>
   );
 }
@@ -412,11 +497,12 @@ function Opcao({ ativa, aoClicar, rotulo }) {
 }
 
 // ---------------------------------------------------------------------
-// Carta arrastável na superfície, com o PINO de barbante no canto.
-// Arrastar o corpo move; pressionar o pino puxa um barbante.
+// Carta na superfície. Arrastar o CORPO (mais que o limiar) reposiciona;
+// um clique simples (sem arrasto) pega a carta ou a amarra ao alvo.
+// O pino âmbar é apenas enfeite — o clique vale na carta inteira.
 // ---------------------------------------------------------------------
 const LIMIAR = 6;
-function CartaNoMural({ carta, pos, mover, aoIniciarConexao }) {
+function CartaNoMural({ carta, pos, mover, selecionada, aoClicar }) {
   const estado = useRef(null);
 
   function down(e) {
@@ -432,7 +518,10 @@ function CartaNoMural({ carta, pos, mover, aoIniciarConexao }) {
     if (a.moveu) mover(carta.id, a.ox + dx, a.oy + dy);
   }
   function up() {
+    const a = estado.current;
     estado.current = null;
+    // Sem arrasto = clique: pega a carta (origem) ou amarra ao alvo.
+    if (a && !a.moveu) aoClicar(carta.id);
   }
 
   return (
@@ -441,18 +530,21 @@ function CartaNoMural({ carta, pos, mover, aoIniciarConexao }) {
       onPointerDown={down}
       onPointerMove={move}
       onPointerUp={up}
-      className="absolute w-44 select-none touch-none cursor-grab active:cursor-grabbing active:z-30"
+      className={`absolute w-44 select-none touch-none cursor-grab active:cursor-grabbing ${
+        selecionada ? 'z-30' : ''
+      }`}
       style={{ left: pos.x, top: pos.y }}
     >
-      <div className="bg-stone-900 border border-stone-700 rounded-sm px-3 py-2 hover:border-stone-500" title={carta.descricao}>
+      <div
+        className={`bg-stone-900 border rounded-sm px-3 py-2 ${
+          selecionada ? 'border-amber-400 ring-2 ring-amber-400' : 'border-stone-700 hover:border-stone-500'
+        }`}
+        title={carta.descricao}
+      >
         <p className="font-serif text-stone-200 text-xs leading-snug pl-3">{carta.textoDisplay}</p>
       </div>
-      {/* O pino: pressionar aqui puxa o barbante */}
-      <span
-        onPointerDown={(e) => aoIniciarConexao(e, carta.id)}
-        title="Puxar um barbante até onde esta carta se encaixa"
-        className="absolute -left-1 -top-1 w-4 h-4 rounded-full bg-amber-500 border border-amber-200 cursor-crosshair hover:bg-amber-300"
-      />
+      {/* O pino: enfeite (o clique vale na carta inteira). */}
+      <span className="absolute -left-1 -top-1 w-4 h-4 rounded-full bg-amber-500 border border-amber-200 pointer-events-none" />
     </div>
   );
 }
