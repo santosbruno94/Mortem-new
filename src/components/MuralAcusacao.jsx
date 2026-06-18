@@ -73,6 +73,7 @@ export default function MuralAcusacao() {
   // `etapaAberta`: qual estação está aberta para edição (ou null = todas recolhidas).
   const [revelado, setRevelado] = useState(1);
   const [etapaAberta, setEtapaAberta] = useState(0);
+  const [revisando, setRevisando] = useState(false); // a revisão final, antes de julgar
 
   // Ligações: helpers usados tanto pelo "assinalar" do Corpo quanto pelo barbante.
   function ligacaoEntre(a, b) {
@@ -169,6 +170,8 @@ export default function MuralAcusacao() {
 
   return (
     <div className="fixed inset-0 z-40 bg-stone-950 flex flex-col">
+      {/* Animação de "a mesa enche": cada etapa surge ao ser revelada. */}
+      <style>{`@keyframes mortemSurgir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.mortem-surgir{animation:mortemSurgir 240ms ease-out}`}</style>
       {/* Cabeçalho */}
       <div className="shrink-0 flex items-start justify-between gap-4 px-6 py-3 border-b border-amber-900/40 bg-stone-900">
         <div>
@@ -180,7 +183,7 @@ export default function MuralAcusacao() {
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <button
-            onClick={submeterAcusacao}
+            onClick={() => setRevisando(true)}
             disabled={!podeSubmeter}
             className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800 disabled:opacity-40 disabled:cursor-not-allowed"
           >
@@ -212,42 +215,134 @@ export default function MuralAcusacao() {
 
       {/* A mesa: pilha vertical de estações que cresce conforme se conclui */}
       <div className="flex-1 overflow-auto bg-gradient-to-b from-stone-950 via-stone-900/40 to-stone-950 p-6 space-y-4">
-        {ETAPAS.slice(0, revelado).map((et, i) =>
-          etapaAberta === i ? (
-            <EstacaoAberta
-              key={et.id}
-              etapa={et}
-              ultima={i === ETAPAS.length - 1}
-              aoConcluir={() => concluir(i)}
-              // dados/ações compartilhados
-              acusacao={acusacao}
-              definirReu={definirReu}
-              definirJanela={definirJanela}
-              definirCausa={definirCausa}
-              definirMotivacao={definirMotivacao}
-              definirJuizo={definirJuizo}
-              adicionarLigacao={adicionarLigacao}
-              removerLigacao={removerLigacao}
-              estaLigada={estaLigada}
-              alternarLigacao={alternarLigacao}
-              cartas={cartas}
-              temporais={temporais}
-              causais={causais}
-              vestigios={vestigios}
-              mentirasAlvo={mentirasAlvo}
-              motivos={motivos}
-              naoAcusados={naoAcusados}
-            />
-          ) : (
-            <ResumoEstacao
-              key={et.id}
-              etapa={et}
-              resumo={resumoDe(et.id)}
-              aoReabrir={() => setEtapaAberta(i)}
-            />
-          )
-        )}
+        {ETAPAS.slice(0, revelado).map((et, i) => (
+          <div key={et.id} className="mortem-surgir">
+            {etapaAberta === i ? (
+              <EstacaoAberta
+                etapa={et}
+                ultima={i === ETAPAS.length - 1}
+                aoConcluir={() => concluir(i)}
+                acusacao={acusacao}
+                definirReu={definirReu}
+                definirJanela={definirJanela}
+                definirCausa={definirCausa}
+                definirMotivacao={definirMotivacao}
+                definirJuizo={definirJuizo}
+                adicionarLigacao={adicionarLigacao}
+                removerLigacao={removerLigacao}
+                estaLigada={estaLigada}
+                alternarLigacao={alternarLigacao}
+                cartas={cartas}
+                temporais={temporais}
+                causais={causais}
+                vestigios={vestigios}
+                mentirasAlvo={mentirasAlvo}
+                motivos={motivos}
+                naoAcusados={naoAcusados}
+              />
+            ) : (
+              <ResumoEstacao etapa={et} resumo={resumoDe(et.id)} aoReabrir={() => setEtapaAberta(i)} />
+            )}
+          </div>
+        ))}
       </div>
+
+      {revisando && (
+        <RevisaoFinal
+          acusacao={acusacao}
+          cartas={cartas}
+          sustentaPresenca={sustentaPresenca}
+          refutaHora={refutaHora}
+          refutaAlibi={refutaAlibi}
+          naoAcusados={naoAcusados}
+          aoVoltar={() => setRevisando(false)}
+          aoConfirmar={() => {
+            setRevisando(false);
+            submeterAcusacao();
+          }}
+        />
+      )}
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------
+// A revisão final: o argumento inteiro, legível, antes de selar. Só lê o que
+// o jogador afirmou — nunca diz se está certo (a verdade é o Monólogo).
+// ---------------------------------------------------------------------
+function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAlibi, naoAcusados, aoVoltar, aoConfirmar }) {
+  const reu = SUSPEITOS.find((s) => s.id === acusacao.reuId);
+  const causa = CATALOGO_CAUSAS.find((c) => c.id === acusacao.causaId);
+  const temJanela = acusacao.janela.inicio != null && acusacao.janela.fim != null;
+  const vestNexo = sustentaPresenca.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.tipoVestigio);
+  const motivo = cartas.find((c) => c.id === acusacao.motivacaoId);
+  const horas = [...refutaHora.values()].map((v) => v.alegacao.termoCarimbo);
+  const semCor = '— por afirmar —';
+
+  const refutaAlibiDe = (sid) => {
+    for (const v of refutaAlibi.values()) if (v.alibi.tagsOcultas.declaranteId === sid) return v.vestigios[0];
+    return null;
+  };
+  const rotuloJuizo = (j) => (j === 'culpado' ? 'Cúmplice' : j === 'inocente' ? 'Inocente' : 'Sem juízo');
+
+  return (
+    <div className="absolute inset-0 z-50 bg-stone-950/80 flex items-center justify-center p-6">
+      <div className="w-full max-w-2xl max-h-full overflow-auto rounded-sm border-2 border-amber-800/70 bg-stone-900 p-6">
+        <h3 className="font-serif text-lg text-amber-200 mb-1">A acusação, como você a montou</h3>
+        <p className="text-stone-500 text-xs mb-4">Releia antes de selar. Nada aqui diz se está certo — isso é o julgamento.</p>
+
+        <dl className="space-y-2 text-sm">
+          <LinhaRev rotulo="Quem" valor={reu ? reu.nome : semCor} />
+          <LinhaRev rotulo="Quando" valor={temJanela ? formatJanela(acusacao.janela) : semCor} />
+          <LinhaRev rotulo="Como" valor={causa ? causa.nome : semCor} />
+          <LinhaRev rotulo="Presença" valor={vestNexo ? vestNexo.textoDisplay : '— nada liga o réu à cena —'} />
+          <LinhaRev rotulo="Mentiras" valor={horas.length ? horas.join(' · ') : '— nenhuma mentira de hora exposta —'} />
+          <LinhaRev rotulo="Móbil" valor={motivo ? motivo.termoCarimbo : semCor} />
+          <div className="flex gap-3">
+            <dt className="text-amber-200/70 text-[10px] tracking-[0.2em] uppercase w-24 shrink-0 pt-0.5">Juízos</dt>
+            <dd className="text-stone-300 flex-1">
+              {naoAcusados.length === 0 ? (
+                <span className="text-stone-500">— sem outros suspeitos —</span>
+              ) : (
+                <div className="flex flex-col gap-0.5">
+                  {naoAcusados.map((sp) => {
+                    const v = refutaAlibiDe(sp.id);
+                    return (
+                      <span key={sp.id}>
+                        {sp.nome}: <span className="text-stone-200">{rotuloJuizo(acusacao.juizos[sp.id])}</span>
+                        {acusacao.juizos[sp.id] === 'inocente' && v && (
+                          <span className="text-stone-500"> — pelo {v.textoDisplay}</span>
+                        )}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+            </dd>
+          </div>
+        </dl>
+
+        <div className="flex justify-end gap-3 mt-6">
+          <button onClick={aoVoltar} className="px-4 py-2 text-stone-400 hover:text-amber-200 text-sm">
+            Voltar e revisar
+          </button>
+          <button
+            onClick={aoConfirmar}
+            className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800"
+          >
+            Confirmar e julgar
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function LinhaRev({ rotulo, valor }) {
+  return (
+    <div className="flex gap-3">
+      <dt className="text-amber-200/70 text-[10px] tracking-[0.2em] uppercase w-24 shrink-0 pt-0.5">{rotulo}</dt>
+      <dd className="text-stone-200 flex-1">{valor}</dd>
     </div>
   );
 }
@@ -257,6 +352,7 @@ export default function MuralAcusacao() {
 // ---------------------------------------------------------------------
 function ResumoEstacao({ etapa, resumo, aoReabrir }) {
   const st = useRef(null);
+  const [puxa, setPuxa] = useState(0); // deslocamento visual enquanto se arrasta
   function down(e) {
     e.currentTarget.setPointerCapture(e.pointerId);
     st.current = { x0: e.clientX, y0: e.clientY };
@@ -264,13 +360,17 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
   function move(e) {
     const a = st.current;
     if (!a) return;
-    if (Math.hypot(e.clientX - a.x0, e.clientY - a.y0) > 24) {
+    const dx = e.clientX - a.x0;
+    setPuxa(Math.max(0, Math.min(dx, 48)));
+    if (Math.hypot(dx, e.clientY - a.y0) > 44) {
       st.current = null;
+      setPuxa(0);
       aoReabrir();
     }
   }
   function up() {
     st.current = null;
+    setPuxa(0);
   }
   return (
     <div
@@ -278,13 +378,18 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
       onPointerMove={move}
       onPointerUp={up}
       title="Arraste para rever esta parte"
-      className="flex items-center justify-between gap-4 px-4 py-2 rounded-sm border border-stone-700 bg-stone-900/70 cursor-grab active:cursor-grabbing select-none touch-none hover:border-amber-800/60"
+      style={{ transform: puxa ? `translateX(${puxa}px)` : undefined }}
+      className={`flex items-center justify-between gap-4 px-4 py-2 rounded-sm border bg-stone-900/70 cursor-grab active:cursor-grabbing select-none touch-none ${
+        puxa ? 'border-amber-600 shadow-lg shadow-black/40' : 'border-stone-700 hover:border-amber-800/60'
+      }`}
     >
       <div className="flex items-baseline gap-3">
         <span className="text-amber-200/80 text-[11px] tracking-[0.2em] uppercase">{etapa.titulo}</span>
         <span className="text-stone-400 text-xs">{resumo}</span>
       </div>
-      <span className="text-stone-600 text-[10px] tracking-widest uppercase">arraste para rever ⟲</span>
+      <span className={`text-[10px] tracking-widest uppercase ${puxa > 24 ? 'text-amber-300' : 'text-stone-600'}`}>
+        {puxa > 24 ? 'solte para rever ⟲' : '⟵ puxe para rever'}
+      </span>
     </div>
   );
 }
