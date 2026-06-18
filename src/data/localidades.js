@@ -34,6 +34,7 @@ export const LOCALIDADES = [
       'Ele está agora no tapete: um [[ev_relogio]], a caixa partida, os ponteiros imóveis sobre as nove em ponto. O Delegado o considera a peça central do caso — e o diz a quem quiser ouvir.',
       'As [[ev_gavetas]] contam uma história curiosa: quem as revirou desprezou o relógio de ouro na corrente do morto e a caixa de soberanos à vista na escrivaninha.',
       'Na porta que dá ao beco, uma [[ev_fechadura]], com lascas de alavanca pelo lado de fora. Junto à gaveta mais funda, quase invisível contra a madeira escura, um [[ev_fio_la]].',
+      'E atrás da estante, caído na sombra onde a vassoura não chega, [[ev_lenco]] — fino, limpo, esquecido com pressa por quem não morava ali.',
     ],
   },
   {

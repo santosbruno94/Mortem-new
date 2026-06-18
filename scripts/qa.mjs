@@ -217,6 +217,36 @@ console.log('falso testemunho refutável pela janela do corpo:', testemunhoRefut
 console.log('crente que acusa a Hudson:', vCrente.tipo);
 
 // ============================================================
+// (g) SEGUNDO RASTRO DO RÉU (presença). Um vestígio do próprio réu (o lenço
+// monogramado, na cena) reforça a presença SEM gafe quando ligado junto ao
+// instrumental (o cânhamo no punho); sozinho, porém, não basta — o nexo
+// continua exigindo o vestígio instrumental.
+// ============================================================
+reiniciar();
+s().viajarPara('cena');
+s().extrairCarta('ev_lenco');
+s().viajarPara('interrogatorio_edgar');
+s().extrairCarta('ev_fibras_manga');
+s().definirReu('edgar_arthurs');
+ligar('ev_fibras_manga', ANCORAS.presenca);
+ligar('ev_lenco', ANCORAS.presenca);
+s().submeterAcusacao();
+const reforcoSemGafe = s().veredicto.falhas.every(
+  (f) => f.codigo !== 'nexo_acessorio' && f.codigo !== 'nexo_errado' && f.codigo !== 'sem_nexo'
+);
+
+reiniciar();
+s().viajarPara('cena');
+s().extrairCarta('ev_lenco');
+s().definirReu('edgar_arthurs');
+ligar('ev_lenco', ANCORAS.presenca);
+s().submeterAcusacao();
+const soLencoFalha = s().veredicto.falhas.some((f) => f.codigo === 'nexo_errado');
+console.log('\n=== (g) SEGUNDO RASTRO DO RÉU ===');
+console.log('lenço + cânhamo reforça sem gafe:', reforcoSemGafe);
+console.log('lenço sozinho falha o nexo (instrumental exigido):', soLencoFalha);
+
+// ============================================================
 // Fumaça do monólogo: todos os desfechos geram texto.
 // ============================================================
 console.log('\n=== Monólogos gerados (fumaça) ===');
@@ -237,6 +267,7 @@ const checagens = [
   ['Durável sempre resolve (janela cobre a verdade mesmo tarde)', cobreVerdade],
   ['Testemunho falso é refutável pela janela do corpo', testemunhoRefutavel],
   ['Crente no testemunho falso acusa a Hudson → erro_judiciario', vCrente.tipo === 'erro_judiciario'],
+  ['Segundo rastro do réu reforça sem gafe; sozinho não basta', reforcoSemGafe && soLencoFalha],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

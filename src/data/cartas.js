@@ -204,6 +204,25 @@ export const CARTAS = [
       revelaSegredo: 'mentira_alibi',
     },
   },
+  {
+    id: 'ev_lenco',
+    localidade: 'cena',
+    custoTempo: 1,
+    textoDisplay: 'Lenço de Linho atrás da Estante',
+    carimboPadrao: 'Lenço com as iniciais "E. A." bordadas',
+    descricao:
+      'Caído na sombra atrás da estante, um lenço de linho fino, de cambraia, com as iniciais "E. A." bordadas a canto. Limpo demais para ser do morto; deixado às pressas.',
+    // Segundo vestígio de PRESENÇA do réu (objeto pessoal seu, na cena). Não é o
+    // instrumental (não casa com a arma), mas pertence ao réu: ligá-lo à Presença
+    // reforça que ele esteve ali, sem gafe. Sozinho não basta — o nexo continua
+    // exigindo o vestígio instrumental (o cânhamo no punho).
+    tagsOcultas: {
+      dominio: 'vestigio',
+      subDominio: 'objeto_pessoal',
+      tipoVestigio: 'lenco_monograma',
+      pertenceA: 'edgar_arthurs',
+    },
+  },
 
   // ===================== A DELEGACIA =====================
   {
