@@ -2,7 +2,7 @@
 
 Jogo de investigação forense em texto e cartas, ambientado na Inglaterra vitoriana (1893).
 Este repositório contém o **vertical slice jogável** do caso tutorial **"O Álibi de Corda"** —
-da tela de título ao Monólogo Final, com os 4 desfechos possíveis.
+da tela de título ao Monólogo do Detetive, com os 4 desfechos possíveis.
 
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md).
 
@@ -31,15 +31,17 @@ node scripts/qa.mjs  # QA estático: traça os perfis de jogador pelo motor
 2. **Abertura** — da pensão em Caulfield ao briefing do Delegado Wycliffe (as perguntas ao
    delegado não custam tempo… mas plantam iscas).
 3. **Investigação** — tudo acontece sobre a escrivaninha. Localidades são cartas: clique para
-   abrir o exame ou o interrogatório como sobreposição. **Termos em negrito** na prosa extraem
-   cartas para a mesa — e isso custa tempo. Evidências do corpo **degradam** se você demorar.
-4. **Raciocínio** — as três gavetas (Cronos, Aitiov, Nexo) processam cartas em conclusões,
-   sem custo de tempo. Declare a hipótese primeiro; a gaveta só diz se ela é *consistente*
-   com as evidências inseridas — nunca se está "certa".
-5. **Libelo** — no Quadro de Revelações, redija a acusação. Lacunas não bloqueiam a
-   submissão; a defesa as explora.
-6. **Tribunal** — o Monólogo Final revela, de uma vez, o que você acertou e errou. No
-   tutorial é permitido revisar o Libelo e resubmeter.
+   **viajar** até lá (só a viagem gasta o relógio) e abrir o exame ou o interrogatório como
+   sobreposição. **Termos em negrito** na prosa extraem cartas para a mesa — examinar **não**
+   custa tempo. O legista vai **falando** a leitura do corpo (uma dica). O perecível (rigor,
+   temperatura) **perde precisão** com as horas, mas nunca some — o durável sempre resolve.
+4. **Construir a acusação** — o botão da parede abre o **mural com barbante**. Você **afirma**
+   a cadeia nas âncoras (réu; janela da morte; causa; motivo; juízo sobre cada outro suspeito) e
+   a **sustenta puxando barbantes** das cartas: indicadores → *Quando*, sinais → *Como*, vestígio
+   → *Presença*, e fatos → depoimentos para **desmentir** uma mentira. Nada diz se você acertou.
+5. **Monólogo do detetive** — "Levar a julgamento" gera o monólogo de um dos **4 desfechos**
+   (Vitória Absoluta, Sucesso com Gafes, Impunidade, Erro Judiciário): cada elo ligado vira uma
+   frase; cada elo faltante, um buraco. No tutorial é permitido revisar a acusação e tentar de novo.
 
 ## Stack
 
@@ -48,8 +50,8 @@ rede em runtime — dados em módulos JS e lógica determinística em funções 
 
 ```
 src/
-  data/         seed, cartas (com tagsOcultas), localidades, glossário, abertura, rótulos
-  logic/        tempo, cronos, aitiov, nexo, veredicto, monólogo, interpolação
-  store/        jogo.js (Zustand: fases, relógio, cartas registradas, conclusões, log)
-  components/   Escrivaninha, gavetas, painéis, Quadro de Revelações, Monólogo Final…
+  data/         seed, catálogo de causas, cartas (com tagsOcultas), localidades, mapa, glossário, abertura, rótulos
+  logic/        tempo, tempo_morte, cronos, acusacao (gramática das ligações), veredicto, falaDoMestre, monólogo, interpolação
+  store/        jogo.js (Zustand: fases, relógio, mapa, cartas registradas, conclusões, acusação, log)
+  components/   Escrivaninha, MuralAcusacao (o mural), EventoLocalidade, painéis, Caderneta, Monólogo do Detetive…
 ```

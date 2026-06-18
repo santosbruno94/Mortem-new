@@ -30,6 +30,24 @@ Um redesign do loop central devolveu agência ao jogador. Onde as seções escri
 
 ---
 
+## 1.2 A Construção da Acusação (jun/2026+) — prevalece sobre §1.1
+
+Um segundo redesign trocou o **ato final**. Onde §1.1, §4, §5, §7, §8 e §11 falarem em **Libelo** (formulário), **Confronto** (overlay separado) ou **tribunal/defesa**, vale o que está aqui:
+
+- **A acusação é CONSTRUÍDA, não preenchida.** O formulário do Libelo e o Confronto separado deram lugar a uma única **mesa de construção — o mural com barbante** (`src/components/MuralAcusacao.jsx`, aberta pelo botão "Construir a Acusação"). O jogador AFIRMA a cadeia nas âncoras e a SUSTENTA **puxando barbantes** das cartas (cada carta tem um pino; a ligação é uma linha em SVG; o alvo sai de `elementFromPoint`).
+- **Dois verbos atômicos**, com o significado **DERIVADO das tags** (`src/logic/acusacao.js`; nunca escrito por caso):
+  - **Sustentação** — um fato apoia uma afirmação positiva: indicador temporal → âncora *Quando*; sinal → *Como*; vestígio → *Presença*.
+  - **Refutação** — um depoimento desmentido por fatos físicos: a hora alegada cai **fora** da janela que os fatos sustentam (encenação exposta), ou o vestígio do próprio declarante o desmente (e, se revela um segredo, a mentira é de vergonha — inocente, não assassino).
+- **O jogador afirma o "quando" e o "como".** A janela (início/fim no relógio dos dois dias) e a causa (do catálogo universal §6.1) são **juízo dele**, sustentados pelas cartas que ele ligar. O legista **continua falando** a leitura — mas como **DICA** (no exame do corpo e na Caderneta), que **não vincula** o veredicto.
+- **A cadeia** soma: Quem · Quando · Como · Presença · Mentiras expostas · Motivo · Juízo sobre cada não-acusado (`culpado` | `inocente` | `sem_juizo`). A armadilha do §2: quebrar a mentira do inocente e julgá-lo *culpado* → **Erro Judiciário**.
+- **O desfecho é o MONÓLOGO DO DETETIVE** (`src/logic/monologo.js`), não um tribunal: cada elo ligado vira uma frase da tese; cada elo faltante ou torto vira o buraco que a narração expõe. Os 4 desfechos seguem, agora medindo a **qualidade da cadeia**.
+- **O julgamento** é `calcularVeredictoCadeia(acusacao, cartasRegistradas, seed)` (`src/logic/veredicto.js`), função pura que lê a **cadeia construída** (não mais `libelo`/`conclusoes`) contra a Verdade de Ouro. **Reaproveitados intactos**: `tempo_morte.js`, `catalogo_causas.js`, `cronos.js`, `monologo.js`, `falaDoMestre.js`. **Removidos**: `QuadroRevelacoes.jsx`, `Confronto.jsx`, `confronto.js` e a antiga `calcularVeredicto`.
+- **Estado**: o `libelo` deu lugar a `acusacao` = `{ reuId, janela:{inicio,fim}, causaId, motivacaoId, juizos, ligacoes }`. `conclusoes` agora guarda **só** a leitura do legista (`origem: 'mestre'`), exibida na Caderneta.
+
+Tudo o mais de §1.1 (relógio mole, perecível perde precisão e o durável sempre resolve, mapa que cresce por leads, extração por clique no negrito) **permanece**.
+
+---
+
 ## 2. O que diferencia MORTEM dos demais jogos de detetive
 
 1. **"Nem todo mentiroso é culpado."** Inocentes mentem por razões próprias (vergonha, medo, autopreservação). A regra estrutural: *a mentira do assassino é inconsistente com a evidência FÍSICA; a mentira do inocente é inconsistente apenas com a MORAL*. O jogo pune pattern-matching preguiçoso ("mentiu → culpado") e recompensa perícia.
@@ -69,9 +87,9 @@ Texto do jogo inteiramente em **português (PT-BR)**, sem anacronismos. Eventos 
 3. **Investigação** — Chegada às 11:00. O relógio só corre ao **VIAJAR** no mapa (§1.1); dentro do local, congela. O jogador alterna entre:
    - **Viajar** entre nós do mapa (custa horas; o mapa cresce por leads);
    - **Examinar** localidades e **interrogar** suspeitos (clicar nos negritos extrai cartas; custo zero) — o legista vai falando a leitura do corpo;
-   - **Confrontar** (cravar a mentira e o nexo) e consultar Glossário, Caderneta, Painel de Álibis (custo zero).
-4. **Libelo** — No Quadro de Revelações, o jogador redige a acusação formal preenchendo um formulário narrativo.
-5. **Tribunal** — O motor compara o Libelo contra a Verdade de Ouro e gera o **Monólogo Final** correspondente a um dos 4 desfechos. Só aqui o jogador descobre o que acertou e errou.
+   - **Construir a acusação** (afirmar e ligar — §1.2) e consultar Glossário, Caderneta, Painel de Álibis (custo zero).
+4. **Construção da Acusação** — Na mesa de construção (o mural com barbante), o jogador afirma a cadeia (réu, janela, causa, motivo, juízos) e a sustenta ligando cartas (§1.2).
+5. **Monólogo do detetive** — O motor compara a cadeia construída contra a Verdade de Ouro e gera o **Monólogo do Detetive** correspondente a um dos 4 desfechos. Só aqui o jogador descobre o que acertou e errou.
 
 ---
 
@@ -80,7 +98,7 @@ Texto do jogo inteiramente em **português (PT-BR)**, sem anacronismos. Eventos 
 O jogador nunca sai desta tela. Layout:
 
 ```
-[      QUADRO DE REVELAÇÕES (parede)      ]
+[     CONSTRUIR A ACUSAÇÃO (parede)       ]
 
 ――――――――――――――――――――――――――――――――――――――――――
 |                                [Relógio]|
@@ -89,18 +107,16 @@ O jogador nunca sai desta tela. Layout:
 |        (cartas soltas + nós do mapa)    |
 |                                         |
 |-----------------------------------------|
-|              [ CONFRONTO ]              |
-|-----------------------------------------|
 [Caderneta]   [Painel de Álibis]  [Glossário]
 ```
 
 - **Relógio de Bolso** (sup. direito): avança apenas ao **VIAJAR** no mapa (§1.1); dentro do local, congela.
 - **Superfície Livre** (centro): cartas arrastáveis e organizáveis, custo zero. **Localidades são nós do mapa** na superfície — não sidebar; clicar **VIAJA** até lá (custa tempo) e abre o evento como overlay (`blur(6px)` + `opacity 0.3`, `position: fixed`). Só aparecem os nós **desbloqueados** (o mapa cresce). Não existe troca de tela.
-- **Confronto** (inferior): onde o jogador cruza a fala com o corpo e crava a mentira e o nexo (§1.1). As gavetas Cronos/Aitiov/Nexo não existem mais.
+- **A Construção da Acusação** (§1.2): o botão da parede abre o **mural com barbante**, onde o jogador afirma a cadeia e a sustenta ligando cartas. O Confronto separado e as gavetas Cronos/Aitiov/Nexo não existem mais.
 - **Caderneta** (overlay, custo zero): log de tudo que foi extraído, registrado e concluído.
 - **Glossário Forense** (overlay, custo zero): referência de época, contexto-sensitivo.
 - **Painel de Álibis** (overlay, custo zero): ver §8.
-- **Quadro de Revelações** (parede): abre o formulário do Libelo.
+- **A parede** (botão "Construir a Acusação"): abre a mesa de construção — o mural (§1.2).
 
 **Regras UX:** nenhuma ação exige mais de 2 cliques; feedback visual imediato; gavetas acendem (verde/escuro) quando carta compatível se aproxima; a interface ensina pela forma, não por texto tutorial.
 
@@ -146,6 +162,8 @@ Consequência: dá para gerar infinitos casos sem escrever uma única "alternati
 
 ## 7. A leitura do mestre e o Confronto (substituem as gavetas — §1.1)
 
+> **Atualização (§1.2):** o Confronto separado foi **absorvido pela Construção da Acusação** (o mural). Os dois verbos — refutação ("mentira") e sustentação ("nexo/presença") — agora são barbantes no mural, e o jogador também **afirma** o quando/como (o mestre virou dica, não decide). O que segue descreve o motor por baixo, ainda válido.
+
 As gavetas Cronos/Aitiov/Nexo foram **removidas**. O "quando" e o "como" deixaram de ser calculados pelo jogador num mostrador e passaram a ser **falados pelo mestre/legista**; o "nexo" e a "mentira" passaram a ser o **ato manual do jogador** no Confronto. O motor por baixo é o mesmo (gramática universal §6.1, funções puras, custo zero) — só mudou a interface, e nada valida durante a investigação (§11).
 
 | Pilar | Antes (gaveta) | Agora |
@@ -165,7 +183,7 @@ A leitura do mestre é refeita a cada exame (`consolidarLeituraMestre`, ids est�
 
 Overlay de consulta intitulado **"Declarações de Paradeiro"**. Lista as cartas de depoimento de álibi já coletadas (`dominio: 'comportamental'`, `subDominio: 'alibi'`) de forma **estritamente neutra**: quem declarou, o que declarou, faixa horária declarada. **Sem marcadores de status** (válido/quebrado), sem cruzamento automático. O jogador compara mentalmente os horários declarados com a Janela da Morte. Modelado sobre a estrutura do Glossário. Custo zero.
 
-**Atualização (§1.1):** o painel segue neutro como referência, mas o **cruzamento ativo** — cravar a mentira ligando uma alegação sobre a hora ao fato do corpo — passou a ser um ATO do jogador no **Confronto**.
+**Atualização (§1.2):** o painel segue neutro como referência, mas o **cruzamento ativo** — desmentir uma alegação sobre a hora ligando-a aos fatos do corpo — é um ATO do jogador na **Construção da Acusação** (o mural): puxa-se um barbante do indicador até o depoimento.
 
 ---
 
@@ -185,6 +203,8 @@ Referência de época, consulta gratuita, overlay com navegação por domínio (
 ---
 
 ## 11. O Libelo e o Monólogo Final
+
+> **Atualização (§1.2):** esta seção descreve o **caminho antigo, já removido**. O Libelo-formulário virou a **Construção da Acusação** (o mural); o estado `libelo` virou `acusacao`; `calcularVeredicto(libelo, …)` virou `calcularVeredictoCadeia(acusacao, …)`; o "Tribunal" virou o **Monólogo do Detetive**. Os **4 desfechos**, o **veredicto como função pura** e o **monólogo por templates universais** descritos abaixo **permanecem válidos** — só mudou de onde os dados vêm (a cadeia construída, não o formulário).
 
 ### Quadro de Revelações (formulário narrativo — redesign do Playtest 6)
 
@@ -299,17 +319,18 @@ Valores invioláveis — o jogo depende deles para ser resolúvel:
 ```
 src/
   data/         seed.js · catalogo_causas.js · cartas.js · localidades.js · mapa.js · curriculo.js · glossario.js · rotulos.js · abertura.js
-  logic/        veredicto.js · tempo_morte.js (modelo universal) · cronos.js · falaDoMestre.js · confronto.js · monologo.js · tempo.js · interpolar.js
-  store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes, log, detective)
-  components/   Escrivaninha · EventoLocalidade · Confronto · QuadroRevelacoes · MonologoFinal ·
+  logic/        veredicto.js (calcularVeredictoCadeia) · acusacao.js (gramática das ligações) · tempo_morte.js (modelo universal) · cronos.js · falaDoMestre.js (dica) · monologo.js · tempo.js · interpolar.js
+  store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes, acusacao, log, detective)
+  components/   Escrivaninha · EventoLocalidade · MuralAcusacao · MonologoFinal ·
                 PainelAlibis · ModalGlossario · Caderneta · TelaPersonagem · TermometroCorpo ·
                 Abertura · Overlay · CartaMesa · RelogioBolso
 ```
 
 **Convenções:**
-- Estado central: `faseJogo`, `detective`, `horasJogo`, `horasChegadaCena`, `localidadeAtual`, `nosDesbloqueados`, `cartasRegistradas`, `conclusoes`, `log`, `temperaturaMedida`.
-- Conclusões são objetos com `origem` (`'mestre'` = leitura auto-consolidada do legista; `'confronto'` = nexo/mentira cravados pelo jogador) e `tagsOcultas` próprias (`tipo: 'janela'|'mecanismo'|'nexo'|'estado_cena'`).
-- A leitura do mestre (`falaDoMestre.js`) e o Confronto (`confronto.js`) são puros e reaproveitam `cronos.js`/`catalogo_causas.js`; nenhuma gaveta sobrou.
+- Estado central: `faseJogo`, `detective`, `horasJogo`, `horasChegadaCena`, `localidadeAtual`, `nosDesbloqueados`, `cartasRegistradas`, `conclusoes`, `acusacao`, `log`, `temperaturaMedida`.
+- `acusacao` (a cadeia, §1.2): `{ reuId, janela:{inicio,fim}, causaId, motivacaoId, juizos:{[id]:'culpado'|'inocente'|'sem_juizo'}, ligacoes:[{id,de,para}] }`. O significado de cada ligação é derivado das tags dos extremos (`acusacao.js`).
+- `conclusoes` guarda **só** a leitura do legista (`origem: 'mestre'`, `tipo: 'janela'|'mecanismo'`), exibida na Caderneta como **dica** — não vincula o veredicto.
+- A leitura do mestre (`falaDoMestre.js`, dica) e a Construção da Acusação (`acusacao.js` + `MuralAcusacao.jsx`, o ato do jogador) são puras e reaproveitam `cronos.js`/`catalogo_causas.js`; nenhuma gaveta sobrou.
 - Código e comentários em português.
 - Repositório: `github.com/santosbruno94/mortem`. Commits entre cada incremento maior.
 
@@ -327,6 +348,7 @@ src/
 | 6 | **Libelo como formulário narrativo** no Quadro de Revelações (réu, quando, como, evidências, nexo, descuidos, motivação, periféricos) gerando monólogo por templates universais |
 | jun/2026 | **Gramática de dedução universal** (§6.1, §7): o caso vira só Verdade de Ouro + pistas; o motor ganha catálogo universal de causas e modelo forense de tempo. Gavetas viram livro-caixa (registram sem validar); Cronos triangula a hora, Aitiov elimina causas no catálogo. Fim das listas de alternativas por caso |
 | **Redesign Core Loop** (jun/2026+) | **§1.1**: relógio MOLE no mapa (tempo só na viagem; perecível perde precisão, durável sempre resolve); gavetas Cronos/Aitiov/Nexo **removidas** — o legista fala quando/como, o jogador crava nexo+mentira no **Confronto**; carta mostra observação crua; banco de anotações; mapa que cresce por leads. Veredicto/monólogo intactos |
+| **Construção da Acusação** (jun/2026+) | **§1.2**: o ato final deixa de ser formulário+tribunal e vira o **mural com barbante** — o jogador AFIRMA a cadeia (quem/quando/como/motivo/juízos) e a sustenta LIGANDO cartas (sustentação e refutação, derivadas das tags). O legista vira **dica**; o desfecho vira o **Monólogo do Detetive**; `calcularVeredictoCadeia` lê a cadeia construída. Removidos: Libelo (`QuadroRevelacoes`), `Confronto`, `confronto.js` e a antiga `calcularVeredicto` |
 
 ---
 
