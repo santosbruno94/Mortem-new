@@ -391,15 +391,16 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
         ))}
       </div>
       <p className="text-stone-600 text-[10px] mb-2">
-        Pegue um vestígio e ligue-o à âncora da Presença (clique no vestígio, depois na âncora).
+        Ligue à Presença <span className="text-stone-400">um</span> vestígio — o que liga o réu à arma do
+        óbito (clique no vestígio, depois na âncora). Ligar outro troca o anterior.
       </p>
       <MesaLigacao
         alvos={[alvo]}
         fontes={vestigios}
         ligacoes={acusacao.ligacoes}
-        estaLigada={estaLigada}
         adicionarLigacao={adicionarLigacao}
         removerLigacao={removerLigacao}
+        alvoUnico
       />
     </div>
   );
@@ -431,7 +432,7 @@ function EstacaoMentiras({ acusacao, mentirasAlvo, temporais, adicionarLigacao, 
 // Mesa de ligação: alvos em cima, fontes embaixo, em posições conhecidas;
 // clique-clique liga (barbante do Estágio 1). Coordenadas fixas → sem medir.
 // ---------------------------------------------------------------------
-function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao }) {
+function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao, alvoUnico }) {
   const [origem, setOrigem] = useState(null);
 
   const colunas = Math.max(alvos.length, fontes.length, 1);
@@ -464,6 +465,11 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
     if (origem === id) {
       setOrigem(null);
       return;
+    }
+    // Alvo exclusivo (ex.: a Presença é UM vestígio): ligar um novo troca o anterior.
+    if (alvoUnico) {
+      const alvoId = idx[id]?.fila === 'alvo' ? id : idx[origem]?.fila === 'alvo' ? origem : null;
+      if (alvoId) ligacoes.filter((l) => l.de === alvoId || l.para === alvoId).forEach((l) => removerLigacao(l.id));
     }
     adicionarLigacao(origem, id);
     setOrigem(null);
