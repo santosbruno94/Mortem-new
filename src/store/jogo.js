@@ -164,10 +164,10 @@ export const useJogo = create((set, get) => ({
       carta = {
         id: 'ev_algor',
         localidade: 'corpo',
-        textoDisplay: 'Corpo em Equilíbrio Térmico',
-        termoCarimbo: 'Algor: equilíbrio térmico (≥26h)',
+        textoDisplay: 'Corpo Frio como a Sala',
+        termoCarimbo: 'Corpo tão frio quanto a sala',
         descricao:
-          'O termômetro marca os 11°C do próprio escritório: o corpo já igualou a sala. O algor perdeu a precisão — agora só diz que a morte foi há mais de um dia. Não some, mas pouco aperta.',
+          'O termômetro marca os 11°C do próprio escritório: o corpo esfriou até igualar a sala. Isso já não aperta a hora — diz só que a morte foi há mais de um dia.',
         vozMestre: 'Frio como a sala. O calor já não conta as horas — só diz que faz tempo.',
         // Equilíbrio: leitura VAGA, não nula. Carrega a temperatura medida
         // (== ambiente); o modelo devolve um piso largo (perde precisão).
@@ -184,8 +184,8 @@ export const useJogo = create((set, get) => ({
       carta = {
         id: 'ev_algor',
         localidade: 'corpo',
-        textoDisplay: `Temperatura Corporal: ${temperatura}°C`,
-        termoCarimbo: `Algor Mortis: ${temperatura}°C (ambiente 11°C)`,
+        textoDisplay: `Corpo Ainda Morno: ${temperatura}°C`,
+        termoCarimbo: `Corpo a ${temperatura}°C (sala a 11°C)`,
         descricao: `O mercúrio detém-se nos ${temperatura}°C, contra 11°C do escritório. A perda de calor, a um grau por hora, fala de ${horasEstimadas - 2} a ${horasEstimadas + 2} horas decorridas.`,
         vozMestre: 'Ainda morno. O calor que perdeu conta as horas — um grau a cada uma delas.',
         // Carrega a leitura BRUTA (temperatura medida + ambiente); a janela

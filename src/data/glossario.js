@@ -22,7 +22,7 @@ export const GLOSSARIO = [
     definicao:
       'Enrijecimento muscular cadavérico. Surge de 2 a 4 horas após a morte, em sequência céfalo-caudal (mandíbula primeiro, membros por último); atinge o pleno por volta de 12 horas; desfaz-se, na mesma ordem, entre 24 e 36 horas.',
     sinalObservavel:
-      'Articulações que resistem à flexão. Rigidez generalizada indica entre 12 e 24 horas de morte; rigidez que já cede, entre 24 e 36.',
+      'O corpo duro, os membros que não dobram: morte entre 12 e 24 horas. Quando a dureza já começa a ceder (o maxilar dobra, os joelhos ainda não), entre 24 e 36.',
   },
   {
     id: 'livor_mortis',
@@ -31,7 +31,7 @@ export const GLOSSARIO = [
     definicao:
       'Manchas violáceas formadas pelo sangue que, sem circulação, desce por gravidade às partes baixas do corpo. Surgem em 1 a 2 horas; tornam-se fixas — não esmaecem sob pressão — após cerca de 12 horas.',
     sinalObservavel:
-      'Manchas vinhosas nas partes de apoio do corpo. Se não somem sob a pressão do dedo, a morte data de 12 horas ou mais.',
+      'Manchas arroxeadas nas partes de baixo do corpo. Se não empalidecem quando se aperta com o dedo, a morte data de 12 horas ou mais.',
   },
   {
     id: 'algor_mortis',
@@ -40,7 +40,7 @@ export const GLOSSARIO = [
     definicao:
       'Resfriamento cadavérico: o corpo perde cerca de 1°C por hora a partir dos 37°C, até igualar a temperatura ambiente. Igualado o ambiente, o sinal nada mais informa.',
     sinalObservavel:
-      'Temperatura retal medida ao termômetro. A diferença para os 37°C, em graus, aproxima as horas decorridas — com margem prudente de duas horas para mais e para menos.',
+      'O corpo ainda morno ao toque, medido ao termômetro. A diferença para os 37°C, em graus, aproxima as horas decorridas — com margem prudente de duas horas para mais e para menos.',
   },
   {
     id: 'ipm_convergencia',
@@ -62,7 +62,7 @@ export const GLOSSARIO = [
     dominio: 'causal',
     definicao:
       'Hemorragias puntiformes nas conjuntivas e coloração azulada da face, produzidas pela interrupção da respiração com o coração ainda em luta. Assinalam a FAMÍLIA da asfixia — sem, por si só, dizer o meio (ligadura, enforcamento, esganadura, sufocação ou afogamento).',
-    sinalObservavel: 'Pontos vermelhos no branco dos olhos; face e lábios azulados. Excluem veneno e trauma; não distinguem entre as asfixias.',
+    sinalObservavel: 'Pontinhos de sangue no branco dos olhos; face e lábios azulados. Excluem veneno e trauma; não distinguem entre as asfixias.',
   },
   {
     id: 'sulco_horizontal',
@@ -70,7 +70,7 @@ export const GLOSSARIO = [
     dominio: 'causal',
     definicao:
       'Marca deixada por ligadura (corda, cinto, cordão) apertada em volta do pescoço por mãos alheias: o sulco corre em plano horizontal e uniforme. É a assinatura do estrangulamento por ligadura.',
-    sinalObservavel: 'Sulco contínuo, de profundidade pareja, circundando o pescoço na horizontal. Sua presença afasta o enforcamento, a esganadura e tudo que não seja ligadura.',
+    sinalObservavel: 'Marca contínua e funda, de profundidade pareja, dando a volta no pescoço na horizontal (sem subir em diagonal). Sua presença afasta o enforcamento, a esganadura e tudo que não seja ligadura.',
   },
   {
     id: 'sulco_obliquo',

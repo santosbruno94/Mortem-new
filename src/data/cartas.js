@@ -29,10 +29,10 @@ export const CARTAS = [
     estados: [
       {
         ipmAte: 24,
-        textoDisplay: 'Articulações Rígidas',
-        carimboPadrao: 'Rigor Mortis Pleno',
+        textoDisplay: 'Corpo Endurecido',
+        carimboPadrao: 'Duro dos maxilares aos joelhos',
         descricao:
-          'Mandíbula, pescoço e membros oferecem resistência total à flexão. A rigidez tomou o corpo inteiro.',
+          'Maxilar, pescoço e membros não cedem quando se tenta dobrá-los: o corpo enrijeceu por inteiro.',
         vozMestre: 'Rígido dos maxilares aos joelhos — isto é de horas, não de minutos. Entre doze e vinte e quatro, eu diria.',
         // A carta carrega o ESTADO observado bruto; quem o converte numa
         // janela é o modelo forense universal (src/logic/tempo_morte.js).
@@ -45,10 +45,10 @@ export const CARTAS = [
       },
       {
         ipmAte: 36,
-        textoDisplay: 'Rigidez em Dissolução',
-        carimboPadrao: 'Rigor Mortis em Resolução',
+        textoDisplay: 'Rigidez Cedendo',
+        carimboPadrao: 'O maxilar já dobra; os joelhos ainda não',
         descricao:
-          'A mandíbula já cede; os joelhos ainda resistem. A rigidez se desfaz na mesma ordem em que veio.',
+          'O maxilar já dobra; os joelhos ainda resistem. A dureza some na mesma ordem em que chegou.',
         vozMestre: 'A rigidez já cede. Passou da véspera — e a hora exata começa a escapar entre os dedos.',
         tagsOcultas: {
           dominio: 'temporal',
@@ -60,9 +60,9 @@ export const CARTAS = [
       {
         ipmAte: null,
         textoDisplay: 'Corpo Flácido',
-        carimboPadrao: 'Rigor Resolvido — morto há mais de um dia',
+        carimboPadrao: 'Corpo mole, sem nenhuma rigidez',
         descricao:
-          'Nenhuma resistência articular: o rigor já se desfez por completo. Não aponta mais a hora exata — apenas que a morte foi há mais de um dia. Perdeu a precisão, não o valor.',
+          'Os membros dobram sem nenhuma resistência: a dureza já passou por completo. Isso já não marca a hora exata — diz apenas que faz mais de um dia.',
         vozMestre: 'Frouxo de todo. O rigor já não me serve: só posso jurar que faz mais de um dia.',
         // Degradado, porém AINDA VÁLIDO (relógio mole): o modelo o lê como
         // janela larga [36h, +∞), jamais nula. Ver tempo_morte.js (rigor.resolvido).
@@ -79,10 +79,10 @@ export const CARTAS = [
     id: 'ev_livores',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Manchas Violáceas no Dorso',
-    carimboPadrao: 'Livores Fixos',
+    textoDisplay: 'Manchas Arroxeadas nas Costas',
+    carimboPadrao: 'Manchas que não empalidecem ao apertar',
     descricao:
-      'Manchas vinhosas cobrem as costas e a face posterior das pernas. Não esmaecem sob a pressão do polegar: estão fixas.',
+      'Manchas vinhosas cobrem as costas e a parte de trás das pernas. Não empalidecem quando se aperta com o polegar.',
     vozMestre: 'As manchas fixaram-se nas costas e não cedem ao polegar — morto há meia jornada ao menos. E deitado assim desde então: ninguém o virou.',
     tagsOcultas: {
       dominio: 'temporal',
@@ -95,10 +95,10 @@ export const CARTAS = [
     id: 'ev_sulco',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Sulco Horizontal no Pescoço',
-    carimboPadrao: 'Sulco Cervical Horizontal',
+    textoDisplay: 'Marca Reta em Volta do Pescoço',
+    carimboPadrao: 'Marca funda e reta dando a volta no pescoço',
     descricao:
-      'Um sulco uniforme circunda o pescoço em plano horizontal, sem o trajeto ascendente que a suspensão de um corpo desenharia.',
+      'Uma marca funda e pareja dá a volta no pescoço na horizontal, sem subir em diagonal como deixaria um corpo pendurado.',
     vozMestre: 'Repare no sulco: reto, horizontal. Não é de forca — é de laço apertado por trás, por mãos alheias.',
     // Sinal de ASSINATURA do catálogo universal: crava a ligadura e
     // descarta as demais causas (ver src/data/catalogo_causas.js).
@@ -112,10 +112,10 @@ export const CARTAS = [
     id: 'ev_petequias',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Pontos Vermelhos nas Conjuntivas',
-    carimboPadrao: 'Petéquias Conjuntivais',
+    textoDisplay: 'Pontinhos Vermelhos no Branco dos Olhos',
+    carimboPadrao: 'Pontinhos de sangue nos olhos; face azulada',
     descricao:
-      'Hemorragias puntiformes salpicam o branco dos olhos. A face guarda um tom azulado.',
+      'Pontinhos de sangue salpicam o branco dos olhos. A face e os lábios guardam um tom azulado.',
     vozMestre: 'Esses pontos nos olhos, esse azul na face — asfixia. Sufocou. De que modo, é o sulco que dirá.',
     // Sinal de FAMÍLIA: aponta asfixia (descarta veneno e trauma), mas não
     // diz qual asfixia — é preciso o sinal de assinatura para cravar.
@@ -129,10 +129,10 @@ export const CARTAS = [
     id: 'ev_fibras_sulco',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Fibras Claras Incrustadas no Sulco',
-    carimboPadrao: 'Fibras de Cânhamo no Sulco',
+    textoDisplay: 'Fibras Claras Presas na Marca do Pescoço',
+    carimboPadrao: 'Fibras de Cânhamo na Marca do Pescoço',
     descricao:
-      'Sob a lente, filamentos vegetais claros, torcidos, presos à pele do sulco. Cânhamo de corda comum.',
+      'Sob a lente, filamentos vegetais claros e torcidos, presos à pele da marca. Cânhamo de corda comum.',
     vozMestre: 'Cânhamo, preso no sulco. A corda que o matou era de cânhamo comum — guarde isso.',
     tagsOcultas: {
       dominio: 'causal',
