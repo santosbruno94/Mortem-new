@@ -46,9 +46,6 @@ SUSPEITOS.forEach((sp, i) => {
 });
 
 const PINO = 14; // deslocamento do ponto de amarração (canto superior-esquerdo)
-function posPadraoCarta(i) {
-  return { x: 580 + (i % 4) * 186, y: 20 + Math.floor(i / 4) * 118 };
-}
 
 export default function MuralAcusacao() {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
@@ -64,26 +61,13 @@ export default function MuralAcusacao() {
   const fecharOverlay = useJogo((s) => s.fecharOverlay);
 
   const canvasRef = useRef(null);
-  const [posCartas, setPosCartas] = useState(() => {
-    const p = {};
-    cartasRegistradas.forEach((c, i) => (p[c.id] = posPadraoCarta(i)));
-    return p;
-  });
-  // `origem`: id da carta atualmente "na mão" (à espera do alvo), ou null.
+  // posCartas guarda só as cartas JÁ espetadas na cortiça (id → {x,y}). Cartas
+  // sem entrada aqui ainda estão na bandeja. A cortiça começa vazia.
+  const [posCartas, setPosCartas] = useState({});
+  // `origem`: id da carta na mão (vinda da bandeja ou já na cortiça), ou null.
   // `ghost`: coordenada do cursor, só para desenhar o fio-prévia.
   const [origem, setOrigem] = useState(null);
   const [ghost, setGhost] = useState(null);
-
-  // Garante posição para cartas que apareçam depois (caso o mural seja
-  // reaberto com novas cartas extraídas no intervalo).
-  useEffect(() => {
-    setPosCartas((atual) => {
-      const p = { ...atual };
-      let n = Object.keys(atual).length;
-      for (const c of cartasRegistradas) if (!p[c.id]) p[c.id] = posPadraoCarta(n++);
-      return p;
-    });
-  }, [cartasRegistradas]);
 
   // Com uma carta na mão: o fio-prévia segue o cursor e Esc cancela a seleção.
   // O alvo do clique é tratado pelos próprios nós (cartas e âncoras), não por
@@ -108,8 +92,18 @@ export default function MuralAcusacao() {
     };
   }, [origem]);
 
-  // Clique → clique: o 1º clique pega a carta (origem); o 2º amarra ao alvo
-  // (âncora ou outra carta). Clicar de novo na mesma carta cancela.
+  // Uma carta está "na cortiça" quando já foi espetada (tem posição); senão,
+  // está na bandeja.
+  const naCortica = (id) => !!posCartas[id];
+
+  // Pegar/soltar uma carta da bandeja (nunca amarra — só ergue para espetar).
+  function pegarDaBandeja(id) {
+    setOrigem((atual) => (atual === id ? null : id));
+  }
+
+  // Clique → clique entre nós da CORTIÇA: o 1º clique pega a carta; o 2º amarra
+  // ao alvo (âncora ou outra carta). Clicar de novo na mesma cancela. Só amarra
+  // se a carta na mão já está espetada (a da bandeja precisa ser espetada antes).
   function aoClicarNo(id) {
     if (!origem) {
       setOrigem(id);
@@ -119,10 +113,13 @@ export default function MuralAcusacao() {
       setOrigem(null);
       return;
     }
-    adicionarLigacao(origem, id);
-    setOrigem(null);
+    if (naCortica(origem)) {
+      adicionarLigacao(origem, id);
+      setOrigem(null);
+    }
   }
 
+  // Espeta/reposiciona uma carta na cortiça (clamp para dentro da superfície).
   function moverCartaLocal(id, x, y) {
     setPosCartas((p) => ({ ...p, [id]: { x: Math.max(0, x), y: Math.max(0, y) } }));
   }
@@ -153,6 +150,10 @@ export default function MuralAcusacao() {
 
   const dica = falaDoMestre(lerCorpo(cartasRegistradas));
   const podeSubmeter = !!acusacao.reuId;
+  // Carta da CORTIÇA na mão → as âncoras viram alvo de amarração.
+  const amarrando = !!origem && naCortica(origem);
+  // A bandeja mostra as cartas ainda não espetadas, na ordem de coleta.
+  const cartasBandeja = cartasRegistradas.filter((c) => !posCartas[c.id]);
 
   const cartasMotivo = cartasRegistradas.filter(
     (c) =>
@@ -168,7 +169,7 @@ export default function MuralAcusacao() {
         <div>
           <h2 className="font-serif text-xl text-amber-200">A Construção da Acusação</h2>
           <p className="text-stone-500 text-xs mt-0.5">
-            Clique numa carta para pegá-la; clique na âncora ou noutra carta para amarrar; clique de novo na carta (ou Esc) para soltar. Construir não custa tempo.
+            Pegue uma carta na bandeja e espete-a num vão da cortiça; depois clique nela e numa âncora (ou noutra carta) para amarrar. Esc ou o fundo solta. Construir não custa tempo.
           </p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
@@ -210,8 +211,15 @@ export default function MuralAcusacao() {
           className="relative"
           style={{ width: 1360, height: 920 }}
           onClick={(e) => {
-            // Clique no fundo da cortiça (não numa carta/âncora/fio) solta a seleção.
-            if (e.target === e.currentTarget) setOrigem(null);
+            if (e.target !== e.currentTarget) return; // só reage ao fundo da cortiça
+            if (origem && !naCortica(origem)) {
+              // Carta da bandeja na mão: espeta no ponto clicado (sem fio).
+              const r = canvasRef.current.getBoundingClientRect();
+              moverCartaLocal(origem, e.clientX - r.left - PINO, e.clientY - r.top - PINO);
+              setOrigem(null);
+            } else {
+              setOrigem(null); // fundo vazio solta a seleção
+            }
           }}
         >
           {/* Camada dos barbantes (não intercepta o ponteiro; as linhas, sim) */}
@@ -247,7 +255,7 @@ export default function MuralAcusacao() {
             dataNo={ANCORAS.quando}
             titulo="Quando — a janela"
             alvo
-            conectando={!!origem}
+            conectando={amarrando}
             aoAmarrar={() => aoClicarNo(ANCORAS.quando)}
           >
             <SeletorJanela acusacao={acusacao} definirJanela={definirJanela} />
@@ -262,7 +270,7 @@ export default function MuralAcusacao() {
             dataNo={ANCORAS.como}
             titulo="Como — a causa"
             alvo
-            conectando={!!origem}
+            conectando={amarrando}
             aoAmarrar={() => aoClicarNo(ANCORAS.como)}
           >
             <div className="flex flex-col gap-1 max-h-40 overflow-y-auto pr-1">
@@ -278,7 +286,7 @@ export default function MuralAcusacao() {
             dataNo={ANCORAS.presenca}
             titulo="Presença — o réu na cena"
             alvo
-            conectando={!!origem}
+            conectando={amarrando}
             aoAmarrar={() => aoClicarNo(ANCORAS.presenca)}
           >
             <p className="text-stone-500 text-xs">Amarre aqui o vestígio cujo material liga o réu à arma do óbito.</p>
@@ -325,18 +333,60 @@ export default function MuralAcusacao() {
             </Box>
           ))}
 
-          {/* ---------------- Cartas (arrastáveis para reposicionar; clique para amarrar) ---------------- */}
-          {cartasRegistradas.map((carta) => (
-            <CartaNoMural
-              key={carta.id}
-              carta={carta}
-              pos={posCartas[carta.id] || { x: 580, y: 20 }}
-              mover={moverCartaLocal}
-              selecionada={origem === carta.id}
-              aoClicar={aoClicarNo}
-            />
-          ))}
+          {/* ---------------- Cartas espetadas (arrastar reposiciona; clicar amarra) ---------------- */}
+          {cartasRegistradas
+            .filter((carta) => posCartas[carta.id])
+            .map((carta) => (
+              <CartaNoMural
+                key={carta.id}
+                carta={carta}
+                pos={posCartas[carta.id]}
+                mover={moverCartaLocal}
+                selecionada={origem === carta.id}
+                aoClicar={aoClicarNo}
+              />
+            ))}
         </div>
+      </div>
+
+      {/* A bandeja — o maço coletado (rodapé) */}
+      <Bandeja cartas={cartasBandeja} origem={origem} aoClicar={pegarDaBandeja} />
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------
+// A bandeja: o maço coletado, no rodapé. Mostra TODAS as cartas ainda não
+// espetadas, na ordem de coleta — sem ordenar, filtrar ou destacar "relevância".
+// Clicar numa carta a ergue (para depois espetá-la num vão da cortiça).
+// ---------------------------------------------------------------------
+function Bandeja({ cartas, origem, aoClicar }) {
+  return (
+    <div className="shrink-0 border-t border-amber-900/40 bg-stone-900/80 px-4 pt-2 pb-3">
+      <div className="flex items-baseline gap-3 mb-1.5">
+        <span className="text-amber-200/70 text-[10px] tracking-[0.2em] uppercase">A bandeja — o maço coletado</span>
+        <span className="text-stone-600 text-[10px]">
+          {cartas.length === 0
+            ? 'tudo espetado no mural'
+            : `${cartas.length} carta(s) — clique para pegar, depois clique num vão da cortiça`}
+        </span>
+      </div>
+      <div className="flex gap-2 overflow-x-auto pb-1">
+        {cartas.map((carta) => {
+          const sel = origem === carta.id;
+          return (
+            <button
+              key={carta.id}
+              onClick={() => aoClicar(carta.id)}
+              title={carta.descricao}
+              className={`shrink-0 w-44 text-left bg-stone-900 border rounded-sm px-3 py-2 ${
+                sel ? 'border-amber-400 ring-2 ring-amber-400' : 'border-stone-700 hover:border-stone-500'
+              }`}
+            >
+              <p className="font-serif text-stone-200 text-xs leading-snug">{carta.textoDisplay}</p>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
