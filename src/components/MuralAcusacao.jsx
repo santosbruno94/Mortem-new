@@ -39,8 +39,6 @@ const ehTemporal = (c) => c.tagsOcultas.dominio === 'temporal';
 const ehCausal = (c) => c.tagsOcultas.dominio === 'causal';
 const ehVestigioOuAmbiental = (c) =>
   c.tagsOcultas.dominio === 'vestigio' || c.tagsOcultas.dominio === 'ambiental';
-const ehVestigioPuro = (c) => c.tagsOcultas.dominio === 'vestigio';
-const ehAlibi = (c) => c.tagsOcultas.subDominio === 'alibi';
 const ehMotivo = (c) => c.tagsOcultas.subDominio === 'motivo';
 
 // Geometria das estações de ligação (coordenadas conhecidas → barbante simples).
@@ -95,11 +93,22 @@ export default function MuralAcusacao() {
   const temporais = cartas.filter(ehTemporal);
   const causais = cartas.filter(ehCausal);
   const vestigios = cartas.filter(ehVestigioOuAmbiental);
-  const mentirasAlvo = cartas.filter((c) => ehAlibi(c) || horaAlegada(c) !== null);
-  const fatosFisicos = cartas.filter((c) => ehTemporal(c) || ehVestigioPuro(c));
+  const mentirasAlvo = cartas.filter((c) => horaAlegada(c) !== null); // só as mentiras de HORA
   const motivos = cartas.filter(
     (c) => ehMotivo(c) && (!acusacao.reuId || c.tagsOcultas.ligadoA === acusacao.reuId)
   );
+
+  // O CORPO é lido, não selecionado: as evidências do corpo que o jogador
+  // COLETOU entram automaticamente como base (a mesma ligação que o motor lê),
+  // para o motor seguir julgando a hora/causa. A dedução continua sendo declarar
+  // a janela e a causa certas — e, sem o sinal que distingue a causa, ela não crava.
+  useEffect(() => {
+    cartas.forEach((c) => {
+      if (c.tagsOcultas.dominio === 'temporal') adicionarLigacao(c.id, ANCORAS.quando);
+      else if (c.tagsOcultas.dominio === 'causal' && c.tagsOcultas.sinal) adicionarLigacao(c.id, ANCORAS.como);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cartas]);
 
   // Completude NEUTRA (nunca acerto/erro), para o lembrete "ainda falta".
   const { sustentaQuando, sustentaComo, sustentaPresenca, refutaHora, refutaAlibi } =
@@ -145,8 +154,7 @@ export default function MuralAcusacao() {
       return reu ? `Réu: ${reu.nome} · ${sustentaPresenca.length} vestígio(s)` : 'por concluir';
     }
     if (id === 'mentiras') {
-      const n = refutaHora.size + refutaAlibi.size;
-      return n ? `${n} depoimento(s) confrontado(s)` : 'por concluir';
+      return refutaHora.size ? `${refutaHora.size} mentira(s) de hora exposta(s)` : 'por concluir';
     }
     if (id === 'mobil') {
       const m = cartas.find((c) => c.id === acusacao.motivacaoId);
@@ -222,11 +230,11 @@ export default function MuralAcusacao() {
               removerLigacao={removerLigacao}
               estaLigada={estaLigada}
               alternarLigacao={alternarLigacao}
+              cartas={cartas}
               temporais={temporais}
               causais={causais}
               vestigios={vestigios}
               mentirasAlvo={mentirasAlvo}
-              fatosFisicos={fatosFisicos}
               motivos={motivos}
               naoAcusados={naoAcusados}
             />
@@ -316,11 +324,12 @@ function EstacaoAberta({ etapa, ultima, aoConcluir, ...p }) {
 }
 
 // =====================================================================
-// ESTAÇÃO I — O CORPO: declarar (janela + causa) e ASSINALAR os sinais.
-// Assinalar = ligar a carta à âncora (mesma ligação do motor), mostrada
-// como um selo "usado", sem barbante.
+// ESTAÇÃO I — O CORPO: as evidências são APRESENTADAS (leitura); o jogador
+// calcula e DECLARA a janela e a causa. As evidências do corpo coletadas
+// entram sozinhas como base (ver o useEffect no componente-mãe). Sem clique
+// nas cartas — a dedução é ler e declarar.
 // =====================================================================
-function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causais, estaLigada, alternarLigacao }) {
+function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causais }) {
   return (
     <div className="grid grid-cols-2 gap-6">
       {/* QUANDO */}
@@ -330,15 +339,10 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
         {acusacao.janela.inicio != null && acusacao.janela.fim != null && (
           <p className="text-amber-200/80 text-xs mt-2">{formatJanela(acusacao.janela)}</p>
         )}
-        <p className="text-stone-600 text-[10px] mt-3 mb-2">Assinale os sinais do corpo que fixam a hora:</p>
+        <p className="text-stone-600 text-[10px] mt-3 mb-2">O que o corpo diz do tempo:</p>
         <div className="flex flex-col gap-2">
           {temporais.map((c) => (
-            <CartaAssinalavel
-              key={c.id}
-              carta={c}
-              usada={estaLigada(c.id, ANCORAS.quando)}
-              aoClicar={() => alternarLigacao(c.id, ANCORAS.quando)}
-            />
+            <CartaLeitura key={c.id} carta={c} />
           ))}
           {temporais.length === 0 && <p className="text-stone-600 text-xs">Nenhum indicador de tempo no corpo.</p>}
         </div>
@@ -352,15 +356,10 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
             <Opcao key={c.id} ativa={acusacao.causaId === c.id} aoClicar={() => definirCausa(c.id)} rotulo={c.nome} />
           ))}
         </div>
-        <p className="text-stone-600 text-[10px] mt-3 mb-2">Assinale os sinais do corpo que sustentam a causa:</p>
+        <p className="text-stone-600 text-[10px] mt-3 mb-2">O que o corpo diz da causa:</p>
         <div className="flex flex-col gap-2">
           {causais.map((c) => (
-            <CartaAssinalavel
-              key={c.id}
-              carta={c}
-              usada={estaLigada(c.id, ANCORAS.como)}
-              aoClicar={() => alternarLigacao(c.id, ANCORAS.como)}
-            />
+            <CartaLeitura key={c.id} carta={c} />
           ))}
           {causais.length === 0 && <p className="text-stone-600 text-xs">Nenhum sinal de causa no corpo.</p>}
         </div>
@@ -369,25 +368,12 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
   );
 }
 
-// Carta do corpo, assinalável (selo "usado", sem barbante).
-function CartaAssinalavel({ carta, usada, aoClicar }) {
+// Carta de evidência só para leitura (o jogador lê e deduz; não se clica).
+function CartaLeitura({ carta }) {
   return (
-    <button
-      onClick={aoClicar}
-      title={carta.descricao}
-      className={`relative text-left rounded-sm px-3 py-2 border ${
-        usada ? 'border-amber-500 bg-stone-950 ring-1 ring-amber-500/50' : 'border-stone-700 bg-stone-900 hover:border-stone-500'
-      }`}
-    >
-      <p className="font-serif text-stone-200 text-xs leading-snug pr-14">{carta.textoDisplay}</p>
-      <span
-        className={`absolute right-2 top-2 text-[9px] tracking-widest uppercase ${
-          usada ? 'text-amber-300' : 'text-stone-600'
-        }`}
-      >
-        {usada ? '✓ usado' : 'assinalar'}
-      </span>
-    </button>
+    <div title={carta.descricao} className="rounded-sm px-3 py-2 border border-stone-700 bg-stone-900">
+      <p className="font-serif text-stone-200 text-xs leading-snug">{carta.textoDisplay}</p>
+    </div>
   );
 }
 
@@ -420,20 +406,20 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
 }
 
 // =====================================================================
-// ESTAÇÃO III — AS MENTIRAS: LIGAR (barbante) um fato físico ao depoimento
-// que ele desmente (a hora encenada / o álibi furado).
+// ESTAÇÃO III — AS MENTIRAS: LIGAR (barbante) um fato físico do corpo à
+// mentira de HORA que ele derruba (o relógio encenado / o falso avistamento).
+// Os álibis foram para a estação dos Juízos (a evidência que inocenta).
 // =====================================================================
-function EstacaoMentiras({ acusacao, mentirasAlvo, fatosFisicos, estaLigada, adicionarLigacao, removerLigacao }) {
+function EstacaoMentiras({ acusacao, mentirasAlvo, temporais, adicionarLigacao, removerLigacao }) {
   return (
     <div>
       <p className="text-stone-600 text-[10px] mb-2">
-        Ligue um fato físico ao depoimento que ele derruba (clique no fato, depois no depoimento).
+        Ligue um fato físico do corpo à mentira de hora que ele derruba (clique no fato, depois no depoimento).
       </p>
       <MesaLigacao
         alvos={mentirasAlvo}
-        fontes={fatosFisicos}
+        fontes={temporais}
         ligacoes={acusacao.ligacoes}
-        estaLigada={estaLigada}
         adicionarLigacao={adicionarLigacao}
         removerLigacao={removerLigacao}
       />
@@ -559,29 +545,117 @@ function EstacaoMobil({ acusacao, motivos, definirMotivacao }) {
 }
 
 // =====================================================================
-// ESTAÇÃO V — OS JUÍZOS: culpado / inocente / sem juízo por não-acusado.
+// ESTAÇÃO V — OS JUÍZOS: Cúmplice / Inocente / Sem juízo por não-acusado.
+// Inocente abre "a evidência que o inocenta": ligar o vestígio do suspeito
+// ao álibi dele é a refuta_alibi que o motor lê (governanta → revela o
+// segredo). Cúmplice abre "o porquê" (aposta do jogador; estado local, sem
+// efeito no motor). Tudo opcional — só pesa na Vitória Absoluta.
 // =====================================================================
-function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo }) {
+function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada, alternarLigacao }) {
+  const [porque, setPorque] = useState({});
+  function alternarPorque(sid, cid) {
+    setPorque((p) => {
+      const atual = { ...(p[sid] || {}) };
+      if (atual[cid]) delete atual[cid];
+      else atual[cid] = true;
+      return { ...p, [sid]: atual };
+    });
+  }
+
   if (naoAcusados.length === 0) {
     return <p className="text-stone-600 text-xs">Nomeie o réu na etapa da Presença primeiro.</p>;
   }
+
+  const alibiDe = (sid) =>
+    cartas.find((c) => c.tagsOcultas.subDominio === 'alibi' && c.tagsOcultas.declaranteId === sid);
+  const vestigiosDe = (sid) =>
+    cartas.filter((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === sid);
+  const incriminamDe = (sid) =>
+    cartas.filter(
+      (c) => c.tagsOcultas.ligadoA === sid || (c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === sid)
+    );
+
   return (
     <div className="grid grid-cols-2 gap-4">
-      {naoAcusados.map((sp) => (
-        <div key={sp.id} className="rounded-sm border border-stone-700 bg-stone-900 px-3 py-2">
-          <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase mb-2">{sp.nome}</p>
-          <div className="flex flex-col gap-1">
-            {[
-              ['culpado', 'Culpado também'],
-              ['inocente', 'Inocente'],
-              ['sem_juizo', 'Sem juízo'],
-            ].map(([val, rot]) => (
-              <Opcao key={val} ativa={acusacao.juizos[sp.id] === val} aoClicar={() => definirJuizo(sp.id, val)} rotulo={rot} />
-            ))}
+      {naoAcusados.map((sp) => {
+        const juizo = acusacao.juizos[sp.id];
+        const alibi = alibiDe(sp.id);
+        return (
+          <div key={sp.id} className="rounded-sm border border-stone-700 bg-stone-900 px-3 py-2">
+            <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase mb-2">{sp.nome}</p>
+            <div className="flex flex-col gap-1">
+              {[
+                ['culpado', 'Cúmplice'],
+                ['inocente', 'Inocente'],
+                ['sem_juizo', 'Sem juízo'],
+              ].map(([val, rot]) => (
+                <Opcao key={val} ativa={juizo === val} aoClicar={() => definirJuizo(sp.id, val)} rotulo={rot} />
+              ))}
+            </div>
+
+            {/* INOCENTE → a evidência que o tira do crime */}
+            {juizo === 'inocente' && (
+              <div className="mt-2 border-t border-stone-800 pt-2">
+                <p className="text-stone-600 text-[10px] mb-1">A evidência que o inocenta:</p>
+                {alibi && <p className="text-stone-500 text-[11px] italic mb-1">Álibi: {alibi.textoDisplay}</p>}
+                {vestigiosDe(sp.id).length === 0 ? (
+                  <p className="text-stone-600 text-[10px]">Nada a quebrar — o paradeiro se sustenta.</p>
+                ) : (
+                  <div className="flex flex-col gap-1">
+                    {vestigiosDe(sp.id).map((v) => (
+                      <CartaSelecionavel
+                        key={v.id}
+                        carta={v}
+                        ativa={!!alibi && estaLigada(v.id, alibi.id)}
+                        aoClicar={() => alibi && alternarLigacao(v.id, alibi.id)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* CÚMPLICE → o porquê (aposta do jogador; narrativa) */}
+            {juizo === 'culpado' && (
+              <div className="mt-2 border-t border-stone-800 pt-2">
+                <p className="text-stone-600 text-[10px] mb-1">Por que o acusa de cúmplice:</p>
+                {incriminamDe(sp.id).length === 0 ? (
+                  <p className="text-stone-600 text-[10px]">Nenhuma carta o aponta.</p>
+                ) : (
+                  <div className="flex flex-col gap-1">
+                    {incriminamDe(sp.id).map((c) => (
+                      <CartaSelecionavel
+                        key={c.id}
+                        carta={c}
+                        ativa={!!(porque[sp.id] && porque[sp.id][c.id])}
+                        aoClicar={() => alternarPorque(sp.id, c.id)}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
+  );
+}
+
+// Carta selecionável (toggle), usada nos Juízos (a evidência / o porquê).
+function CartaSelecionavel({ carta, ativa, aoClicar }) {
+  return (
+    <button
+      onClick={aoClicar}
+      title={carta.descricao}
+      className={`text-left rounded-sm px-2 py-1 border text-xs ${
+        ativa
+          ? 'border-amber-500 bg-stone-950 text-amber-200 ring-1 ring-amber-500/40'
+          : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200'
+      }`}
+    >
+      {carta.textoDisplay}
+    </button>
   );
 }
 
