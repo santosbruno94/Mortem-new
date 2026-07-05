@@ -9,6 +9,13 @@
 // possíveis em função do IPM (intervalo post-mortem) no momento da
 // extração. `ipmAte: null` significa "daqui em diante".
 //
+// NOTA: o campo `custoTempo` está DORMENTE desde o redesign (relógio mole):
+// examinar não custa mais tempo — o relógio só anda ao VIAJAR (ver mapa.js).
+// Mantido nos dados por ora; nenhuma lógica o lê.
+//
+// O campo opcional `vozMestre` (nas cartas do corpo) é a fala do legista
+// sobre aquela observação, na campanha — omitido no procedural.
+//
 // Horas declaradas em álibis usam a escala absoluta do jogo
 // (negativas = 13/out; ver src/data/seed.js).
 // =====================================================================
@@ -22,10 +29,11 @@ export const CARTAS = [
     estados: [
       {
         ipmAte: 24,
-        textoDisplay: 'Articulações Rígidas',
-        carimboPadrao: 'Rigor Mortis Pleno',
+        textoDisplay: 'Corpo Endurecido',
+        carimboPadrao: 'Duro dos maxilares aos joelhos',
         descricao:
-          'Mandíbula, pescoço e membros oferecem resistência total à flexão. A rigidez tomou o corpo inteiro.',
+          'Maxilar, pescoço e membros não cedem quando se tenta dobrá-los: o corpo enrijeceu por inteiro.',
+        vozMestre: 'Rígido dos maxilares aos joelhos — isto é de horas, não de minutos. Entre doze e vinte e quatro, eu diria.',
         // A carta carrega o ESTADO observado bruto; quem o converte numa
         // janela é o modelo forense universal (src/logic/tempo_morte.js).
         tagsOcultas: {
@@ -37,10 +45,11 @@ export const CARTAS = [
       },
       {
         ipmAte: 36,
-        textoDisplay: 'Rigidez em Dissolução',
-        carimboPadrao: 'Rigor Mortis em Resolução',
+        textoDisplay: 'Rigidez Cedendo',
+        carimboPadrao: 'O maxilar já dobra; os joelhos ainda não',
         descricao:
-          'A mandíbula já cede; os joelhos ainda resistem. A rigidez se desfaz na mesma ordem em que veio.',
+          'O maxilar já dobra; os joelhos ainda resistem. A dureza some na mesma ordem em que chegou.',
+        vozMestre: 'A rigidez já cede. Passou da véspera — e a hora exata começa a escapar entre os dedos.',
         tagsOcultas: {
           dominio: 'temporal',
           subDominio: 'rigor_mortis',
@@ -51,14 +60,17 @@ export const CARTAS = [
       {
         ipmAte: null,
         textoDisplay: 'Corpo Flácido',
-        carimboPadrao: 'Sinal Inconclusivo',
+        carimboPadrao: 'Corpo mole, sem nenhuma rigidez',
         descricao:
-          'Nenhuma resistência articular. O que o rigor tinha a dizer, já não diz mais.',
+          'Os membros dobram sem nenhuma resistência: a dureza já passou por completo. Isso já não marca a hora exata — diz apenas que faz mais de um dia.',
+        vozMestre: 'Frouxo de todo. O rigor já não me serve: só posso jurar que faz mais de um dia.',
+        // Degradado, porém AINDA VÁLIDO (relógio mole): o modelo o lê como
+        // janela larga [36h, +∞), jamais nula. Ver tempo_morte.js (rigor.resolvido).
         tagsOcultas: {
           dominio: 'temporal',
           subDominio: 'rigor_mortis',
-          inconclusiva: true,
-          estadoDegradacao: 'perdido',
+          estadoRigor: 'resolvido',
+          estadoDegradacao: 'resolvido',
         },
       },
     ],
@@ -67,10 +79,11 @@ export const CARTAS = [
     id: 'ev_livores',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Manchas Violáceas no Dorso',
-    carimboPadrao: 'Livores Fixos',
+    textoDisplay: 'Manchas Arroxeadas nas Costas',
+    carimboPadrao: 'Manchas que não empalidecem ao apertar',
     descricao:
-      'Manchas vinhosas cobrem as costas e a face posterior das pernas. Não esmaecem sob a pressão do polegar: estão fixas.',
+      'Manchas vinhosas cobrem as costas e a parte de trás das pernas. Não empalidecem quando se aperta com o polegar.',
+    vozMestre: 'As manchas fixaram-se nas costas e não cedem ao polegar — morto há meia jornada ao menos. E deitado assim desde então: ninguém o virou.',
     tagsOcultas: {
       dominio: 'temporal',
       subDominio: 'livor_mortis',
@@ -82,10 +95,11 @@ export const CARTAS = [
     id: 'ev_sulco',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Sulco Horizontal no Pescoço',
-    carimboPadrao: 'Sulco Cervical Horizontal',
+    textoDisplay: 'Marca Reta em Volta do Pescoço',
+    carimboPadrao: 'Marca funda e reta dando a volta no pescoço',
     descricao:
-      'Um sulco uniforme circunda o pescoço em plano horizontal, sem o trajeto ascendente que a suspensão de um corpo desenharia.',
+      'Uma marca funda e pareja dá a volta no pescoço na horizontal, sem subir em diagonal como deixaria um corpo pendurado.',
+    vozMestre: 'Repare no sulco: reto, horizontal. Não é de forca — é de laço apertado por trás, por mãos alheias.',
     // Sinal de ASSINATURA do catálogo universal: crava a ligadura e
     // descarta as demais causas (ver src/data/catalogo_causas.js).
     tagsOcultas: {
@@ -98,10 +112,11 @@ export const CARTAS = [
     id: 'ev_petequias',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Pontos Vermelhos nas Conjuntivas',
-    carimboPadrao: 'Petéquias Conjuntivais',
+    textoDisplay: 'Pontinhos Vermelhos no Branco dos Olhos',
+    carimboPadrao: 'Pontinhos de sangue nos olhos; face azulada',
     descricao:
-      'Hemorragias puntiformes salpicam o branco dos olhos. A face guarda um tom azulado.',
+      'Pontinhos de sangue salpicam o branco dos olhos. A face e os lábios guardam um tom azulado.',
+    vozMestre: 'Esses pontos nos olhos, esse azul na face — asfixia. Sufocou. De que modo, é o sulco que dirá.',
     // Sinal de FAMÍLIA: aponta asfixia (descarta veneno e trauma), mas não
     // diz qual asfixia — é preciso o sinal de assinatura para cravar.
     tagsOcultas: {
@@ -114,10 +129,11 @@ export const CARTAS = [
     id: 'ev_fibras_sulco',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Fibras Claras Incrustadas no Sulco',
-    carimboPadrao: 'Fibras de Cânhamo no Sulco',
+    textoDisplay: 'Fibras Claras Presas na Marca do Pescoço',
+    carimboPadrao: 'Fibras de Cânhamo na Marca do Pescoço',
     descricao:
-      'Sob a lente, filamentos vegetais claros, torcidos, presos à pele do sulco. Cânhamo de corda comum.',
+      'Sob a lente, filamentos vegetais claros e torcidos, presos à pele da marca. Cânhamo de corda comum.',
+    vozMestre: 'Cânhamo, preso no sulco. A corda que o matou era de cânhamo comum — guarde isso.',
     tagsOcultas: {
       dominio: 'causal',
       subDominio: 'instrumento',
@@ -188,6 +204,25 @@ export const CARTAS = [
       revelaSegredo: 'mentira_alibi',
     },
   },
+  {
+    id: 'ev_lenco',
+    localidade: 'cena',
+    custoTempo: 1,
+    textoDisplay: 'Lenço de Linho atrás da Estante',
+    carimboPadrao: 'Lenço com as iniciais "E. A." bordadas',
+    descricao:
+      'Caído na sombra atrás da estante, um lenço de linho fino, de cambraia, com as iniciais "E. A." bordadas a canto. Limpo demais para ser do morto; deixado às pressas.',
+    // Segundo vestígio de PRESENÇA do réu (objeto pessoal seu, na cena). Não é o
+    // instrumental (não casa com a arma), mas pertence ao réu: ligá-lo à Presença
+    // reforça que ele esteve ali, sem gafe. Sozinho não basta — o nexo continua
+    // exigindo o vestígio instrumental (o cânhamo no punho).
+    tagsOcultas: {
+      dominio: 'vestigio',
+      subDominio: 'objeto_pessoal',
+      tipoVestigio: 'lenco_monograma',
+      pertenceA: 'edgar_arthurs',
+    },
+  },
 
   // ===================== A DELEGACIA =====================
   {
@@ -233,6 +268,65 @@ export const CARTAS = [
       subDominio: 'motivo',
       motivo: 'rancor',
       ligadoA: 'thomas_blackwood',
+      isca: true,
+    },
+  },
+  {
+    id: 'dep_visto_vivo',
+    localidade: 'delegacia',
+    custoTempo: 1,
+    textoDisplay: 'Última Ceia Servida às Oito',
+    carimboPadrao: 'Visto com Vida às 20h (13/out)',
+    descricao:
+      'No registro de Wycliffe, a governanta declara ter servido a ceia ao patrão às oito da noite de 13 e recolhido a louça em seguida — a última a vê-lo com vida.',
+    // Âncora DURÁVEL de tempo: "última vez visto com vida" trava o INÍCIO da
+    // janela (a morte não pode anteceder as 20h). Não degrada. Junto do livor
+    // fixo (que dá o teto), o corpo sozinho fecha uma janela finita, em
+    // qualquer rota — é o que garante "o durável sempre resolve".
+    tagsOcultas: {
+      dominio: 'temporal',
+      subDominio: 'ultima_vez_visto',
+      horaAvistamento: -4, // 20h00 de 13/out na escala absoluta
+    },
+  },
+  {
+    id: 'dep_avistamento_falso',
+    localidade: 'delegacia',
+    custoTempo: 1,
+    textoDisplay: 'Vizinha Jura Tê-lo Visto à Janela',
+    carimboPadrao: 'Avistamento Declarado: 08h (14/out)',
+    descricao:
+      'A Sra. Gale, da casa em frente, afirma à polícia ter visto o Sr. Arthurs à janela, vivo, "lá pelas oito" da manhã do dia 14 — pouco antes de o sobrinho dar o alarme.',
+    // Alegação sobre a HORA, a ser confrontada com a janela da morte: jura a
+    // vítima viva na manhã do dia 14, quando o corpo diz que ela morreu na
+    // noite anterior. É a mentira a cravar no Confronto (Opção B). O motor
+    // não revela isto ao jogador — quem percebe a impossibilidade é ele.
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'avistamento',
+      declaranteId: 'sra_gale',
+      horaAvistamentoDeclarada: 8, // 08h00 de 14/out na escala absoluta
+      isca: true,
+    },
+  },
+  {
+    id: 'dep_acusa_hudson',
+    localidade: 'delegacia',
+    custoTempo: 1,
+    textoDisplay: 'Caseiro Jura Ter Visto a Governanta',
+    carimboPadrao: 'Relato: a governanta no crime, à meia-noite',
+    descricao:
+      'O Sr. Pruitt, caseiro de uma casa dos fundos, jura à polícia ter visto a Sra. Hudson debruçada sobre o patrão no escritório, "lá pela meia-noite", as mãos no pescoço dele. Vacila sobre o resto — a luz, a janela, a hora —, mas não sobre o nome.',
+    // TESTEMUNHO FALSO (isca): aponta a governanta como autora à meia-noite (00h).
+    // Mente; o corpo, não. É uma ALEGAÇÃO DE HORA — refutável pela gramática que já
+    // existe (refuta_hora): a janela que o corpo sustenta fecha por volta das 23h, e
+    // 00h cai fora dela. O jogador metódico liga um indicador do corpo a esta carta e
+    // a derruba; quem acredita e acusa a Hudson cai em Erro Judiciário (réu errado).
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'avistamento',
+      declaranteId: 'sr_pruitt',
+      horaAvistamentoDeclarada: 0, // 00h00 de 14/out — a morte foi às 22h de 13
       isca: true,
     },
   },
@@ -367,6 +461,25 @@ export const CARTAS = [
       ligadoA: 'thomas_blackwood',
     },
   },
+
+  // ===================== CLUBE DE MOORFORD (nó distante, por lead) =====================
+  {
+    id: 'corrob_moorford',
+    localidade: 'clube_moorford',
+    custoTempo: 1,
+    textoDisplay: 'Edgar Saiu do Clube Antes das Nove',
+    carimboPadrao: 'Álibi de Edgar Furado',
+    descricao:
+      'O porteiro é categórico: o Sr. Arthurs deixou o jantar "lá pelas oito e meia", muito antes das onze que declarou. Hora de sobra para a estrada de volta.',
+    // Corroboração OPCIONAL (nó distante, desbloqueado por lead): reforça que
+    // Edgar teve oportunidade, mas NÃO é pilar do veredicto — o caso já fecha
+    // pelo corpo. É atalho/reforço, jamais a chave (relógio mole).
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'corroboracao',
+      ligadoA: 'edgar_arthurs',
+    },
+  },
 ];
 
 // ---------------------------------------------------------------------
@@ -386,6 +499,7 @@ export function resolverEstadoCarta(definicao, ipmAtual) {
       textoDisplay: definicao.textoDisplay,
       carimboPadrao: definicao.carimboPadrao,
       descricao: definicao.descricao,
+      vozMestre: definicao.vozMestre,
       tagsOcultas: definicao.tagsOcultas,
     };
   }

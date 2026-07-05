@@ -34,6 +34,7 @@ export const LOCALIDADES = [
       'Ele está agora no tapete: um [[ev_relogio]], a caixa partida, os ponteiros imóveis sobre as nove em ponto. O Delegado o considera a peça central do caso — e o diz a quem quiser ouvir.',
       'As [[ev_gavetas]] contam uma história curiosa: quem as revirou desprezou o relógio de ouro na corrente do morto e a caixa de soberanos à vista na escrivaninha.',
       'Na porta que dá ao beco, uma [[ev_fechadura]], com lascas de alavanca pelo lado de fora. Junto à gaveta mais funda, quase invisível contra a madeira escura, um [[ev_fio_la]].',
+      'E atrás da estante, caído na sombra onde a vassoura não chega, [[ev_lenco]] — fino, limpo, esquecido com pressa por quem não morava ali.',
     ],
   },
   {
@@ -47,6 +48,9 @@ export const LOCALIDADES = [
       'Entre os papéis do morto, recolhidos por precaução, está o [[dep_testamento]], lavrado há dois anos em favor do sobrinho.',
       'Numa pasta à parte, [[dep_dividas]] endereçadas a Edgar Arthurs — somas, observa Wycliffe, "que um escrevente não junta em dez anos de vida honesta".',
       'E no livro de ocorrências, com a tinta ainda fresca de três semanas, uma [[dep_briga]]: Thomas Blackwood e o relojoeiro, ameaças trocadas diante de meia taverna.',
+      'Num bilhete da primeira diligência, Wycliffe anotou a [[dep_visto_vivo]]: a governanta serviu-lhe a ceia antes de a casa adormecer, e foi a última a vê-lo com vida.',
+      'E dá fé, ainda, a uma vizinha — [[dep_avistamento_falso]]. "Se a Sra. Gale o viu à janela, o homem amanheceu vivo", repete ele, satisfeito com a sua cronologia.',
+      'Por fim, um relato que lhe acende os olhos: [[dep_acusa_hudson]]. "Se o Pruitt a viu sobre o corpo à meia-noite, {detective.title}, é só prender a governanta e ir jantar." Wycliffe já se vê com o caso fechado.',
     ],
   },
   {
@@ -86,6 +90,18 @@ export const LOCALIDADES = [
       '"Se veio me perguntar se eu odiava o velho, economize a viagem: odiava. Ele me estrangulava de juros há seis anos." Pousa a caneca. Diante da palavra que escolheu, é o único na taverna que não se constrange. Em tudo, [[comp_blackwood]].',
       'Sobre a noite de 13, ri sem alegria: [[alibi_blackwood]] — "Das oito à meia-noite, atrás deste balcão. Sábado de feira: meia Briarstone bebeu da minha mão. Quer os nomes? Tome doze."',
       'Três fregueses, ouvidos em separado à porta, confirmam sem combinar: o taverneiro não deixou o balcão um minuto sequer.',
+    ],
+  },
+  {
+    id: 'clube_moorford',
+    rotuloMesa: 'Clube de Moorford',
+    titulo: 'Clube Comercial de Moorford',
+    subtitulo: 'A três horas de estrada — onde Edgar diz ter passado a noite',
+    acoesEspeciais: [],
+    prosa: [
+      'A estrada até Moorford é longa, e o salão de carvalho e fumo do Clube Comercial recebe {detective.title} {detective.surname} com a cortesia morna de quem nada tem a esconder. O porteiro, porém, lembra-se de Edgar Arthurs — e de mais do que ele gostaria.',
+      'Sobre a noite de 13, o livro de presença e a memória do porteiro contam a mesma história: [[corrob_moorford]]. O jantar terminou cedo, e a cadeira de Edgar esfriou muito antes das onze que ele jura.',
+      'Nada aqui prende ninguém. Mas a hora e meia de volta a Briarstone, essa, cabe de sobra entre o prato frio e a meia-noite.',
     ],
   },
 ];

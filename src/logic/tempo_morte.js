@@ -33,7 +33,10 @@ export const CONSTANTES_FORENSES = {
     instalando: { ipmAte: 12, janelaIpm: [2, 12] }, // rigidez parcial, ainda subindo
     pleno: { ipmAte: 24, janelaIpm: [12, 24] }, // rigidez generalizada
     resolucao: { ipmAte: 36, janelaIpm: [24, 36] }, // rigidez já cedendo
-    // acima de 36h o rigor já se foi: o sinal nada mais informa (inconclusivo)
+    // Acima de 36h o rigor já se desfez. O sinal NÃO some: vira uma leitura
+    // VAGA porém ainda válida ("morto há mais de um dia") — perde precisão,
+    // não valor (relógio mole). Janela larga, sem teto: [36, +∞).
+    resolvido: { ipmAte: null, janelaIpm: [36, Infinity] },
   },
 
   // Livor mortis: surge 1–2h; fixa-se (não esmaece sob pressão) após ~12h.
@@ -74,7 +77,7 @@ export function estadoRigorPorIpm(ipm) {
   if (ipm <= rigor.instalando.ipmAte) return 'instalando';
   if (ipm <= rigor.pleno.ipmAte) return 'pleno';
   if (ipm <= rigor.resolucao.ipmAte) return 'resolucao';
-  return 'inconclusivo'; // rigor já desfeito
+  return 'resolvido'; // rigor já desfeito: leitura vaga, porém ainda válida
 }
 
 // Estado do livor mortis esperado para um dado IPM.
@@ -90,8 +93,15 @@ export function estadoLivorPorIpm(ipm) {
 // com margem de ±2h. Se o corpo já igualou o ambiente, nada informa.
 export function janelaAlgor(temperaturaCorpo, ambiente, horaExame) {
   const amb = typeof ambiente === 'number' ? ambiente : AMBIENTE_PADRAO;
-  if (temperaturaCorpo <= amb) return null; // equilíbrio térmico: inconclusivo
   const { temperaturaInicial, resfriamentoPorHora, margemAlgorHoras } = CONSTANTES_FORENSES;
+  if (temperaturaCorpo <= amb) {
+    // Equilíbrio térmico: o algor perdeu a PRECISÃO, mas não some — ainda
+    // diz um piso. O corpo leva ~(37 - ambiente) horas para esfriar até
+    // aqui, logo a morte foi há PELO MENOS esse tanto. Janela larga (sem
+    // teto de recência), nunca nula. (Perecível perde precisão, não valor.)
+    const horasAteEquilibrio = (temperaturaInicial - amb) / resfriamentoPorHora;
+    return janelaIpmParaAbsoluta([horasAteEquilibrio, Infinity], horaExame);
+  }
   const horas = (temperaturaInicial - temperaturaCorpo) / resfriamentoPorHora;
   return janelaIpmParaAbsoluta([horas - margemAlgorHoras, horas + margemAlgorHoras], horaExame);
 }

@@ -4,6 +4,7 @@ import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { SEED_TUTORIAL } from '../data/seed.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
+import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
 
@@ -37,7 +38,7 @@ export default function EventoLocalidade({ localidadeId }) {
       <span
         key={chave}
         className="termo-clicavel"
-        title={`Extrair e registrar (${definicao.custoTempo}h)`}
+        title="Examinar e registrar (não custa tempo)"
         onClick={() => extrairCarta(cartaId)}
       >
         {estado.textoDisplay}
@@ -60,10 +61,59 @@ export default function EventoLocalidade({ localidadeId }) {
   return (
     <Overlay titulo={interpolar(localidade.titulo, detective)} subtitulo={localidade.subtitulo}>
       <div className="space-y-4">{localidade.prosa.map(renderParagrafo)}</div>
+      {localidade.id === 'corpo' && <FalaDoLegista cartas={cartasRegistradas} />}
+      {localidade.id === 'corpo' && <NotaFrescor ipm={ipm} />}
       {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
       <p className="mt-6 text-stone-600 text-xs tracking-wide">
-        Termos em negrito podem ser extraídos para a mesa — a extração consome o tempo indicado.
+        Termos em negrito são examinados e registrados na mesa — examinar não custa tempo; o relógio só corre quando você viaja.
       </p>
     </Overlay>
+  );
+}
+
+// A leitura forense FALADA pelo mestre/legista (§4): some o mostrador das
+// antigas gavetas; a interpretação vem por um personagem, em fala natural,
+// e CRESCE conforme o jogador examina (pull — responde ao que foi visto).
+// No procedural não há vozMestre nas cartas: este bloco fica vazio e o
+// jogador, já perito, lê o corpo por conta própria.
+function FalaDoLegista({ cartas }) {
+  const asides = cartas.filter((c) => c.localidade === 'corpo' && c.vozMestre);
+  const { tempo, causa } = falaDoMestre(lerCorpo(cartas));
+  if (asides.length === 0 && !tempo && !causa) return null;
+  return (
+    <div className="mt-5 border-l-2 border-amber-900/60 pl-4 space-y-2">
+      <p className="text-amber-200/70 text-[10px] tracking-[0.25em] uppercase">O legista, examinando</p>
+      {asides.map((c) => (
+        <p key={c.id} className="text-stone-300 text-sm italic leading-relaxed">“{c.vozMestre}”</p>
+      ))}
+      {(tempo || causa) && (
+        <div className="pt-2 mt-1 border-t border-stone-800 space-y-1">
+          {tempo && <p className="text-amber-100/90 text-sm leading-relaxed">“{tempo}”</p>}
+          {causa && <p className="text-amber-100/90 text-sm leading-relaxed">“{causa}”</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Legibilidade do perecível (telegrafia + anúncio): o corpo avisa, em fala
+// concreta, que a leitura do tempo se esvai — antes de se perder, e no
+// momento em que se perde. Calculado do IPM corrente; nenhuma regra depende.
+function NotaFrescor({ ipm }) {
+  let texto;
+  if (ipm <= 24) {
+    texto =
+      'O corpo ainda guarda a hora com nitidez — mas não vai durar: a rigidez e o calor se desfazem com as horas. O que se quiser datar com precisão, date cedo.';
+  } else if (ipm <= 36) {
+    texto =
+      'A rigidez já cede e o corpo esfria: a leitura do tempo perde o fio. Ainda dá para datar, porém com margem mais larga.';
+  } else {
+    texto =
+      'O corpo afrouxou de todo e igualou o frio da sala: a hora da morte agora só se lê em dias, não em horas. A precisão, essa já se foi — mas o livor fixo ainda crava que foi há mais de meio dia.';
+  }
+  return (
+    <p className="mt-4 text-amber-200/70 text-xs italic leading-relaxed border-l border-amber-900/40 pl-3">
+      {texto}
+    </p>
   );
 }

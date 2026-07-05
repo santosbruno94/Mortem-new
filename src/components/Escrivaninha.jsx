@@ -1,15 +1,13 @@
 import { useJogo } from '../store/jogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
+import { custoViagem } from '../data/mapa.js';
 import CartaMesa from './CartaMesa.jsx';
 import RelogioBolso from './RelogioBolso.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
-import GavetaCronos from './GavetaCronos.jsx';
-import GavetaAitiov from './GavetaAitiov.jsx';
-import GavetaNexo from './GavetaNexo.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
-import QuadroRevelacoes from './QuadroRevelacoes.jsx';
+import MuralAcusacao from './MuralAcusacao.jsx';
 import MonologoFinal from './MonologoFinal.jsx';
 
 const ROTULOS_DOMINIO = {
@@ -19,12 +17,6 @@ const ROTULOS_DOMINIO = {
   comportamental: 'Comportamental',
   vestigio: 'Vestígio',
 };
-
-const GAVETAS = [
-  { id: 'cronos', nome: 'Cronos', pilar: 'Quando' },
-  { id: 'aitiov', nome: 'Aitiov', pilar: 'Como' },
-  { id: 'nexo', nome: 'Nexo', pilar: 'Presença' },
-];
 
 // Posições de repouso na superfície, antes de o jogador arrastar.
 function posicaoPadraoLocalidade(indice) {
@@ -41,7 +33,9 @@ export default function Escrivaninha() {
   const abrirOverlay = useJogo((s) => s.abrirOverlay);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const posicoesCartas = useJogo((s) => s.posicoesCartas);
-  const gavetasDesbloqueadas = useJogo((s) => s.gavetasDesbloqueadas);
+  const viajarPara = useJogo((s) => s.viajarPara);
+  const localidadeAtual = useJogo((s) => s.localidadeAtual);
+  const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
 
   const mesaDesfocada = overlay !== null;
 
@@ -54,10 +48,10 @@ export default function Escrivaninha() {
         }`}
       >
         <button
-          onClick={() => abrirOverlay('quadro')}
+          onClick={() => abrirOverlay('acusacao')}
           className="px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.2em] text-sm hover:bg-stone-800"
         >
-          QUADRO DE REVELAÇÕES
+          CONSTRUIR A ACUSAÇÃO
         </button>
       </div>
 
@@ -70,22 +64,34 @@ export default function Escrivaninha() {
         <div className="relative flex-1 overflow-hidden bg-gradient-to-b from-stone-950 via-stone-900/60 to-stone-950 min-h-[440px]">
           <RelogioBolso />
 
-          {/* Localidades são cartas na superfície (§5) */}
-          {LOCALIDADES.map((loc, i) => (
-            <CartaMesa
-              key={loc.id}
-              id={`loc_${loc.id}`}
-              pos={posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)}
-              aoClicar={() => abrirOverlay('localidade', loc.id)}
-            >
-              <div className="w-40 bg-stone-900 border border-amber-900/60 rounded-sm px-3 py-3 hover:border-amber-700">
-                <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
-                  {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
-                </p>
-                <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
-              </div>
-            </CartaMesa>
-          ))}
+          {/* Localidades são nós do mapa (§5/§7). Clicar VIAJA até lá — e a
+              viagem é a única coisa que gasta o relógio. O mapa CRESCE: só
+              aparecem os nós desbloqueados (Moorford surge ao ler um lead). */}
+          {LOCALIDADES.filter((loc) => nosDesbloqueados.includes(loc.id)).map((loc, i) => {
+            const aqui = loc.id === localidadeAtual;
+            const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
+            return (
+              <CartaMesa
+                key={loc.id}
+                id={`loc_${loc.id}`}
+                pos={posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)}
+                aoClicar={() => {
+                  viajarPara(loc.id);
+                  abrirOverlay('localidade', loc.id);
+                }}
+              >
+                <div className="w-40 bg-stone-900 border border-amber-900/60 rounded-sm px-3 py-3 hover:border-amber-700">
+                  <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
+                    {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
+                  </p>
+                  <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
+                  <p className="text-stone-500 text-[10px] mt-2 tracking-wide">
+                    {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${custo}h`}
+                  </p>
+                </div>
+              </CartaMesa>
+            );
+          })}
 
           {/* Cartas extraídas e registradas */}
           {cartasRegistradas.map((carta, i) => (
@@ -101,35 +107,12 @@ export default function Escrivaninha() {
                 <p className="text-stone-600 text-[10px] tracking-[0.2em] uppercase">
                   {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}
                 </p>
+                {/* Só a observação CRUA na face da carta — a interpretação é
+                    falada pelo legista, não carimbada (§6 do redesign). */}
                 <p className="font-serif text-stone-200 text-sm mt-1 leading-snug">{carta.textoDisplay}</p>
-                <p className="text-amber-200/80 text-xs mt-2 italic leading-snug">§ {carta.termoCarimbo}</p>
               </div>
             </CartaMesa>
           ))}
-        </div>
-
-        {/* As três gavetas (§7) */}
-        <div className="grid grid-cols-3 border-t border-stone-900">
-          {GAVETAS.map((g) => {
-            const aberta = gavetasDesbloqueadas.includes(g.id);
-            return (
-              <button
-                key={g.id}
-                disabled={!aberta}
-                onClick={() => abrirOverlay('gaveta', g.id)}
-                className={`py-4 border-r border-stone-900 last:border-r-0 text-center ${
-                  aberta ? 'bg-stone-900/60 hover:bg-stone-800' : 'bg-stone-950 cursor-not-allowed'
-                }`}
-              >
-                <p className={`font-serif tracking-[0.2em] ${aberta ? 'text-amber-200' : 'text-stone-700'}`}>
-                  {g.nome.toUpperCase()}
-                </p>
-                <p className={`text-xs mt-1 ${aberta ? 'text-stone-500' : 'text-stone-800'}`}>
-                  {aberta ? g.pilar : '― cerrada ―'}
-                </p>
-              </button>
-            );
-          })}
         </div>
 
         {/* Painéis de consulta — custo zero */}
@@ -145,10 +128,7 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'caderneta' && <Caderneta />}
       {overlay?.tipo === 'glossario' && <ModalGlossario />}
       {overlay?.tipo === 'alibis' && <PainelAlibis />}
-      {overlay?.tipo === 'gaveta' && overlay.id === 'cronos' && <GavetaCronos />}
-      {overlay?.tipo === 'gaveta' && overlay.id === 'aitiov' && <GavetaAitiov />}
-      {overlay?.tipo === 'gaveta' && overlay.id === 'nexo' && <GavetaNexo />}
-      {overlay?.tipo === 'quadro' && <QuadroRevelacoes />}
+      {overlay?.tipo === 'acusacao' && <MuralAcusacao />}
       {overlay?.tipo === 'monologo' && <MonologoFinal />}
     </div>
   );
