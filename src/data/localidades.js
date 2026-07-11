@@ -60,10 +60,10 @@ export const LOCALIDADES = [
     subtitulo: 'Sobrinho e único herdeiro, 38 anos',
     acoesEspeciais: [],
     prosa: [
-      'Edgar recebe {detective.title} {detective.surname} na saleta da relojoaria com chá servido e luto bem passado a ferro. "Fui eu quem o encontrou, às nove e meia. A porta dos fundos arrombada, o escritório naquele estado... Imagino que o relógio caído diga o resto."',
-      'Perguntado sobre a véspera, não hesita: um [[alibi_edgar]] — "das oito às onze, à mesa do Clube. Voltei tarde e dormi até as oito." Sorri, paciente: "Moorford fica a hora e meia daqui, como sabe."',
-      'Em tudo o mais, [[comp_edgar]]: respostas prontas, pesar de fraseado exato.',
-      'Ao estender a mão para servir mais chá, o punho direito do casaco passa sob a luz do lampião — e nele, {detective.title} {detective.surname} distingue [[ev_fibras_manga]], claras contra o tecido escuro.',
+      'Edgar recebe {detective.title} {detective.surname} na saleta da relojoaria, chá já servido, o luto passado a ferro. "Fui eu quem o encontrou, às nove e meia. A porta dos fundos arrombada, o escritório naquele estado. O relógio no chão, parado nas nove — o senhor há de tirar disso o que eu não sei tirar."',
+      'Sobre a véspera, responde antes de a pergunta fechar: um [[alibi_edgar]] — "das oito às onze, à mesa do Clube, em Moorford. Voltei tarde, dormi até as oito." Serve o chá. "O Clube fica a boa hora e meia de estrada. Não é lugar de ir e vir na mesma noite."',
+      'Em tudo o mais, uma [[comp_edgar]]: responde completo, oferece chá, lamenta o tio nas mesmas palavras cada vez.',
+      'Ao estender a mão para a chaleira, o punho direito do casaco passa sob o lampião. No tecido escuro, {detective.title} {detective.surname} distingue [[ev_fibras_manga]].',
     ],
   },
   {

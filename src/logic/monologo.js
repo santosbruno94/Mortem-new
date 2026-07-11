@@ -93,7 +93,7 @@ export function gerarMonologo(veredicto, detective) {
   // ---------------- Abertura, por tipo de desfecho ----------------
   if (veredicto.tipo === 'vitoria_absoluta') {
     blocos.push(
-      'Recolho as cartas da mesa em silêncio. A cadeia fechou-se elo a elo, e cada elo tem o peso do corpo por trás — não há por onde soltá-la.'
+      'Recolho as cartas em silêncio. A cadeia fechou-se elo a elo, e cada elo carrega atrás de si o peso do corpo.'
     );
   } else if (veredicto.tipo === 'sucesso_gafes') {
     blocos.push(
@@ -132,7 +132,7 @@ export function gerarMonologo(veredicto, detective) {
   // ---------------- Fecho, por tipo ----------------
   if (veredicto.tipo === 'vitoria_absoluta') {
     blocos.push(
-      `${nome(dados.reuId)} responderá pelo que fez. Guardo os instrumentos sem alarde — um caso bem lido não pede aplauso.`
+      `Guardo os instrumentos sem pressa. ${nome(dados.reuId)} responderá pelo que fez, e um caso bem lido dispensa o aplauso.`
     );
   } else if (veredicto.tipo === 'sucesso_gafes') {
     blocos.push(

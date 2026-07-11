@@ -339,7 +339,7 @@ export const CARTAS = [
     textoDisplay: 'Jantar no Clube Comercial de Moorford',
     carimboPadrao: 'Paradeiro Declarado: 20h–23h (13/out)',
     descricao:
-      'Edgar declara ter jantado no Clube Comercial de Moorford na noite de 13, das oito às onze, voltando tarde para seus aposentos.',
+      'A declaração de Edgar, palavra por palavra: das oito às onze da noite de 13, à mesa do Clube, em Moorford, e de volta tarde aos aposentos. As horas saem redondas, na ponta da língua.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -356,7 +356,7 @@ export const CARTAS = [
     textoDisplay: 'Fibras Claras no Punho do Casaco',
     carimboPadrao: 'Fibras de Cânhamo na Manga',
     descricao:
-      'No punho direito do casaco de Edgar, filamentos vegetais claros, torcidos — idênticos, à lente, aos de corda de cânhamo.',
+      'Presos ao punho direito do casaco de Edgar, três filamentos vegetais claros. À lente, a torção grossa e a cor palha do cânhamo de cordoaria.',
     tagsOcultas: {
       dominio: 'vestigio',
       subDominio: 'fibra_tecido',
@@ -369,9 +369,9 @@ export const CARTAS = [
     localidade: 'interrogatorio_edgar',
     custoTempo: 1,
     textoDisplay: 'Polidez Inabalável',
-    carimboPadrao: 'Cooperação Estudada',
+    carimboPadrao: 'Cooperação Constante',
     descricao:
-      'Edgar responde antes da pergunta terminar, oferece chá, lamenta o tio com frases prontas. Nada nele hesita — nem o luto.',
+      'Edgar responde antes de a pergunta terminar, oferece chá duas vezes, repete o pesar pelo tio nas mesmas palavras. Fala sem uma pausa.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',
