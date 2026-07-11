@@ -174,7 +174,7 @@ export default function MuralAcusacao() {
       {/* Animação de "a mesa enche": cada etapa surge ao ser revelada. */}
       <style>{`@keyframes mortemSurgir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.mortem-surgir{animation:mortemSurgir 240ms ease-out}`}</style>
       {/* Cabeçalho */}
-      <div className="shrink-0 flex items-start justify-between gap-4 px-6 py-3 border-b border-amber-900/40 bg-stone-900">
+      <div className="shrink-0 flex flex-wrap items-start justify-between gap-3 px-3 sm:px-6 py-3 border-b border-amber-900/40 bg-stone-900">
         <div>
           <h2 className="font-serif text-xl text-amber-200">A Construção da Acusação</h2>
           <p className="text-stone-500 text-xs mt-0.5">
@@ -197,7 +197,7 @@ export default function MuralAcusacao() {
       </div>
 
       {/* Faixa de apoio: lembrete do legista (dica) + o que ainda falta */}
-      <div className="shrink-0 flex flex-wrap items-start gap-x-8 gap-y-1 px-6 py-2 border-b border-stone-800 bg-stone-900/60 text-xs">
+      <div className="shrink-0 flex flex-wrap items-start gap-x-8 gap-y-1 px-3 sm:px-6 py-2 border-b border-stone-800 bg-stone-900/60 text-xs">
         <div className="max-w-xl">
           <span className="text-amber-200/70 tracking-[0.2em] uppercase mr-2">Lembrete do legista</span>
           <span className="text-stone-400 italic">
@@ -215,7 +215,7 @@ export default function MuralAcusacao() {
       </div>
 
       {/* A mesa: pilha vertical de estações que cresce conforme se conclui */}
-      <div className="flex-1 overflow-auto bg-gradient-to-b from-stone-950 via-stone-900/40 to-stone-950 p-6 space-y-4">
+      <div className="flex-1 overflow-auto bg-gradient-to-b from-stone-950 via-stone-900/40 to-stone-950 p-3 sm:p-6 space-y-4">
         {ETAPAS.slice(0, revelado).map((et, i) => (
           <div key={et.id} className="mortem-surgir">
             {etapaAberta === i ? (
@@ -287,8 +287,8 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
   const rotuloJuizo = (j) => (j === 'culpado' ? 'Cúmplice' : j === 'inocente' ? 'Inocente' : 'Sem juízo');
 
   return (
-    <div className="absolute inset-0 z-50 bg-stone-950/80 flex items-center justify-center p-6">
-      <div className="mortem-surgir w-full max-w-2xl max-h-full overflow-auto rounded-sm border-2 border-amber-800/70 bg-stone-900 p-6 shadow-2xl shadow-black/50">
+    <div className="absolute inset-0 z-50 bg-stone-950/80 flex items-center justify-center p-3 sm:p-6">
+      <div className="mortem-surgir w-full max-w-2xl max-h-full overflow-auto rounded-sm border-2 border-amber-800/70 bg-stone-900 p-4 sm:p-6 shadow-2xl shadow-black/50">
         <h3 className="font-serif text-lg text-amber-200 mb-1">A acusação, como você a montou</h3>
         <p className="text-stone-500 text-xs mb-4">Releia antes de selar. Nada aqui diz se está certo — isso é o julgamento.</p>
 
@@ -437,7 +437,7 @@ function EstacaoAberta({ etapa, ultima, aoConcluir, ...p }) {
 // =====================================================================
 function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causais }) {
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
       {/* QUANDO */}
       <div>
         <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase mb-2">Quando — a janela</p>
@@ -493,7 +493,7 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
   const alvo = { id: ANCORAS.presenca, rotulo: 'Presença — o réu na cena', ehAncora: true };
   return (
     <div>
-      <div className="flex items-center gap-2 mb-3">
+      <div className="flex flex-wrap items-center gap-2 mb-3">
         <span className="text-stone-500 text-xs">Réu:</span>
         {SUSPEITOS.map((sp) => (
           <Opcao key={sp.id} ativa={acusacao.reuId === sp.id} aoClicar={() => definirReu(sp.id)} rotulo={sp.nome} />
@@ -708,7 +708,7 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
     );
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {naoAcusados.map((sp) => {
         const juizo = acusacao.juizos[sp.id];
         const alibi = alibiDe(sp.id);

@@ -14,7 +14,7 @@ export default function Abertura() {
   const ultimo = passoAbertura === PASSOS_ABERTURA.length - 1;
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6 py-12">
+    <div className="altura-tela-min flex items-center justify-center px-4 sm:px-6 py-8 sm:py-12">
       <div className="max-w-2xl w-full">
         <p className="text-stone-600 text-xs tracking-[0.3em] uppercase mb-2">
           {passoAbertura + 1} · {PASSOS_ABERTURA.length}

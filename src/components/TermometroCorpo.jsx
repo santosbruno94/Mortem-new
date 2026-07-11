@@ -16,7 +16,7 @@ export default function TermometroCorpo() {
   }
 
   return (
-    <div className="mt-6 border border-amber-900/50 rounded-sm px-4 py-4 flex items-center justify-between gap-4">
+    <div className="mt-6 border border-amber-900/50 rounded-sm px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <p className="text-sm text-stone-400">
         O termômetro de mercúrio aguarda na maleta. O ambiente marca <span className="text-stone-300">11°C</span>.
       </p>

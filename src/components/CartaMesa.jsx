@@ -11,12 +11,17 @@ export default function CartaMesa({ id, pos, aoClicar, children }) {
 
   function aoPressionar(e) {
     e.currentTarget.setPointerCapture(e.pointerId);
+    const el = e.currentTarget;
+    // Limite horizontal: a carta não pode sumir para fora da mesa
+    // (em tela estreita isso a tornaria inalcançável).
+    const maxX = Math.max(0, (el.parentElement?.clientWidth || Infinity) - el.offsetWidth);
     estadoArrasto.current = {
       x0: e.clientX,
       y0: e.clientY,
       origemX: pos.x,
       origemY: pos.y,
       moveu: false,
+      maxX,
     };
   }
 
@@ -26,7 +31,8 @@ export default function CartaMesa({ id, pos, aoClicar, children }) {
     const dx = e.clientX - a.x0;
     const dy = e.clientY - a.y0;
     if (Math.abs(dx) > LIMIAR_ARRASTO || Math.abs(dy) > LIMIAR_ARRASTO) a.moveu = true;
-    if (a.moveu) moverCarta(id, Math.max(0, a.origemX + dx), Math.max(0, a.origemY + dy));
+    if (a.moveu)
+      moverCarta(id, Math.min(a.maxX, Math.max(0, a.origemX + dx)), Math.max(0, a.origemY + dy));
   }
 
   function aoSoltar() {

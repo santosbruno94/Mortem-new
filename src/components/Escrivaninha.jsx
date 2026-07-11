@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
@@ -18,12 +19,24 @@ const ROTULOS_DOMINIO = {
   vestigio: 'Vestígio',
 };
 
-// Posições de repouso na superfície, antes de o jogador arrastar.
-function posicaoPadraoLocalidade(indice) {
-  return { x: 16 + (indice % 6) * 170, y: 12 + Math.floor(indice / 6) * 120 };
-}
-function posicaoPadraoCarta(indice) {
-  return { x: 16 + (indice % 5) * 190, y: 150 + Math.floor(indice / 5) * 130 };
+// Passos da grade de repouso (antes de o jogador arrastar). O número de
+// colunas é derivado da largura real da mesa — em celular cabem menos.
+const PASSO_LOC = { x: 170, y: 120 };
+const PASSO_CARTA = { x: 190, y: 130 };
+const MARGEM_MESA = 16;
+
+// Largura viva de um elemento (a mesa), para a grade acompanhar a tela.
+function useLarguraViva(ref) {
+  const [largura, setLargura] = useState(() => window.innerWidth);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observador = new ResizeObserver(() => setLargura(el.clientWidth));
+    observador.observe(el);
+    setLargura(el.clientWidth);
+    return () => observador.disconnect();
+  }, [ref]);
+  return largura;
 }
 
 // O hub permanente (§5). O jogador nunca sai desta tela: eventos,
@@ -39,17 +52,51 @@ export default function Escrivaninha() {
 
   const mesaDesfocada = overlay !== null;
 
+  // A grade de repouso acompanha a largura da mesa: em tela estreita as
+  // cartas se arrumam em menos colunas, e a superfície rola na vertical.
+  const refMesa = useRef(null);
+  const larguraMesa = useLarguraViva(refMesa);
+  const locsVisiveis = LOCALIDADES.filter((loc) => nosDesbloqueados.includes(loc.id));
+  const colunasLoc = Math.max(1, Math.floor((larguraMesa - MARGEM_MESA) / PASSO_LOC.x));
+  const colunasCarta = Math.max(1, Math.floor((larguraMesa - MARGEM_MESA) / PASSO_CARTA.x));
+  const linhasLoc = Math.max(1, Math.ceil(locsVisiveis.length / colunasLoc));
+  // Em tela estreita o relógio de bolso ocupa o canto superior — a grade
+  // de repouso começa abaixo dele para nada nascer encoberto.
+  const yInicial = larguraMesa < 480 ? 84 : 12;
+  const yBaseCartas = yInicial + linhasLoc * PASSO_LOC.y + 18;
+
+  const posicaoPadraoLocalidade = (i) => ({
+    x: MARGEM_MESA + (i % colunasLoc) * PASSO_LOC.x,
+    y: yInicial + Math.floor(i / colunasLoc) * PASSO_LOC.y,
+  });
+  const posicaoPadraoCarta = (i) => ({
+    x: MARGEM_MESA + (i % colunasCarta) * PASSO_CARTA.x,
+    y: yBaseCartas + Math.floor(i / colunasCarta) * PASSO_CARTA.y,
+  });
+
+  const posLoc = locsVisiveis.map(
+    (loc, i) => posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)
+  );
+  const posCartas = cartasRegistradas.map(
+    (carta, i) => posicoesCartas[carta.id] || posicaoPadraoCarta(i)
+  );
+  // Altura rolável da superfície: alcança a carta mais baixa, com folga.
+  const alturaConteudo = Math.max(
+    440,
+    ...[...posLoc, ...posCartas].map((p) => p.y + 160)
+  );
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="altura-tela flex flex-col">
       {/* A parede: Quadro de Revelações */}
       <div
-        className={`flex justify-center py-3 bg-stone-950 border-b border-stone-900 transition-all duration-300 ${
+        className={`shrink-0 flex justify-center py-2 sm:py-3 bg-stone-950 border-b border-stone-900 transition-all duration-300 ${
           mesaDesfocada ? 'opacity-30 blur-[6px] pointer-events-none' : ''
         }`}
       >
         <button
           onClick={() => abrirOverlay('acusacao')}
-          className="px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.2em] text-sm hover:bg-stone-800"
+          className="px-5 sm:px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm hover:bg-stone-800"
         >
           CONSTRUIR A ACUSAÇÃO
         </button>
@@ -57,66 +104,69 @@ export default function Escrivaninha() {
 
       {/* A mesa (superfície livre + gavetas + painéis) */}
       <div
-        className={`flex-1 flex flex-col transition-all duration-300 ${
+        className={`flex-1 min-h-0 flex flex-col transition-all duration-300 ${
           mesaDesfocada ? 'opacity-30 blur-[6px] pointer-events-none' : ''
         }`}
       >
-        <div className="relative flex-1 overflow-hidden bg-gradient-to-b from-stone-950 via-stone-900/60 to-stone-950 min-h-[440px]">
+        <div className="relative flex-1 min-h-0 bg-gradient-to-b from-stone-950 via-stone-900/60 to-stone-950">
           <RelogioBolso />
 
-          {/* Localidades são nós do mapa (§5/§7). Clicar VIAJA até lá — e a
-              viagem é a única coisa que gasta o relógio. O mapa CRESCE: só
-              aparecem os nós desbloqueados (Moorford surge ao ler um lead). */}
-          {LOCALIDADES.filter((loc) => nosDesbloqueados.includes(loc.id)).map((loc, i) => {
-            const aqui = loc.id === localidadeAtual;
-            const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
-            return (
-              <CartaMesa
-                key={loc.id}
-                id={`loc_${loc.id}`}
-                pos={posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)}
-                aoClicar={() => {
-                  viajarPara(loc.id);
-                  abrirOverlay('localidade', loc.id);
-                }}
-              >
-                <div className="w-40 bg-stone-900 border border-amber-900/60 rounded-sm px-3 py-3 hover:border-amber-700">
-                  <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
-                    {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
+          {/* A superfície rola na vertical quando as cartas não cabem
+              (celular); o arrasto continua livre dentro da largura. */}
+          <div ref={refMesa} className="absolute inset-0 overflow-y-auto overflow-x-hidden">
+            {/* Localidades são nós do mapa (§5/§7). Clicar VIAJA até lá — e a
+                viagem é a única coisa que gasta o relógio. O mapa CRESCE: só
+                aparecem os nós desbloqueados (Moorford surge ao ler um lead). */}
+            {locsVisiveis.map((loc, i) => {
+              const aqui = loc.id === localidadeAtual;
+              const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
+              return (
+                <CartaMesa key={loc.id} id={`loc_${loc.id}`} pos={posLoc[i]}
+                  aoClicar={() => {
+                    viajarPara(loc.id);
+                    abrirOverlay('localidade', loc.id);
+                  }}
+                >
+                  <div className="w-40 bg-stone-900 border border-amber-900/60 rounded-sm px-3 py-3 hover:border-amber-700">
+                    <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
+                      {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
+                    </p>
+                    <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
+                    <p className="text-stone-500 text-[10px] mt-2 tracking-wide">
+                      {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${custo}h`}
+                    </p>
+                  </div>
+                </CartaMesa>
+              );
+            })}
+
+            {/* Cartas extraídas e registradas */}
+            {cartasRegistradas.map((carta, i) => (
+              <CartaMesa key={carta.id} id={carta.id} pos={posCartas[i]}>
+                <div
+                  className="w-44 bg-stone-900 border border-stone-700 rounded-sm px-3 py-3 hover:border-stone-500"
+                  title={carta.descricao}
+                >
+                  <p className="text-stone-600 text-[10px] tracking-[0.2em] uppercase">
+                    {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}
                   </p>
-                  <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
-                  <p className="text-stone-500 text-[10px] mt-2 tracking-wide">
-                    {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${custo}h`}
-                  </p>
+                  {/* Só a observação CRUA na face da carta — a interpretação é
+                      falada pelo legista, não carimbada (§6 do redesign). */}
+                  <p className="font-serif text-stone-200 text-sm mt-1 leading-snug">{carta.textoDisplay}</p>
                 </div>
               </CartaMesa>
-            );
-          })}
+            ))}
 
-          {/* Cartas extraídas e registradas */}
-          {cartasRegistradas.map((carta, i) => (
-            <CartaMesa
-              key={carta.id}
-              id={carta.id}
-              pos={posicoesCartas[carta.id] || posicaoPadraoCarta(i)}
-            >
-              <div
-                className="w-44 bg-stone-900 border border-stone-700 rounded-sm px-3 py-3 hover:border-stone-500"
-                title={carta.descricao}
-              >
-                <p className="text-stone-600 text-[10px] tracking-[0.2em] uppercase">
-                  {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}
-                </p>
-                {/* Só a observação CRUA na face da carta — a interpretação é
-                    falada pelo legista, não carimbada (§6 do redesign). */}
-                <p className="font-serif text-stone-200 text-sm mt-1 leading-snug">{carta.textoDisplay}</p>
-              </div>
-            </CartaMesa>
-          ))}
+            {/* Espaçador: garante que a rolagem alcance a carta mais baixa */}
+            <div aria-hidden style={{ height: alturaConteudo }} />
+          </div>
         </div>
 
         {/* Painéis de consulta — custo zero */}
-        <div className="flex justify-center gap-3 py-3 bg-stone-950 border-t border-stone-900">
+        <div
+          className="shrink-0 flex flex-wrap justify-center gap-2 sm:gap-3 px-2 py-2 sm:py-3 bg-stone-950 border-t border-stone-900"
+          style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
+        >
           <BotaoPainel rotulo="Caderneta" aoClicar={() => abrirOverlay('caderneta')} />
           <BotaoPainel rotulo="Painel de Álibis" aoClicar={() => abrirOverlay('alibis')} />
           <BotaoPainel rotulo="Glossário" aoClicar={() => abrirOverlay('glossario')} />
@@ -138,7 +188,7 @@ function BotaoPainel({ rotulo, aoClicar }) {
   return (
     <button
       onClick={aoClicar}
-      className="px-4 py-2 border border-stone-800 rounded-sm text-stone-400 text-sm hover:text-amber-200 hover:border-amber-900"
+      className="px-3 sm:px-4 py-2 border border-stone-800 rounded-sm text-stone-400 text-xs sm:text-sm hover:text-amber-200 hover:border-amber-900"
     >
       {rotulo}
     </button>
