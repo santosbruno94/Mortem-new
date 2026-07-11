@@ -120,12 +120,8 @@ julgamento, não à lente.
   torção, a cor) e cala a conclusão; ligar a fibra ao suspeito é raciocínio do jogador, não fala
   do narrador.
 
-## Divergências notadas (KB × código) — sem correção aplicada
+## Divergências notadas (KB × código)
 
-- **"Profundidade pareja".** O glossário (`src/data/glossario.js`, verbete `sulco_horizontal`)
-  descreve o sulco como de "profundidade **pareja**". *Pareja* é castelhanismo; o guia de estilo
-  o proscreve expressamente e recomenda, para o sulco de ligadura, **"uniforme, de profundidade
-  constante"**. Esta KB adota a forma recomendada. Correção do glossário a cargo do usuário.
 - **`fibras_texteis` cobre cordoaria e tecido sob um só verbete.** O glossário reúne fibra de
   tecido e fibra de corda em `fibras_texteis`, ao passo que as cartas distinguem os subdomínios
   `instrumento` (cânhamo no sulco) e `fibra_tecido` (cânhamo no punho, lã, linho). A KB mantém a

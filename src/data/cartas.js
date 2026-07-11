@@ -116,7 +116,7 @@ export const CARTAS = [
     carimboPadrao: 'Pontinhos de sangue nos olhos; face azulada',
     descricao:
       'Pontinhos de sangue salpicam o branco dos olhos. A face e os lábios guardam um tom azulado.',
-    vozMestre: 'Esses pontos nos olhos, esse azul na face: são de asfixia. A família, isto dá; a espécie, quem dá é o sulco.',
+    vozMestre: 'Esses pontos nos olhos, esse azul na face: são de asfixia. A família, isto dá; a espécie, só a assinatura crava.',
     // Sinal de FAMÍLIA: aponta asfixia (descarta veneno e trauma), mas não
     // diz qual asfixia — é preciso o sinal de assinatura para cravar.
     tagsOcultas: {
