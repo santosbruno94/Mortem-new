@@ -175,8 +175,9 @@ próprios. Toda peça nova de prosa se verifica contra:
   (13/out/1893 caiu numa sexta.)
 - **A escala absoluta de tempo** (`src/data/seed.js`): morte às 22h de 13/out (hora
   −2); chegada às 11h de 14/out (hora 11).
-- **O mapa** (`src/data/mapa.js`): Moorford fica a **3 horas** de estrada por trecho;
-  dentro da vila, 1 hora.
+- **O mapa** (`src/data/mapa.js`): Moorford fica a **hora e meia** de estrada por
+  trecho (3h ida e volta); dentro da vila, 1 hora. Este número é amarrado à lógica do
+  caso (Edgar sai do Clube ~20h30 e mata às 22h).
 - **Nomes, idades e relações** da seed.
 
 Qualquer número citado em fala ou prosa (hora, distância, soma, idade) precisa de fonte
