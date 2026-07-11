@@ -5,6 +5,7 @@ import { SEED_TUTORIAL } from '../data/seed.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
 import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
+import { tocarSom } from '../som.js';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
 
@@ -39,7 +40,10 @@ export default function EventoLocalidade({ localidadeId }) {
         key={chave}
         className="termo-clicavel"
         title="Examinar e registrar (não custa tempo)"
-        onClick={() => extrairCarta(cartaId)}
+        onClick={() => {
+          tocarSom('papel');
+          extrairCarta(cartaId);
+        }}
       >
         {estado.textoDisplay}
       </span>

@@ -62,7 +62,10 @@ function ehIndicadorTemporal(carta) {
 }
 function ehSinalCausal(carta) {
   const t = (carta && carta.tagsOcultas) || {};
-  return t.dominio === 'causal' && !!t.sinal;
+  // Sustenta o "Como" quem traz um SINAL discriminante ou o INSTRUMENTO
+  // (a fibra no fundo do sulco): o mecanismoCravado só consome os sinais
+  // (filter(Boolean)), e o instrumento dá nome ao meio no monólogo.
+  return t.dominio === 'causal' && (!!t.sinal || !!t.instrumento);
 }
 function ehVestigio(carta) {
   return ((carta && carta.tagsOcultas) || {}).dominio === 'vestigio';
@@ -73,6 +76,10 @@ function ehAmbiental(carta) {
 function ehAlibi(carta) {
   const t = (carta && carta.tagsOcultas) || {};
   return t.dominio === 'comportamental' && t.subDominio === 'alibi';
+}
+function ehCorroboracao(carta) {
+  const t = (carta && carta.tagsOcultas) || {};
+  return t.dominio === 'comportamental' && t.subDominio === 'corroboracao';
 }
 
 // ---------------------------------------------------------------------
@@ -113,6 +120,12 @@ export function classificarLigacao(ligacao, mapaCartas) {
   const vestigio = [c1, c2].find(ehVestigio);
   if (alibi && vestigio) {
     return { tipo: 'refuta_alibi', alvo: alibi, fato: vestigio };
+  }
+  // Um álibi também pode cair por TESTEMUNHO: a corroboração que registra o
+  // declarante saindo antes da hora que jurou (o livro de presença do clube).
+  const corroboracao = [c1, c2].find(ehCorroboracao);
+  if (alibi && corroboracao) {
+    return { tipo: 'refuta_alibi', alvo: alibi, fato: corroboracao };
   }
   return null;
 }
@@ -168,11 +181,24 @@ export function refutacaoDeHoraEstabelecida(alegacao, fatos) {
   return hora < janela.inicio || hora > janela.fim;
 }
 
-// Álibi: um vestígio do próprio declarante o desmente (o põe onde jurou não
-// estar). Não precisa de hora: a presença física basta.
-export function refutacaoDeAlibiEstabelecida(alibi, vestigios) {
-  const decl = ((alibi && alibi.tagsOcultas) || {}).declaranteId;
-  return (vestigios || []).some((v) => v.tagsOcultas.pertenceA === decl);
+// Álibi: cai por VESTÍGIO (um traço do próprio declarante o põe onde jurou
+// não estar — a presença física basta, sem hora) ou por TESTEMUNHO (uma
+// corroboração sobre o declarante registra que ele deixou o lugar antes da
+// hora que declarou: `horaFimObservada` < fim declarado).
+export function refutacaoDeAlibiEstabelecida(alibi, fatos) {
+  const t = ((alibi && alibi.tagsOcultas) || {});
+  const decl = t.declaranteId;
+  return (fatos || []).some((f) => {
+    const ft = f.tagsOcultas || {};
+    if (ft.pertenceA === decl) return true;
+    return (
+      ft.subDominio === 'corroboracao' &&
+      ft.ligadoA === decl &&
+      typeof ft.horaFimObservada === 'number' &&
+      typeof t.horaFimDeclarada === 'number' &&
+      ft.horaFimObservada < t.horaFimDeclarada
+    );
+  });
 }
 
 // Segredo revelado ao quebrar o álibi (ou null). É o que distingue a

@@ -1,5 +1,6 @@
 import { useJogo } from '../store/jogo.js';
 import { formatRelogio } from '../logic/tempo.js';
+import { verbeteParaCarta } from '../data/glossario.js';
 import Overlay from './Overlay.jsx';
 
 // Caderneta — o BANCO DE ANOTAÇÕES (§5): tudo que já foi observado fica
@@ -10,6 +11,7 @@ export default function Caderneta() {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const conclusoes = useJogo((s) => s.conclusoes);
   const log = useJogo((s) => s.log);
+  const abrirOverlay = useJogo((s) => s.abrirOverlay);
 
   return (
     <Overlay titulo="Caderneta" subtitulo="Banco de anotações — reler não custa tempo">
@@ -19,18 +21,32 @@ export default function Caderneta() {
         <p className="text-stone-600 text-sm">Nada foi observado ainda. Examine os locais.</p>
       ) : (
         <ul className="space-y-2 mb-8">
-          {cartasRegistradas.map((c) => (
-            <li key={c.id} className="border border-stone-800 rounded-sm px-4 py-3">
-              <p className="text-stone-200 text-sm font-serif">{c.textoDisplay}</p>
-              <p className="text-stone-500 text-sm mt-1">{c.descricao}</p>
-              {c.vozMestre && (
-                <p className="text-amber-200/70 text-xs italic mt-2">“{c.vozMestre}”</p>
-              )}
-              <p className="text-stone-700 text-[10px] tracking-widest uppercase mt-2">
-                observado às {formatRelogio(c.horaRegistro)}
-              </p>
-            </li>
-          ))}
+          {cartasRegistradas.map((c) => {
+            const verbete = verbeteParaCarta(c.tagsOcultas);
+            return (
+              <li key={c.id} className="border border-stone-800 rounded-sm px-4 py-3">
+                <p className="text-stone-200 text-sm font-serif">{c.textoDisplay}</p>
+                <p className="text-stone-500 text-sm mt-1">{c.descricao}</p>
+                {c.vozMestre && (
+                  <p className="text-amber-200/70 text-xs italic mt-2">“{c.vozMestre}”</p>
+                )}
+                <div className="flex flex-wrap items-baseline justify-between gap-2 mt-2">
+                  <p className="text-stone-700 text-[10px] tracking-widest uppercase">
+                    observado às {formatRelogio(c.horaRegistro)}
+                  </p>
+                  {verbete && (
+                    <button
+                      onClick={() => abrirOverlay('glossario', verbete.id)}
+                      className="text-amber-200/60 hover:text-amber-200 text-[11px]"
+                      title="Abrir o verbete correspondente no Glossário"
+                    >
+                      § {verbete.termo}, no Glossário
+                    </button>
+                  )}
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
 

@@ -248,3 +248,15 @@ export const GLOSSARIO = [
 export function verbetesPorDominio(dominio) {
   return GLOSSARIO.filter((v) => v.dominio === dominio);
 }
+
+export function obterVerbete(id) {
+  return GLOSSARIO.find((v) => v.id === id) || null;
+}
+
+// Ponte carta → verbete (Q9): uma observação registrada aponta o verbete
+// que ensina a lê-la, quando existe correspondência de tag (subDominio ou
+// sinal com o mesmo id do verbete). Apresentação apenas — nenhuma regra lê.
+export function verbeteParaCarta(tagsOcultas) {
+  const t = tagsOcultas || {};
+  return GLOSSARIO.find((v) => v.id === t.subDominio || v.id === t.sinal) || null;
+}

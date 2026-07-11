@@ -60,12 +60,13 @@ qualidade da cadeia construída.
 
 7. **Zero LLM em runtime.** Dados em JS, lógica em funções puras, monólogo final por
    templates universais com variáveis injetadas (e variação determinística por hash da
-   seed). O jogo roda offline e é totalmente reproduzível.
+   seed salgado com o perito escolhido — §11). O jogo roda offline e é totalmente
+   reproduzível.
 
 8. **Tempo como recurso forense (relógio MOLE).** O relógio só avança ao **VIAJAR** no
-   mapa; dentro do local, congela. Sem fim de jogo por tempo. O perecível degrada
-   perdendo **precisão**, nunca valor — o durável sempre resolve (§10). A pressão é de
-   **rota**, não arcade.
+   mapa (única exceção: a retentativa do tutorial custa 2h — §10/§11); dentro do local,
+   congela. Sem fim de jogo por tempo. O perecível degrada perdendo **precisão**, nunca
+   valor — o durável sempre resolve (§10). A pressão é de **rota**, não arcade.
 
 9. **"Tudo é mesa. Tudo é carta."** Sem troca de telas, sem menus profundos. Eventos
    abrem como overlays sobre a escrivaninha — a mesa nunca sai do DOM.
@@ -84,10 +85,19 @@ anti-padrões proibidos) está em `docs/guia-de-estilo.md`; o idioleto de cada p
 em `docs/biblia-de-vozes.md`. Eventos de investigação são prosa imersiva com **termos
 clicáveis em negrito** inline — clicar extrai a carta correspondente.
 
-**Estética visual:** mesa de madeira escura à luz de vela. Paleta Tailwind: fundos
-`stone-950/900`, texto `stone-300/400/600`, acentos `amber-200` (títulos serif) e
-`amber-900` (lacres, avisos). Tipografia serifada para títulos e nomes; sem ícones
-modernos; ornamentos tipográficos discretos (§, ―).
+**Estética visual:** mesa de madeira escura à luz de vela — e a matéria disso está na
+tela: veios de madeira e grão procedurais (gradientes + ruído SVG, sem assets externos),
+halo de vela que respira, papel com fibra e sombra nas cartas, barbante com corpo
+(sombra + torção). Paleta Tailwind: fundos `stone-950/900`, texto `stone-300/400/600`,
+acentos `amber-200` (títulos serif) e `amber-900` (lacres, avisos). Tipografia serifada
+de época embarcada (**IM Fell English**, licença OFL, `src/assets/fontes/`) para
+títulos e nomes; sem ícones modernos; ornamentos tipográficos discretos (§, ―).
+
+**Som:** cinco efeitos curtos, sintetizados offline e embarcados (`src/assets/sons/`,
+tocados por `src/som.js`): papel (extrair carta), sino (viajar), barbante (ligar/
+desfazer no mural), lacre (selar o julgamento), pena (avançar a abertura). O som é
+apresentação — nenhuma regra depende dele — e desliga-se no rodapé da escrivaninha
+("Som: aceso/apagado"). Zero rede em runtime segue valendo.
 
 ---
 
@@ -216,6 +226,11 @@ e responde por isso, é o jogador. Limites da voz do mestre no texto: leitura t�
 apenas (janela, família/assinatura, estado do sinal); nunca aponta pista, autoria ou
 encenação (`docs/guia-de-estilo.md` §2.4).
 
+**Onde a dica mora (e onde não mora):** a leitura fala no exame do corpo e fica
+arquivada na Caderneta. Ela **não** aparece no Mural da Acusação — consultá-la na hora
+de afirmar a cadeia é um gesto deliberado (abrir a Caderneta), não um gabarito
+pendurado sobre a prova.
+
 No modo **procedural** não há mestre: a cena traz só a descrição física (sem
 `vozMestre`) e o jogador, já perito, lê por conta própria.
 
@@ -233,10 +248,18 @@ carta tem um pino; a ligação é uma linha em SVG; o alvo sai de `elementFromPo
 
 - **Sustentação** — um fato apoia uma afirmação positiva: indicador temporal → âncora
   *Quando*; sinal → *Como*; vestígio → *Presença*.
-- **Refutação** — um depoimento desmentido por fatos físicos: a hora alegada cai
-  **fora** da janela que os fatos sustentam (encenação exposta), ou o vestígio do
-  próprio declarante o desmente (e, se revela um segredo, a mentira é de vergonha —
-  inocente, não assassino).
+- **Refutação** — um depoimento desmentido por fatos: a hora alegada cai **fora** da
+  janela que os fatos físicos sustentam; o vestígio do próprio declarante o desmente
+  (e, se revela um segredo, a mentira é de vergonha — inocente, não assassino); ou uma
+  **corroboração de testemunho** registra o declarante saindo antes da hora que jurou
+  (tag `horaFimObservada` — é assim que o registro de Moorford fura o álibi do réu).
+
+**A encenação tem dono:** o crédito de "descuidos expostos" exige derrubar a **própria
+peça forjada** (a alegação de hora com a tag `encenado` — o relógio esmagado).
+Desmentir uma testemunha apenas equivocada é mérito narrado à parte, nunca crédito de
+encenação. **O álibi do réu** entra na Estação III como alegação refutável quando o
+réu está nomeado — derrubá-lo é opcional (corroboração nunca é pilar), mas o monólogo
+ganha o direito de dizê-lo.
 
 **O jogador afirma o "quando" e o "como".** A janela (início/fim no relógio dos dois
 dias) e a causa (do catálogo universal) são **juízo dele**, sustentados pelas cartas
@@ -291,6 +314,16 @@ validado contra `docs/kb-medicina-legal/`.
   com vida", `dep_visto_vivo`) sempre fecha uma janela finita que contém a hora real,
   em qualquer rota; o perecível só aperta essa janela quando colhido fresco. Sem fim
   de jogo por tempo. A falha do apressado é de perícia, não de relógio.
+- **Exceção do tutorial:** a **retentativa** custa relógio (2h por "Revisar a
+  acusação" — §11): é o único gesto fora da viagem que move o ponteiro, e move-o por
+  ser uma viagem institucional (a audiência adia-se).
+- **Pressão de rota nos casos da campanha (decisão registrada — Q6):** o relógio mole
+  do tutorial não morde por desenho; nos casos seguintes a pressão de rota virá de
+  **janelas de disponibilidade** — testemunha que embarca, estabelecimento que fecha,
+  enterro marcado que leva o corpo — e/ou de eventos que consomem horas. O perecível
+  continua sem bloquear (perde precisão, não valor); o que se perde por chegar tarde é
+  ACESSO a fontes, nunca a solvabilidade (a âncora durável segue garantida). Detalhe
+  por caso, no desenho de cada caso.
 
 ---
 
@@ -308,27 +341,49 @@ dadosMonologo }`. Os 4 tipos:
 2. **`sucesso_gafes`** — réu certo, condenação sustentada, mas com lacunas ou erros
    expostos.
 3. **`impunidade`** — réu certo mas tese furada: as lacunas soltam o assassino.
-4. **`erro_judiciario`** — réu errado condenado; o monólogo revela o verdadeiro
-   culpado.
+4. **`erro_judiciario`** — réu errado condenado. O nome do verdadeiro culpado **não**
+   sai no monólogo enquanto a retentativa está de pé — só o **encerramento definitivo**
+   (o epílogo) o revela.
 
-### Monólogo por templates universais
+### Monólogo por templates universais — e o CONTRATO do desfecho
 
 Gerado por **BLOCOS** parametrizados (`src/logic/monologo.js`): abertura por tipo de
-final, tese montada com o que o jogador ligou, buracos mapeados das falhas, juízo dos
-periféricos, fecho. Cada bloco tem 2–3 **variantes determinísticas** escolhidas por
-hash da seed (nunca `Math.random`). Nunca há texto único por caso — os mesmos templates
-servem ao tutorial e a qualquer caso procedural. Nunca LLM. Voz em primeira pessoa —
-o perito pensa alto (tom: `docs/guia-de-estilo.md` §3–4).
+final, tese montada com o que o jogador ligou, o álibi do réu desmentido (se o foi),
+as testemunhas derrubadas (se o foram), buracos mapeados das falhas, juízo dos
+periféricos, fecho. Nunca há texto único por caso — os mesmos templates servem ao
+tutorial e a qualquer caso procedural. Nunca LLM. Voz em primeira pessoa — o perito
+pensa alto (tom: `docs/guia-de-estilo.md` §3–4).
 
-### Retentativa (regalia do caso-escola)
+**Contrato:** nenhuma frase do desfecho afirma gesto que o jogador não fez —
+a encenação só entra se a peça forjada foi refutada; "o paradeiro que firmei" exige o
+álibi do periférico na mesa (sem ele, o juízo é narrado como convicção); o instrumento
+citado vem do sinal que cravou a causa, nunca de um vestígio avulso.
+
+**Variação determinística:** as variantes de abertura e fecho saem de hash da seed
+**salgado com o nome do perito** (nunca `Math.random`) — a mesma partida repete o
+texto; Harlan e Lenore tendem a ler desfechos diferentes. O teto do guia §3 (no máximo
+UMA máxima por desfecho) é garantido **por construção**: cada variante declara
+`maxima`, e abertura-máxima só sorteia fechos sem máxima.
+
+### Retentativa (regalia do caso-escola — com preço)
 
 No desfecho, além do "O QUE FALTOU — cortesia do tutorial", o botão **"Revisar a
-acusação"** devolve à investigação com a mesa intacta, permitindo corrigir e julgar de
-novo sem custo. Isso é deliberado **só no tutorial**: o caso-escola é uma aula, e a
-aula admite refazer o exercício. Nos casos seguintes da campanha, a retentativa deve
-ter consequência (decisão em aberto: custo de tempo, reputação do perito, ou submissão
-única) — registrado aqui para o desenho dos próximos casos não herdar a regalia por
-omissão.
+acusação"** devolve à investigação com a mesa intacta — mas **custa 2h de relógio**
+(`CUSTO_REVISAO`, `src/store/jogo.js`): a audiência adia-se, e o perecível ainda não
+colhido segue degradando. A resubmissão continua ilimitada (o caso-escola é uma aula),
+porém nunca grátis, e o Erro Judiciário não entrega o nome do culpado enquanto se pode
+tentar de novo. Nos casos seguintes da campanha, a consequência pode endurecer
+(reputação do perito, ou submissão única) — decisão em aberto, registrada para os
+próximos casos não herdarem a regalia por omissão.
+
+### Epílogo e retrato (o encerramento paga o investimento)
+
+"Encerrar o caso" não recarrega a página de imediato: abre o **Epílogo**
+(`src/logic/epilogo.js`) — 2 a 4 parágrafos de consequência por templates universais
+(o destino do réu conforme o desfecho; o periférico do segredo, exposto ou não; a
+conta do perito) — seguido de **O retrato da investigação**: horas usadas, lugares
+visitados, observações registradas, acusações levadas a julgamento. Só então "Fechar o
+caderno" encerra de fato.
 
 ---
 
@@ -474,13 +529,15 @@ docs/           guia-de-estilo · biblia-de-vozes · kb-medicina-legal/ · histo
 .claude/        agents/ (escritor-prosa, editor-critico, perito-forense, fiscal-continuidade)
                 skills/ (anti-padrao-ia, redigir-prosa, revisar-prosa)
 src/
+  assets/       fontes/ (IM Fell English, OFL) · sons/ (5 WAV sintetizados offline)
   data/         seed.js · catalogo_causas.js · cartas.js · localidades.js · mapa.js ·
                 curriculo.js · glossario.js · rotulos.js · abertura.js
   logic/        veredicto.js (calcularVeredictoCadeia) · acusacao.js (gramática das
                 ligações) · tempo_morte.js · cronos.js · falaDoMestre.js (dica) ·
-                monologo.js · tempo.js · interpolar.js
+                monologo.js · epilogo.js · tempo.js · interpolar.js
   store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes,
-                acusacao, log, detective)
+                acusacao, log, detective, nosVisitados, nSubmissoes, somAtivo)
+  som.js        efeitos sonoros da mesa (apresentação; nenhuma regra lê)
   components/   Escrivaninha · EventoLocalidade · MuralAcusacao · MonologoFinal ·
                 PainelAlibis · ModalGlossario · Caderneta · TelaPersonagem ·
                 TermometroCorpo · Abertura · Overlay · CartaMesa · RelogioBolso

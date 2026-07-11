@@ -3,6 +3,7 @@ import { useJogo } from '../store/jogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
 import { formatDuracao } from '../logic/tempo.js';
+import { tocarSom } from '../som.js';
 import CartaMesa from './CartaMesa.jsx';
 import RelogioBolso from './RelogioBolso.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
@@ -19,6 +20,16 @@ const ROTULOS_DOMINIO = {
   comportamental: 'Comportamental',
   vestigio: 'Vestígio',
 };
+
+// Ordem de repouso das cartas na mesa (Q9): agrupadas por domínio — o corpo
+// primeiro, depois causa, vestígios, cena e pessoas. Estável dentro do grupo
+// (ordem de coleta). Só muda o ARRUMO padrão; o arrasto continua livre.
+const ORDEM_DOMINIO = { temporal: 0, causal: 1, vestigio: 2, ambiental: 3, comportamental: 4 };
+function ordenarPorDominio(cartas) {
+  return [...cartas].sort(
+    (a, b) => (ORDEM_DOMINIO[a.tagsOcultas.dominio] ?? 9) - (ORDEM_DOMINIO[b.tagsOcultas.dominio] ?? 9)
+  );
+}
 
 // Passos da grade de repouso (antes de o jogador arrastar). O número de
 // colunas é derivado da largura real da mesa — em celular cabem menos.
@@ -51,6 +62,8 @@ export default function Escrivaninha() {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
+  const somAtivo = useJogo((s) => s.somAtivo);
+  const alternarSom = useJogo((s) => s.alternarSom);
 
   const mesaDesfocada = overlay !== null;
 
@@ -79,7 +92,8 @@ export default function Escrivaninha() {
   const posLoc = locsVisiveis.map(
     (loc, i) => posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)
   );
-  const posCartas = cartasRegistradas.map(
+  const cartasOrdenadas = ordenarPorDominio(cartasRegistradas);
+  const posCartas = cartasOrdenadas.map(
     (carta, i) => posicoesCartas[carta.id] || posicaoPadraoCarta(i)
   );
   // Altura rolável da superfície: alcança a carta mais baixa, com folga.
@@ -110,7 +124,8 @@ export default function Escrivaninha() {
           mesaDesfocada ? 'opacity-30 blur-[6px] pointer-events-none' : ''
         }`}
       >
-        <div className="relative flex-1 min-h-0 bg-gradient-to-b from-stone-950 via-stone-900/60 to-stone-950">
+        <div className="relative flex-1 min-h-0 mesa-madeira">
+          <div className="luz-de-vela" aria-hidden />
           <RelogioBolso />
 
           {/* A superfície rola na vertical quando as cartas não cabem
@@ -126,12 +141,13 @@ export default function Escrivaninha() {
               return (
                 <CartaMesa key={loc.id} id={`loc_${loc.id}`} pos={posLoc[i]}
                   aoClicar={() => {
+                    if (custo > 0 && !aqui) tocarSom('sino'); // a viagem tem sino (Q7)
                     viajarPara(loc.id);
                     abrirOverlay('localidade', loc.id);
                   }}
                 >
                   <div
-                    className={`w-40 bg-stone-900 border rounded-sm px-3 py-3 ${
+                    className={`carta-papel w-40 bg-stone-900 border rounded-sm px-3 py-3 ${
                       novo
                         ? 'border-amber-500/80 hover:border-amber-400 shadow-md shadow-amber-900/30'
                         : 'border-amber-900/60 hover:border-amber-700'
@@ -150,11 +166,12 @@ export default function Escrivaninha() {
               );
             })}
 
-            {/* Cartas extraídas e registradas */}
-            {cartasRegistradas.map((carta, i) => (
+            {/* Cartas extraídas e registradas — agrupadas por domínio (Q9),
+                com papel e chegada em viravolta (Q7) */}
+            {cartasOrdenadas.map((carta, i) => (
               <CartaMesa key={carta.id} id={carta.id} pos={posCartas[i]}>
                 <div
-                  className="w-44 bg-stone-900 border border-stone-700 rounded-sm px-3 py-3 hover:border-stone-500"
+                  className="carta-surgir carta-papel w-44 bg-stone-900 border border-stone-700 rounded-sm px-3 py-3 hover:border-stone-500"
                   title={carta.descricao}
                 >
                   <p className="text-stone-600 text-[10px] tracking-[0.2em] uppercase">
@@ -180,6 +197,7 @@ export default function Escrivaninha() {
           <BotaoPainel rotulo="Caderneta" aoClicar={() => abrirOverlay('caderneta')} />
           <BotaoPainel rotulo="Painel de Álibis" aoClicar={() => abrirOverlay('alibis')} />
           <BotaoPainel rotulo="Glossário" aoClicar={() => abrirOverlay('glossario')} />
+          <BotaoPainel rotulo={somAtivo ? 'Som: aceso' : 'Som: apagado'} aoClicar={alternarSom} />
         </div>
       </div>
 

@@ -108,16 +108,44 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
   if (vestigioAcessorioErrado) falhas.push({ codigo: 'nexo_acessorio' });
 
   // ---------- Descuidos (a encenação exposta por refutação de hora) ----------
+  // A encenação só conta como exposta se o jogador refutou a PRÓPRIA peça
+  // encenada (tag `encenado` na alegação de hora — o relógio forjado).
+  // Desmentir uma testemunha equivocada é mérito narrativo, não encenação.
   let encenacaoExposta = false;
+  let testemunhasDesmentidas = 0;
   for (const { alegacao, fatos } of refutaHora.values()) {
-    if (refutacaoDeHoraEstabelecida(alegacao, fatos)) {
-      encenacaoExposta = true;
-      break;
-    }
+    if (!refutacaoDeHoraEstabelecida(alegacao, fatos)) continue;
+    if (alegacao.tagsOcultas.encenado) encenacaoExposta = true;
+    else testemunhasDesmentidas += 1;
   }
   const descuidosOk = !seed.cenaEncenada || encenacaoExposta;
   if (descuidosOk) acertos.push({ codigo: 'descuidos' });
   else falhas.push({ codigo: 'sem_descuidos' });
+
+  // ---------- O álibi do próprio réu, desmentido (opcional — nunca pilar) ----------
+  // Se o jogador refutou o paradeiro declarado do réu, o monólogo ganha o
+  // direito de dizê-lo — e diz COMO caiu: por REGISTRO (a corroboração com
+  // hora observada) ou por RASTRO (vestígio do próprio réu). A frase narrada
+  // depende da base — o desfecho não afirma um registro que não existe.
+  let alibiReuExposto = false;
+  let alibiReuPorRegistro = false;
+  for (const { alibi, vestigios } of refutaAlibi.values()) {
+    if (
+      alibi.tagsOcultas.declaranteId === acusacao.reuId &&
+      refutacaoDeAlibiEstabelecida(alibi, vestigios)
+    ) {
+      alibiReuExposto = true;
+      alibiReuPorRegistro = vestigios.some(
+        (f) =>
+          f.tagsOcultas.subDominio === 'corroboracao' &&
+          f.tagsOcultas.ligadoA === alibi.tagsOcultas.declaranteId &&
+          typeof f.tagsOcultas.horaFimObservada === 'number' &&
+          typeof alibi.tagsOcultas.horaFimDeclarada === 'number' &&
+          f.tagsOcultas.horaFimObservada < alibi.tagsOcultas.horaFimDeclarada
+      );
+      break;
+    }
+  }
 
   // ---------- Motivação ----------
   const cartaMotivacao = cartas.find((c) => c.id === acusacao.motivacaoId) || null;
@@ -152,7 +180,15 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
           segredoRevelado(ra.alibi, ra.vestigios) === esperado.segredo;
       }
     }
-    perifericos[suspeitoId] = { esperado: esperado.veredictoEsperado, declarado, ok };
+    // O monólogo só pode afirmar "conferi o paradeiro" se o álibi do suspeito
+    // está de fato na mesa — senão o juízo é convicção, não perícia.
+    const alibiNaMesa = cartas.some(
+      (c) =>
+        c.tagsOcultas.dominio === 'comportamental' &&
+        c.tagsOcultas.subDominio === 'alibi' &&
+        c.tagsOcultas.declaranteId === suspeitoId
+    );
+    perifericos[suspeitoId] = { esperado: esperado.veredictoEsperado, declarado, ok, alibiNaMesa };
     if (!ok) {
       perifericosOk = false;
       falhas.push({ codigo: 'periferico', suspeitoId });
@@ -186,7 +222,12 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       janela,
       janelaPrecisa,
       mecanismoDeclarado: causaId,
-      instrumentoDeclarado: (vestigioNexo || vestigiosLigados[0])?.tagsOcultas.tipoVestigio || null,
+      // O instrumento narrado vem do sinal que CRAVOU a causa (a fibra no
+      // sulco), nunca do vestígio de presença — o template não pode afirmar
+      // um instrumento que contradiga a própria causa declarada.
+      instrumentoDeclarado:
+        (mecanismoOk && sustentaComo.find((c) => c.tagsOcultas.instrumento)?.tagsOcultas.instrumento) ||
+        null,
       mecanismoCorreto: seed.mecanismoCorreto,
       instrumentoCorreto: seed.instrumentoCorreto,
       motivacaoOk,
@@ -196,6 +237,9 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       horaForjada: seed.horaForjada,
       horaMorteAbsoluta: seed.horaMorteAbsoluta,
       sustentada,
+      testemunhasDesmentidas,
+      alibiReuExposto,
+      alibiReuPorRegistro,
     },
   };
 }
