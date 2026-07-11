@@ -6,6 +6,19 @@ da tela de título ao Monólogo do Detetive, com os 4 desfechos possíveis.
 
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md).
 
+## Documentação
+
+| Documento | Conteúdo |
+|---|---|
+| [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md) | Design do jogo (estado atual) |
+| [`docs/guia-de-estilo.md`](./docs/guia-de-estilo.md) | Norma de toda a prosa (língua de época, observação pura, anti-padrões) |
+| [`docs/biblia-de-vozes.md`](./docs/biblia-de-vozes.md) | O idioleto de cada personagem |
+| [`docs/kb-medicina-legal/`](./docs/kb-medicina-legal/) | Base de conhecimento forense de época (fontes: Taylor, Casper, Lacassagne) |
+| [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
+
+O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)
+(escritor, editor-crítico anti-padrões de IA, perito forense, fiscal de continuidade).
+
 ## Como rodar
 
 Pré-requisito: [Node.js](https://nodejs.org) 18 ou superior.
