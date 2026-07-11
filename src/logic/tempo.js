@@ -41,12 +41,21 @@ export function formatRelogio(horasJogo) {
   return `${dia} de outubro, ${formatHora(horasJogo)}`;
 }
 
+// Duração em horas para exibição: 1 → "1h"; 1.5 → "1h30" (nunca decimal).
+export function formatDuracao(horas) {
+  const h = Math.floor(horas);
+  const m = Math.round((horas - h) * 60);
+  return m > 0 ? `${h}h${String(m).padStart(2, '0')}` : `${h}h`;
+}
+
 // Janela da morte: "entre 20h00 e 23h00 de 13/out"
 export function formatJanela(janela) {
   if (!janela) return 'janela indeterminada';
+  if (janela.inicio === -Infinity && janela.fim === Infinity) return 'janela indeterminada';
+  if (janela.inicio === -Infinity) return `antes de ${formatHoraComDia(janela.fim)}`;
+  if (janela.fim === Infinity) return `depois de ${formatHoraComDia(janela.inicio)}`;
   const a = decompor(janela.inicio);
   const b = decompor(janela.fim);
-  if (janela.inicio === -Infinity) return `antes de ${formatHoraComDia(janela.fim)}`;
   if (a.dia === b.dia) {
     return `entre ${formatHora(janela.inicio)} e ${formatHora(janela.fim)} de ${a.dia}/out`;
   }

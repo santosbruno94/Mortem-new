@@ -23,10 +23,12 @@ export const ROTULOS_INSTRUMENTO = {
   fibra_canhamo: 'corda de cânhamo',
 };
 
-// Rótulos dos vestígios (material), usados no Confronto ao cravar o nexo.
+// Rótulos dos vestígios (material), usados no Confronto ao cravar o nexo
+// e como fallback do monólogo quando o vestígio ligado não é o instrumento.
 export const ROTULOS_VESTIGIO = {
   fibra_canhamo: 'fibra de cânhamo',
   la_cinzenta: 'lã cinzenta',
+  lenco_monograma: 'lenço de linho com monograma',
 };
 
 export const ROTULOS_ESTADO_CENA = {

@@ -19,7 +19,7 @@ export const LOCALIDADES = [
     prosa: [
       'O morto jaz de costas entre a escrivaninha e a estante, os braços ao longo do corpo, o colete abotoado. O Delegado Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
       'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. Voltado o corpo com o auxílio do guarda, veem-se [[ev_livores]], espalhadas também pela face posterior das pernas.',
-      'No pescoço, sob o colarinho aberto, corre uma [[ev_sulco]]; à lente de aumento, [[ev_fibras_sulco]]. Nos olhos entreabertos, [[ev_petequias]].',
+      'Sob o colarinho aberto corre uma [[ev_sulco]]; à lente de aumento, [[ev_fibras_sulco]]. Nos olhos entreabertos, [[ev_petequias]].',
       'A maleta de instrumentos está aberta sobre a cadeira. O termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar oportuno medir o que o corpo ainda tem a dizer.',
     ],
   },
@@ -34,7 +34,7 @@ export const LOCALIDADES = [
       '[[ev_relogio]] está agora no tapete, a caixa partida, os ponteiros imóveis. O Delegado aponta-o como a peça central do caso, e repete-o a quem entra.',
       'As [[ev_gavetas]] estão abertas, o conteúdo pelo assoalho. Na corrente do colete do morto pende um relógio de ouro; sobre a escrivaninha, uma caixa de soberanos de tampa fechada.',
       'Na porta que dá para o beco, uma [[ev_fechadura]]: marcas de alavanca no lado de fora do batente. Junto à gaveta mais funda, contra a madeira escura, [[ev_fio_la]].',
-      'Na sombra atrás da estante, onde a vassoura não alcança, [[ev_lenco]].',
+      'Na sombra onde a vassoura não alcança, um [[ev_lenco]].',
     ],
   },
   {
@@ -73,9 +73,9 @@ export const LOCALIDADES = [
     subtitulo: 'Governanta da casa, 55 anos',
     acoesEspeciais: [],
     prosa: [
-      'A Sra. Hudson recebe na cozinha da casa grande e não convida a sentar. Dezessete anos servindo ao morto, e mal alinha duas palavras diante {g:do perito|da perita}. Em toda a conversa, [[comp_hudson]]: o avental vai e volta entre os dedos, sem achar onde parar.',
+      'A Sra. Hudson recebe na cozinha da casa grande e não convida a sentar. Dezessete anos servindo ao morto, e diante {g:do perito|da perita} não gasta duas palavras onde uma serve. Em toda a conversa, [[comp_hudson]]: o avental vai e volta entre os dedos, sem achar onde parar.',
       'Sobre a noite do dia 13, a declaração vem inteira, rápida e sem tropeço, [[alibi_hudson]]: "Recolhi-me às nove, como sempre. Só desci às sete, quando o Sr. Edgar já gritava no quintal."',
-      'Faz frio na cozinha, e a Sra. Hudson traz um [[ev_xale]] sobre os ombros, de lã cinzenta, com a barra puxada num ponto.',
+      'A governanta traz um [[ev_xale]] sobre os ombros, apertado contra o frio da cozinha.',
       '"Posso ir? Tenho a casa toda por fazer, e ninguém mais vai fazê-la." Já está de pé antes da resposta, a mão na aba do avental.',
     ],
   },
@@ -89,7 +89,7 @@ export const LOCALIDADES = [
       'O The Crossed Keys cheira a cerveja velha e serragem. Blackwood não interrompe o serviço para responder: seca canecas enquanto fala, e fala alto.',
       '"Se veio me perguntar se eu odiava o velho, economize a viagem: odiava. Sangrava-me de juros havia seis anos, e cobrava na porta, aos gritos." Pousa a caneca sem baixar a voz. Em tudo, [[comp_blackwood]].',
       'Sobre a noite de 13, ele larga o pano: [[alibi_blackwood]]. "Das oito à meia-noite, atrás deste balcão. Noite de sexta, véspera de feira: meia Briarstone bebeu da minha mão. Quer os nomes? Tome doze, e me deixe trabalhar."',
-      'Três fregueses, ouvidos em separado à porta, confirmam sem combinar: o taverneiro não deixou o balcão um minuto sequer.',
+      'Três fregueses, ouvidos em separado à porta, confirmam: o taverneiro não deixou o balcão um minuto sequer.',
     ],
   },
   {
@@ -101,7 +101,7 @@ export const LOCALIDADES = [
     prosa: [
       'Hora e meia de estrada separam Briarstone do Clube Comercial, e o salão de carvalho e fumo recebe {detective.title} {detective.surname} com a cortesia de sempre. O porteiro lembra-se bem de Edgar Arthurs.',
       'Sobre a noite de 13, o livro de presença e a memória do porteiro contam a mesma coisa: [[corrob_moorford]]. O jantar terminou cedo, e a cadeira de Edgar esvaziou-se por volta das oito e meia.',
-      'O porteiro fixa a saída por volta das oito e meia; a estrada de volta a Briarstone leva hora e meia.',
+      'Depois dessa hora, diz o porteiro, ninguém tornou a vê-lo no salão.',
     ],
   },
 ];

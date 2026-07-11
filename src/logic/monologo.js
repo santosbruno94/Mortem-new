@@ -18,7 +18,7 @@
 // =====================================================================
 
 import { obterSuspeito } from '../data/seed.js';
-import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_MOTIVO } from '../data/rotulos.js';
+import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIVO } from '../data/rotulos.js';
 import { formatJanela, formatHora } from './tempo.js';
 
 const TITULOS = {
@@ -57,14 +57,14 @@ const ABERTURAS = {
     'O nó fechou-se sobre o culpado; ficaram, no caminho, alguns cabos mal atados que eu preferiria não ter deixado.',
   ],
   impunidade: [
-    'Tenho o nome certo e as mãos vazias. A intuição aponta o homem; a cadeia não o alcança.',
-    'Sei quem foi. Não provei que foi. Entre uma coisa e outra corre a distância que solta um assassino.',
+    'Tenho o nome certo e as mãos vazias. O faro aponta o nome; a cadeia não o alcança.',
+    'Sei quem foi. Não provei que foi. Levo o nome na caderneta e nada com que o sustentar diante de um júri.',
     'Aponto o culpado e não tenho com que o segurar: faltaram à cadeia os elos que o punham no lugar do crime.',
   ],
   erro_judiciario: [
-    'Montei uma cadeia coerente, e errada. Condenei quem mentia por outra razão, e deixei o verdadeiro sem quem lhe pedisse contas.',
-    'A acusação era firme e apontava para o lado errado. Condenei uma mentira que não era a do crime.',
-    'Tudo se encaixava, menos o essencial: o nome. Levei à forca quem escondia uma vergonha, não um homicídio.',
+    'Montei uma cadeia coerente, e errada. Condenei quem não devia, e deixei o verdadeiro sem quem lhe pedisse contas.',
+    'A acusação era firme e apontava para o lado errado. Condenei um nome que o corpo não acusava.',
+    'Tudo se encaixava, menos o essencial: o nome. Levei à forca quem não cometeu o crime.',
   ],
 };
 
@@ -72,24 +72,24 @@ const ABERTURAS = {
 // (Aqui mora a única máxima permitida por desfecho — guia §3.)
 const FECHOS = {
   vitoria_absoluta: [
-    (reu) => `Guardo os instrumentos sem pressa. ${reu} responderá pelo que fez, e um caso bem lido dispensa o aplauso.`,
-    (reu) => `${reu} responderá pelo que fez. Fecho a maleta: o corpo disse tudo o que tinha a dizer, e foi ouvido.`,
-    (reu) => `Não há mais o que somar. ${reu} vai a julgamento, e a cadeia inteira vai junto.`,
+    (reu) => `Guardo os instrumentos sem pressa. ${ComArtigo(reu)} responderá pelo que fez, e um caso bem lido dispensa o aplauso.`,
+    (reu) => `${ComArtigo(reu)} responderá pelo que fez. Fecho a maleta: o corpo disse tudo o que tinha a dizer, e foi ouvido.`,
+    (reu) => `Não há mais o que somar. ${ComArtigo(reu)} vai a julgamento, e a cadeia inteira vai junto.`,
   ],
   sucesso_gafes: [
-    (reu) => `${reu} responderá assim mesmo. Mas fica o travo das gafes, e é nelas que se faz ou se perde a fama de um perito.`,
-    (reu) => `A condenação de ${reu} está de pé. Guardo, para mim, a lista do que faria melhor numa segunda vez.`,
-    (reu) => `${reu} vai a julgamento. Levo comigo os pontos frouxos, que ninguém viu senão eu — por ora.`,
+    (reu) => `${ComArtigo(reu)} responderá assim mesmo. Mas fica o travo das gafes, e é nelas que se faz ou se perde a fama de um perito.`,
+    (reu) => `A condenação ${deQuem(reu)} está de pé. Guardo, para mim, a lista do que faria melhor numa segunda vez.`,
+    (reu) => `${ComArtigo(reu)} vai a julgamento. Levo comigo os pontos frouxos, que ninguém viu senão eu — por ora.`,
   ],
   impunidade: [
-    (reu) => `${reu} sairá livre, e há de me agradecer a lição com toda a polidez do mundo. Há agradecimentos que pesam mais que sentenças.`,
-    (reu) => `${reu} deixa a sala pela porta da frente. A certeza sem prova não prende ninguém, e eu que o diga.`,
-    (reu) => `Solto ${reu} por falta do que só eu deveria ter trazido. A intuição não assina laudo.`,
+    (reu) => `${ComArtigo(reu)} sairá livre, e a lei nada terá a lhe dizer. Um culpado solto é um erro que continua a trabalhar.`,
+    (reu) => `${ComArtigo(reu)} deixa a sala pela porta da frente. A certeza sem prova não prende ninguém, e eu que o diga.`,
+    (reu) => `Solto ${comArtigo(reu)} por falta do que só eu deveria ter trazido. A intuição não assina laudo.`,
   ],
   erro_judiciario: [
-    (correto) => `Enquanto se lê a sentença, ${correto} observa de longe, de luto correto e mãos limpas. A forca de um inocente tem dois carrascos: quem ata o nó e quem assina o laudo.`,
-    (correto) => `A sentença cai sobre o nome errado, e ${correto} assiste sem pestanejar. O verdadeiro erro não foi dele; foi meu, e leva a minha assinatura.`,
-    (correto) => `${correto} sai da sala como quem cumpriu uma formalidade. Condenei a pessoa errada, e é isso que ficará no meu nome, não no dele.`,
+    (correto) => `Enquanto se lê a sentença, ${comArtigo(correto)} observa de longe, de mãos limpas. A forca de um inocente tem dois carrascos: quem ata o nó e quem assina o laudo.`,
+    (correto) => `A sentença cai sobre o nome errado, e ${comArtigo(correto)} assiste sem pestanejar. O verdadeiro erro foi meu, e leva a minha assinatura.`,
+    (correto) => `${ComArtigo(correto)} sai da sala como quem cumpriu uma formalidade. Condenei a pessoa errada, e é isso que ficará no meu nome.`,
   ],
 };
 
@@ -111,7 +111,7 @@ function textoDaFalha(falha, dados) {
     case 'mecanismo_errado':
       return 'A causa que sustentei não se firma nos sinais do corpo; o pescoço dizia outra coisa.';
     case 'sem_nexo':
-      return `Nada na minha cadeia pôs ${nomeReu} junto ao instrumento do crime.`;
+      return `Nada na minha cadeia pôs ${comArtigo(nomeReu)} junto ao instrumento do crime.`;
     case 'nexo_errado':
       return 'O vestígio que invoquei não liga o acusado ao instrumento do óbito.';
     case 'sem_motivacao':
@@ -121,7 +121,7 @@ function textoDaFalha(falha, dados) {
     case 'sem_descuidos':
       return 'Não apontei os descuidos da encenação, e a cena arrumada para mentir seguiu de pé.';
     case 'periferico':
-      return `Sobre ${nome(falha.suspeitoId)}, o meu juízo não correspondeu ao que as cartas de fato provam.`;
+      return `Sobre ${comArtigo(nome(falha.suspeitoId))}, o meu juízo não correspondeu ao que as cartas de fato provam.`;
     case 'reu_errado':
       return null; // tratado pela abertura e pelo fecho do erro judiciário
     default:
@@ -134,15 +134,64 @@ function nome(suspeitoId) {
   return s ? s.nome : 'pessoa incerta';
 }
 
+// ---------------------------------------------------------------------
+// Artigo diante de nome com título ("a Sra. Hudson", "ao Sr. Arthurs").
+// Nome sem título segue sem artigo ("Sustento que Edgar Arthurs...").
+// O título feminino testa primeiro: "Dr.ª" contém "Dr.".
+// ---------------------------------------------------------------------
+const TITULO_FEM = /^(Sra\.|Srta\.|Dr\.ª|Dra\.|Lady)\s/;
+const TITULO_MASC = /^(Sr\.|Dr\.|Rev\.|Lord)\s/;
+
+function artigoDe(nomeCompleto) {
+  if (TITULO_FEM.test(nomeCompleto)) return 'a';
+  if (TITULO_MASC.test(nomeCompleto)) return 'o';
+  return null;
+}
+
+// "a Sra. Hudson" / "o Sr. Arthurs" / "Edgar Arthurs" (meio de frase)
+function comArtigo(nomeCompleto) {
+  const art = artigoDe(nomeCompleto);
+  return art ? `${art} ${nomeCompleto}` : nomeCompleto;
+}
+
+// Início de frase: "A Sra. Hudson..." / "Edgar Arthurs..."
+function ComArtigo(nomeCompleto) {
+  const art = artigoDe(nomeCompleto);
+  return art ? `${art.toUpperCase()} ${nomeCompleto}` : nomeCompleto;
+}
+
+// Preposição "a" + nome: "ao Sr. Arthurs" / "à Sra. Hudson" / "a Edgar Arthurs"
+function aQuem(nomeCompleto) {
+  const art = artigoDe(nomeCompleto);
+  if (art === 'o') return `ao ${nomeCompleto}`;
+  if (art === 'a') return `à ${nomeCompleto}`;
+  return `a ${nomeCompleto}`;
+}
+
+// Preposição "de" + nome: "do Sr. Arthurs" / "da Sra. Hudson" / "de Edgar Arthurs"
+function deQuem(nomeCompleto) {
+  const art = artigoDe(nomeCompleto);
+  if (art === 'o') return `do ${nomeCompleto}`;
+  if (art === 'a') return `da ${nomeCompleto}`;
+  return `de ${nomeCompleto}`;
+}
+
 // Bloco da tese: reconstrói, em prosa, exatamente o que o jogador ligou —
 // apenas os elos que ele de fato sustentou.
 function blocoTese(dados) {
-  let frase = `Sustento que ${nome(dados.reuId)} deu morte a ${dados.vitima}`;
+  let frase = `Sustento que ${comArtigo(nome(dados.reuId))} deu morte ${aQuem(dados.vitima)}`;
   if (dados.janela) frase += `, ${formatJanela(dados.janela)}`;
   if (dados.mecanismoDeclarado) {
     frase += `, mediante ${ROTULOS_MECANISMO[dados.mecanismoDeclarado] || dados.mecanismoDeclarado}`;
     if (dados.instrumentoDeclarado) {
-      frase += ` (${ROTULOS_INSTRUMENTO[dados.instrumentoDeclarado] || dados.instrumentoDeclarado})`;
+      // O instrumento declarado pode ser qualquer vestígio que o jogador ligou;
+      // sem rótulo próprio de instrumento, cai no rótulo de vestígio — nunca
+      // no id interno.
+      const rotulo =
+        ROTULOS_INSTRUMENTO[dados.instrumentoDeclarado] ||
+        ROTULOS_VESTIGIO[dados.instrumentoDeclarado] ||
+        'material não identificado';
+      frase += ` (${rotulo})`;
     }
   }
   frase += '.';
@@ -168,18 +217,29 @@ export function gerarMonologo(veredicto, detective) {
   blocos.push(blocoTese(dados));
 
   // ---------------- Os buracos da cadeia ----------------
-  const frasesFalhas = veredicto.falhas.map((f) => textoDaFalha(f, dados)).filter(Boolean);
+  // Juízos periféricos errados em série: a partir do segundo, frase abreviada,
+  // para o monólogo não repetir a mesma sentença palavra por palavra.
+  let perifericosErrados = 0;
+  const frasesFalhas = veredicto.falhas
+    .map((f) => {
+      if (f.codigo === 'periferico') {
+        perifericosErrados += 1;
+        if (perifericosErrados > 1) return `O mesmo vale para ${comArtigo(nome(f.suspeitoId))}.`;
+      }
+      return textoDaFalha(f, dados);
+    })
+    .filter(Boolean);
   blocos.push(...frasesFalhas);
 
   // ---------------- Juízo sobre os não-acusados ----------------
   for (const [suspeitoId, p] of Object.entries(veredicto.perifericos)) {
     if (p.ok && p.esperado === 'inocente_alibi') {
       blocos.push(
-        `Quanto a ${nome(suspeitoId)}, o paradeiro que firmei o mantém fora da janela da morte: tinha razões contra a vítima, faltou-lhe a ocasião de agir.`
+        `Quanto ${aQuem(nome(suspeitoId))}, o paradeiro que firmei não cruza a janela da morte: razões contra a vítima não faltavam; faltou a ocasião de agir.`
       );
     } else if (p.ok && p.esperado === 'inocente_segredo') {
       blocos.push(
-        `Quanto a ${nome(suspeitoId)}, a mentira que expus encobria uma vergonha, não o homicídio: mentiu para se proteger, não para matar.`
+        `Quanto ${aQuem(nome(suspeitoId))}, a mentira que expus encobria uma vergonha, não o homicídio: mentiu para se proteger, não para matar.`
       );
     }
   }

@@ -1,10 +1,20 @@
+import { useEffect } from 'react';
 import { useJogo } from '../store/jogo.js';
 
 // Moldura padrão dos eventos e painéis: overlay centralizado sobre a
 // escrivaninha (position fixed). A mesa permanece no DOM, desfocada.
+// Fecha no botão "✕" ou na tecla Esc.
 export default function Overlay({ titulo, subtitulo, children, largura = 'max-w-2xl', aoFechar }) {
   const fecharOverlay = useJogo((s) => s.fecharOverlay);
   const fechar = aoFechar || fecharOverlay;
+
+  useEffect(() => {
+    function aoTeclar(e) {
+      if (e.key === 'Escape') fechar();
+    }
+    window.addEventListener('keydown', aoTeclar);
+    return () => window.removeEventListener('keydown', aoTeclar);
+  }, [fechar]);
 
   return (
     <div className="fixed inset-0 z-40 flex items-center justify-center p-3 sm:p-8">

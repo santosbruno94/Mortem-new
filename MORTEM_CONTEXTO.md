@@ -279,8 +279,8 @@ validado contra `docs/kb-medicina-legal/`.
 - Relógio global em horas (`horasJogo`), chegada às **11:00** (`horasChegadaCena: 11`,
   imutável).
 - **Custa tempo:** só **VIAJAR** entre nós do mapa (`viajarPara`; custos em
-  `src/data/mapa.js` — dentro da vila 1h; Moorford 3h por trecho). Dentro do local, o
-  relógio congela.
+  `src/data/mapa.js` — dentro da vila 1h; Moorford 1h30 por trecho, 3h ida e volta).
+  Dentro do local, o relógio congela.
 - **Custo zero:** examinar (extrair), medir temperatura, interrogar, mural, Glossário,
   Caderneta, Painel de Álibis, arrastar/organizar.
 - **Degradação = perda de PRECISÃO, nunca de valor.** Rigor e algor, ao degradar,
@@ -319,6 +319,16 @@ periféricos, fecho. Cada bloco tem 2–3 **variantes determinísticas** escolhi
 hash da seed (nunca `Math.random`). Nunca há texto único por caso — os mesmos templates
 servem ao tutorial e a qualquer caso procedural. Nunca LLM. Voz em primeira pessoa —
 o perito pensa alto (tom: `docs/guia-de-estilo.md` §3–4).
+
+### Retentativa (regalia do caso-escola)
+
+No desfecho, além do "O QUE FALTOU — cortesia do tutorial", o botão **"Revisar a
+acusação"** devolve à investigação com a mesa intacta, permitindo corrigir e julgar de
+novo sem custo. Isso é deliberado **só no tutorial**: o caso-escola é uma aula, e a
+aula admite refazer o exercício. Nos casos seguintes da campanha, a retentativa deve
+ter consequência (decisão em aberto: custo de tempo, reputação do perito, ou submissão
+única) — registrado aqui para o desenho dos próximos casos não herdar a regalia por
+omissão.
 
 ---
 
