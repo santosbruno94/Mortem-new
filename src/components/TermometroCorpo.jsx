@@ -1,7 +1,8 @@
 import { useJogo } from '../store/jogo.js';
 
 // Ação especial do exame do corpo: medir a temperatura retal gera a
-// carta de algor mortis correspondente ao momento da medição (custa 1h).
+// carta de algor mortis correspondente ao momento da medição. Como todo
+// exame, não custa tempo — o relógio só corre ao viajar.
 export default function TermometroCorpo() {
   const temperaturaMedida = useJogo((s) => s.temperaturaMedida);
   const medirTemperatura = useJogo((s) => s.medirTemperatura);
@@ -24,7 +25,7 @@ export default function TermometroCorpo() {
         onClick={medirTemperatura}
         className="shrink-0 px-4 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800"
       >
-        Medir temperatura (1h)
+        Medir temperatura
       </button>
     </div>
   );

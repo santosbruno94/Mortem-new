@@ -501,7 +501,7 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
       </div>
       <p className="text-stone-500 text-[10px] mb-2">
         Ligue à Presença o(s) vestígio(s) que ligam o réu à arma do óbito (clique no vestígio, depois
-        na âncora).
+        na âncora). Para desfazer uma ligação, clique no barbante.
       </p>
       <MesaLigacao
         alvos={[alvo]}
@@ -524,7 +524,8 @@ function EstacaoMentiras({ acusacao, mentirasAlvo, temporais, adicionarLigacao, 
   return (
     <div>
       <p className="text-stone-500 text-[10px] mb-2">
-        Ligue um fato físico do corpo à mentira de hora que ele derruba (clique no fato, depois no depoimento).
+        Ligue um fato físico do corpo à mentira de hora que ele derruba (clique no fato, depois no
+        depoimento). Para desfazer uma ligação, clique no barbante.
       </p>
       <MesaLigacao
         alvos={mentirasAlvo}
@@ -678,10 +679,10 @@ function EstacaoMobil({ acusacao, motivos, definirMotivacao }) {
 
 // =====================================================================
 // ESTAÇÃO V — OS JUÍZOS: Cúmplice / Inocente / Sem juízo por não-acusado.
-// Inocente abre "a evidência que o inocenta": ligar o vestígio do suspeito
-// ao álibi dele é a refuta_alibi que o motor lê (governanta → revela o
-// segredo). Cúmplice abre "o porquê" (aposta do jogador; estado local, sem
-// efeito no motor). Tudo opcional — só pesa na Vitória Absoluta.
+// Inocente abre "confronte o paradeiro declarado": ligar o vestígio do
+// suspeito ao álibi dele é a refuta_alibi que o motor lê (governanta →
+// revela o segredo). Cúmplice abre "o porquê" (aposta do jogador; estado
+// local, sem efeito no motor). Tudo opcional — só pesa na Vitória Absoluta.
 // =====================================================================
 function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada, alternarLigacao }) {
   const [porque, setPorque] = useState({});
@@ -725,13 +726,16 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
               ))}
             </div>
 
-            {/* INOCENTE → a evidência que o tira do crime */}
+            {/* INOCENTE → confrontar o paradeiro declarado: o mesmo gesto serve
+                ao álibi que se sustenta e ao álibi que quebra (mentira-segredo) */}
             {juizo === 'inocente' && (
               <div className="mt-2 border-t border-stone-800 pt-2">
-                <p className="text-stone-600 text-[10px] mb-1">A evidência que o inocenta:</p>
+                <p className="text-stone-600 text-[10px] mb-1">
+                  Confronte o paradeiro declarado — ligue o vestígio que o desmente, se houver:
+                </p>
                 {alibi && <p className="text-stone-500 text-[11px] italic mb-1">Álibi: {alibi.textoDisplay}</p>}
                 {vestigiosDe(sp.id).length === 0 ? (
-                  <p className="text-stone-600 text-[10px]">Nada a quebrar — o paradeiro se sustenta.</p>
+                  <p className="text-stone-600 text-[10px]">Nenhum vestígio na sua mesa confronta este paradeiro.</p>
                 ) : (
                   <div className="flex flex-col gap-1">
                     {vestigiosDe(sp.id).map((v) => (
@@ -750,9 +754,9 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
             {/* CÚMPLICE → o porquê (aposta do jogador; narrativa) */}
             {juizo === 'culpado' && (
               <div className="mt-2 border-t border-stone-800 pt-2">
-                <p className="text-stone-600 text-[10px] mb-1">Por que o acusa de cúmplice:</p>
+                <p className="text-stone-600 text-[10px] mb-1">Por que acusa de cúmplice:</p>
                 {incriminamDe(sp.id).length === 0 ? (
-                  <p className="text-stone-600 text-[10px]">Nenhuma carta o aponta.</p>
+                  <p className="text-stone-600 text-[10px]">Nenhuma carta sustenta a aposta.</p>
                 ) : (
                   <div className="flex flex-col gap-1">
                     {incriminamDe(sp.id).map((c) => (

@@ -40,7 +40,7 @@ export const PASSOS_ABERTURA = [
     id: 'transformacao',
     titulo: 'A mesa se transforma',
     paragrafos: [
-      'A garrafa vai para o chão, o jornal para o fogo. A mesa estreita da pensão fica sendo, pelo tempo que durar a verdade, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta na primeira página em branco.',
+      'A garrafa vai para o chão, o jornal para o fogo. A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta na primeira página em branco.',
       '{detective.title} {detective.surname} veste o casaco ainda úmido da véspera e desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer.',
     ],
     rotuloBotao: 'Tomar o trem',
@@ -49,7 +49,7 @@ export const PASSOS_ABERTURA = [
     id: 'briarstone',
     titulo: 'Briarstone',
     paragrafos: [
-      'Briarstone é uma rua comprida com pretensões a vila: a igreja num extremo, a taverna no meio, a relojoaria de cortina cerrada, e à porta dela um guarda moço, pálido como quem viu o primeiro morto da carreira.',
+      'Briarstone estende-se ao longo de uma única rua: a igreja num extremo, a taverna no meio, a relojoaria de cortina cerrada, e à porta dela um guarda moço, pálido como quem viu o primeiro morto da carreira.',
       'O Delegado Wycliffe espera na plataforma e aperta a mão {g:do perito|da perita} com um alívio que não disfarça. "{detective.title} {detective.surname}. Agradeço a presteza. O Sr. Arthurs está como o encontramos ontem de manhã… esta manhã, quero dizer. Venha. Explico-me pelo caminho, que andando me saio melhor."',
     ],
     rotuloBotao: 'Ouvir o delegado',

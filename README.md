@@ -35,7 +35,8 @@ Outros comandos:
 ```bash
 npm run build        # build de produção (pasta dist/)
 npm run preview      # serve o build de produção
-node scripts/qa.mjs  # QA estático: traça os perfis de jogador pelo motor
+node scripts/qa.mjs     # QA estático: traça os perfis de jogador pelo motor
+node scripts/qa-ui.mjs  # QA de fumaça da interface (requer Playwright + Chromium)
 ```
 
 ## Como se joga

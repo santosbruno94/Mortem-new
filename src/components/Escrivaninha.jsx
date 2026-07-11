@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
+import { formatDuracao } from '../logic/tempo.js';
 import CartaMesa from './CartaMesa.jsx';
 import RelogioBolso from './RelogioBolso.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
@@ -49,6 +50,7 @@ export default function Escrivaninha() {
   const viajarPara = useJogo((s) => s.viajarPara);
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
+  const nosNovos = useJogo((s) => s.nosNovos);
 
   const mesaDesfocada = overlay !== null;
 
@@ -119,6 +121,7 @@ export default function Escrivaninha() {
                 aparecem os nós desbloqueados (Moorford surge ao ler um lead). */}
             {locsVisiveis.map((loc, i) => {
               const aqui = loc.id === localidadeAtual;
+              const novo = nosNovos.includes(loc.id);
               const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
               return (
                 <CartaMesa key={loc.id} id={`loc_${loc.id}`} pos={posLoc[i]}
@@ -127,13 +130,20 @@ export default function Escrivaninha() {
                     abrirOverlay('localidade', loc.id);
                   }}
                 >
-                  <div className="w-40 bg-stone-900 border border-amber-900/60 rounded-sm px-3 py-3 hover:border-amber-700">
+                  <div
+                    className={`w-40 bg-stone-900 border rounded-sm px-3 py-3 ${
+                      novo
+                        ? 'border-amber-500/80 hover:border-amber-400 shadow-md shadow-amber-900/30'
+                        : 'border-amber-900/60 hover:border-amber-700'
+                    }`}
+                  >
                     <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
                       {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
+                      {novo && <span className="text-amber-400 normal-case tracking-normal"> · novo</span>}
                     </p>
                     <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
                     <p className="text-stone-500 text-[10px] mt-2 tracking-wide">
-                      {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${custo}h`}
+                      {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
                     </p>
                   </div>
                 </CartaMesa>

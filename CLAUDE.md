@@ -43,6 +43,9 @@ com zero achados bloqueantes.**
 - `node scripts/qa.mjs` — QA estático: os 4 perfis de jogador devem produzir os 4
   desfechos (Metódico → Vitória Absoluta; Apressado → Erro Judiciário; Intuitivo →
   Impunidade; o quarto → Sucesso com Gafes).
+- `node scripts/qa-ui.mjs` — QA de fumaça da interface: joga as 3 rotas canônicas no
+  navegador (Playwright/Chromium) e checa regressões de texto visível; rodar antes de
+  commit que toque UI, prosa exibida ou monólogo.
 - `npm run dev` — toda feature testável no navegador antes de avançar.
 
 ## Perfil do criador

@@ -1,6 +1,6 @@
 # Relatório de QA — "O Álibi de Corda"
 
-QA estático conforme §18 do contexto: os perfis abaixo foram traçados pelos dados e pelo
+QA estático conforme §17 do contexto: os perfis abaixo foram traçados pelos dados e pelo
 motor (sem playtest interativo) com `node scripts/qa.mjs`, que dirige o store e as funções
 puras exatamente como a interface o faria. Verdade de ouro: morte às 22h00 de 13/out
 (hora absoluta −2); chegada às 11h00 de 14/out.

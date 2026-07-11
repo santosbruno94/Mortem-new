@@ -97,7 +97,7 @@ export const NOS_MAPA = [
     grupo: 'fora',
     desbloqueadoInicio: false, // só aparece quando um lead o cita (ver LEADS)
     // Aqui o perito pode tentar furar o álibi de Edgar. É CORROBORAÇÃO:
-    // o caso já fecha pelo corpo; isto é um atalho caro (6h ida e volta).
+    // o caso já fecha pelo corpo; isto é um atalho caro (3h ida e volta).
   },
 ];
 

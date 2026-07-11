@@ -11,7 +11,7 @@ import { create } from 'zustand';
 import { SEED_TUTORIAL } from '../data/seed.js';
 import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.js';
-import { HORAS_CHEGADA_CENA, ipmAtual } from '../logic/tempo.js';
+import { HORAS_CHEGADA_CENA, ipmAtual, formatDuracao } from '../logic/tempo.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 
@@ -39,6 +39,7 @@ export const useJogo = create((set, get) => ({
   // O relógio só avança ao VIAJAR entre nós; dentro do local, congela.
   localidadeAtual: null, // definido ao iniciar a investigação
   nosDesbloqueados: NOS_MAPA.filter((n) => n.desbloqueadoInicio).map((n) => n.id),
+  nosNovos: [], // nós revelados por lead e ainda não visitados (destaque na mesa)
 
   // ---------------- Mesa e registros ----------------
   cartasRegistradas: [],
@@ -108,9 +109,13 @@ export const useJogo = create((set, get) => ({
     set({
       localidadeAtual: noId,
       horasJogo: s.horasJogo + custo,
+      nosNovos: s.nosNovos.filter((id) => id !== noId),
       log: [
         ...s.log,
-        { hora: s.horasJogo + custo, texto: `Deslocou-se para ${no ? no.rotulo : noId} (${custo}h de viagem).` },
+        {
+          hora: s.horasJogo + custo,
+          texto: `Deslocou-se para ${no ? no.rotulo : noId} (${formatDuracao(custo)} de viagem).`,
+        },
       ],
     });
   },
@@ -138,15 +143,24 @@ export const useJogo = create((set, get) => ({
     // Examinar é de graça e CONGELA o relógio (relógio mole): o tempo só
     // corre ao viajar. Aqui apenas registramos a carta — sem custo de tempo.
     // Leads: certas cartas revelam novos nós no mapa ao serem extraídas.
+    // O desbloqueio é anunciado no diário e destacado na mesa (nosNovos),
+    // para o jogador não perder o mapa crescendo enquanto lê um overlay.
     const lead = LEADS_DESBLOQUEIO.find((l) => l.cartaId === definicao.id);
-    const nosDesbloqueados =
-      lead && !s.nosDesbloqueados.includes(lead.revelaNo)
-        ? [...s.nosDesbloqueados, lead.revelaNo]
-        : s.nosDesbloqueados;
+    const revelou = lead && !s.nosDesbloqueados.includes(lead.revelaNo);
+    const nosDesbloqueados = revelou ? [...s.nosDesbloqueados, lead.revelaNo] : s.nosDesbloqueados;
+    const log = [...s.log, { hora: s.horasJogo, texto: `Registrado: ${estado.carimboPadrao}.` }];
+    if (revelou) {
+      const noRevelado = obterNo(lead.revelaNo);
+      log.push({
+        hora: s.horasJogo,
+        texto: `Novo destino no mapa: ${noRevelado ? noRevelado.rotulo : lead.revelaNo}. ${lead.nota || ''}`.trim(),
+      });
+    }
     set({
       cartasRegistradas: [...s.cartasRegistradas, carta],
       nosDesbloqueados,
-      log: [...s.log, { hora: s.horasJogo, texto: `Registrado: ${estado.carimboPadrao}.` }],
+      nosNovos: revelou ? [...s.nosNovos, lead.revelaNo] : s.nosNovos,
+      log,
     });
     // O mestre relê o corpo e atualiza, de cabeça, a leitura de quando/como.
     get().consolidarLeituraMestre();

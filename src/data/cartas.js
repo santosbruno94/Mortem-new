@@ -149,7 +149,7 @@ export const CARTAS = [
     textoDisplay: 'Relógio de Lareira Esmagado',
     carimboPadrao: 'Relógio Parado às 09h00',
     descricao:
-      'De perto, o vidro está estilhaçado para dentro e a caixa partiu-se de um lado só. Os ponteiros pararam exatamente sobre as nove horas.',
+      'De perto, o vidro está estilhaçado para dentro e a caixa partiu-se de um lado só. Os ponteiros pararam sobre as nove horas.',
     tagsOcultas: {
       dominio: 'ambiental',
       subDominio: 'cronologia_aparente',
@@ -179,7 +179,7 @@ export const CARTAS = [
     localidade: 'cena',
     custoTempo: 1,
     textoDisplay: 'Fechadura dos Fundos Forçada',
-    carimboPadrao: 'Arrombamento pelo Exterior',
+    carimboPadrao: 'Marcas de Alavanca no Batente Externo',
     descricao:
       'Os riscos na madeira são rasos e curtos, e param onde a lingueta cede. As lascas da tinta caíram para o lado de fora.',
     tagsOcultas: {
@@ -278,7 +278,7 @@ export const CARTAS = [
     textoDisplay: 'Última Ceia Servida às Oito',
     carimboPadrao: 'Visto com Vida às 20h (13/out)',
     descricao:
-      'No registro de Wycliffe: a ceia foi servida ao patrão às oito em ponto da noite de 13, e a louça recolhida logo depois. Depois disso, ninguém mais o viu com vida.',
+      'No registro de Wycliffe: a ceia foi servida ao patrão às oito em ponto da noite de 13, e a louça recolhida logo depois. É a última vez que alguém da casa o viu com vida.',
     // Âncora DURÁVEL de tempo: "última vez visto com vida" trava o INÍCIO da
     // janela (a morte não pode anteceder as 20h). Não degrada. Junto do livor
     // fixo (que dá o teto), o corpo sozinho fecha uma janela finita, em
@@ -339,7 +339,7 @@ export const CARTAS = [
     textoDisplay: 'Jantar no Clube Comercial de Moorford',
     carimboPadrao: 'Paradeiro Declarado: 20h–23h (13/out)',
     descricao:
-      'A declaração de Edgar, palavra por palavra: das oito às onze da noite de 13, à mesa do Clube, em Moorford, e de volta tarde aos aposentos. As horas saem redondas, na ponta da língua.',
+      'A declaração de Edgar, palavra por palavra: das oito às onze da noite de 13, à mesa do Clube, em Moorford, e de volta tarde aos aposentos. Dá as horas completas, sem consultar nada.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -468,9 +468,9 @@ export const CARTAS = [
     localidade: 'clube_moorford',
     custoTempo: 1,
     textoDisplay: 'Edgar Saiu do Clube Antes das Nove',
-    carimboPadrao: 'Saída Registrada às 08h30 (13/out)',
+    carimboPadrao: 'Saída Registrada às 20h30 (13/out)',
     descricao:
-      'O porteiro é categórico: o Sr. Arthurs deixou a mesa "lá pelas oito e meia", e não às onze que declara. O livro de presença traz a mesma hora ao lado do nome.',
+      'O porteiro é categórico: o Sr. Arthurs deixou a mesa "lá pelas oito e meia". O livro de presença traz a mesma hora ao lado do nome.',
     // Corroboração OPCIONAL (nó distante, desbloqueado por lead): reforça que
     // Edgar teve oportunidade, mas NÃO é pilar do veredicto — o caso já fecha
     // pelo corpo. É atalho/reforço, jamais a chave (relógio mole).

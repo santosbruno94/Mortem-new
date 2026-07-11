@@ -1,5 +1,5 @@
 // =====================================================================
-// QA estático (§18): traça os perfis de jogador pelos dados e pelo motor,
+// QA estático (§17 do contexto): traça os perfis de jogador pelos dados e pelo motor,
 // sem playtest interativo. Executar com: node scripts/qa.mjs
 //
 // ETAPA 1 (Construção da Acusação): o jogador não preenche mais um Libelo —
@@ -107,8 +107,8 @@ s().viajarPara('cena');
 ['ev_relogio', 'ev_gavetas', 'ev_fechadura', 'ev_fio_la'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_edgar'); // extrai o álibi → desbloqueia Moorford
 ['alibi_edgar', 'comp_edgar', 'ev_fibras_manga'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('clube_moorford'); // 3h atrás da isca de Moorford
-s().viajarPara('interrogatorio_hudson'); // 3h de volta à vila
+s().viajarPara('clube_moorford'); // +1h30 atrás da isca de Moorford
+s().viajarPara('interrogatorio_hudson'); // +1h30 de volta à vila
 ['alibi_hudson', 'comp_hudson', 'ev_xale'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_blackwood'); // +1h
 ['alibi_blackwood', 'comp_blackwood'].forEach((id) => s().extrairCarta(id));
@@ -255,7 +255,7 @@ for (const { rotulo, monologo } of monologos) {
 }
 
 // ============================================================
-// Critério de validação do caso (§18)
+// Critério de validação do caso (§17 do contexto)
 // ============================================================
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
