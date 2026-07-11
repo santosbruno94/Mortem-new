@@ -62,7 +62,7 @@ const ABERTURAS = {
     'Aponto o culpado e não tenho com que o segurar: faltaram à cadeia os elos que o punham no lugar do crime.',
   ],
   erro_judiciario: [
-    'Montei uma cadeia coerente, e errada. Apertei o nó no pescoço de quem mentia por outra razão, e deixei o verdadeiro sem quem lhe pedisse contas.',
+    'Montei uma cadeia coerente, e errada. Condenei quem mentia por outra razão, e deixei o verdadeiro sem quem lhe pedisse contas.',
     'A acusação era firme e apontava para o lado errado. Condenei uma mentira que não era a do crime.',
     'Tudo se encaixava, menos o essencial: o nome. Levei à forca quem escondia uma vergonha, não um homicídio.',
   ],
@@ -175,11 +175,11 @@ export function gerarMonologo(veredicto, detective) {
   for (const [suspeitoId, p] of Object.entries(veredicto.perifericos)) {
     if (p.ok && p.esperado === 'inocente_alibi') {
       blocos.push(
-        `Quanto a ${nome(suspeitoId)}, o paradeiro firmado bastou: havia motivo, faltou a ocasião.`
+        `Quanto a ${nome(suspeitoId)}, o paradeiro que firmei o mantém fora da janela da morte: tinha razões contra a vítima, faltou-lhe a ocasião de agir.`
       );
     } else if (p.ok && p.esperado === 'inocente_segredo') {
       blocos.push(
-        `Quanto a ${nome(suspeitoId)}, separei a mentira do crime: mentiu por vergonha, e vergonha não é sangue.`
+        `Quanto a ${nome(suspeitoId)}, a mentira que expus encobria uma vergonha, não o homicídio: mentiu para se proteger, não para matar.`
       );
     }
   }

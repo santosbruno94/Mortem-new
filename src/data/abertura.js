@@ -13,7 +13,7 @@ export const PASSOS_ABERTURA = [
     titulo: 'Caulfield, 14 de outubro de 1893',
     paragrafos: [
       'A pensão da Sra. Potts cobra dois xelins por semana e entrega dois xelins: um quarto estreito, meia vela, uma garrafa vazia e o jornal de anteontem dobrado sobre a mesa.',
-      'Sobre essa mesa, {detective.title} {detective.surname} dispõe os instrumentos do ofício: a lente, o termômetro de mercúrio, a caderneta de capa rachada. Há três semanas nenhuma carta chega. Os mortos da Inglaterra andam morrendo de causas que qualquer médico de aldeia sabe assinar.',
+      'Sobre essa mesa, {detective.title} {detective.surname} dispõe os instrumentos do ofício: a lente e o termômetro de mercúrio, e a caderneta de capa rachada onde há três semanas não se anota um caso. Os mortos da Inglaterra andam morrendo de causas que qualquer médico de aldeia sabe assinar.',
     ],
     rotuloBotao: 'A vela queima',
   },

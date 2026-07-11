@@ -214,7 +214,7 @@ export const GLOSSARIO = [
     termo: 'A Mentira do Inocente',
     dominio: 'comportamental',
     definicao:
-      'Inocentes mentem — por vergonha, medo ou culpa alheia ao crime. A mentira do assassino choca-se com a evidência física; a do inocente, apenas com a moral. Nervosismo não é prova.',
+      'Inocentes mentem por vergonha, medo ou culpa alheia ao crime. A mentira do assassino contradiz a evidência física; a do inocente contradiz apenas a moral. O nervosismo ou a contradição de um depoimento, por si sós, não estabelecem autoria.',
     sinalObservavel: 'Depoimento falso cuja falsidade não o coloca na cena na hora da morte.',
   },
   {
@@ -222,7 +222,7 @@ export const GLOSSARIO = [
     termo: 'Motivo e Oportunidade',
     dominio: 'comportamental',
     definicao:
-      'Motivo sem oportunidade não é prova: odiar o morto não aproxima ninguém do pescoço dele. A acusação exige móbil, ocasião e materialidade reunidos.',
+      'O motivo, sem a oportunidade, não estabelece autoria: odiar a vítima não aproxima ninguém materialmente do crime. A acusação exige móbil, ocasião e materialidade reunidos.',
     sinalObservavel: 'Suspeito com razões públicas de rancor, porém com paradeiro firmado fora da janela da morte.',
   },
 

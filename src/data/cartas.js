@@ -62,7 +62,7 @@ export const CARTAS = [
         textoDisplay: 'Corpo Flácido',
         carimboPadrao: 'Corpo mole, sem nenhuma rigidez',
         descricao:
-          'Os membros dobram sem nenhuma resistência: a dureza já passou por completo. Isso já não marca a hora exata — diz apenas que faz mais de um dia.',
+          'Os membros dobram sem nenhuma resistência: a dureza passou por completo. O rigor, neste ponto, já não aponta a hora.',
         vozMestre: 'Frouxo de todo. O rigor já não me serve: só posso jurar que faz mais de um dia.',
         // Degradado, porém AINDA VÁLIDO (relógio mole): o modelo o lê como
         // janela larga [36h, +∞), jamais nula. Ver tempo_morte.js (rigor.resolvido).
@@ -163,7 +163,7 @@ export const CARTAS = [
     localidade: 'cena',
     custoTempo: 1,
     textoDisplay: 'Gavetas Reviradas',
-    carimboPadrao: 'Desordem Seletiva',
+    carimboPadrao: 'Gavetas Reviradas, Valores Intactos',
     descricao:
       'De perto, nenhuma gaveta foi arrombada: as chaves seguem nas fechaduras, e as corrediças não têm marca de alavanca.',
     tagsOcultas: {
@@ -468,7 +468,7 @@ export const CARTAS = [
     localidade: 'clube_moorford',
     custoTempo: 1,
     textoDisplay: 'Edgar Saiu do Clube Antes das Nove',
-    carimboPadrao: 'Álibi de Edgar Furado',
+    carimboPadrao: 'Saída Registrada às 08h30 (13/out)',
     descricao:
       'O porteiro é categórico: o Sr. Arthurs deixou a mesa "lá pelas oito e meia", e não às onze que declara. O livro de presença traz a mesma hora ao lado do nome.',
     // Corroboração OPCIONAL (nó distante, desbloqueado por lead): reforça que

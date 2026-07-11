@@ -100,8 +100,8 @@ export const LOCALIDADES = [
     acoesEspeciais: [],
     prosa: [
       'Hora e meia de estrada separam Briarstone do Clube Comercial, e o salão de carvalho e fumo recebe {detective.title} {detective.surname} com a cortesia de sempre. O porteiro lembra-se bem de Edgar Arthurs.',
-      'Sobre a noite de 13, o livro de presença e a memória do porteiro contam a mesma coisa: [[corrob_moorford]]. O jantar terminou cedo, e a cadeira de Edgar esfriou muito antes das onze que ele jura.',
-      'Nada aqui prende ninguém. O porteiro fixa a saída por volta das oito e meia, e a estrada de volta leva hora e meia.',
+      'Sobre a noite de 13, o livro de presença e a memória do porteiro contam a mesma coisa: [[corrob_moorford]]. O jantar terminou cedo, e a cadeira de Edgar esvaziou-se por volta das oito e meia.',
+      'O porteiro fixa a saída por volta das oito e meia; a estrada de volta a Briarstone leva hora e meia.',
     ],
   },
 ];
