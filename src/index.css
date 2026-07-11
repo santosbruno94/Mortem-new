@@ -7,6 +7,39 @@ body {
   @apply bg-stone-950 text-stone-300 antialiased;
 }
 
+/* Celular: um puxão para baixo não pode recarregar a página (perderia o caso) */
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
+/* Altura da tela cheia com fallback: 100dvh acompanha a barra de endereço
+   dos navegadores de celular; onde não existe, vale 100vh. */
+.altura-tela {
+  height: 100vh;
+}
+.altura-tela-min {
+  min-height: 100vh;
+}
+@supports (height: 100dvh) {
+  .altura-tela {
+    height: 100dvh;
+  }
+  .altura-tela-min {
+    min-height: 100dvh;
+  }
+}
+
+/* Toque: campos nativos com fonte menor que 16px disparam zoom automático
+   no iOS ao receber foco — trava a fonte mínima só em telas de toque. */
+@media (pointer: coarse) {
+  select,
+  input,
+  textarea {
+    font-size: 16px;
+  }
+}
+
 /* Termos clicáveis em negrito dentro da prosa imersiva */
 .termo-clicavel {
   @apply font-bold text-amber-200 cursor-pointer underline decoration-dotted decoration-amber-900 underline-offset-4 hover:text-amber-100;

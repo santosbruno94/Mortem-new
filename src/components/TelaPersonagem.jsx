@@ -6,9 +6,9 @@ export default function TelaPersonagem() {
   const escolherDetective = useJogo((s) => s.escolherDetective);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
-      <h1 className="font-serif text-6xl tracking-[0.35em] text-amber-200">MORTEM</h1>
-      <p className="mt-3 text-stone-600 text-sm tracking-widest">§ O Álibi de Corda — Briarstone, 1893 §</p>
+    <div className="altura-tela-min flex flex-col items-center justify-center px-4 sm:px-6 py-12">
+      <h1 className="font-serif text-4xl sm:text-6xl tracking-[0.25em] sm:tracking-[0.35em] text-amber-200 text-center">MORTEM</h1>
+      <p className="mt-3 text-stone-600 text-sm tracking-widest text-center">§ O Álibi de Corda — Briarstone, 1893 §</p>
 
       <p className="mt-12 mb-6 text-stone-400 text-sm tracking-wide">Quem atende ao chamado?</p>
 
@@ -17,7 +17,7 @@ export default function TelaPersonagem() {
           <button
             key={opcao.id}
             onClick={() => escolherDetective(opcao.id)}
-            className="text-left bg-stone-900 border border-stone-800 hover:border-amber-900 rounded-sm p-6 transition-colors group"
+            className="text-left bg-stone-900 border border-stone-800 hover:border-amber-900 rounded-sm p-4 sm:p-6 transition-colors group"
           >
             <h2 className="font-serif text-2xl text-amber-200 group-hover:text-amber-100">
               {opcao.nome}
