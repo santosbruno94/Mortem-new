@@ -1,0 +1,155 @@
+# Traumatologia Médico-Legal (1893)
+
+> Base de conhecimento forense de MORTEM. Registro de tratado técnico impessoal, no
+> estado da arte de um bom perito do fim do século XIX (Taylor, *Principles and Practice
+> of Medical Jurisprudence*; Casper-Liman, *Handbuch*; Lacassagne, escola de Lyon). Onde a
+> ciência de 1893 não alcançava, este documento o diz. Nenhum número é inventado: quando a
+> fonte da época era imprecisa, a imprecisão fica registrada como tal.
+
+A traumatologia médico-legal ocupa-se das lesões produzidas por ação mecânica sobre o
+corpo. O perito de 1893 não dispõe de radiografia (os raios de Röntgen só se anunciam em
+1895), de exame histológico de rotina nem de qualquer prova de individualização do
+instrumento. Seu método é a inspeção atenta da ferida a olho nu e à lente, a dissecção por
+planos e o raciocínio sobre a mecânica que a produziu. A ferida é o molde negativo do
+gesto: dela se lê a natureza do instrumento, a direção do golpe e, com a reação vital, se a
+vítima ainda vivia quando o recebeu.
+
+## A divisão fundamental das feridas
+
+Toda a matéria organiza-se por uma distinção de bordas, legível à lente sem instrumento
+algum:
+
+| Classe | Bordas | Fundo da ferida | Instrumento |
+|---|---|---|---|
+| Contusa | Irregulares, escoriadas, esmagadas | Pontes de tecido íntegro atravessando a ferida | Objeto rombo |
+| Incisa | Nítidas, limpas, retas | Corte franco, sem pontes | Lâmina cortante |
+| Perfurante | Nítidas, mas de abertura estreita | Trajeto profundo e afilado | Lâmina ou objeto pontiagudo |
+| Por projétil | Orla de contusão circular | Trajeto de arma de fogo | Projétil |
+
+A **ponte de tecido** — filetes de pele, vaso ou fáscia que cruzam intactos o leito da
+ferida — é o sinal soberano do trauma contuso e não existe no corte de lâmina. É o critério
+mais seguro de que dispõe o perito de 1893 para separar a laceração do talho.
+
+## Trauma contuso
+
+O objeto rombo não corta: esmaga, estira e rompe. Produz **contusões** (equimoses, a
+infiltração do sangue no tecido), **lacerações** de bordas irregulares e escoriadas, e, sobre
+o osso, **fraturas** e **afundamentos**. No crânio, o afundamento pode reproduzir grosseiramente
+a forma da superfície que o causou — a aresta de um atiçador, o canto de um degrau —, mas o
+perito prudente descreve a forma e se abstém de nomear o objeto: a correspondência é
+sugestiva, não probatória.
+
+Distingue-se do corte pela margem: onde a lâmina deixa aresta limpa, o corpo rombo deixa
+bordo esfacelado, halo de escoriação e as pontes de tecido já ditas. A cor da equimose
+acompanha a idade da lesão — do vermelho-arroxeado ao esverdeado e ao amarelo à medida que
+o sangue extravasado se decompõe —, sequência conhecida da época e útil, com reservas, para
+ordenar lesões de datas diferentes num mesmo corpo. No jogo, o sinal-assinatura correspondente
+é `ferida_contusa`, que confirma a causa `trauma_contuso`.
+
+## Ferida por arma branca
+
+A lâmina divide os tecidos. A leitura da ferida repousa em duas medidas e uma geometria:
+
+- **Comprimento × profundidade.** Na ferida **incisa** (golpe que desliza), a abertura é mais
+  longa que funda. Na **perfurante** ou **perfuro-incisa** (golpe que penetra), a profundidade
+  excede o comprimento da abertura na pele — e é aqui que mora a advertência clássica de
+  Taylor: *o trajeto pode ser mais fundo que o comprimento da lâmina*, porque a parede
+  abdominal cede sob a pressão. A profundidade do trajeto **não** mede com segurança o
+  comprimento da arma.
+- **Largura da abertura.** Aproxima a largura da lâmina, mas não a fixa: a elasticidade da
+  pele e a direção das fibras cutâneas alargam ou encurtam a fenda conforme o eixo do talho.
+- **Ângulos da ferida.** Uma lâmina de **um só gume** tende a deixar uma extremidade aguda e
+  outra romba ou em cauda; a de **dois gumes**, ambas as extremidades agudas. É o melhor
+  indício que a época oferece sobre o tipo de lâmina, sempre oferecido como probabilidade.
+
+O motor reúne incisas e perfurantes sob um único sinal `ferida_incisa`, que confirma a causa
+`ferida_arma_branca`. A medicina legal de 1893 as distinguiria (o corte que sangra em
+superfície não é a punctura que mata em profundidade); ver a divergência ao fim.
+
+## Ferida por arma de fogo
+
+A ferida de projétil apresenta, no caso típico, dois orifícios de leitura oposta:
+
+| | Orifício de entrada | Orifício de saída |
+|---|---|---|
+| Tamanho | Menor, arredondado | Maior, irregular, everso |
+| Bordas | Voltadas para dentro | Voltadas para fora |
+| Sinal próprio | **Orla de contusão** (anel de escoriação) | Ausente |
+
+A **orla de contusão** — o anel escuro e escoriado que o projétil imprime ao vencer a pele —
+é a marca cardinal da entrada e era conhecida e nomeada na literatura da época. A distância do
+disparo lê-se pelos resíduos ao redor da entrada, matéria em que a escola de Lacassagne já
+trabalhava com método:
+
+- **Encostado ou à queima-roupa:** enegrecimento pela fumaça, chamuscamento dos pelos e, no
+  contato firme, laceração estrelada das bordas pela expansão dos gases.
+- **A curta distância:** **tatuagem de pólvora** — os grãos não queimados incrustam a pele em
+  salpicos que não se lavam. Sua extensão gradua a distância em palmos.
+- **A distância maior:** nem fumaça nem tatuagem; apenas o orifício e a orla.
+
+O sinal do jogo é `orificio_projetil`, que confirma `arma_de_fogo`.
+
+**O limite da balística de 1893.** O perito recupera o projétil, pesa-o, mede-lhe o calibre
+grosseiro e conta as raias que a alma da arma nele imprimiu. Isso pode ser **compatível** com
+certa classe de arma. Mas casar um projétil a **um cano** determinado — a balística
+comparativa por estriamento — não existe: o microscópio de comparação de Goddard é de 1925.
+Em 1893, o projétil prova a classe da arma, jamais a arma individual.
+
+## Reação vital — o eixo de toda a traumatologia
+
+É o conceito que atravessa e ordena tudo o que precede: **distinguir a lesão sofrida em vida
+da infligida sobre o cadáver.** O tecido vivo reage; o morto, não.
+
+| Sinal | Lesão em vida (perimortem) | Lesão após a morte |
+|---|---|---|
+| Hemorragia | Sangue **infiltrado** nos tecidos, coagulado, que não se lava | Ausente ou escoamento passivo, sem infiltração |
+| Bordas | **Retraídas**, afastadas pela retração do tecido vivo | Frouxas, justapostas |
+| Coloração | Equimose viva, com halo | Palidez, sem reação |
+
+A infiltração hemorrágica é o critério mais firme: uma ferida que se abre num cadáver não
+enche de sangue coagulado os planos vizinhos. Casper já assentara a distinção; o perito de
+1893 a lê a olho nu e à lente. Registre-se a honestidade da época: a **janela agônica** —
+os minutos em torno da morte, quando a reação vital é ambígua — permanece um campo cinzento
+que a microscopia da época não resolve com precisão. Dizer "esta lesão é perimortem" é
+legítimo; cravar o minuto exato, não. No motor, `reacao_vital` é sinal **modificador**: prova
+que a lesão foi sofrida em vida, mas não elimina causa alguma nem aponta o meio.
+
+## Lesões de defesa
+
+Quem vê o golpe procura apará-lo. As lesões de defesa concentram-se nas **mãos** (palmas e
+faces de flexão dos dedos, ao agarrar a lâmina) e na face **ulnar dos antebraços** (ao erguer
+o braço contra o golpe): cortes, equimoses, por vezes fraturas do cúbito.
+
+Sua leitura mais eloquente é frequentemente a **ausência**. Não haver lesão de defesa é
+compatível com ataque súbito, golpe pelas costas, vítima adormecida, embriagada, contida ou
+já inconsciente. É um indício de circunstância, não de autoria — e, como todo indício, admite
+mais de uma explicação. No jogo, corresponde ao verbete `lesoes_defesa`.
+
+## Implicações para o jogo
+
+- **O motor de dedução** (`src/data/catalogo_causas.js`) coloca as três causas traumáticas
+  numa mesma família: `trauma_contuso`, `ferida_arma_branca`, `arma_de_fogo`. Cada uma tem um
+  sinal-**assinatura** (`ferida_contusa`, `ferida_incisa`, `orificio_projetil`) que a confirma
+  isoladamente e descarta as demais — exatamente porque, na perícia real, a margem da ferida
+  (esfacelada, nítida, com orla de contusão) já separa o instrumento.
+- **A reação vital** é o único sinal traumático **modificador** do catálogo: não crava nem
+  elimina, mas informa se a lesão foi em vida — o mesmo papel que exerce no laudo de época.
+  No caso tutorial (`o_alibi_de_corda`), a família da morte é a asfixia por ligadura, não o
+  trauma; ainda assim, a reação vital nas bordas do sulco cervical é o que prova que o laço
+  apertou o pescoço **vivo**, e não sobre um corpo já morto.
+- **As lesões de defesa** (`lesoes_defesa`, domínio ambiental do glossário) entram como leitura
+  de circunstância: sua presença ou ausência estreita hipóteses sobre o modo do ataque, nunca
+  aponta o autor. A prosa de cena deve descrever mãos feridas ou íntegras e calar a conclusão,
+  conforme a regra de observação pura do guia de estilo.
+- **A honestidade de época** é jogável: o perito pode dizer o **calibre compatível** de um
+  projétil, jamais o cano que o disparou; pode datar a lesão por reação vital em faixa, jamais
+  ao minuto agônico. Esses limites são recurso de desenho, não defeito.
+
+## Divergências notadas (KB × código) — sem correção aplicada
+
+- **`ferida_arma_branca` funde incisa e perfurante.** O catálogo e o glossário tratam sob uma
+  só causa (`ferida_arma_branca`, sinal `ferida_incisa`) o que a medicina legal de 1893
+  distinguiria: a ferida **incisa** (cortante, comprimento > profundidade) e a **perfurante**
+  (punctura, profundidade > comprimento). O glossário reconhece a diferença na definição, mas o
+  motor não a discrimina. Decisão de jogabilidade a cargo do usuário: manter a fusão (simplicidade)
+  ou desdobrar em duas assinaturas.

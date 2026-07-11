@@ -57,3 +57,30 @@ as gafes nomeadas pelo monólogo.
 **Furo encontrado e corrigido durante o QA:** os termos clicáveis eram rebaixados para
 minúsculas na prosa, corrompendo nomes próprios ("moorford"); a renderização passou a
 preservar o nome da carta.
+
+## Overhaul da redação (jul/2026)
+
+Reescrita integral da prosa do slice sob a nova infraestrutura de redação
+(`docs/guia-de-estilo.md`, `docs/biblia-de-vozes.md`, `docs/kb-medicina-legal/`,
+`.claude/`). O motor, as tags e os 4 desfechos permanecem inalterados — a mudança é só
+de camada narrativa.
+
+- **QA de motor reexecutado após a reescrita:** `node scripts/qa.mjs` mantém os 4
+  perfis → 4 desfechos; `npm run build` limpo. Nenhuma `tagsOcultas`/`id`/marcador
+  `[[id]]` foi alterado.
+- **Observação pura:** deduções vazadas do narrador e das cartas removidas
+  (grep de deduções clássicas — "guarde isso", "não tinha pressa", "limpo demais",
+  "história curiosa" — passou de várias para **0**). A voz do mestre ficou restrita a
+  leitura técnica (janela, família/assinatura), sem apontar autoria ou encenação.
+- **Anti-padrões de IA:** a fórmula "não X — é Y" em prosa caiu de dezenas para
+  ocorrências residuais (travessões de clarificação técnica, não aforismo); brilho
+  racionado a ≤1 frase de efeito por cena.
+- **Vozes diferenciadas:** Wycliffe (cordial-autocorretivo), Edgar (polido, rápido),
+  Hudson (curta, evasiva), Blackwood (franco, sem eco do mecanismo), narrador invisível.
+- **Continuidade corrigida:** 13/out/1893 = sexta (era "sábado"); Moorford = 1h30/trecho
+  em `mapa.js` e em toda a prosa (amarrado à lógica: Edgar sai ~20h30, mata às 22h);
+  `{g:sua|sua}` e o castelhanismo "pareja" eliminados.
+- **Monólogo:** blocos reescritos em tom sóbrio + variantes determinísticas por hash da
+  seed (2–3 aberturas/fechos por desfecho), sem `Math.random` — testado nos 4 desfechos.
+- **Revisão:** diff final passado pelo pipeline `revisar-prosa` (editor-crítico,
+  perito-forense, fiscal-continuidade).

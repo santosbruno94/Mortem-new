@@ -62,7 +62,7 @@ export const CARTAS = [
         textoDisplay: 'Corpo Flácido',
         carimboPadrao: 'Corpo mole, sem nenhuma rigidez',
         descricao:
-          'Os membros dobram sem nenhuma resistência: a dureza já passou por completo. Isso já não marca a hora exata — diz apenas que faz mais de um dia.',
+          'Os membros dobram sem nenhuma resistência: a dureza passou por completo. O rigor, neste ponto, já não aponta a hora.',
         vozMestre: 'Frouxo de todo. O rigor já não me serve: só posso jurar que faz mais de um dia.',
         // Degradado, porém AINDA VÁLIDO (relógio mole): o modelo o lê como
         // janela larga [36h, +∞), jamais nula. Ver tempo_morte.js (rigor.resolvido).
@@ -82,8 +82,8 @@ export const CARTAS = [
     textoDisplay: 'Manchas Arroxeadas nas Costas',
     carimboPadrao: 'Manchas que não empalidecem ao apertar',
     descricao:
-      'Manchas vinhosas cobrem as costas e a parte de trás das pernas. Não empalidecem quando se aperta com o polegar.',
-    vozMestre: 'As manchas fixaram-se nas costas e não cedem ao polegar — morto há meia jornada ao menos. E deitado assim desde então: ninguém o virou.',
+      'Sob o polegar, as manchas não empalidecem nem migram. Onde o corpo pressiona o assoalho, a pele ficou pálida.',
+    vozMestre: 'As manchas fixaram-se e não cedem ao polegar: morto há meia jornada, ao menos. E fixaram-se do lado em que ele está deitado.',
     tagsOcultas: {
       dominio: 'temporal',
       subDominio: 'livor_mortis',
@@ -98,8 +98,8 @@ export const CARTAS = [
     textoDisplay: 'Marca Reta em Volta do Pescoço',
     carimboPadrao: 'Marca funda e reta dando a volta no pescoço',
     descricao:
-      'Uma marca funda e pareja dá a volta no pescoço na horizontal, sem subir em diagonal como deixaria um corpo pendurado.',
-    vozMestre: 'Repare no sulco: reto, horizontal. Não é de forca — é de laço apertado por trás, por mãos alheias.',
+      'Uma marca funda dá a volta ao pescoço em plano horizontal, de profundidade constante, e não sobe para o ângulo do maxilar.',
+    vozMestre: 'O sulco é horizontal, baixo e contínuo: pela assinatura do catálogo, é de ligadura. O oblíquo do enforcamento sobe ao nó; este corre reto.',
     // Sinal de ASSINATURA do catálogo universal: crava a ligadura e
     // descarta as demais causas (ver src/data/catalogo_causas.js).
     tagsOcultas: {
@@ -116,7 +116,7 @@ export const CARTAS = [
     carimboPadrao: 'Pontinhos de sangue nos olhos; face azulada',
     descricao:
       'Pontinhos de sangue salpicam o branco dos olhos. A face e os lábios guardam um tom azulado.',
-    vozMestre: 'Esses pontos nos olhos, esse azul na face — asfixia. Sufocou. De que modo, é o sulco que dirá.',
+    vozMestre: 'Esses pontos nos olhos, esse azul na face: são de asfixia. A família, isto dá; a espécie, só a assinatura crava.',
     // Sinal de FAMÍLIA: aponta asfixia (descarta veneno e trauma), mas não
     // diz qual asfixia — é preciso o sinal de assinatura para cravar.
     tagsOcultas: {
@@ -132,8 +132,8 @@ export const CARTAS = [
     textoDisplay: 'Fibras Claras Presas na Marca do Pescoço',
     carimboPadrao: 'Fibras de Cânhamo na Marca do Pescoço',
     descricao:
-      'Sob a lente, filamentos vegetais claros e torcidos, presos à pele da marca. Cânhamo de corda comum.',
-    vozMestre: 'Cânhamo, preso no sulco. A corda que o matou era de cânhamo comum — guarde isso.',
+      'Sob a lente, filamentos vegetais claros e torcidos, presos ao fundo da marca. A torção é a de cordoaria comum.',
+    vozMestre: 'Fibra de cânhamo, no fundo do sulco. É a torção de corda comum, dessas de feira.',
     tagsOcultas: {
       dominio: 'causal',
       subDominio: 'instrumento',
@@ -149,7 +149,7 @@ export const CARTAS = [
     textoDisplay: 'Relógio de Lareira Esmagado',
     carimboPadrao: 'Relógio Parado às 09h00',
     descricao:
-      'O relógio jaz no tapete, a caixa partida como por um pisão. Os ponteiros pararam exatamente às nove horas.',
+      'De perto, o vidro está estilhaçado para dentro e a caixa partiu-se de um lado só. Os ponteiros pararam exatamente sobre as nove horas.',
     tagsOcultas: {
       dominio: 'ambiental',
       subDominio: 'cronologia_aparente',
@@ -163,9 +163,9 @@ export const CARTAS = [
     localidade: 'cena',
     custoTempo: 1,
     textoDisplay: 'Gavetas Reviradas',
-    carimboPadrao: 'Desordem Seletiva',
+    carimboPadrao: 'Gavetas Reviradas, Valores Intactos',
     descricao:
-      'Papéis ao chão, gavetas abertas — mas o relógio de ouro da vítima segue na corrente, e a caixa de soberanos, intacta na escrivaninha.',
+      'De perto, nenhuma gaveta foi arrombada: as chaves seguem nas fechaduras, e as corrediças não têm marca de alavanca.',
     tagsOcultas: {
       dominio: 'ambiental',
       subDominio: 'desordem',
@@ -181,7 +181,7 @@ export const CARTAS = [
     textoDisplay: 'Fechadura dos Fundos Forçada',
     carimboPadrao: 'Arrombamento pelo Exterior',
     descricao:
-      'A madeira do batente está lascada por alavanca, do lado de fora. Os riscos são rasos, hesitantes, de quem não tinha pressa — ou não precisava entrar.',
+      'Os riscos na madeira são rasos e curtos, e param onde a lingueta cede. As lascas da tinta caíram para o lado de fora.',
     tagsOcultas: {
       dominio: 'ambiental',
       subDominio: 'arrombamento',
@@ -195,7 +195,7 @@ export const CARTAS = [
     textoDisplay: 'Fio de Lã Cinzenta na Gaveta',
     carimboPadrao: 'Fio de Lã Cinzenta',
     descricao:
-      'Preso à fechadura da gaveta do escritório, um único fio de lã cinzenta, fina, de xale doméstico.',
+      'Preso à corrediça da gaveta mais funda, um único fio de lã cinzenta, curto, torcido a dois cabos.',
     tagsOcultas: {
       dominio: 'vestigio',
       subDominio: 'fibra_tecido',
@@ -211,7 +211,7 @@ export const CARTAS = [
     textoDisplay: 'Lenço de Linho atrás da Estante',
     carimboPadrao: 'Lenço com as iniciais "E. A." bordadas',
     descricao:
-      'Caído na sombra atrás da estante, um lenço de linho fino, de cambraia, com as iniciais "E. A." bordadas a canto. Limpo demais para ser do morto; deixado às pressas.',
+      'Um lenço de linho, de cambraia, com as iniciais "E. A." bordadas a um canto. O linho está limpo; a cambraia, sem marca de uso.',
     // Segundo vestígio de PRESENÇA do réu (objeto pessoal seu, na cena). Não é o
     // instrumental (não casa com a arma), mas pertence ao réu: ligá-lo à Presença
     // reforça que ele esteve ali, sem gafe. Sozinho não basta — o nexo continua
@@ -247,7 +247,7 @@ export const CARTAS = [
     textoDisplay: 'Cartas de Cobrança',
     carimboPadrao: 'Dívidas de Jogo de Edgar',
     descricao:
-      'Três cartas de um clube de Moorford cobrando de Edgar Arthurs somas que um escrevente não junta em dez anos.',
+      'Três cartas de cobrança de um clube de Moorford, endereçadas a Edgar Arthurs, com prazo vencido e a soma crescendo de uma para a outra.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
@@ -262,7 +262,7 @@ export const CARTAS = [
     textoDisplay: 'Queixa Registrada na Delegacia',
     carimboPadrao: 'Briga Pública com Blackwood',
     descricao:
-      'Há três semanas, Thomas Blackwood e a vítima trocaram ameaças diante de meia taverna, por causa de uma dívida antiga.',
+      'Queixa lavrada por Wycliffe três semanas antes da morte: dívida antiga, ameaças de parte a parte, nenhuma providência tomada.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
@@ -278,7 +278,7 @@ export const CARTAS = [
     textoDisplay: 'Última Ceia Servida às Oito',
     carimboPadrao: 'Visto com Vida às 20h (13/out)',
     descricao:
-      'No registro de Wycliffe, a governanta declara ter servido a ceia ao patrão às oito da noite de 13 e recolhido a louça em seguida — a última a vê-lo com vida.',
+      'No registro de Wycliffe: a ceia foi servida ao patrão às oito em ponto da noite de 13, e a louça recolhida logo depois. Depois disso, ninguém mais o viu com vida.',
     // Âncora DURÁVEL de tempo: "última vez visto com vida" trava o INÍCIO da
     // janela (a morte não pode anteceder as 20h). Não degrada. Junto do livor
     // fixo (que dá o teto), o corpo sozinho fecha uma janela finita, em
@@ -296,7 +296,7 @@ export const CARTAS = [
     textoDisplay: 'Vizinha Jura Tê-lo Visto à Janela',
     carimboPadrao: 'Avistamento Declarado: 08h (14/out)',
     descricao:
-      'A Sra. Gale, da casa em frente, afirma à polícia ter visto o Sr. Arthurs à janela, vivo, "lá pelas oito" da manhã do dia 14 — pouco antes de o sobrinho dar o alarme.',
+      'A Sra. Gale, da casa em frente, afirma à polícia ter visto o Sr. Arthurs à janela, vivo, "lá pelas oito" da manhã do dia 14, pouco antes de o sobrinho dar o alarme.',
     // Alegação sobre a HORA, a ser confrontada com a janela da morte: jura a
     // vítima viva na manhã do dia 14, quando o corpo diz que ela morreu na
     // noite anterior. É a mentira a cravar no Confronto (Opção B). O motor
@@ -316,7 +316,7 @@ export const CARTAS = [
     textoDisplay: 'Caseiro Jura Ter Visto a Governanta',
     carimboPadrao: 'Relato: a governanta no crime, à meia-noite',
     descricao:
-      'O Sr. Pruitt, caseiro de uma casa dos fundos, jura à polícia ter visto a Sra. Hudson debruçada sobre o patrão no escritório, "lá pela meia-noite", as mãos no pescoço dele. Vacila sobre o resto — a luz, a janela, a hora —, mas não sobre o nome.',
+      'O Sr. Pruitt, caseiro de uma casa dos fundos, jura à polícia ter visto a Sra. Hudson debruçada sobre o patrão no escritório, "lá pela meia-noite", as mãos no pescoço dele. Firme no nome; vacila sobre a luz, a janela e a hora.',
     // TESTEMUNHO FALSO (isca): aponta a governanta como autora à meia-noite (00h).
     // Mente; o corpo, não. É uma ALEGAÇÃO DE HORA — refutável pela gramática que já
     // existe (refuta_hora): a janela que o corpo sustenta fecha por volta das 23h, e
@@ -339,7 +339,7 @@ export const CARTAS = [
     textoDisplay: 'Jantar no Clube Comercial de Moorford',
     carimboPadrao: 'Paradeiro Declarado: 20h–23h (13/out)',
     descricao:
-      'Edgar declara ter jantado no Clube Comercial de Moorford na noite de 13, das oito às onze, voltando tarde para seus aposentos.',
+      'A declaração de Edgar, palavra por palavra: das oito às onze da noite de 13, à mesa do Clube, em Moorford, e de volta tarde aos aposentos. As horas saem redondas, na ponta da língua.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -356,7 +356,7 @@ export const CARTAS = [
     textoDisplay: 'Fibras Claras no Punho do Casaco',
     carimboPadrao: 'Fibras de Cânhamo na Manga',
     descricao:
-      'No punho direito do casaco de Edgar, filamentos vegetais claros, torcidos — idênticos, à lente, aos de corda de cânhamo.',
+      'Presos ao punho direito do casaco de Edgar, três filamentos vegetais claros. À lente, a torção grossa e a cor palha do cânhamo de cordoaria.',
     tagsOcultas: {
       dominio: 'vestigio',
       subDominio: 'fibra_tecido',
@@ -369,9 +369,9 @@ export const CARTAS = [
     localidade: 'interrogatorio_edgar',
     custoTempo: 1,
     textoDisplay: 'Polidez Inabalável',
-    carimboPadrao: 'Cooperação Estudada',
+    carimboPadrao: 'Cooperação Constante',
     descricao:
-      'Edgar responde antes da pergunta terminar, oferece chá, lamenta o tio com frases prontas. Nada nele hesita — nem o luto.',
+      'Edgar responde antes de a pergunta terminar, oferece chá duas vezes, repete o pesar pelo tio nas mesmas palavras. Fala sem uma pausa.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',
@@ -404,7 +404,7 @@ export const CARTAS = [
     textoDisplay: 'Mãos Trêmulas e Respostas Curtas',
     carimboPadrao: 'Nervosismo Acentuado',
     descricao:
-      'A governanta torce o avental, evita o olhar, responde em monossílabos. Algo nela treme que não é luto.',
+      'De perto, a governanta desvia o olhar a cada pergunta e pede licença duas vezes na mesma frase; a voz não passa de monossílabos.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',
@@ -419,7 +419,7 @@ export const CARTAS = [
     textoDisplay: 'Xale de Lã Cinzenta com Fio Puxado',
     carimboPadrao: 'Xale Cinzento Danificado',
     descricao:
-      'Sobre os ombros da Sra. Hudson, um xale de lã cinzenta com um fio puxado na barra — a mesma lã fina do fio achado na gaveta.',
+      'De perto, a lã é fina, torcida a dois cabos; na barra, um fio arrancado deixou a trama aberta.',
     tagsOcultas: {
       dominio: 'vestigio',
       subDominio: 'fibra_tecido',
@@ -454,7 +454,7 @@ export const CARTAS = [
     textoDisplay: 'Rancor Declarado sem Rodeios',
     carimboPadrao: 'Hostilidade Aberta',
     descricao:
-      '"Não choro por ele, e o senhor não vai me fazer chorar." Blackwood odeia o morto com a franqueza de quem nada esconde.',
+      '"Não choro por ele, e o senhor não me fará chorar." Diz o ódio e a dívida em voz alta, sem que ninguém peça, e volta a secar as canecas.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',
@@ -468,9 +468,9 @@ export const CARTAS = [
     localidade: 'clube_moorford',
     custoTempo: 1,
     textoDisplay: 'Edgar Saiu do Clube Antes das Nove',
-    carimboPadrao: 'Álibi de Edgar Furado',
+    carimboPadrao: 'Saída Registrada às 08h30 (13/out)',
     descricao:
-      'O porteiro é categórico: o Sr. Arthurs deixou o jantar "lá pelas oito e meia", muito antes das onze que declarou. Hora de sobra para a estrada de volta.',
+      'O porteiro é categórico: o Sr. Arthurs deixou a mesa "lá pelas oito e meia", e não às onze que declara. O livro de presença traz a mesma hora ao lado do nome.',
     // Corroboração OPCIONAL (nó distante, desbloqueado por lead): reforça que
     // Edgar teve oportunidade, mas NÃO é pilar do veredicto — o caso já fecha
     // pelo corpo. É atalho/reforço, jamais a chave (relógio mole).

@@ -70,7 +70,7 @@ export const GLOSSARIO = [
     dominio: 'causal',
     definicao:
       'Marca deixada por ligadura (corda, cinto, cordão) apertada em volta do pescoço por mãos alheias: o sulco corre em plano horizontal e uniforme. É a assinatura do estrangulamento por ligadura.',
-    sinalObservavel: 'Marca contínua e funda, de profundidade pareja, dando a volta no pescoço na horizontal (sem subir em diagonal). Sua presença afasta o enforcamento, a esganadura e tudo que não seja ligadura.',
+    sinalObservavel: 'Marca contínua e funda, de profundidade constante, dando a volta no pescoço na horizontal, sem subir em diagonal. Sua presença afasta o enforcamento e a esganadura.',
   },
   {
     id: 'sulco_obliquo',
@@ -109,7 +109,7 @@ export const GLOSSARIO = [
     termo: 'Reação Vital',
     dominio: 'causal',
     definicao:
-      'Escoriações e equimoses só se formam em tecido vivo. Sua presença em torno de um ferimento prova que a vítima estava viva quando o recebeu; sua ausência denuncia lesão infligida após a morte. Não diz a causa — apenas que a lesão é perimortem.',
+      'Escoriações e equimoses só se formam em tecido vivo. Sua presença em torno de um ferimento prova que a vítima estava viva quando o recebeu; sua ausência indica lesão infligida após a morte. Nada informa sobre a causa da morte; atesta somente que a lesão é perimortem.',
     sinalObservavel: 'Vermelhidão, inchaço e sangue infiltrado nas bordas de uma lesão.',
   },
   {
@@ -157,7 +157,7 @@ export const GLOSSARIO = [
     termo: 'Encenação de Cena',
     dominio: 'ambiental',
     definicao:
-      'Arranjo deliberado da cena para contar uma história falsa: desordem que poupa os valores, arrombamentos sem pressa, relógios quebrados em hora conveniente. A encenação se trai quando sua cronologia contradiz a perícia do corpo.',
+      'Arranjo deliberado da cena para contar uma história falsa: desordem que poupa os valores, arrombamentos superficiais, relógios parados numa hora que não coincide com a do óbito. Reconhece-se quando a cronologia sugerida pela cena contradiz a perícia do corpo.',
     sinalObservavel: 'Elementos da cena que apontam hora ou móbil incompatíveis com os sinais cadavéricos.',
   },
   {
@@ -214,7 +214,7 @@ export const GLOSSARIO = [
     termo: 'A Mentira do Inocente',
     dominio: 'comportamental',
     definicao:
-      'Inocentes mentem — por vergonha, medo ou culpa alheia ao crime. A mentira do assassino choca-se com a evidência física; a do inocente, apenas com a moral. Nervosismo não é prova.',
+      'Inocentes mentem por vergonha, medo ou culpa alheia ao crime. A mentira do assassino contradiz a evidência física; a do inocente contradiz apenas a moral. O nervosismo ou a contradição de um depoimento, por si sós, não estabelecem autoria.',
     sinalObservavel: 'Depoimento falso cuja falsidade não o coloca na cena na hora da morte.',
   },
   {
@@ -222,7 +222,7 @@ export const GLOSSARIO = [
     termo: 'Motivo e Oportunidade',
     dominio: 'comportamental',
     definicao:
-      'Motivo sem oportunidade não é prova: odiar o morto não aproxima ninguém do pescoço dele. A acusação exige móbil, ocasião e materialidade reunidos.',
+      'O motivo, sem a oportunidade, não estabelece autoria: odiar a vítima não aproxima ninguém materialmente do crime. A acusação exige móbil, ocasião e materialidade reunidos.',
     sinalObservavel: 'Suspeito com razões públicas de rancor, porém com paradeiro firmado fora da janela da morte.',
   },
 

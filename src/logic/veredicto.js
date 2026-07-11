@@ -179,6 +179,7 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
     falhas,
     perifericos,
     dadosMonologo: {
+      seedId: seed.id, // chave estável para a escolha determinística de variantes
       reuId: acusacao.reuId,
       reuCorretoId: seed.reuCorreto,
       vitima: seed.vitima,

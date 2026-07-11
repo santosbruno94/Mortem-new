@@ -11,7 +11,7 @@
 //   - O tempo só passa quando o perito VIAJA de um nó a outro.
 //   - O perecível (rigor, temperatura) perde precisão conforme o relógio
 //     anda; o durável (livor, sulco, cena) nunca se perde. Por isso ir
-//     longe (Moorford) é um ATALHO opcional, jamais obrigatório.
+//     longe (Moorford, 3h ida e volta) é um ATALHO opcional, jamais obrigatório.
 //
 // A lógica que CONSOME estes dados (avançar o relógio ao viajar, abrir o
 // local, desbloquear nós) entra na Fase 2 — aqui só declaramos o mundo.
@@ -36,16 +36,19 @@ export const GRUPOS = {
 //   - Dentro da relojoaria: 0h (é o mesmo prédio).
 //   - Dentro da vila: 1h (prédios diferentes na mesma vila).
 //   - Relojoaria <-> vila: 1h.
-//   - Qualquer coisa <-> fora (Moorford): 3h por trecho (6h ida e volta).
+//   - Qualquer coisa <-> fora (Moorford): 1,5h por trecho (3h ida e volta).
+//     Este número é AMARRADO à lógica do caso: Edgar deixa o Clube por volta
+//     das 20h30 (corrob_moorford) e precisa chegar a Briarstone para matar às
+//     22h — só fecha com ~1,5h de estrada. Ver docs/historico-decisoes.md.
 export const CUSTO_ENTRE_GRUPOS = {
   'relojoaria|relojoaria': 0,
   'vila|vila': 1,
   'relojoaria|vila': 1,
   'vila|relojoaria': 1,
-  'relojoaria|fora': 3,
-  'fora|relojoaria': 3,
-  'vila|fora': 3,
-  'fora|vila': 3,
+  'relojoaria|fora': 1.5,
+  'fora|relojoaria': 1.5,
+  'vila|fora': 1.5,
+  'fora|vila': 1.5,
   'fora|fora': 0,
 };
 

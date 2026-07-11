@@ -54,16 +54,16 @@ export function falaDoMestre(leitura) {
   let tempo = null;
   if (janela) {
     tempo = janelaPrecisa(janela)
-      ? `Morto ${formatJanela(janela)}. E, pelos livores fixos nas costas, ninguém o moveu depois.`
-      : `Morto ${formatJanela(janela)} — não dá para apertar mais que isso com o que o corpo ainda guarda.`;
+      ? `Morto ${formatJanela(janela)}. Os livores estão fixos nas costas, e fixos ficaram na posição em que caiu.`
+      : `Morto ${formatJanela(janela)}. Com o que o corpo ainda guarda, não aperto mais que isto.`;
   }
 
   let causa = null;
   if (causaId) {
     const c = obterCausa(causaId);
     const nome = c ? c.nome.toLowerCase() : causaId;
-    const instr = instrumento ? ` — ${ROTULOS_INSTRUMENTO[instrumento] || instrumento}` : '';
-    causa = `Quanto ao meio: ${nome}${instr}. Mãos alheias; isto não foi acidente.`;
+    const instr = instrumento ? `, com ${ROTULOS_INSTRUMENTO[instrumento] || instrumento}` : '';
+    causa = `Quanto ao meio, os sinais fecham em ${nome}${instr}.`;
   }
 
   return { tempo, causa };

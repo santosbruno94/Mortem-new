@@ -22,7 +22,7 @@ export const HABITOS = [
   {
     id: 'maos_e_chao',
     ordem: 1,
-    licao: 'Cheque as mãos e o chão sob o corpo.',
+    licao: 'Examine as mãos e o chão debaixo do corpo.',
     ensina: 'Procurar vestígios onde o olho preguiçoso não olha.',
     // Libera o domínio dos vestígios (fibras, fios, marcas).
     desbloqueiaVocabulario: { dominio: 'vestigio', subDominios: ['fibra_tecido'] },
