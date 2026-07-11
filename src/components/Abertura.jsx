@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { interpolar } from '../logic/interpolar.js';
 import { PASSOS_ABERTURA, PERGUNTAS_BRIEFING } from '../data/abertura.js';
+import { tocarSom } from '../som.js';
 
 // Sequência de abertura em 6 passos (§4.1–4.2). O último passo é o
 // briefing do Delegado Wycliffe, cujas perguntas (custo zero) plantam
@@ -66,7 +67,10 @@ export default function Abertura() {
 
         <div className="mt-10 flex justify-end">
           <button
-            onClick={ultimo ? iniciarInvestigacao : avancarAbertura}
+            onClick={() => {
+              tocarSom('pena');
+              (ultimo ? iniciarInvestigacao : avancarAbertura)();
+            }}
             className="px-6 py-3 bg-stone-900 border border-amber-900 text-amber-200 rounded-sm hover:bg-stone-800 tracking-wide text-sm"
           >
             {interpolar(passo.rotuloBotao, detective)} →

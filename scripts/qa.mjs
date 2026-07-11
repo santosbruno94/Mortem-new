@@ -58,7 +58,9 @@ function relatar(rotulo, veredicto) {
 
 // ============================================================
 // (a) METÓDICO — corpo primeiro (fresco), reúne tudo, AFIRMA a janela e a
-// causa, liga as sustentações, refuta o avistamento falso e expõe a mentira
+// causa, liga as sustentações, refuta o avistamento falso, DERRUBA O
+// RELÓGIO ENCENADO (Q1: só a peça forjada expõe a encenação), fura o
+// álibi do réu pela corroboração de Moorford (Q4) e expõe a mentira
 // da governanta (mentiu, mas é inocente). Esperado: vitoria_absoluta.
 // ============================================================
 reiniciar();
@@ -75,6 +77,8 @@ s().viajarPara('interrogatorio_hudson'); // +1h
 ['alibi_hudson', 'ev_xale'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_blackwood'); // +1h
 ['alibi_blackwood'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('clube_moorford'); // +1h30 — a contraprova do álibi do réu
+s().extrairCarta('corrob_moorford');
 
 // Afirmações estruturadas:
 s().definirReu('edgar_arthurs');
@@ -85,8 +89,11 @@ s().definirMotivacao('dep_testamento');
 ['ev_rigor', 'ev_livores', 'ev_algor', 'dep_visto_vivo'].forEach((id) => ligar(id, ANCORAS.quando));
 ['ev_sulco', 'ev_petequias'].forEach((id) => ligar(id, ANCORAS.como));
 ligar('ev_fibras_manga', ANCORAS.presenca); // fibra de cânhamo no punho de Edgar
-// Refutação da hora: a vizinha jura tê-lo visto vivo de manhã (08h) — o corpo desmente.
+// Refutações de hora: a vizinha (08h) e o RELÓGIO FORJADO (09h) caem pelo corpo.
 ['ev_rigor', 'ev_livores'].forEach((id) => ligar(id, 'dep_avistamento_falso'));
+['ev_rigor', 'ev_livores'].forEach((id) => ligar(id, 'ev_relogio'));
+// O paradeiro do réu cai pelo registro do clube (Q4 — opcional, nunca pilar).
+ligar('corrob_moorford', 'alibi_edgar');
 // Juízo sobre os não-acusados:
 s().definirJuizo('thomas_blackwood', 'inocente');
 s().definirJuizo('sra_hudson', 'inocente');
@@ -247,6 +254,52 @@ console.log('lenço + cânhamo reforça sem gafe:', reforcoSemGafe);
 console.log('lenço sozinho falha o nexo (instrumental exigido):', soLencoFalha);
 
 // ============================================================
+// (h) CONTRATO DO DESFECHO (Q1): derrubar SÓ a testemunha equivocada não
+// expõe a encenação — o crédito exige a peça forjada (o relógio).
+// ============================================================
+reiniciar();
+s().viajarPara('corpo');
+s().medirTemperatura();
+['ev_rigor', 'ev_livores', 'ev_sulco', 'ev_petequias', 'ev_fibras_sulco'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('delegacia');
+['dep_testamento', 'dep_avistamento_falso'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('interrogatorio_edgar');
+s().extrairCarta('ev_fibras_manga');
+s().definirReu('edgar_arthurs');
+s().definirJanela({ inicio: -4, fim: -1 });
+s().definirCausa('estrangulamento_ligadura');
+['ev_rigor', 'ev_livores', 'ev_algor'].forEach((id) => ligar(id, ANCORAS.quando));
+['ev_sulco', 'ev_petequias'].forEach((id) => ligar(id, ANCORAS.como));
+ligar('ev_fibras_manga', ANCORAS.presenca);
+s().definirMotivacao('dep_testamento');
+['ev_rigor', 'ev_livores'].forEach((id) => ligar(id, 'dep_avistamento_falso')); // só a vizinha
+s().submeterAcusacao();
+const vSoTestemunha = s().veredicto;
+const encenacaoNaoCreditada =
+  vSoTestemunha.falhas.some((f) => f.codigo === 'sem_descuidos') &&
+  vSoTestemunha.dadosMonologo.descuidosOk === false &&
+  vSoTestemunha.dadosMonologo.testemunhasDesmentidas === 1;
+console.log('\n=== (h) CONTRATO DO DESFECHO ===');
+console.log('refutar só a vizinha NÃO credita a encenação:', encenacaoNaoCreditada);
+
+// ============================================================
+// (i) O ÁLIBI DO RÉU CAI PELO REGISTRO (Q4): a corroboração de Moorford
+// refuta o paradeiro declarado de Edgar — opcional, nunca pilar.
+// ============================================================
+reiniciar();
+s().viajarPara('interrogatorio_edgar');
+s().extrairCarta('alibi_edgar'); // desbloqueia Moorford
+s().viajarPara('clube_moorford');
+s().extrairCarta('corrob_moorford');
+s().definirReu('edgar_arthurs');
+ligar('corrob_moorford', 'alibi_edgar');
+s().submeterAcusacao();
+const vAlibiReu = s().veredicto;
+const alibiReuCai = vAlibiReu.dadosMonologo.alibiReuExposto === true;
+console.log('\n=== (i) ÁLIBI DO RÉU ===');
+console.log('registro de Moorford derruba o paradeiro do réu:', alibiReuCai);
+
+// ============================================================
 // Fumaça do monólogo: todos os desfechos geram texto.
 // ============================================================
 console.log('\n=== Monólogos gerados (fumaça) ===');
@@ -268,6 +321,8 @@ const checagens = [
   ['Testemunho falso é refutável pela janela do corpo', testemunhoRefutavel],
   ['Crente no testemunho falso acusa a Hudson → erro_judiciario', vCrente.tipo === 'erro_judiciario'],
   ['Segundo rastro do réu reforça sem gafe; sozinho não basta', reforcoSemGafe && soLencoFalha],
+  ['Refutar só a testemunha não credita a encenação (contrato do desfecho)', encenacaoNaoCreditada],
+  ['O registro de Moorford derruba o paradeiro do réu (opcional, nunca pilar)', alibiReuCai],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

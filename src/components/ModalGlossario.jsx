@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import { DOMINIOS_GLOSSARIO, verbetesPorDominio } from '../data/glossario.js';
+import { useJogo } from '../store/jogo.js';
+import { DOMINIOS_GLOSSARIO, verbetesPorDominio, obterVerbete } from '../data/glossario.js';
 import Overlay from './Overlay.jsx';
 
 // Glossário Forense (§9): referência de época, navegação por domínio,
 // consulta gratuita. É o material que permite interpretar os dados
-// brutos — o jogo nunca interpreta pelo jogador.
+// brutos — o jogo nunca interpreta pelo jogador. Pode abrir já num
+// verbete (a ponte carta → glossário da Caderneta, Q9).
 export default function ModalGlossario() {
-  const [dominioAtivo, setDominioAtivo] = useState(DOMINIOS_GLOSSARIO[0].id);
-  const [verbeteAtivo, setVerbeteAtivo] = useState(null);
+  const verbeteInicial = useJogo((s) => (s.overlay && s.overlay.id) || null);
+  const inicial = obterVerbete(verbeteInicial);
+  const [dominioAtivo, setDominioAtivo] = useState(inicial ? inicial.dominio : DOMINIOS_GLOSSARIO[0].id);
+  const [verbeteAtivo, setVerbeteAtivo] = useState(inicial ? inicial.id : null);
 
   const verbetes = verbetesPorDominio(dominioAtivo);
   const aberto = verbetes.find((v) => v.id === verbeteAtivo) || null;

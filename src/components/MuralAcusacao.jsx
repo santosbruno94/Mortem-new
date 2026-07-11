@@ -4,7 +4,7 @@ import { SUSPEITOS } from '../data/seed.js';
 import { CATALOGO_CAUSAS } from '../data/catalogo_causas.js';
 import { ANCORAS, analisarLigacoes, horaAlegada } from '../logic/acusacao.js';
 import { formatJanela } from '../logic/tempo.js';
-import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
+import { tocarSom } from '../som.js';
 
 // =====================================================================
 // A MESA DE CONSTRUÇÃO — agora em ESTAÇÕES que crescem uma na outra.
@@ -25,11 +25,8 @@ import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
 // Nada valida até "Levar a julgamento": só o desfecho julga.
 // =====================================================================
 
-// Conversão entre o relógio humano (dia 13/14 + hora) e a escala absoluta
-// (horas desde a meia-noite de 14/out; negativas = 13/out).
-function paraAbsoluto(dia, hora) {
-  return (Number(dia) - 14) * 24 + Number(hora);
-}
+// Conversão da escala absoluta (horas desde a meia-noite de 14/out;
+// negativas = 13/out) para o relógio humano (dia 13/14 + hora).
 function deAbsoluto(abs) {
   return { dia: 14 + Math.floor(abs / 24), hora: ((abs % 24) + 24) % 24 };
 }
@@ -40,6 +37,8 @@ const ehCausal = (c) => c.tagsOcultas.dominio === 'causal';
 const ehVestigioOuAmbiental = (c) =>
   c.tagsOcultas.dominio === 'vestigio' || c.tagsOcultas.dominio === 'ambiental';
 const ehMotivo = (c) => c.tagsOcultas.subDominio === 'motivo';
+const ehCorroboracao = (c) => c.tagsOcultas.subDominio === 'corroboracao';
+const ehAlibiDe = (c, sid) => c.tagsOcultas.subDominio === 'alibi' && c.tagsOcultas.declaranteId === sid;
 
 // Geometria das estações de ligação (coordenadas conhecidas → barbante simples).
 const CARD_W = 176;
@@ -57,6 +56,23 @@ const ETAPAS = [
   { id: 'juizos', titulo: 'V · Os Juízos', subtitulo: 'sobre cada não-acusado' },
 ];
 
+// Estado de navegação ao montar o mural: primeira visita começa do zero
+// (revelação progressiva); numa retentativa (a acusação já tem substância),
+// tudo aparece e abre-se a primeira parte estruturalmente por concluir (Q9).
+function estadoInicialNavegacao(acusacao) {
+  const virgem =
+    !acusacao.reuId &&
+    acusacao.janela.inicio == null &&
+    acusacao.janela.fim == null &&
+    !acusacao.causaId;
+  if (virgem) return { revelado: 1, etapaAberta: 0 };
+  let aberta = 4; // juízos, quando o resto está de pé
+  if (acusacao.janela.inicio == null || acusacao.janela.fim == null || !acusacao.causaId) aberta = 0;
+  else if (!acusacao.reuId) aberta = 1;
+  else if (!acusacao.motivacaoId) aberta = 3;
+  return { revelado: ETAPAS.length, etapaAberta: aberta };
+}
+
 export default function MuralAcusacao() {
   const cartas = useJogo((s) => s.cartasRegistradas);
   const acusacao = useJogo((s) => s.acusacao);
@@ -72,8 +88,11 @@ export default function MuralAcusacao() {
 
   // `revelado`: quantas estações já apareceram (começa em 1 — só o Corpo).
   // `etapaAberta`: qual estação está aberta para edição (ou null = todas recolhidas).
-  const [revelado, setRevelado] = useState(1);
-  const [etapaAberta, setEtapaAberta] = useState(0);
+  // Numa RETENTATIVA (a acusação já tem corpo), o mural reabre inteiro e na
+  // primeira pendência — não força o jogador a re-percorrer as estações (Q9).
+  const [{ revelado, etapaAberta }, setNavegacao] = useState(() => estadoInicialNavegacao(acusacao));
+  const setRevelado = (v) => setNavegacao((n) => ({ ...n, revelado: v }));
+  const setEtapaAberta = (v) => setNavegacao((n) => ({ ...n, etapaAberta: v }));
   const [revisando, setRevisando] = useState(false); // a revisão final, antes de julgar
 
   // Ligações: helpers usados tanto pelo "assinalar" do Corpo quanto pelo barbante.
@@ -89,13 +108,23 @@ export default function MuralAcusacao() {
     const existe = ligacaoEntre(a, b);
     if (existe) removerLigacao(existe.id);
     else adicionarLigacao(a, b);
+    tocarSom('barbante');
   }
 
   // Cartas por categoria (sem ordenar/destacar relevância — só agrupar por tipo).
   const temporais = cartas.filter(ehTemporal);
   const causais = cartas.filter(ehCausal);
   const vestigios = cartas.filter(ehVestigioOuAmbiental);
-  const mentirasAlvo = cartas.filter((c) => horaAlegada(c) !== null); // só as mentiras de HORA
+  const corroboracoes = cartas.filter(ehCorroboracao);
+  // Alvos da Estação III: as alegações de HORA (relógio encenado, avistamentos)
+  // e — com o réu nomeado — o paradeiro que ele próprio declarou (Q4).
+  const mentirasAlvo = [
+    ...cartas.filter((c) => horaAlegada(c) !== null),
+    ...(acusacao.reuId ? cartas.filter((c) => ehAlibiDe(c, acusacao.reuId)) : []),
+  ];
+  // Fontes da Estação III: os fatos do corpo e os registros de testemunho
+  // (a corroboração de Moorford derruba o paradeiro do réu).
+  const fontesMentiras = [...temporais, ...corroboracoes];
   const motivos = cartas.filter(
     (c) => ehMotivo(c) && (!acusacao.reuId || c.tagsOcultas.ligadoA === acusacao.reuId)
   );
@@ -107,7 +136,8 @@ export default function MuralAcusacao() {
   useEffect(() => {
     cartas.forEach((c) => {
       if (c.tagsOcultas.dominio === 'temporal') adicionarLigacao(c.id, ANCORAS.quando);
-      else if (c.tagsOcultas.dominio === 'causal' && c.tagsOcultas.sinal) adicionarLigacao(c.id, ANCORAS.como);
+      else if (c.tagsOcultas.dominio === 'causal' && (c.tagsOcultas.sinal || c.tagsOcultas.instrumento))
+        adicionarLigacao(c.id, ANCORAS.como);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartas]);
@@ -128,7 +158,6 @@ export default function MuralAcusacao() {
   if (!acusacao.motivacaoId) lacunas.push('O móbil não foi apontado.');
   if (naoAcusados.some((sp) => !acusacao.juizos[sp.id])) lacunas.push('Há suspeitos sem juízo.');
 
-  const dica = falaDoMestre(lerCorpo(cartas));
   const podeSubmeter = !!acusacao.reuId;
 
   // Concluir a etapa aberta: revela a próxima (se for a fronteira) ou recolhe.
@@ -196,23 +225,15 @@ export default function MuralAcusacao() {
         </div>
       </div>
 
-      {/* Faixa de apoio: lembrete do legista (dica) + o que ainda falta */}
-      <div className="shrink-0 flex flex-wrap items-start gap-x-8 gap-y-1 px-3 sm:px-6 py-2 border-b border-stone-800 bg-stone-900/60 text-xs">
-        <div className="max-w-xl">
-          <span className="text-amber-200/70 tracking-[0.2em] uppercase mr-2">Lembrete do legista</span>
-          <span className="text-stone-400 italic">
-            {dica.tempo || dica.causa
-              ? [dica.tempo, dica.causa].filter(Boolean).join(' ')
-              : 'Examine o corpo para ouvir a leitura.'}
-          </span>
+      {/* Faixa de apoio: só o checklist NEUTRO do que falta afirmar (Q3: a
+          leitura do legista não fica pendurada sobre a prova — quem quiser
+          consultá-la, que abra a Caderneta; é um gesto, não um gabarito). */}
+      {lacunas.length > 0 && (
+        <div className="shrink-0 px-3 sm:px-6 py-2 border-b border-stone-800 bg-stone-900/60 text-xs text-stone-500">
+          <span className="tracking-[0.2em] uppercase mr-2">Ainda falta</span>
+          {lacunas.join(' · ')}
         </div>
-        {lacunas.length > 0 && (
-          <div className="text-stone-500">
-            <span className="tracking-[0.2em] uppercase mr-2">Ainda falta</span>
-            {lacunas.join(' · ')}
-          </div>
-        )}
-      </div>
+      )}
 
       {/* A mesa: pilha vertical de estações que cresce conforme se conclui */}
       <div className="flex-1 overflow-auto bg-gradient-to-b from-stone-950 via-stone-900/40 to-stone-950 p-3 sm:p-6 space-y-4">
@@ -238,6 +259,7 @@ export default function MuralAcusacao() {
                 causais={causais}
                 vestigios={vestigios}
                 mentirasAlvo={mentirasAlvo}
+                fontesMentiras={fontesMentiras}
                 motivos={motivos}
                 naoAcusados={naoAcusados}
               />
@@ -258,6 +280,7 @@ export default function MuralAcusacao() {
           naoAcusados={naoAcusados}
           aoVoltar={() => setRevisando(false)}
           aoConfirmar={() => {
+            tocarSom('lacre');
             setRevisando(false);
             submeterAcusacao();
           }}
@@ -516,25 +539,27 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
 }
 
 // =====================================================================
-// ESTAÇÃO III — AS MENTIRAS: LIGAR (barbante) um fato físico do corpo à
-// mentira de HORA que ele derruba (o relógio encenado / o falso avistamento).
-// Os álibis foram para a estação dos Juízos (a evidência que inocenta).
+// ESTAÇÃO III — AS MENTIRAS: LIGAR (barbante) um fato à alegação que ele
+// derruba — o relógio encenado, o falso avistamento e, com o réu nomeado,
+// o paradeiro que o próprio réu declarou (refutável pelo registro de
+// testemunho — a corroboração de Moorford). Os álibis dos NÃO-acusados
+// seguem na estação dos Juízos.
 // =====================================================================
-function EstacaoMentiras({ acusacao, mentirasAlvo, temporais, adicionarLigacao, removerLigacao }) {
+function EstacaoMentiras({ acusacao, mentirasAlvo, fontesMentiras, adicionarLigacao, removerLigacao }) {
   return (
     <div>
       <p className="text-stone-500 text-[10px] mb-2">
-        Ligue um fato físico do corpo à mentira de hora que ele derruba (clique no fato, depois no
-        depoimento). Para desfazer uma ligação, clique no barbante.
+        Ligue um fato — do corpo ou dos registros — à alegação de hora ou de paradeiro que ele
+        derruba (clique no fato, depois no depoimento). Para desfazer uma ligação, clique no barbante.
       </p>
       <MesaLigacao
         alvos={mentirasAlvo}
-        fontes={temporais}
+        fontes={fontesMentiras}
         ligacoes={acusacao.ligacoes}
         adicionarLigacao={adicionarLigacao}
         removerLigacao={removerLigacao}
-        rotuloAlvos="As mentiras — depoimentos de hora"
-        rotuloFontes="Os fatos do corpo"
+        rotuloAlvos="As alegações — hora e paradeiro"
+        rotuloFontes="Os fatos — corpo e registros"
       />
     </div>
   );
@@ -579,6 +604,7 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
       return;
     }
     adicionarLigacao(origem, id);
+    tocarSom('barbante');
     setOrigem(null);
   }
 
@@ -834,78 +860,62 @@ function Barbante({ a, b, aoRemover }) {
         stroke="transparent"
         strokeWidth={14}
         style={{ pointerEvents: 'stroke', cursor: 'pointer' }}
-        onClick={aoRemover}
+        onClick={() => {
+          tocarSom('barbante');
+          aoRemover();
+        }}
       />
-      <line ref={ref} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#b45309" strokeWidth={2} />
+      {/* O fio tem corpo (Q7): sombra por baixo, torção clara por cima */}
+      <line x1={a.x} y1={a.y + 1.5} x2={b.x} y2={b.y + 1.5} stroke="rgba(0,0,0,0.55)" strokeWidth={4} />
+      <line ref={ref} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#b45309" strokeWidth={3} strokeLinecap="round" />
+      <line x1={a.x} y1={a.y - 0.6} x2={b.x} y2={b.y - 0.6} stroke="rgba(251,191,36,0.35)" strokeWidth={1} strokeDasharray="5 7" />
     </g>
   );
 }
 
 // ---------------------------------------------------------------------
-// Seletor de janela (início/fim no relógio dos dois dias). Reuso do Estágio 1.
+// Seletor de janela: DOIS seletores (início e fim), cada um com dia+hora
+// combinados numa lista só (Q9 — menos burocracia que os quatro antigos).
+// O intervalo oferecido é o que faz sentido no caso: da meia-noite de
+// 13/out à chegada do perito (11h de 14/out) — a morte não pode ser
+// posterior ao corpo achado.
 // ---------------------------------------------------------------------
-function SeletorJanela({ acusacao, definirJanela }) {
-  const ini = acusacao.janela.inicio != null ? deAbsoluto(acusacao.janela.inicio) : null;
-  const fim = acusacao.janela.fim != null ? deAbsoluto(acusacao.janela.fim) : null;
-  const [iniDia, setIniDia] = useState(ini ? String(ini.dia) : '13');
-  const [iniHora, setIniHora] = useState(ini ? String(ini.hora) : '');
-  const [fimDia, setFimDia] = useState(fim ? String(fim.dia) : '14');
-  const [fimHora, setFimHora] = useState(fim ? String(fim.hora) : '');
+const HORA_MIN_JANELA = -24; // 00h de 13/out
+const HORA_MAX_JANELA = 11; // 11h de 14/out (chegada à cena)
 
-  function aplicar(bound, dia, hora) {
-    if (hora === '') return;
-    definirJanela({ [bound]: paraAbsoluto(dia, hora) });
-  }
-
-  return (
-    <div className="space-y-1">
-      <LinhaHora
-        rotulo="Início"
-        dia={iniDia}
-        hora={iniHora}
-        setDia={(d) => {
-          setIniDia(d);
-          aplicar('inicio', d, iniHora);
-        }}
-        setHora={(h) => {
-          setIniHora(h);
-          aplicar('inicio', iniDia, h);
-        }}
-      />
-      <LinhaHora
-        rotulo="Fim"
-        dia={fimDia}
-        hora={fimHora}
-        setDia={(d) => {
-          setFimDia(d);
-          aplicar('fim', d, fimHora);
-        }}
-        setHora={(h) => {
-          setFimHora(h);
-          aplicar('fim', fimDia, h);
-        }}
-      />
-    </div>
-  );
+function rotuloHoraAbs(abs) {
+  const { dia, hora } = deAbsoluto(abs);
+  return `dia ${dia} · ${String(hora).padStart(2, '0')}h`;
 }
 
-function LinhaHora({ rotulo, dia, hora, setDia, setHora }) {
+function SeletorJanela({ acusacao, definirJanela }) {
+  const opcoes = [];
+  for (let h = HORA_MIN_JANELA; h <= HORA_MAX_JANELA; h++) opcoes.push(h);
   const classe = 'bg-stone-950 border border-stone-700 rounded-sm text-stone-300 text-xs px-1 py-1';
-  return (
+  const linha = (rotulo, bound) => (
     <div className="flex items-center gap-1">
       <span className="text-stone-500 text-[10px] w-10">{rotulo}</span>
-      <select className={classe} value={dia} onChange={(e) => setDia(e.target.value)}>
-        <option value="13">dia 13</option>
-        <option value="14">dia 14</option>
-      </select>
-      <select className={classe} value={hora} onChange={(e) => setHora(e.target.value)}>
-        <option value="">—h</option>
-        {Array.from({ length: 24 }, (_, h) => (
+      <select
+        className={classe}
+        value={acusacao.janela[bound] != null ? String(acusacao.janela[bound]) : ''}
+        onChange={(e) => {
+          if (e.target.value === '') return;
+          definirJanela({ [bound]: Number(e.target.value) });
+        }}
+      >
+        <option value="">— escolher —</option>
+        {opcoes.map((h) => (
           <option key={h} value={h}>
-            {String(h).padStart(2, '0')}h
+            {rotuloHoraAbs(h)}
           </option>
         ))}
       </select>
+    </div>
+  );
+  return (
+    <div className="space-y-1">
+      {linha('Início', 'inicio')}
+      {linha('Fim', 'fim')}
     </div>
   );
 }

@@ -2,9 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Tipografia de época (Q7): IM Fell English (OFL), embarcada — sem rede em
+   runtime. Serve os títulos serifados; o corpo do texto segue no sans do
+   sistema, pela legibilidade. */
+@font-face {
+  font-family: 'IM Fell English';
+  src: url('./assets/fontes/imfell-english-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IM Fell English';
+  src: url('./assets/fontes/imfell-english-italico.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Fundo de mesa de madeira escura à luz de vela */
 body {
   @apply bg-stone-950 text-stone-300 antialiased;
+}
+
+/* ------------------------------------------------------------------ */
+/* A matéria da mesa (Q7): veios de madeira e luz de vela, procedurais  */
+/* (gradientes + ruído SVG inline — nenhum asset externo).              */
+/* ------------------------------------------------------------------ */
+.mesa-madeira {
+  background-color: #12100d;
+  background-image:
+    /* halo quente da vela, alto e à direita (onde vive o relógio) */
+    radial-gradient(120% 90% at 72% 0%, rgba(217, 119, 6, 0.1), rgba(0, 0, 0, 0) 55%),
+    /* vinheta que escurece as bordas da mesa */
+    radial-gradient(140% 120% at 50% 60%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%),
+    /* veios verticais da madeira */
+    repeating-linear-gradient(
+      92deg,
+      rgba(87, 63, 38, 0.16) 0px,
+      rgba(46, 33, 20, 0.16) 7px,
+      rgba(74, 53, 31, 0.16) 13px,
+      rgba(38, 27, 17, 0.16) 22px
+    ),
+    /* grão fino (ruído SVG determinístico) */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='1893' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* A vela respira: o halo oscila devagar (só opacidade — barato e discreto) */
+@keyframes velaRespira {
+  0%, 100% { opacity: 1; }
+  38% { opacity: 0.86; }
+  62% { opacity: 0.94; }
+  80% { opacity: 0.82; }
+}
+.luz-de-vela {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(90% 70% at 72% 0%, rgba(251, 191, 36, 0.07), rgba(0, 0, 0, 0) 60%);
+  animation: velaRespira 7s ease-in-out infinite;
+}
+
+/* Papel das cartas sobre a mesa: fibra clara e sombra de objeto pousado */
+.carta-papel {
+  background-image:
+    linear-gradient(155deg, rgba(120, 100, 70, 0.1), rgba(0, 0, 0, 0) 45%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' seed='413' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.04'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+/* Extração (Q7): a carta chega à mesa virando do verso para a face */
+@keyframes cartaVira {
+  from { transform: perspective(600px) rotateY(78deg) scale(0.96); opacity: 0; }
+  55%  { transform: perspective(600px) rotateY(-8deg); opacity: 1; }
+  to   { transform: perspective(600px) rotateY(0deg) scale(1); }
+}
+.carta-surgir {
+  animation: cartaVira 320ms ease-out;
+  transform-origin: left center;
 }
 
 /* Celular: um puxão para baixo não pode recarregar a página (perderia o caso) */

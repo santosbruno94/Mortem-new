@@ -28,7 +28,8 @@ Vai à cena e aos três interrogatórios antes do corpo; só o examina 16h depoi
   térmico (algor **inconclusivo**). A hipótese precisa "noite de 13/out" é **rejeitada**;
   resta a janela ampla 15h00 de 13/out–03h00 de 14/out (largura 12h → `janela_imprecisa`).
 - **Armadilha 2 (Hudson):** seduzido pelo nervosismo e pela mentira da governanta, acusa-a
-  sem mecanismo nem nexo → `erro_judiciario`; o monólogo revela Edgar na galeria.
+  sem mecanismo nem nexo → `erro_judiciario`; com a retentativa de pé o monólogo cala o
+  nome — é o epílogo do encerramento que revela Edgar.
 - **Armadilha 3 (Blackwood):** o motivo público não vira acusação — o álibi corroborado
   (20h–00h, doze testemunhas) o mantém periférico.
 

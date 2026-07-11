@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // Tipografia serifada para títulos e nomes (tom vitoriano)
-        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'serif'],
+        // Tipografia serifada de época para títulos e nomes (Q7): IM Fell
+        // English embarcada (licença OFL), com Georgia de reserva.
+        serif: ['"IM Fell English"', 'Georgia', 'Cambria', '"Times New Roman"', 'serif'],
       },
     },
   },

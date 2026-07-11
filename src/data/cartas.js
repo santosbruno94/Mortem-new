@@ -474,10 +474,14 @@ export const CARTAS = [
     // Corroboração OPCIONAL (nó distante, desbloqueado por lead): reforça que
     // Edgar teve oportunidade, mas NÃO é pilar do veredicto — o caso já fecha
     // pelo corpo. É atalho/reforço, jamais a chave (relógio mole).
+    // `horaFimObservada` registra até quando a testemunha o viu onde o álibi
+    // o punha (20h30 = -3.5 na escala absoluta): antes do fim declarado do
+    // álibi, o que permite REFUTAR o paradeiro do réu na Estação III (Q4).
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'corroboracao',
       ligadoA: 'edgar_arthurs',
+      horaFimObservada: -3.5,
     },
   },
 ];

@@ -25,6 +25,10 @@ export function buildDetective(opcao) {
 
 let proximoIdLigacao = 1;
 
+// Custo (horas) de revisar a acusação após um desfecho (Q2): a regalia do
+// caso-escola deixa de ser grátis — a audiência adia-se a cada retentativa.
+export const CUSTO_REVISAO = 2;
+
 export const useJogo = create((set, get) => ({
   // ---------------- Fases e personagem ----------------
   faseJogo: 'selecao', // 'selecao' → 'abertura' → 'investigacao'
@@ -47,6 +51,9 @@ export const useJogo = create((set, get) => ({
   log: [],
   temperaturaMedida: null,
   posicoesCartas: {},
+  nosVisitados: [], // para o retrato da investigação (epílogo)
+  nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
+  somAtivo: true, // efeitos sonoros da mesa (papel, sino, barbante, lacre, pena)
 
   // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
   overlay: null, // { tipo: 'localidade'|'caderneta'|'glossario'|'alibis'|'acusacao'|'monologo', id }
@@ -79,11 +86,14 @@ export const useJogo = create((set, get) => ({
     set((s) => ({
       faseJogo: 'investigacao',
       localidadeAtual: 'cena', // o perito chega à cena (a relojoaria) às 11h
+      nosVisitados: ['cena'],
       log: [
         ...s.log,
         { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
       ],
     })),
+
+  alternarSom: () => set((s) => ({ somAtivo: !s.somAtivo })),
 
   registrarLog: (texto) =>
     set((s) => ({ log: [...s.log, { hora: s.horasJogo, texto }] })),
@@ -101,13 +111,15 @@ export const useJogo = create((set, get) => ({
     const s = get();
     if (!s.nosDesbloqueados.includes(noId)) return;
     const custo = s.localidadeAtual ? custoViagem(s.localidadeAtual, noId) : 0;
+    const visitados = s.nosVisitados.includes(noId) ? s.nosVisitados : [...s.nosVisitados, noId];
     if (noId === s.localidadeAtual || custo === 0) {
-      set({ localidadeAtual: noId });
+      set({ localidadeAtual: noId, nosVisitados: visitados });
       return;
     }
     const no = obterNo(noId);
     set({
       localidadeAtual: noId,
+      nosVisitados: visitados,
       horasJogo: s.horasJogo + custo,
       nosNovos: s.nosNovos.filter((id) => id !== noId),
       log: [
@@ -194,13 +206,14 @@ export const useJogo = create((set, get) => ({
         horaRegistro: s.horasJogo,
       };
     } else {
-      const horasEstimadas = 37 - temperatura;
       carta = {
         id: 'ev_algor',
         localidade: 'corpo',
         textoDisplay: `Corpo Ainda Morno: ${temperatura}°C`,
         termoCarimbo: `Corpo a ${temperatura}°C (sala a 11°C)`,
-        descricao: `O mercúrio detém-se nos ${temperatura}°C, contra 11°C do escritório. A perda de calor, a um grau por hora, fala de ${horasEstimadas - 2} a ${horasEstimadas + 2} horas decorridas.`,
+        // A carta entrega só a LEITURA (temperaturas); a aritmética do
+        // resfriamento é do jogador, com o verbete de algor do Glossário (Q9).
+        descricao: `O mercúrio detém-se nos ${temperatura}°C, contra 11°C do escritório. Um corpo vivo marcaria 37.`,
         vozMestre: 'Ainda morno. O calor que perdeu conta as horas — um grau a cada uma delas.',
         // Carrega a leitura BRUTA (temperatura medida + ambiente); a janela
         // é calculada pelo modelo forense universal na gaveta Cronos.
@@ -280,10 +293,30 @@ export const useJogo = create((set, get) => ({
     const veredicto = calcularVeredictoCadeia(s.acusacao, s.cartasRegistradas, SEED_TUTORIAL);
     set({
       veredicto,
+      nSubmissoes: s.nSubmissoes + 1,
       overlay: { tipo: 'monologo', id: null },
       log: [...s.log, { hora: s.horasJogo, texto: 'Acusação levada a julgamento.' }],
     });
   },
 
   fecharVeredicto: () => set({ veredicto: null, overlay: null }),
+
+  // Retentativa do caso-escola (Q2): revisar a acusação depois de um desfecho
+  // custa horas — a audiência adia-se. A mesa fica intacta; o relógio, não.
+  // O perecível ainda não colhido continua degradando nesse intervalo.
+  revisarAcusacao: () => {
+    const s = get();
+    set({
+      veredicto: null,
+      overlay: { tipo: 'acusacao', id: null },
+      horasJogo: s.horasJogo + CUSTO_REVISAO,
+      log: [
+        ...s.log,
+        {
+          hora: s.horasJogo + CUSTO_REVISAO,
+          texto: `A audiência adiou-se em ${formatDuracao(CUSTO_REVISAO)} para a revisão da acusação.`,
+        },
+      ],
+    });
+  },
 }));

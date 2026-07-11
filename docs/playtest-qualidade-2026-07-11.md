@@ -338,3 +338,48 @@ que o jogo é" e "o que o jogo diz que é" está quase toda em quatro pontos bar
 tirar ajudas que se acumularam e deixar o desenho original respirar. Feito isso,
 o caso-escola já seria um jogo de dedução exigente e justo; com Q5 e Q7, seria
 também um jogo *bonito de terminar*.
+
+---
+
+## Adendo (11/07/2026, mesma data): decisões Q1–Q9 aplicadas
+
+Por ordem do criador, as nove recomendações foram executadas no mesmo dia:
+
+- **Q1 — contrato do monólogo restaurado.** A encenação só é creditada se o jogador
+  refutou a própria peça forjada (tag `encenado` no relógio — `veredicto.js`); derrubar
+  testemunhas vira mérito narrado à parte ("o corpo prevaleceu"). O bloco de Blackwood
+  só afirma "o paradeiro que firmei" com o álibi dele na mesa (senão: "foi convicção
+  minha, não perícia"). O instrumento narrado sai do sinal que cravou a causa, nunca
+  do vestígio avulso. O "um a um" morreu com a frase antiga.
+- **Q2 — retentativa com preço.** "Revisar a acusação" custa 2h (`CUSTO_REVISAO`);
+  a audiência adia-se, com linha no diário. O Erro Judiciário não nomeia o culpado
+  enquanto há retentativa — o nome sai só no encerramento definitivo.
+- **Q3 — o gabarito saiu do mural.** O lembrete do legista não existe mais; ficou o
+  checklist neutro. A leitura segue no exame do corpo e na Caderneta (consulta é gesto).
+- **Q4 — o álibi do réu tem voz.** A Estação III aceita o paradeiro do réu como
+  alegação refutável; a corroboração de Moorford (`horaFimObservada`) o derruba; o
+  monólogo diz: "o paradeiro que jurou caiu pelo próprio registro". Opcional, nunca pilar.
+- **Q5 — epílogo e retrato.** "Encerrar o caso" abre o Epílogo (templates universais:
+  destino do réu, dos periféricos e do perito — `src/logic/epilogo.js`) + "O retrato
+  da investigação" (horas, lugares, observações, julgamentos); só "Fechar o caderno"
+  encerra.
+- **Q6 — dentes do relógio registrados.** `MORTEM_CONTEXTO.md` §10: pressão de rota
+  na campanha virá de janelas de disponibilidade/eventos; perder tempo custa ACESSO,
+  nunca solvabilidade.
+- **Q7 — a fantasia na tela.** Madeira, grão e luz de vela procedurais; papel e sombra
+  nas cartas; carta que chega virando do verso; barbante com corpo; fonte de época
+  IM Fell English embarcada (OFL); 5 sons sintetizados offline (papel, sino, barbante,
+  lacre, pena) com interruptor "Som" no rodapé. Zero rede em runtime.
+- **Q8 — variação por perito + teto de máximas.** O hash das variantes é salgado com
+  o nome do perito (Harlan e Lenore leem desfechos diferentes); cada variante declara
+  `maxima` e abertura-máxima só sorteia fecho sem máxima — o P6 residual morreu por
+  construção (novo fecho sóbrio na Impunidade).
+- **Q9 — fricções limadas.** Mesa agrupada por domínio; mural de retentativa reabre
+  na primeira pendência; dica para a gafe do vestígio acessório; ponte carta→verbete
+  na Caderneta (Glossário abre no verbete); seletor de janela em 2 controles (dia+hora
+  combinados, limitado ao intervalo plausível do caso); termômetro sem a conta pronta.
+
+**Verificação:** build limpo; `qa.mjs` CASO VÁLIDO (11/11, com 2 checagens novas:
+contrato da encenação e álibi do réu); `qa-ui.mjs` UI VÁLIDA (22/22, cobrindo o mural
+sem gabarito, o custo da retentativa, o culpado oculto até o epílogo e o retrato).
+Prosa nova validada pelo pipeline `revisar-prosa` (parecer no commit).

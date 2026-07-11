@@ -8,14 +8,19 @@
 // Requisito: Playwright com Chromium (local ao projeto ou global).
 //   npm i -D playwright && npx playwright install chromium
 //
-// O que cobre (ângulos mortos do QA estático, apontados no playtest de
-// 11/07/2026 — docs/playtest-2026-07-11.md):
+// O que cobre (ângulos mortos do QA estático, apontados nos playtests de
+// 11/07/2026 — docs/playtest-2026-07-11.md e docs/playtest-qualidade-2026-07-11.md):
 //   • extração por clique nos termos em negrito das localidades;
-//   • o Mural da Acusação inteiro (5 estações, barbantes, revisão final);
+//   • o Mural da Acusação inteiro (5 estações, barbantes, revisão final),
+//     SEM o gabarito do legista no topo (Q3);
 //   • a personagem Lenore (interpolações de gênero);
-//   • o desbloqueio de Moorford pelos dois leads, com anúncio no diário;
+//   • o desbloqueio de Moorford pelos dois leads, com anúncio no diário,
+//     e o álibi do réu derrubado pelo registro do clube (Q4);
+//   • a retentativa com preço (2h) e o mural reaberto na pendência (Q2/Q9);
+//   • o Erro Judiciário sem nome do culpado até o epílogo, e o epílogo com
+//     o retrato da investigação (Q2/Q5);
 //   • REGRESSÕES: id interno vazando no monólogo ("la_cinzenta") e
-//     "NaN/Infinity" no lembrete do legista com janela aberta;
+//     "NaN/Infinity" na leitura do legista com janela aberta (Caderneta);
 //   • zero erros de console em todas as rotas.
 // =====================================================================
 
@@ -103,11 +108,10 @@ async function fecharOverlay(page) {
   await espera(page, 250);
 }
 
-async function definirJanela(page, iniDia, iniHora, fimDia, fimHora) {
-  await page.locator('select').nth(0).selectOption({ label: iniDia });
-  await page.locator('select').nth(1).selectOption({ label: iniHora });
-  await page.locator('select').nth(2).selectOption({ label: fimDia });
-  await page.locator('select').nth(3).selectOption({ label: fimHora });
+// O seletor de janela é UM par de seletores (dia+hora combinados, Q9).
+async function definirJanela(page, inicio, fim) {
+  await page.locator('select').nth(0).selectOption({ label: inicio });
+  await page.locator('select').nth(1).selectOption({ label: fim });
   await espera(page, 200);
 }
 
@@ -116,12 +120,18 @@ const concluirParte = async (page) => {
   await espera(page, 350);
 };
 
+// Texto do overlay mais ao topo (o monólogo/epílogo), sem a mesa ao fundo —
+// a mesa contém nomes de nós ("Edgar Arthurs") que contaminariam checagens.
+async function textoOverlay(page) {
+  return page.locator('div.fixed').last().innerText();
+}
+
 async function julgar(page) {
   await page.getByRole('button', { name: 'Levar a julgamento' }).click();
   await espera(page, 400);
   await page.getByRole('button', { name: 'Confirmar e julgar' }).click();
   await espera(page, 900);
-  return page.locator('body').innerText();
+  return textoOverlay(page);
 }
 
 // ---------------------------------------------------------------------
@@ -173,7 +183,9 @@ async function main() {
 
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
     await espera(page, 500);
-    await definirJanela(page, 'dia 13', '20h', 'dia 13', '23h');
+    // Q3: o mural não traz mais o gabarito do legista pendurado.
+    checar('Rota 1: mural sem o lembrete do legista', !(await page.locator('body').innerText()).includes('LEMBRETE DO LEGISTA'));
+    await definirJanela(page, 'dia 13 · 20h', 'dia 13 · 23h');
     await page.getByRole('button', { name: 'Estrangulamento por ligadura', exact: true }).click();
     await concluirParte(page);
     await page.getByRole('button', { name: 'Edgar Arthurs', exact: true }).click();
@@ -183,13 +195,20 @@ async function main() {
     await page.locator('text=PRESENÇA — O RÉU NA CENA').click();
     await espera(page, 250);
     await concluirParte(page);
-    // Mentiras: rigor e livores derrubam o avistamento da vizinha.
-    for (const fato of [/Corpo Endurecido/, /Manchas Arroxeadas/]) {
-      await page.getByRole('button', { name: fato }).last().click();
-      await espera(page, 200);
-      await page.getByRole('button', { name: /Vizinha Jura/ }).last().click();
-      await espera(page, 250);
+    // Mentiras: rigor e livores derrubam a vizinha E o relógio forjado (Q1);
+    // o registro de Moorford derruba o paradeiro do réu (Q4).
+    for (const alvo of [/Vizinha Jura/, /Relógio de Lareira Esmagado/]) {
+      for (const fato of [/Corpo Endurecido/, /Manchas Arroxeadas/]) {
+        await page.getByRole('button', { name: fato }).last().click();
+        await espera(page, 200);
+        await page.getByRole('button', { name: alvo }).last().click();
+        await espera(page, 250);
+      }
     }
+    await page.getByRole('button', { name: /Edgar Saiu do Clube/ }).last().click();
+    await espera(page, 200);
+    await page.getByRole('button', { name: /Jantar no Clube Comercial/ }).last().click();
+    await espera(page, 250);
     await concluirParte(page);
     await page.getByRole('button', { name: 'Herdeiro Único: Edgar Arthurs' }).click();
     await concluirParte(page);
@@ -205,8 +224,15 @@ async function main() {
     checar('Rota 1: desfecho Vitória Absoluta', texto.includes('Vitória Absoluta'));
     checar('Rota 1: monólogo sem id interno vazado', !/la_cinzenta|fibra_canhamo/.test(texto));
     checar('Rota 1: monólogo sem NaN/Infinity', !/NaN|Infinity/.test(texto));
+    checar('Rota 1: monólogo narra o álibi do réu desmentido (Q4)', texto.includes('O registro desmente o paradeiro'));
+    // Q5: o encerramento paga com epílogo + retrato da investigação.
     await page.getByRole('button', { name: 'Encerrar o caso' }).click();
-    await espera(page, 600);
+    await espera(page, 700);
+    const epilogo = await textoOverlay(page);
+    checar('Rota 1: epílogo presente ao encerrar', epilogo.includes('Epílogo'));
+    checar('Rota 1: retrato da investigação presente', /retrato da investiga/i.test(epilogo));
+    await page.getByRole('button', { name: 'Fechar o caderno' }).click();
+    await espera(page, 800);
 
     // ============================================================
     // ROTA 2 — APRESSADO (Lenore): iscas primeiro, corpo tarde,
@@ -237,7 +263,7 @@ async function main() {
 
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
     await espera(page, 500);
-    await definirJanela(page, 'dia 13', '18h', 'dia 14', '08h'); // larga
+    await definirJanela(page, 'dia 13 · 18h', 'dia 14 · 08h'); // larga
     await page.getByRole('button', { name: 'Estrangulamento por ligadura', exact: true }).click();
     await concluirParte(page);
     await page.getByRole('button', { name: 'Sra. Mabel Hudson', exact: true }).click();
@@ -249,9 +275,24 @@ async function main() {
     // "Mentiu, logo matou": sem mentiras confrontadas, sem móbil, sem juízos.
     texto = await julgar(page);
     checar('Rota 2: desfecho Erro Judiciário', texto.includes('Erro Judiciário'));
-    checar('Rota 2: instrumento com rótulo legível (lã cinzenta)', texto.includes('lã cinzenta') && !texto.includes('la_cinzenta'));
+    checar('Rota 2: sem id interno vazado', !texto.includes('la_cinzenta'));
+    // Q2: com a retentativa de pé, o culpado NÃO é nomeado no monólogo.
+    checar('Rota 2: erro não nomeia o culpado antes do encerramento', !texto.includes('Edgar Arthurs'));
+    // Q2: revisar custa horas — o relógio anda 2h (16h00 → 18h00).
+    await page.getByRole('button', { name: /Revisar a acusação/ }).click();
+    await espera(page, 700);
+    checar('Rota 2: a retentativa adia a audiência (relógio a 18h00)', (await page.locator('body').innerText()).includes('18h00'));
+    // Q9: o mural reaberto não volta à Estação I — abre na primeira pendência.
+    const muralReaberto = await page.locator('body').innerText();
+    checar('Rota 2: mural reaberto na pendência (móbil), não na Estação I', muralReaberto.includes('IV · O Móbil') && !muralReaberto.includes('QUANDO — A JANELA'));
+    texto = await julgar(page);
+    // Q5/Q2: o encerramento definitivo revela o culpado no epílogo.
     await page.getByRole('button', { name: 'Encerrar o caso' }).click();
-    await espera(page, 600);
+    await espera(page, 700);
+    const epilogoErro = await textoOverlay(page);
+    checar('Rota 2: epílogo do erro revela o verdadeiro autor', epilogoErro.includes('Edgar Arthurs'));
+    await page.getByRole('button', { name: 'Fechar o caderno' }).click();
+    await espera(page, 800);
 
     // ============================================================
     // ROTA 3 — INTUITIVO (Harlan): nunca examina o corpo, acusa
@@ -265,15 +306,19 @@ async function main() {
     await visitarEExtrair(page, 'A Delegacia'); // inclui o "visto com vida" (janela aberta)
     await fecharOverlay(page);
 
+    // REGRESSÃO (agora na Caderneta — Q3 tirou a leitura do mural): com só a
+    // âncora "visto com vida", a leitura do legista precisa formatar a janela
+    // aberta ("depois de..."), nunca NaN/Infinity.
+    await page.click('text=Caderneta');
+    await espera(page, 400);
+    const leitura = await page.locator('body').innerText();
+    checar('Rota 3: leitura do legista sem NaN/Infinity com janela aberta', !/NaN|Infinity/.test(leitura));
+    checar('Rota 3: leitura formata janela aberta ("depois de")', leitura.includes('depois de'));
+    await fecharOverlay(page);
+
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
     await espera(page, 500);
-    // REGRESSÃO: com só a âncora "visto com vida", o lembrete precisa
-    // formatar a janela aberta ("depois de..."), nunca NaN/Infinity.
-    const lembrete = await page.locator('body').innerText();
-    checar('Rota 3: lembrete sem NaN/Infinity com janela aberta', !/NaN|Infinity/.test(lembrete));
-    checar('Rota 3: lembrete formata janela aberta ("depois de")', lembrete.includes('depois de'));
-
-    await definirJanela(page, 'dia 13', '20h', 'dia 14', '08h'); // larga
+    await definirJanela(page, 'dia 13 · 20h', 'dia 14 · 08h'); // larga
     await page.getByRole('button', { name: 'Enforcamento', exact: true }).click(); // chute
     await concluirParte(page);
     await page.getByRole('button', { name: 'Edgar Arthurs', exact: true }).click();
