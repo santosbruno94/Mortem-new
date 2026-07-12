@@ -1,31 +1,54 @@
 import { useJogo } from '../store/jogo.js';
 import { OPCOES_PERSONAGEM } from '../data/abertura.js';
 
-// Tela inicial: escolha entre Dr. Harlan e Dr.ª Lenore Blackwell (§12)
+// Tela inicial: escolha entre Dr. Harlan e Dr.ª Lenore Blackwell (§12).
+// A mesa de madeira à luz de vela recebe dois convites de papel;
+// quem atende ao chamado ergue o seu da mesa.
 export default function TelaPersonagem() {
   const escolherDetective = useJogo((s) => s.escolherDetective);
 
   return (
-    <div className="altura-tela-min flex flex-col items-center justify-center px-4 sm:px-6 py-12">
-      <h1 className="font-serif text-4xl sm:text-6xl tracking-[0.25em] sm:tracking-[0.35em] text-amber-200 text-center">MORTEM</h1>
-      <p className="mt-3 text-stone-600 text-sm tracking-widest text-center">§ O Álibi de Corda — Briarstone, 1893 §</p>
+    <div className="relative altura-tela-min mesa-madeira overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-12">
+      {/* Halo de vela que respira sobre a mesa */}
+      <div className="luz-de-vela" aria-hidden />
 
-      <p className="mt-12 mb-6 text-stone-400 text-sm tracking-wide">Quem atende ao chamado?</p>
+      {/* O conjunto pousa na mesa com o mesmo gesto dos overlays (≤320ms,
+          cede ao prefers-reduced-motion via .overlay-surgir) */}
+      <div className="relative overlay-surgir w-full max-w-4xl flex flex-col items-center">
+        <h1 className="font-serif text-6xl sm:text-8xl tracking-[0.25em] sm:tracking-[0.35em] text-amber-200 titulo-gravado text-center select-none -mr-[0.25em] sm:-mr-[0.35em]">
+          MORTEM
+        </h1>
 
-      <div className="grid gap-6 md:grid-cols-2 max-w-4xl">
-        {OPCOES_PERSONAGEM.map((opcao) => (
-          <button
-            key={opcao.id}
-            onClick={() => escolherDetective(opcao.id)}
-            className="text-left bg-stone-900 border border-stone-800 hover:border-amber-900 hover:shadow-vela hover:-translate-y-0.5 rounded-sm p-4 sm:p-6 transition-all duration-gesto group"
-          >
-            <h2 className="font-serif text-2xl text-amber-200 group-hover:text-amber-100">
-              {opcao.nome}
-            </h2>
-            <div className="mt-2 mb-3 text-amber-900">―</div>
-            <p className="text-stone-400 leading-relaxed text-sm">{opcao.descricao}</p>
-          </button>
-        ))}
+        <div className="divisor-ornado text-sm mt-6 w-full max-w-md" aria-hidden>
+          §
+        </div>
+        <p className="mt-4 text-stone-400 text-sm tracking-[0.3em] text-center">
+          O Álibi de Corda — Briarstone, 1893
+        </p>
+
+        <p className="mt-14 sm:mt-16 mb-8 sm:mb-10 font-serif italic text-lg sm:text-xl text-amber-200/90 text-center">
+          Quem atende ao chamado?
+        </p>
+
+        {/* Dois convites de pergaminho sobre a mesa: o papel se ergue
+            sob o cursor (.carta-mesa cuida do gesto de hover) */}
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 w-full max-w-3xl">
+          {OPCOES_PERSONAGEM.map((opcao) => (
+            <button
+              key={opcao.id}
+              onClick={() => escolherDetective(opcao.id)}
+              className="carta-mesa text-left h-full"
+            >
+              <div className="carta-pergaminho rounded-sm p-5 sm:p-7 h-full">
+                <h2 className="font-serif text-2xl text-tinta">{opcao.nome}</h2>
+                <div className="mt-2 mb-3 text-tinta-apagada" aria-hidden>
+                  ―
+                </div>
+                <p className="text-tinta-clara leading-relaxed text-sm">{opcao.descricao}</p>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

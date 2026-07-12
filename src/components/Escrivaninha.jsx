@@ -46,15 +46,17 @@ export default function Escrivaninha() {
 
   return (
     <div className="altura-tela flex flex-col">
-      {/* A parede: Quadro de Revelações */}
+      {/* A parede: reboco escuro acima da mesa, com o fio de latão onde
+          ela encontra a madeira. A placa de latão aparafusada no centro
+          é a peça que importa — CONSTRUIR A ACUSAÇÃO. */}
       <div
-        className={`shrink-0 flex justify-center py-2 sm:py-3 bg-stone-950 border-b border-stone-900 transition-all duration-300 ${
+        className={`shrink-0 flex justify-center py-2 sm:py-3 bg-gradient-to-b from-[#1c1613] to-[#0f0c09] border-b border-latao/30 transition-all duration-300 ${
           mesaDesfocada ? 'opacity-30 blur-[6px] pointer-events-none' : ''
         }`}
       >
         <button
           onClick={() => abrirOverlay('acusacao')}
-          className="px-5 sm:px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm transition-all duration-gesto hover:bg-stone-800 hover:border-amber-700 hover:shadow-vela"
+          className="placa-latao px-5 sm:px-8 py-2 sm:py-2.5 rounded-sm font-serif tracking-firma text-xs sm:text-sm"
         >
           CONSTRUIR A ACUSAÇÃO
         </button>
@@ -90,15 +92,20 @@ export default function Escrivaninha() {
           )}
         </div>
 
-        {/* Painéis de consulta — custo zero */}
+        {/* Painéis de consulta — custo zero. A faixa de madeira mais
+            escura sob a mesa, separada por um fio de latão sutil. */}
         <div
-          className="shrink-0 flex flex-wrap justify-center gap-2 sm:gap-3 px-2 py-2 sm:py-3 bg-stone-950 border-t border-stone-900"
+          className="shrink-0 flex flex-wrap justify-center gap-2 sm:gap-3 px-2 py-2 sm:py-3 bg-gradient-to-b from-[#12100d] to-[#0b0906] border-t border-latao/30"
           style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
         >
           <BotaoPainel rotulo="Caderneta" aoClicar={() => abrirOverlay('caderneta')} />
           <BotaoPainel rotulo="Painel de Álibis" aoClicar={() => abrirOverlay('alibis')} />
           <BotaoPainel rotulo="Glossário" aoClicar={() => abrirOverlay('glossario')} />
-          <BotaoPainel rotulo={somAtivo ? 'Som: aceso' : 'Som: apagado'} aoClicar={alternarSom} />
+          <BotaoPainel
+            rotulo={somAtivo ? 'Som: aceso' : 'Som: apagado'}
+            aoClicar={alternarSom}
+            quieto
+          />
         </div>
       </div>
 
@@ -113,11 +120,13 @@ export default function Escrivaninha() {
   );
 }
 
-function BotaoPainel({ rotulo, aoClicar }) {
+// Botão da faixa inferior: o botão de mesa padrão. O de som é "quieto"
+// (ação de menor peso — não abre painel, só acende e apaga).
+function BotaoPainel({ rotulo, aoClicar, quieto = false }) {
   return (
     <button
       onClick={aoClicar}
-      className="px-3 sm:px-4 py-2 border border-stone-800 rounded-sm text-stone-400 text-xs sm:text-sm transition-colors duration-gesto hover:text-amber-200 hover:border-amber-900 hover:bg-stone-900/60"
+      className={`botao-mesa ${quieto ? 'botao-mesa--quieto' : ''} text-xs sm:text-sm`}
     >
       {rotulo}
     </button>

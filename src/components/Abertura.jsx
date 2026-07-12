@@ -7,6 +7,8 @@ import { tocarSom } from '../som.js';
 // Sequência de abertura em 6 passos (§4.1–4.2). O último passo é o
 // briefing do Delegado Wycliffe, cujas perguntas (custo zero) plantam
 // informações e iscas antes de o relógio começar a contar.
+// Apresentação: mesa de madeira à luz de vela; a prosa imersiva fica
+// escura e legível (stone-300); só a carta escrita vira pergaminho.
 export default function Abertura() {
   const { detective, passoAbertura, avancarAbertura, iniciarInvestigacao } = useJogo();
   const [perguntasFeitas, setPerguntasFeitas] = useState([]);
@@ -15,23 +17,37 @@ export default function Abertura() {
   const ultimo = passoAbertura === PASSOS_ABERTURA.length - 1;
 
   return (
-    <div className="altura-tela-min flex items-center justify-center px-4 sm:px-6 py-8 sm:py-12">
-      <div className="max-w-2xl w-full">
-        <p className="text-stone-600 text-xs tracking-[0.3em] uppercase mb-2">
+    <div className="relative altura-tela-min mesa-madeira overflow-hidden flex items-center justify-center px-4 sm:px-6 py-8 sm:py-12">
+      {/* Halo de vela que respira sobre a mesa */}
+      <div className="luz-de-vela" aria-hidden />
+
+      {/* A chave no passo faz cada página surgir com o gesto dos overlays
+          (≤320ms; .overlay-surgir cede ao prefers-reduced-motion) */}
+      <div key={passoAbertura} className="relative overlay-surgir max-w-2xl w-full">
+        <p className="text-rotulo uppercase text-latao-claro/70 mb-2">
           {passoAbertura + 1} · {PASSOS_ABERTURA.length}
         </p>
-        <h1 className="font-serif text-3xl text-amber-200">{interpolar(passo.titulo, detective)}</h1>
-        <div className="my-4 text-amber-900">――――</div>
+        <h1 className="font-serif text-3xl text-amber-200 titulo-gravado">
+          {interpolar(passo.titulo, detective)}
+        </h1>
+        <div className="my-5 divisor-ornado text-xs" aria-hidden>
+          §
+        </div>
 
+        {/* A carta escrita pousa como pergaminho (tinta sobre papel);
+            a prosa imersiva permanece escura, em stone-300 legível */}
         <div
           className={
             passo.carta
-              ? 'bg-stone-900 border border-amber-900/60 rounded-sm p-6 space-y-4 italic'
+              ? 'carta-pergaminho rounded-sm p-6 sm:p-7 space-y-4 italic'
               : 'space-y-4'
           }
         >
           {passo.paragrafos.map((p, i) => (
-            <p key={i} className="text-stone-300 leading-relaxed">
+            <p
+              key={i}
+              className={passo.carta ? 'leading-relaxed' : 'text-stone-300 leading-relaxed'}
+            >
               {interpolar(p, detective)}
             </p>
           ))}
@@ -39,23 +55,25 @@ export default function Abertura() {
 
         {passo.briefing && (
           <div className="mt-8 space-y-3">
-            <p className="text-stone-500 text-sm tracking-wide">Perguntas ao Delegado (não custam tempo):</p>
+            <p className="font-serif italic text-stone-400 text-sm tracking-wide">
+              Perguntas ao Delegado (não custam tempo):
+            </p>
             {PERGUNTAS_BRIEFING.map((q) => {
               const feita = perguntasFeitas.includes(q.id);
               return (
-                <div key={q.id} className="border border-stone-800 rounded-sm">
+                <div key={q.id}>
                   <button
                     onClick={() =>
                       setPerguntasFeitas((atual) => (feita ? atual : [...atual, q.id]))
                     }
-                    className={`w-full text-left px-4 py-3 text-sm transition-colors duration-gesto ${
-                      feita ? 'text-stone-500' : 'text-amber-200 hover:bg-stone-900'
+                    className={`botao-mesa w-full text-left ${
+                      feita ? 'botao-mesa--quieto cursor-default' : ''
                     }`}
                   >
                     § {interpolar(q.pergunta, detective)}
                   </button>
                   {feita && (
-                    <p className="px-4 pb-4 text-stone-400 text-sm leading-relaxed">
+                    <p className="mt-2 ml-3 pl-3 border-l border-latao/40 text-stone-300 text-sm leading-relaxed">
                       {interpolar(q.resposta, detective)}
                     </p>
                   )}
@@ -71,7 +89,7 @@ export default function Abertura() {
               tocarSom('pena');
               (ultimo ? iniciarInvestigacao : avancarAbertura)();
             }}
-            className="px-6 py-3 bg-stone-900 border border-amber-900 text-amber-200 rounded-sm transition-all duration-gesto hover:bg-stone-800 hover:shadow-vela tracking-wide text-sm"
+            className="botao-mesa px-6 py-3 tracking-wide"
           >
             {interpolar(passo.rotuloBotao, detective)} →
           </button>

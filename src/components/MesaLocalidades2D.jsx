@@ -109,16 +109,23 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
             <div
               className={`carta-papel w-40 bg-stone-900 border rounded-sm px-3 py-3 ${
                 novo
-                  ? 'border-amber-500/80 hover:border-amber-400 shadow-md shadow-amber-900/30'
-                  : 'border-amber-900/60 hover:border-amber-700'
-              } ${aqui ? 'ring-1 ring-amber-900/40' : ''}`}
+                  ? 'border-vela/70 hover:border-vela-clara shadow-vela'
+                  : 'border-latao/40 hover:border-latao/80'
+              } ${aqui ? 'ring-1 ring-latao/40' : ''}`}
             >
-              <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
+              <p className="text-latao-claro/80 text-[10px] tracking-[0.25em] uppercase">
                 {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
-                {novo && <span className="text-amber-400 normal-case tracking-normal"> · novo</span>}
+                {novo && (
+                  <span className="text-amber-200 normal-case tracking-normal">
+                    {' '}
+                    {/* Lacre de novidade: um pingo de cera ao lado do aviso */}
+                    <span className="selo-cera w-2 h-2 inline-block align-baseline" aria-hidden />{' '}
+                    novo
+                  </span>
+                )}
               </p>
               <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
-              <p className="text-stone-500 text-[10px] mt-2 tracking-wide">
+              <p className="text-stone-400 text-[10px] mt-2 tracking-wide">
                 {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
               </p>
             </div>
@@ -130,16 +137,18 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
           com papel e chegada em viravolta (Q7) */}
       {cartasOrdenadas.map((carta, i) => (
         <CartaMesa key={carta.id} id={carta.id} pos={posCartas[i]}>
+          {/* A prova é papel escrito: pergaminho claro, tinta escura —
+              o claro que pousa sobre a mesa escura. */}
           <div
-            className="carta-surgir carta-papel w-44 bg-stone-900 border border-stone-700 rounded-sm px-3 py-3 hover:border-stone-500"
+            className="carta-surgir carta-pergaminho w-44 rounded-sm px-3 py-3"
             title={carta.descricao}
           >
-            <p className="text-stone-600 text-[10px] tracking-[0.2em] uppercase">
+            <p className="text-cera text-rotulo uppercase">
               {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}
             </p>
             {/* Só a observação CRUA na face da carta — a interpretação é
                 falada pelo legista, não carimbada (§6 do redesign). */}
-            <p className="font-serif text-stone-200 text-sm mt-1 leading-snug">{carta.textoDisplay}</p>
+            <p className="font-serif text-tinta text-sm mt-1 leading-snug">{carta.textoDisplay}</p>
           </div>
         </CartaMesa>
       ))}

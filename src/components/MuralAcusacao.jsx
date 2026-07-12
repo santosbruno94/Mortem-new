@@ -200,14 +200,16 @@ export default function MuralAcusacao() {
   }
 
   return (
-    <div data-overlay className="fixed inset-0 z-40 bg-stone-950 flex flex-col">
+    <div data-overlay className="fixed inset-0 z-40 mural-cortica flex flex-col">
+      {/* A vela respira sobre a cortiça (puro efeito, não intercepta nada) */}
+      <div className="luz-de-vela" aria-hidden="true" />
       {/* Animação de "a mesa enche": cada etapa surge ao ser revelada. */}
       <style>{`@keyframes mortemSurgir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.mortem-surgir{animation:mortemSurgir 240ms ease-out}`}</style>
-      {/* Cabeçalho */}
-      <div className="shrink-0 flex flex-wrap items-start justify-between gap-3 px-3 sm:px-6 py-3 border-b border-amber-900/40 bg-stone-900">
+      {/* Cabeçalho: a moldura alta do mural, com a placa solene à direita */}
+      <div className="relative shrink-0 flex flex-wrap items-start justify-between gap-3 px-3 sm:px-6 py-3 border-b border-latao/40 bg-stone-950/60">
         <div>
-          <h2 className="font-serif text-xl text-amber-200">A Construção da Acusação</h2>
-          <p className="text-stone-500 text-xs mt-0.5">
+          <h2 className="font-serif text-2xl text-amber-200 titulo-gravado">A Construção da Acusação</h2>
+          <p className="text-stone-400 text-xs mt-0.5">
             A mesa se constrói por partes: conclua uma para a próxima aparecer. Para rever uma parte
             já feita, arraste-a de volta. Construir não custa tempo.
           </p>
@@ -216,11 +218,11 @@ export default function MuralAcusacao() {
           <button
             onClick={() => setRevisando(true)}
             disabled={!podeSubmeter}
-            className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm transition-all duration-gesto hover:bg-stone-800 hover:shadow-vela disabled:opacity-40 disabled:cursor-not-allowed"
+            className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Levar a julgamento
           </button>
-          <button onClick={fecharOverlay} className="text-stone-500 hover:text-amber-200 text-sm tracking-widest">
+          <button onClick={fecharOverlay} className="botao-mesa botao-mesa--quieto !text-xs tracking-widest">
             fechar ✕
           </button>
         </div>
@@ -228,16 +230,20 @@ export default function MuralAcusacao() {
 
       {/* Faixa de apoio: só o checklist NEUTRO do que falta afirmar (Q3: a
           leitura do legista não fica pendurada sobre a prova — quem quiser
-          consultá-la, que abra a Caderneta; é um gesto, não um gabarito). */}
+          consultá-la, que abra a Caderneta; é um gesto, não um gabarito).
+          Visual: uma etiqueta de pergaminho pregada de leve no mural. */}
       {lacunas.length > 0 && (
-        <div className="shrink-0 px-3 sm:px-6 py-2 border-b border-stone-800 bg-stone-900/60 text-xs text-stone-500">
-          <span className="tracking-[0.2em] uppercase mr-2">Ainda falta</span>
-          {lacunas.join(' · ')}
+        <div className="relative shrink-0 px-3 sm:px-6 pt-3 pb-1">
+          <div className="carta-pergaminho relative inline-block max-w-full rounded-sm px-4 py-2 text-xs -rotate-[0.4deg]">
+            <span className="tacha-latao absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5" aria-hidden="true" />
+            <span className="text-rotulo uppercase text-tinta-clara mr-2">Ainda falta</span>
+            <span className="text-tinta">{lacunas.join(' · ')}</span>
+          </div>
         </div>
       )}
 
-      {/* A mesa: pilha vertical de estações que cresce conforme se conclui */}
-      <div className="flex-1 overflow-auto bg-gradient-to-b from-stone-950 via-stone-900/40 to-stone-950 p-3 sm:p-6 space-y-4">
+      {/* O mural: pilha vertical de estações que cresce conforme se conclui */}
+      <div className="relative flex-1 overflow-auto p-3 sm:p-6 space-y-4">
         {ETAPAS.slice(0, revelado).map((et, i) => (
           <div key={et.id} className="mortem-surgir">
             {etapaAberta === i ? (
@@ -311,10 +317,11 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
   const rotuloJuizo = (j) => (j === 'culpado' ? 'Cúmplice' : j === 'inocente' ? 'Inocente' : 'Sem juízo');
 
   return (
-    <div className="absolute inset-0 z-50 bg-stone-950/80 flex items-center justify-center p-3 sm:p-6">
-      <div className="mortem-surgir w-full max-w-2xl max-h-full overflow-auto rounded-sm border-2 border-amber-800/70 bg-stone-900 p-4 sm:p-6 shadow-2xl shadow-black/50">
-        <h3 className="font-serif text-lg text-amber-200 mb-1">A acusação, como você a montou</h3>
-        <p className="text-stone-500 text-xs mb-4">Releia antes de selar. Nada aqui diz se está certo — isso é o julgamento.</p>
+    <div className="absolute inset-0 z-50 bg-stone-950/80 overlay-fundo flex items-center justify-center p-3 sm:p-6">
+      <div className="mortem-surgir painel-couro w-full max-w-2xl max-h-full overflow-auto rounded-sm p-4 sm:p-6">
+        <h3 className="font-serif text-lg text-amber-200 titulo-gravado mb-1">A acusação, como você a montou</h3>
+        <p className="text-stone-400 text-xs mb-3">Releia antes de selar. Nada aqui diz se está certo — isso é o julgamento.</p>
+        <div className="divisor-ornado text-xs mb-4" aria-hidden="true">§</div>
 
         <dl className="space-y-2 text-sm">
           <LinhaRev rotulo="Quem" valor={reu ? reu.nome : semCor} />
@@ -324,10 +331,10 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
           <LinhaRev rotulo="Mentiras" valor={horas.length ? horas.join(' · ') : '— nenhuma mentira de hora exposta —'} />
           <LinhaRev rotulo="Móbil" valor={motivo ? motivo.termoCarimbo : semCor} />
           <div className="flex gap-3">
-            <dt className="text-amber-200/70 text-[10px] tracking-[0.2em] uppercase w-24 shrink-0 pt-0.5">Juízos</dt>
+            <dt className="text-rotulo uppercase text-latao-claro/70 w-24 shrink-0 pt-0.5">Juízos</dt>
             <dd className="text-stone-300 flex-1">
               {naoAcusados.length === 0 ? (
-                <span className="text-stone-500">— sem outros suspeitos —</span>
+                <span className="text-stone-400 italic font-serif">— sem outros suspeitos —</span>
               ) : (
                 <div className="flex flex-col gap-0.5">
                   {naoAcusados.map((sp) => {
@@ -336,7 +343,7 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
                       <span key={sp.id}>
                         {sp.nome}: <span className="text-stone-200">{rotuloJuizo(acusacao.juizos[sp.id])}</span>
                         {acusacao.juizos[sp.id] === 'inocente' && v && (
-                          <span className="text-stone-500"> — pelo {v.textoDisplay}</span>
+                          <span className="text-stone-400"> — pelo {v.textoDisplay}</span>
                         )}
                       </span>
                     );
@@ -348,13 +355,10 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
         </dl>
 
         <div className="flex justify-end gap-3 mt-6">
-          <button onClick={aoVoltar} className="px-4 py-2 text-stone-400 hover:text-amber-200 text-sm">
+          <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
             Voltar e revisar
           </button>
-          <button
-            onClick={aoConfirmar}
-            className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800"
-          >
+          <button onClick={aoConfirmar} className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide">
             Confirmar e julgar
           </button>
         </div>
@@ -366,7 +370,7 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
 function LinhaRev({ rotulo, valor }) {
   return (
     <div className="flex gap-3">
-      <dt className="text-amber-200/70 text-[10px] tracking-[0.2em] uppercase w-24 shrink-0 pt-0.5">{rotulo}</dt>
+      <dt className="text-rotulo uppercase text-latao-claro/70 w-24 shrink-0 pt-0.5">{rotulo}</dt>
       <dd className="text-stone-200 flex-1">{valor}</dd>
     </div>
   );
@@ -404,15 +408,17 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
       onPointerUp={up}
       title="Arraste para rever esta parte"
       style={{ transform: puxa ? `translateX(${puxa}px)` : undefined }}
-      className={`flex items-center justify-between gap-4 px-4 py-2 rounded-sm border bg-stone-900/70 cursor-grab active:cursor-grabbing select-none touch-none ${
-        puxa ? 'border-amber-600 shadow-lg shadow-black/40' : 'border-stone-700 hover:border-amber-800/60'
+      className={`carta-pergaminho relative flex items-center justify-between gap-4 px-4 py-2 rounded-sm -rotate-[0.25deg] cursor-grab active:cursor-grabbing select-none touch-none ${
+        puxa ? 'outline outline-2 outline-vela' : ''
       }`}
     >
+      {/* A tacha que prega a ficha concluída no mural */}
+      <span className="tacha-latao absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5" aria-hidden="true" />
       <div className="flex items-baseline gap-3">
-        <span className="text-amber-200/80 text-[11px] tracking-[0.2em] uppercase">{etapa.titulo}</span>
-        <span className="text-stone-400 text-xs">{resumo}</span>
+        <span className="font-serif text-tinta text-[11px] tracking-[0.2em] uppercase">{etapa.titulo}</span>
+        <span className="text-tinta-clara text-xs">{resumo}</span>
       </div>
-      <span className={`text-[10px] tracking-widest uppercase ${puxa > 24 ? 'text-amber-300' : 'text-stone-600'}`}>
+      <span className={`text-[10px] tracking-widest uppercase ${puxa > 24 ? 'text-cera-clara' : 'text-tinta-apagada'}`}>
         {puxa > 24 ? 'solte para rever ⟲' : '⟵ puxe para rever'}
       </span>
     </div>
@@ -425,13 +431,16 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
 // ---------------------------------------------------------------------
 function EstacaoAberta({ etapa, ultima, aoConcluir, ...p }) {
   return (
-    <div className="rounded-sm border-2 border-amber-800/70 bg-stone-900/40">
+    <div className="painel-couro relative rounded-sm">
+      {/* A tacha que prende o painel aberto ao mural */}
+      <span className="tacha-latao absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3" aria-hidden="true" />
       <div className="flex items-baseline justify-between px-4 pt-3">
         <div className="flex items-baseline gap-3">
-          <span className="text-amber-200 font-serif">{etapa.titulo}</span>
-          <span className="text-stone-500 text-xs">— {etapa.subtitulo}</span>
+          <span className="text-amber-200 font-serif text-lg titulo-gravado">{etapa.titulo}</span>
+          <span className="text-stone-400 text-xs italic font-serif">— {etapa.subtitulo}</span>
         </div>
       </div>
+      <div className="divisor-ornado text-[10px] px-4 mt-1" aria-hidden="true">―</div>
 
       <div className="px-4 py-3 overflow-x-auto">
         {etapa.id === 'corpo' && <EstacaoCorpo {...p} />}
@@ -442,12 +451,12 @@ function EstacaoAberta({ etapa, ultima, aoConcluir, ...p }) {
       </div>
 
       <div className="flex justify-end px-4 pb-3">
-        <button
-          onClick={aoConcluir}
-          className="px-4 py-1.5 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-xs transition-colors hover:bg-stone-800 hover:border-amber-700"
-        >
-          {ultima ? 'Concluir' : 'Concluir esta parte →'}
-        </button>
+        {/* O halo de vela vem do invólucro: .botao-mesa define a própria sombra */}
+        <span className="inline-block rounded-sm shadow-vela-viva">
+          <button onClick={aoConcluir} className="botao-mesa !text-sm">
+            {ultima ? 'Concluir' : 'Concluir esta parte →'}
+          </button>
+        </span>
       </div>
     </div>
   );
@@ -464,34 +473,38 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
       {/* QUANDO */}
       <div>
-        <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase mb-2">Quando — a janela</p>
+        <p className="text-rotulo uppercase text-latao-claro/70 mb-2">Quando — a janela</p>
         <SeletorJanela acusacao={acusacao} definirJanela={definirJanela} />
         {acusacao.janela.inicio != null && acusacao.janela.fim != null && (
-          <p className="text-amber-200/80 text-xs mt-2">{formatJanela(acusacao.janela)}</p>
+          <p className="text-latao-claro font-serif text-xs mt-2">{formatJanela(acusacao.janela)}</p>
         )}
-        <p className="text-stone-500 text-[10px] mt-3 mb-2">O que o corpo diz do tempo:</p>
+        <p className="text-stone-400 text-[11px] mt-3 mb-2">O que o corpo diz do tempo:</p>
         <div className="flex flex-col gap-2">
           {temporais.map((c) => (
             <CartaLeitura key={c.id} carta={c} />
           ))}
-          {temporais.length === 0 && <p className="text-stone-600 text-xs">Nenhum indicador de tempo no corpo.</p>}
+          {temporais.length === 0 && (
+            <p className="text-stone-400 italic font-serif text-xs">Nenhum indicador de tempo no corpo.</p>
+          )}
         </div>
       </div>
 
       {/* COMO */}
       <div>
-        <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase mb-2">Como — a causa</p>
+        <p className="text-rotulo uppercase text-latao-claro/70 mb-2">Como — a causa</p>
         <div className="flex flex-col gap-1 max-h-40 overflow-y-auto pr-1">
           {CATALOGO_CAUSAS.map((c) => (
             <Opcao key={c.id} ativa={acusacao.causaId === c.id} aoClicar={() => definirCausa(c.id)} rotulo={c.nome} />
           ))}
         </div>
-        <p className="text-stone-500 text-[10px] mt-3 mb-2">O que o corpo diz da causa:</p>
+        <p className="text-stone-400 text-[11px] mt-3 mb-2">O que o corpo diz da causa:</p>
         <div className="flex flex-col gap-2">
           {causais.map((c) => (
             <CartaLeitura key={c.id} carta={c} />
           ))}
-          {causais.length === 0 && <p className="text-stone-600 text-xs">Nenhum sinal de causa no corpo.</p>}
+          {causais.length === 0 && (
+            <p className="text-stone-400 italic font-serif text-xs">Nenhum sinal de causa no corpo.</p>
+          )}
         </div>
       </div>
     </div>
@@ -499,13 +512,11 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
 }
 
 // Carta de evidência só para leitura (o jogador lê e deduz; não se clica).
+// É prova escrita: pergaminho claro, tinta escura.
 function CartaLeitura({ carta }) {
   return (
-    <div
-      title={carta.descricao}
-      className="rounded-sm px-3 py-2 border border-stone-700 bg-stone-900 transition-colors hover:border-stone-600"
-    >
-      <p className="font-serif text-stone-200 text-xs leading-snug">{carta.textoDisplay}</p>
+    <div title={carta.descricao} className="carta-pergaminho rounded-sm px-3 py-2">
+      <p className="font-serif text-tinta text-xs leading-snug">{carta.textoDisplay}</p>
     </div>
   );
 }
@@ -518,12 +529,12 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
   return (
     <div>
       <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className="text-stone-500 text-xs">Réu:</span>
+        <span className="text-rotulo uppercase text-latao-claro/70">Réu:</span>
         {SUSPEITOS.map((sp) => (
           <Opcao key={sp.id} ativa={acusacao.reuId === sp.id} aoClicar={() => definirReu(sp.id)} rotulo={sp.nome} />
         ))}
       </div>
-      <p className="text-stone-500 text-[10px] mb-2">
+      <p className="text-stone-400 text-[11px] mb-2">
         Ligue à Presença o(s) vestígio(s) que ligam o réu à arma do óbito (clique no vestígio, depois
         na âncora). Para desfazer uma ligação, clique no barbante.
       </p>
@@ -549,7 +560,7 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
 function EstacaoMentiras({ acusacao, mentirasAlvo, fontesMentiras, adicionarLigacao, removerLigacao }) {
   return (
     <div>
-      <p className="text-stone-500 text-[10px] mb-2">
+      <p className="text-stone-400 text-[11px] mb-2">
         Ligue um fato — do corpo ou dos registros — à alegação de hora ou de paradeiro que ele
         derruba (clique no fato, depois no depoimento). Para desfazer uma ligação, clique no barbante.
       </p>
@@ -616,7 +627,7 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
   const rotulo = (texto, y) =>
     texto ? (
       <span
-        className="absolute text-stone-500 text-[10px] tracking-[0.2em] uppercase"
+        className="absolute text-rotulo uppercase text-latao-claro/70"
         style={{ left: MARGEM, top: y - ROTULO_H + 2 }}
       >
         {texto}
@@ -647,30 +658,38 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
         const c = caixa(n.id);
         if (!c) return null;
         const sel = origem === n.id;
+        // Âncoras seguem escuras (placas do mural); as cartas de prova são
+        // pergaminho pregado. O pergaminho define a própria sombra, então o
+        // estado selecionado/alvo usa OUTLINE (não é engolido pela cascata).
+        const classeAncora = sel
+          ? 'border-2 bg-stone-900 border-amber-400 ring-2 ring-amber-400 z-20 shadow-vela-viva'
+          : conectando
+          ? 'border-2 bg-stone-900 border-latao-claro/80 hover:border-amber-400 shadow-vela'
+          : 'border-2 bg-stone-900 border-latao/70 hover:border-latao-claro';
+        const classePergaminho = sel
+          ? 'carta-pergaminho outline outline-2 outline-amber-400 z-20 -translate-y-0.5'
+          : conectando
+          ? 'carta-pergaminho hover:outline hover:outline-2 hover:outline-vela'
+          : 'carta-pergaminho hover:-translate-y-0.5';
         return (
           <button
             key={n.id}
             onClick={() => aoClicar(n.id)}
             title={n.ehAncora ? n.rotulo : n.descricao}
             style={{ left: c.x, top: c.y, width: CARD_W, height: CARD_H }}
-            className={`absolute text-left rounded-sm px-3 py-2 overflow-hidden transition-all duration-150 ${
-              n.ehAncora ? 'border-2 bg-stone-900' : 'border bg-stone-900'
-            } ${
-              sel
-                ? 'border-amber-400 ring-2 ring-amber-400 z-20 shadow-lg shadow-amber-900/30'
-                : conectando
-                ? n.ehAncora
-                  ? 'border-amber-700/80 hover:border-amber-500'
-                  : 'border-stone-600 hover:border-amber-600/70'
-                : n.ehAncora
-                ? 'border-amber-800/70 hover:border-amber-700'
-                : 'border-stone-700 hover:border-stone-500'
+            className={`absolute text-left rounded-sm px-3 pt-3 pb-2 overflow-hidden transition-all duration-150 ${
+              n.ehAncora ? classeAncora : classePergaminho
             }`}
           >
+            {/* A tacha que prega a carta/placa no mural */}
+            <span
+              className={`tacha-latao absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 ${sel ? 'brightness-125' : ''}`}
+              aria-hidden="true"
+            />
             {n.ehAncora ? (
-              <p className="text-amber-200/90 text-[10px] tracking-[0.15em] uppercase leading-snug">{n.rotulo}</p>
+              <p className="text-latao-claro text-[10px] tracking-[0.15em] uppercase leading-snug">{n.rotulo}</p>
             ) : (
-              <p className="font-serif text-stone-200 text-xs leading-snug">{n.textoDisplay}</p>
+              <p className="font-serif text-tinta text-xs leading-snug">{n.textoDisplay}</p>
             )}
           </button>
         );
@@ -684,14 +703,18 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
 // =====================================================================
 function EstacaoMobil({ acusacao, motivos, definirMotivacao }) {
   if (!acusacao.reuId) {
-    return <p className="text-stone-600 text-xs">Nomeie o réu na etapa da Presença para apontar o móbil.</p>;
+    return (
+      <p className="text-stone-400 italic font-serif text-xs">
+        Nomeie o réu na etapa da Presença para apontar o móbil.
+      </p>
+    );
   }
   if (motivos.length === 0) {
-    return <p className="text-stone-600 text-xs">Nenhuma carta de móbil ligada a este réu.</p>;
+    return <p className="text-stone-400 italic font-serif text-xs">Nenhuma carta de móbil ligada a este réu.</p>;
   }
   return (
     <div className="flex flex-col gap-1 max-w-md">
-      <p className="text-stone-600 text-[10px] mb-1">Aponte o móbil:</p>
+      <p className="text-rotulo uppercase text-latao-claro/70 mb-1">Aponte o móbil:</p>
       {motivos.map((c) => (
         <Opcao
           key={c.id}
@@ -723,7 +746,7 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
   }
 
   if (naoAcusados.length === 0) {
-    return <p className="text-stone-600 text-xs">Nomeie o réu na etapa da Presença primeiro.</p>;
+    return <p className="text-stone-400 italic font-serif text-xs">Nomeie o réu na etapa da Presença primeiro.</p>;
   }
 
   const alibiDe = (sid) =>
@@ -741,10 +764,12 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
         const juizo = acusacao.juizos[sp.id];
         const alibi = alibiDe(sp.id);
         return (
-          <div key={sp.id} className="rounded-sm border border-stone-700 bg-stone-900 px-3 py-2">
+          <div key={sp.id} className="relative rounded-sm border border-latao/40 bg-stone-900/80 shadow-pousado px-3 py-2">
+            {/* A tacha que prende a ficha do suspeito */}
+            <span className="tacha-latao absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2" aria-hidden="true" />
             <div className="flex items-center gap-2 mb-2">
-              <RetratoPersonagem personagemId={sp.id} tamanho={30} className="block rounded-sm border border-stone-800" />
-              <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase">{sp.nome}</p>
+              <RetratoPersonagem personagemId={sp.id} tamanho={30} className="block rounded-sm border border-latao/40" />
+              <p className="font-serif text-rotulo uppercase text-latao-claro/80">{sp.nome}</p>
             </div>
             <div className="flex flex-col gap-1">
               {[
@@ -759,13 +784,17 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
             {/* INOCENTE → confrontar o paradeiro declarado: o mesmo gesto serve
                 ao álibi que se sustenta e ao álibi que quebra (mentira-segredo) */}
             {juizo === 'inocente' && (
-              <div className="mt-2 border-t border-stone-800 pt-2">
-                <p className="text-stone-600 text-[10px] mb-1">
+              <div className="mt-2 border-t border-latao/25 pt-2">
+                <p className="text-stone-400 text-[11px] mb-1">
                   Confronte o paradeiro declarado — ligue o vestígio que o desmente, se houver:
                 </p>
-                {alibi && <p className="text-stone-500 text-[11px] italic mb-1">Álibi: {alibi.textoDisplay}</p>}
+                {alibi && (
+                  <p className="text-stone-400 text-[11px] italic font-serif mb-1">Álibi: {alibi.textoDisplay}</p>
+                )}
                 {vestigiosDe(sp.id).length === 0 ? (
-                  <p className="text-stone-600 text-[10px]">Nenhum vestígio na sua mesa confronta este paradeiro.</p>
+                  <p className="text-stone-400 italic font-serif text-[11px]">
+                    Nenhum vestígio na sua mesa confronta este paradeiro.
+                  </p>
                 ) : (
                   <div className="flex flex-col gap-1">
                     {vestigiosDe(sp.id).map((v) => (
@@ -783,10 +812,10 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
 
             {/* CÚMPLICE → o porquê (aposta do jogador; narrativa) */}
             {juizo === 'culpado' && (
-              <div className="mt-2 border-t border-stone-800 pt-2">
-                <p className="text-stone-600 text-[10px] mb-1">Por que acusa de cúmplice:</p>
+              <div className="mt-2 border-t border-latao/25 pt-2">
+                <p className="text-stone-400 text-[11px] mb-1">Por que acusa de cúmplice:</p>
                 {incriminamDe(sp.id).length === 0 ? (
-                  <p className="text-stone-600 text-[10px]">Nenhuma carta sustenta a aposta.</p>
+                  <p className="text-stone-400 italic font-serif text-[11px]">Nenhuma carta sustenta a aposta.</p>
                 ) : (
                   <div className="flex flex-col gap-1">
                     {incriminamDe(sp.id).map((c) => (
@@ -814,10 +843,10 @@ function CartaSelecionavel({ carta, ativa, aoClicar }) {
     <button
       onClick={aoClicar}
       title={carta.descricao}
-      className={`text-left rounded-sm px-2 py-1 border text-xs transition-colors ${
+      className={`text-left rounded-sm px-2 py-1 border text-xs transition-all duration-gesto ${
         ativa
-          ? 'border-amber-500 bg-stone-950 text-amber-200 ring-1 ring-amber-500/40'
-          : 'border-stone-800 bg-stone-900 text-stone-400 hover:text-stone-200 hover:border-stone-600'
+          ? 'border-latao-claro bg-amber-950/40 text-amber-100 ring-1 ring-latao-claro/60 shadow-vela'
+          : 'border-stone-700 bg-stone-900 text-stone-400 hover:text-amber-100 hover:border-latao/70'
       }`}
     >
       {carta.textoDisplay}
@@ -869,10 +898,11 @@ function Barbante({ a, b, aoRemover }) {
           aoRemover();
         }}
       />
-      {/* O fio tem corpo (Q7): sombra por baixo, torção clara por cima */}
-      <line x1={a.x} y1={a.y + 1.5} x2={b.x} y2={b.y + 1.5} stroke="rgba(0,0,0,0.55)" strokeWidth={4} />
-      <line ref={ref} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#b45309" strokeWidth={3} strokeLinecap="round" />
-      <line x1={a.x} y1={a.y - 0.6} x2={b.x} y2={b.y - 0.6} stroke="rgba(251,191,36,0.35)" strokeWidth={1} strokeDasharray="5 7" />
+      {/* O fio tem corpo (Q7): sombra por baixo, torção clara por cima.
+          Barbante rubro de investigação — cor de lacre, bem visível na cortiça. */}
+      <line x1={a.x} y1={a.y + 2} x2={b.x} y2={b.y + 2} stroke="rgba(0,0,0,0.6)" strokeWidth={5} />
+      <line ref={ref} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#a13b2e" strokeWidth={3.5} strokeLinecap="round" />
+      <line x1={a.x} y1={a.y - 0.7} x2={b.x} y2={b.y - 0.7} stroke="rgba(240,180,150,0.5)" strokeWidth={1.2} strokeDasharray="5 7" />
     </g>
   );
 }
@@ -895,10 +925,10 @@ function rotuloHoraAbs(abs) {
 function SeletorJanela({ acusacao, definirJanela }) {
   const opcoes = [];
   for (let h = HORA_MIN_JANELA; h <= HORA_MAX_JANELA; h++) opcoes.push(h);
-  const classe = 'bg-stone-950 border border-stone-700 rounded-sm text-stone-300 text-xs px-1 py-1';
+  const classe = 'campo-vitoriano text-xs';
   const linha = (rotulo, bound) => (
     <div className="flex items-center gap-1">
-      <span className="text-stone-500 text-[10px] w-10">{rotulo}</span>
+      <span className="text-stone-400 text-[10px] w-10">{rotulo}</span>
       <select
         className={classe}
         value={acusacao.janela[bound] != null ? String(acusacao.janela[bound]) : ''}
@@ -924,17 +954,20 @@ function SeletorJanela({ acusacao, definirJanela }) {
   );
 }
 
+// Ficha de opção clicável (causa, réu, juízo…). O estado escolhido tem de
+// gritar na cortiça: fio de latão, halo de vela e um pingo de lacre.
 function Opcao({ ativa, aoClicar, rotulo }) {
   return (
     <button
       onClick={aoClicar}
-      className={`px-2 py-1 rounded-sm border text-xs text-left transition-colors ${
+      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-sm border font-serif text-xs text-left transition-all duration-gesto ${
         ativa
-          ? 'border-amber-700 bg-stone-950 text-amber-200'
-          : 'border-stone-800 text-stone-400 hover:text-stone-200 hover:border-stone-600'
+          ? 'border-latao-claro bg-amber-950/40 text-amber-100 ring-1 ring-latao-claro/60 shadow-vela'
+          : 'border-stone-700 bg-stone-900/60 text-stone-300 hover:text-amber-100 hover:border-latao/70'
       }`}
     >
-      {rotulo}
+      {ativa && <span className="selo-cera shrink-0 w-2 h-2" aria-hidden="true" />}
+      <span>{rotulo}</span>
     </button>
   );
 }
