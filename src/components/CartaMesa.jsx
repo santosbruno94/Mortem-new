@@ -46,7 +46,7 @@ export default function CartaMesa({ id, pos, aoClicar, children }) {
       onPointerDown={aoPressionar}
       onPointerMove={aoMover}
       onPointerUp={aoSoltar}
-      className="absolute select-none touch-none cursor-grab active:cursor-grabbing active:z-30"
+      className="carta-mesa absolute select-none touch-none cursor-grab active:cursor-grabbing active:z-30"
       style={{ left: pos.x, top: pos.y }}
     >
       {children}

@@ -215,7 +215,7 @@ export default function MuralAcusacao() {
           <button
             onClick={() => setRevisando(true)}
             disabled={!podeSubmeter}
-            className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm transition-all duration-gesto hover:bg-stone-800 hover:shadow-vela disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Levar a julgamento
           </button>

@@ -17,7 +17,7 @@ export default function TelaPersonagem() {
           <button
             key={opcao.id}
             onClick={() => escolherDetective(opcao.id)}
-            className="text-left bg-stone-900 border border-stone-800 hover:border-amber-900 rounded-sm p-4 sm:p-6 transition-colors group"
+            className="text-left bg-stone-900 border border-stone-800 hover:border-amber-900 hover:shadow-vela hover:-translate-y-0.5 rounded-sm p-4 sm:p-6 transition-all duration-gesto group"
           >
             <h2 className="font-serif text-2xl text-amber-200 group-hover:text-amber-100">
               {opcao.nome}

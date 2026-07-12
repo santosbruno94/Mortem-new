@@ -25,7 +25,7 @@ export default function PainelAlibis() {
           {declaracoes.map((carta) => {
             const declarante = obterSuspeito(carta.tagsOcultas.declaranteId);
             return (
-              <li key={carta.id} className="border border-stone-800 rounded-sm px-4 py-3">
+              <li key={carta.id} className="border border-stone-800 bg-stone-950/40 rounded-sm px-4 py-3 transition-colors duration-gesto hover:border-stone-700">
                 <p className="font-serif text-amber-200">{declarante ? declarante.nome : 'Declarante incerto'}</p>
                 <p className="text-stone-300 text-sm mt-1">“{carta.textoDisplay}”</p>
                 <p className="text-stone-500 text-sm mt-1">

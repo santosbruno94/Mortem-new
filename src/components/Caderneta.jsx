@@ -24,7 +24,7 @@ export default function Caderneta() {
           {cartasRegistradas.map((c) => {
             const verbete = verbeteParaCarta(c.tagsOcultas);
             return (
-              <li key={c.id} className="border border-stone-800 rounded-sm px-4 py-3">
+              <li key={c.id} className="border border-stone-800 bg-stone-950/40 rounded-sm px-4 py-3 transition-colors duration-gesto hover:border-stone-700">
                 <p className="text-stone-200 text-sm font-serif">{c.textoDisplay}</p>
                 <p className="text-stone-500 text-sm mt-1">{c.descricao}</p>
                 {c.vozMestre && (
@@ -57,7 +57,7 @@ export default function Caderneta() {
       ) : (
         <ul className="space-y-2 mb-8">
           {conclusoes.map((c) => (
-            <li key={c.id} className="border border-stone-800 rounded-sm px-4 py-3">
+            <li key={c.id} className="border border-stone-800 bg-stone-950/40 rounded-sm px-4 py-3 transition-colors duration-gesto hover:border-stone-700">
               <p className="text-stone-300 text-sm font-bold">{c.titulo}</p>
               <p className="text-stone-500 text-sm">{c.resumo}</p>
             </li>

@@ -112,7 +112,7 @@ export default function Escrivaninha() {
       >
         <button
           onClick={() => abrirOverlay('acusacao')}
-          className="px-5 sm:px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm hover:bg-stone-800"
+          className="px-5 sm:px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm transition-all duration-gesto hover:bg-stone-800 hover:border-amber-700 hover:shadow-vela"
         >
           CONSTRUIR A ACUSAÇÃO
         </button>
@@ -151,7 +151,7 @@ export default function Escrivaninha() {
                       novo
                         ? 'border-amber-500/80 hover:border-amber-400 shadow-md shadow-amber-900/30'
                         : 'border-amber-900/60 hover:border-amber-700'
-                    }`}
+                    } ${aqui ? 'ring-1 ring-amber-900/40' : ''}`}
                   >
                     <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
                       {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
@@ -216,7 +216,7 @@ function BotaoPainel({ rotulo, aoClicar }) {
   return (
     <button
       onClick={aoClicar}
-      className="px-3 sm:px-4 py-2 border border-stone-800 rounded-sm text-stone-400 text-xs sm:text-sm hover:text-amber-200 hover:border-amber-900"
+      className="px-3 sm:px-4 py-2 border border-stone-800 rounded-sm text-stone-400 text-xs sm:text-sm transition-colors duration-gesto hover:text-amber-200 hover:border-amber-900 hover:bg-stone-900/60"
     >
       {rotulo}
     </button>

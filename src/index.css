@@ -71,6 +71,56 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
+/* ------------------------------------------------------------------ */
+/* Refino "vitoriano refinado": micro-animações e acabamento. Tudo é    */
+/* opacity/transform (barato), ≤250ms, e cede ao prefers-reduced-motion.*/
+/* ------------------------------------------------------------------ */
+
+/* Entrada dos overlays: o painel sobe de leve enquanto o fundo escurece */
+@keyframes overlaySurgir {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fundoEscurece {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.overlay-surgir { animation: overlaySurgir 220ms ease-out; }
+.overlay-fundo  { animation: fundoEscurece 220ms ease-out; }
+
+/* Carta pousada: levanta de leve sob o cursor, como papel que se ergue */
+.carta-mesa .carta-papel {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.carta-mesa:hover .carta-papel {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+.carta-mesa:active .carta-papel { transform: translateY(0); }
+
+/* Foco visível por teclado — discreto, na cor da vela */
+:focus-visible {
+  outline: 1px solid rgba(251, 191, 36, 0.55);
+  outline-offset: 2px;
+}
+
+/* Barra de rolagem discreta, da cor da mesa */
+* { scrollbar-width: thin; scrollbar-color: #44403c transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: #44403c; border-radius: 4px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* Movimento reduzido: as animações cedem, o conteúdo permanece */
+@media (prefers-reduced-motion: reduce) {
+  .luz-de-vela,
+  .carta-surgir,
+  .overlay-surgir,
+  .overlay-fundo {
+    animation: none !important;
+  }
+  .carta-mesa .carta-papel { transition: none; }
+}
+
 /* Extração (Q7): a carta chega à mesa virando do verso para a face */
 @keyframes cartaVira {
   from { transform: perspective(600px) rotateY(78deg) scale(0.96); opacity: 0; }
