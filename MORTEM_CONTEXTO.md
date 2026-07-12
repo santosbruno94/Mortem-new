@@ -82,8 +82,10 @@ morte é tratada com a frieza profissional de um laudo e a gravidade de um luto.
 Texto do jogo inteiramente em **português (PT-BR literário de época)**, sem
 anacronismos. A norma completa (língua, observação pura, dosagem de brilho,
 anti-padrões proibidos) está em `docs/guia-de-estilo.md`; o idioleto de cada personagem,
-em `docs/biblia-de-vozes.md`. Eventos de investigação são prosa imersiva com **termos
-clicáveis em negrito** inline — clicar extrai a carta correspondente.
+em `docs/biblia-de-vozes.md`. A verdade histórica do cenário (arquitetura, sociedade,
+rotinas, vestuário de 1893) está em `docs/kb-mundo-vitoriano/` — prosa de ambientação e
+elencos de casos novos nascem de lá. Eventos de investigação são prosa imersiva com
+**termos clicáveis em negrito** inline — clicar extrai a carta correspondente.
 
 **Estética visual:** mesa de madeira escura à luz de vela — e a matéria disso está na
 tela: veios de madeira e grão procedurais (gradientes + ruído SVG, sem assets externos),
@@ -242,6 +244,11 @@ mora no motor:
 Consequência: dá para gerar infinitos casos sem escrever uma única "alternativa". A
 ambiguidade **emerge** do espaço universal — quem reúne poucas pistas fica com várias
 causas de pé e a janela larga.
+
+O **método de construção de casos** sobre essa gramática (verdade primeiro, pistas
+depois, despistes honestos, truques de álibi e encenação, regras de fair play e a régua
+de escalada da campanha) está em `docs/kb-craft-narrativo/` — leitura obrigatória antes
+de desenhar uma Verdade de Ouro nova.
 
 ---
 
@@ -549,6 +556,11 @@ invioláveis do motor** — o jogo depende deles para ser resolúvel:
   posição, conteúdo estomacal, ausência de lesões de defesa.
 
 Divergência entre a KB e estes valores é decisão do usuário — nunca de um agente.
+
+O aparato **legal-policial** dentro do qual o perito opera (coroner e inquérito, polícia
+de vila, murder × manslaughter, a cena sem cadeia de custódia) está em
+`docs/kb-medicina-legal/inquerito-e-policia.md`; as lacunas temáticas mapeadas para
+expansão futura, em `docs/kb-medicina-legal/lacunas.md` (expansão é decisão do usuário).
 
 ---
 
