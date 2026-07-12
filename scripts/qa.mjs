@@ -27,6 +27,10 @@ import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { SEED_TUTORIAL } from '../src/data/seed.js';
 import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.js';
+import { NOS_MAPA } from '../src/data/mapa.js';
+import { POSICOES_DIORAMA, FORMAS_PREDIO } from '../src/data/mapa_espacial.js';
+import { HOTSPOTS_CORPO } from '../src/data/hotspots_corpo.js';
+import { obterDefinicaoCarta } from '../src/data/cartas.js';
 
 const monologos = [];
 const estadoInicial = { ...useJogo.getState() };
@@ -356,6 +360,19 @@ const motorSemAparencia = ['logic/veredicto.js', 'logic/acusacao.js'].every(
   (f) => !/aparencia/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
 
+// ============================================================
+// GUARDA DA CAMADA VISUAL 3D: todo nó do mapa tem lugar e forma na
+// maquete (senão o nó desbloqueado não aparece no diorama), e todo
+// hotspot do corpo aponta para uma carta que EXISTE no catálogo.
+// ============================================================
+const dioramaCompleto = NOS_MAPA.every((no) => {
+  const pos = POSICOES_DIORAMA[no.id];
+  return pos && FORMAS_PREDIO[pos.predio];
+});
+const hotspotsValidos =
+  HOTSPOTS_CORPO.every((h) => obterDefinicaoCarta(h.cartaId)) &&
+  HOTSPOTS_CORPO.every((h) => obterDefinicaoCarta(h.cartaId).localidade === 'corpo');
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
@@ -372,6 +389,8 @@ const checagens = [
   ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
+  ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
+  ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
