@@ -11,7 +11,13 @@ description: Fluxo obrigatório para escrever ou reescrever qualquer prosa de MO
 2. `docs/biblia-de-vozes.md` — o idioleto de cada personagem que fala na cena.
 3. O arquivo de `docs/kb-medicina-legal/` pertinente ao conteúdo (tanatologia para
    sinais do corpo, asfixias para o caso tutorial, protocolo-exame para cenas de exame).
-4. Os dados-fonte da cena: `src/data/seed.js` (verdade de ouro, nomes, horas),
+4. O arquivo de `docs/kb-mundo-vitoriano/` pertinente quando a cena toca o mundo
+   material (interiores e edifícios → arquitetura-e-espacos; rotinas, refeições e
+   horários → vida-cotidiana; roupas → vestuario; dinheiro, tratamento e ofícios →
+   demografia-e-sociedade).
+5. `docs/kb-craft-narrativo/prosa-de-misterio.md` quando a prosa planta pista ou
+   depoimento — o checklist de plantio ao final é parte da autochecagem.
+6. Os dados-fonte da cena: `src/data/seed.js` (verdade de ouro, nomes, horas),
    `src/data/mapa.js` (distâncias), `src/data/cartas.js` (tags e função mecânica de
    cada carta citada).
 

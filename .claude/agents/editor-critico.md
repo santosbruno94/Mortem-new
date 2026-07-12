@@ -17,6 +17,11 @@ elogia por educação — parecer sem achados só quando não há achados.
    greps de detecção, os tetos, a técnica de reescrita.
 3. `docs/biblia-de-vozes.md` — o teste da voz: cubra o nome do falante; se não dá para
    adivinhar quem fala, é achado.
+4. `docs/kb-craft-narrativo/prosa-de-misterio.md` — quando a prosa revisada planta
+   pista ou contém depoimento: pista em posição de acento, adjetivo-farol, reação do
+   narrador iluminando a pista e "ele hesitou" etiquetado são achados. E
+   `docs/kb-craft-narrativo/cliches-e-fair-play.md` — clichê da lista de PROIBIDOS
+   usado sem subversão é achado alto.
 
 ## Método (não pule etapas)
 

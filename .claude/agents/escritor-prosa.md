@@ -18,7 +18,12 @@ vitoriana (1893), em português brasileiro literário de época.
 3. `.claude/skills/anti-padrao-ia/SKILL.md` — o catálogo do que NÃO escrever.
 4. O arquivo pertinente de `docs/kb-medicina-legal/` quando a cena toca o corpo,
    sinais, venenos ou vestígios.
-5. `src/data/seed.js` e `src/data/mapa.js` — toda hora, data (13/out/1893 = SEXTA),
+5. O arquivo pertinente de `docs/kb-mundo-vitoriano/` quando a cena toca o mundo
+   material — interiores, rotinas e horários, roupas, dinheiro, formas de tratamento.
+   Nada posterior a 1893 entra na prosa.
+6. `docs/kb-craft-narrativo/prosa-de-misterio.md` quando a cena planta pista ou
+   contém depoimento — aplicar o checklist de plantio junto da autochecagem do guia.
+7. `src/data/seed.js` e `src/data/mapa.js` — toda hora, data (13/out/1893 = SEXTA),
    distância (Moorford = 3h) e nome citados vêm daí.
 
 ## Como você trabalha

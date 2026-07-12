@@ -15,8 +15,10 @@ o perito sabe; o que veio depois, ele ignora.
 | [`traumas.md`](./traumas.md) | Trauma contuso, arma branca, arma de fogo; reação vital; lesões de defesa. |
 | [`vestigios.md`](./vestigios.md) | Fibras à lente, transferência, cadeia pessoa↔instrumento↔lugar e seus limites. |
 | [`protocolo-exame.md`](./protocolo-exame.md) | A ordem, os instrumentos e os gestos do exame; leitura de encenação; o que 1893 não alcançava. |
+| [`inquerito-e-policia.md`](./inquerito-e-policia.md) | O aparato legal: coroner e inquérito (Coroners Act 1887), polícia de vila, murder × manslaughter, cena sem cadeia de custódia. |
 | [`vocabulario-de-epoca.md`](./vocabulario-de-epoca.md) | Termos técnicos e material/mundo de 1893; anacronismos proibidos. |
 | [`fontes.md`](./fontes.md) | Taylor, Casper, Lacassagne; datas dos marcos técnicos (o que existe e o que não). |
+| [`lacunas.md`](./lacunas.md) | Auditoria: 10 lacunas temáticas mapeadas contra os tratados, priorizadas — expansão é decisão do usuário. |
 
 ## Regra de uso
 
