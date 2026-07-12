@@ -32,7 +32,12 @@ export function lerCorpo(cartas) {
   const causa = mecanismoCravado(sinais);
   const cartaInstrumento = causais.find((c) => c.tagsOcultas.instrumento);
   const instrumento = cartaInstrumento ? cartaInstrumento.tagsOcultas.instrumento : null;
-  return { janela, causaId: causa ? causa.id : null, instrumento };
+  // O mestre só cita o livor se o sinal está de fato entre as cartas colhidas
+  // (fixo E compatível com a posição) — nunca afirma sinal que não se examinou.
+  const livorFixoNaPosicao = temporais.some(
+    (c) => c.tagsOcultas.subDominio === 'livor_mortis' && c.tagsOcultas.estadoLivor === 'fixo' && c.tagsOcultas.posicaoCompativel
+  );
+  return { janela, causaId: causa ? causa.id : null, instrumento, livorFixoNaPosicao };
 }
 
 // Uma janela é "precisa" quando tem início e fim finitos e largura ≤ 6h —
@@ -49,12 +54,14 @@ function janelaPrecisa(janela) {
 // Traduz a leitura na fala do mestre. Devolve { tempo, causa } — cada um é
 // uma frase pronta ou null (quando ainda falta sinal para aquela leitura).
 export function falaDoMestre(leitura) {
-  const { janela, causaId, instrumento } = leitura || {};
+  const { janela, causaId, instrumento, livorFixoNaPosicao } = leitura || {};
 
   let tempo = null;
   if (janela) {
     tempo = janelaPrecisa(janela)
-      ? `Morto ${formatJanela(janela)}. Os livores estão fixos nas costas, e fixos ficaram na posição em que caiu.`
+      ? livorFixoNaPosicao
+        ? `Morto ${formatJanela(janela)}. Os livores estão fixos, e fixos ficaram na posição em que caiu.`
+        : `Morto ${formatJanela(janela)}. Os sinais batem uns com os outros; eu assinaria esta janela.`
       : `Morto ${formatJanela(janela)}. Com o que o corpo ainda guarda, não aperto mais que isto.`;
   }
 
