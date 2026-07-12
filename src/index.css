@@ -173,3 +173,11 @@ body {
 .termo-extraido {
   @apply font-bold text-stone-600 cursor-default line-through decoration-stone-700;
 }
+
+/* Destaque recíproco: passar o cursor num hotspot do corpo 3D acende o
+   termo correspondente na prosa (puro efeito visual). */
+.termo-destacado {
+  @apply text-amber-100;
+  background: rgba(217, 119, 6, 0.18);
+  border-radius: 2px;
+}
