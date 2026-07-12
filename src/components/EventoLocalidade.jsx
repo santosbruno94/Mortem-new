@@ -1,4 +1,7 @@
+import { lazy, Suspense } from 'react';
 import { useJogo } from '../store/jogo.js';
+import { webglDisponivel, modoFlat } from '../logic/webgl.js';
+import Cena3DBoundary from './Cena3DBoundary.jsx';
 import { obterLocalidade } from '../data/localidades.js';
 import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { SEED_TUTORIAL } from '../data/seed.js';
@@ -8,6 +11,12 @@ import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
 import { tocarSom } from '../som.js';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
+import RetratoPersonagem from './RetratoPersonagem.jsx';
+import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
+
+// O exame 3D chega pelo mesmo chunk do three (lazy): a prosa nunca
+// espera o canvas — ela É o caminho canônico de extração.
+const CorpoCanvas = lazy(() => import('./corpo3d/CorpoCanvas.jsx'));
 
 // Evento de localidade (§5): prosa imersiva com termos clicáveis em
 // negrito. Clicar no termo extrai a carta com carimbo integrado (§6),
@@ -30,7 +39,7 @@ export default function EventoLocalidade({ localidadeId }) {
     const estado = resolverEstadoCarta(definicao, ipm);
     if (registrada) {
       return (
-        <span key={chave} className="termo-extraido" title="Já registrado na mesa">
+        <span key={chave} data-carta-id={cartaId} className="termo-extraido" title="Já registrado na mesa">
           {estado.textoDisplay}
         </span>
       );
@@ -38,6 +47,7 @@ export default function EventoLocalidade({ localidadeId }) {
     return (
       <span
         key={chave}
+        data-carta-id={cartaId}
         className="termo-clicavel"
         title="Examinar e registrar (não custa tempo)"
         onClick={() => {
@@ -62,15 +72,51 @@ export default function EventoLocalidade({ localidadeId }) {
     );
   }
 
-  return (
-    <Overlay titulo={interpolar(localidade.titulo, detective)} subtitulo={localidade.subtitulo}>
+  const personagemDaCena = PERSONAGEM_POR_LOCALIDADE[localidade.id];
+  const ehCorpo = localidade.id === 'corpo';
+  const corpo3D = ehCorpo && !modoFlat() && webglDisponivel();
+
+  const prosaEExames = (
+    <>
+      {/* Retrato de quem recebe o perito — camada visual, decorativa */}
+      {personagemDaCena && (
+        <div className="float-right ml-4 mb-2 border border-stone-800 rounded-sm shadow-pousado">
+          <RetratoPersonagem personagemId={personagemDaCena} tamanho={84} className="block" />
+        </div>
+      )}
       <div className="space-y-4">{localidade.prosa.map(renderParagrafo)}</div>
-      {localidade.id === 'corpo' && <FalaDoLegista cartas={cartasRegistradas} />}
-      {localidade.id === 'corpo' && <NotaFrescor ipm={ipm} />}
+      {ehCorpo && <FalaDoLegista cartas={cartasRegistradas} />}
+      {ehCorpo && <NotaFrescor ipm={ipm} />}
       {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
       <p className="mt-6 text-stone-600 text-xs tracking-wide">
         Termos em negrito são examinados e registrados na mesa — examinar não custa tempo; o relógio só corre quando você viaja.
       </p>
+    </>
+  );
+
+  return (
+    <Overlay
+      titulo={interpolar(localidade.titulo, detective)}
+      subtitulo={localidade.subtitulo}
+      largura={corpo3D ? 'max-w-5xl' : 'max-w-2xl'}
+    >
+      {corpo3D ? (
+        // O exame em dois painéis: a mesa de exame 3D acompanha a prosa.
+        // O 3D é redundância deliberada — clicar no corpo extrai as
+        // MESMAS cartas dos termos em negrito, que continuam valendo.
+        <div className="lg:grid lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-6 lg:items-start">
+          <div className="h-48 sm:h-56 lg:h-80 lg:sticky lg:top-2 mb-4 lg:mb-0 rounded-sm border border-stone-800 bg-stone-950/60 overflow-hidden">
+            <Cena3DBoundary fallback={<div className="h-full grid place-items-center text-stone-600 text-xs">— a mesa de exame segue na prosa —</div>}>
+              <Suspense fallback={<div className="h-full grid place-items-center text-stone-600 text-xs">a mesa de exame prepara-se…</div>}>
+                <CorpoCanvas ipm={ipm} />
+              </Suspense>
+            </Cena3DBoundary>
+          </div>
+          <div>{prosaEExames}</div>
+        </div>
+      ) : (
+        prosaEExames
+      )}
     </Overlay>
   );
 }

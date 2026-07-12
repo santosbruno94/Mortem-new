@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
 import { useJogo } from '../store/jogo.js';
-import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
-import { formatDuracao } from '../logic/tempo.js';
+import { webglDisponivel, modoFlat } from '../logic/webgl.js';
 import { tocarSom } from '../som.js';
-import CartaMesa from './CartaMesa.jsx';
 import RelogioBolso from './RelogioBolso.jsx';
+import MesaLocalidades2D from './MesaLocalidades2D.jsx';
+import Cena3DBoundary from './Cena3DBoundary.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
@@ -13,94 +13,36 @@ import PainelAlibis from './PainelAlibis.jsx';
 import MuralAcusacao from './MuralAcusacao.jsx';
 import MonologoFinal from './MonologoFinal.jsx';
 
-const ROTULOS_DOMINIO = {
-  temporal: 'Temporal',
-  causal: 'Causal',
-  ambiental: 'Ambiental',
-  comportamental: 'Comportamental',
-  vestigio: 'Vestígio',
-};
-
-// Ordem de repouso das cartas na mesa (Q9): agrupadas por domínio — o corpo
-// primeiro, depois causa, vestígios, cena e pessoas. Estável dentro do grupo
-// (ordem de coleta). Só muda o ARRUMO padrão; o arrasto continua livre.
-const ORDEM_DOMINIO = { temporal: 0, causal: 1, vestigio: 2, ambiental: 3, comportamental: 4 };
-function ordenarPorDominio(cartas) {
-  return [...cartas].sort(
-    (a, b) => (ORDEM_DOMINIO[a.tagsOcultas.dominio] ?? 9) - (ORDEM_DOMINIO[b.tagsOcultas.dominio] ?? 9)
-  );
-}
-
-// Passos da grade de repouso (antes de o jogador arrastar). O número de
-// colunas é derivado da largura real da mesa — em celular cabem menos.
-const PASSO_LOC = { x: 170, y: 120 };
-const PASSO_CARTA = { x: 190, y: 130 };
-const MARGEM_MESA = 16;
-
-// Largura viva de um elemento (a mesa), para a grade acompanhar a tela.
-function useLarguraViva(ref) {
-  const [largura, setLargura] = useState(() => window.innerWidth);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observador = new ResizeObserver(() => setLargura(el.clientWidth));
-    observador.observe(el);
-    setLargura(el.clientWidth);
-    return () => observador.disconnect();
-  }, [ref]);
-  return largura;
-}
+// O diorama chega por chunk próprio (three.js pesa): a mesa nunca espera
+// o 3D — enquanto o chunk baixa, a grade 2D já é jogável (fallback do
+// Suspense), e sem WebGL a grade fica em definitivo.
+const DioramaVila = lazy(() => import('./diorama/DioramaVila.jsx'));
 
 // O hub permanente (§5). O jogador nunca sai desta tela: eventos,
 // gavetas e painéis abrem como overlays e a mesa apenas se desfoca.
 export default function Escrivaninha() {
   const overlay = useJogo((s) => s.overlay);
   const abrirOverlay = useJogo((s) => s.abrirOverlay);
-  const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
-  const posicoesCartas = useJogo((s) => s.posicoesCartas);
   const viajarPara = useJogo((s) => s.viajarPara);
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
-  const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
-  const nosNovos = useJogo((s) => s.nosNovos);
   const somAtivo = useJogo((s) => s.somAtivo);
   const alternarSom = useJogo((s) => s.alternarSom);
 
   const mesaDesfocada = overlay !== null;
 
-  // A grade de repouso acompanha a largura da mesa: em tela estreita as
-  // cartas se arrumam em menos colunas, e a superfície rola na vertical.
-  const refMesa = useRef(null);
-  const larguraMesa = useLarguraViva(refMesa);
-  const locsVisiveis = LOCALIDADES.filter((loc) => nosDesbloqueados.includes(loc.id));
-  const colunasLoc = Math.max(1, Math.floor((larguraMesa - MARGEM_MESA) / PASSO_LOC.x));
-  const colunasCarta = Math.max(1, Math.floor((larguraMesa - MARGEM_MESA) / PASSO_CARTA.x));
-  const linhasLoc = Math.max(1, Math.ceil(locsVisiveis.length / colunasLoc));
-  // Em tela estreita o relógio de bolso ocupa o canto superior — a grade
-  // de repouso começa abaixo dele para nada nascer encoberto.
-  const yInicial = larguraMesa < 480 ? 84 : 12;
-  const yBaseCartas = yInicial + linhasLoc * PASSO_LOC.y + 18;
+  // Um único handler de viagem serve à maquete 3D e à grade 2D —
+  // paridade por construção (o QA joga pelos dois caminhos).
+  const aoAbrirNo = (loc) => {
+    const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
+    if (custo > 0 && loc.id !== localidadeAtual) tocarSom('sino'); // a viagem tem sino (Q7)
+    viajarPara(loc.id);
+    abrirOverlay('localidade', loc.id);
+  };
 
-  const posicaoPadraoLocalidade = (i) => ({
-    x: MARGEM_MESA + (i % colunasLoc) * PASSO_LOC.x,
-    y: yInicial + Math.floor(i / colunasLoc) * PASSO_LOC.y,
-  });
-  const posicaoPadraoCarta = (i) => ({
-    x: MARGEM_MESA + (i % colunasCarta) * PASSO_CARTA.x,
-    y: yBaseCartas + Math.floor(i / colunasCarta) * PASSO_CARTA.y,
-  });
+  // 3D só com WebGL e fora da rota de escape ?flat=1 (decisão única por sessão).
+  const usar3D = useMemo(() => !modoFlat() && webglDisponivel(), []);
 
-  const posLoc = locsVisiveis.map(
-    (loc, i) => posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)
-  );
-  const cartasOrdenadas = ordenarPorDominio(cartasRegistradas);
-  const posCartas = cartasOrdenadas.map(
-    (carta, i) => posicoesCartas[carta.id] || posicaoPadraoCarta(i)
-  );
-  // Altura rolável da superfície: alcança a carta mais baixa, com folga.
-  const alturaConteudo = Math.max(
-    440,
-    ...[...posLoc, ...posCartas].map((p) => p.y + 160)
-  );
+  const mesa2D = <MesaLocalidades2D aoAbrirNo={aoAbrirNo} />;
 
   return (
     <div className="altura-tela flex flex-col">
@@ -112,7 +54,7 @@ export default function Escrivaninha() {
       >
         <button
           onClick={() => abrirOverlay('acusacao')}
-          className="px-5 sm:px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm hover:bg-stone-800"
+          className="px-5 sm:px-8 py-2 border border-amber-900/60 bg-stone-900 rounded-sm text-amber-200 font-serif tracking-[0.15em] sm:tracking-[0.2em] text-xs sm:text-sm transition-all duration-gesto hover:bg-stone-800 hover:border-amber-700 hover:shadow-vela"
         >
           CONSTRUIR A ACUSAÇÃO
         </button>
@@ -128,65 +70,24 @@ export default function Escrivaninha() {
           <div className="luz-de-vela" aria-hidden />
           <RelogioBolso />
 
-          {/* A superfície rola na vertical quando as cartas não cabem
-              (celular); o arrasto continua livre dentro da largura. */}
-          <div ref={refMesa} className="absolute inset-0 overflow-y-auto overflow-x-hidden">
-            {/* Localidades são nós do mapa (§5/§7). Clicar VIAJA até lá — e a
-                viagem é a única coisa que gasta o relógio. O mapa CRESCE: só
-                aparecem os nós desbloqueados (Moorford surge ao ler um lead). */}
-            {locsVisiveis.map((loc, i) => {
-              const aqui = loc.id === localidadeAtual;
-              const novo = nosNovos.includes(loc.id);
-              const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
-              return (
-                <CartaMesa key={loc.id} id={`loc_${loc.id}`} pos={posLoc[i]}
-                  aoClicar={() => {
-                    if (custo > 0 && !aqui) tocarSom('sino'); // a viagem tem sino (Q7)
-                    viajarPara(loc.id);
-                    abrirOverlay('localidade', loc.id);
-                  }}
-                >
-                  <div
-                    className={`carta-papel w-40 bg-stone-900 border rounded-sm px-3 py-3 ${
-                      novo
-                        ? 'border-amber-500/80 hover:border-amber-400 shadow-md shadow-amber-900/30'
-                        : 'border-amber-900/60 hover:border-amber-700'
-                    }`}
-                  >
-                    <p className="text-amber-900 text-[10px] tracking-[0.25em] uppercase">
-                      {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
-                      {novo && <span className="text-amber-400 normal-case tracking-normal"> · novo</span>}
-                    </p>
-                    <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
-                    <p className="text-stone-500 text-[10px] mt-2 tracking-wide">
-                      {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
-                    </p>
+          {usar3D ? (
+            <Cena3DBoundary fallback={mesa2D}>
+              <Suspense fallback={mesa2D}>
+                <div className="absolute inset-0 flex flex-col">
+                  {/* A maquete da vila, pousada no alto da mesa */}
+                  <div className="shrink-0 relative h-[44%] min-h-[210px] border-b border-black/40">
+                    <DioramaVila aoAbrirNo={aoAbrirNo} />
                   </div>
-                </CartaMesa>
-              );
-            })}
-
-            {/* Cartas extraídas e registradas — agrupadas por domínio (Q9),
-                com papel e chegada em viravolta (Q7) */}
-            {cartasOrdenadas.map((carta, i) => (
-              <CartaMesa key={carta.id} id={carta.id} pos={posCartas[i]}>
-                <div
-                  className="carta-surgir carta-papel w-44 bg-stone-900 border border-stone-700 rounded-sm px-3 py-3 hover:border-stone-500"
-                  title={carta.descricao}
-                >
-                  <p className="text-stone-600 text-[10px] tracking-[0.2em] uppercase">
-                    {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}
-                  </p>
-                  {/* Só a observação CRUA na face da carta — a interpretação é
-                      falada pelo legista, não carimbada (§6 do redesign). */}
-                  <p className="font-serif text-stone-200 text-sm mt-1 leading-snug">{carta.textoDisplay}</p>
+                  {/* A bandeja de cartas, rolável, sob a maquete */}
+                  <div className="relative flex-1 min-h-0">
+                    <MesaLocalidades2D aoAbrirNo={aoAbrirNo} comDiorama />
+                  </div>
                 </div>
-              </CartaMesa>
-            ))}
-
-            {/* Espaçador: garante que a rolagem alcance a carta mais baixa */}
-            <div aria-hidden style={{ height: alturaConteudo }} />
-          </div>
+              </Suspense>
+            </Cena3DBoundary>
+          ) : (
+            mesa2D
+          )}
         </div>
 
         {/* Painéis de consulta — custo zero */}
@@ -216,7 +117,7 @@ function BotaoPainel({ rotulo, aoClicar }) {
   return (
     <button
       onClick={aoClicar}
-      className="px-3 sm:px-4 py-2 border border-stone-800 rounded-sm text-stone-400 text-xs sm:text-sm hover:text-amber-200 hover:border-amber-900"
+      className="px-3 sm:px-4 py-2 border border-stone-800 rounded-sm text-stone-400 text-xs sm:text-sm transition-colors duration-gesto hover:text-amber-200 hover:border-amber-900 hover:bg-stone-900/60"
     >
       {rotulo}
     </button>

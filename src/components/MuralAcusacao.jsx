@@ -5,6 +5,7 @@ import { CATALOGO_CAUSAS } from '../data/catalogo_causas.js';
 import { ANCORAS, analisarLigacoes, horaAlegada } from '../logic/acusacao.js';
 import { formatJanela } from '../logic/tempo.js';
 import { tocarSom } from '../som.js';
+import RetratoPersonagem from './RetratoPersonagem.jsx';
 
 // =====================================================================
 // A MESA DE CONSTRUÇÃO — agora em ESTAÇÕES que crescem uma na outra.
@@ -199,7 +200,7 @@ export default function MuralAcusacao() {
   }
 
   return (
-    <div className="fixed inset-0 z-40 bg-stone-950 flex flex-col">
+    <div data-overlay className="fixed inset-0 z-40 bg-stone-950 flex flex-col">
       {/* Animação de "a mesa enche": cada etapa surge ao ser revelada. */}
       <style>{`@keyframes mortemSurgir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.mortem-surgir{animation:mortemSurgir 240ms ease-out}`}</style>
       {/* Cabeçalho */}
@@ -215,7 +216,7 @@ export default function MuralAcusacao() {
           <button
             onClick={() => setRevisando(true)}
             disabled={!podeSubmeter}
-            className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800 disabled:opacity-40 disabled:cursor-not-allowed"
+            className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm transition-all duration-gesto hover:bg-stone-800 hover:shadow-vela disabled:opacity-40 disabled:cursor-not-allowed"
           >
             Levar a julgamento
           </button>
@@ -741,7 +742,10 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
         const alibi = alibiDe(sp.id);
         return (
           <div key={sp.id} className="rounded-sm border border-stone-700 bg-stone-900 px-3 py-2">
-            <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase mb-2">{sp.nome}</p>
+            <div className="flex items-center gap-2 mb-2">
+              <RetratoPersonagem personagemId={sp.id} tamanho={30} className="block rounded-sm border border-stone-800" />
+              <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase">{sp.nome}</p>
+            </div>
             <div className="flex flex-col gap-1">
               {[
                 ['culpado', 'Cúmplice'],

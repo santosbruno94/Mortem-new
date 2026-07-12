@@ -78,8 +78,8 @@ async function subirServidor() {
 // ---------------------------------------------------------------------
 const espera = (page, ms = 250) => page.waitForTimeout(ms);
 
-async function novaPartida(page, perito) {
-  await page.goto(BASE);
+async function novaPartida(page, perito, query = '') {
+  await page.goto(BASE + query);
   await espera(page, 800);
   await page.click(`text=${perito}`);
   await espera(page, 600);
@@ -122,8 +122,10 @@ const concluirParte = async (page) => {
 
 // Texto do overlay mais ao topo (o monólogo/epílogo), sem a mesa ao fundo —
 // a mesa contém nomes de nós ("Edgar Arthurs") que contaminariam checagens.
+// O alvo é [data-overlay]: portais de bibliotecas (ex.: rótulos HTML do
+// diorama 3D) também criam div.fixed, e não podem contaminar a leitura.
 async function textoOverlay(page) {
-  return page.locator('div.fixed').last().innerText();
+  return page.locator('div.fixed[data-overlay]').last().innerText();
 }
 
 async function julgar(page) {
@@ -163,6 +165,10 @@ async function main() {
     console.log('\n=== ROTA 1 — Metódico (Harlan) → Vitória Absoluta ===');
     await novaPartida(page, 'Dr. Harlan Blackwell');
 
+    // O diorama 3D da vila sobe (chunk lazy); os nós seguem clicáveis por texto.
+    await page.waitForSelector('canvas', { timeout: 15000 });
+    checar('Rota 1: diorama 3D presente (canvas)', (await page.locator('canvas').count()) >= 1);
+
     await visitarEExtrair(page, 'O Corpo');
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
@@ -173,6 +179,7 @@ async function main() {
     await fecharOverlay(page);
     checar('Rota 1: Moorford desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
     await visitarEExtrair(page, 'Edgar Arthurs');
+    checar('Rota 1: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
     await fecharOverlay(page);
     await visitarEExtrair(page, 'Sra. Hudson');
     await fecharOverlay(page);
@@ -213,6 +220,7 @@ async function main() {
     await page.getByRole('button', { name: 'Herdeiro Único: Edgar Arthurs' }).click();
     await concluirParte(page);
     // Juízos: Hudson inocente com a mentira exposta; Blackwood inocente.
+    checar('Rota 1: retratos nos Juízos do mural', (await page.locator('svg[data-retrato]').count()) >= 2);
     await page.getByRole('button', { name: 'Inocente', exact: true }).first().click();
     await espera(page, 300);
     await page.getByRole('button', { name: /Xale de Lã Cinzenta/ }).last().click();
@@ -335,7 +343,23 @@ async function main() {
     checar('Rota 3: desfecho Impunidade', texto.includes('Impunidade'));
 
     // ============================================================
-    checar('Zero erros de console nas três rotas', errosConsole.length === 0);
+    // ROTA FLAT — a rota de escape 2D (?flat=1): sem WebGL/diorama,
+    // a grade de localidades original precisa jogar igual.
+    // ============================================================
+    console.log('\n=== ROTA FLAT — grade 2D (?flat=1) ===');
+    await novaPartida(page, 'Dr. Harlan Blackwell', '?flat=1');
+    checar('Rota flat: sem canvas 3D', (await page.locator('canvas').count()) === 0);
+    await visitarEExtrair(page, 'O Corpo');
+    await page.getByRole('button', { name: 'Medir temperatura' }).click();
+    await espera(page, 400);
+    checar('Rota flat: extração pela prosa funciona', (await page.locator('.termo-extraido').count()) >= 3);
+    await fecharOverlay(page);
+    await visitarEExtrair(page, 'A Delegacia'); // viagem pela grade 2D (lead de Moorford)
+    await fecharOverlay(page);
+    checar('Rota flat: Moorford desbloqueado pela grade 2D', (await page.locator('body').innerText()).includes('Clube de Moorford'));
+
+    // ============================================================
+    checar('Zero erros de console em todas as rotas', errosConsole.length === 0);
     if (errosConsole.length) console.error('Erros de console:', errosConsole);
   } finally {
     await browser.close();

@@ -48,7 +48,7 @@ export default function Abertura() {
                     onClick={() =>
                       setPerguntasFeitas((atual) => (feita ? atual : [...atual, q.id]))
                     }
-                    className={`w-full text-left px-4 py-3 text-sm ${
+                    className={`w-full text-left px-4 py-3 text-sm transition-colors duration-gesto ${
                       feita ? 'text-stone-500' : 'text-amber-200 hover:bg-stone-900'
                     }`}
                   >
@@ -71,7 +71,7 @@ export default function Abertura() {
               tocarSom('pena');
               (ultimo ? iniciarInvestigacao : avancarAbertura)();
             }}
-            className="px-6 py-3 bg-stone-900 border border-amber-900 text-amber-200 rounded-sm hover:bg-stone-800 tracking-wide text-sm"
+            className="px-6 py-3 bg-stone-900 border border-amber-900 text-amber-200 rounded-sm transition-all duration-gesto hover:bg-stone-800 hover:shadow-vela tracking-wide text-sm"
           >
             {interpolar(passo.rotuloBotao, detective)} →
           </button>

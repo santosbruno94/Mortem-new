@@ -93,6 +93,27 @@ acentos `amber-200` (títulos serif) e `amber-900` (lacres, avisos). Tipografia 
 de época embarcada (**IM Fell English**, licença OFL, `src/assets/fontes/`) para
 títulos e nomes; sem ícones modernos; ornamentos tipográficos discretos (§, ―).
 
+**Camada 3D (apresentação pura):** a mesa ganha profundidade em dois pontos — o
+**diorama da vila** (maquete low-poly pousada no alto da escrivaninha: prédios
+procedurais com janelas à luz de vela; clicar num prédio VIAJA, e Moorford surge
+crescendo com a estrada ao ser desbloqueado) e a **mesa de exame do corpo** (cadáver
+low-poly ao lado da prosa, cuja pose/manchas refletem rigor e livor pelo IPM; os
+hotspots extraem as MESMAS cartas dos termos em negrito). Regras da camada: geometria
+100% procedural (proibido GLTF/textura externa — three.js + @react-three/fiber v8
+pinados, chunk lazy próprio), dados espaciais em `src/data/mapa_espacial.js` e
+`src/data/hotspots_corpo.js` (camada visual — o motor nunca lê), e **fallback 2D
+obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a grade de localidades
+original joga idêntico. Diálogos e pessoas permanecem 2D.
+
+**Aparência dos personagens (camada narrativa):** genótipo com vocabulários fechados
+(`corpo`, `pele`, `cabelo`, `pelosFaciais`, `idadeAparente`, `traje`) em
+`src/data/aparencias.js`, CURADO por personagem no caso tutorial (seed fixa, sem
+randomização); `src/logic/aparencia.js` expõe `obterAparencia` e
+`derivarAparenciaDeSeed` (hash da seed salgado — pronto para o procedural). Alimenta
+os **retratos 2D em gravura SVG** (`RetratoPersonagem.jsx`: interrogatórios,
+delegacia, Painel de Álibis, Juízos do mural) e o corpo 3D da vítima. JAMAIS entra em
+`tagsOcultas` nem é lida pelo veredicto (guarda no QA).
+
 **Som:** cinco efeitos curtos, sintetizados offline e embarcados (`src/assets/sons/`,
 tocados por `src/som.js`): papel (extrair carta), sino (viajar), barbante (ligar/
 desfazer no mural), lacre (selar o julgamento), pena (avançar a abertura). O som é
@@ -143,9 +164,12 @@ O jogador nunca sai desta tela. Layout:
 - **Relógio de Bolso** (sup. direito): avança apenas ao **VIAJAR**; dentro do local,
   congela.
 - **Superfície Livre** (centro): cartas arrastáveis, custo zero. **Localidades são nós
-  do mapa** na superfície; clicar **VIAJA** (custa tempo, `src/data/mapa.js`) e abre o
-  evento como overlay (`blur(6px)` + `opacity 0.3`, `position: fixed`). Só aparecem os
-  nós **desbloqueados** (o mapa cresce por leads). Não existe troca de tela.
+  do mapa**; clicar **VIAJA** (custa tempo, `src/data/mapa.js`) e abre o evento como
+  overlay (`blur(6px)` + `opacity 0.3`, `position: fixed`). Só aparecem os nós
+  **desbloqueados** (o mapa cresce por leads). Não existe troca de tela. Com WebGL, os
+  nós vivem no **diorama 3D** no alto da mesa (rótulos em HTML real, mesmos textos);
+  sem WebGL ou com `?flat=1`, na grade 2D original (`MesaLocalidades2D.jsx`) — o
+  handler de viagem é um só para os dois modos.
 - **A parede** (botão "Construir a Acusação"): abre o mural com barbante (§8).
 - **Caderneta** (overlay, custo zero): log de tudo que foi extraído e concluído; exibe
   a leitura do mestre como dica.
@@ -521,7 +545,9 @@ Divergência entre a KB e estes valores é decisão do usuário — nunca de um 
 ## 16. Arquitetura técnica
 
 **Stack:** React (JSX) + Vite + Tailwind CSS · estado global com **Zustand** · dados em
-módulos JS · lógica determinística em funções puras · zero chamadas de rede em runtime.
+módulos JS · lógica determinística em funções puras · zero chamadas de rede em runtime ·
+3D com **three.js + @react-three/fiber v8 + drei v9** (versões EXATAS no package.json —
+fiber v9/drei v10 exigem React 19), carregado por chunk lazy; do drei, só o `<Html>`.
 
 **Estrutura de pastas:**
 ```
@@ -531,16 +557,22 @@ docs/           guia-de-estilo · biblia-de-vozes · kb-medicina-legal/ · histo
 src/
   assets/       fontes/ (IM Fell English, OFL) · sons/ (5 WAV sintetizados offline)
   data/         seed.js · catalogo_causas.js · cartas.js · localidades.js · mapa.js ·
-                curriculo.js · glossario.js · rotulos.js · abertura.js
+                curriculo.js · glossario.js · rotulos.js · abertura.js ·
+                aparencias.js (genótipo curado) · mapa_espacial.js (diorama) ·
+                hotspots_corpo.js (exame 3D) — os três últimos: camada VISUAL
   logic/        veredicto.js (calcularVeredictoCadeia) · acusacao.js (gramática das
                 ligações) · tempo_morte.js · cronos.js · falaDoMestre.js (dica) ·
-                monologo.js · epilogo.js · tempo.js · interpolar.js
+                monologo.js · epilogo.js · tempo.js · interpolar.js ·
+                hash.js (fonte única de sorteio) · aparencia.js · webgl.js (sonda)
   store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes,
                 acusacao, log, detective, nosVisitados, nSubmissoes, somAtivo)
   som.js        efeitos sonoros da mesa (apresentação; nenhuma regra lê)
-  components/   Escrivaninha · EventoLocalidade · MuralAcusacao · MonologoFinal ·
-                PainelAlibis · ModalGlossario · Caderneta · TelaPersonagem ·
-                TermometroCorpo · Abertura · Overlay · CartaMesa · RelogioBolso
+  components/   Escrivaninha · MesaLocalidades2D (grade/fallback) · EventoLocalidade ·
+                MuralAcusacao · MonologoFinal · PainelAlibis · ModalGlossario ·
+                Caderneta · TelaPersonagem · TermometroCorpo · Abertura · Overlay ·
+                CartaMesa · RelogioBolso · RetratoPersonagem · Cena3DBoundary ·
+                diorama/ (DioramaVila · Predio · RotuloNo) ·
+                corpo3d/ (CorpoCanvas · CorpoModelo · HotspotCorpo)
 ```
 
 **Convenções:**
@@ -549,6 +581,12 @@ src/
   `log`, `temperaturaMedida`.
 - `conclusoes` guarda **só** a leitura do legista (`origem: 'mestre'`), exibida como
   dica — não vincula o veredicto.
+- Determinismo: `Math.random()`/`Date.now()` proibidos em `src/logic|data|store`
+  (guarda no `qa.mjs`); variação vem de `hashString` (`src/logic/hash.js`) salgado.
+  O three.js usa `Math.random` em internos (uuid) — apresentação, exceção registrada.
+- QA de UI: os textos de botões/rótulos clicados pelo `qa-ui.mjs`, as classes
+  `.termo-clicavel`/`.termo-extraido`, o `data-overlay` e a ordem dos `<select>` do
+  mural são intocáveis — mudar qualquer um exige atualizar o QA no mesmo commit.
 - Código e comentários em português.
 - Repositório: `github.com/santosbruno94/mortem-new`. Commits entre cada incremento
   maior.
