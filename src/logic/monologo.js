@@ -23,6 +23,7 @@
 import { obterSuspeito } from '../data/seed.js';
 import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIVO } from '../data/rotulos.js';
 import { formatJanela, formatHora } from './tempo.js';
+import { hashString } from './hash.js';
 
 const TITULOS = {
   vitoria_absoluta: 'Vitória Absoluta',
@@ -31,17 +32,8 @@ const TITULOS = {
   erro_judiciario: 'Erro Judiciário',
 };
 
-// Hash de string estável e determinístico (sem Math.random/Date).
-function hashString(s) {
-  let h = 0;
-  const str = String(s || '');
-  for (let i = 0; i < str.length; i++) {
-    h = (h * 31 + str.charCodeAt(i)) | 0;
-  }
-  return Math.abs(h);
-}
-
-// Escolhe uma variante de forma determinística a partir de uma chave.
+// Escolhe uma variante de forma determinística a partir de uma chave
+// (o hash mora em src/logic/hash.js — a fonte única de sorteio do jogo).
 function escolher(variantes, chave) {
   if (!variantes || variantes.length === 0) return null;
   return variantes[hashString(chave) % variantes.length];

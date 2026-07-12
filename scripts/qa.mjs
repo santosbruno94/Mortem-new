@@ -16,6 +16,9 @@
 // perecível degrada perdendo precisão (não valor), com o durável resolvendo.
 // =====================================================================
 
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { useJogo } from '../src/store/jogo.js';
 import { ANCORAS, analisarLigacoes, refutacaoDeHoraEstabelecida } from '../src/logic/acusacao.js';
 import { janelaDaCarta } from '../src/logic/cronos.js';
@@ -310,6 +313,32 @@ for (const { rotulo, monologo } of monologos) {
 // ============================================================
 // Critério de validação do caso (§17 do contexto)
 // ============================================================
+// ============================================================
+// GUARDA DE DETERMINISMO (regra inviolável do CLAUDE.md): nenhum
+// Math.random()/Date.now() em src/logic, src/data e src/store. A camada
+// de APRESENTAÇÃO (componentes, three.js — que usa Math.random em uuids
+// internos) fica fora da guarda: a proibição é da lógica de jogo.
+// ============================================================
+function arquivosJs(dir) {
+  return readdirSync(dir).flatMap((nome) => {
+    const p = path.join(dir, nome);
+    return statSync(p).isDirectory() ? arquivosJs(p) : /\.jsx?$/.test(nome) ? [p] : [];
+  });
+}
+// Comentários podem CITAR a proibição; a guarda olha só o código vivo.
+function semComentarios(codigo) {
+  return codigo.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+}
+const raizSrc = fileURLToPath(new URL('../src', import.meta.url));
+const violacoesDeterminismo = ['logic', 'data', 'store'].flatMap((pasta) =>
+  arquivosJs(path.join(raizSrc, pasta)).filter((arquivo) =>
+    /Math\.random\s*\(|Date\.now\s*\(/.test(semComentarios(readFileSync(arquivo, 'utf8')))
+  )
+);
+if (violacoesDeterminismo.length) {
+  console.log('\nVIOLAÇÃO DE DETERMINISMO em:', violacoesDeterminismo.join(', '));
+}
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
@@ -323,6 +352,7 @@ const checagens = [
   ['Segundo rastro do réu reforça sem gafe; sozinho não basta', reforcoSemGafe && soLencoFalha],
   ['Refutar só a testemunha não credita a encenação (contrato do desfecho)', encenacaoNaoCreditada],
   ['O registro de Moorford derruba o paradeiro do réu (opcional, nunca pilar)', alibiReuCai],
+  ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

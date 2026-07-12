@@ -122,8 +122,10 @@ const concluirParte = async (page) => {
 
 // Texto do overlay mais ao topo (o monólogo/epílogo), sem a mesa ao fundo —
 // a mesa contém nomes de nós ("Edgar Arthurs") que contaminariam checagens.
+// O alvo é [data-overlay]: portais de bibliotecas (ex.: rótulos HTML do
+// diorama 3D) também criam div.fixed, e não podem contaminar a leitura.
 async function textoOverlay(page) {
-  return page.locator('div.fixed').last().innerText();
+  return page.locator('div.fixed[data-overlay]').last().innerText();
 }
 
 async function julgar(page) {

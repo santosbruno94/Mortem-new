@@ -199,7 +199,7 @@ export default function MuralAcusacao() {
   }
 
   return (
-    <div className="fixed inset-0 z-40 bg-stone-950 flex flex-col">
+    <div data-overlay className="fixed inset-0 z-40 bg-stone-950 flex flex-col">
       {/* Animação de "a mesa enche": cada etapa surge ao ser revelada. */}
       <style>{`@keyframes mortemSurgir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.mortem-surgir{animation:mortemSurgir 240ms ease-out}`}</style>
       {/* Cabeçalho */}

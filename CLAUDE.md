@@ -29,7 +29,15 @@ com zero achados bloqueantes.**
 - As funções de lógica e veredicto leem SOMENTE `tagsOcultas` (e a seed) — nunca `id`,
   `textoDisplay` ou texto de carta.
 - Zero LLM em runtime; zero chamadas de rede; tudo determinístico (proibido
-  `Math.random()`/`Date.now()` na lógica de jogo — variação vem de hash da seed).
+  `Math.random()`/`Date.now()` em `src/logic`, `src/data` e `src/store` — guarda
+  automática no `qa.mjs`; toda variação vem de `hashString` em `src/logic/hash.js`,
+  salgado com a seed). Exceção registrada: o three.js usa `Math.random` em
+  internos (uuid) — é camada de APRESENTAÇÃO, fora da lógica de jogo.
+- Camada 3D é apresentação pura: geometria procedural (proibido GLTF/textura
+  externa), dados espaciais são camada visual (nunca lidos pelo motor), e todo
+  ponto 3D tem fallback 2D (`?flat=1`).
+- Aparência de personagens é camada narrativa (`src/data/aparencias.js`) — JAMAIS
+  entra em `tagsOcultas` nem é lida por `veredicto.js`/`acusacao.js` (guarda no QA).
 - Camada narrativa ≠ camada lógica: trocar prosa nunca exige tocar no motor.
 - Código e comentários em português.
 - Marcadores `[[id_da_carta]]` na prosa e interpolações `{detective.campo}` /
@@ -47,6 +55,11 @@ com zero achados bloqueantes.**
   navegador (Playwright/Chromium) e checa regressões de texto visível; rodar antes de
   commit que toque UI, prosa exibida ou monólogo.
 - `npm run dev` — toda feature testável no navegador antes de avançar.
+- **Contrato com o `qa-ui.mjs`:** os textos exatos de botões/rótulos que ele clica
+  (ex.: `CONSTRUIR A ACUSAÇÃO`, `fechar ✕`, rótulos dos nós), as classes
+  `.termo-clicavel`/`.termo-extraido`, o atributo `data-overlay` nas raízes de
+  overlay e a ordem dos dois `<select>` da janela no mural são INTOCÁVEIS —
+  qualquer mudança neles exige atualizar o QA no mesmo commit.
 
 ## Perfil do criador
 

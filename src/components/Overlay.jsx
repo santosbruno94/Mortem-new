@@ -17,7 +17,7 @@ export default function Overlay({ titulo, subtitulo, children, largura = 'max-w-
   }, [fechar]);
 
   return (
-    <div className="fixed inset-0 z-40 flex items-center justify-center p-3 sm:p-8">
+    <div data-overlay className="fixed inset-0 z-40 flex items-center justify-center p-3 sm:p-8">
       <div
         className={`${largura} w-full max-h-[90vh] supports-[height:100dvh]:max-h-[90dvh] overflow-y-auto bg-stone-900 border border-amber-900/60 rounded-sm shadow-2xl shadow-black`}
       >
