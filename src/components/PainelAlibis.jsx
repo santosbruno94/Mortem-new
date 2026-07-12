@@ -2,6 +2,7 @@ import { useJogo } from '../store/jogo.js';
 import { obterSuspeito } from '../data/seed.js';
 import { formatDeclaracao } from '../logic/tempo.js';
 import Overlay from './Overlay.jsx';
+import RetratoPersonagem from './RetratoPersonagem.jsx';
 
 // Painel de Álibis (§8): "Declarações de Paradeiro".
 // Lista ESTRITAMENTE NEUTRA dos depoimentos de álibi já coletados:
@@ -25,13 +26,18 @@ export default function PainelAlibis() {
           {declaracoes.map((carta) => {
             const declarante = obterSuspeito(carta.tagsOcultas.declaranteId);
             return (
-              <li key={carta.id} className="border border-stone-800 bg-stone-950/40 rounded-sm px-4 py-3 transition-colors duration-gesto hover:border-stone-700">
-                <p className="font-serif text-amber-200">{declarante ? declarante.nome : 'Declarante incerto'}</p>
-                <p className="text-stone-300 text-sm mt-1">“{carta.textoDisplay}”</p>
-                <p className="text-stone-500 text-sm mt-1">
-                  Faixa declarada:{' '}
-                  {formatDeclaracao(carta.tagsOcultas.horaInicioDeclarada, carta.tagsOcultas.horaFimDeclarada)}.
-                </p>
+              <li key={carta.id} className="border border-stone-800 bg-stone-950/40 rounded-sm px-4 py-3 transition-colors duration-gesto hover:border-stone-700 flex gap-4 items-start">
+                <div className="shrink-0 border border-stone-800 rounded-sm">
+                  <RetratoPersonagem personagemId={carta.tagsOcultas.declaranteId} tamanho={52} className="block" />
+                </div>
+                <div className="min-w-0">
+                  <p className="font-serif text-amber-200">{declarante ? declarante.nome : 'Declarante incerto'}</p>
+                  <p className="text-stone-300 text-sm mt-1">“{carta.textoDisplay}”</p>
+                  <p className="text-stone-500 text-sm mt-1">
+                    Faixa declarada:{' '}
+                    {formatDeclaracao(carta.tagsOcultas.horaInicioDeclarada, carta.tagsOcultas.horaFimDeclarada)}.
+                  </p>
+                </div>
               </li>
             );
           })}

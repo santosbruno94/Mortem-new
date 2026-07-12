@@ -5,6 +5,7 @@ import { CATALOGO_CAUSAS } from '../data/catalogo_causas.js';
 import { ANCORAS, analisarLigacoes, horaAlegada } from '../logic/acusacao.js';
 import { formatJanela } from '../logic/tempo.js';
 import { tocarSom } from '../som.js';
+import RetratoPersonagem from './RetratoPersonagem.jsx';
 
 // =====================================================================
 // A MESA DE CONSTRUÇÃO — agora em ESTAÇÕES que crescem uma na outra.
@@ -741,7 +742,10 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
         const alibi = alibiDe(sp.id);
         return (
           <div key={sp.id} className="rounded-sm border border-stone-700 bg-stone-900 px-3 py-2">
-            <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase mb-2">{sp.nome}</p>
+            <div className="flex items-center gap-2 mb-2">
+              <RetratoPersonagem personagemId={sp.id} tamanho={30} className="block rounded-sm border border-stone-800" />
+              <p className="text-amber-200/80 text-[10px] tracking-[0.2em] uppercase">{sp.nome}</p>
+            </div>
             <div className="flex flex-col gap-1">
               {[
                 ['culpado', 'Cúmplice'],

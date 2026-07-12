@@ -26,6 +26,7 @@ import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { SEED_TUTORIAL } from '../src/data/seed.js';
+import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.js';
 
 const monologos = [];
 const estadoInicial = { ...useJogo.getState() };
@@ -339,6 +340,22 @@ if (violacoesDeterminismo.length) {
   console.log('\nVIOLAÇÃO DE DETERMINISMO em:', violacoesDeterminismo.join(', '));
 }
 
+// ============================================================
+// GUARDA DE APARÊNCIA: o genótipo tem shape completo para o elenco do
+// caso (curadoria + derivação procedural), e o MOTOR nunca lê aparência
+// (veredicto.js/acusacao.js proibidos de importar/citar a camada).
+// ============================================================
+const CAMPOS_APARENCIA = ['corpo', 'pele', 'cabelo', 'pelosFaciais', 'idadeAparente', 'traje'];
+const shapeAparencia = (a) =>
+  a && CAMPOS_APARENCIA.every((c) => a[c] != null) && a.cabelo.cor != null && a.cabelo.estilo != null;
+const aparenciasOk =
+  ['vitima', 'edgar_arthurs', 'sra_hudson', 'thomas_blackwood'].every((id) => shapeAparencia(obterAparencia(id))) &&
+  shapeAparencia(derivarAparenciaDeSeed(SEED_TUTORIAL, 'personagem_gerado_qualquer')) &&
+  JSON.stringify(derivarAparenciaDeSeed(SEED_TUTORIAL, 'x')) === JSON.stringify(derivarAparenciaDeSeed(SEED_TUTORIAL, 'x'));
+const motorSemAparencia = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) => !/aparencia/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
+);
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
@@ -353,6 +370,8 @@ const checagens = [
   ['Refutar só a testemunha não credita a encenação (contrato do desfecho)', encenacaoNaoCreditada],
   ['O registro de Moorford derruba o paradeiro do réu (opcional, nunca pilar)', alibiReuCai],
   ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
+  ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
+  ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

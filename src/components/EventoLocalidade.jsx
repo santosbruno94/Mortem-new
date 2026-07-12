@@ -8,6 +8,8 @@ import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
 import { tocarSom } from '../som.js';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
+import RetratoPersonagem from './RetratoPersonagem.jsx';
+import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
 
 // Evento de localidade (§5): prosa imersiva com termos clicáveis em
 // negrito. Clicar no termo extrai a carta com carimbo integrado (§6),
@@ -62,8 +64,16 @@ export default function EventoLocalidade({ localidadeId }) {
     );
   }
 
+  const personagemDaCena = PERSONAGEM_POR_LOCALIDADE[localidade.id];
+
   return (
     <Overlay titulo={interpolar(localidade.titulo, detective)} subtitulo={localidade.subtitulo}>
+      {/* Retrato de quem recebe o perito — camada visual, decorativa */}
+      {personagemDaCena && (
+        <div className="float-right ml-4 mb-2 border border-stone-800 rounded-sm shadow-pousado">
+          <RetratoPersonagem personagemId={personagemDaCena} tamanho={84} className="block" />
+        </div>
+      )}
       <div className="space-y-4">{localidade.prosa.map(renderParagrafo)}</div>
       {localidade.id === 'corpo' && <FalaDoLegista cartas={cartasRegistradas} />}
       {localidade.id === 'corpo' && <NotaFrescor ipm={ipm} />}
