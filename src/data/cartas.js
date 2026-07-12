@@ -13,8 +13,8 @@
 // examinar não custa mais tempo — o relógio só anda ao VIAJAR (ver mapa.js).
 // Mantido nos dados por ora; nenhuma lógica o lê.
 //
-// O campo opcional `vozMestre` (nas cartas do corpo) é a fala do legista
-// sobre aquela observação, na campanha — omitido no procedural.
+// O campo opcional `vozMestre` é a fala do legista sobre aquela observação
+// (cartas do corpo e, por exceção de fair play, dep_dividas) — omitido no procedural.
 //
 // Horas declaradas em álibis usam a escala absoluta do jogo
 // (negativas = 13/out; ver src/data/seed.js).
@@ -46,7 +46,7 @@ export const CARTAS = [
       {
         ipmAte: 36,
         textoDisplay: 'Rigidez Cedendo',
-        carimboPadrao: 'O maxilar já dobra; os joelhos ainda não',
+        carimboPadrao: 'Maxilar já solto; joelhos ainda rígidos',
         descricao:
           'O maxilar já dobra; os joelhos ainda resistem. A dureza some na mesma ordem em que chegou.',
         vozMestre: 'A rigidez já cede. Passou da véspera — e a hora exata começa a escapar entre os dedos.',
@@ -80,9 +80,9 @@ export const CARTAS = [
     localidade: 'corpo',
     custoTempo: 1,
     textoDisplay: 'Manchas Arroxeadas nas Costas',
-    carimboPadrao: 'Manchas que não empalidecem ao apertar',
+    carimboPadrao: 'Manchas fixas, sem empalidecer à pressão',
     descricao:
-      'Sob o polegar, as manchas não empalidecem nem migram. Onde o corpo pressiona o assoalho, a pele ficou pálida.',
+      'Sob o polegar, as manchas não empalidecem; voltado o corpo, não migram. Onde ele pressiona o assoalho, a pele ficou pálida.',
     vozMestre: 'As manchas fixaram-se e não cedem ao polegar: morto há meia jornada, ao menos. E fixaram-se do lado em que ele está deitado.',
     tagsOcultas: {
       dominio: 'temporal',
@@ -99,7 +99,7 @@ export const CARTAS = [
     carimboPadrao: 'Marca funda e reta dando a volta no pescoço',
     descricao:
       'Uma marca funda dá a volta ao pescoço em plano horizontal, de profundidade constante, e não sobe para o ângulo do maxilar.',
-    vozMestre: 'O sulco é horizontal, baixo e contínuo: pela assinatura do catálogo, é de ligadura. O oblíquo do enforcamento sobe ao nó; este corre reto.',
+    vozMestre: 'O sulco é horizontal, baixo e contínuo: pela assinatura, é de ligadura. O oblíquo do enforcamento sobe ao nó; este corre reto.',
     // Sinal de ASSINATURA do catálogo universal: crava a ligadura e
     // descarta as demais causas (ver src/data/catalogo_causas.js).
     tagsOcultas: {
@@ -129,7 +129,7 @@ export const CARTAS = [
     id: 'ev_fibras_sulco',
     localidade: 'corpo',
     custoTempo: 1,
-    textoDisplay: 'Fibras Claras Presas na Marca do Pescoço',
+    textoDisplay: 'Fibras Claras na Marca do Pescoço',
     carimboPadrao: 'Fibras de Cânhamo na Marca do Pescoço',
     descricao:
       'Sob a lente, filamentos vegetais claros e torcidos, presos ao fundo da marca. A torção é a de cordoaria comum.',
@@ -248,6 +248,10 @@ export const CARTAS = [
     carimboPadrao: 'Dívidas de Jogo de Edgar',
     descricao:
       'Três cartas de cobrança de um clube de Moorford, endereçadas a Edgar Arthurs, com prazo vencido e a soma crescendo de uma para a outra.',
+    // Plantio (fair play): o mestre enuncia a relação dívida → herança sem nomear
+    // ninguém — a hierarquia dos motivos fica ao alcance do jogador, sem que ninguém
+    // conclua por ele. Exibida na Caderneta (vozMestre vale para qualquer carta ali).
+    vozMestre: 'Dívida vencida diz o aperto. De onde sairia o pagamento, isso a cobrança não diz.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
@@ -278,7 +282,7 @@ export const CARTAS = [
     textoDisplay: 'Última Ceia Servida às Oito',
     carimboPadrao: 'Visto com Vida às 20h (13/out)',
     descricao:
-      'No registro de Wycliffe: a ceia foi servida ao patrão às oito em ponto da noite de 13, e a louça recolhida logo depois. É a última vez que alguém da casa o viu com vida.',
+      'No registro de Wycliffe: a ceia foi servida ao patrão às oito em ponto da noite de 13, e a louça recolhida logo depois. É a última vez, diz o registro, que alguém da casa o viu com vida.',
     // Âncora DURÁVEL de tempo: "última vez visto com vida" trava o INÍCIO da
     // janela (a morte não pode anteceder as 20h). Não degrada. Junto do livor
     // fixo (que dá o teto), o corpo sozinho fecha uma janela finita, em
@@ -296,7 +300,7 @@ export const CARTAS = [
     textoDisplay: 'Vizinha Jura Tê-lo Visto à Janela',
     carimboPadrao: 'Avistamento Declarado: 08h (14/out)',
     descricao:
-      'A Sra. Gale, da casa em frente, afirma à polícia ter visto o Sr. Arthurs à janela, vivo, "lá pelas oito" da manhã do dia 14, pouco antes de o sobrinho dar o alarme.',
+      'A Sra. Gale, da casa em frente, afirma à polícia ter visto o Sr. Arthurs à janela, vivo, "lá pelas oito" da manhã do dia 14, manhã em que o sobrinho deu o alarme.',
     // Alegação sobre a HORA, a ser confrontada com a janela da morte: jura a
     // vítima viva na manhã do dia 14, quando o corpo diz que ela morreu na
     // noite anterior. É a mentira a cravar no Confronto (Opção B). O motor
@@ -317,11 +321,15 @@ export const CARTAS = [
     carimboPadrao: 'Relato: a governanta no crime, à meia-noite',
     descricao:
       'O Sr. Pruitt, caseiro de uma casa dos fundos, jura à polícia ter visto a Sra. Hudson debruçada sobre o patrão no escritório, "lá pela meia-noite", as mãos no pescoço dele. Firme no nome; vacila sobre a luz, a janela e a hora.',
-    // TESTEMUNHO FALSO (isca): aponta a governanta como autora à meia-noite (00h).
-    // Mente; o corpo, não. É uma ALEGAÇÃO DE HORA — refutável pela gramática que já
-    // existe (refuta_hora): a janela que o corpo sustenta fecha por volta das 23h, e
-    // 00h cai fora dela. O jogador metódico liga um indicador do corpo a esta carta e
-    // a derruba; quem acredita e acusa a Hudson cai em Erro Judiciário (réu errado).
+    // TESTEMUNHO SINCERO, LEITURA FALSA (isca): Pruitt viu a Sra. Hudson de verdade —
+    // ela saiu da casa e foi ao escritório da relojoaria à meia-noite (o segredo dela; ver seed.js:
+    // mentira_alibi). Falsas são a AUTORIA que ele lê no gesto ("as mãos no pescoço")
+    // e a inferência de que aquela era a hora do crime: às 00h o patrão já estava
+    // morto desde as 22h. Mecanicamente é uma ALEGAÇÃO DE HORA — refutável pela
+    // gramática que já existe (refuta_hora): a janela que o corpo sustenta fecha por
+    // volta das 23h, e 00h cai fora dela. O jogador metódico liga um indicador do
+    // corpo a esta carta e a derruba; quem acredita e acusa a Hudson cai em Erro
+    // Judiciário (réu errado).
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'avistamento',
@@ -371,7 +379,7 @@ export const CARTAS = [
     textoDisplay: 'Polidez Inabalável',
     carimboPadrao: 'Cooperação Constante',
     descricao:
-      'Edgar responde antes de a pergunta terminar, oferece chá duas vezes, repete o pesar pelo tio nas mesmas palavras. Fala sem uma pausa.',
+      'De perto: as respostas saem prontas, todas do mesmo comprimento, e a segunda xícara de chá chega antes de a primeira esfriar. Em toda a visita, nem uma pausa.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',
@@ -435,9 +443,9 @@ export const CARTAS = [
     localidade: 'interrogatorio_blackwood',
     custoTempo: 2,
     textoDisplay: 'Noite Inteira no The Crossed Keys',
-    carimboPadrao: 'Paradeiro Declarado: 20h–00h (13/out)',
+    carimboPadrao: 'Paradeiro Declarado: 20h–00h (noite de 13)',
     descricao:
-      'Blackwood serviu o próprio balcão das oito à meia-noite de 13, diante de uma taverna cheia. Dá os nomes de doze fregueses sem respirar.',
+      'Serviu o próprio balcão, declara, das oito da noite de 13 até o fecho das dez, diante de uma taverna cheia; das dez à meia-noite ficou nas contas e na limpeza da casa, com o ajudante por testemunha. Dá os nomes de doze fregueses sem respirar.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -454,7 +462,7 @@ export const CARTAS = [
     textoDisplay: 'Rancor Declarado sem Rodeios',
     carimboPadrao: 'Hostilidade Aberta',
     descricao:
-      '"Não choro por ele, e o senhor não me fará chorar." Diz o ódio e a dívida em voz alta, sem que ninguém peça, e volta a secar as canecas.',
+      '"Não choro por ele, e ninguém me fará chorar." Diz o ódio e a dívida em voz alta, sem que ninguém peça, e volta a secar as canecas.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',

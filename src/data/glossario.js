@@ -47,7 +47,7 @@ export const GLOSSARIO = [
     termo: 'Intervalo Post-Mortem (convergência)',
     dominio: 'temporal',
     definicao:
-      'Nenhum sinal isolado data uma morte com segurança. Cada indicador — rigor, livores, temperatura, última vez visto com vida — admite uma FAIXA de horas. A boa perícia sobrepõe essas faixas e retém apenas o trecho comum a todas: a interseção.',
+      'Nenhum sinal isolado data uma morte com segurança. Cada indicador — rigor, livores, temperatura, última vez visto com vida — admite uma faixa de horas. A boa perícia sobrepõe essas faixas e retém apenas o trecho comum a todas: a interseção.',
     sinalObservavel:
       'A janela da morte é a interseção das faixas. Cada sinal a mais, colhido a tempo, estreita a janela; um sinal só a deixa larga. Sinais já degradados (rigor desfeito, corpo frio como o ambiente) nada acrescentam.',
   },
@@ -61,7 +61,7 @@ export const GLOSSARIO = [
     termo: 'Petéquias e Cianose',
     dominio: 'causal',
     definicao:
-      'Hemorragias puntiformes nas conjuntivas e coloração azulada da face, produzidas pela interrupção da respiração com o coração ainda em luta. Assinalam a FAMÍLIA da asfixia — sem, por si só, dizer o meio (ligadura, enforcamento, esganadura, sufocação ou afogamento).',
+      'Hemorragias puntiformes nas conjuntivas e coloração azulada da face, produzidas pela interrupção da respiração com o coração ainda em luta. Assinalam a família da asfixia — sem, por si só, dizer o meio (ligadura, enforcamento, esganadura, sufocação ou afogamento).',
     sinalObservavel: 'Pontinhos de sangue no branco dos olhos; face e lábios azulados. Excluem veneno e trauma; não distinguem entre as asfixias.',
   },
   {
@@ -123,7 +123,7 @@ export const GLOSSARIO = [
     id: 'odor_alho',
     termo: 'Odor Aliáceo',
     dominio: 'causal',
-    definicao: 'Hálito cadavérico com cheiro de alho, próprio do envenenamento por arsênico — veneno de ação lenta, predileto dos casos domésticos.',
+    definicao: 'Hálito cadavérico com cheiro de alho, próprio do envenenamento por arsênico — veneno de ação lenta, frequente nos envenenamentos domésticos.',
     sinalObservavel: 'Cheiro de alho ao exame da boca e do conteúdo gástrico.',
   },
   {
@@ -197,7 +197,7 @@ export const GLOSSARIO = [
     dominio: 'ambiental',
     definicao:
       'Cortes e equimoses nas mãos e antebraços de quem tentou aparar o golpe. Sua ausência sugere ataque súbito, pelas costas, ou vítima incapaz de reagir.',
-    sinalObservavel: 'Mãos e antebraços feridos — ou intactos, o que também fala.',
+    sinalObservavel: 'Cortes e equimoses nas mãos e antebraços; a ausência deles, em vítima capaz de reagir, também se anota.',
   },
 
   // ===================== COMPORTAMENTAL =====================
@@ -240,8 +240,8 @@ export const GLOSSARIO = [
     termo: 'Fibras Têxteis e de Cordoaria',
     dominio: 'vestigio',
     definicao:
-      'Sob a lente, cânhamo, lã, linho e algodão distinguem-se pela torção e pelo calibre. Fibras de corda incrustadas num sulco cervical identificam o instrumento; as mesmas fibras na roupa de alguém, a mão que o segurou.',
-    sinalObservavel: 'Filamentos comparáveis à lente: mesma matéria, mesma torção, mesma origem.',
+      'Sob a lente, cânhamo, lã, linho e algodão distinguem-se pela torção e pelo calibre. Fibras de corda incrustadas num sulco cervical identificam o instrumento; as mesmas fibras na roupa de alguém indicam contato com material da mesma espécie, não com aquela peça em particular.',
+    sinalObservavel: 'Filamentos comparáveis à lente: mesma matéria, mesma torção — compatível, não exclusivo.',
   },
 ];
 
