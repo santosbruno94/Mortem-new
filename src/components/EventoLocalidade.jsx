@@ -166,7 +166,7 @@ function NotaFrescor({ ipm }) {
   }
   return (
     <div className="mt-4 carta-pergaminho rounded-sm px-3 py-2">
-      <p className="text-tinta-clara text-xs font-serif italic leading-relaxed">{texto}</p>
+      <p className="text-tinta-clara text-sm font-serif italic leading-relaxed">{texto}</p>
     </div>
   );
 }

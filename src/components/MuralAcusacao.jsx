@@ -789,10 +789,10 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
                   Confronte o paradeiro declarado — ligue o vestígio que o desmente, se houver:
                 </p>
                 {alibi && (
-                  <p className="text-stone-400 text-[11px] italic font-serif mb-1">Álibi: {alibi.textoDisplay}</p>
+                  <p className="text-stone-400 text-xs italic font-serif mb-1">Álibi: {alibi.textoDisplay}</p>
                 )}
                 {vestigiosDe(sp.id).length === 0 ? (
-                  <p className="text-stone-400 italic font-serif text-[11px]">
+                  <p className="text-stone-400 italic font-serif text-xs">
                     Nenhum vestígio na sua mesa confronta este paradeiro.
                   </p>
                 ) : (
@@ -815,7 +815,7 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
               <div className="mt-2 border-t border-latao/25 pt-2">
                 <p className="text-stone-400 text-[11px] mb-1">Por que acusa de cúmplice:</p>
                 {incriminamDe(sp.id).length === 0 ? (
-                  <p className="text-stone-400 italic font-serif text-[11px]">Nenhuma carta sustenta a aposta.</p>
+                  <p className="text-stone-400 italic font-serif text-xs">Nenhuma carta sustenta a aposta.</p>
                 ) : (
                   <div className="flex flex-col gap-1">
                     {incriminamDe(sp.id).map((c) => (
@@ -891,7 +891,7 @@ function Barbante({ a, b, aoRemover }) {
         x2={b.x}
         y2={b.y}
         stroke="transparent"
-        strokeWidth={14}
+        strokeWidth={24}
         style={{ pointerEvents: 'stroke', cursor: 'pointer' }}
         onClick={() => {
           tocarSom('barbante');
