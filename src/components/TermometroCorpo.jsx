@@ -7,24 +7,24 @@ export default function TermometroCorpo() {
   const temperaturaMedida = useJogo((s) => s.temperaturaMedida);
   const medirTemperatura = useJogo((s) => s.medirTemperatura);
 
+  // O resultado da medição vira etiqueta de pergaminho: leitura anotada a tinta.
   if (temperaturaMedida !== null) {
     return (
-      <div className="mt-6 border border-stone-800 rounded-sm px-4 py-3 text-sm text-stone-500">
-        O termômetro já cumpriu seu ofício: <span className="text-stone-300">{temperaturaMedida}°C</span>,
-        contra 11°C do ambiente. A leitura está na mesa.
+      <div className="mt-6 carta-pergaminho rounded-sm px-4 py-3">
+        <p className="text-tinta-clara text-sm font-serif">
+          O termômetro já cumpriu seu ofício: <span className="text-tinta font-bold">{temperaturaMedida}°C</span>,
+          contra 11°C do ambiente. A leitura está na mesa.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="mt-6 border border-amber-900/50 rounded-sm px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-      <p className="text-sm text-stone-400">
-        O termômetro de mercúrio aguarda na maleta. O ambiente marca <span className="text-stone-300">11°C</span>.
+    <div className="mt-6 border border-latao/40 bg-stone-950/40 rounded-sm px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <p className="text-sm text-stone-300 font-serif">
+        O termômetro de mercúrio aguarda na maleta. O ambiente marca <span className="text-amber-100">11°C</span>.
       </p>
-      <button
-        onClick={medirTemperatura}
-        className="shrink-0 px-4 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800"
-      >
+      <button onClick={medirTemperatura} className="shrink-0 botao-mesa">
         Medir temperatura
       </button>
     </div>

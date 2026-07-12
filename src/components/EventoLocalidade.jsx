@@ -63,7 +63,8 @@ export default function EventoLocalidade({ localidadeId }) {
   function renderParagrafo(texto, indice) {
     const partes = interpolar(texto, detective).split(/(\[\[\w+\]\])/g);
     return (
-      <p key={indice} className="text-stone-300 leading-relaxed">
+      // A prosa imersiva pousa sobre o couro escuro: serifada e legível.
+      <p key={indice} className="font-serif text-stone-300 leading-relaxed">
         {partes.map((parte, i) => {
           const marcador = parte.match(/^\[\[(\w+)\]\]$/);
           return marcador ? renderTermo(marcador[1], `${indice}_${i}`) : <span key={`${indice}_${i}`}>{parte}</span>;
@@ -80,7 +81,7 @@ export default function EventoLocalidade({ localidadeId }) {
     <>
       {/* Retrato de quem recebe o perito — camada visual, decorativa */}
       {personagemDaCena && (
-        <div className="float-right ml-4 mb-2 border border-stone-800 rounded-sm shadow-pousado">
+        <div className="float-right ml-4 mb-2 border border-latao/40 rounded-sm shadow-pousado">
           <RetratoPersonagem personagemId={personagemDaCena} tamanho={84} className="block" />
         </div>
       )}
@@ -88,7 +89,7 @@ export default function EventoLocalidade({ localidadeId }) {
       {ehCorpo && <FalaDoLegista cartas={cartasRegistradas} />}
       {ehCorpo && <NotaFrescor ipm={ipm} />}
       {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
-      <p className="mt-6 text-stone-600 text-xs tracking-wide">
+      <p className="mt-6 text-stone-400 text-xs italic font-serif tracking-wide">
         Termos em negrito são examinados e registrados na mesa — examinar não custa tempo; o relógio só corre quando você viaja.
       </p>
     </>
@@ -106,8 +107,8 @@ export default function EventoLocalidade({ localidadeId }) {
         // MESMAS cartas dos termos em negrito, que continuam valendo.
         <div className="lg:grid lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-6 lg:items-start">
           <div className="h-48 sm:h-56 lg:h-80 lg:sticky lg:top-2 mb-4 lg:mb-0 rounded-sm border border-stone-800 bg-stone-950/60 overflow-hidden">
-            <Cena3DBoundary fallback={<div className="h-full grid place-items-center text-stone-600 text-xs">— a mesa de exame segue na prosa —</div>}>
-              <Suspense fallback={<div className="h-full grid place-items-center text-stone-600 text-xs">a mesa de exame prepara-se…</div>}>
+            <Cena3DBoundary fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">— a mesa de exame segue na prosa —</div>}>
+              <Suspense fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">a mesa de exame prepara-se…</div>}>
                 <CorpoCanvas ipm={ipm} />
               </Suspense>
             </Cena3DBoundary>
@@ -126,20 +127,21 @@ export default function EventoLocalidade({ localidadeId }) {
 // e CRESCE conforme o jogador examina (pull — responde ao que foi visto).
 // No procedural não há vozMestre nas cartas: este bloco fica vazio e o
 // jogador, já perito, lê o corpo por conta própria.
+// Visual: aparte com filete de latão à esquerda e fala em serif itálico.
 function FalaDoLegista({ cartas }) {
   const asides = cartas.filter((c) => c.localidade === 'corpo' && c.vozMestre);
   const { tempo, causa } = falaDoMestre(lerCorpo(cartas));
   if (asides.length === 0 && !tempo && !causa) return null;
   return (
-    <div className="mt-5 border-l-2 border-amber-900/60 pl-4 space-y-2">
-      <p className="text-amber-200/70 text-[10px] tracking-[0.25em] uppercase">O legista, examinando</p>
+    <div className="mt-5 border-l-2 border-latao/70 pl-4 space-y-2">
+      <p className="text-rotulo uppercase text-latao-claro/70">O legista, examinando</p>
       {asides.map((c) => (
-        <p key={c.id} className="text-stone-300 text-sm italic leading-relaxed">“{c.vozMestre}”</p>
+        <p key={c.id} className="font-serif italic text-stone-200 text-sm leading-relaxed">“{c.vozMestre}”</p>
       ))}
       {(tempo || causa) && (
-        <div className="pt-2 mt-1 border-t border-stone-800 space-y-1">
-          {tempo && <p className="text-amber-100/90 text-sm leading-relaxed">“{tempo}”</p>}
-          {causa && <p className="text-amber-100/90 text-sm leading-relaxed">“{causa}”</p>}
+        <div className="pt-2 mt-1 border-t border-latao/30 space-y-1">
+          {tempo && <p className="font-serif italic text-amber-100/90 text-sm leading-relaxed">“{tempo}”</p>}
+          {causa && <p className="font-serif italic text-amber-100/90 text-sm leading-relaxed">“{causa}”</p>}
         </div>
       )}
     </div>
@@ -149,6 +151,7 @@ function FalaDoLegista({ cartas }) {
 // Legibilidade do perecível (telegrafia + anúncio): o corpo avisa, em fala
 // concreta, que a leitura do tempo se esvai — antes de se perder, e no
 // momento em que se perde. Calculado do IPM corrente; nenhuma regra depende.
+// Visual: pequena etiqueta de pergaminho pousada sob a prosa.
 function NotaFrescor({ ipm }) {
   let texto;
   if (ipm <= 24) {
@@ -162,8 +165,8 @@ function NotaFrescor({ ipm }) {
       'O corpo afrouxou de todo e igualou o frio da sala: a hora da morte agora só se lê em dias, não em horas. A precisão, essa já se foi — mas o livor fixo ainda crava que foi há mais de meio dia.';
   }
   return (
-    <p className="mt-4 text-amber-200/70 text-xs italic leading-relaxed border-l border-amber-900/40 pl-3">
-      {texto}
-    </p>
+    <div className="mt-4 carta-pergaminho rounded-sm px-3 py-2">
+      <p className="text-tinta-clara text-xs font-serif italic leading-relaxed">{texto}</p>
+    </div>
   );
 }

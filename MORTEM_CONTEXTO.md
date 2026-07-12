@@ -88,10 +88,20 @@ clicáveis em negrito** inline — clicar extrai a carta correspondente.
 **Estética visual:** mesa de madeira escura à luz de vela — e a matéria disso está na
 tela: veios de madeira e grão procedurais (gradientes + ruído SVG, sem assets externos),
 halo de vela que respira, papel com fibra e sombra nas cartas, barbante com corpo
-(sombra + torção). Paleta Tailwind: fundos `stone-950/900`, texto `stone-300/400/600`,
-acentos `amber-200` (títulos serif) e `amber-900` (lacres, avisos). Tipografia serifada
-de época embarcada (**IM Fell English**, licença OFL, `src/assets/fontes/`) para
-títulos e nomes; sem ícones modernos; ornamentos tipográficos discretos (§, ―).
+(sombra + torção). Desde o overhaul "vitoriano premium" (jul/2026), a interface é feita
+de **materiais**, definidos uma única vez em `src/index.css` e `tailwind.config.js`:
+pergaminho claro escrito a tinta (`.carta-pergaminho` — provas, fichas, etiquetas),
+couro escuro dos painéis (`.painel-couro` — moldura de todos os overlays), placa de
+latão (`.placa-latao` — só as ações solenes: construir a acusação, levar a julgamento),
+botão de mesa (`.botao-mesa` — todo botão comum), selo de cera (`.selo-cera` — marcador
+de novidade), campo vitoriano (`.campo-vitoriano` — selects sem a cara do navegador),
+mural de cortiça (`.mural-cortica`) e divisor ornado (`.divisor-ornado`). Tokens de
+cor: `madeira`, `vela`, `papel`, `tinta`, `latao`, `cera` (+ `equimose`/`sangue`
+forenses); os literais `stone/amber` sobrevivem como neutros de apoio, e **nenhum
+texto informativo desce de `stone-400`** (contraste é regra — atmosfera não desculpa
+ilegibilidade). Tipografia serifada de época embarcada (**IM Fell English**, licença
+OFL, `src/assets/fontes/`) para títulos e nomes; sem ícones modernos; ornamentos
+tipográficos discretos (§, ―, ❦).
 
 **Camada 3D (apresentação pura):** a mesa ganha profundidade em dois pontos — o
 **diorama da vila** (maquete low-poly pousada no alto da escrivaninha: prédios

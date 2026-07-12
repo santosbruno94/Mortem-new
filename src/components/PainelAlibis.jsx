@@ -18,7 +18,7 @@ export default function PainelAlibis() {
   return (
     <Overlay titulo="Declarações de Paradeiro" subtitulo="Registro literal dos depoimentos — consultar não custa tempo">
       {declaracoes.length === 0 ? (
-        <p className="text-stone-600 text-sm">
+        <p className="text-stone-400 italic font-serif text-sm">
           Nenhuma declaração de paradeiro foi colhida até aqui. Interrogue quem tiver algo a declarar.
         </p>
       ) : (
@@ -26,14 +26,16 @@ export default function PainelAlibis() {
           {declaracoes.map((carta) => {
             const declarante = obterSuspeito(carta.tagsOcultas.declaranteId);
             return (
-              <li key={carta.id} className="border border-stone-800 bg-stone-950/40 rounded-sm px-4 py-3 transition-colors duration-gesto hover:border-stone-700 flex gap-4 items-start">
-                <div className="shrink-0 border border-stone-800 rounded-sm">
+              // Cada depoimento é uma ficha de pergaminho: retrato ao lado,
+              // a citação escrita a tinta, tal como foi declarada.
+              <li key={carta.id} className="carta-pergaminho rounded-sm px-4 py-3 flex gap-4 items-start">
+                <div className="shrink-0 border border-tinta-apagada/60 rounded-sm shadow-pousado">
                   <RetratoPersonagem personagemId={carta.tagsOcultas.declaranteId} tamanho={52} className="block" />
                 </div>
                 <div className="min-w-0">
-                  <p className="font-serif text-amber-200">{declarante ? declarante.nome : 'Declarante incerto'}</p>
-                  <p className="text-stone-300 text-sm mt-1">“{carta.textoDisplay}”</p>
-                  <p className="text-stone-500 text-sm mt-1">
+                  <p className="font-serif text-tinta">{declarante ? declarante.nome : 'Declarante incerto'}</p>
+                  <p className="text-tinta font-serif italic text-sm mt-1 leading-relaxed">“{carta.textoDisplay}”</p>
+                  <p className="text-tinta-clara text-sm mt-1">
                     Faixa declarada:{' '}
                     {formatDeclaracao(carta.tagsOcultas.horaInicioDeclarada, carta.tagsOcultas.horaFimDeclarada)}.
                   </p>
@@ -43,7 +45,7 @@ export default function PainelAlibis() {
           })}
         </ul>
       )}
-      <p className="mt-6 text-stone-600 text-xs leading-relaxed">
+      <p className="mt-6 text-stone-400 italic font-serif text-xs leading-relaxed">
         Este painel registra o que foi declarado, tal como foi declarado. Cotejar cada faixa com a
         Janela da Morte é ofício de quem constrói a acusação.
       </p>

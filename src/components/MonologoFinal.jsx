@@ -56,31 +56,32 @@ export default function MonologoFinal() {
     const duracao = horasJogo - HORAS_CHEGADA_CENA;
     return (
       <Overlay titulo={`${monologo.titulo} — Epílogo`} subtitulo="O caso, selado">
-        <div className="space-y-4">
+        {/* O título do desfecho vive no header do Overlay (serif, gravado);
+            aqui, só o ornamento de abertura e o epílogo em coluna de leitura */}
+        <div className="divisor-ornado text-sm mb-6" aria-hidden="true">❦</div>
+        <div className="max-w-prose mx-auto space-y-4">
           {epilogo.blocos.map((b, i) => (
-            <p key={i} className="text-stone-300 leading-relaxed">
+            <p key={i} className="font-serif text-stone-200 text-base sm:text-lg leading-relaxed">
               {b}
             </p>
           ))}
         </div>
 
-        <div className="mt-8 border border-stone-800 rounded-sm px-4 py-3">
-          <p className="text-amber-200/90 text-xs tracking-[0.25em] uppercase mb-2">
+        {/* O retrato da investigação: etiquetas de balanço, rotuladas a latão */}
+        <div className="mt-8 max-w-prose mx-auto border border-latao/40 bg-stone-950/40 rounded-sm px-4 py-3">
+          <p className="text-rotulo uppercase text-latao-claro/70 mb-2">
             O retrato da investigação
           </p>
-          <ul className="space-y-1 text-sm text-stone-400">
-            <li>― Chegada às {formatHora(HORAS_CHEGADA_CENA)}; caso selado em {formatRelogio(horasJogo)} — {formatDuracao(duracao)} de investigação.</li>
-            <li>― {nosVisitados.length} de {LOCALIDADES.length} lugares visitados.</li>
-            <li>― {cartasRegistradas.length} de {TOTAL_OBSERVACOES} observações registradas na mesa.</li>
-            <li>― {nSubmissoes === 1 ? 'Uma acusação levada a julgamento.' : `${nSubmissoes} acusações levadas a julgamento.`}</li>
+          <ul className="space-y-1.5 text-sm text-stone-300">
+            <li><span className="text-latao-claro/60" aria-hidden="true">―</span> Chegada às {formatHora(HORAS_CHEGADA_CENA)}; caso selado em {formatRelogio(horasJogo)} — {formatDuracao(duracao)} de investigação.</li>
+            <li><span className="text-latao-claro/60" aria-hidden="true">―</span> {nosVisitados.length} de {LOCALIDADES.length} lugares visitados.</li>
+            <li><span className="text-latao-claro/60" aria-hidden="true">―</span> {cartasRegistradas.length} de {TOTAL_OBSERVACOES} observações registradas na mesa.</li>
+            <li><span className="text-latao-claro/60" aria-hidden="true">―</span> {nSubmissoes === 1 ? 'Uma acusação levada a julgamento.' : `${nSubmissoes} acusações levadas a julgamento.`}</li>
           </ul>
         </div>
 
         <div className="mt-8 flex justify-end">
-          <button
-            onClick={() => window.location.reload()}
-            className="px-5 py-2 border border-stone-800 text-stone-400 rounded-sm text-sm hover:text-stone-200"
-          >
+          <button onClick={() => window.location.reload()} className="botao-mesa">
             Fechar o caderno
           </button>
         </div>
@@ -90,22 +91,27 @@ export default function MonologoFinal() {
 
   return (
     <Overlay titulo={monologo.titulo} subtitulo="O monólogo do detetive">
-      <div className="space-y-4">
+      {/* O clímax: o título gravado vem do header do Overlay; o monólogo
+          desce em coluna de leitura serifada, confortável */}
+      <div className="divisor-ornado text-sm mb-6" aria-hidden="true">❦</div>
+      <div className="max-w-prose mx-auto space-y-4">
         {monologo.blocos.map((b, i) => (
-          <p key={i} className="text-stone-300 leading-relaxed">
+          <p key={i} className="font-serif text-stone-200 text-base sm:text-lg leading-relaxed">
             {b}
           </p>
         ))}
       </div>
 
       {!vitoria && dicas.length > 0 && (
-        <div className="mt-8 border border-amber-900/50 rounded-sm px-4 py-3">
-          <p className="text-amber-200/90 text-xs tracking-[0.25em] uppercase mb-2">
+        <div className="mt-8 max-w-prose mx-auto border border-latao/40 bg-stone-950/40 rounded-sm px-4 py-3">
+          <p className="text-rotulo uppercase text-latao-claro/80 mb-2">
             O que faltou — cortesia do tutorial
           </p>
-          <ul className="space-y-1">
+          <ul className="space-y-1.5">
             {dicas.map((d, i) => (
-              <li key={i} className="text-stone-400 text-sm">― {d}</li>
+              <li key={i} className="text-stone-300 text-sm leading-relaxed">
+                <span className="text-latao-claro/60" aria-hidden="true">―</span> {d}
+              </li>
             ))}
           </ul>
         </div>
@@ -115,7 +121,7 @@ export default function MonologoFinal() {
         {!vitoria && (
           <button
             onClick={revisarAcusacao}
-            className="px-5 py-2 bg-stone-950 border border-amber-900 text-amber-200 rounded-sm text-sm hover:bg-stone-800"
+            className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide"
           >
             Revisar a acusação · adia a audiência em {formatDuracao(CUSTO_REVISAO)}
           </button>
@@ -125,7 +131,7 @@ export default function MonologoFinal() {
             tocarSom('lacre');
             setEncerrando(true);
           }}
-          className="px-5 py-2 border border-stone-800 text-stone-400 rounded-sm text-sm hover:text-stone-200"
+          className={vitoria ? 'botao-mesa' : 'botao-mesa botao-mesa--quieto'}
         >
           Encerrar o caso
         </button>

@@ -48,3 +48,24 @@ Reaproveitados intactos em todos os redesigns: `logic/cronos.js`,
 - Clube de Moorford virou nó distante desbloqueado por lead (corroboração opcional).
 - Sob o relógio mole, a "armadilha do relógio" ficou branda: a falha do Apressado é de
   perícia (acusar sem materialidade), não de relógio.
+
+## Overhaul visual "vitoriano premium" (jul/2026)
+
+A estética "mesa à luz de vela" existia como intenção, mas a execução era tímida:
+tokens definidos e não usados, cores `stone/amber` cravadas à mão em cada arquivo,
+contraste abaixo do legível (`text-stone-600/700` informativo), selects nativos do
+navegador no mural e dois sistemas de modal divergentes. Decisões:
+
+- **Materiais em vez de classes soltas**: pergaminho (`.carta-pergaminho`), couro
+  (`.painel-couro`), latão (`.placa-latao`, `.botao-mesa`), cera (`.selo-cera`),
+  cortiça (`.mural-cortica`) e campo vitoriano (`.campo-vitoriano`) — definidos uma
+  única vez em `src/index.css`, procedurais (gradiente + ruído SVG, zero assets).
+- **O claro pousa sobre o escuro**: cartas de prova e fichas escritas viram pergaminho
+  com tinta (`tinta`/`tinta-clara`); localidades permanecem escuras — prova ≠ lugar
+  vira distinção material, não só de rótulo.
+- **Latão é hierarquia**: `.placa-latao` reservada às ações solenes (CONSTRUIR A
+  ACUSAÇÃO, Levar a julgamento); todo botão comum é `.botao-mesa`.
+- **Contraste como norma**: nenhum texto informativo abaixo de `stone-400` sobre
+  escuro; sobre pergaminho, escala `tinta`.
+- Contrato de QA preservado na íntegra (textos exatos, `.termo-*`, `data-overlay`,
+  ordem dos selects da janela); nenhuma lógica tocada — só camada de apresentação.

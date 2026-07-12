@@ -18,6 +18,7 @@ export default function ModalGlossario() {
 
   return (
     <Overlay titulo="Glossário Forense" subtitulo="Medicina legal de época — consultar não custa tempo" largura="max-w-3xl">
+      {/* Domínios: fileira de botões de mesa; o ativo vira placa de latão quente */}
       <div className="flex flex-wrap gap-2 mb-6">
         {DOMINIOS_GLOSSARIO.map((d) => (
           <button
@@ -26,11 +27,11 @@ export default function ModalGlossario() {
               setDominioAtivo(d.id);
               setVerbeteAtivo(null);
             }}
-            className={`px-3 py-1.5 rounded-sm text-xs tracking-wide border ${
+            className={
               d.id === dominioAtivo
-                ? 'border-amber-900 text-amber-200 bg-stone-950'
-                : 'border-stone-800 text-stone-500 hover:text-stone-300'
-            }`}
+                ? 'placa-latao px-3 py-1.5 rounded-sm font-serif text-xs tracking-wide'
+                : 'botao-mesa botao-mesa--quieto !px-3 !py-1.5 !text-xs tracking-wide'
+            }
           >
             {d.rotulo}
           </button>
@@ -38,15 +39,16 @@ export default function ModalGlossario() {
       </div>
 
       <div className="grid md:grid-cols-[220px_1fr] gap-6">
+        {/* Índice de verbetes — o lado escuro do atril */}
         <ul className="space-y-1">
           {verbetes.map((v) => (
             <li key={v.id}>
               <button
                 onClick={() => setVerbeteAtivo(v.id)}
-                className={`text-left w-full px-3 py-2 rounded-sm text-sm ${
+                className={`text-left w-full px-3 py-2 rounded-sm text-sm font-serif border-l-2 transition-colors duration-gesto ${
                   v.id === verbeteAtivo
-                    ? 'bg-stone-950 text-amber-200'
-                    : 'text-stone-400 hover:text-stone-200'
+                    ? 'bg-stone-950/80 text-latao-claro border-latao'
+                    : 'text-stone-400 hover:text-stone-200 border-transparent'
                 }`}
               >
                 § {v.termo}
@@ -55,19 +57,20 @@ export default function ModalGlossario() {
           ))}
         </ul>
 
-        <div className="border border-stone-800 rounded-sm p-5 min-h-[200px]">
+        {/* A folha aberta: o verbete escolhido, escrito a tinta sobre pergaminho */}
+        <div className="carta-pergaminho rounded-sm p-5 min-h-[200px]">
           {aberto ? (
             <>
-              <h3 className="font-serif text-xl text-amber-200">{aberto.termo}</h3>
-              <div className="my-2 text-amber-900">―</div>
-              <p className="text-stone-300 text-sm leading-relaxed">{aberto.definicao}</p>
-              <p className="mt-4 text-stone-500 text-sm leading-relaxed">
-                <span className="text-stone-400 font-bold">Sinal observável: </span>
+              <h3 className="font-serif text-xl text-tinta">{aberto.termo}</h3>
+              <div className="my-2 text-tinta-apagada" aria-hidden="true">―</div>
+              <p className="text-tinta text-sm leading-relaxed">{aberto.definicao}</p>
+              <p className="mt-4 text-tinta-clara text-sm leading-relaxed">
+                <span className="text-tinta font-bold">Sinal observável: </span>
                 {aberto.sinalObservavel}
               </p>
             </>
           ) : (
-            <p className="text-stone-600 text-sm">Escolha um verbete à esquerda.</p>
+            <p className="text-tinta-apagada italic font-serif text-sm">Escolha um verbete à esquerda.</p>
           )}
         </div>
       </div>
