@@ -33,8 +33,7 @@ export const LOCALIDADES = [
       'O escritório está revirado. Papéis cobrem o assoalho; sobre a lareira, um retângulo sem poeira marca onde estava o relógio.',
       '[[ev_relogio]] está agora no tapete, a caixa partida, os ponteiros imóveis. O Delegado aponta-o como a peça central do caso, e repete-o a quem entra.',
       'As [[ev_gavetas]] estão abertas, o conteúdo pelo assoalho. Na corrente do colete do morto pende um relógio de ouro; sobre a escrivaninha, uma caixa de soberanos de tampa fechada.',
-      'Na porta que dá para o beco, uma [[ev_fechadura]]: marcas de alavanca no lado de fora do batente. Junto à gaveta mais funda, contra a madeira escura, [[ev_fio_la]].',
-      'Na sombra onde a vassoura não alcança, um [[ev_lenco]].',
+      'O exame palmo a palmo recolhe lascas do verniz do relógio, um [[ev_fio_la]], um [[ev_lenco]], felpa solta do tapete. Na porta que dá para o beco, uma [[ev_fechadura]]: marcas de alavanca no lado de fora do batente.',
     ],
   },
   {
@@ -49,8 +48,8 @@ export const LOCALIDADES = [
       'Numa pasta à parte, [[dep_dividas]] endereçadas a Edgar Arthurs: somas, observa Wycliffe, "que um escrevente não junta em dez anos de vida honesta".',
       'E no livro de ocorrências, com a tinta ainda fresca de três semanas, uma [[dep_briga]]: Thomas Blackwood e o relojoeiro, ameaças trocadas diante de meia taverna.',
       'Num bilhete da primeira diligência, Wycliffe anotou a [[dep_visto_vivo]]: a governanta serviu-lhe a ceia e recolheu a louça antes de a casa adormecer.',
-      'E dá fé, ainda, a uma vizinha: [[dep_avistamento_falso]]. "Se a Sra. Gale o viu à janela, o homem amanheceu vivo", repete ele, satisfeito com a sua cronologia.',
-      'Por fim, um relato que lhe acende os olhos: [[dep_acusa_hudson]]. "Se o Pruitt a viu sobre o corpo à meia-noite, {detective.title}, é só prender a governanta e ir jantar." Wycliffe já se vê com o caso fechado.',
+      'E dá fé, ainda, a uma vizinha: [[dep_avistamento_falso]]. "Se a Sra. Gale o viu à janela, o homem amanheceu vivo", repete ele, duas vezes.',
+      'Por fim, um relato que lhe acende os olhos: [[dep_acusa_hudson]]. "Se o Pruitt a viu sobre o corpo à meia-noite, {detective.title}, é só prender a governanta e ir jantar."',
     ],
   },
   {
@@ -60,10 +59,10 @@ export const LOCALIDADES = [
     subtitulo: 'Sobrinho e único herdeiro, 38 anos',
     acoesEspeciais: [],
     prosa: [
-      'Edgar recebe {detective.title} {detective.surname} na saleta da relojoaria, chá já servido, o luto passado a ferro. "Fui eu quem o encontrou, às nove e meia. A porta dos fundos arrombada, o escritório naquele estado. O relógio no chão, parado nas nove — o senhor há de tirar disso o que eu não sei tirar."',
+      'Edgar recebe {detective.title} {detective.surname} na saleta da relojoaria, chá já servido, o luto passado a ferro. "Fui eu quem o encontrou, às nove e meia. A porta dos fundos arrombada, o escritório naquele estado. O relógio no chão, parado nas nove — {g:o senhor|a senhora} há de tirar disso o que eu não sei tirar."',
       'Sobre a véspera, responde antes de a pergunta fechar: um [[alibi_edgar]] — "das oito às onze, à mesa do Clube, em Moorford. Voltei tarde, dormi até as oito." Serve o chá. "O Clube fica a boa hora e meia de estrada. Não é lugar de ir e vir na mesma noite."',
       'Em tudo o mais, uma [[comp_edgar]]: responde completo, oferece chá, lamenta o tio nas mesmas palavras cada vez.',
-      'Ao estender a mão para a chaleira, o punho direito do casaco passa sob o lampião. No tecido escuro, {detective.title} {detective.surname} distingue [[ev_fibras_manga]].',
+      'Ao estender a mão para a chaleira, Edgar deixa ver, contra o tecido escuro, [[ev_fibras_manga]].',
     ],
   },
   {
@@ -74,8 +73,8 @@ export const LOCALIDADES = [
     acoesEspeciais: [],
     prosa: [
       'A Sra. Hudson recebe na cozinha da casa grande e não convida a sentar. Dezessete anos servindo ao morto, e diante {g:do perito|da perita} não gasta duas palavras onde uma serve. Em toda a conversa, [[comp_hudson]]: o avental vai e volta entre os dedos, sem achar onde parar.',
-      'Sobre a noite do dia 13, a declaração vem inteira, rápida e sem tropeço, [[alibi_hudson]]: "Recolhi-me às nove, como sempre. Só desci às sete, quando o Sr. Edgar já gritava no quintal."',
-      'A governanta traz um [[ev_xale]] sobre os ombros, apertado contra o frio da cozinha.',
+      'Sobre a noite do dia 13, a declaração vem inteira, rápida e sem tropeço, [[alibi_hudson]]: "Recolhi-me às nove, como sempre. Só desci às sete."',
+      'O fogão de ferro está apagado. A governanta traz um [[ev_xale]] sobre os ombros.',
       '"Posso ir? Tenho a casa toda por fazer, e ninguém mais vai fazê-la." Já está de pé antes da resposta, a mão na aba do avental.',
     ],
   },
@@ -88,8 +87,8 @@ export const LOCALIDADES = [
     prosa: [
       'O The Crossed Keys cheira a cerveja velha e serragem. Blackwood não interrompe o serviço para responder: seca canecas enquanto fala, e fala alto.',
       '"Se veio me perguntar se eu odiava o velho, economize a viagem: odiava. Sangrava-me de juros havia seis anos, e cobrava na porta, aos gritos." Pousa a caneca sem baixar a voz. Em tudo, [[comp_blackwood]].',
-      'Sobre a noite de 13, ele larga o pano: [[alibi_blackwood]]. "Das oito à meia-noite, atrás deste balcão. Noite de sexta, véspera de feira: meia Briarstone bebeu da minha mão. Quer os nomes? Tome doze, e me deixe trabalhar."',
-      'Três fregueses, ouvidos em separado à porta, confirmam: o taverneiro não deixou o balcão um minuto sequer.',
+      'Sobre a noite de 13, ele larga o pano: [[alibi_blackwood]]. "Das oito às dez, atrás deste balcão. Noite de sexta, véspera de feira: casa cheia até o fecho, meia Briarstone bebeu da minha mão. Das dez à meia-noite, fechei a casa. Contas, canecas, o moço que varre o salão. Quer os nomes? Tome doze, e me deixe trabalhar."',
+      'Três fregueses, ouvidos em separado à porta, confirmam: até o fecho, o taverneiro não deixou o balcão.',
     ],
   },
   {

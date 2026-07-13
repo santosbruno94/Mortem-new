@@ -69,7 +69,7 @@ function blocosPerifericos(veredicto) {
           : `A mentira ${deQuem(n)} ficou por entender, e há de pesar-lhe mais tempo do que pesaria a verdade.`
       );
     } else if (p.esperado === 'inocente_alibi' && p.ok && p.alibiNaMesa) {
-      blocos.push(`De ${n} o processo guardou apenas o paradeiro confirmado.`);
+      blocos.push(`O processo guardou ${deQuem(n)} apenas o paradeiro confirmado.`);
     }
   }
   return blocos;

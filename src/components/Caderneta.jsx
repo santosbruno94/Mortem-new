@@ -28,7 +28,7 @@ export default function Caderneta() {
                 <p className="text-tinta text-sm font-serif">{c.textoDisplay}</p>
                 <p className="text-tinta-clara text-sm mt-1">{c.descricao}</p>
                 {c.vozMestre && (
-                  <p className="text-tinta-clara font-serif italic text-xs mt-2">“{c.vozMestre}”</p>
+                  <p className="text-tinta-clara font-serif italic text-sm mt-2">“{c.vozMestre}”</p>
                 )}
                 <div className="flex flex-wrap items-baseline justify-between gap-2 mt-2">
                   <p className="text-tinta-apagada text-rotulo uppercase">
@@ -37,7 +37,7 @@ export default function Caderneta() {
                   {verbete && (
                     <button
                       onClick={() => abrirOverlay('glossario', verbete.id)}
-                      className="text-tinta-clara hover:text-tinta underline decoration-tinta-apagada/60 underline-offset-2 text-[11px] transition-colors duration-gesto"
+                      className="text-tinta-clara hover:text-tinta underline decoration-tinta-apagada/60 underline-offset-2 text-[11px] px-1 py-1.5 -my-1.5 transition-colors duration-gesto"
                       title="Abrir o verbete correspondente no Glossário"
                     >
                       § {verbete.termo}, no Glossário

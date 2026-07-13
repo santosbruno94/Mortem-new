@@ -13,7 +13,7 @@ export const PASSOS_ABERTURA = [
     titulo: 'Caulfield, 14 de outubro de 1893',
     paragrafos: [
       'A pensão da Sra. Potts cobra dois xelins por semana e entrega dois xelins: um quarto estreito, meia vela, uma garrafa vazia e o jornal de anteontem dobrado sobre a mesa.',
-      'Sobre essa mesa, {detective.title} {detective.surname} dispõe os instrumentos do ofício: a lente e o termômetro de mercúrio, e a caderneta de capa rachada onde há três semanas não se anota um caso. Os mortos da Inglaterra andam morrendo de causas que qualquer médico de aldeia sabe assinar.',
+      'Sobre essa mesa, {detective.title} {detective.surname} dispõe os instrumentos do ofício: a lente e o termômetro de mercúrio. A caderneta de capa rachada vem por último; há três semanas não se anota nela um caso.',
     ],
     rotuloBotao: 'A vela queima',
   },
@@ -49,14 +49,14 @@ export const PASSOS_ABERTURA = [
     id: 'briarstone',
     titulo: 'Briarstone',
     paragrafos: [
-      'Briarstone estende-se ao longo de uma única rua: a igreja num extremo, a taverna no meio, a relojoaria de cortina cerrada, e à porta dela um guarda moço, pálido como quem viu o primeiro morto da carreira.',
+      'Briarstone estende-se ao longo de uma única rua: a igreja num extremo, a taverna no meio, a relojoaria de cortina cerrada, e à porta dela um guarda moço, pálido, as mãos cruzadas às costas.',
       'O Delegado Wycliffe espera na plataforma e aperta a mão {g:do perito|da perita} com um alívio que não disfarça. "{detective.title} {detective.surname}. Agradeço a presteza. O Sr. Arthurs está como o encontramos ontem de manhã… esta manhã, quero dizer. Venha. Explico-me pelo caminho, que andando me saio melhor."',
     ],
     rotuloBotao: 'Ouvir o delegado',
   },
   {
     id: 'briefing',
-    titulo: 'O briefing do Delegado Wycliffe',
+    titulo: 'O relato do Delegado Wycliffe',
     briefing: true,
     paragrafos: [
       '"O essencial é isto: Sr. Geoffrey Arthurs, sessenta e um anos, relojoeiro. Achado morto esta manhã no escritório dos fundos. Quem o achou foi o sobrinho, Edgar, às nove e meia. A loja estava fechada desde a noite de sexta, dia 13."',
@@ -73,13 +73,13 @@ export const PERGUNTAS_BRIEFING = [
     id: 'sobre_a_morte',
     pergunta: 'O que se sabe sobre a hora da morte?',
     resposta:
-      '"Aí é que está a sorte: o escritório foi revirado, e na confusão o relógio da lareira caiu e parou. Nove em ponto. O sobrinho achou o corpo às nove e meia — o assassino mal teria virado a esquina. É o que eu penso, veja bem. O que o senhor pensa, com o corpo à frente, é que vale."',
+      '"Aí é que está a sorte: o escritório foi revirado, e na confusão o relógio da lareira caiu e parou. Nove em ponto. O sobrinho achou o corpo às nove e meia — o assassino mal teria virado a esquina. É o que eu penso, veja bem. O que {g:o senhor|a senhora} pensa, com o corpo à frente, é que vale."',
   },
   {
     id: 'quem_herda',
     pergunta: 'Quem herda com essa morte?',
     resposta:
-      '"O sobrinho, Edgar Arthurs. Parente único, herdeiro único. O testamento está nos meus arquivos, e junto dele umas cartas de cobrança que o senhor talvez queira ler. Digo só isso; não me cabe temperar a sopa antes do cozinheiro."',
+      '"O sobrinho, Edgar Arthurs. Parente único, herdeiro único. O testamento está nos meus arquivos, e junto dele umas cartas de cobrança que {g:o senhor|a senhora} talvez queira ler. Digo só isso; não me cabe temperar a sopa antes do cozinheiro."',
   },
   {
     id: 'inimigos',

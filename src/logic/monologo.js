@@ -90,7 +90,7 @@ const FECHOS = {
   impunidade: [
     { molde: (reu) => `${ComArtigo(reu)} sairá livre, e a lei nada terá a lhe dizer. Um culpado solto é um erro que continua a trabalhar.`, maxima: true },
     { molde: (reu) => `${ComArtigo(reu)} deixa a sala pela porta da frente. A certeza sem prova não prende ninguém, e eu que o diga.`, maxima: true },
-    { molde: (reu) => `Solto ${comArtigo(reu)} por falta do que só eu deveria ter trazido. A intuição não assina laudo.`, maxima: true },
+    { molde: (reu) => `${ComArtigo(reu)} fica em liberdade por falta do que só eu deveria ter trazido. A intuição não assina laudo.`, maxima: true },
     { molde: (reu) => `${ComArtigo(reu)} sai da sala sem pressa, e ninguém lhe barra a porta. Fecho a caderneta sobre o nome que não pude sustentar.`, maxima: false },
   ],
   erro_judiciario: [
@@ -117,7 +117,7 @@ function textoDaFalha(falha, dados) {
     case 'corpo_sem_substancia':
       return 'Levei a acusação adiante sem uma leitura do corpo que a sustentasse.';
     case 'sem_janela':
-      return 'Não afirmei quando a vítima morreu; e, sem a hora, nenhum álibi se pode medir.';
+      return 'Não afirmei a hora da morte, e sem ela não havia como medir álibi algum.';
     case 'janela_nao_cobre':
       // Sem revelar a hora verdadeira: o perito que errou a janela não a
       // conhece — e, na retentativa, ela não pode sair de graça (Q1/Q2).
@@ -133,9 +133,9 @@ function textoDaFalha(falha, dados) {
     case 'nexo_errado':
       return 'O vestígio que invoquei não liga o acusado ao instrumento do óbito.';
     case 'sem_motivacao':
-      return 'Não apontei o móbil, e uma acusação sem porquê convence menos.';
+      return 'Não apontei o móbil; apresentei uma acusação sem porquê.';
     case 'motivacao_erronea':
-      return 'O móbil que sustentei não pertencia ao acusado.';
+      return 'O móbil que sustentei não é o que a cadeia prova.';
     case 'sem_descuidos':
       return 'Não apontei os descuidos da encenação, e a cena arrumada para mentir seguiu de pé.';
     case 'periferico':

@@ -27,7 +27,7 @@ export const GRUPOS = {
   // recebe o perito ficam todos ali. Andar entre eles não custa tempo.
   relojoaria: 'A relojoaria — corpo, cena do crime e a saleta de Edgar (mesmo prédio)',
   // A vila de Briarstone: prédios diferentes, a um pulo de distância.
-  vila: 'A vila de Briarstone — delegacia, casa da governanta, taverna',
+  vila: 'A vila de Briarstone — delegacia, casa do morto (onde vive a governanta), taverna',
   // Fora da vila: caro de alcançar.
   fora: 'Fora de Briarstone',
 };

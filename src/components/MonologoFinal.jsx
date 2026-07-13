@@ -61,7 +61,7 @@ export default function MonologoFinal() {
         <div className="divisor-ornado text-sm mb-6" aria-hidden="true">❦</div>
         <div className="max-w-prose mx-auto space-y-4">
           {epilogo.blocos.map((b, i) => (
-            <p key={i} className="font-serif text-stone-200 text-base sm:text-lg leading-relaxed">
+            <p key={i} className="font-serif text-stone-200 text-lg leading-relaxed">
               {b}
             </p>
           ))}
@@ -96,7 +96,7 @@ export default function MonologoFinal() {
       <div className="divisor-ornado text-sm mb-6" aria-hidden="true">❦</div>
       <div className="max-w-prose mx-auto space-y-4">
         {monologo.blocos.map((b, i) => (
-          <p key={i} className="font-serif text-stone-200 text-base sm:text-lg leading-relaxed">
+          <p key={i} className="font-serif text-stone-200 text-lg leading-relaxed">
             {b}
           </p>
         ))}

@@ -28,7 +28,8 @@ export default {
           sombra: '#292524',
         },
         // Tinta ferrogálica: o escuro que escreve sobre o papel.
-        tinta: { DEFAULT: '#2b2119', clara: '#54452f', apagada: '#7c6c50' },
+        // apagada escurecida de #7c6c50 para #6b5c43: 4,81:1 sobre pergaminho (WCAG mín. 4,5:1)
+        tinta: { DEFAULT: '#2b2119', clara: '#54452f', apagada: '#6b5c43' },
         // Latão de época: plaquetas, fivelas e o botão que importa.
         latao: { DEFAULT: '#8a6d3b', claro: '#c9a961', escuro: '#54431f' },
         // Cera de lacre: selos e avisos.
