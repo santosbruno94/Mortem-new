@@ -1,8 +1,10 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { webglDisponivel, modoFlat } from '../logic/webgl.js';
 import Cena3DBoundary from './Cena3DBoundary.jsx';
+import PlantaRelojoaria from './PlantaRelojoaria.jsx';
 import { obterLocalidade } from '../data/localidades.js';
+import { obterNo } from '../data/mapa.js';
 import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { SEED_TUTORIAL } from '../data/seed.js';
 import { ipmAtual } from '../logic/tempo.js';
@@ -26,6 +28,9 @@ export default function EventoLocalidade({ localidadeId }) {
   const horasJogo = useJogo((s) => s.horasJogo);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const extrairCarta = useJogo((s) => s.extrairCarta);
+  // Quais pontos de interesse estão abertos (revelados). Estado local de UI:
+  // a coleta em camadas é escolha do jogador, não muda o motor.
+  const [pontosAbertos, setPontosAbertos] = useState({});
 
   const localidade = obterLocalidade(localidadeId);
   if (!localidade) return null;
@@ -72,6 +77,16 @@ export default function EventoLocalidade({ localidadeId }) {
   const personagemDaCena = PERSONAGEM_POR_LOCALIDADE[localidade.id];
   const ehCorpo = localidade.id === 'corpo';
   const corpo3D = ehCorpo && !modoFlat() && webglDisponivel();
+  // A planta baixa (§5.1) só aparece nos nós do mesmo prédio — o grupo
+  // relojoaria de src/data/mapa.js. Camada visual: lê o grupo, nunca o motor.
+  const naRelojoaria = obterNo(localidade.id)?.grupo === 'relojoaria';
+  // Pontos de interesse (§5.1): quando existem, a prosa se divide em pontos
+  // clicáveis (acordeão); senão, a prosa monolítica de sempre.
+  const temPontos = Array.isArray(localidade.pontos) && localidade.pontos.length > 0;
+  const alternarPonto = (id) => setPontosAbertos((s) => ({ ...s, [id]: !s[id] }));
+  const idsDoTexto = (paragrafos) => [
+    ...new Set(paragrafos.flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))),
+  ];
 
   // Prosa condicional: parágrafos que só entram quando TODAS as cartas
   // exigidas já estão na mesa (ex.: o confronto da segunda visita ao réu,
@@ -84,9 +99,10 @@ export default function EventoLocalidade({ localidadeId }) {
   // Contador de esgotamento (regalia do caso-escola): quantas observações
   // esta localidade oferece e quantas já estão na mesa. O procedural pode
   // omitir — a contagem é leitura dos marcadores [[id]] da prosa, não regra.
+  const fonteProsa = temPontos ? localidade.pontos.flatMap((p) => p.prosa) : localidade.prosa || [];
   const idsExtraiveis = [
     ...new Set(
-      localidade.prosa
+      fonteProsa
         .flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))
         .concat(localidade.acoesEspeciais.includes('termometro') ? ['ev_algor'] : [])
     ),
@@ -101,10 +117,43 @@ export default function EventoLocalidade({ localidadeId }) {
           <RetratoPersonagem personagemId={personagemDaCena} tamanho={84} className="block" />
         </div>
       )}
-      <div className="space-y-4">
-        {localidade.prosa.map(renderParagrafo)}
-        {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
-      </div>
+      {temPontos ? (
+        <div className="space-y-3">
+          {(localidade.introducao || []).map((t, i) => renderParagrafo(t, `intro_${i}`))}
+          <div className="space-y-2">
+            {localidade.pontos.map((ponto) => {
+              const aberto = !!pontosAbertos[ponto.id];
+              const idsPonto = idsDoTexto(ponto.prosa);
+              const nReg = idsPonto.filter((id) => cartasRegistradas.some((c) => c.id === id)).length;
+              return (
+                <div key={ponto.id} data-ponto={ponto.id} className="ponto-bloco">
+                  <button
+                    type="button"
+                    className="ponto-interesse"
+                    aria-expanded={aberto}
+                    onClick={() => alternarPonto(ponto.id)}
+                  >
+                    <span className="ponto-seta" aria-hidden>{aberto ? '▾' : '▸'}</span>
+                    <span className="ponto-rotulo-texto">{ponto.rotulo}</span>
+                    <span className="ponto-contador">{nReg}/{idsPonto.length}</span>
+                  </button>
+                  {aberto && (
+                    <div className="ponto-corpo space-y-3">
+                      {ponto.prosa.map((t, i) => renderParagrafo(t, `${ponto.id}_${i}`))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {localidade.prosa.map(renderParagrafo)}
+          {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
+        </div>
+      )}
       {ehCorpo && <FalaDoLegista cartas={cartasRegistradas} />}
       {ehCorpo && <NotaFrescor ipm={ipm} />}
       {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
@@ -125,6 +174,8 @@ export default function EventoLocalidade({ localidadeId }) {
       subtitulo={localidade.subtitulo}
       largura={corpo3D ? 'max-w-5xl' : 'max-w-2xl'}
     >
+      {/* A planta baixa (§5.1): andar entre os cômodos do mesmo prédio. */}
+      {naRelojoaria && <PlantaRelojoaria localidadeAtual={localidade.id} />}
       {corpo3D ? (
         // O exame em dois painéis: a mesa de exame 3D acompanha a prosa.
         // O 3D é redundância deliberada — clicar no corpo extrai as

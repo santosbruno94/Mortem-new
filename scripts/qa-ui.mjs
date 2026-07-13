@@ -11,6 +11,9 @@
 // O que cobre (ângulos mortos do QA estático, apontados nos playtests de
 // 11/07/2026 — docs/playtest-2026-07-11.md e docs/playtest-qualidade-2026-07-11.md):
 //   • extração por clique nos termos em negrito das localidades;
+//   • a planta da relojoaria (§5.1): andar entre cômodos pela planta (SVG
+//     2D, [data-planta]/[data-alvo], custo 0) e os pontos de interesse
+//     (.ponto-interesse) — os termos nascem escondidos e um ponto os revela;
 //   • a Ficha de Coleta (§6.2): extrair apresenta a evidência no ato numa
 //     ficha (data-overlay="ficha") com a descrição completa; "Arquivar na
 //     mesa" a fecha; a carta da mesa reabre a ficha; a Caderneta, rebaixada
@@ -107,11 +110,27 @@ async function arquivarFicha(page) {
   }
 }
 
+// Abre todos os pontos de interesse fechados (§5.1): nos nós da relojoaria
+// com pontos, os termos nascem escondidos e só surgem ao revelar o ponto.
+async function abrirPontos(page) {
+  const pontos = page.locator('.ponto-interesse');
+  const n = await pontos.count();
+  for (let i = 0; i < n; i++) {
+    const p = pontos.nth(i);
+    if ((await p.getAttribute('aria-expanded')) === 'false') {
+      await p.click();
+      await espera(page, 120);
+    }
+  }
+}
+
 // Viaja até um nó da mesa e extrai todos os termos em negrito do overlay.
 // Cada extração abre a ficha de coleta, arquivada antes do próximo termo.
+// Onde há pontos de interesse, revela todos antes de varrer os termos.
 async function visitarEExtrair(page, rotuloNo) {
   await page.click(`text=${rotuloNo}`);
   await espera(page, 500);
+  await abrirPontos(page);
   const termos = page.locator('.termo-clicavel');
   for (let i = 0; i < 20 && (await termos.count()) > 0; i++) {
     await termos.first().click();
@@ -215,6 +234,29 @@ async function main() {
     checar('Fase 1: a Caderneta (diário) não traz mais a descrição', !textoCaderneta.includes(DESC_RIGOR));
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 1 ----
+
+    // ---- FASE 2 — A planta da relojoaria e os pontos de interesse (§5.1) ----
+    // Andar entre cômodos pela planta (0h, mesmo prédio) e a coleta em
+    // camadas: um ponto revela o parágrafo e os seus termos extraíveis.
+    await page.click('text=A Cena do Crime');
+    await espera(page, 500);
+    checar('Fase 2: a planta da relojoaria aparece no nó (data-planta)', (await page.locator('[data-planta]').count()) >= 1);
+    // Com pontos, os termos nascem escondidos: nenhum antes de abrir um ponto.
+    checar('Fase 2: os pontos começam fechados (termos ocultos)', (await page.locator('.termo-clicavel').count()) === 0);
+    await page.locator('.ponto-interesse', { hasText: 'A lareira' }).click();
+    await espera(page, 250);
+    checar('Fase 2: abrir um ponto revela seus termos', (await page.locator('.termo-clicavel').count()) >= 1);
+    await page.locator('.termo-clicavel').first().click();
+    await espera(page, 200);
+    checar('Fase 2: extração dentro do ponto abre a ficha', (await page.locator('div.fixed[data-overlay="ficha"]').count()) >= 1);
+    await arquivarFicha(page);
+    // Andar pela planta: clicar o cômodo "a oficina" viaja (0h) e abre a oficina.
+    await page.locator('[data-planta] [data-alvo="oficina"]').click();
+    await espera(page, 500);
+    checar('Fase 2: clicar um cômodo da planta viaja para o nó', (await page.locator('body').innerText()).includes('A Oficina de Consertos'));
+    checar('Fase 2: andar entre cômodos não gasta o relógio (11h00)', (await page.locator('body').innerText()).includes('11h00'));
+    await fecharOverlay(page);
+    // ---- fim do bloco da Fase 2 ----
 
     await visitarEExtrair(page, 'O Corpo'); // extrai os demais termos do corpo
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
@@ -421,6 +463,15 @@ async function main() {
     console.log('\n=== ROTA FLAT — grade 2D (?flat=1) ===');
     await novaPartida(page, 'Dr. Harlan Blackwell', '?flat=1');
     checar('Rota flat: sem canvas 3D', (await page.locator('canvas').count()) === 0);
+    // §5.1: a planta é SVG 2D — funciona idêntico em ?flat=1. Abre o corpo,
+    // confere a planta e anda para a cena por ela (0h).
+    await page.click('text=O Corpo');
+    await espera(page, 500);
+    checar('Rota flat: a planta da relojoaria aparece (SVG 2D)', (await page.locator('[data-planta]').count()) >= 1);
+    await page.locator('[data-planta] [data-alvo="cena"]').click();
+    await espera(page, 500);
+    checar('Rota flat: andar pela planta viaja para a cena', (await page.locator('body').innerText()).includes('A Cena — Escritório dos Fundos'));
+    await fecharOverlay(page);
     await visitarEExtrair(page, 'O Corpo');
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);

@@ -196,6 +196,35 @@ O jogador nunca sai desta tela. Layout:
 **Regras UX:** nenhuma ação exige mais de 2 cliques; feedback visual imediato; a
 interface ensina pela forma, não por texto tutorial.
 
+### 5.1 A planta da relojoaria e os pontos de interesse
+
+Os quatro nós do **mesmo prédio** (grupo `relojoaria` de `src/data/mapa.js` — corpo,
+cena, oficina e a saleta onde Silas recebe) ganham uma **planta baixa** que permite
+**andar entre cômodos** sem tocar o motor. Ao abrir qualquer nó da relojoaria, a visão
+pousa a planta no topo (`src/components/PlantaRelojoaria.jsx`, sobre o dado visual puro
+`src/data/planta_relojoaria.js`): SVG procedural em **traço de tinta sobre papel** — a
+loja com balcão e vitrine à frente, o corredor com a escada, o escritório dos fundos e a
+oficina ao fundo, a saleta, a porta do beco. O **escritório dos fundos é uma sala só com
+dois alvos** (o corpo jaz na cena): a sala tem os cliques "a cena" e "o corpo". Clicar num
+cômodo **viaja** para o nó (custo 0 — mesmo prédio, a regra de `mapa.js`) e reabre a
+localidade lá; o cômodo atual fica marcado "— aqui —". É SVG 2D puro: **funciona idêntico
+em `?flat=1`**; em tela estreita, colapsa numa régua horizontal de cômodos.
+
+Camada VISUAL: `planta_relojoaria.js` referencia os ids de nó pelos alvos, mas **nenhuma
+regra o lê** — trocar a planta nunca toca o jogo.
+
+**Pontos de interesse:** as localidades podem trazer o campo opcional
+`pontos: [{ id, rotulo, prosa }]` (mais um `introducao` de ambientação sem carta). Quando
+existem, a prosa monolítica se divide em **pontos clicáveis** (acordeão): clicar num ponto
+revela o parágrafo com os seus termos extraíveis — **coleta em camadas**. Cada ponto exibe
+um contador `n/total` das suas cartas. Restrição dura: **todo `[[id]]` extraível na
+localidade continua alcançável em algum ponto** — guarda estática no `scripts/qa.mjs`
+(cartas com `localidade === nó` ⊆ união dos `[[id]]` dos pontos). No vertical slice, a
+**cena** (a lareira, a escrivaninha, a vitrine e a porta do beco, a copa) e a **oficina**
+(a prateleira de gravar, o púlpito de ordens, a gaveta funda, o aprendiz) têm pontos; o
+corpo (exame 3D) e a saleta seguem em prosa contínua. Observação pura (guia §2): o ambiente
+descreve; quem estranha é o jogador.
+
 ---
 
 ## 6. Sistema de Cartas e Tags Ocultas (motor lógico)

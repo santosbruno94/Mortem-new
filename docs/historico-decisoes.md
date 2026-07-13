@@ -141,3 +141,45 @@ o que coletara.
 - **Sem prosa nova de jogo:** a ficha só reusa campos de carta existentes; o pipeline
   `revisar-prosa` não foi disparado (não há prosa nova/reescrita). Microcópia de UI
   ("Arquivar na mesa", "Ficha de coleta", "O legista") mantida em registro.
+
+## Fase 2 do overhaul (13/07/2026) — A planta da relojoaria + pontos de interesse
+
+Ordem de serviço: `PROMPT-overhaul-mortem.md`, FASE 2. Contexto: §5.1 novo. Objetivo:
+transformar a visita à relojoaria em exploração espacial **sem tocar o motor** — os 4
+nós do grupo `relojoaria` viram cômodos de uma planta baixa, e a prosa da cena e da
+oficina se divide em pontos de interesse (coleta em camadas).
+
+- **Decisão do usuário — o escritório dos fundos (corpo + cena numa sala só):** entre
+  (a) sala única com dois alvos, (b) dois cômodos lado a lado, (c) só a cena com o corpo
+  como ponto → **(a) sala única, dois alvos** ("a cena" / "o corpo"). Fiel à verdade
+  física (o corpo jaz na cena) e resolve 2-nós-1-sala sem inventar geografia.
+- **Decisão do usuário — quais nós ganham pontos nesta fase:** entre só a cena / cena +
+  oficina / cena + oficina + corpo → **cena + oficina**. Densidade espacial nos dois
+  cômodos que a comportam, sem invadir o exame do corpo (que o 3D já cobre) nem a saleta
+  (que a Fase 3 reescreve como diálogo). A planta para andar entre cômodos vale para os
+  4 nós em qualquer caso.
+- **Camada visual pura:** `src/data/planta_relojoaria.js` é geometria SVG procedural
+  (traço de tinta sobre papel), com os cômodos referenciando ids de nó pelos alvos —
+  **nenhuma regra o lê**, como o `mapa_espacial.js`. Zero asset externo.
+- **Andar = viajar de custo 0:** o clique no cômodo reusa `viajarPara` + `abrirOverlay`
+  (o mesmo handler do grid/diorama), então a paridade é por construção; dentro da
+  relojoaria o relógio não anda (regra de `mapa.js`, inalterada).
+- **Fallback `?flat=1` de graça:** a planta é SVG 2D — funciona idêntico sem WebGL; em
+  tela estreita colapsa numa régua horizontal de cômodos (alvos de toque ≥44px).
+- **Modelo de dados dos pontos:** campo opcional `pontos: [{ id, rotulo, prosa }]` +
+  `introducao` (ambientação sem carta) em `localidades.js`. `EventoLocalidade` renderiza
+  acordeão quando há pontos; senão, a prosa contínua de sempre — nenhuma localidade da
+  vila mudou. Estado de abertura é UI local (não toca o motor).
+- **Restrição dura provada pelo QA:** guarda nova no `scripts/qa.mjs` — para toda
+  localidade com pontos, as cartas com `localidade === nó` estão contidas na união dos
+  `[[id]]` dos pontos (nenhuma carta órfã) e todo `[[id]]` de ponto é carta real.
+- **Contrato do `qa-ui.mjs` atualizado no mesmo commit:** `[data-planta]`,
+  `[data-alvo="<no>"]` e `.ponto-interesse` entram nos seletores intocáveis; helper de
+  extração passa a abrir todos os pontos antes de varrer os termos; novo bloco (planta
+  presente → ponto começa fechado → abrir revela termos → extrair → andar por cômodo
+  não gasta relógio) e checagem da planta na rota flat.
+- **Prosa nova pelo pipeline:** os pontos e as introduções da cena e da oficina foram
+  redigidos pelo `escritor-prosa` e revisados por `editor-critico` + `perito-forense` +
+  `fiscal-continuidade` (zero achados bloqueantes) antes do commit. Observação pura: a
+  única voz que aponta o relógio de lareira é Wycliffe (viés da história A), fair-play;
+  o relógio irmão da oficina segue plantado como saber de graça.
