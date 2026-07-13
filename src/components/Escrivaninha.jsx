@@ -7,6 +7,7 @@ import RelogioBolso from './RelogioBolso.jsx';
 import MesaLocalidades2D from './MesaLocalidades2D.jsx';
 import Cena3DBoundary from './Cena3DBoundary.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
+import FichaEvidencia from './FichaEvidencia.jsx';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
@@ -27,6 +28,7 @@ export default function Escrivaninha() {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const somAtivo = useJogo((s) => s.somAtivo);
   const alternarSom = useJogo((s) => s.alternarSom);
+  const fichaAberta = useJogo((s) => s.fichaAberta);
 
   const mesaDesfocada = overlay !== null;
 
@@ -116,6 +118,10 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'alibis' && <PainelAlibis />}
       {overlay?.tipo === 'acusacao' && <MuralAcusacao />}
       {overlay?.tipo === 'monologo' && <MonologoFinal />}
+
+      {/* A Ficha de Coleta (§6.2) empilha ACIMA de qualquer overlay: a
+          evidência se apresenta no ato da extração e ao ser reconsultada. */}
+      {fichaAberta && <FichaEvidencia cartaId={fichaAberta} />}
     </div>
   );
 }

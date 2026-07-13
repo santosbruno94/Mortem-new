@@ -105,6 +105,13 @@ body {
   color: #2b2119;
 }
 
+/* FICHA DE COLETA (§6.2): a etiqueta de exposição/laudo que a evidência
+   veste ao ser coletada. Sobre o pergaminho, um fio de cera na margem
+   esquerda — a borda encerada de uma etiqueta pregada num mostruário. */
+.ficha-laudo {
+  border-left: 3px solid rgba(122, 98, 60, 0.55);
+}
+
 /* COURO DOS PAINÉIS: a moldura escura dos overlays — couro gasto com
    vinheta e costura de luz por dentro. */
 .painel-couro {

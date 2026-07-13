@@ -106,3 +106,38 @@ Ordem de serviço: `PROMPT-overhaul-mortem.md` (overhaul do vertical slice), FAS
   relevante — ensina no ato, mas mexe na gramática do motor e encolhe a armadilha;
   (c) feedback visual de "fio frouxo" — ensina sem bloquear, mas vaza o juízo do motor
   antes da submissão. Recomendação do agente: (a). Nada implementado.
+
+## Fase 1 do overhaul (13/07/2026) — A Ficha de Coleta
+
+Ordem de serviço: `PROMPT-overhaul-mortem.md` (overhaul do vertical slice), FASE 1.
+Contexto: §6.2 novo. Problema resolvido: ao coletar, a carta pousava mostrando só o
+título; `descricao`/`vozMestre` só viviam na Caderneta — o jogador coletava sem saber
+o que coletara.
+
+- **Camada de UI separada do overlay:** a ficha empilha *por cima* de qualquer overlay
+  (local, mesa, caderneta, mural), então não podia ocupar o slot único `overlay`.
+  Escolha: campo próprio `fichaAberta` (só o id da carta — dado puro, serializável,
+  sem `Math.random`/`Date.now`) + `abrirFicha`/`fecharFicha`; a ficha lê a carta já
+  registrada em `cartasRegistradas`, herdando o estado congelado na extração.
+- **A ficha abre no motor, não no componente:** `extrairCarta` e `medirTemperatura`
+  setam `fichaAberta` no mesmo `set`, então os dois caminhos de coleta (termo em
+  negrito e corpo 3D/hotspots) a abrem por construção — sem duplicar lógica na UI.
+- **Som:** o `tocarSom('papel')` saiu dos dois sítios de extração e passou para a
+  *abertura da ficha* (`FichaEvidencia` no mount) — um som por coleta, como pede a
+  ordem ("não duplicar o som da extração").
+- **Acesso dentro do Mural:** decisão do usuário entre ícone discreto / pressionar-e-
+  segurar / adiar → **ícone discreto** (um "§" `aria-hidden` no canto da carta, com
+  `stopPropagation` para não criar/desfazer ligação). Menos invasivo no arquivo mais
+  sensível ao contrato do QA; a mesma ficha continua alcançável pela mesa e pela
+  Caderneta.
+- **Caderneta rebaixada a diário:** "Observações reunidas" virou lista compacta
+  (carimbo + hora, cada linha reabrindo a ficha); `descricao`/`vozMestre` saíram da
+  lista. "Leitura do legista" e o diário seguem intactos.
+- **Contrato do `qa-ui.mjs` atualizado no mesmo commit:** cada extração agora abre uma
+  ficha que cobre o overlay, então o helper de extração passou a "Arquivar na mesa"
+  após cada termo; rótulo **"Arquivar na mesa"** e `data-overlay="ficha"` entram nos
+  textos intocáveis; novo bloco de checagem (extrai → confere ficha → arquiva → reabre
+  pela carta da mesa → confere que a Caderneta não traz mais a descrição).
+- **Sem prosa nova de jogo:** a ficha só reusa campos de carta existentes; o pipeline
+  `revisar-prosa` não foi disparado (não há prosa nova/reescrita). Microcópia de UI
+  ("Arquivar na mesa", "Ficha de coleta", "O legista") mantida em registro.

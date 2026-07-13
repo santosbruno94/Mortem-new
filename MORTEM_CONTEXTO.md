@@ -255,6 +255,28 @@ depois, despistes honestos, truques de álibi e encenação, regras de fair play
 de escalada da campanha) está em `docs/kb-craft-narrativo/` — leitura obrigatória antes
 de desenhar uma Verdade de Ouro nova.
 
+### 6.2 A Ficha de Coleta (a evidência se apresenta no ato)
+
+Extrair uma evidência **apresenta o que ela é, na hora**. Ao clicar num termo em
+negrito — ou no corpo 3D/hotspots — a carta se registra e sobe uma **Ficha de Coleta**
+por cima do local (estilo etiqueta de exposição / laudo de época):
+`textoDisplay`, a **descrição completa** (o exame de perto), a `vozMestre` em itálico
+quando a carta a tem, o carimbo, a hora do registro (`formatRelogio`) e, quando existe,
+a ponte "§ termo, no Glossário" (`verbeteParaCarta`). Botão único, **"Arquivar na
+mesa"**, fecha a ficha e devolve a carta à superfície (o som de papel toca na abertura
+da ficha, não na extração).
+
+A ficha é **consulta de custo zero** e reabre a qualquer momento: clicar numa carta
+pousada na mesa a reabre; dentro do Mural da Acusação, um "§" discreto no canto da
+carta a abre em leitura sem sair da estação. Implementação: `fichaAberta` no store
+(id puro, serializável) e `src/components/FichaEvidencia.jsx`; empilha acima dos demais
+overlays (`data-overlay="ficha"`, `z-50`).
+
+Consequência para a **Caderneta** (§5): rebaixada a **diário** — a lista de observações
+reunidas passa a ser compacta (carimbo + hora, cada linha reabrindo a ficha). A
+descrição de perto e a fala do legista moram na ficha, não na Caderneta; "Leitura do
+legista" e o diário da investigação seguem sendo a função verdadeira da Caderneta.
+
 ---
 
 ## 7. A leitura do mestre (a dica falada)
