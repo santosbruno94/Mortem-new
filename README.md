@@ -1,7 +1,7 @@
 # MORTEM
 
 Jogo de investigação forense em texto e cartas, ambientado na Inglaterra vitoriana (1893).
-Este repositório contém o **vertical slice jogável** do caso tutorial **"O Álibi de Corda"** —
+Este repositório contém o **vertical slice jogável** do caso **"A Hora Emprestada"** —
 da tela de título ao Monólogo do Detetive, com os 4 desfechos possíveis.
 
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md).
@@ -41,7 +41,7 @@ node scripts/qa-ui.mjs  # QA de fumaça da interface (requer Playwright + Chromi
 
 ## Como se joga
 
-1. **Escolha o perito** — Dr. Harlan ou Dr.ª Lenore Blackwell.
+1. **Atenda ao chamado** — o Dr. Harlan Blackwell ergue o convite da mesa.
 2. **Abertura** — da pensão em Caulfield ao briefing do Delegado Wycliffe (as perguntas ao
    delegado não custam tempo… mas plantam iscas).
 3. **Investigação** — tudo acontece sobre a escrivaninha. Localidades são cartas: clique para
@@ -55,7 +55,7 @@ node scripts/qa-ui.mjs  # QA de fumaça da interface (requer Playwright + Chromi
    → *Presença*, e fatos → depoimentos para **desmentir** uma mentira. Nada diz se você acertou.
 5. **Monólogo do detetive** — "Levar a julgamento" gera o monólogo de um dos **4 desfechos**
    (Vitória Absoluta, Sucesso com Gafes, Impunidade, Erro Judiciário): cada elo ligado vira uma
-   frase; cada elo faltante, um buraco. No tutorial é permitido revisar a acusação e tentar de novo.
+   frase; cada elo faltante, um buraco. No caso-escola é permitido revisar a acusação e tentar de novo.
 
 ## Stack
 
