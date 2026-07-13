@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
@@ -89,14 +89,31 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
   const posCartas = cartasOrdenadas.map(
     (carta, i) => posicoesCartas[carta.id] || posicaoPadraoCarta(i)
   );
-  // Altura rolável da superfície: alcança a carta mais baixa, com folga.
+  // Altura rolável da superfície: alcança a carta mais baixa, com folga para
+  // a última fileira respirar acima do rodapé da escrivaninha (achado A8).
   const alturaConteudo = Math.max(
     comDiorama ? 200 : 440,
-    ...[...posLoc, ...posCartas].map((p) => p.y + 160)
+    ...[...posLoc, ...posCartas].map((p) => p.y + 184)
   );
 
+  // Afordância de rolagem (A8): quando há cartas abaixo da dobra, a borda
+  // inferior esmaece — anuncia que a mesa continua. Puro efeito visual.
+  const [maisAbaixo, setMaisAbaixo] = useState(false);
+  const medirDobra = useCallback(() => {
+    const el = refMesa.current;
+    if (!el) return;
+    setMaisAbaixo(el.scrollHeight - el.scrollTop - el.clientHeight > 16);
+  }, []);
+  useEffect(() => {
+    medirDobra();
+  }, [medirDobra, alturaConteudo, larguraMesa]);
+
   return (
-    <div ref={refMesa} className="absolute inset-0 overflow-y-auto overflow-x-hidden">
+    <div
+      ref={refMesa}
+      onScroll={medirDobra}
+      className="absolute inset-0 overflow-y-auto overflow-x-hidden"
+    >
       {/* Localidades são nós do mapa (§5/§7) — no modo 2D. Clicar VIAJA
           até lá; só a viagem gasta o relógio. O mapa CRESCE: só aparecem
           os nós desbloqueados (Moorford surge ao ler um lead). */}
@@ -125,7 +142,7 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
                 )}
               </p>
               <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
-              <p className="text-stone-400 text-[10px] mt-2 tracking-wide">
+              <p className="text-stone-300 text-[10px] mt-2 tracking-wide">
                 {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
               </p>
             </div>
@@ -155,6 +172,15 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
 
       {/* Espaçador: garante que a rolagem alcance a carta mais baixa */}
       <div aria-hidden style={{ height: alturaConteudo }} />
+
+      {/* A borda esmaecida que anuncia mais cartas abaixo da dobra (A8):
+          fica presa ao pé da janela de rolagem e some ao alcançar o fim. */}
+      <div
+        aria-hidden
+        className={`pointer-events-none sticky bottom-0 -mt-14 h-14 bg-gradient-to-t from-[#0b0906] to-transparent transition-opacity duration-300 ${
+          maisAbaixo ? 'opacity-90' : 'opacity-0'
+        }`}
+      />
     </div>
   );
 }

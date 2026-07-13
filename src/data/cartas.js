@@ -463,6 +463,9 @@ export const CARTAS = [
       declaranteId: 'moco_padeiro',
       horaAvistamentoDeclarada: 5.25, // 05h15 de 14/out
       isca: true,
+      // Refutada, esta alegação dá ao epílogo o direito de explicar a luz
+      // (ROTULOS_EXPLICACAO.luz_esquecida) — o encerramento paga o "aha".
+      explicacao: 'luz_esquecida',
     },
   },
   {

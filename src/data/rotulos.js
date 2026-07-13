@@ -53,3 +53,12 @@ export const ROTULOS_PERIFERICO = {
   inocente_segredo: 'Inocente — mas guarda um segredo',
   sem_info: 'Sem juízo a declarar',
 };
+
+// A explicação que o ENCERRAMENTO paga quando a alegação-isca correspondente
+// foi refutada (tag `explicacao` na carta; coletada pelo veredicto). É o
+// parágrafo do epílogo que conta o fato verdadeiro por trás da leitura falsa
+// — nunca aparece durante a investigação.
+export const ROTULOS_EXPLICACAO = {
+  luz_esquecida:
+    'A luz vista de madrugada teve explicação mais simples que um homem vivo: o lampião da bancada, aceso desde a véspera, queimou sozinho até secar o depósito. Era essa a claridade que o moço do padeiro tomou pelo velho a trabalhar.',
+};

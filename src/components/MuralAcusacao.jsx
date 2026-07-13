@@ -342,8 +342,10 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
                     return (
                       <span key={sp.id}>
                         {sp.nome}: <span className="text-stone-200">{rotuloJuizo(acusacao.juizos[sp.id])}</span>
+                        {/* Forma neutra: o nome da carta tem gênero próprio
+                            ("a Cesta…", "o Registro…") — nada de "pelo" fixo. */}
                         {acusacao.juizos[sp.id] === 'inocente' && v && (
-                          <span className="text-stone-400"> — pelo {v.textoDisplay}</span>
+                          <span className="text-stone-400"> — paradeiro desmentido por “{v.textoDisplay}”</span>
                         )}
                       </span>
                     );
@@ -584,11 +586,33 @@ function EstacaoMentiras({ acusacao, mentirasAlvo, fontesMentiras, adicionarLiga
 function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao, rotuloAlvos, rotuloFontes }) {
   const [origem, setOrigem] = useState(null);
 
-  const colunas = Math.max(alvos.length, fontes.length, 1);
+  // A mesa acompanha a largura real do painel (A6 do playtest de 13/07/2026):
+  // com muitos fatos, a fileira única estourava a tela e cortava a última
+  // carta. Acima do teto de colunas, as cartas QUEBRAM em nova fileira — os
+  // barbantes seguem os centros, e nada fica fora do alcance do clique.
+  const refMedida = useRef(null);
+  const [larguraDisponivel, setLarguraDisponivel] = useState(() => window.innerWidth - 48);
+  useEffect(() => {
+    const el = refMedida.current;
+    if (!el || typeof ResizeObserver === 'undefined') return;
+    const observador = new ResizeObserver(() => el.clientWidth && setLarguraDisponivel(el.clientWidth));
+    observador.observe(el);
+    if (el.clientWidth) setLarguraDisponivel(el.clientWidth);
+    return () => observador.disconnect();
+  }, []);
+
+  const colunasMax = Math.max(
+    2,
+    Math.floor((larguraDisponivel - MARGEM * 2 + ESPACO) / (CARD_W + ESPACO))
+  );
+  const VAO_FILEIRAS = 14; // respiro entre fileiras da MESMA banda (alvos ou fontes)
+  const filaAltura = (n) => Math.ceil(Math.max(n, 1) / colunasMax) * (CARD_H + VAO_FILEIRAS) - VAO_FILEIRAS;
+
+  const colunas = Math.min(Math.max(alvos.length, fontes.length, 1), colunasMax);
   const largura = MARGEM * 2 + colunas * (CARD_W + ESPACO) - ESPACO;
   const yAlvos = MARGEM + ROTULO_H;
-  const yFontes = yAlvos + CARD_H + VAO_LINHAS;
-  const altura = yFontes + CARD_H + MARGEM;
+  const yFontes = yAlvos + filaAltura(alvos.length) + VAO_LINHAS;
+  const altura = yFontes + filaAltura(fontes.length) + MARGEM;
 
   const idx = {};
   alvos.forEach((a, i) => (idx[a.id] = { fila: 'alvo', i }));
@@ -597,8 +621,9 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
   function caixa(id) {
     const e = idx[id];
     if (!e) return null;
-    const x = MARGEM + e.i * (CARD_W + ESPACO);
-    const y = e.fila === 'alvo' ? yAlvos : yFontes;
+    const x = MARGEM + (e.i % colunasMax) * (CARD_W + ESPACO);
+    const yBase = e.fila === 'alvo' ? yAlvos : yFontes;
+    const y = yBase + Math.floor(e.i / colunasMax) * (CARD_H + VAO_FILEIRAS);
     return { x, y };
   }
   function centro(id) {
@@ -635,6 +660,9 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
     ) : null;
 
   return (
+    // O invólucro mede a largura viva do painel; a mesa interna usa a largura
+    // calculada (nunca maior que a disponível, graças ao teto de colunas).
+    <div ref={refMedida} className="w-full">
     <div
       className="relative"
       style={{ width: largura, height: altura }}
@@ -694,6 +722,7 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
           </button>
         );
       })}
+    </div>
     </div>
   );
 }

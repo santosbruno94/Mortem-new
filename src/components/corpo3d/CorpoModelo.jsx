@@ -16,10 +16,11 @@ import { CORES_PELE } from '../../data/aparencias.js';
 // =====================================================================
 
 const COR_PANO = '#7d7565';
-const COR_COLETE = '#3a2d1e';
-const COR_BANCADA = '#443626';
+const COR_COLETE = '#4b3a27';
+const COR_BANCADA = '#54452f';
 const COR_LIVOR = '#4c1d43';
-const COR_SULCO = '#5c2e2e';
+const COR_FERIDA = '#3d0f0f';
+const COR_SANGUE_SECO = '#4a1a14';
 
 // Pose dos membros por estado do rigor: o corpo "tábua" do rigor pleno
 // afrouxa aos poucos até o desalinho do rigor resolvido.
@@ -83,20 +84,17 @@ export default function CorpoModelo({ ipm }) {
         </mesh>
         <Membro posicao={[-0.66, 0.02, 0]} comprimento={0.16} raio={0.06} cor={pele} />
 
-        {/* Sulco cervical HORIZONTAL (a assinatura da ligadura) */}
-        <mesh position={[-0.66, 0.02, 0]} rotation={[0, 0, Math.PI / 2]}>
-          <torusGeometry args={[0.068, 0.012, 6, 16]} />
-          <meshStandardMaterial color={COR_SULCO} flatShading />
+        {/* A ferida do caso: boca estreita sob o ângulo esquerdo do
+            maxilar, com a mancha escura que desceu à gola (seed: ferida
+            por arma branca — nada de sulco nem petéquias, que são sinais
+            de asfixia e não pertencem a este corpo). */}
+        <mesh position={[-0.7, 0.065, 0.045]} rotation={[0.35, 0, 0.5]} scale={[1, 0.4, 0.7]}>
+          <sphereGeometry args={[0.028, 8, 6]} />
+          <meshStandardMaterial color={COR_FERIDA} flatShading />
         </mesh>
-
-        {/* Petéquias: pontos nos olhos entreabertos */}
-        <mesh position={[-0.9, 0.13, 0.05]}>
-          <sphereGeometry args={[0.012, 6, 6]} />
-          <meshStandardMaterial color="#7f1d1d" emissive="#7f1d1d" emissiveIntensity={0.4} />
-        </mesh>
-        <mesh position={[-0.9, 0.13, -0.05]}>
-          <sphereGeometry args={[0.012, 6, 6]} />
-          <meshStandardMaterial color="#7f1d1d" emissive="#7f1d1d" emissiveIntensity={0.4} />
+        <mesh position={[-0.63, 0.045, 0.05]} rotation={[0.3, 0, 0]} scale={[1.6, 0.5, 1]}>
+          <sphereGeometry args={[0.035, 8, 6]} />
+          <meshStandardMaterial color={COR_SANGUE_SECO} flatShading />
         </mesh>
 
         {/* Tronco (colete abotoado) e quadril */}

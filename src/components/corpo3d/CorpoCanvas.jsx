@@ -49,10 +49,11 @@ export default function CorpoCanvas({ ipm }) {
       <CameraExame />
 
       {/* Luz de exame: fria e crua por cima (o ofício), com um resto de
-          vela quente de canto (o lugar). */}
-      <directionalLight position={[1, 4, 2]} intensity={1.7} color="#cdd6df" />
-      <directionalLight position={[-3, 1.5, -1]} intensity={0.5} color="#f4c07a" />
-      <ambientLight intensity={0.75} color="#8c8478" />
+          vela quente de canto (o lugar). Intensidades francas: a mesa de
+          exame precisa LER, não só ambientar (achado A5 do playtest). */}
+      <directionalLight position={[1, 4, 2]} intensity={2.6} color="#d6dde4" />
+      <directionalLight position={[-3, 1.5, -1]} intensity={0.9} color="#f4c07a" />
+      <ambientLight intensity={1.2} color="#9a9184" />
 
       <CorpoModelo ipm={ipm} />
 

@@ -85,7 +85,12 @@ anti-padrões proibidos) está em `docs/guia-de-estilo.md`; o idioleto de cada p
 em `docs/biblia-de-vozes.md`. A verdade histórica do cenário (arquitetura, sociedade,
 rotinas, vestuário de 1893) está em `docs/kb-mundo-vitoriano/` — prosa de ambientação e
 elencos de casos novos nascem de lá. Eventos de investigação são prosa imersiva com
-**termos clicáveis em negrito** inline — clicar extrai a carta correspondente.
+**termos clicáveis em negrito** inline — clicar extrai a carta correspondente. Uma
+localidade pode trazer **prosa condicional** (`prosaCondicional`: parágrafos que só
+entram quando as cartas exigidas já estão na mesa — ex.: o confronto da segunda visita
+ao réu depois do registro da estalagem; reação observável, nunca confissão), e o
+overlay do caso-escola exibe o contador "N de M observações registradas aqui"
+(regalia pedagógica — o procedural pode omitir).
 
 **Estética visual:** mesa de madeira escura à luz de vela — e a matéria disso está na
 tela: veios de madeira e grão procedurais (gradientes + ruído SVG, sem assets externos),
@@ -404,7 +409,12 @@ citado vem do sinal que cravou a causa, nunca de um vestígio avulso.
 **salgado com o nome do perito** (nunca `Math.random`) — a mesma partida repete o
 texto; seeds diferentes tendem a ler desfechos diferentes. O teto do guia §3 (no máximo
 UMA máxima por desfecho) é garantido **por construção**: cada variante declara
-`maxima`, e abertura-máxima só sorteia fechos sem máxima.
+`maxima`, e abertura-máxima só sorteia fechos sem máxima. Os **blocos de periféricos**
+também têm variantes (um pool por situação; a escolha desloca pela ordem de ocorrência
+— dois periféricos vizinhos do mesmo tipo nunca repetem a frase), e a menção a
+"razões contra a vítima" só entra quando uma carta de móbil apontando o periférico
+está na mesa (`temMotivoNaMesa` no veredicto) — o contrato vale também para o que se
+diz dos não-acusados.
 
 ### Retentativa (regalia do caso-escola — com preço)
 
@@ -420,11 +430,15 @@ próximos casos não herdarem a regalia por omissão.
 ### Epílogo e retrato (o encerramento paga o investimento)
 
 "Encerrar o caso" não recarrega a página de imediato: abre o **Epílogo**
-(`src/logic/epilogo.js`) — 2 a 4 parágrafos de consequência por templates universais
-(o destino do réu conforme o desfecho; o periférico do segredo, exposto ou não; a
-conta do perito) — seguido de **O retrato da investigação**: horas usadas, lugares
-visitados, observações registradas, acusações levadas a julgamento. Só então "Fechar o
-caderno" encerra de fato.
+(`src/logic/epilogo.js`) — parágrafos de consequência por templates universais
+(o destino do réu conforme o desfecho; o periférico do segredo, exposto ou não, com
+variantes anti-eco; as **explicações pagas** — alegações-isca refutadas cuja tag
+`explicacao` vira o parágrafo de `ROTULOS_EXPLICACAO` que conta o fato verdadeiro por
+trás da leitura falsa, ex.: a luz do padeiro era o lampião esquecido; a conta do
+perito, que flexiona pela **hora do selo**) — seguido de **O retrato da investigação**:
+horas usadas, lugares visitados (nomeando o que ficou por visitar entre os nós
+desbloqueados — nunca os não revelados), observações registradas, acusações levadas a
+julgamento. Só então "Fechar o caderno" encerra de fato.
 
 ---
 

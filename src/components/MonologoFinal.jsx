@@ -37,6 +37,7 @@ export default function MonologoFinal() {
   const revisarAcusacao = useJogo((s) => s.revisarAcusacao);
   const horasJogo = useJogo((s) => s.horasJogo);
   const nosVisitados = useJogo((s) => s.nosVisitados);
+  const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const nSubmissoes = useJogo((s) => s.nSubmissoes);
   const [encerrando, setEncerrando] = useState(false);
@@ -52,8 +53,13 @@ export default function MonologoFinal() {
 
   // ---------------- O encerramento: epílogo + retrato (Q5) ----------------
   if (encerrando) {
-    const epilogo = gerarEpilogo(veredicto);
+    const epilogo = gerarEpilogo(veredicto, { horasSelo: horasJogo });
     const duracao = horasJogo - HORAS_CHEGADA_CENA;
+    // O que ficou por abrir: só nós que o jogador CHEGOU a desbloquear —
+    // nomear um lugar nunca revelado entregaria conteúdo de graça.
+    const porVisitar = LOCALIDADES.filter(
+      (loc) => nosDesbloqueados.includes(loc.id) && !nosVisitados.includes(loc.id)
+    ).map((loc) => loc.rotuloMesa);
     return (
       <Overlay titulo={`${monologo.titulo} — Epílogo`} subtitulo="O caso, selado">
         {/* O título do desfecho vive no header do Overlay (serif, gravado);
@@ -75,6 +81,9 @@ export default function MonologoFinal() {
           <ul className="space-y-1.5 text-sm text-stone-300">
             <li><span className="text-latao-claro/60" aria-hidden="true">―</span> Chegada às {formatHora(HORAS_CHEGADA_CENA)}; caso selado em {formatRelogio(horasJogo)} — {formatDuracao(duracao)} de investigação.</li>
             <li><span className="text-latao-claro/60" aria-hidden="true">―</span> {nosVisitados.length} de {LOCALIDADES.length} lugares visitados.</li>
+            {porVisitar.length > 0 && (
+              <li><span className="text-latao-claro/60" aria-hidden="true">―</span> Ficou por visitar: {porVisitar.join(', ')}.</li>
+            )}
             <li><span className="text-latao-claro/60" aria-hidden="true">―</span> {cartasRegistradas.length} de {TOTAL_OBSERVACOES} observações registradas na mesa.</li>
             <li><span className="text-latao-claro/60" aria-hidden="true">―</span> {nSubmissoes === 1 ? 'Uma acusação levada a julgamento.' : `${nSubmissoes} acusações levadas a julgamento.`}</li>
           </ul>
