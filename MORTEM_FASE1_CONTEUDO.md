@@ -1,5 +1,9 @@
 # MORTEM — Fase 1: Conteúdo de Design (rascunho para aprovação)
 
+> **DOCUMENTO HISTÓRICO (jun/2026).** Descreve o conteúdo do caso antigo, "O Álibi de
+> Corda", substituído em 13/07/2026 pela reescrita **"A Hora Emprestada"** (ver
+> `MORTEM_CONTEXTO.md` §14 e `docs/historico-decisoes.md`). Nada aqui é normativo.
+>
 > Este é o **portão de conteúdo**. Nada de lógica foi implementado. É o rascunho do material
 > criativo (perecíveis, mapa, voz do mestre, currículo de hábitos, a mentira do tutorial)
 > para **você aprovar ou ajustar** antes de eu tocar em qualquer código. Tudo em português,

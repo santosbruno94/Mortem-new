@@ -3,12 +3,11 @@ import TelaPersonagem from './components/TelaPersonagem.jsx';
 import Abertura from './components/Abertura.jsx';
 import Escrivaninha from './components/Escrivaninha.jsx';
 
-// Atalho de desenvolvimento: ?direto (ou ?direto=lenore) pula a seleção
-// e a abertura, caindo direto na escrivaninha às 11h00 de 14/out.
+// Atalho de desenvolvimento: ?direto pula a seleção e a abertura,
+// caindo direto na escrivaninha às 11h00 de 14/out.
 const params = new URLSearchParams(window.location.search);
 if (params.has('direto')) {
-  const opcao = params.get('direto') === 'lenore' ? 'lenore' : 'harlan';
-  useJogo.getState().escolherDetective(opcao);
+  useJogo.getState().escolherDetective('harlan');
   useJogo.getState().iniciarInvestigacao();
 }
 

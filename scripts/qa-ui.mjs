@@ -13,13 +13,13 @@
 //   • extração por clique nos termos em negrito das localidades;
 //   • o Mural da Acusação inteiro (5 estações, barbantes, revisão final),
 //     SEM o gabarito do legista no topo (Q3);
-//   • a personagem Lenore (interpolações de gênero);
-//   • o desbloqueio de Moorford pelos dois leads, com anúncio no diário,
-//     e o álibi do réu derrubado pelo registro do clube (Q4);
+//   • as interpolações {detective.campo}/{g:...} resolvidas na prosa;
+//   • o desbloqueio do Gabinete Pettigrew pelos dois leads, com anúncio no
+//     diário, e o álibi do réu derrubado pelo registro da estalagem (Q4);
 //   • a retentativa com preço (2h) e o mural reaberto na pendência (Q2/Q9);
 //   • o Erro Judiciário sem nome do culpado até o epílogo, e o epílogo com
 //     o retrato da investigação (Q2/Q5);
-//   • REGRESSÕES: id interno vazando no monólogo ("la_cinzenta") e
+//   • REGRESSÕES: id interno vazando no monólogo ("buril_gravador") e
 //     "NaN/Infinity" na leitura do legista com janela aberta (Caderneta);
 //   • zero erros de console em todas as rotas.
 // =====================================================================
@@ -175,36 +175,38 @@ async function main() {
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Cena do Crime');
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'A Delegacia'); // desbloqueia Moorford (lead das dívidas)
+    await visitarEExtrair(page, 'A Oficina'); // desbloqueia o Gabinete (lead do livro de ordens)
     await fecharOverlay(page);
-    checar('Rota 1: Moorford desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
-    await visitarEExtrair(page, 'Edgar Arthurs');
+    checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
+    await visitarEExtrair(page, 'Silas Crane');
     checar('Rota 1: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'Sra. Hudson');
+    await visitarEExtrair(page, 'A Delegacia');
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'Thomas Blackwood');
+    await visitarEExtrair(page, 'A Estalagem');
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'Clube de Moorford');
+    await visitarEExtrair(page, 'Sra. Agnes Rooke');
+    await fecharOverlay(page);
+    await visitarEExtrair(page, 'O Moinho');
     await fecharOverlay(page);
 
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
     await espera(page, 500);
     // Q3: o mural não traz mais o gabarito do legista pendurado.
     checar('Rota 1: mural sem o lembrete do legista', !(await page.locator('body').innerText()).includes('LEMBRETE DO LEGISTA'));
-    await definirJanela(page, 'dia 13 · 20h', 'dia 13 · 23h');
-    await page.getByRole('button', { name: 'Estrangulamento por ligadura', exact: true }).click();
+    await definirJanela(page, 'dia 13 · 21h', 'dia 13 · 22h');
+    await page.getByRole('button', { name: 'Ferida por arma branca', exact: true }).click();
     await concluirParte(page);
-    await page.getByRole('button', { name: 'Edgar Arthurs', exact: true }).click();
+    await page.getByRole('button', { name: 'Silas Crane', exact: true }).click();
     await espera(page, 200);
-    await page.getByRole('button', { name: /Fibras Claras no Punho do Casaco/ }).click();
+    await page.getByRole('button', { name: /Buril Claro no Estojo/ }).click();
     await espera(page, 200);
     await page.locator('text=PRESENÇA — O RÉU NA CENA').click();
     await espera(page, 250);
     await concluirParte(page);
-    // Mentiras: rigor e livores derrubam a vizinha E o relógio forjado (Q1);
-    // o registro de Moorford derruba o paradeiro do réu (Q4).
-    for (const alvo of [/Vizinha Jura/, /Relógio de Lareira Esmagado/]) {
+    // Mentiras: rigor e livores derrubam o padeiro E o mostrador forjado (Q1);
+    // o registro da estalagem derruba o paradeiro do réu (Q4).
+    for (const alvo of [/Luz Vista de Madrugada/, /Relógio de Lareira Esmagado/]) {
       for (const fato of [/Corpo Endurecido/, /Manchas Arroxeadas/]) {
         await page.getByRole('button', { name: fato }).last().click();
         await espera(page, 200);
@@ -212,25 +214,32 @@ async function main() {
         await espera(page, 250);
       }
     }
-    await page.getByRole('button', { name: /Edgar Saiu do Clube/ }).last().click();
+    await page.getByRole('button', { name: /O Quarto Cinco às Escuras/ }).last().click();
     await espera(page, 200);
-    await page.getByRole('button', { name: /Jantar no Clube Comercial/ }).last().click();
+    await page.getByRole('button', { name: /Recolhido à Estalagem às Oito/ }).last().click();
     await espera(page, 250);
     await concluirParte(page);
-    await page.getByRole('button', { name: 'Herdeiro Único: Edgar Arthurs' }).click();
+    await page.getByRole('button', { name: 'Consertos reclamados na coluna de S.C.' }).click();
     await concluirParte(page);
-    // Juízos: Hudson inocente com a mentira exposta; Blackwood inocente.
+    // Juízos: Walter e Agnes inocentes com as mentiras expostas; Grey e
+    // Davey inocentes de paradeiro firmado.
     checar('Rota 1: retratos nos Juízos do mural', (await page.locator('svg[data-retrato]').count()) >= 2);
     await page.getByRole('button', { name: 'Inocente', exact: true }).first().click();
     await espera(page, 300);
-    await page.getByRole('button', { name: /Xale de Lã Cinzenta/ }).last().click();
+    await page.getByRole('button', { name: /Registro da Estalagem/ }).last().click();
     await espera(page, 200);
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(1).click();
+    await espera(page, 300);
+    await page.getByRole('button', { name: /Cesta de Ceia para Dois/ }).last().click();
+    await espera(page, 200);
+    await page.getByRole('button', { name: 'Inocente', exact: true }).nth(2).click();
+    await espera(page, 200);
+    await page.getByRole('button', { name: 'Inocente', exact: true }).nth(3).click();
     await espera(page, 200);
 
     let texto = await julgar(page);
     checar('Rota 1: desfecho Vitória Absoluta', texto.includes('Vitória Absoluta'));
-    checar('Rota 1: monólogo sem id interno vazado', !/la_cinzenta|fibra_canhamo/.test(texto));
+    checar('Rota 1: monólogo sem id interno vazado', !/buril_gravador|vidro_mostrador|carta_suplica|assinatura_registro|cesta_ceia/.test(texto));
     checar('Rota 1: monólogo sem NaN/Infinity', !/NaN|Infinity/.test(texto));
     checar('Rota 1: monólogo narra o álibi do réu desmentido (Q4)', texto.includes('O registro desmente o paradeiro'));
     // Q5: o encerramento paga com epílogo + retrato da investigação.
@@ -243,28 +252,27 @@ async function main() {
     await espera(page, 800);
 
     // ============================================================
-    // ROTA 2 — APRESSADO (Lenore): iscas primeiro, corpo tarde,
+    // ROTA 2 — APRESSADO (Harlan): iscas primeiro, corpo tarde,
     // acusa a governanta. Esperado: Erro Judiciário.
     // ============================================================
-    console.log('\n=== ROTA 2 — Apressado (Lenore) → Erro Judiciário ===');
-    await novaPartida(page, 'Lenore Blackwell');
+    console.log('\n=== ROTA 2 — Apressado (Harlan) → Erro Judiciário ===');
+    await novaPartida(page, 'Dr. Harlan Blackwell');
 
     await visitarEExtrair(page, 'A Cena do Crime');
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'Edgar Arthurs'); // desbloqueia Moorford (lead do álibi)
+    await visitarEExtrair(page, 'A Delegacia'); // o testamento desbloqueia o Gabinete
     await fecharOverlay(page);
     await page.click('text=Caderneta');
     await espera(page, 400);
     checar('Rota 2: diário anuncia o novo destino no mapa', (await page.locator('body').innerText()).includes('Novo destino no mapa'));
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'Clube de Moorford'); // a viagem-isca
+    await visitarEExtrair(page, 'Gabinete Pettigrew'); // a viagem-isca
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'Sra. Hudson');
-    await fecharOverlay(page);
-    await visitarEExtrair(page, 'Thomas Blackwood');
+    await visitarEExtrair(page, 'A Estalagem');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'O Corpo'); // só agora, degradado
-    checar('Rota 2: interpolação de gênero (a perita)', (await page.locator('body').innerText()).includes('perita'));
+    const corpoTexto = await page.locator('body').innerText();
+    checar('Rota 2: interpolações resolvidas na prosa (sem marcador cru)', !corpoTexto.includes('{g:') && !corpoTexto.includes('{detective.'));
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
     await fecharOverlay(page);
@@ -272,20 +280,20 @@ async function main() {
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
     await espera(page, 500);
     await definirJanela(page, 'dia 13 · 18h', 'dia 14 · 08h'); // larga
-    await page.getByRole('button', { name: 'Estrangulamento por ligadura', exact: true }).click();
+    await page.getByRole('button', { name: 'Ferida por arma branca', exact: true }).click();
     await concluirParte(page);
-    await page.getByRole('button', { name: 'Sra. Mabel Hudson', exact: true }).click();
+    await page.getByRole('button', { name: 'Walter Arthurs', exact: true }).click();
     await espera(page, 200);
-    await page.getByRole('button', { name: /Fio de Lã Cinzenta na Gaveta/ }).click();
+    await page.getByRole('button', { name: /Carta Amassada em Bola/ }).click();
     await espera(page, 200);
     await page.locator('text=PRESENÇA — O RÉU NA CENA').click();
     await espera(page, 250);
     // "Mentiu, logo matou": sem mentiras confrontadas, sem móbil, sem juízos.
     texto = await julgar(page);
     checar('Rota 2: desfecho Erro Judiciário', texto.includes('Erro Judiciário'));
-    checar('Rota 2: sem id interno vazado', !texto.includes('la_cinzenta'));
+    checar('Rota 2: sem id interno vazado', !texto.includes('carta_suplica'));
     // Q2: com a retentativa de pé, o culpado NÃO é nomeado no monólogo.
-    checar('Rota 2: erro não nomeia o culpado antes do encerramento', !texto.includes('Edgar Arthurs'));
+    checar('Rota 2: erro não nomeia o culpado antes do encerramento', !texto.includes('Silas Crane'));
     // Q2: revisar custa horas — o relógio anda 2h (16h00 → 18h00).
     await page.getByRole('button', { name: /Revisar a acusação/ }).click();
     await espera(page, 700);
@@ -298,7 +306,7 @@ async function main() {
     await page.getByRole('button', { name: 'Encerrar o caso' }).click();
     await espera(page, 700);
     const epilogoErro = await textoOverlay(page);
-    checar('Rota 2: epílogo do erro revela o verdadeiro autor', epilogoErro.includes('Edgar Arthurs'));
+    checar('Rota 2: epílogo do erro revela o verdadeiro autor', epilogoErro.includes('Silas Crane'));
     await page.getByRole('button', { name: 'Fechar o caderno' }).click();
     await espera(page, 800);
 
@@ -309,7 +317,7 @@ async function main() {
     console.log('\n=== ROTA 3 — Intuitivo (Harlan) → Impunidade ===');
     await novaPartida(page, 'Dr. Harlan Blackwell');
 
-    await visitarEExtrair(page, 'Edgar Arthurs');
+    await visitarEExtrair(page, 'Silas Crane');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Delegacia'); // inclui o "visto com vida" (janela aberta)
     await fecharOverlay(page);
@@ -327,17 +335,20 @@ async function main() {
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
     await espera(page, 500);
     await definirJanela(page, 'dia 13 · 20h', 'dia 14 · 08h'); // larga
-    await page.getByRole('button', { name: 'Enforcamento', exact: true }).click(); // chute
+    await page.getByRole('button', { name: 'Trauma contuso', exact: true }).click(); // chute
     await concluirParte(page);
-    await page.getByRole('button', { name: 'Edgar Arthurs', exact: true }).click();
+    await page.getByRole('button', { name: 'Silas Crane', exact: true }).click();
     await espera(page, 200);
     await concluirParte(page); // sem vestígio
     await concluirParte(page); // sem mentiras
-    await page.getByRole('button', { name: 'Herdeiro Único: Edgar Arthurs' }).click();
-    await concluirParte(page);
+    await concluirParte(page); // sem carta de móbil ligada a este réu
     await page.getByRole('button', { name: 'Sem juízo', exact: true }).first().click();
     await espera(page, 150);
     await page.getByRole('button', { name: 'Sem juízo', exact: true }).nth(1).click();
+    await espera(page, 150);
+    await page.getByRole('button', { name: 'Sem juízo', exact: true }).nth(2).click();
+    await espera(page, 150);
+    await page.getByRole('button', { name: 'Sem juízo', exact: true }).nth(3).click();
     await espera(page, 150);
     texto = await julgar(page);
     checar('Rota 3: desfecho Impunidade', texto.includes('Impunidade'));
@@ -354,9 +365,9 @@ async function main() {
     await espera(page, 400);
     checar('Rota flat: extração pela prosa funciona', (await page.locator('.termo-extraido').count()) >= 3);
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'A Delegacia'); // viagem pela grade 2D (lead de Moorford)
+    await visitarEExtrair(page, 'A Delegacia'); // viagem pela grade 2D (lead do Gabinete)
     await fecharOverlay(page);
-    checar('Rota flat: Moorford desbloqueado pela grade 2D', (await page.locator('body').innerText()).includes('Clube de Moorford'));
+    checar('Rota flat: Gabinete desbloqueado pela grade 2D', (await page.locator('body').innerText()).includes('Gabinete Pettigrew'));
 
     // ============================================================
     checar('Zero erros de console em todas as rotas', errosConsole.length === 0);

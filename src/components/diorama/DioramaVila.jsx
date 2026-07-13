@@ -71,7 +71,7 @@ export default function DioramaVila({ aoAbrirNo }) {
   const overlayAberto = useJogo((s) => s.overlay) !== null;
 
   const locsVisiveis = LOCALIDADES.filter((loc) => nosDesbloqueados.includes(loc.id));
-  const moorfordVisivel = nosDesbloqueados.includes('clube_moorford');
+  const moorfordVisivel = nosDesbloqueados.includes('gabinete_pettigrew');
 
   return (
     <Canvas
@@ -104,7 +104,7 @@ export default function DioramaVila({ aoAbrirNo }) {
       {locsVisiveis.map((loc) => {
         const pos = POSICOES_DIORAMA[loc.id];
         if (!pos) return null;
-        const forma = FORMAS_PREDIO[pos.predio] || FORMAS_PREDIO.casa_grande;
+        const forma = FORMAS_PREDIO[pos.predio] || FORMAS_PREDIO.estalagem;
         const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
         return (
           <Predio

@@ -7,25 +7,30 @@
 // MESMOS de NOS_MAPA — trocar a maquete nunca toca o jogo.
 //
 // Coordenadas em "metros de maquete" (unidades do three): x cresce para
-// a direita, z para a frente. A vila fica ao centro-esquerda; Moorford,
-// na ponta direita da estrada (longe — 1h30 de viagem por trecho).
+// a direita, z para a frente. A vila fica ao centro-esquerda; Moorford
+// (o gabinete do procurador), na ponta direita da estrada (longe — 1h30
+// de viagem por trecho).
 // =====================================================================
 
 export const POSICOES_DIORAMA = {
   // O quarteirão da relojoaria (mesmo prédio — andar entre eles é 0h).
-  cena: { x: -2.7, z: -1.0, predio: 'relojoaria' },
-  corpo: { x: -3.5, z: 0.4, predio: 'relojoaria_fundos' },
-  interrogatorio_edgar: { x: -1.8, z: 0.7, predio: 'saleta' },
+  // Os rótulos são <Html center> no topo de cada prédio: manter ≥1,4u de
+  // afastamento horizontal entre vizinhos, ou os botões se interceptam.
+  cena: { x: -2.9, z: -1.3, predio: 'relojoaria' },
+  corpo: { x: -4.4, z: 0.5, predio: 'relojoaria_fundos' },
+  oficina: { x: -2.7, z: 1.2, predio: 'oficina' },
+  interrogatorio_silas: { x: -1.3, z: -0.1, predio: 'saleta' },
   // A vila de Briarstone.
-  delegacia: { x: 0.5, z: -1.2, predio: 'civico' },
-  interrogatorio_hudson: { x: 1.6, z: 0.4, predio: 'casa_grande' },
-  interrogatorio_blackwood: { x: -0.1, z: 1.4, predio: 'taverna' },
+  delegacia: { x: 0.6, z: -1.3, predio: 'civico' },
+  estalagem: { x: 2.0, z: 0.1, predio: 'estalagem' },
+  papelaria: { x: 0.4, z: 1.5, predio: 'papelaria' },
+  moinho: { x: 3.3, z: 1.4, predio: 'moinho' },
   // Fora da vila, na ponta da estrada.
-  clube_moorford: { x: 5.3, z: -1.5, predio: 'clube' },
+  gabinete_pettigrew: { x: 5.3, z: -1.5, predio: 'gabinete' },
 };
 
-// A estrada de Moorford (polilinha sobre a maquete). Só aparece quando
-// o nó é desbloqueado — o mapa CRESCE diante do jogador.
+// A estrada para Moorford (polilinha sobre a maquete). Só aparece quando
+// o nó distante é desbloqueado — o mapa CRESCE diante do jogador.
 export const ESTRADA_MOORFORD = [
   { x: 1.9, z: -0.3 },
   { x: 3.1, z: -0.9 },
@@ -38,11 +43,13 @@ export const ESTRADA_MOORFORD = [
 export const FORMAS_PREDIO = {
   relojoaria: { w: 1.55, d: 1.15, h: 1.05, telhado: 0.6, chamine: true, corParede: '#8a7355', corTelhado: '#4a3626' },
   relojoaria_fundos: { w: 0.95, d: 0.85, h: 0.66, telhado: 0.4, chamine: false, corParede: '#7d684c', corTelhado: '#443328' },
+  oficina: { w: 1.0, d: 0.8, h: 0.6, telhado: 0.38, chamine: true, corParede: '#83704e', corTelhado: '#463527' },
   saleta: { w: 0.85, d: 0.75, h: 0.58, telhado: 0.36, chamine: true, corParede: '#84704f', corTelhado: '#4a3626' },
   civico: { w: 1.3, d: 0.95, h: 0.98, telhado: 0.52, chamine: false, corParede: '#7b7468', corTelhado: '#3e3a34' },
-  casa_grande: { w: 1.4, d: 1.05, h: 0.9, telhado: 0.56, chamine: true, corParede: '#8d7a5a', corTelhado: '#4d3a29' },
-  taverna: { w: 1.25, d: 0.95, h: 0.78, telhado: 0.5, chamine: true, corParede: '#967a4e', corTelhado: '#523c28' },
-  clube: { w: 1.35, d: 1.05, h: 1.1, telhado: 0.6, chamine: true, corParede: '#77705f', corTelhado: '#3a352d' },
+  estalagem: { w: 1.45, d: 1.05, h: 0.92, telhado: 0.56, chamine: true, corParede: '#8d7a5a', corTelhado: '#4d3a29' },
+  papelaria: { w: 0.95, d: 0.8, h: 0.72, telhado: 0.44, chamine: true, corParede: '#96825e', corTelhado: '#523c28' },
+  moinho: { w: 0.9, d: 0.9, h: 1.35, telhado: 0.5, chamine: false, corParede: '#8a8272', corTelhado: '#3e3a34' },
+  gabinete: { w: 1.35, d: 1.05, h: 1.1, telhado: 0.6, chamine: true, corParede: '#77705f', corTelhado: '#3a352d' },
 };
 
 // A tábua da maquete (a peça pousada sobre a mesa) e o seu centro ótico.

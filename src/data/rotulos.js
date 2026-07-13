@@ -21,14 +21,18 @@ export const ROTULOS_MECANISMO = {
 
 export const ROTULOS_INSTRUMENTO = {
   fibra_canhamo: 'corda de cânhamo',
+  buril_gravador: 'buril de gravador',
 };
 
 // Rótulos dos vestígios (material), usados no Confronto ao cravar o nexo
 // e como fallback do monólogo quando o vestígio ligado não é o instrumento.
 export const ROTULOS_VESTIGIO = {
   fibra_canhamo: 'fibra de cânhamo',
-  la_cinzenta: 'lã cinzenta',
-  lenco_monograma: 'lenço de linho com monograma',
+  buril_gravador: 'buril de gravador',
+  vidro_mostrador: 'vidro de mostrador',
+  cesta_ceia: 'cesta de ceia',
+  carta_suplica: 'carta de súplica',
+  assinatura_registro: 'assinatura no registro da estalagem',
 };
 
 export const ROTULOS_ESTADO_CENA = {
@@ -41,6 +45,7 @@ export const ROTULOS_MOTIVO = {
   heranca: 'a herança',
   dividas: 'as dívidas',
   rancor: 'o rancor',
+  silenciamento: 'o silêncio sobre a fraude descoberta',
 };
 
 export const ROTULOS_PERIFERICO = {

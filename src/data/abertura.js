@@ -22,7 +22,7 @@ export const PASSOS_ABERTURA = [
     titulo: 'Batem à porta',
     paragrafos: [
       'A Sra. Potts não espera resposta: entra com o castiçal numa mão e um envelope na outra, e pousa o envelope sobre a mesa.',
-      '"Veio a cavalo, de Briarstone. O rapaz disse que era para entregar em mãos, e que o delegado de lá manda dizer que é urgente." Fica onde está, o olhar no lacre, na cara {g:do hóspede|da hóspede}. "Briarstone. Então mataram alguém por lá."',
+      '"Veio a cavalo, de Briarstone. O rapaz disse que era para entregar em mãos, e que o delegado de lá manda dizer que é urgente." Fica onde está, o olhar no lacre, no rosto {g:do hóspede|da hóspede}. "Briarstone. Então mataram alguém por lá."',
     ],
     rotuloBotao: 'Abrir o envelope',
   },
@@ -31,7 +31,7 @@ export const PASSOS_ABERTURA = [
     titulo: 'A carta do Delegado',
     carta: true,
     paragrafos: [
-      '"{detective.title} {detective.surname} — Escrevo na qualidade de delegado de Briarstone e na condição, que não me envergonho de confessar, de homem fora da sua profundidade. O Sr. Geoffrey Arthurs, relojoeiro desta vila, foi achado morto esta manhã no escritório dos fundos da sua loja. Do estado em que o achamos, não sei dizer mais do que isto sem me arriscar a dizer tolice."',
+      '"{detective.title} {detective.surname} — Escrevo na qualidade de delegado de Briarstone e na condição, que não me envergonho de confessar, de homem fora da sua profundidade. O Sr. Geoffrey Arthurs, relojoeiro desta vila, foi achado morto esta manhã no escritório dos fundos da sua loja, com a garganta aberta e a casa revirada."',
       '"Deixei tudo como estava; mandei que nada se tocasse. Peço-lhe que venha pelo primeiro trem. Briarstone paga os seus honorários e, se for o caso, o seu silêncio. — Lemuel Wycliffe, Delegado."',
     ],
     rotuloBotao: 'Aceitar o chamado',
@@ -49,8 +49,8 @@ export const PASSOS_ABERTURA = [
     id: 'briarstone',
     titulo: 'Briarstone',
     paragrafos: [
-      'Briarstone estende-se ao longo de uma única rua: a igreja num extremo, a taverna no meio, a relojoaria de cortina cerrada, e à porta dela um guarda moço, pálido, as mãos cruzadas às costas.',
-      'O Delegado Wycliffe espera na plataforma e aperta a mão {g:do perito|da perita} com um alívio que não disfarça. "{detective.title} {detective.surname}. Agradeço a presteza. O Sr. Arthurs está como o encontramos ontem de manhã… esta manhã, quero dizer. Venha. Explico-me pelo caminho, que andando me saio melhor."',
+      'Briarstone estende-se ao longo de uma única rua: a igreja num extremo, a estalagem de pátio largo, a papelaria de vitrine arrumada, a relojoaria de cortina cerrada — e à porta dela um guarda moço, pálido, as mãos cruzadas às costas.',
+      'O Delegado Wycliffe espera na plataforma e aperta a mão {g:do perito|da perita} com um alívio que não disfarça. "{detective.title} {detective.surname}. Agradeço a presteza. O Sr. Arthurs está como o encontramos ontem… esta manhã, quero dizer. Venha. Explico-me pelo caminho, que andando me saio melhor."',
     ],
     rotuloBotao: 'Ouvir o delegado',
   },
@@ -59,7 +59,7 @@ export const PASSOS_ABERTURA = [
     titulo: 'O relato do Delegado Wycliffe',
     briefing: true,
     paragrafos: [
-      '"O essencial é isto: Sr. Geoffrey Arthurs, sessenta e um anos, relojoeiro. Achado morto esta manhã no escritório dos fundos. Quem o achou foi o sobrinho, Edgar, às nove e meia. A loja estava fechada desde a noite de sexta, dia 13."',
+      '"O essencial é isto: Sr. Geoffrey Arthurs, sessenta e um anos, relojoeiro. Achado morto no escritório dos fundos, sábado às nove e vinte da manhã, por Silas Crane — o oficial dele, homem de doze anos de casa. A porta do beco forçada, o troco do caixa levado, a loja fechada desde a noite de sexta, dia 13."',
       'Detém-se diante da relojoaria e baixa a voz. "Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}; aqui fora, ainda posso ser útil."',
     ],
     rotuloBotao: 'Entrar — iniciar a investigação',
@@ -67,46 +67,40 @@ export const PASSOS_ABERTURA = [
 ];
 
 // Perguntas do briefing (custo zero). As respostas plantam dados e
-// iscas: o relógio das 09h00, o testamento, as dívidas, a briga.
+// iscas: o relógio das 08h45, a luz da madrugada, o testamento, a queixa.
 export const PERGUNTAS_BRIEFING = [
   {
     id: 'sobre_a_morte',
     pergunta: 'O que se sabe sobre a hora da morte?',
     resposta:
-      '"Aí é que está a sorte: o escritório foi revirado, e na confusão o relógio da lareira caiu e parou. Nove em ponto. O sobrinho achou o corpo às nove e meia — o assassino mal teria virado a esquina. É o que eu penso, veja bem. O que {g:o senhor|a senhora} pensa, com o corpo à frente, é que vale."',
+      '"Aí é que a sorte nos ajuda: na confusão, o relógio da lareira veio ao chão e parou num quarto para as nove. E o moço do padeiro viu luz na oficina às cinco e pouco da madrugada. Vivo às cinco, morto antes das nove e vinte — o ladrão mal teria virado a esquina. É o que eu penso, veja bem. O que {g:o senhor|a senhora} pensar, com o corpo à frente, é que vale."',
   },
   {
     id: 'quem_herda',
     pergunta: 'Quem herda com essa morte?',
     resposta:
-      '"O sobrinho, Edgar Arthurs. Parente único, herdeiro único. O testamento está nos meus arquivos, e junto dele umas cartas de cobrança que {g:o senhor|a senhora} talvez queira ler. Digo só isso; não me cabe temperar a sopa antes do cozinheiro."',
+      '"O sobrinho, Walter Arthurs, negociante em Moorford — parente único, herdeiro único. O testamento está nos meus arquivos, e junto dele umas cartas de cobrança que {g:o senhor|a senhora} talvez queira ler. Digo só isso; não me cabe temperar a sopa antes do cozinheiro."',
   },
   {
     id: 'inimigos',
-    pergunta: 'O morto tinha inimigos declarados?',
+    pergunta: 'O morto tinha desafetos declarados?',
     resposta:
-      '"Um, e dos que gritam: Thomas Blackwood, taverneiro do The Crossed Keys. Devia ao velho e, há três semanas, trocaram ameaças diante de meia taverna. Está no meu livro de ocorrências. Se ódio bastasse para matar, eu já teria prendido o homem e ido dormir."',
+      '"De véspera, por sinal: Caleb Grey, o moleiro, esteve na loja sexta à tarde devolvendo um conserto, aos brados, e ainda passou na delegacia para lavrar queixa. E um carroceiro veio me contar de outros gritos na loja, ao cair da mesma tarde. Sexta movimentada, para um homem que morreu nela… isto é, que pode ter morrido no sábado, como diz o relógio. {g:O senhor|A senhora} me entende."',
   },
   {
     id: 'quem_vive',
-    pergunta: 'Quem mais vivia com a vítima?',
+    pergunta: 'Quem vivia ou trabalhava com a vítima?',
     resposta:
-      '"Só a governanta, a Sra. Mabel Hudson. Dezessete anos na casa, mulher de igreja. Anda abalada, coitada, mal alinha duas palavras. A casa é grande; ela dormia no quarto dos fundos, lá em cima."',
+      '"Viúvo, sem filhos; morava sobre a própria loja. Na oficina, dois: Silas Crane, o oficial que o achou, e o aprendiz, o rapazinho Tull. Fora isso, a vila — e a Sra. Rooke, da papelaria em frente, que era das poucas visitas que o velho recebia."',
   },
 ];
 
-// Descrições da tela de seleção (§12)
+// Descrição da tela de seleção (§12): um único perito atende ao chamado.
 export const OPCOES_PERSONAGEM = [
   {
     id: 'harlan',
     nome: 'Dr. Harlan Blackwell',
     descricao:
       'Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem. Trata os delegados com a cortesia exata de quem preferia não precisar deles.',
-  },
-  {
-    id: 'lenore',
-    nome: 'Dr.ª Lenore Blackwell',
-    descricao:
-      'A primeira perita licenciada da Inglaterra — licença que três condados ainda se recusam a reconhecer. Aprendeu cedo que cada prova sua precisa ser três vezes mais sólida quando o nome assinado no laudo é de mulher. Assina assim mesmo.',
   },
 ];

@@ -43,6 +43,24 @@ export const GLOSSARIO = [
       'O corpo ainda morno ao toque, medido ao termômetro. A diferença para os 37°C, em graus, aproxima as horas decorridas — com margem prudente de duas horas para mais e para menos.',
   },
   {
+    id: 'rotina_interrompida',
+    termo: 'A Rotina Interrompida',
+    dominio: 'temporal',
+    definicao:
+      'Um hábito invariável do morto — a corda do relógio à hora certa, o lampião apagado ao deitar, a porta trancada — vale por testemunha: cumprido, prova vida à sua hora; por cumprir, prova que a morte veio antes dela. O relógio de bolso comum guarda trinta horas de marcha; parado de corda solta, a hora do mostrador, contadas trinta horas para trás, dá a última vez que uma mão o armou.',
+    sinalObservavel:
+      'Relógio de bolso parado com a mola vazia e a máquina sã; a rotina que o alimentava, conhecida por quem convivia com o morto, fixa o teto da janela.',
+  },
+  {
+    id: 'registro_mecanico',
+    termo: 'O Registro Mecânico (roda de contagem)',
+    dominio: 'temporal',
+    definicao:
+      'Num relógio de badalar, a roda de contagem governa quantas vezes o martelo cai a cada hora vencida, e a alavanca repousa no entalhe da última hora batida. Se roda e ponteiros não concordam — a máquina soou as nove, mas o mostrador diz menos —, moveram os ponteiros à mão; a parada da máquina data-se entre a última batida dada e a seguinte, que não veio.',
+    sinalObservavel:
+      'Roda de contagem num entalhe que não concorda com os ponteiros. A faixa entre a batida dada e a batida ausente é registro fixo: não degrada com o passar das horas.',
+  },
+  {
     id: 'ipm_convergencia',
     termo: 'Intervalo Post-Mortem (convergência)',
     dominio: 'temporal',
@@ -141,6 +159,15 @@ export const GLOSSARIO = [
     definicao:
       'Lesão por instrumento cortante ou perfurante: bordas nítidas e regulares. A profundidade costuma exceder o comprimento da abertura nas perfurações.',
     sinalObservavel: 'Cortes de margens limpas e regulares; ferimentos perfurantes profundos.',
+  },
+  {
+    id: 'ferida_incisa',
+    termo: 'Ferida Incisa e Perfuro-Incisa (leitura da boca)',
+    dominio: 'causal',
+    definicao:
+      'A lâmina divide sem esmagar: bordas nítidas, sem ponte de tecido — o critério que a separa da pancada. Na ferida incisa, o corte é mais comprido que fundo; na perfuro-incisa, o trajeto excede o comprimento da boca. Os ângulos da abertura deixam ler o instrumento: lâmina de um gume deixa uma extremidade aguda e outra romba; haste de faces, como as de gravar e cinzelar, deixa a boca em losango.',
+    sinalObservavel:
+      'Abertura estreita de bordas limpas, mais funda que comprida. A forma da boca — em cauda, em fenda, em losango — aponta a família do instrumento, nunca a peça exata.',
   },
   {
     id: 'arma_de_fogo',

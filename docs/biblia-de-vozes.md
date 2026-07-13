@@ -39,7 +39,8 @@
 ## Delegado Lemuel Wycliffe
 
 - **Quem é:** delegado de vila, honesto e fora de sua profundidade; quer o caso fechado
-  para poder jantar. Confia no óbvio (o relógio das 09 h).
+  para poder jantar. Confia no óbvio (a "história A": relógio das 08h45 + luz da
+  madrugada = ladrão de fora).
 - **Registro:** cordial, prolixo, provinciano-formal. Adora uma frase que se ache
   espirituosa e às vezes tropeça nela.
 - **Ritmo:** períodos que começam firmes e se desdizem no meio ("isto é… quero dizer…").
@@ -51,47 +52,74 @@
 - **Amostra:** *"Se o Pruitt a viu sobre o corpo à meia-noite, é prender a governanta e
   ir jantar. Mas o palpite é meu; a perícia, essa, é do senhor."*
 
-## Edgar Arthurs (o assassino, polido)
+## Silas Crane (o assassino — o artífice solícito)
 
-- **Quem é:** sobrinho herdeiro, 38, culto, controladíssimo. Cooperação é a máscara.
-- **Registro:** urbano, ensaiado, gentil em excesso. Fala do tribunal antes de ser
-  perguntado.
-- **Ritmo:** completo, sem gaguejo, **rápido demais** — responde antes de a pergunta
-  fechar. A fluência é o defeito (ninguém enlutado é tão articulado).
-- **Léxico:** de homem de posses e leitura; oferece chá, cita horas com precisão de
-  quem as decorou.
-- **Tique:** antecipa a suspeita e a desarma com cortesia ("imagino que o senhor vá
-  querer saber de…"). Precisão suspeita nos horários do próprio álibi.
-- **Amostra:** *"Fui eu quem o encontrou, às nove e meia. A porta dos fundos arrombada,
-  o escritório naquele estado. O senhor há de querer o resto do relógio, suponho."*
+- **Quem é:** primeiro-oficial da relojoaria, 47, doze anos de casa; achou o corpo.
+  Trocava ouro dos consertos por metal vil; matou para calar a denúncia. A solicitude
+  técnica é a máscara.
+- **Registro:** manso, deferente, de bancada. Fala pouco de si e muito do ofício.
+- **Ritmo:** medido, sem pressa; dá as horas do próprio álibi **sem procurá-las na
+  memória** (a precisão é o defeito). As mãos, sempre quietas.
+- **Léxico:** de oficina (corda, coroa, mola, entalhe, conserto); trata o perito com
+  a cerimônia de quem serve há décadas ("com licença de dizer").
+- **Tique:** oferece teoria sobre o ladrão a quem não pediu — e volta a ela, com
+  variações, ao longo da conversa. Nunca pergunta o que a perícia achou.
+- **Amostra:** *"Doze anos nesta casa. Fui eu que o achei, ontem às nove e vinte, e
+  mandei o rapaz correr à delegacia. Gente da estrada, digo eu — atrás do caixa."*
 
-## Sra. Mabel Hudson (a inocente que mente)
+## Walter Arthurs (a isca — o herdeiro quebrado)
 
-- **Quem é:** governanta, 55, dezessete anos de casa; furtou o escritório à meia-noite e
-  mente por vergonha, não por sangue.
-- **Registro:** contido, defensivo, de criada que sabe o seu lugar e o guarda.
-- **Ritmo:** **curto**, monossilábico sob pressão; frases decoradas ditas rápido demais
-  (o álibi soa recitado). Cede à pergunta, mas pede para ir embora.
-- **Léxico:** doméstico (a casa, a ceia, o avental, o corredor); nada técnico, nada
-  literário.
-- **Tique:** desvia para o dever ("tenho a casa toda por fazer"); os olhos vão para a
-  porta que ela não menciona.
-- **Amostra:** *"Recolhi-me às nove, como sempre. Só desci às sete. Posso ir? A casa não
-  se faz sozinha."*
+- **Quem é:** sobrinho e herdeiro único, 44, negociante de Moorford em ruína; implorou
+  dinheiro ao tio na sexta, foi recusado aos gritos e pernoitou na estalagem
+  escrevendo súplicas. Mente por humilhação, não por sangue.
+- **Registro:** verboso, defensivo, digno-ofendido; explica-se antes de acusado.
+- **Ritmo:** períodos longos que começam altivos e acabam em queixa; alisa o colarinho
+  ao dar as horas.
+- **Léxico:** de praça (credores, fazendas, juízo, diligência, adiantamento).
+- **Tique:** cita credores e somas pelo nome, como quem confere uma lista; volta
+  sempre a "disso nunca fiz segredo".
+- **Amostra:** *"Os meus negócios vão mal, e disso nunca fiz segredo. Da herança
+  falem os outros; eu falo do que devo, que ao menos é meu."*
 
-## Thomas Blackwood (o ruído — desafeto de álibi sólido)
+## Sra. Agnes Rooke (a inocente que mente — o decoro)
 
-- **Quem é:** taverneiro, 42, devia ao morto e o odiava em público; álibi verdadeiro e
-  corroborado. Não finge luto.
-- **Registro:** rude, direto, alto. O oposto de Edgar: nada de máscara.
-- **Ritmo:** frases secas, de balcão; interrompe o serviço para nada. Fala e volta a
-  secar canecas.
-- **Léxico:** de taverna (fregueses, feira, sábado, caneca, juros); franco até a
-  grosseria, mas sem crueldade calculada.
-- **Tique:** admite o que os outros esconderiam (o ódio, a dívida) e por isso soa, no
-  fundo, o mais limpo. **Não** usa metáfora do mecanismo do crime (proibição do guia §4).
-- **Amostra:** *"Odiava o velho, sim. Devia-lhe dinheiro e ele me cobrava. Quer os nomes
-  de quem me viu no balcão a noite toda? Tome doze e não me faça perder freguês."*
+- **Quem é:** viúva, 58, dona da papelaria; noiva secreta da vítima (o casamento
+  marcado revogaria o testamento). Ceou com ele às 20h de sexta e mente por decoro.
+- **Registro:** formal, econômico, de dona de loja que não deve satisfação.
+- **Ritmo:** respostas exatas do tamanho da pergunta; nada de monossílabo servil —
+  frase inteira, e ponto final.
+- **Léxico:** de papelaria e de luto (papel de carta, tarja, encomenda, serão).
+- **Tique:** ao nome do morto, a mão procura a beira do balcão; a voz não muda. Alinha
+  o que estiver ao alcance (cadernos, lombos de livro) enquanto responde.
+- **Amostra:** *"Fechei a loja às seis e recolhi-me. Uma viúva não tem serões. Há mais
+  alguma coisa?"*
+
+## Caleb Grey (o ruído — a queixa legítima)
+
+- **Quem é:** moleiro, 46; devolveu à loja um relógio de caça "mais leve" e lavrou
+  queixa na véspera da morte. Não mente; o rancor dele é o registro público da fraude
+  de outro homem.
+- **Registro:** rústico, direto, de quem fala contando sacas.
+- **Ritmo:** seco, sem rodeio; não para o serviço para responder.
+- **Léxico:** de moinho e feira (sacas, jornal, carroceiro, pesagem); repete a soma do
+  prejuízo sem errar um xelim.
+- **Tique:** exige testemunha e papel para tudo ("os nomes, anote aí"); a honestidade
+  agressiva o faz soar, no fundo, o mais limpo.
+- **Amostra:** *"Fui roubado dentro da loja dele e ainda paguei o conserto adiantado.
+  Se me perguntam se choro, não choro."*
+
+## Davey Tull (o aprendiz — a resposta decorada)
+
+- **Quem é:** aprendiz, 15, dois anos de oficina. O oficial lhe ensaiou o "saímos
+  juntos às sete e meia"; mente por medo do gaffer, não por malícia.
+- **Registro:** curto, obediente, de menino de ofício diante de gente grande.
+- **Ritmo:** depressa e **sempre com as mesmas palavras, na mesma ordem** — a recitação
+  é o defeito. Sobre qualquer outro assunto, fala solto e observador.
+- **Léxico:** de aprendiz (o patrão, o Sr. Crane, a bancada, a marmita, a sopa da mãe).
+- **Tique:** não ergue os olhos do serviço ao responder o ensaiado; ergue-os, curioso,
+  para tudo o mais.
+- **Amostra:** *"Saímos juntos às sete e meia, o Sr. Crane e eu. Ele foi para a
+  estalagem, eu para casa. Minha mãe serviu a sopa às oito."*
 
 ## Sra. Potts (a senhoria de Caulfield)
 
@@ -104,19 +132,20 @@
 - **Amostra:** *"Veio a cavalo, de Briarstone. Urgente, disse o rapaz. Briarstone…
   então mataram alguém por lá."*
 
-## As testemunhas de fundo (Sra. Gale, Sr. Pruitt)
+## As testemunhas de fundo (o moço do padeiro, a Sra. Wick, o guarda Tobin, o estalajadeiro)
 
-- **Função:** produzir a alegação que o corpo desmente (o avistamento falso; a acusação
-  falsa contra a governanta). Aparecem citados no registro do delegado, não em cena.
+- **Função:** produzir a alegação que o corpo desmente (a "luz do velho" às 05h15) ou
+  o registro que sustenta (a vitrine fechada às 20h; o quarto às escuras às 21h; a
+  senhora na viela). Aparecem citados no registro do delegado ou falam uma linha só.
 - **Registro:** relato de terceiros, filtrado pela voz de quem conta (em geral
-  Wycliffe). Convictos no nome, vacilantes no resto ("vacila sobre a luz, a hora — não
-  sobre o nome").
+  Wycliffe). Convictos no que viram, prudentes no que não viram ("conhece o passo,
+  diz, mas não jura").
 - **Regra:** a alegação é dada como declarada, **nunca** endossada nem desmentida pelo
   narrador. A contradição é trabalho do jogador.
 
 ## O perito (o monólogo final — voz do jogador)
 
-- **Quem é:** Harlan ou Lenore Blackwell (texto compartilhado; a voz é "o perito"). Fala
+- **Quem é:** o Dr. Harlan Blackwell (a voz é "o perito"). Fala
   em primeira pessoa ao fim, recolhendo a cadeia que montou.
 - **Registro:** sóbrio, introspectivo, de quem julga o próprio trabalho. Primeira pessoa.
 - **Ritmo:** medido; **no máximo uma máxima por desfecho**, guardada para o fecho (guia

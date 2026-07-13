@@ -1,27 +1,35 @@
 // =====================================================================
-// VERDADE DE OURO do caso tutorial "O Álibi de Corda".
+// VERDADE DE OURO do caso "A Hora Emprestada".
 // Lida APENAS pelo motor de veredicto. Jamais exposta ao jogador.
 //
 // Convenção de tempo do jogo inteiro:
 //   HORA ABSOLUTA = horas contadas a partir da meia-noite de 14/out/1893.
-//   Valores negativos pertencem ao dia 13/out (ex.: -2 = 22h00 de 13/out).
+//   Valores negativos pertencem ao dia 13/out (ex.: -3 = 21h00 de 13/out).
 //   A chegada do perito à cena ocorre na hora absoluta 11 (11h00 de 14/out).
+//
+// O caso, em uma linha: o primeiro-oficial Silas Crane, com doze anos de
+// casa, vinha trocando ouro dos consertos por metal vil; descoberto na
+// sexta, matou o mestre às 21h com o próprio buril e encenou um roubo
+// alheio — o relógio da lareira, RECUADO para 08h45 e esmagado, é a
+// hora emprestada que dá nome ao caso.
 // =====================================================================
 
 export const SEED_TUTORIAL = {
-  id: 'o_alibi_de_corda',
+  id: 'a_hora_emprestada',
   vitima: 'Sr. Geoffrey Arthurs',
-  reuCorreto: 'edgar_arthurs',
-  horasMorteAntesChegada: 13, // morte às 22h00 de 13/out; chegada às 11h00 de 14/out
-  horaMorteAbsoluta: -2, // 22h00 de 13/out na escala absoluta (derivada: 11 - 13)
-  mecanismoCorreto: 'estrangulamento_ligadura',
-  instrumentoCorreto: 'fibra_canhamo',
-  motivacaoCorreta: 'heranca',
+  reuCorreto: 'silas_crane',
+  horasMorteAntesChegada: 14, // morte às 21h00 de 13/out; chegada às 11h00 de 14/out
+  horaMorteAbsoluta: -3, // 21h00 de 13/out na escala absoluta (derivada: 11 - 14)
+  mecanismoCorreto: 'ferida_arma_branca',
+  instrumentoCorreto: 'buril_gravador',
+  motivacaoCorreta: 'silenciamento',
   cenaEncenada: true,
-  horaForjada: 9, // o relógio esmagado aponta 09h00 de 14/out
+  horaForjada: 8.75, // o relógio esmagado aponta 08h45 de 14/out
   perifericos: {
-    thomas_blackwood: { veredictoEsperado: 'inocente_alibi', segredo: null },
-    sra_hudson: { veredictoEsperado: 'inocente_segredo', segredo: 'mentira_alibi' },
+    walter_arthurs: { veredictoEsperado: 'inocente_segredo', segredo: 'suplica_recusada' },
+    agnes_rooke: { veredictoEsperado: 'inocente_segredo', segredo: 'noivado_secreto' },
+    caleb_grey: { veredictoEsperado: 'inocente_alibi', segredo: null },
+    davey_tull: { veredictoEsperado: 'inocente_alibi', segredo: null },
   },
 };
 
@@ -30,28 +38,44 @@ export const SEED_TUTORIAL = {
 // ---------------------------------------------------------------------
 export const SUSPEITOS = [
   {
-    id: 'edgar_arthurs',
-    nome: 'Edgar Arthurs',
-    idade: 38,
-    relacao: 'Sobrinho e único herdeiro da vítima',
+    id: 'silas_crane',
+    nome: 'Silas Crane',
+    idade: 47,
+    relacao: 'Primeiro-oficial da relojoaria há doze anos; achou o corpo',
     descricao:
-      'Polido, cooperativo, de luto impecável. Atende a cada pergunta antes que ela termine de ser feita.',
+      'Mãos quietas, avental de couro, fala mansa de bancada. Oferece teoria sobre o ladrão a quem não pediu nenhuma.',
   },
   {
-    id: 'sra_hudson',
-    nome: 'Sra. Mabel Hudson',
-    idade: 55,
-    relacao: 'Governanta da casa há dezessete anos',
+    id: 'walter_arthurs',
+    nome: 'Walter Arthurs',
+    idade: 44,
+    relacao: 'Sobrinho e único herdeiro; negociante de Moorford',
     descricao:
-      'Mãos que não param quietas. Responde curto, olha para a porta, pede licença duas vezes por frase.',
+      'Colarinho de negociante e botas gastas. Explica-se antes de acusado e cita credores pelo nome, como quem confere uma lista.',
   },
   {
-    id: 'thomas_blackwood',
-    nome: 'Thomas Blackwood',
-    idade: 42,
-    relacao: 'Taverneiro do The Crossed Keys; desafeto público da vítima',
+    id: 'agnes_rooke',
+    nome: 'Sra. Agnes Rooke',
+    idade: 58,
+    relacao: 'Viúva, dona da papelaria da High Street',
     descricao:
-      'Não finge pesar. Devia dinheiro ao morto e diz, sem que ninguém pergunte, que não chora por ele.',
+      'Meio-luto rigoroso, broche de azeviche. Responde o que se pergunta, nem uma palavra além, e mede o visitante por cima dos óculos.',
+  },
+  {
+    id: 'caleb_grey',
+    nome: 'Caleb Grey',
+    idade: 46,
+    relacao: 'Moleiro; na sexta-feira, devolveu à loja um conserto com queixa formal',
+    descricao:
+      'Pó de farinha nas costuras e a queixa na ponta da língua. Repete a soma do prejuízo sem errar um xelim.',
+  },
+  {
+    id: 'davey_tull',
+    nome: 'Davey Tull',
+    idade: 15,
+    relacao: 'Aprendiz da relojoaria há dois anos',
+    descricao:
+      'Magro, atento, o olho no que as mãos dos outros fazem. Responde depressa; perguntado de novo, não muda uma palavra.',
   },
 ];
 

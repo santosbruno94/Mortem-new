@@ -1,9 +1,8 @@
 import { useJogo } from '../store/jogo.js';
 import { OPCOES_PERSONAGEM } from '../data/abertura.js';
 
-// Tela inicial: escolha entre Dr. Harlan e Dr.ª Lenore Blackwell (§12).
-// A mesa de madeira à luz de vela recebe dois convites de papel;
-// quem atende ao chamado ergue o seu da mesa.
+// Tela inicial (§12): um único convite de papel pousa na mesa de madeira
+// à luz de vela; o Dr. Harlan Blackwell ergue-o e atende ao chamado.
 export default function TelaPersonagem() {
   const escolherDetective = useJogo((s) => s.escolherDetective);
 
@@ -23,16 +22,16 @@ export default function TelaPersonagem() {
           §
         </div>
         <p className="mt-4 text-stone-400 text-sm tracking-[0.3em] text-center">
-          O Álibi de Corda — Briarstone, 1893
+          A Hora Emprestada — Briarstone, 1893
         </p>
 
         <p className="mt-14 sm:mt-16 mb-8 sm:mb-10 font-serif italic text-lg sm:text-xl text-amber-200/90 text-center">
           Quem atende ao chamado?
         </p>
 
-        {/* Dois convites de pergaminho sobre a mesa: o papel se ergue
+        {/* Um convite de pergaminho sobre a mesa: o papel se ergue
             sob o cursor (.carta-mesa cuida do gesto de hover) */}
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 w-full max-w-3xl">
+        <div className="flex justify-center w-full max-w-md">
           {OPCOES_PERSONAGEM.map((opcao) => (
             <button
               key={opcao.id}

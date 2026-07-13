@@ -15,11 +15,9 @@ import { HORAS_CHEGADA_CENA, ipmAtual, formatDuracao } from '../logic/tempo.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 
-// Constrói o objeto detective do §12 a partir da escolha na tela inicial.
-export function buildDetective(opcao) {
-  if (opcao === 'lenore') {
-    return { name: 'Lenore', surname: 'Blackwell', pronoun: 'ela', treatment: 'Sra.', title: 'Dr.ª' };
-  }
+// Constrói o objeto detective do §12. Há um único perito jogável; o shape
+// (pronoun etc.) permanece porque as interpolações {g:...} são estruturais.
+export function buildDetective() {
   return { name: 'Harlan', surname: 'Blackwell', pronoun: 'ele', treatment: 'Sr.', title: 'Dr.' };
 }
 

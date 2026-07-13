@@ -402,7 +402,7 @@ citado vem do sinal que cravou a causa, nunca de um vestígio avulso.
 
 **Variação determinística:** as variantes de abertura e fecho saem de hash da seed
 **salgado com o nome do perito** (nunca `Math.random`) — a mesma partida repete o
-texto; Harlan e Lenore tendem a ler desfechos diferentes. O teto do guia §3 (no máximo
+texto; seeds diferentes tendem a ler desfechos diferentes. O teto do guia §3 (no máximo
 UMA máxima por desfecho) é garantido **por construção**: cada variante declara
 `maxima`, e abertura-máxima só sorteia fechos sem máxima.
 
@@ -428,30 +428,29 @@ caderno" encerra de fato.
 
 ---
 
-## 12. Personagens jogáveis
+## 12. Personagem jogável
 
-Dois peritos, sobrenome compartilhado **Blackwell** (minimiza variações de texto):
+Um único perito (decisão de jul/2026 — a perita Lenore foi removida do escopo):
 
 - **Dr. Harlan Blackwell** — cirurgião do Exército; perito independente desde 1887.
   Frio, metódico; especialista em intervalo post-mortem.
-- **Dr.ª Lenore Blackwell** — primeira perita licenciada da Inglaterra; sabe que cada
-  prova precisa ser três vezes mais sólida quando o nome no libelo é feminino.
 
-**Sistema de variáveis:**
+**Sistema de variáveis (mantido — é estrutural):**
 ```js
-detective = { name, surname: 'Blackwell', pronoun: 'ele'|'ela', treatment: 'Sr.'|'Sra.', title: 'Dr.'|'Dr.ª' }
+detective = { name: 'Harlan', surname: 'Blackwell', pronoun: 'ele', treatment: 'Sr.', title: 'Dr.' }
 ```
-Textos usam interpolação `{detective.campo}` e flexão `{g:masc|fem}` (~20–30 pontos de
-variação no tutorial). Seleção na tela inicial (`faseJogo: 'selecao' → 'abertura' →
+Textos continuam usando interpolação `{detective.campo}` e flexão `{g:masc|fem}`
+(sempre resolvida no masculino; o mecanismo fica para personagens futuros). A tela
+inicial apresenta um único convite (`faseJogo: 'selecao' → 'abertura' →
 'investigacao'`).
 
 ---
 
 ## 13. Estrutura de progressão
 
-1. **Tutorial — "O Álibi de Corda"** (fixo): quatro armadilhas pedagógicas;
-   **resubmissão da acusação permitida** — a falha mostra o que faltou (exceção
-   exclusiva do tutorial).
+1. **Caso-escola — "A Hora Emprestada"** (fixo): cinco suspeitos, três mentirosos
+   inocentes, o relógio como pivô da dedução; **resubmissão da acusação permitida** —
+   a falha mostra o que faltou (exceção exclusiva do caso-escola).
 2. **Campanha — arco mestre/aprendiz** (esqueleto pendente): o jogador começa como
    assistente de um mestre, que ensina **verbos e hábitos** (não fatos) e dá menos
    ajuda com o tempo; ao fim, o mestre morre e o jogador assume o lugar. A campanha é
@@ -464,75 +463,112 @@ variação no tutorial). Seleção na tela inicial (`faseJogo: 'selecao' → 'ab
 
 ---
 
-## 14. Caso Tutorial: "O Álibi de Corda" (CONTÉM SPOILERS)
+## 14. Caso do vertical slice: "A Hora Emprestada" (CONTÉM SPOILERS)
 
 **Cenário:** Briarstone, outubro de 1893. Vítima: **Sr. Geoffrey Arthurs**, relojoeiro,
-61 anos, encontrado morto no escritório dos fundos. Escritório revirado; relógio de
-lareira esmagado, parado às **09h00**.
+61 anos, morto no escritório dos fundos por **ferida de buril no pescoço**. Cena
+encenada como roubo de madrugada; relógio de lareira esmagado, parado às **08h45**.
 
-**Calendário:** a morte ocorre às **22h de sexta-feira, 13/out/1893** (hora absoluta
-−2); o corpo é achado na manhã de **sábado, 14/out**, às 09h30; o perito chega às
-**11h00** (hora absoluta 11; IPM na chegada = 13h). Corpo a 24°C, sala a 11°C.
+**Calendário:** a morte ocorre às **21h de sexta-feira, 13/out/1893** (hora absoluta
+−3); o corpo é achado na manhã de **sábado, 14/out**, às 09h20, por Silas Crane; o
+perito chega às **11h00** (hora absoluta 11; IPM na chegada = 14h). Corpo a 23°C,
+sala a 11°C.
 
 ### Verdade de Ouro (`src/data/seed.js` — lida apenas pelo motor)
 ```js
 SEED_TUTORIAL = {
-  id: 'o_alibi_de_corda',
+  id: 'a_hora_emprestada',
   vitima: 'Sr. Geoffrey Arthurs',
-  reuCorreto: 'edgar_arthurs',
-  horasMorteAntesChegada: 13,
-  horaMorteAbsoluta: -2,
-  mecanismoCorreto: 'estrangulamento_ligadura',
-  instrumentoCorreto: 'fibra_canhamo',
-  motivacaoCorreta: 'heranca',
+  reuCorreto: 'silas_crane',
+  horasMorteAntesChegada: 14,
+  horaMorteAbsoluta: -3,
+  mecanismoCorreto: 'ferida_arma_branca',
+  instrumentoCorreto: 'buril_gravador',
+  motivacaoCorreta: 'silenciamento',
   cenaEncenada: true,
-  horaForjada: 9,
+  horaForjada: 8.75,
   perifericos: {
-    thomas_blackwood: { veredictoEsperado: 'inocente_alibi', segredo: null },
-    sra_hudson: { veredictoEsperado: 'inocente_segredo', segredo: 'mentira_alibi' },
+    walter_arthurs: { veredictoEsperado: 'inocente_segredo', segredo: 'suplica_recusada' },
+    agnes_rooke:    { veredictoEsperado: 'inocente_segredo', segredo: 'noivado_secreto' },
+    caleb_grey:     { veredictoEsperado: 'inocente_alibi',   segredo: null },
+    davey_tull:     { veredictoEsperado: 'inocente_alibi',   segredo: null },
   },
 }
 ```
 
-**O que aconteceu:** Edgar matou o tio às 22h por estrangulamento (corda de cânhamo),
-voltou às 09h pela porta dos fundos (fechadura forçada por ele mesmo), revirou gavetas
-e quebrou o relógio para encenar hora e roubo, e então "descobriu" o corpo.
+**O que aconteceu:** Silas Crane, primeiro-oficial há doze anos, trocava ouro dos
+consertos por metal vil. Na sexta a fraude foi descoberta (a queixa do relógio "mais
+leve" de Caleb Grey; a coluna "S.C." do livro de ordens; a nota do morto "pesar as
+caixas. Pettigrew, segunda"). Às 21h, confrontado com a denúncia que viria na
+segunda-feira, matou o mestre com o próprio buril de gravador e passou a hora seguinte
+encenando um roubo de madrugada: porta do beco forçada por fora, troco do caixa
+levado (a vitrine de ouro intocada — o descuido), buril lavado e devolvido ao estojo,
+e o relógio da lareira **recuado** para 08h45 e esmagado — recuado, e não avançado,
+porque avançar faria o carrilhão badalar na rua morta. O lampião da oficina ficou
+aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
 
-### Suspeitos
-- **Edgar Arthurs** (38, sobrinho e único herdeiro) — **o assassino**. Cooperativo,
-  polido, álibi *para a noite de 13* (jantar no Clube Comercial de Moorford, 20h–23h)
-  que é exatamente o horário real da morte — e que Moorford, se visitado, fura: saiu
-  "lá pelas oito e meia".
-- **Sra. Mabel Hudson** (55, governanta) — **inocente que mente**. Declara ter ficado
-  no quarto a noite toda; na verdade furtou o escritório à meia-noite (o fio de lã na
-  gaveta / o xale com fio puxado revelam o segredo `mentira_alibi`).
-- **Thomas Blackwood** (42, taverneiro do The Crossed Keys, desafeto público) —
-  **ruído**. Motivo público (dívida, briga registrada), álibi verdadeiro e corroborado
-  (balcão, 20h–00h, doze fregueses).
-- **Delegado Lemuel Wycliffe** — fonte de informação, não suspeito. Briefing e
-  perguntas plantam dados e iscas (relógio das 09h, testamento, dívidas, briga).
+### O relógio como pivô — três leituras
+1. **O mostrador forjado** (`ev_relogio_lareira`, 08h45, `encenado`+`isca`): a base da
+   falsa solução que Wycliffe defende (ladrão de madrugada). Refutá-lo credita a
+   encenação.
+2. **A roda de contagem** (`ev_maquinismo`, `registro_mecanico`, janela [−3,−2]): a
+   segunda leitura da MESMA peça — a roda repousa na 9ª batida; os ponteiros marcam
+   hora que o carrilhão não bateu → ponteiros recuados; esmagamento entre 21h e 22h.
+   Refuta o mostrador sozinha E sustenta o Quando. Saber plantado: relógio irmão
+   aberto na oficina + verbete "O Registro Mecânico" do Glossário.
+3. **O relógio de bolso do morto** (`ev_relogio_bolso`, `rotina_interrompida`,
+   teto −1): parado às 05h05 de corda esgotada; o hábito da corda às 23h (deposto por
+   Davey) prova que a corda de sexta nunca foi dada. É o teto durável que **não
+   afrouxa com o tempo** — o espelho do `dep_visto_vivo` (piso, 20h).
+
+### Suspeitos (5)
+- **Silas Crane** (47, primeiro-oficial; achou o corpo) — **o assassino**. Meio +
+  motivo + oportunidade. Mente contra a física ("recolhi-me à estalagem às oito"):
+  o estalajadeiro viu o quarto às escuras às 21h e ouviu o portão "passado das dez"
+  (`corrob_estalajadeiro`, refutação por registro); o vidro do mostrador na bainha
+  (`ev_vidro_dobra`) e o buril lavado (`ev_estojo_buril`, o nexo) o cravam.
+- **Walter Arthurs** (44, sobrinho, herdeiro único, negociante quebrado) — a **isca
+  do Apressado**: testamento + dívidas + gritos ouvidos da rua + "tomei a diligência
+  das seis" desmentido pelo registro da estalagem. Mente por vergonha: implorou
+  dinheiro às 18h45, foi recusado e pernoitou na vila (segredo `suplica_recusada`;
+  o descarte físico está na mesma página — quarto às 19h40, água quente às 21h).
+- **Sra. Agnes Rooke** (58, viúva, papelaria; noiva secreta da vítima) — a **isca
+  secundária**: a última a vê-lo (ceia 20h05–20h45; a senhora na viela). Mente por
+  decoro ("em casa desde as seis"); a cesta de ceia e o aro de ouro por gravar
+  revelam o `noivado_secreto`. A morte a arruína — nada herda.
+- **Caleb Grey** (46, moleiro) — **ruído que é pista dupla**: a queixa do relógio
+  "mais leve" é o rancor mais barulhento do caso e, lida de perto, o registro da
+  fraude de Silas. Álibi corroborado (moinho, véspera de feira, três homens).
+- **Davey Tull** (15, aprendiz) — mente ensaiado pelo oficial ("saímos juntos às sete
+  e meia"), por medo. Expô-lo é bônus, não pilar (`inocente_alibi`).
+- **Delegado Lemuel Wycliffe** — fonte, não suspeito. Briefing planta a história A
+  (relógio 08h45 + luz às 05h15 + caixa vazada = ladrão de madrugada) e as iscas.
 
 ### Cartas-chave além do corpo
-- `dep_visto_vivo` — âncora durável: a governanta serviu a ceia às 20h de 13/out
-  (piso da janela).
-- `dep_avistamento_falso` — a Sra. Gale jura ter visto a vítima viva à janela às 08h
-  de 14/out. Mentira literal, refutável pela janela do corpo (o "momento Obra Dinn").
-- `dep_acusa_hudson` — o Sr. Pruitt jura ter visto a governanta sobre o corpo à
-  meia-noite. Isca de Erro Judiciário; a janela (fecha ~23h) o refuta.
-- `ev_lenco` — lenço com iniciais "E. A." atrás da estante: segundo vestígio de
-  presença do réu (não instrumental — reforço sem gafe).
-- `corrob_moorford` — nó distante (3h por trecho, desbloqueado por lead): o porteiro
-  fura o álibi de Edgar. Corroboração opcional, nunca pilar.
+- `dep_visto_vivo` — âncora durável de piso: o guarda Tobin viu a vitrine fechar às
+  20h de sexta.
+- `dep_avistamento_padeiro` — "a luz do velho" às 05h15: fato verdadeiro (o lampião
+  esquecido), leitura falsa, refutável pela janela (o "momento Obra Dinn") — e o
+  desfecho paga a explicação da luz.
+- `dep_mulher_viela` — avistamento VERDADEIRO e irrefutável (sem hora nas tags): a
+  lição inversa — nem todo depoimento é falso; este só pede o nome que a cesta dá.
+- `ev_suplica_cesto` / `ev_registro_estalagem` — as duas rotas para o segredo de
+  Walter; `ev_cesta_rooke` / `ev_anel_encomenda` — as rotas para o de Agnes.
+- `corrob_pettigrew` — nó distante (1h30 por trecho, por lead): a carta do morto
+  ("queixa contra pessoa a meu serviço, com discrição") + o casamento que revogaria
+  o testamento. Segunda carta de móbil; reforça as duas iscas. Opcional, nunca pilar.
 
-### As quatro armadilhas pedagógicas
-1. **Relógio como isca** — assumir morte às 09h e não priorizar o corpo → o perecível
-   perde precisão (falha de perícia, não de relógio).
-2. **Hudson como distração** — parece culpada (nervosa, mente), mas a perícia temporal
-   a descarta.
-3. **Blackwood como ruído** — motivo claro, álibi sólido. Motivo sem oportunidade não
-   é prova.
-4. **Edgar sem provas** — intuição certa com processo errado = **Impunidade**. Acusar
-   exige materialidade.
+### As armadilhas pedagógicas
+1. **A história A** — relógio das 08h45 + luz das 05h15 + caixa vazada: cada tijolo é
+   um fato real com leitura errada. Confiar nela e não priorizar o corpo → o
+   perecível perde precisão.
+2. **Walter como distração** — motivo forte + mentira quebrada = "mentiu, logo matou"
+   → Erro Judiciário. O descarte estava na mesma página do registro.
+3. **Agnes como véu** — a última com o morto; mentira de decoro, não de sangue.
+4. **Grey como ruído** — motivo público sem oportunidade; a queixa dele é o móbil de
+   outro homem.
+5. **Silas sem provas** — "quem acha o corpo" por faro, sem janela/causa/buril =
+   **Impunidade**. Acusar exige materialidade.
 
 ---
 
