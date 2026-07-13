@@ -124,6 +124,10 @@ function textoDaFalha(falha, dados) {
       // Sem revelar a hora verdadeira: o perito que errou a janela não a
       // conhece — e, na retentativa, ela não pode sair de graça (Q1/Q2).
       return 'A janela que afirmei erra a hora do óbito. Errei o relógio, e com ele o caso.';
+    case 'janela_sem_sustentacao':
+      // Contradição interna (afirmei X, provei Y) — não é imprecisão, e a
+      // frase não pode revelar a hora verdadeira (Q1/Q2, como acima).
+      return 'A janela que afirmei não é a que os meus próprios sinais sustentam: reuni provas de uma faixa de horas e assinei outra.';
     case 'janela_imprecisa':
       return 'A janela que afirmei ficou larga demais para acusar alguém com ela.';
     case 'sem_mecanismo':

@@ -70,3 +70,39 @@ navegador no mural e dois sistemas de modal divergentes. Decisões:
   escuro; sobre pergaminho, escala `tinta`.
 - Contrato de QA preservado na íntegra (textos exatos, `.termo-*`, `data-overlay`,
   ordem dos selects da janela); nenhuma lógica tocada — só camada de apresentação.
+
+## Fase 0 do overhaul (13/07/2026) — dívida técnica, sem feature nova
+
+Ordem de serviço: `PROMPT-overhaul-mortem.md` (overhaul do vertical slice), FASE 0.
+
+- **0.1 — Fonte única do modelo de algor:** `medirTemperatura` reimplementava
+  `Math.max(11, 37 - ipm)` em código; agora consome `temperaturaPorIpm(ipm,
+  AMBIENTE_PADRAO)` e `CONSTANTES_FORENSES.temperaturaInicial`, com `AMBIENTE_PADRAO`
+  exportada de `src/logic/tempo_morte.js` — inclusive nas `tagsOcultas` e nas strings
+  da carta (o §15 promete ajuste num ponto só; agora cumpre).
+- **0.2 — Temperatura fracionária em prosa:** com viagens de 1h30 a leitura pode sair
+  meio grau. Formato escolhido: **"22°C e meio"** (meio grau por extenso; o decimal com
+  ponto é anacrônico na prosa de 1893 e a vírgula tem cara de instrumento moderno).
+  Implementado em `formatTemperatura` (`src/logic/tempo.js`), usado na carta de algor e
+  no termômetro; arredonda ao meio grau (limite honesto do mercúrio). *Escolha aplicada
+  pelo agente entre as opções da ordem (a decisão interativa não pôde ser colhida);
+  trocar para "22,5°C" é ajuste de um ponto só.*
+- **0.3 — `janela_sem_sustentacao`:** janela afirmada que cobre a hora real mas não
+  intersecta o suporte ligado caía em `janela_imprecisa` (código enganoso). Ganhou
+  código próprio na cascata do pilar Quando, bloco de monólogo que expõe contradição
+  (não imprecisão), dica de tutorial e caso adversarial (m) no `qa.mjs`.
+- **0.4 — Estado de módulo e destaque órfão:** id de ligação passa a ser derivado do
+  par normalizado (`ligacao_<menor>__<maior>`, extremos em ordem lexicográfica) —
+  fim do contador mutável de módulo. E o ramo de custo 0 de `viajarPara` também
+  consome o destaque `nosNovos` (nó revelado por lead no mesmo grupo não fica aceso
+  após visitado).
+- **0.5 — Assinatura limpa:** `buildDetective`/`escolherDetective` perderam o parâmetro
+  morto `opcao` (call sites em `TelaPersonagem`, `App.jsx ?direto` e `qa.mjs`
+  ajustados). Se o multi-perito voltar, o parâmetro volta com ele.
+- **0.6 — EM ABERTO (decisão do usuário):** ligar o relógio forjado (domínio
+  `ambiental`) à âncora Presença é aceito e ignorado pelo nexo. Opções apresentadas:
+  (a) manter e registrar como ambiguidade deliberada — coerente com "nada valida até o
+  julgamento"; (b) restringir `sustenta_presenca` a cartas com tag de presença
+  relevante — ensina no ato, mas mexe na gramática do motor e encolhe a armadilha;
+  (c) feedback visual de "fio frouxo" — ensina sem bloquear, mas vaza o juízo do motor
+  antes da submissão. Recomendação do agente: (a). Nada implementado.

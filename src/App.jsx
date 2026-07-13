@@ -7,7 +7,7 @@ import Escrivaninha from './components/Escrivaninha.jsx';
 // caindo direto na escrivaninha às 11h00 de 14/out.
 const params = new URLSearchParams(window.location.search);
 if (params.has('direto')) {
-  useJogo.getState().escolherDetective('harlan');
+  useJogo.getState().escolherDetective();
   useJogo.getState().iniciarInvestigacao();
 }
 

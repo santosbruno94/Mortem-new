@@ -39,7 +39,7 @@ const estadoInicial = { ...useJogo.getState() };
 
 function reiniciar() {
   useJogo.setState(estadoInicial, true);
-  useJogo.getState().escolherDetective('harlan');
+  useJogo.getState().escolherDetective();
   useJogo.getState().iniciarInvestigacao();
 }
 
@@ -418,6 +418,37 @@ console.log('a luz do padeiro é paga no epílogo, e só com a refutação:', lu
 console.log('epílogo sem blocos duplicados; conta do perito lê a hora do selo:', epilogoSemEco && epilogoDeterministico);
 
 // ============================================================
+// (m) JANELA SEM SUSTENTAÇÃO (código próprio): a janela afirmada COBRE a
+// hora real da morte, mas as cartas ligadas à âncora Quando sustentam OUTRA
+// faixa — contradição interna da cadeia, não imprecisão. O código não pode
+// cair em janela_imprecisa (era o comportamento enganoso). Carta sintética:
+// o contrato é do MOTOR, não do caso corrente.
+// ============================================================
+reiniciar();
+const cartaSuporteAlheio = {
+  id: 'sint_suporte_alheio',
+  localidade: 'cena',
+  horaRegistro: 11,
+  // Registro mecânico com faixa que NÃO toca a janela afirmada abaixo.
+  tagsOcultas: { dominio: 'temporal', subDominio: 'registro_mecanico', janelaInicio: 1, janelaFim: 2 },
+};
+useJogo.setState({ cartasRegistradas: [...s().cartasRegistradas, cartaSuporteAlheio] });
+s().definirReu('silas_crane');
+s().definirJanela({ inicio: -4, fim: -2 }); // cobre a verdade (-3)...
+ligar('sint_suporte_alheio', ANCORAS.quando); // ...mas o suporte diz [1, 2]
+s().submeterAcusacao();
+const vSemSustentacao = s().veredicto;
+const codigoProprioContradicao =
+  vSemSustentacao.falhas.some((f) => f.codigo === 'janela_sem_sustentacao') &&
+  vSemSustentacao.falhas.every((f) => f.codigo !== 'janela_imprecisa' && f.codigo !== 'janela_nao_cobre');
+const monologoExpoeContradicao = gerarMonologo(vSemSustentacao, s().detective).blocos.some((b) =>
+  b.includes('não é a que os meus próprios sinais sustentam')
+);
+console.log('\n=== (m) JANELA SEM SUSTENTAÇÃO ===');
+console.log('janela que cobre mas contradiz o suporte tem código próprio:', codigoProprioContradicao);
+console.log('monólogo expõe contradição, não imprecisão:', monologoExpoeContradicao);
+
+// ============================================================
 // Fumaça do monólogo: todos os desfechos geram texto.
 // ============================================================
 console.log('\n=== Monólogos gerados (fumaça) ===');
@@ -497,6 +528,7 @@ const checagens = [
   ['O registro da estalagem derruba o paradeiro do réu (opcional, nunca pilar)', alibiReuCai],
   ['Rotina interrompida trava o teto; com o piso fecha janela finita', rotinaDaTeto && pisoMaisTetoFecham],
   ['Registro mecânico: janela fixa e refutação do mostrador forjado', registroMecanicoFixo && mostradorCaiPelaMaquina],
+  ['Janela que cobre mas contradiz o suporte: código próprio e monólogo de contradição', codigoProprioContradicao && monologoExpoeContradicao],
   ['Periférico sem móbil na mesa não ganha "razões contra a vítima"', daveySemMotivoInventado],
   ['Blocos de periféricos sem eco verbatim (monólogo e epílogo)', perifericosSemEco && epilogoSemEco],
   ['A explicação da luz é paga no epílogo, e só com a refutação', luzPagaSoComRefutacao],

@@ -47,7 +47,10 @@ export const CONSTANTES_FORENSES = {
   },
 };
 
-const AMBIENTE_PADRAO = 11; // °C — temperatura típica de um escritório vitoriano
+// °C — temperatura típica de um escritório vitoriano. Fonte ÚNICA do
+// ambiente da cena: a geração da carta de algor (store) e o modelo de
+// janela (aqui) leem a mesma constante — ajuste num ponto só (§15).
+export const AMBIENTE_PADRAO = 11;
 
 // ---------------------------------------------------------------------
 // Auxiliar: converte uma faixa de IPM [min, max] na janela absoluta de

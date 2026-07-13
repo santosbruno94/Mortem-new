@@ -11,7 +11,8 @@ import { create } from 'zustand';
 import { SEED_TUTORIAL } from '../data/seed.js';
 import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.js';
-import { HORAS_CHEGADA_CENA, ipmAtual, formatDuracao } from '../logic/tempo.js';
+import { HORAS_CHEGADA_CENA, ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
+import { temperaturaPorIpm, AMBIENTE_PADRAO, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 
@@ -20,8 +21,6 @@ import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 export function buildDetective() {
   return { name: 'Harlan', surname: 'Blackwell', pronoun: 'ele', treatment: 'Sr.', title: 'Dr.' };
 }
-
-let proximoIdLigacao = 1;
 
 // Custo (horas) de revisar a acusação após um desfecho (Q2): a regalia do
 // caso-escola deixa de ser grátis — a audiência adia-se a cada retentativa.
@@ -75,8 +74,8 @@ export const useJogo = create((set, get) => ({
   // Ações
   // =====================================================================
 
-  escolherDetective: (opcao) =>
-    set({ detective: buildDetective(opcao), faseJogo: 'abertura', passoAbertura: 0 }),
+  escolherDetective: () =>
+    set({ detective: buildDetective(), faseJogo: 'abertura', passoAbertura: 0 }),
 
   avancarAbertura: () => set((s) => ({ passoAbertura: s.passoAbertura + 1 })),
 
@@ -111,7 +110,13 @@ export const useJogo = create((set, get) => ({
     const custo = s.localidadeAtual ? custoViagem(s.localidadeAtual, noId) : 0;
     const visitados = s.nosVisitados.includes(noId) ? s.nosVisitados : [...s.nosVisitados, noId];
     if (noId === s.localidadeAtual || custo === 0) {
-      set({ localidadeAtual: noId, nosVisitados: visitados });
+      // Mesmo sem custo, visitar o nó consome o destaque "novo" — um nó
+      // revelado por lead no mesmo grupo não pode continuar aceso após visto.
+      set({
+        localidadeAtual: noId,
+        nosVisitados: visitados,
+        nosNovos: s.nosNovos.filter((id) => id !== noId),
+      });
       return;
     }
     const no = obterNo(noId);
@@ -176,22 +181,23 @@ export const useJogo = create((set, get) => ({
     get().consolidarLeituraMestre();
   },
 
-  // Ação especial do Termômetro: gera a carta de algor mortis a partir
-  // da temperatura corrente (resfriamento ~1°C/h até o ambiente de 11°C).
+  // Ação especial do Termômetro: gera a carta de algor mortis a partir da
+  // temperatura corrente. O modelo (37°C, ~1°C/h, ambiente) mora INTEIRO em
+  // src/logic/tempo_morte.js — aqui só se consome temperaturaPorIpm e
+  // AMBIENTE_PADRAO, nunca números repetidos (§15: ajuste num ponto só).
   medirTemperatura: () => {
     const s = get();
     if (s.temperaturaMedida !== null) return;
     const ipm = ipmAtual(s.horasJogo, SEED_TUTORIAL.horasMorteAntesChegada);
-    const temperatura = Math.max(11, 37 - ipm);
+    const temperatura = temperaturaPorIpm(ipm, AMBIENTE_PADRAO);
     let carta;
-    if (temperatura <= 11) {
+    if (temperatura <= AMBIENTE_PADRAO) {
       carta = {
         id: 'ev_algor',
         localidade: 'corpo',
         textoDisplay: 'Corpo Frio como a Sala',
         termoCarimbo: 'Corpo tão frio quanto a sala',
-        descricao:
-          'O termômetro marca os 11°C do próprio escritório: o corpo esfriou até igualar a sala. Isso já não aperta a hora — diz só que a morte foi há mais de um dia.',
+        descricao: `O termômetro marca os ${formatTemperatura(AMBIENTE_PADRAO)} do próprio escritório: o corpo esfriou até igualar a sala. Isso já não aperta a hora — diz só que a morte foi há mais de um dia.`,
         vozMestre: 'Frio como a sala. O calor já não conta as horas — só diz que faz tempo.',
         // Equilíbrio: leitura VAGA, não nula. Carrega a temperatura medida
         // (== ambiente); o modelo devolve um piso largo (perde precisão).
@@ -199,7 +205,7 @@ export const useJogo = create((set, get) => ({
           dominio: 'temporal',
           subDominio: 'algor_mortis',
           temperaturaCorpo: temperatura,
-          temperaturaAmbiente: 11,
+          temperaturaAmbiente: AMBIENTE_PADRAO,
         },
         horaRegistro: s.horasJogo,
       };
@@ -207,11 +213,11 @@ export const useJogo = create((set, get) => ({
       carta = {
         id: 'ev_algor',
         localidade: 'corpo',
-        textoDisplay: `Corpo Ainda Morno: ${temperatura}°C`,
-        termoCarimbo: `Corpo a ${temperatura}°C (sala a 11°C)`,
+        textoDisplay: `Corpo Ainda Morno: ${formatTemperatura(temperatura)}`,
+        termoCarimbo: `Corpo a ${formatTemperatura(temperatura)} (sala a ${formatTemperatura(AMBIENTE_PADRAO)})`,
         // A carta entrega só a LEITURA (temperaturas); a aritmética do
         // resfriamento é do jogador, com o verbete de algor do Glossário (Q9).
-        descricao: `O mercúrio detém-se nos ${temperatura}°C, contra 11°C do escritório. Um corpo vivo marcaria 37.`,
+        descricao: `O mercúrio detém-se nos ${formatTemperatura(temperatura)}, contra ${formatTemperatura(AMBIENTE_PADRAO)} do escritório. Um corpo vivo marcaria ${CONSTANTES_FORENSES.temperaturaInicial}.`,
         vozMestre: 'Ainda morno. O calor que perdeu conta as horas — um grau a cada uma delas.',
         // Carrega a leitura BRUTA (temperatura medida + ambiente); a janela
         // é calculada pelo modelo forense universal na gaveta Cronos.
@@ -219,7 +225,7 @@ export const useJogo = create((set, get) => ({
           dominio: 'temporal',
           subDominio: 'algor_mortis',
           temperaturaCorpo: temperatura,
-          temperaturaAmbiente: 11,
+          temperaturaAmbiente: AMBIENTE_PADRAO,
         },
         horaRegistro: s.horasJogo,
       };
@@ -268,13 +274,16 @@ export const useJogo = create((set, get) => ({
 
   // Desenhar um barbante entre dois nós (cartas ou âncoras). Ignora duplicatas
   // (o mesmo par, em qualquer ordem). Devolve a ligação (ou a já existente).
+  // O id é derivado do PAR NORMALIZADO (extremos em ordem lexicográfica):
+  // determinístico, sem estado de módulo — sobrevive a um futuro "novo caso".
   adicionarLigacao: (de, para) => {
     const s = get();
     const jaExiste = s.acusacao.ligacoes.find(
       (l) => (l.de === de && l.para === para) || (l.de === para && l.para === de)
     );
     if (jaExiste) return jaExiste;
-    const nova = { id: `ligacao_${proximoIdLigacao++}`, de, para };
+    const [menor, maior] = [de, para].sort();
+    const nova = { id: `ligacao_${menor}__${maior}`, de, para };
     set({ acusacao: { ...s.acusacao, ligacoes: [...s.acusacao.ligacoes, nova] } });
     return nova;
   },
