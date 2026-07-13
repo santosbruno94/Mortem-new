@@ -111,12 +111,20 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
   // A encenação só conta como exposta se o jogador refutou a PRÓPRIA peça
   // encenada (tag `encenado` na alegação de hora — o relógio forjado).
   // Desmentir uma testemunha equivocada é mérito narrativo, não encenação.
+  // Certas alegações-isca carregam a tag `explicacao`: refutá-las dá ao
+  // encerramento o direito de pagar a explicação do fato verdadeiro por trás
+  // da leitura falsa (ex.: a luz de madrugada era o lampião esquecido). O
+  // texto mora em ROTULOS_EXPLICACAO (camada narrativa); aqui só a tag.
   let encenacaoExposta = false;
   let testemunhasDesmentidas = 0;
+  const explicacoesPagas = [];
   for (const { alegacao, fatos } of refutaHora.values()) {
     if (!refutacaoDeHoraEstabelecida(alegacao, fatos)) continue;
     if (alegacao.tagsOcultas.encenado) encenacaoExposta = true;
-    else testemunhasDesmentidas += 1;
+    else {
+      testemunhasDesmentidas += 1;
+      if (alegacao.tagsOcultas.explicacao) explicacoesPagas.push(alegacao.tagsOcultas.explicacao);
+    }
   }
   const descuidosOk = !seed.cenaEncenada || encenacaoExposta;
   if (descuidosOk) acertos.push({ codigo: 'descuidos' });
@@ -188,7 +196,19 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
         c.tagsOcultas.subDominio === 'alibi' &&
         c.tagsOcultas.declaranteId === suspeitoId
     );
-    perifericos[suspeitoId] = { esperado: esperado.veredictoEsperado, declarado, ok, alibiNaMesa };
+    // O monólogo só pode dizer que "razões não faltavam" se uma carta de
+    // móbil apontando este suspeito está na mesa — sem ela, afirmar motivo
+    // seria inventar fato (contrato do desfecho).
+    const temMotivoNaMesa = cartas.some(
+      (c) => c.tagsOcultas.subDominio === 'motivo' && c.tagsOcultas.ligadoA === suspeitoId
+    );
+    perifericos[suspeitoId] = {
+      esperado: esperado.veredictoEsperado,
+      declarado,
+      ok,
+      alibiNaMesa,
+      temMotivoNaMesa,
+    };
     if (!ok) {
       perifericosOk = false;
       falhas.push({ codigo: 'periferico', suspeitoId });
@@ -238,6 +258,9 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       horaMorteAbsoluta: seed.horaMorteAbsoluta,
       sustentada,
       testemunhasDesmentidas,
+      // Tags `explicacao` das alegações-isca refutadas: o epílogo troca cada
+      // uma pelo texto de ROTULOS_EXPLICACAO — o "aha" pago no encerramento.
+      explicacoesPagas,
       alibiReuExposto,
       alibiReuPorRegistro,
     },

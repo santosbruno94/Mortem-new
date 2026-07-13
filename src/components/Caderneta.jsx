@@ -32,7 +32,7 @@ export default function Caderneta() {
                 )}
                 <div className="flex flex-wrap items-baseline justify-between gap-2 mt-2">
                   <p className="text-tinta-apagada text-rotulo uppercase">
-                    observado às {formatRelogio(c.horaRegistro)}
+                    observado em {formatRelogio(c.horaRegistro)}
                   </p>
                   {verbete && (
                     <button

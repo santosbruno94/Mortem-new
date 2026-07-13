@@ -34,9 +34,11 @@ const TITULOS = {
 
 // Escolhe uma variante de forma determinística a partir de uma chave
 // (o hash mora em src/logic/hash.js — a fonte única de sorteio do jogo).
-function escolher(variantes, chave) {
+// `nOcorrencia` desloca a escolha pela ordem dentro do mesmo pool: blocos
+// vizinhos do mesmo tipo nunca repetem a variante, por construção.
+function escolher(variantes, chave, nOcorrencia = 0) {
   if (!variantes || variantes.length === 0) return null;
-  return variantes[hashString(chave) % variantes.length];
+  return variantes[(hashString(chave) + nOcorrencia) % variantes.length];
 }
 
 // Sorteia abertura e fecho respeitando o teto do guia §3: quando a abertura
@@ -234,6 +236,33 @@ function blocoTestemunhas(n) {
   return 'As testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre todas.';
 }
 
+// ---------------- Juízo sobre os não-acusados (variantes) ----------------
+// Uma frase fixa por tipo repetia-se palavra por palavra quando dois
+// periféricos caíam no mesmo tipo (playtest de 13/07/2026, achado A2). Cada
+// situação tem variantes: o hash é salgado com o POOL e a escolha desloca
+// pela ordem de ocorrência (vizinhos do mesmo tipo nunca repetem); e o
+// molde só menciona "razões contra a vítima" quando uma carta de móbil
+// apontando o suspeito está na mesa (contrato do desfecho).
+const PERIFERICO_ALIBI_COM_MOTIVO = [
+  (q) => `Quanto ${q}, o paradeiro que firmei não cruza a janela da morte: razões contra a vítima não faltavam; faltou a ocasião de agir.`,
+  (q) => `Quanto ${q}, motivo havia, e eu o li nos papéis; o paradeiro que firmei, porém, cobre a janela inteira. Ficou-lhe o rancor, e nada além dele.`,
+  (q) => `Quanto ${q}, pesei as razões que tinha contra a vítima e pesei o paradeiro que firmei. O paradeiro venceu: cobre a hora da morte de ponta a ponta.`,
+];
+const PERIFERICO_ALIBI_SEM_MOTIVO = [
+  (q) => `Quanto ${q}, o paradeiro que firmei não cruza a janela da morte, e nada mais prendia esse nome ao caso.`,
+  (q) => `Quanto ${q}, o paradeiro que firmei fecha a questão: na hora da morte, estava onde disse estar.`,
+  (q) => `Quanto ${q}, conferi o paradeiro contra a janela da morte e dei o assunto por encerrado.`,
+];
+const PERIFERICO_ALIBI_CONVICCAO = [
+  (q) => `Quanto ${q}, não colhi o paradeiro que alegava: dei-lhe a inocência por convicção, não por perícia, e a convicção acertou.`,
+  (q) => `Quanto ${q}, a inocência que lhe dei saiu sem paradeiro colhido. Desta vez serviu; não é método que eu assine duas vezes.`,
+];
+const PERIFERICO_SEGREDO = [
+  (q) => `Quanto ${q}, a mentira que expus encobria uma vergonha, não o homicídio: mentiu para se proteger, não para matar.`,
+  (q) => `Quanto ${q}, o que a mentira cobria era assunto da própria vida, sem parte na morte. Inocentei com a prova na mesa.`,
+  (q) => `Quanto ${q}, o depoimento caiu, e o que escondia era vergonha própria: registrei a inocência e deixei o segredo onde estava.`,
+];
+
 // `opcoes.nomearCulpado`: no Erro Judiciário com retentativa de pé, o fecho
 // não entrega o nome do verdadeiro autor (default: nomeia — encerramento).
 export function gerarMonologo(veredicto, detective, opcoes = {}) {
@@ -285,18 +314,33 @@ export function gerarMonologo(veredicto, detective, opcoes = {}) {
 
   // ---------------- Juízo sobre os não-acusados ----------------
   // Contrato do desfecho: "o paradeiro que firmei" só se o paradeiro está na
-  // mesa; sem a carta do álibi, o juízo é dito como convicção, não perícia.
+  // mesa; sem a carta do álibi, o juízo é dito como convicção, não perícia; e
+  // "razões contra a vítima" só com carta de móbil do suspeito na mesa.
+  const POOLS_PERIFERICO = {
+    alibi_com_motivo: PERIFERICO_ALIBI_COM_MOTIVO,
+    alibi_sem_motivo: PERIFERICO_ALIBI_SEM_MOTIVO,
+    alibi_conviccao: PERIFERICO_ALIBI_CONVICCAO,
+    segredo: PERIFERICO_SEGREDO,
+  };
+  const ocorrenciasPeriferico = new Map();
   for (const [suspeitoId, p] of Object.entries(veredicto.perifericos)) {
+    let nomePool = null;
     if (p.ok && p.esperado === 'inocente_alibi') {
-      blocos.push(
-        p.alibiNaMesa
-          ? `Quanto ${aQuem(nome(suspeitoId))}, o paradeiro que firmei não cruza a janela da morte: razões contra a vítima não faltavam; faltou a ocasião de agir.`
-          : `Quanto ${aQuem(nome(suspeitoId))}, não colhi o paradeiro que alegava: dei-lhe a inocência por convicção, não por perícia, e a convicção acertou.`
-      );
+      nomePool = !p.alibiNaMesa
+        ? 'alibi_conviccao'
+        : p.temMotivoNaMesa
+          ? 'alibi_com_motivo'
+          : 'alibi_sem_motivo';
     } else if (p.ok && p.esperado === 'inocente_segredo') {
-      blocos.push(
-        `Quanto ${aQuem(nome(suspeitoId))}, a mentira que expus encobria uma vergonha, não o homicídio: mentiu para se proteger, não para matar.`
-      );
+      nomePool = 'segredo';
+    }
+    if (nomePool) {
+      // Chave do POOL + deslocamento por ocorrência: dois periféricos do
+      // mesmo tipo em sequência nunca saem com a mesma frase.
+      const nOcorrencia = ocorrenciasPeriferico.get(nomePool) || 0;
+      ocorrenciasPeriferico.set(nomePool, nOcorrencia + 1);
+      const molde = escolher(POOLS_PERIFERICO[nomePool], `${chave}|periferico|${nomePool}`, nOcorrencia);
+      blocos.push(molde(aQuem(nome(suspeitoId))));
     }
   }
 

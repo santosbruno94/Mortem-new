@@ -172,6 +172,8 @@ async function main() {
     await visitarEExtrair(page, 'O Corpo');
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
+    // O contador de esgotamento do caso-escola: corpo esgotado = 7 de 7.
+    checar('Rota 1: contador de observações da localidade (7 de 7 no corpo)', (await page.locator('body').innerText()).includes('7 de 7 observações registradas aqui'));
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Cena do Crime');
     await fecharOverlay(page);
@@ -184,6 +186,12 @@ async function main() {
     await visitarEExtrair(page, 'A Delegacia');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Estalagem');
+    await fecharOverlay(page);
+    // Segunda visita ao réu DEPOIS do registro da estalagem: a prosa
+    // condicional do confronto entra (reação, nunca confissão).
+    await page.click('text=Silas Crane');
+    await espera(page, 500);
+    checar('Rota 1: segunda visita ao réu traz o confronto da estalagem', (await page.locator('body').innerText()).includes('O estalajadeiro terá contado os quartos errados'));
     await fecharOverlay(page);
     await visitarEExtrair(page, 'Sra. Agnes Rooke');
     await fecharOverlay(page);
@@ -248,6 +256,10 @@ async function main() {
     const epilogo = await textoOverlay(page);
     checar('Rota 1: epílogo presente ao encerrar', epilogo.includes('Epílogo'));
     checar('Rota 1: retrato da investigação presente', /retrato da investiga/i.test(epilogo));
+    // O encerramento paga a explicação da luz (a isca do padeiro refutada)
+    // e o retrato nomeia o que ficou por abrir (o Gabinete, nesta rota).
+    checar('Rota 1: epílogo paga a explicação da luz', epilogo.includes('lampião'));
+    checar('Rota 1: retrato nomeia o que ficou por visitar', epilogo.includes('Ficou por visitar: Gabinete Pettigrew'));
     await page.getByRole('button', { name: 'Fechar o caderno' }).click();
     await espera(page, 800);
 

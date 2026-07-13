@@ -51,12 +51,14 @@ export default function HotspotCorpo({ hotspot, registrada, aoExtrair }) {
       }}
     >
       <sphereGeometry args={[hotspot.raio, 12, 10]} />
+      {/* Brilho de repouso mais franco (A5): quem não sabe que as regiões
+          existem precisa vê-las convidando antes do primeiro hover. */}
       <meshStandardMaterial
         color="#fbbf24"
         transparent
-        opacity={hover ? 0.22 : 0.07}
+        opacity={hover ? 0.26 : 0.14}
         emissive="#d97706"
-        emissiveIntensity={hover ? 0.5 : 0.12}
+        emissiveIntensity={hover ? 0.6 : 0.3}
         depthWrite={false}
       />
     </mesh>

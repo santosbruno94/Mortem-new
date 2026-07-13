@@ -31,7 +31,9 @@ export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado
         {loc.rotuloMesa}
         {novo && <span className="sm:hidden text-amber-400"> · novo</span>}
       </span>
-      <span className="hidden sm:block text-stone-500 text-[9px] tracking-wide leading-tight mt-0.5">
+      {/* Piso de contraste do §3: texto informativo nunca abaixo de stone-400;
+          aqui sobe a stone-300 (achado M5 do playtest de 13/07/2026). */}
+      <span className="hidden sm:block text-stone-300 text-[9px] tracking-wide leading-tight mt-0.5">
         {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
       </span>
     </button>

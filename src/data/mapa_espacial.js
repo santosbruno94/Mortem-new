@@ -15,27 +15,29 @@
 export const POSICOES_DIORAMA = {
   // O quarteirão da relojoaria (mesmo prédio — andar entre eles é 0h).
   // Os rótulos são <Html center> no topo de cada prédio: manter ≥1,4u de
-  // afastamento horizontal entre vizinhos, ou os botões se interceptam.
-  cena: { x: -2.9, z: -1.3, predio: 'relojoaria' },
-  corpo: { x: -4.4, z: 0.5, predio: 'relojoaria_fundos' },
-  oficina: { x: -2.7, z: 1.2, predio: 'oficina' },
-  interrogatorio_silas: { x: -1.3, z: -0.1, predio: 'saleta' },
+  // afastamento horizontal entre vizinhos OU ≥1,6u de profundidade (o z
+  // separa as etiquetas na vertical da tela) — no playtest de 13/07/2026
+  // (achado A7) o aglomerado central atropelava os rótulos.
+  cena: { x: -3.2, z: -1.45, predio: 'relojoaria' },
+  corpo: { x: -4.3, z: 1.0, predio: 'relojoaria_fundos' },
+  oficina: { x: -2.5, z: 1.9, predio: 'oficina' },
+  interrogatorio_silas: { x: -1.0, z: 0.0, predio: 'saleta' },
   // A vila de Briarstone.
-  delegacia: { x: 0.6, z: -1.3, predio: 'civico' },
-  estalagem: { x: 2.0, z: 0.1, predio: 'estalagem' },
-  papelaria: { x: 0.4, z: 1.5, predio: 'papelaria' },
-  moinho: { x: 3.3, z: 1.4, predio: 'moinho' },
+  delegacia: { x: 0.7, z: -1.9, predio: 'civico' },
+  estalagem: { x: 2.5, z: 0.1, predio: 'estalagem' },
+  papelaria: { x: 0.0, z: 1.9, predio: 'papelaria' },
+  moinho: { x: 4.2, z: 1.7, predio: 'moinho' },
   // Fora da vila, na ponta da estrada.
-  gabinete_pettigrew: { x: 5.3, z: -1.5, predio: 'gabinete' },
+  gabinete_pettigrew: { x: 5.7, z: -1.7, predio: 'gabinete' },
 };
 
 // A estrada para Moorford (polilinha sobre a maquete). Só aparece quando
 // o nó distante é desbloqueado — o mapa CRESCE diante do jogador.
 export const ESTRADA_MOORFORD = [
-  { x: 1.9, z: -0.3 },
-  { x: 3.1, z: -0.9 },
-  { x: 4.4, z: -1.3 },
-  { x: 5.3, z: -1.5 },
+  { x: 2.4, z: -0.4 },
+  { x: 3.5, z: -1.0 },
+  { x: 4.8, z: -1.4 },
+  { x: 5.7, z: -1.7 },
 ];
 
 // Formas dos prédios (caixa + telhado de 4 águas + chaminé opcional).

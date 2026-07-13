@@ -61,6 +61,18 @@ export const LOCALIDADES = [
       'Em tudo o mais, [[comp_silas]].',
       'Ao cruzar as pernas, deixa ver, presa à bainha esquerda, uma lasca que a luz do lampião acende: [[ev_vidro_dobra]].',
     ],
+    // Prosa condicional: entra quando TODAS as cartas exigidas já estão na
+    // mesa. Aqui, o confronto da segunda visita — o perito voltou da
+    // estalagem sabendo do quarto às escuras, e a vila reage à investigação.
+    // Reação observável, nunca confissão: o veredicto continua no mural.
+    prosaCondicional: [
+      {
+        requerCartas: ['alibi_silas', 'corrob_estalajadeiro'],
+        paragrafos: [
+          'Posto diante do que se conta na estalagem — o quarto às escuras, o portão passado das dez —, Silas Crane pousa o bule sem ruído. "O estalajadeiro terá contado os quartos errados. A casa é grande, e a noite foi de movimento." Dá a resposta no mesmo passo das outras e torna a erguer o bule.',
+        ],
+      },
+    ],
   },
   {
     id: 'delegacia',

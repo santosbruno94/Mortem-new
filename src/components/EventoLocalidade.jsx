@@ -77,6 +77,26 @@ export default function EventoLocalidade({ localidadeId }) {
   const ehCorpo = localidade.id === 'corpo';
   const corpo3D = ehCorpo && !modoFlat() && webglDisponivel();
 
+  // Prosa condicional: parágrafos que só entram quando TODAS as cartas
+  // exigidas já estão na mesa (ex.: o confronto da segunda visita ao réu,
+  // depois de colhido o registro que o desmente). Camada narrativa — o
+  // motor nunca lê; a condição usa só ids de carta registrada.
+  const paragrafosCondicionais = (localidade.prosaCondicional || [])
+    .filter((bloco) => bloco.requerCartas.every((id) => cartasRegistradas.some((c) => c.id === id)))
+    .flatMap((bloco) => bloco.paragrafos);
+
+  // Contador de esgotamento (regalia do caso-escola): quantas observações
+  // esta localidade oferece e quantas já estão na mesa. O procedural pode
+  // omitir — a contagem é leitura dos marcadores [[id]] da prosa, não regra.
+  const idsExtraiveis = [
+    ...new Set(
+      localidade.prosa
+        .flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))
+        .concat(localidade.acoesEspeciais.includes('termometro') ? ['ev_algor'] : [])
+    ),
+  ];
+  const nRegistradas = idsExtraiveis.filter((id) => cartasRegistradas.some((c) => c.id === id)).length;
+
   const prosaEExames = (
     <>
       {/* Retrato de quem recebe o perito — camada visual, decorativa */}
@@ -85,11 +105,19 @@ export default function EventoLocalidade({ localidadeId }) {
           <RetratoPersonagem personagemId={personagemDaCena} tamanho={84} className="block" />
         </div>
       )}
-      <div className="space-y-4">{localidade.prosa.map(renderParagrafo)}</div>
+      <div className="space-y-4">
+        {localidade.prosa.map(renderParagrafo)}
+        {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
+      </div>
       {ehCorpo && <FalaDoLegista cartas={cartasRegistradas} />}
       {ehCorpo && <NotaFrescor ipm={ipm} />}
       {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
-      <p className="mt-6 text-stone-400 text-xs italic font-serif tracking-wide">
+      {idsExtraiveis.length > 0 && (
+        <p className="mt-6 text-stone-400 text-xs font-serif tracking-wide">
+          § {nRegistradas} de {idsExtraiveis.length} observações registradas aqui.
+        </p>
+      )}
+      <p className="mt-2 text-stone-400 text-xs italic font-serif tracking-wide">
         Termos em negrito são examinados e registrados na mesa — examinar não custa tempo; o relógio só corre quando você viaja.
       </p>
     </>

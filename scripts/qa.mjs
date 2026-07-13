@@ -26,6 +26,7 @@ import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
+import { gerarEpilogo } from '../src/logic/epilogo.js';
 import { SEED_TUTORIAL } from '../src/data/seed.js';
 import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.js';
 import { NOS_MAPA } from '../src/data/mapa.js';
@@ -383,6 +384,40 @@ console.log('janela mecânica fixa, alheia à hora do exame:', registroMecanicoF
 console.log('mostrador forjado refutado pelo próprio maquinismo:', mostradorCaiPelaMaquina);
 
 // ============================================================
+// (l) BLOCOS DE PERIFÉRICOS E EXPLICAÇÕES PAGAS (playtest 13/07/2026, A2/A3):
+// o monólogo só afirma "razões contra a vítima" com carta de móbil do
+// periférico na mesa; dois periféricos do mesmo tipo nunca repetem a frase
+// (anti-eco por construção); e a alegação-isca refutada paga a explicação
+// no epílogo — nunca sem refutação.
+// ============================================================
+const monMetodico = monologos[0].monologo;
+const nucleoBloco = (b) => (b || '').replace(/Quanto [^,]+,/, '');
+const blocoDe = (mon, nomeParte) => mon.blocos.find((b) => b.includes(nomeParte));
+const daveySemMotivoInventado =
+  vMetodico.perifericos.davey_tull.temMotivoNaMesa === false &&
+  !!blocoDe(monMetodico, 'Davey Tull') &&
+  !blocoDe(monMetodico, 'Davey Tull').includes('razões contra a vítima');
+const perifericosSemEco =
+  nucleoBloco(blocoDe(monMetodico, 'Walter Arthurs')) !== nucleoBloco(blocoDe(monMetodico, 'Agnes Rooke')) &&
+  nucleoBloco(blocoDe(monMetodico, 'Caleb Grey')) !== nucleoBloco(blocoDe(monMetodico, 'Davey Tull'));
+const epMetodico = gerarEpilogo(vMetodico, { horasSelo: 16 });
+const epIntuitivo = gerarEpilogo(vIntuitivo, { horasSelo: 16 });
+const luzPagaSoComRefutacao =
+  vMetodico.dadosMonologo.explicacoesPagas.includes('luz_esquecida') &&
+  epMetodico.blocos.some((b) => b.includes('lampião')) &&
+  !epIntuitivo.blocos.some((b) => b.includes('lampião'));
+const epilogoSemEco = new Set(epMetodico.blocos).size === epMetodico.blocos.length;
+const epilogoDeterministico =
+  JSON.stringify(gerarEpilogo(vMetodico, { horasSelo: 16 })) === JSON.stringify(epMetodico) &&
+  JSON.stringify(gerarMonologo(vMetodico, s().detective)) !== '' &&
+  JSON.stringify(gerarEpilogo(vMetodico, { horasSelo: 16 })) !== JSON.stringify(gerarEpilogo(vMetodico, { horasSelo: 22 }));
+console.log('\n=== (l) PERIFÉRICOS E EXPLICAÇÕES ===');
+console.log('Davey sem móbil na mesa não ganha "razões contra a vítima":', daveySemMotivoInventado);
+console.log('pares de periféricos sem eco verbatim:', perifericosSemEco);
+console.log('a luz do padeiro é paga no epílogo, e só com a refutação:', luzPagaSoComRefutacao);
+console.log('epílogo sem blocos duplicados; conta do perito lê a hora do selo:', epilogoSemEco && epilogoDeterministico);
+
+// ============================================================
 // Fumaça do monólogo: todos os desfechos geram texto.
 // ============================================================
 console.log('\n=== Monólogos gerados (fumaça) ===');
@@ -462,6 +497,10 @@ const checagens = [
   ['O registro da estalagem derruba o paradeiro do réu (opcional, nunca pilar)', alibiReuCai],
   ['Rotina interrompida trava o teto; com o piso fecha janela finita', rotinaDaTeto && pisoMaisTetoFecham],
   ['Registro mecânico: janela fixa e refutação do mostrador forjado', registroMecanicoFixo && mostradorCaiPelaMaquina],
+  ['Periférico sem móbil na mesa não ganha "razões contra a vítima"', daveySemMotivoInventado],
+  ['Blocos de periféricos sem eco verbatim (monólogo e epílogo)', perifericosSemEco && epilogoSemEco],
+  ['A explicação da luz é paga no epílogo, e só com a refutação', luzPagaSoComRefutacao],
+  ['Epílogo determinístico; a conta do perito lê a hora do selo', epilogoDeterministico],
   ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
