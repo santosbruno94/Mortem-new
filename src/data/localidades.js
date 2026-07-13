@@ -29,11 +29,40 @@ export const LOCALIDADES = [
     titulo: 'A Cena — Escritório dos Fundos da Relojoaria',
     subtitulo: 'Briarstone, High Street, nº 7',
     acoesEspeciais: [],
-    prosa: [
-      'O escritório guarda o revirado em que o acharam: papéis pelo assoalho, a poltrona fora do lugar. Sobre a lareira, um retângulo sem poeira marca onde o relógio ficava.',
-      'O próprio [[ev_relogio_lareira]] está no tapete, de borco. Wycliffe aponta-o da porta, sem entrar: é a peça de que a vila inteira já fala. Pela caixa partida, à lente, vê-se a [[ev_maquinismo]].',
-      'Na loja da frente, [[ev_vitrine]]. Na porta que dá para o beco, uma [[ev_fechadura]].',
-      'Na copa ao lado, entre a chaleira e a pia, uma [[ev_cesta_rooke]]. No cesto de papéis da escrivaninha, uma [[ev_suplica_cesto]].',
+    // §5.1: a prosa monolítica se divide em pontos de interesse — coleta em
+    // camadas. A introdução ambienta sem carta; cada ponto revela as suas.
+    introducao: [
+      'O escritório dos fundos guarda o revirado da manhã em que o acharam: papéis pelo assoalho, a poltrona de couro empurrada para longe da escrivaninha. A luz de outubro entra de esguelha pela janela alta e assenta na poeira em suspensão; cheira a óleo fino de relojoeiro e à cinza fria da lareira. Sobre a repisa, um retângulo sem poeira marca o lugar onde alguma coisa esteve.',
+    ],
+    pontos: [
+      {
+        id: 'pt_cena_lareira',
+        rotulo: 'A lareira',
+        prosa: [
+          'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.title}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo; ali dentro, a [[ev_maquinismo]].',
+        ],
+      },
+      {
+        id: 'pt_cena_escrivaninha',
+        rotulo: 'A escrivaninha',
+        prosa: [
+          'A escrivaninha está de través, uma gaveta meio puxada, o tinteiro seco e a pena atravessada no mata-borrão. Ao pé dela, no cesto de vime, entre aparas e um sobrescrito rasgado, uma [[ev_suplica_cesto]].',
+        ],
+      },
+      {
+        id: 'pt_cena_vitrine',
+        rotulo: 'A vitrine e a porta do beco',
+        prosa: [
+          'A loja da frente fica para além do vão do escritório. Ali, contra a parede, [[ev_vitrine]]. Junto à porta acanhada que dá para o beco, na moldura do trinco, [[ev_fechadura]].',
+        ],
+      },
+      {
+        id: 'pt_cena_copa',
+        rotulo: 'A copa',
+        prosa: [
+          'Nos fundos, uma copa apertada: a chaleira fria no fogareiro, a pia com um resto de água parada, um pano de prato no gancho. Sobre a bancada de pedra, encostada à parede, uma [[ev_cesta_rooke]].',
+        ],
+      },
     ],
   },
   {
@@ -42,11 +71,40 @@ export const LOCALIDADES = [
     titulo: 'A Oficina de Consertos',
     subtitulo: 'Os fundos da loja; Davey Tull, aprendiz, 15 anos',
     acoesEspeciais: [],
-    prosa: [
-      'Duas bancadas, um torno pequeno, a parede de ferramentas em ordem de tamanho. O lampião da bancada grande segue no gancho: o depósito seco, a chaminé de vidro fumada até a boca.',
-      'Davey Tull varre um chão já varrido. Na bancada pequena, aberto para conserto, um relógio de lareira igual ao da cena mostra o trem das badaladas: a cada hora vencida, a alavanca salta um entalhe da roda de contagem.',
-      'No púlpito de cortiça, o [[ev_livro_ordens]]. Na prateleira das ferramentas de gravar, o [[ev_estojo_buril]]. Numa gaveta funda, sob camurça, um [[ev_anel_encomenda]].',
-      'Perguntado pelos costumes do patrão, o rapaz conta [[dep_habito_corda]]. Sobre a noite de sexta, dá [[alibi_davey]], e torna a varrer.',
+    // §5.1: pontos de interesse. A intro planta de graça o relógio irmão (a
+    // roda de contagem à vista) — fair play; cada ponto revela as suas cartas.
+    introducao: [
+      'A oficina ocupa os fundos da loja: duas bancadas de tampo raspado, um torno pequeno aparafusado à ponta de uma delas, a parede coberta de ferramentas penduradas em ordem de tamanho. No gancho da bancada grande, o lampião de bancada está apagado. O depósito, seco; a chaminé de vidro, fumada até a boca. Na bancada menor, aberto para conserto, um relógio de lareira irmão do da cena mostra o trem das badaladas a descoberto; a cada hora que a máquina bate, a alavanca salta um entalhe da roda de contagem. Cheira a óleo e ao carvão morno do fogareiro.',
+    ],
+    pontos: [
+      {
+        id: 'pt_oficina_prateleira',
+        rotulo: 'A prateleira de gravar',
+        prosa: [
+          'A prateleira das ferramentas de gravar corre sobre a bancada menor: buris de vários feitios, dois punções de letra, um vidro tampado de pó de polir. No meio deles, de tampa fechada, o [[ev_estojo_buril]].',
+        ],
+      },
+      {
+        id: 'pt_oficina_pulpito',
+        rotulo: 'O púlpito de ordens',
+        prosa: [
+          'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
+        ],
+      },
+      {
+        id: 'pt_oficina_gaveta',
+        rotulo: 'A gaveta funda',
+        prosa: [
+          'Sob a bancada grande corre uma fileira de gavetas; a mais funda range ao abrir. Dentro, sob um retalho de camurça, junto a molas soltas e a um envelope de peças, um [[ev_anel_encomenda]].',
+        ],
+      },
+      {
+        id: 'pt_oficina_aprendiz',
+        rotulo: 'O aprendiz',
+        prosa: [
+          'Davey Tull varre um chão já varrido e não larga a vassoura. Perguntado pelos costumes do patrão, ergue os olhos, solto, e conta [[dep_habito_corda]]. Perguntado pela noite de sexta, baixa-os para o serviço e dá [[alibi_davey]]. Depois torna a varrer o mesmo canto.',
+        ],
+      },
     ],
   },
   {

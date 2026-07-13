@@ -32,7 +32,8 @@ import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.j
 import { NOS_MAPA } from '../src/data/mapa.js';
 import { POSICOES_DIORAMA, FORMAS_PREDIO } from '../src/data/mapa_espacial.js';
 import { HOTSPOTS_CORPO } from '../src/data/hotspots_corpo.js';
-import { obterDefinicaoCarta } from '../src/data/cartas.js';
+import { obterDefinicaoCarta, CARTAS } from '../src/data/cartas.js';
+import { LOCALIDADES } from '../src/data/localidades.js';
 
 const monologos = [];
 const estadoInicial = { ...useJogo.getState() };
@@ -513,6 +514,34 @@ const hotspotsValidos =
   HOTSPOTS_CORPO.every((h) => obterDefinicaoCarta(h.cartaId)) &&
   HOTSPOTS_CORPO.every((h) => obterDefinicaoCarta(h.cartaId).localidade === 'corpo');
 
+// ============================================================
+// GUARDA DOS PONTOS DE INTERESSE (§5.1): ao dividir a prosa de uma
+// localidade em pontos, NENHUMA carta pode ficar inalcançável. Compara a
+// união dos [[id]] de todos os pontos com as cartas cujo `localidade`
+// aponta para o nó. E, na volta, todo [[id]] de um ponto tem de ser carta
+// real (nada de marcador solto). Prova a restrição dura da Fase 2.
+// ============================================================
+const marcadoresDe = (paragrafos) =>
+  new Set(paragrafos.flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1])));
+const localidadesComPontos = LOCALIDADES.filter((l) => Array.isArray(l.pontos) && l.pontos.length);
+const cartasOrfasNosPontos = localidadesComPontos.flatMap((loc) => {
+  const idsNosPontos = marcadoresDe(loc.pontos.flatMap((p) => p.prosa));
+  return CARTAS.filter((c) => c.localidade === loc.id)
+    .map((c) => c.id)
+    .filter((id) => !idsNosPontos.has(id))
+    .map((id) => `${loc.id}:${id}`);
+});
+const marcadoresOrfaosNosPontos = localidadesComPontos.flatMap((loc) =>
+  [...marcadoresDe(loc.pontos.flatMap((p) => p.prosa))]
+    .filter((id) => !obterDefinicaoCarta(id))
+    .map((id) => `${loc.id}:${id}`)
+);
+const pontosCobremCartas = cartasOrfasNosPontos.length === 0 && marcadoresOrfaosNosPontos.length === 0;
+if (!pontosCobremCartas) {
+  console.log('\nPONTOS DE INTERESSE — cartas inalcançáveis:', cartasOrfasNosPontos.join(', ') || '—');
+  console.log('PONTOS DE INTERESSE — marcadores sem carta:', marcadoresOrfaosNosPontos.join(', ') || '—');
+}
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
@@ -538,6 +567,7 @@ const checagens = [
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
   ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
+  ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

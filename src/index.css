@@ -404,3 +404,183 @@ body {
     0 1px 2px rgba(0, 0, 0, 0.7),
     inset 0 -1px 1px rgba(0, 0, 0, 0.4);
 }
+
+/* ------------------------------------------------------------------ */
+/* A PLANTA DA RELOJOARIA (PlantaRelojoaria): a planta baixa em traço  */
+/* de tinta sobre papel, pousada no topo da visão dos cômodos da       */
+/* relojoaria. Andar entre cômodos custa 0h (mesmo prédio). Só         */
+/* acréscimos abaixo desta linha.                                      */
+/* ------------------------------------------------------------------ */
+.planta-titulo {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: #6b5636;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+.planta-svg {
+  display: block;
+  width: 100%;
+  /* altura firme: o desenho escala para caber (preserveAspectRatio meet),
+     centrado, sem depender do cálculo de aspecto intrínseco do SVG. */
+  height: 190px;
+}
+/* Cômodos com nó (clicáveis): parede de tinta escura, enchimento tênue. */
+.planta-comodo {
+  fill: rgba(58, 46, 28, 0.05);
+  stroke: #3a2e1c;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.planta-comodo--aqui {
+  fill: rgba(201, 162, 68, 0.2);
+}
+/* Cômodos decorativos (loja, corredor): traço mais fino e claro. */
+.planta-decor {
+  fill: rgba(58, 46, 28, 0.02);
+  stroke: #6b5a3f;
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+.planta-traco,
+.planta-vitrine {
+  fill: none;
+  stroke: #5a4a2f;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+.planta-vitrine {
+  stroke: #8a6d3b;
+  stroke-width: 2.4;
+}
+.planta-rotulo {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  fill: #6b5636;
+  pointer-events: none;
+}
+.planta-rotulo-decor {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: #8a7756;
+  pointer-events: none;
+}
+.planta-rotulo-decor--italico {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  fill: #9a8763;
+}
+/* Alvos clicáveis: a área de toque é transparente mas sensível. */
+.planta-alvo {
+  cursor: pointer;
+}
+.planta-hit {
+  fill: transparent;
+}
+.planta-alvo:hover .planta-hit,
+.planta-alvo:focus-visible .planta-hit {
+  fill: rgba(201, 162, 68, 0.16);
+  outline: none;
+}
+.planta-alvo-texto {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 11px;
+  fill: #2c2416;
+  pointer-events: none;
+}
+.planta-alvo:hover .planta-alvo-texto {
+  fill: #7a2e12;
+}
+.planta-alvo-texto--aqui {
+  fill: #7a2e12;
+  font-weight: 600;
+}
+.planta-aqui {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 7px;
+  letter-spacing: 0.06em;
+  fill: #8a6d3b;
+  pointer-events: none;
+}
+/* A régua horizontal de cômodos (telas estreitas): alvos de toque ≥44px. */
+.planta-regua {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+}
+.planta-regua-item {
+  min-height: 44px;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(58, 46, 28, 0.4);
+  border-radius: 3px;
+  background: rgba(58, 46, 28, 0.06);
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 0.85rem;
+  color: #2c2416;
+}
+.planta-regua-item--aqui {
+  border-color: #7a2e12;
+  background: rgba(201, 162, 68, 0.22);
+  color: #7a2e12;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------------ */
+/* PONTOS DE INTERESSE (EventoLocalidade §5.1): a prosa da localidade  */
+/* se divide em pontos clicáveis — coleta em camadas. Cabeçalho de     */
+/* etiqueta de latão sobre o couro escuro do overlay. Só acréscimos    */
+/* abaixo desta linha.                                                 */
+/* ------------------------------------------------------------------ */
+.ponto-bloco {
+  border: 1px solid rgba(201, 162, 68, 0.28);
+  border-radius: 3px;
+  background: rgba(20, 16, 12, 0.4);
+}
+.ponto-interesse {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  font-family: 'IM Fell English', Georgia, serif;
+  color: #e7e5e4;
+  background: transparent;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+.ponto-interesse:hover {
+  background: rgba(201, 162, 68, 0.08);
+}
+.ponto-seta {
+  color: #c9a961;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+.ponto-rotulo-texto {
+  flex: 1;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+.ponto-contador {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #a8a29e;
+  font-variant-numeric: tabular-nums;
+}
+.ponto-corpo {
+  padding: 0 0.85rem 0.75rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ponto-interesse { transition: none; }
+}
