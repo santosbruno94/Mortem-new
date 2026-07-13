@@ -391,6 +391,13 @@ dadosMonologo }`. Os 4 tipos:
    sai no monólogo enquanto a retentativa está de pé — só o **encerramento definitivo**
    (o epílogo) o revela.
 
+O pilar Quando falha em **cascata com código próprio por degrau**: sem janela afirmada
+ou sem carta ligada (`sem_janela`); janela que erra a hora real (`janela_nao_cobre`);
+janela que cobre a hora real mas **contradiz as próprias cartas ligadas** à âncora —
+o suporte que o jogador invocou não intersecta o que afirmou (`janela_sem_sustentacao`;
+o monólogo expõe contradição, nunca imprecisão); janela certa e sustentada, porém larga
+demais (`janela_imprecisa`).
+
 ### Monólogo por templates universais — e o CONTRATO do desfecho
 
 Gerado por **BLOCOS** parametrizados (`src/logic/monologo.js`): abertura por tipo de
@@ -596,7 +603,11 @@ invioláveis do motor** — o jogo depende deles para ser resolúvel:
 - **Livor mortis:** surge 1–2h; fixa definitivamente após ~12h (antes disso, some sob
   pressão digital).
 - **Algor mortis:** resfriamento ~1°C/h a partir de 37°C, até a temperatura ambiente
-  (margem ±2h no modelo).
+  (margem ±2h no modelo). O ambiente padrão da cena (11°C) é a constante exportada
+  `AMBIENTE_PADRAO` (`src/logic/tempo_morte.js`): carta de algor, termômetro e modelo
+  de janela leem o mesmo ponto — ajuste num lugar só. Em prosa, a leitura do termômetro
+  sai por `formatTemperatura` (`src/logic/tempo.js`): inteiro ou meio grau por extenso
+  ("22°C e meio"), nunca ponto decimal.
 - **IPM:** nenhum sinal isolado é definitivo; a convergência (interseção de janelas)
   reduz a margem.
 - **Causa:** petéquias/cianose → asfixia (família); sulco cervical **horizontal** →

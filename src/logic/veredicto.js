@@ -72,8 +72,13 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
     janela.inicio !== -Infinity &&
     janela.fim !== Infinity &&
     janela.fim - janela.inicio <= LARGURA_JANELA_PRECISA;
+  // Cascata de falhas do pilar Quando, da mais grave à mais branda:
+  // sem janela → janela que erra a hora → janela certa que CONTRADIZ as
+  // próprias cartas ligadas (código próprio: o buraco é contradição, não
+  // largura) → janela certa e sustentada, porém larga demais.
   if (!janela || sustentaQuando.length === 0) falhas.push({ codigo: 'sem_janela' });
   else if (!janelaCobre) falhas.push({ codigo: 'janela_nao_cobre' });
+  else if (!janelaSustentada) falhas.push({ codigo: 'janela_sem_sustentacao' });
   else if (!janelaPrecisa) falhas.push({ codigo: 'janela_imprecisa' });
   if (janelaOk) acertos.push({ codigo: 'janela' });
 

@@ -48,6 +48,16 @@ export function formatDuracao(horas) {
   return m > 0 ? `${h}h${String(m).padStart(2, '0')}` : `${h}h`;
 }
 
+// Temperatura em prosa: inteiro ("22°C") ou meio grau por extenso ("22°C e
+// meio") — nunca ponto decimal, anacrônico na prosa de 1893. Leituras que o
+// relógio fracionário produza (viagens de 1h30) arredondam ao meio grau,
+// o limite honesto de leitura de um termômetro de mercúrio.
+export function formatTemperatura(graus) {
+  const meiosGraus = Math.round(graus * 2) / 2;
+  const inteiro = Math.floor(meiosGraus);
+  return meiosGraus > inteiro ? `${inteiro}°C e meio` : `${inteiro}°C`;
+}
+
 // Janela da morte: "entre 20h00 e 23h00 de 13/out"
 export function formatJanela(janela) {
   if (!janela) return 'janela indeterminada';

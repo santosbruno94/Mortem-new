@@ -35,7 +35,7 @@ export default function TelaPersonagem() {
           {OPCOES_PERSONAGEM.map((opcao) => (
             <button
               key={opcao.id}
-              onClick={() => escolherDetective(opcao.id)}
+              onClick={() => escolherDetective()}
               className="carta-mesa text-left h-full"
             >
               <div className="carta-pergaminho rounded-sm p-5 sm:p-7 h-full">

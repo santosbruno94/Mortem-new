@@ -15,6 +15,8 @@ const DICAS_TUTORIAL = {
   corpo_sem_substancia: 'Sustente a cadeia com evidências do corpo de valor pericial (sinais não inconclusivos).',
   sem_janela: 'Afirme a janela da morte e puxe até ela os indicadores (rigor, livor, algor, visto-vivo).',
   janela_nao_cobre: 'A janela afirmada erra a hora do óbito. Reúna sinais colhidos a tempo e refaça o juízo.',
+  janela_sem_sustentacao:
+    'A janela afirmada contradiz os sinais puxados à âncora Quando. Corrija a afirmação ou reveja essas ligações.',
   janela_imprecisa: 'A janela está larga. Mais sinais temporais colhidos cedo estreitam a convergência.',
   sem_mecanismo: 'Afirme a causa da morte e sustente-a com os sinais discriminantes do corpo.',
   mecanismo_errado: 'A causa afirmada contradiz os sinais do corpo. Reexamine o pescoço da vítima.',
