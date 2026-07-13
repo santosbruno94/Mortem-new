@@ -308,6 +308,57 @@ console.log('\n=== (i) ÁLIBI DO RÉU ===');
 console.log('registro de Moorford derruba o paradeiro do réu:', alibiReuCai);
 
 // ============================================================
+// (j) ROTINA INTERROMPIDA dá TETO durável: o hábito não cumprido do morto
+// (dar corda ao relógio de bolso às 23h) trava o FIM da janela — espelho
+// do visto-com-vida, que trava o início. Juntos fecham janela FINITA.
+// Cartas sintéticas: o contrato é do MOTOR, não do caso corrente.
+// ============================================================
+const cartaRotina = {
+  id: 'sint_rotina',
+  horaRegistro: 11,
+  tagsOcultas: { dominio: 'temporal', subDominio: 'rotina_interrompida', horaRotina: -1 },
+};
+const cartaVistoVivo = {
+  id: 'sint_visto',
+  horaRegistro: 11,
+  tagsOcultas: { dominio: 'temporal', subDominio: 'ultima_vez_visto', horaAvistamento: -4 },
+};
+const jRotina = janelaDaCarta(cartaRotina);
+const rotinaDaTeto = !!jRotina && jRotina.inicio === -Infinity && jRotina.fim === -1;
+const jDuravelFinita = intersecaoJanelas([jRotina, janelaDaCarta(cartaVistoVivo)]);
+const pisoMaisTetoFecham =
+  !!jDuravelFinita &&
+  jDuravelFinita.inicio === -4 &&
+  jDuravelFinita.fim === -1 &&
+  Number.isFinite(jDuravelFinita.fim - jDuravelFinita.inicio);
+console.log('\n=== (j) ROTINA INTERROMPIDA ===');
+console.log('rotina não cumprida trava o teto da janela:', rotinaDaTeto);
+console.log('piso (visto-vivo) + teto (rotina) fecham janela finita:', pisoMaisTetoFecham);
+
+// ============================================================
+// (k) REGISTRO MECÂNICO: o maquinismo grava uma faixa fixa de horas
+// (independe do exame e não degrada) e, como fato temporal, REFUTA uma
+// alegação de hora que caia fora dela — o mostrador forjado cai pela
+// própria máquina.
+// ============================================================
+const cartaMaquinismo = {
+  id: 'sint_maquinismo',
+  horaRegistro: 30, // exame tardio: a janela mecânica não depende do exame
+  tagsOcultas: { dominio: 'temporal', subDominio: 'registro_mecanico', janelaInicio: -3, janelaFim: -2 },
+};
+const cartaMostradorForjado = {
+  id: 'sint_mostrador',
+  horaRegistro: 11,
+  tagsOcultas: { dominio: 'ambiental', horaAparente: 8.75, encenado: true, isca: true },
+};
+const jMecanica = janelaDaCarta(cartaMaquinismo);
+const registroMecanicoFixo = !!jMecanica && jMecanica.inicio === -3 && jMecanica.fim === -2;
+const mostradorCaiPelaMaquina = refutacaoDeHoraEstabelecida(cartaMostradorForjado, [cartaMaquinismo]);
+console.log('\n=== (k) REGISTRO MECÂNICO ===');
+console.log('janela mecânica fixa, alheia à hora do exame:', registroMecanicoFixo);
+console.log('mostrador forjado refutado pelo próprio maquinismo:', mostradorCaiPelaMaquina);
+
+// ============================================================
 // Fumaça do monólogo: todos os desfechos geram texto.
 // ============================================================
 console.log('\n=== Monólogos gerados (fumaça) ===');
@@ -386,6 +437,8 @@ const checagens = [
   ['Segundo rastro do réu reforça sem gafe; sozinho não basta', reforcoSemGafe && soLencoFalha],
   ['Refutar só a testemunha não credita a encenação (contrato do desfecho)', encenacaoNaoCreditada],
   ['O registro de Moorford derruba o paradeiro do réu (opcional, nunca pilar)', alibiReuCai],
+  ['Rotina interrompida trava o teto; com o piso fecha janela finita', rotinaDaTeto && pisoMaisTetoFecham],
+  ['Registro mecânico: janela fixa e refutação do mostrador forjado', registroMecanicoFixo && mostradorCaiPelaMaquina],
   ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],

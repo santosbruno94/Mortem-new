@@ -1,7 +1,8 @@
 // =====================================================================
 // Gaveta Cronos — o pilar "Quando".
 // O jogador NÃO escolhe a hora de um menu: ele a CALCULA. Cada indicador
-// temporal coletado (algor, rigor, livor, última-vez-visto) vira uma
+// temporal coletado (algor, rigor, livor, última-vez-visto, rotina
+// interrompida, registro mecânico) vira uma
 // janela pelo modelo forense universal (src/logic/tempo_morte.js); a hora
 // da morte é a INTERSEÇÃO dessas janelas. Funções puras: leem SOMENTE
 // tagsOcultas e a hora de registro de cada carta.
@@ -12,6 +13,8 @@ import {
   janelaRigor,
   janelaLivor,
   travaUltimaVezVisto,
+  travaRotinaInterrompida,
+  janelaRegistroMecanico,
   intersecaoJanelas,
 } from './tempo_morte.js';
 
@@ -31,6 +34,10 @@ export function janelaDaCarta(carta) {
       return janelaLivor(t.estadoLivor, exame);
     case 'ultima_vez_visto':
       return travaUltimaVezVisto(t.horaAvistamento);
+    case 'rotina_interrompida':
+      return travaRotinaInterrompida(t.horaRotina);
+    case 'registro_mecanico':
+      return janelaRegistroMecanico(t.janelaInicio, t.janelaFim);
     default:
       return null;
   }

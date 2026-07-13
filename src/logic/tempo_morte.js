@@ -129,6 +129,25 @@ export function travaUltimaVezVisto(horaAvistamento) {
   return { inicio: horaAvistamento, fim: Infinity };
 }
 
+// Rotina interrompida: um hábito invariável do morto (dar corda ao relógio,
+// apagar o lampião, trancar a porta) que NÃO foi cumprido no horário de
+// costume. O morto não chegou vivo a essa hora — trava o FIM da janela.
+// É o espelho durável de travaUltimaVezVisto: aquele dá piso, este dá teto.
+export function travaRotinaInterrompida(horaRotina) {
+  if (typeof horaRotina !== 'number') return null;
+  return { inicio: -Infinity, fim: horaRotina };
+}
+
+// Registro mecânico: um maquinismo (roda de contagem de carrilhão, contador
+// de fábrica) que grava fisicamente uma faixa de horas para um evento da
+// morte. Não depende do exame nem degrada — a janela é a que o mecanismo
+// registrou.
+export function janelaRegistroMecanico(janelaInicio, janelaFim) {
+  if (typeof janelaInicio !== 'number' || typeof janelaFim !== 'number') return null;
+  if (janelaInicio > janelaFim) return null;
+  return { inicio: janelaInicio, fim: janelaFim };
+}
+
 // =====================================================================
 // Interseção das janelas — a Janela da Morte propriamente dita
 // =====================================================================
