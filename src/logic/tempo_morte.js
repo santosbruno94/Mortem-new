@@ -138,7 +138,7 @@ export function travaRotinaInterrompida(horaRotina) {
   return { inicio: -Infinity, fim: horaRotina };
 }
 
-// Registro mecânico: um maquinismo (roda de contagem de carrilhão, contador
+// Registro mecânico: um maquinismo (roda de contagem de relógio de badalar, contador
 // de fábrica) que grava fisicamente uma faixa de horas para um evento da
 // morte. Não depende do exame nem degrada — a janela é a que o mecanismo
 // registrou.

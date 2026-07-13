@@ -9,8 +9,8 @@
 // O GENÓTIPO usa vocabulários FECHADOS (abaixo): é isso que torna a
 // derivação procedural trivial no futuro — cada campo de um personagem
 // gerado sai de `vocabulario[hashString(seedSalgada) % n]`
-// (src/logic/aparencia.js, derivarAparenciaDeSeed). No caso tutorial
-// (seed fixa) os valores são CURADOS à mão, entrada por entrada.
+// (src/logic/aparencia.js, derivarAparenciaDeSeed). No caso do vertical
+// slice (seed fixa) os valores são CURADOS à mão, entrada por entrada.
 // =====================================================================
 
 // Vocabulários fechados do genótipo. Acrescentar valor novo aqui exige
@@ -50,7 +50,7 @@ export const CORES_TRAJE = {
 };
 
 // -----------------------------------------------------------------
-// Aparências CURADAS do caso tutorial (seed fixa — sem randomização).
+// Aparências CURADAS do caso (seed fixa — sem randomização).
 // A descrição comportamental continua em seed.js; aqui é só o físico.
 // -----------------------------------------------------------------
 export const APARENCIAS_CURADAS = {
@@ -63,32 +63,50 @@ export const APARENCIAS_CURADAS = {
     idadeAparente: 'idosa',
     traje: 'burgues',
   },
-  // Edgar Arthurs, 38 — sobrinho de luto impecável.
-  edgar_arthurs: {
+  // Silas Crane, 47 — primeiro-oficial da relojoaria.
+  silas_crane: {
+    corpo: 'medio',
+    pele: 'clara',
+    cabelo: { cor: 'grisalho', estilo: 'repartido' },
+    pelosFaciais: 'liso',
+    idadeAparente: 'madura',
+    traje: 'servico',
+  },
+  // Walter Arthurs, 44 — sobrinho herdeiro, negociante quebrado.
+  walter_arthurs: {
     corpo: 'magro',
     pele: 'clara',
     cabelo: { cor: 'castanho', estilo: 'repartido' },
     pelosFaciais: 'bigode',
     idadeAparente: 'madura',
-    traje: 'luto',
+    traje: 'burgues',
   },
-  // Sra. Mabel Hudson, 55 — governanta há dezessete anos.
-  sra_hudson: {
-    corpo: 'medio',
-    pele: 'clara',
+  // Sra. Agnes Rooke, 58 — viúva, dona da papelaria.
+  agnes_rooke: {
+    corpo: 'magro',
+    pele: 'palida',
     cabelo: { cor: 'grisalho', estilo: 'coque' },
     pelosFaciais: 'liso',
     idadeAparente: 'idosa',
-    traje: 'servico',
+    traje: 'luto',
   },
-  // Thomas Blackwood, 42 — taverneiro do The Crossed Keys.
-  thomas_blackwood: {
+  // Caleb Grey, 46 — moleiro.
+  caleb_grey: {
     corpo: 'sobrepeso',
     pele: 'corada',
-    cabelo: { cor: 'ruivo', estilo: 'despenteado' },
+    cabelo: { cor: 'castanho', estilo: 'despenteado' },
     pelosFaciais: 'barba',
     idadeAparente: 'madura',
-    traje: 'taverneiro',
+    traje: 'modesto',
+  },
+  // Davey Tull, 15 — aprendiz.
+  davey_tull: {
+    corpo: 'magro',
+    pele: 'clara',
+    cabelo: { cor: 'castanho', estilo: 'curto' },
+    pelosFaciais: 'liso',
+    idadeAparente: 'jovem',
+    traje: 'modesto',
   },
   // Delegado Lemuel Wycliffe — fonte de informação, não suspeito.
   delegado_wycliffe: {
@@ -99,20 +117,20 @@ export const APARENCIAS_CURADAS = {
     idadeAparente: 'idosa',
     traje: 'uniforme',
   },
-  // Testemunhas do caderno de ocorrências (aparecem no Painel de Álibis).
-  sra_gale: {
+  // Testemunhas do caderno de ocorrências (Painel de Álibis / registros).
+  moco_padeiro: {
+    corpo: 'magro',
+    pele: 'clara',
+    cabelo: { cor: 'preto', estilo: 'curto' },
+    pelosFaciais: 'liso',
+    idadeAparente: 'jovem',
+    traje: 'modesto',
+  },
+  sra_wick: {
     corpo: 'magro',
     pele: 'palida',
     cabelo: { cor: 'branco', estilo: 'coque' },
     pelosFaciais: 'liso',
-    idadeAparente: 'idosa',
-    traje: 'modesto',
-  },
-  sr_pruitt: {
-    corpo: 'magro',
-    pele: 'clara',
-    cabelo: { cor: 'grisalho', estilo: 'curto' },
-    pelosFaciais: 'costeletas',
     idadeAparente: 'idosa',
     traje: 'modesto',
   },
@@ -121,8 +139,10 @@ export const APARENCIAS_CURADAS = {
 // Quem recebe o perito em cada localidade (para o retrato no overlay).
 // Camada visual — nenhuma regra lê isto.
 export const PERSONAGEM_POR_LOCALIDADE = {
-  interrogatorio_edgar: 'edgar_arthurs',
-  interrogatorio_hudson: 'sra_hudson',
-  interrogatorio_blackwood: 'thomas_blackwood',
+  interrogatorio_silas: 'silas_crane',
+  oficina: 'davey_tull',
+  estalagem: 'walter_arthurs',
+  papelaria: 'agnes_rooke',
+  moinho: 'caleb_grey',
   delegacia: 'delegado_wycliffe',
 };

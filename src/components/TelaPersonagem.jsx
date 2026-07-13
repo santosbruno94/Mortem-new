@@ -22,7 +22,7 @@ export default function TelaPersonagem() {
           §
         </div>
         <p className="mt-4 text-stone-400 text-sm tracking-[0.3em] text-center">
-          O Álibi de Corda — Briarstone, 1893
+          A Hora Emprestada — Briarstone, 1893
         </p>
 
         <p className="mt-14 sm:mt-16 mb-8 sm:mb-10 font-serif italic text-lg sm:text-xl text-amber-200/90 text-center">
