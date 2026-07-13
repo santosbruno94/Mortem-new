@@ -12,8 +12,8 @@
 //
 // VARIAÇÃO DETERMINÍSTICA: aberturas e fechos têm variantes; a escolha é
 // função de um HASH da identidade do caso (dados.seedId) SALGADO com o nome
-// do perito escolhido — nunca de Math.random. A mesma partida (caso + perito)
-// escolhe sempre a mesma variante (reprodutível); Harlan e Lenore tendem a
+// do perito — nunca de Math.random. A mesma partida (caso + perito) escolhe
+// sempre a mesma variante (reprodutível); casos de seed diferente tendem a
 // ler desfechos diferentes. Tom regido por docs/guia-de-estilo.md (§3–4):
 // brilho racionado, NO MÁXIMO UMA MÁXIMA POR DESFECHO — garantido por
 // construção: cada variante declara se é máxima (`maxima: true`) e, quando a

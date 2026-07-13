@@ -95,18 +95,12 @@ export const PERGUNTAS_BRIEFING = [
   },
 ];
 
-// Descrições da tela de seleção (§12)
+// Descrição da tela de seleção (§12): um único perito atende ao chamado.
 export const OPCOES_PERSONAGEM = [
   {
     id: 'harlan',
     nome: 'Dr. Harlan Blackwell',
     descricao:
       'Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem. Trata os delegados com a cortesia exata de quem preferia não precisar deles.',
-  },
-  {
-    id: 'lenore',
-    nome: 'Dr.ª Lenore Blackwell',
-    descricao:
-      'A primeira perita licenciada da Inglaterra — licença que três condados ainda se recusam a reconhecer. Aprendeu cedo que cada prova sua precisa ser três vezes mais sólida quando o nome assinado no laudo é de mulher. Assina assim mesmo.',
   },
 ];

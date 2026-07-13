@@ -13,7 +13,7 @@
 //   • extração por clique nos termos em negrito das localidades;
 //   • o Mural da Acusação inteiro (5 estações, barbantes, revisão final),
 //     SEM o gabarito do legista no topo (Q3);
-//   • a personagem Lenore (interpolações de gênero);
+//   • as interpolações {detective.campo}/{g:...} resolvidas na prosa;
 //   • o desbloqueio de Moorford pelos dois leads, com anúncio no diário,
 //     e o álibi do réu derrubado pelo registro do clube (Q4);
 //   • a retentativa com preço (2h) e o mural reaberto na pendência (Q2/Q9);
@@ -243,11 +243,11 @@ async function main() {
     await espera(page, 800);
 
     // ============================================================
-    // ROTA 2 — APRESSADO (Lenore): iscas primeiro, corpo tarde,
+    // ROTA 2 — APRESSADO (Harlan): iscas primeiro, corpo tarde,
     // acusa a governanta. Esperado: Erro Judiciário.
     // ============================================================
-    console.log('\n=== ROTA 2 — Apressado (Lenore) → Erro Judiciário ===');
-    await novaPartida(page, 'Lenore Blackwell');
+    console.log('\n=== ROTA 2 — Apressado (Harlan) → Erro Judiciário ===');
+    await novaPartida(page, 'Dr. Harlan Blackwell');
 
     await visitarEExtrair(page, 'A Cena do Crime');
     await fecharOverlay(page);
@@ -264,7 +264,8 @@ async function main() {
     await visitarEExtrair(page, 'Thomas Blackwood');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'O Corpo'); // só agora, degradado
-    checar('Rota 2: interpolação de gênero (a perita)', (await page.locator('body').innerText()).includes('perita'));
+    const corpoTexto = await page.locator('body').innerText();
+    checar('Rota 2: interpolações resolvidas na prosa (sem marcador cru)', !corpoTexto.includes('{g:') && !corpoTexto.includes('{detective.'));
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
     await fecharOverlay(page);
