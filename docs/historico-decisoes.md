@@ -183,3 +183,42 @@ oficina se divide em pontos de interesse (coleta em camadas).
   `fiscal-continuidade` (zero achados bloqueantes) antes do commit. Observação pura: a
   única voz que aponta o relógio de lareira é Wycliffe (viés da história A), fair-play;
   o relógio irmão da oficina segue plantado como saber de graça.
+
+## Fase 3 do overhaul (13/07/2026) — Interrogatórios como diálogo
+
+- **Escopo da leva (a):** só Silas Crane (o réu estreia), conforme a OS §3.3 — modelo de
+  dados + árvore completa + componente + QA + prosa revisada. Os outros quatro suspeitos
+  (leva b) ficam para a próxima sessão, com aprovação do usuário no meio.
+- **Decisão do usuário — confronto rende carta?** Entre "confronto mina carta de
+  depoimento nova" e "só reação em prosa" → **só reação em prosa**. A árvore reusa as três
+  cartas que Silas já tem (`ev_vidro_dobra`, `alibi_silas`, `comp_silas`); os confrontos
+  (estalagem, livro de ordens) mostram a reação observável sem nova carta. A superfície do
+  motor fica idêntica — risco zero de continuidade/veredicto.
+- **Decisão do usuário — descoberta do confronto:** entre "oculto até ter a prova" e
+  "visível-porém-travado" → **oculto** (segue a OS ao pé da letra: "a opção só aparece com
+  a carta registrada"). Sem spoiler; o jogador descobre o confronto ao colher a prova.
+- **Camada narrativa pura:** `src/data/dialogos.js` pode referenciar ids de carta
+  (`requerCarta`, `[[id]]`) — a restrição "só tags" vale para `src/logic/`. O motor não lê
+  a árvore; a extração continua por `extrairCarta`, o veredicto não muda. `nosVisitadosDialogo`
+  entra no store como dado puro serializável (só o "já perguntado" da UI).
+- **Hub-and-spoke, navegação livre:** o nó corrente é estado local (reabrir começa no
+  início — relógio mole); o confronto é opção `requerCarta` que reenquadra, nunca confessa.
+  Os travessões dos confrontos emolduram a apresentação da prova (um par por cena, dentro
+  do teto do guia §3).
+- **`renderProsa` compartilhado:** o renderizador de `[[id]]`/interpolação saiu do
+  `EventoLocalidade` para `src/components/ProsaComTermos.jsx` (`ParagrafoProsa`), usado
+  pelas localidades E pelo diálogo — sem duplicar o laço de marcadores (OS §3.2).
+- **`interrogatorio_silas` em `localidades.js`** perdeu `prosa`/`prosaCondicional` (migradas
+  para a árvore); o dispatch da Escrivaninha abre `InterrogatorioDialogo` quando há diálogo
+  para o nó, senão a prosa de localidade de sempre.
+- **Guarda estática (qa.mjs):** toda `requerCarta` referencia carta existente; todo `vaiPara`
+  aponta para nó real da mesma árvore; todo `[[id]]` de fala é carta real e nenhuma carta
+  com `localidade === nó` fica órfã (espelho da guarda dos pontos, §5.1).
+- **Contrato do qa-ui.mjs atualizado no mesmo commit:** `[data-opcoes-dialogo]`,
+  `.opcao-dialogo`/`.opcao-dialogo--confronto`/`--voltar` entram nos seletores; a "segunda
+  visita" ao réu migra de `prosaCondicional` para a opção `requerCarta` ("Apresentar: O
+  Quarto Cinco às Escuras" → reação); novo bloco da Fase 3 (diálogo abre, confronto oculto
+  sem a prova, extração de carta de dentro da árvore) e helper `interrogarEExtrair`.
+- **Prosa nova pelo pipeline:** as falas de Silas foram redigidas pelo `escritor-prosa` e
+  revisadas por `editor-critico` + `perito-forense` + `fiscal-continuidade` (zero achados
+  bloqueantes) antes do commit.

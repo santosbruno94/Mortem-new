@@ -7,7 +7,9 @@ import RelogioBolso from './RelogioBolso.jsx';
 import MesaLocalidades2D from './MesaLocalidades2D.jsx';
 import Cena3DBoundary from './Cena3DBoundary.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
+import InterrogatorioDialogo from './InterrogatorioDialogo.jsx';
 import FichaEvidencia from './FichaEvidencia.jsx';
+import { obterDialogo } from '../data/dialogos.js';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
@@ -112,7 +114,14 @@ export default function Escrivaninha() {
       </div>
 
       {/* Overlays — a mesa nunca sai do DOM */}
-      {overlay?.tipo === 'localidade' && <EventoLocalidade localidadeId={overlay.id} />}
+      {/* Nós de interrogatório com árvore de diálogo (§7.1) abrem o
+          diálogo ramificado; os demais, a prosa de localidade de sempre. */}
+      {overlay?.tipo === 'localidade' &&
+        (obterDialogo(overlay.id) ? (
+          <InterrogatorioDialogo localidadeId={overlay.id} />
+        ) : (
+          <EventoLocalidade localidadeId={overlay.id} />
+        ))}
       {overlay?.tipo === 'caderneta' && <Caderneta />}
       {overlay?.tipo === 'glossario' && <ModalGlossario />}
       {overlay?.tipo === 'alibis' && <PainelAlibis />}

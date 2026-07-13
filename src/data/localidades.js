@@ -113,24 +113,9 @@ export const LOCALIDADES = [
     titulo: 'Interrogatório — Silas Crane',
     subtitulo: 'Primeiro-oficial da relojoaria, 47 anos',
     acoesEspeciais: [],
-    prosa: [
-      'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos.',
-      '"Doze anos nesta casa. Fui eu que o achei, esta manhã, às nove e vinte, e mandei o rapaz correr à delegacia." Sobre a noite de sexta: [[alibi_silas]].',
-      'Em tudo o mais, [[comp_silas]].',
-      'Ao cruzar as pernas, deixa ver, presa à bainha esquerda, uma lasca que a luz do lampião acende: [[ev_vidro_dobra]].',
-    ],
-    // Prosa condicional: entra quando TODAS as cartas exigidas já estão na
-    // mesa. Aqui, o confronto da segunda visita — o perito voltou da
-    // estalagem sabendo do quarto às escuras, e a vila reage à investigação.
-    // Reação observável, nunca confissão: o veredicto continua no mural.
-    prosaCondicional: [
-      {
-        requerCartas: ['alibi_silas', 'corrob_estalajadeiro'],
-        paragrafos: [
-          'Posto diante do que se conta na estalagem — o quarto às escuras, o portão passado das dez —, Silas Crane pousa o bule sem ruído. "O estalajadeiro terá contado os quartos errados. A casa é grande, e a noite foi de movimento." Dá a resposta no mesmo passo das outras e torna a erguer o bule.',
-        ],
-      },
-    ],
+    // §7.1: este nó é INTERROGATÓRIO EM DIÁLOGO — a prosa (falas, confrontos,
+    // termos extraíveis) vive em src/data/dialogos.js. O dispatch da
+    // Escrivaninha abre InterrogatorioDialogo quando há árvore para o nó.
   },
   {
     id: 'delegacia',

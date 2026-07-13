@@ -18,6 +18,11 @@
 //     ficha (data-overlay="ficha") com a descrição completa; "Arquivar na
 //     mesa" a fecha; a carta da mesa reabre a ficha; a Caderneta, rebaixada
 //     a diário, não traz mais a descrição (só carimbo + hora);
+//   • o interrogatório em diálogo (§7.1): o nó de Silas abre em árvore
+//     ([data-opcoes-dialogo], .opcao-dialogo/.opcao-dialogo--confronto/
+//     --voltar); o confronto (opção requerCarta, "Apresentar: …") fica
+//     OCULTO até a prova estar na mesa e, apresentado, rende a reação do réu;
+//     as cartas de depoimento nascem de dentro da fala pelo mesmo [[id]];
 //   • o Mural da Acusação inteiro (5 estações, barbantes, revisão final),
 //     SEM o gabarito do legista no topo (Q3);
 //   • as interpolações {detective.campo}/{g:...} resolvidas na prosa;
@@ -136,6 +141,39 @@ async function visitarEExtrair(page, rotuloNo) {
     await termos.first().click();
     await espera(page, 150);
     await arquivarFicha(page);
+  }
+}
+
+// Extrai todos os termos em negrito visíveis no momento (cada extração abre
+// a ficha de coleta, arquivada antes do próximo termo).
+async function extrairTermosVisiveis(page) {
+  const termos = page.locator('.termo-clicavel');
+  for (let i = 0; i < 10 && (await termos.count()) > 0; i++) {
+    await termos.first().click();
+    await espera(page, 150);
+    await arquivarFicha(page);
+  }
+}
+
+// Interrogatório em diálogo (§7.1): abre o nó do suspeito, extrai os termos da
+// fala de abertura e percorre cada ASSUNTO (não-confronto, não-voltar),
+// extraindo os termos de cada fala e voltando ao leque. Os confrontos
+// (requerCarta) ficam de fora — só se abrem apresentando a prova.
+async function interrogarEExtrair(page, rotuloNo) {
+  await page.click(`text=${rotuloNo}`);
+  await espera(page, 500);
+  await extrairTermosVisiveis(page); // a fala de abertura (ex.: o vidro na bainha)
+  const seletorAssunto = '.opcao-dialogo:not(.opcao-dialogo--confronto):not(.opcao-dialogo--voltar)';
+  const n = await page.locator(seletorAssunto).count();
+  for (let i = 0; i < n; i++) {
+    await page.locator(seletorAssunto).nth(i).click(); // no hub, a ordem é estável
+    await espera(page, 250);
+    await extrairTermosVisiveis(page);
+    const voltar = page.locator('.opcao-dialogo--voltar');
+    if (await voltar.count()) {
+      await voltar.first().click();
+      await espera(page, 200);
+    }
   }
 }
 
@@ -270,18 +308,47 @@ async function main() {
     await visitarEExtrair(page, 'A Oficina'); // desbloqueia o Gabinete (lead do livro de ordens)
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
-    await visitarEExtrair(page, 'Silas Crane');
-    checar('Rota 1: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
+
+    // ---- FASE 3 — Interrogatório como diálogo (§7.1) ----
+    // Interrogar é escolher e confrontar: o nó abre em diálogo, o confronto
+    // fica OCULTO até a prova estar na mesa, e as cartas nascem de dentro da
+    // fala pelo mesmo [[id]] das localidades.
+    await page.click('text=Silas Crane');
+    await espera(page, 500);
+    checar('Fase 3: o interrogatório abre em diálogo (opções do perito)', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
+    checar('Fase 3: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
+    // O confronto da estalagem ainda não colhido → oculto (decisão de design).
+    checar('Fase 3: confronto da estalagem oculto sem a prova', (await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).count()) === 0);
+    await page.locator('.termo-clicavel').first().click(); // a lasca de vidro (fala de abertura)
+    await espera(page, 200);
+    await arquivarFicha(page);
+    await page.getByRole('button', { name: 'A noite de sexta-feira' }).click();
+    await espera(page, 250);
+    checar('Fase 3: um assunto revela a fala com a carta extraível', (await page.locator('.termo-clicavel').count()) >= 1);
+    await page.locator('.termo-clicavel').first().click(); // o álibi, de dentro do diálogo
+    await espera(page, 200);
+    await arquivarFicha(page);
+    checar('Fase 3: extraiu carta de dentro do diálogo (álibi registrado)', (await page.locator('.termo-extraido').count()) >= 1);
+    await page.locator('.opcao-dialogo--voltar').first().click(); // volta ao leque de assuntos
+    await espera(page, 200);
+    await page.getByRole('button', { name: 'Quem faria uma coisa dessas' }).click();
+    await espera(page, 250);
+    await extrairTermosVisiveis(page); // a teoria não pedida (comp_silas)
     await fecharOverlay(page);
+    // ---- fim do bloco da Fase 3 ----
     await visitarEExtrair(page, 'A Delegacia');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Estalagem');
     await fecharOverlay(page);
-    // Segunda visita ao réu DEPOIS do registro da estalagem: a prosa
-    // condicional do confronto entra (reação, nunca confissão).
+    // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova
+    // está na mesa e a opção de CONFRONTO (§7.1) aparece; apresentá-la rende
+    // a reação de Silas (observável, nunca confissão — o veredicto é do mural).
     await page.click('text=Silas Crane');
     await espera(page, 500);
-    checar('Rota 1: segunda visita ao réu traz o confronto da estalagem', (await page.locator('body').innerText()).includes('O estalajadeiro terá contado os quartos errados'));
+    checar('Rota 1: confronto da estalagem disponível com a prova na mesa', (await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).count()) >= 1);
+    await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).click();
+    await espera(page, 300);
+    checar('Rota 1: apresentar a prova rende a reação do réu (nunca confissão)', (await page.locator('body').innerText()).includes('O estalajadeiro terá contado os quartos errados'));
     await fecharOverlay(page);
     await visitarEExtrair(page, 'Sra. Agnes Rooke');
     await fecharOverlay(page);
@@ -420,7 +487,7 @@ async function main() {
     console.log('\n=== ROTA 3 — Intuitivo (Harlan) → Impunidade ===');
     await novaPartida(page, 'Dr. Harlan Blackwell');
 
-    await visitarEExtrair(page, 'Silas Crane');
+    await interrogarEExtrair(page, 'Silas Crane'); // §7.1: o interrogatório é diálogo
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Delegacia'); // inclui o "visto com vida" (janela aberta)
     await fecharOverlay(page);

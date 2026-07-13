@@ -49,6 +49,11 @@ export const useJogo = create((set, get) => ({
   temperaturaMedida: null,
   posicoesCartas: {},
   nosVisitados: [], // para o retrato da investigação (epílogo)
+  // Estado de navegação dos interrogatórios em diálogo (§7.1): por suspeito,
+  // os nós de fala já visitados. Dado PURO serializável (só marca "já
+  // perguntado" na UI) — não move o relógio e o motor jamais o lê. Reler nós
+  // já visitados é livre (relógio mole).
+  nosVisitadosDialogo: {}, // { [suspeitoId]: [noId, ...] }
   nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
   somAtivo: true, // efeitos sonoros da mesa (papel, sino, barbante, lacre, pena)
 
@@ -90,6 +95,7 @@ export const useJogo = create((set, get) => ({
       faseJogo: 'investigacao',
       localidadeAtual: 'cena', // o perito chega à cena (a relojoaria) às 11h
       nosVisitados: ['cena'],
+      nosVisitadosDialogo: {},
       log: [
         ...s.log,
         { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
@@ -111,6 +117,18 @@ export const useJogo = create((set, get) => ({
   // por cima de onde o jogador estiver. Custa zero (é consulta).
   abrirFicha: (cartaId) => set({ fichaAberta: cartaId }),
   fecharFicha: () => set({ fichaAberta: null }),
+
+  // Marca um nó de fala como visitado num interrogatório em diálogo (§7.1).
+  // Custo zero (navegar dentro do local congela o relógio, como examinar):
+  // só registra o "já perguntado" para a UI. Idempotente e determinístico.
+  visitarNoDialogo: (suspeitoId, noId) =>
+    set((s) => {
+      const jaVistos = s.nosVisitadosDialogo[suspeitoId] || [];
+      if (jaVistos.includes(noId)) return {};
+      return {
+        nosVisitadosDialogo: { ...s.nosVisitadosDialogo, [suspeitoId]: [...jaVistos, noId] },
+      };
+    }),
 
   // Viagem entre nós do mapa: a ÚNICA ação que avança o relógio. Dentro de
   // um local o tempo congela. O custo (horas) vem de src/data/mapa.js.

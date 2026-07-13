@@ -581,6 +581,65 @@ body {
 .ponto-corpo {
   padding: 0 0.85rem 0.75rem;
 }
+
+/* Interrogatório em diálogo (§7.1): as escolhas do perito. Botão largo de
+   assunto (alvo de toque ≥44px); o confronto (apresentar prova) puxa o
+   latão e a cera para se distinguir de um assunto qualquer. */
+.opcao-dialogo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.6rem 0.85rem;
+  text-align: left;
+  font-family: 'IM Fell English', Georgia, serif;
+  color: #e7e5e4;
+  border: 1px solid rgba(201, 162, 68, 0.28);
+  border-radius: 3px;
+  background: rgba(20, 16, 12, 0.4);
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+.opcao-dialogo:hover {
+  background: rgba(201, 162, 68, 0.08);
+  border-color: rgba(201, 162, 68, 0.5);
+}
+.opcao-dialogo--confronto {
+  border-color: rgba(158, 42, 43, 0.55);
+  background: rgba(60, 22, 20, 0.35);
+}
+.opcao-dialogo--confronto:hover {
+  background: rgba(80, 28, 24, 0.45);
+  border-color: rgba(158, 42, 43, 0.8);
+}
+.opcao-dialogo--voltar {
+  border-style: dashed;
+  border-color: rgba(168, 162, 158, 0.3);
+  background: transparent;
+  color: #a8a29e;
+}
+.opcao-marca {
+  color: #c9a961;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+.opcao-dialogo--confronto .opcao-marca {
+  color: #c9767a;
+}
+.opcao-rotulo-texto {
+  flex: 1;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+.opcao-visto {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a8a29e;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ponto-interesse { transition: none; }
+  .opcao-dialogo { transition: none; }
 }
