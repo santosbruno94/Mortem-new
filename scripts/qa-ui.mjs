@@ -11,6 +11,10 @@
 // O que cobre (ângulos mortos do QA estático, apontados nos playtests de
 // 11/07/2026 — docs/playtest-2026-07-11.md e docs/playtest-qualidade-2026-07-11.md):
 //   • extração por clique nos termos em negrito das localidades;
+//   • a Ficha de Coleta (§6.2): extrair apresenta a evidência no ato numa
+//     ficha (data-overlay="ficha") com a descrição completa; "Arquivar na
+//     mesa" a fecha; a carta da mesa reabre a ficha; a Caderneta, rebaixada
+//     a diário, não traz mais a descrição (só carimbo + hora);
 //   • o Mural da Acusação inteiro (5 estações, barbantes, revisão final),
 //     SEM o gabarito do legista no topo (Q3);
 //   • as interpolações {detective.campo}/{g:...} resolvidas na prosa;
@@ -92,7 +96,19 @@ async function novaPartida(page, perito, query = '') {
   await espera(page, 600);
 }
 
+// Fecha a Ficha de Coleta (§6.2), quando aberta: cada extração apresenta a
+// evidência no ato numa ficha que cobre o overlay — "Arquivar na mesa" a
+// devolve à superfície e libera o próximo termo em negrito.
+async function arquivarFicha(page) {
+  const botao = page.getByRole('button', { name: 'Arquivar na mesa' });
+  if (await botao.count()) {
+    await botao.first().click();
+    await espera(page, 150);
+  }
+}
+
 // Viaja até um nó da mesa e extrai todos os termos em negrito do overlay.
+// Cada extração abre a ficha de coleta, arquivada antes do próximo termo.
 async function visitarEExtrair(page, rotuloNo) {
   await page.click(`text=${rotuloNo}`);
   await espera(page, 500);
@@ -100,6 +116,7 @@ async function visitarEExtrair(page, rotuloNo) {
   for (let i = 0; i < 20 && (await termos.count()) > 0; i++) {
     await termos.first().click();
     await espera(page, 150);
+    await arquivarFicha(page);
   }
 }
 
@@ -169,9 +186,40 @@ async function main() {
     await page.waitForSelector('canvas', { timeout: 15000 });
     checar('Rota 1: diorama 3D presente (canvas)', (await page.locator('canvas').count()) >= 1);
 
-    await visitarEExtrair(page, 'O Corpo');
+    // ---- FASE 1 — A Ficha de Coleta (§6.2): a evidência se apresenta no ato ----
+    // Extrair um termo abre a ficha (data-overlay="ficha") com a descrição
+    // completa; arquivar devolve a carta à mesa; a carta da mesa reabre a
+    // mesma ficha; e a Caderneta, rebaixada a diário, não traz mais a descrição.
+    const DESC_RIGOR = 'não cedem quando se tenta dobrá-los'; // trecho da descrição de ev_rigor
+    const CARIMBO_RIGOR = 'Duro dos maxilares aos joelhos'; // termoCarimbo de ev_rigor
+    await page.click('text=O Corpo');
+    await espera(page, 500);
+    await page.locator('.termo-clicavel').first().click(); // ev_rigor é o primeiro termo
+    await espera(page, 300);
+    checar('Fase 1: a ficha de coleta abre ao extrair (data-overlay="ficha")', (await page.locator('div.fixed[data-overlay="ficha"]').count()) >= 1);
+    const textoFicha = await page.locator('div.fixed[data-overlay="ficha"]').last().innerText();
+    checar('Fase 1: a ficha mostra a descrição completa da evidência', textoFicha.includes(DESC_RIGOR));
+    await page.getByRole('button', { name: 'Arquivar na mesa' }).click();
+    await espera(page, 300);
+    checar('Fase 1: "Arquivar na mesa" fecha a ficha', (await page.locator('div.fixed[data-overlay="ficha"]').count()) === 0);
+    await fecharOverlay(page); // fecha o corpo → volta à mesa
+    await page.locator('text=Corpo Endurecido').first().click(); // a carta pousada reabre a ficha
+    await espera(page, 300);
+    checar('Fase 1: a carta da mesa reabre a mesma ficha', (await page.locator('div.fixed[data-overlay="ficha"]').last().innerText()).includes(DESC_RIGOR));
+    await page.getByRole('button', { name: 'Arquivar na mesa' }).click();
+    await espera(page, 300);
+    await page.click('text=Caderneta');
+    await espera(page, 400);
+    const textoCaderneta = await textoOverlay(page);
+    checar('Fase 1: a Caderneta lista o carimbo da observação', textoCaderneta.includes(CARIMBO_RIGOR));
+    checar('Fase 1: a Caderneta (diário) não traz mais a descrição', !textoCaderneta.includes(DESC_RIGOR));
+    await fecharOverlay(page);
+    // ---- fim do bloco da Fase 1 ----
+
+    await visitarEExtrair(page, 'O Corpo'); // extrai os demais termos do corpo
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
+    await arquivarFicha(page); // a leitura do algor também se apresenta em ficha
     // O contador de esgotamento do caso-escola: corpo esgotado = 7 de 7.
     checar('Rota 1: contador de observações da localidade (7 de 7 no corpo)', (await page.locator('body').innerText()).includes('7 de 7 observações registradas aqui'));
     await fecharOverlay(page);
@@ -287,6 +335,7 @@ async function main() {
     checar('Rota 2: interpolações resolvidas na prosa (sem marcador cru)', !corpoTexto.includes('{g:') && !corpoTexto.includes('{detective.'));
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
+    await arquivarFicha(page);
     await fecharOverlay(page);
 
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
@@ -375,6 +424,7 @@ async function main() {
     await visitarEExtrair(page, 'O Corpo');
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
+    await arquivarFicha(page);
     checar('Rota flat: extração pela prosa funciona', (await page.locator('.termo-extraido').count()) >= 3);
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Delegacia'); // viagem pela grade 2D (lead do Gabinete)

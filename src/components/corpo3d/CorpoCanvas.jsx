@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { useJogo } from '../../store/jogo.js';
 import { HOTSPOTS_CORPO } from '../../data/hotspots_corpo.js';
-import { tocarSom } from '../../som.js';
 import CorpoModelo from './CorpoModelo.jsx';
 import HotspotCorpo from './HotspotCorpo.jsx';
 
@@ -32,10 +31,9 @@ export default function CorpoCanvas({ ipm }) {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const extrairCarta = useJogo((s) => s.extrairCarta);
 
-  const aoExtrair = (cartaId) => {
-    tocarSom('papel');
-    extrairCarta(cartaId);
-  };
+  // Extrair pelo corpo 3D é o MESMO gesto do termo em negrito: registra a
+  // carta e abre a ficha de coleta (o som de papel toca na abertura da ficha).
+  const aoExtrair = (cartaId) => extrairCarta(cartaId);
 
   return (
     <Canvas

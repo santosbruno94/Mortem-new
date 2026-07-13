@@ -58,6 +58,7 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
+  const abrirFicha = useJogo((s) => s.abrirFicha);
 
   // A grade de repouso acompanha a largura da mesa: em tela estreita as
   // cartas se arrumam em menos colunas, e a superfície rola na vertical.
@@ -153,12 +154,13 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
       {/* Cartas extraídas e registradas — agrupadas por domínio (Q9),
           com papel e chegada em viravolta (Q7) */}
       {cartasOrdenadas.map((carta, i) => (
-        <CartaMesa key={carta.id} id={carta.id} pos={posCartas[i]}>
+        <CartaMesa key={carta.id} id={carta.id} pos={posCartas[i]} aoClicar={() => abrirFicha(carta.id)}>
           {/* A prova é papel escrito: pergaminho claro, tinta escura —
-              o claro que pousa sobre a mesa escura. */}
+              o claro que pousa sobre a mesa escura. Clicar reabre a ficha
+              de coleta (CartaMesa distingue clique de arrasto). */}
           <div
             className="carta-surgir carta-pergaminho w-44 rounded-sm px-3 py-3"
-            title={carta.descricao}
+            title="Rever esta ficha"
           >
             <p className="text-cera text-rotulo uppercase">
               {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}

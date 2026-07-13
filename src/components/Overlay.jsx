@@ -4,7 +4,18 @@ import { useJogo } from '../store/jogo.js';
 // Moldura padrão dos eventos e painéis: overlay centralizado sobre a
 // escrivaninha (position fixed). A mesa permanece no DOM, desfocada.
 // Fecha no botão "✕" ou na tecla Esc.
-export default function Overlay({ titulo, subtitulo, children, largura = 'max-w-2xl', aoFechar }) {
+// `marca` alimenta o atributo data-overlay (o QA de UI o usa para achar a
+// raiz do overlay mais ao topo); default vazio preserva o contrato atual.
+// `nivelZ` permite empilhar (a Ficha de Coleta sobe acima dos demais).
+export default function Overlay({
+  titulo,
+  subtitulo,
+  children,
+  largura = 'max-w-2xl',
+  aoFechar,
+  marca = '',
+  nivelZ = 'z-40',
+}) {
   const fecharOverlay = useJogo((s) => s.fecharOverlay);
   const fechar = aoFechar || fecharOverlay;
 
@@ -17,7 +28,7 @@ export default function Overlay({ titulo, subtitulo, children, largura = 'max-w-
   }, [fechar]);
 
   return (
-    <div data-overlay className="fixed inset-0 z-40 flex items-center justify-center p-3 sm:p-8">
+    <div data-overlay={marca} className={`fixed inset-0 ${nivelZ} flex items-center justify-center p-3 sm:p-8`}>
       {/* O fundo escurece por trás do painel; clicar fora fecha (como Esc) */}
       <div className="overlay-fundo absolute inset-0 bg-black/40" onClick={fechar} aria-hidden />
       {/* A moldura de couro: capa escura de pasta de inquérito, com o

@@ -55,6 +55,12 @@ export const useJogo = create((set, get) => ({
   // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
   overlay: null, // { tipo: 'localidade'|'caderneta'|'glossario'|'alibis'|'acusacao'|'monologo', id }
 
+  // ---------------- A Ficha de Coleta (§6.2) ----------------
+  // Camada de UI separada do overlay: a ficha da evidência se sobrepõe ao
+  // local/mesa/caderneta/mural (empilha por cima). Guarda só o id da carta —
+  // dado puro; a ficha lê a carta já registrada em cartasRegistradas.
+  fichaAberta: null, // cartaId | null
+
   veredicto: null,
 
   // ---------------- A Construção da Acusação (a cadeia) ----------------
@@ -100,6 +106,11 @@ export const useJogo = create((set, get) => ({
 
   abrirOverlay: (tipo, id = null) => set({ overlay: { tipo, id } }),
   fecharOverlay: () => set({ overlay: null }),
+
+  // A ficha de coleta (§6.2): abre a evidência já registrada em leitura,
+  // por cima de onde o jogador estiver. Custa zero (é consulta).
+  abrirFicha: (cartaId) => set({ fichaAberta: cartaId }),
+  fecharFicha: () => set({ fichaAberta: null }),
 
   // Viagem entre nós do mapa: a ÚNICA ação que avança o relógio. Dentro de
   // um local o tempo congela. O custo (horas) vem de src/data/mapa.js.
@@ -176,6 +187,9 @@ export const useJogo = create((set, get) => ({
       nosDesbloqueados,
       nosNovos: revelou ? [...s.nosNovos, lead.revelaNo] : s.nosNovos,
       log,
+      // A evidência se apresenta no ato: a ficha de coleta abre sobre o
+      // local (§6.2). Fechá-la ("Arquivar na mesa") devolve a carta à mesa.
+      fichaAberta: carta.id,
     });
     // O mestre relê o corpo e atualiza, de cabeça, a leitura de quando/como.
     get().consolidarLeituraMestre();
@@ -235,6 +249,8 @@ export const useJogo = create((set, get) => ({
       temperaturaMedida: temperatura,
       cartasRegistradas: [...s.cartasRegistradas, carta],
       log: [...s.log, { hora: s.horasJogo, texto: `Registrado: ${carta.termoCarimbo}.` }],
+      // A leitura do algor também se apresenta em ficha (§6.2).
+      fichaAberta: carta.id,
     });
     get().consolidarLeituraMestre();
   },

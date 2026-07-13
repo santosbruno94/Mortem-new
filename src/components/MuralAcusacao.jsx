@@ -585,6 +585,9 @@ function EstacaoMentiras({ acusacao, mentirasAlvo, fontesMentiras, adicionarLiga
 // ---------------------------------------------------------------------
 function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao, rotuloAlvos, rotuloFontes }) {
   const [origem, setOrigem] = useState(null);
+  // Ícone discreto de leitura (§6.2): rever a ficha de uma carta sem sair da
+  // estação. A ligação segue no clique do nó; a ficha, no "§" do canto.
+  const abrirFicha = useJogo((s) => s.abrirFicha);
 
   // A mesa acompanha a largura real do painel (A6 do playtest de 13/07/2026):
   // com muitos fatos, a fileira única estourava a tela e cortava a última
@@ -718,6 +721,23 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
               <p className="text-latao-claro text-[10px] tracking-[0.15em] uppercase leading-snug">{n.rotulo}</p>
             ) : (
               <p className="font-serif text-tinta text-xs leading-snug">{n.textoDisplay}</p>
+            )}
+            {/* "§" de leitura: abre a ficha de coleta sem desfazer/criar
+                ligação (aria-hidden — a mesma ficha é alcançável pela mesa
+                e pela Caderneta; aqui é só um atalho discreto ao mouse). */}
+            {!n.ehAncora && (
+              <span
+                aria-hidden="true"
+                title="Rever a ficha de coleta"
+                onPointerDown={(e) => e.stopPropagation()}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  abrirFicha(n.id);
+                }}
+                className="absolute top-0.5 right-1 grid h-5 w-5 place-items-center rounded-sm text-cera hover:text-cera-clara hover:bg-black/10 text-xs leading-none cursor-pointer"
+              >
+                §
+              </span>
             )}
           </button>
         );
