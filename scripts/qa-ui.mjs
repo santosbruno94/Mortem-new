@@ -423,8 +423,12 @@ async function main() {
     checar('Rota 1: retratos nos Juízos do mural', (await page.locator('svg[data-retrato]').count()) >= 2);
     await page.getByRole('button', { name: 'Inocente', exact: true }).first().click();
     await espera(page, 300);
+    // Onda 3 (P1): escolher "Inocente" com paradeiro por confrontar acrescenta
+    // a linha neutra ao lembrete; o confronto a apaga.
+    checar('Onda 3: lembrete aponta o paradeiro por confrontar', (await page.locator('body').innerText()).includes('Paradeiro de Walter Arthurs por confrontar.'));
     await page.getByRole('button', { name: /Registro da Estalagem/ }).last().click();
     await espera(page, 200);
+    checar('Onda 3: o confronto apaga a linha do lembrete', !(await page.locator('body').innerText()).includes('Paradeiro de Walter Arthurs por confrontar.'));
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(1).click();
     await espera(page, 300);
     await page.getByRole('button', { name: /Cesta de Ceia para Dois/ }).last().click();
@@ -508,6 +512,9 @@ async function main() {
     const muralReaberto = await page.locator('body').innerText();
     checar('Rota 2: mural reaberto na pendência (móbil), não na Estação I', muralReaberto.includes('IV · O Móbil') && !muralReaberto.includes('QUANDO — A JANELA'));
     texto = await julgar(page);
+    // Onda 3: na SEGUNDA queda no mesmo ponto (periférico), a cortesia do
+    // tutorial escala — a dica nomeia o suspeito e ensina o confronto.
+    checar('Onda 3: dica reincidente mais específica na segunda queda', texto.includes('pede um gesto a mais'));
     // Q5/Q2: o encerramento definitivo revela o culpado no epílogo.
     await page.getByRole('button', { name: 'Encerrar o caso' }).click();
     await espera(page, 700);

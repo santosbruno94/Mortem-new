@@ -5,28 +5,64 @@ import { gerarEpilogo } from '../logic/epilogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
 import { CARTAS } from '../data/cartas.js';
 import { formatRelogio, formatHora, formatDuracao, HORAS_CHEGADA_CENA } from '../logic/tempo.js';
+import { SUSPEITOS } from '../data/seed.js';
 import { tocarSom } from '../som.js';
 import Overlay from './Overlay.jsx';
 
 // Frases universais de "o que faltou" — exceção pedagógica do tutorial
 // (§13): após uma falha, o jogo mostra as lacunas e permite resubmissão.
+// Cada dica pode ter dois níveis: `primeira` (a de sempre) e `reincidencia`,
+// exibida quando o jogador cai no MESMO ponto pela segunda vez (falhasVistas
+// no store). O marcador {nome} recebe o suspeito da falha, quando houver.
 const DICAS_TUTORIAL = {
-  reu_errado: 'O réu apontado não resiste à perícia. Reexamine quem o corpo e os vestígios de fato acusam.',
-  corpo_sem_substancia: 'Sustente a cadeia com evidências do corpo de valor pericial (sinais não inconclusivos).',
-  sem_janela: 'Afirme a janela da morte e puxe até ela os indicadores (rigor, livor, algor, visto-vivo).',
-  janela_nao_cobre: 'A janela afirmada erra a hora do óbito. Reúna sinais colhidos a tempo e refaça o juízo.',
-  janela_sem_sustentacao:
-    'A janela afirmada contradiz os sinais puxados à âncora Quando. Corrija a afirmação ou reveja essas ligações.',
-  janela_imprecisa: 'A janela está larga. Mais sinais temporais colhidos cedo estreitam a convergência.',
-  sem_mecanismo: 'Afirme a causa da morte e sustente-a com os sinais discriminantes do corpo.',
-  mecanismo_errado: 'A causa afirmada contradiz os sinais do corpo. Reexamine o pescoço da vítima.',
-  sem_nexo: 'Falta materialidade: puxe à âncora Presença o vestígio que põe o réu na cena.',
-  nexo_errado: 'O vestígio ligado não casa com o instrumento do óbito.',
-  nexo_acessorio: 'Um dos vestígios ligados à Presença não pertence ao réu — desfaça o barbante que sobra.',
-  sem_motivacao: 'Aponte o móbil do réu — há papéis que falam por ele.',
-  motivacao_erronea: 'O móbil apontado não é o que move o réu.',
-  sem_descuidos: 'A cena tem descuidos a expor: confronte a hora que ela alega com a que o corpo dá.',
-  periferico: 'Reveja o juízo sobre os não-acusados: cada um merece o veredicto que as cartas fundamentam.',
+  reu_errado: {
+    primeira: 'O réu apontado não resiste à perícia. Reexamine quem o corpo e os vestígios de fato acusam.',
+  },
+  corpo_sem_substancia: {
+    primeira: 'Sustente a cadeia com evidências do corpo de valor pericial (sinais não inconclusivos).',
+  },
+  sem_janela: {
+    primeira: 'Afirme a janela da morte e puxe até ela os indicadores (rigor, livor, algor, visto-vivo).',
+  },
+  janela_nao_cobre: {
+    primeira: 'A janela afirmada erra a hora do óbito. Reúna sinais colhidos a tempo e refaça o juízo.',
+  },
+  janela_sem_sustentacao: {
+    primeira:
+      'A janela afirmada contradiz os sinais puxados à âncora Quando. Corrija a afirmação ou reveja essas ligações.',
+  },
+  janela_imprecisa: {
+    primeira: 'A janela está larga. Mais sinais temporais colhidos cedo estreitam a convergência.',
+  },
+  sem_mecanismo: {
+    primeira: 'Afirme a causa da morte e sustente-a com os sinais discriminantes do corpo.',
+  },
+  mecanismo_errado: {
+    primeira: 'A causa afirmada contradiz os sinais do corpo. Reexamine o pescoço da vítima.',
+  },
+  sem_nexo: {
+    primeira: 'Falta materialidade: puxe à âncora Presença o vestígio que põe o réu na cena.',
+  },
+  nexo_errado: {
+    primeira: 'O vestígio ligado não casa com o instrumento do óbito.',
+  },
+  nexo_acessorio: {
+    primeira: 'Um dos vestígios ligados à Presença não pertence ao réu — desfaça o barbante que sobra.',
+  },
+  sem_motivacao: {
+    primeira: 'Aponte o móbil do réu — há papéis que falam por ele.',
+  },
+  motivacao_erronea: {
+    primeira: 'O móbil apontado não é o que move o réu.',
+  },
+  sem_descuidos: {
+    primeira: 'A cena tem descuidos a expor: confronte a hora que ela alega com a que o corpo dá.',
+  },
+  periferico: {
+    primeira: 'Reveja o juízo sobre os não-acusados: cada um merece o veredicto que as cartas fundamentam.',
+    reincidencia:
+      'O juízo sobre {nome} voltou a cair. Escolher “Inocente” pede um gesto a mais: no próprio juízo, confrontar o paradeiro declarado com o vestígio que o desmente, quando a mesa o tiver.',
+  },
 };
 
 // Total de observações possíveis no caso: o catálogo + a carta de algor
@@ -43,6 +79,7 @@ export default function MonologoFinal() {
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const nSubmissoes = useJogo((s) => s.nSubmissoes);
+  const falhasVistas = useJogo((s) => s.falhasVistas);
   const [encerrando, setEncerrando] = useState(false);
 
   if (!veredicto) return null;
@@ -51,8 +88,24 @@ export default function MonologoFinal() {
   // verdadeiro autor — o nome só sai no encerramento definitivo (Q2).
   const monologo = gerarMonologo(veredicto, detective, { nomearCulpado: false });
 
-  // Dicas únicas, na ordem das falhas
-  const dicas = [...new Set(veredicto.falhas.map((f) => DICAS_TUTORIAL[f.codigo]).filter(Boolean))];
+  // Dicas únicas, na ordem das falhas. Na segunda queda no mesmo ponto
+  // (falhasVistas), a dica escala para a versão mais específica; {nome}
+  // recebe o suspeito da falha, quando a falha o traz.
+  const dicas = [
+    ...new Set(
+      veredicto.falhas
+        .map((f) => {
+          const dica = DICAS_TUTORIAL[f.codigo];
+          if (!dica) return null;
+          const reincidiu = (falhasVistas[f.codigo] || 0) >= 2;
+          const texto = reincidiu && dica.reincidencia ? dica.reincidencia : dica.primeira;
+          if (!texto.includes('{nome}')) return texto;
+          const sp = SUSPEITOS.find((s) => s.id === f.suspeitoId);
+          return sp ? texto.replaceAll('{nome}', sp.nome) : null;
+        })
+        .filter(Boolean)
+    ),
+  ];
 
   // ---------------- O encerramento: epílogo + retrato (Q5) ----------------
   if (encerrando) {

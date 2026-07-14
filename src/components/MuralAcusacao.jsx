@@ -158,6 +158,24 @@ export default function MuralAcusacao() {
   if (refutaHora.size === 0 && refutaAlibi.size === 0) lacunas.push('Nenhuma mentira confrontada.');
   if (!acusacao.motivacaoId) lacunas.push('O móbil não foi apontado.');
   if (naoAcusados.some((sp) => !acusacao.juizos[sp.id])) lacunas.push('Há suspeitos sem juízo.');
+  // "Inocente" com paradeiro por confrontar (P1 do playtest): há álibi do
+  // suspeito e vestígio dele na mesa, mas nenhum barbante entre eles — a
+  // linha é NEUTRA (aponta um confronto disponível, nunca o gabarito).
+  for (const sp of naoAcusados) {
+    if (acusacao.juizos[sp.id] !== 'inocente') continue;
+    const alibi = cartas.find((c) => ehAlibiDe(c, sp.id));
+    if (!alibi) continue;
+    const vestigios = cartas.filter(
+      (c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === sp.id
+    );
+    if (vestigios.length === 0) continue;
+    const confrontado = vestigios.some((v) =>
+      acusacao.ligacoes.some(
+        (l) => (l.de === v.id && l.para === alibi.id) || (l.de === alibi.id && l.para === v.id)
+      )
+    );
+    if (!confrontado) lacunas.push(`Paradeiro de ${sp.nome} por confrontar.`);
+  }
 
   const podeSubmeter = !!acusacao.reuId;
 

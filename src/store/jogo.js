@@ -62,6 +62,10 @@ export function estadoInicialCaso() {
     // já visitados é livre (relógio mole).
     nosVisitadosDialogo: {}, // { [suspeitoId]: [noId, ...] }
     nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
+    // Reincidência POR CÓDIGO de falha do veredicto (dado de UI: a cortesia
+    // do tutorial escala a dica na segunda queda no MESMO ponto; o motor
+    // não lê). { [codigo]: vezes }
+    falhasVistas: {},
     somAtivo: true, // efeitos sonoros da mesa (papel, sino, barbante, lacre, pena)
 
     // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
@@ -363,8 +367,15 @@ export const useJogo = create(
   submeterAcusacao: () => {
     const s = get();
     const veredicto = calcularVeredictoCadeia(s.acusacao, s.cartasRegistradas, SEED_TUTORIAL);
+    // Conta a queda em cada ponto (código único por submissão): na segunda
+    // queda no mesmo ponto, a dica do tutorial fica mais específica.
+    const falhasVistas = { ...s.falhasVistas };
+    for (const codigo of new Set(veredicto.falhas.map((f) => f.codigo))) {
+      falhasVistas[codigo] = (falhasVistas[codigo] || 0) + 1;
+    }
     set({
       veredicto,
+      falhasVistas,
       nSubmissoes: s.nSubmissoes + 1,
       overlay: { tipo: 'monologo', id: null },
       log: [...s.log, { hora: s.horasJogo, texto: 'Acusação levada a julgamento.' }],
