@@ -98,14 +98,9 @@ export const LOCALIDADES = [
           'Sob a bancada grande corre uma fileira de gavetas; a mais funda range ao abrir e cheira a metal e a graxa velha. Dentro, sob um retalho de camurça, junto a molas soltas e a um envelope de peças, um [[ev_anel_encomenda]].',
         ],
       },
-      {
-        id: 'pt_oficina_aprendiz',
-        rotulo: 'O aprendiz',
-        prosa: [
-          'Davey Tull varre um chão já varrido e não larga a vassoura. Perguntado pelos costumes do patrão, ergue os olhos, solto: "O patrão punha o relógio consertado no meu ouvido, pra eu ouvir se o compasso saíra certo. Dizia que máquina bem posta respira." E conta [[dep_habito_corda]]. Perguntado pela noite de sexta, baixa-os para o serviço e dá [[alibi_davey]]. Depois torna a varrer o mesmo canto.',
-        ],
-      },
     ],
+    // Onda 6: Davey conversa em diálogo próprio (dialogo_davey, botão ao pé
+    // da prosa) — o hábito da corda e o álibi dele nascem lá, não num ponto.
   },
   {
     id: 'interrogatorio_silas',
@@ -137,9 +132,10 @@ export const LOCALIDADES = [
     titulo: 'A Estalagem — The Wheatsheaf',
     subtitulo: 'Walter Arthurs, hóspede do quarto nº 3',
     acoesEspeciais: [],
+    // Onda 6: Walter conversa em diálogo próprio (dialogo_walter, botão ao pé
+    // da prosa) — o álibi dele nasce lá. A casa e o estalajadeiro ficam aqui.
     prosa: [
-      'The Wheatsheaf tem pátio de carroças, escada que range e um livro de hóspedes gordo de anos. Walter Arthurs desce à sala sem casaco, a barba de ontem por fazer.',
-      '"Os meus negócios vão mal, e disso nunca fiz segredo. Da herança falem os outros." Sobre a véspera, dá o seu álibi: [[alibi_walter]].',
+      'The Wheatsheaf tem pátio de carroças e um livro de hóspedes gordo de anos. Walter Arthurs está hospedado no quarto nº 3; desce à sala a um recado.',
       'O estalajadeiro empresta o [[ev_registro_estalagem]] sem fazer perguntas, e responde às que lhe fazem: [[corrob_estalajadeiro]].',
     ],
   },

@@ -257,6 +257,163 @@ export const DIALOGOS = {
       },
     },
   },
+
+  // Diálogo EMBUTIDO (Onda 6): Walter vive dentro da estalagem — o botão
+  // "Interrogar…" da localidade abre esta árvore por overlay próprio.
+  dialogo_walter: {
+    suspeitoId: 'walter_arthurs',
+    origemLocalidade: 'estalagem',
+    chamada: 'Interrogar Walter Arthurs',
+    titulo: 'Interrogatório — Walter Arthurs',
+    subtitulo: 'Herdeiro, hóspede do quarto nº 3',
+    noInicial: 'abertura',
+    noEvasiva: 'evasiva',
+    reacoesProva: {
+      ev_registro_estalagem: 'confronto_registro',
+      ev_suplica_cesto: 'confronto_suplica',
+      dep_testamento: 'confronto_testamento',
+    },
+    nos: {
+      // O hub: Walter desce à sala e se explica antes de qualquer pergunta.
+      abertura: {
+        fala: [
+          'Walter Arthurs desce à sala sem casaco, a barba de ontem por fazer, e fica de pé junto ao aparador. "Soube esta manhã e estou aqui desde então, às ordens de quem as tiver. A casa do meu tio está lacrada; tomei o quarto três. Pergunte-se o que houver, {detective.title}, e pergunte-se logo, que negociante parado é dinheiro andando para trás." Enquanto fala, abotoa e desabotoa o botão alto do colete.',
+        ],
+        opcoes: [
+          { rotulo: 'A noite de sexta-feira', vaiPara: 'paradeiro' },
+          { rotulo: 'Os negócios', vaiPara: 'negocios' },
+          { rotulo: 'O tio', vaiPara: 'tio' },
+        ],
+      },
+
+      // O paradeiro: a mentira da diligência nasce aqui (alibi_walter, corroborado: false).
+      paradeiro: {
+        fala: [
+          '"A sexta-feira. Sim. Naturalmente." Endireita-se antes de responder. "Estive com meu tio de tarde, tratamos de negócios, e segui o meu caminho." E dá o paradeiro: [[alibi_walter]].',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Os negócios (sem carta): a lista de credores conferida de cor, a defesa antes da acusação.
+      negocios: {
+        fala: [
+          '"Os meus negócios vão mal, e disso nunca fiz segredo. Devo às fazendas, devo ao armazém que anda em juízo, devo até ao Station de Moorford, onde durmo a crédito. A lista é pública e eu a sei de cor. Da herança falem os outros; eu falo do que devo, que ao menos é meu." A voz, alta no princípio, acaba quase para dentro.',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // O tio (sem carta): retrato digno-ofendido; a defesa responde ao que ninguém perguntou.
+      tio: {
+        fala: [
+          '"Meu tio era homem de uma peça. Recolheu-me quando meu pai morreu, pagou-me o colégio, e não me deixou esquecer nem uma coisa nem outra." O polegar corre a barba por fazer. "Estive com ele na sexta; negócios, de que já dei conta. Achei-o como sempre: são, duro no dinheiro, senhor das suas horas. Quem lhe fez isto que responda, e hei de cobrar eu mesmo, que afinal é o que se espera de um herdeiro, não é assim que dizem?"',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação a ev_registro_estalagem: a assinatura das 19h40 derruba a diligência
+      // das seis. Confessa a mentira e a súplica recusada; crime, nenhum.
+      confronto_registro: {
+        fala: [
+          'Walter Arthurs lê a própria assinatura e a linha das sete e quarenta. Puxa uma cadeira e senta-se antes de responder.',
+          '"Não houve diligência." A voz sai baixa, e depois as palavras vêm de uma vez. "Vim na sexta pedir dinheiro ao meu tio. Pedido, implorado, a juro de praça e com a palavra que me resta. Ele recusou aos gritos, com a loja ainda aberta. Tomei este quarto porque àquela hora já não havia carro, e porque naquela noite eu não tinha ânimo de me apresentar em hotel nenhum. Fiquei no três a noite inteira, escrevendo: cartas a ele, cartas a credores. Pedi vela nova pela meia-noite; o caseiro que o diga. Menti, {detective.title}, porque a verdade era esta: um negociante de quarenta e quatro anos à porta do tio, de chapéu na mão, ouvindo não. Depois dos gritos, na loja não tornei a pôr os pés."',
+          'Depois cala-se, as mãos abertas sobre a mesa.',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação a ev_suplica_cesto: reconhece a letra; a vergonha está no gesto, não no narrador.
+      confronto_suplica: {
+        fala: [
+          'Walter desamassa a folha só até onde a letra aparece e torna a fechá-la pela mesma dobra. "A mão é minha; o pedido, também." Pousa-a na mesa com a escrita para baixo. "Um adiantamento entre parentes se propõe em toda parte, {detective.title}, e se lavra no gabinete de um procurador quando aceito. Escrevi-a como se escreve a um credor: com conta, prazo e juro. Esperava-lhe destino melhor. Meu tio não era homem de responder papéis que o desagradassem."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação a dep_testamento: defesa de praça — a conta do herdeiro, feita por ele mesmo.
+      confronto_testamento: {
+        fala: [
+          '"Herdeiro único. Sei o que se soma com isso: negócios em ruína de um lado, loja e casa do outro, e o meu nome no meio. É conta que qualquer credor meu já fez." Puxa o colete para baixo, como quem se compõe para retrato. "Pois faça-se a conta inteira, {detective.title}. Meu tio vivo valia-me um adiantamento assinado numa tarde; agora vale-me uma loja lacrada, um inventário e juízo pela frente. Diga-me qual dos dois convinha a um homem com credores à porta."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // A evasiva: devolve a prova com palavras de mais.
+      evasiva: {
+        fala: [
+          'Walter recebe o que se lhe mostra e devolve-o antes de o examinar, os dedos no colarinho. "E que tenho eu com isto? Entendo de fazendas e de letras de câmbio. Já dei o meu paradeiro e o nome dos meus credores; se é para me mostrarem cada papel desta vila, mostrem também aos outros, que não sou o único nome escrito em Briarstone."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+    },
+  },
+
+  // Diálogo EMBUTIDO (Onda 6): Davey vive dentro da oficina — a conversa
+  // com o aprendiz abre por botão, e as cartas dele nascem das falas.
+  dialogo_davey: {
+    suspeitoId: 'davey_tull',
+    origemLocalidade: 'oficina',
+    chamada: 'Conversar com Davey Tull',
+    titulo: 'Conversa — Davey Tull',
+    subtitulo: 'Aprendiz, dois anos de bancada',
+    noInicial: 'abertura',
+    noEvasiva: 'evasiva',
+    reacoesProva: {
+      ev_relogio_bolso: 'reacao_relogio',
+      ev_estojo_buril: 'reacao_estojo',
+    },
+    nos: {
+      // O hub: o menino de ofício, obediente e de olho em tudo.
+      abertura: {
+        fala: [
+          'Davey Tull varre um chão que já não dá pó. Ao ver gente, encosta a vassoura no ombro e espera a pergunta de olhos erguidos. "O Sr. Crane disse pra eu tomar conta da oficina. Eu tomo conta e vou varrendo, que parado o serviço não rende."',
+        ],
+        opcoes: [
+          { rotulo: 'Os costumes do patrão', vaiPara: 'costumes' },
+          { rotulo: 'A noite de sexta-feira', vaiPara: 'sexta' },
+        ],
+      },
+
+      // Os costumes: o relógio no ouvido migra da localidade; desemboca em dep_habito_corda.
+      costumes: {
+        fala: [
+          'A vassoura para, e os olhos sobem. "O patrão punha o relógio consertado no meu ouvido, pra eu ouvir se o compasso saíra certo. Dizia que máquina bem posta respira. Eu já acerto o de parede sozinho; o de bolso ele ainda não deixava." E, dos costumes da noite, conta [[dep_habito_corda]].',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // A noite de sexta: os olhos descem para o serviço e sai a recitação (alibi_davey).
+      sexta: {
+        fala: [
+          '"A sexta eu conto certinho, que já contei mais de uma vez." Os olhos descem para a vassoura e lá ficam até o fim das palavras: [[alibi_davey]].',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação a ev_relogio_bolso: a dor de ofício do aprendiz; nenhuma conta de horas.
+      reacao_relogio: {
+        fala: [
+          'Davey encosta a vassoura na parede e estende as duas mãos. "Posso ouvir?" Encosta o relógio do morto no ouvido do jeito que o patrão fazia com ele, e fica assim um bom tempo, os olhos parados na parede. "Não tem nada andando aí dentro. Dois anos de casa e eu nunca ouvi esse relógio calado; a corda das onze, pro patrão, era coisa sagrada, que nem reza." Devolve-o com as duas mãos e torna à vassoura sem que ninguém o mande.',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação a ev_estojo_buril: observação de ofício — de quem é, como se limpa, o que a ponta faz.
+      reacao_estojo: {
+        fala: [
+          'Davey chega sem que o chamem e para a um passo do estojo, as mãos atrás das costas. "Esse é o do Sr. Crane. Ferramenta dele ninguém pega; a minha é a do caixote, de cabo de freixo." O olho corre a fileira, cabo por cabo. "Buril a gente limpa na flanela, com a cera da bancada. Molhar não pode, que a água entra na junta e enferruja o espigão; isso o patrão me ensinou no primeiro mês. O de ponta é o de gravar miúdo, por dentro de tampa; um igual já me escapou e me abriu o dedo, no primeiro ano." Recua o passo que tinha dado.',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // A evasiva: não entende a prova e devolve simples, sem malícia.
+      evasiva: {
+        fala: [
+          'Davey chega o rosto para ver de perto, a testa franzida, e faz que não com a cabeça. "Isso eu não sei dizer o que é, {detective.title}. Se fosse coisa de relógio, eu conhecia; do resto, quem sabia era o patrão."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+    },
+  },
 };
 
 export function obterDialogo(localidadeId) {

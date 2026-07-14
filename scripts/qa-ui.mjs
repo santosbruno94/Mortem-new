@@ -171,12 +171,11 @@ async function extrairTermosVisiveis(page) {
   }
 }
 
-// Interrogatório em diálogo (§7.1): abre o nó do suspeito, extrai os termos da
-// fala de abertura e percorre cada ASSUNTO (não-confronto, não-voltar),
-// extraindo os termos de cada fala e voltando ao leque. Os confrontos
-// (requerCarta) ficam de fora — só se abrem apresentando a prova.
-async function interrogarEExtrair(page, rotuloNo) {
-  await abrirNo(page, rotuloNo);
+// Percorre um diálogo JÁ ABERTO (§7.1): extrai os termos da fala de abertura
+// e percorre cada ASSUNTO (não-confronto, não-voltar), extraindo os termos de
+// cada fala e voltando ao leque. Os confrontos ficam de fora — só se abrem
+// apresentando a prova.
+async function percorrerDialogo(page) {
   await extrairTermosVisiveis(page); // a fala de abertura (ex.: o vidro na bainha)
   const seletorAssunto = '.opcao-dialogo:not(.opcao-dialogo--confronto):not(.opcao-dialogo--voltar)';
   const n = await page.locator(seletorAssunto).count();
@@ -190,6 +189,20 @@ async function interrogarEExtrair(page, rotuloNo) {
       await espera(page, 200);
     }
   }
+}
+
+// Interrogatório num nó do mapa (conversão integral: Silas, Agnes, Grey).
+async function interrogarEExtrair(page, rotuloNo) {
+  await abrirNo(page, rotuloNo);
+  await percorrerDialogo(page);
+}
+
+// Diálogo EMBUTIDO (Onda 6): de dentro da localidade aberta, o botão
+// .botao-dialogo-local abre a árvore (Walter na estalagem, Davey na oficina).
+async function conversarEmbutido(page, rotuloBotao) {
+  await page.getByRole('button', { name: rotuloBotao }).click();
+  await espera(page, 400);
+  await percorrerDialogo(page);
 }
 
 async function fecharOverlay(page) {
@@ -340,6 +353,13 @@ async function main() {
     await visitarEExtrair(page, 'A Cena do Crime');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Oficina'); // desbloqueia o Gabinete (lead do livro de ordens)
+    // Onda 6: Davey conversa em diálogo embutido — o hábito da corda e o
+    // álibi dele nascem das falas, não mais de um ponto de interesse.
+    await conversarEmbutido(page, 'Conversar com Davey Tull');
+    // A abertura de Davey não tem termo; reabrir o assunto prova a extração.
+    await page.getByRole('button', { name: 'Os costumes do patrão' }).click();
+    await espera(page, 250);
+    checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
 
@@ -378,6 +398,16 @@ async function main() {
     await visitarEExtrair(page, 'A Delegacia');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Estalagem');
+    // Onda 6: Walter conversa em diálogo embutido — o álibi nasce na fala; e
+    // apresentar-lhe o registro (a própria assinatura das 19h40) desmorona a
+    // diligência E anota a refutação do paradeiro no mural, sem barbante.
+    await conversarEmbutido(page, 'Interrogar Walter Arthurs');
+    checar('Onda 6: o botão da estalagem abre o diálogo de Walter', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
+    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
+    await espera(page, 200);
+    await page.locator('[data-seletor-provas]').getByRole('button', { name: /Registro da Estalagem/ }).click();
+    await espera(page, 300);
+    checar('Onda 6: o registro desmorona a diligência de Walter', (await page.locator('body').innerText()).includes('Não houve diligência'));
     await fecharOverlay(page);
     // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova
     // está na mesa e o seletor (Onda 5) a lista; apresentá-la rende a reação
@@ -448,16 +478,17 @@ async function main() {
     checar('Rota 1: retratos nos Juízos do mural', (await page.locator('svg[data-retrato]').count()) >= 2);
     await page.getByRole('button', { name: 'Inocente', exact: true }).first().click();
     await espera(page, 300);
-    // Onda 3 (P1): escolher "Inocente" com paradeiro por confrontar acrescenta
-    // a linha neutra ao lembrete; o confronto a apaga.
-    checar('Onda 3: lembrete aponta o paradeiro por confrontar', (await page.locator('body').innerText()).includes('Paradeiro de Walter Arthurs por confrontar.'));
-    await page.getByRole('button', { name: /Registro da Estalagem/ }).last().click();
-    await espera(page, 200);
-    checar('Onda 3: o confronto apaga a linha do lembrete', !(await page.locator('body').innerText()).includes('Paradeiro de Walter Arthurs por confrontar.'));
+    // Onda 6: o confronto feito EM CENA (registro apresentado a Walter)
+    // dispensa o barbante manual — a lacuna dele nem chega a aparecer.
+    checar('Onda 6: confronto em cena dispensa o barbante manual (Walter)', !(await page.locator('body').innerText()).includes('Paradeiro de Walter Arthurs por confrontar.'));
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(1).click();
     await espera(page, 300);
+    // Onda 3 (P1): escolher "Inocente" com paradeiro por confrontar acrescenta
+    // a linha neutra ao lembrete; o confronto (barbante manual) a apaga.
+    checar('Onda 3: lembrete aponta o paradeiro por confrontar', (await page.locator('body').innerText()).includes('Paradeiro da Sra. Agnes Rooke por confrontar.'));
     await page.getByRole('button', { name: /Cesta de Ceia para Dois/ }).last().click();
     await espera(page, 200);
+    checar('Onda 3: o confronto apaga a linha do lembrete', !(await page.locator('body').innerText()).includes('Paradeiro da Sra. Agnes Rooke por confrontar.'));
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(2).click();
     await espera(page, 200);
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(3).click();
