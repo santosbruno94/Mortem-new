@@ -111,16 +111,25 @@ OFL, `src/assets/fontes/`) para títulos e nomes; sem ícones modernos; ornament
 tipográficos discretos (§, ―, ❦).
 
 **Camada 3D (apresentação pura):** a mesa ganha profundidade em dois pontos — o
-**diorama da vila** (maquete low-poly pousada no alto da escrivaninha: prédios
-procedurais com janelas à luz de vela; clicar num prédio VIAJA, e Moorford surge
-crescendo com a estrada ao ser desbloqueado) e a **mesa de exame do corpo** (cadáver
-low-poly ao lado da prosa, cuja pose/manchas refletem rigor e livor pelo IPM; os
-hotspots extraem as MESMAS cartas dos termos em negrito). Regras da camada: geometria
-100% procedural (proibido GLTF/textura externa — three.js + @react-three/fiber v8
-pinados, chunk lazy próprio), dados espaciais em `src/data/mapa_espacial.js` e
-`src/data/hotspots_corpo.js` (camada visual — o motor nunca lê), e **fallback 2D
-obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a grade de localidades
-original joga idêntico. Diálogos e pessoas permanecem 2D.
+**diorama da vila** (maquete de papel pousada no alto da escrivaninha: prédios
+procedurais com **telhado de duas águas**, chaminés, marquise e pás — sempre primitivas
+compostas; clicar num prédio VIAJA, e Moorford surge crescendo com a estrada ao ser
+desbloqueado) e a **mesa de exame do corpo** (cadáver low-poly ao lado da prosa, cuja
+pose/manchas refletem rigor e livor pelo IPM; os hotspots extraem as MESMAS cartas dos
+termos em negrito). Regras da camada: geometria 100% procedural (proibido GLTF/textura
+externa — three.js + @react-three/fiber v8 pinados, chunk lazy próprio), dados espaciais
+em `src/data/mapa_espacial.js` e `src/data/hotspots_corpo.js` (camada visual — o motor
+nunca lê), e **fallback 2D obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D,
+a grade de localidades original joga idêntico. Diálogos e pessoas permanecem 2D.
+
+O diorama tem **teatro** (§5.2), tudo apresentação lendo estado derivado (nunca o
+motor): a **luz segue o relógio** (`CICLO_LUZ` + `interpolarLuz(horasJogo)` — tarde
+dourada → crepúsculo → noite com lampiões âmbar, com névoa baixa de outubro; puro,
+sem `Math.random`/`Date.now`); o **pino do perito** (alfinete de cabeça vermelha) marca
+o nó atual e desliza o trajeto na viagem com o custo flutuando junto; as **etiquetas**
+dos nós são tags de papel pendentes (HTML real, mesmos textos e handler). O
+`frameloop="demand"` segue de pé: a maquete parada não gasta frame (o pulso de "novo"
+mora em CSS na tag, não no emissivo 3D; as pás do moinho são silhueta estática).
 
 **Aparência dos personagens (camada narrativa):** genótipo com vocabulários fechados
 (`corpo`, `pele`, `cabelo`, `pelosFaciais`, `idadeAparente`, `traje`) em
@@ -224,6 +233,31 @@ localidade continua alcançável em algum ponto** — guarda estática no `scrip
 (a prateleira de gravar, o púlpito de ordens, a gaveta funda, o aprendiz) têm pontos; o
 corpo (exame 3D) e a saleta seguem em prosa contínua. Observação pura (guia §2): o ambiente
 descreve; quem estranha é o jogador.
+
+### 5.2 A maquete e o teatro da mesa
+
+A maquete do diorama não persegue realismo (a geometria procedural sem GLTF/textura torna
+essa briga perdida): abraça **"maquete de papel sobre a escrivaninha"** — a vila é um modelo
+que o perito montou para pensar. O teatro é 100% apresentação, lendo estado derivado (o
+relógio, o custo de viagem, os nós novos) — nunca as `tagsOcultas` nem o veredicto.
+
+- **Luz da hora.** `src/data/mapa_espacial.js` traz `CICLO_LUZ` (keyframes por hora) e
+  `interpolarLuz(horasJogo)` — dado **puro** (sem `Math.random`/`Date.now`). `DioramaVila`
+  interpola a luz por frame (`LuzDoDia`): tarde dourada → crepúsculo → noite azulada com
+  os **lampiões âmbar** das janelas queimando (`luzRef.lamp`), sob **névoa baixa de
+  outubro** (fog). Ciclo **perceptível e contido**: a noite escurece sem apagar a leitura.
+- **Beat de viagem.** Na maquete 3D, uma viagem com **custo real** (>0h) ganha um beat de
+  ~0,7s: o **pino do perito** (alfinete de cabeça vermelha, `PinoPerito.jsx`) desliza o
+  trajeto com o custo em horas flutuando junto, e a luz vira com a hora — só então o local
+  abre (a mesa desfoca ao abrir o overlay, não antes). Viagem de 0h (andar pela planta) e o
+  modo `?flat=1` abrem no ato. O handler de viagem é o mesmo dos dois modos (paridade).
+- **Silhueta e etiquetas.** Prédios com telhado de duas águas, chaminés, marquise e pás
+  (silhueta estática); os rótulos são **tags de papel pendentes** (mesmos textos e handler),
+  e o destaque de nó novo pulsa em **CSS** na tag — o `frameloop="demand"` da maquete segue
+  intacto (parada = zero frame).
+- **Microinterações da UI (§3).** O barbante do mural pende com **catenária**; concluir uma
+  estação **carimba** o selo de cera; a pena **risca** ao avançar a abertura. Tudo cede a
+  `prefers-reduced-motion`.
 
 ---
 

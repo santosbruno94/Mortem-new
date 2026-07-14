@@ -89,9 +89,9 @@ export default function Abertura() {
               tocarSom('pena');
               (ultimo ? iniciarInvestigacao : avancarAbertura)();
             }}
-            className="botao-mesa px-6 py-3 tracking-wide"
+            className="botao-mesa grupo-pena px-6 py-3 tracking-wide"
           >
-            {interpolar(passo.rotuloBotao, detective)} →
+            <span className="pena-tinta">{interpolar(passo.rotuloBotao, detective)}</span> →
           </button>
         </div>
       </div>
