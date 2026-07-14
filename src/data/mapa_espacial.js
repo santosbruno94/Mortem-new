@@ -1,3 +1,5 @@
+import { hashString } from '../logic/hash.js';
+
 // =====================================================================
 // MAPA ESPACIAL DO DIORAMA — camada 100% VISUAL.
 //
@@ -172,4 +174,38 @@ export function interpolarLuz(horasJogo) {
     fogFar: lerp(a.fogFar, b.fogFar, t),
     lamp: lerp(a.lamp, b.lamp, t),
   };
+}
+
+// ---------------------------------------------------------------------
+// A VILA QUE RESPIRA COM A HORA (Onda 9) — camada visual pura, nada aqui
+// é lido pelo motor. Toda variação é determinística (hashString; nunca
+// Math.random): a mesma janela acende sempre à mesma hora, em qualquer
+// máquina, em qualquer sessão.
+// ---------------------------------------------------------------------
+
+// Uma janela está acesa a esta hora? Dia claro: apagadas. Do crepúsculo em
+// diante, cada janela acende numa hora própria (entre 17h e 19h, sorteio
+// determinístico por prédio+índice). Madrugada alta (23h em diante): a vila
+// dorme — só a delegacia e a estalagem conservam luz.
+export function janelaAcesa(locId, indice, horasJogo) {
+  const hora = ((horasJogo % 24) + 24) % 24;
+  if (hora >= 7 && hora < 17) return false;
+  if (hora >= 23 || hora < 7) return locId === 'delegacia' || locId === 'estalagem';
+  const acendeAs = 17 + (hashString(`janela_${locId}_${indice}`) % 120) / 60;
+  return hora >= acendeAs;
+}
+
+// A chaminé fumega nas horas frias (manhã cedo e do fim da tarde em diante)
+// — só nas casas com fogo aceso de ofício ou de cozinha.
+export function chamineFumega(locId, horasJogo) {
+  const hora = ((horasJogo % 24) + 24) % 24;
+  if (locId !== 'cena' && locId !== 'estalagem') return false;
+  return hora < 9 || hora >= 17;
+}
+
+// O guarda está à porta da delegacia? Turno de dia (8h–20h); à noite a
+// porta fica com a lanterna.
+export function guardaNaPorta(horasJogo) {
+  const hora = ((horasJogo % 24) + 24) % 24;
+  return hora >= 8 && hora < 20;
 }

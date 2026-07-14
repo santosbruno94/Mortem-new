@@ -12,6 +12,7 @@ import {
 } from '../../data/mapa_espacial.js';
 import Predio from './Predio.jsx';
 import PinoPerito from './PinoPerito.jsx';
+import GuardaDelegacia from './GuardaDelegacia.jsx';
 
 // =====================================================================
 // O DIORAMA DA VILA — a maquete de papel pousada sobre a escrivaninha
@@ -134,6 +135,8 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
   const overlayAberto = useJogo((s) => s.overlay) !== null;
+  // Vida na maquete (Onda 9): o guarda da delegacia segue o turno do relógio.
+  const horasJogo = useJogo((s) => s.horasJogo);
 
   // Objeto compartilhado do ciclo de luz (lido pelos lampiões dos prédios).
   const luzRef = useRef({ lamp: 0.2 });
@@ -213,6 +216,9 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
           />
         );
       })}
+
+      {/* O guarda à porta da delegacia (dia) / a lanterna do umbral (noite) */}
+      {nosDesbloqueados.includes('delegacia') && <GuardaDelegacia horasJogo={horasJogo} />}
 
       {/* O pino do perito: marca o nó atual e anima o trajeto na viagem */}
       {posAtual && (
