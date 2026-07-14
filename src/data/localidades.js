@@ -32,21 +32,21 @@ export const LOCALIDADES = [
     // §5.1: a prosa monolítica se divide em pontos de interesse — coleta em
     // camadas. A introdução ambienta sem carta; cada ponto revela as suas.
     introducao: [
-      'O escritório dos fundos guarda o revirado da manhã em que o acharam: papéis pelo assoalho, a poltrona de couro empurrada para longe da escrivaninha. A luz de outubro entra de esguelha pela janela alta e assenta na poeira em suspensão; cheira a óleo fino de relojoeiro e à cinza fria da lareira. Sobre a repisa, um retângulo sem poeira marca o lugar onde alguma coisa esteve.',
+      'O escritório dos fundos guarda o revirado da manhã em que o acharam: papéis pelo assoalho, a poltrona de couro empurrada para longe da escrivaninha. A luz de outubro entra de esguelha pela janela alta e assenta na poeira em suspensão; cheira a óleo fino de relojoeiro e à cinza fria da lareira. Num cabide atrás da porta estão pendurados um sobretudo escuro e um chapéu-coco. Sobre a repisa, um retângulo sem poeira marca o lugar onde alguma coisa esteve.',
     ],
     pontos: [
       {
         id: 'pt_cena_lareira',
         rotulo: 'A lareira',
         prosa: [
-          'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.title}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo; ali dentro, a [[ev_maquinismo]].',
+          'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.title}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo; ali dentro, a [[ev_maquinismo]]. Na repisa, um cachimbo de barro pousado de lado e a cinza por raspar na grelha.',
         ],
       },
       {
         id: 'pt_cena_escrivaninha',
         rotulo: 'A escrivaninha',
         prosa: [
-          'A escrivaninha está de través, uma gaveta meio puxada, o tinteiro seco e a pena atravessada no mata-borrão. Ao pé dela, no cesto de vime, entre aparas e um sobrescrito rasgado, uma [[ev_suplica_cesto]].',
+          'A escrivaninha está de través, uma gaveta meio puxada, o tinteiro seco e a pena atravessada no mata-borrão. Um par de óculos de aros finos repousa dobrado sobre o livro-razão aberto, ao lado de uma lupa de relojoeiro presa a um cordão. Ao pé dela, no cesto de vime, entre aparas e um sobrescrito rasgado, uma [[ev_suplica_cesto]].',
         ],
       },
       {
@@ -60,7 +60,7 @@ export const LOCALIDADES = [
         id: 'pt_cena_copa',
         rotulo: 'A copa',
         prosa: [
-          'Nos fundos, uma copa apertada: a chaleira fria no fogareiro, a pia com um resto de água parada, um pano de prato no gancho. Sobre a bancada de pedra, encostada à parede, uma [[ev_cesta_rooke]].',
+          'Nos fundos, uma copa apertada: a chaleira fria no fogareiro, a pia com um resto de água parada, um pano de prato no gancho. Na bandeja estão duas xícaras: uma com o fundo de chá seco, a outra emborcada e limpa; a lata de chá aberta, a colher ainda dentro. Sobre a bancada de pedra, encostada à parede, uma [[ev_cesta_rooke]].',
         ],
       },
     ],
@@ -74,35 +74,35 @@ export const LOCALIDADES = [
     // §5.1: pontos de interesse. A intro planta de graça o relógio irmão (a
     // roda de contagem à vista) — fair play; cada ponto revela as suas cartas.
     introducao: [
-      'A oficina ocupa os fundos da loja: duas bancadas de tampo raspado, um torno pequeno aparafusado à ponta de uma delas, a parede coberta de ferramentas penduradas em ordem de tamanho. No gancho da bancada grande, o lampião de bancada está apagado. O depósito, seco; a chaminé de vidro, fumada até a boca. Na bancada menor, aberto para conserto, um relógio de lareira irmão do da cena mostra o trem das badaladas a descoberto; a cada hora que a máquina bate, a alavanca salta um entalhe da roda de contagem. Cheira a óleo e ao carvão morno do fogareiro.',
+      'A oficina ocupa os fundos da loja: duas bancadas de tampo raspado, um torno pequeno aparafusado à ponta de uma delas, a parede coberta de ferramentas penduradas em ordem de tamanho. A limalha de latão presa ao tampo e o gume das limas penduradas guardam o brilho baixo da manhã. No gancho da bancada grande, o lampião de bancada está apagado. O depósito, seco; a chaminé de vidro, fumada até a boca. Na bancada menor, aberto para conserto, um relógio de lareira irmão do da cena mostra o trem das badaladas a descoberto; a cada hora que a máquina bate, a alavanca salta um entalhe da roda de contagem. Cheira a óleo e ao carvão frio do fogareiro.',
     ],
     pontos: [
       {
         id: 'pt_oficina_prateleira',
         rotulo: 'A prateleira de gravar',
         prosa: [
-          'A prateleira das ferramentas de gravar corre sobre a bancada menor: buris de vários feitios, dois punções de letra, um vidro tampado de pó de polir. No meio deles, de tampa fechada, o [[ev_estojo_buril]].',
+          'A prateleira das ferramentas de gravar corre sobre a bancada menor: buris de vários feitios, dois punções de letra, um vidro tampado de pó de polir. Ao canto, um frasco de óleo fino pela metade, a rolha ao lado e um pano de linho manchado de dedadas. No meio deles, de tampa fechada, o [[ev_estojo_buril]].',
         ],
       },
       {
         id: 'pt_oficina_pulpito',
         rotulo: 'O púlpito de ordens',
         prosa: [
-          'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
+          'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. No prego, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
         ],
       },
       {
         id: 'pt_oficina_gaveta',
         rotulo: 'A gaveta funda',
         prosa: [
-          'Sob a bancada grande corre uma fileira de gavetas; a mais funda range ao abrir. Dentro, sob um retalho de camurça, junto a molas soltas e a um envelope de peças, um [[ev_anel_encomenda]].',
+          'Sob a bancada grande corre uma fileira de gavetas; a mais funda range ao abrir e cheira a metal e a graxa velha. Dentro, sob um retalho de camurça, junto a molas soltas e a um envelope de peças, um [[ev_anel_encomenda]].',
         ],
       },
       {
         id: 'pt_oficina_aprendiz',
         rotulo: 'O aprendiz',
         prosa: [
-          'Davey Tull varre um chão já varrido e não larga a vassoura. Perguntado pelos costumes do patrão, ergue os olhos, solto, e conta [[dep_habito_corda]]. Perguntado pela noite de sexta, baixa-os para o serviço e dá [[alibi_davey]]. Depois torna a varrer o mesmo canto.',
+          'Davey Tull varre um chão já varrido e não larga a vassoura. Perguntado pelos costumes do patrão, ergue os olhos, solto: "O patrão punha o relógio consertado no meu ouvido, pra eu ouvir se o compasso saíra certo. Dizia que máquina bem posta respira." E conta [[dep_habito_corda]]. Perguntado pela noite de sexta, baixa-os para o serviço e dá [[alibi_davey]]. Depois torna a varrer o mesmo canto.',
         ],
       },
     ],

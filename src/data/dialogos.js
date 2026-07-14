@@ -28,7 +28,7 @@ export const DIALOGOS = {
       // de vidro na bainha (a carta de presença, sempre alcançável aqui).
       abertura: {
         fala: [
-          'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.title}, o senhor há de perdoar a casa: doze anos de bancada e nunca a vi assim parada."',
+          'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.title}, o senhor há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje a bancada amanheceu sem lume."',
           'Ao cruzar as pernas, deixa ver, presa à bainha esquerda, uma lasca que a luz do lampião acende: [[ev_vidro_dobra]].',
         ],
         opcoes: [
@@ -53,7 +53,7 @@ export const DIALOGOS = {
       // defeito). A moldura desemboca na carta alibi_silas.
       alibi: {
         fala: [
-          '"A sexta? Isso eu digo sem procurar." E diz: fecha a oficina, a ceia, o quarto, as horas em fila na ordem em que as viveu: [[alibi_silas]].',
+          '"A sexta? Isso eu digo sem procurar; nesta casa a gente vive pelas horas." E diz: fecha a oficina, a ceia, o quarto, as horas em fila na ordem em que as viveu: [[alibi_silas]].',
         ],
         opcoes: [OUTRO_ASSUNTO],
       },
@@ -61,7 +61,7 @@ export const DIALOGOS = {
       // Como achou o corpo (sem carta): doze anos de casa, a rotina da manhã.
       achado: {
         fala: [
-          '"Doze anos nesta casa, {detective.title}. Abro eu a loja, sempre antes do rapaz: tiro as tábuas da vitrine, acendo o fogo da bancada, levo o livro do dia ao gabinete. Foi ali que o achei, esta manhã, às nove e vinte, caído entre a escrivaninha e a estante. Mandei o rapaz correr à delegacia e fiquei à porta; a oficina não se abriu hoje, pela primeira vez em doze anos."',
+          '"Doze anos nesta casa, {detective.title}. Abro eu a loja, sempre antes do rapaz: tiro as tábuas da vitrine, acendo o fogo da bancada, levo o livro do dia ao gabinete. O Sr. Arthurs descia depois, com os óculos na mão, e conferia o livro comigo. Foi ali que o achei, esta manhã, às nove e vinte, caído entre a escrivaninha e a estante. Mandei o rapaz correr à delegacia e fiquei à porta; a oficina não se abriu hoje, pela primeira vez em doze anos."',
         ],
         opcoes: [OUTRO_ASSUNTO],
       },
@@ -69,7 +69,7 @@ export const DIALOGOS = {
       // A teoria não pedida (aqui, pedida): o ladrão de fora. Desemboca em comp_silas.
       teoria: {
         fala: [
-          '"O senhor pergunta, mas eu já ia dizer de qualquer modo." As mãos continuam sobre os joelhos. "Gente da estrada, {detective.title}, atrás do troco do caixa; uma vila destas não tranca bem as portas à noite." E volta a ela, como quem retoma sempre a mesma peça na bancada: [[comp_silas]].',
+          '"O senhor pergunta, mas eu já ia dizer de qualquer modo." As mãos continuam sobre os joelhos. "Gente da estrada, {detective.title}, atrás do troco do caixa; uma vila destas não tranca bem as portas à noite. Eu bem dizia ao Sr. Arthurs que recolhesse o caixa ao cofre, mas homem velho tem os seus costumes." E volta a ela, como quem retoma sempre a mesma peça na bancada: [[comp_silas]].',
         ],
         opcoes: [OUTRO_ASSUNTO],
       },
@@ -78,7 +78,7 @@ export const DIALOGOS = {
       // confissão — o veredicto continua no mural.
       confronto_estalagem: {
         fala: [
-          'Posto diante do que se conta na estalagem — o quarto às escuras às nove, o portão passado das dez —, Silas Crane pousa o bule sem ruído. "O estalajadeiro terá contado os quartos errados. A casa é grande, e a noite foi de movimento." Dá a resposta no mesmo passo das outras e torna a erguer o bule.',
+          'Posto diante do que se conta na estalagem — o quarto às escuras às nove, o portão passado das dez —, Silas Crane pousa o bule sem ruído. "O estalajadeiro terá contado os quartos errados. A casa é grande, e a noite foi de movimento. Doze anos sem uma falta, {detective.title}; não é agora que hei de trocar as minhas horas." Dá a resposta no mesmo passo das outras e torna a erguer o bule.',
         ],
         opcoes: [OUTRO_ASSUNTO],
       },
@@ -87,7 +87,7 @@ export const DIALOGOS = {
       // como rotina de bancada; as mãos seguem quietas.
       confronto_livro: {
         fala: [
-          'Posto diante do livro — os três consertos reentrados com queixa, a rubrica "S.C." em cada um, e na margem a letra do morto: "pesar as caixas. Pettigrew, segunda" —, Silas Crane não muda de posição. "Conserto que volta é o pão da bancada, {detective.title}. Uma coroa que emperra, uma mola que canta, o cliente traz de novo e a gente refaz. Três num outono é outono ruim, não é mais que isso." As mãos seguem sobre os joelhos. Quanto à nota do patrão, aproxima o livro do lampião, lê-a e devolve o livro aberto na mesma página.',
+          'Posto diante do livro — os três consertos reentrados com queixa, a rubrica "S.C." em cada um, e na margem a letra do morto: "pesar as caixas. Pettigrew, segunda" —, Silas Crane não muda de posição. "Conserto que volta é o pão da bancada, {detective.title}. Uma coroa que emperra, uma mola que canta, o cliente traz de novo e a gente refaz. Três num outono é outono ruim, não é mais que isso." As mãos seguem sobre os joelhos. Quanto à nota do patrão, aproxima o livro do lampião e corre os olhos pela nota. "A mão dele, sim, miúda assim." Devolve o livro aberto na mesma página.',
         ],
         opcoes: [OUTRO_ASSUNTO],
       },

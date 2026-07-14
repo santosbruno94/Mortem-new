@@ -262,9 +262,9 @@ const PERIFERICO_ALIBI_CONVICCAO = [
   (q) => `Quanto ${q}, a inocência que lhe dei saiu sem paradeiro colhido. Desta vez serviu; não é método que eu assine duas vezes.`,
 ];
 const PERIFERICO_SEGREDO = [
-  (q) => `Quanto ${q}, a mentira que expus encobria uma vergonha, não o homicídio: mentiu para se proteger, não para matar.`,
-  (q) => `Quanto ${q}, o que a mentira cobria era assunto da própria vida, sem parte na morte. Inocentei com a prova na mesa.`,
-  (q) => `Quanto ${q}, o depoimento caiu, e o que escondia era vergonha própria: registrei a inocência e deixei o segredo onde estava.`,
+  (q) => `Quanto ${q}, a mentira que quebrei encobria uma vergonha, e não o homicídio. Provei-o com o que estava na mesa; não é vitória expor o que um inocente calava.`,
+  (q) => `Quanto ${q}, o que a mentira cobria era assunto da própria vida, sem parte na morte. Inocentei esse nome com a prova diante de mim, ciente do custo de ter de mostrá-la.`,
+  (q) => `Quanto ${q}, o depoimento caiu, e o que escondia era vergonha própria. Fica provada a inocência; fica também, comigo, o peso de ter aberto o que não me cabia.`,
 ];
 
 // `opcoes.nomearCulpado`: no Erro Judiciário com retentativa de pé, o fecho
