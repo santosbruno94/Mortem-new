@@ -392,7 +392,7 @@ export const DIALOGOS = {
       // Reação a ev_relogio_bolso: a dor de ofício do aprendiz; nenhuma conta de horas.
       reacao_relogio: {
         fala: [
-          'Davey encosta a vassoura na parede e estende as duas mãos. "Posso ouvir?" Encosta o relógio do morto no ouvido do jeito que o patrão fazia com ele, e fica assim um bom tempo, os olhos parados na parede. "Não tem nada andando aí dentro. Dois anos de casa e eu nunca ouvi esse relógio calado; a corda das onze, pro patrão, era coisa sagrada, que nem reza." Devolve-o com as duas mãos e torna à vassoura sem que ninguém o mande.',
+          'Davey encosta a vassoura na parede e estende as duas mãos. "Posso ouvir?" Encosta o relógio do morto no ouvido do jeito que o patrão fazia com ele, e fica assim um bom tempo, os olhos parados na parede. "Anda certo. Compasso bem posto." Devolve-o com as duas mãos. "A corda das onze, pro patrão, era coisa sagrada, que nem reza; dois anos de casa, e esse relógio nunca soube o que era ficar sem corda." E torna à vassoura sem que ninguém o mande.',
         ],
         opcoes: [OUTRO_ASSUNTO],
       },

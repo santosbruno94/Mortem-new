@@ -11,6 +11,8 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
   const escolherDetective = useJogo((s) => s.escolherDetective);
   const reiniciarCaso = useJogo((s) => s.reiniciarCaso);
   const horasJogo = useJogo((s) => s.horasJogo);
+  const modoPurista = useJogo((s) => s.modoPurista);
+  const alternarModoPurista = useJogo((s) => s.alternarModoPurista);
 
   return (
     <div className="relative altura-tela-min mesa-madeira overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-12">
@@ -76,6 +78,18 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
                 </button>
               ))}
             </div>
+
+            {/* Modo purista (Onda 8): silencia a síntese do legista — a
+                Caderneta espelha o mesmo interruptor no meio do caso. */}
+            <button
+              type="button"
+              onClick={alternarModoPurista}
+              className="mt-8 text-stone-400 hover:text-stone-200 text-xs underline underline-offset-2"
+            >
+              {modoPurista
+                ? 'Modo purista: aceso — o legista guarda a síntese consigo'
+                : 'Modo purista: apagado — o legista lê a janela e o mecanismo por você'}
+            </button>
           </>
         )}
       </div>

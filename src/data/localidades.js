@@ -16,11 +16,18 @@ export const LOCALIDADES = [
     titulo: 'O Corpo — Escritório dos Fundos',
     subtitulo: 'Sr. Geoffrey Arthurs, relojoeiro, 61 anos',
     acoesEspeciais: ['termometro'],
+    // Micro-gestos periciais (Onda 7): o input coincide com o gesto do perito
+    // — voltar o corpo e dar corda ao relógio extraem as MESMAS cartas que os
+    // antigos termos em negrito (os hotspots do corpo 3D seguem redundantes).
+    gestos: [
+      { id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'ev_livores' },
+      { id: 'gesto_corda_relogio', rotulo: 'Dar corda ao relógio do morto', cartaId: 'ev_relogio_bolso' },
+    ],
     prosa: [
       'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O Delegado Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
-      'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. Voltado o corpo com o auxílio do guarda, veem-se [[ev_livores]], espalhadas também pela face posterior das pernas.',
+      'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. O guarda espera a ordem para voltar o corpo.',
       'Sob o ângulo esquerdo do maxilar abre-se uma [[ev_ferida]]. Afastado o colarinho, mostram-se [[ev_reacao_vital]]; à lente, no fundo do canal, [[ev_residuo_ferida]].',
-      'Na corrente do colete pende um [[ev_relogio_bolso]]. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar oportuno medir a temperatura do corpo.',
+      'Na corrente do colete pende um relógio de bolso de tampa fechada, mudo. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar oportuno medir a temperatura do corpo.',
     ],
   },
   {
@@ -38,8 +45,13 @@ export const LOCALIDADES = [
       {
         id: 'pt_cena_lareira',
         rotulo: 'A lareira',
+        // Micro-gesto (Onda 7): contar os entalhes da roda é gesto de perito,
+        // não leitura — o botão extrai ev_maquinismo.
+        gestos: [
+          { id: 'gesto_contar_entalhes', rotulo: 'Contar os entalhes da roda', cartaId: 'ev_maquinismo' },
+        ],
         prosa: [
-          'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.title}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo; ali dentro, a [[ev_maquinismo]]. Na repisa, um cachimbo de barro pousado de lado e a cinza por raspar na grelha.',
+          'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.title}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo até a roda de contagem. Na repisa, um cachimbo de barro pousado de lado e a cinza por raspar na grelha.',
         ],
       },
       {

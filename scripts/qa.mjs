@@ -501,6 +501,10 @@ const aparenciasOk =
 const motorSemAparencia = ['logic/veredicto.js', 'logic/acusacao.js'].every(
   (f) => !/aparencia/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
+// Onda 8: o modo purista é flag de UI — o motor jamais a lê.
+const motorSemPurista = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) => !/modoPurista/.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
+);
 
 // ============================================================
 // GUARDA DA CAMADA VISUAL 3D: todo nó do mapa tem lugar e forma na
@@ -537,7 +541,13 @@ const idsEmDialogosEmbutidos = (locId) => {
   return ids;
 };
 const cartasOrfasNosPontos = localidadesComPontos.flatMap((loc) => {
-  const idsNosPontos = marcadoresDe(loc.pontos.flatMap((p) => p.prosa));
+  // Onda 7: micro-gestos também extraem — a carta de um gesto (do ponto ou
+  // da localidade) não é órfã.
+  const idsNosPontos = new Set([
+    ...marcadoresDe(loc.pontos.flatMap((p) => p.prosa)),
+    ...loc.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)),
+    ...(loc.gestos || []).map((g) => g.cartaId),
+  ]);
   const idsEmbutidos = idsEmDialogosEmbutidos(loc.id);
   return CARTAS.filter((c) => c.localidade === loc.id)
     .map((c) => c.id)
@@ -625,6 +635,9 @@ const todosMarcadores = new Set([
     ...marcadoresDe(l.introducao || []),
     ...marcadoresDe((l.pontos || []).flatMap((p) => p.prosa)),
     ...marcadoresDe((l.prosaCondicional || []).flatMap((b) => b.paragrafos)),
+    // Onda 7: cartas extraídas por micro-gesto (da localidade ou de ponto).
+    ...(l.gestos || []).map((g) => g.cartaId),
+    ...(l.pontos || []).flatMap((p) => (p.gestos || []).map((g) => g.cartaId)),
   ]),
   ...Object.values(DIALOGOS).flatMap((d) => [
     ...marcadoresDe(Object.values(d.nos).flatMap((n) => n.fala || [])),
@@ -684,6 +697,7 @@ const checagens = [
   ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
+  ['Modo purista fora do motor: veredicto/acusação não leem a flag (Onda 8)', motorSemPurista],
   ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
   ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],

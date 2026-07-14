@@ -140,7 +140,7 @@ export const CARTAS = [
     textoDisplay: 'Relógio de Bolso Parado',
     carimboPadrao: 'Relógio do morto parado às 05h05, corda no fim',
     descricao:
-      'Na corrente do colete, o relógio do morto: vidro inteiro, máquina sã, os ponteiros nas cinco e cinco. A coroa gira folgada, volta após volta, sem que nada dentro responda.',
+      'Na corrente do colete, o relógio do morto: aberta a tampa, vidro inteiro, máquina sã, os ponteiros nas cinco e cinco — anotados antes de se tocar na coroa. A coroa resiste e vai-se enchendo; a poucas voltas, o tique retoma.',
     vozMestre:
       'Mola vazia, não partida: parou por falta de corda. Estes guardam trinta horas de marcha — a hora do mostrador fica a trinta horas da última vez que uma mão lhe deu corda.',
     // Âncora DURÁVEL de teto (rotina interrompida): o hábito da corda às 23h

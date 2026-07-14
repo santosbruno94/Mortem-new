@@ -71,6 +71,11 @@ export function estadoInicialCaso() {
     // do tutorial escala a dica na segunda queda no MESMO ponto; o motor
     // não lê). { [codigo]: vezes }
     falhasVistas: {},
+    // Modo purista (Onda 8): cala a SÍNTESE do legista (janela/mecanismo) na
+    // Caderneta e no exame — o jogador purista chega sozinho à leitura. Flag
+    // de UI, persistida; o motor jamais a lê (guarda no qa.mjs). Os apartes
+    // vozMestre por carta ficam (são observação diegética, não conclusão).
+    modoPurista: false,
     somAtivo: true, // efeitos sonoros da mesa (papel, sino, barbante, lacre, pena)
 
     // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
@@ -148,6 +153,10 @@ export const useJogo = create(
     })),
 
   alternarSom: () => set((s) => ({ somAtivo: !s.somAtivo })),
+
+  // Liga/desliga o modo purista. A leitura do mestre CONTINUA consolidando
+  // por baixo (dado fica) — desligar o modo religa tudo sem estado perdido.
+  alternarModoPurista: () => set((s) => ({ modoPurista: !s.modoPurista })),
 
   registrarLog: (texto) =>
     set((s) => ({ log: [...s.log, { hora: s.horasJogo, texto }] })),

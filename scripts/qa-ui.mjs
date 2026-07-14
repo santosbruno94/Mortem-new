@@ -146,9 +146,22 @@ async function abrirPontos(page) {
   }
 }
 
+// Micro-gestos periciais (Onda 7): aciona os botões-gesto ainda não feitos
+// (voltar o corpo, dar corda, contar entalhes) — cada um extrai uma carta.
+async function acionarGestos(page) {
+  for (let i = 0; i < 5; i++) {
+    const gesto = page.locator('.gesto-pericial:not([data-feito])');
+    if ((await gesto.count()) === 0) break;
+    await gesto.first().click();
+    await espera(page, 150);
+    await arquivarFicha(page);
+  }
+}
+
 // Viaja até um nó da mesa e extrai todos os termos em negrito do overlay.
 // Cada extração abre a ficha de coleta, arquivada antes do próximo termo.
 // Onde há pontos de interesse, revela todos antes de varrer os termos.
+// Micro-gestos visíveis também são acionados (Onda 7).
 async function visitarEExtrair(page, rotuloNo) {
   await abrirNo(page, rotuloNo);
   await abrirPontos(page);
@@ -158,6 +171,7 @@ async function visitarEExtrair(page, rotuloNo) {
     await espera(page, 150);
     await arquivarFicha(page);
   }
+  await acionarGestos(page);
 }
 
 // Extrai todos os termos em negrito visíveis no momento (cada extração abre
@@ -301,6 +315,14 @@ async function main() {
     const textoCaderneta = await textoOverlay(page);
     checar('Fase 1: a Caderneta lista o carimbo da observação', textoCaderneta.includes(CARIMBO_RIGOR));
     checar('Fase 1: a Caderneta (diário) não traz mais a descrição', !textoCaderneta.includes(DESC_RIGOR));
+    // Onda 8: o modo purista cala a síntese do legista na Caderneta — e
+    // religa sem perder nada (o dado continua consolidando por baixo).
+    await page.getByRole('button', { name: 'Dispensar a leitura' }).click();
+    await espera(page, 200);
+    checar('Onda 8: purista dispensa a leitura do legista', (await page.locator('body').innerText()).includes('dispensou a leitura do legista'));
+    await page.getByRole('button', { name: 'Tornar a pedir a leitura' }).click();
+    await espera(page, 200);
+    checar('Onda 8: religar devolve a leitura', !(await page.locator('body').innerText()).includes('dispensou a leitura do legista'));
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 1 ----
 
@@ -344,6 +366,9 @@ async function main() {
     // ---- fim do bloco da Onda 1 ----
 
     await visitarEExtrair(page, 'O Corpo'); // extrai os demais termos do corpo
+    // Onda 7: os dois micro-gestos do corpo (voltar o corpo, dar corda ao
+    // relógio) foram acionados e ficaram marcados como feitos.
+    checar('Onda 7: micro-gestos do corpo acionados e marcados', (await page.locator('.gesto-pericial[data-feito]').count()) === 2);
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
     await arquivarFicha(page); // defensivo: o algor pousa sozinho (Onda 4)

@@ -66,12 +66,18 @@ export default function EventoLocalidade({ localidadeId }) {
   // Contador de esgotamento (regalia do caso-escola): quantas observações
   // esta localidade oferece e quantas já estão na mesa. O procedural pode
   // omitir — a contagem é leitura dos marcadores [[id]] da prosa, não regra.
+  // Os micro-gestos (Onda 7) entram na união: gesto também é observação.
   const fonteProsa = temPontos ? localidade.pontos.flatMap((p) => p.prosa) : localidade.prosa || [];
+  const idsGestos = [
+    ...(localidade.gestos || []).map((g) => g.cartaId),
+    ...(temPontos ? localidade.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)) : []),
+  ];
   const idsExtraiveis = [
     ...new Set(
       fonteProsa
         .flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))
         .concat(localidade.acoesEspeciais.includes('termometro') ? ['ev_algor'] : [])
+        .concat(idsGestos)
     ),
   ];
   const nRegistradas = idsExtraiveis.filter((id) => cartasRegistradas.some((c) => c.id === id)).length;
@@ -96,7 +102,10 @@ export default function EventoLocalidade({ localidadeId }) {
           <div className="space-y-2">
             {localidade.pontos.map((ponto) => {
               const aberto = !!pontosAbertos[ponto.id];
-              const idsPonto = idsDoTexto(ponto.prosa);
+              const idsPonto = [
+                ...idsDoTexto(ponto.prosa),
+                ...(ponto.gestos || []).map((g) => g.cartaId),
+              ];
               const nReg = idsPonto.filter((id) => cartasRegistradas.some((c) => c.id === id)).length;
               return (
                 <div key={ponto.id} data-ponto={ponto.id} className="ponto-bloco">
@@ -113,6 +122,9 @@ export default function EventoLocalidade({ localidadeId }) {
                   {aberto && (
                     <div className="ponto-corpo space-y-3">
                       {ponto.prosa.map((t, i) => renderParagrafo(t, `${ponto.id}_${i}`))}
+                      {(ponto.gestos || []).map((g) => (
+                        <GestoPericial key={g.id} gesto={g} />
+                      ))}
                     </div>
                   )}
                 </div>
@@ -125,6 +137,15 @@ export default function EventoLocalidade({ localidadeId }) {
         <div className="space-y-4">
           {localidade.prosa.map(renderParagrafo)}
           {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
+        </div>
+      )}
+      {/* Micro-gestos da localidade (Onda 7): o verbo encosta na ficção —
+          voltar o corpo, dar corda — no espírito do termômetro. */}
+      {(localidade.gestos || []).length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {localidade.gestos.map((g) => (
+            <GestoPericial key={g.id} gesto={g} />
+          ))}
         </div>
       )}
       {ehCorpo && <FalaDoLegista cartas={cartasRegistradas} />}
@@ -195,17 +216,42 @@ export default function EventoLocalidade({ localidadeId }) {
 // No procedural não há vozMestre nas cartas: este bloco fica vazio e o
 // jogador, já perito, lê o corpo por conta própria.
 // Visual: aparte com filete de latão à esquerda e fala em serif itálico.
+// Micro-gesto pericial (Onda 7): botão-gesto no espírito do "Medir
+// temperatura" — o clique É o gesto do perito e extrai a carta pelo MESMO
+// extrairCarta dos termos (motor intocado). Feito = a carta está na mesa.
+function GestoPericial({ gesto }) {
+  const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
+  const extrairCarta = useJogo((s) => s.extrairCarta);
+  const feito = cartasRegistradas.some((c) => c.id === gesto.cartaId);
+  return (
+    <button
+      type="button"
+      className={`gesto-pericial botao-mesa text-xs sm:text-sm ${feito ? 'botao-mesa--quieto' : ''}`}
+      data-feito={feito ? '' : undefined}
+      disabled={feito}
+      onClick={() => extrairCarta(gesto.cartaId)}
+    >
+      {gesto.rotulo}
+      {feito && <span className="text-stone-400"> · feito</span>}
+    </button>
+  );
+}
+
 function FalaDoLegista({ cartas }) {
+  // Modo purista (Onda 8): a SÍNTESE (janela/mecanismo) cala; os apartes
+  // vozMestre por carta ficam — são observação diegética, não conclusão.
+  const modoPurista = useJogo((s) => s.modoPurista);
   const asides = cartas.filter((c) => c.localidade === 'corpo' && c.vozMestre);
   const { tempo, causa } = falaDoMestre(lerCorpo(cartas));
-  if (asides.length === 0 && !tempo && !causa) return null;
+  const sintese = !modoPurista && (tempo || causa);
+  if (asides.length === 0 && !sintese) return null;
   return (
     <div className="mt-5 border-l-2 border-latao/70 pl-4 space-y-2">
       <p className="text-rotulo uppercase text-latao-claro/70">O legista, examinando</p>
       {asides.map((c) => (
         <p key={c.id} className="font-serif italic text-stone-200 text-sm leading-relaxed">“{c.vozMestre}”</p>
       ))}
-      {(tempo || causa) && (
+      {sintese && (
         <div className="pt-2 mt-1 border-t border-latao/30 space-y-1">
           {tempo && <p className="font-serif italic text-amber-100/90 text-sm leading-relaxed">“{tempo}”</p>}
           {causa && <p className="font-serif italic text-amber-100/90 text-sm leading-relaxed">“{causa}”</p>}
