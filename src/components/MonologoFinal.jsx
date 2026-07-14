@@ -61,7 +61,7 @@ const DICAS_TUTORIAL = {
   periferico: {
     primeira: 'Reveja o juízo sobre os não-acusados: cada um merece o veredicto que as cartas fundamentam.',
     reincidencia:
-      'O juízo sobre {nome} voltou a cair. Escolher “Inocente” pede um gesto a mais: no próprio juízo, confrontar o paradeiro declarado com o vestígio que o desmente, quando a mesa o tiver.',
+      'O juízo sobre {nome} voltou a cair. Escolher “Inocente” pede um gesto a mais, ali mesmo na ficha do juízo: confrontar o paradeiro declarado com o vestígio que o desmente, se esse vestígio estiver na sua mesa.',
   },
 };
 

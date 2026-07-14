@@ -239,7 +239,7 @@ export default function MuralAcusacao() {
           <h2 className="font-serif text-2xl text-amber-200 titulo-gravado">A Construção da Acusação</h2>
           <p className="text-stone-400 text-xs mt-0.5">
             A mesa se constrói por partes: conclua uma para a próxima aparecer. Para rever uma parte
-            já feita, clique nela — ou arraste-a de volta. Construir não custa tempo.
+            já feita, clique nela ou arraste-a de volta. Construir não custa tempo.
           </p>
         </div>
         <div className="flex items-center gap-3 shrink-0">

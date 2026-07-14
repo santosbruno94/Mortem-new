@@ -47,7 +47,7 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
                 }}
                 className="botao-mesa botao-mesa--quieto"
               >
-                Recomeçar do zero
+                Recomeçar do princípio
               </button>
             </div>
           </>
