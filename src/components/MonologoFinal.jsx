@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useJogo, CUSTO_REVISAO } from '../store/jogo.js';
-import { gerarMonologo } from '../logic/monologo.js';
+import { gerarMonologo, comArtigo } from '../logic/monologo.js';
 import { gerarEpilogo } from '../logic/epilogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
 import { CARTAS } from '../data/cartas.js';
@@ -101,7 +101,9 @@ export default function MonologoFinal() {
           const texto = reincidiu && dica.reincidencia ? dica.reincidencia : dica.primeira;
           if (!texto.includes('{nome}')) return texto;
           const sp = SUSPEITOS.find((s) => s.id === f.suspeitoId);
-          return sp ? texto.replaceAll('{nome}', sp.nome) : null;
+          // comArtigo: nome titulado pede artigo em meio de frase ("a Sra. …"),
+          // mesma convenção do monólogo vizinho.
+          return sp ? texto.replaceAll('{nome}', comArtigo(sp.nome)) : null;
         })
         .filter(Boolean)
     ),

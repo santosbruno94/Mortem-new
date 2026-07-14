@@ -4,6 +4,7 @@ import { SUSPEITOS } from '../data/seed.js';
 import { CATALOGO_CAUSAS } from '../data/catalogo_causas.js';
 import { ANCORAS, analisarLigacoes, horaAlegada } from '../logic/acusacao.js';
 import { formatJanela } from '../logic/tempo.js';
+import { deQuem } from '../logic/monologo.js';
 import { tocarSom } from '../som.js';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
 
@@ -174,7 +175,8 @@ export default function MuralAcusacao() {
         (l) => (l.de === v.id && l.para === alibi.id) || (l.de === alibi.id && l.para === v.id)
       )
     );
-    if (!confrontado) lacunas.push(`Paradeiro de ${sp.nome} por confrontar.`);
+    // deQuem: contrai com o artigo do nome titulado ("da Sra. …"), como no epílogo.
+    if (!confrontado) lacunas.push(`Paradeiro ${deQuem(sp.nome)} por confrontar.`);
   }
 
   const podeSubmeter = !!acusacao.reuId;
