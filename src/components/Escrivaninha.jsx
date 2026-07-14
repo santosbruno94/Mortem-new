@@ -9,6 +9,7 @@ import Cena3DBoundary from './Cena3DBoundary.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import InterrogatorioDialogo from './InterrogatorioDialogo.jsx';
 import FichaEvidencia from './FichaEvidencia.jsx';
+import AvisoCartaPousada from './AvisoCartaPousada.jsx';
 import { obterDialogo } from '../data/dialogos.js';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
@@ -151,8 +152,13 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'monologo' && <MonologoFinal />}
 
       {/* A Ficha de Coleta (§6.2) empilha ACIMA de qualquer overlay: a
-          evidência se apresenta no ato da extração e ao ser reconsultada. */}
+          primeira evidência do caso se apresenta nela; as demais, ao ser
+          reconsultadas (clique na carta pousada ou no aviso de pouso). */}
       {fichaAberta && <FichaEvidencia cartaId={fichaAberta} />}
+
+      {/* O aviso de pouso (Onda 4): a etiqueta que anuncia a observação
+          registrada deslizando para a mesa — clicável para abrir a ficha. */}
+      <AvisoCartaPousada />
     </div>
   );
 }

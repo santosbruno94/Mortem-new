@@ -320,14 +320,20 @@ de desenhar uma Verdade de Ouro nova.
 
 ### 6.2 A Ficha de Coleta (a evidência se apresenta no ato)
 
-Extrair uma evidência **apresenta o que ela é, na hora**. Ao clicar num termo em
-negrito — ou no corpo 3D/hotspots — a carta se registra e sobe uma **Ficha de Coleta**
-por cima do local (estilo etiqueta de exposição / laudo de época):
+Extrair uma evidência registra a carta; **só a primeira observação do caso** sobe em
+**Ficha de Coleta** por cima do local (aprende-se o gesto — a ficha traz uma
+linha-tutorial avisando da mudança). As demais **pousam sozinhas na mesa**, anunciadas
+por um **aviso de pouso** no pé da tela (`AvisoCartaPousada.jsx`, `[data-aviso-pousada]`,
+clicável para abrir a ficha; a carta recém-pousada ganha um anel de destaque na mesa).
+Decisão do playtest de 14/07/2026: o "Arquivar na mesa" obrigatório somava ~72 cliques
+mortos nas 36 observações.
+
+A ficha em si não mudou (estilo etiqueta de exposição / laudo de época):
 `textoDisplay`, a **descrição completa** (o exame de perto), a `vozMestre` em itálico
 quando a carta a tem, o carimbo, a hora do registro (`formatRelogio`) e, quando existe,
 a ponte "§ termo, no Glossário" (`verbeteParaCarta`). Botão único, **"Arquivar na
 mesa"**, fecha a ficha e devolve a carta à superfície (o som de papel toca na abertura
-da ficha, não na extração).
+da ficha e no aviso de pouso, não na extração).
 
 A ficha é **consulta de custo zero** e reabre a qualquer momento: clicar numa carta
 pousada na mesa a reabre; dentro do Mural da Acusação, um "§" discreto no canto da

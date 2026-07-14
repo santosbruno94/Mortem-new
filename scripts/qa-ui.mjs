@@ -121,9 +121,9 @@ async function novaPartida(page, perito, query = '') {
   await espera(page, 600);
 }
 
-// Fecha a Ficha de Coleta (§6.2), quando aberta: cada extração apresenta a
-// evidência no ato numa ficha que cobre o overlay — "Arquivar na mesa" a
-// devolve à superfície e libera o próximo termo em negrito.
+// Fecha a Ficha de Coleta (§6.2), quando aberta. Desde a Onda 4 só a
+// PRIMEIRA observação do caso abre ficha sozinha — nas demais este helper
+// é um no-op defensivo (o botão não existe).
 async function arquivarFicha(page) {
   const botao = page.getByRole('button', { name: 'Arquivar na mesa' });
   if (await botao.count()) {
@@ -303,8 +303,11 @@ async function main() {
     checar('Fase 2: abrir um ponto revela seus termos', (await page.locator('.termo-clicavel').count()) >= 1);
     await page.locator('.termo-clicavel').first().click();
     await espera(page, 200);
-    checar('Fase 2: extração dentro do ponto abre a ficha', (await page.locator('div.fixed[data-overlay="ficha"]').count()) >= 1);
-    await arquivarFicha(page);
+    // Onda 4: só a PRIMEIRA observação do caso abre ficha; as demais pousam
+    // sozinhas na mesa, anunciadas pelo aviso de pouso.
+    checar('Onda 4: a extração seguinte NÃO abre ficha (pousa sozinha)', (await page.locator('div.fixed[data-overlay="ficha"]').count()) === 0);
+    checar('Onda 4: o aviso de pouso anuncia a carta registrada', (await page.locator('[data-aviso-pousada]').count()) >= 1);
+    await arquivarFicha(page); // defensivo: não há ficha a arquivar
     // Andar pela planta: clicar o cômodo "a oficina" viaja (0h) e abre a oficina.
     await page.locator('[data-planta] [data-alvo="oficina"]').click();
     await espera(page, 500);
@@ -330,7 +333,7 @@ async function main() {
     await visitarEExtrair(page, 'O Corpo'); // extrai os demais termos do corpo
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
-    await arquivarFicha(page); // a leitura do algor também se apresenta em ficha
+    await arquivarFicha(page); // defensivo: o algor pousa sozinho (Onda 4)
     // O contador de esgotamento do caso-escola: corpo esgotado = 7 de 7.
     checar('Rota 1: contador de observações da localidade (7 de 7 no corpo)', (await page.locator('body').innerText()).includes('7 de 7 observações registradas aqui'));
     await fecharOverlay(page);

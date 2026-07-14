@@ -109,15 +109,20 @@ export const useJogo = create(
     (set, get) => ({
   ...estadoInicialCaso(),
 
+  // Última carta que POUSOU sem abrir ficha (Onda 4): alimenta o aviso de
+  // pouso e o destaque da carta na mesa. Transiente de UI — declarado fora
+  // do factory de propósito, para ficar FORA do save (partialize).
+  ultimaCartaPousada: null,
+
   // =====================================================================
   // Ações
   // =====================================================================
 
-  // "Recomeçar do zero" / "Fechar o caderno": apaga o save e devolve a mesa
-  // ao estado de arranque. As ações permanecem (o set é merge, não replace).
+  // "Recomeçar do princípio" / "Fechar o caderno": apaga o save e devolve a
+  // mesa ao estado de arranque. As ações permanecem (o set é merge).
   reiniciarCaso: () => {
     useJogo.persist.clearStorage();
-    set(estadoInicialCaso());
+    set({ ...estadoInicialCaso(), ultimaCartaPousada: null });
   },
 
   escolherDetective: () =>
@@ -235,14 +240,18 @@ export const useJogo = create(
         texto: `Novo destino no mapa: ${noRevelado ? noRevelado.rotulo : lead.revelaNo}. ${lead.nota || ''}`.trim(),
       });
     }
+    // Só a PRIMEIRA evidência do caso se apresenta em ficha (aprende-se o
+    // gesto); as demais pousam sozinhas na mesa, anunciadas pelo aviso de
+    // pouso — o arquivamento deixou de ser um clique obrigatório (Onda 4;
+    // o playtest contou ~72 cliques mortos de "Arquivar").
+    const primeiraDoCaso = s.cartasRegistradas.length === 0;
     set({
       cartasRegistradas: [...s.cartasRegistradas, carta],
       nosDesbloqueados,
       nosNovos: revelou ? [...s.nosNovos, lead.revelaNo] : s.nosNovos,
       log,
-      // A evidência se apresenta no ato: a ficha de coleta abre sobre o
-      // local (§6.2). Fechá-la ("Arquivar na mesa") devolve a carta à mesa.
-      fichaAberta: carta.id,
+      fichaAberta: primeiraDoCaso ? carta.id : s.fichaAberta,
+      ultimaCartaPousada: primeiraDoCaso ? null : carta.id,
     });
     // O mestre relê o corpo e atualiza, de cabeça, a leitura de quando/como.
     get().consolidarLeituraMestre();
@@ -298,12 +307,14 @@ export const useJogo = create(
       };
     }
     // Medir a temperatura é exame, não viagem: não custa tempo (relógio mole).
+    // Mesma regra de pouso da extração (Onda 4): ficha só na primeira do caso.
+    const primeiraDoCaso = s.cartasRegistradas.length === 0;
     set({
       temperaturaMedida: temperatura,
       cartasRegistradas: [...s.cartasRegistradas, carta],
       log: [...s.log, { hora: s.horasJogo, texto: `Registrado: ${carta.termoCarimbo}.` }],
-      // A leitura do algor também se apresenta em ficha (§6.2).
-      fichaAberta: carta.id,
+      fichaAberta: primeiraDoCaso ? carta.id : s.fichaAberta,
+      ultimaCartaPousada: primeiraDoCaso ? null : carta.id,
     });
     get().consolidarLeituraMestre();
   },
