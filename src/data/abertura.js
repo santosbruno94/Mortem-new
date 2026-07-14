@@ -31,8 +31,9 @@ export const PASSOS_ABERTURA = [
     titulo: 'A carta do Delegado',
     carta: true,
     paragrafos: [
-      '"{detective.title} {detective.surname} — Escrevo na qualidade de delegado de Briarstone e na condição, que não me envergonho de confessar, de homem fora da sua profundidade. O Sr. Geoffrey Arthurs, relojoeiro desta vila, foi achado morto esta manhã no escritório dos fundos da sua loja, com a garganta aberta e a casa revirada."',
-      '"Deixei tudo como estava; mandei que nada se tocasse. Peço-lhe que venha pelo primeiro trem. Briarstone paga os seus honorários e, se for o caso, o seu silêncio. — Lemuel Wycliffe, Delegado."',
+      'O lacre de cera vermelha traz o brasão gasto de uma repartição, prensado torto. A cera racha sob o polegar. O papel é grosso, de bom fornecedor; a letra que o cobre inclina-se para a direita, firme no começo de cada linha e mais corrida ao fim dela.',
+      '"{detective.title} {detective.surname} — Escrevo-lhe na qualidade de delegado de Briarstone e na condição, que não me envergonho de confessar, de homem posto fora da sua profundidade. O Sr. Geoffrey Arthurs, relojoeiro desta vila e homem que nunca deu trabalho a esta delegacia, foi achado morto esta manhã no escritório dos fundos da sua loja, com a garganta aberta e a casa toda revirada."',
+      '"Não toquei em nada; mandei que nem uma cadeira saísse do lugar, e pus um guarda à porta até que o senhor chegue. Venha, peço-lhe, pelo primeiro trem que o traga a nós. Briarstone paga os seus honorários e, se o caso assim pedir, o seu silêncio; disso trataremos melhor com um copo na mão. Perdoe a letra: escrevo de pé, e a mão ainda não me voltou ao sossego. — Lemuel Wycliffe, Delegado."',
     ],
     rotuloBotao: 'Aceitar o chamado',
   },
@@ -49,8 +50,9 @@ export const PASSOS_ABERTURA = [
     id: 'briarstone',
     titulo: 'Briarstone',
     paragrafos: [
-      'Briarstone estende-se ao longo de uma única rua: a igreja num extremo, a estalagem de pátio largo, a papelaria de vitrine arrumada, a relojoaria de cortina cerrada — e à porta dela um guarda moço, pálido, as mãos cruzadas às costas.',
-      'O Delegado Wycliffe espera na plataforma e aperta a mão {g:do perito|da perita} com um alívio que não disfarça. "{detective.title} {detective.surname}. Agradeço a presteza. O Sr. Arthurs está como o encontramos ontem… esta manhã, quero dizer. Venha. Explico-me pelo caminho, que andando me saio melhor."',
+      'A plataforma cheira a carvão e a palha molhada de chuva. Além dos trilhos, Briarstone estende-se numa única rua, e a luz de outubro, baixa e amarela, alonga cada sombra até o meio da calçada.',
+      'Os sinos da igreja dão a hora num extremo da rua; um cão responde do outro. A meia rua, uma vitrine tem a cortina corrida por dentro, e à porta dela um guarda moço mantém-se de mãos cruzadas às costas, o rosto sem cor.',
+      'O Delegado Wycliffe espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos, e não a solta logo. "{detective.title} {detective.surname}. Agradeço a presteza. O Sr. Arthurs está como o encontramos ontem… esta manhã, quero dizer. Venha; explico-me pelo caminho, que a andar me saio melhor."',
     ],
     rotuloBotao: 'Ouvir o delegado',
   },

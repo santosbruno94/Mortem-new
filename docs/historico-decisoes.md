@@ -263,3 +263,39 @@ Fase 4.
   herdava `text-transform: uppercase` do verbo (`innerText` = "· NOVO"); `.rotulo-novo-marca`
   volta a caixa baixa, casando o texto exato do QA. Textos de botão, `.termo-clicavel`/
   `.termo-extraido`, `data-overlay` e os `<select>` do mural — intocados.
+
+## Fase 5 do overhaul (14/07/2026) — Passe de prosa e história do slice
+
+Só camada narrativa (seed/tags/motor intocados). Toda prosa via `escritor-prosa` +
+pipeline `revisar-prosa`; bloqueantes corrigidos antes do commit. Ver
+`docs/playtest-fase-5-2026-07-14.md`.
+
+- **A vítima viva por observação pura (5.1):** Geoffrey Arthurs chega por objeto e por
+  fala/gesto — nunca bloco expositivo, nunca o narrador concluindo afeto (guia §2). A
+  rotina interrompida (as duas xícaras na copa, a corda que não se deu, a aliança
+  G.A. & A.R. por gravar) pesa sem ser nomeada. Alternativa recusada: uma **carta
+  coletável nova** de memento — sairia da camada de prosa (mexeria em dados/QA), fora do
+  escopo da fase.
+- **Eco do título condicional (5.2 — decisão do usuário, 3 opções apresentadas):** o
+  verso "A hora que a mentira tomou emprestada de um relógio, o corpo cobrou de volta"
+  vive em `blocoHoraTomada` e dispara só com `cenaEncenada && horaForjada && descuidosOk`.
+  Correção pós-revisão: o gatilho ganhou `descuidosOk` — sem a encenação derrubada, o
+  corpo não cobrou nada, e o verso seria falso em Erro Judiciário/Impunidade. Alternativas
+  recusadas: eco universal na fala do perito (soaria gasto em todo caso) e sem eco.
+- **Segredos com peso (5.3):** `EPILOGO_SEGREDO_EXPOSTO` e `PERIFERICO_SEGREDO` reescritos
+  para que expor um inocente custe — a armadilha do jogo é moral, não só mecânica.
+  Universais (Walter=súplica, Agnes=decoro), sem sentimentalismo nem epigrama.
+- **Abertura: reforço cirúrgico (5.4 — decisão do usuário, texto aprovado antes de trocar):**
+  6 passos e o botão final preservados (contrato do qa-ui). A carta do delegado vira objeto
+  físico (lacre, papel, "escrevo de pé, e a mão ainda não me voltou ao sossego"); a chegada
+  a Briarstone troca a lista expositiva por três batidas sensoriais (cheiro→som→luz).
+  Bloqueante do editor ("com um alívio que não disfarça") corrigido antes de aplicar:
+  Wycliffe recebe "com as duas mãos, e não a solta logo" (mostra, não nomeia — §2.1).
+  Alternativas recusadas: reestruturar o gancho (mudaria a contagem de passos/QA) e só
+  apertar a chegada (deixava a carta genérica).
+- **Contradição do fogo (achado do fiscal):** o depoimento de Silas se autocontradizia
+  entre `abertura` e `achado`. Alinhado a `achado` (Silas acende, Arthurs desce ao cheiro
+  do carvão); "carvão morno" → "carvão frio" (coerente com a oficina não aberta no sábado).
+- **Aceite consciente de brilho:** onde o eco 5.2 dispara, o epílogo tem duas frases de
+  efeito (eco + balanço do perito), separadas e em registros distintos — tolerável pelo
+  editor; o gatilho condicional as torna raras.

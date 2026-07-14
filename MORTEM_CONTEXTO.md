@@ -567,8 +567,12 @@ próximos casos não herdarem a regalia por omissão.
 
 "Encerrar o caso" não recarrega a página de imediato: abre o **Epílogo**
 (`src/logic/epilogo.js`) — parágrafos de consequência por templates universais
-(o destino do réu conforme o desfecho; o periférico do segredo, exposto ou não, com
-variantes anti-eco; as **explicações pagas** — alegações-isca refutadas cuja tag
+(o destino do réu conforme o desfecho; o **eco do título** — `blocoHoraTomada`, um
+único verso pago só quando a cena foi encenada movendo um relógio E o jogador o
+derrubou (`cenaEncenada && horaForjada && descuidosOk`): a hora emprestada só é
+"cobrada de volta" quando o corpo de fato prevaleceu; genérico, sem citar o título;
+o periférico do segredo, exposto ou não, com variantes anti-eco que carregam o **custo
+moral** de expor um inocente (não troféu); as **explicações pagas** — alegações-isca refutadas cuja tag
 `explicacao` vira o parágrafo de `ROTULOS_EXPLICACAO` que conta o fato verdadeiro por
 trás da leitura falsa, ex.: a luz do padeiro era o lampião esquecido; a conta do
 perito, que flexiona pela **hora do selo**) — seguido de **O retrato da investigação**:
