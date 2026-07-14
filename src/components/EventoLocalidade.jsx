@@ -148,9 +148,11 @@ export default function EventoLocalidade({ localidadeId }) {
         <div className="lg:grid lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-6 lg:items-start">
           <div className="h-48 sm:h-56 lg:h-80 lg:sticky lg:top-2 mb-4 lg:mb-0 rounded-sm border border-stone-800 bg-stone-950/60 overflow-hidden">
             <Cena3DBoundary fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">— a mesa de exame segue na prosa —</div>}>
-              <Suspense fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">a mesa de exame prepara-se…</div>}>
-                <CorpoCanvas ipm={ipm} />
-              </Suspense>
+              {(aoPerderContexto) => (
+                <Suspense fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">a mesa de exame prepara-se…</div>}>
+                  <CorpoCanvas ipm={ipm} aoPerderContexto={aoPerderContexto} />
+                </Suspense>
+              )}
             </Cena3DBoundary>
           </div>
           <div>{prosaEExames}</div>

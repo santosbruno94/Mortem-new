@@ -22,8 +22,10 @@ export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado
           interativo ? 'cursor-pointer' : 'pointer-events-none'
         }`}
       >
-        {/* Em tela estreita a etiqueta encolhe para só o nome (menos colisão);
-            o QA joga em desktop, onde tudo — inclusive o "· novo" — aparece. */}
+        {/* Em tela estreita a etiqueta encolhe (menos colisão) mas o CUSTO
+            fica: a economia de tempo é a decisão central do jogo e não pode
+            sumir justo na tela onde se decide viajar (P2 do playtest). O
+            verbo segue só em sm+; o QA joga em desktop, onde tudo aparece. */}
         <span className="hidden sm:block rotulo-verbo">
           {verbo}
           {novo && <span className="rotulo-novo-marca"> · novo</span>}
@@ -32,7 +34,7 @@ export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado
           {loc.rotuloMesa}
           {novo && <span className="sm:hidden rotulo-novo-marca"> · novo</span>}
         </span>
-        <span className="hidden sm:block rotulo-custo">
+        <span className="block rotulo-custo">
           {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
         </span>
       </button>

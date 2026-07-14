@@ -186,7 +186,15 @@ export default function MuralAcusacao() {
       return reu ? `Réu: ${reu.nome} · ${sustentaPresenca.length} vestígio(s)` : 'por concluir';
     }
     if (id === 'mentiras') {
-      return refutaHora.size ? `${refutaHora.size} mentira(s) de hora exposta(s)` : 'por concluir';
+      // A Estação III também derruba o paradeiro do RÉU (refuta_alibi) — o
+      // rótulo conta as duas espécies de mentira, não só as de hora (P2).
+      const paradeirosReu = [...refutaAlibi.values()].filter(
+        (v) => v.alibi.tagsOcultas.declaranteId === acusacao.reuId
+      ).length;
+      const partes = [];
+      if (refutaHora.size) partes.push(`${refutaHora.size} mentira(s) de hora exposta(s)`);
+      if (paradeirosReu) partes.push(`${paradeirosReu} paradeiro(s) desmentido(s)`);
+      return partes.length ? partes.join(' · ') : 'por concluir';
     }
     if (id === 'mobil') {
       const m = cartas.find((c) => c.id === acusacao.motivacaoId);
@@ -211,7 +219,7 @@ export default function MuralAcusacao() {
           <h2 className="font-serif text-2xl text-amber-200 titulo-gravado">A Construção da Acusação</h2>
           <p className="text-stone-400 text-xs mt-0.5">
             A mesa se constrói por partes: conclua uma para a próxima aparecer. Para rever uma parte
-            já feita, arraste-a de volta. Construir não custa tempo.
+            já feita, clique nela — ou arraste-a de volta. Construir não custa tempo.
           </p>
         </div>
         <div className="flex items-center gap-3 shrink-0">
@@ -307,13 +315,17 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
   const temJanela = acusacao.janela.inicio != null && acusacao.janela.fim != null;
   const vestNexo = sustentaPresenca.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.tipoVestigio);
   const motivo = cartas.find((c) => c.id === acusacao.motivacaoId);
-  const horas = [...refutaHora.values()].map((v) => v.alegacao.termoCarimbo);
   const semCor = '— por afirmar —';
 
   const refutaAlibiDe = (sid) => {
     for (const v of refutaAlibi.values()) if (v.alibi.tagsOcultas.declaranteId === sid) return v.vestigios[0];
     return null;
   };
+  // As mentiras expostas do caso: as de hora E o paradeiro do réu desmentido
+  // (P2 do playtest — a refutação do álibi do réu não pode ficar invisível).
+  const mentiras = [...refutaHora.values()].map((v) => v.alegacao.termoCarimbo);
+  const paradeiroReu = refutaAlibiDe(acusacao.reuId);
+  if (paradeiroReu) mentiras.push(`paradeiro desmentido por “${paradeiroReu.textoDisplay}”`);
   const rotuloJuizo = (j) => (j === 'culpado' ? 'Cúmplice' : j === 'inocente' ? 'Inocente' : 'Sem juízo');
 
   return (
@@ -328,7 +340,7 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
           <LinhaRev rotulo="Quando" valor={temJanela ? formatJanela(acusacao.janela) : semCor} />
           <LinhaRev rotulo="Como" valor={causa ? causa.nome : semCor} />
           <LinhaRev rotulo="Presença" valor={vestNexo ? vestNexo.textoDisplay : '— nada liga o réu à cena —'} />
-          <LinhaRev rotulo="Mentiras" valor={horas.length ? horas.join(' · ') : '— nenhuma mentira de hora exposta —'} />
+          <LinhaRev rotulo="Mentiras" valor={mentiras.length ? mentiras.join(' · ') : '— nenhuma mentira exposta —'} />
           <LinhaRev rotulo="Móbil" valor={motivo ? motivo.termoCarimbo : semCor} />
           <div className="flex gap-3">
             <dt className="text-rotulo uppercase text-latao-claro/70 w-24 shrink-0 pt-0.5">Juízos</dt>
@@ -379,19 +391,22 @@ function LinhaRev({ rotulo, valor }) {
 }
 
 // ---------------------------------------------------------------------
-// Resumo de uma etapa concluída. Arrastá-lo de volta (> 24px) reabre a etapa.
+// Resumo de uma etapa concluída. Arrastá-lo de volta (> 24px) reabre a etapa;
+// um clique/toque simples também reabre (P1 do playtest — o arrasto deixou
+// de ser o único caminho; ajuda mobile e acessibilidade).
 // ---------------------------------------------------------------------
 function ResumoEstacao({ etapa, resumo, aoReabrir }) {
   const st = useRef(null);
   const [puxa, setPuxa] = useState(0); // deslocamento visual enquanto se arrasta
   function down(e) {
     e.currentTarget.setPointerCapture(e.pointerId);
-    st.current = { x0: e.clientX, y0: e.clientY };
+    st.current = { x0: e.clientX, y0: e.clientY, moveu: 0 };
   }
   function move(e) {
     const a = st.current;
     if (!a) return;
     const dx = e.clientX - a.x0;
+    a.moveu = Math.max(a.moveu, Math.hypot(dx, e.clientY - a.y0));
     setPuxa(Math.max(0, Math.min(dx, 48)));
     if (Math.hypot(dx, e.clientY - a.y0) > 44) {
       st.current = null;
@@ -400,15 +415,26 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
     }
   }
   function up() {
+    const a = st.current;
     st.current = null;
     setPuxa(0);
+    // Soltou quase parado (< 6px): foi um clique, não um arrasto abortado.
+    if (a && a.moveu < 6) aoReabrir();
   }
   return (
     <div
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          aoReabrir();
+        }
+      }}
       onPointerDown={down}
       onPointerMove={move}
       onPointerUp={up}
-      title="Arraste para rever esta parte"
+      title="Clique ou arraste para rever esta parte"
       style={{ transform: puxa ? `translateX(${puxa}px)` : undefined }}
       className={`carta-pergaminho relative flex items-center justify-between gap-4 px-4 py-2 rounded-sm -rotate-[0.25deg] cursor-grab active:cursor-grabbing select-none touch-none ${
         puxa ? 'outline outline-2 outline-vela' : ''
@@ -428,7 +454,7 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
         <span className="text-tinta-clara text-xs">{resumo}</span>
       </div>
       <span className={`text-[10px] tracking-widest uppercase ${puxa > 24 ? 'text-cera-clara' : 'text-tinta-apagada'}`}>
-        {puxa > 24 ? 'solte para rever ⟲' : '⟵ puxe para rever'}
+        {puxa > 24 ? 'solte para rever ⟲' : 'rever ⟲'}
       </span>
     </div>
   );
@@ -840,7 +866,7 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
             {/* INOCENTE → confrontar o paradeiro declarado: o mesmo gesto serve
                 ao álibi que se sustenta e ao álibi que quebra (mentira-segredo) */}
             {juizo === 'inocente' && (
-              <div className="mt-2 border-t border-latao/25 pt-2">
+              <SubPainelJuizo>
                 <p className="text-stone-400 text-[11px] mb-1">
                   Confronte o paradeiro declarado — ligue o vestígio que o desmente, se houver:
                 </p>
@@ -863,12 +889,12 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
                     ))}
                   </div>
                 )}
-              </div>
+              </SubPainelJuizo>
             )}
 
             {/* CÚMPLICE → o porquê (aposta do jogador; narrativa) */}
             {juizo === 'culpado' && (
-              <div className="mt-2 border-t border-latao/25 pt-2">
+              <SubPainelJuizo>
                 <p className="text-stone-400 text-[11px] mb-1">Por que acusa de cúmplice:</p>
                 {incriminamDe(sp.id).length === 0 ? (
                   <p className="text-stone-400 italic font-serif text-xs">Nenhuma carta sustenta a aposta.</p>
@@ -884,11 +910,26 @@ function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada
                     ))}
                   </div>
                 )}
-              </div>
+              </SubPainelJuizo>
             )}
           </div>
         );
       })}
+    </div>
+  );
+}
+
+// O sub-painel que se abre sob a ficha do suspeito (Inocente/Cúmplice) nasce
+// abaixo da dobra nas fichas de baixo do grid (P1 do playtest): ao montar,
+// rola o mural até ficar visível e surge com o gesto padrão da mesa.
+function SubPainelJuizo({ children }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    ref.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }, []);
+  return (
+    <div ref={ref} className="mt-2 border-t border-latao/25 pt-2 mortem-surgir">
+      {children}
     </div>
   );
 }

@@ -27,7 +27,7 @@ function CameraExame() {
   return null;
 }
 
-export default function CorpoCanvas({ ipm }) {
+export default function CorpoCanvas({ ipm, aoPerderContexto }) {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const extrairCarta = useJogo((s) => s.extrairCarta);
 
@@ -43,6 +43,14 @@ export default function CorpoCanvas({ ipm }) {
       dpr={[1, 2]}
       gl={{ antialias: true, powerPreference: 'low-power' }}
       camera={{ zoom: 150, position: [0.4, 1.5, 2.6], near: 0.1, far: 30 }}
+      onCreated={({ gl }) => {
+        // Contexto WebGL perdido (P3): a mesa de exame cede à prosa em vez
+        // de ficar um retângulo preto (fallback do Cena3DBoundary).
+        gl.domElement.addEventListener('webglcontextlost', (e) => {
+          e.preventDefault();
+          aoPerderContexto?.();
+        });
+      }}
     >
       <CameraExame />
 

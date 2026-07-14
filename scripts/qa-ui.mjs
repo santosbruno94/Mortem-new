@@ -413,6 +413,9 @@ async function main() {
     await page.getByRole('button', { name: /Recolhido à Estalagem às Oito/ }).last().click();
     await espera(page, 250);
     await concluirParte(page);
+    // Onda 2 (P2): o rótulo da Estação III recolhida conta TAMBÉM o
+    // paradeiro do réu desmentido, não só as mentiras de hora.
+    checar('Onda 2: Estação III conta o paradeiro desmentido do réu', (await page.locator('body').innerText()).includes('paradeiro(s) desmentido(s)'));
     await page.getByRole('button', { name: 'Consertos reclamados na coluna de S.C.' }).click();
     await concluirParte(page);
     // Juízos: Walter e Agnes inocentes com as mentiras expostas; Grey e

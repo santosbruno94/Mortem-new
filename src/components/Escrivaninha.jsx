@@ -86,18 +86,32 @@ export default function Escrivaninha() {
 
           {usar3D ? (
             <Cena3DBoundary fallback={mesa2D}>
-              <Suspense fallback={mesa2D}>
-                <div className="absolute inset-0 flex flex-col">
-                  {/* A maquete da vila, pousada no alto da mesa */}
-                  <div className="shrink-0 relative h-[44%] min-h-[210px] border-b border-black/40">
-                    <DioramaVila aoAbrirNo={aoAbrirNo} />
+              {(aoPerderContexto) => (
+                <Suspense fallback={mesa2D}>
+                  <div className="absolute inset-0 flex flex-col">
+                    {/* A maquete da vila, pousada no alto da mesa. Em tela
+                        larga, a maquete cresce (lg:h-[52%]) e come o vão
+                        escuro do meio (P3). Em tela estreita a maquete rola
+                        na horizontal (largura mínima de 620px) com um
+                        sombreado na borda como convite de rolagem (P2). */}
+                    <div className="shrink-0 relative h-[44%] lg:h-[52%] min-h-[210px] border-b border-black/40">
+                      <div className="absolute inset-0 overflow-x-auto overflow-y-hidden sm:overflow-hidden">
+                        <div className="h-full min-w-[620px] sm:min-w-0">
+                          <DioramaVila aoAbrirNo={aoAbrirNo} aoPerderContexto={aoPerderContexto} />
+                        </div>
+                      </div>
+                      <div
+                        className="sm:hidden pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/60 to-transparent"
+                        aria-hidden
+                      />
+                    </div>
+                    {/* A bandeja de cartas, rolável, sob a maquete */}
+                    <div className="relative flex-1 min-h-0">
+                      <MesaLocalidades2D aoAbrirNo={aoAbrirNo} comDiorama />
+                    </div>
                   </div>
-                  {/* A bandeja de cartas, rolável, sob a maquete */}
-                  <div className="relative flex-1 min-h-0">
-                    <MesaLocalidades2D aoAbrirNo={aoAbrirNo} comDiorama />
-                  </div>
-                </div>
-              </Suspense>
+                </Suspense>
+              )}
             </Cena3DBoundary>
           ) : (
             mesa2D
