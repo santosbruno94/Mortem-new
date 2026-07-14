@@ -34,6 +34,7 @@ import { POSICOES_DIORAMA, FORMAS_PREDIO } from '../src/data/mapa_espacial.js';
 import { HOTSPOTS_CORPO } from '../src/data/hotspots_corpo.js';
 import { obterDefinicaoCarta, CARTAS } from '../src/data/cartas.js';
 import { LOCALIDADES } from '../src/data/localidades.js';
+import { DIALOGOS } from '../src/data/dialogos.js';
 
 const monologos = [];
 const estadoInicial = { ...useJogo.getState() };
@@ -542,6 +543,49 @@ if (!pontosCobremCartas) {
   console.log('PONTOS DE INTERESSE — marcadores sem carta:', marcadoresOrfaosNosPontos.join(', ') || '—');
 }
 
+// ============================================================
+// GUARDA DOS INTERROGATÓRIOS EM DIÁLOGO (§7.1): a árvore é camada
+// narrativa (o motor não a lê), mas precisa ser íntegra —
+//   • toda `requerCarta` de confronto referencia carta existente;
+//   • todo `vaiPara` aponta para um nó real da MESMA árvore;
+//   • todo `[[id]]` de fala é carta real E nenhuma carta com
+//     `localidade === nó` fica órfã (inalcançável em fala alguma),
+//     espelho da guarda dos pontos de interesse (a extração pelo
+//     motor continua valendo — o diálogo é só a superfície de UI).
+// ============================================================
+const requerCartasInvalidas = [];
+const vaiParaInvalidos = [];
+const marcadoresDialogoInvalidos = [];
+const cartasOrfasNoDialogo = [];
+for (const [localidadeId, dialogo] of Object.entries(DIALOGOS)) {
+  const idsNos = new Set(Object.keys(dialogo.nos));
+  for (const [noId, no] of Object.entries(dialogo.nos)) {
+    for (const op of no.opcoes || []) {
+      if (op.requerCarta && !obterDefinicaoCarta(op.requerCarta))
+        requerCartasInvalidas.push(`${localidadeId}:${noId}:${op.requerCarta}`);
+      if (!idsNos.has(op.vaiPara)) vaiParaInvalidos.push(`${localidadeId}:${noId}→${op.vaiPara}`);
+    }
+  }
+  const marcadoresArvore = marcadoresDe(Object.values(dialogo.nos).flatMap((n) => n.fala || []));
+  for (const id of marcadoresArvore) {
+    if (!obterDefinicaoCarta(id)) marcadoresDialogoInvalidos.push(`${localidadeId}:${id}`);
+  }
+  for (const c of CARTAS.filter((c) => c.localidade === localidadeId)) {
+    if (!marcadoresArvore.has(c.id)) cartasOrfasNoDialogo.push(`${localidadeId}:${c.id}`);
+  }
+}
+const dialogosIntegros =
+  requerCartasInvalidas.length === 0 &&
+  vaiParaInvalidos.length === 0 &&
+  marcadoresDialogoInvalidos.length === 0 &&
+  cartasOrfasNoDialogo.length === 0;
+if (!dialogosIntegros) {
+  console.log('\nDIÁLOGOS — requerCarta inexistente:', requerCartasInvalidas.join(', ') || '—');
+  console.log('DIÁLOGOS — vaiPara sem nó:', vaiParaInvalidos.join(', ') || '—');
+  console.log('DIÁLOGOS — marcador sem carta:', marcadoresDialogoInvalidos.join(', ') || '—');
+  console.log('DIÁLOGOS — cartas inalcançáveis na árvore:', cartasOrfasNoDialogo.join(', ') || '—');
+}
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
@@ -568,6 +612,7 @@ const checagens = [
   ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
   ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],
+  ['Interrogatórios em diálogo íntegros (§7.1): requerCarta/vaiPara/[[id]] válidos, sem carta órfã', dialogosIntegros],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

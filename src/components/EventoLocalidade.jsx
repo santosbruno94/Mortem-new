@@ -5,11 +5,11 @@ import Cena3DBoundary from './Cena3DBoundary.jsx';
 import PlantaRelojoaria from './PlantaRelojoaria.jsx';
 import { obterLocalidade } from '../data/localidades.js';
 import { obterNo } from '../data/mapa.js';
-import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { SEED_TUTORIAL } from '../data/seed.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
 import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
+import { ParagrafoProsa } from './ProsaComTermos.jsx';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
@@ -27,7 +27,6 @@ export default function EventoLocalidade({ localidadeId }) {
   const detective = useJogo((s) => s.detective);
   const horasJogo = useJogo((s) => s.horasJogo);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
-  const extrairCarta = useJogo((s) => s.extrairCarta);
   // Quais pontos de interesse estão abertos (revelados). Estado local de UI:
   // a coleta em camadas é escolha do jogador, não muda o motor.
   const [pontosAbertos, setPontosAbertos] = useState({});
@@ -36,43 +35,9 @@ export default function EventoLocalidade({ localidadeId }) {
   if (!localidade) return null;
   const ipm = ipmAtual(horasJogo, SEED_TUTORIAL.horasMorteAntesChegada);
 
-  function renderTermo(cartaId, chave) {
-    const definicao = obterDefinicaoCarta(cartaId);
-    if (!definicao) return <span key={chave}>{cartaId}</span>;
-    const registrada = cartasRegistradas.some((c) => c.id === cartaId);
-    const estado = resolverEstadoCarta(definicao, ipm);
-    if (registrada) {
-      return (
-        <span key={chave} data-carta-id={cartaId} className="termo-extraido" title="Já registrado na mesa">
-          {estado.textoDisplay}
-        </span>
-      );
-    }
-    return (
-      <span
-        key={chave}
-        data-carta-id={cartaId}
-        className="termo-clicavel"
-        title="Examinar e registrar (não custa tempo)"
-        onClick={() => extrairCarta(cartaId)}
-      >
-        {estado.textoDisplay}
-      </span>
-    );
-  }
-
-  function renderParagrafo(texto, indice) {
-    const partes = interpolar(texto, detective).split(/(\[\[\w+\]\])/g);
-    return (
-      // A prosa imersiva pousa sobre o couro escuro: serifada e legível.
-      <p key={indice} className="font-serif text-stone-300 leading-relaxed">
-        {partes.map((parte, i) => {
-          const marcador = parte.match(/^\[\[(\w+)\]\]$/);
-          return marcador ? renderTermo(marcador[1], `${indice}_${i}`) : <span key={`${indice}_${i}`}>{parte}</span>;
-        })}
-      </p>
-    );
-  }
+  // A prosa imersiva pousa sobre o couro escuro: serifada e legível. O
+  // renderizador de [[id]]/interpolação é o util compartilhado (§7.1).
+  const renderParagrafo = (texto, indice) => <ParagrafoProsa key={indice} texto={texto} />;
 
   const personagemDaCena = PERSONAGEM_POR_LOCALIDADE[localidade.id];
   const ehCorpo = localidade.id === 'corpo';

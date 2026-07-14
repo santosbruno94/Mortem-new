@@ -331,6 +331,50 @@ pendurado sobre a prova.
 No modo **procedural** não há mestre: a cena traz só a descrição física (sem
 `vozMestre`) e o jogador, já perito, lê por conta própria.
 
+### 7.1 Interrogatórios como diálogo (a árvore + o confronto com provas)
+
+Os nós de **interrogatório** deixam de ser prosa estática e passam a **diálogo
+ramificado determinístico** (`src/components/InterrogatorioDialogo.jsx`, sobre o dado
+narrativo puro `src/data/dialogos.js`). O perito **escolhe o assunto** — um hub com
+raios: cada raio abre uma fala e volta ao leque. Navegar não custa tempo (relógio mole)
+e **reler nós já visitados é livre**; o "já perguntado" persiste no store
+(`nosVisitadosDialogo` por suspeito — dado puro serializável, que o motor jamais lê).
+
+**A mecânica do confronto** é o elo que faltava entre a mesa e as pessoas. Uma opção com
+`requerCarta` **só aparece quando a carta está registrada** ("Apresentar: O Quarto Cinco
+às Escuras"); apresentá-la abre um ramo de **reação observável, nunca confissão** — o
+veredicto continua no mural. No vertical slice, Silas Crane (o réu) estreia com dois
+confrontos: o registro da estalagem (`corrob_estalajadeiro`, que fura o "recolhi-me às
+oito") e o livro de ordens (`ev_livro_ordens`, a coluna "S.C."), cada um reenquadrado por
+ele com a calma da bancada.
+
+**O motor não muda.** As falas surgem cartas pelo **mesmo mecanismo `[[id]]`** das
+localidades (`ParagrafoProsa` de `src/components/ProsaComTermos.jsx`, o renderizador
+único compartilhado com `EventoLocalidade`); as cartas de depoimento nascem com as tags
+que já têm (`alibi`, `comportamento`, `fragmento`), e a extração pelo motor
+(`extrairCarta`) segue idêntica — o diálogo é só a superfície de UI. Forma do dado:
+
+```js
+DIALOGOS.interrogatorio_silas = {
+  suspeitoId: 'silas_crane', noInicial: 'abertura',
+  nos: {
+    abertura: { fala: ['…[[ev_vidro_dobra]].'], opcoes: [
+      { rotulo: 'A noite de sexta-feira', vaiPara: 'alibi' },
+      { rotulo: 'Apresentar: O Quarto Cinco às Escuras',
+        requerCarta: 'corrob_estalajadeiro', vaiPara: 'confronto_estalagem' },
+    ] },
+    alibi: { fala: ['…: [[alibi_silas]].'], opcoes: [{ rotulo: '— outro assunto —', vaiPara: 'abertura' }] },
+    …
+  },
+};
+```
+
+Restrição dura (guarda estática no `scripts/qa.mjs`): toda `requerCarta` referencia carta
+existente; todo `vaiPara` aponta para nó real da mesma árvore; todo `[[id]]` de fala é
+carta real **e nenhuma carta com `localidade === nó` fica órfã** (alcançável em alguma
+fala) — espelho da guarda dos pontos de interesse (§5.1). Observação pura (guia §2): a
+calma do suspeito é gesto observável; quem estranha é o jogador.
+
 ---
 
 ## 8. A Construção da Acusação (o mural com barbante)
