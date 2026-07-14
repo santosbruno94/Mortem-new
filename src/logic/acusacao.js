@@ -131,6 +131,27 @@ export function classificarLigacao(ligacao, mapaCartas) {
 }
 
 // ---------------------------------------------------------------------
+// O confronto em cena (Onda 5): apresentar ao declarante, no interrogatório,
+// a carta que desmente o seu paradeiro equivale ao barbante vestígio→álibi
+// do mural — devolve o par [fatoId, alibiId] que a apresentação estabelece,
+// ou null quando a carta não toca o paradeiro do interrogado (evasiva).
+// SÓ TAGS (regra do motor): vestígio com pertenceA, ou corroboração com
+// ligadoA, contra o álibi cujo declaranteId é o interrogado. A ligação
+// resultante nasce visível e removível no mural — a autoria fica no jogador.
+// ---------------------------------------------------------------------
+export function ligacaoDeConfrontoEmCena(carta, suspeitoId, cartasRegistradas) {
+  if (!carta) return null;
+  const t = carta.tagsOcultas || {};
+  const desmentePorRastro = ehVestigio(carta) && t.pertenceA === suspeitoId;
+  const desmentePorRegistro = ehCorroboracao(carta) && t.ligadoA === suspeitoId;
+  if (!desmentePorRastro && !desmentePorRegistro) return null;
+  const alibi = cartasRegistradas.find(
+    (c) => ehAlibi(c) && c.tagsOcultas.declaranteId === suspeitoId
+  );
+  return alibi ? [carta.id, alibi.id] : null;
+}
+
+// ---------------------------------------------------------------------
 // Análise de TODAS as ligações de uma acusação. Agrupa o que o veredicto
 // precisa, tudo derivado das tags.
 // ---------------------------------------------------------------------

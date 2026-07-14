@@ -15,6 +15,7 @@ import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.
 import { HORAS_CHEGADA_CENA, ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
 import { temperaturaPorIpm, AMBIENTE_PADRAO, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
+import { ligacaoDeConfrontoEmCena } from '../logic/acusacao.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 
 // Constrói o objeto detective do §12. Há um único perito jogável; o shape
@@ -61,6 +62,10 @@ export function estadoInicialCaso() {
     // perguntado" na UI) — não move o relógio e o motor jamais o lê. Reler nós
     // já visitados é livre (relógio mole).
     nosVisitadosDialogo: {}, // { [suspeitoId]: [noId, ...] }
+    // Provas já apresentadas em cena, por interrogado (Onda 5): estado
+    // "feito" do seletor "Apresentar uma prova…". Dado puro de UI —
+    // o motor não lê. { [suspeitoId]: [cartaId, ...] }
+    provasApresentadas: {},
     nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
     // Reincidência POR CÓDIGO de falha do veredicto (dado de UI: a cortesia
     // do tutorial escala a dica na segunda queda no MESMO ponto; o motor
@@ -169,6 +174,29 @@ export const useJogo = create(
         nosVisitadosDialogo: { ...s.nosVisitadosDialogo, [suspeitoId]: [...jaVistos, noId] },
       };
     }),
+
+  // Apresentar uma prova em cena (§7.1, Onda 5). Custo zero (interrogar é
+  // relógio mole). Registra o "já apresentada" e, quando a carta desmente o
+  // paradeiro do PRÓPRIO interrogado (função pura ligacaoDeConfrontoEmCena,
+  // só tags), ANOTA a ligação ao mural — a mesma refuta_alibi que o barbante
+  // criaria, nascendo visível e removível; juízos seguem 100% manuais.
+  apresentarProva: (suspeitoId, cartaId) => {
+    const s = get();
+    const ja = s.provasApresentadas[suspeitoId] || [];
+    if (!ja.includes(cartaId)) {
+      set({
+        provasApresentadas: { ...s.provasApresentadas, [suspeitoId]: [...ja, cartaId] },
+      });
+    }
+    const carta = s.cartasRegistradas.find((c) => c.id === cartaId);
+    const par = ligacaoDeConfrontoEmCena(carta, suspeitoId, s.cartasRegistradas);
+    if (!par) return;
+    const jaLigada = s.acusacao.ligacoes.some(
+      (l) => (l.de === par[0] && l.para === par[1]) || (l.de === par[1] && l.para === par[0])
+    );
+    get().adicionarLigacao(par[0], par[1]);
+    if (!jaLigada) get().registrarLog('O confronto ficou anotado ao mural.');
+  },
 
   // Viagem entre nós do mapa: a ÚNICA ação que avança o relógio. Dentro de
   // um local o tempo congela. O custo (horas) vem de src/data/mapa.js.

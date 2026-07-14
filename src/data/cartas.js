@@ -160,7 +160,7 @@ export const CARTAS = [
     textoDisplay: 'Relógio de Lareira Esmagado',
     carimboPadrao: 'Relógio Parado às 08h45',
     descricao:
-      'De perto, o vidro cedeu para dentro e a caixa abriu de um lado só. Os ponteiros descansam num quarto para as nove, sobre algarismos pintados a ouro.',
+      'De perto, o vidro cedeu para dentro e a caixa abriu de um lado só; o rebordo do vidro leva um filete dourado, meio comido do uso. Os ponteiros descansam num quarto para as nove, sobre algarismos pintados a ouro.',
     tagsOcultas: {
       dominio: 'ambiental',
       subDominio: 'cronologia_aparente',

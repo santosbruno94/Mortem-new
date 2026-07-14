@@ -350,8 +350,14 @@ async function main() {
     await abrirNo(page, 'Silas Crane');
     checar('Fase 3: o interrogatório abre em diálogo (opções do perito)', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     checar('Fase 3: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
-    // O confronto da estalagem ainda não colhido → oculto (decisão de design).
-    checar('Fase 3: confronto da estalagem oculto sem a prova', (await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).count()) === 0);
+    // Onda 5: o seletor "Apresentar uma prova…" só lista o que está na mesa —
+    // a prova da estalagem, ainda não colhida, não aparece (sem telégrafo).
+    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
+    await espera(page, 200);
+    checar('Onda 5: seletor de provas aberto', (await page.locator('[data-seletor-provas]').count()) === 1);
+    checar('Fase 3: prova não colhida ausente do seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 0);
+    await page.getByRole('button', { name: 'guardar as provas' }).click();
+    await espera(page, 150);
     await page.locator('.termo-clicavel').first().click(); // a lasca de vidro (fala de abertura)
     await espera(page, 200);
     await arquivarFicha(page);
@@ -374,13 +380,26 @@ async function main() {
     await visitarEExtrair(page, 'A Estalagem');
     await fecharOverlay(page);
     // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova
-    // está na mesa e a opção de CONFRONTO (§7.1) aparece; apresentá-la rende
-    // a reação de Silas (observável, nunca confissão — o veredicto é do mural).
+    // está na mesa e o seletor (Onda 5) a lista; apresentá-la rende a reação
+    // de Silas (observável, nunca confissão — o veredicto é do mural) e ANOTA
+    // a refutação do paradeiro dele no mural (barbante removível).
     await abrirNo(page, 'Silas Crane');
-    checar('Rota 1: confronto da estalagem disponível com a prova na mesa', (await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).count()) >= 1);
-    await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).click();
+    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
+    await espera(page, 200);
+    checar('Rota 1: prova colhida aparece no seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 1);
+    await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).click();
     await espera(page, 300);
     checar('Rota 1: apresentar a prova rende a reação do réu (nunca confissão)', (await page.locator('body').innerText()).includes('O estalajadeiro terá contado os quartos errados'));
+    checar('Onda 5: a linha conectiva pousa a prova entre os dois', (await page.locator('[data-prova-apresentada]').count()) === 1);
+    // Prova alheia (o rigor do corpo) → a evasiva na voz de Silas.
+    await page.locator('.opcao-dialogo--voltar').first().click();
+    await espera(page, 200);
+    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
+    await espera(page, 200);
+    await page.locator('[data-seletor-provas]').getByRole('button', { name: /Corpo Endurecido/ }).click();
+    await espera(page, 300);
+    checar('Onda 5: prova alheia cai na evasiva do personagem', (await page.locator('[data-no-dialogo="evasiva"]').count()) === 1);
+    checar('Onda 5: a evasiva não confessa (voz de Silas)', (await page.locator('body').innerText()).includes('a minha parte é corda e mola'));
     await fecharOverlay(page);
     await visitarEExtrair(page, 'Sra. Agnes Rooke');
     await fecharOverlay(page);
