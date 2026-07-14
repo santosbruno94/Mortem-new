@@ -45,7 +45,7 @@ export const DIALOGOS = {
       // de vidro na bainha (a carta de presença, sempre alcançável aqui).
       abertura: {
         fala: [
-          'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.title}, o senhor há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje a bancada amanheceu sem lume."',
+          'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.title}, {g:o senhor|a senhora} há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje a bancada amanheceu sem lume."',
           'Ao cruzar as pernas, deixa ver, presa à bainha esquerda, uma lasca que a luz do lampião acende: [[ev_vidro_dobra]].',
         ],
         opcoes: [
@@ -76,7 +76,7 @@ export const DIALOGOS = {
       // A teoria não pedida (aqui, pedida): o ladrão de fora. Desemboca em comp_silas.
       teoria: {
         fala: [
-          '"O senhor pergunta, mas eu já ia dizer de qualquer modo." As mãos continuam sobre os joelhos. "Gente da estrada, {detective.title}, atrás do troco do caixa; uma vila destas não tranca bem as portas à noite. Eu bem dizia ao Sr. Arthurs que recolhesse o caixa ao cofre, mas homem velho tem os seus costumes." E volta a ela, como quem retoma sempre a mesma peça na bancada: [[comp_silas]].',
+          '"{g:O senhor|A senhora} pergunta, mas eu já ia dizer de qualquer modo." As mãos continuam sobre os joelhos. "Gente da estrada, {detective.title}, atrás do troco do caixa; uma vila destas não tranca bem as portas à noite. Eu bem dizia ao Sr. Arthurs que recolhesse o caixa ao cofre, mas homem velho tem os seus costumes." E volta a ela, como quem retoma sempre a mesma peça na bancada: [[comp_silas]].',
         ],
         opcoes: [OUTRO_ASSUNTO],
       },
@@ -113,6 +113,145 @@ export const DIALOGOS = {
       evasiva: {
         fala: [
           'Silas Crane inclina-se sobre a mesa o bastante para ver, e torna ao espaldar. "Com licença de dizer, {detective.title}, a minha parte é corda e mola; o que isso valha, sabe a perícia." As mãos não deixam os joelhos. "O que eu penso, já disse: gente da estrada, atrás do caixa."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+    },
+  },
+
+  papelaria: {
+    suspeitoId: 'agnes_rooke',
+    noInicial: 'abertura',
+    // Apresentar prova: a cesta, o aro e o relato da viela têm reação própria;
+    // todo o resto cai na evasiva dela (que não gasta palavras).
+    noEvasiva: 'evasiva',
+    reacoesProva: {
+      ev_cesta_rooke: 'reacao_cesta',
+      ev_anel_encomenda: 'reacao_anel',
+      dep_mulher_viela: 'reacao_viela',
+    },
+    nos: {
+      // O hub: a loja e a dona; ela atende de pé e espera a pergunta.
+      abertura: {
+        fala: [
+          'A papelaria cheira a goma e a papel novo; o balcão reluz de cera. Sobre o mostrador, apartado do resto, papel de carta com tarja de luto. A Sra. Agnes Rooke atende de pé, do lado de dentro do balcão, e mede o visitante por cima dos óculos. "{detective.title}." Não oferece cadeira. Espera a pergunta.',
+        ],
+        opcoes: [
+          { rotulo: 'A noite de sexta-feira', vaiPara: 'paradeiro' },
+          { rotulo: 'O morto e a vila', vaiPara: 'morto' },
+        ],
+      },
+
+      // O paradeiro: resposta do tamanho da pergunta; desemboca em alibi_agnes.
+      paradeiro: {
+        fala: [
+          '"A sexta-feira." Devolve as palavras e responde: [[alibi_agnes]].',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // O morto: cliente de vinte anos e nem uma palavra além; desemboca em comp_agnes.
+      morto: {
+        fala: [
+          '"O Sr. Arthurs comprava nesta casa o papel de escrituração. Homem pontual. O que a vila acrescente é assunto da vila." Atende, da primeira palavra à última, em [[comp_agnes]].',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação à cesta (a apresentação anota a ligação no mural, pelo código):
+      // ela cede o mínimo, com dignidade — reação, nunca confissão.
+      reacao_cesta: {
+        fala: [
+          'A Sra. Rooke olha o guardanapo bordado, depois o bilhete, e fica um momento sem falar. "A cesta é minha; o guardanapo também. Ceei com o Sr. Arthurs na sexta, às oito, e saí antes das nove. Estávamos ajustados para casar." Torna a dobrar o guardanapo pela dobra antiga. "Menti sobre a minha noite, {detective.title}; foi tudo o que menti."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação ao aro de ouro: contida; o luto e o segredo se tocam num gesto.
+      reacao_anel: {
+        fala: [
+          'Toma a ordem de serviço presa ao aro e lê. Lê outra vez. "Trinta de outubro." Devolve o aro com o papel por cima, dobrado pela dobra que trazia. "Não cheguei a vê-lo. As iniciais {g:o senhor|a senhora} leu; não precisam de mim." Volta-se para o mostrador e endireita, uma a uma, as folhas do papel com tarja de luto.',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação ao relato da Sra. Wick: confirma sem drama e encerra o assunto.
+      reacao_viela: {
+        fala: [
+          'Ouve o relato até o fim sem mover as mãos. "A Sra. Wick não jura, e faz bem: daquela janela não se vê rosto. O passo era meu. Saí pela viela porque a High Street comenta." E depois: "Há mais alguma coisa?"',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // A evasiva: objeto não é pergunta; ela não gasta palavras com o que não se perguntou.
+      evasiva: {
+        fala: [
+          'A Sra. Rooke olha o que se lhe apresenta, o tempo de o ler ou de o reconhecer, e torna a erguer os olhos. "Se nisso há pergunta, {detective.title}, faça-a."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+    },
+  },
+
+  moinho: {
+    suspeitoId: 'caleb_grey',
+    noInicial: 'abertura',
+    // Apresentar prova: a queixa dele e o livro de ordens têm reação própria;
+    // o resto recebe o dar de ombros sem largar a saca.
+    noEvasiva: 'evasiva',
+    reacoesProva: {
+      dep_queixa_grey: 'reacao_queixa',
+      ev_livro_ordens: 'reacao_livro',
+    },
+    nos: {
+      // O hub: o moinho em dia de feira; Grey responde sem parar o serviço.
+      abertura: {
+        fala: [
+          'O moinho trabalha em pleno sábado: sacas na rampa, poeira de farinha na luz da porta, o carroceiro do Finch à espera com a parelha. Caleb Grey passa com uma saca ao ombro e não a pousa para cumprimentar. "Pergunte andando, {detective.title}, que a feira não espera defunto."',
+        ],
+        opcoes: [
+          { rotulo: 'A noite de sexta-feira', vaiPara: 'paradeiro' },
+          { rotulo: 'O relojoeiro morto', vaiPara: 'queixa' },
+        ],
+      },
+
+      // O paradeiro: dado no compasso das sacas, com testemunha à mão; desemboca em alibi_grey.
+      paradeiro: {
+        fala: [
+          'A saca desce na carroça antes da resposta. "A sexta?" O vaivém não para enquanto ele a dá: [[alibi_grey]]. Aponta com o queixo o homem da carroça. "Um deles está ali. Pergunte agora, se quiser."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // A queixa: o prejuízo sem errar um xelim; desemboca em comp_grey.
+      queixa: {
+        fala: [
+          '"Morto, o homem me deve o mesmo que devia vivo." Enxuga a testa com as costas da mão. "O relógio caçador do meu pai entrou inteiro naquela loja e voltou mais leve. Quatro libras e dez xelins, e o conserto pago adiantado. Exigi pesagem diante de testemunhas e lavrei termo na delegacia, tudo antes de o homem morrer; as datas estão no papel." Sobre o que sente: [[comp_grey]].',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação à própria queixa: assume sem rodeio e mantém a soma de pé.
+      reacao_queixa: {
+        fala: [
+          'Olha o termo de longe. "Minha. Lavrada na sexta à tarde, diante do próprio Wycliffe, e assino outra vez aqui na tábua da rampa, se for preciso." Faz sinal ao carroceiro que espere. "Quatro libras e dez xelins. A queixa fica de pé até se pesar aquele relógio diante de gente."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // Reação ao livro de ordens: acha a própria linha e conta as vizinhas;
+      // a raiva de quem pagou, sem nome para apontar.
+      reacao_livro: {
+        fala: [
+          'Limpa a mão na perna antes de tocar o livro. O dedo, branco de farinha, desce a coluna e para. "Este é o meu. O relógio do meu pai, e o preço adiantado somado à margem, da letra do próprio velho." Corre os olhos pelas linhas vizinhas. "Mais dois com queixa no mesmo outono. Eu pensava que o azar era só meu." Empurra o livro de volta pela tábua. "Eu sei o que entrou e o que saiu, {detective.title}; quem pôs a mão nele, a loja que diga."',
+        ],
+        opcoes: [OUTRO_ASSUNTO],
+      },
+
+      // A evasiva: encolhe os ombros sem soltar a saca; responde do que tem papel e testemunha.
+      evasiva: {
+        fala: [
+          'Olha por cima da saca, o tempo de dois passos, e encolhe os ombros sem soltá-la. "Disso não sei, e sem papel nem testemunha não juro. Pergunte de farinha, de pesagem ou do que me devem."',
         ],
         opcoes: [OUTRO_ASSUNTO],
       },

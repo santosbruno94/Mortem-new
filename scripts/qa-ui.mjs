@@ -401,9 +401,12 @@ async function main() {
     checar('Onda 5: prova alheia cai na evasiva do personagem', (await page.locator('[data-no-dialogo="evasiva"]').count()) === 1);
     checar('Onda 5: a evasiva não confessa (voz de Silas)', (await page.locator('body').innerText()).includes('a minha parte é corda e mola'));
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'Sra. Agnes Rooke');
+    // Onda 6: Agnes e Grey agora recebem em DIÁLOGO (conversão integral) —
+    // as cartas (álibi, comportamento) nascem das falas, pelos assuntos.
+    await interrogarEExtrair(page, 'Sra. Agnes Rooke');
+    checar('Onda 6: a papelaria abre em diálogo', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'O Moinho');
+    await interrogarEExtrair(page, 'O Moinho');
     await fecharOverlay(page);
 
     await page.click('text=CONSTRUIR A ACUSAÇÃO');

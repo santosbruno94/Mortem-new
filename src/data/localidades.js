@@ -149,11 +149,8 @@ export const LOCALIDADES = [
     titulo: 'A Papelaria da High Street',
     subtitulo: 'Sra. Agnes Rooke, viúva, 58 anos',
     acoesEspeciais: [],
-    prosa: [
-      'A papelaria cheira a goma e a papel novo; o balcão reluz de cera. Sobre o mostrador, separado do resto, papel de carta com tarja de luto.',
-      'A Sra. Rooke atende de pé. Sobre a noite de sexta, a resposta vem curta: [[alibi_agnes]].',
-      'Em toda a visita, [[comp_agnes]].',
-    ],
+    // Onda 6: este nó é INTERROGATÓRIO EM DIÁLOGO — a prosa (falas, reações,
+    // termos extraíveis) vive em src/data/dialogos.js, key `papelaria`.
   },
   {
     id: 'moinho',
@@ -161,11 +158,8 @@ export const LOCALIDADES = [
     titulo: 'O Moinho de Briarstone',
     subtitulo: 'Caleb Grey, moleiro, 46 anos',
     acoesEspeciais: [],
-    prosa: [
-      'O moinho trabalha mesmo em sábado de luto alheio: sacas na rampa, o carroceiro do Finch à espera. Caleb Grey fala sem parar o serviço.',
-      'A sexta, ele a dá sem parar as sacas: [[alibi_grey]].',
-      'Sobre o morto, [[comp_grey]].',
-    ],
+    // Onda 6: este nó é INTERROGATÓRIO EM DIÁLOGO — a prosa vive em
+    // src/data/dialogos.js, key `moinho`.
   },
   {
     id: 'gabinete_pettigrew',

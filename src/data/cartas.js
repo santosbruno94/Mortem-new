@@ -420,7 +420,7 @@ export const CARTAS = [
     textoDisplay: 'Queixa do Relógio Mais Leve',
     carimboPadrao: 'Queixa formal de Caleb Grey, sexta à tarde',
     descricao:
-      'Termo lavrado na sexta: Caleb Grey, moleiro, declara que o relógio de caça do pai, saído de conserto na loja de Arthurs, "voltou mais leve do que entrou", e exige pesagem diante de testemunhas. Anexa a soma do prejuízo: quatro libras e dez xelins.',
+      'Termo lavrado na sexta: Caleb Grey, moleiro, declara que o relógio caçador do pai, saído de conserto na loja de Arthurs, "voltou mais leve do que entrou", e exige pesagem diante de testemunhas. Anexa a soma do prejuízo: quatro libras e dez xelins.',
     // A pista dupla: o rancor mais barulhento do caso é, lido de perto, o
     // registro da fraude descoberta — o móbil de outro homem.
     tagsOcultas: {
