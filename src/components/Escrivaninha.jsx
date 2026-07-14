@@ -145,6 +145,10 @@ export default function Escrivaninha() {
         ) : (
           <EventoLocalidade localidadeId={overlay.id} />
         ))}
+      {/* Diálogo embutido (Onda 6): pessoa dentro de um lugar — a árvore
+          abre por chave própria (dialogo_walter, dialogo_davey), sem nó
+          no mapa; fechar devolve à mesa (reabrir o lugar custa 0h). */}
+      {overlay?.tipo === 'dialogo' && <InterrogatorioDialogo dialogoId={overlay.id} />}
       {overlay?.tipo === 'caderneta' && <Caderneta />}
       {overlay?.tipo === 'glossario' && <ModalGlossario />}
       {overlay?.tipo === 'alibis' && <PainelAlibis />}

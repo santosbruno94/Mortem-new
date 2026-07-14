@@ -1,4 +1,5 @@
 import { formatDuracao } from '../../logic/tempo.js';
+import { obterDialogo } from '../../data/dialogos.js';
 
 // =====================================================================
 // A etiqueta de maquete de um nó — uma TAG DE PAPEL PENDENTE (amarrada
@@ -9,7 +10,9 @@ import { formatDuracao } from '../../logic/tempo.js';
 // (não no emissivo 3D) — assim não força o frameloop contínuo da maquete.
 // =====================================================================
 export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado, aoClicar, aoEntrar, aoSair }) {
-  const verbo = loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar';
+  // O verbo segue a árvore de diálogo: nó com árvore própria é interrogatório
+  // (camada visual lendo dado narrativo — o motor não participa).
+  const verbo = obterDialogo(loc.id) ? 'Interrogar' : 'Examinar';
   return (
     <span className="rotulo-tag select-none">
       {/* O cordão que amarra a etiqueta à maquete (puro enfeite). */}

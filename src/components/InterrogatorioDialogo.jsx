@@ -31,7 +31,11 @@ const ROTULOS_DOMINIO = {
 // mecanismo `[[id]]` das localidades; o motor não muda. O nó corrente é
 // estado local (reabrir começa no início); o "já perguntado" persiste no
 // store (nosVisitadosDialogo), o "já apresentada" em provasApresentadas.
-export default function InterrogatorioDialogo({ localidadeId }) {
+// Duas portas de entrada (Onda 6): `localidadeId` quando o NÓ DO MAPA é o
+// interrogatório (Silas, Agnes, Grey — conversão integral) e `dialogoId`
+// quando a pessoa vive dentro de um lugar (Walter, Davey — a árvore traz
+// `titulo`/`subtitulo` próprios e `origemLocalidade`).
+export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const detective = useJogo((s) => s.detective);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const nosVisitadosDialogo = useJogo((s) => s.nosVisitadosDialogo);
@@ -39,12 +43,14 @@ export default function InterrogatorioDialogo({ localidadeId }) {
   const provasApresentadas = useJogo((s) => s.provasApresentadas);
   const apresentarProva = useJogo((s) => s.apresentarProva);
 
-  const localidade = obterLocalidade(localidadeId);
-  const dialogo = obterDialogo(localidadeId);
+  const dialogo = obterDialogo(dialogoId || localidadeId);
+  const localidade = localidadeId ? obterLocalidade(localidadeId) : null;
   const [noAtual, setNoAtual] = useState(dialogo?.noInicial);
   const [apresentando, setApresentando] = useState(false);
   const [cartaApresentada, setCartaApresentada] = useState(null);
-  if (!localidade || !dialogo) return null;
+  if (!dialogo || (localidadeId && !localidade)) return null;
+  const titulo = localidade ? localidade.titulo : dialogo.titulo;
+  const subtitulo = localidade ? localidade.subtitulo : dialogo.subtitulo;
 
   const no = dialogo.nos[noAtual];
   const visitados = nosVisitadosDialogo[dialogo.suspeitoId] || [];
@@ -69,9 +75,12 @@ export default function InterrogatorioDialogo({ localidadeId }) {
     setApresentando(false);
   };
 
-  const personagemDaCena = PERSONAGEM_POR_LOCALIDADE[localidade.id];
-  // A saleta é da relojoaria: a planta baixa (§5.1) também sobe aqui.
-  const naRelojoaria = obterNo(localidade.id)?.grupo === 'relojoaria';
+  // O retrato segue o interrogado (suspeitoId); nas conversões antigas o
+  // mapa localidade→personagem continua valendo como reserva.
+  const personagemDaCena = dialogo.suspeitoId || PERSONAGEM_POR_LOCALIDADE[localidade?.id];
+  // A saleta é da relojoaria: a planta baixa (§5.1) também sobe aqui — só
+  // nos nós de mapa (no diálogo embutido não se anda pela planta).
+  const naRelojoaria = !!localidade && obterNo(localidade.id)?.grupo === 'relojoaria';
 
   // Confrontos autorais (`requerCarta`) seguem ocultos até a prova existir.
   const opcoesVisiveis = (no.opcoes || []).filter((op) => !op.requerCarta || temCarta(op.requerCarta));
@@ -85,11 +94,7 @@ export default function InterrogatorioDialogo({ localidadeId }) {
   );
 
   return (
-    <Overlay
-      titulo={interpolar(localidade.titulo, detective)}
-      subtitulo={localidade.subtitulo}
-      marca="dialogo"
-    >
+    <Overlay titulo={interpolar(titulo, detective)} subtitulo={subtitulo} marca="dialogo">
       {naRelojoaria && <PlantaRelojoaria localidadeAtual={localidade.id} />}
 
       {/* Retrato de quem o perito interroga — camada visual, decorativa */}

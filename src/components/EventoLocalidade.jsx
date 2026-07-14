@@ -14,6 +14,7 @@ import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
 import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
+import { DIALOGOS } from '../data/dialogos.js';
 
 // O exame 3D chega pelo mesmo chunk do three (lazy): a prosa nunca
 // espera o canvas — ela É o caminho canônico de extração.
@@ -27,6 +28,7 @@ export default function EventoLocalidade({ localidadeId }) {
   const detective = useJogo((s) => s.detective);
   const horasJogo = useJogo((s) => s.horasJogo);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
+  const abrirOverlay = useJogo((s) => s.abrirOverlay);
   // Quais pontos de interesse estão abertos (revelados). Estado local de UI:
   // a coleta em camadas é escolha do jogador, não muda o motor.
   const [pontosAbertos, setPontosAbertos] = useState({});
@@ -73,6 +75,12 @@ export default function EventoLocalidade({ localidadeId }) {
     ),
   ];
   const nRegistradas = idsExtraiveis.filter((id) => cartasRegistradas.some((c) => c.id === id)).length;
+
+  // Diálogos embutidos neste lugar (origemLocalidade): rendem um botão de
+  // conversa ao pé da prosa. Camada narrativa — o motor não participa.
+  const dialogosEmbutidos = Object.entries(DIALOGOS).filter(
+    ([, d]) => d.origemLocalidade === localidade.id
+  );
 
   const prosaEExames = (
     <>
@@ -122,6 +130,23 @@ export default function EventoLocalidade({ localidadeId }) {
       {ehCorpo && <FalaDoLegista cartas={cartasRegistradas} />}
       {ehCorpo && <NotaFrescor ipm={ipm} />}
       {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
+      {/* Diálogo embutido (Onda 6): pessoas que vivem DENTRO de um lugar
+          (Walter na estalagem, Davey na oficina) conversam por um botão —
+          o overlay 'dialogo' abre a árvore por cima da mesa, custo zero. */}
+      {dialogosEmbutidos.length > 0 && (
+        <div className="mt-5 flex flex-wrap gap-2">
+          {dialogosEmbutidos.map(([id, d]) => (
+            <button
+              key={id}
+              type="button"
+              className="botao-dialogo-local botao-mesa text-xs sm:text-sm"
+              onClick={() => abrirOverlay('dialogo', id)}
+            >
+              {d.chamada}
+            </button>
+          ))}
+        </div>
+      )}
       {idsExtraiveis.length > 0 && (
         <p className="mt-6 text-stone-400 text-xs font-serif tracking-wide">
           § {nRegistradas} de {idsExtraiveis.length} observações registradas aqui.

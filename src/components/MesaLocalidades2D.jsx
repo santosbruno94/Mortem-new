@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
+import { obterDialogo } from '../data/dialogos.js';
 import { formatDuracao } from '../logic/tempo.js';
 import CartaMesa from './CartaMesa.jsx';
 
@@ -133,7 +134,7 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
               } ${aqui ? 'ring-1 ring-latao/40' : ''}`}
             >
               <p className="text-latao-claro/80 text-[10px] tracking-[0.25em] uppercase">
-                {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
+                {obterDialogo(loc.id) ? 'Interrogar' : 'Examinar'}
                 {novo && (
                   <span className="text-amber-200 normal-case tracking-normal">
                     {' '}

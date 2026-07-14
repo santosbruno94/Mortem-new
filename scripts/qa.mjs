@@ -525,11 +525,23 @@ const hotspotsValidos =
 const marcadoresDe = (paragrafos) =>
   new Set(paragrafos.flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1])));
 const localidadesComPontos = LOCALIDADES.filter((l) => Array.isArray(l.pontos) && l.pontos.length);
+// Onda 6: cartas cobertas por um diálogo EMBUTIDO no lugar (origemLocalidade)
+// não são órfãs do ponto — nascem na fala (ex.: alibi_davey na conversa com
+// o aprendiz, dentro da oficina).
+const idsEmDialogosEmbutidos = (locId) => {
+  const ids = new Set();
+  for (const d of Object.values(DIALOGOS)) {
+    if (d.origemLocalidade !== locId) continue;
+    for (const id of marcadoresDe(Object.values(d.nos).flatMap((n) => n.fala || []))) ids.add(id);
+  }
+  return ids;
+};
 const cartasOrfasNosPontos = localidadesComPontos.flatMap((loc) => {
   const idsNosPontos = marcadoresDe(loc.pontos.flatMap((p) => p.prosa));
+  const idsEmbutidos = idsEmDialogosEmbutidos(loc.id);
   return CARTAS.filter((c) => c.localidade === loc.id)
     .map((c) => c.id)
-    .filter((id) => !idsNosPontos.has(id))
+    .filter((id) => !idsNosPontos.has(id) && !idsEmbutidos.has(id))
     .map((id) => `${loc.id}:${id}`);
 });
 const marcadoresOrfaosNosPontos = localidadesComPontos.flatMap((loc) =>
@@ -601,6 +613,29 @@ if (!dialogosIntegros) {
 }
 
 // ============================================================
+// GUARDA GLOBAL DE ALCANÇABILIDADE (Onda 6): toda carta do catálogo
+// nasce de algum [[id]] — prosa/introdução/pontos de localidade ou fala
+// de árvore de diálogo. Mover prosa entre camadas (localidade → árvore)
+// não pode deixar carta inalcançável. (ev_algor não está no catálogo:
+// nasce da medição de temperatura.)
+// ============================================================
+const todosMarcadores = new Set([
+  ...LOCALIDADES.flatMap((l) => [
+    ...marcadoresDe(l.prosa || []),
+    ...marcadoresDe(l.introducao || []),
+    ...marcadoresDe((l.pontos || []).flatMap((p) => p.prosa)),
+    ...marcadoresDe((l.prosaCondicional || []).flatMap((b) => b.paragrafos)),
+  ]),
+  ...Object.values(DIALOGOS).flatMap((d) => [
+    ...marcadoresDe(Object.values(d.nos).flatMap((n) => n.fala || [])),
+  ]),
+]);
+const cartasInalcancaveis = CARTAS.map((c) => c.id).filter((id) => !todosMarcadores.has(id));
+if (cartasInalcancaveis.length) {
+  console.log('\nALCANÇABILIDADE — cartas sem [[id]] em lugar algum:', cartasInalcancaveis.join(', '));
+}
+
+// ============================================================
 // GUARDA DA APRESENTAÇÃO EM CENA (Onda 5): apresentar ao declarante a
 // carta que o desmente ANOTA no mural a mesma ligação do barbante
 // (classificada refuta_alibi pelo motor intocado); carta alheia não
@@ -653,6 +688,7 @@ const checagens = [
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
   ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],
   ['Interrogatórios em diálogo íntegros (§7.1): requerCarta/vaiPara/[[id]] válidos, sem carta órfã', dialogosIntegros],
+  ['Alcançabilidade global (Onda 6): toda carta nasce de algum [[id]]', cartasInalcancaveis.length === 0],
   ['Apresentação em cena anota refuta_alibi no mural (Onda 5)', parCena && confrontoClassificado],
   ['Prova alheia apresentada cai na evasiva sem anotar nada (Onda 5)', soUmaLigacaoCena && apresentadasMarcadas],
 ];
