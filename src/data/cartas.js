@@ -253,7 +253,7 @@ export const CARTAS = [
     textoDisplay: 'Livro de Ordens de Serviço',
     carimboPadrao: 'Consertos reclamados na coluna de S.C.',
     descricao:
-      'O livro da bancada, aberto na semana. Três consertos reentrados com queixa no mesmo outono, todos rubricados "S.C." na coluna do executor. Na margem da última entrada, a letra miúda do morto: "pesar as caixas. Pettigrew, segunda."',
+      'O livro da bancada, aberto na semana. Três consertos reentrados com queixa no mesmo outono, todos rubricados "S.C." na coluna do executor. A letra do morto atravessa anos de páginas, miúda e firme, cada preço somado à margem e sublinhado. Na última entrada, a mesma letra, mais apertada: "pesar as caixas. Pettigrew, segunda."',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
@@ -281,7 +281,7 @@ export const CARTAS = [
     textoDisplay: 'Aro de Ouro por Gravar',
     carimboPadrao: 'Encomenda particular do relojoeiro',
     descricao:
-      'Sob o pano, um aro de ouro liso e a ordem de serviço do punho do morto: "gravar por dentro — G.A. & A.R. — pronto até 30 de outubro. Particular."',
+      'Sob o pano, um aro de ouro liso, estreito e ainda sem uso. A ordem de serviço vem presa a ele, no punho do morto e na mesma letra miúda: "gravar por dentro — G.A. & A.R. — pronto até 30 de outubro. Particular."',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',
@@ -294,7 +294,7 @@ export const CARTAS = [
     textoDisplay: 'O Hábito da Corda',
     carimboPadrao: 'Corda ao relógio de bolso todas as noites, às 23h',
     descricao:
-      'Davey, sem erguer os olhos da bancada: "O patrão dava corda no relógio do bolso às onze, antes de deitar. Todas as noites, sem faltar uma. Dizia que o de bolso guarda trinta horas, e que homem que deixa a corda acabar não merece o ofício."',
+      'Davey, os olhos erguidos do serviço: "O patrão dava corda no relógio do bolso às onze, antes de subir pra deitar. Todas as noites, sem faltar uma. Deixava eu ouvir o tique depois, dizia que o de bolso guarda trinta horas e que homem que deixa a corda acabar não merece o ofício."',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',

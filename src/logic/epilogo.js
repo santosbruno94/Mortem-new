@@ -64,6 +64,18 @@ function blocoReu(veredicto) {
   }
 }
 
+// Eco único do tema do caso: quando a cena foi encenada MOVENDO um relógio
+// para mentir a hora, o corpo — que não se adianta nem se atrasa — devolve a
+// hora verdadeira. Um verso, sem citação e sem nomear culpado, pago só quando
+// há relógio forjado E o jogador o derrubou (descuidosOk): sem isso, a hora
+// emprestada nunca foi cobrada, e o verso seria falso. Genérico: serve a
+// qualquer mostrador adiantado ou recuado para falsear o óbito.
+function blocoHoraTomada(veredicto) {
+  const dados = veredicto.dadosMonologo;
+  if (!dados.cenaEncenada || typeof dados.horaForjada !== 'number' || !dados.descuidosOk) return null;
+  return 'A hora que a mentira tomou emprestada de um relógio, o corpo cobrou de volta.';
+}
+
 // No encerramento do Erro Judiciário, o nome do verdadeiro autor é enfim
 // revelado (a retentativa acabou; a conta se apresenta inteira).
 function blocoRevelacao(veredicto) {
@@ -74,8 +86,8 @@ function blocoRevelacao(veredicto) {
 
 // ---------------- O destino dos não-acusados ----------------
 const EPILOGO_SEGREDO_EXPOSTO = [
-  (n) => `A mentira ${deQuem(n)} ficou nos autos pelo que era: vergonha, não sangue. Respondeu por ela diante de quem devia.`,
-  (n) => `O que ${comArtigo(n)} escondia entrou nos autos já explicado, e ninguém o confundiu com crime; em uma semana, a vila inteira o sabia.`,
+  (n) => `A mentira ${deQuem(n)} ficou nos autos pelo que era: vergonha, não sangue. Provou-se inocente, e o preço foi ter posto à vista, diante de estranhos, o que guardava para si.`,
+  (n) => `O que ${comArtigo(n)} escondia entrou nos autos já explicado, e ninguém o tomou por crime. A inocência ficou provada; ficou também, escrito e público, aquilo que só a vergonha guardava.`,
 ];
 const EPILOGO_SEGREDO_OCULTO = [
   (n) => `A mentira ${deQuem(n)} ficou por entender, e há de pesar-lhe mais tempo do que pesaria a verdade.`,
@@ -161,6 +173,7 @@ export function gerarEpilogo(veredicto, opcoes = {}) {
     blocos: [
       blocoReu(veredicto),
       blocoRevelacao(veredicto),
+      blocoHoraTomada(veredicto),
       ...blocosPerifericos(veredicto),
       ...blocosExplicacoes(veredicto),
       blocoPerito(veredicto, opcoes.horasSelo),
