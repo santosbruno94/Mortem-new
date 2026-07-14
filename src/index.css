@@ -802,3 +802,21 @@ body {
   .selo-carimbando { animation: none; }
   .grupo-pena:hover .pena-tinta, .grupo-pena:focus-visible .pena-tinta { animation: none; background-size: 100% 1px; }
 }
+
+/* ---------------------------------------------------------------------
+   O aviso de pouso (Onda 4): a etiqueta que anuncia a observação recém-
+   registrada e desliza em direção à mesa. Flourish curto; o componente
+   remove o nó após ~2,2s — a animação só acompanha o gesto.
+   --------------------------------------------------------------------- */
+@keyframes avisoPousar {
+  from { opacity: 0; transform: translateY(-12px); }
+  12%  { opacity: 1; transform: translateY(0); }
+  78%  { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(10px); }
+}
+.aviso-pousada {
+  animation: avisoPousar 2200ms ease-in-out forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .aviso-pousada { animation: none; }
+}

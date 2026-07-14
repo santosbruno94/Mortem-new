@@ -15,6 +15,11 @@ export default function Caderneta() {
   const conclusoes = useJogo((s) => s.conclusoes);
   const log = useJogo((s) => s.log);
   const abrirFicha = useJogo((s) => s.abrirFicha);
+  const modoPurista = useJogo((s) => s.modoPurista);
+  const alternarModoPurista = useJogo((s) => s.alternarModoPurista);
+  // No purista só a leitura DO MESTRE cala; conclusões de outra origem
+  // (se um dia existirem) continuam à vista.
+  const conclusoesVisiveis = modoPurista ? conclusoes.filter((c) => c.origem !== 'mestre') : conclusoes;
 
   return (
     <Overlay titulo="Caderneta" subtitulo="Banco de anotações — reler não custa tempo">
@@ -41,13 +46,30 @@ export default function Caderneta() {
         </ul>
       )}
 
-      {/* A leitura do legista (a "dica"): refaz-se sozinha a cada exame */}
-      <h3 className="font-serif text-latao-claro text-lg titulo-gravado mb-3">Leitura do legista</h3>
-      {conclusoes.length === 0 ? (
+      {/* A leitura do legista (a "dica"): refaz-se sozinha a cada exame.
+          Modo purista (Onda 8): a síntese cala — a Caderneta vira bloco de
+          notas, não gabarito; religar não perde nada (o dado continua). */}
+      <div className="flex items-baseline justify-between gap-3 mb-3">
+        <h3 className="font-serif text-latao-claro text-lg titulo-gravado">Leitura do legista</h3>
+        <button
+          type="button"
+          onClick={alternarModoPurista}
+          className="text-stone-400 hover:text-stone-200 text-xs underline underline-offset-2"
+        >
+          {modoPurista ? 'Tornar a pedir a leitura' : 'Dispensar a leitura'}
+        </button>
+      </div>
+      {modoPurista && (
+        <p className="text-stone-400 italic font-serif text-sm mb-8">
+          Você dispensou a leitura do legista: a janela e o mecanismo correm por sua conta.
+        </p>
+      )}
+      {!modoPurista && conclusoesVisiveis.length === 0 && (
         <p className="text-stone-400 italic font-serif text-sm mb-8">O legista ainda não tem leitura — examine o corpo.</p>
-      ) : (
+      )}
+      {conclusoesVisiveis.length > 0 && (
         <ul className="space-y-3 mb-8">
-          {conclusoes.map((c) => (
+          {conclusoesVisiveis.map((c) => (
             <li key={c.id} className="carta-pergaminho rounded-sm px-4 py-3">
               <p className="text-tinta text-sm font-serif font-bold">{c.titulo}</p>
               <p className="text-tinta-clara text-sm mt-1">{c.resumo}</p>

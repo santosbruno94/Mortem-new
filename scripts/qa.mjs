@@ -501,6 +501,10 @@ const aparenciasOk =
 const motorSemAparencia = ['logic/veredicto.js', 'logic/acusacao.js'].every(
   (f) => !/aparencia/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
+// Onda 8: o modo purista é flag de UI — o motor jamais a lê.
+const motorSemPurista = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) => !/modoPurista/.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
+);
 
 // ============================================================
 // GUARDA DA CAMADA VISUAL 3D: todo nó do mapa tem lugar e forma na
@@ -525,11 +529,29 @@ const hotspotsValidos =
 const marcadoresDe = (paragrafos) =>
   new Set(paragrafos.flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1])));
 const localidadesComPontos = LOCALIDADES.filter((l) => Array.isArray(l.pontos) && l.pontos.length);
+// Onda 6: cartas cobertas por um diálogo EMBUTIDO no lugar (origemLocalidade)
+// não são órfãs do ponto — nascem na fala (ex.: alibi_davey na conversa com
+// o aprendiz, dentro da oficina).
+const idsEmDialogosEmbutidos = (locId) => {
+  const ids = new Set();
+  for (const d of Object.values(DIALOGOS)) {
+    if (d.origemLocalidade !== locId) continue;
+    for (const id of marcadoresDe(Object.values(d.nos).flatMap((n) => n.fala || []))) ids.add(id);
+  }
+  return ids;
+};
 const cartasOrfasNosPontos = localidadesComPontos.flatMap((loc) => {
-  const idsNosPontos = marcadoresDe(loc.pontos.flatMap((p) => p.prosa));
+  // Onda 7: micro-gestos também extraem — a carta de um gesto (do ponto ou
+  // da localidade) não é órfã.
+  const idsNosPontos = new Set([
+    ...marcadoresDe(loc.pontos.flatMap((p) => p.prosa)),
+    ...loc.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)),
+    ...(loc.gestos || []).map((g) => g.cartaId),
+  ]);
+  const idsEmbutidos = idsEmDialogosEmbutidos(loc.id);
   return CARTAS.filter((c) => c.localidade === loc.id)
     .map((c) => c.id)
-    .filter((id) => !idsNosPontos.has(id))
+    .filter((id) => !idsNosPontos.has(id) && !idsEmbutidos.has(id))
     .map((id) => `${loc.id}:${id}`);
 });
 const marcadoresOrfaosNosPontos = localidadesComPontos.flatMap((loc) =>
@@ -557,6 +579,8 @@ const requerCartasInvalidas = [];
 const vaiParaInvalidos = [];
 const marcadoresDialogoInvalidos = [];
 const cartasOrfasNoDialogo = [];
+const reacoesProvaInvalidas = [];
+const evasivasFaltando = [];
 for (const [localidadeId, dialogo] of Object.entries(DIALOGOS)) {
   const idsNos = new Set(Object.keys(dialogo.nos));
   for (const [noId, no] of Object.entries(dialogo.nos)) {
@@ -566,6 +590,14 @@ for (const [localidadeId, dialogo] of Object.entries(DIALOGOS)) {
       if (!idsNos.has(op.vaiPara)) vaiParaInvalidos.push(`${localidadeId}:${noId}→${op.vaiPara}`);
     }
   }
+  // Onda 5: toda reação de prova referencia carta existente e nó da MESMA
+  // árvore; quem tem reacoesProva precisa de um nó de evasiva válido (é a
+  // rede que apara qualquer carta sem reação própria).
+  for (const [cartaId, noDestino] of Object.entries(dialogo.reacoesProva || {})) {
+    if (!obterDefinicaoCarta(cartaId)) reacoesProvaInvalidas.push(`${localidadeId}:${cartaId}`);
+    if (!idsNos.has(noDestino)) reacoesProvaInvalidas.push(`${localidadeId}:${cartaId}→${noDestino}`);
+  }
+  if (dialogo.reacoesProva && !idsNos.has(dialogo.noEvasiva)) evasivasFaltando.push(localidadeId);
   const marcadoresArvore = marcadoresDe(Object.values(dialogo.nos).flatMap((n) => n.fala || []));
   for (const id of marcadoresArvore) {
     if (!obterDefinicaoCarta(id)) marcadoresDialogoInvalidos.push(`${localidadeId}:${id}`);
@@ -578,13 +610,69 @@ const dialogosIntegros =
   requerCartasInvalidas.length === 0 &&
   vaiParaInvalidos.length === 0 &&
   marcadoresDialogoInvalidos.length === 0 &&
-  cartasOrfasNoDialogo.length === 0;
+  cartasOrfasNoDialogo.length === 0 &&
+  reacoesProvaInvalidas.length === 0 &&
+  evasivasFaltando.length === 0;
 if (!dialogosIntegros) {
   console.log('\nDIÁLOGOS — requerCarta inexistente:', requerCartasInvalidas.join(', ') || '—');
   console.log('DIÁLOGOS — vaiPara sem nó:', vaiParaInvalidos.join(', ') || '—');
   console.log('DIÁLOGOS — marcador sem carta:', marcadoresDialogoInvalidos.join(', ') || '—');
   console.log('DIÁLOGOS — cartas inalcançáveis na árvore:', cartasOrfasNoDialogo.join(', ') || '—');
+  console.log('DIÁLOGOS — reacoesProva inválidas:', reacoesProvaInvalidas.join(', ') || '—');
+  console.log('DIÁLOGOS — árvore com reações sem nó de evasiva:', evasivasFaltando.join(', ') || '—');
 }
+
+// ============================================================
+// GUARDA GLOBAL DE ALCANÇABILIDADE (Onda 6): toda carta do catálogo
+// nasce de algum [[id]] — prosa/introdução/pontos de localidade ou fala
+// de árvore de diálogo. Mover prosa entre camadas (localidade → árvore)
+// não pode deixar carta inalcançável. (ev_algor não está no catálogo:
+// nasce da medição de temperatura.)
+// ============================================================
+const todosMarcadores = new Set([
+  ...LOCALIDADES.flatMap((l) => [
+    ...marcadoresDe(l.prosa || []),
+    ...marcadoresDe(l.introducao || []),
+    ...marcadoresDe((l.pontos || []).flatMap((p) => p.prosa)),
+    ...marcadoresDe((l.prosaCondicional || []).flatMap((b) => b.paragrafos)),
+    // Onda 7: cartas extraídas por micro-gesto (da localidade ou de ponto).
+    ...(l.gestos || []).map((g) => g.cartaId),
+    ...(l.pontos || []).flatMap((p) => (p.gestos || []).map((g) => g.cartaId)),
+  ]),
+  ...Object.values(DIALOGOS).flatMap((d) => [
+    ...marcadoresDe(Object.values(d.nos).flatMap((n) => n.fala || [])),
+  ]),
+]);
+const cartasInalcancaveis = CARTAS.map((c) => c.id).filter((id) => !todosMarcadores.has(id));
+if (cartasInalcancaveis.length) {
+  console.log('\nALCANÇABILIDADE — cartas sem [[id]] em lugar algum:', cartasInalcancaveis.join(', '));
+}
+
+// ============================================================
+// GUARDA DA APRESENTAÇÃO EM CENA (Onda 5): apresentar ao declarante a
+// carta que o desmente ANOTA no mural a mesma ligação do barbante
+// (classificada refuta_alibi pelo motor intocado); carta alheia não
+// anota nada (cai na evasiva) — e ambas marcam o "já apresentada".
+// ============================================================
+reiniciar();
+s().viajarPara('interrogatorio_silas');
+s().extrairCarta('alibi_silas');
+s().viajarPara('estalagem');
+s().extrairCarta('corrob_estalajadeiro');
+s().extrairCarta('ev_registro_estalagem'); // vestígio de WALTER — não toca Silas
+s().apresentarProva('silas_crane', 'corrob_estalajadeiro'); // desmente o paradeiro dele
+s().apresentarProva('silas_crane', 'ev_registro_estalagem'); // evasiva: nada anotado
+const ligacoesCena = s().acusacao.ligacoes;
+const parCena = ligacoesCena.some(
+  (l) =>
+    [l.de, l.para].includes('alibi_silas') && [l.de, l.para].includes('corrob_estalajadeiro')
+);
+const soUmaLigacaoCena = ligacoesCena.length === 1;
+const analiseCena = analisarLigacoes(s().acusacao, s().cartasRegistradas);
+const confrontoClassificado = [...analiseCena.refutaAlibi.values()].some(
+  (v) => v.alibi.id === 'alibi_silas'
+);
+const apresentadasMarcadas = (s().provasApresentadas.silas_crane || []).length === 2;
 
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
@@ -609,10 +697,14 @@ const checagens = [
   ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
+  ['Modo purista fora do motor: veredicto/acusação não leem a flag (Onda 8)', motorSemPurista],
   ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
   ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],
   ['Interrogatórios em diálogo íntegros (§7.1): requerCarta/vaiPara/[[id]] válidos, sem carta órfã', dialogosIntegros],
+  ['Alcançabilidade global (Onda 6): toda carta nasce de algum [[id]]', cartasInalcancaveis.length === 0],
+  ['Apresentação em cena anota refuta_alibi no mural (Onda 5)', parCena && confrontoClassificado],
+  ['Prova alheia apresentada cai na evasiva sem anotar nada (Onda 5)', soUmaLigacaoCena && apresentadasMarcadas],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

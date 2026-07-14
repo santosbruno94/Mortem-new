@@ -16,11 +16,18 @@ export const LOCALIDADES = [
     titulo: 'O Corpo — Escritório dos Fundos',
     subtitulo: 'Sr. Geoffrey Arthurs, relojoeiro, 61 anos',
     acoesEspeciais: ['termometro'],
+    // Micro-gestos periciais (Onda 7): o input coincide com o gesto do perito
+    // — voltar o corpo e dar corda ao relógio extraem as MESMAS cartas que os
+    // antigos termos em negrito (os hotspots do corpo 3D seguem redundantes).
+    gestos: [
+      { id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'ev_livores' },
+      { id: 'gesto_corda_relogio', rotulo: 'Dar corda ao relógio do morto', cartaId: 'ev_relogio_bolso' },
+    ],
     prosa: [
       'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O Delegado Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
-      'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. Voltado o corpo com o auxílio do guarda, veem-se [[ev_livores]], espalhadas também pela face posterior das pernas.',
+      'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. O guarda espera a ordem para voltar o corpo.',
       'Sob o ângulo esquerdo do maxilar abre-se uma [[ev_ferida]]. Afastado o colarinho, mostram-se [[ev_reacao_vital]]; à lente, no fundo do canal, [[ev_residuo_ferida]].',
-      'Na corrente do colete pende um [[ev_relogio_bolso]]. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar oportuno medir a temperatura do corpo.',
+      'Na corrente do colete pende um relógio de bolso de tampa fechada, mudo. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar oportuno medir a temperatura do corpo.',
     ],
   },
   {
@@ -38,8 +45,13 @@ export const LOCALIDADES = [
       {
         id: 'pt_cena_lareira',
         rotulo: 'A lareira',
+        // Micro-gesto (Onda 7): contar os entalhes da roda é gesto de perito,
+        // não leitura — o botão extrai ev_maquinismo.
+        gestos: [
+          { id: 'gesto_contar_entalhes', rotulo: 'Contar os entalhes da roda', cartaId: 'ev_maquinismo' },
+        ],
         prosa: [
-          'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.title}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo; ali dentro, a [[ev_maquinismo]]. Na repisa, um cachimbo de barro pousado de lado e a cinza por raspar na grelha.',
+          'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.title}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo até a roda de contagem. Na repisa, um cachimbo de barro pousado de lado e a cinza por raspar na grelha.',
         ],
       },
       {
@@ -98,14 +110,9 @@ export const LOCALIDADES = [
           'Sob a bancada grande corre uma fileira de gavetas; a mais funda range ao abrir e cheira a metal e a graxa velha. Dentro, sob um retalho de camurça, junto a molas soltas e a um envelope de peças, um [[ev_anel_encomenda]].',
         ],
       },
-      {
-        id: 'pt_oficina_aprendiz',
-        rotulo: 'O aprendiz',
-        prosa: [
-          'Davey Tull varre um chão já varrido e não larga a vassoura. Perguntado pelos costumes do patrão, ergue os olhos, solto: "O patrão punha o relógio consertado no meu ouvido, pra eu ouvir se o compasso saíra certo. Dizia que máquina bem posta respira." E conta [[dep_habito_corda]]. Perguntado pela noite de sexta, baixa-os para o serviço e dá [[alibi_davey]]. Depois torna a varrer o mesmo canto.',
-        ],
-      },
     ],
+    // Onda 6: Davey conversa em diálogo próprio (dialogo_davey, botão ao pé
+    // da prosa) — o hábito da corda e o álibi dele nascem lá, não num ponto.
   },
   {
     id: 'interrogatorio_silas',
@@ -137,9 +144,10 @@ export const LOCALIDADES = [
     titulo: 'A Estalagem — The Wheatsheaf',
     subtitulo: 'Walter Arthurs, hóspede do quarto nº 3',
     acoesEspeciais: [],
+    // Onda 6: Walter conversa em diálogo próprio (dialogo_walter, botão ao pé
+    // da prosa) — o álibi dele nasce lá. A casa e o estalajadeiro ficam aqui.
     prosa: [
-      'The Wheatsheaf tem pátio de carroças, escada que range e um livro de hóspedes gordo de anos. Walter Arthurs desce à sala sem casaco, a barba de ontem por fazer.',
-      '"Os meus negócios vão mal, e disso nunca fiz segredo. Da herança falem os outros." Sobre a véspera, dá o seu álibi: [[alibi_walter]].',
+      'The Wheatsheaf tem pátio de carroças e um livro de hóspedes gordo de anos. Walter Arthurs está hospedado no quarto nº 3; desce à sala a um recado.',
       'O estalajadeiro empresta o [[ev_registro_estalagem]] sem fazer perguntas, e responde às que lhe fazem: [[corrob_estalajadeiro]].',
     ],
   },
@@ -149,11 +157,8 @@ export const LOCALIDADES = [
     titulo: 'A Papelaria da High Street',
     subtitulo: 'Sra. Agnes Rooke, viúva, 58 anos',
     acoesEspeciais: [],
-    prosa: [
-      'A papelaria cheira a goma e a papel novo; o balcão reluz de cera. Sobre o mostrador, separado do resto, papel de carta com tarja de luto.',
-      'A Sra. Rooke atende de pé. Sobre a noite de sexta, a resposta vem curta: [[alibi_agnes]].',
-      'Em toda a visita, [[comp_agnes]].',
-    ],
+    // Onda 6: este nó é INTERROGATÓRIO EM DIÁLOGO — a prosa (falas, reações,
+    // termos extraíveis) vive em src/data/dialogos.js, key `papelaria`.
   },
   {
     id: 'moinho',
@@ -161,11 +166,8 @@ export const LOCALIDADES = [
     titulo: 'O Moinho de Briarstone',
     subtitulo: 'Caleb Grey, moleiro, 46 anos',
     acoesEspeciais: [],
-    prosa: [
-      'O moinho trabalha mesmo em sábado de luto alheio: sacas na rampa, o carroceiro do Finch à espera. Caleb Grey fala sem parar o serviço.',
-      'A sexta, ele a dá sem parar as sacas: [[alibi_grey]].',
-      'Sobre o morto, [[comp_grey]].',
-    ],
+    // Onda 6: este nó é INTERROGATÓRIO EM DIÁLOGO — a prosa vive em
+    // src/data/dialogos.js, key `moinho`.
   },
   {
     id: 'gabinete_pettigrew',

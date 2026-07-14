@@ -14,6 +14,7 @@ import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
 import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
+import { DIALOGOS } from '../data/dialogos.js';
 
 // O exame 3D chega pelo mesmo chunk do three (lazy): a prosa nunca
 // espera o canvas — ela É o caminho canônico de extração.
@@ -27,6 +28,7 @@ export default function EventoLocalidade({ localidadeId }) {
   const detective = useJogo((s) => s.detective);
   const horasJogo = useJogo((s) => s.horasJogo);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
+  const abrirOverlay = useJogo((s) => s.abrirOverlay);
   // Quais pontos de interesse estão abertos (revelados). Estado local de UI:
   // a coleta em camadas é escolha do jogador, não muda o motor.
   const [pontosAbertos, setPontosAbertos] = useState({});
@@ -64,15 +66,27 @@ export default function EventoLocalidade({ localidadeId }) {
   // Contador de esgotamento (regalia do caso-escola): quantas observações
   // esta localidade oferece e quantas já estão na mesa. O procedural pode
   // omitir — a contagem é leitura dos marcadores [[id]] da prosa, não regra.
+  // Os micro-gestos (Onda 7) entram na união: gesto também é observação.
   const fonteProsa = temPontos ? localidade.pontos.flatMap((p) => p.prosa) : localidade.prosa || [];
+  const idsGestos = [
+    ...(localidade.gestos || []).map((g) => g.cartaId),
+    ...(temPontos ? localidade.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)) : []),
+  ];
   const idsExtraiveis = [
     ...new Set(
       fonteProsa
         .flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))
         .concat(localidade.acoesEspeciais.includes('termometro') ? ['ev_algor'] : [])
+        .concat(idsGestos)
     ),
   ];
   const nRegistradas = idsExtraiveis.filter((id) => cartasRegistradas.some((c) => c.id === id)).length;
+
+  // Diálogos embutidos neste lugar (origemLocalidade): rendem um botão de
+  // conversa ao pé da prosa. Camada narrativa — o motor não participa.
+  const dialogosEmbutidos = Object.entries(DIALOGOS).filter(
+    ([, d]) => d.origemLocalidade === localidade.id
+  );
 
   const prosaEExames = (
     <>
@@ -88,7 +102,10 @@ export default function EventoLocalidade({ localidadeId }) {
           <div className="space-y-2">
             {localidade.pontos.map((ponto) => {
               const aberto = !!pontosAbertos[ponto.id];
-              const idsPonto = idsDoTexto(ponto.prosa);
+              const idsPonto = [
+                ...idsDoTexto(ponto.prosa),
+                ...(ponto.gestos || []).map((g) => g.cartaId),
+              ];
               const nReg = idsPonto.filter((id) => cartasRegistradas.some((c) => c.id === id)).length;
               return (
                 <div key={ponto.id} data-ponto={ponto.id} className="ponto-bloco">
@@ -105,6 +122,9 @@ export default function EventoLocalidade({ localidadeId }) {
                   {aberto && (
                     <div className="ponto-corpo space-y-3">
                       {ponto.prosa.map((t, i) => renderParagrafo(t, `${ponto.id}_${i}`))}
+                      {(ponto.gestos || []).map((g) => (
+                        <GestoPericial key={g.id} gesto={g} />
+                      ))}
                     </div>
                   )}
                 </div>
@@ -119,9 +139,35 @@ export default function EventoLocalidade({ localidadeId }) {
           {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
         </div>
       )}
+      {/* Micro-gestos da localidade (Onda 7): o verbo encosta na ficção —
+          voltar o corpo, dar corda — no espírito do termômetro. */}
+      {(localidade.gestos || []).length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {localidade.gestos.map((g) => (
+            <GestoPericial key={g.id} gesto={g} />
+          ))}
+        </div>
+      )}
       {ehCorpo && <FalaDoLegista cartas={cartasRegistradas} />}
       {ehCorpo && <NotaFrescor ipm={ipm} />}
       {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
+      {/* Diálogo embutido (Onda 6): pessoas que vivem DENTRO de um lugar
+          (Walter na estalagem, Davey na oficina) conversam por um botão —
+          o overlay 'dialogo' abre a árvore por cima da mesa, custo zero. */}
+      {dialogosEmbutidos.length > 0 && (
+        <div className="mt-5 flex flex-wrap gap-2">
+          {dialogosEmbutidos.map(([id, d]) => (
+            <button
+              key={id}
+              type="button"
+              className="botao-dialogo-local botao-mesa text-xs sm:text-sm"
+              onClick={() => abrirOverlay('dialogo', id)}
+            >
+              {d.chamada}
+            </button>
+          ))}
+        </div>
+      )}
       {idsExtraiveis.length > 0 && (
         <p className="mt-6 text-stone-400 text-xs font-serif tracking-wide">
           § {nRegistradas} de {idsExtraiveis.length} observações registradas aqui.
@@ -148,9 +194,11 @@ export default function EventoLocalidade({ localidadeId }) {
         <div className="lg:grid lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-6 lg:items-start">
           <div className="h-48 sm:h-56 lg:h-80 lg:sticky lg:top-2 mb-4 lg:mb-0 rounded-sm border border-stone-800 bg-stone-950/60 overflow-hidden">
             <Cena3DBoundary fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">— a mesa de exame segue na prosa —</div>}>
-              <Suspense fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">a mesa de exame prepara-se…</div>}>
-                <CorpoCanvas ipm={ipm} />
-              </Suspense>
+              {(aoPerderContexto) => (
+                <Suspense fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">a mesa de exame prepara-se…</div>}>
+                  <CorpoCanvas ipm={ipm} aoPerderContexto={aoPerderContexto} />
+                </Suspense>
+              )}
             </Cena3DBoundary>
           </div>
           <div>{prosaEExames}</div>
@@ -168,17 +216,42 @@ export default function EventoLocalidade({ localidadeId }) {
 // No procedural não há vozMestre nas cartas: este bloco fica vazio e o
 // jogador, já perito, lê o corpo por conta própria.
 // Visual: aparte com filete de latão à esquerda e fala em serif itálico.
+// Micro-gesto pericial (Onda 7): botão-gesto no espírito do "Medir
+// temperatura" — o clique É o gesto do perito e extrai a carta pelo MESMO
+// extrairCarta dos termos (motor intocado). Feito = a carta está na mesa.
+function GestoPericial({ gesto }) {
+  const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
+  const extrairCarta = useJogo((s) => s.extrairCarta);
+  const feito = cartasRegistradas.some((c) => c.id === gesto.cartaId);
+  return (
+    <button
+      type="button"
+      className={`gesto-pericial botao-mesa text-xs sm:text-sm ${feito ? 'botao-mesa--quieto' : ''}`}
+      data-feito={feito ? '' : undefined}
+      disabled={feito}
+      onClick={() => extrairCarta(gesto.cartaId)}
+    >
+      {gesto.rotulo}
+      {feito && <span className="text-stone-400"> · feito</span>}
+    </button>
+  );
+}
+
 function FalaDoLegista({ cartas }) {
+  // Modo purista (Onda 8): a SÍNTESE (janela/mecanismo) cala; os apartes
+  // vozMestre por carta ficam — são observação diegética, não conclusão.
+  const modoPurista = useJogo((s) => s.modoPurista);
   const asides = cartas.filter((c) => c.localidade === 'corpo' && c.vozMestre);
   const { tempo, causa } = falaDoMestre(lerCorpo(cartas));
-  if (asides.length === 0 && !tempo && !causa) return null;
+  const sintese = !modoPurista && (tempo || causa);
+  if (asides.length === 0 && !sintese) return null;
   return (
     <div className="mt-5 border-l-2 border-latao/70 pl-4 space-y-2">
       <p className="text-rotulo uppercase text-latao-claro/70">O legista, examinando</p>
       {asides.map((c) => (
         <p key={c.id} className="font-serif italic text-stone-200 text-sm leading-relaxed">“{c.vozMestre}”</p>
       ))}
-      {(tempo || causa) && (
+      {sintese && (
         <div className="pt-2 mt-1 border-t border-latao/30 space-y-1">
           {tempo && <p className="font-serif italic text-amber-100/90 text-sm leading-relaxed">“{tempo}”</p>}
           {causa && <p className="font-serif italic text-amber-100/90 text-sm leading-relaxed">“{causa}”</p>}

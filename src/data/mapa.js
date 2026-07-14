@@ -123,7 +123,7 @@ export const LEADS_DESBLOQUEIO = [
   {
     cartaId: 'ev_livro_ordens',
     revelaNo: 'gabinete_pettigrew',
-    nota: 'A margem do livro de ordens marca: "Pettigrew, segunda" — o procurador de Moorford.',
+    nota: 'A última entrada do livro de ordens marca: "Pettigrew, segunda" — o procurador de Moorford.',
   },
 ];
 

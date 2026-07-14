@@ -2,6 +2,8 @@ import { useMemo, useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
+import { useJogo } from '../../store/jogo.js';
+import { janelaAcesa, chamineFumega } from '../../data/mapa_espacial.js';
 import RotuloNo from './RotuloNo.jsx';
 
 // =====================================================================
@@ -68,6 +70,10 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
   const grupo = useRef();
   const lampadas = useRef([]);
   const [hover, setHover] = useState(false);
+  // A vila respira com a hora (Onda 9): janelas acendem por faixa horária
+  // (determinístico, hash por prédio+índice) e a chaminé fumega nas horas
+  // frias. Leitura de apresentação — o motor não participa.
+  const horasJogo = useJogo((s) => s.horasJogo);
   const escala = useRef(novo ? 0.01 : 1);
   const alturaAtual = useRef(0.11);
   const invalidate = useThree((s) => s.invalidate);
@@ -95,11 +101,14 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
         precisa = true;
       }
     }
-    // Os lampiões queimam conforme a hora (o ciclo de luz escreve luzRef.lamp).
+    // Os lampiões queimam conforme a hora (o ciclo de luz escreve luzRef.lamp)
+    // — mas só nas janelas ACESAS àquela hora (Onda 9): de dia apagam, ao
+    // crepúsculo acendem uma a uma, na madrugada a vila dorme.
     const lamp = luzRef?.current?.lamp ?? 0.2;
-    for (const m of lampadas.current) {
+    for (let i = 0; i < lampadas.current.length; i++) {
+      const m = lampadas.current[i];
       if (!m) continue;
-      const alvo = 0.5 + lamp * 1.7;
+      const alvo = janelaAcesa(loc.id, i, horasJogo) ? 0.5 + lamp * 1.7 : 0.04;
       if (Math.abs(m.emissiveIntensity - alvo) > 0.01) {
         m.emissiveIntensity = alvo;
         precisa = true;
@@ -156,6 +165,19 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
           <meshStandardMaterial color={forma.corParede} flatShading />
         </mesh>
       ))}
+
+      {/* Fumaça nas horas frias (Onda 9): três novelos translúcidos e
+          ESTÁTICOS sobre a primeira chaminé — nada anima (frameloop demand). */}
+      {forma.chamines?.length > 0 && chamineFumega(loc.id, horasJogo) && (
+        <group position={[forma.chamines[0].x, forma.h + forma.chamines[0].alt, forma.chamines[0].z]}>
+          {[0, 1, 2].map((i) => (
+            <mesh key={i} position={[i * 0.025, 0.09 + i * 0.11, i * -0.01]}>
+              <sphereGeometry args={[0.045 + i * 0.02, 6, 6]} />
+              <meshStandardMaterial color="#9a9184" transparent opacity={0.3 - i * 0.08} flatShading />
+            </mesh>
+          ))}
+        </group>
+      )}
 
       {/* Marquise da relojoaria: o toldo sobre a vitrine (primitiva inclinada) */}
       {forma.marquise && (

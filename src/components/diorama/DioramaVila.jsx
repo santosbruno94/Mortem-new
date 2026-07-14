@@ -12,6 +12,7 @@ import {
 } from '../../data/mapa_espacial.js';
 import Predio from './Predio.jsx';
 import PinoPerito from './PinoPerito.jsx';
+import GuardaDelegacia from './GuardaDelegacia.jsx';
 
 // =====================================================================
 // O DIORAMA DA VILA — a maquete de papel pousada sobre a escrivaninha
@@ -28,9 +29,12 @@ function CameraIsometrica({ moorfordVisivel }) {
   const size = useThree((s) => s.size);
   const invalidate = useThree((s) => s.invalidate);
   useEffect(() => {
-    const larguraCena = moorfordVisivel ? 13.6 : 9.6;
+    // A largura precisa cobrir a vila INTEIRA (corpo a −4,7 … moinho a +4,6,
+    // mais os prédios): em tela estreita o zoom é limitado pela largura e um
+    // enquadramento curto cortava O Moinho (P2 do playtest mobile).
+    const larguraCena = moorfordVisivel ? 13.6 : 12.4;
     const alturaCena = moorfordVisivel ? 5.8 : 5.1;
-    const centroX = moorfordVisivel ? MAQUETE.centroX : -0.9;
+    const centroX = moorfordVisivel ? MAQUETE.centroX : 0;
     camera.zoom = Math.min(size.width / larguraCena, size.height / alturaCena);
     camera.position.set(centroX + 2.5, 8.5, 11.5);
     camera.lookAt(centroX, 0.95, 0.1);
@@ -126,11 +130,13 @@ function EstradaMoorford() {
   );
 }
 
-export default function DioramaVila({ aoAbrirNo }) {
+export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
   const overlayAberto = useJogo((s) => s.overlay) !== null;
+  // Vida na maquete (Onda 9): o guarda da delegacia segue o turno do relógio.
+  const horasJogo = useJogo((s) => s.horasJogo);
 
   // Objeto compartilhado do ciclo de luz (lido pelos lampiões dos prédios).
   const luzRef = useRef({ lamp: 0.2 });
@@ -165,6 +171,15 @@ export default function DioramaVila({ aoAbrirNo }) {
       dpr={[1, 2]}
       gl={{ antialias: true, powerPreference: 'low-power' }}
       camera={{ zoom: 90, position: [MAQUETE.centroX + 5, 8.5, 11], near: 0.1, far: 60 }}
+      onCreated={({ gl }) => {
+        // O contexto WebGL pode morrer após longa inatividade da aba (P3):
+        // em vez de deixar a maquete preta, cede ao fallback 2D do
+        // guarda-corpo (Cena3DBoundary).
+        gl.domElement.addEventListener('webglcontextlost', (e) => {
+          e.preventDefault();
+          aoPerderContexto?.();
+        });
+      }}
     >
       <CameraIsometrica moorfordVisivel={moorfordVisivel} />
       <LuzDoDia luzRef={luzRef} />
@@ -201,6 +216,9 @@ export default function DioramaVila({ aoAbrirNo }) {
           />
         );
       })}
+
+      {/* O guarda à porta da delegacia (dia) / a lanterna do umbral (noite) */}
+      {nosDesbloqueados.includes('delegacia') && <GuardaDelegacia horasJogo={horasJogo} />}
 
       {/* O pino do perito: marca o nó atual e anima o trajeto na viagem */}
       {posAtual && (

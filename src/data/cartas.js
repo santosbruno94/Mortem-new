@@ -140,7 +140,7 @@ export const CARTAS = [
     textoDisplay: 'Relógio de Bolso Parado',
     carimboPadrao: 'Relógio do morto parado às 05h05, corda no fim',
     descricao:
-      'Na corrente do colete, o relógio do morto: vidro inteiro, máquina sã, os ponteiros nas cinco e cinco. A coroa gira folgada, volta após volta, sem que nada dentro responda.',
+      'Na corrente do colete, o relógio do morto: aberta a tampa, vidro inteiro, máquina sã, os ponteiros nas cinco e cinco — anotados antes de se tocar na coroa. A coroa resiste e vai-se enchendo; a poucas voltas, o tique retoma.',
     vozMestre:
       'Mola vazia, não partida: parou por falta de corda. Estes guardam trinta horas de marcha — a hora do mostrador fica a trinta horas da última vez que uma mão lhe deu corda.',
     // Âncora DURÁVEL de teto (rotina interrompida): o hábito da corda às 23h
@@ -160,7 +160,7 @@ export const CARTAS = [
     textoDisplay: 'Relógio de Lareira Esmagado',
     carimboPadrao: 'Relógio Parado às 08h45',
     descricao:
-      'De perto, o vidro cedeu para dentro e a caixa abriu de um lado só. Os ponteiros descansam num quarto para as nove, sobre algarismos pintados a ouro.',
+      'De perto, o vidro cedeu para dentro e a caixa abriu de um lado só; o rebordo do vidro leva um filete dourado, meio comido do uso. Os ponteiros descansam num quarto para as nove, sobre algarismos pintados a ouro.',
     tagsOcultas: {
       dominio: 'ambiental',
       subDominio: 'cronologia_aparente',
@@ -420,7 +420,7 @@ export const CARTAS = [
     textoDisplay: 'Queixa do Relógio Mais Leve',
     carimboPadrao: 'Queixa formal de Caleb Grey, sexta à tarde',
     descricao:
-      'Termo lavrado na sexta: Caleb Grey, moleiro, declara que o relógio de caça do pai, saído de conserto na loja de Arthurs, "voltou mais leve do que entrou", e exige pesagem diante de testemunhas. Anexa a soma do prejuízo: quatro libras e dez xelins.',
+      'Termo lavrado na sexta: Caleb Grey, moleiro, declara que o relógio caçador do pai, saído de conserto na loja de Arthurs, "voltou mais leve do que entrou", e exige pesagem diante de testemunhas. Anexa a soma do prejuízo: quatro libras e dez xelins.',
     // A pista dupla: o rancor mais barulhento do caso é, lido de perto, o
     // registro da fraude descoberta — o móbil de outro homem.
     tagsOcultas: {

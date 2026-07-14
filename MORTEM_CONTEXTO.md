@@ -320,14 +320,20 @@ de desenhar uma Verdade de Ouro nova.
 
 ### 6.2 A Ficha de Coleta (a evidência se apresenta no ato)
 
-Extrair uma evidência **apresenta o que ela é, na hora**. Ao clicar num termo em
-negrito — ou no corpo 3D/hotspots — a carta se registra e sobe uma **Ficha de Coleta**
-por cima do local (estilo etiqueta de exposição / laudo de época):
+Extrair uma evidência registra a carta; **só a primeira observação do caso** sobe em
+**Ficha de Coleta** por cima do local (aprende-se o gesto — a ficha traz uma
+linha-tutorial avisando da mudança). As demais **pousam sozinhas na mesa**, anunciadas
+por um **aviso de pouso** no pé da tela (`AvisoCartaPousada.jsx`, `[data-aviso-pousada]`,
+clicável para abrir a ficha; a carta recém-pousada ganha um anel de destaque na mesa).
+Decisão do playtest de 14/07/2026: o "Arquivar na mesa" obrigatório somava ~72 cliques
+mortos nas 36 observações.
+
+A ficha em si não mudou (estilo etiqueta de exposição / laudo de época):
 `textoDisplay`, a **descrição completa** (o exame de perto), a `vozMestre` em itálico
 quando a carta a tem, o carimbo, a hora do registro (`formatRelogio`) e, quando existe,
 a ponte "§ termo, no Glossário" (`verbeteParaCarta`). Botão único, **"Arquivar na
 mesa"**, fecha a ficha e devolve a carta à superfície (o som de papel toca na abertura
-da ficha, não na extração).
+da ficha e no aviso de pouso, não na extração).
 
 A ficha é **consulta de custo zero** e reabre a qualquer momento: clicar numa carta
 pousada na mesa a reabre; dentro do Mural da Acusação, um "§" discreto no canto da
@@ -374,13 +380,24 @@ raios: cada raio abre uma fala e volta ao leque. Navegar não custa tempo (reló
 e **reler nós já visitados é livre**; o "já perguntado" persiste no store
 (`nosVisitadosDialogo` por suspeito — dado puro serializável, que o motor jamais lê).
 
-**A mecânica do confronto** é o elo que faltava entre a mesa e as pessoas. Uma opção com
-`requerCarta` **só aparece quando a carta está registrada** ("Apresentar: O Quarto Cinco
-às Escuras"); apresentá-la abre um ramo de **reação observável, nunca confissão** — o
-veredicto continua no mural. No vertical slice, Silas Crane (o réu) estreia com dois
-confrontos: o registro da estalagem (`corrob_estalajadeiro`, que fura o "recolhi-me às
-oito") e o livro de ordens (`ev_livro_ordens`, a coluna "S.C."), cada um reenquadrado por
-ele com a calma da bancada.
+**A mecânica do confronto** é o elo que faltava entre a mesa e as pessoas — e desde a
+Onda 5 (pós-playtest de 14/07/2026) é **universal**: no hub de cada árvore, o seletor
+**"Apresentar uma prova…"** aceita **qualquer carta registrada**. Cartas que tocam o
+interrogado levam a reações próprias (`reacoesProva: { [cartaId]: noId }`); todo o
+resto cai no **nó de evasiva** da voz do personagem (`noEvasiva`, obrigatório quando há
+`reacoesProva`). O seletor **não telegrafa** quais cartas "queimam" — só marca as já
+apresentadas (`provasApresentadas` no store, por suspeito). Toda reação é **observável,
+nunca confissão** — o veredicto continua no mural. A forma antiga (`requerCarta` na
+opção) segue suportada para confrontos autorais fora do seletor.
+
+**O confronto em cena anota o mural.** Apresentar ao declarante a carta que desmente o
+próprio paradeiro (função pura `ligacaoDeConfrontoEmCena` em `src/logic/acusacao.js` —
+só tags: vestígio `pertenceA` ou corroboração `ligadoA` × álibi `declaranteId`) cria a
+**mesma ligação `refuta_alibi` do barbante**, que nasce **visível e removível** no
+mural; os juízos seguem 100% manuais (ver §8). No vertical slice, Silas Crane (o réu)
+tem três reações: o registro da estalagem (`corrob_estalajadeiro`), o livro de ordens
+(`ev_livro_ordens`) e a lasca na bainha (`ev_vidro_dobra`), cada uma reenquadrada por
+ele com a calma da bancada — e a evasiva que devolve nada.
 
 **O motor não muda.** As falas surgem cartas pelo **mesmo mecanismo `[[id]]`** das
 localidades (`ParagrafoProsa` de `src/components/ProsaComTermos.jsx`, o renderizador
@@ -406,7 +423,10 @@ DIALOGOS.interrogatorio_silas = {
 Restrição dura (guarda estática no `scripts/qa.mjs`): toda `requerCarta` referencia carta
 existente; todo `vaiPara` aponta para nó real da mesma árvore; todo `[[id]]` de fala é
 carta real **e nenhuma carta com `localidade === nó` fica órfã** (alcançável em alguma
-fala) — espelho da guarda dos pontos de interesse (§5.1). Observação pura (guia §2): a
+fala) — espelho da guarda dos pontos de interesse (§5.1). Onda 5: toda entrada de
+`reacoesProva` referencia carta existente e nó da mesma árvore, e árvore com
+`reacoesProva` tem `noEvasiva` válido; a guarda de motor confirma que a apresentação
+anota `refuta_alibi` e que carta alheia não anota nada. Observação pura (guia §2): a
 calma do suspeito é gesto observável; quem estranha é o jogador.
 
 ---
@@ -439,6 +459,16 @@ ganha o direito de dizê-lo.
 **O jogador afirma o "quando" e o "como".** A janela (início/fim no relógio dos dois
 dias) e a causa (do catálogo universal) são **juízo dele**, sustentados pelas cartas
 que ele ligar.
+
+**Ligações anotadas em cena (Onda 5).** O confronto de paradeiro feito no
+interrogatório (apresentar ao declarante a carta que o desmente, §7.1) **anota a
+ligação `refuta_alibi` no mural** — decisão do pós-playtest de 14/07/2026: apresentar
+a prova na cara do declarante É o gesto de confronto, mais "construído" que o checkbox
+da Estação V, e o achado P1 mostrou que o confronto escondido nos Juízos não era
+descoberto. Salvaguardas da autoria: o barbante nasce **visível e removível**; os
+juízos (culpado/inocente/sem juízo) seguem **100% manuais**; e o precedente já
+existia — os sinais do corpo se ligam sozinhos às âncoras ("o corpo é lido, não
+selecionado").
 
 **A cadeia** soma: Quem · Quando · Como · Presença · Mentiras expostas · Motivo ·
 Juízo sobre cada não-acusado (`culpado` | `inocente` | `sem_juizo`). A armadilha do

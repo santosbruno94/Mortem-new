@@ -104,6 +104,11 @@ async function abrirNo(page, texto) {
 
 async function novaPartida(page, perito, query = '') {
   await page.goto(BASE + query);
+  await espera(page, 400);
+  // O auto-save (P0) persiste entre rotas: limpa o caso salvo e recarrega,
+  // para cada rota nascer do convite limpo, nunca do gate de retomada.
+  await page.evaluate(() => window.localStorage && window.localStorage.clear());
+  await page.reload();
   await espera(page, 800);
   await page.click(`text=${perito}`);
   await espera(page, 600);
@@ -116,9 +121,9 @@ async function novaPartida(page, perito, query = '') {
   await espera(page, 600);
 }
 
-// Fecha a Ficha de Coleta (§6.2), quando aberta: cada extração apresenta a
-// evidência no ato numa ficha que cobre o overlay — "Arquivar na mesa" a
-// devolve à superfície e libera o próximo termo em negrito.
+// Fecha a Ficha de Coleta (§6.2), quando aberta. Desde a Onda 4 só a
+// PRIMEIRA observação do caso abre ficha sozinha — nas demais este helper
+// é um no-op defensivo (o botão não existe).
 async function arquivarFicha(page) {
   const botao = page.getByRole('button', { name: 'Arquivar na mesa' });
   if (await botao.count()) {
@@ -141,9 +146,22 @@ async function abrirPontos(page) {
   }
 }
 
+// Micro-gestos periciais (Onda 7): aciona os botões-gesto ainda não feitos
+// (voltar o corpo, dar corda, contar entalhes) — cada um extrai uma carta.
+async function acionarGestos(page) {
+  for (let i = 0; i < 5; i++) {
+    const gesto = page.locator('.gesto-pericial:not([data-feito])');
+    if ((await gesto.count()) === 0) break;
+    await gesto.first().click();
+    await espera(page, 150);
+    await arquivarFicha(page);
+  }
+}
+
 // Viaja até um nó da mesa e extrai todos os termos em negrito do overlay.
 // Cada extração abre a ficha de coleta, arquivada antes do próximo termo.
 // Onde há pontos de interesse, revela todos antes de varrer os termos.
+// Micro-gestos visíveis também são acionados (Onda 7).
 async function visitarEExtrair(page, rotuloNo) {
   await abrirNo(page, rotuloNo);
   await abrirPontos(page);
@@ -153,6 +171,7 @@ async function visitarEExtrair(page, rotuloNo) {
     await espera(page, 150);
     await arquivarFicha(page);
   }
+  await acionarGestos(page);
 }
 
 // Extrai todos os termos em negrito visíveis no momento (cada extração abre
@@ -166,12 +185,11 @@ async function extrairTermosVisiveis(page) {
   }
 }
 
-// Interrogatório em diálogo (§7.1): abre o nó do suspeito, extrai os termos da
-// fala de abertura e percorre cada ASSUNTO (não-confronto, não-voltar),
-// extraindo os termos de cada fala e voltando ao leque. Os confrontos
-// (requerCarta) ficam de fora — só se abrem apresentando a prova.
-async function interrogarEExtrair(page, rotuloNo) {
-  await abrirNo(page, rotuloNo);
+// Percorre um diálogo JÁ ABERTO (§7.1): extrai os termos da fala de abertura
+// e percorre cada ASSUNTO (não-confronto, não-voltar), extraindo os termos de
+// cada fala e voltando ao leque. Os confrontos ficam de fora — só se abrem
+// apresentando a prova.
+async function percorrerDialogo(page) {
   await extrairTermosVisiveis(page); // a fala de abertura (ex.: o vidro na bainha)
   const seletorAssunto = '.opcao-dialogo:not(.opcao-dialogo--confronto):not(.opcao-dialogo--voltar)';
   const n = await page.locator(seletorAssunto).count();
@@ -185,6 +203,20 @@ async function interrogarEExtrair(page, rotuloNo) {
       await espera(page, 200);
     }
   }
+}
+
+// Interrogatório num nó do mapa (conversão integral: Silas, Agnes, Grey).
+async function interrogarEExtrair(page, rotuloNo) {
+  await abrirNo(page, rotuloNo);
+  await percorrerDialogo(page);
+}
+
+// Diálogo EMBUTIDO (Onda 6): de dentro da localidade aberta, o botão
+// .botao-dialogo-local abre a árvore (Walter na estalagem, Davey na oficina).
+async function conversarEmbutido(page, rotuloBotao) {
+  await page.getByRole('button', { name: rotuloBotao }).click();
+  await espera(page, 400);
+  await percorrerDialogo(page);
 }
 
 async function fecharOverlay(page) {
@@ -283,6 +315,14 @@ async function main() {
     const textoCaderneta = await textoOverlay(page);
     checar('Fase 1: a Caderneta lista o carimbo da observação', textoCaderneta.includes(CARIMBO_RIGOR));
     checar('Fase 1: a Caderneta (diário) não traz mais a descrição', !textoCaderneta.includes(DESC_RIGOR));
+    // Onda 8: o modo purista cala a síntese do legista na Caderneta — e
+    // religa sem perder nada (o dado continua consolidando por baixo).
+    await page.getByRole('button', { name: 'Dispensar a leitura' }).click();
+    await espera(page, 200);
+    checar('Onda 8: purista dispensa a leitura do legista', (await page.locator('body').innerText()).includes('dispensou a leitura do legista'));
+    await page.getByRole('button', { name: 'Tornar a pedir a leitura' }).click();
+    await espera(page, 200);
+    checar('Onda 8: religar devolve a leitura', !(await page.locator('body').innerText()).includes('dispensou a leitura do legista'));
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 1 ----
 
@@ -298,8 +338,11 @@ async function main() {
     checar('Fase 2: abrir um ponto revela seus termos', (await page.locator('.termo-clicavel').count()) >= 1);
     await page.locator('.termo-clicavel').first().click();
     await espera(page, 200);
-    checar('Fase 2: extração dentro do ponto abre a ficha', (await page.locator('div.fixed[data-overlay="ficha"]').count()) >= 1);
-    await arquivarFicha(page);
+    // Onda 4: só a PRIMEIRA observação do caso abre ficha; as demais pousam
+    // sozinhas na mesa, anunciadas pelo aviso de pouso.
+    checar('Onda 4: a extração seguinte NÃO abre ficha (pousa sozinha)', (await page.locator('div.fixed[data-overlay="ficha"]').count()) === 0);
+    checar('Onda 4: o aviso de pouso anuncia a carta registrada', (await page.locator('[data-aviso-pousada]').count()) >= 1);
+    await arquivarFicha(page); // defensivo: não há ficha a arquivar
     // Andar pela planta: clicar o cômodo "a oficina" viaja (0h) e abre a oficina.
     await page.locator('[data-planta] [data-alvo="oficina"]').click();
     await espera(page, 500);
@@ -308,16 +351,40 @@ async function main() {
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 2 ----
 
+    // ---- ONDA 1 — Persistência (P0): o caso sobrevive ao F5 ----
+    // Recarregar no meio da investigação cai no gate de retomada; continuar
+    // devolve a mesa com as cartas registradas e o relógio intactos.
+    await page.reload();
+    await espera(page, 800);
+    checar('Onda 1: recarregar oferece a retomada do caso', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 1);
+    await page.getByRole('button', { name: 'Continuar o caso' }).click();
+    await page.waitForSelector('.rotulo-papel', { timeout: 15000 });
+    await espera(page, 400);
+    const mesaRetomada = await page.locator('body').innerText();
+    checar('Onda 1: a mesa volta com as cartas registradas', mesaRetomada.includes('Corpo Endurecido'));
+    checar('Onda 1: o relógio retomado não andou (11h00)', mesaRetomada.includes('11h00'));
+    // ---- fim do bloco da Onda 1 ----
+
     await visitarEExtrair(page, 'O Corpo'); // extrai os demais termos do corpo
+    // Onda 7: os dois micro-gestos do corpo (voltar o corpo, dar corda ao
+    // relógio) foram acionados e ficaram marcados como feitos.
+    checar('Onda 7: micro-gestos do corpo acionados e marcados', (await page.locator('.gesto-pericial[data-feito]').count()) === 2);
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
-    await arquivarFicha(page); // a leitura do algor também se apresenta em ficha
+    await arquivarFicha(page); // defensivo: o algor pousa sozinho (Onda 4)
     // O contador de esgotamento do caso-escola: corpo esgotado = 7 de 7.
     checar('Rota 1: contador de observações da localidade (7 de 7 no corpo)', (await page.locator('body').innerText()).includes('7 de 7 observações registradas aqui'));
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Cena do Crime');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Oficina'); // desbloqueia o Gabinete (lead do livro de ordens)
+    // Onda 6: Davey conversa em diálogo embutido — o hábito da corda e o
+    // álibi dele nascem das falas, não mais de um ponto de interesse.
+    await conversarEmbutido(page, 'Conversar com Davey Tull');
+    // A abertura de Davey não tem termo; reabrir o assunto prova a extração.
+    await page.getByRole('button', { name: 'Os costumes do patrão' }).click();
+    await espera(page, 250);
+    checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
 
@@ -328,8 +395,14 @@ async function main() {
     await abrirNo(page, 'Silas Crane');
     checar('Fase 3: o interrogatório abre em diálogo (opções do perito)', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     checar('Fase 3: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
-    // O confronto da estalagem ainda não colhido → oculto (decisão de design).
-    checar('Fase 3: confronto da estalagem oculto sem a prova', (await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).count()) === 0);
+    // Onda 5: o seletor "Apresentar uma prova…" só lista o que está na mesa —
+    // a prova da estalagem, ainda não colhida, não aparece (sem telégrafo).
+    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
+    await espera(page, 200);
+    checar('Onda 5: seletor de provas aberto', (await page.locator('[data-seletor-provas]').count()) === 1);
+    checar('Fase 3: prova não colhida ausente do seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 0);
+    await page.getByRole('button', { name: 'guardar as provas' }).click();
+    await espera(page, 150);
     await page.locator('.termo-clicavel').first().click(); // a lasca de vidro (fala de abertura)
     await espera(page, 200);
     await arquivarFicha(page);
@@ -350,19 +423,45 @@ async function main() {
     await visitarEExtrair(page, 'A Delegacia');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Estalagem');
+    // Onda 6: Walter conversa em diálogo embutido — o álibi nasce na fala; e
+    // apresentar-lhe o registro (a própria assinatura das 19h40) desmorona a
+    // diligência E anota a refutação do paradeiro no mural, sem barbante.
+    await conversarEmbutido(page, 'Interrogar Walter Arthurs');
+    checar('Onda 6: o botão da estalagem abre o diálogo de Walter', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
+    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
+    await espera(page, 200);
+    await page.locator('[data-seletor-provas]').getByRole('button', { name: /Registro da Estalagem/ }).click();
+    await espera(page, 300);
+    checar('Onda 6: o registro desmorona a diligência de Walter', (await page.locator('body').innerText()).includes('Não houve diligência'));
     await fecharOverlay(page);
     // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova
-    // está na mesa e a opção de CONFRONTO (§7.1) aparece; apresentá-la rende
-    // a reação de Silas (observável, nunca confissão — o veredicto é do mural).
+    // está na mesa e o seletor (Onda 5) a lista; apresentá-la rende a reação
+    // de Silas (observável, nunca confissão — o veredicto é do mural) e ANOTA
+    // a refutação do paradeiro dele no mural (barbante removível).
     await abrirNo(page, 'Silas Crane');
-    checar('Rota 1: confronto da estalagem disponível com a prova na mesa', (await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).count()) >= 1);
-    await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).click();
+    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
+    await espera(page, 200);
+    checar('Rota 1: prova colhida aparece no seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 1);
+    await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).click();
     await espera(page, 300);
     checar('Rota 1: apresentar a prova rende a reação do réu (nunca confissão)', (await page.locator('body').innerText()).includes('O estalajadeiro terá contado os quartos errados'));
+    checar('Onda 5: a linha conectiva pousa a prova entre os dois', (await page.locator('[data-prova-apresentada]').count()) === 1);
+    // Prova alheia (o rigor do corpo) → a evasiva na voz de Silas.
+    await page.locator('.opcao-dialogo--voltar').first().click();
+    await espera(page, 200);
+    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
+    await espera(page, 200);
+    await page.locator('[data-seletor-provas]').getByRole('button', { name: /Corpo Endurecido/ }).click();
+    await espera(page, 300);
+    checar('Onda 5: prova alheia cai na evasiva do personagem', (await page.locator('[data-no-dialogo="evasiva"]').count()) === 1);
+    checar('Onda 5: a evasiva não confessa (voz de Silas)', (await page.locator('body').innerText()).includes('a minha parte é corda e mola'));
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'Sra. Agnes Rooke');
+    // Onda 6: Agnes e Grey agora recebem em DIÁLOGO (conversão integral) —
+    // as cartas (álibi, comportamento) nascem das falas, pelos assuntos.
+    await interrogarEExtrair(page, 'Sra. Agnes Rooke');
+    checar('Onda 6: a papelaria abre em diálogo', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'O Moinho');
+    await interrogarEExtrair(page, 'O Moinho');
     await fecharOverlay(page);
 
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
@@ -394,6 +493,9 @@ async function main() {
     await page.getByRole('button', { name: /Recolhido à Estalagem às Oito/ }).last().click();
     await espera(page, 250);
     await concluirParte(page);
+    // Onda 2 (P2): o rótulo da Estação III recolhida conta TAMBÉM o
+    // paradeiro do réu desmentido, não só as mentiras de hora.
+    checar('Onda 2: Estação III conta o paradeiro desmentido do réu', (await page.locator('body').innerText()).includes('paradeiro(s) desmentido(s)'));
     await page.getByRole('button', { name: 'Consertos reclamados na coluna de S.C.' }).click();
     await concluirParte(page);
     // Juízos: Walter e Agnes inocentes com as mentiras expostas; Grey e
@@ -401,12 +503,17 @@ async function main() {
     checar('Rota 1: retratos nos Juízos do mural', (await page.locator('svg[data-retrato]').count()) >= 2);
     await page.getByRole('button', { name: 'Inocente', exact: true }).first().click();
     await espera(page, 300);
-    await page.getByRole('button', { name: /Registro da Estalagem/ }).last().click();
-    await espera(page, 200);
+    // Onda 6: o confronto feito EM CENA (registro apresentado a Walter)
+    // dispensa o barbante manual — a lacuna dele nem chega a aparecer.
+    checar('Onda 6: confronto em cena dispensa o barbante manual (Walter)', !(await page.locator('body').innerText()).includes('Paradeiro de Walter Arthurs por confrontar.'));
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(1).click();
     await espera(page, 300);
+    // Onda 3 (P1): escolher "Inocente" com paradeiro por confrontar acrescenta
+    // a linha neutra ao lembrete; o confronto (barbante manual) a apaga.
+    checar('Onda 3: lembrete aponta o paradeiro por confrontar', (await page.locator('body').innerText()).includes('Paradeiro da Sra. Agnes Rooke por confrontar.'));
     await page.getByRole('button', { name: /Cesta de Ceia para Dois/ }).last().click();
     await espera(page, 200);
+    checar('Onda 3: o confronto apaga a linha do lembrete', !(await page.locator('body').innerText()).includes('Paradeiro da Sra. Agnes Rooke por confrontar.'));
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(2).click();
     await espera(page, 200);
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(3).click();
@@ -428,7 +535,11 @@ async function main() {
     checar('Rota 1: epílogo paga a explicação da luz', epilogo.includes('lampião'));
     checar('Rota 1: retrato nomeia o que ficou por visitar', epilogo.includes('Ficou por visitar: Gabinete Pettigrew'));
     await page.getByRole('button', { name: 'Fechar o caderno' }).click();
-    await espera(page, 800);
+    // Onda 1: fechar o caderno apaga o save — a página recarregada cai no
+    // convite limpo, nunca no gate de retomada.
+    await page.waitForSelector('text=Quem atende ao chamado?', { timeout: 15000 });
+    checar('Onda 1: fechar o caderno limpa o save (convite limpo)', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 0);
+    await espera(page, 400);
 
     // ============================================================
     // ROTA 2 — APRESSADO (Harlan): iscas primeiro, corpo tarde,
@@ -482,6 +593,9 @@ async function main() {
     const muralReaberto = await page.locator('body').innerText();
     checar('Rota 2: mural reaberto na pendência (móbil), não na Estação I', muralReaberto.includes('IV · O Móbil') && !muralReaberto.includes('QUANDO — A JANELA'));
     texto = await julgar(page);
+    // Onda 3: na SEGUNDA queda no mesmo ponto (periférico), a cortesia do
+    // tutorial escala — a dica nomeia o suspeito e ensina o confronto.
+    checar('Onda 3: dica reincidente mais específica na segunda queda', texto.includes('pede um gesto a mais'));
     // Q5/Q2: o encerramento definitivo revela o culpado no epílogo.
     await page.getByRole('button', { name: 'Encerrar o caso' }).click();
     await espera(page, 700);

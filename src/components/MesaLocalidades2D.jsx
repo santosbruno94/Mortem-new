@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
+import { obterDialogo } from '../data/dialogos.js';
 import { formatDuracao } from '../logic/tempo.js';
 import CartaMesa from './CartaMesa.jsx';
 
@@ -59,6 +60,7 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
   const abrirFicha = useJogo((s) => s.abrirFicha);
+  const ultimaCartaPousada = useJogo((s) => s.ultimaCartaPousada);
 
   // A grade de repouso acompanha a largura da mesa: em tela estreita as
   // cartas se arrumam em menos colunas, e a superfície rola na vertical.
@@ -132,7 +134,7 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
               } ${aqui ? 'ring-1 ring-latao/40' : ''}`}
             >
               <p className="text-latao-claro/80 text-[10px] tracking-[0.25em] uppercase">
-                {loc.id.startsWith('interrogatorio') ? 'Interrogar' : 'Examinar'}
+                {obterDialogo(loc.id) ? 'Interrogar' : 'Examinar'}
                 {novo && (
                   <span className="text-amber-200 normal-case tracking-normal">
                     {' '}
@@ -159,7 +161,9 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
               o claro que pousa sobre a mesa escura. Clicar reabre a ficha
               de coleta (CartaMesa distingue clique de arrasto). */}
           <div
-            className="carta-surgir carta-pergaminho w-44 rounded-sm px-3 py-3"
+            className={`carta-surgir carta-pergaminho w-44 rounded-sm px-3 py-3 ${
+              carta.id === ultimaCartaPousada ? 'outline outline-2 outline-vela' : ''
+            }`}
             title="Rever esta ficha"
           >
             <p className="text-cera text-rotulo uppercase">
