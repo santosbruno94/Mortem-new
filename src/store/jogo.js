@@ -8,6 +8,7 @@
 // =====================================================================
 
 import { create } from 'zustand';
+import { persist, createJSONStorage } from 'zustand/middleware';
 import { SEED_TUTORIAL } from '../data/seed.js';
 import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.js';
@@ -26,64 +27,94 @@ export function buildDetective() {
 // caso-escola deixa de ser grátis — a audiência adia-se a cada retentativa.
 export const CUSTO_REVISAO = 2;
 
-export const useJogo = create((set, get) => ({
-  // ---------------- Fases e personagem ----------------
-  faseJogo: 'selecao', // 'selecao' → 'abertura' → 'investigacao'
-  detective: null,
-  passoAbertura: 0,
+// ---------------------------------------------------------------------
+// O estado de dado de UM caso, num factory: é a fonte única tanto do
+// arranque quanto do "Recomeçar do zero" (reiniciarCaso). Só dado puro,
+// JSON-serializável — as ações vivem fora, no create.
+// ---------------------------------------------------------------------
+export function estadoInicialCaso() {
+  return {
+    // ---------------- Fases e personagem ----------------
+    faseJogo: 'selecao', // 'selecao' → 'abertura' → 'investigacao'
+    detective: null,
+    passoAbertura: 0,
 
-  // ---------------- Relógio ----------------
-  horasJogo: HORAS_CHEGADA_CENA,
-  horasChegadaCena: HORAS_CHEGADA_CENA,
+    // ---------------- Relógio ----------------
+    horasJogo: HORAS_CHEGADA_CENA,
+    horasChegadaCena: HORAS_CHEGADA_CENA,
 
-  // ---------------- Mapa (o "dia do perito") ----------------
-  // O relógio só avança ao VIAJAR entre nós; dentro do local, congela.
-  localidadeAtual: null, // definido ao iniciar a investigação
-  nosDesbloqueados: NOS_MAPA.filter((n) => n.desbloqueadoInicio).map((n) => n.id),
-  nosNovos: [], // nós revelados por lead e ainda não visitados (destaque na mesa)
+    // ---------------- Mapa (o "dia do perito") ----------------
+    // O relógio só avança ao VIAJAR entre nós; dentro do local, congela.
+    localidadeAtual: null, // definido ao iniciar a investigação
+    nosDesbloqueados: NOS_MAPA.filter((n) => n.desbloqueadoInicio).map((n) => n.id),
+    nosNovos: [], // nós revelados por lead e ainda não visitados (destaque na mesa)
 
-  // ---------------- Mesa e registros ----------------
-  cartasRegistradas: [],
-  conclusoes: [],
-  log: [],
-  temperaturaMedida: null,
-  posicoesCartas: {},
-  nosVisitados: [], // para o retrato da investigação (epílogo)
-  // Estado de navegação dos interrogatórios em diálogo (§7.1): por suspeito,
-  // os nós de fala já visitados. Dado PURO serializável (só marca "já
-  // perguntado" na UI) — não move o relógio e o motor jamais o lê. Reler nós
-  // já visitados é livre (relógio mole).
-  nosVisitadosDialogo: {}, // { [suspeitoId]: [noId, ...] }
-  nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
-  somAtivo: true, // efeitos sonoros da mesa (papel, sino, barbante, lacre, pena)
+    // ---------------- Mesa e registros ----------------
+    cartasRegistradas: [],
+    conclusoes: [],
+    log: [],
+    temperaturaMedida: null,
+    posicoesCartas: {},
+    nosVisitados: [], // para o retrato da investigação (epílogo)
+    // Estado de navegação dos interrogatórios em diálogo (§7.1): por suspeito,
+    // os nós de fala já visitados. Dado PURO serializável (só marca "já
+    // perguntado" na UI) — não move o relógio e o motor jamais o lê. Reler nós
+    // já visitados é livre (relógio mole).
+    nosVisitadosDialogo: {}, // { [suspeitoId]: [noId, ...] }
+    nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
+    somAtivo: true, // efeitos sonoros da mesa (papel, sino, barbante, lacre, pena)
 
-  // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
-  overlay: null, // { tipo: 'localidade'|'caderneta'|'glossario'|'alibis'|'acusacao'|'monologo', id }
+    // ---------------- Overlay ativo (a mesa nunca sai do DOM) ----------------
+    overlay: null, // { tipo: 'localidade'|'caderneta'|'glossario'|'alibis'|'acusacao'|'monologo', id }
 
-  // ---------------- A Ficha de Coleta (§6.2) ----------------
-  // Camada de UI separada do overlay: a ficha da evidência se sobrepõe ao
-  // local/mesa/caderneta/mural (empilha por cima). Guarda só o id da carta —
-  // dado puro; a ficha lê a carta já registrada em cartasRegistradas.
-  fichaAberta: null, // cartaId | null
+    // ---------------- A Ficha de Coleta (§6.2) ----------------
+    // Camada de UI separada do overlay: a ficha da evidência se sobrepõe ao
+    // local/mesa/caderneta/mural (empilha por cima). Guarda só o id da carta —
+    // dado puro; a ficha lê a carta já registrada em cartasRegistradas.
+    fichaAberta: null, // cartaId | null
 
-  veredicto: null,
+    veredicto: null,
 
-  // ---------------- A Construção da Acusação (a cadeia) ----------------
-  // O jogador AFIRMA (réu, janela, causa, motivo, juízos) e SUSTENTA ligando
-  // cartas (os "barbantes"). O significado de cada ligação é derivado das tags
-  // (ver src/logic/acusacao.js).
-  acusacao: {
-    reuId: null,
-    janela: { inicio: null, fim: null }, // afirmada pelo jogador (escala absoluta)
-    causaId: null, // id do catálogo universal de causas
-    motivacaoId: null, // carta de móbil ligada ao réu
-    juizos: {}, // { [suspeitoId]: 'culpado' | 'inocente' | 'sem_juizo' }
-    ligacoes: [], // [{ id, de, para }] — de/para são id de carta OU âncora
-  },
+    // ---------------- A Construção da Acusação (a cadeia) ----------------
+    // O jogador AFIRMA (réu, janela, causa, motivo, juízos) e SUSTENTA ligando
+    // cartas (os "barbantes"). O significado de cada ligação é derivado das tags
+    // (ver src/logic/acusacao.js).
+    acusacao: {
+      reuId: null,
+      janela: { inicio: null, fim: null }, // afirmada pelo jogador (escala absoluta)
+      causaId: null, // id do catálogo universal de causas
+      motivacaoId: null, // carta de móbil ligada ao réu
+      juizos: {}, // { [suspeitoId]: 'culpado' | 'inocente' | 'sem_juizo' }
+      ligacoes: [], // [{ id, de, para }] — de/para são id de carta OU âncora
+    },
+  };
+}
+
+// Whitelist do que vai ao save (partialize): exatamente as chaves do factory.
+// Campos transientes futuros ficam fora por construção — só entra no save o
+// que nasce em estadoInicialCaso().
+const CAMPOS_SALVOS = Object.keys(estadoInicialCaso());
+
+// O qa.mjs importa este módulo em Node, onde não há localStorage: o save
+// cai num armazenamento nulo (nada persiste, nada quebra). No navegador,
+// localStorage é síncrono — a hidratação acontece antes do primeiro render.
+const armazenamentoNulo = { getItem: () => null, setItem: () => {}, removeItem: () => {} };
+
+export const useJogo = create(
+  persist(
+    (set, get) => ({
+  ...estadoInicialCaso(),
 
   // =====================================================================
   // Ações
   // =====================================================================
+
+  // "Recomeçar do zero" / "Fechar o caderno": apaga o save e devolve a mesa
+  // ao estado de arranque. As ações permanecem (o set é merge, não replace).
+  reiniciarCaso: () => {
+    useJogo.persist.clearStorage();
+    set(estadoInicialCaso());
+  },
 
   escolherDetective: () =>
     set({ detective: buildDetective(), faseJogo: 'abertura', passoAbertura: 0 }),
@@ -360,4 +391,19 @@ export const useJogo = create((set, get) => ({
       ],
     });
   },
-}));
+    }),
+    {
+      // Auto-save contínuo (P0 do playtest): cada set grava o caso inteiro.
+      // Um F5, uma queda de bateria ou a aba descartada não perdem a partida.
+      name: 'mortem-caso-tutorial',
+      version: 1,
+      storage: createJSONStorage(() =>
+        typeof window !== 'undefined' && window.localStorage ? window.localStorage : armazenamentoNulo
+      ),
+      partialize: (s) => Object.fromEntries(CAMPOS_SALVOS.map((k) => [k, s[k]])),
+      // Save de versão estranha é descartado (o caso-escola recomeça limpo);
+      // devolver undefined faz o persist ignorar o armazenado.
+      migrate: (estado, versao) => (versao === 1 ? estado : undefined),
+    }
+  )
+);

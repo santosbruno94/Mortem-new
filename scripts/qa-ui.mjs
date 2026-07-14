@@ -104,6 +104,11 @@ async function abrirNo(page, texto) {
 
 async function novaPartida(page, perito, query = '') {
   await page.goto(BASE + query);
+  await espera(page, 400);
+  // O auto-save (P0) persiste entre rotas: limpa o caso salvo e recarrega,
+  // para cada rota nascer do convite limpo, nunca do gate de retomada.
+  await page.evaluate(() => window.localStorage && window.localStorage.clear());
+  await page.reload();
   await espera(page, 800);
   await page.click(`text=${perito}`);
   await espera(page, 600);
@@ -308,6 +313,20 @@ async function main() {
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 2 ----
 
+    // ---- ONDA 1 — Persistência (P0): o caso sobrevive ao F5 ----
+    // Recarregar no meio da investigação cai no gate de retomada; continuar
+    // devolve a mesa com as cartas registradas e o relógio intactos.
+    await page.reload();
+    await espera(page, 800);
+    checar('Onda 1: recarregar oferece a retomada do caso', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 1);
+    await page.getByRole('button', { name: 'Continuar o caso' }).click();
+    await page.waitForSelector('.rotulo-papel', { timeout: 15000 });
+    await espera(page, 400);
+    const mesaRetomada = await page.locator('body').innerText();
+    checar('Onda 1: a mesa volta com as cartas registradas', mesaRetomada.includes('Corpo Endurecido'));
+    checar('Onda 1: o relógio retomado não andou (11h00)', mesaRetomada.includes('11h00'));
+    // ---- fim do bloco da Onda 1 ----
+
     await visitarEExtrair(page, 'O Corpo'); // extrai os demais termos do corpo
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
@@ -428,7 +447,11 @@ async function main() {
     checar('Rota 1: epílogo paga a explicação da luz', epilogo.includes('lampião'));
     checar('Rota 1: retrato nomeia o que ficou por visitar', epilogo.includes('Ficou por visitar: Gabinete Pettigrew'));
     await page.getByRole('button', { name: 'Fechar o caderno' }).click();
-    await espera(page, 800);
+    // Onda 1: fechar o caderno apaga o save — a página recarregada cai no
+    // convite limpo, nunca no gate de retomada.
+    await page.waitForSelector('text=Quem atende ao chamado?', { timeout: 15000 });
+    checar('Onda 1: fechar o caderno limpa o save (convite limpo)', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 0);
+    await espera(page, 400);
 
     // ============================================================
     // ROTA 2 — APRESSADO (Harlan): iscas primeiro, corpo tarde,

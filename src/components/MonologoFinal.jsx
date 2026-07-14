@@ -37,6 +37,7 @@ export default function MonologoFinal() {
   const veredicto = useJogo((s) => s.veredicto);
   const detective = useJogo((s) => s.detective);
   const revisarAcusacao = useJogo((s) => s.revisarAcusacao);
+  const reiniciarCaso = useJogo((s) => s.reiniciarCaso);
   const horasJogo = useJogo((s) => s.horasJogo);
   const nosVisitados = useJogo((s) => s.nosVisitados);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
@@ -92,7 +93,15 @@ export default function MonologoFinal() {
         </div>
 
         <div className="mt-8 flex justify-end">
-          <button onClick={() => window.location.reload()} className="botao-mesa">
+          <button
+            onClick={() => {
+              // O caderno fecha de vez: apaga o save antes do reload, para a
+              // página recarregada cair no convite limpo (não na retomada).
+              reiniciarCaso();
+              window.location.reload();
+            }}
+            className="botao-mesa"
+          >
             Fechar o caderno
           </button>
         </div>
