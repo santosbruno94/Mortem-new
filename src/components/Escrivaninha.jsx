@@ -34,17 +34,25 @@ export default function Escrivaninha() {
 
   const mesaDesfocada = overlay !== null;
 
-  // Um único handler de viagem serve à maquete 3D e à grade 2D —
-  // paridade por construção (o QA joga pelos dois caminhos).
-  const aoAbrirNo = (loc) => {
-    const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
-    if (custo > 0 && loc.id !== localidadeAtual) tocarSom('sino'); // a viagem tem sino (Q7)
-    viajarPara(loc.id);
-    abrirOverlay('localidade', loc.id);
-  };
-
   // 3D só com WebGL e fora da rota de escape ?flat=1 (decisão única por sessão).
   const usar3D = useMemo(() => !modoFlat() && webglDisponivel(), []);
+
+  // Um único handler de viagem serve à maquete 3D e à grade 2D —
+  // paridade por construção (o QA joga pelos dois caminhos). Na maquete 3D,
+  // uma viagem com custo real ganha um BEAT (~0,7s): o pino desliza o
+  // trajeto e a luz vira com a hora antes de o local abrir (a mesa só
+  // desfoca ao abrir o overlay). Viagem de 0h e o modo 2D abrem no ato.
+  const aoAbrirNo = (loc) => {
+    const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
+    const viagemReal = custo > 0 && loc.id !== localidadeAtual;
+    if (viagemReal) tocarSom('sino'); // a viagem tem sino (Q7)
+    viajarPara(loc.id);
+    if (usar3D && viagemReal) {
+      setTimeout(() => abrirOverlay('localidade', loc.id), 720);
+    } else {
+      abrirOverlay('localidade', loc.id);
+    }
+  };
 
   const mesa2D = <MesaLocalidades2D aoAbrirNo={aoAbrirNo} />;
 

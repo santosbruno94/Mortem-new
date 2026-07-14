@@ -90,6 +90,18 @@ async function subirServidor() {
 // ---------------------------------------------------------------------
 const espera = (page, ms = 250) => page.waitForTimeout(ms);
 
+// Abre um nó do mapa e espera o local (overlay) surgir. Na maquete 3D, uma
+// viagem com custo real ganha um BEAT (~0,7s): o pino desliza o trajeto e a
+// luz vira com a hora ANTES de o overlay abrir (Fase 4). Esperar o overlay
+// (em vez de um tempo fixo) é robusto a esse atraso — e instantâneo nas
+// viagens de 0h e no modo 2D. `div.fixed[data-overlay]` só casa a moldura de
+// overlay (não os rótulos HTML do diorama, que não têm data-overlay).
+async function abrirNo(page, texto) {
+  await page.click(`text=${texto}`);
+  await page.waitForSelector('div.fixed[data-overlay]', { timeout: 8000 });
+  await espera(page, 300);
+}
+
 async function novaPartida(page, perito, query = '') {
   await page.goto(BASE + query);
   await espera(page, 800);
@@ -133,8 +145,7 @@ async function abrirPontos(page) {
 // Cada extração abre a ficha de coleta, arquivada antes do próximo termo.
 // Onde há pontos de interesse, revela todos antes de varrer os termos.
 async function visitarEExtrair(page, rotuloNo) {
-  await page.click(`text=${rotuloNo}`);
-  await espera(page, 500);
+  await abrirNo(page, rotuloNo);
   await abrirPontos(page);
   const termos = page.locator('.termo-clicavel');
   for (let i = 0; i < 20 && (await termos.count()) > 0; i++) {
@@ -160,8 +171,7 @@ async function extrairTermosVisiveis(page) {
 // extraindo os termos de cada fala e voltando ao leque. Os confrontos
 // (requerCarta) ficam de fora — só se abrem apresentando a prova.
 async function interrogarEExtrair(page, rotuloNo) {
-  await page.click(`text=${rotuloNo}`);
-  await espera(page, 500);
+  await abrirNo(page, rotuloNo);
   await extrairTermosVisiveis(page); // a fala de abertura (ex.: o vidro na bainha)
   const seletorAssunto = '.opcao-dialogo:not(.opcao-dialogo--confronto):not(.opcao-dialogo--voltar)';
   const n = await page.locator(seletorAssunto).count();
@@ -242,6 +252,10 @@ async function main() {
     // O diorama 3D da vila sobe (chunk lazy); os nós seguem clicáveis por texto.
     await page.waitForSelector('canvas', { timeout: 15000 });
     checar('Rota 1: diorama 3D presente (canvas)', (await page.locator('canvas').count()) >= 1);
+    // Fase 4: as etiquetas dos nós são tags de papel pendentes (HTML real do
+    // diorama, clicáveis por texto). O rótulo do nó atual pulsa/repousa; a
+    // viagem com custo ganha o beat do pino (esperado por abrirNo, adiante).
+    checar('Fase 4: etiquetas de papel do diorama presentes (.rotulo-papel)', (await page.locator('.rotulo-papel').count()) >= 1);
 
     // ---- FASE 1 — A Ficha de Coleta (§6.2): a evidência se apresenta no ato ----
     // Extrair um termo abre a ficha (data-overlay="ficha") com a descrição
@@ -249,8 +263,7 @@ async function main() {
     // mesma ficha; e a Caderneta, rebaixada a diário, não traz mais a descrição.
     const DESC_RIGOR = 'não cedem quando se tenta dobrá-los'; // trecho da descrição de ev_rigor
     const CARIMBO_RIGOR = 'Duro dos maxilares aos joelhos'; // termoCarimbo de ev_rigor
-    await page.click('text=O Corpo');
-    await espera(page, 500);
+    await abrirNo(page, 'O Corpo');
     await page.locator('.termo-clicavel').first().click(); // ev_rigor é o primeiro termo
     await espera(page, 300);
     checar('Fase 1: a ficha de coleta abre ao extrair (data-overlay="ficha")', (await page.locator('div.fixed[data-overlay="ficha"]').count()) >= 1);
@@ -276,8 +289,7 @@ async function main() {
     // ---- FASE 2 — A planta da relojoaria e os pontos de interesse (§5.1) ----
     // Andar entre cômodos pela planta (0h, mesmo prédio) e a coleta em
     // camadas: um ponto revela o parágrafo e os seus termos extraíveis.
-    await page.click('text=A Cena do Crime');
-    await espera(page, 500);
+    await abrirNo(page, 'A Cena do Crime');
     checar('Fase 2: a planta da relojoaria aparece no nó (data-planta)', (await page.locator('[data-planta]').count()) >= 1);
     // Com pontos, os termos nascem escondidos: nenhum antes de abrir um ponto.
     checar('Fase 2: os pontos começam fechados (termos ocultos)', (await page.locator('.termo-clicavel').count()) === 0);
@@ -313,8 +325,7 @@ async function main() {
     // Interrogar é escolher e confrontar: o nó abre em diálogo, o confronto
     // fica OCULTO até a prova estar na mesa, e as cartas nascem de dentro da
     // fala pelo mesmo [[id]] das localidades.
-    await page.click('text=Silas Crane');
-    await espera(page, 500);
+    await abrirNo(page, 'Silas Crane');
     checar('Fase 3: o interrogatório abre em diálogo (opções do perito)', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     checar('Fase 3: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
     // O confronto da estalagem ainda não colhido → oculto (decisão de design).
@@ -343,8 +354,7 @@ async function main() {
     // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova
     // está na mesa e a opção de CONFRONTO (§7.1) aparece; apresentá-la rende
     // a reação de Silas (observável, nunca confissão — o veredicto é do mural).
-    await page.click('text=Silas Crane');
-    await espera(page, 500);
+    await abrirNo(page, 'Silas Crane');
     checar('Rota 1: confronto da estalagem disponível com a prova na mesa', (await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).count()) >= 1);
     await page.getByRole('button', { name: /Apresentar: O Quarto Cinco às Escuras/ }).click();
     await espera(page, 300);
@@ -532,8 +542,7 @@ async function main() {
     checar('Rota flat: sem canvas 3D', (await page.locator('canvas').count()) === 0);
     // §5.1: a planta é SVG 2D — funciona idêntico em ?flat=1. Abre o corpo,
     // confere a planta e anda para a cena por ela (0h).
-    await page.click('text=O Corpo');
-    await espera(page, 500);
+    await abrirNo(page, 'O Corpo');
     checar('Rota flat: a planta da relojoaria aparece (SVG 2D)', (await page.locator('[data-planta]').count()) >= 1);
     await page.locator('[data-planta] [data-alvo="cena"]').click();
     await espera(page, 500);

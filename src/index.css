@@ -353,6 +353,19 @@ body {
   textarea {
     font-size: 16px;
   }
+  /* Passe mobile (Fase 4): alvos de toque ≥44px no Mural da Acusação e na
+     etiqueta do diorama. Escopado a pointer:coarse — o QA joga em desktop
+     (pointer:fine), então o layout de teste não muda. A planta já garante
+     44px na régua e nos alvos SVG. */
+  .mural-cortica button,
+  .mural-cortica select {
+    min-height: 44px;
+  }
+  .rotulo-papel {
+    min-height: 40px;
+    padding-right: 0.65rem;
+    padding-left: 0.65rem;
+  }
 }
 
 /* Termos clicáveis em negrito dentro da prosa imersiva.
@@ -642,4 +655,150 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .ponto-interesse { transition: none; }
   .opcao-dialogo { transition: none; }
+}
+
+/* ------------------------------------------------------------------ */
+/* O DIORAMA (Fase 4): a etiqueta de papel pendente de cada nó, o      */
+/* custo flutuante do pino e o pulso discreto do nó novo. As etiquetas */
+/* são HTML real sobre o canvas (drei <Html>) — o QA as clica por      */
+/* texto. Só acréscimos abaixo desta linha.                            */
+/* ------------------------------------------------------------------ */
+.rotulo-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* O cordão que amarra a tag à maquete: fio curto com nó por cima. */
+.rotulo-cordao {
+  width: 1px;
+  height: 10px;
+  background: linear-gradient(180deg, rgba(90, 74, 47, 0), rgba(90, 74, 47, 0.85));
+  position: relative;
+}
+.rotulo-cordao::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #e8d5a2, #8a6d3b 70%, #54431f);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+/* A tag de papel: pergaminho claro, tinta escura, canto amassado. */
+.rotulo-papel {
+  display: block;
+  text-align: left;
+  white-space: nowrap;
+  padding: 0.28rem 0.5rem 0.32rem;
+  border-radius: 2px;
+  background-color: #e7ddc8;
+  background-image:
+    linear-gradient(168deg, rgba(255, 250, 235, 0.5), rgba(0, 0, 0, 0) 42%),
+    linear-gradient(348deg, rgba(122, 98, 60, 0.18), rgba(0, 0, 0, 0) 46%);
+  border: 1px solid #a9976f;
+  color: #2b2119;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 250, 235, 0.35);
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.rotulo-papel--destaque {
+  border-color: #7a2e12;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6), 0 0 14px rgba(217, 119, 6, 0.3);
+  transform: translateY(-1px);
+}
+.rotulo-verbo {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7a5c34;
+  line-height: 1.1;
+}
+.rotulo-nome {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 12px;
+  line-height: 1.15;
+  color: #2b2119;
+  margin-top: 1px;
+}
+/* Contraste alto por construção: tinta escura sobre papel claro (paga o
+   limite de contraste do "viajar · 1h" apontado no playtest de 13/07). */
+.rotulo-custo {
+  font-size: 9px;
+  letter-spacing: 0.03em;
+  color: #6b4f2c;
+  margin-top: 2px;
+}
+.rotulo-novo-marca {
+  color: #9e2a2b;
+  font-weight: 600;
+  /* Caixa baixa dentro do verbo em caixa-alta (o "· novo" é aviso, não
+     rótulo) — e o QA de UI casa o texto exato "· novo". */
+  text-transform: none;
+  letter-spacing: normal;
+}
+/* Nó novo: a tag pulsa em brasa de cera — pulso CSS, não emissivo 3D
+   (não força o frameloop contínuo da maquete). */
+@keyframes pulsarTagNova {
+  0%, 100% { box-shadow: 0 3px 7px rgba(0, 0, 0, 0.55), 0 0 0 rgba(158, 42, 43, 0); border-color: #9e2a2b; }
+  50% { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.55), 0 0 16px rgba(217, 119, 6, 0.55); border-color: #c0392b; }
+}
+.rotulo-papel--novo {
+  border-color: #9e2a2b;
+  animation: pulsarTagNova 2.2s ease-in-out infinite;
+}
+
+/* O custo em horas que flutua com o pino do perito durante o deslize. */
+.pino-custo {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  background: rgba(20, 16, 12, 0.92);
+  border: 1px solid rgba(201, 169, 97, 0.6);
+  color: #f5e3b8;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* SELO CARIMBANDO (Fase 4): o lacre "bate" na mesa ao concluir uma
+   estação do mural — cai de cima, com um leve exagero, e assenta. */
+@keyframes carimbarSelo {
+  0% { transform: scale(1.9) rotate(-14deg); opacity: 0; }
+  55% { transform: scale(0.9) rotate(3deg); opacity: 1; }
+  75% { transform: scale(1.06) rotate(-1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.selo-carimbando {
+  animation: carimbarSelo 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* A pena riscando na abertura: ao pairar/focar o botão de avançar, um risco
+   de tinta se desenha sob o rótulo (a pena raspando o papel). Enfeite puro,
+   cede a reduced-motion. Vive num span interno (o botão-mesa usa a própria
+   background-image). */
+@keyframes penaRisca {
+  from { background-size: 0% 1px; }
+  to { background-size: 100% 1px; }
+}
+.pena-tinta {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  background-size: 0% 1px;
+  padding-bottom: 2px;
+}
+.grupo-pena:hover .pena-tinta,
+.grupo-pena:focus-visible .pena-tinta {
+  animation: penaRisca 380ms ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotulo-papel { transition: none; }
+  .rotulo-papel--novo { animation: none; border-color: #9e2a2b; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.55), 0 0 12px rgba(217, 119, 6, 0.4); }
+  .selo-carimbando { animation: none; }
+  .grupo-pena:hover .pena-tinta, .grupo-pena:focus-visible .pena-tinta { animation: none; background-size: 100% 1px; }
 }

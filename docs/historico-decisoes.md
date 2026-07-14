@@ -222,3 +222,44 @@ oficina se divide em pontos de interesse (coleta em camadas).
 - **Prosa nova pelo pipeline:** as falas de Silas foram redigidas pelo `escritor-prosa` e
   revisadas por `editor-critico` + `perito-forense` + `fiscal-continuidade` (zero achados
   bloqueantes) antes do commit.
+
+## Fase 4 do overhaul (14/07/2026) — Maquete e UI (a mesa ganha teatro)
+
+Overhaul de apresentação, zero motor: `veredicto.js`/`acusacao.js` leem as mesmas
+`tagsOcultas`; `qa.mjs` segue `CASO VÁLIDO`. Ordem expressa: `PROMPT-overhaul-mortem.md`
+Fase 4.
+
+- **Direção de arte "maquete de papel":** não perseguir realismo (geometria procedural
+  sem GLTF torna a briga perdida); a vila é um modelo que o perito montou para pensar.
+- **Luz lida do relógio (decisão do usuário — "perceptível e contido"):** `CICLO_LUZ` +
+  `interpolarLuz(horasJogo)` em `mapa_espacial.js` (dado PURO — sem `Math.random`/
+  `Date.now`); `LuzDoDia` interpola por frame (tarde dourada → crepúsculo → noite com
+  lampiões âmbar, névoa de outubro). A noite escurece sem apagar a leitura das etiquetas.
+- **Beat de viagem (decisão do usuário — "beat curto e depois abre"):** só na maquete 3D
+  e só com custo real (>0h), o overlay do local abre ~0,7s depois — o pino desliza o
+  trajeto e a luz vira antes de a mesa desfocar. Viagem de 0h e `?flat=1` abrem no ato.
+  Alternativa recusada: abertura instantânea (o pino ficaria escondido pelo overlay).
+- **Pás do moinho (decisão do usuário — silhueta estática):** compõem a silhueta mas não
+  giram — respeita o `frameloop="demand"` (maquete parada = zero frame). Alternativa
+  recusada: giro contínuo (forçaria o canvas a renderizar sempre, gastando bateria).
+- **Pulso de "novo" em CSS, não no emissivo 3D:** mora na tag HTML — não força o frameloop
+  contínuo. Mesma razão do estático do moinho.
+- **Pino à frente do prédio, não no centro do nó:** o alfinete fincado no centro ficaria
+  DENTRO da caixa (ocluso); desloca-se para a câmera. O progresso avança por `dt`
+  (resolução independente, sem relógio de parede).
+- **Tags de papel (RotuloNo):** de quebra, o "viajar · 1h" sai de stone-400-sobre-escuro
+  (no limite do §3; achado A5 do playtest 13/07) para tinta-sobre-papel — alto contraste
+  por construção. A7 (rótulos atropelados) pago reespaçando as posições em `mapa_espacial.js`.
+- **Microinterações da 4.2:** barbante com catenária (`<line>` → `<path>` Bézier, mantido o
+  desenho progressivo e a área de clique de remoção); selo de cera "carimbando" ao concluir
+  estação; a pena riscando na abertura. Tudo cede a `prefers-reduced-motion`.
+- **Tipografia:** auditada — os títulos de overlay já eram `font-serif` (IM Fell) +
+  `.titulo-gravado`; o termo do Glossário fica tinta-sobre-papel por contexto (mantido).
+- **Passe mobile:** ≥44px no Mural via `@media (pointer: coarse)` escopado a `.mural-cortica`
+  (o QA joga em desktop/`pointer:fine` — sem mudança de layout de teste); a planta já garantia.
+- **Contrato do qa-ui.mjs atualizado no mesmo commit:** os pontos de abertura de nó passam a
+  ESPERAR o overlay surgir (helper `abrirNo`) em vez de tempo fixo — robusto ao beat de ~0,7s;
+  checagem nova das tags de papel (`.rotulo-papel`). Regressão pega no mesmo passo: o `· novo`
+  herdava `text-transform: uppercase` do verbo (`innerText` = "· NOVO"); `.rotulo-novo-marca`
+  volta a caixa baixa, casando o texto exato do QA. Textos de botão, `.termo-clicavel`/
+  `.termo-extraido`, `data-overlay` e os `<select>` do mural — intocados.

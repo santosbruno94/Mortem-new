@@ -416,6 +416,13 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
     >
       {/* A tacha que prega a ficha concluída no mural */}
       <span className="tacha-latao absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5" aria-hidden="true" />
+      {/* O selo de cera que "carimba" a parte concluída (bate ao surgir) */}
+      <span
+        className="selo-cera selo-carimbando absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center text-[11px] leading-none text-cera-clara/90 -rotate-6"
+        aria-hidden="true"
+      >
+        ❦
+      </span>
       <div className="flex items-baseline gap-3">
         <span className="font-serif text-tinta text-[11px] tracking-[0.2em] uppercase">{etapa.titulo}</span>
         <span className="text-tinta-clara text-xs">{resumo}</span>
@@ -904,12 +911,21 @@ function CartaSelecionavel({ carta, ativa, aoClicar }) {
 }
 
 // ---------------------------------------------------------------------
-// Um barbante já amarrado. Ao surgir, "se desenha sozinho" (a linha avança
-// da origem ao alvo). Depois vira uma linha comum. A linha grossa invisível
-// por cima é a área de clique para REMOVER o barbante.
+// Um barbante já amarrado. Pende com leve CATENÁRIA (a barriga do fio sob
+// o próprio peso) e "se desenha sozinho" ao surgir (avança da origem ao
+// alvo). Depois vira um fio comum. A curva grossa invisível por cima é a
+// área de clique para REMOVER o barbante.
 // ---------------------------------------------------------------------
 function Barbante({ a, b, aoRemover }) {
   const ref = useRef(null);
+
+  // Curva de Bézier quadrática: o ponto de controle no meio, empurrado para
+  // baixo — a barriga do barbante pendurado (mais funda em fios longos).
+  const dist = Math.hypot(b.x - a.x, b.y - a.y);
+  const barriga = Math.min(30, 10 + dist * 0.12);
+  const cx = (a.x + b.x) / 2;
+  const cy = (a.y + b.y) / 2 + barriga;
+  const d = (dx = 0, dy = 0) => `M ${a.x} ${a.y + dy} Q ${cx + dx} ${cy + dy} ${b.x} ${b.y + dy}`;
 
   useEffect(() => {
     const el = ref.current;
@@ -930,15 +946,13 @@ function Barbante({ a, b, aoRemover }) {
     }, 380);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [a.x, a.y, b.x, b.y]);
 
   return (
     <g>
-      <line
-        x1={a.x}
-        y1={a.y}
-        x2={b.x}
-        y2={b.y}
+      <path
+        d={d()}
+        fill="none"
         stroke="transparent"
         strokeWidth={24}
         style={{ pointerEvents: 'stroke', cursor: 'pointer' }}
@@ -949,9 +963,9 @@ function Barbante({ a, b, aoRemover }) {
       />
       {/* O fio tem corpo (Q7): sombra por baixo, torção clara por cima.
           Barbante rubro de investigação — cor de lacre, bem visível na cortiça. */}
-      <line x1={a.x} y1={a.y + 2} x2={b.x} y2={b.y + 2} stroke="rgba(0,0,0,0.6)" strokeWidth={5} />
-      <line ref={ref} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#a13b2e" strokeWidth={3.5} strokeLinecap="round" />
-      <line x1={a.x} y1={a.y - 0.7} x2={b.x} y2={b.y - 0.7} stroke="rgba(240,180,150,0.5)" strokeWidth={1.2} strokeDasharray="5 7" />
+      <path d={d(0, 2)} fill="none" stroke="rgba(0,0,0,0.6)" strokeWidth={5} />
+      <path ref={ref} d={d()} fill="none" stroke="#a13b2e" strokeWidth={3.5} strokeLinecap="round" />
+      <path d={d(0, -0.7)} fill="none" stroke="rgba(240,180,150,0.5)" strokeWidth={1.2} strokeDasharray="5 7" />
     </g>
   );
 }
