@@ -62,6 +62,12 @@ export function estadoInicialCaso() {
     // perguntado" na UI) — não move o relógio e o motor jamais o lê. Reler nós
     // já visitados é livre (relógio mole).
     nosVisitadosDialogo: {}, // { [suspeitoId]: [noId, ...] }
+    // Nó de fala CORRENTE de cada interrogatório (§7.2): a árvore agora é
+    // SEQUENCIAL e sem volta — o perito escolhe um dos quatro tons e a
+    // conversa desce, sem reoferecer os irmãos. Por isso o nó corrente
+    // PRECISA persistir (reabrir retoma onde parou, não recomeça): a
+    // escolha é definitiva. Dado puro de UI — o motor jamais o lê.
+    noAtualDialogo: {}, // { [suspeitoId]: noId }
     // Provas já apresentadas em cena, por interrogado (Onda 5): estado
     // "feito" do seletor "Apresentar uma prova…". Dado puro de UI —
     // o motor não lê. { [suspeitoId]: [cartaId, ...] }
@@ -146,6 +152,7 @@ export const useJogo = create(
       localidadeAtual: 'cena', // o perito chega à cena (a relojoaria) às 11h
       nosVisitados: ['cena'],
       nosVisitadosDialogo: {},
+      noAtualDialogo: {},
       log: [
         ...s.log,
         { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
@@ -183,6 +190,12 @@ export const useJogo = create(
         nosVisitadosDialogo: { ...s.nosVisitadosDialogo, [suspeitoId]: [...jaVistos, noId] },
       };
     }),
+
+  // Fixa o nó de fala corrente de um interrogatório (§7.2). A árvore é
+  // sequencial e sem volta: gravar o nó torna a escolha definitiva entre
+  // sessões (reabrir retoma aqui). Custo zero (relógio mole); o motor não lê.
+  definirNoDialogo: (suspeitoId, noId) =>
+    set((s) => ({ noAtualDialogo: { ...s.noAtualDialogo, [suspeitoId]: noId } })),
 
   // Apresentar uma prova em cena (§7.1, Onda 5). Custo zero (interrogar é
   // relógio mole). Registra o "já apresentada" e, quando a carta desmente o

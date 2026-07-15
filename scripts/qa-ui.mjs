@@ -185,23 +185,20 @@ async function extrairTermosVisiveis(page) {
   }
 }
 
-// Percorre um diálogo JÁ ABERTO (§7.1): extrai os termos da fala de abertura
-// e percorre cada ASSUNTO (não-confronto, não-voltar), extraindo os termos de
-// cada fala e voltando ao leque. Os confrontos ficam de fora — só se abrem
-// apresentando a prova.
+// Percorre um diálogo JÁ ABERTO (§7.2): a conversa DESCE e não volta. A cada
+// beat escolhe um tom — o último do leque (oblíquo), que apanha a precisão
+// quando há (ex.: a lasca na bainha de Silas) — e extrai os termos da resposta,
+// até a conversa se encerrar. Os confrontos ficam de fora (canal lateral, só
+// apresentando a prova). Só as falas do perito têm [data-tom].
 async function percorrerDialogo(page) {
-  await extrairTermosVisiveis(page); // a fala de abertura (ex.: o vidro na bainha)
-  const seletorAssunto = '.opcao-dialogo:not(.opcao-dialogo--confronto):not(.opcao-dialogo--voltar)';
-  const n = await page.locator(seletorAssunto).count();
-  for (let i = 0; i < n; i++) {
-    await page.locator(seletorAssunto).nth(i).click(); // no hub, a ordem é estável
+  await extrairTermosVisiveis(page); // a fala de abertura
+  const seletorTom = '.opcao-dialogo[data-tom]';
+  for (let guarda = 0; guarda < 6; guarda++) {
+    const n = await page.locator(seletorTom).count();
+    if (n === 0) break; // a conversa se encerrou (sem volta)
+    await page.locator(seletorTom).last().click(); // tom oblíquo
     await espera(page, 250);
     await extrairTermosVisiveis(page);
-    const voltar = page.locator('.opcao-dialogo--voltar');
-    if (await voltar.count()) {
-      await voltar.first().click();
-      await espera(page, 200);
-    }
   }
 }
 
@@ -381,9 +378,7 @@ async function main() {
     // Onda 6: Davey conversa em diálogo embutido — o hábito da corda e o
     // álibi dele nascem das falas, não mais de um ponto de interesse.
     await conversarEmbutido(page, 'Conversar com Davey Tull');
-    // A abertura de Davey não tem termo; reabrir o assunto prova a extração.
-    await page.getByRole('button', { name: 'Os costumes do patrão' }).click();
-    await espera(page, 250);
+    // §7.2: a conversa desce (o hábito da corda e o álibi nascem das falas).
     checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
@@ -398,29 +393,22 @@ async function main() {
     await abrirNo(page, 'A Saleta');
     checar('Fase 3: o interrogatório abre em diálogo (opções do perito)', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     checar('Fase 3: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
-    // Onda 5: o seletor "Apresentar uma prova…" só lista o que está na mesa —
-    // a prova da estalagem, ainda não colhida, não aparece (sem telégrafo).
+    // §7.2: cada beat oferece QUATRO falas do perito, cada uma num tom.
+    checar('§7.2: o beat oferece quatro falas do perito (tons)', (await page.locator('.opcao-dialogo[data-tom]').count()) === 4);
+    // Onda 5: o seletor "Apresentar uma prova…" já existe no primeiro beat e só
+    // lista o que está na mesa — a prova da estalagem, ainda não colhida, não
+    // aparece (sem telégrafo).
     await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
     await espera(page, 200);
     checar('Onda 5: seletor de provas aberto', (await page.locator('[data-seletor-provas]').count()) === 1);
     checar('Fase 3: prova não colhida ausente do seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 0);
     await page.getByRole('button', { name: 'guardar as provas' }).click();
     await espera(page, 150);
-    await page.locator('.termo-clicavel').first().click(); // a lasca de vidro (fala de abertura)
-    await espera(page, 200);
-    await arquivarFicha(page);
-    await page.getByRole('button', { name: 'A noite de sexta-feira' }).click();
-    await espera(page, 250);
-    checar('Fase 3: um assunto revela a fala com a carta extraível', (await page.locator('.termo-clicavel').count()) >= 1);
-    await page.locator('.termo-clicavel').first().click(); // o álibi, de dentro do diálogo
-    await espera(page, 200);
-    await arquivarFicha(page);
+    // §7.2: a conversa desce (tom oblíquo em cada beat): a lasca na bainha e o
+    // álibi saem no primeiro beat; a teoria do ladrão de fora, no segundo.
+    await percorrerDialogo(page);
     checar('Fase 3: extraiu carta de dentro do diálogo (álibi registrado)', (await page.locator('.termo-extraido').count()) >= 1);
-    await page.locator('.opcao-dialogo--voltar').first().click(); // volta ao leque de assuntos
-    await espera(page, 200);
-    await page.getByRole('button', { name: 'Quem faria uma coisa dessas' }).click();
-    await espera(page, 250);
-    await extrairTermosVisiveis(page); // a teoria não pedida (comp_silas)
+    checar('§7.2: a conversa se encerra sem volta ao hub', (await page.locator('[data-conversa-encerrada]').count()) === 1);
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 3 ----
     await visitarEExtrair(page, 'A Delegacia');
