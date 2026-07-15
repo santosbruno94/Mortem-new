@@ -623,6 +623,69 @@ if (!dialogosIntegros) {
 }
 
 // ============================================================
+// GUARDA §7.2 — A CONVERSA DESCE E NÃO VOLTA + SOLUBILIDADE EM DOIS NÍVEIS.
+// A árvore de pergunta (só as `opcoes`) é um DAG que só desce: nenhuma
+// opção reaponta para o nó inicial (sem hub, sem "outro assunto"). E, em
+// TODA descida da raiz a um terminal, as cartas de SUSTENTAÇÃO saem — só
+// as de PRECISÃO (tom-dependentes) podem faltar. Prova que o caso é sempre
+// acusável (solubilidade) e que a Vitória Absoluta segue possível pelo tom
+// certo (a precisão é alcançável em ALGUM caminho). O motor não lê nada
+// disto — é contrato da CAMADA de UI do interrogatório.
+// ============================================================
+// Cartas cujo [[id]] pode faltar conforme o tom (peso NARRATIVO, nunca do
+// veredicto — o motor repousa no corpo/cena). Hoje: a lasca na bainha de
+// Silas, que só se apanha de esguelha (tom oblíquo).
+const CARTAS_PRECISAO = new Set(['ev_vidro_dobra']);
+const semVoltaAoHub = [];
+const sustentacaoPodeFaltar = [];
+const precisaoInalcancavel = [];
+for (const [localidadeId, dialogo] of Object.entries(DIALOGOS)) {
+  // Nenhuma opção reaponta ao nó inicial (irreversibilidade estrutural).
+  for (const [noId, no] of Object.entries(dialogo.nos)) {
+    for (const op of no.opcoes || []) {
+      if (op.vaiPara === dialogo.noInicial) semVoltaAoHub.push(`${localidadeId}:${noId}→${op.vaiPara}`);
+    }
+  }
+  // Enumera os caminhos raiz→terminal seguindo só as `opcoes` (o confronto
+  // por prova é canal lateral, fora da descida). Coleta os [[id]] de cada
+  // caminho; a interseção é o que sai em TODA descida (sustentação).
+  const marcadoresDoNo = (noId) => marcadoresDe(dialogo.nos[noId]?.fala || []);
+  const caminhos = [];
+  const descer = (noId, visitados, acumulado) => {
+    if (visitados.has(noId)) return; // ciclo — o DAG não deveria ter
+    const marcs = new Set([...acumulado, ...marcadoresDoNo(noId)]);
+    const opcoes = dialogo.nos[noId]?.opcoes || [];
+    if (opcoes.length === 0) {
+      caminhos.push(marcs);
+      return;
+    }
+    for (const op of opcoes) descer(op.vaiPara, new Set([...visitados, noId]), marcs);
+  };
+  descer(dialogo.noInicial, new Set(), new Set());
+  const uniao = new Set(caminhos.flatMap((c) => [...c]));
+  const interseccao = [...uniao].filter((id) => caminhos.every((c) => c.has(id)));
+  const interSet = new Set(interseccao);
+  // Sustentação = tudo o que a árvore produz, menos a precisão tom-dependente.
+  for (const id of uniao) {
+    if (CARTAS_PRECISAO.has(id)) continue;
+    if (!interSet.has(id)) sustentacaoPodeFaltar.push(`${localidadeId}:${id}`);
+  }
+  // Precisão declarada precisa ser alcançável em ALGUM caminho (senão a
+  // Vitória Absoluta ficaria impossível pela UI).
+  for (const id of CARTAS_PRECISAO) {
+    const nasceNaArvore = marcadoresDe(Object.values(dialogo.nos).flatMap((n) => n.fala || [])).has(id);
+    if (nasceNaArvore && !uniao.has(id)) precisaoInalcancavel.push(`${localidadeId}:${id}`);
+  }
+}
+const dialogosDescemESolvem =
+  semVoltaAoHub.length === 0 && sustentacaoPodeFaltar.length === 0 && precisaoInalcancavel.length === 0;
+if (!dialogosDescemESolvem) {
+  console.log('\n§7.2 — opção que volta ao hub:', semVoltaAoHub.join(', ') || '—');
+  console.log('§7.2 — sustentação que pode faltar num caminho:', sustentacaoPodeFaltar.join(', ') || '—');
+  console.log('§7.2 — precisão inalcançável em todo caminho:', precisaoInalcancavel.join(', ') || '—');
+}
+
+// ============================================================
 // GUARDA GLOBAL DE ALCANÇABILIDADE (Onda 6): toda carta do catálogo
 // nasce de algum [[id]] — prosa/introdução/pontos de localidade ou fala
 // de árvore de diálogo. Mover prosa entre camadas (localidade → árvore)
@@ -702,6 +765,7 @@ const checagens = [
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
   ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],
   ['Interrogatórios em diálogo íntegros (§7.1): requerCarta/vaiPara/[[id]] válidos, sem carta órfã', dialogosIntegros],
+  ['Diálogo desce e não volta; toda descida rende a sustentação, precisão possível (§7.2)', dialogosDescemESolvem],
   ['Alcançabilidade global (Onda 6): toda carta nasce de algum [[id]]', cartasInalcancaveis.length === 0],
   ['Apresentação em cena anota refuta_alibi no mural (Onda 5)', parCena && confrontoClassificado],
   ['Prova alheia apresentada cai na evasiva sem anotar nada (Onda 5)', soUmaLigacaoCena && apresentadasMarcadas],

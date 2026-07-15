@@ -730,6 +730,22 @@ body {
   color: #6b4f2c;
   margin-top: 2px;
 }
+/* Lembrete de visita: a nota de rodapé da etiqueta — quem recebeu o perito
+   e quantas observações ficaram, para decidir se vale voltar. Base só
+   tipográfica; a cor vem do contexto (papel creme no 3D, carta escura no
+   2D) para não colidirem as paletas. */
+.rotulo-lembrete {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 9px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  white-space: normal;
+  margin-top: 3px;
+}
+.rotulo-papel .rotulo-lembrete {
+  color: #7a5c34;
+}
 .rotulo-novo-marca {
   color: #9e2a2b;
   font-weight: 600;

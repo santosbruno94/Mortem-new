@@ -20,74 +20,98 @@ const ROTULOS_DOMINIO = {
   vestigio: 'Vestígio',
 };
 
-// Interrogatório como DIÁLOGO (§7.1): substitui a prosa estática dos nós de
-// interrogatório por uma árvore ramificada determinística. O perito escolhe
-// o assunto (navegação livre — relógio mole) e, quando tem a prova na mesa,
-// pode CONFRONTAR o suspeito. Desde a Onda 5 o confronto é UNIVERSAL: o
-// seletor "Apresentar uma prova…" aceita QUALQUER carta registrada — as que
-// tocam o interrogado levam a reações próprias (`reacoesProva`), o resto cai
-// na evasiva da voz dele (`noEvasiva`). O seletor não telegrafa quais cartas
-// "queimam": só marca as já apresentadas. As falas surgem cartas pelo mesmo
-// mecanismo `[[id]]` das localidades; o motor não muda. O nó corrente é
-// estado local (reabrir começa no início); o "já perguntado" persiste no
-// store (nosVisitadosDialogo), o "já apresentada" em provasApresentadas.
+// Interrogatório como DIÁLOGO VIVO (§7.2): a árvore ramificada agora DESCE e
+// NÃO VOLTA. Cada beat oferece quatro falas do perito, cada uma num tom
+// (firme, cordial, técnico, oblíquo); escolher AVANÇA e descarta os irmãos —
+// não há "outro assunto", não se volta ao hub. O nó corrente PERSISTE no
+// store (noAtualDialogo): reabrir retoma onde parou, e a escolha é definitiva.
+// A carta de sustentação de cada beat sai em qualquer tom (o caso é sempre
+// acusável); o tom só muda a prosa do NPC. As falas surgem cartas pelo mesmo
+// mecanismo `[[id]]` das localidades; o motor não muda.
+// CONFRONTO (Onda 5): o seletor "Apresentar uma prova…" segue UNIVERSAL e é
+// um CANAL LATERAL — apresentar rende a reação (`reacoesProva`) ou a evasiva
+// (`noEvasiva`) TEMPORARIAMENTE, sem descer a árvore; "retomar a conversa"
+// devolve o perito ao beat onde estava. A reação é transitória (não persiste).
 // Duas portas de entrada (Onda 6): `localidadeId` quando o NÓ DO MAPA é o
-// interrogatório (Silas, Agnes, Grey — conversão integral) e `dialogoId`
-// quando a pessoa vive dentro de um lugar (Walter, Davey — a árvore traz
-// `titulo`/`subtitulo` próprios e `origemLocalidade`).
+// interrogatório (Silas, Agnes, Grey) e `dialogoId` quando a pessoa vive
+// dentro de um lugar (Walter, Davey — a árvore traz `titulo`/`subtitulo`).
+const MARCA_TOM = { firme: '‹', cordial: '◦', tecnico: '▪', obliquo: '~' };
+
 export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const detective = useJogo((s) => s.detective);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
-  const nosVisitadosDialogo = useJogo((s) => s.nosVisitadosDialogo);
+  const noAtualDialogo = useJogo((s) => s.noAtualDialogo);
+  const definirNoDialogo = useJogo((s) => s.definirNoDialogo);
   const visitarNoDialogo = useJogo((s) => s.visitarNoDialogo);
   const provasApresentadas = useJogo((s) => s.provasApresentadas);
   const apresentarProva = useJogo((s) => s.apresentarProva);
 
   const dialogo = obterDialogo(dialogoId || localidadeId);
   const localidade = localidadeId ? obterLocalidade(localidadeId) : null;
-  const [noAtual, setNoAtual] = useState(dialogo?.noInicial);
+  // A reação a uma prova apresentada é TRANSITÓRIA (não persiste): fica em
+  // estado local e "retomar" a descarta. O beat corrente vem do store.
+  const [reacaoAtual, setReacaoAtual] = useState(null);
   const [apresentando, setApresentando] = useState(false);
   const [cartaApresentada, setCartaApresentada] = useState(null);
   if (!dialogo || (localidadeId && !localidade)) return null;
   const titulo = localidade ? localidade.titulo : dialogo.titulo;
   const subtitulo = localidade ? localidade.subtitulo : dialogo.subtitulo;
 
-  const no = dialogo.nos[noAtual];
-  const visitados = nosVisitadosDialogo[dialogo.suspeitoId] || [];
-  const apresentadas = provasApresentadas[dialogo.suspeitoId] || [];
+  const suspeitoId = dialogo.suspeitoId;
+  // Nó de PERGUNTA corrente (persistido). Reabrir retoma onde parou.
+  const noPergunta = noAtualDialogo[suspeitoId] || dialogo.noInicial;
+  // O nó em tela: a reação transitória tem prioridade sobre o beat.
+  const noExibido = reacaoAtual || noPergunta;
+  const no = dialogo.nos[noExibido] || dialogo.nos[dialogo.noInicial];
+  const apresentadas = provasApresentadas[suspeitoId] || [];
   const temCarta = (id) => cartasRegistradas.some((c) => c.id === id);
 
+  // Os nós de reação/evasiva não são posição de conversa: são resposta a uma
+  // prova. Nunca persistem como beat, e neles a conversa "retoma".
+  const nosReacao = new Set([...Object.values(dialogo.reacoesProva || {}), dialogo.noEvasiva]);
+  const emReacao = !!reacaoAtual;
+
+  // Escolher um tom: DESCE a árvore (definitivo) e persiste o novo beat.
   const irPara = (destino) => {
-    setNoAtual(destino);
+    setReacaoAtual(null);
     setCartaApresentada(null);
-    visitarNoDialogo(dialogo.suspeitoId, destino);
+    definirNoDialogo(suspeitoId, destino);
+    visitarNoDialogo(suspeitoId, destino);
   };
 
   // O gesto de apresentar (Onda 5): registra no store (que anota ao mural o
-  // confronto de paradeiro, quando é o caso) e navega — reação específica se
-  // a árvore a tem, evasiva do personagem para todo o resto.
+  // confronto de paradeiro, quando é o caso) e mostra a reação SEM descer a
+  // árvore — canal lateral. "Retomar" devolve ao beat corrente.
   const apresentar = (carta) => {
-    apresentarProva(dialogo.suspeitoId, carta.id);
+    apresentarProva(suspeitoId, carta.id);
     const destino = (dialogo.reacoesProva || {})[carta.id] || dialogo.noEvasiva;
-    setNoAtual(destino);
+    setReacaoAtual(destino);
     setCartaApresentada(carta);
-    visitarNoDialogo(dialogo.suspeitoId, destino);
     setApresentando(false);
+  };
+
+  const retomarConversa = () => {
+    setReacaoAtual(null);
+    setCartaApresentada(null);
   };
 
   // O retrato segue o interrogado (suspeitoId); nas conversões antigas o
   // mapa localidade→personagem continua valendo como reserva.
-  const personagemDaCena = dialogo.suspeitoId || PERSONAGEM_POR_LOCALIDADE[localidade?.id];
+  const personagemDaCena = suspeitoId || PERSONAGEM_POR_LOCALIDADE[localidade?.id];
   // A saleta é da relojoaria: a planta baixa (§5.1) também sobe aqui — só
   // nos nós de mapa (no diálogo embutido não se anda pela planta).
   const naRelojoaria = !!localidade && obterNo(localidade.id)?.grupo === 'relojoaria';
 
-  // Confrontos autorais (`requerCarta`) seguem ocultos até a prova existir.
-  const opcoesVisiveis = (no.opcoes || []).filter((op) => !op.requerCarta || temCarta(op.requerCarta));
+  // Confrontos autorais (`requerCarta`) seguem ocultos até a prova existir
+  // (reservado; hoje o confronto é o seletor universal).
+  const opcoesVisiveis = emReacao
+    ? []
+    : (no.opcoes || []).filter((op) => !op.requerCarta || temCarta(op.requerCarta));
+  const conversaEncerrada = !emReacao && opcoesVisiveis.length === 0;
 
-  // O seletor só existe no hub da árvore, com evasiva definida e mesa não vazia.
-  const podeApresentar =
-    noAtual === dialogo.noInicial && !!dialogo.noEvasiva && cartasRegistradas.length > 0;
+  // O seletor existe em qualquer nó de PERGUNTA (não na reação), com evasiva
+  // definida e mesa não vazia — apresentar é canal lateral, sempre à mão.
+  const podeApresentar = !emReacao && !!dialogo.noEvasiva && cartasRegistradas.length > 0;
 
   const provasOrdenadas = [...cartasRegistradas].sort(
     (a, b) => (ORDEM_DOMINIO[a.tagsOcultas.dominio] ?? 9) - (ORDEM_DOMINIO[b.tagsOcultas.dominio] ?? 9)
@@ -112,36 +136,43 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       )}
 
       {/* A fala corrente do suspeito (com os termos extraíveis) */}
-      <div data-no-dialogo={noAtual} className="space-y-3">
+      <div data-no-dialogo={noExibido} className="space-y-3">
         {no.fala.map((t, i) => (
-          <ParagrafoProsa key={`${noAtual}_${i}`} texto={t} />
+          <ParagrafoProsa key={`${noExibido}_${i}`} texto={t} />
         ))}
       </div>
 
-      {/* As escolhas do perito: assuntos, confrontos e o seletor de provas */}
+      {/* As escolhas do perito: as quatro falas do beat (tons) OU, na reação,
+          o retomar da conversa. */}
       <div className="mt-6 space-y-2" data-opcoes-dialogo>
         {opcoesVisiveis.map((op) => {
           const ehConfronto = !!op.requerCarta;
-          const ehVoltar = op.vaiPara === dialogo.noInicial;
-          const jaVisto = !ehConfronto && !ehVoltar && visitados.includes(op.vaiPara);
           return (
             <button
               key={op.rotulo}
               type="button"
-              className={`opcao-dialogo ${ehConfronto ? 'opcao-dialogo--confronto' : ''} ${
-                ehVoltar ? 'opcao-dialogo--voltar' : ''
-              }`}
+              className={`opcao-dialogo ${ehConfronto ? 'opcao-dialogo--confronto' : ''}`}
               data-confronto={ehConfronto ? '' : undefined}
+              data-tom={op.tom || undefined}
               onClick={() => irPara(op.vaiPara)}
             >
               <span className="opcao-marca" aria-hidden>
-                {ehConfronto ? '❦' : ehVoltar ? '↩' : jaVisto ? '§' : '›'}
+                {ehConfronto ? '❦' : MARCA_TOM[op.tom] || '›'}
               </span>
               <span className="opcao-rotulo-texto">{interpolar(op.rotulo, detective)}</span>
-              {jaVisto && <span className="opcao-visto">já perguntado</span>}
             </button>
           );
         })}
+
+        {/* Retomar: sai da reação transitória de volta ao beat corrente. */}
+        {emReacao && (
+          <button type="button" className="opcao-dialogo opcao-dialogo--voltar" onClick={retomarConversa}>
+            <span className="opcao-marca" aria-hidden>
+              ↩
+            </span>
+            <span className="opcao-rotulo-texto">— retomar a conversa —</span>
+          </button>
+        )}
 
         {podeApresentar && (
           <button
@@ -194,9 +225,16 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
         </div>
       )}
 
+      {conversaEncerrada && (
+        <p className="mt-4 text-stone-500 text-xs italic font-serif tracking-wide" data-conversa-encerrada>
+          O interrogatório se encerra; as perguntas feitas não se refazem.
+        </p>
+      )}
+
       <p className="mt-5 text-stone-400 text-xs italic font-serif tracking-wide">
-        Apresentar uma prova exige tê-la registrado na mesa. Interrogar não custa tempo; o relógio
-        só corre quando você viaja.
+        A conversa desce e não volta: cada pergunta escolhida descarta as outras. Apresentar uma prova
+        exige tê-la na mesa e não gasta a vez. Interrogar não custa tempo; o relógio só corre quando
+        você viaja.
       </p>
     </Overlay>
   );

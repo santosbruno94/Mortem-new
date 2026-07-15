@@ -4,6 +4,8 @@ import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
 import { obterDialogo } from '../data/dialogos.js';
 import { formatDuracao } from '../logic/tempo.js';
+import { resumoVisita } from '../logic/resumoVisita.js';
+import { textoLembreteVisita } from '../logic/lembreteTexto.js';
 import CartaMesa from './CartaMesa.jsx';
 
 // =====================================================================
@@ -59,6 +61,7 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
+  const nosVisitados = useJogo((s) => s.nosVisitados);
   const abrirFicha = useJogo((s) => s.abrirFicha);
   const ultimaCartaPousada = useJogo((s) => s.ultimaCartaPousada);
 
@@ -124,6 +127,12 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
         const aqui = loc.id === localidadeAtual;
         const novo = nosNovos.includes(loc.id);
         const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
+        // Lembrete de visita: um local já visitado (e que não é o atual)
+        // recorda quem recebeu o perito e quantas observações ficaram.
+        const lembrete =
+          nosVisitados.includes(loc.id) && !aqui
+            ? textoLembreteVisita(resumoVisita(loc.id, cartasRegistradas))
+            : '';
         return (
           <CartaMesa key={loc.id} id={`loc_${loc.id}`} pos={posLoc[i]} aoClicar={() => aoAbrirNo(loc)}>
             <div
@@ -148,6 +157,11 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
               <p className="text-stone-300 text-[10px] mt-2 tracking-wide">
                 {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
               </p>
+              {lembrete && (
+                <p className="rotulo-lembrete text-latao-claro/70 text-[10px] mt-1 leading-snug">
+                  visitado · {lembrete}
+                </p>
+              )}
             </div>
           </CartaMesa>
         );

@@ -62,10 +62,25 @@ export function estadoInicialCaso() {
     // perguntado" na UI) — não move o relógio e o motor jamais o lê. Reler nós
     // já visitados é livre (relógio mole).
     nosVisitadosDialogo: {}, // { [suspeitoId]: [noId, ...] }
+    // Nó de fala CORRENTE de cada interrogatório (§7.2): a árvore agora é
+    // SEQUENCIAL e sem volta — o perito escolhe um dos quatro tons e a
+    // conversa desce, sem reoferecer os irmãos. Por isso o nó corrente
+    // PRECISA persistir (reabrir retoma onde parou, não recomeça): a
+    // escolha é definitiva. Dado puro de UI — o motor jamais o lê.
+    noAtualDialogo: {}, // { [suspeitoId]: noId }
     // Provas já apresentadas em cena, por interrogado (Onda 5): estado
     // "feito" do seletor "Apresentar uma prova…". Dado puro de UI —
     // o motor não lê. { [suspeitoId]: [cartaId, ...] }
     provasApresentadas: {},
+    // SEMENTE §7.3 (INERTE): a mecânica futura de "confrontar faz o personagem
+    // AGIR" — mexer com as provas no mapa, fora do olhar do perito, ou chegar
+    // à cena ao mesmo tempo que ele (concomitância). HOJE nada disto executa:
+    // registrarConfronto só anota o evento; estadosSuspeito fica em 'presente';
+    // o relógio não anda e nenhum nó do mapa muda. Fica pronta para ligar
+    // quando o design amadurecer (ver MORTEM_CONTEXTO.md §7.3 e CONSEQUENCIAS_
+    // CONFRONTO em src/data/confrontos.js). O motor de veredicto jamais lê.
+    estadosSuspeito: {}, // { [suspeitoId]: 'presente'|'agitado'|'ausente' }
+    eventosConfronto: [], // [{ suspeitoId, cartaId, consequencia, hora }]
     nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
     // Reincidência POR CÓDIGO de falha do veredicto (dado de UI: a cortesia
     // do tutorial escala a dica na segunda queda no MESMO ponto; o motor
@@ -146,6 +161,9 @@ export const useJogo = create(
       localidadeAtual: 'cena', // o perito chega à cena (a relojoaria) às 11h
       nosVisitados: ['cena'],
       nosVisitadosDialogo: {},
+      noAtualDialogo: {},
+      estadosSuspeito: {},
+      eventosConfronto: [],
       log: [
         ...s.log,
         { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
@@ -184,6 +202,12 @@ export const useJogo = create(
       };
     }),
 
+  // Fixa o nó de fala corrente de um interrogatório (§7.2). A árvore é
+  // sequencial e sem volta: gravar o nó torna a escolha definitiva entre
+  // sessões (reabrir retoma aqui). Custo zero (relógio mole); o motor não lê.
+  definirNoDialogo: (suspeitoId, noId) =>
+    set((s) => ({ noAtualDialogo: { ...s.noAtualDialogo, [suspeitoId]: noId } })),
+
   // Apresentar uma prova em cena (§7.1, Onda 5). Custo zero (interrogar é
   // relógio mole). Registra o "já apresentada" e, quando a carta desmente o
   // paradeiro do PRÓPRIO interrogado (função pura ligacaoDeConfrontoEmCena,
@@ -206,6 +230,20 @@ export const useJogo = create(
     get().adicionarLigacao(par[0], par[1]);
     if (!jaLigada) get().registrarLog('O confronto ficou anotado ao mural.');
   },
+
+  // SEMENTE §7.3 (STUB, INERTE): registra que um confronto PODERIA fazer o
+  // suspeito agir (consequencia vem de CONSEQUENCIAS_CONFRONTO, enum). HOJE
+  // apenas ANOTA o evento — não muda estadosSuspeito, não move o relógio, não
+  // altera a disponibilidade de nós. Ninguém a chama ainda (nem apresentarProva):
+  // é a estrutura pronta para o executor futuro (ver MORTEM_CONTEXTO.md §7.3). A
+  // hora gravada é o relógio do jogo (determinístico) — nunca Date.now().
+  registrarConfronto: (suspeitoId, cartaId, consequencia) =>
+    set((s) => ({
+      eventosConfronto: [
+        ...s.eventosConfronto,
+        { suspeitoId, cartaId, consequencia, hora: s.horasJogo },
+      ],
+    })),
 
   // Viagem entre nós do mapa: a ÚNICA ação que avança o relógio. Dentro de
   // um local o tempo congela. O custo (horas) vem de src/data/mapa.js.
