@@ -41,6 +41,7 @@ import {
 } from '../src/data/pacote_caso.js';
 import { MANIFESTO_ASSETS } from '../src/data/manifesto_assets.js';
 import { SLOTS_ASSETS, DIR_BASE_ASSETS } from '../src/data/slots_assets.js';
+import { CAMADAS_RETRATO } from '../src/data/camadas_retrato.js';
 
 // ============================================================
 // O CASO SOB TESTE É UM PACOTE. As guardas estáticas rodam contra o pacote
@@ -645,6 +646,42 @@ if (arteImportadaDireto.length) {
 }
 
 // ============================================================
+// GUARDA DO RETRATO EM CAMADAS (FASE 3): todo molde de camada resolve uma
+// chave de asset BEM-FORMADA para o genótipo de qualquer personagem — sem
+// {campo} residual, sem 'undefined', sem segmento vazio (ex.: 'cabelo/_x').
+// O compositor (import.meta.glob, só Vite) NÃO é importado aqui; a chave é
+// reimplementada em node e testada como dado. E o MOTOR não lê o compositor.
+// A aparência segue fora do motor (guarda motorSemAparencia acima).
+// ============================================================
+const chaveDaCamadaLocal = (ap, molde) =>
+  molde.replace(/\{([^}]+)\}/g, (_, campo) => campo.split('.').reduce((o, k) => (o == null ? o : o[k]), ap) ?? '');
+const genotiposParaGuarda = [
+  'vitima',
+  'silas_crane',
+  'walter_arthurs',
+  'agnes_rooke',
+  'caleb_grey',
+  'davey_tull',
+  'delegado_wycliffe',
+  'moco_padeiro',
+  'sra_wick',
+]
+  .map((id) => obterAparencia(id))
+  .concat([derivarAparenciaDeSeed(SEED_TUTORIAL, 'gerado_a'), derivarAparenciaDeSeed(SEED_TUTORIAL, 'gerado_b')]);
+const camadasBemFormadas =
+  CAMADAS_RETRATO.length > 0 &&
+  genotiposParaGuarda.every((ap) =>
+    CAMADAS_RETRATO.every((c) => {
+      const k = chaveDaCamadaLocal(ap, c.chave);
+      return !/[{}]/.test(k) && !/undefined/.test(k) && !/\/_|_$|\/$|^\//.test(k);
+    })
+  );
+const motorSemCompositorRetrato = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) => !/comporRetrato|logic\/retrato|camadas_retrato/.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
+);
+const retratoEmCamadasOk = camadasBemFormadas && motorSemCompositorRetrato;
+
+// ============================================================
 // GUARDA DA CAMADA VISUAL 3D: todo nó do mapa tem lugar e forma na
 // maquete (senão o nó desbloqueado não aparece no diorama), e todo
 // hotspot do corpo aponta para uma carta que EXISTE no catálogo.
@@ -986,6 +1023,7 @@ const checagens = [
   ['Epílogo determinístico; a conta do perito lê a hora do selo', epilogoDeterministico],
   ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
   ['Contrato de assets: manifesto válido (arquivo, dimensão, licença) e sem arte fora do manifesto', manifestoValido],
+  ['Retrato em camadas: moldes bem-formados e compositor fora do motor', retratoEmCamadasOk],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
   ['Modo purista fora do motor: veredicto/acusação não leem a flag (Onda 8)', motorSemPurista],

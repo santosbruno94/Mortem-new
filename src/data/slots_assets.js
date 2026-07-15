@@ -54,8 +54,11 @@ export const ACERVOS_DOMINIO_PUBLICO = [
 export const SLOTS_ASSETS = {
   retrato: {
     id: 'retrato',
-    descricao: 'Retrato de personagem (ficha) — gravura quadrada.',
-    dimensoes: { largura: 320, altura: 320 },
+    // Proporção 4:5 (o retrato é renderizado numa moldura de busto, viewBox
+    // 120×150, altura = tamanho×1.25); 480×600 = viewBox ×4. As CAMADAS do
+    // paper-doll (camadas_retrato.js) são autoradas nesta caixa.
+    descricao: 'Retrato de personagem (ficha) — gravura de busto, 4:5.',
+    dimensoes: { largura: 480, altura: 600 },
     formatos: ['svg', 'png'],
   },
   ilustracao_local: {
