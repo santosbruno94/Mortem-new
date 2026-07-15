@@ -81,6 +81,12 @@ export function estadoInicialCaso() {
     // CONFRONTO em src/data/confrontos.js). O motor de veredicto jamais lê.
     estadosSuspeito: {}, // { [suspeitoId]: 'presente'|'agitado'|'ausente' }
     eventosConfronto: [], // [{ suspeitoId, cartaId, consequencia, hora }]
+    // #5 — a escolha ATIVA do meio da investigação: duas horas se
+    // contradizem (o corpo × o avistamento do padeiro) e o perito firma de
+    // qual partir ANTES de seguir. Irreversível e narrativa: registra a
+    // hipótese de trabalho, mas NÃO toca o veredicto (o mural decide). Dado
+    // puro de UI — o motor não lê. null | 'relato' | 'corpo'.
+    escolhaContradicao: null,
     nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
     // Reincidência POR CÓDIGO de falha do veredicto (dado de UI: a cortesia
     // do tutorial escala a dica na segunda queda no MESMO ponto; o motor
@@ -164,6 +170,7 @@ export const useJogo = create(
       noAtualDialogo: {},
       estadosSuspeito: {},
       eventosConfronto: [],
+      escolhaContradicao: null,
       log: [
         ...s.log,
         { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
@@ -230,6 +237,23 @@ export const useJogo = create(
     get().adicionarLigacao(par[0], par[1]);
     if (!jaLigada) get().registrarLog('O confronto ficou anotado ao mural.');
   },
+
+  // #5 — firma a escolha da contradição de horas (irreversível). Registra a
+  // hipótese de trabalho e anota o diário; NÃO toca o veredicto (o mural
+  // decide). Custo zero (reflexão, não viagem). Idempotente: uma vez firmada,
+  // não se refaz — a decisão é para valer.
+  resolverContradicao: (escolha) =>
+    set((s) => {
+      if (s.escolhaContradicao || (escolha !== 'relato' && escolha !== 'corpo')) return {};
+      const texto =
+        escolha === 'corpo'
+          ? 'Firmei-me: parto do que o corpo diz; o relato que o desminta que se explique.'
+          : 'Firmei-me: parto do relato do moço do padeiro; que o corpo se explique depois.';
+      return {
+        escolhaContradicao: escolha,
+        log: [...s.log, { hora: s.horasJogo, texto }],
+      };
+    }),
 
   // SEMENTE §7.3 (STUB, INERTE): registra que um confronto PODERIA fazer o
   // suspeito agir (consequencia vem de CONSEQUENCIAS_CONFRONTO, enum). HOJE
@@ -313,6 +337,22 @@ export const useJogo = create(
       log.push({
         hora: s.horasJogo,
         texto: `Novo destino no mapa: ${noRevelado ? noRevelado.rotulo : lead.revelaNo}. ${lead.nota || ''}`.trim(),
+      });
+    }
+    // #5 — a contradição de horas (o corpo × o avistamento do padeiro):
+    // quando o par se completa na mesa, o diário aponta o ponto a decidir na
+    // caderneta (o perito ainda não escolheu). Dispara UMA vez, na transição.
+    const idsDepois = [...s.cartasRegistradas.map((c) => c.id), carta.id];
+    const CORPO_HORA = ['ev_rigor', 'ev_livores'];
+    const parCompletoAgora =
+      idsDepois.includes('dep_avistamento_padeiro') && idsDepois.some((id) => CORPO_HORA.includes(id));
+    const parCompletoAntes =
+      s.cartasRegistradas.some((c) => c.id === 'dep_avistamento_padeiro') &&
+      s.cartasRegistradas.some((c) => CORPO_HORA.includes(c.id));
+    if (parCompletoAgora && !parCompletoAntes && !s.escolhaContradicao) {
+      log.push({
+        hora: s.horasJogo,
+        texto: 'Duas horas se contradizem: o corpo e o moço do padeiro. Há um ponto a decidir na caderneta.',
       });
     }
     // Só a PRIMEIRA evidência do caso se apresenta em ficha (aprende-se o
