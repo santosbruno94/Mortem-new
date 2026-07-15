@@ -66,7 +66,7 @@ function Telhado({ forma, emissiva, intensidade }) {
   );
 }
 
-export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo, aoClicar, luzRef }) {
+export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo, aoClicar, luzRef, resumo }) {
   const grupo = useRef();
   const lampadas = useRef([]);
   const [hover, setHover] = useState(false);
@@ -229,6 +229,7 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
           custo={custo}
           interativo={interativo}
           destacado={hover}
+          resumo={resumo}
           aoClicar={aoClicar}
           aoEntrar={() => setHover(true)}
           aoSair={() => setHover(false)}

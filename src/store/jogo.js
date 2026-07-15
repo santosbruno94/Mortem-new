@@ -28,6 +28,10 @@ export function buildDetective() {
 // caso-escola deixa de ser grátis — a audiência adia-se a cada retentativa.
 export const CUSTO_REVISAO = 2;
 
+// Limite de perguntas por interrogatório (§7.2): o perito escolhe 2 de 4
+// assuntos — as demais se perdem. Apresentar prova é ortogonal (sem limite).
+export const MAX_PERGUNTAS = 2;
+
 // ---------------------------------------------------------------------
 // O estado de dado de UM caso, num factory: é a fonte única tanto do
 // arranque quanto do "Recomeçar do zero" (reiniciarCaso). Só dado puro,
@@ -66,6 +70,8 @@ export function estadoInicialCaso() {
     // "feito" do seletor "Apresentar uma prova…". Dado puro de UI —
     // o motor não lê. { [suspeitoId]: [cartaId, ...] }
     provasApresentadas: {},
+    escolhasDialogo: {},
+    eventosConfronto: [],
     nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
     // Reincidência POR CÓDIGO de falha do veredicto (dado de UI: a cortesia
     // do tutorial escala a dica na segunda queda no MESMO ponto; o motor
@@ -206,6 +212,26 @@ export const useJogo = create(
     get().adicionarLigacao(par[0], par[1]);
     if (!jaLigada) get().registrarLog('O confronto ficou anotado ao mural.');
   },
+
+  registrarConfronto: (suspeitoId, cartaId, consequencia) => {
+    if (!consequencia) return;
+    const s = get();
+    set({
+      eventosConfronto: [
+        ...s.eventosConfronto,
+        { suspeitoId, cartaId, tipo: consequencia.tipo, horaLogica: s.horasJogo },
+      ],
+    });
+  },
+
+  registrarEscolhaDialogo: (suspeitoId, opcaoId) =>
+    set((s) => {
+      const feitas = s.escolhasDialogo[suspeitoId] || [];
+      if (feitas.includes(opcaoId)) return {};
+      return {
+        escolhasDialogo: { ...s.escolhasDialogo, [suspeitoId]: [...feitas, opcaoId] },
+      };
+    }),
 
   // Viagem entre nós do mapa: a ÚNICA ação que avança o relógio. Dentro de
   // um local o tempo congela. O custo (horas) vem de src/data/mapa.js.

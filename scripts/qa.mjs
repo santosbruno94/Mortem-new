@@ -623,6 +623,31 @@ if (!dialogosIntegros) {
 }
 
 // ============================================================
+// GUARDA DAS ESCOLHAS IRREVERSÍVEIS (§7.2): cada diálogo deve ter
+// exatamente 4 opções de pergunta (com `id` único) no nó de abertura
+// e um campo `falaEsgotada` não vazio.
+// ============================================================
+const opcoesHubInvalidas = [];
+const falaEsgotadaFaltando = [];
+for (const [localidadeId, dialogo] of Object.entries(DIALOGOS)) {
+  const abertura = dialogo.nos[dialogo.noInicial];
+  if (!abertura) continue;
+  const perguntas = (abertura.opcoes || []).filter((op) => op.id && !op.requerCarta);
+  if (perguntas.length !== 4)
+    opcoesHubInvalidas.push(`${localidadeId}: ${perguntas.length} perguntas (esperado 4)`);
+  const ids = perguntas.map((p) => p.id);
+  if (new Set(ids).size !== ids.length)
+    opcoesHubInvalidas.push(`${localidadeId}: ids duplicados`);
+  if (!dialogo.falaEsgotada || dialogo.falaEsgotada.length === 0)
+    falaEsgotadaFaltando.push(localidadeId);
+}
+const escolhasIntegras = opcoesHubInvalidas.length === 0 && falaEsgotadaFaltando.length === 0;
+if (!escolhasIntegras) {
+  console.log('\n§7.2 — hub com opções erradas:', opcoesHubInvalidas.join('; ') || '—');
+  console.log('§7.2 — falaEsgotada faltando:', falaEsgotadaFaltando.join(', ') || '—');
+}
+
+// ============================================================
 // GUARDA GLOBAL DE ALCANÇABILIDADE (Onda 6): toda carta do catálogo
 // nasce de algum [[id]] — prosa/introdução/pontos de localidade ou fala
 // de árvore de diálogo. Mover prosa entre camadas (localidade → árvore)
@@ -705,6 +730,7 @@ const checagens = [
   ['Alcançabilidade global (Onda 6): toda carta nasce de algum [[id]]', cartasInalcancaveis.length === 0],
   ['Apresentação em cena anota refuta_alibi no mural (Onda 5)', parCena && confrontoClassificado],
   ['Prova alheia apresentada cai na evasiva sem anotar nada (Onda 5)', soUmaLigacaoCena && apresentadasMarcadas],
+  ['Diálogos §7.2: 4 opções com id único por hub e falaEsgotada presente', escolhasIntegras],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

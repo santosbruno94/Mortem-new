@@ -192,9 +192,12 @@ async function extrairTermosVisiveis(page) {
 async function percorrerDialogo(page) {
   await extrairTermosVisiveis(page); // a fala de abertura (ex.: o vidro na bainha)
   const seletorAssunto = '.opcao-dialogo:not(.opcao-dialogo--confronto):not(.opcao-dialogo--voltar)';
+  // §7.2: o perito faz 2 de 4 perguntas (MAX_PERGUNTAS). Opções consumidas
+  // desaparecem do hub, por isso clica sempre .first().
   const n = await page.locator(seletorAssunto).count();
-  for (let i = 0; i < n; i++) {
-    await page.locator(seletorAssunto).nth(i).click(); // no hub, a ordem é estável
+  const limite = Math.min(n, 2);
+  for (let i = 0; i < limite; i++) {
+    await page.locator(seletorAssunto).first().click();
     await espera(page, 250);
     await extrairTermosVisiveis(page);
     const voltar = page.locator('.opcao-dialogo--voltar');
@@ -380,11 +383,21 @@ async function main() {
     await visitarEExtrair(page, 'A Oficina'); // desbloqueia o Gabinete (lead do livro de ordens)
     // Onda 6: Davey conversa em diálogo embutido — o hábito da corda e o
     // álibi dele nascem das falas, não mais de um ponto de interesse.
-    await conversarEmbutido(page, 'Conversar com Davey Tull');
-    // A abertura de Davey não tem termo; reabrir o assunto prova a extração.
+    // Onda 6: Davey conversa em diálogo embutido — §7.2: 2 de 4 perguntas.
+    // Dirige-se manualmente as duas perguntas (costumes + sexta) para checar
+    // a extração antes de consumir o segundo slot.
+    await page.getByRole('button', { name: 'Conversar com Davey Tull' }).click();
+    await espera(page, 400);
+    await extrairTermosVisiveis(page);
     await page.getByRole('button', { name: 'Os costumes do patrão' }).click();
     await espera(page, 250);
+    await extrairTermosVisiveis(page);
     checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
+    await page.locator('.opcao-dialogo--voltar').first().click();
+    await espera(page, 200);
+    await page.getByRole('button', { name: 'A noite de sexta-feira' }).click();
+    await espera(page, 250);
+    await extrairTermosVisiveis(page);
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
 
@@ -392,7 +405,7 @@ async function main() {
     // Interrogar é escolher e confrontar: o nó abre em diálogo, o confronto
     // fica OCULTO até a prova estar na mesa, e as cartas nascem de dentro da
     // fala pelo mesmo [[id]] das localidades.
-    await abrirNo(page, 'Silas Crane');
+    await abrirNo(page, 'A Saleta');
     checar('Fase 3: o interrogatório abre em diálogo (opções do perito)', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     checar('Fase 3: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
     // Onda 5: o seletor "Apresentar uma prova…" só lista o que está na mesa —
@@ -438,7 +451,7 @@ async function main() {
     // está na mesa e o seletor (Onda 5) a lista; apresentá-la rende a reação
     // de Silas (observável, nunca confissão — o veredicto é do mural) e ANOTA
     // a refutação do paradeiro dele no mural (barbante removível).
-    await abrirNo(page, 'Silas Crane');
+    await abrirNo(page, 'A Saleta');
     await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
     await espera(page, 200);
     checar('Rota 1: prova colhida aparece no seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 1);
@@ -458,7 +471,7 @@ async function main() {
     await fecharOverlay(page);
     // Onda 6: Agnes e Grey agora recebem em DIÁLOGO (conversão integral) —
     // as cartas (álibi, comportamento) nascem das falas, pelos assuntos.
-    await interrogarEExtrair(page, 'Sra. Agnes Rooke');
+    await interrogarEExtrair(page, 'A Papelaria');
     checar('Onda 6: a papelaria abre em diálogo', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     await fecharOverlay(page);
     await interrogarEExtrair(page, 'O Moinho');
@@ -611,7 +624,7 @@ async function main() {
     console.log('\n=== ROTA 3 — Intuitivo (Harlan) → Impunidade ===');
     await novaPartida(page, 'Dr. Harlan Blackwell');
 
-    await interrogarEExtrair(page, 'Silas Crane'); // §7.1: o interrogatório é diálogo
+    await interrogarEExtrair(page, 'A Saleta'); // §7.1: o interrogatório é diálogo
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Delegacia'); // inclui o "visto com vida" (janela aberta)
     await fecharOverlay(page);

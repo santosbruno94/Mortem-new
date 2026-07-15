@@ -4,6 +4,7 @@ import { LOCALIDADES } from '../data/localidades.js';
 import { custoViagem } from '../data/mapa.js';
 import { obterDialogo } from '../data/dialogos.js';
 import { formatDuracao } from '../logic/tempo.js';
+import { resumoVisita } from '../logic/resumoVisita.js';
 import CartaMesa from './CartaMesa.jsx';
 
 // =====================================================================
@@ -59,6 +60,7 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
+  const nosVisitados = useJogo((s) => s.nosVisitados);
   const abrirFicha = useJogo((s) => s.abrirFicha);
   const ultimaCartaPousada = useJogo((s) => s.ultimaCartaPousada);
 
@@ -148,6 +150,17 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
               <p className="text-stone-300 text-[10px] mt-2 tracking-wide">
                 {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
               </p>
+              {(() => {
+                if (!nosVisitados.includes(loc.id)) return null;
+                const r = resumoVisita(loc.id, cartasRegistradas);
+                if (!r.personagemNome && r.nCartas === 0) return null;
+                return (
+                  <p className="text-stone-400 text-[9px] mt-1 italic font-serif leading-tight">
+                    {r.personagemNome}{r.personagemNome && r.nCartas > 0 ? ' · ' : ''}
+                    {r.nCartas > 0 && `${r.nCartas} obs.`}
+                  </p>
+                );
+              })()}
             </div>
           </CartaMesa>
         );
