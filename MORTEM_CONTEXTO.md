@@ -122,6 +122,16 @@ em `src/data/mapa_espacial.js` e `src/data/hotspots_corpo.js` (camada visual —
 nunca lê), e **fallback 2D obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D,
 a grade de localidades original joga idêntico. Diálogos e pessoas permanecem 2D.
 
+**Asset 2D sob contrato (jul/2026):** a regra do 3D segue 100% procedural (proibido
+GLTF/textura de arquivo); mas a camada **2D** passa a admitir asset externo sob
+contrato — permitido desde que (a) embarcado no bundle (zero rede); (b) escolhido
+deterministicamente por `hashString` salgado (nunca sorteio); (c) invisível ao motor;
+(d) com **fallback procedural obrigatório** (ausente/inválido, o SVG/CSS atual assume e
+o jogo joga idêntico); (e) inscrito no **manifesto de assets** com dimensões do slot e
+proveniência de licença, sob guarda do `qa.mjs`. Textura gerada em canvas pela seed
+continua permitida (é código, não arquivo). A abertura vale só para 2D; o diorama e o
+corpo permanecem procedurais.
+
 O diorama tem **teatro** (§5.2), tudo apresentação lendo estado derivado (nunca o
 motor): a **luz segue o relógio** (`CICLO_LUZ` + `interpolarLuz(horasJogo)` — tarde
 dourada → crepúsculo → noite com lampiões âmbar, com névoa baixa de outubro; puro,
@@ -899,6 +909,17 @@ src/
 - Código e comentários em português.
 - Repositório: `github.com/santosbruno94/mortem-new`. Commits entre cada incremento
   maior.
+
+**Direção arquitetural (jul/2026 — fundações do gerador procedural):** o caso, hoje
+espalhado por `seed.js`/`cartas.js`/`localidades.js`/`mapa.js`/`dialogos.js`/etc. e com
+valores de caso cravados no motor (`HORAS_CHEGADA_CENA`, `AMBIENTE_PADRAO`, calendário),
+passará a ser UM **pacote de caso** serializável — objeto JSON único que o motor carrega,
+contrato de saída do futuro gerador e prova de que "trocar a narrativa não toca o motor".
+Sobre ele assentam: o **manifesto de assets** (asset 2D sob contrato, §3), retratos em
+camadas, resource binding de prosa por slots tipados, taxonomia de **papéis dramáticos**
+gerador-facing (nunca lida pelo veredicto) e o eco do mestre sobre falhas. Nada disso
+altera as regras invioláveis: motor lê só `tagsOcultas` + seed; camada visual/narrativa
+jamais lida pela lógica.
 
 ---
 
