@@ -730,13 +730,6 @@ body {
   color: #6b4f2c;
   margin-top: 2px;
 }
-.rotulo-resumo {
-  font-size: 8px;
-  font-style: italic;
-  color: #7a6548;
-  margin-top: 1px;
-  white-space: nowrap;
-}
 .rotulo-novo-marca {
   color: #9e2a2b;
   font-weight: 600;

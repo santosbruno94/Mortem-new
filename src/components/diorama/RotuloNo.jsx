@@ -9,7 +9,7 @@ import { obterDialogo } from '../../data/dialogos.js';
 // verbo, rótulo, custo. O destaque de "novo" pulsa em CSS na própria tag
 // (não no emissivo 3D) — assim não força o frameloop contínuo da maquete.
 // =====================================================================
-export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado, resumo, aoClicar, aoEntrar, aoSair }) {
+export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado, aoClicar, aoEntrar, aoSair }) {
   // O verbo segue a árvore de diálogo: nó com árvore própria é interrogatório
   // (camada visual lendo dado narrativo — o motor não participa).
   const verbo = obterDialogo(loc.id) ? 'Interrogar' : 'Examinar';
@@ -40,12 +40,6 @@ export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado
         <span className="block rotulo-custo">
           {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
         </span>
-        {resumo && (resumo.personagemNome || resumo.nCartas > 0) && (
-          <span className="block rotulo-resumo">
-            {resumo.personagemNome}{resumo.personagemNome && resumo.nCartas > 0 ? ' · ' : ''}
-            {resumo.nCartas > 0 && `${resumo.nCartas} obs.`}
-          </span>
-        )}
       </button>
     </span>
   );
