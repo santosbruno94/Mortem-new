@@ -147,7 +147,18 @@ export default function MonologoFinal() {
           </ul>
         </div>
 
-        <div className="mt-8 flex justify-end">
+        {/* O gancho de replay: o mesmo caso admite outra leitura. Convida a
+            uma segunda tentativa — atrás da Vitória Absoluta, se o desfecho
+            ficou aquém dela. */}
+        <div className="mt-8 max-w-prose mx-auto text-center">
+          <p className="font-serif italic text-stone-400 text-sm leading-relaxed" data-convite-replay>
+            {vitoria
+              ? 'O caso está selado sem uma falha. Fechar o caderno o devolve ao começo — outro método, outra ordem de perguntas, e a vila responde diferente.'
+              : 'A verdade coube, mas não inteira. Fechar o caderno recomeça o caso do zero: outro caminho de perguntas pode alcançar a Vitória Absoluta.'}
+          </p>
+        </div>
+
+        <div className="mt-5 flex justify-end">
           <button
             onClick={() => {
               // O caderno fecha de vez: apaga o save antes do reload, para a

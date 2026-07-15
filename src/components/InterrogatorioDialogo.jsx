@@ -4,6 +4,7 @@ import { interpolar } from '../logic/interpolar.js';
 import { obterLocalidade } from '../data/localidades.js';
 import { obterDialogo } from '../data/dialogos.js';
 import { obterNo } from '../data/mapa.js';
+import { confrontoSemParadeiro } from '../logic/acusacao.js';
 import { ParagrafoProsa } from './ProsaComTermos.jsx';
 import PlantaRelojoaria from './PlantaRelojoaria.jsx';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
@@ -53,6 +54,9 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const [reacaoAtual, setReacaoAtual] = useState(null);
   const [apresentando, setApresentando] = useState(false);
   const [cartaApresentada, setCartaApresentada] = useState(null);
+  // Aviso quando a prova DESMENTIRIA o paradeiro, mas o interrogado ainda
+  // não o declarou — a reação joga, mas nenhuma ligação nasce no mural.
+  const [semParadeiro, setSemParadeiro] = useState(false);
   if (!dialogo || (localidadeId && !localidade)) return null;
   const titulo = localidade ? localidade.titulo : dialogo.titulo;
   const subtitulo = localidade ? localidade.subtitulo : dialogo.subtitulo;
@@ -75,6 +79,7 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const irPara = (destino) => {
     setReacaoAtual(null);
     setCartaApresentada(null);
+    setSemParadeiro(false);
     definirNoDialogo(suspeitoId, destino);
     visitarNoDialogo(suspeitoId, destino);
   };
@@ -83,6 +88,10 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // confronto de paradeiro, quando é o caso) e mostra a reação SEM descer a
   // árvore — canal lateral. "Retomar" devolve ao beat corrente.
   const apresentar = (carta) => {
+    // Detecta o no-op de mural ANTES de apresentar (o estado da mesa é o
+    // mesmo): a prova toca o paradeiro do interrogado, mas o álibi dele
+    // ainda não foi declarado — a reação joga, porém nada se anota.
+    setSemParadeiro(confrontoSemParadeiro(carta, suspeitoId, cartasRegistradas));
     apresentarProva(suspeitoId, carta.id);
     const destino = (dialogo.reacoesProva || {})[carta.id] || dialogo.noEvasiva;
     setReacaoAtual(destino);
@@ -93,6 +102,7 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const retomarConversa = () => {
     setReacaoAtual(null);
     setCartaApresentada(null);
+    setSemParadeiro(false);
   };
 
   // O retrato segue o interrogado (suspeitoId); nas conversões antigas o
@@ -132,6 +142,15 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       {cartaApresentada && (
         <p className="mb-3 text-stone-400 text-xs italic font-serif" data-prova-apresentada>
           Sobre a mesa, entre os dois: “{cartaApresentada.textoDisplay}”.
+        </p>
+      )}
+
+      {/* Confronto de paradeiro sem paradeiro declarado: a prova o desmentiria,
+          mas ele ainda não deu a sua noite — nada se anota ao mural. */}
+      {semParadeiro && (
+        <p className="mb-3 text-amber-300/80 text-xs italic font-serif" data-sem-paradeiro>
+          Ainda não há paradeiro declarado para confrontar: pergunte-lhe a noite de
+          sexta antes de lhe pôr isto diante dos olhos.
         </p>
       )}
 

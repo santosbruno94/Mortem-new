@@ -56,7 +56,8 @@ export default function Abertura() {
         {passo.briefing && (
           <div className="mt-8 space-y-3">
             <p className="font-serif italic text-stone-400 text-sm tracking-wide">
-              Perguntas ao Delegado (não custam tempo):
+              Perguntas ao Delegado <span className="text-latao-claro/70">(não custam tempo — o que não
+              perguntar aqui, fica por saber)</span>:
             </p>
             {PERGUNTAS_BRIEFING.map((q) => {
               const feita = perguntasFeitas.includes(q.id);
@@ -83,7 +84,14 @@ export default function Abertura() {
           </div>
         )}
 
-        <div className="mt-10 flex justify-end">
+        <div className="mt-10 flex flex-col items-end gap-2">
+          {passo.briefing && perguntasFeitas.length < PERGUNTAS_BRIEFING.length && (
+            <p className="text-latao-claro/60 text-xs italic font-serif" data-perguntas-pendentes>
+              {PERGUNTAS_BRIEFING.length - perguntasFeitas.length === 1
+                ? 'Resta 1 pergunta por fazer; entrar a deixa para trás.'
+                : `Restam ${PERGUNTAS_BRIEFING.length - perguntasFeitas.length} perguntas por fazer; entrar as deixa para trás.`}
+            </p>
+          )}
           <button
             onClick={() => {
               tocarSom('pena');

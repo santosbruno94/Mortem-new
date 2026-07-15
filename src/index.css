@@ -746,6 +746,16 @@ body {
 .rotulo-papel .rotulo-lembrete {
   color: #7a5c34;
 }
+
+/* Fundo da faixa do diorama (P3): o canvas 3D é transparente, então o vão
+   sob a maquete mostrava preto liso em telas largas. Uma mesa de madeira a
+   um foco de vela — quente sobre a maquete, sombra de tábua nas bordas e
+   no rodapé — faz o espaço ler como atmosfera, não como vazio. */
+.diorama-mesa-fundo {
+  background:
+    radial-gradient(115% 85% at 50% 36%, rgba(74, 52, 32, 0.6) 0%, rgba(28, 20, 13, 0.85) 52%, rgba(10, 7, 5, 1) 100%),
+    #0b0906;
+}
 .rotulo-novo-marca {
   color: #9e2a2b;
   font-weight: 600;
