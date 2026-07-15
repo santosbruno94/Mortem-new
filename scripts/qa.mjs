@@ -27,6 +27,8 @@ import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
+import { PAPEIS } from '../src/data/papeis.js';
+import { HABITOS } from '../src/data/curriculo.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
 import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.js';
 import { POSICOES_DIORAMA, FORMAS_PREDIO } from '../src/data/mapa_espacial.js';
@@ -526,6 +528,31 @@ const motorSemPurista = ['logic/veredicto.js', 'logic/acusacao.js'].every(
 );
 
 // ============================================================
+// GUARDA DE PAPÉIS DRAMÁTICOS (FASE 5): a taxonomia de casting é metadado do
+// gerador. Duas provas: (1) o MOTOR é cego a ela — veredicto.js/acusacao.js
+// não citam papel/papéis; (2) o casting e a taxonomia são íntegros — todo id
+// do elenco mapeia a um papel conhecido, os 5 suspeitos + Wycliffe têm papel,
+// e todo hábito pressuposto por um papel existe no currículo.
+// ============================================================
+const motorSemPapeis = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) => !/pap[eé]is|papelDramatico/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
+);
+const elenco = pacote.papeisDramaticos || {};
+const idsHabito = new Set(HABITOS.map((h) => h.id));
+const elencoValido =
+  Object.values(elenco).every((papelId) => PAPEIS[papelId] != null) &&
+  ['silas_crane', 'walter_arthurs', 'agnes_rooke', 'caleb_grey', 'davey_tull', 'delegado_wycliffe'].every(
+    (id) => elenco[id] != null
+  );
+const papeisReferenciamHabitosReais = Object.values(PAPEIS).every((p) =>
+  (p.habitosPressupostos || []).every((h) => idsHabito.has(h))
+);
+const papeisIntegros = elencoValido && papeisReferenciamHabitosReais;
+if (!papeisIntegros) {
+  console.log('\nPAPÉIS — casting ou taxonomia inválidos (elenco incompleto ou hábito inexistente).');
+}
+
+// ============================================================
 // GUARDA DA CAMADA VISUAL 3D: todo nó do mapa tem lugar e forma na
 // maquete (senão o nó desbloqueado não aparece no diorama), e todo
 // hotspot do corpo aponta para uma carta que EXISTE no catálogo.
@@ -869,6 +896,8 @@ const checagens = [
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
   ['Modo purista fora do motor: veredicto/acusação não leem a flag (Onda 8)', motorSemPurista],
+  ['Papéis fora do motor: veredicto/acusação não leem o casting (FASE 5)', motorSemPapeis],
+  ['Casting íntegro: elenco completo e papéis pressupõem hábitos reais (FASE 5)', papeisIntegros],
   ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
   ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],
