@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useJogo, MAX_PERGUNTAS } from '../store/jogo.js';
+import { useJogo } from '../store/jogo.js';
 import { interpolar } from '../logic/interpolar.js';
 import { obterLocalidade } from '../data/localidades.js';
 import { obterDialogo } from '../data/dialogos.js';
@@ -20,11 +20,21 @@ const ROTULOS_DOMINIO = {
   vestigio: 'Vestígio',
 };
 
-// Interrogatório como DIÁLOGO (§7.1 + §7.2): árvore ramificada determinística
-// com escolhas irreversíveis. O perito tem MAX_PERGUNTAS perguntas por
-// interrogado (2 de 4); as que não faz se perdem. Apresentar prova (Onda 5) é
-// ortogonal: o seletor aceita qualquer carta, sem limite. O nó corrente é
-// estado local; as escolhas feitas persistem em escolhasDialogo no store.
+// Interrogatório como DIÁLOGO (§7.1): substitui a prosa estática dos nós de
+// interrogatório por uma árvore ramificada determinística. O perito escolhe
+// o assunto (navegação livre — relógio mole) e, quando tem a prova na mesa,
+// pode CONFRONTAR o suspeito. Desde a Onda 5 o confronto é UNIVERSAL: o
+// seletor "Apresentar uma prova…" aceita QUALQUER carta registrada — as que
+// tocam o interrogado levam a reações próprias (`reacoesProva`), o resto cai
+// na evasiva da voz dele (`noEvasiva`). O seletor não telegrafa quais cartas
+// "queimam": só marca as já apresentadas. As falas surgem cartas pelo mesmo
+// mecanismo `[[id]]` das localidades; o motor não muda. O nó corrente é
+// estado local (reabrir começa no início); o "já perguntado" persiste no
+// store (nosVisitadosDialogo), o "já apresentada" em provasApresentadas.
+// Duas portas de entrada (Onda 6): `localidadeId` quando o NÓ DO MAPA é o
+// interrogatório (Silas, Agnes, Grey — conversão integral) e `dialogoId`
+// quando a pessoa vive dentro de um lugar (Walter, Davey — a árvore traz
+// `titulo`/`subtitulo` próprios e `origemLocalidade`).
 export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const detective = useJogo((s) => s.detective);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
@@ -32,10 +42,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const visitarNoDialogo = useJogo((s) => s.visitarNoDialogo);
   const provasApresentadas = useJogo((s) => s.provasApresentadas);
   const apresentarProva = useJogo((s) => s.apresentarProva);
-  const registrarConfronto = useJogo((s) => s.registrarConfronto);
-  const escolhasDialogo = useJogo((s) => s.escolhasDialogo);
-  const registrarEscolhaDialogo = useJogo((s) => s.registrarEscolhaDialogo);
-  const fecharOverlay = useJogo((s) => s.fecharOverlay);
 
   const dialogo = obterDialogo(dialogoId || localidadeId);
   const localidade = localidadeId ? obterLocalidade(localidadeId) : null;
@@ -51,22 +57,10 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const apresentadas = provasApresentadas[dialogo.suspeitoId] || [];
   const temCarta = (id) => cartasRegistradas.some((c) => c.id === id);
 
-  // Estado de escolhas do interrogatório (§7.2): 2 de 4 perguntas por suspeito.
-  const escolhas = escolhasDialogo[dialogo.suspeitoId] || [];
-  const esgotado = escolhas.length >= MAX_PERGUNTAS;
-  const noHub = noAtual === dialogo.noInicial;
-  const perguntasRestantes = Math.max(0, MAX_PERGUNTAS - escolhas.length);
-
   const irPara = (destino) => {
     setNoAtual(destino);
     setCartaApresentada(null);
     visitarNoDialogo(dialogo.suspeitoId, destino);
-  };
-
-  // Escolher assunto no hub (§7.2): registra a escolha (irreversível) e navega.
-  const escolherAssunto = (opcao) => {
-    registrarEscolhaDialogo(dialogo.suspeitoId, opcao.id);
-    irPara(opcao.vaiPara);
   };
 
   // O gesto de apresentar (Onda 5): registra no store (que anota ao mural o
@@ -75,8 +69,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const apresentar = (carta) => {
     apresentarProva(dialogo.suspeitoId, carta.id);
     const destino = (dialogo.reacoesProva || {})[carta.id] || dialogo.noEvasiva;
-    const consequencia = (dialogo.consequencias || {})[carta.id] || null;
-    registrarConfronto(dialogo.suspeitoId, carta.id, consequencia);
     setNoAtual(destino);
     setCartaApresentada(carta);
     visitarNoDialogo(dialogo.suspeitoId, destino);
@@ -90,19 +82,8 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // nos nós de mapa (no diálogo embutido não se anda pela planta).
   const naRelojoaria = !!localidade && obterNo(localidade.id)?.grupo === 'relojoaria';
 
-  // Opções visíveis: filtra confrontos sem carta E perguntas já consumidas.
-  const opcoesVisiveis = (no.opcoes || []).filter((op) => {
-    if (op.requerCarta && !temCarta(op.requerCarta)) return false;
-    if (noHub && op.id && escolhas.includes(op.id)) return false;
-    return true;
-  });
-
-  // No hub, separa perguntas (consomem slot, têm id, sem requerCarta) de confrontos autorais.
-  const perguntasHub = noHub ? opcoesVisiveis.filter((op) => op.id && !op.requerCarta) : [];
-  const confrontosHub = noHub ? opcoesVisiveis.filter((op) => !!op.requerCarta) : [];
-
-  // Nó folha: fora do hub e sem opções próprias — renderiza navegação contextual.
-  const ehFolha = !noHub && opcoesVisiveis.length === 0;
+  // Confrontos autorais (`requerCarta`) seguem ocultos até a prova existir.
+  const opcoesVisiveis = (no.opcoes || []).filter((op) => !op.requerCarta || temCarta(op.requerCarta));
 
   // O seletor só existe no hub da árvore, com evasiva definida e mesa não vazia.
   const podeApresentar =
@@ -126,7 +107,7 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       {/* A prova pousada diante do interrogado (linha conectiva do gesto) */}
       {cartaApresentada && (
         <p className="mb-3 text-stone-400 text-xs italic font-serif" data-prova-apresentada>
-          Sobre a mesa, entre os dois: &ldquo;{cartaApresentada.textoDisplay}&rdquo;.
+          Sobre a mesa, entre os dois: “{cartaApresentada.textoDisplay}”.
         </p>
       )}
 
@@ -137,93 +118,30 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
         ))}
       </div>
 
-      {/* Fala de esgotamento (§7.2): quando o perito já fez todas as perguntas,
-          o personagem acrescenta uma frase de despedida. */}
-      {noHub && esgotado && dialogo.falaEsgotada && (
-        <div className="mt-4 space-y-3">
-          {dialogo.falaEsgotada.map((t, i) => (
-            <ParagrafoProsa key={`esgotada_${i}`} texto={t} />
-          ))}
-        </div>
-      )}
-
-      {/* Narrativa de consequência (semente — infraestrutura futura) */}
-      {cartaApresentada && (dialogo.consequencias || {})[cartaApresentada.id]?.narrativa && (
-        <p className="mt-3 text-stone-400 text-xs italic font-serif">
-          {(dialogo.consequencias || {})[cartaApresentada.id].narrativa}
-        </p>
-      )}
-
       {/* As escolhas do perito: assuntos, confrontos e o seletor de provas */}
       <div className="mt-6 space-y-2" data-opcoes-dialogo>
-        {/* Perguntas do hub (§7.2): cada clique consome 1 de MAX_PERGUNTAS */}
-        {noHub && !esgotado && perguntasHub.map((op) => {
-          const jaVisto = visitados.includes(op.vaiPara);
-          return (
-            <button
-              key={op.id}
-              type="button"
-              className="opcao-dialogo"
-              onClick={() => escolherAssunto(op)}
-            >
-              <span className="opcao-marca" aria-hidden>
-                {jaVisto ? '§' : '›'}
-              </span>
-              <span className="opcao-rotulo-texto">{interpolar(op.rotulo, detective)}</span>
-              {jaVisto && <span className="opcao-visto">já perguntado</span>}
-            </button>
-          );
-        })}
-
-        {/* Confrontos autorais do hub (requerCarta) — ortogonais ao limite */}
-        {noHub && confrontosHub.map((op) => (
-          <button
-            key={op.rotulo}
-            type="button"
-            className="opcao-dialogo opcao-dialogo--confronto"
-            data-confronto=""
-            onClick={() => irPara(op.vaiPara)}
-          >
-            <span className="opcao-marca" aria-hidden>❦</span>
-            <span className="opcao-rotulo-texto">{interpolar(op.rotulo, detective)}</span>
-          </button>
-        ))}
-
-        {/* Opções de nós que não são o hub (respostas, confrontos etc.) */}
-        {!noHub && opcoesVisiveis.map((op) => {
+        {opcoesVisiveis.map((op) => {
           const ehConfronto = !!op.requerCarta;
-          const jaVisto = !ehConfronto && visitados.includes(op.vaiPara);
+          const ehVoltar = op.vaiPara === dialogo.noInicial;
+          const jaVisto = !ehConfronto && !ehVoltar && visitados.includes(op.vaiPara);
           return (
             <button
               key={op.rotulo}
               type="button"
-              className={`opcao-dialogo ${ehConfronto ? 'opcao-dialogo--confronto' : ''}`}
+              className={`opcao-dialogo ${ehConfronto ? 'opcao-dialogo--confronto' : ''} ${
+                ehVoltar ? 'opcao-dialogo--voltar' : ''
+              }`}
               data-confronto={ehConfronto ? '' : undefined}
               onClick={() => irPara(op.vaiPara)}
             >
               <span className="opcao-marca" aria-hidden>
-                {ehConfronto ? '❦' : jaVisto ? '§' : '›'}
+                {ehConfronto ? '❦' : ehVoltar ? '↩' : jaVisto ? '§' : '›'}
               </span>
               <span className="opcao-rotulo-texto">{interpolar(op.rotulo, detective)}</span>
               {jaVisto && <span className="opcao-visto">já perguntado</span>}
             </button>
           );
         })}
-
-        {/* Navegação contextual de folha: volta ao hub para outra pergunta ou
-            para apresentar provas. */}
-        {ehFolha && (
-          <button
-            type="button"
-            className="opcao-dialogo opcao-dialogo--voltar"
-            onClick={() => irPara(dialogo.noInicial)}
-          >
-            <span className="opcao-marca" aria-hidden>↩</span>
-            <span className="opcao-rotulo-texto">
-              {esgotado ? 'Voltar ao interrogatório' : 'Outra pergunta'}
-            </span>
-          </button>
-        )}
 
         {podeApresentar && (
           <button
@@ -235,18 +153,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
               ❦
             </span>
             <span className="opcao-rotulo-texto">Apresentar uma prova…</span>
-          </button>
-        )}
-
-        {/* Encerrar: no hub quando esgotado e não há mais o que fazer */}
-        {noHub && esgotado && (
-          <button
-            type="button"
-            className="opcao-dialogo opcao-dialogo--voltar"
-            onClick={() => fecharOverlay()}
-          >
-            <span className="opcao-marca" aria-hidden>↩</span>
-            <span className="opcao-rotulo-texto">Encerrar o interrogatório</span>
           </button>
         )}
       </div>
@@ -286,13 +192,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
             guardar as provas
           </button>
         </div>
-      )}
-
-      {/* Contador de perguntas restantes (só no hub, só antes de esgotar) */}
-      {noHub && !esgotado && (
-        <p className="mt-2 text-stone-500 text-[10px] tracking-wide">
-          {perguntasRestantes === 1 ? '1 pergunta restante' : `${perguntasRestantes} perguntas restantes`}
-        </p>
       )}
 
       <p className="mt-5 text-stone-400 text-xs italic font-serif tracking-wide">

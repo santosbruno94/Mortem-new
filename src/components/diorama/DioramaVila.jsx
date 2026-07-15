@@ -3,7 +3,6 @@ import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { useJogo } from '../../store/jogo.js';
 import { LOCALIDADES } from '../../data/localidades.js';
 import { custoViagem } from '../../data/mapa.js';
-import { resumoVisita } from '../../logic/resumoVisita.js';
 import {
   POSICOES_DIORAMA,
   FORMAS_PREDIO,
@@ -135,8 +134,6 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
-  const nosVisitados = useJogo((s) => s.nosVisitados);
-  const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const overlayAberto = useJogo((s) => s.overlay) !== null;
   // Vida na maquete (Onda 9): o guarda da delegacia segue o turno do relógio.
   const horasJogo = useJogo((s) => s.horasJogo);
@@ -216,7 +213,6 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
             interativo={!overlayAberto}
             aoClicar={() => aoAbrirNo(loc)}
             luzRef={luzRef}
-            resumo={nosVisitados.includes(loc.id) ? resumoVisita(loc.id, cartasRegistradas) : null}
           />
         );
       })}

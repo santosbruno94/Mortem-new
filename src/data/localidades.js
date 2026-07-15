@@ -116,7 +116,7 @@ export const LOCALIDADES = [
   },
   {
     id: 'interrogatorio_silas',
-    rotuloMesa: 'A Saleta',
+    rotuloMesa: 'Silas Crane',
     titulo: 'Interrogatório — Silas Crane',
     subtitulo: 'Primeiro-oficial da relojoaria, 47 anos',
     acoesEspeciais: [],
@@ -153,7 +153,7 @@ export const LOCALIDADES = [
   },
   {
     id: 'papelaria',
-    rotuloMesa: 'A Papelaria',
+    rotuloMesa: 'Sra. Agnes Rooke',
     titulo: 'A Papelaria da High Street',
     subtitulo: 'Sra. Agnes Rooke, viúva, 58 anos',
     acoesEspeciais: [],

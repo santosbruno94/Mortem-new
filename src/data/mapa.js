@@ -74,7 +74,7 @@ export const NOS_MAPA = [
   },
   {
     id: 'interrogatorio_silas',
-    rotulo: 'A Saleta',
+    rotulo: 'Silas Crane',
     grupo: 'relojoaria', // recebe o perito na saleta da relojoaria
     desbloqueadoInicio: true,
   },
@@ -92,7 +92,7 @@ export const NOS_MAPA = [
   },
   {
     id: 'papelaria',
-    rotulo: 'A Papelaria',
+    rotulo: 'Sra. Agnes Rooke',
     grupo: 'vila', // a papelaria da High Street
     desbloqueadoInicio: true,
   },
