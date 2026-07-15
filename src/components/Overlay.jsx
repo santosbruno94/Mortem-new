@@ -44,7 +44,7 @@ export default function Overlay({
             </div>
             <button
               onClick={fechar}
-              className="text-stone-400 hover:text-amber-200 transition-colors duration-gesto text-sm tracking-widest shrink-0 mt-1 px-3 py-2 -mr-2"
+              className="botao-fechar text-stone-400 hover:text-amber-200 transition-colors duration-gesto text-sm tracking-widest shrink-0 mt-1 px-3 py-2 -mr-2"
             >
               fechar ✕
             </button>

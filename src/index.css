@@ -756,6 +756,18 @@ body {
     radial-gradient(115% 85% at 50% 36%, rgba(74, 52, 32, 0.6) 0%, rgba(28, 20, 13, 0.85) 52%, rgba(10, 7, 5, 1) 100%),
     #0b0906;
 }
+
+/* Alvos de toque confortáveis em telas de dedo (#8): só onde o ponteiro é
+   GROSSO — o desktop (ponteiro fino) e a geometria do qa-ui, que roda em
+   desktop, ficam intactos. Apenas min-height, para não mexer no layout. */
+@media (pointer: coarse) {
+  .botao-mesa,
+  .placa-latao,
+  .opcao-dialogo,
+  .botao-fechar {
+    min-height: 44px;
+  }
+}
 .rotulo-novo-marca {
   color: #9e2a2b;
   font-weight: 600;
