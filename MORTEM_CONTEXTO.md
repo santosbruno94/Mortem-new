@@ -375,16 +375,27 @@ No modo **procedural** não há mestre: a cena traz só a descrição física (s
 
 Os nós de **interrogatório** deixam de ser prosa estática e passam a **diálogo
 ramificado determinístico** (`src/components/InterrogatorioDialogo.jsx`, sobre o dado
-narrativo puro `src/data/dialogos.js`). O perito **escolhe o assunto** — um hub com
-raios: cada raio abre uma fala e volta ao leque. Navegar não custa tempo (relógio mole)
-e **reler nós já visitados é livre**; o "já perguntado" persiste no store
-(`nosVisitadosDialogo` por suspeito — dado puro serializável, que o motor jamais lê).
+narrativo puro `src/data/dialogos.js`).
 
-**A mecânica do confronto** é o elo que faltava entre a mesa e as pessoas — e desde a
-Onda 5 (pós-playtest de 14/07/2026) é **universal**: no hub de cada árvore, o seletor
-**"Apresentar uma prova…"** aceita **qualquer carta registrada**. Cartas que tocam o
-interrogado levam a reações próprias (`reacoesProva: { [cartaId]: noId }`); todo o
-resto cai no **nó de evasiva** da voz do personagem (`noEvasiva`, obrigatório quando há
+**§7.2 — A conversa DESCE e não volta.** A árvore é **sequencial**, ao estilo de RPG.
+Cada *beat* (rodada) oferece **quatro falas do perito**, cada uma num **tom**: firme
+(pressão), cordial (brandura), técnico (o ofício), oblíquo (de esguelha). Escolher um
+tom **avança** e **descarta os irmãos** — não há "outro assunto", não se volta ao hub. O
+nó corrente **persiste** no store (`noAtualDialogo` por suspeito, dado puro que o motor
+jamais lê): reabrir retoma onde parou, e **a escolha é definitiva**. Navegar não custa
+tempo (relógio mole). O NPC responde no registro perguntado; a **carta de sustentação**
+de cada beat sai em **qualquer** tom (o caso é **sempre acusável** — solubilidade), mas
+o **tom ressonante** de cada personagem rende um tento a mais de prosa (a lasca na
+bainha de Silas só se apanha de esguelha, no oblíquo). O peso da escolha é **narrativo
+por ora**: nenhuma prova que o veredicto lê depende do tom — o motor repousa no corpo e
+na cena (ver §7.3 para a evolução mecânica futura).
+
+**A mecânica do confronto** é o elo entre a mesa e as pessoas — e desde a Onda 5 é
+**universal**: em qualquer nó de pergunta (e no encerramento), o seletor **"Apresentar
+uma prova…"** aceita **qualquer carta registrada**. É um **canal lateral**: apresentar
+rende a reação **sem descer a árvore** e a conversa **retoma** de onde estava. Cartas que
+tocam o interrogado levam a reações próprias (`reacoesProva: { [cartaId]: noId }`); todo
+o resto cai no **nó de evasiva** da voz do personagem (`noEvasiva`, obrigatório quando há
 `reacoesProva`). O seletor **não telegrafa** quais cartas "queimam" — só marca as já
 apresentadas (`provasApresentadas` no store, por suspeito). Toda reação é **observável,
 nunca confissão** — o veredicto continua no mural. A forma antiga (`requerCarta` na
@@ -408,13 +419,20 @@ que já têm (`alibi`, `comportamento`, `fragmento`), e a extração pelo motor
 ```js
 DIALOGOS.interrogatorio_silas = {
   suspeitoId: 'silas_crane', noInicial: 'abertura',
+  noEvasiva: 'evasiva', reacoesProva: { corrob_estalajadeiro: 'confronto_estalagem', … },
   nos: {
-    abertura: { fala: ['…[[ev_vidro_dobra]].'], opcoes: [
-      { rotulo: 'A noite de sexta-feira', vaiPara: 'alibi' },
-      { rotulo: 'Apresentar: O Quarto Cinco às Escuras',
-        requerCarta: 'corrob_estalajadeiro', vaiPara: 'confronto_estalagem' },
+    abertura: { fala: ['Silas recebe na saleta…'], opcoes: [
+      { rotulo: '"Onde esteve na noite de sexta. Sem rodeios."', vaiPara: 'b1_firme', tom: 'firme' },
+      { rotulo: '"Conte-me da sexta com calma…"', vaiPara: 'b1_cordial', tom: 'cordial' },
+      { rotulo: '"A sexta-feira, os seus passos, hora a hora."', vaiPara: 'b1_tecnico', tom: 'tecnico' },
+      { rotulo: '"Ficou até tarde na oficina, na sexta?"', vaiPara: 'b1_obliquo', tom: 'obliquo' },
     ] },
-    alibi: { fala: ['…: [[alibi_silas]].'], opcoes: [{ rotulo: '— outro assunto —', vaiPara: 'abertura' }] },
+    // A carta de sustentação (alibi_silas) sai em todo tom; a precisão
+    // (ev_vidro_dobra, a lasca) só no oblíquo. Cada beat aponta ao próximo.
+    b1_obliquo: { fala: ['…: [[alibi_silas]].', '…presa à bainha…: [[ev_vidro_dobra]].'],
+      opcoes: [ /* as quatro falas do beat 2 */ ] },
+    b2_obliquo: { fala: ['…: [[comp_silas]].'], opcoes: [] }, // terminal: sem volta
+    confronto_estalagem: { fala: ['…'], opcoes: [] }, // reação; a conversa retoma
     …
   },
 };
@@ -426,8 +444,37 @@ carta real **e nenhuma carta com `localidade === nó` fica órfã** (alcançáve
 fala) — espelho da guarda dos pontos de interesse (§5.1). Onda 5: toda entrada de
 `reacoesProva` referencia carta existente e nó da mesma árvore, e árvore com
 `reacoesProva` tem `noEvasiva` válido; a guarda de motor confirma que a apresentação
-anota `refuta_alibi` e que carta alheia não anota nada. Observação pura (guia §2): a
-calma do suspeito é gesto observável; quem estranha é o jogador.
+anota `refuta_alibi` e que carta alheia não anota nada. **Guarda §7.2:** a árvore de
+pergunta é um DAG que **só desce** (nenhuma opção reaponta ao nó inicial) e, em **toda
+descida**, as cartas de sustentação saem — só a precisão (tom-dependente) pode faltar,
+e ainda assim é alcançável em algum caminho (a Vitória Absoluta segue possível).
+Observação pura (guia §2): a calma do suspeito é gesto observável; quem estranha é o
+jogador.
+
+### 7.3 Confronto que faz o suspeito agir (SEMENTE — mecânica futura)
+
+Hoje o confronto rende **prosa** (a reação) e, quando é o caso, **anota o mural** — mas
+não muda estado nem custa tempo. A evolução pretendida: apresentar certa prova pode
+fazer o suspeito **AGIR** — mexer com as evidências no mapa **fora do olhar do perito**
+(o suspeito age enquanto o perito está noutro lugar), ou chegar à **cena do crime ao
+mesmo tempo** que ele (concomitância). Isso daria **peso de tempo** ao confronto (hoje
+de graça, relógio mole) e complexidade à gestão do dia.
+
+**Estado atual: só a semente, INERTE.** Nada disto executa ainda — sem executor, sem
+custo de tempo, sem mudança de disponibilidade de nós; o motor de veredicto
+(`src/logic/`) continua sem depender de nada disto. O que já existe, pronto para ligar:
+
+- **Dados** (`src/data/confrontos.js`): `CONSEQUENCIAS_CONFRONTO` mapeia, por suspeito,
+  quais provas o **agitam** e o efeito que **poderiam** disparar — enum, não prosa
+  (`'agita' | 'mexe_provas' | 'antecipa_cena' | 'foge'`); e `ESTADO_SUSPEITO_INICIAL`.
+- **Store** (`src/store/jogo.js`): campos persistidos `estadosSuspeito`
+  (`'presente' | 'agitado' | 'ausente'`) e `eventosConfronto`; ação `registrarConfronto`
+  (**stub**: só anota o evento, com a hora do relógio determinístico; ninguém a chama).
+
+Pontos de injeção do executor futuro: `apresentarProva` (dar custo/efeito ao confronto),
+`viajarPara`/`nosDesbloqueados` (disponibilidade dinâmica de nós), e a leitura de
+`estadosSuspeito` na UI do mapa e dos interrogatórios. Regra a preservar: o veredicto
+segue lendo **só `tagsOcultas` + seed** — a mecânica de ação mora em store/data/UI.
 
 ---
 

@@ -72,6 +72,15 @@ export function estadoInicialCaso() {
     // "feito" do seletor "Apresentar uma prova…". Dado puro de UI —
     // o motor não lê. { [suspeitoId]: [cartaId, ...] }
     provasApresentadas: {},
+    // SEMENTE §7.3 (INERTE): a mecânica futura de "confrontar faz o personagem
+    // AGIR" — mexer com as provas no mapa, fora do olhar do perito, ou chegar
+    // à cena ao mesmo tempo que ele (concomitância). HOJE nada disto executa:
+    // registrarConfronto só anota o evento; estadosSuspeito fica em 'presente';
+    // o relógio não anda e nenhum nó do mapa muda. Fica pronta para ligar
+    // quando o design amadurecer (ver MORTEM_CONTEXTO.md §7.3 e CONSEQUENCIAS_
+    // CONFRONTO em src/data/confrontos.js). O motor de veredicto jamais lê.
+    estadosSuspeito: {}, // { [suspeitoId]: 'presente'|'agitado'|'ausente' }
+    eventosConfronto: [], // [{ suspeitoId, cartaId, consequencia, hora }]
     nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
     // Reincidência POR CÓDIGO de falha do veredicto (dado de UI: a cortesia
     // do tutorial escala a dica na segunda queda no MESMO ponto; o motor
@@ -153,6 +162,8 @@ export const useJogo = create(
       nosVisitados: ['cena'],
       nosVisitadosDialogo: {},
       noAtualDialogo: {},
+      estadosSuspeito: {},
+      eventosConfronto: [],
       log: [
         ...s.log,
         { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
@@ -219,6 +230,20 @@ export const useJogo = create(
     get().adicionarLigacao(par[0], par[1]);
     if (!jaLigada) get().registrarLog('O confronto ficou anotado ao mural.');
   },
+
+  // SEMENTE §7.3 (STUB, INERTE): registra que um confronto PODERIA fazer o
+  // suspeito agir (consequencia vem de CONSEQUENCIAS_CONFRONTO, enum). HOJE
+  // apenas ANOTA o evento — não muda estadosSuspeito, não move o relógio, não
+  // altera a disponibilidade de nós. Ninguém a chama ainda (nem apresentarProva):
+  // é a estrutura pronta para o executor futuro (ver MORTEM_CONTEXTO.md §7.3). A
+  // hora gravada é o relógio do jogo (determinístico) — nunca Date.now().
+  registrarConfronto: (suspeitoId, cartaId, consequencia) =>
+    set((s) => ({
+      eventosConfronto: [
+        ...s.eventosConfronto,
+        { suspeitoId, cartaId, consequencia, hora: s.horasJogo },
+      ],
+    })),
 
   // Viagem entre nós do mapa: a ÚNICA ação que avança o relógio. Dentro de
   // um local o tempo congela. O custo (horas) vem de src/data/mapa.js.
