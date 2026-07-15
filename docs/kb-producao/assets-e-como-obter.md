@@ -2,9 +2,11 @@
 
 > Como produzir (ou adquirir) arte 3D, imagem 2D, som e tipografia para MORTEM.
 > Verificado na web em julho/2026 contra páginas oficiais de licença e preço.
-> **Regra vigente:** camada 3D 100% procedural (proibido GLTF, textura externa, asset
-> importado); fontes OFL; sons WAV sintetizados. Tudo o que exigiria alterar a regra
-> está marcado com **[DECISÃO DO USUÁRIO]**.
+> **Regra vigente (jul/2026):** camada 3D 100% procedural (proibido GLTF/textura de
+> arquivo); camada **2D admite asset externo sob contrato** (embarcado, determinístico,
+> invisível ao motor, com fallback procedural e no manifesto — ver `CLAUDE.md`); fontes
+> OFL; sons WAV sintetizados. Tudo o que ainda exigiria alterar a regra segue marcado
+> com **[DECISÃO DO USUÁRIO]**; itens já decididos aparecem como **[DECIDIDO]**.
 
 A pergunta soberana da produção solo por agentes: **o asset pode ser descrito em
 código?** Se sim, cabe na regra — versionável, revisável em diff, regenerável por
@@ -38,7 +40,8 @@ FBM para fibra e manchas via `getImageData`, hachura em SVG simulando buril.
 **Ponto de interpretação:** um `CanvasTexture` gerado em runtime pela seed não é
 "textura externa" — não há arquivo importado; é determinístico e versionado como
 código. Mas a regra escrita não distingue origem. Formalizar a leitura *gerada por
-código = permitida; arquivo = proibida* é **[DECISÃO DO USUÁRIO]** (só de redação).
+código = permitida; arquivo = proibida* foi **[DECIDIDO — jul/2026]** (registrado em
+`CLAUDE.md` e `MORTEM_CONTEXTO.md` §3).
 
 ## 3. Som e música por síntese — dentro da regra
 
@@ -66,9 +69,11 @@ As coleções de imagem abaixo são de **domínio público** (DP): uso comercial
 | Rawpixel (seção Public Domain) | scans tratados | CC0 (conta grátis) | 0 | idem |
 
 **Nota-chave:** gravura DP como *referência* para o agente modelar já é permitida.
-Como *asset 2D de UI* (vinheta, ornamento) não toca o 3D, mas quebra o espírito "tudo
-gerado" — **[DECISÃO DO USUÁRIO]**, juridicamente segura; a alternativa dentro da
-regra é redesenhá-la como SVG autoral.
+Como *asset 2D de UI* (vinheta, ornamento) não toca o 3D — **[DECIDIDO — jul/2026]**:
+admitida sob o **contrato de asset 2D** (embarcada no bundle, seleção determinística,
+invisível ao motor, com fallback procedural obrigatório, no manifesto com dimensões e
+licença). Juridicamente segura; a alternativa dentro da regra procedural continua
+disponível (redesenhar como SVG autoral).
 
 ## 5. Mercados de assets prontos **[DECISÃO DO USUÁRIO]**
 
@@ -136,8 +141,12 @@ Tone.js a partir de partitura DP; ampliar o cardápio OFL (EB Garamond, Special 
 UnifrakturMaguntia pontual); gravuras DP só como **referência** de modelagem/paleta.
 
 **Cardápio [DECISÃO DO USUÁRIO], em ordem crescente de ruptura:**
-1. Registrar a interpretação "textura gerada em canvas pela seed = permitida" (§2).
-2. Admitir gravuras/ornamentos DP como assets 2D de UI (§4) — juridicamente limpo.
+1. **[DECIDIDO — jul/2026]** Registrar a interpretação "textura gerada em canvas pela
+   seed = permitida" (§2).
+2. **[DECIDIDO — jul/2026]** Admitir gravuras/ornamentos DP como assets 2D de UI (§4),
+   sob o **contrato de asset 2D** (embarcado; determinístico por `hashString`; invisível
+   ao motor; fallback procedural obrigatório; no manifesto com dimensões e licença) —
+   juridicamente limpo. Ver `CLAUDE.md` e `MORTEM_CONTEXTO.md` §3.
 3. Admitir GLTF de acervo **CC0 apenas** (Kenney/Quaternius) na camada 3D (§5).
 4. Comprar packs (itch.io/Fab/Unity — licenças valem fora das engines) (§5).
 5. Comissionar artista com cessão de direitos e cláusula anti-IA (§7).

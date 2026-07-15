@@ -36,9 +36,18 @@ com zero achados bloqueantes.**
   automática no `qa.mjs`; toda variação vem de `hashString` em `src/logic/hash.js`,
   salgado com a seed). Exceção registrada: o three.js usa `Math.random` em
   internos (uuid) — é camada de APRESENTAÇÃO, fora da lógica de jogo.
-- Camada 3D é apresentação pura: geometria procedural (proibido GLTF/textura
-  externa), dados espaciais são camada visual (nunca lidos pelo motor), e todo
-  ponto 3D tem fallback 2D (`?flat=1`).
+- Camada 3D é apresentação pura: geometria **100% procedural (proibido GLTF/textura
+  de arquivo)** — inalterado. Dados espaciais são camada visual (nunca lidos pelo
+  motor), e todo ponto 3D tem fallback 2D (`?flat=1`).
+- Asset **2D sob contrato** (permitido): asset externo 2D é admitido desde que
+  (a) embarcado no bundle (zero rede em runtime); (b) selecionado
+  deterministicamente (`hashString` salgado, nunca sorteio); (c) invisível ao motor
+  (nenhuma regra o lê); (d) com **fallback procedural obrigatório** — ausente ou
+  inválido, a renderização SVG/CSS atual assume e o jogo joga idêntico; (e) registrado
+  no **manifesto de assets** com dimensões do slot e proveniência de licença, sob
+  guarda do `qa.mjs`. Interpretação registrada: *textura/`CanvasTexture` gerada em
+  código pela seed = permitida* (não é arquivo importado; é determinística e
+  versionada como código).
 - Aparência de personagens é camada narrativa (`src/data/aparencias.js`) — JAMAIS
   entra em `tagsOcultas` nem é lida por `veredicto.js`/`acusacao.js` (guarda no QA).
 - Camada narrativa ≠ camada lógica: trocar prosa nunca exige tocar no motor.

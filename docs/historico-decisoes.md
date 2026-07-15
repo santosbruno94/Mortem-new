@@ -19,6 +19,45 @@
 | jun/2026 (Construção da Acusação, ex-§1.2) | O ato final deixa de ser formulário+tribunal e vira o **mural com barbante**: o jogador AFIRMA a cadeia (quem/quando/como/motivo/juízos) e a sustenta LIGANDO cartas. O legista vira **dica**; o desfecho vira o **Monólogo do Detetive**; `calcularVeredictoCadeia` lê a cadeia construída. Removidos: `QuadroRevelacoes`, `Confronto.jsx`, `confronto.js`, a antiga `calcularVeredicto` |
 | jul/2026 (Overhaul da Redação) | Infraestrutura de redação (guia de estilo, bíblia de vozes, KB de medicina legal, skills/agentes revisores) e reescrita integral da prosa do slice: observação pura, vozes diferenciadas, brilho racionado, correções de continuidade (13/out/1893 = sexta; Moorford = 3h) |
 | jul/2026 (Reescrita do caso) | **"O Álibi de Corda" → "A Hora Emprestada"**: mesma vítima e cenário, verdade de ouro nova. 3 → **5 suspeitos**, 1 → **3 mentirosos inocentes** (segredos de naturezas distintas: humilhação, decoro, medo), e o relógio quebrado deixa de ser isca passiva para virar **pivô estrutural** com três leituras (mostrador forjado / roda de contagem / relógio de bolso de corda esgotada). Motor ganhou duas travas temporais universais (`rotina_interrompida`, `registro_mecanico`); veredicto/acusação intocados. Removida a perita Lenore (fica só o Dr. Harlan Blackwell). Fecha as pendências 1, 2, 3 e 5 do overhaul de 12/07 (despiste com explicação plantada; ≥2 mentirosos; motivo composto arquivado — `silenciamento` é composto por natureza, único por id; `reacao_vital` em jogo) |
+| jul/2026 (Fundações do gerador procedural, FASE 0) | Registro normativo das decisões de arquitetura do gerador: **pacote de caso** serializável, **asset 2D sob contrato**, **retratos em camadas**, **resource binding** por slots tipados, **papéis dramáticos** gerador-facing e **eco do mestre** sobre falhas (detalhe abaixo). Só documentos; nenhum código. |
+
+## Fundações do gerador procedural (jul/2026 — detalhe)
+
+**Origem.** Pesquisa de design cruzando Blue Prince × MORTEM com engenharia de sistemas
+narrativos (QBN/storylets, World of Horror, Hades, Wildermyth, Starfreighter),
+confrontada com o estado real do repositório. Lições operacionais: arte presa ao
+catálogo e não ao caso (Blue Prince); composição por camadas com fallback (World of
+Horror); reação da voz à derrota anterior (Hades); elenco dinâmico por papéis
+(Wildermyth); resource binding de prosa autoral a entidades por tags (Starfreighter).
+
+**Decidido** (a implementar em fases posteriores, uma por vez):
+- **Pacote de caso** serializável — o caso vira um objeto JSON único que o motor
+  carrega; desfaz o acoplamento caso→motor (valores de cena hoje cravados em `logic/`).
+- **Asset 2D sob contrato** — asset externo 2D permitido sob 5 condições (embarcado;
+  determinístico por `hashString`; invisível ao motor; fallback procedural obrigatório;
+  no manifesto com dimensões e licença). O 3D segue 100% procedural. Textura gerada em
+  canvas pela seed = permitida (código, não arquivo).
+- **Retratos em camadas** (paper-doll) dirigidos pelos vocabulários fechados de
+  `aparencias.js` — variedade visual por caso sem uma ilustração nova por caso.
+- **Resource binding** — módulos de prosa com slots tipados de vocabulário fechado
+  (nomes, horas, instrumentos), vinculados pelo gerador; nunca composição livre de frase.
+- **Papéis dramáticos** — taxonomia de casting gerador-facing (isca do apressado, véu,
+  ruído de pista dupla, etc.); dado puro, JAMAIS lido pelo veredicto.
+- **Eco do mestre sobre a falha** — na retentativa, o mestre ganha fala curta na
+  Caderneta, selecionada pelo código de falha anterior; aponta atenção, nunca conclusão.
+
+**Rejeitado** (fora de escopo, decisão de design — não implementar nem propor):
+- Medidor global de tensão tipo DOOM (World of Horror) ou métricas conflitantes tipo
+  Reigns — violam o relógio mole e a verossimilhança.
+- Economia de itens/moedas; grid espacial de posicionamento (Blue Prince 9×5) — alheios
+  ao loop de perícia forense.
+- RNG sobre acesso a evidência essencial — a garantia de solvabilidade (âncora durável)
+  é inviolável.
+- LLM como avaliador de triggers em runtime (Drama Llama) — LLM só em build time, com o
+  `qa.mjs` como portão determinístico.
+- GLTF/textura de arquivo na camada 3D — o diorama "maquete de papel" permanece 100%
+  procedural; a abertura de assets é exclusivamente 2D.
+- Reordenação/rejogo do mesmo caso — cada caso é one-shot.
 
 ## A evolução das gavetas (detalhe)
 
