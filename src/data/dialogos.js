@@ -20,19 +20,28 @@
 //
 // Forma de cada suspeito:
 //   { suspeitoId, noInicial, nos: { [noId]: { fala: [parágrafos], opcoes } },
-//     noEvasiva, reacoesProva }
+//     noEvasiva, reacoesProva, confrontos }
 // Forma de cada opção (a fala do perito):
 //   { rotulo, vaiPara, tom }                  — desce a árvore (tom decorativo)
 //   { rotulo, vaiPara, requerCarta: 'id' }    — reservado a confrontos autorais
 //
-// APRESENTAR PROVA (Onda 5): o seletor "Apresentar uma prova…" aceita
-// QUALQUER carta registrada, em qualquer nó de pergunta (e no encerramento).
-// `reacoesProva: { [cartaId]: noId }` leva às reações específicas; todo o
-// resto cai em `noEvasiva` (a evasiva na voz do personagem — obrigatória
-// quando há reacoesProva; guarda no qa.mjs). Apresentar a carta que desmente
-// o paradeiro do PRÓPRIO interrogado anota a ligação no mural
-// (ligacaoDeConfrontoEmCena — só tags; barbante removível). Apresentar não
-// desce a árvore: rende a reação e a conversa RETOMA de onde estava.
+// CONFRONTAR PROVA (caixa gated): não há mais seletor universal. A caixa de
+// confronto só expõe as perguntas que a mesa AUTORIZA — uma por prova de
+// confronto que o jogador de fato possui. Cada entrada é um par:
+//   confrontos: [{ requerCarta: 'id', rotulo: '[Prova] Por que…?' }]
+// O `rotulo` é a pergunta autoral que EXPLICA por que o confronto está à mão;
+// só aparece quando `temCarta(requerCarta)`. O DESTINO da reação continua
+// vindo de `reacoesProva: { [cartaId]: noId }` (fonte única cartaId→noId) —
+// bijeção obrigatória com `confrontos` (guarda no qa.mjs). Provas irrelevantes
+// não aparecem: o caminho "carta alheia → noEvasiva" some da interface, mas
+// `noEvasiva` permanece como fallback defensivo (guarda estrutural). Confrontar
+// a carta que desmente o paradeiro do PRÓPRIO interrogado anota a ligação no
+// mural (ligacaoDeConfrontoEmCena — só tags; barbante removível). Confrontar é
+// CANAL LATERAL: rende a reação e a conversa RETOMA de onde estava, sem descer
+// a árvore.
+//
+// NB: os `rotulo` abaixo são PROVISÓRIOS (mecânica primeiro); a redação final
+// passa pelo pipeline `revisar-prosa` num passo posterior.
 //
 // A prosa admite `{detective.campo}` e a flexão `{g:masc|fem}`; os
 // marcadores `[[id]]` na fala extraem a carta (carimbo integrado, §6).
@@ -52,6 +61,12 @@ export const DIALOGOS = {
       ev_livro_ordens: 'confronto_livro',
       ev_vidro_dobra: 'confronto_vidro',
     },
+    // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
+    confrontos: [
+      { requerCarta: 'corrob_estalajadeiro', rotulo: '[O Quarto Cinco às Escuras] Por que a estalagem conta o seu quarto às escuras às nove?' },
+      { requerCarta: 'ev_livro_ordens', rotulo: '[Livro de Ordens de Serviço] Por que três consertos voltaram com a sua rubrica?' },
+      { requerCarta: 'ev_vidro_dobra', rotulo: '[Vidro na Dobra da Calça] Por que traz vidro de mostrador preso à bainha?' },
+    ],
     nos: {
       // O hub: Silas recebe o perito. A lasca de vidro NÃO se anuncia aqui
       // (migra para o tom oblíquo do primeiro beat — quem olha de esguelha
@@ -186,6 +201,12 @@ export const DIALOGOS = {
       ev_anel_encomenda: 'reacao_anel',
       dep_mulher_viela: 'reacao_viela',
     },
+    // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
+    confrontos: [
+      { requerCarta: 'ev_cesta_rooke', rotulo: '[Cesta de Ceia para Dois] Por que uma ceia para dois, se a senhora diz que passou a noite só?' },
+      { requerCarta: 'ev_anel_encomenda', rotulo: '[Aro de Ouro por Gravar] Por que um aro por gravar com as suas iniciais?' },
+      { requerCarta: 'dep_mulher_viela', rotulo: '[Uma Senhora na Viela] Por que a viram sair pela viela àquela hora?' },
+    ],
     nos: {
       abertura: {
         fala: [
@@ -309,6 +330,11 @@ export const DIALOGOS = {
       dep_queixa_grey: 'reacao_queixa',
       ev_livro_ordens: 'reacao_livro',
     },
+    // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
+    confrontos: [
+      { requerCarta: 'dep_queixa_grey', rotulo: '[Queixa do Relógio Mais Leve] Por que lavrou queixa contra o morto na véspera?' },
+      { requerCarta: 'ev_livro_ordens', rotulo: '[Livro de Ordens de Serviço] Por que o seu relógio consta neste livro de consertos?' },
+    ],
     nos: {
       abertura: {
         fala: [
@@ -433,6 +459,12 @@ export const DIALOGOS = {
       ev_suplica_cesto: 'confronto_suplica',
       dep_testamento: 'confronto_testamento',
     },
+    // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
+    confrontos: [
+      { requerCarta: 'ev_registro_estalagem', rotulo: '[Registro da Estalagem] Por que o registro traz a sua assinatura às sete e quarenta?' },
+      { requerCarta: 'ev_suplica_cesto', rotulo: '[Carta Amassada em Bola] Por que escreveu ao seu tio pedindo dinheiro?' },
+      { requerCarta: 'dep_testamento', rotulo: '[Testamento do Relojoeiro] Por que é o senhor o herdeiro único?' },
+    ],
     nos: {
       abertura: {
         fala: [
@@ -565,6 +597,11 @@ export const DIALOGOS = {
       ev_relogio_bolso: 'reacao_relogio',
       ev_estojo_buril: 'reacao_estojo',
     },
+    // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
+    confrontos: [
+      { requerCarta: 'ev_relogio_bolso', rotulo: '[Relógio de Bolso Parado] Por que o relógio do patrão parou sem corda?' },
+      { requerCarta: 'ev_estojo_buril', rotulo: '[Buril Claro no Estojo] Por que um buril está mais limpo que os outros no estojo?' },
+    ],
     nos: {
       abertura: {
         fala: [

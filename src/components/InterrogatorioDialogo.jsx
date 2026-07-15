@@ -11,16 +11,6 @@ import RetratoPersonagem from './RetratoPersonagem.jsx';
 import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
 import Overlay from './Overlay.jsx';
 
-// Ordem de exibição das provas no seletor (a mesma da mesa, Q9).
-const ORDEM_DOMINIO = { temporal: 0, causal: 1, vestigio: 2, ambiental: 3, comportamental: 4 };
-const ROTULOS_DOMINIO = {
-  temporal: 'Temporal',
-  causal: 'Causal',
-  ambiental: 'Ambiental',
-  comportamental: 'Comportamental',
-  vestigio: 'Vestígio',
-};
-
 // Interrogatório como DIÁLOGO VIVO (§7.2): a árvore ramificada agora DESCE e
 // NÃO VOLTA. Cada beat oferece quatro falas do perito, cada uma num tom
 // (firme, cordial, técnico, oblíquo); escolher AVANÇA e descarta os irmãos —
@@ -29,13 +19,16 @@ const ROTULOS_DOMINIO = {
 // A carta de sustentação de cada beat sai em qualquer tom (o caso é sempre
 // acusável); o tom só muda a prosa do NPC. As falas surgem cartas pelo mesmo
 // mecanismo `[[id]]` das localidades; o motor não muda.
-// CONFRONTO (Onda 5): o seletor "Apresentar uma prova…" segue UNIVERSAL e é
-// um CANAL LATERAL — apresentar rende a reação (`reacoesProva`) ou a evasiva
-// (`noEvasiva`) TEMPORARIAMENTE, sem descer a árvore; "retomar a conversa"
-// devolve o perito ao beat onde estava. A reação é transitória (não persiste).
-// Duas portas de entrada (Onda 6): `localidadeId` quando o NÓ DO MAPA é o
-// interrogatório (Silas, Agnes, Grey) e `dialogoId` quando a pessoa vive
-// dentro de um lugar (Walter, Davey — a árvore traz `titulo`/`subtitulo`).
+// CONFRONTO (caixa gated): não há seletor universal. A caixa de confronto só
+// expõe as perguntas AUTORIZADAS pela mesa — uma por prova de confronto que o
+// jogador possui (`dialogo.confrontos`, filtrado por `temCarta`). É um CANAL
+// LATERAL: confrontar rende a reação (`reacoesProva`) TEMPORARIAMENTE, sem
+// descer a árvore; "retomar a conversa" devolve o perito ao beat onde estava.
+// A reação é transitória (não persiste). Provas irrelevantes não aparecem — o
+// caminho "carta alheia → noEvasiva" some da interface (noEvasiva fica só como
+// fallback defensivo). Duas portas de entrada (Onda 6): `localidadeId` quando
+// o NÓ DO MAPA é o interrogatório (Silas, Agnes, Grey) e `dialogoId` quando a
+// pessoa vive dentro de um lugar (Walter, Davey — a árvore traz `titulo`/`subtitulo`).
 const MARCA_TOM = { firme: '‹', cordial: '◦', tecnico: '▪', obliquo: '~' };
 
 export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
@@ -52,7 +45,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // A reação a uma prova apresentada é TRANSITÓRIA (não persiste): fica em
   // estado local e "retomar" a descarta. O beat corrente vem do store.
   const [reacaoAtual, setReacaoAtual] = useState(null);
-  const [apresentando, setApresentando] = useState(false);
   const [cartaApresentada, setCartaApresentada] = useState(null);
   // Aviso quando a prova DESMENTIRIA o paradeiro, mas o interrogado ainda
   // não o declarou — a reação joga, mas nenhuma ligação nasce no mural.
@@ -84,9 +76,11 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
     visitarNoDialogo(suspeitoId, destino);
   };
 
-  // O gesto de apresentar (Onda 5): registra no store (que anota ao mural o
-  // confronto de paradeiro, quando é o caso) e mostra a reação SEM descer a
-  // árvore — canal lateral. "Retomar" devolve ao beat corrente.
+  // O gesto de confrontar: registra no store (que anota ao mural o confronto
+  // de paradeiro, quando é o caso) e mostra a reação SEM descer a árvore —
+  // canal lateral. "Retomar" devolve ao beat corrente. A carta vem sempre de
+  // uma entrada de `confrontos` (portanto tem reação em `reacoesProva`); o
+  // `|| noEvasiva` fica só como fallback defensivo.
   const apresentar = (carta) => {
     // Detecta o no-op de mural ANTES de apresentar (o estado da mesa é o
     // mesmo): a prova toca o paradeiro do interrogado, mas o álibi dele
@@ -96,7 +90,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
     const destino = (dialogo.reacoesProva || {})[carta.id] || dialogo.noEvasiva;
     setReacaoAtual(destino);
     setCartaApresentada(carta);
-    setApresentando(false);
   };
 
   const retomarConversa = () => {
@@ -119,13 +112,11 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
     : (no.opcoes || []).filter((op) => !op.requerCarta || temCarta(op.requerCarta));
   const conversaEncerrada = !emReacao && opcoesVisiveis.length === 0;
 
-  // O seletor existe em qualquer nó de PERGUNTA (não na reação), com evasiva
-  // definida e mesa não vazia — apresentar é canal lateral, sempre à mão.
-  const podeApresentar = !emReacao && !!dialogo.noEvasiva && cartasRegistradas.length > 0;
-
-  const provasOrdenadas = [...cartasRegistradas].sort(
-    (a, b) => (ORDEM_DOMINIO[a.tagsOcultas.dominio] ?? 9) - (ORDEM_DOMINIO[b.tagsOcultas.dominio] ?? 9)
-  );
+  // A caixa de confronto (gated): só as perguntas cujas provas estão na mesa.
+  // Fora da reação; canal lateral, sempre à mão enquanto houver o que confrontar.
+  const confrontosVisiveis = emReacao
+    ? []
+    : (dialogo.confrontos || []).filter((c) => temCarta(c.requerCarta));
 
   return (
     <Overlay titulo={interpolar(titulo, detective)} subtitulo={subtitulo} marca="dialogo">
@@ -192,55 +183,34 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
             <span className="opcao-rotulo-texto">— retomar a conversa —</span>
           </button>
         )}
-
-        {podeApresentar && (
-          <button
-            type="button"
-            className="opcao-dialogo opcao-dialogo--confronto"
-            onClick={() => setApresentando((v) => !v)}
-          >
-            <span className="opcao-marca" aria-hidden>
-              ❦
-            </span>
-            <span className="opcao-rotulo-texto">Apresentar uma prova…</span>
-          </button>
-        )}
       </div>
 
-      {/* O seletor de provas (Onda 5): tudo o que está na mesa, sem
-          telégrafo — só a marca de "já apresentada". */}
-      {podeApresentar && apresentando && (
-        <div className="mt-3 border border-latao/30 bg-stone-950/40 rounded-sm p-3" data-seletor-provas>
-          <p className="text-stone-400 text-[11px] mb-2">O que apresentar:</p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-            {provasOrdenadas.map((carta) => {
-              const jaApresentada = apresentadas.includes(carta.id);
-              return (
-                <button
-                  key={carta.id}
-                  type="button"
-                  onClick={() => apresentar(carta)}
-                  className="text-left rounded-sm px-2 py-1.5 border border-latao/30 bg-stone-900/70 hover:border-latao/60 transition-colors duration-gesto"
-                  title={carta.descricao}
-                >
-                  <span className="block text-cera text-rotulo uppercase">
-                    {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}
-                    {jaApresentada && <span className="text-stone-500 normal-case"> · já apresentada</span>}
-                  </span>
-                  <span className="block font-serif text-stone-200 text-sm leading-snug">
-                    {carta.textoDisplay}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-          <button
-            type="button"
-            onClick={() => setApresentando(false)}
-            className="mt-2 text-stone-400 hover:text-stone-200 text-xs underline underline-offset-2"
-          >
-            guardar as provas
-          </button>
+      {/* A caixa de confronto (gated): só as perguntas que a mesa autoriza —
+          uma por prova de confronto que o jogador possui. Cada botão é a
+          pergunta autoral que explica por que o confronto está à mão. É canal
+          lateral: confrontar rende a reação e a conversa retoma. */}
+      {confrontosVisiveis.length > 0 && (
+        <div className="mt-3 space-y-2" data-confrontos>
+          {confrontosVisiveis.map((c) => {
+            const jaApresentada = apresentadas.includes(c.requerCarta);
+            return (
+              <button
+                key={c.requerCarta}
+                type="button"
+                className="opcao-dialogo opcao-dialogo--confronto"
+                data-requer-carta={c.requerCarta}
+                onClick={() => apresentar(cartasRegistradas.find((k) => k.id === c.requerCarta))}
+              >
+                <span className="opcao-marca" aria-hidden>
+                  ❦
+                </span>
+                <span className="opcao-rotulo-texto">
+                  {interpolar(c.rotulo, detective)}
+                  {jaApresentada && <span className="text-stone-500 italic"> · já apresentada</span>}
+                </span>
+              </button>
+            );
+          })}
         </div>
       )}
 
@@ -251,9 +221,9 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       )}
 
       <p className="mt-5 text-stone-400 text-xs italic font-serif tracking-wide">
-        A conversa desce e não volta: cada pergunta escolhida descarta as outras. Apresentar uma prova
-        exige tê-la na mesa e não gasta a vez. Interrogar não custa tempo; o relógio só corre quando
-        você viaja.
+        A conversa desce e não volta: cada pergunta escolhida descarta as outras. Confrontar com uma
+        prova só se abre quando ela está na mesa, e não gasta a vez. Interrogar não custa tempo; o
+        relógio só corre quando você viaja.
       </p>
     </Overlay>
   );
