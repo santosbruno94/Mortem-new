@@ -26,6 +26,7 @@ import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
+import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
 import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.js';
 import { POSICOES_DIORAMA, FORMAS_PREDIO } from '../src/data/mapa_espacial.js';
@@ -821,9 +822,31 @@ if (!pacoteSerializavelCompleto) {
   console.log('\nPACOTE — problemas:', problemasPacote.join(' | '));
 }
 
+// ============================================================
+// GUARDA DE SLOTS (FASE 4): todo slot de caso presente em QUALQUER prosa do
+// pacote resolve contra o próprio pacote (entidade e campo existem). Um slot
+// que não resolve renderizaria literal na tela — falha. Varre recursivamente
+// todas as strings do pacote (ids/tags não têm chaves, sem falso positivo).
+// ============================================================
+function todasAsStrings(no, acc = []) {
+  if (typeof no === 'string') acc.push(no);
+  else if (Array.isArray(no)) for (const x of no) todasAsStrings(x, acc);
+  else if (no && typeof no === 'object') for (const k of Object.keys(no)) todasAsStrings(no[k], acc);
+  return acc;
+}
+const slotsPendentes = [];
+for (const texto of todasAsStrings(pacote)) {
+  for (const falta of slotsNaoResolvidos(texto, pacote)) slotsPendentes.push(falta);
+}
+const slotsResolvem = slotsPendentes.length === 0;
+if (!slotsResolvem) {
+  console.log('\nSLOTS — não resolvem contra o pacote:', [...new Set(slotsPendentes)].join(', '));
+}
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
+  ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
   ['Apressado cai em ≥1 armadilha (réu errado)', apressadoCaiEmArmadilha && vApressado.tipo === 'erro_judiciario'],
   ['Intuitivo alcança Impunidade (réu certo, provas furadas)', vIntuitivo.tipo === 'impunidade'],

@@ -267,7 +267,7 @@ export const CARTAS = [
     textoDisplay: 'Buril Claro no Estojo',
     carimboPadrao: 'Buril limpo entre ferramentas enceradas',
     descricao:
-      'O estojo traz o nome de Silas Crane a fogo na tampa. Os cabos vestem a mesma cera parda de uso; um único buril está claro, sem a cera dos outros, e a junta entre o aço e o cabo guarda uma linha escura de umidade.',
+      'O estojo traz o nome de {suspeito:silas_crane.nome} a fogo na tampa. Os cabos vestem a mesma cera parda de uso; um único buril está claro, sem a cera dos outros, e a junta entre o aço e o cabo guarda uma linha escura de umidade.',
     tagsOcultas: {
       dominio: 'vestigio',
       subDominio: 'instrumento_oficio',
@@ -371,9 +371,9 @@ export const CARTAS = [
     id: 'dep_testamento',
     localidade: 'delegacia',
     textoDisplay: 'Testamento do Relojoeiro',
-    carimboPadrao: 'Herdeiro Único: Walter Arthurs',
+    carimboPadrao: 'Herdeiro Único: {suspeito:walter_arthurs.nome}',
     descricao:
-      'Cópia lavrada há dois anos no gabinete do procurador Pettigrew, de Moorford: a loja, a casa e as economias do Sr. Arthurs passam por inteiro ao sobrinho, Walter Arthurs, "na falta de outros herdeiros".',
+      'Cópia lavrada há dois anos no gabinete do procurador Pettigrew, de Moorford: a loja, a casa e as economias do Sr. Arthurs passam por inteiro ao sobrinho, {suspeito:walter_arthurs.nome}, "na falta de outros herdeiros".',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
@@ -386,9 +386,9 @@ export const CARTAS = [
     id: 'dep_dividas_walter',
     localidade: 'delegacia',
     textoDisplay: 'Cartas de Cobrança',
-    carimboPadrao: 'Dívidas de praça de Walter Arthurs',
+    carimboPadrao: 'Dívidas de praça de {suspeito:walter_arthurs.nome}',
     descricao:
-      'Três cobranças com timbre de casas de Moorford, endereçadas a Walter Arthurs: fazendas por pagar, um armazém em juízo, e a soma crescendo de carta em carta.',
+      'Três cobranças com timbre de casas de Moorford, endereçadas a {suspeito:walter_arthurs.nome}: fazendas por pagar, um armazém em juízo, e a soma crescendo de carta em carta.',
     // Plantio (fair play): o mestre enuncia a relação dívida → herança sem
     // nomear ninguém — a hierarquia dos motivos fica ao alcance do jogador.
     vozMestre: 'Dívida vencida diz o aperto. De onde sairia o pagamento, isso a cobrança não diz.',
@@ -418,9 +418,9 @@ export const CARTAS = [
     id: 'dep_queixa_grey',
     localidade: 'delegacia',
     textoDisplay: 'Queixa do Relógio Mais Leve',
-    carimboPadrao: 'Queixa formal de Caleb Grey, sexta à tarde',
+    carimboPadrao: 'Queixa formal de {suspeito:caleb_grey.nome}, sexta à tarde',
     descricao:
-      'Termo lavrado na sexta: Caleb Grey, moleiro, declara que o relógio caçador do pai, saído de conserto na loja de Arthurs, "voltou mais leve do que entrou", e exige pesagem diante de testemunhas. Anexa a soma do prejuízo: quatro libras e dez xelins.',
+      'Termo lavrado na sexta: {suspeito:caleb_grey.nome}, moleiro, declara que o relógio caçador do pai, saído de conserto na loja de Arthurs, "voltou mais leve do que entrou", e exige pesagem diante de testemunhas. Anexa a soma do prejuízo: quatro libras e dez xelins.',
     // A pista dupla: o rancor mais barulhento do caso é, lido de perto, o
     // registro da fraude descoberta — o móbil de outro homem.
     tagsOcultas: {

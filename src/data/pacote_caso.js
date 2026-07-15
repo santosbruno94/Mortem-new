@@ -38,6 +38,22 @@
 // Regra de ouro do schema: NADA de funções no pacote — só dado. Os acessores
 // (obterSuspeito, obterDefinicaoCarta, resolverEstadoCarta…) vivem NESTE
 // módulo, operando sobre o caso carregado; nunca dentro do objeto serializado.
+//
+// ---------------------------------------------------------------------
+// VOCABULÁRIO DE SLOTS (resource binding — FASE 4):
+// ---------------------------------------------------------------------
+// A prosa das cartas/depoimentos pode injetar SUBSTANTIVOS de entidade a
+// partir deste pacote (nunca frases livres — o guia de estilo rege a prosa).
+// A resolução vive em src/logic/interpolar.js; a guarda do qa.mjs valida que
+// todo slot presente no pacote resolve. Vocabulário fechado:
+//
+//   {suspeito:ID.CAMPO}  → suspeitos[id=ID][CAMPO]  (ex.: .nome → "Silas Crane")
+//   {vitima.nome}        → verdadeDeOuro.vitima      (string; único campo: nome)
+//   {hora:CAMPO}         → formatHora(parametrosCena[CAMPO] ?? verdadeDeOuro[CAMPO])
+//   {instrumento.nome}   → rótulo de verdadeDeOuro.instrumentoCorreto
+//
+// Convenção de conversão: um literal só vira slot se o texto renderizado
+// ficar byte-idêntico ao atual (critério duro da FASE 4).
 // =====================================================================
 
 import { SEED_TUTORIAL, SUSPEITOS } from './seed.js';
