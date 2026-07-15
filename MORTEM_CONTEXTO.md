@@ -390,16 +390,23 @@ bainha de Silas só se apanha de esguelha, no oblíquo). O peso da escolha é **
 por ora**: nenhuma prova que o veredicto lê depende do tom — o motor repousa no corpo e
 na cena (ver §7.3 para a evolução mecânica futura).
 
-**A mecânica do confronto** é o elo entre a mesa e as pessoas — e desde a Onda 5 é
-**universal**: em qualquer nó de pergunta (e no encerramento), o seletor **"Apresentar
-uma prova…"** aceita **qualquer carta registrada**. É um **canal lateral**: apresentar
-rende a reação **sem descer a árvore** e a conversa **retoma** de onde estava. Cartas que
-tocam o interrogado levam a reações próprias (`reacoesProva: { [cartaId]: noId }`); todo
-o resto cai no **nó de evasiva** da voz do personagem (`noEvasiva`, obrigatório quando há
-`reacoesProva`). O seletor **não telegrafa** quais cartas "queimam" — só marca as já
-apresentadas (`provasApresentadas` no store, por suspeito). Toda reação é **observável,
-nunca confissão** — o veredicto continua no mural. A forma antiga (`requerCarta` na
-opção) segue suportada para confrontos autorais fora do seletor.
+**A mecânica do confronto** é o elo entre a mesa e as pessoas — e é uma **caixa gated**,
+não mais um seletor universal. Em qualquer nó de pergunta (e no encerramento), a caixa
+de confronto expõe **só as perguntas que a mesa autoriza**: uma por prova de confronto
+que o jogador de fato possui (`confrontos: [{ requerCarta, rotulo }]`, filtrado por
+`temCarta`). Cada `rotulo` é a **pergunta autoral que explica por que o confronto está à
+mão** (ex.: `[Vidro na Dobra da Calça] Por que traz vidro de mostrador preso à bainha?`).
+É um **canal lateral**: confrontar rende a reação **sem descer a árvore** e a conversa
+**retoma** de onde estava. O **destino** da reação vem de `reacoesProva: { [cartaId]: noId }`
+(fonte única cartaId→noId; `confrontos` só carrega rótulo + ordem, em **bijeção** com
+`reacoesProva`). Provas **irrelevantes não aparecem** — o caminho "carta alheia →
+`noEvasiva`" some da interface, e `noEvasiva` permanece só como fallback defensivo. Cada
+botão é ancorado por `data-requer-carta` (âncora estável do QA, independente da prosa do
+rótulo) e marca as já apresentadas (`provasApresentadas` no store, por suspeito). Toda
+reação é **observável, nunca confissão** — o veredicto continua no mural. A forma antiga
+(`requerCarta` na opção) segue suportada para confrontos autorais que **descem** a árvore.
+(Os `rotulo` do vertical slice são **provisórios**; a redação final passa pelo pipeline
+`revisar-prosa`.)
 
 **O confronto em cena anota o mural.** Apresentar ao declarante a carta que desmente o
 próprio paradeiro (função pura `ligacaoDeConfrontoEmCena` em `src/logic/acusacao.js` —
@@ -420,6 +427,13 @@ que já têm (`alibi`, `comportamento`, `fragmento`), e a extração pelo motor
 DIALOGOS.interrogatorio_silas = {
   suspeitoId: 'silas_crane', noInicial: 'abertura',
   noEvasiva: 'evasiva', reacoesProva: { corrob_estalajadeiro: 'confronto_estalagem', … },
+  // A caixa gated: uma pergunta por chave de reacoesProva (bijeção). O destino
+  // da reação vem de reacoesProva; `confrontos` só carrega rótulo autoral + ordem.
+  confrontos: [
+    { requerCarta: 'corrob_estalajadeiro', rotulo: '[O Quarto Cinco às Escuras] Por que…?' }, // (provisório)
+    { requerCarta: 'ev_livro_ordens', rotulo: '[Livro de Ordens de Serviço] Por que…?' },
+    { requerCarta: 'ev_vidro_dobra', rotulo: '[Vidro na Dobra da Calça] Por que…?' },
+  ],
   nos: {
     abertura: { fala: ['Silas recebe na saleta…'], opcoes: [
       { rotulo: '"Onde esteve na noite de sexta. Sem rodeios."', vaiPara: 'b1_firme', tom: 'firme' },
@@ -441,10 +455,12 @@ DIALOGOS.interrogatorio_silas = {
 Restrição dura (guarda estática no `scripts/qa.mjs`): toda `requerCarta` referencia carta
 existente; todo `vaiPara` aponta para nó real da mesma árvore; todo `[[id]]` de fala é
 carta real **e nenhuma carta com `localidade === nó` fica órfã** (alcançável em alguma
-fala) — espelho da guarda dos pontos de interesse (§5.1). Onda 5: toda entrada de
+fala) — espelho da guarda dos pontos de interesse (§5.1). Toda entrada de
 `reacoesProva` referencia carta existente e nó da mesma árvore, e árvore com
-`reacoesProva` tem `noEvasiva` válido; a guarda de motor confirma que a apresentação
-anota `refuta_alibi` e que carta alheia não anota nada. **Guarda §7.2:** a árvore de
+`reacoesProva` tem `noEvasiva` válido; **bijeção** `confrontos` ↔ `reacoesProva` (cada
+confronto referencia carta existente que é chave de `reacoesProva`, cada chave tem um só
+confronto, rótulo não-vazio, sem duplicata); a guarda de motor confirma que a
+apresentação anota `refuta_alibi` e que carta alheia não anota nada. **Guarda §7.2:** a árvore de
 pergunta é um DAG que **só desce** (nenhuma opção reaponta ao nó inicial) e, em **toda
 descida**, as cartas de sustentação saem — só a precisão (tom-dependente) pode faltar,
 e ainda assim é alcançável em algum caminho (a Vitória Absoluta segue possível).

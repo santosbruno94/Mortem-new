@@ -387,23 +387,17 @@ async function main() {
     checar('Etapa 1: o mapa marca os locais visitados', (await page.locator('body').innerText()).includes('visitado ·'));
 
     // ---- FASE 3 — Interrogatório como diálogo (§7.1) ----
-    // Interrogar é escolher e confrontar: o nó abre em diálogo, o confronto
-    // fica OCULTO até a prova estar na mesa, e as cartas nascem de dentro da
-    // fala pelo mesmo [[id]] das localidades.
+    // Interrogar é escolher e confrontar: o nó abre em diálogo. A CAIXA de
+    // confronto (gated) só expõe as perguntas cujas provas já estão na mesa —
+    // cada botão ancorado em [data-requer-carta] (estável; o rótulo é prosa).
     await abrirNo(page, 'A Saleta');
     checar('Fase 3: o interrogatório abre em diálogo (opções do perito)', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     checar('Fase 3: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
     // §7.2: cada beat oferece QUATRO falas do perito, cada uma num tom.
     checar('§7.2: o beat oferece quatro falas do perito (tons)', (await page.locator('.opcao-dialogo[data-tom]').count()) === 4);
-    // Onda 5: o seletor "Apresentar uma prova…" já existe no primeiro beat e só
-    // lista o que está na mesa — a prova da estalagem, ainda não colhida, não
-    // aparece (sem telégrafo).
-    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
-    await espera(page, 200);
-    checar('Onda 5: seletor de provas aberto', (await page.locator('[data-seletor-provas]').count()) === 1);
-    checar('Fase 3: prova não colhida ausente do seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 0);
-    await page.getByRole('button', { name: 'guardar as provas' }).click();
-    await espera(page, 150);
+    // Confronto gated: a prova da estalagem, ainda não colhida, NÃO abre pergunta
+    // de confronto (a caixa só expõe o que a mesa autoriza — sem telégrafo).
+    checar('Confronto gated: prova não colhida não abre pergunta de confronto', (await page.locator('[data-requer-carta="corrob_estalajadeiro"]').count()) === 0);
     // §7.2: a conversa desce (tom oblíquo em cada beat): a lasca na bainha e o
     // álibi saem no primeiro beat; a teoria do ladrão de fora, no segundo.
     await percorrerDialogo(page);
@@ -415,37 +409,30 @@ async function main() {
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Estalagem');
     // Onda 6: Walter conversa em diálogo embutido — o álibi nasce na fala; e
-    // apresentar-lhe o registro (a própria assinatura das 19h40) desmorona a
+    // confrontá-lo com o registro (a própria assinatura das 19h40) desmorona a
     // diligência E anota a refutação do paradeiro no mural, sem barbante.
     await conversarEmbutido(page, 'Interrogar Walter Arthurs');
     checar('Onda 6: o botão da estalagem abre o diálogo de Walter', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
-    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
-    await espera(page, 200);
-    await page.locator('[data-seletor-provas]').getByRole('button', { name: /Registro da Estalagem/ }).click();
+    await page.locator('[data-confrontos] [data-requer-carta="ev_registro_estalagem"]').click();
     await espera(page, 300);
     checar('Onda 6: o registro desmorona a diligência de Walter', (await page.locator('body').innerText()).includes('Não houve diligência'));
     await fecharOverlay(page);
-    // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova
-    // está na mesa e o seletor (Onda 5) a lista; apresentá-la rende a reação
-    // de Silas (observável, nunca confissão — o veredicto é do mural) e ANOTA
-    // a refutação do paradeiro dele no mural (barbante removível).
+    // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova está
+    // na mesa e a caixa de confronto abre a pergunta da estalagem; confrontá-la
+    // rende a reação de Silas (observável, nunca confissão — o veredicto é do
+    // mural) e ANOTA a refutação do paradeiro dele no mural (barbante removível).
     await abrirNo(page, 'A Saleta');
-    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
-    await espera(page, 200);
-    checar('Rota 1: prova colhida aparece no seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 1);
-    await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).click();
+    checar('Rota 1: prova colhida abre a pergunta de confronto', (await page.locator('[data-confrontos] [data-requer-carta="corrob_estalajadeiro"]').count()) === 1);
+    await page.locator('[data-confrontos] [data-requer-carta="corrob_estalajadeiro"]').click();
     await espera(page, 300);
-    checar('Rota 1: apresentar a prova rende a reação do réu (nunca confissão)', (await page.locator('body').innerText()).includes('O estalajadeiro terá contado os quartos errados'));
-    checar('Onda 5: a linha conectiva pousa a prova entre os dois', (await page.locator('[data-prova-apresentada]').count()) === 1);
-    // Prova alheia (o rigor do corpo) → a evasiva na voz de Silas.
+    checar('Rota 1: confrontar a prova rende a reação do réu (nunca confissão)', (await page.locator('body').innerText()).includes('O estalajadeiro terá contado os quartos errados'));
+    checar('Confronto: a linha conectiva pousa a prova entre os dois', (await page.locator('[data-prova-apresentada]').count()) === 1);
+    // Canal lateral: "retomar a conversa" devolve ao beat e reabre a caixa; e a
+    // caixa NÃO abre pergunta para prova alheia possuída (o rigor do corpo).
     await page.locator('.opcao-dialogo--voltar').first().click();
     await espera(page, 200);
-    await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
-    await espera(page, 200);
-    await page.locator('[data-seletor-provas]').getByRole('button', { name: /Corpo Endurecido/ }).click();
-    await espera(page, 300);
-    checar('Onda 5: prova alheia cai na evasiva do personagem', (await page.locator('[data-no-dialogo="evasiva"]').count()) === 1);
-    checar('Onda 5: a evasiva não confessa (voz de Silas)', (await page.locator('body').innerText()).includes('a minha parte é corda e mola'));
+    checar('Canal lateral: retomar reabre a caixa de confronto no beat', (await page.locator('[data-confrontos]').count()) === 1);
+    checar('Confronto gated: prova alheia possuída não abre pergunta de confronto', (await page.locator('[data-requer-carta="ev_rigor"]').count()) === 0);
     await fecharOverlay(page);
     // Etapa 1 (mapa): o lembrete nomeia QUEM recebeu o perito — a oficina,
     // visitada antes e agora não-atual, recorda o aprendiz Davey Tull.

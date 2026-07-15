@@ -581,6 +581,7 @@ const marcadoresDialogoInvalidos = [];
 const cartasOrfasNoDialogo = [];
 const reacoesProvaInvalidas = [];
 const evasivasFaltando = [];
+const confrontosInvalidos = [];
 for (const [localidadeId, dialogo] of Object.entries(DIALOGOS)) {
   const idsNos = new Set(Object.keys(dialogo.nos));
   for (const [noId, no] of Object.entries(dialogo.nos)) {
@@ -598,6 +599,28 @@ for (const [localidadeId, dialogo] of Object.entries(DIALOGOS)) {
     if (!idsNos.has(noDestino)) reacoesProvaInvalidas.push(`${localidadeId}:${cartaId}→${noDestino}`);
   }
   if (dialogo.reacoesProva && !idsNos.has(dialogo.noEvasiva)) evasivasFaltando.push(localidadeId);
+  // Confronto gated: bijeção `confrontos` ↔ `reacoesProva`. Cada entrada de
+  // `confrontos` referencia carta existente E chave de `reacoesProva` (o
+  // destino da reação vem de reacoesProva — fonte única cartaId→noId; confrontos
+  // só carrega rótulo autoral + ordem); toda chave de `reacoesProva` tem
+  // exatamente uma entrada em `confrontos`; rótulo não-vazio; sem duplicata.
+  const chavesReacao = new Set(Object.keys(dialogo.reacoesProva || {}));
+  const requeridasConfronto = new Set();
+  for (const c of dialogo.confrontos || []) {
+    if (!c || typeof c.rotulo !== 'string' || c.rotulo.trim() === '')
+      confrontosInvalidos.push(`${localidadeId}:${c?.requerCarta || '?'} (rótulo vazio)`);
+    if (!obterDefinicaoCarta(c?.requerCarta))
+      confrontosInvalidos.push(`${localidadeId}:${c?.requerCarta} (carta inexistente)`);
+    else if (!chavesReacao.has(c.requerCarta))
+      confrontosInvalidos.push(`${localidadeId}:${c.requerCarta} (sem reação)`);
+    if (requeridasConfronto.has(c?.requerCarta))
+      confrontosInvalidos.push(`${localidadeId}:${c.requerCarta} (duplicado)`);
+    requeridasConfronto.add(c?.requerCarta);
+  }
+  for (const cartaId of chavesReacao) {
+    if (!requeridasConfronto.has(cartaId))
+      confrontosInvalidos.push(`${localidadeId}:${cartaId} (reação sem confronto)`);
+  }
   const marcadoresArvore = marcadoresDe(Object.values(dialogo.nos).flatMap((n) => n.fala || []));
   for (const id of marcadoresArvore) {
     if (!obterDefinicaoCarta(id)) marcadoresDialogoInvalidos.push(`${localidadeId}:${id}`);
@@ -612,7 +635,8 @@ const dialogosIntegros =
   marcadoresDialogoInvalidos.length === 0 &&
   cartasOrfasNoDialogo.length === 0 &&
   reacoesProvaInvalidas.length === 0 &&
-  evasivasFaltando.length === 0;
+  evasivasFaltando.length === 0 &&
+  confrontosInvalidos.length === 0;
 if (!dialogosIntegros) {
   console.log('\nDIÁLOGOS — requerCarta inexistente:', requerCartasInvalidas.join(', ') || '—');
   console.log('DIÁLOGOS — vaiPara sem nó:', vaiParaInvalidos.join(', ') || '—');
@@ -620,6 +644,7 @@ if (!dialogosIntegros) {
   console.log('DIÁLOGOS — cartas inalcançáveis na árvore:', cartasOrfasNoDialogo.join(', ') || '—');
   console.log('DIÁLOGOS — reacoesProva inválidas:', reacoesProvaInvalidas.join(', ') || '—');
   console.log('DIÁLOGOS — árvore com reações sem nó de evasiva:', evasivasFaltando.join(', ') || '—');
+  console.log('DIÁLOGOS — confrontos ↔ reacoesProva (bijeção quebrada):', confrontosInvalidos.join(', ') || '—');
 }
 
 // ============================================================
@@ -764,7 +789,7 @@ const checagens = [
   ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
   ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],
-  ['Interrogatórios em diálogo íntegros (§7.1): requerCarta/vaiPara/[[id]] válidos, sem carta órfã', dialogosIntegros],
+  ['Interrogatórios em diálogo íntegros (§7.1): requerCarta/vaiPara/[[id]]/confrontos↔reacoesProva válidos, sem carta órfã', dialogosIntegros],
   ['Diálogo desce e não volta; toda descida rende a sustentação, precisão possível (§7.2)', dialogosDescemESolvem],
   ['Alcançabilidade global (Onda 6): toda carta nasce de algum [[id]]', cartasInalcancaveis.length === 0],
   ['Apresentação em cena anota refuta_alibi no mural (Onda 5)', parCena && confrontoClassificado],
