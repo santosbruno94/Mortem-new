@@ -9,59 +9,60 @@ import { SUSPEITOS } from '../data/seed.js';
 import { tocarSom } from '../som.js';
 import Overlay from './Overlay.jsx';
 
-// Frases universais de "o que faltou" — exceção pedagógica do tutorial
-// (§13): após uma falha, o jogo mostra as lacunas e permite resubmissão.
-// Cada dica pode ter dois níveis: `primeira` (a de sempre) e `reincidencia`,
-// exibida quando o jogador cai no MESMO ponto pela segunda vez (falhasVistas
-// no store). O marcador {nome} recebe o suspeito da falha, quando houver.
+// A DÚVIDA DO PERITO — as lacunas do caso ditas na primeira pessoa do
+// detetive (§13), não em lista de sistema: onde a conta dele ainda não
+// fecha, após uma falha, com a resubmissão franqueada. Cada dica pode ter
+// dois níveis: `primeira` (a de sempre) e `reincidencia`, quando o jogador
+// cai no MESMO ponto pela segunda vez (falhasVistas). O marcador {nome}
+// recebe o suspeito da falha, quando houver.
 const DICAS_TUTORIAL = {
   reu_errado: {
-    primeira: 'O réu apontado não resiste à perícia. Reexamine quem o corpo e os vestígios de fato acusam.',
+    primeira: 'O réu que apontei não resiste à perícia; o corpo e os vestígios acusam outro. Devo reexaminar quem.',
   },
   corpo_sem_substancia: {
-    primeira: 'Sustente a cadeia com evidências do corpo de valor pericial (sinais não inconclusivos).',
+    primeira: 'A minha cadeia não se firma: falta ancorá-la em sinais do corpo de real valor pericial, não nos inconclusivos.',
   },
   sem_janela: {
-    primeira: 'Afirme a janela da morte e puxe até ela os indicadores (rigor, livor, algor, visto-vivo).',
+    primeira: 'Não fixei a hora da morte. Tenho de afirmar a janela e puxar a ela o rigor, o livor, o algor, o visto com vida.',
   },
   janela_nao_cobre: {
-    primeira: 'A janela afirmada erra a hora do óbito. Reúna sinais colhidos a tempo e refaça o juízo.',
+    primeira: 'Errei a hora do óbito: a janela que fixei não a alcança. Reúno os sinais colhidos a tempo e refaço a datação.',
   },
   janela_sem_sustentacao: {
     primeira:
-      'A janela afirmada contradiz os sinais puxados à âncora Quando. Corrija a afirmação ou reveja essas ligações.',
+      'A janela que afirmei contradiz os próprios sinais que puxei ao Quando. Corrijo a afirmação, ou revejo essas ligações.',
   },
   janela_imprecisa: {
-    primeira: 'A janela está larga. Mais sinais temporais colhidos cedo estreitam a convergência.',
+    primeira: 'A minha janela ficou larga demais. Mais sinais temporais colhidos cedo a estreitariam.',
   },
   sem_mecanismo: {
-    primeira: 'Afirme a causa da morte e sustente-a com os sinais discriminantes do corpo.',
+    primeira: 'Não cravei a causa da morte. Devo afirmá-la e sustentá-la nos sinais discriminantes do corpo.',
   },
   mecanismo_errado: {
-    primeira: 'A causa afirmada contradiz os sinais do corpo. Reexamine o pescoço da vítima.',
+    primeira: 'Afirmei uma causa que os sinais do corpo desmentem; devo voltar ao pescoço da vítima.',
   },
   sem_nexo: {
-    primeira: 'Falta materialidade: puxe à âncora Presença o vestígio que põe o réu na cena.',
+    primeira: 'Falta-me materialidade: nenhum vestígio põe o réu na cena. Devo puxar um à âncora Presença.',
   },
   nexo_errado: {
-    primeira: 'O vestígio ligado não casa com o instrumento do óbito.',
+    primeira: 'Liguei um vestígio que não casa com o instrumento do óbito.',
   },
   nexo_acessorio: {
-    primeira: 'Um dos vestígios ligados à Presença não pertence ao réu — desfaça o barbante que sobra.',
+    primeira: 'Um dos vestígios que liguei à Presença não é do réu; devo desfazer o barbante que sobra.',
   },
   sem_motivacao: {
-    primeira: 'Aponte o móbil do réu — há papéis que falam por ele.',
+    primeira: 'Não apontei o móbil do réu — e há papéis que falam por ele.',
   },
   motivacao_erronea: {
-    primeira: 'O móbil apontado não é o que move o réu.',
+    primeira: 'Apontei um móbil que não é o que move o réu.',
   },
   sem_descuidos: {
-    primeira: 'A cena tem descuidos a expor: confronte a hora que ela alega com a que o corpo dá.',
+    primeira: 'A cena guarda descuidos que não expus: a hora que ela alega não bate com a que o corpo dá.',
   },
   periferico: {
-    primeira: 'Reveja o juízo sobre os não-acusados: cada um merece o veredicto que as cartas fundamentam.',
+    primeira: 'Devo rever o meu juízo sobre os não-acusados: cada um merece o veredicto que as cartas fundamentam.',
     reincidencia:
-      'O juízo sobre {nome} voltou a cair. Escolher “Inocente” pede um gesto a mais, ali mesmo na ficha do juízo: confrontar o paradeiro declarado com o vestígio que o desmente, se esse vestígio estiver na sua mesa.',
+      'O meu juízo sobre {nome} caiu de novo. Firmar esse “inocente” pede um gesto a mais, ali mesmo na ficha do juízo: confrontar o paradeiro que declarou com o vestígio que o desmente, se esse vestígio estiver na minha mesa.',
   },
 };
 
@@ -147,7 +148,18 @@ export default function MonologoFinal() {
           </ul>
         </div>
 
-        <div className="mt-8 flex justify-end">
+        {/* O gancho de replay: o mesmo caso admite outra leitura. Convida a
+            uma segunda tentativa — atrás da Vitória Absoluta, se o desfecho
+            ficou aquém dela. */}
+        <div className="mt-8 max-w-prose mx-auto text-center">
+          <p className="font-serif italic text-stone-400 text-sm leading-relaxed" data-convite-replay>
+            {vitoria
+              ? 'O caso está selado sem uma falha. Fechar o caderno o devolve ao começo — outro método, outra ordem de perguntas, e a vila responde diferente.'
+              : 'A verdade coube, mas não inteira. Fechar o caderno recomeça o caso do zero: outro caminho de perguntas pode alcançar a Vitória Absoluta.'}
+          </p>
+        </div>
+
+        <div className="mt-5 flex justify-end">
           <button
             onClick={() => {
               // O caderno fecha de vez: apaga o save antes do reload, para a
@@ -180,7 +192,7 @@ export default function MonologoFinal() {
       {!vitoria && dicas.length > 0 && (
         <div className="mt-8 max-w-prose mx-auto border border-latao/40 bg-stone-950/40 rounded-sm px-4 py-3">
           <p className="text-rotulo uppercase text-latao-claro/80 mb-2">
-            O que faltou — cortesia do tutorial
+            Onde a minha conta ainda não fecha
           </p>
           <ul className="space-y-1.5">
             {dicas.map((d, i) => (

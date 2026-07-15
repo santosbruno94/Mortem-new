@@ -17,12 +17,57 @@ export default function Caderneta() {
   const abrirFicha = useJogo((s) => s.abrirFicha);
   const modoPurista = useJogo((s) => s.modoPurista);
   const alternarModoPurista = useJogo((s) => s.alternarModoPurista);
+  const escolhaContradicao = useJogo((s) => s.escolhaContradicao);
+  const resolverContradicao = useJogo((s) => s.resolverContradicao);
   // No purista só a leitura DO MESTRE cala; conclusões de outra origem
   // (se um dia existirem) continuam à vista.
   const conclusoesVisiveis = modoPurista ? conclusoes.filter((c) => c.origem !== 'mestre') : conclusoes;
 
+  // #5 — a escolha ativa: só aparece quando as DUAS horas contraditórias
+  // estão na mesa (o corpo e o avistamento do padeiro). Firmá-la é o gesto
+  // de decisão do meio do caso; a decisão é definitiva e NÃO rege o veredicto.
+  const temPadeiro = cartasRegistradas.some((c) => c.id === 'dep_avistamento_padeiro');
+  const temCorpoHora = cartasRegistradas.some((c) => c.id === 'ev_rigor' || c.id === 'ev_livores');
+  const contradicaoNaMesa = temPadeiro && temCorpoHora;
+
   return (
     <Overlay titulo="Caderneta" subtitulo="Banco de anotações — reler não custa tempo">
+      {/* #5 — O ponto a decidir: duas horas que não cabem juntas. Escolher
+          é firmar a hipótese de trabalho, para valer; o mural, no fim, é que
+          dá o veredicto. */}
+      {contradicaoNaMesa && (
+        <div
+          className="mb-8 border border-vela/60 bg-stone-950/50 rounded-sm px-4 py-3 shadow-vela"
+          data-ponto-decidir
+        >
+          <p className="text-rotulo uppercase text-amber-300/80 mb-2">Um ponto a decidir</p>
+          {escolhaContradicao ? (
+            <p className="text-stone-300 text-sm leading-relaxed font-serif italic" data-decisao-firmada>
+              {escolhaContradicao === 'corpo'
+                ? 'Firmei-me no corpo: parto do rigor e do livor; ao relato que os contrarie compete o ônus da prova.'
+                : 'Firmei-me no relato do moço: parto da luz e da vida que ele jura ter visto na oficina; ao corpo compete então o ônus da prova.'}
+            </p>
+          ) : (
+            <>
+              <p className="text-stone-300 text-sm leading-relaxed mb-3">
+                O moço do padeiro jura o Sr. Arthurs vivo e à bancada às cinco e um quarto da madrugada
+                de sábado. O corpo já esfriara: o rigor e o livor põem a morte na véspera, antes da
+                meia-noite. Só uma das duas horas pode reger a minha conta, e de qual parto muda o
+                caminho daqui em diante.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <button type="button" className="botao-mesa text-sm" onClick={() => resolverContradicao('relato')}>
+                  Parto do relato do moço
+                </button>
+                <button type="button" className="botao-mesa text-sm" onClick={() => resolverContradicao('corpo')}>
+                  Parto do que o corpo diz
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
       {/* Observações reunidas — diário compacto; clicar reabre a ficha */}
       <h3 className="font-serif text-latao-claro text-lg titulo-gravado mb-3">Observações reunidas</h3>
       {cartasRegistradas.length === 0 ? (

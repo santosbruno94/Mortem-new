@@ -151,6 +151,18 @@ export function ligacaoDeConfrontoEmCena(carta, suspeitoId, cartasRegistradas) {
   return alibi ? [carta.id, alibi.id] : null;
 }
 
+// A carta DESMENTIRIA o paradeiro do interrogado (rastro/registro que o
+// toca), mas o álibi dele ainda não está na mesa — então apresentá-la é um
+// no-op de mural: a reação joga, mas nenhuma ligação nasce. Serve à UI para
+// avisar o jogador (em vez do silêncio). Só tags — o motor não muda.
+export function confrontoSemParadeiro(carta, suspeitoId, cartasRegistradas) {
+  if (!carta) return false;
+  const t = carta.tagsOcultas || {};
+  const desmente = (ehVestigio(carta) && t.pertenceA === suspeitoId) || (ehCorroboracao(carta) && t.ligadoA === suspeitoId);
+  if (!desmente) return false;
+  return !cartasRegistradas.some((c) => ehAlibi(c) && c.tagsOcultas.declaranteId === suspeitoId);
+}
+
 // ---------------------------------------------------------------------
 // Análise de TODAS as ligações de uma acusação. Agrupa o que o veredicto
 // precisa, tudo derivado das tags.

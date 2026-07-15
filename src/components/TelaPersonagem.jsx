@@ -1,6 +1,17 @@
 import { useJogo } from '../store/jogo.js';
 import { OPCOES_PERSONAGEM } from '../data/abertura.js';
 import { formatRelogio } from '../logic/tempo.js';
+import { modoFlat } from '../logic/webgl.js';
+
+// Liga/desliga a rota de escape 2D (?flat=1) e recarrega — a decisão 3D×2D
+// é única por sessão (lida no arranque). Na tela de título não há jogo em
+// curso; o recarregamento é inócuo (o save persiste no localStorage).
+function alternarModoLeve(ativar) {
+  const url = new URL(window.location.href);
+  if (ativar) url.searchParams.set('flat', '1');
+  else url.searchParams.delete('flat');
+  window.location.href = url.toString();
+}
 
 // Tela inicial (§12): um único convite de papel pousa na mesa de madeira
 // à luz de vela; o Dr. Harlan Blackwell ergue-o e atende ao chamado.
@@ -92,6 +103,19 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
             </button>
           </>
         )}
+
+        {/* Rota de escape 2D visível (§UI): para hardware fraco ou sem WebGL,
+            sem depender de descobrir o parâmetro ?flat=1 na URL. */}
+        <button
+          type="button"
+          onClick={() => alternarModoLeve(!modoFlat())}
+          className="mt-6 text-stone-500 hover:text-stone-300 text-xs underline underline-offset-2"
+          data-toggle-flat
+        >
+          {modoFlat()
+            ? 'Modo leve (2D): ativo — a mesa sem a maquete 3D'
+            : 'Modo leve (2D) — para hardware sem WebGL ou lento'}
+        </button>
       </div>
     </div>
   );

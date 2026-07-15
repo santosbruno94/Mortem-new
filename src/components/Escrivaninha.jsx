@@ -95,7 +95,7 @@ export default function Escrivaninha() {
                         escuro do meio (P3). Em tela estreita a maquete rola
                         na horizontal (largura mínima de 620px) com um
                         sombreado na borda como convite de rolagem (P2). */}
-                    <div className="shrink-0 relative h-[44%] lg:h-[52%] min-h-[210px] border-b border-black/40">
+                    <div className="shrink-0 relative h-[44%] lg:h-[52%] min-h-[210px] border-b border-black/40 diorama-mesa-fundo">
                       <div className="absolute inset-0 overflow-x-auto overflow-y-hidden sm:overflow-hidden">
                         <div className="h-full min-w-[620px] sm:min-w-0">
                           <DioramaVila aoAbrirNo={aoAbrirNo} aoPerderContexto={aoPerderContexto} />
