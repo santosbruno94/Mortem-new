@@ -387,12 +387,15 @@ async function main() {
     checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
+    // Etapa 1 (mapa): um local já visitado e que não é o atual recorda no
+    // rótulo que o perito esteve lá (corpo e cena, visitados antes da oficina).
+    checar('Etapa 1: o mapa marca os locais visitados', (await page.locator('body').innerText()).includes('visitado ·'));
 
     // ---- FASE 3 — Interrogatório como diálogo (§7.1) ----
     // Interrogar é escolher e confrontar: o nó abre em diálogo, o confronto
     // fica OCULTO até a prova estar na mesa, e as cartas nascem de dentro da
     // fala pelo mesmo [[id]] das localidades.
-    await abrirNo(page, 'Silas Crane');
+    await abrirNo(page, 'A Saleta');
     checar('Fase 3: o interrogatório abre em diálogo (opções do perito)', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     checar('Fase 3: retrato do interrogado presente', (await page.locator('svg[data-retrato]').count()) >= 1);
     // Onda 5: o seletor "Apresentar uma prova…" só lista o que está na mesa —
@@ -438,7 +441,7 @@ async function main() {
     // está na mesa e o seletor (Onda 5) a lista; apresentá-la rende a reação
     // de Silas (observável, nunca confissão — o veredicto é do mural) e ANOTA
     // a refutação do paradeiro dele no mural (barbante removível).
-    await abrirNo(page, 'Silas Crane');
+    await abrirNo(page, 'A Saleta');
     await page.getByRole('button', { name: 'Apresentar uma prova…' }).click();
     await espera(page, 200);
     checar('Rota 1: prova colhida aparece no seletor', (await page.locator('[data-seletor-provas]').getByRole('button', { name: /O Quarto Cinco às Escuras/ }).count()) === 1);
@@ -456,9 +459,12 @@ async function main() {
     checar('Onda 5: prova alheia cai na evasiva do personagem', (await page.locator('[data-no-dialogo="evasiva"]').count()) === 1);
     checar('Onda 5: a evasiva não confessa (voz de Silas)', (await page.locator('body').innerText()).includes('a minha parte é corda e mola'));
     await fecharOverlay(page);
+    // Etapa 1 (mapa): o lembrete nomeia QUEM recebeu o perito — a oficina,
+    // visitada antes e agora não-atual, recorda o aprendiz Davey Tull.
+    checar('Etapa 1: o lembrete nomeia quem foi encontrado no local', (await page.locator('body').innerText()).includes('visitado · Davey Tull'));
     // Onda 6: Agnes e Grey agora recebem em DIÁLOGO (conversão integral) —
     // as cartas (álibi, comportamento) nascem das falas, pelos assuntos.
-    await interrogarEExtrair(page, 'Sra. Agnes Rooke');
+    await interrogarEExtrair(page, 'A Papelaria');
     checar('Onda 6: a papelaria abre em diálogo', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     await fecharOverlay(page);
     await interrogarEExtrair(page, 'O Moinho');
@@ -611,7 +617,7 @@ async function main() {
     console.log('\n=== ROTA 3 — Intuitivo (Harlan) → Impunidade ===');
     await novaPartida(page, 'Dr. Harlan Blackwell');
 
-    await interrogarEExtrair(page, 'Silas Crane'); // §7.1: o interrogatório é diálogo
+    await interrogarEExtrair(page, 'A Saleta'); // §7.1: o interrogatório é diálogo
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Delegacia'); // inclui o "visto com vida" (janela aberta)
     await fecharOverlay(page);

@@ -1,5 +1,8 @@
 import { formatDuracao } from '../../logic/tempo.js';
 import { obterDialogo } from '../../data/dialogos.js';
+import { resumoVisita } from '../../logic/resumoVisita.js';
+import { textoLembreteVisita } from '../../logic/lembreteTexto.js';
+import { useJogo } from '../../store/jogo.js';
 
 // =====================================================================
 // A etiqueta de maquete de um nó — uma TAG DE PAPEL PENDENTE (amarrada
@@ -13,6 +16,12 @@ export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado
   // O verbo segue a árvore de diálogo: nó com árvore própria é interrogatório
   // (camada visual lendo dado narrativo — o motor não participa).
   const verbo = obterDialogo(loc.id) ? 'Interrogar' : 'Examinar';
+  // Lembrete de visita: se o perito já esteve aqui e não está aqui agora, a
+  // etiqueta recorda quem o recebeu e quantas observações ficaram — para
+  // decidir se vale voltar. Apresentação pura (não lê tagsOcultas).
+  const visitado = useJogo((s) => s.nosVisitados.includes(loc.id));
+  const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
+  const lembrete = visitado && !aqui ? textoLembreteVisita(resumoVisita(loc.id, cartasRegistradas)) : '';
   return (
     <span className="rotulo-tag select-none">
       {/* O cordão que amarra a etiqueta à maquete (puro enfeite). */}
@@ -40,6 +49,7 @@ export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado
         <span className="block rotulo-custo">
           {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
         </span>
+        {lembrete && <span className="block rotulo-lembrete">visitado · {lembrete}</span>}
       </button>
     </span>
   );
