@@ -3,9 +3,13 @@ import { useJogo, CUSTO_REVISAO } from '../store/jogo.js';
 import { gerarMonologo, comArtigo } from '../logic/monologo.js';
 import { gerarEpilogo } from '../logic/epilogo.js';
 import { LOCALIDADES } from '../data/localidades.js';
-import { CARTAS } from '../data/cartas.js';
+import { obterCartas, obterSuspeitos } from '../data/pacote_caso.js';
 import { formatRelogio, formatHora, formatDuracao, HORAS_CHEGADA_CENA } from '../logic/tempo.js';
-import { SUSPEITOS } from '../data/seed.js';
+
+// Dados do caso corrente (o pacote carregado) — lidos na carga do módulo,
+// como antes eram lidos de seed.js/cartas.js diretamente.
+const CARTAS = obterCartas();
+const SUSPEITOS = obterSuspeitos();
 import { tocarSom } from '../som.js';
 import Overlay from './Overlay.jsx';
 

@@ -5,7 +5,7 @@ import Cena3DBoundary from './Cena3DBoundary.jsx';
 import PlantaRelojoaria from './PlantaRelojoaria.jsx';
 import { obterLocalidade } from '../data/localidades.js';
 import { obterNo } from '../data/mapa.js';
-import { SEED_TUTORIAL } from '../data/seed.js';
+import { obterVerdadeDeOuro } from '../data/pacote_caso.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
 import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
@@ -35,7 +35,7 @@ export default function EventoLocalidade({ localidadeId }) {
 
   const localidade = obterLocalidade(localidadeId);
   if (!localidade) return null;
-  const ipm = ipmAtual(horasJogo, SEED_TUTORIAL.horasMorteAntesChegada);
+  const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada);
 
   // A prosa imersiva pousa sobre o couro escuro: serifada e legível. O
   // renderizador de [[id]]/interpolação é o util compartilhado (§7.1).

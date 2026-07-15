@@ -24,7 +24,7 @@
 // a seed deverá carregar o gênero.
 // =====================================================================
 
-import { obterSuspeito } from '../data/seed.js';
+import { obterSuspeito } from '../data/pacote_caso.js';
 import { ROTULOS_EXPLICACAO } from '../data/rotulos.js';
 import { artigoDe, comArtigo, ComArtigo, deQuem } from './monologo.js';
 import { hashString } from './hash.js';

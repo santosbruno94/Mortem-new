@@ -1,5 +1,5 @@
 import { useJogo } from '../store/jogo.js';
-import { obterSuspeito } from '../data/seed.js';
+import { obterSuspeito } from '../data/pacote_caso.js';
 import { formatDeclaracao } from '../logic/tempo.js';
 import Overlay from './Overlay.jsx';
 import RetratoPersonagem from './RetratoPersonagem.jsx';

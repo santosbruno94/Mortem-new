@@ -8,12 +8,13 @@
 // =====================================================================
 
 import { APARENCIAS_CURADAS, VOCABULARIO_APARENCIA } from '../data/aparencias.js';
-import { SEED_TUTORIAL } from '../data/seed.js';
+import { obterVerdadeDeOuro } from '../data/pacote_caso.js';
 import { hashString } from './hash.js';
 
 // Aparência de um personagem: primeiro a curadoria do caso; na falta
-// dela (personagem gerado), a derivação determinística pela seed.
-export function obterAparencia(personagemId, seed = SEED_TUTORIAL) {
+// dela (personagem gerado), a derivação determinística pela seed. O seed
+// default sai do pacote carregado (a Verdade de Ouro do caso corrente).
+export function obterAparencia(personagemId, seed = obterVerdadeDeOuro()) {
   return APARENCIAS_CURADAS[personagemId] || derivarAparenciaDeSeed(seed, personagemId);
 }
 

@@ -9,11 +9,15 @@
 
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { SEED_TUTORIAL } from '../data/seed.js';
-import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
-import { NOS_MAPA, LEADS_DESBLOQUEIO, custoViagem, obterNo } from '../data/mapa.js';
-import { HORAS_CHEGADA_CENA, ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
-import { temperaturaPorIpm, AMBIENTE_PADRAO, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
+import {
+  obterCaso,
+  carregarCaso as aplicarCasoNoModulo,
+  obterDefinicaoCarta,
+  resolverEstadoCarta,
+} from '../data/pacote_caso.js';
+import { custoViagem, obterNo } from '../data/mapa.js';
+import { ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
+import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { ligacaoDeConfrontoEmCena } from '../logic/acusacao.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
@@ -34,6 +38,10 @@ export const CUSTO_REVISAO = 2;
 // JSON-serializável — as ações vivem fora, no create.
 // ---------------------------------------------------------------------
 export function estadoInicialCaso() {
+  // Todas as leituras de caso saem do pacote carregado (default = o caso-
+  // escola): a hora de chegada e os nós iniciais deixam de ser cravados aqui.
+  const caso = obterCaso();
+  const horasChegada = caso.parametrosCena.horasChegada;
   return {
     // ---------------- Fases e personagem ----------------
     faseJogo: 'selecao', // 'selecao' → 'abertura' → 'investigacao'
@@ -41,13 +49,13 @@ export function estadoInicialCaso() {
     passoAbertura: 0,
 
     // ---------------- Relógio ----------------
-    horasJogo: HORAS_CHEGADA_CENA,
-    horasChegadaCena: HORAS_CHEGADA_CENA,
+    horasJogo: horasChegada,
+    horasChegadaCena: horasChegada,
 
     // ---------------- Mapa (o "dia do perito") ----------------
     // O relógio só avança ao VIAJAR entre nós; dentro do local, congela.
     localidadeAtual: null, // definido ao iniciar a investigação
-    nosDesbloqueados: NOS_MAPA.filter((n) => n.desbloqueadoInicio).map((n) => n.id),
+    nosDesbloqueados: caso.nosMapa.filter((n) => n.desbloqueadoInicio).map((n) => n.id),
     nosNovos: [], // nós revelados por lead e ainda não visitados (destaque na mesa)
 
     // ---------------- Mesa e registros ----------------
@@ -152,6 +160,17 @@ export const useJogo = create(
   // "Recomeçar do princípio" / "Fechar o caderno": apaga o save e devolve a
   // mesa ao estado de arranque. As ações permanecem (o set é merge).
   reiniciarCaso: () => {
+    useJogo.persist.clearStorage();
+    set({ ...estadoInicialCaso(), ultimaCartaPousada: null });
+  },
+
+  // Carrega um pacote de caso (o contrato de saída do gerador): troca o caso
+  // corrente no módulo de dados e devolve a mesa ao arranque desse caso. Toda
+  // leitura de caso (estadoInicialCaso, extração, exame, veredicto) passa a
+  // sair do pacote carregado. Hoje só o caso-escola existe; a ação já deixa a
+  // porta pronta para o procedural (FASE 7). Apaga o save (o caso mudou).
+  carregarCaso: (pacote) => {
+    aplicarCasoNoModulo(pacote);
     useJogo.persist.clearStorage();
     set({ ...estadoInicialCaso(), ultimaCartaPousada: null });
   },
@@ -311,7 +330,8 @@ export const useJogo = create(
     if (s.cartasRegistradas.some((c) => c.id === cartaId)) return;
     const definicao = obterDefinicaoCarta(cartaId);
     if (!definicao) return;
-    const ipm = ipmAtual(s.horasJogo, SEED_TUTORIAL.horasMorteAntesChegada);
+    const caso = obterCaso();
+    const ipm = ipmAtual(s.horasJogo, caso.verdadeDeOuro.horasMorteAntesChegada, caso.parametrosCena.horasChegada);
     const estado = resolverEstadoCarta(definicao, ipm);
     const carta = {
       id: definicao.id,
@@ -328,7 +348,7 @@ export const useJogo = create(
     // Leads: certas cartas revelam novos nós no mapa ao serem extraídas.
     // O desbloqueio é anunciado no diário e destacado na mesa (nosNovos),
     // para o jogador não perder o mapa crescendo enquanto lê um overlay.
-    const lead = LEADS_DESBLOQUEIO.find((l) => l.cartaId === definicao.id);
+    const lead = caso.leads.find((l) => l.cartaId === definicao.id);
     const revelou = lead && !s.nosDesbloqueados.includes(lead.revelaNo);
     const nosDesbloqueados = revelou ? [...s.nosDesbloqueados, lead.revelaNo] : s.nosDesbloqueados;
     const log = [...s.log, { hora: s.horasJogo, texto: `Registrado: ${estado.carimboPadrao}.` }];
@@ -374,21 +394,24 @@ export const useJogo = create(
 
   // Ação especial do Termômetro: gera a carta de algor mortis a partir da
   // temperatura corrente. O modelo (37°C, ~1°C/h, ambiente) mora INTEIRO em
-  // src/logic/tempo_morte.js — aqui só se consome temperaturaPorIpm e
-  // AMBIENTE_PADRAO, nunca números repetidos (§15: ajuste num ponto só).
+  // src/logic/tempo_morte.js — aqui só se consome temperaturaPorIpm e o
+  // ambiente do pacote (parametrosCena.ambiente), nunca números repetidos
+  // (§15: ajuste num ponto só).
   medirTemperatura: () => {
     const s = get();
     if (s.temperaturaMedida !== null) return;
-    const ipm = ipmAtual(s.horasJogo, SEED_TUTORIAL.horasMorteAntesChegada);
-    const temperatura = temperaturaPorIpm(ipm, AMBIENTE_PADRAO);
+    const caso = obterCaso();
+    const ambiente = caso.parametrosCena.ambiente;
+    const ipm = ipmAtual(s.horasJogo, caso.verdadeDeOuro.horasMorteAntesChegada, caso.parametrosCena.horasChegada);
+    const temperatura = temperaturaPorIpm(ipm, ambiente);
     let carta;
-    if (temperatura <= AMBIENTE_PADRAO) {
+    if (temperatura <= ambiente) {
       carta = {
         id: 'ev_algor',
         localidade: 'corpo',
         textoDisplay: 'Corpo Frio como a Sala',
         termoCarimbo: 'Corpo tão frio quanto a sala',
-        descricao: `O termômetro marca os ${formatTemperatura(AMBIENTE_PADRAO)} do próprio escritório: o corpo esfriou até igualar a sala. Isso já não aperta a hora — diz só que a morte foi há mais de um dia.`,
+        descricao: `O termômetro marca os ${formatTemperatura(ambiente)} do próprio escritório: o corpo esfriou até igualar a sala. Isso já não aperta a hora — diz só que a morte foi há mais de um dia.`,
         vozMestre: 'Frio como a sala. O calor já não conta as horas — só diz que faz tempo.',
         // Equilíbrio: leitura VAGA, não nula. Carrega a temperatura medida
         // (== ambiente); o modelo devolve um piso largo (perde precisão).
@@ -396,7 +419,7 @@ export const useJogo = create(
           dominio: 'temporal',
           subDominio: 'algor_mortis',
           temperaturaCorpo: temperatura,
-          temperaturaAmbiente: AMBIENTE_PADRAO,
+          temperaturaAmbiente: ambiente,
         },
         horaRegistro: s.horasJogo,
       };
@@ -405,10 +428,10 @@ export const useJogo = create(
         id: 'ev_algor',
         localidade: 'corpo',
         textoDisplay: `Corpo Ainda Morno: ${formatTemperatura(temperatura)}`,
-        termoCarimbo: `Corpo a ${formatTemperatura(temperatura)} (sala a ${formatTemperatura(AMBIENTE_PADRAO)})`,
+        termoCarimbo: `Corpo a ${formatTemperatura(temperatura)} (sala a ${formatTemperatura(ambiente)})`,
         // A carta entrega só a LEITURA (temperaturas); a aritmética do
         // resfriamento é do jogador, com o verbete de algor do Glossário (Q9).
-        descricao: `O mercúrio detém-se nos ${formatTemperatura(temperatura)}, contra ${formatTemperatura(AMBIENTE_PADRAO)} do escritório. Um corpo vivo marcaria ${CONSTANTES_FORENSES.temperaturaInicial}.`,
+        descricao: `O mercúrio detém-se nos ${formatTemperatura(temperatura)}, contra ${formatTemperatura(ambiente)} do escritório. Um corpo vivo marcaria ${CONSTANTES_FORENSES.temperaturaInicial}.`,
         vozMestre: 'Ainda morno. O calor que perdeu conta as horas — um grau a cada uma delas.',
         // Carrega a leitura BRUTA (temperatura medida + ambiente); a janela
         // é calculada pelo modelo forense universal na gaveta Cronos.
@@ -416,7 +439,7 @@ export const useJogo = create(
           dominio: 'temporal',
           subDominio: 'algor_mortis',
           temperaturaCorpo: temperatura,
-          temperaturaAmbiente: AMBIENTE_PADRAO,
+          temperaturaAmbiente: ambiente,
         },
         horaRegistro: s.horasJogo,
       };
@@ -492,7 +515,7 @@ export const useJogo = create(
   // contra a Verdade de Ouro (calcularVeredictoCadeia).
   submeterAcusacao: () => {
     const s = get();
-    const veredicto = calcularVeredictoCadeia(s.acusacao, s.cartasRegistradas, SEED_TUTORIAL);
+    const veredicto = calcularVeredictoCadeia(s.acusacao, s.cartasRegistradas, obterCaso().verdadeDeOuro);
     // Conta a queda em cada ponto (código único por submissão): na segunda
     // queda no mesmo ponto, a dica do tutorial fica mais específica.
     const falhasVistas = { ...s.falhasVistas };

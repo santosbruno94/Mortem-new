@@ -1,12 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { useJogo } from '../store/jogo.js';
-import { SUSPEITOS } from '../data/seed.js';
+import { obterSuspeitos } from '../data/pacote_caso.js';
 import { CATALOGO_CAUSAS } from '../data/catalogo_causas.js';
 import { ANCORAS, analisarLigacoes, horaAlegada } from '../logic/acusacao.js';
 import { formatJanela } from '../logic/tempo.js';
 import { deQuem } from '../logic/monologo.js';
 import { tocarSom } from '../som.js';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
+
+// Elenco do caso corrente (o pacote carregado) — lido na carga do módulo,
+// como antes era lido de seed.js diretamente.
+const SUSPEITOS = obterSuspeitos();
 
 // =====================================================================
 // A MESA DE CONSTRUÇÃO — agora em ESTAÇÕES que crescem uma na outra.
