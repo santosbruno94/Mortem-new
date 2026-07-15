@@ -20,7 +20,7 @@
 // abertura sorteada é máxima, só fechos sem máxima entram no sorteio.
 // =====================================================================
 
-import { obterSuspeito } from '../data/seed.js';
+import { obterSuspeito } from '../data/pacote_caso.js';
 import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIVO } from '../data/rotulos.js';
 import { formatJanela, formatHora } from './tempo.js';
 import { hashString } from './hash.js';

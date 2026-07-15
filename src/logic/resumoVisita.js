@@ -1,5 +1,5 @@
 import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
-import { SUSPEITOS } from '../data/seed.js';
+import { obterSuspeitos } from '../data/pacote_caso.js';
 
 // =====================================================================
 // LEMBRETE DE VISITA — o que o mapa recorda de um local JÁ VISITADO:
@@ -9,13 +9,12 @@ import { SUSPEITOS } from '../data/seed.js';
 // JAMAIS lê tagsOcultas — o motor de veredicto não participa.
 // =====================================================================
 
-const NOMES_PERSONAGEM = Object.fromEntries(SUSPEITOS.map((s) => [s.id, s.nome]));
-// O delegado recebe na delegacia mas não é suspeito (não está em SUSPEITOS).
-NOMES_PERSONAGEM['delegado_wycliffe'] = 'Delegado Wycliffe';
-
 export function resumoVisita(localidadeId, cartasRegistradas) {
+  const nomes = Object.fromEntries(obterSuspeitos().map((s) => [s.id, s.nome]));
+  // O delegado recebe na delegacia mas não é suspeito (não está em SUSPEITOS).
+  nomes['delegado_wycliffe'] = 'Delegado Wycliffe';
   const nCartas = cartasRegistradas.filter((c) => c.localidade === localidadeId).length;
   const personagemId = PERSONAGEM_POR_LOCALIDADE[localidadeId];
-  const personagemNome = personagemId ? NOMES_PERSONAGEM[personagemId] || null : null;
+  const personagemNome = personagemId ? nomes[personagemId] || null : null;
   return { personagemNome, nCartas };
 }

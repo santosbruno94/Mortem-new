@@ -27,14 +27,32 @@ import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
-import { SEED_TUTORIAL } from '../src/data/seed.js';
 import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.js';
-import { NOS_MAPA } from '../src/data/mapa.js';
 import { POSICOES_DIORAMA, FORMAS_PREDIO } from '../src/data/mapa_espacial.js';
 import { HOTSPOTS_CORPO } from '../src/data/hotspots_corpo.js';
-import { obterDefinicaoCarta, CARTAS } from '../src/data/cartas.js';
-import { LOCALIDADES } from '../src/data/localidades.js';
-import { DIALOGOS } from '../src/data/dialogos.js';
+import {
+  montarPacoteTutorial,
+  carregarCaso,
+  obterDefinicaoCarta,
+  CAMPOS_OBRIGATORIOS_PACOTE,
+} from '../src/data/pacote_caso.js';
+
+// ============================================================
+// O CASO SOB TESTE É UM PACOTE. As guardas estáticas rodam contra o pacote
+// do caso-escola (montarPacoteTutorial), não mais contra os módulos crus:
+// é o mesmo contrato que o futuro gerador terá de satisfazer. `carregarCaso`
+// fixa este pacote no módulo, para que os perfis (que dirigem o store) e as
+// guardas leiam exatamente o mesmo caso.
+// ============================================================
+const pacote = montarPacoteTutorial();
+carregarCaso(pacote);
+const {
+  verdadeDeOuro: SEED_TUTORIAL,
+  cartas: CARTAS,
+  localidades: LOCALIDADES,
+  dialogos: DIALOGOS,
+  nosMapa: NOS_MAPA,
+} = pacote;
 
 const monologos = [];
 const estadoInicial = { ...useJogo.getState() };
@@ -762,8 +780,50 @@ const confrontoClassificado = [...analiseCena.refutaAlibi.values()].some(
 );
 const apresentadasMarcadas = (s().provasApresentadas.silas_crane || []).length === 2;
 
+// ============================================================
+// GUARDA DO PACOTE (FASE 1): o pacote de caso é SERIALIZÁVEL e COMPLETO.
+// É a prova do contrato de saída do gerador — um pacote emitido tem de
+// passar aqui antes de o motor o aceitar. Checa: (1) todos os campos
+// obrigatórios presentes; (2) round-trip JSON preserva o pacote (nenhuma
+// função, nenhum valor não-serializável); (3) ids únicos nas coleções que
+// o exigem; (4) parametrosCena completo (chegada, ambiente, calendário).
+// ============================================================
+function verificarPacote(p) {
+  const problemas = [];
+  for (const campo of CAMPOS_OBRIGATORIOS_PACOTE) {
+    if (p[campo] == null) problemas.push(`campo obrigatório ausente: ${campo}`);
+  }
+  let serializavel = false;
+  try {
+    serializavel = JSON.stringify(JSON.parse(JSON.stringify(p))) === JSON.stringify(p);
+  } catch {
+    serializavel = false;
+  }
+  if (!serializavel) problemas.push('não é serializável (round-trip JSON diverge)');
+  const idsUnicos = (lista, rotulo) => {
+    const ids = (lista || []).map((x) => x.id);
+    const dup = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+    if (dup.length) problemas.push(`${rotulo}: ids duplicados (${dup.join(', ')})`);
+  };
+  idsUnicos(p.suspeitos, 'suspeitos');
+  idsUnicos(p.cartas, 'cartas');
+  idsUnicos(p.nosMapa, 'nosMapa');
+  idsUnicos(p.localidades, 'localidades');
+  const pc = p.parametrosCena || {};
+  if (typeof pc.horasChegada !== 'number') problemas.push('parametrosCena.horasChegada ausente');
+  if (typeof pc.ambiente !== 'number') problemas.push('parametrosCena.ambiente ausente');
+  if (!pc.calendario) problemas.push('parametrosCena.calendario ausente');
+  return problemas;
+}
+const problemasPacote = verificarPacote(pacote);
+const pacoteSerializavelCompleto = problemasPacote.length === 0;
+if (!pacoteSerializavelCompleto) {
+  console.log('\nPACOTE — problemas:', problemasPacote.join(' | '));
+}
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
+  ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],
   ['Apressado cai em ≥1 armadilha (réu errado)', apressadoCaiEmArmadilha && vApressado.tipo === 'erro_judiciario'],
   ['Intuitivo alcança Impunidade (réu certo, provas furadas)', vIntuitivo.tipo === 'impunidade'],

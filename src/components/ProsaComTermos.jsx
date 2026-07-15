@@ -1,8 +1,7 @@
 import { useJogo } from '../store/jogo.js';
-import { SEED_TUTORIAL } from '../data/seed.js';
+import { obterVerdadeDeOuro, obterDefinicaoCarta, resolverEstadoCarta } from '../data/pacote_caso.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
-import { obterDefinicaoCarta, resolverEstadoCarta } from '../data/cartas.js';
 
 // =====================================================================
 // renderProsa (§5, §7.1): o renderizador ÚNICO de prosa com termos
@@ -26,7 +25,7 @@ export function ParagrafoProsa({
   const horasJogo = useJogo((s) => s.horasJogo);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const extrairCarta = useJogo((s) => s.extrairCarta);
-  const ipm = ipmAtual(horasJogo, SEED_TUTORIAL.horasMorteAntesChegada);
+  const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada);
 
   const partes = interpolar(texto, detective).split(/(\[\[\w+\]\])/g);
   return (
