@@ -11,4 +11,16 @@ export default defineConfig({
   optimizeDeps: {
     include: ['three', '@react-three/fiber', '@react-three/drei'],
   },
+  build: {
+    // O ecossistema three/r3f (~820 KB min) já fica FORA do carregamento
+    // inicial: só o alcançam os módulos lazy (diorama/*, corpo3d/*), por
+    // import() dinâmico dentro da investigação — o index.html do arranque
+    // (título + abertura) não referencia three nem r3f, que só chegam ao
+    // abrir a maquete/o corpo 3D. NÃO forçamos manualChunks: isolar o three
+    // num chunk vendor fazia o Vite injetar um <link modulepreload> dele no
+    // index.html, ou seja, baixá-lo no arranque — o oposto do desejado. O
+    // aviso de tamanho desse chunk deferido é esperado; subimos o teto para
+    // não mascarar regressões do chunk inicial (o index).
+    chunkSizeWarningLimit: 900,
+  },
 });
