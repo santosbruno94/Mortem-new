@@ -727,8 +727,12 @@ regenerável por `npm run gerar:casos` e conferido byte a byte pelo QA). O gerad
 segue ILHA de build time: o runtime carrega pacotes prontos, nunca importa
 `src/gerador`. Casos gerados jogam sem mestre (sem `vozMestre`, sem ecos do
 tutorial), na grade 2D da mesa (a maquete 3D permanece exclusiva do caso-escola,
-cujos nós ela conhece) e com prosa de template FUNCIONAL (regime "mecânica
-primeiro" — a lapidação passa pelo pipeline `revisar-prosa` em passo próprio).
+cujos nós ela conhece). A prosa dos templates passou pela OS de lapidação
+editorial (`docs/os-lapidacao-prosa-gerada.md`, 16/07/2026): pipeline
+`revisar-prosa` sobre o corpus realizado dos 9 casos embarcados, correção sempre
+na fonte (`src/gerador/pacote_gerado.js`) e regeneração no mesmo commit —
+segundo passe com zero achados bloqueantes; roteiro de leitura em
+`docs/playtest-leitura-prosa-gerada.md`.
 
 ---
 
