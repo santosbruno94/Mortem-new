@@ -1945,6 +1945,197 @@ const runtimeInterferenciaOk =
   ecoEvitadaOk &&
   tutorialInerte;
 
+// ============================================================
+// GUARDAS DO GERADOR (FASE 5 do gerador por simulação): QA DA
+// SOLVABILIDADE SOB INTERFERÊNCIA — as Regras de Justiça promovidas a
+// INVARIANTES verificados por máquina (docs/game-design-simulacao.md §5).
+// Provas:
+// (1) PROVA DA ÂNCORA SOB TODOS OS RAMOS: a árvore de combinações de
+// eventos do caso é ENUMERADA (orçamento ≤ 3 ⇒ ≤ 8 ramos — a enumeração
+// é trivial por construção, R5) e, em CADA ramo, a fatia ainda resolve
+// com as MESMAS funções do motor (janela cobre a morte, mecanismo
+// cravado, presença e móbil do réu): a âncora durável e ao menos um
+// caminho completo até ela sobrevivem SEMPRE — não só no ramo pior;
+// (2) SALDO INFORMACIONAL EXPLÍCITO (R2): o conjunto redundante é
+// computado carta a carta (remoção isolada ainda resolve) e todo evento
+// destrói DENTRO dele — além de depositar ≥ 1 carta nova;
+// (3) CAUSALIDADE (R3): gatilho órfão e rota órfã já são falha na guarda
+// da FASE 4 (recomputados contra carta existente e rotina/adjacência/
+// frequentados do mundo); a prova da FASE 5 é ADVERSARIAL — as
+// armadilhas de (6) mostram que a guarda CAI quando deve;
+// (4) PRENÚNCIO NA PROSA (R4): todo silenciar publica carta de sinal com
+// prosa REAL — idêntica ao texto do evento, interpolada (sem {slot}
+// residual), nomeando a testemunha-alvo e FORA do gate do disparo;
+// (5) REPLAY: mesma seed → mesmo caso INTEIRO byte a byte (cidade,
+// inserções, crime, fatia E eventos contingentes) — estende o replay da
+// FASE 3 às seeds fixas de interferência;
+// (6) ARMADILHAS (aceite da fase): casos deliberadamente quebrados —
+// âncora destruível, gatilho órfão, rota órfã, silenciar sem prenúncio,
+// evento sem vestígio novo — TÊM de ser detectados pelas guardas; e o
+// caso válido passa nas mesmas provas (sem falso positivo).
+// ============================================================
+
+// (1) A árvore de ramos: em runtime, QUALQUER subconjunto dos eventos
+// pode ter disparado (o jogador controla os gatilhos pela ordem em que
+// investiga) — todo subconjunto é um estado alcançável do caso.
+function ramosDeEventos(eventos) {
+  const ramos = [];
+  for (let mascara = 0; mascara < 2 ** eventos.length; mascara++) {
+    ramos.push(eventos.filter((_, i) => mascara & (2 ** i)));
+  }
+  return ramos;
+}
+
+function problemasDaSolvabilidade(caso) {
+  const problemas = [];
+  const { interferencia, fatiaForense } = caso;
+  const eventos = interferencia?.eventos || [];
+  if (eventos.length > 3) {
+    // R5 é o que mantém a enumeração trivial; sem ela, esta prova não escala.
+    return ['mais de 3 eventos: enumeração de ramos deixou de ser trivial (R5 furada)'];
+  }
+  for (const ramo of ramosDeEventos(eventos)) {
+    const destruidas = ramo.map((e) => e.efeito?.cartaDestruida).filter(Boolean);
+    if (!fatiaResolveSemQa(fatiaForense, destruidas)) {
+      const rotulo = ramo.map((e) => e.id).join('+') || 'nenhum evento';
+      problemas.push(`ramo {${rotulo}}: a âncora perde o último caminho completo`);
+    }
+  }
+  // (2) Conjunto redundante explícito: pertencer a ele é a definição de
+  // "destrutível" — o evento nunca decide sozinho o que é redundante.
+  const conjuntoRedundante = new Set(
+    fatiaForense.cartas.filter((c) => fatiaResolveSemQa(fatiaForense, [c.id])).map((c) => c.id)
+  );
+  for (const ev of eventos) {
+    if ((ev.efeito?.cartasNovas || []).length < 1)
+      problemas.push(`${ev.id}: saldo informacional negativo — sem carta nova (R2)`);
+    if (ev.efeito?.cartaDestruida && !conjuntoRedundante.has(ev.efeito.cartaDestruida))
+      problemas.push(`${ev.id}: destrói fora do conjunto redundante (${ev.efeito.cartaDestruida}) (R2)`);
+  }
+  return problemas;
+}
+
+// (4) O prenúncio é prosa DO CASO, não rótulo técnico: a carta existe,
+// carrega o texto exato do evento, está interpolada e nomeia o alvo.
+function problemasDoPrenuncio(caso) {
+  const problemas = [];
+  const { interferencia, mundo } = caso;
+  for (const ev of (interferencia?.eventos || []).filter((e) => e.tipo === 'silenciar')) {
+    const carta = (interferencia.cartasExtra || []).find((c) => c.id === ev.prenuncio?.cartaId);
+    if (!carta) {
+      problemas.push(`${ev.id}: silenciar sem carta de prenúncio no caso (R4)`);
+      continue;
+    }
+    if (carta.descricao !== ev.prenuncio.texto) problemas.push(`${ev.id}: prosa da carta ≠ texto do prenúncio (R4)`);
+    if (/\{[^}]*\}/.test(carta.descricao)) problemas.push(`${ev.id}: prenúncio com slot não interpolado (R4)`);
+    const testemunha = mundo.elenco.find((p) => p.id === ev.alvo?.testemunhaId);
+    if (!testemunha || !carta.descricao.includes(testemunha.nome))
+      problemas.push(`${ev.id}: prenúncio não nomeia a testemunha-alvo (R4)`);
+    if ((ev.efeito?.cartasNovas || []).includes(carta.id))
+      problemas.push(`${ev.id}: prenúncio atrás do gate do disparo — chegaria tarde (R4)`);
+  }
+  return problemas;
+}
+
+const casosSobProva = [...casosGeradosPrimeira, ...casosInterferencia];
+const problemasSolvabilidade = casosSobProva.flatMap((caso) =>
+  problemasDaSolvabilidade(caso).map((p) => `${caso.seed}: ${p}`)
+);
+const solvabilidadeSobRamos = problemasSolvabilidade.length === 0;
+if (!solvabilidadeSobRamos) {
+  console.log('\nGERADOR (FASE 5) — solvabilidade sob interferência:', problemasSolvabilidade.join(' | '));
+}
+
+const problemasPrenuncio = casosSobProva.flatMap((caso) =>
+  problemasDoPrenuncio(caso).map((p) => `${caso.seed}: ${p}`)
+);
+const prenuncioNaProsaOk = problemasPrenuncio.length === 0;
+if (!prenuncioNaProsaOk) {
+  console.log('\nGERADOR (FASE 5) — prenúncio fora da prosa:', problemasPrenuncio.join(' | '));
+}
+
+// (5) Replay das seeds de interferência: o caso INTEIRO, byte a byte —
+// mesma cidade, mesmas inserções, mesmo crime, mesma fatia e OS MESMOS
+// eventos contingentes (gatilhos, rotas, rolagens, cartas extra).
+const casosInterferenciaReplay = SEEDS_QA_INTERFERENCIA.map((sd) => gerarCasoBruto(sd));
+const replayInterferenciaOk = casosInterferencia.every(
+  (c, i) => JSON.stringify(c) === JSON.stringify(casosInterferenciaReplay[i])
+);
+
+// (6) ARMADILHAS — o aceite da fase: o QA tem de CAIR nos casos
+// deliberadamente quebrados e PASSAR no caso válido. Cada armadilha é um
+// clone de caso real com UMA violação injetada.
+const clonarCaso = (caso) => JSON.parse(JSON.stringify(caso));
+const casoComDestruicao = casosSobProva.find((c) => c.interferencia.eventos.some((e) => e.efeito?.cartaDestruida));
+const casoComEvento = casosSobProva.find((c) => c.interferencia.eventos.length > 0);
+const casoComSilenciar = casosSobProva.find((c) => c.interferencia.eventos.some((e) => e.tipo === 'silenciar'));
+
+let armadilhasDetectadas = false;
+if (casoComDestruicao && casoComEvento && casoComSilenciar) {
+  // Armadilha (a) — ÂNCORA DESTRUÍVEL: o evento passa a destruir o móbil
+  // (gen_motivo é caminho único até o réu; removê-lo quebra a fatia). O
+  // ramo com o evento perde o caminho completo E a carta sai do conjunto
+  // redundante — as duas provas têm de acusar.
+  const armadilhaAncora = clonarCaso(casoComDestruicao);
+  armadilhaAncora.interferencia.eventos.find((e) => e.efeito?.cartaDestruida).efeito.cartaDestruida = 'gen_motivo';
+  const acusacoesAncora = problemasDaSolvabilidade(armadilhaAncora);
+  const detectaAncoraDestrutivel =
+    acusacoesAncora.some((p) => p.includes('último caminho completo')) &&
+    acusacoesAncora.some((p) => p.includes('conjunto redundante'));
+
+  // Armadilha (b) — GATILHO ÓRFÃO: o gatilho aponta carta que não existe
+  // no caso (deixa de ser ação observável do jogador — R3).
+  const armadilhaGatilho = clonarCaso(casoComEvento);
+  armadilhaGatilho.interferencia.eventos[0].gatilho.cartaId = 'carta_que_nao_existe';
+  const detectaGatilhoOrfao = problemasDaInterferencia(armadilhaGatilho).some((p) => p.includes('gatilho órfão (R3)'));
+
+  // Armadilha (c) — ROTA ÓRFÃ: a origem declarada desmente a rotina do
+  // ator (o trajeto perde a sustentação espacial — R3).
+  const armadilhaRota = clonarCaso(casoComEvento);
+  armadilhaRota.interferencia.eventos[0].rota.de = 'predio_que_nao_existe';
+  const detectaRotaOrfa = problemasDaInterferencia(armadilhaRota).some((p) => p.includes('rota órfã (R3)'));
+
+  // Armadilha (d) — SILENCIAR SEM PRENÚNCIO: a morte da testemunha sem
+  // sinal prévio legível (R4) — as duas guardas (Fase 4 e Fase 5) acusam.
+  const armadilhaPrenuncio = clonarCaso(casoComSilenciar);
+  armadilhaPrenuncio.interferencia.eventos.find((e) => e.tipo === 'silenciar').prenuncio = null;
+  const detectaSemPrenuncio =
+    problemasDaInterferencia(armadilhaPrenuncio).some((p) => p.includes('R4')) &&
+    problemasDoPrenuncio(armadilhaPrenuncio).some((p) => p.includes('R4'));
+
+  // Armadilha (e) — SALDO NEGATIVO: evento que só destrói, sem depositar
+  // carta nova (o roubo sem troca — R2).
+  const armadilhaSaldo = clonarCaso(casoComEvento);
+  armadilhaSaldo.interferencia.eventos[0].efeito.cartasNovas = [];
+  const detectaSaldoNegativo = problemasDaSolvabilidade(armadilhaSaldo).some((p) =>
+    p.includes('saldo informacional negativo')
+  );
+
+  // O caso VÁLIDO passa nas mesmas provas — armadilha sem falso positivo.
+  const casoValidoPassa =
+    problemasDaSolvabilidade(casoComDestruicao).length === 0 &&
+    problemasDaInterferencia(casoComEvento).length === 0 &&
+    problemasDoPrenuncio(casoComSilenciar).length === 0;
+
+  armadilhasDetectadas =
+    detectaAncoraDestrutivel && detectaGatilhoOrfao && detectaRotaOrfa && detectaSemPrenuncio && detectaSaldoNegativo && casoValidoPassa;
+  if (!armadilhasDetectadas) {
+    console.log(
+      '\nGERADOR (FASE 5) — armadilhas não detectadas:',
+      JSON.stringify({
+        detectaAncoraDestrutivel,
+        detectaGatilhoOrfao,
+        detectaRotaOrfa,
+        detectaSemPrenuncio,
+        detectaSaldoNegativo,
+        casoValidoPassa,
+      })
+    );
+  }
+} else {
+  console.log('\nGERADOR (FASE 5) — seeds sob prova sem os três casos-base das armadilhas (cobertura furada).');
+}
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -2007,6 +2198,10 @@ const checagens = [
   ['Interferência: cobertura — os 4 tipos materializam nas seeds fixas e o cúmplice ocorre (FASE 4)', coberturaInterferencia],
   ['Interferência: runtime mínimo — gate, perda, evitada, eco pós-caso; tutorial inerte (regressão zero) (FASE 4)', runtimeInterferenciaOk],
   ['Interferência fora do motor: veredicto/acusação não leem eventos (FASE 4)', motorSemInterferencia],
+  ['Solvabilidade sob interferência: âncora e caminho completo sobrevivem em TODOS os ramos; destruição só no conjunto redundante, ≥1 carta nova por evento (FASE 5)', solvabilidadeSobRamos],
+  ['Prenúncio na prosa: todo silenciar publica sinal legível — texto exato, interpolado, nomeia a testemunha, fora do gate (FASE 5)', prenuncioNaProsaOk],
+  ['Replay das seeds de interferência: mesma seed → mesmo caso com os mesmos eventos contingentes, byte a byte (FASE 5)', replayInterferenciaOk],
+  ['Armadilhas detectadas: âncora destruível, gatilho órfão, rota órfã, silenciar sem prenúncio, saldo negativo — e o caso válido passa (FASE 5)', armadilhasDetectadas],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
