@@ -144,6 +144,48 @@ adota um grid como GEOMETRIA DE GERAÇÃO, a serviço do mesmo loop de perícia 
 motivou a rejeição original. A rejeição anterior permanece válida nos seus próprios
 termos.
 
+## Fase 3 do gerador por simulação (16/07/2026) — o resolvedor de crime
+
+Ordem de serviço "Gerador por Simulação e Sistema de Interferência", FASE 3.
+Implementação em `src/gerador/` (crime.js, metodos.js, vestigios.js, caso.js,
+ponte_caso.js); estado em `docs/game-design-simulacao.md` §2.3. Decisões novas ou
+refinadas na execução:
+
+- **Vitória de desespero (determinismo da âncora):** esgotadas 24 tentativas de
+  reamostragem sem vitória (matchups extremos, ex.: esganadura de FOR 1 contra FOR 5),
+  a batalha final é forçada à vitória com custo máximo e flag `desespero: true` no
+  registro. Alternativa recusada: erro de geração (uma seed que não gera caso quebraria
+  o contrato "toda seed produz caso solucionável").
+- **Regra de existência aplicada ao ruído:** ruído sem ouvinte possível (rotina ×
+  adjacência na faixa do crime) NÃO vira variável do registro — vai a
+  `metadados.variaveisInertes`. O fato simulado sem testemunha física não existe para
+  o jogo; o lint de variável órfã fica estrito.
+- **A briga escalada sorteia o PAR, não a vítima:** com a vítima ponderada por classe
+  sorteada primeiro, quase nunca havia coabitante de faixa e a briga não ocorria.
+  O cenário de briga passa a sortear um par coabitante (dia/noite) inteiro — o motivo
+  imediato nasce da convivência (§2.2); quem morre é sorteio (o confronto era
+  simétrico). A ponderação por classe segue valendo no premeditado.
+- **Resistência da vítima = 2 + 2×FOR:** com 2 + FOR, a emboscada premeditada matava
+  em 1 rodada em quase toda seed e a rejeição nunca disparava — o custo da vitória
+  (§2.1) não trabalhava. Com o dobro do peso em FOR, brigas duram 2–4 rodadas e as
+  rejeições aparecem onde o design as quer (vítima forte, confronto simétrico).
+- **Presença do réu garantida por construção:** todo fenótipo deixa âncora de
+  presença — WIS baixa abandona o instrumento; WIS alta o leva (a ausência lê-se,
+  2ª ordem); WIS mediana o guarda mal limpo; método sem instrumento (esganadura)
+  deposita `pertence_do_assassino` (botão arrancado na luta). Simplificação v1
+  aceita: para `arma_de_ocasiao` (contundente), a cadeia instrumento→réu é mais
+  fraca — refinamento fica para a fase da prosa/diálogo.
+- **Sangue alheio ilimpável (conservação):** o respingo do ferimento do assassino
+  fica fora do alcance da esfrega do assoalho — a variável `ferimentos_assassino`
+  nunca perde o seu único vestígio para a limpeza.
+- **`alvos` da planta seguem vazios:** ligar cômodo a nó do mapa é papel da montagem
+  do pacote JOGÁVEL (Fase 4+), não do resolvedor — comentários de interiores.js e
+  qa.mjs atualizados (diziam "a Fase 3 liga os nós").
+- **Prosa da fatia forense = rótulos técnicos:** as cartas geradas pela ponte carregam
+  textos placeholder de camada de dado (como os rótulos de mobília da Fase 2); nada
+  disso entra em tela nesta fase, e a prosa jogável nascerá pelo pipeline
+  `redigir-prosa`/`revisar-prosa` quando o caso gerado virar pacote jogável.
+
 ## A evolução das gavetas (detalhe)
 
 5 gavetas (Cronos, Aitiov, Nexo, Dinâmica, Confronto) → Playtest 5: Dinâmica absorvida

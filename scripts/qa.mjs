@@ -37,8 +37,10 @@ import {
   montarPacoteTutorial,
   carregarCaso,
   obterDefinicaoCarta,
+  resolverEstadoCarta,
   CAMPOS_OBRIGATORIOS_PACOTE,
 } from '../src/data/pacote_caso.js';
+import { causasCompativeis, mecanismoCravado } from '../src/data/catalogo_causas.js';
 import { MANIFESTO_ASSETS } from '../src/data/manifesto_assets.js';
 import { SLOTS_ASSETS, DIR_BASE_ASSETS } from '../src/data/slots_assets.js';
 import { CAMADAS_RETRATO } from '../src/data/camadas_retrato.js';
@@ -63,6 +65,9 @@ import {
   VOCABULARIO_DA_CLASSE,
   PROVENIENCIA_ESPACO,
 } from '../src/gerador/espaco.js';
+import { gerarCasoBruto } from '../src/gerador/caso.js';
+import { METODOS, PROVENIENCIA_METODOS } from '../src/gerador/metodos.js';
+import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS } from '../src/gerador/vestigios.js';
 
 // ============================================================
 // O CASO SOB TESTE É UM PACOTE. As guardas estáticas rodam contra o pacote
@@ -1338,7 +1343,7 @@ function problemasDosInteriores(mundo) {
       problemas.push(`${id}: cômodos da planta ≠ cômodos do grid`);
     if (planta.tracos.length !== mobilia.length) problemas.push(`${id}: traços da planta ≠ mobílias do grid`);
     if (!planta.comodos.every((c) => Array.isArray(c.alvos) && c.alvos.length === 0))
-      problemas.push(`${id}: alvos deveriam nascer vazios (a Fase 3 liga os nós)`);
+      problemas.push(`${id}: alvos deveriam nascer vazios (a montagem do pacote jogável, Fase 4+, liga os nós)`);
   }
   return problemas;
 }
@@ -1381,6 +1386,223 @@ const pacotesEspaciaisCompletos =
   Object.values(MOBILIA_DE_OFICIO).every((v) => citaKb(v.proveniencia)) &&
   Object.values(PROVENIENCIA_ESPACO).every(citaKb) &&
   CLASSES_SOCIAIS.every((c) => MOBILIA_POR_CLASSE[VOCABULARIO_DA_CLASSE[c]] != null);
+
+// ============================================================
+// GUARDAS DO GERADOR (FASE 3 do gerador por simulação): o resolvedor de
+// crime — autobattler de build time sobre o grid da cena — e a ponte
+// forense para o pacote de caso. Provas:
+// (1) replay — mesma seed → mesmo caso bruto byte a byte, INCLUÍDA a
+// sequência de batalhas rejeitadas (§2.1); seeds distintas → crimes
+// distintos;
+// (2) reamostragem por rejeição íntegra: o assassino sempre vence (há
+// posição de corpo e hora de morte), os descartes ficam registrados em
+// ordem, e a vitória aceita vem logo após o último descarte (ou do modo
+// desespero, sinalizado);
+// (3) tabela viva sem atributo órfão (§3.1): FOR/INT/WIS mapeiam a
+// classe de vestígio, CHA a comportamento de diálogo (Fase 1); toda
+// classe de vestígio evidencia variável do catálogo fechado e cita
+// proveniência na KB, como métodos e cenários;
+// (4) RegistroDoCrime íntegro — os lints da fase: variável de batalha
+// órfã = falha (toda variável ativa tem vestígio SOBREVIVENTE que a
+// evidencia); limpeza sem 2ª ordem = falha (todo evento que remove
+// vestígio deposita ao menos um de ordem 2 — conservação da evidência
+// §3.3); coerência espacial = falha (todo vestígio referencia célula/
+// cômodo/mobília existentes na cena; trilhas contíguas; o arrasto
+// termina na posição final do corpo; livor da ponte contradiz a posição
+// se e só se houve arrasto);
+// (5) ponte consumível pelo MOTOR INTOCADO: a janela calculada por
+// janelaDaCarta/intersecaoJanelas sobre as cartas temporais geradas
+// cobre a hora real da morte; os sinais causais cravam o mecanismo por
+// causasCompativeis/mecanismoCravado; presença (pertenceA) e móbil
+// apontam o réu; a fatia é serializável.
+// ============================================================
+const casosGeradosPrimeira = SEEDS_QA_GERADOR.map((sd) => gerarCasoBruto(sd));
+const casosGeradosSegunda = SEEDS_QA_GERADOR.map((sd) => gerarCasoBruto(sd));
+const jsonCasosGerados = casosGeradosPrimeira.map((c) => JSON.stringify(c));
+const crimeReplayOk = jsonCasosGerados.every((json, i) => json === JSON.stringify(casosGeradosSegunda[i]));
+const crimesDistintos = new Set(casosGeradosPrimeira.map((c) => JSON.stringify(c.crime))).size === SEEDS_QA_GERADOR.length;
+
+// (2) O assassino sempre vence; a rejeição fica registrada em ordem.
+const rejeicaoIntegra = casosGeradosPrimeira.every((caso) => {
+  const b = caso.crime.batalha;
+  return (
+    caso.crime.posicaoCorpo != null &&
+    typeof caso.crime.hora.morte === 'number' &&
+    b.tentativasDescartadas.every((t, i) => t.tentativa === i && ['assassino_ferido', 'vitima_resistiu'].includes(t.motivo)) &&
+    (b.suprimida ? b.rodadas === 0 : b.rodadas >= 1) &&
+    (b.desespero || b.tentativaAceita === b.tentativasDescartadas.length)
+  );
+});
+
+// (3) Tabela viva: atributo órfão = falha; catálogos com proveniência.
+const citaKbForense = (s) => typeof s === 'string' && /docs\/kb-(medicina-legal|mundo-vitoriano)\//.test(s);
+const atributosComVestigio = new Set(Object.values(CLASSES_VESTIGIO).map((c) => c.atributo).filter(Boolean));
+const tabelaVivaSemOrfao =
+  ['FOR', 'INT', 'WIS'].every((a) => atributosComVestigio.has(a)) &&
+  ['revela_facil', 'revela_sob_custo'].every((c) => CATALOGO_COMPORTAMENTOS[c] != null) &&
+  Object.values(CLASSES_VESTIGIO).every(
+    (c) =>
+      c.evidenciaDe.length > 0 &&
+      c.evidenciaDe.every((v) => VARIAVEIS_BATALHA[v] != null) &&
+      [1, 2].includes(c.ordem) &&
+      citaKbForense(c.proveniencia)
+  ) &&
+  Object.values(METODOS).every((m) => citaKbForense(m.proveniencia)) &&
+  Object.values(PROVENIENCIA_METODOS).every(citaKbForense) &&
+  Object.values(PROVENIENCIA_VESTIGIOS).every(citaKbForense);
+
+// (4) Integridade do RegistroDoCrime — os lints da fase, caso a caso.
+function problemasDoCrime(caso) {
+  const problemas = [];
+  const { crime, mundo, escolha } = caso;
+  const interior = mundo.interiores[escolha.localId];
+  const dentroDoGrid = (cel) =>
+    cel.col >= 0 && cel.fila >= 0 && cel.col < interior.grid.colunas && cel.fila < interior.grid.filas;
+  const comodoDe = (cel) => {
+    const c = interior.comodos.find(
+      (k) => cel.col >= k.ret.col && cel.col < k.ret.col + k.ret.colunas && cel.fila >= k.ret.fila && cel.fila < k.ret.fila + k.ret.filas
+    );
+    return c ? c.id : null;
+  };
+  const contigua = (celulas) =>
+    celulas.every(
+      (cel, i) => i === 0 || Math.abs(cel.col - celulas[i - 1].col) + Math.abs(cel.fila - celulas[i - 1].fila) === 1
+    );
+
+  // Vestígios: classe do catálogo, âncora espacial coerente, remoção legal.
+  for (const v of crime.vestigios) {
+    const def = CLASSES_VESTIGIO[v.classe];
+    if (!def) {
+      problemas.push(`${v.id}: classe fora do catálogo (${v.classe})`);
+      continue;
+    }
+    if (v.ordem !== def.ordem) problemas.push(`${v.id}: ordem ≠ da classe`);
+    if (!def.semCelula && !v.celula) problemas.push(`${v.id}: sem célula (classe exige âncora na cena)`);
+    if (v.celula) {
+      if (!dentroDoGrid(v.celula)) problemas.push(`${v.id}: célula fora do grid`);
+      else if (v.comodo !== comodoDe(v.celula)) problemas.push(`${v.id}: cômodo ≠ da célula`);
+    }
+    if (v.celulas) {
+      if (!v.celulas.every(dentroDoGrid)) problemas.push(`${v.id}: trilha sai do grid`);
+      if (!contigua(v.celulas)) problemas.push(`${v.id}: trilha não contígua`);
+    }
+    if (v.mobilia && !interior.mobilia.some((m) => m.id === v.mobilia))
+      problemas.push(`${v.id}: mobília inexistente (${v.mobilia})`);
+    if (v.removido) {
+      if (!def.removivel) problemas.push(`${v.id}: classe irremovível foi removida`);
+      if (def.noCorpo) problemas.push(`${v.id}: vestígio do corpo foi removido`);
+      if (!crime.eventos.some((e) => e.ordem === v.removidoPorEvento && e.vestigiosRemovidos.includes(v.id)))
+        problemas.push(`${v.id}: remoção sem evento correspondente`);
+    }
+  }
+
+  // Trilha de arrasto termina na posição final do corpo.
+  for (const v of crime.vestigios.filter((x) => x.classe === 'trilha_arrasto')) {
+    const fim = v.celulas[v.celulas.length - 1];
+    if (fim.col !== crime.posicaoCorpo.celula.col || fim.fila !== crime.posicaoCorpo.celula.fila)
+      problemas.push(`${v.id}: arrasto não termina no corpo`);
+  }
+  if (!dentroDoGrid(crime.posicaoCorpo.celula) || comodoDe(crime.posicaoCorpo.celula) !== crime.posicaoCorpo.comodo)
+    problemas.push('posição do corpo incoerente com o grid');
+
+  // Lint (b): variável de batalha órfã = falha.
+  const sobreviventes = crime.vestigios.filter((v) => !v.removido);
+  for (const [variavel] of Object.entries(crime.variaveis)) {
+    if (VARIAVEIS_BATALHA[variavel] == null) problemas.push(`variável fora do catálogo: ${variavel}`);
+    else if (!sobreviventes.some((v) => v.evidenciaDe.includes(variavel)))
+      problemas.push(`variável órfã (sem vestígio sobrevivente): ${variavel}`);
+  }
+
+  // Lint (c): limpeza sem 2ª ordem = falha (conservação da evidência).
+  for (const e of crime.eventos.filter((x) => x.vestigiosRemovidos.length > 0)) {
+    const depositouSegunda = e.vestigiosDepositados.some(
+      (id) => crime.vestigios.find((v) => v.id === id)?.ordem === 2
+    );
+    if (!depositouSegunda) problemas.push(`evento ${e.ordem} (${e.acao}): remove sem depositar 2ª ordem`);
+  }
+
+  // Eventos referenciam vestígios existentes; atores são do elenco.
+  const idsVestigio = new Set(crime.vestigios.map((v) => v.id));
+  const idsElenco = new Set(mundo.elenco.map((p) => p.id));
+  for (const e of crime.eventos) {
+    for (const id of [...e.vestigiosDepositados, ...e.vestigiosRemovidos]) {
+      if (!idsVestigio.has(id)) problemas.push(`evento ${e.ordem}: vestígio inexistente (${id})`);
+    }
+    if (!idsElenco.has(e.ator)) problemas.push(`evento ${e.ordem}: ator fora do elenco (${e.ator})`);
+    if (e.celula && !dentroDoGrid(e.celula)) problemas.push(`evento ${e.ordem}: célula fora do grid`);
+  }
+
+  // Contradição do arrasto na ponte: livor compatível ⇔ corpo não movido.
+  const livor = caso.fatiaForense.cartas.find((c) => c.id === 'gen_livores');
+  if (!livor.estados.every((s) => s.tagsOcultas.posicaoCompativel === !crime.cenaEncenada))
+    problemas.push('livor da ponte não reflete o arrasto do registro');
+
+  return problemas;
+}
+const problemasCrimes = casosGeradosPrimeira.flatMap((caso, i) =>
+  problemasDoCrime(caso).map((p) => `${SEEDS_QA_GERADOR[i]}: ${p}`)
+);
+const crimesIntegros = problemasCrimes.length === 0;
+if (!crimesIntegros) {
+  console.log('\nGERADOR (FASE 3) — registro do crime com problemas:', problemasCrimes.join(' | '));
+}
+
+// (5) A ponte é consumível pelo motor forense EXISTENTE, sem alterá-lo.
+function problemasDaPonte(caso) {
+  const problemas = [];
+  const { fatiaForense: fatia, crime } = caso;
+  const verdade = fatia.verdadeDeOuro;
+  const horaMorte = crime.hora.morte;
+  const horaExame = 11; // chegada do perito, como no caso-escola
+  const ipm = horaExame - horaMorte;
+
+  if (verdade.reuCorreto !== crime.assassinoId) problemas.push('réu da verdade ≠ assassino do registro');
+  if (verdade.horaMorteAbsoluta !== horaMorte) problemas.push('hora da verdade ≠ hora do registro');
+  if (verdade.horasMorteAntesChegada !== ipm) problemas.push('IPM da verdade incoerente');
+  if (verdade.cenaEncenada !== crime.cenaEncenada) problemas.push('encenação da verdade ≠ registro');
+
+  // Janela do motor: cartas temporais resolvidas pelo IPM real do exame.
+  const cartasTemporais = fatia.cartas
+    .map((def) => ({ id: def.id, horaRegistro: horaExame, tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas }))
+    .filter((c) => c.tagsOcultas.dominio === 'temporal');
+  const janelas = cartasTemporais.map(janelaDaCarta).filter(Boolean);
+  const janela = intersecaoJanelas(janelas);
+  if (!janela) problemas.push('cartas temporais da ponte se contradizem (interseção nula)');
+  else if (!(janela.inicio <= horaMorte && horaMorte <= janela.fim))
+    problemas.push(`janela do motor [${janela.inicio}, ${janela.fim}] não cobre a morte (${horaMorte})`);
+
+  // Causa: os sinais causais cravam o mecanismo no catálogo universal.
+  const sinais = fatia.cartas.filter((c) => c.tagsOcultas?.dominio === 'causal').map((c) => c.tagsOcultas.sinal);
+  if (!causasCompativeis(sinais).some((c) => c.id === verdade.mecanismoCorreto))
+    problemas.push('mecanismo correto incompatível com os sinais da ponte');
+  if (mecanismoCravado(sinais)?.id !== verdade.mecanismoCorreto)
+    problemas.push('sinais da ponte não cravam o mecanismo (assinatura ausente)');
+
+  // Presença e móbil apontam o réu.
+  if (!fatia.cartas.some((c) => c.tagsOcultas?.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto))
+    problemas.push('nenhum vestígio de presença pertence ao réu');
+  const motivo = fatia.cartas.find((c) => c.tagsOcultas?.subDominio === 'motivo');
+  if (!motivo || motivo.tagsOcultas.motivo !== verdade.motivacaoCorreta || motivo.tagsOcultas.ligadoA !== verdade.reuCorreto)
+    problemas.push('móbil da ponte não aponta o réu');
+
+  // Ids únicos e fatia serializável (contrato do pacote).
+  const ids = fatia.cartas.map((c) => c.id);
+  if (new Set(ids).size !== ids.length) problemas.push('ids de carta duplicados na fatia');
+  try {
+    if (JSON.stringify(JSON.parse(JSON.stringify(fatia))) !== JSON.stringify(fatia))
+      problemas.push('fatia não sobrevive a round-trip JSON');
+  } catch {
+    problemas.push('fatia não é serializável');
+  }
+  return problemas;
+}
+const problemasPonte = casosGeradosPrimeira.flatMap((caso, i) =>
+  problemasDaPonte(caso).map((p) => `${SEEDS_QA_GERADOR[i]}: ${p}`)
+);
+const ponteConsumivel = problemasPonte.length === 0;
+if (!ponteConsumivel) {
+  console.log('\nGERADOR (FASE 3) — ponte forense com problemas:', problemasPonte.join(' | '));
+}
 
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
@@ -1433,6 +1655,12 @@ const checagens = [
   ['Gerador: 3 seeds → 3 mundos distintos (FASE 2)', mundosDistintos],
   ['Geração espacial íntegra: cidade plausível, diorama compatível, inserção válida, grafo derivado, interiores sem órfão e no vocabulário (FASE 2)', geracaoEspacialIntegra],
   ['Pacote espacial por arquétipo completo, em vocabulário fechado e com proveniência (FASE 2)', pacotesEspaciaisCompletos],
+  ['Gerador: replay do caso bruto byte a byte, incluída a sequência de batalhas rejeitadas (FASE 3)', crimeReplayOk],
+  ['Gerador: 3 seeds → 3 crimes distintos (FASE 3)', crimesDistintos],
+  ['Reamostragem por rejeição: o assassino sempre vence e os descartes ficam registrados (FASE 3)', rejeicaoIntegra],
+  ['Tabela viva sem atributo órfão: FOR/INT/WIS → vestígio, CHA → comportamento; proveniência nos catálogos (FASE 3)', tabelaVivaSemOrfao],
+  ['RegistroDoCrime íntegro: variável órfã, limpeza sem 2ª ordem e incoerência espacial = falha (FASE 3)', crimesIntegros],
+  ['Ponte consumível: o motor intocado cobre a hora real, crava o mecanismo e acha presença e móbil do réu (FASE 3)', ponteConsumivel],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

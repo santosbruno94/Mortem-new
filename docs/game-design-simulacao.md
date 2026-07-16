@@ -78,6 +78,34 @@ ferimentos mútuos, objetos danificados, precisão da hora da morte) **só exist
 depositar vestígio diferencial observável**. Variável de batalha órfã = falha de lint
 no QA (Fase 3).
 
+**Implementado na Fase 3 (jul/2026)** — tudo em `src/gerador/` (ilha de build time):
+`resolverCrime(...)` em `crime.js` (autobattler por rodadas sobre o grid da Fase 2:
+PV da vítima = 2 + 2×FOR; surpresa por premeditação × método; reação e ferimento do
+assassino contra FOR da vítima; deslocamento entre células; mobília ao alcance
+danificada; reamostragem por rejeição com descartes REGISTRADOS no
+`RegistroDoCrime.batalha.tentativasDescartadas`; esgotadas 24 tentativas, vitória
+forçada com custo máximo e flag `desespero` — o determinismo da âncora não depende
+da sorte); catálogo fechado de métodos e cenários em `metodos.js` (laminada,
+garrote, esganadura, contundente, veneno-arsênico × premeditado/briga escalada,
+proveniência por linha); a tabela viva como dado em `vestigios.js`
+(`CLASSES_VESTIGIO` com `atributo`, `evidenciaDe`, `ordem` 1/2, `removivel`,
+`noCorpo`; `VARIAVEIS_BATALHA` fechadas); seleção de vítima/assassino/cenário/
+método/local/hora em `caso.js` (`gerarCasoBruto(seed)`; briga escalada sorteia o
+PAR coabitante de faixa — o motivo imediato nasce da convivência); ponte em
+`ponte_caso.js` (`fatiaForenseDoCrime`: Verdade de Ouro + cartas no vocabulário de
+tagsOcultas que o motor JÁ lê — rigor/livor com estados por IPM pela via direta de
+`tempo_morte.js`, sinal causal de assinatura do método, visto-com-vida, presença
+por `pertenceA`, móbil; prosa = rótulos técnicos, a prosa jogável nasce nas fases
+seguintes pelo pipeline). A regra de existência é construtiva: variável sem
+vestígio sobrevivente vai a `metadados.variaveisInertes` (ruído sem ouvinte na
+faixa não existe para o jogo). Guardas novas no `qa.mjs`: replay do caso bruto
+byte a byte (com a sequência de rejeições), crimes distintos, rejeição íntegra,
+tabela viva sem atributo órfão, lints do registro (variável órfã, limpeza sem 2ª
+ordem, coerência espacial: célula/cômodo/mobília existentes, trilhas contíguas,
+arrasto terminando no corpo, livor × arrasto) e ponte consumível pelo motor
+intocado (janela cobre a hora real; `mecanismoCravado` = mecanismo; presença e
+móbil apontam o réu). Vitrine em `scripts/demo-crime.mjs` (`npm run demo:crime`).
+
 ---
 
 ## 3. Regra de existência de atributo
@@ -137,8 +165,11 @@ arquétipos e priors em `src/gerador/arquetipos.js`, amostragem em
   WIS ≤ 2 → `observacao_vaga`, CHA ≥ 4 → `revela_facil`,
   CHA ≤ 2 → `revela_sob_custo`.
 
-FOR e INT não geram comportamento de diálogo — mapeiam à coluna de vestígio
-(deposição do autobattler, Fase 3), quando entra o lint de atributo órfão pleno.
+FOR e INT não geram comportamento de diálogo — mapeiam à coluna de vestígio,
+realizada na Fase 3 (jul/2026) por `src/gerador/vestigios.js`: cada classe de
+vestígio declara o atributo que a governa, e o lint de atributo órfão pleno
+(qa.mjs) exige FOR/INT/WIS cobertos por classe de vestígio e CHA por
+comportamento de diálogo.
 
 ### 3.2 O quadrante INT × WIS: gerador de fenótipos de assassino
 
@@ -231,8 +262,8 @@ grosseira por distância; projeção `diorama` no contrato de
 `insercao.js` (rotina em três faixas; grafo DERIVADO de rotina × adjacência, sem
 sorteio próprio — o QA o recomputa e exige igualdade byte a byte); interiores LOD em
 `interiores.js` (grid canônico + mobília em células de perímetro; planta SVG no
-schema de `PLANTA_RELOJOARIA` como projeção 1:1 do grid, `alvos` vazios até a Fase
-3); orquestrador `mundo.js` (`gerarMundo(seed)`), vitrine em
+schema de `PLANTA_RELOJOARIA` como projeção 1:1 do grid, `alvos` vazios até a
+montagem do pacote jogável, Fase 4+); orquestrador `mundo.js` (`gerarMundo(seed)`), vitrine em
 `scripts/demo-cidade.mjs` (`npm run demo:cidade`). Guardas novas no `qa.mjs`: replay
 do mundo, mundos distintos, integridade espacial (lint de interior órfão incluso) e
 completude dos pacotes espaciais.
