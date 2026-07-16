@@ -42,6 +42,19 @@ import {
 import { MANIFESTO_ASSETS } from '../src/data/manifesto_assets.js';
 import { SLOTS_ASSETS, DIR_BASE_ASSETS } from '../src/data/slots_assets.js';
 import { CAMADAS_RETRATO } from '../src/data/camadas_retrato.js';
+import { gerarElenco } from '../src/gerador/amostragem.js';
+import {
+  ARQUETIPOS,
+  FAIXAS_IDADE,
+  MOTIVOS_POTENCIAIS,
+  PROVENIENCIA_TABELAS,
+  CLASSES_SOCIAIS,
+} from '../src/gerador/arquetipos.js';
+import {
+  CATALOGO_COMPORTAMENTOS,
+  TRAITS,
+  MAPA_TRAIT_COMPORTAMENTO,
+} from '../src/gerador/comportamentos.js';
 
 // ============================================================
 // O CASO SOB TESTE É UM PACOTE. As guardas estáticas rodam contra o pacote
@@ -484,9 +497,11 @@ for (const { rotulo, monologo } of monologos) {
 
 // ============================================================
 // GUARDA DE DETERMINISMO (regra inviolável do CLAUDE.md): nenhum
-// Math.random()/Date.now() em src/logic, src/data e src/store. A camada
-// de APRESENTAÇÃO (componentes, three.js — que usa Math.random em uuids
-// internos) fica fora da guarda: a proibição é da lógica de jogo.
+// Math.random()/Date.now() em src/logic, src/data, src/store e
+// src/gerador (FASE 1: o gerador é build time, mas o determinismo é o
+// mesmo — toda variação sai de hashString). A camada de APRESENTAÇÃO
+// (componentes, three.js — que usa Math.random em uuids internos) fica
+// fora da guarda: a proibição é da lógica de jogo.
 // ============================================================
 function arquivosJs(dir) {
   return readdirSync(dir).flatMap((nome) => {
@@ -499,7 +514,7 @@ function semComentarios(codigo) {
   return codigo.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
 }
 const raizSrc = fileURLToPath(new URL('../src', import.meta.url));
-const violacoesDeterminismo = ['logic', 'data', 'store'].flatMap((pasta) =>
+const violacoesDeterminismo = ['logic', 'data', 'store', 'gerador'].flatMap((pasta) =>
   arquivosJs(path.join(raizSrc, pasta)).filter((arquivo) =>
     /Math\.random\s*\(|Date\.now\s*\(/.test(semComentarios(readFileSync(arquivo, 'utf8')))
   )
@@ -1020,6 +1035,128 @@ if (!slotsResolvem) {
   console.log('\nSLOTS — não resolvem contra o pacote:', [...new Set(slotsPendentes)].join(', '));
 }
 
+// ============================================================
+// GUARDAS DO GERADOR (FASE 1 do gerador por simulação): o modelo de
+// personagem vive em src/gerador/ — uma ilha de BUILD TIME que o runtime
+// jamais importa. Provas: (1) replay — mesma seed produz o mesmo elenco,
+// byte a byte, e seeds distintas produzem elencos distintos; (2) o elenco
+// é plausível e íntegro (nomes únicos, idade na faixa, atributos 1–5,
+// único-na-vila respeitado, JSON puro); (3) o MOTOR é cego a atributos/
+// arquétipos/traits (mesma cegueira de aparências e papéis); (4) nenhum
+// código de runtime importa src/gerador/; (5) todo trait mapeia a
+// comportamento do catálogo fechado (trait órfão = falha); (6) toda linha
+// de prior cita a proveniência na KB; (7) priors bem-formados.
+// ============================================================
+const SEEDS_QA_GERADOR = ['a_hora_emprestada', 'vila_do_moinho', 'caso_do_charco'];
+// Gera todos, depois gera TUDO de novo e compara — prova que não há
+// estado escondido entre chamadas (o replay não depende da ordem).
+const elencosPrimeiraGeracao = SEEDS_QA_GERADOR.map((sd) => gerarElenco(sd, 8));
+const elencosSegundaGeracao = SEEDS_QA_GERADOR.map((sd) => gerarElenco(sd, 8));
+const jsonElencos = elencosPrimeiraGeracao.map((e) => JSON.stringify(e));
+const geradorReplayOk = jsonElencos.every(
+  (json, i) => json === JSON.stringify(elencosSegundaGeracao[i])
+);
+const geradorSeedsDistintas = new Set(jsonElencos).size === SEEDS_QA_GERADOR.length;
+
+const ATRIBUTOS_GERADOR = ['FOR', 'INT', 'WIS', 'CHA'];
+function problemasDoElenco(elenco) {
+  const problemas = [];
+  const nomes = elenco.map((p) => p.nome);
+  if (new Set(nomes).size !== nomes.length) problemas.push('nome completo repetido');
+  const unicos = elenco.filter((p) => ARQUETIPOS[p.arquetipo]?.unicoNaVila).map((p) => p.arquetipo);
+  if (new Set(unicos).size !== unicos.length) problemas.push('arquétipo único-na-vila duplicado');
+  for (const p of elenco) {
+    const arq = ARQUETIPOS[p.arquetipo];
+    if (!arq) {
+      problemas.push(`${p.id}: arquétipo desconhecido`);
+      continue;
+    }
+    const idadeNaFaixa = arq.faixasIdade.some(({ faixa }) => {
+      const [minima, maxima] = FAIXAS_IDADE[faixa];
+      return p.idade >= minima && p.idade <= maxima;
+    });
+    if (!idadeNaFaixa) problemas.push(`${p.id}: idade ${p.idade} fora das faixas do arquétipo`);
+    if (!ATRIBUTOS_GERADOR.every((a) => Number.isInteger(p.atributos[a]) && p.atributos[a] >= 1 && p.atributos[a] <= 5))
+      problemas.push(`${p.id}: atributo fora de 1–5`);
+    if (typeof p.profissao !== 'string' || !p.profissao) problemas.push(`${p.id}: profissão vazia`);
+    if (!p.traits.length || !p.traits.every((t) => TRAITS[t])) problemas.push(`${p.id}: trait fora do catálogo`);
+    if (!p.comportamentos.every((c) => CATALOGO_COMPORTAMENTOS[c]))
+      problemas.push(`${p.id}: comportamento fora do catálogo`);
+    if (MOTIVOS_POTENCIAIS[p.motivoPotencial] == null) problemas.push(`${p.id}: motivo fora do catálogo`);
+    if (p.pacoteEspacial !== null) problemas.push(`${p.id}: pacoteEspacial deveria ser null (slot da Fase 2)`);
+  }
+  try {
+    if (JSON.stringify(JSON.parse(JSON.stringify(elenco))) !== JSON.stringify(elenco))
+      problemas.push('não sobrevive a round-trip JSON');
+  } catch {
+    problemas.push('não é serializável');
+  }
+  return problemas;
+}
+const problemasElencos = elencosPrimeiraGeracao.flatMap((e, i) =>
+  problemasDoElenco(e).map((p) => `${SEEDS_QA_GERADOR[i]}: ${p}`)
+);
+const geradorElencosPlausiveis = problemasElencos.length === 0;
+if (!geradorElencosPlausiveis) {
+  console.log('\nGERADOR — elencos implausíveis:', problemasElencos.join(' | '));
+}
+
+// (3) Cegueira do motor: veredicto/acusação não citam nada da camada de
+// atributos (regex calibrada: zero ocorrências no motor atual).
+const motorSemAtributos = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) =>
+    !/arquet[ií]p|\btraits?\b|atributos|quantiza|comportamentos|\b(FOR|INT|WIS|CHA)\b/.test(
+      semComentarios(readFileSync(path.join(raizSrc, f), 'utf8'))
+    )
+);
+
+// (4) O gerador é ilha: nenhum arquivo de src/ fora de src/gerador/ o importa.
+const arquivosRuntime = [
+  ...['logic', 'store', 'components', 'data'].flatMap((pasta) => arquivosJs(path.join(raizSrc, pasta))),
+  path.join(raizSrc, 'App.jsx'),
+  path.join(raizSrc, 'main.jsx'),
+  path.join(raizSrc, 'som.js'),
+];
+const geradorForaDoRuntime = arquivosRuntime.every(
+  (f) => !/from\s+['"][^'"]*gerador\//.test(semComentarios(readFileSync(f, 'utf8')))
+);
+
+// (5) Trait órfão: todo trait mapeia a comportamento existente, e todo
+// pool de arquétipo só usa traits do catálogo.
+const traitsSemOrfao =
+  Object.keys(TRAITS).every((t) => CATALOGO_COMPORTAMENTOS[MAPA_TRAIT_COMPORTAMENTO[t]] != null) &&
+  Object.values(ARQUETIPOS).every((a) => a.traits.every((t) => TRAITS[t] != null));
+
+// (6) Proveniência por linha (regra do design §4.1 e de fontes.md).
+const citaKb = (s) => typeof s === 'string' && s.includes('kb-mundo-vitoriano');
+const provenienciaCompleta =
+  Object.values(ARQUETIPOS).every((a) => citaKb(a.proveniencia)) &&
+  Object.values(PROVENIENCIA_TABELAS).every(citaKb);
+
+// (7) Priors bem-formados: 4 atributos × 5 pesos inteiros com soma > 0;
+// gênero e idade com peso; classe e motivos dos catálogos; profissão
+// definida para todo gênero com peso.
+const priorsBemFormados = Object.values(ARQUETIPOS).every(
+  (a) =>
+    ATRIBUTOS_GERADOR.every(
+      (attr) =>
+        Array.isArray(a.priors[attr]) &&
+        a.priors[attr].length === 5 &&
+        a.priors[attr].every((peso) => Number.isInteger(peso) && peso >= 0) &&
+        a.priors[attr].reduce((soma, peso) => soma + peso, 0) > 0
+    ) &&
+    Number.isInteger(a.frequencia) &&
+    a.frequencia > 0 &&
+    CLASSES_SOCIAIS.includes(a.classeSocial) &&
+    Object.values(a.generos).reduce((soma, peso) => soma + peso, 0) > 0 &&
+    a.faixasIdade.length > 0 &&
+    a.faixasIdade.every((f) => FAIXAS_IDADE[f.faixa] != null && Number.isInteger(f.peso) && f.peso >= 0) &&
+    a.faixasIdade.reduce((soma, f) => soma + f.peso, 0) > 0 &&
+    a.motivosPotenciais.length > 0 &&
+    a.motivosPotenciais.every((m) => MOTIVOS_POTENCIAIS[m] != null) &&
+    Object.entries(a.generos).every(([genero, peso]) => peso === 0 || typeof a.profissoes[genero] === 'string')
+);
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -1042,7 +1179,7 @@ const checagens = [
   ['Blocos de periféricos sem eco verbatim (monólogo e epílogo)', perifericosSemEco && epilogoSemEco],
   ['A explicação da luz é paga no epílogo, e só com a refutação', luzPagaSoComRefutacao],
   ['Epílogo determinístico; a conta do perito lê a hora do selo', epilogoDeterministico],
-  ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
+  ['Determinismo: sem Math.random/Date.now em logic/data/store/gerador', violacoesDeterminismo.length === 0],
   ['Contrato de assets: manifesto válido (arquivo, dimensão, licença) e sem arte fora do manifesto', manifestoValido],
   ['Retrato em camadas: moldes bem-formados e compositor fora do motor', retratoEmCamadasOk],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
@@ -1059,6 +1196,14 @@ const checagens = [
   ['Alcançabilidade global (Onda 6): toda carta nasce de algum [[id]]', cartasInalcancaveis.length === 0],
   ['Apresentação em cena anota refuta_alibi no mural (Onda 5)', parCena && confrontoClassificado],
   ['Prova alheia apresentada cai na evasiva sem anotar nada (Onda 5)', soUmaLigacaoCena && apresentadasMarcadas],
+  ['Gerador: replay byte a byte (mesma seed → mesmo elenco) (FASE 1)', geradorReplayOk],
+  ['Gerador: 3 seeds → 3 elencos distintos (FASE 1)', geradorSeedsDistintas],
+  ['Gerador: elencos plausíveis e íntegros (nomes únicos, idade na faixa, atributos 1–5, único-na-vila, JSON puro)', geradorElencosPlausiveis],
+  ['Atributos fora do motor: veredicto/acusação não leem FOR/INT/WIS/CHA/arquétipo/trait (FASE 1)', motorSemAtributos],
+  ['Gerador é ilha: nenhum código de runtime importa src/gerador (FASE 1)', geradorForaDoRuntime],
+  ['Trait sem órfão: todo trait de todo pool mapeia a comportamento do catálogo fechado (FASE 1)', traitsSemOrfao],
+  ['Proveniência por linha: todo arquétipo e tabela auxiliar citam a KB (FASE 1)', provenienciaCompleta],
+  ['Priors bem-formados: pesos, gêneros, faixas, classes e motivos íntegros (FASE 1)', priorsBemFormados],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
