@@ -17,8 +17,9 @@ import {
   obterEcosDoMestre,
   obterInterferencias,
   obterEcosInterferencia,
+  custoViagem,
+  obterNo,
 } from '../data/pacote_caso.js';
-import { custoViagem, obterNo } from '../data/mapa.js';
 import { ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
 import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
@@ -49,6 +50,11 @@ export function estadoInicialCaso() {
   const caso = obterCaso();
   const horasChegada = caso.parametrosCena.horasChegada;
   return {
+    // ---------------- Caso corrente ----------------
+    // O ID do pacote carregado, PERSISTIDO no save: ao reabrir a página, o
+    // App recarrega o pacote certo (src/data/casos.js) antes do render.
+    casoId: caso.id,
+
     // ---------------- Fases e personagem ----------------
     faseJogo: 'selecao', // 'selecao' → 'abertura' → 'investigacao'
     detective: null,

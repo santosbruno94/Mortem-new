@@ -96,6 +96,32 @@ quer "ajudar" e entrega a inferência.
 (na camada narrativa; nas `tagsOcultas` pode).
 **Reescrita:** guia de estilo §2 — reduzir ao observável, justapor sem conectar.
 
+### 10. Filtro sensorial (o narrador intermedia a percepção)
+O narrador reportando a percepção em vez de dá-la direta: "ele viu que", "ouviu que",
+"notou", "percebeu", "podia ver". Distancia o leitor da cena e denuncia gerador.
+> "Ele viu que a porta cedia" → "A porta cedia sob o ombro."
+**Detecção:** `grep -nE '\b(viu|vê|via|ouviu|ouve|ouvia|notou|nota|notava|percebeu|percebe|percebia|reparou|repara|reparava|sentiu|sente|sentia) que\b|\b(podia|pôde|conseguia|conseguiu) (ver|ouvir|sentir|notar|perceber)\b' src/data/*.js src/logic/*.js`
+— só na VOZ DO NARRADOR: fala entre aspas é depoimento (evidência), não filtro.
+**Reescrita:** apague o observador e deixe o fato na frente: *"Fumaça escapava por
+sob a porta"*. Espelho mecânico: cheque `filtro_sensorial` do `lint-prosa.mjs`.
+
+### 11. Monotonia de abertura (o mesmo primeiro token em série)
+Três ou mais períodos consecutivos abrindo com a mesma palavra ("Ele entrou. Ele
+parou. Ele ouviu.") — caso particular e grepável da simetria sintática (nº 6).
+**Detecção:** ler as aberturas de período em sequência; mecanicamente, cheque
+`abertura_repetida` do `lint-prosa.mjs` (artigos/contrações contam pelo segundo
+token; a contagem atravessa parágrafos do mesmo bloco).
+**Reescrita:** varie o ponto de ataque — comece pelo adjunto, pelo objeto, por gesto
+de outro sujeito; funda dois períodos num só.
+
+### 12. Vocativo repetido (o nome do interlocutor a cada frase)
+Falas vocativando o mesmo nome mais de uma vez ("…, Silas; …, Silas, …") — pessoas
+reais raramente vocativam; a IA usa o nome como cola de coesão.
+**Detecção:** contar nomes do elenco dentro de cada fala entre aspas; mecanicamente,
+cheque `vocativo_repetido` do `lint-prosa.mjs` (roster derivado dos dados do caso).
+**Reescrita:** corte o vocativo excedente; se a fala precisa de endereçamento, mova a
+identificação para a rubrica ("volta-se para o oficial").
+
 ## Procedimento de revisão
 
 1. Rodar os greps do catálogo sobre os arquivos-alvo; anotar contagens.

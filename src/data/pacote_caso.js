@@ -227,6 +227,60 @@ export function obterInterferencias() {
   return casoCarregado.interferencias?.eventos || [];
 }
 
+// ---------------------------------------------------------------------
+// Acessores de MAPA, LOCALIDADES, DIÁLOGOS e ABERTURA do caso carregado
+// (FASE 6 do gerador): o runtime deixa de importar mapa.js/localidades.js/
+// dialogos.js/abertura.js diretamente — todo caso (tutorial ou gerado) é
+// lido daqui. Com o pacote default (o caso-escola), o comportamento é
+// byte-idêntico ao anterior.
+// ---------------------------------------------------------------------
+
+export function obterNosMapa() {
+  return casoCarregado.nosMapa;
+}
+
+export function obterNo(id) {
+  return casoCarregado.nosMapa.find((n) => n.id === id) || null;
+}
+
+// Custo em horas para viajar de um nó a outro (tabela `custos` do pacote,
+// chaveada por "grupoOrigem|grupoDestino").
+export function custoViagem(idOrigem, idDestino) {
+  const origem = obterNo(idOrigem);
+  const destino = obterNo(idDestino);
+  if (!origem || !destino) return 0;
+  return casoCarregado.custos[`${origem.grupo}|${destino.grupo}`] ?? 0;
+}
+
+export function obterLocalidades() {
+  return casoCarregado.localidades;
+}
+
+export function obterLocalidade(id) {
+  return casoCarregado.localidades.find((l) => l.id === id) || null;
+}
+
+// Árvores de interrogatório do caso ({} quando o caso não traz diálogos —
+// modo procedural v1: os depoimentos nascem como prosa de localidade).
+export function obterDialogos() {
+  return casoCarregado.dialogos || {};
+}
+
+export function obterDialogo(id) {
+  return (casoCarregado.dialogos || {})[id] || null;
+}
+
+// A abertura do caso: { passos, perguntas, opcoesPersonagem }.
+export function obterAbertura() {
+  return casoCarregado.abertura;
+}
+
+// Quem recebe o perito em cada localidade (camada VISUAL opcional do
+// pacote — retrato decorativo; o motor jamais lê).
+export function obterPersonagemDaLocalidade(localidadeId) {
+  return casoCarregado.aparencias?.porLocalidade?.[localidadeId] || null;
+}
+
 // Prosa do eco pós-caso sobre interferências (FASE 4, OPCIONAL):
 // { titulo, porChave } ou null. O motor jamais a lê.
 export function obterEcosInterferencia() {

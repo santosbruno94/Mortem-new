@@ -1,5 +1,4 @@
-import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
-import { obterSuspeitos } from '../data/pacote_caso.js';
+import { obterSuspeitos, obterPersonagemDaLocalidade } from '../data/pacote_caso.js';
 
 // =====================================================================
 // LEMBRETE DE VISITA — o que o mapa recorda de um local JÁ VISITADO:
@@ -14,7 +13,7 @@ export function resumoVisita(localidadeId, cartasRegistradas) {
   // O delegado recebe na delegacia mas não é suspeito (não está em SUSPEITOS).
   nomes['delegado_wycliffe'] = 'Delegado Wycliffe';
   const nCartas = cartasRegistradas.filter((c) => c.localidade === localidadeId).length;
-  const personagemId = PERSONAGEM_POR_LOCALIDADE[localidadeId];
+  const personagemId = obterPersonagemDaLocalidade(localidadeId);
   const personagemNome = personagemId ? nomes[personagemId] || null : null;
   return { personagemNome, nCartas };
 }

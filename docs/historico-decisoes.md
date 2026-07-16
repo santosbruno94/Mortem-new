@@ -586,3 +586,63 @@ editorial, não do agente — ocorrências vão para allowlist com `TODO`); TSL/
 para a gravura (exigiria fiber v9 — o stack é `three@0.169` + fiber 8); boil por
 SMIL `<animate>` ou JS por frame (CSS com quadros empilhados é mais barato e cede
 a reduced-motion de graça).
+
+## Cheques 5–7 do linter de prosa (16/07/2026) — filtro sensorial, monotonia de abertura, vocativo
+
+Entrega da OS "Cheques 5–7 do linter de prosa": norma primeiro (guia §4.8–4.10 e
+§7; skill anti-padrao-ia nº 10–12), linter como espelho. Decisões de forma:
+
+- **Fala entre aspas é isenta do filtro sensorial POR CONSTRUÇÃO** (não por
+  allowlist): depoimento é evidência do jogo; o cheque vale para a voz do
+  narrador — o que sobra fora das aspas, rubricas incluídas.
+- **Vocativo recuou ao critério inequívoco** previsto na própria OS: o mesmo
+  nome do roster 2+ vezes na MESMA fala (a distinção mecânica vocativo ×
+  menção em terceira pessoa é frágil em PT). Roster com proveniência de
+  dados: SUSPEITOS da seed, vítima, delegado do subtítulo da delegacia.
+- **Armadilhas sintéticas rodam embutidas em TODA execução** (lição da Fase 5:
+  guarda que não cai em armadilha é guarda morta); `--self-test` verboseia.
+- **Triagem do corpus: ZERO achados novos** — nenhuma reescrita, nenhuma
+  exceção nova; o relatório ganhou a contagem bruta por cheque (cheque que
+  nunca conta nada é cheque morto).
+
+## Fase 6 do gerador por simulação (16/07/2026) — o caso gerado jogável e os 3 modos
+
+Entrega da montagem do pacote jogável (a pendência "Fase 4+" anotada nos
+comentários das Fases 2–4) e dos três modos de jogo da tela inicial (detalhe no
+bloco "Implementado na Fase 6" de docs/game-design-simulacao.md). Decisões:
+
+- **O gerador segue ilha**: os casos procedurais chegam ao runtime como DADO
+  pré-gerado (`scripts/gerar-casos.mjs` → `src/data/casos_gerados.js`), com
+  replay byte a byte no QA. Rejeitado gerar em runtime (feriria a guarda de
+  ilha e poria o autobattler no bundle).
+- **cenaEncenada = false no pacote gerado (v1)**: o catálogo não produz
+  encenação de HORA (peça refutável); sem a peça, o pilar de descuidos seria
+  inalcançável e a Vitória Absoluta, impossível. O arrasto do autobattler
+  permanece como contradição narrativa (livor × posição).
+- **instrumentoCorreto = tipoVestigio da carta de nexo**: métodos sem
+  instrumento (esganadura) apontam o pertence arrancado — sem isso o pilar de
+  presença não fecharia nesses casos.
+- **Blocos contingentes** (`blocosContingentes` na localidade): a prosa da
+  interferência aparece/some com o disparo do evento — camada de UI; os gates
+  mecânicos continuam no store (Fase 4).
+- **Réplica dirigida** (modo 2): `gerarCasoBruto(seed, { dirigido })` crava
+  cenário/faixa/método e preferências de vítima/assassino; busca de 240 seeds
+  escolheu `a_hora_emprestada_replica_96` (lojista morto na própria loja às
+  21h de 13/out, arma branca premeditada, a criada com a referência negada,
+  INT4/WIS4, corpo movido). O que o catálogo v1 não alcança do original:
+  encenação de hora, móbil de silenciamento, periféricos com segredo.
+- **Sorteio do modo aleatório na apresentação**: a tela inicial escolhe do
+  banco com `Math.random` (camada de componente, fora da guarda de
+  determinismo); o caso em si é determinístico por seed. `?caso=<id>` é a
+  porta determinística (QA e depuração).
+- **Prosa de template em regime "mecânica primeiro"** (precedente de
+  dialogos.js): funcional, sob lint-prosa (inclusive cheques 5–7); a
+  lapidação editorial passa pelo pipeline `revisar-prosa` em passo próprio.
+- **Maquete 3D permanece do caso-escola**: nós gerados não têm posição no
+  diorama; a mesa cai na grade 2D (o fallback obrigatório de todo ponto 3D).
+
+Rejeições (uma linha cada): diálogos de interrogatório gerados (v1 sem árvore —
+depoimentos nascem como prosa de localidade; árvore procedural é OS própria);
+periféricos com segredo no caso gerado (exigiria álibi + vestígio de segredo
+gerados — v2); nó do mapa nomeado pelo réu (telegrafaria; o nó leva o nome do
+prédio).

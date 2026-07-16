@@ -2,14 +2,8 @@ import { useState } from 'react';
 import { useJogo, CUSTO_REVISAO } from '../store/jogo.js';
 import { gerarMonologo, comArtigo } from '../logic/monologo.js';
 import { gerarEpilogo } from '../logic/epilogo.js';
-import { LOCALIDADES } from '../data/localidades.js';
-import { obterCartas, obterSuspeitos } from '../data/pacote_caso.js';
+import { obterCartas, obterSuspeitos, obterLocalidades } from '../data/pacote_caso.js';
 import { formatRelogio, formatHora, formatDuracao, HORAS_CHEGADA_CENA } from '../logic/tempo.js';
-
-// Dados do caso corrente (o pacote carregado) — lidos na carga do módulo,
-// como antes eram lidos de seed.js/cartas.js diretamente.
-const CARTAS = obterCartas();
-const SUSPEITOS = obterSuspeitos();
 import { tocarSom } from '../som.js';
 import Overlay from './Overlay.jsx';
 
@@ -70,11 +64,15 @@ const DICAS_TUTORIAL = {
   },
 };
 
-// Total de observações possíveis no caso: o catálogo + a carta de algor
-// (gerada pela medição de temperatura).
-const TOTAL_OBSERVACOES = CARTAS.length + 1;
-
 export default function MonologoFinal() {
+  // Dados do caso corrente, lidos do PACOTE carregado no render (o caso
+  // pode ter sido trocado por carregarCaso — modo procedural).
+  const CARTAS = obterCartas();
+  const SUSPEITOS = obterSuspeitos();
+  const LOCALIDADES = obterLocalidades();
+  // Total de observações possíveis no caso: o catálogo + a carta de algor
+  // (gerada pela medição de temperatura).
+  const TOTAL_OBSERVACOES = CARTAS.length + 1;
   const veredicto = useJogo((s) => s.veredicto);
   const detective = useJogo((s) => s.detective);
   const revisarAcusacao = useJogo((s) => s.revisarAcusacao);

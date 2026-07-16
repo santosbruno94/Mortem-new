@@ -1,8 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
-import { LOCALIDADES } from '../data/localidades.js';
-import { custoViagem } from '../data/mapa.js';
-import { obterDialogo } from '../data/dialogos.js';
+import { obterLocalidades, custoViagem, obterDialogo } from '../data/pacote_caso.js';
 import { formatDuracao } from '../logic/tempo.js';
 import { resumoVisita } from '../logic/resumoVisita.js';
 import { textoLembreteVisita } from '../logic/lembreteTexto.js';
@@ -69,7 +67,9 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
   // cartas se arrumam em menos colunas, e a superfície rola na vertical.
   const refMesa = useRef(null);
   const larguraMesa = useLarguraViva(refMesa);
-  const locsVisiveis = comDiorama ? [] : LOCALIDADES.filter((loc) => nosDesbloqueados.includes(loc.id));
+  const locsVisiveis = comDiorama
+    ? []
+    : obterLocalidades().filter((loc) => nosDesbloqueados.includes(loc.id));
   const colunasLoc = Math.max(1, Math.floor((larguraMesa - MARGEM_MESA) / PASSO_LOC.x));
   const colunasCarta = Math.max(1, Math.floor((larguraMesa - MARGEM_MESA) / PASSO_CARTA.x));
   const linhasLoc = Math.max(1, Math.ceil(locsVisiveis.length / colunasLoc));

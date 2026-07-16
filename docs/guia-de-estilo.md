@@ -141,6 +141,20 @@ Detalhados na skill `.claude/skills/anti-padrao-ia/` — resumo das proibições
 7. **Ecos temáticos on the nose**: personagem usando metáfora do mecanismo do crime
    ("me estrangulava de juros" num caso de estrangulamento) — proibido, salvo decisão
    deliberada e única de design.
+8. **Filtro sensorial**: a descrição transporta o leitor à percepção direta; o narrador
+   não intermedia com verbos de percepção ("viu que", "ouviu que", "notou", "percebeu",
+   "podia ver"). *"Fumaça escapava por sob a porta"*, nunca *"ele viu fumaça sob a
+   porta"*. A regra é da **voz do narrador**: personagem depondo ("ouvi passos às
+   nove") é evidência do jogo, não filtro — fala entre aspas fica isenta.
+9. **Monotonia de abertura**: três ou mais períodos consecutivos não abrem com a mesma
+   palavra (artigos e contrações contam pela palavra seguinte: "O relógio…", "O
+   corpo…" variam; "Ele… Ele… Ele…" não). A monotonia é auditiva: vale dentro do
+   bloco inteiro, atravessando parágrafos. Anáfora retórica deliberada é decisão de
+   mesa (allowlist), não hábito.
+10. **Vocativo repetido**: nome próprio dentro de fala é raro; atribuição e
+    identificação pertencem à rubrica e à narração. O mesmo nome duas vezes na mesma
+    fala ("…, Silas; …, Silas, …") denuncia gerador — interlocutores reais não
+    vocativam a cada frase. Menção em terceira pessoa a um ausente não é vocativo.
 
 ---
 
@@ -195,4 +209,7 @@ num arquivo de dados — ou não se cita.
 5. Cada personagem soa como **ele** (conferir `docs/biblia-de-vozes.md`)?
 6. Horas, dias da semana e distâncias batem com seed e mapa? (§6)
 7. Termos técnicos batem com `docs/kb-medicina-legal/`?
-8. Li em voz alta: onde tropecei, reescrevi?
+8. O narrador intermedia alguma percepção ("viu que", "podia ouvir")? (§4.8)
+9. Três períodos seguidos abrem com a mesma palavra? (§4.9)
+10. Algum nome próprio aparece duas vezes na mesma fala? (§4.10)
+11. Li em voz alta: onde tropecei, reescrevi?

@@ -31,6 +31,24 @@
 //                   (espelho do grep da skill, nº 9 "dedução vazada").
 //   4. exclamacao — máximo de 1 exclamação por bloco (frase de efeito é
 //                   racionada — guia §3).
+//   5. filtro_sensorial — verbos de percepção indireta na VOZ DO NARRADOR
+//                   ("viu que", "podia ouvir"): a descrição transporta à
+//                   percepção direta (guia §4.8 / skill nº 10). Trechos
+//                   entre aspas (fala/depoimento) são isentos POR
+//                   CONSTRUÇÃO — evidência não é filtro.
+//   6. abertura_repetida — monotonia sintática de abertura: 3+ períodos
+//                   consecutivos do mesmo bloco abrindo com o mesmo token
+//                   (guia §4.9 / skill nº 11); artigos e contrações contam
+//                   pelo segundo token.
+//   7. vocativo_repetido — o mesmo nome próprio do roster do caso 2+ vezes
+//                   dentro da MESMA fala entre aspas (guia §4.10 / skill
+//                   nº 12); roster derivado dos dados (SUSPEITOS, vítima
+//                   da seed, delegado do subtítulo da delegacia).
+//
+// AUTOTESTE (aceite da OS dos cheques 5–7): armadilhas sintéticas — uma
+// string-veneno por cheque novo — rodam SEMPRE, antes do corpus; se uma
+// armadilha escapar do cheque certo, o linter falha na hora. A flag
+// --self-test roda só as armadilhas, com relatório verboso.
 //
 // EXCEÇÕES ("decisão de mesa", prevista no guia): a allowlist EXCECOES
 // abaixo registra ocorrências admitidas, com motivo. Cada entrada casa por
@@ -53,7 +71,7 @@ import { LOCALIDADES } from '../src/data/localidades.js';
 import { ECOS_MESTRE_TUTORIAL } from '../src/data/ecos_mestre.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../src/data/ecos_interferencia.js';
 import { GLOSSARIO } from '../src/data/glossario.js';
-import { SUSPEITOS } from '../src/data/seed.js';
+import { SUSPEITOS, SEED_TUTORIAL } from '../src/data/seed.js';
 import { SINAIS, CATALOGO_CAUSAS } from '../src/data/catalogo_causas.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { CONSEQUENCIAS_CONFRONTO } from '../src/data/confrontos.js';
@@ -68,6 +86,7 @@ import {
 } from '../src/data/rotulos.js';
 import { CATALOGO_INTERFERENCIA, PROSA_PRENUNCIO } from '../src/gerador/interferencia.js';
 import { montarPacoteTutorial } from '../src/data/pacote_caso.js';
+import { CASO_REPLICA, CASOS_POOL } from '../src/data/casos_gerados.js';
 
 // ---------------------------------------------------------------------
 // Fontes: arquivo → raízes exportadas. O pacote do caso-escola entra por
@@ -101,6 +120,11 @@ const FONTES = [
   ],
   ['src/gerador/interferencia.js', { CATALOGO_INTERFERENCIA, PROSA_PRENUNCIO }],
   ['src/data/pacote_caso.js', { pacoteTutorial: montarPacoteTutorial() }],
+  // A prosa dos casos GERADOS (templates de src/gerador/pacote_gerado.js,
+  // realizados por scripts/gerar-casos.mjs) é texto commitado como outro
+  // qualquer: mesma norma, mesmos cheques. A deduplicação por conteúdo
+  // evita relatar o mesmo template uma vez por pacote.
+  ['src/data/casos_gerados.js', { CASO_REPLICA, CASOS_POOL }],
 ];
 
 // Arquivos cuja prosa vive em constantes não exportadas (templates): os
@@ -316,6 +340,280 @@ for (const arquivo of FONTES_POR_LITERAL) coletarLiteraisDaFonte(arquivo);
 const RE_FORMULA_TRAVESSAO = /\b(?:não|nem)\b[^—.!?…;\n]{2,60}—/giu;
 const RE_FORMULA_INVERSAO = /\bque não é\b/giu;
 
+// ---------------------------------------------------------------------
+// Cheques 5–7 (OS jul/2026) — funções PURAS sobre um bloco, para que as
+// armadilhas sintéticas do autoteste exercitem exatamente o código real.
+// ---------------------------------------------------------------------
+
+// Trechos entre aspas são fala/depoimento (primeira pessoa de personagem):
+// isentos do filtro sensorial POR CONSTRUÇÃO (decisão de norma da OS). A
+// remoção preserva os índices substituindo o miolo por espaços, para que o
+// trecho relatado saia do texto original.
+function apagarFalas(texto) {
+  return texto
+    .replace(/"[^"\n]*"/g, (m) => ' '.repeat(m.length))
+    .replace(/“[^”\n]*”/g, (m) => ' '.repeat(m.length));
+}
+
+// Só as falas: cada trecho entre aspas é UMA fala (unidade do cheque 7).
+function falasDe(texto) {
+  const falas = [];
+  for (const m of texto.matchAll(/"([^"\n]*)"|“([^”\n]*)”/g)) {
+    falas.push({ texto: m[1] ?? m[2], indice: m.index });
+  }
+  return falas;
+}
+
+// (5) Filtro sensorial: verbos de percepção indireta na voz do narrador.
+const RE_FILTRO_QUE =
+  /\b(viu|vê|via|ouviu|ouve|ouvia|notou|nota|notava|percebeu|percebe|percebia|reparou|repara|reparava|sentiu|sente|sentia)\s+que\b/giu;
+const RE_FILTRO_PODER = /\b(podia|pôde|conseguia|conseguiu)\s+(ver|ouvir|sentir|notar|perceber)\b/giu;
+
+function chequeFiltroSensorial(bloco) {
+  const texto = bloco.paragrafos.join('\n');
+  const narrador = apagarFalas(texto);
+  const achados = [];
+  for (const re of [RE_FILTRO_QUE, RE_FILTRO_PODER]) {
+    for (const m of narrador.matchAll(re)) {
+      achados.push({
+        arquivo: bloco.arquivo,
+        chave: bloco.chave,
+        cheque: 'filtro_sensorial',
+        trecho: trechoEm(texto, m.index),
+        detalhe: `"${m[0]}" — percepção intermediada na voz do narrador (guia §4.8)`,
+      });
+    }
+  }
+  return achados;
+}
+
+// (6) Monotonia de abertura: 3+ períodos consecutivos do mesmo bloco
+// abrindo com o mesmo token. Abreviações de tratamento não fecham período;
+// artigos e contrações contam pelo SEGUNDO token.
+const ABREVIACOES_TRATAMENTO = /(?:Sr|Sra|Srta|Dr|St)$/;
+const TOKENS_TRANSPARENTES = new Set(['o', 'a', 'os', 'as', 'um', 'uma', 'no', 'na', 'do', 'da']);
+
+function normalizarToken(bruto) {
+  return (bruto || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '');
+}
+
+// Segmenta o texto do bloco em períodos { texto, indice }. A contagem de
+// consecutividade atravessa parágrafos (a monotonia é auditiva), mas o
+// bloco é a fronteira (não cruza falas/cenas distintas).
+function segmentarPeriodos(texto) {
+  const periodos = [];
+  let inicio = 0;
+  for (let i = 0; i < texto.length; i++) {
+    const ch = texto[i];
+    if (ch !== '.' && ch !== '!' && ch !== '?' && ch !== '…') continue;
+    if (ch === '.') {
+      const antes = texto.slice(inicio, i).match(/[\p{L}]+$/u);
+      if (antes && ABREVIACOES_TRATAMENTO.test(antes[0])) continue;
+    }
+    const trecho = texto.slice(inicio, i).trim();
+    if (trecho) periodos.push({ texto: trecho, indice: inicio });
+    inicio = i + 1;
+  }
+  const resto = texto.slice(inicio).trim();
+  if (resto) periodos.push({ texto: resto, indice: inicio });
+  return periodos;
+}
+
+function tokenDeAbertura(periodo) {
+  const brutos = periodo.split(/\s+/).filter(Boolean);
+  const primeiro = normalizarToken(brutos[0]);
+  if (!primeiro) return normalizarToken(brutos[1]);
+  if (TOKENS_TRANSPARENTES.has(primeiro)) return normalizarToken(brutos[1]) || primeiro;
+  return primeiro;
+}
+
+function chequeAberturaRepetida(bloco) {
+  const texto = bloco.paragrafos.join('\n');
+  const periodos = segmentarPeriodos(texto);
+  const achados = [];
+  let corrente = null;
+  let contagem = 0;
+  let indicePrimeiro = 0;
+  const fechar = () => {
+    if (contagem >= 3 && corrente) {
+      achados.push({
+        arquivo: bloco.arquivo,
+        chave: bloco.chave,
+        cheque: 'abertura_repetida',
+        trecho: trechoEm(texto, indicePrimeiro),
+        detalhe: `${contagem} períodos consecutivos abrindo com "${corrente}" (guia §4.9; teto 2)`,
+      });
+    }
+  };
+  for (const p of periodos) {
+    const token = tokenDeAbertura(p.texto);
+    if (!token) continue;
+    if (token === corrente) {
+      contagem += 1;
+    } else {
+      fechar();
+      corrente = token;
+      contagem = 1;
+      indicePrimeiro = p.indice;
+    }
+  }
+  fechar();
+  return achados;
+}
+
+// (7) Vocativo repetido — recuo inequívoco previsto na OS: o MESMO nome do
+// roster 2+ vezes dentro da MESMA fala entre aspas. Roster derivado dos
+// dados (nunca hardcode); nomes do detetive são slot e ficam fora.
+function chequeVocativoRepetido(bloco, roster) {
+  const texto = bloco.paragrafos.join('\n');
+  const achados = [];
+  for (const fala of falasDe(texto)) {
+    for (const nome of roster) {
+      const ocorrencias = fala.texto.match(new RegExp(`\\b${nome}\\b`, 'gu')) || [];
+      if (ocorrencias.length >= 2) {
+        achados.push({
+          arquivo: bloco.arquivo,
+          chave: bloco.chave,
+          cheque: 'vocativo_repetido',
+          trecho: trechoEm(texto, fala.indice),
+          detalhe: `"${nome}" ${ocorrencias.length}× na mesma fala (guia §4.10; teto 1)`,
+        });
+      }
+    }
+  }
+  return achados;
+}
+
+// Roster determinístico de nomes do caso-escola, com proveniência por fonte:
+//   • SUSPEITOS (src/data/seed.js): nome completo, primeiro nome e sobrenome;
+//   • vítima (SEED_TUTORIAL.vitima), sem o tratamento ("Sr.");
+//   • delegado: subtítulo da localidade `delegacia` (src/data/localidades.js),
+//     sem o posto ("Delegado").
+// Nomes do detetive são interpolação {detective.*} — fora do roster.
+function montarRosterDeNomes() {
+  const nomes = new Set();
+  const registrar = (nomeCompleto) => {
+    const limpo = (nomeCompleto || '').replace(/^(Sr|Sra|Srta|Dr)\.ª?\s+/u, '').replace(/^Delegado\s+/u, '').trim();
+    if (!limpo) return;
+    nomes.add(limpo);
+    for (const parte of limpo.split(/\s+/)) {
+      if (parte.length >= 3) nomes.add(parte);
+    }
+  };
+  for (const s of SUSPEITOS) registrar(s.nome);
+  registrar(SEED_TUTORIAL.vitima);
+  const delegacia = LOCALIDADES.find((l) => l.id === 'delegacia');
+  if (delegacia && delegacia.subtitulo) registrar(delegacia.subtitulo);
+  // Ordem estável (o relatório é determinístico byte a byte).
+  return [...nomes].sort();
+}
+
+// ---------------------------------------------------------------------
+// AUTOTESTE — armadilhas sintéticas (aceite da OS dos cheques 5–7, §5).
+// Guarda que não cai em armadilha é guarda morta (lição da Fase 5): cada
+// string-veneno TEM de acender o cheque certo, e cada contraprova (uso
+// legítimo) tem de passar. Roda sempre, antes do corpus; se falhar, o
+// linter sai em 1 sem examinar nada.
+// ---------------------------------------------------------------------
+function autoteste(verboso = false) {
+  const b = (paragrafos) => ({ arquivo: 'autoteste', chave: 'armadilha', paragrafos });
+  const rosterTeste = montarRosterDeNomes();
+  const casos = [
+    // Veneno 1 — filtro sensorial na voz do narrador.
+    {
+      nome: 'filtro_sensorial: "viu que" do narrador acende',
+      achados: chequeFiltroSensorial(b(['Ele viu que a porta cedia ao peso do ombro, e ficou onde estava.'])),
+      espera: (a) => a.length === 1 && a[0].cheque === 'filtro_sensorial',
+    },
+    {
+      nome: 'filtro_sensorial: "podia ouvir" do narrador acende',
+      achados: chequeFiltroSensorial(b(['Do corredor, o guarda podia ouvir o relógio da sala bater as horas.'])),
+      espera: (a) => a.length === 1 && a[0].cheque === 'filtro_sensorial',
+    },
+    {
+      nome: 'filtro_sensorial: depoimento entre aspas é isento por construção',
+      achados: chequeFiltroSensorial(b(['"Eu vi que a luz ainda ardia às nove", diz o moço, e aponta a rua.'])),
+      espera: (a) => a.length === 0,
+    },
+    // Veneno 2 — monotonia de abertura.
+    {
+      nome: 'abertura_repetida: três períodos em "Ele…" acendem',
+      achados: chequeAberturaRepetida(
+        b(['Ele entrou na sala sem tirar o chapéu. Ele parou junto à mesa do perito. Ele ouviu o relógio bater.'])
+      ),
+      espera: (a) => a.length === 1 && a[0].cheque === 'abertura_repetida',
+    },
+    {
+      nome: 'abertura_repetida: artigo conta pelo segundo token (não pune "O relógio… O corpo…")',
+      achados: chequeAberturaRepetida(
+        b(['O relógio parou na prateleira. O corpo esfriou durante a noite. O caso segue aberto na delegacia.'])
+      ),
+      espera: (a) => a.length === 0,
+    },
+    {
+      nome: 'abertura_repetida: abreviação de tratamento não fecha período',
+      achados: chequeAberturaRepetida(
+        b(['O Sr. Arthurs recebeu a encomenda. A loja fechou ao meio-dia. A rua esvaziou com a chuva.'])
+      ),
+      espera: (a) => a.length === 0,
+    },
+    {
+      nome: 'abertura_repetida: a consecutividade atravessa parágrafos do mesmo bloco',
+      achados: chequeAberturaRepetida(
+        b(['A vela queimou até o fim. A vela vergou sobre o castiçal.', 'A vela morreu antes da meia-noite.'])
+      ),
+      espera: (a) => a.length === 1 && a[0].detalhe.includes('3 períodos'),
+    },
+    {
+      nome: 'abertura_repetida: dois períodos iguais não acendem (teto é 3)',
+      achados: chequeAberturaRepetida(
+        b(['A vela queimou até o fim. A vela vergou sobre o castiçal. O quarto ficou às escuras.'])
+      ),
+      espera: (a) => a.length === 0,
+    },
+    // Veneno 3 — vocativo repetido na mesma fala.
+    {
+      nome: 'vocativo_repetido: dois vocativos do roster na mesma fala acendem',
+      achados: chequeVocativoRepetido(
+        b(['"Não me pergunte disso, Silas; o senhor bem sabe, Silas, o que se passou naquela sexta."']),
+        rosterTeste
+      ),
+      espera: (a) => a.length >= 1 && a.every((x) => x.cheque === 'vocativo_repetido'),
+    },
+    {
+      nome: 'vocativo_repetido: menção única em terceira pessoa não acende',
+      achados: chequeVocativoRepetido(
+        b(['"O Sr. Crane esteve aqui na sexta, como sempre, e saiu antes do escurecer."']),
+        rosterTeste
+      ),
+      espera: (a) => a.length === 0,
+    },
+  ];
+  const falhas = casos.filter((c) => !c.espera(c.achados));
+  if (verboso) {
+    for (const c of casos) {
+      console.log(`${falhas.includes(c) ? '✖' : 'OK '} — autoteste: ${c.nome}`);
+    }
+  }
+  if (falhas.length) {
+    console.error(`lint-prosa: AUTOTESTE FALHOU — ${falhas.length} armadilha(s) escaparam do cheque:`);
+    for (const c of falhas) console.error(`  ✖ ${c.nome} → ${JSON.stringify(c.achados.map((a) => a.cheque))}`);
+    process.exit(1);
+  }
+  return casos.length;
+}
+
+const soAutoteste = process.argv.includes('--self-test');
+const nArmadilhas = autoteste(soAutoteste);
+if (soAutoteste) {
+  console.log(`lint-prosa: autoteste verde (${nArmadilhas} armadilhas/contraprovas).`);
+  process.exit(0);
+}
+
 function trechoEm(texto, indice, raio = 45) {
   const inicio = Math.max(0, indice - raio);
   const fim = Math.min(texto.length, indice + raio);
@@ -344,9 +642,14 @@ for (const bloco of blocos) {
   }
 }
 
-// (2–4) Cheques por bloco.
+// (2–7) Cheques por bloco.
+const ROSTER_NOMES = montarRosterDeNomes();
 for (const bloco of blocos) {
   const texto = bloco.paragrafos.join('\n');
+
+  violacoes.push(...chequeFiltroSensorial(bloco));
+  violacoes.push(...chequeAberturaRepetida(bloco));
+  violacoes.push(...chequeVocativoRepetido(bloco, ROSTER_NOMES));
 
   const travessoes = (texto.match(/—/g) || []).length;
   const tetoTravessao = Math.ceil(bloco.paragrafos.length / 2);
@@ -416,6 +719,19 @@ const violacoesFinais = violacoes.filter((v) => !excetuada(v));
 // Relatório.
 // ---------------------------------------------------------------------
 console.log(`lint-prosa: ${blocos.length} blocos de texto examinados em ${FONTES.length + FONTES_POR_LITERAL.length} fontes.`);
+{
+  // Contagem BRUTA por cheque (antes da allowlist): prova viva de que cada
+  // cheque varreu o corpus — um cheque que nunca conta nada está morto.
+  const porCheque = new Map();
+  const ocorrenciasBrutas = [...violacoes, ...[...formulasPorArquivo.values()].flat()];
+  for (const v of ocorrenciasBrutas) {
+    const grupo = v.cheque.startsWith('lexico:') ? 'lexico' : v.cheque;
+    porCheque.set(grupo, (porCheque.get(grupo) || 0) + 1);
+  }
+  const ordem = ['formula', 'travessao', 'lexico', 'exclamacao', 'filtro_sensorial', 'abertura_repetida', 'vocativo_repetido'];
+  const resumo = ordem.map((c) => `${c}=${porCheque.get(c) || 0}`).join(' · ');
+  console.log(`lint-prosa: ocorrências brutas por cheque (antes da allowlist): ${resumo}`);
+}
 if (excecoesUsadas.size) {
   console.log(`lint-prosa: ${excecoesUsadas.size} exceção(ões) da allowlist aplicada(s) — pendentes de revisão editorial onde marcado TODO.`);
 }

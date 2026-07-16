@@ -3,9 +3,13 @@ import { useJogo } from '../store/jogo.js';
 import { webglDisponivel, modoFlat } from '../logic/webgl.js';
 import Cena3DBoundary from './Cena3DBoundary.jsx';
 import PlantaRelojoaria from './PlantaRelojoaria.jsx';
-import { obterLocalidade } from '../data/localidades.js';
-import { obterNo } from '../data/mapa.js';
-import { obterVerdadeDeOuro } from '../data/pacote_caso.js';
+import {
+  obterVerdadeDeOuro,
+  obterLocalidade,
+  obterNo,
+  obterDialogos,
+  obterPersonagemDaLocalidade,
+} from '../data/pacote_caso.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
 import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
@@ -13,8 +17,6 @@ import { ParagrafoProsa } from './ProsaComTermos.jsx';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
-import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
-import { DIALOGOS } from '../data/dialogos.js';
 
 // O exame 3D chega pelo mesmo chunk do three (lazy): a prosa nunca
 // espera o canvas — ela É o caminho canônico de extração.
@@ -28,6 +30,7 @@ export default function EventoLocalidade({ localidadeId }) {
   const detective = useJogo((s) => s.detective);
   const horasJogo = useJogo((s) => s.horasJogo);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
+  const interferenciasDisparadas = useJogo((s) => s.interferenciasDisparadas);
   const abrirOverlay = useJogo((s) => s.abrirOverlay);
   // Quais pontos de interesse estão abertos (revelados). Estado local de UI:
   // a coleta em camadas é escolha do jogador, não muda o motor.
@@ -41,7 +44,7 @@ export default function EventoLocalidade({ localidadeId }) {
   // renderizador de [[id]]/interpolação é o util compartilhado (§7.1).
   const renderParagrafo = (texto, indice) => <ParagrafoProsa key={indice} texto={texto} />;
 
-  const personagemDaCena = PERSONAGEM_POR_LOCALIDADE[localidade.id];
+  const personagemDaCena = obterPersonagemDaLocalidade(localidade.id);
   const ehCorpo = localidade.id === 'corpo';
   const corpo3D = ehCorpo && !modoFlat() && webglDisponivel();
   // A planta baixa (§5.1) só aparece nos nós do mesmo prédio — o grupo
@@ -63,11 +66,27 @@ export default function EventoLocalidade({ localidadeId }) {
     .filter((bloco) => bloco.requerCartas.every((id) => cartasRegistradas.some((c) => c.id === id)))
     .flatMap((bloco) => bloco.paragrafos);
 
+  // Blocos CONTINGENTES da interferência (FASE 6 do gerador): prosa que
+  // aparece/some conforme o evento do pacote já disparou. Camada de UI
+  // pura — lê o estado de disparo (interferenciasDisparadas), nunca decide
+  // nada; o efeito mecânico continua nos gates de extrairCarta.
+  const eventosDisparados = new Set(interferenciasDisparadas.map((d) => d.id));
+  const paragrafosContingentes = (localidade.blocosContingentes || [])
+    .filter((bloco) =>
+      bloco.quando === 'disparado'
+        ? eventosDisparados.has(bloco.eventoId)
+        : !eventosDisparados.has(bloco.eventoId)
+    )
+    .flatMap((bloco) => bloco.paragrafos);
+
   // Contador de esgotamento (regalia do caso-escola): quantas observações
   // esta localidade oferece e quantas já estão na mesa. O procedural pode
   // omitir — a contagem é leitura dos marcadores [[id]] da prosa, não regra.
   // Os micro-gestos (Onda 7) entram na união: gesto também é observação.
-  const fonteProsa = temPontos ? localidade.pontos.flatMap((p) => p.prosa) : localidade.prosa || [];
+  const fonteProsa = [
+    ...(temPontos ? localidade.pontos.flatMap((p) => p.prosa) : localidade.prosa || []),
+    ...paragrafosContingentes,
+  ];
   const idsGestos = [
     ...(localidade.gestos || []).map((g) => g.cartaId),
     ...(temPontos ? localidade.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)) : []),
@@ -84,7 +103,7 @@ export default function EventoLocalidade({ localidadeId }) {
 
   // Diálogos embutidos neste lugar (origemLocalidade): rendem um botão de
   // conversa ao pé da prosa. Camada narrativa — o motor não participa.
-  const dialogosEmbutidos = Object.entries(DIALOGOS).filter(
+  const dialogosEmbutidos = Object.entries(obterDialogos()).filter(
     ([, d]) => d.origemLocalidade === localidade.id
   );
 
@@ -132,11 +151,13 @@ export default function EventoLocalidade({ localidadeId }) {
             })}
           </div>
           {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
+          {paragrafosContingentes.map((texto, i) => renderParagrafo(texto, `intf_${i}`))}
         </div>
       ) : (
         <div className="space-y-4">
           {localidade.prosa.map(renderParagrafo)}
           {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
+          {paragrafosContingentes.map((texto, i) => renderParagrafo(texto, `intf_${i}`))}
         </div>
       )}
       {/* Micro-gestos da localidade (Onda 7): o verbo encosta na ficção —

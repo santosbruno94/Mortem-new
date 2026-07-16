@@ -22,6 +22,12 @@ export const ROTULOS_MECANISMO = {
 export const ROTULOS_INSTRUMENTO = {
   fibra_canhamo: 'corda de cânhamo',
   buril_gravador: 'buril de gravador',
+  // Vocabulário do gerador (src/gerador/metodos.js + ponte da Fase 3).
+  lamina_de_oficio: 'lâmina de ofício',
+  cordao_torcido: 'cordão torcido',
+  arma_de_ocasiao: 'arma de ocasião',
+  papel_de_arsenico: 'papel de arsênico',
+  pertence_arrancado: 'pertence arrancado na luta',
 };
 
 // Rótulos dos vestígios (material), usados no Confronto ao cravar o nexo
@@ -33,6 +39,18 @@ export const ROTULOS_VESTIGIO = {
   cesta_ceia: 'cesta de ceia',
   carta_suplica: 'carta de súplica',
   assinatura_registro: 'assinatura no registro da estalagem',
+  // Vocabulário do gerador (ponte da Fase 3 + interferência da Fase 4).
+  lamina_de_oficio: 'lâmina de ofício',
+  cordao_torcido: 'cordão torcido',
+  arma_de_ocasiao: 'arma de ocasião',
+  papel_de_arsenico: 'papel de arsênico',
+  pertence_arrancado: 'pertence arrancado na luta',
+  sangue_alheio: 'sangue que não é da vítima',
+  pegada_ensanguentada: 'pegada ensanguentada',
+  dividas_quitadas: 'dívidas quitadas de repente',
+  corpo_da_testemunha: 'o corpo da testemunha',
+  esfrega_fresca: 'esfrega fresca na cena',
+  limpeza_interrompida: 'limpeza interrompida',
 };
 
 export const ROTULOS_ESTADO_CENA = {
@@ -46,6 +64,16 @@ export const ROTULOS_MOTIVO = {
   dividas: 'as dívidas',
   rancor: 'o rancor',
   silenciamento: 'o silêncio sobre a fraude descoberta',
+  // Vocabulário do gerador (MOTIVOS_POTENCIAIS de src/gerador/arquetipos.js).
+  divida_caderneta: 'a dívida de caderneta',
+  seguro_de_enterro: 'a apólice de enterro',
+  dote: 'o dote disputado',
+  salario_atrasado: 'o salário retido',
+  escandalo_gravidez: 'o falatório que queria calado',
+  character_negado: 'a referência negada',
+  despejo: 'o despejo assinado',
+  rivalidade_capela_taverna: 'a rixa da capela com a taverna',
+  recasamento_vigiado: 'o recasamento vigiado pela vila',
 };
 
 export const ROTULOS_PERIFERICO = {

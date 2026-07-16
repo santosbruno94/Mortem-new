@@ -2138,11 +2138,223 @@ if (casoComDestruicao && casoComEvento && casoComSilenciar) {
 }
 
 // ============================================================
+// GERADOR (FASE 6) — O CASO GERADO É JOGÁVEL. Três provas:
+//   (a) REPLAY DO EMBARCADO: os pacotes commitados em src/data/
+//       casos_gerados.js são exatamente o que o montador produz hoje das
+//       mesmas seeds (réplica com as variáveis dirigidas; pool pelas
+//       seeds dos próprios ids) — byte a byte via JSON.
+//   (b) HIGIENE DE TODO PACOTE EMBARCADO: campos obrigatórios; todo
+//       marcador [[id]] aponta carta e toda carta tem caminho de extração
+//       (prosa, gesto ou bloco contingente); blocos contingentes apontam
+//       eventos existentes; slots resolvem.
+//   (c) OS 4 PERFIS NOS CASOS GERADOS: o mesmo critério de validação do
+//       caso-escola (§18), dirigindo o STORE com o pacote gerado — a
+//       réplica e um caso do pool produzem os 4 desfechos.
+// ============================================================
+const { montarPacoteGerado, SEED_REPLICA, DIRIGIDO_REPLICA } = await import(
+  '../src/gerador/pacote_gerado.js'
+);
+const { CASO_REPLICA, CASOS_POOL } = await import('../src/data/casos_gerados.js');
+
+// (a) Replay byte a byte do arquivo embarcado.
+const replayReplicaOk =
+  JSON.stringify(montarPacoteGerado(SEED_REPLICA, { dirigido: DIRIGIDO_REPLICA })) ===
+  JSON.stringify(CASO_REPLICA);
+const replayPoolOk = CASOS_POOL.every(
+  (p) => JSON.stringify(montarPacoteGerado(p.id.replace(/^gerado_/, ''))) === JSON.stringify(p)
+);
+const casosEmbarcadosReplay = replayReplicaOk && replayPoolOk;
+if (!casosEmbarcadosReplay) {
+  console.log('\nGERADOR (FASE 6) — casos_gerados.js DIVERGE do montador (rodar npm run gerar:casos).');
+}
+
+// (b) Higiene de todos os pacotes embarcados.
+function problemasDoPacoteGerado(pacote) {
+  const problemas = [];
+  for (const campo of CAMPOS_OBRIGATORIOS_PACOTE) {
+    if (pacote[campo] == null) problemas.push(`campo obrigatório ausente: ${campo}`);
+  }
+  const ids = new Set(pacote.cartas.map((c) => c.id));
+  const marcados = new Set();
+  const textos = [];
+  for (const l of pacote.localidades) {
+    textos.push(...(l.prosa || []), ...(l.introducao || []));
+    for (const pt of l.pontos || []) textos.push(...pt.prosa);
+    for (const b of l.blocosContingentes || []) {
+      textos.push(...b.paragrafos);
+      const eventos = pacote.interferencias?.eventos || [];
+      if (!eventos.some((e) => e.id === b.eventoId)) {
+        problemas.push(`${l.id}: bloco contingente aponta evento inexistente ${b.eventoId}`);
+      }
+      if (b.quando !== 'disparado' && b.quando !== 'nao_disparado') {
+        problemas.push(`${l.id}: bloco contingente com "quando" inválido (${b.quando})`);
+      }
+    }
+    for (const g of l.gestos || []) marcados.add(g.cartaId);
+  }
+  for (const t of textos) {
+    for (const m of t.matchAll(/\[\[(\w+)\]\]/g)) marcados.add(m[1]);
+    for (const falta of slotsNaoResolvidos(t, pacote)) problemas.push(`slot não resolve: ${falta}`);
+  }
+  for (const id of marcados) if (!ids.has(id)) problemas.push(`marcador órfão: ${id}`);
+  for (const id of ids) if (!marcados.has(id)) problemas.push(`carta inalcançável: ${id}`);
+  // Prosa de carta gerada não pode vazar id interno (gen_...) nem rótulo cru.
+  for (const c of pacote.cartas) {
+    const camposTexto = [c.textoDisplay, c.carimboPadrao, c.descricao]
+      .concat((c.estados || []).flatMap((e) => [e.textoDisplay, e.carimboPadrao, e.descricao]))
+      .filter(Boolean);
+    for (const txt of camposTexto) {
+      if (/\bgen_\w+/.test(txt)) problemas.push(`${c.id}: id interno vazando na prosa ("${txt.slice(0, 40)}…")`);
+      if (txt.includes('Rótulo técnico')) problemas.push(`${c.id}: rótulo técnico sem prosa realizada`);
+    }
+  }
+  return problemas;
+}
+const problemasEmbarcados = [CASO_REPLICA, ...CASOS_POOL].flatMap((p) =>
+  problemasDoPacoteGerado(p).map((x) => `${p.id}: ${x}`)
+);
+const casosEmbarcadosIntegros = problemasEmbarcados.length === 0;
+if (!casosEmbarcadosIntegros) {
+  console.log('\nGERADOR (FASE 6) — pacotes embarcados com problemas:');
+  for (const p of problemasEmbarcados.slice(0, 12)) console.log('  ·', p);
+}
+
+// (c) Os 4 perfis nos casos gerados (dirigindo o store, como no §18).
+function perfisDoCasoGerado(pacote) {
+  const verdade = pacote.verdadeDeOuro;
+  const idsCartas = new Set(pacote.cartas.map((c) => c.id));
+  const resultados = {};
+  const arrancar = () => {
+    s().carregarCaso(pacote);
+    s().escolherDetective();
+    s().iniciarInvestigacao();
+  };
+  const extrairTudoDoMetodico = () => {
+    s().viajarPara('corpo');
+    s().medirTemperatura();
+    ['gen_rigor', 'gen_livores', 'gen_lesao_fatal', 'gen_reacao_vital'].forEach(
+      (id) => idsCartas.has(id) && s().extrairCarta(id)
+    );
+    s().viajarPara('cena');
+    ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas'].forEach((id) => {
+      const c = pacote.cartas.find((x) => x.id === id);
+      if (c && c.localidade === 'cena') s().extrairCarta(id);
+    });
+    s().viajarPara('vizinhanca'); // antes do móbil: extração do móbil é gatilho comum
+    if (idsCartas.has('gen_ruido_ouvido')) s().extrairCarta('gen_ruido_ouvido');
+    s().viajarPara('delegacia');
+    ['gen_visto_vivo', 'gen_motivo'].forEach((id) => idsCartas.has(id) && s().extrairCarta(id));
+    if (pacote.cartas.some((c) => c.localidade === 'oficio_do_reu')) {
+      s().viajarPara('oficio_do_reu');
+      s().extrairCarta('gen_instrumento');
+    }
+  };
+  const ligarTripe = (registradas) => {
+    for (const c of registradas.filter((x) => x.tagsOcultas.dominio === 'temporal')) ligar(c.id, ANCORAS.quando);
+    for (const c of registradas.filter((x) => x.tagsOcultas.dominio === 'causal')) ligar(c.id, ANCORAS.como);
+    const nexo = registradas.find(
+      (c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto
+    );
+    if (nexo) ligar(nexo.id, ANCORAS.presenca);
+  };
+
+  // METÓDICO → vitoria_absoluta.
+  arrancar();
+  extrairTudoDoMetodico();
+  const registradas = s().cartasRegistradas;
+  const janelaGerada = intersecaoJanelas(
+    registradas.filter((c) => c.tagsOcultas.dominio === 'temporal').map(janelaDaCarta).filter(Boolean)
+  );
+  const sinaisGerados = registradas
+    .filter((c) => c.tagsOcultas.dominio === 'causal')
+    .map((c) => c.tagsOcultas.sinal)
+    .filter(Boolean);
+  const causaGerada = mecanismoCravado(sinaisGerados);
+  s().definirReu(verdade.reuCorreto);
+  s().definirJanela({ inicio: janelaGerada.inicio, fim: janelaGerada.fim });
+  s().definirCausa(causaGerada ? causaGerada.id : null);
+  s().definirMotivacao('gen_motivo');
+  ligarTripe(registradas);
+  s().submeterAcusacao();
+  resultados.metodico = s().veredicto.tipo;
+  resultados.monologoGeradoOk = gerarMonologo(s().veredicto, s().detective).blocos.length > 0;
+  s().fecharVeredicto();
+
+  // APRESSADO (réu errado) → erro_judiciario.
+  arrancar();
+  s().viajarPara('corpo');
+  ['gen_rigor', 'gen_livores'].forEach((id) => s().extrairCarta(id));
+  const outro = pacote.suspeitos.find((x) => x.id !== verdade.reuCorreto);
+  s().definirReu(outro.id);
+  s().definirJanela({ inicio: -24, fim: 10 });
+  for (const c of s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal')) {
+    ligar(c.id, ANCORAS.quando);
+  }
+  s().submeterAcusacao();
+  resultados.apressado = s().veredicto.tipo;
+  s().fecharVeredicto();
+
+  // INTUITIVO (réu certo, sem materialidade) → impunidade.
+  arrancar();
+  s().viajarPara('corpo');
+  ['gen_rigor', 'gen_livores'].forEach((id) => s().extrairCarta(id));
+  s().definirReu(verdade.reuCorreto);
+  s().definirJanela({ inicio: -24, fim: 10 });
+  for (const c of s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal')) {
+    ligar(c.id, ANCORAS.quando);
+  }
+  s().submeterAcusacao();
+  resultados.intuitivo = s().veredicto.tipo;
+  s().fecharVeredicto();
+
+  // PERICIAL DESATENTO (tripé ok, janela larga só pelo rigor, sem móbil)
+  // → sucesso_gafes.
+  arrancar();
+  extrairTudoDoMetodico();
+  const regs2 = s().cartasRegistradas;
+  const jRigor = janelaDaCarta(regs2.find((c) => c.id === 'gen_rigor'));
+  const sinais2 = regs2.filter((c) => c.tagsOcultas.dominio === 'causal').map((c) => c.tagsOcultas.sinal).filter(Boolean);
+  const causa2 = mecanismoCravado(sinais2);
+  s().definirReu(verdade.reuCorreto);
+  s().definirJanela({ inicio: Math.max(jRigor.inicio, -48), fim: jRigor.fim });
+  s().definirCausa(causa2 ? causa2.id : null);
+  ligar('gen_rigor', ANCORAS.quando);
+  for (const c of regs2.filter((x) => x.tagsOcultas.dominio === 'causal')) ligar(c.id, ANCORAS.como);
+  const nexo2 = regs2.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto);
+  if (nexo2) ligar(nexo2.id, ANCORAS.presenca);
+  s().submeterAcusacao();
+  resultados.desatento = s().veredicto.tipo;
+  s().fecharVeredicto();
+
+  return resultados;
+}
+
+const perfisReplica = perfisDoCasoGerado(CASO_REPLICA);
+const perfisPool = perfisDoCasoGerado(CASOS_POOL[0]);
+const quatroDesfechos = (r) =>
+  r.metodico === 'vitoria_absoluta' &&
+  r.apressado === 'erro_judiciario' &&
+  r.intuitivo === 'impunidade' &&
+  r.desatento === 'sucesso_gafes' &&
+  r.monologoGeradoOk !== false;
+const casosGeradosJogaveis = quatroDesfechos(perfisReplica) && quatroDesfechos(perfisPool);
+console.log('\n=== GERADOR (FASE 6) — perfis nos casos gerados ===');
+console.log('réplica:', JSON.stringify(perfisReplica));
+console.log('pool[0]:', JSON.stringify(perfisPool));
+
+// Devolve o módulo de dados ao caso-escola: as checagens e o linter
+// abaixo leem o pacote do tutorial, como sempre.
+carregarCaso(pacote);
+useJogo.setState(estadoInicial, true);
+
+// ============================================================
 // LINTER DE PROSA (regressão da norma de texto): scripts/lint-prosa.mjs
 // roda como parte do QA — cheques mecânicos do guia de estilo e da skill
 // anti-padrao-ia (fórmula "não X — é Y", densidade de travessão, léxico
-// banido, exclamações) sobre os módulos de dados e os templates. O
-// relatório do linter sai inteiro aqui (stdio herdado).
+// banido, exclamações, filtro sensorial, monotonia de abertura e vocativo
+// repetido) sobre os módulos de dados e os templates. O autoteste do
+// linter (armadilhas sintéticas dos cheques 5–7) roda embutido em toda
+// execução. O relatório do linter sai inteiro aqui (stdio herdado).
 // ============================================================
 console.log('\n=== Linter de prosa (scripts/lint-prosa.mjs) ===');
 const lintProsa = spawnSync(process.execPath, [fileURLToPath(new URL('./lint-prosa.mjs', import.meta.url))], {
@@ -2216,7 +2428,10 @@ const checagens = [
   ['Prenúncio na prosa: todo silenciar publica sinal legível — texto exato, interpolado, nomeia a testemunha, fora do gate (FASE 5)', prenuncioNaProsaOk],
   ['Replay das seeds de interferência: mesma seed → mesmo caso com os mesmos eventos contingentes, byte a byte (FASE 5)', replayInterferenciaOk],
   ['Armadilhas detectadas: âncora destruível, gatilho órfão, rota órfã, silenciar sem prenúncio, saldo negativo — e o caso válido passa (FASE 5)', armadilhasDetectadas],
-  ['Prosa sem regressão mecânica (lint-prosa): fórmula, travessões, léxico banido, exclamações', prosaSemRegressao],
+  ['Prosa sem regressão mecânica (lint-prosa): fórmula, travessões, léxico, exclamações, filtro sensorial, abertura repetida, vocativo', prosaSemRegressao],
+  ['Casos embarcados = montador de hoje, byte a byte (réplica dirigida + pool) (FASE 6)', casosEmbarcadosReplay],
+  ['Pacotes gerados íntegros: campos, marcadores↔cartas, blocos contingentes, slots, sem id/rótulo cru (FASE 6)', casosEmbarcadosIntegros],
+  ['Casos gerados jogáveis: os 4 perfis produzem os 4 desfechos na réplica e no pool (FASE 6)', casosGeradosJogaveis],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

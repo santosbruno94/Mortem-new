@@ -654,6 +654,61 @@ async function main() {
     checar('Rota flat: Gabinete desbloqueado pela grade 2D', (await page.locator('body').innerText()).includes('Gabinete Pettigrew'));
 
     // ============================================================
+    // ROTA GERADA — o caso PROCEDURAL jogável (FASE 6 do gerador):
+    // carrega a réplica dirigida por ?caso=, atravessa a abertura
+    // GERADA (6 passos, mesmo botão final), extrai pela prosa gerada,
+    // mede a temperatura e abre o mural. Fumaça: a mecânica inteira
+    // precisa jogar num pacote que nenhuma mão escreveu.
+    // ============================================================
+    console.log('\n=== ROTA GERADA — a réplica procedural (?caso=) ===');
+    await page.goto(BASE + '?caso=gerado_a_hora_emprestada_replica_96');
+    await espera(page, 800);
+    checar('Rota gerada: os 3 modos aparecem na tela inicial', (await page.locator('[data-modo]').count()) === 3);
+    checar(
+      'Rota gerada: o modo réplica nasce selecionado pelo ?caso=',
+      (await page.locator('[data-modo="replica"][aria-pressed="true"]').count()) === 1
+    );
+    await page.click('text=Dr. Harlan Blackwell');
+    await espera(page, 600);
+    for (let i = 0; i < 5; i++) {
+      await page.locator('button, [role=button], a').filter({ hasText: '→' }).last().click();
+      await espera(page, 200);
+    }
+    await page.click('text=Entrar — iniciar a investigação');
+    await espera(page, 600);
+    checar('Rota gerada: a maquete 3D cede à grade 2D (nós fora do diorama)', (await page.locator('canvas').count()) === 0);
+    await visitarEExtrair(page, 'O Corpo');
+    await page.getByRole('button', { name: 'Medir temperatura' }).click();
+    await espera(page, 400);
+    await arquivarFicha(page);
+    checar('Rota gerada: extração pela prosa gerada funciona', (await page.locator('.termo-extraido').count()) >= 2);
+    await fecharOverlay(page);
+    await visitarEExtrair(page, 'A Delegacia');
+    await fecharOverlay(page);
+    await page.click('text=CONSTRUIR A ACUSAÇÃO');
+    await espera(page, 500);
+    const muralGerado = await textoOverlay(page);
+    checar('Rota gerada: o mural abre na primeira estação', muralGerado.includes('O Corpo'));
+    checar(
+      'Rota gerada: nenhum id interno vazou para a tela',
+      !(await page.locator('body').innerText()).match(/\bgen_\w+/)
+    );
+    await fecharOverlay(page);
+    // Retomada: um F5 no meio do caso gerado reoferece a retomada e volta
+    // ao MESMO caso (o save guarda o casoId; o App recarrega o pacote
+    // certo antes do render — nunca se cai no caso-escola por engano).
+    await page.goto(BASE);
+    await espera(page, 800);
+    checar('Rota gerada: recarregar oferece a retomada', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 1);
+    await page.getByRole('button', { name: 'Continuar o caso' }).click();
+    await espera(page, 600);
+    checar(
+      'Rota gerada: a retomada volta ao caso gerado (não ao caso-escola)',
+      (await page.locator('body').innerText()).includes('A Vizinhança')
+    );
+    await page.evaluate(() => window.localStorage && window.localStorage.clear());
+
+    // ============================================================
     checar('Zero erros de console em todas as rotas', errosConsole.length === 0);
     if (errosConsole.length) console.error('Erros de console:', errosConsole);
   } finally {

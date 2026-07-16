@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { interpolar } from '../logic/interpolar.js';
-import { PASSOS_ABERTURA, PERGUNTAS_BRIEFING } from '../data/abertura.js';
+import { obterAbertura } from '../data/pacote_caso.js';
 import { tocarSom } from '../som.js';
 
 // Sequência de abertura em 6 passos (§4.1–4.2). O último passo é o
@@ -13,6 +13,9 @@ export default function Abertura() {
   const { detective, passoAbertura, avancarAbertura, iniciarInvestigacao } = useJogo();
   const [perguntasFeitas, setPerguntasFeitas] = useState([]);
 
+  // A abertura sai do PACOTE carregado (tutorial ou caso gerado) — mesmos
+  // passos e perguntas de sempre quando o caso é o caso-escola.
+  const { passos: PASSOS_ABERTURA, perguntas: PERGUNTAS_BRIEFING } = obterAbertura();
   const passo = PASSOS_ABERTURA[passoAbertura];
   const ultimo = passoAbertura === PASSOS_ABERTURA.length - 1;
 
