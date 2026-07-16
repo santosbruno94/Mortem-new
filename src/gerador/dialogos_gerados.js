@@ -107,6 +107,33 @@ export function formasDoLugar(rotulo) {
 }
 
 // ---------------------------------------------------------------------
+// Exibição de profissão: o id narrativo fica no elenco (os ids de carta
+// de álibi o carregam); só a SUPERFÍCIE traduz o anglicismo (parecer da
+// OS de lapidação, fiscal 7). Exportada: o montador do pacote usa a mesma
+// tradução em subtítulos, briefing e carta do delegado.
+// ---------------------------------------------------------------------
+const PROFISSAO_EXIBIDA = {
+  squire: 'senhor de terras',
+  'senhora da propriedade (viúva do squire)': 'senhora da propriedade',
+  'professor de vila': 'mestre-escola',
+  'professora de vila': 'mestra-escola',
+};
+export function profissaoExibida(profissao) {
+  return PROFISSAO_EXIBIDA[profissao] || profissao;
+}
+
+// Hora absoluta → boca de aldeia ("às nove", "à uma"), para fala que
+// precise citar a hora de um avistamento registrado.
+const NOME_HORA = ['meia-noite', 'uma', 'duas', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove', 'dez', 'onze'];
+function horaFalada(h) {
+  const H = ((h % 24) + 24) % 24;
+  if (H === 0) return 'à meia-noite';
+  if (H === 12) return 'ao meio-dia';
+  const n = H % 12;
+  return n === 1 ? 'à uma' : `às ${NOME_HORA[n]}`;
+}
+
+// ---------------------------------------------------------------------
 // As perguntas do perito (voz universal do jogador; iguais em todo caso).
 // ---------------------------------------------------------------------
 function perguntasParadeiro(faixa) {
@@ -355,6 +382,19 @@ function cartaDeAlibi(ctx) {
   const formaMoradia = formasDoLugar(nomePredio(moradia));
   const janela = JANELA_DECLARADA[faixa];
 
+  // A testemunha do visto-com-vida declarou um avistamento DENTRO da
+  // janela do próprio álibi: a fala assume o encontro à porta de casa —
+  // sem isto, as duas declarações do mesmo nome se excluiriam (parecer
+  // da OS de lapidação, bloqueante B-8). Só quando o encontro não cabe
+  // no lugar declarado (quem partilha teto com a vítima já é coerente).
+  const encontroNaJanela =
+    papel !== 'reu' &&
+    ctx.horaVistoVivo != null &&
+    ctx.horaVistoVivo >= janela.inicio &&
+    ctx.horaVistoVivo <= janela.fim &&
+    ctx.vitima.pacoteEspacial.rotina[faixa] !== lugarDeclarado;
+  const horaEncontro = encontroNaJanela ? horaFalada(ctx.horaVistoVivo) : null;
+
   let falaDeclarada;
   if (faixa === 'dia') {
     // Redação neutra de classe ("serviço de porta para dentro" é idioma
@@ -362,7 +402,9 @@ function cartaDeAlibi(ctx) {
     // assinatura de template.
     falaDeclarada =
       lugarDeclarado === moradia
-        ? `"Do meio-dia às seis estive em casa, ${forma.em}, e de porta para fora não pus o pé."`
+        ? encontroNaJanela
+          ? `"Do meio-dia às seis estive em casa, ${forma.em}. ${ctx.vitima.nome} me bateu à porta ${horaEncontro}; da porta mesmo nos despedimos, e de sair não saí."`
+          : `"Do meio-dia às seis estive em casa, ${forma.em}, e de porta para fora não pus o pé."`
         : `"Do meio-dia às seis estive ${forma.em}, no serviço. Quem lá esteve me viu."`;
   } else if (mentiraDeCena) {
     // MESMA redação do ramo inocente-caseiro (abaixo): fraseado exclusivo
@@ -371,7 +413,9 @@ function cartaDeAlibi(ctx) {
     // LUGAR declarado, e cai por confronto, como a de Silas.
     falaDeclarada = `"Recolhi-me ${formaMoradia.a} às oito e não tornei a sair antes de clarear."`;
   } else if (lugarDeclarado === moradia) {
-    falaDeclarada = `"Recolhi-me ${forma.a} às oito e não tornei a sair antes de clarear."`;
+    falaDeclarada = encontroNaJanela
+      ? `"Recolhi-me ${forma.a} às oito. ${ctx.vitima.nome} me bateu à porta ${horaEncontro}; do batente mesmo nos despedimos, e não tornei a sair antes de clarear."`
+      : `"Recolhi-me ${forma.a} às oito e não tornei a sair antes de clarear."`;
   } else {
     falaDeclarada = `"Estive ${forma.em} das oito às onze; dali fui direto ${formaMoradia.para}, dormir."`;
   }
@@ -433,7 +477,7 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   if (t.pertenceA === pessoa.id && t.subDominio === 'objeto_pessoal') {
     return {
       pergunta: `[${td}] Por que o par disto está entre as suas coisas?`,
-      reacao: `${pessoa.nome} vira o achado nos dedos uma vez e o pousa. "Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá." E o empurra de volta pela mesa, devagar.`,
+      reacao: `${pessoa.nome} vira o achado nos dedos uma vez e o pousa. "Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá." E o empurra de volta pela mesa, devagar.`,
     };
   }
   if (t.pertenceA === pessoa.id && t.subDominio === 'rastro_de_dinheiro') {
@@ -493,6 +537,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos }) {
 
   const dialogos = {};
   const cartasAlibi = [];
+  const cartaVisto = cartas.find((c) => c.id === 'gen_visto_vivo');
 
   for (const s of suspeitos) {
     const pessoa = pessoas.get(s.id);
@@ -524,6 +569,8 @@ export function derivarDialogos({ bruto, cartas, suspeitos }) {
       nomePredio,
       sal,
       idCartaAlibi: `gen_alibi_${pessoa.id}`,
+      horaVistoVivo:
+        cartaVisto && cartaVisto.origemTestemunha === pessoa.id ? cartaVisto.tagsOcultas.horaAvistamento : null,
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));
@@ -556,7 +603,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos }) {
       origemLocalidade: 'delegacia',
       chamada: `Interrogar ${pessoa.nome}`,
       titulo: `Interrogatório — ${pessoa.nome}`,
-      subtitulo: `${pessoa.profissao.charAt(0).toUpperCase()}${pessoa.profissao.slice(1)}, ${pessoa.idade} anos`,
+      subtitulo: `${profissaoExibida(pessoa.profissao).charAt(0).toUpperCase()}${profissaoExibida(pessoa.profissao).slice(1)}, ${pessoa.idade} anos`,
       noInicial: 'abertura',
       noEvasiva: 'evasiva',
       reacoesProva,

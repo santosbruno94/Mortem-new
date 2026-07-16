@@ -33,28 +33,28 @@ export const CASO_REPLICA = {
    "nome": "John Wilson",
    "idade": 55,
    "relacao": "Moleiro; mora no Moinho",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
   },
   {
    "id": "gen_1_criada",
    "nome": "Mary Walker",
    "idade": 24,
    "relacao": "Criada; mora na Taverna",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Espera a pergunta acabar de todo antes de abrir a boca."
   },
   {
    "id": "gen_5_paroco",
    "nome": "Thomas Jones",
    "idade": 68,
    "relacao": "Pároco; mora no Presbitério",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
   },
   {
    "id": "gen_2_ferreiro",
    "nome": "Walter Williams",
    "idade": 35,
    "relacao": "Ferreiro; mora no Cottage nº 1",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Mede a noite por sinos e canecas, nunca pelo relógio."
   },
   {
    "id": "gen_0_lavrador",
@@ -129,7 +129,7 @@ export const CASO_REPLICA = {
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa. As manchas, porém, guardam o desenho de outra postura: assentaram do lado que ora fica para cima.",
+     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -141,7 +141,7 @@ export const CASO_REPLICA = {
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou. As manchas, porém, guardam o desenho de outra postura: assentaram do lado que ora fica para cima.",
+     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou. As manchas assentaram do lado que ora fica para cima.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -170,7 +170,7 @@ export const CASO_REPLICA = {
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -184,7 +184,7 @@ export const CASO_REPLICA = {
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 19h00 de 13/out",
-   "descricao": "Do registro da ronda consta Ada Thomas com vida às 19h00 de 13/out. Depois dessa hora, ninguém mais a encontrou em pé.",
+   "descricao": "Do registro da ronda consta Ada Thomas com vida às 19h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-la.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -197,7 +197,7 @@ export const CASO_REPLICA = {
    "suporteFisico": "pertences_do_reu",
    "textoDisplay": "O Lugar Vazio",
    "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Mary Walker, um vão limpo no meio do pó: falta ali a peça cujo feitio casa com a lesão da morta.",
+   "descricao": "Entre as coisas de ofício de Mary Walker, um vão limpo no meio do pó, do comprimento e do desenho da lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -312,10 +312,10 @@ export const CASO_REPLICA = {
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama quarto (sobrado), vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama quarto do sobrado, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -325,7 +325,7 @@ export const CASO_REPLICA = {
    "subtitulo": "Onde Ada Thomas foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras frias da despensa, pia da copa, lavatório com bacia; o desarrumado corre de um canto a outro; a madeira do assoalho cheira a soda cáustica; uma peça de mobília repousa sobre o próprio arranhão."
+    "A Mercearia guarda o dia em que a acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela."
    ],
    "blocosContingentes": []
   },
@@ -339,7 +339,7 @@ export const CASO_REPLICA = {
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -350,7 +350,7 @@ export const CASO_REPLICA = {
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória."
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância."
    ],
    "blocosContingentes": []
   },
@@ -1321,7 +1321,7 @@ export const CASO_REPLICA = {
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -1339,7 +1339,7 @@ export const CASO_REPLICA = {
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Wrenfield, e como homem que sabe o tamanho do que não sabe. Ada Thomas, merceeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Ada Thomas, merceeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -1357,7 +1357,7 @@ export const CASO_REPLICA = {
     "id": "chegada",
     "titulo": "Wrenfield",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -1382,12 +1382,12 @@ export const CASO_REPLICA = {
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Mulher de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
+    "resposta": "\"Mulher de poucas companhias. O que houver, a vila sabe antes de mim.\""
    },
    {
     "id": "desafetos",
     "pergunta": "A morta tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [
@@ -1432,14 +1432,14 @@ export const CASOS_POOL = [
    "nome": "Alice Thomas",
    "idade": 20,
    "relacao": "Criada; mora na Taverna",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Responde de olhos no chão, uma palavra por vez."
   },
   {
    "id": "gen_2_lavrador",
    "nome": "George Evans",
    "idade": 43,
    "relacao": "Lavrador; mora no Cottage nº 1",
-   "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
+   "descricao": "Não há pergunta curta que devolva curta."
   },
   {
    "id": "gen_4_constable",
@@ -1453,14 +1453,14 @@ export const CASOS_POOL = [
    "nome": "James Jones",
    "idade": 57,
    "relacao": "Boticário; mora na Botica",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
   },
   {
    "id": "gen_0_costureira",
    "nome": "Martha Roberts",
    "idade": 56,
    "relacao": "Costureira; mora no Cottage nº 4",
-   "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
+   "descricao": "Começa pela resposta e acaba na vida alheia."
   }
  ],
  "cartas": [
@@ -1556,7 +1556,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "O Sulco no Pescoço",
    "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um sulco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -1569,7 +1569,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -1583,7 +1583,7 @@ export const CASOS_POOL = [
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 01h00 de 14/out",
-   "descricao": "Do registro da ronda consta Henry Brown com vida às 01h00 de 14/out. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Do registro da ronda consta Henry Brown com vida às 01h00 de 14/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -1711,10 +1711,10 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama quarto (sobrado), vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "O morto jaz no chão do cômodo a que a vila chama quarto do sobrado, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -1724,7 +1724,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Henry Brown foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras frias da despensa, pia da copa, cômoda."
+    "A Mercearia guarda o dia em que o acharam. No cômodo, cômoda, cama de armação de madeira, lavatório com bacia."
    ],
    "blocosContingentes": []
   },
@@ -1738,7 +1738,7 @@ export const CASOS_POOL = [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -1749,7 +1749,7 @@ export const CASOS_POOL = [
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória."
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância."
    ],
    "blocosContingentes": []
   },
@@ -2720,7 +2720,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -2738,7 +2738,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate, e como homem que sabe o tamanho do que não sabe. Henry Brown, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Henry Brown, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -2756,7 +2756,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -2781,12 +2781,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Homem de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
+    "resposta": "\"Homem de poucas companhias. O que houver, a vila sabe antes de mim.\""
    },
    {
     "id": "desafetos",
     "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [
@@ -2836,28 +2836,28 @@ export const CASOS_POOL = [
    "nome": "Ernest Jones",
    "idade": 31,
    "relacao": "Constable do condado; mora na Delegacia",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
   },
   {
    "id": "gen_3_lavrador",
    "nome": "George Taylor",
    "idade": 44,
    "relacao": "Lavrador; mora no Cottage nº 2",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
   },
   {
    "id": "gen_6_lavrador",
    "nome": "James Brown",
    "idade": 49,
    "relacao": "Lavrador; mora no Cottage nº 3",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Responde de olhos no chão, uma palavra por vez."
   },
   {
    "id": "gen_1_medico",
    "nome": "William Roberts",
    "idade": 45,
    "relacao": "Médico rural; mora na Casa do Médico",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
   }
  ],
  "cartas": [
@@ -2966,7 +2966,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -2980,7 +2980,7 @@ export const CASOS_POOL = [
    "origemTestemunha": "gen_4_criada",
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 21h00 de 13/out",
-   "descricao": "Annie Thomas esteve com Ada Jones às 21h00 de 13/out, e o declara à ronda. Depois dessa hora, ninguém mais a encontrou em pé.",
+   "descricao": "Annie Thomas esteve com Ada Jones às 21h00 de 13/out, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -3005,9 +3005,9 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "Sangue que Não É da Vítima",
+   "textoDisplay": "O Rastro de Gotas",
    "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas de sangue a passos do corpo, num caminho que a morta não fez. Alguém saiu dali ferido, e andando.",
+   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas da morta não sangraram nesse caminho.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -3060,7 +3060,7 @@ export const CASOS_POOL = [
    "localidade": "vizinhanca",
    "textoDisplay": "O Segundo Corpo",
    "carimboPadrao": "Corpo da testemunha (morte de horas, não de dias)",
-   "descricao": "O segundo corpo tem rigor e manchas de poucas horas: morte posterior à primeira perícia, e de mão mais grosseira que a primeira.",
+   "descricao": "O segundo corpo tem rigor e manchas de poucas horas: morte posterior à primeira perícia. As lesões são largas, de bordas rasgadas, sem o desenho das que a primeira morta levou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "segunda_morte",
@@ -3171,10 +3171,10 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama taproom, vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama taproom, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -3184,7 +3184,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Ada Jones foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que o acharam. No cômodo, bacia e jarro, baú de roupa, cama de ferro; o desarrumado corre de um canto a outro; há mobília por erguer do chão.",
+    "A Taverna guarda o dia em que a acharam. No cômodo, balcão com beer engine, mesas de taverna; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
     "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": []
@@ -3199,7 +3199,7 @@ export const CASOS_POOL = [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -3210,7 +3210,7 @@ export const CASOS_POOL = [
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória.",
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
     "Uma porta se entreabre à passagem {g:do perito|da perita}: [[gen_intf_intf_1_prenuncio]]."
    ],
    "blocosContingentes": [
@@ -3218,14 +3218,14 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "nao_disparado",
      "paragrafos": [
-      "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]]."
+      "De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]]."
      ]
     },
     {
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Desde a última visita, alguma coisa mudou por aqui. [[gen_intf_intf_1_corpo]]"
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_corpo]]"
      ]
     }
    ]
@@ -4221,7 +4221,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -4239,7 +4239,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham, e como homem que sabe o tamanho do que não sabe. Ada Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Ada Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -4257,7 +4257,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -4282,12 +4282,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dela? Annie Thomas, James Brown — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dela? Annie Thomas, James Brown — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
     "pergunta": "A morta tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [
@@ -4409,7 +4409,7 @@ export const CASOS_POOL = [
    "nome": "Charles Williams",
    "idade": 34,
    "relacao": "Ferreiro; mora no Cottage nº 1",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Mede a noite por sinos e canecas, nunca pelo relógio."
   },
   {
    "id": "gen_3_merceeiro",
@@ -4430,7 +4430,7 @@ export const CASOS_POOL = [
    "nome": "James Brown",
    "idade": 53,
    "relacao": "Lavrador; mora no Cottage nº 4",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Responde de olhos no chão, uma palavra por vez."
   },
   {
    "id": "gen_6_lavrador",
@@ -4533,7 +4533,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Marcas no Pescoço",
    "carimboPadrao": "Sinal de estrangulamento manual",
-   "descricao": "Equimoses do tamanho de polpas de dedo dos dois lados da traqueia, e meias-luas de unha impressas na pele.",
+   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -4546,7 +4546,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -4560,7 +4560,7 @@ export const CASOS_POOL = [
    "origemTestemunha": "gen_2_ferreiro",
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 01h00 de 14/out",
-   "descricao": "Charles Williams esteve com Mary Walker às 01h00 de 14/out, e o declara à ronda. Depois dessa hora, ninguém mais a encontrou em pé.",
+   "descricao": "Charles Williams esteve com Mary Walker às 01h00 de 14/out, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -4587,7 +4587,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de James Brown",
-   "descricao": "A ordem de despejo do cottage de James Brown leva a assinatura de Mary Walker.",
+   "descricao": "A ordem de despejo do cottage de James Brown veio no rasto de queixa que Mary Walker levou ao senhorio.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -4620,8 +4620,8 @@ export const CASOS_POOL = [
    "id": "gen_intf_intf_1_dividas",
    "localidade": "vizinhanca",
    "textoDisplay": "A Caderneta Quitada",
-   "carimboPadrao": "Dívidas quitadas de repente",
-   "descricao": "A caderneta de fiado amanheceu quitada, na mesma semana da nova versão. Dívida velha não se paga sozinha.",
+   "carimboPadrao": "Dívidas quitadas na mesma semana",
+   "descricao": "A caderneta de fiado amanheceu quitada, a soma cheia de uma vez, na mesma semana da nova versão.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_dinheiro",
@@ -4641,7 +4641,7 @@ export const CASOS_POOL = [
    "localidade": "vizinhanca",
    "textoDisplay": "Soberanos Novos",
    "carimboPadrao": "Soberanos novos, contados à vista de todos",
-   "descricao": "Soberanos novos, contados à vista de todos. Moeda graúda tem caminho — e o caminho sobe até James Brown.",
+   "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: James Brown.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_dinheiro",
@@ -4661,7 +4661,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Charles Williams",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito. Mary Walker me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -4749,10 +4749,10 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama quartos (sobrado), vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama quartos do sobrado, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -4762,8 +4762,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Mary Walker foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que o acharam. No cômodo, cama de ferro, bacia e jarro, cadeiras Windsor.",
-    "Na mão fechada da morta, por abrir desde ontem: [[gen_pertence]]."
+    "A Taverna guarda o dia em que a acharam. No cômodo, cama de ferro, bacia e jarro.",
+    "Por abrir desde ontem, a mão fechada da morta: [[gen_pertence]]."
    ],
    "blocosContingentes": []
   },
@@ -4777,7 +4777,7 @@ export const CASOS_POOL = [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -4788,14 +4788,14 @@ export const CASOS_POOL = [
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória."
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância."
    ],
    "blocosContingentes": [
     {
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Desde a última visita, alguma coisa mudou por aqui. [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]"
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]"
      ]
     }
    ]
@@ -5440,7 +5440,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_pertence": {
      "fala": [
-      "James Brown vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "James Brown vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -5774,7 +5774,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -5792,7 +5792,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Colbrook, e como homem que sabe o tamanho do que não sabe. Mary Walker, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Mary Walker, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Bexley, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -5810,7 +5810,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -5835,12 +5835,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dela? Charles Williams, John Evans — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dela? Charles Williams, John Evans — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
     "pergunta": "A morta tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [
@@ -5961,13 +5961,13 @@ export const CASOS_POOL = [
    "nome": "Charles Jones",
    "idade": 35,
    "relacao": "Ferreiro; mora no Cottage nº 2",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Antes de assinar o termo, corrige nele uma miudeza."
   },
   {
    "id": "gen_3_squire",
    "nome": "Charles Williams",
    "idade": 53,
-   "relacao": "Squire; mora no Solar",
+   "relacao": "Senhor de terras; mora no Solar",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   },
   {
@@ -5975,21 +5975,21 @@ export const CASOS_POOL = [
    "nome": "Ethel Taylor",
    "idade": 19,
    "relacao": "Criada; mora na Casa do Médico",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
   },
   {
    "id": "gen_0_moleiro",
    "nome": "James Brown",
    "idade": 70,
    "relacao": "Moleiro; mora no Moinho",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Antes de assinar o termo, corrige nele uma miudeza."
   },
   {
    "id": "gen_2_lavrador",
    "nome": "William Evans",
    "idade": 18,
    "relacao": "Lavrador; mora no Cottage nº 4",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
   }
  ],
  "cartas": [
@@ -6085,7 +6085,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Marcas no Pescoço",
    "carimboPadrao": "Sinal de estrangulamento manual",
-   "descricao": "Equimoses do tamanho de polpas de dedo dos dois lados da traqueia, e meias-luas de unha impressas na pele.",
+   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -6098,7 +6098,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -6112,7 +6112,7 @@ export const CASOS_POOL = [
    "origemTestemunha": "gen_6_ferreiro",
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 19h00 de 13/out",
-   "descricao": "Charles Jones esteve com Henry Smith às 19h00 de 13/out, e o declara à ronda. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Charles Jones esteve com Henry Smith às 19h00 de 13/out, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -6137,9 +6137,9 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "Sangue que Não É da Vítima",
+   "textoDisplay": "O Rastro de Gotas",
    "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas de sangue a passos do corpo, num caminho que o morto não fez. Alguém saiu dali ferido, e andando.",
+   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -6167,7 +6167,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Ethel Taylor",
-   "descricao": "Corre na vila o falatório que Ethel Taylor queria enterrado — e Henry Smith era quem o repetia.",
+   "descricao": "Corre na vila um falatório em nome de Ethel Taylor; quem o repetia, de porta em porta, era Henry Smith.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -6268,10 +6268,10 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama taproom, vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "O morto jaz no chão do cômodo a que a vila chama taproom, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -6281,8 +6281,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Henry Smith foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que o acharam. No cômodo, cômoda, cama de armação de madeira, lavatório com bacia; o desarrumado corre de um canto a outro; há mobília por erguer do chão; há mobília por erguer do chão.",
-    "Na mão fechada do morto, por abrir desde ontem: [[gen_pertence]].",
+    "A Taverna guarda o dia em que o acharam. No cômodo, balcão com beer engine, mesas de taverna; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
     "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": []
@@ -6297,7 +6297,7 @@ export const CASOS_POOL = [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -6308,8 +6308,8 @@ export const CASOS_POOL = [
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória.",
-    "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]]."
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
+    "De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]]."
    ],
    "blocosContingentes": []
   }
@@ -6555,7 +6555,7 @@ export const CASOS_POOL = [
    "origemLocalidade": "delegacia",
    "chamada": "Interrogar Charles Williams",
    "titulo": "Interrogatório — Charles Williams",
-   "subtitulo": "Squire, 53 anos",
+   "subtitulo": "Senhor de terras, 53 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {},
@@ -6781,7 +6781,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_pertence": {
      "fala": [
-      "Ethel Taylor vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Ethel Taylor vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -7287,7 +7287,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -7305,7 +7305,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Dunmere, e como homem que sabe o tamanho do que não sabe. Henry Smith, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Henry Smith, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Quill, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -7323,7 +7323,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Dunmere",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -7348,12 +7348,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Charles Jones — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dele? Charles Jones — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
     "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [
@@ -7396,7 +7396,7 @@ export const CASOS_POOL = [
    "nome": "Alice Taylor",
    "idade": 15,
    "relacao": "Criada; mora na Casa do Médico",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
   },
   {
    "id": "gen_4_costureira",
@@ -7410,7 +7410,7 @@ export const CASOS_POOL = [
    "nome": "Elizabeth Smith",
    "idade": 70,
    "relacao": "Lavadeira; mora no Cottage nº 3",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
   },
   {
    "id": "gen_3_paroco",
@@ -7424,7 +7424,7 @@ export const CASOS_POOL = [
    "nome": "Joseph Thomas",
    "idade": 36,
    "relacao": "Lavrador; mora no Cottage nº 2",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Mede a noite por sinos e canecas, nunca pelo relógio."
   }
  ],
  "cartas": [
@@ -7533,7 +7533,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -7547,7 +7547,7 @@ export const CASOS_POOL = [
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 11h00 de 13/out",
-   "descricao": "Do registro da ronda consta Thomas Roberts com vida às 11h00 de 13/out. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Do registro da ronda consta Thomas Roberts com vida às 11h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -7560,7 +7560,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão do morto, e o dono tem nome na vila: Joseph Thomas.",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Joseph Thomas.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -7572,9 +7572,9 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "Sangue que Não É da Vítima",
+   "textoDisplay": "O Rastro de Gotas",
    "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas de sangue a passos do corpo, num caminho que o morto não fez. Alguém saiu dali ferido, e andando.",
+   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -7588,7 +7588,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "Pegadas Rumo à Porta",
    "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Meias-solas impressas em sangue, espaçadas rumo à porta. O passo é de saída, e é um só.",
+   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "pegadas",
@@ -7749,10 +7749,10 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -7762,8 +7762,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Thomas Roberts foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Granja guarda o dia em que o acharam. No cômodo, tapete de retalhos, o relógio da família, range de ferro a carvão; o desarrumado corre de um canto a outro; há mobília por erguer do chão; há mobília por erguer do chão; há mobília por erguer do chão.",
-    "Junto do corpo, deixado onde caiu, o achado que a vila inteira comenta: [[gen_instrumento]].",
+    "A Granja guarda o dia em que o acharam. No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "Junto do corpo, no chão: [[gen_instrumento]].",
     "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": [
@@ -7771,7 +7771,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Desde a última visita, alguma coisa mudou por aqui. [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]"
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]"
      ]
     },
     {
@@ -7793,7 +7793,7 @@ export const CASOS_POOL = [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -7804,7 +7804,7 @@ export const CASOS_POOL = [
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória."
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância."
    ],
    "blocosContingentes": []
   }
@@ -8758,7 +8758,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -8776,7 +8776,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Wrenfield, e como homem que sabe o tamanho do que não sabe. Thomas Roberts, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Thomas Roberts, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Harrow, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -8794,7 +8794,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Wrenfield",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -8819,12 +8819,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Joseph Thomas — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dele? Joseph Thomas — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
     "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [
@@ -8943,7 +8943,7 @@ export const CASOS_POOL = [
    "nome": "Charles Evans",
    "idade": 44,
    "relacao": "Ferreiro; mora no Cottage nº 2",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Mede a noite por sinos e canecas, nunca pelo relógio."
   },
   {
    "id": "gen_1_medico",
@@ -8957,21 +8957,21 @@ export const CASOS_POOL = [
    "nome": "Rose Wilson",
    "idade": 42,
    "relacao": "Criada; mora na Taverna",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Responde de olhos no chão, uma palavra por vez."
   },
   {
    "id": "gen_2_lavrador",
    "nome": "Walter Walker",
    "idade": 32,
    "relacao": "Lavrador; mora no Cottage nº 1",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Mede a noite por sinos e canecas, nunca pelo relógio."
   },
   {
    "id": "gen_4_lavrador",
    "nome": "William Brown",
    "idade": 14,
    "relacao": "Lavrador; mora no Cottage nº 3",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Responde de olhos no chão, uma palavra por vez."
   }
  ],
  "cartas": [
@@ -9039,7 +9039,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa. As manchas, porém, guardam o desenho de outra postura: assentaram do lado que ora fica para cima.",
+     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -9051,7 +9051,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou. As manchas, porém, guardam o desenho de outra postura: assentaram do lado que ora fica para cima.",
+     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou. As manchas assentaram do lado que ora fica para cima.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -9067,7 +9067,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "O Sulco no Pescoço",
    "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um sulco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -9080,7 +9080,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -9094,7 +9094,7 @@ export const CASOS_POOL = [
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 21h00 de 13/out",
-   "descricao": "Do registro da ronda consta Rose Evans com vida às 21h00 de 13/out. Depois dessa hora, ninguém mais a encontrou em pé.",
+   "descricao": "Do registro da ronda consta Rose Evans com vida às 21h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-la.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -9107,7 +9107,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão da morta, e o dono tem nome na vila: George Williams.",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: George Williams.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -9119,9 +9119,9 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "Sangue que Não É da Vítima",
+   "textoDisplay": "O Rastro de Gotas",
    "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas de sangue a passos do corpo, num caminho que a morta não fez. Alguém saiu dali ferido, e andando.",
+   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas da morta não sangraram nesse caminho.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -9135,7 +9135,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de George Williams",
-   "descricao": "Uma caderneta de fiado soma a dívida de George Williams para com Rose Evans, vencida e cobrada por carta.",
+   "descricao": "Uma caderneta de dívidas soma o que George Williams deve a Rose Evans, vencido e cobrado por carta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -9236,10 +9236,10 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama cozinha, vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama cozinha, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -9249,8 +9249,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Rose Evans foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "Casa do Médico guarda o dia em que o acharam. No cômodo, range de ferro a carvão, mesa de cozinha, cama de armação de madeira; o desarrumado corre de um canto a outro; há mobília por erguer do chão; há mobília por erguer do chão.",
-    "Junto do corpo, deixado onde caiu, o achado que a vila inteira comenta: [[gen_instrumento]].",
+    "A Casa do Médico guarda o dia em que a acharam. No cômodo, fogão de ferro a carvão, mesa de cozinha; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "Junto do corpo, no chão: [[gen_instrumento]].",
     "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": []
@@ -9265,7 +9265,7 @@ export const CASOS_POOL = [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -9276,7 +9276,7 @@ export const CASOS_POOL = [
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória."
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância."
    ],
    "blocosContingentes": []
   }
@@ -10230,7 +10230,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -10248,7 +10248,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Marlow Green, e como homem que sabe o tamanho do que não sabe. Rose Evans, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Rose Evans, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Fenwick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -10266,7 +10266,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Marlow Green",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Marlow Green estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Marlow Green estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -10291,12 +10291,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dela? George Williams — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dela? George Williams — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
     "pergunta": "A morta tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [
@@ -10339,14 +10339,14 @@ export const CASOS_POOL = [
    "nome": "Arthur Evans",
    "idade": 33,
    "relacao": "Alfaiate; mora no Cottage nº 4",
-   "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
+   "descricao": "Começa pela resposta e acaba na vida alheia."
   },
   {
    "id": "gen_5_criada",
    "nome": "Emily Brown",
    "idade": 24,
    "relacao": "Criada; mora na Taverna",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Responde de olhos no chão, uma palavra por vez."
   },
   {
    "id": "gen_1_taverneiro",
@@ -10360,14 +10360,14 @@ export const CASOS_POOL = [
    "nome": "Joseph Roberts",
    "idade": 59,
    "relacao": "Lavrador; mora no Cottage nº 2",
-   "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
+   "descricao": "Não há pergunta curta que devolva curta."
   },
   {
    "id": "gen_3_lavrador",
    "nome": "Thomas Jones",
    "idade": 43,
    "relacao": "Lavrador; mora no Cottage nº 3",
-   "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
+   "descricao": "Começa pela resposta e acaba na vida alheia."
   }
  ],
  "cartas": [
@@ -10476,7 +10476,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -10490,7 +10490,7 @@ export const CASOS_POOL = [
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 01h00 de 14/out",
-   "descricao": "Do registro da ronda consta Emily Williams com vida às 01h00 de 14/out. Depois dessa hora, ninguém mais a encontrou em pé.",
+   "descricao": "Do registro da ronda consta Emily Williams com vida às 01h00 de 14/out; depois dessa hora, linha nenhuma torna a nomeá-la.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -10503,7 +10503,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão da morta, e o dono tem nome na vila: Thomas Jones.",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Thomas Jones.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -10517,7 +10517,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "Pegadas Rumo à Porta",
    "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Meias-solas impressas em sangue, espaçadas rumo à porta. O passo é de saída, e é um só.",
+   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "pegadas",
@@ -10531,7 +10531,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Thomas Jones",
-   "descricao": "A ordem de despejo do cottage de Thomas Jones leva a assinatura de Emily Williams.",
+   "descricao": "A ordem de despejo do cottage de Thomas Jones veio no rasto de queixa que Emily Williams levou ao senhorio.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -10666,7 +10666,7 @@ export const CASOS_POOL = [
    "id": "corpo",
    "rotuloMesa": "O Corpo",
    "titulo": "O Corpo — A Escola",
-   "subtitulo": "Emily Williams, professora de vila, 25 anos",
+   "subtitulo": "Emily Williams, mestra-escola, 25 anos",
    "acoesEspeciais": [
     "termometro"
    ],
@@ -10678,10 +10678,10 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama quarto, vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama quarto, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -10691,15 +10691,15 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Emily Williams foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Escola guarda o dia em que o acharam. No cômodo, carteiras enfileiradas, quadro de ardósia, range de ferro a carvão; o desarrumado corre de um canto a outro; há mobília por erguer do chão; há mobília por erguer do chão; há mobília por erguer do chão.",
-    "Junto do corpo, deixado onde caiu, o achado que a vila inteira comenta: [[gen_instrumento]]."
+    "A Escola guarda o dia em que a acharam. No cômodo, cama de armação de madeira, lavatório com bacia; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "Junto do corpo, no chão: [[gen_instrumento]]."
    ],
    "blocosContingentes": [
     {
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Desde a última visita, alguma coisa mudou por aqui. [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]"
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]"
      ]
     },
     {
@@ -10721,7 +10721,7 @@ export const CASOS_POOL = [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -10732,7 +10732,7 @@ export const CASOS_POOL = [
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória."
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância."
    ],
    "blocosContingentes": []
   }
@@ -11686,7 +11686,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -11704,7 +11704,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate, e como homem que sabe o tamanho do que não sabe. Emily Williams, professora de vila desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Emily Williams, mestra-escola desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -11722,7 +11722,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -11732,7 +11732,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Roderick",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Emily Williams, 25 anos, professora de vila. Achada morta na Escola. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Emily Williams, 25 anos, mestra-escola. Achada morta na Escola. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -11747,12 +11747,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Mulher de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
+    "resposta": "\"Mulher de poucas companhias. O que houver, a vila sabe antes de mim.\""
    },
    {
     "id": "desafetos",
     "pergunta": "A morta tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [
@@ -11871,35 +11871,35 @@ export const CASOS_POOL = [
    "nome": "Alice Jones",
    "idade": 41,
    "relacao": "Taverneira; mora na Taverna",
-   "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
+   "descricao": "Começa pela resposta e acaba na vida alheia."
   },
   {
    "id": "gen_0_lavrador",
    "nome": "James Thomas",
    "idade": 28,
    "relacao": "Lavrador; mora no Cottage nº 5",
-   "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
+   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
   },
   {
    "id": "gen_3_lavrador",
    "nome": "Joseph Roberts",
    "idade": 25,
    "relacao": "Lavrador; mora no Cottage nº 1",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Responde de olhos no chão, uma palavra por vez."
   },
   {
    "id": "gen_5_lavrador",
    "nome": "William Taylor",
    "idade": 52,
    "relacao": "Lavrador; mora no Cottage nº 3",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Espera a pergunta acabar de todo antes de abrir a boca."
   },
   {
    "id": "gen_4_lavrador",
    "nome": "William Wilson",
    "idade": 36,
    "relacao": "Lavrador; mora no Cottage nº 2",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Espera a pergunta acabar de todo antes de abrir a boca."
   }
  ],
  "cartas": [
@@ -11995,7 +11995,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "O Sulco no Pescoço",
    "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um sulco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -12008,7 +12008,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "Bordas Vivas",
    "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -12022,7 +12022,7 @@ export const CASOS_POOL = [
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 21h00 de 13/out",
-   "descricao": "Do registro da ronda consta Edith Taylor com vida às 21h00 de 13/out. Depois dessa hora, ninguém mais a encontrou em pé.",
+   "descricao": "Do registro da ronda consta Edith Taylor com vida às 21h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-la.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -12035,7 +12035,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão da morta, e o dono tem nome na vila: William Taylor.",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: William Taylor.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -12049,7 +12049,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de William Taylor",
-   "descricao": "Uma caderneta de fiado soma a dívida de William Taylor para com Edith Taylor, vencida e cobrada por carta.",
+   "descricao": "Uma caderneta de dívidas soma o que William Taylor deve a Edith Taylor, vencido e cobrado por carta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -12138,7 +12138,7 @@ export const CASOS_POOL = [
    "id": "corpo",
    "rotuloMesa": "O Corpo",
    "titulo": "O Corpo — A Escola",
-   "subtitulo": "Edith Taylor, professora de vila, 29 anos",
+   "subtitulo": "Edith Taylor, mestra-escola, 29 anos",
    "acoesEspeciais": [
     "termometro"
    ],
@@ -12150,10 +12150,10 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama sala de aula, vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama sala de aula, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -12163,8 +12163,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Edith Taylor foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Escola guarda o dia em que o acharam. No cômodo, quadro de ardósia, estufa de ferro, carteiras enfileiradas; o desarrumado corre de um canto a outro; há mobília por erguer do chão.",
-    "Junto do corpo, deixado onde caiu, o achado que a vila inteira comenta: [[gen_instrumento]]."
+    "A Escola guarda o dia em que a acharam. No cômodo, quadro de ardósia, estufa de ferro, carteiras enfileiradas; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "Junto do corpo, no chão: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   },
@@ -12178,7 +12178,7 @@ export const CASOS_POOL = [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
-    "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
+    "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
   },
@@ -12189,7 +12189,7 @@ export const CASOS_POOL = [
    "subtitulo": "As casas em volta, as janelas que dão para a rua",
    "acoesEspeciais": [],
    "prosa": [
-    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória."
+    "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância."
    ],
    "blocosContingentes": []
   }
@@ -13143,7 +13143,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco."
+     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -13161,7 +13161,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham, e como homem que sabe o tamanho do que não sabe. Edith Taylor, professora de vila desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Edith Taylor, mestra-escola desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -13179,7 +13179,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.",
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
      "O delegado Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o delegado"
@@ -13189,7 +13189,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Stanmore",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Edith Taylor, 29 anos, professora de vila. Achada morta na Escola. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Edith Taylor, 29 anos, mestra-escola. Achada morta na Escola. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -13204,12 +13204,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Mulher de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
+    "resposta": "\"Mulher de poucas companhias. O que houver, a vila sabe antes de mim.\""
    },
    {
     "id": "desafetos",
     "pergunta": "A morta tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
    }
   ],
   "opcoesPersonagem": [

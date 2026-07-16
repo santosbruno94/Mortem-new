@@ -176,7 +176,7 @@ export const CLASSES_VESTIGIO_INTERFERENCIA = {
     proveniencia: 'docs/kb-medicina-legal/inquerito-e-policia.md (retratação em inquérito: o par de versões é prova por si)',
   },
   dividas_quitadas: {
-    rotulo: 'Dívidas quitadas de repente',
+    rotulo: 'Dívidas quitadas na mesma semana',
     atributo: 'WIS',
     frescor: 'fresco',
     evidenciaDe: ['subornar_testemunha'],
