@@ -37,6 +37,11 @@
 //   papeisDramaticos  : objeto (metadado do gerador, OPCIONAL). Mapa de id de
 //                       entidade → id de papel (src/data/papeis.js). O motor
 //                       jamais o lê; é o casting que o gerador escala (FASE 5).
+//   ecosDoMestre      : objeto (prosa do tutorial, OPCIONAL). A fala do legista
+//                       na retentativa, por código de falha (src/data/
+//                       ecos_mestre.js). { titulo, porCodigo:{ [codigo]:[…] } }.
+//                       O motor jamais o lê; ausente ⇒ sem mestre, sem eco
+//                       (modo procedural, FASE 6).
 //
 // Regra de ouro do schema: NADA de funções no pacote — só dado. Os acessores
 // (obterSuspeito, obterDefinicaoCarta, resolverEstadoCarta…) vivem NESTE
@@ -69,6 +74,7 @@ import { PASSOS_ABERTURA, PERGUNTAS_BRIEFING, OPCOES_PERSONAGEM } from './abertu
 import { PLANTA_RELOJOARIA } from './planta_relojoaria.js';
 import { APARENCIAS_CURADAS, PERSONAGEM_POR_LOCALIDADE } from './aparencias.js';
 import { ELENCO_TUTORIAL } from './papeis.js';
+import { ECOS_MESTRE_TUTORIAL } from './ecos_mestre.js';
 import { HORAS_CHEGADA_CENA, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 
@@ -128,6 +134,10 @@ export function montarPacoteTutorial() {
     // id de entidade → id de papel dramático (src/data/papeis.js). É o casting
     // que o futuro gerador escalará; aqui, o casting anotado do caso-escola.
     papeisDramaticos: { ...ELENCO_TUTORIAL },
+    // Prosa do tutorial (FASE 6), OPCIONAL — o motor jamais a lê. A fala do
+    // legista na retentativa, por código de falha. Ausente ⇒ sem mestre, sem
+    // eco (modo procedural).
+    ecosDoMestre: ECOS_MESTRE_TUTORIAL,
   };
 }
 
@@ -185,6 +195,12 @@ export function obterParametrosCena() {
 // Objeto vazio quando o pacote não traz papéis (modo procedural sem anotação).
 export function obterPapeisDramaticos() {
   return casoCarregado.papeisDramaticos || {};
+}
+
+// Prosa do eco do legista (FASE 6, OPCIONAL): { titulo, porCodigo } ou null
+// quando o pacote não a traz (modo procedural — sem mestre, sem eco).
+export function obterEcosDoMestre() {
+  return casoCarregado.ecosDoMestre || null;
 }
 
 // Resolvedor de estado da carta em função do IPM. É função PURA (opera sobre

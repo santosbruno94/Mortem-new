@@ -14,6 +14,7 @@ import {
   carregarCaso as aplicarCasoNoModulo,
   obterDefinicaoCarta,
   resolverEstadoCarta,
+  obterEcosDoMestre,
 } from '../data/pacote_caso.js';
 import { custoViagem, obterNo } from '../data/mapa.js';
 import { ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
@@ -21,6 +22,7 @@ import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js'
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { ligacaoDeConfrontoEmCena } from '../logic/acusacao.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
+import { derivarEcoDoMestre } from '../logic/ecoMestre.js';
 import { interpolar } from '../logic/interpolar.js';
 
 // Constrói o objeto detective do §12. Há um único perito jogável; o shape
@@ -62,6 +64,11 @@ export function estadoInicialCaso() {
     // ---------------- Mesa e registros ----------------
     cartasRegistradas: [],
     conclusoes: [],
+    // Eco do legista sobre a falha (FASE 6): conclusão de id estável (origem
+    // 'mestre') derivada do veredicto que caiu, na retentativa. null enquanto
+    // não houve queda a comentar. Reanexada a `conclusoes` a cada exame para
+    // sobreviver ao registro de novas cartas. Dado de UI — o motor não lê.
+    ecoMestreFalha: null,
     log: [],
     temperaturaMedida: null,
     posicoesCartas: {},
@@ -467,7 +474,10 @@ export const useJogo = create(
   consolidarLeituraMestre: () => {
     const s = get();
     const base = s.conclusoes.filter((c) => c.origem !== 'mestre');
-    set({ conclusoes: [...base, ...conclusoesDoMestre(s.cartasRegistradas)] });
+    // O eco da falha (FASE 6) também é conclusão do mestre: reanexa-se aqui
+    // para que registrar nova carta não o apague junto com a síntese.
+    const eco = s.ecoMestreFalha ? [s.ecoMestreFalha] : [];
+    set({ conclusoes: [...base, ...conclusoesDoMestre(s.cartasRegistradas), ...eco] });
   },
 
   // ---------------- Ações da Construção da Acusação ----------------
@@ -542,10 +552,20 @@ export const useJogo = create(
   // O perecível ainda não colhido continua degradando nesse intervalo.
   revisarAcusacao: () => {
     const s = get();
+    // FASE 6 — o eco do mestre: da falha que acabou de cair, o legista ganha
+    // UMA fala na Caderneta (leitura de método, nunca autoria). Determinístico:
+    // varia por caso e por perito, como o monólogo. Sem `ecosDoMestre` no
+    // pacote (procedural), derivarEcoDoMestre devolve null e não há eco.
+    const eco = derivarEcoDoMestre(
+      s.veredicto,
+      obterEcosDoMestre(),
+      `${obterCaso().id}|${(s.detective && s.detective.name) || ''}`
+    );
     set({
       veredicto: null,
       overlay: { tipo: 'acusacao', id: null },
       horasJogo: s.horasJogo + CUSTO_REVISAO,
+      ecoMestreFalha: eco,
       log: [
         ...s.log,
         {
@@ -554,6 +574,8 @@ export const useJogo = create(
         },
       ],
     });
+    // Reanexa o eco às conclusões do mestre na Caderneta.
+    get().consolidarLeituraMestre();
   },
     }),
     {
