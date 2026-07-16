@@ -91,8 +91,9 @@ const JANELA_DECLARADA = {
 
 // Rótulos de prédio trazem artigo embutido ("O Solar", "A Taverna",
 // "Cottage nº 2"): as contrações nascem aqui, para a fala nunca colar
-// preposição em artigo cru ("a O Solar").
-function formasDoLugar(rotulo) {
+// preposição em artigo cru ("a O Solar"). Exportada: o montador do pacote
+// (pacote_gerado.js) usa as mesmas formas na abertura e nos suspeitos.
+export function formasDoLugar(rotulo) {
   if (rotulo.startsWith('O ')) {
     const r = rotulo.slice(2);
     return { em: `no ${r}`, a: `ao ${r}`, para: `para o ${r}` };
@@ -112,7 +113,7 @@ function perguntasParadeiro(faixa) {
   const obliqua = {
     noite: '"Costuma recolher-se cedo?"',
     madrugada: '"Tem o sono pesado?"',
-    dia: '"O serviço solta a que horas?"',
+    dia: '"A que horas larga o serviço?"',
   }[faixa];
   return [
     { rotulo: `"Onde esteve ${FAIXA_TXT[faixa]}? Sem rodeios."`, vaiPara: 'b1_firme', tom: 'firme' },
@@ -124,9 +125,10 @@ function perguntasParadeiro(faixa) {
 
 function perguntasArremate(vitima) {
   const quem = vitima.genero === 'feminino' ? `Que mulher era ${vitima.nome}` : `Que homem era ${vitima.nome}`;
+  const ela = vitima.genero === 'feminino' ? 'ela' : 'ele';
   return [
     { rotulo: `"Alguém nesta vila queria mal a ${vitima.nome}. Diga um nome."`, vaiPara: 'b2_firme', tom: 'firme' },
-    { rotulo: `"${quem}, para quem convivia?"`, vaiPara: 'b2_cordial', tom: 'cordial' },
+    { rotulo: `"${quem}, para quem lidava com ${ela} todos os dias?"`, vaiPara: 'b2_cordial', tom: 'cordial' },
     { rotulo: `"Que tratos tinha com ${vitima.nome}? Somas e datas, se as houver."`, vaiPara: 'b2_tecnico', tom: 'tecnico' },
     { rotulo: '"O que anda dizendo a vila?"', vaiPara: 'b2_obliquo', tom: 'obliquo' },
   ];
@@ -147,15 +149,15 @@ const PRIMEIRAS_PALAVRAS = {
     '"Entre um ofício e outro, o tempo é seu. Pergunte."',
   ],
   profissional: [
-    '"Tenho a manhã tomada, {detective.title}, mas isto passa adiante de tudo. Ao seu dispor."',
+    '"Tenho a manhã tomada, {detective.title}, mas isto passa à frente de tudo. Ao seu dispor."',
     '"Adiei o que havia para adiar. Sirva-se do tempo."',
   ],
   comerciante: [
-    '"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor."',
-    '"O negócio espera trancado. Pergunte de uma vez, se faz favor."',
+    '"Deixei o negócio fechado por esta hora. Aproveitemo-la."',
+    '"O negócio espera trancado. Pergunte de uma vez, faça o favor."',
   ],
   artesao: [
-    '"Deixei serviço pela metade na bancada. Seja direto, se puder ser."',
+    '"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser."',
     '"Serviço parado esfria. Pergunte."',
   ],
   lavrador: [
@@ -167,23 +169,23 @@ const PRIMEIRAS_PALAVRAS = {
     '"Com licença. Digo o que souber, e volto ao serviço."',
   ],
   servico_do_condado: [
-    '"De serviço ou fora dele, respondo pela folha. Pergunte."',
+    '"De serviço ou fora dele, respondo pelo livro. Pergunte."',
     '"Respondo como se lavra ocorrência: pelo certo. Pergunte."',
   ],
 };
 
 // A têmpera de idade (guia §8.2): uma frase a mais, quando couber.
 function temperaIdade(pessoa) {
-  if (pessoa.idade <= 19) return ' A voz sai baixa e termina cada frase num "{g:senhor|senhora}".';
+  if (pessoa.idade <= 19) return ' A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro.';
   if (pessoa.idade >= 60) return ' Acrescenta, antes da primeira pergunta: "Na minha idade responde-se uma vez, e certo."';
-  if (pessoa.idade >= 45) return ` Diz do ofício, sem que ninguém pergunte: "É a vida inteira nisto, ${'{detective.title}'}."`;
+  if (pessoa.idade >= 45) return ' Diz do ofício, sem que ninguém pergunte: "É a vida inteira nisto."';
   return '';
 }
 
 // O tique por trait (guia §8.3), como observação de cena na abertura.
 const TIQUE_ABERTURA = {
   medroso: ' Fala baixo e mede a porta antes de cada resposta.',
-  tagarela: ' E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua.',
+  tagarela: ' E emenda, sem pergunta, o frio que fez e o preço do pão.',
   preciso: ' Traz as datas prontas, como quem chega com a caderneta escrita.',
   linha_tempo_nao_confiavel: ' Ao citar a primeira hora, corrige-a no meio da frase.',
 };
@@ -193,11 +195,17 @@ function falaAbertura(ctx) {
   const { pessoa, sal } = ctx;
   let entrada;
   if (pessoa.comportamentos.includes('revela_facil')) {
-    entrada = `${pessoa.nome} entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira.`;
+    entrada = `${pessoa.nome} entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira.`;
   } else if (pessoa.comportamentos.includes('revela_sob_custo')) {
     entrada = `${pessoa.nome} entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem.`;
   } else {
-    entrada = `${pessoa.nome} entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão.`;
+    // Armação distinta da terceira entrada (contra a monotonia entre as
+    // cinco conversas do caso) e gesto por gênero (KB vestuário: a touca
+    // feminina fica atada; o chapéu na mão é gesto de homem).
+    entrada =
+      pessoa.genero === 'feminino'
+        ? `O delegado chama o nome; ${pessoa.nome} entra, senta-se e ajeita as fitas da touca.`
+        : `O delegado chama o nome; ${pessoa.nome} entra e senta-se de chapéu na mão.`;
   }
   const palavras = variante(PRIMEIRAS_PALAVRAS[pessoa.classeSocial] || PRIMEIRAS_PALAVRAS.lavrador, `${sal}|abertura`);
   const tique = TIQUE_ABERTURA[ctx.trait] || '';
@@ -220,7 +228,7 @@ const TENTO_RESSONANTE = {
   medroso: ' A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa.',
   preciso: ' E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora.',
   tagarela: ' No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido.',
-  linha_tempo_nao_confiavel: ' Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta.',
+  linha_tempo_nao_confiavel: ' Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma.',
 };
 
 function falaB1(ctx, tom) {
@@ -251,47 +259,81 @@ function falaB1(ctx, tom) {
 function falaB2(ctx, tom) {
   const { pessoa, papel, vitima } = ctx;
   const eleVitima = vitima.genero === 'feminino' ? 'ela' : 'ele';
+  const fem = pessoa.genero === 'feminino';
   const saida = {
     gentry: 'Levanta-se pelo próprio aviso. "Se a lei precisar de mais, a casa sabe onde fica."',
-    clero: 'Ergue-se e alisa a batina. "A paróquia fica às ordens."',
-    profissional: 'Toma o chapéu. "O inquérito sabe onde me encontrar."',
-    comerciante: 'Toma o chapéu do joelho. "O negócio não se guarda sozinho."',
+    // KB vestuário: sobrecasaca clerical de pároco anglicano, não batina.
+    clero: 'Ergue-se e alisa a sobrecasaca. "A paróquia fica às ordens."',
+    profissional: fem
+      ? 'Recolhe as luvas. "O inquérito sabe onde me encontrar."'
+      : 'Toma o chapéu. "O inquérito sabe onde me encontrar."',
+    comerciante: fem
+      ? 'Ajeita o xale sobre os ombros. "O negócio não se guarda sozinho."'
+      : 'Levanta-se e abotoa o casaco. "O negócio não se guarda sozinho."',
     artesao: 'Levanta-se sem esperar licença. "O serviço ficou aceso."',
-    lavrador: 'Levanta-se devagar. "Se é tudo, a lida espera."',
+    lavrador: 'Levanta-se devagar. "Se é tudo, volto à lida."',
     criadagem: 'Levanta-se e alisa o avental. "Com licença, que a casa não para."',
     servico_do_condado: 'Levanta-se e ajeita o cinturão. "A ronda não espera."',
   }[pessoa.classeSocial] || 'Levanta-se devagar e espera que o dispensem.';
 
+  // Macrogrupo de classe: o arranque do corpo varia por ele (a célula da
+  // grade tem de ser reconhecível de nome coberto — guia §8.4).
+  const grupo = ['gentry', 'clero', 'profissional'].includes(pessoa.classeSocial)
+    ? 'alto'
+    : ['comerciante', 'artesao'].includes(pessoa.classeSocial)
+      ? 'oficio'
+      : 'chao';
   let corpo;
   if (papel === 'reu') {
     corpo = {
-      firme: `"Nome eu não dou, ${'{detective.title}'}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora."`,
+      firme: `"Nome nenhum me cabe dar, ${'{detective.title}'}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora."`,
       cordial: `"${vitima.nome} era do trato de todos os dias; eu ${vitima.genero === 'feminino' ? 'a' : 'o'} conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo."`,
       tecnico: `"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta."`,
-      obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala."`,
+      obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo."`,
     }[tom];
   } else if (papel === 'testemunha') {
     corpo = {
       firme: `"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira."`,
-      cordial: `"${vitima.nome} era d${vitima.genero === 'feminino' ? 'as' : 'os'} que se cumprimentam na rua. O que sei do resto está na folha do guarda, tal e qual."`,
+      cordial: `"${vitima.nome} era d${vitima.genero === 'feminino' ? 'as' : 'os'} que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual."`,
       tecnico: `"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito."`,
       obliquo: `"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo."`,
     }[tom];
   } else {
     corpo = {
-      firme: `"Nome não dou, que não o tenho. Desafeto declarado de ${vitima.nome} eu não conhecia."`,
-      cordial: `"${vitima.nome}? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos."`,
-      tecnico: `"Tratos meus com ${eleVitima}, poucos e pagos. Se há soma pendente em algum livro, o livro que fale."`,
-      obliquo: `"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê."`,
+      firme: {
+        alto: `"Nomes não aponto. Desafeto declarado de ${vitima.nome}, não me constou nenhum."`,
+        oficio: `"Nome não tenho que dar. Se ${vitima.nome} tinha desafeto, não foi freguês meu."`,
+        chao: `"Nome não dou, que não o tenho. Desafeto declarado de ${vitima.nome} eu não conhecia."`,
+      }[grupo],
+      cordial: {
+        alto: `"${vitima.nome}? Trato de cumprimento, e pontual no banco da igreja, ao que se via."`,
+        oficio: `"${vitima.nome}? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado."`,
+        chao: `"${vitima.nome}? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos."`,
+      }[grupo],
+      tecnico: {
+        alto: `"Tratos, os de vizinho de terra; nada em papel que um inquérito leia."`,
+        oficio: `"Tratos meus com ${eleVitima}, poucos e pagos. Se há soma pendente em algum livro, o livro que fale."`,
+        chao: `"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu."`,
+      }[grupo],
+      obliquo: {
+        alto: `"A vila diz o que sempre disse; desta casa não sai eco."`,
+        oficio: `"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê."`,
+        chao: `"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha."`,
+      }[grupo],
     }[tom];
   }
+  // O tento do réu com linha do tempo NÃO pode desmenti-lo (spec §8.6):
+  // ganha versão que preserva o trait sem cruzamento feito pelo narrador.
   const tento =
     tom === ctx.tomRessonante
       ? {
           medroso: ' Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer.',
-          preciso: ' Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata.',
-          tagarela: ' Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana.',
-          linha_tempo_nao_confiavel: ' Na despedida, cita a mesma hora de antes, e a hora vem diferente.',
+          preciso: ' Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato.',
+          tagarela: ' Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada.',
+          linha_tempo_nao_confiavel:
+            papel === 'reu'
+              ? ' Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez.'
+              : ' Na despedida, cita a mesma hora de antes, e a hora vem diferente.',
         }[ctx.trait] || ''
       : '';
   return [`${corpo} ${saida}${tento}`];
@@ -315,12 +357,19 @@ function cartaDeAlibi(ctx) {
 
   let falaDeclarada;
   if (faixa === 'dia') {
+    // Redação neutra de classe ("serviço de porta para dentro" é idioma
+    // de criadagem) e partilhada entre inocente caseiro e réu — sem
+    // assinatura de template.
     falaDeclarada =
       lugarDeclarado === moradia
-        ? `"Do meio-dia às seis estive em casa, ${forma.em}, de serviço de porta para dentro."`
+        ? `"Do meio-dia às seis estive em casa, ${forma.em}, e de porta para fora não pus o pé."`
         : `"Do meio-dia às seis estive ${forma.em}, no serviço. Quem lá esteve me viu."`;
   } else if (mentiraDeCena) {
-    falaDeclarada = `"Recolhi-me cedo ${formaMoradia.a}, antes das oito, e de lá não saí até a manhã."`;
+    // MESMA redação do ramo inocente-caseiro (abaixo): fraseado exclusivo
+    // do réu seria assinatura tipográfica — o jogador acharia o réu
+    // comparando as cinco cartas, não cruzando provas. A mentira está no
+    // LUGAR declarado, e cai por confronto, como a de Silas.
+    falaDeclarada = `"Recolhi-me ${formaMoradia.a} às oito e não tornei a sair antes de clarear."`;
   } else if (lugarDeclarado === moradia) {
     falaDeclarada = `"Recolhi-me ${forma.a} às oito e não tornei a sair antes de clarear."`;
   } else {
@@ -329,7 +378,9 @@ function cartaDeAlibi(ctx) {
 
   const titulo = { noite: 'A Noite', madrugada: 'A Madrugada', dia: 'A Tarde' }[faixa];
   const fecho = variante(
-    ['Tomado por termo na delegacia, na letra do escrevente.', 'Declarado na sala do expediente, diante do delegado.'],
+    // KB inquérito §2: quem escreve o termo na estação de vila é o próprio
+    // guarda/delegado — não há escrevente civil lotado ali em 1893.
+    ['Tomado por termo na delegacia, pela mão do guarda.', 'Declarado na sala do expediente, diante do delegado.'],
     `${sal}|alibi|fecho`
   );
   return {
@@ -371,7 +422,7 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
     if (classe === 'instrumento_guardado_umido') {
       return {
         pergunta: `[${td}] Por que a peça foi guardada lavada, com a junta ainda úmida?`,
-        reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz a mesa; casa também com metade das bancadas do condado." E devolve a resposta no mesmo passo das outras.`,
+        reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado." E devolve a resposta no mesmo passo das outras.`,
       };
     }
     return {
@@ -382,13 +433,13 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   if (t.pertenceA === pessoa.id && t.subDominio === 'objeto_pessoal') {
     return {
       pergunta: `[${td}] Por que o par disto está entre as suas coisas?`,
-      reacao: `${pessoa.nome} vira o achado nos dedos uma vez e o pousa. "Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão do morto, isso pergunte a quem o pôs lá." E o empurra de volta pela mesa, devagar.`,
+      reacao: `${pessoa.nome} vira o achado nos dedos uma vez e o pousa. "Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá." E o empurra de volta pela mesa, devagar.`,
     };
   }
   if (t.pertenceA === pessoa.id && t.subDominio === 'rastro_de_dinheiro') {
     return {
       pergunta: `[${td}] Por que soberanos novos, contados à vista de todos?`,
-      reacao: `${pessoa.nome} não conta a moeda de novo. "Dinheiro contado à vista tem menos vergonha que dinheiro escondido. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito."`,
+      reacao: `${pessoa.nome} não conta a moeda de novo. "Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito."`,
     };
   }
   if (t.pertenceA === pessoa.id && t.subDominio === 'fuga_apressada') {
@@ -402,13 +453,13 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   if (carta.origemTestemunha === pessoa.id && t.subDominio === 'ultima_vez_visto') {
     return {
       pergunta: `[${td}] A que horas, exatamente, viu a vítima com vida?`,
-      reacao: `${pessoa.nome} repete a hora sem mudar uma palavra do termo. "Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha." E deixa que o papel diga o resto.`,
+      reacao: `${pessoa.nome} responde sem pedir o termo para ler. "Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha." E deixa que o papel diga o resto.`,
     };
   }
   if (carta.origemTestemunha === pessoa.id && t.subDominio === 'ruido_ouvido') {
     return {
       pergunta: `[${td}] O que exatamente a parede deixou passar naquela hora?`,
-      reacao: `${pessoa.nome} conta de novo, na mesma ordem. "Pancada primeiro, móvel arrastado depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente."`,
+      reacao: `${pessoa.nome} conta de novo, na mesma ordem. "Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente."`,
     };
   }
   return null;

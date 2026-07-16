@@ -32,35 +32,35 @@ export const CASO_REPLICA = {
    "id": "gen_3_moleiro",
    "nome": "John Wilson",
    "idade": 55,
-   "relacao": "Moleiro; mora em O Moinho",
+   "relacao": "Moleiro; mora no Moinho",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_1_criada",
    "nome": "Mary Walker",
    "idade": 24,
-   "relacao": "Criada; mora em A Taverna",
+   "relacao": "Criada; mora na Taverna",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_5_paroco",
    "nome": "Thomas Jones",
    "idade": 68,
-   "relacao": "Pároco; mora em O Presbitério",
+   "relacao": "Pároco; mora no Presbitério",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_2_ferreiro",
    "nome": "Walter Williams",
    "idade": 35,
-   "relacao": "Ferreiro; mora em Cottage nº 1",
+   "relacao": "Ferreiro; mora no Cottage nº 1",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   },
   {
    "id": "gen_0_lavrador",
    "nome": "William Smith",
    "idade": 27,
-   "relacao": "Lavrador; mora em Cottage nº 4",
+   "relacao": "Lavrador; mora no Cottage nº 4",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   }
  ],
@@ -184,7 +184,7 @@ export const CASO_REPLICA = {
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 19h00 de 13/out",
-   "descricao": "Do registro da ronda consta Ada Thomas com vida às 19h00 de 13/out. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Do registro da ronda consta Ada Thomas com vida às 19h00 de 13/out. Depois dessa hora, ninguém mais a encontrou em pé.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -197,7 +197,7 @@ export const CASO_REPLICA = {
    "suporteFisico": "pertences_do_reu",
    "textoDisplay": "O Lugar Vazio",
    "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Mary Walker, um vão limpo no meio do pó: falta ali a peça cujo feitio casa com a lesão do morto.",
+   "descricao": "Entre as coisas de ofício de Mary Walker, um vão limpo no meio do pó: falta ali a peça cujo feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -211,7 +211,7 @@ export const CASO_REPLICA = {
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Mary Walker",
-   "descricao": "Ada Thomas negou a Mary Walker a carta de referência; sem ela, casa nenhuma o toma a serviço.",
+   "descricao": "Ada Thomas negou a Mary Walker a carta de referência; sem ela, casa nenhuma a toma a serviço.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -239,7 +239,7 @@ export const CASO_REPLICA = {
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Mary Walker",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -254,7 +254,7 @@ export const CASO_REPLICA = {
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Thomas Jones",
    "carimboPadrao": "Paradeiro declarado: A Escola (sexta à noite)",
-   "descricao": "\"Estive na Escola das oito às onze; dali fui direto para o Presbitério, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Estive na Escola das oito às onze; dali fui direto para o Presbitério, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -284,7 +284,7 @@ export const CASO_REPLICA = {
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Smith",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -312,9 +312,9 @@ export const CASO_REPLICA = {
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama quarto (sobrado), vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama quarto (sobrado), vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
    ]
   },
@@ -322,7 +322,7 @@ export const CASO_REPLICA = {
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
    "titulo": "A Cena — A Mercearia",
-   "subtitulo": "Onde Ada Thomas foi achado",
+   "subtitulo": "Onde Ada Thomas foi achada",
    "acoesEspeciais": [],
    "prosa": [
     "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras frias da despensa, pia da copa, lavatório com bacia; o desarrumado corre de um canto a outro; a madeira do assoalho cheira a soda cáustica; uma peça de mobília repousa sobre o próprio arranhão."
@@ -336,7 +336,7 @@ export const CASO_REPLICA = {
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
+    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
@@ -419,7 +419,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "John Wilson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "John Wilson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -461,7 +461,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -479,7 +479,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ada Thomas eu não conhecia.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Se Ada Thomas tinha desafeto, não foi freguês meu.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -494,7 +494,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -512,7 +512,7 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Ada Thomas? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Ada Thomas? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -527,7 +527,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -545,7 +545,7 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -560,7 +560,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -578,7 +578,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     }
@@ -652,7 +652,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -670,7 +670,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -685,7 +685,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -718,7 +718,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -751,7 +751,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -769,7 +769,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -788,7 +788,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "Thomas Jones entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"A paróquia está às ordens do inquérito. Pergunte.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Thomas Jones entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A paróquia está às ordens do inquérito. Pergunte.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -830,7 +830,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -848,7 +848,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ada Thomas eu não conhecia.\" Ergue-se e alisa a batina. \"A paróquia fica às ordens.\""
+      "\"Nomes não aponto. Desafeto declarado de Ada Thomas, não me constou nenhum.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -863,7 +863,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -881,7 +881,7 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Ada Thomas? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Ergue-se e alisa a batina. \"A paróquia fica às ordens.\""
+      "\"Ada Thomas? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -896,7 +896,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -914,7 +914,7 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Ergue-se e alisa a batina. \"A paróquia fica às ordens.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -929,7 +929,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -947,7 +947,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Ergue-se e alisa a batina. \"A paróquia fica às ordens.\""
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     }
@@ -966,7 +966,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "Walter Williams entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Serviço parado esfria. Pergunte.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; Walter Williams entra e senta-se de chapéu na mão. \"Serviço parado esfria. Pergunte.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -999,7 +999,7 @@ export const CASO_REPLICA = {
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -1008,7 +1008,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1026,7 +1026,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ada Thomas eu não conhecia.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não tenho que dar. Se Ada Thomas tinha desafeto, não foi freguês meu.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -1041,7 +1041,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1059,7 +1059,7 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Ada Thomas? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Ada Thomas? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -1074,7 +1074,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1107,7 +1107,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1144,7 +1144,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "William Smith entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "O delegado chama o nome; William Smith entra e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -1186,7 +1186,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1204,7 +1204,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ada Thomas eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Ada Thomas eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -1219,7 +1219,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1237,7 +1237,7 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Ada Thomas? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Ada Thomas? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -1252,7 +1252,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1270,7 +1270,7 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -1285,7 +1285,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Thomas, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Thomas, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1303,7 +1303,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -1339,7 +1339,7 @@ export const CASO_REPLICA = {
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Wrenfield, e como homem que sabe o tamanho do que não sabe. Ada Thomas, merceeira desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Wrenfield, e como homem que sabe o tamanho do que não sabe. Ada Thomas, merceeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -1367,7 +1367,7 @@ export const CASO_REPLICA = {
     "titulo": "O relato do delegado Roderick",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Ada Thomas, 39 anos, merceeira. Achado morto em A Mercearia. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Ada Thomas, 39 anos, merceeira. Achada morta na Mercearia. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -1382,12 +1382,12 @@ export const CASO_REPLICA = {
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Homem de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
+    "resposta": "\"Mulher de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
    },
    {
     "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "pergunta": "A morta tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
    }
   ],
   "opcoesPersonagem": [
@@ -1431,35 +1431,35 @@ export const CASOS_POOL = [
    "id": "gen_5_criada",
    "nome": "Alice Thomas",
    "idade": 20,
-   "relacao": "Criada; mora em A Taverna",
+   "relacao": "Criada; mora na Taverna",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_2_lavrador",
    "nome": "George Evans",
    "idade": 43,
-   "relacao": "Lavrador; mora em Cottage nº 1",
+   "relacao": "Lavrador; mora no Cottage nº 1",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   },
   {
    "id": "gen_4_constable",
    "nome": "George Smith",
    "idade": 21,
-   "relacao": "Constable do condado; mora em A Delegacia",
+   "relacao": "Constable do condado; mora na Delegacia",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_1_boticario",
    "nome": "James Jones",
    "idade": 57,
-   "relacao": "Boticário; mora em A Botica",
+   "relacao": "Boticário; mora na Botica",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_0_costureira",
    "nome": "Martha Roberts",
    "idade": 56,
-   "relacao": "Costureira; mora em Cottage nº 4",
+   "relacao": "Costureira; mora no Cottage nº 4",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   }
  ],
@@ -1623,7 +1623,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Alice Thomas",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -1638,7 +1638,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de George Evans",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -1653,7 +1653,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de George Smith",
    "carimboPadrao": "Paradeiro declarado: A Delegacia (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Delegacia às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Delegacia às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -1668,7 +1668,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de James Jones",
    "carimboPadrao": "Paradeiro declarado: A Botica (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -1683,7 +1683,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Martha Roberts",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -1860,7 +1860,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1893,7 +1893,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1926,7 +1926,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1944,7 +1944,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -1959,7 +1959,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -1977,7 +1977,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -1996,7 +1996,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "George Evans entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "O delegado chama o nome; George Evans entra e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -2038,7 +2038,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2056,7 +2056,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Brown eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Brown eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -2071,7 +2071,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2089,7 +2089,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Brown? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Henry Brown? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -2104,7 +2104,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2122,7 +2122,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -2137,7 +2137,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2155,7 +2155,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -2174,7 +2174,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "George Smith entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"De serviço ou fora dele, respondo pela folha. Pergunte.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; George Smith entra e senta-se de chapéu na mão. \"De serviço ou fora dele, respondo pelo livro. Pergunte.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -2216,7 +2216,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2249,7 +2249,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2282,7 +2282,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2300,7 +2300,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -2315,7 +2315,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2333,7 +2333,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\""
      ],
      "opcoes": []
     }
@@ -2359,7 +2359,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Jones entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "James Jones entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -2392,7 +2392,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "James Jones responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz a mesa; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "James Jones responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -2407,7 +2407,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2425,7 +2425,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -2440,7 +2440,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2458,7 +2458,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Brown era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Henry Brown era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -2473,7 +2473,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2491,7 +2491,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -2506,7 +2506,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2524,7 +2524,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     }
@@ -2543,7 +2543,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Martha Roberts entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Deixei serviço pela metade na bancada. Seja direto, se puder ser.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "O delegado chama o nome; Martha Roberts entra, senta-se e ajeita as fitas da touca. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -2585,7 +2585,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2603,7 +2603,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Brown eu não conhecia.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome não tenho que dar. Se Henry Brown tinha desafeto, não foi freguês meu.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -2618,7 +2618,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2636,7 +2636,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Brown? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Henry Brown? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -2651,7 +2651,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2684,7 +2684,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Brown, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Brown, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -2702,7 +2702,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -2766,7 +2766,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Roderick",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Henry Brown, 47 anos, merceeiro. Achado morto em A Mercearia. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Henry Brown, 47 anos, merceeiro. Achado morto na Mercearia. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -2828,35 +2828,35 @@ export const CASOS_POOL = [
    "id": "gen_4_criada",
    "nome": "Annie Thomas",
    "idade": 28,
-   "relacao": "Criada; mora em A Taverna",
+   "relacao": "Criada; mora na Taverna",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_0_constable",
    "nome": "Ernest Jones",
    "idade": 31,
-   "relacao": "Constable do condado; mora em A Delegacia",
+   "relacao": "Constable do condado; mora na Delegacia",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_3_lavrador",
    "nome": "George Taylor",
    "idade": 44,
-   "relacao": "Lavrador; mora em Cottage nº 2",
+   "relacao": "Lavrador; mora no Cottage nº 2",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   },
   {
    "id": "gen_6_lavrador",
    "nome": "James Brown",
    "idade": 49,
-   "relacao": "Lavrador; mora em Cottage nº 3",
+   "relacao": "Lavrador; mora no Cottage nº 3",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_1_medico",
    "nome": "William Roberts",
    "idade": 45,
-   "relacao": "Médico rural; mora em Casa do Médico",
+   "relacao": "Médico rural; mora na Casa do Médico",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   }
  ],
@@ -2980,7 +2980,7 @@ export const CASOS_POOL = [
    "origemTestemunha": "gen_4_criada",
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 21h00 de 13/out",
-   "descricao": "Annie Thomas esteve com Ada Jones às 21h00 de 13/out, e o declara à ronda. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Annie Thomas esteve com Ada Jones às 21h00 de 13/out, e o declara à ronda. Depois dessa hora, ninguém mais a encontrou em pé.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -2993,7 +2993,7 @@ export const CASOS_POOL = [
    "suporteFisico": "pertences_do_reu",
    "textoDisplay": "O Instrumento Úmido",
    "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de James Brown, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão do morto.",
+   "descricao": "Entre os pertences de James Brown, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -3007,7 +3007,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "Sangue que Não É da Vítima",
    "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas de sangue a passos do corpo, num caminho que o morto não fez. Alguém saiu dali ferido, e andando.",
+   "descricao": "Gotas de sangue a passos do corpo, num caminho que a morta não fez. Alguém saiu dali ferido, e andando.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -3083,7 +3083,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Annie Thomas",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3113,7 +3113,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de George Taylor",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3128,7 +3128,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de James Brown",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
-   "descricao": "\"Recolhi-me cedo ao Cottage nº 3, antes das oito, e de lá não saí até a manhã.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3143,7 +3143,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Roberts",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3171,9 +3171,9 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama taproom, vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama taproom, vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
    ]
   },
@@ -3181,7 +3181,7 @@ export const CASOS_POOL = [
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
    "titulo": "A Cena — A Taverna",
-   "subtitulo": "Onde Ada Jones foi achado",
+   "subtitulo": "Onde Ada Jones foi achada",
    "acoesEspeciais": [],
    "prosa": [
     "A Taverna guarda o dia em que o acharam. No cômodo, bacia e jarro, baú de roupa, cama de ferro; o desarrumado corre de um canto a outro; há mobília por erguer do chão.",
@@ -3196,7 +3196,7 @@ export const CASOS_POOL = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
+    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
@@ -3340,13 +3340,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Annie Thomas repete a hora sem mudar uma palavra do termo. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Annie Thomas responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Annie Thomas conta de novo, na mesma ordem. \"Pancada primeiro, móvel arrastado depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "Annie Thomas conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -3361,7 +3361,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3394,7 +3394,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3412,7 +3412,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ada Jones era das que se cumprimentam na rua. O que sei do resto está na folha do guarda, tal e qual.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Ada Jones era das que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -3427,7 +3427,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3460,7 +3460,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3497,7 +3497,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Ernest Jones entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Respondo como se lavra ocorrência: pelo certo. Pergunte.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Ernest Jones entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Respondo como se lavra ocorrência: pelo certo. Pergunte.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -3539,7 +3539,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3572,7 +3572,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3605,7 +3605,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3623,7 +3623,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -3638,7 +3638,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3656,7 +3656,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\""
      ],
      "opcoes": []
     }
@@ -3675,7 +3675,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "George Taylor entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; George Taylor entra e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -3708,7 +3708,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -3717,7 +3717,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3735,7 +3735,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ada Jones eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Ada Jones eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -3750,7 +3750,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3768,7 +3768,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ada Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Ada Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -3783,7 +3783,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3801,7 +3801,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -3816,7 +3816,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3834,7 +3834,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -3860,7 +3860,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Fala baixo e mede a porta antes de cada resposta."
+      "James Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -3893,7 +3893,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "James Brown responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz a mesa; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "James Brown responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -3908,7 +3908,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3926,7 +3926,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -3941,7 +3941,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3959,7 +3959,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ada Jones era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Ada Jones era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -3974,7 +3974,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3992,7 +3992,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -4007,7 +4007,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -4025,7 +4025,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -4044,7 +4044,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Roberts entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Tenho a manhã tomada, {detective.title}, mas isto passa adiante de tudo. Ao seu dispor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; William Roberts entra e senta-se de chapéu na mão. \"Tenho a manhã tomada, {detective.title}, mas isto passa à frente de tudo. Ao seu dispor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -4086,7 +4086,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -4104,7 +4104,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ada Jones eu não conhecia.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"Nomes não aponto. Desafeto declarado de Ada Jones, não me constou nenhum.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -4119,7 +4119,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -4137,7 +4137,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ada Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"Ada Jones? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -4152,7 +4152,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -4170,7 +4170,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -4185,7 +4185,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Ada Jones, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Ada Jones, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -4203,7 +4203,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     }
@@ -4239,7 +4239,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham, e como homem que sabe o tamanho do que não sabe. Ada Jones, criada desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham, e como homem que sabe o tamanho do que não sabe. Ada Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -4267,7 +4267,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Stanmore",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Ada Jones, 18 anos, criada. Achado morto em A Taverna. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Ada Jones, 18 anos, criada. Achada morta na Taverna. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -4282,12 +4282,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Annie Thomas, James Brown — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dela? Annie Thomas, James Brown — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "pergunta": "A morta tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
    }
   ],
   "opcoesPersonagem": [
@@ -4408,35 +4408,35 @@ export const CASOS_POOL = [
    "id": "gen_2_ferreiro",
    "nome": "Charles Williams",
    "idade": 34,
-   "relacao": "Ferreiro; mora em Cottage nº 1",
+   "relacao": "Ferreiro; mora no Cottage nº 1",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   },
   {
    "id": "gen_3_merceeiro",
    "nome": "Frank Wilson",
    "idade": 35,
-   "relacao": "Merceeiro; mora em A Mercearia",
+   "relacao": "Merceeiro; mora na Mercearia",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_0_lavrador",
    "nome": "Harry Evans",
    "idade": 23,
-   "relacao": "Lavrador; mora em Cottage nº 5",
+   "relacao": "Lavrador; mora no Cottage nº 5",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_7_lavrador",
    "nome": "James Brown",
    "idade": 53,
-   "relacao": "Lavrador; mora em Cottage nº 4",
+   "relacao": "Lavrador; mora no Cottage nº 4",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_6_lavrador",
    "nome": "John Evans",
    "idade": 15,
-   "relacao": "Lavrador; mora em Cottage nº 3",
+   "relacao": "Lavrador; mora no Cottage nº 3",
    "descricao": "Fala baixo e mede a porta antes de responder."
   }
  ],
@@ -4560,7 +4560,7 @@ export const CASOS_POOL = [
    "origemTestemunha": "gen_2_ferreiro",
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 01h00 de 14/out",
-   "descricao": "Charles Williams esteve com Mary Walker às 01h00 de 14/out, e o declara à ronda. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Charles Williams esteve com Mary Walker às 01h00 de 14/out, e o declara à ronda. Depois dessa hora, ninguém mais a encontrou em pé.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -4573,7 +4573,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Pertence Arrancado",
    "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Na mão fechada do morto, um botão de casaco com fio e um triângulo de pano. O casaco de James Brown perdeu o segundo botão.",
+   "descricao": "Na mão fechada da morta, um botão de casaco com fio e um triângulo de pano. O casaco de James Brown perdeu o segundo botão.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "objeto_pessoal",
@@ -4691,7 +4691,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Harry Evans",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -4721,7 +4721,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de John Evans",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -4749,9 +4749,9 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama quartos (sobrado), vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama quartos (sobrado), vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
    ]
   },
@@ -4759,11 +4759,11 @@ export const CASOS_POOL = [
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
    "titulo": "A Cena — A Taverna",
-   "subtitulo": "Onde Mary Walker foi achado",
+   "subtitulo": "Onde Mary Walker foi achada",
    "acoesEspeciais": [],
    "prosa": [
     "A Taverna guarda o dia em que o acharam. No cômodo, cama de ferro, bacia e jarro, cadeiras Windsor.",
-    "Na mão fechada do morto, por abrir desde ontem: [[gen_pertence]]."
+    "Na mão fechada da morta, por abrir desde ontem: [[gen_pertence]]."
    ],
    "blocosContingentes": []
   },
@@ -4774,7 +4774,7 @@ export const CASOS_POOL = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
+    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
@@ -4888,13 +4888,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Charles Williams repete a hora sem mudar uma palavra do termo. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Charles Williams responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -4903,7 +4903,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -4936,7 +4936,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -4954,7 +4954,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Walker era das que se cumprimentam na rua. O que sei do resto está na folha do guarda, tal e qual.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Mary Walker era das que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -4969,7 +4969,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5002,7 +5002,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5039,7 +5039,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Frank Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; Frank Wilson entra e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -5081,7 +5081,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5099,7 +5099,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Walker eu não conhecia.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Se Mary Walker tinha desafeto, não foi freguês meu.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -5114,7 +5114,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5132,7 +5132,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Walker? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Mary Walker? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -5147,7 +5147,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5165,7 +5165,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -5180,7 +5180,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5198,7 +5198,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     }
@@ -5259,7 +5259,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5277,7 +5277,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Walker eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Walker eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -5292,7 +5292,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5310,7 +5310,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Walker? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Mary Walker? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -5325,7 +5325,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5343,7 +5343,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -5358,7 +5358,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5376,7 +5376,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -5407,7 +5407,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Fala baixo e mede a porta antes de cada resposta."
+      "James Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -5440,13 +5440,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_pertence": {
      "fala": [
-      "James Brown vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão do morto, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "James Brown vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
     "reacao_gen_intf_intf_1_soberanos": {
      "fala": [
-      "James Brown não conta a moeda de novo. \"Dinheiro contado à vista tem menos vergonha que dinheiro escondido. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito.\""
+      "James Brown não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito.\""
      ],
      "opcoes": []
     },
@@ -5461,7 +5461,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5479,7 +5479,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -5494,7 +5494,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5512,7 +5512,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Walker era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Mary Walker era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -5527,7 +5527,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5545,7 +5545,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -5560,7 +5560,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5578,7 +5578,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -5597,7 +5597,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "John Evans entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Fala baixo e mede a porta antes de cada resposta."
+      "John Evans entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -5639,7 +5639,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5657,7 +5657,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Walker eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Walker eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -5672,7 +5672,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5690,7 +5690,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Walker? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Mary Walker? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -5705,7 +5705,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5723,7 +5723,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -5738,7 +5738,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Walker, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Mary Walker, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -5756,7 +5756,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -5792,7 +5792,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Colbrook, e como homem que sabe o tamanho do que não sabe. Mary Walker, criada desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Colbrook, e como homem que sabe o tamanho do que não sabe. Mary Walker, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Bexley, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -5820,7 +5820,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Bexley",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Mary Walker, 14 anos, criada. Achado morto em A Taverna. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Mary Walker, 14 anos, criada. Achada morta na Taverna. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -5835,12 +5835,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Charles Williams, John Evans — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dela? Charles Williams, John Evans — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "pergunta": "A morta tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
    }
   ],
   "opcoesPersonagem": [
@@ -5960,35 +5960,35 @@ export const CASOS_POOL = [
    "id": "gen_6_ferreiro",
    "nome": "Charles Jones",
    "idade": 35,
-   "relacao": "Ferreiro; mora em Cottage nº 2",
+   "relacao": "Ferreiro; mora no Cottage nº 2",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_3_squire",
    "nome": "Charles Williams",
    "idade": 53,
-   "relacao": "Squire; mora em O Solar",
+   "relacao": "Squire; mora no Solar",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   },
   {
    "id": "gen_7_criada",
    "nome": "Ethel Taylor",
    "idade": 19,
-   "relacao": "Criada; mora em Casa do Médico",
+   "relacao": "Criada; mora na Casa do Médico",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_0_moleiro",
    "nome": "James Brown",
    "idade": 70,
-   "relacao": "Moleiro; mora em O Moinho",
+   "relacao": "Moleiro; mora no Moinho",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_2_lavrador",
    "nome": "William Evans",
    "idade": 18,
-   "relacao": "Lavrador; mora em Cottage nº 4",
+   "relacao": "Lavrador; mora no Cottage nº 4",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   }
  ],
@@ -6180,7 +6180,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Charles Jones",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -6195,7 +6195,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Charles Williams",
    "carimboPadrao": "Paradeiro declarado: O Solar (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -6373,7 +6373,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Charles Jones entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Deixei serviço pela metade na bancada. Seja direto, se puder ser.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; Charles Jones entra e senta-se de chapéu na mão. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -6406,13 +6406,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Charles Jones repete a hora sem mudar uma palavra do termo. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Charles Jones responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Charles Jones conta de novo, na mesma ordem. \"Pancada primeiro, móvel arrastado depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "Charles Jones conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -6427,7 +6427,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6460,7 +6460,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6478,7 +6478,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Smith era dos que se cumprimentam na rua. O que sei do resto está na folha do guarda, tal e qual.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Henry Smith era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -6493,7 +6493,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6511,7 +6511,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -6526,7 +6526,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6563,7 +6563,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Charles Williams entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Vim porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "Charles Williams entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Vim porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -6605,7 +6605,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6623,7 +6623,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Smith eu não conhecia.\" Levanta-se pelo próprio aviso. \"Se a lei precisar de mais, a casa sabe onde fica.\""
+      "\"Nomes não aponto. Desafeto declarado de Henry Smith, não me constou nenhum.\" Levanta-se pelo próprio aviso. \"Se a lei precisar de mais, a casa sabe onde fica.\""
      ],
      "opcoes": []
     },
@@ -6638,7 +6638,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6656,7 +6656,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se pelo próprio aviso. \"Se a lei precisar de mais, a casa sabe onde fica.\""
+      "\"Henry Smith? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Levanta-se pelo próprio aviso. \"Se a lei precisar de mais, a casa sabe onde fica.\""
      ],
      "opcoes": []
     },
@@ -6671,7 +6671,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6689,7 +6689,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se pelo próprio aviso. \"Se a lei precisar de mais, a casa sabe onde fica.\""
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Levanta-se pelo próprio aviso. \"Se a lei precisar de mais, a casa sabe onde fica.\""
      ],
      "opcoes": []
     },
@@ -6704,7 +6704,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6722,7 +6722,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se pelo próprio aviso. \"Se a lei precisar de mais, a casa sabe onde fica.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Levanta-se pelo próprio aviso. \"Se a lei precisar de mais, a casa sabe onde fica.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -6748,7 +6748,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Ethel Taylor entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Ethel Taylor entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -6781,7 +6781,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_pertence": {
      "fala": [
-      "Ethel Taylor vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão do morto, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Ethel Taylor vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; casaco perde botão onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -6796,7 +6796,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6814,7 +6814,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -6829,7 +6829,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6862,7 +6862,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6880,7 +6880,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -6895,7 +6895,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6913,7 +6913,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -6932,7 +6932,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Brown entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; James Brown entra e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -6974,7 +6974,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -6992,7 +6992,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Smith eu não conhecia.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Se Henry Smith tinha desafeto, não foi freguês meu.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -7007,7 +7007,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7025,7 +7025,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Henry Smith? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -7040,7 +7040,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7058,7 +7058,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -7073,7 +7073,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7091,7 +7091,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     }
@@ -7110,7 +7110,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Evans entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Ao citar a primeira hora, corrige-a no meio da frase."
+      "William Evans entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -7143,7 +7143,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -7152,7 +7152,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7170,7 +7170,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Smith eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Smith eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -7185,7 +7185,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7203,7 +7203,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Henry Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -7218,7 +7218,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7236,7 +7236,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -7251,7 +7251,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Smith, para quem convivia?\"",
+       "rotulo": "\"Que homem era Henry Smith, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7269,7 +7269,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -7333,7 +7333,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Quill",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Henry Smith, 29 anos, ferreiro. Achado morto em A Taverna. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Henry Smith, 29 anos, ferreiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -7395,35 +7395,35 @@ export const CASOS_POOL = [
    "id": "gen_0_criada",
    "nome": "Alice Taylor",
    "idade": 15,
-   "relacao": "Criada; mora em Casa do Médico",
+   "relacao": "Criada; mora na Casa do Médico",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_4_costureira",
    "nome": "Edith Taylor",
    "idade": 27,
-   "relacao": "Costureira; mora em Cottage nº 4",
+   "relacao": "Costureira; mora no Cottage nº 4",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_2_lavadeira",
    "nome": "Elizabeth Smith",
    "idade": 70,
-   "relacao": "Lavadeira; mora em Cottage nº 3",
+   "relacao": "Lavadeira; mora no Cottage nº 3",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   },
   {
    "id": "gen_3_paroco",
    "nome": "John Thomas",
    "idade": 56,
-   "relacao": "Pároco; mora em O Presbitério",
+   "relacao": "Pároco; mora no Presbitério",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_1_lavrador",
    "nome": "Joseph Thomas",
    "idade": 36,
-   "relacao": "Lavrador; mora em Cottage nº 2",
+   "relacao": "Lavrador; mora no Cottage nº 2",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   }
  ],
@@ -7661,7 +7661,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Alice Taylor",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, de serviço de porta para dentro.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7676,7 +7676,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Edith Taylor",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, de serviço de porta para dentro.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7691,7 +7691,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Elizabeth Smith",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, de serviço de porta para dentro.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7706,7 +7706,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de John Thomas",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Igreja, no serviço. Quem lá esteve me viu.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Do meio-dia às seis estive na Igreja, no serviço. Quem lá esteve me viu.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7721,7 +7721,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Joseph Thomas",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 2, de serviço de porta para dentro.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 2, e de porta para fora não pus o pé.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7856,7 +7856,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Alice Taylor entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Alice Taylor entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -7875,7 +7875,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O serviço solta a que horas?\"",
+       "rotulo": "\"A que horas larga o serviço?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -7898,7 +7898,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7931,7 +7931,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7964,7 +7964,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7982,7 +7982,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -7997,7 +7997,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8015,7 +8015,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -8034,7 +8034,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Edith Taylor entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei serviço pela metade na bancada. Seja direto, se puder ser.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Edith Taylor entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -8053,7 +8053,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O serviço solta a que horas?\"",
+       "rotulo": "\"A que horas larga o serviço?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -8076,7 +8076,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8094,7 +8094,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Thomas Roberts eu não conhecia.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome não tenho que dar. Se Thomas Roberts tinha desafeto, não foi freguês meu.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -8109,7 +8109,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8127,7 +8127,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Thomas Roberts? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Thomas Roberts? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -8142,7 +8142,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8160,7 +8160,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -8175,7 +8175,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8231,7 +8231,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O serviço solta a que horas?\"",
+       "rotulo": "\"A que horas larga o serviço?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -8245,7 +8245,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_2_lavadeira]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_2_lavadeira]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -8254,7 +8254,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8287,7 +8287,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8320,7 +8320,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8338,7 +8338,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -8353,7 +8353,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8371,7 +8371,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -8390,7 +8390,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "John Thomas entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"A paróquia está às ordens do inquérito. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "John Thomas entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A paróquia está às ordens do inquérito. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -8409,7 +8409,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O serviço solta a que horas?\"",
+       "rotulo": "\"A que horas larga o serviço?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -8432,7 +8432,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8450,7 +8450,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Thomas Roberts eu não conhecia.\" Ergue-se e alisa a batina. \"A paróquia fica às ordens.\""
+      "\"Nomes não aponto. Desafeto declarado de Thomas Roberts, não me constou nenhum.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -8465,7 +8465,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8483,7 +8483,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Thomas Roberts? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Ergue-se e alisa a batina. \"A paróquia fica às ordens.\""
+      "\"Thomas Roberts? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -8498,7 +8498,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8516,7 +8516,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Ergue-se e alisa a batina. \"A paróquia fica às ordens.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -8531,7 +8531,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8549,7 +8549,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Ergue-se e alisa a batina. \"A paróquia fica às ordens.\""
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     }
@@ -8594,7 +8594,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O serviço solta a que horas?\"",
+       "rotulo": "\"A que horas larga o serviço?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -8614,7 +8614,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -8623,7 +8623,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8641,7 +8641,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -8656,7 +8656,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8674,7 +8674,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Thomas Roberts era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Thomas Roberts era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -8689,7 +8689,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8707,7 +8707,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -8722,7 +8722,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Roberts, para quem convivia?\"",
+       "rotulo": "\"Que homem era Thomas Roberts, para quem lidava com ele todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8740,7 +8740,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -8804,7 +8804,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Harrow",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Thomas Roberts, 32 anos, lavrador. Achado morto em A Granja. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Thomas Roberts, 32 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -8942,35 +8942,35 @@ export const CASOS_POOL = [
    "id": "gen_3_ferreiro",
    "nome": "Charles Evans",
    "idade": 44,
-   "relacao": "Ferreiro; mora em Cottage nº 2",
+   "relacao": "Ferreiro; mora no Cottage nº 2",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   },
   {
    "id": "gen_1_medico",
    "nome": "George Williams",
    "idade": 48,
-   "relacao": "Médico rural; mora em Casa do Médico",
+   "relacao": "Médico rural; mora na Casa do Médico",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_0_criada",
    "nome": "Rose Wilson",
    "idade": 42,
-   "relacao": "Criada; mora em A Taverna",
+   "relacao": "Criada; mora na Taverna",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_2_lavrador",
    "nome": "Walter Walker",
    "idade": 32,
-   "relacao": "Lavrador; mora em Cottage nº 1",
+   "relacao": "Lavrador; mora no Cottage nº 1",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   },
   {
    "id": "gen_4_lavrador",
    "nome": "William Brown",
    "idade": 14,
-   "relacao": "Lavrador; mora em Cottage nº 3",
+   "relacao": "Lavrador; mora no Cottage nº 3",
    "descricao": "Fala baixo e mede a porta antes de responder."
   }
  ],
@@ -9094,7 +9094,7 @@ export const CASOS_POOL = [
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 21h00 de 13/out",
-   "descricao": "Do registro da ronda consta Rose Evans com vida às 21h00 de 13/out. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Do registro da ronda consta Rose Evans com vida às 21h00 de 13/out. Depois dessa hora, ninguém mais a encontrou em pé.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -9107,7 +9107,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão do morto, e o dono tem nome na vila: George Williams.",
+   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão da morta, e o dono tem nome na vila: George Williams.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -9121,7 +9121,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "Sangue que Não É da Vítima",
    "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas de sangue a passos do corpo, num caminho que o morto não fez. Alguém saiu dali ferido, e andando.",
+   "descricao": "Gotas de sangue a passos do corpo, num caminho que a morta não fez. Alguém saiu dali ferido, e andando.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -9163,7 +9163,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de George Williams",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me cedo à Casa do Médico, antes das oito, e de lá não saí até a manhã.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9178,7 +9178,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Rose Wilson",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9236,9 +9236,9 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama cozinha, vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama cozinha, vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
    ]
   },
@@ -9246,7 +9246,7 @@ export const CASOS_POOL = [
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
    "titulo": "A Cena — Casa do Médico",
-   "subtitulo": "Onde Rose Evans foi achado",
+   "subtitulo": "Onde Rose Evans foi achada",
    "acoesEspeciais": [],
    "prosa": [
     "Casa do Médico guarda o dia em que o acharam. No cômodo, range de ferro a carvão, mesa de cozinha, cama de armação de madeira; o desarrumado corre de um canto a outro; há mobília por erguer do chão; há mobília por erguer do chão.",
@@ -9262,7 +9262,7 @@ export const CASOS_POOL = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
+    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
@@ -9361,7 +9361,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -9370,7 +9370,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9388,7 +9388,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Rose Evans eu não conhecia.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não tenho que dar. Se Rose Evans tinha desafeto, não foi freguês meu.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -9403,7 +9403,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9421,7 +9421,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Rose Evans? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Rose Evans? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -9436,7 +9436,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9469,7 +9469,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9513,7 +9513,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "George Williams entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Tenho a manhã tomada, {detective.title}, mas isto passa adiante de tudo. Ao seu dispor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "George Williams entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Tenho a manhã tomada, {detective.title}, mas isto passa à frente de tudo. Ao seu dispor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -9561,7 +9561,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9579,7 +9579,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -9594,7 +9594,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9627,7 +9627,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9645,7 +9645,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\" Já de pé, corrige uma miudeza da própria resposta, para que a folha fique exata."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -9660,7 +9660,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9678,7 +9678,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     }
@@ -9697,7 +9697,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Rose Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Com licença de entrar. Respondo o que souber.\" Fala baixo e mede a porta antes de cada resposta."
+      "O delegado chama o nome; Rose Wilson entra, senta-se e ajeita as fitas da touca. \"Com licença de entrar. Respondo o que souber.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -9739,7 +9739,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9772,7 +9772,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9805,7 +9805,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9823,7 +9823,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -9838,7 +9838,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9856,7 +9856,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -9875,7 +9875,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Walter Walker entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; Walter Walker entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -9908,7 +9908,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -9917,7 +9917,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9935,7 +9935,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Rose Evans eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Rose Evans eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -9950,7 +9950,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -9968,7 +9968,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Rose Evans? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Rose Evans? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -9983,7 +9983,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10001,7 +10001,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -10016,7 +10016,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10034,7 +10034,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -10053,7 +10053,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Brown entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Fala baixo e mede a porta antes de cada resposta."
+      "O delegado chama o nome; William Brown entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -10095,7 +10095,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10113,7 +10113,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Rose Evans eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Rose Evans eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -10128,7 +10128,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10146,7 +10146,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Rose Evans? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Rose Evans? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -10161,7 +10161,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10179,7 +10179,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -10194,7 +10194,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Rose Evans, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Rose Evans, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10212,7 +10212,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -10248,7 +10248,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Marlow Green, e como homem que sabe o tamanho do que não sabe. Rose Evans, criada desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Marlow Green, e como homem que sabe o tamanho do que não sabe. Rose Evans, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Fenwick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -10276,7 +10276,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Fenwick",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Rose Evans, 17 anos, criada. Achado morto em Casa do Médico. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Rose Evans, 17 anos, criada. Achada morta na Casa do Médico. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -10291,12 +10291,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? George Williams — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dela? George Williams — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "pergunta": "A morta tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
    }
   ],
   "opcoesPersonagem": [
@@ -10338,35 +10338,35 @@ export const CASOS_POOL = [
    "id": "gen_4_costureira",
    "nome": "Arthur Evans",
    "idade": 33,
-   "relacao": "Alfaiate; mora em Cottage nº 4",
+   "relacao": "Alfaiate; mora no Cottage nº 4",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   },
   {
    "id": "gen_5_criada",
    "nome": "Emily Brown",
    "idade": 24,
-   "relacao": "Criada; mora em A Taverna",
+   "relacao": "Criada; mora na Taverna",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_1_taverneiro",
    "nome": "Frederick Wilson",
    "idade": 30,
-   "relacao": "Taverneiro; mora em A Taverna",
+   "relacao": "Taverneiro; mora na Taverna",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   },
   {
    "id": "gen_2_lavrador",
    "nome": "Joseph Roberts",
    "idade": 59,
-   "relacao": "Lavrador; mora em Cottage nº 2",
+   "relacao": "Lavrador; mora no Cottage nº 2",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   },
   {
    "id": "gen_3_lavrador",
    "nome": "Thomas Jones",
    "idade": 43,
-   "relacao": "Lavrador; mora em Cottage nº 3",
+   "relacao": "Lavrador; mora no Cottage nº 3",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   }
  ],
@@ -10490,7 +10490,7 @@ export const CASOS_POOL = [
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 01h00 de 14/out",
-   "descricao": "Do registro da ronda consta Emily Williams com vida às 01h00 de 14/out. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Do registro da ronda consta Emily Williams com vida às 01h00 de 14/out. Depois dessa hora, ninguém mais a encontrou em pé.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -10503,7 +10503,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão do morto, e o dono tem nome na vila: Thomas Jones.",
+   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão da morta, e o dono tem nome na vila: Thomas Jones.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -10590,7 +10590,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Arthur Evans",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -10605,7 +10605,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Emily Brown",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -10635,7 +10635,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Joseph Roberts",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -10678,9 +10678,9 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama quarto, vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama quarto, vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
    ]
   },
@@ -10688,7 +10688,7 @@ export const CASOS_POOL = [
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
    "titulo": "A Cena — A Escola",
-   "subtitulo": "Onde Emily Williams foi achado",
+   "subtitulo": "Onde Emily Williams foi achada",
    "acoesEspeciais": [],
    "prosa": [
     "A Escola guarda o dia em que o acharam. No cômodo, carteiras enfileiradas, quadro de ardósia, range de ferro a carvão; o desarrumado corre de um canto a outro; há mobília por erguer do chão; há mobília por erguer do chão; há mobília por erguer do chão.",
@@ -10718,7 +10718,7 @@ export const CASOS_POOL = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
+    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
@@ -10784,7 +10784,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Arthur Evans entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei serviço pela metade na bancada. Seja direto, se puder ser.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "Arthur Evans entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -10826,7 +10826,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10844,7 +10844,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Emily Williams eu não conhecia.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome não tenho que dar. Se Emily Williams tinha desafeto, não foi freguês meu.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -10859,7 +10859,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10877,7 +10877,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Emily Williams? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Emily Williams? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -10892,7 +10892,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10925,7 +10925,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -10943,7 +10943,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -10962,7 +10962,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Emily Brown entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Com licença de entrar. Respondo o que souber.\" Fala baixo e mede a porta antes de cada resposta."
+      "O delegado chama o nome; Emily Brown entra, senta-se e ajeita as fitas da touca. \"Com licença de entrar. Respondo o que souber.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -11004,7 +11004,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11037,7 +11037,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11070,7 +11070,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11088,7 +11088,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -11103,7 +11103,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11121,7 +11121,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -11140,7 +11140,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Frederick Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "O delegado chama o nome; Frederick Wilson entra e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -11182,7 +11182,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11200,7 +11200,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Emily Williams eu não conhecia.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Se Emily Williams tinha desafeto, não foi freguês meu.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -11215,7 +11215,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11233,7 +11233,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Emily Williams? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Emily Williams? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -11248,7 +11248,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11266,7 +11266,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -11281,7 +11281,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11299,7 +11299,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -11318,7 +11318,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Joseph Roberts entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "Joseph Roberts entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -11360,7 +11360,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11378,7 +11378,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Emily Williams eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Emily Williams eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -11393,7 +11393,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11411,7 +11411,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Emily Williams? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Emily Williams? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -11426,7 +11426,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11444,7 +11444,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -11459,7 +11459,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11477,7 +11477,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -11503,7 +11503,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Thomas Jones entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "O delegado chama o nome; Thomas Jones entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -11551,7 +11551,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11569,7 +11569,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -11584,7 +11584,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11602,7 +11602,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Emily Williams era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Emily Williams era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -11617,7 +11617,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11635,7 +11635,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -11650,7 +11650,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Emily Williams, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Emily Williams, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -11668,7 +11668,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -11704,7 +11704,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate, e como homem que sabe o tamanho do que não sabe. Emily Williams, professora de vila desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate, e como homem que sabe o tamanho do que não sabe. Emily Williams, professora de vila desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -11732,7 +11732,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Roderick",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Emily Williams, 25 anos, professora de vila. Achado morto em A Escola. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Emily Williams, 25 anos, professora de vila. Achada morta na Escola. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -11747,12 +11747,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Homem de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
+    "resposta": "\"Mulher de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
    },
    {
     "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "pergunta": "A morta tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
    }
   ],
   "opcoesPersonagem": [
@@ -11870,35 +11870,35 @@ export const CASOS_POOL = [
    "id": "gen_2_taverneiro",
    "nome": "Alice Jones",
    "idade": 41,
-   "relacao": "Taverneira; mora em A Taverna",
+   "relacao": "Taverneira; mora na Taverna",
    "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
   },
   {
    "id": "gen_0_lavrador",
    "nome": "James Thomas",
    "idade": 28,
-   "relacao": "Lavrador; mora em Cottage nº 5",
+   "relacao": "Lavrador; mora no Cottage nº 5",
    "descricao": "Conta a noite por canecas, e as horas não fecham entre si."
   },
   {
    "id": "gen_3_lavrador",
    "nome": "Joseph Roberts",
    "idade": 25,
-   "relacao": "Lavrador; mora em Cottage nº 1",
+   "relacao": "Lavrador; mora no Cottage nº 1",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_5_lavrador",
    "nome": "William Taylor",
    "idade": 52,
-   "relacao": "Lavrador; mora em Cottage nº 3",
+   "relacao": "Lavrador; mora no Cottage nº 3",
    "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_4_lavrador",
    "nome": "William Wilson",
    "idade": 36,
-   "relacao": "Lavrador; mora em Cottage nº 2",
+   "relacao": "Lavrador; mora no Cottage nº 2",
    "descricao": "Fala baixo e mede a porta antes de responder."
   }
  ],
@@ -12022,7 +12022,7 @@ export const CASOS_POOL = [
    "origemTestemunha": null,
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 21h00 de 13/out",
-   "descricao": "Do registro da ronda consta Edith Taylor com vida às 21h00 de 13/out. Depois dessa hora, ninguém mais o encontrou em pé.",
+   "descricao": "Do registro da ronda consta Edith Taylor com vida às 21h00 de 13/out. Depois dessa hora, ninguém mais a encontrou em pé.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -12035,7 +12035,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão do morto, e o dono tem nome na vila: William Taylor.",
+   "descricao": "Ficou onde a mão o largou. O feitio casa com a lesão da morta, e o dono tem nome na vila: William Taylor.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -12092,7 +12092,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Joseph Roberts",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
-   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 1, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 1, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -12107,7 +12107,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Taylor",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
-   "descricao": "\"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -12150,9 +12150,9 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama sala de aula, vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama sala de aula, vestida como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo."
    ]
   },
@@ -12160,7 +12160,7 @@ export const CASOS_POOL = [
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
    "titulo": "A Cena — A Escola",
-   "subtitulo": "Onde Edith Taylor foi achado",
+   "subtitulo": "Onde Edith Taylor foi achada",
    "acoesEspeciais": [],
    "prosa": [
     "A Escola guarda o dia em que o acharam. No cômodo, quadro de ardósia, estufa de ferro, carteiras enfileiradas; o desarrumado corre de um canto a outro; há mobília por erguer do chão.",
@@ -12175,7 +12175,7 @@ export const CASOS_POOL = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
+    "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela."
@@ -12241,7 +12241,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Alice Jones entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "Alice Jones entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -12283,7 +12283,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12301,7 +12301,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Edith Taylor eu não conhecia.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Se Edith Taylor tinha desafeto, não foi freguês meu.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -12316,7 +12316,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12334,7 +12334,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Edith Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Edith Taylor? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -12349,7 +12349,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12367,7 +12367,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\""
+      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -12382,7 +12382,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12400,7 +12400,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Toma o chapéu do joelho. \"O negócio não se guarda sozinho.\" Já na porta, ainda oferece o nome do padeiro, o preço da vela e a chuva da outra semana."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -12419,7 +12419,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Thomas entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; James Thomas entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -12452,7 +12452,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa; ficam mais perto de fechar do que em qualquer outra resposta."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -12461,7 +12461,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12479,7 +12479,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Edith Taylor eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Edith Taylor eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -12494,7 +12494,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12512,7 +12512,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Edith Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Edith Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -12527,7 +12527,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12545,7 +12545,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -12560,7 +12560,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12578,7 +12578,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -12639,7 +12639,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12657,7 +12657,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Edith Taylor eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Edith Taylor eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -12672,7 +12672,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12690,7 +12690,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Edith Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Edith Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -12705,7 +12705,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12723,7 +12723,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -12738,7 +12738,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12756,7 +12756,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -12782,7 +12782,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Taylor entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Fala baixo e mede a porta antes de cada resposta."
+      "William Taylor entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -12830,7 +12830,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12848,7 +12848,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome eu não dou, {detective.title}, que não o tenho. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -12863,7 +12863,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12881,7 +12881,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Edith Taylor era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Edith Taylor era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -12896,7 +12896,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12914,7 +12914,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -12929,7 +12929,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12947,7 +12947,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer o que se diz de quem trabalha e cala.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -12966,7 +12966,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
+      "O delegado chama o nome; William Wilson entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -13008,7 +13008,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -13026,7 +13026,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Edith Taylor eu não conhecia.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Edith Taylor eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -13041,7 +13041,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -13059,7 +13059,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Edith Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, a lida espera.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Edith Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -13074,7 +13074,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -13092,7 +13092,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -13107,7 +13107,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Edith Taylor, para quem convivia?\"",
+       "rotulo": "\"Que mulher era Edith Taylor, para quem lidava com ela todos os dias?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -13125,7 +13125,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se devagar. \"Se é tudo, a lida espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -13161,7 +13161,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham, e como homem que sabe o tamanho do que não sabe. Edith Taylor, professora de vila desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham, e como homem que sabe o tamanho do que não sabe. Edith Taylor, professora de vila desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -13189,7 +13189,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Stanmore",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Edith Taylor, 29 anos, professora de vila. Achado morto em A Escola. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Edith Taylor, 29 anos, professora de vila. Achada morta na Escola. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -13204,12 +13204,12 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Homem de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
+    "resposta": "\"Mulher de poucas companhias. O que a vila souber, a vila conta melhor que eu.\""
    },
    {
     "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
+    "pergunta": "A morta tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele.\""
    }
   ],
   "opcoesPersonagem": [

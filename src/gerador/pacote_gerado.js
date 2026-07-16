@@ -42,7 +42,7 @@ import { hashString } from '../logic/hash.js';
 import { formatHora, formatHoraComDia, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 import { gerarCasoBruto } from './caso.js';
-import { derivarDialogos } from './dialogos_gerados.js';
+import { derivarDialogos, formasDoLugar } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 
 // ---------------------------------------------------------------------
@@ -80,28 +80,29 @@ function rotuloDaFaixa(faixa) {
 }
 
 // Frases de móbil por catálogo (mesmas chaves de MOTIVOS_POTENCIAIS —
-// arquetipos.js; guarda de cobertura no qa.mjs).
+// arquetipos.js; guarda de cobertura no qa.mjs). Recebem as PESSOAS (réu e
+// vítima), não só os nomes: a concordância de gênero sai da ficha.
 const PROSA_MOTIVO = {
   divida_caderneta: (reu, vitima) =>
-    `Uma caderneta de fiado soma a dívida de ${reu} para com ${vitima}, vencida e cobrada por carta.`,
+    `Uma caderneta de fiado soma a dívida de ${reu.nome} para com ${vitima.nome}, vencida e cobrada por carta.`,
   seguro_de_enterro: (reu, vitima) =>
-    `Uma apólice de enterro em nome de ${vitima} paga a ${reu} quando a morte vier.`,
+    `Uma apólice de enterro em nome de ${vitima.nome} paga a ${reu.nome} quando a morte vier.`,
   heranca: (reu, vitima) =>
-    `Papéis de partilha: com a morte de ${vitima}, o que era dele passa às mãos de ${reu}.`,
+    `Papéis de partilha: com a morte de ${vitima.nome}, o que era ${vitima.genero === 'feminino' ? 'dela' : 'dele'} passa às mãos de ${reu.nome}.`,
   dote: (reu, vitima) =>
-    `Cartas sobre um dote prometido e não pago atam ${reu} a ${vitima}, com somas e datas.`,
+    `Cartas sobre um dote prometido e não pago atam ${reu.nome} a ${vitima.nome}, com somas e datas.`,
   salario_atrasado: (reu, vitima) =>
-    `Consta queixa de paga retida: ${vitima} devia a ${reu} semanas de salário.`,
+    `Consta queixa de paga retida: ${vitima.nome} devia a ${reu.nome} semanas de salário.`,
   escandalo_gravidez: (reu, vitima) =>
-    `Corre na vila o falatório que ${reu} queria enterrado — e ${vitima} era quem o repetia.`,
+    `Corre na vila o falatório que ${reu.nome} queria enterrado — e ${vitima.nome} era quem o repetia.`,
   character_negado: (reu, vitima) =>
-    `${vitima} negou a ${reu} a carta de referência; sem ela, casa nenhuma o toma a serviço.`,
+    `${vitima.nome} negou a ${reu.nome} a carta de referência; sem ela, casa nenhuma ${reu.genero === 'feminino' ? 'a' : 'o'} toma a serviço.`,
   despejo: (reu, vitima) =>
-    `A ordem de despejo do cottage de ${reu} leva a assinatura de ${vitima}.`,
+    `A ordem de despejo do cottage de ${reu.nome} leva a assinatura de ${vitima.nome}.`,
   rivalidade_capela_taverna: (reu, vitima) =>
-    `A queixa pública entre ${reu} e ${vitima} — a capela contra a taverna — está lavrada em ata.`,
+    `A queixa pública entre ${reu.nome} e ${vitima.nome} — a capela contra a taverna — está lavrada em ata.`,
   recasamento_vigiado: (reu, vitima) =>
-    `O recasamento de ${reu} corria sob a língua da vila, e ${vitima} era quem mais falava dele.`,
+    `O recasamento de ${reu.nome} corria sob a língua da vila, e ${vitima.nome} era quem mais falava dele.`,
 };
 
 // A lesão fatal por método: nome de carta e laudo de exame próximo.
@@ -129,7 +130,7 @@ const PROSA_LESAO = {
   veneno_arsenico: {
     textoDisplay: 'O Hálito de Alho',
     descricao:
-      'O hálito do morto guarda um cheiro de alho que não é de mesa; na boca, um resto de vômito seco.',
+      'No hálito, um cheiro de alho que não é de mesa; na boca, um resto de vômito seco.',
   },
 };
 
@@ -205,6 +206,11 @@ function realizarCartas(bruto) {
   const vitima = pessoas.get(crime.vitimaId);
   const reu = pessoas.get(crime.assassinoId);
 
+  // Concordância pelo gênero da vítima (o elenco pode dar merceeira,
+  // taverneira…): a prosa realizada nunca fixa "o morto" de fábrica.
+  const femV = vitima.genero === 'feminino';
+  const doMorto = femV ? 'da morta' : 'do morto';
+
   const cartas = [];
   for (const c of fatiaForense.cartas) {
     const nova = JSON.parse(JSON.stringify(c));
@@ -236,8 +242,8 @@ function realizarCartas(bruto) {
         const quem = c.origemTestemunha ? nome(c.origemTestemunha) : null;
         nova.carimboPadrao = `Vítima com vida às ${quando}`;
         nova.descricao = quem
-          ? `${quem} esteve com ${vitima.nome} às ${quando}, e o declara à ronda. Depois dessa hora, ninguém mais o encontrou em pé.`
-          : `Do registro da ronda consta ${vitima.nome} com vida às ${quando}. Depois dessa hora, ninguém mais o encontrou em pé.`;
+          ? `${quem} esteve com ${vitima.nome} às ${quando}, e o declara à ronda. Depois dessa hora, ninguém mais ${femV ? 'a' : 'o'} encontrou em pé.`
+          : `Do registro da ronda consta ${vitima.nome} com vida às ${quando}. Depois dessa hora, ninguém mais ${femV ? 'a' : 'o'} encontrou em pé.`;
         break;
       }
       case 'gen_instrumento': {
@@ -248,15 +254,15 @@ function realizarCartas(bruto) {
         if (classe === 'instrumento_abandonado') {
           nova.textoDisplay = 'O Instrumento Abandonado';
           nova.carimboPadrao = 'Instrumento deixado na cena';
-          nova.descricao = `Ficou onde a mão o largou. O feitio casa com a lesão do morto, e o dono tem nome na vila: ${reu.nome}.`;
+          nova.descricao = `Ficou onde a mão o largou. O feitio casa com a lesão ${doMorto}, e o dono tem nome na vila: ${reu.nome}.`;
         } else if (classe === 'instrumento_faltando') {
           nova.textoDisplay = 'O Lugar Vazio';
           nova.carimboPadrao = 'Instrumento que falta no seu lugar';
-          nova.descricao = `Entre as coisas de ofício de ${reu.nome}, um vão limpo no meio do pó: falta ali a peça cujo feitio casa com a lesão do morto.`;
+          nova.descricao = `Entre as coisas de ofício de ${reu.nome}, um vão limpo no meio do pó: falta ali a peça cujo feitio casa com a lesão ${doMorto}.`;
         } else {
           nova.textoDisplay = 'O Instrumento Úmido';
           nova.carimboPadrao = 'Instrumento guardado ainda úmido';
-          nova.descricao = `Entre os pertences de ${reu.nome}, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão do morto.`;
+          nova.descricao = `Entre os pertences de ${reu.nome}, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão ${doMorto}.`;
         }
         break;
       }
@@ -265,14 +271,13 @@ function realizarCartas(bruto) {
         nova.textoDisplay = 'O Pertence Arrancado';
         nova.carimboPadrao = houvePertence ? 'Botão com fio na mão da vítima' : 'Objeto alheio junto ao corpo';
         nova.descricao = houvePertence
-          ? `Na mão fechada do morto, um botão de casaco com fio e um triângulo de pano. O casaco de ${reu.nome} perdeu o segundo botão.`
-          : `Junto ao corpo, um objeto que não é do morto nem da casa. O par dele está entre as coisas de ${reu.nome}.`;
+          ? `Na mão fechada ${doMorto}, um botão de casaco com fio e um triângulo de pano. O casaco de ${reu.nome} perdeu o segundo botão.`
+          : `Junto ao corpo, um objeto que não é ${doMorto} nem da casa. O par dele está entre as coisas de ${reu.nome}.`;
         break;
       }
       case 'gen_sangue_alheio':
         nova.carimboPadrao = 'Sangue afastado do corpo';
-        nova.descricao =
-          'Gotas de sangue a passos do corpo, num caminho que o morto não fez. Alguém saiu dali ferido, e andando.';
+        nova.descricao = `Gotas de sangue a passos do corpo, num caminho que ${femV ? 'a morta' : 'o morto'} não fez. Alguém saiu dali ferido, e andando.`;
         break;
       case 'gen_pegadas':
         nova.carimboPadrao = 'Meias-solas impressas em sangue';
@@ -290,7 +295,7 @@ function realizarCartas(bruto) {
         const frase = PROSA_MOTIVO[c.tagsOcultas.motivo];
         nova.textoDisplay = 'Os Papéis do Móbil';
         nova.carimboPadrao = `Móbil de ${reu.nome}`;
-        nova.descricao = frase ? frase(reu.nome, vitima.nome) : `Papéis da delegacia ligam ${reu.nome} ao morto.`;
+        nova.descricao = frase ? frase(reu, vitima) : `Papéis da delegacia ligam ${reu.nome} ${femV ? 'à morta' : 'ao morto'}.`;
         break;
       }
       default:
@@ -351,6 +356,7 @@ function montarLocalidades(bruto, cartas) {
   const comodoCrime = interior.comodos.find((c) => c.id === crime.posicaoCorpo.comodo);
   const rotuloComodo = comodoCrime ? comodoCrime.rotulo || comodoCrime.id : escolha.comodoId;
 
+  const femV = vitima.genero === 'feminino';
   const temCarta = (id) => cartas.some((c) => c.id === id);
   const eventos = interferencia.eventos;
   const eventoQueDestroi = (cartaId) => eventos.find((e) => e.efeito.cartaDestruida === cartaId) || null;
@@ -377,9 +383,10 @@ function montarLocalidades(bruto, cartas) {
   }
 
   // ---- O corpo ----
+  const porQuem = femV ? 'por ela' : 'por ele';
   const pFerida = temCarta('gen_reacao_vital')
-    ? 'O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].'
-    : 'O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].';
+    ? `O exame de perto encontra a lesão que respondeu ${porQuem}: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].`
+    : `O exame de perto encontra a lesão que respondeu ${porQuem}: [[gen_lesao_fatal]].`;
   const corpo = {
     id: 'corpo',
     rotuloMesa: 'O Corpo',
@@ -388,7 +395,7 @@ function montarLocalidades(bruto, cartas) {
     acoesEspeciais: ['termometro'],
     gestos: [{ id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'gen_livores' }],
     prosa: [
-      `O morto jaz no chão do cômodo a que a vila chama ${rotuloComodo.toLowerCase()}, vestido como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.`,
+      `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${rotuloComodo.toLowerCase()}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.`,
       'Ao primeiro exame do tronco e dos membros, [[gen_rigor]].',
       pFerida,
       'A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo.',
@@ -417,7 +424,7 @@ function montarLocalidades(bruto, cartas) {
     const ev = eventoQueDestroi(id);
     const frase = {
       gen_instrumento: `Junto do corpo, deixado onde caiu, o achado que a vila inteira comenta: [[gen_instrumento]].`,
-      gen_pertence: 'Na mão fechada do morto, por abrir desde ontem: [[gen_pertence]].',
+      gen_pertence: `Na mão fechada ${femV ? 'da morta' : 'do morto'}, por abrir desde ontem: [[gen_pertence]].`,
       gen_sangue_alheio: 'A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].',
       gen_pegadas: 'Do meio do cômodo até a porta: [[gen_pegadas]].',
     }[id];
@@ -431,7 +438,7 @@ function montarLocalidades(bruto, cartas) {
     id: 'cena',
     rotuloMesa: 'A Cena do Crime',
     titulo: `A Cena — ${predioCena}`,
-    subtitulo: `Onde ${vitima.nome} foi achado`,
+    subtitulo: `Onde ${vitima.nome} foi ${femV ? 'achada' : 'achado'}`,
     acoesEspeciais: [],
     prosa: [...prosaCena, ...marcadoresCena],
     blocosContingentes: blocosPorLocalidade.cena || [],
@@ -447,7 +454,7 @@ function montarLocalidades(bruto, cartas) {
     subtitulo: 'Os papéis do caso',
     acoesEspeciais: [],
     prosa: [
-      'A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.',
+      `A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam ${femV ? 'da morta' : 'do morto'} e da vila, e deixa {g:o senhor|a senhora} ler por si.`,
       ...(evVisto ? [] : temCarta('gen_visto_vivo') ? [fraseVisto] : []),
       'Entre os papéis recolhidos por precaução: [[gen_motivo]].',
       // A árvore de diálogo procedural (OS própria): os interrogatórios
@@ -569,10 +576,9 @@ function montarSuspeitos(bruto) {
       id: p.id,
       nome: p.nome,
       idade: p.idade,
-      relacao: `${p.profissao.charAt(0).toUpperCase()}${p.profissao.slice(1)}; mora em ${nomeDoPredio(
-        mundo.cidade,
-        p.pacoteEspacial.moradia
-      )}`,
+      relacao: `${p.profissao.charAt(0).toUpperCase()}${p.profissao.slice(1)}; mora ${formasDoLugar(
+        nomeDoPredio(mundo.cidade, p.pacoteEspacial.moradia)
+      ).em}`,
       descricao: descricaoDePessoa(p),
     };
   });
@@ -586,6 +592,7 @@ function montarAbertura(bruto, sal, suspeitos) {
   const { mundo, crime } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
+  const femV = vitima.genero === 'feminino';
   const vila = NOMES_DE_VILA[hashString(`${sal}|vila`) % NOMES_DE_VILA.length];
   const delegado = SOBRENOMES_DELEGADO[hashString(`${sal}|delegado`) % SOBRENOMES_DELEGADO.length];
   const coabitantes = suspeitos
@@ -622,7 +629,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       carta: true,
       paragrafos: [
         'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
-        `"{detective.title} {detective.surname} — Escrevo-lhe como delegado de ${vila}, e como homem que sabe o tamanho do que não sabe. ${vitima.nome}, ${vitima.profissao} desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
+        `"{detective.title} {detective.surname} — Escrevo-lhe como delegado de ${vila}, e como homem que sabe o tamanho do que não sabe. ${vitima.nome}, ${vitima.profissao} desta vila, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
         `"${delegado}, Delegado."`,
       ],
       rotuloBotao: 'Aceitar o chamado',
@@ -650,10 +657,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       titulo: `O relato do delegado ${delegado}`,
       briefing: true,
       paragrafos: [
-        `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${vitima.profissao}. Achado morto em ${nomeDoPredio(
-          mundo.cidade,
-          bruto.escolha.localId
-        )}. Não toquei em nada e não prendi ninguém."`,
+        `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${vitima.profissao}. ${femV ? 'Achada morta' : 'Achado morto'} ${formasDoLugar(nomeDoPredio(mundo.cidade, bruto.escolha.localId)).em}. Não toquei em nada e não prendi ninguém."`,
         'Detém-se à porta e baixa a voz. "Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}."',
       ],
       rotuloBotao: 'Entrar — iniciar a investigação',
@@ -671,14 +675,14 @@ function montarAbertura(bruto, sal, suspeitos) {
       id: 'quem_convive',
       pergunta: 'Quem convivia com a vítima?',
       resposta: coabitantes.length
-        ? `"Do dia a dia dele? ${coabitantes.join(', ')} — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis."`
-        : '"Homem de poucas companhias. O que a vila souber, a vila conta melhor que eu."',
+        ? `"Do dia a dia ${femV ? 'dela' : 'dele'}? ${coabitantes.join(', ')} — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis."`
+        : `"${femV ? 'Mulher' : 'Homem'} de poucas companhias. O que a vila souber, a vila conta melhor que eu."`,
     },
     {
       id: 'desafetos',
-      pergunta: 'O morto tinha desafetos declarados?',
+      pergunta: femV ? 'A morta tinha desafetos declarados?' : 'O morto tinha desafetos declarados?',
       resposta:
-        '"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele."',
+        `"Queixa lavrada contra ${femV ? 'ela' : 'ele'} não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele."`,
     },
   ];
 

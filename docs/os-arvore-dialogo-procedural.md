@@ -142,10 +142,13 @@ do caso que TOCA o suspeito, na ordem do array `cartas` (replay estável):
 
 Fora da tabela (v1, deliberado): `pressao_sobre_testemunha` (a visita é vestígio
 sobre terceiro, não prova que o dono explique), `prenuncio`, cartas de
-`testemunha` (recusa/retratação — o alvo é a testemunha, não o dono), sangue e
-pegadas (1893: sem tipagem nem casamento de bota no catálogo — confronto não
-renderia reação honesta). Carta cujo dono não está na lista de suspeitos não gera
-confronto. `noEvasiva` sempre presente (fallback defensivo).
+`testemunha` (recusa/retratação — o alvo é a testemunha, não o dono), sangue
+(1893: sem tipagem sanguínea nem prova de sangue humano — confronto de dono não
+renderia reação honesta) e pegadas (o casamento pegada↔bota ERA técnica corrente
+de 1893 — Gross, moldes de gesso, comparação de sola e cravos —, mas o catálogo
+não modela dono de pegada: exclusão de desenho, não de época; lacuna de KB
+registrada para caso futuro). Carta cujo dono não está na lista de suspeitos não
+gera confronto. `noEvasiva` sempre presente (fallback defensivo).
 
 ### 8.5 Papel, tom ressonante e voz
 
