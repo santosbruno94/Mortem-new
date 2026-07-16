@@ -2141,8 +2141,10 @@ if (casoComDestruicao && casoComEvento && casoComSilenciar) {
 // LINTER DE PROSA (regressão da norma de texto): scripts/lint-prosa.mjs
 // roda como parte do QA — cheques mecânicos do guia de estilo e da skill
 // anti-padrao-ia (fórmula "não X — é Y", densidade de travessão, léxico
-// banido, exclamações) sobre os módulos de dados e os templates. O
-// relatório do linter sai inteiro aqui (stdio herdado).
+// banido, exclamações, filtro sensorial, monotonia de abertura e vocativo
+// repetido) sobre os módulos de dados e os templates. O autoteste do
+// linter (armadilhas sintéticas dos cheques 5–7) roda embutido em toda
+// execução. O relatório do linter sai inteiro aqui (stdio herdado).
 // ============================================================
 console.log('\n=== Linter de prosa (scripts/lint-prosa.mjs) ===');
 const lintProsa = spawnSync(process.execPath, [fileURLToPath(new URL('./lint-prosa.mjs', import.meta.url))], {
@@ -2216,7 +2218,7 @@ const checagens = [
   ['Prenúncio na prosa: todo silenciar publica sinal legível — texto exato, interpolado, nomeia a testemunha, fora do gate (FASE 5)', prenuncioNaProsaOk],
   ['Replay das seeds de interferência: mesma seed → mesmo caso com os mesmos eventos contingentes, byte a byte (FASE 5)', replayInterferenciaOk],
   ['Armadilhas detectadas: âncora destruível, gatilho órfão, rota órfã, silenciar sem prenúncio, saldo negativo — e o caso válido passa (FASE 5)', armadilhasDetectadas],
-  ['Prosa sem regressão mecânica (lint-prosa): fórmula, travessões, léxico banido, exclamações', prosaSemRegressao],
+  ['Prosa sem regressão mecânica (lint-prosa): fórmula, travessões, léxico, exclamações, filtro sensorial, abertura repetida, vocativo', prosaSemRegressao],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
