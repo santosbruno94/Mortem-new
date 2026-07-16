@@ -42,6 +42,7 @@ import { hashString } from '../logic/hash.js';
 import { formatHora, formatHoraComDia, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 import { gerarCasoBruto } from './caso.js';
+import { derivarDialogos } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 
 // ---------------------------------------------------------------------
@@ -449,6 +450,9 @@ function montarLocalidades(bruto, cartas) {
       'A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.',
       ...(evVisto ? [] : temCarta('gen_visto_vivo') ? [fraseVisto] : []),
       'Entre os papéis recolhidos por precaução: [[gen_motivo]].',
+      // A árvore de diálogo procedural (OS própria): os interrogatórios
+      // vivem aqui — a sala do expediente serve de sala de inquérito.
+      'Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela.',
     ],
     blocosContingentes: [
       ...(evVisto
@@ -702,6 +706,12 @@ export function montarPacoteGerado(seed, opts = {}) {
   const { nosMapa, custos, leads } = montarMapa(localidades);
   const suspeitos = montarSuspeitos(bruto);
   const abertura = montarAbertura(bruto, sal, suspeitos);
+  // A árvore de diálogo procedural (OS própria): uma árvore por suspeito,
+  // embutida na delegacia, + as cartas de álibi que os beats sustentam.
+  // As cartas de álibi entram no FIM do catálogo (ordem estável, replay);
+  // o marcador delas vive nas falas da árvore, não na prosa de localidade.
+  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos });
+  cartas.push(...cartasAlibi);
 
   // A carta de NEXO define o instrumento que o veredicto cobra: o método
   // com instrumento aponta o próprio; o sem instrumento (esganadura), o
@@ -728,7 +738,7 @@ export function montarPacoteGerado(seed, opts = {}) {
     nosMapa,
     leads,
     custos,
-    dialogos: {},
+    dialogos,
     confrontos: { estadoInicial: 'presente', consequencias: {} },
     abertura,
     parametrosCena: {

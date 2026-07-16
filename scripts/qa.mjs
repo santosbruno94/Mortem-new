@@ -2192,6 +2192,11 @@ function problemasDoPacoteGerado(pacote) {
     }
     for (const g of l.gestos || []) marcados.add(g.cartaId);
   }
+  // Fala de diálogo é caminho de extração como a prosa de localidade (OS
+  // da árvore procedural: as cartas de álibi nascem nos beats).
+  for (const d of Object.values(pacote.dialogos || {})) {
+    for (const no of Object.values(d.nos)) textos.push(...(no.fala || []));
+  }
   for (const t of textos) {
     for (const m of t.matchAll(/\[\[(\w+)\]\]/g)) marcados.add(m[1]);
     for (const falta of slotsNaoResolvidos(t, pacote)) problemas.push(`slot não resolve: ${falta}`);
