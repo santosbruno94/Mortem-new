@@ -540,6 +540,10 @@ const motorSemPurista = ['logic/veredicto.js', 'logic/acusacao.js'].every(
 const motorSemPapeis = ['logic/veredicto.js', 'logic/acusacao.js'].every(
   (f) => !/pap[eé]is|papelDramatico/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
+// FASE 6: o eco do mestre é camada de apresentação — o motor jamais o lê.
+const motorSemEco = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) => !/ecoMestre|ecosDoMestre|eco_mestre/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
+);
 const elenco = pacote.papeisDramaticos || {};
 const idsHabito = new Set(HABITOS.map((h) => h.id));
 const elencoValido =
@@ -970,6 +974,23 @@ function verificarPacote(p) {
   if (typeof pc.horasChegada !== 'number') problemas.push('parametrosCena.horasChegada ausente');
   if (typeof pc.ambiente !== 'number') problemas.push('parametrosCena.ambiente ausente');
   if (!pc.calendario) problemas.push('parametrosCena.calendario ausente');
+  // FASE 6 — eco do mestre, OPCIONAL: ausente ⇒ passa (procedural). Presente,
+  // é { titulo: string, porCodigo: { [codigo]: [strings não-vazias] } }.
+  if (p.ecosDoMestre != null) {
+    const e = p.ecosDoMestre;
+    if (typeof e.titulo !== 'string' || !e.titulo.trim()) problemas.push('ecosDoMestre.titulo ausente ou vazio');
+    if (!e.porCodigo || typeof e.porCodigo !== 'object') {
+      problemas.push('ecosDoMestre.porCodigo ausente');
+    } else {
+      for (const [codigo, variantes] of Object.entries(e.porCodigo)) {
+        if (!Array.isArray(variantes) || variantes.length === 0) {
+          problemas.push(`ecosDoMestre.porCodigo.${codigo}: array de variantes vazio`);
+        } else if (!variantes.every((v) => typeof v === 'string' && v.trim())) {
+          problemas.push(`ecosDoMestre.porCodigo.${codigo}: variante não-string ou vazia`);
+        }
+      }
+    }
+  }
   return problemas;
 }
 const problemasPacote = verificarPacote(pacote);
@@ -1028,6 +1049,7 @@ const checagens = [
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
   ['Modo purista fora do motor: veredicto/acusação não leem a flag (Onda 8)', motorSemPurista],
   ['Papéis fora do motor: veredicto/acusação não leem o casting (FASE 5)', motorSemPapeis],
+  ['Eco do mestre fora do motor: veredicto/acusação não leem a fala da falha (FASE 6)', motorSemEco],
   ['Casting íntegro: elenco completo e papéis pressupõem hábitos reais (FASE 5)', papeisIntegros],
   ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
