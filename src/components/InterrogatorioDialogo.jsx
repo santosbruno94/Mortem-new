@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { interpolar } from '../logic/interpolar.js';
-import { obterLocalidade } from '../data/localidades.js';
-import { obterDialogo } from '../data/dialogos.js';
-import { obterNo } from '../data/mapa.js';
+import {
+  obterLocalidade,
+  obterDialogo,
+  obterNo,
+  obterPersonagemDaLocalidade,
+} from '../data/pacote_caso.js';
 import { confrontoSemParadeiro } from '../logic/acusacao.js';
 import { ParagrafoProsa } from './ProsaComTermos.jsx';
 import PlantaRelojoaria from './PlantaRelojoaria.jsx';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
-import { PERSONAGEM_POR_LOCALIDADE } from '../data/aparencias.js';
 import Overlay from './Overlay.jsx';
 
 // Interrogatório como DIÁLOGO VIVO (§7.2): a árvore ramificada agora DESCE e
@@ -100,7 +102,7 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
 
   // O retrato segue o interrogado (suspeitoId); nas conversões antigas o
   // mapa localidade→personagem continua valendo como reserva.
-  const personagemDaCena = suspeitoId || PERSONAGEM_POR_LOCALIDADE[localidade?.id];
+  const personagemDaCena = suspeitoId || obterPersonagemDaLocalidade(localidade?.id);
   // A saleta é da relojoaria: a planta baixa (§5.1) também sobe aqui — só
   // nos nós de mapa (no diálogo embutido não se anda pela planta).
   const naRelojoaria = !!localidade && obterNo(localidade.id)?.grupo === 'relojoaria';

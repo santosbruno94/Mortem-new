@@ -17,8 +17,9 @@ import {
   obterEcosDoMestre,
   obterInterferencias,
   obterEcosInterferencia,
+  custoViagem,
+  obterNo,
 } from '../data/pacote_caso.js';
-import { custoViagem, obterNo } from '../data/mapa.js';
 import { ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
 import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';

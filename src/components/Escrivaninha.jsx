@@ -1,6 +1,6 @@
 import { lazy, Suspense, useMemo } from 'react';
 import { useJogo } from '../store/jogo.js';
-import { custoViagem } from '../data/mapa.js';
+import { custoViagem } from '../data/pacote_caso.js';
 import { webglDisponivel, modoFlat } from '../logic/webgl.js';
 import { tocarSom } from '../som.js';
 import RelogioBolso from './RelogioBolso.jsx';
@@ -10,7 +10,7 @@ import EventoLocalidade from './EventoLocalidade.jsx';
 import InterrogatorioDialogo from './InterrogatorioDialogo.jsx';
 import FichaEvidencia from './FichaEvidencia.jsx';
 import AvisoCartaPousada from './AvisoCartaPousada.jsx';
-import { obterDialogo } from '../data/dialogos.js';
+import { obterDialogo } from '../data/pacote_caso.js';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
 import PainelAlibis from './PainelAlibis.jsx';

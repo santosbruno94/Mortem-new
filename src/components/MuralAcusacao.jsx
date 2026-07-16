@@ -8,9 +8,6 @@ import { deQuem } from '../logic/monologo.js';
 import { tocarSom } from '../som.js';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
 
-// Elenco do caso corrente (o pacote carregado) — lido na carga do módulo,
-// como antes era lido de seed.js diretamente.
-const SUSPEITOS = obterSuspeitos();
 
 // =====================================================================
 // A MESA DE CONSTRUÇÃO — agora em ESTAÇÕES que crescem uma na outra.
@@ -151,7 +148,7 @@ export default function MuralAcusacao() {
   // Completude NEUTRA (nunca acerto/erro), para o lembrete "ainda falta".
   const { sustentaQuando, sustentaComo, sustentaPresenca, refutaHora, refutaAlibi } =
     analisarLigacoes(acusacao, cartas);
-  const naoAcusados = SUSPEITOS.filter((sp) => sp.id !== acusacao.reuId);
+  const naoAcusados = obterSuspeitos().filter((sp) => sp.id !== acusacao.reuId);
   const lacunas = [];
   if (acusacao.janela.inicio == null || acusacao.janela.fim == null)
     lacunas.push('Falta afirmar a janela.');
@@ -206,7 +203,7 @@ export default function MuralAcusacao() {
       return partes.length ? partes.join(' · ') : 'por concluir';
     }
     if (id === 'presenca') {
-      const reu = SUSPEITOS.find((s) => s.id === acusacao.reuId);
+      const reu = obterSuspeitos().find((s) => s.id === acusacao.reuId);
       return reu ? `Réu: ${reu.nome} · ${sustentaPresenca.length} vestígio(s)` : 'por concluir';
     }
     if (id === 'mentiras') {
@@ -334,7 +331,7 @@ export default function MuralAcusacao() {
 // o jogador afirmou — nunca diz se está certo (a verdade é o Monólogo).
 // ---------------------------------------------------------------------
 function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAlibi, naoAcusados, aoVoltar, aoConfirmar }) {
-  const reu = SUSPEITOS.find((s) => s.id === acusacao.reuId);
+  const reu = obterSuspeitos().find((s) => s.id === acusacao.reuId);
   const causa = CATALOGO_CAUSAS.find((c) => c.id === acusacao.causaId);
   const temJanela = acusacao.janela.inicio != null && acusacao.janela.fim != null;
   const vestNexo = sustentaPresenca.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.tipoVestigio);
@@ -589,7 +586,7 @@ function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adiciona
     <div>
       <div className="flex flex-wrap items-center gap-2 mb-3">
         <span className="text-rotulo uppercase text-latao-claro/70">Réu:</span>
-        {SUSPEITOS.map((sp) => (
+        {obterSuspeitos().map((sp) => (
           <Opcao key={sp.id} ativa={acusacao.reuId === sp.id} aoClicar={() => definirReu(sp.id)} rotulo={sp.nome} />
         ))}
       </div>
