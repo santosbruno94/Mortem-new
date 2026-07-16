@@ -39,6 +39,7 @@ export function ParagrafoProsa({
             key={i}
             cartaId={cartaId}
             ipm={ipm}
+            detective={detective}
             registrada={cartasRegistradas.some((c) => c.id === cartaId)}
             aoExtrair={extrairCarta}
           />
@@ -51,14 +52,17 @@ export function ParagrafoProsa({
 // O termo em negrito: clicável enquanto não registrado; carimbado depois.
 // Classes .termo-clicavel/.termo-extraido e data-carta-id são contrato do
 // qa-ui.mjs (INTOCÁVEIS) — a extração vale igual na localidade e no diálogo.
-function TermoCarta({ cartaId, ipm, registrada, aoExtrair }) {
+function TermoCarta({ cartaId, ipm, detective, registrada, aoExtrair }) {
   const definicao = obterDefinicaoCarta(cartaId);
   if (!definicao) return <span>{cartaId}</span>;
   const estado = resolverEstadoCarta(definicao, ipm);
+  // Resource binding (FASE 4): o termo em negrito resolve slots de caso como
+  // qualquer prosa. Sem slots no textoDisplay do tutorial, byte-idêntico.
+  const rotulo = interpolar(estado.textoDisplay, detective);
   if (registrada) {
     return (
       <span data-carta-id={cartaId} className="termo-extraido" title="Já registrado na mesa">
-        {estado.textoDisplay}
+        {rotulo}
       </span>
     );
   }
@@ -69,7 +73,7 @@ function TermoCarta({ cartaId, ipm, registrada, aoExtrair }) {
       title="Examinar e registrar (não custa tempo)"
       onClick={() => aoExtrair(cartaId)}
     >
-      {estado.textoDisplay}
+      {rotulo}
     </span>
   );
 }

@@ -21,6 +21,7 @@ import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js'
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { ligacaoDeConfrontoEmCena } from '../logic/acusacao.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
+import { interpolar } from '../logic/interpolar.js';
 
 // Constrói o objeto detective do §12. Há um único perito jogável; o shape
 // (pronoun etc.) permanece porque as interpolações {g:...} são estruturais.
@@ -333,12 +334,15 @@ export const useJogo = create(
     const caso = obterCaso();
     const ipm = ipmAtual(s.horasJogo, caso.verdadeDeOuro.horasMorteAntesChegada, caso.parametrosCena.horasChegada);
     const estado = resolverEstadoCarta(definicao, ipm);
+    // Resource binding (FASE 4): os campos de texto da carta passam por
+    // interpolar no ato da extração — é o ponto de resolução único da carta
+    // registrada (Ficha, Mural e log leem daqui). Sem slots, byte-idêntico.
     const carta = {
       id: definicao.id,
       localidade: definicao.localidade,
-      textoDisplay: estado.textoDisplay,
-      termoCarimbo: estado.carimboPadrao,
-      descricao: estado.descricao,
+      textoDisplay: interpolar(estado.textoDisplay, s.detective),
+      termoCarimbo: interpolar(estado.carimboPadrao, s.detective),
+      descricao: interpolar(estado.descricao, s.detective),
       vozMestre: estado.vozMestre, // fala do mestre sobre esta observação (só na campanha)
       tagsOcultas: estado.tagsOcultas,
       horaRegistro: s.horasJogo,
@@ -351,7 +355,7 @@ export const useJogo = create(
     const lead = caso.leads.find((l) => l.cartaId === definicao.id);
     const revelou = lead && !s.nosDesbloqueados.includes(lead.revelaNo);
     const nosDesbloqueados = revelou ? [...s.nosDesbloqueados, lead.revelaNo] : s.nosDesbloqueados;
-    const log = [...s.log, { hora: s.horasJogo, texto: `Registrado: ${estado.carimboPadrao}.` }];
+    const log = [...s.log, { hora: s.horasJogo, texto: `Registrado: ${carta.termoCarimbo}.` }];
     if (revelou) {
       const noRevelado = obterNo(lead.revelaNo);
       log.push({

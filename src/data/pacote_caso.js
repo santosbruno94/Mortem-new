@@ -34,10 +34,29 @@
 //                         calendario   : { diaBase, mesAbrev, mesExtenso, ano }.
 //   plantas           : objeto (visual, OPCIONAL). { relojoaria: PLANTA }.
 //   aparencias        : objeto (visual, OPCIONAL). { curadas, porLocalidade }.
+//   papeisDramaticos  : objeto (metadado do gerador, OPCIONAL). Mapa de id de
+//                       entidade → id de papel (src/data/papeis.js). O motor
+//                       jamais o lê; é o casting que o gerador escala (FASE 5).
 //
 // Regra de ouro do schema: NADA de funções no pacote — só dado. Os acessores
 // (obterSuspeito, obterDefinicaoCarta, resolverEstadoCarta…) vivem NESTE
 // módulo, operando sobre o caso carregado; nunca dentro do objeto serializado.
+//
+// ---------------------------------------------------------------------
+// VOCABULÁRIO DE SLOTS (resource binding — FASE 4):
+// ---------------------------------------------------------------------
+// A prosa das cartas/depoimentos pode injetar SUBSTANTIVOS de entidade a
+// partir deste pacote (nunca frases livres — o guia de estilo rege a prosa).
+// A resolução vive em src/logic/interpolar.js; a guarda do qa.mjs valida que
+// todo slot presente no pacote resolve. Vocabulário fechado:
+//
+//   {suspeito:ID.CAMPO}  → suspeitos[id=ID][CAMPO]  (ex.: .nome → "Silas Crane")
+//   {vitima.nome}        → verdadeDeOuro.vitima      (string; único campo: nome)
+//   {hora:CAMPO}         → formatHora(parametrosCena[CAMPO] ?? verdadeDeOuro[CAMPO])
+//   {instrumento.nome}   → rótulo de verdadeDeOuro.instrumentoCorreto
+//
+// Convenção de conversão: um literal só vira slot se o texto renderizado
+// ficar byte-idêntico ao atual (critério duro da FASE 4).
 // =====================================================================
 
 import { SEED_TUTORIAL, SUSPEITOS } from './seed.js';
@@ -49,6 +68,7 @@ import { ESTADO_SUSPEITO_INICIAL, CONSEQUENCIAS_CONFRONTO } from './confrontos.j
 import { PASSOS_ABERTURA, PERGUNTAS_BRIEFING, OPCOES_PERSONAGEM } from './abertura.js';
 import { PLANTA_RELOJOARIA } from './planta_relojoaria.js';
 import { APARENCIAS_CURADAS, PERSONAGEM_POR_LOCALIDADE } from './aparencias.js';
+import { ELENCO_TUTORIAL } from './papeis.js';
 import { HORAS_CHEGADA_CENA, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 
@@ -104,6 +124,10 @@ export function montarPacoteTutorial() {
     // cai no procedural (contrato de assets, FASE 2 em diante).
     plantas: { relojoaria: PLANTA_RELOJOARIA },
     aparencias: { curadas: APARENCIAS_CURADAS, porLocalidade: PERSONAGEM_POR_LOCALIDADE },
+    // Metadado do gerador (FASE 5), OPCIONAL — o motor jamais o lê. Mapa de
+    // id de entidade → id de papel dramático (src/data/papeis.js). É o casting
+    // que o futuro gerador escalará; aqui, o casting anotado do caso-escola.
+    papeisDramaticos: { ...ELENCO_TUTORIAL },
   };
 }
 
@@ -155,6 +179,12 @@ export function obterDefinicaoCarta(id) {
 
 export function obterParametrosCena() {
   return casoCarregado.parametrosCena;
+}
+
+// Casting do caso (metadado do gerador, FASE 5): id de entidade → id de papel.
+// Objeto vazio quando o pacote não traz papéis (modo procedural sem anotação).
+export function obterPapeisDramaticos() {
+  return casoCarregado.papeisDramaticos || {};
 }
 
 // Resolvedor de estado da carta em função do IPM. É função PURA (opera sobre
