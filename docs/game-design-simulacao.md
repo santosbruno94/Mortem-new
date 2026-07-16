@@ -312,6 +312,43 @@ novos) — nenhuma decisão nova em runtime, nenhum LLM. As Regras de Justiça s
 promovidas a invariantes verificados por máquina na Fase 5 (prova da âncora sob todos
 os ramos da árvore de eventos; saldo informacional; causalidade; prenúncio; replay).
 
+**Implementado na Fase 4 (jul/2026)** — gerador em `src/gerador/interferencia.js`
+(ilha de build time): catálogo fechado v1 em `CATALOGO_INTERFERENCIA` (os 4 tipos da
+R6, cada um com gatilho observável, penalidade WIS, vestígios de sucesso/falha e
+delta informacional, proveniência por linha) + `CLASSES_VESTIGIO_INTERFERENCIA`
+(extensão da tabela viva §3.1: todas WIS, todas FRESCAS — datáveis como posteriores
+à 1ª perícia). Sorteio em duas passadas dentro de `gerarCasoBruto` (caso.js):
+o **esqueleto** pré-crime (orçamento 0–3 ponderado, tipos em rotação, ator com
+cúmplice-coabitante em probabilidade menor, faixa de ação; o local do `silenciar`
+entra em `locaisElegiveis` — LOD) e a **materialização** pós-fatia (rolagem R1
+`dado < max(0, WIS−2)`; redundância R2 recomputada com as funções do MOTOR —
+`fatiaResolveSem`: janela cobre, mecanismo crava, presença e móbil apontam o réu —
+inclusive no RAMO PIOR com todas as destruições juntas; rota R3 sustentada por
+rotina/adjacência/frequentados, mais `retorno_a_cena` só para o assassino voltar à
+própria cena; `comoSoube`/`comoChegou` reconstituíveis por evento). A ponte
+(ponte_caso.js) passou a emitir as cartas de REDUNDÂNCIA que o crime deixa
+(gen_sangue_alheio e gen_pegadas como 2ª/3ª vias de presença; gen_ruido_ouvido como
+testemunho da vizinhança com `origemTestemunha`) e cada carta declara
+`suporteFisico` ('corpo' | 'cena' | 'registro' | 'testemunho' | 'pertences_do_reu') —
+só 'cena' é destrutível; o corpo e o registro policial ficam fora do alcance de
+interferência. Decisões de forma: **suborno não destrói o registro anterior** (a
+contradição detectável da R6 exige o par depoimento novo × registro velho — o
+gatilho é a extração do próprio depoimento, então o par está sempre nas mãos do
+perito) e **nenhum gatilho destrói a própria carta-gatilho** (senão o evento nasceria
+sempre evitado). Prenúncio R4 com prosa REAL (`PROSA_PRENUNCIO`, pipeline
+revisar-prosa), interpolada com o nome da testemunha no build. Runtime mínimo em
+`store/jogo.js` (`dispararInterferencias` + dois gates em `extrairCarta`: vestígio
+novo não existe antes do disparo; evidência destruída perde-se depois — salvo
+`evitada`, quando o perito a registrou primeiro) e eco pós-caso em
+`logic/ecoInterferencia.js` sobre a prosa de `data/ecos_interferencia.js` (mesmo
+mecanismo dos códigos de falha da Fase 6). Pacote de caso ganhou os campos OPCIONAIS
+`interferencias` e `ecosInterferencia` (tutorial sem eles — regressão zero, provada
+no QA). Guardas novas no `qa.mjs`: catálogo íntegro, lints por evento (R1–R5, gatilho
+órfão, rota órfã, prenúncio, LOD do local do silenciamento), cobertura dos 4 tipos +
+cúmplice em seeds fixas, runtime sintético (gate/perda/evitada/eco/tutorial inerte) e
+cegueira do motor. Vitrine em `scripts/demo-interferencia.mjs`
+(`npm run demo:interferencia`).
+
 ---
 
 ## 6. Fora de escopo (rejeitado nesta ordem, com motivo)

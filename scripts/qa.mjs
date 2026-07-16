@@ -68,6 +68,12 @@ import {
 import { gerarCasoBruto } from '../src/gerador/caso.js';
 import { METODOS, PROVENIENCIA_METODOS } from '../src/gerador/metodos.js';
 import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS } from '../src/gerador/vestigios.js';
+import {
+  CATALOGO_INTERFERENCIA,
+  CLASSES_VESTIGIO_INTERFERENCIA,
+  PROSA_PRENUNCIO,
+} from '../src/gerador/interferencia.js';
+import { ECOS_INTERFERENCIA_PADRAO } from '../src/data/ecos_interferencia.js';
 
 // ============================================================
 // O CASO SOB TESTE É UM PACOTE. As guardas estáticas rodam contra o pacote
@@ -1019,6 +1025,43 @@ function verificarPacote(p) {
       }
     }
   }
+  // FASE 4 — interferência, OPCIONAL: ausente ⇒ passa (o tutorial). Presente,
+  // todo evento referencia cartas que EXISTEM em `cartas` (o runtime aplica
+  // por id) e traz gatilho/efeito/anúncio bem-formados.
+  if (p.interferencias != null) {
+    const eventos = p.interferencias.eventos;
+    if (!Array.isArray(eventos)) {
+      problemas.push('interferencias.eventos ausente');
+    } else {
+      const idsCartasPacote = new Set((p.cartas || []).map((c) => c.id));
+      for (const ev of eventos) {
+        if (!ev.id || !ev.tipo) problemas.push('interferencias: evento sem id/tipo');
+        if (!ev.gatilho?.tipo) problemas.push(`interferencias.${ev.id}: sem gatilho`);
+        if (ev.gatilho?.tipo === 'extracao_carta' && !idsCartasPacote.has(ev.gatilho.cartaId))
+          problemas.push(`interferencias.${ev.id}: gatilho aponta carta fora do pacote`);
+        if (ev.efeito?.cartaDestruida && !idsCartasPacote.has(ev.efeito.cartaDestruida))
+          problemas.push(`interferencias.${ev.id}: cartaDestruida fora do pacote`);
+        for (const id of ev.efeito?.cartasNovas || []) {
+          if (!idsCartasPacote.has(id)) problemas.push(`interferencias.${ev.id}: carta nova sem definição no pacote (${id})`);
+        }
+        if (typeof ev.anuncio !== 'string' || !ev.anuncio.trim()) problemas.push(`interferencias.${ev.id}: sem anúncio`);
+      }
+    }
+  }
+  // FASE 4 — ecosInterferencia, OPCIONAL: mesmo shape dos ecos do mestre.
+  if (p.ecosInterferencia != null) {
+    const e = p.ecosInterferencia;
+    if (typeof e.titulo !== 'string' || !e.titulo.trim()) problemas.push('ecosInterferencia.titulo ausente ou vazio');
+    if (!e.porChave || typeof e.porChave !== 'object') {
+      problemas.push('ecosInterferencia.porChave ausente');
+    } else {
+      for (const [chave, variantes] of Object.entries(e.porChave)) {
+        if (!Array.isArray(variantes) || variantes.length === 0 || !variantes.every((v) => typeof v === 'string' && v.trim())) {
+          problemas.push(`ecosInterferencia.porChave.${chave}: variantes inválidas`);
+        }
+      }
+    }
+  }
   return problemas;
 }
 const problemasPacote = verificarPacote(pacote);
@@ -1604,6 +1647,304 @@ if (!ponteConsumivel) {
   console.log('\nGERADOR (FASE 3) — ponte forense com problemas:', problemasPonte.join(' | '));
 }
 
+// ============================================================
+// GUARDAS DO GERADOR (FASE 4 do gerador por simulação): o sistema de
+// interferência — eventos contingentes sob as Regras de Justiça R1–R6
+// (docs/game-design-simulacao.md §5). Provas:
+// (1) catálogo fechado v1 íntegro: exatamente os 4 tipos; cada um declara
+// gatilho observável, penalidade WIS > 0, vestígios de sucesso/falha no
+// catálogo de classes, delta informacional e proveniência na KB; toda
+// classe de vestígio de interferência é governada por WIS (R1), é FRESCA
+// e cita proveniência; a prosa do prenúncio existe (R4) e os ecos
+// pós-caso cobrem todas as chaves alcançáveis;
+// (2) integridade dos eventos, caso a caso: orçamento ≤ 3 e ≤ sorteado
+// (R5); tipo do catálogo, sem repetição; ator do elenco com papel
+// coerente (assassino/cúmplice); rolagem com a penalidade do catálogo,
+// alvo e sucesso coerentes com o WIS do ator (R1); ≥ 1 carta nova por
+// evento com definição presente e classe que evidencia o tipo (R2);
+// evidência destruída EXISTE no caso, nunca é do corpo, e é REDUNDANTE —
+// recomputado AQUI com as funções do motor (janela cobre, mecanismo
+// crava, presença e móbil apontam o réu) — inclusive no RAMO PIOR, com
+// todas as destruições do caso juntas (R2); gatilho referencia carta
+// existente, traz comoSoube e não destrói o próprio gatilho (R3 —
+// gatilho órfão = falha); rota com sustentação recomputada contra
+// rotina/adjacência/frequentados do mundo e comoChegou (R3 — rota órfã
+// = falha); todo silenciar tem prenúncio com prosa, carta FORA do gate
+// e interior no local do alvo (R4 + LOD);
+// (3) cobertura: nas seeds fixas de interferência, cada um dos 4 tipos
+// materializa ao menos uma vez e o ator-cúmplice ocorre;
+// (4) runtime mínimo sobre pacote SINTÉTICO (clone do tutorial +
+// eventos): carta nova gated até o disparo; evidência destruída perdida
+// após o disparo e preservada quando o perito chega primeiro (evitada);
+// eco pós-caso derivado por chave; e o TUTORIAL segue sem interferência
+// (nada dispara — regressão zero);
+// (5) cegueira do motor: veredicto/acusação não citam interferência.
+// ============================================================
+
+// Réplica independente do predicado R2 (mesmas funções do motor).
+function fatiaResolveSemQa(fatia, idsRemovidos) {
+  const horaExame = 11;
+  const removidos = new Set(idsRemovidos);
+  const cartasFatia = fatia.cartas.filter((c) => !removidos.has(c.id));
+  const verdade = fatia.verdadeDeOuro;
+  const ipm = horaExame - verdade.horaMorteAbsoluta;
+  const temporais = cartasFatia
+    .map((def) => ({ id: def.id, horaRegistro: horaExame, tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas }))
+    .filter((c) => c.tagsOcultas.dominio === 'temporal');
+  const janela = intersecaoJanelas(temporais.map(janelaDaCarta).filter(Boolean));
+  if (!janela || !(janela.inicio <= verdade.horaMorteAbsoluta && verdade.horaMorteAbsoluta <= janela.fim)) return false;
+  const sinais = cartasFatia.filter((c) => c.tagsOcultas?.dominio === 'causal').map((c) => c.tagsOcultas.sinal);
+  if (mecanismoCravado(sinais)?.id !== verdade.mecanismoCorreto) return false;
+  if (!cartasFatia.some((c) => c.tagsOcultas?.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto)) return false;
+  if (!cartasFatia.some((c) => c.tagsOcultas?.subDominio === 'motivo' && c.tagsOcultas.ligadoA === verdade.reuCorreto)) return false;
+  return true;
+}
+
+// (1) Catálogo fechado íntegro + prosa do prenúncio + chaves dos ecos.
+const TIPOS_INTERFERENCIA_V1 = ['destruir_evidencia', 'intimidar_testemunha', 'silenciar', 'subornar_testemunha'];
+const CHAVES_ECO_INTERFERENCIA = [
+  'destruir_evidencia_ocorrida', 'destruir_evidencia_evitada',
+  'intimidar_testemunha_ocorrida', 'intimidar_testemunha_evitada',
+  'subornar_testemunha_ocorrida', // suborno não destrói nada: nunca há 'evitada'
+  'silenciar_ocorrida', 'silenciar_evitada',
+];
+const catalogoInterferenciaIntegro =
+  JSON.stringify(Object.keys(CATALOGO_INTERFERENCIA).sort()) === JSON.stringify([...TIPOS_INTERFERENCIA_V1].sort()) &&
+  Object.values(CATALOGO_INTERFERENCIA).every(
+    (t) =>
+      typeof t.gatilhoObservavel === 'string' &&
+      t.penalidadeWis > 0 &&
+      typeof t.deltaInformacional === 'string' &&
+      [...t.vestigios.sucesso, ...t.vestigios.falha].every((c) => CLASSES_VESTIGIO_INTERFERENCIA[c] != null) &&
+      citaKbForense(t.proveniencia)
+  ) &&
+  Object.values(CLASSES_VESTIGIO_INTERFERENCIA).every(
+    (c) =>
+      c.atributo === 'WIS' &&
+      c.frescor === 'fresco' &&
+      c.evidenciaDe.length > 0 &&
+      c.evidenciaDe.every((t) => CATALOGO_INTERFERENCIA[t] != null) &&
+      citaKbForense(c.proveniencia)
+  ) &&
+  PROSA_PRENUNCIO.length > 0 &&
+  PROSA_PRENUNCIO.every((v) => typeof v === 'string' && v.trim().length > 0) &&
+  CHAVES_ECO_INTERFERENCIA.every(
+    (ch) =>
+      Array.isArray(ECOS_INTERFERENCIA_PADRAO.porChave[ch]) &&
+      ECOS_INTERFERENCIA_PADRAO.porChave[ch].length > 0 &&
+      ECOS_INTERFERENCIA_PADRAO.porChave[ch].every((v) => typeof v === 'string' && v.trim())
+  );
+
+// (2) Integridade dos eventos, caso a caso.
+function problemasDaInterferencia(caso) {
+  const problemas = [];
+  const { interferencia, mundo, fatiaForense, crime, escolha } = caso;
+  if (!interferencia) return ['caso sem bloco de interferência'];
+  const { eventos, cartasExtra, esqueleto } = interferencia;
+  if (eventos.length > 3) problemas.push('orçamento estourado (R5)');
+  if (eventos.length > esqueleto.orcamento) problemas.push('materializou mais que o orçamento sorteado (R5)');
+  const idsCartasCaso = new Set([...fatiaForense.cartas.map((c) => c.id), ...cartasExtra.map((c) => c.id)]);
+  if (idsCartasCaso.size !== fatiaForense.cartas.length + cartasExtra.length) problemas.push('id de carta repetido no caso');
+  const idsExtra = new Set(cartasExtra.map((c) => c.id));
+  const adjIntf = new Set(mundo.cidade.adjacencias.map(([a, b]) => `${a}|${b}`));
+  const saoAdjIntf = (a, b) => a !== b && (adjIntf.has(`${a}|${b}`) || adjIntf.has(`${b}|${a}`));
+  const tiposVistos = new Set();
+
+  for (const ev of eventos) {
+    const cat = CATALOGO_INTERFERENCIA[ev.tipo];
+    if (!cat) {
+      problemas.push(`${ev.id}: tipo fora do catálogo (R6)`);
+      continue;
+    }
+    if (tiposVistos.has(ev.tipo)) problemas.push(`${ev.id}: tipo repetido no caso`);
+    tiposVistos.add(ev.tipo);
+    const ator = mundo.elenco.find((p) => p.id === ev.ator);
+    if (!ator) problemas.push(`${ev.id}: ator fora do elenco`);
+    if (ev.atorPapel === 'assassino' && ev.ator !== crime.assassinoId) problemas.push(`${ev.id}: papel de assassino com outro ator`);
+    if (ev.atorPapel === 'cumplice' && ev.ator === crime.assassinoId) problemas.push(`${ev.id}: cúmplice é o próprio assassino`);
+
+    // R1 — rolagem penalizada e coerente.
+    if (ev.rolagem.penalidade !== cat.penalidadeWis) problemas.push(`${ev.id}: penalidade ≠ catálogo (R1)`);
+    if (ator && (ev.rolagem.wis !== ator.atributos.WIS || ev.rolagem.alvo !== Math.max(0, ator.atributos.WIS - cat.penalidadeWis)))
+      problemas.push(`${ev.id}: rolagem incoerente com o WIS do ator (R1)`);
+    if (ev.rolagem.sucesso !== ev.rolagem.dado < ev.rolagem.alvo) problemas.push(`${ev.id}: sucesso ≠ dado × alvo (R1)`);
+
+    // R2 — vestígio novo obrigatório, classes do catálogo e do tipo.
+    const novas = ev.efeito?.cartasNovas || [];
+    if (novas.length < 1) problemas.push(`${ev.id}: sem vestígio novo (R2)`);
+    const classesDoTipo = new Set([...cat.vestigios.sucesso, ...cat.vestigios.falha]);
+    for (const id of novas) {
+      const def = cartasExtra.find((c) => c.id === id);
+      if (!def) {
+        problemas.push(`${ev.id}: carta nova sem definição (${id})`);
+        continue;
+      }
+      const classe = def.vestigioInterferencia?.classe;
+      if (!CLASSES_VESTIGIO_INTERFERENCIA[classe]) problemas.push(`${ev.id}: classe fora do catálogo (${id})`);
+      else if (!CLASSES_VESTIGIO_INTERFERENCIA[classe].evidenciaDe.includes(ev.tipo))
+        problemas.push(`${ev.id}: classe não evidencia o tipo (${id})`);
+      if (classe && !classesDoTipo.has(classe)) problemas.push(`${ev.id}: classe fora do declarado pelo tipo (${id})`);
+    }
+
+    // R2 — evidência destruída: do caso, nunca do corpo, redundante.
+    if (ev.efeito?.cartaDestruida) {
+      const destruida = ev.efeito.cartaDestruida;
+      if (!idsCartasCaso.has(destruida)) problemas.push(`${ev.id}: evidência destruída fora do caso`);
+      const defDestruida = fatiaForense.cartas.find((c) => c.id === destruida);
+      if (defDestruida?.suporteFisico === 'corpo') problemas.push(`${ev.id}: interferência alcançou o corpo (proibido)`);
+      if (!fatiaResolveSemQa(fatiaForense, [destruida])) problemas.push(`${ev.id}: evidência destruída não é redundante (R2)`);
+    }
+
+    // R3 — gatilho observável, não-órfão, que não destrói a si mesmo.
+    const g = ev.gatilho || {};
+    if (g.tipo !== 'extracao_carta' || !idsCartasCaso.has(g.cartaId)) problemas.push(`${ev.id}: gatilho órfão (R3)`);
+    if (typeof g.comoSoube !== 'string' || !g.comoSoube.trim()) problemas.push(`${ev.id}: sem comoSoube (R3)`);
+    if (g.cartaId && g.cartaId === ev.efeito?.cartaDestruida) problemas.push(`${ev.id}: gatilho destruiria a si mesmo`);
+
+    // R3 — rota recomputada contra o mundo.
+    const r = ev.rota || {};
+    if (typeof r.comoChegou !== 'string' || !r.comoChegou.trim()) problemas.push(`${ev.id}: sem comoChegou (R3)`);
+    if (ator) {
+      const origem = ator.pacoteEspacial.rotina[r.faixa];
+      const sustenta =
+        (r.sustentacao === 'mesmo_local' && origem === r.para) ||
+        (r.sustentacao === 'adjacente' && saoAdjIntf(origem, r.para)) ||
+        (r.sustentacao === 'frequentado' && ator.pacoteEspacial.frequentados.includes(r.para)) ||
+        (r.sustentacao === 'retorno_a_cena' && ev.ator === crime.assassinoId && r.para === escolha.localId);
+      if (!sustenta || r.de !== origem) problemas.push(`${ev.id}: rota órfã (R3)`);
+    }
+
+    // R4 — prenúncio do silenciar: prosa presente, carta fora do gate,
+    // interior no local do alvo (LOD por relevância).
+    if (ev.tipo === 'silenciar') {
+      if (!ev.prenuncio || typeof ev.prenuncio.texto !== 'string' || !ev.prenuncio.texto.trim() || !idsExtra.has(ev.prenuncio.cartaId))
+        problemas.push(`${ev.id}: silenciar sem prenúncio legível (R4)`);
+      if (ev.prenuncio && novas.includes(ev.prenuncio.cartaId)) problemas.push(`${ev.id}: prenúncio atrás do gate`);
+      if (!mundo.interiores[ev.alvo?.localId]) problemas.push(`${ev.id}: local do silenciamento sem interior (LOD)`);
+    }
+    if (typeof ev.anuncio !== 'string' || !ev.anuncio.trim()) problemas.push(`${ev.id}: sem anúncio de diário`);
+  }
+
+  // R2 — ramo pior: todas as destruições do caso juntas.
+  const destruidas = eventos.map((e) => e.efeito?.cartaDestruida).filter(Boolean);
+  if (destruidas.length > 0 && !fatiaResolveSemQa(fatiaForense, destruidas))
+    problemas.push('ramo com todas as destruições não resolve (R2)');
+
+  // Nenhuma carta extra órfã (toda def pertence a um evento ou prenúncio).
+  const referenciadas = new Set(
+    eventos.flatMap((e) => [...(e.efeito?.cartasNovas || []), ...(e.prenuncio ? [e.prenuncio.cartaId] : [])])
+  );
+  for (const c of cartasExtra) {
+    if (!referenciadas.has(c.id)) problemas.push(`carta extra órfã: ${c.id}`);
+  }
+  return problemas;
+}
+
+// (3) Cobertura: seeds fixas onde os 4 tipos materializam (e o cúmplice
+// ocorre) — varridas deterministicamente na Fase 4; mudar o gerador pode
+// exigir nova varredura (o objetivo é nunca deixar os lints vazios).
+const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_3', 'intf_qa_10', 'intf_qa_44'];
+const casosInterferencia = SEEDS_QA_INTERFERENCIA.map((sd) => gerarCasoBruto(sd));
+const problemasInterferencia = [...casosGeradosPrimeira, ...casosInterferencia].flatMap((caso) =>
+  problemasDaInterferencia(caso).map((p) => `${caso.seed}: ${p}`)
+);
+const interferenciaIntegra = problemasInterferencia.length === 0;
+if (!interferenciaIntegra) {
+  console.log('\nGERADOR (FASE 4) — interferência com problemas:', problemasInterferencia.join(' | '));
+}
+const tiposCobertos = new Set(casosInterferencia.flatMap((c) => c.interferencia.eventos.map((e) => e.tipo)));
+const coberturaInterferencia =
+  TIPOS_INTERFERENCIA_V1.every((t) => tiposCobertos.has(t)) &&
+  casosInterferencia.some((c) => c.interferencia.eventos.some((e) => e.atorPapel === 'cumplice'));
+
+// (5) Cegueira do motor: veredicto/acusação não citam interferência.
+const motorSemInterferencia = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) => !/interferenc/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
+);
+
+// (4) Runtime mínimo sobre pacote sintético (clone do tutorial + eventos).
+function pacoteSinteticoInterferencia() {
+  const p = JSON.parse(JSON.stringify(montarPacoteTutorial()));
+  p.id = 'sintetico_interferencia';
+  p.cartas.push({
+    id: 'sint_intf_cinzas',
+    localidade: 'cena',
+    textoDisplay: 'Cinzas Frescas',
+    carimboPadrao: 'Cinzas frescas na lareira',
+    descricao: 'Carta sintética de QA (contrato do runtime, não do caso corrente).',
+    tagsOcultas: { dominio: 'vestigio', subDominio: 'limpeza_fresca' },
+  });
+  p.interferencias = {
+    eventos: [
+      {
+        id: 'intf_sint_1',
+        tipo: 'destruir_evidencia',
+        ator: 'silas_crane',
+        atorPapel: 'assassino',
+        gatilho: { tipo: 'extracao_carta', cartaId: 'dep_testamento', comoSoube: 'sintético' },
+        rota: { de: 'oficina', para: 'cena', faixa: 'noite', sustentacao: 'retorno_a_cena', comoChegou: 'sintético' },
+        rolagem: { wis: 3, penalidade: 2, alvo: 1, dado: 4, sucesso: false },
+        efeito: { cartaDestruida: 'ev_suplica_cesto', cartasNovas: ['sint_intf_cinzas'] },
+        prenuncio: null,
+        anuncio: 'Sinais de mexida na cena.',
+      },
+    ],
+  };
+  p.ecosInterferencia = ECOS_INTERFERENCIA_PADRAO;
+  return p;
+}
+
+// Caminho OCORRIDA: gate antes do disparo; perda depois; eco por chave.
+useJogo.getState().carregarCaso(pacoteSinteticoInterferencia());
+useJogo.getState().escolherDetective();
+useJogo.getState().iniciarInvestigacao();
+useJogo.getState().extrairCarta('sint_intf_cinzas');
+const gateAntesDoDisparo = !s().cartasRegistradas.some((c) => c.id === 'sint_intf_cinzas');
+useJogo.getState().extrairCarta('dep_testamento'); // o gatilho observável
+const disparoRegistrado = s().interferenciasDisparadas.length === 1 && s().interferenciasDisparadas[0].evitada === false;
+useJogo.getState().extrairCarta('ev_suplica_cesto');
+const evidenciaPerdida = !s().cartasRegistradas.some((c) => c.id === 'ev_suplica_cesto');
+useJogo.getState().extrairCarta('sint_intf_cinzas');
+const vestigioNovoDisponivel = s().cartasRegistradas.some((c) => c.id === 'sint_intf_cinzas');
+useJogo.getState().definirReu('silas_crane');
+useJogo.getState().submeterAcusacao();
+const ecoOcorrida = s().conclusoes.find((c) => c.tagsOcultas?.tipo === 'eco_interferencia');
+const ecoOcorridaOk = ecoOcorrida?.tagsOcultas.chave === 'destruir_evidencia_ocorrida' && !!ecoOcorrida.resumo;
+
+// Caminho EVITADA: quem chega primeiro não perde a peça (R4).
+useJogo.getState().carregarCaso(pacoteSinteticoInterferencia());
+useJogo.getState().escolherDetective();
+useJogo.getState().iniciarInvestigacao();
+useJogo.getState().extrairCarta('ev_suplica_cesto'); // o perito chega primeiro
+useJogo.getState().extrairCarta('dep_testamento');
+const evitadaRegistrada = s().interferenciasDisparadas[0]?.evitada === true;
+const evidenciaSalva = s().cartasRegistradas.some((c) => c.id === 'ev_suplica_cesto');
+useJogo.getState().definirReu('silas_crane');
+useJogo.getState().submeterAcusacao();
+const ecoEvitada = s().conclusoes.find((c) => c.tagsOcultas?.tipo === 'eco_interferencia');
+const ecoEvitadaOk = ecoEvitada?.tagsOcultas.chave === 'destruir_evidencia_evitada';
+
+// Regressão zero: o tutorial (sem `interferencias`) segue inerte.
+useJogo.getState().carregarCaso(montarPacoteTutorial());
+useJogo.getState().escolherDetective();
+useJogo.getState().iniciarInvestigacao();
+useJogo.getState().extrairCarta('dep_testamento');
+useJogo.getState().extrairCarta('ev_suplica_cesto');
+const tutorialInerte = s().interferenciasDisparadas.length === 0 && s().cartasRegistradas.length === 2;
+
+// Restaura o pacote do caso-escola para as checagens/estado seguintes.
+carregarCaso(pacote);
+const runtimeInterferenciaOk =
+  gateAntesDoDisparo &&
+  disparoRegistrado &&
+  evidenciaPerdida &&
+  vestigioNovoDisponivel &&
+  ecoOcorridaOk &&
+  evitadaRegistrada &&
+  evidenciaSalva &&
+  ecoEvitadaOk &&
+  tutorialInerte;
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -1661,6 +2002,11 @@ const checagens = [
   ['Tabela viva sem atributo órfão: FOR/INT/WIS → vestígio, CHA → comportamento; proveniência nos catálogos (FASE 3)', tabelaVivaSemOrfao],
   ['RegistroDoCrime íntegro: variável órfã, limpeza sem 2ª ordem e incoerência espacial = falha (FASE 3)', crimesIntegros],
   ['Ponte consumível: o motor intocado cobre a hora real, crava o mecanismo e acha presença e móbil do réu (FASE 3)', ponteConsumivel],
+  ['Interferência: catálogo fechado v1 íntegro (R6/R1), prosa do prenúncio e ecos por chave (FASE 4)', catalogoInterferenciaIntegro],
+  ['Interferência: eventos íntegros — orçamento (R5), rolagem (R1), saldo e redundância inclusive no ramo pior (R2), gatilho e rota não-órfãos (R3), prenúncio do silenciar (R4) (FASE 4)', interferenciaIntegra],
+  ['Interferência: cobertura — os 4 tipos materializam nas seeds fixas e o cúmplice ocorre (FASE 4)', coberturaInterferencia],
+  ['Interferência: runtime mínimo — gate, perda, evitada, eco pós-caso; tutorial inerte (regressão zero) (FASE 4)', runtimeInterferenciaOk],
+  ['Interferência fora do motor: veredicto/acusação não leem eventos (FASE 4)', motorSemInterferencia],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

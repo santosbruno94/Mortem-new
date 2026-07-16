@@ -15,6 +15,8 @@ import {
   obterDefinicaoCarta,
   resolverEstadoCarta,
   obterEcosDoMestre,
+  obterInterferencias,
+  obterEcosInterferencia,
 } from '../data/pacote_caso.js';
 import { custoViagem, obterNo } from '../data/mapa.js';
 import { ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
@@ -23,6 +25,7 @@ import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { ligacaoDeConfrontoEmCena } from '../logic/acusacao.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
 import { derivarEcoDoMestre } from '../logic/ecoMestre.js';
+import { derivarEcosInterferencia } from '../logic/ecoInterferencia.js';
 import { interpolar } from '../logic/interpolar.js';
 
 // Constrói o objeto detective do §12. Há um único perito jogável; o shape
@@ -103,6 +106,17 @@ export function estadoInicialCaso() {
     // hipótese de trabalho, mas NÃO toca o veredicto (o mural decide). Dado
     // puro de UI — o motor não lê. null | 'relato' | 'corpo'.
     escolhaContradicao: null,
+    // FASE 4 (interferência): eventos contingentes do pacote JÁ DISPARADOS.
+    // O runtime não decide nada — verifica gatilhos materializados no pacote
+    // (dispararInterferencias) e aplica o efeito. `evitada` = o gatilho
+    // disparou com a evidência-alvo já registrada (quem chega primeiro não a
+    // perde). Sem `interferencias` no pacote (o tutorial), fica sempre [].
+    // O motor de veredicto jamais lê. [{ id, hora, evitada }]
+    interferenciasDisparadas: [],
+    // FASE 4: o eco do legista PÓS-CASO sobre interferências ocorridas/
+    // evitadas (mesmo mecanismo do eco de falha, FASE 6). Derivado em
+    // submeterAcusacao; reanexado às conclusões a cada consolidação.
+    ecoInterferencias: [],
     nSubmissoes: 0, // acusações levadas a julgamento (a retentativa custa horas)
     // Reincidência POR CÓDIGO de falha do veredicto (dado de UI: a cortesia
     // do tutorial escala a dica na segunda queda no MESMO ponto; o motor
@@ -198,6 +212,8 @@ export const useJogo = create(
       estadosSuspeito: {},
       eventosConfronto: [],
       escolhaContradicao: null,
+      interferenciasDisparadas: [],
+      ecoInterferencias: [],
       log: [
         ...s.log,
         { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
@@ -263,6 +279,8 @@ export const useJogo = create(
     );
     get().adicionarLigacao(par[0], par[1]);
     if (!jaLigada) get().registrarLog('O confronto ficou anotado ao mural.');
+    // FASE 4: o confronto em cena é ação observável (gatilho possível).
+    get().dispararInterferencias();
   },
 
   // #5 — firma a escolha da contradição de horas (irreversível). Registra a
@@ -312,6 +330,8 @@ export const useJogo = create(
         nosVisitados: visitados,
         nosNovos: s.nosNovos.filter((id) => id !== noId),
       });
+      // FASE 4: visitar um nó também é ação observável (gatilho possível).
+      get().dispararInterferencias();
       return;
     }
     const no = obterNo(noId);
@@ -328,6 +348,8 @@ export const useJogo = create(
         },
       ],
     });
+    // FASE 4: a viagem em público é ação observável (gatilho possível).
+    get().dispararInterferencias();
   },
 
   // Extração (§6): clicar no negrito registra a carta. Examinar é de graça
@@ -338,6 +360,22 @@ export const useJogo = create(
     if (s.cartasRegistradas.some((c) => c.id === cartaId)) return;
     const definicao = obterDefinicaoCarta(cartaId);
     if (!definicao) return;
+    // FASE 4 — os dois gates da interferência (inertes sem `interferencias`
+    // no pacote, como no tutorial):
+    //   • vestígio NOVO de evento ainda não disparado não existe na cena;
+    //   • evidência destruída por evento disparado (e não evitado) perdeu-se.
+    const eventosIntf = obterInterferencias();
+    if (eventosIntf.length > 0) {
+      const disparadas = new Map(s.interferenciasDisparadas.map((d) => [d.id, d]));
+      const aindaNaoExiste = eventosIntf.some(
+        (ev) => !disparadas.has(ev.id) && (ev.efeito?.cartasNovas || []).includes(cartaId)
+      );
+      const perdida = eventosIntf.some((ev) => {
+        const disparo = disparadas.get(ev.id);
+        return disparo && !disparo.evitada && ev.efeito?.cartaDestruida === cartaId;
+      });
+      if (aindaNaoExiste || perdida) return;
+    }
     const caso = obterCaso();
     const ipm = ipmAtual(s.horasJogo, caso.verdadeDeOuro.horasMorteAntesChegada, caso.parametrosCena.horasChegada);
     const estado = resolverEstadoCarta(definicao, ipm);
@@ -401,6 +439,47 @@ export const useJogo = create(
     });
     // O mestre relê o corpo e atualiza, de cabeça, a leitura de quando/como.
     get().consolidarLeituraMestre();
+    // FASE 4: a extração é ação OBSERVÁVEL (o depoimento tomado em público,
+    // o registro consultado) — verifica gatilhos de interferência do pacote.
+    get().dispararInterferencias();
+  },
+
+  // FASE 4 — runtime MÍNIMO da interferência: nenhuma decisão nova aqui.
+  // Percorre os eventos contingentes do pacote e, para os ainda não
+  // disparados, verifica se o gatilho JÁ MATERIALIZADO se cumpriu no estado
+  // (carta extraída / nó visitado / prova apresentada — sempre ações
+  // observáveis do jogador, R3). Ao disparar, apenas ANOTA: o efeito
+  // (evidência destruída indisponível; vestígios novos disponíveis) é
+  // aplicado pelos gates de extrairCarta. `evitada` = a evidência-alvo já
+  // estava registrada quando o gatilho caiu. Sem eventos no pacote, no-op.
+  dispararInterferencias: () => {
+    const s = get();
+    const eventos = obterInterferencias();
+    if (eventos.length === 0) return;
+    const ja = new Set(s.interferenciasDisparadas.map((d) => d.id));
+    const registradas = new Set(s.cartasRegistradas.map((c) => c.id));
+    const novas = [];
+    const logs = [];
+    for (const ev of eventos) {
+      if (ja.has(ev.id)) continue;
+      const g = ev.gatilho || {};
+      const disparou =
+        (g.tipo === 'extracao_carta' && registradas.has(g.cartaId)) ||
+        (g.tipo === 'visita_local' && s.nosVisitados.includes(g.noId)) ||
+        (g.tipo === 'prova_apresentada' && (s.provasApresentadas[g.suspeitoId] || []).length > 0);
+      if (!disparou) continue;
+      const evitada = !!ev.efeito?.cartaDestruida && registradas.has(ev.efeito.cartaDestruida);
+      novas.push({ id: ev.id, hora: s.horasJogo, evitada });
+      logs.push({
+        hora: s.horasJogo,
+        texto: ev.anuncio || 'Alguma coisa se moveu na vila desde a última visita.',
+      });
+    }
+    if (novas.length === 0) return;
+    set({
+      interferenciasDisparadas: [...s.interferenciasDisparadas, ...novas],
+      log: [...s.log, ...logs],
+    });
   },
 
   // Ação especial do Termômetro: gera a carta de algor mortis a partir da
@@ -466,6 +545,7 @@ export const useJogo = create(
       ultimaCartaPousada: primeiraDoCaso ? null : carta.id,
     });
     get().consolidarLeituraMestre();
+    get().dispararInterferencias();
   },
 
   // O legista relê o corpo e FALA a leitura de quando/como (a "dica"): faz
@@ -475,9 +555,12 @@ export const useJogo = create(
     const s = get();
     const base = s.conclusoes.filter((c) => c.origem !== 'mestre');
     // O eco da falha (FASE 6) também é conclusão do mestre: reanexa-se aqui
-    // para que registrar nova carta não o apague junto com a síntese.
+    // para que registrar nova carta não o apague junto com a síntese. O eco
+    // de interferência (FASE 4) segue a mesma regra.
     const eco = s.ecoMestreFalha ? [s.ecoMestreFalha] : [];
-    set({ conclusoes: [...base, ...conclusoesDoMestre(s.cartasRegistradas), ...eco] });
+    set({
+      conclusoes: [...base, ...conclusoesDoMestre(s.cartasRegistradas), ...eco, ...(s.ecoInterferencias || [])],
+    });
   },
 
   // ---------------- Ações da Construção da Acusação ----------------
@@ -536,13 +619,25 @@ export const useJogo = create(
     for (const codigo of new Set(veredicto.falhas.map((f) => f.codigo))) {
       falhasVistas[codigo] = (falhasVistas[codigo] || 0) + 1;
     }
+    // FASE 4 — o eco PÓS-CASO sobre interferências ocorridas/evitadas
+    // (mesmo mecanismo dos códigos de falha). Determinístico; sem
+    // `ecosInterferencia` no pacote (o tutorial), devolve [] e nada muda.
+    const ecoInterferencias = derivarEcosInterferencia(
+      obterInterferencias(),
+      s.interferenciasDisparadas,
+      obterEcosInterferencia(),
+      `${obterCaso().id}|${(s.detective && s.detective.name) || ''}`
+    );
     set({
       veredicto,
       falhasVistas,
+      ecoInterferencias,
       nSubmissoes: s.nSubmissoes + 1,
       overlay: { tipo: 'monologo', id: null },
       log: [...s.log, { hora: s.horasJogo, texto: 'Acusação levada a julgamento.' }],
     });
+    // Reanexa o eco às conclusões do mestre na Caderneta.
+    get().consolidarLeituraMestre();
   },
 
   fecharVeredicto: () => set({ veredicto: null, overlay: null }),

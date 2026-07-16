@@ -22,6 +22,7 @@ import { saoAdjacentes } from './cidade.js';
 import { METODOS, metodosElegiveis } from './metodos.js';
 import { resolverCrime } from './crime.js';
 import { fatiaForenseDoCrime } from './ponte_caso.js';
+import { sortearEsqueletoInterferencia, gerarInterferencias } from './interferencia.js';
 
 function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
@@ -125,25 +126,42 @@ export function gerarCasoBruto(seed, opts = {}) {
   const elegiveis = metodosElegiveis(cenario, assassino.atributos.INT);
   const metodoId = elegiveis[hashString(`${sal}|metodo`) % elegiveis.length];
 
-  // 6. O mundo definitivo: interior detalhado SÓ para a cena do crime
-  // (LOD por relevância — a cena é o local elegível desta fase).
-  const mundo = gerarMundo(seed, { n, locaisElegiveis: [localId] });
-  const interior = mundo.interiores[localId];
-  const comodoId = comodoDoCrime(interior, faixa);
-
-  // 7. Ouvintes potenciais do ruído (rotina × adjacência, §4.2.5): quem
+  // 5.1 Ouvintes potenciais do ruído (rotina × adjacência, §4.2.5): quem
   // partilha o teto na faixa ouve o abafado; o vizinho, só o audível.
-  const outros = mundo.elenco.filter((p) => p.id !== vitima.id && p.id !== assassino.id);
+  // Derivado de rotina (idêntica em mundoBase e no mundo definitivo).
+  const outros = elenco.filter((p) => p.id !== vitima.id && p.id !== assassino.id);
   const ouvintes = {
     mesmoLocal: outros.filter((p) => p.pacoteEspacial.rotina[faixa] === localId).map((p) => p.id),
     adjacentes: outros
       .filter(
         (p) =>
           p.pacoteEspacial.rotina[faixa] !== localId &&
-          saoAdjacentes(mundo.cidade, p.pacoteEspacial.rotina[faixa], localId)
+          saoAdjacentes(mundoBase.cidade, p.pacoteEspacial.rotina[faixa], localId)
       )
       .map((p) => p.id),
   };
+
+  // 5.2 FASE 4 — esqueleto da interferência (pré-crime, só rotina): o
+  // sorteio R5 de tipos/atores/faixas e — para `silenciar` — o local do
+  // alvo, que entra em locaisElegiveis (LOD: local de interferência tem
+  // interior). A materialização completa vem depois da fatia (passo 10).
+  const esqueleto = sortearEsqueletoInterferencia({
+    seed,
+    mundoBase,
+    vitimaId: vitima.id,
+    assassinoId: assassino.id,
+    faixaCrime: faixa,
+    localCrimeId: localId,
+    ouvintes,
+  });
+
+  // 6. O mundo definitivo: interior detalhado SÓ para os locais elegíveis
+  // a cena (LOD por relevância — a cena do crime e os locais de
+  // interferência sorteados no esqueleto).
+  const locaisElegiveis = [...new Set([localId, ...esqueleto.locaisExtras])];
+  const mundo = gerarMundo(seed, { n, locaisElegiveis });
+  const interior = mundo.interiores[localId];
+  const comodoId = comodoDoCrime(interior, faixa);
 
   // 8. O crime é cometido (autobattler sobre o grid da cena).
   const crime = resolverCrime({
@@ -159,24 +177,38 @@ export function gerarCasoBruto(seed, opts = {}) {
     seed,
   });
 
-  // 9. Ponte: a fatia forense que o pacote de caso consumirá.
-  const fatiaForense = fatiaForenseDoCrime({ seed, mundo, crime });
+  // 9. Ponte: a fatia forense que o pacote de caso consumirá — com a
+  // testemunha do visto-com-vida identificada (alvo possível da FASE 4).
+  const fatiaForense = fatiaForenseDoCrime({
+    seed,
+    mundo,
+    crime,
+    testemunhaVistoVivoId: esqueleto.testemunhaVistoVivoId,
+  });
+
+  const escolha = {
+    vitimaId: vitima.id,
+    assassinoId: assassino.id,
+    cenario,
+    metodoId,
+    metodo: { mecanismo: METODOS[metodoId].mecanismo, instrumento: METODOS[metodoId].instrumento },
+    localId,
+    comodoId,
+    faixa,
+    hora,
+  };
+
+  // 10. FASE 4 — materialização da interferência: os pedidos do esqueleto
+  // viram eventos contingentes completos (rolagem R1, redundância R2,
+  // rota e gatilho R3, prenúncio R4), ou descartes com motivo.
+  const interferencia = gerarInterferencias({ seed, mundo, crime, fatiaForense, escolha, esqueleto });
 
   return {
     seed: salDaSeed(seed),
     mundo,
-    escolha: {
-      vitimaId: vitima.id,
-      assassinoId: assassino.id,
-      cenario,
-      metodoId,
-      metodo: { mecanismo: METODOS[metodoId].mecanismo, instrumento: METODOS[metodoId].instrumento },
-      localId,
-      comodoId,
-      faixa,
-      hora,
-    },
+    escolha,
     crime,
     fatiaForense,
+    interferencia,
   };
 }

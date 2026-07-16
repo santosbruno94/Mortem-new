@@ -465,3 +465,45 @@ pipeline `revisar-prosa`; bloqueantes corrigidos antes do commit. Ver
 - **Aceite consciente de brilho:** onde o eco 5.2 dispara, o epílogo tem duas frases de
   efeito (eco + balanço do perito), separadas e em registros distintos — tolerável pelo
   editor; o gatilho condicional as torna raras.
+
+## Fase 4 do gerador por simulação (16/07/2026) — Sistema de interferência
+
+Entrega da Fase 4 da ordem "Gerador por Simulação e Sistema de Interferência":
+eventos contingentes no pacote de caso sob as Regras de Justiça R1–R6 (design em
+`docs/game-design-simulacao.md` §5, detalhe de implementação no bloco "Implementado
+na Fase 4" do mesmo arquivo). Decisões de forma tomadas nesta fase:
+
+- **Suborno não destrói o registro anterior.** A R6 exige contradição detectável
+  (depoimento novo × registro anterior × evidência física); destruir o depoimento
+  velho mataria o par. O gatilho do suborno é a extração do próprio depoimento —
+  o perito sempre tem a primeira versão em mãos quando a segunda aparece.
+- **Nenhum gatilho destrói a própria carta-gatilho** (lint no QA). Se o evento só
+  dispara quando a carta é extraída e o efeito destruísse essa carta, o evento
+  nasceria sempre "evitado" — contingência sem dente.
+- **Alvos por tipo, amarrados ao que a Fase 3 já produz:** `destruir_evidencia`
+  mira carta FÍSICA da cena redundante (a ponte passou a emitir gen_sangue_alheio
+  e gen_pegadas como vias extras de presença — é sobre elas que a R2 admite
+  destruição; a via instrumental e o corpo ficam intocáveis); `intimidar` mira a
+  testemunha do visto-com-vida; `silenciar` mira a testemunha do ruído (escolhida
+  PRÉ-crime entre os ouvintes potenciais, porque o local dela precisa de interior —
+  LOD); `subornar` mira testemunha com preço (motivo econômico da Fase 1 ou CHA ≤ 2).
+- **Redundância R2 computada com as funções do próprio motor** (`fatiaResolveSem`),
+  inclusive no ramo pior (todas as destruições do caso juntas) — antecipa, por
+  construção, a prova de âncora sob todos os ramos que a Fase 5 promoverá a
+  invariante (os ramos parciais preservam supraconjuntos de cartas).
+- **`retorno_a_cena` como sustentação de rota** só para o assassino voltando à cena
+  do próprio crime: o trajeto que sustentou o crime sustenta o retorno. Qualquer
+  outro alvo exige mesmo-local/adjacência/frequentado da rotina (R3 estrita).
+- **"Evitada" = o gatilho disparou com o alvo já no caderno.** O silenciamento ainda
+  mata a testemunha (v1 não tem ação de proteger — R4 dá o prenúncio para EXTRAIR a
+  tempo); o que se salva é o depoimento. Eco pós-caso reconhece os dois desfechos;
+  evento nunca disparado não gera eco (para o jogador, não aconteceu).
+- **Runtime aplica-e-anota, nada decide:** `dispararInterferencias` verifica gatilhos
+  materializados (extração de carta / visita / prova apresentada) e dois gates em
+  `extrairCarta` fazem o efeito (vestígio novo não existe antes; evidência destruída
+  perde-se depois). Tutorial sem os campos novos — regressão zero provada no QA.
+
+Rejeições (uma linha cada): gatilho por relógio/tempo (não é ação observável do
+jogador — feriria R3); destruição de carta já registrada (o que está no caderno do
+perito é do perito — a corrida é ANTES); `plantar_evidencia_falsa` (segue adiado
+para v2, decisão da ordem §2.7); agência livre em runtime (invariante da ordem).
