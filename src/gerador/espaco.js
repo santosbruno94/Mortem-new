@@ -219,7 +219,7 @@ export const TIPOS_PREDIO = {
 export const MOBILIA_POR_CLASSE = {
   trabalhadora: {
     itens: [
-      { id: 'range_de_ferro', rotulo: 'range de ferro a carvão', comodos: ['cozinha'] },
+      { id: 'range_de_ferro', rotulo: 'fogão de ferro a carvão', comodos: ['cozinha'] },
       { id: 'mesa_raspada', rotulo: 'mesa de tampo raspado', comodos: ['cozinha'] },
       { id: 'cadeiras_windsor', rotulo: 'cadeiras Windsor', comodos: ['cozinha'] },
       { id: 'sofa_velho', rotulo: 'sofá velho', comodos: ['cozinha'] },
@@ -239,7 +239,7 @@ export const MOBILIA_POR_CLASSE = {
   },
   media: {
     itens: [
-      { id: 'range_de_ferro', rotulo: 'range de ferro a carvão', comodos: ['cozinha'] },
+      { id: 'range_de_ferro', rotulo: 'fogão de ferro a carvão', comodos: ['cozinha'] },
       { id: 'mesa_de_cozinha', rotulo: 'mesa de cozinha', comodos: ['cozinha'] },
       { id: 'pia_de_copa', rotulo: 'pia da copa', comodos: ['copa'] },
       { id: 'prateleiras_da_despensa', rotulo: 'prateleiras frias da despensa', comodos: ['copa'] },
@@ -261,7 +261,7 @@ export const MOBILIA_POR_CLASSE = {
   },
   alta: {
     itens: [
-      { id: 'range_de_ferro', rotulo: 'range de ferro a carvão', comodos: ['cozinha'] },
+      { id: 'range_de_ferro', rotulo: 'fogão de ferro a carvão', comodos: ['cozinha'] },
       { id: 'mesa_de_cozinha', rotulo: 'mesa da criadagem', comodos: ['cozinha'] },
       { id: 'regua_de_sinos', rotulo: 'régua de sinos etiquetados', comodos: ['cozinha'] },
       { id: 'pia_de_copa', rotulo: 'pia da copa', comodos: ['copa'] },

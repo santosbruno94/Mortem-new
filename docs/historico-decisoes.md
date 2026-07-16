@@ -681,3 +681,59 @@ derivada). Fases 0–5 entregues em sequência. Decisões:
   fantasma — `--self-test` verboseia) e replay chamada a chamada. `qa-ui.mjs`:
   a rota gerada agora interroga (4 tons, extração do álibi, encerramento).
 - **Playtest dirigido**: roteiro próprio em `docs/playtest-arvore-dialogo.md`.
+
+## OS lapidação editorial da prosa gerada (16/07/2026) — o corpus dos 9 casos sai do regime "mecânica primeiro"
+
+Execução da OS elaborada em `docs/os-lapidacao-prosa-gerada.md` (rascunho da PR
+#43). Fases 0–4 entregues em sequência: extração do corpus realizado (script de
+mesa, fora do bundle) + mapa variante→casos, parecer consolidado do pipeline
+`revisar-prosa` (3 revisores em paralelo), reescrita na FONTE
+(`src/gerador/pacote_gerado.js` + residuais em `dialogos_gerados.js`,
+`interferencia.js`, `espaco.js`) com `gerar:casos` no mesmo commit, e segundo
+passe até zero bloqueantes (veredicto APROVADO dos três revisores). Decisões:
+
+- **Dedução vazada era o grosso** (10 bloqueantes): fechos-conclusão de carta
+  ("Alguém saiu dali ferido, e andando", "O passo é de saída, e é um só"),
+  máximas de interferência ("Dívida velha não se paga sozinha", "Moeda graúda
+  tem caminho — e o caminho sobe até X"), "mão mais grosseira", móbil com
+  intenção do réu, e o título "Sangue que Não É da Vítima" (sorologia
+  impossível em 1893 → "O Rastro de Gotas"). Tudo reduzido ao observável.
+- **Livor contraditório só no estado FIXO** (erro forense: o móvel migra com o
+  corpo e não testemunha postura anterior), sem o "porém" adversativo — a
+  justaposição deixa o curto-circuito com o jogador. A raiz no modelo (arrasto
+  no instante da morte em `crime.js`) fica LAVRADA para decisão do usuário.
+- **O delegado deixou de ser aforista**: das cinco tiradas por abertura ficou
+  uma ("papel meu não data defunto" — fórmula de ofício) + o fecho de handoff.
+  Papel justifica registro comum entre os seis sobrenomes, não espírito comum.
+- **Única ampliação de corpus aprovada**: 3 variantes de retrato por trait
+  (armações variadas, `hashString` salgado) + dedup por varredura na ordem
+  estável da tela — zero retrato repetido lado a lado nas 9 telas. O corte de
+  escopo previsto na OS §8 não foi necessário em nenhuma outra superfície.
+- **Costura com o injetado**: concordância "a/o acharam" pelo gênero da vítima;
+  artigo do prédio (`sujeitoDoLugar`); mobília filtrada pelo cômodo do crime;
+  "quarto(s) (sobrado)" → "quarto do sobrado"; dedup de textura de vestígios;
+  moldura do ruído por posto de escuta (mora × frequentava × vizinha).
+- **Anglicismos só na exibição**: `profissaoExibida` (squire→"senhor de
+  terras", professora de vila→"mestra-escola" — ids de carta intactos);
+  "range"→"fogão de ferro a carvão" (rotulo de mobília; id preservado).
+  "Taproom"/"beer engine"/"estufa de ferro" ficam, lavrados (moldura diegética
+  "a que a vila chama"); sugestão de verbete de glossário anotada.
+- **Prenúncio neutro de gênero** (contrato R4 preservado: carta e evento
+  derivam da mesma `PROSA_PRENUNCIO`; guarda verde) — a descrição de carta não
+  passa por interpolação, então nada de "o senhor" fixo.
+- **Álibi × visto-com-vida**: quando a testemunha do avistamento declara hora
+  DENTRO da própria janela de álibi, a fala assume o encontro à porta
+  (`encontroNaJanela` em `dialogos_gerados.js`) — as duas declarações do mesmo
+  nome deixam de se excluir (comarca_3).
+- **Allowlist do lint-prosa**: nenhuma das 21 exceções `TODO(revisão
+  editorial)` pertence às fontes desta OS (todas são do caso-escola:
+  cartas/diálogos/glossário/monólogo/epílogo) — nada a absolver nem reescrever
+  aqui; zero exceção nova criada.
+- **Achados de DADO lavrados para o usuário** (fora do escopo de prosa): gate
+  método×força (esganadura de ferreiro por criada), dedup de nomes entre casos
+  e prenome vítima×elenco, sobrenomes partilhados sem parentesco tratado,
+  culto noturno como álibi, menino de 14 na taverna, colocação da testemunha
+  do ruído no prédio da cena, custeio da perícia pela vila × coroner (Medical
+  Witnesses Act 1836 — enquadramento estrutural do jogo).
+- **Playtest de leitura**: roteiro próprio em
+  `docs/playtest-leitura-prosa-gerada.md`.

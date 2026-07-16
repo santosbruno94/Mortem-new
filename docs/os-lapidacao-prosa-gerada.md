@@ -1,7 +1,13 @@
 # OS — Lapidação editorial da prosa dos casos gerados
 
-**Status: elaborada (rascunho de 16/07/2026); execução pendente de ordem do
-usuário.** Origem: decisão registrada na Fase 6 — "Prosa de template em regime
+**Status: EXECUTADA (16/07/2026).** Fases 0–4 entregues: parecer consolidado do
+pipeline `revisar-prosa` sobre o corpus realizado dos 9 casos, reescrita na
+fonte + regeneração no mesmo commit, segundo passe com zero achados
+bloqueantes (três revisores: APROVADO), docs sem a ressalva "mecânica
+primeiro", roteiro de leitura em `docs/playtest-leitura-prosa-gerada.md` e ata
+em `docs/historico-decisoes.md`. Nenhuma exceção da allowlist do lint-prosa
+pertencia às fontes desta OS; nenhuma exceção nova foi criada. Origem: decisão
+registrada na Fase 6 — "Prosa de template em regime
 'mecânica primeiro' (precedente de dialogos.js): funcional, sob lint-prosa; a
 lapidação editorial passa pelo pipeline `revisar-prosa` em passo próprio"
 (`docs/historico-decisoes.md`; anotada também em `MORTEM_CONTEXTO.md` §13 e em

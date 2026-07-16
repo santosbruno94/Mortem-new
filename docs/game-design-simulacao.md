@@ -402,9 +402,11 @@ em `src/gerador/caso.js`). Guardas novas no `qa.mjs` (seção FASE 6): replay by
 byte do embarcado contra o montador, higiene de todo pacote (campos, marcadores ↔
 cartas, blocos contingentes, slots, zero id/rótulo cru) e os 4 perfis → 4
 desfechos na réplica e no pool. O `qa-ui.mjs` ganhou a ROTA GERADA (?caso=,
-abertura gerada, extração, mural, retomada de save). Prosa dos templates em regime
-"mecânica primeiro" (lapidação via `revisar-prosa` em passo próprio), já sob o
-lint-prosa.
+abertura gerada, extração, mural, retomada de save). A prosa dos templates,
+nascida em regime "mecânica primeiro", foi lapidada pela OS própria
+(`docs/os-lapidacao-prosa-gerada.md`, 16/07/2026): pipeline `revisar-prosa`
+sobre o corpus realizado, correção na fonte + `gerar:casos` no mesmo commit,
+segundo passe com zero bloqueantes — segue sob o lint-prosa.
 
 **Implementado na OS da árvore de diálogo** (posterior à Fase 6; norma em
 `docs/os-arvore-dialogo-procedural.md`): a rejeição "v1 sem árvore" caiu — todo

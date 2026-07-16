@@ -32,17 +32,18 @@
 //     tornaria a Vitória Absoluta inalcançável). instrumentoCorreto passa
 //     a nomear o tipoVestigio da carta de nexo (métodos sem instrumento —
 //     esganadura — apontam o pertence arrancado).
-//   • NB de prosa: os templates abaixo são redação FUNCIONAL da Fase 6
-//     (mecânica primeiro), no mesmo regime declarado em dialogos.js — a
-//     lapidação final passa pelo pipeline `revisar-prosa` em passo
-//     próprio. O lint-prosa mecânico já fiscaliza este arquivo.
+//   • NB de prosa: os templates abaixo passaram pela OS de lapidação
+//     editorial (docs/os-lapidacao-prosa-gerada.md): pipeline
+//     `revisar-prosa` sobre o corpus realizado dos 9 casos, correção
+//     sempre AQUI (na fonte) e regeneração no mesmo commit. O lint-prosa
+//     mecânico segue fiscalizando este arquivo.
 // =====================================================================
 
 import { hashString } from '../logic/hash.js';
 import { formatHora, formatHoraComDia, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 import { gerarCasoBruto } from './caso.js';
-import { derivarDialogos, formasDoLugar } from './dialogos_gerados.js';
+import { derivarDialogos, formasDoLugar, profissaoExibida } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 
 // ---------------------------------------------------------------------
@@ -76,7 +77,7 @@ const SOBRENOMES_DELEGADO = ['Fenwick', 'Harrow', 'Quill', 'Bexley', 'Stanmore',
 function rotuloDaFaixa(faixa) {
   if (faixa === 'noite') return 'na noite de 13';
   if (faixa === 'madrugada') return 'na madrugada de 14';
-  return 'à tarde de 13';
+  return 'na tarde de 13';
 }
 
 // Frases de móbil por catálogo (mesmas chaves de MOTIVOS_POTENCIAIS —
@@ -84,7 +85,7 @@ function rotuloDaFaixa(faixa) {
 // vítima), não só os nomes: a concordância de gênero sai da ficha.
 const PROSA_MOTIVO = {
   divida_caderneta: (reu, vitima) =>
-    `Uma caderneta de fiado soma a dívida de ${reu.nome} para com ${vitima.nome}, vencida e cobrada por carta.`,
+    `Uma caderneta de dívidas soma o que ${reu.nome} deve a ${vitima.nome}, vencido e cobrado por carta.`,
   seguro_de_enterro: (reu, vitima) =>
     `Uma apólice de enterro em nome de ${vitima.nome} paga a ${reu.nome} quando a morte vier.`,
   heranca: (reu, vitima) =>
@@ -94,15 +95,15 @@ const PROSA_MOTIVO = {
   salario_atrasado: (reu, vitima) =>
     `Consta queixa de paga retida: ${vitima.nome} devia a ${reu.nome} semanas de salário.`,
   escandalo_gravidez: (reu, vitima) =>
-    `Corre na vila o falatório que ${reu.nome} queria enterrado — e ${vitima.nome} era quem o repetia.`,
+    `Corre na vila um falatório em nome de ${reu.nome}; quem o repetia, de porta em porta, era ${vitima.nome}.`,
   character_negado: (reu, vitima) =>
     `${vitima.nome} negou a ${reu.nome} a carta de referência; sem ela, casa nenhuma ${reu.genero === 'feminino' ? 'a' : 'o'} toma a serviço.`,
   despejo: (reu, vitima) =>
-    `A ordem de despejo do cottage de ${reu.nome} leva a assinatura de ${vitima.nome}.`,
+    `A ordem de despejo do cottage de ${reu.nome} veio no rasto de queixa que ${vitima.nome} levou ao senhorio.`,
   rivalidade_capela_taverna: (reu, vitima) =>
     `A queixa pública entre ${reu.nome} e ${vitima.nome} — a capela contra a taverna — está lavrada em ata.`,
   recasamento_vigiado: (reu, vitima) =>
-    `O recasamento de ${reu.nome} corria sob a língua da vila, e ${vitima.nome} era quem mais falava dele.`,
+    `O recasamento de ${reu.nome} andava na boca da vila, e ${vitima.nome} era quem mais falava dele.`,
 };
 
 // A lesão fatal por método: nome de carta e laudo de exame próximo.
@@ -115,12 +116,12 @@ const PROSA_LESAO = {
   garrote: {
     textoDisplay: 'O Sulco no Pescoço',
     descricao:
-      'Um sulco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.',
+      'Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.',
   },
   esganadura: {
     textoDisplay: 'As Marcas no Pescoço',
     descricao:
-      'Equimoses do tamanho de polpas de dedo dos dois lados da traqueia, e meias-luas de unha impressas na pele.',
+      'Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.',
   },
   contundente: {
     textoDisplay: 'A Fratura no Crânio',
@@ -128,9 +129,9 @@ const PROSA_LESAO = {
       'Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.',
   },
   veneno_arsenico: {
-    textoDisplay: 'O Hálito de Alho',
+    textoDisplay: 'O Vômito Seco',
     descricao:
-      'No hálito, um cheiro de alho que não é de mesa; na boca, um resto de vômito seco.',
+      'Na boca e no queixo, um resto de vômito seco. Levada à chama, a amostra solta cheiro de alho; da ceia, prato nenhum o levava.',
   },
 };
 
@@ -147,8 +148,10 @@ const PROSA_LIVOR = {
   movel: 'As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.',
   fixo: 'As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.',
 };
-const NOTA_LIVOR_CONTRADITORIO =
-  ' As manchas, porém, guardam o desenho de outra postura: assentaram do lado que ora fica para cima.';
+// Só o livor FIXO testemunha postura anterior (tanatologia §3): o móvel
+// migra com o corpo e não guarda contradição. Sem conectivo adversativo —
+// os dois fatos se justapõem e o curto-circuito é do jogador (guia §2).
+const NOTA_LIVOR_CONTRADITORIO = ' As manchas assentaram do lado que ora fica para cima.';
 
 // ---------------------------------------------------------------------
 // Auxiliares sobre o mundo gerado.
@@ -164,36 +167,84 @@ function nomeDoPredio(cidade, predioId) {
   return p ? p.rotulo : predioId;
 }
 
-// Uma frase de retrato comportamental por trait/comportamento — nota de
-// observação (gesto), nunca veredicto (guia §2).
+// Forma de SUJEITO do rótulo de prédio (irmã de formasDoLugar, que só dá
+// as contrações): "A Mercearia" fica; "Casa do Médico" ganha o artigo.
+function sujeitoDoLugar(rotulo) {
+  if (rotulo.startsWith('O ') || rotulo.startsWith('A ')) return rotulo;
+  if (/^Casa\b/.test(rotulo)) return `A ${rotulo}`;
+  return `O ${rotulo}`;
+}
+
+// Rótulo de cômodo em voz de prosa: minúsculas, sem parêntese técnico e
+// no singular — a moldura fala de UM cômodo ("Quartos (sobrado)" →
+// "quarto do sobrado"; parecer Fase 3, N3).
+function comodoEmFala(rotulo) {
+  return rotulo
+    .toLowerCase()
+    .replace(/\s*\((.+)\)$/, ' do $1')
+    .replace(/^quartos\b/, 'quarto');
+}
+
+// Frases de retrato comportamental por trait/comportamento — nota de
+// observação (gesto), nunca veredicto (guia §2). Três variantes por trait,
+// de armação variada, para a MESMA tela de suspeitos não repetir retrato
+// (parecer Fase 1, A12); a escolha sai de hashString salgado, como toda
+// variação do jogo.
 const FRASE_TRAIT = {
-  medroso: 'Fala baixo e mede a porta antes de responder.',
-  tagarela: 'Responde o perguntado e emenda três coisas que ninguém perguntou.',
-  preciso: 'Dá horas e quantias de um fôlego, sem procurá-las.',
-  linha_tempo_nao_confiavel: 'Conta a noite por canecas, e as horas não fecham entre si.',
+  medroso: [
+    'Fala baixo e mede a porta antes de responder.',
+    'Espera a pergunta acabar de todo antes de abrir a boca.',
+    'Responde de olhos no chão, uma palavra por vez.',
+  ],
+  tagarela: [
+    'Responde o perguntado e emenda três coisas que ninguém perguntou.',
+    'Começa pela resposta e acaba na vida alheia.',
+    'Não há pergunta curta que devolva curta.',
+  ],
+  preciso: [
+    'Dá horas e quantias de um fôlego, sem procurá-las.',
+    'Cita dia e hora como quem lê de um livro de assentos.',
+    'Antes de assinar o termo, corrige nele uma miudeza.',
+  ],
+  linha_tempo_nao_confiavel: [
+    'Conta a noite por canecas, não por horas.',
+    'Mede a noite por sinos e canecas, nunca pelo relógio.',
+    'Do serão, lembra a ordem das coisas; das horas, não se prende.',
+  ],
 };
 const FRASE_COMPORTAMENTO = {
   revela_facil: 'Recebe de porta aberta e adianta-se às perguntas.',
   revela_sob_custo: 'Cada resposta sai ao preço de duas perguntas.',
   observacao_precisa: 'Descreve o que viu com hora e lugar.',
-  observacao_vaga: 'Do que viu, guarda o vulto e perde o resto.',
+  observacao_vaga: 'Descreve por alto o que viu; miudeza não lhe ficou.',
 };
 
-function descricaoDePessoa(p) {
-  const frases = [];
+// `usadas` é o conjunto de frases já gastas NA MESMA tela de suspeitos:
+// colisão de hash avança para a variante seguinte (ordem estável — replay
+// intacto); pool esgotado (4+ do mesmo trait) cai no comportamento
+// (parecer Fase 3, N-2 — retrato repetido lado a lado é defeito visível).
+function descricaoDePessoa(p, sal, usadas) {
   for (const t of p.traits) {
-    if (FRASE_TRAIT[t]) frases.push(FRASE_TRAIT[t]);
-    if (frases.length) break;
-  }
-  if (!frases.length) {
-    for (const c of p.comportamentos) {
-      if (FRASE_COMPORTAMENTO[c]) {
-        frases.push(FRASE_COMPORTAMENTO[c]);
-        break;
+    const pool = FRASE_TRAIT[t];
+    if (!pool) continue;
+    const base = hashString(`${sal}|retrato|${p.id}`) % pool.length;
+    for (let i = 0; i < pool.length; i++) {
+      const frase = pool[(base + i) % pool.length];
+      if (!usadas.has(frase)) {
+        usadas.add(frase);
+        return frase;
       }
     }
+    break;
   }
-  return frases.join(' ') || 'Responde o que se pergunta e volta ao trabalho.';
+  for (const c of p.comportamentos) {
+    const frase = FRASE_COMPORTAMENTO[c];
+    if (frase && !usadas.has(frase)) {
+      usadas.add(frase);
+      return frase;
+    }
+  }
+  return 'Responde o que se pergunta e volta ao trabalho.';
 }
 
 // ---------------------------------------------------------------------
@@ -224,7 +275,9 @@ function realizarCartas(bruto) {
         for (const estado of nova.estados) {
           estado.descricao =
             PROSA_LIVOR[estado.tagsOcultas.estadoLivor] +
-            (estado.tagsOcultas.posicaoCompativel === false ? NOTA_LIVOR_CONTRADITORIO : '');
+            (estado.tagsOcultas.posicaoCompativel === false && estado.tagsOcultas.estadoLivor === 'fixo'
+              ? NOTA_LIVOR_CONTRADITORIO
+              : '');
         }
         break;
       case 'gen_lesao_fatal': {
@@ -235,15 +288,15 @@ function realizarCartas(bruto) {
       }
       case 'gen_reacao_vital':
         nova.descricao =
-          'As lesões mostram bordas inchadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.';
+          'As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.';
         break;
       case 'gen_visto_vivo': {
         const quando = formatHoraComDia(c.tagsOcultas.horaAvistamento);
         const quem = c.origemTestemunha ? nome(c.origemTestemunha) : null;
         nova.carimboPadrao = `Vítima com vida às ${quando}`;
         nova.descricao = quem
-          ? `${quem} esteve com ${vitima.nome} às ${quando}, e o declara à ronda. Depois dessa hora, ninguém mais ${femV ? 'a' : 'o'} encontrou em pé.`
-          : `Do registro da ronda consta ${vitima.nome} com vida às ${quando}. Depois dessa hora, ninguém mais ${femV ? 'a' : 'o'} encontrou em pé.`;
+          ? `${quem} esteve com ${vitima.nome} às ${quando}, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.`
+          : `Do registro da ronda consta ${vitima.nome} com vida às ${quando}; depois dessa hora, linha nenhuma torna a ${femV ? 'nomeá-la' : 'nomeá-lo'}.`;
         break;
       }
       case 'gen_instrumento': {
@@ -254,11 +307,11 @@ function realizarCartas(bruto) {
         if (classe === 'instrumento_abandonado') {
           nova.textoDisplay = 'O Instrumento Abandonado';
           nova.carimboPadrao = 'Instrumento deixado na cena';
-          nova.descricao = `Ficou onde a mão o largou. O feitio casa com a lesão ${doMorto}, e o dono tem nome na vila: ${reu.nome}.`;
+          nova.descricao = `Ficou no chão, ao alcance do corpo. O feitio casa com a lesão ${doMorto}, e a vila dá o dono pelo nome: ${reu.nome}.`;
         } else if (classe === 'instrumento_faltando') {
           nova.textoDisplay = 'O Lugar Vazio';
           nova.carimboPadrao = 'Instrumento que falta no seu lugar';
-          nova.descricao = `Entre as coisas de ofício de ${reu.nome}, um vão limpo no meio do pó: falta ali a peça cujo feitio casa com a lesão ${doMorto}.`;
+          nova.descricao = `Entre as coisas de ofício de ${reu.nome}, um vão limpo no meio do pó, do comprimento e do desenho da lesão ${doMorto}.`;
         } else {
           nova.textoDisplay = 'O Instrumento Úmido';
           nova.carimboPadrao = 'Instrumento guardado ainda úmido';
@@ -268,34 +321,43 @@ function realizarCartas(bruto) {
       }
       case 'gen_pertence': {
         const houvePertence = crime.vestigios.some((x) => x.classe === 'pertence_do_assassino');
-        nova.textoDisplay = 'O Pertence Arrancado';
-        nova.carimboPadrao = houvePertence ? 'Botão com fio na mão da vítima' : 'Objeto alheio junto ao corpo';
+        nova.textoDisplay = houvePertence ? 'O Pertence Arrancado' : 'A Luva Desirmanada';
+        nova.carimboPadrao = houvePertence ? 'Botão com fio na mão da vítima' : 'Luva desirmanada junto ao corpo';
         nova.descricao = houvePertence
-          ? `Na mão fechada ${doMorto}, um botão de casaco com fio e um triângulo de pano. O casaco de ${reu.nome} perdeu o segundo botão.`
-          : `Junto ao corpo, um objeto que não é ${doMorto} nem da casa. O par dele está entre as coisas de ${reu.nome}.`;
+          ? `Presos entre os dedos ${doMorto}, um botão de casaco com fio e um triângulo de pano. O casaco de ${reu.nome} perdeu o segundo botão.`
+          : `Junto ao corpo, uma luva sem par. O par está entre as coisas de ${reu.nome}.`;
         break;
       }
       case 'gen_sangue_alheio':
+        nova.textoDisplay = 'O Rastro de Gotas';
         nova.carimboPadrao = 'Sangue afastado do corpo';
-        nova.descricao = `Gotas de sangue a passos do corpo, num caminho que ${femV ? 'a morta' : 'o morto'} não fez. Alguém saiu dali ferido, e andando.`;
+        nova.descricao = `Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas ${doMorto} não sangraram nesse caminho.`;
         break;
       case 'gen_pegadas':
         nova.carimboPadrao = 'Meias-solas impressas em sangue';
-        nova.descricao = 'Meias-solas impressas em sangue, espaçadas rumo à porta. O passo é de saída, e é um só.';
+        nova.descricao =
+          'Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.';
         break;
       case 'gen_ruido_ouvido': {
-        const quem = c.origemTestemunha ? nome(c.origemTestemunha) : 'A vizinhança';
         nova.carimboPadrao = `Barulho ouvido ${rotuloDaFaixa(c.tagsOcultas.faixa)}`;
-        nova.descricao = `${quem} conta o que a parede deixou passar ${rotuloDaFaixa(
-          c.tagsOcultas.faixa
-        )}: "Pancada, e móvel no chão, e depois mais nada."`;
+        // Testemunha nomeada depõe entre aspas; o ramo coletivo relata sem
+        // aspas (a vizinhança não cita em uma voz só — parecer A25).
+        nova.descricao = c.origemTestemunha
+          ? `${nome(c.origemTestemunha)} conta o que a parede deixou passar ${rotuloDaFaixa(
+              c.tagsOcultas.faixa
+            )}: "Pancada, e móvel no chão, e depois mais nada."`
+          : `A vizinhança conta o que a parede deixou passar ${rotuloDaFaixa(
+              c.tagsOcultas.faixa
+            )}: pancada, móvel no chão, e depois mais nada.`;
         break;
       }
       case 'gen_motivo': {
         const frase = PROSA_MOTIVO[c.tagsOcultas.motivo];
         nova.textoDisplay = 'Os Papéis do Móbil';
         nova.carimboPadrao = `Móbil de ${reu.nome}`;
-        nova.descricao = frase ? frase(reu, vitima) : `Papéis da delegacia ligam ${reu.nome} ${femV ? 'à morta' : 'ao morto'}.`;
+        nova.descricao = frase
+          ? frase(reu, vitima)
+          : `Nos papéis ${doMorto}, o nome de ${reu.nome} aparece mais de uma vez, e em mais de uma folha.`;
         break;
       }
       default:
@@ -312,22 +374,23 @@ function realizarCartas(bruto) {
     if (t.subDominio === 'recusa_subita') {
       nova.descricao = `${nome(t.testemunha)} não abre a porta mais que um palmo. O que declarou antes, nega agora ter declarado.`;
     } else if (t.subDominio === 'pressao_sobre_testemunha') {
-      nova.descricao = `Uma visita fora de hora, notada da rua, e uma voz baixa à porta. Mais de um vizinho dá o nome de quem veio: ${nome(
+      nova.descricao = `Uma visita depois de escurecido, notada da rua, e uma voz baixa à porta. Mais de um vizinho dá o nome de quem veio: ${nome(
         t.pertenceA
       )}.`;
     } else if (t.subDominio === 'retratacao') {
       nova.descricao = `${nome(t.testemunha)} conta agora outra versão da mesma noite — palavra nova contra o que consta do primeiro registro.`;
     } else if (t.subDominio === 'rastro_de_dinheiro' && t.pertenceA) {
-      nova.descricao = `Soberanos novos, contados à vista de todos. Moeda graúda tem caminho — e o caminho sobe até ${nome(
+      nova.descricao = `Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: ${nome(
         t.pertenceA
       )}.`;
     } else if (t.subDominio === 'rastro_de_dinheiro') {
-      nova.descricao = 'A caderneta de fiado amanheceu quitada, na mesma semana da nova versão. Dívida velha não se paga sozinha.';
+      nova.descricao = 'A caderneta de fiado amanheceu quitada, a soma cheia de uma vez, na mesma semana da nova versão.';
     } else if (t.subDominio === 'segunda_morte') {
-      nova.descricao =
-        'O segundo corpo tem rigor e manchas de poucas horas: morte posterior à primeira perícia, e de mão mais grosseira que a primeira.';
+      nova.descricao = `O segundo corpo tem rigor e manchas de poucas horas: morte posterior à primeira perícia. As lesões são largas, de bordas rasgadas, sem o desenho das que ${
+        femV ? 'a primeira morta' : 'o primeiro morto'
+      } levou.`;
     } else if (t.subDominio === 'fuga_apressada') {
-      nova.descricao = `No batente da porta, um retalho de casaco rasgado na saída. O rasgo encaixa, fio a fio, no casaco de ${nome(
+      nova.descricao = `No batente da porta, preso na farpa, um retalho de casaco. O rasgo encaixa, fio a fio, no casaco de ${nome(
         t.pertenceA
       )}.`;
     } else if (t.subDominio === 'limpeza_fresca' && t.tipoVestigio === 'esfrega_fresca') {
@@ -375,9 +438,7 @@ function montarLocalidades(bruto, cartas) {
       (blocosPorLocalidade[loc] ??= []).push({
         eventoId: ev.id,
         quando: 'disparado',
-        paragrafos: [
-          `Desde a última visita, alguma coisa mudou por aqui. ${ids.map((id) => `[[${id}]]`).join(' ')}`,
-        ],
+        paragrafos: [`Na volta, o que a primeira visita não viu: ${ids.map((id) => `[[${id}]]`).join(' ')}.`],
       });
     }
   }
@@ -391,31 +452,38 @@ function montarLocalidades(bruto, cartas) {
     id: 'corpo',
     rotuloMesa: 'O Corpo',
     titulo: `O Corpo — ${predioCena}`,
-    subtitulo: `${vitima.nome}, ${vitima.profissao}, ${vitima.idade} anos`,
+    subtitulo: `${vitima.nome}, ${profissaoExibida(vitima.profissao)}, ${vitima.idade} anos`,
     acoesEspeciais: ['termometro'],
     gestos: [{ id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'gen_livores' }],
     prosa: [
-      `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${rotuloComodo.toLowerCase()}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.`,
+      `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`,
       'Ao primeiro exame do tronco e dos membros, [[gen_rigor]].',
       pFerida,
-      'A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} julgar de medir a temperatura do corpo.',
+      'A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.',
     ],
   };
 
   // ---- A cena ----
-  const mobilias = (interior.mobilia || []).slice(0, 3).map((m) => m.rotulo || m.id);
-  const texturaVestigios = [];
+  // A mobília citada é a do CÔMODO do crime (a lista do interior cobre o
+  // prédio inteiro — sem o filtro, o quarto ganhava pia da copa).
+  const mobilias = (interior.mobilia || [])
+    .filter((m) => m.comodo === crime.posicaoCorpo.comodo)
+    .slice(0, 3)
+    .map((m) => m.rotulo || m.id);
+  // Set: vestígios repetidos da mesma classe não empilham a mesma frase.
+  const texturaVestigios = new Set();
   for (const v of crime.vestigios) {
     if (v.removido) continue;
-    if (v.classe === 'assoalho_esfregado') texturaVestigios.push('a madeira do assoalho cheira a soda cáustica');
-    if (v.classe === 'mobilia_recomposta') texturaVestigios.push('uma peça de mobília repousa sobre o próprio arranhão');
-    if (v.classe === 'mobilia_revirada') texturaVestigios.push('há mobília por erguer do chão');
-    if (v.classe === 'rastro_da_luta') texturaVestigios.push('o desarrumado corre de um canto a outro');
+    if (v.classe === 'assoalho_esfregado') texturaVestigios.add('a madeira do assoalho cheira a soda cáustica');
+    if (v.classe === 'mobilia_recomposta')
+      texturaVestigios.add('sob o pé de uma peça de mobília, um arranhão que escapa para fora dela');
+    if (v.classe === 'mobilia_revirada') texturaVestigios.add('há mobília por erguer do chão');
+    if (v.classe === 'rastro_da_luta') texturaVestigios.add('de um canto a outro, nada guarda o seu lugar');
   }
   const prosaCena = [
-    `${predioCena} guarda o dia em que o acharam. ${
+    `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam. ${
       mobilias.length ? `No cômodo, ${mobilias.join(', ')}` : 'O cômodo é o de sempre'
-    }${texturaVestigios.length ? `; ${texturaVestigios.join('; ')}.` : '.'}`,
+    }${texturaVestigios.size ? `; ${[...texturaVestigios].join('; ')}.` : '.'}`,
   ];
   const marcadoresCena = [];
   for (const id of ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas']) {
@@ -423,8 +491,8 @@ function montarLocalidades(bruto, cartas) {
     if (!carta) continue;
     const ev = eventoQueDestroi(id);
     const frase = {
-      gen_instrumento: `Junto do corpo, deixado onde caiu, o achado que a vila inteira comenta: [[gen_instrumento]].`,
-      gen_pertence: `Na mão fechada ${femV ? 'da morta' : 'do morto'}, por abrir desde ontem: [[gen_pertence]].`,
+      gen_instrumento: `Junto do corpo, no chão: [[gen_instrumento]].`,
+      gen_pertence: `Por abrir desde ontem, a mão fechada ${femV ? 'da morta' : 'do morto'}: [[gen_pertence]].`,
       gen_sangue_alheio: 'A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].',
       gen_pegadas: 'Do meio do cômodo até a porta: [[gen_pegadas]].',
     }[id];
@@ -459,7 +527,7 @@ function montarLocalidades(bruto, cartas) {
       'Entre os papéis recolhidos por precaução: [[gen_motivo]].',
       // A árvore de diálogo procedural (OS própria): os interrogatórios
       // vivem aqui — a sala do expediente serve de sala de inquérito.
-      'Um a um, ao chamado do delegado, os nomes dos papéis vêm sentar-se à sala do expediente; a cadeira do interrogado espera de frente para a janela.',
+      'Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela.',
     ],
     blocosContingentes: [
       ...(evVisto
@@ -478,7 +546,20 @@ function montarLocalidades(bruto, cartas) {
 
   // ---- A vizinhança ----
   const evRuido = eventoQueDestroi('gen_ruido_ouvido');
-  const fraseRuido = 'De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].';
+  // Moldura do ruído conforme o posto de escuta: quem mora (ou passava a
+  // faixa do crime) no próprio prédio da cena não ouve "de uma janela
+  // vizinha" (parecer Fase 1, fiscal 3). Quem só FREQUENTAVA o prédio não
+  // "dormia parede-meia" — o álibi dele diz que foi dormir em casa
+  // (parecer Fase 3, N2): a moldura da rotina é neutra de pernoite.
+  const cartaRuido = cartas.find((c) => c.id === 'gen_ruido_ouvido');
+  const tRuido = cartaRuido && cartaRuido.origemTestemunha ? pessoas.get(cartaRuido.origemTestemunha) : null;
+  const moraNoPredio = !!tRuido && tRuido.pacoteEspacial.moradia === escolha.localId;
+  const frequentavaOPredio = !!tRuido && tRuido.pacoteEspacial.rotina[escolha.faixa] === escolha.localId;
+  const fraseRuido = moraNoPredio
+    ? 'De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]].'
+    : frequentavaOPredio
+      ? 'De dentro do próprio prédio, quem lá estava àquela hora conta: [[gen_ruido_ouvido]].'
+      : 'De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].';
   const cartaPrenuncio = cartas.find((c) => (c.tagsOcultas || {}).subDominio === 'prenuncio');
   const vizinhanca = {
     id: 'vizinhanca',
@@ -487,7 +568,7 @@ function montarLocalidades(bruto, cartas) {
     subtitulo: 'As casas em volta, as janelas que dão para a rua',
     acoesEspeciais: [],
     prosa: [
-      'As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua. O que uma noite faz de barulho, a vizinhança guarda de memória.',
+      'As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.',
       ...(evRuido ? [] : temCarta('gen_ruido_ouvido') ? [fraseRuido] : []),
       ...(cartaPrenuncio ? [`Uma porta se entreabre à passagem {g:do perito|da perita}: [[${cartaPrenuncio.id}]].`] : []),
     ],
@@ -570,16 +651,18 @@ function montarSuspeitos(bruto) {
   // Ordem de apresentação estável e cega ao papel: alfabética por nome —
   // o réu não pode ser sempre o primeiro da lista.
   ids.sort((a, b) => (pessoas.get(a).nome < pessoas.get(b).nome ? -1 : 1));
+  const frasesUsadas = new Set();
   return ids.map((id) => {
     const p = pessoas.get(id);
+    const prof = profissaoExibida(p.profissao);
     return {
       id: p.id,
       nome: p.nome,
       idade: p.idade,
-      relacao: `${p.profissao.charAt(0).toUpperCase()}${p.profissao.slice(1)}; mora ${formasDoLugar(
+      relacao: `${prof.charAt(0).toUpperCase()}${prof.slice(1)}; mora ${formasDoLugar(
         nomeDoPredio(mundo.cidade, p.pacoteEspacial.moradia)
       ).em}`,
-      descricao: descricaoDePessoa(p),
+      descricao: descricaoDePessoa(p, bruto.seed, frasesUsadas),
     };
   });
 }
@@ -611,7 +694,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       titulo: 'Caulfield, 14 de outubro de 1893',
       paragrafos: [
         'A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.',
-        'Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio, e abre a caderneta na primeira página em branco.',
+        'Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco.',
       ],
       rotuloBotao: 'A vela queima',
     },
@@ -629,7 +712,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       carta: true,
       paragrafos: [
         'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
-        `"{detective.title} {detective.surname} — Escrevo-lhe como delegado de ${vila}, e como homem que sabe o tamanho do que não sabe. ${vitima.nome}, ${vitima.profissao} desta vila, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
+        `"{detective.title} {detective.surname} — Escrevo-lhe como delegado de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)} desta vila, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
         `"${delegado}, Delegado."`,
       ],
       rotuloBotao: 'Aceitar o chamado',
@@ -647,7 +730,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       id: 'chegada',
       titulo: vila,
       paragrafos: [
-        `A plataforma cheira a carvão e palha molhada. ${vila} estende-se além dos trilhos, e a luz de outubro alonga as sombras rua adentro.`,
+        `A plataforma cheira a carvão e palha molhada. ${vila} estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.`,
         `O delegado ${delegado} espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. "Agradeço a presteza. Venha; explico-me pelo caminho."`,
       ],
       rotuloBotao: 'Ouvir o delegado',
@@ -657,7 +740,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       titulo: `O relato do delegado ${delegado}`,
       briefing: true,
       paragrafos: [
-        `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${vitima.profissao}. ${femV ? 'Achada morta' : 'Achado morto'} ${formasDoLugar(nomeDoPredio(mundo.cidade, bruto.escolha.localId)).em}. Não toquei em nada e não prendi ninguém."`,
+        `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${profissaoExibida(vitima.profissao)}. ${femV ? 'Achada morta' : 'Achado morto'} ${formasDoLugar(nomeDoPredio(mundo.cidade, bruto.escolha.localId)).em}. Não toquei em nada e não prendi ninguém."`,
         'Detém-se à porta e baixa a voz. "Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}."',
       ],
       rotuloBotao: 'Entrar — iniciar a investigação',
@@ -675,14 +758,13 @@ function montarAbertura(bruto, sal, suspeitos) {
       id: 'quem_convive',
       pergunta: 'Quem convivia com a vítima?',
       resposta: coabitantes.length
-        ? `"Do dia a dia ${femV ? 'dela' : 'dele'}? ${coabitantes.join(', ')} — gente que partilhava teto ou trabalho. Os nomes estão nos meus papéis."`
-        : `"${femV ? 'Mulher' : 'Homem'} de poucas companhias. O que a vila souber, a vila conta melhor que eu."`,
+        ? `"Do dia a dia ${femV ? 'dela' : 'dele'}? ${coabitantes.join(', ')} — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis."`
+        : `"${femV ? 'Mulher' : 'Homem'} de poucas companhias. O que houver, a vila sabe antes de mim."`,
     },
     {
       id: 'desafetos',
       pergunta: femV ? 'A morta tinha desafetos declarados?' : 'O morto tinha desafetos declarados?',
-      resposta:
-        `"Queixa lavrada contra ${femV ? 'ela' : 'ele'} não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si — a vizinhança fala mais comigo fora do expediente que dentro dele."`,
+      resposta: `"Queixa lavrada contra ${femV ? 'ela' : 'ele'} não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si."`,
     },
   ];
 
