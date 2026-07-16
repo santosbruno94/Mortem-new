@@ -224,7 +224,7 @@ export const CASO_REPLICA = {
    "localidade": "delegacia",
    "textoDisplay": "A Noite de John Wilson",
    "carimboPadrao": "Paradeiro declarado: O Moinho (sexta à noite)",
-   "descricao": "\"Recolhi-me a O Moinho às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me ao Moinho às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -239,7 +239,7 @@ export const CASO_REPLICA = {
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Mary Walker",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me a A Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -254,7 +254,7 @@ export const CASO_REPLICA = {
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Thomas Jones",
    "carimboPadrao": "Paradeiro declarado: A Escola (sexta à noite)",
-   "descricao": "\"Estive em A Escola das oito às onze; dali fui direto para O Presbitério, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Estive na Escola das oito às onze; dali fui direto para o Presbitério, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -269,7 +269,7 @@ export const CASO_REPLICA = {
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Walter Williams",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
-   "descricao": "\"Recolhi-me a Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -284,7 +284,7 @@ export const CASO_REPLICA = {
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Smith",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
-   "descricao": "\"Recolhi-me a Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -419,7 +419,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "John Wilson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "John Wilson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -631,7 +631,7 @@ export const CASO_REPLICA = {
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
      ],
      "opcoes": []
     },
@@ -966,7 +966,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "Walter Williams entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Deixei serviço pela metade na bancada. Seja direto, se puder ser.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Walter Williams entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Serviço parado esfria. Pergunte.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -1623,12 +1623,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Alice Thomas",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a A Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_5_criada",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -1638,12 +1638,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de George Evans",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_2_lavrador",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -1653,12 +1653,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de George Smith",
    "carimboPadrao": "Paradeiro declarado: A Delegacia (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a A Delegacia às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Delegacia às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_4_constable",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -1668,12 +1668,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de James Jones",
    "carimboPadrao": "Paradeiro declarado: A Botica (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a A Botica às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_1_boticario",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -1683,12 +1683,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Martha Roberts",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_0_costureira",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -1845,7 +1845,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
      ],
      "opcoes": []
     },
@@ -3083,7 +3083,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Annie Thomas",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me a A Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3098,7 +3098,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Ernest Jones",
    "carimboPadrao": "Paradeiro declarado: A Delegacia (sexta à noite)",
-   "descricao": "\"Recolhi-me a A Delegacia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me à Delegacia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3113,7 +3113,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de George Taylor",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à noite)",
-   "descricao": "\"Recolhi-me a Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3128,7 +3128,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de James Brown",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
-   "descricao": "\"Recolhi-me cedo a Cottage nº 3, antes das oito, e de lá não saí até a manhã.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me cedo ao Cottage nº 3, antes das oito, e de lá não saí até a manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3143,7 +3143,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Roberts",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me a Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -3334,7 +3334,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
      ],
      "opcoes": []
     },
@@ -3497,7 +3497,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Ernest Jones entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"De serviço ou fora dele, respondo pela folha. Pergunte.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Ernest Jones entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Respondo como se lavra ocorrência: pelo certo. Pergunte.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -3860,7 +3860,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Fala baixo e mede a porta antes de cada resposta."
+      "James Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -4661,12 +4661,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Charles Williams",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_2_ferreiro",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -4676,12 +4676,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Frank Wilson",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a A Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_3_merceeiro",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -4691,12 +4691,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Harry Evans",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_0_lavrador",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -4706,12 +4706,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de James Brown",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_7_lavrador",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -4721,12 +4721,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de John Evans",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_6_lavrador",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -4855,7 +4855,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Charles Williams entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei serviço pela metade na bancada. Seja direto, se puder ser.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Charles Williams entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Serviço parado esfria. Pergunte.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -5039,7 +5039,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Frank Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Frank Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -5407,7 +5407,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Fala baixo e mede a porta antes de cada resposta."
+      "James Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto, {detective.title}.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -6180,7 +6180,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Charles Jones",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive em A Taverna das oito às onze; dali fui direto para Cottage nº 2, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -6195,7 +6195,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Charles Williams",
    "carimboPadrao": "Paradeiro declarado: O Solar (sexta à noite)",
-   "descricao": "\"Recolhi-me a O Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -6210,7 +6210,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Ethel Taylor",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me a Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -6225,7 +6225,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de James Brown",
    "carimboPadrao": "Paradeiro declarado: O Moinho (sexta à noite)",
-   "descricao": "\"Recolhi-me a O Moinho às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me ao Moinho às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -6240,7 +6240,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Evans",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
-   "descricao": "\"Estive em A Mercearia das oito às onze; dali fui direto para Cottage nº 4, dormir.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 4, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -6748,7 +6748,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Ethel Taylor entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Com licença de entrar. Respondo o que souber.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Ethel Taylor entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -6775,7 +6775,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
      ],
      "opcoes": []
     },
@@ -6932,7 +6932,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Brown entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "James Brown entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -7110,7 +7110,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Evans entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Ao citar a primeira hora, corrige-a no meio da frase."
+      "William Evans entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -7661,7 +7661,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Alice Taylor",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, Casa do Médico, no meu serviço de porta para dentro.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, de serviço de porta para dentro.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7676,7 +7676,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Edith Taylor",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, Cottage nº 4, no meu serviço de porta para dentro.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, de serviço de porta para dentro.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7691,7 +7691,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Elizabeth Smith",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, Cottage nº 3, no meu serviço de porta para dentro.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, de serviço de porta para dentro.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7706,7 +7706,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de John Thomas",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis, A Igreja, no serviço. Quem lá esteve me viu.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Do meio-dia às seis estive na Igreja, no serviço. Quem lá esteve me viu.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7721,7 +7721,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Joseph Thomas",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, Cottage nº 2, no meu serviço de porta para dentro.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 2, de serviço de porta para dentro.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7856,7 +7856,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Alice Taylor entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Com licença de entrar. Respondo o que souber.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Alice Taylor entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -7883,7 +7883,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
      ],
      "opcoes": []
     },
@@ -8239,7 +8239,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
      ],
      "opcoes": []
     },
@@ -8575,7 +8575,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Joseph Thomas entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Joseph Thomas entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -9148,7 +9148,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Charles Evans",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive em A Taverna das oito às onze; dali fui direto para Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9163,7 +9163,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de George Williams",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me cedo a Casa do Médico, antes das oito, e de lá não saí até a manhã.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me cedo à Casa do Médico, antes das oito, e de lá não saí até a manhã.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9178,7 +9178,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Rose Wilson",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me a A Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9193,7 +9193,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Walter Walker",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive em A Taverna das oito às onze; dali fui direto para Cottage nº 1, dormir.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 1, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9208,7 +9208,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Brown",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive em A Taverna das oito às onze; dali fui direto para Cottage nº 3, dormir.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9328,7 +9328,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Charles Evans entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei serviço pela metade na bancada. Seja direto, se puder ser.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Charles Evans entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Serviço parado esfria. Pergunte.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -9724,7 +9724,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
      ],
      "opcoes": []
     },
@@ -9875,7 +9875,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Walter Walker entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Walter Walker entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -10053,7 +10053,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Brown entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Fala baixo e mede a porta antes de cada resposta."
+      "William Brown entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" A voz sai baixa e termina cada frase num \"{g:senhor|senhora}\". Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -10590,12 +10590,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Arthur Evans",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_4_costureira",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -10605,12 +10605,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Emily Brown",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a A Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_5_criada",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -10620,12 +10620,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Frederick Wilson",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a A Taverna às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_1_taverneiro",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -10635,12 +10635,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Joseph Roberts",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_2_lavrador",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -10650,12 +10650,12 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Thomas Jones",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me a Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_3_lavrador",
-    "horaInicioDeclarada": -2,
+    "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
    }
@@ -10989,7 +10989,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
      ],
      "opcoes": []
     },
@@ -11140,7 +11140,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Frederick Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "Frederick Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
      ],
      "opcoes": [
       {
@@ -11503,7 +11503,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Thomas Jones entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "Thomas Jones entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
      ],
      "opcoes": [
       {
@@ -12062,7 +12062,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Alice Jones",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me a A Taverna às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -12077,7 +12077,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de James Thomas",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive em A Taverna das oito às onze; dali fui direto para Cottage nº 5, dormir.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 5, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -12092,7 +12092,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Joseph Roberts",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
-   "descricao": "\"Estive em A Igreja das oito às onze; dali fui direto para Cottage nº 1, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 1, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -12107,7 +12107,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Taylor",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
-   "descricao": "\"Estive em A Mercearia das oito às onze; dali fui direto para Cottage nº 3, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
+   "descricao": "\"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Tomado por termo na delegacia, na letra do escrevente.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -12122,7 +12122,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "A Noite de William Wilson",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
-   "descricao": "\"Estive em A Igreja das oito às onze; dali fui direto para Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
+   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -12241,7 +12241,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Alice Jones entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
+      "Alice Jones entra na sala do expediente antes que o delegado acabe de o chamar, e toma a palavra junto com a cadeira. \"O negócio espera trancado. Pergunte de uma vez, se faz favor.\" E emenda, sem pergunta, o frio que fez, o preço do pão e o nome de quem passou tarde pela rua."
      ],
      "opcoes": [
       {
@@ -12419,7 +12419,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Thomas entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "James Thomas entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -12966,7 +12966,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Fala baixo e mede a porta antes de cada resposta."
+      "William Wilson entra na sala do expediente ao chamado do delegado e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {

@@ -81,12 +81,29 @@ const FAIXA_CURTA = {
   dia: 'sexta à tarde',
 };
 // Janela declarada (envelope da faixa, escala absoluta de tempo.js:
-// 0 = meia-noite de 14/out). Fonte dos números citados na prosa.
+// 0 = meia-noite de 14/out). Fonte dos números citados na prosa: o
+// "recolhi-me às oito" da fala é a hora −4 da tag, sempre.
 const JANELA_DECLARADA = {
   noite: { inicio: -4, fim: 7 }, // das 20h de sexta à manhã de sábado
-  madrugada: { inicio: -2, fim: 7 }, // das 22h de sexta à manhã
+  madrugada: { inicio: -4, fim: 7 }, // idem: quem dormia declara a noite inteira
   dia: { inicio: -12, fim: -6 }, // do meio-dia às seis de sexta
 };
+
+// Rótulos de prédio trazem artigo embutido ("O Solar", "A Taverna",
+// "Cottage nº 2"): as contrações nascem aqui, para a fala nunca colar
+// preposição em artigo cru ("a O Solar").
+function formasDoLugar(rotulo) {
+  if (rotulo.startsWith('O ')) {
+    const r = rotulo.slice(2);
+    return { em: `no ${r}`, a: `ao ${r}`, para: `para o ${r}` };
+  }
+  if (rotulo.startsWith('A ')) {
+    const r = rotulo.slice(2);
+    return { em: `na ${r}`, a: `à ${r}`, para: `para a ${r}` };
+  }
+  if (/^Casa\b/.test(rotulo)) return { em: `na ${rotulo}`, a: `à ${rotulo}`, para: `para a ${rotulo}` };
+  return { em: `no ${rotulo}`, a: `ao ${rotulo}`, para: `para o ${rotulo}` };
+}
 
 // ---------------------------------------------------------------------
 // As perguntas do perito (voz universal do jogador; iguais em todo caso).
@@ -121,14 +138,38 @@ function perguntasArremate(vitima) {
 // a fala entre aspas é depoimento (alegação), nunca conclusão.
 // ---------------------------------------------------------------------
 const PRIMEIRAS_PALAVRAS = {
-  gentry: ['"Vim porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo."'],
-  clero: ['"A paróquia está às ordens do inquérito. Pergunte."'],
-  profissional: ['"Tenho a manhã tomada, {detective.title}, mas isto passa adiante de tudo. Ao seu dispor."'],
-  comerciante: ['"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor."'],
-  artesao: ['"Deixei serviço pela metade na bancada. Seja direto, se puder ser."'],
-  lavrador: ['"Vim assim que o guarda mandou. Diga lá, que a lida não espera."'],
-  criadagem: ['"Com licença de entrar. Respondo o que souber."'],
-  servico_do_condado: ['"De serviço ou fora dele, respondo pela folha. Pergunte."'],
+  gentry: [
+    '"Vim porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo."',
+    '"A casa responde onde a lei pergunta. Vamos a isso."',
+  ],
+  clero: [
+    '"A paróquia está às ordens do inquérito. Pergunte."',
+    '"Entre um ofício e outro, o tempo é seu. Pergunte."',
+  ],
+  profissional: [
+    '"Tenho a manhã tomada, {detective.title}, mas isto passa adiante de tudo. Ao seu dispor."',
+    '"Adiei o que havia para adiar. Sirva-se do tempo."',
+  ],
+  comerciante: [
+    '"Deixei o negócio fechado por esta hora. Aproveitemo-la, se faz favor."',
+    '"O negócio espera trancado. Pergunte de uma vez, se faz favor."',
+  ],
+  artesao: [
+    '"Deixei serviço pela metade na bancada. Seja direto, se puder ser."',
+    '"Serviço parado esfria. Pergunte."',
+  ],
+  lavrador: [
+    '"Vim assim que o guarda mandou. Diga lá, que a lida não espera."',
+    '"O guarda mandou, eu vim. Pergunte, que o campo não espera."',
+  ],
+  criadagem: [
+    '"Com licença de entrar. Respondo o que souber."',
+    '"Com licença. Digo o que souber, e volto ao serviço."',
+  ],
+  servico_do_condado: [
+    '"De serviço ou fora dele, respondo pela folha. Pergunte."',
+    '"Respondo como se lavra ocorrência: pelo certo. Pergunte."',
+  ],
 };
 
 // A têmpera de idade (guia §8.2): uma frase a mais, quando couber.
@@ -268,21 +309,22 @@ function cartaDeAlibi(ctx) {
   const mentiraDeCena = papel === 'reu' && lugarReal === cenaId;
   const lugarDeclarado = mentiraDeCena ? moradia : lugarReal;
   const rotulo = nomePredio(lugarDeclarado);
-  const rotuloMoradia = nomePredio(moradia);
+  const forma = formasDoLugar(rotulo);
+  const formaMoradia = formasDoLugar(nomePredio(moradia));
   const janela = JANELA_DECLARADA[faixa];
 
   let falaDeclarada;
   if (faixa === 'dia') {
     falaDeclarada =
       lugarDeclarado === moradia
-        ? `"Do meio-dia às seis estive em casa, ${rotulo}, no meu serviço de porta para dentro."`
-        : `"Do meio-dia às seis, ${rotulo}, no serviço. Quem lá esteve me viu."`;
+        ? `"Do meio-dia às seis estive em casa, ${forma.em}, de serviço de porta para dentro."`
+        : `"Do meio-dia às seis estive ${forma.em}, no serviço. Quem lá esteve me viu."`;
   } else if (mentiraDeCena) {
-    falaDeclarada = `"Recolhi-me cedo a ${rotuloMoradia}, antes das oito, e de lá não saí até a manhã."`;
+    falaDeclarada = `"Recolhi-me cedo ${formaMoradia.a}, antes das oito, e de lá não saí até a manhã."`;
   } else if (lugarDeclarado === moradia) {
-    falaDeclarada = `"Recolhi-me a ${rotulo} às oito e não tornei a sair antes de clarear."`;
+    falaDeclarada = `"Recolhi-me ${forma.a} às oito e não tornei a sair antes de clarear."`;
   } else {
-    falaDeclarada = `"Estive em ${rotulo} das oito às onze; dali fui direto para ${rotuloMoradia}, dormir."`;
+    falaDeclarada = `"Estive ${forma.em} das oito às onze; dali fui direto ${formaMoradia.para}, dormir."`;
   }
 
   const titulo = { noite: 'A Noite', madrugada: 'A Madrugada', dia: 'A Tarde' }[faixa];
@@ -380,7 +422,7 @@ const EVASIVA_POR_CLASSE = {
   comerciante: 'Olha o que se lhe mostra como quem confere fatura alheia. "Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão."',
   artesao: 'Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. "Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta."',
   lavrador: 'Chega o rosto para ver e faz que não com a cabeça. "Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser."',
-  criadagem: 'Olha depressa e baixa os olhos. "Isso eu não sei o que é. Da casa e do serviço respondo; do resto, quem sabia era a gente grande."',
+  criadagem: 'Olha depressa e baixa os olhos. "Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra."',
   servico_do_condado: 'Examina como quem preenche folha. "Sem registro disto, não firmo nada. O que está lavrado, está lavrado; o resto se apura."',
 };
 
