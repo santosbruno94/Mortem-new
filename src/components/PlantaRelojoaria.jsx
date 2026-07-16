@@ -10,7 +10,57 @@ import { PLANTA_RELOJOARIA as P } from '../data/planta_relojoaria.js';
 // src/data/mapa.js) e reabre o overlay de localidade lá. É SVG 2D puro:
 // funciona idêntico em ?flat=1. Em tela estreita, colapsa para uma régua
 // horizontal de cômodos. Camada de APRESENTAÇÃO — não lê o motor.
+//
+// BOIL (Tarefa 4): todo traço de tinta do desenho existe em três quadros
+// com micro-perturbações FIXAS nas coordenadas (tabela cíclica de offsets
+// — nada de Math.random() em render), alternados pelo CSS `.boil-quadro`
+// (index.css) a ~13fps. As variantes são pré-computadas na carga do módulo
+// (a planta é estática); as áreas de clique ([data-alvo]/.planta-hit) não
+// participam do boil — o alvo do toque fica parado.
 // =====================================================================
+
+// Tabela cíclica de offsets (unidades do viewBox; ~0,76px na tela). Cada
+// coordenada do path recebe o offset do seu índice; o quadro desloca a
+// fase, então os três quadros tremem em direções diferentes.
+const AMPLITUDE_BOIL = [0.7, -0.5, 0.4, -0.7, 0.5, -0.4, 0.6, -0.6, 0.3, -0.5];
+
+// Perturba SÓ coordenadas de um path SVG. No comando de arco (A), os cinco
+// primeiros parâmetros (raios, rotação e as duas flags) ficam intactos —
+// flag perturbada corromperia o desenho; só o ponto final treme.
+function perturbarPath(d, quadro) {
+  let n = 0;
+  const desloca = (v) => {
+    const off = AMPLITUDE_BOIL[(n++ + quadro * 4) % AMPLITUDE_BOIL.length];
+    return Math.round((parseFloat(v) + off) * 10) / 10;
+  };
+  return d.replace(/([MLHVQTCSAZ])([^MLHVQTCSAZ]*)/gi, (tudo, cmd, corpo) => {
+    if (cmd.toUpperCase() === 'Z') return cmd;
+    const nums = corpo.match(/-?\d*\.?\d+/g) || [];
+    if (cmd.toUpperCase() === 'A') {
+      const grupos = [];
+      for (let i = 0; i < nums.length; i += 7) {
+        const g = nums.slice(i, i + 7);
+        grupos.push([...g.slice(0, 5), desloca(g[5]), desloca(g[6])].join(' '));
+      }
+      return cmd + grupos.join(' ');
+    }
+    return cmd + nums.map(desloca).join(' ');
+  });
+}
+
+// Variantes por path, calculadas uma vez (o quadro 0 é o traço original).
+const cacheBoil = new Map();
+function quadrosDe(d) {
+  if (!cacheBoil.has(d)) cacheBoil.set(d, [d, perturbarPath(d, 1), perturbarPath(d, 2)]);
+  return cacheBoil.get(d);
+}
+
+// Um traço com boil: os três quadros empilhados; o CSS mostra um por vez.
+function TracoBoil({ d, className }) {
+  return quadrosDe(d).map((v, i) => (
+    <path key={i} d={v} className={`${className} boil-quadro boil-quadro--${i}`} />
+  ));
+}
 export default function PlantaRelojoaria({ localidadeAtual }) {
   const viajarPara = useJogo((s) => s.viajarPara);
   const abrirOverlay = useJogo((s) => s.abrirOverlay);
@@ -38,7 +88,7 @@ export default function PlantaRelojoaria({ localidadeAtual }) {
       >
         {/* Cômodos decorativos (loja, corredor): traço mais claro. */}
         {P.decorSalas.map((s, i) => (
-          <path key={`d${i}`} d={s.contorno} className="planta-decor" />
+          <TracoBoil key={`d${i}`} d={s.contorno} className="planta-decor" />
         ))}
         {P.decorSalas.map(
           (s, i) =>
@@ -51,9 +101,9 @@ export default function PlantaRelojoaria({ localidadeAtual }) {
 
         {/* Mobília e aberturas (balcão, lareira, porta dos fundos, escada). */}
         {P.tracos.map((d, i) => (
-          <path key={`t${i}`} d={d} className="planta-traco" />
+          <TracoBoil key={`t${i}`} d={d} className="planta-traco" />
         ))}
-        <path d={P.vitrine} className="planta-vitrine" />
+        <TracoBoil d={P.vitrine} className="planta-vitrine" />
 
         {/* Rótulos de papel do desenho. */}
         {P.rotulosDecor.map((r, i) => (
@@ -67,7 +117,7 @@ export default function PlantaRelojoaria({ localidadeAtual }) {
           const aqui = c === comodoAtual;
           return (
             <g key={c.id}>
-              <path d={c.contorno} className={`planta-comodo ${aqui ? 'planta-comodo--aqui' : ''}`} />
+              <TracoBoil d={c.contorno} className={`planta-comodo ${aqui ? 'planta-comodo--aqui' : ''}`} />
               <text x={c.rotuloPos.x} y={c.rotuloPos.y} textAnchor="middle" className="planta-rotulo">
                 {c.rotulo}
               </text>

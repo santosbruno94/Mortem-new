@@ -980,9 +980,20 @@ function CartaSelecionavel({ carta, ativa, aoClicar }) {
 // o próprio peso) e "se desenha sozinho" ao surgir (avança da origem ao
 // alvo). Depois vira um fio comum. A curva grossa invisível por cima é a
 // área de clique para REMOVER o barbante.
+//
+// BOIL (Tarefa 4): o fio existe em três quadros com perturbações FIXAS
+// (nada de aleatório em render) — leves nas pontas, maiores na barriga,
+// onde um fio real balança mais — alternados pelo CSS `.boil-quadro`
+// (index.css) a ~13fps. A área de clique é uma só e não treme.
 // ---------------------------------------------------------------------
+const QUADROS_BOIL = [
+  { ax: 0, ay: 0, cx: 0, cy: 0, bx: 0, by: 0 },
+  { ax: 0.6, ay: -0.5, cx: -2.4, cy: 1.8, bx: -0.5, by: 0.4 },
+  { ax: -0.5, ay: 0.5, cx: 2.0, cy: -2.2, bx: 0.6, by: -0.4 },
+];
+
 function Barbante({ a, b, aoRemover }) {
-  const ref = useRef(null);
+  const refs = useRef([]);
 
   // Curva de Bézier quadrática: o ponto de controle no meio, empurrado para
   // baixo — a barriga do barbante pendurado (mais funda em fios longos).
@@ -990,24 +1001,30 @@ function Barbante({ a, b, aoRemover }) {
   const barriga = Math.min(30, 10 + dist * 0.12);
   const cx = (a.x + b.x) / 2;
   const cy = (a.y + b.y) / 2 + barriga;
-  const d = (dx = 0, dy = 0) => `M ${a.x} ${a.y + dy} Q ${cx + dx} ${cy + dy} ${b.x} ${b.y + dy}`;
+  const d = (q, dx = 0, dy = 0) =>
+    `M ${a.x + q.ax} ${a.y + q.ay + dy} Q ${cx + q.cx + dx} ${cy + q.cy + dy} ${b.x + q.bx} ${b.y + q.by + dy}`;
 
+  // O desenhar-se aplica aos três quadros ao mesmo tempo: os comprimentos
+  // diferem por frações de pixel, e o boil segue vivo durante o gesto.
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const L = el.getTotalLength();
-    el.style.transition = 'none';
-    el.style.strokeDasharray = String(L);
-    el.style.strokeDashoffset = String(L);
-    void el.getBoundingClientRect();
-    el.style.transition = 'stroke-dashoffset 350ms ease-out';
-    el.style.strokeDashoffset = '0';
+    const els = refs.current.filter(Boolean);
+    if (!els.length) return;
+    els.forEach((el) => {
+      const L = el.getTotalLength();
+      el.style.transition = 'none';
+      el.style.strokeDasharray = String(L);
+      el.style.strokeDashoffset = String(L);
+    });
+    void els[0].getBoundingClientRect();
+    els.forEach((el) => {
+      el.style.transition = 'stroke-dashoffset 350ms ease-out';
+      el.style.strokeDashoffset = '0';
+    });
     const t = setTimeout(() => {
-      const cur = ref.current;
-      if (cur) {
-        cur.style.strokeDasharray = 'none';
-        cur.style.transition = 'none';
-      }
+      refs.current.filter(Boolean).forEach((el) => {
+        el.style.strokeDasharray = 'none';
+        el.style.transition = 'none';
+      });
     }, 380);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -1016,7 +1033,7 @@ function Barbante({ a, b, aoRemover }) {
   return (
     <g>
       <path
-        d={d()}
+        d={d(QUADROS_BOIL[0])}
         fill="none"
         stroke="transparent"
         strokeWidth={24}
@@ -1028,9 +1045,20 @@ function Barbante({ a, b, aoRemover }) {
       />
       {/* O fio tem corpo (Q7): sombra por baixo, torção clara por cima.
           Barbante rubro de investigação — cor de lacre, bem visível na cortiça. */}
-      <path d={d(0, 2)} fill="none" stroke="rgba(0,0,0,0.6)" strokeWidth={5} />
-      <path ref={ref} d={d()} fill="none" stroke="#a13b2e" strokeWidth={3.5} strokeLinecap="round" />
-      <path d={d(0, -0.7)} fill="none" stroke="rgba(240,180,150,0.5)" strokeWidth={1.2} strokeDasharray="5 7" />
+      {QUADROS_BOIL.map((q, i) => (
+        <g key={i} className={`boil-quadro boil-quadro--${i}`}>
+          <path d={d(q, 0, 2)} fill="none" stroke="rgba(0,0,0,0.6)" strokeWidth={5} />
+          <path
+            ref={(el) => (refs.current[i] = el)}
+            d={d(q)}
+            fill="none"
+            stroke="#a13b2e"
+            strokeWidth={3.5}
+            strokeLinecap="round"
+          />
+          <path d={d(q, 0, -0.7)} fill="none" stroke="rgba(240,180,150,0.5)" strokeWidth={1.2} strokeDasharray="5 7" />
+        </g>
+      ))}
     </g>
   );
 }

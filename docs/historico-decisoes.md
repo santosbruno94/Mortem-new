@@ -548,3 +548,41 @@ destruições comutam e o estado final só depende do conjunto, não da ordem; p
 funções (`janelaDaCarta`/`intersecaoJanelas`/`mecanismoCravado`), senão a prova
 provaria outro jogo; armadilhas em arquivos de fixture separados — clones gerados
 in-loco não desatualizam quando o gerador evolui.
+
+## Quatro melhorias de engenharia (16/07/2026) — linter de prosa, Web Audio, gravura, boil
+
+Quatro entregas de uma ordem só, todas fora do motor (nenhuma toca `src/logic/`,
+`src/gerador/` ou o shape do estado): duas de infraestrutura de qualidade, duas de
+apresentação. Justificativas em uma linha cada:
+
+- **`scripts/lint-prosa.mjs` (+ `lexico-banido.mjs`)** — a norma de prosa era
+  fiscalizada só na *geração* (agentes + checklist humano); o linter mecânico
+  protege o texto já commitado contra *regressão*: fórmula "não X — é Y",
+  densidade de travessão (§4.4), léxico banido espelhado da skill
+  `anti-padrao-ia` e teto de frases de efeito. Roda ao fim do `qa.mjs` e como
+  `npm run lint:prosa`; exceção deliberada via allowlist explícita no script.
+- **`src/som.js` em Web Audio** — `new Audio()` recriava o elemento a cada gesto
+  (efeito metralhadora na pena). Agora: `AudioContext` singleton acordado no
+  primeiro gesto (autoplay), os cinco WAVs sintetizados decodificados uma vez em
+  `AudioBuffer`, e cada toque é fonte nova com humanização (±4% de pitch, ±15%
+  de ganho). API (`tocarSom`) e falha silenciosa intactas — nenhum outro arquivo
+  mudou.
+- **Gravura no `CorpoCanvas`** — o cadáver `meshStandardMaterial` destoava da mesa
+  de papel; um passe de pós-processamento (dithering ordenado Bayer 4×4 →
+  duotone papel/tinta da paleta quente do `index.css`) o lê como prancha
+  anatômica. Atrás da prop `gravura` (default ligada) para A/B e reversão;
+  respeita o `frameloop` sob demanda; `DioramaVila` fica como passo futuro
+  anotado no cabeçalho.
+- **Boil nos traços de mão** — barbantes do mural e traços da planta da
+  relojoaria ganham a vibração de traço a lápis: três quadros por traço com
+  micro-perturbações determinísticas (tabela fixa de offsets, zero
+  `Math.random()` em render), alternados por CSS puro (`steps`/`step-end`,
+  ciclo de 0.23s ≈ 13fps). Sem novos assets, sem JS por frame; as áreas de
+  clique (barbante e `[data-alvo]` da planta) ficam paradas; cede a
+  `prefers-reduced-motion`.
+
+Rejeições (uma linha cada): reescrever textos que o linter acusou (revisão é
+editorial, não do agente — ocorrências vão para allowlist com `TODO`); TSL/WebGPU
+para a gravura (exigiria fiber v9 — o stack é `three@0.169` + fiber 8); boil por
+SMIL `<animate>` ou JS por frame (CSS com quadros empilhados é mais barato e cede
+a reduced-motion de graça).
