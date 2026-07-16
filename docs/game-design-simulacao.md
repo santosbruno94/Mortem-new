@@ -406,6 +406,14 @@ abertura gerada, extração, mural, retomada de save). Prosa dos templates em re
 "mecânica primeiro" (lapidação via `revisar-prosa` em passo próprio), já sob o
 lint-prosa.
 
+**Implementado na OS da árvore de diálogo** (posterior à Fase 6; norma em
+`docs/os-arvore-dialogo-procedural.md`): a rejeição "v1 sem árvore" caiu — todo
+suspeito de caso gerado ganha árvore de interrogatório derivada por seed
+(`src/gerador/dialogos_gerados.js`): 3 beats × 4 tons, carta de álibi sustentada
+em todo tom, confrontos↔reações em bijeção pela tabela fechada da spec, voz pela
+regra do guia de estilo §8.4. Guardas próprias no `qa.mjs` (estrutura, armadilhas
+sintéticas, replay) e interrogatório na ROTA GERADA do `qa-ui.mjs`.
+
 ---
 
 ## 6. Fora de escopo (rejeitado nesta ordem, com motivo)

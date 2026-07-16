@@ -79,3 +79,58 @@ npm run build          # build limpo obrigatório
 node scripts/qa.mjs    # motor: 4 perfis → 4 desfechos + transversais
 node scripts/qa-ui.mjs # interface: rotas canônicas no navegador
 ```
+
+## Parecer `revisar-prosa` — OS árvore de diálogo procedural (16/07/2026)
+
+Alvo: `src/gerador/dialogos_gerados.js` (templates) e a prosa realizada nos 9
+pacotes de `src/data/casos_gerados.js`. Três revisores em paralelo
+(editor-crítico, perito-forense, fiscal-continuidade), pareceres consolidados.
+
+**Bloqueantes (todos corrigidos e regenerados):**
+- Assinatura de template apontava o réu: a redação exclusiva do álibi
+  `mentiraDeCena` ("Recolhi-me cedo… antes das oito… até a manhã") era a única
+  distinta entre as cinco cartas — colapsada na MESMA redação do inocente
+  caseiro (a mentira fica no lugar declarado e cai por confronto, como a de
+  Silas).
+- O réu com trait `linha_tempo_nao_confiavel` se desmentia no tento ressonante
+  do arremate — tento próprio do réu, sem cruzamento feito pelo narrador.
+- Concordância de gênero: "antes que o delegado acabe de o chamar" com
+  interrogadas mulheres; "na mão do morto" com vítima mulher (diálogos); e —
+  adjacente, nos templates da Fase 6 do montador — vítima feminina tratada no
+  masculino em cartas, localidades e abertura ("foi achado morto", "ninguém
+  mais o encontrou", "O morto jaz", móbil "casa nenhuma o toma a serviço").
+
+**Altos (corrigidos):** voz uniforme no corpo do arremate (agora varia por
+macrogrupo de classe: alto/ofício/chão); vocativo duplicado (profissional 45+);
+"batina" em pároco anglicano → sobrecasaca (KB vestuário); "escrevente" na
+delegacia de vila → "pela mão do guarda" (KB inquérito §2); rubricas que
+juravam o que a fala não mostrava (testemunhas de visto-com-vida e ruído);
+"móvel arrastado" ≠ "móvel no chão" da carta; duas máximas em série na reação
+aos soberanos; "o serviço solta" (coloquialismo) → "a que horas larga o
+serviço"; gestos de chapéu em mulheres → touca atada/xale/luvas (KB); "de
+serviço de porta para dentro" em boca de lavrador → redação neutra de classe;
+regência de rótulo com artigo ("em A Mercearia" → "na Mercearia") na abertura e
+nos suspeitos.
+
+**Menores acatados:** têmpera ≤19 e 45+ reescritas; variantes de comerciante
+sem lusitanismo repetido; tique do tagarela sem tríade duplicada; eco
+contraditório do lavrador ("a lida espera"/"volto à lida"); pergunta cordial do
+arremate ("para quem lidava com ele/ela"); tento da linha do tempo sem o
+narrador graduando coerência; "diz a mesa" → "diz esse papel".
+
+**Registrados para decisão do usuário (não aplicados):**
+- Réu cuja MORADIA é a cena do crime (comarca_6): a mentira de design degenera
+  em "estive em casa" = no prédio do crime — vetar no gerador ou aceitar como
+  variante (o texto hoje é idêntico ao do inocente caseiro, sem assinatura).
+- Inocente com rotina na cena na hora do crime (comarca_4) que nada declara
+  ver: colisão de mundo, não de prosa (rotina noturna do gerador de espaço).
+- Rotina noturna de lavrador em igreja/mercearia até as 23h (plausibilidade do
+  dado, `espaco.js`).
+- Divergência viva "delegado/delegacia" × recomendação da KB de inquérito
+  (opção B: posto inglês glosado) — cânon do jogo desde o caso-escola.
+- Lacuna de KB: pegadas/moldes de calçado (Gross 1893) não cobertas em
+  `vestigios.md` — registrar antes que um caso futuro modele dono de pegada.
+
+Fechamento: linter mecânico com **zero violação** após as correções; contagens
+brutas inalteradas (formula=3 · travessao=10 · lexico=8, todas na allowlist
+pré-existente); QA estático e QA de interface verdes.

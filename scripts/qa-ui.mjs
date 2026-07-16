@@ -684,6 +684,35 @@ async function main() {
     checar('Rota gerada: extração pela prosa gerada funciona', (await page.locator('.termo-extraido').count()) >= 2);
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Delegacia');
+    // Árvore de diálogo procedural (OS diálogo): a delegacia chama um a um
+    // os suspeitos; o beat de paradeiro sustenta a carta de álibi em
+    // qualquer tom, e a conversa desce até se encerrar.
+    checar(
+      'Rota gerada: a delegacia oferece um interrogatório por suspeito',
+      (await page.locator('.botao-dialogo-local').count()) === 5
+    );
+    await page.locator('.botao-dialogo-local').first().click();
+    await espera(page, 400);
+    checar(
+      'Rota gerada: o beat abre com os quatro tons',
+      (await page.locator('.opcao-dialogo[data-tom]').count()) === 4
+    );
+    await page.locator('.opcao-dialogo[data-tom]').last().click(); // oblíquo
+    await espera(page, 300);
+    checar(
+      'Rota gerada: o beat de paradeiro sustenta a carta de álibi',
+      (await page.locator('[data-no-dialogo] .termo-clicavel').count()) >= 1
+    );
+    await extrairTermosVisiveis(page);
+    checar(
+      'Rota gerada: a fala extraiu a carta de álibi',
+      (await page.locator('[data-no-dialogo] .termo-extraido').count()) >= 1
+    );
+    await percorrerDialogo(page);
+    checar(
+      'Rota gerada: a conversa desce e se encerra',
+      (await page.locator('[data-conversa-encerrada]').count()) === 1
+    );
     await fecharOverlay(page);
     await page.click('text=CONSTRUIR A ACUSAÇÃO');
     await espera(page, 500);

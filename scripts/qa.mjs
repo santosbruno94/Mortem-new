@@ -2156,10 +2156,10 @@ const { montarPacoteGerado, SEED_REPLICA, DIRIGIDO_REPLICA } = await import(
 );
 const { CASO_REPLICA, CASOS_POOL } = await import('../src/data/casos_gerados.js');
 
-// (a) Replay byte a byte do arquivo embarcado.
-const replayReplicaOk =
-  JSON.stringify(montarPacoteGerado(SEED_REPLICA, { dirigido: DIRIGIDO_REPLICA })) ===
-  JSON.stringify(CASO_REPLICA);
+// (a) Replay byte a byte do arquivo embarcado. A regeneração fica à mão
+// para o cheque (f) da árvore de diálogo (replay chamada a chamada).
+const regenReplica = montarPacoteGerado(SEED_REPLICA, { dirigido: DIRIGIDO_REPLICA });
+const replayReplicaOk = JSON.stringify(regenReplica) === JSON.stringify(CASO_REPLICA);
 const replayPoolOk = CASOS_POOL.every(
   (p) => JSON.stringify(montarPacoteGerado(p.id.replace(/^gerado_/, ''))) === JSON.stringify(p)
 );
@@ -2191,6 +2191,11 @@ function problemasDoPacoteGerado(pacote) {
       }
     }
     for (const g of l.gestos || []) marcados.add(g.cartaId);
+  }
+  // Fala de diálogo é caminho de extração como a prosa de localidade (OS
+  // da árvore procedural: as cartas de álibi nascem nos beats).
+  for (const d of Object.values(pacote.dialogos || {})) {
+    for (const no of Object.values(d.nos)) textos.push(...(no.fala || []));
   }
   for (const t of textos) {
     for (const m of t.matchAll(/\[\[(\w+)\]\]/g)) marcados.add(m[1]);
@@ -2342,6 +2347,169 @@ console.log('\n=== GERADOR (FASE 6) — perfis nos casos gerados ===');
 console.log('réplica:', JSON.stringify(perfisReplica));
 console.log('pool[0]:', JSON.stringify(perfisPool));
 
+// ============================================================
+// ÁRVORES DE DIÁLOGO GERADAS (OS árvore procedural — spec §8.7 em
+// docs/os-arvore-dialogo-procedural.md). Três provas sobre TODOS os
+// pacotes embarcados:
+//   (d) ESTRUTURA: árvore por suspeito; noInicial/noEvasiva existem;
+//       toda vaiPara existe; nenhum nó órfão; todo beat tem os 4 tons;
+//       bijeção confrontos↔reacoesProva; requerCarta e destino de reação
+//       existem; o beat de paradeiro sustenta a MESMA carta nos 4 tons;
+//       fala e rótulo não vazam id interno (fora dos marcadores).
+//   (e) ARMADILHAS SINTÉTICAS (lição da Fase 5): beat de 3 tons,
+//       confronto sem reação, nó órfão e requerCarta fantasma TÊM de
+//       falhar — e o caso válido passa. `--self-test` verboseia.
+//   (f) REPLAY chamada a chamada: mesma seed → mesma árvore, byte a byte
+//       (o cheque (a) já cobre regeneração × arquivo commitado).
+// ============================================================
+const TONS_DIALOGO = ['firme', 'cordial', 'tecnico', 'obliquo'];
+function problemasDosDialogosGerados(pacote) {
+  const problemas = [];
+  const idsCartas = new Set(pacote.cartas.map((c) => c.id));
+  const dialogos = pacote.dialogos || {};
+  for (const s of pacote.suspeitos) {
+    if (!Object.values(dialogos).some((d) => d.suspeitoId === s.id)) {
+      problemas.push(`suspeito sem árvore: ${s.id}`);
+    }
+  }
+  for (const [id, d] of Object.entries(dialogos)) {
+    const nos = d.nos || {};
+    const idsNos = new Set(Object.keys(nos));
+    if (!idsNos.has(d.noInicial)) problemas.push(`${id}: noInicial inexistente`);
+    if (!idsNos.has(d.noEvasiva)) problemas.push(`${id}: noEvasiva inexistente`);
+    if (d.origemLocalidade && !pacote.localidades.some((l) => l.id === d.origemLocalidade)) {
+      problemas.push(`${id}: origemLocalidade órfã (${d.origemLocalidade})`);
+    }
+    for (const [noId, no] of Object.entries(nos)) {
+      for (const op of no.opcoes || []) {
+        if (!idsNos.has(op.vaiPara)) problemas.push(`${id}:${noId}: vaiPara órfão (${op.vaiPara})`);
+      }
+      if ((no.opcoes || []).length > 0) {
+        const tons = (no.opcoes || []).map((o) => o.tom);
+        if (tons.length !== 4 || TONS_DIALOGO.some((t) => !tons.includes(t))) {
+          problemas.push(`${id}:${noId}: beat sem os 4 tons (${tons.join(',') || 'nenhum'})`);
+        }
+      }
+    }
+    // Alcançabilidade: a descida desde noInicial, mais os nós de reação e
+    // a evasiva, tem de cobrir TODOS os nós da árvore.
+    const alcancados = new Set([d.noEvasiva, ...Object.values(d.reacoesProva || {})]);
+    const descer = (noId) => {
+      if (!noId || alcancados.has(noId) || !nos[noId]) return;
+      alcancados.add(noId);
+      for (const op of nos[noId].opcoes || []) descer(op.vaiPara);
+    };
+    descer(d.noInicial);
+    for (const noId of idsNos) if (!alcancados.has(noId)) problemas.push(`${id}: nó órfão (${noId})`);
+    // Bijeção confrontos ↔ reacoesProva; cartas e destinos existem.
+    const chavesReacao = new Set(Object.keys(d.reacoesProva || {}));
+    const chavesConfronto = new Set((d.confrontos || []).map((c) => c.requerCarta));
+    for (const c of chavesConfronto) {
+      if (!chavesReacao.has(c)) problemas.push(`${id}: confronto sem reação (${c})`);
+      if (!idsCartas.has(c)) problemas.push(`${id}: requerCarta fantasma (${c})`);
+    }
+    for (const c of chavesReacao) if (!chavesConfronto.has(c)) problemas.push(`${id}: reação sem confronto (${c})`);
+    for (const [cartaId, destino] of Object.entries(d.reacoesProva || {})) {
+      if (!idsNos.has(destino)) problemas.push(`${id}: reação de ${cartaId} aponta nó inexistente (${destino})`);
+    }
+    // Sustentação: os 4 nós do beat de paradeiro rendem a MESMA carta em
+    // qualquer tom (solubilidade — spec §8.2).
+    const primeirosBeats = (nos[d.noInicial]?.opcoes || []).map((op) => op.vaiPara);
+    const marcadoresDoNo = (noId) =>
+      new Set((nos[noId]?.fala || []).flatMap((t) => [...t.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1])));
+    if (primeirosBeats.length === 4) {
+      const comum = [...marcadoresDoNo(primeirosBeats[0])].filter(
+        (mk) => primeirosBeats.every((b) => marcadoresDoNo(b).has(mk)) && idsCartas.has(mk)
+      );
+      if (comum.length === 0) problemas.push(`${id}: beat de paradeiro sem sustentação comum nos 4 tons`);
+    }
+    // Fala e rótulo não vazam id interno (fora dos marcadores [[…]]).
+    const textos = [
+      ...Object.values(nos).flatMap((n) => n.fala || []),
+      ...Object.values(nos).flatMap((n) => (n.opcoes || []).map((o) => o.rotulo)),
+      ...(d.confrontos || []).map((c) => c.rotulo),
+      d.chamada,
+      d.titulo,
+      d.subtitulo,
+    ].filter(Boolean);
+    for (const t of textos) {
+      if (/\bgen_\w+/.test(t.replace(/\[\[\w+\]\]/g, ''))) {
+        problemas.push(`${id}: id interno vazando em fala/rótulo ("${t.slice(0, 40)}…")`);
+      }
+    }
+  }
+  return problemas;
+}
+
+// (d) Estrutura em todos os pacotes embarcados.
+const problemasDialogosGerados = [CASO_REPLICA, ...CASOS_POOL].flatMap((p) =>
+  problemasDosDialogosGerados(p).map((x) => `${p.id}: ${x}`)
+);
+const dialogosGeradosIntegros = problemasDialogosGerados.length === 0;
+if (!dialogosGeradosIntegros) {
+  console.log('\nÁRVORE DE DIÁLOGO — problemas de estrutura:');
+  for (const p of problemasDialogosGerados.slice(0, 12)) console.log('  ·', p);
+}
+
+// (e) Armadilhas sintéticas: cada clone quebrado TEM de acusar.
+const selfTestVerboso = process.argv.includes('--self-test');
+const armadilhaDialogo = (nome, mutar, esperado) => {
+  const clone = JSON.parse(JSON.stringify(CASO_REPLICA));
+  mutar(clone);
+  const caiu = problemasDosDialogosGerados(clone).some((p) => p.includes(esperado));
+  if (selfTestVerboso) console.log(`self-test árvore de diálogo — ${nome}: ${caiu ? 'DETECTADA' : 'PASSOU SEM CAIR'}`);
+  return caiu;
+};
+const detectaTresTons = armadilhaDialogo(
+  'beat de 3 tons',
+  (c) => {
+    const d = Object.values(c.dialogos)[0];
+    d.nos[d.noInicial].opcoes.pop();
+  },
+  'beat sem os 4 tons'
+);
+const detectaConfrontoSemReacao = armadilhaDialogo(
+  'confronto sem reação',
+  (c) => {
+    const d = Object.values(c.dialogos).find((x) => (x.confrontos || []).length > 0);
+    delete d.reacoesProva[d.confrontos[0].requerCarta];
+  },
+  'confronto sem reação'
+);
+const detectaNoOrfao = armadilhaDialogo(
+  'nó órfão',
+  (c) => {
+    const d = Object.values(c.dialogos)[0];
+    d.nos.no_perdido = { fala: ['(nó sintético da armadilha)'], opcoes: [] };
+  },
+  'nó órfão'
+);
+const detectaRequerCartaFantasma = armadilhaDialogo(
+  'requerCarta fantasma',
+  (c) => {
+    const d = Object.values(c.dialogos).find((x) => (x.confrontos || []).length > 0);
+    const alvo = d.confrontos[0].requerCarta;
+    d.reacoesProva.carta_fantasma = d.reacoesProva[alvo];
+    delete d.reacoesProva[alvo];
+    d.confrontos[0].requerCarta = 'carta_fantasma';
+  },
+  'requerCarta fantasma'
+);
+const armadilhasDialogoDetectadas =
+  detectaTresTons && detectaConfrontoSemReacao && detectaNoOrfao && detectaRequerCartaFantasma && dialogosGeradosIntegros;
+if (!armadilhasDialogoDetectadas) {
+  console.log(
+    '\nÁRVORE DE DIÁLOGO — armadilhas não detectadas:',
+    JSON.stringify({ detectaTresTons, detectaConfrontoSemReacao, detectaNoOrfao, detectaRequerCartaFantasma })
+  );
+}
+
+// (f) Replay chamada a chamada: a MESMA seed regenera a MESMA árvore.
+const replayArvoreOk =
+  JSON.stringify(montarPacoteGerado(SEED_REPLICA, { dirigido: DIRIGIDO_REPLICA }).dialogos) ===
+  JSON.stringify(regenReplica.dialogos);
+if (!replayArvoreOk) console.log('\nÁRVORE DE DIÁLOGO — replay chamada a chamada DIVERGIU.');
+
 // Devolve o módulo de dados ao caso-escola: as checagens e o linter
 // abaixo leem o pacote do tutorial, como sempre.
 carregarCaso(pacote);
@@ -2432,6 +2600,9 @@ const checagens = [
   ['Casos embarcados = montador de hoje, byte a byte (réplica dirigida + pool) (FASE 6)', casosEmbarcadosReplay],
   ['Pacotes gerados íntegros: campos, marcadores↔cartas, blocos contingentes, slots, sem id/rótulo cru (FASE 6)', casosEmbarcadosIntegros],
   ['Casos gerados jogáveis: os 4 perfis produzem os 4 desfechos na réplica e no pool (FASE 6)', casosGeradosJogaveis],
+  ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],
+  ['Armadilhas da árvore detectadas: beat de 3 tons, confronto sem reação, nó órfão, requerCarta fantasma (OS diálogo)', armadilhasDialogoDetectadas],
+  ['Replay da árvore: mesma seed → mesma árvore, chamada a chamada (OS diálogo)', replayArvoreOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

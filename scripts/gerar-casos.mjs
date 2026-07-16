@@ -94,6 +94,8 @@ function metodicoResolve(pacote) {
 }
 
 // Higiene do pacote: todo marcador aponta carta, toda carta tem marcador.
+// Fala de diálogo é caminho de extração como a prosa de localidade (a OS
+// da árvore procedural põe as cartas de álibi nascendo nos beats).
 function marcadoresFecham(pacote) {
   const ids = new Set(pacote.cartas.map((c) => c.id));
   const marcados = new Set();
@@ -106,6 +108,11 @@ function marcadoresFecham(pacote) {
     ];
     for (const t of textos) for (const m of t.matchAll(/\[\[(\w+)\]\]/g)) marcados.add(m[1]);
     for (const g of l.gestos || []) marcados.add(g.cartaId);
+  }
+  for (const d of Object.values(pacote.dialogos || {})) {
+    for (const no of Object.values(d.nos)) {
+      for (const t of no.fala || []) for (const m of t.matchAll(/\[\[(\w+)\]\]/g)) marcados.add(m[1]);
+    }
   }
   const orfaos = [...marcados].filter((id) => !ids.has(id));
   const inalcancaveis = [...ids].filter((id) => !marcados.has(id));

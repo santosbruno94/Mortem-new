@@ -260,8 +260,9 @@ export function obterLocalidade(id) {
   return casoCarregado.localidades.find((l) => l.id === id) || null;
 }
 
-// Árvores de interrogatório do caso ({} quando o caso não traz diálogos —
-// modo procedural v1: os depoimentos nascem como prosa de localidade).
+// Árvores de interrogatório do caso. Os casos gerados também as trazem
+// (OS da árvore procedural: uma árvore por suspeito, embutida na
+// delegacia); {} fica só como fallback defensivo de pacote sem diálogo.
 export function obterDialogos() {
   return casoCarregado.dialogos || {};
 }

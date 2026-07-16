@@ -646,3 +646,38 @@ depoimentos nascem como prosa de localidade; árvore procedural é OS própria);
 periféricos com segredo no caso gerado (exigiria álibi + vestígio de segredo
 gerados — v2); nó do mapa nomeado pelo réu (telegrafaria; o nó leva o nome do
 prédio).
+
+## OS árvore de diálogo procedural (16/07/2026) — todo suspeito gerado conversa
+
+Execução da OS aberta sobre a rejeição da Fase 6 (norma e spec em
+`docs/os-arvore-dialogo-procedural.md`; guia de estilo ganhou a §8 — voz
+derivada). Fases 0–5 entregues em sequência. Decisões:
+
+- **Interrogatório mora na delegacia**: toda árvore gerada é diálogo EMBUTIDO
+  (`origemLocalidade: 'delegacia'` — o delegado manda chamar, um a um).
+  Rejeitado nó de mapa por suspeito (poluição + telegrafia de peso) e
+  interrogatório no local de rotina (o `oficio_do_reu` nem sempre existe).
+- **O paradeiro vira carta**: cada beat de paradeiro sustenta
+  `gen_alibi_<suspeito>` em todo tom (solubilidade), no vocabulário de tags de
+  `alibi_silas` — o confronto em cena (`ligacaoDeConfrontoEmCena`) liga sem
+  tocar o motor. Marcador em fala de diálogo passou a contar como caminho de
+  extração (gerar-casos + higiene do qa).
+- **Réu posto na cena pela rotina declara a moradia** (a mentira de design, à
+  Silas — cai só por confronto); todos os demais declaram a rotina, honesta.
+- **Confrontos pela tabela fechada**: `pertenceA` (instrumento, pertence,
+  soberanos, retalho) e `origemTestemunha` (visto-com-vida, ruído). Fora, com
+  motivo: sangue e pegadas (1893 — sem tipagem nem casamento de bota no
+  catálogo), pressão sobre testemunha e prenúncio (o alvo é terceiro), carta
+  cujo dono não é suspeito do caso.
+- **Tom ressonante por trait** (medroso→cordial, preciso→técnico,
+  tagarela→oblíquo, linha-do-tempo→firme) rende prosa, nunca prova — sem dente
+  mecânico, como no caso-escola.
+- **Voz derivada por regra fechada** (guia §8.4): registro por classe social,
+  têmpera de idade, um tique de trait; contrações de lugar para os rótulos com
+  artigo embutido ("ao Moinho", "na Taverna").
+- **Guardas novas** (qa.mjs): estrutura (4 tons por beat, nó órfão, bijeção,
+  sustentação comum, id interno em fala), armadilhas sintéticas embutidas em
+  toda execução (beat de 3 tons, confronto sem reação, nó órfão, requerCarta
+  fantasma — `--self-test` verboseia) e replay chamada a chamada. `qa-ui.mjs`:
+  a rota gerada agora interroga (4 tons, extração do álibi, encerramento).
+- **Playtest dirigido**: roteiro próprio em `docs/playtest-arvore-dialogo.md`.

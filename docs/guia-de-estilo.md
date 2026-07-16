@@ -213,3 +213,64 @@ num arquivo de dados — ou não se cita.
 9. Três períodos seguidos abrem com a mesma palavra? (§4.9)
 10. Algum nome próprio aparece duas vezes na mesma fala? (§4.10)
 11. Li em voz alta: onde tropecei, reescrevi?
+
+---
+
+## 8. Voz derivada: a fala dos NPCs gerados
+
+Os casos gerados têm elenco sem verbete próprio na bíblia de vozes. A fala dessa
+gente não se inventa por personagem: **deriva-se da ficha** (arquétipo → classe
+social, profissão, idade; traits), por regra fechada e auditável. Quem escreve
+template de fala para o gerador escreve para uma CÉLULA desta grade, nunca para
+um indivíduo.
+
+### 8.1 O registro vem da classe social e da profissão
+
+- **gentry / clero / profissional**: período completo, subordinação, cerimônia
+  ("há de compreender"); nomeia obrigações e papéis, nunca gíria.
+- **comerciante**: fala de balcão e de conta — quantias, prazos, fregueses; a
+  cortesia de quem vende e a memória de quem anota fiado.
+- **artesão**: fala de ofício — ferramenta, matéria, serviço por acabar; seco e
+  direto, responde trabalhando.
+- **lavrador**: frase curta e concreta, do tempo e da terra; deferência simples
+  ("sim, senhor") sem servilismo.
+- **criadagem**: deferência de serviço ("com licença de dizer"); responde o
+  perguntado; a casa alheia pesa em cada frase.
+- **serviço do condado**: fala de registro — hora, nome, folha; o uniforme
+  responde junto.
+
+### 8.2 A idade tempera o registro
+
+- **≤ 19**: trata todo adulto por senhor/senhora; frases mais curtas; o ofício
+  ainda em aprendizado (cita o que lhe ensinaram, não o que concluiu).
+- **20–44**: o registro da classe, pleno.
+- **45–59**: acrescenta os anos de casa ou de ofício como credencial ("são
+  vinte anos disto").
+- **≥ 60**: mede o presente pelo passado; a memória longa entra como fato, não
+  como nostalgia decorativa.
+
+### 8.3 O tique vem do trait (um por pessoa: o primeiro da ficha)
+
+- **tagarela**: responde o perguntado e EMENDA o que ninguém perguntou — a
+  pepita enterrada no ruído.
+- **preciso**: dá horas e quantias de um fôlego, sem procurá-las na memória.
+- **medroso**: mede a porta antes de responder; retém o resto até sentir chão.
+- **linha_tempo_nao_confiavel**: conta a noite por medidas erradas (canecas,
+  sinos, "depois da terceira"), e as horas não fecham entre si.
+
+### 8.4 A regra de composição (a que a OS da árvore de diálogo cita)
+
+Fala derivada = **registro da classe/profissão (§8.1) + têmpera de idade (§8.2)
++ UM tique de trait (§8.3)**, nesta ordem de precedência. O tom ressonante de
+cada personagem deriva do trait (tabela fechada no derivador); no tom
+ressonante o NPC rende um tento a mais de prosa — uma hesitação, um deslize,
+um detalhe que os outros tons não pagam. Nos demais tons, responde no registro
+perguntado, sem o tento.
+
+Valem, por cima, todas as regras deste guia: §2 (a fala de NPC é depoimento —
+observação e alegação, nunca a conclusão que o jogador devia cruzar), §4
+(anti-padrões), §6 (horas e lugares citados têm fonte nos dados do caso) e o
+teste do nome coberto da bíblia de vozes — cubra o nome e a CÉLULA da grade
+(classe × idade × trait) ainda deve ser reconhecível. Fala derivada é prosa
+como outra qualquer: o lint-prosa a cobre e o pipeline `revisar-prosa` a
+lapida.
