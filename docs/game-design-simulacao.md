@@ -349,6 +349,36 @@ cúmplice em seeds fixas, runtime sintético (gate/perda/evitada/eco/tutorial in
 cegueira do motor. Vitrine em `scripts/demo-interferencia.mjs`
 (`npm run demo:interferencia`).
 
+**Implementado na Fase 5 (jul/2026)** — as Regras de Justiça viraram invariantes
+verificados por máquina no `qa.mjs` (seção "FASE 5"), sobre as seeds da Fase 3 e as
+seeds fixas de interferência da Fase 4:
+
+- **Prova da âncora sob todos os ramos:** a árvore de combinações de eventos é
+  enumerada (todo subconjunto é estado alcançável — o jogador controla os gatilhos
+  pela ordem em que investiga; orçamento ≤ 3 ⇒ ≤ 8 ramos) e, em cada ramo, a fatia
+  resolve com as mesmas funções do motor (janela cobre a morte, mecanismo cravado,
+  presença e móbil do réu). Mais de 3 eventos = falha imediata (é a R5 que mantém a
+  enumeração trivial).
+- **Saldo informacional explícito (R2):** o conjunto redundante é computado carta a
+  carta (a remoção isolada ainda resolve) e todo evento destrói dentro dele, além de
+  depositar ≥ 1 carta nova — pertencer ao conjunto é a definição de "destrutível";
+  o evento nunca decide sozinho.
+- **Causalidade (R3):** gatilho órfão e rota órfã já eram falha na guarda da Fase 4;
+  a Fase 5 acrescenta a prova adversarial (abaixo) de que essas guardas caem.
+- **Prenúncio na prosa (R4):** todo `silenciar` publica carta de sinal cuja prosa é
+  idêntica ao texto do evento, interpolada (sem `{slot}` residual), nomeia a
+  testemunha-alvo e fica fora do gate do disparo.
+- **Replay:** mesma seed → mesmo caso inteiro byte a byte (cidade, inserções, crime,
+  fatia e eventos contingentes), agora também nas seeds fixas de interferência.
+- **Casos-armadilha (o aceite da fase):** clones de casos reais com uma violação
+  injetada — âncora destruível (o evento passa a destruir `gen_motivo`), gatilho
+  órfão, rota órfã, silenciar sem prenúncio, evento sem carta nova — têm de ser
+  DETECTADOS pelas guardas, e o caso válido tem de passar nas mesmas provas (sem
+  falso positivo). O QA falha se qualquer armadilha escapar.
+
+O tutorial (sem `interferencias`) segue passando inalterado — zero ramos, zero
+eventos, regressão zero.
+
 ---
 
 ## 6. Fora de escopo (rejeitado nesta ordem, com motivo)

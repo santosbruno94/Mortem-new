@@ -507,3 +507,44 @@ Rejeições (uma linha cada): gatilho por relógio/tempo (não é ação observ�
 jogador — feriria R3); destruição de carta já registrada (o que está no caderno do
 perito é do perito — a corrida é ANTES); `plantar_evidencia_falsa` (segue adiado
 para v2, decisão da ordem §2.7); agência livre em runtime (invariante da ordem).
+
+## Fase 5 do gerador por simulação (16/07/2026) — QA da solvabilidade sob interferência
+
+Entrega da Fase 5 da ordem "Gerador por Simulação e Sistema de Interferência": as
+Regras de Justiça promovidas a invariantes verificados por máquina, só em `qa.mjs`
+(zero mudança em gerador, motor ou dados — detalhe no bloco "Implementado na Fase 5"
+de `docs/game-design-simulacao.md`). Decisões de forma tomadas nesta fase:
+
+- **Ramo = subconjunto de eventos.** Em runtime, qualquer subconjunto dos eventos
+  pode ter disparado (o jogador controla os gatilhos pela ordem em que investiga);
+  a prova da âncora enumera TODOS os subconjuntos (2^n, n ≤ 3) e exige que a fatia
+  resolva em cada um com as funções do próprio motor — substitui a aproximação
+  "ramo pior" da Fase 4 pela enumeração completa (o ramo pior continua coberto:
+  é o subconjunto cheio). Mais de 3 eventos = falha imediata, porque é a R5 que
+  mantém a enumeração trivial.
+- **Conjunto redundante como definição, não como teste pontual.** O QA computa o
+  conjunto de cartas cuja remoção isolada preserva a solução e exige
+  `cartaDestruida ∈ conjunto` — a redundância deixa de ser um predicado que o
+  gerador consulta e vira um invariante que qualquer caso emitido tem de exibir.
+- **Prova adversarial embutida (o aceite da fase).** O QA constrói casos-armadilha
+  — clones de casos reais com UMA violação injetada (âncora destruível via
+  `gen_motivo`, gatilho órfão, rota órfã, silenciar sem prenúncio, evento sem carta
+  nova) — e falha se as guardas NÃO acusarem; o caso válido tem de passar nas mesmas
+  provas. Guarda que não cai em armadilha é guarda morta — a detecção é testada, não
+  presumida.
+- **Prenúncio provado na prosa, não no metadado:** a carta de sinal tem de carregar
+  o texto exato do evento, interpolado (sem `{slot}` residual), nomear a
+  testemunha-alvo e viver fora do gate do disparo.
+- **Replay estendido às seeds de interferência:** mesma seed → mesmo caso inteiro
+  byte a byte (cidade, inserções, crime, fatia e eventos contingentes) também nas 4
+  seeds fixas da Fase 4 — "mesmos eventos contingentes" agora é cláusula literal.
+- **Regressão zero por construção:** o tutorial não tem `interferencias` — zero
+  eventos, um único ramo (vazio), nenhuma guarda nova o toca; a suíte segue verde
+  inalterada.
+
+Rejeições (uma linha cada): enumerar ramos por ORDEM de disparo (permutações) — as
+destruições comutam e o estado final só depende do conjunto, não da ordem; provar a
+âncora com predicado próprio do QA divergente do motor — a réplica usa as MESMAS
+funções (`janelaDaCarta`/`intersecaoJanelas`/`mecanismoCravado`), senão a prova
+provaria outro jogo; armadilhas em arquivos de fixture separados — clones gerados
+in-loco não desatualizam quando o gerador evolui.
