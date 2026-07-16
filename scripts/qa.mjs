@@ -18,6 +18,7 @@
 // =====================================================================
 
 import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { useJogo } from '../src/store/jogo.js';
@@ -2136,6 +2137,19 @@ if (casoComDestruicao && casoComEvento && casoComSilenciar) {
   console.log('\nGERADOR (FASE 5) — seeds sob prova sem os três casos-base das armadilhas (cobertura furada).');
 }
 
+// ============================================================
+// LINTER DE PROSA (regressão da norma de texto): scripts/lint-prosa.mjs
+// roda como parte do QA — cheques mecânicos do guia de estilo e da skill
+// anti-padrao-ia (fórmula "não X — é Y", densidade de travessão, léxico
+// banido, exclamações) sobre os módulos de dados e os templates. O
+// relatório do linter sai inteiro aqui (stdio herdado).
+// ============================================================
+console.log('\n=== Linter de prosa (scripts/lint-prosa.mjs) ===');
+const lintProsa = spawnSync(process.execPath, [fileURLToPath(new URL('./lint-prosa.mjs', import.meta.url))], {
+  stdio: 'inherit',
+});
+const prosaSemRegressao = lintProsa.status === 0;
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -2202,6 +2216,7 @@ const checagens = [
   ['Prenúncio na prosa: todo silenciar publica sinal legível — texto exato, interpolado, nomeia a testemunha, fora do gate (FASE 5)', prenuncioNaProsaOk],
   ['Replay das seeds de interferência: mesma seed → mesmo caso com os mesmos eventos contingentes, byte a byte (FASE 5)', replayInterferenciaOk],
   ['Armadilhas detectadas: âncora destruível, gatilho órfão, rota órfã, silenciar sem prenúncio, saldo negativo — e o caso válido passa (FASE 5)', armadilhasDetectadas],
+  ['Prosa sem regressão mecânica (lint-prosa): fórmula, travessões, léxico banido, exclamações', prosaSemRegressao],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
