@@ -25,6 +25,16 @@
 // Contradição embutida (o motor a expõe sem mudar): quando o registro
 // tem arrasto (cenaEncenada), a carta de livor sai com
 // `posicaoCompativel: false` — o corpo movido contradiz as manchas.
+//
+// FASE 4 (interferência): cada carta ganha `suporteFisico` (metadado do
+// gerador — o motor jamais o lê): 'corpo' | 'cena' | 'registro' |
+// 'testemunho' | 'pertences_do_reu'. É o vocabulário que a R2 usa para
+// saber o que é fisicamente destrutível (só 'cena') e o que interferência
+// nenhuma alcança (o corpo está com o perito; o registro, com a polícia).
+// E a fatia passa a emitir as cartas de REDUNDÂNCIA que o crime deixou:
+// sangue alheio e pegadas (segunda e terceira vias de presença) e o
+// depoimento de ruído (a testemunha da vizinhança — `origemTestemunha`
+// identifica a pessoa por trás da carta, alvo possível de interferência).
 // =====================================================================
 
 import { METODOS } from './metodos.js';
@@ -35,7 +45,9 @@ const HORAS_CHEGADA = 11;
 
 // A fatia forense de um crime resolvido: { verdadeDeOuro, cartas }.
 // JSON puro, serializável — o mesmo contrato do pacote de caso.
-export function fatiaForenseDoCrime({ seed, mundo, crime }) {
+// `testemunhaVistoVivoId` (FASE 4, opcional): a pessoa por trás do
+// avistamento gen_visto_vivo, derivada da rotina pela Fase 4 (caso.js).
+export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId = null }) {
   const metodo = METODOS[crime.metodoId];
   const vitima = mundo.elenco.find((p) => p.id === crime.vitimaId);
   const assassino = mundo.elenco.find((p) => p.id === crime.assassinoId);
@@ -64,6 +76,7 @@ export function fatiaForenseDoCrime({ seed, mundo, crime }) {
   cartas.push({
     id: 'gen_rigor',
     localidade: 'corpo',
+    suporteFisico: 'corpo',
     estados: [
       {
         ipmAte: 12,
@@ -102,6 +115,7 @@ export function fatiaForenseDoCrime({ seed, mundo, crime }) {
   cartas.push({
     id: 'gen_livores',
     localidade: 'corpo',
+    suporteFisico: 'corpo',
     estados: [
       {
         ipmAte: 12,
@@ -124,6 +138,7 @@ export function fatiaForenseDoCrime({ seed, mundo, crime }) {
   cartas.push({
     id: 'gen_lesao_fatal',
     localidade: 'corpo',
+    suporteFisico: 'corpo',
     textoDisplay: 'A Lesão Fatal',
     carimboPadrao: `Sinal de ${metodo.rotulo.toLowerCase()}`,
     descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -135,6 +150,7 @@ export function fatiaForenseDoCrime({ seed, mundo, crime }) {
     cartas.push({
       id: 'gen_reacao_vital',
       localidade: 'corpo',
+      suporteFisico: 'corpo',
       textoDisplay: 'Bordas Vivas',
       carimboPadrao: 'Lesões sofridas em vida',
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -148,6 +164,8 @@ export function fatiaForenseDoCrime({ seed, mundo, crime }) {
   cartas.push({
     id: 'gen_visto_vivo',
     localidade: 'delegacia',
+    suporteFisico: 'testemunho',
+    origemTestemunha: testemunhaVistoVivoId,
     textoDisplay: 'Última Vez com Vida',
     carimboPadrao: 'Avistamento da vítima antes do crime',
     descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -168,6 +186,7 @@ export function fatiaForenseDoCrime({ seed, mundo, crime }) {
     cartas.push({
       id: 'gen_instrumento',
       localidade: vestigioInstrumento.classe === 'instrumento_abandonado' ? 'cena' : 'oficio_do_reu',
+      suporteFisico: vestigioInstrumento.classe === 'instrumento_abandonado' ? 'cena' : 'pertences_do_reu',
       textoDisplay: 'O Instrumento',
       carimboPadrao: vestigioInstrumento.detalhe,
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -185,6 +204,7 @@ export function fatiaForenseDoCrime({ seed, mundo, crime }) {
     cartas.push({
       id: 'gen_pertence',
       localidade: 'cena',
+      suporteFisico: 'cena',
       textoDisplay: 'Pertence Arrancado',
       carimboPadrao: pertence ? pertence.detalhe : 'Pertence do agressor na cena',
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -197,10 +217,67 @@ export function fatiaForenseDoCrime({ seed, mundo, crime }) {
     });
   }
 
+  // ---- Redundância que o crime deixou (FASE 4) ----
+  // Sangue que não é da vítima e pegadas de fuga: segunda e terceira vias
+  // de PRESENÇA (pertenceA), fisicamente destrutíveis ('cena') — é sobre
+  // elas que a R2 admite `destruir_evidencia` (a via instrumental fica).
+  const vSangueAlheio = crime.vestigios.find((v) => v.classe === 'sangue_alheio' && !v.removido);
+  if (vSangueAlheio) {
+    cartas.push({
+      id: 'gen_sangue_alheio',
+      localidade: 'cena',
+      suporteFisico: 'cena',
+      textoDisplay: 'Sangue que Não É da Vítima',
+      carimboPadrao: vSangueAlheio.detalhe,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: {
+        dominio: 'vestigio',
+        subDominio: 'sangue_do_agressor',
+        tipoVestigio: 'sangue_alheio',
+        pertenceA: assassino.id,
+      },
+    });
+  }
+  const vPegadas = crime.vestigios.find((v) => v.classe === 'pegada_ensanguentada' && !v.removido);
+  if (vPegadas) {
+    cartas.push({
+      id: 'gen_pegadas',
+      localidade: 'cena',
+      suporteFisico: 'cena',
+      textoDisplay: 'Pegadas Rumo à Porta',
+      carimboPadrao: vPegadas.detalhe,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: {
+        dominio: 'vestigio',
+        subDominio: 'pegadas',
+        tipoVestigio: 'pegada_ensanguentada',
+        pertenceA: assassino.id,
+      },
+    });
+  }
+  // O depoimento do ruído: a testemunha da vizinhança que ouviu a luta
+  // (grafo de avistamentos via autobattler). Alvo possível de
+  // interferência (intimidar/subornar/silenciar) — por isso identifica a
+  // pessoa em `origemTestemunha` (metadado do gerador; o motor não lê).
+  const vRuido = crime.vestigios.find((v) => v.classe === 'ruido_ouvido' && !v.removido);
+  if (vRuido && vRuido.ouvintes && vRuido.ouvintes.length > 0) {
+    cartas.push({
+      id: 'gen_ruido_ouvido',
+      localidade: 'vizinhanca',
+      suporteFisico: 'testemunho',
+      origemTestemunha: vRuido.ouvintes[0],
+      textoDisplay: 'O Barulho na Vizinhança',
+      carimboPadrao: vRuido.detalhe,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: { dominio: 'testemunho', subDominio: 'ruido_ouvido', faixa: crime.local.faixa },
+    });
+  }
+
   // ---- Móbil: o motivo potencial da Fase 1 promovido a móbil do caso ----
   cartas.push({
     id: 'gen_motivo',
     localidade: 'delegacia',
+    suporteFisico: 'registro',
     textoDisplay: 'O Móbil',
     carimboPadrao: `Motivo de ${assassino.nome} contra a vítima`,
     descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',

@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "demo:elenco": "node scripts/demo-elenco.mjs",
     "demo:cidade": "node scripts/demo-cidade.mjs",
-    "demo:crime": "node scripts/demo-crime.mjs"
+    "demo:crime": "node scripts/demo-crime.mjs",
+    "demo:interferencia": "node scripts/demo-interferencia.mjs"
   },
   "dependencies": {
     "@react-three/drei": "9.114.3",

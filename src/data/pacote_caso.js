@@ -42,6 +42,23 @@
 //                       ecos_mestre.js). { titulo, porCodigo:{ [codigo]:[…] } }.
 //                       O motor jamais o lê; ausente ⇒ sem mestre, sem eco
 //                       (modo procedural, FASE 6).
+//   interferencias    : objeto (FASE 4 do gerador por simulação, OPCIONAL).
+//                       { eventos: […] } — eventos CONTINGENTES pré-computados
+//                       na geração (Regras de Justiça R1–R6 em docs/
+//                       game-design-simulacao.md §5). Cada evento declara
+//                       gatilho observável ({ tipo, cartaId|noId|suspeitoId }),
+//                       efeito ({ cartaDestruida, cartasNovas: [ids] }) e
+//                       anuncio (linha de diário). As DEFINIÇÕES das cartas
+//                       novas já vivem em `cartas` — o evento só referencia
+//                       ids; a disponibilidade é o gate (store). O runtime
+//                       NÃO decide nada: verifica o gatilho e aplica. O motor
+//                       de veredicto jamais lê este campo (guarda no qa.mjs).
+//                       Ausente ⇒ caso sem interferência (o tutorial).
+//   ecosInterferencia : objeto (FASE 4, OPCIONAL). Prosa do comentário
+//                       pós-caso do legista sobre interferências ocorridas/
+//                       evitadas: { titulo, porChave:{ [tipo_desfecho]:[…] } }
+//                       (src/data/ecos_interferencia.js). Mesmo mecanismo dos
+//                       códigos de falha (FASE 6). O motor jamais o lê.
 //
 // Regra de ouro do schema: NADA de funções no pacote — só dado. Os acessores
 // (obterSuspeito, obterDefinicaoCarta, resolverEstadoCarta…) vivem NESTE
@@ -201,6 +218,19 @@ export function obterPapeisDramaticos() {
 // quando o pacote não a traz (modo procedural — sem mestre, sem eco).
 export function obterEcosDoMestre() {
   return casoCarregado.ecosDoMestre || null;
+}
+
+// Eventos de interferência do caso (FASE 4, OPCIONAL): a lista de eventos
+// contingentes pré-computados, ou [] quando o pacote não traz interferência
+// (o tutorial). O runtime só VERIFICA gatilhos e aplica — nenhuma decisão.
+export function obterInterferencias() {
+  return casoCarregado.interferencias?.eventos || [];
+}
+
+// Prosa do eco pós-caso sobre interferências (FASE 4, OPCIONAL):
+// { titulo, porChave } ou null. O motor jamais a lê.
+export function obterEcosInterferencia() {
+  return casoCarregado.ecosInterferencia || null;
 }
 
 // Resolvedor de estado da carta em função do IPM. É função PURA (opera sobre
