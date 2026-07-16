@@ -1,6 +1,8 @@
 # OS — Árvore de diálogo procedural para os casos gerados
 
-**Status: em execução (encomendada em 16/07/2026).** Origem: rejeição deliberada da
+**Status: executada (encomendada e entregue em 16/07/2026; Fases 0–5 na ata do
+`docs/historico-decisoes.md`; parecer de lapidação no `RELATORIO_QA.md`).**
+Origem: rejeição deliberada da
 Fase 6 — "diálogos de interrogatório gerados (v1 sem árvore — depoimentos nascem como
 prosa de localidade; árvore procedural é OS própria)" (`docs/historico-decisoes.md`).
 
