@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { obterAparencia } from '../logic/aparencia.js';
+import { comporRetrato } from '../logic/retrato.js';
 import { CORES_PELE, CORES_CABELO, CORES_TRAJE } from '../data/aparencias.js';
 import { hashString } from '../logic/hash.js';
 
@@ -120,6 +121,39 @@ function Traje({ traje, f }) {
 }
 
 function RetratoPersonagem({ personagemId, tamanho = 88, className = '' }) {
+  // Paper-doll de gravura (FASE 3): se o manifesto trouxer camadas para este
+  // genótipo, empilha-as no MESMO viewBox 120×150; sem arte, comporRetrato
+  // devolve [] e cai no SVG procedural abaixo (fallback integral, idêntico
+  // ao de hoje). O data-retrato permanece na raiz nos dois ramos.
+  const camadas = comporRetrato(personagemId);
+  if (camadas.length) {
+    return (
+      <svg
+        data-retrato={personagemId}
+        viewBox="0 0 120 150"
+        width={tamanho}
+        height={tamanho * 1.25}
+        className={className}
+        role="img"
+        aria-hidden="true"
+      >
+        <rect x="0" y="0" width="120" height="150" fill="#241f1a" />
+        {camadas.map((c) => (
+          <image
+            key={c.nome}
+            href={c.url}
+            x="0"
+            y="0"
+            width="120"
+            height="150"
+            preserveAspectRatio="xMidYMid meet"
+          />
+        ))}
+        <rect x="1" y="1" width="118" height="148" fill="none" stroke="#78350f" strokeOpacity="0.5" strokeWidth="2" />
+      </svg>
+    );
+  }
+
   const ap = obterAparencia(personagemId);
   const f = FATOR_CORPO[ap.corpo] ?? 1;
   const fr = ap.corpo === 'sobrepeso' ? 1.1 : ap.corpo === 'magro' ? 0.94 : 1;

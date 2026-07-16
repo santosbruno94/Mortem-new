@@ -3,6 +3,7 @@ import { useJogo } from '../store/jogo.js';
 import { formatRelogio } from '../logic/tempo.js';
 import { verbeteParaCarta } from '../data/glossario.js';
 import { tocarSom } from '../som.js';
+import { resolverAsset } from '../logic/assets.js';
 import Overlay from './Overlay.jsx';
 
 // Rótulo do domínio na tarja da etiqueta (mesma nomenclatura da mesa).
@@ -38,6 +39,10 @@ export default function FichaEvidencia({ cartaId }) {
 
   const verbete = verbeteParaCarta(carta.tagsOcultas);
   const dominio = ROTULOS_DOMINIO[carta.tagsOcultas?.dominio];
+  // Slot decorativo "vinheta" (contrato de assets, FASE 2): ornamento por
+  // domínio quando houver arte no manifesto; sem arte, resolve para null e a
+  // ficha fica idêntica à de hoje (fallback procedural = nenhum enfeite).
+  const vinheta = resolverAsset('vinheta', carta.tagsOcultas?.dominio);
 
   return (
     <Overlay
@@ -52,7 +57,12 @@ export default function FichaEvidencia({ cartaId }) {
         {/* Tarja de domínio + carimbo: o cabeçalho de laudo */}
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-tinta-apagada/40 pb-2">
           {dominio && <span className="text-cera text-rotulo uppercase">{dominio}</span>}
-          <span className="text-tinta-apagada text-rotulo uppercase">{carta.termoCarimbo}</span>
+          <span className="flex items-baseline gap-2">
+            {vinheta && (
+              <img src={vinheta} alt="" aria-hidden="true" className="h-4 w-4 self-center opacity-80" />
+            )}
+            <span className="text-tinta-apagada text-rotulo uppercase">{carta.termoCarimbo}</span>
+          </span>
         </div>
 
         {/* O exame de perto — a prosa que a Caderneta escondia */}

@@ -39,6 +39,9 @@ import {
   obterDefinicaoCarta,
   CAMPOS_OBRIGATORIOS_PACOTE,
 } from '../src/data/pacote_caso.js';
+import { MANIFESTO_ASSETS } from '../src/data/manifesto_assets.js';
+import { SLOTS_ASSETS, DIR_BASE_ASSETS } from '../src/data/slots_assets.js';
+import { CAMADAS_RETRATO } from '../src/data/camadas_retrato.js';
 
 // ============================================================
 // O CASO SOB TESTE É UM PACOTE. As guardas estáticas rodam contra o pacote
@@ -553,6 +556,132 @@ if (!papeisIntegros) {
 }
 
 // ============================================================
+// GUARDA DO CONTRATO DE ASSETS (FASE 2): todo asset do manifesto existe no
+// caminho declarado, mede-se e casa com as dimensões do seu slot, e traz
+// os quatro campos de licença. Além disso, NENHUM componente/lógica importa
+// arte (.svg/.png) direto — toda arte passa pelo manifesto (invariante "o
+// asset é invisível ao motor e registrado"). Manifesto vazio ⇒ guarda passa.
+// ============================================================
+const raizRepo = fileURLToPath(new URL('..', import.meta.url));
+// Mede um SVG pela caixa intrínseca: width/height do <svg>, ou o viewBox.
+function medirSvg(txt) {
+  const tag = (txt.match(/<svg[^>]*>/i) || [''])[0];
+  const w = tag.match(/\bwidth\s*=\s*["']([\d.]+)/i);
+  const h = tag.match(/\bheight\s*=\s*["']([\d.]+)/i);
+  if (w && h) return { largura: Math.round(+w[1]), altura: Math.round(+h[1]) };
+  const vb = tag.match(/viewBox\s*=\s*["']\s*[\d.-]+\s+[\d.-]+\s+([\d.]+)\s+([\d.]+)/i);
+  if (vb) return { largura: Math.round(+vb[1]), altura: Math.round(+vb[2]) };
+  return null;
+}
+// Mede um PNG pelo IHDR (assinatura + largura/altura big-endian).
+function medirPng(buf) {
+  if (buf.length < 24 || buf.readUInt32BE(0) !== 0x89504e47) return null;
+  return { largura: buf.readUInt32BE(16), altura: buf.readUInt32BE(20) };
+}
+function verificarManifesto() {
+  const problemas = [];
+  const ids = MANIFESTO_ASSETS.map((a) => a.id);
+  const dup = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+  if (dup.length) problemas.push(`ids duplicados no manifesto: ${dup.join(', ')}`);
+  for (const a of MANIFESTO_ASSETS) {
+    const slot = SLOTS_ASSETS[a.slot];
+    if (!slot) {
+      problemas.push(`${a.id}: slot inexistente (${a.slot})`);
+      continue;
+    }
+    if (!a.caminho || !a.caminho.startsWith(DIR_BASE_ASSETS)) {
+      problemas.push(`${a.id}: caminho fora de ${DIR_BASE_ASSETS}/`);
+      continue;
+    }
+    const ext = (a.caminho.split('.').pop() || '').toLowerCase();
+    if (!slot.formatos.includes(ext)) {
+      problemas.push(`${a.id}: formato .${ext} não aceito pelo slot ${a.slot}`);
+    }
+    let buf;
+    try {
+      buf = readFileSync(path.join(raizRepo, a.caminho));
+    } catch {
+      problemas.push(`${a.id}: arquivo ausente (${a.caminho})`);
+      continue;
+    }
+    const medida = ext === 'svg' ? medirSvg(buf.toString('utf8')) : ext === 'png' ? medirPng(buf) : null;
+    if (!medida) {
+      problemas.push(`${a.id}: não foi possível medir o arquivo (.${ext})`);
+    } else {
+      if (a.dimensoes?.largura !== slot.dimensoes.largura || a.dimensoes?.altura !== slot.dimensoes.altura) {
+        problemas.push(`${a.id}: dimensoes declaradas ≠ slot ${a.slot}`);
+      }
+      if (medida.largura !== slot.dimensoes.largura || medida.altura !== slot.dimensoes.altura) {
+        problemas.push(
+          `${a.id}: arquivo ${medida.largura}×${medida.altura} ≠ slot ${slot.dimensoes.largura}×${slot.dimensoes.altura}`
+        );
+      }
+    }
+    const L = a.licenca || {};
+    for (const campo of ['tipo', 'fonte', 'url', 'autor']) {
+      if (!L[campo]) problemas.push(`${a.id}: licenca.${campo} ausente`);
+    }
+  }
+  return problemas;
+}
+const problemasManifesto = verificarManifesto();
+// Nenhuma arte importada por fora do manifesto: sem `import … from '…svg'` nem
+// `new URL('…png', …)` em componentes/lógica. O resolvedor usa import.meta.glob
+// (não casa com estes padrões), então só um bypass real acende esta guarda.
+const arteImportadaDireto = ['components', 'logic'].flatMap((pasta) =>
+  arquivosJs(path.join(raizSrc, pasta)).filter((arquivo) => {
+    const src = semComentarios(readFileSync(arquivo, 'utf8'));
+    return (
+      /from\s*["'][^"']*\.(svg|png)["']/i.test(src) ||
+      /new\s+URL\(\s*["'][^"']*\.(svg|png)["']/i.test(src)
+    );
+  })
+);
+const manifestoValido = problemasManifesto.length === 0 && arteImportadaDireto.length === 0;
+if (problemasManifesto.length) {
+  console.log('\nMANIFESTO — problemas:', problemasManifesto.join(' | '));
+}
+if (arteImportadaDireto.length) {
+  console.log('\nARTE FORA DO MANIFESTO em:', arteImportadaDireto.join(', '));
+}
+
+// ============================================================
+// GUARDA DO RETRATO EM CAMADAS (FASE 3): todo molde de camada resolve uma
+// chave de asset BEM-FORMADA para o genótipo de qualquer personagem — sem
+// {campo} residual, sem 'undefined', sem segmento vazio (ex.: 'cabelo/_x').
+// O compositor (import.meta.glob, só Vite) NÃO é importado aqui; a chave é
+// reimplementada em node e testada como dado. E o MOTOR não lê o compositor.
+// A aparência segue fora do motor (guarda motorSemAparencia acima).
+// ============================================================
+const chaveDaCamadaLocal = (ap, molde) =>
+  molde.replace(/\{([^}]+)\}/g, (_, campo) => campo.split('.').reduce((o, k) => (o == null ? o : o[k]), ap) ?? '');
+const genotiposParaGuarda = [
+  'vitima',
+  'silas_crane',
+  'walter_arthurs',
+  'agnes_rooke',
+  'caleb_grey',
+  'davey_tull',
+  'delegado_wycliffe',
+  'moco_padeiro',
+  'sra_wick',
+]
+  .map((id) => obterAparencia(id))
+  .concat([derivarAparenciaDeSeed(SEED_TUTORIAL, 'gerado_a'), derivarAparenciaDeSeed(SEED_TUTORIAL, 'gerado_b')]);
+const camadasBemFormadas =
+  CAMADAS_RETRATO.length > 0 &&
+  genotiposParaGuarda.every((ap) =>
+    CAMADAS_RETRATO.every((c) => {
+      const k = chaveDaCamadaLocal(ap, c.chave);
+      return !/[{}]/.test(k) && !/undefined/.test(k) && !/\/_|_$|\/$|^\//.test(k);
+    })
+  );
+const motorSemCompositorRetrato = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  (f) => !/comporRetrato|logic\/retrato|camadas_retrato/.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
+);
+const retratoEmCamadasOk = camadasBemFormadas && motorSemCompositorRetrato;
+
+// ============================================================
 // GUARDA DA CAMADA VISUAL 3D: todo nó do mapa tem lugar e forma na
 // maquete (senão o nó desbloqueado não aparece no diorama), e todo
 // hotspot do corpo aponta para uma carta que EXISTE no catálogo.
@@ -893,6 +1022,8 @@ const checagens = [
   ['A explicação da luz é paga no epílogo, e só com a refutação', luzPagaSoComRefutacao],
   ['Epílogo determinístico; a conta do perito lê a hora do selo', epilogoDeterministico],
   ['Determinismo: sem Math.random/Date.now em logic/data/store', violacoesDeterminismo.length === 0],
+  ['Contrato de assets: manifesto válido (arquivo, dimensão, licença) e sem arte fora do manifesto', manifestoValido],
+  ['Retrato em camadas: moldes bem-formados e compositor fora do motor', retratoEmCamadasOk],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
   ['Modo purista fora do motor: veredicto/acusação não leem a flag (Onda 8)', motorSemPurista],
