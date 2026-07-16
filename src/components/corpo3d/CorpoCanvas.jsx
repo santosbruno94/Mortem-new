@@ -4,6 +4,7 @@ import { useJogo } from '../../store/jogo.js';
 import { HOTSPOTS_CORPO } from '../../data/hotspots_corpo.js';
 import CorpoModelo from './CorpoModelo.jsx';
 import HotspotCorpo from './HotspotCorpo.jsx';
+import EfeitoGravura from './EfeitoGravura.jsx';
 
 // =====================================================================
 // A MESA DE EXAME EM 3D — companheira da prosa, nunca substituta.
@@ -11,6 +12,12 @@ import HotspotCorpo from './HotspotCorpo.jsx';
 // extraem as MESMAS cartas dos termos em negrito (o clique no texto
 // continua valendo — este canvas é redundância deliberada).
 // Segundo canvas da sessão: também frameloop sob demanda.
+//
+// GRAVURA (prop `gravura`, default ligada): um passe de pós-processamento
+// (EfeitoGravura.jsx) traduz o render em prancha anatômica — dithering de
+// Bayer 4×4 em duotone papel/tinta do pergaminho. Desligar a prop devolve
+// o render cru (A/B e reversão baratas). Só AQUI, por ora: estender ao
+// DioramaVila fica anotado como passo futuro se o corpo convencer.
 // =====================================================================
 
 function CameraExame() {
@@ -27,7 +34,7 @@ function CameraExame() {
   return null;
 }
 
-export default function CorpoCanvas({ ipm, aoPerderContexto }) {
+export default function CorpoCanvas({ ipm, aoPerderContexto, gravura = true }) {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const extrairCarta = useJogo((s) => s.extrairCarta);
 
@@ -53,6 +60,7 @@ export default function CorpoCanvas({ ipm, aoPerderContexto }) {
       }}
     >
       <CameraExame />
+      {gravura && <EfeitoGravura />}
 
       {/* Luz de exame: fria e crua por cima (o ofício), com um resto de
           vela quente de canto (o lugar). Intensidades francas: a mesa de
