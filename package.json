@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "demo:elenco": "node scripts/demo-elenco.mjs"
   },
   "dependencies": {
     "@react-three/drei": "9.114.3",

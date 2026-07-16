@@ -92,8 +92,12 @@ detectável pelo detetive não entra no modelo. Consequências:
   trabalho.
 - **Sem ficha do detetive** — o jogador não luta, não é ferido, não tem atributos.
 
-Conjunto aprovado (a validar contra a taxonomia de papéis de `src/data/papeis.js` na
-Fase 1): **FOR**, **INT**, **WIS**, **CHA**.
+Conjunto aprovado: **FOR**, **INT**, **WIS**, **CHA**. Validado contra a taxonomia de
+papéis de `src/data/papeis.js` na Fase 1 (jul/2026): os seis papéis dramáticos se
+expressam com o conjunto + traits — encenação/planejamento → INT, higiene de
+vestígios → WIS, qualidade de álibi e resistência do interlocutor → CHA,
+mentiroso-por-medo → trait *medroso*, ruído barulhento → trait *tagarela*. Nenhum
+quinto atributo se mostrou necessário.
 
 ### 3.1 Tabela viva: atributo → vestígio / comportamento
 
@@ -120,6 +124,21 @@ modificador contínuo invisível), autoráveis e testáveis:
 
 A fantasia-alvo: o jogador aprende a tratar pessoas como instrumentos de medição com
 margens de erro diferentes.
+
+**Implementado na Fase 1 (jul/2026)** — catálogo fechado em
+`src/gerador/comportamentos.js`, quantização em `src/gerador/quantizacao.js`,
+arquétipos e priors em `src/gerador/arquetipos.js`, amostragem em
+`src/gerador/amostragem.js`. Ids reais do catálogo v1 (8 comportamentos):
+
+- por trait: `medroso → omite_ate_confianca`, `tagarela → ruido_com_pepitas`,
+  `preciso → instrumento_confiavel`,
+  `linha_tempo_nao_confiavel → erro_sistematico_tempo`;
+- por limiar de atributo (3 é neutro): WIS ≥ 4 → `observacao_precisa`,
+  WIS ≤ 2 → `observacao_vaga`, CHA ≥ 4 → `revela_facil`,
+  CHA ≤ 2 → `revela_sob_custo`.
+
+FOR e INT não geram comportamento de diálogo — mapeiam à coluna de vestígio
+(deposição do autobattler, Fase 3), quando entra o lint de atributo órfão pleno.
 
 ### 3.2 O quadrante INT × WIS: gerador de fenótipos de assassino
 
