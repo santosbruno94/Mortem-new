@@ -9,6 +9,7 @@ PT-BR. Este arquivo orienta agentes de código; a fonte única de verdade do des
 | Documento | O que rege |
 |---|---|
 | `MORTEM_CONTEXTO.md` | Design do jogo (estado atual) |
+| `docs/game-design-simulacao.md` | Design do gerador por simulação (autobattler de build time) e do sistema de interferência (Regras de Justiça R1–R6) |
 | `docs/historico-decisoes.md` | Arqueologia de playtests/redesigns (só consulta) |
 | `docs/guia-de-estilo.md` | TODA a prosa: norma de língua, observação pura, dosagem de brilho |
 | `docs/biblia-de-vozes.md` | Idioleto de cada personagem |
@@ -50,6 +51,11 @@ com zero achados bloqueantes.**
   versionada como código).
 - Aparência de personagens é camada narrativa (`src/data/aparencias.js`) — JAMAIS
   entra em `tagsOcultas` nem é lida por `veredicto.js`/`acusacao.js` (guarda no QA).
+- **Atributos de personagem (FOR/INT/WIS/CHA) vivem apenas no gerador** (build time);
+  o pacote de caso carrega somente as consequências (vestígios, flags de comportamento
+  de diálogo, gatilhos de interferência pré-computados); **o motor é cego a
+  atributos** — nenhuma regra de runtime os lê (mesma cegueira de aparências/papéis;
+  design em `docs/game-design-simulacao.md`).
 - Camada narrativa ≠ camada lógica: trocar prosa nunca exige tocar no motor.
 - Código e comentários em português.
 - Marcadores `[[id_da_carta]]` na prosa e interpolações `{detective.campo}` /
