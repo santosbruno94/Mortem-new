@@ -105,8 +105,18 @@ export const PROVENIENCIA_TABELAS = {
 // sorteio do elenco; a soma dos pesos reproduz ~75% de classe
 // trabalhadora (KB §1). `unicoNaVila: true` = no máximo 1 por elenco.
 // `profissoes` dá a forma da profissão por gênero (peso 0 ⇒ null).
-// `pacoteEspacial` é SLOT da Fase 2 (acomodação, trabalho, frequentados,
-// mobília) — nasce null de propósito.
+//
+// `pacoteEspacial` (preenchido na FASE 2, design §4.2): o padrão espacial
+// do arquétipo, em VOCABULÁRIO FECHADO (tipos de src/gerador/espaco.js).
+//   acomodacao   : tipo de prédio onde mora, ou os padrões especiais
+//                  'sobre_a_loja' (mora no prédio do trabalho) /
+//                  'no_servico' (mora na casa que serve) / 'cottage'
+//   trabalho     : tipo de prédio do ofício, ou 'em_casa' (trabalha na
+//                  moradia) / 'casa_com_criadagem' (sorteia a casa servida)
+//   frequentados : POOL de tipos frequentados (a inserção amostra 2–3)
+// A mobília NÃO é listada aqui: vem do vocabulário por classe
+// (MOBILIA_POR_CLASSE/VOCABULARIO_DA_CLASSE em espaco.js) — o arquétipo
+// já carrega a classe. Proveniência por linha, como o resto da ficha.
 // ---------------------------------------------------------------------
 export const ARQUETIPOS = {
   squire: {
@@ -129,7 +139,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso', 'tagarela'],
     motivosPotenciais: ['heranca', 'dote', 'recasamento_vigiado'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'solar',
+      trabalho: 'solar',
+      frequentados: ['igreja', 'pub'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3/§5 (a casa grande: eixo social e de serviço) e demografia-e-sociedade.md §1 (o squire rege da propriedade)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (gentry, £1.000+, juiz de paz; ~2 mil squires), §2 (viuvez) e "Implicações" (squire ou sua viúva)',
   },
@@ -154,7 +170,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso', 'tagarela'],
     motivosPotenciais: ['rivalidade_capela_taverna', 'heranca', 'escandalo_gravidez'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'vicarage',
+      trabalho: 'igreja',
+      frequentados: ['escola', 'solar', 'mercearia'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (vicarage junto à igreja, com estudo) e demografia-e-sociedade.md §1 (registros e escola)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (clero, £300–400, registros e escola) e §5 (Church × Chapel; sabe dos batismos ilegítimos)',
   },
@@ -179,7 +201,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso'],
     motivosPotenciais: ['divida_caderneta', 'heranca'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'casa_do_medico',
+      trabalho: 'casa_do_medico',
+      frequentados: ['botica', 'pub', 'igreja'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1/§3 (casa de classe média; o médico rural atende em casa) e demografia-e-sociedade.md §4',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (profissionais; o médico assina atestados) e §4 (médico rural £200–500, muitos fiados)',
   },
@@ -204,7 +232,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso', 'medroso'],
     motivosPotenciais: ['divida_caderneta', 'heranca'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'sobre_a_loja',
+      trabalho: 'botica',
+      frequentados: ['igreja', 'pub', 'mercearia'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (loja com moradia em cima) e §5 (a botica: drug run, armário de venenos)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (comerciantes, £80–300; crédito de caderneta) e "Implicações" (o boticário vende fiado e anota tudo)',
   },
@@ -229,7 +263,13 @@ export const ARQUETIPOS = {
     },
     traits: ['tagarela', 'preciso'],
     motivosPotenciais: ['heranca', 'divida_caderneta', 'rivalidade_capela_taverna'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'sobre_a_loja',
+      trabalho: 'pub',
+      frequentados: ['mercearia', 'igreja'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1/§5 (coaching inn/public house: mora sobre o negócio; taproom, quartos, pátio)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (comerciantes), §3 (muitas viúvas tocam o pub do falecido) e §5 (o pub: fofoca, crédito, brigas)',
   },
@@ -254,7 +294,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso', 'linha_tempo_nao_confiavel'],
     motivosPotenciais: ['divida_caderneta', 'salario_atrasado', 'despejo'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'cottage',
+      trabalho: 'forja',
+      frequentados: ['pub', 'mercearia'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (forja: galpão na borda da vila, pelo risco de fogo; o ferreiro mora à parte, em cottage)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (artesãos, 20–35s/semana, oficina própria) e §3 (ocupações masculinas do censo de 1891)',
   },
@@ -279,7 +325,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso', 'tagarela'],
     motivosPotenciais: ['heranca', 'divida_caderneta'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'moinho',
+      trabalho: 'moinho',
+      frequentados: ['pub', 'mercearia', 'igreja'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (moinho: o volume mais alto fora a igreja; a casa do moleiro é anexa ao ofício)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (comerciantes) e §3 (moleiro nas ocupações masculinas do censo de 1891)',
   },
@@ -304,7 +356,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso', 'tagarela'],
     motivosPotenciais: ['divida_caderneta', 'heranca'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'sobre_a_loja',
+      trabalho: 'mercearia',
+      frequentados: ['igreja', 'pub'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1/§5 (loja com moradia: sineta, balcão, escada interna para a moradia)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (comerciantes: crédito de caderneta — sabem quem deve a quem) e "Implicações" (dívida de £2–5)',
   },
@@ -329,7 +387,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso', 'medroso'],
     motivosPotenciais: ['salario_atrasado', 'escandalo_gravidez', 'dote'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'escola',
+      trabalho: 'escola',
+      frequentados: ['igreja', 'mercearia'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (alojamento anexo ao edifício de ofício, como a casa do chefe na estação) e demografia-e-sociedade.md §4',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (professora entre as ocupações femininas) e §4 (professora de vila £30–80/ano)',
   },
@@ -354,7 +418,13 @@ export const ARQUETIPOS = {
     },
     traits: ['tagarela', 'preciso', 'medroso'],
     motivosPotenciais: ['dote', 'salario_atrasado', 'escandalo_gravidez'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'cottage',
+      trabalho: 'em_casa',
+      frequentados: ['mercearia', 'igreja', 'pub'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (o trabalho de agulha acontece na cozinha do cottage, junto à luz e ao range)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (dressmaker: ao menos uma em cada vila; alfaiate nas ocupações masculinas)',
   },
@@ -379,7 +449,13 @@ export const ARQUETIPOS = {
     },
     traits: ['tagarela', 'linha_tempo_nao_confiavel'],
     motivosPotenciais: ['seguro_de_enterro', 'divida_caderneta', 'despejo'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'cottage',
+      trabalho: 'em_casa',
+      frequentados: ['mercearia', 'pub'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (a copa: copper de ferver, tina e tábua — a roupa das casas lava-se no cottage)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (lavadeira/charwoman nas ocupações femininas) e §2 (viúvas: 11–14% das mulheres adultas)',
   },
@@ -406,7 +482,13 @@ export const ARQUETIPOS = {
     },
     traits: ['medroso', 'tagarela', 'linha_tempo_nao_confiavel'],
     motivosPotenciais: ['divida_caderneta', 'despejo', 'salario_atrasado', 'seguro_de_enterro'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'cottage',
+      trabalho: 'granja',
+      frequentados: ['pub', 'igreja', 'mercearia'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (cottage atado ao patrão) e arquitetura-e-espacos.md §1 (cottage de trabalhador)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (lavrador ~£35/ano, cottage atado ao patrão), §3 (756.557 no censo) e §4 (13s 9d/semana em 1893)',
   },
@@ -431,7 +513,13 @@ export const ARQUETIPOS = {
     },
     traits: ['medroso', 'preciso'],
     motivosPotenciais: ['salario_atrasado', 'character_negado', 'escandalo_gravidez', 'dote'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'no_servico',
+      trabalho: 'casa_com_criadagem',
+      frequentados: ['igreja', 'mercearia'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (cama e mesa na casa servida: a criada no sótão, quartinho frio de janela pequena)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (criadagem £10–30 + cama e mesa; demissível sem character), §3 (~1,5 mi de servos domésticos; criada de 13–14 banal)',
   },
@@ -456,7 +544,13 @@ export const ARQUETIPOS = {
     },
     traits: ['preciso'],
     motivosPotenciais: ['divida_caderneta', 'seguro_de_enterro'],
-    pacoteEspacial: null,
+    pacoteEspacial: {
+      acomodacao: 'delegacia',
+      trabalho: 'delegacia',
+      frequentados: ['pub', 'igreja'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (delegacia de vila: o policial mora onde trabalha — casa, expediente e cela sob o mesmo teto)',
+    },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (policial rural: o "delegado" de vila é um constable do condado) e "Implicações" (elenco padrão)',
   },

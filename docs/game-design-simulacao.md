@@ -220,6 +220,23 @@ da cena do crime → autobattler no grid da cena → `RegistroDoCrime` georrefer
    cômodo conta quem a pessoa é. A cidade gerada alimenta o diorama "maquete de papel"
    existente, que permanece 100% procedural.
 
+**Implementado na Fase 2 (jul/2026)** — tudo em `src/gerador/` (ilha de build time):
+dados espaciais em `espaco.js` (14 tipos de prédio com silhueta no schema de
+`FORMAS_PREDIO`; mobília doméstica em três degraus de classe + mobília de ofício por
+cômodo, proveniência por linha); pacote espacial preenchido em cada arquétipo de
+`arquetipos.js`; cidade seedada em `cidade.js` (adro, solar, High Street, orla de
+trabalho, ruela de 4–6 cottages; capela e estação opcionais por seed; adjacência
+grosseira por distância; projeção `diorama` no contrato de
+`POSICOES_DIORAMA`/`FORMAS_PREDIO`); inserção e grafo de avistamentos em
+`insercao.js` (rotina em três faixas; grafo DERIVADO de rotina × adjacência, sem
+sorteio próprio — o QA o recomputa e exige igualdade byte a byte); interiores LOD em
+`interiores.js` (grid canônico + mobília em células de perímetro; planta SVG no
+schema de `PLANTA_RELOJOARIA` como projeção 1:1 do grid, `alvos` vazios até a Fase
+3); orquestrador `mundo.js` (`gerarMundo(seed)`), vitrine em
+`scripts/demo-cidade.mjs` (`npm run demo:cidade`). Guardas novas no `qa.mjs`: replay
+do mundo, mundos distintos, integridade espacial (lint de interior órfão incluso) e
+completude dos pacotes espaciais.
+
 ---
 
 ## 5. Sistema de interferência — as Regras de Justiça

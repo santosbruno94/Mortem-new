@@ -55,6 +55,14 @@ import {
   TRAITS,
   MAPA_TRAIT_COMPORTAMENTO,
 } from '../src/gerador/comportamentos.js';
+import { gerarMundo } from '../src/gerador/mundo.js';
+import {
+  TIPOS_PREDIO,
+  MOBILIA_POR_CLASSE,
+  MOBILIA_DE_OFICIO,
+  VOCABULARIO_DA_CLASSE,
+  PROVENIENCIA_ESPACO,
+} from '../src/gerador/espaco.js';
 
 // ============================================================
 // O CASO SOB TESTE É UM PACOTE. As guardas estáticas rodam contra o pacote
@@ -1083,7 +1091,8 @@ function problemasDoElenco(elenco) {
     if (!p.comportamentos.every((c) => CATALOGO_COMPORTAMENTOS[c]))
       problemas.push(`${p.id}: comportamento fora do catálogo`);
     if (MOTIVOS_POTENCIAIS[p.motivoPotencial] == null) problemas.push(`${p.id}: motivo fora do catálogo`);
-    if (p.pacoteEspacial !== null) problemas.push(`${p.id}: pacoteEspacial deveria ser null (slot da Fase 2)`);
+    if (p.pacoteEspacial !== null)
+      problemas.push(`${p.id}: pacoteEspacial deveria ser null no elenco cru (a cidade nasce primeiro; a INSERÇÃO da Fase 2 o preenche)`);
   }
   try {
     if (JSON.stringify(JSON.parse(JSON.stringify(elenco))) !== JSON.stringify(elenco))
@@ -1157,6 +1166,222 @@ const priorsBemFormados = Object.values(ARQUETIPOS).every(
     Object.entries(a.generos).every(([genero, peso]) => peso === 0 || typeof a.profissoes[genero] === 'string')
 );
 
+// ============================================================
+// GUARDAS DO GERADOR (FASE 2 do gerador por simulação): a geração
+// espacial — cidade seedada, inserção do elenco, grafo de avistamentos e
+// interiores LOD — também é ilha de build time (a guarda de ilha da FASE
+// 1 já cobre os módulos novos, que vivem em src/gerador/). Provas:
+// (1) replay — mesma seed → mesmo MUNDO (cidade + inserções + grafo +
+// interiores), byte a byte; seeds distintas → mundos distintos;
+// (2) cidade plausível (obrigatórios presentes, ids únicos, lotes sem
+// sobreposição, dentro da tábua) e diorama compatível (toda posição tem
+// forma completa no schema de FORMAS_PREDIO);
+// (3) inserção íntegra (moradia/trabalho/frequentados/rotina apontam
+// para prédios existentes; dia = trabalho; madrugada = moradia);
+// (4) grafo de avistamentos DERIVADO (recomputado no QA a partir de
+// rotina × adjacência, tem de bater byte a byte — nada de aresta solta);
+// (5) LOD: interior órfão = falha (interiores ⊆ locais elegíveis) e todo
+// elegível tem interior;
+// (6) interiores íntegros: cômodos disjuntos dentro do grid; toda peça
+// de mobília em célula do próprio cômodo, sem célula repetida, item do
+// vocabulário fechado (classe do morador ∪ ofício do cômodo); planta SVG
+// é PROJEÇÃO 1:1 do grid (fonte única — sem representação paralela);
+// (7) pacote espacial de TODO arquétipo completo, em vocabulário
+// fechado, com proveniência por linha citando a KB.
+// ============================================================
+const mundosPrimeiraGeracao = SEEDS_QA_GERADOR.map((sd) => gerarMundo(sd));
+const mundosSegundaGeracao = SEEDS_QA_GERADOR.map((sd) => gerarMundo(sd));
+const jsonMundos = mundosPrimeiraGeracao.map((m) => JSON.stringify(m));
+const mundoReplayOk = jsonMundos.every((json, i) => json === JSON.stringify(mundosSegundaGeracao[i]));
+const mundosDistintos = new Set(jsonMundos).size === SEEDS_QA_GERADOR.length;
+
+// (2) Cidade plausível + diorama compatível.
+const TIPOS_OBRIGATORIOS = [
+  'igreja', 'vicarage', 'solar', 'pub', 'botica', 'mercearia', 'escola',
+  'delegacia', 'casa_do_medico', 'forja', 'granja', 'moinho',
+];
+const CAMPOS_FORMA = ['w', 'd', 'h', 'telhadoAltura', 'beiral'];
+function problemasDaCidade(cidade) {
+  const problemas = [];
+  const ids = cidade.predios.map((p) => p.id);
+  if (new Set(ids).size !== ids.length) problemas.push('id de prédio repetido');
+  for (const tipo of TIPOS_OBRIGATORIOS) {
+    if (!cidade.predios.some((p) => p.tipo === tipo)) problemas.push(`sem ${tipo}`);
+  }
+  if (cidade.predios.filter((p) => p.tipo === 'cottage').length < 4) problemas.push('menos de 4 cottages');
+  for (const p of cidade.predios) {
+    if (Math.abs(p.pos.x) > 5.8 || Math.abs(p.pos.z) > 2.6) problemas.push(`${p.id}: fora da tábua`);
+    if (TIPOS_PREDIO[p.tipo] == null) problemas.push(`${p.id}: tipo fora do catálogo`);
+  }
+  for (let i = 0; i < cidade.predios.length; i++) {
+    for (let j = i + 1; j < cidade.predios.length; j++) {
+      const a = cidade.predios[i];
+      const b = cidade.predios[j];
+      if (Math.hypot(a.pos.x - b.pos.x, a.pos.z - b.pos.z) < 0.5)
+        problemas.push(`${a.id} e ${b.id}: lotes sobrepostos`);
+    }
+  }
+  // Diorama: mesmo contrato de POSICOES_DIORAMA/FORMAS_PREDIO.
+  for (const [id, pos] of Object.entries(cidade.diorama.posicoes)) {
+    const forma = cidade.diorama.formas[pos.predio];
+    if (!forma) {
+      problemas.push(`${id}: posição sem forma na maquete`);
+      continue;
+    }
+    if (!CAMPOS_FORMA.every((c) => Number.isFinite(forma[c]))) problemas.push(`${id}: forma incompleta`);
+    if (typeof forma.corParede !== 'string' || typeof forma.corTelhado !== 'string')
+      problemas.push(`${id}: forma sem cores`);
+    if (typeof forma.ristela !== 'boolean' || !Array.isArray(forma.chamines))
+      problemas.push(`${id}: forma sem ristela/chaminés`);
+  }
+  return problemas;
+}
+
+// (3) Inserção íntegra.
+function problemasDaInsercao(mundo) {
+  const problemas = [];
+  const idsPredio = new Set(mundo.cidade.predios.map((p) => p.id));
+  for (const p of mundo.elenco) {
+    const e = p.pacoteEspacial;
+    if (!e) {
+      problemas.push(`${p.id}: sem pacote espacial após a inserção`);
+      continue;
+    }
+    if (!idsPredio.has(e.moradia)) problemas.push(`${p.id}: moradia inexistente`);
+    if (!idsPredio.has(e.trabalho)) problemas.push(`${p.id}: trabalho inexistente`);
+    if (!e.frequentados.every((f) => idsPredio.has(f))) problemas.push(`${p.id}: frequentado inexistente`);
+    if (e.frequentados.length < 1 || e.frequentados.length > 3) problemas.push(`${p.id}: frequentados fora de 1–3`);
+    for (const faixa of ['dia', 'noite', 'madrugada']) {
+      if (!idsPredio.has(e.rotina[faixa])) problemas.push(`${p.id}: rotina de ${faixa} sem endereço`);
+    }
+    if (e.rotina.dia !== e.trabalho) problemas.push(`${p.id}: o dia não está no trabalho`);
+    if (e.rotina.madrugada !== e.moradia) problemas.push(`${p.id}: a madrugada não está na moradia`);
+  }
+  return problemas;
+}
+
+// (4) O grafo é DERIVADO: recomputa de rotina × adjacência e compara.
+function grafoEsperado(mundo) {
+  const adj = new Set(mundo.cidade.adjacencias.map(([a, b]) => `${a}|${b}`));
+  const saoAdj = (a, b) => a !== b && (adj.has(`${a}|${b}`) || adj.has(`${b}|${a}`));
+  const arestas = [];
+  for (const faixa of ['dia', 'noite', 'madrugada']) {
+    for (let i = 0; i < mundo.elenco.length; i++) {
+      for (let j = i + 1; j < mundo.elenco.length; j++) {
+        const a = mundo.elenco[i];
+        const b = mundo.elenco[j];
+        const la = a.pacoteEspacial.rotina[faixa];
+        const lb = b.pacoteEspacial.rotina[faixa];
+        if (la === lb) arestas.push({ faixa, modo: 'mesmo_local', entre: [a.id, b.id], locais: [la, lb] });
+        else if (saoAdj(la, lb)) arestas.push({ faixa, modo: 'adjacencia', entre: [a.id, b.id], locais: [la, lb] });
+      }
+    }
+  }
+  return arestas;
+}
+
+// (5) + (6) Interiores: LOD sem órfão e integridade de grid/mobília/planta.
+function problemasDosInteriores(mundo) {
+  const problemas = [];
+  const chaves = Object.keys(mundo.interiores).sort();
+  const elegiveis = [...mundo.locaisElegiveis].sort();
+  if (JSON.stringify(chaves) !== JSON.stringify(elegiveis))
+    problemas.push('interior órfão ou elegível sem interior (LOD violado)');
+  for (const [id, interior] of Object.entries(mundo.interiores)) {
+    if (!interior) {
+      problemas.push(`${id}: interior nulo`);
+      continue;
+    }
+    const { grid, comodos, mobilia, planta } = interior;
+    const ocupadas = new Set();
+    for (const c of comodos) {
+      const r = c.ret;
+      if (r.col < 0 || r.fila < 0 || r.col + r.colunas > grid.colunas || r.fila + r.filas > grid.filas)
+        problemas.push(`${id}/${c.id}: cômodo fora do grid`);
+      for (let col = r.col; col < r.col + r.colunas; col++) {
+        for (let fila = r.fila; fila < r.fila + r.filas; fila++) {
+          const chave = `${col}|${fila}`;
+          if (ocupadas.has(chave)) problemas.push(`${id}/${c.id}: cômodos sobrepostos em ${chave}`);
+          ocupadas.add(chave);
+        }
+      }
+    }
+    const celulasDeMobilia = new Set();
+    for (const m of mobilia) {
+      const comodo = comodos.find((c) => c.id === m.comodo);
+      if (!comodo) {
+        problemas.push(`${id}: mobília em cômodo inexistente (${m.id})`);
+        continue;
+      }
+      const r = comodo.ret;
+      const dentro =
+        m.celula.col >= r.col && m.celula.col < r.col + r.colunas &&
+        m.celula.fila >= r.fila && m.celula.fila < r.fila + r.filas;
+      if (!dentro) problemas.push(`${id}/${m.id}: mobília fora do cômodo`);
+      const chave = `${m.celula.col}|${m.celula.fila}`;
+      if (celulasDeMobilia.has(chave)) problemas.push(`${id}/${m.id}: duas peças na mesma célula`);
+      celulasDeMobilia.add(chave);
+      // Vocabulário fechado: doméstico da classe do morador ∪ ofício do cômodo.
+      const degrau = VOCABULARIO_DA_CLASSE[interior.classeSocialDoMorador];
+      const permitidos = new Set([
+        ...(MOBILIA_DE_OFICIO[comodo.tipoComodo]?.itens || []).map((i) => i.id),
+        ...(MOBILIA_POR_CLASSE[degrau]?.itens || [])
+          .filter((i) => i.comodos.includes(comodo.tipoComodo))
+          .map((i) => i.id),
+      ]);
+      if (!permitidos.has(m.item)) problemas.push(`${id}/${m.id}: item fora do vocabulário fechado`);
+    }
+    // Planta SVG = projeção 1:1 do grid (fonte única de verdade espacial).
+    const viewBoxEsperado = `0 0 ${48 + grid.colunas * 26} ${48 + grid.filas * 26}`;
+    if (planta.viewBox !== viewBoxEsperado) problemas.push(`${id}: viewBox não deriva do grid`);
+    if (JSON.stringify(planta.comodos.map((c) => c.id)) !== JSON.stringify(comodos.map((c) => c.id)))
+      problemas.push(`${id}: cômodos da planta ≠ cômodos do grid`);
+    if (planta.tracos.length !== mobilia.length) problemas.push(`${id}: traços da planta ≠ mobílias do grid`);
+    if (!planta.comodos.every((c) => Array.isArray(c.alvos) && c.alvos.length === 0))
+      problemas.push(`${id}: alvos deveriam nascer vazios (a Fase 3 liga os nós)`);
+  }
+  return problemas;
+}
+
+const problemasFase2 = mundosPrimeiraGeracao.flatMap((mundo, i) => {
+  const seedRotulo = SEEDS_QA_GERADOR[i];
+  return [
+    ...problemasDaCidade(mundo.cidade),
+    ...problemasDaInsercao(mundo),
+    ...(JSON.stringify(grafoEsperado(mundo)) === JSON.stringify(mundo.grafoAvistamentos)
+      ? []
+      : ['grafo de avistamentos não deriva de rotina × adjacência']),
+    ...problemasDosInteriores(mundo),
+  ].map((p) => `${seedRotulo}: ${p}`);
+});
+const geracaoEspacialIntegra = problemasFase2.length === 0;
+if (!geracaoEspacialIntegra) {
+  console.log('\nGERADOR (FASE 2) — geração espacial com problemas:', problemasFase2.join(' | '));
+}
+
+// (7) Pacote espacial por arquétipo: completo, em vocabulário fechado,
+// com proveniência por linha; tabelas de espaco.js idem.
+const ACOMODACOES_ESPECIAIS = ['sobre_a_loja', 'no_servico', 'cottage'];
+const TRABALHOS_ESPECIAIS = ['em_casa', 'casa_com_criadagem'];
+const pacotesEspaciaisCompletos =
+  Object.values(ARQUETIPOS).every((a) => {
+    const e = a.pacoteEspacial;
+    return (
+      e != null &&
+      (TIPOS_PREDIO[e.acomodacao] != null || ACOMODACOES_ESPECIAIS.includes(e.acomodacao)) &&
+      (TIPOS_PREDIO[e.trabalho] != null || TRABALHOS_ESPECIAIS.includes(e.trabalho)) &&
+      Array.isArray(e.frequentados) &&
+      e.frequentados.length >= 2 &&
+      e.frequentados.every((t) => TIPOS_PREDIO[t] != null) &&
+      citaKb(e.proveniencia)
+    );
+  }) &&
+  Object.values(TIPOS_PREDIO).every((t) => citaKb(t.proveniencia)) &&
+  Object.values(MOBILIA_POR_CLASSE).every((v) => citaKb(v.proveniencia)) &&
+  Object.values(MOBILIA_DE_OFICIO).every((v) => citaKb(v.proveniencia)) &&
+  Object.values(PROVENIENCIA_ESPACO).every(citaKb) &&
+  CLASSES_SOCIAIS.every((c) => MOBILIA_POR_CLASSE[VOCABULARIO_DA_CLASSE[c]] != null);
+
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -1204,6 +1429,10 @@ const checagens = [
   ['Trait sem órfão: todo trait de todo pool mapeia a comportamento do catálogo fechado (FASE 1)', traitsSemOrfao],
   ['Proveniência por linha: todo arquétipo e tabela auxiliar citam a KB (FASE 1)', provenienciaCompleta],
   ['Priors bem-formados: pesos, gêneros, faixas, classes e motivos íntegros (FASE 1)', priorsBemFormados],
+  ['Gerador: replay do mundo byte a byte (mesma seed → mesma cidade/inserções/grafo/interiores) (FASE 2)', mundoReplayOk],
+  ['Gerador: 3 seeds → 3 mundos distintos (FASE 2)', mundosDistintos],
+  ['Geração espacial íntegra: cidade plausível, diorama compatível, inserção válida, grafo derivado, interiores sem órfão e no vocabulário (FASE 2)', geracaoEspacialIntegra],
+  ['Pacote espacial por arquétipo completo, em vocabulário fechado e com proveniência (FASE 2)', pacotesEspaciaisCompletos],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
