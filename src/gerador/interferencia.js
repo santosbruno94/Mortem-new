@@ -185,7 +185,7 @@ export const CLASSES_VESTIGIO_INTERFERENCIA = {
     proveniencia: 'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §4 (caderneta do merceeiro: £2–5 não se pagam sem origem)',
   },
   soberanos_novos: {
-    rotulo: 'Soberanos novos, contados à vista de todos',
+    rotulo: 'Soberanos novos em mão de fiado',
     atributo: 'WIS',
     frescor: 'fresco',
     evidenciaDe: ['subornar_testemunha'],
@@ -220,10 +220,14 @@ export const CLASSES_VESTIGIO_INTERFERENCIA = {
 // gerado e passam pelo pipeline `revisar-prosa`. `{nome}` é interpolado
 // pelo gerador no build (nunca em runtime).
 // ---------------------------------------------------------------------
+// Nota de gênero: o detetive pode ser mulher e a descrição de carta não
+// passa por interpolação — as falas do prenúncio não tratam o visitante
+// no masculino (parecer Fase 3, N1). Texto sob contrato R4: carta e
+// evento derivam DAQUI, e a guarda do QA confere a igualdade.
 export const PROSA_PRENUNCIO = [
-  '{nome} recebe à soleira e não faz entrar. Fala baixo, o olho na rua: "Não devia estar falando com o senhor. Aqui todo mundo sabe quem abre a porta para quem." Despede-se antes da terceira pergunta.',
+  '{nome} recebe à soleira e não faz entrar. Fala baixo, o olho na rua: "Não devia estar falando. Aqui todo mundo sabe quem abre a porta para quem." Despede-se antes da terceira pergunta.',
   'Enquanto fala, {nome} torce as mãos, uma na outra, e olha por cima do ombro do visitante, para a rua vazia. Pede que o próprio nome fique fora do caderno.',
-  '{nome} diz que não viu nada; depois, que viu pouco; depois, que era tarde. Na despedida, segura a manga do perito: "O senhor vai embora quando isso acabar. Eu fico."',
+  '{nome} diz que não viu nada; depois, que viu pouco; depois, que era tarde. Na despedida, segura a manga do casaco: "Quem é de fora vai embora quando isso acabar. Eu fico."',
 ];
 
 // ---------------------------------------------------------------------

@@ -175,10 +175,14 @@ function sujeitoDoLugar(rotulo) {
   return `O ${rotulo}`;
 }
 
-// Rótulo de cômodo em voz de prosa: minúsculas e sem parêntese técnico
-// ("Quarto (sobrado)" → "quarto do sobrado").
+// Rótulo de cômodo em voz de prosa: minúsculas, sem parêntese técnico e
+// no singular — a moldura fala de UM cômodo ("Quartos (sobrado)" →
+// "quarto do sobrado"; parecer Fase 3, N3).
 function comodoEmFala(rotulo) {
-  return rotulo.toLowerCase().replace(/\s*\((.+)\)$/, ' do $1');
+  return rotulo
+    .toLowerCase()
+    .replace(/\s*\((.+)\)$/, ' do $1')
+    .replace(/^quartos\b/, 'quarto');
 }
 
 // Frases de retrato comportamental por trait/comportamento — nota de
@@ -215,13 +219,30 @@ const FRASE_COMPORTAMENTO = {
   observacao_vaga: 'Descreve por alto o que viu; miudeza não lhe ficou.',
 };
 
-function descricaoDePessoa(p, sal) {
+// `usadas` é o conjunto de frases já gastas NA MESMA tela de suspeitos:
+// colisão de hash avança para a variante seguinte (ordem estável — replay
+// intacto); pool esgotado (4+ do mesmo trait) cai no comportamento
+// (parecer Fase 3, N-2 — retrato repetido lado a lado é defeito visível).
+function descricaoDePessoa(p, sal, usadas) {
   for (const t of p.traits) {
     const pool = FRASE_TRAIT[t];
-    if (pool) return pool[hashString(`${sal}|retrato|${p.id}`) % pool.length];
+    if (!pool) continue;
+    const base = hashString(`${sal}|retrato|${p.id}`) % pool.length;
+    for (let i = 0; i < pool.length; i++) {
+      const frase = pool[(base + i) % pool.length];
+      if (!usadas.has(frase)) {
+        usadas.add(frase);
+        return frase;
+      }
+    }
+    break;
   }
   for (const c of p.comportamentos) {
-    if (FRASE_COMPORTAMENTO[c]) return FRASE_COMPORTAMENTO[c];
+    const frase = FRASE_COMPORTAMENTO[c];
+    if (frase && !usadas.has(frase)) {
+      usadas.add(frase);
+      return frase;
+    }
   }
   return 'Responde o que se pergunta e volta ao trabalho.';
 }
@@ -303,7 +324,7 @@ function realizarCartas(bruto) {
         nova.textoDisplay = houvePertence ? 'O Pertence Arrancado' : 'A Luva Desirmanada';
         nova.carimboPadrao = houvePertence ? 'Botão com fio na mão da vítima' : 'Luva desirmanada junto ao corpo';
         nova.descricao = houvePertence
-          ? `Na mão fechada ${doMorto}, um botão de casaco com fio e um triângulo de pano. O casaco de ${reu.nome} perdeu o segundo botão.`
+          ? `Presos entre os dedos ${doMorto}, um botão de casaco com fio e um triângulo de pano. O casaco de ${reu.nome} perdeu o segundo botão.`
           : `Junto ao corpo, uma luva sem par. O par está entre as coisas de ${reu.nome}.`;
         break;
       }
@@ -417,7 +438,7 @@ function montarLocalidades(bruto, cartas) {
       (blocosPorLocalidade[loc] ??= []).push({
         eventoId: ev.id,
         quando: 'disparado',
-        paragrafos: [`Na volta, o que a primeira visita não viu: ${ids.map((id) => `[[${id}]]`).join(' ')}`],
+        paragrafos: [`Na volta, o que a primeira visita não viu: ${ids.map((id) => `[[${id}]]`).join(' ')}.`],
       });
     }
   }
@@ -527,16 +548,18 @@ function montarLocalidades(bruto, cartas) {
   const evRuido = eventoQueDestroi('gen_ruido_ouvido');
   // Moldura do ruído conforme o posto de escuta: quem mora (ou passava a
   // faixa do crime) no próprio prédio da cena não ouve "de uma janela
-  // vizinha" — ouve parede-meia (parecer Fase 1, fiscal 3).
+  // vizinha" (parecer Fase 1, fiscal 3). Quem só FREQUENTAVA o prédio não
+  // "dormia parede-meia" — o álibi dele diz que foi dormir em casa
+  // (parecer Fase 3, N2): a moldura da rotina é neutra de pernoite.
   const cartaRuido = cartas.find((c) => c.id === 'gen_ruido_ouvido');
   const tRuido = cartaRuido && cartaRuido.origemTestemunha ? pessoas.get(cartaRuido.origemTestemunha) : null;
-  const ouviuDeDentro =
-    !!tRuido &&
-    (tRuido.pacoteEspacial.moradia === escolha.localId ||
-      tRuido.pacoteEspacial.rotina[escolha.faixa] === escolha.localId);
-  const fraseRuido = ouviuDeDentro
+  const moraNoPredio = !!tRuido && tRuido.pacoteEspacial.moradia === escolha.localId;
+  const frequentavaOPredio = !!tRuido && tRuido.pacoteEspacial.rotina[escolha.faixa] === escolha.localId;
+  const fraseRuido = moraNoPredio
     ? 'De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]].'
-    : 'De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].';
+    : frequentavaOPredio
+      ? 'De dentro do próprio prédio, quem lá estava àquela hora conta: [[gen_ruido_ouvido]].'
+      : 'De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].';
   const cartaPrenuncio = cartas.find((c) => (c.tagsOcultas || {}).subDominio === 'prenuncio');
   const vizinhanca = {
     id: 'vizinhanca',
@@ -628,6 +651,7 @@ function montarSuspeitos(bruto) {
   // Ordem de apresentação estável e cega ao papel: alfabética por nome —
   // o réu não pode ser sempre o primeiro da lista.
   ids.sort((a, b) => (pessoas.get(a).nome < pessoas.get(b).nome ? -1 : 1));
+  const frasesUsadas = new Set();
   return ids.map((id) => {
     const p = pessoas.get(id);
     const prof = profissaoExibida(p.profissao);
@@ -638,7 +662,7 @@ function montarSuspeitos(bruto) {
       relacao: `${prof.charAt(0).toUpperCase()}${prof.slice(1)}; mora ${formasDoLugar(
         nomeDoPredio(mundo.cidade, p.pacoteEspacial.moradia)
       ).em}`,
-      descricao: descricaoDePessoa(p, bruto.seed),
+      descricao: descricaoDePessoa(p, bruto.seed, frasesUsadas),
     };
   });
 }

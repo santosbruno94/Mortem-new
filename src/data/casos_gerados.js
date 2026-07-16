@@ -47,7 +47,7 @@ export const CASO_REPLICA = {
    "nome": "Thomas Jones",
    "idade": 68,
    "relacao": "Pároco; mora no Presbitério",
-   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
+   "descricao": "Antes de assinar o termo, corrige nele uma miudeza."
   },
   {
    "id": "gen_2_ferreiro",
@@ -2857,7 +2857,7 @@ export const CASOS_POOL = [
    "nome": "William Roberts",
    "idade": 45,
    "relacao": "Médico rural; mora na Casa do Médico",
-   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
+   "descricao": "Antes de assinar o termo, corrige nele uma miudeza."
   }
  ],
  "cartas": [
@@ -3048,7 +3048,7 @@ export const CASOS_POOL = [
    "localidade": "vizinhanca",
    "textoDisplay": "A Testemunha Inquieta",
    "carimboPadrao": "Testemunha que pede sigilo",
-   "descricao": "Annie Thomas diz que não viu nada; depois, que viu pouco; depois, que era tarde. Na despedida, segura a manga do perito: \"O senhor vai embora quando isso acabar. Eu fico.\"",
+   "descricao": "Annie Thomas diz que não viu nada; depois, que viu pouco; depois, que era tarde. Na despedida, segura a manga do casaco: \"Quem é de fora vai embora quando isso acabar. Eu fico.\"",
    "tagsOcultas": {
     "dominio": "testemunho",
     "subDominio": "prenuncio",
@@ -3225,7 +3225,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_corpo]]"
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_corpo]]."
      ]
     }
    ]
@@ -4348,7 +4348,7 @@ export const CASOS_POOL = [
     },
     "prenuncio": {
      "cartaId": "gen_intf_intf_1_prenuncio",
-     "texto": "Annie Thomas diz que não viu nada; depois, que viu pouco; depois, que era tarde. Na despedida, segura a manga do perito: \"O senhor vai embora quando isso acabar. Eu fico.\""
+     "texto": "Annie Thomas diz que não viu nada; depois, que viu pouco; depois, que era tarde. Na despedida, segura a manga do casaco: \"Quem é de fora vai embora quando isso acabar. Eu fico.\""
     },
     "anuncio": "A testemunha que tinha o que contar foi encontrada morta."
    }
@@ -4437,7 +4437,7 @@ export const CASOS_POOL = [
    "nome": "John Evans",
    "idade": 15,
    "relacao": "Lavrador; mora no Cottage nº 3",
-   "descricao": "Fala baixo e mede a porta antes de responder."
+   "descricao": "Espera a pergunta acabar de todo antes de abrir a boca."
   }
  ],
  "cartas": [
@@ -4573,7 +4573,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Pertence Arrancado",
    "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Na mão fechada da morta, um botão de casaco com fio e um triângulo de pano. O casaco de James Brown perdeu o segundo botão.",
+   "descricao": "Presos entre os dedos da morta, um botão de casaco com fio e um triângulo de pano. O casaco de James Brown perdeu o segundo botão.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "objeto_pessoal",
@@ -4640,7 +4640,7 @@ export const CASOS_POOL = [
    "id": "gen_intf_intf_1_soberanos",
    "localidade": "vizinhanca",
    "textoDisplay": "Soberanos Novos",
-   "carimboPadrao": "Soberanos novos, contados à vista de todos",
+   "carimboPadrao": "Soberanos novos em mão de fiado",
    "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: James Brown.",
    "tagsOcultas": {
     "dominio": "vestigio",
@@ -4749,7 +4749,7 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama quartos do sobrado, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama quarto do sobrado, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
@@ -4795,7 +4795,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]"
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]."
      ]
     }
    ]
@@ -5982,7 +5982,7 @@ export const CASOS_POOL = [
    "nome": "James Brown",
    "idade": 70,
    "relacao": "Moleiro; mora no Moinho",
-   "descricao": "Antes de assinar o termo, corrige nele uma miudeza."
+   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
   },
   {
    "id": "gen_2_lavrador",
@@ -6125,7 +6125,7 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "textoDisplay": "O Pertence Arrancado",
    "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Na mão fechada do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Ethel Taylor perdeu o segundo botão.",
+   "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Ethel Taylor perdeu o segundo botão.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "objeto_pessoal",
@@ -6309,7 +6309,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]]."
+    "De dentro do próprio prédio, quem lá estava àquela hora conta: [[gen_ruido_ouvido]]."
    ],
    "blocosContingentes": []
   }
@@ -7417,7 +7417,7 @@ export const CASOS_POOL = [
    "nome": "John Thomas",
    "idade": 56,
    "relacao": "Pároco; mora no Presbitério",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+   "descricao": "Antes de assinar o termo, corrige nele uma miudeza."
   },
   {
    "id": "gen_1_lavrador",
@@ -7771,7 +7771,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]"
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
      ]
     },
     {
@@ -8964,14 +8964,14 @@ export const CASOS_POOL = [
    "nome": "Walter Walker",
    "idade": 32,
    "relacao": "Lavrador; mora no Cottage nº 1",
-   "descricao": "Mede a noite por sinos e canecas, nunca pelo relógio."
+   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
   },
   {
    "id": "gen_4_lavrador",
    "nome": "William Brown",
    "idade": 14,
    "relacao": "Lavrador; mora no Cottage nº 3",
-   "descricao": "Responde de olhos no chão, uma palavra por vez."
+   "descricao": "Fala baixo e mede a porta antes de responder."
   }
  ],
  "cartas": [
@@ -10367,7 +10367,7 @@ export const CASOS_POOL = [
    "nome": "Thomas Jones",
    "idade": 43,
    "relacao": "Lavrador; mora no Cottage nº 3",
-   "descricao": "Começa pela resposta e acaba na vida alheia."
+   "descricao": "Descreve por alto o que viu; miudeza não lhe ficou."
   }
  ],
  "cartas": [
@@ -10699,7 +10699,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]"
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
      ]
     },
     {
@@ -11899,7 +11899,7 @@ export const CASOS_POOL = [
    "nome": "William Wilson",
    "idade": 36,
    "relacao": "Lavrador; mora no Cottage nº 2",
-   "descricao": "Espera a pergunta acabar de todo antes de abrir a boca."
+   "descricao": "Fala baixo e mede a porta antes de responder."
   }
  ],
  "cartas": [
