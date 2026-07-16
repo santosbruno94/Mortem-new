@@ -921,6 +921,53 @@ gerador-facing (nunca lida pelo veredicto) e o eco do mestre sobre falhas. Nada 
 altera as regras invioláveis: motor lê só `tagsOcultas` + seed; camada visual/narrativa
 jamais lida pela lógica.
 
+### 16.1 Gerador por simulação e interferência (jul/2026 — direção normativa)
+
+O gerador procedural **comete o crime em vez de escrevê-lo**: a versão integral do
+design vive em [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md)
+(inclusive a tabela viva atributo → vestígio). O resumo normativo:
+
+- **Autobattler de build time.** `resolverCrime(assassino, vitima, metodo, local,
+  hora, seed)` simula o confronto rodada a rodada NA GERAÇÃO (RNG só de `hashString`
+  salgado) e produz o `RegistroDoCrime` — sequência de eventos { ator, ação,
+  célula/mobília, hora, vestígios_depositados[] }. O runtime só vê o registro; nada
+  de batalha existe em jogo. **Reamostragem por rejeição:** batalha em que o assassino
+  perde é descartada com sal incrementado — ele sempre vence, mas contra vítima forte
+  as vitórias sobreviventes são as custosas (luta longa, ferimentos mútuos, ruído).
+  Dois tipos de cenário: **premeditado** e **briga que escalou** (sem surpresa, sem
+  vestígio de planejamento, motivo imediato).
+- **Regra de existência de atributo.** Atributo só existe se mapeia para vestígio
+  observável ou comportamento discreto de diálogo/interferência. Conjunto: **FOR**
+  (STR+VIT fundidos), **INT** (elaboração do método), **WIS** (higiene de vestígios;
+  nas testemunhas, acurácia), **CHA** (álibi; interlocutores). O quadrante **INT ×
+  WIS** gera os fenótipos de assassino (do caso difícil ao brutal e desleixado); WIS
+  governa a limpeza, INT só a complexidade. **Conservação da evidência:** limpar
+  converte o óbvio em sutil, nunca em zero — toda limpeza deposita vestígio de
+  segunda ordem. Variável de simulação sem vestígio diferencial = lint no QA. Sem
+  ficha do detetive; sem grid de alinhamento.
+- **Ordem de geração espacial:** cidade → elenco (**arquétipos** sorteados pela
+  demografia de 1893, cada um com pacote espacial e priors com proveniência) →
+  inserção espacial (endereços + rotina em 3 faixas → **grafo de avistamentos**, de
+  onde saem álibis e ruído) → cena do crime → autobattler no grid da cena. Interior
+  detalhado só para locais elegíveis a cena (LOD por relevância); o grid da batalha
+  **é** a planta procedural que o jogador explora (proibida representação espacial
+  paralela); todo vestígio nasce ancorado em célula/mobília.
+- **Regras de Justiça da interferência (R1–R6):** interferência (ato do assassino/
+  cúmplice contra a investigação) é **evento contingente pré-computado na geração** —
+  nunca agência livre em runtime. R1: é um segundo crime sob pressão — resolve contra
+  WIS com penalidade e deposita vestígio mais grosseiro. R2: saldo informacional ≥ 0 —
+  só destrói evidência redundante (jamais a âncora durável ou o último caminho até
+  ela) e sempre deposita vestígio novo. R3: causalidade diegética — gatilho é ação
+  observável do jogador e o ator tem rota espacial plausível ("ele só soube porque
+  eu…"; "ele só chegou lá porque…"). R4: interferência de alto impacto tem prenúncio
+  legível. R5: orçamento de 2–3 eventos por caso, sorteados na geração. R6: catálogo
+  fechado v1 (`destruir_evidencia`, `intimidar_testemunha`, `subornar_testemunha`,
+  `silenciar`). O `qa.mjs` prova a âncora sob TODOS os ramos de eventos.
+- **Atributos vivem apenas no gerador.** O pacote de caso carrega somente
+  consequências (vestígios, flags de comportamento de diálogo, gatilhos de
+  interferência); o motor é cego a atributos — mesma cegueira já garantida para
+  aparências e papéis dramáticos.
+
 ---
 
 ## 17. Regras de desenvolvimento

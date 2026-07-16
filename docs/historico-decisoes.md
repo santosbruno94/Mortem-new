@@ -20,6 +20,7 @@
 | jul/2026 (Overhaul da Redação) | Infraestrutura de redação (guia de estilo, bíblia de vozes, KB de medicina legal, skills/agentes revisores) e reescrita integral da prosa do slice: observação pura, vozes diferenciadas, brilho racionado, correções de continuidade (13/out/1893 = sexta; Moorford = 3h) |
 | jul/2026 (Reescrita do caso) | **"O Álibi de Corda" → "A Hora Emprestada"**: mesma vítima e cenário, verdade de ouro nova. 3 → **5 suspeitos**, 1 → **3 mentirosos inocentes** (segredos de naturezas distintas: humilhação, decoro, medo), e o relógio quebrado deixa de ser isca passiva para virar **pivô estrutural** com três leituras (mostrador forjado / roda de contagem / relógio de bolso de corda esgotada). Motor ganhou duas travas temporais universais (`rotina_interrompida`, `registro_mecanico`); veredicto/acusação intocados. Removida a perita Lenore (fica só o Dr. Harlan Blackwell). Fecha as pendências 1, 2, 3 e 5 do overhaul de 12/07 (despiste com explicação plantada; ≥2 mentirosos; motivo composto arquivado — `silenciamento` é composto por natureza, único por id; `reacao_vital` em jogo) |
 | jul/2026 (Fundações do gerador procedural, FASE 0) | Registro normativo das decisões de arquitetura do gerador: **pacote de caso** serializável, **asset 2D sob contrato**, **retratos em camadas**, **resource binding** por slots tipados, **papéis dramáticos** gerador-facing e **eco do mestre** sobre falhas (detalhe abaixo). Só documentos; nenhum código. |
+| jul/2026 (Gerador por simulação e interferência, FASE 0) | Registro normativo do overhaul do gerador: o crime é **simulado na geração** por um **autobattler de build time** (`resolverCrime` → `RegistroDoCrime`), atributos sob **regra de existência** (FOR/INT/WIS/CHA; só existe o que deixa vestígio ou comportamento), **arquétipos × demografia 1893**, geração espacial cidade-primeiro com **grafo de avistamentos**, e **interferência** como evento contingente sob as **Regras de Justiça R1–R6**. Inclui a reconciliação com a rejeição anterior do grid espacial (detalhe abaixo). Só documentos; nenhum código. |
 
 ## Fundações do gerador procedural (jul/2026 — detalhe)
 
@@ -58,6 +59,90 @@ Horror); reação da voz à derrota anterior (Hades); elenco dinâmico por papé
 - GLTF/textura de arquivo na camada 3D — o diorama "maquete de papel" permanece 100%
   procedural; a abertura de assets é exclusivamente 2D.
 - Reordenação/rejogo do mesmo caso — cada caso é one-shot.
+
+## Gerador por simulação e sistema de interferência (jul/2026 — detalhe)
+
+Ordem de serviço: "Gerador por Simulação e Sistema de Interferência", FASE 0 (registro
+normativo; zero código). Versão integral do design: `docs/game-design-simulacao.md`.
+
+**Origem.** Design de **simulação forward + investigação backward**: em vez de o
+gerador escrever um caso e depois espalhar pistas, ele **comete o crime** numa
+simulação determinística de build time e os vestígios nascem como efeito colateral
+físico de cada ação — o jogador investiga o processo ao contrário. A justiça do
+mistério (todo vestígio tem causa; todo evento relevante deixa rastro) vira
+propriedade do processo, verificável por máquina, em vez de promessa autoral.
+
+**Decidido** (a implementar nas Fases 1–5 da ordem, uma por vez, com portão de aceite):
+
+- **Autobattler rudimentar de build time** — `resolverCrime(assassino, vitima, metodo,
+  local, hora, seed)` → `RegistroDoCrime` { ator, ação, célula/mobília, hora,
+  vestígios_depositados[] }; RNG só de `hashString` salgado; **reamostragem por
+  rejeição** (o assassino sempre vence; contra vítima forte sobrevivem as vitórias
+  custosas); iniciativa por premeditação × método; dois tipos de cenário
+  (**premeditado** / **briga que escalou**); variável de batalha sem vestígio
+  diferencial = lint.
+- **Regra de existência de atributo** — só existe atributo que mapeia para vestígio
+  observável ou comportamento discreto de diálogo/interferência. STR+VIT fundidos em
+  **FOR**; conjunto FOR/INT/WIS/CHA; quadrante **INT × WIS** como gerador de fenótipos
+  de assassino (WIS governa a limpeza, INT só a complexidade do método);
+  **conservação da evidência** (limpeza converte óbvio em sutil, nunca em zero — todo
+  ato de limpeza deposita vestígio de segunda ordem).
+- **NPCs periféricos com comportamentos quantizados** — medroso, tagarela, preciso,
+  linha do tempo não confiável; testemunha como instrumento de medição com margem de
+  erro. Nada de modificador contínuo invisível.
+- **Arquétipos × demografia de 1893** — arquétipo como pacote fechado (profissão →
+  priors de atributos + traits + motivos potenciais + pacote espacial), sorteado pelas
+  frequências demográficas; priors como dados versionados com proveniência por linha.
+- **Espaço cidade-primeiro** — ordem: cidade → elenco → inserção espacial → cena →
+  autobattler no grid; rotina em 3 faixas (dia/noite/madrugada); **grafo de
+  avistamentos** derivado (fonte única de álibis e ruído); **LOD por relevância**
+  (interior detalhado só em local elegível a cena); o grid da batalha É a planta
+  procedural explorável (proibida representação paralela); vestígio nasce ancorado em
+  célula/mobília.
+- **Interferência sob as Regras de Justiça R1–R6** — evento contingente pré-computado
+  na geração, nunca agência livre em runtime: segundo crime sob pressão (WIS com
+  penalidade, vestígio mais grosseiro); saldo informacional ≥ 0 (só destrói
+  redundância, sempre deposita vestígio novo); causalidade diegética (informação +
+  acesso, com rota espacial plausível); prenúncio obrigatório para alto impacto;
+  orçamento 2–3 eventos; catálogo fechado v1 (`destruir_evidencia`,
+  `intimidar_testemunha`, `subornar_testemunha`, `silenciar`). O `qa.mjs` (Fase 5)
+  prova a âncora durável sob todos os ramos de eventos.
+- **Atributos vivem apenas no gerador** — o pacote de caso carrega só consequências;
+  o motor é cego a atributos (regra permanente nova no `CLAUDE.md`).
+
+**Rejeitado** (fora de escopo, uma linha de motivo cada):
+
+- Agenda por hora / rotina contínua à la Shadows of Doubt — três faixas bastam para
+  álibis e avistamentos.
+- Interior detalhado para local não elegível a cena — custo sem vestígio (LOD por
+  relevância).
+- Grid de alinhamento D&D — redundante com motivo + traits.
+- Batalha/rolagens em runtime — o autobattler existe só na geração; o motor consome o
+  registro.
+- Autobattler visível/jogável; combate envolvendo o detetive — MORTEM é perícia, não
+  ação.
+- Agência livre do assassino em runtime — quebra a validação de solvabilidade.
+- `plantar_evidencia_falsa` — adiado para v2; entrará com falha detectável por
+  construção, atada ao WIS do forjador.
+- Ficha/atributos do detetive; jogador ferível — nada no jogo detecta atributos do
+  perito (regra de existência).
+- LLM avaliando gatilhos em runtime — gatilhos são condições materializadas no pacote.
+
+**Reconciliação com a rejeição anterior do grid espacial (Fundações do gerador,
+jul/2026).** Aquela entrada rejeitou o "grid espacial de posicionamento (Blue Prince
+9×5)" como *alheio ao loop de perícia forense* — e segue rejeitado no que foi
+rejeitado: um tabuleiro de POSICIONAMENTO em runtime, mecânica jogável de encaixar
+peças/salas que o jogador manipula, à parte do exame de vestígios. O que esta ordem
+adota é formalmente distinto: (a) o **grid de batalha vive em build time** — é
+substrato da simulação que deposita vestígios, invisível como mecânica; o jogador
+jamais joga sobre um grid; (b) a **inserção espacial do elenco** é dado de geração
+(endereços, rotinas, grafo de avistamentos) que o motor de veredicto nunca lê; (c) em
+runtime, o espaço continua sendo o que já era — a planta procedural explorável
+(linhagem da planta da relojoaria, §5.1 do contexto) e o diorama, agora alimentados
+pela cidade gerada. Em suma: lá se rejeitou um grid como MECÂNICA DE JOGO; aqui se
+adota um grid como GEOMETRIA DE GERAÇÃO, a serviço do mesmo loop de perícia que
+motivou a rejeição original. A rejeição anterior permanece válida nos seus próprios
+termos.
 
 ## A evolução das gavetas (detalhe)
 
