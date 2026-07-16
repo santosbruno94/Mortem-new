@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "demo:elenco": "node scripts/demo-elenco.mjs",
-    "demo:cidade": "node scripts/demo-cidade.mjs"
+    "demo:cidade": "node scripts/demo-cidade.mjs",
+    "demo:crime": "node scripts/demo-crime.mjs"
   },
   "dependencies": {
     "@react-three/drei": "9.114.3",

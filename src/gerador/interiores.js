@@ -13,8 +13,9 @@
 // A planta SVG (schema de PLANTA_RELOJOARIA, a linhagem de
 // src/data/planta_relojoaria.js) é PROJEÇÃO derivada do grid, célula a
 // célula — proibida representação espacial paralela. Os `alvos` dos
-// cômodos nascem vazios: ligar cômodo a nó do mapa é papel do pacote de
-// caso (Fase 3).
+// cômodos nascem vazios: ligar cômodo a nó do mapa é papel da montagem
+// do pacote de caso JOGÁVEL (Fase 4+; o resolvedor da Fase 3 só deposita
+// vestígios georreferenciados no grid).
 //
 // MOBÍLIA LÊ-SE DUAS VEZES: âncora de vestígio (Fase 3) e leitura social
 // do morador — o vocabulário doméstico vem da CLASSE de quem mora
