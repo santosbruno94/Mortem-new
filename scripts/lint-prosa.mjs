@@ -86,6 +86,7 @@ import {
 } from '../src/data/rotulos.js';
 import { CATALOGO_INTERFERENCIA, PROSA_PRENUNCIO } from '../src/gerador/interferencia.js';
 import { montarPacoteTutorial } from '../src/data/pacote_caso.js';
+import { CASO_REPLICA, CASOS_POOL } from '../src/data/casos_gerados.js';
 
 // ---------------------------------------------------------------------
 // Fontes: arquivo → raízes exportadas. O pacote do caso-escola entra por
@@ -119,6 +120,11 @@ const FONTES = [
   ],
   ['src/gerador/interferencia.js', { CATALOGO_INTERFERENCIA, PROSA_PRENUNCIO }],
   ['src/data/pacote_caso.js', { pacoteTutorial: montarPacoteTutorial() }],
+  // A prosa dos casos GERADOS (templates de src/gerador/pacote_gerado.js,
+  // realizados por scripts/gerar-casos.mjs) é texto commitado como outro
+  // qualquer: mesma norma, mesmos cheques. A deduplicação por conteúdo
+  // evita relatar o mesmo template uma vez por pacote.
+  ['src/data/casos_gerados.js', { CASO_REPLICA, CASOS_POOL }],
 ];
 
 // Arquivos cuja prosa vive em constantes não exportadas (templates): os

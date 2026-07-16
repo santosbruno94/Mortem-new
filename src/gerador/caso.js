@@ -65,8 +65,24 @@ function comodoDoCrime(interior, faixa) {
 
 // Gera o caso bruto de uma seed: mundo + escolha do crime + registro do
 // autobattler + fatia forense consumível pelo motor.
+//
+// VARIÁVEIS DIRIGIDAS (opts.dirigido, OPCIONAL — modo réplica): permite
+// cravar cenário, faixa, método e a escolha de vítima/assassino POR
+// ARQUÉTIPO/MÓBIL, para aproximar um caso gerado de um caso de referência.
+// Determinístico: os overrides são dados constantes e a resolução de
+// empates continua saindo de hashString sobre a seed. Sem `dirigido`, o
+// caminho é byte-idêntico ao de sempre (guarda de replay no qa.mjs).
+//   dirigido = {
+//     cenario?         : 'premeditado' | 'briga_escalada' (recua se impossível),
+//     faixa?           : 'noite' | 'madrugada' (só no premeditado),
+//     metodoId?        : id de METODOS (respeita elegibilidade INT/cenário),
+//     vitimaArquetipo? : id de arquétipo preferido para a vítima,
+//     assassinoArquetipo?: id de arquétipo preferido para o assassino,
+//     assassinoMotivo? : móbil preferido do assassino (motivoPotencial),
+//   }
 export function gerarCasoBruto(seed, opts = {}) {
   const n = opts.n ?? 8;
+  const dirigido = opts.dirigido || null;
   const sal = `${salDaSeed(seed)}|caso`;
 
   // O mundo nasce primeiro (Fases 1–2); a cena elegível vem da escolha
@@ -88,7 +104,9 @@ export function gerarCasoBruto(seed, opts = {}) {
       }
     }
   }
-  const querBriga = hashString(`${sal}|cenario`) % 3 === 0;
+  const querBriga = dirigido?.cenario
+    ? dirigido.cenario === 'briga_escalada'
+    : hashString(`${sal}|cenario`) % 3 === 0;
   const cenario = querBriga && paresCoabitantes.length > 0 ? 'briga_escalada' : 'premeditado';
 
   // 2–3. Vítima e assassino. Na briga, o par coabitante decide os dois
@@ -105,16 +123,40 @@ export function gerarCasoBruto(seed, opts = {}) {
     assassino = morreuA ? par.b : par.a;
     faixa = par.faixa;
   } else {
-    const vitimaId = sortearPonderado(
-      elenco.map((p) => ({ valor: p.id, peso: PESO_VITIMA_POR_CLASSE[p.classeSocial] ?? 1 })),
-      `${sal}|vitima`
-    );
-    vitima = elenco.find((p) => p.id === vitimaId);
+    // Vítima: dirigida por arquétipo quando pedida E presente no elenco;
+    // senão, a ponderação demográfica de sempre.
+    const porArquetipo = dirigido?.vitimaArquetipo
+      ? elenco.filter((p) => p.arquetipo === dirigido.vitimaArquetipo)
+      : [];
+    if (porArquetipo.length > 0) {
+      vitima = porArquetipo[hashString(`${sal}|vitimaDirigida`) % porArquetipo.length];
+    } else {
+      const vitimaId = sortearPonderado(
+        elenco.map((p) => ({ valor: p.id, peso: PESO_VITIMA_POR_CLASSE[p.classeSocial] ?? 1 })),
+        `${sal}|vitima`
+      );
+      vitima = elenco.find((p) => p.id === vitimaId);
+    }
     const candidatos = elenco.filter((p) => p.id !== vitima.id);
-    assassino = candidatos[hashString(`${sal}|assassino`) % candidatos.length];
+    // Assassino: dirigido por móbil e/ou arquétipo quando satisfazível.
+    const preferidos = candidatos.filter(
+      (p) =>
+        (!dirigido?.assassinoMotivo || p.motivoPotencial === dirigido.assassinoMotivo) &&
+        (!dirigido?.assassinoArquetipo || p.arquetipo === dirigido.assassinoArquetipo)
+    );
+    const bancoAssassino = dirigido && preferidos.length > 0 ? preferidos : candidatos;
+    assassino =
+      dirigido && preferidos.length > 0
+        ? bancoAssassino[hashString(`${sal}|assassinoDirigido`) % bancoAssassino.length]
+        : candidatos[hashString(`${sal}|assassino`) % candidatos.length];
     // O premeditado busca a vítima onde a rotina a deixa mais só (noite
     // ou madrugada — o assassino viaja até ela).
-    faixa = hashString(`${sal}|faixa`) % 2 === 0 ? 'noite' : 'madrugada';
+    faixa =
+      dirigido?.faixa === 'noite' || dirigido?.faixa === 'madrugada'
+        ? dirigido.faixa
+        : hashString(`${sal}|faixa`) % 2 === 0
+          ? 'noite'
+          : 'madrugada';
   }
 
   // 4. Local e hora: o crime acontece onde a rotina da vítima a põe.
@@ -124,7 +166,10 @@ export function gerarCasoBruto(seed, opts = {}) {
   // 5. Método: elegíveis por cenário × INT do assassino (a elaboração é
   // INT; a higiene, WIS — §3.1/§3.2).
   const elegiveis = metodosElegiveis(cenario, assassino.atributos.INT);
-  const metodoId = elegiveis[hashString(`${sal}|metodo`) % elegiveis.length];
+  const metodoId =
+    dirigido?.metodoId && elegiveis.includes(dirigido.metodoId)
+      ? dirigido.metodoId
+      : elegiveis[hashString(`${sal}|metodo`) % elegiveis.length];
 
   // 5.1 Ouvintes potenciais do ruído (rotina × adjacência, §4.2.5): quem
   // partilha o teto na faixa ouve o abafado; o vizinho, só o audível.

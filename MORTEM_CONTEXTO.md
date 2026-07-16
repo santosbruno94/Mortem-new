@@ -718,6 +718,18 @@ inicial apresenta um único convite (`faseJogo: 'selecao' → 'abertura' →
    presença, **sem ensinar**); a cena vem só com descrição física (sem `vozMestre`).
    Viável graças ao motor de tags.
 
+**Estado (jul/2026) — os três chamados da tela inicial.** A seleção de caso já
+oferece três modos: (1) **A Hora Emprestada**, o caso-escola artesanal, intocado;
+(2) **A Hora Refeita**, a réplica procedural do caso-escola (seed fixa + variáveis
+dirigidas — ver `src/gerador/pacote_gerado.js`); (3) **Um Caso da Comarca**, um caso
+aleatório de um banco pré-gerado em build time (`src/data/casos_gerados.js`,
+regenerável por `npm run gerar:casos` e conferido byte a byte pelo QA). O gerador
+segue ILHA de build time: o runtime carrega pacotes prontos, nunca importa
+`src/gerador`. Casos gerados jogam sem mestre (sem `vozMestre`, sem ecos do
+tutorial), na grade 2D da mesa (a maquete 3D permanece exclusiva do caso-escola,
+cujos nós ela conhece) e com prosa de template FUNCIONAL (regime "mecânica
+primeiro" — a lapidação passa pelo pipeline `revisar-prosa` em passo próprio).
+
 ---
 
 ## 14. Caso do vertical slice: "A Hora Emprestada" (CONTÉM SPOILERS)

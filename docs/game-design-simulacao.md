@@ -379,6 +379,33 @@ seeds fixas de interferência da Fase 4:
 O tutorial (sem `interferencias`) segue passando inalterado — zero ramos, zero
 eventos, regressão zero.
 
+**Implementado na Fase 6 (jul/2026) — o caso gerado JOGÁVEL e os três modos.**
+O montador `src/gerador/pacote_gerado.js` transforma `gerarCasoBruto(seed)` num
+PACOTE DE CASO completo (contrato de `src/data/pacote_caso.js`): realiza a prosa
+das cartas por templates versionados (nomes do mundo gerado no lugar dos rótulos
+técnicos; tagsOcultas intactas), deriva o mapa (corpo+cena no prédio do crime, 0h;
+delegacia/vizinhança/pertences-do-réu na vila, 1h), escreve localidades com os
+marcadores `[[id]]` de toda carta e com **blocos contingentes** de interferência
+(prosa que aparece/some com o disparo do evento — camada de UI), e monta a
+abertura de 6 passos no shape do caso-escola. Decisões de forma: `verdadeDeOuro.
+cenaEncenada = false` no pacote gerado (o catálogo v1 não produz encenação de HORA
+— peça refutável; sem ela, exigir o pilar de descuidos tornaria a Vitória Absoluta
+inalcançável) e `instrumentoCorreto` = tipoVestigio da carta de nexo (métodos sem
+instrumento apontam o pertence arrancado). Como o gerador é ilha, os pacotes são
+pré-gerados em build time por `scripts/gerar-casos.mjs` e embarcados como dado em
+`src/data/casos_gerados.js` (réplica dirigida + banco de 8 casos válidos). O
+runtime ganhou: acessores de mapa/localidades/diálogos/abertura no pacote
+(`pacote_caso.js`), `casoId` persistido no save (retomada recarrega o pacote
+certo), registro de modos em `src/data/casos.js` e a seleção de 3 chamados na tela
+inicial (variáveis dirigidas de `gerarCasoBruto(seed, { dirigido })` documentadas
+em `src/gerador/caso.js`). Guardas novas no `qa.mjs` (seção FASE 6): replay byte a
+byte do embarcado contra o montador, higiene de todo pacote (campos, marcadores ↔
+cartas, blocos contingentes, slots, zero id/rótulo cru) e os 4 perfis → 4
+desfechos na réplica e no pool. O `qa-ui.mjs` ganhou a ROTA GERADA (?caso=,
+abertura gerada, extração, mural, retomada de save). Prosa dos templates em regime
+"mecânica primeiro" (lapidação via `revisar-prosa` em passo próprio), já sob o
+lint-prosa.
+
 ---
 
 ## 6. Fora de escopo (rejeitado nesta ordem, com motivo)

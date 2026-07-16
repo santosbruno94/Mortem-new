@@ -1,6 +1,7 @@
 import { lazy, Suspense, useMemo } from 'react';
 import { useJogo } from '../store/jogo.js';
-import { custoViagem } from '../data/pacote_caso.js';
+import { custoViagem, obterCaso } from '../data/pacote_caso.js';
+import { POSICOES_DIORAMA } from '../data/mapa_espacial.js';
 import { webglDisponivel, modoFlat } from '../logic/webgl.js';
 import { tocarSom } from '../som.js';
 import RelogioBolso from './RelogioBolso.jsx';
@@ -35,8 +36,17 @@ export default function Escrivaninha() {
 
   const mesaDesfocada = overlay !== null;
 
-  // 3D só com WebGL e fora da rota de escape ?flat=1 (decisão única por sessão).
-  const usar3D = useMemo(() => !modoFlat() && webglDisponivel(), []);
+  // 3D só com WebGL e fora da rota de escape ?flat=1 (decisão única por
+  // sessão) — e só quando a maquete CONHECE todos os nós do caso (o caso
+  // gerado não tem posições no diorama do caso-escola: cai na grade 2D,
+  // que é o fallback obrigatório de todo ponto 3D).
+  const usar3D = useMemo(
+    () =>
+      !modoFlat() &&
+      webglDisponivel() &&
+      obterCaso().nosMapa.every((n) => POSICOES_DIORAMA[n.id]),
+    []
+  );
 
   // Um único handler de viagem serve à maquete 3D e à grade 2D —
   // paridade por construção (o QA joga pelos dois caminhos). Na maquete 3D,

@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { OPCOES_PERSONAGEM } from '../data/abertura.js';
+import { obterCaso } from '../data/pacote_caso.js';
+import { MODOS_DE_JOGO, modoDoCaso, pacoteDoModo, TAMANHO_POOL } from '../data/casos.js';
 import { formatRelogio } from '../logic/tempo.js';
 import { modoFlat } from '../logic/webgl.js';
 
@@ -21,9 +24,31 @@ function alternarModoLeve(ativar) {
 export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) {
   const escolherDetective = useJogo((s) => s.escolherDetective);
   const reiniciarCaso = useJogo((s) => s.reiniciarCaso);
+  const carregarCaso = useJogo((s) => s.carregarCaso);
   const horasJogo = useJogo((s) => s.horasJogo);
   const modoPurista = useJogo((s) => s.modoPurista);
   const alternarModoPurista = useJogo((s) => s.alternarModoPurista);
+
+  // O MODO DE JOGO escolhido (3 chamados na mesma mesa): nasce refletindo o
+  // caso já carregado (?caso= ou save), com o caso-escola como default.
+  const [modo, setModo] = useState(() => modoDoCaso(obterCaso().id));
+
+  // Atender ao chamado: carrega o pacote do modo (se o caso corrente já não
+  // é ele) e segue à abertura. No procedural, o SORTEIO do caso do banco é
+  // desta camada de apresentação (Math.random permitido fora de logic/data/
+  // store); o caso sorteado é, em si, determinístico por seed.
+  const atenderChamado = () => {
+    const atualId = obterCaso().id;
+    if (modo === 'procedural') {
+      if (modoDoCaso(atualId) !== 'procedural') {
+        carregarCaso(pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL)));
+      }
+    } else {
+      const alvo = pacoteDoModo(modo);
+      if (atualId !== alvo.id) carregarCaso(alvo);
+    }
+    escolherDetective();
+  };
 
   return (
     <div className="relative altura-tela-min mesa-madeira overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-12">
@@ -41,7 +66,7 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
           §
         </div>
         <p className="mt-4 text-stone-400 text-sm tracking-[0.3em] text-center">
-          A Hora Emprestada — Briarstone, 1893
+          Inglaterra, 1893
         </p>
 
         {retomada ? (
@@ -66,7 +91,36 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
           </>
         ) : (
           <>
-            <p className="mt-14 sm:mt-16 mb-8 sm:mb-10 font-serif italic text-lg sm:text-xl text-amber-200/90 text-center">
+            {/* Os três chamados sobre a mesa (§13): o caso-escola, a réplica
+                procedural do caso-escola e o caso da comarca. Escolher aqui
+                não custa nada; o convite do perito é que abre o caso. */}
+            <p className="mt-10 sm:mt-12 mb-4 font-serif italic text-base sm:text-lg text-amber-200/90 text-center">
+              Três chamados esperam sobre a mesa.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-3 w-full max-w-3xl mb-8">
+              {MODOS_DE_JOGO.map((m) => {
+                const ativo = m.id === modo;
+                return (
+                  <button
+                    key={m.id}
+                    type="button"
+                    data-modo={m.id}
+                    aria-pressed={ativo}
+                    onClick={() => setModo(m.id)}
+                    className={`flex-1 text-left rounded-sm border px-3 py-2.5 transition-colors ${
+                      ativo
+                        ? 'border-vela/70 bg-stone-900/80 shadow-vela'
+                        : 'border-latao/30 bg-stone-950/40 hover:border-latao/70'
+                    }`}
+                  >
+                    <p className={`font-serif ${ativo ? 'text-amber-200' : 'text-stone-300'}`}>{m.rotulo}</p>
+                    <p className="mt-1 text-stone-400 text-xs leading-snug">{m.descricao}</p>
+                  </button>
+                );
+              })}
+            </div>
+
+            <p className="mb-6 font-serif italic text-lg sm:text-xl text-amber-200/90 text-center">
               Quem atende ao chamado?
             </p>
 
@@ -76,7 +130,7 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
               {OPCOES_PERSONAGEM.map((opcao) => (
                 <button
                   key={opcao.id}
-                  onClick={() => escolherDetective()}
+                  onClick={atenderChamado}
                   className="carta-mesa text-left h-full"
                 >
                   <div className="carta-pergaminho rounded-sm p-5 sm:p-7 h-full">

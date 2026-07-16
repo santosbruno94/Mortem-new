@@ -30,6 +30,7 @@ export default function EventoLocalidade({ localidadeId }) {
   const detective = useJogo((s) => s.detective);
   const horasJogo = useJogo((s) => s.horasJogo);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
+  const interferenciasDisparadas = useJogo((s) => s.interferenciasDisparadas);
   const abrirOverlay = useJogo((s) => s.abrirOverlay);
   // Quais pontos de interesse estão abertos (revelados). Estado local de UI:
   // a coleta em camadas é escolha do jogador, não muda o motor.
@@ -65,11 +66,27 @@ export default function EventoLocalidade({ localidadeId }) {
     .filter((bloco) => bloco.requerCartas.every((id) => cartasRegistradas.some((c) => c.id === id)))
     .flatMap((bloco) => bloco.paragrafos);
 
+  // Blocos CONTINGENTES da interferência (FASE 6 do gerador): prosa que
+  // aparece/some conforme o evento do pacote já disparou. Camada de UI
+  // pura — lê o estado de disparo (interferenciasDisparadas), nunca decide
+  // nada; o efeito mecânico continua nos gates de extrairCarta.
+  const eventosDisparados = new Set(interferenciasDisparadas.map((d) => d.id));
+  const paragrafosContingentes = (localidade.blocosContingentes || [])
+    .filter((bloco) =>
+      bloco.quando === 'disparado'
+        ? eventosDisparados.has(bloco.eventoId)
+        : !eventosDisparados.has(bloco.eventoId)
+    )
+    .flatMap((bloco) => bloco.paragrafos);
+
   // Contador de esgotamento (regalia do caso-escola): quantas observações
   // esta localidade oferece e quantas já estão na mesa. O procedural pode
   // omitir — a contagem é leitura dos marcadores [[id]] da prosa, não regra.
   // Os micro-gestos (Onda 7) entram na união: gesto também é observação.
-  const fonteProsa = temPontos ? localidade.pontos.flatMap((p) => p.prosa) : localidade.prosa || [];
+  const fonteProsa = [
+    ...(temPontos ? localidade.pontos.flatMap((p) => p.prosa) : localidade.prosa || []),
+    ...paragrafosContingentes,
+  ];
   const idsGestos = [
     ...(localidade.gestos || []).map((g) => g.cartaId),
     ...(temPontos ? localidade.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)) : []),
@@ -134,11 +151,13 @@ export default function EventoLocalidade({ localidadeId }) {
             })}
           </div>
           {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
+          {paragrafosContingentes.map((texto, i) => renderParagrafo(texto, `intf_${i}`))}
         </div>
       ) : (
         <div className="space-y-4">
           {localidade.prosa.map(renderParagrafo)}
           {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
+          {paragrafosContingentes.map((texto, i) => renderParagrafo(texto, `intf_${i}`))}
         </div>
       )}
       {/* Micro-gestos da localidade (Onda 7): o verbo encosta na ficção —
