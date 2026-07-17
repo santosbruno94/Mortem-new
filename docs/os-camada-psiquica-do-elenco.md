@@ -212,12 +212,43 @@ linha, apontando doc e §, na regra do manifesto).
 `hashString(seed + sal)`; rejeições re-hasheiam com sal incremental (`_r1`,
 `_r2`, …), padrão do resolvedor.
 
+**Preenchido na Fase 2 — forma concreta (convenção de `amostragem.js`):** `<id>` é o
+ÍNDICE do personagem no elenco (estável por seed); o sal completo é
+`` `${salDaSeed(seed)}|psique|vet_${indice}` `` (idem `pol_`, `desenc_`, `flag_`), e a
+reamostragem por rejeição usa `` `…|vet_${indice}_r${k}` `` com `k` incremental e teto
+finito (esgotado o teto, vale o último sorteio elegível por varredura determinística —
+jamais laço aberto). A polaridade re-lê o próprio sal sobre o vetor final (não é
+re-sorteada por tentativa). Nunca reusar sal entre decisões distintas (regra de ouro da
+amostragem).
+
 ### 8.3 Magnitude de desencaixe
 
 Derivada da tabela 7.2: afinidade **alta = 0**, **média = 1**, **rara = 2**.
 T = 2 para o assassino; ≥ 1 inocente com magnitude ≥ 2 (prioridade isca). A
 polaridade não altera a magnitude — altera as consequências (ativa → agressor
 direto; passiva → cúmplice, omisso, mandante fraco — alimenta R1–R6).
+
+**Preenchido na Fase 2 — a "prioridade isca" no fluxo gerado.** O papel
+`isca_do_apressado` é taxonomia do caso-escola (`src/data/papeis.js`); o caso GERADO não
+escala papéis nomeados. A realização equivalente:
+
+1. **Tabela auditável:** a magnitude sai de `afinidadeDemografica` do vetor
+   (`vetores_psiquicos.js`), que codifica a 7.2 em três degraus de peso — peso alto =
+   afinidade natural (0), peso médio = neutra (1), peso baixo = rara (2). O QA verifica
+   que todo par vetor × demográfico tem degrau definido.
+2. **Assassino:** sorteado o elenco e escolhido o réu (caso.js), se a magnitude dele
+   for < 2 o vetor é reamostrado com sal incremental até sair magnitude 2 (o desencaixe
+   É o móbil íntimo — tabela 7.3).
+3. **Falso-destoante garantido:** se nenhum não-assassino ficou com magnitude ≥ 2,
+   força-se UM por reamostragem idêntica. Prioridade de escolha (determinística, sal
+   `desenc_escolha`): primeiro os coabitantes de rotina da vítima que não são o réu —
+   os falsos-óbvios naturais, que entram antes na lista de suspeitos do pacote —, depois
+   os demais.
+4. **A isca engana de fato:** a jusante, o montador (`pacote_gerado.js`,
+   `derivarPerifericos`) passa a preferir o falso-destoante como portador do PRIMEIRO
+   segredo (`inocente_segredo` + móbil-isca `gen_movel_*`), quando elegível pelas regras
+   existentes — o destoante inocente ganha papel + mentira + móbil visível, e "mentiu,
+   logo matou" volta a ser a armadilha. Sem elegibilidade, o sorteio atual permanece.
 
 ### 8.4 Matriz de encenação
 
@@ -227,6 +258,26 @@ frágil, sinais de hesitação/defesa conforme KB forense};
 **instrumental** {cena "arrumada" em excesso, álibi ensaiado com detalhe demais,
 ausência anômala do vestígio esperado, hora encenada (mecânica existente)}.
 Todo item cita a `kb-medicina-legal/` (regra de proveniência).
+
+**Preenchido na Fase 2 — pools enumerados, com proveniência por item:**
+
+| Tipo | Item do pool | Proveniência |
+|---|---|---|
+| reativo | `limpeza_incompleta` — o esfregado converte o óbvio em sutil, nunca em zero | `kb-medicina-legal/vestigios.md` (o que resta ao pano e à água) + `game-design-simulacao.md` §3.3 (conservação da evidência) |
+| reativo | `objeto_fora_de_lugar` — deslocado no pânico, sem história que o explique | `kb-medicina-legal/protocolo-exame.md` §4 (incongruência de cena) |
+| reativo | `alibi_de_ultima_hora` — paradeiro improvisado, sem testemunha firme, que quebra ao primeiro cruzamento | `kb-medicina-legal/inquerito-e-policia.md` (o depoimento diante do coroner) |
+| reativo | `sinais_hesitacao_defesa` — lesões de defesa na vítima e reação vital plena: ninguém "preparou" a luta | `kb-medicina-legal/traumas.md` ("Lesões de defesa"; reação vital) |
+| instrumental | `cena_arrumada_demais` — desordem seletiva, roubo que poupa valores | `kb-medicina-legal/protocolo-exame.md` §4 (roubo que poupa valores; arrombamento incongruente) |
+| instrumental | `alibi_ensaiado_detalhado` — detalhe demais, repetido sem variação (o ensaio denuncia-se) | `kb-medicina-legal/inquerito-e-policia.md` + `src/data/papeis.js` (`mentiraEnsaiada`) |
+| instrumental | `ausencia_anomala_de_vestigio` — falta o que deveria haver; "a leitura mais eloquente é frequentemente a ausência" | `kb-medicina-legal/traumas.md` (ausência de lesão de defesa) + `protocolo-exame.md` §4 (ausência de reação vital) |
+| instrumental | `hora_encenada` — cronologia forjada que o corpo contradiz (mecânica existente: `gen_hora_forjada`) | `kb-medicina-legal/protocolo-exame.md` §4 (cronologia forjada) |
+
+**Alcance na v1 (registro honesto, pela válvula do §7):** a matriz compila-se em
+**consequência de dados** — o caso bruto sai com `qualidadeEncenacao` (tipo de crime →
+qualidade → pool aplicável) por §4.5 —, e a peça física já existente (`gen_hora_forjada`)
+fica subsumida ao item `hora_encenada`. A **realização física dos demais itens** no
+`RegistroDoCrime`/montador (novas cartas de vestígio por item de pool) destaca-se para OS
+própria, como o §7 prevê; nada nesta OS altera a deposição de vestígios do autobattler.
 
 ### 8.5 Fair play
 

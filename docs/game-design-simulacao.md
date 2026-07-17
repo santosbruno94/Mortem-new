@@ -218,6 +218,17 @@ caso (assassino-encenador, isca do apressado, véu…); o **arquétipo** é a ma
 da pessoa (profissão, classe, endereço, atributos prováveis). O gerador escala papéis
 EM personagens nascidos de arquétipos.
 
+**Segunda coluna (OS da camada psíquica, jul/2026):** ortogonal ao arquétipo demográfico,
+cada personagem recebe um **vetor psíquico** (valor × medo × sombra bipolar ×
+auto-justificação) do catálogo v1 de
+`docs/kb-producao/sistemas-arquetipicos-alem-dos-12.md` §7, sorteado com pesos de
+afinidade (jamais restrição dura) em `src/gerador/vetores_psiquicos.js`. O **desencaixe
+vocação × ofício** é o motor de móbil do assassino — com **falso-positivo garantido**
+(sempre há ≥ 1 destoante inocente; anti-tell) — e a **qualidade da encenação** condiciona-se
+ao tipo de crime (reativo → erros de pânico; instrumental → limpa demais). Tudo
+compila-se em consequências (flags de diálogo, tendências de vestígio); o rótulo morre no
+log de build. Norma completa: `docs/os-camada-psiquica-do-elenco.md` (§4, §8).
+
 ### 4.2 Ordem de geração espacial: a cidade nasce primeiro
 
 **Ordem:** cidade → elenco (arquétipos × demografia) → **inserção espacial** → seleção
@@ -267,6 +278,24 @@ montagem do pacote jogável, Fase 4+); orquestrador `mundo.js` (`gerarMundo(seed
 `scripts/demo-cidade.mjs` (`npm run demo:cidade`). Guardas novas no `qa.mjs`: replay
 do mundo, mundos distintos, integridade espacial (lint de interior órfão incluso) e
 completude dos pacotes espaciais.
+
+### 4.3 Base-rates: mundo × caso (norma da OS da camada psíquica, §4.4)
+
+A estatística e o enigma vivem em camadas distintas, e nenhuma mente para a outra:
+
+- **O MUNDO segue a estatística.** O homicídio real — de 1893 e de hoje — é relacional,
+  majoritariamente doméstico/conhecido, raro, e nasce de briga, dinheiro e família
+  (`docs/kb-psique-e-crime/estatisticas-do-crime.md`;
+  `docs/kb-producao/parafilias-e-psicopatia-visao-atual.md` §6, incluído o Homicide Index
+  do ONS — mesma jurisdição do jogo). Essa verdade vive na **ambiência**: falas de
+  coroner, inquérito, jornal, o modo como a vila fala de crime. Sádicos e "psicopatas de
+  manual" ficam na cauda raríssima — se é que entram.
+- **Os CASOS JOGÁVEIS seguem o gênero.** O jogador só vê a cauda que virou enigma: a
+  distribuição de cenários/métodos dos casos gerados é decisão de game design (variedade,
+  currículo de hábitos), não amostra estatística — e não precisa pedir desculpas por isso.
+- **Invariante que atravessa as duas camadas:** **estrutura relacional sempre** — o autor
+  pertence ao círculo social da vítima; é essa estrutura que fecha o círculo de suspeitos
+  e sustenta o fair play (o culpado está sempre na mesa).
 
 ---
 
