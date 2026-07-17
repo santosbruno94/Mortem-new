@@ -62,7 +62,12 @@ A CID-11 (aprovada em 2019, vigente desde 2022) foi mais longe que o DSM:
   ou sofrer marcadamente com isso.
 - Categorias nomeadas que restaram: transtorno **exibicionista**, **voyeurista**,
   **pedofílico**, **frotteurista** e **sadismo sexual coercitivo** (nome que isola
-  explicitamente o sadismo *não consentido* do BDSM consensual).
+  explicitamente o sadismo *não consentido* do BDSM consensual) — mais duas categorias
+  residuais: **"outro transtorno parafílico envolvendo indivíduos não-consentintes"** e
+  **"outro transtorno parafílico envolvendo comportamento solitário ou indivíduos
+  consentintes"** (esta última diagnosticável apenas quando o próprio padrão causa
+  sofrimento marcado ao sujeito, ou risco direto — o critério de consentimento/dano
+  aplicado até ao resíduo).
 - No mesmo pacote, a antiga "transexualidade" saiu do capítulo de transtornos mentais
   (reconceituada como *gender incongruence*, capítulo de saúde sexual) — o fim da linha
   iniciada pela despatologização da homossexualidade (DSM, 1973; CID-10, 1990).
@@ -79,7 +84,7 @@ Números que impedem o gerador de tratar interesse atípico como marca de vilão
 | Adultos com **interesse** em ≥1 categoria parafílica | ~metade da amostra | Joyal & Carpentier 2017 (survey populacional, Québec, n = 1.040) |
 | Adultos que já **praticaram** ao menos uma vez | ~1/3 | idem |
 | Categorias acima do limiar de "estatisticamente incomum" (15,9%) | voyeurismo, fetichismo, frotteurismo, masoquismo | idem |
-| Prática de BDSM no último ano, sem disfunção associada | ~1,8% (2,2% homens; 1,3% mulheres) | Krueger et al. 2017 (grupo de trabalho CID-11) |
+| Prática de BDSM no último ano, sem disfunção associada | ~1,8% (2,2% homens; 1,3% mulheres) | Richters et al. 2008, *J Sex Med* (survey nacional, Austrália — a fonte primária), citada via Krueger et al. 2017 (grupo de trabalho CID-11) |
 | Ofensores sexuais condenados **com** transtorno parafílico | ~58% (ou seja: ~4 em 10 sem) | Dunsieth et al., cit. em First 2014 |
 | Molestadores de crianças com padrão de excitação pedofílico | < 1/3 | Seto & Lalumière, cit. em First 2014 |
 
@@ -137,6 +142,14 @@ armas não transferem para 1893, mas a estrutura relacional transfere):
   13,0% família, 9,9% estranhos; relação ignorada em 48,9%).
 - Assimetria íntima de gênero: 482 esposas e 505 namoradas mortas por parceiros, contra 85
   maridos e 187 namorados — a violência íntima letal é majoritariamente masculina.
+- **Mesma jurisdição do jogo** — Homicide Index do ONS (*Homicide in England and Wales:
+  year ending March 2023*): dos **590** homicídios registrados, **~51%** nasceram de
+  "briga, vingança ou perda de têmpera" (63% quando autor e vítima se conheciam, contra
+  41% entre estranhos); entre mulheres adultas, **35%** mortas por parceiro/ex-parceiro e
+  **10%** por familiar (70 dos 100 homicídios domésticos do ano); entre homens adultos,
+  **26%** por amigo/conhecido e só **19%** por estranho; instrumento cortante em 41% dos
+  casos. A estrutura relacional-reativa do UCR se reproduz na Inglaterra e País de Gales —
+  a ressalva geográfica do parêntese acima cai.
 - É, ponto por ponto, o quadro vitoriano da KB (maioria conhecido/doméstico; estranho raro;
   móbil econômico/doméstico) — a natureza relacional do homicídio atravessou 130 anos.
 
@@ -217,6 +230,7 @@ O gerador pensa na coluna da direita; a prosa e as bocas de 1893 só conhecem a 
 - Psicopatia — modelo e medida: [Patrick, Fowles & Krueger, "Triarchic conceptualization of psychopathy", *Development and Psychopathology* 21, 2009 (PDF)](https://patrickcnslab.psy.fsu.edu/wiki/images/2/22/PatrickFowlesKrueger_D&P_2009.pdf)
 - Prevalência de psicopatia: [Sanz-García et al., *Frontiers in Psychology* 12:661044, 2021 (meta-análise)](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2021.661044/full)
 - Psicopatia × homicídio: [Fox & DeLisi, "Psychopathic killers: a meta-analytic review", *Aggression and Violent Behavior*, 2019](https://www.sciencedirect.com/science/article/abs/pii/S1359178918301678)
-- Circunstâncias de homicídio: [FBI, Crime in the U.S. 2019 — Expanded Homicide Data](https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide)
+- Circunstâncias de homicídio: [FBI, Crime in the U.S. 2019 — Expanded Homicide Data](https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide); [ONS, Homicide in England and Wales: year ending March 2023 (Homicide Index)](https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/articles/homicideinenglandandwales/yearendingmarch2023) — mesma jurisdição do jogo
+- Prevalência de BDSM (fonte primária): [Richters et al. 2008, "Demographic and psychosocial features of participants in BDSM: data from a national survey", *Journal of Sexual Medicine* 5(7)](https://pubmed.ncbi.nlm.nih.gov/18331257/)
 - Homicídio sexual (prevalência e motivação): [estudo Austrália/NZ, n = 118, PMC](https://pmc.ncbi.nlm.nih.gov/articles/PMC9176366/) (1–5% mundial; raiva 41,5% / incidental 37,7% / sádico 20,8%; 31,4% sádicos)
 - Contra a dicotomia organizado/desorganizado: [Canter, Alison, Alison & Wentink, "The Organized/Disorganized Typology of Serial Murder", *Psychology, Public Policy, and Law* 10(3), 2004 (PDF)](https://www.leotrainer.com/serialtypology.pdf)

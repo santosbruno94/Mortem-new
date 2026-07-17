@@ -126,9 +126,15 @@ Estado do debate, com fontes de dentro e de fora do campo:
 - **Caiu: a tipologia categorial.** O MBTI, operacionalização da tipologia de Jung, falha nos
   três testes que a teoria de tipos exige: (a) escores **contínuos e unimodais**, sem a
   bimodalidade que "tipos" reais produziriam (Bess & Harvey, 2002, ~12.000 sujeitos);
-  (b) **instabilidade no reteste** — o próprio manual reporta 35% de mudança de tipo em 4
-  semanas; (c) a variância que captura é **subsumida pelo Big Five** (McCrae & Costa, 1989;
-  síntese crítica em Pittenger, 2005).
+  (b) **instabilidade no reteste** — a régua crítica canônica é Pittenger: num reteste de
+  **5 semanas**, ~50% dos sujeitos mudam de classificação em ao menos uma das quatro
+  escalas (Pittenger, 1993), e estudos independentes registram de 39% a 76% de mudança do
+  tipo completo de 4 letras (síntese em Pittenger, 2005); (c) a variância que captura é
+  **subsumida pelo Big Five** (McCrae & Costa, 1989; síntese crítica em Pittenger, 2005).
+  `[conferir]` A alegação anterior deste arquivo — "o próprio manual reporta 35% de mudança
+  de tipo em 4 semanas" — não pôde ser verificada na fonte primária e foi removida
+  (reparo da OS da camada psíquica, §4.6.1); se um dia se localizar a página do manual,
+  reintroduzir com a citação exata.
 - **O que a psicologia empírica usa hoje:**
   - **Big Five / modelos dimensionais** — cinco dimensões contínuas (abertura,
     conscienciosidade, extroversão, amabilidade, neuroticismo), o consenso descritivo do campo.
@@ -194,6 +200,6 @@ expor o rótulo.
 - Escolas pós-junguianas: Samuels, *Jung and the Post-Jungians* (1985): [Routledge](https://www.routledge.com/Jung-and-the-Post-Jungians/Samuels/p/book/9780415059046); [Archetypal psychology, Wikipedia](https://en.wikipedia.org/wiki/Archetypal_psychology)
 - Inconsciente cultural (Henderson) e o estudo de 2025: [Wang, Shen, Zhang & Wen, *Frontiers in Psychology*, PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC12745827/) — estudo único, ressalvas no §2.2
 - Crítica interna ao arquétipo biológico: [Roesler 2012, *Journal of Analytical Psychology* 57(2)](https://onlinelibrary.wiley.com/doi/10.1111/j.1468-5922.2011.01963.x); [Roesler 2019, JAP 64(5) (balanço IAAP/Basel)](https://onlinelibrary.wiley.com/doi/10.1111/1468-5922.12540) — há réplicas (Goodwyn 2013, 2019, JAP), que confirmam a proeminência do debate
-- Crítica psicométrica ao MBTI/tipologia: [Pittenger 2005, *Consulting Psychology Journal*](https://www.researchgate.net/publication/232494957_Cautionary_comments_regarding_the_Myers-Briggs_Type_Indicator); Bess & Harvey 2002, *Journal of Personality Assessment* 78(1); McCrae & Costa 1989, *Journal of Personality* 57
+- Crítica psicométrica ao MBTI/tipologia: [Pittenger 1993, "Measuring the MBTI… and Coming Up Short", *Journal of Career Planning and Employment* 54(1)](https://www.researchgate.net/publication/237675975_Measuring_the_MBTI_and_coming_up_short) (reteste de 5 semanas: 50% reclassificados em ≥1 escala); [Pittenger 2005, *Consulting Psychology Journal*](https://www.researchgate.net/publication/232494957_Cautionary_comments_regarding_the_Myers-Briggs_Type_Indicator) (39–76% de mudança do tipo de 4 letras); Bess & Harvey 2002, *Journal of Personality Assessment* 78(1); McCrae & Costa 1989, *Journal of Personality* 57
 - Identidade narrativa: [McAdams & Pals 2006, *American Psychologist* 61(3)](https://pubmed.ncbi.nlm.nih.gov/16594837/); McAdams & McLean 2013, *Current Directions in Psychological Science* 22
 - Dark Triad/Tetrad: [Bonfá-Araujo et al. 2022, *Personality and Individual Differences* (meta-análise, 103 estudos)](https://www.sciencedirect.com/science/article/abs/pii/S0191886922002720); [Gómez-Leal et al. 2024, *Scientific Reports*](https://www.nature.com/articles/s41598-024-55074-w); Muris et al. 2017, *Perspectives on Psychological Science*
