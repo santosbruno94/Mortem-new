@@ -25,7 +25,35 @@
   (1890), County Asylums/Lunacy Acts (1845), Criminal Law Amendment Act (1885), e as leis do
   suicídio (Burial of Suicide Act 1823, Forfeiture Act 1870, Interments Act 1882).
 
-## O que NÃO existe em outubro de 1893 (proibido a personagens)
+## Tolerância de horizonte (decisão do usuário, jul/2026)
+
+O horizonte de 1893 **serve à imersão; não é um fim em si**, e não se impõe um limite
+artificial só por purismo — uma descoberta feita cinco ou dez anos depois da data pode
+melhorar o jogo sem custo aferível de imersão, e excluí-la por dogma empobreceria o mundo
+sem ganho. A regra opera, portanto, em **dois níveis**:
+
+- **Nível 1 — a solução jogável (inviolável, e isto NÃO é realismo por realismo).** O que o
+  jogador **usa para resolver** o caso tem de existir no mundo de 1893. A razão é *fair
+  play*, não pureza histórica: o jogador deduz com as ferramentas do perito da época. É por
+  isso — e só por isso — que digital-como-banco-de-dados, tipo sanguíneo e raio-X ficam de
+  fora (mudariam o quebra-cabeça), como já protege a
+  [`../kb-medicina-legal/fontes.md`](../kb-medicina-legal/fontes.md). Isto o `qa.mjs` e a
+  âncora durável já garantem.
+- **Nível 2 — a cor do mundo (flexível, com janela de tolerância ~até c. 1900–1903).**
+  Vocabulário, molduras teóricas, conceitos e ambiência que surgiram pouco depois podem
+  **entrar** quando melhoram o jogo e o jogador não sente a diferença. Ninguém percebe que um
+  termo é de 1898 e não de 1893; percebe, sim, um mundo empobrecido por exclusões
+  dogmáticas. Sob esta regra, os marcadores **[POSTERIOR]** deixam de significar "proibido" e
+  passam a significar **"eis a data real — admita com consciência, se ajudar"**.
+- **O que continua fora, seja qual for a janela:** o anacronismo grosseiro e imersão-quebrante
+  (rede elétrica na vila, psicologia forense do século XX/FBI, DNA) e qualquer coisa que vire
+  **ferramenta de solução** (recai no Nível 1). O andaime de build time (arquétipos) é caso à
+  parte: nunca é diegético, então a data de Jung não pesa aqui.
+
+A tabela abaixo, portanto, não é lista de proibições — é o **mapa de datas reais** para essa
+decisão informada, caso a caso, do usuário.
+
+## As datas reais (o que era e o que ainda não era, em outubro de 1893)
 
 | Conceito / obra | Data | Estado em 1893 |
 |---|---|---|
@@ -43,8 +71,10 @@
 
 ## Regra de uso
 
-1. **O conteúdo descreve 1893; a fonte pode ser de 2024.** O que não pode é o mundo descrito
-   conter conceito posterior a 1893 — ver a tabela acima e os anacronismos de
+1. **O conteúdo descreve 1893; a fonte pode ser de 2024.** O horizonte tem **tolerância** (ver
+   acima): o Nível 1 (solução jogável) é firme por *fair play*; o Nível 2 (cor do mundo)
+   admite o quase-contemporâneo quando melhora o jogo. O que nunca entra é o anacronismo
+   grosseiro — ver os anacronismos de
    [`../kb-medicina-legal/vocabulario-de-epoca.md`](../kb-medicina-legal/vocabulario-de-epoca.md).
 2. **Camada narrativa, sempre.** Nada desta pasta entra em `tagsOcultas` nem é lido pelo
    motor. Diagnósticos, escolas criminológicas, escândalos e segredos alimentam prosa,

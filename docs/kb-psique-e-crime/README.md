@@ -21,9 +21,13 @@ referência para desenhar suspeitos, mentiras e escândalos com precisão histó
 
 ## Regra de uso
 
-- **Horizonte de 1893, vigiado em dobro.** Aqui mora justamente o material que veio *depois*
-  (psicanálise, arquétipos, perfilamento) — a tabela de proibições em
-  [`fontes.md`](./fontes.md) é lei. Nada posterior entra na boca de um personagem.
+- **Horizonte de 1893 com tolerância.** Aqui mora justamente o material que veio *depois*
+  (psicanálise, arquétipos, perfilamento), então [`fontes.md`](./fontes.md) mapeia as datas
+  reais. Mas o horizonte serve à imersão, não a um purismo que empobreça o jogo: a regra é em
+  **dois níveis** — o que o jogador **usa para resolver** o caso tem de ser de 1893 (*fair
+  play*, não realismo); a **cor do mundo** (vocabulário, molduras, ambiência) admite o
+  quase-contemporâneo (janela ~até c. 1900–1903) quando melhora o jogo sem custo aferível de
+  imersão. Os marcadores **[POSTERIOR]** dão a data real para essa decisão, não uma proibição.
 - **Camada narrativa, sempre.** Nada desta pasta entra em `tagsOcultas` nem é lido pelo
   motor. Diagnósticos, escolas, segredos e escândalos alimentam prosa, móbil, mentira e
   aparências; a lógica continua nas tags. A leitura psíquica de um personagem é falível de
