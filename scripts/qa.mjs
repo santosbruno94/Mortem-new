@@ -2535,6 +2535,144 @@ const replayArvoreOk =
   JSON.stringify(regenReplica.dialogos);
 if (!replayArvoreOk) console.log('\nÁRVORE DE DIÁLOGO — replay chamada a chamada DIVERGIU.');
 
+// ============================================================
+// GUARDAS DA OS DA CAMADA PSÍQUICA (docs/os-camada-psiquica-do-elenco.md
+// §5): a segunda coluna do elenco (vetores psíquicos, desencaixe,
+// consequências) é ilha de build time — a guarda de ilha da FASE 1 já
+// cobre src/gerador/vetores_psiquicos.js (runtime jamais o importa).
+// Provas próprias:
+// (1) catálogo v1 íntegro: 11 vetores com o vetor completo (§8.1),
+//     afinidades TOTAIS (14 demográficos em degrau válido; 6 papéis),
+//     degrau raro alcançável em todo arquétipo (a reamostragem do réu
+//     sempre termina), matriz de encenação com proveniência por item;
+// (2) lint léxico L1: nosologia/jargão pós-1893 banidos de QUALQUER
+//     superfície do jogo (código vivo de data/logic/store/components);
+//     exceção: "Psychopathia Sexualis" como título de obra;
+// (3) lint léxico L2: sombra/persona/vetor/desencaixe/complexo banidos
+//     de IDENTIFICADORES e CHAVES do runtime (livres como palavra comum
+//     na prosa — a checagem olha declarações e posições de chave, por
+//     segmento de identificador, para não acusar "personagem");
+// (4) não-vazamento: nos pacotes embarcados, L1 em campo NENHUM; L2 e
+//     "psique" em chave/id nenhum (o rótulo morre no log de build);
+// (5) determinismo: mesma seed → mesma psique (vetores, polaridades,
+//     magnitudes, flags), byte a byte;
+// (6) anti-tell (§4.3): num lote de 50 seeds, 100% dos casos têm réu com
+//     desencaixe ≥ T E ≥1 não-assassino com desencaixe ≥ T.
+// ============================================================
+const {
+  VETORES_PSIQUICOS,
+  DEMOGRAFICOS,
+  PAPEIS_DRAMATICOS,
+  MAGNITUDE_POR_DEGRAU,
+  LIMIAR_DESENCAIXE,
+  MATRIZ_ENCENACAO,
+} = await import('../src/gerador/vetores_psiquicos.js');
+
+// (1) Catálogo v1 íntegro.
+const degrausValidos = new Set(Object.keys(MAGNITUDE_POR_DEGRAU));
+const vetoresLista = Object.values(VETORES_PSIQUICOS);
+const psiqueCatalogoIntegro =
+  vetoresLista.length === 11 &&
+  vetoresLista.every(
+    (v) =>
+      ['id', 'valor', 'medo', 'sombraAtiva', 'sombraPassiva', 'autoJustificacao', 'temaGatilho'].every(
+        (campo) => typeof v[campo] === 'string' && v[campo].length > 0
+      ) &&
+      DEMOGRAFICOS.every((d) => degrausValidos.has(v.afinidadeDemografica[d])) &&
+      Object.keys(v.afinidadeDemografica).length === DEMOGRAFICOS.length &&
+      PAPEIS_DRAMATICOS.every((p) => Number.isInteger(v.afinidadePapeis[p]) && v.afinidadePapeis[p] >= 0) &&
+      PAPEIS_DRAMATICOS.every((p) => PAPEIS[p] != null) &&
+      typeof v.proveniencia === 'string' &&
+      v.proveniencia.includes('sistemas-arquetipicos-alem-dos-12')
+  ) &&
+  DEMOGRAFICOS.every((d) => ARQUETIPOS[d] != null) &&
+  DEMOGRAFICOS.every((d) =>
+    vetoresLista.some((v) => MAGNITUDE_POR_DEGRAU[v.afinidadeDemografica[d]] >= LIMIAR_DESENCAIXE)
+  ) &&
+  Object.values(MATRIZ_ENCENACAO).every((m) =>
+    m.pool.every((item) => typeof item.proveniencia === 'string' && item.proveniencia.includes('kb-medicina-legal'))
+  );
+if (!psiqueCatalogoIntegro) console.log('\nPSIQUE — catálogo v1 com falha de integridade.');
+
+// (2) Lint L1 — banida em qualquer superfície do jogo (código vivo).
+const L1_REGEX =
+  /\bparafil\w*|\bpsicopat\w*|\bPCL\b|big\s*five|tri[aá]rquic\w*|McAdams|arqu[eé]tip\w*|\bPearson\b/iu;
+const lintL1Violacoes = arquivosRuntime.filter((f) => {
+  const codigoVivo = semComentarios(readFileSync(f, 'utf8')).replace(/Psychopathia Sexualis/g, '');
+  return L1_REGEX.test(codigoVivo);
+});
+const lintL1Ok = lintL1Violacoes.length === 0;
+if (!lintL1Ok) console.log('\nPSIQUE — L1 (nosologia pós-1893) em superfície do jogo:', lintL1Violacoes.join(', '));
+
+// (3) Lint L2 — banida em identificadores e chaves do runtime. A checagem
+// divide o identificador em segmentos (snake e camel) e acusa só o
+// segmento EXATO — "personagem" passa, "vetorPsiquico"/"tema_sombra" não.
+const L2_TOKENS = new Set(['sombra', 'sombras', 'persona', 'personas', 'vetor', 'vetores', 'desencaixe', 'desencaixes', 'complexo', 'complexos']);
+const temSegmentoL2 = (identificador) =>
+  identificador
+    .split(/[^A-Za-z]+|(?=[A-Z])/)
+    .filter(Boolean)
+    .some((seg) => L2_TOKENS.has(seg.toLowerCase()));
+const lintL2Violacoes = [];
+for (const f of arquivosRuntime) {
+  const codigoVivo = semComentarios(readFileSync(f, 'utf8'));
+  const candidatos = [
+    ...[...codigoVivo.matchAll(/\b(?:const|let|var|function|class)\s+([A-Za-z_$][\w$]*)/g)].map((m) => m[1]),
+    ...[...codigoVivo.matchAll(/(?:^|[,{(]\s*)['"]?([A-Za-z_$][\w$]*)['"]?\s*:/gm)].map((m) => m[1]),
+  ];
+  for (const nome of candidatos) {
+    if (temSegmentoL2(nome)) lintL2Violacoes.push(`${path.relative(raizSrc, f)}: ${nome}`);
+  }
+}
+const lintL2Ok = lintL2Violacoes.length === 0;
+if (!lintL2Ok) console.log('\nPSIQUE — L2 em identificador/chave do runtime:', lintL2Violacoes.slice(0, 10).join('; '));
+
+// (4) Não-vazamento nos pacotes embarcados (a réplica + o pool inteiro).
+const pacotesEmbarcados = [CASO_REPLICA, ...CASOS_POOL];
+const chavesEIdsDoPacote = (valor, colhidas = []) => {
+  if (Array.isArray(valor)) {
+    valor.forEach((v) => chavesEIdsDoPacote(v, colhidas));
+  } else if (valor && typeof valor === 'object') {
+    for (const [chave, filho] of Object.entries(valor)) {
+      colhidas.push(chave);
+      if (chave === 'id' && typeof filho === 'string') colhidas.push(filho);
+      chavesEIdsDoPacote(filho, colhidas);
+    }
+  }
+  return colhidas;
+};
+const psiqueNaoVaza = pacotesEmbarcados.every((p) => {
+  const texto = JSON.stringify(p).replace(/Psychopathia Sexualis/g, '');
+  if (L1_REGEX.test(texto)) return false;
+  return chavesEIdsDoPacote(p).every((nome) => !temSegmentoL2(nome) && !/(^|[_\W])psique([_\W]|$)/i.test(nome));
+});
+if (!psiqueNaoVaza) console.log('\nPSIQUE — vazamento de rótulo/L1/L2 em pacote embarcado.');
+
+// (5) Determinismo da psique.
+const psiqueDeterminista = ['comarca_1', 'comarca_7'].every(
+  (seed) => JSON.stringify(gerarCasoBruto(seed).psique) === JSON.stringify(gerarCasoBruto(seed).psique)
+);
+if (!psiqueDeterminista) console.log('\nPSIQUE — replay divergiu (mesma seed, psique diferente).');
+
+// (6) Anti-tell em 50 seeds: o desencaixe nunca é prova.
+const SEEDS_ANTI_TELL = Array.from({ length: 50 }, (_, i) => `comarca_${i + 1}`);
+const antiTellFalhas = [];
+for (const seed of SEEDS_ANTI_TELL) {
+  const bruto = gerarCasoBruto(seed);
+  const { log } = bruto.psique;
+  const reu = log.porPessoa[bruto.escolha.assassinoId];
+  const inocentesDestoantes = Object.entries(log.porPessoa).filter(
+    ([id, p]) =>
+      id !== bruto.escolha.assassinoId && id !== bruto.escolha.vitimaId && p.magnitude >= LIMIAR_DESENCAIXE
+  );
+  const destoanteRegistrado = log.falsoDestoanteId && inocentesDestoantes.some(([id]) => id === log.falsoDestoanteId);
+  if (reu.magnitude < LIMIAR_DESENCAIXE || inocentesDestoantes.length < 1 || !destoanteRegistrado) {
+    antiTellFalhas.push(seed);
+  }
+}
+const antiTellOk = antiTellFalhas.length === 0;
+if (!antiTellOk) console.log('\nPSIQUE — anti-tell falhou nas seeds:', antiTellFalhas.join(', '));
+
 // Devolve o módulo de dados ao caso-escola: as checagens e o linter
 // abaixo leem o pacote do tutorial, como sempre.
 carregarCaso(pacote);
@@ -2628,6 +2766,12 @@ const checagens = [
   ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],
   ['Armadilhas da árvore detectadas: beat de 3 tons, confronto sem reação, nó órfão, requerCarta fantasma (OS diálogo)', armadilhasDialogoDetectadas],
   ['Replay da árvore: mesma seed → mesma árvore, chamada a chamada (OS diálogo)', replayArvoreOk],
+  ['Psique: catálogo v1 íntegro — 11 vetores completos, afinidades totais, degrau raro alcançável, matriz de encenação com proveniência (OS psíquica)', psiqueCatalogoIntegro],
+  ['Lint léxico L1: nosologia/jargão pós-1893 fora de toda superfície do jogo (OS psíquica §5)', lintL1Ok],
+  ['Lint léxico L2: sombra/persona/vetor/desencaixe/complexo fora de identificadores e chaves do runtime (OS psíquica §5)', lintL2Ok],
+  ['Psique não vaza: pacotes embarcados sem L1 em campo algum, sem L2/psique em chave ou id (OS psíquica §5)', psiqueNaoVaza],
+  ['Psique determinista: mesma seed → mesmos vetores, polaridades, magnitudes e flags (OS psíquica §5)', psiqueDeterminista],
+  ['Anti-tell: em 50 seeds, todo caso tem réu com desencaixe ≥ T e ≥1 inocente destoante (OS psíquica §4.3)', antiTellOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
