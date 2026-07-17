@@ -14,7 +14,8 @@ PT-BR. Este arquivo orienta agentes de código; a fonte única de verdade do des
 | `docs/guia-de-estilo.md` | TODA a prosa: norma de língua, observação pura, dosagem de brilho |
 | `docs/biblia-de-vozes.md` | Idioleto de cada personagem |
 | `docs/kb-medicina-legal/` | Verdade forense de época (Taylor, Casper, Lacassagne) + aparato legal-policial de 1893 |
-| `docs/kb-mundo-vitoriano/` | Verdade histórica do cenário: arquitetura, sociedade, cotidiano, vestuário (1893) |
+| `docs/kb-mundo-vitoriano/` | Verdade histórica do cenário: arquitetura, sociedade, cotidiano, vestuário, economia e estrutura social (1893) |
+| `docs/kb-psique-e-crime/` | Verdade de época sobre mente, desvio e crime: psiquiatria/alienismo, criminologia, insanidade e lei, sexologia/perversões, estatísticas do crime (1893) |
 | `docs/kb-craft-narrativo/` | Craft do mistério: fair play, clichês, construção de caso, prosa de mistério, jogos de referência |
 | `docs/kb-producao/` | Consulta de planejamento: game design de dedução, UI/estética, assets e licenças, produção solo — não rege prosa |
 

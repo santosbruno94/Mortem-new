@@ -20,6 +20,7 @@ ordem expressa).
 | [`assets-e-como-obter.md`](./assets-e-como-obter.md) | O que cabe na regra procedural (3D, som, tipografia, imagem DP) e o cardápio fora dela — marketplaces, licenças explicadas, comissionamento — tudo marcado **[DECISÃO DO USUÁRIO]**. |
 | [`solo-dev-com-agentes.md`](./solo-dev-com-agentes.md) | Por que solo devs não terminam, o que os postmortems ensinam sobre cortar, spec-driven development com agentes, playtest, lançamento e o gargalo de conteúdo. |
 | [`contrato-papeis-e-gerador.md`](./contrato-papeis-e-gerador.md) | Taxonomia de papéis dramáticos (casting), o casting do caso-escola e o contrato que o futuro gerador de casos terá de satisfazer (FASE 5 — sem código de gerador). |
+| [`arquetipos-e-casting.md`](./arquetipos-e-casting.md) | Arquétipos junguianos como ferramenta de build time (andaime meta, não-diegético): sombra→móbil, persona→verdade, mapeamento aos papéis de `papeis.js` e pipeline determinístico. |
 | [`fontes.md`](./fontes.md) | Regra epistemológica da pasta e notas de confiança. |
 
 ## Regra de uso

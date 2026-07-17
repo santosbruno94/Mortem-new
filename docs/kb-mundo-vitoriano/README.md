@@ -12,6 +12,7 @@ motivações, rotinas, álibis) e à prosa de ambientação. Complementa — nã
 |---|---|
 | [`arquitetura-e-espacos.md`](./arquitetura-e-espacos.md) | Tipologia de edifícios, materiais, interiores por classe, luz e escuridão de outubro, plantas e circulação, fechaduras/janelas/quintais. |
 | [`demografia-e-sociedade.md`](./demografia-e-sociedade.md) | Pirâmide social da vila, formas de tratamento, demografia, ocupações do censo de 1891, salários e preços, reputação, nomes plausíveis. |
+| [`economia-e-estrutura-social.md`](./economia-e-estrutura-social.md) | O quadro macro: a Long Depression e a depressão agrícola, a classe como sistema de status, desigualdade nacional, a mulher diante da lei (Married Women's Property Acts), a vila como panóptico. |
 | [`vida-cotidiana.md`](./vida-cotidiana.md) | O relógio do dia por classe, refeições e seus nomes, higiene, trabalho de outubro, correio/telégrafo, hábitos, âncoras temporais públicas. |
 | [`vestuario.md`](./vestuario.md) | Traje por classe e ofício, o luto em três fases, fibras à lente, o que a roupa denuncia, roupa e crime. |
 | [`fontes.md`](./fontes.md) | Regra epistemológica da pasta e notas de confiança dos dados. |
