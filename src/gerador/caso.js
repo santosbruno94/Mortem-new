@@ -80,6 +80,9 @@ function comodoDoCrime(interior, faixa) {
 //     vitimaArquetipo? : id de arquétipo preferido para a vítima,
 //     assassinoArquetipo?: id de arquétipo preferido para o assassino,
 //     assassinoMotivo? : móbil preferido do assassino (motivoPotencial),
+//     fugaVitima?      : 'suprimida' | 'livre' (default 'livre') — a réplica
+//                        usa 'suprimida' para o registro ficar idêntico em
+//                        fatos ao roteiro canônico (OS confronto estendido §4.8),
 //   }
 export function gerarCasoBruto(seed, opts = {}) {
   const n = opts.n ?? 8;
@@ -164,13 +167,8 @@ export function gerarCasoBruto(seed, opts = {}) {
   const localId = vitima.pacoteEspacial.rotina[faixa];
   const hora = horaDaFaixa(faixa, `${sal}|hora`);
 
-  // 5. Método: elegíveis por cenário × INT do assassino (a elaboração é
-  // INT; a higiene, WIS — §3.1/§3.2).
-  const elegiveis = metodosElegiveis(cenario, assassino.atributos.INT);
-  const metodoId =
-    dirigido?.metodoId && elegiveis.includes(dirigido.metodoId)
-      ? dirigido.metodoId
-      : elegiveis[hashString(`${sal}|metodo`) % elegiveis.length];
+  // (A seleção do MÉTODO desceu para depois do interior: o afogamento só é
+  // elegível quando a cena tem água alcançável — âncora lida do interior — D2.)
 
   // 5.1 Ouvintes potenciais do ruído (rotina × adjacência, §4.2.5): quem
   // partilha o teto na faixa ouve o abafado; o vizinho, só o audível.
@@ -209,7 +207,47 @@ export function gerarCasoBruto(seed, opts = {}) {
   const interior = mundo.interiores[localId];
   const comodoId = comodoDoCrime(interior, faixa);
 
-  // 8. O crime é cometido (autobattler sobre o grid da cena).
+  // 6.5 Âncoras espaciais da cena (OS confronto estendido §4.3/§4.5, D2):
+  // 'agua' existe quando o interior tem um cocho/tanque alcançável (só a
+  // forja, e só quando a mobília o sorteou). Sem âncora, afogamento fica fora.
+  const ancorasDisponiveis = new Set();
+  if (interior.mobilia.some((m) => m.item === 'cocho_dagua')) ancorasDisponiveis.add('agua');
+
+  // 6.6 OS da camada psíquica — a segunda coluna do elenco (sorteio ortogonal
+  // do catálogo v1, desencaixe do réu com falso-destoante garantido). Movida
+  // para ANTES do crime porque o portão psíquico da vítima (§4.4) pesa
+  // resistir × fugir × gritar no resolvedor. Rótulos só em psique.log (build).
+  const coabitantesVitimaIds = elenco
+    .filter(
+      (p) =>
+        p.id !== vitima.id &&
+        p.id !== assassino.id &&
+        ['dia', 'noite', 'madrugada'].some(
+          (fx) => p.pacoteEspacial.rotina[fx] === vitima.pacoteEspacial.rotina[fx]
+        )
+    )
+    .map((p) => p.id);
+  const psique = derivarPsiqueDoCaso({
+    seed,
+    elenco: mundo.elenco,
+    assassinoId: assassino.id,
+    vitimaId: vitima.id,
+    cenario,
+    coabitantesVitimaIds,
+  });
+
+  // 7. Método: elegíveis por cenário × INT do assassino × âncora da cena
+  // (a elaboração é INT; a higiene, WIS — §3.1/§3.2; a âncora é D2).
+  const elegiveis = metodosElegiveis(cenario, assassino.atributos.INT, ancorasDisponiveis);
+  const metodoId =
+    dirigido?.metodoId && elegiveis.includes(dirigido.metodoId)
+      ? dirigido.metodoId
+      : elegiveis[hashString(`${sal}|metodo`) % elegiveis.length];
+
+  // 8. O crime é cometido (autobattler sobre o grid da cena), agora com o
+  // portão psíquico da vítima e a fuga dirigida. `fugaVitima: 'suprimida'`
+  // (réplica, §4.8) cala a fuga para o registro permanecer idêntico em fatos.
+  const fugaSuprimida = dirigido?.fugaVitima === 'suprimida';
   const crime = resolverCrime({
     assassino: mundo.elenco.find((p) => p.id === assassino.id),
     vitima: mundo.elenco.find((p) => p.id === vitima.id),
@@ -221,6 +259,8 @@ export function gerarCasoBruto(seed, opts = {}) {
     faixa,
     ouvintes,
     seed,
+    portaoPsiquico: psique.portaoVitima,
+    fugaSuprimida,
   });
 
   // 9. Ponte: a fatia forense que o pacote de caso consumirá — com a
@@ -248,29 +288,6 @@ export function gerarCasoBruto(seed, opts = {}) {
   // viram eventos contingentes completos (rolagem R1, redundância R2,
   // rota e gatilho R3, prenúncio R4), ou descartes com motivo.
   const interferencia = gerarInterferencias({ seed, mundo, crime, fatiaForense, escolha, esqueleto });
-
-  // 11. OS da camada psíquica — a segunda coluna do elenco: sorteio
-  // ortogonal do catálogo v1, desencaixe do réu (T=2) com falso-destoante
-  // garantido (prioridade: coabitantes da vítima) e compilação de
-  // consequências. Rótulos só em psique.log (build); o pacote nunca os lê.
-  const coabitantesVitimaIds = elenco
-    .filter(
-      (p) =>
-        p.id !== vitima.id &&
-        p.id !== assassino.id &&
-        ['dia', 'noite', 'madrugada'].some(
-          (fx) => p.pacoteEspacial.rotina[fx] === vitima.pacoteEspacial.rotina[fx]
-        )
-    )
-    .map((p) => p.id);
-  const psique = derivarPsiqueDoCaso({
-    seed,
-    elenco: mundo.elenco,
-    assassinoId: assassino.id,
-    vitimaId: vitima.id,
-    cenario,
-    coabitantesVitimaIds,
-  });
 
   return {
     seed: salDaSeed(seed),
