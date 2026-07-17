@@ -28,6 +28,18 @@ usa: a **reconstituição da cena**, a leitura da **encenação** e da incongru�
 cena e corpo, e o cuidado com vestígios e a posição do cadáver. É o espírito da
 mecânica de "desconfie da cena arrumada".
 
+**Hans Gross — *Handbuch für Untersuchungsrichter* (Manual do juiz de instrução)**
+Gross (1847–1915), magistrado austríaco, publicou em **1893** — o próprio ano do jogo —
+o manual que fundou a criminalística como disciplina. (O título da 1ª edição de 1893 é
+*Handbuch für Untersuchungsrichter, Polizeibeamte, Gendarmen etc.*; o subtítulo célebre
+*als System der Kriminalistik* só entra na 4ª edição, 1904 — usamos aqui a forma curta e
+fiel ao cerne da obra.) Sistematizou o exame metódico da
+cena e do suspeito: procurar no **agressor** o que a luta lhe deixou (arranhões, roupa
+rasgada, sangue alheio), preservar e comparar vestígios, interrogar com método. É a
+âncora de época para o **exame do agressor** e para a busca de vestígios de transferência
+na pessoa, não só no lugar. Rigorosamente contemporâneo: um perito atento de 1893 podia
+conhecê-lo.
+
 ## Marcos técnicos e suas datas (o que existe e o que não em 1893)
 
 | Técnica | Data | Disponível em 1893? |
@@ -41,6 +53,24 @@ mecânica de "desconfie da cena arrumada".
 | Raios-X (Röntgen) | 1895 | **Não** |
 | Princípio de troca (Locard) | ~1910 | **Não formalizado** — mas comparar fibras à lente já era prática |
 | Precipitina (sangue humano, Uhlenhuth) | 1901 | **Não** |
+| Criminalística sistemática (Gross, *Handbuch*) | 1893 | **Sim** — contemporâneo; exame do agressor e do vestígio |
+| Leitura formal de padrões de mancha de sangue (Piotrowski) | 1895 | **Não** — a trilha lê-se só por senso comum em 1893 |
+
+## Bastidores modernos (fora do horizonte de 1893 — só para o gerador)
+
+A dinâmica do confronto (capacidade de ação pós-lesão, sítio das lesões, coerência das
+trilhas) apoia-se, **nos bastidores do gerador**, em literatura forense moderna que dá
+método ao que Taylor já observava caso a caso. Estas obras **não** são conhecimento do
+perito de 1893 e jamais afloram na prosa ou na `vozMestre`; servem apenas para o gerador
+depor cenas fisicamente consistentes:
+
+- **B. Karger** — estudos sobre a **capacidade de ação** após ferimentos cardíacos,
+  vasculares e cranianos (sobrevida e ato voluntário mensurados).
+- **V. J. DiMaio — *Gunshot Wounds***; **Spitz & Fisher — *Medicolegal Investigation of
+  Death*** — referência de topografia de lesões, sobrevida e reconstituição.
+
+Regra da casa: o que entra na KB como **fala de época** cita Taylor/Casper/Lacassagne/Gross;
+o que vem destes bastidores fica marcado como bastidor e nunca é atribuído ao perito.
 
 ## Como usar esta âncora
 

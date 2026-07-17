@@ -120,6 +120,13 @@ sinal já a deixa aberta. Sinais degradados não a estreitam; também não a cor
   tutorial.
 - **Dessecação:** córneas turvas, manchas escleróticas (de Sommer/Larcher) — sinais
   finos, de valor auxiliar.
+- **Intervalo de sobrevida (a hora do golpe × a hora da morte).** Nem toda ferida mortal
+  mata no instante em que é recebida: a vítima com lesão cardíaca ou de grande vaso ainda
+  age por segundos a minutos; a exsanguinação mata aos poucos (ver `traumas.md`, "capacidade
+  de ação depois da lesão"). Os sinais desta seção datam a **morte**, não o **golpe** — e o
+  intervalo entre um e outro é campo aberto para o álibi e para o relógio mole (a lacuna 7
+  de `lacunas.md`). No confronto que se desloca, o corpo cai onde a sobrevida se esgota,
+  não onde o golpe começou.
 
 ---
 

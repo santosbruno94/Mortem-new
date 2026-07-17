@@ -127,6 +127,75 @@ Asfixia por submersão em meio líquido.
 
 ---
 
+## Dossiês de método — sufocação e afogamento no confronto
+
+Os capítulos acima davam a **assinatura** de cada espécie (o que a crava ao exame). Os
+dossiês abaixo dão o que o **gerador do crime** consome: como cada método se comporta no
+confronto — o que sangra, o que prende a vítima, o que ela ainda pode fazer, o que fica no
+agressor, o ruído, as exigências e como o método se deixa (ou não) encenar como acidente.
+
+### Sufocação — a arma de ocasião doméstica
+
+- **Lesões e sinais ao exame:** escoriações periorais, fibras do pano nos lábios e gengivas,
+  petéquias da família; **é a asfixia mais pobre em sinais** (Taylor: a sufocação de crianças
+  e enfermos pode não deixar marca). Sem sulco cervical.
+- **Sangramento externo:** **nenhum** (`sangra: false`). Não governa trilha de sangue; o
+  rastro da fuga, se houver, é mobiliário e posicional, não hemático.
+- **Lesões de defesa associadas:** as da vítima que ainda tem os braços livres — arranhar as
+  mãos do agressor, agarrar o pano. Defesa passiva escassa (o rosto está coberto, não o
+  tronco).
+- **Capacidade de ação residual:** enquanto a boca e o nariz estão **ocluídos**, a vítima
+  **não grita nem foge** — o pano abafa e prende (é o `seguraAVitima`); mas a oclusão é menos
+  firme que o laço, e há mais brecha de reação entre as investidas (mobilidade residual
+  intermediária). A ação existe **nas frestas** em que o agressor reajusta a pega.
+- **Vestígios no agressor:** escoriações ungueais no dorso das mãos e nos punhos, fibras do
+  travesseiro sob as unhas de quem apertou, saliva/sangue da vítima no pano.
+- **Ruído:** **baixo.** O método silencioso por excelência — a mão e o travesseiro calam a
+  voz; o que soa é a luta do corpo, não o grito.
+- **Exigências:** **nenhuma especial.** Arma de ocasião (travesseiro, almofada, a própria
+  mão), sem preparo nem força desmedida; um doente na cama, um bêbado, um adormecido a tornam
+  trivial. Não exige premeditação.
+- **Encenabilidade:** alta como **morte natural** ou **acidente de leito** — justamente por
+  ser pobre em sinais. A traem: as escoriações periorais, as fibras nos lábios, as petéquias
+  incompatíveis com morte tranquila, e a incongruência de um enfermo "que apagou dormindo"
+  com marcas de contenção nas mãos.
+- **Vocabulário de época:** *sufocação*, *abafamento*, *oclusão das vias*. O leigo diz
+  "abafaram-no"; o laudo, "oclusão de boca e narinas".
+
+### Afogamento — a água como cúmplice
+
+(Expansão da assinatura acima; fecha a lacuna 1 de `lacunas.md`.)
+
+- **Lesões e sinais ao exame:** o **cogumelo de espuma** fina e persistente na boca e narinas
+  (refaz-se se enxugado), pulmões distendidos e encharcados (o enfisema aquoso de Casper),
+  água e por vezes limo nas vias e no estômago. A **maceração da pele** — as "mãos de
+  lavadeira", brancas e enrugadas nas palmas e plantas — funciona como **relógio de imersão**
+  (quanto mais longa a submersão, mais avançada), sinal conhecido da época.
+- **Submersão em vida × corpo lançado:** a espuma e a distensão pulmonar provam que a vítima
+  **respirava ao submergir**. O corpo lançado à água **já morto** não as forma. Reserva
+  honesta de 1893: não há prova química ou microscópica segura da submersão em vida (as
+  diatomáceas são do século XX); a putrefação apaga os sinais e impõe cautela.
+- **Sangramento externo:** **nenhum**, salvo lesão associada (a pancada que atordoa antes de
+  submergir — e essa **sangra**, e pode deixar trilha até a borda d'água).
+- **Lesões de defesa e capacidade de ação residual:** se a vítima é **empurrada consciente**,
+  debate-se — arranha, agarra a borda, projeta água; a ação cessa com a exaustão e a
+  aspiração. Se **atordoada antes** (o golpe na nuca, sítio posterior), a submersão a encontra
+  já incapaz.
+- **Vestígios no agressor:** roupas molhadas fora de hora, arranhões das mãos da vítima,
+  lama/limo da margem nas botas e nas mãos — a poeira de lugar da `vestigios.md` em versão
+  aquática.
+- **Ruído:** o do debate na água (respingo, grito antes da submersão) — **médio**, mas ao ar
+  livre dispersa-se mais que num quarto.
+- **Exigências:** uma **massa d'água alcançável** — poço, tanque, cocho, açude, o rio. É a
+  exigência que o mundo do jogo nem sempre satisfaz (ver a decisão D2 da OS): sem água na cena
+  da rotina da vítima, o método não se encena.
+- **Encenabilidade:** alta como **acidente** (caiu no poço, escorregou na margem) ou
+  **suicídio**. A traem: a lesão de atordoamento sem explicação de queda, os vestígios de
+  arraste até a borda, a discrepância entre o sítio da lesão e uma queda acidental, e a roupa
+  do suposto suicida que não bate com a intenção.
+- **Vocabulário de época:** *afogamento*, *submersão*, *asfixia por submersão*; *mãos de
+  lavadeira* para a maceração.
+
 ## Implicações para o jogo
 
 O motor (`src/data/catalogo_causas.js`) traduz este capítulo em sinais. O sinal de

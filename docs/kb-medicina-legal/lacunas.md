@@ -79,6 +79,25 @@ procedural de casos provavelmente pedirá.
     **Por quê:** listar para **excluir conscientemente** — evita que um caso futuro invente
     anacronismo elétrico.
 
+## Cobertura acrescentada pela OS do confronto estendido (jul/2026)
+
+A OS `docs/os-confronto-estendido.md` (Fases 1–2) fechou ou reduziu parte deste mapa:
+
+- **Lacuna 1 (afogamento — capítulo próprio):** fechada. `asfixias.md` ganhou dossiê de
+  método (submersão em vida × corpo lançado, mãos de lavadeira como relógio de imersão,
+  espuma, distensão pulmonar).
+- **Lacuna 5 (queda × golpe / contragolpe):** coberta pela via da **precipitação** —
+  `traumas.md` ganhou a discriminação de queda de escada provocada × golpe, e a **capacidade
+  de ação pós-lesão** e as **lesões de sítio posterior** (dinâmica do confronto).
+- **Lacuna 7 (choque, hemorragia, causa próxima):** parcialmente coberta — `traumas.md`
+  (capacidade de ação residual, exsanguinação progressiva) e a nota de **intervalo de
+  sobrevida** em `tanatologia.md` §5 descolam a hora do golpe da hora da morte. O
+  detalhamento clínico (choque traumático, embolia) segue aberto.
+- **Aberto/revelado pela mesma OS:** o **láudano/opiáceo** como causa de runtime não está no
+  catálogo do motor (só na KB — ver a decisão D1 da OS); e o **afogamento/precipitação como
+  cena jogável** dependem de âncora espacial (água/escada) que a geração atual não modela
+  (decisão D2). São lacunas de *motor/espaço*, não de KB.
+
 ## Divergências / notas KB × conhecimento de época (sem tocar em [MOTOR])
 
 - **Fusão incisa/perfurante** — já registrada honestamente em `traumas.md` (§ Divergências).

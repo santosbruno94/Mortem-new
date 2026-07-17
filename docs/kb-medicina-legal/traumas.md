@@ -114,16 +114,76 @@ que a microscopia da época não resolve com precisão. Dizer "esta lesão é pe
 legítimo; cravar o minuto exato, não. No motor, `reacao_vital` é sinal **modificador**: prova
 que a lesão foi sofrida em vida, mas não elimina causa alguma nem aponta o meio.
 
-## Lesões de defesa
+## Lesões de defesa: ativas e passivas
 
-Quem vê o golpe procura apará-lo. As lesões de defesa concentram-se nas **mãos** (palmas e
-faces de flexão dos dedos, ao agarrar a lâmina) e na face **ulnar dos antebraços** (ao erguer
-o braço contra o golpe): cortes, equimoses, por vezes fraturas do cúbito.
+Quem vê o golpe procura apará-lo. As lesões de defesa dividem-se em duas espécies, pela
+atitude do corpo que as recebe:
 
-Sua leitura mais eloquente é frequentemente a **ausência**. Não haver lesão de defesa é
-compatível com ataque súbito, golpe pelas costas, vítima adormecida, embriagada, contida ou
-já inconsciente. É um indício de circunstância, não de autoria — e, como todo indício, admite
-mais de uma explicação. No jogo, corresponde ao verbete `lesoes_defesa`.
+- **Defesa ativa** — a mão que **agarra** a lâmina ou disputa a arma. Cortes na **palma** e
+  nas faces de **flexão dos dedos**, por vezes um talho que atravessa a dobra dos dedos ao
+  fechar-se sobre o gume. É a marca de quem enfrentou o instrumento de frente e tentou
+  detê-lo com a mão.
+- **Defesa passiva** — o antebraço **erguido** para escudar a cabeça e o tronco. Lesões na
+  face **ulnar** (o bordo do dedo mínimo) do antebraço, no dorso das mãos, no cotovelo:
+  cortes, equimoses, às vezes a fratura do cúbito. É a marca de quem apenas se cobriu.
+
+A distinção tem valor de reconstituição: a defesa ativa supõe uma vítima que ainda avança
+sobre a arma; a passiva, uma que já só se protege. As duas podem coexistir num mesmo corpo,
+e a sua topografia — de frente, de lado, por cima — ajuda a ordenar a sequência do ataque.
+
+**Nota de honestidade cronológica:** o perito de 1893 **observa** sem dificuldade o talho
+palmar de quem agarrou a lâmina e a lesão ulnar de quem ergueu o braço — são achados de
+lente e bom senso. O **par nomeado** "defesa ativa / defesa passiva" como categoria
+sistemática, porém, cristaliza-se na literatura forense do século XX; aqui é conveniência de
+reconstituição do tratado, não rótulo corrente na boca de um perito vitoriano. Mesmo regime
+das notas Locard/Piotrowski em `vestigios.md`.
+
+Sua leitura mais eloquente é, ainda assim, frequentemente a **ausência**. Não haver lesão de
+defesa é compatível com ataque súbito, golpe pelas costas, vítima adormecida, embriagada,
+contida ou já inconsciente. É um indício de circunstância, não de autoria — e, como todo
+indício, admite mais de uma explicação. No jogo, corresponde ao verbete `lesoes_defesa`.
+
+## Capacidade de ação depois da lesão
+
+Uma pergunta que o tribunal fazia ao perito de 1893, e que Taylor discute com franqueza:
+**depois de recebida a ferida mortal, por quanto tempo ainda pôde a vítima agir** — andar,
+falar, revidar, fechar a mão sobre um objeto, arrastar-se para outro cômodo? A resposta muda
+conforme o **sítio** e o **mecanismo**, e é matéria de circunstância (o que se conciliava com
+a cena), não de cravar minutos. O que a época sabia, articulava-o em termos de sobrevida e de
+ato voluntário; a fisiologia fina — a reserva de oxigênio do cérebro medida em segundos — é
+leitura de bastidor, não fala de 1893.
+
+| Mecanismo / sítio | Capacidade de ação residual | Leitura |
+|---|---|---|
+| Ferida do **coração ou de grande vaso** | Preservada por **segundos a poucos minutos** antes do colapso | A vítima ainda corre, luta, agarra: sangue e luta longe do ponto do golpe são compatíveis |
+| **Exsanguinação** (hemorragia sem lesão nervosa central) | Degrada **progressivamente** com a perda de sangue | A ação enfraquece rodada a rodada; a trilha de gotas segue a marcha que definha |
+| **Trauma craniano com perda de consciência** | **Suprimida** enquanto durar o desmaio | Cai onde é golpeada; nada de fuga, nada de defesa depois |
+| **Compressão cervical mantida** (ligadura, esganadura, sufocação) | **Anulada enquanto o meio prende** | Não grita nem foge sob o laço ou a mão; a ação só existe antes de o meio firmar-se |
+| **Veneno** | Latência conforme a espécie | Não há confronto; a ação cessa no colapso, não no ato do agressor |
+
+O ponto médico-legal decisivo, e velho de Taylor: **uma ferida absolutamente mortal não é
+uma ferida instantaneamente incapacitante.** Um homem com o coração transpassado pode
+atravessar um cômodo antes de tombar — e essa sobrevida breve é o que torna legível, na cena,
+a diferença entre o lugar do golpe e o lugar da queda. Os bastidores modernos que consolidam
+o quadro (Karger, sobre a capacidade de ação após ferimentos cardíacos e cranianos; DiMaio,
+*Gunshot Wounds*; Spitz & Fisher, *Medicolegal Investigation of Death*) apenas dão método ao
+que o perito de 1893 já observava caso a caso.
+
+## Lesões de sítio posterior — a assinatura do golpe recebido em fuga
+
+A **topografia** da lesão fala da atitude do corpo no instante do golpe. Lesões na face
+**anterior** — peito, rosto, palmas — supõem quem encara. Lesões no **dorso**, na **nuca**,
+na face posterior dos ombros e das pernas, supõem quem **deu as costas**: vítima que fugia,
+que se voltou para escapar, ou golpeada por trás. É a contraparte da defesa passiva: onde
+esta marca o antebraço erguido de quem se cobre de frente, a lesão de sítio posterior marca
+quem já não se cobre — apenas se afasta.
+
+Como todo indício de circunstância, admite mais de uma leitura (o golpe pelas costas do
+ataque súbito também as produz, sem fuga alguma) e **jamais aponta autoria**. Mas, somada à
+trilha de gotas que se afasta do ponto inicial, à mobília tombada em mais de um cômodo e ao
+corpo caído longe de onde o confronto começou, sustenta a reconstituição de uma vítima que
+**correu antes de cair**. O coroner de 1893 podia legitimamente registrar que os golpes
+alcançaram o dorso — descrição do que se vê, não conclusão sobre quem os desferiu.
 
 ## Implicações para o jogo
 
@@ -144,6 +204,73 @@ mais de uma explicação. No jogo, corresponde ao verbete `lesoes_defesa`.
 - **A honestidade de época** é jogável: o perito pode dizer o **calibre compatível** de um
   projétil, jamais o cano que o disparou; pode datar a lesão por reação vital em faixa, jamais
   ao minuto agônico. Esses limites são recurso de desenho, não defeito.
+
+## Dossiê de método — precipitação (queda provocada)
+
+O empurrão que atira a vítima escada abaixo (ou de uma altura) mata por **trauma contuso** —
+mecanismo já coberto pelo catálogo (`trauma_contuso`/`ferida_contusa`). O que faz dele um
+método próprio não é a causa, e sim a **discrepância** entre a cena de queda encenada e o que
+o corpo diz. Fecha, pela via da queda, a lacuna 5 de `lacunas.md`.
+
+- **Lesões de queda × lesões de golpe.** A queda distribui as lesões pelas **saliências** que
+  primeiro tocam o chão e o degrau — cotovelo, ombro, quadril, joelho, e sobretudo o
+  **occipício** (a nuca) e a fronte. Uma queda por escada tende a lesões **múltiplas,
+  escalonadas**, em pontos de choque sucessivos, com escoriações de arraste. O **golpe**
+  desferido por mão alheia atinge zonas que uma queda pouparia — o alto e o lado do crânio, a
+  face, zonas protegidas — e tende a ser **único e concentrado**, com a forma do instrumento.
+  A soma "lesão de padrão de golpe + cena de queda" é a discrepância que trai a precipitação.
+- **Contragolpe.** No crânio, a queda pode produzir fratura **por contragolpe** (a lesão do
+  encéfalo no polo oposto ao impacto) — sinal de que a cabeça vinha em movimento contra uma
+  superfície parada (queda), e não uma superfície em movimento contra a cabeça parada (golpe).
+  Conhecido da época como leitura de mecânica, útil para separar os dois — **sinal sugestivo,
+  não probatório**, no regime de honestidade do resto desta base.
+- **Sangramento externo:** conforme a lesão — a laceração de couro cabeludo **sangra** muito
+  (governa poça e, se a vítima ainda se move, trilha). Reação vital nas bordas separa a queda
+  em vida da encenação sobre corpo já morto.
+- **Capacidade de ação residual:** a queda que não mata na hora (a hemorragia que se instala
+  em minutos ou horas — o **intervalo de sobrevida** de `tanatologia.md`) permite que a vítima
+  ainda se arraste, o que espalha a cena. A queda com trauma craniano e inconsciência a
+  **suprime** de imediato.
+- **Vestígios no agressor:** poucos, e é o atrativo do método — o empurrão pode não deixar
+  marca de contato. Restam os de circunstância: presença na cena, o motivo, a incongruência.
+- **Ruído:** o **tombo** — pancada e queda de corpo, alto e único, mais o eventual grito da
+  queda; não a luta prolongada.
+- **Exigências:** uma **escada ou altura** representável na cena. É a exigência que a geração
+  espacial do jogo não modela hoje (grids de um só piso) — ver a decisão D2 da OS. Não exige
+  força desmedida (a física faz o trabalho) nem, a rigor, premeditação (o empurrão da briga
+  escalada também precipita).
+- **Encenabilidade:** é dos métodos **mais encenáveis como acidente** ("caiu da escada"). A
+  traem: o padrão de golpe entre as lesões de queda, a lesão única de forma definida, a
+  ausência de lesões de defesa quando a queda foi "espontânea", e a posição final do corpo
+  incompatível com a trajetória de uma queda livre.
+- **Vocabulário de época:** *precipitação*, *queda de altura*, *lesões de contragolpe*.
+
+## Dossiê de mundo — ferida por espingarda de caça
+
+Dossiê **de mundo**, não jogável nesta OS (ver a decisão D4): não entra no catálogo de
+métodos, mas o coroner de 1893 conhece bem o ferimento por projétil de caça, corrente numa
+vila cercada de campo. Serve à ambiência e a casos futuros.
+
+- **A carga de chumbo, não a bala única.** A espingarda de caça dispara **múltiplos bagos de
+  chumbo** (a carga de chumbo miúdo). A curta distância, a carga entra **compacta**, abrindo um
+  orifício único, grande e devastador, de bordas laceradas; à medida que a distância cresce,
+  os bagos **espalham-se** e imprimem o padrão de dispersão — orifícios satélites em torno do
+  central. **A extensão do espalhamento gradua a distância do disparo** — é a leitura de
+  época mais útil da espingarda.
+- **Bucha e resíduos.** Além dos bagos, a carga leva a **bucha** (o tampão de feltro ou papel
+  que separa pólvora e chumbo), que a curta distância penetra a ferida e se recolhe como
+  vestígio — indica a proximidade do tiro. Enegrecimento, chamuscamento e tatuagem de pólvora
+  seguem a mesma leitura da arma de fogo (ver acima).
+- **Sem individualização do cano.** Como toda arma de fogo em 1893, a espingarda prova a
+  **classe** (calibre, tipo de carga), jamais o cano individual — a balística comparativa é
+  posterior (Goddard, 1925).
+- **Encenabilidade:** o **acidente de caça** e o **suicídio** são as encenações clássicas. A
+  traem: a distância do disparo lida no espalhamento (um "suicídio" com padrão de tiro
+  distante é impossível — ninguém alcança o próprio gatilho a três metros), o ângulo
+  incompatível com a mão da própria vítima, e a ausência de fuligem de contato onde um
+  suicídio a exigiria.
+- **Vocabulário de época:** *espingarda*, *carga de chumbo*, *bagos*, *bucha*, *tiro de
+  caça*.
 
 ## Divergências notadas (KB × código) — sem correção aplicada
 

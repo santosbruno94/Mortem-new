@@ -22,6 +22,13 @@
 | Reação vital | prova de que a lesão é em vida | — |
 | Espasmo cadavérico | contração definitiva no instante da morte | confundir com rigor |
 | Cânhamo / linho / lã / algodão | fibras distinguíveis à lente | "corda" genérica quando o tipo importa |
+| Sufocação / abafamento | oclusão de boca e narinas | "asfixia" sem qualificar a espécie |
+| Afogamento / submersão | asfixia por submersão em líquido | "afogado" para corpo lançado já morto |
+| Mãos de lavadeira | maceração da pele por imersão prolongada | "pele enrugada" no registro técnico |
+| Precipitação / queda de altura | queda provocada (escada, altura) | "acidente" quando a lesão diz golpe |
+| Contragolpe (contre-coup) | lesão no polo oposto ao impacto | — |
+| Dose excessiva | quantidade de veneno/narcótico acima da letal | **"overdose"** (anacronismo) |
+| Miose | pupila contraída em ponta de alfinete | "pupila pequena" no laudo |
 
 **Regra de ouro do jogo:** a carta na mesa mostra a observação crua — *"Marca reta em
 volta do pescoço"*, não *"sulco de ligadura"*. O termo técnico aparece no Glossário
@@ -64,6 +71,9 @@ cianeto em usos industriais/fotográficos.
 
 - Léxico moderno: *ok, checar, chance* (= oportunidade), *time, foco, estresse,
   detalhe* (no sentido de "um detalhe importante" apontado).
+- **"Overdose"** — banida em toda superfície do jogo. A língua de 1893 diz **"dose
+  excessiva"**. Também fora: jargão de reação de estresse moderno ("luta ou fuga"
+  como termo técnico), inclusive em identificadores de código.
 - Tecnologia fora de época: impressão digital como prova de rotina, exame de sangue por
   tipo, fotografia instantânea, telefonema.
 - Castelhanismos e falsos cognatos: *pareja* → **parelha**/**uniforme**; *presunto*

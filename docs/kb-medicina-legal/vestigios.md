@@ -99,6 +99,56 @@ enrolou a corda, quem a guardou, quem a moveu do lugar. O vestígio situa a pess
 instrumento; converter proximidade em ato é trabalho de outra ordem de prova, que cabe ao
 julgamento, não à lente.
 
+## Rastros em movimento — a cena que se espalha
+
+Quando o confronto anda de um cômodo a outro, o vestígio deixa de ser um ponto e vira uma
+**trilha**. O perito de 1893 lê essa trilha pelo senso comum do que se derrama e do que se
+derruba, sem doutrina formal por trás:
+
+- **Gotejamento em trilha.** O sangue que pinga de um corpo em marcha deixa gotas
+  **espaçadas** ao longo do caminho, e não a poça confluente de quem está parado. O
+  **espaçamento** cresce com a pressa (passo apressado afasta as gotas) e a fileira aponta o
+  **sentido da marcha**. É observação de bom senso — "a trilha de gotas segue para a copa" —,
+  não medição.
+- **Esfregaços de limiar.** A passagem de um cômodo a outro imprime a marca no ponto de
+  estrangulamento do trânsito: o **batente**, a **maçaneta**, a ombreira da porta. Um borrão
+  de sangue na altura da mão, um roçar na madeira do umbral — o vestígio de quem cruzou,
+  apoiando-se ou roçando, entre um ambiente e o seguinte.
+- **Sequência de mobília tombada.** Cadeira virada na cozinha, aparador deslocado na copa: a
+  ordem em que as peças caíram desenha o **trajeto** da luta entre os cômodos. Duas salas
+  reviradas contam uma história que uma só não conta.
+
+Estes rastros são a matéria física da leitura de cena de Lacassagne (reconstituição): a
+cena, lida com atenção, refaz o movimento que a produziu.
+
+## Vestígios no agressor
+
+O contato não marca só a vítima e o lugar — marca **quem atacou**. O perito e o inquérito de
+1893 já procuravam no suspeito o que a luta lhe deixou:
+
+- **Escoriações ungueais** — arranhões das unhas da vítima no rosto, no pescoço, nas mãos do
+  agressor: a defesa ativa que imprimiu a marca em quem a sofreu.
+- **Roupa rasgada, botão faltando** — o puxão da luta, a contraparte do pertence arrancado
+  que fica na mão da vítima.
+- **Sangue da vítima sobre ele** — respingo na manga, no punho, no colarinho, incompatível
+  com um contato inocente. A época confirmava que a mancha **é sangue** (cristais de
+  Teichmann), mas não de quem: humano ou animal ainda escapava (Uhlenhuth é de 1901).
+
+A busca sistemática desses sinais no corpo e nas roupas do suspeito era prática defendida por
+Hans Gross em seu manual de instrução judiciária de **1893** (já em `fontes.md`) — o exame do
+agressor como parte da investigação, não só o exame da vítima.
+
+**Nota de honestidade cronológica — a leitura de manchas.** A trilha de gotas e o esfregaço
+que este documento descreve são lidos, em 1893, apenas pelo **senso comum** ("as gotas seguem
+para a porta", "isto foi roçado ao passar"). A **leitura formal de padrões de manchas de
+sangue** — o estudo da forma, do ângulo e da trajetória da gota como sistema — nasce com
+Eduard Piotrowski em **1895**, dois anos depois do presente do jogo, e só amadurece no século
+XX. Portanto: a prosa e a `vozMestre` podem constatar que **há** uma trilha e para onde ela
+**segue**, mas não devem invocar uma "análise de respingos" nem cravar ângulos e velocidades
+como se houvesse método. A coerência fina do rastro é dos **bastidores do gerador**, que o
+depõe consistente; ao perito de 1893 cabe apenas o que o olho atento colhe. É o mesmo regime
+da nota sobre Locard (acima) e sobre Hans Gross em `fontes.md`: prática sem doutrina.
+
 ## Implicações para o jogo
 
 - **O caso tutorial** (`o_alibi_de_corda`) é construído sobre esta cadeia. O sinal do
