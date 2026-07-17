@@ -64,15 +64,20 @@ function blocoReu(veredicto) {
   }
 }
 
-// Eco único do tema do caso: quando a cena foi encenada MOVENDO um relógio
-// para mentir a hora, o corpo — que não se adianta nem se atrasa — devolve a
-// hora verdadeira. Um verso, sem citação e sem nomear culpado, pago só quando
-// há relógio forjado E o jogador o derrubou (descuidosOk): sem isso, a hora
-// emprestada nunca foi cobrada, e o verso seria falso. Genérico: serve a
-// qualquer mostrador adiantado ou recuado para falsear o óbito.
+// Eco único do tema do caso: quando a cena foi encenada para mentir a hora —
+// movendo um mostrador ou mexendo na temperatura do corpo (Lote 3) —, o corpo,
+// que não se adianta nem se atrasa, devolve a hora verdadeira. Um verso, sem
+// citação e sem nomear culpado, pago só quando há peça forjada E o jogador a
+// derrubou (descuidosOk): sem isso, a hora emprestada nunca foi cobrada, e o
+// verso seria falso. Serve à peça adiantada ou recuada para falsear o óbito.
 function blocoHoraTomada(veredicto) {
   const dados = veredicto.dadosMonologo;
   if (!dados.cenaEncenada || typeof dados.horaForjada !== 'number' || !dados.descuidosOk) return null;
+  // A peça pode ser o mostrador (caso-escola) ou a temperatura do corpo (Lote 3):
+  // de onde a hora foi tomada muda; o corpo cobrando-a de volta, não.
+  if (dados.encenacaoInstrumento === 'corpo') {
+    return 'A hora que a mentira tomou emprestada do termômetro, o corpo cobrou de volta.';
+  }
   return 'A hora que a mentira tomou emprestada de um relógio, o corpo cobrou de volta.';
 }
 

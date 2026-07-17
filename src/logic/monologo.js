@@ -22,7 +22,7 @@
 
 import { obterSuspeito } from '../data/pacote_caso.js';
 import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIVO } from '../data/rotulos.js';
-import { formatJanela, formatHora } from './tempo.js';
+import { formatJanela, formatHora, formatHoraComDia } from './tempo.js';
 import { hashString } from './hash.js';
 
 const TITULOS = {
@@ -224,9 +224,20 @@ function blocoTese(dados) {
     frase += ` Como móbil, ${ROTULOS_MOTIVO[dados.motivoCorreto] || 'interesse próprio'}.`;
   }
   // A encenação só entra na tese se o jogador refutou a PRÓPRIA peça forjada
-  // (veredicto.js exige a tag `encenado` na alegação derrubada).
+  // (veredicto.js exige a tag `encenado` na alegação derrubada). A peça pode ser
+  // o mostrador (caso-escola e variantes de relógio) ou a temperatura do corpo
+  // (Lote 3); e a hora forjada pode ser adiantada (a vítima já estava morta) ou
+  // recuada para antes da morte (ainda estava viva). A hora recuada é sempre
+  // negativa (dia anterior) — leva o dia junto (formatHoraComDia).
   if (dados.descuidosOk && dados.cenaEncenada) {
-    frase += ` E a encenação caiu pelo próprio relógio: arrumado para marcar ${formatHora(dados.horaForjada)}, hora em que a vítima já estava morta.`;
+    const antesDaMorte = dados.horaForjada < dados.horaMorteAbsoluta;
+    const quando = antesDaMorte ? formatHoraComDia(dados.horaForjada) : formatHora(dados.horaForjada);
+    const estado = antesDaMorte ? 'ainda estava viva' : 'já estava morta';
+    if (dados.encenacaoInstrumento === 'corpo') {
+      frase += ` E a encenação caiu pelo próprio corpo: a temperatura, arranjada para dar ${quando}, não moveu o rigor nem os livores — a essa hora a vítima ${estado}.`;
+    } else {
+      frase += ` E a encenação caiu pelo próprio relógio: arrumado para marcar ${quando}, hora em que a vítima ${estado}.`;
+    }
   }
   return frase;
 }

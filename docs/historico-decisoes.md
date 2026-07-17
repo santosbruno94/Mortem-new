@@ -21,6 +21,7 @@
 | jul/2026 (Reescrita do caso) | **"O Álibi de Corda" → "A Hora Emprestada"**: mesma vítima e cenário, verdade de ouro nova. 3 → **5 suspeitos**, 1 → **3 mentirosos inocentes** (segredos de naturezas distintas: humilhação, decoro, medo), e o relógio quebrado deixa de ser isca passiva para virar **pivô estrutural** com três leituras (mostrador forjado / roda de contagem / relógio de bolso de corda esgotada). Motor ganhou duas travas temporais universais (`rotina_interrompida`, `registro_mecanico`); veredicto/acusação intocados. Removida a perita Lenore (fica só o Dr. Harlan Blackwell). Fecha as pendências 1, 2, 3 e 5 do overhaul de 12/07 (despiste com explicação plantada; ≥2 mentirosos; motivo composto arquivado — `silenciamento` é composto por natureza, único por id; `reacao_vital` em jogo) |
 | jul/2026 (Fundações do gerador procedural, FASE 0) | Registro normativo das decisões de arquitetura do gerador: **pacote de caso** serializável, **asset 2D sob contrato**, **retratos em camadas**, **resource binding** por slots tipados, **papéis dramáticos** gerador-facing e **eco do mestre** sobre falhas (detalhe abaixo). Só documentos; nenhum código. |
 | jul/2026 (Gerador por simulação e interferência, FASE 0) | Registro normativo do overhaul do gerador: o crime é **simulado na geração** por um **autobattler de build time** (`resolverCrime` → `RegistroDoCrime`), atributos sob **regra de existência** (FOR/INT/WIS/CHA; só existe o que deixa vestígio ou comportamento), **arquétipos × demografia 1893**, geração espacial cidade-primeiro com **grafo de avistamentos**, e **interferência** como evento contingente sob as **Regras de Justiça R1–R6**. Inclui a reconciliação com a rejeição anterior do grid espacial (detalhe abaixo). Só documentos; nenhum código. |
+| 17/jul/2026 (Reconciliação encenação→motor, Lotes 1 e 3) | Da pesquisa de encenação/supressão ao motor: **Lote 1** (zero `src/logic`) — 6 verbetes de glossário (guaiaco/Van Deen, Teichmann, Sorby, micrometria de Gulliver, epitélio no coágulo, discórdia tanatológica), `instrumento_guardado_umido` corrigido para o **coágulo durável sob o rebite** (a umidade era o sinal perecível), e a carta condicional `gen_frestas` (o sangue que a esfrega empurra para a fresta). **Lote 3** — a **fraude de tempo pelo corpo**: `cartaHoraForjada` ganha duas variantes térmicas (corpo aquecido junto à lareira / resfriado na corrente), a hora aparente do corpo refutável pelos relógios duráveis, como o mostrador forjado do caso-escola. **§5 decidido (b), não executado**: o sinal de ausência do eixo CAUSA passa a ser lido como *a assinatura só crava com reação vital presente* — registrado abaixo, implementação adiada para o Lote 2. |
 
 ## Fundações do gerador procedural (jul/2026 — detalhe)
 
@@ -784,3 +785,49 @@ degrau vila → market town da campanha e maximiza o "todos se conhecem".
   **veículo** (a mentira de Walter — só ele mudou) e o **ato policial/judicial**
   (intocável, de época). Busca-e-troca cega de "diligência" era falha bloqueante da OS;
   o léxico "de praça" do Walter (juízo/credores/diligência) é o sentido legal e ficou.
+
+## Reconciliação encenação→motor (17/07/2026) — Lotes 1 e 3, e a decisão §5 adiada
+
+**Origem.** Documento de decisão de escopo que mapeou ~37 "tags candidatas" da pesquisa de
+encenação/supressão contra o vocabulário real do motor. Estado: 8 já existiam, 2 não devem
+existir, 9 baratas (zero lógica), 11 pedem uma única decisão de motor, 7 pedem âncora
+espacial (D2). O usuário selecionou **Lote 1** (as baratas) e **Lote 3** (fraude de tempo
+pelo corpo); adiou o Lote 2 (o sinal de ausência) e a fila da âncora (Lote 4).
+
+**Lote 1 — entregue (nenhuma linha de `src/logic`).**
+- **6 verbetes de glossário** dão à `vozMestre` e ao jogador o vocabulário que a KB nova
+  trouxe: `reacao_van_deen` (guaiaco, presuntivo), `cristais_teichmann` (hemina,
+  confirmação), `microespectroscopia_sorby` (gabinete), `micrometria_gulliver` (exclusão
+  de espécie, nunca afirmação de sangue humano — Uhlenhuth é 1901), `epitelio_no_coagulo`
+  (a doutrina de Gross: prove o que veio preso no sangue) e `discordia_tanatologica` (a
+  manipulação do resfriamento).
+- **`instrumento_guardado_umido` corrigido**: a classe cobria só a umidade da junta (que
+  seca em um dia); passa a nomear o **coágulo sob a virola e os rebites do cabo**, que não
+  seca e Teichmann acha décadas depois — o vestígio durável de que a umidade era o sinal
+  perecível. Proveniência apontada para `supressao-de-vestigios.md`.
+- **`gen_frestas`** (carta condicional nova): quando a limpeza (WIS alta) esfregou a poça,
+  o pigmento foi empurrado para o vão entre as tábuas (Gross); a área baça à luz oblíqua e
+  o guaiaco positivo na fresta. Ambiental, sem `pertenceA` — o motor não a lê como nexo nem
+  refutação; é a supressão tornada visível. A **incisão sem hesitação** entrou dobrada na
+  prosa da lesão de arma branca (observação pura, sem sinal).
+
+**Lote 3 — entregue (fraude de tempo pelo corpo).** `cartaHoraForjada` deixa de ter só as
+duas variantes de relógio e ganha **duas variantes térmicas**: corpo **aquecido** junto à
+lareira (parece morto há pouco → hora aparente tardia da manhã) e corpo **resfriado** na
+corrente (parece morto há muito → hora aparente bem cedo). Mesmas tags do mostrador forjado
+(`cronologia_aparente`, `encenado`, `isca`) → o motor as trata idênticas e o jogador as
+refuta ligando o rigor e o livor duráveis, que o calor e o frio não desfazem. As horas
+forjadas caem, por construção, fora da janela do corpo (provado: 0 falhas de descuidos em
+200 seeds; 35 encenados — relógio, aquecido e resfriado ocorrem). Sem âncora espacial nova,
+sem causa nova, sem tocar o motor de dedução.
+
+**§5 — decisão tomada, execução ADIADA (é o Lote 2, não selecionado).** O sinal de ausência
+do eixo CAUSA (o sulco sem reação vital, as bordas pálidas sem coágulo, a fratura seca)
+destrava 11 tags de uma vez, e é a decisão de que forma o motor passa a saber dizer "não foi
+isto". Das três formas (a: `excluiCausa`; b: assinatura condicionada pela reação vital;
+c: contradição como pista), ficou decidida a **(b)**: `reacao_vital` deixa de ser inerte —
+a assinatura só **crava** a causa se a reação vital estiver presente; **ausente**, ela
+**abre** o leque em vez de fechá-lo. É a leitura forense correta (como Casper lia o sulco) e
+a mais fiel à KB. **Custo conhecido** (razão do adiamento): mexe na semântica de um sinal que
+20 cartas já usam, então os 21 casos regeneram e o `qa.mjs` (réplica byte a byte) acompanha
+no mesmo commit — é o Lote 2, a ser executado sob ordem expressa.

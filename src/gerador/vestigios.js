@@ -146,14 +146,20 @@ export const CLASSES_VESTIGIO = {
     proveniencia: 'docs/kb-medicina-legal/vestigios.md (pegadas e trilhas de saída)',
   },
   instrumento_guardado_umido: {
-    rotulo: 'Instrumento guardado ainda úmido',
+    rotulo: 'Instrumento lavado com coágulo sob o rebite',
     ordem: 2,
     atributo: 'WIS', // WIS mediana: lavou por alto, guardou no lugar
     evidenciaDe: ['higiene'],
     removivel: false,
     noCorpo: false,
     semCelula: true, // vive entre os pertences do assassino, fora da cena
-    proveniencia: 'docs/kb-medicina-legal/vestigios.md (lavagem imperfeita; umidade na junta do cabo)',
+    // A lavagem rudimentar falha por sistema (Gross): a crosta visível sai, mas
+    // o sangue coagula sob a virola e as talas do cabo, em torno dos rebites, e
+    // NÃO seca — Teichmann acha-o décadas depois. A umidade da junta seca em um
+    // dia; o coágulo sob o rebite é o vestígio durável de que a umidade era só
+    // o sinal perecível.
+    proveniencia:
+      'docs/kb-medicina-legal/supressao-de-vestigios.md ("a arma branca lavada": coágulo sob a virola e os rebites do cabo, confirmado por Teichmann; a umidade da junta é a versão perecível)',
   },
   instrumento_faltando: {
     rotulo: 'Instrumento que falta no seu lugar',

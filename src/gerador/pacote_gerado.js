@@ -117,23 +117,42 @@ const PROSA_MOTIVO = {
 };
 
 // ---------------------------------------------------------------------
-// ENCENAÇÃO DE HORA (v2 — bug B8 do playtest): o assassino de INT alta,
-// no premeditado, deixa uma peça de cronologia aparente — o relógio
-// parado numa hora da manhã que o corpo desmente. Espelha o pilar de
-// descuidos do caso-escola: a Verdade de Ouro só exige a encenação
-// exposta quando a peça existe. Hora forjada: 09h15–10h45 de 14/out —
-// por construção, acima do teto de qualquer janela que os indicadores
-// do corpo sustentem à chegada (11h00: a morte gerada é sempre anterior
-// às 3h, e o rigor mais brando fecha a janela em 9). O jogador refuta a
-// peça ligando os fatos temporais do corpo a ela, como no caso-escola.
+// ENCENAÇÃO DE HORA (v2 — bug B8 do playtest; Lote 3 — fraude de tempo
+// pelo corpo): o assassino de INT alta, no premeditado, deixa uma peça de
+// cronologia aparente que o corpo desmente. Espelha o pilar de descuidos
+// do caso-escola: a Verdade de Ouro só exige a encenação exposta quando a
+// peça existe. Quatro variantes, sorteadas por hash — mesmas tags, mesma
+// refutação (o jogador liga os fatos temporais duráveis do corpo à peça):
+//   • duas de RELÓGIO (o mostrador parado numa hora da manhã) — o vetor
+//     clássico do caso-escola;
+//   • duas de CORPO (Lote 3, dossiê "manipulação do resfriamento"): o
+//     agressor mexe na temperatura, e os sinais tanatológicos não
+//     conspiram. Corpo AQUECIDO junto à lareira parece morto há pouco
+//     (hora tardia da manhã); corpo RESFRIADO parece morto há muito (hora
+//     bem cedo). O rigor e o livor, que o calor e o frio não desfazem,
+//     continuam dizendo a verdade e refutam a hora aparente.
+// As horas forjadas caem, por construção, FORA da janela que os
+// indicadores do corpo sustentam à chegada (11h00): a da manhã (09h15–
+// 10h45) acima do teto (a morte gerada é sempre anterior às 3h, e o rigor
+// mais brando fecha a janela em 9); a bem cedo (13h–14h30 do dia anterior)
+// abaixo do piso (o visto-com-vida e o algor honesto nunca descem tanto).
 // ---------------------------------------------------------------------
 function cartaHoraForjada(bruto) {
   const { mundo, escolha, crime } = bruto;
   const assassino = mundo.elenco.find((p) => p.id === crime.assassinoId);
   if (escolha.cenario !== 'premeditado' || assassino.atributos.INT < 4) return null;
   const sal = `${bruto.seed}|encenacao`;
-  const horaForjada = 9.25 + (hashString(`${sal}|hora`) % 7) * 0.25;
-  const rotuloHora = formatHora(horaForjada);
+  const vitima = mundo.elenco.find((p) => p.id === crime.vitimaId);
+  const femV = vitima.genero === 'feminino';
+  const doMorto = femV ? 'a morta' : 'o morto';
+  const variante = hashString(`${sal}|peca`) % 4;
+  // Aquecido/relógio → hora tardia da manhã (acima do teto); resfriado →
+  // hora do início da tarde da véspera (abaixo do piso).
+  const resfriado = variante === 3;
+  const horaForjada = resfriado
+    ? -11 + (hashString(`${sal}|hora`) % 7) * 0.25
+    : 9.25 + (hashString(`${sal}|hora`) % 7) * 0.25;
+  const rotuloHora = resfriado ? formatHoraComDia(horaForjada) : formatHora(horaForjada);
   const base = {
     id: 'gen_hora_forjada',
     localidade: 'cena',
@@ -146,21 +165,36 @@ function cartaHoraForjada(bruto) {
       isca: true,
     },
   };
-  const carta =
-    hashString(`${sal}|peca`) % 2 === 0
-      ? {
-          ...base,
-          textoDisplay: 'O Relógio Parado',
-          carimboPadrao: `Relógio de parede parado às ${rotuloHora}`,
-          descricao: `O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em ${rotuloHora}; a corda, provada pela chave, ainda tem volta.`,
-        }
-      : {
-          ...base,
-          textoDisplay: 'O Relógio Tombado',
-          carimboPadrao: `Relógio de mesa parado às ${rotuloHora}`,
-          descricao: `Tombado de bruços no assoalho, a caixa aberta de um lado. Erguido, o vidro estrelado segue inteiro no aro, e os ponteiros marcam ${rotuloHora} debaixo da rachadura.`,
-        };
-  return { carta, horaForjada };
+  const variantes = [
+    {
+      ...base,
+      textoDisplay: 'O Relógio Parado',
+      carimboPadrao: `Relógio de parede parado às ${rotuloHora}`,
+      descricao: `O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em ${rotuloHora}; a corda, provada pela chave, ainda tem volta.`,
+    },
+    {
+      ...base,
+      textoDisplay: 'O Relógio Tombado',
+      carimboPadrao: `Relógio de mesa parado às ${rotuloHora}`,
+      descricao: `Tombado de bruços no assoalho, a caixa aberta de um lado. Erguido, o vidro estrelado segue inteiro no aro, e os ponteiros marcam ${rotuloHora} debaixo da rachadura.`,
+    },
+    {
+      ...base,
+      textoDisplay: 'O Corpo Junto à Lareira',
+      carimboPadrao: `Corpo aquecido; leitura de morte às ${rotuloHora}`,
+      descricao: `O corpo jaz rente à lareira, e a grelha ainda guarda brasa morna. Ao termômetro, ${doMorto} está bem mais quente do que a sala; por essa temperatura, a morte teria sido por volta das ${rotuloHora}.`,
+    },
+    {
+      ...base,
+      textoDisplay: 'O Corpo na Corrente de Ar',
+      carimboPadrao: `Corpo resfriado; leitura de morte às ${rotuloHora}`,
+      descricao: `O corpo jaz junto à janela aberta, na corrente da noite, frio como a pedra da soleira. Por essa frieza, a morte teria recuado para as ${rotuloHora}.`,
+    },
+  ];
+  // O instrumento da encenação distingue a fala do desfecho (monologo.js /
+  // epilogo.js): o mostrador é 'relogio'; a temperatura do corpo, 'corpo'.
+  const instrumento = variante <= 1 ? 'relogio' : 'corpo';
+  return { carta: variantes[variante], horaForjada, instrumento };
 }
 
 // ---------------------------------------------------------------------
@@ -323,7 +357,7 @@ const PROSA_LESAO = {
   laminada: {
     textoDisplay: 'A Ferida Incisa',
     descricao:
-      'Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.',
+      'Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.',
   },
   garrote: {
     textoDisplay: 'O Sulco no Pescoço',
@@ -540,9 +574,9 @@ function realizarCartas(bruto) {
           nova.carimboPadrao = 'Instrumento que falta no seu lugar';
           nova.descricao = `Entre as coisas de ofício de ${reu.nome}, um vão limpo no meio do pó, do comprimento e do desenho da lesão ${doMorto}.`;
         } else {
-          nova.textoDisplay = 'O Instrumento Úmido';
-          nova.carimboPadrao = 'Instrumento guardado ainda úmido';
-          nova.descricao = `Entre os pertences de ${reu.nome}, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão ${doMorto}.`;
+          nova.textoDisplay = 'O Instrumento Lavado';
+          nova.carimboPadrao = 'Instrumento lavado, crosta sob o rebite';
+          nova.descricao = `Entre os pertences de ${reu.nome}, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão ${doMorto}.`;
         }
         break;
       }
@@ -559,6 +593,10 @@ function realizarCartas(bruto) {
         nova.textoDisplay = 'O Rastro de Gotas';
         nova.carimboPadrao = 'Sangue afastado do corpo';
         nova.descricao = `Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas ${doMorto} não sangraram nesse caminho.`;
+        break;
+      case 'gen_frestas':
+        nova.descricao =
+          'A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.';
         break;
       case 'gen_pegadas':
         nova.carimboPadrao = 'Meias-solas impressas em sangue';
@@ -701,7 +739,7 @@ function montarLocalidades(bruto, cartas) {
   const texturaVestigios = new Set();
   for (const v of crime.vestigios) {
     if (v.removido) continue;
-    if (v.classe === 'assoalho_esfregado') texturaVestigios.add('a madeira do assoalho cheira a soda cáustica');
+    if (v.classe === 'assoalho_esfregado') texturaVestigios.add('a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça');
     if (v.classe === 'mobilia_recomposta')
       texturaVestigios.add('sob o pé de uma peça de mobília, um arranhão que escapa para fora dela');
     if (v.classe === 'mobilia_revirada') texturaVestigios.add('há mobília por erguer do chão');
@@ -716,9 +754,9 @@ function montarLocalidades(bruto, cartas) {
   // A peça de hora forjada abre a lista: a isca é vistosa por desenho —
   // existe para tomar o olho (o chamariz honesto do plantio de pistas).
   if (temCarta('gen_hora_forjada')) {
-    marcadoresCena.push('No cômodo, à vista de quem entra: [[gen_hora_forjada]].');
+    marcadoresCena.push('O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].');
   }
-  for (const id of ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas']) {
+  for (const id of ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas', 'gen_frestas']) {
     const carta = cartas.find((c) => c.id === id && c.localidade === 'cena');
     if (!carta) continue;
     const ev = eventoQueDestroi(id);
@@ -727,6 +765,7 @@ function montarLocalidades(bruto, cartas) {
       gen_pertence: `Por abrir desde ontem, a mão fechada ${femV ? 'da morta' : 'do morto'}: [[gen_pertence]].`,
       gen_sangue_alheio: 'A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].',
       gen_pegadas: 'Do meio do cômodo até a porta: [[gen_pegadas]].',
+      gen_frestas: 'Rente ao rodapé, onde a esfrega passou: [[gen_frestas]].',
     }[id];
     if (ev) {
       (blocosPorLocalidade.cena ??= []).push({ eventoId: ev.id, quando: 'nao_disparado', paragrafos: [frase] });
@@ -1101,6 +1140,9 @@ export function montarPacoteGerado(seed, opts = {}) {
     // não-acusados — os dois pilares do caso-escola, de volta ao gerado.
     cenaEncenada: !!encenacao,
     horaForjada: encenacao ? encenacao.horaForjada : null,
+    // Lote 3: distingue a peça encenada (mostrador vs temperatura do corpo)
+    // para a fala do desfecho ramificar sem cravar "relógio".
+    encenacaoInstrumento: encenacao ? encenacao.instrumento : null,
     perifericos: perif.perifericos,
   };
 
