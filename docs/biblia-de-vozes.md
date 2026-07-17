@@ -41,6 +41,13 @@
 - **Quem é:** delegado de vila, honesto e fora de sua profundidade; quer o caso fechado
   para poder jantar. Confia no óbvio (a "história A": relógio das 08h45 + luz da
   madrugada = ladrão de fora).
+- **Patente (lavrada):** de ofício é *constable* da *county constabulary*, destacado no
+  posto de um homem de Briarstone (casa + expediente + cela) — a patente que a KB dá ao
+  policial de vila (`demografia-e-sociedade.md` §3), que patrulha e prende mas quase não
+  investiga e serve de *coroner's officer* (`inquerito-e-policia.md` §1–§2). "Delegado" é
+  a **glosa vernácula** da vila; a tabela de tradução (`inquerito-e-policia.md` §5,
+  decisão B) manda manter o posto inglês grifado. Ele **assina "Delegado"** — a glosa é
+  uniforme; a verdade da patente fica lavrada aqui. O idioleto abaixo não muda.
 - **Registro:** cordial, prolixo, provinciano-formal. Adora uma frase que se ache
   espirituosa e às vezes tropeça nela.
 - **Ritmo:** períodos que começam firmes e se desdizem no meio ("isto é… quero dizer…").

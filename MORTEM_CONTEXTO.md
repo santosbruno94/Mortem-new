@@ -747,6 +747,17 @@ encenada como roubo de madrugada; relógio de lareira esmagado, parado às **08h
 perito chega às **11h00** (hora absoluta 11; IPM na chegada = 14h). Corpo a 23°C,
 sala a 11°C.
 
+**Escala e cenário (fato canônico):** Briarstone é vila nucleada de **~500 almas
+(~95 fogos)**, com **estação de borda** — a plataforma a 0,5–1,5 milha do núcleo, à
+moda da §6 de `docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md`; o perito chega pelo
+primeiro trem. A relojoaria de Arthurs vive da **redondeza, não da vila**: consertos
+chegam e partem pelo *carrier* semanal — o carreteiro que faz o circuito à *market
+town* —, o que sustenta três postos de bancada onde a vila sozinha não sustentaria um.
+A polícia é um **posto** da *county constabulary* — casa do policial, expediente e a
+cela — sob o *constable* Lemuel Wycliffe ("delegado", na boca da vila). A loja da Sra.
+Rooke **acumula o correio**. O inquérito formal, quando vier, instala-se na sala da
+estalagem (`docs/kb-medicina-legal/inquerito-e-policia.md` §1).
+
 ### Verdade de Ouro (`src/data/seed.js` — lida apenas pelo motor)
 ```js
 SEED_TUTORIAL = {
@@ -814,7 +825,11 @@ aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
   fraude de Silas. Álibi corroborado (moinho, véspera de feira, três homens).
 - **Davey Tull** (15, aprendiz) — mente ensaiado pelo oficial ("saímos juntos às sete
   e meia"), por medo. Expô-lo é bônus, não pilar (`inocente_alibi`).
-- **Delegado Lemuel Wycliffe** — fonte, não suspeito. Briefing planta a história A
+- **Delegado Lemuel Wycliffe** (de ofício, *constable* da *county constabulary* no
+  posto de um homem de Briarstone — a patente que a KB dá ao policial de vila,
+  `demografia-e-sociedade.md` §3; a tabela de tradução de `inquerito-e-policia.md` §5
+  manda, na decisão B, **manter o posto inglês** grifado, e "delegado" é a glosa
+  vernácula que a vila põe por cima) — fonte, não suspeito. Briefing planta a história A
   (relógio 08h45 + luz às 05h15 + caixa vazada = ladrão de madrugada) e as iscas.
 
 ### Cartas-chave além do corpo
