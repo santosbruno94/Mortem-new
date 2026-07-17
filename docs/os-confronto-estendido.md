@@ -386,3 +386,108 @@ material. O playtest da Fase 7 verifica: (a) a cena de fuga é legível e conta 
 história certa; (b) existe premeditado com fuga no lote (anti-bicondicional
 percebido no jogo, não só no teste); (c) nenhuma superfície nomeia mecânica
 ("pesos", "portão", "rodada") — a língua é a de 1893.
+
+---
+
+## 9. Fase 3 — inventários, spec preenchida e calibrações (PR-A)
+
+> Preenchimento e reconferência normativos da Fase 3. **Nenhum código é tocado**
+> nesta fase (é PR-A, documentação); os inventários abaixo leem `src/**` apenas para
+> registrar o estado e decidir o que a Fase 4 implementa. Os pontos **[DECISÃO DO
+> USUÁRIO]** que se ativaram estão consolidados na ata parcial (§10).
+
+### 9.1 Inventário de viabilidade dos métodos (reconfere §4.3)
+
+Reconferência de `src/data/catalogo_causas.js` e `src/gerador/metodos.js`:
+
+| Método | Mecanismo / sinal | Estado no catálogo universal | Veredicto Fase 4 |
+|---|---|---|---|
+| Sufocação | `sufocacao` / `oclusao_vias` | **Presente** (causa e sinal já no catálogo) | **Entra** — piso garantido |
+| Afogamento | `afogamento` / `agua_pulmoes` | **Presente** | Condicionado a âncora espacial — **D2** |
+| Precipitação | `trauma_contuso` / `ferida_contusa` | **Presente** (a distinção queda × golpe é pista de KB, não mecanismo novo) | Condicionado a âncora espacial — **D2** |
+| Espingarda | `arma_de_fogo` / `orificio_projetil` | **Presente** | **Não entra** (só dossiê de mundo) — **D4** |
+| Láudano | opiáceo | **Ausente** — o catálogo tem só `envenenamento_cianeto` e `envenenamento_arsenico` | Só com extensão do catálogo — **D1** |
+
+Confirma-se o texto da OS: os quatro primeiros mecanismos já existem no catálogo; **só
+o láudano exige estender** `src/data/catalogo_causas.js` (dado de runtime, com
+superfícies de prosa). Sem a ordem D1, o láudano fica só na KB.
+
+### 9.2 Inventário de âncoras espaciais (reconfere §4.3 e §4.5)
+
+Leitura de `src/gerador/interiores.js`, `espaco.js` e `cidade.js`:
+
+- **Modelo de interior:** grid de **um só piso** por prédio (`LAYOUTS` em
+  `interiores.js`); os cômodos particionam um retângulo plano. **Não há célula de
+  escada nem eixo vertical** — o "sobrado"/"duas escadas" existem só na proveniência
+  de silhueta (`espaco.js`), nunca como célula alcançável pelo autobattler.
+- **Água:** a única água modelada como **célula alcançável** é o `cocho_dagua` da
+  oficina da forja (`MOBILIA_DE_OFICIO.oficina`, `espaco.js`). O **poço** da granja e
+  o **açude** do moinho são citados na proveniência dos tipos de prédio, mas **não**
+  entram como mobília/célula (não há item de poço em `MOBILIA_DE_OFICIO.paiol`).
+- **Porta externa:** já convencionada em `crime.js` — a célula
+  `{ col: ⌊colunas/2⌋, fila: filas−1 }` (frente-centro, última fila = frente/rua) já
+  serve à lógica de pegada do WIS-baixo e ao arrasto. A rota de fuga (§8.3) **reusa
+  essa convenção** sem criar nada.
+- **Passagem entre cômodos:** `vizinhasDaCelula` (`crime.js`) **já ignora paredes** e
+  `caminhoEmL` **já** compõe trajetos célula a célula que cruzam fronteiras de cômodo.
+  Logo a "convenção mínima de passagem" do §4.5 (uma célula por par de cômodos) é
+  **derivável da geometria existente** sem tocar a geração de `interiores.js`.
+
+**Consequências para as decisões:**
+
+- **Precipitação → [DECISÃO DO USUÁRIO — D2].** Exige escada representável; a geração
+  atual não a modela. Implementá-la significaria adicionar células/eixo vertical em
+  `interiores.js` (Fase 2 espacial, fonte única de verdade — não se toca sem ordem).
+  **Sem D2, precipitação fica só na KB.**
+- **Afogamento → [DECISÃO DO USUÁRIO — D2].** Âncora **parcial**: só há água alcançável
+  na forja (o `cocho_dagua`), e apenas quando a rotina da vítima põe a cena ali (vítima
+  ferreiro/ligada à forja). Duas saídas para o usuário decidir: **(a)** admitir
+  afogamento **restrito à cena de forja** pela célula `cocho_dagua` já existente (sem
+  tocar geração; o cocho é raso — afogamento forçado é plausível, mas marginal); **(b)**
+  manter afogamento só na KB. **Sem D2, fica só na KB.**
+- **Passagens → D3 NÃO se ativa (previsão).** A convenção mínima do §4.5 sai da
+  geometria existente (porta-externa já convencionada; `vizinhasDaCelula` ignora
+  paredes). A Fase 5 constrói a rota dirigida em `crime.js` sem alterar `interiores.js`.
+  Só se a implementação revelar necessidade de novas células/campos é que D3 acorda —
+  hoje não se prevê.
+
+### 9.3 Spec §8 — preenchimento e confirmação
+
+- **§8.1 (campos de método):** a tabela vigora como está. **Sufocação** entra na Fase 4
+  com o conjunto completo de campos: `seguraAVitima: true`, `mobilidadeResidual: 1`,
+  `surpresa: 2` (arma de ocasião, sem o esmagador do garrote), `danoBase: 1` (lenta,
+  como a esganadura), `ruidoPorRodada: 1`, `suprimeBatalha: false`, `sangra: false`,
+  `exigePremeditacao: false`, `intMinima: 1`, `instrumento: 'travesseiro_ou_pano'` (arma
+  de ocasião doméstica; abandonável na cena), `mecanismo: 'sufocacao'`,
+  `sinalAssinatura: 'oclusao_vias'`, `proveniencia` → `asfixias.md` (dossiê de
+  sufocação, Fase 2). **Láudano** só se D1; **precipitação/afogamento** só se D2.
+- **§8.2 (sais e rolagens):** confirmados os sais `|acao`, `|grito`, `|rota` sob o sal
+  de batalha; a tabela `multMobilidade` fica: mobilidade 2 → {×1,×1,×1}; 1 → {×1,×1,×0};
+  0 → {×1,×0,×0}, indexada por `ferimentosVitima` (1º/2º/3º+). `pGrito` base 1/8,
+  +1/8 se `sobAtaque.gritar ≥ 1`, +1/8 se `pontosVida ≤ 2`; ruído do grito +4, evento
+  com hora, audível aos `adjacentes`. Nada a recalibrar em PR-A.
+- **§8.3 (rota de fuga):** rota de cômodos por busca determinística na adjacência do
+  interior (ordem de expansão = ordem dos cômodos no layout) até o cômodo da porta
+  externa; dentro do cômodo, `caminhoEmL` até a célula de passagem/porta; 1 célula por
+  rodada; assassino adjacente por construção; alcançar a porta externa ⇒ rejeição
+  `vitima_escapou`. Tudo compatível com a geometria de hoje.
+- **§8.4 (vestígios novos):** `trilha_gotejamento` (2ª ordem: assoalho esfregado em
+  faixa) e `esfregaco_de_limiar` (2ª ordem: batente lavado ainda úmido) declaram
+  contraparte de conservação (§3.3); proveniência em `vestigios.md` ("Rastros em
+  movimento", Fase 1). Lesões de sítio posterior e grito são canais de laudo/ouvintes,
+  sem 2ª ordem de cena.
+
+### 9.4 Calibração de `MAX_RODADAS`
+
+A OS pede calibrar 6 → 8 "com o lote de seeds". **Ressalva honesta de PR-A:** a taxa
+de rejeição por `vitima_escapou` só é mensurável **depois** de a fuga existir em código
+(Fase 5). Em documentação pura não há o que medir. **Proposta registrada:** manter o
+**default 6** e reavaliar no QA da Fase 6 (PR-B), subindo a 8 apenas se o lote
+determinístico mostrar excesso de rejeições — decisão a lavrar em ata de fechamento do
+PR-B, não aqui.
+
+### 9.5 Fair play / anti-bicondicional (reconfere §4.7)
+
+Confirmado como alvo de QA da Fase 6: em lote ≥ 50 seeds, exigir ≥ 1 premeditado **com**
+fuga e ≥ 1 briga escalada **sem** fuga; recalibrar pesos antes de ampliar o lote se a
+distribuição natural não os produzir. Nada a fazer em PR-A além de fixar o critério.
