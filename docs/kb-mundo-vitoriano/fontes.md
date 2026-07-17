@@ -13,6 +13,12 @@
 - **Urbanismo e morfologia:** Historic England (Atlas of Rural Settlement,
   Roberts & Wrathmell), diretórios comerciais Kelly's (fonte primária), National
   Archives (rights of way), censo de 1891.
+- **Centros urbanos (town):** legislação primária (Public Health Act 1875, Municipal
+  Corporations Act 1835, Local Government Acts 1888/1894, Prison Act 1877, Shop
+  Hours Acts 1892–93), Kelly's de Dunstable 1894 (fonte primária de época), casos
+  documentados de towns reais (Hungerford, Ludlow, Devizes, Stafford, Sutton
+  Coldfield), Building Conservation, histórias policiais e de saúde pública
+  (Cambridge Urban History, PMC).
 - **Mobiliário e utensílios:** museus de vida doméstica (Old & Interesting,
   1900s.org.uk, Wycombe Museum, Amersham Museum, Weald & Downland), Grace's Guide e
   Science Museum Group (indústria), J. E. Panton *From Kitchen to Garret*
@@ -58,6 +64,14 @@
   não fechados (usar catálogos Army & Navy 1883/1898 e Harrods 1895 como moldura);
   preço de Windsor nova e orçamento de enxoval operário são inferência — não citar
   como fato na prosa.
+- Nos três arquivos `centros-urbanos-*.md`: extensão/tempo de travessia de town,
+  aluguel de court e two-up two-down, horário diário de loja, densidade de licenças
+  de bebida (1:200–350), tiragem do semanário e entregas postais fora do eixo de
+  Londres são INFERÊNCIA declarada em cada arquivo. Populações de towns no censo de
+  1891 vêm de Wikipedia (Vision of Britain estava fora do ar — 503 — durante a
+  pesquisa): rechecar lá antes de citar número exato em prosa. Vários padrões
+  urbanos (courts, gasworks, pavimentação, esterco) têm base documental de cidade
+  grande extrapolada para town pequena — sinalizado no texto onde ocorre.
 
 Nada disso impede o uso em prosa — impede tratar esses números como inegociáveis.
 Se um caso futuro depender criticamente de um deles, refinar a pesquisa antes.
