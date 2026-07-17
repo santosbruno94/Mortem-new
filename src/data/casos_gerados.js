@@ -42,7 +42,8 @@ export const CASO_REPLICA = {
     "veredictoEsperado": "inocente_segredo",
     "segredo": "acerto_reservado"
    }
-  }
+  },
+  "encenacaoInstrumento": "corpo"
  },
  "suspeitos": [
   {
@@ -174,7 +175,7 @@ export const CASO_REPLICA = {
    "suporteFisico": "corpo",
    "textoDisplay": "A Ferida Incisa",
    "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -223,6 +224,19 @@ export const CASO_REPLICA = {
    }
   },
   {
+   "id": "gen_frestas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "Sangue nas Frestas",
+   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
+   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "acumulacao_frestas"
+   }
+  },
+  {
    "id": "gen_motivo",
    "localidade": "delegacia",
    "suporteFisico": "registro",
@@ -237,6 +251,29 @@ export const CASO_REPLICA = {
    }
   },
   {
+   "id": "gen_intf_intf_1_limpeza",
+   "localidade": "cena",
+   "textoDisplay": "Esfrega Fresca na Cena",
+   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
+   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "esfrega_fresca"
+   },
+   "vestigioInterferencia": {
+    "classe": "esfrega_fresca_pos_pericia",
+    "frescor": "fresco",
+    "localId": "mercearia",
+    "comodo": "deposito",
+    "celula": {
+     "col": 1,
+     "fila": 0
+    },
+    "mobilia": "deposito_prateleiras_da_despensa"
+   }
+  },
+  {
    "id": "gen_hora_forjada",
    "localidade": "cena",
    "suporteFisico": "cena",
@@ -247,9 +284,9 @@ export const CASO_REPLICA = {
     "encenado": true,
     "isca": true
    },
-   "textoDisplay": "O Relógio Parado",
-   "carimboPadrao": "Relógio de parede parado às 09h45",
-   "descricao": "O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em 09h45; a corda, provada pela chave, ainda tem volta."
+   "textoDisplay": "O Corpo Junto à Lareira",
+   "carimboPadrao": "Corpo aquecido; leitura de morte às 09h45",
+   "descricao": "O corpo jaz rente à lareira, e a grelha ainda guarda brasa morna. Ao termômetro, a morta está bem mais quente do que a sala; por essa temperatura, a morte teria sido por volta das 09h45."
   },
   {
    "id": "gen_corrobora_gen_2_ferreiro",
@@ -427,12 +464,27 @@ export const CASO_REPLICA = {
    "subtitulo": "Onde Alice Wright foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Mercearia guarda o dia em que a acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
-    "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
+    "A Mercearia guarda o dia em que a acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_paroco]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_0_lavrador]]."
    ],
-   "blocosContingentes": []
+   "blocosContingentes": [
+    {
+     "eventoId": "intf_1",
+     "quando": "disparado",
+     "paragrafos": [
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]]."
+     ]
+    },
+    {
+     "eventoId": "intf_1",
+     "quando": "nao_disparado",
+     "paragrafos": [
+      "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+     ]
+    }
+   ]
   },
   {
    "id": "delegacia",
@@ -1545,6 +1597,81 @@ export const CASO_REPLICA = {
    "mesExtenso": "outubro",
    "ano": 1893
   }
+ },
+ "interferencias": {
+  "eventos": [
+   {
+    "id": "intf_1",
+    "tipo": "destruir_evidencia",
+    "ator": "gen_1_criada",
+    "atorPapel": "assassino",
+    "alvo": {
+     "tipo": "carta",
+     "cartaId": "gen_frestas",
+     "localId": "mercearia"
+    },
+    "gatilho": {
+     "tipo": "extracao_carta",
+     "cartaId": "gen_motivo",
+     "comoSoube": "o perito abriu o móbil do réu na delegacia (extração de gen_motivo); o inquérito em público correu a vila até o ator"
+    },
+    "rota": {
+     "de": "pub",
+     "para": "mercearia",
+     "faixa": "noite",
+     "sustentacao": "frequentado",
+     "comoChegou": "mercearia é parada habitual dele (frequentados da ficha); foi na faixa noite sem chamar atenção"
+    },
+    "rolagem": {
+     "wis": 4,
+     "penalidade": 2,
+     "alvo": 2,
+     "dado": 0,
+     "sucesso": true
+    },
+    "efeito": {
+     "cartaDestruida": "gen_frestas",
+     "cartasNovas": [
+      "gen_intf_intf_1_limpeza"
+     ]
+    },
+    "prenuncio": null,
+    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
+   }
+  ]
+ },
+ "ecosInterferencia": {
+  "titulo": "O legista, sobre o que se moveu",
+  "porChave": {
+   "destruir_evidencia_ocorrida": [
+    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+   ],
+   "destruir_evidencia_evitada": [
+    "Vieram limpar a cena; o que importava já estava no seu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+   ],
+   "intimidar_testemunha_ocorrida": [
+    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+   ],
+   "intimidar_testemunha_evitada": [
+    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+   ],
+   "subornar_testemunha_ocorrida": [
+    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+   ],
+   "silenciar_ocorrida": [
+    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+   ],
+   "silenciar_evitada": [
+    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+   ]
+  }
  }
 };
 
@@ -1579,7 +1706,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_segredo",
     "segredo": "pedido_recusado"
    }
-  }
+  },
+  "encenacaoInstrumento": "corpo"
  },
  "suspeitos": [
   {
@@ -1798,9 +1926,9 @@ export const CASOS_POOL = [
     "encenado": true,
     "isca": true
    },
-   "textoDisplay": "O Relógio Parado",
-   "carimboPadrao": "Relógio de parede parado às 10h15",
-   "descricao": "O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em 10h15; a corda, provada pela chave, ainda tem volta."
+   "textoDisplay": "O Corpo Junto à Lareira",
+   "carimboPadrao": "Corpo aquecido; leitura de morte às 10h15",
+   "descricao": "O corpo jaz rente à lareira, e a grelha ainda guarda brasa morna. Ao termômetro, o morto está bem mais quente do que a sala; por essa temperatura, a morte teria sido por volta das 10h15."
   },
   {
    "id": "gen_segredo_gen_5_criada",
@@ -1979,7 +2107,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Mercearia guarda o dia em que o acharam. No cômodo, cômoda, cama de armação de madeira, lavatório com bacia; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_criada]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_2_lavrador]].",
     "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
@@ -3107,7 +3235,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -4771,7 +4900,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -4903,7 +5033,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "A Ferida Incisa",
    "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -4941,9 +5071,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Úmido",
-   "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de James Brown, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão da morta.",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de James Brown, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -6066,7 +6196,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     },
     {
      "requerCarta": "gen_intf_intf_1_soberanos",
@@ -6461,7 +6591,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -6631,9 +6762,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Úmido",
-   "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de Ethel Clarke, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de Ethel Clarke, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -7138,7 +7269,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
@@ -8003,7 +8134,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_segredo",
     "segredo": "acerto_reservado"
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -9651,7 +9783,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": "relogio"
  },
  "suspeitos": [
   {
@@ -10049,7 +10182,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Casa do Médico guarda o dia em que a acharam. No cômodo, fogão de ferro a carvão, mesa de cozinha; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_lavrador]].",
     "Junto do corpo, no chão: [[gen_instrumento]]."
    ],
@@ -11176,7 +11309,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_segredo",
     "segredo": "acerto_reservado"
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -11308,7 +11442,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "A Ferida Incisa",
    "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -12824,7 +12958,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -14305,7 +14440,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_segredo",
     "segredo": "acerto_reservado"
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -14437,7 +14573,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "A Ferida Incisa",
    "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -15996,7 +16132,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": "corpo"
  },
  "suspeitos": [
   {
@@ -16166,9 +16303,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Úmido",
-   "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de James Ward, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de James Ward, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -16215,9 +16352,9 @@ export const CASOS_POOL = [
     "encenado": true,
     "isca": true
    },
-   "textoDisplay": "O Relógio Parado",
-   "carimboPadrao": "Relógio de parede parado às 10h00",
-   "descricao": "O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em 10h00; a corda, provada pela chave, ainda tem volta."
+   "textoDisplay": "O Corpo Junto à Lareira",
+   "carimboPadrao": "Corpo aquecido; leitura de morte às 10h00",
+   "descricao": "O corpo jaz rente à lareira, e a grelha ainda guarda brasa morna. Ao termômetro, o morto está bem mais quente do que a sala; por essa temperatura, a morte teria sido por volta das 10h00."
   },
   {
    "id": "gen_segredo_gen_5_costureira",
@@ -16396,7 +16533,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Casa do Médico guarda o dia em que o acharam. No cômodo, mesa de cozinha, fogão de ferro a carvão; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_costureira]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_2_squire]]."
    ],
@@ -16883,7 +17020,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
@@ -17559,7 +17696,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -19068,7 +19206,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -19200,7 +19339,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "A Ferida Incisa",
    "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -19238,9 +19377,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Úmido",
-   "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de Edwin Clarke, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de Edwin Clarke, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -20145,7 +20284,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
@@ -20643,7 +20782,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -20813,9 +20953,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Úmido",
-   "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de Annie Harris, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão da morta.",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de Annie Harris, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -21292,7 +21432,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
@@ -22146,7 +22286,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_segredo",
     "segredo": "acerto_reservado"
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -22278,7 +22419,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "A Ferida Incisa",
    "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -22316,9 +22457,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Úmido",
-   "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de Nellie Walker, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão da morta.",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de Nellie Walker, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -22989,7 +23130,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
@@ -23665,7 +23806,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -25185,7 +25327,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_segredo",
     "segredo": "pedido_recusado"
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -25317,7 +25460,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "A Ferida Incisa",
    "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
@@ -25363,6 +25506,19 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_5_boticario"
+   }
+  },
+  {
+   "id": "gen_frestas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "Sangue nas Frestas",
+   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
+   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "acumulacao_frestas"
    }
   },
   {
@@ -25555,7 +25711,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Annie Brown foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que a acharam. No cômodo, bacia e jarro, baú de roupa; a madeira do assoalho cheira a soda cáustica.",
+    "A Taverna guarda o dia em que a acharam. No cômodo, bacia e jarro, baú de roupa; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça.",
+    "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_lavrador]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_costureira]]."
    ],
@@ -26704,7 +26861,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_segredo",
     "segredo": "pedido_recusado"
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -28377,7 +28535,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_segredo",
     "segredo": "pedido_recusado"
    }
-  }
+  },
+  "encenacaoInstrumento": "corpo"
  },
  "suspeitos": [
   {
@@ -28569,9 +28728,9 @@ export const CASOS_POOL = [
     "encenado": true,
     "isca": true
    },
-   "textoDisplay": "O Relógio Parado",
-   "carimboPadrao": "Relógio de parede parado às 10h30",
-   "descricao": "O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em 10h30; a corda, provada pela chave, ainda tem volta."
+   "textoDisplay": "O Corpo Junto à Lareira",
+   "carimboPadrao": "Corpo aquecido; leitura de morte às 10h30",
+   "descricao": "O corpo jaz rente à lareira, e a grelha ainda guarda brasa morna. Ao termômetro, o morto está bem mais quente do que a sala; por essa temperatura, a morte teria sido por volta das 10h30."
   },
   {
    "id": "gen_corrobora_gen_1_lavrador",
@@ -28750,7 +28909,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Mercearia guarda o dia em que o acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira.",
-    "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_ferreiro]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_5_lavrador]].",
     "Junto do corpo, no chão: [[gen_instrumento]]."
@@ -29890,7 +30049,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -31358,7 +31518,8 @@ export const CASOS_POOL = [
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    }
-  }
+  },
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {

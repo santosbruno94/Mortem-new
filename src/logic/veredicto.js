@@ -260,6 +260,9 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       descuidosOk,
       cenaEncenada: seed.cenaEncenada,
       horaForjada: seed.horaForjada,
+      // A peça encenada (mostrador / temperatura do corpo): a fala do desfecho
+      // ramifica por ela. Ausente (caso-escola) ⇒ 'relogio' (texto inalterado).
+      encenacaoInstrumento: seed.encenacaoInstrumento || 'relogio',
       horaMorteAbsoluta: seed.horaMorteAbsoluta,
       sustentada,
       testemunhasDesmentidas,

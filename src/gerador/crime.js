@@ -605,7 +605,7 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
       registrarEvento(assassino.id, 'fuga_desleixada', { celula: posicaoCorpo.celula }, { depositados: depositadosErro });
     }
   } else if (metodo.instrumento) {
-    const vUmido = depositar('instrumento_guardado_umido', {}, `${metodo.instrumento} mal limpo e reposto às pressas entre os pertences`);
+    const vUmido = depositar('instrumento_guardado_umido', {}, `${metodo.instrumento} lavado por alto e reposto; coágulo escuro alojado sob o rebite do cabo, onde a água não entrou`);
     registrarEvento(assassino.id, 'instrumento_reposto', { comodo: comodoId }, { depositados: [vUmido] });
   }
 

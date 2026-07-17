@@ -273,6 +273,28 @@ export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId 
     });
   }
 
+  // ---- Supressão: o que a esfrega do assoalho não tirou da fresta (Lote 1) ----
+  // Quando a limpeza (WIS alta) esfregou a poça, o pigmento foi empurrado para
+  // o vão entre as tábuas e sob o rodapé (Gross): a área baça à luz oblíqua e o
+  // guaiaco positivo na fresta. Observação ambiental — o motor não a lê como
+  // refutação nem como nexo (sem pertenceA); é a supressão tornada visível.
+  const vEsfrega = crime.vestigios.find((v) => v.classe === 'assoalho_esfregado' && !v.removido);
+  if (vEsfrega) {
+    cartas.push({
+      id: 'gen_frestas',
+      localidade: 'cena',
+      suporteFisico: 'cena',
+      textoDisplay: 'Sangue nas Frestas',
+      carimboPadrao: 'Assoalho esfregado; guaiaco positivo na fresta',
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: {
+        dominio: 'ambiental',
+        subDominio: 'limpeza_fresca',
+        tipoVestigio: 'acumulacao_frestas',
+      },
+    });
+  }
+
   // ---- Móbil: o motivo potencial da Fase 1 promovido a móbil do caso ----
   cartas.push({
     id: 'gen_motivo',

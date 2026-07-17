@@ -69,6 +69,15 @@ export const GLOSSARIO = [
     sinalObservavel:
       'A janela da morte é a interseção das faixas. Cada sinal a mais, colhido a tempo, estreita a janela; um sinal só a deixa larga. Sinais já degradados (rigor desfeito, corpo frio como o ambiente) nada acrescentam.',
   },
+  {
+    id: 'discordia_tanatologica',
+    termo: 'A Discórdia dos Sinais',
+    dominio: 'temporal',
+    definicao:
+      'Os sinais tanatológicos não acompanham uns aos outros quando um é manipulado. Quem retarda o resfriamento de um corpo, com garrafas de água quente ou a lareira acesa ao lado, deixa a temperatura profunda alta, que sugere morte recente, ao lado do rigor completo e das manchas fixas, que pedem muitas horas. Quem o resfria depressa faz o inverso. A temperatura manipulada deixa de concordar com o rigor e o livor; estes, que o calor e o frio não desfazem, ainda fixam a faixa de tempo.',
+    sinalObservavel:
+      'Um corpo morno de rigidez completa, ou frio sem sinal interno de tempo. A discórdia é o achado: onde a temperatura briga com o rigor e o livor, é a temperatura que foi mexida — descarta-se ela, e os sinais duráveis fecham a hora.',
+  },
 
   // ===================== CAUSAL =====================
   // O método discriminante: um sinal de FAMÍLIA (petéquias → asfixia) diz
@@ -269,6 +278,51 @@ export const GLOSSARIO = [
     definicao:
       'Sob a lente, cânhamo, lã, linho e algodão distinguem-se pela torção e pelo calibre. Fibras de corda incrustadas num sulco cervical identificam o instrumento; as mesmas fibras na roupa de alguém indicam contato com material da mesma espécie, não com aquela peça em particular.',
     sinalObservavel: 'Filamentos comparáveis à lente: mesma matéria, mesma torção — compatível, não exclusivo.',
+  },
+  {
+    id: 'reacao_van_deen',
+    termo: 'Ensaio de Guaiaco (Reação de Van Deen)',
+    dominio: 'vestigio',
+    definicao:
+      'Prova de campo para sangue, desde 1862: papel de filtro úmido colhe o resíduo de uma fresta ou de uma fibra; sobre ele, uma gota de tintura de guaiaco e outra de terebintina ozonizada. Em segundos, um azul brilhante indica a presença provável de sangue. É presuntivo, não conclusivo: ferrugem, saliva, pus e o sumo da batata crua ou do rábano dão o mesmo azul. A ordem de adição atenua — azul só depois da terebintina pede um peróxido, como o do sangue.',
+    sinalObservavel:
+      'Azul vivo no papel de filtro em menos de cinco segundos. Diz onde raspar, nunca o que se raspou: a confirmação fica para Teichmann ou para o espectroscópio.',
+  },
+  {
+    id: 'cristais_teichmann',
+    termo: 'Cristais de Teichmann (Hemina)',
+    dominio: 'vestigio',
+    definicao:
+      'Confirmação microscópica de sangue, desde 1853: sobre a mancha raspada em lâmina, um grão de cloreto de sódio, uma gota de ácido acético glacial e aquecimento brando até a fervura do ácido. Formam-se cristais rômbicos castanho-escuros de cloridrato de hematina. Confirma sangue ainda que a mancha tenha décadas; falha se o calor destruiu o heme, e não diz de que espécie nem de quem.',
+    sinalObservavel:
+      'Cristais rômbicos castanhos ao microscópio confirmam sangue na matéria escura sob o rebite, na fresta ou na cinza. Não indicam a espécie nem a pessoa.',
+  },
+  {
+    id: 'microespectroscopia_sorby',
+    termo: 'Microespectroscopia (Sorby)',
+    dominio: 'vestigio',
+    definicao:
+      'Espectroscópio acoplado ao microscópio, desde 1865: sobre o resíduo macerado em água destilada, a oxi-hemoglobina dá duas bandas escuras de absorção entre as linhas D e E do espectro; uma gota de sulfureto de amônio reduz-nas a uma banda larga. Confirma sangue em mancha lavada, diluída ou antiga. É prova de gabinete: o instrumento não vai à roça, e a amostra que viaja para a cidade leva consigo dias.',
+    sinalObservavel:
+      'Duas bandas de absorção que se fundem numa ao reagente redutor. Confirma sangue onde a esfrega quase o apagou; não diz a espécie, e exige o laboratório da cidade.',
+  },
+  {
+    id: 'micrometria_gulliver',
+    termo: 'Micrometria do Glóbulo (Gulliver)',
+    dominio: 'vestigio',
+    definicao:
+      'Medida do diâmetro do glóbulo vermelho reconstituído da crosta, contra as tabelas comparadas de Gulliver (1875): humano 7,5–7,8 µm, cão ~7,0, porco ~6,0, ovelha ~5,0. A dessecação deforma o glóbulo e as variações individuais sobrepõem-se — entre cão e homem há meia mícron, menos que o erro do método. Serve para excluir (5,0 µm não é humano), nunca para afirmar sangue humano perante um júri. A prova de espécie por soro é de 1901, à frente do presente.',
+    sinalObservavel:
+      'Média de algumas centenas de glóbulos ao micrômetro ocular. Derruba o "é sangue de ovelha"; não sustenta o "é sangue de homem".',
+  },
+  {
+    id: 'epitelio_no_coagulo',
+    termo: 'O que Vem Preso ao Coágulo',
+    dominio: 'vestigio',
+    definicao:
+      'Quem não pode provar a espécie do sangue examina o que ficou dentro dele. Cabelo humano de bulbo arrancado, escama de pele humana, fibra de lã ou algodão comparável à lente à roupa da vítima: é o elo entre pessoa e pessoa. Sangue de abate traz cerda grossa e detrito de pocilga; o contraste é que distingue. É a via de Gross, que examina o que ficou preso no coágulo em vez do próprio sangue.',
+    sinalObservavel:
+      'Escama de pele ou fibra têxtil amalgamada ao coágulo, comparável à da vítima. O álibi do sangue de porco cai pelo que veio junto, não pelo sangue.',
   },
 ];
 
