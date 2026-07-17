@@ -114,16 +114,69 @@ que a microscopia da época não resolve com precisão. Dizer "esta lesão é pe
 legítimo; cravar o minuto exato, não. No motor, `reacao_vital` é sinal **modificador**: prova
 que a lesão foi sofrida em vida, mas não elimina causa alguma nem aponta o meio.
 
-## Lesões de defesa
+## Lesões de defesa: ativas e passivas
 
-Quem vê o golpe procura apará-lo. As lesões de defesa concentram-se nas **mãos** (palmas e
-faces de flexão dos dedos, ao agarrar a lâmina) e na face **ulnar dos antebraços** (ao erguer
-o braço contra o golpe): cortes, equimoses, por vezes fraturas do cúbito.
+Quem vê o golpe procura apará-lo. As lesões de defesa dividem-se em duas espécies, pela
+atitude do corpo que as recebe:
 
-Sua leitura mais eloquente é frequentemente a **ausência**. Não haver lesão de defesa é
-compatível com ataque súbito, golpe pelas costas, vítima adormecida, embriagada, contida ou
-já inconsciente. É um indício de circunstância, não de autoria — e, como todo indício, admite
-mais de uma explicação. No jogo, corresponde ao verbete `lesoes_defesa`.
+- **Defesa ativa** — a mão que **agarra** a lâmina ou disputa a arma. Cortes na **palma** e
+  nas faces de **flexão dos dedos**, por vezes um talho que atravessa a dobra dos dedos ao
+  fechar-se sobre o gume. É a marca de quem enfrentou o instrumento de frente e tentou
+  detê-lo com a mão.
+- **Defesa passiva** — o antebraço **erguido** para escudar a cabeça e o tronco. Lesões na
+  face **ulnar** (o bordo do dedo mínimo) do antebraço, no dorso das mãos, no cotovelo:
+  cortes, equimoses, às vezes a fratura do cúbito. É a marca de quem apenas se cobriu.
+
+A distinção tem valor de reconstituição: a defesa ativa supõe uma vítima que ainda avança
+sobre a arma; a passiva, uma que já só se protege. As duas podem coexistir num mesmo corpo,
+e a sua topografia — de frente, de lado, por cima — ajuda a ordenar a sequência do ataque.
+
+Sua leitura mais eloquente é, ainda assim, frequentemente a **ausência**. Não haver lesão de
+defesa é compatível com ataque súbito, golpe pelas costas, vítima adormecida, embriagada,
+contida ou já inconsciente. É um indício de circunstância, não de autoria — e, como todo
+indício, admite mais de uma explicação. No jogo, corresponde ao verbete `lesoes_defesa`.
+
+## Capacidade de ação depois da lesão
+
+Uma pergunta que o tribunal fazia ao perito de 1893, e que Taylor discute com franqueza:
+**depois de recebida a ferida mortal, por quanto tempo ainda pôde a vítima agir** — andar,
+falar, revidar, fechar a mão sobre um objeto, arrastar-se para outro cômodo? A resposta muda
+conforme o **sítio** e o **mecanismo**, e é matéria de circunstância (o que se conciliava com
+a cena), não de cravar minutos. O que a época sabia, articulava-o em termos de sobrevida e de
+ato voluntário; a fisiologia fina — a reserva de oxigênio do cérebro medida em segundos — é
+leitura de bastidor, não fala de 1893.
+
+| Mecanismo / sítio | Capacidade de ação residual | Leitura |
+|---|---|---|
+| Ferida do **coração ou de grande vaso** | Preservada por **segundos a poucos minutos** antes do colapso | A vítima ainda corre, luta, agarra: sangue e luta longe do ponto do golpe são compatíveis |
+| **Exsanguinação** (hemorragia sem lesão nervosa central) | Degrada **progressivamente** com a perda de sangue | A ação enfraquece rodada a rodada; a trilha de gotas segue a marcha que definha |
+| **Trauma craniano com perda de consciência** | **Suprimida** enquanto durar o desmaio | Cai onde é golpeada; nada de fuga, nada de defesa depois |
+| **Compressão cervical mantida** (ligadura, esganadura, sufocação) | **Anulada enquanto o meio prende** | Não grita nem foge sob o laço ou a mão; a ação só existe antes de o meio firmar-se |
+| **Veneno** | Latência conforme a espécie | Não há confronto; a ação cessa no colapso, não no ato do agressor |
+
+O ponto médico-legal decisivo, e velho de Taylor: **uma ferida absolutamente mortal não é
+uma ferida instantaneamente incapacitante.** Um homem com o coração transpassado pode
+atravessar um cômodo antes de tombar — e essa sobrevida breve é o que torna legível, na cena,
+a diferença entre o lugar do golpe e o lugar da queda. Os bastidores modernos que consolidam
+o quadro (Karger, sobre a capacidade de ação após ferimentos cardíacos e cranianos; DiMaio,
+*Gunshot Wounds*; Spitz & Fisher, *Medicolegal Investigation of Death*) apenas dão método ao
+que o perito de 1893 já observava caso a caso.
+
+## Lesões de sítio posterior — a assinatura do golpe recebido em fuga
+
+A **topografia** da lesão fala da atitude do corpo no instante do golpe. Lesões na face
+**anterior** — peito, rosto, palmas — supõem quem encara. Lesões no **dorso**, na **nuca**,
+na face posterior dos ombros e das pernas, supõem quem **deu as costas**: vítima que fugia,
+que se voltou para escapar, ou golpeada por trás. É a contraparte da defesa passiva: onde
+esta marca o antebraço erguido de quem se cobre de frente, a lesão de sítio posterior marca
+quem já não se cobre — apenas se afasta.
+
+Como todo indício de circunstância, admite mais de uma leitura (o golpe pelas costas do
+ataque súbito também as produz, sem fuga alguma) e **jamais aponta autoria**. Mas, somada à
+trilha de gotas que se afasta do ponto inicial, à mobília tombada em mais de um cômodo e ao
+corpo caído longe de onde o confronto começou, sustenta a reconstituição de uma vítima que
+**correu antes de cair**. O coroner de 1893 podia legitimamente registrar que os golpes
+alcançaram o dorso — descrição do que se vê, não conclusão sobre quem os desferiu.
 
 ## Implicações para o jogo
 
