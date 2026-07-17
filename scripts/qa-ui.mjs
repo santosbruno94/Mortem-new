@@ -410,12 +410,12 @@ async function main() {
     await visitarEExtrair(page, 'A Estalagem');
     // Onda 6: Walter conversa em diálogo embutido — o álibi nasce na fala; e
     // confrontá-lo com o registro (a própria assinatura das 19h40) desmorona a
-    // diligência E anota a refutação do paradeiro no mural, sem barbante.
+    // álibi do carro das seis E anota a refutação do paradeiro no mural, sem barbante.
     await conversarEmbutido(page, 'Interrogar Walter Arthurs');
     checar('Onda 6: o botão da estalagem abre o diálogo de Walter', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     await page.locator('[data-confrontos] [data-requer-carta="ev_registro_estalagem"]').click();
     await espera(page, 300);
-    checar('Onda 6: o registro desmorona a diligência de Walter', (await page.locator('body').innerText()).includes('Não houve diligência'));
+    checar('Onda 6: o registro desmorona o álibi de Walter', (await page.locator('body').innerText()).includes('Não houve carro'));
     await fecharOverlay(page);
     // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova está
     // na mesa e a caixa de confronto abre a pergunta da estalagem; confrontá-la

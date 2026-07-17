@@ -812,7 +812,7 @@ aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
   (`corrob_estalajadeiro`, refutação por registro); o vidro do mostrador na bainha
   (`ev_vidro_dobra`) e o buril lavado (`ev_estojo_buril`, o nexo) o cravam.
 - **Walter Arthurs** (44, sobrinho, herdeiro único, negociante quebrado) — a **isca
-  do Apressado**: testamento + dívidas + gritos ouvidos da rua + "tomei a diligência
+  do Apressado**: testamento + dívidas + gritos ouvidos da rua + "tomei o carro
   das seis" desmentido pelo registro da estalagem. Mente por vergonha: implorou
   dinheiro às 18h45, foi recusado e pernoitou na vila (segredo `suplica_recusada`;
   o descarte físico está na mesma página — quarto às 19h40, água quente às 21h).
