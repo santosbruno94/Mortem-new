@@ -111,14 +111,21 @@ seguro de vida é móbil de época perfeitamente documentado.
 ## 6. Nomes plausíveis (batismo de personagens)
 
 - **Homens nascidos c. 1820–50** (os velhos de 1893): John, William, Thomas, George,
-  Henry, Joseph, James, Charles.
+  Henry, Joseph, James, Charles; também clássicos da coorte: Edward, Samuel, Richard,
+  Robert, David, Daniel.
 - **Homens c. 1860–75** (adultos jovens): os acima, mais Arthur, Frederick, Albert,
-  Ernest, Walter, Harry, Frank.
-- **Mulheres c. 1820–50**: Mary, Elizabeth, Sarah, Ann/Hannah, Jane, Emma, Eliza, Martha.
+  Ernest, Walter, Harry, Frank; e da moda das décadas de 1860–70: Herbert, Alfred,
+  Sidney, Percy, Edwin.
+- **Mulheres c. 1820–50**: Mary, Elizabeth, Sarah, Ann/Hannah, Jane, Emma, Eliza,
+  Martha; também Margaret, Harriet, Charlotte, Susan, Caroline.
 - **Mulheres c. 1860–75**: Mary, Florence, Annie, Edith, Alice, Ethel, Ada, Emily,
-  Rose. Diminutivos de uso diário: Bess, Polly (Mary), Nell, Maggie.
-- **Sobrenomes** (topo do censo de 1881): Smith (421.703 pessoas), Jones, Williams,
-  Brown, Taylor, Wilson, Evans, Thomas, Roberts, Walker. Numa vila, 2–3 sobrenomes se
+  Rose; e da moda das décadas de 1860–70: Beatrice, Clara, Lily, Gertrude, Agnes,
+  Nellie, Louisa. Diminutivos de uso diário: Bess, Polly (Mary), Nell, Maggie.
+- **Sobrenomes** (faixa alta do censo de 1881, topo ~40): Smith (421.703 pessoas),
+  Jones, Williams, Brown, Taylor, Wilson, Evans, Thomas, Roberts, Walker; seguem na
+  mesma faixa Davies, Robinson, Wood, Thompson, White, Watson, Jackson, Wright,
+  Green, Harris, Cooper, Turner, Hill, Ward, Clarke, Hall, Morris, Moore, Baker,
+  King. Numa vila, 2–3 sobrenomes se
   repetem em famílias não aparentadas de perto — fonte natural de confusão. Gentry usa
   sobrenome de propriedade; nome duplo cheira a pretensão.
 

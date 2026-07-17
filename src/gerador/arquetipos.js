@@ -54,20 +54,37 @@ export const FAIXAS_IDADE = {
 // ---------------------------------------------------------------------
 export const NOMES = {
   masculino: {
-    coorte_1820_50: ['John', 'William', 'Thomas', 'George', 'Henry', 'Joseph', 'James', 'Charles'],
+    coorte_1820_50: [
+      'John', 'William', 'Thomas', 'George', 'Henry', 'Joseph', 'James', 'Charles',
+      'Edward', 'Samuel', 'Richard', 'Robert', 'David', 'Daniel',
+    ],
     coorte_1860_75: [
       'John', 'William', 'Thomas', 'George', 'Henry', 'Joseph', 'James', 'Charles',
       'Arthur', 'Frederick', 'Albert', 'Ernest', 'Walter', 'Harry', 'Frank',
+      'Herbert', 'Alfred', 'Sidney', 'Percy', 'Edwin',
     ],
   },
   feminino: {
-    coorte_1820_50: ['Mary', 'Elizabeth', 'Sarah', 'Hannah', 'Jane', 'Emma', 'Eliza', 'Martha'],
-    coorte_1860_75: ['Mary', 'Florence', 'Annie', 'Edith', 'Alice', 'Ethel', 'Ada', 'Emily', 'Rose'],
+    coorte_1820_50: [
+      'Mary', 'Elizabeth', 'Sarah', 'Hannah', 'Jane', 'Emma', 'Eliza', 'Martha',
+      'Ann', 'Margaret', 'Harriet', 'Charlotte', 'Susan', 'Caroline',
+    ],
+    coorte_1860_75: [
+      'Mary', 'Florence', 'Annie', 'Edith', 'Alice', 'Ethel', 'Ada', 'Emily', 'Rose',
+      'Beatrice', 'Clara', 'Lily', 'Gertrude', 'Agnes', 'Nellie', 'Louisa',
+    ],
   },
 };
 
+// v2 (playtest 16/jul, R2): pool ampliado de 10 para 30 — com elencos de
+// ~8 pessoas por caso e 21 casos embarcados, 10 sobrenomes produziam
+// homônimos entre casos vizinhos (dois "Wilson" em comarcas seguidas).
+// Fonte inalterada: sobrenomes mais frequentes do censo de 1881
+// (Inglaterra e País de Gales), grafias de época.
 export const SOBRENOMES = [
   'Smith', 'Jones', 'Williams', 'Brown', 'Taylor', 'Wilson', 'Evans', 'Thomas', 'Roberts', 'Walker',
+  'Davies', 'Robinson', 'Wood', 'Thompson', 'White', 'Watson', 'Jackson', 'Wright', 'Green', 'Harris',
+  'Cooper', 'Turner', 'Hill', 'Ward', 'Clarke', 'Hall', 'Morris', 'Moore', 'Baker', 'King',
 ];
 
 // ---------------------------------------------------------------------
@@ -94,7 +111,7 @@ export const PROVENIENCIA_TABELAS = {
   faixasIdade:
     'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §2 (casamento ~25–27; criada de 14 banal; patriarca de 70 verossímil)',
   nomes: 'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §6 (nomes de batismo por coorte, E&W 1890)',
-  sobrenomes: 'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §6 (topo do censo de 1881; 2–3 sobrenomes repetem na vila)',
+  sobrenomes: 'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §6 (faixa alta do censo de 1881, topo ~40; 2–3 sobrenomes repetem na vila)',
   motivos:
     'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §4 (renda e preços), §5 (reputação, Church × Chapel) e "Implicações para o jogo" (motivações economicamente calibradas)',
 };

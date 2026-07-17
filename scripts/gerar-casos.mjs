@@ -16,13 +16,15 @@
 //     aproximação) escolheu a_hora_emprestada_replica_96: lojista morto
 //     na própria loja às 21h de 13/out, arma branca premeditada, a criada
 //     da casa com a referência negada como móbil, INT4/WIS4 (o quadrante
-//     de Silas), corpo movido. O que o catálogo v1 NÃO alcança do
-//     original: encenação de hora (relógio recuado), móbil "silenciamento
-//     de fraude" e os periféricos com segredo.
+//     de Silas), corpo movido. O catálogo v2 (correções B7/B8 do playtest
+//     de 16/jul) alcança a encenação de hora (o relógio parado, refutável
+//     pelo corpo) e os periféricos com segredo; segue fora do alcance
+//     apenas o móbil "silenciamento de fraude".
 //   • CASOS_POOL — o banco do modo "caso da comarca" (procedural
 //     aleatório): as primeiras N seeds da série comarca_* cujo caso
 //     resolve com Vitória Absoluta pelo caminho Metódico (validação
-//     abaixo, com as MESMAS funções do motor).
+//     abaixo, com as MESMAS funções do motor — agora inclusive os pilares
+//     de descuidos e de julgar inocentes).
 // =====================================================================
 
 import { writeFileSync } from 'node:fs';
@@ -37,8 +39,9 @@ import { resolverEstadoCarta } from '../src/data/cartas.js';
 // (src/gerador/pacote_gerado.js), para o qa.mjs regenerar e comparar sem
 // importar este script (que grava arquivo ao rodar).
 
-const N_POOL = 8;
-const CANDIDATAS_POOL = Array.from({ length: 40 }, (_, i) => `comarca_${i + 1}`);
+// v2 (playtest 16/jul, P6/M8): o pool sobe de 8 para 20 casos.
+const N_POOL = 20;
+const CANDIDATAS_POOL = Array.from({ length: 120 }, (_, i) => `comarca_${i + 1}`);
 
 // ---------------------------------------------------------------------
 // Validação de solvabilidade pelo caminho Metódico, com as funções do
@@ -90,7 +93,36 @@ function metodicoResolve(pacote) {
   const motivoOk = registradas.some(
     (c) => c.tagsOcultas.motivo === v.motivacaoCorreta && c.tagsOcultas.ligadoA === v.reuCorreto
   );
-  return { ok: janelaOk && mecanismoOk && nexoOk && motivoOk, janela, janelaOk, mecanismoOk, nexoOk, motivoOk };
+  // Descuidos (v2): se a verdade exige a encenação exposta, a peça existe
+  // no catálogo e a janela do corpo a EXCLUI (refutável por construção).
+  const forjada = pacote.cartas.find((c) => c.tagsOcultas?.encenado);
+  const descuidosOk =
+    !v.cenaEncenada ||
+    (!!forjada &&
+      !!janela &&
+      (forjada.tagsOcultas.horaAparente < janela.inicio || forjada.tagsOcultas.horaAparente > janela.fim));
+  // Periféricos (v2): todo não-acusado tem álibi no catálogo; todo
+  // segredo esperado tem o rastro revelador (pertenceA + revelaSegredo).
+  const perifericosOk = Object.entries(v.perifericos).every(([sid, p]) => {
+    const alibi = pacote.cartas.some(
+      (c) => c.tagsOcultas?.subDominio === 'alibi' && c.tagsOcultas.declaranteId === sid
+    );
+    if (!alibi) return false;
+    if (p.veredictoEsperado !== 'inocente_segredo') return true;
+    return pacote.cartas.some(
+      (c) => c.tagsOcultas?.pertenceA === sid && c.tagsOcultas?.revelaSegredo === p.segredo
+    );
+  });
+  return {
+    ok: janelaOk && mecanismoOk && nexoOk && motivoOk && descuidosOk && perifericosOk,
+    janela,
+    janelaOk,
+    mecanismoOk,
+    nexoOk,
+    motivoOk,
+    descuidosOk,
+    perifericosOk,
+  };
 }
 
 // Higiene do pacote: todo marcador aponta carta, toda carta tem marcador.
@@ -170,5 +202,12 @@ const destino = fileURLToPath(new URL('../src/data/casos_gerados.js', import.met
 writeFileSync(destino, cab + corpo);
 
 console.log(`gerar-casos: réplica ${SEED_REPLICA} + pool de ${pool.length} casos (${pool.map((p) => p.seed).join(', ')}).`);
+const encenados = pool.filter((p) => p.pacote.verdadeDeOuro.cenaEncenada).length;
+const comSegredo = pool.filter((p) =>
+  Object.values(p.pacote.verdadeDeOuro.perifericos).some((x) => x.veredictoEsperado === 'inocente_segredo')
+).length;
+console.log(
+  `gerar-casos: pilares v2 — ${encenados}/${pool.length} com encenação de hora; ${comSegredo}/${pool.length} com periférico de segredo (réplica: encenação=${replica.verdadeDeOuro.cenaEncenada}, segredos=${Object.values(replica.verdadeDeOuro.perifericos).filter((x) => x.segredo).length}).`
+);
 if (recusadas.length) console.log(`gerar-casos: recusadas ${recusadas.map((r) => `${r.seed} (${r.motivo})`).join('; ')}.`);
 console.log(`gerar-casos: escrito em src/data/casos_gerados.js (${(cab.length + corpo.length) / 1024 | 0} KiB).`);

@@ -26,11 +26,16 @@
 // REGRAS QUE NÃO CEDEM AQUI:
 //   • tagsOcultas das cartas passam INTACTAS da fatia — a camada lógica
 //     não se toca; este módulo só escreve apresentação.
-//   • verdadeDeOuro: cenaEncenada vira false no PACOTE (o gerador v1 não
-//     produz encenação de HORA — o arrasto do autobattler é contradição
-//     narrativa via livor, não peça refutável; sem peça, exigir descuidos
-//     tornaria a Vitória Absoluta inalcançável). instrumentoCorreto passa
-//     a nomear o tipoVestigio da carta de nexo (métodos sem instrumento —
+//   • verdadeDeOuro (v2, correção do playtest de 16/jul): cenaEncenada é
+//     CONDICIONAL no pacote — true somente quando o montador produz a
+//     peça de hora forjada (cartaHoraForjada: premeditado + INT alta do
+//     assassino), refutável pelos indicadores do corpo; sem a peça,
+//     segue false (exigir descuidos sem peça tornaria a Vitória Absoluta
+//     inalcançável). perifericos é POPULADO (derivarPerifericos): cada
+//     não-acusado tem veredicto esperado, e os segredos ganham rastro
+//     revelador — os dois pilares que o v1 deixava inertes (bugs B7/B8
+//     do relatório de playtest). instrumentoCorreto passa a nomear o
+//     tipoVestigio da carta de nexo (métodos sem instrumento —
 //     esganadura — apontam o pertence arrancado).
 //   • NB de prosa: os templates abaixo passaram pela OS de lapidação
 //     editorial (docs/os-lapidacao-prosa-gerada.md): pipeline
@@ -43,7 +48,7 @@ import { hashString } from '../logic/hash.js';
 import { formatHora, formatHoraComDia, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 import { gerarCasoBruto } from './caso.js';
-import { derivarDialogos, formasDoLugar, profissaoExibida } from './dialogos_gerados.js';
+import { derivarDialogos, formasDoLugar, profissaoExibida, FAIXA_CURTA, variante } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 
 // ---------------------------------------------------------------------
@@ -53,8 +58,9 @@ import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 // a_hora_emprestada_replica_96: lojista morto na própria loja às 21h de
 // 13/out, arma branca premeditada, a criada da casa com a referência
 // negada como móbil (o empregado contra o patrão), INT4/WIS4 (o quadrante
-// de Silas) e corpo movido. O catálogo v1 não alcança: encenação de hora,
-// móbil "silenciamento de fraude", periféricos com segredo.
+// de Silas) e corpo movido. O catálogo v2 alcança a encenação de hora
+// (INT4 premeditado produz a peça) e os periféricos com segredo; segue
+// fora do alcance apenas o móbil "silenciamento de fraude".
 // ---------------------------------------------------------------------
 export const SEED_REPLICA = 'a_hora_emprestada_replica_96';
 export const DIRIGIDO_REPLICA = {
@@ -101,10 +107,202 @@ const PROSA_MOTIVO = {
   despejo: (reu, vitima) =>
     `A ordem de despejo do cottage de ${reu.nome} veio no rasto de queixa que ${vitima.nome} levou ao senhorio.`,
   rivalidade_capela_taverna: (reu, vitima) =>
-    `A queixa pública entre ${reu.nome} e ${vitima.nome} — a capela contra a taverna — está lavrada em ata.`,
+    `A queixa pública entre ${reu.nome} e ${vitima.nome}, a capela contra a taverna, está lavrada em ata.`,
   recasamento_vigiado: (reu, vitima) =>
     `O recasamento de ${reu.nome} andava na boca da vila, e ${vitima.nome} era quem mais falava dele.`,
 };
+
+// ---------------------------------------------------------------------
+// ENCENAÇÃO DE HORA (v2 — bug B8 do playtest): o assassino de INT alta,
+// no premeditado, deixa uma peça de cronologia aparente — o relógio
+// parado numa hora da manhã que o corpo desmente. Espelha o pilar de
+// descuidos do caso-escola: a Verdade de Ouro só exige a encenação
+// exposta quando a peça existe. Hora forjada: 09h15–10h45 de 14/out —
+// por construção, acima do teto de qualquer janela que os indicadores
+// do corpo sustentem à chegada (11h00: a morte gerada é sempre anterior
+// às 3h, e o rigor mais brando fecha a janela em 9). O jogador refuta a
+// peça ligando os fatos temporais do corpo a ela, como no caso-escola.
+// ---------------------------------------------------------------------
+function cartaHoraForjada(bruto) {
+  const { mundo, escolha, crime } = bruto;
+  const assassino = mundo.elenco.find((p) => p.id === crime.assassinoId);
+  if (escolha.cenario !== 'premeditado' || assassino.atributos.INT < 4) return null;
+  const sal = `${bruto.seed}|encenacao`;
+  const horaForjada = 9.25 + (hashString(`${sal}|hora`) % 7) * 0.25;
+  const rotuloHora = formatHora(horaForjada);
+  const base = {
+    id: 'gen_hora_forjada',
+    localidade: 'cena',
+    suporteFisico: 'cena',
+    tagsOcultas: {
+      dominio: 'ambiental',
+      subDominio: 'cronologia_aparente',
+      horaAparente: horaForjada,
+      encenado: true,
+      isca: true,
+    },
+  };
+  const carta =
+    hashString(`${sal}|peca`) % 2 === 0
+      ? {
+          ...base,
+          textoDisplay: 'O Relógio Parado',
+          carimboPadrao: `Relógio de parede parado às ${rotuloHora}`,
+          descricao: `O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em ${rotuloHora}; a corda, provada pela chave, ainda tem volta.`,
+        }
+      : {
+          ...base,
+          textoDisplay: 'O Relógio Tombado',
+          carimboPadrao: `Relógio de mesa parado às ${rotuloHora}`,
+          descricao: `Tombado de bruços no assoalho, a caixa aberta de um lado. Erguido, o vidro estrelado segue inteiro no aro, e os ponteiros marcam ${rotuloHora} debaixo da rachadura.`,
+        };
+  return { carta, horaForjada };
+}
+
+// ---------------------------------------------------------------------
+// PERIFÉRICOS (v2 — bug B7 do playtest): o pilar de julgar os
+// não-acusados, ativado na geração. Cada suspeito que não é o réu
+// recebe um veredicto esperado na Verdade de Ouro:
+//   • inocente_alibi — o paradeiro declarado é verdadeiro (nasce da
+//     rotina) e ganha uma carta de CORROBORAÇÃO na vizinhança
+//     (informativa; sem hora observada, não refuta nada);
+//   • inocente_segredo — a armadilha do jogo: o suspeito esteve à porta
+//     da vítima por razão inocente, MENTE o paradeiro por vergonha e
+//     deixa na cena um rastro (pertenceA + revelaSegredo). Quebrar-lhe
+//     o álibi com o rastro revela o segredo — mentiu, mas por outra
+//     razão que a do crime.
+// Elegível a segredo: quem não é testemunha de carta (a pessoa não pode
+// jurar duas versões da mesma noite) nem tem a cena por rotina na faixa
+// (o paradeiro real já seria a cena). Com dois segredos, os tipos nunca
+// se repetem. O PRIMEIRO segredo ganha também um MÓBIL-ISCA na
+// delegacia (o motivoPotencial da Fase 1 do próprio suspeito): papel
+// mais mentira é a armadilha completa do "mentiu, logo matou".
+// Determinístico por hashString salgado; ordem estável = a ordem
+// alfabética dos suspeitos do pacote (replay byte a byte).
+// ---------------------------------------------------------------------
+const SEGREDOS_GERADOS = ['pedido_recusado', 'acerto_reservado'];
+
+const PROSA_SEGREDO = {
+  pedido_recusado: {
+    textoDisplay: 'O Bilhete Amassado',
+    tipoVestigio: 'bilhete_de_suplica',
+    carimbo: (nome) => `Bilhete na letra de ${nome}`,
+    descricao: (nome) =>
+      `Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de ${nome}: um pedido, a palavra "desta vez" sublinhada, e nenhuma resposta no verso.`,
+  },
+  acerto_reservado: {
+    textoDisplay: 'A Nota por Assinar',
+    tipoVestigio: 'nota_por_assinar',
+    carimbo: (nome) => `Nota de trato com o nome de ${nome}`,
+    descricao: (nome) =>
+      `Meia folha pautada com soma, prazo e o nome de ${nome} por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.`,
+  },
+};
+
+// A janela citada na corroboração espelha JANELA_DECLARADA do derivador
+// de diálogos — as mesmas horas do álibi declarado, dita em palavras.
+const FRASE_JANELA_CORROBORACAO = {
+  noite: 'das oito ao clarear',
+  madrugada: 'das oito ao clarear',
+  dia: 'do meio-dia às seis',
+};
+
+function derivarPerifericos({ bruto, suspeitos, cartas }) {
+  const { mundo, crime, escolha } = bruto;
+  const pessoas = indicePorId(mundo.elenco);
+  const vitima = pessoas.get(crime.vitimaId);
+  const sal = `${bruto.seed}|perifericos`;
+  const testemunhas = new Set(cartas.map((c) => c.origemTestemunha).filter(Boolean));
+
+  const candidatos = suspeitos.filter((s) => s.id !== crime.assassinoId);
+  const elegiveis = candidatos.filter((s) => {
+    const p = pessoas.get(s.id);
+    return p && !testemunhas.has(s.id) && p.pacoteEspacial.rotina[escolha.faixa] !== escolha.localId;
+  });
+  const nSegredos =
+    elegiveis.length === 0 ? 0 : 1 + (hashString(`${sal}|n`) % Math.min(2, elegiveis.length));
+  const inicio = elegiveis.length ? hashString(`${sal}|quem`) % elegiveis.length : 0;
+  const comSegredo = [];
+  for (let i = 0; i < nSegredos; i += 1) comSegredo.push(elegiveis[(inicio + i) % elegiveis.length].id);
+  const tipoBase = hashString(`${sal}|tipo`) % SEGREDOS_GERADOS.length;
+
+  const perifericos = {};
+  const cartasNovas = [];
+  const segredos = {};
+  for (const s of candidatos) {
+    const pessoa = pessoas.get(s.id);
+    if (comSegredo.includes(s.id)) {
+      // Os tipos alternam a partir do sorteio: dois segredos, dois papéis.
+      const tipo = SEGREDOS_GERADOS[(tipoBase + comSegredo.indexOf(s.id)) % SEGREDOS_GERADOS.length];
+      perifericos[s.id] = { veredictoEsperado: 'inocente_segredo', segredo: tipo };
+      segredos[s.id] = tipo;
+      const p = PROSA_SEGREDO[tipo];
+      cartasNovas.push({
+        id: `gen_segredo_${s.id}`,
+        localidade: 'cena',
+        suporteFisico: 'cena',
+        textoDisplay: p.textoDisplay,
+        carimboPadrao: p.carimbo(pessoa.nome),
+        descricao: p.descricao(pessoa.nome),
+        tagsOcultas: {
+          dominio: 'vestigio',
+          subDominio: 'rastro_de_visita',
+          tipoVestigio: p.tipoVestigio,
+          pertenceA: s.id,
+          revelaSegredo: tipo,
+        },
+      });
+    } else {
+      perifericos[s.id] = { veredictoEsperado: 'inocente_alibi', segredo: null };
+      const lugarId = pessoa.pacoteEspacial.rotina[escolha.faixa];
+      const forma = formasDoLugar(nomeDoPredio(mundo.cidade, lugarId));
+      const confirmante = mundo.elenco.find(
+        (o) =>
+          o.id !== s.id &&
+          o.id !== crime.vitimaId &&
+          o.id !== crime.assassinoId &&
+          o.pacoteEspacial.rotina[escolha.faixa] === lugarId
+      );
+      const fraseJanela = FRASE_JANELA_CORROBORACAO[escolha.faixa];
+      cartasNovas.push({
+        id: `gen_corrobora_${s.id}`,
+        localidade: 'vizinhanca',
+        suporteFisico: 'testemunho',
+        textoDisplay: `Quem Responde por ${pessoa.nome}`,
+        carimboPadrao: `Paradeiro de ${pessoa.nome}, confirmado`,
+        descricao: confirmante
+          ? `${confirmante.nome} esteve ${forma.em} ${FAIXA_CURTA[escolha.faixa]} e dá ${pessoa.nome} por presente, ${fraseJanela}. Mais de uma boca diz o mesmo.`
+          : `A rua dá ${pessoa.nome} ${forma.em} ${FAIXA_CURTA[escolha.faixa]}, ${fraseJanela}, por mais de uma janela.`,
+        tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: s.id },
+      });
+    }
+  }
+
+  // O móbil-isca do primeiro segredo: o papel que faz o mentiroso parecer
+  // culpado. Mesmo shape do móbil verdadeiro — a simetria é a armadilha.
+  if (comSegredo.length > 0) {
+    const alvo = pessoas.get(comSegredo[0]);
+    const frase = PROSA_MOTIVO[alvo.motivoPotencial];
+    cartasNovas.push({
+      id: `gen_movel_${alvo.id}`,
+      localidade: 'delegacia',
+      suporteFisico: 'registro',
+      textoDisplay: `Papéis de ${alvo.nome}`,
+      carimboPadrao: `Móbil de ${alvo.nome}`,
+      descricao: frase
+        ? frase(alvo, vitima)
+        : `Papéis da delegacia ligam ${alvo.nome} ${vitima.genero === 'feminino' ? 'à morta' : 'ao morto'}.`,
+      tagsOcultas: {
+        dominio: 'comportamental',
+        subDominio: 'motivo',
+        motivo: alvo.motivoPotencial,
+        ligadoA: alvo.id,
+      },
+    });
+  }
+
+  return { perifericos, cartasNovas, segredos };
+}
 
 // A lesão fatal por método: nome de carta e laudo de exame próximo.
 const PROSA_LESAO = {
@@ -486,6 +684,11 @@ function montarLocalidades(bruto, cartas) {
     }${texturaVestigios.size ? `; ${[...texturaVestigios].join('; ')}.` : '.'}`,
   ];
   const marcadoresCena = [];
+  // A peça de hora forjada abre a lista: a isca é vistosa por desenho —
+  // existe para tomar o olho (o chamariz honesto do plantio de pistas).
+  if (temCarta('gen_hora_forjada')) {
+    marcadoresCena.push('No cômodo, à vista de quem entra: [[gen_hora_forjada]].');
+  }
   for (const id of ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas']) {
     const carta = cartas.find((c) => c.id === id && c.localidade === 'cena');
     if (!carta) continue;
@@ -502,6 +705,19 @@ function montarLocalidades(bruto, cartas) {
       marcadoresCena.push(frase);
     }
   }
+  // Os rastros de visita dos periféricos com segredo: itens de MIOLO da
+  // lista (plantio — a pista foge das posições de acento), com vizinhos
+  // de mesmo peso gramatical em volta.
+  const frasesSegredo = [
+    (id) => `Junto ao rodapé, fora do caminho das pisadas: [[${id}]].`,
+    (id) => `Sob a beira de um móvel, onde a vassoura não alcança: [[${id}]].`,
+  ];
+  cartas
+    .filter((c) => c.localidade === 'cena' && (c.tagsOcultas || {}).subDominio === 'rastro_de_visita')
+    .forEach((c, i) => {
+      const frase = frasesSegredo[i % frasesSegredo.length](c.id);
+      marcadoresCena.splice(Math.min(1 + i, marcadoresCena.length), 0, frase);
+    });
   const cena = {
     id: 'cena',
     rotuloMesa: 'A Cena do Crime',
@@ -522,9 +738,23 @@ function montarLocalidades(bruto, cartas) {
     subtitulo: 'Os papéis do caso',
     acoesEspeciais: [],
     prosa: [
-      `A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam ${femV ? 'da morta' : 'do morto'} e da vila, e deixa {g:o senhor|a senhora} ler por si.`,
+      variante(
+        [
+          `A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam ${femV ? 'da morta' : 'do morto'} e da vila, e deixa {g:o senhor|a senhora} ler por si.`,
+          `A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre ${femV ? 'a morta' : 'o morto'} está aí para quem leia.`,
+        ],
+        `${bruto.seed}|prosa|delegacia`
+      ),
       ...(evVisto ? [] : temCarta('gen_visto_vivo') ? [fraseVisto] : []),
-      'Entre os papéis recolhidos por precaução: [[gen_motivo]].',
+      // Com móbil-isca, os dois papéis dividem a mesma frase e o mesmo
+      // peso; a isca fica no acento do fim (o chamariz honesto), e o
+      // móbil verdadeiro, no miolo.
+      (() => {
+        const isca = cartas.find((c) => c.id.startsWith('gen_movel_'));
+        return isca
+          ? `Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[${isca.id}]].`
+          : 'Entre os papéis recolhidos por precaução: [[gen_motivo]].';
+      })(),
       // A árvore de diálogo procedural (OS própria): os interrogatórios
       // vivem aqui — a sala do expediente serve de sala de inquérito.
       'Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela.',
@@ -568,8 +798,20 @@ function montarLocalidades(bruto, cartas) {
     subtitulo: 'As casas em volta, as janelas que dão para a rua',
     acoesEspeciais: [],
     prosa: [
-      'As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.',
+      variante(
+        [
+          'As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.',
+          'A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.',
+        ],
+        `${bruto.seed}|prosa|vizinhanca`
+      ),
       ...(evRuido ? [] : temCarta('gen_ruido_ouvido') ? [fraseRuido] : []),
+      ...(() => {
+        const corroboracoes = cartas.filter((c) => c.id.startsWith('gen_corrobora_'));
+        return corroboracoes.length
+          ? [`Perguntada porta a porta, a rua também responde pelos seus: ${corroboracoes.map((c) => `[[${c.id}]]`).join(', ')}.`]
+          : [];
+      })(),
       ...(cartaPrenuncio ? [`Uma porta se entreabre à passagem {g:do perito|da perita}: [[${cartaPrenuncio.id}]].`] : []),
     ],
     blocosContingentes: [
@@ -607,19 +849,26 @@ function montarLocalidades(bruto, cartas) {
 // o resto da vila é outro (1h por trecho).
 // ---------------------------------------------------------------------
 function montarMapa(localidades) {
+  // O nó da diligência (v2 — lacuna D6 do playtest) nasce OCULTO: só o
+  // móbil lavrado nos papéis dá causa à busca nos pertences de alguém.
+  // Extrair gen_motivo revela o nó — a progressão de mapa do caso-escola
+  // (o gabinete Pettigrew), emulada com o que o caso gerado tem.
   const nosMapa = localidades.map((loc) => ({
     id: loc.id,
     rotulo: loc.rotuloMesa,
     grupo: loc.id === 'corpo' || loc.id === 'cena' ? 'cena_predio' : 'vila',
-    desbloqueadoInicio: true,
+    desbloqueadoInicio: loc.id !== 'oficio_do_reu',
   }));
+  const leads = localidades.some((l) => l.id === 'oficio_do_reu')
+    ? [{ cartaId: 'gen_motivo', revelaNo: 'oficio_do_reu', nota: 'O nome nos papéis dá causa à diligência.' }]
+    : [];
   const custos = {
     'cena_predio|cena_predio': 0,
     'cena_predio|vila': 1,
     'vila|cena_predio': 1,
     'vila|vila': 1,
   };
-  return { nosMapa, custos, leads: [] };
+  return { nosMapa, custos, leads };
 }
 
 // ---------------------------------------------------------------------
@@ -788,15 +1037,24 @@ export function montarPacoteGerado(seed, opts = {}) {
   const bruto = gerarCasoBruto(seed, opts);
   const sal = bruto.seed;
   const cartas = realizarCartas(bruto);
+  const suspeitos = montarSuspeitos(bruto);
+  // v2 (playtest 16/jul): a peça de hora forjada e a camada de
+  // periféricos entram no catálogo ANTES das localidades — a prosa
+  // precisa dos ids para plantar os marcadores.
+  const encenacao = cartaHoraForjada(bruto);
+  if (encenacao) cartas.push(encenacao.carta);
+  const perif = derivarPerifericos({ bruto, suspeitos, cartas });
+  cartas.push(...perif.cartasNovas);
   const localidades = montarLocalidades(bruto, cartas);
   const { nosMapa, custos, leads } = montarMapa(localidades);
-  const suspeitos = montarSuspeitos(bruto);
   const abertura = montarAbertura(bruto, sal, suspeitos);
   // A árvore de diálogo procedural (OS própria): uma árvore por suspeito,
   // embutida na delegacia, + as cartas de álibi que os beats sustentam.
   // As cartas de álibi entram no FIM do catálogo (ordem estável, replay);
   // o marcador delas vive nas falas da árvore, não na prosa de localidade.
-  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos });
+  // Os segredos dos periféricos chegam ao derivador: quem os guarda
+  // declara a moradia (a mentira de vergonha que o rastro desmente).
+  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos });
   cartas.push(...cartasAlibi);
 
   // A carta de NEXO define o instrumento que o veredicto cobra: o método
@@ -809,10 +1067,12 @@ export function montarPacoteGerado(seed, opts = {}) {
     ...bruto.fatiaForense.verdadeDeOuro,
     id: `gerado_${sal}`,
     instrumentoCorreto: cartaNexo ? cartaNexo.tagsOcultas.tipoVestigio : bruto.fatiaForense.verdadeDeOuro.instrumentoCorreto,
-    // v1: o gerador não produz encenação de HORA (peça refutável); sem a
-    // peça, o pilar de descuidos não pode ser exigido (ver cabeçalho).
-    cenaEncenada: false,
-    horaForjada: null,
+    // v2: o pilar de descuidos só é exigido quando a peça de hora forjada
+    // existe (ver cabeçalho); o de julgar inocentes, sempre que há
+    // não-acusados — os dois pilares do caso-escola, de volta ao gerado.
+    cenaEncenada: !!encenacao,
+    horaForjada: encenacao ? encenacao.horaForjada : null,
+    perifericos: perif.perifericos,
   };
 
   return {
@@ -854,5 +1114,6 @@ export function resumoDoCasoGerado(seed, opts = {}) {
     hora: formatHora(bruto.escolha.hora),
     local: bruto.escolha.localId,
     eventos: bruto.interferencia.eventos.map((e) => e.tipo),
+    encena: !!cartaHoraForjada(bruto),
   };
 }

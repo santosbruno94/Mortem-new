@@ -2241,14 +2241,24 @@ function perfisDoCasoGerado(pacote) {
       (id) => idsCartas.has(id) && s().extrairCarta(id)
     );
     s().viajarPara('cena');
-    ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas'].forEach((id) => {
+    // v2: a peça de hora forjada e os rastros de visita dos periféricos
+    // com segredo também vivem na cena — o Metódico recolhe tudo.
+    ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas', 'gen_hora_forjada'].forEach((id) => {
       const c = pacote.cartas.find((x) => x.id === id);
       if (c && c.localidade === 'cena') s().extrairCarta(id);
     });
+    pacote.cartas
+      .filter((c) => c.localidade === 'cena' && (c.tagsOcultas || {}).subDominio === 'rastro_de_visita')
+      .forEach((c) => s().extrairCarta(c.id));
     s().viajarPara('vizinhanca'); // antes do móbil: extração do móbil é gatilho comum
     if (idsCartas.has('gen_ruido_ouvido')) s().extrairCarta('gen_ruido_ouvido');
     s().viajarPara('delegacia');
     ['gen_visto_vivo', 'gen_motivo'].forEach((id) => idsCartas.has(id) && s().extrairCarta(id));
+    // v2: os álibis (cartas dos beats de diálogo) entram na mesa — o juízo
+    // periférico do Metódico é perícia, não convicção.
+    for (const susp of pacote.suspeitos) {
+      if (idsCartas.has(`gen_alibi_${susp.id}`)) s().extrairCarta(`gen_alibi_${susp.id}`);
+    }
     if (pacote.cartas.some((c) => c.localidade === 'oficio_do_reu')) {
       s().viajarPara('oficio_do_reu');
       s().extrairCarta('gen_instrumento');
@@ -2280,6 +2290,21 @@ function perfisDoCasoGerado(pacote) {
   s().definirCausa(causaGerada ? causaGerada.id : null);
   s().definirMotivacao('gen_motivo');
   ligarTripe(registradas);
+  // v2 — os dois pilares reativados no gerado:
+  // (a) descuidos: fatos temporais do corpo refutam a peça encenada;
+  if (verdade.cenaEncenada) {
+    for (const c of registradas.filter((x) => x.tagsOcultas.dominio === 'temporal')) {
+      ligar(c.id, 'gen_hora_forjada');
+    }
+  }
+  // (b) juízos: todo periférico declarado inocente; o de segredo, com o
+  // álibi quebrado pelo próprio rastro (a mentira de vergonha exposta).
+  for (const [suspeitoId, p] of Object.entries(verdade.perifericos || {})) {
+    s().definirJuizo(suspeitoId, 'inocente');
+    if (p.veredictoEsperado === 'inocente_segredo') {
+      ligar(`gen_segredo_${suspeitoId}`, `gen_alibi_${suspeitoId}`);
+    }
+  }
   s().submeterAcusacao();
   resultados.metodico = s().veredicto.tipo;
   resultados.monologoGeradoOk = gerarMonologo(s().veredicto, s().detective).blocos.length > 0;
