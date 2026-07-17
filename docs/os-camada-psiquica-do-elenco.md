@@ -286,3 +286,63 @@ deve ser perceptível o bastante para sustentar hipótese e insuficiente para
 condenar — o veredicto segue material. O playtest da Fase 5 verifica: (a) o
 falso-destoante existe e engana; (b) nenhuma superfície nomeia rótulo; (c) a
 mentira do inocente continua distinguível da do culpado só por materialidade.
+
+---
+
+## Ata de fechamento — 17/07/2026
+
+**Execução integral, fases 0–5, um commit por fase, nesta branch/PR.** Nenhum ponto
+de parada se ativou; nenhuma divergência KB × motor surgiu que exigisse decisão do
+usuário. Registro fase a fase:
+
+- **Commit inicial:** esta OS gravada em `docs/os-camada-psiquica-do-elenco.md`.
+- **Fase 0 (reparos de fonte):** MBTI — a alegação sobre o manual (35%/4 semanas) não
+  se verificou na fonte primária; saiu do texto com marca `[conferir]` e entrou a
+  régua de Pittenger (1993: reteste de 5 semanas, ~50% reclassificados em ≥1 escala;
+  2005: 39–76% no tipo de 4 letras). BDSM 1,8%/2,2%/1,3% apontado à primária
+  (Richters et al. 2008, *J Sex Med*). CID-11 §2 com as duas residuais. §6.1 com o
+  Homicide Index do ONS (E&W, YE mar/2023: 590 homicídios; ~51% briga/vingança; 35%
+  das mulheres adultas por parceiro/ex; 19% dos homens por estranho) — ressalva
+  geográfica eliminada.
+- **Fase 1 (catálogo v1):** §7 de `sistemas-arquetipicos-alem-dos-12.md` promovido a
+  v1 com o 11º vetor **Vigia** (7.1, 7.2 e novo §7.4.1, proveniência na KB); médium
+  analisado pelos critérios do §6 e decidido **tempero** do Devoto/Erudito (falha a
+  ortogonalidade à profissão — §7.4.2; o [DECISÃO DO USUÁRIO] previsto NÃO se ativou
+  porque a análise não indicou 12º vetor); nota "Amante" registrada (§7.4.3);
+  referências cruzadas de `arquetipos-e-casting.md` atualizadas.
+- **Fase 2 (spec):** §8.2–8.4 preenchidos (sais concretos; a "prioridade isca"
+  traduzida ao fluxo gerado — prioridade aos coabitantes da vítima e preferência do
+  destoante ao móbil-isca no montador; matriz de encenação com proveniência por item);
+  `game-design-simulacao.md` ganhou a segunda coluna no §4.1 e o §4.3 "Base-rates:
+  mundo × caso".
+- **Fase 3 (implementação):** `src/gerador/vetores_psiquicos.js` (catálogo §8.1 +
+  matriz §8.4 + sorteio + desencaixe + compilação §4.5); integração em `caso.js`
+  (campo `psique` do caso bruto: `consequencias` + `log`) e em `pacote_gerado.js`
+  (preferência §8.3.4). Regeneração de `casos_gerados.js` ANTECIPADA para este commit
+  (precedente da OS de lapidação: fonte + `gerar:casos` juntos) para manter o portão
+  byte a byte verde em todo commit — a Fase 5 conferiu que nada mais restava. Pool
+  inalterado (mesmas 20 seeds).
+- **Fase 4 (guardas):** seis guardas novas no `qa.mjs` (catálogo íntegro com degrau
+  raro alcançável; lint L1; lint L2 por segmento de identificador; não-vazamento no
+  pacote; determinismo da psique; anti-tell em 50 seeds). A L2 acusou e corrigiu um
+  identificador real (`hexParaVetor` → `hexParaVec3`) na primeira execução.
+- **Fase 5 (fechamento):** playtest mecânico em
+  `docs/playtest-os-psiquica-2026-07-17.md` — §8.5(a) destoante em 20/20, portador da
+  isca em 11/20 (demais inelegíveis pelas regras do montador, conforme spec); (b)
+  não-vazamento verde; (c) 4 perfis → 4 desfechos no pool regenerado. Nenhuma prosa
+  nova (templates lapidados reaproveitados) ⇒ `revisar-prosa` não exigível;
+  `lint-prosa` verde. `npm run build`, `qa.mjs` e `qa-ui.mjs` verdes.
+
+**Notas para OS futura (melhorias percebidas, NÃO implementadas — regra do cabeçalho):**
+
+1. **Consumo das flags no diálogo gerado** (`dialogos_gerados.js`): `acusa_com_fervor`
+   vazando projeção nos beats, `omite_por_decoro` no tom evasivo, `mente_com_calma`
+   sem tell de repetição, e o `gatilho_de_complexo:<tema>` como a pergunta que
+   desmonta a compostura — as flags já saem compiladas do gerador; falta a boca.
+2. **Realização física dos pools de encenação** (§8.4) no `RegistroDoCrime`/montador
+   (novas cartas por item de pool) — destacada pela válvula do §7 da OS.
+3. **Calibragem da preferência do destoante:** quando existem vários destoantes natos,
+   preferir o que estará na lista de suspeitos E é elegível a segredo elevaria os
+   11/20 sem tocar nas regras do montador.
+4. **Tempero médium:** realizar a sombra alternativa do Devoto/Erudito quando a camada
+   de segredos ganhar catálogo próprio.
