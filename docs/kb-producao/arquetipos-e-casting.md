@@ -5,7 +5,10 @@
 > das aparências: computa-se, extrai-se dele consequências, e **descarta-se o rótulo** antes
 > do pacote de caso. Alinha-se ao [`contrato-papeis-e-gerador.md`](./contrato-papeis-e-gerador.md)
 > (a taxonomia de `src/data/papeis.js`) e ao `docs/game-design-simulacao.md` (o gerador por
-> simulação).
+> simulação). Aprofundamentos posteriores: [`psicologia-pos-junguiana.md`](./psicologia-pos-junguiana.md)
+> (Jung nas fontes primárias, escolas pós-junguianas e a recepção científica atual) e
+> [`sistemas-arquetipicos-alem-dos-12.md`](./sistemas-arquetipicos-alem-dos-12.md) (por que a
+> caixa dos 12 aperta, sistemas alternativos e um catálogo-candidato próprio, `[PROPOSTA]`).
 
 ---
 
@@ -69,9 +72,10 @@ ameaça mantendo a autoimagem intacta. O último ponto é crucial: o assassino s
 comete o ato **acreditando-se ainda virtuoso** — e é essa auto-justificação que produz as
 **mentiras coerentes** (§3).
 
-Os "12 arquétipos" (Mark & Pearson, 2001) servem de *starter kit* — mas são **elaboração
-comercial pós-junguiana**, com listas que divergem entre si; o que importa é o vetor (motivo ×
-medo × sombra), não o nome:
+Os "12 arquétipos" servem de *starter kit* — mas são **elaboração pós-junguiana de
+autoajuda/marketing** (nascem em Pearson, 1991; a aplicação a marcas é Mark & Pearson, 2001 —
+linhagem detalhada em [`sistemas-arquetipicos-alem-dos-12.md`](./sistemas-arquetipicos-alem-dos-12.md) §0–1),
+com listas que divergem entre si; o que importa é o vetor (motivo × medo × sombra), não o nome:
 
 | Arquétipo | Sombra ativada | Móbil típico | A "verdade" que conta a si mesmo |
 |---|---|---|---|
