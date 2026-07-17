@@ -98,6 +98,26 @@ A OS `docs/os-confronto-estendido.md` (Fases 1–2) fechou ou reduziu parte dest
   cena jogável** dependem de âncora espacial (água/escada) que a geração atual não modela
   (decisão D2). São lacunas de *motor/espaço*, não de KB.
 
+## Cobertura acrescentada por `encenacao.md` e `supressao-de-vestigios.md` (jul/2026)
+
+Os dois arquivos novos da KB fecham e engrossam este mapa:
+
+- **Lacuna 2 (queimaduras e morte pelo fogo): fechada, pela via da encenação.** Não pelo arquivo
+  dedicado que a lacuna sugeria, e sim pelo dossiê "corpo queimado (falso acidente de incêndio)"
+  de `encenacao.md`: fuligem nas vias como prova de que respirava nas chamas, sangue cor de
+  cereja (carboxi-hemoglobina) e sangue escuro se a morte foi anterior, queimadura sem halo
+  eritematoso nem vesícula sobre cadáver, e a atitude de pugilista registrada como achado que
+  **não prova nada** sobre vida ou morte. Cobre o que a lacuna pedia — distinguir "morreu no
+  fogo" de "queimado já morto" — sob o ângulo do disfarce, que é o ângulo que MORTEM usa.
+- **Novo, fora do mapa original:** `supressao-de-vestigios.md` cobre a limpeza e a queima de
+  vestígios (não do corpo): os quatro reagentes de mancha de sangue (guaiaco de Van Deen, 1862;
+  cristais de Teichmann, 1853; microespectroscopia de Sorby, 1865; azul da Prússia), a lacuna
+  serológica sangue humano × animal (micrometria de Gulliver, 1875, prova de exclusão fraca; a
+  precipitina de Uhlenhuth só chega em 1901), a datação grosseira da mancha por cor e
+  solubilidade, e a supressão inocente (pudor, estigma do suicídio, reflexo da criada). É matéria
+  que nenhuma das 10 lacunas acima nomeava à parte; complementa `vestigios.md` e dá a razão
+  forense da cláusula §3.3 do gerador — limpar converte o óbvio em sutil, nunca em zero.
+
 ## Divergências / notas KB × conhecimento de época (sem tocar em [MOTOR])
 
 - **Fusão incisa/perfurante** — já registrada honestamente em `traumas.md` (§ Divergências).
