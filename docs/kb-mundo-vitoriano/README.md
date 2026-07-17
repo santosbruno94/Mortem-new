@@ -11,6 +11,10 @@ motivações, rotinas, álibis) e à prosa de ambientação. Complementa — nã
 | Arquivo | Conteúdo |
 |---|---|
 | [`arquitetura-e-espacos.md`](./arquitetura-e-espacos.md) | Tipologia de edifícios, materiais, interiores por classe, luz e escuridão de outubro, plantas e circulação, fechaduras/janelas/quintais. |
+| [`arquitetura-em-detalhe.md`](./arquitetura-em-detalhe.md) | Detalhe fino do edifício: dimensões reais, fachadas e janelas por geração, construção interna, anexos de quintal, tipos de prédio adicionais, igreja/adro/pub por dentro, vidro e ferragem, patologias e idade aparente. |
+| [`urbanismo-e-morfologia.md`](./urbanismo-e-morfologia.md) | O traçado da vila: tipos morfológicos, anatomia da High Street, espaço público, ruas e infraestrutura, rede de caminhos, escalas e distâncias, zonas de som/cheiro, limites, vila × market town. |
+| [`mobiliario-por-classe.md`](./mobiliario-por-classe.md) | Mobília cômodo a cômodo e classe a classe: cozinha, parlour, quarto, jantar/estudo, comércio e ofício, pisos e têxteis, penhor e segunda mão, preços calibrados, o que denuncia um interior. |
+| [`utensilios-e-objetos.md`](./utensilios-e-objetos.md) | Objetos de mão: cozinha, mesa e chá, lavanderia, luz e fogo, higiene, escrita, fumo, ferramentas, remédios e venenos, miudezas de valor — cada um como arma improvisada, âncora de vestígio e leitura social. |
 | [`demografia-e-sociedade.md`](./demografia-e-sociedade.md) | Pirâmide social da vila, formas de tratamento, demografia, ocupações do censo de 1891, salários e preços, reputação, nomes plausíveis. |
 | [`economia-e-estrutura-social.md`](./economia-e-estrutura-social.md) | O quadro macro: a Long Depression e a depressão agrícola, a classe como sistema de status, desigualdade nacional, a mulher diante da lei (Married Women's Property Acts), a vila como panóptico. |
 | [`vida-cotidiana.md`](./vida-cotidiana.md) | O relógio do dia por classe, refeições e seus nomes, higiene, trabalho de outubro, correio/telégrafo, hábitos, âncoras temporais públicas. |
