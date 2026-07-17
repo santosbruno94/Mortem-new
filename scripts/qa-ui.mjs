@@ -439,8 +439,8 @@ async function main() {
     checar('Etapa 1: o lembrete nomeia quem foi encontrado no local', (await page.locator('body').innerText()).includes('visitado · Davey Tull'));
     // Onda 6: Agnes e Grey agora recebem em DIÁLOGO (conversão integral) —
     // as cartas (álibi, comportamento) nascem das falas, pelos assuntos.
-    await interrogarEExtrair(page, 'A Papelaria');
-    checar('Onda 6: a papelaria abre em diálogo', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
+    await interrogarEExtrair(page, 'A Loja da Sra. Rooke');
+    checar('Onda 6: a loja e correio abre em diálogo', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
     await fecharOverlay(page);
     await interrogarEExtrair(page, 'O Moinho');
     await fecharOverlay(page);

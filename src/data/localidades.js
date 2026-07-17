@@ -153,8 +153,8 @@ export const LOCALIDADES = [
   },
   {
     id: 'papelaria',
-    rotuloMesa: 'A Papelaria',
-    titulo: 'A Papelaria da High Street',
+    rotuloMesa: 'A Loja da Sra. Rooke',
+    titulo: 'A Loja e Correio da High Street',
     subtitulo: 'Sra. Agnes Rooke, viúva, 58 anos',
     acoesEspeciais: [],
     // Onda 6: este nó é INTERROGATÓRIO EM DIÁLOGO — a prosa (falas, reações,

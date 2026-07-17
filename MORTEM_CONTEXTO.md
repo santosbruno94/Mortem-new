@@ -816,7 +816,7 @@ aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
   das seis" desmentido pelo registro da estalagem. Mente por vergonha: implorou
   dinheiro às 18h45, foi recusado e pernoitou na vila (segredo `suplica_recusada`;
   o descarte físico está na mesma página — quarto às 19h40, água quente às 21h).
-- **Sra. Agnes Rooke** (58, viúva, papelaria; noiva secreta da vítima) — a **isca
+- **Sra. Agnes Rooke** (58, viúva, loja e correio, postmistress da vila; noiva secreta da vítima) — a **isca
   secundária**: a última a vê-lo (ceia 20h05–20h45; a senhora na viela). Mente por
   decoro ("em casa desde as seis"); a cesta de ceia e o aro de ouro por gravar
   revelam o `noivado_secreto`. A morte a arruína — nada herda.

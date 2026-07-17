@@ -90,12 +90,17 @@
 
 ## Sra. Agnes Rooke (a inocente que mente — o decoro)
 
-- **Quem é:** viúva, 58, dona da papelaria; noiva secreta da vítima (o casamento
-  marcado revogaria o testamento). Ceou com ele às 20h de sexta e mente por decoro.
+- **Quem é:** viúva, 58, dona da loja e correio (postmistress da vila); noiva secreta
+  da vítima (o casamento marcado revogaria o testamento). Ceou com ele às 20h de sexta
+  e mente por decoro.
+- **Motivo (ficha, não fala):** como postmistress, manuseia e vê a correspondência de
+  toda a vila; quem vive do sigilo alheio é quem mais teme o falatório, e o ofício
+  reforça o decoro. O idioleto não muda por causa disso.
 - **Registro:** formal, econômico, de dona de loja que não deve satisfação.
 - **Ritmo:** respostas exatas do tamanho da pergunta; nada de monossílabo servil —
   frase inteira, e ponto final.
-- **Léxico:** de papelaria e de luto (papel de carta, tarja, encomenda, serão).
+- **Léxico:** de loja, de correio e de luto (papel de carta, tarja, encomenda, selo,
+  franquia, serão).
 - **Tique:** ao nome do morto, a mão procura a beira do balcão; a voz não muda. Alinha
   o que estiver ao alcance (cadernos, lombos de livro) enquanto responde.
 - **Amostra:** *"Fechei a loja às seis e recolhi-me. Uma viúva não tem serões. Há mais

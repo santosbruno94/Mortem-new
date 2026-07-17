@@ -93,7 +93,7 @@ export const PERGUNTAS_BRIEFING = [
     id: 'quem_vive',
     pergunta: 'Quem vivia ou trabalhava com a vítima?',
     resposta:
-      '"Viúvo, sem filhos; morava sobre a própria loja. Na oficina, dois: Silas Crane, o oficial que o achou, e o aprendiz, o rapazinho Tull. Fora isso, a vila — e a Sra. Rooke, da papelaria em frente, que era das poucas visitas que o velho recebia."',
+      '"Viúvo, sem filhos; morava sobre a própria loja. Na oficina, dois: Silas Crane, o oficial que o achou, e o aprendiz, o rapazinho Tull. Fora isso, a vila — e a Sra. Rooke, da loja e correio em frente, que era das poucas visitas que o velho recebia."',
   },
 ];
 

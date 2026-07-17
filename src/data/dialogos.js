@@ -210,7 +210,7 @@ export const DIALOGOS = {
     nos: {
       abertura: {
         fala: [
-          'A papelaria cheira a goma e a papel novo; o balcão reluz de cera. Sobre o mostrador, apartado do resto, papel de carta com tarja de luto. A Sra. Agnes Rooke atende de pé, do lado de dentro do balcão, e mede o visitante por cima dos óculos. "{detective.title}." Não oferece cadeira. Espera a pergunta.',
+          'A loja cheira a goma e a papel novo; o balcão reluz de cera. Ao fundo, o postigo do correio e a balança de cartas, com algumas por despachar. Sobre o mostrador, apartado do resto, papel de carta com tarja de luto. A Sra. Agnes Rooke atende de pé, do lado de dentro do balcão, e mede o visitante por cima dos óculos. "{detective.title}." Não oferece cadeira. Espera a pergunta.',
         ],
         opcoes: [
           { rotulo: '"A senhora esconde a sua noite de sexta. Onde esteve?"', vaiPara: 'b1_firme', tom: 'firme' },
@@ -256,7 +256,7 @@ export const DIALOGOS = {
       },
       b1_obliquo: {
         fala: [
-          '"Fecho quando a rua esvazia; papelaria não é taberna." O olhar não larga o visitante, mas a sexta ela dá, correta e curta: [[alibi_agnes]].',
+          '"Fecho quando a rua esvazia; loja não é taberna." O olhar não larga o visitante, mas a sexta ela dá, correta e curta: [[alibi_agnes]].',
         ],
         opcoes: [
           { rotulo: '"O que a vila dizia do Sr. Arthurs?"', vaiPara: 'b2_firme', tom: 'firme' },

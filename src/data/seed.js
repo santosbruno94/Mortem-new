@@ -57,7 +57,7 @@ export const SUSPEITOS = [
     id: 'agnes_rooke',
     nome: 'Sra. Agnes Rooke',
     idade: 58,
-    relacao: 'Viúva, dona da papelaria da High Street',
+    relacao: 'Viúva, dona da loja e correio da High Street',
     descricao:
       'Meio-luto rigoroso, broche de azeviche. Responde o que se pergunta, nem uma palavra além, e mede o visitante por cima dos óculos.',
   },
