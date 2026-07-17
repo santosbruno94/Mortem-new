@@ -1557,8 +1557,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_1_boticario",
   "horasMorteAntesChegada": 8,
   "horaMorteAbsoluta": 3,
-  "mecanismoCorreto": "estrangulamento_ligadura",
-  "instrumentoCorreto": "cordao_torcido",
+  "mecanismoCorreto": "estrangulamento_manual",
+  "instrumentoCorreto": "pertence_arrancado",
   "motivacaoCorreta": "heranca",
   "cenaEncenada": true,
   "horaForjada": 10.25,
@@ -1709,13 +1709,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "O Sulco no Pescoço",
-   "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "textoDisplay": "As Marcas no Pescoço",
+   "carimboPadrao": "Sinal de estrangulamento manual",
+   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "sulco_horizontal"
+    "sinal": "equimoses_digitais"
    }
   },
   {
@@ -1746,16 +1746,30 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Úmido",
-   "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de John Jones, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão do morto.",
+   "id": "gen_pertence",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Pertence Arrancado",
+   "carimboPadrao": "Botão com fio na mão da vítima",
+   "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de John Jones perdeu o segundo botão.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "cordao_torcido",
+    "subDominio": "objeto_pessoal",
+    "tipoVestigio": "pertence_arrancado",
+    "pertenceA": "gen_1_boticario"
+   }
+  },
+  {
+   "id": "gen_sangue_alheio",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Rastro de Gotas",
+   "carimboPadrao": "Sangue afastado do corpo",
+   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sangue_do_agressor",
+    "tipoVestigio": "sangue_alheio",
     "pertenceA": "gen_1_boticario"
    }
   },
@@ -1964,10 +1978,12 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Richard Thompson foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, cômoda, cama de armação de madeira, lavatório com bacia.",
+    "A Mercearia guarda o dia em que o acharam. No cômodo, cômoda, cama de armação de madeira, lavatório com bacia; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
     "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_criada]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_2_lavrador]]."
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_2_lavrador]].",
+    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
+    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": []
   },
@@ -1996,17 +2012,6 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_4_constable]], [[gen_corrobora_gen_0_costureira]]."
    ],
    "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Botica",
-   "titulo": "A Botica — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
-   ],
-   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -2033,21 +2038,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Botica",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -2433,12 +2426,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento"
+    "gen_pertence": "reacao_gen_pertence"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "requerCarta": "gen_pertence",
+     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
     }
    ],
    "nos": {
@@ -2475,9 +2468,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_instrumento": {
+    "reacao_gen_pertence": {
      "fala": [
-      "John Jones responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "John Jones vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -3092,8 +3085,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_6_lavrador",
   "horasMorteAntesChegada": 12,
   "horaMorteAbsoluta": -1,
-  "mecanismoCorreto": "ferida_arma_branca",
-  "instrumentoCorreto": "lamina_de_oficio",
+  "mecanismoCorreto": "estrangulamento_manual",
+  "instrumentoCorreto": "pertence_arrancado",
   "motivacaoCorreta": "seguro_de_enterro",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -3244,13 +3237,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Ferida Incisa",
-   "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "textoDisplay": "As Marcas no Pescoço",
+   "carimboPadrao": "Sinal de estrangulamento manual",
+   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_incisa"
+    "sinal": "equimoses_digitais"
    }
   },
   {
@@ -3281,16 +3274,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Úmido",
-   "carimboPadrao": "Instrumento guardado ainda úmido",
-   "descricao": "Entre os pertences de John Ward, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão da morta.",
+   "id": "gen_pertence",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Pertence Arrancado",
+   "carimboPadrao": "Botão com fio na mão da vítima",
+   "descricao": "Presos entre os dedos da morta, um botão de casaco com fio e um triângulo de pano. O casaco de John Ward perdeu o segundo botão.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "lamina_de_oficio",
+    "subDominio": "objeto_pessoal",
+    "tipoVestigio": "pertence_arrancado",
     "pertenceA": "gen_6_lavrador"
    }
   },
@@ -3546,8 +3539,9 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Taverna guarda o dia em que a acharam. No cômodo, balcão com beer engine, mesas de taverna; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_medico]]."
+    "Por abrir desde ontem, a mão fechada da morta: [[gen_pertence]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_medico]].",
+    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": []
   },
@@ -3592,17 +3586,6 @@ export const CASOS_POOL = [
      ]
     }
    ]
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
-   ],
-   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -3629,21 +3612,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -4409,12 +4380,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento"
+    "gen_pertence": "reacao_gen_pertence"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "requerCarta": "gen_pertence",
+     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
     }
    ],
    "nos": {
@@ -4451,9 +4422,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_instrumento": {
+    "reacao_gen_pertence": {
      "fala": [
-      "John Ward responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "John Ward vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -4778,8 +4749,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_7_lavrador",
   "horasMorteAntesChegada": 9,
   "horaMorteAbsoluta": 2,
-  "mecanismoCorreto": "estrangulamento_manual",
-  "instrumentoCorreto": "pertence_arrancado",
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "despejo",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -4930,13 +4901,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "As Marcas no Pescoço",
-   "carimboPadrao": "Sinal de estrangulamento manual",
-   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
+   "textoDisplay": "A Ferida Incisa",
+   "carimboPadrao": "Sinal de arma branca",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "equimoses_digitais"
+    "sinal": "ferida_incisa"
    }
   },
   {
@@ -4967,16 +4938,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_pertence",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Pertence Arrancado",
-   "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Presos entre os dedos da morta, um botão de casaco com fio e um triângulo de pano. O casaco de James Brown perdeu o segundo botão.",
+   "id": "gen_instrumento",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "textoDisplay": "O Instrumento Úmido",
+   "carimboPadrao": "Instrumento guardado ainda úmido",
+   "descricao": "Entre os pertences de James Brown, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "objeto_pessoal",
-    "tipoVestigio": "pertence_arrancado",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_7_lavrador"
    }
   },
@@ -5232,7 +5203,6 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Taverna guarda o dia em que a acharam. No cômodo, cama de ferro, bacia e jarro.",
-    "Por abrir desde ontem, a mão fechada da morta: [[gen_pertence]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_merceeiro]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_0_lavrador]]."
    ],
@@ -5271,6 +5241,17 @@ export const CASOS_POOL = [
      ]
     }
    ]
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "A Granja",
+   "titulo": "A Granja — a diligência",
+   "subtitulo": "Busca autorizada pelo delegado",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+   ],
+   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -5297,9 +5278,21 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "A Granja",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -6067,13 +6060,13 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_pertence": "reacao_gen_pertence",
+    "gen_instrumento": "reacao_gen_instrumento",
     "gen_intf_intf_1_soberanos": "reacao_gen_intf_intf_1_soberanos"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_pertence",
-     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     },
     {
      "requerCarta": "gen_intf_intf_1_soberanos",
@@ -6114,9 +6107,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_pertence": {
+    "reacao_gen_instrumento": {
      "fala": [
-      "James Brown vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "James Brown responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -6446,8 +6439,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_7_criada",
   "horasMorteAntesChegada": 14,
   "horaMorteAbsoluta": -3,
-  "mecanismoCorreto": "estrangulamento_manual",
-  "instrumentoCorreto": "pertence_arrancado",
+  "mecanismoCorreto": "estrangulamento_ligadura",
+  "instrumentoCorreto": "cordao_torcido",
   "motivacaoCorreta": "escandalo_gravidez",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -6598,13 +6591,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "As Marcas no Pescoço",
-   "carimboPadrao": "Sinal de estrangulamento manual",
-   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
+   "textoDisplay": "O Sulco no Pescoço",
+   "carimboPadrao": "Sinal de garrote (ligadura)",
+   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "equimoses_digitais"
+    "sinal": "sulco_horizontal"
    }
   },
   {
@@ -6635,30 +6628,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_pertence",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Pertence Arrancado",
-   "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Ethel Clarke perdeu o segundo botão.",
+   "id": "gen_instrumento",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "textoDisplay": "O Instrumento Úmido",
+   "carimboPadrao": "Instrumento guardado ainda úmido",
+   "descricao": "Entre os pertences de Ethel Clarke, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "objeto_pessoal",
-    "tipoVestigio": "pertence_arrancado",
-    "pertenceA": "gen_7_criada"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "cordao_torcido",
     "pertenceA": "gen_7_criada"
    }
   },
@@ -6865,9 +6844,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Taverna guarda o dia em que o acharam. No cômodo, balcão com beer engine, mesas de taverna; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_squire]].",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_squire]]."
    ],
    "blocosContingentes": []
   },
@@ -6897,6 +6874,17 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_moleiro]], [[gen_corrobora_gen_6_ferreiro]], [[gen_corrobora_gen_2_lavrador]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "Casa do Médico",
+   "titulo": "Casa do Médico — a diligência",
+   "subtitulo": "Busca autorizada pelo delegado",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+   ],
+   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -6923,9 +6911,21 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "Casa do Médico",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -7133,12 +7133,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_pertence": "reacao_gen_pertence"
+    "gen_instrumento": "reacao_gen_instrumento"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_pertence",
-     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
@@ -7175,9 +7175,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_pertence": {
+    "reacao_gen_instrumento": {
      "fala": [
-      "Ethel Clarke vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Ethel Clarke responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -7981,8 +7981,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_1_lavrador",
   "horasMorteAntesChegada": 22,
   "horaMorteAbsoluta": -11,
-  "mecanismoCorreto": "ferida_arma_branca",
-  "instrumentoCorreto": "lamina_de_oficio",
+  "mecanismoCorreto": "trauma_contuso",
+  "instrumentoCorreto": "arma_de_ocasiao",
   "motivacaoCorreta": "seguro_de_enterro",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -8133,13 +8133,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Ferida Incisa",
-   "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "textoDisplay": "A Fratura no Crânio",
+   "carimboPadrao": "Sinal de golpe contuso",
+   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_incisa"
+    "sinal": "ferida_contusa"
    }
   },
   {
@@ -8179,21 +8179,7 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "lamina_de_oficio",
-    "pertenceA": "gen_1_lavrador"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
+    "tipoVestigio": "arma_de_ocasiao",
     "pertenceA": "gen_1_lavrador"
    }
   },
@@ -8242,8 +8228,8 @@ export const CASOS_POOL = [
     "localId": "granja",
     "comodo": "cozinha",
     "celula": {
-     "col": 3,
-     "fila": 2
+     "col": 2,
+     "fila": 1
     },
     "mobilia": null
    }
@@ -8265,8 +8251,8 @@ export const CASOS_POOL = [
     "localId": "granja",
     "comodo": "cozinha",
     "celula": {
-     "col": 3,
-     "fila": 2
+     "col": 2,
+     "fila": 1
     },
     "mobilia": null
    }
@@ -8450,8 +8436,7 @@ export const CASOS_POOL = [
     "A Granja guarda o dia em que o acharam. No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
     "Junto do corpo, no chão: [[gen_instrumento]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_3_paroco]].",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_3_paroco]]."
    ],
    "blocosContingentes": [
     {
@@ -9644,8 +9629,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_1_medico",
   "horasMorteAntesChegada": 12,
   "horaMorteAbsoluta": -1,
-  "mecanismoCorreto": "estrangulamento_ligadura",
-  "instrumentoCorreto": "cordao_torcido",
+  "mecanismoCorreto": "sufocacao",
+  "instrumentoCorreto": "travesseiro_ou_pano",
   "motivacaoCorreta": "divida_caderneta",
   "cenaEncenada": true,
   "horaForjada": 10.5,
@@ -9796,13 +9781,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "O Sulco no Pescoço",
-   "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "textoDisplay": "Os Sinais em Volta da Boca",
+   "carimboPadrao": "Sinal de sufocação",
+   "descricao": "Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "sulco_horizontal"
+    "sinal": "oclusao_vias"
    }
   },
   {
@@ -9842,22 +9827,22 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "cordao_torcido",
+    "tipoVestigio": "travesseiro_ou_pano",
     "pertenceA": "gen_1_medico"
    }
   },
   {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas da morta não sangraram nesse caminho.",
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_0_criada",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na noite de 13",
+   "descricao": "Gertrude Hall conta o que a parede deixou passar na noite de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
    "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
-    "pertenceA": "gen_1_medico"
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "noite"
    }
   },
   {
@@ -10066,8 +10051,7 @@ export const CASOS_POOL = [
     "A Casa do Médico guarda o dia em que a acharam. No cômodo, fogão de ferro a carvão, mesa de cozinha; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
     "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_lavrador]].",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
+    "Junto do corpo, no chão: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   },
@@ -10093,6 +10077,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
+    "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_criada]], [[gen_corrobora_gen_2_lavrador]], [[gen_corrobora_gen_3_ferreiro]]."
    ],
    "blocosContingentes": []
@@ -10522,8 +10507,15 @@ export const CASOS_POOL = [
    "subtitulo": "Criada, 42 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -10558,6 +10550,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
+    "reacao_gen_ruido_ouvido": {
+     "fala": [
+      "Gertrude Hall conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+     ],
+     "opcoes": []
+    },
     "b1_firme": {
      "fala": [
       "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_0_criada]]."
@@ -10587,7 +10585,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Florence Jackson eu não conhecia.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -10620,7 +10618,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Jackson? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Florence Jackson era das que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -10653,7 +10651,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -10686,7 +10684,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -11156,8 +11154,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_3_lavrador",
   "horasMorteAntesChegada": 8,
   "horaMorteAbsoluta": 3,
-  "mecanismoCorreto": "trauma_contuso",
-  "instrumentoCorreto": "arma_de_ocasiao",
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "despejo",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -11308,13 +11306,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Fratura no Crânio",
-   "carimboPadrao": "Sinal de golpe contuso",
-   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
+   "textoDisplay": "A Ferida Incisa",
+   "carimboPadrao": "Sinal de arma branca",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_contusa"
+    "sinal": "ferida_incisa"
    }
   },
   {
@@ -11354,7 +11352,7 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "arma_de_ocasiao",
+    "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_3_lavrador"
    }
   },
@@ -11403,7 +11401,7 @@ export const CASOS_POOL = [
     "localId": "escola",
     "comodo": "quarto",
     "celula": {
-     "col": 6,
+     "col": 5,
      "fila": 3
     },
     "mobilia": null
@@ -11426,7 +11424,7 @@ export const CASOS_POOL = [
     "localId": "escola",
     "comodo": "quarto",
     "celula": {
-     "col": 6,
+     "col": 5,
      "fila": 3
     },
     "mobilia": null
@@ -11608,7 +11606,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Lily Williams foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Escola guarda o dia em que a acharam. No cômodo, cama de armação de madeira, lavatório com bacia; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "A Escola guarda o dia em que a acharam. No cômodo, cama de armação de madeira, lavatório com bacia.",
     "Junto do corpo, no chão: [[gen_instrumento]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavrador]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_5_criada]]."
@@ -14285,8 +14283,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_3_ferreiro",
   "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": 1,
-  "mecanismoCorreto": "estrangulamento_manual",
-  "instrumentoCorreto": "pertence_arrancado",
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "divida_caderneta",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -14437,13 +14435,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "As Marcas no Pescoço",
-   "carimboPadrao": "Sinal de estrangulamento manual",
-   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
+   "textoDisplay": "A Ferida Incisa",
+   "carimboPadrao": "Sinal de arma branca",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "equimoses_digitais"
+    "sinal": "ferida_incisa"
    }
   },
   {
@@ -14474,16 +14472,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_pertence",
+   "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Pertence Arrancado",
-   "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Presos entre os dedos da morta, um botão de casaco com fio e um triângulo de pano. O casaco de Henry Harris perdeu o segundo botão.",
+   "textoDisplay": "O Instrumento Abandonado",
+   "carimboPadrao": "Instrumento deixado na cena",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Henry Harris.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "objeto_pessoal",
-    "tipoVestigio": "pertence_arrancado",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_3_ferreiro"
    }
   },
@@ -14498,6 +14496,20 @@ export const CASOS_POOL = [
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
     "tipoVestigio": "sangue_alheio",
+    "pertenceA": "gen_3_ferreiro"
+   }
+  },
+  {
+   "id": "gen_pegadas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "Pegadas Rumo à Porta",
+   "carimboPadrao": "Meias-solas impressas em sangue",
+   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "pegadas",
+    "tipoVestigio": "pegada_ensanguentada",
     "pertenceA": "gen_3_ferreiro"
    }
   },
@@ -14544,12 +14556,12 @@ export const CASOS_POOL = [
     "classe": "esfrega_fresca_pos_pericia",
     "frescor": "fresco",
     "localId": "cottage_2",
-    "comodo": "quarto",
+    "comodo": "cozinha",
     "celula": {
-     "col": 5,
-     "fila": 2
+     "col": 2,
+     "fila": 3
     },
-    "mobilia": null
+    "mobilia": "cozinha_relogio_da_familia"
    }
   },
   {
@@ -14567,12 +14579,12 @@ export const CASOS_POOL = [
     "classe": "limpeza_interrompida",
     "frescor": "fresco",
     "localId": "cottage_2",
-    "comodo": "quarto",
+    "comodo": "cozinha",
     "celula": {
-     "col": 5,
-     "fila": 2
+     "col": 2,
+     "fila": 3
     },
-    "mobilia": null
+    "mobilia": "cozinha_relogio_da_familia"
    }
   },
   {
@@ -14752,9 +14764,10 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "O Cottage nº 2 guarda o dia em que a acharam. No cômodo, bacia e jarro, baú de roupa; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Por abrir desde ontem, a mão fechada da morta: [[gen_pertence]].",
+    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavrador]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_squire]]."
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_squire]].",
+    "Do meio do cômodo até a porta: [[gen_pegadas]]."
    ],
    "blocosContingentes": [
     {
@@ -14768,7 +14781,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "nao_disparado",
      "paragrafos": [
-      "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
+      "Junto do corpo, no chão: [[gen_instrumento]]."
      ]
     }
    ]
@@ -15404,12 +15417,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_pertence": "reacao_gen_pertence"
+    "gen_instrumento": "reacao_gen_instrumento"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_pertence",
-     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
@@ -15446,9 +15459,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_pertence": {
+    "reacao_gen_instrumento": {
      "fala": [
-      "Henry Harris vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Henry Harris olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -15885,7 +15898,7 @@ export const CASOS_POOL = [
     "atorPapel": "assassino",
     "alvo": {
      "tipo": "carta",
-     "cartaId": "gen_sangue_alheio",
+     "cartaId": "gen_instrumento",
      "localId": "cottage_2"
     },
     "gatilho": {
@@ -15908,7 +15921,7 @@ export const CASOS_POOL = [
      "sucesso": false
     },
     "efeito": {
-     "cartaDestruida": "gen_sangue_alheio",
+     "cartaDestruida": "gen_instrumento",
      "cartasNovas": [
       "gen_intf_intf_1_limpeza",
       "gen_intf_intf_1_meia_obra"
@@ -15961,8 +15974,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_1_paroco",
   "horasMorteAntesChegada": 8,
   "horaMorteAbsoluta": 3,
-  "mecanismoCorreto": "estrangulamento_ligadura",
-  "instrumentoCorreto": "cordao_torcido",
+  "mecanismoCorreto": "sufocacao",
+  "instrumentoCorreto": "travesseiro_ou_pano",
   "motivacaoCorreta": "heranca",
   "cenaEncenada": true,
   "horaForjada": 10,
@@ -15972,16 +15985,16 @@ export const CASOS_POOL = [
     "segredo": "acerto_reservado"
    },
    "gen_2_squire": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
    },
    "gen_3_lavrador": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
    "gen_4_lavrador": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    }
   }
  },
@@ -16113,13 +16126,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "O Sulco no Pescoço",
-   "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "textoDisplay": "Os Sinais em Volta da Boca",
+   "carimboPadrao": "Sinal de sufocação",
+   "descricao": "Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "sulco_horizontal"
+    "sinal": "oclusao_vias"
    }
   },
   {
@@ -16159,8 +16172,22 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "cordao_torcido",
+    "tipoVestigio": "travesseiro_ou_pano",
     "pertenceA": "gen_1_paroco"
+   }
+  },
+  {
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_4_lavrador",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na madrugada de 14",
+   "descricao": "Samuel Williams conta o que a parede deixou passar na madrugada de 14: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "madrugada"
    }
   },
   {
@@ -16208,16 +16235,18 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_2_squire",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Daniel Jackson",
-   "carimboPadrao": "Paradeiro de Daniel Jackson, confirmado",
-   "descricao": "A rua dá Daniel Jackson no Solar madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "id": "gen_segredo_gen_2_squire",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Daniel Jackson",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Daniel Jackson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_2_squire"
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_2_squire",
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
@@ -16234,18 +16263,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_segredo_gen_4_lavrador",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Samuel Williams",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Samuel Williams: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "id": "gen_corrobora_gen_4_lavrador",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Samuel Williams",
+   "carimboPadrao": "Paradeiro de Samuel Williams, confirmado",
+   "descricao": "A rua dá Samuel Williams no Cottage nº 1 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
    "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_4_lavrador",
-    "revelaSegredo": "pedido_recusado"
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_4_lavrador"
    }
   },
   {
@@ -16368,10 +16395,10 @@ export const CASOS_POOL = [
    "subtitulo": "Onde William Smith foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Casa do Médico guarda o dia em que o acharam. No cômodo, mesa de cozinha, fogão de ferro a carvão.",
+    "A Casa do Médico guarda o dia em que o acharam. No cômodo, mesa de cozinha, fogão de ferro a carvão; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
     "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_costureira]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_4_lavrador]]."
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_2_squire]]."
    ],
    "blocosContingentes": []
   },
@@ -16397,7 +16424,8 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_2_squire]], [[gen_corrobora_gen_3_lavrador]]."
+    "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_lavrador]], [[gen_corrobora_gen_4_lavrador]]."
    ],
    "blocosContingentes": []
   },
@@ -16658,8 +16686,15 @@ export const CASOS_POOL = [
    "subtitulo": "Senhor de terras, 59 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_2_squire": "reacao_gen_segredo_gen_2_squire"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_2_squire",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -16691,6 +16726,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha o que se lhe mostra o tempo de o reconhecer, e devolve. \"Disso a casa não sabe dar razão. Se há pergunta, faça-a por inteiro.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_2_squire": {
+     "fala": [
+      "Daniel Jackson lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de William Smith estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -17206,12 +17247,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_segredo_gen_4_lavrador": "reacao_gen_segredo_gen_4_lavrador"
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_segredo_gen_4_lavrador",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
     }
    ],
    "nos": {
@@ -17248,9 +17289,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_segredo_gen_4_lavrador": {
+    "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Samuel Williams lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de William Smith estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+      "Samuel Williams conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -17283,7 +17324,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de William Smith eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -17316,7 +17357,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"William Smith era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -17349,7 +17390,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -17382,7 +17423,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -19005,8 +19046,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_2_lavrador",
   "horasMorteAntesChegada": 13,
   "horaMorteAbsoluta": -2,
-  "mecanismoCorreto": "trauma_contuso",
-  "instrumentoCorreto": "arma_de_ocasiao",
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "salario_atrasado",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -19157,13 +19198,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Fratura no Crânio",
-   "carimboPadrao": "Sinal de golpe contuso",
-   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
+   "textoDisplay": "A Ferida Incisa",
+   "carimboPadrao": "Sinal de arma branca",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_contusa"
+    "sinal": "ferida_incisa"
    }
   },
   {
@@ -19203,7 +19244,7 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "arma_de_ocasiao",
+    "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_2_lavrador"
    }
   },
@@ -22083,8 +22124,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_1_criada",
   "horasMorteAntesChegada": 9,
   "horaMorteAbsoluta": 2,
-  "mecanismoCorreto": "estrangulamento_manual",
-  "instrumentoCorreto": "pertence_arrancado",
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "character_negado",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -22235,13 +22276,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "As Marcas no Pescoço",
-   "carimboPadrao": "Sinal de estrangulamento manual",
-   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
+   "textoDisplay": "A Ferida Incisa",
+   "carimboPadrao": "Sinal de arma branca",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "equimoses_digitais"
+    "sinal": "ferida_incisa"
    }
   },
   {
@@ -22272,16 +22313,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_pertence",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Pertence Arrancado",
-   "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Presos entre os dedos da morta, um botão de casaco com fio e um triângulo de pano. O casaco de Nellie Walker perdeu o segundo botão.",
+   "id": "gen_instrumento",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "textoDisplay": "O Instrumento Úmido",
+   "carimboPadrao": "Instrumento guardado ainda úmido",
+   "descricao": "Entre os pertences de Nellie Walker, a peça guardada lavada — e a junta do cabo ainda úmida. O feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "objeto_pessoal",
-    "tipoVestigio": "pertence_arrancado",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_1_criada"
    }
   },
@@ -22476,7 +22517,6 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Escola guarda o dia em que a acharam. No cômodo, cômoda, cama de armação de madeira.",
-    "Por abrir desde ontem, a mão fechada da morta: [[gen_pertence]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_ferreiro]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_3_lavrador]]."
    ],
@@ -22507,6 +22547,17 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_2_taverneiro]], [[gen_corrobora_gen_0_criada]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "O Presbitério",
+   "titulo": "O Presbitério — a diligência",
+   "subtitulo": "Busca autorizada pelo delegado",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+   ],
+   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -22533,9 +22584,21 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "O Presbitério",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -22921,12 +22984,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_pertence": "reacao_gen_pertence"
+    "gen_instrumento": "reacao_gen_instrumento"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_pertence",
-     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Instrumento Úmido] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
@@ -22963,9 +23026,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_pertence": {
+    "reacao_gen_instrumento": {
      "fala": [
-      "Nellie Walker vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Nellie Walker responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -23580,8 +23643,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_2_paroco",
   "horasMorteAntesChegada": 12,
   "horaMorteAbsoluta": -1,
-  "mecanismoCorreto": "estrangulamento_ligadura",
-  "instrumentoCorreto": "cordao_torcido",
+  "mecanismoCorreto": "estrangulamento_manual",
+  "instrumentoCorreto": "pertence_arrancado",
   "motivacaoCorreta": "escandalo_gravidez",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -23732,13 +23795,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "O Sulco no Pescoço",
-   "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "textoDisplay": "As Marcas no Pescoço",
+   "carimboPadrao": "Sinal de estrangulamento manual",
+   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "sulco_horizontal"
+    "sinal": "equimoses_digitais"
    }
   },
   {
@@ -23769,16 +23832,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Thomas Wright, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "id": "gen_pertence",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Pertence Arrancado",
+   "carimboPadrao": "Botão com fio na mão da vítima",
+   "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Thomas Wright perdeu o segundo botão.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "cordao_torcido",
+    "subDominio": "objeto_pessoal",
+    "tipoVestigio": "pertence_arrancado",
     "pertenceA": "gen_2_paroco"
    }
   },
@@ -23985,6 +24048,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Taverna guarda o dia em que o acharam. No cômodo, o snug (cubículo com portinhola), bancos corridos sobre serragem; de um canto a outro, nada guarda o seu lugar; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
+    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_costureira]]."
    ],
    "blocosContingentes": []
@@ -24015,17 +24079,6 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_4_costureira]], [[gen_corrobora_gen_0_moleiro]], [[gen_corrobora_gen_1_ferreiro]]."
    ],
    "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Igreja",
-   "titulo": "A Igreja — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
-   ],
-   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -24052,21 +24105,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Igreja",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -24630,12 +24671,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento"
+    "gen_pertence": "reacao_gen_pertence"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+     "requerCarta": "gen_pertence",
+     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
     }
    ],
    "nos": {
@@ -24672,9 +24713,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_instrumento": {
+    "reacao_gen_pertence": {
      "fala": [
-      "Thomas Wright olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Thomas Wright vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -25122,8 +25163,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_5_boticario",
   "horasMorteAntesChegada": 8,
   "horaMorteAbsoluta": 3,
-  "mecanismoCorreto": "envenenamento_arsenico",
-  "instrumentoCorreto": "papel_de_arsenico",
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "heranca",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -25274,13 +25315,26 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "O Vômito Seco",
-   "carimboPadrao": "Sinal de envenenamento por arsênico",
-   "descricao": "Na boca e no queixo, um resto de vômito seco. Levada à chama, a amostra solta cheiro de alho; da ceia, prato nenhum o levava.",
+   "textoDisplay": "A Ferida Incisa",
+   "carimboPadrao": "Sinal de arma branca",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "odor_alho"
+    "sinal": "ferida_incisa"
+   }
+  },
+  {
+   "id": "gen_reacao_vital",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Bordas Vivas",
+   "carimboPadrao": "Lesões sofridas em vida",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "reacao_vital",
+    "sinal": "reacao_vital"
    }
   },
   {
@@ -25307,7 +25361,7 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "papel_de_arsenico",
+    "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_5_boticario"
    }
   },
@@ -25490,7 +25544,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A morta jaz no chão do cômodo a que a vila chama quarto do sobrado, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -25501,7 +25555,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Annie Brown foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que a acharam. No cômodo, bacia e jarro, baú de roupa.",
+    "A Taverna guarda o dia em que a acharam. No cômodo, bacia e jarro, baú de roupa; a madeira do assoalho cheira a soda cáustica.",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_lavrador]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_costureira]]."
    ],
@@ -26628,8 +26682,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_7_lavrador",
   "horasMorteAntesChegada": 22,
   "horaMorteAbsoluta": -11,
-  "mecanismoCorreto": "ferida_arma_branca",
-  "instrumentoCorreto": "lamina_de_oficio",
+  "mecanismoCorreto": "sufocacao",
+  "instrumentoCorreto": "travesseiro_ou_pano",
   "motivacaoCorreta": "salario_atrasado",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -26780,13 +26834,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Ferida Incisa",
-   "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "textoDisplay": "Os Sinais em Volta da Boca",
+   "carimboPadrao": "Sinal de sufocação",
+   "descricao": "Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_incisa"
+    "sinal": "oclusao_vias"
    }
   },
   {
@@ -26826,21 +26880,7 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "lamina_de_oficio",
-    "pertenceA": "gen_7_lavrador"
-   }
-  },
-  {
-   "id": "gen_pegadas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "Pegadas Rumo à Porta",
-   "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "pegadas",
-    "tipoVestigio": "pegada_ensanguentada",
+    "tipoVestigio": "travesseiro_ou_pano",
     "pertenceA": "gen_7_lavrador"
    }
   },
@@ -27106,8 +27146,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A Granja guarda o dia em que o acharam. No cômodo, mesa de tampo raspado, cadeiras Windsor; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
     "Junto do corpo, no chão: [[gen_instrumento]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_constable]].",
-    "Do meio do cômodo até a porta: [[gen_pegadas]]."
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_constable]]."
    ],
    "blocosContingentes": []
   },
@@ -28316,8 +28355,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_2_criada",
   "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": 1,
-  "mecanismoCorreto": "ferida_arma_branca",
-  "instrumentoCorreto": "lamina_de_oficio",
+  "mecanismoCorreto": "envenenamento_arsenico",
+  "instrumentoCorreto": "papel_de_arsenico",
   "motivacaoCorreta": "salario_atrasado",
   "cenaEncenada": true,
   "horaForjada": 10.5,
@@ -28468,26 +28507,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Ferida Incisa",
-   "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas.",
+   "textoDisplay": "O Vômito Seco",
+   "carimboPadrao": "Sinal de envenenamento por arsênico",
+   "descricao": "Na boca e no queixo, um resto de vômito seco. Levada à chama, a amostra solta cheiro de alho; da ceia, prato nenhum o levava.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_incisa"
-   }
-  },
-  {
-   "id": "gen_reacao_vital",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Bordas Vivas",
-   "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "reacao_vital",
-    "sinal": "reacao_vital"
+    "sinal": "odor_alho"
    }
   },
   {
@@ -28514,21 +28540,7 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "lamina_de_oficio",
-    "pertenceA": "gen_2_criada"
-   }
-  },
-  {
-   "id": "gen_pegadas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "Pegadas Rumo à Porta",
-   "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "pegadas",
-    "tipoVestigio": "pegada_ensanguentada",
+    "tipoVestigio": "papel_de_arsenico",
     "pertenceA": "gen_2_criada"
    }
   },
@@ -28544,52 +28556,6 @@ export const CASOS_POOL = [
     "subDominio": "motivo",
     "motivo": "salario_atrasado",
     "ligadoA": "gen_2_criada"
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_limpeza",
-   "localidade": "cena",
-   "textoDisplay": "Esfrega Fresca na Cena",
-   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
-   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "esfrega_fresca"
-   },
-   "vestigioInterferencia": {
-    "classe": "esfrega_fresca_pos_pericia",
-    "frescor": "fresco",
-    "localId": "mercearia",
-    "comodo": "quarto",
-    "celula": {
-     "col": 5,
-     "fila": 1
-    },
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_meia_obra",
-   "localidade": "cena",
-   "textoDisplay": "Serviço pela Metade",
-   "carimboPadrao": "Serviço de limpeza pela metade",
-   "descricao": "A esfrega para no meio do gesto: a mancha arrastada até a metade e abandonada ali.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "limpeza_interrompida"
-   },
-   "vestigioInterferencia": {
-    "classe": "limpeza_interrompida",
-    "frescor": "fresco",
-    "localId": "mercearia",
-    "comodo": "quarto",
-    "celula": {
-     "col": 5,
-     "fila": 1
-    },
-    "mobilia": null
    }
   },
   {
@@ -28772,7 +28738,7 @@ export const CASOS_POOL = [
    "prosa": [
     "O morto jaz no chão do cômodo a que a vila chama quarto do sobrado, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -28783,28 +28749,13 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Joseph Taylor foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "A Mercearia guarda o dia em que o acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira.",
     "No cômodo, à vista de quem entra: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_ferreiro]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_5_lavrador]].",
     "Junto do corpo, no chão: [[gen_instrumento]]."
    ],
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_1",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
-     ]
-    },
-    {
-     "eventoId": "intf_1",
-     "quando": "nao_disparado",
-     "paragrafos": [
-      "Do meio do cômodo até a porta: [[gen_pegadas]]."
-     ]
-    }
-   ]
+   "blocosContingentes": []
   },
   {
    "id": "delegacia",
@@ -29907,82 +29858,6 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
- },
- "interferencias": {
-  "eventos": [
-   {
-    "id": "intf_1",
-    "tipo": "destruir_evidencia",
-    "ator": "gen_2_criada",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "carta",
-     "cartaId": "gen_pegadas",
-     "localId": "mercearia"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_motivo",
-     "comoSoube": "o perito abriu o móbil do réu na delegacia (extração de gen_motivo); o inquérito em público correu a vila até o ator"
-    },
-    "rota": {
-     "de": "solar",
-     "para": "mercearia",
-     "faixa": "noite",
-     "sustentacao": "frequentado",
-     "comoChegou": "mercearia é parada habitual dele (frequentados da ficha); foi na faixa noite sem chamar atenção"
-    },
-    "rolagem": {
-     "wis": 2,
-     "penalidade": 2,
-     "alvo": 0,
-     "dado": 0,
-     "sucesso": false
-    },
-    "efeito": {
-     "cartaDestruida": "gen_pegadas",
-     "cartasNovas": [
-      "gen_intf_intf_1_limpeza",
-      "gen_intf_intf_1_meia_obra"
-     ]
-    },
-    "prenuncio": null,
-    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
-   }
-  ]
- },
- "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
-  "porChave": {
-   "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
-   ],
-   "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
-   ],
-   "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
-   ],
-   "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
-   ],
-   "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
-   ],
-   "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
-   ],
-   "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
-   ]
-  }
  }
 },
 {
@@ -29993,8 +29868,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_2_paroco",
   "horasMorteAntesChegada": 14,
   "horaMorteAbsoluta": -3,
-  "mecanismoCorreto": "estrangulamento_manual",
-  "instrumentoCorreto": "pertence_arrancado",
+  "mecanismoCorreto": "envenenamento_laudano",
+  "instrumentoCorreto": "frasco_de_laudano",
   "motivacaoCorreta": "escandalo_gravidez",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -30145,26 +30020,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "As Marcas no Pescoço",
-   "carimboPadrao": "Sinal de estrangulamento manual",
-   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
+   "textoDisplay": "As Pupilas Fechadas",
+   "carimboPadrao": "Sinal de láudano em dose excessiva",
+   "descricao": "No corpo, marca de luta nenhuma. As pupilas estão contraídas em ponta de alfinete, e um resquício de amargor fica no hálito.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "equimoses_digitais"
-   }
-  },
-  {
-   "id": "gen_reacao_vital",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Bordas Vivas",
-   "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "reacao_vital",
-    "sinal": "reacao_vital"
+    "sinal": "miose_opiacea"
    }
   },
   {
@@ -30182,45 +30044,17 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_pertence",
+   "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Pertence Arrancado",
-   "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Henry King perdeu o segundo botão.",
+   "textoDisplay": "O Instrumento Abandonado",
+   "carimboPadrao": "Instrumento deixado na cena",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Henry King.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "objeto_pessoal",
-    "tipoVestigio": "pertence_arrancado",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "frasco_de_laudano",
     "pertenceA": "gen_2_paroco"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
-    "pertenceA": "gen_2_paroco"
-   }
-  },
-  {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_4_lavrador",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na noite de 13",
-   "descricao": "John Watson conta o que a parede deixou passar na noite de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "noite"
    }
   },
   {
@@ -30235,52 +30069,6 @@ export const CASOS_POOL = [
     "subDominio": "motivo",
     "motivo": "escandalo_gravidez",
     "ligadoA": "gen_2_paroco"
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_limpeza",
-   "localidade": "cena",
-   "textoDisplay": "Esfrega Fresca na Cena",
-   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
-   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "esfrega_fresca"
-   },
-   "vestigioInterferencia": {
-    "classe": "esfrega_fresca_pos_pericia",
-    "frescor": "fresco",
-    "localId": "mercearia",
-    "comodo": "deposito",
-    "celula": {
-     "col": 0,
-     "fila": 2
-    },
-    "mobilia": "deposito_pia_de_copa"
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_meia_obra",
-   "localidade": "cena",
-   "textoDisplay": "Serviço pela Metade",
-   "carimboPadrao": "Serviço de limpeza pela metade",
-   "descricao": "A esfrega para no meio do gesto: a mancha arrastada até a metade e abandonada ali.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "limpeza_interrompida"
-   },
-   "vestigioInterferencia": {
-    "classe": "limpeza_interrompida",
-    "frescor": "fresco",
-    "localId": "mercearia",
-    "comodo": "deposito",
-    "celula": {
-     "col": 0,
-     "fila": 2
-    },
-    "mobilia": "deposito_pia_de_copa"
    }
   },
   {
@@ -30446,7 +30234,7 @@ export const CASOS_POOL = [
    "prosa": [
     "O morto jaz no chão do cômodo a que a vila chama a loja, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -30457,26 +30245,11 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Walter Thompson foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras e gavetas de estoque, vitrine envidraçada; de um canto a outro, nada guarda o seu lugar.",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
+    "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras e gavetas de estoque, vitrine envidraçada.",
+    "Junto do corpo, no chão: [[gen_instrumento]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_criada]]."
    ],
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_1",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
-     ]
-    },
-    {
-     "eventoId": "intf_1",
-     "quando": "nao_disparado",
-     "paragrafos": [
-      "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]]."
-     ]
-    }
-   ]
+   "blocosContingentes": []
   },
   {
    "id": "delegacia",
@@ -30500,7 +30273,6 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "De dentro do próprio prédio, quem lá estava àquela hora conta: [[gen_ruido_ouvido]].",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_lavrador]], [[gen_corrobora_gen_4_lavrador]], [[gen_corrobora_gen_5_lavrador]]."
    ],
    "blocosContingentes": []
@@ -30727,12 +30499,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_pertence": "reacao_gen_pertence"
+    "gen_instrumento": "reacao_gen_instrumento"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_pertence",
-     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
@@ -30769,9 +30541,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_pertence": {
+    "reacao_gen_instrumento": {
      "fala": [
-      "Henry King vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Henry King olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -30917,15 +30689,8 @@ export const CASOS_POOL = [
    "subtitulo": "Lavrador, 22 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -30960,12 +30725,6 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "John Watson conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
     "b1_firme": {
      "fala": [
       "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
@@ -30995,7 +30754,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Walter Thompson eu não conhecia.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -31028,7 +30787,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Walter Thompson era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Walter Thompson? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -31061,7 +30820,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -31094,7 +30853,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -31567,82 +31326,6 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
- },
- "interferencias": {
-  "eventos": [
-   {
-    "id": "intf_1",
-    "tipo": "destruir_evidencia",
-    "ator": "gen_2_paroco",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "carta",
-     "cartaId": "gen_pertence",
-     "localId": "mercearia"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_motivo",
-     "comoSoube": "o perito abriu o móbil do réu na delegacia (extração de gen_motivo); o inquérito em público correu a vila até o ator"
-    },
-    "rota": {
-     "de": "vicarage",
-     "para": "mercearia",
-     "faixa": "madrugada",
-     "sustentacao": "retorno_a_cena",
-     "comoChegou": "refez, na faixa madrugada, o caminho do próprio crime até mercearia"
-    },
-    "rolagem": {
-     "wis": 1,
-     "penalidade": 2,
-     "alvo": 0,
-     "dado": 3,
-     "sucesso": false
-    },
-    "efeito": {
-     "cartaDestruida": "gen_pertence",
-     "cartasNovas": [
-      "gen_intf_intf_1_limpeza",
-      "gen_intf_intf_1_meia_obra"
-     ]
-    },
-    "prenuncio": null,
-    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
-   }
-  ]
- },
- "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
-  "porChave": {
-   "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
-   ],
-   "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
-   ],
-   "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
-   ],
-   "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
-   ],
-   "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
-   ],
-   "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
-   ],
-   "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
-   ]
-  }
  }
 },
 {
@@ -31653,8 +31336,8 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_5_lavrador",
   "horasMorteAntesChegada": 21,
   "horaMorteAbsoluta": -10,
-  "mecanismoCorreto": "trauma_contuso",
-  "instrumentoCorreto": "arma_de_ocasiao",
+  "mecanismoCorreto": "estrangulamento_manual",
+  "instrumentoCorreto": "pertence_arrancado",
   "motivacaoCorreta": "divida_caderneta",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -31805,13 +31488,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Fratura no Crânio",
-   "carimboPadrao": "Sinal de golpe contuso",
-   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
+   "textoDisplay": "As Marcas no Pescoço",
+   "carimboPadrao": "Sinal de estrangulamento manual",
+   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_contusa"
+    "sinal": "equimoses_digitais"
    }
   },
   {
@@ -31842,16 +31525,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Joseph Evans, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "id": "gen_pertence",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Pertence Arrancado",
+   "carimboPadrao": "Botão com fio na mão da vítima",
+   "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Joseph Evans perdeu o segundo botão.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "arma_de_ocasiao",
+    "subDominio": "objeto_pessoal",
+    "tipoVestigio": "pertence_arrancado",
     "pertenceA": "gen_5_lavrador"
    }
   },
@@ -32057,9 +31740,10 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Harry Morris foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Granja guarda o dia em que o acharam. No cômodo, sofá velho, tapete de retalhos; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_ferreiro]]."
+    "A Granja guarda o dia em que o acharam. No cômodo, sofá velho, tapete de retalhos; de um canto a outro, nada guarda o seu lugar; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
+    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_ferreiro]].",
+    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": []
   },
@@ -32088,17 +31772,6 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_ferreiro]], [[gen_corrobora_gen_0_moleiro]], [[gen_corrobora_gen_2_costureira]]."
    ],
    "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
-   ],
-   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -32125,21 +31798,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -32703,12 +32364,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento"
+    "gen_pertence": "reacao_gen_pertence"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+     "requerCarta": "gen_pertence",
+     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
     }
    ],
    "nos": {
@@ -32745,9 +32406,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_instrumento": {
+    "reacao_gen_pertence": {
      "fala": [
-      "Joseph Evans olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Joseph Evans vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },

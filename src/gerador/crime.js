@@ -50,9 +50,19 @@ import { hashString } from '../logic/hash.js';
 import { METODOS } from './metodos.js';
 import { CLASSES_VESTIGIO } from './vestigios.js';
 
-const MAX_RODADAS = 6; // além disto a vítima grita/escapa — batalha rejeitada
+const MAX_RODADAS = 6; // além disto a vítima resiste até o teto — batalha rejeitada
 const MAX_FERIMENTOS_ASSASSINO = 2; // ferido a este ponto, o assassino foge
 const MAX_TENTATIVAS = 24; // teto da reamostragem antes do desespero
+
+// Multiplicador de mobilidade da fuga por mobilidadeResidual do método,
+// indexado por ferimentosVitima (1º, 2º, 3º+) — OS confronto estendido §8.2.
+// A fuga decai conforme a vítima é ferida: laminada (2) não decai; contuso
+// (0) some após o 1º golpe.
+const MULT_MOBILIDADE = {
+  2: [1, 1, 1],
+  1: [1, 1, 0],
+  0: [1, 0, 0],
+};
 
 function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
@@ -122,21 +132,39 @@ function caminhoEmL(de, para) {
 // derrota e mata na última rodada, com o custo máximo que a simulação
 // normal poderia produzir.
 // ---------------------------------------------------------------------
-function simularBatalha(sal, { assassino, vitima, metodo, cenario, interior, comodoId, forcarVitoria = false }) {
+function simularBatalha(
+  sal,
+  { assassino, vitima, metodo, cenario, interior, comodoId, forcarVitoria = false, portaoPsiquico = null, fugaSuprimida = false }
+) {
   const comodo = interior.comodos.find((c) => c.id === comodoId);
   const forA = assassino.atributos.FOR;
   const forV = vitima.atributos.FOR;
   const surpresa = cenario === 'premeditado' ? metodo.surpresa : 0;
 
+  // Portão psíquico da vítima (OS confronto estendido §4.4): pesos de
+  // afinidade de ação, jamais regra dura.
+  const sobAtaque = portaoPsiquico?.sobAtaque || { resistir: 0, fugir: 0, gritar: 0 };
+  const polaridade = portaoPsiquico?.polaridade || 'ativa';
+
+  // Porta externa: a célula frente-centro (última fila = rua) — a mesma
+  // convenção já usada pela pegada do desleixado e pelo arrasto (§4.5/§8.3).
+  const portaExterna = { col: Math.floor(interior.grid.colunas / 2), fila: interior.grid.filas - 1 };
+
   let pontosVida = 2 + 2 * forV; // FOR da vítima governa a resistência (§3.1)
   let celulaAtual = centroDoComodo(comodo);
-  const caminho = [celulaAtual];
+  const caminho = [celulaAtual]; // deslocamento do RESISTIR (vigente)
+  const rotaFuga = []; // células ganhas na FUGA dirigida (novo)
+  const limiaresFuga = []; // cruzamentos de cômodo na fuga (novo)
   const rodadasLog = [];
   const mobiliaDanificada = [];
   let ferimentosVitima = 0;
   let ferimentosDefensivos = 0;
   let ferimentosAssassino = 0;
+  let lesoesSitioPosterior = 0; // golpes recebidos em fuga (novo)
   let ruido = 0;
+  let gritou = false; // no máximo 1× por batalha (novo)
+  let inicioFuga = null; // célula de onde a vítima começou a fugir (novo)
+  let acaoDominante = null; // 'resistir' | 'fugir' (novo)
 
   const danificarAoAlcance = (celula) => {
     for (const m of mobiliasAoAlcance(interior, celula)) {
@@ -146,6 +174,25 @@ function simularBatalha(sal, { assassino, vitima, metodo, cenario, interior, com
       }
     }
   };
+
+  const resultadoVitoria = (r) => ({
+    vitoria: true,
+    rodadas: r,
+    caminho,
+    celulaQueda: { ...celulaAtual },
+    ferimentosVitima,
+    ferimentosDefensivos,
+    ferimentosAssassino,
+    lesoesSitioPosterior,
+    mobiliaDanificada,
+    ruido,
+    rotaFuga,
+    limiaresFuga,
+    inicioFuga,
+    gritou,
+    acaoDominante,
+    rodadasLog,
+  });
 
   for (let r = 1; r <= MAX_RODADAS; r++) {
     const salR = `${sal}|r${r}`;
@@ -162,38 +209,86 @@ function simularBatalha(sal, { assassino, vitima, metodo, cenario, interior, com
     const morta = pontosVida <= 0 || (forcarVitoria && r === MAX_RODADAS);
     if (morta) {
       rodadasLog.push(log);
-      return {
-        vitoria: true,
-        rodadas: r,
-        caminho,
-        celulaQueda: { ...celulaAtual },
-        ferimentosVitima,
-        ferimentosDefensivos,
-        ferimentosAssassino,
-        mobiliaDanificada,
-        ruido,
-        rodadasLog,
-      };
+      return resultadoVitoria(r);
     }
 
-    // Reação da vítima (a surpresa do 1º golpe premeditado a suprime).
+    // Rodada 1 premeditada: a surpresa suprime a AÇÃO da vítima (reagir,
+    // fugir, gritar) — §4.4. O DESLOCAMENTO do confronto (o drift) NÃO é
+    // ação da vítima: é a luta que anda, e segue rodando toda rodada como
+    // no comportamento vigente (fora deste guard, abaixo).
+    let fugiuNestaRodada = false;
     if (!(r === 1 && surpresa > 0)) {
-      if (hashString(`${salR}|reage`) % 6 < forV) {
-        ferimentosDefensivos += 1;
-        log.reagiu = true;
-        if (hashString(`${salR}|fere`) % 8 < forV) {
-          ferimentosAssassino += 1;
-          log.feriuAssassino = true;
-          if (!forcarVitoria && ferimentosAssassino >= MAX_FERIMENTOS_ASSASSINO) {
-            rodadasLog.push(log);
-            return { vitoria: false, motivo: 'assassino_ferido', rodadas: r };
+      // ===== AÇÃO DA VÍTIMA: resistir × fugir (§8.2) =====
+      // fugir só é possível se o método não prende, não suprime a batalha,
+      // não é réplica suprimida e não é o golpe de desespero.
+      const idxFer = Math.min(ferimentosVitima, 3) - 1; // 0,1,2
+      const multMob = metodo.seguraAVitima ? 0 : MULT_MOBILIDADE[metodo.mobilidadeResidual ?? 0]?.[idxFer] ?? 0;
+      const pesoResistir = 1 + forV + sobAtaque.resistir + (polaridade === 'ativa' ? 1 : 0);
+      const podeFugir = !forcarVitoria && !fugaSuprimida && !metodo.seguraAVitima;
+      const pesoFugir = podeFugir ? (1 + sobAtaque.fugir + (polaridade === 'passiva' ? 1 : 0)) * multMob : 0;
+      // Só consome o sal |acao quando a fuga é possível — assim os métodos
+      // que prendem/suprimem mantêm a sequência de hashes vigente (réplica
+      // byte-idêntica).
+      const querFugir = pesoFugir > 0 && hashString(`${salR}|acao`) % (pesoResistir + pesoFugir) >= pesoResistir;
+
+      if (querFugir) {
+        acaoDominante = 'fugir';
+        fugiuNestaRodada = true;
+        lesoesSitioPosterior += 1; // o golpe desta rodada foi recebido de costas
+        if (!inicioFuga) inicioFuga = { ...celulaAtual };
+        const comodoAntes = comodoDaCelula(interior, celulaAtual);
+        const passo = caminhoEmL(celulaAtual, portaExterna);
+        celulaAtual = passo[Math.min(1, passo.length - 1)];
+        rotaFuga.push({ ...celulaAtual });
+        ruido += 1;
+        log.fugiu = true;
+        log.moveuPara = { ...celulaAtual };
+        if (comodoDaCelula(interior, celulaAtual) !== comodoAntes) {
+          limiaresFuga.push({ ...celulaAtual });
+          log.cruzouLimiar = true;
+        }
+        // Alcançar a porta externa ⇒ a vítima escapa: batalha rejeitada.
+        if (celulaAtual.col === portaExterna.col && celulaAtual.fila === portaExterna.fila) {
+          rodadasLog.push(log);
+          return { vitoria: false, motivo: 'vitima_escapou', rodadas: r };
+        }
+      } else {
+        // ===== RESISTIR = reação vigente (mesmos sais |reage/|fere) =====
+        if (!acaoDominante) acaoDominante = 'resistir';
+        if (hashString(`${salR}|reage`) % 6 < forV) {
+          ferimentosDefensivos += 1;
+          log.reagiu = true;
+          if (hashString(`${salR}|fere`) % 8 < forV) {
+            ferimentosAssassino += 1;
+            log.feriuAssassino = true;
+            if (!forcarVitoria && ferimentosAssassino >= MAX_FERIMENTOS_ASSASSINO) {
+              rodadasLog.push(log);
+              return { vitoria: false, motivo: 'assassino_ferido', rodadas: r };
+            }
           }
+        }
+      }
+
+      // ===== GRITO: rolagem independente, no máximo 1× (§8.2) =====
+      // Gated por seguraAVitima (a mão/laço abafa), réplica suprimida e
+      // desespero — nenhum deles consome o sal |grito.
+      if (!gritou && !metodo.seguraAVitima && !fugaSuprimida && !forcarVitoria) {
+        let limiar = 1; // base 1/8
+        if (sobAtaque.gritar >= 1) limiar += 1; // +1/8 pela afinidade do vetor
+        if (pontosVida <= 2) limiar += 1; // +1/8 pelo desespero
+        if (hashString(`${salR}|grito`) % 8 < limiar) {
+          gritou = true;
+          ruido += 4;
+          log.gritou = true;
         }
       }
     }
 
-    // Deslocamento do confronto (a vítima que resiste recua; a luta anda).
-    if (hashString(`${salR}|desloca`) % 4 < Math.min(forV, 3)) {
+    // ===== DESLOCAMENTO do confronto (o drift vigente, incondicional) =====
+    // Como no comportamento original, roda TODA rodada (inclusive a rodada
+    // 1 premeditada) e usa os mesmos sais |desloca/|para. Só é pulado
+    // quando a vítima já se moveu na fuga dirigida desta rodada.
+    if (!fugiuNestaRodada && hashString(`${salR}|desloca`) % 4 < Math.min(forV, 3)) {
       const vizinhas = vizinhasDaCelula(interior, celulaAtual);
       celulaAtual = vizinhas[hashString(`${salR}|para`) % vizinhas.length];
       caminho.push({ ...celulaAtual });
@@ -216,7 +311,7 @@ function simularBatalha(sal, { assassino, vitima, metodo, cenario, interior, com
 // ouvir (derivado da rotina × adjacência pelo chamador, caso.js). Quem
 // partilha o teto ouve o ruído abafado; o vizinho, só o audível.
 // ---------------------------------------------------------------------
-export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, comodoId, hora, faixa, ouvintes, seed }) {
+export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, comodoId, hora, faixa, ouvintes, seed, portaoPsiquico = null, fugaSuprimida = false }) {
   const metodo = METODOS[metodoId];
   const sal = `${salDaSeed(seed)}|crime`;
   const vestigios = [];
@@ -276,7 +371,9 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
     let aceita = null;
     let tentativaAceita = -1;
     for (let t = 0; t < MAX_TENTATIVAS; t++) {
-      const r = simularBatalha(`${sal}|batalha|${t}`, { assassino, vitima, metodo, cenario, interior, comodoId });
+      const r = simularBatalha(`${sal}|batalha|${t}`, {
+        assassino, vitima, metodo, cenario, interior, comodoId, portaoPsiquico, fugaSuprimida,
+      });
       if (r.vitoria) {
         aceita = r;
         tentativaAceita = t;
@@ -289,7 +386,7 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
       // Golpe de desespero: vitória forçada com custo máximo — o
       // determinismo da âncora não pode depender da sorte da amostragem.
       aceita = simularBatalha(`${sal}|batalha|desespero`, {
-        assassino, vitima, metodo, cenario, interior, comodoId, forcarVitoria: true,
+        assassino, vitima, metodo, cenario, interior, comodoId, forcarVitoria: true, portaoPsiquico, fugaSuprimida,
       });
       tentativaAceita = MAX_TENTATIVAS;
       desespero = true;
@@ -381,6 +478,56 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
       registrarEvento(vitima.id, 'mobilia_derrubada', { celula: peca.celula, mobilia: peca.id }, { depositados: [vPeca] });
     }
 
+    // ===================== O PREÇO DA FUGA (§4.6, §8.4) =====================
+    // A vítima que fugiu deixa trilha, esfregaço de limiar, lesões de sítio
+    // posterior e — se houve — o grito com hora. A trilha só existe se o
+    // método sangra e houve ferimento (regra de existência §4.6).
+    if (r.rotaFuga && r.rotaFuga.length > 0) {
+      if (metodo.sangra && r.ferimentosVitima >= 1) {
+        // Trilha contígua por construção (caminhoEmL do início da fuga à queda).
+        const celulasTrilha = caminhoEmL(r.inicioFuga || r.celulaQueda, r.celulaQueda);
+        const comodosTrilha = [...new Set(celulasTrilha.map((c) => comodoDaCelula(interior, c)))];
+        const vTrilha = depositar(
+          'trilha_gotejamento',
+          { celula: r.celulaQueda, celulas: celulasTrilha },
+          `gotas espaçadas rumo à porta; ${celulasTrilha.length} célula(s) em ${comodosTrilha.length} cômodo(s)`
+        );
+        registrarEvento(vitima.id, 'fuga_dirigida', { celula: r.celulaQueda }, {
+          depositados: [vTrilha],
+          detalhe: `fuga por ${r.rotaFuga.length} célula(s)`,
+        });
+        // Esfregaço em cada limiar cruzado (na altura da mão que se apoia).
+        for (const cel of r.limiaresFuga) {
+          const vLim = depositar('esfregaco_de_limiar', { celula: cel }, 'borrão de sangue na altura da mão, no batente');
+          registrarEvento(vitima.id, 'cruzou_limiar', { celula: cel }, { depositados: [vLim] });
+        }
+      }
+    }
+    // Lesões de sítio posterior: contagem no registro, canal de laudo.
+    if (r.lesoesSitioPosterior > 0) {
+      const vSitio = depositar(
+        'lesao_sitio_posterior',
+        { celula: r.celulaQueda },
+        `${r.lesoesSitioPosterior} golpe(s) alcançando o dorso, recebidos em fuga`
+      );
+      registrarEvento(vitima.id, 'golpe_de_costas', { celula: r.celulaQueda }, { depositados: [vSitio] });
+    }
+    // Grito: pico de ruído com hora própria, audível aos ADJACENTES (o
+    // grito atravessa a parede que o ruído de luta não atravessa). Só existe
+    // se há adjacente que o ouça (regra de existência).
+    if (r.gritou) {
+      const ouvintesGrito = ouvintes?.adjacentes || [];
+      if (ouvintesGrito.length > 0) {
+        const vGrito = depositar('grito_ouvido', {}, `grito às ${hora}h, ouvido por ${ouvintesGrito.join(', ')}`);
+        vestigios[vestigios.length - 1].ouvintes = [...ouvintesGrito];
+        vestigios[vestigios.length - 1].horaGrito = hora;
+        registrarEvento(vitima.id, 'grito', { comodo: comodoId }, { depositados: [vGrito], detalhe: `hora ${hora}` });
+        variaveis.grito = true;
+      } else {
+        variaveisInertes.push(`grito (sem adjacente que ouça na faixa ${faixa})`);
+      }
+    }
+
     // Ruído: só existe se alguém PODERIA tê-lo ouvido (regra de existência).
     const nivel = r.ruido >= 6 ? 'audivel' : r.ruido >= 3 ? 'abafado' : 'silencioso';
     const ouvintesEfetivos = [
@@ -425,6 +572,10 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
         deposito = depositar('mobilia_recomposta', { celula: alvo.celula, mobilia: alvo.mobilia }, 'peça reposta sobre o próprio arranhão');
       } else if (alvo.classe === 'residuo_do_veneno') {
         deposito = depositar('louca_lavada_fora_de_hora', { celula: alvo.celula, mobilia: alvo.mobilia }, 'o serviço lavado antes da criada');
+      } else if (alvo.classe === 'trilha_gotejamento') {
+        deposito = depositar('assoalho_esfregado_faixa', { celula: alvo.celula, celulas: alvo.celulas }, 'faixa lavada no sentido da trilha');
+      } else if (alvo.classe === 'esfregaco_de_limiar') {
+        deposito = depositar('batente_lavado', { celula: alvo.celula }, 'batente lavado, ainda úmido');
       } else {
         continue;
       }
@@ -492,6 +643,13 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
     arrasto: cenaEncenada ? true : null,
     higiene: wisA >= 4 ? 'limpa' : wisA <= 2 ? 'desleixada' : 'neutra',
     planejamento: depositadosPlanejamento.length > 0 ? true : null,
+    // OS confronto estendido (§4.6): ação/rota/grito só existem se um
+    // vestígio sobrevivente as evidencia (a conservação garante que a
+    // limpeza total ainda deixa 2ª ordem). 'resistir' é coberto pelas
+    // variáveis vigentes; só 'fugir' é diferencial novo.
+    acao_vitima: resultado && resultado.acaoDominante === 'fugir' ? 'fugir' : null,
+    rota_fuga: resultado && resultado.rotaFuga && resultado.rotaFuga.length > 0 ? resultado.rotaFuga.length : null,
+    lesoes_sitio_posterior: resultado && resultado.lesoesSitioPosterior > 0 ? resultado.lesoesSitioPosterior : null,
   };
   for (const [id, valor] of Object.entries(candidatas)) {
     if (valor === null) continue;

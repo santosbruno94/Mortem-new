@@ -106,6 +106,46 @@ arrasto terminando no corpo, livor × arrasto) e ponte consumível pelo motor
 intocado (janela cobre a hora real; `mecanismoCravado` = mecanismo; presença e
 móbil apontam o réu). Vitrine em `scripts/demo-crime.mjs` (`npm run demo:crime`).
 
+### 2.4 A vítima tem ações: resistir × fugir × gritar (OS confronto estendido)
+
+A vítima deixa de ser alvo passivo. Por rodada, após o golpe do assassino, se vive e
+não está sob a surpresa da rodada 1 premeditada, sorteia-se sua **ação** — **resistir**
+ou **fugir** — e faz-se uma rolagem independente de **grito** (no máximo 1× por batalha).
+A norma completa está em `docs/os-confronto-estendido.md` §4.4 e §8; o essencial de
+design:
+
+- **Dois portões pesam a ação, jamais a determinam.**
+  - **Portão físico** (método + estado): o campo `seguraAVitima` (garrote, esganadura,
+    sufocação, afogamento) zera **fugir e gritar** enquanto o método prende — o laço
+    cala, a mão abafa. O campo `mobilidadeResidual` faz a fuga decair conforme a vítima
+    é ferida (laminada decai devagar; contuso some após o 1º golpe). A ancoragem é a KB:
+    "capacidade de ação depois da lesão" (`kb-medicina-legal/traumas.md`).
+  - **Portão psíquico** (vetor + polaridade da vítima, da OS da camada psíquica): o
+    campo `sobAtaque` por vetor e a polaridade (ativa pende a resistir; passiva, a
+    fugir/gritar) somam **pesos de afinidade**. FOR continua pesando resistir.
+- **Resistir** é o comportamento vigente (ferimento defensivo, chance de ferir o
+  assassino, deriva de 1 célula). **Fugir** é deslocamento **dirigido**: 1 célula por
+  rodada rumo à **porta externa** (a célula frente-centro, a mesma convenção da pegada
+  do desleixado e do arrasto — nenhuma célula nova em `interiores.js`). O assassino
+  permanece adjacente por construção; o golpe sempre alcança.
+- **A vítima nunca escapa de fato:** alcançar a porta externa ⇒ **rejeição**
+  `vitima_escapou`, e a batalha é reamostrada com sal incremental, ao lado de
+  `assassino_ferido` e `vitima_resistiu` (§2.1). O crime sempre se consuma.
+- **A desordem custa, contra orçamento de limpeza que não cresce.** A fuga deposita
+  **trilha de gotejamento** (só se o método sangra e houve ferimento), **esfregaço de
+  limiar** a cada cômodo cruzado, **lesões de sítio posterior** (canal de laudo) e o
+  **grito** com hora própria (canal dos ouvintes adjacentes). Cada classe removível
+  declara sua contraparte de 2ª ordem (conservação §3.3): a limpeza total ainda deixa
+  a faixa lavada e o batente úmido. Como o orçamento de WIS **não cresce com a bagunça**,
+  dois cômodos sujos contra orçamento fixo ⇒ sobra vestígio de 1ª ou de 2ª ordem.
+- **Fair play (anti-bicondicional):** a fuga é possível também no premeditado (a
+  surpresa consome só a rodada 1), então "cena espalhada" **não** equivale a "briga
+  escalada" — o QA verifica a coexistência num lote fixo. A fuga vaza por cena e laudo;
+  nunca basta para condenar — o veredicto segue material (R1–R6 intactas).
+- **Réplica:** `dirigido.fugaVitima ∈ {'suprimida','livre'}` (default `'livre'`); a
+  réplica usa `'suprimida'` para o registro permanecer idêntico em fatos ao roteiro
+  canônico (§4.8).
+
 ---
 
 ## 3. Regra de existência de atributo

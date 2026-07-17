@@ -2673,6 +2673,100 @@ for (const seed of SEEDS_ANTI_TELL) {
 const antiTellOk = antiTellFalhas.length === 0;
 if (!antiTellOk) console.log('\nPSIQUE — anti-tell falhou nas seeds:', antiTellFalhas.join(', '));
 
+// ============================================================
+// OS CONFRONTO ESTENDIDO (§5) — guardas da fuga, do grito e das trilhas.
+// (A) determinismo byte a byte com fuga/grito/trilhas; (B) anti-bicondicional
+// (§4.7): no lote fixo coexistem premeditado COM fuga e briga escalada SEM
+// fuga (a fuga não é sinônimo de briga); (C) coerência (trilha contígua) +
+// existência (ação/rota/grito só entram se um vestígio sobrevivente as
+// evidencia; grito tem hora e ouvinte); (D) léxico ("overdose" banida das
+// superfícies do jogo). Lote versionado: confronto_1..80.
+// ============================================================
+const { CLASSES_VESTIGIO: CLASSES_VESTIGIO_CONF } = await import('../src/gerador/vestigios.js');
+const FUGA_CLASSES = [
+  'trilha_gotejamento', 'assoalho_esfregado_faixa', 'esfregaco_de_limiar', 'batente_lavado', 'lesao_sitio_posterior',
+];
+const SEEDS_CONFRONTO = Array.from({ length: 80 }, (_, i) => `confronto_${i + 1}`);
+const casosConfronto = SEEDS_CONFRONTO.map((s) => gerarCasoBruto(s));
+const fugiuNoCaso = (c) => c.crime.variaveis?.acao_vitima === 'fugir';
+
+// (A) determinismo: mesma seed → mesmo registro (inclui fuga/grito/trilhas).
+const confrontoDeterminista = SEEDS_CONFRONTO.every(
+  (s, i) => JSON.stringify(gerarCasoBruto(s).crime) === JSON.stringify(casosConfronto[i].crime)
+);
+
+// (B) anti-bicondicional (§4.7).
+const premeditadoComFuga = casosConfronto.some((c) => c.escolha.cenario === 'premeditado' && fugiuNoCaso(c));
+const brigaSemFuga = casosConfronto.some((c) => c.escolha.cenario === 'briga_escalada' && !fugiuNoCaso(c));
+const antiBicondicional = premeditadoComFuga && brigaSemFuga;
+if (!antiBicondicional)
+  console.log('\nCONFRONTO — anti-bicondicional: premeditadoComFuga=', premeditadoComFuga, 'brigaSemFuga=', brigaSemFuga);
+
+// (C) coerência + existência.
+const varEvidenciada = (reg, varId) => {
+  const vivos = reg.vestigios.filter((v) => !v.removido);
+  return vivos.some((v) => (CLASSES_VESTIGIO_CONF[v.classe]?.evidenciaDe || []).includes(varId));
+};
+const trilhaContigua = (celulas) =>
+  Array.isArray(celulas) &&
+  celulas.every(
+    (c, k) => k === 0 || Math.abs(c.col - celulas[k - 1].col) + Math.abs(c.fila - celulas[k - 1].fila) === 1
+  );
+const fugaFalhas = [];
+for (const c of casosConfronto) {
+  const reg = c.crime;
+  for (const v of reg.vestigios) {
+    if ((v.classe === 'trilha_gotejamento' || v.classe === 'assoalho_esfregado_faixa') && !trilhaContigua(v.celulas)) {
+      fugaFalhas.push(`${c.seed}: trilha não contígua`);
+    }
+  }
+  for (const varId of ['acao_vitima', 'rota_fuga', 'lesoes_sitio_posterior', 'grito']) {
+    if (reg.variaveis[varId] !== undefined && !varEvidenciada(reg, varId)) {
+      fugaFalhas.push(`${c.seed}: variável ${varId} sem vestígio sobrevivente`);
+    }
+  }
+  if (fugiuNoCaso(c)) {
+    const temVestigioFuga = reg.vestigios.some((v) => !v.removido && FUGA_CLASSES.includes(v.classe));
+    if (!temVestigioFuga) fugaFalhas.push(`${c.seed}: fuga sem vestígio sobrevivente`);
+  }
+  if (reg.variaveis.grito) {
+    const g = reg.vestigios.find((v) => v.classe === 'grito_ouvido');
+    if (!g || g.horaGrito === undefined || !(g.ouvintes && g.ouvintes.length > 0)) {
+      fugaFalhas.push(`${c.seed}: grito sem hora/ouvinte`);
+    }
+  }
+}
+const fugaCoerenteEExistente = fugaFalhas.length === 0;
+if (!fugaCoerenteEExistente) console.log('\nCONFRONTO — coerência/existência da fuga:', fugaFalhas.slice(0, 6).join('; '));
+
+// (D) léxico: "overdose" banida das superfícies do jogo (dados + prosa
+// embarcada + templates); a língua diz "dose excessiva".
+const lerSeguro = (rel) => {
+  try {
+    return readFileSync(fileURLToPath(new URL(`../${rel}`, import.meta.url)), 'utf8');
+  } catch {
+    return '';
+  }
+};
+const superficiesLexico = [
+  'src/data/casos_gerados.js', 'src/data/catalogo_causas.js', 'src/data/glossario.js', 'src/gerador/pacote_gerado.js',
+];
+const overdoseHits = superficiesLexico.filter((rel) => /overdose/i.test(lerSeguro(rel)));
+const lexicoConfronto = overdoseHits.length === 0;
+if (!lexicoConfronto) console.log('\nCONFRONTO — "overdose" em superfície do jogo:', overdoseHits.join(', '));
+
+// (E) réplica (§4.8): fugaVitima 'suprimida' ⇒ o registro não ganha fuga
+// nem grito — a base da identidade de fatos com o roteiro canônico.
+const { SEED_REPLICA: SEED_REPLICA_CONF, DIRIGIDO_REPLICA: DIRIGIDO_REPLICA_CONF } = await import(
+  '../src/gerador/pacote_gerado.js'
+);
+const regReplicaConf = gerarCasoBruto(SEED_REPLICA_CONF, { dirigido: DIRIGIDO_REPLICA_CONF }).crime;
+const replicaFugaSuprimida =
+  regReplicaConf.variaveis?.acao_vitima !== 'fugir' &&
+  regReplicaConf.variaveis?.grito === undefined &&
+  !regReplicaConf.vestigios.some((v) => FUGA_CLASSES.includes(v.classe));
+if (!replicaFugaSuprimida) console.log('\nCONFRONTO — réplica não suprimiu a fuga (§4.8).');
+
 // Devolve o módulo de dados ao caso-escola: as checagens e o linter
 // abaixo leem o pacote do tutorial, como sempre.
 carregarCaso(pacote);
@@ -2772,6 +2866,11 @@ const checagens = [
   ['Psique não vaza: pacotes embarcados sem L1 em campo algum, sem L2/psique em chave ou id (OS psíquica §5)', psiqueNaoVaza],
   ['Psique determinista: mesma seed → mesmos vetores, polaridades, magnitudes e flags (OS psíquica §5)', psiqueDeterminista],
   ['Anti-tell: em 50 seeds, todo caso tem réu com desencaixe ≥ T e ≥1 inocente destoante (OS psíquica §4.3)', antiTellOk],
+  ['Confronto: determinismo byte a byte com fuga/grito/trilhas (mesma seed → mesmo registro) (OS confronto §5)', confrontoDeterminista],
+  ['Confronto anti-bicondicional: há premeditado COM fuga e briga escalada SEM fuga no lote fixo (OS confronto §4.7)', antiBicondicional],
+  ['Confronto: trilha contígua; ação/rota/grito só existem com vestígio sobrevivente; grito com hora e ouvinte (OS confronto §5)', fugaCoerenteEExistente],
+  ['Confronto: "overdose" fora das superfícies do jogo — a língua diz "dose excessiva" (OS confronto §5)', lexicoConfronto],
+  ['Confronto: réplica com fuga suprimida — registro sem fuga/grito (identidade de fatos §4.8)', replicaFugaSuprimida],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

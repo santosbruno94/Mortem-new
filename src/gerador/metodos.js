@@ -43,6 +43,18 @@ export const CENARIOS = {
 //   instrumento     : id do instrumento típico (vira vestígio de presença).
 //   sinalAssinatura : sinal do catálogo universal depositado pela lesão fatal.
 //   mecanismo       : causa correspondente (verdadeDeOuro.mecanismoCorreto).
+//
+// PORTÃO FÍSICO DA FUGA (OS confronto estendido §4.4):
+//   seguraAVitima      : bool — o método PRENDE a vítima enquanto aplicado
+//                        (laço, mão, cabeça sob água). Enquanto prende,
+//                        fugir e gritar têm peso 0; resta resistir.
+//   mobilidadeResidual : 0–2 — fator de decaimento do peso de fugir
+//                        conforme ferimentosVitima (só nos métodos que
+//                        NÃO seguram e NÃO suprimem a batalha). null quando
+//                        irrelevante (segura a vítima ou suprime a batalha).
+//   exigeAncora        : id de âncora espacial exigida ('agua' p/ afogamento)
+//                        ou null. A elegibilidade por âncora é checada em
+//                        caso.js (D2: afogamento só na cena com água).
 // ---------------------------------------------------------------------
 export const METODOS = {
   laminada: {
@@ -57,6 +69,9 @@ export const METODOS = {
     instrumento: 'lamina_de_oficio',
     sinalAssinatura: 'ferida_incisa',
     mecanismo: 'ferida_arma_branca',
+    seguraAVitima: false,
+    mobilidadeResidual: 2, // sangra, mas não prende: a fuga decai devagar
+    exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/traumas.md (feridas incisas e perfuro-cortantes; ferimentos defensivos)',
   },
   garrote: {
@@ -71,7 +86,10 @@ export const METODOS = {
     instrumento: 'cordao_torcido',
     sinalAssinatura: 'sulco_horizontal',
     mecanismo: 'estrangulamento_ligadura',
-    proveniencia: 'docs/kb-medicina-legal/asfixias.md (sulco horizontal de ligadura × sulco oblíquo)',
+    seguraAVitima: true, // o laço cala e prende: fugir e gritar peso 0
+    mobilidadeResidual: null,
+    exigeAncora: null,
+    proveniencia: 'docs/kb-medicina-legal/asfixias.md (sulco horizontal de ligadura × sulco oblíquo; a ligadura mantida anula a ação — capacidade de ação pós-lesão)',
   },
   esganadura: {
     rotulo: 'Estrangulamento manual',
@@ -85,7 +103,10 @@ export const METODOS = {
     instrumento: null, // as mãos não se abandonam na cena
     sinalAssinatura: 'equimoses_digitais',
     mecanismo: 'estrangulamento_manual',
-    proveniencia: 'docs/kb-medicina-legal/asfixias.md (equimoses digitais e marcas ungueais da esganadura)',
+    seguraAVitima: true, // a mão no pescoço prende: fugir e gritar peso 0
+    mobilidadeResidual: null,
+    exigeAncora: null,
+    proveniencia: 'docs/kb-medicina-legal/asfixias.md (equimoses digitais e marcas ungueais da esganadura; a compressão cervical mantida anula a ação)',
   },
   contundente: {
     rotulo: 'Golpe contuso',
@@ -99,7 +120,10 @@ export const METODOS = {
     instrumento: 'arma_de_ocasiao', // castiçal, atiçador — o que a mão achou
     sinalAssinatura: 'ferida_contusa',
     mecanismo: 'trauma_contuso',
-    proveniencia: 'docs/kb-medicina-legal/traumas.md (ferida contusa e fratura por instrumento rombo)',
+    seguraAVitima: false,
+    mobilidadeResidual: 0, // trauma craniano: a fuga decai rápido após o 1º golpe
+    exigeAncora: null,
+    proveniencia: 'docs/kb-medicina-legal/traumas.md (ferida contusa e fratura por instrumento rombo; trauma craniano com inconsciência suprime a ação)',
   },
   veneno_arsenico: {
     rotulo: 'Envenenamento por arsênico',
@@ -113,17 +137,78 @@ export const METODOS = {
     instrumento: 'papel_de_arsenico',
     sinalAssinatura: 'odor_alho',
     mecanismo: 'envenenamento_arsenico',
+    seguraAVitima: false,
+    mobilidadeResidual: null, // suprimeBatalha: não há ação a decair
+    exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/venenos.md (arsênico: aquisição registrada em livro de venenos, odor aliáceo)',
+  },
+
+  // ============ MÉTODOS NOVOS — OS confronto estendido (§4.2, §8.1) ============
+  sufocacao: {
+    rotulo: 'Sufocação',
+    surpresa: 2, // arma de ocasião: sem o golpe esmagador do garrote preparado
+    danoBase: 1, // abafar é lento, como a esganadura
+    ruidoPorRodada: 1,
+    suprimeBatalha: false,
+    sangra: false,
+    exigePremeditacao: false, // travesseiro/pano à mão: arma de ocasião doméstica
+    intMinima: 1,
+    instrumento: 'travesseiro_ou_pano', // abandonável na cena
+    sinalAssinatura: 'oclusao_vias',
+    mecanismo: 'sufocacao',
+    seguraAVitima: true, // a mão/pano abafa: fugir e gritar peso 0 enquanto aplicado
+    mobilidadeResidual: 1, // intermediária (só conta se a vítima se solta entre aplicações)
+    exigeAncora: null,
+    proveniencia: 'docs/kb-medicina-legal/asfixias.md (sufocação: escoriações periorais, sem sulco; a asfixia mais pobre em sinais — Taylor)',
+  },
+  afogamento: {
+    rotulo: 'Afogamento',
+    surpresa: 3, // a cabeça empurrada sob a água de súbito
+    danoBase: 2, // golpe único contextual: resolve depressa
+    ruidoPorRodada: 1,
+    suprimeBatalha: false,
+    sangra: false,
+    exigePremeditacao: false, // pode escalar de uma briga junto à água
+    intMinima: 1,
+    instrumento: null, // a água/cocho não se leva da cena
+    sinalAssinatura: 'agua_pulmoes',
+    mecanismo: 'afogamento',
+    seguraAVitima: true, // a cabeça sob a água prende: fugir e gritar peso 0
+    mobilidadeResidual: null,
+    exigeAncora: 'agua', // D2: só na cena com água alcançável (o cocho da forja)
+    proveniencia: 'docs/kb-medicina-legal/asfixias.md (afogamento: cogumelo de espuma, enfisema aquoso de Casper; submersão em vida)',
+  },
+  laudano: {
+    rotulo: 'Láudano em dose excessiva',
+    surpresa: 0,
+    danoBase: 0,
+    ruidoPorRodada: 0,
+    suprimeBatalha: true, // veneno: não há confronto (§2.2)
+    sangra: false,
+    exigePremeditacao: true, // preparar a dose no soporífero = premeditação
+    intMinima: 2, // venda livre na botica: menos elaborado que o arsênico
+    instrumento: 'frasco_de_laudano',
+    sinalAssinatura: 'miose_opiacea',
+    mecanismo: 'envenenamento_laudano',
+    seguraAVitima: false,
+    mobilidadeResidual: null, // suprimeBatalha
+    exigeAncora: null,
+    proveniencia: 'docs/kb-medicina-legal/venenos.md (ópio e láudano: miose em ponta de alfinete, depressão respiratória; venda livre em 1893) — D1 do usuário',
   },
 };
 
-// Métodos possíveis por cenário e INT do assassino (elegibilidade pura;
-// o sorteio em caso.js escolhe entre os elegíveis). Ordem estável de
-// declaração — o replay depende dela.
-export function metodosElegiveis(cenario, intAssassino) {
+// Métodos possíveis por cenário, INT do assassino e ÂNCORAS espaciais
+// disponíveis na cena (elegibilidade pura; o sorteio em caso.js escolhe
+// entre os elegíveis). Ordem estável de declaração — o replay depende dela.
+// `ancorasDisponiveis` é um Set de ids de âncora presentes no interior da
+// cena (ex.: 'agua' quando há cocho/tanque alcançável — D2). Método com
+// `exigeAncora` só entra se a âncora estiver presente; sem o argumento,
+// o comportamento é o de sempre para os métodos sem âncora.
+export function metodosElegiveis(cenario, intAssassino, ancorasDisponiveis = null) {
   return Object.keys(METODOS).filter((id) => {
     const m = METODOS[id];
     if (cenario === 'briga_escalada' && m.exigePremeditacao) return false;
+    if (m.exigeAncora && !(ancorasDisponiveis && ancorasDisponiveis.has(m.exigeAncora))) return false;
     return intAssassino >= m.intMinima;
   });
 }

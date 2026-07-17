@@ -80,6 +80,9 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'negligência ressentida ("ninguém cuida de mim")',
     autoJustificacao: 'foi um ato de amor',
     temaGatilho: 'inutilidade',
+    // Portão psíquico (OS confronto estendido §4.4/§8.2): pesos de afinidade
+    // de ação sob ataque, jamais regra dura. O cuidador clama por socorro.
+    sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // valor "cuidar dos seus": chama ajuda
     afinidadePapeis: {
       assassino_encenador: 3, isca_do_apressado: 1, veu: 3,
       ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 1,
@@ -102,6 +105,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'fraqueza que terceiriza (manda, paga, finge não ver)',
     autoJustificacao: 'preservei a família',
     temaGatilho: 'queda_de_status',
+    sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "ordem, nome": não foge — impõe-se
     afinidadePapeis: {
       assassino_encenador: 4, isca_do_apressado: 2, veu: 1,
       ruido_pista_dupla: 1, mentiroso_por_medo: 1, fonte: 2,
@@ -124,6 +128,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'omissão pedante (sabia e calou)',
     autoJustificacao: 'era a solução racional',
     temaGatilho: 'erro_em_publico',
+    sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "exatidão": calcula a saída
     afinidadePapeis: {
       assassino_encenador: 4, isca_do_apressado: 1, veu: 1,
       ruido_pista_dupla: 1, mentiroso_por_medo: 1, fonte: 3,
@@ -146,6 +151,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'hipócrita que abafa o que sabe',
     autoJustificacao: 'cortei o mal pela raiz',
     temaGatilho: 'pecado_exposto',
+    sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "pureza, fé": enfrenta o mal de pé
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 2, veu: 3,
       ruido_pista_dupla: 2, mentiroso_por_medo: 2, fonte: 1,
@@ -168,6 +174,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'rancor surdo do preterido',
     autoJustificacao: 'a obra vale mais que ele',
     temaGatilho: 'obra_arruinada',
+    sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "o ofício": defende o que é seu
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 2, veu: 1,
       ruido_pista_dupla: 2, mentiroso_por_medo: 1, fonte: 1,
@@ -190,6 +197,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'anulação dependente (aceita tudo — até demais)',
     autoJustificacao: 'se não podia ser meu…',
     temaGatilho: 'substituicao',
+    sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "a paixão": o desespero que clama
     afinidadePapeis: {
       assassino_encenador: 3, isca_do_apressado: 2, veu: 4,
       ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 1,
@@ -212,6 +220,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'servilismo rancoroso (curva-se e odeia)',
     autoJustificacao: 'eu nunca tive a chance dele',
     temaGatilho: 'voltar_a_ser_ninguem',
+    sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "respeitabilidade": foge da exposição
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 4, veu: 1,
       ruido_pista_dupla: 3, mentiroso_por_medo: 3, fonte: 1,
@@ -234,6 +243,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'paralisia amarga do que não partiu',
     autoJustificacao: 'eu não podia ficar',
     temaGatilho: 'ficar_preso',
+    sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "liberdade": o fujão por excelência
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 2, veu: 2,
       ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 2,
@@ -256,6 +266,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'submissão que acumula e explode',
     autoJustificacao: 'foi uma luta justa',
     temaGatilho: 'afronta_impune',
+    sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "honra": fugir é a covardia que ele teme
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 4, veu: 1,
       ruido_pista_dupla: 2, mentiroso_por_medo: 1, fonte: 1,
@@ -278,6 +289,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'bode expiatório que guarda rancor',
     autoJustificacao: 'não era pra tanto',
     temaGatilho: 'invisibilidade',
+    sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "não ser invisível": faz barulho, chama atenção
     afinidadePapeis: {
       assassino_encenador: 1, isca_do_apressado: 3, veu: 1,
       ruido_pista_dupla: 3, mentiroso_por_medo: 2, fonte: 2,
@@ -300,6 +312,7 @@ export const VETORES_PSIQUICOS = {
     sombraPassiva: 'o voyeur que testemunhou o essencial e não pode explicar por que estava à janela',
     autoJustificacao: 'alguém tinha de saber',
     temaGatilho: 'irrelevancia',
+    sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "que se saiba": alerta a vila
     afinidadePapeis: {
       assassino_encenador: 1, isca_do_apressado: 1, veu: 3,
       ruido_pista_dupla: 2, mentiroso_por_medo: 2, fonte: 4,
@@ -507,7 +520,18 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
     };
   }
 
-  return { consequencias: { porPessoa, encenacao }, log };
+  // Portão psíquico da vítima (OS confronto estendido §4.4): o resolvedor
+  // lê sobAtaque + polaridade da vítima para pesar resistir × fugir × gritar.
+  // A vítima recebeu vetor+polaridade no sorteio (passo 1); o rótulo fica no
+  // log, só os pesos e a polaridade atravessam para o resolvedor.
+  const daVitima = log.porPessoa[vitimaId];
+  const vetorVitima = VETORES_PSIQUICOS[daVitima?.vetorId];
+  const portaoVitima = {
+    sobAtaque: { ...(vetorVitima?.sobAtaque || { resistir: 0, fugir: 0, gritar: 0 }) },
+    polaridade: daVitima?.polaridade || 'ativa',
+  };
+
+  return { consequencias: { porPessoa, encenacao }, portaoVitima, log };
 }
 
 export function obterVetorPsiquico(id) {

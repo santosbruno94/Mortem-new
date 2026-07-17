@@ -69,6 +69,10 @@ export const DIRIGIDO_REPLICA = {
   metodoId: 'laminada',
   vitimaArquetipo: 'merceeiro',
   assassinoMotivo: 'character_negado',
+  // OS confronto estendido §4.8: a réplica cala a fuga da vítima para o
+  // RegistroDoCrime permanecer idêntico em fatos ao roteiro canônico (a
+  // laminada não prende — sem esta trava, a vítima poderia fugir).
+  fugaVitima: 'suprimida',
 };
 
 // ---------------------------------------------------------------------
@@ -340,6 +344,21 @@ const PROSA_LESAO = {
     textoDisplay: 'O Vômito Seco',
     descricao:
       'Na boca e no queixo, um resto de vômito seco. Levada à chama, a amostra solta cheiro de alho; da ceia, prato nenhum o levava.',
+  },
+  sufocacao: {
+    textoDisplay: 'Os Sinais em Volta da Boca',
+    descricao:
+      'Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.',
+  },
+  afogamento: {
+    textoDisplay: 'A Espuma na Boca',
+    descricao:
+      'Um cogumelo de espuma fina assoma à boca e às narinas; enxugado, torna a formar-se. A pele das mãos está branca e enrugada.',
+  },
+  laudano: {
+    textoDisplay: 'As Pupilas Fechadas',
+    descricao:
+      'No corpo, marca de luta nenhuma. As pupilas estão contraídas em ponta de alfinete, e um resquício de amargor fica no hálito.',
   },
 };
 
