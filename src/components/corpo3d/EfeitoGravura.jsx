@@ -33,13 +33,13 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 // Hex sRGB → vetor 0..1 SEM passar por THREE.Color: o gerenciador de
 // cores do three converteria para o espaço linear, e estas cores devem
 // chegar à tela exatamente como estão no index.css.
-function hexParaVetor(hex) {
+function hexParaVec3(hex) {
   const n = parseInt(hex.slice(1), 16);
   return new Vector3(((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255);
 }
 
-const COR_PAPEL = hexParaVetor('#e7ddc8'); // o pergaminho das cartas
-const COR_TINTA = hexParaVetor('#2b2119'); // a tinta sobre o pergaminho
+const COR_PAPEL = hexParaVec3('#e7ddc8'); // o pergaminho das cartas
+const COR_TINTA = hexParaVec3('#2b2119'); // a tinta sobre o pergaminho
 
 const GravuraShader = {
   uniforms: {
