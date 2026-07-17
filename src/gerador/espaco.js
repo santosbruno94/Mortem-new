@@ -156,7 +156,7 @@ export const TIPOS_PREDIO = {
       paletaParede: ['#77705f', '#7d684c'], paletaTelhado: ['#3a352d', '#443328'],
     },
     proveniencia:
-      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (forja: galpão baixo na borda da vila — risco de fogo —, porta larga, chaminé grande, cocho d’água à frente)',
+      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (forja: galpão baixo no coração da vila — tolerada no miolo, fogo controlado —, porta larga, chaminé grande, cocho d’água à frente)',
   },
   moinho: {
     id: 'moinho',

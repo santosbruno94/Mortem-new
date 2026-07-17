@@ -31870,20 +31870,6 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_1_ferreiro",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na tarde de 13",
-   "descricao": "Charles Wood conta o que a parede deixou passar na tarde de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "dia"
-   }
-  },
-  {
    "id": "gen_motivo",
    "localidade": "delegacia",
    "suporteFisico": "registro",
@@ -32099,7 +32085,6 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_ferreiro]], [[gen_corrobora_gen_0_moleiro]], [[gen_corrobora_gen_2_costureira]]."
    ],
    "blocosContingentes": []
@@ -32170,15 +32155,8 @@ export const CASOS_POOL = [
    "subtitulo": "Ferreiro, 35 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -32213,12 +32191,6 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Charles Wood conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
     "b1_firme": {
      "fala": [
       "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
@@ -32248,7 +32220,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não tenho que dar. Se Harry Morris tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -32281,7 +32253,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Harry Morris era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Harry Morris? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -32314,7 +32286,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -32347,7 +32319,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     }

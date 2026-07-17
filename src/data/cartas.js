@@ -490,15 +490,15 @@ export const CARTAS = [
   {
     id: 'alibi_walter',
     localidade: 'estalagem',
-    textoDisplay: 'A Diligência das Seis',
+    textoDisplay: 'O Carro das Seis',
     carimboPadrao: 'Paradeiro declarado: Moorford, a noite inteira',
     descricao:
-      '"Tomei a diligência das seis para Moorford e dormi no Station. Soube da desgraça esta manhã e vim no primeiro carro; tomei este quarto porque a casa do meu tio está lacrada." Alisa o colarinho ao dar as horas.',
+      '"Tomei o carro das seis para Moorford e dormi no Station. Soube da desgraça esta manhã e vim no primeiro trem; tomei este quarto porque a casa do meu tio está lacrada." Alisa o colarinho ao dar as horas.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
       declaranteId: 'walter_arthurs',
-      horaInicioDeclarada: -6, // 18h00 de 13/out, a diligência que diz ter tomado
+      horaInicioDeclarada: -6, // 18h00 de 13/out, o carro que diz ter tomado
       horaFimDeclarada: 9, // manhã de 14/out, quando diz ter voltado
       corroborado: false,
     },

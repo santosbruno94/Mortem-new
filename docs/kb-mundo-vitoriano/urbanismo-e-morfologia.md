@@ -140,6 +140,17 @@ Inn*) brotado ao lado — o trecho mais moderno e menos vigiado da vila.
 - **Centro:** bigorna do ferreiro (audível a centenas de metros, das ~6h ao fim da
   tarde — o relógio sonoro da vila), sineta da escola, burburinho do pub, sinos da
   igreja (horas e o *passing bell*).
+- **O relógio da torre e quem o mantém:** os sinos dão as horas, mas é o relógio de
+  torre da igreja (*turret clock*) que as conta. A corda e o acerto do dia a dia ficam,
+  de regra, com o **sacristão** (*sexton/clerk*) — o relógio é movido a peso e pede
+  corda a cada poucos dias; o **relojoeiro da vila**, quando há, entra na **conserva
+  anual sob contrato** — limpa, lubrifica, regula e conserta por uma féria fixa. Guardar
+  o relógio da paróquia é marca de reputação do ofício e uma renda suplementar; somado
+  ao alcance regional dos consertos (o *carrier*, §2), ajuda a explicar por que uma
+  relojoaria subsiste onde a vila, sozinha, mal a sustentaria (o pacote-padrão de §2 nem
+  lista relojoeiro). Documentado: em Charing (Kent), o relógio de torre foi conservado
+  pelo *watchmaker/shopkeeper* George Coppins de 1871 a 1912; contratar o relojoeiro
+  local para a conserva anual do relógio de torre é a norma vitoriana.
 - **Borda d'água:** moinho d'água com açude e levada (*leat*) — ruído constante de
   água e mó. Moinho de vento: morro fora do casario, para vento limpo.
 - **Borda a sotavento (leste/nordeste — o vento dominante inglês é SW):** os
@@ -221,6 +232,7 @@ numa vila se instala improvisado na sala do pub** (validar rito contra
 - The National Archives — *Public Rights of Way* (Highway Act 1835; churchways). https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/public-rights-of-way/ ; Ramblers — *Brief history of public rights of way*. https://www.ramblers.org.uk/what-we-care-about/brief-history-public-rights-way
 - Censo de 1891 (5,32 ocupantes/casa) — Vision of Britain. https://www.visionofbritain.org.uk/census/EW1891GEN/5 ; FamilySearch — *The English Market Town* (espaçamento de ~8 milhas). https://www.familysearch.org/en/wiki/The_English_Market_Town
 - Estações excêntricas: Wikipedia — *Tring railway station*; Bishopstoke History (~1 milha). https://www.bishopstokehistory.uk/rise-of-the-railway-part-1/ ; The Country Seat — *Private and privileged railway stations* (2022). https://thecountryseat.org.uk/2022/12/20/halt-who-goes-there-the-arrival-and-departure-of-landowners-private-and-privileged-railway-stations/
+- Relógio de torre e o relojoeiro da paróquia: Kent Archaeology — *Charing Clocks: Clockmakers and Clock-Keepers, Part II* (o *watchmaker/shopkeeper* George Coppins conserva o relógio de torre 1871–1912). https://www.kentarchaeology.org.uk/journal/126/charing-clocks-clockmakers-and-clock-keepers-part-ii ; CCCBR — *The Turret Clock Keeper's Handbook* (contrato anual de conservação com relojoeiro). https://cccbr.org.uk/wp-content/uploads/2018/01/Turret-Clock-handbook.pdf
 - Offensive trades: Explore Your Genealogy — *Tanning and Leather Trades*. https://www.exploreyourgenealogy.co.uk/the-tanning-and-leather-trades-1259 ; Science History Institute — *The Smell Detectives*. https://www.sciencehistory.org/stories/magazine/the-smell-detectives/ ; Otley Local History — *Tanning* (caso de 1873). https://otleylocalhistorybulletin.wordpress.com/2018/12/20/tanning-and-the-language-of-leather/
 - Saneamento rural: *Rural Water Supplies* (NIH/PMC). https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5194469/ ; estudo do distrito de Toddington (monturos). https://doi.org/10.2166/washdev.2026.182 ; Public Health Act 1875. https://www.legislation.gov.uk/ukpga/Vict/38-39/55/enacted
 - Sebes e muros: Gaia — *History of Hedgerows* (~200.000 milhas). https://gaiacompany.io/the-history-of-hedgerows-in-britain/ ; PTES — *A history of hedgerows*. https://ptes.org/hedgerow/a-history-of-hedgerows/ ; Britain Express — *Dry stone walls*. https://www.britainexpress.com/History/drystone.htm

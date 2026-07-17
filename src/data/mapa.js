@@ -29,7 +29,7 @@ export const GRUPOS = {
   // entre eles não custa tempo.
   relojoaria: 'A relojoaria — corpo, cena do crime, oficina e a saleta (mesmo prédio)',
   // A vila de Briarstone: prédios diferentes, a um pulo de distância.
-  vila: 'A vila de Briarstone — delegacia, estalagem, papelaria, moinho',
+  vila: 'A vila de Briarstone — delegacia, estalagem, loja, moinho',
   // Fora da vila: caro de alcançar.
   fora: 'Fora de Briarstone (Moorford)',
 };
@@ -92,8 +92,8 @@ export const NOS_MAPA = [
   },
   {
     id: 'papelaria',
-    rotulo: 'A Papelaria',
-    grupo: 'vila', // a papelaria da High Street
+    rotulo: 'A Loja da Sra. Rooke',
+    grupo: 'vila', // a loja e correio da High Street (id `papelaria` mantido)
     desbloqueadoInicio: true,
   },
   {

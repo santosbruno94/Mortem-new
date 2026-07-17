@@ -81,7 +81,7 @@ export const APARENCIAS_CURADAS = {
     idadeAparente: 'madura',
     traje: 'burgues',
   },
-  // Sra. Agnes Rooke, 58 — viúva, dona da papelaria.
+  // Sra. Agnes Rooke, 58 — viúva, dona da loja e correio.
   agnes_rooke: {
     corpo: 'magro',
     pele: 'palida',

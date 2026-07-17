@@ -737,3 +737,50 @@ passe até zero bloqueantes (veredicto APROVADO dos três revisores). Decisões:
   Witnesses Act 1836 — enquadramento estrutural do jogo).
 - **Playtest de leitura**: roteiro próprio em
   `docs/playtest-leitura-prosa-gerada.md`.
+
+## OS Briarstone em escala (17/07/2026) — a vila de ~500 desce as instituições à escala
+
+Origem: auditoria de verossimilhança (pesquisa urbanística × caso-escola). Saída
+**B** martelada pelo usuário: Briarstone permanece vila pequena (~500 hab., ~95
+fogos) e as instituições descem à escala, em vez de subir a vila à classe Henfield
+(~1.700). Racional (uma linha): reforça a fraude de alcance regional, preserva o
+degrau vila → market town da campanha e maximiza o "todos se conhecem".
+
+- **População canônica** lavrada no `MORTEM_CONTEXTO.md` §14: vila nucleada de ~500
+  almas (~95 fogos; censo 1891, 5,32 ocupantes/casa). Aritmética conferida:
+  95 × 5,32 ≈ 505.
+- **Estação (correção de rota do pipeline, decisão do usuário):** a redação inicial
+  "sem estação própria — o trem serve por estrada" contradizia a chegada exibida
+  (plataforma em `abertura.js`), o template do gerador e a própria KB §6 (estação a
+  0,5–1,5 milha do núcleo). Reconciliado para **estação de borda**, à moda da §6 —
+  zero prosa exibida tocada.
+- **Patente do Wycliffe (divergência KB × premissa da OS, decisão do usuário):** a OS
+  presumia *sergeant*; a KB (`demografia-e-sociedade.md` §3, `inquerito-e-policia.md`
+  §2) dá ao policial de vila a patente de **constable**. Canonizado **constable**
+  (alinha a KB, zero emenda de KB). "Delegado" segue como **glosa** vernácula: ele
+  **assina "Delegado"** e a verdade fica lavrada na bíblia de vozes — evitando que o
+  leitor brasileiro leia troca de patente. Lição: decisão B da tabela de tradução é
+  "manter o posto inglês", não "delegado" (que é a Opção A vernácula).
+- **A loja e correio da Sra. Rooke:** a "papelaria" vira **a loja e correio** (id
+  `papelaria` intocado; rótulo exibido "A Loja da Sra. Rooke"). Agnes é a
+  *postmistress* — quem manuseia a correspondência de toda a vila é quem mais teme o
+  falatório: **reforça o motivo do decoro** (na ficha, nunca na fala; idioleto
+  preservado).
+- **Alcance regional da relojoaria:** por observação pura (encomendas de fora pelo
+  *carrier* semanal; conserva anual do relógio de torre da paróquia — fonte nova na
+  KB: caso Charing/George Coppins), a fraude de Silas vivia de clientes **distantes**
+  que não voltam para pesar a caixa; a queixa de Caleb Grey é a exceção **local**. A
+  geografia explica por que a fraude durou.
+- **A forja reconciliada (emenda de KB feita, decisão do usuário — CENTRAL):** a
+  contradição interna da KB (`urbanismo-e-morfologia.md` §2/§7 central × `arquitetura-e-espacos.md`
+  §1 borda) resolvida **a favor do centro** (mais documentada; a bigorna como relógio
+  sonoro). O slot da forja no `TRACADO` do gerador (`cidade.js`) desceu da orla para o
+  coração da High Street; a adjacência recomputa por distância. `arquitetura-e-espacos.md`
+  §1 e as citações em `espaco.js`/`arquetipos.js` emendadas. Casos gerados regenerados
+  (`gerar:casos`) — `qa.mjs` verde e byte-idêntico: **nenhum veredicto mudou**.
+- **O carro das seis:** o veículo da mentira de Walter deixou de ser "a diligência das
+  seis" (anacrônica/ambígua) e virou "o carro das seis"; a volta, "o primeiro trem".
+- **Guarda das duas diligências (lição de vocabulário):** no corpus convivem o
+  **veículo** (a mentira de Walter — só ele mudou) e o **ato policial/judicial**
+  (intocável, de época). Busca-e-troca cega de "diligência" era falha bloqueante da OS;
+  o léxico "de praça" do Walter (juízo/credores/diligência) é o sentido legal e ficou.

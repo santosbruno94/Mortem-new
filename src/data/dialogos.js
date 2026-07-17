@@ -210,7 +210,7 @@ export const DIALOGOS = {
     nos: {
       abertura: {
         fala: [
-          'A papelaria cheira a goma e a papel novo; o balcão reluz de cera. Sobre o mostrador, apartado do resto, papel de carta com tarja de luto. A Sra. Agnes Rooke atende de pé, do lado de dentro do balcão, e mede o visitante por cima dos óculos. "{detective.title}." Não oferece cadeira. Espera a pergunta.',
+          'A loja cheira a goma e a papel novo; o balcão reluz de cera. Ao fundo, o postigo do correio e a balança de cartas, com algumas por despachar. Sobre o mostrador, apartado do resto, papel de carta com tarja de luto. A Sra. Agnes Rooke atende de pé, do lado de dentro do balcão, e mede o visitante por cima dos óculos. "{detective.title}." Não oferece cadeira. Espera a pergunta.',
         ],
         opcoes: [
           { rotulo: '"A senhora esconde a sua noite de sexta. Onde esteve?"', vaiPara: 'b1_firme', tom: 'firme' },
@@ -256,7 +256,7 @@ export const DIALOGOS = {
       },
       b1_obliquo: {
         fala: [
-          '"Fecho quando a rua esvazia; papelaria não é taberna." O olhar não larga o visitante, mas a sexta ela dá, correta e curta: [[alibi_agnes]].',
+          '"Fecho quando a rua esvazia; loja não é taberna." O olhar não larga o visitante, mas a sexta ela dá, correta e curta: [[alibi_agnes]].',
         ],
         opcoes: [
           { rotulo: '"O que a vila dizia do Sr. Arthurs?"', vaiPara: 'b2_firme', tom: 'firme' },
@@ -452,7 +452,7 @@ export const DIALOGOS = {
     subtitulo: 'Herdeiro, hóspede do quarto nº 3',
     noInicial: 'abertura',
     // Tom ressonante: CORDIAL — a vergonha responde à brandura; à pressão,
-    // bravata de praça. A mentira da diligência nasce em qualquer tom.
+    // bravata de praça. A mentira do carro nasce em qualquer tom.
     noEvasiva: 'evasiva',
     reacoesProva: {
       ev_registro_estalagem: 'confronto_registro',
@@ -479,7 +479,7 @@ export const DIALOGOS = {
       },
 
       // BEAT 1 — o paradeiro (sustentação: alibi_walter, corroborado:false,
-      // em todo tom — a mentira da diligência).
+      // em todo tom — a mentira do carro).
       b1_firme: {
         fala: [
           'O botão do colete para entre os dedos. "Pensado está." Endireita-se antes de responder. "Estive com meu tio de tarde, tratamos de negócios, e segui o meu caminho." E dá o paradeiro: [[alibi_walter]].',
@@ -555,7 +555,7 @@ export const DIALOGOS = {
       confronto_registro: {
         fala: [
           'Walter Arthurs lê a própria assinatura e a linha das sete e quarenta. Puxa uma cadeira e senta-se antes de responder.',
-          '"Não houve diligência." A voz sai baixa, e depois as palavras vêm de uma vez. "Vim na sexta pedir dinheiro ao meu tio. Pedido, implorado, a juro de praça e com a palavra que me resta. Ele recusou aos gritos, com a loja ainda aberta. Tomei este quarto porque àquela hora já não havia carro, e porque naquela noite eu não tinha ânimo de me apresentar em hotel nenhum. Fiquei no três a noite inteira, escrevendo: cartas a ele, cartas a credores. Pedi vela nova pela meia-noite; o caseiro que o diga. Menti, {detective.title}, porque a verdade era esta: um negociante de quarenta e quatro anos à porta do tio, de chapéu na mão, ouvindo não. Depois dos gritos, na loja não tornei a pôr os pés."',
+          '"Não houve carro." A voz sai baixa, e depois as palavras vêm de uma vez. "Vim na sexta pedir dinheiro ao meu tio. Pedido, implorado, a juro de praça e com a palavra que me resta. Ele recusou aos gritos, com a loja ainda aberta. Tomei este quarto porque àquela hora já não havia carro, e porque naquela noite eu não tinha ânimo de me apresentar em hotel nenhum. Fiquei no três a noite inteira, escrevendo: cartas a ele, cartas a credores. Pedi vela nova pela meia-noite; o caseiro que o diga. Menti, {detective.title}, porque a verdade era esta: um negociante de quarenta e quatro anos à porta do tio, de chapéu na mão, ouvindo não. Depois dos gritos, na loja não tornei a pôr os pés."',
           'Depois cala-se, as mãos abertas sobre a mesa.',
         ],
         opcoes: [],

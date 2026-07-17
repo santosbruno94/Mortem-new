@@ -19,7 +19,7 @@ Só os materiais novos (tijolo industrial, ardósia trazida por trem) denunciam 
 | *Vicarage* (casa paroquial) | 2 + sótão | Casa sólida recuada num jardim, junto à igreja; maior que a média — estudo do pároco e criadagem |
 | *Coaching inn* / *public house* | 2–3 | Volume comprido de frente para a rua; arco de carruagens para o pátio; tabuleta; estábulos ao fundo |
 | Loja com moradia em cima | 2–3 | Vitrine envidraçada no térreo; janelas domésticas comuns em cima |
-| Forja (*smithy*) | 1 | Galpão baixo na borda da vila (risco de fogo); porta larga, chaminé grande, cocho d'água à frente |
+| Forja (*smithy*) | 1 | Galpão baixo **no coração da vila** (tolerada no miolo — fogo controlado; a bigorna é o relógio sonoro central — ver `urbanismo-e-morfologia.md` §2/§7); porta larga, chaminé grande, cocho d'água à frente |
 | Moinho | 3–5 | O volume mais alto fora a igreja: torre com velas (vento) ou bloco sobre o açude (água) |
 | Igreja | — | Torre ou campanário medieval; adro murado com lápides; muitas vezes a única pedra aparelhada em região de tijolo |
 | Estação ferroviária rural | 1 + casa de 2 | Bloco térreo padronizado (bilheteria + espera) com casa de dois pavimentos do chefe anexa; plataforma, beiral fundo |
