@@ -70,7 +70,7 @@ export default function ModalGlossario() {
               </p>
             </>
           ) : (
-            <p className="text-tinta-apagada italic font-serif text-sm">Escolha um verbete à esquerda.</p>
+            <p className="text-tinta-apagada italic font-serif text-sm">Escolha um verbete da lista.</p>
           )}
         </div>
       </div>

@@ -56,7 +56,7 @@ export const MAPA_TRAIT_TOM = {
 
 export const TONS = ['firme', 'cordial', 'tecnico', 'obliquo'];
 
-function variante(pool, chave) {
+export function variante(pool, chave) {
   return pool[hashString(chave) % pool.length];
 }
 
@@ -75,7 +75,7 @@ const FAIXA_TXT = {
   madrugada: 'na madrugada de sábado',
   dia: 'na sexta à tarde',
 };
-const FAIXA_CURTA = {
+export const FAIXA_CURTA = {
   noite: 'sexta à noite',
   madrugada: 'madrugada de sábado',
   dia: 'sexta à tarde',
@@ -170,34 +170,42 @@ const PRIMEIRAS_PALAVRAS = {
   gentry: [
     '"Vim porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo."',
     '"A casa responde onde a lei pergunta. Vamos a isso."',
+    '"A casa deve isto ao condado, e paga de bom grado. Ao que vem?"',
   ],
   clero: [
     '"A paróquia está às ordens do inquérito. Pergunte."',
     '"Entre um ofício e outro, o tempo é seu. Pergunte."',
+    '"Deixei a sacristia aberta e o sineiro à espera. Diga do que precisa."',
   ],
   profissional: [
     '"Tenho a manhã tomada, {detective.title}, mas isto passa à frente de tudo. Ao seu dispor."',
     '"Adiei o que havia para adiar. Sirva-se do tempo."',
+    '"Marquei as visitas para depois; o inquérito vem primeiro, e é o certo."',
   ],
   comerciante: [
     '"Deixei o negócio fechado por esta hora. Aproveitemo-la."',
     '"O negócio espera trancado. Pergunte de uma vez, faça o favor."',
+    '"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber."',
   ],
   artesao: [
     '"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser."',
     '"Serviço parado esfria. Pergunte."',
+    '"Larguei ferramenta quente na bancada. O que for, seja curto."',
   ],
   lavrador: [
     '"Vim assim que o guarda mandou. Diga lá, que a lida não espera."',
     '"O guarda mandou, eu vim. Pergunte, que o campo não espera."',
+    '"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto."',
   ],
   criadagem: [
     '"Com licença de entrar. Respondo o que souber."',
     '"Com licença. Digo o que souber, e volto ao serviço."',
+    '"A casa deu licença. Respondo o que souber, e depressa."',
   ],
   servico_do_condado: [
     '"De serviço ou fora dele, respondo pelo livro. Pergunte."',
     '"Respondo como se lavra ocorrência: pelo certo. Pergunte."',
+    '"A folha do dia ficou com o colega. Pergunte pelo livro, que pelo livro respondo."',
   ],
 };
 
@@ -268,12 +276,25 @@ function falaB1(ctx, tom) {
     madrugada: '"Pesado o bastante."',
     dia: '"Quando a luz acaba."',
   }[faixa];
-  const frame = {
-    firme: `"Sem rodeios, então." E o paradeiro vem, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-    cordial: `A ${FAIXA_CURTA[faixa]} vem contada do princípio, e ${entregaDela}: [[${idCartaAlibi}]].`,
-    tecnico: `"Hora e lugar." E os dá, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-    obliquo: `${abreObliqua} E a ${FAIXA_CURTA[faixa]} acaba saindo por inteiro, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+  const frames = {
+    firme: [
+      `"Sem rodeios, então." E o paradeiro vem, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `Um aceno curto, e o paradeiro sai por inteiro, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+    ],
+    cordial: [
+      `A ${FAIXA_CURTA[faixa]} vem contada do princípio, e ${entregaDela}: [[${idCartaAlibi}]].`,
+      `A resposta toma o caminho comprido e chega inteira, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+    ],
+    tecnico: [
+      `"Hora e lugar." E os dá, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `Hora primeiro, lugar depois, sem que se peça duas vezes, e ${entregaDela}: [[${idCartaAlibi}]].`,
+    ],
+    obliquo: [
+      `${abreObliqua} E a ${FAIXA_CURTA[faixa]} acaba saindo por inteiro, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `${abreObliqua} O resto vem atrás, sem mais pergunta, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+    ],
   }[tom];
+  const frame = variante(frames, `${ctx.sal}|b1|${tom}`);
   const tento = tom === ctx.tomRessonante ? TENTO_RESSONANTE[ctx.trait] || '' : '';
   return [frame + tento];
 }
@@ -287,21 +308,56 @@ function falaB2(ctx, tom) {
   const { pessoa, papel, vitima } = ctx;
   const eleVitima = vitima.genero === 'feminino' ? 'ela' : 'ele';
   const fem = pessoa.genero === 'feminino';
-  const saida = {
-    gentry: 'Levanta-se pelo próprio aviso. "Se a lei precisar de mais, a casa sabe onde fica."',
+  // Duas saídas por classe (v2 — contra falas gêmeas entre suspeitos da
+  // mesma classe no mesmo caso), sorteadas por suspeito.
+  const SAIDAS = {
+    gentry: [
+      () => 'Levanta-se pelo próprio aviso. "Se a lei precisar de mais, a casa sabe onde fica."',
+      () => 'Levanta-se pelo próprio aviso. "A casa fica a par do que se apurar. Passar bem, {detective.title}."',
+    ],
     // KB vestuário: sobrecasaca clerical de pároco anglicano, não batina.
-    clero: 'Ergue-se e alisa a sobrecasaca. "A paróquia fica às ordens."',
-    profissional: fem
-      ? 'Recolhe as luvas. "O inquérito sabe onde me encontrar."'
-      : 'Toma o chapéu. "O inquérito sabe onde me encontrar."',
-    comerciante: fem
-      ? 'Ajeita o xale sobre os ombros. "O negócio não se guarda sozinho."'
-      : 'Levanta-se e abotoa o casaco. "O negócio não se guarda sozinho."',
-    artesao: 'Levanta-se sem esperar licença. "O serviço ficou aceso."',
-    lavrador: 'Levanta-se devagar. "Se é tudo, volto à lida."',
-    criadagem: 'Levanta-se e alisa o avental. "Com licença, que a casa não para."',
-    servico_do_condado: 'Levanta-se e ajeita o cinturão. "A ronda não espera."',
-  }[pessoa.classeSocial] || 'Levanta-se devagar e espera que o dispensem.';
+    clero: [
+      () => 'Ergue-se e alisa a sobrecasaca. "A paróquia fica às ordens."',
+      () => 'Ergue-se com as duas mãos no espaldar. "Que se apure tudo, e depressa. A paróquia reza por isso."',
+    ],
+    profissional: [
+      (f) =>
+        f
+          ? 'Recolhe as luvas. "O inquérito sabe onde me encontrar."'
+          : 'Toma o chapéu. "O inquérito sabe onde me encontrar."',
+      (f) =>
+        f
+          ? 'Recolhe as luvas, um dedo por vez. "Qualquer papel que falte, mande buscar."'
+          : 'Toma o chapéu da mesa. "Qualquer papel que falte, mande buscar."',
+    ],
+    comerciante: [
+      (f) =>
+        f
+          ? 'Ajeita o xale sobre os ombros. "O negócio não se guarda sozinho."'
+          : 'Levanta-se e abotoa o casaco. "O negócio não se guarda sozinho."',
+      (f) =>
+        f
+          ? 'Prende o xale e ergue-se. "Se faltar soma ou data, o livro do balcão as tem."'
+          : 'Abotoa o casaco e ergue-se. "Se faltar soma ou data, o livro do balcão as tem."',
+    ],
+    artesao: [
+      () => 'Levanta-se sem esperar licença. "O serviço ficou aceso."',
+      () => 'Limpa as mãos uma na outra e levanta-se. "Chamando, venho. O serviço fica onde ficou."',
+    ],
+    lavrador: [
+      () => 'Levanta-se devagar. "Se é tudo, volto à lida."',
+      () => 'Levanta-se e gira o chapéu uma volta nas mãos. "Deus ajude a achar quem foi. Passar bem."',
+    ],
+    criadagem: [
+      () => 'Levanta-se e alisa o avental. "Com licença, que a casa não para."',
+      () => 'Levanta-se e recolhe a cadeira ao lugar. "Se a casa puder servir em mais, é só mandar."',
+    ],
+    servico_do_condado: [
+      () => 'Levanta-se e ajeita o cinturão. "A ronda não espera."',
+      () => 'Levanta-se e confere o próprio termo com os olhos. "Fica lavrado. Ao dispor do inquérito."',
+    ],
+  };
+  const saida = variante(SAIDAS[pessoa.classeSocial] || SAIDAS.lavrador, `${ctx.sal}|saida`)(fem);
 
   // Macrogrupo de classe: o arranque do corpo varia por ele (a célula da
   // grade tem de ser reconhecível de nome coberto — guia §8.4).
@@ -376,7 +432,12 @@ function cartaDeAlibi(ctx) {
   const lugarReal = pessoa.pacoteEspacial.rotina[faixa];
   const moradia = pessoa.pacoteEspacial.moradia;
   const mentiraDeCena = papel === 'reu' && lugarReal === cenaId;
-  const lugarDeclarado = mentiraDeCena ? moradia : lugarReal;
+  // A mentira de VERGONHA (v2 — periféricos com segredo): quem esteve à
+  // porta da vítima por razão inocente declara a casa e o recolhimento
+  // cedo. A redação é a MESMA do inocente caseiro e do réu (nenhuma
+  // assinatura tipográfica); a mentira cai pelo rastro, não pela frase.
+  const mentiraDeVergonha = !!ctx.segredo;
+  const lugarDeclarado = mentiraDeCena || mentiraDeVergonha ? moradia : lugarReal;
   const rotulo = nomePredio(lugarDeclarado);
   const forma = formasDoLugar(rotulo);
   const formaMoradia = formasDoLugar(nomePredio(moradia));
@@ -474,6 +535,22 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
       reacao: `${pessoa.nome} olha a peça sem estender a mão. "Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus." A voz não muda do começo ao fim.`,
     };
   }
+  // rastro_de_visita (v2 — periféricos com segredo): apresentado ao
+  // dono, o papel arranca a admissão que o desonera (spec §8.6: o
+  // inocente dá o fato; a conclusão de inocência segue sendo do jogador).
+  if (t.pertenceA === pessoa.id && t.subDominio === 'rastro_de_visita') {
+    const vit = bruto.mundo.elenco.find((p) => p.id === bruto.crime.vitimaId);
+    if (t.revelaSegredo === 'pedido_recusado') {
+      return {
+        pergunta: `[${td}] Este papel é da sua letra. O que foi pedir?`,
+        reacao: `${pessoa.nome} lê as próprias linhas até o fim antes de falar. "Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de ${vit.nome} estive; à hora da morte, não." E devolve o bilhete dobrado ao meio.`,
+      };
+    }
+    return {
+      pergunta: `[${td}] O seu nome está nesta nota. Que trato era esse?`,
+      reacao: `${pessoa.nome} cobre a soma com a mão, devagar, e a descobre. "Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não."`,
+    };
+  }
   if (t.pertenceA === pessoa.id && t.subDominio === 'objeto_pessoal') {
     return {
       pergunta: `[${td}] Por que o par disto está entre as suas coisas?`,
@@ -526,7 +603,7 @@ const EVASIVA_POR_CLASSE = {
 // Ordem estável: a dos próprios suspeitos (alfabética no pacote) e a do
 // array de cartas para os confrontos — replay byte a byte.
 // ---------------------------------------------------------------------
-export function derivarDialogos({ bruto, cartas, suspeitos }) {
+export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {} }) {
   const { mundo, crime, escolha } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
@@ -571,6 +648,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos }) {
       idCartaAlibi: `gen_alibi_${pessoa.id}`,
       horaVistoVivo:
         cartaVisto && cartaVisto.origemTestemunha === pessoa.id ? cartaVisto.tagsOcultas.horaAvistamento : null,
+      segredo: segredos[pessoa.id] || null,
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));
