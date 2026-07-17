@@ -21,6 +21,9 @@ ordem expressa).
 | [`solo-dev-com-agentes.md`](./solo-dev-com-agentes.md) | Por que solo devs não terminam, o que os postmortems ensinam sobre cortar, spec-driven development com agentes, playtest, lançamento e o gargalo de conteúdo. |
 | [`contrato-papeis-e-gerador.md`](./contrato-papeis-e-gerador.md) | Taxonomia de papéis dramáticos (casting), o casting do caso-escola e o contrato que o futuro gerador de casos terá de satisfazer (FASE 5 — sem código de gerador). |
 | [`arquetipos-e-casting.md`](./arquetipos-e-casting.md) | Arquétipos junguianos como ferramenta de build time (andaime meta, não-diegético): sombra→móbil, persona→verdade, mapeamento aos papéis de `papeis.js` e pipeline determinístico. |
+| [`psicologia-pos-junguiana.md`](./psicologia-pos-junguiana.md) | Jung aprofundado (fontes primárias), escolas pós-junguianas (Samuels), inconsciente cultural (Henderson) e a recepção científica atual: o que caiu (arquétipo biológico, tipologias/MBTI) e o que a psicologia empírica usa hoje (Big Five, Dark Tetrad, identidade narrativa de McAdams). |
+| [`sistemas-arquetipicos-alem-dos-12.md`](./sistemas-arquetipicos-alem-dos-12.md) | Proveniência real dos "12" (linhagem Pearson 1986→1991→2001→PMAI), sistemas alternativos (figuras de Jung, Moore & Gillette e a sombra bipolar, Campbell/Vogler, Hillman), critérios para construir arquétipos novos — e o catálogo-candidato de MORTEM, marcado **[PROPOSTA]**. |
+| [`parafilias-e-psicopatia-visao-atual.md`](./parafilias-e-psicopatia-visao-atual.md) | Contraparte moderna da KB de 1893 (backend-only, nunca diegética): DSM-5-TR e CID-11, prevalências reais, psicopatia (PCL-R, triárquico, meta-análises), estatística de motivação homicida e a tabela de tradução 1893 × hoje. |
 | [`fontes.md`](./fontes.md) | Regra epistemológica da pasta e notas de confiança. |
 
 ## Regra de uso
