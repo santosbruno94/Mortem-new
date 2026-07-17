@@ -4,10 +4,11 @@
 > arquétipos" são limitantes e de proveniência comercial, de onde tirar (ou como construir)
 > arquétipos melhores?** Mapeia a linhagem real dos 12, os sistemas alternativos (do próprio
 > Jung a Moore & Gillette, Vogler e Hillman), extrai os critérios que fazem um arquétipo
-> *funcionar* — e fecha com um **catálogo-candidato para MORTEM, marcado `[PROPOSTA]`**:
-> nada dele entra em código sem ordem expressa. Mesmo estatuto de andaime de
+> *funcionar* — e fecha com o **catálogo v1 de MORTEM (§7)**: promovido de `[PROPOSTA]` a
+> catálogo vigente pela OS `docs/os-camada-psiquica-do-elenco.md` (jul/2026), com as
+> emendas do §7.4. Mesmo estatuto de andaime de
 > [`arquetipos-e-casting.md`](./arquetipos-e-casting.md) §0: build time, não-diegético,
-> rótulo descartado antes do pacote.
+> rótulo descartado antes do pacote (implementação em `src/gerador/vetores_psiquicos.js`).
 
 ---
 
@@ -136,14 +137,16 @@ casting presta se, e só se:
 6. **Admite dissonância interna** (Hillman, §5): um traço fora do eixo por pessoa, sorteado,
    para matar o mad-libs.
 
-## 7. `[PROPOSTA]` Catálogo-candidato de MORTEM — dez vetores para discussão
+## 7. Catálogo v1 de MORTEM — onze vetores
 
-> **Estatuto:** proposta para a discussão de game design; **nada disto entra em
-> `src/gerador/` sem ordem expressa.** Dez vetores construídos pelos critérios do §6, com
-> sombra bipolar (§3), calibrados à vila inglesa de 1893 e nomeados sem reaproveitar os
-> rótulos de Pearson (para não herdar as conotações do starter kit).
+> **Estatuto: catálogo v1**, promovido de `[PROPOSTA]` pela OS
+> `docs/os-camada-psiquica-do-elenco.md` (§4.1, jul/2026), que dá a ordem expressa de
+> implementação em `src/gerador/vetores_psiquicos.js`. Onze vetores construídos pelos
+> critérios do §6, com sombra bipolar (§3), calibrados à vila inglesa de 1893 e nomeados
+> sem reaproveitar os rótulos de Pearson (exceção consciente registrada no §7.4.3). O
+> rótulo segue sendo andaime: morre no log de build, jamais em `src/data`, prosa ou UI.
 
-### 7.1 Os dez vetores
+### 7.1 Os onze vetores
 
 | # | Arquétipo | Valor professado | Medo central | Sombra ativa | Sombra passiva | Auto-justificação típica |
 |---|---|---|---|---|---|---|
@@ -157,12 +160,15 @@ casting presta se, e só se:
 | 8 | **Errante** | horizonte, liberdade | ficar preso (à vila, à dívida, ao casamento) | fuga por cima de vidas | paralisia amarga do que não partiu | "eu não podia ficar" |
 | 9 | **Justiceiro** | honra, a conta certa | afronta impune; passar por covarde | violência de honra; pena capital privada | submissão que acumula e explode | "foi uma luta justa" |
 | 10 | **Bufão** | o riso, a leveza | ser invisível, não ter graça | crueldade leviana; a "brincadeira" fatal | bode expiatório que guarda rancor | "não era pra tanto" |
+| 11 | **Vigia** | saber o que se passa na vila; pertencer pela informação | irrelevância, ficar de fora do que importa | chantagista/difamador — candidato natural à segunda vítima clássica (quem viu e tentou lucrar) | o voyeur que testemunhou o essencial e não pode explicar por que estava à janela | "alguém tinha de saber" |
 
 Cada linha alimenta os dois lados do mistério (persona luminosa + segredo), aceita os seis
 papéis dramáticos e tem sombra dupla — o **ativo** tende a `assassino_encenador` /
 `isca_do_apressado`; o **passivo** tende a cúmplice de interferência, `veu`,
-`mentiroso_por_medo`. A afinidade fina arquétipo → papel segue a lógica já tabelada em
-`arquetipos-e-casting.md` §4.1.
+`mentiroso_por_medo`. A afinidade fina vetor → papel segue a lógica já tabelada em
+`arquetipos-e-casting.md` §4.1 — com o acréscimo do Vigia, que alimenta com força os
+papéis mais magros daquela tabela: `fonte` (quem sabe e circula), as testemunhas e o
+`veu` (quem viu, mas mente o porquê de ter visto).
 
 ### 7.2 Afinidade com os 14 arquétipos demográficos (pesos de sorteio, não exclusividade)
 
@@ -172,16 +178,16 @@ alguns encaixes mais prováveis — pesos de afinidade para `hashString`, jamais
 | Demográfico (`arquetipos.js`) | Afinidades naturais | Encaixes raros e saborosos |
 |---|---|---|
 | squire | Soberano, Justiceiro | Errante (o herdeiro que odeia a herança) |
-| paroco | Devoto, Zelador, Erudito | Bufão (o vigário engraçado — e leviano) |
+| paroco | Devoto, Zelador, Erudito | Bufão (o vigário engraçado — e leviano); Vigia (o pároco que cataloga o rebanho) |
 | medico | Erudito, Zelador | Soberano (o médico que reina pela receita) |
 | boticario | Erudito, Artífice | Provador (o balcão como degrau de subida) |
-| taverneiro | Bufão, Provador | Devoto (herdou o pub que a capela manda odiar) |
+| taverneiro | Bufão, Provador, Vigia (o balcão ouve a vila inteira) | Devoto (herdou o pub que a capela manda odiar) |
 | ferreiro / moleiro | Artífice, Justiceiro | Erudito (o autodidata sem letras) |
-| merceeiro | Provador, Soberano | Zelador (a caderneta como cuidado — e coleira) |
+| merceeiro | Provador, Soberano, Vigia (a caderneta sabe quem deve a quem) | Zelador (a caderneta como cuidado — e coleira) |
 | professora | Erudito, Devota, Zeladora | Errante (a instrução como bilhete de fuga) |
-| costureira / lavadeira | Artífice, Amante, Provadora | Erudita (a inteligência sem porta de saída) |
+| costureira / lavadeira | Artífice, Amante, Provadora, Vigia (a roupa conta segredos) | Erudita (a inteligência sem porta de saída) |
 | lavrador | Zelador, Justiceiro, Errante | Soberano (o patriarca de cottage) |
-| criada | Zeladora, Amante, Provadora | Justiceira (a que anota cada afronta) |
+| criada | Zeladora, Amante, Provadora, Vigia (a classe que serve vê tudo) | Justiceira (a que anota cada afronta) |
 | constable | Justiceiro, Provador | Errante (o uniforme como jaula) |
 
 ### 7.3 O desencaixe arquétipo × profissão — o motor de móbil do assassino
@@ -207,6 +213,66 @@ de cúmplices (o passivo que serve a um ativo), e as mentiras de inocentes (o De
 esconde o pecado, não o crime). E o **traço dissonante** (§6.6) continua obrigatório — o
 Tirano terno com um neto — para que nenhuma linha do catálogo vire caixa.
 
+### 7.4 Emendas do catálogo v1 (OS da camada psíquica, §4.1)
+
+#### 7.4.1 O 11º vetor: Vigia
+
+O elenco de 1893 é uma vila-panóptico — e faltava ao catálogo quem professa exatamente
+esse valor: **saber o que se passa; pertencer pela informação**. O Vigia fecha os quatro
+elos do §6.1:
+
+- **Valor professado:** saber o que se passa na vila; ser quem liga as pontas.
+- **Medo central:** irrelevância — ficar de fora do que importa, não ser consultado.
+- **Sombra ativa:** o **chantagista/difamador** — a informação vira renda ou arma. É o
+  candidato natural à **segunda vítima clássica do gênero**: quem viu e tentou lucrar
+  (matéria direta para o evento `silenciar` das Regras R1–R6).
+- **Sombra passiva:** o **voyeur que testemunhou o essencial e não pode explicar por que
+  estava à janela** — a materialização exata do "interesse atípico como segredo de
+  inocente" ([`parafilias-e-psicopatia-visao-atual.md`](./parafilias-e-psicopatia-visao-atual.md)
+  §3: voyeurismo acima do limiar do estatisticamente incomum, majoritariamente
+  inofensivo), sempre dito no vocabulário de época
+  ([`../kb-psique-e-crime/sexologia-e-perversoes.md`](../kb-psique-e-crime/sexologia-e-perversoes.md)
+  §6: eufemismo, nunca nosologia).
+- **Auto-justificação:** "alguém tinha de saber".
+
+Afinidades demográficas (incorporadas à tabela 7.2, derivadas da KB): **lavadeira** (a
+roupa das casas conta segredos — sexologia §6, os "objetos falantes"), **criada** ("a
+classe que serve vê tudo" — sexologia, Implicações), **merceeiro** e **taverneiro** (a
+caderneta e o balcão como postos de escuta — demografia §5); encaixe raro e saboroso: o
+**pároco** que cataloga o rebanho (sabe dos batismos ilegítimos — demografia §5).
+Afinidade de papel: forte com `fonte`, testemunhas e `veu` — os papéis mais magros da
+tabela de `arquetipos-e-casting.md` §4.1.
+
+#### 7.4.2 Médium/espiritismo dos 1890s: tempero, não 12º vetor
+
+Analisado pelos critérios do §6, o médium **não sustenta vetor próprio**:
+
+1. *Vetor completo?* Construível (valor: o consolo/a ponte com os mortos; medo: exposição
+   como fraude; sombra ativa: o charlatão do além que silencia quem ia expô-lo; passiva: o
+   crente que se ilude e omite) — passa.
+2. *Persona e segredo da mesma fonte?* Passa.
+3. *Aceita ≥ 3 papéis?* No limite: serve a culpado, `veu` e `fonte` — mas sempre pela
+   MESMA alavanca (a fraude), o que o aproxima de rótulo de situação, não de psique.
+4. *Pressão de época?* Passa (o espiritismo é febre real dos 1890s; o clichê e seu uso
+   honesto já estão mapeados em
+   [`../kb-craft-narrativo/cliches-e-fair-play.md`](../kb-craft-narrativo/cliches-e-fair-play.md):
+   a sessão fraudulenta como mentira de inocente, a "fraude paralela").
+5. *Ortogonal à profissão?* **Falha.** Mediunidade é PRÁTICA — um ofício paralelo que
+   qualquer psique pode exercer —, não matéria íntima; como vetor, colidiria com a coluna
+   demográfica em vez de cruzá-la.
+
+**Decisão registrada:** entra como *tempero* — sombra ativa alternativa do **Devoto** (o
+consolo que vira fraude piedosa) ou do **Erudito** (o "investigador psíquico" que não pode
+admitir o embuste), a realizar quando a camada de segredos o sortear. Como a análise NÃO
+indicou 12º vetor, o ponto de parada previsto na OS (§4.1.2) não se ativou.
+
+#### 7.4.3 Nota "Amante" — exceção consciente
+
+A regra de nomenclatura do catálogo ("sem rótulos de Pearson") tem UMA exceção deliberada:
+**Amante** colide com o *Lover* de Pearson/Moore & Gillette e fica assim mesmo — nenhum
+sinônimo de época (galanteador? apaixonado?) carrega o par posse/anulação com a mesma
+economia. Registra-se a exceção para que ninguém a "corrija" por zelo de consistência.
+
 ## Implicações para o jogo
 
 - **O número doze era o problema errado.** O limite real dos 12 é serem rótulos sem sombra
@@ -215,13 +281,15 @@ Tirano terno com um neto — para que nenhuma linha do catálogo vire caixa.
 - **Sombra dupla dobra o elenco.** Cada vetor gera agressor (ativo) e cúmplice/omisso
   (passivo) — casa com a arquitetura de interferência (R1–R6) e com os papéis de mentira
   moral existentes.
-- **O desencaixe arquétipo × profissão é o candidato a motor de móbil do assassino** — e só
-  dele, preservando a regra de contraste de `arquetipos-e-casting.md` §4.1 (culpado de
-  persona luminosa). Decisão de design pendente de discussão com o usuário.
-- **Nada muda no código por este arquivo.** O §7 inteiro é `[PROPOSTA]`; implementar
-  exigiria decisão expressa sobre: número final de vetores, pesos das tabelas 7.2, regra de
-  desencaixe do assassino e como compilar as consequências (flags, vestígios) sem vazar
-  rótulo — sob as guardas já existentes.
+- **O desencaixe vetor × profissão é o motor de móbil do assassino** — com o
+  **falso-positivo garantido** (sempre existe ao menos um destoante inocente), preservando
+  a regra de contraste de `arquetipos-e-casting.md` §4.1 (culpado de persona luminosa) e o
+  fair play: o desencaixe sustenta hipótese, nunca condena. Norma e implementação na OS
+  `docs/os-camada-psiquica-do-elenco.md` (§4.3, §8.3).
+- **O §7 é catálogo v1 vigente** (ordem expressa na OS citada): número de vetores (11),
+  pesos da tabela 7.2, regra de desencaixe do assassino e compilação das consequências
+  (flags, tendências de vestígio) sem vazamento de rótulo estão normatizados lá e
+  implementados em `src/gerador/vetores_psiquicos.js`, sob as guardas do `qa.mjs`.
 
 ## Fontes consultadas
 

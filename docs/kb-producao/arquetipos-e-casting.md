@@ -8,7 +8,9 @@
 > simulação). Aprofundamentos posteriores: [`psicologia-pos-junguiana.md`](./psicologia-pos-junguiana.md)
 > (Jung nas fontes primárias, escolas pós-junguianas e a recepção científica atual) e
 > [`sistemas-arquetipicos-alem-dos-12.md`](./sistemas-arquetipicos-alem-dos-12.md) (por que a
-> caixa dos 12 aperta, sistemas alternativos e um catálogo-candidato próprio, `[PROPOSTA]`).
+> caixa dos 12 aperta, sistemas alternativos e o **catálogo v1 de MORTEM** — onze vetores
+> com sombra bipolar, vigente por ordem da OS `docs/os-camada-psiquica-do-elenco.md` e
+> implementado em `src/gerador/vetores_psiquicos.js`).
 
 ---
 
@@ -138,6 +140,14 @@ Cruzando com os seis papéis de [`contrato-papeis-e-gerador.md`](./contrato-pape
 | `ruido_pista_dupla` | Órfão, Rebelde, Bobo maldoso | a sombra "nivela/ataca"; fornece pistas falsas *cridas verdadeiras* por quem as dá |
 | `mentiroso_por_medo` | Órfão (medo de exclusão), Inocente (medo de punição) | o **medo central** do arquétipo é o motor da mentira; coerência direta medo→mentira |
 | `fonte` | Sábio (luz), Explorador, Mago (por interesse), Bobo (solta sem querer) | arquétipos ligados a **saber/circular**; informam, cada um com seu viés |
+
+**Nota do catálogo v1** (`sistemas-arquetipicos-alem-dos-12.md` §7): a tabela acima usa os
+nomes do *starter kit* de Pearson; no catálogo vigente lê-se pela correspondência natural
+(Cuidador→Zelador, Governante→Soberano, Sábio→Erudito, Inocente→Devoto, Criador→Artífice,
+Órfão/Pessoa Comum→Provador, Explorador→Errante, Herói→Justiceiro, Bobo→Bufão, Amante→
+Amante), e o 11º vetor, **Vigia** (§7.4.1), engorda os papéis mais magros daqui: `fonte`
+(quem sabe e circula), as testemunhas e o `veu` (quem viu — e mente o porquê de estar à
+janela).
 
 **Princípio de casting:** um caso bem-formado precisa de **contraste de personas**, não de
 variedade de rótulos. Regra de ouro: **culpado com persona luminosa, falso-óbvio com persona
