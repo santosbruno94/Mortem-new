@@ -35,6 +35,11 @@ export const VARIAVEIS_BATALHA = {
   arrasto: { descricao: 'Corpo movido da célula onde caiu (encenação).' },
   higiene: { descricao: 'O eixo WIS pós-fato: limpeza, neutralidade ou desleixo.' },
   planejamento: { descricao: 'Elaboração prévia do método (só premeditado, INT alta).' },
+  // OS confronto estendido (§4.4, §8.4): a vítima ganha ação própria.
+  acao_vitima: { descricao: 'A ação dominante da vítima sob ataque: resistir ou fugir.' },
+  rota_fuga: { descricao: 'Células que a fuga dirigida atravessou rumo à porta externa.' },
+  grito: { descricao: 'Pico de ruído com hora própria, audível aos adjacentes (1× por batalha).' },
+  lesoes_sitio_posterior: { descricao: 'Golpes recebidos de costas, em fuga — contagem no registro, canal de laudo.' },
 };
 
 // ---------------------------------------------------------------------
@@ -232,6 +237,66 @@ export const CLASSES_VESTIGIO = {
     removivel: false,
     noCorpo: false,
     proveniencia: 'docs/kb-mundo-vitoriano/vida-cotidiana.md (a rotina doméstica denuncia a exceção)',
+  },
+
+  // ===== OS confronto estendido — o preço da desordem (§4.6, §8.4) =====
+  // Trilhas da fuga: só se o método sangra e ferimentosVitima ≥ 1. Cada
+  // classe removível declara sua contraparte de 2ª ordem (conservação §3.3),
+  // depositada pela limpeza no mesmo ato (crime.js).
+  trilha_gotejamento: {
+    rotulo: 'Trilha de gotejamento da fuga',
+    ordem: 1,
+    atributo: null, // governada por método (sangra) + fuga, não por atributo
+    evidenciaDe: ['rota_fuga', 'acao_vitima', 'deslocamento'],
+    removivel: true, // a esfrega converte a trilha em faixa lavada (2ª ordem)
+    noCorpo: false,
+    proveniencia: 'docs/kb-medicina-legal/vestigios.md ("Rastros em movimento": gotejamento em trilha, espaçamento e sentido da marcha)',
+  },
+  assoalho_esfregado_faixa: {
+    rotulo: 'Assoalho esfregado em faixa ao longo do caminho',
+    ordem: 2,
+    atributo: 'WIS',
+    evidenciaDe: ['rota_fuga', 'higiene'],
+    removivel: false,
+    noCorpo: false,
+    proveniencia: 'docs/kb-medicina-legal/vestigios.md (a esfrega converte o óbvio em sutil; faixa lavada no sentido da trilha)',
+  },
+  esfregaco_de_limiar: {
+    rotulo: 'Esfregaço de sangue no limiar',
+    ordem: 1,
+    atributo: null,
+    evidenciaDe: ['rota_fuga', 'acao_vitima'],
+    removivel: true, // o batente lavado é a 2ª ordem
+    noCorpo: false,
+    proveniencia: 'docs/kb-medicina-legal/vestigios.md ("Rastros em movimento": esfregaços de limiar, batente, maçaneta)',
+  },
+  batente_lavado: {
+    rotulo: 'Batente lavado, ainda úmido',
+    ordem: 2,
+    atributo: 'WIS',
+    evidenciaDe: ['rota_fuga', 'higiene'],
+    removivel: false,
+    noCorpo: false,
+    proveniencia: 'docs/kb-medicina-legal/vestigios.md (batente lavado fora de hora; umidade recente na madeira do umbral)',
+  },
+  lesao_sitio_posterior: {
+    rotulo: 'Lesão de sítio posterior (golpe recebido em fuga)',
+    ordem: 1,
+    atributo: 'FOR', // topografia da lesão, como as demais lesões do confronto
+    evidenciaDe: ['lesoes_sitio_posterior', 'acao_vitima'],
+    removivel: false,
+    noCorpo: true, // vive no corpo; a perícia a lê no laudo (canal de exame)
+    proveniencia: 'docs/kb-medicina-legal/traumas.md ("Lesões de sítio posterior": dorso/nuca, assinatura do golpe recebido em fuga)',
+  },
+  grito_ouvido: {
+    rotulo: 'Grito ouvido na vizinhança',
+    ordem: 1,
+    atributo: null, // a decisão de gritar sai dos portões, não de atributo
+    evidenciaDe: ['grito'],
+    removivel: false, // memória alheia não se esfrega
+    noCorpo: false,
+    semCelula: true, // vive nos ouvidos dos adjacentes, com hora própria
+    proveniencia: 'docs/kb-medicina-legal/inquerito-e-policia.md (testemunho auditivo; o depoimento diante do coroner)',
   },
 };
 

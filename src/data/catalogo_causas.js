@@ -74,6 +74,12 @@ export const SINAIS = [
     confirmaCausa: 'envenenamento_arsenico',
   },
   {
+    id: 'miose_opiacea',
+    rotulo: 'Pupilas em ponta de alfinete',
+    descricao: 'Pupilas contraídas ao extremo e respiração deprimida: o sono do ópio que afunda em coma.',
+    confirmaCausa: 'envenenamento_laudano',
+  },
+  {
     id: 'ferida_contusa',
     rotulo: 'Ferida contusa / fratura craniana',
     descricao: 'Afundamento ou fratura por objeto rombo.',
@@ -161,6 +167,13 @@ export const CATALOGO_CAUSAS = [
     familia: 'intoxicacao',
     sinalAssinatura: 'odor_alho',
     descricao: 'Veneno de ação lenta; deixa hálito de alho.',
+  },
+  {
+    id: 'envenenamento_laudano',
+    nome: 'Envenenamento por láudano (dose excessiva)',
+    familia: 'intoxicacao',
+    sinalAssinatura: 'miose_opiacea',
+    descricao: 'Tintura de ópio em dose excessiva; pupilas em ponta de alfinete e depressão respiratória.',
   },
 
   // ----- Família: TRAUMA -----
