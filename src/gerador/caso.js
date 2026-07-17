@@ -23,6 +23,7 @@ import { METODOS, metodosElegiveis } from './metodos.js';
 import { resolverCrime } from './crime.js';
 import { fatiaForenseDoCrime } from './ponte_caso.js';
 import { sortearEsqueletoInterferencia, gerarInterferencias } from './interferencia.js';
+import { derivarPsiqueDoCaso } from './vetores_psiquicos.js';
 
 function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
@@ -248,6 +249,29 @@ export function gerarCasoBruto(seed, opts = {}) {
   // rota e gatilho R3, prenúncio R4), ou descartes com motivo.
   const interferencia = gerarInterferencias({ seed, mundo, crime, fatiaForense, escolha, esqueleto });
 
+  // 11. OS da camada psíquica — a segunda coluna do elenco: sorteio
+  // ortogonal do catálogo v1, desencaixe do réu (T=2) com falso-destoante
+  // garantido (prioridade: coabitantes da vítima) e compilação de
+  // consequências. Rótulos só em psique.log (build); o pacote nunca os lê.
+  const coabitantesVitimaIds = elenco
+    .filter(
+      (p) =>
+        p.id !== vitima.id &&
+        p.id !== assassino.id &&
+        ['dia', 'noite', 'madrugada'].some(
+          (fx) => p.pacoteEspacial.rotina[fx] === vitima.pacoteEspacial.rotina[fx]
+        )
+    )
+    .map((p) => p.id);
+  const psique = derivarPsiqueDoCaso({
+    seed,
+    elenco: mundo.elenco,
+    assassinoId: assassino.id,
+    vitimaId: vitima.id,
+    cenario,
+    coabitantesVitimaIds,
+  });
+
   return {
     seed: salDaSeed(seed),
     mundo,
@@ -255,5 +279,6 @@ export function gerarCasoBruto(seed, opts = {}) {
     crime,
     fatiaForense,
     interferencia,
+    psique,
   };
 }

@@ -223,7 +223,17 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
     elegiveis.length === 0 ? 0 : 1 + (hashString(`${sal}|n`) % Math.min(2, elegiveis.length));
   const inicio = elegiveis.length ? hashString(`${sal}|quem`) % elegiveis.length : 0;
   const comSegredo = [];
-  for (let i = 0; i < nSegredos; i += 1) comSegredo.push(elegiveis[(inicio + i) % elegiveis.length].id);
+  // OS da camada psíquica (§8.3.4): o falso-destoante, quando elegível,
+  // tem preferência ao PRIMEIRO segredo — é o inocente_segredo + móbil-isca
+  // que faz o destoante enganar de fato ("mentiu, logo matou").
+  const destoanteId = bruto.psique?.log?.falsoDestoanteId;
+  if (nSegredos > 0 && destoanteId && elegiveis.some((s) => s.id === destoanteId)) {
+    comSegredo.push(destoanteId);
+  }
+  for (let i = 0; comSegredo.length < nSegredos && i < elegiveis.length * 2; i += 1) {
+    const candidato = elegiveis[(inicio + i) % elegiveis.length].id;
+    if (!comSegredo.includes(candidato)) comSegredo.push(candidato);
+  }
   const tipoBase = hashString(`${sal}|tipo`) % SEGREDOS_GERADOS.length;
 
   const perifericos = {};
