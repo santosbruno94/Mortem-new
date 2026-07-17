@@ -491,3 +491,83 @@ PR-B, não aqui.
 Confirmado como alvo de QA da Fase 6: em lote ≥ 50 seeds, exigir ≥ 1 premeditado **com**
 fuga e ≥ 1 briga escalada **sem** fuga; recalibrar pesos antes de ampliar o lote se a
 distribuição natural não os produzir. Nada a fazer em PR-A além de fixar o critério.
+
+---
+
+## 10. Ata parcial — fechamento do PR-A (17/07/2026)
+
+**Execução das Fases 0–3, um commit por fase, nesta branch
+(`claude/executar-os-fases-0-3-rs0qwr`). Só documentação — nenhum arquivo de `src/**`
+nem `scripts/*` tocado (território do PR-B / da OS psíquica, §0).** Registro fase a fase:
+
+- **Fase 0** — esta OS gravada em `docs/os-confronto-estendido.md`.
+- **Fase 1** — KB transversal da dinâmica do confronto: `traumas.md` (defesa ativa ×
+  passiva, com nota de que o par nomeado é sistematização do séc. XX; capacidade de ação
+  pós-lesão por sítio/mecanismo; lesões de sítio posterior), `vestigios.md` (rastros em
+  movimento; vestígios no agressor; nota Piotrowski 1895), `fontes.md` (verbete Hans
+  Gross 1893 + bastidores modernos Karger/DiMaio/Spitz & Fisher), `tanatologia.md`
+  (intervalo de sobrevida), `lacunas.md` (fecha 1 e 5, cobre parcial da 7).
+- **Fase 2** — dossiês de métodos: `asfixias.md` (sufocação; afogamento — fecha a lacuna
+  1), `traumas.md` (precipitação; dossiê de mundo da espingarda), `venenos.md` (láudano
+  em dose excessiva), `vocabulario-de-epoca.md` (termos novos; "overdose" banida),
+  `fontes.md` (título de 1ª edição do Handbuch).
+- **Fase 3** — §9 desta OS: inventários (catálogo de causas; âncoras espaciais) e spec
+  §8 preenchida; nenhum outro arquivo.
+
+**Revisão forense (regra da casa "medicina legal tecnicamente precisa, sempre").** O
+agente `perito-forense` validou as Fases 1 e 2 em duas passadas: **zero achados
+bloqueantes** em ambas (ferida cardíaca/Taylor, Piotrowski 1895, Gross 1893, defesa
+ativa/passiva; espingarda/bucha, enfisema aquoso de Casper, contragolpe, prova de Stas
+incerta em morfina). Sugestões não-bloqueantes adotadas: nota de honestidade sobre o par
+"defesa ativa/passiva", precisão do título do Handbuch, ressalva "sugestivo não
+probatório" no contragolpe, gloss lusófono da carga de espingarda. Como é KB técnica (não
+prosa de jogo — localidades/cartas/monólogo), o pipeline `revisar-prosa` completo não se
+aplica; a guarda pertinente é o `perito-forense`, que rodou.
+
+### 10.1 Decisões pendentes do usuário (antes do PR-B)
+
+Ativaram-se nos inventários da Fase 3. **Nenhuma foi decidida pelo agente** (§0/`CLAUDE.md`):
+
+- **[D1] Láudano → estender `src/data/catalogo_causas.js`.** O catálogo universal só tem
+  `envenenamento_cianeto` e `envenenamento_arsenico`; o láudano/opiáceo exige mecanismo e
+  sinal novos (dado de **runtime**, com superfícies de prosa). **Sem ordem, o láudano fica
+  só na KB** (o dossiê da Fase 2 já está lá). Autoriza a extensão?
+- **[D2] Âncora espacial de precipitação e afogamento.** A geração de interiores tem grids
+  de **um só piso** (sem escada) e a única água como célula alcançável é o `cocho_dagua`
+  da forja. Opções para o usuário:
+  - *Precipitação:* sem escada representável, ou fica só na KB, ou autoriza-se adaptar
+    `interiores.js` (tocar a Fase 2 espacial — decisão pesada).
+  - *Afogamento:* **(a)** admitir restrito à cena de forja pela célula `cocho_dagua` já
+    existente (sem tocar geração; cocho raso, afogamento forçado marginal); **(b)** só na
+    KB. Qual via?
+- **[D4] Espingarda jogável — registrada como pauta futura.** Fora desta OS por decisão
+  já tomada; entra só como dossiê de mundo (feito na Fase 2). Sem ação pedida agora.
+- **[D3] Passagens entre cômodos — NÃO se prevê ativar.** A convenção mínima do §4.5 sai
+  da geometria existente (porta externa já convencionada em `crime.js`;
+  `vizinhasDaCelula` ignora paredes). Só acordaria se a implementação da Fase 5 revelasse
+  necessidade de novas células — não previsto. Registrado para consciência, sem pergunta.
+
+**Piso garantido da OS (independe de D1/D2):** fuga dirigida + grito + trilhas +
+**sufocação** (coberta, sem âncora especial, de interior). É o que a Fase 4 implementa
+mesmo que D1 e D2 fiquem negados.
+
+### 10.2 Ponto de espera — PARAR
+
+Conforme §0 e §6, o PR-A encerra aqui. **A retomada (PR-B, Fases 4–7) só ocorre por ordem
+expressa do usuário confirmando M-C** (o merge do PR da OS da camada psíquica — hoje o
+**PR #50**, ainda aberto sobre `claude/mortem-vertical-slice-zzrcto`). O branch do PR-B
+deve nascer de `main`/base já contendo a OS psíquica, porque o portão psíquico **lê o
+vetor da vítima** (produto daquela OS) e ambas as OSs regeneram `casos_gerados.js` e tocam
+`caso.js` — dois PRs concorrentes ali é conflito garantido.
+
+### 10.3 Notas para o PR-B (melhorias percebidas, NÃO implementadas — regra do cabeçalho)
+
+1. **Extensão de dados pós-merge:** o campo `sobAtaque: { resistir, fugir, gritar }` por
+   vetor em `src/gerador/vetores_psiquicos.js` (§4.4) — a única extensão que esta OS faz
+   naquele arquivo da OS psíquica, na Fase 5 do PR-B.
+2. **Amarração com a OS psíquica §4.4:** "cômodo negligenciado na pressa" entra como
+   variante **causal** (derivada da fuga) no pool de erros de pânico do cenário reativo —
+   não sorteada. Se a encenação condicionada virar OS própria, o §4.6 desta é absorvido na
+   mesma Fase 5 (§0).
+3. **Calibração de `MAX_RODADAS`** (default 6) e dos **pesos de ação** só é mensurável com
+   a fuga em código — decidir no QA da Fase 6, em ata de fechamento do PR-B.

@@ -222,7 +222,8 @@ o corpo diz. Fecha, pela via da queda, a lacuna 5 de `lacunas.md`.
 - **Contragolpe.** No crânio, a queda pode produzir fratura **por contragolpe** (a lesão do
   encéfalo no polo oposto ao impacto) — sinal de que a cabeça vinha em movimento contra uma
   superfície parada (queda), e não uma superfície em movimento contra a cabeça parada (golpe).
-  Conhecido da época como leitura de mecânica, útil para separar os dois.
+  Conhecido da época como leitura de mecânica, útil para separar os dois — **sinal sugestivo,
+  não probatório**, no regime de honestidade do resto desta base.
 - **Sangramento externo:** conforme a lesão — a laceração de couro cabeludo **sangra** muito
   (governa poça e, se a vítima ainda se move, trilha). Reação vital nas bordas separa a queda
   em vida da encenação sobre corpo já morto.
@@ -251,7 +252,7 @@ métodos, mas o coroner de 1893 conhece bem o ferimento por projétil de caça, 
 vila cercada de campo. Serve à ambiência e a casos futuros.
 
 - **A carga de chumbo, não a bala única.** A espingarda de caça dispara **múltiplos bagos de
-  chumbo** (a carga de *shot*). A curta distância, a carga entra **compacta**, abrindo um
+  chumbo** (a carga de chumbo miúdo). A curta distância, a carga entra **compacta**, abrindo um
   orifício único, grande e devastador, de bordas laceradas; à medida que a distância cresce,
   os bagos **espalham-se** e imprimem o padrão de dispersão — orifícios satélites em torno do
   central. **A extensão do espalhamento gradua a distância do disparo** — é a leitura de
