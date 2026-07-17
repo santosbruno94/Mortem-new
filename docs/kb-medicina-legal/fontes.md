@@ -45,6 +45,10 @@ conhecê-lo.
 | Técnica | Data | Disponível em 1893? |
 |---|---|---|
 | Teste de Marsh (arsênico) | 1836 | **Sim** — método toxicológico corrente |
+| Cristais de Teichmann (hemina, confirmação de sangue) | 1853 | **Sim** — de microscópio, ver `vestigios.md` e `supressao-de-vestigios.md` |
+| Ensaio do guaiaco (Van Deen, presunção de sangue) | 1862 | **Sim** — de campo, presuntivo; ver `supressao-de-vestigios.md` |
+| Microespectroscopia (Sorby, confirmação de sangue) | 1865 | **Sim** — de gabinete, não vai a campo; ver `supressao-de-vestigios.md` |
+| Micrometria de Gulliver (diâmetro do eritrócito por espécie) | 1875 | **Sim** — prova de exclusão, fraca; ver `supressao-de-vestigios.md` |
 | Sistema de datação por fenômenos cadavéricos | séc. XIX | **Sim** — Casper, Taylor |
 | Reconstituição de cena / criminologia | 1880s | **Sim** — Lacassagne |
 | Impressões digitais (Galton) | 1892 | Recém-publicado; **quase sem uso policial** |
