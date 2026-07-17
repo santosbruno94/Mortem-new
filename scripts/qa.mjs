@@ -2755,6 +2755,18 @@ const overdoseHits = superficiesLexico.filter((rel) => /overdose/i.test(lerSegur
 const lexicoConfronto = overdoseHits.length === 0;
 if (!lexicoConfronto) console.log('\nCONFRONTO — "overdose" em superfície do jogo:', overdoseHits.join(', '));
 
+// (E) réplica (§4.8): fugaVitima 'suprimida' ⇒ o registro não ganha fuga
+// nem grito — a base da identidade de fatos com o roteiro canônico.
+const { SEED_REPLICA: SEED_REPLICA_CONF, DIRIGIDO_REPLICA: DIRIGIDO_REPLICA_CONF } = await import(
+  '../src/gerador/pacote_gerado.js'
+);
+const regReplicaConf = gerarCasoBruto(SEED_REPLICA_CONF, { dirigido: DIRIGIDO_REPLICA_CONF }).crime;
+const replicaFugaSuprimida =
+  regReplicaConf.variaveis?.acao_vitima !== 'fugir' &&
+  regReplicaConf.variaveis?.grito === undefined &&
+  !regReplicaConf.vestigios.some((v) => FUGA_CLASSES.includes(v.classe));
+if (!replicaFugaSuprimida) console.log('\nCONFRONTO — réplica não suprimiu a fuga (§4.8).');
+
 // Devolve o módulo de dados ao caso-escola: as checagens e o linter
 // abaixo leem o pacote do tutorial, como sempre.
 carregarCaso(pacote);
@@ -2858,6 +2870,7 @@ const checagens = [
   ['Confronto anti-bicondicional: há premeditado COM fuga e briga escalada SEM fuga no lote fixo (OS confronto §4.7)', antiBicondicional],
   ['Confronto: trilha contígua; ação/rota/grito só existem com vestígio sobrevivente; grito com hora e ouvinte (OS confronto §5)', fugaCoerenteEExistente],
   ['Confronto: "overdose" fora das superfícies do jogo — a língua diz "dose excessiva" (OS confronto §5)', lexicoConfronto],
+  ['Confronto: réplica com fuga suprimida — registro sem fuga/grito (identidade de fatos §4.8)', replicaFugaSuprimida],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

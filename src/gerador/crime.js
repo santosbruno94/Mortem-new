@@ -212,7 +212,11 @@ function simularBatalha(
       return resultadoVitoria(r);
     }
 
-    // Rodada 1 premeditada: a surpresa suprime QUALQUER ação (§4.4).
+    // Rodada 1 premeditada: a surpresa suprime a AÇÃO da vítima (reagir,
+    // fugir, gritar) — §4.4. O DESLOCAMENTO do confronto (o drift) NÃO é
+    // ação da vítima: é a luta que anda, e segue rodando toda rodada como
+    // no comportamento vigente (fora deste guard, abaixo).
+    let fugiuNestaRodada = false;
     if (!(r === 1 && surpresa > 0)) {
       // ===== AÇÃO DA VÍTIMA: resistir × fugir (§8.2) =====
       // fugir só é possível se o método não prende, não suprime a batalha,
@@ -229,6 +233,7 @@ function simularBatalha(
 
       if (querFugir) {
         acaoDominante = 'fugir';
+        fugiuNestaRodada = true;
         lesoesSitioPosterior += 1; // o golpe desta rodada foi recebido de costas
         if (!inicioFuga) inicioFuga = { ...celulaAtual };
         const comodoAntes = comodoDaCelula(interior, celulaAtual);
@@ -248,7 +253,7 @@ function simularBatalha(
           return { vitoria: false, motivo: 'vitima_escapou', rodadas: r };
         }
       } else {
-        // ===== RESISTIR = comportamento vigente (mesmos sais) =====
+        // ===== RESISTIR = reação vigente (mesmos sais |reage/|fere) =====
         if (!acaoDominante) acaoDominante = 'resistir';
         if (hashString(`${salR}|reage`) % 6 < forV) {
           ferimentosDefensivos += 1;
@@ -261,15 +266,6 @@ function simularBatalha(
               return { vitoria: false, motivo: 'assassino_ferido', rodadas: r };
             }
           }
-        }
-        // Deslocamento do confronto (a vítima que resiste recua; a luta anda).
-        if (hashString(`${salR}|desloca`) % 4 < Math.min(forV, 3)) {
-          const vizinhas = vizinhasDaCelula(interior, celulaAtual);
-          celulaAtual = vizinhas[hashString(`${salR}|para`) % vizinhas.length];
-          caminho.push({ ...celulaAtual });
-          ruido += 1;
-          danificarAoAlcance(celulaAtual);
-          log.moveuPara = { ...celulaAtual };
         }
       }
 
@@ -286,6 +282,19 @@ function simularBatalha(
           log.gritou = true;
         }
       }
+    }
+
+    // ===== DESLOCAMENTO do confronto (o drift vigente, incondicional) =====
+    // Como no comportamento original, roda TODA rodada (inclusive a rodada
+    // 1 premeditada) e usa os mesmos sais |desloca/|para. Só é pulado
+    // quando a vítima já se moveu na fuga dirigida desta rodada.
+    if (!fugiuNestaRodada && hashString(`${salR}|desloca`) % 4 < Math.min(forV, 3)) {
+      const vizinhas = vizinhasDaCelula(interior, celulaAtual);
+      celulaAtual = vizinhas[hashString(`${salR}|para`) % vizinhas.length];
+      caminho.push({ ...celulaAtual });
+      ruido += 1;
+      danificarAoAlcance(celulaAtual);
+      log.moveuPara = { ...celulaAtual };
     }
 
     rodadasLog.push(log);

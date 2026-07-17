@@ -571,3 +571,59 @@ vetor da vítima** (produto daquela OS) e ambas as OSs regeneram `casos_gerados.
    mesma Fase 5 (§0).
 3. **Calibração de `MAX_RODADAS`** (default 6) e dos **pesos de ação** só é mensurável com
    a fuga em código — decidir no QA da Fase 6, em ata de fechamento do PR-B.
+
+---
+
+## 11. Ata de fechamento — PR-B (Fases 4–7, 17/07/2026)
+
+**Retomada por ordem expressa do usuário, após M-C** (merge do PR #50 da OS psíquica em
+`claude/mortem-vertical-slice-zzrcto`, que já continha também o PR #52 desta OS). O
+usuário decidiu os dois pontos pendentes: **D1 — láudano jogável** e **D2 — afogamento
+limitado à forja** (via cocho existente, sem tocar a geração); precipitação fica só na
+KB. Branch nova `claude/os-confronto-estendido-pr-b` a partir da integração atualizada.
+Um commit por fase.
+
+- **Fase 4 (catálogo)** — `metodos.js`: campos `seguraAVitima`/`mobilidadeResidual`/
+  `exigeAncora` em todos os métodos; três métodos novos (sufocação, afogamento gated,
+  láudano); `metodosElegiveis` ciente de âncora. `catalogo_causas.js` (D1): causa
+  `envenenamento_laudano` + sinal `miose_opiacea`. `vestigios.js`: variáveis
+  `acao_vitima`/`rota_fuga`/`grito`/`lesoes_sitio_posterior` e classes `trilha_gotejamento`,
+  `esfregaco_de_limiar` (com 2ª ordem), `lesao_sitio_posterior`, `grito_ouvido`.
+- **Fase 5 (resolvedor)** — `crime.js`: `simularBatalha` ganha ação da vítima (resistir ×
+  fugir), grito e os dois portões; fuga dirigida à porta externa (convenção existente,
+  D3 não se ativou); rejeição `vitima_escapou`; deposição de trilhas/limiar/sítio
+  posterior/grito; limpeza WIS estendida. `vetores_psiquicos.js`: `sobAtaque` por vetor +
+  `portaoVitima`. `caso.js`: âncoras da cena, psique movida para antes do crime,
+  `dirigido.fugaVitima`. Consolidação no `game-design §2.4`. **Correção de simetria
+  descoberta na Fase 7:** o deslocamento (drift) do confronto voltou a rodar toda rodada
+  (incondicional, como no comportamento vigente) — não é ação da vítima; isso restaurou a
+  identidade byte-a-byte da réplica.
+- **Fase 6 (guardas)** — cinco guardas novas no `qa.mjs` (lote fixo `confronto_1..80`):
+  determinismo com fuga/grito/trilhas; anti-bicondicional (§4.7); coerência (trilha
+  contígua) + existência (ação/rota/grito só com vestígio sobrevivente; grito com hora e
+  ouvinte); léxico ("overdose" fora das superfícies); réplica §4.8 (fuga suprimida).
+- **Fase 7 (fechamento)** — prosa de lesão dos três métodos novos (`PROSA_LESAO`),
+  aprovada por `perito-forense` + `editor-critico` com **zero achados bloqueantes**
+  (correção de fidelidade do láudano: o ópio é amargo, não adocicado);
+  `dirigido.fugaVitima: 'suprimida'` na réplica; `casos_gerados.js` regenerado
+  (`npm run gerar:casos`); playtest em `docs/playtest-os-confronto-2026-07-17.md`.
+
+**Decisões [DECISÃO DO USUÁRIO]:** D1 e D2 respondidas pelo usuário (láudano jogável;
+afogamento restrito à forja). D3 não se ativou (a rota de fuga saiu da geometria
+existente). D4 permanece fora (espingarda só KB). Nenhuma divergência KB × motor nova.
+
+**Verificação final:** `npm run build` limpo; `node scripts/qa.mjs` → **CASO VÁLIDO**
+(as 5 guardas novas verdes; 4 perfis → 4 desfechos na réplica e no pool regenerado; a
+réplica byte-idêntica ao canon); `node scripts/qa-ui.mjs` → **UI VÁLIDA** (86 checagens,
+zero erros de console).
+
+**Notas para OS futura (percebidas, NÃO implementadas — regra do cabeçalho):**
+
+1. **Realização física dos pools de encenação da OS psíquica** (§8.4 daquela OS): a
+   variante causal "cômodo negligenciado na pressa" derivada da fuga (§4.6 desta) fica
+   para quando a matriz de encenação ganhar cartas próprias.
+2. **Afogamento além da forja:** hoje só o cocho da forja é âncora de água; um poço na
+   granja ou o açude do moinho como célula alcançável ampliaria o método sem torná-lo
+   comum — exige tocar a geração espacial (fica para decisão futura, à moda de D2/D3).
+3. **Precipitação jogável:** depende de modelar escada/eixo vertical em `interiores.js`
+   (a Fase 2 espacial) — pauta futura, como a espingarda jogável (D4).
