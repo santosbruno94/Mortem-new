@@ -316,7 +316,7 @@ export const ARQUETIPOS = {
       trabalho: 'forja',
       frequentados: ['pub', 'mercearia'],
       proveniencia:
-        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (forja: galpão na borda da vila, pelo risco de fogo; o ferreiro mora à parte, em cottage)',
+        'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (forja: galpão no coração da vila, tolerada no miolo; o ferreiro mora à parte, em cottage)',
     },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §1 (artesãos, 20–35s/semana, oficina própria) e §3 (ocupações masculinas do censo de 1891)',

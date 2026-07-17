@@ -31668,12 +31668,12 @@ export const CASOS_POOL = [
     "segredo": null
    },
    "gen_0_moleiro": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_2_costureira": {
     "veredictoEsperado": "inocente_segredo",
     "segredo": "pedido_recusado"
+   },
+   "gen_2_costureira": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    }
   }
  },
@@ -31870,20 +31870,6 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_1_ferreiro",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na tarde de 13",
-   "descricao": "Charles Wood conta o que a parede deixou passar na tarde de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "dia"
-   }
-  },
-  {
    "id": "gen_motivo",
    "localidade": "delegacia",
    "suporteFisico": "registro",
@@ -31924,45 +31910,45 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_0_moleiro",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Frank Wilson",
-   "carimboPadrao": "Paradeiro de Frank Wilson, confirmado",
-   "descricao": "A rua dá Frank Wilson no Moinho sexta à tarde, do meio-dia às seis, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_0_moleiro"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_2_costureira",
+   "id": "gen_segredo_gen_0_moleiro",
    "localidade": "cena",
    "suporteFisico": "cena",
    "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Rose Harris",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rose Harris: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "carimboPadrao": "Bilhete na letra de Frank Wilson",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Frank Wilson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
     "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_2_costureira",
+    "pertenceA": "gen_0_moleiro",
     "revelaSegredo": "pedido_recusado"
    }
   },
   {
-   "id": "gen_movel_gen_2_costureira",
+   "id": "gen_corrobora_gen_2_costureira",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Rose Harris",
+   "carimboPadrao": "Paradeiro de Rose Harris, confirmado",
+   "descricao": "A rua dá Rose Harris no Cottage nº 2 sexta à tarde, do meio-dia às seis, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_costureira"
+   }
+  },
+  {
+   "id": "gen_movel_gen_0_moleiro",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Rose Harris",
-   "carimboPadrao": "Móbil de Rose Harris",
-   "descricao": "Corre na vila um falatório em nome de Rose Harris; quem o repetia, de porta em porta, era Harry Morris.",
+   "textoDisplay": "Papéis de Frank Wilson",
+   "carimboPadrao": "Móbil de Frank Wilson",
+   "descricao": "Uma caderneta de dívidas soma o que Frank Wilson deve a Harry Morris, vencido e cobrado por carta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "escandalo_gravidez",
-    "ligadoA": "gen_2_costureira"
+    "motivo": "divida_caderneta",
+    "ligadoA": "gen_0_moleiro"
    }
   },
   {
@@ -32073,7 +32059,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A Granja guarda o dia em que o acharam. No cômodo, sofá velho, tapete de retalhos; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
     "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_costureira]]."
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_moleiro]]."
    ],
    "blocosContingentes": []
   },
@@ -32086,7 +32072,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_2_costureira]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_moleiro]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -32099,8 +32085,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_ferreiro]], [[gen_corrobora_gen_4_ferreiro]], [[gen_corrobora_gen_0_moleiro]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_ferreiro]], [[gen_corrobora_gen_4_ferreiro]], [[gen_corrobora_gen_2_costureira]]."
    ],
    "blocosContingentes": []
   },
@@ -32170,15 +32155,8 @@ export const CASOS_POOL = [
    "subtitulo": "Ferreiro, 35 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -32213,12 +32191,6 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Charles Wood conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
     "b1_firme": {
      "fala": [
       "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
@@ -32248,7 +32220,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não tenho que dar. Se Harry Morris tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -32281,7 +32253,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Harry Morris era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Harry Morris? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -32314,7 +32286,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -32347,7 +32319,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     }
@@ -32539,8 +32511,15 @@ export const CASOS_POOL = [
    "subtitulo": "Moleiro, 34 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_0_moleiro": "reacao_gen_segredo_gen_0_moleiro"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_0_moleiro",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -32572,6 +32551,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_0_moleiro": {
+     "fala": [
+      "Frank Wilson lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Harry Morris estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -32908,15 +32893,8 @@ export const CASOS_POOL = [
    "subtitulo": "Costureira, 20 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_2_costureira": "reacao_gen_segredo_gen_2_costureira"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_2_costureira",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -32948,12 +32926,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_2_costureira": {
-     "fala": [
-      "Rose Harris lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Harry Morris estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },

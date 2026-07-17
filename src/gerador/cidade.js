@@ -9,9 +9,9 @@
 //   `${seed}|cidade|<predio>|<decisao>`
 //
 // A cidade é uma vila inglesa de 1893 na linhagem de Briarstone: uma High
-// Street com as lojas e a delegacia, o adro da igreja num extremo, o solar
-// recuado, a ruela dos cottages, e a orla de trabalho (forja, granja,
-// moinho) na borda. A geometria sai no MESMO schema que o diorama consome
+// Street com as lojas, a delegacia e a forja no seu coração, o adro da
+// igreja num extremo, o solar recuado, a ruela dos cottages, e a orla de
+// trabalho (granja, moinho) na borda. A geometria sai no MESMO schema que o diorama consome
 // (POSICOES_DIORAMA/FORMAS_PREDIO em src/data/mapa_espacial.js): quando o
 // pacote de caso gerado chegar ao runtime (Fase 3+), a maquete de papel
 // renderiza a cidade sem que o motor mude uma linha.
@@ -89,11 +89,13 @@ const TRACADO = [
   { quarteirao: 'high_street_norte', tipo: 'botica', x: -0.4, z: -1.4 },
   { quarteirao: 'high_street_norte', tipo: 'mercearia', x: 0.9, z: -1.3 },
   { quarteirao: 'high_street_norte', tipo: 'escola', x: 2.2, z: -1.4 },
-  // A High Street, lado sul: a taverna e o médico.
+  // A High Street, lado sul: a taverna, o médico e a forja no coração da vila
+  // (tolerada no miolo — fogo controlado, castanheira ao lado; a bigorna é o
+  // relógio sonoro central da vila — urbanismo-e-morfologia.md §2/§7).
   { quarteirao: 'high_street_sul', tipo: 'pub', x: -1.9, z: 0.4 },
   { quarteirao: 'high_street_sul', tipo: 'casa_do_medico', x: -0.3, z: 0.5 },
-  // A orla de trabalho, no nascente: forja, granja e o moinho ao longe.
-  { quarteirao: 'orla', tipo: 'forja', x: 3.6, z: -0.9 },
+  { quarteirao: 'high_street_sul', tipo: 'forja', x: 1.1, z: 0.5 },
+  // A orla de trabalho, no nascente: a granja e o moinho ao longe.
   { quarteirao: 'orla', tipo: 'granja', x: 4.6, z: 0.6 },
   { quarteirao: 'orla', tipo: 'moinho', x: 5.3, z: -1.9 },
   { quarteirao: 'orla', tipo: 'estacao', x: 5.4, z: 1.7 },
