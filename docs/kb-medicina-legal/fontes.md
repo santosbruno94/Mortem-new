@@ -30,7 +30,10 @@ mecânica de "desconfie da cena arrumada".
 
 **Hans Gross — *Handbuch für Untersuchungsrichter* (Manual do juiz de instrução)**
 Gross (1847–1915), magistrado austríaco, publicou em **1893** — o próprio ano do jogo —
-o manual que fundou a criminalística como disciplina. Sistematizou o exame metódico da
+o manual que fundou a criminalística como disciplina. (O título da 1ª edição de 1893 é
+*Handbuch für Untersuchungsrichter, Polizeibeamte, Gendarmen etc.*; o subtítulo célebre
+*als System der Kriminalistik* só entra na 4ª edição, 1904 — usamos aqui a forma curta e
+fiel ao cerne da obra.) Sistematizou o exame metódico da
 cena e do suspeito: procurar no **agressor** o que a luta lhe deixou (arranhões, roupa
 rasgada, sangue alheio), preservar e comparar vestígios, interrogar com método. É a
 âncora de época para o **exame do agressor** e para a busca de vestígios de transferência

@@ -110,6 +110,41 @@ porém, não é do nariz: é do reagente sobre as vísceras.
 
 ---
 
+## Dossiê de método — láudano em dose excessiva
+
+O láudano (tintura de ópio) é o veneno **mais à mão** de 1893: vendia-se sem receita em
+qualquer botica, entrava em xaropes, calmantes e soporíferos de uso corrente. Isso o torna o
+método de envenenamento mais **encenável como excesso acidental** — e é essa a sua força
+dramática. (A entrada dele no motor como causa jogável depende de estender
+`src/data/catalogo_causas.js`, que só tem cianeto e arsênico — ver a decisão D1 da OS; sem
+isso, este dossiê fica só na KB.)
+
+- **Sinais ao exame:** **miose** — pupilas contraídas em ponta de alfinete, o sinal mais fiel;
+  **depressão respiratória** — sono que se aprofunda em coma, respiração cada vez mais rara e
+  ruidosa, cianose, morte na inconsciência. Ao contrário do arsênico, **não corrói** as
+  vísceras nem deixa violência externa; o exterior íntegro afasta o trauma.
+- **Confirmação e sua reserva:** a morfina isola-se pelo processo de **Stas** e responde a
+  reações de cor, mas em doses pequenas a prova química é **incerta** (Taylor). A miose e as
+  **circunstâncias** — o frasco, a compra, a rotina — pesam muito, e é por isso que o láudano
+  se presta ao disfarce: o reagente nem sempre socorre o perito.
+- **Sangramento e trilhas:** **nenhum.** Suprime a batalha (como o arsênico): não há confronto,
+  não há fuga, não há grito — a vítima adormece e não desperta. Sem trilha de sangue.
+- **Capacidade de ação residual:** decrescente com a sonolência; a vítima que percebe tarde
+  demais já não coordena a fuga. Não há reação de defesa.
+- **Vestígios no agressor / na cena:** o **frasco** e sua origem (a compra na botica, ainda que
+  o láudano não fique em livro de venenos como o arsênico); o serviço de bebida onde a dose
+  foi diluída (chá, caldo, xarope); a discrepância de uma dose "de dormir" muito além da
+  habitual.
+- **Exigências:** **premeditação** (obter e dosar), mas exigência **material baixa** (venda
+  livre); nenhuma força. INT modesta basta — não é o veneno metálico de aquisição registrada.
+- **Encenabilidade:** altíssima como **excesso acidental** (o soporífero tomado a mais numa
+  noite de insônia) ou **suicídio**. A traem: a **dose incompatível** com uso terapêutico, a
+  ausência de doença que justificasse o soporífero, a contradição entre a quantidade comprada
+  e a encontrada, e o depoimento sobre a rotina de sono da vítima.
+- **Vocabulário de época — regra dura:** diz-se **"dose excessiva"**, jamais *"overdose"*
+  (anacronismo banido em toda superfície do jogo). Termos de época: *tintura de ópio*,
+  *láudano*, *dose excessiva*, *soporífero*, *narcótico*.
+
 ## Implicações para o jogo
 
 O motor (`src/data/catalogo_causas.js`) reconhece duas espécies desta família:
