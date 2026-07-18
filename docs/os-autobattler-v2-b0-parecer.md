@@ -79,8 +79,8 @@ Recortes que a reescrita deve vigiar (sementes das bandas D3 e da guarda GB8):
 | D2 | Conjunto de regiões | **(b) cinco regiões** — mãos separadas de braços |
 | D4 | Troca de método (B4) | **(a)** nesta OS, gated por GB8 + flag, com GB9/GB10 |
 | — | OS marca-e-luva (referenciada, inexistente no repo) | o texto desta OS basta; `ferimento_do_agressor` nasce em B3; M2–M3 aguardam a OS própria |
-| D7 | Escala da célula | **pendente** — recomendação: ~1 jarda, só em doc |
-| D6 | Itens novos de mobília | **pendente** — recomendação: lareira+guarda-fogo+atiçador, castiçal de latão, ferro de engomar |
+| D7 | Escala da célula | **~1 jarda ≈ 1 passo**, só em doc — uma célula do grid é o espaço de um corpo em pé; "peça ao alcance" (Chebyshev ≤ 1) é o braço estendido; nenhum número de jogo depende da escala |
+| D6 | Itens novos de mobília | **mínimo da OS**: lareira com guarda-fogo + atiçador (cozinha/parlour), castiçal de latão (parlour/quarto), ferro de engomar (copa) — nos 3 degraus; o verbete do ferro JÁ existia na KB (utensílios §3, *sad irons*); a única lacuna real era a cadeira como arma de ocasião, acrescida como inferência declarada |
 
 D3 (bandas-alvo) vence antes do fechamento de B2; D5 (identidade de fatos da
 réplica) antes de B3.4; D8 (janela de merge) resolvida de fato: o palco fechou E4 e

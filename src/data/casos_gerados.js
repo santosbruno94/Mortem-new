@@ -520,7 +520,7 @@ export const CASO_REPLICA = {
      "rotulo": "Depósito",
      "comodo": "deposito",
      "prosa": [
-      "No chão deste cômodo, a morta. Do mobiliário, prateleiras frias da despensa, pia da copa. De um canto a outro, nada guarda o seu lugar. À vista, sem procura: [[gen_hora_forjada]]. Junto do corpo, no chão: [[gen_instrumento]]."
+      "No chão deste cômodo, a morta. Do mobiliário, prateleiras frias da despensa, ferro de engomar. De um canto a outro, nada guarda o seu lugar. À vista, sem procura: [[gen_hora_forjada]]. Junto do corpo, no chão: [[gen_instrumento]]."
      ]
     },
     {
@@ -528,7 +528,7 @@ export const CASO_REPLICA = {
      "rotulo": "Quarto (sobrado)",
      "comodo": "quarto",
      "prosa": [
-      "Do mobiliário, lavatório com bacia, cômoda, cama de armação de madeira."
+      "Do mobiliário, cama de armação de madeira, lavatório com bacia, cômoda."
      ]
     },
     {
@@ -2146,7 +2146,7 @@ export const CASOS_POOL = [
      "rotulo": "Casa do Moleiro",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, mesa de cozinha, fogão de ferro a carvão. Há mobília por erguer do chão."
+      "Do mobiliário, atiçador de lareira, fogão de ferro a carvão. Há mobília por erguer do chão."
      ]
     },
     {
@@ -2154,7 +2154,7 @@ export const CASOS_POOL = [
      "rotulo": "Quarto",
      "comodo": "quarto",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, cômoda, cama de armação de madeira. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]."
+      "No chão deste cômodo, o morto. Do mobiliário, lavatório com bacia, cômoda. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]."
      ]
     },
     {
@@ -3779,7 +3779,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha da Granja",
      "comodo": "cozinha",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, mesa de tampo raspado, cadeiras Windsor. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+      "No chão deste cômodo, o morto. Do mobiliário, o relógio da família, lareira com guarda-fogo. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
      ]
     },
     {
@@ -5357,7 +5357,7 @@ export const CASOS_POOL = [
      "rotulo": "Depósito",
      "comodo": "deposito",
      "prosa": [
-      "No cômodo, prateleiras frias da despensa, pia da copa."
+      "No cômodo, pia da copa, prateleiras frias da despensa."
      ]
     },
     {
@@ -5365,7 +5365,7 @@ export const CASOS_POOL = [
      "rotulo": "Quarto (sobrado)",
      "comodo": "quarto",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, lavatório com bacia, cômoda, cama de armação de madeira. À vista, sem procura: [[gen_hora_forjada]]. Junto do corpo, no chão: [[gen_instrumento]]."
+      "No chão deste cômodo, o morto. Do mobiliário, cômoda, castiçal de latão, cama de armação de madeira. À vista, sem procura: [[gen_hora_forjada]]. Junto do corpo, no chão: [[gen_instrumento]]."
      ]
     },
     {
@@ -8513,7 +8513,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "No chão deste cômodo, o morto. No cômodo, bacia e jarro, baú de roupa. À vista, sem procura: [[gen_hora_forjada]]."
+      "No chão deste cômodo, o morto. No cômodo, castiçal de latão, cama de ferro. À vista, sem procura: [[gen_hora_forjada]]."
      ]
     },
     {
@@ -8521,7 +8521,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, tapete de retalhos, o relógio da família, fogão de ferro a carvão."
+      "Do mobiliário, cadeiras Windsor, sofá velho, tapete de retalhos."
      ]
     },
     {
@@ -8537,7 +8537,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "No cômodo, o relógio da família, flores de cera sob redoma."
+      "No cômodo, lareira com guarda-fogo, atiçador de lareira."
      ]
     }
    ],
@@ -10259,7 +10259,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "Do mobiliário, lavatório com bacia, cômoda, cama de armação de madeira. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Na parede, à altura do peito: [[gen_sangue_alheio]]."
+      "Do mobiliário, cama de armação de madeira, lavatório com bacia, cômoda. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Na parede, à altura do peito: [[gen_sangue_alheio]]."
      ]
     },
     {
@@ -10267,7 +10267,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No chão deste cômodo, o morto. No cômodo, mesa de cozinha, fogão de ferro a carvão. À vista, sem procura: [[gen_hora_forjada]]."
+      "No chão deste cômodo, o morto. No cômodo, mesa de cozinha, lareira com guarda-fogo. À vista, sem procura: [[gen_hora_forjada]]."
      ]
     },
     {
@@ -10283,7 +10283,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "Do mobiliário, o relógio da família, piano (ou harmônio), a louça boa no aparador. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_criada]]."
+      "Do mobiliário, atiçador de lareira, castiçal de latão, piano (ou harmônio). Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_criada]]."
      ]
     }
    ],
@@ -12062,7 +12062,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "No chão deste cômodo, o morto. No cômodo, cômoda, cama de armação de madeira."
+      "No chão deste cômodo, o morto. No cômodo, castiçal de latão, cama de armação de madeira."
      ]
     },
     {
@@ -12070,7 +12070,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, fogão de ferro a carvão, mesa de cozinha."
+      "Do mobiliário, fogão de ferro a carvão, mesa de cozinha, lareira com guarda-fogo."
      ]
     },
     {
@@ -12086,7 +12086,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "No cômodo, o relógio da família, piano (ou harmônio)."
+      "No cômodo, lareira com guarda-fogo, atiçador de lareira."
      ]
     }
    ],
@@ -13771,7 +13771,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No chão deste cômodo, a morta. Do mobiliário, cadeiras Windsor, sofá velho, tapete de retalhos. De um canto a outro, nada guarda o seu lugar. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_pastor_de_ovelhas]]."
+      "No chão deste cômodo, a morta. Do mobiliário, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão. De um canto a outro, nada guarda o seu lugar. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_pastor_de_ovelhas]]."
      ]
     },
     {
@@ -13779,7 +13779,7 @@ export const CASOS_POOL = [
      "rotulo": "Copa",
      "comodo": "copa",
      "prosa": [
-      "Do mobiliário, copper de ferver roupa, tina e tábua de lavar."
+      "Do mobiliário, ferro de engomar, pia da copa (a única torneira)."
      ]
     },
     {
@@ -13787,7 +13787,7 @@ export const CASOS_POOL = [
      "rotulo": "Quarto",
      "comodo": "quarto",
      "prosa": [
-      "Do mobiliário, bacia e jarro, baú de roupa. Há mobília por erguer do chão."
+      "Do mobiliário, cama de ferro, bacia e jarro. Há mobília por erguer do chão."
      ]
     }
    ],
@@ -15394,7 +15394,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, o relógio da família, fogão de ferro a carvão."
+      "Do mobiliário, atiçador de lareira, fogão de ferro a carvão."
      ]
     },
     {
@@ -17076,7 +17076,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, cômoda, cama de armação de madeira. De um canto a outro, nada guarda o seu lugar. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Um arranhão escapa de sob o pé de uma peça de mobília. Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+      "No chão deste cômodo, o morto. Do mobiliário, lavatório com bacia, cômoda. De um canto a outro, nada guarda o seu lugar. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Um arranhão escapa de sob o pé de uma peça de mobília. Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
      ]
     },
     {
@@ -17084,7 +17084,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, fogão de ferro a carvão, mesa de cozinha."
+      "Do mobiliário, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão."
      ]
     },
     {
@@ -17100,7 +17100,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "No cômodo, o relógio da família, piano (ou harmônio)."
+      "No cômodo, a louça boa no aparador, retratos emoldurados."
      ]
     }
    ],
@@ -20253,7 +20253,7 @@ export const CASOS_POOL = [
      "col": 2,
      "fila": 0
     },
-    "mobilia": "cozinha_tapete_de_retalhos"
+    "mobilia": "cozinha_cadeiras_windsor"
    }
   },
   {
@@ -20446,7 +20446,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, tapete de retalhos, o relógio da família, fogão de ferro a carvão. De um canto a outro, nada guarda o seu lugar. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Um arranhão escapa de sob o pé de uma peça de mobília. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_costureira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_3_criada]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+      "No chão deste cômodo, o morto. Do mobiliário, cadeiras Windsor, sofá velho, tapete de retalhos. De um canto a outro, nada guarda o seu lugar. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Um arranhão escapa de sob o pé de uma peça de mobília. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_costureira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_3_criada]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
      ]
     },
     {
@@ -20454,7 +20454,7 @@ export const CASOS_POOL = [
      "rotulo": "Copa",
      "comodo": "copa",
      "prosa": [
-      "No cômodo, copper de ferver roupa, tina e tábua de lavar."
+      "No cômodo, ferro de engomar, pia da copa (a única torneira)."
      ]
     },
     {
@@ -20462,7 +20462,7 @@ export const CASOS_POOL = [
      "rotulo": "Quarto",
      "comodo": "quarto",
      "prosa": [
-      "Do mobiliário, baú de roupa, cama de ferro. Um arranhão escapa de sob o pé de uma peça de mobília."
+      "Do mobiliário, cama de ferro, bacia e jarro. Um arranhão escapa de sob o pé de uma peça de mobília."
      ]
     }
    ],
@@ -23767,7 +23767,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "No chão deste cômodo, o morto. No cômodo, cama de armação de madeira, lavatório com bacia."
+      "No chão deste cômodo, o morto. No cômodo, castiçal de latão, cama de armação de madeira."
      ]
     },
     {
@@ -23775,7 +23775,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, fogão de ferro a carvão, mesa de cozinha."
+      "Do mobiliário, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão."
      ]
     },
     {
@@ -23791,7 +23791,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "No cômodo, o relógio da família, piano (ou harmônio)."
+      "No cômodo, lareira com guarda-fogo, atiçador de lareira."
      ]
     }
    ],
@@ -25380,7 +25380,7 @@ export const CASOS_POOL = [
      "rotulo": "Depósito",
      "comodo": "deposito",
      "prosa": [
-      "Do mobiliário, pia da copa, prateleiras frias da despensa."
+      "Do mobiliário, ferro de engomar, pia da copa, prateleiras frias da despensa."
      ]
     },
     {
@@ -25388,7 +25388,7 @@ export const CASOS_POOL = [
      "rotulo": "Quarto (sobrado)",
      "comodo": "quarto",
      "prosa": [
-      "No cômodo, lavatório com bacia, cômoda."
+      "No cômodo, castiçal de latão, cama de armação de madeira."
      ]
     },
     {
@@ -26979,7 +26979,7 @@ export const CASOS_POOL = [
      "rotulo": "Moradia",
      "comodo": "moradia",
      "prosa": [
-      "No cômodo, mesa de tampo raspado, cadeiras Windsor."
+      "No cômodo, o relógio da família, lareira com guarda-fogo."
      ]
     }
    ],
@@ -30336,7 +30336,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, fogão de ferro a carvão, mesa de tampo raspado, cadeiras Windsor."
+      "Do mobiliário, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão."
      ]
     },
     {
@@ -31926,7 +31926,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No cômodo, mesa da criadagem, régua de sinos etiquetados."
+      "No cômodo, régua de sinos etiquetados, lareira de mármore com guarda-fogo."
      ]
     },
     {
@@ -33523,7 +33523,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "Do mobiliário, cômoda, cama de armação de madeira, lavatório com bacia."
+      "Do mobiliário, cômoda, castiçal de latão, cama de armação de madeira."
      ]
     },
     {
@@ -33531,7 +33531,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No cômodo, mesa de cozinha, fogão de ferro a carvão."
+      "No cômodo, mesa de cozinha, lareira com guarda-fogo."
      ]
     },
     {
@@ -33547,7 +33547,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "Do mobiliário, flores de cera sob redoma, o relógio da família, piano (ou harmônio). Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_paroco]]."
+      "Do mobiliário, piano (ou harmônio), a louça boa no aparador, retratos emoldurados. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_paroco]]."
      ]
     }
    ],

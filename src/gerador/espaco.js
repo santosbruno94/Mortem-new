@@ -277,9 +277,13 @@ export const MOBILIA_POR_CLASSE = {
       { id: 'relogio_da_familia', rotulo: 'o relógio da família', comodos: ['parlour', 'cozinha'] },
       { id: 'flores_de_cera', rotulo: 'flores de cera sob redoma', comodos: ['parlour'] },
       { id: 'retratos', rotulo: 'retratos emoldurados', comodos: ['parlour'] },
+      { id: 'lareira_com_guarda_fogo', rotulo: 'lareira com guarda-fogo', comodos: ['cozinha', 'parlour'] },
+      { id: 'aticador', rotulo: 'atiçador de lareira', comodos: ['cozinha', 'parlour'] },
+      { id: 'castical_de_latao', rotulo: 'castiçal de latão', comodos: ['parlour', 'quarto'] },
+      { id: 'ferro_de_engomar', rotulo: 'ferro de engomar', comodos: ['copa'] },
     ],
     proveniencia:
-      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (cottage: a vida na cozinha; copa suja; quartos de cama de ferro; a parlour como capital simbólico)',
+      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (cottage: a vida na cozinha; copa suja; quartos de cama de ferro; a parlour como capital simbólico) e utensilios-e-objetos.md §3–§4 (ferros de passar; a lareira como arsenal; chamberstick — OS autobattler v2 B1/D6)',
   },
   media: {
     itens: [
@@ -299,9 +303,13 @@ export const MOBILIA_POR_CLASSE = {
       { id: 'comoda', rotulo: 'cômoda', comodos: ['quarto'] },
       { id: 'escrivaninha', rotulo: 'escrivaninha', comodos: ['estudo'] },
       { id: 'estante_de_livros', rotulo: 'estante de livros', comodos: ['estudo'] },
+      { id: 'lareira_com_guarda_fogo', rotulo: 'lareira com guarda-fogo', comodos: ['cozinha', 'parlour'] },
+      { id: 'aticador', rotulo: 'atiçador de lareira', comodos: ['cozinha', 'parlour'] },
+      { id: 'castical_de_latao', rotulo: 'castiçal de latão', comodos: ['parlour', 'quarto'] },
+      { id: 'ferro_de_engomar', rotulo: 'ferro de engomar', comodos: ['copa'] },
     ],
     proveniencia:
-      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (casa de comerciante/classe média: hall, parlour, jantar, cozinha e copa; §5, eixo social × serviço)',
+      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (casa de comerciante/classe média: hall, parlour, jantar, cozinha e copa; §5, eixo social × serviço) e utensilios-e-objetos.md §3–§4 (ferros de passar; a lareira como arsenal; chamberstick — OS autobattler v2 B1/D6)',
   },
   alta: {
     itens: [
@@ -321,9 +329,13 @@ export const MOBILIA_POR_CLASSE = {
       { id: 'lavatorio', rotulo: 'lavatório de mármore', comodos: ['quarto'] },
       { id: 'escrivaninha', rotulo: 'escrivaninha do estudo', comodos: ['estudo'] },
       { id: 'estante_de_livros', rotulo: 'estante envidraçada', comodos: ['estudo'] },
+      { id: 'lareira_com_guarda_fogo', rotulo: 'lareira de mármore com guarda-fogo', comodos: ['cozinha', 'parlour'] },
+      { id: 'aticador', rotulo: 'atiçador de lareira', comodos: ['cozinha', 'parlour'] },
+      { id: 'castical_de_latao', rotulo: 'castiçal de latão', comodos: ['parlour', 'quarto'] },
+      { id: 'ferro_de_engomar', rotulo: 'ferro de engomar', comodos: ['copa'] },
     ],
     proveniencia:
-      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (gradiente vertical, criadagem) e §6 (sinos de criados: puxador → arame → régua na cozinha)',
+      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (gradiente vertical, criadagem) e §6 (sinos de criados: puxador → arame → régua na cozinha); utensilios-e-objetos.md §3–§4 (ferros de passar; a lareira como arsenal; chamberstick — OS autobattler v2 B1/D6)',
   },
 };
 
