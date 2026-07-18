@@ -1847,7 +1847,9 @@ function problemasDaInterferencia(caso) {
 // (3) Cobertura: seeds fixas onde os 4 tipos materializam (e o cúmplice
 // ocorre) — varridas deterministicamente na Fase 4; mudar o gerador pode
 // exigir nova varredura (o objetivo é nunca deixar os lints vazios).
-const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_3', 'intf_qa_10', 'intf_qa_44'];
+// Varredura refeita na F2 da OS priors compostos (o prior composto +
+// hashDecisao mudaram a amostragem; regra desta guarda).
+const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_4', 'intf_qa_5', 'intf_qa_7', 'intf_qa_11'];
 const casosInterferencia = SEEDS_QA_INTERFERENCIA.map((sd) => gerarCasoBruto(sd));
 const problemasInterferencia = [...casosGeradosPrimeira, ...casosInterferencia].flatMap((caso) =>
   problemasDaInterferencia(caso).map((p) => `${caso.seed}: ${p}`)
@@ -2565,17 +2567,19 @@ if (!replayArvoreOk) console.log('\nÁRVORE DE DIÁLOGO — replay chamada a cha
 const {
   VETORES_PSIQUICOS,
   DEMOGRAFICOS,
-  PAPEIS_DRAMATICOS,
   MAGNITUDE_POR_DEGRAU,
   LIMIAR_DESENCAIXE,
   MATRIZ_ENCENACAO,
 } = await import('../src/gerador/vetores_psiquicos.js');
 
-// (1) Catálogo v1 íntegro.
+// (1) Catálogo íntegro — v2 desde a F4 da OS priors compostos: 13
+// vetores × 18 demográficos; afinidadePapeis REMOVIDA (decisão 12,
+// registro em historico-decisoes.md).
 const degrausValidos = new Set(Object.keys(MAGNITUDE_POR_DEGRAU));
 const vetoresLista = Object.values(VETORES_PSIQUICOS);
 const psiqueCatalogoIntegro =
-  vetoresLista.length === 11 &&
+  vetoresLista.length === 13 &&
+  DEMOGRAFICOS.length === 18 &&
   vetoresLista.every(
     (v) =>
       ['id', 'valor', 'medo', 'sombraAtiva', 'sombraPassiva', 'autoJustificacao', 'temaGatilho'].every(
@@ -2583,8 +2587,7 @@ const psiqueCatalogoIntegro =
       ) &&
       DEMOGRAFICOS.every((d) => degrausValidos.has(v.afinidadeDemografica[d])) &&
       Object.keys(v.afinidadeDemografica).length === DEMOGRAFICOS.length &&
-      PAPEIS_DRAMATICOS.every((p) => Number.isInteger(v.afinidadePapeis[p]) && v.afinidadePapeis[p] >= 0) &&
-      PAPEIS_DRAMATICOS.every((p) => PAPEIS[p] != null) &&
+      v.afinidadePapeis === undefined &&
       typeof v.proveniencia === 'string' &&
       v.proveniencia.includes('sistemas-arquetipicos-alem-dos-12')
   ) &&
@@ -2657,7 +2660,11 @@ const psiqueDeterminista = ['comarca_1', 'comarca_7'].every(
 );
 if (!psiqueDeterminista) console.log('\nPSIQUE — replay divergiu (mesma seed, psique diferente).');
 
-// (6) Anti-tell em 50 seeds: o desencaixe nunca é prova.
+// (6) Anti-tell em 50 seeds: o desencaixe nunca é prova. REGIME-CIENTE
+// desde a F3 da OS priors compostos (§4.6-G6): a exigência integral
+// (réu ≥ T + ≥1 inocente destoante registrado) vale SÓ no regime 2; no
+// regime 1 a exigência é a inversa — réu no degrau modal e NENHUMA isca
+// forçada.
 const SEEDS_ANTI_TELL = Array.from({ length: 50 }, (_, i) => `comarca_${i + 1}`);
 const antiTellFalhas = [];
 for (const seed of SEEDS_ANTI_TELL) {
@@ -2668,9 +2675,14 @@ for (const seed of SEEDS_ANTI_TELL) {
     ([id, p]) =>
       id !== bruto.escolha.assassinoId && id !== bruto.escolha.vitimaId && p.magnitude >= LIMIAR_DESENCAIXE
   );
-  const destoanteRegistrado = log.falsoDestoanteId && inocentesDestoantes.some(([id]) => id === log.falsoDestoanteId);
-  if (reu.magnitude < LIMIAR_DESENCAIXE || inocentesDestoantes.length < 1 || !destoanteRegistrado) {
-    antiTellFalhas.push(seed);
+  if (log.regime === 2) {
+    const destoanteRegistrado = log.falsoDestoanteId && inocentesDestoantes.some(([id]) => id === log.falsoDestoanteId);
+    if (reu.magnitude < LIMIAR_DESENCAIXE || inocentesDestoantes.length < 1 || !destoanteRegistrado) {
+      antiTellFalhas.push(seed);
+    }
+  } else {
+    const forcouIsca = log.reamostragens.some((r) => r.motivo === 'falso_destoante');
+    if (reu.magnitude !== 1 || log.falsoDestoanteId !== null || forcouIsca) antiTellFalhas.push(seed);
   }
 }
 const antiTellOk = antiTellFalhas.length === 0;
@@ -2791,6 +2803,279 @@ const lintProsa = spawnSync(process.execPath, [fileURLToPath(new URL('./lint-pro
 const prosaSemRegressao = lintProsa.status === 0;
 
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
+
+// ============================================================
+// OS PRIORS COMPOSTOS (F2) — guardas G1–G4 do prior composto
+// (docs/os-priors-compostos-e-variedade-do-elenco.md §3.4) + guarda de
+// decorrelação do hash do gerador (achado B✱ da triagem F0).
+// (G1) pré-tilt: para todo arquétipo, INT/WIS/CHA sem peso 0 nas bandas
+//      1–2 e 4–5 E com os extremos 1 e 5 alcançáveis (leitura estrita de
+//      N1 — o caso-teste: a lavadeira pode ser gênio). FOR isento.
+// (G2) pós-tilt: para todo par arquétipo × vetor, a distribuição
+//      composta respeita N1 (decorre de N3; verificado mesmo assim),
+//      N2 (tilt jamais declara FOR) e N3 (multiplicadores ≥ 1).
+// (G3) cascata: o forçamento de vetor re-deriva INT/WIS/CHA e a
+//      quantização pela função PURA derivarAtributosCompostos com o
+//      sufixo `|forcado|t<k>`; FOR permanece o do arquétipo (N2); o
+//      elenco do caso bruto carrega o resultado patchado (sem resíduo).
+// (G4) simetria réu × isca: em lote de 200 seeds, |P(INT≥4 | réu) −
+//      P(INT≥4 | destoante inocente)| ≤ 10 p.p. (banda aprovada em F1,
+//      DECISÃO 4) — atributo não vira tell fraco do réu.
+// (B✱) decorrelação: nos lavradores de 300 elencos, os pares (INT, WIS)
+//      cobrem ≥ 20 das 25 células e a correlação fica ≤ 0,15 em módulo
+//      (o acoplamento de chaves-irmãs do hashString linear não volta).
+// ============================================================
+const { CURVAS_DE_ACESSO } = await import('../src/gerador/arquetipos.js');
+const { derivarAtributosCompostos, gerarElenco: gerarElencoF2 } = await import('../src/gerador/amostragem.js');
+const { quantizarComportamentos: quantizarF2 } = await import('../src/gerador/quantizacao.js');
+
+// (G1) pré-tilt.
+const g1Falhas = [];
+for (const a of Object.values(ARQUETIPOS)) {
+  for (const attr of ['INT', 'WIS', 'CHA']) {
+    const p = a.priors[attr];
+    const ok =
+      Array.isArray(p) && p.length === 5 && p.every((x) => Number.isInteger(x) && x >= 0) &&
+      p[0] + p[1] > 0 && p[3] + p[4] > 0 && p[0] > 0 && p[4] > 0;
+    if (!ok) g1Falhas.push(`${a.id}.${attr}=[${p}]`);
+  }
+}
+const g1PreTiltOk =
+  g1Falhas.length === 0 &&
+  Object.values(CURVAS_DE_ACESSO).every((c) => c.length === 5 && c.every((x) => x >= 1));
+if (!g1PreTiltOk) console.log('\nPRIORS F2 — G1 (N1 pré-tilt) falhou:', g1Falhas.join('; '));
+
+// (G2) pós-tilt (+ N2/N3 sobre o próprio tilt).
+const g2Falhas = [];
+for (const v of Object.values(VETORES_PSIQUICOS)) {
+  const tilt = v.tiltAtributos || {};
+  if ('FOR' in tilt) g2Falhas.push(`${v.id}: tilt declara FOR (N2)`);
+  for (const attr of ['INT', 'WIS', 'CHA']) {
+    const m = tilt[attr];
+    if (!Array.isArray(m) || m.length !== 5 || !m.every((x) => Number.isInteger(x) && x >= 1)) {
+      g2Falhas.push(`${v.id}.${attr}: tilt inválido (N3)`);
+      continue;
+    }
+    for (const a of Object.values(ARQUETIPOS)) {
+      const composto = a.priors[attr].map((p, i) => p * m[i]);
+      if (!(composto[0] + composto[1] > 0 && composto[3] + composto[4] > 0 && composto[0] > 0 && composto[4] > 0)) {
+        g2Falhas.push(`${a.id}×${v.id}.${attr}`);
+      }
+    }
+  }
+}
+const g2PosTiltOk = g2Falhas.length === 0;
+if (!g2PosTiltOk) console.log('\nPRIORS F2 — G2 (N1 pós-tilt) falhou:', g2Falhas.slice(0, 8).join('; '));
+
+// (G3) cascata: nas seeds do lote psíquico com reamostragem, o elenco do
+// caso carrega EXATAMENTE a re-derivação pura (e FOR intacto do elenco base).
+let g3CascataOk = true;
+{
+  const seedsComForcamento = [];
+  for (const seed of SEEDS_ANTI_TELL.slice(0, 12)) {
+    const bruto = gerarCasoBruto(seed);
+    if (bruto.psique.log.reamostragens.length > 0) seedsComForcamento.push({ seed, bruto });
+  }
+  if (seedsComForcamento.length === 0) g3CascataOk = false; // o lote sempre força o réu em parte das seeds
+  for (const { seed, bruto } of seedsComForcamento) {
+    const base = gerarElencoF2(seed, bruto.mundo.elenco.length);
+    for (const r of bruto.psique.log.reamostragens) {
+      const pessoa = bruto.mundo.elenco.find((p) => p.id === r.pessoaId);
+      const dele = bruto.psique.log.porPessoa[r.pessoaId];
+      const esperado = derivarAtributosCompostos(
+        seed, dele.indice, pessoa.arquetipo, dele.vetorId, `|forcado|t${r.tentativas}`
+      );
+      const forBase = base[dele.indice].atributos.FOR;
+      if (
+        pessoa.atributos.INT !== esperado.INT ||
+        pessoa.atributos.WIS !== esperado.WIS ||
+        pessoa.atributos.CHA !== esperado.CHA ||
+        pessoa.atributos.FOR !== forBase ||
+        JSON.stringify(pessoa.comportamentos) !==
+          JSON.stringify(quantizarF2(pessoa.atributos, pessoa.traits))
+      ) {
+        g3CascataOk = false;
+      }
+    }
+  }
+}
+if (!g3CascataOk) console.log('\nPRIORS F2 — G3 (cascata de forçamento) falhou.');
+
+// Lote fixo compartilhado de F2/F3 (200 casos brutos, comarca_1..200).
+const loteF2 = [];
+for (let i = 1; i <= 200; i++) loteF2.push(gerarCasoBruto(`comarca_${i}`));
+
+// (G4) simetria réu × isca no lote. Desde a F3, réus de regime 1 vivem
+// no degrau modal por desenho — a comparação justa (forçado × forçado)
+// é réu de REGIME 2 × isca.
+let g4SimetriaOk = true;
+{
+  let reusIntAlto = 0, reusTotal = 0, iscasIntAlto = 0, iscasTotal = 0;
+  for (const bruto of loteF2) {
+    const reu = bruto.mundo.elenco.find((p) => p.id === bruto.escolha.assassinoId);
+    if (bruto.psique.log.regime === 2) {
+      reusTotal++;
+      if (reu.atributos.INT >= 4) reusIntAlto++;
+    }
+    const iscaId = bruto.psique.log.falsoDestoanteId;
+    const isca = iscaId && bruto.mundo.elenco.find((p) => p.id === iscaId);
+    if (isca) {
+      iscasTotal++;
+      if (isca.atributos.INT >= 4) iscasIntAlto++;
+    }
+  }
+  const delta = Math.abs(reusIntAlto / reusTotal - iscasIntAlto / iscasTotal);
+  g4SimetriaOk = iscasTotal > 0 && reusTotal > 0 && delta <= 0.10;
+  if (!g4SimetriaOk) {
+    console.log(
+      `\nPRIORS F2 — G4 (simetria réu × isca) falhou: réu ${(100 * reusIntAlto / Math.max(1, reusTotal)).toFixed(1)}% × isca ${(100 * iscasIntAlto / Math.max(1, iscasTotal)).toFixed(1)}% de INT≥4.`
+    );
+  }
+}
+
+// ============================================================
+// OS PRIORS COMPOSTOS (F3) — regimes e anti-tell estendido (§4.6).
+// (G5) precisão do tell calmo: entre TODOS os portadores de mentira
+//      calma do lote (mente_com_calma do réu + mente_com_calma_
+//      periferica:* de inocentes), a fração de inocentes ≥ 60%
+//      (decisão 11) — "mentira serena ⇒ réu" deixou de ser lei.
+// (G6) regimes: fração de regime 1 dentro da banda 30% ± 10 p.p. no
+//      lote de 200; em TODO caso regime 1: réu no degrau modal
+//      (magnitude 1), nenhuma isca forçada (falsoDestoanteId nulo, sem
+//      reamostragem falso_destoante) e móbil material promovido presente
+//      na fatia (gen_motivo do réu). A guarda anti-tell integral vale só
+//      no regime 2 (regra aplicada na guarda (6) da OS psíquica, acima).
+// ============================================================
+let g5TellCalmoOk = true;
+let g6RegimesOk = true;
+{
+  let calmosReus = 0, calmosInocentes = 0, casosRegime1 = 0;
+  const g6Falhas = [];
+  for (const bruto of loteF2) {
+    const { log: logPsi } = bruto.psique;
+    for (const [pid, c] of Object.entries(bruto.psique.consequencias.porPessoa)) {
+      if (pid === bruto.escolha.assassinoId) {
+        if (c.flags.includes('mente_com_calma')) calmosReus++;
+      } else if (c.flags.some((f) => f.startsWith('mente_com_calma_periferica:'))) {
+        calmosInocentes++;
+      }
+    }
+    if (logPsi.regime === 1) {
+      casosRegime1++;
+      const reu = logPsi.porPessoa[bruto.escolha.assassinoId];
+      const forcouIsca = logPsi.reamostragens.some((r) => r.motivo === 'falso_destoante');
+      const mobilMaterial = bruto.fatiaForense.cartas.some(
+        (c) => c.tagsOcultas?.motivo && c.tagsOcultas?.ligadoA === bruto.escolha.assassinoId
+      );
+      if (reu.magnitude !== 1 || logPsi.falsoDestoanteId !== null || forcouIsca || !mobilMaterial) {
+        g6Falhas.push(bruto.seed);
+      }
+    } else if (logPsi.regime !== 2) {
+      g6Falhas.push(`${bruto.seed} (regime inválido)`);
+    }
+  }
+  const fracaoInocente = calmosInocentes / Math.max(1, calmosInocentes + calmosReus);
+  g5TellCalmoOk = calmosInocentes + calmosReus > 0 && fracaoInocente >= 0.6;
+  if (!g5TellCalmoOk) {
+    console.log(
+      `\nPRIORS F3 — G5 (tell calmo) falhou: ${calmosInocentes} inocentes × ${calmosReus} réus calmos (${(100 * fracaoInocente).toFixed(1)}% inocentes).`
+    );
+  }
+  const fracaoRegime1 = casosRegime1 / loteF2.length;
+  g6RegimesOk = g6Falhas.length === 0 && fracaoRegime1 >= 0.2 && fracaoRegime1 <= 0.4;
+  if (!g6RegimesOk) {
+    console.log(
+      `\nPRIORS F3 — G6 (regimes) falhou: regime 1 em ${(100 * fracaoRegime1).toFixed(1)}% do lote; violações: ${g6Falhas.slice(0, 6).join(', ')}`
+    );
+  }
+}
+
+// (G7) integridade de pools (F4 §5.3): todo prior é array de 5 com soma
+// > 0; traits ≥ 3 e todos no catálogo (com comportamento mapeado);
+// motivos 4–6 e todos no catálogo; chanceSegundoTrait inteira 1–5;
+// nomes ponderados válidos (peso inteiro ≥ 1) e sobrenomes únicos;
+// motivo novo com proveniência (lint de fonte).
+let g7PoolsOk = true;
+{
+  const { MOTIVOS_POTENCIAIS, NOMES: NOMES_F4, SOBRENOMES: SOBRENOMES_F4 } = await import(
+    '../src/gerador/arquetipos.js'
+  );
+  const { TRAITS: TRAITS_F4, MAPA_TRAIT_COMPORTAMENTO: MAPA_F4, CATALOGO_COMPORTAMENTOS: CAT_F4 } =
+    await import('../src/gerador/comportamentos.js');
+  const g7Falhas = [];
+  for (const a of Object.values(ARQUETIPOS)) {
+    for (const attr of ['FOR', 'INT', 'WIS', 'CHA']) {
+      const p = a.priors[attr];
+      if (!Array.isArray(p) || p.length !== 5 || p.reduce((s, x) => s + x, 0) <= 0) {
+        g7Falhas.push(`${a.id}.${attr}: prior inválido`);
+      }
+    }
+    if (!Array.isArray(a.traits) || a.traits.length < 3) g7Falhas.push(`${a.id}: pool de traits < 3`);
+    for (const t of a.traits) {
+      if (!TRAITS_F4[t] || !MAPA_F4[t] || !CAT_F4[MAPA_F4[t]]) g7Falhas.push(`${a.id}: trait órfão (${t})`);
+    }
+    if (a.motivosPotenciais.length < 4 || a.motivosPotenciais.length > 6) {
+      g7Falhas.push(`${a.id}: motivos fora de 4–6 (${a.motivosPotenciais.length})`);
+    }
+    for (const m of a.motivosPotenciais) {
+      if (!MOTIVOS_POTENCIAIS[m]) g7Falhas.push(`${a.id}: motivo fora do catálogo (${m})`);
+    }
+    if (!Number.isInteger(a.chanceSegundoTrait) || a.chanceSegundoTrait < 1 || a.chanceSegundoTrait > 5) {
+      g7Falhas.push(`${a.id}: chanceSegundoTrait inválida`);
+    }
+  }
+  const motivosNovos = ['hipoteca_ou_arrendo', 'propriedade_da_esposa', 'divida_de_jogo', 'caridade_negada'];
+  for (const m of motivosNovos) {
+    if (!MOTIVOS_POTENCIAIS[m]?.proveniencia) g7Falhas.push(`motivo novo sem proveniência: ${m}`);
+  }
+  for (const genero of ['masculino', 'feminino']) {
+    for (const coorte of ['coorte_1820_50', 'coorte_1860_75']) {
+      const lista = NOMES_F4[genero][coorte];
+      if (lista.length < 40) g7Falhas.push(`nomes ${genero}/${coorte}: pool < 40`);
+      if (!lista.every((n) => typeof n.nome === 'string' && Number.isInteger(n.peso) && n.peso >= 1)) {
+        g7Falhas.push(`nomes ${genero}/${coorte}: entrada inválida`);
+      }
+      if (new Set(lista.map((n) => n.nome)).size !== lista.length) {
+        g7Falhas.push(`nomes ${genero}/${coorte}: nome duplicado`);
+      }
+    }
+  }
+  if (new Set(SOBRENOMES_F4).size !== SOBRENOMES_F4.length || SOBRENOMES_F4.length < 50) {
+    g7Falhas.push('sobrenomes: duplicata ou pool < 50');
+  }
+  g7PoolsOk = g7Falhas.length === 0;
+  if (!g7PoolsOk) console.log('\nPRIORS F4 — G7 (integridade de pools) falhou:', g7Falhas.slice(0, 10).join('; '));
+}
+
+// (B✱) decorrelação INT × WIS no arquétipo mais numeroso.
+let decorrelacaoOk = true;
+{
+  const pares = new Set();
+  const xs = [], ys = [];
+  for (let i = 1; i <= 300; i++) {
+    for (const p of gerarElencoF2(`decorrelacao_${i}`, 8)) {
+      if (p.arquetipo !== 'lavrador') continue;
+      pares.add(`${p.atributos.INT}-${p.atributos.WIS}`);
+      xs.push(p.atributos.INT);
+      ys.push(p.atributos.WIS);
+    }
+  }
+  const n = xs.length;
+  const mx = xs.reduce((a, b) => a + b, 0) / n;
+  const my = ys.reduce((a, b) => a + b, 0) / n;
+  let cov = 0, vx = 0, vy = 0;
+  for (let i = 0; i < n; i++) {
+    cov += (xs[i] - mx) * (ys[i] - my);
+    vx += (xs[i] - mx) ** 2;
+    vy += (ys[i] - my) ** 2;
+  }
+  const corr = cov / Math.sqrt(vx * vy);
+  decorrelacaoOk = pares.size >= 20 && Math.abs(corr) <= 0.15;
+  if (!decorrelacaoOk) {
+    console.log(`\nPRIORS F2 — decorrelação falhou: ${pares.size}/25 pares, corr=${corr.toFixed(3)} (n=${n}).`);
+  }
+}
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -2863,7 +3148,7 @@ const checagens = [
   ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],
   ['Armadilhas da árvore detectadas: beat de 3 tons, confronto sem reação, nó órfão, requerCarta fantasma (OS diálogo)', armadilhasDialogoDetectadas],
   ['Replay da árvore: mesma seed → mesma árvore, chamada a chamada (OS diálogo)', replayArvoreOk],
-  ['Psique: catálogo v1 íntegro — 11 vetores completos, afinidades totais, degrau raro alcançável, matriz de encenação com proveniência (OS psíquica)', psiqueCatalogoIntegro],
+  ['Psique: catálogo v2 íntegro — 13 vetores completos × 18 demográficos, degrau raro alcançável, sem afinidadePapeis (decisão 12), matriz de encenação com proveniência (OS psíquica + priors F4)', psiqueCatalogoIntegro],
   ['Lint léxico L1: nosologia/jargão pós-1893 fora de toda superfície do jogo (OS psíquica §5)', lintL1Ok],
   ['Lint léxico L2: sombra/persona/vetor/desencaixe/complexo fora de identificadores e chaves do runtime (OS psíquica §5)', lintL2Ok],
   ['Psique não vaza: pacotes embarcados sem L1 em campo algum, sem L2/psique em chave ou id (OS psíquica §5)', psiqueNaoVaza],
@@ -2874,6 +3159,14 @@ const checagens = [
   ['Confronto: trilha contígua; ação/rota/grito só existem com vestígio sobrevivente; grito com hora e ouvinte (OS confronto §5)', fugaCoerenteEExistente],
   ['Confronto: "overdose" fora das superfícies do jogo — a língua diz "dose excessiva" (OS confronto §5)', lexicoConfronto],
   ['Confronto: réplica com fuga suprimida — registro sem fuga/grito (identidade de fatos §4.8)', replicaFugaSuprimida],
+  ['Priors F2 — G1 pré-tilt: N1 em todo arquétipo (INT/WIS/CHA com extremos alcançáveis; a lavadeira pode ser gênio) (OS priors compostos §3.4)', g1PreTiltOk],
+  ['Priors F2 — G2 pós-tilt: N1 em todo par arquétipo × vetor; tilt sem FOR (N2) e ≥ 1 (N3) (OS priors compostos §3.4)', g2PosTiltOk],
+  ['Priors F2 — G3 cascata: forçamento de vetor re-deriva INT/WIS/CHA + quantização pela via pura; FOR intacto (OS priors compostos §3.3)', g3CascataOk],
+  ['Priors F2 — G4 simetria: INT alto não é tell fraco do réu (Δ ≤ 10 p.p. vs destoante inocente, 200 seeds) (OS priors compostos §3.4)', g4SimetriaOk],
+  ['Priors F2 — decorrelação: hashDecisao quebra o acoplamento de chaves-irmãs (≥20/25 pares INT×WIS, |corr| ≤ 0,15) (achado B✱)', decorrelacaoOk],
+  ['Priors F3 — G5 tell calmo: ≥ 60% dos mentirosos-calmos do lote são inocentes ("serena ⇒ réu" morreu) (OS priors compostos §4.6)', g5TellCalmoOk],
+  ['Priors F3 — G6 regimes: regime 1 em 30% ± 10 p.p.; nele o réu é modal, sem isca forçada, com móbil material na fatia (OS priors compostos §4.6)', g6RegimesOk],
+  ['Priors F4 — G7 integridade de pools: priors válidos, traits ≥ 3 mapeados, motivos 4–6 no catálogo, nomes ponderados, sobrenomes 50 únicos, fonte nos itens novos (OS priors compostos §5.3)', g7PoolsOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

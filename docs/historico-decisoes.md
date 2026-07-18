@@ -833,6 +833,33 @@ a mais fiel à KB. **Custo conhecido** (razão do adiamento): mexe na semântica
 20 cartas já usam, então os 21 casos regeneram e o `qa.mjs` (réplica byte a byte) acompanha
 no mesmo commit — é o Lote 2, a ser executado sob ordem expressa.
 
+## OS priors compostos e variedade do elenco (18/07/2026) — F0–F4
+
+Execução da OS `docs/os-priors-compostos-e-variedade-do-elenco.md`, com os 12
+pontos [DECISÃO] respondidos pelo autor (registro no dossiê F1 §D e nas capturas
+da conversa). Decisões de arquivo permanente:
+
+- **Remoção de `afinidadePapeis` (decisão 12).** O campo era reserva documentada
+  desde a OS da camada psíquica e nunca foi consumido: o caso GERADO não escala
+  papéis nomeados (a taxonomia de `src/data/papeis.js` rege o caso-escola). Dado
+  que envelhece sem uso é passivo de manutenção — removido do catálogo
+  implementado; a leitura vetor → papel permanece como andaime de design na KB
+  (`sistemas-arquetipicos-alem-dos-12.md`).
+- **Achado B✱ (triagem F0):** `hashString` linear acoplava sorteios-irmãos de
+  sufixo isométrico (INT × WIS travados quando os totais de peso coincidiam —
+  quadrantes permitidos pelos priors, porém mortos). Remédio: `hashDecisao`
+  (re-hash decorrelacionante) LOCAL do gerador; `src/logic/hash.js` e o runtime
+  intactos. Guarda de decorrelação no `qa.mjs`.
+- **Escala de atributos permanece 1–5** (§6.1 da OS, contra 0–10) — condição de
+  revisita registrada na própria OS.
+- **Penitente reprovado** como 14º vetor (colide com o `pecado_exposto` do
+  Devoto); sacristão-coveiro, estalajadeiro, jornaleiro itinerante e coadjutor
+  reprovados como arquétipos (função-não-sustento; duplicata do taverneiro;
+  quebra do círculo social; condicionado ao pároco) — fontes no dossiê F1 §2.1.
+- **Sorteio de sobrenome segue uniforme** (ponderar pelo censo nacional só
+  engordaria Smith/Jones; a concentração de vila é familiar e local — a política
+  de repetição 2–3 já a produz).
+
 ## Correções do playtest independente (18/07/2026) — os dois contratos P1
 
 **Origem.** Relatório `playtest-independente-2026-07-17.md` e a OS derivada dele. Os

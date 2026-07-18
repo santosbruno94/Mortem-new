@@ -24,7 +24,29 @@
 // NOTA DE DESIGN (§3.2): INT e WIS nunca são rigidamente acoplados em
 // nenhum prior — os quatro quadrantes INT × WIS (fenótipos de assassino)
 // precisam ser alcançáveis em qualquer arquétipo.
+//
+// NORMA N1 (OS priors compostos, §3.2): nenhum arquétipo tem peso 0 nos
+// extremos de INT, WIS ou CHA — o prior codifica ACESSO (modo deslocado
+// pela instrução/vida do ofício, cauda jamais zerada). FOR fica FORA da
+// norma: os pisos duros por peso 0 permanecem onde o ofício forja o
+// corpo. INT/WIS/CHA usam as CURVAS_DE_ACESSO canônicas abaixo (dossiê
+// F1 §2.3 da OS; guarda G1 no qa.mjs).
 // =====================================================================
+
+// ---------------------------------------------------------------------
+// CURVAS DE ACESSO (OS priors compostos, F2): 4 formas canônicas para
+// INT/WIS/CHA, soma 12, cauda nunca zerada — a lavadeira PODE ser gênio
+// (raro por peso, jamais impossível por zero). A atribuição por
+// arquétipo é estimativa de design com direção documentada na KB
+// (instrução formal, aritmética de balcão, ofício de corpo); refinável
+// sem tocar sistema.
+// ---------------------------------------------------------------------
+export const CURVAS_DE_ACESSO = {
+  baixo: [2, 4, 3, 2, 1], // modo 2 — a vida não deu porta
+  medio: [1, 3, 4, 3, 1], // modo 3 — o comum
+  alto: [1, 2, 3, 4, 2], // modo 4 — instrução/vida puxa para cima
+  muito_alto: [1, 1, 3, 4, 3], // modo 4–5 — instrução formal plena
+};
 
 // Degraus da pirâmide social (KB demografia-e-sociedade.md §1).
 export const CLASSES_SOCIAIS = [
@@ -51,27 +73,66 @@ export const FAIXAS_IDADE = {
 // NOMES por gênero × coorte de nascimento e SOBRENOMES do censo de 1881.
 // Regra de coorte (amostragem.js): nascido até 1850 (idade ≥ 43 em 1893)
 // usa a coorte velha; senão, a coorte jovem.
+//
+// v3 (F4 da OS priors compostos, dossiê §2.6): listas PONDERADAS — o
+// sorteio uniforme era o anacronismo (Galbi 2002: em 1840, Mary = 18,7%
+// de todas as meninas; top-3 ≈ 40%; top-10 = 75%). Pesos em 4 faixas:
+// A (top-3) = 8; B (4º–10º) = 4; C (11º–30º) = 2; D (cauda) = 1 —
+// top-3 ≈ 30% e top-10 ≈ 60%, entre a coorte 1840 e a 1880 (calibragem
+// exata das faixas: chute calibrável registrado). Coorte jovem expandida
+// pelo top-60 do ONS 1904 PODADO dos modismos pós-1885 (Doris, Gladys,
+// Reginald, Stanley…, que nomeiam crianças, não adultos de 1893); coorte
+// velha por Galbi c.1825 + clássicos bíblicos rurais. Diminutivos (Bess,
+// Polly, Nell) são variação de PROSA, não batismo sorteável.
 // ---------------------------------------------------------------------
+const N = (nome, peso) => ({ nome, peso });
 export const NOMES = {
   masculino: {
     coorte_1820_50: [
-      'John', 'William', 'Thomas', 'George', 'Henry', 'Joseph', 'James', 'Charles',
-      'Edward', 'Samuel', 'Richard', 'Robert', 'David', 'Daniel',
+      N('William', 8), N('John', 8), N('Thomas', 8),
+      N('George', 4), N('James', 4), N('Henry', 4), N('Charles', 4), N('Joseph', 4), N('Edward', 4), N('Samuel', 4),
+      N('Richard', 2), N('Robert', 2), N('David', 2), N('Daniel', 2), N('Benjamin', 2), N('Isaac', 2),
+      N('Francis', 2), N('Stephen', 2), N('Peter', 2), N('Matthew', 2), N('Andrew', 2), N('Philip', 2),
+      N('Alfred', 2), N('Walter', 2), N('Edwin', 2), N('Josiah', 1), N('Jesse', 1), N('Levi', 1),
+      N('Reuben', 1), N('Amos', 1), N('Caleb', 1), N('Eli', 1), N('Enoch', 1), N('Noah', 1),
+      N('Seth', 1), N('Solomon', 1), N('Abraham', 1), N('Jacob', 1), N('Aaron', 1), N('Moses', 1),
+      N('Luke', 1), N('Mark', 1), N('Simon', 1), N('Nathaniel', 1), N('Jonas', 1), N('Ezra', 1),
+      N('Gideon', 1), N('Tobias', 1), N('Barnaby', 1), N('Giles', 1),
     ],
     coorte_1860_75: [
-      'John', 'William', 'Thomas', 'George', 'Henry', 'Joseph', 'James', 'Charles',
-      'Arthur', 'Frederick', 'Albert', 'Ernest', 'Walter', 'Harry', 'Frank',
-      'Herbert', 'Alfred', 'Sidney', 'Percy', 'Edwin',
+      N('William', 8), N('John', 8), N('Thomas', 8),
+      N('George', 4), N('James', 4), N('Charles', 4), N('Henry', 4), N('Arthur', 4), N('Frederick', 4), N('Albert', 4),
+      N('Ernest', 2), N('Walter', 2), N('Harry', 2), N('Frank', 2), N('Herbert', 2), N('Alfred', 2),
+      N('Sidney', 2), N('Percy', 2), N('Edwin', 2), N('Joseph', 2), N('Edward', 2), N('Robert', 2),
+      N('Samuel', 2), N('Richard', 2), N('Fred', 2), N('Jack', 2), N('Harold', 2), N('Leonard', 2),
+      N('Horace', 1), N('Victor', 1), N('Bernard', 1), N('Francis', 1), N('Hugh', 1), N('Lawrence', 1),
+      N('David', 1), N('Daniel', 1), N('Alexander', 1), N('Edgar', 1), N('Oliver', 1), N('Ralph', 1),
+      N('Stephen', 1), N('Benjamin', 1), N('Philip', 1), N('Peter', 1), N('Wilfred', 1), N('Cecil', 1),
+      N('Sydney', 1), N('Michael', 1), N('Patrick', 1), N('Maurice', 1),
     ],
   },
   feminino: {
     coorte_1820_50: [
-      'Mary', 'Elizabeth', 'Sarah', 'Hannah', 'Jane', 'Emma', 'Eliza', 'Martha',
-      'Ann', 'Margaret', 'Harriet', 'Charlotte', 'Susan', 'Caroline',
+      N('Mary', 8), N('Elizabeth', 8), N('Sarah', 8),
+      N('Ann', 4), N('Jane', 4), N('Hannah', 4), N('Margaret', 4), N('Emma', 4), N('Eliza', 4), N('Martha', 4),
+      N('Harriet', 2), N('Charlotte', 2), N('Susan', 2), N('Caroline', 2), N('Ellen', 2), N('Frances', 2),
+      N('Maria', 2), N('Louisa', 2), N('Lucy', 2), N('Esther', 2), N('Rebecca', 2), N('Rachel', 2),
+      N('Fanny', 2), N('Sophia', 2), N('Amelia', 2), N('Ruth', 1), N('Naomi', 1), N('Phoebe', 1),
+      N('Deborah', 1), N('Jemima', 1), N('Selina', 1), N('Betsy', 1), N('Priscilla', 1), N('Dinah', 1),
+      N('Keziah', 1), N('Tabitha', 1), N('Rhoda', 1), N('Miriam', 1), N('Leah', 1), N('Abigail', 1),
+      N('Dorcas', 1), N('Honor', 1), N('Patience', 1), N('Prudence', 1), N('Constance', 1),
+      N('Matilda', 1), N('Henrietta', 1), N('Georgiana', 1), N('Rosanna', 1), N('Lydia', 1),
     ],
     coorte_1860_75: [
-      'Mary', 'Florence', 'Annie', 'Edith', 'Alice', 'Ethel', 'Ada', 'Emily', 'Rose',
-      'Beatrice', 'Clara', 'Lily', 'Gertrude', 'Agnes', 'Nellie', 'Louisa',
+      N('Mary', 8), N('Florence', 8), N('Annie', 8),
+      N('Edith', 4), N('Alice', 4), N('Ethel', 4), N('Emily', 4), N('Elizabeth', 4), N('Sarah', 4), N('Ada', 4),
+      N('Rose', 2), N('Beatrice', 2), N('Clara', 2), N('Lily', 2), N('Gertrude', 2), N('Agnes', 2),
+      N('Nellie', 2), N('Louisa', 2), N('Emma', 2), N('Jane', 2), N('Ellen', 2), N('Kate', 2),
+      N('Minnie', 2), N('Maud', 2), N('Amy', 2), N('Eva', 2), N('Bertha', 2), N('Laura', 2),
+      N('Lucy', 2), N('Grace', 2), N('Jessie', 1), N('Hannah', 1), N('Fanny', 1), N('Harriet', 1),
+      N('Martha', 1), N('Margaret', 1), N('Catherine', 1), N('Frances', 1), N('Eleanor', 1), N('Mabel', 1),
+      N('May', 1), N('Daisy', 1), N('Lilian', 1), N('Winifred', 1), N('Nora', 1), N('Violet', 1),
+      N('Olive', 1), N('Evelyn', 1), N('Helen', 1), N('Dora', 1),
     ],
   },
 };
@@ -81,10 +142,22 @@ export const NOMES = {
 // homônimos entre casos vizinhos (dois "Wilson" em comarcas seguidas).
 // Fonte inalterada: sobrenomes mais frequentes do censo de 1881
 // (Inglaterra e País de Gales), grafias de época.
+// v3 (F4 da OS priors compostos, dossiê §2.6, decisão 6): 30 → 50. Os 30
+// originais ficam (contrato mínimo); os 20 novos vêm do topo nacional na
+// ordem-proxy ONS 2002 com VIÉS SUL RURAL por Schürer 2004 (*Local
+// Population Studies* 72): sem patronímicos em -son além dos já
+// presentes (marcador do norte — "raros ao sul da linha Mersey–Tâmisa"),
+// sem o bloco galês; topográficos/ocupacionais do sul, incluído Fuller
+// (o dialetal do sudeste). Sorteio segue UNIFORME por decisão registrada
+// (a concentração de sobrenome numa vila é familiar e local — a política
+// de repetição 2–3 por vila já a produz; ponderar pelo censo nacional só
+// engordaria Smith/Jones).
 export const SOBRENOMES = [
   'Smith', 'Jones', 'Williams', 'Brown', 'Taylor', 'Wilson', 'Evans', 'Thomas', 'Roberts', 'Walker',
   'Davies', 'Robinson', 'Wood', 'Thompson', 'White', 'Watson', 'Jackson', 'Wright', 'Green', 'Harris',
   'Cooper', 'Turner', 'Hill', 'Ward', 'Clarke', 'Hall', 'Morris', 'Moore', 'Baker', 'King',
+  'Martin', 'Lee', 'Bennett', 'Webb', 'Chapman', 'Carter', 'Palmer', 'Mills', 'Barnes', 'Fuller',
+  'Read', 'Andrews', 'Gray', 'Marsh', 'Page', 'Parsons', 'Ellis', 'Knight', 'Saunders', 'Field',
 ];
 
 // ---------------------------------------------------------------------
@@ -104,14 +177,34 @@ export const MOTIVOS_POTENCIAIS = {
   despejo: { descricao: 'Despejo do cottage atado ao patrão — o squire dita quem tem casa.' },
   rivalidade_capela_taverna: { descricao: 'Church × Chapel: temperança contra o pub, ódio devoto.' },
   recasamento_vigiado: { descricao: 'Viúva(o) que recasa rápido, sob suspeita da vila inteira.' },
+  // F4 da OS priors compostos (dossiê §2.5): quatro motivos novos, cada
+  // um com a aritmética de época e a fonte na KB (regra de proveniência).
+  hipoteca_ou_arrendo: {
+    descricao: 'A fazenda ou oficina que não paga mais a hipoteca; a renda que o senhorio não baixa com o trigo a 22s o quarter — ruína lenta e documentada.',
+    proveniencia: 'docs/kb-mundo-vitoriano/economia-e-estrutura-social.md §1 (depressão agrícola; trigo 46s→22s)',
+  },
+  propriedade_da_esposa: {
+    descricao: 'Desde 1882 a mulher casada possui e dispõe; o marido que perdeu o domínio legal sobre £100–500 da esposa — dinheiro que mudou de mãos por lei há onze anos.',
+    proveniencia: 'docs/kb-mundo-vitoriano/economia-e-estrutura-social.md §5 (Married Women’s Property Act 1882)',
+  },
+  divida_de_jogo: {
+    descricao: 'Apostas do pub: 10–20s perdidos são semanas de salário; a dívida de jogo não tem instância — cobra-se ou apaga-se.',
+    proveniencia: 'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §5 (o pub: fofoca, crédito, apostas, brigas; somas: chute calibrável)',
+  },
+  caridade_negada: {
+    descricao: 'A esmola, o socorro da paróquia ou o character dependem de quem dá; negado o socorro, a workhouse é o degrau seguinte.',
+    proveniencia: 'docs/kb-mundo-vitoriano/economia-e-estrutura-social.md §6 (a caridade como coleira) e demografia-e-sociedade.md §1 (Poor Law/workhouse)',
+  },
 };
 
 // Proveniência das tabelas auxiliares (uma linha por tabela).
 export const PROVENIENCIA_TABELAS = {
   faixasIdade:
     'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §2 (casamento ~25–27; criada de 14 banal; patriarca de 70 verossímil)',
-  nomes: 'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §6 (nomes de batismo por coorte, E&W 1890)',
-  sobrenomes: 'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §6 (faixa alta do censo de 1881, topo ~40; 2–3 sobrenomes repetem na vila)',
+  nomes:
+    'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §6 + dossiê F1 §2.6 da OS priors compostos (pesos: Galbi 2002, arXiv physics/0511021 — Mary 18,7% em 1840, top-10 = 75%; coorte jovem: ONS 1904 podado dos modismos pós-1885; faixas A8/B4/C2/D1: chute calibrável)',
+  sobrenomes:
+    'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §6 (topo do censo de 1881) + dossiê F1 §2.6 (acréscimo v3: ordem-proxy ONS 2002, viés sul rural por Schürer 2004 — sem -son nortista, sem bloco galês; 2–3 repetem na vila)',
   motivos:
     'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §4 (renda e preços), §5 (reputação, Church × Chapel) e "Implicações para o jogo" (motivações economicamente calibradas)',
 };
@@ -150,12 +243,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 2, 3, 2, 1],
-      INT: [0, 2, 3, 3, 1],
-      WIS: [1, 3, 3, 2, 1],
-      CHA: [0, 1, 3, 4, 2],
+      INT: CURVAS_DE_ACESSO.alto, // educado por tutor
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.alto, // comando social
     },
-    traits: ['preciso', 'tagarela'],
-    motivosPotenciais: ['heranca', 'dote', 'recasamento_vigiado'],
+    traits: ['preciso', 'tagarela', 'rancoroso'],
+    chanceSegundoTrait: 2, // em sextos (F4 §2.4)
+    motivosPotenciais: ['heranca', 'dote', 'recasamento_vigiado', 'propriedade_da_esposa', 'hipoteca_ou_arrendo'],
     pacoteEspacial: {
       acomodacao: 'solar',
       trabalho: 'solar',
@@ -181,12 +275,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 2, 0],
-      INT: [0, 1, 3, 4, 1],
-      WIS: [1, 2, 4, 2, 1],
-      CHA: [0, 1, 3, 4, 2],
+      INT: CURVAS_DE_ACESSO.muito_alto, // Oxford/Cambridge
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.alto, // púlpito
     },
-    traits: ['preciso', 'tagarela'],
-    motivosPotenciais: ['rivalidade_capela_taverna', 'heranca', 'escandalo_gravidez'],
+    traits: ['preciso', 'tagarela', 'medroso'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['rivalidade_capela_taverna', 'heranca', 'escandalo_gravidez', 'caridade_negada'],
     pacoteEspacial: {
       acomodacao: 'vicarage',
       trabalho: 'igreja',
@@ -212,12 +307,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 2, 0],
-      INT: [0, 0, 2, 4, 3],
-      WIS: [1, 2, 3, 3, 1],
-      CHA: [0, 2, 4, 2, 1],
+      INT: CURVAS_DE_ACESSO.muito_alto, // formação médica
+      WIS: CURVAS_DE_ACESSO.alto, // olho clínico
+      CHA: CURVAS_DE_ACESSO.medio,
     },
-    traits: ['preciso'],
-    motivosPotenciais: ['divida_caderneta', 'heranca'],
+    traits: ['preciso', 'tagarela', 'linha_tempo_nao_confiavel'], // o médico rural que bebe é figura de época
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['divida_caderneta', 'heranca', 'propriedade_da_esposa', 'divida_de_jogo'],
     pacoteEspacial: {
       acomodacao: 'casa_do_medico',
       trabalho: 'casa_do_medico',
@@ -243,12 +339,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 1, 0],
-      INT: [0, 1, 3, 4, 1],
-      WIS: [0, 2, 4, 3, 0],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.alto, // farmacopeia
+      WIS: CURVAS_DE_ACESSO.alto, // balcão metódico
+      CHA: CURVAS_DE_ACESSO.medio,
     },
-    traits: ['preciso', 'medroso'],
-    motivosPotenciais: ['divida_caderneta', 'heranca'],
+    traits: ['preciso', 'medroso', 'servil'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['divida_caderneta', 'heranca', 'hipoteca_ou_arrendo', 'divida_de_jogo'],
     pacoteEspacial: {
       acomodacao: 'sobre_a_loja',
       trabalho: 'botica',
@@ -274,12 +371,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 2, 4, 3, 1],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [0, 2, 3, 4, 1],
-      CHA: [0, 1, 3, 4, 2],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.alto, // o balcão lê gente
+      CHA: CURVAS_DE_ACESSO.alto,
     },
-    traits: ['tagarela', 'preciso'],
-    motivosPotenciais: ['heranca', 'divida_caderneta', 'rivalidade_capela_taverna'],
+    traits: ['tagarela', 'preciso', 'supersticioso'],
+    chanceSegundoTrait: 3, // o balcão fala — segundo traço mais provável
+    motivosPotenciais: ['heranca', 'divida_caderneta', 'rivalidade_capela_taverna', 'divida_de_jogo', 'propriedade_da_esposa'],
     pacoteEspacial: {
       acomodacao: 'sobre_a_loja',
       trabalho: 'pub',
@@ -304,13 +402,14 @@ export const ARQUETIPOS = {
       { faixa: '45_59', peso: 3 },
     ],
     priors: {
-      FOR: [0, 0, 2, 4, 3],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [1, 2, 4, 2, 1],
-      CHA: [2, 3, 3, 1, 0],
+      FOR: [0, 0, 2, 4, 3], // o ofício forja o corpo — piso duro intacto
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.baixo, // pouco verbo
     },
-    traits: ['preciso', 'linha_tempo_nao_confiavel'],
-    motivosPotenciais: ['divida_caderneta', 'salario_atrasado', 'despejo'],
+    traits: ['preciso', 'linha_tempo_nao_confiavel', 'rancoroso'],
+    chanceSegundoTrait: 1, // taciturno de ofício — uma nota, não duas
+    motivosPotenciais: ['divida_caderneta', 'salario_atrasado', 'despejo', 'hipoteca_ou_arrendo'],
     pacoteEspacial: {
       acomodacao: 'cottage',
       trabalho: 'forja',
@@ -336,12 +435,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 1, 3, 4, 1],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [1, 3, 3, 2, 0],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.medio,
     },
-    traits: ['preciso', 'tagarela'],
-    motivosPotenciais: ['heranca', 'divida_caderneta'],
+    traits: ['preciso', 'tagarela', 'rancoroso'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['heranca', 'divida_caderneta', 'hipoteca_ou_arrendo', 'propriedade_da_esposa'],
     pacoteEspacial: {
       acomodacao: 'moinho',
       trabalho: 'moinho',
@@ -367,12 +467,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 1, 0],
-      INT: [0, 2, 4, 2, 1],
-      WIS: [0, 2, 4, 3, 0],
-      CHA: [1, 3, 4, 1, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.alto, // a caderneta: miudeza atenta
+      CHA: CURVAS_DE_ACESSO.medio,
     },
-    traits: ['preciso', 'tagarela'],
-    motivosPotenciais: ['divida_caderneta', 'heranca'],
+    traits: ['preciso', 'tagarela', 'servil'],
+    chanceSegundoTrait: 3, // a caderneta ouve a vila inteira
+    motivosPotenciais: ['divida_caderneta', 'heranca', 'caridade_negada', 'divida_de_jogo'],
     pacoteEspacial: {
       acomodacao: 'sobre_a_loja',
       trabalho: 'mercearia',
@@ -398,12 +499,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [2, 3, 3, 1, 0],
-      INT: [0, 1, 3, 4, 1],
-      WIS: [1, 3, 3, 2, 0],
-      CHA: [1, 2, 4, 2, 1],
+      INT: CURVAS_DE_ACESSO.alto, // instrução como ofício
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.medio,
     },
-    traits: ['preciso', 'medroso'],
-    motivosPotenciais: ['salario_atrasado', 'escandalo_gravidez', 'dote'],
+    traits: ['preciso', 'medroso', 'tagarela'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['salario_atrasado', 'escandalo_gravidez', 'dote', 'caridade_negada'],
     pacoteEspacial: {
       acomodacao: 'escola',
       trabalho: 'escola',
@@ -429,12 +531,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [2, 4, 2, 1, 0],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [1, 2, 4, 2, 1],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.medio,
     },
-    traits: ['tagarela', 'preciso', 'medroso'],
-    motivosPotenciais: ['dote', 'salario_atrasado', 'escandalo_gravidez'],
+    traits: ['tagarela', 'preciso', 'medroso', 'servil'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['dote', 'salario_atrasado', 'escandalo_gravidez', 'propriedade_da_esposa'],
     pacoteEspacial: {
       acomodacao: 'cottage',
       trabalho: 'em_casa',
@@ -460,12 +563,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 2, 4, 3, 1],
-      INT: [2, 4, 2, 1, 0],
-      WIS: [1, 3, 4, 2, 0],
-      CHA: [2, 3, 3, 1, 0],
+      INT: CURVAS_DE_ACESSO.baixo, // instrução negada — mas o gênio é POSSÍVEL (o caso-teste da OS)
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.baixo,
     },
-    traits: ['tagarela', 'linha_tempo_nao_confiavel'],
-    motivosPotenciais: ['seguro_de_enterro', 'divida_caderneta', 'despejo'],
+    traits: ['tagarela', 'linha_tempo_nao_confiavel', 'rancoroso', 'supersticioso'],
+    chanceSegundoTrait: 3, // a roupa das casas conta segredos — e ela conta adiante
+    motivosPotenciais: ['seguro_de_enterro', 'divida_caderneta', 'despejo', 'caridade_negada'],
     pacoteEspacial: {
       acomodacao: 'cottage',
       trabalho: 'em_casa',
@@ -481,7 +585,7 @@ export const ARQUETIPOS = {
     id: 'lavrador',
     profissoes: { masculino: 'lavrador', feminino: null },
     classeSocial: 'lavrador',
-    frequencia: 12,
+    frequencia: 10, // F4 §2.1: 12 → 10 (o elenco é círculo social, não amostra do censo)
     unicoNaVila: false,
     generos: { masculino: 1, feminino: 0 },
     faixasIdade: [
@@ -493,12 +597,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 1, 3, 4, 2],
-      INT: [2, 4, 2, 1, 0],
-      WIS: [1, 3, 3, 2, 1],
-      CHA: [2, 3, 3, 1, 0],
+      INT: CURVAS_DE_ACESSO.baixo, // escola até os 10
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.baixo,
     },
-    traits: ['medroso', 'tagarela', 'linha_tempo_nao_confiavel'],
-    motivosPotenciais: ['divida_caderneta', 'despejo', 'salario_atrasado', 'seguro_de_enterro'],
+    traits: ['medroso', 'tagarela', 'linha_tempo_nao_confiavel', 'rancoroso', 'supersticioso'],
+    chanceSegundoTrait: 1, // o lavrador de poucas palavras
+    motivosPotenciais: ['divida_caderneta', 'despejo', 'salario_atrasado', 'seguro_de_enterro', 'divida_de_jogo'],
     pacoteEspacial: {
       acomodacao: 'cottage',
       trabalho: 'granja',
@@ -514,7 +619,7 @@ export const ARQUETIPOS = {
     id: 'criada',
     profissoes: { masculino: 'moço de lavoura', feminino: 'criada' },
     classeSocial: 'criadagem',
-    frequencia: 8,
+    frequencia: 7, // F4 §2.1: 8 → 7
     unicoNaVila: false,
     generos: { masculino: 1, feminino: 5 },
     faixasIdade: [
@@ -524,12 +629,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 2, 0],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [1, 3, 3, 2, 1],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.baixo, // jovem, subordinada
     },
-    traits: ['medroso', 'preciso'],
-    motivosPotenciais: ['salario_atrasado', 'character_negado', 'escandalo_gravidez', 'dote'],
+    traits: ['medroso', 'preciso', 'servil', 'rancoroso'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['salario_atrasado', 'character_negado', 'escandalo_gravidez', 'dote', 'caridade_negada'],
     pacoteEspacial: {
       acomodacao: 'no_servico',
       trabalho: 'casa_com_criadagem',
@@ -555,12 +661,13 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 1, 3, 4, 1],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [0, 2, 4, 3, 1],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.alto, // o ofício treina o olho
+      CHA: CURVAS_DE_ACESSO.medio,
     },
-    traits: ['preciso'],
-    motivosPotenciais: ['divida_caderneta', 'seguro_de_enterro'],
+    traits: ['preciso', 'rancoroso', 'servil'], // o rancor do caçador furtivo de sempre; a deferência ao squire
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['divida_caderneta', 'seguro_de_enterro', 'divida_de_jogo', 'caridade_negada'],
     pacoteEspacial: {
       acomodacao: 'delegacia',
       trabalho: 'delegacia',
@@ -570,6 +677,142 @@ export const ARQUETIPOS = {
     },
     proveniencia:
       'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (policial rural: o "delegado" de vila é um constable do condado) e "Implicações" (elenco padrão)',
+  },
+
+  // -------------------------------------------------------------------
+  // F4 DA OS PRIORS COMPOSTOS (dossiê §2.1, decisão 1 aprovada): os
+  // quatro arquétipos novos que o censo de 1891 sustenta. Frequências
+  // relativas: chute calibrável com presença documentada (fontes no
+  // dossiê, docs/os-priors-compostos-f1-dossies.md §2.1).
+  // -------------------------------------------------------------------
+  carroceiro: {
+    id: 'carroceiro',
+    profissoes: { masculino: 'carroceiro de frete', feminino: 'carroceira de frete' },
+    classeSocial: 'artesao',
+    frequencia: 2,
+    unicoNaVila: true, // 1 por aldeia é o padrão crível (Everitt 1976)
+    generos: { masculino: 8, feminino: 1 }, // mulheres carriers existiam, raras (Nottingham: 3–5)
+    faixasIdade: [
+      { faixa: '20_29', peso: 2 },
+      { faixa: '30_44', peso: 5 },
+      { faixa: '45_59', peso: 3 },
+    ],
+    priors: {
+      FOR: [0, 1, 3, 4, 1], // carrega volumes toda semana
+      INT: CURVAS_DE_ACESSO.medio, // a estrada ensina gente
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.medio,
+    },
+    traits: ['tagarela', 'preciso', 'linha_tempo_nao_confiavel'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['divida_caderneta', 'divida_de_jogo', 'hipoteca_ou_arrendo', 'salario_atrasado'],
+    pacoteEspacial: {
+      acomodacao: 'cottage',
+      trabalho: 'em_casa', // o pátio e a carroça junto ao cottage; o ofício é a estrada
+      frequentados: ['pub', 'mercearia'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (carroceiro nas ocupações do censo) + Everitt 1976 (country carriers: parte da própria aldeia nos dias de mercado; "estação" numa estalagem) — dossiê F1 §2.1; a mercearia despacha volumes',
+    },
+    proveniencia:
+      'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (carroceiro entre as ocupações masculinas do censo de 1891) + Everitt 1976, J. Transport History (Norwich servida por carriers de 363 aldeias) — dossiê F1 §2.1; rotina de dias de mercado = álibis prontos',
+  },
+
+  guarda_caca: {
+    id: 'guarda_caca',
+    profissoes: { masculino: 'guarda-caça', feminino: null },
+    classeSocial: 'criadagem', // serviço da propriedade: casa, carvão e terno do patrão
+    frequencia: 1,
+    unicoNaVila: true,
+    generos: { masculino: 1, feminino: 0 }, // ~100% masculino (Cambridge Rural History)
+    faixasIdade: [
+      { faixa: '20_29', peso: 2 },
+      { faixa: '30_44', peso: 4 },
+      { faixa: '45_59', peso: 3 },
+    ],
+    priors: {
+      FOR: [0, 1, 3, 4, 2], // vida inteira no mato
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.alto, // o mato treina o olho
+      CHA: CURVAS_DE_ACESSO.baixo, // vive só
+    },
+    traits: ['preciso', 'rancoroso', 'medroso'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['salario_atrasado', 'character_negado', 'despejo', 'caridade_negada'],
+    pacoteEspacial: {
+      acomodacao: 'cottage', // a lodge na borda da mata
+      trabalho: 'solar', // serve a propriedade; o ofício é o bosque dela
+      frequentados: ['pub', 'igreja'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (guarda-caça nas ocupações do censo) + Edwardian Promenade (casa isenta, carvão, terno anual; ~£1/semana) — dossiê F1 §2.1; o isolamento é a textura',
+    },
+    proveniencia:
+      'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (guarda-caça entre as ocupações masculinas do censo) + Cambridge Rural History (série 1851–1921: 1891 ≈ 13.800 na Inglaterra) — dossiê F1 §2.1',
+  },
+
+  parteira: {
+    id: 'parteira',
+    profissoes: { masculino: null, feminino: 'parteira' },
+    classeSocial: 'criadagem', // renda baixa e irregular (~5s por parto, em prestações)
+    frequencia: 1,
+    unicoNaVila: true,
+    generos: { masculino: 0, feminino: 1 },
+    faixasIdade: [
+      { faixa: '30_44', peso: 2 },
+      { faixa: '45_59', peso: 5 },
+      { faixa: '60_74', peso: 3 }, // mulher madura/viúva com prática, pré-Midwives Act 1902
+    ],
+    priors: {
+      FOR: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.alto, // ofício de mão e de olho
+      CHA: CURVAS_DE_ACESSO.alto, // entra em toda casa pela confiança
+    },
+    traits: ['preciso', 'medroso', 'tagarela', 'supersticioso'],
+    chanceSegundoTrait: 2,
+    motivosPotenciais: ['seguro_de_enterro', 'caridade_negada', 'escandalo_gravidez', 'divida_caderneta'],
+    pacoteEspacial: {
+      acomodacao: 'cottage',
+      trabalho: 'em_casa', // e a vila inteira, quando chamam
+      frequentados: ['mercearia', 'igreja'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (parteira nas ocupações femininas) + Victorian Web / RCM (parteira prática pré-1902; também amortalhava os mortos) — dossiê F1 §2.1: entra na cena do crime pela porta da frente',
+    },
+    proveniencia:
+      'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (parteira entre as ocupações femininas) + censo de 1891 (>53.000 "nurses and midwives"; 50–90% dos partos pobres com parteira prática) — dossiê F1 §2.1',
+  },
+
+  pastor_de_ovelhas: {
+    id: 'pastor_de_ovelhas',
+    profissoes: { masculino: 'pastor de ovelhas', feminino: null },
+    classeSocial: 'lavrador',
+    frequencia: 2,
+    unicoNaVila: false,
+    generos: { masculino: 1, feminino: 0 },
+    faixasIdade: [
+      { faixa: '14_19', peso: 1 },
+      { faixa: '20_29', peso: 3 },
+      { faixa: '30_44', peso: 4 },
+      { faixa: '45_59', peso: 3 },
+      { faixa: '60_74', peso: 1 },
+    ],
+    priors: {
+      FOR: [0, 2, 3, 4, 1], // andarilho resistente, menos braçal que o lavrador de enxada
+      INT: CURVAS_DE_ACESSO.baixo,
+      WIS: CURVAS_DE_ACESSO.alto, // solidão atenta: lê o tempo, o rebanho e a estrada
+      CHA: CURVAS_DE_ACESSO.baixo,
+    },
+    traits: ['supersticioso', 'preciso', 'linha_tempo_nao_confiavel'],
+    chanceSegundoTrait: 1, // o mais taciturno da vila
+    motivosPotenciais: ['salario_atrasado', 'despejo', 'seguro_de_enterro', 'divida_de_jogo'],
+    pacoteEspacial: {
+      acomodacao: 'cottage',
+      trabalho: 'granja',
+      frequentados: ['pub', 'igreja'],
+      proveniencia:
+        'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (censo de 1891 agrupa shepherds aos 756.557) — dossiê F1 §2.1',
+    },
+    proveniencia:
+      'docs/kb-mundo-vitoriano/demografia-e-sociedade.md §3 (censo de 1891: "agricultural labourers, shepherds, or carters" = 756.557; categoria superior do trabalho agrícola, extras por cordeiro) — dossiê F1 §2.1',
   },
 };
 

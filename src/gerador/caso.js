@@ -16,7 +16,8 @@
 // =====================================================================
 
 import { hashString } from '../logic/hash.js';
-import { sortearPonderado } from './amostragem.js';
+import { sortearPonderado, derivarAtributosCompostos } from './amostragem.js';
+import { quantizarComportamentos } from './quantizacao.js';
 import { gerarMundo } from './mundo.js';
 import { saoAdjacentes } from './cidade.js';
 import { METODOS, metodosElegiveis } from './metodos.js';
@@ -236,9 +237,33 @@ export function gerarCasoBruto(seed, opts = {}) {
     coabitantesVitimaIds,
   });
 
+  // 6.7 CASCATA DE FORÇAMENTO (OS priors compostos §3.3, guarda G3):
+  // quem teve o vetor forçado (réu sob limiar; falso-destoante) re-deriva
+  // INT/WIS/CHA e a quantização pela via única derivarAtributosCompostos,
+  // com o sufixo de sal `|forcado|t<k>` — nenhum resíduo pré-forçamento
+  // sobrevive no caso (o replay byte a byte é a guarda natural). FOR fica:
+  // não é jusante do vetor (N2). Traits e motivo pertencem ao arquétipo —
+  // não mudam. Tudo a jusante (método por INT, autobattler, rolagens WIS
+  // de interferência, comportamentos do diálogo) lê o elenco JÁ patchado.
+  for (const r of psique.log.reamostragens) {
+    const pessoa = mundo.elenco.find((p) => p.id === r.pessoaId);
+    const dele = psique.log.porPessoa[r.pessoaId];
+    const compostos = derivarAtributosCompostos(
+      salDaSeed(seed),
+      dele.indice,
+      pessoa.arquetipo,
+      dele.vetorId,
+      `|forcado|t${r.tentativas}`
+    );
+    pessoa.atributos = { FOR: pessoa.atributos.FOR, ...compostos };
+    pessoa.comportamentos = quantizarComportamentos(pessoa.atributos, pessoa.traits);
+  }
+  const assassinoDefinitivo = mundo.elenco.find((p) => p.id === assassino.id);
+
   // 7. Método: elegíveis por cenário × INT do assassino × âncora da cena
-  // (a elaboração é INT; a higiene, WIS — §3.1/§3.2; a âncora é D2).
-  const elegiveis = metodosElegiveis(cenario, assassino.atributos.INT, ancorasDisponiveis);
+  // (a elaboração é INT; a higiene, WIS — §3.1/§3.2; a âncora é D2). O
+  // INT é o PÓS-cascata (o elenco definitivo patchado acima).
+  const elegiveis = metodosElegiveis(cenario, assassinoDefinitivo.atributos.INT, ancorasDisponiveis);
   const metodoId =
     dirigido?.metodoId && elegiveis.includes(dirigido.metodoId)
       ? dirigido.metodoId
