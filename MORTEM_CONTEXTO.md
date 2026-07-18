@@ -640,9 +640,12 @@ tutorial e a qualquer caso procedural. Nunca LLM. Voz em primeira pessoa — o p
 pensa alto (tom: `docs/guia-de-estilo.md` §3–4).
 
 **Contrato:** nenhuma frase do desfecho afirma gesto que o jogador não fez —
-a encenação só entra se a peça forjada foi refutada; "o paradeiro que firmei" exige o
-álibi do periférico na mesa (sem ele, o juízo é narrado como convicção); o instrumento
-citado vem do sinal que cravou a causa, nunca de um vestígio avulso.
+a encenação só entra se a peça forjada foi refutada (a peça pode ser o mostrador da
+lareira ou, nos casos gerados, a temperatura do corpo — aquecida ou resfriada; mesmas
+tags, mesma refutação pelos relógios duráveis do corpo, §16.1); "o paradeiro que
+firmei" exige o álibi do periférico na mesa (sem ele, o juízo é narrado como
+convicção); o instrumento citado vem do sinal que cravou a causa, nunca de um
+vestígio avulso.
 
 **Variação determinística:** as variantes de abertura e fecho saem de hash da seed
 **salgado com o nome do perito** (nunca `Math.random`) — a mesma partida repete o
@@ -983,6 +986,45 @@ design vive em [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md
   detalhado só para locais elegíveis a cena (LOD por relevância); o grid da batalha
   **é** a planta procedural que o jogador explora (proibida representação espacial
   paralela); todo vestígio nasce ancorado em célula/mobília.
+- **A vítima age: resistir × fugir × gritar** (OS confronto estendido, 17/jul/2026).
+  Por rodada, fora da surpresa da rodada 1 premeditada, dois portões **pesam, nunca
+  determinam** a ação: o **físico** (`seguraAVitima` zera fuga/grito enquanto o
+  método prende — garrote, esganadura, sufocação, afogamento; `mobilidadeResidual`
+  decai a fuga conforme o ferimento) e o **psíquico** (`sobAtaque` por vetor +
+  polaridade, produto da camada psíquica — ativa pende a resistir, passiva a
+  fugir/gritar). **Resistir** é o comportamento vigente (ferimento defensivo, chance
+  de ferir o assassino); **fugir** é deslocamento dirigido à porta externa — alcançá-la
+  é **rejeição** `vitima_escapou` (a vítima nunca escapa de fato; a batalha reamostra,
+  ao lado de `assassino_ferido`/`vitima_resistiu`); **gritar** é evento com hora
+  própria, audível aos ouvintes adjacentes. A desordem deposita `trilha_gotejamento`,
+  `esfregaco_de_limiar` e lesões de sítio posterior contra o orçamento de limpeza
+  (WIS) que **não cresce com a bagunça** — dois cômodos sujos sempre deixam vestígio
+  de 1ª ou 2ª ordem. Fair play: a fuga também ocorre no premeditado (a surpresa só
+  consome a rodada 1), então cena espalhada nunca equivale a briga escalada — o
+  veredicto segue material (R1–R6 intactas). Métodos novos no catálogo: **sufocação**
+  (piso garantido, de interior), **afogamento** (restrito à cena da forja, pela
+  célula `cocho_dagua` já existente) e **láudano em dose excessiva**
+  (`envenenamento_laudano` + `miose_opiacea`, extensão autorizada do catálogo
+  universal); precipitação e espingarda ficam só na KB (sem âncora espacial/fora de
+  escopo). Réplica: `dirigido.fugaVitima` = `'suprimida'` mantém o registro do
+  caso-escola idêntico em fatos. Norma completa em `docs/os-confronto-estendido.md`
+  e `docs/game-design-simulacao.md` §2.4.
+- **Encenação e supressão reconciliadas ao motor** (17/jul/2026, Lotes 1 e 3 da
+  pesquisa de encenação/supressão). A peça de hora forjada (`cartaHoraForjada`) ganha,
+  além do mostrador da lareira, duas variantes **térmicas**: corpo aquecido junto ao
+  fogo (finge morte recente) ou resfriado na corrente (finge morte antiga) — mesmas
+  tags (`cronologia_aparente`, `encenado`, `isca`), refutadas pelos mesmos relógios
+  duráveis do corpo (rigor, livor); monólogo e epílogo ramificam pela peça e pelo
+  sentido via `encenacaoInstrumento` no pacote gerado (o caso-escola permanece
+  byte-idêntico: campo ausente → `'relogio'`). Seis verbetes novos de glossário
+  (reação de Van Deen, cristais de Teichmann, microespectroscopia de Sorby,
+  micrometria de Gulliver, epitélio no coágulo, discórdia tanatológica) e a carta
+  condicional `gen_frestas` (sangue empurrado para a fresta do assoalho pela limpeza —
+  ambiental, sem `pertenceA`, o motor não a lê como nexo) dão vocabulário à supressão
+  sem tocar o motor de dedução. `instrumento_guardado_umido` corrigido: o sinal
+  durável é o coágulo sob a virola e os rebites (Teichmann acha décadas depois), não a
+  umidade da junta (sinal perecível, era o erro). Decisão adiada: o sinal de ausência
+  do eixo CAUSA (Lote 2) — registrado em `docs/historico-decisoes.md`, não executado.
 - **Regras de Justiça da interferência (R1–R6):** interferência (ato do assassino/
   cúmplice contra a investigação) é **evento contingente pré-computado na geração** —
   nunca agência livre em runtime. R1: é um segundo crime sob pressão — resolve contra
