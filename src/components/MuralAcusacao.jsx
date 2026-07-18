@@ -43,6 +43,14 @@ const ehMotivo = (c) => c.tagsOcultas.subDominio === 'motivo';
 const ehCorroboracao = (c) => c.tagsOcultas.subDominio === 'corroboracao';
 const ehAlibiDe = (c, sid) => c.tagsOcultas.subDominio === 'alibi' && c.tagsOcultas.declaranteId === sid;
 
+// Ponteiro grosso (dedo): sem hover, o atalho de ficha precisa ser botão
+// explícito com área de toque ≥ 44px. Decisão única por sessão — camada
+// visual, o motor não lê (e o dispositivo não muda no meio da partida).
+const ponteiroGrosso =
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(pointer: coarse)').matches;
+
 // Geometria das estações de ligação (coordenadas conhecidas → barbante simples).
 const CARD_W = 176;
 const CARD_H = 78;
@@ -778,21 +786,38 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
             ) : (
               <p className="font-serif text-tinta text-xs leading-snug">{n.textoDisplay}</p>
             )}
-            {/* "§" de leitura: abre a ficha de coleta sem desfazer/criar
-                ligação (aria-hidden — a mesma ficha é alcançável pela mesa
-                e pela Caderneta; aqui é só um atalho discreto ao mouse). */}
+            {/* Atalho de leitura: abre a ficha de coleta sem desfazer/criar
+                ligação. Em ponteiro fino, o "§" discreto (hover evidente);
+                em ponteiro grosso, botão explícito "ficha" com área de
+                toque ≥ 44px (o ::after invisível estende o alvo além do
+                rótulo). Acessível a leitor de tela nos dois modos (P0 §2
+                do playtest de 17/07 — antes era aria-hidden e igual aos
+                ornamentos "§" dos divisores). */}
             {!n.ehAncora && (
               <span
-                aria-hidden="true"
+                role="button"
+                tabIndex={0}
+                aria-label="Rever a ficha de coleta"
                 title="Rever a ficha de coleta"
                 onPointerDown={(e) => e.stopPropagation()}
                 onClick={(e) => {
                   e.stopPropagation();
                   abrirFicha(n.id);
                 }}
-                className="absolute top-0.5 right-1 grid h-5 w-5 place-items-center rounded-sm text-cera hover:text-cera-clara hover:bg-black/10 text-xs leading-none cursor-pointer"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    abrirFicha(n.id);
+                  }
+                }}
+                className={
+                  ponteiroGrosso
+                    ? "absolute top-0.5 right-1 grid h-7 place-items-center rounded-sm px-2 bg-black/25 text-cera-clara text-[10px] uppercase tracking-widest leading-none cursor-pointer after:content-[''] after:absolute after:-inset-2.5"
+                    : 'absolute top-0.5 right-1 grid h-5 w-5 place-items-center rounded-sm text-cera hover:text-cera-clara hover:bg-black/20 text-xs leading-none cursor-pointer'
+                }
               >
-                §
+                {ponteiroGrosso ? 'ficha' : '§'}
               </span>
             )}
           </button>
