@@ -70,6 +70,11 @@ export function estadoInicialCaso() {
     nosDesbloqueados: caso.nosMapa.filter((n) => n.desbloqueadoInicio).map((n) => n.id),
     nosNovos: [], // nós revelados por lead e ainda não visitados (destaque na mesa)
 
+    // ---------------- Telegrama (E3 §4.6, camada de apresentação) ----------------
+    // { horaEnvio, entregue } — a resposta chega quando uma viagem fizer o
+    // relógio passar de horaEnvio + latência (o relógio é mole).
+    telegramaEnviado: null,
+
     // ---------------- Mesa e registros ----------------
     cartasRegistradas: [],
     conclusoes: [],
@@ -364,21 +369,64 @@ export const useJogo = create(
       return;
     }
     const no = obterNo(noId);
+    const horaNova = s.horasJogo + custo;
+    // E3 §4.6: a resposta do telegrama chega quando a viagem faz o relógio
+    // passar da hora prometida — carta de runtime (como a do termômetro),
+    // montada dos dados do pacote; o motor não participa.
+    const t = obterCaso().telegrama;
+    const entregaTelegrama =
+      t &&
+      s.telegramaEnviado &&
+      !s.telegramaEnviado.entregue &&
+      horaNova >= s.telegramaEnviado.horaEnvio + t.latencia;
     set({
       localidadeAtual: noId,
       nosVisitados: visitados,
-      horasJogo: s.horasJogo + custo,
+      horasJogo: horaNova,
       nosNovos: s.nosNovos.filter((id) => id !== noId),
+      ...(entregaTelegrama
+        ? {
+            telegramaEnviado: { ...s.telegramaEnviado, entregue: true },
+            cartasRegistradas: [
+              ...s.cartasRegistradas,
+              { id: 'ev_telegrama', localidade: 'delegacia', ...t.resposta, horaRegistro: horaNova },
+            ],
+          }
+        : {}),
       log: [
         ...s.log,
         {
-          hora: s.horasJogo + custo,
+          hora: horaNova,
           texto: `Deslocou-se para ${no ? no.rotulo : noId} (${formatDuracao(custo)} de viagem).`,
         },
+        ...(entregaTelegrama
+          ? [{ hora: horaNova, texto: 'A resposta ao telegrama espera na delegacia, na letra do telegrafista, datada ao minuto.' }]
+          : []),
       ],
     });
     // FASE 4: a viagem em público é ação observável (gatilho possível).
     get().dispararInterferencias();
+  },
+
+  // E3 §4.6 — expedir a consulta por fio (camada de apresentação; grátis:
+  // o relógio mole só anda ao viajar, e a latência corre por baixo dele).
+  telegrafar: () => {
+    const s = get();
+    const t = obterCaso().telegrama;
+    if (!t || s.telegramaEnviado) return;
+    set({
+      telegramaEnviado: { horaEnvio: s.horasJogo, entregue: false },
+      log: [
+        ...s.log,
+        {
+          hora: s.horasJogo,
+          texto:
+            t.via === 'estacao'
+              ? `Telegrama expedido pela estação, resposta paga, consulta a ${t.destino}; resposta esperada em ${formatDuracao(t.latencia)}.`
+              : `Sem fio na vila: a consulta segue por portador à agência de ${t.destino}; resposta esperada em ${formatDuracao(t.latencia)}.`,
+        },
+      ],
+    });
   },
 
   // Extração (§6): clicar no negrito registra a carta. Examinar é de graça

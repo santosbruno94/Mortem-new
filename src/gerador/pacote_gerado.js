@@ -369,6 +369,143 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
   return { perifericos, cartasNovas, segredos };
 }
 
+// ---------------------------------------------------------------------
+// E3: A COMARCA NO CASO — moeda de função (sal `seed|caso|comarca-funcao`,
+// via decorrelacionada, calibrada com a fração medida de móbeis com
+// papel, ~43%): ~20% dos casos têm o registro CORROBORATIVO da vítima
+// (o penhor de dias antes — enriquece a cronologia, não aponta ninguém);
+// ~26% o rastro durável do MÓBIL — e só quando o móbil deixa papel
+// (cobrança ou partilha; parecer E3, B1); o resto fica sem referência
+// (o satélite é fachada e nó nenhum nasce). Entre os casos COM nó, a
+// função corroborativa fica em ~44% — o Z=40% do autor (GE9).
+// O nó nasce OCULTO e entra por lead (o recibo nos pertences; a citação
+// nos papéis) — norma do atalho opcional: o caso SEMPRE fecha sem viajar
+// (GE7: só registro durável mora a distância; GE8: o guardião do livro é
+// prosa de localidade, nunca suspeito).
+// ---------------------------------------------------------------------
+function derivarComarcaDoCaso({ bruto }) {
+  const sat = bruto.mundo.comarca.satelites.find((s) => s.id === 'vila_mercado');
+  if (!sat) return null;
+  const moeda = hashDecisao(`${bruto.seed}|caso|comarca-funcao`) % 10;
+  const pessoas = indicePorId(bruto.mundo.elenco);
+  const vitima = pessoas.get(bruto.crime.vitimaId);
+  const reu = pessoas.get(bruto.crime.assassinoId);
+  const femV = vitima.genero === 'feminino';
+  const aoMorto = femV ? 'à morta' : 'ao morto';
+  const daMorta = femV ? 'da morta' : 'do morto';
+  // Fair play (parecer E3, B1): o registro do procurador só existe para
+  // móbil COM PAPEL — cobrança (dívida, dote, salário) ou partilha
+  // (herança). Falatório e referência negada não deixam soma em livro.
+  const MOTIVOS_COBRANCA = ['divida_caderneta', 'dote', 'salario_atrasado'];
+  const temCobranca = MOTIVOS_COBRANCA.includes(reu.motivoPotencial);
+  const temPartilha = reu.motivoPotencial === 'heranca';
+  const corroborativa = moeda <= 1;
+  const ramoMobil = moeda >= 2 && moeda <= 7 && (temCobranca || temPartilha);
+  if (!corroborativa && !ramoMobil) return null;
+  const localidadeId = `comarca_${sat.id}`;
+  const cartasNovas = [];
+  let lead;
+  let localidade;
+  if (corroborativa) {
+    cartasNovas.push({
+      id: 'gen_recibo_comarca',
+      localidade: 'corpo',
+      suporteFisico: 'corpo',
+      textoDisplay: 'O Bilhete de Penhor',
+      carimboPadrao: `Bilhete de penhor de ${sat.rotulo}`,
+      descricao: `Bilhete impresso da casa de penhores de ${sat.rotulo}: a data da semana passada, a soma por resgatar, o número de ordem.`,
+      tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: bruto.crime.vitimaId },
+    });
+    cartasNovas.push({
+      id: 'gen_registro_comarca',
+      localidade: localidadeId,
+      suporteFisico: 'registro',
+      textoDisplay: 'O Assento do Penhorista',
+      carimboPadrao: `Livro de penhores de ${sat.rotulo}`,
+      descricao: `No livro, o assento: o número, o dia, a soma e o nome ${daMorta} por extenso.`,
+      tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: bruto.crime.vitimaId },
+    });
+    lead = {
+      cartaId: 'gen_recibo_comarca',
+      revelaNo: localidadeId,
+      nota: 'O bilhete dá o endereço da casa de penhores.',
+    };
+    localidade = {
+      id: localidadeId,
+      rotuloMesa: sat.rotulo,
+      titulo: `Casa de Penhores de ${sat.rotulo}`,
+      subtitulo: `${sat.rotulo}, hora e meia de estrada`,
+      acoesEspeciais: [],
+      prosa: [
+        'Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]].',
+      ],
+    };
+  } else {
+    cartasNovas.push({
+      id: 'gen_citacao_comarca',
+      localidade: 'delegacia',
+      suporteFisico: 'registro',
+      textoDisplay: 'A Nota do Procurador',
+      carimboPadrao: `Nota do procurador de ${sat.rotulo}`,
+      descricao: temCobranca
+        ? `Meia folha de ofício: a cobrança correu pelas mãos do procurador, em ${sat.rotulo}, com data e número de folha.`
+        : `Meia folha de ofício: a partilha foi lavrada no gabinete do procurador, em ${sat.rotulo}, com data e número de livro.`,
+      tagsOcultas: { dominio: 'ambiental', subDominio: 'referencia_comarca' },
+    });
+    cartasNovas.push({
+      id: 'gen_registro_comarca',
+      localidade: localidadeId,
+      suporteFisico: 'registro',
+      textoDisplay: temCobranca ? 'A Carta de Cobrança Copiada' : 'A Partilha Lavrada',
+      carimboPadrao: `Livro do procurador de ${sat.rotulo}`,
+      descricao: temCobranca
+        ? `No copiador do procurador que servia ${aoMorto}, a carta de cobrança, com data e soma; nela, o nome de ${reu.nome}.`
+        : `No livro do procurador que servia ${aoMorto}, a partilha: com data, os bens ${daMorta} e o nome de ${reu.nome} entre os que herdam.`,
+      tagsOcultas: { dominio: 'comportamental', subDominio: 'motivo', motivo: reu.motivoPotencial, ligadoA: reu.id },
+    });
+    lead = {
+      cartaId: 'gen_citacao_comarca',
+      revelaNo: localidadeId,
+      nota: 'A nota aponta o gabinete do procurador.',
+    };
+    localidade = {
+      id: localidadeId,
+      rotuloMesa: sat.rotulo,
+      titulo: `O Gabinete do Procurador — ${sat.rotulo}`,
+      subtitulo: `${sat.rotulo}, hora e meia de estrada`,
+      acoesEspeciais: [],
+      prosa: [
+        `Hora e meia de estrada. No gabinete, o procurador que servia ${aoMorto} pesa a carta do delegado, corre o dedo pelo ${temCobranca ? 'copiador de cartas' : 'livro do gabinete'} e o deixa aberto sobre a mesa: [[gen_registro_comarca]].`,
+      ],
+    };
+  }
+  // E3 §4.6 — o TELEGRAMA (aprovado pelo autor): consulta por fio ao
+  // registro distante. Só fatos de registro; a resposta é carta de
+  // RUNTIME (o store a materializa, como faz com o algor — nunca entra no
+  // catálogo nem nos marcadores). Latência: 2h com estação na vila; 4h
+  // sem fio (o portador leva a consulta à agência da town).
+  const temEstacao = bruto.mundo.cidade.predios.some((p) => p.tipo === 'estacao');
+  const telegrama = {
+    destino: sat.rotulo,
+    via: temEstacao ? 'estacao' : 'portador',
+    latencia: temEstacao ? 2 : 4,
+    resposta: corroborativa
+      ? {
+          textoDisplay: 'A Resposta por Fio',
+          termoCarimbo: `Telegrama de ${sat.rotulo}: o assento do penhorista`,
+          descricao: `No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome ${daMorta} por extenso.`,
+          tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: bruto.crime.vitimaId },
+        }
+      : {
+          textoDisplay: 'A Resposta por Fio',
+          termoCarimbo: `Telegrama de ${sat.rotulo}: o livro do procurador`,
+          descricao: `No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: a data, a soma e o nome de ${reu.nome}; o procurador responde o que o livro consigna, e nada além.`,
+          tagsOcultas: { dominio: 'comportamental', subDominio: 'motivo', motivo: reu.motivoPotencial, ligadoA: reu.id },
+        },
+  };
+  return { satelite: sat, corroborativa, cartasNovas, localidade, lead, telegrama };
+}
+
 // E2: a superfície plausível do respingo alto, por tipo de logradouro
 // (parecer do perito, A1 — o adro tem muro; a vereda, cerca; o pátio,
 // madeirame; "parede" só existe dentro de casa).
@@ -840,6 +977,9 @@ function montarLocalidades(bruto, cartas) {
               : 'Do bolso do colete, a busca recolhe: [[gen_engodo]].',
           ]
         : []),
+      ...(cartas.some((c) => c.id === 'gen_recibo_comarca')
+        ? ['Entre os pertences arrolados: [[gen_recibo_comarca]].']
+        : []),
       externo
         ? 'A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.'
         : 'A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.',
@@ -1042,6 +1182,9 @@ function montarLocalidades(bruto, cartas) {
           ? `Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[${isca.id}]].`
           : 'Entre os papéis recolhidos por precaução: [[gen_motivo]].';
       })(),
+      ...(cartas.some((c) => c.id === 'gen_citacao_comarca')
+        ? ['Presa por alfinete ao maço, a folha de praxe: [[gen_citacao_comarca]].']
+        : []),
       // A árvore de diálogo procedural (OS própria): os interrogatórios
       // vivem aqui — a sala do expediente serve de sala de inquérito.
       'Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela.',
@@ -1147,16 +1290,23 @@ function montarLocalidades(bruto, cartas) {
 // Mapa do caso: o prédio da cena é um grupo (corpo + cena, 0h entre si);
 // o resto da vila é outro (1h por trecho).
 // ---------------------------------------------------------------------
-function montarMapa(localidades) {
+function montarMapa(localidades, comarcaDoCaso = null) {
   // O nó da diligência (v2 — lacuna D6 do playtest) nasce OCULTO: só o
   // móbil lavrado nos papéis dá causa à busca nos pertences de alguém.
   // Extrair gen_motivo revela o nó — a progressão de mapa do caso-escola
   // (o gabinete Pettigrew), emulada com o que o caso gerado tem.
+  // E3: o nó de comarca (comarca_<satelite>) nasce oculto e caro — o
+  // grupo próprio carrega a distância real do satélite (relógio mole).
   const nosMapa = localidades.map((loc) => ({
     id: loc.id,
     rotulo: loc.rotuloMesa,
-    grupo: loc.id === 'corpo' || loc.id === 'cena' ? 'cena_predio' : 'vila',
-    desbloqueadoInicio: loc.id !== 'oficio_do_reu',
+    grupo:
+      loc.id === 'corpo' || loc.id === 'cena'
+        ? 'cena_predio'
+        : loc.id.startsWith('comarca_')
+          ? loc.id
+          : 'vila',
+    desbloqueadoInicio: loc.id !== 'oficio_do_reu' && !loc.id.startsWith('comarca_'),
   }));
   const leads = localidades.some((l) => l.id === 'oficio_do_reu')
     ? [{ cartaId: 'gen_motivo', revelaNo: 'oficio_do_reu', nota: 'O nome nos papéis dá causa à diligência.' }]
@@ -1167,6 +1317,16 @@ function montarMapa(localidades) {
     'vila|cena_predio': 1,
     'vila|vila': 1,
   };
+  if (comarcaDoCaso) {
+    leads.push(comarcaDoCaso.lead);
+    const grupo = `comarca_${comarcaDoCaso.satelite.id}`;
+    const dist = comarcaDoCaso.satelite.distanciaHoras;
+    custos[`${grupo}|${grupo}`] = 0;
+    custos[`${grupo}|vila`] = dist;
+    custos[`vila|${grupo}`] = dist;
+    custos[`${grupo}|cena_predio`] = dist;
+    custos[`cena_predio|${grupo}`] = dist;
+  }
   return { nosMapa, custos, leads };
 }
 
@@ -1344,8 +1504,18 @@ export function montarPacoteGerado(seed, opts = {}) {
   if (encenacao) cartas.push(encenacao.carta);
   const perif = derivarPerifericos({ bruto, suspeitos, cartas });
   cartas.push(...perif.cartasNovas);
+  // E3: a comarca do caso — o registro durável a distância e o seu lead.
+  const comarcaDoCaso = derivarComarcaDoCaso({ bruto });
+  if (comarcaDoCaso) cartas.push(...comarcaDoCaso.cartasNovas);
   const localidades = montarLocalidades(bruto, cartas);
-  const { nosMapa, custos, leads } = montarMapa(localidades);
+  if (comarcaDoCaso) {
+    localidades.push(comarcaDoCaso.localidade);
+    // O fio despacha da delegacia (o expediente pede à estação): a ação
+    // especial segue o mesmo canal do termômetro — camada de UI.
+    const delegaciaLoc = localidades.find((l) => l.id === 'delegacia');
+    if (delegaciaLoc) delegaciaLoc.acoesEspeciais = [...delegaciaLoc.acoesEspeciais, 'telegrafo'];
+  }
+  const { nosMapa, custos, leads } = montarMapa(localidades, comarcaDoCaso);
   const abertura = montarAbertura(bruto, sal, suspeitos);
   // A árvore de diálogo procedural (OS própria): uma árvore por suspeito,
   // embutida na delegacia, + as cartas de álibi que os beats sustentam.
@@ -1396,6 +1566,7 @@ export function montarPacoteGerado(seed, opts = {}) {
       ambiente: AMBIENTE_PADRAO,
       calendario: { ...CALENDARIO_PADRAO },
     },
+    ...(comarcaDoCaso ? { telegrama: comarcaDoCaso.telegrama } : {}),
     ...(bruto.interferencia.eventos.length
       ? {
           interferencias: { eventos: bruto.interferencia.eventos },
