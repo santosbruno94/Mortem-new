@@ -66,6 +66,9 @@ import {
   MOBILIA_DE_OFICIO,
   VOCABULARIO_DA_CLASSE,
   PROVENIENCIA_ESPACO,
+  FISICA_DA_MOBILIA,
+  CALIBRACAO_MOBILIA,
+  ITENS_COM_AGUA,
 } from '../src/gerador/espaco.js';
 import { gerarCasoBruto } from '../src/gerador/caso.js';
 import { METODOS, PROVENIENCIA_METODOS } from '../src/gerador/metodos.js';
@@ -3374,6 +3377,60 @@ let telegramaRuntimeOk = true;
   }
 }
 
+// ============================================================
+// GUARDAS DA OS AUTOBATTLER V2 — B1 (física da mobília). Provas:
+// GB1 — proveniência: toda assinatura de peça empunhável cita ARQUIVO
+// EXISTENTE da KB (a fonte resolve no disco); todo número de eficácia
+// vive em CALIBRACAO_MOBILIA marcado chute-calibrável (`chute: true`),
+// jamais disfarçado de fato de KB.
+// GB2 — integridade do schema: todo id usado em qualquer vocabulário
+// (classe, ofício, logradouro) tem entrada de física; empunhável exige
+// classeGolpe + assinatura e massa móvel (leve, ou media com duasMaos);
+// peça fixa jamais empunhável; calibração só de peça empunhável; âncora
+// d'água DERIVADA idêntica ao conjunto canônico do E2 (a elegibilidade
+// do afogamento não muda um byte).
+// ============================================================
+const idsDeVocabulario = new Set([
+  ...Object.values(MOBILIA_POR_CLASSE).flatMap((v) => v.itens.map((i) => i.id)),
+  ...Object.values(MOBILIA_DE_OFICIO).flatMap((v) => v.itens.map((i) => i.id)),
+]);
+const fonteResolveNoDisco = (fonte) => {
+  if (typeof fonte !== 'string' || !fonte.includes('docs/kb-')) return false;
+  const arquivo = fonte.split(/ [§("]/)[0].trim();
+  try {
+    return statSync(path.join(raizRepo, arquivo)).isFile();
+  } catch {
+    return false;
+  }
+};
+const empunhaveis = Object.entries(FISICA_DA_MOBILIA).filter(([, f]) => f.empunhavel);
+const gb1ProvenienciaFisicaOk =
+  empunhaveis.every(
+    ([, f]) => f.assinatura && typeof f.assinatura.id === 'string' && fonteResolveNoDisco(f.assinatura.fonte)
+  ) &&
+  Object.values(CALIBRACAO_MOBILIA).every((c) => c.chute === true) &&
+  fonteResolveNoDisco(PROVENIENCIA_ESPACO.fisicaDaMobilia);
+const CLASSES_GOLPE_VALIDAS = ['contundente', 'cortante', 'perfurante'];
+const MASSAS_VALIDAS = ['leve', 'media', 'fixa'];
+const ANCORAS_AGUA_CANONICAS = ['cocho_dagua', 'lamina_do_acude', 'poco_com_tampa', 'cocho_de_gado'];
+const gb2IntegridadeFisicaOk =
+  [...idsDeVocabulario].every((id) => FISICA_DA_MOBILIA[id] != null) &&
+  Object.values(FISICA_DA_MOBILIA).every(
+    (f) =>
+      MASSAS_VALIDAS.includes(f.massa) &&
+      typeof f.bloqueia === 'boolean' &&
+      typeof f.quinaPerigosa === 'boolean' &&
+      (!f.empunhavel ||
+        (CLASSES_GOLPE_VALIDAS.includes(f.classeGolpe) &&
+          f.assinatura != null &&
+          f.massa !== 'fixa' &&
+          (f.massa === 'leve' || f.duasMaos === true)))
+  ) &&
+  Object.keys(CALIBRACAO_MOBILIA).every((id) => FISICA_DA_MOBILIA[id]?.empunhavel) &&
+  empunhaveis.every(([id]) => CALIBRACAO_MOBILIA[id] != null) &&
+  ITENS_COM_AGUA.length === ANCORAS_AGUA_CANONICAS.length &&
+  ANCORAS_AGUA_CANONICAS.every((id) => ITENS_COM_AGUA.includes(id));
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -3475,6 +3532,8 @@ const checagens = [
   ['Comarca E3 — GE7/GE8 + LOD: só registro durável a distância, nunca essencial; sem interrogável fora da vila; satélite referenciado tem função, nó oculto, lead e custo (OS palco em anéis §4)', ge7e8Ok],
   ['Comarca E3 — GE9 anti-tell: função meramente corroborativa em 30–50% dos casos com nó (Z=40% do autor) (OS palco em anéis §4.4)', ge9AntiTellOk],
   ['Comarca E3 — telegrama (§4.6): dados acoplados ao nó no pacote e, em runtime, expedir + viajar entrega a resposta com as tags do registro', telegramaRuntimeOk],
+  ['Autobattler v2 — GB1 proveniência da física: assinatura de empunhável com fonte que resolve no disco; eficácia só em calibração chute-declarada (OS autobattler v2 B1)', gb1ProvenienciaFisicaOk],
+  ['Autobattler v2 — GB2 integridade da física: todo item de vocabulário com física; empunhável bem-formado; fixa jamais empunhável; âncora d\'água derivada == canônica do E2 (OS autobattler v2 B1)', gb2IntegridadeFisicaOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
