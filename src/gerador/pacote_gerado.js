@@ -479,7 +479,31 @@ function derivarComarcaDoCaso({ bruto }) {
       ],
     };
   }
-  return { satelite: sat, corroborativa, cartasNovas, localidade, lead };
+  // E3 §4.6 — o TELEGRAMA (aprovado pelo autor): consulta por fio ao
+  // registro distante. Só fatos de registro; a resposta é carta de
+  // RUNTIME (o store a materializa, como faz com o algor — nunca entra no
+  // catálogo nem nos marcadores). Latência: 2h com estação na vila; 4h
+  // sem fio (o portador leva a consulta à agência da town).
+  const temEstacao = bruto.mundo.cidade.predios.some((p) => p.tipo === 'estacao');
+  const telegrama = {
+    destino: sat.rotulo,
+    via: temEstacao ? 'estacao' : 'portador',
+    latencia: temEstacao ? 2 : 4,
+    resposta: corroborativa
+      ? {
+          textoDisplay: 'A Resposta por Fio',
+          termoCarimbo: `Telegrama de ${sat.rotulo}: o assento do penhorista`,
+          descricao: `No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome ${daMorta} por extenso.`,
+          tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: bruto.crime.vitimaId },
+        }
+      : {
+          textoDisplay: 'A Resposta por Fio',
+          termoCarimbo: `Telegrama de ${sat.rotulo}: o livro do procurador`,
+          descricao: `No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: a data, a soma e o nome de ${reu.nome}; o procurador responde o que o livro consigna, e nada além.`,
+          tagsOcultas: { dominio: 'comportamental', subDominio: 'motivo', motivo: reu.motivoPotencial, ligadoA: reu.id },
+        },
+  };
+  return { satelite: sat, corroborativa, cartasNovas, localidade, lead, telegrama };
 }
 
 // E2: a superfície plausível do respingo alto, por tipo de logradouro
@@ -1484,7 +1508,13 @@ export function montarPacoteGerado(seed, opts = {}) {
   const comarcaDoCaso = derivarComarcaDoCaso({ bruto });
   if (comarcaDoCaso) cartas.push(...comarcaDoCaso.cartasNovas);
   const localidades = montarLocalidades(bruto, cartas);
-  if (comarcaDoCaso) localidades.push(comarcaDoCaso.localidade);
+  if (comarcaDoCaso) {
+    localidades.push(comarcaDoCaso.localidade);
+    // O fio despacha da delegacia (o expediente pede à estação): a ação
+    // especial segue o mesmo canal do termômetro — camada de UI.
+    const delegaciaLoc = localidades.find((l) => l.id === 'delegacia');
+    if (delegaciaLoc) delegaciaLoc.acoesEspeciais = [...delegaciaLoc.acoesEspeciais, 'telegrafo'];
+  }
   const { nosMapa, custos, leads } = montarMapa(localidades, comarcaDoCaso);
   const abertura = montarAbertura(bruto, sal, suspeitos);
   // A árvore de diálogo procedural (OS própria): uma árvore por suspeito,
@@ -1536,6 +1566,7 @@ export function montarPacoteGerado(seed, opts = {}) {
       ambiente: AMBIENTE_PADRAO,
       calendario: { ...CALENDARIO_PADRAO },
     },
+    ...(comarcaDoCaso ? { telegrama: comarcaDoCaso.telegrama } : {}),
     ...(bruto.interferencia.eventos.length
       ? {
           interferencias: { eventos: bruto.interferencia.eventos },

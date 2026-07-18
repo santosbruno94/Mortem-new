@@ -3170,6 +3170,26 @@ for (const seedE1 of SEEDS_E1) {
   }
   if (Object.values(pacoteE1.dialogos || {}).some((d) => (d.origemLocalidade || '').startsWith('comarca_')))
     e3Falhas.push(`${seedE1}: interrogatório a distância (GE8)`);
+  // E3 §4.6 — telegrama acoplado ao nó: com nó, o pacote leva os dados da
+  // consulta (destino = rótulo do satélite, latência 2h/4h, resposta com
+  // tags espelhando o registro) e a delegacia ganha a ação 'telegrafo';
+  // sem nó, campo nenhum.
+  if (locsComarca.length > 0) {
+    const t = pacoteE1.telegrama;
+    const registroT = pacoteE1.cartas.find((c) => c.id === 'gen_registro_comarca');
+    const delegaciaT = pacoteE1.localidades.find((l) => l.id === 'delegacia');
+    if (
+      !t ||
+      ![2, 4].includes(t.latencia) ||
+      t.destino !== locsComarca[0].rotuloMesa ||
+      !t.resposta ||
+      JSON.stringify(t.resposta.tagsOcultas) !== JSON.stringify(registroT.tagsOcultas) ||
+      !delegaciaT.acoesEspeciais.includes('telegrafo')
+    )
+      e3Falhas.push(`${seedE1}: telegrama malformado ou desacoplado do nó`);
+  } else if (pacoteE1.telegrama) {
+    e3Falhas.push(`${seedE1}: telegrama sem nó de comarca`);
+  }
 }
 const ge1IntegridadeOk = ge1Falhas.length === 0;
 if (!ge1IntegridadeOk) console.log('\nPALCO E1 — GE1 falhou:', ge1Falhas.slice(0, 8).join('; '));
@@ -3279,6 +3299,37 @@ const ge9AntiTellOk = e3ComNo > 0 && e3Corroborativas / e3ComNo >= 0.3 && e3Corr
 if (!ge9AntiTellOk)
   console.log(`\nCOMARCA E3 — GE9 fora da banda: ${e3Corroborativas}/${e3ComNo} corroborativas.`);
 
+// E3 §4.6 — RUNTIME do telegrama: num caso do pool COM nó de comarca,
+// revelar o lead, telegrafar e viajar entrega a carta ev_telegrama com as
+// tags do registro distante (a consulta por fio substitui a viagem).
+let telegramaRuntimeOk = true;
+{
+  const casoComNo = CASOS_POOL.find((p) => p.telegrama);
+  if (!casoComNo) telegramaRuntimeOk = false;
+  else {
+    useJogo.getState().carregarCaso(casoComNo);
+    useJogo.getState().escolherDetective();
+    useJogo.getState().iniciarInvestigacao();
+    const leadT = casoComNo.leads.find((l) => l.revelaNo.startsWith('comarca_'));
+    useJogo.getState().extrairCarta(leadT.cartaId);
+    const antes = useJogo.getState();
+    telegramaRuntimeOk = antes.nosDesbloqueados.includes(leadT.revelaNo);
+    useJogo.getState().telegrafar();
+    // duas pernas de viagem na vila (1h cada) cobrem a latência de 2h.
+    useJogo.getState().viajarPara('delegacia');
+    useJogo.getState().viajarPara('vizinhanca');
+    useJogo.getState().viajarPara('delegacia');
+    useJogo.getState().viajarPara('vizinhanca');
+    const depois = useJogo.getState();
+    const cartaT = depois.cartasRegistradas.find((c) => c.id === 'ev_telegrama');
+    telegramaRuntimeOk =
+      telegramaRuntimeOk &&
+      !!cartaT &&
+      JSON.stringify(cartaT.tagsOcultas) === JSON.stringify(casoComNo.telegrama.resposta.tagsOcultas);
+    if (!telegramaRuntimeOk) console.log('\nCOMARCA E3 — telegrama runtime falhou.');
+  }
+}
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -3379,6 +3430,7 @@ const checagens = [
   ['Palco E2 — regime-palco na banda: cenas externas em 10–30% do lote de 150 seeds (OS palco em anéis §3.6)', bandaPalcoOk],
   ['Comarca E3 — GE7/GE8 + LOD: só registro durável a distância, nunca essencial; sem interrogável fora da vila; satélite referenciado tem função, nó oculto, lead e custo (OS palco em anéis §4)', ge7e8Ok],
   ['Comarca E3 — GE9 anti-tell: função meramente corroborativa em 30–50% dos casos com nó (Z=40% do autor) (OS palco em anéis §4.4)', ge9AntiTellOk],
+  ['Comarca E3 — telegrama (§4.6): dados acoplados ao nó no pacote e, em runtime, expedir + viajar entrega a resposta com as tags do registro', telegramaRuntimeOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

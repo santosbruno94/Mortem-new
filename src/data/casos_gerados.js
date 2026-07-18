@@ -2200,7 +2200,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -3310,6 +3312,21 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
+ },
+ "telegrama": {
+  "destino": "Weldmere",
+  "via": "estacao",
+  "latencia": 2,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Weldmere: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_moleiro"
+   }
+  }
  }
 },
 {
@@ -3808,7 +3825,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -4918,6 +4937,21 @@ export const CASOS_POOL = [
    "mesAbrev": "out",
    "mesExtenso": "outubro",
    "ano": 1893
+  }
+ },
+ "telegrama": {
+  "destino": "Weldmere",
+  "via": "portador",
+  "latencia": 4,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Weldmere: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_lavrador"
+   }
   }
  }
 },
@@ -10308,7 +10342,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -11438,6 +11474,22 @@ export const CASOS_POOL = [
    "mesAbrev": "out",
    "mesExtenso": "outubro",
    "ano": 1893
+  }
+ },
+ "telegrama": {
+  "destino": "Netherfield",
+  "via": "portador",
+  "latencia": 4,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Netherfield: o livro do procurador",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: a data, a soma e o nome de Robert Turner; o procurador responde o que o livro consigna, e nada além.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "salario_atrasado",
+    "ligadoA": "gen_1_lavrador"
+   }
   }
  },
  "interferencias": {
@@ -17008,7 +17060,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -18140,6 +18194,21 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
+ },
+ "telegrama": {
+  "destino": "Weldmere",
+  "via": "estacao",
+  "latencia": 2,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Weldmere: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_3_merceeiro"
+   }
+  }
  }
 },
 {
@@ -18647,7 +18716,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -19757,6 +19828,21 @@ export const CASOS_POOL = [
    "mesAbrev": "out",
    "mesExtenso": "outubro",
    "ano": 1893
+  }
+ },
+ "telegrama": {
+  "destino": "Weldmere",
+  "via": "portador",
+  "latencia": 4,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Weldmere: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome da morta por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_5_criada"
+   }
   }
  }
 },
@@ -22072,7 +22158,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -23192,6 +23280,21 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
+ },
+ "telegrama": {
+  "destino": "Netherfield",
+  "via": "portador",
+  "latencia": 4,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Netherfield: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome da morta por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_7_parteira"
+   }
+  }
  }
 },
 {
@@ -23661,7 +23764,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -24793,6 +24898,21 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
+ },
+ "telegrama": {
+  "destino": "Ashmere",
+  "via": "estacao",
+  "latencia": 2,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Ashmere: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_taverneiro"
+   }
+  }
  }
 },
 {
@@ -25249,7 +25369,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -26367,6 +26489,21 @@ export const CASOS_POOL = [
    "mesAbrev": "out",
    "mesExtenso": "outubro",
    "ano": 1893
+  }
+ },
+ "telegrama": {
+  "destino": "Thornbrook",
+  "via": "portador",
+  "latencia": 4,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Thornbrook: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_merceeiro"
+   }
   }
  }
 },
@@ -28474,7 +28611,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -29634,6 +29773,21 @@ export const CASOS_POOL = [
    "ano": 1893
   }
  },
+ "telegrama": {
+  "destino": "Netherfield",
+  "via": "portador",
+  "latencia": 4,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Netherfield: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_lavrador"
+   }
+  }
+ },
  "interferencias": {
   "eventos": [
    {
@@ -30198,7 +30352,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -31308,6 +31464,21 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
+ },
+ "telegrama": {
+  "destino": "Netherfield",
+  "via": "estacao",
+  "latencia": 2,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Netherfield: o assento do penhorista",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome da morta por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_criada"
+   }
+  }
  }
 },
 {
@@ -31771,7 +31942,9 @@ export const CASOS_POOL = [
    "rotuloMesa": "A Delegacia",
    "titulo": "A Delegacia",
    "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
+   "acoesEspeciais": [
+    "telegrafo"
+   ],
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
@@ -32890,6 +33063,22 @@ export const CASOS_POOL = [
    "mesAbrev": "out",
    "mesExtenso": "outubro",
    "ano": 1893
+  }
+ },
+ "telegrama": {
+  "destino": "Weldmere",
+  "via": "portador",
+  "latencia": 4,
+  "resposta": {
+   "textoDisplay": "A Resposta por Fio",
+   "termoCarimbo": "Telegrama de Weldmere: o livro do procurador",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: a data, a soma e o nome de John Morris; o procurador responde o que o livro consigna, e nada além.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "salario_atrasado",
+    "ligadoA": "gen_1_carroceiro"
+   }
   }
  }
 },
