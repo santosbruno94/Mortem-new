@@ -96,10 +96,16 @@ function coorteDeNomes(idade) {
 // tentativas, faz uma varredura determinística FINITA por todos os pares
 // (jamais laço aberto).
 function amostrarNomeUnico(sal, genero, idade, nomesUsados) {
+  // v3 (F4 da OS priors compostos §2.6): prenome PONDERADO por frequência
+  // de batismo (Galbi 2002 — o sorteio uniforme era o anacronismo);
+  // sobrenome segue uniforme por decisão registrada em arquetipos.js.
   const nomes = NOMES[genero][coorteDeNomes(idade)];
   const MAX_TENTATIVAS = 50;
   for (let tentativa = 0; tentativa < MAX_TENTATIVAS; tentativa++) {
-    const nome = nomes[hashDecisao(`${sal}|nome|${tentativa}`) % nomes.length];
+    const nome = sortearPonderado(
+      nomes.map((n) => ({ valor: n.nome, peso: n.peso })),
+      `${sal}|nome|${tentativa}`
+    );
     const sobrenome = SOBRENOMES[hashDecisao(`${sal}|sobrenome|${tentativa}`) % SOBRENOMES.length];
     const completo = `${nome} ${sobrenome}`;
     if (nome !== sobrenome && !nomesUsados.has(completo)) return completo;
@@ -110,14 +116,14 @@ function amostrarNomeUnico(sal, genero, idade, nomesUsados) {
   const totalPares = nomes.length * SOBRENOMES.length;
   for (let i = 0; i < totalPares; i++) {
     const indice = (base + i) % totalPares;
-    const nome = nomes[indice % nomes.length];
+    const nome = nomes[indice % nomes.length].nome;
     const sobrenome = SOBRENOMES[Math.floor(indice / nomes.length)];
     const completo = `${nome} ${sobrenome}`;
     if (nome !== sobrenome && !nomesUsados.has(completo)) return completo;
   }
   // Pool esgotado (elenco maior que os pares possíveis): numerar é o
   // último recurso determinístico — nunca acontece com elencos de vila.
-  return `${nomes[base % nomes.length]} ${SOBRENOMES[base % SOBRENOMES.length]} ${nomesUsados.size}`;
+  return `${nomes[base % nomes.length].nome} ${SOBRENOMES[base % SOBRENOMES.length]} ${nomesUsados.size}`;
 }
 
 // Amostra o personagem de índice `indice` do elenco da seed. `contexto` é
@@ -171,11 +177,14 @@ export function amostrarPersonagem(seed, indice, contexto) {
     ...derivarAtributosCompostos(salBase, indice, arquetipoId, vetorBaseId),
   };
 
-  // 6. Traits do pool: o primeiro sempre; um segundo (distinto) em ~1/3
-  // dos personagens, se o pool comportar.
+  // 6. Traits do pool: o primeiro sempre; um segundo (distinto) com
+  // chance POR ARQUÉTIPO (F4 §2.4: tagarelas de balcão 3/6, taciturnos
+  // de ofício 1/6, o resto 2/6 — a moeda universal 1/3 aposentou-se).
+  // Sal NOVO `segundoTrait-v2` (a decisão mudou de forma; regra de ouro).
   const pool = arquetipo.traits;
   const traits = [pool[hashDecisao(`${sal}|trait|1`) % pool.length]];
-  if (pool.length >= 2 && hashDecisao(`${sal}|temSegundoTrait`) % 3 === 0) {
+  const chanceSegundo = arquetipo.chanceSegundoTrait ?? 2;
+  if (pool.length >= 2 && hashDecisao(`${sal}|segundoTrait-v2`) % 6 < chanceSegundo) {
     const restantes = pool.filter((t) => t !== traits[0]);
     traits.push(restantes[hashDecisao(`${sal}|trait|2`) % restantes.length]);
   }

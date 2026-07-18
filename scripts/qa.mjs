@@ -2564,17 +2564,19 @@ if (!replayArvoreOk) console.log('\nÁRVORE DE DIÁLOGO — replay chamada a cha
 const {
   VETORES_PSIQUICOS,
   DEMOGRAFICOS,
-  PAPEIS_DRAMATICOS,
   MAGNITUDE_POR_DEGRAU,
   LIMIAR_DESENCAIXE,
   MATRIZ_ENCENACAO,
 } = await import('../src/gerador/vetores_psiquicos.js');
 
-// (1) Catálogo v1 íntegro.
+// (1) Catálogo íntegro — v2 desde a F4 da OS priors compostos: 13
+// vetores × 18 demográficos; afinidadePapeis REMOVIDA (decisão 12,
+// registro em historico-decisoes.md).
 const degrausValidos = new Set(Object.keys(MAGNITUDE_POR_DEGRAU));
 const vetoresLista = Object.values(VETORES_PSIQUICOS);
 const psiqueCatalogoIntegro =
-  vetoresLista.length === 11 &&
+  vetoresLista.length === 13 &&
+  DEMOGRAFICOS.length === 18 &&
   vetoresLista.every(
     (v) =>
       ['id', 'valor', 'medo', 'sombraAtiva', 'sombraPassiva', 'autoJustificacao', 'temaGatilho'].every(
@@ -2582,8 +2584,7 @@ const psiqueCatalogoIntegro =
       ) &&
       DEMOGRAFICOS.every((d) => degrausValidos.has(v.afinidadeDemografica[d])) &&
       Object.keys(v.afinidadeDemografica).length === DEMOGRAFICOS.length &&
-      PAPEIS_DRAMATICOS.every((p) => Number.isInteger(v.afinidadePapeis[p]) && v.afinidadePapeis[p] >= 0) &&
-      PAPEIS_DRAMATICOS.every((p) => PAPEIS[p] != null) &&
+      v.afinidadePapeis === undefined &&
       typeof v.proveniencia === 'string' &&
       v.proveniencia.includes('sistemas-arquetipicos-alem-dos-12')
   ) &&
@@ -2986,6 +2987,63 @@ let g6RegimesOk = true;
   }
 }
 
+// (G7) integridade de pools (F4 §5.3): todo prior é array de 5 com soma
+// > 0; traits ≥ 3 e todos no catálogo (com comportamento mapeado);
+// motivos 4–6 e todos no catálogo; chanceSegundoTrait inteira 1–5;
+// nomes ponderados válidos (peso inteiro ≥ 1) e sobrenomes únicos;
+// motivo novo com proveniência (lint de fonte).
+let g7PoolsOk = true;
+{
+  const { MOTIVOS_POTENCIAIS, NOMES: NOMES_F4, SOBRENOMES: SOBRENOMES_F4 } = await import(
+    '../src/gerador/arquetipos.js'
+  );
+  const { TRAITS: TRAITS_F4, MAPA_TRAIT_COMPORTAMENTO: MAPA_F4, CATALOGO_COMPORTAMENTOS: CAT_F4 } =
+    await import('../src/gerador/comportamentos.js');
+  const g7Falhas = [];
+  for (const a of Object.values(ARQUETIPOS)) {
+    for (const attr of ['FOR', 'INT', 'WIS', 'CHA']) {
+      const p = a.priors[attr];
+      if (!Array.isArray(p) || p.length !== 5 || p.reduce((s, x) => s + x, 0) <= 0) {
+        g7Falhas.push(`${a.id}.${attr}: prior inválido`);
+      }
+    }
+    if (!Array.isArray(a.traits) || a.traits.length < 3) g7Falhas.push(`${a.id}: pool de traits < 3`);
+    for (const t of a.traits) {
+      if (!TRAITS_F4[t] || !MAPA_F4[t] || !CAT_F4[MAPA_F4[t]]) g7Falhas.push(`${a.id}: trait órfão (${t})`);
+    }
+    if (a.motivosPotenciais.length < 4 || a.motivosPotenciais.length > 6) {
+      g7Falhas.push(`${a.id}: motivos fora de 4–6 (${a.motivosPotenciais.length})`);
+    }
+    for (const m of a.motivosPotenciais) {
+      if (!MOTIVOS_POTENCIAIS[m]) g7Falhas.push(`${a.id}: motivo fora do catálogo (${m})`);
+    }
+    if (!Number.isInteger(a.chanceSegundoTrait) || a.chanceSegundoTrait < 1 || a.chanceSegundoTrait > 5) {
+      g7Falhas.push(`${a.id}: chanceSegundoTrait inválida`);
+    }
+  }
+  const motivosNovos = ['hipoteca_ou_arrendo', 'propriedade_da_esposa', 'divida_de_jogo', 'caridade_negada'];
+  for (const m of motivosNovos) {
+    if (!MOTIVOS_POTENCIAIS[m]?.proveniencia) g7Falhas.push(`motivo novo sem proveniência: ${m}`);
+  }
+  for (const genero of ['masculino', 'feminino']) {
+    for (const coorte of ['coorte_1820_50', 'coorte_1860_75']) {
+      const lista = NOMES_F4[genero][coorte];
+      if (lista.length < 40) g7Falhas.push(`nomes ${genero}/${coorte}: pool < 40`);
+      if (!lista.every((n) => typeof n.nome === 'string' && Number.isInteger(n.peso) && n.peso >= 1)) {
+        g7Falhas.push(`nomes ${genero}/${coorte}: entrada inválida`);
+      }
+      if (new Set(lista.map((n) => n.nome)).size !== lista.length) {
+        g7Falhas.push(`nomes ${genero}/${coorte}: nome duplicado`);
+      }
+    }
+  }
+  if (new Set(SOBRENOMES_F4).size !== SOBRENOMES_F4.length || SOBRENOMES_F4.length < 50) {
+    g7Falhas.push('sobrenomes: duplicata ou pool < 50');
+  }
+  g7PoolsOk = g7Falhas.length === 0;
+  if (!g7PoolsOk) console.log('\nPRIORS F4 — G7 (integridade de pools) falhou:', g7Falhas.slice(0, 10).join('; '));
+}
+
 // (B✱) decorrelação INT × WIS no arquétipo mais numeroso.
 let decorrelacaoOk = true;
 {
@@ -3087,7 +3145,7 @@ const checagens = [
   ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],
   ['Armadilhas da árvore detectadas: beat de 3 tons, confronto sem reação, nó órfão, requerCarta fantasma (OS diálogo)', armadilhasDialogoDetectadas],
   ['Replay da árvore: mesma seed → mesma árvore, chamada a chamada (OS diálogo)', replayArvoreOk],
-  ['Psique: catálogo v1 íntegro — 11 vetores completos, afinidades totais, degrau raro alcançável, matriz de encenação com proveniência (OS psíquica)', psiqueCatalogoIntegro],
+  ['Psique: catálogo v2 íntegro — 13 vetores completos × 18 demográficos, degrau raro alcançável, sem afinidadePapeis (decisão 12), matriz de encenação com proveniência (OS psíquica + priors F4)', psiqueCatalogoIntegro],
   ['Lint léxico L1: nosologia/jargão pós-1893 fora de toda superfície do jogo (OS psíquica §5)', lintL1Ok],
   ['Lint léxico L2: sombra/persona/vetor/desencaixe/complexo fora de identificadores e chaves do runtime (OS psíquica §5)', lintL2Ok],
   ['Psique não vaza: pacotes embarcados sem L1 em campo algum, sem L2/psique em chave ou id (OS psíquica §5)', psiqueNaoVaza],
@@ -3105,6 +3163,7 @@ const checagens = [
   ['Priors F2 — decorrelação: hashDecisao quebra o acoplamento de chaves-irmãs (≥20/25 pares INT×WIS, |corr| ≤ 0,15) (achado B✱)', decorrelacaoOk],
   ['Priors F3 — G5 tell calmo: ≥ 60% dos mentirosos-calmos do lote são inocentes ("serena ⇒ réu" morreu) (OS priors compostos §4.6)', g5TellCalmoOk],
   ['Priors F3 — G6 regimes: regime 1 em 30% ± 10 p.p.; nele o réu é modal, sem isca forçada, com móbil material na fatia (OS priors compostos §4.6)', g6RegimesOk],
+  ['Priors F4 — G7 integridade de pools: priors válidos, traits ≥ 3 mapeados, motivos 4–6 no catálogo, nomes ponderados, sobrenomes 50 únicos, fonte nos itens novos (OS priors compostos §5.3)', g7PoolsOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

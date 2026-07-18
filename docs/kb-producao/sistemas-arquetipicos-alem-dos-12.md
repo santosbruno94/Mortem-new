@@ -266,12 +266,41 @@ consolo que vira fraude piedosa) ou do **Erudito** (o "investigador psíquico" q
 admitir o embuste), a realizar quando a camada de segredos o sortear. Como a análise NÃO
 indicou 12º vetor, o ponto de parada previsto na OS (§4.1.2) não se ativou.
 
+#### 7.4.3-bis — ver §7.5 para o catálogo v2 (13 vetores)
+
 #### 7.4.3 Nota "Amante" — exceção consciente
 
 A regra de nomenclatura do catálogo ("sem rótulos de Pearson") tem UMA exceção deliberada:
 **Amante** colide com o *Lover* de Pearson/Moore & Gillette e fica assim mesmo — nenhum
 sinônimo de época (galanteador? apaixonado?) carrega o par posse/anulação com a mesma
 economia. Registra-se a exceção para que ninguém a "corrija" por zelo de consistência.
+
+### 7.5 Catálogo v2 — os vetores 12 e 13 (OS priors compostos, jul/2026)
+
+A OS `docs/os-priors-compostos-e-variedade-do-elenco.md` (F1 §2.2, decisão do autor)
+promoveu o catálogo a **v2** com dois vetores novos, ambos aprovados pelos critérios
+do §6 — e um terceiro candidato **reprovado** com registro (o Penitente: o medo
+central colide com o `pecado_exposto` do Devoto; dois vetores para a mesma pergunta
+de interrogatório é rótulo duplicado, não psique nova).
+
+| # | Arquétipo | Valor professado | Medo central | Sombra ativa | Sombra passiva | Auto-justificação |
+|---|---|---|---|---|---|---|
+| 12 | **Previdente** | previdência, o pé-de-meia; nunca dever a ninguém | a miséria à vista — a workhouse, o enterro de indigente | o agiota da vila; mata pelo seguro (*penny policy*) | o sovina que nega o socorro e deixa morrer de economia | "não podíamos sustentá-lo" |
+| 13 | **Enraizado** | a terra, a casa, a continuidade | o desenraizamento: despejo, venda, o êxodo | mata para não ser arrancado | apodrece no lugar e sabota a partida dos outros | "esta casa é o que somos" |
+
+Ancoragem de época: o pavor da workhouse e do enterro de indigente
+(`../kb-mundo-vitoriano/demografia-e-sociedade.md` §4; `economia-e-estrutura-social.md`
+§3) dá ao Previdente o dono psíquico do móbil `seguro_de_enterro`; a depressão
+agrícola e o êxodo (`economia` §1) fazem do Enraizado o **par polar** do Errante
+(ficar preso × ser arrancado — §2: pares valem mais que rótulos). Afinidades
+demográficas e a matriz completa (agora 13 vetores × 18 demográficos, com os
+segundos raros de F3) vivem em `src/gerador/vetores_psiquicos.js`, sob as guardas
+do `qa.mjs`; os números regenerados estão no relatório v2 da OS.
+
+**Nota estrutural da mesma OS (decisão 12):** o campo `afinidadePapeis` saiu do
+catálogo implementado — era reserva documentada que o fluxo gerado nunca consumiu
+(o caso gerado não escala papéis nomeados). A afinidade vetor → papel permanece
+como leitura de design nas tabelas deste doc, sem contraparte em código.
 
 ## Implicações para o jogo
 

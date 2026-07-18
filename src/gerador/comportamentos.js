@@ -35,6 +35,23 @@ export const CATALOGO_COMPORTAMENTOS = {
     efeitoDepoimento: { tipo: 'vies_temporal', desvio: 'sistematico' },
   },
 
+  // --- F4 da OS priors compostos (dossiê §2.4, decisão 5: +3) ---
+  vies_contra_desafeto: {
+    descricao:
+      'Rancoroso: o depoimento carrega contra UM desafeto nomeado — acusações dele vêm infladas; o viés é declarado por terceiros e refutável por cruzamento.',
+    efeitoDepoimento: { tipo: 'vies_direcional', alvo: 'desafeto_nomeado', refutavelPor: 'cruzamento' },
+  },
+  confirma_o_que_sugerem: {
+    descricao:
+      'Servil: ecoa a hipótese que o perito insinua — confirmação vale pouco; perguntar o CONTRÁRIO produz eco contrário (o teste está nas mãos do jogador).',
+    efeitoDepoimento: { tipo: 'eco_de_sugestao', testavelPor: 'pergunta_invertida' },
+  },
+  le_agouros: {
+    descricao:
+      'Supersticioso: mistura presságios à observação — causas não confiáveis, MAS horas ancoradas no sino e na missa são precisas (instrumento enviesado, não inútil).',
+    efeitoDepoimento: { tipo: 'ruido_causal_com_ancora_temporal', ancora: 'sino_e_missa' },
+  },
+
   // --- nascidos de LIMIAR de atributo (quantizacao.js) ---
   observacao_precisa: {
     descricao: 'WIS alta: o que observou é fiável, margem de erro estreita.',
@@ -68,6 +85,11 @@ export const TRAITS = {
   tagarela: { descricao: 'Mistura ruído com pepitas verdadeiras.' },
   preciso: { descricao: 'Horários e detalhes exatos; memória de registro.' },
   linha_tempo_nao_confiavel: { descricao: 'Depoimento com erro sistemático de tempo (ex.: bebida).' },
+  // F4 da OS priors compostos (dossiê §2.4): cada trait novo = um
+  // comportamento nomeado novo, 1-para-1, com falha detectável (fair play).
+  rancoroso: { descricao: 'Depõe contra o desafeto de sempre; a acusação dele vem inflada.' },
+  servil: { descricao: 'Diz o que o interlocutor quer ouvir; confirma o que se sugere.' },
+  supersticioso: { descricao: 'Lê agouros nas coisas; erra causas, acerta as horas do sino.' },
 };
 
 export const MAPA_TRAIT_COMPORTAMENTO = {
@@ -75,4 +97,7 @@ export const MAPA_TRAIT_COMPORTAMENTO = {
   tagarela: 'ruido_com_pepitas',
   preciso: 'instrumento_confiavel',
   linha_tempo_nao_confiavel: 'erro_sistematico_tempo',
+  rancoroso: 'vies_contra_desafeto',
+  servil: 'confirma_o_que_sugerem',
+  supersticioso: 'le_agouros',
 };

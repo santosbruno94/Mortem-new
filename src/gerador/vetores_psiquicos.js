@@ -75,23 +75,23 @@ export const LIMIAR_DESENCAIXE = 2;
 // Teto de reamostragem por rejeição (padrão do resolvedor de crime).
 const MAX_TENTATIVAS = 24;
 
-// Os 14 arquétipos demográficos, na ordem de arquetipos.js (para a
-// completude verificada no qa.mjs).
+// Os 18 arquétipos demográficos, na ordem de arquetipos.js (para a
+// completude verificada no qa.mjs). F4 da OS priors compostos: +4.
 export const DEMOGRAFICOS = [
   'squire', 'paroco', 'medico', 'boticario', 'taverneiro', 'ferreiro', 'moleiro',
   'merceeiro', 'professora', 'costureira', 'lavadeira', 'lavrador', 'criada', 'constable',
+  'carroceiro', 'guarda_caca', 'parteira', 'pastor_de_ovelhas',
 ];
 
-// Os 6 papéis dramáticos (src/data/papeis.js), para afinidadePapeis.
-export const PAPEIS_DRAMATICOS = [
-  'assassino_encenador', 'isca_do_apressado', 'veu', 'ruido_pista_dupla',
-  'mentiroso_por_medo', 'fonte',
-];
+// NOTA (F4, decisão 12): o campo afinidadePapeis foi REMOVIDO — era
+// reserva documentada que o fluxo gerado nunca consumiu (o caso gerado
+// não escala papéis nomeados); dado que envelhece sem uso é passivo de
+// manutenção. Registro em docs/historico-decisoes.md.
 
 // ---------------------------------------------------------------------
-// O CATÁLOGO v1 — onze vetores (tabela 7.1 + emenda 7.4.1). Campos da
-// OS §8.1. `afinidadeDemografica` em degraus (7.2); `afinidadePapeis`
-// em pesos 0–4 (lógica de arquetipos-e-casting.md §4.1); `temaGatilho`
+// O CATÁLOGO v2 — treze vetores (tabela 7.1 + emendas 7.4.1 e 7.5).
+// Campos da OS §8.1 (menos afinidadePapeis — decisão 12). `afinidade
+// Demografica` em degraus (7.2 + raros novos de F3 §4.1); `temaGatilho`
 // é o tema do gatilho_de_complexo (o medo central como pergunta que
 // desmonta a compostura). Proveniência por linha, regra do manifesto.
 // ---------------------------------------------------------------------
@@ -108,15 +108,12 @@ export const VETORES_PSIQUICOS = {
     // de ação sob ataque, jamais regra dura. O cuidador clama por socorro.
     sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // valor "cuidar dos seus": chama ajuda
     tiltAtributos: { INT: TILT_NEUTRO, WIS: [1, 1, 2, 2, 1], CHA: TILT_NEUTRO }, // o cuidado repara no miúdo (leve)
-    afinidadePapeis: {
-      assassino_encenador: 3, isca_do_apressado: 1, veu: 3,
-      ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 1,
-    },
     afinidadeDemografica: {
       squire: 'media', paroco: 'alta', medico: 'alta', boticario: 'media',
       taverneiro: 'media', ferreiro: 'media', moleiro: 'media', merceeiro: 'rara',
       professora: 'alta', costureira: 'media', lavadeira: 'media', lavrador: 'alta',
       criada: 'alta', constable: 'media',
+      carroceiro: 'media', guarda_caca: 'rara', parteira: 'alta', pastor_de_ovelhas: 'alta',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 1 e §7.2 (paroco/medico/professora/lavrador/criada; raro: merceeiro — a caderneta como coleira); papel: arquetipos-e-casting.md §4.1 (Cuidador)',
@@ -132,15 +129,12 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'queda_de_status',
     sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "ordem, nome": não foge — impõe-se
     tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: [1, 1, 1, 2, 2] }, // a presença que manda
-    afinidadePapeis: {
-      assassino_encenador: 4, isca_do_apressado: 2, veu: 1,
-      ruido_pista_dupla: 1, mentiroso_por_medo: 1, fonte: 2,
-    },
     afinidadeDemografica: {
       squire: 'alta', paroco: 'media', medico: 'rara', boticario: 'media',
       taverneiro: 'media', ferreiro: 'rara', moleiro: 'media', merceeiro: 'alta',
       professora: 'media', costureira: 'rara', lavadeira: 'media', lavrador: 'rara',
       criada: 'media', constable: 'rara',
+      carroceiro: 'rara', guarda_caca: 'media', parteira: 'rara', pastor_de_ovelhas: 'media',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 2 e §7.2 (squire/merceeiro; raros: medico — reina pela receita — e lavrador — patriarca de cottage); OS priors compostos F3 §4.1/dossiê §2.7 (raros novos: ferreiro — a dinastia de ofício que a depressão nega; costureira — veste a gentry e decora cada gesto; constable — o uniforme sem mando)',
@@ -156,15 +150,12 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'erro_em_publico',
     sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "exatidão": calcula a saída
     tiltAtributos: { INT: [1, 1, 1, 2, 2], WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // o exemplo da OS §3.2
-    afinidadePapeis: {
-      assassino_encenador: 4, isca_do_apressado: 1, veu: 1,
-      ruido_pista_dupla: 1, mentiroso_por_medo: 1, fonte: 3,
-    },
     afinidadeDemografica: {
       squire: 'media', paroco: 'alta', medico: 'alta', boticario: 'alta',
       taverneiro: 'rara', ferreiro: 'rara', moleiro: 'rara', merceeiro: 'rara',
       professora: 'alta', costureira: 'rara', lavadeira: 'rara', lavrador: 'rara',
       criada: 'rara', constable: 'media',
+      carroceiro: 'rara', guarda_caca: 'media', parteira: 'media', pastor_de_ovelhas: 'rara',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 3 e §7.2 (paroco/medico/boticario/professora; raros: ferreiro/moleiro — autodidata sem letras — e costureira/lavadeira — inteligência sem porta); OS priors compostos F3 §4.1/dossiê §2.7 (raros novos: taverneiro — lê de madrugada o que a vila bebe de dia; merceeiro — a caderneta como único livro; lavrador — o gênio sem letras da biblioteca da capela; criada — lê às escondidas os livros do patrão)',
@@ -180,15 +171,12 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'pecado_exposto',
     sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "pureza, fé": enfrenta o mal de pé
     tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // fé não é competência — sem tilt
-    afinidadePapeis: {
-      assassino_encenador: 2, isca_do_apressado: 2, veu: 3,
-      ruido_pista_dupla: 2, mentiroso_por_medo: 2, fonte: 1,
-    },
     afinidadeDemografica: {
       squire: 'media', paroco: 'alta', medico: 'rara', boticario: 'media',
       taverneiro: 'rara', ferreiro: 'media', moleiro: 'media', merceeiro: 'media',
       professora: 'alta', costureira: 'media', lavadeira: 'rara', lavrador: 'media',
       criada: 'media', constable: 'media',
+      carroceiro: 'media', guarda_caca: 'media', parteira: 'media', pastor_de_ovelhas: 'media',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 4 e §7.2 (paroco/professora; raro: taverneiro — herdou o pub que a capela manda odiar); desencaixe §7.3 (Devoto num taverneiro; motivo rivalidade_capela_taverna); tempero médium: §7.4.2; OS priors compostos F3 §4.1/dossiê §2.7 (raros novos: medico — ciência × fé, a batina que o bisturi calou; lavadeira — lava a nódoa alheia e professa pureza)',
@@ -204,15 +192,12 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'obra_arruinada',
     sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "o ofício": defende o que é seu
     tiltAtributos: { INT: TILT_NEUTRO, WIS: [1, 1, 2, 2, 1], CHA: TILT_NEUTRO }, // a mão que não erra (leve)
-    afinidadePapeis: {
-      assassino_encenador: 2, isca_do_apressado: 2, veu: 1,
-      ruido_pista_dupla: 2, mentiroso_por_medo: 1, fonte: 1,
-    },
     afinidadeDemografica: {
       squire: 'media', paroco: 'media', medico: 'media', boticario: 'alta',
       taverneiro: 'media', ferreiro: 'alta', moleiro: 'alta', merceeiro: 'media',
       professora: 'media', costureira: 'alta', lavadeira: 'alta', lavrador: 'rara',
       criada: 'media', constable: 'media',
+      carroceiro: 'media', guarda_caca: 'media', parteira: 'media', pastor_de_ovelhas: 'media',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 5 e §7.2 (boticario/ferreiro/moleiro/costureira/lavadeira); desencaixe §7.3 (Artífice num lavrador — o ofício sonhado atrás do balcão do outro)',
@@ -228,15 +213,12 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'substituicao',
     sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "a paixão": o desespero que clama
     tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: [1, 1, 2, 2, 1] }, // o charme do vínculo (leve)
-    afinidadePapeis: {
-      assassino_encenador: 3, isca_do_apressado: 2, veu: 4,
-      ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 1,
-    },
     afinidadeDemografica: {
       squire: 'rara', paroco: 'rara', medico: 'media', boticario: 'media',
       taverneiro: 'media', ferreiro: 'media', moleiro: 'media', merceeiro: 'media',
       professora: 'rara', costureira: 'alta', lavadeira: 'media', lavrador: 'media',
       criada: 'alta', constable: 'media',
+      carroceiro: 'media', guarda_caca: 'rara', parteira: 'media', pastor_de_ovelhas: 'media',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 6 (nota de nome: §7.4.3) e §7.2 (costureira/criada); desencaixe §7.3 (Amante numa esposa sem saída); papel veu: arquetipos-e-casting.md §4.1 (esconde o caso); OS priors compostos F3 §4.1/dossiê §2.7 (raros novos: squire — a paixão abaixo da classe; paroco — o coração que o púlpito não deixa; professora — casar é perder a escola, kb demografia §3)',
@@ -252,15 +234,12 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'voltar_a_ser_ninguem',
     sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "respeitabilidade": foge da exposição
     tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: [1, 1, 2, 2, 1] }, // o polimento conquistado (leve)
-    afinidadePapeis: {
-      assassino_encenador: 2, isca_do_apressado: 4, veu: 1,
-      ruido_pista_dupla: 3, mentiroso_por_medo: 3, fonte: 1,
-    },
     afinidadeDemografica: {
       squire: 'media', paroco: 'media', medico: 'media', boticario: 'rara',
       taverneiro: 'alta', ferreiro: 'media', moleiro: 'media', merceeiro: 'alta',
       professora: 'media', costureira: 'alta', lavadeira: 'alta', lavrador: 'media',
       criada: 'alta', constable: 'alta',
+      carroceiro: 'media', guarda_caca: 'media', parteira: 'media', pastor_de_ovelhas: 'media',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 7 e §7.2 (taverneiro/merceeiro/costureira/lavadeira/criada/constable; raro: boticario — o balcão como degrau); papel isca: arquetipos-e-casting.md §4.1 (Órfão ressentido)',
@@ -276,15 +255,12 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'ficar_preso',
     sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "liberdade": o fujão por excelência
     tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // horizonte não é atributo — sem tilt
-    afinidadePapeis: {
-      assassino_encenador: 2, isca_do_apressado: 2, veu: 2,
-      ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 2,
-    },
     afinidadeDemografica: {
       squire: 'rara', paroco: 'media', medico: 'media', boticario: 'media',
       taverneiro: 'media', ferreiro: 'media', moleiro: 'rara', merceeiro: 'media',
       professora: 'rara', costureira: 'media', lavadeira: 'media', lavrador: 'alta',
       criada: 'media', constable: 'rara',
+      carroceiro: 'alta', guarda_caca: 'media', parteira: 'media', pastor_de_ovelhas: 'alta',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 8 e §7.2 (lavrador; raros: squire — herdeiro que odeia a herança —, professora — instrução como bilhete de fuga — e constable — o uniforme como jaula); desencaixe §7.3 (Errante em lavrador/constable, êxodo rural); OS priors compostos F3 §4.1/dossiê §2.7 (raro novo: moleiro — herdou o moinho que o prende, e o moinho a vapor o mata devagar, kb demografia §3)',
@@ -300,15 +276,12 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'afronta_impune',
     sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "honra": fugir é a covardia que ele teme
     tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // o que pesaria é FOR — vetado por N2; sem tilt
-    afinidadePapeis: {
-      assassino_encenador: 2, isca_do_apressado: 4, veu: 1,
-      ruido_pista_dupla: 2, mentiroso_por_medo: 1, fonte: 1,
-    },
     afinidadeDemografica: {
       squire: 'alta', paroco: 'media', medico: 'media', boticario: 'rara',
       taverneiro: 'media', ferreiro: 'alta', moleiro: 'alta', merceeiro: 'media',
       professora: 'media', costureira: 'media', lavadeira: 'media', lavrador: 'alta',
       criada: 'rara', constable: 'alta',
+      carroceiro: 'media', guarda_caca: 'alta', parteira: 'media', pastor_de_ovelhas: 'media',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 9 e §7.2 (squire/ferreiro/moleiro/lavrador/constable; raro: criada — a que anota cada afronta); desencaixe §7.3 (Justiceiro numa criada/lavadeira, character negado); OS priors compostos F3 §4.1/dossiê §2.7 (raro novo: boticario — o balcão que anota cada afronta, o fiado não pago)',
@@ -324,18 +297,15 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'invisibilidade',
     sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "não ser invisível": faz barulho, chama atenção
     tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: [1, 1, 1, 2, 2] }, // a graça é performance
-    afinidadePapeis: {
-      assassino_encenador: 1, isca_do_apressado: 3, veu: 1,
-      ruido_pista_dupla: 3, mentiroso_por_medo: 2, fonte: 2,
-    },
     afinidadeDemografica: {
       squire: 'media', paroco: 'rara', medico: 'media', boticario: 'media',
       taverneiro: 'alta', ferreiro: 'media', moleiro: 'media', merceeiro: 'media',
       professora: 'media', costureira: 'media', lavadeira: 'media', lavrador: 'media',
       criada: 'media', constable: 'media',
+      carroceiro: 'media', guarda_caca: 'media', parteira: 'media', pastor_de_ovelhas: 'rara',
     },
     proveniencia:
-      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 10 e §7.2 (taverneiro; raro: paroco — o vigário engraçado, e leviano); papel ruído: arquetipos-e-casting.md §4.1 (Bobo solta sem querer)',
+      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 10 e §7.2 (taverneiro; raro: paroco — o vigário engraçado, e leviano); papel ruído: arquetipos-e-casting.md §4.1 (Bobo solta sem querer); F4: pastor raro (a graça sem plateia)',
   },
 
   vigia: {
@@ -348,18 +318,63 @@ export const VETORES_PSIQUICOS = {
     temaGatilho: 'irrelevancia',
     sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "que se saiba": alerta a vila
     tiltAtributos: { INT: TILT_NEUTRO, WIS: [1, 1, 1, 2, 2], CHA: TILT_NEUTRO }, // o exemplo da OS §3.2
-    afinidadePapeis: {
-      assassino_encenador: 1, isca_do_apressado: 1, veu: 3,
-      ruido_pista_dupla: 2, mentiroso_por_medo: 2, fonte: 4,
-    },
     afinidadeDemografica: {
       squire: 'media', paroco: 'rara', medico: 'media', boticario: 'media',
       taverneiro: 'alta', ferreiro: 'media', moleiro: 'media', merceeiro: 'alta',
       professora: 'media', costureira: 'media', lavadeira: 'alta', lavrador: 'media',
       criada: 'alta', constable: 'media',
+      carroceiro: 'alta', guarda_caca: 'alta', parteira: 'alta', pastor_de_ovelhas: 'media',
     },
     proveniencia:
       'sistemas-arquetipicos-alem-dos-12.md §7.4.1 (emenda da OS: lavadeira — a roupa conta segredos —, criada, merceeiro, taverneiro; raro: o pároco que cataloga o rebanho); segredo de inocente: kb-psique-e-crime/sexologia-e-perversoes.md §6 + kb-producao/parafilias-e-psicopatia-visao-atual.md §3',
+  },
+
+  // -------------------------------------------------------------------
+  // 12º e 13º VETORES (F4 da OS priors compostos; dossiê F1 §2.2,
+  // decisão 2 aprovada; catálogo normativo: sistemas-arquetipicos-
+  // alem-dos-12.md §7.5). O Penitente foi analisado e REPROVADO (colide
+  // com o pecado_exposto do Devoto) — registro no dossiê, como o médium.
+  // -------------------------------------------------------------------
+  previdente: {
+    id: 'previdente',
+    valor: 'previdência, o pé-de-meia; nunca dever a ninguém',
+    medo: 'a miséria à vista — a workhouse, o enterro de indigente',
+    sombraAtiva: 'o agiota da vila; elimina a boca a mais, mata pelo seguro',
+    sombraPassiva: 'o sovina que nega o socorro e deixa morrer de economia',
+    autoJustificacao: 'não podíamos sustentá-lo',
+    temaGatilho: 'miseria_a_vista',
+    sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // a prudência preserva-se: não enfrenta
+    tiltAtributos: { INT: [1, 1, 2, 2, 1], WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // a aritmética do pé-de-meia (leve)
+    afinidadeDemografica: {
+      squire: 'rara', paroco: 'media', medico: 'media', boticario: 'media',
+      taverneiro: 'media', ferreiro: 'media', moleiro: 'alta', merceeiro: 'alta',
+      professora: 'media', costureira: 'media', lavadeira: 'alta', lavrador: 'media',
+      criada: 'media', constable: 'media',
+      carroceiro: 'media', guarda_caca: 'media', parteira: 'rara', pastor_de_ovelhas: 'media',
+    },
+    proveniencia:
+      'sistemas-arquetipicos-alem-dos-12.md §7.5 (F4 da OS priors compostos, dossiê §2.2); medo de época: kb-mundo-vitoriano/demografia-e-sociedade.md §4 (penny policy, pavor do enterro de indigente) e economia-e-estrutura-social.md §3 (Poor Law/workhouse); altas: merceeiro/moleiro/lavadeira (caderneta, estoque, a viúva provedora); raros: squire (a avareza inexplicável pela posição), parteira (a que cobra em prestações e conta cada penny)',
+  },
+
+  enraizado: {
+    id: 'enraizado',
+    valor: 'a terra, a casa, a continuidade — "os meus estão enterrados aqui"',
+    medo: 'o desenraizamento: despejo, venda da terra, o êxodo que esvazia a vila',
+    sombraAtiva: 'mata para não ser arrancado — o senhorio que despeja, o herdeiro que quer vender',
+    sombraPassiva: 'o que apodrece no lugar e sabota a partida dos outros',
+    autoJustificacao: 'esta casa é o que somos',
+    temaGatilho: 'perder_o_chao',
+    sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // defende o chão de pé
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // raiz não é atributo — sem tilt
+    afinidadeDemografica: {
+      squire: 'alta', paroco: 'media', medico: 'media', boticario: 'media',
+      taverneiro: 'media', ferreiro: 'alta', moleiro: 'alta', merceeiro: 'media',
+      professora: 'media', costureira: 'media', lavadeira: 'media', lavrador: 'alta',
+      criada: 'rara', constable: 'media',
+      carroceiro: 'media', guarda_caca: 'media', parteira: 'media', pastor_de_ovelhas: 'media',
+    },
+    proveniencia:
+      'sistemas-arquetipicos-alem-dos-12.md §7.5 (F4 da OS priors compostos, dossiê §2.2); par polar com o Errante (§2: pares valem mais que rótulos); pressão de época: economia-e-estrutura-social.md §1 (depressão agrícola, êxodo) e demografia-e-sociedade.md §1-§2 (cottage atado, a vila que encolhe); altas: squire/ferreiro/moleiro/lavrador (a terra como nome, a forja do pai, o moinho herdado); raro: criada (serve na casa que já foi da família dela)',
   },
 };
 
