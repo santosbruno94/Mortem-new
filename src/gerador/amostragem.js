@@ -212,6 +212,51 @@ export function amostrarPersonagem(seed, indice, contexto) {
   };
 }
 
+// E3 §4.5 — O FORASTEIRO (vítima-forasteiro, braço da pousada): um
+// carroceiro de rota, construído pelos MESMOS sorteios do elenco mas em
+// namespace próprio (`|elenco|forasteiro|…`) e com o arquétipo cravado —
+// a identidade é "de fora": ele não conta na demografia da vila nem na
+// trava de único-na-vila. Chamado só pelo gerador de caso quando a moeda
+// de palco cai na pousada; JSON puro, mesmo shape do elenco.
+export function amostrarForasteiro(seed, nomesUsados) {
+  const salBase = salDaSeed(seed);
+  const indice = 'forasteiro';
+  const sal = `${salBase}|elenco|${indice}`;
+  const arquetipo = ARQUETIPOS.carroceiro;
+  const genero = 'masculino'; // o carroceiro de ROTA (pernoita fora) é o ofício masculino da KB
+  const faixa = sortearPonderado(
+    arquetipo.faixasIdade.map((f) => ({ valor: f.faixa, peso: f.peso })),
+    `${sal}|faixaIdade`
+  );
+  const [idadeMinima, idadeMaxima] = FAIXAS_IDADE[faixa];
+  const idade = idadeMinima + (hashDecisao(`${sal}|idade`) % (idadeMaxima - idadeMinima + 1));
+  const nome = amostrarNomeUnico(sal, genero, idade, nomesUsados);
+  const vetorBaseId = sortearVetor(salBase, indice, 'carroceiro');
+  const atributos = {
+    FOR: sortearAtributo(arquetipo.priors.FOR, `${sal}|atributo-composto:FOR`),
+    ...derivarAtributosCompostos(salBase, indice, 'carroceiro', vetorBaseId),
+  };
+  const pool = arquetipo.traits;
+  const traits = [pool[hashDecisao(`${sal}|trait|1`) % pool.length]];
+  const motivoPotencial =
+    arquetipo.motivosPotenciais[hashDecisao(`${sal}|motivo`) % arquetipo.motivosPotenciais.length];
+  return {
+    id: 'gen_forasteiro_carroceiro',
+    arquetipo: 'carroceiro',
+    profissao: arquetipo.profissoes[genero],
+    classeSocial: arquetipo.classeSocial,
+    nome,
+    genero,
+    idade,
+    atributos,
+    traits,
+    motivoPotencial,
+    comportamentos: quantizarComportamentos(atributos, traits),
+    pacoteEspacial: null,
+    forasteiro: true,
+  };
+}
+
 // API principal da fase: o elenco completo de uma seed, ordenado por
 // índice. Mesma seed e mesmo n → mesmo array, byte a byte.
 export function gerarElenco(seed, n = 8) {

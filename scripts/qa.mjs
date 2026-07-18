@@ -2713,9 +2713,20 @@ const confrontoDeterminista = SEEDS_CONFRONTO.every(
   (s, i) => JSON.stringify(gerarCasoBruto(s).crime) === JSON.stringify(casosConfronto[i].crime)
 );
 
-// (B) anti-bicondicional (§4.7).
-const premeditadoComFuga = casosConfronto.some((c) => c.escolha.cenario === 'premeditado' && fugiuNoCaso(c));
-const brigaSemFuga = casosConfronto.some((c) => c.escolha.cenario === 'briga_escalada' && !fugiuNoCaso(c));
+// (B) anti-bicondicional (§4.7). Premeditado-com-fuga é raríssimo
+// (~1/200 no lote — estreiteza PRÉ-EXISTENTE ao anel, registrada no PR
+// da E3 §4.5 para triagem futura); com o braço da pousada a testemunha
+// do lote de 80 flipou de seed, então a prova estende a varredura até
+// achar as duas testemunhas, com saída antecipada (custo ~0 quando o
+// lote curto já as tem).
+let premeditadoComFuga = casosConfronto.some((c) => c.escolha.cenario === 'premeditado' && fugiuNoCaso(c));
+let brigaSemFuga = casosConfronto.some((c) => c.escolha.cenario === 'briga_escalada' && !fugiuNoCaso(c));
+for (let iB = 81; iB <= 260 && !(premeditadoComFuga && brigaSemFuga); iB += 1) {
+  const cB = gerarCasoBruto(`confronto_${iB}`);
+  const fugiuB = fugiuNoCaso(cB);
+  if (cB.escolha.cenario === 'premeditado' && fugiuB) premeditadoComFuga = true;
+  if (cB.escolha.cenario === 'briga_escalada' && !fugiuB) brigaSemFuga = true;
+}
 const antiBicondicional = premeditadoComFuga && brigaSemFuga;
 if (!antiBicondicional)
   console.log('\nCONFRONTO — anti-bicondicional: premeditadoComFuga=', premeditadoComFuga, 'brigaSemFuga=', brigaSemFuga);
@@ -3189,6 +3200,20 @@ for (const seedE1 of SEEDS_E1) {
       e3Falhas.push(`${seedE1}: telegrama malformado ou desacoplado do nó`);
   } else if (pacoteE1.telegrama) {
     e3Falhas.push(`${seedE1}: telegrama sem nó de comarca`);
+  }
+  // E3 §4.5 — POUSADA (vítima-forasteiro): o forasteiro é SEMPRE a vítima
+  // (réu-forasteiro vetado), nunca entra em suspeitos, e a comarca vira a
+  // origem dele (papéis nos pertences → nó → rota confirmada).
+  if (brutoE1.escolha.palco?.pousada) {
+    const vitimaP = brutoE1.mundo.elenco.find((x) => x.id === brutoE1.crime.vitimaId);
+    if (!vitimaP?.forasteiro) e3Falhas.push(`${seedE1}: pousada sem vítima-forasteiro`);
+    if (pacoteE1.verdadeDeOuro.reuCorreto === 'gen_forasteiro_carroceiro')
+      e3Falhas.push(`${seedE1}: réu-forasteiro (vetado)`);
+    if (pacoteE1.suspeitos.some((su) => su.id === 'gen_forasteiro_carroceiro'))
+      e3Falhas.push(`${seedE1}: forasteiro entre os suspeitos`);
+    if (!pacoteE1.cartas.some((c) => c.id === 'gen_papeis_forasteiro'))
+      e3Falhas.push(`${seedE1}: pousada sem os papéis do morto`);
+    if (locsComarca.length === 0) e3Falhas.push(`${seedE1}: pousada sem nó de origem`);
   }
   // E3 §4.5 — ASSIMETRIA da ausência: quando o lead do nó é um álibi
   // (gen_alibi_<id>), o declarante é o AUSENTE — ele não pode ter a

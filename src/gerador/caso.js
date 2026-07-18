@@ -18,7 +18,7 @@
 import { hashString } from '../logic/hash.js';
 import { hashDecisao } from './hash_gerador.js';
 import { ITENS_COM_AGUA } from './espaco.js';
-import { sortearPonderado, derivarAtributosCompostos } from './amostragem.js';
+import { sortearPonderado, derivarAtributosCompostos, amostrarForasteiro } from './amostragem.js';
 import { quantizarComportamentos } from './quantizacao.js';
 import { gerarMundo } from './mundo.js';
 import { saoAdjacentes } from './cidade.js';
@@ -114,7 +114,7 @@ export function gerarCasoBruto(seed, opts = {}) {
   const querBriga = dirigido?.cenario
     ? dirigido.cenario === 'briga_escalada'
     : hashString(`${sal}|cenario`) % 3 === 0;
-  const cenario = querBriga && paresCoabitantes.length > 0 ? 'briga_escalada' : 'premeditado';
+  let cenario = querBriga && paresCoabitantes.length > 0 ? 'briga_escalada' : 'premeditado';
 
   // 2–3. Vítima e assassino. Na briga, o par coabitante decide os dois
   // (quem morre é sorteio — o confronto era simétrico). No premeditado,
@@ -166,6 +166,50 @@ export function gerarCasoBruto(seed, opts = {}) {
           : 'madrugada';
   }
 
+  // 3.5 E3 §4.5 — VÍTIMA-FORASTEIRO (o braço da pousada, moeda === 9,
+  // ~10%): o carroceiro de rota hospedado na taverna, morto no quarto de
+  // madrugada. A moeda é a MESMA do regime de palco (sal já contratado);
+  // o forasteiro é injetado no elenco (namespace próprio de sais), o réu
+  // vem do círculo do morto (a taverna à noite) com móbil de dinheiro, e
+  // o caso segue o fluxo interno normal (chegada 11h; réu-forasteiro
+  // segue vetado por construção — o forasteiro é sempre a vítima).
+  const salBaseCasoCedo = salDaSeed(seed);
+  const moedaPalco = hashDecisao(`${salBaseCasoCedo}|caso|regime-palco`) % 10;
+  let pousada = false;
+  let forasteiro = null;
+  if (moedaPalco === 9 && !dirigido) {
+    const pubPredio = mundoBase.cidade.predios.find((p) => p.tipo === 'pub');
+    if (pubPredio) {
+      forasteiro = amostrarForasteiro(seed, new Set(elenco.map((p) => p.nome)));
+      forasteiro.pacoteEspacial = {
+        moradia: pubPredio.id,
+        trabalho: pubPredio.id,
+        frequentados: [],
+        rotina: { dia: pubPredio.id, noite: pubPredio.id, madrugada: pubPredio.id },
+      };
+      mundoBase.elenco.push(forasteiro);
+      vitima = forasteiro;
+      cenario = 'premeditado';
+      faixa = 'madrugada';
+      // Móbil de dinheiro primeiro (dívida de caderneta, de jogo, paga
+      // retida — o que se deve a um carroceiro de rota); herança e afins
+      // não colam contra quem é de fora. A busca desce: círculo com
+      // móbil → vila com móbil → círculo → vila.
+      const MOTIVOS_CONTRA_FORASTEIRO = ['divida_caderneta', 'divida_de_jogo', 'salario_atrasado'];
+      const candidatosF = elenco.filter((p) => p.id !== forasteiro.id);
+      const circuloPub = candidatosF.filter((p) => p.pacoteEspacial.rotina.noite === pubPredio.id);
+      const bancoReu =
+        [
+          circuloPub.filter((p) => MOTIVOS_CONTRA_FORASTEIRO.includes(p.motivoPotencial)),
+          candidatosF.filter((p) => MOTIVOS_CONTRA_FORASTEIRO.includes(p.motivoPotencial)),
+          circuloPub,
+          candidatosF,
+        ].find((b) => b.length > 0) || candidatosF;
+      assassino = bancoReu[hashDecisao(`${salBaseCasoCedo}|caso|forasteiro|reu`) % bancoReu.length];
+      pousada = true;
+    }
+  }
+
   // 4. Local e hora: o crime acontece onde a rotina da vítima a põe.
   const localRotinaId = vitima.pacoteEspacial.rotina[faixa];
   const hora = horaDaFaixa(faixa, `${sal}|hora`);
@@ -190,10 +234,9 @@ export function gerarCasoBruto(seed, opts = {}) {
     caminho_do_acude: ['noite'], // o moleiro fecha a comporta ao fim do dia (§1.3e)
     adro_da_igreja: [], // diurno — só por chamariz
   };
-  const salBaseCaso = salDaSeed(seed);
-  const moedaPalco = hashDecisao(`${salBaseCaso}|caso|regime-palco`) % 10;
+  const salBaseCaso = salBaseCasoCedo;
   let palco = null;
-  if (moedaPalco === 7 || moedaPalco === 8) {
+  if (!pousada && (moedaPalco === 7 || moedaPalco === 8)) {
     const predioRotina = mundoBase.cidade.predios.find((p) => p.id === localRotinaId);
     const anexo = predioRotina ? LOGRADOURO_DO_PREDIO[predioRotina.tipo] : null;
     if (anexo && FAIXAS_DO_LOGRADOURO[anexo].includes(faixa)) {
@@ -275,6 +318,7 @@ export function gerarCasoBruto(seed, opts = {}) {
   // interferência sorteados no esqueleto).
   const locaisElegiveis = [...new Set([localId, ...esqueleto.locaisExtras])];
   const mundo = gerarMundo(seed, { n, locaisElegiveis });
+  if (pousada) mundo.elenco.push(forasteiro);
   const interior = mundo.interiores[localId];
   const comodoId = comodoDoCrime(interior, faixa);
 
@@ -386,7 +430,7 @@ export function gerarCasoBruto(seed, opts = {}) {
     // E2 (metadado gerador-facing; o motor jamais lê): o regime do palco.
     palco: palco
       ? { externo: true, logradouroId: palco.logradouroId, via: palco.via, chamariz: palco.chamariz, descoberta }
-      : { externo: false },
+      : { externo: false, ...(pousada ? { pousada: true } : {}) },
   };
 
   // 10. FASE 4 — materialização da interferência: os pedidos do esqueleto
