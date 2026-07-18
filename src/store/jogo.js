@@ -188,6 +188,12 @@ export const useJogo = create(
   // do factory de propósito, para ficar FORA do save (partialize).
   ultimaCartaPousada: null,
 
+  // Último confronto em cena que ANOTOU ligação ao mural (P1 §7 do playtest
+  // de 17/07): alimenta o aviso de rodapé (irmão do aviso de pouso) — a
+  // automação deixa de ser silenciosa. Objeto novo a cada anotação (dispara
+  // o efeito mesmo em carta repetida). Transiente de UI, FORA do save.
+  ultimoConfrontoAnotado: null, // { cartaId } | null
+
   // =====================================================================
   // Ações
   // =====================================================================
@@ -196,7 +202,7 @@ export const useJogo = create(
   // mesa ao estado de arranque. As ações permanecem (o set é merge).
   reiniciarCaso: () => {
     useJogo.persist.clearStorage();
-    set({ ...estadoInicialCaso(), ultimaCartaPousada: null });
+    set({ ...estadoInicialCaso(), ultimaCartaPousada: null, ultimoConfrontoAnotado: null });
   },
 
   // Carrega um pacote de caso (o contrato de saída do gerador): troca o caso
@@ -207,7 +213,7 @@ export const useJogo = create(
   carregarCaso: (pacote) => {
     aplicarCasoNoModulo(pacote);
     useJogo.persist.clearStorage();
-    set({ ...estadoInicialCaso(), ultimaCartaPousada: null });
+    set({ ...estadoInicialCaso(), ultimaCartaPousada: null, ultimoConfrontoAnotado: null });
   },
 
   escolherDetective: () =>
@@ -296,7 +302,12 @@ export const useJogo = create(
       (l) => (l.de === par[0] && l.para === par[1]) || (l.de === par[1] && l.para === par[0])
     );
     get().adicionarLigacao(par[0], par[1]);
-    if (!jaLigada) get().registrarLog('O confronto ficou anotado ao mural.');
+    if (!jaLigada) {
+      get().registrarLog('O confronto ficou anotado ao mural.');
+      // O aviso de rodapé (P1 §7): a anotação automática se apresenta em
+      // cena, não só no diário. Transiente — o componente o exibe e esquece.
+      set({ ultimoConfrontoAnotado: { cartaId } });
+    }
     // FASE 4: o confronto em cena é ação observável (gatilho possível).
     get().dispararInterferencias();
   },

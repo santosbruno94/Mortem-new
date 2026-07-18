@@ -11,6 +11,7 @@ import EventoLocalidade from './EventoLocalidade.jsx';
 import InterrogatorioDialogo from './InterrogatorioDialogo.jsx';
 import FichaEvidencia from './FichaEvidencia.jsx';
 import AvisoCartaPousada from './AvisoCartaPousada.jsx';
+import AvisoAnotacaoMural from './AvisoAnotacaoMural.jsx';
 import { obterDialogo } from '../data/pacote_caso.js';
 import Caderneta from './Caderneta.jsx';
 import ModalGlossario from './ModalGlossario.jsx';
@@ -179,6 +180,11 @@ export default function Escrivaninha() {
       {/* O aviso de pouso (Onda 4): a etiqueta que anuncia a observação
           registrada deslizando para a mesa — clicável para abrir a ficha. */}
       <AvisoCartaPousada />
+
+      {/* O aviso de anotação ao mural (P1 §7): o confronto em cena que
+          desmente um paradeiro anota a ligação sozinho — a etiqueta no
+          rodapé é a cerimônia que faltava (no canto oposto ao do pouso). */}
+      <AvisoAnotacaoMural />
     </div>
   );
 }
