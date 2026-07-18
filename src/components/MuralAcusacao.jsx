@@ -412,22 +412,22 @@ function LinhaRev({ rotulo, valor }) {
 }
 
 // ---------------------------------------------------------------------
-// Resumo de uma etapa concluída. Arrastá-lo de volta (> 24px) reabre a etapa;
-// um clique/toque simples também reabre (P1 do playtest — o arrasto deixou
-// de ser o único caminho; ajuda mobile e acessibilidade).
+// Resumo de uma etapa concluída. Qualquer toque/clique reabre a etapa; o
+// arrasto (> 44px) é floreio opcional — quem completa o gesto ainda o vê,
+// mas soltar no meio do caminho reabre igual (P0 do playtest de 17/07:
+// solturas entre 6 e 44px caíam numa zona morta).
 // ---------------------------------------------------------------------
 function ResumoEstacao({ etapa, resumo, aoReabrir }) {
   const st = useRef(null);
   const [puxa, setPuxa] = useState(0); // deslocamento visual enquanto se arrasta
   function down(e) {
     e.currentTarget.setPointerCapture(e.pointerId);
-    st.current = { x0: e.clientX, y0: e.clientY, moveu: 0 };
+    st.current = { x0: e.clientX, y0: e.clientY };
   }
   function move(e) {
     const a = st.current;
     if (!a) return;
     const dx = e.clientX - a.x0;
-    a.moveu = Math.max(a.moveu, Math.hypot(dx, e.clientY - a.y0));
     setPuxa(Math.max(0, Math.min(dx, 48)));
     if (Math.hypot(dx, e.clientY - a.y0) > 44) {
       st.current = null;
@@ -439,8 +439,10 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
     const a = st.current;
     st.current = null;
     setPuxa(0);
-    // Soltou quase parado (< 6px): foi um clique, não um arrasto abortado.
-    if (a && a.moveu < 6) aoReabrir();
+    // Se chegou aqui, o arrasto não completou (>44 dispara no move e
+    // anula st). Qualquer soltura conta como clique — o arrasto é
+    // gesto opcional, nunca pré-requisito.
+    if (a) aoReabrir();
   }
   return (
     <div
