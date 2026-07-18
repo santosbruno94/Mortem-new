@@ -322,6 +322,7 @@ export default function MuralAcusacao() {
           refutaHora={refutaHora}
           refutaAlibi={refutaAlibi}
           naoAcusados={naoAcusados}
+          lacunas={lacunas}
           aoVoltar={() => setRevisando(false)}
           aoConfirmar={() => {
             tocarSom('lacre');
@@ -338,7 +339,13 @@ export default function MuralAcusacao() {
 // A revisão final: o argumento inteiro, legível, antes de selar. Só lê o que
 // o jogador afirmou — nunca diz se está certo (a verdade é o Monólogo).
 // ---------------------------------------------------------------------
-function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAlibi, naoAcusados, aoVoltar, aoConfirmar }) {
+function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAlibi, naoAcusados, lacunas, aoVoltar, aoConfirmar }) {
+  // Selo com lacunas pede confissão explícita (P0 §5 do playtest de 17/07):
+  // errar segue permitido — Erro Judiciário e Impunidade são finais
+  // legítimos e pedagógicos, o botão nunca desabilita —, mas "revisei e
+  // assumo o risco" precisa se distinguir de "não vi que faltava algo".
+  // O jogador completo não vê este passo.
+  const [confirmandoLacunas, setConfirmandoLacunas] = useState(false);
   const reu = obterSuspeitos().find((s) => s.id === acusacao.reuId);
   const causa = CATALOGO_CAUSAS.find((c) => c.id === acusacao.causaId);
   const temJanela = acusacao.janela.inicio != null && acusacao.janela.fim != null;
@@ -397,14 +404,39 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
           </div>
         </dl>
 
-        <div className="flex justify-end gap-3 mt-6">
-          <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
-            Voltar e revisar
-          </button>
-          <button onClick={aoConfirmar} className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide">
-            Confirmar e julgar
-          </button>
-        </div>
+        {!confirmandoLacunas ? (
+          <div className="flex justify-end gap-3 mt-6">
+            <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
+              Voltar e revisar
+            </button>
+            <button
+              onClick={() => (lacunas.length > 0 ? setConfirmandoLacunas(true) : aoConfirmar())}
+              className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide"
+            >
+              Confirmar e julgar
+            </button>
+          </div>
+        ) : (
+          <div className="mt-6 mortem-surgir">
+            <div className="carta-pergaminho relative rounded-sm px-4 py-3">
+              <span className="tacha-latao absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5" aria-hidden="true" />
+              <p className="text-tinta text-sm">
+                A acusação não declara: <span className="text-tinta-clara">{lacunas.join(' · ')}</span>
+              </p>
+              <p className="text-tinta text-sm mt-1">
+                O julgamento correrá com o que está na mesa. Selar assim mesmo?
+              </p>
+            </div>
+            <div className="flex justify-end gap-3 mt-4">
+              <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
+                Voltar ao mural
+              </button>
+              <button onClick={aoConfirmar} className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide">
+                Selar assim mesmo
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -241,10 +241,18 @@ async function textoOverlay(page) {
   return page.locator('div.fixed[data-overlay]').last().innerText();
 }
 
+// Acusação com lacunas exige a confirmação explícita "Selar assim mesmo"
+// antes do selo (P0 §5 do playtest de 17/07); a completa sela direto. O
+// helper atravessa o passo quando ele existe e anota em `viuLacunas` se
+// apareceu — as rotas checam quem deve (e quem não deve) vê-lo.
 async function julgar(page) {
   await page.getByRole('button', { name: 'Levar a julgamento' }).click();
   await espera(page, 400);
   await page.getByRole('button', { name: 'Confirmar e julgar' }).click();
+  await espera(page, 400);
+  const selar = page.getByRole('button', { name: 'Selar assim mesmo' });
+  julgar.viuLacunas = (await selar.count()) > 0;
+  if (julgar.viuLacunas) await selar.click();
   await espera(page, 900);
   return textoOverlay(page);
 }
@@ -501,6 +509,7 @@ async function main() {
     await espera(page, 200);
 
     let texto = await julgar(page);
+    checar('P0 §5: acusação completa sela sem passo extra', !julgar.viuLacunas);
     checar('Rota 1: desfecho Vitória Absoluta', texto.includes('Vitória Absoluta'));
     checar('Rota 1: monólogo sem id interno vazado', !/buril_gravador|vidro_mostrador|carta_suplica|assinatura_registro|cesta_ceia/.test(texto));
     checar('Rota 1: monólogo sem NaN/Infinity', !/NaN|Infinity/.test(texto));
@@ -562,6 +571,7 @@ async function main() {
     await espera(page, 250);
     // "Mentiu, logo matou": sem mentiras confrontadas, sem móbil, sem juízos.
     texto = await julgar(page);
+    checar('P0 §5: acusação com lacunas exige "Selar assim mesmo"', julgar.viuLacunas);
     checar('Rota 2: desfecho Erro Judiciário', texto.includes('Erro Judiciário'));
     checar('Rota 2: sem id interno vazado', !texto.includes('carta_suplica'));
     // Q2: com a retentativa de pé, o culpado NÃO é nomeado no monólogo.
