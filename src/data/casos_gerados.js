@@ -2033,6 +2033,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Weldmere",
+   "descricao": "Bilhete impresso da casa de penhores de Weldmere: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_moleiro"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Weldmere",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_moleiro"
+   }
+  },
+  {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Albert Hall",
@@ -2128,6 +2154,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama quarto, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -2193,6 +2220,16 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_ferreiro]], [[gen_corrobora_gen_5_parteira]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Weldmere",
+   "titulo": "Casa de Penhores de Weldmere",
+   "subtitulo": "Weldmere, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -2219,14 +2256,31 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Weldmere",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_0_pastor_de_ovelhas": {
@@ -3595,6 +3649,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Weldmere",
+   "descricao": "Bilhete impresso da casa de penhores de Weldmere: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_lavrador"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Weldmere",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_lavrador"
+   }
+  },
+  {
    "id": "gen_alibi_gen_0_lavrador",
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Benjamin Evans",
@@ -3690,6 +3770,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -3748,6 +3829,16 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_lavrador]], [[gen_corrobora_gen_7_lavrador]], [[gen_corrobora_gen_4_merceeiro]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Weldmere",
+   "titulo": "Casa de Penhores de Weldmere",
+   "subtitulo": "Weldmere, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -3774,14 +3865,31 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Weldmere",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_0_lavrador": {
@@ -10034,6 +10142,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_citacao_comarca",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "A Nota do Procurador",
+   "carimboPadrao": "Nota do procurador de Netherfield",
+   "descricao": "Meia folha de ofício: a cobrança correu pelas mãos do procurador, em Netherfield, com data e número de folha.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "referencia_comarca"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "A Carta de Cobrança Copiada",
+   "carimboPadrao": "Livro do procurador de Netherfield",
+   "descricao": "No copiador do procurador que servia ao morto, a carta de cobrança, com data e soma; nela, o nome de Robert Turner.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "salario_atrasado",
+    "ligadoA": "gen_1_lavrador"
+   }
+  },
+  {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Jonas Bennett",
@@ -10179,6 +10313,7 @@ export const CASOS_POOL = [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_lavrador]].",
+    "Presa por alfinete ao maço, a folha de praxe: [[gen_citacao_comarca]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -10202,6 +10337,16 @@ export const CASOS_POOL = [
       "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]."
      ]
     }
+   ]
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Netherfield",
+   "titulo": "O Gabinete do Procurador — Netherfield",
+   "subtitulo": "Netherfield, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. No gabinete, o procurador que servia ao morto pesa a carta do delegado, corre o dedo pelo copiador de cartas e o deixa aberto sobre a mesa: [[gen_registro_comarca]]."
    ]
   }
  ],
@@ -10229,14 +10374,31 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Netherfield",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_citacao_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "A nota aponta o gabinete do procurador."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_3_lavrador": {
@@ -16679,6 +16841,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Weldmere",
+   "descricao": "Bilhete impresso da casa de penhores de Weldmere: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_3_merceeiro"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Weldmere",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_3_merceeiro"
+   }
+  },
+  {
    "id": "gen_alibi_gen_2_ferreiro",
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Daniel Cooper",
@@ -16774,6 +16962,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama quarto do sobrado, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -16850,6 +17039,16 @@ export const CASOS_POOL = [
     "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Weldmere",
+   "titulo": "Casa de Penhores de Weldmere",
+   "subtitulo": "Weldmere, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -16882,6 +17081,12 @@ export const CASOS_POOL = [
    "rotulo": "Casa do Médico",
    "grupo": "vila",
    "desbloqueadoInicio": false
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Weldmere",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
  "leads": [
@@ -16889,13 +17094,23 @@ export const CASOS_POOL = [
    "cartaId": "gen_motivo",
    "revelaNo": "oficio_do_reu",
    "nota": "O nome nos papéis dá causa à diligência."
+  },
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
   }
  ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_2_ferreiro": {
@@ -18264,6 +18479,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Weldmere",
+   "descricao": "Bilhete impresso da casa de penhores de Weldmere: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_5_criada"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Weldmere",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome da morta por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_5_criada"
+   }
+  },
+  {
    "id": "gen_alibi_gen_1_criada",
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Beatrice Saunders",
@@ -18359,6 +18600,7 @@ export const CASOS_POOL = [
     "A morta jaz ao relento, no canto a que a vila chama a vereda entre sebes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -18426,6 +18668,16 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_criada]], [[gen_corrobora_gen_2_lavrador]], [[gen_corrobora_gen_0_squire]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Weldmere",
+   "titulo": "Casa de Penhores de Weldmere",
+   "subtitulo": "Weldmere, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -18452,14 +18704,31 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Weldmere",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_1_criada": {
@@ -21627,6 +21896,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Netherfield",
+   "descricao": "Bilhete impresso da casa de penhores de Netherfield: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_7_parteira"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Netherfield",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome da morta por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_7_parteira"
+   }
+  },
+  {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Alfred Lee",
@@ -21722,6 +22017,7 @@ export const CASOS_POOL = [
     "A morta jaz ao relento, no canto a que a vila chama a alameda das lajes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -21808,6 +22104,16 @@ export const CASOS_POOL = [
     "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Netherfield",
+   "titulo": "Casa de Penhores de Netherfield",
+   "subtitulo": "Netherfield, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -21840,6 +22146,12 @@ export const CASOS_POOL = [
    "rotulo": "Cottage nº 5",
    "grupo": "vila",
    "desbloqueadoInicio": false
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Netherfield",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
  "leads": [
@@ -21847,13 +22159,23 @@ export const CASOS_POOL = [
    "cartaId": "gen_motivo",
    "revelaNo": "oficio_do_reu",
    "nota": "O nome nos papéis dá causa à diligência."
+  },
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
   }
  ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_3_ferreiro": {
@@ -23164,6 +23486,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Ashmere",
+   "descricao": "Bilhete impresso da casa de penhores de Ashmere: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_taverneiro"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Ashmere",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_taverneiro"
+   }
+  },
+  {
    "id": "gen_alibi_gen_4_costureira",
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Edward Palmer",
@@ -23259,6 +23607,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama quarto do sobrado, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -23343,6 +23692,16 @@ export const CASOS_POOL = [
     "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Ashmere",
+   "titulo": "Casa de Penhores de Ashmere",
+   "subtitulo": "Ashmere, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -23375,6 +23734,12 @@ export const CASOS_POOL = [
    "rotulo": "A Granja",
    "grupo": "vila",
    "desbloqueadoInicio": false
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Ashmere",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
  "leads": [
@@ -23382,13 +23747,23 @@ export const CASOS_POOL = [
    "cartaId": "gen_motivo",
    "revelaNo": "oficio_do_reu",
    "nota": "O nome nos papéis dá causa à diligência."
+  },
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
   }
  ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_4_costureira": {
@@ -24707,6 +25082,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Thornbrook",
+   "descricao": "Bilhete impresso da casa de penhores de Thornbrook: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_merceeiro"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Thornbrook",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_merceeiro"
+   }
+  },
+  {
    "id": "gen_alibi_gen_4_lavrador",
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Arthur Page",
@@ -24802,6 +25203,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama a loja, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -24878,6 +25280,16 @@ export const CASOS_POOL = [
     "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Thornbrook",
+   "titulo": "Casa de Penhores de Thornbrook",
+   "subtitulo": "Thornbrook, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -24910,6 +25322,12 @@ export const CASOS_POOL = [
    "rotulo": "A Granja",
    "grupo": "vila",
    "desbloqueadoInicio": false
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Thornbrook",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
  "leads": [
@@ -24917,13 +25335,23 @@ export const CASOS_POOL = [
    "cartaId": "gen_motivo",
    "revelaNo": "oficio_do_reu",
    "nota": "O nome nos papéis dá causa à diligência."
+  },
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
   }
  ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_4_lavrador": {
@@ -27887,6 +28315,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Netherfield",
+   "descricao": "Bilhete impresso da casa de penhores de Netherfield: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_lavrador"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Netherfield",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_lavrador"
+   }
+  },
+  {
    "id": "gen_alibi_gen_3_criada",
    "localidade": "delegacia",
    "textoDisplay": "A Tarde de Ada Hill",
@@ -27982,6 +28436,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -28066,6 +28521,16 @@ export const CASOS_POOL = [
     "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Netherfield",
+   "titulo": "Casa de Penhores de Netherfield",
+   "subtitulo": "Netherfield, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -28098,6 +28563,12 @@ export const CASOS_POOL = [
    "rotulo": "A Granja",
    "grupo": "vila",
    "desbloqueadoInicio": false
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Netherfield",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
  "leads": [
@@ -28105,13 +28576,23 @@ export const CASOS_POOL = [
    "cartaId": "gen_motivo",
    "revelaNo": "oficio_do_reu",
    "nota": "O nome nos papéis dá causa à diligência."
+  },
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
   }
  ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_3_criada": {
@@ -29542,6 +30023,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_recibo_comarca",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "O Bilhete de Penhor",
+   "carimboPadrao": "Bilhete de penhor de Netherfield",
+   "descricao": "Bilhete impresso da casa de penhores de Netherfield: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_criada"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "O Assento do Penhorista",
+   "carimboPadrao": "Livro de penhores de Netherfield",
+   "descricao": "No livro, o assento: o número, o dia, a soma e o nome da morta por extenso.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_criada"
+   }
+  },
+  {
    "id": "gen_alibi_gen_4_criada",
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Edith Moore",
@@ -29637,6 +30144,7 @@ export const CASOS_POOL = [
     "A morta jaz no chão do cômodo a que a vila chama sala de jantar, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -29710,6 +30218,16 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_merceeiro]], [[gen_corrobora_gen_0_lavrador]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Netherfield",
+   "titulo": "Casa de Penhores de Netherfield",
+   "subtitulo": "Netherfield, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -29736,14 +30254,31 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Netherfield",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_recibo_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "O bilhete dá o endereço da casa de penhores."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_4_criada": {
@@ -31062,6 +31597,32 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_citacao_comarca",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "A Nota do Procurador",
+   "carimboPadrao": "Nota do procurador de Weldmere",
+   "descricao": "Meia folha de ofício: a cobrança correu pelas mãos do procurador, em Weldmere, com data e número de folha.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "referencia_comarca"
+   }
+  },
+  {
+   "id": "gen_registro_comarca",
+   "localidade": "comarca_vila_mercado",
+   "suporteFisico": "registro",
+   "textoDisplay": "A Carta de Cobrança Copiada",
+   "carimboPadrao": "Livro do procurador de Weldmere",
+   "descricao": "No copiador do procurador que servia à morta, a carta de cobrança, com data e soma; nela, o nome de John Morris.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "salario_atrasado",
+    "ligadoA": "gen_1_carroceiro"
+   }
+  },
+  {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Annie Wood",
@@ -31215,6 +31776,7 @@ export const CASOS_POOL = [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_criada]].",
+    "Presa por alfinete ao maço, a folha de praxe: [[gen_citacao_comarca]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -31241,6 +31803,16 @@ export const CASOS_POOL = [
     "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotuloMesa": "Weldmere",
+   "titulo": "O Gabinete do Procurador — Weldmere",
+   "subtitulo": "Weldmere, hora e meia de estrada",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Hora e meia de estrada. No gabinete, o procurador que servia à morta pesa a carta do delegado, corre o dedo pelo copiador de cartas e o deixa aberto sobre a mesa: [[gen_registro_comarca]]."
+   ]
   }
  ],
  "nosMapa": [
@@ -31273,6 +31845,12 @@ export const CASOS_POOL = [
    "rotulo": "Cottage nº 3",
    "grupo": "vila",
    "desbloqueadoInicio": false
+  },
+  {
+   "id": "comarca_vila_mercado",
+   "rotulo": "Weldmere",
+   "grupo": "comarca_vila_mercado",
+   "desbloqueadoInicio": false
   }
  ],
  "leads": [
@@ -31280,13 +31858,23 @@ export const CASOS_POOL = [
    "cartaId": "gen_motivo",
    "revelaNo": "oficio_do_reu",
    "nota": "O nome nos papéis dá causa à diligência."
+  },
+  {
+   "cartaId": "gen_citacao_comarca",
+   "revelaNo": "comarca_vila_mercado",
+   "nota": "A nota aponta o gabinete do procurador."
   }
  ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
   "vila|cena_predio": 1,
-  "vila|vila": 1
+  "vila|vila": 1,
+  "comarca_vila_mercado|comarca_vila_mercado": 0,
+  "comarca_vila_mercado|vila": 1.5,
+  "vila|comarca_vila_mercado": 1.5,
+  "comarca_vila_mercado|cena_predio": 1.5,
+  "cena_predio|comarca_vila_mercado": 1.5
  },
  "dialogos": {
   "dialogo_gen_0_criada": {

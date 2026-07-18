@@ -16,6 +16,7 @@
 
 import { gerarElenco } from './amostragem.js';
 import { gerarCidade } from './cidade.js';
+import { gerarComarca } from './comarca.js';
 import { inserirElenco, derivarGrafoAvistamentos } from './insercao.js';
 import { gerarInterior } from './interiores.js';
 
@@ -50,6 +51,9 @@ export function gerarMundo(seed, opts = {}) {
   return {
     seed: cidade.seed,
     cidade,
+    // E3 (OS palco em anéis): a comarca — satélites de fachada em volta da
+    // vila (nó de mapa só quando o caso referencia; LOD por relevância).
+    comarca: gerarComarca(seed, cidade),
     elenco,
     grafoAvistamentos,
     locaisElegiveis,

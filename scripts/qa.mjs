@@ -22,6 +22,7 @@ import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { useJogo } from '../src/store/jogo.js';
+import { hashDecisao as hashDecisaoQa } from '../src/gerador/hash_gerador.js';
 import { ANCORAS, analisarLigacoes, refutacaoDeHoraEstabelecida } from '../src/logic/acusacao.js';
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
@@ -3095,6 +3096,7 @@ let decorrelacaoOk = true;
 const SEEDS_E1 = Array.from({ length: 50 }, (_, i) => `comarca_${i + 1}`);
 const ge1Falhas = [];
 const engodoInalcancavel = []; // GE6 (E2): alcançabilidade do engodo no pacote
+const e3Falhas = []; // GE7/GE8 + satélite órfão (E3), colhidas no mesmo lote de pacotes
 let ge2Total = 0;
 let ge2SemCarta = 0;
 const marcadoresDoPonto = (pt) => [
@@ -3148,6 +3150,26 @@ for (const seedE1 of SEEDS_E1) {
     ]);
     if (!textosE1.some((t) => t.includes('[[gen_engodo]]'))) engodoInalcancavel.push(seedE1);
   }
+  // E3 — GE7 (só registro durável a distância; nunca essencial), GE8 (sem
+  // interrogável fora da vila) e lint de satélite órfão de função.
+  const locsComarca = pacoteE1.localidades.filter((l) => l.id.startsWith('comarca_'));
+  const cartasComarca = pacoteE1.cartas.filter((c) => (c.localidade || '').startsWith('comarca_'));
+  for (const l of locsComarca) {
+    if (!cartasComarca.some((c) => c.localidade === l.id))
+      e3Falhas.push(`${seedE1}: satélite ${l.id} referenciado sem função`);
+    const no = pacoteE1.nosMapa.find((n) => n.id === l.id);
+    if (!no || no.desbloqueadoInicio) e3Falhas.push(`${seedE1}: nó de comarca visível de início`);
+    if (!pacoteE1.leads.some((ld) => ld.revelaNo === l.id)) e3Falhas.push(`${seedE1}: nó de comarca sem lead`);
+    if (!(pacoteE1.custos[`${l.id}|vila`] > 0)) e3Falhas.push(`${seedE1}: custo de comarca ausente`);
+  }
+  for (const c of cartasComarca) {
+    if (c.suporteFisico !== 'registro') e3Falhas.push(`${seedE1}: ${c.id} a distância sem ser registro (GE7)`);
+    if (['temporal', 'causal', 'vestigio'].includes((c.tagsOcultas || {}).dominio))
+      e3Falhas.push(`${seedE1}: ${c.id} de classe essencial a distância (GE7)`);
+    if (c.origemTestemunha) e3Falhas.push(`${seedE1}: testemunha a distância (GE8)`);
+  }
+  if (Object.values(pacoteE1.dialogos || {}).some((d) => (d.origemLocalidade || '').startsWith('comarca_')))
+    e3Falhas.push(`${seedE1}: interrogatório a distância (GE8)`);
 }
 const ge1IntegridadeOk = ge1Falhas.length === 0;
 if (!ge1IntegridadeOk) console.log('\nPALCO E1 — GE1 falhou:', ge1Falhas.slice(0, 8).join('; '));
@@ -3184,6 +3206,9 @@ const ge4Falhas = [];
 const ge6Falhas = [];
 let e2Externos = 0;
 const e2Familias = {};
+let e3ComNo = 0;
+let e3Corroborativas = 0;
+const MOTIVOS_COM_PAPEL_E3 = ['divida_caderneta', 'dote', 'salario_atrasado', 'heranca'];
 for (const seedE2 of SEEDS_E2) {
   const brutoE2 = gerarCasoBruto(seedE2);
   const interiorE2 = brutoE2.mundo.interiores[brutoE2.escolha.localId];
@@ -3193,6 +3218,16 @@ for (const seedE2 of SEEDS_E2) {
     const naBorda =
       sd.col === 0 || sd.fila === 0 || sd.col === interiorE2.grid.colunas - 1 || sd.fila === interiorE2.grid.filas - 1;
     if (!dentro || !naBorda) ge4Falhas.push(`${seedE2}: saída fora da borda do grid`);
+  }
+  // E3 — GE9: espelho da moeda do montador (corroborativa ≤1; móbil 2–7
+  // só com móbil de papel; senão, sem nó).
+  const moedaComarca = hashDecisaoQa(`${seedE2}|caso|comarca-funcao`) % 10;
+  const reuE3 = brutoE2.mundo.elenco.find((p) => p.id === brutoE2.crime.assassinoId);
+  if (moedaComarca <= 1) {
+    e3ComNo += 1;
+    e3Corroborativas += 1;
+  } else if (moedaComarca <= 7 && MOTIVOS_COM_PAPEL_E3.includes(reuE3.motivoPotencial)) {
+    e3ComNo += 1;
   }
   const palcoE2 = brutoE2.escolha.palco;
   if (!palcoE2 || !palcoE2.externo) continue;
@@ -3228,6 +3263,21 @@ if (!ge6ChamarizOk)
 const bandaPalcoOk = e2Externos / SEEDS_E2.length >= 0.1 && e2Externos / SEEDS_E2.length <= 0.3;
 if (!bandaPalcoOk)
   console.log(`\nPALCO E2 — regime-palco fora da banda: ${e2Externos}/${SEEDS_E2.length} externos.`);
+
+// ============================================================
+// OS PALCO EM ANÉIS (E3) — a comarca. GE7/GE8 e o lint de satélite órfão
+// correm no lote de pacotes da E1 (acima, e3Falhas); aqui:
+// (GE9) anti-tell: entre os casos COM nó de comarca, a fração cuja função
+//       é meramente corroborativa (da vítima, sem apontar ninguém) fica
+//       na banda 30–50% em torno do Z=40% do autor — "há satélite ⇒ o
+//       segredo mora lá" não vira lei aprendível. A moeda é recomputada
+//       da própria seed (sal `seed|caso|comarca-funcao`, determinístico).
+// ============================================================
+const ge7e8Ok = e3Falhas.length === 0;
+if (!ge7e8Ok) console.log('\nCOMARCA E3 — GE7/GE8 falhou:', e3Falhas.slice(0, 8).join('; '));
+const ge9AntiTellOk = e3ComNo > 0 && e3Corroborativas / e3ComNo >= 0.3 && e3Corroborativas / e3ComNo <= 0.5;
+if (!ge9AntiTellOk)
+  console.log(`\nCOMARCA E3 — GE9 fora da banda: ${e3Corroborativas}/${e3ComNo} corroborativas.`);
 
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -3327,6 +3377,8 @@ const checagens = [
   ['Palco E2 — GE5 métodos externos: ≥ 2 famílias e nenhuma acima de 40% das cenas externas do lote (OS palco em anéis §3.3)', ge5MetodosOk],
   ['Palco E2 — GE6 chamariz: toda interceptação deposita vestígio do engodo, alcançável no pacote (OS palco em anéis §3.4b)', ge6ChamarizOk],
   ['Palco E2 — regime-palco na banda: cenas externas em 10–30% do lote de 150 seeds (OS palco em anéis §3.6)', bandaPalcoOk],
+  ['Comarca E3 — GE7/GE8 + LOD: só registro durável a distância, nunca essencial; sem interrogável fora da vila; satélite referenciado tem função, nó oculto, lead e custo (OS palco em anéis §4)', ge7e8Ok],
+  ['Comarca E3 — GE9 anti-tell: função meramente corroborativa em 30–50% dos casos com nó (Z=40% do autor) (OS palco em anéis §4.4)', ge9AntiTellOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
