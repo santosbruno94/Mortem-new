@@ -35,6 +35,13 @@
 // sangue alheio e pegadas (segunda e terceira vias de presença) e o
 // depoimento de ruído (a testemunha da vizinhança — `origemTestemunha`
 // identifica a pessoa por trás da carta, alvo possível de interferência).
+//
+// E1 (OS palco em anéis, D1 — a última milha): toda carta nascida de
+// vestígio carrega `comodo`, `celula` e `mobilia` — a âncora espacial que
+// o RegistroDoCrime sempre soube e a ponte descartava. Metadado
+// gerador-facing na linhagem de `suporteFisico`: o motor jamais o lê
+// (guarda GE3 no qa.mjs); quem o consome é o montador do pacote, para
+// dividir a cena em pontos de interesse (um por cômodo do grid).
 // =====================================================================
 
 import { METODOS } from './metodos.js';
@@ -187,6 +194,9 @@ export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId 
       id: 'gen_instrumento',
       localidade: vestigioInstrumento.classe === 'instrumento_abandonado' ? 'cena' : 'oficio_do_reu',
       suporteFisico: vestigioInstrumento.classe === 'instrumento_abandonado' ? 'cena' : 'pertences_do_reu',
+      comodo: vestigioInstrumento.comodo ?? null,
+      celula: vestigioInstrumento.celula ? { ...vestigioInstrumento.celula } : null,
+      mobilia: vestigioInstrumento.mobilia ?? null,
       textoDisplay: 'O Instrumento',
       carimboPadrao: vestigioInstrumento.detalhe,
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -201,10 +211,15 @@ export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId 
     // Método sem instrumento (as mãos): a presença vem do pertence que a
     // luta arrancou do assassino (depositado pelo autobattler).
     const pertence = crime.vestigios.find((v) => v.classe === 'pertence_do_assassino');
+    // A âncora é a POSIÇÃO FINAL do corpo (não a célula da queda): o
+    // pertence está na mão da vítima e viaja com ela no arrasto.
     cartas.push({
       id: 'gen_pertence',
       localidade: 'cena',
       suporteFisico: 'cena',
+      comodo: crime.posicaoCorpo.comodo,
+      celula: { ...crime.posicaoCorpo.celula },
+      mobilia: null,
       textoDisplay: 'Pertence Arrancado',
       carimboPadrao: pertence ? pertence.detalhe : 'Pertence do agressor na cena',
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -227,6 +242,9 @@ export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId 
       id: 'gen_sangue_alheio',
       localidade: 'cena',
       suporteFisico: 'cena',
+      comodo: vSangueAlheio.comodo ?? null,
+      celula: vSangueAlheio.celula ? { ...vSangueAlheio.celula } : null,
+      mobilia: vSangueAlheio.mobilia ?? null,
       textoDisplay: 'Sangue que Não É da Vítima',
       carimboPadrao: vSangueAlheio.detalhe,
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -244,6 +262,9 @@ export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId 
       id: 'gen_pegadas',
       localidade: 'cena',
       suporteFisico: 'cena',
+      comodo: vPegadas.comodo ?? null,
+      celula: vPegadas.celula ? { ...vPegadas.celula } : null,
+      mobilia: vPegadas.mobilia ?? null,
       textoDisplay: 'Pegadas Rumo à Porta',
       carimboPadrao: vPegadas.detalhe,
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
@@ -284,6 +305,9 @@ export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId 
       id: 'gen_frestas',
       localidade: 'cena',
       suporteFisico: 'cena',
+      comodo: vEsfrega.comodo ?? null,
+      celula: vEsfrega.celula ? { ...vEsfrega.celula } : null,
+      mobilia: vEsfrega.mobilia ?? null,
       textoDisplay: 'Sangue nas Frestas',
       carimboPadrao: 'Assoalho esfregado; guaiaco positivo na fresta',
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',

@@ -144,3 +144,17 @@ mesa: comparável às Fases 3–4 da OS de diálogo somadas. O risco de estouro 
 um só: a monotonia entre casos pedir variantes novas em muitas superfícies —
 cada variante nova amplia o corpus a revisar. Se o parecer da Fase 1 apontar
 esse caminho em escala, o corte de escopo se decide ali, com o parecer na mão.
+
+## 9. Dependência registrada: pontos da cena (OS palco em anéis, E1 — 18/07/2026)
+
+A fase E1 da OS "Palco em anéis" dividiu a cena gerada em `introducao` +
+`pontos` (um por cômodo do grid), com prosa mínima por template seedado em
+`montarLocalidades` (`pacote_gerado.js`): a introdução do prédio, a abertura
+de mobília por ponto (2 variantes), a nota do cômodo do corpo, as texturas de
+vestígio por cômodo e as frases de carta com variante cômodo-neutra. **Essas
+superfícies entram no corpus desta OS** (inventário da Fase 0 e passes 1–3).
+
+Registro de decisão do autor (18/07/2026): os **micro-gestos gerados** nos
+pontos da cena (extração por gesto, à la "contar os entalhes da roda") foram
+adiados da v1 do E1 **para esta OS** — desenhar os gestos junto da lapidação
+das frases de ponto, quando a prosa de cada cômodo tiver voz própria.

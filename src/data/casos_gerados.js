@@ -213,9 +213,15 @@ export const CASO_REPLICA = {
    "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "deposito",
+   "celula": {
+    "col": 2,
+    "fila": 2
+   },
+   "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Gertrude Baker.",
+   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Gertrude Baker.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -227,6 +233,12 @@ export const CASO_REPLICA = {
    "id": "gen_pegadas",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "deposito",
+   "celula": {
+    "col": 3,
+    "fila": 2
+   },
+   "mobilia": null,
    "textoDisplay": "Pegadas Rumo à Porta",
    "carimboPadrao": "Meias-solas impressas em sangue",
    "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
@@ -301,6 +313,12 @@ export const CASO_REPLICA = {
    "id": "gen_hora_forjada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "deposito",
+   "celula": {
+    "col": 2,
+    "fila": 2
+   },
+   "mobilia": null,
    "tagsOcultas": {
     "dominio": "ambiental",
     "subDominio": "cronologia_aparente",
@@ -329,6 +347,9 @@ export const CASO_REPLICA = {
    "id": "gen_segredo_gen_1_boticario",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "loja",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Edward Moore",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Edward Moore por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -344,6 +365,9 @@ export const CASO_REPLICA = {
    "id": "gen_segredo_gen_3_lavadeira",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "loja",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Lucy Jackson",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Lucy Jackson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -487,12 +511,34 @@ export const CASO_REPLICA = {
    "titulo": "A Cena — A Mercearia",
    "subtitulo": "Onde Mary Taylor foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Mercearia guarda o dia em que a acharam. No cômodo, prateleiras frias da despensa, pia da copa; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_boticario]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_3_lavadeira]].",
-    "Junto do corpo, no chão: [[gen_instrumento]]."
+   "introducao": [
+    "A Mercearia guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_deposito",
+     "rotulo": "Depósito",
+     "comodo": "deposito",
+     "prosa": [
+      "No chão deste cômodo, a morta. Do mobiliário, prateleiras frias da despensa, pia da copa. De um canto a outro, nada guarda o seu lugar. À vista, sem procura: [[gen_hora_forjada]]. Junto do corpo, no chão: [[gen_instrumento]]."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto (sobrado)",
+     "comodo": "quarto",
+     "prosa": [
+      "Do mobiliário, lavatório com bacia, cômoda, cama de armação de madeira."
+     ]
+    },
+    {
+     "id": "pt_cena_loja",
+     "rotulo": "A Loja",
+     "comodo": "loja",
+     "prosa": [
+      "Do mobiliário, vitrine envidraçada, sineta da porta, balcão que barra o cliente. Há mobília por erguer do chão. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_boticario]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_3_lavadeira]]."
+     ]
+    }
    ],
    "blocosContingentes": [
     {
@@ -506,7 +552,7 @@ export const CASO_REPLICA = {
      "eventoId": "intf_1",
      "quando": "nao_disparado",
      "paragrafos": [
-      "Do meio do cômodo até a porta: [[gen_pegadas]]."
+      "No cômodo chamado depósito, do meio do vão até a porta: [[gen_pegadas]]."
      ]
     }
    ]
@@ -1880,6 +1926,12 @@ export const CASOS_POOL = [
    "id": "gen_pertence",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 2,
+    "fila": 1
+   },
+   "mobilia": null,
    "textoDisplay": "O Pertence Arrancado",
    "carimboPadrao": "Botão com fio na mão da vítima",
    "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Maurice Martin perdeu o segundo botão.",
@@ -1908,6 +1960,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_pastor_de_ovelhas",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "piso_do_moinho",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Albert Hall",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Albert Hall: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -1949,6 +2004,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_4_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "piso_do_moinho",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Rose Wright",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Rose Wright por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -2079,11 +2137,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — O Moinho",
    "subtitulo": "Onde Charles Harris foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Moinho guarda o dia em que o acharam. No cômodo, cômoda, cama de armação de madeira; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_pastor_de_ovelhas]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_4_criada]]."
+   "introducao": [
+    "O Moinho guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Casa do Moleiro",
+     "comodo": "cozinha",
+     "prosa": [
+      "Do mobiliário, mesa de cozinha, fogão de ferro a carvão. Há mobília por erguer do chão."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, cômoda, cama de armação de madeira. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]."
+     ]
+    },
+    {
+     "id": "pt_cena_piso_do_moinho",
+     "rotulo": "Piso do Moinho",
+     "comodo": "piso_do_moinho",
+     "prosa": [
+      "Do mobiliário, guindaste de sacas, mó de moinho. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_pastor_de_ovelhas]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_4_criada]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -3378,6 +3459,12 @@ export const CASOS_POOL = [
    "id": "gen_pertence",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 0,
+    "fila": 1
+   },
+   "mobilia": null,
    "textoDisplay": "O Pertence Arrancado",
    "carimboPadrao": "Botão com fio na mão da vítima",
    "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Herbert Thomas perdeu o segundo botão.",
@@ -3392,9 +3479,15 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 1,
+    "fila": 2
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -3447,6 +3540,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_carroceiro",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "paiol",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Ernest Hall",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Ernest Hall: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -3603,11 +3699,26 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Granja",
    "subtitulo": "Onde Thomas Watson foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Granja guarda o dia em que o acharam. No cômodo, mesa de tampo raspado, cadeiras Windsor; de um canto a outro, nada guarda o seu lugar; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
-    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_carroceiro]].",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
+   "introducao": [
+    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha da Granja",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, mesa de tampo raspado, cadeiras Windsor. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+     ]
+    },
+    {
+     "id": "pt_cena_paiol",
+     "rotulo": "Paiol",
+     "comodo": "paiol",
+     "prosa": [
+      "Do mobiliário, ferramentas de lavoura, arreios pendurados, sacas de grão. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_carroceiro]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -4890,9 +5001,15 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 4,
+    "fila": 2
+   },
+   "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Samuel Marsh.",
+   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Samuel Marsh.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -4918,6 +5035,12 @@ export const CASOS_POOL = [
    "id": "gen_hora_forjada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 4,
+    "fila": 2
+   },
+   "mobilia": null,
    "tagsOcultas": {
     "dominio": "ambiental",
     "subDominio": "cronologia_aparente",
@@ -4946,6 +5069,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "loja",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Ethel Thomas",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Ethel Thomas por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -4961,6 +5087,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_5_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "loja",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Henry Walker",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Walker: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -5104,12 +5233,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Mercearia",
    "subtitulo": "Onde William Harris foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira.",
-    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_5_lavrador]].",
-    "Junto do corpo, no chão: [[gen_instrumento]]."
+   "introducao": [
+    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_deposito",
+     "rotulo": "Depósito",
+     "comodo": "deposito",
+     "prosa": [
+      "No cômodo, prateleiras frias da despensa, pia da copa."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto (sobrado)",
+     "comodo": "quarto",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, lavatório com bacia, cômoda, cama de armação de madeira. À vista, sem procura: [[gen_hora_forjada]]. Junto do corpo, no chão: [[gen_instrumento]]."
+     ]
+    },
+    {
+     "id": "pt_cena_loja",
+     "rotulo": "A Loja",
+     "comodo": "loja",
+     "prosa": [
+      "Do mobiliário, balcão que barra o cliente, prateleiras e gavetas de estoque, vitrine envidraçada. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_lavrador]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -6404,6 +6555,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de Florence Hill, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
@@ -6458,6 +6612,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de George Webb",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de George Webb: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -6601,9 +6758,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — Cottage nº 2",
    "subtitulo": "Onde Florence Read foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 2 guarda o dia em que a acharam. No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_lavrador]]."
+   "introducao": [
+    "O Cottage nº 2 guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, a morta. No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_lavrador]]."
+     ]
+    },
+    {
+     "id": "pt_cena_copa",
+     "rotulo": "Copa",
+     "comodo": "copa",
+     "prosa": [
+      "Do mobiliário, tina e tábua de lavar, pia da copa (a única torneira)."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "No cômodo, cama de ferro, bacia e jarro."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -7908,6 +8090,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de Leonard Smith, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
@@ -7922,9 +8107,15 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas da morta não sangraram nesse caminho.",
+   "comodo": "taproom",
+   "celula": {
+    "col": 2,
+    "fila": 3
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas da morta não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -8009,6 +8200,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_merceeiro",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "taproom",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Frank Jones",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Frank Jones por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -8037,6 +8231,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_squire",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "taproom",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Peter Taylor",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Peter Taylor: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -8167,10 +8364,42 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Taverna",
    "subtitulo": "Onde Florence Brown foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Taverna guarda o dia em que a acharam. No cômodo, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_merceeiro]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_0_squire]]."
+   "introducao": [
+    "A Taverna guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_quartos",
+     "rotulo": "Quartos (sobrado)",
+     "comodo": "quartos",
+     "prosa": [
+      "No cômodo, bacia e jarro, baú de roupa."
+     ]
+    },
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "Do mobiliário, tapete de retalhos, o relógio da família, fogão de ferro a carvão."
+     ]
+    },
+    {
+     "id": "pt_cena_taproom",
+     "rotulo": "Taproom",
+     "comodo": "taproom",
+     "prosa": [
+      "No chão deste cômodo, a morta. Do mobiliário, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_merceeiro]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_0_squire]]."
+     ]
+    },
+    {
+     "id": "pt_cena_parlour",
+     "rotulo": "Parlour",
+     "comodo": "parlour",
+     "prosa": [
+      "No cômodo, o relógio da família, flores de cera sob redoma."
+     ]
+    }
    ],
    "blocosContingentes": [
     {
@@ -8184,7 +8413,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "nao_disparado",
      "paragrafos": [
-      "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
+      "No cômodo chamado taproom, na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
      ]
     }
    ]
@@ -9579,6 +9808,12 @@ export const CASOS_POOL = [
    "id": "gen_pertence",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 1,
+    "fila": 2
+   },
+   "mobilia": null,
    "textoDisplay": "O Pertence Arrancado",
    "carimboPadrao": "Botão com fio na mão da vítima",
    "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Robert Turner perdeu o segundo botão.",
@@ -9593,9 +9828,15 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 0,
+    "fila": 2
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -9696,6 +9937,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Jonas Bennett",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Jonas Bennett: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -9865,11 +10109,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — Cottage nº 3",
    "subtitulo": "Onde Edwin Bennett foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 3 guarda o dia em que o acharam. No cômodo, mesa de tampo raspado, cadeiras Windsor; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavrador]].",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
+   "introducao": [
+    "O Cottage nº 3 guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, mesa de tampo raspado, cadeiras Windsor. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+     ]
+    },
+    {
+     "id": "pt_cena_copa",
+     "rotulo": "Copa",
+     "comodo": "copa",
+     "prosa": [
+      "Do mobiliário, pia da copa (a única torneira), copper de ferver roupa, tina e tábua de lavar."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "No cômodo, baú de roupa, cama de ferro. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavrador]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -11262,6 +11529,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Lugar Vazio",
    "carimboPadrao": "Instrumento que falta no seu lugar",
    "descricao": "Entre as coisas de ofício de William Cooper, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
@@ -11276,6 +11546,12 @@ export const CASOS_POOL = [
    "id": "gen_frestas",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 4,
+    "fila": 3
+   },
+   "mobilia": null,
    "textoDisplay": "Sangue nas Frestas",
    "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
    "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
@@ -11364,6 +11640,12 @@ export const CASOS_POOL = [
    "id": "gen_hora_forjada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 1,
+    "fila": 2
+   },
+   "mobilia": null,
    "tagsOcultas": {
     "dominio": "ambiental",
     "subDominio": "cronologia_aparente",
@@ -11392,6 +11674,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_4_merceeiro",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Henry Parsons",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Henry Parsons por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -11420,6 +11705,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Robert Marsh",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Robert Marsh: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -11550,12 +11838,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — Cottage nº 2",
    "subtitulo": "Onde Leonard Smith foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 2 guarda o dia em que o acharam. No cômodo, sofá velho, tapete de retalhos; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça.",
-    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_merceeiro]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_lavrador]].",
-    "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+   "introducao": [
+    "O Cottage nº 2 guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, sofá velho, tapete de retalhos. À vista, sem procura: [[gen_hora_forjada]]."
+     ]
+    },
+    {
+     "id": "pt_cena_copa",
+     "rotulo": "Copa",
+     "comodo": "copa",
+     "prosa": [
+      "No cômodo, tina e tábua de lavar, pia da copa (a única torneira), copper de ferver roupa."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "Do mobiliário, baú de roupa, cama de ferro. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_merceeiro]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_1_lavrador]]. Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -12983,6 +13293,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de Dorcas Barnes, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
@@ -13037,6 +13350,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_pastor_de_ovelhas",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Henry Moore",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Moore: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -13180,9 +13496,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — Cottage nº 4",
    "subtitulo": "Onde Eleanor Barnes foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 4 guarda o dia em que a acharam. No cômodo, cadeiras Windsor, sofá velho, tapete de retalhos; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_pastor_de_ovelhas]]."
+   "introducao": [
+    "O Cottage nº 4 guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, a morta. Do mobiliário, cadeiras Windsor, sofá velho, tapete de retalhos. De um canto a outro, nada guarda o seu lugar. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_pastor_de_ovelhas]]."
+     ]
+    },
+    {
+     "id": "pt_cena_copa",
+     "rotulo": "Copa",
+     "comodo": "copa",
+     "prosa": [
+      "Do mobiliário, copper de ferver roupa, tina e tábua de lavar."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "Do mobiliário, bacia e jarro, baú de roupa. Há mobília por erguer do chão."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -14487,9 +14828,15 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 5,
+    "fila": 3
+   },
+   "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Peter Roberts.",
+   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Peter Roberts.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -14501,6 +14848,12 @@ export const CASOS_POOL = [
    "id": "gen_pegadas",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 4,
+    "fila": 3
+   },
+   "mobilia": null,
    "textoDisplay": "Pegadas Rumo à Porta",
    "carimboPadrao": "Meias-solas impressas em sangue",
    "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
@@ -14602,6 +14955,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_2_lavadeira",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Sarah Ward",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Sarah Ward por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -14617,6 +14973,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_merceeiro",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Susan Wilson",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Susan Wilson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -14760,11 +15119,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — Cottage nº 2",
    "subtitulo": "Onde Fanny Mills foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 2 guarda o dia em que a acharam. No cômodo, bacia e jarro, baú de roupa; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavadeira]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_merceeiro]]."
+   "introducao": [
+    "O Cottage nº 2 guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "Do mobiliário, o relógio da família, fogão de ferro a carvão."
+     ]
+    },
+    {
+     "id": "pt_cena_copa",
+     "rotulo": "Copa",
+     "comodo": "copa",
+     "prosa": [
+      "No cômodo, pia da copa (a única torneira), copper de ferver roupa, tina e tábua de lavar."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "No chão deste cômodo, a morta. Do mobiliário, bacia e jarro, baú de roupa. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Junto do corpo, no chão: [[gen_instrumento]]. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavadeira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_1_merceeiro]]."
+     ]
+    }
    ],
    "blocosContingentes": [
     {
@@ -14778,7 +15160,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "nao_disparado",
      "paragrafos": [
-      "Do meio do cômodo até a porta: [[gen_pegadas]]."
+      "No cômodo chamado quarto, do meio do vão até a porta: [[gen_pegadas]]."
      ]
     }
    ]
@@ -16164,6 +16546,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de William Carter, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
@@ -16192,6 +16577,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_2_ferreiro",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "loja",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Daniel Cooper",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Daniel Cooper: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -16233,6 +16621,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_5_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "loja",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de James Ward",
    "descricao": "Meia folha pautada com soma, prazo e o nome de James Ward por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -16363,10 +16754,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Mercearia",
    "subtitulo": "Onde Leonard Ward foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, cama de armação de madeira, lavatório com bacia, cômoda; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_ferreiro]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_5_criada]]."
+   "introducao": [
+    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_deposito",
+     "rotulo": "Depósito",
+     "comodo": "deposito",
+     "prosa": [
+      "No cômodo, prateleiras frias da despensa, pia da copa."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto (sobrado)",
+     "comodo": "quarto",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, cama de armação de madeira, lavatório com bacia, cômoda. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão."
+     ]
+    },
+    {
+     "id": "pt_cena_loja",
+     "rotulo": "A Loja",
+     "comodo": "loja",
+     "prosa": [
+      "Do mobiliário, vitrine envidraçada, sineta da porta, balcão que barra o cliente. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_ferreiro]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_criada]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -17684,9 +18099,15 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "parlour",
+   "celula": {
+    "col": 1,
+    "fila": 4
+   },
+   "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Edith Walker.",
+   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Edith Walker.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -17698,6 +18119,12 @@ export const CASOS_POOL = [
    "id": "gen_pegadas",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "parlour",
+   "celula": {
+    "col": 2,
+    "fila": 4
+   },
+   "mobilia": null,
    "textoDisplay": "Pegadas Rumo à Porta",
    "carimboPadrao": "Meias-solas impressas em sangue",
    "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
@@ -17766,6 +18193,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "parlour",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Harold Walker",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Harold Walker: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -17909,11 +18339,42 @@ export const CASOS_POOL = [
    "titulo": "A Cena — Casa do Médico",
    "subtitulo": "Onde Annie Morris foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Casa do Médico guarda o dia em que a acharam. No cômodo, flores de cera sob redoma, retratos emoldurados; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavrador]].",
-    "Do meio do cômodo até a porta: [[gen_pegadas]]."
+   "introducao": [
+    "A Casa do Médico guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "No cômodo, baú de roupa, cama de ferro, bacia e jarro."
+     ]
+    },
+    {
+     "id": "pt_cena_parlour",
+     "rotulo": "Parlour",
+     "comodo": "parlour",
+     "prosa": [
+      "No chão deste cômodo, a morta. Do mobiliário, flores de cera sob redoma, retratos emoldurados. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Junto do corpo, no chão: [[gen_instrumento]]. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavrador]]. Do meio do vão até a porta: [[gen_pegadas]]."
+     ]
+    },
+    {
+     "id": "pt_cena_consultorio",
+     "rotulo": "Consultório",
+     "comodo": "consultorio",
+     "prosa": [
+      "Vão sem mobília; sobra o assoalho nu."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -19220,6 +19681,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Lugar Vazio",
    "carimboPadrao": "Instrumento que falta no seu lugar",
    "descricao": "Entre as coisas de ofício de Florence Roberts, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
@@ -19234,9 +19698,15 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 3,
+    "fila": 1
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -19262,6 +19732,12 @@ export const CASOS_POOL = [
    "id": "gen_frestas",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 2,
+    "fila": 1
+   },
+   "mobilia": null,
    "textoDisplay": "Sangue nas Frestas",
    "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
    "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
@@ -19353,6 +19829,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_4_costureira",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Eva Ellis",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Eva Ellis: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -19381,6 +19860,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Harry Webb",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Harry Webb por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -19524,11 +20006,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — Cottage nº 3",
    "subtitulo": "Onde William Mills foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 3 guarda o dia em que o acharam. No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_costureira]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_3_criada]]."
+   "introducao": [
+    "O Cottage nº 3 guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, tapete de retalhos, o relógio da família, fogão de ferro a carvão. De um canto a outro, nada guarda o seu lugar. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Um arranhão escapa de sob o pé de uma peça de mobília. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_costureira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_3_criada]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+     ]
+    },
+    {
+     "id": "pt_cena_copa",
+     "rotulo": "Copa",
+     "comodo": "copa",
+     "prosa": [
+      "No cômodo, copper de ferver roupa, tina e tábua de lavar."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "Do mobiliário, baú de roupa, cama de ferro. Um arranhão escapa de sob o pé de uma peça de mobília."
+     ]
+    }
    ],
    "blocosContingentes": [
     {
@@ -19542,7 +20047,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_2",
      "quando": "nao_disparado",
      "paragrafos": [
-      "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+      "No cômodo chamado cozinha, rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
      ]
     }
    ]
@@ -20998,6 +21503,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de Dora Saunders, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
@@ -21052,6 +21560,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_lavadeira",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Sarah Brown",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Sarah Brown: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -21195,9 +21706,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — Cottage nº 5",
    "subtitulo": "Onde Mary Ellis foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 5 guarda o dia em que a acharam. No cômodo, mesa de tampo raspado, cadeiras Windsor.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_lavadeira]]."
+   "introducao": [
+    "O Cottage nº 5 guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, a morta. No cômodo, mesa de tampo raspado, cadeiras Windsor."
+     ]
+    },
+    {
+     "id": "pt_cena_copa",
+     "rotulo": "Copa",
+     "comodo": "copa",
+     "prosa": [
+      "Do mobiliário, pia da copa (a única torneira), copper de ferver roupa, tina e tábua de lavar."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "No cômodo, baú de roupa, cama de ferro. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_lavadeira]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -22489,6 +23025,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Lugar Vazio",
    "carimboPadrao": "Instrumento que falta no seu lugar",
    "descricao": "Entre as coisas de ofício de Edwin Davies, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
@@ -22530,6 +23069,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_lavadeira",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "taproom",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Elizabeth Wilson",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Elizabeth Wilson por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -22558,6 +23100,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_5_professora",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "taproom",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Percy Andrews",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Percy Andrews: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -22688,10 +23233,42 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Taverna",
    "subtitulo": "Onde Ezra Taylor foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Taverna guarda o dia em que o acharam. No cômodo, cama de armação de madeira, lavatório com bacia.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_lavadeira]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_5_professora]]."
+   "introducao": [
+    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_quartos",
+     "rotulo": "Quartos (sobrado)",
+     "comodo": "quartos",
+     "prosa": [
+      "No chão deste cômodo, o morto. No cômodo, cama de armação de madeira, lavatório com bacia."
+     ]
+    },
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "Do mobiliário, fogão de ferro a carvão, mesa de cozinha."
+     ]
+    },
+    {
+     "id": "pt_cena_taproom",
+     "rotulo": "Taproom",
+     "comodo": "taproom",
+     "prosa": [
+      "Do mobiliário, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_lavadeira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_professora]]."
+     ]
+    },
+    {
+     "id": "pt_cena_parlour",
+     "rotulo": "Parlour",
+     "comodo": "parlour",
+     "prosa": [
+      "No cômodo, o relógio da família, piano (ou harmônio)."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -23996,6 +24573,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de Joseph Green, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
@@ -24050,6 +24630,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "loja",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Helen Evans",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Helen Evans: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -24193,9 +24776,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Mercearia",
    "subtitulo": "Onde Harry Andrews foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras e gavetas de estoque, vitrine envidraçada.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]]."
+   "introducao": [
+    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_deposito",
+     "rotulo": "Depósito",
+     "comodo": "deposito",
+     "prosa": [
+      "Do mobiliário, pia da copa, prateleiras frias da despensa."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto (sobrado)",
+     "comodo": "quarto",
+     "prosa": [
+      "No cômodo, lavatório com bacia, cômoda."
+     ]
+    },
+    {
+     "id": "pt_cena_loja",
+     "rotulo": "A Loja",
+     "comodo": "loja",
+     "prosa": [
+      "No chão deste cômodo, o morto. No cômodo, prateleiras e gavetas de estoque, vitrine envidraçada. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -25500,6 +26108,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de Amy Chapman, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
@@ -25528,6 +26139,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_lavadeira",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "expediente",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Abigail Andrews",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Abigail Andrews: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -25569,6 +26183,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "expediente",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Richard Morris",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Richard Morris por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -25699,10 +26316,34 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Delegacia",
    "subtitulo": "Onde Herbert Jones foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Delegacia guarda o dia em que o acharam. No cômodo, mesa de expediente, arquivo de madeira; de um canto a outro, nada guarda o seu lugar.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavadeira]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_0_lavrador]]."
+   "introducao": [
+    "A Delegacia guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_expediente",
+     "rotulo": "Expediente",
+     "comodo": "expediente",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, mesa de expediente, arquivo de madeira. De um canto a outro, nada guarda o seu lugar. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavadeira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_0_lavrador]]."
+     ]
+    },
+    {
+     "id": "pt_cena_cela",
+     "rotulo": "Cela",
+     "comodo": "cela",
+     "prosa": [
+      "No cômodo, tarimba de tábuas."
+     ]
+    },
+    {
+     "id": "pt_cena_moradia",
+     "rotulo": "Moradia",
+     "comodo": "moradia",
+     "prosa": [
+      "No cômodo, mesa de tampo raspado, cadeiras Windsor."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -27020,6 +27661,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de William Thompson, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
@@ -27034,9 +27678,15 @@ export const CASOS_POOL = [
    "id": "gen_sangue_alheio",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 1,
+    "fila": 2
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -27160,6 +27810,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_merceeiro",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "paiol",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de John Jones",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de John Jones: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -27303,10 +27956,26 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Granja",
    "subtitulo": "Onde George Wilson foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Granja guarda o dia em que o acharam. No cômodo, mesa de tampo raspado, cadeiras Windsor; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_merceeiro]]."
+   "introducao": [
+    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha da Granja",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, mesa de tampo raspado, cadeiras Windsor. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+     ]
+    },
+    {
+     "id": "pt_cena_paiol",
+     "rotulo": "Paiol",
+     "comodo": "paiol",
+     "prosa": [
+      "Do mobiliário, sacas de grão, ferramentas de lavoura, arreios pendurados. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_merceeiro]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -28731,9 +29400,15 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "jantar",
+   "celula": {
+    "col": 2,
+    "fila": 2
+   },
+   "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Kate Harris.",
+   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Kate Harris.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -28759,6 +29434,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_4_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "parlour",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Edith Moore",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Edith Moore: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -28800,6 +29478,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_5_costureira",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "parlour",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Minnie Hill",
    "descricao": "Meia folha pautada com soma, prazo e o nome de Minnie Hill por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
@@ -28930,11 +29611,42 @@ export const CASOS_POOL = [
    "titulo": "A Cena — O Solar",
    "subtitulo": "Onde Florence Jones foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Solar guarda o dia em que a acharam. O cômodo é o de sempre; de um canto a outro, nada guarda o seu lugar.",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_criada]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_5_costureira]]."
+   "introducao": [
+    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_jantar",
+     "rotulo": "Sala de Jantar",
+     "comodo": "jantar",
+     "prosa": [
+      "No chão deste cômodo, a morta. Vão sem mobília; sobra o assoalho nu. Junto do corpo, no chão: [[gen_instrumento]]."
+     ]
+    },
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "Do mobiliário, fogão de ferro a carvão, mesa de tampo raspado, cadeiras Windsor."
+     ]
+    },
+    {
+     "id": "pt_cena_parlour",
+     "rotulo": "Parlour",
+     "comodo": "parlour",
+     "prosa": [
+      "No cômodo, flores de cera sob redoma, retratos emoldurados. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_criada]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_costureira]]."
+     ]
+    },
+    {
+     "id": "pt_cena_hall",
+     "rotulo": "Hall",
+     "comodo": "hall",
+     "prosa": [
+      "Cômodo de paredes nuas; mobília, nenhuma."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -30216,6 +30928,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
    "descricao": "Entre os pertences de John Morris, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
@@ -30244,6 +30959,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "hall",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Annie Wood",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Wood: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -30413,9 +31131,42 @@ export const CASOS_POOL = [
    "titulo": "A Cena — O Solar",
    "subtitulo": "Onde Jane Wright foi achada",
    "acoesEspeciais": [],
-   "prosa": [
-    "O Solar guarda o dia em que a acharam. No cômodo, a prataria e a louça, puxador de sino de criados.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]]."
+   "introducao": [
+    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_jantar",
+     "rotulo": "Sala de Jantar",
+     "comodo": "jantar",
+     "prosa": [
+      "No chão deste cômodo, a morta. No cômodo, a prataria e a louça, puxador de sino de criados."
+     ]
+    },
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No cômodo, mesa da criadagem, régua de sinos etiquetados."
+     ]
+    },
+    {
+     "id": "pt_cena_parlour",
+     "rotulo": "Parlour",
+     "comodo": "parlour",
+     "prosa": [
+      "Do mobiliário, piano de cauda curta, retratos da linhagem, puxador de sino de criados."
+     ]
+    },
+    {
+     "id": "pt_cena_hall",
+     "rotulo": "Hall",
+     "comodo": "hall",
+     "prosa": [
+      "Do mobiliário, relógio de pé, retratos da linhagem. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
@@ -31720,6 +32471,12 @@ export const CASOS_POOL = [
    "id": "gen_pertence",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "taproom",
+   "celula": {
+    "col": 2,
+    "fila": 3
+   },
+   "mobilia": null,
    "textoDisplay": "O Pertence Arrancado",
    "carimboPadrao": "Botão com fio na mão da vítima",
    "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Amos Chapman perdeu o segundo botão.",
@@ -31788,6 +32545,9 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_0_paroco",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "comodo": "parlour",
+   "celula": null,
+   "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Matthew Mills",
    "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Matthew Mills: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
@@ -31931,10 +32691,42 @@ export const CASOS_POOL = [
    "titulo": "A Cena — A Taverna",
    "subtitulo": "Onde John Knight foi achado",
    "acoesEspeciais": [],
-   "prosa": [
-    "A Taverna guarda o dia em que o acharam. No cômodo, o snug (cubículo com portinhola), bancos corridos sobre serragem; de um canto a outro, nada guarda o seu lugar; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
-    "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_paroco]]."
+   "introducao": [
+    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_quartos",
+     "rotulo": "Quartos (sobrado)",
+     "comodo": "quartos",
+     "prosa": [
+      "Do mobiliário, cômoda, cama de armação de madeira, lavatório com bacia."
+     ]
+    },
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No cômodo, mesa de cozinha, fogão de ferro a carvão."
+     ]
+    },
+    {
+     "id": "pt_cena_taproom",
+     "rotulo": "Taproom",
+     "comodo": "taproom",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, o snug (cubículo com portinhola), bancos corridos sobre serragem. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]."
+     ]
+    },
+    {
+     "id": "pt_cena_parlour",
+     "rotulo": "Parlour",
+     "comodo": "parlour",
+     "prosa": [
+      "Do mobiliário, flores de cera sob redoma, o relógio da família, piano (ou harmônio). Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_paroco]]."
+     ]
+    }
    ],
    "blocosContingentes": []
   },
