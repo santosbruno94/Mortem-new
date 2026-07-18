@@ -429,6 +429,36 @@ function falaB2(ctx, tom) {
 // ---------------------------------------------------------------------
 function cartaDeAlibi(ctx) {
   const { pessoa, faixa, papel, nomePredio, cenaId, sal } = ctx;
+  // E3 §4.5 — a AUSÊNCIA declarada: o paradeiro é a vila-mercado, fora do
+  // grafo da vila. Fala verdadeira (o ausente é inocente); a corroboração
+  // mora no livro de hóspedes, a hora e meia de estrada ou um telegrama.
+  if (ctx.ausencia) {
+    const janelaAus = JANELA_DECLARADA[faixa];
+    // Só noite/madrugada chega aqui (o montador veta ausência na faixa
+    // dia — o livro de hóspedes corrobora uma noite). O motivo do pernoite
+    // ancora a plausibilidade (parecer do perito): negócio fechado tarde,
+    // estrada de outubro escura desde as cinco e meia.
+    const falaAus = `"Estive em ${ctx.ausencia} desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã."`;
+    const fechoAus = variante(
+      ['Tomado por termo na delegacia, pela mão do guarda.', 'Declarado na sala do expediente, diante do delegado.'],
+      `${sal}|alibi|fecho`
+    );
+    return {
+      id: `gen_alibi_${pessoa.id}`,
+      localidade: 'delegacia',
+      textoDisplay: `${{ noite: 'A Noite', madrugada: 'A Madrugada', dia: 'A Tarde' }[faixa]} de ${pessoa.nome}`,
+      carimboPadrao: `Paradeiro declarado: ${ctx.ausencia} (${FAIXA_CURTA[faixa]})`,
+      descricao: `${falaAus} ${fechoAus}`,
+      tagsOcultas: {
+        dominio: 'comportamental',
+        subDominio: 'alibi',
+        declaranteId: pessoa.id,
+        horaInicioDeclarada: janelaAus.inicio,
+        horaFimDeclarada: janelaAus.fim,
+        corroborado: false,
+      },
+    };
+  }
   const lugarReal = pessoa.pacoteEspacial.rotina[faixa];
   const moradia = pessoa.pacoteEspacial.moradia;
   const mentiraDeCena = papel === 'reu' && lugarReal === cenaId;
@@ -603,7 +633,7 @@ const EVASIVA_POR_CLASSE = {
 // Ordem estável: a dos próprios suspeitos (alfabética no pacote) e a do
 // array de cartas para os confrontos — replay byte a byte.
 // ---------------------------------------------------------------------
-export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {} }) {
+export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {} }) {
   const { mundo, crime, escolha } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
@@ -649,6 +679,9 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {} }) {
       horaVistoVivo:
         cartaVisto && cartaVisto.origemTestemunha === pessoa.id ? cartaVisto.tagsOcultas.horaAvistamento : null,
       segredo: segredos[pessoa.id] || null,
+      // E3 §4.5: rótulo da vila-mercado quando o paradeiro declarado é a
+      // AUSÊNCIA (verificável só pelo livro de hóspedes a distância).
+      ausencia: ausencias[pessoa.id] || null,
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));

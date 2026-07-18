@@ -1740,20 +1740,20 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_0_pastor_de_ovelhas": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    },
    "gen_3_ferreiro": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
    "gen_5_parteira": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
    },
    "gen_4_criada": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "segredo": "pedido_recusado"
    }
   },
   "encenacaoInstrumento": null
@@ -1957,24 +1957,6 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_segredo_gen_0_pastor_de_ovelhas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "piso_do_moinho",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Albert Hall",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Albert Hall: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_0_pastor_de_ovelhas",
-    "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
    "id": "gen_corrobora_gen_3_ferreiro",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
@@ -1988,16 +1970,21 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_5_parteira",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Rachel Page",
-   "carimboPadrao": "Paradeiro de Rachel Page, confirmado",
-   "descricao": "A rua dá Rachel Page no Cottage nº 3 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "id": "gen_segredo_gen_5_parteira",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "piso_do_moinho",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Rachel Page",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Rachel Page por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_5_parteira"
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_5_parteira",
+    "revelaSegredo": "acerto_reservado"
    }
   },
   {
@@ -2007,63 +1994,50 @@ export const CASOS_POOL = [
    "comodo": "piso_do_moinho",
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Rose Wright",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Rose Wright por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Rose Wright",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rose Wright: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
+    "tipoVestigio": "bilhete_de_suplica",
     "pertenceA": "gen_4_criada",
-    "revelaSegredo": "acerto_reservado"
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
-   "id": "gen_movel_gen_4_criada",
+   "id": "gen_movel_gen_5_parteira",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Rose Wright",
-   "carimboPadrao": "Móbil de Rose Wright",
-   "descricao": "Consta queixa de paga retida: Charles Harris devia a Rose Wright semanas de salário.",
+   "textoDisplay": "Papéis de Rachel Page",
+   "carimboPadrao": "Móbil de Rachel Page",
+   "descricao": "Corre na vila um falatório em nome de Rachel Page; quem o repetia, de porta em porta, era Charles Harris.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "salario_atrasado",
-    "ligadoA": "gen_4_criada"
-   }
-  },
-  {
-   "id": "gen_recibo_comarca",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "O Bilhete de Penhor",
-   "carimboPadrao": "Bilhete de penhor de Weldmere",
-   "descricao": "Bilhete impresso da casa de penhores de Weldmere: a data da semana passada, a soma por resgatar, o número de ordem.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_2_moleiro"
+    "motivo": "escandalo_gravidez",
+    "ligadoA": "gen_5_parteira"
    }
   },
   {
    "id": "gen_registro_comarca",
    "localidade": "comarca_vila_mercado",
    "suporteFisico": "registro",
-   "textoDisplay": "O Assento do Penhorista",
-   "carimboPadrao": "Livro de penhores de Weldmere",
-   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
+   "textoDisplay": "O Livro de Hóspedes",
+   "carimboPadrao": "Livro da estalagem de Weldmere",
+   "descricao": "O assento de punho próprio: o nome de Albert Hall, com a data; no borrador da casa, cama e ceia lançadas em conta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
-    "ligadoA": "gen_2_moleiro"
+    "ligadoA": "gen_0_pastor_de_ovelhas"
    }
   },
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Albert Hall",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "carimboPadrao": "Paradeiro declarado: Weldmere (madrugada de sábado)",
+   "descricao": "\"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -2154,7 +2128,6 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama quarto, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -2189,7 +2162,7 @@ export const CASOS_POOL = [
      "rotulo": "Piso do Moinho",
      "comodo": "piso_do_moinho",
      "prosa": [
-      "Do mobiliário, guindaste de sacas, mó de moinho. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_pastor_de_ovelhas]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_4_criada]]."
+      "Do mobiliário, guindaste de sacas, mó de moinho. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_parteira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_4_criada]]."
      ]
     }
    ],
@@ -2206,7 +2179,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_criada]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_5_parteira]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -2219,18 +2192,18 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_ferreiro]], [[gen_corrobora_gen_5_parteira]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_ferreiro]]."
    ],
    "blocosContingentes": []
   },
   {
    "id": "comarca_vila_mercado",
    "rotuloMesa": "Weldmere",
-   "titulo": "Casa de Penhores de Weldmere",
+   "titulo": "A Estalagem de Weldmere",
    "subtitulo": "Weldmere, hora e meia de estrada",
    "acoesEspeciais": [],
    "prosa": [
-    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+    "Hora e meia de estrada. Na estalagem, o estalajadeiro traz o livro de hóspedes ao balcão, molha o polegar e o abre pela noite pedida: [[gen_registro_comarca]]."
    ]
   }
  ],
@@ -2268,9 +2241,9 @@ export const CASOS_POOL = [
  ],
  "leads": [
   {
-   "cartaId": "gen_recibo_comarca",
+   "cartaId": "gen_alibi_gen_0_pastor_de_ovelhas",
    "revelaNo": "comarca_vila_mercado",
-   "nota": "O bilhete dá o endereço da casa de penhores."
+   "nota": "O paradeiro declarado remete ao livro de hóspedes da estalagem."
   }
  ],
  "custos": {
@@ -2293,15 +2266,8 @@ export const CASOS_POOL = [
    "subtitulo": "Pastor de ovelhas, 25 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_0_pastor_de_ovelhas": "reacao_gen_segredo_gen_0_pastor_de_ovelhas"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_0_pastor_de_ovelhas",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -2333,12 +2299,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_0_pastor_de_ovelhas": {
-     "fala": [
-      "Albert Hall lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Charles Harris estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -2853,8 +2813,15 @@ export const CASOS_POOL = [
    "subtitulo": "Parteira, 58 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_5_parteira": "reacao_gen_segredo_gen_5_parteira"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_5_parteira",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -2886,6 +2853,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_5_parteira": {
+     "fala": [
+      "Rachel Page cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -3037,7 +3010,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_4_criada",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
     }
    ],
    "nos": {
@@ -3076,7 +3049,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_4_criada": {
      "fala": [
-      "Rose Wright cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+      "Rose Wright lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Charles Harris estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -3319,12 +3292,12 @@ export const CASOS_POOL = [
   "latencia": 2,
   "resposta": {
    "textoDisplay": "A Resposta por Fio",
-   "termoCarimbo": "Telegrama de Weldmere: o assento do penhorista",
-   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
+   "termoCarimbo": "Telegrama de Weldmere: o livro de hóspedes",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o assento no nome de Albert Hall, e a conta de cama e ceia conforme o borrador.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
-    "ligadoA": "gen_2_moleiro"
+    "ligadoA": "gen_0_pastor_de_ovelhas"
    }
   }
  }
@@ -16603,20 +16576,20 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_2_ferreiro": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
+   },
+   "gen_4_costureira": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
+   },
+   "gen_1_costureira": {
     "veredictoEsperado": "inocente_segredo",
     "segredo": "pedido_recusado"
    },
-   "gen_4_costureira": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_1_costureira": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
    "gen_5_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    }
   },
   "encenacaoInstrumento": null
@@ -16817,113 +16790,87 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_segredo_gen_2_ferreiro",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "loja",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Daniel Cooper",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Daniel Cooper: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_2_ferreiro",
-    "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_4_costureira",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Grace Lee",
-   "carimboPadrao": "Paradeiro de Grace Lee, confirmado",
-   "descricao": "A rua dá Grace Lee no Cottage nº 2 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_costureira"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_1_costureira",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Grace Moore",
-   "carimboPadrao": "Paradeiro de Grace Moore, confirmado",
-   "descricao": "A rua dá Grace Moore no Cottage nº 4 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_1_costureira"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_5_criada",
+   "id": "gen_segredo_gen_4_costureira",
    "localidade": "cena",
    "suporteFisico": "cena",
    "comodo": "loja",
    "celula": null,
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de James Ward",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de James Ward por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "carimboPadrao": "Nota de trato com o nome de Grace Lee",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Grace Lee por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
     "tipoVestigio": "nota_por_assinar",
-    "pertenceA": "gen_5_criada",
+    "pertenceA": "gen_4_costureira",
     "revelaSegredo": "acerto_reservado"
    }
   },
   {
-   "id": "gen_movel_gen_5_criada",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Papéis de James Ward",
-   "carimboPadrao": "Móbil de James Ward",
-   "descricao": "Leonard Ward negou a James Ward a carta de referência; sem ela, casa nenhuma o toma a serviço.",
+   "id": "gen_segredo_gen_1_costureira",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "loja",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Grace Moore",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Grace Moore: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_1_costureira",
+    "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_5_criada",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por James Ward",
+   "carimboPadrao": "Paradeiro de James Ward, confirmado",
+   "descricao": "Mary Turner esteve no Presbitério madrugada de sábado e dá James Ward por presente, das oito ao clarear. Mais de uma boca diz o mesmo.",
    "tagsOcultas": {
     "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "character_negado",
+    "subDominio": "corroboracao",
     "ligadoA": "gen_5_criada"
    }
   },
   {
-   "id": "gen_recibo_comarca",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "O Bilhete de Penhor",
-   "carimboPadrao": "Bilhete de penhor de Weldmere",
-   "descricao": "Bilhete impresso da casa de penhores de Weldmere: a data da semana passada, a soma por resgatar, o número de ordem.",
+   "id": "gen_movel_gen_4_costureira",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Papéis de Grace Lee",
+   "carimboPadrao": "Móbil de Grace Lee",
+   "descricao": "Cartas sobre um dote prometido e não pago atam Grace Lee a Leonard Ward, com somas e datas.",
    "tagsOcultas": {
     "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_3_merceeiro"
+    "subDominio": "motivo",
+    "motivo": "dote",
+    "ligadoA": "gen_4_costureira"
    }
   },
   {
    "id": "gen_registro_comarca",
    "localidade": "comarca_vila_mercado",
    "suporteFisico": "registro",
-   "textoDisplay": "O Assento do Penhorista",
-   "carimboPadrao": "Livro de penhores de Weldmere",
-   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
+   "textoDisplay": "O Livro de Hóspedes",
+   "carimboPadrao": "Livro da estalagem de Weldmere",
+   "descricao": "O assento de punho próprio: o nome de Daniel Cooper, com a data; no borrador da casa, cama e ceia lançadas em conta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
-    "ligadoA": "gen_3_merceeiro"
+    "ligadoA": "gen_2_ferreiro"
    }
   },
   {
    "id": "gen_alibi_gen_2_ferreiro",
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Daniel Cooper",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "carimboPadrao": "Paradeiro declarado: Weldmere (madrugada de sábado)",
+   "descricao": "\"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -17014,7 +16961,6 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama quarto do sobrado, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -17049,7 +16995,7 @@ export const CASOS_POOL = [
      "rotulo": "A Loja",
      "comodo": "loja",
      "prosa": [
-      "Do mobiliário, vitrine envidraçada, sineta da porta, balcão que barra o cliente. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_ferreiro]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_criada]]."
+      "Do mobiliário, vitrine envidraçada, sineta da porta, balcão que barra o cliente. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_costureira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_1_costureira]]."
      ]
     }
    ],
@@ -17066,7 +17012,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_5_criada]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_costureira]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -17079,7 +17025,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_4_costureira]], [[gen_corrobora_gen_1_costureira]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_5_criada]]."
    ],
    "blocosContingentes": []
   },
@@ -17097,11 +17043,11 @@ export const CASOS_POOL = [
   {
    "id": "comarca_vila_mercado",
    "rotuloMesa": "Weldmere",
-   "titulo": "Casa de Penhores de Weldmere",
+   "titulo": "A Estalagem de Weldmere",
    "subtitulo": "Weldmere, hora e meia de estrada",
    "acoesEspeciais": [],
    "prosa": [
-    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+    "Hora e meia de estrada. Na estalagem, o estalajadeiro traz o livro de hóspedes ao balcão, molha o polegar e o abre pela noite pedida: [[gen_registro_comarca]]."
    ]
   }
  ],
@@ -17150,9 +17096,9 @@ export const CASOS_POOL = [
    "nota": "O nome nos papéis dá causa à diligência."
   },
   {
-   "cartaId": "gen_recibo_comarca",
+   "cartaId": "gen_alibi_gen_2_ferreiro",
    "revelaNo": "comarca_vila_mercado",
-   "nota": "O bilhete dá o endereço da casa de penhores."
+   "nota": "O paradeiro declarado remete ao livro de hóspedes da estalagem."
   }
  ],
  "custos": {
@@ -17175,15 +17121,8 @@ export const CASOS_POOL = [
    "subtitulo": "Ferreiro, 38 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_2_ferreiro": "reacao_gen_segredo_gen_2_ferreiro"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_2_ferreiro",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -17215,12 +17154,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_2_ferreiro": {
-     "fala": [
-      "Daniel Cooper lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Leonard Ward estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -17366,8 +17299,15 @@ export const CASOS_POOL = [
    "subtitulo": "Costureira, 27 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_4_costureira": "reacao_gen_segredo_gen_4_costureira"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_4_costureira",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -17399,6 +17339,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_4_costureira": {
+     "fala": [
+      "Grace Lee cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -17544,8 +17490,15 @@ export const CASOS_POOL = [
    "subtitulo": "Costureira, 38 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_1_costureira": "reacao_gen_segredo_gen_1_costureira"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_1_costureira",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -17577,6 +17530,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_1_costureira": {
+     "fala": [
+      "Grace Moore lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Leonard Ward estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -17722,15 +17681,8 @@ export const CASOS_POOL = [
    "subtitulo": "Moço de lavoura, 17 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_5_criada": "reacao_gen_segredo_gen_5_criada"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_5_criada",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -17762,12 +17714,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_5_criada": {
-     "fala": [
-      "James Ward cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -18201,12 +18147,12 @@ export const CASOS_POOL = [
   "latencia": 2,
   "resposta": {
    "textoDisplay": "A Resposta por Fio",
-   "termoCarimbo": "Telegrama de Weldmere: o assento do penhorista",
-   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
+   "termoCarimbo": "Telegrama de Weldmere: o livro de hóspedes",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o assento no nome de Daniel Cooper, e a conta de cama e ceia conforme o borrador.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
-    "ligadoA": "gen_3_merceeiro"
+    "ligadoA": "gen_2_ferreiro"
    }
   }
  }
@@ -21700,12 +21646,12 @@ export const CASOS_POOL = [
     "segredo": null
    },
    "gen_4_criada": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_1_lavadeira": {
     "veredictoEsperado": "inocente_segredo",
     "segredo": "pedido_recusado"
+   },
+   "gen_1_lavadeira": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    },
    "gen_2_ferreiro": {
     "veredictoEsperado": "inocente_alibi",
@@ -21911,47 +21857,34 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_3_ferreiro",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Alfred Lee",
-   "carimboPadrao": "Paradeiro de Alfred Lee, confirmado",
-   "descricao": "Thomas White esteve na Taverna sexta à noite e dá Alfred Lee por presente, das oito ao clarear. Mais de uma boca diz o mesmo.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_3_ferreiro"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_4_criada",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Annie Knight",
-   "carimboPadrao": "Paradeiro de Annie Knight, confirmado",
-   "descricao": "A rua dá Annie Knight no Presbitério sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_criada"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_1_lavadeira",
+   "id": "gen_segredo_gen_4_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
    "comodo": "lychgate",
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Sarah Brown",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Sarah Brown: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "carimboPadrao": "Bilhete na letra de Annie Knight",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Knight: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
     "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_1_lavadeira",
+    "pertenceA": "gen_4_criada",
     "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_1_lavadeira",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Sarah Brown",
+   "carimboPadrao": "Paradeiro de Sarah Brown, confirmado",
+   "descricao": "A rua dá Sarah Brown no Cottage nº 1 sexta à noite, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_lavadeira"
    }
   },
   {
@@ -21960,7 +21893,7 @@ export const CASOS_POOL = [
    "suporteFisico": "testemunho",
    "textoDisplay": "Quem Responde por Thomas White",
    "carimboPadrao": "Paradeiro de Thomas White, confirmado",
-   "descricao": "Alfred Lee esteve na Taverna sexta à noite e dá Thomas White por presente, das oito ao clarear. Mais de uma boca diz o mesmo.",
+   "descricao": "A rua dá Thomas White na Taverna sexta à noite, das oito ao clarear, por mais de uma janela.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
@@ -21968,51 +21901,38 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_movel_gen_1_lavadeira",
+   "id": "gen_movel_gen_4_criada",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Sarah Brown",
-   "carimboPadrao": "Móbil de Sarah Brown",
-   "descricao": "A ordem de despejo do cottage de Sarah Brown veio no rasto de queixa que Mary Ellis levou ao senhorio.",
+   "textoDisplay": "Papéis de Annie Knight",
+   "carimboPadrao": "Móbil de Annie Knight",
+   "descricao": "Mary Ellis negou a Annie Knight a carta de referência; sem ela, casa nenhuma a toma a serviço.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "despejo",
-    "ligadoA": "gen_1_lavadeira"
-   }
-  },
-  {
-   "id": "gen_recibo_comarca",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "O Bilhete de Penhor",
-   "carimboPadrao": "Bilhete de penhor de Netherfield",
-   "descricao": "Bilhete impresso da casa de penhores de Netherfield: a data da semana passada, a soma por resgatar, o número de ordem.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_7_parteira"
+    "motivo": "character_negado",
+    "ligadoA": "gen_4_criada"
    }
   },
   {
    "id": "gen_registro_comarca",
    "localidade": "comarca_vila_mercado",
    "suporteFisico": "registro",
-   "textoDisplay": "O Assento do Penhorista",
-   "carimboPadrao": "Livro de penhores de Netherfield",
-   "descricao": "No livro, o assento: o número, o dia, a soma e o nome da morta por extenso.",
+   "textoDisplay": "O Livro de Hóspedes",
+   "carimboPadrao": "Livro da estalagem de Netherfield",
+   "descricao": "O assento de punho próprio: o nome de Alfred Lee, com a data; no borrador da casa, cama e ceia lançadas em conta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
-    "ligadoA": "gen_7_parteira"
+    "ligadoA": "gen_3_ferreiro"
    }
   },
   {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Alfred Lee",
-   "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Declarado na sala do expediente, diante do delegado.",
+   "carimboPadrao": "Paradeiro declarado: Netherfield (sexta à noite)",
+   "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -22103,7 +22023,6 @@ export const CASOS_POOL = [
     "A morta jaz ao relento, no canto a que a vila chama a alameda das lajes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
-    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -22139,7 +22058,7 @@ export const CASOS_POOL = [
      "rotulo": "O Portão Coberto",
      "comodo": "lychgate",
      "prosa": [
-      "No canto, bancos laterais de carvalho, pedra de pousar os caixões. Fora do caminho das pisadas, junto à borda: [[gen_segredo_gen_1_lavadeira]]."
+      "No canto, bancos laterais de carvalho, pedra de pousar os caixões. Fora do caminho das pisadas, junto à borda: [[gen_segredo_gen_4_criada]]."
      ]
     },
     {
@@ -22164,7 +22083,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_lavadeira]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_criada]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -22178,7 +22097,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A cena fica a céu aberto; as casas mais próximas olham-na de longe, por cima de muro e sebe.",
     "Do recado que correu na véspera: [[gen_engodo]].",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_ferreiro]], [[gen_corrobora_gen_4_criada]], [[gen_corrobora_gen_2_ferreiro]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_lavadeira]], [[gen_corrobora_gen_2_ferreiro]]."
    ],
    "blocosContingentes": []
   },
@@ -22196,11 +22115,11 @@ export const CASOS_POOL = [
   {
    "id": "comarca_vila_mercado",
    "rotuloMesa": "Netherfield",
-   "titulo": "Casa de Penhores de Netherfield",
+   "titulo": "A Estalagem de Netherfield",
    "subtitulo": "Netherfield, hora e meia de estrada",
    "acoesEspeciais": [],
    "prosa": [
-    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+    "Hora e meia de estrada. Na estalagem, o estalajadeiro traz o livro de hóspedes ao balcão, molha o polegar e o abre pela noite pedida: [[gen_registro_comarca]]."
    ]
   }
  ],
@@ -22249,9 +22168,9 @@ export const CASOS_POOL = [
    "nota": "O nome nos papéis dá causa à diligência."
   },
   {
-   "cartaId": "gen_recibo_comarca",
+   "cartaId": "gen_alibi_gen_3_ferreiro",
    "revelaNo": "comarca_vila_mercado",
-   "nota": "O bilhete dá o endereço da casa de penhores."
+   "nota": "O paradeiro declarado remete ao livro de hóspedes da estalagem."
   }
  ],
  "custos": {
@@ -22452,8 +22371,15 @@ export const CASOS_POOL = [
    "subtitulo": "Criada, 19 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_4_criada": "reacao_gen_segredo_gen_4_criada"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_4_criada",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -22485,6 +22411,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_4_criada": {
+     "fala": [
+      "Annie Knight lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Mary Ellis estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -22821,15 +22753,8 @@ export const CASOS_POOL = [
    "subtitulo": "Lavadeira, 63 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_1_lavadeira": "reacao_gen_segredo_gen_1_lavadeira"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_1_lavadeira",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -22861,12 +22786,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_1_lavadeira": {
-     "fala": [
-      "Sarah Brown lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Mary Ellis estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -23287,12 +23206,12 @@ export const CASOS_POOL = [
   "latencia": 4,
   "resposta": {
    "textoDisplay": "A Resposta por Fio",
-   "termoCarimbo": "Telegrama de Netherfield: o assento do penhorista",
-   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome da morta por extenso.",
+   "termoCarimbo": "Telegrama de Netherfield: o livro de hóspedes",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o assento no nome de Alfred Lee, e a conta de cama e ceia conforme o borrador.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
-    "ligadoA": "gen_7_parteira"
+    "ligadoA": "gen_3_ferreiro"
    }
   }
  }
@@ -29884,20 +29803,20 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_4_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    },
    "gen_1_merceeiro": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
    "gen_0_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
    },
    "gen_5_costureira": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "segredo": "pedido_recusado"
    }
   },
   "encenacaoInstrumento": null
@@ -30101,47 +30020,34 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_segredo_gen_4_criada",
+   "id": "gen_corrobora_gen_4_criada",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Edith Moore",
+   "carimboPadrao": "Paradeiro de Edith Moore, confirmado",
+   "descricao": "A rua dá Edith Moore na Casa do Médico madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_4_criada"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_0_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
    "comodo": "parlour",
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Edith Moore",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Edith Moore: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de James Robinson",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de James Robinson por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_4_criada",
-    "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_1_merceeiro",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Harry Morris",
-   "carimboPadrao": "Paradeiro de Harry Morris, confirmado",
-   "descricao": "A rua dá Harry Morris na Mercearia madrugada de sábado, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_1_merceeiro"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_0_lavrador",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por James Robinson",
-   "carimboPadrao": "Paradeiro de James Robinson, confirmado",
-   "descricao": "A rua dá James Robinson no Cottage nº 5 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_0_lavrador"
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_0_lavrador",
+    "revelaSegredo": "acerto_reservado"
    }
   },
   {
@@ -30151,55 +30057,42 @@ export const CASOS_POOL = [
    "comodo": "parlour",
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Minnie Hill",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Minnie Hill por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Minnie Hill",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Minnie Hill: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
+    "tipoVestigio": "bilhete_de_suplica",
     "pertenceA": "gen_5_costureira",
-    "revelaSegredo": "acerto_reservado"
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
-   "id": "gen_movel_gen_5_costureira",
+   "id": "gen_movel_gen_0_lavrador",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Minnie Hill",
-   "carimboPadrao": "Móbil de Minnie Hill",
-   "descricao": "Consta queixa de paga retida: Florence Jones devia a Minnie Hill semanas de salário.",
+   "textoDisplay": "Papéis de James Robinson",
+   "carimboPadrao": "Móbil de James Robinson",
+   "descricao": "Consta queixa de paga retida: Florence Jones devia a James Robinson semanas de salário.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
     "motivo": "salario_atrasado",
-    "ligadoA": "gen_5_costureira"
-   }
-  },
-  {
-   "id": "gen_recibo_comarca",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "O Bilhete de Penhor",
-   "carimboPadrao": "Bilhete de penhor de Netherfield",
-   "descricao": "Bilhete impresso da casa de penhores de Netherfield: a data da semana passada, a soma por resgatar, o número de ordem.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_2_criada"
+    "ligadoA": "gen_0_lavrador"
    }
   },
   {
    "id": "gen_registro_comarca",
    "localidade": "comarca_vila_mercado",
    "suporteFisico": "registro",
-   "textoDisplay": "O Assento do Penhorista",
-   "carimboPadrao": "Livro de penhores de Netherfield",
-   "descricao": "No livro, o assento: o número, o dia, a soma e o nome da morta por extenso.",
+   "textoDisplay": "O Livro de Hóspedes",
+   "carimboPadrao": "Livro da estalagem de Netherfield",
+   "descricao": "O assento de punho próprio: o nome de Harry Morris, com a data; no borrador da casa, cama e ceia lançadas em conta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
-    "ligadoA": "gen_2_criada"
+    "ligadoA": "gen_1_merceeiro"
    }
   },
   {
@@ -30221,8 +30114,8 @@ export const CASOS_POOL = [
    "id": "gen_alibi_gen_1_merceeiro",
    "localidade": "delegacia",
    "textoDisplay": "A Madrugada de Harry Morris",
-   "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
+   "carimboPadrao": "Paradeiro declarado: Netherfield (madrugada de sábado)",
+   "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -30298,7 +30191,6 @@ export const CASOS_POOL = [
     "A morta jaz no chão do cômodo a que a vila chama sala de jantar, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -30333,7 +30225,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "No cômodo, flores de cera sob redoma, retratos emoldurados. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_criada]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_costureira]]."
+      "No cômodo, flores de cera sob redoma, retratos emoldurados. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_lavrador]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_costureira]]."
      ]
     },
     {
@@ -30358,7 +30250,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_5_costureira]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_lavrador]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -30371,18 +30263,18 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_merceeiro]], [[gen_corrobora_gen_0_lavrador]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_4_criada]]."
    ],
    "blocosContingentes": []
   },
   {
    "id": "comarca_vila_mercado",
    "rotuloMesa": "Netherfield",
-   "titulo": "Casa de Penhores de Netherfield",
+   "titulo": "A Estalagem de Netherfield",
    "subtitulo": "Netherfield, hora e meia de estrada",
    "acoesEspeciais": [],
    "prosa": [
-    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
+    "Hora e meia de estrada. Na estalagem, o estalajadeiro traz o livro de hóspedes ao balcão, molha o polegar e o abre pela noite pedida: [[gen_registro_comarca]]."
    ]
   }
  ],
@@ -30420,9 +30312,9 @@ export const CASOS_POOL = [
  ],
  "leads": [
   {
-   "cartaId": "gen_recibo_comarca",
+   "cartaId": "gen_alibi_gen_1_merceeiro",
    "revelaNo": "comarca_vila_mercado",
-   "nota": "O bilhete dá o endereço da casa de penhores."
+   "nota": "O paradeiro declarado remete ao livro de hóspedes da estalagem."
   }
  ],
  "custos": {
@@ -30445,15 +30337,8 @@ export const CASOS_POOL = [
    "subtitulo": "Criada, 36 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_4_criada": "reacao_gen_segredo_gen_4_criada"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_4_criada",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -30485,12 +30370,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_4_criada": {
-     "fala": [
-      "Edith Moore lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Florence Jones estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -30814,8 +30693,15 @@ export const CASOS_POOL = [
    "subtitulo": "Lavrador, 67 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_0_lavrador": "reacao_gen_segredo_gen_0_lavrador"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_0_lavrador",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -30847,6 +30733,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_0_lavrador": {
+     "fala": [
+      "James Robinson cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -31189,7 +31081,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_5_costureira",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
     }
    ],
    "nos": {
@@ -31228,7 +31120,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_5_costureira": {
      "fala": [
-      "Minnie Hill cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+      "Minnie Hill lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Florence Jones estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -31471,12 +31363,12 @@ export const CASOS_POOL = [
   "latencia": 2,
   "resposta": {
    "textoDisplay": "A Resposta por Fio",
-   "termoCarimbo": "Telegrama de Netherfield: o assento do penhorista",
-   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome da morta por extenso.",
+   "termoCarimbo": "Telegrama de Netherfield: o livro de hóspedes",
+   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o assento no nome de Harry Morris, e a conta de cama e ceia conforme o borrador.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
-    "ligadoA": "gen_2_criada"
+    "ligadoA": "gen_1_merceeiro"
    }
   }
  }

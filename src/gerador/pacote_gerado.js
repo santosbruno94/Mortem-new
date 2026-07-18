@@ -256,7 +256,7 @@ const FRASE_JANELA_CORROBORACAO = {
   dia: 'do meio-dia às seis',
 };
 
-function derivarPerifericos({ bruto, suspeitos, cartas }) {
+function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
   const { mundo, crime, escolha } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
@@ -269,7 +269,9 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
   const candidatos = suspeitos.filter((s) => s.id !== crime.assassinoId);
   const elegiveis = candidatos.filter((s) => {
     const p = pessoas.get(s.id);
-    return p && !testemunhas.has(s.id) && p.pacoteEspacial.rotina[escolha.faixa] !== escolha.localId;
+    // E3 §4.5: o AUSENTE não guarda segredo — o paradeiro dele é a town,
+    // e a mentira de vergonha declararia a moradia (contradição).
+    return p && s.id !== ausenteId && !testemunhas.has(s.id) && p.pacoteEspacial.rotina[escolha.faixa] !== escolha.localId;
   });
   const nSegredos =
     elegiveis.length === 0 ? 0 : 1 + (hashString(`${sal}|n`) % Math.min(2, elegiveis.length));
@@ -317,6 +319,13 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
           revelaSegredo: tipo,
         },
       });
+    } else if (s.id === ausenteId) {
+      // E3 §4.5 — a AUSÊNCIA declarada: o paradeiro é a vila-mercado,
+      // INVERIFICÁVEL pelo grafo da vila (nenhuma corroboração grátis na
+      // vizinhança); a confirmação verdadeira mora no livro de hóspedes a
+      // hora e meia de estrada (derivarComarcaDoCaso) — a assimetria é o
+      // dilema: confiar, viajar ou telegrafar.
+      perifericos[s.id] = { veredictoEsperado: 'inocente_alibi', segredo: null };
     } else {
       perifericos[s.id] = { veredictoEsperado: 'inocente_alibi', segredo: null };
       const lugarId = pessoa.pacoteEspacial.rotina[escolha.faixa];
@@ -326,6 +335,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
           o.id !== s.id &&
           o.id !== crime.vitimaId &&
           o.id !== crime.assassinoId &&
+          o.id !== ausenteId &&
           o.pacoteEspacial.rotina[escolha.faixa] === lugarId
       );
       const fraseJanela = FRASE_JANELA_CORROBORACAO[escolha.faixa];
@@ -383,7 +393,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
 // (GE7: só registro durável mora a distância; GE8: o guardião do livro é
 // prosa de localidade, nunca suspeito).
 // ---------------------------------------------------------------------
-function derivarComarcaDoCaso({ bruto }) {
+function derivarComarcaDoCaso({ bruto, ausenteId = null }) {
   const sat = bruto.mundo.comarca.satelites.find((s) => s.id === 'vila_mercado');
   if (!sat) return null;
   const moeda = hashDecisao(`${bruto.seed}|caso|comarca-funcao`) % 10;
@@ -399,14 +409,43 @@ function derivarComarcaDoCaso({ bruto }) {
   const MOTIVOS_COBRANCA = ['divida_caderneta', 'dote', 'salario_atrasado'];
   const temCobranca = MOTIVOS_COBRANCA.includes(reu.motivoPotencial);
   const temPartilha = reu.motivoPotencial === 'heranca';
-  const corroborativa = moeda <= 1;
+  // moeda 0 = penhor da vítima; 1 = AUSÊNCIA de um periférico (§4.5;
+  // recai no penhor quando ninguém é elegível); 2–7 = móbil com papel.
+  const ramoAusencia = moeda === 1 && !!ausenteId;
+  const corroborativa = moeda <= 1 && !ramoAusencia;
   const ramoMobil = moeda >= 2 && moeda <= 7 && (temCobranca || temPartilha);
-  if (!corroborativa && !ramoMobil) return null;
+  if (!corroborativa && !ramoAusencia && !ramoMobil) return null;
   const localidadeId = `comarca_${sat.id}`;
   const cartasNovas = [];
   let lead;
   let localidade;
-  if (corroborativa) {
+  if (ramoAusencia) {
+    const ausente = pessoas.get(ausenteId);
+    cartasNovas.push({
+      id: 'gen_registro_comarca',
+      localidade: localidadeId,
+      suporteFisico: 'registro',
+      textoDisplay: 'O Livro de Hóspedes',
+      carimboPadrao: `Livro da estalagem de ${sat.rotulo}`,
+      descricao: `O assento de punho próprio: o nome de ${ausente.nome}, com a data; no borrador da casa, cama e ceia lançadas em conta.`,
+      tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: ausenteId },
+    });
+    lead = {
+      cartaId: `gen_alibi_${ausenteId}`,
+      revelaNo: localidadeId,
+      nota: 'O paradeiro declarado remete ao livro de hóspedes da estalagem.',
+    };
+    localidade = {
+      id: localidadeId,
+      rotuloMesa: sat.rotulo,
+      titulo: `A Estalagem de ${sat.rotulo}`,
+      subtitulo: `${sat.rotulo}, hora e meia de estrada`,
+      acoesEspeciais: [],
+      prosa: [
+        'Hora e meia de estrada. Na estalagem, o estalajadeiro traz o livro de hóspedes ao balcão, molha o polegar e o abre pela noite pedida: [[gen_registro_comarca]].',
+      ],
+    };
+  } else if (corroborativa) {
     cartasNovas.push({
       id: 'gen_recibo_comarca',
       localidade: 'corpo',
@@ -489,7 +528,14 @@ function derivarComarcaDoCaso({ bruto }) {
     destino: sat.rotulo,
     via: temEstacao ? 'estacao' : 'portador',
     latencia: temEstacao ? 2 : 4,
-    resposta: corroborativa
+    resposta: ramoAusencia
+      ? {
+          textoDisplay: 'A Resposta por Fio',
+          termoCarimbo: `Telegrama de ${sat.rotulo}: o livro de hóspedes`,
+          descricao: `No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o assento no nome de ${pessoas.get(ausenteId)?.nome}, e a conta de cama e ceia conforme o borrador.`,
+          tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: ausenteId },
+        }
+      : corroborativa
       ? {
           textoDisplay: 'A Resposta por Fio',
           termoCarimbo: `Telegrama de ${sat.rotulo}: o assento do penhorista`,
@@ -1502,10 +1548,35 @@ export function montarPacoteGerado(seed, opts = {}) {
   // precisa dos ids para plantar os marcadores.
   const encenacao = cartaHoraForjada(bruto);
   if (encenacao) cartas.push(encenacao.carta);
-  const perif = derivarPerifericos({ bruto, suspeitos, cartas });
+  // E3 §4.5 — a AUSÊNCIA declarada nasce ANTES dos periféricos (o ausente
+  // perde a corroboração grátis da vizinhança e não recebe segredo). A
+  // elegibilidade espelha a do segredo: não é o réu, não é testemunha de
+  // carta, não tem a cena por rotina na faixa.
+  let ausenteId = null;
+  // Veto do ramo diurno (parecer E3-2, A1): o livro de hóspedes corrobora
+  // uma NOITE — a fala de dia não pernoita e o registro contradiria um
+  // inocente. Criadagem residente também não pernoita fora (recolher da
+  // casa; parecer do perito) — recai no penhor, como previsto na moeda.
+  if (bruto.escolha.faixa !== 'dia' && hashDecisao(`${bruto.seed}|caso|comarca-funcao`) % 10 === 1) {
+    const pessoasAus = indicePorId(bruto.mundo.elenco);
+    const testemunhasAus = new Set(cartas.map((c) => c.origemTestemunha).filter(Boolean));
+    const candidatosAus = suspeitos.filter((s) => {
+      const p = pessoasAus.get(s.id);
+      return (
+        p &&
+        s.id !== bruto.crime.assassinoId &&
+        p.classeSocial !== 'criadagem' &&
+        !testemunhasAus.has(s.id) &&
+        p.pacoteEspacial.rotina[bruto.escolha.faixa] !== bruto.escolha.localId
+      );
+    });
+    if (candidatosAus.length > 0)
+      ausenteId = candidatosAus[hashDecisao(`${bruto.seed}|caso|comarca-ausente`) % candidatosAus.length].id;
+  }
+  const perif = derivarPerifericos({ bruto, suspeitos, cartas, ausenteId });
   cartas.push(...perif.cartasNovas);
   // E3: a comarca do caso — o registro durável a distância e o seu lead.
-  const comarcaDoCaso = derivarComarcaDoCaso({ bruto });
+  const comarcaDoCaso = derivarComarcaDoCaso({ bruto, ausenteId });
   if (comarcaDoCaso) cartas.push(...comarcaDoCaso.cartasNovas);
   const localidades = montarLocalidades(bruto, cartas);
   if (comarcaDoCaso) {
@@ -1523,7 +1594,9 @@ export function montarPacoteGerado(seed, opts = {}) {
   // o marcador delas vive nas falas da árvore, não na prosa de localidade.
   // Os segredos dos periféricos chegam ao derivador: quem os guarda
   // declara a moradia (a mentira de vergonha que o rastro desmente).
-  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos });
+  const ausencias =
+    ausenteId && comarcaDoCaso ? { [ausenteId]: comarcaDoCaso.satelite.rotulo } : {};
+  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias });
   cartas.push(...cartasAlibi);
 
   // A carta de NEXO define o instrumento que o veredicto cobra: o método

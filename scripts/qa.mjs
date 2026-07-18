@@ -3190,6 +3190,25 @@ for (const seedE1 of SEEDS_E1) {
   } else if (pacoteE1.telegrama) {
     e3Falhas.push(`${seedE1}: telegrama sem nó de comarca`);
   }
+  // E3 §4.5 — ASSIMETRIA da ausência: quando o lead do nó é um álibi
+  // (gen_alibi_<id>), o declarante é o AUSENTE — ele não pode ter a
+  // corroboração grátis da vizinhança, o registro distante deve ligá-lo
+  // (ligadoA) e o álibi declarado deve citar o satélite, não um prédio.
+  const leadAusencia = pacoteE1.leads.find(
+    (ld) => ld.revelaNo.startsWith('comarca_') && ld.cartaId.startsWith('gen_alibi_')
+  );
+  if (leadAusencia) {
+    const idAusente = leadAusencia.cartaId.replace('gen_alibi_', '');
+    if (pacoteE1.cartas.some((c) => c.id === `gen_corrobora_${idAusente}`))
+      e3Falhas.push(`${seedE1}: ausente com corroboração grátis na vizinhança`);
+    const registroAus = pacoteE1.cartas.find((c) => c.id === 'gen_registro_comarca');
+    if (!registroAus || registroAus.tagsOcultas.ligadoA !== idAusente)
+      e3Falhas.push(`${seedE1}: registro distante não liga o ausente`);
+    const alibiAus = pacoteE1.cartas.find((c) => c.id === leadAusencia.cartaId);
+    const rotuloSat = pacoteE1.localidades.find((l) => l.id.startsWith('comarca_')).rotuloMesa;
+    if (!alibiAus || !alibiAus.carimboPadrao.includes(rotuloSat))
+      e3Falhas.push(`${seedE1}: álibi do ausente não declara o satélite`);
+  }
 }
 const ge1IntegridadeOk = ge1Falhas.length === 0;
 if (!ge1IntegridadeOk) console.log('\nPALCO E1 — GE1 falhou:', ge1Falhas.slice(0, 8).join('; '));
