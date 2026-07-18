@@ -33,8 +33,10 @@ export default function Escrivaninha() {
   const somAtivo = useJogo((s) => s.somAtivo);
   const alternarSom = useJogo((s) => s.alternarSom);
   const fichaAberta = useJogo((s) => s.fichaAberta);
+  const glossarioAberto = useJogo((s) => s.glossarioAberto);
+  const abrirGlossario = useJogo((s) => s.abrirGlossario);
 
-  const mesaDesfocada = overlay !== null;
+  const mesaDesfocada = overlay !== null || glossarioAberto !== null;
 
   // 3D só com WebGL e fora da rota de escape ?flat=1 (decisão única por
   // sessão) — e só quando a maquete CONHECE todos os nós do caso (o caso
@@ -137,7 +139,7 @@ export default function Escrivaninha() {
         >
           <BotaoPainel rotulo="Caderneta" aoClicar={() => abrirOverlay('caderneta')} />
           <BotaoPainel rotulo="Painel de Álibis" aoClicar={() => abrirOverlay('alibis')} />
-          <BotaoPainel rotulo="Glossário" aoClicar={() => abrirOverlay('glossario')} />
+          <BotaoPainel rotulo="Glossário" aoClicar={() => abrirGlossario()} />
           <BotaoPainel
             rotulo={somAtivo ? 'Som: aceso' : 'Som: apagado'}
             aoClicar={alternarSom}
@@ -160,7 +162,6 @@ export default function Escrivaninha() {
           no mapa; fechar devolve à mesa (reabrir o lugar custa 0h). */}
       {overlay?.tipo === 'dialogo' && <InterrogatorioDialogo dialogoId={overlay.id} />}
       {overlay?.tipo === 'caderneta' && <Caderneta />}
-      {overlay?.tipo === 'glossario' && <ModalGlossario />}
       {overlay?.tipo === 'alibis' && <PainelAlibis />}
       {overlay?.tipo === 'acusacao' && <MuralAcusacao />}
       {overlay?.tipo === 'monologo' && <MonologoFinal />}
@@ -169,6 +170,11 @@ export default function Escrivaninha() {
           primeira evidência do caso se apresenta nela; as demais, ao ser
           reconsultadas (clique na carta pousada ou no aviso de pouso). */}
       {fichaAberta && <FichaEvidencia cartaId={fichaAberta} />}
+
+      {/* O Glossário (§9) é camada própria ACIMA da ficha (P0 §3 do playtest
+          de 17/07): a pilha é sempre base < ficha < glossário — abrir o
+          verbete pela ficha não descarta o overlay que estava por baixo. */}
+      {glossarioAberto !== null && <ModalGlossario />}
 
       {/* O aviso de pouso (Onda 4): a etiqueta que anuncia a observação
           registrada deslizando para a mesa — clicável para abrir a ficha. */}

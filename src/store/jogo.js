@@ -144,6 +144,13 @@ export function estadoInicialCaso() {
     // dado puro; a ficha lê a carta já registrada em cartasRegistradas.
     fichaAberta: null, // cartaId | null
 
+    // ---------------- O Glossário (§9) ----------------
+    // Mesma cidadania da ficha (P0 §3 do playtest de 17/07): camada própria
+    // acima do slot `overlay`, para a ponte Ficha → Glossário empilhar em vez
+    // de descartar o que estava por baixo (o mural sumia). A pilha é sempre
+    // base < ficha < glossário. Dado puro de UI — o motor não lê.
+    glossarioAberto: null, // { verbeteId: string | null } | null
+
     veredicto: null,
 
     // ---------------- A Construção da Acusação (a cadeia) ----------------
@@ -245,6 +252,11 @@ export const useJogo = create(
   // por cima de onde o jogador estiver. Custa zero (é consulta).
   abrirFicha: (cartaId) => set({ fichaAberta: cartaId }),
   fecharFicha: () => set({ fichaAberta: null }),
+
+  // O glossário (§9): abre por cima de qualquer camada (inclusive a ficha),
+  // opcionalmente já num verbete (a ponte carta → glossário). Custa zero.
+  abrirGlossario: (verbeteId = null) => set({ glossarioAberto: { verbeteId } }),
+  fecharGlossario: () => set({ glossarioAberto: null }),
 
   // Marca um nó de fala como visitado num interrogatório em diálogo (§7.1).
   // Custo zero (navegar dentro do local congela o relógio, como examinar):
