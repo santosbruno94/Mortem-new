@@ -144,6 +144,13 @@ export function estadoInicialCaso() {
     // dado puro; a ficha lê a carta já registrada em cartasRegistradas.
     fichaAberta: null, // cartaId | null
 
+    // ---------------- O Glossário (§9) ----------------
+    // Mesma cidadania da ficha (P0 §3 do playtest de 17/07): camada própria
+    // acima do slot `overlay`, para a ponte Ficha → Glossário empilhar em vez
+    // de descartar o que estava por baixo (o mural sumia). A pilha é sempre
+    // base < ficha < glossário. Dado puro de UI — o motor não lê.
+    glossarioAberto: null, // { verbeteId: string | null } | null
+
     veredicto: null,
 
     // ---------------- A Construção da Acusação (a cadeia) ----------------
@@ -181,6 +188,12 @@ export const useJogo = create(
   // do factory de propósito, para ficar FORA do save (partialize).
   ultimaCartaPousada: null,
 
+  // Último confronto em cena que ANOTOU ligação ao mural (P1 §7 do playtest
+  // de 17/07): alimenta o aviso de rodapé (irmão do aviso de pouso) — a
+  // automação deixa de ser silenciosa. Objeto novo a cada anotação (dispara
+  // o efeito mesmo em carta repetida). Transiente de UI, FORA do save.
+  ultimoConfrontoAnotado: null, // { cartaId } | null
+
   // =====================================================================
   // Ações
   // =====================================================================
@@ -189,7 +202,7 @@ export const useJogo = create(
   // mesa ao estado de arranque. As ações permanecem (o set é merge).
   reiniciarCaso: () => {
     useJogo.persist.clearStorage();
-    set({ ...estadoInicialCaso(), ultimaCartaPousada: null });
+    set({ ...estadoInicialCaso(), ultimaCartaPousada: null, ultimoConfrontoAnotado: null });
   },
 
   // Carrega um pacote de caso (o contrato de saída do gerador): troca o caso
@@ -200,7 +213,7 @@ export const useJogo = create(
   carregarCaso: (pacote) => {
     aplicarCasoNoModulo(pacote);
     useJogo.persist.clearStorage();
-    set({ ...estadoInicialCaso(), ultimaCartaPousada: null });
+    set({ ...estadoInicialCaso(), ultimaCartaPousada: null, ultimoConfrontoAnotado: null });
   },
 
   escolherDetective: () =>
@@ -246,6 +259,11 @@ export const useJogo = create(
   abrirFicha: (cartaId) => set({ fichaAberta: cartaId }),
   fecharFicha: () => set({ fichaAberta: null }),
 
+  // O glossário (§9): abre por cima de qualquer camada (inclusive a ficha),
+  // opcionalmente já num verbete (a ponte carta → glossário). Custa zero.
+  abrirGlossario: (verbeteId = null) => set({ glossarioAberto: { verbeteId } }),
+  fecharGlossario: () => set({ glossarioAberto: null }),
+
   // Marca um nó de fala como visitado num interrogatório em diálogo (§7.1).
   // Custo zero (navegar dentro do local congela o relógio, como examinar):
   // só registra o "já perguntado" para a UI. Idempotente e determinístico.
@@ -284,7 +302,12 @@ export const useJogo = create(
       (l) => (l.de === par[0] && l.para === par[1]) || (l.de === par[1] && l.para === par[0])
     );
     get().adicionarLigacao(par[0], par[1]);
-    if (!jaLigada) get().registrarLog('O confronto ficou anotado ao mural.');
+    if (!jaLigada) {
+      get().registrarLog('O confronto ficou anotado ao mural.');
+      // O aviso de rodapé (P1 §7): a anotação automática se apresenta em
+      // cena, não só no diário. Transiente — o componente o exibe e esquece.
+      set({ ultimoConfrontoAnotado: { cartaId } });
+    }
     // FASE 4: o confronto em cena é ação observável (gatilho possível).
     get().dispararInterferencias();
   },

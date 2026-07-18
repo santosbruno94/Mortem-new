@@ -24,7 +24,9 @@ const ROTULOS_DOMINIO = {
 export default function FichaEvidencia({ cartaId }) {
   const carta = useJogo((s) => s.cartasRegistradas.find((c) => c.id === cartaId));
   const fecharFicha = useJogo((s) => s.fecharFicha);
-  const abrirOverlay = useJogo((s) => s.abrirOverlay);
+  // O glossário é camada própria acima da ficha (P0 §3 do playtest de
+  // 17/07): abrir o verbete empilha, sem descartar o overlay de base.
+  const abrirGlossario = useJogo((s) => s.abrirGlossario);
   // Só a primeira observação do caso abre ficha por conta própria (Onda 4):
   // esta linha-tutorial avisa que as próximas pousam sozinhas.
   const primeiraDoCaso = useJogo((s) => s.cartasRegistradas.length === 1);
@@ -85,7 +87,7 @@ export default function FichaEvidencia({ cartaId }) {
           </p>
           {verbete && (
             <button
-              onClick={() => abrirOverlay('glossario', verbete.id)}
+              onClick={() => abrirGlossario(verbete.id)}
               className="text-tinta-clara hover:text-tinta underline decoration-tinta-apagada/60 underline-offset-2 text-[11px] px-1 py-1.5 -my-1.5 transition-colors duration-gesto"
               title="Abrir o verbete correspondente no Glossário"
             >

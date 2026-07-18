@@ -872,9 +872,12 @@ if (!dialogosIntegros) {
 // disto — é contrato da CAMADA de UI do interrogatório.
 // ============================================================
 // Cartas cujo [[id]] pode faltar conforme o tom (peso NARRATIVO, nunca do
-// veredicto — o motor repousa no corpo/cena). Hoje: a lasca na bainha de
-// Silas, que só se apanha de esguelha (tom oblíquo).
-const CARTAS_PRECISAO = new Set(['ev_vidro_dobra']);
+// veredicto — o motor repousa no corpo/cena). VAZIO desde 18/07/2026: a
+// lasca na bainha de Silas (ev_vidro_dobra) foi democratizada para os
+// quatro tons (historico-decisoes.md) e a guarda voltou a ser estrita —
+// toda carta da árvore sai em TODA descida. A categoria fica registrada
+// para um retorno consciente, se o tom um dia virar mecânica (Opção B).
+const CARTAS_PRECISAO = new Set([]);
 const semVoltaAoHub = [];
 const sustentacaoPodeFaltar = [];
 const precisaoInalcancavel = [];

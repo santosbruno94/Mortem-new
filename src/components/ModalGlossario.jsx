@@ -7,9 +7,15 @@ import Overlay from './Overlay.jsx';
 // consulta gratuita. É o material que permite interpretar os dados
 // brutos — o jogo nunca interpreta pelo jogador. Pode abrir já num
 // verbete (a ponte carta → glossário da Caderneta, Q9).
+//
+// Vive na camada própria `glossarioAberto` (não no slot `overlay`), no topo
+// da pilha base < ficha < glossário: abrir por cima da Ficha não descarta o
+// que estava por baixo (P0 §3 do playtest de 17/07). A `marca` mantém o
+// data-overlay que o QA-UI usa para achar a raiz mais ao topo.
 export default function ModalGlossario() {
-  const verbeteInicial = useJogo((s) => (s.overlay && s.overlay.id) || null);
-  const inicial = obterVerbete(verbeteInicial);
+  const glossarioAberto = useJogo((s) => s.glossarioAberto);
+  const fecharGlossario = useJogo((s) => s.fecharGlossario);
+  const inicial = obterVerbete(glossarioAberto ? glossarioAberto.verbeteId : null);
   const [dominioAtivo, setDominioAtivo] = useState(inicial ? inicial.dominio : DOMINIOS_GLOSSARIO[0].id);
   const [verbeteAtivo, setVerbeteAtivo] = useState(inicial ? inicial.id : null);
 
@@ -17,7 +23,14 @@ export default function ModalGlossario() {
   const aberto = verbetes.find((v) => v.id === verbeteAtivo) || null;
 
   return (
-    <Overlay titulo="Glossário Forense" subtitulo="Medicina legal de época — consultar não custa tempo" largura="max-w-3xl">
+    <Overlay
+      titulo="Glossário Forense"
+      subtitulo="Medicina legal de época — consultar não custa tempo"
+      largura="max-w-3xl"
+      marca="glossario"
+      nivelZ="z-[60]"
+      aoFechar={fecharGlossario}
+    >
       {/* Domínios: fileira de botões de mesa; o ativo vira placa de latão quente */}
       <div className="flex flex-wrap gap-2 mb-6">
         {DOMINIOS_GLOSSARIO.map((d) => (

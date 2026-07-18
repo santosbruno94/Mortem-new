@@ -7,6 +7,15 @@ import { useJogo } from '../store/jogo.js';
 // `marca` alimenta o atributo data-overlay (o QA de UI o usa para achar a
 // raiz do overlay mais ao topo); default vazio preserva o contrato atual.
 // `nivelZ` permite empilhar (a Ficha de Coleta sobe acima dos demais).
+
+// Registro de pilha do Esc (P0 §4 do playtest de 17/07): com camadas
+// empilhadas (Mural → Ficha → Glossário), cada instância registrava o
+// próprio keydown e um único Esc fechava todas de uma vez. Só o TOPO da
+// pilha responde; o clique no fundo já é naturalmente "só o topo" (o
+// fundo de cima cobre o de baixo). Escopo de módulo — sem coordenação
+// externa, vale para qualquer combinação de camadas.
+const pilhaEsc = [];
+
 export default function Overlay({
   titulo,
   subtitulo,
@@ -20,11 +29,18 @@ export default function Overlay({
   const fechar = aoFechar || fecharOverlay;
 
   useEffect(() => {
+    const entrada = { fechar };
+    pilhaEsc.push(entrada);
     function aoTeclar(e) {
-      if (e.key === 'Escape') fechar();
+      if (e.key !== 'Escape') return;
+      if (pilhaEsc[pilhaEsc.length - 1] === entrada) fechar();
     }
     window.addEventListener('keydown', aoTeclar);
-    return () => window.removeEventListener('keydown', aoTeclar);
+    return () => {
+      window.removeEventListener('keydown', aoTeclar);
+      const i = pilhaEsc.indexOf(entrada);
+      if (i !== -1) pilhaEsc.splice(i, 1);
+    };
   }, [fechar]);
 
   return (
