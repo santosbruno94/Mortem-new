@@ -846,9 +846,11 @@ oblíquo do beat 1, contrariando o contrato documentado no próprio arquivo: "ne
 prova que o veredicto lê depende do tom". A carta não é necessária à Vitória Absoluta,
 mas três em quatro jogadores jamais saberiam que ela existe. Decisão: **Opção A —
 democratizar**. A lasca sai em qualquer tom, com prosa distinta por tom (no oblíquo,
-Silas se trai ao cruzar as pernas — texto original; no firme, levanta-se e a luz
-apanha a bainha; no técnico, o perito pede que ele se aproxime e a vê de perto; no
-cordial, ele relaxa e estica as pernas). O tom segue sendo **cor, nunca chave** — o
+Silas se trai ao cruzar as pernas — texto original; no firme, levanta-se para reencher
+a xícara e a luz o apanha de pé; no técnico, chega a cadeira ao lampião a pedido do
+exame; no cordial, afrouxado pela brandura, ajeita a calça sobre o joelho e a bainha
+sobe da botina — o "estica as pernas" do esboço da OS caiu na revisão de voz, por
+quebrar o corpo controlado de Silas). O tom segue sendo **cor, nunca chave** — o
 peso da escolha permanece narrativo. A Opção B (assumir tom como mecânica de gate)
 foi rejeitada para o slice: mudaria o contrato do jogo inteiro e pediria mais cartas
 dependentes de tom para a regra valer o custo. Consequência de guarda: o conjunto
