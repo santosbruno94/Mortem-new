@@ -409,17 +409,55 @@ function derivarComarcaDoCaso({ bruto, ausenteId = null }) {
   const MOTIVOS_COBRANCA = ['divida_caderneta', 'dote', 'salario_atrasado'];
   const temCobranca = MOTIVOS_COBRANCA.includes(reu.motivoPotencial);
   const temPartilha = reu.motivoPotencial === 'heranca';
+  // Pousada (vítima-forasteiro): a comarca vira a ORIGEM do morto — "quem
+  // era este homem" (§4.5): a guia de carga nos pertences leva ao pátio
+  // da estalagem de onde a rota partia. Sobrepõe a moeda de função.
+  const ramoOrigem = !!bruto.escolha.palco?.pousada;
   // moeda 0 = penhor da vítima; 1 = AUSÊNCIA de um periférico (§4.5;
   // recai no penhor quando ninguém é elegível); 2–7 = móbil com papel.
-  const ramoAusencia = moeda === 1 && !!ausenteId;
-  const corroborativa = moeda <= 1 && !ramoAusencia;
-  const ramoMobil = moeda >= 2 && moeda <= 7 && (temCobranca || temPartilha);
-  if (!corroborativa && !ramoAusencia && !ramoMobil) return null;
+  const ramoAusencia = !ramoOrigem && moeda === 1 && !!ausenteId;
+  const corroborativa = !ramoOrigem && moeda <= 1 && !ramoAusencia;
+  const ramoMobil = !ramoOrigem && moeda >= 2 && moeda <= 7 && (temCobranca || temPartilha);
+  if (!ramoOrigem && !corroborativa && !ramoAusencia && !ramoMobil) return null;
   const localidadeId = `comarca_${sat.id}`;
   const cartasNovas = [];
   let lead;
   let localidade;
-  if (ramoAusencia) {
+  if (ramoOrigem) {
+    cartasNovas.push({
+      id: 'gen_papeis_forasteiro',
+      localidade: 'corpo',
+      suporteFisico: 'corpo',
+      textoDisplay: 'Os Papéis do Morto',
+      carimboPadrao: `Guia de carga de ${sat.rotulo}`,
+      descricao: `A guia de carga, cabeçalho impresso: o nome do carroceiro por extenso e a partida do pátio da estalagem de ${sat.rotulo}; abaixo, à mão, os volumes do dia e as aldeias de entrega.`,
+      tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: bruto.crime.vitimaId },
+    });
+    cartasNovas.push({
+      id: 'gen_registro_comarca',
+      localidade: localidadeId,
+      suporteFisico: 'registro',
+      textoDisplay: 'A Lista dos Carroceiros',
+      carimboPadrao: `Diretório do condado, em ${sat.rotulo}`,
+      descricao: `No diretório do condado, atrás do balcão, a lista dos que partem do pátio: a rota no nome do morto, com os dias da semana; o estalajadeiro dá a aldeia dele e os anos que o homem fazia a estrada.`,
+      tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: bruto.crime.vitimaId },
+    });
+    lead = {
+      cartaId: 'gen_papeis_forasteiro',
+      revelaNo: localidadeId,
+      nota: 'A guia de carga dá a estalagem de partida.',
+    };
+    localidade = {
+      id: localidadeId,
+      rotuloMesa: sat.rotulo,
+      titulo: `O Pátio da Estalagem — ${sat.rotulo}`,
+      subtitulo: `${sat.rotulo}, hora e meia de estrada`,
+      acoesEspeciais: [],
+      prosa: [
+        'Hora e meia de estrada. No pátio da estalagem, volumes rotulados esperam junto ao portão; atrás do balcão, o estalajadeiro abre o diretório do condado na página pedida: [[gen_registro_comarca]].',
+      ],
+    };
+  } else if (ramoAusencia) {
     const ausente = pessoas.get(ausenteId);
     cartasNovas.push({
       id: 'gen_registro_comarca',
@@ -528,7 +566,14 @@ function derivarComarcaDoCaso({ bruto, ausenteId = null }) {
     destino: sat.rotulo,
     via: temEstacao ? 'estacao' : 'portador',
     latencia: temEstacao ? 2 : 4,
-    resposta: ramoAusencia
+    resposta: ramoOrigem
+      ? {
+          textoDisplay: 'A Resposta por Fio',
+          termoCarimbo: `Telegrama de ${sat.rotulo}: a rota do carroceiro`,
+          descricao: `No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: a rota no nome do morto, com os dias da semana conforme o diretório.`,
+          tagsOcultas: { dominio: 'comportamental', subDominio: 'corroboracao', ligadoA: bruto.crime.vitimaId },
+        }
+      : ramoAusencia
       ? {
           textoDisplay: 'A Resposta por Fio',
           termoCarimbo: `Telegrama de ${sat.rotulo}: o livro de hóspedes`,
@@ -896,6 +941,22 @@ function realizarCartas(bruto) {
         break;
       }
       case 'gen_motivo': {
+        // Vítima-forasteiro (E3 §4.5): a caderneta vira o livro de fretes
+        // do próprio morto; as dívidas de jogo e de paga falam da taverna
+        // e da carga (parecer do perito, M4).
+        const fraseForasteiro = vitima.forasteiro
+          ? {
+              divida_caderneta: `O livro de fretes do morto soma o que ${reu.nome} lhe devia, adiantado do bolso e cobrado na volta.`,
+              divida_de_jogo: `A vila dá as noites de cartas na taverna; quem mais perdeu para o morto, e ficou a dever, foi ${reu.nome}.`,
+              salario_atrasado: `Consta queixa de paga retida: o morto devia a ${reu.nome} as semanas de carga.`,
+            }[c.tagsOcultas.motivo]
+          : null;
+        if (fraseForasteiro) {
+          nova.textoDisplay = 'Os Papéis do Móbil';
+          nova.carimboPadrao = `Móbil de ${reu.nome}`;
+          nova.descricao = fraseForasteiro;
+          break;
+        }
         const frase = PROSA_MOTIVO[c.tagsOcultas.motivo];
         nova.textoDisplay = 'Os Papéis do Móbil';
         nova.carimboPadrao = `Móbil de ${reu.nome}`;
@@ -1013,7 +1074,9 @@ function montarLocalidades(bruto, cartas) {
     prosa: [
       externo
         ? `${femV ? 'A morta jaz' : 'O morto jaz'} ao relento, no canto a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.`
-        : `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`,
+        : palco.pousada
+          ? `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como quem se recolheu para a noite. A rota seguia de manhã para as aldeias de além; a cama na taverna era a de sempre. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`
+          : `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`,
       'Ao primeiro exame do tronco e dos membros, [[gen_rigor]].',
       pFerida,
       ...(cartas.some((c) => c.id === 'gen_engodo' && c.localidade === 'corpo')
@@ -1025,6 +1088,9 @@ function montarLocalidades(bruto, cartas) {
         : []),
       ...(cartas.some((c) => c.id === 'gen_recibo_comarca')
         ? ['Entre os pertences arrolados: [[gen_recibo_comarca]].']
+        : []),
+      ...(cartas.some((c) => c.id === 'gen_papeis_forasteiro')
+        ? ['Entre os pertences arrolados: [[gen_papeis_forasteiro]].']
         : []),
       externo
         ? 'A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.'
@@ -1466,7 +1532,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       carta: true,
       paragrafos: [
         'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
-        `"{detective.title} {detective.surname} — Escrevo-lhe como delegado de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)} desta vila, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
+        `"{detective.title} {detective.surname} — Escrevo-lhe como delegado de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
         `"${delegado}, Delegado."`,
       ],
       rotuloBotao: 'Aceitar o chamado',
