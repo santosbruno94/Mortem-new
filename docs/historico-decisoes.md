@@ -21,6 +21,7 @@
 | jul/2026 (Reescrita do caso) | **"O Álibi de Corda" → "A Hora Emprestada"**: mesma vítima e cenário, verdade de ouro nova. 3 → **5 suspeitos**, 1 → **3 mentirosos inocentes** (segredos de naturezas distintas: humilhação, decoro, medo), e o relógio quebrado deixa de ser isca passiva para virar **pivô estrutural** com três leituras (mostrador forjado / roda de contagem / relógio de bolso de corda esgotada). Motor ganhou duas travas temporais universais (`rotina_interrompida`, `registro_mecanico`); veredicto/acusação intocados. Removida a perita Lenore (fica só o Dr. Harlan Blackwell). Fecha as pendências 1, 2, 3 e 5 do overhaul de 12/07 (despiste com explicação plantada; ≥2 mentirosos; motivo composto arquivado — `silenciamento` é composto por natureza, único por id; `reacao_vital` em jogo) |
 | jul/2026 (Fundações do gerador procedural, FASE 0) | Registro normativo das decisões de arquitetura do gerador: **pacote de caso** serializável, **asset 2D sob contrato**, **retratos em camadas**, **resource binding** por slots tipados, **papéis dramáticos** gerador-facing e **eco do mestre** sobre falhas (detalhe abaixo). Só documentos; nenhum código. |
 | jul/2026 (Gerador por simulação e interferência, FASE 0) | Registro normativo do overhaul do gerador: o crime é **simulado na geração** por um **autobattler de build time** (`resolverCrime` → `RegistroDoCrime`), atributos sob **regra de existência** (FOR/INT/WIS/CHA; só existe o que deixa vestígio ou comportamento), **arquétipos × demografia 1893**, geração espacial cidade-primeiro com **grafo de avistamentos**, e **interferência** como evento contingente sob as **Regras de Justiça R1–R6**. Inclui a reconciliação com a rejeição anterior do grid espacial (detalhe abaixo). Só documentos; nenhum código. |
+| 18/jul/2026 (Playtest independente — contratos P1) | **`ev_vidro_dobra` democratizada (Opção A)**: a lasca na bainha de Silas sai nos QUATRO tons do beat 1, com prosa distinta por tom — o tom segue **cor, nunca chave** (o contrato "nenhuma prova que o veredicto lê depende do tom" volta a valer sem exceção; `CARTAS_PRECISAO` esvazia no `qa.mjs` e a guarda de sustentação vira estrita). **Feedback das automações silenciosas**: a ligação automática das cartas do corpo às âncoras ganha o micro-rótulo "o corpo declara" na Estação I; o confronto em cena que anota `refuta_alibi` ao mural ganha aviso no rodapé (padrão do `AvisoCartaPousada`). Detalhe abaixo. |
 | 17/jul/2026 (Reconciliação encenação→motor, Lotes 1 e 3) | Da pesquisa de encenação/supressão ao motor: **Lote 1** (zero `src/logic`) — 6 verbetes de glossário (guaiaco/Van Deen, Teichmann, Sorby, micrometria de Gulliver, epitélio no coágulo, discórdia tanatológica), `instrumento_guardado_umido` corrigido para o **coágulo durável sob o rebite** (a umidade era o sinal perecível), e a carta condicional `gen_frestas` (o sangue que a esfrega empurra para a fresta). **Lote 3** — a **fraude de tempo pelo corpo**: `cartaHoraForjada` ganha duas variantes térmicas (corpo aquecido junto à lareira / resfriado na corrente), a hora aparente do corpo refutável pelos relógios duráveis, como o mostrador forjado do caso-escola. **§5 decidido (b), não executado**: o sinal de ausência do eixo CAUSA passa a ser lido como *a assinatura só crava com reação vital presente* — registrado abaixo, implementação adiada para o Lote 2. |
 
 ## Fundações do gerador procedural (jul/2026 — detalhe)
@@ -831,3 +832,37 @@ a assinatura só **crava** a causa se a reação vital estiver presente; **ausen
 a mais fiel à KB. **Custo conhecido** (razão do adiamento): mexe na semântica de um sinal que
 20 cartas já usam, então os 21 casos regeneram e o `qa.mjs` (réplica byte a byte) acompanha
 no mesmo commit — é o Lote 2, a ser executado sob ordem expressa.
+
+## Correções do playtest independente (18/07/2026) — os dois contratos P1
+
+**Origem.** Relatório `playtest-independente-2026-07-17.md` e a OS derivada dele. Os
+cinco P0 (zona morta do `ResumoEstacao`, "§" da ficha em mobile, glossário empilhado,
+Esc em pilha, confirmação de lacunas no selo) eram bugs de usabilidade sem decisão de
+design; estes dois pediam registro antes de código.
+
+**1. `ev_vidro_dobra` — a única carta dependente de tom (§7.4-16 do relatório).**
+`src/data/dialogos.js` fazia a lasca de vidro na bainha de Silas aparecer só no tom
+oblíquo do beat 1, contrariando o contrato documentado no próprio arquivo: "nenhuma
+prova que o veredicto lê depende do tom". A carta não é necessária à Vitória Absoluta,
+mas três em quatro jogadores jamais saberiam que ela existe. Decisão: **Opção A —
+democratizar**. A lasca sai em qualquer tom, com prosa distinta por tom (no oblíquo,
+Silas se trai ao cruzar as pernas — texto original; no firme, levanta-se e a luz
+apanha a bainha; no técnico, o perito pede que ele se aproxime e a vê de perto; no
+cordial, ele relaxa e estica as pernas). O tom segue sendo **cor, nunca chave** — o
+peso da escolha permanece narrativo. A Opção B (assumir tom como mecânica de gate)
+foi rejeitada para o slice: mudaria o contrato do jogo inteiro e pediria mais cartas
+dependentes de tom para a regra valer o custo. Consequência de guarda: o conjunto
+`CARTAS_PRECISAO` do `qa.mjs` esvazia — a verificação de solubilidade passa a exigir
+TODA carta da árvore em TODA descida (a categoria "precisão tom-dependente" fica
+registrada no código para um retorno futuro consciente, se a Opção B um dia vingar).
+
+**2. Feedback das automações silenciosas (§4.3 e §1.4 do relatório).** Duas
+automações agiam pelo jogador sem cerimônia. (a) O corpo auto-ligado às âncoras: o
+`useEffect` do mural liga as cartas temporais/causais coletadas às âncoras
+quando/como sem o jogador tocá-las — a tese de design ("o corpo é lido, não
+selecionado") já vivia em comentário de código, invisível ao jogador. A Estação I
+ganha o micro-rótulo **"o corpo declara"** junto às cartas auto-ligadas: distinção
+visual, zero mudança de motor. (b) O confronto em cena que anota `refuta_alibi` ao
+mural só avisava no diário. Ganha o aviso discreto no rodapé ("A prova ficou anotada
+ao mural"), reutilizando o padrão do `AvisoCartaPousada` — mesmo tom, mesma duração,
+camada transiente de UI fora do save.
