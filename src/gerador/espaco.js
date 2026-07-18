@@ -207,6 +207,50 @@ export const TIPOS_PREDIO = {
     proveniencia:
       'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (cottage de trabalhador: 1–2 pavimentos, chaminé robusta na empena, janelas pequenas e irregulares)',
   },
+  // ----- LOGRADOUROS (OS palco em anéis, E2 — Anel 1; dossiê em -----
+  // docs/os-palco-em-aneis-e2-dossie.md §1). Lote raso no traçado:
+  // `logradouro: true` marca o tipo como palco EXTERNO — silhueta de
+  // chão murado (h mínimo), sem chaminé; o "interior" é pseudo-interior
+  // no mesmo schema, com `saidas` (interiores.js).
+  adro_da_igreja: {
+    id: 'adro_da_igreja',
+    rotulo: 'O Adro da Igreja',
+    unico: true,
+    logradouro: true,
+    silhueta: {
+      w: [1.1, 1.25], d: [0.85, 0.95], h: [0.05, 0.07], telhadoAltura: [0.01, 0.02],
+      beiral: 0, ristela: false, chamines: 0,
+      paletaParede: ['#6f6b58', '#6a6656'], paletaTelhado: ['#565243', '#514d40'],
+    },
+    proveniencia:
+      'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §8 (adro murado, o único recinto público murado sempre aberto; churchways) e arquitetura-em-detalhe.md §7 (lychgate, lápides, teixo, lado norte evitado)',
+  },
+  patio_da_granja: {
+    id: 'patio_da_granja',
+    rotulo: 'O Pátio da Granja',
+    unico: true,
+    logradouro: true,
+    silhueta: {
+      w: [1.05, 1.2], d: [0.8, 0.9], h: [0.04, 0.06], telhadoAltura: [0.01, 0.02],
+      beiral: 0, ristela: false, chamines: 0,
+      paletaParede: ['#77694c', '#716448'], paletaTelhado: ['#5a5040', '#554b3c'],
+    },
+    proveniencia:
+      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §6 (quintais ativos: poço, celeiro, anexos) e arquitetura-em-detalhe.md §5 (poço com tampa, chiqueiro do porco de outubro, monturo)',
+  },
+  caminho_do_acude: {
+    id: 'caminho_do_acude',
+    rotulo: 'O Caminho do Açude',
+    unico: true,
+    logradouro: true,
+    silhueta: {
+      w: [1.3, 1.45], d: [0.6, 0.7], h: [0.04, 0.06], telhadoAltura: [0.01, 0.02],
+      beiral: 0, ristela: false, chamines: 0,
+      paletaParede: ['#5e6650', '#59614c'], paletaTelhado: ['#4c5546', '#475041'],
+    },
+    proveniencia:
+      'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §7 (moinho d’água: açude e levada, ruído constante) e §5 (a rede de footpaths, stiles e portões como segundo grafo da vila)',
+  },
 };
 
 // ---------------------------------------------------------------------
@@ -390,6 +434,83 @@ export const MOBILIA_DE_OFICIO = {
     ],
     proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (estação rural: bilheteria + espera padronizadas)',
   },
+  // ----- MOBÍLIA DE LOGRADOURO (E2, Anel 1) — os "cantos" dos palcos -----
+  // externos, chaveados pelo tipoComodo como todo cômodo de ofício.
+  // Dossiê com fonte por peça: docs/os-palco-em-aneis-e2-dossie.md §1.
+  quadra_de_lapides: {
+    itens: [
+      { id: 'lapides_enfileiradas', rotulo: 'lápides enfileiradas de leste a oeste' },
+      { id: 'cova_recem_aberta', rotulo: 'cova recém-aberta com a pá fincada ao lado' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-em-detalhe.md §7 (sepulturas leste-oeste, os ricos junto ao caminho sul; adro de vila ativo)',
+  },
+  fundo_do_adro: {
+    itens: [
+      { id: 'teixo_velho', rotulo: 'teixo velho' },
+      { id: 'lapide_tombada', rotulo: 'lápide tombada no mato' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-em-detalhe.md §7 (teixos mais velhos que a igreja; o lado norte evitado, covas sem nome)',
+  },
+  alameda_do_adro: {
+    itens: [{ id: 'muro_baixo_de_pedra', rotulo: 'muro baixo de pedra' }],
+    proveniencia: 'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §8 (adro murado) e §4 (lajões do adro, dos poucos trechos calçados)',
+  },
+  lychgate: {
+    itens: [
+      { id: 'banco_do_lychgate', rotulo: 'bancos laterais de carvalho' },
+      { id: 'pedra_dos_caixoes', rotulo: 'pedra de pousar os caixões' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-em-detalhe.md §7 (lychgate: portal coberto de carvalho, bancos laterais, pedra ou cavaletes ao centro)',
+  },
+  terreiro: {
+    itens: [
+      { id: 'carroca_desatrelada', rotulo: 'carroça desatrelada' },
+      { id: 'clamp_de_batata', rotulo: 'meda de batatas de terra fresca' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §2 (a carroça no pacote-padrão da vila) e arquitetura-em-detalhe.md §5 (clamp de outubro: terra recém-mexida é normal)',
+  },
+  alpendre_do_feno: {
+    itens: [
+      { id: 'feno_empilhado', rotulo: 'feno empilhado' },
+      { id: 'ferramentas_de_lavoura', rotulo: 'ferramentas de lavoura' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §5–§6 (palheiro e anexos de trabalho como cenário ativo; ferramentas do paiol)',
+  },
+  canto_do_poco: {
+    itens: [
+      { id: 'poco_com_tampa', rotulo: 'poço com tampa de madeira' },
+      { id: 'cocho_de_gado', rotulo: 'cocho de gado' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-em-detalhe.md §5 (poço doméstico de 15–60 pés, com tampa) e urbanismo-e-morfologia.md §3 (cocho junto da bomba)',
+  },
+  chiqueiro: {
+    itens: [
+      { id: 'chiqueiro_do_porco', rotulo: 'porco gordo no cercado' },
+      { id: 'monturo', rotulo: 'monturo' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-em-detalhe.md §5 (o porco de outubro; a matança iminente) e urbanismo-e-morfologia.md §4 (monturo junto de quase toda porta)',
+  },
+  vereda: {
+    itens: [
+      { id: 'stile_na_cerca', rotulo: 'degraus de transpor a cerca' },
+      { id: 'fingerpost', rotulo: 'poste de braços indicadores' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §5 (stiles e portões como checkpoints dos footpaths) e §3 (marcos e fingerposts)',
+  },
+  margem_do_acude: {
+    itens: [
+      { id: 'lamina_do_acude', rotulo: 'lâmina parada do açude' },
+      { id: 'pranchao_de_travessia', rotulo: 'pranchão de travessia' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §7 (moinho d’água: açude e levada; o pranchão é inferência da levada, dossiê E2 §1.3)',
+  },
+  comporta: {
+    itens: [
+      { id: 'comporta_de_engrenagem', rotulo: 'engrenagem da comporta' },
+      { id: 'sacas_esquecidas', rotulo: 'sacas do moinho encostadas' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §7 (a comporta do açude) e arquitetura-e-espacos.md §1 (sacas, mobília canônica do moinho)',
+  },
 };
 
 // Proveniência das tabelas deste arquivo (uma linha por tabela, modelo
@@ -399,4 +520,11 @@ export const PROVENIENCIA_ESPACO = {
     'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 (tipologia dos edifícios) e "Implicações" (silhuetas para o 3D procedural; paleta tijolo + ardósia)',
   mobiliaPorClasse: 'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (interiores por classe)',
   mobiliaDeOficio: 'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 e §5 (plantas e circulação; loja, botica, estalagem)',
+  logradouros:
+    'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §2–§8 e arquitetura-em-detalhe.md §5/§7 (catálogo com fonte por peça no dossiê docs/os-palco-em-aneis-e2-dossie.md §1)',
 };
+
+// Itens de mobília que valem como âncora espacial de ÁGUA (E2 §3.3): a
+// elegibilidade do afogamento lê esta lista, nunca o id literal — o açude
+// e o poço quebram o quase-invariante "afogamento ⇒ forja".
+export const ITENS_COM_AGUA = ['cocho_dagua', 'lamina_do_acude', 'poco_com_tampa', 'cocho_de_gado'];

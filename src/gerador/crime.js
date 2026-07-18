@@ -110,6 +110,31 @@ function mobiliasAoAlcance(interior, celula) {
   );
 }
 
+// Saídas do palco (E2, OS palco em anéis): o interior de prédio declara
+// UMA saída (a porta frente-centro que este módulo sempre computou); o
+// logradouro declara 2–4 células de borda. Fallback = a fórmula antiga —
+// replay byte a byte dos casos internos por construção.
+function saidasDoPalco(interior) {
+  return interior.saidas && interior.saidas.length
+    ? interior.saidas
+    : [{ col: Math.floor(interior.grid.colunas / 2), fila: interior.grid.filas - 1 }];
+}
+
+// A saída mais próxima de uma célula (Manhattan; empate = ordem da lista).
+function saidaMaisProxima(interior, celula) {
+  const saidas = saidasDoPalco(interior);
+  let melhor = saidas[0];
+  let melhorDist = Math.abs(melhor.col - celula.col) + Math.abs(melhor.fila - celula.fila);
+  for (const s of saidas) {
+    const d = Math.abs(s.col - celula.col) + Math.abs(s.fila - celula.fila);
+    if (d < melhorDist) {
+      melhor = s;
+      melhorDist = d;
+    }
+  }
+  return melhor;
+}
+
 // Caminho em L entre duas células (colunas primeiro, depois filas):
 // passos ortogonais de 1 — contíguo por construção (lint de coerência).
 function caminhoEmL(de, para) {
@@ -146,9 +171,9 @@ function simularBatalha(
   const sobAtaque = portaoPsiquico?.sobAtaque || { resistir: 0, fugir: 0, gritar: 0 };
   const polaridade = portaoPsiquico?.polaridade || 'ativa';
 
-  // Porta externa: a célula frente-centro (última fila = rua) — a mesma
-  // convenção já usada pela pegada do desleixado e pelo arrasto (§4.5/§8.3).
-  const portaExterna = { col: Math.floor(interior.grid.colunas / 2), fila: interior.grid.filas - 1 };
+  // Saídas do palco (E2): a fuga mira a MAIS PRÓXIMA a cada passo — no
+  // interior de prédio, a única (a porta frente-centro de sempre).
+  const saidas = saidasDoPalco(interior);
 
   let pontosVida = 2 + 2 * forV; // FOR da vítima governa a resistência (§3.1)
   let celulaAtual = centroDoComodo(comodo);
@@ -237,7 +262,7 @@ function simularBatalha(
         lesoesSitioPosterior += 1; // o golpe desta rodada foi recebido de costas
         if (!inicioFuga) inicioFuga = { ...celulaAtual };
         const comodoAntes = comodoDaCelula(interior, celulaAtual);
-        const passo = caminhoEmL(celulaAtual, portaExterna);
+        const passo = caminhoEmL(celulaAtual, saidaMaisProxima(interior, celulaAtual));
         celulaAtual = passo[Math.min(1, passo.length - 1)];
         rotaFuga.push({ ...celulaAtual });
         ruido += 1;
@@ -247,8 +272,8 @@ function simularBatalha(
           limiaresFuga.push({ ...celulaAtual });
           log.cruzouLimiar = true;
         }
-        // Alcançar a porta externa ⇒ a vítima escapa: batalha rejeitada.
-        if (celulaAtual.col === portaExterna.col && celulaAtual.fila === portaExterna.fila) {
+        // Alcançar uma saída ⇒ a vítima escapa: batalha rejeitada.
+        if (saidas.some((s) => s.col === celulaAtual.col && s.fila === celulaAtual.fila)) {
           rodadasLog.push(log);
           return { vitoria: false, motivo: 'vitima_escapou', rodadas: r };
         }
@@ -414,7 +439,7 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
     const vResiduo = depositar(
       'residuo_do_veneno',
       { celula: celulaServico, mobilia: pecaServico?.id ?? null },
-      'resíduo no serviço de chá da vítima'
+      interior.logradouro ? 'resíduo no que a vítima levava consigo' : 'resíduo no serviço de chá da vítima'
     );
     registrarEvento(vitima.id, 'colapso', { celula: celulaServico, mobilia: pecaServico?.id ?? null }, {
       depositados: [vResiduo],
@@ -498,7 +523,13 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
         });
         // Esfregaço em cada limiar cruzado (na altura da mão que se apoia).
         for (const cel of r.limiaresFuga) {
-          const vLim = depositar('esfregaco_de_limiar', { celula: cel }, 'borrão de sangue na altura da mão, no batente');
+          const vLim = depositar(
+            'esfregaco_de_limiar',
+            { celula: cel },
+            interior.logradouro
+              ? 'borrão de sangue na altura da mão, no madeiro da passagem'
+              : 'borrão de sangue na altura da mão, no batente'
+          );
           registrarEvento(vitima.id, 'cruzou_limiar', { celula: cel }, { depositados: [vLim] });
         }
       }
@@ -551,8 +582,10 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
   if (cenario === 'premeditado' && metodo.suprimeBatalha) {
     depositadosPlanejamento.push(depositar('aquisicao_do_meio', {}, `compra de ${metodo.rotulo.toLowerCase()} em registro de botica`));
   }
-  if (cenario === 'premeditado' && intA >= 4) {
-    const celulaPorta = { col: Math.floor(interior.grid.colunas / 2), fila: interior.grid.filas - 1 };
+  // E2: logradouro não tem fechadura — o acesso preparado é vestígio de
+  // porta, só existe em interior de prédio (regra de existência).
+  if (cenario === 'premeditado' && intA >= 4 && !interior.logradouro) {
+    const celulaPorta = saidaMaisProxima(interior, centroDoComodo(comodo));
     depositadosPlanejamento.push(depositar('acesso_preparado', { celula: celulaPorta }, 'fechadura sem arrombamento; entrada preparada'));
   }
   if (depositadosPlanejamento.length > 0) {
@@ -597,7 +630,7 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
       depositadosErro.push(depositar('instrumento_abandonado', { celula: posicaoCorpo.celula }, `${metodo.instrumento} deixado junto ao corpo`));
     }
     if (metodo.sangra && !metodo.suprimeBatalha) {
-      const celulaPorta = { col: Math.floor(interior.grid.colunas / 2), fila: interior.grid.filas - 1 };
+      const celulaPorta = saidaMaisProxima(interior, posicaoCorpo.celula);
       const fuga = caminhoEmL(posicaoCorpo.celula, celulaPorta);
       depositadosErro.push(depositar('pegada_ensanguentada', { celula: fuga[Math.min(1, fuga.length - 1)], celulas: fuga }, 'pegadas rumo à porta, esmaecendo'));
     }

@@ -528,10 +528,12 @@ export const useJogo = create(
       carta = {
         id: 'ev_algor',
         localidade: 'corpo',
-        textoDisplay: 'Corpo Frio como a Sala',
-        termoCarimbo: 'Corpo tão frio quanto a sala',
-        descricao: `O termômetro marca os ${formatTemperatura(ambiente)} do próprio escritório: o corpo esfriou até igualar a sala. Isso já não aperta a hora — diz só que a morte foi há mais de um dia.`,
-        vozMestre: 'Frio como a sala. O calor já não conta as horas — só diz que faz tempo.',
+        // Texto neutro de lugar (parecer E2, B1): a mesma carta serve ao
+        // escritório do caso-escola, à loja gerada e ao corpo ao relento.
+        textoDisplay: 'Corpo Frio como o Ar',
+        termoCarimbo: 'Corpo tão frio quanto o ar da cena',
+        descricao: `O termômetro marca os ${formatTemperatura(ambiente)} do próprio ar da cena: o corpo esfriou até igualar o ambiente. Isso já não aperta a hora — diz só que a morte foi há mais de um dia.`,
+        vozMestre: 'Frio como o ar em volta. O calor já não conta as horas — só diz que faz tempo.',
         // Equilíbrio: leitura VAGA, não nula. Carrega a temperatura medida
         // (== ambiente); o modelo devolve um piso largo (perde precisão).
         tagsOcultas: {
@@ -547,10 +549,10 @@ export const useJogo = create(
         id: 'ev_algor',
         localidade: 'corpo',
         textoDisplay: `Corpo Ainda Morno: ${formatTemperatura(temperatura)}`,
-        termoCarimbo: `Corpo a ${formatTemperatura(temperatura)} (sala a ${formatTemperatura(ambiente)})`,
+        termoCarimbo: `Corpo a ${formatTemperatura(temperatura)} (o ar a ${formatTemperatura(ambiente)})`,
         // A carta entrega só a LEITURA (temperaturas); a aritmética do
         // resfriamento é do jogador, com o verbete de algor do Glossário (Q9).
-        descricao: `O mercúrio detém-se nos ${formatTemperatura(temperatura)}, contra ${formatTemperatura(ambiente)} do escritório. Um corpo vivo marcaria ${CONSTANTES_FORENSES.temperaturaInicial}.`,
+        descricao: `O mercúrio detém-se nos ${formatTemperatura(temperatura)}, contra ${formatTemperatura(ambiente)} do ar em volta. Um corpo vivo marcaria ${CONSTANTES_FORENSES.temperaturaInicial}.`,
         vozMestre: 'Ainda morno. O calor que perdeu conta as horas — um grau a cada uma delas.',
         // Carrega a leitura BRUTA (temperatura medida + ambiente); a janela
         // é calculada pelo modelo forense universal na gaveta Cronos.

@@ -16,6 +16,8 @@
 // =====================================================================
 
 import { hashString } from '../logic/hash.js';
+import { hashDecisao } from './hash_gerador.js';
+import { ITENS_COM_AGUA } from './espaco.js';
 import { sortearPonderado, derivarAtributosCompostos } from './amostragem.js';
 import { quantizarComportamentos } from './quantizacao.js';
 import { gerarMundo } from './mundo.js';
@@ -165,8 +167,76 @@ export function gerarCasoBruto(seed, opts = {}) {
   }
 
   // 4. Local e hora: o crime acontece onde a rotina da vítima a põe.
-  const localId = vitima.pacoteEspacial.rotina[faixa];
+  const localRotinaId = vitima.pacoteEspacial.rotina[faixa];
   const hora = horaDaFaixa(faixa, `${sal}|hora`);
+
+  // 4.5 E2 (OS palco em anéis) — REGIME DE PALCO: moeda determinística por
+  // caso (70% interno | 20% logradouro | 10% pousada — o terceiro braço só
+  // ativa na E3 e recai em interno até lá). A rotina-base NUNCA muda: o
+  // palco externo é o ANEXO do prédio da rotina (pátio↔granja,
+  // açude↔moinho, adro↔igreja) ou o destino de um CHAMARIZ (variante do
+  // premeditado; todo engodo deposita vestígio — GE6). Sem via possível, a
+  // moeda recai em interno (salvaguarda §3.6): nenhum sal existente é
+  // tocado e o caso interno permanece byte-idêntico ao de antes da E2.
+  const LOGRADOURO_DO_PREDIO = { granja: 'patio_da_granja', moinho: 'caminho_do_acude', igreja: 'adro_da_igreja' };
+  // Parecer do perito (E2, A3): a via de ROTINA só ativa em faixa cuja
+  // descoberta ao amanhecer é plausível — um morto do meio-dia num pátio
+  // ativo jazeria 18h sem ser achado. Pátio e adro (frequentação diurna)
+  // ficam alcançáveis só por CHAMARIZ noturno; a descoberta no mesmo dia
+  // para crime diurno externo fica registrada para OS futura (exige
+  // recalendarizar a chegada do perito).
+  const FAIXAS_DO_LOGRADOURO = {
+    patio_da_granja: [], // diurno — só por chamariz (noite/madrugada, deserto)
+    caminho_do_acude: ['noite'], // o moleiro fecha a comporta ao fim do dia (§1.3e)
+    adro_da_igreja: [], // diurno — só por chamariz
+  };
+  const salBaseCaso = salDaSeed(seed);
+  const moedaPalco = hashDecisao(`${salBaseCaso}|caso|regime-palco`) % 10;
+  let palco = null;
+  if (moedaPalco === 7 || moedaPalco === 8) {
+    const predioRotina = mundoBase.cidade.predios.find((p) => p.id === localRotinaId);
+    const anexo = predioRotina ? LOGRADOURO_DO_PREDIO[predioRotina.tipo] : null;
+    if (anexo && FAIXAS_DO_LOGRADOURO[anexo].includes(faixa)) {
+      palco = { logradouroId: anexo, via: 'rotina', chamariz: null };
+    } else if (cenario === 'premeditado') {
+      // Interceptação com chamariz (§3.4b): a vítima é atraída ao
+      // logradouro — de noite/madrugada, todos estão desertos (dossiê §1e).
+      const tipos = ['adro_da_igreja', 'patio_da_granja', 'caminho_do_acude'];
+      const logradouroId = tipos[hashDecisao(`${salBaseCaso}|caso|chamariz|local`) % tipos.length];
+      const engodo = ['bilhete', 'recado'][hashDecisao(`${salBaseCaso}|caso|chamariz|engodo`) % 2];
+      const outrosDoChamariz = elenco.filter((p) => p.id !== vitima.id && p.id !== assassino.id);
+      const portadorId =
+        engodo === 'recado' && outrosDoChamariz.length > 0
+          ? outrosDoChamariz[hashDecisao(`${salBaseCaso}|caso|chamariz|portador`) % outrosDoChamariz.length].id
+          : null;
+      palco = { logradouroId, via: 'chamariz', chamariz: { engodo, portadorId } };
+    }
+  }
+  const localId = palco ? palco.logradouroId : localRotinaId;
+
+  // 4.6 E2 — DESCOBERTA DO CORPO (só palco externo; o interno mantém a
+  // chegada fixa às 11h — decisão do autor de 18/07, replay preservado).
+  // Cena externa é achada ao clarear por quem madruga (dossiê §4: 6h–8h30);
+  // o perito chega 2–4h depois da notificação, teto 11h.
+  let descoberta = null;
+  if (palco) {
+    const salD = `${salBaseCaso}|caso|descoberta`;
+    const horaDescoberta = 6 + (hashDecisao(`${salD}|hora`) % 11) * 0.25;
+    const chegadaPerito = Math.min(11, horaDescoberta + 2 + (hashDecisao(`${salD}|perito`) % 9) * 0.25);
+    const PREDIO_DO_LOGRADOURO = { patio_da_granja: 'granja', caminho_do_acude: 'moinho', adro_da_igreja: 'igreja' };
+    const predioMae = PREDIO_DO_LOGRADOURO[palco.logradouroId];
+    const descobridor = elenco.find(
+      (p) =>
+        p.id !== vitima.id &&
+        p.id !== assassino.id &&
+        (p.pacoteEspacial.rotina.dia === predioMae || p.pacoteEspacial.trabalho === predioMae)
+    );
+    descoberta = {
+      hora: Math.round(horaDescoberta * 100) / 100,
+      chegadaPerito: Math.round(chegadaPerito * 100) / 100,
+      descobridorId: descobridor ? descobridor.id : null,
+    };
+  }
 
   // (A seleção do MÉTODO desceu para depois do interior: o afogamento só é
   // elegível quando a cena tem água alcançável — âncora lida do interior — D2.)
@@ -212,7 +282,9 @@ export function gerarCasoBruto(seed, opts = {}) {
   // 'agua' existe quando o interior tem um cocho/tanque alcançável (só a
   // forja, e só quando a mobília o sorteou). Sem âncora, afogamento fica fora.
   const ancorasDisponiveis = new Set();
-  if (interior.mobilia.some((m) => m.item === 'cocho_dagua')) ancorasDisponiveis.add('agua');
+  // E2: 'agua' generaliza do cocho da forja para toda lâmina alcançável
+  // (açude, poço, cocho de gado) — lista fechada em espaco.js.
+  if (interior.mobilia.some((m) => ITENS_COM_AGUA.includes(m.item))) ancorasDisponiveis.add('agua');
 
   // 6.6 OS da camada psíquica — a segunda coluna do elenco (sorteio ortogonal
   // do catálogo v1, desencaixe do réu com falso-destoante garantido). Movida
@@ -295,6 +367,10 @@ export function gerarCasoBruto(seed, opts = {}) {
     mundo,
     crime,
     testemunhaVistoVivoId: esqueleto.testemunhaVistoVivoId,
+    // E2: chegada do perito variável no palco externo (descoberta + 2–4h,
+    // teto 11h); interno segue no default 11h — replay intacto.
+    horasChegada: descoberta ? descoberta.chegadaPerito : undefined,
+    chamariz: palco ? palco.chamariz : null,
   });
 
   const escolha = {
@@ -307,6 +383,10 @@ export function gerarCasoBruto(seed, opts = {}) {
     comodoId,
     faixa,
     hora,
+    // E2 (metadado gerador-facing; o motor jamais lê): o regime do palco.
+    palco: palco
+      ? { externo: true, logradouroId: palco.logradouroId, via: palco.via, chamariz: palco.chamariz, descoberta }
+      : { externo: false },
   };
 
   // 10. FASE 4 — materialização da interferência: os pedidos do esqueleto

@@ -6373,10 +6373,10 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_4",
   "vitima": "Florence Read",
   "reuCorreto": "gen_7_criada",
-  "horasMorteAntesChegada": 14,
+  "horasMorteAntesChegada": 12,
   "horaMorteAbsoluta": -3,
-  "mecanismoCorreto": "envenenamento_laudano",
-  "instrumentoCorreto": "frasco_de_laudano",
+  "mecanismoCorreto": "estrangulamento_ligadura",
+  "instrumentoCorreto": "cordao_torcido",
   "motivacaoCorreta": "escandalo_gravidez",
   "cenaEncenada": false,
   "horaForjada": null,
@@ -6528,13 +6528,26 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "As Pupilas Fechadas",
-   "carimboPadrao": "Sinal de láudano em dose excessiva",
-   "descricao": "No corpo, marca de luta nenhuma. As pupilas estão contraídas em ponta de alfinete, e um resquício de amargor fica no hálito.",
+   "textoDisplay": "O Sulco no Pescoço",
+   "carimboPadrao": "Sinal de garrote (ligadura)",
+   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "miose_opiacea"
+    "sinal": "sulco_horizontal"
+   }
+  },
+  {
+   "id": "gen_reacao_vital",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Bordas Vivas",
+   "carimboPadrao": "Lesões sofridas em vida",
+   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "reacao_vital",
+    "sinal": "reacao_vital"
    }
   },
   {
@@ -6564,8 +6577,22 @@ export const CASOS_POOL = [
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "frasco_de_laudano",
+    "tipoVestigio": "cordao_torcido",
     "pertenceA": "gen_7_criada"
+   }
+  },
+  {
+   "id": "gen_engodo",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_6_lavadeira",
+   "textoDisplay": "O Recado Levado",
+   "carimboPadrao": "Recado que chamou a vítima",
+   "descricao": "Martha Smith conta o recado que levou a Florence Read: que fosse ao Caminho do Açude sem falta. Quem lho pediu ficou fora da luz e não deixou nome.",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "engodo",
+    "tipoEngodo": "recado_por_terceiro"
    }
   },
   {
@@ -6612,7 +6639,7 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "cozinha",
+   "comodo": "vereda",
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
@@ -6733,7 +6760,7 @@ export const CASOS_POOL = [
   {
    "id": "corpo",
    "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — Cottage nº 2",
+   "titulo": "O Corpo — O Caminho do Açude",
    "subtitulo": "Florence Read, costureira, 35 anos",
    "acoesEspeciais": [
     "termometro"
@@ -6746,44 +6773,45 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama cozinha, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "A morta jaz ao relento, no canto a que a vila chama a vereda entre sebes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — Cottage nº 2",
+   "titulo": "A Cena — O Caminho do Açude",
    "subtitulo": "Onde Florence Read foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 2 guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+    "O Caminho do Açude guarda o dia em que a acharam; o exame corre canto a canto.",
+    "Um transeunte deu com ela às 06h30; o alarme tomou a vila."
    ],
    "pontos": [
     {
-     "id": "pt_cena_cozinha",
-     "rotulo": "Cozinha",
-     "comodo": "cozinha",
+     "id": "pt_cena_margem",
+     "rotulo": "A Margem de Junco",
+     "comodo": "margem",
      "prosa": [
-      "No chão deste cômodo, a morta. No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_lavrador]]."
+      "Do que ali está: pranchão de travessia, lâmina parada do açude."
      ]
     },
     {
-     "id": "pt_cena_copa",
-     "rotulo": "Copa",
-     "comodo": "copa",
+     "id": "pt_cena_comporta",
+     "rotulo": "A Comporta do Açude",
+     "comodo": "comporta",
      "prosa": [
-      "Do mobiliário, tina e tábua de lavar, pia da copa (a única torneira)."
+      "Do que ali está: sacas do moinho encostadas, engrenagem da comporta."
      ]
     },
     {
-     "id": "pt_cena_quarto",
-     "rotulo": "Quarto",
-     "comodo": "quarto",
+     "id": "pt_cena_vereda",
+     "rotulo": "A Vereda entre Sebes",
+     "comodo": "vereda",
      "prosa": [
-      "No cômodo, cama de ferro, bacia e jarro."
+      "No chão deste canto, a morta. Do que ali está: poste de braços indicadores, degraus de transpor a cerca. De uma borda a outra, nada guarda o seu lugar. Fora do caminho das pisadas, junto à borda: [[gen_segredo_gen_1_lavrador]]."
      ]
     }
    ],
@@ -6807,10 +6835,11 @@ export const CASOS_POOL = [
    "id": "vizinhanca",
    "rotuloMesa": "A Vizinhança",
    "titulo": "A Vizinhança da Cena",
-   "subtitulo": "As casas em volta, as janelas que dão para a rua",
+   "subtitulo": "As casas ao alcance de um grito",
    "acoesEspeciais": [],
    "prosa": [
-    "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
+    "Em volta, campo e muro baixo; até a primeira casa vai um bom pedaço de caminho.",
+    "Do recado que correu na véspera: [[gen_engodo]].",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_costureira]], [[gen_corrobora_gen_2_criada]], [[gen_corrobora_gen_3_lavadeira]]."
    ],
    "blocosContingentes": []
@@ -7847,7 +7876,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Quill",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Florence Read, 35 anos, costureira. Achada morta no Cottage nº 2. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Florence Read, 35 anos, costureira. Achada morta no Caminho do Açude. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -7879,7 +7908,7 @@ export const CASOS_POOL = [
   ]
  },
  "parametrosCena": {
-  "horasChegada": 11,
+  "horasChegada": 9,
   "ambiente": 11,
   "calendario": {
    "diaBase": 14,
@@ -17904,7 +17933,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_11",
   "vitima": "Annie Morris",
   "reuCorreto": "gen_6_criada",
-  "horasMorteAntesChegada": 12,
+  "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": -1,
   "mecanismoCorreto": "trauma_contuso",
   "instrumentoCorreto": "arma_de_ocasiao",
@@ -18099,10 +18128,10 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "parlour",
+   "comodo": "vereda",
    "celula": {
-    "col": 1,
-    "fila": 4
+    "col": 4,
+    "fila": 3
    },
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
@@ -18119,15 +18148,15 @@ export const CASOS_POOL = [
    "id": "gen_pegadas",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "parlour",
+   "comodo": "vereda",
    "celula": {
-    "col": 2,
-    "fila": 4
+    "col": 5,
+    "fila": 3
    },
    "mobilia": null,
-   "textoDisplay": "Pegadas Rumo à Porta",
+   "textoDisplay": "Pegadas Rumo à Saída",
    "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
+   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a saída; entre uma e outra, um passo largo.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "pegadas",
@@ -18136,17 +18165,17 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_ruido_ouvido",
+   "id": "gen_engodo",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_1_criada",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na noite de 13",
-   "descricao": "Beatrice Saunders conta o que a parede deixou passar na noite de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "origemTestemunha": "gen_7_ferreiro",
+   "textoDisplay": "O Recado Levado",
+   "carimboPadrao": "Recado que chamou a vítima",
+   "descricao": "Eli Mills conta o recado que levou a Annie Morris: que fosse ao Caminho do Açude sem falta. Quem lho pediu ficou fora da luz e não deixou nome.",
    "tagsOcultas": {
     "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "noite"
+    "subDominio": "engodo",
+    "tipoEngodo": "recado_por_terceiro"
    }
   },
   {
@@ -18193,7 +18222,7 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "parlour",
+   "comodo": "vereda",
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
@@ -18314,7 +18343,7 @@ export const CASOS_POOL = [
   {
    "id": "corpo",
    "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — Casa do Médico",
+   "titulo": "O Corpo — O Caminho do Açude",
    "subtitulo": "Annie Morris, criada, 19 anos",
    "acoesEspeciais": [
     "termometro"
@@ -18327,52 +18356,45 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama parlour, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "A morta jaz ao relento, no canto a que a vila chama a vereda entre sebes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — Casa do Médico",
+   "titulo": "A Cena — O Caminho do Açude",
    "subtitulo": "Onde Annie Morris foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "A Casa do Médico guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+    "O Caminho do Açude guarda o dia em que a acharam; o exame corre canto a canto.",
+    "Um transeunte deu com ela às 06h45; o alarme tomou a vila."
    ],
    "pontos": [
     {
-     "id": "pt_cena_cozinha",
-     "rotulo": "Cozinha",
-     "comodo": "cozinha",
+     "id": "pt_cena_margem",
+     "rotulo": "A Margem de Junco",
+     "comodo": "margem",
      "prosa": [
-      "No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão."
+      "No canto, pranchão de travessia, lâmina parada do açude."
      ]
     },
     {
-     "id": "pt_cena_quarto",
-     "rotulo": "Quarto",
-     "comodo": "quarto",
+     "id": "pt_cena_comporta",
+     "rotulo": "A Comporta do Açude",
+     "comodo": "comporta",
      "prosa": [
-      "No cômodo, baú de roupa, cama de ferro, bacia e jarro."
+      "No canto, sacas do moinho encostadas, engrenagem da comporta."
      ]
     },
     {
-     "id": "pt_cena_parlour",
-     "rotulo": "Parlour",
-     "comodo": "parlour",
+     "id": "pt_cena_vereda",
+     "rotulo": "A Vereda entre Sebes",
+     "comodo": "vereda",
      "prosa": [
-      "No chão deste cômodo, a morta. Do mobiliário, flores de cera sob redoma, retratos emoldurados. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Junto do corpo, no chão: [[gen_instrumento]]. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavrador]]. Do meio do vão até a porta: [[gen_pegadas]]."
-     ]
-    },
-    {
-     "id": "pt_cena_consultorio",
-     "rotulo": "Consultório",
-     "comodo": "consultorio",
-     "prosa": [
-      "Vão sem mobília; sobra o assoalho nu."
+      "No chão deste canto, a morta. Do que ali está: poste de braços indicadores, degraus de transpor a cerca. De uma borda a outra, nada guarda o seu lugar. O que ali tinha prumo está tombado. Junto do corpo, no chão: [[gen_instrumento]]. Fora do caminho das pisadas, junto à borda: [[gen_segredo_gen_3_lavrador]]. Do chão até a saída: [[gen_pegadas]]."
      ]
     }
    ],
@@ -18396,11 +18418,11 @@ export const CASOS_POOL = [
    "id": "vizinhanca",
    "rotuloMesa": "A Vizinhança",
    "titulo": "A Vizinhança da Cena",
-   "subtitulo": "As casas em volta, as janelas que dão para a rua",
+   "subtitulo": "As casas ao alcance de um grito",
    "acoesEspeciais": [],
    "prosa": [
-    "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]].",
+    "A cena fica a céu aberto; as casas mais próximas olham-na de longe, por cima de muro e sebe.",
+    "Do recado que correu na véspera: [[gen_engodo]].",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_criada]], [[gen_corrobora_gen_2_lavrador]], [[gen_corrobora_gen_0_squire]]."
    ],
    "blocosContingentes": []
@@ -18449,17 +18471,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_visto_vivo": "reacao_gen_visto_vivo",
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
+    "gen_visto_vivo": "reacao_gen_visto_vivo"
    },
    "confrontos": [
     {
      "requerCarta": "gen_visto_vivo",
      "rotulo": "[Última Vez com Vida] A que horas, exatamente, viu a vítima com vida?"
-    },
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
     }
    ],
    "nos": {
@@ -18499,12 +18516,6 @@ export const CASOS_POOL = [
     "reacao_gen_visto_vivo": {
      "fala": [
       "Beatrice Saunders responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Beatrice Saunders conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -19438,7 +19449,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Stanmore",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Annie Morris, 19 anos, criada. Achada morta na Casa do Médico. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Annie Morris, 19 anos, criada. Achada morta no Caminho do Açude. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
@@ -19470,7 +19481,7 @@ export const CASOS_POOL = [
   ]
  },
  "parametrosCena": {
-  "horasChegada": 11,
+  "horasChegada": 9,
   "ambiente": 11,
   "calendario": {
    "diaBase": 14,
@@ -21329,11 +21340,11 @@ export const CASOS_POOL = [
   "cenaEncenada": false,
   "horaForjada": null,
   "perifericos": {
-   "gen_6_pastor_de_ovelhas": {
+   "gen_3_ferreiro": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
-   "gen_3_ferreiro": {
+   "gen_4_criada": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
@@ -21350,18 +21361,18 @@ export const CASOS_POOL = [
  },
  "suspeitos": [
   {
-   "id": "gen_6_pastor_de_ovelhas",
-   "nome": "Albert Harris",
-   "idade": 26,
-   "relacao": "Pastor de ovelhas; mora no Cottage nº 4",
-   "descricao": "Conta a noite por canecas, não por horas."
-  },
-  {
    "id": "gen_3_ferreiro",
    "nome": "Alfred Lee",
    "idade": 23,
    "relacao": "Ferreiro; mora no Cottage nº 3",
    "descricao": "Recebe de porta aberta e adianta-se às perguntas."
+  },
+  {
+   "id": "gen_4_criada",
+   "nome": "Annie Knight",
+   "idade": 19,
+   "relacao": "Criada; mora no Presbitério",
+   "descricao": "Fala baixo e mede a porta antes de responder."
   },
   {
    "id": "gen_0_costureira",
@@ -21517,6 +21528,20 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_engodo",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_2_ferreiro",
+   "textoDisplay": "O Recado Levado",
+   "carimboPadrao": "Recado que chamou a vítima",
+   "descricao": "Thomas White conta o recado que levou a Mary Ellis: que fosse ao Adro da Igreja sem falta. Quem lho pediu ficou fora da luz e não deixou nome.",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "engodo",
+    "tipoEngodo": "recado_por_terceiro"
+   }
+  },
+  {
    "id": "gen_motivo",
    "localidade": "delegacia",
    "suporteFisico": "registro",
@@ -21528,19 +21553,6 @@ export const CASOS_POOL = [
     "subDominio": "motivo",
     "motivo": "propriedade_da_esposa",
     "ligadoA": "gen_0_costureira"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_6_pastor_de_ovelhas",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Albert Harris",
-   "carimboPadrao": "Paradeiro de Albert Harris, confirmado",
-   "descricao": "A rua dá Albert Harris no Cottage nº 4 sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_6_pastor_de_ovelhas"
    }
   },
   {
@@ -21557,10 +21569,23 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_corrobora_gen_4_criada",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Annie Knight",
+   "carimboPadrao": "Paradeiro de Annie Knight, confirmado",
+   "descricao": "A rua dá Annie Knight no Presbitério sexta à noite, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_4_criada"
+   }
+  },
+  {
    "id": "gen_segredo_gen_1_lavadeira",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "quarto",
+   "comodo": "lychgate",
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
@@ -21602,21 +21627,6 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_alibi_gen_6_pastor_de_ovelhas",
-   "localidade": "delegacia",
-   "textoDisplay": "A Noite de Albert Harris",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_6_pastor_de_ovelhas",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Alfred Lee",
@@ -21626,6 +21636,21 @@ export const CASOS_POOL = [
     "dominio": "comportamental",
     "subDominio": "alibi",
     "declaranteId": "gen_3_ferreiro",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_4_criada",
+   "localidade": "delegacia",
+   "textoDisplay": "A Noite de Annie Knight",
+   "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
+   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_4_criada",
     "horaInicioDeclarada": -4,
     "horaFimDeclarada": 7,
     "corroborado": false
@@ -21681,7 +21706,7 @@ export const CASOS_POOL = [
   {
    "id": "corpo",
    "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — Cottage nº 5",
+   "titulo": "O Corpo — O Adro da Igreja",
    "subtitulo": "Mary Ellis, parteira, 60 anos",
    "acoesEspeciais": [
     "termometro"
@@ -21694,44 +21719,53 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama cozinha, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "A morta jaz ao relento, no canto a que a vila chama a alameda das lajes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — Cottage nº 5",
+   "titulo": "A Cena — O Adro da Igreja",
    "subtitulo": "Onde Mary Ellis foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 5 guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+    "O Adro da Igreja guarda o dia em que a acharam; o exame corre canto a canto.",
+    "Um transeunte deu com ela às 08h00; o alarme tomou a vila."
    ],
    "pontos": [
     {
-     "id": "pt_cena_cozinha",
-     "rotulo": "Cozinha",
-     "comodo": "cozinha",
+     "id": "pt_cena_quadra_sul",
+     "rotulo": "A Quadra das Lápides",
+     "comodo": "quadra_sul",
      "prosa": [
-      "No chão deste cômodo, a morta. No cômodo, mesa de tampo raspado, cadeiras Windsor."
+      "No canto, lápides enfileiradas de leste a oeste, cova recém-aberta com a pá fincada ao lado."
      ]
     },
     {
-     "id": "pt_cena_copa",
-     "rotulo": "Copa",
-     "comodo": "copa",
+     "id": "pt_cena_alameda",
+     "rotulo": "A Alameda das Lajes",
+     "comodo": "alameda",
      "prosa": [
-      "Do mobiliário, pia da copa (a única torneira), copper de ferver roupa, tina e tábua de lavar."
+      "No chão deste canto, a morta. Do que ali está: muro baixo de pedra."
      ]
     },
     {
-     "id": "pt_cena_quarto",
-     "rotulo": "Quarto",
-     "comodo": "quarto",
+     "id": "pt_cena_lychgate",
+     "rotulo": "O Portão Coberto",
+     "comodo": "lychgate",
      "prosa": [
-      "No cômodo, baú de roupa, cama de ferro. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_lavadeira]]."
+      "No canto, bancos laterais de carvalho, pedra de pousar os caixões. Fora do caminho das pisadas, junto à borda: [[gen_segredo_gen_1_lavadeira]]."
+     ]
+    },
+    {
+     "id": "pt_cena_fundo_norte",
+     "rotulo": "O Fundo Evitado",
+     "comodo": "fundo_norte",
+     "prosa": [
+      "Do que ali está: teixo velho, lápide tombada no mato."
      ]
     }
    ],
@@ -21755,11 +21789,12 @@ export const CASOS_POOL = [
    "id": "vizinhanca",
    "rotuloMesa": "A Vizinhança",
    "titulo": "A Vizinhança da Cena",
-   "subtitulo": "As casas em volta, as janelas que dão para a rua",
+   "subtitulo": "As casas ao alcance de um grito",
    "acoesEspeciais": [],
    "prosa": [
-    "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_6_pastor_de_ovelhas]], [[gen_corrobora_gen_3_ferreiro]], [[gen_corrobora_gen_2_ferreiro]]."
+    "A cena fica a céu aberto; as casas mais próximas olham-na de longe, por cima de muro e sebe.",
+    "Do recado que correu na véspera: [[gen_engodo]].",
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_ferreiro]], [[gen_corrobora_gen_4_criada]], [[gen_corrobora_gen_2_ferreiro]]."
    ],
    "blocosContingentes": []
   },
@@ -21821,184 +21856,6 @@ export const CASOS_POOL = [
   "vila|vila": 1
  },
  "dialogos": {
-  "dialogo_gen_6_pastor_de_ovelhas": {
-   "suspeitoId": "gen_6_pastor_de_ovelhas",
-   "origemLocalidade": "delegacia",
-   "chamada": "Interrogar Albert Harris",
-   "titulo": "Interrogatório — Albert Harris",
-   "subtitulo": "Pastor de ovelhas, 26 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Albert Harris entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Ao citar a primeira hora, corrige-a no meio da frase."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_6_pastor_de_ovelhas]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Ellis eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_6_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Mary Ellis? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_6_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_6_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    }
-   }
-  },
   "dialogo_gen_3_ferreiro": {
    "suspeitoId": "gen_3_ferreiro",
    "origemLocalidade": "delegacia",
@@ -22172,6 +22029,184 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_4_criada": {
+   "suspeitoId": "gen_4_criada",
+   "origemLocalidade": "delegacia",
+   "chamada": "Interrogar Annie Knight",
+   "titulo": "Interrogatório — Annie Knight",
+   "subtitulo": "Criada, 19 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {},
+   "confrontos": [],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "O delegado chama o nome; Annie Knight entra, senta-se e ajeita as fitas da touca. \"Com licença de entrar. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Ellis eu não conhecia.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Mary Ellis? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -22632,7 +22667,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Mary Ellis tinha desafeto, não foi freguês meu.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -22665,7 +22700,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Ellis? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Mary Ellis era das que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -22698,7 +22733,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -22731,7 +22766,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     }
@@ -22795,7 +22830,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do delegado Fenwick",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Mary Ellis, 60 anos, parteira. Achada morta no Cottage nº 5. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Mary Ellis, 60 anos, parteira. Achada morta no Adro da Igreja. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"

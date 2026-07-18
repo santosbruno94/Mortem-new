@@ -1600,7 +1600,9 @@ function problemasDaPonte(caso) {
   const { fatiaForense: fatia, crime } = caso;
   const verdade = fatia.verdadeDeOuro;
   const horaMorte = crime.hora.morte;
-  const horaExame = 11; // chegada do perito, como no caso-escola
+  // E2: no palco externo a chegada é variável (descoberta + 2–4h, teto
+  // 11h); no interno, a convenção das 11h do caso-escola.
+  const horaExame = caso.escolha.palco?.externo ? caso.escolha.palco.descoberta.chegadaPerito : 11;
   const ipm = horaExame - horaMorte;
 
   if (verdade.reuCorreto !== crime.assassinoId) problemas.push('réu da verdade ≠ assassino do registro');
@@ -3092,6 +3094,7 @@ let decorrelacaoOk = true;
 // ============================================================
 const SEEDS_E1 = Array.from({ length: 50 }, (_, i) => `comarca_${i + 1}`);
 const ge1Falhas = [];
+const engodoInalcancavel = []; // GE6 (E2): alcançabilidade do engodo no pacote
 let ge2Total = 0;
 let ge2SemCarta = 0;
 const marcadoresDoPonto = (pt) => [
@@ -3134,6 +3137,17 @@ for (const seedE1 of SEEDS_E1) {
   }
   ge2Total += cenaE1.pontos.length;
   ge2SemCarta += cenaE1.pontos.filter((pt) => marcadoresDoPonto(pt).length === 0).length;
+  // GE6 (E2): no pacote de caso com chamariz, o vestígio do engodo é
+  // alcançável pelo jogador — [[gen_engodo]] vive em alguma prosa.
+  if (brutoE1.escolha.palco?.via === 'chamariz') {
+    const textosE1 = pacoteE1.localidades.flatMap((l) => [
+      ...(l.prosa || []),
+      ...(l.introducao || []),
+      ...(l.pontos || []).flatMap((pt) => pt.prosa),
+      ...(l.blocosContingentes || []).flatMap((b) => b.paragrafos),
+    ]);
+    if (!textosE1.some((t) => t.includes('[[gen_engodo]]'))) engodoInalcancavel.push(seedE1);
+  }
 }
 const ge1IntegridadeOk = ge1Falhas.length === 0;
 if (!ge1IntegridadeOk) console.log('\nPALCO E1 — GE1 falhou:', ge1Falhas.slice(0, 8).join('; '));
@@ -3142,10 +3156,78 @@ const ge2AntiTelegrafoOk = ge2Fracao >= 0.4 && ge2Fracao <= 0.6;
 if (!ge2AntiTelegrafoOk)
   console.log(`\nPALCO E1 — GE2 fora da banda 40–60%: ${(ge2Fracao * 100).toFixed(1)}% (${ge2SemCarta}/${ge2Total}).`);
 const ge3Violacoes = arquivosJs(path.join(raizSrc, 'logic')).filter((arquivo) =>
-  /\.(pontos|comodo|celula|mobilia)\b/.test(semComentarios(readFileSync(arquivo, 'utf8')))
+  /\.(pontos|comodo|celula|mobilia|saidas|palco)\b/.test(semComentarios(readFileSync(arquivo, 'utf8')))
 );
 const ge3MotorCegoOk = ge3Violacoes.length === 0;
 if (!ge3MotorCegoOk) console.log('\nPALCO E1 — GE3: src/logic lê dado de palco em:', ge3Violacoes.join(', '));
+
+// ============================================================
+// OS PALCO EM ANÉIS (E2) — logradouros da vila (Anel 1). Guardas:
+// (GE4) integridade externa: toda saída ⊂ borda do grid; vestígio de cena
+//       externa ancorado dentro do grid; cena externa roda num
+//       pseudo-interior de logradouro (planta derivada pela MESMA função
+//       — coberto pela guarda de planta da FASE 2).
+// (GE5) métodos externos: no lote, cenas externas cobrem ≥ 2 famílias e
+//       nenhuma família passa de 40% (Y aprovado pelo autor, 18/07).
+// (GE6) chamariz: interceptação ⇒ a carta do engodo existe na fatia (a
+//       alcançabilidade no pacote é coberta por marcadoresFecham do
+//       gerar-casos + checagem direta no lote de pacotes da E1).
+// (banda) regime-palco: externos em 10–30% do lote (moeda 20% menos a
+//       salvaguarda de fallback — §3.6).
+// ============================================================
+const SEEDS_E2 = Array.from({ length: 150 }, (_, i) => `comarca_${i + 1}`);
+const FAMILIA_DO_METODO = {
+  laminada: 'lamina', garrote: 'asfixia', esganadura: 'asfixia', sufocacao: 'asfixia',
+  contundente: 'contuso', afogamento: 'afogamento', veneno_arsenico: 'veneno', laudano: 'veneno',
+};
+const ge4Falhas = [];
+const ge6Falhas = [];
+let e2Externos = 0;
+const e2Familias = {};
+for (const seedE2 of SEEDS_E2) {
+  const brutoE2 = gerarCasoBruto(seedE2);
+  const interiorE2 = brutoE2.mundo.interiores[brutoE2.escolha.localId];
+  for (const sd of interiorE2.saidas || []) {
+    const dentro =
+      sd.col >= 0 && sd.fila >= 0 && sd.col < interiorE2.grid.colunas && sd.fila < interiorE2.grid.filas;
+    const naBorda =
+      sd.col === 0 || sd.fila === 0 || sd.col === interiorE2.grid.colunas - 1 || sd.fila === interiorE2.grid.filas - 1;
+    if (!dentro || !naBorda) ge4Falhas.push(`${seedE2}: saída fora da borda do grid`);
+  }
+  const palcoE2 = brutoE2.escolha.palco;
+  if (!palcoE2 || !palcoE2.externo) continue;
+  e2Externos += 1;
+  const fam = FAMILIA_DO_METODO[brutoE2.escolha.metodoId] || brutoE2.escolha.metodoId;
+  e2Familias[fam] = (e2Familias[fam] || 0) + 1;
+  if (!interiorE2.logradouro) ge4Falhas.push(`${seedE2}: cena externa sem pseudo-interior de logradouro`);
+  for (const v of brutoE2.crime.vestigios) {
+    if (
+      v.celula &&
+      (v.celula.col < 0 || v.celula.fila < 0 || v.celula.col >= interiorE2.grid.colunas || v.celula.fila >= interiorE2.grid.filas)
+    )
+      ge4Falhas.push(`${seedE2}: vestígio ${v.id} fora do grid`);
+  }
+  if (!palcoE2.descoberta || palcoE2.descoberta.chegadaPerito > 11 || palcoE2.descoberta.hora < 6)
+    ge4Falhas.push(`${seedE2}: descoberta externa fora das bandas`);
+  if (palcoE2.via === 'chamariz' && !brutoE2.fatiaForense.cartas.some((c) => c.id === 'gen_engodo'))
+    ge6Falhas.push(`${seedE2}: chamariz sem vestígio do engodo`);
+}
+const ge4IntegridadeExternaOk = ge4Falhas.length === 0;
+if (!ge4IntegridadeExternaOk) console.log('\nPALCO E2 — GE4 falhou:', ge4Falhas.slice(0, 8).join('; '));
+const e2FamiliasN = Object.values(e2Familias);
+const ge5MetodosOk =
+  e2Externos > 0 && e2FamiliasN.length >= 2 && Math.max(...e2FamiliasN) / e2Externos <= 0.4;
+if (!ge5MetodosOk)
+  console.log(`\nPALCO E2 — GE5 falhou: famílias externas ${JSON.stringify(e2Familias)} em ${e2Externos} cenas.`);
+const ge6ChamarizOk = ge6Falhas.length === 0 && engodoInalcancavel.length === 0;
+if (!ge6ChamarizOk)
+  console.log(
+    '\nPALCO E2 — GE6 falhou:',
+    [...ge6Falhas, ...engodoInalcancavel.map((s) => `${s}: engodo inalcançável no pacote`)].slice(0, 8).join('; ')
+  );
+const bandaPalcoOk = e2Externos / SEEDS_E2.length >= 0.1 && e2Externos / SEEDS_E2.length <= 0.3;
+if (!bandaPalcoOk)
+  console.log(`\nPALCO E2 — regime-palco fora da banda: ${e2Externos}/${SEEDS_E2.length} externos.`);
 
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -3240,7 +3322,11 @@ const checagens = [
   ['Priors F4 — G7 integridade de pools: priors válidos, traits ≥ 3 mapeados, motivos 4–6 no catálogo, nomes ponderados, sobrenomes 50 únicos, fonte nos itens novos (OS priors compostos §5.3)', g7PoolsOk],
   ['Palco E1 — GE1 integridade: um ponto por cômodo do grid; toda carta de cena num único caminho; carta ancorada no ponto do próprio cômodo (OS palco em anéis §2)', ge1IntegridadeOk],
   ['Palco E1 — GE2 anti-telégrafo: pontos de ambiência em 40–60% do lote de 50 seeds (OS palco em anéis §2)', ge2AntiTelegrafoOk],
-  ['Palco E1 — GE3 motor cego ao palco: src/logic não lê pontos/comodo/celula/mobilia (OS palco em anéis §2)', ge3MotorCegoOk],
+  ['Palco E1 — GE3 motor cego ao palco: src/logic não lê pontos/comodo/celula/mobilia/saidas/palco (OS palco em anéis §2)', ge3MotorCegoOk],
+  ['Palco E2 — GE4 integridade externa: saídas na borda do grid, vestígio externo dentro do grid, cena externa em logradouro, descoberta nas bandas (OS palco em anéis §3)', ge4IntegridadeExternaOk],
+  ['Palco E2 — GE5 métodos externos: ≥ 2 famílias e nenhuma acima de 40% das cenas externas do lote (OS palco em anéis §3.3)', ge5MetodosOk],
+  ['Palco E2 — GE6 chamariz: toda interceptação deposita vestígio do engodo, alcançável no pacote (OS palco em anéis §3.4b)', ge6ChamarizOk],
+  ['Palco E2 — regime-palco na banda: cenas externas em 10–30% do lote de 150 seeds (OS palco em anéis §3.6)', bandaPalcoOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
