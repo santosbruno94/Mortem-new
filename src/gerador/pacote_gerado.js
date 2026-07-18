@@ -157,6 +157,12 @@ function cartaHoraForjada(bruto) {
     id: 'gen_hora_forjada',
     localidade: 'cena',
     suporteFisico: 'cena',
+    // E1: a peça encenada arma-se no cômodo onde o corpo ficou (as
+    // variantes de corpo o descrevem ali; o mostrador é vistoso à vista
+    // dele). Metadado gerador-facing — o motor jamais lê.
+    comodo: crime.posicaoCorpo.comodo,
+    celula: { ...crime.posicaoCorpo.celula },
+    mobilia: null,
     tagsOcultas: {
       dominio: 'ambiental',
       subDominio: 'cronologia_aparente',
@@ -250,6 +256,9 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
   const sal = `${bruto.seed}|perifericos`;
+  // E1: o rastro da visita inocente fica junto da entrada — o cômodo da
+  // frente do grid (quem esteve à porta não anda a casa toda).
+  const comodoVisita = comodoDaFrente(mundo.interiores[escolha.localId]);
   const testemunhas = new Set(cartas.map((c) => c.origemTestemunha).filter(Boolean));
 
   const candidatos = suspeitos.filter((s) => s.id !== crime.assassinoId);
@@ -289,6 +298,9 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
         id: `gen_segredo_${s.id}`,
         localidade: 'cena',
         suporteFisico: 'cena',
+        comodo: comodoVisita,
+        celula: null,
+        mobilia: null,
         textoDisplay: p.textoDisplay,
         carimboPadrao: p.carimbo(pessoa.nome),
         descricao: p.descricao(pessoa.nome),
@@ -426,6 +438,29 @@ function indicePorId(lista) {
 function nomeDoPredio(cidade, predioId) {
   const p = cidade.predios.find((x) => x.id === predioId);
   return p ? p.rotulo : predioId;
+}
+
+// E1 (OS palco em anéis): geometria mínima para ancorar as cartas do
+// próprio montador (hora forjada, rastros de visita) a cômodos do grid —
+// mesma convenção de crime.js. Metadado gerador-facing: o motor jamais lê.
+function comodoDaCelulaDe(interior, celula) {
+  const c = interior.comodos.find(
+    (k) =>
+      celula.col >= k.ret.col &&
+      celula.col < k.ret.col + k.ret.colunas &&
+      celula.fila >= k.ret.fila &&
+      celula.fila < k.ret.fila + k.ret.filas
+  );
+  return c ? c.id : null;
+}
+
+// O cômodo da frente: o que contém a porta externa (célula frente-centro,
+// a mesma convenção da pegada do desleixado e do arrasto em crime.js).
+function comodoDaFrente(interior) {
+  return comodoDaCelulaDe(interior, {
+    col: Math.floor(interior.grid.colunas / 2),
+    fila: interior.grid.filas - 1,
+  });
 }
 
 // Forma de SUJEITO do rótulo de prédio (irmã de formasDoLugar, que só dá
@@ -568,7 +603,9 @@ function realizarCartas(bruto) {
         if (classe === 'instrumento_abandonado') {
           nova.textoDisplay = 'O Instrumento Abandonado';
           nova.carimboPadrao = 'Instrumento deixado na cena';
-          nova.descricao = `Ficou no chão, ao alcance do corpo. O feitio casa com a lesão ${doMorto}, e a vila dá o dono pelo nome: ${reu.nome}.`;
+          // Parecer do perito (E1): o instrumento fica na célula da queda e
+          // o corpo pode ter sido arrastado — a descrição não jura vizinhança.
+          nova.descricao = `Ficou no chão, onde a mão o largou. O feitio casa com a lesão ${doMorto}, e a vila dá o dono pelo nome: ${reu.nome}.`;
         } else if (classe === 'instrumento_faltando') {
           nova.textoDisplay = 'O Lugar Vazio';
           nova.carimboPadrao = 'Instrumento que falta no seu lugar';
@@ -589,10 +626,14 @@ function realizarCartas(bruto) {
           : `Junto ao corpo, uma luva sem par. O par está entre as coisas de ${reu.nome}.`;
         break;
       }
+      // Parecer do perito (E1): o vestígio depositado é "respingo alto,
+      // fora do alcance da poça" (crime.js; removivel: false POR ISSO —
+      // a esfrega do assoalho não o apanha). A prosa descreve o mesmo
+      // fato, não uma trilha de gotas no chão que o dado não sustenta.
       case 'gen_sangue_alheio':
-        nova.textoDisplay = 'O Rastro de Gotas';
-        nova.carimboPadrao = 'Sangue afastado do corpo';
-        nova.descricao = `Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas ${doMorto} não sangraram nesse caminho.`;
+        nova.textoDisplay = 'O Respingo na Parede';
+        nova.carimboPadrao = 'Respingo alto, fora do alcance da poça';
+        nova.descricao = `Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`;
         break;
       case 'gen_frestas':
         nova.descricao =
@@ -728,71 +769,134 @@ function montarLocalidades(bruto, cartas) {
     ],
   };
 
-  // ---- A cena ----
-  // A mobília citada é a do CÔMODO do crime (a lista do interior cobre o
-  // prédio inteiro — sem o filtro, o quarto ganhava pia da copa).
-  const mobilias = (interior.mobilia || [])
-    .filter((m) => m.comodo === crime.posicaoCorpo.comodo)
-    .slice(0, 3)
-    .map((m) => m.rotulo || m.id);
-  // Set: vestígios repetidos da mesma classe não empilham a mesma frase.
-  const texturaVestigios = new Set();
+  // ---- A cena (E1, OS palco em anéis — D1, a última milha) ----
+  // O acordeão do caso-escola chega ao gerado: introdução que ambienta sem
+  // carta + UM PONTO POR CÔMODO do grid. Cada carta de cena vive no ponto
+  // do seu cômodo (metadado `comodo` da ponte); cômodo sem carta é ponto
+  // de AMBIÊNCIA (anti-telégrafo, GE2) — mobília nomeada, observação pura.
+  // Cartas destrutíveis por interferência seguem em bloco contingente (um
+  // ponto estático não saberia escondê-las quando o evento dispara).
+  const comodoDoCorpo = crime.posicaoCorpo.comodo;
+  const comodoValido = (id) => id && interior.comodos.some((k) => k.id === id);
+  // As NASCIDAS de evento (cartasNovas da interferência) já vivem nos
+  // blocos `disparado` distribuídos acima — não entram em ponto algum.
+  const nascidasDeEvento = new Set(eventos.flatMap((e) => e.efeito.cartasNovas));
+  const cartasCena = cartas.filter((c) => c.localidade === 'cena' && !nascidasDeEvento.has(c.id));
+  const cartasPorComodo = {};
+  for (const c of cartasCena) {
+    if (eventoQueDestroi(c.id)) continue; // vai a bloco contingente, abaixo
+    const chave = comodoValido(c.comodo) ? c.comodo : comodoDoCorpo;
+    (cartasPorComodo[chave] ??= []).push(c);
+  }
+  // Textura de vestígio sem carta própria, no cômodo onde o autobattler a
+  // deixou. Set de CLASSES: repetidas não empilham a mesma frase, e a
+  // abertura de mobília lê a desordem antes de afirmar ordem (parecer E1).
+  const TEXTURA_POR_CLASSE = {
+    assoalho_esfregado: 'A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça.',
+    mobilia_recomposta: 'Um arranhão escapa de sob o pé de uma peça de mobília.',
+    mobilia_revirada: 'Há mobília por erguer do chão.',
+    rastro_da_luta: 'De um canto a outro, nada guarda o seu lugar.',
+  };
+  const TEXTURAS_QUE_PEDEM_MOBILIA = ['mobilia_revirada', 'mobilia_recomposta', 'rastro_da_luta'];
+  const texturaPorComodo = {};
   for (const v of crime.vestigios) {
     if (v.removido) continue;
-    if (v.classe === 'assoalho_esfregado') texturaVestigios.add('a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça');
-    if (v.classe === 'mobilia_recomposta')
-      texturaVestigios.add('sob o pé de uma peça de mobília, um arranhão que escapa para fora dela');
-    if (v.classe === 'mobilia_revirada') texturaVestigios.add('há mobília por erguer do chão');
-    if (v.classe === 'rastro_da_luta') texturaVestigios.add('de um canto a outro, nada guarda o seu lugar');
+    if (!TEXTURA_POR_CLASSE[v.classe]) continue;
+    const chave = comodoValido(v.comodo) ? v.comodo : comodoDoCorpo;
+    (texturaPorComodo[chave] ??= new Set()).add(v.classe);
   }
-  const prosaCena = [
-    `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam. ${
-      mobilias.length ? `No cômodo, ${mobilias.join(', ')}` : 'O cômodo é o de sempre'
-    }${texturaVestigios.size ? `; ${[...texturaVestigios].join('; ')}.` : '.'}`,
-  ];
-  const marcadoresCena = [];
-  // A peça de hora forjada abre a lista: a isca é vistosa por desenho —
-  // existe para tomar o olho (o chamariz honesto do plantio de pistas).
-  if (temCarta('gen_hora_forjada')) {
-    marcadoresCena.push('O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].');
-  }
-  for (const id of ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas', 'gen_frestas']) {
-    const carta = cartas.find((c) => c.id === id && c.localidade === 'cena');
-    if (!carta) continue;
-    const ev = eventoQueDestroi(id);
-    const frase = {
-      gen_instrumento: `Junto do corpo, no chão: [[gen_instrumento]].`,
-      gen_pertence: `Por abrir desde ontem, a mão fechada ${femV ? 'da morta' : 'do morto'}: [[gen_pertence]].`,
-      gen_sangue_alheio: 'A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].',
-      gen_pegadas: 'Do meio do cômodo até a porta: [[gen_pegadas]].',
-      gen_frestas: 'Rente ao rodapé, onde a esfrega passou: [[gen_frestas]].',
-    }[id];
-    if (ev) {
-      (blocosPorLocalidade.cena ??= []).push({ eventoId: ev.id, quando: 'nao_disparado', paragrafos: [frase] });
-    } else {
-      marcadoresCena.push(frase);
-    }
-  }
-  // Os rastros de visita dos periféricos com segredo: itens de MIOLO da
-  // lista (plantio — a pista foge das posições de acento), com vizinhos
-  // de mesmo peso gramatical em volta.
+  // Frase de cada carta no seu ponto. As de sítio ("junto do corpo") só
+  // valem no cômodo do corpo; fora dele, a variante neutra de cômodo.
   const frasesSegredo = [
     (id) => `Junto ao rodapé, fora do caminho das pisadas: [[${id}]].`,
-    (id) => `Sob a beira de um móvel, onde a vassoura não alcança: [[${id}]].`,
+    (id) => `A vassoura não alcança a beira de um móvel; ali, [[${id}]].`,
   ];
-  cartas
-    .filter((c) => c.localidade === 'cena' && (c.tagsOcultas || {}).subDominio === 'rastro_de_visita')
-    .forEach((c, i) => {
-      const frase = frasesSegredo[i % frasesSegredo.length](c.id);
-      marcadoresCena.splice(Math.min(1 + i, marcadoresCena.length), 0, frase);
-    });
+  let iSegredo = 0;
+  const fraseDaCartaNaCena = (c, noComodoDoCorpo) => {
+    if (c.id === 'gen_hora_forjada') return 'À vista, sem procura: [[gen_hora_forjada]].';
+    if (c.id === 'gen_instrumento')
+      return noComodoDoCorpo ? 'Junto do corpo, no chão: [[gen_instrumento]].' : 'No chão, à vista: [[gen_instrumento]].';
+    if (c.id === 'gen_pertence')
+      return `Por abrir desde a morte, a mão fechada ${femV ? 'da morta' : 'do morto'}: [[gen_pertence]].`;
+    if (c.id === 'gen_sangue_alheio')
+      return noComodoDoCorpo
+        ? 'Na parede, fora do alcance da poça: [[gen_sangue_alheio]].'
+        : 'Na parede, à altura do peito: [[gen_sangue_alheio]].';
+    if (c.id === 'gen_pegadas') return 'Do meio do vão até a porta: [[gen_pegadas]].';
+    if (c.id === 'gen_frestas') return 'Rente ao rodapé, onde a esfrega passou: [[gen_frestas]].';
+    if ((c.tagsOcultas || {}).subDominio === 'rastro_de_visita') {
+      const frase = frasesSegredo[iSegredo % frasesSegredo.length](c.id);
+      iSegredo += 1;
+      return frase;
+    }
+    return `Ao exame: [[${c.id}]].`;
+  };
+  // A isca vistosa (hora forjada) abre o ponto; os rastros de visita vão
+  // ao miolo (plantio — a pista foge das posições de acento).
+  const ORDEM_NA_CENA = ['gen_hora_forjada', 'gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas', 'gen_frestas'];
+  const pesoNaCena = (c) => {
+    const i = ORDEM_NA_CENA.indexOf(c.id);
+    return i === -1 ? 1.5 : i;
+  };
+  const pontosCena = interior.comodos.map((k) => {
+    const doComodo = (cartasPorComodo[k.id] || []).slice().sort((a, b) => pesoNaCena(a) - pesoNaCena(b));
+    const pecas = (interior.mobilia || []).filter((m) => m.comodo === k.id).map((m) => m.rotulo || m.id);
+    // Textura sem referente é suprimida: cômodo vazio não tem "mobília por
+    // erguer" nem "nada guarda o seu lugar" (parecer E1, B2).
+    const classesTextura = [...(texturaPorComodo[k.id] || [])].filter(
+      (cl) => pecas.length > 0 || !TEXTURAS_QUE_PEDEM_MOBILIA.includes(cl)
+    );
+    // Cômodo em desordem não abre afirmando ordem (parecer E1, B1): a
+    // variante de perímetro cede à listagem neutra.
+    const temDesordem = classesTextura.some((cl) => cl === 'rastro_da_luta' || cl === 'mobilia_revirada');
+    const frases = [];
+    if (k.id === comodoDoCorpo) frases.push(`No chão deste cômodo, ${femV ? 'a morta' : 'o morto'}.`);
+    frases.push(
+      pecas.length
+        ? temDesordem
+          ? `Do mobiliário, ${pecas.join(', ')}.`
+          : variante(
+              [`No cômodo, ${pecas.join(', ')}.`, `Do mobiliário, ${pecas.join(', ')}.`],
+              `${bruto.seed}|prosa|ponto|${k.id}`
+            )
+        : variante(
+            ['Cômodo de paredes nuas; mobília, nenhuma.', 'Vão sem mobília; sobra o assoalho nu.'],
+            `${bruto.seed}|prosa|ponto|${k.id}`
+          )
+    );
+    for (const cl of classesTextura) frases.push(TEXTURA_POR_CLASSE[cl]);
+    for (const c of doComodo) frases.push(fraseDaCartaNaCena(c, k.id === comodoDoCorpo));
+    return {
+      id: `pt_cena_${k.id}`,
+      rotulo: k.rotulo || k.id,
+      // Metadado gerador-facing (guarda GE1): o cômodo do grid de que este
+      // ponto deriva. O componente o ignora; o motor jamais o lê.
+      comodo: k.id,
+      prosa: [frases.join(' ')],
+    };
+  });
+  // As destrutíveis por interferência: bloco contingente com o cômodo dito
+  // por extenso (fora do acordeão, a frase precisa dizer onde).
+  for (const c of cartasCena) {
+    const ev = eventoQueDestroi(c.id);
+    if (!ev) continue;
+    const k = interior.comodos.find((x) => x.id === (comodoValido(c.comodo) ? c.comodo : comodoDoCorpo));
+    const frase = fraseDaCartaNaCena(c, k.id === comodoDoCorpo);
+    const contextualizada = `No cômodo chamado ${comodoEmFala(k.rotulo || k.id)}, ${
+      frase.charAt(0).toLowerCase() + frase.slice(1)
+    }`;
+    (blocosPorLocalidade.cena ??= []).push({ eventoId: ev.id, quando: 'nao_disparado', paragrafos: [contextualizada] });
+  }
   const cena = {
     id: 'cena',
     rotuloMesa: 'A Cena do Crime',
     titulo: `A Cena — ${predioCena}`,
     subtitulo: `Onde ${vitima.nome} foi ${femV ? 'achada' : 'achado'}`,
     acoesEspeciais: [],
-    prosa: [...prosaCena, ...marcadoresCena],
+    introducao: [
+      `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam; o exame corre cômodo a cômodo.`,
+    ],
+    pontos: pontosCena,
     blocosContingentes: blocosPorLocalidade.cena || [],
   };
 

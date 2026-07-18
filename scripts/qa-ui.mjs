@@ -693,6 +693,18 @@ async function main() {
     await arquivarFicha(page);
     checar('Rota gerada: extração pela prosa gerada funciona', (await page.locator('.termo-extraido').count()) >= 2);
     await fecharOverlay(page);
+    // E1 (OS palco em anéis): a cena gerada divide-se em pontos de
+    // interesse — um por cômodo do grid. O acordeão nasce fechado; abrir
+    // revela a prosa (com ou sem termo — pontos de ambiência existem).
+    await abrirNo(page, 'A Cena do Crime');
+    checar('Rota gerada: a cena expõe o acordeão de pontos', (await page.locator('.ponto-interesse').count()) >= 1);
+    await abrirPontos(page);
+    checar(
+      'Rota gerada: abrir os pontos revela a prosa dos cômodos',
+      (await page.locator('.ponto-corpo').count()) >= 1
+    );
+    await extrairTermosVisiveis(page);
+    await fecharOverlay(page);
     await visitarEExtrair(page, 'A Delegacia');
     // Árvore de diálogo procedural (OS diálogo): a delegacia chama um a um
     // os suspeitos; o beat de paradeiro sustenta a carta de álibi em

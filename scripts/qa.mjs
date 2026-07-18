@@ -3076,6 +3076,77 @@ let decorrelacaoOk = true;
   }
 }
 
+// ============================================================
+// OS PALCO EM ANÉIS (E1) — pontos da cena no caso gerado (caixa D1,
+// docs/os-palco-em-aneis-e0-triagem.md). Três guardas:
+// (GE1) integridade: a cena gerada tem UM ponto por cômodo do grid
+//       (id/comodo em bijeção com interior.comodos); toda carta de cena
+//       vive em exatamente um caminho (um ponto, ou um bloco contingente
+//       quando a interferência pode destruí-la/criá-la); carta ancorada
+//       (metadado `comodo` da ponte) aparece no ponto do próprio cômodo.
+// (GE2) anti-telégrafo: em lote de 50 seeds, a fração de pontos SEM
+//       carta (ambiência pura) fica na banda 40–60% (decisão do autor,
+//       18/07) — o acordeão não pode virar mapa de pistas.
+// (GE3) cegueira do motor: nenhuma função de src/logic lê
+//       pontos/comodo/celula/mobilia — dado de palco é apresentação.
+// ============================================================
+const SEEDS_E1 = Array.from({ length: 50 }, (_, i) => `comarca_${i + 1}`);
+const ge1Falhas = [];
+let ge2Total = 0;
+let ge2SemCarta = 0;
+const marcadoresDoPonto = (pt) => [
+  ...new Set(pt.prosa.flatMap((t) => [...t.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))),
+];
+for (const seedE1 of SEEDS_E1) {
+  const brutoE1 = gerarCasoBruto(seedE1);
+  const pacoteE1 = montarPacoteGerado(seedE1);
+  const interiorE1 = brutoE1.mundo.interiores[brutoE1.escolha.localId];
+  const cenaE1 = pacoteE1.localidades.find((l) => l.id === 'cena');
+  if (!cenaE1 || !Array.isArray(cenaE1.pontos) || cenaE1.pontos.length === 0) {
+    ge1Falhas.push(`${seedE1}: cena sem pontos`);
+    continue;
+  }
+  const idsComodos = interiorE1.comodos.map((k) => k.id);
+  if (
+    cenaE1.pontos.length !== idsComodos.length ||
+    !cenaE1.pontos.every((pt, i) => pt.comodo === idsComodos[i] && pt.id === `pt_cena_${idsComodos[i]}`)
+  ) {
+    ge1Falhas.push(`${seedE1}: pontos fora de bijeção com os cômodos do grid`);
+  }
+  const contagem = new Map();
+  for (const pt of cenaE1.pontos)
+    for (const id of marcadoresDoPonto(pt)) contagem.set(id, (contagem.get(id) || 0) + 1);
+  const emBloco = new Set(
+    (cenaE1.blocosContingentes || []).flatMap((b) =>
+      b.paragrafos.flatMap((t) => [...t.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))
+    )
+  );
+  for (const c of pacoteE1.cartas.filter((x) => x.localidade === 'cena')) {
+    const nPontos = contagem.get(c.id) || 0;
+    if (nPontos > 1) ge1Falhas.push(`${seedE1}: ${c.id} em ${nPontos} pontos`);
+    if (nPontos === 1 && emBloco.has(c.id)) ge1Falhas.push(`${seedE1}: ${c.id} em ponto E bloco`);
+    if (nPontos === 0 && !emBloco.has(c.id)) ge1Falhas.push(`${seedE1}: ${c.id} inalcançável na cena`);
+    if (nPontos === 1 && c.comodo != null && idsComodos.includes(c.comodo)) {
+      const pt = cenaE1.pontos.find((p) => marcadoresDoPonto(p).includes(c.id));
+      if (pt.comodo !== c.comodo)
+        ge1Falhas.push(`${seedE1}: ${c.id} no ponto de ${pt.comodo}, ancorada em ${c.comodo}`);
+    }
+  }
+  ge2Total += cenaE1.pontos.length;
+  ge2SemCarta += cenaE1.pontos.filter((pt) => marcadoresDoPonto(pt).length === 0).length;
+}
+const ge1IntegridadeOk = ge1Falhas.length === 0;
+if (!ge1IntegridadeOk) console.log('\nPALCO E1 — GE1 falhou:', ge1Falhas.slice(0, 8).join('; '));
+const ge2Fracao = ge2Total > 0 ? ge2SemCarta / ge2Total : 0;
+const ge2AntiTelegrafoOk = ge2Fracao >= 0.4 && ge2Fracao <= 0.6;
+if (!ge2AntiTelegrafoOk)
+  console.log(`\nPALCO E1 — GE2 fora da banda 40–60%: ${(ge2Fracao * 100).toFixed(1)}% (${ge2SemCarta}/${ge2Total}).`);
+const ge3Violacoes = arquivosJs(path.join(raizSrc, 'logic')).filter((arquivo) =>
+  /\.(pontos|comodo|celula|mobilia)\b/.test(semComentarios(readFileSync(arquivo, 'utf8')))
+);
+const ge3MotorCegoOk = ge3Violacoes.length === 0;
+if (!ge3MotorCegoOk) console.log('\nPALCO E1 — GE3: src/logic lê dado de palco em:', ge3Violacoes.join(', '));
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -3167,6 +3238,9 @@ const checagens = [
   ['Priors F3 — G5 tell calmo: ≥ 60% dos mentirosos-calmos do lote são inocentes ("serena ⇒ réu" morreu) (OS priors compostos §4.6)', g5TellCalmoOk],
   ['Priors F3 — G6 regimes: regime 1 em 30% ± 10 p.p.; nele o réu é modal, sem isca forçada, com móbil material na fatia (OS priors compostos §4.6)', g6RegimesOk],
   ['Priors F4 — G7 integridade de pools: priors válidos, traits ≥ 3 mapeados, motivos 4–6 no catálogo, nomes ponderados, sobrenomes 50 únicos, fonte nos itens novos (OS priors compostos §5.3)', g7PoolsOk],
+  ['Palco E1 — GE1 integridade: um ponto por cômodo do grid; toda carta de cena num único caminho; carta ancorada no ponto do próprio cômodo (OS palco em anéis §2)', ge1IntegridadeOk],
+  ['Palco E1 — GE2 anti-telégrafo: pontos de ambiência em 40–60% do lote de 50 seeds (OS palco em anéis §2)', ge2AntiTelegrafoOk],
+  ['Palco E1 — GE3 motor cego ao palco: src/logic não lê pontos/comodo/celula/mobilia (OS palco em anéis §2)', ge3MotorCegoOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
