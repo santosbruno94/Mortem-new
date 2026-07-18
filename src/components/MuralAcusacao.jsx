@@ -43,6 +43,14 @@ const ehMotivo = (c) => c.tagsOcultas.subDominio === 'motivo';
 const ehCorroboracao = (c) => c.tagsOcultas.subDominio === 'corroboracao';
 const ehAlibiDe = (c, sid) => c.tagsOcultas.subDominio === 'alibi' && c.tagsOcultas.declaranteId === sid;
 
+// Ponteiro grosso (dedo): sem hover, o atalho de ficha precisa ser botão
+// explícito com área de toque ≥ 44px. Decisão única por sessão — camada
+// visual, o motor não lê (e o dispositivo não muda no meio da partida).
+const ponteiroGrosso =
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(pointer: coarse)').matches;
+
 // Geometria das estações de ligação (coordenadas conhecidas → barbante simples).
 const CARD_W = 176;
 const CARD_H = 78;
@@ -314,6 +322,7 @@ export default function MuralAcusacao() {
           refutaHora={refutaHora}
           refutaAlibi={refutaAlibi}
           naoAcusados={naoAcusados}
+          lacunas={lacunas}
           aoVoltar={() => setRevisando(false)}
           aoConfirmar={() => {
             tocarSom('lacre');
@@ -330,7 +339,13 @@ export default function MuralAcusacao() {
 // A revisão final: o argumento inteiro, legível, antes de selar. Só lê o que
 // o jogador afirmou — nunca diz se está certo (a verdade é o Monólogo).
 // ---------------------------------------------------------------------
-function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAlibi, naoAcusados, aoVoltar, aoConfirmar }) {
+function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAlibi, naoAcusados, lacunas, aoVoltar, aoConfirmar }) {
+  // Selo com lacunas pede confissão explícita (P0 §5 do playtest de 17/07):
+  // errar segue permitido — Erro Judiciário e Impunidade são finais
+  // legítimos e pedagógicos, o botão nunca desabilita —, mas "revisei e
+  // assumo o risco" precisa se distinguir de "não vi que faltava algo".
+  // O jogador completo não vê este passo.
+  const [confirmandoLacunas, setConfirmandoLacunas] = useState(false);
   const reu = obterSuspeitos().find((s) => s.id === acusacao.reuId);
   const causa = CATALOGO_CAUSAS.find((c) => c.id === acusacao.causaId);
   const temJanela = acusacao.janela.inicio != null && acusacao.janela.fim != null;
@@ -389,14 +404,39 @@ function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAl
           </div>
         </dl>
 
-        <div className="flex justify-end gap-3 mt-6">
-          <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
-            Voltar e revisar
-          </button>
-          <button onClick={aoConfirmar} className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide">
-            Confirmar e julgar
-          </button>
-        </div>
+        {!confirmandoLacunas ? (
+          <div className="flex justify-end gap-3 mt-6">
+            <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
+              Voltar e revisar
+            </button>
+            <button
+              onClick={() => (lacunas.length > 0 ? setConfirmandoLacunas(true) : aoConfirmar())}
+              className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide"
+            >
+              Confirmar e julgar
+            </button>
+          </div>
+        ) : (
+          <div className="mt-6 mortem-surgir">
+            <div className="carta-pergaminho relative rounded-sm px-4 py-3">
+              <span className="tacha-latao absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5" aria-hidden="true" />
+              <p className="text-tinta text-sm">
+                A acusação não declara: <span className="text-tinta-clara">{lacunas.join(' · ')}</span>
+              </p>
+              <p className="text-tinta text-sm mt-1">
+                O julgamento correrá com o que está na mesa. Selar assim mesmo?
+              </p>
+            </div>
+            <div className="flex justify-end gap-3 mt-4">
+              <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
+                Voltar ao mural
+              </button>
+              <button onClick={aoConfirmar} className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide">
+                Selar assim mesmo
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -412,22 +452,22 @@ function LinhaRev({ rotulo, valor }) {
 }
 
 // ---------------------------------------------------------------------
-// Resumo de uma etapa concluída. Arrastá-lo de volta (> 24px) reabre a etapa;
-// um clique/toque simples também reabre (P1 do playtest — o arrasto deixou
-// de ser o único caminho; ajuda mobile e acessibilidade).
+// Resumo de uma etapa concluída. Qualquer toque/clique reabre a etapa; o
+// arrasto (> 44px) é floreio opcional — quem completa o gesto ainda o vê,
+// mas soltar no meio do caminho reabre igual (P0 do playtest de 17/07:
+// solturas entre 6 e 44px caíam numa zona morta).
 // ---------------------------------------------------------------------
 function ResumoEstacao({ etapa, resumo, aoReabrir }) {
   const st = useRef(null);
   const [puxa, setPuxa] = useState(0); // deslocamento visual enquanto se arrasta
   function down(e) {
     e.currentTarget.setPointerCapture(e.pointerId);
-    st.current = { x0: e.clientX, y0: e.clientY, moveu: 0 };
+    st.current = { x0: e.clientX, y0: e.clientY };
   }
   function move(e) {
     const a = st.current;
     if (!a) return;
     const dx = e.clientX - a.x0;
-    a.moveu = Math.max(a.moveu, Math.hypot(dx, e.clientY - a.y0));
     setPuxa(Math.max(0, Math.min(dx, 48)));
     if (Math.hypot(dx, e.clientY - a.y0) > 44) {
       st.current = null;
@@ -439,8 +479,10 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
     const a = st.current;
     st.current = null;
     setPuxa(0);
-    // Soltou quase parado (< 6px): foi um clique, não um arrasto abortado.
-    if (a && a.moveu < 6) aoReabrir();
+    // Se chegou aqui, o arrasto não completou (>44 dispara no move e
+    // anula st). Qualquer soltura conta como clique — o arrasto é
+    // gesto opcional, nunca pré-requisito.
+    if (a) aoReabrir();
   }
   return (
     <div
@@ -537,7 +579,7 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
         <p className="text-stone-400 text-[11px] mt-3 mb-2">O que o corpo diz do tempo:</p>
         <div className="flex flex-col gap-2">
           {temporais.map((c) => (
-            <CartaLeitura key={c.id} carta={c} />
+            <CartaLeitura key={c.id} carta={c} declarada />
           ))}
           {temporais.length === 0 && (
             <p className="text-stone-400 italic font-serif text-xs">Nenhum indicador de tempo no corpo.</p>
@@ -556,7 +598,11 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
         <p className="text-stone-400 text-[11px] mt-3 mb-2">O que o corpo diz da causa:</p>
         <div className="flex flex-col gap-2">
           {causais.map((c) => (
-            <CartaLeitura key={c.id} carta={c} />
+            <CartaLeitura
+              key={c.id}
+              carta={c}
+              declarada={!!(c.tagsOcultas.sinal || c.tagsOcultas.instrumento)}
+            />
           ))}
           {causais.length === 0 && (
             <p className="text-stone-400 italic font-serif text-xs">Nenhum sinal de causa no corpo.</p>
@@ -568,10 +614,18 @@ function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causai
 }
 
 // Carta de evidência só para leitura (o jogador lê e deduz; não se clica).
-// É prova escrita: pergaminho claro, tinta escura.
-function CartaLeitura({ carta }) {
+// É prova escrita: pergaminho claro, tinta escura. `declarada` marca as
+// cartas que o useEffect do mural ligou SOZINHO às âncoras quando/como
+// (P1 §7 do playtest de 17/07): a tese "o corpo é lido, não selecionado"
+// vivia só em comentário de código — o micro-rótulo a mostra ao jogador.
+function CartaLeitura({ carta, declarada = false }) {
   return (
     <div title={carta.descricao} className="carta-pergaminho rounded-sm px-3 py-2">
+      {declarada && (
+        <span className="block text-cera text-[9px] tracking-[0.18em] uppercase mb-0.5">
+          o corpo declara
+        </span>
+      )}
       <p className="font-serif text-tinta text-xs leading-snug">{carta.textoDisplay}</p>
     </div>
   );
@@ -776,21 +830,38 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
             ) : (
               <p className="font-serif text-tinta text-xs leading-snug">{n.textoDisplay}</p>
             )}
-            {/* "§" de leitura: abre a ficha de coleta sem desfazer/criar
-                ligação (aria-hidden — a mesma ficha é alcançável pela mesa
-                e pela Caderneta; aqui é só um atalho discreto ao mouse). */}
+            {/* Atalho de leitura: abre a ficha de coleta sem desfazer/criar
+                ligação. Em ponteiro fino, o "§" discreto (hover evidente);
+                em ponteiro grosso, botão explícito "ficha" com área de
+                toque ≥ 44px (o ::after invisível estende o alvo além do
+                rótulo). Acessível a leitor de tela nos dois modos (P0 §2
+                do playtest de 17/07 — antes era aria-hidden e igual aos
+                ornamentos "§" dos divisores). */}
             {!n.ehAncora && (
               <span
-                aria-hidden="true"
+                role="button"
+                tabIndex={0}
+                aria-label="Rever a ficha de coleta"
                 title="Rever a ficha de coleta"
                 onPointerDown={(e) => e.stopPropagation()}
                 onClick={(e) => {
                   e.stopPropagation();
                   abrirFicha(n.id);
                 }}
-                className="absolute top-0.5 right-1 grid h-5 w-5 place-items-center rounded-sm text-cera hover:text-cera-clara hover:bg-black/10 text-xs leading-none cursor-pointer"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    abrirFicha(n.id);
+                  }
+                }}
+                className={
+                  ponteiroGrosso
+                    ? "absolute top-0.5 right-1 grid h-7 place-items-center rounded-sm px-2 bg-black/25 text-cera-clara text-[10px] uppercase tracking-widest leading-none cursor-pointer after:content-[''] after:absolute after:-inset-2.5"
+                    : 'absolute top-0.5 right-1 grid h-5 w-5 place-items-center rounded-sm text-cera hover:text-cera-clara hover:bg-black/20 text-xs leading-none cursor-pointer'
+                }
               >
-                §
+                {ponteiroGrosso ? 'ficha' : '§'}
               </span>
             )}
           </button>

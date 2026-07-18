@@ -10,13 +10,14 @@
 // técnico (o ofício), oblíquo (de esguelha). Escolher um tom AVANÇA e
 // descarta os irmãos — não há "outro assunto", não se volta ao hub. O nó
 // corrente persiste no store (noAtualDialogo): reabrir retoma onde parou.
-// O NPC responde no registro perguntado; a carta de SUSTENTAÇÃO daquele
-// beat sai em QUALQUER tom (o caso é sempre acusável — solubilidade), mas
-// o tom RESSONANTE de cada personagem rende um tento a mais de prosa (uma
-// hesitação, um deslize, a lasca na bainha). O peso da escolha é, por ora,
-// NARRATIVO: nenhuma prova que o veredicto lê depende do tom (o motor
-// repousa no corpo e na cena). Se um dia uma pista decisiva migrar para a
-// conversa, o gate de tom ganha dente mecânico — decisão de design.
+// O NPC responde no registro perguntado; TODA carta de um beat sai em
+// QUALQUER tom (o caso é sempre acusável — solubilidade; a lasca na bainha
+// foi a última exceção, democratizada em 18/07/2026), mas o tom RESSONANTE
+// de cada personagem rende, quando há, um tento a mais de prosa (uma
+// hesitação, um deslize). O peso da escolha é NARRATIVO: nenhuma prova que o veredicto
+// lê depende do tom (o motor repousa no corpo e na cena). Se um dia uma
+// pista decisiva migrar para a conversa, o gate de tom ganha dente
+// mecânico — decisão de design a registrar antes.
 //
 // Forma de cada suspeito:
 //   { suspeitoId, noInicial, nos: { [noId]: { fala: [parágrafos], opcoes } },
@@ -53,8 +54,9 @@ export const DIALOGOS = {
     suspeitoId: 'silas_crane',
     noInicial: 'abertura',
     // Apresentar prova (Onda 5): reações próprias às cartas que o tocam;
-    // o resto cai na evasiva. Tom ressonante: OBLÍQUO — de esguelha se
-    // apanha a lasca de vidro na bainha; sob pressão ele só recita horas.
+    // o resto cai na evasiva. Tom ressonante: OBLÍQUO. A lasca de vidro na
+    // bainha nasce nos QUATRO tons do beat 1 (democratização, 18/07/2026),
+    // com prosa própria por tom — o tom é cor, nunca chave.
     noEvasiva: 'evasiva',
     reacoesProva: {
       corrob_estalajadeiro: 'confronto_estalagem',
@@ -69,8 +71,8 @@ export const DIALOGOS = {
     ],
     nos: {
       // O hub: Silas recebe o perito. A lasca de vidro NÃO se anuncia aqui
-      // (migra para o tom oblíquo do primeiro beat — quem olha de esguelha
-      // é que a apanha).
+      // (nasce no primeiro beat, em qualquer tom, cada um pelo gesto que
+      // lhe é próprio).
       abertura: {
         fala: [
           'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.title}, {g:o senhor|a senhora} há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje a bancada amanheceu sem lume."',
@@ -88,6 +90,7 @@ export const DIALOGOS = {
       b1_firme: {
         fala: [
           'Silas Crane não se move na beira da cadeira. "Sem rodeios, então." E dá as horas em fila, na ordem em que as viveu, sem procurar nenhuma: [[alibi_silas]].',
+          'As horas ditas, ergue-se para tornar a encher a xícara e logo volta à beira da cadeira; no instante de pé, a luz do lampião acha na bainha esquerda uma lasca miúda: [[ev_vidro_dobra]].',
         ],
         opcoes: [
           { rotulo: '"O senhor sabe quem fez isto. Diga."', vaiPara: 'b2_firme', tom: 'firme' },
@@ -99,6 +102,7 @@ export const DIALOGOS = {
       b1_cordial: {
         fala: [
           '"O {detective.title} é gentil, e eu respondo de bom grado; nesta casa a gente vive pelas horas." E as recita como quem devolve um favor, cada uma no seu lugar: [[alibi_silas]].',
+          'Ajeita então a calça sobre o joelho, ao costume de quem se senta o dia inteiro; a bainha esquerda sobe da botina, e nela reluz uma lasca: [[ev_vidro_dobra]].',
         ],
         opcoes: [
           { rotulo: '"O senhor sabe quem fez isto. Diga."', vaiPara: 'b2_firme', tom: 'firme' },
@@ -110,6 +114,7 @@ export const DIALOGOS = {
       b1_tecnico: {
         fala: [
           '"Hora a hora eu digo, que é como se leva uma bancada." E leva: fecha a oficina, a ceia, o quarto, as horas em fila na ordem exata em que as viveu: [[alibi_silas]].',
+          'A pedido, chega a cadeira para junto do lampião, para que as horas passem ao papel, e a ergue em vez de arrastá-la; à claridade de perto, antes que ele torne ao seu lugar, aparece na bainha esquerda uma lasca fina: [[ev_vidro_dobra]].',
         ],
         opcoes: [
           { rotulo: '"O senhor sabe quem fez isto. Diga."', vaiPara: 'b2_firme', tom: 'firme' },
@@ -119,7 +124,7 @@ export const DIALOGOS = {
         ],
       },
       // Tom RESSONANTE: de esguelha, enquanto ele cruza as pernas, a luz do
-      // lampião apanha a lasca na bainha (ev_vidro_dobra — só neste tom).
+      // lampião apanha a lasca na bainha (ev_vidro_dobra).
       b1_obliquo: {
         fala: [
           '"Até tarde, não; casa de relógio fecha cedo." Responde sem se apressar, e as horas saem já postas, uma atrás da outra: [[alibi_silas]].',
