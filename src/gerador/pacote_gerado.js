@@ -45,6 +45,7 @@
 // =====================================================================
 
 import { hashString } from '../logic/hash.js';
+import { hashDecisao } from './hash_gerador.js';
 import { formatHora, formatHoraComDia, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 import { gerarCasoBruto } from './caso.js';
@@ -139,6 +140,10 @@ const PROSA_MOTIVO = {
 // ---------------------------------------------------------------------
 function cartaHoraForjada(bruto) {
   const { mundo, escolha, crime } = bruto;
+  // E2: a encenação de hora é do palco INTERNO na v1 — as quatro variantes
+  // pressupõem lareira, janela e relógio doméstico. Peça de encenação para
+  // logradouro fica registrada para OS futura (dossiê E2).
+  if (escolha.palco?.externo) return null;
   const assassino = mundo.elenco.find((p) => p.id === crime.assassinoId);
   if (escolha.cenario !== 'premeditado' || assassino.atributos.INT < 4) return null;
   const sal = `${bruto.seed}|encenacao`;
@@ -364,6 +369,15 @@ function derivarPerifericos({ bruto, suspeitos, cartas }) {
   return { perifericos, cartasNovas, segredos };
 }
 
+// E2: a superfície plausível do respingo alto, por tipo de logradouro
+// (parecer do perito, A1 — o adro tem muro; a vereda, cerca; o pátio,
+// madeirame; "parede" só existe dentro de casa).
+const SUPERFICIE_RESPINGO = {
+  adro_da_igreja: 'na pedra do muro',
+  patio_da_granja: 'na tábua do alpendre',
+  caminho_do_acude: 'no mourão da cerca',
+};
+
 // A lesão fatal por método: nome de carta e laudo de exame próximo.
 const PROSA_LESAO = {
   laminada: {
@@ -552,6 +566,8 @@ function realizarCartas(bruto) {
   const nome = (id) => (pessoas.get(id) ? pessoas.get(id).nome : id);
   const vitima = pessoas.get(crime.vitimaId);
   const reu = pessoas.get(crime.assassinoId);
+  // E2: palco externo — as realizações de chão e porta ramificam.
+  const externo = !!escolha.palco?.externo;
 
   // Concordância pelo gênero da vítima (o elenco pode dar merceeira,
   // taverneira…): a prosa realizada nunca fixa "o morto" de fábrica.
@@ -631,19 +647,58 @@ function realizarCartas(bruto) {
       // a esfrega do assoalho não o apanha). A prosa descreve o mesmo
       // fato, não uma trilha de gotas no chão que o dado não sustenta.
       case 'gen_sangue_alheio':
-        nova.textoDisplay = 'O Respingo na Parede';
-        nova.carimboPadrao = 'Respingo alto, fora do alcance da poça';
-        nova.descricao = `Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`;
+        if (externo) {
+          // Parecer do perito (E2, A1): a superfície do respingo existe no
+          // palco — muro no adro, madeirame no pátio, cerca no açude.
+          nova.textoDisplay = 'O Respingo Alto';
+          nova.carimboPadrao = 'Respingo alto, fora do alcance da poça';
+          nova.descricao = `Um borrifo fino, de gotas miúdas, ${SUPERFICIE_RESPINGO[escolha.palco.logradouroId] || 'na superfície mais próxima'}, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`;
+        } else {
+          nova.textoDisplay = 'O Respingo na Parede';
+          nova.carimboPadrao = 'Respingo alto, fora do alcance da poça';
+          nova.descricao = `Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`;
+        }
         break;
+      // Parecer do perito (E2, A2): o guaiaco só fecha em substrato de
+      // laje (adro); em terra, os óxidos de ferro e as peroxidases
+      // vegetais coram igual — o teste é dito inconclusivo e o tell
+      // legítimo é a geometria da raspagem sob luz oblíqua (Gross).
       case 'gen_frestas':
-        nova.descricao =
-          'A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.';
+        if (externo) {
+          const cenaNoAdro = escolha.palco.logradouroId === 'adro_da_igreja';
+          nova.textoDisplay = cenaNoAdro ? 'Sangue no Sulco' : 'A Faixa Raspada';
+          nova.carimboPadrao = cenaNoAdro
+            ? 'Chão raspado; guaiaco positivo no sulco'
+            : 'Chão de terra raspado e varrido';
+          nova.descricao = cenaNoAdro
+            ? 'A luz rasteira segue a faixa varrida. No sulco entre as lajes, onde a vassoura não desce, o papel de filtro comprimido cora de azul.'
+            : 'A luz rasteira segue a faixa raspada e varrida no chão de terra. O papel de filtro cora de azul no sulco; é cor que a terra de ferro também dá, e não fecha sozinha.';
+        } else {
+          nova.descricao =
+            'A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.';
+        }
         break;
       case 'gen_pegadas':
+        if (externo) nova.textoDisplay = 'Pegadas Rumo à Saída';
         nova.carimboPadrao = 'Meias-solas impressas em sangue';
-        nova.descricao =
-          'Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.';
+        nova.descricao = externo
+          ? 'Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a saída; entre uma e outra, um passo largo.'
+          : 'Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.';
         break;
+      case 'gen_engodo': {
+        if (nova.tagsOcultas.tipoEngodo === 'bilhete_sem_assinatura') {
+          // "não casa com": exclusão por cotejo, nunca certeza instantânea
+          // (parecer do perito, M1).
+          nova.descricao = `Dobrado em quatro, um papel sem assinatura: lugar e hora marcados, em letra que não casa com a ${femV ? 'da morta' : 'do morto'}.`;
+        } else {
+          const portador = nova.origemTestemunha ? nome(nova.origemTestemunha) : null;
+          const lugarEngodo = formasDoLugar(nomeDoPredio(bruto.mundo.cidade, escolha.localId));
+          nova.descricao = portador
+            ? `${portador} conta o recado que levou a ${vitima.nome}: que fosse ${lugarEngodo.a} sem falta. Quem lho pediu ficou fora da luz e não deixou nome.`
+            : `Correu recado chamando ${vitima.nome} ${lugarEngodo.a}; de quem partiu, ninguém dá o nome.`;
+        }
+        break;
+      }
       case 'gen_ruido_ouvido': {
         nova.carimboPadrao = `Barulho ouvido ${rotuloDaFaixa(c.tagsOcultas.faixa)}`;
         // Testemunha nomeada depõe entre aspas; o ramo coletivo relata sem
@@ -729,6 +784,17 @@ function montarLocalidades(bruto, cartas) {
   const temCarta = (id) => cartas.some((c) => c.id === id);
   const eventos = interferencia.eventos;
   const eventoQueDestroi = (cartaId) => eventos.find((e) => e.efeito.cartaDestruida === cartaId) || null;
+  // E2: palco externo — o vocabulário troca (cômodo → canto), a cena ganha
+  // a frase da descoberta e a vizinhança fala de muro e sebe, não de
+  // parede-meia.
+  const palco = escolha.palco || { externo: false };
+  const externo = !!palco.externo;
+  const fraseDescoberta =
+    externo && palco.descoberta
+      ? `${palco.descoberta.descobridorId ? nome(palco.descoberta.descobridorId) : 'Um transeunte'} deu com ${
+          femV ? 'ela' : 'ele'
+        } às ${formatHora(palco.descoberta.hora)}; o alarme tomou a vila.`
+      : null;
 
   // Distribui os marcadores das cartas novas de interferência pela
   // localidade em que vivem, como blocos contingentes do evento.
@@ -762,10 +828,21 @@ function montarLocalidades(bruto, cartas) {
     acoesEspeciais: ['termometro'],
     gestos: [{ id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'gen_livores' }],
     prosa: [
-      `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`,
+      externo
+        ? `${femV ? 'A morta jaz' : 'O morto jaz'} ao relento, no canto a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.`
+        : `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`,
       'Ao primeiro exame do tronco e dos membros, [[gen_rigor]].',
       pFerida,
-      'A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.',
+      ...(cartas.some((c) => c.id === 'gen_engodo' && c.localidade === 'corpo')
+        ? [
+            femV
+              ? 'Do bolso costurado à saia, a busca recolhe: [[gen_engodo]].'
+              : 'Do bolso do colete, a busca recolhe: [[gen_engodo]].',
+          ]
+        : []),
+      externo
+        ? 'A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.'
+        : 'A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.',
     ],
   };
 
@@ -807,10 +884,15 @@ function montarLocalidades(bruto, cartas) {
   }
   // Frase de cada carta no seu ponto. As de sítio ("junto do corpo") só
   // valem no cômodo do corpo; fora dele, a variante neutra de cômodo.
-  const frasesSegredo = [
-    (id) => `Junto ao rodapé, fora do caminho das pisadas: [[${id}]].`,
-    (id) => `A vassoura não alcança a beira de um móvel; ali, [[${id}]].`,
-  ];
+  const frasesSegredo = externo
+    ? [
+        (id) => `Fora do caminho das pisadas, junto à borda: [[${id}]].`,
+        (id) => `Sob a beira do mato, onde a foice não passou: [[${id}]].`,
+      ]
+    : [
+        (id) => `Junto ao rodapé, fora do caminho das pisadas: [[${id}]].`,
+        (id) => `A vassoura não alcança a beira de um móvel; ali, [[${id}]].`,
+      ];
   let iSegredo = 0;
   const fraseDaCartaNaCena = (c, noComodoDoCorpo) => {
     if (c.id === 'gen_hora_forjada') return 'À vista, sem procura: [[gen_hora_forjada]].';
@@ -818,12 +900,19 @@ function montarLocalidades(bruto, cartas) {
       return noComodoDoCorpo ? 'Junto do corpo, no chão: [[gen_instrumento]].' : 'No chão, à vista: [[gen_instrumento]].';
     if (c.id === 'gen_pertence')
       return `Por abrir desde a morte, a mão fechada ${femV ? 'da morta' : 'do morto'}: [[gen_pertence]].`;
-    if (c.id === 'gen_sangue_alheio')
+    if (c.id === 'gen_sangue_alheio') {
+      if (externo)
+        return noComodoDoCorpo
+          ? 'No muro mais próximo, fora do alcance da poça: [[gen_sangue_alheio]].'
+          : 'Na pedra do muro, à altura do peito: [[gen_sangue_alheio]].';
       return noComodoDoCorpo
         ? 'Na parede, fora do alcance da poça: [[gen_sangue_alheio]].'
         : 'Na parede, à altura do peito: [[gen_sangue_alheio]].';
-    if (c.id === 'gen_pegadas') return 'Do meio do vão até a porta: [[gen_pegadas]].';
-    if (c.id === 'gen_frestas') return 'Rente ao rodapé, onde a esfrega passou: [[gen_frestas]].';
+    }
+    if (c.id === 'gen_pegadas')
+      return externo ? 'Do chão até a saída: [[gen_pegadas]].' : 'Do meio do vão até a porta: [[gen_pegadas]].';
+    if (c.id === 'gen_frestas')
+      return externo ? 'Na faixa raspada do chão: [[gen_frestas]].' : 'Rente ao rodapé, onde a esfrega passou: [[gen_frestas]].';
     if ((c.tagsOcultas || {}).subDominio === 'rastro_de_visita') {
       const frase = frasesSegredo[iSegredo % frasesSegredo.length](c.id);
       iSegredo += 1;
@@ -850,21 +939,44 @@ function montarLocalidades(bruto, cartas) {
     // variante de perímetro cede à listagem neutra.
     const temDesordem = classesTextura.some((cl) => cl === 'rastro_da_luta' || cl === 'mobilia_revirada');
     const frases = [];
-    if (k.id === comodoDoCorpo) frases.push(`No chão deste cômodo, ${femV ? 'a morta' : 'o morto'}.`);
+    if (k.id === comodoDoCorpo)
+      frases.push(`No chão deste ${externo ? 'canto' : 'cômodo'}, ${femV ? 'a morta' : 'o morto'}.`);
+    // No palco externo o sorteio de variante usa hashDecisao (o hash
+    // decorrelacionado do achado B✱): hashString preserva a paridade da
+    // chave e travava TODOS os cantos de um caso na mesma variante
+    // (parecer E2, A1). Nos internos, variante() fica — trocá-la mudaria
+    // bytes do golden interno, vedado pelo critério de aceite 2 da OS;
+    // a migração integral está registrada no PR como bump futuro.
+    const escolherVariante = (pool, chave) =>
+      externo ? pool[hashDecisao(chave) % pool.length] : variante(pool, chave);
     frases.push(
       pecas.length
         ? temDesordem
-          ? `Do mobiliário, ${pecas.join(', ')}.`
-          : variante(
-              [`No cômodo, ${pecas.join(', ')}.`, `Do mobiliário, ${pecas.join(', ')}.`],
+          ? externo
+            ? `Do que ali está: ${pecas.join(', ')}.`
+            : `Do mobiliário, ${pecas.join(', ')}.`
+          : escolherVariante(
+              externo
+                ? [`No canto, ${pecas.join(', ')}.`, `Do que ali está: ${pecas.join(', ')}.`]
+                : [`No cômodo, ${pecas.join(', ')}.`, `Do mobiliário, ${pecas.join(', ')}.`],
               `${bruto.seed}|prosa|ponto|${k.id}`
             )
-        : variante(
-            ['Cômodo de paredes nuas; mobília, nenhuma.', 'Vão sem mobília; sobra o assoalho nu.'],
+        : escolherVariante(
+            externo
+              ? ['Canto sem coisa que o ocupe.', 'Ali, chão nu e mais nada.']
+              : ['Cômodo de paredes nuas; mobília, nenhuma.', 'Vão sem mobília; sobra o assoalho nu.'],
             `${bruto.seed}|prosa|ponto|${k.id}`
           )
     );
-    for (const cl of classesTextura) frases.push(TEXTURA_POR_CLASSE[cl]);
+    // Textura externa: vocabulário de relento (sem assoalho, sem mobília
+    // de casa, sem "canto a canto" dentro de um ponto que já é canto).
+    const TEXTURA_EXTERNA = {
+      assoalho_esfregado: 'Uma faixa do chão está raspada e varrida; em volta, o piso guarda folha e pó.',
+      mobilia_recomposta: 'Um vinco no chão escapa de sob o pé de uma das peças.',
+      mobilia_revirada: 'O que ali tinha prumo está tombado.',
+      rastro_da_luta: 'De uma borda a outra, nada guarda o seu lugar.',
+    };
+    for (const cl of classesTextura) frases.push((externo && TEXTURA_EXTERNA[cl]) || TEXTURA_POR_CLASSE[cl]);
     for (const c of doComodo) frases.push(fraseDaCartaNaCena(c, k.id === comodoDoCorpo));
     return {
       id: `pt_cena_${k.id}`,
@@ -882,7 +994,7 @@ function montarLocalidades(bruto, cartas) {
     if (!ev) continue;
     const k = interior.comodos.find((x) => x.id === (comodoValido(c.comodo) ? c.comodo : comodoDoCorpo));
     const frase = fraseDaCartaNaCena(c, k.id === comodoDoCorpo);
-    const contextualizada = `No cômodo chamado ${comodoEmFala(k.rotulo || k.id)}, ${
+    const contextualizada = `No ${externo ? 'canto' : 'cômodo'} chamado ${comodoEmFala(k.rotulo || k.id)}, ${
       frase.charAt(0).toLowerCase() + frase.slice(1)
     }`;
     (blocosPorLocalidade.cena ??= []).push({ eventoId: ev.id, quando: 'nao_disparado', paragrafos: [contextualizada] });
@@ -894,7 +1006,10 @@ function montarLocalidades(bruto, cartas) {
     subtitulo: `Onde ${vitima.nome} foi ${femV ? 'achada' : 'achado'}`,
     acoesEspeciais: [],
     introducao: [
-      `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam; o exame corre cômodo a cômodo.`,
+      `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam; o exame corre ${
+        externo ? 'canto a canto' : 'cômodo a cômodo'
+      }.`,
+      ...(fraseDescoberta ? [fraseDescoberta] : []),
     ],
     pontos: pontosCena,
     blocosContingentes: blocosPorLocalidade.cena || [],
@@ -957,26 +1072,38 @@ function montarLocalidades(bruto, cartas) {
   const tRuido = cartaRuido && cartaRuido.origemTestemunha ? pessoas.get(cartaRuido.origemTestemunha) : null;
   const moraNoPredio = !!tRuido && tRuido.pacoteEspacial.moradia === escolha.localId;
   const frequentavaOPredio = !!tRuido && tRuido.pacoteEspacial.rotina[escolha.faixa] === escolha.localId;
-  const fraseRuido = moraNoPredio
-    ? 'De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]].'
-    : frequentavaOPredio
-      ? 'De dentro do próprio prédio, quem lá estava àquela hora conta: [[gen_ruido_ouvido]].'
-      : 'De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].';
+  const fraseRuido = externo
+    ? 'Quem mora mais perto ouviu, e conta: [[gen_ruido_ouvido]].'
+    : moraNoPredio
+      ? 'De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]].'
+      : frequentavaOPredio
+        ? 'De dentro do próprio prédio, quem lá estava àquela hora conta: [[gen_ruido_ouvido]].'
+        : 'De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].';
   const cartaPrenuncio = cartas.find((c) => (c.tagsOcultas || {}).subDominio === 'prenuncio');
   const vizinhanca = {
     id: 'vizinhanca',
     rotuloMesa: 'A Vizinhança',
     titulo: 'A Vizinhança da Cena',
-    subtitulo: 'As casas em volta, as janelas que dão para a rua',
+    subtitulo: externo
+      ? 'As casas ao alcance de um grito'
+      : 'As casas em volta, as janelas que dão para a rua',
     acoesEspeciais: [],
     prosa: [
-      variante(
-        [
-          'As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.',
-          'A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.',
-        ],
-        `${bruto.seed}|prosa|vizinhanca`
-      ),
+      externo
+        ? [
+            'A cena fica a céu aberto; as casas mais próximas olham-na de longe, por cima de muro e sebe.',
+            'Em volta, campo e muro baixo; até a primeira casa vai um bom pedaço de caminho.',
+          ][hashDecisao(`${bruto.seed}|prosa|vizinhanca|externa`) % 2]
+        : variante(
+            [
+              'As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.',
+              'A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.',
+            ],
+            `${bruto.seed}|prosa|vizinhanca`
+          ),
+      ...(cartas.some((c) => c.id === 'gen_engodo' && c.localidade === 'vizinhanca')
+        ? ['Do recado que correu na véspera: [[gen_engodo]].']
+        : []),
       ...(evRuido ? [] : temCarta('gen_ruido_ouvido') ? [fraseRuido] : []),
       ...(() => {
         const corroboracoes = cartas.filter((c) => c.id.startsWith('gen_corrobora_'));
@@ -1263,7 +1390,9 @@ export function montarPacoteGerado(seed, opts = {}) {
     confrontos: { estadoInicial: 'presente', consequencias: {} },
     abertura,
     parametrosCena: {
-      horasChegada: 11,
+      // E2: palco externo tem descoberta própria e chegada mais cedo
+      // (caso.js §4.6); o interno segue na convenção das 11h.
+      horasChegada: bruto.escolha.palco?.externo ? bruto.escolha.palco.descoberta.chegadaPerito : 11,
       ambiente: AMBIENTE_PADRAO,
       calendario: { ...CALENDARIO_PADRAO },
     },

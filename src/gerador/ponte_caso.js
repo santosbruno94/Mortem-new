@@ -46,20 +46,31 @@
 
 import { METODOS } from './metodos.js';
 
-// Hora de chegada do perito à cena (mesma convenção do caso-escola:
-// 11h00 do dia 14/out na escala absoluta — src/logic/tempo.js).
+// Hora de chegada padrão do perito à cena (mesma convenção do
+// caso-escola: 11h00 do dia 14/out na escala absoluta — src/logic/
+// tempo.js). E2: o palco EXTERNO tem descoberta própria e chegada
+// variável (caso.js §4.6) — vem por parâmetro; o interno segue no padrão.
 const HORAS_CHEGADA = 11;
 
 // A fatia forense de um crime resolvido: { verdadeDeOuro, cartas }.
 // JSON puro, serializável — o mesmo contrato do pacote de caso.
 // `testemunhaVistoVivoId` (FASE 4, opcional): a pessoa por trás do
 // avistamento gen_visto_vivo, derivada da rotina pela Fase 4 (caso.js).
-export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId = null }) {
+// `chamariz` (E2, opcional): o engodo que levou a vítima ao palco externo
+// — deposita a carta gen_engodo (conservação da evidência, GE6).
+export function fatiaForenseDoCrime({
+  seed,
+  mundo,
+  crime,
+  testemunhaVistoVivoId = null,
+  horasChegada = HORAS_CHEGADA,
+  chamariz = null,
+}) {
   const metodo = METODOS[crime.metodoId];
   const vitima = mundo.elenco.find((p) => p.id === crime.vitimaId);
   const assassino = mundo.elenco.find((p) => p.id === crime.assassinoId);
   const horaMorte = crime.hora.morte;
-  const ipmChegada = HORAS_CHEGADA - horaMorte;
+  const ipmChegada = horasChegada - horaMorte;
 
   const verdadeDeOuro = {
     id: `gerado_${crime.seed}`,
@@ -317,6 +328,36 @@ export function fatiaForenseDoCrime({ seed, mundo, crime, testemunhaVistoVivoId 
         tipoVestigio: 'acumulacao_frestas',
       },
     });
+  }
+
+  // ---- E2: o vestígio do engodo (todo chamariz deixa trilha — GE6) ----
+  // O bilhete viaja com o corpo (suporte que interferência nenhuma
+  // alcança); o recado vira testemunho do portador. Tags motor-inertes
+  // (subDominio 'engodo' não é lido por regra alguma): a carta responde
+  // "por que ela estava ali?", nunca crava o réu.
+  if (chamariz) {
+    if (chamariz.engodo === 'bilhete') {
+      cartas.push({
+        id: 'gen_engodo',
+        localidade: 'corpo',
+        suporteFisico: 'corpo',
+        textoDisplay: 'O Bilhete no Bolso',
+        carimboPadrao: 'Bilhete de encontro, sem assinatura',
+        descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+        tagsOcultas: { dominio: 'ambiental', subDominio: 'engodo', tipoEngodo: 'bilhete_sem_assinatura' },
+      });
+    } else {
+      cartas.push({
+        id: 'gen_engodo',
+        localidade: 'vizinhanca',
+        suporteFisico: 'testemunho',
+        origemTestemunha: chamariz.portadorId,
+        textoDisplay: 'O Recado Levado',
+        carimboPadrao: 'Recado que chamou a vítima',
+        descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+        tagsOcultas: { dominio: 'testemunho', subDominio: 'engodo', tipoEngodo: 'recado_por_terceiro' },
+      });
+    }
   }
 
   // ---- Móbil: o motivo potencial da Fase 1 promovido a móbil do caso ----

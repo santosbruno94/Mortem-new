@@ -99,6 +99,14 @@ const TRACADO = [
   { quarteirao: 'orla', tipo: 'granja', x: 4.6, z: 0.6 },
   { quarteirao: 'orla', tipo: 'moinho', x: 5.3, z: -1.9 },
   { quarteirao: 'orla', tipo: 'estacao', x: 5.4, z: 1.7 },
+  // LOGRADOUROS (E2, Anel 1): lotes de chão que entram na adjacência como
+  // qualquer prédio — palco externo anexo ao prédio da rotina (dossiê §1:
+  // adro adjacente a igreja/vicarage; pátio à granja e à ponta da ruela;
+  // açude só ao moinho, o palco mais surdo da vila). Jitter mínimo: chão
+  // murado não dança de seed a seed como um lote construído.
+  { quarteirao: 'adro', tipo: 'adro_da_igreja', x: -4.3, z: -0.6, logradouro: true },
+  { quarteirao: 'orla', tipo: 'patio_da_granja', x: 3.95, z: 1.05, logradouro: true },
+  { quarteirao: 'orla', tipo: 'caminho_do_acude', x: 4.6, z: -1.6, logradouro: true },
 ];
 
 // A ruela dos cottages, ao sul da High Street: a fileira de casas de
@@ -136,9 +144,10 @@ export function gerarCidade(seed) {
       tipo: lote.tipo,
       rotulo: tipo.rotulo,
       quarteirao: lote.quarteirao,
+      ...(lote.logradouro ? { logradouro: true } : {}),
       pos: {
-        x: Math.round((lote.x + jitter(`${sal}|${lote.tipo}|jx`, 0.16)) * 100) / 100,
-        z: Math.round((lote.z + jitter(`${sal}|${lote.tipo}|jz`, 0.12)) * 100) / 100,
+        x: Math.round((lote.x + jitter(`${sal}|${lote.tipo}|jx`, lote.logradouro ? 0.02 : 0.16)) * 100) / 100,
+        z: Math.round((lote.z + jitter(`${sal}|${lote.tipo}|jz`, lote.logradouro ? 0.02 : 0.12)) * 100) / 100,
       },
       forma: amostrarForma(lote.tipo, `${sal}|${lote.tipo}|forma`),
     });

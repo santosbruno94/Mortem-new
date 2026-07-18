@@ -150,6 +150,41 @@ const LAYOUTS = {
       { id: 'espera', rotulo: 'Sala de Espera', tipoComodo: 'espera', ret: { col: 0, fila: 0, colunas: 6, filas: 3 } },
     ],
   },
+  // ----- LOGRADOUROS (E2, Anel 1): pseudo-interiores no MESMO schema. -----
+  // O "cômodo" é o CANTO (partições do dossiê E2 §1); `saidas` declara as
+  // células de borda por onde se entra/foge — o interior de prédio declara
+  // uma única (a porta computada de sempre; replay preservado por
+  // construção). Escala: célula de logradouro lê ~3–5 m (maior que a
+  // doméstica) — registro de design do dossiê §1.1(b).
+  adro_da_igreja: {
+    colunas: 7, filas: 5, split: [0, 0],
+    saidas: [{ col: 3, fila: 4 }, { col: 6, fila: 0 }],
+    comodos: () => [
+      { id: 'quadra_sul', rotulo: 'A Quadra das Lápides', tipoComodo: 'quadra_de_lapides', ret: { col: 0, fila: 0, colunas: 2, filas: 5 } },
+      { id: 'alameda', rotulo: 'A Alameda das Lajes', tipoComodo: 'alameda_do_adro', ret: { col: 2, fila: 0, colunas: 3, filas: 4 } },
+      { id: 'lychgate', rotulo: 'O Portão Coberto', tipoComodo: 'lychgate', ret: { col: 2, fila: 4, colunas: 3, filas: 1 } },
+      { id: 'fundo_norte', rotulo: 'O Fundo Evitado', tipoComodo: 'fundo_do_adro', ret: { col: 5, fila: 0, colunas: 2, filas: 5 } },
+    ],
+  },
+  patio_da_granja: {
+    colunas: 7, filas: 5, split: [0, 0],
+    saidas: [{ col: 2, fila: 4 }, { col: 0, fila: 2 }, { col: 6, fila: 4 }],
+    comodos: () => [
+      { id: 'alpendre_do_feno', rotulo: 'O Alpendre do Feno', tipoComodo: 'alpendre_do_feno', ret: { col: 0, fila: 0, colunas: 3, filas: 2 } },
+      { id: 'canto_do_poco', rotulo: 'O Poço e o Cocho', tipoComodo: 'canto_do_poco', ret: { col: 3, fila: 0, colunas: 2, filas: 2 } },
+      { id: 'terreiro', rotulo: 'O Terreiro Batido', tipoComodo: 'terreiro', ret: { col: 0, fila: 2, colunas: 5, filas: 3 } },
+      { id: 'chiqueiro', rotulo: 'O Chiqueiro e o Monturo', tipoComodo: 'chiqueiro', ret: { col: 5, fila: 0, colunas: 2, filas: 5 } },
+    ],
+  },
+  caminho_do_acude: {
+    colunas: 8, filas: 4, split: [0, 0],
+    saidas: [{ col: 0, fila: 3 }, { col: 7, fila: 3 }],
+    comodos: () => [
+      { id: 'margem', rotulo: 'A Margem de Junco', tipoComodo: 'margem_do_acude', ret: { col: 0, fila: 0, colunas: 6, filas: 2 } },
+      { id: 'comporta', rotulo: 'A Comporta do Açude', tipoComodo: 'comporta', ret: { col: 6, fila: 0, colunas: 2, filas: 2 } },
+      { id: 'vereda', rotulo: 'A Vereda entre Sebes', tipoComodo: 'vereda', ret: { col: 0, fila: 2, colunas: 8, filas: 2 } },
+    ],
+  },
 };
 
 // Classe social presumida do interior quando nenhum morador do elenco o
@@ -159,6 +194,8 @@ const CLASSE_PADRAO_DO_TIPO = {
   pub: 'comerciante', botica: 'comerciante', mercearia: 'comerciante', moinho: 'comerciante',
   casa_do_medico: 'profissional', escola: 'profissional', estacao: 'profissional',
   delegacia: 'servico_do_condado', forja: 'artesao', granja: 'lavrador', cottage: 'lavrador',
+  // Logradouros (E2): a leitura social segue o prédio-mãe do anexo.
+  adro_da_igreja: 'clero', patio_da_granja: 'lavrador', caminho_do_acude: 'comerciante',
 };
 
 // Células do PERÍMETRO de um retângulo (mobília encosta na parede),
@@ -231,6 +268,15 @@ export function gerarInterior(cidade, predioId, seed, classeSocial = null) {
     predioId,
     tipo: predio.tipo,
     classeSocialDoMorador: classe,
+    // E2 (OS palco em anéis): logradouro = palco externo (pseudo-interior);
+    // `saidas` são as células de borda por onde se entra e foge. O interior
+    // de prédio declara UMA saída — idêntica à porta externa que crime.js
+    // sempre computou (frente-centro): o replay fica preservado por
+    // construção.
+    logradouro: !!predio.logradouro,
+    saidas: layout.saidas
+      ? layout.saidas.map((s) => ({ ...s }))
+      : [{ col: Math.floor(layout.colunas / 2), fila: layout.filas - 1 }],
     grid: { colunas: layout.colunas, filas: layout.filas },
     comodos: comodos.map((c) => ({ id: c.id, rotulo: c.rotulo, tipoComodo: c.tipoComodo, ret: c.ret })),
     mobilia,

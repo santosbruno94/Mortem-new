@@ -18,9 +18,12 @@ import { gerarCasoBruto } from '../src/gerador/caso.js';
 import { METODOS, CENARIOS } from '../src/gerador/metodos.js';
 import { CLASSES_VESTIGIO } from '../src/gerador/vestigios.js';
 
+// E2 (OS palco em anéis): comarca_4 é a seed de demonstração de CENA
+// EXTERNA do golden set (chamariz para o Caminho do Açude) — o entregável
+// da fase pede uma cena externa à mostra neste demo.
 const seeds = process.argv[2]
   ? [process.argv[2]]
-  : ['a_hora_emprestada', 'vila_do_moinho', 'caso_do_charco'];
+  : ['a_hora_emprestada', 'vila_do_moinho', 'caso_do_charco', 'comarca_4'];
 
 // Hora absoluta → rótulo humano (0 = meia-noite de 14/out).
 function horaLegivel(h) {
