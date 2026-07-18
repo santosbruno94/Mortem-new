@@ -72,7 +72,9 @@ import {
 } from '../src/gerador/espaco.js';
 import { gerarCasoBruto } from '../src/gerador/caso.js';
 import { METODOS, PROVENIENCIA_METODOS } from '../src/gerador/metodos.js';
-import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS } from '../src/gerador/vestigios.js';
+import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS, SEDES_POR_REGIAO } from '../src/gerador/vestigios.js';
+import { CATALOGO_ACOES, DOUTRINA_VITIMA, DOUTRINA_ASSASSINO, doutrina, acoesLegais } from '../src/gerador/doutrinas.js';
+import { hashString } from '../src/logic/hash.js';
 import {
   CATALOGO_INTERFERENCIA,
   CLASSES_VESTIGIO_INTERFERENCIA,
@@ -3431,6 +3433,91 @@ const gb2IntegridadeFisicaOk =
   ITENS_COM_AGUA.length === ANCORAS_AGUA_CANONICAS.length &&
   ANCORAS_AGUA_CANONICAS.every((id) => ITENS_COM_AGUA.includes(id));
 
+// ============================================================
+// GUARDAS DA OS AUTOBATTLER V2 — B2 (doutrinas). Provas:
+// GB3 — pureza da política: fuzz de ≥10⁴ estados sintéticos (derivados
+// de hashString sob sal fixo de QA) — mesma entrada, construída duas
+// vezes, ⇒ mesma ação, para os dois papéis; toda ação devolvida é
+// legal; e o lint estático prova que doutrinas.js não importa hash
+// nenhum (a escolha não consome sal — só a resolução, em B3).
+// GB4 — matriz ação→vestígio completa: toda ação do catálogo declara
+// classe EXISTENTE em CLASSES_VESTIGIO; toda linha de doutrina aponta
+// ação do catálogo compatível com o papel; a rolagem paralela (grito)
+// fica fora das tabelas. (A parte estatística — rastro sobrevivente em
+// ≥ X% das ações realizadas — mede-se em B3, no lote.)
+// ============================================================
+const REGIOES_FUZZ = ['integro', 'ferido', 'inutilizado'];
+const estadoDeFuzz = (i, papel) => {
+  const h = (campo, mod) => hashString(`qa|doutrina|fuzz|${i}|${campo}`) % mod;
+  const regioes = (p) => ({
+    bracos: REGIOES_FUZZ[h(`${p}|bracos`, 3)],
+    maos: REGIOES_FUZZ[h(`${p}|maos`, 3)],
+    pernas: REGIOES_FUZZ[h(`${p}|pernas`, 3)],
+    cabeca: REGIOES_FUZZ[h(`${p}|cabeca`, 3)],
+    tronco: REGIOES_FUZZ[h(`${p}|tronco`, 3)],
+  });
+  const aPecaBruta = h('aPeca', 6);
+  const armaVitima = h('armaV', 2) === 0 ? null : { tipo: 'peca', pecaId: 'aticador' };
+  const armaAssassino = h('armaA', 3) === 0 ? { tipo: 'peca', pecaId: 'castical_de_latao' } : { tipo: 'metodo' };
+  const eu = papel === 'vitima'
+    ? { regioes: regioes('v'), agarre: h('agarre', 3) === 0 ? 'presa' : 'livre', arma: armaVitima, celula: { col: h('vc', 6), fila: h('vf', 5) } }
+    : { regioes: regioes('a'), agarre: 'livre', arma: armaAssassino, celula: { col: h('ac', 6), fila: h('af', 5) } };
+  const outro = papel === 'vitima'
+    ? { regioes: regioes('a'), arma: armaAssassino, celula: { col: h('ac', 6), fila: h('af', 5) } }
+    : { regioes: regioes('v'), arma: armaVitima, celula: { col: h('vc', 6), fila: h('vf', 5) } };
+  return {
+    rodada: 1 + h('rodada', 8),
+    eu,
+    outro,
+    forPropria: 1 + h('forP', 5),
+    forOutro: 1 + h('forO', 5),
+    portao: papel === 'vitima'
+      ? {
+          sobAtaque: { resistir: h('sar', 2), fugir: h('saf', 2), gritar: h('sag', 2) },
+          polaridade: h('pol', 2) === 0 ? 'ativa' : 'passiva',
+        }
+      : null,
+    metodo: { seguraAVitima: h('seg', 2) === 0, sangra: h('sang', 2) === 0 },
+    dist: { aoOutro: h('aoOutro', 4), aSaida: h('aSaida', 8), aPeca: aPecaBruta === 5 ? Infinity : aPecaBruta },
+    pecaBloqueiaEntreNos: h('bloq', 2) === 0,
+    gritou: h('gritou', 2) === 0,
+    trocaElegivel: h('troca', 4) === 0,
+    flags: { forcarVitoria: h('fv', 8) === 0, fugaSuprimida: h('fs', 8) === 0 },
+  };
+};
+let gb3Falhas = 0;
+for (let i = 0; i < 10000 && gb3Falhas === 0; i++) {
+  for (const papel of ['vitima', 'assassino']) {
+    const a1 = doutrina(papel, estadoDeFuzz(i, papel));
+    const a2 = doutrina(papel, estadoDeFuzz(i, papel));
+    const legais = acoesLegais(papel, estadoDeFuzz(i, papel));
+    if (a1 !== a2) gb3Falhas += 1;
+    else if (a1 !== null && !legais.includes(a1)) gb3Falhas += 1;
+    else if (a1 === null && legais.length > 0 && papel === 'assassino') gb3Falhas += 1; // assassino sempre age quando pode
+  }
+}
+const fonteDoutrinas = readFileSync(path.join(raizRepo, 'src/gerador/doutrinas.js'), 'utf8');
+const gb3PurezaDoutrinaOk =
+  gb3Falhas === 0 && !/hash/i.test(fonteDoutrinas.replace(/\/\/[^\n]*/g, '').match(/^import[^;]+;/gm)?.join('\n') ?? '') &&
+  !fonteDoutrinas.includes('hashString');
+const PAPEIS_ACAO_VALIDOS = ['vitima', 'assassino', 'ambos'];
+const linhaCompativel = (linha, papel) => {
+  const acao = CATALOGO_ACOES[linha.acao];
+  return acao != null && !acao.rolagemParalela && (acao.papel === 'ambos' || acao.papel === papel);
+};
+const gb4MatrizCompletaOk =
+  Object.values(CATALOGO_ACOES).every(
+    (a) => PAPEIS_ACAO_VALIDOS.includes(a.papel) && CLASSES_VESTIGIO[a.classeVestigio] != null && typeof a.precondicao === 'function'
+  ) &&
+  DOUTRINA_VITIMA.every((l) => linhaCompativel(l, 'vitima')) &&
+  DOUTRINA_ASSASSINO.every((l) => linhaCompativel(l, 'assassino')) &&
+  ['peca_deslocada', 'lesao_padrao_de_peca', 'residuo_na_peca', 'ungueais_de_desvencilhamento', 'lesao_incidental', 'fibra_na_aresta', 'ferimento_do_agressor'].every(
+    (c) => CLASSES_VESTIGIO[c] != null && CLASSES_VESTIGIO[c].evidenciaDe.every((v) => VARIAVEIS_BATALHA[v] != null)
+  ) &&
+  Object.values(CLASSES_VESTIGIO).every((c) => !c.naoCausal || c.ordem === 1) &&
+  Object.keys(SEDES_POR_REGIAO).length === 5 &&
+  ['bracos', 'maos', 'pernas', 'cabeca', 'tronco'].every((r) => Array.isArray(SEDES_POR_REGIAO[r]) && SEDES_POR_REGIAO[r].length > 0);
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -3534,6 +3621,8 @@ const checagens = [
   ['Comarca E3 — telegrama (§4.6): dados acoplados ao nó no pacote e, em runtime, expedir + viajar entrega a resposta com as tags do registro', telegramaRuntimeOk],
   ['Autobattler v2 — GB1 proveniência da física: assinatura de empunhável com fonte que resolve no disco; eficácia só em calibração chute-declarada (OS autobattler v2 B1)', gb1ProvenienciaFisicaOk],
   ['Autobattler v2 — GB2 integridade da física: todo item de vocabulário com física; empunhável bem-formado; fixa jamais empunhável; âncora d\'água derivada == canônica do E2 (OS autobattler v2 B1)', gb2IntegridadeFisicaOk],
+  ['Autobattler v2 — GB3 pureza da doutrina: 10⁴ estados de fuzz ⇒ mesma ação; toda ação devolvida é legal; doutrinas.js sem hash (OS autobattler v2 B2)', gb3PurezaDoutrinaOk],
+  ['Autobattler v2 — GB4 matriz ação→vestígio: toda ação com classe existente; linhas de doutrina compatíveis com papel; classes novas bem-formadas; SEDES_POR_REGIAO com as 5 regiões (OS autobattler v2 B2/D2)', gb4MatrizCompletaOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
