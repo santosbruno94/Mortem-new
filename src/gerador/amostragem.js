@@ -1,28 +1,38 @@
 // =====================================================================
 // AMOSTRAGEM DETERMINÍSTICA DE ELENCO — o coração da FASE 1 do gerador
-// (design em docs/game-design-simulacao.md §4.1).
+// (design em docs/game-design-simulacao.md §4.1), reformada pela OS
+// priors compostos (docs/os-priors-compostos-e-variedade-do-elenco.md,
+// F2): o corpo é do ofício; o acesso é do berço; a mente é da psique
+// dentro do acesso.
 //
 // Este módulo é GERADOR-FACING: vive em src/gerador/ e o runtime JAMAIS o
 // importa (guarda no qa.mjs). A importação de src/logic/hash.js é no
 // sentido permitido (o gerador lê a lógica; a lógica nunca lê o gerador).
 //
-// DETERMINISMO: toda decisão sai de hashString sobre uma CHAVE SALGADA.
-// Regra de ouro: NUNCA reusar a mesma chave para duas decisões distintas
-// (produziria correlações fantasmas entre campos). Convenção de sal:
+// DETERMINISMO: toda decisão sai de hashDecisao (hash_gerador.js — o
+// re-hash que DECORRELACIONA chaves-irmãs; achado B✱ da triagem F0)
+// sobre uma CHAVE SALGADA. Regra de ouro: NUNCA reusar a mesma chave
+// para duas decisões distintas. Convenção de sal:
 //   `${salBase}|elenco|${indice}|<decisao>[|<tentativa>]`
 // Mesma seed → mesmo elenco, byte a byte (checado no qa.mjs).
 //
-// Viés conhecido e aceito: `hashString % total` favorece os primeiros
-// itens quando `total` não divide 2^31 — com somas de peso pequenas o
-// desvio é da ordem de 10^-8, irrelevante para o design.
+// ORDEM DE AMOSTRAGEM (OS priors compostos §3.3, normativa): arquétipo →
+// gênero → faixa etária → idade → nome → VETOR (+ polaridade) →
+// atributos COMPOSTOS → traits → motivo potencial → quantização.
+// A polaridade não influencia atributos e permanece derivada na psique
+// (vetores_psiquicos.js) sobre o MESMO sal — ordem-equivalente.
 //
-// ORDEM DE AMOSTRAGEM (a composição de arquétipos pesa mais que o ruído
-// fino de atributos — §4.1): arquétipo → gênero → faixa etária → idade →
-// nome → atributos → traits → motivo potencial → quantização.
+// ATRIBUTO COMPOSTO (§3.2): peso efetivo do valor i =
+// peso_arquetipo[i] × tilt_vetor[i]. FOR fica FORA do composto (N2 — o
+// corpo não é da psique): sorteia só do prior do arquétipo e NUNCA entra
+// na cascata de forçamento. Quando o caso força o vetor de alguém
+// (réu/isca, caso.js), INT/WIS/CHA e a quantização são RE-derivados com
+// o sufixo de sal `|forcado|t<k>` — a cascata (§3.3, guarda G3).
 // =====================================================================
 
-import { hashString } from '../logic/hash.js';
+import { hashDecisao } from './hash_gerador.js';
 import { ARQUETIPOS, FAIXAS_IDADE, NOMES, SOBRENOMES } from './arquetipos.js';
+import { VETORES_PSIQUICOS, TILT_NEUTRO, sortearVetor } from './vetores_psiquicos.js';
 import { quantizarComportamentos } from './quantizacao.js';
 
 // Sorteia de uma lista ponderada [{ valor, peso }] de forma determinística.
@@ -30,7 +40,7 @@ import { quantizarComportamentos } from './quantizacao.js';
 export function sortearPonderado(opcoes, chave) {
   const total = (opcoes || []).reduce((soma, o) => soma + o.peso, 0);
   if (total <= 0) return null;
-  let alvo = hashString(chave) % total;
+  let alvo = hashDecisao(chave) % total;
   for (const opcao of opcoes) {
     alvo -= opcao.peso;
     if (alvo < 0) return opcao.valor;
@@ -51,6 +61,28 @@ function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
 }
 
+// ---------------------------------------------------------------------
+// ATRIBUTOS COMPOSTOS (OS priors compostos §3.2–§3.3). Função PURA — é a
+// via única de derivação de INT/WIS/CHA, na amostragem normal
+// (sufixoForcado = '') e na cascata de forçamento de vetor
+// (sufixoForcado = '|forcado|t<k>', chamada por caso.js; guarda G3).
+// FOR não passa por aqui: não é jusante do vetor (N2).
+// ---------------------------------------------------------------------
+export function derivarAtributosCompostos(salBase, indice, arquetipoId, vetorId, sufixoForcado = '') {
+  const arquetipo = ARQUETIPOS[arquetipoId];
+  const tilt = VETORES_PSIQUICOS[vetorId]?.tiltAtributos || {};
+  const compor = (attr) => {
+    const pesos = arquetipo.priors[attr];
+    const multiplicadores = tilt[attr] || TILT_NEUTRO;
+    const efetivos = pesos.map((p, i) => p * multiplicadores[i]);
+    return sortearAtributo(
+      efetivos,
+      `${salBase}|elenco|${indice}|atributo-composto:${attr}${sufixoForcado}`
+    );
+  };
+  return { INT: compor('INT'), WIS: compor('WIS'), CHA: compor('CHA') };
+}
+
 // Coorte de nascimento para o batismo (KB §6): nascido até 1850
 // (idade ≥ 43 em 1893) usa os nomes velhos; senão, os jovens.
 function coorteDeNomes(idade) {
@@ -67,14 +99,14 @@ function amostrarNomeUnico(sal, genero, idade, nomesUsados) {
   const nomes = NOMES[genero][coorteDeNomes(idade)];
   const MAX_TENTATIVAS = 50;
   for (let tentativa = 0; tentativa < MAX_TENTATIVAS; tentativa++) {
-    const nome = nomes[hashString(`${sal}|nome|${tentativa}`) % nomes.length];
-    const sobrenome = SOBRENOMES[hashString(`${sal}|sobrenome|${tentativa}`) % SOBRENOMES.length];
+    const nome = nomes[hashDecisao(`${sal}|nome|${tentativa}`) % nomes.length];
+    const sobrenome = SOBRENOMES[hashDecisao(`${sal}|sobrenome|${tentativa}`) % SOBRENOMES.length];
     const completo = `${nome} ${sobrenome}`;
     if (nome !== sobrenome && !nomesUsados.has(completo)) return completo;
   }
   // Varredura de fallback: percorre todos os pares a partir de um ponto
   // derivado do sal — encontra combinação livre se alguma existir.
-  const base = hashString(`${sal}|nome|varredura`);
+  const base = hashDecisao(`${sal}|nome|varredura`);
   const totalPares = nomes.length * SOBRENOMES.length;
   for (let i = 0; i < totalPares; i++) {
     const indice = (base + i) % totalPares;
@@ -92,7 +124,8 @@ function amostrarNomeUnico(sal, genero, idade, nomesUsados) {
 // o estado interno do elenco em construção (gerido por gerarElenco):
 //   { nomesUsados: Set<string>, unicosUsados: Set<string> }
 export function amostrarPersonagem(seed, indice, contexto) {
-  const sal = `${salDaSeed(seed)}|elenco|${indice}`;
+  const salBase = salDaSeed(seed);
+  const sal = `${salBase}|elenco|${indice}`;
 
   // 1. Arquétipo, pela frequência demográfica — excluindo os únicos-na-vila
   // já escalados (a trava é parte da amostragem, não pós-processamento).
@@ -116,35 +149,44 @@ export function amostrarPersonagem(seed, indice, contexto) {
     `${sal}|faixaIdade`
   );
   const [idadeMinima, idadeMaxima] = FAIXAS_IDADE[faixa];
-  const idade = idadeMinima + (hashString(`${sal}|idade`) % (idadeMaxima - idadeMinima + 1));
+  const idade = idadeMinima + (hashDecisao(`${sal}|idade`) % (idadeMaxima - idadeMinima + 1));
 
   // 3. Nome completo único (coorte de batismo depende da idade).
   const nome = amostrarNomeUnico(sal, genero, idade, contexto.nomesUsados);
   contexto.nomesUsados.add(nome);
 
-  // 4. Atributos, dos priors do arquétipo (o ruído fino, por último).
+  // 4. VETOR-BASE do personagem (OS priors compostos §3.3): o sorteio da
+  // psique (sal `|psique|vet_<indice>`, vetores_psiquicos.js) sobe para
+  // ANTES dos atributos, porque a mente é da psique dentro do acesso do
+  // ofício. O RÓTULO não entra no personagem (morre no log de build da
+  // psique, que re-deriva este mesmo sorteio pelo mesmo sal); aqui ele
+  // só dá o tilt.
+  const vetorBaseId = sortearVetor(salBase, indice, arquetipoId);
+
+  // 5. Atributos: FOR do prior puro do ofício (N2 — fora do composto e
+  // da cascata); INT/WIS/CHA compostos (prior do arquétipo × tilt do
+  // vetor), pela via única derivarAtributosCompostos.
   const atributos = {
-    FOR: sortearAtributo(arquetipo.priors.FOR, `${sal}|atributo|FOR`),
-    INT: sortearAtributo(arquetipo.priors.INT, `${sal}|atributo|INT`),
-    WIS: sortearAtributo(arquetipo.priors.WIS, `${sal}|atributo|WIS`),
-    CHA: sortearAtributo(arquetipo.priors.CHA, `${sal}|atributo|CHA`),
+    FOR: sortearAtributo(arquetipo.priors.FOR, `${sal}|atributo-composto:FOR`),
+    ...derivarAtributosCompostos(salBase, indice, arquetipoId, vetorBaseId),
   };
 
-  // 5. Traits do pool: o primeiro sempre; um segundo (distinto) em ~1/3
+  // 6. Traits do pool: o primeiro sempre; um segundo (distinto) em ~1/3
   // dos personagens, se o pool comportar.
   const pool = arquetipo.traits;
-  const traits = [pool[hashString(`${sal}|trait|1`) % pool.length]];
-  if (pool.length >= 2 && hashString(`${sal}|temSegundoTrait`) % 3 === 0) {
+  const traits = [pool[hashDecisao(`${sal}|trait|1`) % pool.length]];
+  if (pool.length >= 2 && hashDecisao(`${sal}|temSegundoTrait`) % 3 === 0) {
     const restantes = pool.filter((t) => t !== traits[0]);
-    traits.push(restantes[hashString(`${sal}|trait|2`) % restantes.length]);
+    traits.push(restantes[hashDecisao(`${sal}|trait|2`) % restantes.length]);
   }
 
-  // 6. Motivo potencial (semente para o gerador de casos promover a móbil).
+  // 7. Motivo potencial (semente para o gerador de casos promover a móbil).
   const motivoPotencial =
-    arquetipo.motivosPotenciais[hashString(`${sal}|motivo`) % arquetipo.motivosPotenciais.length];
+    arquetipo.motivosPotenciais[hashDecisao(`${sal}|motivo`) % arquetipo.motivosPotenciais.length];
 
-  // 7. Personagem: JSON puro, nenhuma função (mesma regra de ouro do
-  // pacote de caso). `pacoteEspacial` é slot da Fase 2.
+  // 8. Personagem: JSON puro, nenhuma função (mesma regra de ouro do
+  // pacote de caso) e NENHUM rótulo de psique. `pacoteEspacial` é slot
+  // da Fase 2.
   return {
     id: `gen_${indice}_${arquetipoId}`,
     arquetipo: arquetipoId,

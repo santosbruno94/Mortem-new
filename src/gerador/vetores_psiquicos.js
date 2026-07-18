@@ -31,12 +31,24 @@
 // (reamostragem por rejeição com sal incremental, teto finito) e ≥1
 // falso-destoante inocente garantido (prioridade: coabitantes da vítima).
 //
-// DETERMINISMO: toda decisão sai de hashString sobre chave salgada no
-// namespace `|psique|` (sais da OS §8.2: vet_/pol_/desenc_/flag_ por
+// DETERMINISMO: toda decisão sai de hashDecisao (hash_gerador.js — o
+// hash decorrelacionado da OS priors compostos F2) sobre chave salgada
+// no namespace `|psique|` (sais da OS §8.2: vet_/pol_/desenc_/flag_ por
 // índice de personagem; rejeições com sufixo _r<k>).
 // =====================================================================
 
-import { hashString } from '../logic/hash.js';
+import { hashDecisao } from './hash_gerador.js';
+
+// TILT DE ATRIBUTO (OS priors compostos, F2 §3.2): por vetor,
+// multiplicadores INTEIROS por banda de valor (formato de 5 posições,
+// como os priors). O peso efetivo do valor i na amostragem composta é
+// peso_arquetipo[i] × tilt_vetor[i] (amostragem.js).
+//   N2: o tilt JAMAIS toca FOR — o corpo é do ofício, não da psique.
+//   N3: todo multiplicador ≥ 1 — o tilt inclina, nunca proíbe.
+// Três vetores sem tilt algum (devoto, errante, justiceiro) é desenho,
+// não omissão: tilt é tempero raro, ou o composto vira estereótipo novo
+// ("todo Erudito é INT 5"). Justificativas no dossiê F1 §2.3.
+export const TILT_NEUTRO = [1, 1, 1, 1, 1];
 
 // Degrau de afinidade → peso de sorteio e magnitude de desencaixe.
 // A tabela AFINIDADE_DEMOGRAFICA codifica a 7.2: 'alta' = afinidade
@@ -83,6 +95,7 @@ export const VETORES_PSIQUICOS = {
     // Portão psíquico (OS confronto estendido §4.4/§8.2): pesos de afinidade
     // de ação sob ataque, jamais regra dura. O cuidador clama por socorro.
     sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // valor "cuidar dos seus": chama ajuda
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: [1, 1, 2, 2, 1], CHA: TILT_NEUTRO }, // o cuidado repara no miúdo (leve)
     afinidadePapeis: {
       assassino_encenador: 3, isca_do_apressado: 1, veu: 3,
       ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 1,
@@ -106,6 +119,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'preservei a família',
     temaGatilho: 'queda_de_status',
     sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "ordem, nome": não foge — impõe-se
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: [1, 1, 1, 2, 2] }, // a presença que manda
     afinidadePapeis: {
       assassino_encenador: 4, isca_do_apressado: 2, veu: 1,
       ruido_pista_dupla: 1, mentiroso_por_medo: 1, fonte: 2,
@@ -129,6 +143,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'era a solução racional',
     temaGatilho: 'erro_em_publico',
     sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "exatidão": calcula a saída
+    tiltAtributos: { INT: [1, 1, 1, 2, 2], WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // o exemplo da OS §3.2
     afinidadePapeis: {
       assassino_encenador: 4, isca_do_apressado: 1, veu: 1,
       ruido_pista_dupla: 1, mentiroso_por_medo: 1, fonte: 3,
@@ -152,6 +167,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'cortei o mal pela raiz',
     temaGatilho: 'pecado_exposto',
     sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "pureza, fé": enfrenta o mal de pé
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // fé não é competência — sem tilt
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 2, veu: 3,
       ruido_pista_dupla: 2, mentiroso_por_medo: 2, fonte: 1,
@@ -175,6 +191,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'a obra vale mais que ele',
     temaGatilho: 'obra_arruinada',
     sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "o ofício": defende o que é seu
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: [1, 1, 2, 2, 1], CHA: TILT_NEUTRO }, // a mão que não erra (leve)
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 2, veu: 1,
       ruido_pista_dupla: 2, mentiroso_por_medo: 1, fonte: 1,
@@ -198,6 +215,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'se não podia ser meu…',
     temaGatilho: 'substituicao',
     sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "a paixão": o desespero que clama
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: [1, 1, 2, 2, 1] }, // o charme do vínculo (leve)
     afinidadePapeis: {
       assassino_encenador: 3, isca_do_apressado: 2, veu: 4,
       ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 1,
@@ -221,6 +239,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'eu nunca tive a chance dele',
     temaGatilho: 'voltar_a_ser_ninguem',
     sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "respeitabilidade": foge da exposição
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: [1, 1, 2, 2, 1] }, // o polimento conquistado (leve)
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 4, veu: 1,
       ruido_pista_dupla: 3, mentiroso_por_medo: 3, fonte: 1,
@@ -244,6 +263,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'eu não podia ficar',
     temaGatilho: 'ficar_preso',
     sobAtaque: { resistir: 0, fugir: 1, gritar: 0 }, // "liberdade": o fujão por excelência
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // horizonte não é atributo — sem tilt
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 2, veu: 2,
       ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 2,
@@ -267,6 +287,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'foi uma luta justa',
     temaGatilho: 'afronta_impune',
     sobAtaque: { resistir: 1, fugir: 0, gritar: 0 }, // "honra": fugir é a covardia que ele teme
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: TILT_NEUTRO }, // o que pesaria é FOR — vetado por N2; sem tilt
     afinidadePapeis: {
       assassino_encenador: 2, isca_do_apressado: 4, veu: 1,
       ruido_pista_dupla: 2, mentiroso_por_medo: 1, fonte: 1,
@@ -290,6 +311,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'não era pra tanto',
     temaGatilho: 'invisibilidade',
     sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "não ser invisível": faz barulho, chama atenção
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: TILT_NEUTRO, CHA: [1, 1, 1, 2, 2] }, // a graça é performance
     afinidadePapeis: {
       assassino_encenador: 1, isca_do_apressado: 3, veu: 1,
       ruido_pista_dupla: 3, mentiroso_por_medo: 2, fonte: 2,
@@ -313,6 +335,7 @@ export const VETORES_PSIQUICOS = {
     autoJustificacao: 'alguém tinha de saber',
     temaGatilho: 'irrelevancia',
     sobAtaque: { resistir: 0, fugir: 0, gritar: 1 }, // "que se saiba": alerta a vila
+    tiltAtributos: { INT: TILT_NEUTRO, WIS: [1, 1, 1, 2, 2], CHA: TILT_NEUTRO }, // o exemplo da OS §3.2
     afinidadePapeis: {
       assassino_encenador: 1, isca_do_apressado: 1, veu: 3,
       ruido_pista_dupla: 2, mentiroso_por_medo: 2, fonte: 4,
@@ -374,7 +397,7 @@ const VETORES_DE_VINCULO = new Set(['zelador', 'amante', 'devoto']);
 function sortearPonderadoLocal(opcoes, chave) {
   const total = opcoes.reduce((soma, o) => soma + o.peso, 0);
   if (total <= 0) return null;
-  let alvo = hashString(chave) % total;
+  let alvo = hashDecisao(chave) % total;
   for (const opcao of opcoes) {
     alvo -= opcao.peso;
     if (alvo < 0) return opcao.valor;
@@ -401,7 +424,7 @@ export function sortearVetor(salBase, indice, arquetipoId, tentativa = 0) {
 }
 
 export function sortearPolaridade(salBase, indice) {
-  return hashString(`${salBase}|psique|pol_${indice}`) % 2 === 0 ? 'ativa' : 'passiva';
+  return hashDecisao(`${salBase}|psique|pol_${indice}`) % 2 === 0 ? 'ativa' : 'passiva';
 }
 
 // Reamostra o vetor de um personagem até magnitude ≥ LIMIAR_DESENCAIXE.
@@ -472,7 +495,7 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
       ...inocentes.filter((p) => coabitantesVitimaIds.includes(p.id)),
       ...inocentes.filter((p) => !coabitantesVitimaIds.includes(p.id)),
     ];
-    const escolhido = fila[hashString(`${salBase}|psique|desenc_escolha`) % fila.length];
+    const escolhido = fila[hashDecisao(`${salBase}|psique|desenc_escolha`) % fila.length];
     const dele = log.porPessoa[escolhido.id];
     const { vetorId, tentativas } = forcarDesencaixe(salBase, dele.indice, escolhido.arquetipo);
     log.reamostragens.push({ pessoaId: escolhido.id, motivo: 'falso_destoante', tentativas });
@@ -498,15 +521,15 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
     const vetor = VETORES_PSIQUICOS[dele.vetorId];
     const flags = [];
     if (pessoa.id === assassinoId) {
-      const calma = hashString(`${salBase}|psique|flag_${dele.indice}_1`) % 4 === 0;
+      const calma = hashDecisao(`${salBase}|psique|flag_${dele.indice}_1`) % 4 === 0;
       flags.push(calma ? 'mente_com_calma' : 'mente_sob_pressao');
       flags.push(`gatilho_de_complexo:${vetor.temaGatilho}`);
     } else {
       if (dele.polaridade === 'passiva') flags.push('omite_por_decoro');
-      if (dele.polaridade === 'ativa' && hashString(`${salBase}|psique|flag_${dele.indice}_2`) % 2 === 0) {
+      if (dele.polaridade === 'ativa' && hashDecisao(`${salBase}|psique|flag_${dele.indice}_2`) % 2 === 0) {
         flags.push('acusa_com_fervor');
       }
-      if (VETORES_DE_VINCULO.has(dele.vetorId) && hashString(`${salBase}|psique|flag_${dele.indice}_3`) % 2 === 0) {
+      if (VETORES_DE_VINCULO.has(dele.vetorId) && hashDecisao(`${salBase}|psique|flag_${dele.indice}_3`) % 2 === 0) {
         flags.push('defende_demais_o_morto');
       }
       if (pessoa.id === log.falsoDestoanteId) {

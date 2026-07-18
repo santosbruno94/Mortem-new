@@ -1844,7 +1844,9 @@ function problemasDaInterferencia(caso) {
 // (3) Cobertura: seeds fixas onde os 4 tipos materializam (e o cúmplice
 // ocorre) — varridas deterministicamente na Fase 4; mudar o gerador pode
 // exigir nova varredura (o objetivo é nunca deixar os lints vazios).
-const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_3', 'intf_qa_10', 'intf_qa_44'];
+// Varredura refeita na F2 da OS priors compostos (o prior composto +
+// hashDecisao mudaram a amostragem; regra desta guarda).
+const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_4', 'intf_qa_5', 'intf_qa_7', 'intf_qa_11'];
 const casosInterferencia = SEEDS_QA_INTERFERENCIA.map((sd) => gerarCasoBruto(sd));
 const problemasInterferencia = [...casosGeradosPrimeira, ...casosInterferencia].flatMap((caso) =>
   problemasDaInterferencia(caso).map((p) => `${caso.seed}: ${p}`)
@@ -2788,6 +2790,158 @@ const lintProsa = spawnSync(process.execPath, [fileURLToPath(new URL('./lint-pro
 const prosaSemRegressao = lintProsa.status === 0;
 
 const apressadoCaiEmArmadilha = vApressado.falhas.length >= 1 && vApressado.tipo !== 'vitoria_absoluta';
+
+// ============================================================
+// OS PRIORS COMPOSTOS (F2) — guardas G1–G4 do prior composto
+// (docs/os-priors-compostos-e-variedade-do-elenco.md §3.4) + guarda de
+// decorrelação do hash do gerador (achado B✱ da triagem F0).
+// (G1) pré-tilt: para todo arquétipo, INT/WIS/CHA sem peso 0 nas bandas
+//      1–2 e 4–5 E com os extremos 1 e 5 alcançáveis (leitura estrita de
+//      N1 — o caso-teste: a lavadeira pode ser gênio). FOR isento.
+// (G2) pós-tilt: para todo par arquétipo × vetor, a distribuição
+//      composta respeita N1 (decorre de N3; verificado mesmo assim),
+//      N2 (tilt jamais declara FOR) e N3 (multiplicadores ≥ 1).
+// (G3) cascata: o forçamento de vetor re-deriva INT/WIS/CHA e a
+//      quantização pela função PURA derivarAtributosCompostos com o
+//      sufixo `|forcado|t<k>`; FOR permanece o do arquétipo (N2); o
+//      elenco do caso bruto carrega o resultado patchado (sem resíduo).
+// (G4) simetria réu × isca: em lote de 200 seeds, |P(INT≥4 | réu) −
+//      P(INT≥4 | destoante inocente)| ≤ 10 p.p. (banda aprovada em F1,
+//      DECISÃO 4) — atributo não vira tell fraco do réu.
+// (B✱) decorrelação: nos lavradores de 300 elencos, os pares (INT, WIS)
+//      cobrem ≥ 20 das 25 células e a correlação fica ≤ 0,15 em módulo
+//      (o acoplamento de chaves-irmãs do hashString linear não volta).
+// ============================================================
+const { CURVAS_DE_ACESSO } = await import('../src/gerador/arquetipos.js');
+const { derivarAtributosCompostos, gerarElenco: gerarElencoF2 } = await import('../src/gerador/amostragem.js');
+const { quantizarComportamentos: quantizarF2 } = await import('../src/gerador/quantizacao.js');
+
+// (G1) pré-tilt.
+const g1Falhas = [];
+for (const a of Object.values(ARQUETIPOS)) {
+  for (const attr of ['INT', 'WIS', 'CHA']) {
+    const p = a.priors[attr];
+    const ok =
+      Array.isArray(p) && p.length === 5 && p.every((x) => Number.isInteger(x) && x >= 0) &&
+      p[0] + p[1] > 0 && p[3] + p[4] > 0 && p[0] > 0 && p[4] > 0;
+    if (!ok) g1Falhas.push(`${a.id}.${attr}=[${p}]`);
+  }
+}
+const g1PreTiltOk =
+  g1Falhas.length === 0 &&
+  Object.values(CURVAS_DE_ACESSO).every((c) => c.length === 5 && c.every((x) => x >= 1));
+if (!g1PreTiltOk) console.log('\nPRIORS F2 — G1 (N1 pré-tilt) falhou:', g1Falhas.join('; '));
+
+// (G2) pós-tilt (+ N2/N3 sobre o próprio tilt).
+const g2Falhas = [];
+for (const v of Object.values(VETORES_PSIQUICOS)) {
+  const tilt = v.tiltAtributos || {};
+  if ('FOR' in tilt) g2Falhas.push(`${v.id}: tilt declara FOR (N2)`);
+  for (const attr of ['INT', 'WIS', 'CHA']) {
+    const m = tilt[attr];
+    if (!Array.isArray(m) || m.length !== 5 || !m.every((x) => Number.isInteger(x) && x >= 1)) {
+      g2Falhas.push(`${v.id}.${attr}: tilt inválido (N3)`);
+      continue;
+    }
+    for (const a of Object.values(ARQUETIPOS)) {
+      const composto = a.priors[attr].map((p, i) => p * m[i]);
+      if (!(composto[0] + composto[1] > 0 && composto[3] + composto[4] > 0 && composto[0] > 0 && composto[4] > 0)) {
+        g2Falhas.push(`${a.id}×${v.id}.${attr}`);
+      }
+    }
+  }
+}
+const g2PosTiltOk = g2Falhas.length === 0;
+if (!g2PosTiltOk) console.log('\nPRIORS F2 — G2 (N1 pós-tilt) falhou:', g2Falhas.slice(0, 8).join('; '));
+
+// (G3) cascata: nas seeds do lote psíquico com reamostragem, o elenco do
+// caso carrega EXATAMENTE a re-derivação pura (e FOR intacto do elenco base).
+let g3CascataOk = true;
+{
+  const seedsComForcamento = [];
+  for (const seed of SEEDS_ANTI_TELL.slice(0, 12)) {
+    const bruto = gerarCasoBruto(seed);
+    if (bruto.psique.log.reamostragens.length > 0) seedsComForcamento.push({ seed, bruto });
+  }
+  if (seedsComForcamento.length === 0) g3CascataOk = false; // o lote sempre força o réu em parte das seeds
+  for (const { seed, bruto } of seedsComForcamento) {
+    const base = gerarElencoF2(seed, bruto.mundo.elenco.length);
+    for (const r of bruto.psique.log.reamostragens) {
+      const pessoa = bruto.mundo.elenco.find((p) => p.id === r.pessoaId);
+      const dele = bruto.psique.log.porPessoa[r.pessoaId];
+      const esperado = derivarAtributosCompostos(
+        seed, dele.indice, pessoa.arquetipo, dele.vetorId, `|forcado|t${r.tentativas}`
+      );
+      const forBase = base[dele.indice].atributos.FOR;
+      if (
+        pessoa.atributos.INT !== esperado.INT ||
+        pessoa.atributos.WIS !== esperado.WIS ||
+        pessoa.atributos.CHA !== esperado.CHA ||
+        pessoa.atributos.FOR !== forBase ||
+        JSON.stringify(pessoa.comportamentos) !==
+          JSON.stringify(quantizarF2(pessoa.atributos, pessoa.traits))
+      ) {
+        g3CascataOk = false;
+      }
+    }
+  }
+}
+if (!g3CascataOk) console.log('\nPRIORS F2 — G3 (cascata de forçamento) falhou.');
+
+// (G4) simetria réu × isca em 200 seeds fixas.
+let g4SimetriaOk = true;
+{
+  let reusIntAlto = 0, reusTotal = 0, iscasIntAlto = 0, iscasTotal = 0;
+  for (let i = 1; i <= 200; i++) {
+    const bruto = gerarCasoBruto(`comarca_${i}`);
+    const reu = bruto.mundo.elenco.find((p) => p.id === bruto.escolha.assassinoId);
+    reusTotal++;
+    if (reu.atributos.INT >= 4) reusIntAlto++;
+    const iscaId = bruto.psique.log.falsoDestoanteId;
+    const isca = iscaId && bruto.mundo.elenco.find((p) => p.id === iscaId);
+    if (isca) {
+      iscasTotal++;
+      if (isca.atributos.INT >= 4) iscasIntAlto++;
+    }
+  }
+  const delta = Math.abs(reusIntAlto / reusTotal - iscasIntAlto / iscasTotal);
+  g4SimetriaOk = iscasTotal > 0 && delta <= 0.10;
+  if (!g4SimetriaOk) {
+    console.log(
+      `\nPRIORS F2 — G4 (simetria réu × isca) falhou: réu ${(100 * reusIntAlto / reusTotal).toFixed(1)}% × isca ${(100 * iscasIntAlto / Math.max(1, iscasTotal)).toFixed(1)}% de INT≥4.`
+    );
+  }
+}
+
+// (B✱) decorrelação INT × WIS no arquétipo mais numeroso.
+let decorrelacaoOk = true;
+{
+  const pares = new Set();
+  const xs = [], ys = [];
+  for (let i = 1; i <= 300; i++) {
+    for (const p of gerarElencoF2(`decorrelacao_${i}`, 8)) {
+      if (p.arquetipo !== 'lavrador') continue;
+      pares.add(`${p.atributos.INT}-${p.atributos.WIS}`);
+      xs.push(p.atributos.INT);
+      ys.push(p.atributos.WIS);
+    }
+  }
+  const n = xs.length;
+  const mx = xs.reduce((a, b) => a + b, 0) / n;
+  const my = ys.reduce((a, b) => a + b, 0) / n;
+  let cov = 0, vx = 0, vy = 0;
+  for (let i = 0; i < n; i++) {
+    cov += (xs[i] - mx) * (ys[i] - my);
+    vx += (xs[i] - mx) ** 2;
+    vy += (ys[i] - my) ** 2;
+  }
+  const corr = cov / Math.sqrt(vx * vy);
+  decorrelacaoOk = pares.size >= 20 && Math.abs(corr) <= 0.15;
+  if (!decorrelacaoOk) {
+    console.log(`\nPRIORS F2 — decorrelação falhou: ${pares.size}/25 pares, corr=${corr.toFixed(3)} (n=${n}).`);
+  }
+}
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -2871,6 +3025,11 @@ const checagens = [
   ['Confronto: trilha contígua; ação/rota/grito só existem com vestígio sobrevivente; grito com hora e ouvinte (OS confronto §5)', fugaCoerenteEExistente],
   ['Confronto: "overdose" fora das superfícies do jogo — a língua diz "dose excessiva" (OS confronto §5)', lexicoConfronto],
   ['Confronto: réplica com fuga suprimida — registro sem fuga/grito (identidade de fatos §4.8)', replicaFugaSuprimida],
+  ['Priors F2 — G1 pré-tilt: N1 em todo arquétipo (INT/WIS/CHA com extremos alcançáveis; a lavadeira pode ser gênio) (OS priors compostos §3.4)', g1PreTiltOk],
+  ['Priors F2 — G2 pós-tilt: N1 em todo par arquétipo × vetor; tilt sem FOR (N2) e ≥ 1 (N3) (OS priors compostos §3.4)', g2PosTiltOk],
+  ['Priors F2 — G3 cascata: forçamento de vetor re-deriva INT/WIS/CHA + quantização pela via pura; FOR intacto (OS priors compostos §3.3)', g3CascataOk],
+  ['Priors F2 — G4 simetria: INT alto não é tell fraco do réu (Δ ≤ 10 p.p. vs destoante inocente, 200 seeds) (OS priors compostos §3.4)', g4SimetriaOk],
+  ['Priors F2 — decorrelação: hashDecisao quebra o acoplamento de chaves-irmãs (≥20/25 pares INT×WIS, |corr| ≤ 0,15) (achado B✱)', decorrelacaoOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

@@ -24,7 +24,29 @@
 // NOTA DE DESIGN (§3.2): INT e WIS nunca são rigidamente acoplados em
 // nenhum prior — os quatro quadrantes INT × WIS (fenótipos de assassino)
 // precisam ser alcançáveis em qualquer arquétipo.
+//
+// NORMA N1 (OS priors compostos, §3.2): nenhum arquétipo tem peso 0 nos
+// extremos de INT, WIS ou CHA — o prior codifica ACESSO (modo deslocado
+// pela instrução/vida do ofício, cauda jamais zerada). FOR fica FORA da
+// norma: os pisos duros por peso 0 permanecem onde o ofício forja o
+// corpo. INT/WIS/CHA usam as CURVAS_DE_ACESSO canônicas abaixo (dossiê
+// F1 §2.3 da OS; guarda G1 no qa.mjs).
 // =====================================================================
+
+// ---------------------------------------------------------------------
+// CURVAS DE ACESSO (OS priors compostos, F2): 4 formas canônicas para
+// INT/WIS/CHA, soma 12, cauda nunca zerada — a lavadeira PODE ser gênio
+// (raro por peso, jamais impossível por zero). A atribuição por
+// arquétipo é estimativa de design com direção documentada na KB
+// (instrução formal, aritmética de balcão, ofício de corpo); refinável
+// sem tocar sistema.
+// ---------------------------------------------------------------------
+export const CURVAS_DE_ACESSO = {
+  baixo: [2, 4, 3, 2, 1], // modo 2 — a vida não deu porta
+  medio: [1, 3, 4, 3, 1], // modo 3 — o comum
+  alto: [1, 2, 3, 4, 2], // modo 4 — instrução/vida puxa para cima
+  muito_alto: [1, 1, 3, 4, 3], // modo 4–5 — instrução formal plena
+};
 
 // Degraus da pirâmide social (KB demografia-e-sociedade.md §1).
 export const CLASSES_SOCIAIS = [
@@ -150,9 +172,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 2, 3, 2, 1],
-      INT: [0, 2, 3, 3, 1],
-      WIS: [1, 3, 3, 2, 1],
-      CHA: [0, 1, 3, 4, 2],
+      INT: CURVAS_DE_ACESSO.alto, // educado por tutor
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.alto, // comando social
     },
     traits: ['preciso', 'tagarela'],
     motivosPotenciais: ['heranca', 'dote', 'recasamento_vigiado'],
@@ -181,9 +203,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 2, 0],
-      INT: [0, 1, 3, 4, 1],
-      WIS: [1, 2, 4, 2, 1],
-      CHA: [0, 1, 3, 4, 2],
+      INT: CURVAS_DE_ACESSO.muito_alto, // Oxford/Cambridge
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.alto, // púlpito
     },
     traits: ['preciso', 'tagarela'],
     motivosPotenciais: ['rivalidade_capela_taverna', 'heranca', 'escandalo_gravidez'],
@@ -212,9 +234,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 2, 0],
-      INT: [0, 0, 2, 4, 3],
-      WIS: [1, 2, 3, 3, 1],
-      CHA: [0, 2, 4, 2, 1],
+      INT: CURVAS_DE_ACESSO.muito_alto, // formação médica
+      WIS: CURVAS_DE_ACESSO.alto, // olho clínico
+      CHA: CURVAS_DE_ACESSO.medio,
     },
     traits: ['preciso'],
     motivosPotenciais: ['divida_caderneta', 'heranca'],
@@ -243,9 +265,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 1, 0],
-      INT: [0, 1, 3, 4, 1],
-      WIS: [0, 2, 4, 3, 0],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.alto, // farmacopeia
+      WIS: CURVAS_DE_ACESSO.alto, // balcão metódico
+      CHA: CURVAS_DE_ACESSO.medio,
     },
     traits: ['preciso', 'medroso'],
     motivosPotenciais: ['divida_caderneta', 'heranca'],
@@ -274,9 +296,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 2, 4, 3, 1],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [0, 2, 3, 4, 1],
-      CHA: [0, 1, 3, 4, 2],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.alto, // o balcão lê gente
+      CHA: CURVAS_DE_ACESSO.alto,
     },
     traits: ['tagarela', 'preciso'],
     motivosPotenciais: ['heranca', 'divida_caderneta', 'rivalidade_capela_taverna'],
@@ -304,10 +326,10 @@ export const ARQUETIPOS = {
       { faixa: '45_59', peso: 3 },
     ],
     priors: {
-      FOR: [0, 0, 2, 4, 3],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [1, 2, 4, 2, 1],
-      CHA: [2, 3, 3, 1, 0],
+      FOR: [0, 0, 2, 4, 3], // o ofício forja o corpo — piso duro intacto
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.baixo, // pouco verbo
     },
     traits: ['preciso', 'linha_tempo_nao_confiavel'],
     motivosPotenciais: ['divida_caderneta', 'salario_atrasado', 'despejo'],
@@ -336,9 +358,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 1, 3, 4, 1],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [1, 3, 3, 2, 0],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.medio,
     },
     traits: ['preciso', 'tagarela'],
     motivosPotenciais: ['heranca', 'divida_caderneta'],
@@ -367,9 +389,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 1, 0],
-      INT: [0, 2, 4, 2, 1],
-      WIS: [0, 2, 4, 3, 0],
-      CHA: [1, 3, 4, 1, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.alto, // a caderneta: miudeza atenta
+      CHA: CURVAS_DE_ACESSO.medio,
     },
     traits: ['preciso', 'tagarela'],
     motivosPotenciais: ['divida_caderneta', 'heranca'],
@@ -398,9 +420,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [2, 3, 3, 1, 0],
-      INT: [0, 1, 3, 4, 1],
-      WIS: [1, 3, 3, 2, 0],
-      CHA: [1, 2, 4, 2, 1],
+      INT: CURVAS_DE_ACESSO.alto, // instrução como ofício
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.medio,
     },
     traits: ['preciso', 'medroso'],
     motivosPotenciais: ['salario_atrasado', 'escandalo_gravidez', 'dote'],
@@ -429,9 +451,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [2, 4, 2, 1, 0],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [1, 2, 4, 2, 1],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.medio,
     },
     traits: ['tagarela', 'preciso', 'medroso'],
     motivosPotenciais: ['dote', 'salario_atrasado', 'escandalo_gravidez'],
@@ -460,9 +482,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 2, 4, 3, 1],
-      INT: [2, 4, 2, 1, 0],
-      WIS: [1, 3, 4, 2, 0],
-      CHA: [2, 3, 3, 1, 0],
+      INT: CURVAS_DE_ACESSO.baixo, // instrução negada — mas o gênio é POSSÍVEL (o caso-teste da OS)
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.baixo,
     },
     traits: ['tagarela', 'linha_tempo_nao_confiavel'],
     motivosPotenciais: ['seguro_de_enterro', 'divida_caderneta', 'despejo'],
@@ -493,9 +515,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 1, 3, 4, 2],
-      INT: [2, 4, 2, 1, 0],
-      WIS: [1, 3, 3, 2, 1],
-      CHA: [2, 3, 3, 1, 0],
+      INT: CURVAS_DE_ACESSO.baixo, // escola até os 10
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.baixo,
     },
     traits: ['medroso', 'tagarela', 'linha_tempo_nao_confiavel'],
     motivosPotenciais: ['divida_caderneta', 'despejo', 'salario_atrasado', 'seguro_de_enterro'],
@@ -524,9 +546,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [1, 3, 3, 2, 0],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [1, 3, 3, 2, 1],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.medio,
+      CHA: CURVAS_DE_ACESSO.baixo, // jovem, subordinada
     },
     traits: ['medroso', 'preciso'],
     motivosPotenciais: ['salario_atrasado', 'character_negado', 'escandalo_gravidez', 'dote'],
@@ -555,9 +577,9 @@ export const ARQUETIPOS = {
     ],
     priors: {
       FOR: [0, 1, 3, 4, 1],
-      INT: [1, 3, 3, 2, 0],
-      WIS: [0, 2, 4, 3, 1],
-      CHA: [1, 3, 3, 2, 0],
+      INT: CURVAS_DE_ACESSO.medio,
+      WIS: CURVAS_DE_ACESSO.alto, // o ofício treina o olho
+      CHA: CURVAS_DE_ACESSO.medio,
     },
     traits: ['preciso'],
     motivosPotenciais: ['divida_caderneta', 'seguro_de_enterro'],
