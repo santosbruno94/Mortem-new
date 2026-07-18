@@ -27,16 +27,16 @@ export const CASO_REPLICA = {
   "horaForjada": null,
   "perifericos": {
    "gen_4_lavadeira": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    },
    "gen_1_costureira": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "segredo": "acerto_reservado"
    },
    "gen_0_paroco": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
    },
    "gen_2_lavadeira": {
     "veredictoEsperado": "inocente_alibi",
@@ -211,11 +211,11 @@ export const CASO_REPLICA = {
   },
   {
    "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Robert Evans, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Instrumento Abandonado",
+   "carimboPadrao": "Instrumento deixado na cena",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Robert Evans.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -224,16 +224,17 @@ export const CASO_REPLICA = {
    }
   },
   {
-   "id": "gen_frestas",
+   "id": "gen_pegadas",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "Sangue nas Frestas",
-   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
-   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
+   "textoDisplay": "Pegadas Rumo à Porta",
+   "carimboPadrao": "Meias-solas impressas em sangue",
+   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
    "tagsOcultas": {
-    "dominio": "ambiental",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "acumulacao_frestas"
+    "dominio": "vestigio",
+    "subDominio": "pegadas",
+    "tipoVestigio": "pegada_ensanguentada",
+    "pertenceA": "gen_7_lavrador"
    }
   },
   {
@@ -267,53 +268,76 @@ export const CASO_REPLICA = {
     "localId": "mercearia",
     "comodo": "deposito",
     "celula": {
-     "col": 1,
-     "fila": 0
+     "col": 2,
+     "fila": 2
     },
-    "mobilia": "deposito_prateleiras_da_despensa"
+    "mobilia": null
    }
   },
   {
-   "id": "gen_segredo_gen_4_lavadeira",
+   "id": "gen_intf_intf_1_meia_obra",
    "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Caroline King",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Caroline King por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "textoDisplay": "Serviço pela Metade",
+   "carimboPadrao": "Serviço de limpeza pela metade",
+   "descricao": "A esfrega para no meio do gesto: a mancha arrastada até a metade e abandonada ali.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
-    "pertenceA": "gen_4_lavadeira",
-    "revelaSegredo": "acerto_reservado"
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "limpeza_interrompida"
+   },
+   "vestigioInterferencia": {
+    "classe": "limpeza_interrompida",
+    "frescor": "fresco",
+    "localId": "mercearia",
+    "comodo": "deposito",
+    "celula": {
+     "col": 2,
+     "fila": 2
+    },
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_4_lavadeira",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Caroline King",
+   "carimboPadrao": "Paradeiro de Caroline King, confirmado",
+   "descricao": "A rua dá Caroline King no Cottage nº 2 sexta à noite, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_4_lavadeira"
    }
   },
   {
    "id": "gen_segredo_gen_1_costureira",
    "localidade": "cena",
    "suporteFisico": "cena",
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Caroline Thomas",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Caroline Thomas por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_1_costureira",
+    "revelaSegredo": "acerto_reservado"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_0_paroco",
+   "localidade": "cena",
+   "suporteFisico": "cena",
    "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Caroline Thomas",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Caroline Thomas: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "carimboPadrao": "Bilhete na letra de Herbert Thompson",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Herbert Thompson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
     "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_1_costureira",
+    "pertenceA": "gen_0_paroco",
     "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_0_paroco",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Herbert Thompson",
-   "carimboPadrao": "Paradeiro de Herbert Thompson, confirmado",
-   "descricao": "A rua dá Herbert Thompson no Presbitério sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_0_paroco"
    }
   },
   {
@@ -330,17 +354,17 @@ export const CASO_REPLICA = {
    }
   },
   {
-   "id": "gen_movel_gen_4_lavadeira",
+   "id": "gen_movel_gen_1_costureira",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Caroline King",
-   "carimboPadrao": "Móbil de Caroline King",
-   "descricao": "Uma apólice de enterro em nome de Thomas Evans paga a Caroline King quando a morte vier.",
+   "textoDisplay": "Papéis de Caroline Thomas",
+   "carimboPadrao": "Móbil de Caroline Thomas",
+   "descricao": "Corre na vila um falatório em nome de Caroline Thomas; quem o repetia, de porta em porta, era Thomas Evans.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "seguro_de_enterro",
-    "ligadoA": "gen_4_lavadeira"
+    "motivo": "escandalo_gravidez",
+    "ligadoA": "gen_1_costureira"
    }
   },
   {
@@ -449,23 +473,24 @@ export const CASO_REPLICA = {
    "subtitulo": "Onde Thomas Evans foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras frias da despensa, pia da copa; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_lavadeira]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_costureira]]."
+    "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras frias da despensa, pia da copa; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "Junto do corpo, no chão: [[gen_instrumento]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_costureira]].",
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_0_paroco]]."
    ],
    "blocosContingentes": [
     {
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]]."
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
      ]
     },
     {
      "eventoId": "intf_1",
      "quando": "nao_disparado",
      "paragrafos": [
-      "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+      "Do meio do cômodo até a porta: [[gen_pegadas]]."
      ]
     }
    ]
@@ -479,7 +504,7 @@ export const CASO_REPLICA = {
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_lavadeira]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_costureira]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -492,18 +517,7 @@ export const CASO_REPLICA = {
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_paroco]], [[gen_corrobora_gen_2_lavadeira]]."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_4_lavadeira]], [[gen_corrobora_gen_2_lavadeira]]."
    ],
    "blocosContingentes": []
   }
@@ -532,21 +546,9 @@ export const CASO_REPLICA = {
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -562,15 +564,8 @@ export const CASO_REPLICA = {
    "subtitulo": "Lavadeira, 66 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_4_lavadeira": "reacao_gen_segredo_gen_4_lavadeira"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_4_lavadeira",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -602,12 +597,6 @@ export const CASO_REPLICA = {
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_4_lavadeira": {
-     "fala": [
-      "Caroline King cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -759,7 +748,7 @@ export const CASO_REPLICA = {
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_1_costureira",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
     }
    ],
    "nos": {
@@ -798,7 +787,7 @@ export const CASO_REPLICA = {
     },
     "reacao_gen_segredo_gen_1_costureira": {
      "fala": [
-      "Caroline Thomas lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Thomas Evans estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+      "Caroline Thomas cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -944,8 +933,15 @@ export const CASO_REPLICA = {
    "subtitulo": "Pároco, 32 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_0_paroco": "reacao_gen_segredo_gen_0_paroco"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_0_paroco",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -977,6 +973,12 @@ export const CASO_REPLICA = {
     "evasiva": {
      "fala": [
       "Examina o que se lhe apresenta e o devolve com as duas mãos. \"Disso não sei dar testemunho. Pergunte do rebanho, que do rebanho respondo.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_0_paroco": {
+     "fala": [
+      "Herbert Thompson lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Thomas Evans estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -1127,7 +1129,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Martha Jones entra, senta-se e ajeita as fitas da touca. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Martha Jones entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -1306,13 +1308,13 @@ export const CASO_REPLICA = {
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "Robert Evans entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; Robert Evans entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -1345,7 +1347,7 @@ export const CASO_REPLICA = {
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Robert Evans olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Robert Evans olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -1591,7 +1593,7 @@ export const CASO_REPLICA = {
     "atorPapel": "assassino",
     "alvo": {
      "tipo": "carta",
-     "cartaId": "gen_frestas",
+     "cartaId": "gen_pegadas",
      "localId": "mercearia"
     },
     "gatilho": {
@@ -1607,16 +1609,17 @@ export const CASO_REPLICA = {
      "comoChegou": "mercearia é parada habitual dele (frequentados da ficha); foi na faixa noite sem chamar atenção"
     },
     "rolagem": {
-     "wis": 4,
+     "wis": 1,
      "penalidade": 2,
-     "alvo": 2,
+     "alvo": 0,
      "dado": 0,
-     "sucesso": true
+     "sucesso": false
     },
     "efeito": {
-     "cartaDestruida": "gen_frestas",
+     "cartaDestruida": "gen_pegadas",
      "cartasNovas": [
-      "gen_intf_intf_1_limpeza"
+      "gen_intf_intf_1_limpeza",
+      "gen_intf_intf_1_meia_obra"
      ]
     },
     "prenuncio": null,
@@ -1684,11 +1687,11 @@ export const CASOS_POOL = [
    },
    "gen_3_lavrador": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "segredo": "acerto_reservado"
    },
    "gen_4_boticario": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "segredo": "pedido_recusado"
    }
   },
   "encenacaoInstrumento": null
@@ -1915,44 +1918,44 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Ernest Williams",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Ernest Williams: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Ernest Williams",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Ernest Williams por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
+    "tipoVestigio": "nota_por_assinar",
     "pertenceA": "gen_3_lavrador",
-    "revelaSegredo": "pedido_recusado"
+    "revelaSegredo": "acerto_reservado"
    }
   },
   {
    "id": "gen_segredo_gen_4_boticario",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Richard Moore",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Richard Moore por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Richard Moore",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Richard Moore: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
+    "tipoVestigio": "bilhete_de_suplica",
     "pertenceA": "gen_4_boticario",
-    "revelaSegredo": "acerto_reservado"
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
-   "id": "gen_movel_gen_4_boticario",
+   "id": "gen_movel_gen_3_lavrador",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Richard Moore",
-   "carimboPadrao": "Móbil de Richard Moore",
-   "descricao": "Papéis de partilha: com a morte de Caroline Harris, o que era dela passa às mãos de Richard Moore.",
+   "textoDisplay": "Papéis de Ernest Williams",
+   "carimboPadrao": "Móbil de Ernest Williams",
+   "descricao": "Uma apólice de enterro em nome de Caroline Harris paga a Ernest Williams quando a morte vier.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "heranca",
-    "ligadoA": "gen_4_boticario"
+    "motivo": "seguro_de_enterro",
+    "ligadoA": "gen_3_lavrador"
    }
   },
   {
@@ -2077,7 +2080,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_boticario]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_lavrador]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -2149,7 +2152,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Annie Watson entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Com licença de entrar. Respondo o que souber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; Annie Watson entra, senta-se e ajeita as fitas da touca. \"Com licença de entrar. Respondo o que souber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -2512,13 +2515,13 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_3_lavrador",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "Ernest Williams entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
+      "O delegado chama o nome; Ernest Williams entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -2551,7 +2554,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_3_lavrador": {
      "fala": [
-      "Ernest Williams lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Caroline Harris estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+      "Ernest Williams cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -2703,7 +2706,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_4_boticario",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
     }
    ],
    "nos": {
@@ -2742,7 +2745,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_4_boticario": {
      "fala": [
-      "Richard Moore cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+      "Richard Moore lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Caroline Harris estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -2900,7 +2903,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Smith entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
+      "William Smith entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -3238,7 +3241,7 @@ export const CASOS_POOL = [
    "nome": "George Hall",
    "idade": 20,
    "relacao": "Alfaiate; mora no Cottage nº 2",
-   "descricao": "Descreve por alto o que viu; miudeza não lhe ficou."
+   "descricao": "Descreve o que viu com hora e lugar."
   }
  ],
  "cartas": [
@@ -3570,7 +3573,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Edith Wilson foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que a acharam. No cômodo, balcão com beer engine, mesas de taverna; de um canto a outro, nada guarda o seu lugar; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
+    "A Taverna guarda o dia em que a acharam. No cômodo, balcão com beer engine, mesas de taverna; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
     "Por abrir desde ontem, a mão fechada da morta: [[gen_pertence]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]]."
    ],
@@ -3657,7 +3660,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Beatrice Jackson entra, senta-se e ajeita as fitas da touca. \"Com licença de entrar. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Beatrice Jackson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença de entrar. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -4204,7 +4207,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "George Davies entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "O delegado chama o nome; George Davies entra e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -4669,7 +4672,7 @@ export const CASOS_POOL = [
   "perifericos": {
    "gen_1_costureira": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "segredo": "acerto_reservado"
    },
    "gen_2_lavrador": {
     "veredictoEsperado": "inocente_alibi",
@@ -4681,7 +4684,7 @@ export const CASOS_POOL = [
    },
    "gen_3_lavrador": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "segredo": "pedido_recusado"
    }
   },
   "encenacaoInstrumento": "relogio"
@@ -4841,9 +4844,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Sidney Thompson, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de Sidney Thompson, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -4884,15 +4887,15 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_costureira",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Ada Wood",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Ada Wood: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Ada Wood",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Ada Wood por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
+    "tipoVestigio": "nota_por_assinar",
     "pertenceA": "gen_1_costureira",
-    "revelaSegredo": "pedido_recusado"
+    "revelaSegredo": "acerto_reservado"
    }
   },
   {
@@ -4925,29 +4928,29 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Richard Baker",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Richard Baker por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Richard Baker",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Richard Baker: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
+    "tipoVestigio": "bilhete_de_suplica",
     "pertenceA": "gen_3_lavrador",
-    "revelaSegredo": "acerto_reservado"
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
-   "id": "gen_movel_gen_3_lavrador",
+   "id": "gen_movel_gen_1_costureira",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Richard Baker",
-   "carimboPadrao": "Móbil de Richard Baker",
-   "descricao": "Uma apólice de enterro em nome de Samuel White paga a Richard Baker quando a morte vier.",
+   "textoDisplay": "Papéis de Ada Wood",
+   "carimboPadrao": "Móbil de Ada Wood",
+   "descricao": "Cartas sobre um dote prometido e não pago atam Ada Wood a Samuel White, com somas e datas.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "seguro_de_enterro",
-    "ligadoA": "gen_3_lavrador"
+    "motivo": "dote",
+    "ligadoA": "gen_1_costureira"
    }
   },
   {
@@ -5072,7 +5075,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_lavrador]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_costureira]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -5161,13 +5164,13 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_1_costureira",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Ada Wood entra, senta-se e ajeita as fitas da touca. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Fala baixo e mede a porta antes de cada resposta."
+      "Ada Wood entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -5200,7 +5203,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_1_costureira": {
      "fala": [
-      "Ada Wood lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Samuel White estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+      "Ada Wood cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -5708,7 +5711,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_3_lavrador",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
     }
    ],
    "nos": {
@@ -5747,7 +5750,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_3_lavrador": {
      "fala": [
-      "Richard Baker cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+      "Richard Baker lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Samuel White estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -5899,13 +5902,13 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Sidney Thompson entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Sidney Thompson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -5938,7 +5941,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Sidney Thompson responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Sidney Thompson olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -6375,11 +6378,11 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Daniel Hill.",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de Daniel Hill, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -6648,7 +6651,6 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Mercearia guarda o dia em que o acharam. No cômodo, prateleiras e gavetas de estoque, vitrine envidraçada; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavrador]]."
    ],
    "blocosContingentes": []
@@ -6694,6 +6696,17 @@ export const CASOS_POOL = [
      ]
     }
    ]
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "A Igreja",
+   "titulo": "A Igreja — a diligência",
+   "subtitulo": "Busca autorizada pelo delegado",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+   ],
+   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -6720,9 +6733,21 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "A Igreja",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -6743,7 +6768,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Ann Smith entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Ann Smith entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -6923,7 +6948,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     },
     {
      "requerCarta": "gen_intf_intf_1_retalho",
@@ -6933,7 +6958,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Daniel Hill entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A paróquia está às ordens do inquérito. Pergunte.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Daniel Hill entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A paróquia está às ordens do inquérito. Pergunte.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -6966,7 +6991,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Daniel Hill olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "Daniel Hill responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -7130,7 +7155,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "George Williams entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
+      "George Williams entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -7516,7 +7541,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Thomas Robinson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Thomas Robinson entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -7806,9 +7831,9 @@ export const CASOS_POOL = [
      "comoChegou": "mercearia é parada habitual dele (frequentados da ficha); foi na faixa noite sem chamar atenção"
     },
     "rolagem": {
-     "wis": 2,
+     "wis": 3,
      "penalidade": 2,
-     "alvo": 0,
+     "alvo": 1,
      "dado": 4,
      "sucesso": false
     },
@@ -7921,14 +7946,14 @@ export const CASOS_POOL = [
    "nome": "James Smith",
    "idade": 38,
    "relacao": "Taverneiro; mora na Taverna",
-   "descricao": "Descreve por alto o que viu; miudeza não lhe ficou."
+   "descricao": "Descreve o que viu com hora e lugar."
   },
   {
    "id": "gen_1_criada",
    "nome": "Lily Jones",
    "idade": 27,
    "relacao": "Criada; mora na Taverna",
-   "descricao": "Responde o que se pergunta e volta ao trabalho."
+   "descricao": "Cada resposta sai ao preço de duas perguntas."
   }
  ],
  "cartas": [
@@ -8060,11 +8085,11 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Edward Taylor, um vão limpo no meio do pó, do comprimento e do desenho da lesão da morta.",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Instrumento Abandonado",
+   "carimboPadrao": "Instrumento deixado na cena",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Edward Taylor.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -8087,6 +8112,20 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_pegadas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "Pegadas Rumo à Porta",
+   "carimboPadrao": "Meias-solas impressas em sangue",
+   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "pegadas",
+    "tipoVestigio": "pegada_ensanguentada",
+    "pertenceA": "gen_0_ferreiro"
+   }
+  },
+  {
    "id": "gen_ruido_ouvido",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
@@ -8098,19 +8137,6 @@ export const CASOS_POOL = [
     "dominio": "testemunho",
     "subDominio": "ruido_ouvido",
     "faixa": "noite"
-   }
-  },
-  {
-   "id": "gen_frestas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "Sangue nas Frestas",
-   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
-   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
-   "tagsOcultas": {
-    "dominio": "ambiental",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "acumulacao_frestas"
    }
   },
   {
@@ -8142,12 +8168,12 @@ export const CASOS_POOL = [
     "classe": "esfrega_fresca_pos_pericia",
     "frescor": "fresco",
     "localId": "pub",
-    "comodo": "quartos",
+    "comodo": "taproom",
     "celula": {
-     "col": 3,
-     "fila": 0
+     "col": 2,
+     "fila": 3
     },
-    "mobilia": "quartos_bacia_e_jarro"
+    "mobilia": null
    }
   },
   {
@@ -8165,12 +8191,12 @@ export const CASOS_POOL = [
     "classe": "limpeza_interrompida",
     "frescor": "fresco",
     "localId": "pub",
-    "comodo": "quartos",
+    "comodo": "taproom",
     "celula": {
-     "col": 3,
-     "fila": 0
+     "col": 2,
+     "fila": 3
     },
-    "mobilia": "quartos_bacia_e_jarro"
+    "mobilia": null
    }
   },
   {
@@ -8349,10 +8375,11 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Beatrice Thompson foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que a acharam. No cômodo, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça.",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
+    "A Taverna guarda o dia em que a acharam. No cômodo, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna.",
+    "Junto do corpo, no chão: [[gen_instrumento]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_costureira]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_4_criada]]."
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_4_criada]].",
+    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": [
     {
@@ -8366,7 +8393,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "nao_disparado",
      "paragrafos": [
-      "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+      "Do meio do cômodo até a porta: [[gen_pegadas]]."
      ]
     }
    ]
@@ -8397,17 +8424,6 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_taverneiro]], [[gen_corrobora_gen_1_criada]]."
    ],
    "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Forja",
-   "titulo": "A Forja — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
-   ],
-   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -8434,21 +8450,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Forja",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -8476,7 +8480,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Clara Thompson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Clara Thompson entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -8661,7 +8665,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
@@ -8700,7 +8704,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edward Taylor olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Edward Taylor olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -9042,7 +9046,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Smith entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "James Smith entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -9232,7 +9236,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Lily Jones entra, senta-se e ajeita as fitas da touca. \"Com licença de entrar. Respondo o que souber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Lily Jones entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença de entrar. Respondo o que souber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -9517,7 +9521,7 @@ export const CASOS_POOL = [
     "atorPapel": "assassino",
     "alvo": {
      "tipo": "carta",
-     "cartaId": "gen_frestas",
+     "cartaId": "gen_pegadas",
      "localId": "pub"
     },
     "gatilho": {
@@ -9533,14 +9537,14 @@ export const CASOS_POOL = [
      "comoChegou": "a rotina da faixa noite já o punha em pub — não precisou de trajeto"
     },
     "rolagem": {
-     "wis": 4,
+     "wis": 2,
      "penalidade": 2,
-     "alvo": 2,
+     "alvo": 0,
      "dado": 2,
      "sucesso": false
     },
     "efeito": {
-     "cartaDestruida": "gen_frestas",
+     "cartaDestruida": "gen_pegadas",
      "cartasNovas": [
       "gen_intf_intf_1_limpeza",
       "gen_intf_intf_1_meia_obra"
@@ -9593,19 +9597,19 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_2_lavrador",
   "horasMorteAntesChegada": 12,
   "horaMorteAbsoluta": -1,
-  "mecanismoCorreto": "estrangulamento_ligadura",
-  "instrumentoCorreto": "cordao_torcido",
+  "mecanismoCorreto": "sufocacao",
+  "instrumentoCorreto": "travesseiro_ou_pano",
   "motivacaoCorreta": "despejo",
   "cenaEncenada": false,
   "horaForjada": null,
   "perifericos": {
    "gen_1_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
-   },
-   "gen_3_criada": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
+   },
+   "gen_3_criada": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
    },
    "gen_4_lavadeira": {
     "veredictoEsperado": "inocente_alibi",
@@ -9746,13 +9750,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "O Sulco no Pescoço",
-   "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "textoDisplay": "Os Sinais em Volta da Boca",
+   "carimboPadrao": "Sinal de sufocação",
+   "descricao": "Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "sulco_horizontal"
+    "sinal": "oclusao_vias"
    }
   },
   {
@@ -9784,15 +9788,15 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Edwin Morris, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Instrumento Abandonado",
+   "carimboPadrao": "Instrumento deixado na cena",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Edwin Morris.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "cordao_torcido",
+    "tipoVestigio": "travesseiro_ou_pano",
     "pertenceA": "gen_2_lavrador"
    }
   },
@@ -9811,6 +9815,20 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_1_criada",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na noite de 13",
+   "descricao": "Annie Turner conta o que a parede deixou passar na noite de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "noite"
+   }
+  },
+  {
    "id": "gen_motivo",
    "localidade": "delegacia",
    "suporteFisico": "registro",
@@ -9825,31 +9843,92 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_segredo_gen_1_criada",
+   "id": "gen_intf_intf_1_retratacao",
+   "localidade": "vizinhanca",
+   "textoDisplay": "O Depoimento que Mudou",
+   "carimboPadrao": "Depoimento novo que desmente o anterior",
+   "descricao": "Annie Turner conta agora outra versão da mesma noite — palavra nova contra o que consta do primeiro registro.",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "retratacao",
+    "testemunha": "gen_1_criada",
+    "desmente": "gen_ruido_ouvido"
+   },
+   "vestigioInterferencia": {
+    "classe": "depoimento_contraditorio",
+    "frescor": "fresco",
+    "localId": null,
+    "comodo": null,
+    "celula": null,
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_intf_intf_1_dividas",
+   "localidade": "vizinhanca",
+   "textoDisplay": "A Caderneta Quitada",
+   "carimboPadrao": "Dívidas quitadas na mesma semana",
+   "descricao": "A caderneta de fiado amanheceu quitada, a soma cheia de uma vez, na mesma semana da nova versão.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_dinheiro",
+    "tipoVestigio": "dividas_quitadas"
+   },
+   "vestigioInterferencia": {
+    "classe": "dividas_quitadas",
+    "frescor": "fresco",
+    "localId": null,
+    "comodo": null,
+    "celula": null,
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_intf_intf_1_soberanos",
+   "localidade": "vizinhanca",
+   "textoDisplay": "Soberanos Novos",
+   "carimboPadrao": "Soberanos novos em mão de fiado",
+   "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: Florence Moore.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_dinheiro",
+    "pertenceA": "gen_6_criada"
+   },
+   "vestigioInterferencia": {
+    "classe": "soberanos_novos",
+    "frescor": "fresco",
+    "localId": null,
+    "comodo": null,
+    "celula": null,
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_1_criada",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Annie Turner",
+   "carimboPadrao": "Paradeiro de Annie Turner, confirmado",
+   "descricao": "Lily Hill esteve na Casa do Médico sexta à noite e dá Annie Turner por presente, das oito ao clarear. Mais de uma boca diz o mesmo.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_criada"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_3_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
    "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Annie Turner",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Turner: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "carimboPadrao": "Bilhete na letra de Beatrice Wood",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Beatrice Wood: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
     "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_1_criada",
+    "pertenceA": "gen_3_criada",
     "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_3_criada",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Beatrice Wood",
-   "carimboPadrao": "Paradeiro de Beatrice Wood, confirmado",
-   "descricao": "A rua dá Beatrice Wood no Solar sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_3_criada"
    }
   },
   {
@@ -9879,17 +9958,17 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_movel_gen_1_criada",
+   "id": "gen_movel_gen_3_criada",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Annie Turner",
-   "carimboPadrao": "Móbil de Annie Turner",
-   "descricao": "Cartas sobre um dote prometido e não pago atam Annie Turner a Ernest Williams, com somas e datas.",
+   "textoDisplay": "Papéis de Beatrice Wood",
+   "carimboPadrao": "Móbil de Beatrice Wood",
+   "descricao": "Corre na vila um falatório em nome de Beatrice Wood; quem o repetia, de porta em porta, era Ernest Williams.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "dote",
-    "ligadoA": "gen_1_criada"
+    "motivo": "escandalo_gravidez",
+    "ligadoA": "gen_3_criada"
    }
   },
   {
@@ -9999,8 +10078,9 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "O Cottage nº 1 guarda o dia em que o acharam. No cômodo, mesa de tampo raspado, cadeiras Windsor; de um canto a outro, nada guarda o seu lugar.",
-    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_criada]]."
+    "Junto do corpo, no chão: [[gen_instrumento]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_criada]].",
+    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
    "blocosContingentes": []
   },
@@ -10013,7 +10093,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_criada]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_criada]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -10026,20 +10106,18 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_criada]], [[gen_corrobora_gen_4_lavadeira]], [[gen_corrobora_gen_5_criada]]."
+    "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_criada]], [[gen_corrobora_gen_4_lavadeira]], [[gen_corrobora_gen_5_criada]]."
    ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
-   ],
-   "blocosContingentes": []
+   "blocosContingentes": [
+    {
+     "eventoId": "intf_1",
+     "quando": "disparado",
+     "paragrafos": [
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]."
+     ]
+    }
+   ]
   }
  ],
  "nosMapa": [
@@ -10066,21 +10144,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -10097,12 +10163,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_segredo_gen_1_criada": "reacao_gen_segredo_gen_1_criada"
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_segredo_gen_1_criada",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
     }
    ],
    "nos": {
@@ -10139,9 +10205,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_segredo_gen_1_criada": {
+    "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Annie Turner lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Ernest Williams estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+      "Annie Turner conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -10174,7 +10240,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ernest Williams eu não conhecia.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -10207,7 +10273,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ernest Williams? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Ernest Williams era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -10240,7 +10306,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -10273,7 +10339,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -10287,8 +10353,15 @@ export const CASOS_POOL = [
    "subtitulo": "Criada, 27 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_3_criada": "reacao_gen_segredo_gen_3_criada"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_3_criada",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -10320,6 +10393,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_3_criada": {
+     "fala": [
+      "Beatrice Wood lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Ernest Williams estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -10471,13 +10550,13 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "Edwin Morris entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
+      "Edwin Morris entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -10510,7 +10589,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edwin Morris olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Edwin Morris olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -10661,7 +10740,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Harriet Wright entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Com licença de entrar. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; Harriet Wright entra, senta-se e ajeita as fitas da touca. \"Com licença de entrar. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -11102,6 +11181,84 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
+ },
+ "interferencias": {
+  "eventos": [
+   {
+    "id": "intf_1",
+    "tipo": "subornar_testemunha",
+    "ator": "gen_6_criada",
+    "atorPapel": "cumplice",
+    "alvo": {
+     "tipo": "testemunha",
+     "testemunhaId": "gen_1_criada",
+     "cartaId": "gen_ruido_ouvido",
+     "localId": "casa_do_medico"
+    },
+    "gatilho": {
+     "tipo": "extracao_carta",
+     "cartaId": "gen_ruido_ouvido",
+     "comoSoube": "o depoimento de gen_1_criada foi tomado em público (extração de gen_ruido_ouvido); o ator soube o que a testemunha contou"
+    },
+    "rota": {
+     "de": "pub",
+     "para": "casa_do_medico",
+     "faixa": "madrugada",
+     "sustentacao": "adjacente",
+     "comoChegou": "saiu de pub, prédio vizinho de casa_do_medico, na faixa madrugada (adjacência do grafo)"
+    },
+    "rolagem": {
+     "wis": 1,
+     "penalidade": 2,
+     "alvo": 0,
+     "dado": 1,
+     "sucesso": false
+    },
+    "efeito": {
+     "cartaDestruida": null,
+     "cartasNovas": [
+      "gen_intf_intf_1_retratacao",
+      "gen_intf_intf_1_dividas",
+      "gen_intf_intf_1_soberanos"
+     ]
+    },
+    "prenuncio": null,
+    "anuncio": "Uma testemunha mudou a própria história."
+   }
+  ]
+ },
+ "ecosInterferencia": {
+  "titulo": "O legista, sobre o que se moveu",
+  "porChave": {
+   "destruir_evidencia_ocorrida": [
+    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+   ],
+   "destruir_evidencia_evitada": [
+    "Vieram limpar a cena; o que importava já estava no seu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+   ],
+   "intimidar_testemunha_ocorrida": [
+    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+   ],
+   "intimidar_testemunha_evitada": [
+    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+   ],
+   "subornar_testemunha_ocorrida": [
+    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+   ],
+   "silenciar_ocorrida": [
+    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+   ],
+   "silenciar_evitada": [
+    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+   ]
+  }
  }
 },
 {
@@ -11115,8 +11272,8 @@ export const CASOS_POOL = [
   "mecanismoCorreto": "ferida_arma_branca",
   "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "divida_caderneta",
-  "cenaEncenada": true,
-  "horaForjada": 10.75,
+  "cenaEncenada": false,
+  "horaForjada": null,
   "perifericos": {
    "gen_0_boticario": {
     "veredictoEsperado": "inocente_alibi",
@@ -11135,7 +11292,7 @@ export const CASOS_POOL = [
     "segredo": "pedido_recusado"
    }
   },
-  "encenacaoInstrumento": "relogio"
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -11305,9 +11462,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de John Cooper, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de John Cooper, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -11327,6 +11484,19 @@ export const CASOS_POOL = [
     "dominio": "testemunho",
     "subDominio": "ruido_ouvido",
     "faixa": "madrugada"
+   }
+  },
+  {
+   "id": "gen_frestas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "Sangue nas Frestas",
+   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
+   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "acumulacao_frestas"
    }
   },
   {
@@ -11403,21 +11573,6 @@ export const CASOS_POOL = [
     "celula": null,
     "mobilia": null
    }
-  },
-  {
-   "id": "gen_hora_forjada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "tagsOcultas": {
-    "dominio": "ambiental",
-    "subDominio": "cronologia_aparente",
-    "horaAparente": 10.75,
-    "encenado": true,
-    "isca": true
-   },
-   "textoDisplay": "O Relógio Parado",
-   "carimboPadrao": "Relógio de parede parado às 10h45",
-   "descricao": "O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em 10h45; a corda, provada pela chave, ainda tem volta."
   },
   {
    "id": "gen_corrobora_gen_0_boticario",
@@ -11595,8 +11750,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Charles Wilson foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "O Cottage nº 4 guarda o dia em que o acharam. No cômodo, sofá velho, tapete de retalhos; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
+    "O Cottage nº 4 guarda o dia em que o acharam. No cômodo, sofá velho, tapete de retalhos; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
+    "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_6_lavrador]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_7_lavrador]]."
    ],
@@ -12090,7 +12245,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     },
     {
      "requerCarta": "gen_intf_intf_1_soberanos",
@@ -12133,7 +12288,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "John Cooper responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "John Cooper olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -12784,9 +12939,9 @@ export const CASOS_POOL = [
      "comoChegou": "a rotina da faixa noite já o punha em mercearia — não precisou de trajeto"
     },
     "rolagem": {
-     "wis": 3,
+     "wis": 4,
      "penalidade": 2,
-     "alvo": 1,
+     "alvo": 2,
      "dado": 2,
      "sucesso": false
     },
@@ -12845,11 +13000,11 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_5_criada",
   "horasMorteAntesChegada": 13,
   "horaMorteAbsoluta": -2,
-  "mecanismoCorreto": "estrangulamento_ligadura",
-  "instrumentoCorreto": "cordao_torcido",
+  "mecanismoCorreto": "estrangulamento_manual",
+  "instrumentoCorreto": "pertence_arrancado",
   "motivacaoCorreta": "dote",
-  "cenaEncenada": false,
-  "horaForjada": null,
+  "cenaEncenada": true,
+  "horaForjada": -11,
   "perifericos": {
    "gen_7_lavrador": {
     "veredictoEsperado": "inocente_alibi",
@@ -12868,7 +13023,7 @@ export const CASOS_POOL = [
     "segredo": null
    }
   },
-  "encenacaoInstrumento": null
+  "encenacaoInstrumento": "corpo"
  },
  "suspeitos": [
   {
@@ -12998,13 +13153,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "O Sulco no Pescoço",
-   "carimboPadrao": "Sinal de garrote (ligadura)",
-   "descricao": "Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.",
+   "textoDisplay": "As Marcas no Pescoço",
+   "carimboPadrao": "Sinal de estrangulamento manual",
+   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "sulco_horizontal"
+    "sinal": "equimoses_digitais"
    }
   },
   {
@@ -13035,16 +13190,30 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Clara Green, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "id": "gen_pertence",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Pertence Arrancado",
+   "carimboPadrao": "Botão com fio na mão da vítima",
+   "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de Clara Green perdeu o segundo botão.",
    "tagsOcultas": {
     "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "cordao_torcido",
+    "subDominio": "objeto_pessoal",
+    "tipoVestigio": "pertence_arrancado",
+    "pertenceA": "gen_5_criada"
+   }
+  },
+  {
+   "id": "gen_sangue_alheio",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Rastro de Gotas",
+   "carimboPadrao": "Sangue afastado do corpo",
+   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sangue_do_agressor",
+    "tipoVestigio": "sangue_alheio",
     "pertenceA": "gen_5_criada"
    }
   },
@@ -13061,6 +13230,67 @@ export const CASOS_POOL = [
     "motivo": "dote",
     "ligadoA": "gen_5_criada"
    }
+  },
+  {
+   "id": "gen_intf_intf_1_limpeza",
+   "localidade": "cena",
+   "textoDisplay": "Esfrega Fresca na Cena",
+   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
+   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "esfrega_fresca"
+   },
+   "vestigioInterferencia": {
+    "classe": "esfrega_fresca_pos_pericia",
+    "frescor": "fresco",
+    "localId": "mercearia",
+    "comodo": "deposito",
+    "celula": {
+     "col": 0,
+     "fila": 0
+    },
+    "mobilia": "deposito_pia_de_copa"
+   }
+  },
+  {
+   "id": "gen_intf_intf_1_meia_obra",
+   "localidade": "cena",
+   "textoDisplay": "Serviço pela Metade",
+   "carimboPadrao": "Serviço de limpeza pela metade",
+   "descricao": "A esfrega para no meio do gesto: a mancha arrastada até a metade e abandonada ali.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "limpeza_interrompida"
+   },
+   "vestigioInterferencia": {
+    "classe": "limpeza_interrompida",
+    "frescor": "fresco",
+    "localId": "mercearia",
+    "comodo": "deposito",
+    "celula": {
+     "col": 0,
+     "fila": 0
+    },
+    "mobilia": "deposito_pia_de_copa"
+   }
+  },
+  {
+   "id": "gen_hora_forjada",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "cronologia_aparente",
+    "horaAparente": -11,
+    "encenado": true,
+    "isca": true
+   },
+   "textoDisplay": "O Corpo na Corrente de Ar",
+   "carimboPadrao": "Corpo resfriado; leitura de morte às 13h00 de 13/out",
+   "descricao": "O corpo jaz junto à janela aberta, na corrente da noite, frio como a pedra da soleira. Por essa frieza, a morte teria recuado para as 13h00 de 13/out."
   },
   {
    "id": "gen_corrobora_gen_7_lavrador",
@@ -13237,9 +13467,26 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Mercearia guarda o dia em que o acharam. No cômodo, sineta da porta, balcão que barra o cliente; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_medico]]."
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_medico]].",
+    "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
    ],
-   "blocosContingentes": []
+   "blocosContingentes": [
+    {
+     "eventoId": "intf_1",
+     "quando": "disparado",
+     "paragrafos": [
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
+     ]
+    },
+    {
+     "eventoId": "intf_1",
+     "quando": "nao_disparado",
+     "paragrafos": [
+      "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]]."
+     ]
+    }
+   ]
   },
   {
    "id": "delegacia",
@@ -13264,17 +13511,6 @@ export const CASOS_POOL = [
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_7_lavrador]], [[gen_corrobora_gen_6_lavrador]], [[gen_corrobora_gen_0_criada]]."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "O Solar",
-   "titulo": "O Solar — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -13303,21 +13539,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "O Solar",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -13334,12 +13558,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento"
+    "gen_pertence": "reacao_gen_pertence"
    },
    "confrontos": [
     {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "requerCarta": "gen_pertence",
+     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
     }
    ],
    "nos": {
@@ -13376,9 +13600,9 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_instrumento": {
+    "reacao_gen_pertence": {
      "fala": [
-      "Clara Green responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Clara Green vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -13720,7 +13944,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Herbert Morris entra e senta-se de chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Herbert Morris entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -13905,7 +14129,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Williams entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Tenho a manhã tomada, {detective.title}, mas isto passa à frente de tudo. Ao seu dispor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; James Williams entra e senta-se de chapéu na mão. \"Tenho a manhã tomada, {detective.title}, mas isto passa à frente de tudo. Ao seu dispor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -14352,6 +14576,82 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
+ },
+ "interferencias": {
+  "eventos": [
+   {
+    "id": "intf_1",
+    "tipo": "destruir_evidencia",
+    "ator": "gen_5_criada",
+    "atorPapel": "assassino",
+    "alvo": {
+     "tipo": "carta",
+     "cartaId": "gen_pertence",
+     "localId": "mercearia"
+    },
+    "gatilho": {
+     "tipo": "extracao_carta",
+     "cartaId": "gen_motivo",
+     "comoSoube": "o perito abriu o móbil do réu na delegacia (extração de gen_motivo); o inquérito em público correu a vila até o ator"
+    },
+    "rota": {
+     "de": "solar",
+     "para": "mercearia",
+     "faixa": "madrugada",
+     "sustentacao": "frequentado",
+     "comoChegou": "mercearia é parada habitual dele (frequentados da ficha); foi na faixa madrugada sem chamar atenção"
+    },
+    "rolagem": {
+     "wis": 3,
+     "penalidade": 2,
+     "alvo": 1,
+     "dado": 5,
+     "sucesso": false
+    },
+    "efeito": {
+     "cartaDestruida": "gen_pertence",
+     "cartasNovas": [
+      "gen_intf_intf_1_limpeza",
+      "gen_intf_intf_1_meia_obra"
+     ]
+    },
+    "prenuncio": null,
+    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
+   }
+  ]
+ },
+ "ecosInterferencia": {
+  "titulo": "O legista, sobre o que se moveu",
+  "porChave": {
+   "destruir_evidencia_ocorrida": [
+    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+   ],
+   "destruir_evidencia_evitada": [
+    "Vieram limpar a cena; o que importava já estava no seu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+   ],
+   "intimidar_testemunha_ocorrida": [
+    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+   ],
+   "intimidar_testemunha_evitada": [
+    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+   ],
+   "subornar_testemunha_ocorrida": [
+    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+   ],
+   "silenciar_ocorrida": [
+    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+   ],
+   "silenciar_evitada": [
+    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+   ]
+  }
  }
 },
 {
@@ -14365,27 +14665,27 @@ export const CASOS_POOL = [
   "mecanismoCorreto": "ferida_arma_branca",
   "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "dote",
-  "cenaEncenada": true,
-  "horaForjada": 10.75,
+  "cenaEncenada": false,
+  "horaForjada": null,
   "perifericos": {
    "gen_2_lavrador": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    },
    "gen_1_lavrador": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "segredo": "acerto_reservado"
    },
    "gen_0_lavrador": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
    "gen_5_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
    }
   },
-  "encenacaoInstrumento": "corpo"
+  "encenacaoInstrumento": null
  },
  "suspeitos": [
   {
@@ -14668,48 +14968,31 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_hora_forjada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
+   "id": "gen_corrobora_gen_2_lavrador",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Daniel Brown",
+   "carimboPadrao": "Paradeiro de Daniel Brown, confirmado",
+   "descricao": "David King esteve no Cottage nº 2 madrugada de sábado e dá Daniel Brown por presente, das oito ao clarear. Mais de uma boca diz o mesmo.",
    "tagsOcultas": {
-    "dominio": "ambiental",
-    "subDominio": "cronologia_aparente",
-    "horaAparente": 10.75,
-    "encenado": true,
-    "isca": true
-   },
-   "textoDisplay": "O Corpo Junto à Lareira",
-   "carimboPadrao": "Corpo aquecido; leitura de morte às 10h45",
-   "descricao": "O corpo jaz rente à lareira, e a grelha ainda guarda brasa morna. Ao termômetro, o morto está bem mais quente do que a sala; por essa temperatura, a morte teria sido por volta das 10h45."
-  },
-  {
-   "id": "gen_segredo_gen_2_lavrador",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Daniel Brown",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Daniel Brown por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
-    "pertenceA": "gen_2_lavrador",
-    "revelaSegredo": "acerto_reservado"
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_lavrador"
    }
   },
   {
    "id": "gen_segredo_gen_1_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de David Hall",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de David Hall: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de David Hall",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de David Hall por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
+    "tipoVestigio": "nota_por_assinar",
     "pertenceA": "gen_1_lavrador",
-    "revelaSegredo": "pedido_recusado"
+    "revelaSegredo": "acerto_reservado"
    }
   },
   {
@@ -14726,30 +15009,32 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_5_lavrador",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Thomas Baker",
-   "carimboPadrao": "Paradeiro de Thomas Baker, confirmado",
-   "descricao": "David Hall esteve no Cottage nº 1 madrugada de sábado e dá Thomas Baker por presente, das oito ao clarear. Mais de uma boca diz o mesmo.",
+   "id": "gen_segredo_gen_5_lavrador",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Thomas Baker",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Thomas Baker: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_5_lavrador"
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_5_lavrador",
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
-   "id": "gen_movel_gen_2_lavrador",
+   "id": "gen_movel_gen_1_lavrador",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Daniel Brown",
-   "carimboPadrao": "Móbil de Daniel Brown",
-   "descricao": "Uma apólice de enterro em nome de Richard Wright paga a Daniel Brown quando a morte vier.",
+   "textoDisplay": "Papéis de David Hall",
+   "carimboPadrao": "Móbil de David Hall",
+   "descricao": "Consta queixa de paga retida: Richard Wright devia a David Hall semanas de salário.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "seguro_de_enterro",
-    "ligadoA": "gen_2_lavrador"
+    "motivo": "salario_atrasado",
+    "ligadoA": "gen_1_lavrador"
    }
   },
   {
@@ -14859,10 +15144,9 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "O Cottage nº 3 guarda o dia em que o acharam. No cômodo, fogão de ferro a carvão, mesa de tampo raspado, cadeiras Windsor; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavrador]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_lavrador]].",
     "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_lavrador]].",
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_5_lavrador]].",
     "Do meio do cômodo até a porta: [[gen_pegadas]]."
    ],
    "blocosContingentes": [
@@ -14891,7 +15175,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_2_lavrador]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_lavrador]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -14905,7 +15189,7 @@ export const CASOS_POOL = [
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
     "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_lavrador]], [[gen_corrobora_gen_5_lavrador]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_2_lavrador]], [[gen_corrobora_gen_0_lavrador]]."
    ],
    "blocosContingentes": []
   }
@@ -14952,15 +15236,8 @@ export const CASOS_POOL = [
    "subtitulo": "Lavrador, 44 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_2_lavrador": "reacao_gen_segredo_gen_2_lavrador"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_2_lavrador",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -14992,12 +15269,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_2_lavrador": {
-     "fala": [
-      "Daniel Brown cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -15149,7 +15420,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_1_lavrador",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
     }
    ],
    "nos": {
@@ -15188,7 +15459,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_1_lavrador": {
      "fala": [
-      "David Hall lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Richard Wright estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+      "David Hall cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -15346,7 +15617,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Lily Baker entra, senta-se e ajeita as fitas da touca. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Lily Baker entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -15716,8 +15987,15 @@ export const CASOS_POOL = [
    "subtitulo": "Lavrador, 17 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_5_lavrador": "reacao_gen_segredo_gen_5_lavrador"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_5_lavrador",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -15749,6 +16027,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_5_lavrador": {
+     "fala": [
+      "Thomas Baker lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Richard Wright estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -16010,7 +16294,7 @@ export const CASOS_POOL = [
      "comoChegou": "a rotina da faixa noite já o punha em cottage_3 — não precisou de trajeto"
     },
     "rolagem": {
-     "wis": 1,
+     "wis": 2,
      "penalidade": 2,
      "alvo": 0,
      "dado": 2,
@@ -16261,11 +16545,11 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Albert Watson.",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de Albert Watson, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -16477,8 +16761,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde David Ward foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "O Cottage nº 3 guarda o dia em que o acharam. No cômodo, copper de ferver roupa, tina e tábua de lavar; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
+    "O Cottage nº 3 guarda o dia em que o acharam. No cômodo, copper de ferver roupa, tina e tábua de lavar; de um canto a outro, nada guarda o seu lugar; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_criada]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_4_lavrador]]."
    ],
@@ -16510,6 +16793,17 @@ export const CASOS_POOL = [
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_6_lavrador]], [[gen_corrobora_gen_1_lavadeira]]."
    ],
    "blocosContingentes": []
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "Cottage nº 4",
+   "titulo": "Cottage nº 4 — a diligência",
+   "subtitulo": "Busca autorizada pelo delegado",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+   ],
+   "blocosContingentes": []
   }
  ],
  "nosMapa": [
@@ -16536,9 +16830,21 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "Cottage nº 4",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -16560,7 +16866,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     }
    ],
    "nos": {
@@ -16599,7 +16905,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Albert Watson olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "Albert Watson olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -16757,7 +17063,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Edith Cooper entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A casa deu licença. Respondo o que souber, e depressa.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Edith Cooper entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A casa deu licença. Respondo o que souber, e depressa.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -16948,7 +17254,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Ernest Robinson entra e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Ernest Robinson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -17317,7 +17623,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Martha Moore entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; Martha Moore entra, senta-se e ajeita as fitas da touca. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -17599,27 +17905,27 @@ export const CASOS_POOL = [
   "mecanismoCorreto": "trauma_contuso",
   "instrumentoCorreto": "arma_de_ocasiao",
   "motivacaoCorreta": "dote",
-  "cenaEncenada": false,
-  "horaForjada": null,
+  "cenaEncenada": true,
+  "horaForjada": -10.5,
   "perifericos": {
    "gen_0_boticario": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
    "gen_3_ferreiro": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
    },
    "gen_4_lavrador": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
    "gen_2_squire": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    }
   },
-  "encenacaoInstrumento": null
+  "encenacaoInstrumento": "corpo"
  },
  "suspeitos": [
   {
@@ -17728,19 +18034,19 @@ export const CASOS_POOL = [
       "dominio": "temporal",
       "subDominio": "livor_mortis",
       "estadoLivor": "movel",
-      "posicaoCompativel": true
+      "posicaoCompativel": false
      }
     },
     {
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou. As manchas assentaram do lado que ora fica para cima.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
       "estadoLivor": "fixo",
-      "posicaoCompativel": true
+      "posicaoCompativel": false
      }
     }
    ]
@@ -17787,29 +18093,15 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Beatrice Harris.",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de Beatrice Harris, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "arma_de_ocasiao",
-    "pertenceA": "gen_6_criada"
-   }
-  },
-  {
-   "id": "gen_pegadas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "Pegadas Rumo à Porta",
-   "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "pegadas",
-    "tipoVestigio": "pegada_ensanguentada",
     "pertenceA": "gen_6_criada"
    }
   },
@@ -17842,6 +18134,21 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_hora_forjada",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "cronologia_aparente",
+    "horaAparente": -10.5,
+    "encenado": true,
+    "isca": true
+   },
+   "textoDisplay": "O Corpo na Corrente de Ar",
+   "carimboPadrao": "Corpo resfriado; leitura de morte às 13h30 de 13/out",
+   "descricao": "O corpo jaz junto à janela aberta, na corrente da noite, frio como a pedra da soleira. Por essa frieza, a morte teria recuado para as 13h30 de 13/out."
+  },
+  {
    "id": "gen_corrobora_gen_0_boticario",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
@@ -17855,16 +18162,18 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_3_ferreiro",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Frank King",
-   "carimboPadrao": "Paradeiro de Frank King, confirmado",
-   "descricao": "Edward Jackson esteve na Taverna sexta à noite e dá Frank King por presente, das oito ao clarear. Mais de uma boca diz o mesmo.",
+   "id": "gen_segredo_gen_3_ferreiro",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Frank King",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Frank King: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_3_ferreiro"
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_3_ferreiro",
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
@@ -17881,32 +18190,30 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_segredo_gen_2_squire",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Richard Green",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Richard Green: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "id": "gen_corrobora_gen_2_squire",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Richard Green",
+   "carimboPadrao": "Paradeiro de Richard Green, confirmado",
+   "descricao": "A rua dá Richard Green no Solar sexta à noite, das oito ao clarear, por mais de uma janela.",
    "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_2_squire",
-    "revelaSegredo": "pedido_recusado"
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_squire"
    }
   },
   {
-   "id": "gen_movel_gen_2_squire",
+   "id": "gen_movel_gen_3_ferreiro",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Richard Green",
-   "carimboPadrao": "Móbil de Richard Green",
-   "descricao": "O recasamento de Richard Green andava na boca da vila, e Caroline Roberts era quem mais falava dele.",
+   "textoDisplay": "Papéis de Frank King",
+   "carimboPadrao": "Móbil de Frank King",
+   "descricao": "A ordem de despejo do cottage de Frank King veio no rasto de queixa que Caroline Roberts levou ao senhorio.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "recasamento_vigiado",
-    "ligadoA": "gen_2_squire"
+    "motivo": "despejo",
+    "ligadoA": "gen_3_ferreiro"
    }
   },
   {
@@ -17943,8 +18250,8 @@ export const CASOS_POOL = [
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
    "textoDisplay": "A Noite de Frank King",
-   "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à noite)",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -18002,7 +18309,7 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz no chão do cômodo a que a vila chama cozinha, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "A morta jaz no chão do cômodo a que a vila chama copa, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
@@ -18015,10 +18322,9 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Caroline Roberts foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "O Cottage nº 1 guarda o dia em que a acharam. No cômodo, sofá velho, tapete de retalhos; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_squire]].",
-    "Do meio do cômodo até a porta: [[gen_pegadas]]."
+    "O Cottage nº 1 guarda o dia em que a acharam. No cômodo, tina e tábua de lavar, pia da copa (a única torneira), copper de ferver roupa; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_ferreiro]]."
    ],
    "blocosContingentes": []
   },
@@ -18031,7 +18337,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_2_squire]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_ferreiro]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -18045,7 +18351,18 @@ export const CASOS_POOL = [
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
     "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_boticario]], [[gen_corrobora_gen_3_ferreiro]], [[gen_corrobora_gen_4_lavrador]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_boticario]], [[gen_corrobora_gen_4_lavrador]], [[gen_corrobora_gen_2_squire]]."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "O Presbitério",
+   "titulo": "O Presbitério — a diligência",
+   "subtitulo": "Busca autorizada pelo delegado",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -18074,9 +18391,21 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "O Presbitério",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -18098,7 +18427,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
@@ -18137,7 +18466,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Beatrice Harris olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "Beatrice Harris responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -18461,12 +18790,19 @@ export const CASOS_POOL = [
    "subtitulo": "Ferreiro, 20 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_3_ferreiro": "reacao_gen_segredo_gen_3_ferreiro"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_3_ferreiro",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Frank King entra e senta-se de chapéu na mão. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Frank King entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -18494,6 +18830,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_3_ferreiro": {
+     "fala": [
+      "Frank King lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Caroline Roberts estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -18651,7 +18993,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Frank Robinson entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Frank Robinson entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -18830,15 +19172,8 @@ export const CASOS_POOL = [
    "subtitulo": "Senhor de terras, 60 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_2_squire": "reacao_gen_segredo_gen_2_squire"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_2_squire",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -18870,12 +19205,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha o que se lhe mostra o tempo de o reconhecer, e devolve. \"Disso a casa não sabe dar razão. Se há pergunta, faça-a por inteiro.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_2_squire": {
-     "fala": [
-      "Richard Green lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Caroline Roberts estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -19314,27 +19643,13 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Herbert Jones, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de Herbert Jones, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "lamina_de_oficio",
-    "pertenceA": "gen_0_lavrador"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Rastro de Gotas",
-   "carimboPadrao": "Sangue afastado do corpo",
-   "descricao": "Gotas redondas, a passos do corpo, espaçadas em fila até a porta. As feridas do morto não sangraram nesse caminho.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
     "pertenceA": "gen_0_lavrador"
    }
   },
@@ -19350,6 +19665,19 @@ export const CASOS_POOL = [
     "dominio": "testemunho",
     "subDominio": "ruido_ouvido",
     "faixa": "dia"
+   }
+  },
+  {
+   "id": "gen_frestas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "Sangue nas Frestas",
+   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
+   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "acumulacao_frestas"
    }
   },
   {
@@ -19424,10 +19752,10 @@ export const CASOS_POOL = [
     "localId": "granja",
     "comodo": "cozinha",
     "celula": {
-     "col": 3,
-     "fila": 1
+     "col": 2,
+     "fila": 0
     },
-    "mobilia": null
+    "mobilia": "cozinha_tapete_de_retalhos"
    }
   },
   {
@@ -19588,7 +19916,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Richard Wright foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Granja guarda o dia em que o acharam. No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão."
+    "A Granja guarda o dia em que o acharam. No cômodo, tapete de retalhos, o relógio da família, fogão de ferro a carvão; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela."
    ],
    "blocosContingentes": [
     {
@@ -19602,7 +19930,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_2",
      "quando": "nao_disparado",
      "paragrafos": [
-      "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
+      "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
      ]
     }
    ]
@@ -20082,7 +20410,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Arthur Wood entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "O delegado chama o nome; Arthur Wood entra e senta-se de chapéu na mão. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -20267,7 +20595,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Edward Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
+      "Edward Brown entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -20452,7 +20780,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     }
    ],
    "nos": {
@@ -20491,7 +20819,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Herbert Jones responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Herbert Jones olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -20754,9 +21082,9 @@ export const CASOS_POOL = [
      "comoChegou": "saiu de cottage_2, prédio vizinho de cottage_4, na faixa madrugada (adjacência do grafo)"
     },
     "rolagem": {
-     "wis": 3,
+     "wis": 4,
      "penalidade": 2,
-     "alvo": 1,
+     "alvo": 2,
      "dado": 0,
      "sucesso": true
     },
@@ -20777,7 +21105,7 @@ export const CASOS_POOL = [
     "atorPapel": "assassino",
     "alvo": {
      "tipo": "carta",
-     "cartaId": "gen_sangue_alheio",
+     "cartaId": "gen_frestas",
      "localId": "granja"
     },
     "gatilho": {
@@ -20793,14 +21121,14 @@ export const CASOS_POOL = [
      "comoChegou": "refez, na faixa noite, o caminho do próprio crime até granja"
     },
     "rolagem": {
-     "wis": 3,
+     "wis": 4,
      "penalidade": 2,
-     "alvo": 1,
+     "alvo": 2,
      "dado": 0,
      "sucesso": true
     },
     "efeito": {
-     "cartaDestruida": "gen_sangue_alheio",
+     "cartaDestruida": "gen_frestas",
      "cartasNovas": [
       "gen_intf_intf_2_limpeza"
      ]
@@ -21332,7 +21660,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Arthur Clarke entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Arthur Clarke entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -21517,7 +21845,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Louisa Green entra, senta-se e ajeita as fitas da touca. \"Com licença de entrar. Respondo o que souber.\" Fala baixo e mede a porta antes de cada resposta."
+      "Louisa Green entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença de entrar. Respondo o que souber.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -21701,7 +22029,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Richard Brown entra e senta-se de chapéu na mão. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
+      "Richard Brown entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -21886,7 +22214,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Samuel Wright entra e senta-se de chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
+      "Samuel Wright entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -22077,7 +22405,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Walter Turner entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; Walter Turner entra e senta-se de chapéu na mão. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -22356,27 +22684,27 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_1_lavrador",
   "horasMorteAntesChegada": 9,
   "horaMorteAbsoluta": 2,
-  "mecanismoCorreto": "ferida_arma_branca",
-  "instrumentoCorreto": "lamina_de_oficio",
+  "mecanismoCorreto": "trauma_contuso",
+  "instrumentoCorreto": "arma_de_ocasiao",
   "motivacaoCorreta": "salario_atrasado",
   "cenaEncenada": false,
   "horaForjada": null,
   "perifericos": {
    "gen_0_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    },
    "gen_6_lavrador": {
     "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
    "gen_7_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
    },
    "gen_3_lavrador": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "segredo": "pedido_recusado"
    }
   },
   "encenacaoInstrumento": null
@@ -22408,14 +22736,14 @@ export const CASOS_POOL = [
    "nome": "Herbert Hall",
    "idade": 39,
    "relacao": "Lavrador; mora no Cottage nº 2",
-   "descricao": "Descreve por alto o que viu; miudeza não lhe ficou."
+   "descricao": "Descreve o que viu com hora e lugar."
   },
   {
    "id": "gen_3_lavrador",
    "nome": "Richard Roberts",
    "idade": 59,
    "relacao": "Lavrador; mora no Cottage nº 4",
-   "descricao": "Descreve o que viu com hora e lugar."
+   "descricao": "Responde o que se pergunta e volta ao trabalho."
   }
  ],
  "cartas": [
@@ -22509,13 +22837,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Ferida Incisa",
-   "carimboPadrao": "Sinal de arma branca",
-   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
+   "textoDisplay": "A Fratura no Crânio",
+   "carimboPadrao": "Sinal de golpe contuso",
+   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_incisa"
+    "sinal": "ferida_contusa"
    }
   },
   {
@@ -22547,29 +22875,15 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: George Clarke.",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de George Clarke, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "lamina_de_oficio",
-    "pertenceA": "gen_1_lavrador"
-   }
-  },
-  {
-   "id": "gen_pegadas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "Pegadas Rumo à Porta",
-   "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "pegadas",
-    "tipoVestigio": "pegada_ensanguentada",
+    "tipoVestigio": "arma_de_ocasiao",
     "pertenceA": "gen_1_lavrador"
    }
   },
@@ -22588,64 +22902,16 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_intf_intf_1_limpeza",
-   "localidade": "cena",
-   "textoDisplay": "Esfrega Fresca na Cena",
-   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
-   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
+   "id": "gen_corrobora_gen_0_criada",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Ada Watson",
+   "carimboPadrao": "Paradeiro de Ada Watson, confirmado",
+   "descricao": "A rua dá Ada Watson na Casa do Médico madrugada de sábado, das oito ao clarear, por mais de uma janela.",
    "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "esfrega_fresca"
-   },
-   "vestigioInterferencia": {
-    "classe": "esfrega_fresca_pos_pericia",
-    "frescor": "fresco",
-    "localId": "cottage_5",
-    "comodo": "quarto",
-    "celula": {
-     "col": 5,
-     "fila": 3
-    },
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_meia_obra",
-   "localidade": "cena",
-   "textoDisplay": "Serviço pela Metade",
-   "carimboPadrao": "Serviço de limpeza pela metade",
-   "descricao": "A esfrega para no meio do gesto: a mancha arrastada até a metade e abandonada ali.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "limpeza_interrompida"
-   },
-   "vestigioInterferencia": {
-    "classe": "limpeza_interrompida",
-    "frescor": "fresco",
-    "localId": "cottage_5",
-    "comodo": "quarto",
-    "celula": {
-     "col": 5,
-     "fila": 3
-    },
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_segredo_gen_0_criada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Ada Watson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Ada Watson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_0_criada",
-    "revelaSegredo": "pedido_recusado"
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_0_criada"
    }
   },
   {
@@ -22662,45 +22928,47 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_7_lavrador",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Herbert Hall",
-   "carimboPadrao": "Paradeiro de Herbert Hall, confirmado",
-   "descricao": "A rua dá Herbert Hall no Cottage nº 2 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "id": "gen_segredo_gen_7_lavrador",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Herbert Hall",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Herbert Hall por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_7_lavrador"
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_7_lavrador",
+    "revelaSegredo": "acerto_reservado"
    }
   },
   {
    "id": "gen_segredo_gen_3_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Richard Roberts",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Richard Roberts por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Richard Roberts",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Richard Roberts: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
+    "tipoVestigio": "bilhete_de_suplica",
     "pertenceA": "gen_3_lavrador",
-    "revelaSegredo": "acerto_reservado"
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
-   "id": "gen_movel_gen_3_lavrador",
+   "id": "gen_movel_gen_7_lavrador",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Richard Roberts",
-   "carimboPadrao": "Móbil de Richard Roberts",
-   "descricao": "A ordem de despejo do cottage de Richard Roberts veio no rasto de queixa que Daniel Morris levou ao senhorio.",
+   "textoDisplay": "Papéis de Herbert Hall",
+   "carimboPadrao": "Móbil de Herbert Hall",
+   "descricao": "A ordem de despejo do cottage de Herbert Hall veio no rasto de queixa que Daniel Morris levou ao senhorio.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
     "motivo": "despejo",
-    "ligadoA": "gen_3_lavrador"
+    "ligadoA": "gen_7_lavrador"
    }
   },
   {
@@ -22810,26 +23078,10 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "O Cottage nº 5 guarda o dia em que o acharam. No cômodo, bacia e jarro, baú de roupa.",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_7_lavrador]].",
     "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_3_lavrador]]."
    ],
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_1",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
-     ]
-    },
-    {
-     "eventoId": "intf_1",
-     "quando": "nao_disparado",
-     "paragrafos": [
-      "Do meio do cômodo até a porta: [[gen_pegadas]]."
-     ]
-    }
-   ]
+   "blocosContingentes": []
   },
   {
    "id": "delegacia",
@@ -22840,7 +23092,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_lavrador]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_7_lavrador]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -22853,7 +23105,18 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_6_lavrador]], [[gen_corrobora_gen_7_lavrador]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_criada]], [[gen_corrobora_gen_6_lavrador]]."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "A Granja",
+   "titulo": "A Granja — a diligência",
+   "subtitulo": "Busca autorizada pelo delegado",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -22882,9 +23145,21 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "A Granja",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -22900,15 +23175,8 @@ export const CASOS_POOL = [
    "subtitulo": "Criada, 18 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_0_criada": "reacao_gen_segredo_gen_0_criada"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_0_criada",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -22940,12 +23208,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_0_criada": {
-     "fala": [
-      "Ada Watson lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Daniel Morris estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -23096,7 +23358,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Arthur Evans entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
+      "O delegado chama o nome; Arthur Evans entra e senta-se de chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -23275,13 +23537,13 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; George Clarke entra e senta-se de chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Fala baixo e mede a porta antes de cada resposta."
+      "George Clarke entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -23314,7 +23576,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "George Clarke olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "George Clarke responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -23460,8 +23722,15 @@ export const CASOS_POOL = [
    "subtitulo": "Lavrador, 39 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_7_lavrador": "reacao_gen_segredo_gen_7_lavrador"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_7_lavrador",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -23493,6 +23762,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_7_lavrador": {
+     "fala": [
+      "Herbert Hall cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -23644,7 +23919,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_3_lavrador",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
     }
    ],
    "nos": {
@@ -23683,7 +23958,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_3_lavrador": {
      "fala": [
-      "Richard Roberts cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+      "Richard Roberts lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Daniel Morris estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -23919,82 +24194,6 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
- },
- "interferencias": {
-  "eventos": [
-   {
-    "id": "intf_1",
-    "tipo": "destruir_evidencia",
-    "ator": "gen_1_lavrador",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "carta",
-     "cartaId": "gen_pegadas",
-     "localId": "cottage_5"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_motivo",
-     "comoSoube": "o perito abriu o móbil do réu na delegacia (extração de gen_motivo); o inquérito em público correu a vila até o ator"
-    },
-    "rota": {
-     "de": "cottage_3",
-     "para": "cottage_5",
-     "faixa": "noite",
-     "sustentacao": "retorno_a_cena",
-     "comoChegou": "refez, na faixa noite, o caminho do próprio crime até cottage_5"
-    },
-    "rolagem": {
-     "wis": 2,
-     "penalidade": 2,
-     "alvo": 0,
-     "dado": 0,
-     "sucesso": false
-    },
-    "efeito": {
-     "cartaDestruida": "gen_pegadas",
-     "cartasNovas": [
-      "gen_intf_intf_1_limpeza",
-      "gen_intf_intf_1_meia_obra"
-     ]
-    },
-    "prenuncio": null,
-    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
-   }
-  ]
- },
- "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
-  "porChave": {
-   "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
-   ],
-   "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
-   ],
-   "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
-   ],
-   "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
-   ],
-   "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
-   ],
-   "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
-   ],
-   "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
-   ]
-  }
  }
 },
 {
@@ -24016,12 +24215,12 @@ export const CASOS_POOL = [
     "segredo": null
    },
    "gen_2_squire": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_4_constable": {
     "veredictoEsperado": "inocente_segredo",
     "segredo": "pedido_recusado"
+   },
+   "gen_4_constable": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    },
    "gen_5_criada": {
     "veredictoEsperado": "inocente_alibi",
@@ -24183,11 +24382,11 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Agnes Baker.",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de Agnes Baker, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -24223,31 +24422,31 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_2_squire",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Charles Wilson",
-   "carimboPadrao": "Paradeiro de Charles Wilson, confirmado",
-   "descricao": "A rua dá Charles Wilson no Solar sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_2_squire"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_4_constable",
+   "id": "gen_segredo_gen_2_squire",
    "localidade": "cena",
    "suporteFisico": "cena",
    "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Harry Clarke",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Harry Clarke: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "carimboPadrao": "Bilhete na letra de Charles Wilson",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Charles Wilson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
     "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_4_constable",
+    "pertenceA": "gen_2_squire",
     "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_4_constable",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Harry Clarke",
+   "carimboPadrao": "Paradeiro de Harry Clarke, confirmado",
+   "descricao": "A rua dá Harry Clarke na Delegacia sexta à noite, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_4_constable"
    }
   },
   {
@@ -24264,17 +24463,17 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_movel_gen_4_constable",
+   "id": "gen_movel_gen_2_squire",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Harry Clarke",
-   "carimboPadrao": "Móbil de Harry Clarke",
-   "descricao": "Uma apólice de enterro em nome de David Evans paga a Harry Clarke quando a morte vier.",
+   "textoDisplay": "Papéis de Charles Wilson",
+   "carimboPadrao": "Móbil de Charles Wilson",
+   "descricao": "Papéis de partilha: com a morte de David Evans, o que era dele passa às mãos de Charles Wilson.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "seguro_de_enterro",
-    "ligadoA": "gen_4_constable"
+    "motivo": "heranca",
+    "ligadoA": "gen_2_squire"
    }
   },
   {
@@ -24384,8 +24583,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A Casa do Médico guarda o dia em que o acharam. No cômodo, piano (ou harmônio), a louça boa no aparador.",
-    "Junto do corpo, no chão: [[gen_instrumento]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_constable]]."
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_squire]]."
    ],
    "blocosContingentes": []
   },
@@ -24398,7 +24596,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_constable]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_2_squire]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -24411,7 +24609,18 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_lavadeira]], [[gen_corrobora_gen_2_squire]], [[gen_corrobora_gen_5_criada]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_lavadeira]], [[gen_corrobora_gen_4_constable]], [[gen_corrobora_gen_5_criada]]."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "O Solar",
+   "titulo": "O Solar — a diligência",
+   "subtitulo": "Busca autorizada pelo delegado",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -24440,9 +24649,21 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "O Solar",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
   }
  ],
- "leads": [],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -24464,7 +24685,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     }
    ],
    "nos": {
@@ -24503,7 +24724,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Agnes Baker olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "Agnes Baker olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -24654,7 +24875,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Ann Robinson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A casa deu licença. Respondo o que souber, e depressa.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; Ann Robinson entra, senta-se e ajeita as fitas da touca. \"A casa deu licença. Respondo o que souber, e depressa.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -24827,12 +25048,19 @@ export const CASOS_POOL = [
    "subtitulo": "Senhor de terras, 53 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_2_squire": "reacao_gen_segredo_gen_2_squire"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_2_squire",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
-      "Charles Wilson entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A casa deve isto ao condado, e paga de bom grado. Ao que vem?\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O delegado chama o nome; Charles Wilson entra e senta-se de chapéu na mão. \"A casa deve isto ao condado, e paga de bom grado. Ao que vem?\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -24860,6 +25088,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha o que se lhe mostra o tempo de o reconhecer, e devolve. \"Disso a casa não sabe dar razão. Se há pergunta, faça-a por inteiro.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_2_squire": {
+     "fala": [
+      "Charles Wilson lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de David Evans estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -25005,19 +25239,12 @@ export const CASOS_POOL = [
    "subtitulo": "Constable do condado, 35 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_4_constable": "reacao_gen_segredo_gen_4_constable"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_4_constable",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Harry Clarke entra e senta-se de chapéu na mão. \"A folha do dia ficou com o colega. Pergunte pelo livro, que pelo livro respondo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Harry Clarke entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A folha do dia ficou com o colega. Pergunte pelo livro, que pelo livro respondo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -25045,12 +25272,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Examina como quem preenche folha. \"Sem registro disto, não firmo nada. O que está lavrado, está lavrado; o resto se apura.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_4_constable": {
-     "fala": [
-      "Harry Clarke lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de David Evans estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -25487,15 +25708,15 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_4_criada",
   "horasMorteAntesChegada": 8,
   "horaMorteAbsoluta": 3,
-  "mecanismoCorreto": "sufocacao",
-  "instrumentoCorreto": "travesseiro_ou_pano",
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
   "motivacaoCorreta": "character_negado",
-  "cenaEncenada": false,
-  "horaForjada": null,
+  "cenaEncenada": true,
+  "horaForjada": 9.25,
   "perifericos": {
    "gen_1_costureira": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "segredo": "pedido_recusado"
    },
    "gen_0_criada": {
     "veredictoEsperado": "inocente_alibi",
@@ -25507,10 +25728,10 @@ export const CASOS_POOL = [
    },
    "gen_3_merceeiro": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "segredo": "acerto_reservado"
    }
   },
-  "encenacaoInstrumento": null
+  "encenacaoInstrumento": "relogio"
  },
  "suspeitos": [
   {
@@ -25640,13 +25861,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "Os Sinais em Volta da Boca",
-   "carimboPadrao": "Sinal de sufocação",
-   "descricao": "Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.",
+   "textoDisplay": "A Ferida Incisa",
+   "carimboPadrao": "Sinal de arma branca",
+   "descricao": "Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "oclusao_vias"
+    "sinal": "ferida_incisa"
    }
   },
   {
@@ -25678,30 +25899,30 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Nellie Thompson, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Instrumento Abandonado",
+   "carimboPadrao": "Instrumento deixado na cena",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Nellie Thompson.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "travesseiro_ou_pano",
+    "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_4_criada"
    }
   },
   {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_2_lavrador",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na madrugada de 14",
-   "descricao": "Henry Ward conta o que a parede deixou passar na madrugada de 14: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "id": "gen_pegadas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "Pegadas Rumo à Porta",
+   "carimboPadrao": "Meias-solas impressas em sangue",
+   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
    "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "madrugada"
+    "dominio": "vestigio",
+    "subDominio": "pegadas",
+    "tipoVestigio": "pegada_ensanguentada",
+    "pertenceA": "gen_4_criada"
    }
   },
   {
@@ -25719,18 +25940,33 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_hora_forjada",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "cronologia_aparente",
+    "horaAparente": 9.25,
+    "encenado": true,
+    "isca": true
+   },
+   "textoDisplay": "O Relógio Parado",
+   "carimboPadrao": "Relógio de parede parado às 09h15",
+   "descricao": "O vidro cedeu em raios a partir de um canto, e a caixa guarda os cacos por dentro. Os ponteiros descansam em 09h15; a corda, provada pela chave, ainda tem volta."
+  },
+  {
    "id": "gen_segredo_gen_1_costureira",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Albert Turner",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Albert Turner por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Albert Turner",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Albert Turner: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
+    "tipoVestigio": "bilhete_de_suplica",
     "pertenceA": "gen_1_costureira",
-    "revelaSegredo": "acerto_reservado"
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
@@ -25763,29 +25999,29 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_merceeiro",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Rose Robinson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rose Robinson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Rose Robinson",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Rose Robinson por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
+    "tipoVestigio": "nota_por_assinar",
     "pertenceA": "gen_3_merceeiro",
-    "revelaSegredo": "pedido_recusado"
+    "revelaSegredo": "acerto_reservado"
    }
   },
   {
-   "id": "gen_movel_gen_1_costureira",
+   "id": "gen_movel_gen_3_merceeiro",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Albert Turner",
-   "carimboPadrao": "Móbil de Albert Turner",
-   "descricao": "Cartas sobre um dote prometido e não pago atam Albert Turner a Sidney Moore, com somas e datas.",
+   "textoDisplay": "Papéis de Rose Robinson",
+   "carimboPadrao": "Móbil de Rose Robinson",
+   "descricao": "Papéis de partilha: com a morte de Sidney Moore, o que era dele passa às mãos de Rose Robinson.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "dote",
-    "ligadoA": "gen_1_costureira"
+    "motivo": "heranca",
+    "ligadoA": "gen_3_merceeiro"
    }
   },
   {
@@ -25894,9 +26130,12 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Sidney Moore foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que o acharam. No cômodo, lavatório com bacia, cômoda; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "A Taverna guarda o dia em que o acharam. No cômodo, lavatório com bacia, cômoda.",
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_costureira]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_3_merceeiro]]."
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_3_merceeiro]].",
+    "Junto do corpo, no chão: [[gen_instrumento]].",
+    "Do meio do cômodo até a porta: [[gen_pegadas]]."
    ],
    "blocosContingentes": []
   },
@@ -25909,7 +26148,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_costureira]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_merceeiro]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -25922,19 +26161,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_criada]], [[gen_corrobora_gen_2_lavrador]]."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "O Solar",
-   "titulo": "O Solar — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -25963,21 +26190,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "O Solar",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -25999,13 +26214,13 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_1_costureira",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Albert Turner entra e senta-se de chapéu na mão. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Albert Turner entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -26038,7 +26253,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_1_costureira": {
      "fala": [
-      "Albert Turner cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+      "Albert Turner lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Sidney Moore estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -26362,15 +26577,8 @@ export const CASOS_POOL = [
    "subtitulo": "Lavrador, 19 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -26405,12 +26613,6 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Henry Ward conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
     "b1_firme": {
      "fala": [
       "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
@@ -26440,7 +26642,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Sidney Moore eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -26473,7 +26675,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Sidney Moore era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Sidney Moore? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -26506,7 +26708,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -26539,7 +26741,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -26559,7 +26761,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
@@ -26598,7 +26800,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Nellie Thompson responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Nellie Thompson olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -26750,7 +26952,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_3_merceeiro",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
     }
    ],
    "nos": {
@@ -26789,7 +26991,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_3_merceeiro": {
      "fala": [
-      "Rose Robinson lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Sidney Moore estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+      "Rose Robinson cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -27228,9 +27430,9 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "oficio_do_reu",
    "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de John Smith, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de John Smith, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -27512,7 +27714,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Ernest Hill foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que o acharam. No cômodo, balcão com beer engine, mesas de taverna; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "A Taverna guarda o dia em que o acharam. No cômodo, balcão com beer engine, mesas de taverna; de um canto a outro, nada guarda o seu lugar; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
     "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_lavrador]]."
    ],
@@ -28000,7 +28202,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Henry Wilson entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O delegado chama o nome; Henry Wilson entra e senta-se de chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -28180,7 +28382,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     },
     {
      "requerCarta": "gen_intf_intf_1_retalho",
@@ -28190,7 +28392,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "John Smith entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
+      "John Smith entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Vim assim que o guarda mandou. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -28223,7 +28425,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "John Smith responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "John Smith olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -28683,9 +28885,9 @@ export const CASOS_POOL = [
      "comoChegou": "a rotina da faixa noite já o punha em pub — não precisou de trajeto"
     },
     "rolagem": {
-     "wis": 3,
+     "wis": 4,
      "penalidade": 2,
-     "alvo": 1,
+     "alvo": 2,
      "dado": 4,
      "sucesso": false
     },
@@ -28746,19 +28948,19 @@ export const CASOS_POOL = [
   "reuCorreto": "gen_2_lavrador",
   "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": 1,
-  "mecanismoCorreto": "trauma_contuso",
-  "instrumentoCorreto": "arma_de_ocasiao",
+  "mecanismoCorreto": "envenenamento_arsenico",
+  "instrumentoCorreto": "papel_de_arsenico",
   "motivacaoCorreta": "divida_caderneta",
-  "cenaEncenada": false,
-  "horaForjada": null,
+  "cenaEncenada": true,
+  "horaForjada": 10.5,
   "perifericos": {
    "gen_3_lavadeira": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
    },
    "gen_0_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    },
    "gen_5_costureira": {
     "veredictoEsperado": "inocente_alibi",
@@ -28766,10 +28968,10 @@ export const CASOS_POOL = [
    },
    "gen_1_criada": {
     "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "segredo": "acerto_reservado"
    }
   },
-  "encenacaoInstrumento": null
+  "encenacaoInstrumento": "corpo"
  },
  "suspeitos": [
   {
@@ -28899,26 +29101,13 @@ export const CASOS_POOL = [
    "id": "gen_lesao_fatal",
    "localidade": "corpo",
    "suporteFisico": "corpo",
-   "textoDisplay": "A Fratura no Crânio",
-   "carimboPadrao": "Sinal de golpe contuso",
-   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
+   "textoDisplay": "O Vômito Seco",
+   "carimboPadrao": "Sinal de envenenamento por arsênico",
+   "descricao": "Na boca e no queixo, um resto de vômito seco. Levada à chama, a amostra solta cheiro de alho; da ceia, prato nenhum o levava.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "ferida",
-    "sinal": "ferida_contusa"
-   }
-  },
-  {
-   "id": "gen_reacao_vital",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Bordas Vivas",
-   "carimboPadrao": "Lesões sofridas em vida",
-   "descricao": "As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "reacao_vital",
-    "sinal": "reacao_vital"
+    "sinal": "odor_alho"
    }
   },
   {
@@ -28937,29 +29126,16 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_instrumento",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "pertences_do_reu",
-   "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de William Robinson, um vão limpo no meio do pó, do comprimento e do desenho da lesão da morta.",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Instrumento Abandonado",
+   "carimboPadrao": "Instrumento deixado na cena",
+   "descricao": "Ficou no chão, ao alcance do corpo. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: William Robinson.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
-    "tipoVestigio": "arma_de_ocasiao",
+    "tipoVestigio": "papel_de_arsenico",
     "pertenceA": "gen_2_lavrador"
-   }
-  },
-  {
-   "id": "gen_frestas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "Sangue nas Frestas",
-   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
-   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
-   "tagsOcultas": {
-    "dominio": "ambiental",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "acumulacao_frestas"
    }
   },
   {
@@ -28977,54 +29153,46 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_intf_intf_1_limpeza",
-   "localidade": "cena",
-   "textoDisplay": "Esfrega Fresca na Cena",
-   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
-   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "esfrega_fresca"
-   },
-   "vestigioInterferencia": {
-    "classe": "esfrega_fresca_pos_pericia",
-    "frescor": "fresco",
-    "localId": "mercearia",
-    "comodo": "deposito",
-    "celula": {
-     "col": 3,
-     "fila": 2
-    },
-    "mobilia": "deposito_prateleiras_da_despensa"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_3_lavadeira",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Clara King",
-   "carimboPadrao": "Paradeiro de Clara King, confirmado",
-   "descricao": "A rua dá Clara King no Cottage nº 1 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_3_lavadeira"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_0_criada",
+   "id": "gen_hora_forjada",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Ethel Robinson",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Ethel Robinson por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "cronologia_aparente",
+    "horaAparente": 10.5,
+    "encenado": true,
+    "isca": true
+   },
+   "textoDisplay": "O Corpo Junto à Lareira",
+   "carimboPadrao": "Corpo aquecido; leitura de morte às 10h30",
+   "descricao": "O corpo jaz rente à lareira, e a grelha ainda guarda brasa morna. Ao termômetro, a morta está bem mais quente do que a sala; por essa temperatura, a morte teria sido por volta das 10h30."
+  },
+  {
+   "id": "gen_segredo_gen_3_lavadeira",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Clara King",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Clara King: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
-    "pertenceA": "gen_0_criada",
-    "revelaSegredo": "acerto_reservado"
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_3_lavadeira",
+    "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_0_criada",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Ethel Robinson",
+   "carimboPadrao": "Paradeiro de Ethel Robinson, confirmado",
+   "descricao": "A rua dá Ethel Robinson na Casa do Médico madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_0_criada"
    }
   },
   {
@@ -29044,29 +29212,29 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_1_criada",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Rose Evans",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rose Evans: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Rose Evans",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Rose Evans por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
+    "tipoVestigio": "nota_por_assinar",
     "pertenceA": "gen_1_criada",
-    "revelaSegredo": "pedido_recusado"
+    "revelaSegredo": "acerto_reservado"
    }
   },
   {
-   "id": "gen_movel_gen_0_criada",
+   "id": "gen_movel_gen_1_criada",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Ethel Robinson",
-   "carimboPadrao": "Móbil de Ethel Robinson",
-   "descricao": "Consta queixa de paga retida: Charlotte Wright devia a Ethel Robinson semanas de salário.",
+   "textoDisplay": "Papéis de Rose Evans",
+   "carimboPadrao": "Móbil de Rose Evans",
+   "descricao": "Consta queixa de paga retida: Charlotte Wright devia a Rose Evans semanas de salário.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
     "motivo": "salario_atrasado",
-    "ligadoA": "gen_0_criada"
+    "ligadoA": "gen_1_criada"
    }
   },
   {
@@ -29164,7 +29332,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A morta jaz no chão do cômodo a que a vila chama quarto do sobrado, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -29175,26 +29343,13 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Charlotte Wright foi achada",
    "acoesEspeciais": [],
    "prosa": [
-    "A Mercearia guarda o dia em que a acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira; de um canto a outro, nada guarda o seu lugar; a madeira do assoalho cheira a soda cáustica e perdeu a cera numa área baça; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]].",
-    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_criada]]."
+    "A Mercearia guarda o dia em que a acharam. No cômodo, lavatório com bacia, cômoda, cama de armação de madeira.",
+    "O que primeiro toma o olho no cômodo: [[gen_hora_forjada]].",
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_lavadeira]].",
+    "Sob a beira de um móvel, onde a vassoura não alcança: [[gen_segredo_gen_1_criada]].",
+    "Junto do corpo, no chão: [[gen_instrumento]]."
    ],
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_1",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]]."
-     ]
-    },
-    {
-     "eventoId": "intf_1",
-     "quando": "nao_disparado",
-     "paragrafos": [
-      "Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
-     ]
-    }
-   ]
+   "blocosContingentes": []
   },
   {
    "id": "delegacia",
@@ -29205,7 +29360,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_criada]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_criada]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -29218,18 +29373,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_lavadeira]], [[gen_corrobora_gen_5_costureira]]."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca autorizada pelo delegado",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_0_criada]], [[gen_corrobora_gen_5_costureira]]."
    ],
    "blocosContingentes": []
   }
@@ -29258,21 +29402,9 @@ export const CASOS_POOL = [
    "rotulo": "A Vizinhança",
    "grupo": "vila",
    "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
   }
  ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
+ "leads": [],
  "custos": {
   "cena_predio|cena_predio": 0,
   "cena_predio|vila": 1,
@@ -29288,8 +29420,15 @@ export const CASOS_POOL = [
    "subtitulo": "Lavadeira, 42 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_3_lavadeira": "reacao_gen_segredo_gen_3_lavadeira"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_3_lavadeira",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -29321,6 +29460,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_3_lavadeira": {
+     "fala": [
+      "Clara King lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Charlotte Wright estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -29466,19 +29611,12 @@ export const CASOS_POOL = [
    "subtitulo": "Criada, 18 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_0_criada": "reacao_gen_segredo_gen_0_criada"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_0_criada",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
-      "Ethel Robinson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
+      "Ethel Robinson entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -29506,12 +29644,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_0_criada": {
-     "fala": [
-      "Ethel Robinson cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -29662,7 +29794,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; Gertrude Wood entra, senta-se e ajeita as fitas da touca. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Fala baixo e mede a porta antes de cada resposta."
+      "Gertrude Wood entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -29841,13 +29973,13 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_segredo_gen_1_criada",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "Rose Evans entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Com licença de entrar. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Rose Evans entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença de entrar. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -29880,7 +30012,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_segredo_gen_1_criada": {
      "fala": [
-      "Rose Evans lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Charlotte Wright estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+      "Rose Evans cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
      ],
      "opcoes": []
     },
@@ -30032,13 +30164,13 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
     "abertura": {
      "fala": [
-      "O delegado chama o nome; William Robinson entra e senta-se de chapéu na mão. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
+      "William Robinson entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"O guarda mandou, eu vim. Pergunte, que o campo não espera.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -30071,7 +30203,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "William Robinson olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "William Robinson olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -30307,81 +30439,6 @@ export const CASOS_POOL = [
    "mesExtenso": "outubro",
    "ano": 1893
   }
- },
- "interferencias": {
-  "eventos": [
-   {
-    "id": "intf_1",
-    "tipo": "destruir_evidencia",
-    "ator": "gen_2_lavrador",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "carta",
-     "cartaId": "gen_frestas",
-     "localId": "mercearia"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_motivo",
-     "comoSoube": "o perito abriu o móbil do réu na delegacia (extração de gen_motivo); o inquérito em público correu a vila até o ator"
-    },
-    "rota": {
-     "de": "mercearia",
-     "para": "mercearia",
-     "faixa": "noite",
-     "sustentacao": "mesmo_local",
-     "comoChegou": "a rotina da faixa noite já o punha em mercearia — não precisou de trajeto"
-    },
-    "rolagem": {
-     "wis": 4,
-     "penalidade": 2,
-     "alvo": 2,
-     "dado": 0,
-     "sucesso": true
-    },
-    "efeito": {
-     "cartaDestruida": "gen_frestas",
-     "cartasNovas": [
-      "gen_intf_intf_1_limpeza"
-     ]
-    },
-    "prenuncio": null,
-    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
-   }
-  ]
- },
- "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
-  "porChave": {
-   "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
-   ],
-   "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
-   ],
-   "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
-   ],
-   "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
-   ],
-   "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
-   ],
-   "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
-   ],
-   "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
-   ]
-  }
  }
 },
 {
@@ -30399,8 +30456,8 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_4_constable": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
    },
    "gen_3_ferreiro": {
     "veredictoEsperado": "inocente_alibi",
@@ -30411,8 +30468,8 @@ export const CASOS_POOL = [
     "segredo": null
    },
    "gen_5_lavrador": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
    }
   },
   "encenacaoInstrumento": null
@@ -30597,16 +30654,18 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_corrobora_gen_4_constable",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Alfred Morris",
-   "carimboPadrao": "Paradeiro de Alfred Morris, confirmado",
-   "descricao": "A rua dá Alfred Morris na Delegacia sexta à noite, das oito ao clarear, por mais de uma janela.",
+   "id": "gen_segredo_gen_4_constable",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Alfred Morris",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Alfred Morris: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_constable"
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_4_constable",
+    "revelaSegredo": "pedido_recusado"
    }
   },
   {
@@ -30636,32 +30695,30 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_segredo_gen_5_lavrador",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de William Thomas",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de William Thomas: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "id": "gen_corrobora_gen_5_lavrador",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por William Thomas",
+   "carimboPadrao": "Paradeiro de William Thomas, confirmado",
+   "descricao": "A rua dá William Thomas no Cottage nº 1 sexta à noite, das oito ao clarear, por mais de uma janela.",
    "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_5_lavrador",
-    "revelaSegredo": "pedido_recusado"
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_5_lavrador"
    }
   },
   {
-   "id": "gen_movel_gen_5_lavrador",
+   "id": "gen_movel_gen_4_constable",
    "localidade": "delegacia",
    "suporteFisico": "registro",
-   "textoDisplay": "Papéis de William Thomas",
-   "carimboPadrao": "Móbil de William Thomas",
-   "descricao": "Uma apólice de enterro em nome de James Wood paga a William Thomas quando a morte vier.",
+   "textoDisplay": "Papéis de Alfred Morris",
+   "carimboPadrao": "Móbil de Alfred Morris",
+   "descricao": "Uma caderneta de dívidas soma o que Alfred Morris deve a James Wood, vencido e cobrado por carta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
-    "motivo": "seguro_de_enterro",
-    "ligadoA": "gen_5_lavrador"
+    "motivo": "divida_caderneta",
+    "ligadoA": "gen_4_constable"
    }
   },
   {
@@ -30772,7 +30829,7 @@ export const CASOS_POOL = [
    "prosa": [
     "O Solar guarda o dia em que o acharam. No cômodo, a prataria e a louça, puxador de sino de criados.",
     "Junto do corpo, no chão: [[gen_instrumento]].",
-    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_lavrador]]."
+    "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_constable]]."
    ],
    "blocosContingentes": []
   },
@@ -30785,7 +30842,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_5_lavrador]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_constable]].",
     "Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela."
    ],
    "blocosContingentes": []
@@ -30798,7 +30855,7 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_4_constable]], [[gen_corrobora_gen_3_ferreiro]], [[gen_corrobora_gen_1_lavadeira]]."
+    "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_3_ferreiro]], [[gen_corrobora_gen_1_lavadeira]], [[gen_corrobora_gen_5_lavrador]]."
    ],
    "blocosContingentes": []
   }
@@ -30857,7 +30914,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Albert Jones entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Albert Jones entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -31036,12 +31093,19 @@ export const CASOS_POOL = [
    "subtitulo": "Constable do condado, 21 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_segredo_gen_4_constable": "reacao_gen_segredo_gen_4_constable"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_4_constable",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
-      "Alfred Morris entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"A folha do dia ficou com o colega. Pergunte pelo livro, que pelo livro respondo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Alfred Morris entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A folha do dia ficou com o colega. Pergunte pelo livro, que pelo livro respondo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -31069,6 +31133,12 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Examina como quem preenche folha. \"Sem registro disto, não firmo nada. O que está lavrado, está lavrado; o resto se apura.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_4_constable": {
+     "fala": [
+      "Alfred Morris lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de James Wood estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -31570,15 +31640,8 @@ export const CASOS_POOL = [
    "subtitulo": "Lavrador, 53 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_5_lavrador": "reacao_gen_segredo_gen_5_lavrador"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_5_lavrador",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -31610,12 +31673,6 @@ export const CASOS_POOL = [
     "evasiva": {
      "fala": [
       "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_5_lavrador": {
-     "fala": [
-      "William Thomas lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de James Wood estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
      ],
      "opcoes": []
     },
@@ -32148,26 +32205,6 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_intf_intf_1_soberanos",
-   "localidade": "vizinhanca",
-   "textoDisplay": "Soberanos Novos",
-   "carimboPadrao": "Soberanos novos em mão de fiado",
-   "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: Alice Clarke.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_dinheiro",
-    "pertenceA": "gen_6_criada"
-   },
-   "vestigioInterferencia": {
-    "classe": "soberanos_novos",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
    "id": "gen_corrobora_gen_1_constable",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
@@ -32341,7 +32378,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Frank Moore foi achado",
    "acoesEspeciais": [],
    "prosa": [
-    "A Taverna guarda o dia em que o acharam. No cômodo, o snug (cubículo com portinhola), bancos corridos sobre serragem; de um canto a outro, nada guarda o seu lugar; há mobília por erguer do chão.",
+    "A Taverna guarda o dia em que o acharam. No cômodo, o snug (cubículo com portinhola), bancos corridos sobre serragem; de um canto a outro, nada guarda o seu lugar; sob o pé de uma peça de mobília, um arranhão que escapa para fora dela.",
     "Por abrir desde ontem, a mão fechada do morto: [[gen_pertence]].",
     "Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_boticario]].",
     "A passos do corpo, fora do caminho dele: [[gen_sangue_alheio]]."
@@ -32378,7 +32415,7 @@ export const CASOS_POOL = [
      "eventoId": "intf_1",
      "quando": "disparado",
      "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]."
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]]."
      ]
     }
    ]
@@ -32427,17 +32464,12 @@ export const CASOS_POOL = [
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
    "reacoesProva": {
-    "gen_pertence": "reacao_gen_pertence",
-    "gen_intf_intf_1_soberanos": "reacao_gen_intf_intf_1_soberanos"
+    "gen_pertence": "reacao_gen_pertence"
    },
    "confrontos": [
     {
      "requerCarta": "gen_pertence",
      "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
-    },
-    {
-     "requerCarta": "gen_intf_intf_1_soberanos",
-     "rotulo": "[Soberanos Novos] Por que soberanos novos, contados à vista de todos?"
     }
    ],
    "nos": {
@@ -32477,12 +32509,6 @@ export const CASOS_POOL = [
     "reacao_gen_pertence": {
      "fala": [
       "Alice Clarke vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_intf_intf_1_soberanos": {
-     "fala": [
-      "Alice Clarke não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito.\""
      ],
      "opcoes": []
     },
@@ -32824,7 +32850,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Lily Moore entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"Com licença. Digo o que souber, e volto ao serviço.\" Fala baixo e mede a porta antes de cada resposta."
+      "Lily Moore entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença. Digo o que souber, e volto ao serviço.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -33483,18 +33509,17 @@ export const CASOS_POOL = [
      "comoChegou": "saiu de pub, prédio vizinho de delegacia, na faixa madrugada (adjacência do grafo)"
     },
     "rolagem": {
-     "wis": 2,
+     "wis": 5,
      "penalidade": 2,
-     "alvo": 0,
+     "alvo": 3,
      "dado": 1,
-     "sucesso": false
+     "sucesso": true
     },
     "efeito": {
      "cartaDestruida": null,
      "cartasNovas": [
       "gen_intf_intf_1_retratacao",
-      "gen_intf_intf_1_dividas",
-      "gen_intf_intf_1_soberanos"
+      "gen_intf_intf_1_dividas"
      ]
     },
     "prenuncio": null,

@@ -2656,7 +2656,11 @@ const psiqueDeterminista = ['comarca_1', 'comarca_7'].every(
 );
 if (!psiqueDeterminista) console.log('\nPSIQUE — replay divergiu (mesma seed, psique diferente).');
 
-// (6) Anti-tell em 50 seeds: o desencaixe nunca é prova.
+// (6) Anti-tell em 50 seeds: o desencaixe nunca é prova. REGIME-CIENTE
+// desde a F3 da OS priors compostos (§4.6-G6): a exigência integral
+// (réu ≥ T + ≥1 inocente destoante registrado) vale SÓ no regime 2; no
+// regime 1 a exigência é a inversa — réu no degrau modal e NENHUMA isca
+// forçada.
 const SEEDS_ANTI_TELL = Array.from({ length: 50 }, (_, i) => `comarca_${i + 1}`);
 const antiTellFalhas = [];
 for (const seed of SEEDS_ANTI_TELL) {
@@ -2667,9 +2671,14 @@ for (const seed of SEEDS_ANTI_TELL) {
     ([id, p]) =>
       id !== bruto.escolha.assassinoId && id !== bruto.escolha.vitimaId && p.magnitude >= LIMIAR_DESENCAIXE
   );
-  const destoanteRegistrado = log.falsoDestoanteId && inocentesDestoantes.some(([id]) => id === log.falsoDestoanteId);
-  if (reu.magnitude < LIMIAR_DESENCAIXE || inocentesDestoantes.length < 1 || !destoanteRegistrado) {
-    antiTellFalhas.push(seed);
+  if (log.regime === 2) {
+    const destoanteRegistrado = log.falsoDestoanteId && inocentesDestoantes.some(([id]) => id === log.falsoDestoanteId);
+    if (reu.magnitude < LIMIAR_DESENCAIXE || inocentesDestoantes.length < 1 || !destoanteRegistrado) {
+      antiTellFalhas.push(seed);
+    }
+  } else {
+    const forcouIsca = log.reamostragens.some((r) => r.motivo === 'falso_destoante');
+    if (reu.magnitude !== 1 || log.falsoDestoanteId !== null || forcouIsca) antiTellFalhas.push(seed);
   }
 }
 const antiTellOk = antiTellFalhas.length === 0;
@@ -2888,15 +2897,22 @@ let g3CascataOk = true;
 }
 if (!g3CascataOk) console.log('\nPRIORS F2 — G3 (cascata de forçamento) falhou.');
 
-// (G4) simetria réu × isca em 200 seeds fixas.
+// Lote fixo compartilhado de F2/F3 (200 casos brutos, comarca_1..200).
+const loteF2 = [];
+for (let i = 1; i <= 200; i++) loteF2.push(gerarCasoBruto(`comarca_${i}`));
+
+// (G4) simetria réu × isca no lote. Desde a F3, réus de regime 1 vivem
+// no degrau modal por desenho — a comparação justa (forçado × forçado)
+// é réu de REGIME 2 × isca.
 let g4SimetriaOk = true;
 {
   let reusIntAlto = 0, reusTotal = 0, iscasIntAlto = 0, iscasTotal = 0;
-  for (let i = 1; i <= 200; i++) {
-    const bruto = gerarCasoBruto(`comarca_${i}`);
+  for (const bruto of loteF2) {
     const reu = bruto.mundo.elenco.find((p) => p.id === bruto.escolha.assassinoId);
-    reusTotal++;
-    if (reu.atributos.INT >= 4) reusIntAlto++;
+    if (bruto.psique.log.regime === 2) {
+      reusTotal++;
+      if (reu.atributos.INT >= 4) reusIntAlto++;
+    }
     const iscaId = bruto.psique.log.falsoDestoanteId;
     const isca = iscaId && bruto.mundo.elenco.find((p) => p.id === iscaId);
     if (isca) {
@@ -2905,10 +2921,67 @@ let g4SimetriaOk = true;
     }
   }
   const delta = Math.abs(reusIntAlto / reusTotal - iscasIntAlto / iscasTotal);
-  g4SimetriaOk = iscasTotal > 0 && delta <= 0.10;
+  g4SimetriaOk = iscasTotal > 0 && reusTotal > 0 && delta <= 0.10;
   if (!g4SimetriaOk) {
     console.log(
-      `\nPRIORS F2 — G4 (simetria réu × isca) falhou: réu ${(100 * reusIntAlto / reusTotal).toFixed(1)}% × isca ${(100 * iscasIntAlto / Math.max(1, iscasTotal)).toFixed(1)}% de INT≥4.`
+      `\nPRIORS F2 — G4 (simetria réu × isca) falhou: réu ${(100 * reusIntAlto / Math.max(1, reusTotal)).toFixed(1)}% × isca ${(100 * iscasIntAlto / Math.max(1, iscasTotal)).toFixed(1)}% de INT≥4.`
+    );
+  }
+}
+
+// ============================================================
+// OS PRIORS COMPOSTOS (F3) — regimes e anti-tell estendido (§4.6).
+// (G5) precisão do tell calmo: entre TODOS os portadores de mentira
+//      calma do lote (mente_com_calma do réu + mente_com_calma_
+//      periferica:* de inocentes), a fração de inocentes ≥ 60%
+//      (decisão 11) — "mentira serena ⇒ réu" deixou de ser lei.
+// (G6) regimes: fração de regime 1 dentro da banda 30% ± 10 p.p. no
+//      lote de 200; em TODO caso regime 1: réu no degrau modal
+//      (magnitude 1), nenhuma isca forçada (falsoDestoanteId nulo, sem
+//      reamostragem falso_destoante) e móbil material promovido presente
+//      na fatia (gen_motivo do réu). A guarda anti-tell integral vale só
+//      no regime 2 (regra aplicada na guarda (6) da OS psíquica, acima).
+// ============================================================
+let g5TellCalmoOk = true;
+let g6RegimesOk = true;
+{
+  let calmosReus = 0, calmosInocentes = 0, casosRegime1 = 0;
+  const g6Falhas = [];
+  for (const bruto of loteF2) {
+    const { log: logPsi } = bruto.psique;
+    for (const [pid, c] of Object.entries(bruto.psique.consequencias.porPessoa)) {
+      if (pid === bruto.escolha.assassinoId) {
+        if (c.flags.includes('mente_com_calma')) calmosReus++;
+      } else if (c.flags.some((f) => f.startsWith('mente_com_calma_periferica:'))) {
+        calmosInocentes++;
+      }
+    }
+    if (logPsi.regime === 1) {
+      casosRegime1++;
+      const reu = logPsi.porPessoa[bruto.escolha.assassinoId];
+      const forcouIsca = logPsi.reamostragens.some((r) => r.motivo === 'falso_destoante');
+      const mobilMaterial = bruto.fatiaForense.cartas.some(
+        (c) => c.tagsOcultas?.motivo && c.tagsOcultas?.ligadoA === bruto.escolha.assassinoId
+      );
+      if (reu.magnitude !== 1 || logPsi.falsoDestoanteId !== null || forcouIsca || !mobilMaterial) {
+        g6Falhas.push(bruto.seed);
+      }
+    } else if (logPsi.regime !== 2) {
+      g6Falhas.push(`${bruto.seed} (regime inválido)`);
+    }
+  }
+  const fracaoInocente = calmosInocentes / Math.max(1, calmosInocentes + calmosReus);
+  g5TellCalmoOk = calmosInocentes + calmosReus > 0 && fracaoInocente >= 0.6;
+  if (!g5TellCalmoOk) {
+    console.log(
+      `\nPRIORS F3 — G5 (tell calmo) falhou: ${calmosInocentes} inocentes × ${calmosReus} réus calmos (${(100 * fracaoInocente).toFixed(1)}% inocentes).`
+    );
+  }
+  const fracaoRegime1 = casosRegime1 / loteF2.length;
+  g6RegimesOk = g6Falhas.length === 0 && fracaoRegime1 >= 0.2 && fracaoRegime1 <= 0.4;
+  if (!g6RegimesOk) {
+    console.log(
+      `\nPRIORS F3 — G6 (regimes) falhou: regime 1 em ${(100 * fracaoRegime1).toFixed(1)}% do lote; violações: ${g6Falhas.slice(0, 6).join(', ')}`
     );
   }
 }
@@ -3030,6 +3103,8 @@ const checagens = [
   ['Priors F2 — G3 cascata: forçamento de vetor re-deriva INT/WIS/CHA + quantização pela via pura; FOR intacto (OS priors compostos §3.3)', g3CascataOk],
   ['Priors F2 — G4 simetria: INT alto não é tell fraco do réu (Δ ≤ 10 p.p. vs destoante inocente, 200 seeds) (OS priors compostos §3.4)', g4SimetriaOk],
   ['Priors F2 — decorrelação: hashDecisao quebra o acoplamento de chaves-irmãs (≥20/25 pares INT×WIS, |corr| ≤ 0,15) (achado B✱)', decorrelacaoOk],
+  ['Priors F3 — G5 tell calmo: ≥ 60% dos mentirosos-calmos do lote são inocentes ("serena ⇒ réu" morreu) (OS priors compostos §4.6)', g5TellCalmoOk],
+  ['Priors F3 — G6 regimes: regime 1 em 30% ± 10 p.p.; nele o réu é modal, sem isca forçada, com móbil material na fatia (OS priors compostos §4.6)', g6RegimesOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

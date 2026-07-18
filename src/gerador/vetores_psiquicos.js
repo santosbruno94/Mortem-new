@@ -11,25 +11,37 @@
 // build: o que sai daqui para o caso são CONSEQUÊNCIAS (flags de diálogo,
 // tendências de vestígio, qualidade de encenação) — nunca o nome.
 //
-// REGRAS DE COMPILAÇÃO (OS §4.5, determinísticas, auditáveis):
-//   • assassino → mente_com_calma (raro, 1 em 4: a sombra integrada do
-//     culpado difícil) OU mente_sob_pressao; sempre gatilho_de_complexo
-//     com o tema do medo central do vetor dele.
-//   • não-assassino de polaridade passiva → omite_por_decoro.
+// REGRAS DE COMPILAÇÃO (OS psíquica §4.5; F3 da OS priors compostos §4,
+// determinísticas, auditáveis):
+//   • assassino → mente_com_calma ACOPLADA ao cenário (premeditado 2/6,
+//     briga 1/6 — o ensaio dá a calma) OU mente_sob_pressao; sempre
+//     gatilho_de_complexo com o tema do medo central do vetor dele.
+//   • não-assassino de polaridade passiva → omite_por_decoro conforme a
+//     classe (DECORO_POR_CLASSE — a respeitabilidade é performática por
+//     degrau, não 50% plano).
 //   • não-assassino de polaridade ativa → acusa_com_fervor em metade dos
 //     sorteios (projeção: quem condena demais descreve a si).
 //   • vetor de vínculo (zelador/amante/devoto) → defende_demais_o_morto
 //     em metade dos sorteios.
-//   • falso-destoante (magnitude ≥ T sem ser o réu) → mente_sob_pressao +
+//   • falso-destoante (a ISCA PLENA, só regime 2) → mente_sob_pressao +
 //     gatilho_de_complexo: ele tem o que esconder — só que não é o crime.
+//   • destoante nato que NÃO é a isca → só gatilho_de_complexo (textura:
+//     quebra sob a pergunta certa e entrega biografia, não caso).
+//   • inocente (não-isca) → mente_com_calma_periferica:<tema> em ~1/6 —
+//     segredo refutável por matéria (dívida, ligação amorosa,
+//     desonestidade miúda), jamais janela/causa/nexo: mata a precisão
+//     100% do tell "mentira serena ⇒ réu".
 //   • tendências de vestígio v1: o pool da matriz de encenação (OS §8.4)
 //     aplicado ao assassino conforme o tipo de crime; a realização física
 //     dos itens novos é OS própria (válvula do §7 da OS).
 //
-// DESENCAIXE (OS §8.3): magnitude derivada do degrau de afinidade
-// vetor × demográfico (alta=0, media=1, rara=2). T=2 para o assassino
-// (reamostragem por rejeição com sal incremental, teto finito) e ≥1
-// falso-destoante inocente garantido (prioridade: coabitantes da vítima).
+// DESENCAIXE E REGIMES (OS §8.3; F3 §4.2): magnitude derivada do degrau
+// de afinidade vetor × demográfico (alta=0, media=1, rara=2). Moeda por
+// caso (sal `|caso|regime-magnitude`): regime 2 (~70%) exige réu com
+// magnitude ≥ T=2 e garante 1 falso-destoante (prioridade: coabitantes
+// da vítima); regime 1 (~30%) põe o réu no degrau MODAL (magnitude 1),
+// sem isca forçada — o caso é de circunstância, carregado pelo móbil
+// material, e a destoância deixa de ser lei aprendível.
 //
 // DETERMINISMO: toda decisão sai de hashDecisao (hash_gerador.js — o
 // hash decorrelacionado da OS priors compostos F2) sobre chave salgada
@@ -126,12 +138,12 @@ export const VETORES_PSIQUICOS = {
     },
     afinidadeDemografica: {
       squire: 'alta', paroco: 'media', medico: 'rara', boticario: 'media',
-      taverneiro: 'media', ferreiro: 'media', moleiro: 'media', merceeiro: 'alta',
-      professora: 'media', costureira: 'media', lavadeira: 'media', lavrador: 'rara',
-      criada: 'media', constable: 'media',
+      taverneiro: 'media', ferreiro: 'rara', moleiro: 'media', merceeiro: 'alta',
+      professora: 'media', costureira: 'rara', lavadeira: 'media', lavrador: 'rara',
+      criada: 'media', constable: 'rara',
     },
     proveniencia:
-      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 2 e §7.2 (squire/merceeiro; raros: medico — reina pela receita — e lavrador — patriarca de cottage); desencaixe §7.3 (Soberano num merceeiro/moleiro)',
+      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 2 e §7.2 (squire/merceeiro; raros: medico — reina pela receita — e lavrador — patriarca de cottage); OS priors compostos F3 §4.1/dossiê §2.7 (raros novos: ferreiro — a dinastia de ofício que a depressão nega; costureira — veste a gentry e decora cada gesto; constable — o uniforme sem mando)',
   },
 
   erudito: {
@@ -150,12 +162,12 @@ export const VETORES_PSIQUICOS = {
     },
     afinidadeDemografica: {
       squire: 'media', paroco: 'alta', medico: 'alta', boticario: 'alta',
-      taverneiro: 'media', ferreiro: 'rara', moleiro: 'rara', merceeiro: 'media',
-      professora: 'alta', costureira: 'rara', lavadeira: 'rara', lavrador: 'media',
-      criada: 'media', constable: 'media',
+      taverneiro: 'rara', ferreiro: 'rara', moleiro: 'rara', merceeiro: 'rara',
+      professora: 'alta', costureira: 'rara', lavadeira: 'rara', lavrador: 'rara',
+      criada: 'rara', constable: 'media',
     },
     proveniencia:
-      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 3 e §7.2 (paroco/medico/boticario/professora; raros: ferreiro/moleiro — autodidata sem letras — e costureira/lavadeira — inteligência sem porta); desencaixe §7.3 (Erudita numa costureira/criada)',
+      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 3 e §7.2 (paroco/medico/boticario/professora; raros: ferreiro/moleiro — autodidata sem letras — e costureira/lavadeira — inteligência sem porta); OS priors compostos F3 §4.1/dossiê §2.7 (raros novos: taverneiro — lê de madrugada o que a vila bebe de dia; merceeiro — a caderneta como único livro; lavrador — o gênio sem letras da biblioteca da capela; criada — lê às escondidas os livros do patrão)',
   },
 
   devoto: {
@@ -173,13 +185,13 @@ export const VETORES_PSIQUICOS = {
       ruido_pista_dupla: 2, mentiroso_por_medo: 2, fonte: 1,
     },
     afinidadeDemografica: {
-      squire: 'media', paroco: 'alta', medico: 'media', boticario: 'media',
+      squire: 'media', paroco: 'alta', medico: 'rara', boticario: 'media',
       taverneiro: 'rara', ferreiro: 'media', moleiro: 'media', merceeiro: 'media',
-      professora: 'alta', costureira: 'media', lavadeira: 'media', lavrador: 'media',
+      professora: 'alta', costureira: 'media', lavadeira: 'rara', lavrador: 'media',
       criada: 'media', constable: 'media',
     },
     proveniencia:
-      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 4 e §7.2 (paroco/professora; raro: taverneiro — herdou o pub que a capela manda odiar); desencaixe §7.3 (Devoto num taverneiro; motivo rivalidade_capela_taverna); tempero médium: §7.4.2',
+      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 4 e §7.2 (paroco/professora; raro: taverneiro — herdou o pub que a capela manda odiar); desencaixe §7.3 (Devoto num taverneiro; motivo rivalidade_capela_taverna); tempero médium: §7.4.2; OS priors compostos F3 §4.1/dossiê §2.7 (raros novos: medico — ciência × fé, a batina que o bisturi calou; lavadeira — lava a nódoa alheia e professa pureza)',
   },
 
   artifice: {
@@ -221,13 +233,13 @@ export const VETORES_PSIQUICOS = {
       ruido_pista_dupla: 1, mentiroso_por_medo: 2, fonte: 1,
     },
     afinidadeDemografica: {
-      squire: 'media', paroco: 'media', medico: 'media', boticario: 'media',
+      squire: 'rara', paroco: 'rara', medico: 'media', boticario: 'media',
       taverneiro: 'media', ferreiro: 'media', moleiro: 'media', merceeiro: 'media',
-      professora: 'media', costureira: 'alta', lavadeira: 'media', lavrador: 'media',
+      professora: 'rara', costureira: 'alta', lavadeira: 'media', lavrador: 'media',
       criada: 'alta', constable: 'media',
     },
     proveniencia:
-      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 6 (nota de nome: §7.4.3) e §7.2 (costureira/criada); desencaixe §7.3 (Amante numa esposa sem saída); papel veu: arquetipos-e-casting.md §4.1 (esconde o caso)',
+      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 6 (nota de nome: §7.4.3) e §7.2 (costureira/criada); desencaixe §7.3 (Amante numa esposa sem saída); papel veu: arquetipos-e-casting.md §4.1 (esconde o caso); OS priors compostos F3 §4.1/dossiê §2.7 (raros novos: squire — a paixão abaixo da classe; paroco — o coração que o púlpito não deixa; professora — casar é perder a escola, kb demografia §3)',
   },
 
   provador: {
@@ -270,12 +282,12 @@ export const VETORES_PSIQUICOS = {
     },
     afinidadeDemografica: {
       squire: 'rara', paroco: 'media', medico: 'media', boticario: 'media',
-      taverneiro: 'media', ferreiro: 'media', moleiro: 'media', merceeiro: 'media',
+      taverneiro: 'media', ferreiro: 'media', moleiro: 'rara', merceeiro: 'media',
       professora: 'rara', costureira: 'media', lavadeira: 'media', lavrador: 'alta',
       criada: 'media', constable: 'rara',
     },
     proveniencia:
-      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 8 e §7.2 (lavrador; raros: squire — herdeiro que odeia a herança —, professora — instrução como bilhete de fuga — e constable — o uniforme como jaula); desencaixe §7.3 (Errante em lavrador/constable, êxodo rural)',
+      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 8 e §7.2 (lavrador; raros: squire — herdeiro que odeia a herança —, professora — instrução como bilhete de fuga — e constable — o uniforme como jaula); desencaixe §7.3 (Errante em lavrador/constable, êxodo rural); OS priors compostos F3 §4.1/dossiê §2.7 (raro novo: moleiro — herdou o moinho que o prende, e o moinho a vapor o mata devagar, kb demografia §3)',
   },
 
   justiceiro: {
@@ -293,13 +305,13 @@ export const VETORES_PSIQUICOS = {
       ruido_pista_dupla: 2, mentiroso_por_medo: 1, fonte: 1,
     },
     afinidadeDemografica: {
-      squire: 'alta', paroco: 'media', medico: 'media', boticario: 'media',
+      squire: 'alta', paroco: 'media', medico: 'media', boticario: 'rara',
       taverneiro: 'media', ferreiro: 'alta', moleiro: 'alta', merceeiro: 'media',
       professora: 'media', costureira: 'media', lavadeira: 'media', lavrador: 'alta',
       criada: 'rara', constable: 'alta',
     },
     proveniencia:
-      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 9 e §7.2 (squire/ferreiro/moleiro/lavrador/constable; raro: criada — a que anota cada afronta); desencaixe §7.3 (Justiceiro numa criada/lavadeira, character negado)',
+      'sistemas-arquetipicos-alem-dos-12.md §7.1 linha 9 e §7.2 (squire/ferreiro/moleiro/lavrador/constable; raro: criada — a que anota cada afronta); desencaixe §7.3 (Justiceiro numa criada/lavadeira, character negado); OS priors compostos F3 §4.1/dossiê §2.7 (raro novo: boticario — o balcão que anota cada afronta, o fiado não pago)',
   },
 
   bufao: {
@@ -390,6 +402,47 @@ export const TIPO_ENCENACAO_POR_CENARIO = {
 const VETORES_DE_VINCULO = new Set(['zelador', 'amante', 'devoto']);
 
 // ---------------------------------------------------------------------
+// F3 DA OS PRIORS COMPOSTOS — regimes, decoro por classe e mentira
+// periférica (docs/os-priors-compostos-e-variedade-do-elenco.md §4).
+// ---------------------------------------------------------------------
+
+// Regime de magnitude do réu (§4.2, decisão 9 aprovada: 70/30):
+// regime 2 (~70%) = como sempre (réu magnitude ≥ T, isca garantida);
+// regime 1 (~30%) = réu LEVEMENTE deslocado (magnitude 1, o degrau modal
+// da vila), SEM isca forçada — destoantes natos permanecem se calharem,
+// e o caso é carregado pelo móbil material (que o gerador já promove).
+// A tese autoral vira frequência dominante, não lei aprendível.
+export const FRACAO_REGIME_2 = 7; // em décimos; sal `|caso|regime-magnitude`
+
+// Decoro por classe (§4.5; dossiê §2.8, decisão do pacote §D): a chance
+// de `omite_por_decoro` (dado polaridade passiva) deixa de ser 50% plano
+// e segue a respeitabilidade performática de cada degrau — a "moeda da
+// classe média" (kb-mundo-vitoriano/economia-e-estrutura-social.md §2;
+// números: chute calibrável registrado no dossiê). Em sextos.
+export const DECORO_POR_CLASSE = {
+  gentry: 4,
+  clero: 5,
+  profissional: 4,
+  comerciante: 4,
+  artesao: 3,
+  lavrador: 2,
+  criadagem: 3, // a criada cala pelo emprego (trait medroso), não pelo decoro
+  servico_do_condado: 3,
+};
+
+// Mentira periférica calma (§4.4, decisões 10–11): inocentes elegíveis
+// ganham `mente_com_calma_periferica:<tema>` em ~1/6 dos sorteios —
+// segredos REFUTÁVEIS POR MATÉRIA que jamais tocam janela/causa/nexo.
+// Quebra a precisão de 100% do tell "mentira serena ⇒ réu".
+export const CHANCE_CALMA_PERIFERICA = 1; // em sextos
+export const TEMAS_PERIFERICOS = ['divida_escondida', 'ligacao_amorosa', 'desonestidade_miuda'];
+
+// Calma do réu acoplada ao cenário (§4.4, decisão 7): premeditado 2/6
+// (o ensaio dá a calma), briga escalada 1/6 — média global ≈ os 25%
+// antigos; o que muda é o ACOPLAMENTO, não a taxa.
+export const CALMA_REU_POR_CENARIO = { premeditado: 2, briga_escalada: 1 };
+
+// ---------------------------------------------------------------------
 // SORTEIO (OS §4.2 e §8.2). `salBase` é salDaSeed(seed); `indice` é a
 // posição do personagem no elenco (estável por seed).
 // ---------------------------------------------------------------------
@@ -427,20 +480,25 @@ export function sortearPolaridade(salBase, indice) {
   return hashDecisao(`${salBase}|psique|pol_${indice}`) % 2 === 0 ? 'ativa' : 'passiva';
 }
 
-// Reamostra o vetor de um personagem até magnitude ≥ LIMIAR_DESENCAIXE.
-// Esgotado o teto, varredura determinística pela ordem do catálogo
-// (jamais laço aberto). Devolve { vetorId, tentativas }.
-function forcarDesencaixe(salBase, indice, arquetipoId) {
+// Reamostra o vetor de um personagem até `aceita(magnitude)` — usado
+// pelo regime 2 (magnitude ≥ T) e pelo regime 1 (magnitude === 1, o
+// estado modal). Esgotado o teto, varredura determinística pela ordem do
+// catálogo (jamais laço aberto). Devolve { vetorId, tentativas }.
+// Nota de engenharia (OS priors compostos §4.6): com os raros novos,
+// P(magnitude ≥ 2 por tentativa) subiu de ~3,4–7,7% para ~7–12%; falhar
+// as 24 tentativas caiu de ~37% para ~5–17% conforme o ofício — o teto
+// 24 + varredura permanece.
+function forcarVetor(salBase, indice, arquetipoId, aceita) {
   for (let k = 1; k <= MAX_TENTATIVAS; k++) {
     const vetorId = sortearVetor(salBase, indice, arquetipoId, k);
-    if (magnitudeDesencaixe(vetorId, arquetipoId) >= LIMIAR_DESENCAIXE) {
+    if (aceita(magnitudeDesencaixe(vetorId, arquetipoId))) {
       return { vetorId, tentativas: k };
     }
   }
-  const raro = Object.values(VETORES_PSIQUICOS).find(
-    (v) => MAGNITUDE_POR_DEGRAU[v.afinidadeDemografica[arquetipoId] ?? 'media'] >= LIMIAR_DESENCAIXE
+  const varrido = Object.values(VETORES_PSIQUICOS).find((v) =>
+    aceita(MAGNITUDE_POR_DEGRAU[v.afinidadeDemografica[arquetipoId] ?? 'media'])
   );
-  return { vetorId: raro.id, tentativas: MAX_TENTATIVAS + 1 };
+  return { vetorId: varrido.id, tentativas: MAX_TENTATIVAS + 1 };
 }
 
 // ---------------------------------------------------------------------
@@ -456,7 +514,7 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
   const salBase = typeof seed === 'string' ? seed : seed?.id || 'caso';
 
   // 1. Sorteio ortogonal por personagem (OS §4.2).
-  const log = { porPessoa: {}, reamostragens: [], falsoDestoanteId: null };
+  const log = { porPessoa: {}, reamostragens: [], falsoDestoanteId: null, regime: null };
   elenco.forEach((pessoa, indice) => {
     const vetorId = sortearVetor(salBase, indice, pessoa.arquetipo);
     log.porPessoa[pessoa.id] = {
@@ -467,41 +525,64 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
     };
   });
 
-  // 2. Assassino: desencaixe obrigatório (magnitude ≥ T), por
-  // reamostragem por rejeição (OS §8.3.2). A polaridade re-lê o próprio
-  // sal sobre o vetor final (não muda).
+  // 1b. Regime de magnitude do réu (F3 §4.2): moeda determinística por
+  // caso. Regime 2 = crime da alma (desencaixe forte + isca garantida);
+  // regime 1 = crime de circunstância (réu no degrau modal, sem isca).
+  const regime = hashDecisao(`${salBase}|caso|regime-magnitude`) % 10 < FRACAO_REGIME_2 ? 2 : 1;
+  log.regime = regime;
+
+  // 2. Assassino, conforme o regime. A polaridade re-lê o próprio sal
+  // sobre o vetor final (não muda).
   const doReu = log.porPessoa[assassinoId];
   const reu = elenco[doReu.indice];
-  if (doReu.magnitude < LIMIAR_DESENCAIXE) {
-    const { vetorId, tentativas } = forcarDesencaixe(salBase, doReu.indice, reu.arquetipo);
+  if (regime === 2 && doReu.magnitude < LIMIAR_DESENCAIXE) {
+    const { vetorId, tentativas } = forcarVetor(
+      salBase, doReu.indice, reu.arquetipo, (m) => m >= LIMIAR_DESENCAIXE
+    );
     log.reamostragens.push({ pessoaId: assassinoId, motivo: 'reu_sob_limiar', tentativas });
+    doReu.vetorId = vetorId;
+    doReu.magnitude = magnitudeDesencaixe(vetorId, reu.arquetipo);
+  } else if (regime === 1 && doReu.magnitude !== 1) {
+    // O réu se esconde no estado modal da vila (magnitude 1 — o degrau
+    // médio é o mais comum em todo ofício; convergência rápida).
+    const { vetorId, tentativas } = forcarVetor(
+      salBase, doReu.indice, reu.arquetipo, (m) => m === 1
+    );
+    log.reamostragens.push({ pessoaId: assassinoId, motivo: 'reu_fora_do_modal', tentativas });
     doReu.vetorId = vetorId;
     doReu.magnitude = magnitudeDesencaixe(vetorId, reu.arquetipo);
   }
 
-  // 3. Falso-destoante garantido (OS §8.3.3): ao menos um NÃO-assassino
-  // com magnitude ≥ T. Prioridade: coabitantes da vítima (os
-  // falsos-óbvios naturais), depois os demais; escolha determinística.
+  // 3. Falso-destoante (a ISCA PLENA — segredo probatório + mentira; no
+  // máximo 1 por caso, §4.3): SÓ NO REGIME 2 (OS §8.3.3). Prioridade:
+  // coabitantes da vítima, depois os demais; escolha determinística.
+  // No regime 1 não há isca forçada: destoantes natos permanecem se
+  // calharem (não remover, não forçar) e viram TEXTURA (§4.3) — o
+  // gatilho_de_complexo deles entra na compilação, mentira não.
   const inocentes = elenco.filter((p) => p.id !== assassinoId && p.id !== vitimaId);
-  const destoantesNatos = inocentes.filter(
-    (p) => log.porPessoa[p.id].magnitude >= LIMIAR_DESENCAIXE
-  );
-  if (destoantesNatos.length > 0) {
-    const prioridade =
-      destoantesNatos.find((p) => coabitantesVitimaIds.includes(p.id)) || destoantesNatos[0];
-    log.falsoDestoanteId = prioridade.id;
-  } else {
-    const fila = [
-      ...inocentes.filter((p) => coabitantesVitimaIds.includes(p.id)),
-      ...inocentes.filter((p) => !coabitantesVitimaIds.includes(p.id)),
-    ];
-    const escolhido = fila[hashDecisao(`${salBase}|psique|desenc_escolha`) % fila.length];
-    const dele = log.porPessoa[escolhido.id];
-    const { vetorId, tentativas } = forcarDesencaixe(salBase, dele.indice, escolhido.arquetipo);
-    log.reamostragens.push({ pessoaId: escolhido.id, motivo: 'falso_destoante', tentativas });
-    dele.vetorId = vetorId;
-    dele.magnitude = magnitudeDesencaixe(vetorId, escolhido.arquetipo);
-    log.falsoDestoanteId = escolhido.id;
+  if (regime === 2) {
+    const destoantesNatos = inocentes.filter(
+      (p) => log.porPessoa[p.id].magnitude >= LIMIAR_DESENCAIXE
+    );
+    if (destoantesNatos.length > 0) {
+      const prioridade =
+        destoantesNatos.find((p) => coabitantesVitimaIds.includes(p.id)) || destoantesNatos[0];
+      log.falsoDestoanteId = prioridade.id;
+    } else {
+      const fila = [
+        ...inocentes.filter((p) => coabitantesVitimaIds.includes(p.id)),
+        ...inocentes.filter((p) => !coabitantesVitimaIds.includes(p.id)),
+      ];
+      const escolhido = fila[hashDecisao(`${salBase}|psique|desenc_escolha`) % fila.length];
+      const dele = log.porPessoa[escolhido.id];
+      const { vetorId, tentativas } = forcarVetor(
+        salBase, dele.indice, escolhido.arquetipo, (m) => m >= LIMIAR_DESENCAIXE
+      );
+      log.reamostragens.push({ pessoaId: escolhido.id, motivo: 'falso_destoante', tentativas });
+      dele.vetorId = vetorId;
+      dele.magnitude = magnitudeDesencaixe(vetorId, escolhido.arquetipo);
+      log.falsoDestoanteId = escolhido.id;
+    }
   }
 
   // 4. Encenação condicionada ao tipo de crime (OS §4.4/§8.4).
@@ -513,7 +594,8 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
     pool: matriz.pool.map((item) => item.id),
   };
 
-  // 5. Compilação de consequências (OS §4.5) — o rótulo fica no log.
+  // 5. Compilação de consequências (OS §4.5; F3 §4.3–§4.5) — o rótulo
+  // fica no log.
   const porPessoa = {};
   for (const pessoa of elenco) {
     if (pessoa.id === vitimaId) continue;
@@ -521,11 +603,25 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
     const vetor = VETORES_PSIQUICOS[dele.vetorId];
     const flags = [];
     if (pessoa.id === assassinoId) {
-      const calma = hashDecisao(`${salBase}|psique|flag_${dele.indice}_1`) % 4 === 0;
+      // Calma acoplada ao cenário (F3 §4.4, decisão 7): o ensaio dá a
+      // calma. Sal NOVO `flag_<i>_calma_cenario` (a decisão mudou de
+      // forma; o antigo flag_<i>_1 aposenta-se — regra de ouro dos sais).
+      const calma =
+        hashDecisao(`${salBase}|psique|flag_${dele.indice}_calma_cenario`) % 6 <
+        (CALMA_REU_POR_CENARIO[cenario] ?? 1);
       flags.push(calma ? 'mente_com_calma' : 'mente_sob_pressao');
       flags.push(`gatilho_de_complexo:${vetor.temaGatilho}`);
     } else {
-      if (dele.polaridade === 'passiva') flags.push('omite_por_decoro');
+      // Decoro por classe (F3 §4.5): a omissão respeitável é mais
+      // provável onde a respeitabilidade é a moeda. Sal novo
+      // `flag_<i>_decoro` (antes era incondicional na polaridade).
+      if (
+        dele.polaridade === 'passiva' &&
+        hashDecisao(`${salBase}|psique|flag_${dele.indice}_decoro`) % 6 <
+          (DECORO_POR_CLASSE[pessoa.classeSocial] ?? 3)
+      ) {
+        flags.push('omite_por_decoro');
+      }
       if (dele.polaridade === 'ativa' && hashDecisao(`${salBase}|psique|flag_${dele.indice}_2`) % 2 === 0) {
         flags.push('acusa_com_fervor');
       }
@@ -533,8 +629,29 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
         flags.push('defende_demais_o_morto');
       }
       if (pessoa.id === log.falsoDestoanteId) {
+        // A isca plena (só regime 2): mentira + o que esconder.
         if (!flags.includes('mente_sob_pressao')) flags.push('mente_sob_pressao');
         flags.push(`gatilho_de_complexo:${vetor.temaGatilho}`);
+      } else if (dele.magnitude >= LIMIAR_DESENCAIXE) {
+        // Destoância como TEXTURA (F3 §4.3): o destoante nato que não é
+        // a isca quebra sob a pergunta certa e entrega biografia, não
+        // caso — gatilho sim, mentira sobre janela/causa/nexo jamais.
+        flags.push(`gatilho_de_complexo:${vetor.temaGatilho}`);
+      }
+      // Mentira periférica calma (F3 §4.4): segredo refutável por
+      // matéria, nunca janela/causa/nexo — mata o tell "serena ⇒ réu".
+      // A isca plena está fora (já mente o paradeiro dela).
+      if (
+        pessoa.id !== log.falsoDestoanteId &&
+        hashDecisao(`${salBase}|psique|flag_${dele.indice}_calma_periferica`) % 6 <
+          CHANCE_CALMA_PERIFERICA
+      ) {
+        const tema =
+          TEMAS_PERIFERICOS[
+            hashDecisao(`${salBase}|psique|flag_${dele.indice}_tema_periferico`) %
+              TEMAS_PERIFERICOS.length
+          ];
+        flags.push(`mente_com_calma_periferica:${tema}`);
       }
     }
     porPessoa[pessoa.id] = {

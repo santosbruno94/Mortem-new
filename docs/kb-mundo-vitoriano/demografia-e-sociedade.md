@@ -63,6 +63,10 @@ pedreiro, guarda-caça, policial rural (o "delegado" de vila é um *constable* d
 menos uma em cada vila), lavadeira, faxineira por dia (*charwoman*), professora,
 parteira, taverneira (muitas viúvas tocam o pub do falecido). O censo **subregistra**
 a mulher casada que trabalha — a que toca a forja com o marido consta como "esposa".
+A professora de vila vive sob o *marriage bar* de fato: casar é, na prática, perder
+o posto — o vínculo amoroso é vocação estrangulada do ofício. E o moleiro de vento
+agoniza na mesma década: o moinho a vapor e os *roller mills* urbanos tomam o trigo
+que restou da depressão — o moinho herdado é ao mesmo tempo posse e prisão.
 
 **Crianças**: escola obrigatória até os 10 anos (frequência irregular na colheita);
 dos 11–13 em diante, meninos vão à lavoura, meninas viram criadas de cozinha ou babás —
