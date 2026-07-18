@@ -201,3 +201,59 @@ Aplicar o que F1 §2.8 tiver fundamentado (decoro por classe etc.); o que não t
 7. Todo item **[DECISÃO]** respondido pelo autor antes do merge da fase correspondente.
 
 — fim da OS —
+
+---
+
+## Ata de fechamento — 18/07/2026
+
+**Execução integral, F0 → F4, um commit por fase, nesta branch.** Os 12 pontos
+**[DECISÃO]** foram apresentados ao autor com opções e recomendação e respondidos
+antes de F2 (todas as recomendações aprovadas — registro no dossiê F1 §D).
+Artefatos por fase:
+
+- **F0** (`docs/os-priors-compostos-f0-triagem.md` + `scripts/auditoria-elenco.mjs`):
+  13 reclamações trianguladas (5×A, 5×B, 3×C) — a regra de parada não se ativou.
+  **Achado não previsto (B✱):** `hashString` linear acopla sorteios-irmãos de
+  sufixo isométrico; quadrantes INT × WIS permitidos pelos priors estavam mortos
+  na prática. Registro: o relatório de 18/07 citado como origem não estava no
+  repositório; a auditoria nova reproduziu e confirmou todos os números que a OS
+  lhe atribui, e passou a ser a referência auditável.
+- **F1** (`docs/os-priors-compostos-f1-dossies.md`): dez dossiês (a)–(e) com
+  Monte Carlo de 200 mil elencos, censo de 1891 com fontes por candidato,
+  propostas de pesos inteiros e rotulagem fonte × chute. Pesquisas de campo:
+  ocupações/nomes/sobrenomes (com lacunas declaradas — o top-200 de 1890 ficou
+  inacessível ao ambiente; proxy ONS 1904 podado, com método registrado) e
+  varredura da kb-medicina-legal (15 candidatos de encenação com falha
+  detectável, para a OS futura de realização — expansão BLOQUEADA, como manda o
+  §2.9).
+- **F2** (prior composto): `hashDecisao` local do gerador (decisão 3);
+  CURVAS_DE_ACESSO com N1 por construção (a lavadeira pode ser gênio);
+  `tiltAtributos` (N2/N3); pipeline reordenado (vetor antes de atributos);
+  cascata de forçamento `|forcado|t<k>`; guardas G1–G4 + decorrelação.
+- **F3** (desencaixe e anti-tell): 2º raro em 14/14 ofícios (3º em pároco e
+  lavrador); regimes 70/30 (decisão 9); destoância-textura; mentira periférica
+  calma 1/6 (decisão 10) e calma do réu acoplada ao cenário (decisão 7); decoro
+  por classe; G5 (piso 60%, decisão 11) e G6; anti-tell regime-ciente.
+- **F4** (pools): 18 arquétipos (decisão 1), catálogo v2 de 13 vetores
+  (decisão 2; Penitente reprovado com registro na KB §7.5), +3 comportamentos
+  (decisão 5), +4 motivos com aritmética, nomes ponderados (Galbi) e sobrenomes
+  50 com viés sul rural (decisão 6), `chanceSegundoTrait`, `afinidadePapeis`
+  removida (decisão 12, registro em `historico-decisoes.md`); G7.
+- **Relatório v2 (G8):** `docs/os-priors-compostos-relatorio-v2.md` — todas as
+  tabelas regeneradas por Monte Carlo (200 mil elencos + 200 casos completos)
+  com os dados finais; é o artefato de aceite, com os critérios do §7 conferidos
+  um a um.
+
+Sais novos, consolidados (contrato §0.5): `atributo-composto:FOR/INT/WIS/CHA`,
+`|forcado|t<k>`, `|caso|regime-magnitude`, `flag_<i>_calma_cenario`,
+`flag_<i>_decoro`, `flag_<i>_calma_periferica`, `flag_<i>_tema_periferico`,
+`segundoTrait-v2` — e o re-hash integral do namespace `|elenco|`/`|psique|` por
+`hashDecisao`. Golden set regenerado a cada fase; `npm run build`, `qa.mjs`
+(CASO VÁLIDO) e `qa-ui.mjs` (UI VÁLIDA) verdes em todo commit.
+
+**Pendências herdadas, fora desta OS (registro):** consumo das flags pelo
+diálogo (OS de diálogo — caixa C da triagem; inclui `mente_com_calma_periferica`
+e os 3 comportamentos novos, que já saem compilados); realização física dos
+pools de encenação (inventário pronto no dossiê §2.9); ganchos de biografia da
+vítima (decisão 8 — na OS de diálogo); playtest de mesa do autor sobre o pool
+regenerado.

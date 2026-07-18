@@ -197,7 +197,7 @@ console.log('\n--- E. Traits, nomes ---\n');
 console.log(`  segundo trait: ${pct(distTraits.dois / (N * 8))} (alvo do código: ~33% quando o pool comporta)`);
 console.log(`  prenomes distintos usados: ${prenomesVistos.size}; sobrenomes distintos: ${sobrenomesVistos.size}`);
 const topPre = [...prenomesVistos.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
-console.log(`  top-5 prenomes (sorteio uniforme por coorte): ${topPre.map(([n, c]) => `${n} ${pct(c / (N * 8))}`).join(', ')}`);
+console.log(`  top-5 prenomes (ponderado por frequência desde F4): ${topPre.map(([n, c]) => `${n} ${pct(c / (N * 8))}`).join(', ')}`);
 console.log(`  elencos com sobrenome repetido internamente: ${pct(sobrenomeRepetidoNoElenco / N)}`);
 console.log(`  pares nome+sobrenome distintos nos primeiros 2000 elencos: ${paresNomeSobrenome.size} de ${2000 * 8}`);
 
@@ -209,8 +209,8 @@ console.log(`  destoantes natos por caso (entre ~6 inocentes): média ${media(de
 const dist = {};
 for (const d of destoantesNatosTotais) dist[d] = (dist[d] || 0) + 1;
 console.log(`  distribuição: ${Object.entries(dist).sort().map(([k, v]) => `${k}: ${pct(v / casos)}`).join('  ')}`);
-console.log(`  mente_com_calma no réu: ${pct(mentiuComCalma / casos)} (constante 1/4 do código)`);
-console.log(`  omite_por_decoro em não-assassinos: ${pct(omiteDecoro / naoAssassinos)} (polaridade passiva, 1/2)`);
+console.log(`  mente_com_calma no réu: ${pct(mentiuComCalma / casos)} (desde F3: acoplada ao cenário — aqui tudo premeditado, alvo 2/6)`);
+console.log(`  omite_por_decoro em não-assassinos: ${pct(omiteDecoro / naoAssassinos)} (desde F3: passiva 1/2 × decoro por classe)`);
 
 console.log('\n--- G. Mapa ofício-do-réu → vetor do réu (a quase-determinização) ---\n');
 for (const id of IDS) {
