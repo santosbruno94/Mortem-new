@@ -45,6 +45,7 @@
 // =====================================================================
 
 import { METODOS } from './metodos.js';
+import { SEDE_LEGIVEL } from './vestigios.js';
 
 // Hora de chegada padrão do perito à cena (mesma convenção do
 // caso-escola: 11h00 do dia 14/out na escala absoluta — src/logic/
@@ -158,7 +159,8 @@ export function fatiaForenseDoCrime({
     localidade: 'corpo',
     suporteFisico: 'corpo',
     textoDisplay: 'A Lesão Fatal',
-    carimboPadrao: `Sinal de ${metodo.rotulo.toLowerCase()}`,
+    // OS autobattler v2 (B3): o laudo ganha a sede anatômica (M1 absorvido).
+    carimboPadrao: `Sinal de ${metodo.rotulo.toLowerCase()}${metodo.sedeFatal ? `; sede: ${SEDE_LEGIVEL[metodo.sedeFatal] || metodo.sedeFatal}` : ''}`,
     descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
     tagsOcultas: { dominio: 'causal', subDominio: 'ferida', sinal: metodo.sinalAssinatura },
   });
@@ -287,6 +289,89 @@ export function fatiaForenseDoCrime({
       },
     });
   }
+  // ---- OS autobattler v2 (B3): as superfícies das doutrinas ----
+  // Cartas ambientais (a peça fora do lugar, a fibra na aresta, a peça
+  // limpa): observação de cena SEM pertenceA e SEM sinal — o motor não as
+  // lê como nexo nem como causa (a incidental é naoCausal por lei).
+  const CARTAS_AMBIENTAIS_V2 = [
+    ['peca_deslocada', 'gen_peca_deslocada', 'Peça Fora do Lugar'],
+    ['fibra_na_aresta', 'gen_fibra_aresta', 'Fibra na Aresta'],
+    ['peca_limpa_fora_de_hora', 'gen_peca_limpa', 'A Peça Limpa Fora de Hora'],
+  ];
+  for (const [classe, idCarta, rotuloCarta] of CARTAS_AMBIENTAIS_V2) {
+    const v = crime.vestigios.find((x) => x.classe === classe && !x.removido);
+    if (!v) continue;
+    cartas.push({
+      id: idCarta,
+      localidade: 'cena',
+      suporteFisico: 'cena',
+      comodo: v.comodo ?? null,
+      celula: v.celula ? { ...v.celula } : null,
+      mobilia: v.mobilia ?? null,
+      textoDisplay: rotuloCarta,
+      carimboPadrao: v.detalhe,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: { dominio: 'vestigio', subDominio: 'ambiente_da_luta', tipoVestigio: classe },
+    });
+  }
+  // O resíduo na peça improvisada: sangue do agressor na peça — segunda
+  // via de presença (pertenceA), fisicamente destrutível como o respingo.
+  const vResiduoPeca = crime.vestigios.find((v) => v.classe === 'residuo_na_peca' && !v.removido);
+  if (vResiduoPeca) {
+    cartas.push({
+      id: 'gen_residuo_peca',
+      localidade: 'cena',
+      suporteFisico: 'cena',
+      comodo: vResiduoPeca.comodo ?? null,
+      celula: vResiduoPeca.celula ? { ...vResiduoPeca.celula } : null,
+      mobilia: vResiduoPeca.mobilia ?? null,
+      textoDisplay: 'Resíduo na Peça',
+      carimboPadrao: vResiduoPeca.detalhe,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: { dominio: 'vestigio', subDominio: 'sangue_do_agressor', tipoVestigio: 'residuo_na_peca', pertenceA: assassino.id },
+    });
+  }
+  // Cartas de corpo (o laudo lê): ungueais do desvencilhar e a lesão
+  // incidental — a incidental SEM sinal causal (trava naoCausal).
+  const vUngueais = crime.vestigios.find((v) => v.classe === 'ungueais_de_desvencilhamento');
+  if (vUngueais) {
+    cartas.push({
+      id: 'gen_ungueais',
+      localidade: 'corpo',
+      suporteFisico: 'corpo',
+      textoDisplay: 'Escoriações Ungueais',
+      carimboPadrao: vUngueais.detalhe,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: { dominio: 'vestigio', subDominio: 'desvencilhamento', sede: vUngueais.sede ?? null },
+    });
+  }
+  const vIncidental = crime.vestigios.find((v) => v.classe === 'lesao_incidental');
+  if (vIncidental) {
+    cartas.push({
+      id: 'gen_incidental',
+      localidade: 'corpo',
+      suporteFisico: 'corpo',
+      textoDisplay: 'Contusão com Padrão de Quina',
+      carimboPadrao: vIncidental.detalhe,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: { dominio: 'vestigio', subDominio: 'lesao_ambiental', sede: vIncidental.sede ?? null },
+    });
+  }
+  // O ferimento no CORPO do réu (fecha a remedição do B0): vive fora da
+  // cena, no exame do agressor — fora do alcance da R2 (não é 'cena').
+  const vFerimentoReu = crime.vestigios.find((v) => v.classe === 'ferimento_do_agressor');
+  if (vFerimentoReu) {
+    cartas.push({
+      id: 'gen_ferimento_reu',
+      localidade: 'oficio_do_reu',
+      suporteFisico: 'corpo_do_reu',
+      textoDisplay: 'Ferimento no Suspeito',
+      carimboPadrao: vFerimentoReu.detalhe,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: { dominio: 'vestigio', subDominio: 'ferimento_do_agressor', pertenceA: assassino.id, sede: vFerimentoReu.sede ?? null },
+    });
+  }
+
   // O depoimento do ruído: a testemunha da vizinhança que ouviu a luta
   // (grafo de avistamentos via autobattler). Alvo possível de
   // interferência (intimidar/subornar/silenciar) — por isso identifica a

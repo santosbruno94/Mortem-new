@@ -1481,7 +1481,11 @@ const rejeicaoIntegra = casosGeradosPrimeira.every((caso) => {
   return (
     caso.crime.posicaoCorpo != null &&
     typeof caso.crime.hora.morte === 'number' &&
-    b.tentativasDescartadas.every((t, i) => t.tentativa === i && ['assassino_ferido', 'vitima_resistiu'].includes(t.motivo)) &&
+    b.tentativasDescartadas.every(
+      (t, i) =>
+        t.tentativa === i &&
+        ['assassino_ferido', 'vitima_resistiu', 'vitima_escapou', 'vitima_venceu_armada', 'assassino_incapacitado'].includes(t.motivo)
+    ) &&
     (b.suprimida ? b.rodadas === 0 : b.rodadas >= 1) &&
     (b.desespero || b.tentativaAceita === b.tentativasDescartadas.length)
   );
@@ -1856,8 +1860,9 @@ function problemasDaInterferencia(caso) {
 // ocorre) — varridas deterministicamente na Fase 4; mudar o gerador pode
 // exigir nova varredura (o objetivo é nunca deixar os lints vazios).
 // Varredura refeita na F2 da OS priors compostos (o prior composto +
-// hashDecisao mudaram a amostragem; regra desta guarda).
-const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_4', 'intf_qa_5', 'intf_qa_7', 'intf_qa_11'];
+// hashDecisao mudaram a amostragem; regra desta guarda) e na B3 da OS
+// autobattler v2 (o resolvedor novo mudou o replay; cúmplice em _130).
+const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_4', 'intf_qa_5', 'intf_qa_130'];
 const casosInterferencia = SEEDS_QA_INTERFERENCIA.map((sd) => gerarCasoBruto(sd));
 const problemasInterferencia = [...casosGeradosPrimeira, ...casosInterferencia].flatMap((caso) =>
   problemasDaInterferencia(caso).map((p) => `${caso.seed}: ${p}`)
@@ -3518,6 +3523,43 @@ const gb4MatrizCompletaOk =
   Object.keys(SEDES_POR_REGIAO).length === 5 &&
   ['bracos', 'maos', 'pernas', 'cabeca', 'tronco'].every((r) => Array.isArray(SEDES_POR_REGIAO[r]) && SEDES_POR_REGIAO[r].length > 0);
 
+// ============================================================
+// GUARDA DA OS AUTOBATTLER V2 — B3. GB6 (procedência total): todo
+// vestígio aponta evento de origem; toda sede estampada pertence a
+// SEDES_POR_REGIAO; a lesão incidental só nasce de peça com quina
+// perigosa; peça deslocada só com evento de armar-se/interpor; as
+// classes naoCausal jamais carregam `sinal` em carta (a incidental não
+// concorre no cravar).
+// ============================================================
+const SEDES_VALIDAS = new Set(Object.values(SEDES_POR_REGIAO).flat());
+const gb6Falhas = [];
+for (const caso of casosGeradosPrimeira) {
+  const { crime, fatiaForense } = caso;
+  const depositados = new Set(crime.eventos.flatMap((e) => e.vestigiosDepositados));
+  for (const v of crime.vestigios) {
+    if (!depositados.has(v.id)) gb6Falhas.push(`${caso.seed}: ${v.id} (${v.classe}) sem evento de origem`);
+    if (v.sede != null && !SEDES_VALIDAS.has(v.sede)) gb6Falhas.push(`${caso.seed}: ${v.id} sede inválida (${v.sede})`);
+    if (CLASSES_VESTIGIO[v.classe]?.temSede && v.sede == null) gb6Falhas.push(`${caso.seed}: ${v.id} (${v.classe}) exige sede`);
+  }
+  for (const e of crime.eventos.filter((x) => x.acao === 'lesao_incidental')) {
+    const peca = e.mobilia ? caso.mundo.interiores[caso.escolha.localId].mobilia.find((m) => m.id === e.mobilia) : null;
+    if (!peca || !FISICA_DA_MOBILIA[peca.item]?.quinaPerigosa)
+      gb6Falhas.push(`${caso.seed}: incidental fora de quina perigosa`);
+  }
+  for (const v of crime.vestigios.filter((x) => x.classe === 'peca_deslocada')) {
+    const tem = crime.eventos.some(
+      (e) => ['peca_tomada', 'interposicao_da_peca'].includes(e.acao) && e.vestigiosDepositados.includes(v.id)
+    );
+    if (!tem) gb6Falhas.push(`${caso.seed}: peca_deslocada sem evento de armar-se/interpor`);
+  }
+  for (const carta of fatiaForense.cartas) {
+    if (['gen_incidental', 'gen_fibra_aresta'].includes(carta.id) && carta.tagsOcultas.sinal != null)
+      gb6Falhas.push(`${caso.seed}: carta naoCausal com sinal (${carta.id})`);
+  }
+}
+const gb6ProcedenciaOk = gb6Falhas.length === 0;
+if (!gb6ProcedenciaOk) console.log('\nAUTOBATTLER V2 — GB6:', gb6Falhas.slice(0, 8).join(' | '));
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -3623,6 +3665,7 @@ const checagens = [
   ['Autobattler v2 — GB2 integridade da física: todo item de vocabulário com física; empunhável bem-formado; fixa jamais empunhável; âncora d\'água derivada == canônica do E2 (OS autobattler v2 B1)', gb2IntegridadeFisicaOk],
   ['Autobattler v2 — GB3 pureza da doutrina: 10⁴ estados de fuzz ⇒ mesma ação; toda ação devolvida é legal; doutrinas.js sem hash (OS autobattler v2 B2)', gb3PurezaDoutrinaOk],
   ['Autobattler v2 — GB4 matriz ação→vestígio: toda ação com classe existente; linhas de doutrina compatíveis com papel; classes novas bem-formadas; SEDES_POR_REGIAO com as 5 regiões (OS autobattler v2 B2/D2)', gb4MatrizCompletaOk],
+  ['Autobattler v2 — GB6 procedência total: vestígio com evento de origem; sede ∈ SEDES_POR_REGIAO; incidental só em quina perigosa; peça deslocada só por armar-se/interpor; naoCausal sem sinal (OS autobattler v2 B3)', gb6ProcedenciaOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

@@ -121,7 +121,7 @@ export const CATALOGO_ACOES = {
     papel: 'vitima',
     rotulo: 'Fugir rumo à saída',
     precondicao: (e) =>
-      e.eu.agarre === 'livre' && pernasServem(e) && !e.flags.forcarVitoria && !e.flags.fugaSuprimida,
+      e.eu.agarre === 'livre' && pernasServem(e) && Number.isFinite(e.dist.aSaida) && !e.flags.forcarVitoria && !e.flags.fugaSuprimida,
     classeVestigio: 'trilha_gotejamento',
     rastro: 'trilha de gotejamento + esfregaço de limiar + lesões de sítio posterior (o preço da fuga, vigente)',
   },

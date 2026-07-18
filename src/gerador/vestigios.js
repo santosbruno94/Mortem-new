@@ -55,6 +55,29 @@ export const VARIAVEIS_BATALHA = {
 // agarrar a lâmina, de palma). Toda `sede` estampada num vestígio de
 // lesão (B3) tem de pertencer à lista da sua região (lint GB6).
 // ---------------------------------------------------------------------
+// A sede em língua de superfície (carimbo/prosa) — o id nunca vaza.
+export const SEDE_LEGIVEL = {
+  antebracos: 'antebraços',
+  bracos: 'braços',
+  ombros: 'ombros',
+  palmas: 'palmas das mãos',
+  dorso_das_maos: 'dorso das mãos',
+  sob_as_unhas: 'sob as unhas',
+  coxas: 'coxas',
+  canelas: 'canelas',
+  joelhos: 'joelhos',
+  couro_cabeludo: 'couro cabeludo',
+  fronte: 'fronte',
+  tempora: 'têmpora',
+  face: 'face',
+  pescoco: 'pescoço',
+  nuca: 'nuca',
+  torax: 'tórax',
+  dorso: 'dorso',
+  flancos: 'flancos',
+  abdome: 'abdome',
+};
+
 export const SEDES_POR_REGIAO = {
   bracos: ['antebracos', 'bracos', 'ombros'],
   maos: ['palmas', 'dorso_das_maos', 'sob_as_unhas'],

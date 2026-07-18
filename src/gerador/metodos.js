@@ -71,6 +71,8 @@ export const METODOS = {
     mecanismo: 'ferida_arma_branca',
     seguraAVitima: false,
     mobilidadeResidual: 2, // sangra, mas não prende: a fuga decai devagar
+    regiaoAlvo: 'tronco', // OS autobattler v2 (B3): a região que o método busca
+    sedeFatal: 'torax', // a sede do laudo (∈ SEDES_POR_REGIAO da regiaoAlvo)
     exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/traumas.md (feridas incisas e perfuro-cortantes; ferimentos defensivos)',
   },
@@ -88,6 +90,8 @@ export const METODOS = {
     mecanismo: 'estrangulamento_ligadura',
     seguraAVitima: true, // o laço cala e prende: fugir e gritar peso 0
     mobilidadeResidual: null,
+    regiaoAlvo: 'cabeca',
+    sedeFatal: 'pescoco',
     exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/asfixias.md (sulco horizontal de ligadura × sulco oblíquo; a ligadura mantida anula a ação — capacidade de ação pós-lesão)',
   },
@@ -105,6 +109,8 @@ export const METODOS = {
     mecanismo: 'estrangulamento_manual',
     seguraAVitima: true, // a mão no pescoço prende: fugir e gritar peso 0
     mobilidadeResidual: null,
+    regiaoAlvo: 'cabeca',
+    sedeFatal: 'pescoco',
     exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/asfixias.md (equimoses digitais e marcas ungueais da esganadura; a compressão cervical mantida anula a ação)',
   },
@@ -122,6 +128,8 @@ export const METODOS = {
     mecanismo: 'trauma_contuso',
     seguraAVitima: false,
     mobilidadeResidual: 0, // trauma craniano: a fuga decai rápido após o 1º golpe
+    regiaoAlvo: 'cabeca',
+    sedeFatal: 'tempora',
     exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/traumas.md (ferida contusa e fratura por instrumento rombo; trauma craniano com inconsciência suprime a ação)',
   },
@@ -139,6 +147,8 @@ export const METODOS = {
     mecanismo: 'envenenamento_arsenico',
     seguraAVitima: false,
     mobilidadeResidual: null, // suprimeBatalha: não há ação a decair
+    regiaoAlvo: null,
+    sedeFatal: null,
     exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/venenos.md (arsênico: aquisição registrada em livro de venenos, odor aliáceo)',
   },
@@ -158,6 +168,8 @@ export const METODOS = {
     mecanismo: 'sufocacao',
     seguraAVitima: true, // a mão/pano abafa: fugir e gritar peso 0 enquanto aplicado
     mobilidadeResidual: 1, // intermediária (só conta se a vítima se solta entre aplicações)
+    regiaoAlvo: 'cabeca',
+    sedeFatal: 'face',
     exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/asfixias.md (sufocação: escoriações periorais, sem sulco; a asfixia mais pobre em sinais — Taylor)',
   },
@@ -175,6 +187,8 @@ export const METODOS = {
     mecanismo: 'afogamento',
     seguraAVitima: true, // a cabeça sob a água prende: fugir e gritar peso 0
     mobilidadeResidual: null,
+    regiaoAlvo: 'tronco',
+    sedeFatal: 'torax',
     exigeAncora: 'agua', // D2: só na cena com água alcançável (o cocho da forja)
     proveniencia: 'docs/kb-medicina-legal/asfixias.md (afogamento: cogumelo de espuma, enfisema aquoso de Casper; submersão em vida)',
   },
@@ -192,6 +206,8 @@ export const METODOS = {
     mecanismo: 'envenenamento_laudano',
     seguraAVitima: false,
     mobilidadeResidual: null, // suprimeBatalha
+    regiaoAlvo: null,
+    sedeFatal: null,
     exigeAncora: null,
     proveniencia: 'docs/kb-medicina-legal/venenos.md (ópio e láudano: miose em ponta de alfinete, depressão respiratória; venda livre em 1893) — D1 do usuário',
   },
