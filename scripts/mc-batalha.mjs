@@ -111,14 +111,32 @@ for (let i = 1; i <= N; i++) {
   if (typeof variaveis.ferimentos_vitima === 'number') t.ferimVitima += variaveis.ferimentos_vitima;
 
   // Réu ferido (a remedição do B0): a batalha aceita feriu o assassino?
-  // Única via observável no v1: o respingo de CENA (sangue_alheio →
-  // carta gen_sangue_alheio). NENHUM observável no corpo do réu existe.
   const reuFerido = typeof variaveis.ferimentos_assassino === 'number' && variaveis.ferimentos_assassino > 0;
   if (reuFerido) {
     t.reuFerido += 1;
     if (batalha.desespero) t.reuFeridoDesespero += 1;
     const temCarta = bruto.fatiaForense.cartas.some((c) => c.id === 'gen_sangue_alheio');
     if (!temCarta) t.reuFeridoSemCarta += 1;
+    // v2: o observável no CORPO do réu (era 0% no v1 — GB8/B3).
+    if (bruto.fatiaForense.cartas.some((c) => c.id === 'gen_ferimento_reu')) t.reuFeridoComCartaCorpo = (t.reuFeridoComCartaCorpo || 0) + 1;
+  }
+
+  // v2 (GB8): as bandas das doutrinas — D3: fuga 10–20%, armar-se 8–15%,
+  // incidental 5–10%, desespero ≤5%, rastro-por-ação ≥90%.
+  const inertes = metadados.variaveisInertes;
+  const armouSe = variaveis.arma_improvisada != null || inertes.includes('arma_improvisada');
+  if (armouSe) {
+    t.armarSe = (t.armarSe || 0) + 1;
+    if (variaveis.arma_improvisada != null) t.armarSeEvid = (t.armarSeEvid || 0) + 1;
+  }
+  if (variaveis.desvencilhamento != null || inertes.includes('desvencilhamento')) t.desvencilhou = (t.desvencilhou || 0) + 1;
+  if (variaveis.lesao_incidental != null || inertes.includes('lesao_incidental')) t.incidental = (t.incidental || 0) + 1;
+  if (variaveis.interposicao != null || inertes.includes('interposicao')) t.interpos = (t.interpos || 0) + 1;
+  // rastro-por-ação: das ações realizadas (armar-se, desvencilhar,
+  // incidental, interpor), quantas ficaram EVIDENCIADAS (não inertes)?
+  for (const varId of ['arma_improvisada', 'desvencilhamento', 'lesao_incidental', 'interposicao', 'ferimento_reu_regiao']) {
+    if (variaveis[varId] != null) t.rastroEvid = (t.rastroEvid || 0) + 1;
+    else if (inertes.includes(varId)) t.rastroInerte = (t.rastroInerte || 0) + 1;
   }
 
   if (i % 20000 === 0)
@@ -153,6 +171,14 @@ console.log('\n— Réu ferido (a remedição) —');
 console.log(`  batalhas aceitas que feriram o assassino: ${t.reuFerido} (${pct(t.reuFerido, t.travadas)}; ${t.reuFeridoDesespero} em desespero)`);
 console.log(`  … sem a carta gen_sangue_alheio (cena): ${t.reuFeridoSemCarta} (${pct(t.reuFeridoSemCarta, t.reuFerido)})`);
 console.log(`  … com observável no CORPO do réu: 0 (0.0%) — a classe não existe no v1`);
+
+console.log('\n— Doutrinas v2 (bandas D3 sobre as travadas) —');
+console.log(`  armar-se: ${t.armarSe || 0} (${pct(t.armarSe || 0, t.travadas)}); evidenciada: ${pct(t.armarSeEvid || 0, t.travadas)}`);
+console.log(`  desvencilhamento: ${t.desvencilhou || 0} (${pct(t.desvencilhou || 0, t.travadas)})`);
+console.log(`  incidental: ${t.incidental || 0} (${pct(t.incidental || 0, t.travadas)})`);
+console.log(`  interposição: ${t.interpos || 0} (${pct(t.interpos || 0, t.travadas)})`);
+console.log(`  rastro-por-ação (evidenciada/realizada): ${pct(t.rastroEvid || 0, (t.rastroEvid || 0) + (t.rastroInerte || 0))}`);
+console.log(`  réu ferido com carta no CORPO: ${pct(t.reuFeridoComCartaCorpo || 0, t.reuFerido)}`);
 
 console.log('\n— Por método (n · desespero · fuga · tentativas médias) —');
 for (const [k, m] of Object.entries(t.porMetodo).sort((a, b) => b[1].n - a[1].n))

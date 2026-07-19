@@ -645,6 +645,19 @@ function simularBatalha(
       }
     }
 
+    // Desespero: a vitória forçada não depende de acerto nem de alcance —
+    // na rodada-teto o golpe final SEMPRE consuma (o determinismo da
+    // âncora não pode depender da sorte da amostragem).
+    if (forcarVitoria && r === MAX_RODADAS && !morta) {
+      pontosVida = 0;
+      ferimentosVitima += 1;
+      ferirRegiao(regioesV, metodo.regiaoAlvo || 'tronco');
+      log.dano = metodo.danoBase + surpresa;
+      log.regiaoAtingida = metodo.regiaoAlvo || 'tronco';
+      log.golpeDeDesespero = true;
+      morta = true;
+    }
+
     rodadasLog.push(log);
     if (morta) return resultadoVitoria(r);
     if (rejeicao) return { vitoria: false, motivo: rejeicao, rodadas: r };
