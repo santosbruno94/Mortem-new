@@ -14,6 +14,7 @@ import {
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
 import { lerCorpo, falaDoMestre } from '../logic/falaDoMestre.js';
+import { modoDoCaso } from '../data/casos.js';
 import { ParagrafoProsa } from './ProsaComTermos.jsx';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
@@ -295,6 +296,10 @@ function FalaDoLegista({ cartas }) {
   // Modo purista (Onda 8): a SÍNTESE (janela/mecanismo) cala; os apartes
   // vozMestre por carta ficam — são observação diegética, não conclusão.
   const modoPurista = useJogo((s) => s.modoPurista);
+  const casoId = useJogo((s) => s.casoId);
+  // Nos casos GERADOS não há legista em cena (playtest de 19/07, P1): quem
+  // examina é o próprio perito — nem aparte, nem síntese falada por outrem.
+  if (modoDoCaso(casoId) !== 'tutorial') return null;
   const asides = cartas.filter((c) => c.localidade === 'corpo' && c.vozMestre);
   const { tempo, causa } = falaDoMestre(lerCorpo(cartas));
   const sintese = !modoPurista && (tempo || causa);

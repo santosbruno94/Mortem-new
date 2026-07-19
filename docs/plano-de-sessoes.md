@@ -49,6 +49,14 @@ de playtest (itens que se cruzam decidem-se juntos).
 - **Pronto quando:** relatório de conclusões versionado e triado (mesmo fluxo do de 19/07).
 - **Por que é gate:** o resultado decide o rumo de S1 — se os casos forem solúveis, a
   frente seguinte é diálogo; se não, a correção de solubilidade fura a fila.
+- **✅ 1ª rodada jogada (19/07/2026):** relatório triado em
+  [`docs/playtest/2026-07-19-conclusoes-procedural.md`](./playtest/2026-07-19-conclusoes-procedural.md).
+  **Resultado central: o caso estava fácil demais porque o jogo ENTREGAVA conclusões**
+  (legista falando o meio, carta rotulada "sinal de arma branca", "bordas vivas", mentira
+  pré-rotulada, âncora única de autoria). O Lote A já removeu os canais de resposta
+  (P1–P3) e adicionou o carimbo de coleta no mural (P7); as decisões de fair play
+  (P8, P9) engrossam S2, e P4/P5/P6/P11 entram nas sessões abaixo. Vale nova rodada
+  cega depois dessas correções.
 
 ### S1 — OS de diálogo *ou* correção de solubilidade *(conforme S0)*
 
@@ -61,6 +69,11 @@ de playtest (itens que se cruzam decidem-se juntos).
 - **Insumos:** `docs/os-arvore-dialogo-procedural.md`,
   `docs/os-camada-psiquica-do-elenco.md`, `docs/game-design-simulacao.md`,
   `docs/biblia-de-vozes.md`. Prosa nova passa por `redigir-prosa` + `revisar-prosa`.
+- **Do playtest procedural entram:** P6 (o interrogatório fala em vez de empurrar carta;
+  se ficar carta, o negrito carrega a informação — "se recolheu às oito" — e não o título
+  opaco), P11 (repensar a Mesa: ficha por pessoa com resumo de conversas e provas
+  ligadas, sem spoiler) e a decisão de voz do eco de interferência pós-caso (hoje ainda
+  fala pelo legista, que deixou de existir nos casos gerados).
 - **Lembrete de arquitetura:** o motor segue cego a atributos — o diálogo lê flags
   pré-computadas do pacote de caso, nunca FOR/INT/WIS/CHA.
 
@@ -79,7 +92,10 @@ detalhar antes).
   11 (exposição contida no diálogo — decisão aqui, execução na OS de diálogo) e 10
   (transcrição da carta amassada do sobrinho). Itens 8 (planta única navegável) e 9
   (suspeitos saem de cena) podem ser triados aqui, mas tocam dados espaciais/elenco —
-  conversar com a camada 3D antes de prometer escopo.
+  conversar com a camada 3D antes de prometer escopo. **Do playtest procedural entram:**
+  P8 (mentira pré-rotulada — mesmo problema do item 14, agora nos dois modos) e P9
+  (âncora única de autoria: a marca de poeira sozinha liga a ré — âncora dupla ou
+  contra-hipótese jogável).
 - **Insumos:** `docs/kb-craft-narrativo/cliches-e-fair-play.md`,
   `docs/playtest/2026-07-19-conclusoes-humanas.md`, `MORTEM_CONTEXTO.md`.
 - **Regra:** a decisão é do usuário; o agente apresenta opções cruzadas com o KB de fair
@@ -120,6 +136,9 @@ detalhar antes).
   teto Y=40%) — balanceamento do autobattler; OS marca-e-luva (§2.2 — M0, dossiê de
   traumas/datação, está livre; M2–M3 aguardam o documento); OS de priors compostos
   (decisões mapeadas em `os-priors-compostos-*.md`); §1.5 estratégia de produção/assets.
+  **Do playtest procedural entram** (palco do procedural, com `os-palco-em-aneis-*.md` e
+  o KB legal-policial): P4 (evidências e pessoas concentradas na delegacia — não é a
+  visão do jogo) e P5 (o nome "delegacia" é impróprio; terminologia técnica de 1893).
 - **Insumos:** `docs/game-design-simulacao.md`, `docs/os-autobattler-v2-*.md`,
   `docs/os-priors-compostos-*.md`, `docs/kb-producao/assets-e-como-obter.md`.
 - **Pronto quando:** cada OS tem seu próprio critério; o comum é `qa.mjs` verde e as

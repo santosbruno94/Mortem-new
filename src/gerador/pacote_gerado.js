@@ -612,45 +612,56 @@ const SUPERFICIE_RESPINGO = {
   caminho_do_acude: 'no mourão da cerca',
 };
 
-// A lesão fatal por método: nome de carta e laudo de exame próximo.
+// A lesão fatal por método: nome de carta, carimbo e laudo de exame próximo.
+// Playtest de 19/07 (P2): o carimbo é OBSERVAÇÃO, nunca conclusão — descreve
+// a morfologia e a sede; nomear o instrumento/meio ("arma branca") é dedução
+// do jogador, via glossário. Termos validados contra docs/kb-medicina-legal/.
 const PROSA_LESAO = {
   laminada: {
     textoDisplay: 'A Ferida Incisa',
+    carimbo: 'Ferida incisa; sede: tórax',
     descricao:
       'Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.',
   },
   garrote: {
     textoDisplay: 'O Sulco no Pescoço',
+    carimbo: 'Sulco horizontal; sede: pescoço',
     descricao:
       'Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.',
   },
   esganadura: {
     textoDisplay: 'As Marcas no Pescoço',
+    carimbo: 'Equimoses digitais; sede: pescoço',
     descricao:
       'Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.',
   },
   contundente: {
     textoDisplay: 'A Fratura no Crânio',
+    carimbo: 'Fratura com afundamento; sede: têmpora',
     descricao:
       'Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.',
   },
   veneno_arsenico: {
     textoDisplay: 'O Vômito Seco',
+    carimbo: 'Vômito seco; odor de alho à chama',
     descricao:
       'Na boca e no queixo, um resto de vômito seco. Levada à chama, a amostra solta cheiro de alho; da ceia, prato nenhum o levava.',
   },
   sufocacao: {
     textoDisplay: 'Os Sinais em Volta da Boca',
+    carimbo: 'Escoriações em volta da boca; sede: face',
     descricao:
       'Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.',
   },
   afogamento: {
     textoDisplay: 'A Espuma na Boca',
+    carimbo: 'Espuma fina à boca e às narinas',
     descricao:
       'Um cogumelo de espuma fina assoma à boca e às narinas; enxugado, torna a formar-se. A pele das mãos está branca e enrugada.',
   },
   laudano: {
     textoDisplay: 'As Pupilas Fechadas',
+    carimbo: 'Pupilas em ponta de alfinete',
     descricao:
       'No corpo, marca de luta nenhuma. As pupilas estão contraídas em ponta de alfinete, e um resquício de amargor fica no hálito.',
   },
@@ -829,12 +840,15 @@ function realizarCartas(bruto) {
       case 'gen_lesao_fatal': {
         const p = PROSA_LESAO[escolha.metodoId];
         nova.textoDisplay = p.textoDisplay;
+        nova.carimboPadrao = p.carimbo;
         nova.descricao = p.descricao;
         break;
       }
       case 'gen_reacao_vital':
+        // P3 (playtest 19/07): observação pura — a conclusão ("em vida",
+        // reação vital) é dedução do jogador, via glossário.
         nova.descricao =
-          'As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.';
+          'As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.';
         break;
       case 'gen_visto_vivo': {
         const quando = formatHoraComDia(c.tagsOcultas.horaAvistamento);

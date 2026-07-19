@@ -25,6 +25,7 @@ import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js'
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { ligacaoDeConfrontoEmCena } from '../logic/acusacao.js';
 import { conclusoesDoMestre } from '../logic/falaDoMestre.js';
+import { modoDoCaso } from '../data/casos.js';
 import { derivarEcoDoMestre } from '../logic/ecoMestre.js';
 import { derivarEcosInterferencia } from '../logic/ecoInterferencia.js';
 import { interpolar } from '../logic/interpolar.js';
@@ -639,8 +640,11 @@ export const useJogo = create(
     // para que registrar nova carta não o apague junto com a síntese. O eco
     // de interferência (FASE 4) segue a mesma regra.
     const eco = s.ecoMestreFalha ? [s.ecoMestreFalha] : [];
+    // Nos casos GERADOS não há legista (playtest de 19/07, P1): a síntese
+    // janela/mecanismo não se empacota — restam só os ecos pós-caso.
+    const leitura = modoDoCaso(s.casoId) === 'tutorial' ? conclusoesDoMestre(s.cartasRegistradas) : [];
     set({
-      conclusoes: [...base, ...conclusoesDoMestre(s.cartasRegistradas), ...eco, ...(s.ecoInterferencias || [])],
+      conclusoes: [...base, ...leitura, ...eco, ...(s.ecoInterferencias || [])],
     });
   },
 

@@ -3,7 +3,7 @@ import { useJogo } from '../store/jogo.js';
 import { obterSuspeitos } from '../data/pacote_caso.js';
 import { CATALOGO_CAUSAS } from '../data/catalogo_causas.js';
 import { ANCORAS, analisarLigacoes, horaAlegada } from '../logic/acusacao.js';
-import { formatJanela } from '../logic/tempo.js';
+import { formatJanela, formatRelogio } from '../logic/tempo.js';
 import { deQuem } from '../logic/monologo.js';
 import { tocarSom } from '../som.js';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
@@ -53,7 +53,7 @@ const ponteiroGrosso =
 
 // Geometria das estações de ligação (coordenadas conhecidas → barbante simples).
 const CARD_W = 176;
-const CARD_H = 78;
+const CARD_H = 92; // altura acomoda o carimbo de coleta (P7, playtest 19/07)
 const ESPACO = 22;
 const MARGEM = 16;
 const VAO_LINHAS = 104; // respiro vertical entre a fileira de alvos e a de fontes
@@ -627,7 +627,20 @@ function CartaLeitura({ carta, declarada = false }) {
         </span>
       )}
       <p className="font-serif text-tinta text-xs leading-snug">{carta.textoDisplay}</p>
+      <CarimboColeta hora={carta.horaRegistro} />
     </div>
+  );
+}
+
+// QOL do playtest de 19/07 (P7): toda prova exibida no mural declara QUANDO
+// foi coletada — a data/hora já viaja com a carta (horaRegistro); aqui só se
+// mostra. Não é resposta dada: é o registro do próprio perito.
+function CarimboColeta({ hora, clara = false }) {
+  if (hora == null) return null;
+  return (
+    <span className={`block text-[9px] leading-tight mt-0.5 ${clara ? 'opacity-70' : 'text-tinta-apagada'}`}>
+      coleta: {formatRelogio(hora)}
+    </span>
   );
 }
 
@@ -828,7 +841,10 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
             {n.ehAncora ? (
               <p className="text-latao-claro text-[10px] tracking-[0.15em] uppercase leading-snug">{n.rotulo}</p>
             ) : (
-              <p className="font-serif text-tinta text-xs leading-snug">{n.textoDisplay}</p>
+              <>
+                <p className="font-serif text-tinta text-xs leading-snug">{n.textoDisplay}</p>
+                <CarimboColeta hora={n.horaRegistro} />
+              </>
             )}
             {/* Atalho de leitura: abre a ficha de coleta sem desfazer/criar
                 ligação. Em ponteiro fino, o "§" discreto (hover evidente);
@@ -895,6 +911,7 @@ function EstacaoMobil({ acusacao, motivos, definirMotivacao }) {
           ativa={acusacao.motivacaoId === c.id}
           aoClicar={() => definirMotivacao(c.id)}
           rotulo={c.termoCarimbo}
+          sub={c.horaRegistro != null ? `coleta: ${formatRelogio(c.horaRegistro)}` : null}
         />
       ))}
     </div>
@@ -1039,6 +1056,7 @@ function CartaSelecionavel({ carta, ativa, aoClicar }) {
       }`}
     >
       {carta.textoDisplay}
+      <CarimboColeta hora={carta.horaRegistro} clara />
     </button>
   );
 }
@@ -1191,7 +1209,7 @@ function SeletorJanela({ acusacao, definirJanela }) {
 
 // Ficha de opção clicável (causa, réu, juízo…). O estado escolhido tem de
 // gritar na cortiça: fio de latão, halo de vela e um pingo de lacre.
-function Opcao({ ativa, aoClicar, rotulo }) {
+function Opcao({ ativa, aoClicar, rotulo, sub = null }) {
   return (
     <button
       onClick={aoClicar}
@@ -1202,7 +1220,10 @@ function Opcao({ ativa, aoClicar, rotulo }) {
       }`}
     >
       {ativa && <span className="selo-cera shrink-0 w-2 h-2" aria-hidden="true" />}
-      <span>{rotulo}</span>
+      <span>
+        {rotulo}
+        {sub && <span className="block text-[9px] leading-tight opacity-70">{sub}</span>}
+      </span>
     </button>
   );
 }
