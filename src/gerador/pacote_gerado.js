@@ -618,10 +618,13 @@ const SUPERFICIE_RESPINGO = {
 // do jogador, via glossário. Termos validados contra docs/kb-medicina-legal/.
 const PROSA_LESAO = {
   laminada: {
-    textoDisplay: 'A Ferida Incisa',
-    carimbo: 'Ferida incisa; sede: tórax',
+    // Parecer do perito (19/07): lesão FATAL no tórax é perfuro-incisa (a
+    // punctura que mata em profundidade), não a incisa de superfície — a
+    // descrição segue o trajeto fundo, sem a "cauda rasa" do talho.
+    textoDisplay: 'A Ferida no Tórax',
+    carimbo: 'Ferida perfuro-incisa; sede: tórax',
     descricao:
-      'Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.',
+      'Uma fenda estreita, de bordas limpas e regulares, mais comprida que larga. A sonda desce fundo; o trajeto encerra mais do que a fenda aparenta. Sem ponte de pele entre as margens, e a pele ao redor não traz outros riscos rasos.',
   },
   garrote: {
     textoDisplay: 'O Sulco no Pescoço',
@@ -643,13 +646,13 @@ const PROSA_LESAO = {
   },
   veneno_arsenico: {
     textoDisplay: 'O Vômito Seco',
-    carimbo: 'Vômito seco; odor de alho à chama',
+    carimbo: 'Resto de vômito ressecado; odor de alho à chama',
     descricao:
       'Na boca e no queixo, um resto de vômito seco. Levada à chama, a amostra solta cheiro de alho; da ceia, prato nenhum o levava.',
   },
   sufocacao: {
     textoDisplay: 'Os Sinais em Volta da Boca',
-    carimbo: 'Escoriações em volta da boca; sede: face',
+    carimbo: 'Escoriações em volta da boca e das narinas',
     descricao:
       'Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.',
   },

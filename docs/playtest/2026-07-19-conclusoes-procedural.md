@@ -68,5 +68,25 @@ usuário. Triada em lotes; o estado de cada item é mantido aqui.
 
 Verificação: `npm run gerar:casos` (banco regenerado), `npm run build` limpo,
 `qa.mjs` **CASO VÁLIDO**, `qa-ui.mjs` **UI VÁLIDA** (rotas do caso-escola com legista
-intacto; rota gerada sem regressão). Rótulos forenses novos submetidos ao perito de
-época (parecer registrado abaixo quando emitido).
+intacto; rota gerada sem regressão).
+
+### Parecer do perito de época sobre os rótulos novos (19/07/2026)
+
+Sete de nove aprovados de primeira (sulco horizontal, equimoses digitais, fratura com
+afundamento, escoriações periorais, espuma fina, pupilas em ponta de alfinete, bordas da
+ferida). Corrigidos em seguida:
+
+- **Lesão da lâmina (erro técnico):** lesão *fatal* no tórax é **perfuro-incisa** (a
+  punctura que mata em profundidade), não "incisa" (o talho de superfície); a descrição
+  misturava as duas morfologias. Título → "A Ferida no Tórax"; carimbo → "Ferida
+  perfuro-incisa; sede: tórax"; descrição refeita no trajeto fundo, sem a "cauda rasa".
+- **Arsênico (clareza):** "Vômito seco" podia ler-se como ânsia seca → "Resto de vômito
+  ressecado; odor de alho à chama".
+- **Sufocação (completude):** o carimbo omitia as narinas que a descrição traz →
+  "Escoriações em volta da boca e das narinas".
+
+**Divergência KB × motor registrada (decisão do usuário, não aplicada):** o motor funde
+incisa e perfurante sob uma só assinatura (`ferida_incisa` / causa
+`ferida_arma_branca`). O carimbo corrigido resolve a superfície; desdobrar as duas
+assinaturas no catálogo é decisão de jogabilidade que fica em aberto (ver
+`docs/kb-medicina-legal/traumas.md`, §"Divergências notadas").
