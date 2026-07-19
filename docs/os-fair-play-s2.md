@@ -360,4 +360,28 @@ podem sair como "adiado" — isso é decisão válida e encerra o item. Se um it
 próxima S0 (rodada 3 do playtest cego), **não** bloqueia o fechamento dos demais. O
 diálogo (Bloco C) **não** se implementa aqui — sai como critério fixado para a S1.
 
+---
+
+## 9. Decisões tomadas (19/07/2026)
+
+Sessão executada; detalhe e razões em `historico-decisoes.md` ("S2 — Decisões de fair
+play"). Resumo de uma linha por item:
+
+| Item | Decisão | Executa em |
+|---|---|---|
+| 12 — vidro de Silas | **Espalhar o peso** entre 2–3 provas | lote próprio + S3 |
+| 14/P8 — mentira rotulada | **Rótulo neutro** no mural (dois modos) | lote UI + `qa-ui` |
+| 16 — móbil | **Móbil por suspeito** com isca | S3 + Estação IV |
+| P9 — âncora única | **Híbrido** (dupla onde cabe; contra-hipótese nos demais) | lote do gerador (fura fila) |
+| P16+P17 — compleição | **Adiar** (backlog do gerador) | — |
+| P24 — fôrma das mentiras | **Cardápio amplo** + culpado partilha fôrma | lote do gerador + S3 |
+| 11/P21–P22 — diálogo | **Confirmado**; 2ª camada em TODOS os confrontos | S1 |
+| P23 — deflexão | **Guarda de sustentação**; preconceito de inocente permitido | S1 |
+| 8 — planta única | **Fazer** — caso-escola **e** cena procedural | palco-em-aneis E1/E2 + UI |
+| 9 — suspeitos saem de cena | **Fazer** | lote do caso-escola |
+| 10 — transcrição | **Fazer** (QOL) | lote pequeno de UI |
+
+**Impacto na rota:** o P9 híbrido re-gera os 21 casos e é o lote de maior custo do gerador;
+o item 8 estendido ao procedural entra na OS `palco-em-aneis` (E1/E2). Bloco C alimenta a S1.
+
 — fim da OS S2 —

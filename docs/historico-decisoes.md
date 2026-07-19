@@ -21,6 +21,7 @@
 | jul/2026 (Reescrita do caso) | **"O Álibi de Corda" → "A Hora Emprestada"**: mesma vítima e cenário, verdade de ouro nova. 3 → **5 suspeitos**, 1 → **3 mentirosos inocentes** (segredos de naturezas distintas: humilhação, decoro, medo), e o relógio quebrado deixa de ser isca passiva para virar **pivô estrutural** com três leituras (mostrador forjado / roda de contagem / relógio de bolso de corda esgotada). Motor ganhou duas travas temporais universais (`rotina_interrompida`, `registro_mecanico`); veredicto/acusação intocados. Removida a perita Lenore (fica só o Dr. Harlan Blackwell). Fecha as pendências 1, 2, 3 e 5 do overhaul de 12/07 (despiste com explicação plantada; ≥2 mentirosos; motivo composto arquivado — `silenciamento` é composto por natureza, único por id; `reacao_vital` em jogo) |
 | jul/2026 (Fundações do gerador procedural, FASE 0) | Registro normativo das decisões de arquitetura do gerador: **pacote de caso** serializável, **asset 2D sob contrato**, **retratos em camadas**, **resource binding** por slots tipados, **papéis dramáticos** gerador-facing e **eco do mestre** sobre falhas (detalhe abaixo). Só documentos; nenhum código. |
 | jul/2026 (Gerador por simulação e interferência, FASE 0) | Registro normativo do overhaul do gerador: o crime é **simulado na geração** por um **autobattler de build time** (`resolverCrime` → `RegistroDoCrime`), atributos sob **regra de existência** (FOR/INT/WIS/CHA; só existe o que deixa vestígio ou comportamento), **arquétipos × demografia 1893**, geração espacial cidade-primeiro com **grafo de avistamentos**, e **interferência** como evento contingente sob as **Regras de Justiça R1–R6**. Inclui a reconciliação com a rejeição anterior do grid espacial (detalhe abaixo). Só documentos; nenhum código. |
+| 19/jul/2026 (S2 — decisões de fair play) | Sessão de DECISÕES (sem código; OS `os-fair-play-s2.md`). **Caso-escola:** vidro de Silas com peso espalhado entre 2–3 provas; mural com **rótulo neutro** ("depoimento") no lugar de "mentira"; **móbil por suspeito** com isca. **Gerador:** âncora de autoria **híbrida** (dupla independente onde a magnitude permite, contra-hipótese jogável nos demais); canal de compleição **adiado**; **cardápio amplo** de fôrmas de mentira, com o culpado podendo partilhar fôrma de inocente. **Diálogo (executa na S1):** paradeiro universal perguntado, confronto com ganho em **todos** os confrontos, exposição contida no negrito; deflexão "veio de fora" barrada ao culpado, **permitida como preconceito de inocente** (retratável). **Espacial:** planta única navegável no caso-escola **e** na cena procedural, suspeitos saem de cena após o cerco, transcrição da carta amassada. Detalhe abaixo. |
 | 18/jul/2026 (Playtest independente — contratos P1) | **`ev_vidro_dobra` democratizada (Opção A)**: a lasca na bainha de Silas sai nos QUATRO tons do beat 1, com prosa distinta por tom — o tom segue **cor, nunca chave** (o contrato "nenhuma prova que o veredicto lê depende do tom" volta a valer sem exceção; `CARTAS_PRECISAO` esvazia no `qa.mjs` e a guarda de sustentação vira estrita). **Feedback das automações silenciosas**: a ligação automática das cartas do corpo às âncoras ganha o micro-rótulo "o corpo declara" na Estação I; o confronto em cena que anota `refuta_alibi` ao mural ganha aviso no rodapé (padrão do `AvisoCartaPousada`). Detalhe abaixo. |
 | 17/jul/2026 (Reconciliação encenação→motor, Lotes 1 e 3) | Da pesquisa de encenação/supressão ao motor: **Lote 1** (zero `src/logic`) — 6 verbetes de glossário (guaiaco/Van Deen, Teichmann, Sorby, micrometria de Gulliver, epitélio no coágulo, discórdia tanatológica), `instrumento_guardado_umido` corrigido para o **coágulo durável sob o rebite** (a umidade era o sinal perecível), e a carta condicional `gen_frestas` (o sangue que a esfrega empurra para a fresta). **Lote 3** — a **fraude de tempo pelo corpo**: `cartaHoraForjada` ganha duas variantes térmicas (corpo aquecido junto à lareira / resfriado na corrente), a hora aparente do corpo refutável pelos relógios duráveis, como o mostrador forjado do caso-escola. **§5 decidido (b), não executado**: o sinal de ausência do eixo CAUSA passa a ser lido como *a assinatura só crava com reação vital presente* — registrado abaixo, implementação adiada para o Lote 2. |
 
@@ -896,3 +897,63 @@ visual, zero mudança de motor. (b) O confronto em cena que anota `refuta_alibi`
 mural só avisava no diário. Ganha o aviso discreto no rodapé ("A prova ficou anotada
 ao mural"), reutilizando o padrão do `AvisoCartaPousada` — mesmo tom, mesma duração,
 camada transiente de UI fora do save.
+
+## S2 — Decisões de fair play (19/07/2026)
+
+**Origem.** OS `docs/os-fair-play-s2.md`, executada como sessão de decisões. Insumos:
+`docs/kb-craft-narrativo/cliches-e-fair-play.md` (seções citadas por item) e os três
+relatórios de playtest de 19/07. **Nenhum código mudou nesta sessão** — cada decisão vira
+lote na sessão carimbada.
+
+**Bloco A — caso-escola:**
+- **Item 12 (vidro de Silas) → espalhar o peso.** A lasca deixa de bastar sozinha; a força
+  se distribui entre 2–3 provas, nenhuma isolada cravando o réu (KB §6, plantio por
+  ênfase). O tom já fora democratizado em 18/07 — esta decisão é sobre o peso, não o tom.
+  *Execução:* lote próprio + S3 (prosa das provas irmãs). Guarda: `qa.mjs` (sustentação).
+- **Item 14 / P8 (mentira rotulada) → rótulo neutro.** A estação `III · As Mentiras` deixa
+  de anunciar a carta como mentira; o rótulo vira "depoimento"/"declaração de paradeiro" e a
+  natureza só emerge quando o jogador liga o fato que a desmente (KB §7). Vale nos **dois
+  modos**. *Execução:* lote de UI + contrato `qa-ui` no mesmo commit.
+- **Item 16 (móbil) → móbil por suspeito, com isca.** Cada suspeito ganha móbil plausível, o
+  real escondido entre iscas honestas (paridade com o gerador, que já faz `gen_movel_`/
+  móbil-isca; KB §4+§7). *Execução:* S3 (prosa dos móbeis) + Estação IV do mural.
+
+**Bloco B — gerador (fair play de autoria):**
+- **P9 (âncora única) → híbrido.** Autoria por **âncora dupla independente** onde a magnitude
+  permite; **contra-hipótese jogável** ("outra pessoa pode ter levado a arma", sustentável e
+  refutável) nos demais (KB §6, solução dupla de Berkeley — a acusação errada tem de ser
+  racional). *Execução:* lote do gerador (duas vias), re-geração dos 21 casos + `qa.mjs` no
+  mesmo commit — **fura a fila do gerador** pelo custo.
+- **P16+P17 (compleição física) → adiar.** O canal (vítima descrita × força do exame ×
+  pegadas) fica no backlog do gerador. Como o P9 ficou híbrido, a âncora dupla usa o segundo
+  vestígio que já existe — não depende da compleição para ser justa.
+- **P24 (fôrma das mentiras) → cardápio amplo + culpado partilha fôrma.** As sete fôrmas do
+  KB §7 (amor, dívida, furto miúdo, proteger terceiro, vergonha, medo da polícia, fraude
+  paralela) distribuídas por demografia/segredo; **o assassino pode usar a mesma fôrma de um
+  inocente** — a fôrma deixa de ser sinal de culpa. *Execução:* lote do gerador + S3 (prosa
+  das fôrmas). Guarda: `qa.mjs` (sorteio determinístico por `hashString` salgado).
+
+**Bloco C — diálogo (decisão aqui, execução na S1):**
+- **Item 11 / P21–P22 → confirmado; segunda camada em TODOS os confrontos.** Paradeiro
+  declarado só **quando perguntado** (nunca espontâneo — o assassino mente dentro do mesmo
+  beat dos inocentes); o confronto **puxa fala nova** (admissão parcial, detalhe,
+  contradição) em **todos** os confrontos, não só nos do réu; exposição contida no negrito
+  informativo, não no título opaco (P6, `textoDisplay` de `dialogos_gerados.js`). KB §2
+  (Van Dine nº5) / §4 / §7.
+- **P23 (deflexão "veio de fora") → guarda de sustentação, refinada.** Proibida como
+  **deflexão auto-interessada do culpado** quando não há forasteiro plausível (só ele lucra
+  com a tese = tell). **Permitida como falso testemunho de um inocente preconceituoso** —
+  retratável, nunca validada pelo jogo (KB §5, a xenofobia da vila como ruído, jamais
+  indício). A guarda mira *quem* fala e *por quê*. *Execução:* S1.
+
+**Bloco D — triagem espacial/elenco (aprovados para execução):**
+- **Item 8 → fazer, e estender à cena procedural.** Planta única navegável no caso-escola
+  **e** nos casos gerados — funde-se com a última milha da OS `palco-em-aneis` (E1:
+  `comodo`/`celula`/`mobilia` como metadado na carta + render da planta no gerado; o
+  `plantaSvgDoInterior` já existe em `interiores.js`, nenhum componente o desenha para o
+  gerado — só o caso-escola tem `PlantaRelojoaria.jsx`). Camada de apresentação; motor cego.
+  *Execução:* OS `palco-em-aneis` (E1/E2) + lote de UI do caso-escola.
+- **Item 9 → fazer.** Silas e o aprendiz saem da cena para casa após o cerco da polícia
+  (elenco + dados espaciais do caso-escola, `localidades.js`). *Execução:* lote do caso-escola.
+- **Item 10 → fazer.** Opção de ler a **transcrição completa** da carta amassada do sobrinho
+  (QOL de leitura, não fair play). *Execução:* lote pequeno de UI.
