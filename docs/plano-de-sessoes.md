@@ -93,6 +93,17 @@ detalhar antes).
 
 - **Pronto quando (ambos):** `qa.mjs` e `qa-ui.mjs` verdes; se prosa mudou, pipeline
   `revisar-prosa` com zero achados bloqueantes.
+- **◐ Parcial (19/07/2026) — lote de fair play do Bloco C concluído** (OS
+  `os-dialogo-s1-fair-play.md`, ata em `historico-decisoes.md` "S1 — Fair play do diálogo"):
+  P21 (paradeiro universal) verificado como já satisfeito; **P6** (rótulo da carta de álibi
+  informativo: lugar + faixa); **P22** (2ª camada de detalhe verificável em todos os
+  confrontos — o réu aponta o paradeiro declarado, sem confessar; a testemunha dá um detalhe
+  de percepção); **P23** (guarda de sustentação da deflexão "veio de fora" — só sai com
+  forasteiro plausível; senão o réu não deflete). Três fases, um commit cada, pipeline de
+  prosa com zero bloqueantes; `qa`/`qa-ui`/build verdes. **Segue pendente do Ramo A:** o
+  consumo das flags psíquicas e pools de encenação, P11 (repensar a Mesa), o eco de
+  interferência pós-caso, e a metade "preconceito de inocente" do P23 (fase própria, só sob
+  ordem).
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 
@@ -128,6 +139,13 @@ detalhar antes).
   (P9 híbrido) re-gera os 21 casos e é o de maior custo; o item 8 estendido ao procedural
   entra na OS `palco-em-aneis` (E1/E2, hoje em S5). Próxima sessão ativa: **S1 (diálogo)**,
   que consome as decisões do Bloco C.
+- **◐ P9 híbrido — Fase 0 feita; Via A parada; P9 → Via B (19/07/2026).** OS em
+  `os-p9-ancora-hibrida.md` (§9). A telemetria da Fase 0 (`qa.mjs`, sem regressão) mostrou
+  que a âncora física durável tem **teto de ~7/21** — 14/21 são mortes limpas que só a
+  contra-hipótese cobre. Decisão do usuário: **não perseguir a Via A** (âncora dupla física;
+  ganho marginal ante o risco de tocar o autobattler) e **consolidar o P9 na Via B**
+  (contra-hipótese jogável, reaproveitando a guarda de sustentação do P23). **Gatilho da Via
+  B:** ordem do usuário para abrir o lote.
 
 ### S3 — Prosa dedicada *(uma sessão por item, pipeline obrigatório)*
 

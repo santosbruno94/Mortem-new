@@ -2186,6 +2186,57 @@ if (!casosEmbarcadosReplay) {
   console.log('\nGERADOR (FASE 6) — casos_gerados.js DIVERGE do montador (rodar npm run gerar:casos).');
 }
 
+// ============================================================
+// P9 — FASE 0: TELEMETRIA DA ÂNCORA DUPLA (só mede; não falha)
+// ------------------------------------------------------------
+// Antes de tocar o gerador, medir quanto do pool JÁ tem uma segunda âncora
+// de autoria de espécie INDEPENDENTE do "traço na cena" (o defeito P9). A
+// espécie 2 é o traço do CORPO do agressor: `ferimento_do_agressor` (no
+// corpo do réu, suporteFisico 'corpo_do_reu' — durável, fora do alcance da
+// R2) e `sangue_do_agressor` (na cena — de espécie 2, mas destrutível). O
+// número calibra a Via A (docs/os-p9-ancora-hibrida.md, Fase 0). Proxy de
+// durabilidade: suporteFisico !== 'cena' (o mesmo critério da R2).
+// ============================================================
+function telemetriaP9DuplaAncora(casos) {
+  let duravel = 0; // 2ª âncora durável independente (ferimento_do_agressor)
+  let fragil = 0; // 2ª âncora de espécie 2, mas destrutível (sangue na cena)
+  let soInstrumental = 0; // só a espécie 1 → cairia na Via B (contra-hipótese)
+  const linhas = [];
+  for (const caso of casos) {
+    const cartas = caso.cartas || [];
+    const reu = caso.verdadeDeOuro?.reuCorreto;
+    const vestigiosReu = cartas.filter(
+      (c) => c.tagsOcultas?.dominio === 'vestigio' && c.tagsOcultas.pertenceA === reu
+    );
+    const temFerimentoDuravel = vestigiosReu.some(
+      (c) => c.tagsOcultas.subDominio === 'ferimento_do_agressor' && c.suporteFisico !== 'cena'
+    );
+    const temSangueAgressor = vestigiosReu.some((c) => c.tagsOcultas.subDominio === 'sangue_do_agressor');
+    let classe;
+    if (temFerimentoDuravel) {
+      duravel++;
+      classe = 'DUPLA-DURÁVEL (ferimento_do_agressor)';
+    } else if (temSangueAgressor) {
+      fragil++;
+      classe = 'espécie-2 frágil (sangue na cena)';
+    } else {
+      soInstrumental++;
+      classe = 'só instrumental → Via B';
+    }
+    linhas.push(`  ${caso.id}: ${classe}`);
+  }
+  return { total: casos.length, duravel, fragil, soInstrumental, linhas };
+}
+const p9Telemetria = telemetriaP9DuplaAncora([CASO_REPLICA, ...CASOS_POOL]);
+console.log('\nP9 — FASE 0 (telemetria da âncora dupla; risco zero, só mede):');
+console.log(
+  `  ${p9Telemetria.duravel}/${p9Telemetria.total} casos com 2ª âncora DURÁVEL independente (ferimento_do_agressor)`
+);
+console.log(`  ${p9Telemetria.fragil}/${p9Telemetria.total} com espécie-2 só FRÁGIL (sangue na cena, destrutível)`);
+console.log(`  ${p9Telemetria.soInstrumental}/${p9Telemetria.total} SÓ com a âncora instrumental → cairiam na Via B`);
+console.log(p9Telemetria.linhas.join('\n'));
+const p9Fase0Ok = p9Telemetria.total === 21;
+
 // (b) Higiene de todos os pacotes embarcados.
 function problemasDoPacoteGerado(pacote) {
   const problemas = [];
@@ -3663,6 +3714,10 @@ const checagens = [
   ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],
   ['Armadilhas da árvore detectadas: beat de 3 tons, confronto sem reação, nó órfão, requerCarta fantasma (OS diálogo)', armadilhasDialogoDetectadas],
   ['Replay da árvore: mesma seed → mesma árvore, chamada a chamada (OS diálogo)', replayArvoreOk],
+  [
+    `P9 Fase 0 — telemetria da âncora dupla (só mede): ${p9Telemetria.duravel}/${p9Telemetria.total} já têm 2ª âncora durável independente; ${p9Telemetria.soInstrumental} cairiam na Via B (OS P9 §6)`,
+    p9Fase0Ok,
+  ],
   ['Psique: catálogo v2 íntegro — 13 vetores completos × 18 demográficos, degrau raro alcançável, sem afinidadePapeis (decisão 12), matriz de encenação com proveniência (OS psíquica + priors F4)', psiqueCatalogoIntegro],
   ['Lint léxico L1: nosologia/jargão pós-1893 fora de toda superfície do jogo (OS psíquica §5)', lintL1Ok],
   ['Lint léxico L2: sombra/persona/vetor/desencaixe/complexo fora de identificadores e chaves do runtime (OS psíquica §5)', lintL2Ok],

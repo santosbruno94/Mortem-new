@@ -462,7 +462,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_0_professora",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Amy Ellis",
+   "textoDisplay": "A Escola (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Escola (sexta à noite)",
    "descricao": "\"Recolhi-me à Escola às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -477,7 +477,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_5_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Arthur Field",
+   "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
    "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -492,7 +492,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_2_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Elizabeth Knight",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -507,7 +507,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_7_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Florence Cooper",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -522,7 +522,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_1_medico",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Philip Jones",
+   "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -933,7 +933,7 @@ export const CASO_REPLICA = {
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Arthur Field responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Arthur Field responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
@@ -1320,13 +1320,13 @@ export const CASO_REPLICA = {
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Florence Cooper olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Florence Cooper olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
     "reacao_gen_intf_intf_2_soberanos": {
      "fala": [
-      "Florence Cooper não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito.\""
+      "Florence Cooper não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito; das minhas horas já dei conta, e constam do expediente.\""
      ],
      "opcoes": []
     },
@@ -1359,7 +1359,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -1392,7 +1392,7 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Albert Hall era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Albert Hall era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -1425,7 +1425,7 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -2172,7 +2172,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Albert Hall",
+   "textoDisplay": "Weldmere (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Weldmere (madrugada de sábado)",
    "descricao": "\"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -2187,7 +2187,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de John Williams",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -2202,7 +2202,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Maurice Martin",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -2217,7 +2217,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Rachel Page",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -2232,7 +2232,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Rose Wright",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -2804,7 +2804,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_pertence": {
      "fala": [
-      "Maurice Martin vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Maurice Martin vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; comprei o par em feira, e outros levaram igual. Como foi parar com quem morreu, isso pergunte a quem o pôs lá; àquela hora eu tinha onde estar, e disso há registro.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -3798,7 +3798,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Benjamin Evans",
+   "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -3813,7 +3813,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_carroceiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Ernest Hall",
+   "textoDisplay": "Cottage nº 3 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -3828,7 +3828,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Ernest Read",
+   "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -3843,7 +3843,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Herbert Thomas",
+   "textoDisplay": "Cottage nº 5 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 5, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -3858,7 +3858,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de John Carter",
+   "textoDisplay": "A Mercearia (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -4069,7 +4069,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Benjamin Evans conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "Benjamin Evans conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -4629,7 +4629,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_pertence": {
      "fala": [
-      "Herbert Thomas vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Herbert Thomas vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; comprei o par em feira, e outros levaram igual. Como foi parar com quem morreu, isso pergunte a quem o pôs lá; àquela hora eu tinha onde estar, e disso há registro.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -4662,7 +4662,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -4695,7 +4695,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Thomas Watson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Thomas Watson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -4728,7 +4728,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -5379,7 +5379,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edward Hill",
+   "textoDisplay": "Cottage nº 5 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito. William Harris me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -5394,7 +5394,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Ethel Thomas",
+   "textoDisplay": "O Solar (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Solar (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -5409,7 +5409,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Henry Walker",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -5424,7 +5424,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de James Jones",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -5439,7 +5439,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_professora",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Samuel Marsh",
+   "textoDisplay": "A Escola (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Escola (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Escola às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -5626,7 +5626,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Edward Hill responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Edward Hill responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
@@ -6377,7 +6377,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Samuel Marsh olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "Samuel Marsh olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -6410,7 +6410,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -6443,7 +6443,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Harris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"William Harris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -6476,7 +6476,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -6932,7 +6932,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Ada Chapman",
+   "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -6947,7 +6947,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Emily Evans",
+   "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -6962,7 +6962,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Florence Hill",
+   "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -6977,7 +6977,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de George Webb",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -6992,7 +6992,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Sarah Bennett",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -7560,7 +7560,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Florence Hill responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Florence Hill responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -7593,7 +7593,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -7626,7 +7626,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Read era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Florence Read era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -7659,7 +7659,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -8536,7 +8536,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Florence Morris",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8551,7 +8551,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Frank Jones",
+   "textoDisplay": "A Mercearia (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -8566,7 +8566,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Jane Webb",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8581,7 +8581,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Leonard Smith",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8596,7 +8596,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_squire",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Peter Taylor",
+   "textoDisplay": "O Solar (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Solar (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8849,13 +8849,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Florence Morris responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Florence Morris responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Florence Morris conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "Florence Morris conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -9428,7 +9428,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Leonard Smith responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Leonard Smith responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -10263,7 +10263,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_carroceiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edwin Bennett",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -10278,7 +10278,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_taverneiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Joseph Wright",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -10293,7 +10293,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Louisa Jackson",
+   "textoDisplay": "O Presbitério (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -10308,7 +10308,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_medico",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Peter Gray",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -10323,7 +10323,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Robert Turner",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -10593,7 +10593,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edwin Bennett olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Edwin Bennett olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -10789,13 +10789,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Joseph Wright responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Joseph Wright responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Joseph Wright conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "Joseph Wright conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -12081,7 +12081,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de John Robinson",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -12096,7 +12096,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de John Ward",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -12111,7 +12111,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Leonard Smith",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -12126,7 +12126,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Robert Marsh",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -12141,7 +12141,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de William Cooper",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -12397,7 +12397,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "John Robinson conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "John Robinson conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -12593,13 +12593,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "John Ward responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "John Ward responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
     "reacao_gen_intf_intf_1_soberanos": {
      "fala": [
-      "John Ward não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito.\""
+      "John Ward não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito; das minhas horas já dei conta, e constam do expediente.\""
      ],
      "opcoes": []
     },
@@ -12790,7 +12790,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Leonard Smith responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Leonard Smith responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
@@ -13819,7 +13819,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Andrew Hill",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -13834,7 +13834,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Dorcas Wright",
+   "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -13849,7 +13849,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Frank Taylor",
+   "textoDisplay": "A Mercearia (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
    "descricao": "\"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -13864,7 +13864,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Henry Moore",
+   "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -13879,7 +13879,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de John Parsons",
+   "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
    "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -14268,7 +14268,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Dorcas Wright responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Dorcas Wright responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -14301,7 +14301,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -14334,7 +14334,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Eleanor Barnes era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Eleanor Barnes era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -14367,7 +14367,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -15444,7 +15444,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_moleiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Joseph Gray",
+   "textoDisplay": "O Moinho (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Moinho (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Moinho às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -15459,7 +15459,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_paroco",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Peter Roberts",
+   "textoDisplay": "O Presbitério (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -15474,7 +15474,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Sarah Ward",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -15489,7 +15489,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Susan Wilson",
+   "textoDisplay": "A Mercearia (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -15504,7 +15504,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de William Davies",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -15885,7 +15885,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Peter Roberts olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "Peter Roberts olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -15918,7 +15918,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -15951,7 +15951,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Fanny Mills era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Fanny Mills era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -15984,7 +15984,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -16458,7 +16458,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "William Davies conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "William Davies conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -17126,7 +17126,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_6_taverneiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Amelia Bennett",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -17141,7 +17141,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Daniel Cooper",
+   "textoDisplay": "Weldmere (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Weldmere (madrugada de sábado)",
    "descricao": "\"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -17156,7 +17156,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Grace Moore",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -17171,7 +17171,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Leonard Ward",
+   "textoDisplay": "A Mercearia (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -17186,7 +17186,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de William Carter",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -17434,7 +17434,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Amelia Bennett olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Amelia Bennett olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -18185,7 +18185,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "William Carter conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "William Carter conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -18804,7 +18804,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Beatrice Saunders",
+   "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -18819,7 +18819,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Charles Baker",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -18834,7 +18834,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_6_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Edith Walker",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -18849,7 +18849,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Harold Walker",
+   "textoDisplay": "Cottage nº 2 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -18864,7 +18864,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_squire",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de John Cooper",
+   "textoDisplay": "O Solar (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Solar (sexta à noite)",
    "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -19083,7 +19083,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Beatrice Saunders responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Beatrice Saunders responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
@@ -19452,7 +19452,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edith Walker olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "Edith Walker olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -19485,7 +19485,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -19518,7 +19518,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Annie Morris era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Annie Morris era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -19551,7 +19551,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -20532,7 +20532,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Eva Ellis",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -20547,7 +20547,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Florence Roberts",
+   "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -20562,7 +20562,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_carroceiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Fred Jackson",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -20577,7 +20577,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Harry Webb",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -20592,7 +20592,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de John Lee",
+   "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
    "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -21018,7 +21018,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Florence Roberts olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Florence Roberts olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -21051,7 +21051,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -21084,7 +21084,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Mills era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"William Mills era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -21117,7 +21117,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -21209,7 +21209,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Fred Jackson conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "Fred Jackson conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -21591,7 +21591,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "John Lee responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "John Lee responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
@@ -22248,7 +22248,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Alfred Lee",
+   "textoDisplay": "Netherfield (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Netherfield (sexta à noite)",
    "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -22263,7 +22263,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Annie Knight",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -22278,7 +22278,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Dora Saunders",
+   "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -22293,7 +22293,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Sarah Brown",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -22308,7 +22308,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Thomas White",
+   "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
    "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -22925,7 +22925,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Dora Saunders responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Dora Saunders responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -23855,7 +23855,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edward Palmer",
+   "textoDisplay": "Cottage nº 5 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23870,7 +23870,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edwin Davies",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23885,7 +23885,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Elizabeth Wilson",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23900,7 +23900,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Florence Baker",
+   "textoDisplay": "O Presbitério (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23915,7 +23915,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_professora",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Percy Andrews",
+   "textoDisplay": "A Escola (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Escola (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Escola às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -24340,7 +24340,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edwin Davies olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome.\" As mãos ficam quietas enquanto responde."
+      "Edwin Davies olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -24373,7 +24373,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -24406,7 +24406,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ezra Taylor era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Ezra Taylor era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -24439,7 +24439,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -25469,7 +25469,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Arthur Page",
+   "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
    "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -25484,7 +25484,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_boticario",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de David Carter",
+   "textoDisplay": "A Botica (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Botica (sexta à noite)",
    "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -25499,7 +25499,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Helen Evans",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -25514,7 +25514,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Joseph Green",
+   "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
    "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -25529,7 +25529,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Leah Watson",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -26315,7 +26315,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Joseph Green responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Joseph Green responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -26348,7 +26348,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -26381,7 +26381,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Harry Andrews era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Harry Andrews era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -26414,7 +26414,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -27054,7 +27054,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Abigail Andrews",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -27069,7 +27069,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Amy Chapman",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -27084,7 +27084,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de George Brown",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -27099,7 +27099,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Hugh Thompson",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -27114,7 +27114,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Richard Morris",
+   "textoDisplay": "Cottage nº 6 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 6 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 6 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -27515,7 +27515,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Amy Chapman responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Amy Chapman responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -27548,7 +27548,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -27581,7 +27581,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Herbert Jones era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Herbert Jones era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -27614,7 +27614,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -28746,7 +28746,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Ada Hill",
+   "textoDisplay": "Casa do Médico (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -28761,7 +28761,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Emma Mills",
+   "textoDisplay": "Cottage nº 1 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -28776,7 +28776,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de John Jones",
+   "textoDisplay": "A Mercearia (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -28791,7 +28791,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Thomas Wood",
+   "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -28806,7 +28806,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de William Thompson",
+   "textoDisplay": "Cottage nº 3 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -29602,7 +29602,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Thomas Wood conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "Thomas Wood conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -29798,13 +29798,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "William Thompson responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "William Thompson responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
     "reacao_gen_intf_intf_1_retalho": {
      "fala": [
-      "William Thompson estende o braço e mostra a manga pelo avesso. \"Rasguei-o num prego, e prego não falta nesta vila. Se o pano encaixa, encaixa; a porta onde o acharam eu não conheço.\" Recolhe o braço e espera a pergunta seguinte."
+      "William Thompson estende o braço e mostra a manga pelo avesso. \"Rasguei-o num prego, e prego não falta nesta vila. Se o pano encaixa, encaixa; a porta onde o acharam eu não conheço. O meu paradeiro daquela hora está escrito na delegacia.\" Recolhe o braço e espera a pergunta seguinte."
      ],
      "opcoes": []
     },
@@ -29837,7 +29837,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -29870,7 +29870,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"George Wilson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"George Wilson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -29903,7 +29903,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -30461,7 +30461,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edith Moore",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -30476,7 +30476,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Harry Morris",
+   "textoDisplay": "Netherfield (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Netherfield (madrugada de sábado)",
    "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -30491,7 +30491,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de James Robinson",
+   "textoDisplay": "Cottage nº 5 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -30506,7 +30506,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Kate Harris",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -30521,7 +30521,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Minnie Hill",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -31293,7 +31293,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Kate Harris olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus.\" A voz não muda do começo ao fim."
+      "Kate Harris olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -32053,7 +32053,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Annie Wood",
+   "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -32068,7 +32068,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Ethel Turner",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -32083,7 +32083,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_constable",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Harold Moore",
+   "textoDisplay": "A Delegacia (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Delegacia (sexta à noite)",
    "descricao": "\"Recolhi-me à Delegacia às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -32098,7 +32098,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Isaac Ellis",
+   "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -32113,7 +32113,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_carroceiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de John Morris",
+   "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -33085,7 +33085,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "John Morris responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "John Morris responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -33118,7 +33118,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -33151,7 +33151,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Jane Wright era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Jane Wright era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -33184,7 +33184,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -33658,7 +33658,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Amos Chapman",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -33673,7 +33673,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Eleanor Webb",
+   "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -33688,7 +33688,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_boticario",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Isaac Webb",
+   "textoDisplay": "A Botica (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Botica (sexta à noite)",
    "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -33703,7 +33703,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_paroco",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Matthew Mills",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -33718,7 +33718,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Sophia Thompson",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -33914,7 +33914,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_pertence": {
      "fala": [
-      "Amos Chapman vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá.\" E o empurra de volta pela mesa, devagar."
+      "Amos Chapman vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; comprei o par em feira, e outros levaram igual. Como foi parar com quem morreu, isso pergunte a quem o pôs lá; àquela hora eu tinha onde estar, e disso há registro.\" E o empurra de volta pela mesa, devagar."
      ],
      "opcoes": []
     },
@@ -33947,7 +33947,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -33980,7 +33980,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Knight era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"John Knight era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -34013,7 +34013,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },

@@ -957,3 +957,43 @@ lote na sessão carimbada.
   (elenco + dados espaciais do caso-escola, `localidades.js`). *Execução:* lote do caso-escola.
 - **Item 10 → fazer.** Opção de ler a **transcrição completa** da carta amassada do sobrinho
   (QOL de leitura, não fair play). *Execução:* lote pequeno de UI.
+
+## S1 — Fair play do diálogo (execução, 19/07/2026)
+
+Execução do Bloco C da S2 sobre o derivador de árvores de diálogo procedural
+(`src/gerador/dialogos_gerados.js`), orquestrada pela OS `os-dialogo-s1-fair-play.md`.
+Sub-decisões do usuário registradas; três fases, um commit cada; toda prosa gerada passou
+pelo pipeline `revisar-prosa` com zero achados bloqueantes.
+
+- **P21 (paradeiro universal) → já satisfeito, verificado.** Nenhum código mudou: a fala de
+  abertura não cita o álibi (só recepção); o paradeiro só sai nos nós `b1_<tom>`, alcançados
+  por uma pergunta do jogador; o assassino de cena mente com a **mesma redação** do inocente
+  caseiro (`falaDeclarada`, ramo `mentiraDeCena`). A confissão espontânea (Van Dine nº5) já
+  estava barrada por construção.
+- **P6 / item 11 (rótulo informativo) → lugar + faixa** (DECISÃO 1 = opção A). O
+  `textoDisplay` das cartas de álibi deixou o título opaco `"A Noite de {nome}"` e passou a
+  carregar o lugar declarado + a faixa (`"A Escola (sexta à noite)"`), a mesma composição do
+  `carimboPadrao`. O lugar é o dado que cai por confronto; a faixa dá o contexto. Espelha o
+  idioma do caso-escola (`"Recolhido à Estalagem às Oito"`). *Fase 1.*
+- **P22 (segunda camada em TODOS os confrontos) → detalhe verificável** (DECISÃO 2 = opção
+  A). Cada reação de confronto (`confrontoDaCarta`) deixou de só reafirmar. Nas seis do réu,
+  a 2ª camada aponta o **paradeiro declarado por termo** — gancho de cruzamento com a carta
+  de álibi, a única sempre presente e cruzável —, sem confissão e sem apontar para si. Nas de
+  testemunha, um detalhe de vantagem/percepção própria. Assimetria de fair play preservada
+  (réu acomoda a prova; inocente-com-segredo dá o fato que o desonera). *Fase 2.* O perito
+  barrou 1 bloqueante (a reação de ruído cravava enquadramento noturno que a faixa `dia`
+  desmente) e o editor 2 altos (armadura de fecho repetida; corrente de máximas) — todos
+  corrigidos antes do commit.
+- **P23 (deflexão "veio de fora") → só a guarda de sustentação agora** (DECISÃO 3a: fontes =
+  `vitima.forasteiro` + `ausencias`/satélite; DECISÃO 3b = opção B). A fala de deflexão do
+  réu só é gerada quando há forasteiro plausível no caso (a vítima de passagem, ou um
+  suspeito com paradeiro na vila-mercado satélite); sem isso, o arremate do réu cai em três
+  falas novas que **não defletem** (recusa nomear, defere ao inquérito, sem apontar para fora
+  nem para si). Guarda bifurca 7/21 (deflete) × 14/21 (não). **A metade "preconceito de
+  inocente" (falso testemunho xenófobo, retratável) NÃO foi implementada** — fica como fase
+  própria, gatilho: ordem expressa do usuário (é feature nova: slot de deflexão no ramo
+  inocente + fato-refutação). *Fase 3.*
+- **Rota:** S1 concluída (P6/P22/P23-guarda em código; P21 verificado). Próxima frente ativa
+  segue a `plano-de-sessoes.md`. Pendências abertas por esta sessão: P23-preconceito de
+  inocente (fase própria) e a [DECISÃO menor] de endurecer no `qa.mjs` a guarda "abertura não
+  vaza paradeiro" (não feita — a propriedade vale por construção hoje).

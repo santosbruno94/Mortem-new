@@ -306,6 +306,7 @@ function falaB1(ctx, tom) {
 // ---------------------------------------------------------------------
 function falaB2(ctx, tom) {
   const { pessoa, papel, vitima } = ctx;
+  const eleVitimaTr = vitima.genero === 'feminino' ? 'a' : 'o';
   const eleVitima = vitima.genero === 'feminino' ? 'ela' : 'ele';
   const fem = pessoa.genero === 'feminino';
   // Duas saídas por classe (v2 — contra falas gêmeas entre suspeitos da
@@ -368,12 +369,23 @@ function falaB2(ctx, tom) {
       : 'chao';
   let corpo;
   if (papel === 'reu') {
-    corpo = {
-      firme: `"Nome nenhum me cabe dar, ${'{detective.treatment}'}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora."`,
-      cordial: `"${vitima.nome} era do trato de todos os dias; eu ${vitima.genero === 'feminino' ? 'a' : 'o'} conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo."`,
-      tecnico: `"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta."`,
-      obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo."`,
-    }[tom];
+    // P23: com forasteiro plausível no caso, a deflexão "veio de fora" é uma
+    // tese sustentável (há de fato estranho no mundo do caso); sem ele, o réu
+    // não aponta para fora — recusa nomear e defere ao inquérito, sem o tell.
+    const reuFala = ctx.deflexaoSustentavel
+      ? {
+          firme: `"Nome nenhum me cabe dar, ${'{detective.treatment}'}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora."`,
+          cordial: `"${vitima.nome} era do trato de todos os dias; eu ${eleVitimaTr} conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo."`,
+          tecnico: `"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta."`,
+          obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo."`,
+        }
+      : {
+          firme: `"Nome nenhum me cabe dar, ${'{detective.treatment}'}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém."`,
+          cordial: `"${vitima.nome} era do trato de todos os dias; eu ${eleVitimaTr} conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei."`,
+          tecnico: `"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam."`,
+          obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo."`,
+        };
+    corpo = reuFala[tom];
   } else if (papel === 'testemunha') {
     corpo = {
       firme: `"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira."`,
@@ -446,7 +458,10 @@ function cartaDeAlibi(ctx) {
     return {
       id: `gen_alibi_${pessoa.id}`,
       localidade: 'delegacia',
-      textoDisplay: `${{ noite: 'A Noite', madrugada: 'A Madrugada', dia: 'A Tarde' }[faixa]} de ${pessoa.nome}`,
+      // P6 (item 11): o rótulo clicável carrega a informação a cruzar — o
+      // lugar declarado + a faixa —, não um título opaco ("A Noite de X").
+      // O lugar (ctx.ausencia) é o que discrimina; a faixa é a mesma do caso.
+      textoDisplay: `${ctx.ausencia} (${FAIXA_CURTA[faixa]})`,
       carimboPadrao: `Paradeiro declarado: ${ctx.ausencia} (${FAIXA_CURTA[faixa]})`,
       descricao: `${falaAus} ${fechoAus}`,
       tagsOcultas: {
@@ -511,7 +526,6 @@ function cartaDeAlibi(ctx) {
     falaDeclarada = `"Estive ${forma.em} das oito às onze; dali fui direto ${formaMoradia.para}, dormir."`;
   }
 
-  const titulo = { noite: 'A Noite', madrugada: 'A Madrugada', dia: 'A Tarde' }[faixa];
   const fecho = variante(
     // KB inquérito §2: quem escreve o termo na estação de vila é o próprio
     // guarda/delegado — não há escrevente civil lotado ali em 1893.
@@ -521,7 +535,10 @@ function cartaDeAlibi(ctx) {
   return {
     id: `gen_alibi_${pessoa.id}`,
     localidade: 'delegacia',
-    textoDisplay: `${titulo} de ${pessoa.nome}`,
+    // P6 (item 11): rótulo informativo — o lugar declarado + a faixa. O
+    // lugar (rotulo) é o dado que cai por confronto; a mesma composição do
+    // carimbo, agora também no negrito clicável.
+    textoDisplay: `${rotulo} (${FAIXA_CURTA[faixa]})`,
     carimboPadrao: `Paradeiro declarado: ${rotulo} (${FAIXA_CURTA[faixa]})`,
     descricao: `${falaDeclarada} ${fecho}`,
     tagsOcultas: {
@@ -551,18 +568,18 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
     if (classe === 'instrumento_faltando') {
       return {
         pergunta: `[${td}] Por que falta essa peça entre as suas coisas?`,
-        reacao: `${pessoa.nome} olha o vão apontado no papel como se o visse de novo. "Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome." As mãos ficam quietas enquanto responde.`,
+        reacao: `${pessoa.nome} olha o vão apontado no papel como se o visse de novo. "Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está." As mãos ficam quietas enquanto responde.`,
       };
     }
     if (classe === 'instrumento_guardado_umido') {
       return {
         pergunta: `[${td}] Por que a peça foi guardada lavada, com a junta ainda úmida?`,
-        reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado." E devolve a resposta no mesmo passo das outras.`,
+        reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
       };
     }
     return {
       pergunta: `[${td}] Por que o instrumento achado junto do corpo tem o seu nome na vila?`,
-      reacao: `${pessoa.nome} olha a peça sem estender a mão. "Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e quem a levou não ma pediu. Onde a acharam, não fui eu que a pus." A voz não muda do começo ao fim.`,
+      reacao: `${pessoa.nome} olha a peça sem estender a mão. "Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita." A voz não muda do começo ao fim.`,
     };
   }
   // rastro_de_visita (v2 — periféricos com segredo): apresentado ao
@@ -584,19 +601,19 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   if (t.pertenceA === pessoa.id && t.subDominio === 'objeto_pessoal') {
     return {
       pergunta: `[${td}] Por que o par disto está entre as suas coisas?`,
-      reacao: `${pessoa.nome} vira o achado nos dedos uma vez e o pousa. "Meu, ou do meu feitio; coisa de vestir perde-se onde o dono nem passou. Como foi parar na mão de quem morreu, isso pergunte a quem o pôs lá." E o empurra de volta pela mesa, devagar.`,
+      reacao: `${pessoa.nome} vira o achado nos dedos uma vez e o pousa. "Meu, ou do meu feitio; comprei o par em feira, e outros levaram igual. Como foi parar com quem morreu, isso pergunte a quem o pôs lá; àquela hora eu tinha onde estar, e disso há registro." E o empurra de volta pela mesa, devagar.`,
     };
   }
   if (t.pertenceA === pessoa.id && t.subDominio === 'rastro_de_dinheiro') {
     return {
       pergunta: `[${td}] Por que soberanos novos, contados à vista de todos?`,
-      reacao: `${pessoa.nome} não conta a moeda de novo. "Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito."`,
+      reacao: `${pessoa.nome} não conta a moeda de novo. "Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito; das minhas horas já dei conta, e constam do expediente."`,
     };
   }
   if (t.pertenceA === pessoa.id && t.subDominio === 'fuga_apressada') {
     return {
       pergunta: `[${td}] Por que o rasgo do seu casaco encaixa neste retalho?`,
-      reacao: `${pessoa.nome} estende o braço e mostra a manga pelo avesso. "Rasguei-o num prego, e prego não falta nesta vila. Se o pano encaixa, encaixa; a porta onde o acharam eu não conheço." Recolhe o braço e espera a pergunta seguinte.`,
+      reacao: `${pessoa.nome} estende o braço e mostra a manga pelo avesso. "Rasguei-o num prego, e prego não falta nesta vila. Se o pano encaixa, encaixa; a porta onde o acharam eu não conheço. O meu paradeiro daquela hora está escrito na delegacia." Recolhe o braço e espera a pergunta seguinte.`,
     };
   }
 
@@ -604,13 +621,13 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   if (carta.origemTestemunha === pessoa.id && t.subDominio === 'ultima_vez_visto') {
     return {
       pergunta: `[${td}] A que horas, exatamente, viu a vítima com vida?`,
-      reacao: `${pessoa.nome} responde sem pedir o termo para ler. "Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha." E deixa que o papel diga o resto.`,
+      reacao: `${pessoa.nome} responde sem pedir o termo para ler. "Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha." E deixa que o papel diga o resto.`,
     };
   }
   if (carta.origemTestemunha === pessoa.id && t.subDominio === 'ruido_ouvido') {
     return {
       pergunta: `[${td}] O que exatamente a parede deixou passar naquela hora?`,
-      reacao: `${pessoa.nome} conta de novo, na mesma ordem. "Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente."`,
+      reacao: `${pessoa.nome} conta de novo, na mesma ordem. "Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente."`,
     };
   }
   return null;
@@ -645,6 +662,13 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
   const dialogos = {};
   const cartasAlibi = [];
   const cartaVisto = cartas.find((c) => c.id === 'gen_visto_vivo');
+  // P23 (guarda de sustentação da deflexão): a fala "veio de fora" do réu só
+  // é honesta se há forasteiro plausível no caso — a vítima de passagem
+  // (vitima.forasteiro; o forasteiro é sempre a vítima) ou um suspeito com
+  // paradeiro declarado fora da vila (ausencias: a vila-mercado satélite).
+  // Sem isso, apontar "para fora" seria um tell (só o réu lucra com a tese):
+  // o arremate cai no registro que NÃO deflete (§5 do KB de fair play).
+  const deflexaoSustentavel = Object.keys(ausencias).length > 0 || !!vitima.forasteiro;
 
   for (const s of suspeitos) {
     const pessoa = pessoas.get(s.id);
@@ -676,6 +700,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       nomePredio,
       sal,
       idCartaAlibi: `gen_alibi_${pessoa.id}`,
+      deflexaoSustentavel,
       horaVistoVivo:
         cartaVisto && cartaVisto.origemTestemunha === pessoa.id ? cartaVisto.tagsOcultas.horaAvistamento : null,
       segredo: segredos[pessoa.id] || null,
