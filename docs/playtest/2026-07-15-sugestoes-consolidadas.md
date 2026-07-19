@@ -7,6 +7,11 @@ estimado, com o arquivo/área de código relevante quando aplicável.
 
 ## Alto impacto / baixo esforço
 
+> **Status (19/07/2026, revisão do usuário):** itens 1, 2 e 4 já estavam
+> **RESOLVIDOS** no código atual (verificados no jogo real); item 3 fica
+> **parcial** (textura/vinheta feitas, vazio inferior adiado para a sessão de
+> UI/arte). Detalhe por item abaixo.
+
 1. **Dar feedback quando "Apresentar uma prova…" não encontra nada para confrontar.**
    Achado da verificação da Vitória Absoluta: em `apresentarProva` (`src/store/jogo.js`),
    se o álibi do interrogado ainda não estiver registrado na mesa, a função simplesmente
@@ -18,6 +23,9 @@ estimado, com o arquivo/área de código relevante quando aplicável.
    abertura) é um no-op silencioso. Sugestão: quando não houver álibi para confrontar,
    exibir algo como "ainda não há paradeiro declarado para confrontar" em vez de (ou além
    de) só a reação narrativa.
+   **→ RESOLVIDO:** `confrontoSemParadeiro` (`src/logic/acusacao.js`) detecta o no-op e
+   `InterrogatorioDialogo.jsx` exibe o aviso "Ainda não há paradeiro declarado para
+   confrontar…" (`data-sem-paradeiro`).
 
 2. **Dar destaque visual às seções recolhidas que escondem evidência mecanicamente
    decisiva.** Achado do playtest original: o vínculo entre a arma do crime e o suspeito
@@ -27,6 +35,9 @@ estimado, com o arquivo/área de código relevante quando aplicável.
    descobrir onde faltou olhar — o resultado é "Impunidade" sem pista alguma do motivo. Não
    é preciso entregar qual seção importa, só sinalizar visualmente "isto abre algo" (ícone,
    borda diferente, leve brilho) de forma consistente em toda seção recolhida do jogo.
+   **→ RESOLVIDO:** toda seção recolhida é um `.ponto-interesse` (`EventoLocalidade.jsx`)
+   com seta ▸/▾ e contador `n/total` de termos extraíveis — sinal consistente em todo o
+   jogo, sem revelar qual é decisiva. A própria "A prateleira de gravar" já o exibe.
 
 3. **Resolver o espaço morto sob o diorama 3D em telas largas.** Em viewport desktop
    widescreen (1440×900), a câmera isométrica da maquete da vila deixa quase a metade
@@ -34,10 +45,17 @@ estimado, com o arquivo/área de código relevante quando aplicável.
    intencional (mesa escura sob um "spot" de luz), mas lê como espaço desperdiçado, não
    como atmosfera. Preencher (reflexo, textura de mesa, vinheta mais forte) ou reenquadrar
    câmera/canvas para não deixar metade da tela vazia.
+   **→ PARCIAL (19/07/2026):** a mesa já tem textura de tábuas com halos de vela e vinheta
+   (`.mesa-madeira`) e um fundo próprio sob o diorama (`.diorama-mesa-fundo`), mas a metade
+   inferior segue largamente vazia em telas largas. **Adiado para a sessão de UI/arte**
+   (decidir o que ocupa o vão — junto de 1.2 b/c/e do overhaul); preenchê-lo bem é direção
+   de arte, não ajuste mecânico.
 
 4. **Expor a rota `?flat=1` (fallback 2D sem WebGL) como opção visível na tela de título**,
    não só como parâmetro de URL escondido. Jogadores em hardware fraco ou com WebGL
    desabilitado não têm hoje como descobrir essa rota sozinhos.
+   **→ RESOLVIDO:** a tela-título (`TelaPersonagem.jsx`) traz o botão visível "Modo leve
+   (2D) — para hardware sem WebGL ou lento" (`data-toggle-flat`).
 
 ## Médio prazo
 
