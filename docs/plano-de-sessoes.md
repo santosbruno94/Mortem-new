@@ -104,6 +104,16 @@ detalhar antes).
   consumo das flags psíquicas e pools de encenação, P11 (repensar a Mesa), o eco de
   interferência pós-caso, e a metade "preconceito de inocente" do P23 (fase própria, só sob
   ordem).
+- **◐ Ramo A — consumo das flags psíquicas: OS + Fase 0 (19/07/2026).** OS em
+  `os-flags-psiquicas-no-dialogo.md` (continua de onde a PR #73 parou). O derivador de diálogo
+  passará a **ler as flags que o gerador já compila e nenhuma boca lê** (`acusa_com_fervor`,
+  `omite_por_decoro`, `defende_demais_o_morto`, `mente_com_calma`/`_periferica`,
+  `mente_sob_pressao`, `gatilho_de_complexo`) — camada narrativa pura, motor cego. **Fase 0
+  (telemetria, risco zero)** no `qa.mjs`: 1661 flags compiladas em 1422 pessoas no lote de 200,
+  **0 lidas** hoje; paridade do tell calmo saudável (77% inocentes, piso 60%); achado do
+  `gatilho_de_complexo` (réu 200/200 × inocente 161/200 → tratar na Fase 1). **Realização em
+  prosa (Fases 1–3) aguarda as decisões §8 da OS** (dose, boca do gatilho, ordem). Gatilho:
+  ordem do usuário para abrir a Fase 1.
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 

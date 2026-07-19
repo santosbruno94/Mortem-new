@@ -3065,6 +3065,57 @@ let g6RegimesOk = true;
   }
 }
 
+// ============================================================
+// TELEMETRIA — flags psíquicas no diálogo (Fase 0 da OS
+// `docs/os-flags-psiquicas-no-dialogo.md`, S1 Ramo A). RISCO ZERO: só
+// LÊ o lote e reporta — não toca o gerador, não muda byte de pacote, não
+// gateia CASO VÁLIDO. Mede quanto de cada flag o gerador já compila e
+// que hoje NENHUMA boca lê (o derivador dialogos_gerados.js é cego às
+// flags), para calibrar a dosagem das fases seguintes com número real —
+// mesmo padrão da Fase 0 de telemetria do P9 (PR #73). As flags vivem em
+// `bruto.psique.consequencias.porPessoa[id].flags` (build time; fora do
+// pacote), disponíveis ao derivador via o `bruto` que ele já recebe.
+// ============================================================
+{
+  const conta = {
+    reuCalma: 0, reuTensao: 0, inocenteCalmaPeriferica: 0,
+    acusaComFervor: 0, omitePorDecoro: 0, defendeDemaisOMorto: 0,
+    iscaMenteSobPressao: 0, gatilhoReu: 0, gatilhoInocente: 0,
+    pessoas: 0, flagsTotais: 0, casosComGatilhoInocente: 0,
+  };
+  for (const bruto of loteF2) {
+    const reuId = bruto.escolha.assassinoId;
+    let gatilhoInocenteNesteCaso = 0;
+    for (const [pid, c] of Object.entries(bruto.psique.consequencias.porPessoa)) {
+      conta.pessoas++;
+      conta.flagsTotais += c.flags.length;
+      const ehReu = pid === reuId;
+      for (const f of c.flags) {
+        if (f === 'mente_com_calma') conta.reuCalma++;
+        else if (f === 'mente_sob_pressao') ehReu ? conta.reuTensao++ : conta.iscaMenteSobPressao++;
+        else if (f.startsWith('mente_com_calma_periferica:')) conta.inocenteCalmaPeriferica++;
+        else if (f === 'acusa_com_fervor') conta.acusaComFervor++;
+        else if (f === 'omite_por_decoro') conta.omitePorDecoro++;
+        else if (f === 'defende_demais_o_morto') conta.defendeDemaisOMorto++;
+        else if (f.startsWith('gatilho_de_complexo:')) {
+          if (ehReu) conta.gatilhoReu++;
+          else { conta.gatilhoInocente++; gatilhoInocenteNesteCaso++; }
+        }
+      }
+    }
+    if (gatilhoInocenteNesteCaso > 0) conta.casosComGatilhoInocente++;
+  }
+  const nCasos = loteF2.length;
+  const calmaTotal = conta.reuCalma + conta.inocenteCalmaPeriferica;
+  const fracInocenteCalma = calmaTotal > 0 ? (100 * conta.inocenteCalmaPeriferica / calmaTotal) : 0;
+  console.log(`\nTELEMETRIA — flags psíquicas no diálogo (Fase 0; lote de ${nCasos} casos; hoje SEM boca no diálogo):`);
+  console.log(`  réu mente_com_calma: ${conta.reuCalma}  ×  réu mente_sob_pressao: ${conta.reuTensao}`);
+  console.log(`  inocente mente_com_calma_periferica: ${conta.inocenteCalmaPeriferica}  (paridade do tell calmo: ${fracInocenteCalma.toFixed(1)}% dos calmos são inocentes)`);
+  console.log(`  acusa_com_fervor: ${conta.acusaComFervor}  |  omite_por_decoro: ${conta.omitePorDecoro}  |  defende_demais_o_morto: ${conta.defendeDemaisOMorto}  |  isca mente_sob_pressao: ${conta.iscaMenteSobPressao}`);
+  console.log(`  gatilho_de_complexo — réu: ${conta.gatilhoReu}  |  inocente: ${conta.gatilhoInocente}  (${conta.casosComGatilhoInocente}/${nCasos} casos têm ≥1 gatilho inocente)`);
+  console.log(`  total: ${conta.flagsTotais} flags compiladas em ${conta.pessoas} pessoas — 0 lidas por dialogos_gerados.js (a boca que esta OS abre).`);
+}
+
 // (G7) integridade de pools (F4 §5.3): todo prior é array de 5 com soma
 // > 0; traits ≥ 3 e todos no catálogo (com comportamento mapeado);
 // motivos 4–6 e todos no catálogo; chanceSegundoTrait inteira 1–5;
