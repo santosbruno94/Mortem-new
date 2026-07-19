@@ -462,7 +462,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_0_professora",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Amy Ellis",
+   "textoDisplay": "A Escola (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Escola (sexta à noite)",
    "descricao": "\"Recolhi-me à Escola às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -477,7 +477,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_5_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Arthur Field",
+   "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
    "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -492,7 +492,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_2_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Elizabeth Knight",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -507,7 +507,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_7_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Florence Cooper",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -522,7 +522,7 @@ export const CASO_REPLICA = {
   {
    "id": "gen_alibi_gen_1_medico",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Philip Jones",
+   "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -2172,7 +2172,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Albert Hall",
+   "textoDisplay": "Weldmere (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Weldmere (madrugada de sábado)",
    "descricao": "\"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -2187,7 +2187,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de John Williams",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -2202,7 +2202,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Maurice Martin",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -2217,7 +2217,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Rachel Page",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -2232,7 +2232,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Rose Wright",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -3798,7 +3798,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Benjamin Evans",
+   "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -3813,7 +3813,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_carroceiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Ernest Hall",
+   "textoDisplay": "Cottage nº 3 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -3828,7 +3828,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Ernest Read",
+   "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -3843,7 +3843,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Herbert Thomas",
+   "textoDisplay": "Cottage nº 5 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 5, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -3858,7 +3858,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de John Carter",
+   "textoDisplay": "A Mercearia (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -5379,7 +5379,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edward Hill",
+   "textoDisplay": "Cottage nº 5 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito. William Harris me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -5394,7 +5394,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Ethel Thomas",
+   "textoDisplay": "O Solar (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Solar (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -5409,7 +5409,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Henry Walker",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -5424,7 +5424,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de James Jones",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -5439,7 +5439,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_professora",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Samuel Marsh",
+   "textoDisplay": "A Escola (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Escola (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Escola às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -6932,7 +6932,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Ada Chapman",
+   "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -6947,7 +6947,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Emily Evans",
+   "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -6962,7 +6962,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Florence Hill",
+   "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -6977,7 +6977,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de George Webb",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -6992,7 +6992,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Sarah Bennett",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8536,7 +8536,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Florence Morris",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8551,7 +8551,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Frank Jones",
+   "textoDisplay": "A Mercearia (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -8566,7 +8566,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Jane Webb",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8581,7 +8581,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Leonard Smith",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8596,7 +8596,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_squire",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Peter Taylor",
+   "textoDisplay": "O Solar (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Solar (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -10263,7 +10263,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_carroceiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edwin Bennett",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -10278,7 +10278,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_taverneiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Joseph Wright",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -10293,7 +10293,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Louisa Jackson",
+   "textoDisplay": "O Presbitério (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -10308,7 +10308,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_medico",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Peter Gray",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -10323,7 +10323,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Robert Turner",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -12081,7 +12081,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de John Robinson",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -12096,7 +12096,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de John Ward",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -12111,7 +12111,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Leonard Smith",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -12126,7 +12126,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Robert Marsh",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -12141,7 +12141,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de William Cooper",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -13819,7 +13819,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Andrew Hill",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -13834,7 +13834,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Dorcas Wright",
+   "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -13849,7 +13849,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Frank Taylor",
+   "textoDisplay": "A Mercearia (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
    "descricao": "\"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -13864,7 +13864,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Henry Moore",
+   "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -13879,7 +13879,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de John Parsons",
+   "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
    "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -15444,7 +15444,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_moleiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Joseph Gray",
+   "textoDisplay": "O Moinho (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Moinho (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Moinho às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -15459,7 +15459,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_paroco",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Peter Roberts",
+   "textoDisplay": "O Presbitério (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -15474,7 +15474,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Sarah Ward",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -15489,7 +15489,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Susan Wilson",
+   "textoDisplay": "A Mercearia (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -15504,7 +15504,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de William Davies",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -17126,7 +17126,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_6_taverneiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Amelia Bennett",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -17141,7 +17141,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Daniel Cooper",
+   "textoDisplay": "Weldmere (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Weldmere (madrugada de sábado)",
    "descricao": "\"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -17156,7 +17156,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Grace Moore",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -17171,7 +17171,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Leonard Ward",
+   "textoDisplay": "A Mercearia (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -17186,7 +17186,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de William Carter",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -18804,7 +18804,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Beatrice Saunders",
+   "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -18819,7 +18819,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Charles Baker",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -18834,7 +18834,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_6_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Edith Walker",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -18849,7 +18849,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Harold Walker",
+   "textoDisplay": "Cottage nº 2 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -18864,7 +18864,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_squire",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de John Cooper",
+   "textoDisplay": "O Solar (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Solar (sexta à noite)",
    "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -20532,7 +20532,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Eva Ellis",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -20547,7 +20547,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Florence Roberts",
+   "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -20562,7 +20562,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_carroceiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Fred Jackson",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -20577,7 +20577,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Harry Webb",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -20592,7 +20592,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de John Lee",
+   "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
    "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -22248,7 +22248,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Alfred Lee",
+   "textoDisplay": "Netherfield (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Netherfield (sexta à noite)",
    "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -22263,7 +22263,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Annie Knight",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -22278,7 +22278,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Dora Saunders",
+   "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -22293,7 +22293,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Sarah Brown",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -22308,7 +22308,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Thomas White",
+   "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
    "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23855,7 +23855,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edward Palmer",
+   "textoDisplay": "Cottage nº 5 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23870,7 +23870,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edwin Davies",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23885,7 +23885,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Elizabeth Wilson",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23900,7 +23900,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Florence Baker",
+   "textoDisplay": "O Presbitério (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -23915,7 +23915,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_professora",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Percy Andrews",
+   "textoDisplay": "A Escola (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Escola (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Escola às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -25469,7 +25469,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Arthur Page",
+   "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
    "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -25484,7 +25484,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_boticario",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de David Carter",
+   "textoDisplay": "A Botica (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Botica (sexta à noite)",
    "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -25499,7 +25499,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Helen Evans",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -25514,7 +25514,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Joseph Green",
+   "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
    "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -25529,7 +25529,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Leah Watson",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -27054,7 +27054,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Abigail Andrews",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -27069,7 +27069,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_lavadeira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Amy Chapman",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -27084,7 +27084,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de George Brown",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -27099,7 +27099,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Hugh Thompson",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -27114,7 +27114,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Richard Morris",
+   "textoDisplay": "Cottage nº 6 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 6 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 6 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -28746,7 +28746,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Ada Hill",
+   "textoDisplay": "Casa do Médico (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -28761,7 +28761,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Emma Mills",
+   "textoDisplay": "Cottage nº 1 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -28776,7 +28776,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de John Jones",
+   "textoDisplay": "A Mercearia (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -28791,7 +28791,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de Thomas Wood",
+   "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -28806,7 +28806,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Tarde de William Thompson",
+   "textoDisplay": "Cottage nº 3 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
    "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -30461,7 +30461,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Edith Moore",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -30476,7 +30476,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_merceeiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Harry Morris",
+   "textoDisplay": "Netherfield (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Netherfield (madrugada de sábado)",
    "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -30491,7 +30491,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de James Robinson",
+   "textoDisplay": "Cottage nº 5 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -30506,7 +30506,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Kate Harris",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -30521,7 +30521,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Minnie Hill",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -32053,7 +32053,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Annie Wood",
+   "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -32068,7 +32068,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Ethel Turner",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -32083,7 +32083,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_constable",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Harold Moore",
+   "textoDisplay": "A Delegacia (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Delegacia (sexta à noite)",
    "descricao": "\"Recolhi-me à Delegacia às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -32098,7 +32098,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_3_lavrador",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Isaac Ellis",
+   "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -32113,7 +32113,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_carroceiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de John Morris",
+   "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -33658,7 +33658,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_pastor_de_ovelhas",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Amos Chapman",
+   "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -33673,7 +33673,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_costureira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Eleanor Webb",
+   "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -33688,7 +33688,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_2_boticario",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Isaac Webb",
+   "textoDisplay": "A Botica (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Botica (sexta à noite)",
    "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -33703,7 +33703,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_paroco",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Matthew Mills",
+   "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
    "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -33718,7 +33718,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_1_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Sophia Thompson",
+   "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {

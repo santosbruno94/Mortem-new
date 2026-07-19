@@ -446,7 +446,10 @@ function cartaDeAlibi(ctx) {
     return {
       id: `gen_alibi_${pessoa.id}`,
       localidade: 'delegacia',
-      textoDisplay: `${{ noite: 'A Noite', madrugada: 'A Madrugada', dia: 'A Tarde' }[faixa]} de ${pessoa.nome}`,
+      // P6 (item 11): o rótulo clicável carrega a informação a cruzar — o
+      // lugar declarado + a faixa —, não um título opaco ("A Noite de X").
+      // O lugar (ctx.ausencia) é o que discrimina; a faixa é a mesma do caso.
+      textoDisplay: `${ctx.ausencia} (${FAIXA_CURTA[faixa]})`,
       carimboPadrao: `Paradeiro declarado: ${ctx.ausencia} (${FAIXA_CURTA[faixa]})`,
       descricao: `${falaAus} ${fechoAus}`,
       tagsOcultas: {
@@ -511,7 +514,6 @@ function cartaDeAlibi(ctx) {
     falaDeclarada = `"Estive ${forma.em} das oito às onze; dali fui direto ${formaMoradia.para}, dormir."`;
   }
 
-  const titulo = { noite: 'A Noite', madrugada: 'A Madrugada', dia: 'A Tarde' }[faixa];
   const fecho = variante(
     // KB inquérito §2: quem escreve o termo na estação de vila é o próprio
     // guarda/delegado — não há escrevente civil lotado ali em 1893.
@@ -521,7 +523,10 @@ function cartaDeAlibi(ctx) {
   return {
     id: `gen_alibi_${pessoa.id}`,
     localidade: 'delegacia',
-    textoDisplay: `${titulo} de ${pessoa.nome}`,
+    // P6 (item 11): rótulo informativo — o lugar declarado + a faixa. O
+    // lugar (rotulo) é o dado que cai por confronto; a mesma composição do
+    // carimbo, agora também no negrito clicável.
+    textoDisplay: `${rotulo} (${FAIXA_CURTA[faixa]})`,
     carimboPadrao: `Paradeiro declarado: ${rotulo} (${FAIXA_CURTA[faixa]})`,
     descricao: `${falaDeclarada} ${fecho}`,
     tagsOcultas: {
