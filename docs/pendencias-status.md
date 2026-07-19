@@ -5,7 +5,9 @@
 **Fonte:** documento *"MORTEM — Pendências de Revisão do Usuário"* (varredura de 19/07/2026),
 cruzado com o estado real do código nesta data.
 
-Este arquivo é o **mapa vivo do que ainda falta**. O que foi resolvido/decidido nesta
+Este arquivo é o **mapa vivo do que ainda falta** (inventário item a item). A **rota
+entre sessões** — ordem, escopo e critério de pronto de cada sessão futura — vive em
+[`docs/plano-de-sessoes.md`](./plano-de-sessoes.md). O que foi resolvido/decidido nesta
 sessão de revisão está marcado ✅; o que fica para depois está marcado ⏭️ com o motivo e o
 gatilho (sessão própria, polimento final, calibração por playtest ou triagem futura).
 
