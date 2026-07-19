@@ -302,7 +302,7 @@ async function main() {
     // completa; arquivar devolve a carta à mesa; a carta da mesa reabre a
     // mesma ficha; e a Caderneta, rebaixada a diário, não traz mais a descrição.
     const DESC_RIGOR = 'não cedem quando se tenta dobrá-los'; // trecho da descrição de ev_rigor
-    const CARIMBO_RIGOR = 'Duro dos maxilares aos joelhos'; // termoCarimbo de ev_rigor
+    const CARIMBO_RIGOR = 'Rígido por inteiro; extremidades começando a ceder'; // carimboPadrao de ev_rigor no estado "Corpo Endurecido" (ipmAte 24)
     await abrirNo(page, 'O Corpo');
     await page.locator('.termo-clicavel').first().click(); // ev_rigor é o primeiro termo
     await espera(page, 300);
@@ -530,7 +530,7 @@ async function main() {
     await page.getByRole('button', { name: 'Fechar o caderno' }).click();
     // Onda 1: fechar o caderno apaga o save — a página recarregada cai no
     // convite limpo, nunca no gate de retomada.
-    await page.waitForSelector('text=Quem atende ao chamado?', { timeout: 15000 });
+    await page.waitForSelector('text=O perito que atende ao chamado.', { timeout: 15000 });
     checar('Onda 1: fechar o caderno limpa o save (convite limpo)', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 0);
     await espera(page, 400);
 

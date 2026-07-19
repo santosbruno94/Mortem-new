@@ -121,7 +121,7 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
             </div>
 
             <p className="mb-6 font-serif italic text-lg sm:text-xl text-amber-200/90 text-center">
-              Quem atende ao chamado?
+              O perito que atende ao chamado.
             </p>
 
             {/* Um convite de pergaminho sobre a mesa: o papel se ergue

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { formatRelogio } from '../logic/tempo.js';
-import { verbeteParaCarta } from '../data/glossario.js';
+import { obterLocalidade } from '../data/pacote_caso.js';
 import { tocarSom } from '../som.js';
 import { resolverAsset } from '../logic/assets.js';
 import Overlay from './Overlay.jsx';
@@ -24,9 +24,6 @@ const ROTULOS_DOMINIO = {
 export default function FichaEvidencia({ cartaId }) {
   const carta = useJogo((s) => s.cartasRegistradas.find((c) => c.id === cartaId));
   const fecharFicha = useJogo((s) => s.fecharFicha);
-  // O glossário é camada própria acima da ficha (P0 §3 do playtest de
-  // 17/07): abrir o verbete empilha, sem descartar o overlay de base.
-  const abrirGlossario = useJogo((s) => s.abrirGlossario);
   // Só a primeira observação do caso abre ficha por conta própria (Onda 4):
   // esta linha-tutorial avisa que as próximas pousam sozinhas.
   const primeiraDoCaso = useJogo((s) => s.cartasRegistradas.length === 1);
@@ -39,7 +36,9 @@ export default function FichaEvidencia({ cartaId }) {
   // Carta ainda não registrada (guarda defensiva): nada a exibir.
   if (!carta) return null;
 
-  const verbete = verbeteParaCarta(carta.tagsOcultas);
+  // De onde a carta foi extraída — lembrete para não obrigar o jogador a voltar
+  // à mesa só para reencontrar a origem. Camada narrativa; o motor não a lê.
+  const origem = obterLocalidade(carta.localidade)?.titulo;
   const dominio = ROTULOS_DOMINIO[carta.tagsOcultas?.dominio];
   // Slot decorativo "vinheta" (contrato de assets, FASE 2): ornamento por
   // domínio quando houver arte no manifesto; sem arte, resolve para null e a
@@ -80,19 +79,18 @@ export default function FichaEvidencia({ cartaId }) {
           </div>
         )}
 
-        {/* Rodapé da etiqueta: a hora do registro e a ponte para o Glossário */}
+        {/* Rodapé da etiqueta: a hora do registro e de onde a carta veio. A
+            ponte para o Glossário saiu daqui de propósito — apontar o verbete
+            entregava a dedução (ex.: "reação vital"); o Glossário segue
+            acessível pela mesa, e o tutorial guia até ele quando é hora. */}
         <div className="flex flex-wrap items-baseline justify-between gap-2 mt-4 pt-2 border-t border-tinta-apagada/40">
           <p className="text-tinta-apagada text-rotulo uppercase">
             registrado em {formatRelogio(carta.horaRegistro)}
           </p>
-          {verbete && (
-            <button
-              onClick={() => abrirGlossario(verbete.id)}
-              className="text-tinta-clara hover:text-tinta underline decoration-tinta-apagada/60 underline-offset-2 text-[11px] px-1 py-1.5 -my-1.5 transition-colors duration-gesto"
-              title="Abrir o verbete correspondente no Glossário"
-            >
-              § {verbete.termo}, no Glossário
-            </button>
+          {origem && (
+            <p className="text-tinta-apagada text-rotulo uppercase" data-origem-carta>
+              extraído em: {origem}
+            </p>
           )}
         </div>
       </div>

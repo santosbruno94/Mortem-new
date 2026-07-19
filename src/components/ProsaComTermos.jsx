@@ -25,6 +25,7 @@ export function ParagrafoProsa({
   const horasJogo = useJogo((s) => s.horasJogo);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const extrairCarta = useJogo((s) => s.extrairCarta);
+  const abrirFicha = useJogo((s) => s.abrirFicha);
   const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada);
 
   const partes = interpolar(texto, detective).split(/(\[\[\w+\]\])/g);
@@ -42,6 +43,7 @@ export function ParagrafoProsa({
             detective={detective}
             registrada={cartasRegistradas.some((c) => c.id === cartaId)}
             aoExtrair={extrairCarta}
+            aoReabrir={abrirFicha}
           />
         );
       })}
@@ -49,10 +51,12 @@ export function ParagrafoProsa({
   );
 }
 
-// O termo em negrito: clicável enquanto não registrado; carimbado depois.
-// Classes .termo-clicavel/.termo-extraido e data-carta-id são contrato do
-// qa-ui.mjs (INTOCÁVEIS) — a extração vale igual na localidade e no diálogo.
-function TermoCarta({ cartaId, ipm, detective, registrada, aoExtrair }) {
+// O termo em negrito: clicável enquanto não registrado; depois de extraído,
+// vira "link visitado" (roxo) que REABRE a ficha da carta ali mesmo, sem
+// obrigar a voltar à mesa. Classes .termo-clicavel/.termo-extraido e
+// data-carta-id são contrato do qa-ui.mjs (INTOCÁVEIS) — a extração vale igual
+// na localidade e no diálogo.
+function TermoCarta({ cartaId, ipm, detective, registrada, aoExtrair, aoReabrir }) {
   const definicao = obterDefinicaoCarta(cartaId);
   if (!definicao) return <span>{cartaId}</span>;
   const estado = resolverEstadoCarta(definicao, ipm);
@@ -61,7 +65,12 @@ function TermoCarta({ cartaId, ipm, detective, registrada, aoExtrair }) {
   const rotulo = interpolar(estado.textoDisplay, detective);
   if (registrada) {
     return (
-      <span data-carta-id={cartaId} className="termo-extraido" title="Já registrado na mesa">
+      <span
+        data-carta-id={cartaId}
+        className="termo-extraido"
+        title="Reabrir a carta"
+        onClick={() => aoReabrir(cartaId)}
+      >
         {rotulo}
       </span>
     );

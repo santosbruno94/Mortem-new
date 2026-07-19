@@ -375,9 +375,12 @@ body {
   padding-block: 0.3em;
 }
 
-/* stone-400 no lugar de stone-500: 7,13:1 sobre o couro (antes 3,75:1) */
+/* Já extraído = "link visitado": roxo suave, ainda clicável para REABRIR a
+   ficha ali no texto (sem voltar à mesa). Distingue-se do âmbar do clicável.
+   text-violet-300 sobre o couro escuro: contraste alto e legível. */
 .termo-extraido {
-  @apply font-bold text-stone-400 cursor-default line-through decoration-stone-600;
+  @apply font-bold text-violet-300 cursor-pointer underline decoration-dotted decoration-violet-800 underline-offset-4 hover:text-violet-200;
+  padding-block: 0.3em;
 }
 
 /* Destaque recíproco: passar o cursor num hotspot do corpo 3D acende o

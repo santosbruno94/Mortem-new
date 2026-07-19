@@ -2,10 +2,14 @@
 
 > Fonte única de verdade do design, escrita para humanos e para agentes de código.
 > Descreve o **estado atual** do jogo — sem camadas históricas. O caminho até aqui está
-> em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md). A prosa é regida por
+> em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md); o que ainda falta, em
+> [`docs/pendencias-status.md`](./docs/pendencias-status.md). A prosa é regida por
 > [`docs/guia-de-estilo.md`](./docs/guia-de-estilo.md) e
 > [`docs/biblia-de-vozes.md`](./docs/biblia-de-vozes.md); a verdade forense, por
-> [`docs/kb-medicina-legal/`](./docs/kb-medicina-legal/).
+> [`docs/kb-medicina-legal/`](./docs/kb-medicina-legal/), e o restante do mundo, da psique
+> e do craft do mistério pelas demais bases (`docs/kb-mundo-vitoriano/`,
+> `docs/kb-psique-e-crime/`, `docs/kb-craft-narrativo/`, `docs/kb-producao/`). O design do
+> gerador por simulação vive em [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md).
 
 ---
 
@@ -338,18 +342,23 @@ clicável para abrir a ficha; a carta recém-pousada ganha um anel de destaque n
 Decisão do playtest de 14/07/2026: o "Arquivar na mesa" obrigatório somava ~72 cliques
 mortos nas 36 observações.
 
-A ficha em si não mudou (estilo etiqueta de exposição / laudo de época):
-`textoDisplay`, a **descrição completa** (o exame de perto), a `vozMestre` em itálico
-quando a carta a tem, o carimbo, a hora do registro (`formatRelogio`) e, quando existe,
-a ponte "§ termo, no Glossário" (`verbeteParaCarta`). Botão único, **"Arquivar na
-mesa"**, fecha a ficha e devolve a carta à superfície (o som de papel toca na abertura
-da ficha e no aviso de pouso, não na extração).
+A ficha (estilo etiqueta de exposição / laudo de época) traz: `textoDisplay`, a
+**descrição completa** (o exame de perto), a `vozMestre` em itálico quando a carta a
+tem, o carimbo, a hora do registro (`formatRelogio`) e o **lembrete de origem**
+("extraído em: {localidade}", `[data-origem-carta]`) — para reencontrar de onde a carta
+veio sem voltar à mesa. **A ponte "§ termo, no Glossário" foi removida** (jul/2026, item 5
+do playtest humano): apontar o verbete entregava a dedução (ex.: "reação vital"); o
+Glossário segue acessível pela mesa e o tutorial guia até ele quando é hora. Botão único,
+**"Arquivar na mesa"**, fecha a ficha e devolve a carta à superfície (o som de papel toca
+na abertura da ficha e no aviso de pouso, não na extração).
 
 A ficha é **consulta de custo zero** e reabre a qualquer momento: clicar numa carta
-pousada na mesa a reabre; dentro do Mural da Acusação, um "§" discreto no canto da
-carta a abre em leitura sem sair da estação. Implementação: `fichaAberta` no store
-(id puro, serializável) e `src/components/FichaEvidencia.jsx`; empilha acima dos demais
-overlays (`data-overlay="ficha"`, `z-50`).
+pousada na mesa a reabre; **o próprio termo já extraído na prosa** vira um "link
+visitado" (roxo, `.termo-extraido` clicável) que reabre a ficha ali no texto, sem voltar
+à mesa (item 6 do playtest humano); e dentro do Mural da Acusação a carta abre em leitura
+sem sair da estação. Implementação: `fichaAberta` no store (id puro, serializável) e
+`src/components/FichaEvidencia.jsx`; empilha acima dos demais overlays
+(`data-overlay="ficha"`, `z-50`).
 
 Consequência para a **Caderneta** (§5): rebaixada a **diário** — a lista de observações
 reunidas passa a ser compacta (carimbo + hora, cada linha reabrindo a ficha). A
@@ -725,8 +734,9 @@ inicial apresenta um único convite (`faseJogo: 'selecao' → 'abertura' →
 oferece três modos: (1) **A Hora Emprestada**, o caso-escola artesanal, intocado;
 (2) **A Hora Refeita**, a réplica procedural do caso-escola (seed fixa + variáveis
 dirigidas — ver `src/gerador/pacote_gerado.js`); (3) **Um Caso da Comarca**, um caso
-aleatório de um banco pré-gerado em build time (`src/data/casos_gerados.js`,
-regenerável por `npm run gerar:casos` e conferido byte a byte pelo QA). O gerador
+aleatório de um banco de **20 casos** pré-gerados em build time
+(`src/data/casos_gerados.js`, regenerável por `npm run gerar:casos` e conferido byte a
+byte pelo QA). O gerador
 segue ILHA de build time: o runtime carrega pacotes prontos, nunca importa
 `src/gerador`. Casos gerados jogam sem mestre (sem `vozMestre`, sem ecos do
 tutorial), na grade 2D da mesa (a maquete 3D permanece exclusiva do caso-escola,
