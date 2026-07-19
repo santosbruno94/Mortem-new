@@ -39,6 +39,9 @@
 import { spawn, execSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import path from 'node:path';
+// B3.4 da OS autobattler v2: a rota gerada segue a seed da réplica
+// vigente — a reseleção de seed não quebra mais este contrato.
+import { SEED_REPLICA } from '../src/gerador/pacote_gerado.js';
 
 const PORTA = 4173;
 const BASE = `http://localhost:${PORTA}/`;
@@ -671,7 +674,7 @@ async function main() {
     // precisa jogar num pacote que nenhuma mão escreveu.
     // ============================================================
     console.log('\n=== ROTA GERADA — a réplica procedural (?caso=) ===');
-    await page.goto(BASE + '?caso=gerado_a_hora_emprestada_replica_96');
+    await page.goto(BASE + `?caso=gerado_${SEED_REPLICA}`);
     await espera(page, 800);
     checar('Rota gerada: os 3 modos aparecem na tela inicial', (await page.locator('[data-modo]').count()) === 3);
     checar(
