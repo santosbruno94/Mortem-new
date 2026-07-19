@@ -1135,11 +1135,11 @@ function Barbante({ a, b, aoRemover }) {
 // Seletor de janela: DOIS seletores (início e fim), cada um com dia+hora
 // combinados numa lista só (Q9 — menos burocracia que os quatro antigos).
 // O intervalo oferecido é o que faz sentido no caso: da meia-noite de
-// 13/out à chegada do perito (11h de 14/out) — a morte não pode ser
+// 13/out à chegada do perito (13h de 14/out) — a morte não pode ser
 // posterior ao corpo achado.
 // ---------------------------------------------------------------------
 const HORA_MIN_JANELA = -24; // 00h de 13/out
-const HORA_MAX_JANELA = 11; // 11h de 14/out (chegada à cena)
+const HORA_MAX_JANELA = 13; // 13h de 14/out (chegada à cena)
 
 function rotuloHoraAbs(abs) {
   const { dia, hora } = deAbsoluto(abs);

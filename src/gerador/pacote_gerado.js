@@ -1093,8 +1093,8 @@ function montarLocalidades(bruto, cartas) {
         ? ['Entre os pertences arrolados: [[gen_papeis_forasteiro]].']
         : []),
       externo
-        ? 'A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.'
-        : 'A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo.',
+        ? 'A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo.'
+        : 'A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo.',
     ],
   };
 
@@ -1514,7 +1514,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       titulo: 'Caulfield, 14 de outubro de 1893',
       paragrafos: [
         'A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.',
-        'Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco.',
+        'Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco.',
       ],
       rotuloBotao: 'A vela queima',
     },
@@ -1532,7 +1532,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       carta: true,
       paragrafos: [
         'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
-        `"{detective.title} {detective.surname} — Escrevo-lhe como delegado de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
+        `"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
         `"${delegado}, Delegado."`,
       ],
       rotuloBotao: 'Aceitar o chamado',
@@ -1542,7 +1542,7 @@ function montarAbertura(bruto, sal, suspeitos) {
       titulo: 'A mesa se transforma',
       paragrafos: [
         'A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.',
-        '{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer.',
+        '{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer.',
       ],
       rotuloBotao: 'Tomar o trem',
     },
@@ -1595,9 +1595,9 @@ function montarAbertura(bruto, sal, suspeitos) {
 const OPCOES_PERSONAGEM_GERADO = [
   {
     id: 'harlan',
-    nome: 'Dr. Harlan Blackwell',
+    nome: 'Harlan Blackwell',
     descricao:
-      'Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem.',
+      'Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que "não afeta a leitura".',
   },
 ];
 

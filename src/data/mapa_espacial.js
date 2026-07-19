@@ -126,7 +126,7 @@ export const MAQUETE = {
 //   lamp        : 0..1 quanto os lampiões das janelas queimam (noite = 1)
 // =====================================================================
 export const CICLO_LUZ = [
-  { hora: 11, luz: '#ffe9c2', iLuz: 2.05, amb: '#8a8172', iAmb: 1.12, fog: '#b9a888', fogNear: 9.5, fogFar: 27, lamp: 0.12 },
+  { hora: 13, luz: '#ffe9c2', iLuz: 2.05, amb: '#8a8172', iAmb: 1.12, fog: '#b9a888', fogNear: 9.5, fogFar: 27, lamp: 0.12 },
   { hora: 15, luz: '#ffd79a', iLuz: 2.0, amb: '#8c8070', iAmb: 1.06, fog: '#ad977a', fogNear: 9, fogFar: 25, lamp: 0.22 },
   { hora: 17.5, luz: '#f2b06a', iLuz: 1.95, amb: '#847462', iAmb: 1.0, fog: '#93795b', fogNear: 8, fogFar: 23, lamp: 0.5 },
   { hora: 19, luz: '#e0904e', iLuz: 1.6, amb: '#6e6250', iAmb: 0.95, fog: '#544a3a', fogNear: 7.5, fogFar: 22, lamp: 0.82 },

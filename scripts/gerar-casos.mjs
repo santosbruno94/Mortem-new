@@ -45,7 +45,7 @@ const CANDIDATAS_POOL = Array.from({ length: 120 }, (_, i) => `comarca_${i + 1}`
 
 // ---------------------------------------------------------------------
 // Validação de solvabilidade pelo caminho Metódico, com as funções do
-// motor: extração de tudo às 11h → janela precisa (≤6h) cobrindo a hora
+// motor: extração de tudo às 13h → janela precisa (≤6h) cobrindo a hora
 // real; mecanismo cravado = o da verdade; nexo instrumental do réu; móbil.
 // ---------------------------------------------------------------------
 function metodicoResolve(pacote) {
@@ -58,7 +58,7 @@ function metodicoResolve(pacote) {
     horaRegistro: chegada,
   }));
   // A carta de algor não vive no catálogo: nasce da medição de temperatura
-  // (store.medirTemperatura). O Metódico a colhe às 11h — replicamos aqui.
+  // (store.medirTemperatura). O Metódico a colhe às 13h — replicamos aqui.
   registradas.push({
     id: 'ev_algor',
     horaRegistro: chegada,

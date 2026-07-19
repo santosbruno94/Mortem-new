@@ -32,7 +32,7 @@ import { interpolar } from '../logic/interpolar.js';
 // Constrói o objeto detective do §12. Há um único perito jogável; o shape
 // (pronoun etc.) permanece porque as interpolações {g:...} são estruturais.
 export function buildDetective() {
-  return { name: 'Harlan', surname: 'Blackwell', pronoun: 'ele', treatment: 'Sr.', title: 'Dr.' };
+  return { name: 'Harlan', surname: 'Blackwell', pronoun: 'ele', treatment: 'Sr.', title: '' };
 }
 
 // Custo (horas) de revisar a acusação após um desfecho (Q2): a regalia do
@@ -229,7 +229,7 @@ export const useJogo = create(
   iniciarInvestigacao: () =>
     set((s) => ({
       faseJogo: 'investigacao',
-      localidadeAtual: 'cena', // o perito chega à cena (a relojoaria) às 11h
+      localidadeAtual: 'cena', // o perito chega à cena (a relojoaria) às 13h
       nosVisitados: ['cena'],
       nosVisitadosDialogo: {},
       noAtualDialogo: {},
@@ -240,7 +240,7 @@ export const useJogo = create(
       ecoInterferencias: [],
       log: [
         ...s.log,
-        { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 11h00 de 14 de outubro.' },
+        { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 13h00 de 14 de outubro.' },
       ],
     })),
 
@@ -601,7 +601,9 @@ export const useJogo = create(
         // A carta entrega só a LEITURA (temperaturas); a aritmética do
         // resfriamento é do jogador, com o verbete de algor do Glossário (Q9).
         descricao: `O mercúrio detém-se nos ${formatTemperatura(temperatura)}, contra ${formatTemperatura(ambiente)} do ar em volta. Um corpo vivo marcaria ${CONSTANTES_FORENSES.temperaturaInicial}.`,
-        vozMestre: 'Ainda morno. O calor que perdeu conta as horas — um grau a cada uma delas.',
+        vozMestre: (temperatura - ambiente) <= 12
+          ? 'Ainda morno, mas já perto do ar da sala. Quando a diferença encolhe, o termômetro alarga a conta em vez de apertá-la: cruze com o rigor antes de firmar a janela.'
+          : 'Ainda morno. O calor que perdeu conta as horas — um grau a cada uma delas.',
         // Carrega a leitura BRUTA (temperatura medida + ambiente); a janela
         // é calculada pelo modelo forense universal na gaveta Cronos.
         tagsOcultas: {

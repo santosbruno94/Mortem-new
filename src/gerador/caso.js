@@ -46,7 +46,7 @@ const PESO_VITIMA_POR_CLASSE = {
 };
 
 // Hora absoluta do crime por faixa de rotina (escala do jogo: 0 = meia-
-// noite de 14/out; negativas = 13/out; chegada do perito às 11h).
+// noite de 14/out; negativas = 13/out; chegada do perito às 13h).
 function horaDaFaixa(faixa, chave) {
   if (faixa === 'noite') return -3 + (hashString(chave) % 3); // 21h–23h de 13/out
   if (faixa === 'madrugada') return 1 + (hashString(chave) % 3); // 1h–3h de 14/out
@@ -171,7 +171,7 @@ export function gerarCasoBruto(seed, opts = {}) {
   // madrugada. A moeda é a MESMA do regime de palco (sal já contratado);
   // o forasteiro é injetado no elenco (namespace próprio de sais), o réu
   // vem do círculo do morto (a taverna à noite) com móbil de dinheiro, e
-  // o caso segue o fluxo interno normal (chegada 11h; réu-forasteiro
+  // o caso segue o fluxo interno normal (chegada 13h; réu-forasteiro
   // segue vetado por construção — o forasteiro é sempre a vítima).
   const salBaseCasoCedo = salDaSeed(seed);
   const moedaPalco = hashDecisao(`${salBaseCasoCedo}|caso|regime-palco`) % 10;
@@ -258,14 +258,14 @@ export function gerarCasoBruto(seed, opts = {}) {
   const localId = palco ? palco.logradouroId : localRotinaId;
 
   // 4.6 E2 — DESCOBERTA DO CORPO (só palco externo; o interno mantém a
-  // chegada fixa às 11h — decisão do autor de 18/07, replay preservado).
+  // chegada fixa às 13h — decisão do autor de 18/07, replay preservado).
   // Cena externa é achada ao clarear por quem madruga (dossiê §4: 6h–8h30);
-  // o perito chega 2–4h depois da notificação, teto 11h.
+  // o perito chega 2–4h depois da notificação, teto 13h.
   let descoberta = null;
   if (palco) {
     const salD = `${salBaseCaso}|caso|descoberta`;
     const horaDescoberta = 6 + (hashDecisao(`${salD}|hora`) % 11) * 0.25;
-    const chegadaPerito = Math.min(11, horaDescoberta + 2 + (hashDecisao(`${salD}|perito`) % 9) * 0.25);
+    const chegadaPerito = Math.min(13, horaDescoberta + 2 + (hashDecisao(`${salD}|perito`) % 9) * 0.25);
     const PREDIO_DO_LOGRADOURO = { patio_da_granja: 'granja', caminho_do_acude: 'moinho', adro_da_igreja: 'igreja' };
     const predioMae = PREDIO_DO_LOGRADOURO[palco.logradouroId];
     const descobridor = elenco.find(
@@ -412,7 +412,7 @@ export function gerarCasoBruto(seed, opts = {}) {
     crime,
     testemunhaVistoVivoId: esqueleto.testemunhaVistoVivoId,
     // E2: chegada do perito variável no palco externo (descoberta + 2–4h,
-    // teto 11h); interno segue no default 11h — replay intacto.
+    // teto 13h); interno segue no default 13h — replay intacto.
     horasChegada: descoberta ? descoberta.chegadaPerito : undefined,
     chamariz: palco ? palco.chamariz : null,
   });

@@ -47,10 +47,10 @@
 import { METODOS } from './metodos.js';
 
 // Hora de chegada padrão do perito à cena (mesma convenção do
-// caso-escola: 11h00 do dia 14/out na escala absoluta — src/logic/
+// caso-escola: 13h00 do dia 14/out na escala absoluta — src/logic/
 // tempo.js). E2: o palco EXTERNO tem descoberta própria e chegada
 // variável (caso.js §4.6) — vem por parâmetro; o interno segue no padrão.
-const HORAS_CHEGADA = 11;
+const HORAS_CHEGADA = 13;
 
 // A fatia forense de um crime resolvido: { verdadeDeOuro, cartas }.
 // JSON puro, serializável — o mesmo contrato do pacote de caso.
