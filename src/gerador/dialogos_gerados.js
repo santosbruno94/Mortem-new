@@ -306,6 +306,7 @@ function falaB1(ctx, tom) {
 // ---------------------------------------------------------------------
 function falaB2(ctx, tom) {
   const { pessoa, papel, vitima } = ctx;
+  const eleVitimaTr = vitima.genero === 'feminino' ? 'a' : 'o';
   const eleVitima = vitima.genero === 'feminino' ? 'ela' : 'ele';
   const fem = pessoa.genero === 'feminino';
   // Duas saídas por classe (v2 — contra falas gêmeas entre suspeitos da
@@ -368,12 +369,23 @@ function falaB2(ctx, tom) {
       : 'chao';
   let corpo;
   if (papel === 'reu') {
-    corpo = {
-      firme: `"Nome nenhum me cabe dar, ${'{detective.treatment}'}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora."`,
-      cordial: `"${vitima.nome} era do trato de todos os dias; eu ${vitima.genero === 'feminino' ? 'a' : 'o'} conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo."`,
-      tecnico: `"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta."`,
-      obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo."`,
-    }[tom];
+    // P23: com forasteiro plausível no caso, a deflexão "veio de fora" é uma
+    // tese sustentável (há de fato estranho no mundo do caso); sem ele, o réu
+    // não aponta para fora — recusa nomear e defere ao inquérito, sem o tell.
+    const reuFala = ctx.deflexaoSustentavel
+      ? {
+          firme: `"Nome nenhum me cabe dar, ${'{detective.treatment}'}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora."`,
+          cordial: `"${vitima.nome} era do trato de todos os dias; eu ${eleVitimaTr} conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo."`,
+          tecnico: `"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta."`,
+          obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo."`,
+        }
+      : {
+          firme: `"Nome nenhum me cabe dar, ${'{detective.treatment}'}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém."`,
+          cordial: `"${vitima.nome} era do trato de todos os dias; eu ${eleVitimaTr} conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei."`,
+          tecnico: `"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam."`,
+          obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo."`,
+        };
+    corpo = reuFala[tom];
   } else if (papel === 'testemunha') {
     corpo = {
       firme: `"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira."`,
@@ -650,6 +662,13 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
   const dialogos = {};
   const cartasAlibi = [];
   const cartaVisto = cartas.find((c) => c.id === 'gen_visto_vivo');
+  // P23 (guarda de sustentação da deflexão): a fala "veio de fora" do réu só
+  // é honesta se há forasteiro plausível no caso — a vítima de passagem
+  // (vitima.forasteiro; o forasteiro é sempre a vítima) ou um suspeito com
+  // paradeiro declarado fora da vila (ausencias: a vila-mercado satélite).
+  // Sem isso, apontar "para fora" seria um tell (só o réu lucra com a tese):
+  // o arremate cai no registro que NÃO deflete (§5 do KB de fair play).
+  const deflexaoSustentavel = Object.keys(ausencias).length > 0 || !!vitima.forasteiro;
 
   for (const s of suspeitos) {
     const pessoa = pessoas.get(s.id);
@@ -681,6 +700,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       nomePredio,
       sal,
       idCartaAlibi: `gen_alibi_${pessoa.id}`,
+      deflexaoSustentavel,
       horaVistoVivo:
         cartaVisto && cartaVisto.origemTestemunha === pessoa.id ? cartaVisto.tagsOcultas.horaAvistamento : null,
       segredo: segredos[pessoa.id] || null,

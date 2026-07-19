@@ -1359,7 +1359,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -1392,7 +1392,7 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Albert Hall era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Albert Hall era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -1425,7 +1425,7 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -4662,7 +4662,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -4695,7 +4695,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Thomas Watson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Thomas Watson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -4728,7 +4728,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -6410,7 +6410,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -6443,7 +6443,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Harris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"William Harris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -6476,7 +6476,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -7593,7 +7593,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -7626,7 +7626,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Read era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Florence Read era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -7659,7 +7659,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -14301,7 +14301,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -14334,7 +14334,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Eleanor Barnes era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Eleanor Barnes era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -14367,7 +14367,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -15918,7 +15918,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -15951,7 +15951,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Fanny Mills era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Fanny Mills era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -15984,7 +15984,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -19485,7 +19485,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -19518,7 +19518,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Annie Morris era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Annie Morris era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -19551,7 +19551,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -21051,7 +21051,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -21084,7 +21084,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Mills era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"William Mills era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -21117,7 +21117,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -24373,7 +24373,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -24406,7 +24406,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ezra Taylor era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Ezra Taylor era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -24439,7 +24439,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -26348,7 +26348,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -26381,7 +26381,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Harry Andrews era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Harry Andrews era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -26414,7 +26414,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -27548,7 +27548,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -27581,7 +27581,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Herbert Jones era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Herbert Jones era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -27614,7 +27614,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -29837,7 +29837,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -29870,7 +29870,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"George Wilson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"George Wilson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -29903,7 +29903,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -33118,7 +33118,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -33151,7 +33151,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Jane Wright era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Jane Wright era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -33184,7 +33184,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -33947,7 +33947,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -33980,7 +33980,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Knight era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"John Knight era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -34013,7 +34013,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
