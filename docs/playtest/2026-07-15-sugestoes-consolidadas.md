@@ -87,11 +87,17 @@ estimado, com o arquivo/área de código relevante quando aplicável.
    custam tempo e é conteúdo de graça, mas o botão "Entrar — iniciar a investigação" tem o
    mesmo peso visual logo abaixo, e nada sinaliza que pular as perguntas descarta prosa já
    escrita.
+   **→ RESOLVIDO (verificado 19/07/2026):** `Abertura.jsx` já traz a dica "(não custam
+   tempo — o que não perguntar aqui, fica por saber)" e um aviso `data-perguntas-pendentes`
+   ("Restam N perguntas por fazer; entrar as deixa para trás.").
 
 10. **Convite explícito a jogar de novo ao fechar o caderno.** O gancho de replay é forte
     (tentar alcançar "Vitória Absoluta" depois de um desfecho parcial), mas hoje o
     encerramento é só "Fechar o caderno", sem nenhum gesto que convide a uma segunda
     tentativa com outro estilo de investigação.
+    **→ RESOLVIDO (verificado 19/07/2026):** `MonologoFinal.jsx` já exibe o convite de
+    replay (`data-convite-replay`) antes do "Fechar o caderno" — texto que muda conforme o
+    desfecho (selado sem falha × verdade parcial rumo à Vitória Absoluta).
 
 ---
 
