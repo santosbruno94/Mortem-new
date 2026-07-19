@@ -139,6 +139,13 @@ detalhar antes).
   (P9 híbrido) re-gera os 21 casos e é o de maior custo; o item 8 estendido ao procedural
   entra na OS `palco-em-aneis` (E1/E2, hoje em S5). Próxima sessão ativa: **S1 (diálogo)**,
   que consome as decisões do Bloco C.
+- **◐ P9 híbrido — Fase 0 feita; Via A parada; P9 → Via B (19/07/2026).** OS em
+  `os-p9-ancora-hibrida.md` (§9). A telemetria da Fase 0 (`qa.mjs`, sem regressão) mostrou
+  que a âncora física durável tem **teto de ~7/21** — 14/21 são mortes limpas que só a
+  contra-hipótese cobre. Decisão do usuário: **não perseguir a Via A** (âncora dupla física;
+  ganho marginal ante o risco de tocar o autobattler) e **consolidar o P9 na Via B**
+  (contra-hipótese jogável, reaproveitando a guarda de sustentação do P23). **Gatilho da Via
+  B:** ordem do usuário para abrir o lote.
 
 ### S3 — Prosa dedicada *(uma sessão por item, pipeline obrigatório)*
 

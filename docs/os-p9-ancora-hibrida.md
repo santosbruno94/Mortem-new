@@ -222,4 +222,40 @@ pipeline `revisar-prosa`.
 autoria muda antes de você responder P9-A, P9-motor e P9-fase0. A Fase 0 (telemetria) posso
 executar assim que você disser "sim" — ela não toca o gerador nem o desfecho.
 
+---
+
+## 9. Decisões e resultado (19/07/2026)
+
+**Decisões do usuário:** P9-A = **corpo-do-agressor** (A-i); P9-motor = **corroboração**
+(sem mexer no desfecho); P9-fase0 = **sim** (executada); P9-B = **fase própria depois da
+Via A**.
+
+**Fase 0 executada** (telemetria no `qa.mjs`, commit próprio; risco zero, só mede):
+
+| | casos |
+|---|---|
+| 2ª âncora **durável** independente hoje (`ferimento_do_agressor`) | **1 / 21** |
+| Espécie-2 só frágil (sangue na cena) | 0 / 21 |
+| Só a instrumental → **Via B** | **20 / 21** |
+| (diagnóstico) sem **nenhum** sinal de luta (mortes limpas) | **14 / 21** |
+| (diagnóstico) desvencilhamento presente | 5 / 21 |
+
+**Conclusão que a telemetria impôs (e a decisão do usuário):** a âncora física durável tem
+**teto natural de ~7/21** — as 14 mortes limpas (veneno, emboscada, golpe único) **não
+comportam** um segundo traço físico do agressor sem irrealismo (o perito reprovaria). Tunar o
+combate para elevar o ferimento no agressor tem raio de explosão largo (guardas GB, cravamento
+do mecanismo fatal, 4 desfechos) e ainda assim nunca cobre as mortes limpas. Diante disso, o
+usuário decidiu **não perseguir a Via A** agora e **consolidar o P9 na Via B** (contra-hipótese
+jogável): a mesma máquina de "outra pessoa pode ter levado a arma / gente de fora", sustentável
+e refutável (KB §6), que já tem parente na guarda de sustentação do P23 (feita na S1).
+
+**Estado do lote:**
+- ✅ **Fase 0** (telemetria) — em código, `qa.mjs`, sem regressão.
+- ⏸️ **Via A** (âncora dupla física) — **não perseguida**: teto ~7/21, ganho marginal ante o
+  risco de tocar o autobattler. Fica disponível como fonte natural de 2ª âncora *onde a luta
+  já ocorre*, se a Via B quiser aproveitá-la.
+- ⏭️ **Via B** (contra-hipótese jogável) — **é por onde o P9 se resolve**. Lote próprio:
+  modelar acesso/oportunidade de terceiros ao instrumento + o fato-refutação; reaproveitar a
+  guarda de sustentação do P23. **Gatilho: ordem do usuário para abrir o lote da Via B.**
+
 — fim da OS P9 —
