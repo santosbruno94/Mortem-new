@@ -29,6 +29,42 @@ limpo; `qa.mjs` "CASO VÁLIDO".
 
 ---
 
+## Conclusões do playtest humano (19/07/2026)
+
+Relatório versionado: [`docs/playtest/2026-07-19-conclusoes-humanas.md`](./playtest/2026-07-19-conclusoes-humanas.md).
+18 conclusões triadas. **Feito nesta rodada** (o que era fácil, em lote):
+
+| # | Item | Estado |
+|---|---|---|
+| 18 | Remover a escolha de detetive (só Harlan) | ✅ Feito |
+| 13 | QOL: hora-fim da janela nunca antes da início | ✅ Feito |
+| 15 | Ficha da carta com lembrete de origem | ✅ Feito |
+| 5 | Remover o ponteiro do glossário da carta | ✅ Feito |
+| 6 | Termo extraído vira "link visitado" que reabre a ficha | ✅ Feito |
+
+**Registrado como pendente** (não era fácil — segue para lote/sessão própria):
+
+| # | Item | Trilha |
+|---|---|---|
+| 10 | Carta amassada do sobrinho: opção de ler a transcrição | UI + prosa |
+| 12 | Vidro na dobra da calça de Silas dá a pista máxima → repensar | Decisão de fair play |
+| 14 | Mural: cartas de "mentiras" já rotuladas → repensar | Decisão de design |
+| 16 | Móbil ligado ao réu; cada suspeito com um móbil | Decisão + mecânica |
+| 11 | Diálogos: exposição contida no próprio diálogo | Decisão + mecânica |
+| 8 | Mapa: cômodos de um local → planta única navegável | Design espacial |
+| 9 | Silas e o aprendiz saem da cena após a polícia cercar | Dados/narrativa |
+| 1 | Refazer a abertura | **Prosa — sessão dedicada** |
+| 2 | Voz do mestre via glossário + "o mestre já falou disso" | **Prosa + design — sessão dedicada** |
+| 7 | "O legista, examinando" ficou artificial → reescrever | **Prosa — sessão dedicada** |
+| 3 | Glossário com cara de livro de medicina legal de época | Futuro (UI) |
+| 4 | Recortes de imagem nas cartas (feridas) | Futuro (asset 2D sob contrato) |
+| 17 | Maquete 3D da vila nos casos procedurais | Futuro (paridade; = 4.3) |
+
+> **Mudanças de prosa (itens 1, 2, 7) merecem sessões dedicadas** — passam pelo pipeline
+> `redigir-prosa` + `revisar-prosa` e não entram junto de correções mecânicas.
+
+---
+
 ## Seção 1 — Decisões de design
 
 | Item | Decisão | Estado |

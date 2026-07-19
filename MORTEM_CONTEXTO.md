@@ -342,18 +342,23 @@ clicável para abrir a ficha; a carta recém-pousada ganha um anel de destaque n
 Decisão do playtest de 14/07/2026: o "Arquivar na mesa" obrigatório somava ~72 cliques
 mortos nas 36 observações.
 
-A ficha em si não mudou (estilo etiqueta de exposição / laudo de época):
-`textoDisplay`, a **descrição completa** (o exame de perto), a `vozMestre` em itálico
-quando a carta a tem, o carimbo, a hora do registro (`formatRelogio`) e, quando existe,
-a ponte "§ termo, no Glossário" (`verbeteParaCarta`). Botão único, **"Arquivar na
-mesa"**, fecha a ficha e devolve a carta à superfície (o som de papel toca na abertura
-da ficha e no aviso de pouso, não na extração).
+A ficha (estilo etiqueta de exposição / laudo de época) traz: `textoDisplay`, a
+**descrição completa** (o exame de perto), a `vozMestre` em itálico quando a carta a
+tem, o carimbo, a hora do registro (`formatRelogio`) e o **lembrete de origem**
+("extraído em: {localidade}", `[data-origem-carta]`) — para reencontrar de onde a carta
+veio sem voltar à mesa. **A ponte "§ termo, no Glossário" foi removida** (jul/2026, item 5
+do playtest humano): apontar o verbete entregava a dedução (ex.: "reação vital"); o
+Glossário segue acessível pela mesa e o tutorial guia até ele quando é hora. Botão único,
+**"Arquivar na mesa"**, fecha a ficha e devolve a carta à superfície (o som de papel toca
+na abertura da ficha e no aviso de pouso, não na extração).
 
 A ficha é **consulta de custo zero** e reabre a qualquer momento: clicar numa carta
-pousada na mesa a reabre; dentro do Mural da Acusação, um "§" discreto no canto da
-carta a abre em leitura sem sair da estação. Implementação: `fichaAberta` no store
-(id puro, serializável) e `src/components/FichaEvidencia.jsx`; empilha acima dos demais
-overlays (`data-overlay="ficha"`, `z-50`).
+pousada na mesa a reabre; **o próprio termo já extraído na prosa** vira um "link
+visitado" (roxo, `.termo-extraido` clicável) que reabre a ficha ali no texto, sem voltar
+à mesa (item 6 do playtest humano); e dentro do Mural da Acusação a carta abre em leitura
+sem sair da estação. Implementação: `fichaAberta` no store (id puro, serializável) e
+`src/components/FichaEvidencia.jsx`; empilha acima dos demais overlays
+(`data-overlay="ficha"`, `z-50`).
 
 Consequência para a **Caderneta** (§5): rebaixada a **diário** — a lista de observações
 reunidas passa a ser compacta (carimbo + hora, cada linha reabrindo a ficha). A
