@@ -60,8 +60,8 @@ const MAX_RODADAS = 8; // v2: perseguição + armar-se pedem fôlego (era 6); te
 const MAX_FERIMENTOS_ASSASSINO = 2; // ferido a este ponto, o assassino foge (rejeição)
 const MAX_TENTATIVAS = 24; // teto da reamostragem antes do desespero
 const PASSO_PERSEGUICAO = 2; // o predador fecha 2 células/rodada; a presa foge 1 (chute calibrável)
-const ACERTO_METODO_OITAVOS = 6; // golpe do método acerta em 6/8 fora da surpresa (chute calibrável)
-const CHANCE_INCIDENTAL = 16; // lesão incidental: 1/16 por exposição a quina perigosa (chute calibrável; banda D3 5–10%/batalha)
+const ACERTO_METODO_OITAVOS = 7; // golpe do método acerta em 7/8 fora da surpresa (chute calibrável; B5: 6→7 pela banda de desespero)
+const CHANCE_INCIDENTAL = 11; // lesão incidental: 1/11 por exposição a quina perigosa (chute calibrável; B5: 16→12→11 pela banda D3)
 
 function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
@@ -286,6 +286,7 @@ function simularBatalha(
   let interposta = false;
   let metodoFalhouRodadas = 0; // alimenta a troca de método (B4, gated)
   let desvencilhou = false;
+  let vitimaEmFuga = false; // a última ação da vítima foi fugir (o alvo muda: a caçada derruba)
 
   const caminho = [{ ...celV }]; // a deriva da luta travada (o rastro vigente)
   const trilhaV = [{ ...celV }]; // TODA posição da vítima, em ordem — contígua por construção
@@ -353,11 +354,19 @@ function simularBatalha(
     );
   };
 
+  // A topologia que a VÍTIMA enxerga: o corpo do assassino bloqueia o
+  // passo (a emboscada corta a retirada de fato — a fuga contorna ou a
+  // doutrina muda sozinha para armar-se/interpor/aparar quando encurrala).
+  const topoParaVitima = () => ({
+    bloqueadas: new Set([...topo.bloqueadas, chaveCel(celA)]),
+    portas: topo.portas,
+  });
+
   // O estado que a doutrina lê (contrato de doutrinas.js).
   const estadoPara = (papel, r) => {
     const minha = papel === 'vitima' ? celV : celA;
     const maisProxima = pecaEmpunhavelMaisProxima(minha);
-    const rotaSaida = papel === 'vitima' ? rotaDeFuga(interior, topo, celV) : null;
+    const rotaSaida = papel === 'vitima' ? rotaDeFuga(interior, topoParaVitima(), celV) : null;
     return {
       rodada: r,
       eu:
@@ -488,15 +497,26 @@ function simularBatalha(
           return;
         }
         if (!comPeca && metodo.seguraAVitima) agarre = 'presa'; // o laço/mão prende ao acertar
-        const dano = comPeca
-          ? 1 + (CALIBRACAO_MOBILIA[armaA.itemId]?.bonusDano ?? 1) + (forA >= 4 ? 1 : 0)
-          : metodo.danoBase + (forA >= 4 ? 1 : 0) + (hashString(`${salR}|dano`) % 2) + (r === 1 ? surpresa : 0);
+        const dano =
+          (comPeca
+            ? 1 + (CALIBRACAO_MOBILIA[armaA.itemId]?.bonusDano ?? 1) + (forA >= 4 ? 1 : 0)
+            : metodo.danoBase + (forA >= 4 ? 1 : 0) + (hashString(`${salR}|dano`) % 2) + (r === 1 ? surpresa : 0)) +
+          (vitimaEmFuga ? 1 : 0); // o dorso não apara (chute calibrável, B5)
         pontosVida -= dano;
         ferimentosVitima += 1;
         golpeAcertou = true;
         const sorteRegiao = hashString(`${salR}|alvo`) % 4;
-        const regiao =
-          sorteRegiao < 2 ? (comPeca ? 'cabeca' : metodo.regiaoAlvo || 'tronco') : sorteRegiao === 2 ? 'bracos' : 'tronco';
+        // Em quem foge, o golpe alcança o que a caçada alcança: pernas e
+        // dorso (traumas.md, sítio posterior) — a fuga sustentada derruba.
+        const regiao = vitimaEmFuga
+          ? sorteRegiao < 2
+            ? 'pernas'
+            : 'tronco'
+          : sorteRegiao < 2
+            ? (comPeca ? 'cabeca' : metodo.regiaoAlvo || 'tronco')
+            : sorteRegiao === 2
+              ? 'bracos'
+              : 'tronco';
         ferirRegiao(regioesV, regiao);
         log.dano = dano;
         log.regiaoAtingida = regiao;
@@ -514,6 +534,7 @@ function simularBatalha(
       const acao = doutrina('vitima', estadoPara('vitima', r));
       log.acaoVitima = acao;
       if (acao == null) return; // inação: nada legal (não é ação do catálogo)
+      vitimaEmFuga = acao === 'fugir';
       if (acao !== 'fugir' && !acaoDominante) acaoDominante = 'resistir';
       if (acao === 'desvencilhar') {
         if (hashString(`${salR}|acerto-v`) % (forV + forA) < forV) {
@@ -582,7 +603,7 @@ function simularBatalha(
           inicioFuga = { ...celV };
           idxInicioFuga = trilhaV.length - 1;
         }
-        const rotaSaida = rotaDeFuga(interior, topo, celV);
+        const rotaSaida = rotaDeFuga(interior, topoParaVitima(), celV);
         if (rotaSaida && rotaSaida.length > 1) {
           const anterior = { ...celV };
           celV = { ...rotaSaida[1] };

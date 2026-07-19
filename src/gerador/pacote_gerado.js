@@ -930,7 +930,7 @@ function realizarCartas(bruto) {
         const vInc = crime.vestigios.find((x) => x.classe === 'lesao_incidental');
         const sedeInc = SEDE_LEGIVEL[vInc?.sede] || 'têmpora';
         nova.carimboPadrao = `Contusão com padrão de quina (${sedeInc})`;
-        nova.descricao = `Fora do desenho das demais lesões, uma contusão de borda reta, na ${sedeInc}. O padrão é de aresta parada — canto de peça no caminho do corpo, não mão armada.`;
+        nova.descricao = `Fora do desenho das outras lesões, uma contusão de borda reta, na ${sedeInc}. O padrão é de aresta parada — canto de peça no caminho do corpo, não mão armada.`;
         break;
       }
       case 'gen_peca_deslocada': {

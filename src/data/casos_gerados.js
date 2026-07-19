@@ -3638,10 +3638,10 @@ export const CASOS_POOL = [
    "id": "gen_pertence",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "paiol",
+   "comodo": "cozinha",
    "celula": {
-    "col": 3,
-    "fila": 3
+    "col": 1,
+    "fila": 2
    },
    "mobilia": null,
    "textoDisplay": "O Pertence Arrancado",
@@ -3885,7 +3885,7 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama paiol, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
@@ -3908,7 +3908,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha da Granja",
      "comodo": "cozinha",
      "prosa": [
-      "No cômodo, o relógio da família, lareira com guarda-fogo."
+      "No chão deste cômodo, o morto. Do mobiliário, o relógio da família, lareira com guarda-fogo. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]."
      ]
     },
     {
@@ -3916,7 +3916,7 @@ export const CASOS_POOL = [
      "rotulo": "Paiol",
      "comodo": "paiol",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, ferramentas de lavoura, arreios pendurados, sacas de grão. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_carroceiro]]. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]."
+      "Do mobiliário, ferramentas de lavoura, arreios pendurados, sacas de grão. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_carroceiro]]."
      ]
     }
    ],
@@ -6826,19 +6826,6 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_ungueais",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Escoriações Ungueais",
-   "carimboPadrao": "Escoriações ungueais no pescoço; fibra e pele sob as unhas",
-   "descricao": "Sob a linha do queixo, escoriações curvas, em meia-lua, rasas. Sob as unhas da morta, fibra de cordoaria e um vestígio de pele. As marcas apontam para dentro: foi a própria mão que arranhou, puxando o que apertava o pescoço.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "desvencilhamento",
-    "sede": "pescoco"
-   }
-  },
-  {
    "id": "gen_engodo",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
@@ -7033,7 +7020,6 @@ export const CASOS_POOL = [
     "A morta jaz ao relento, no canto a que a vila chama a vereda entre sebes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -17008,10 +16994,10 @@ export const CASOS_POOL = [
    "id": "gen_frestas",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "taproom",
+   "comodo": "quartos",
    "celula": {
     "col": 3,
-    "fila": 2
+    "fila": 1
    },
    "mobilia": null,
    "textoDisplay": "Sangue nas Frestas",
@@ -17219,7 +17205,7 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama taproom, vestido como quem se recolheu para a noite. A rota seguia de manhã para as aldeias de além; a cama na taverna era a de sempre. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "O morto jaz no chão do cômodo a que a vila chama quarto do sobrado, vestido como quem se recolheu para a noite. A rota seguia de manhã para as aldeias de além; a cama na taverna era a de sempre. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
@@ -17241,7 +17227,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "No cômodo, lavatório com bacia, cômoda."
+      "No chão deste cômodo, o morto. No cômodo, lavatório com bacia, cômoda. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
      ]
     },
     {
@@ -17257,7 +17243,7 @@ export const CASOS_POOL = [
      "rotulo": "Taproom",
      "comodo": "taproom",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_costureira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_3_merceeiro]]. Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+      "Do mobiliário, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_costureira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_3_merceeiro]]."
      ]
     },
     {
@@ -26959,19 +26945,6 @@ export const CASOS_POOL = [
    }
   },
   {
-   "id": "gen_ungueais",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Escoriações Ungueais",
-   "carimboPadrao": "Escoriações ungueais no pescoço; fibra e pele sob as unhas",
-   "descricao": "Sob a linha do queixo, escoriações curvas, em meia-lua, rasas. Sob as unhas do morto, fibra de cordoaria e um vestígio de pele. As marcas apontam para dentro: foi a própria mão que arranhou, puxando o que apertava o pescoço.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "desvencilhamento",
-    "sede": "pescoco"
-   }
-  },
-  {
    "id": "gen_motivo",
    "localidade": "delegacia",
    "suporteFisico": "registro",
@@ -27157,7 +27130,6 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama expediente, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -28526,6 +28498,25 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_fibra_aresta",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 0,
+    "fila": 2
+   },
+   "mobilia": "cozinha_mesa_raspada",
+   "textoDisplay": "Fibra na Aresta",
+   "carimboPadrao": "Fibra e cabelo presos na aresta",
+   "descricao": "Presos na aresta da peça, uma fibra de tecido e um fio de cabelo. A altura casa com um corpo em movimento, não com pancada de mão.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ambiente_da_luta",
+    "tipoVestigio": "fibra_na_aresta"
+   }
+  },
+  {
    "id": "gen_ungueais",
    "localidade": "corpo",
    "suporteFisico": "corpo",
@@ -28536,6 +28527,19 @@ export const CASOS_POOL = [
     "dominio": "vestigio",
     "subDominio": "desvencilhamento",
     "sede": "pescoco"
+   }
+  },
+  {
+   "id": "gen_incidental",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Contusão com Padrão de Quina",
+   "carimboPadrao": "Contusão com padrão de quina (têmpora)",
+   "descricao": "Fora do desenho das outras lesões, uma contusão de borda reta, na têmpora. O padrão é de aresta parada — canto de peça no caminho do corpo, não mão armada.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "lesao_ambiental",
+    "sede": "tempora"
    }
   },
   {
@@ -28818,6 +28822,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
+    "Fora do desenho da lesão principal, em sítio próprio: [[gen_incidental]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
@@ -28837,7 +28842,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha da Granja",
      "comodo": "cozinha",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, mesa de tampo raspado, cadeiras Windsor. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão."
+      "No chão deste cômodo, o morto. Do mobiliário, mesa de tampo raspado, cadeiras Windsor. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Ao exame: [[gen_fibra_aresta]]."
      ]
     },
     {
@@ -30317,8 +30322,8 @@ export const CASOS_POOL = [
    "suporteFisico": "cena",
    "comodo": "jantar",
    "celula": {
-    "col": 2,
-    "fila": 2
+    "col": 3,
+    "fila": 1
    },
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
@@ -33515,10 +33520,10 @@ export const CASOS_POOL = [
    "id": "gen_pertence",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "parlour",
+   "comodo": "taproom",
    "celula": {
-    "col": 4,
-    "fila": 3
+    "col": 2,
+    "fila": 2
    },
    "mobilia": null,
    "textoDisplay": "O Pertence Arrancado",
@@ -33542,20 +33547,6 @@ export const CASOS_POOL = [
     "dominio": "vestigio",
     "subDominio": "desvencilhamento",
     "sede": "pescoco"
-   }
-  },
-  {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_1_parteira",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na noite de 13",
-   "descricao": "Sophia Thompson conta o que a parede deixou passar na noite de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "noite"
    }
   },
   {
@@ -33736,7 +33727,7 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama parlour, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "O morto jaz no chão do cômodo a que a vila chama taproom, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
@@ -33774,7 +33765,7 @@ export const CASOS_POOL = [
      "rotulo": "Taproom",
      "comodo": "taproom",
      "prosa": [
-      "No cômodo, o snug (cubículo com portinhola), bancos corridos sobre serragem. Um arranhão escapa de sob o pé de uma peça de mobília."
+      "No chão deste cômodo, o morto. No cômodo, o snug (cubículo com portinhola), bancos corridos sobre serragem. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]."
      ]
     },
     {
@@ -33782,7 +33773,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, piano (ou harmônio), a louça boa no aparador, retratos emoldurados. De um canto a outro, nada guarda o seu lugar. Um arranhão escapa de sob o pé de uma peça de mobília. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_paroco]]. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]."
+      "Do mobiliário, piano (ou harmônio), a louça boa no aparador, retratos emoldurados. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_paroco]]."
      ]
     }
    ],
@@ -33810,7 +33801,6 @@ export const CASOS_POOL = [
    "acoesEspeciais": [],
    "prosa": [
     "A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.",
-    "De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_4_costureira]], [[gen_corrobora_gen_2_boticario]], [[gen_corrobora_gen_1_parteira]]."
    ],
    "blocosContingentes": []
@@ -34596,15 +34586,8 @@ export const CASOS_POOL = [
    "subtitulo": "Parteira, 63 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
+   "reacoesProva": {},
+   "confrontos": [],
    "nos": {
     "abertura": {
      "fala": [
@@ -34639,12 +34622,6 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Sophia Thompson conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
     "b1_firme": {
      "fala": [
       "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]."
@@ -34674,7 +34651,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de John Knight eu não conhecia.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -34707,7 +34684,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Knight era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"John Knight? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -34740,7 +34717,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -34773,7 +34750,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
