@@ -3,14 +3,14 @@
 QA estático conforme §17 do contexto: os perfis abaixo são traçados por
 `node scripts/qa.mjs`, que dirige o store e as funções puras exatamente como a
 interface o faria. Verdade de ouro: morte às **21h00 de sexta, 13/out/1893** (hora
-absoluta −3), por ferida de buril no pescoço; chegada do perito às 11h00 de 14/out
-(IPM 14h). O QA de interface (`node scripts/qa-ui.mjs`) joga as mesmas rotas no
+absoluta −3), por ferida de buril no pescoço; chegada do perito às 13h00 de 14/out
+(IPM 16h). O QA de interface (`node scripts/qa-ui.mjs`) joga as mesmas rotas no
 navegador real. Relatório regravado em 13/07/2026 — a versão anterior descrevia o
 caso substituído ("O Álibi de Corda") e está preservada no histórico do git.
 
 ## (a) Jogador Metódico → **Vitória Absoluta** ✓
 
-Corpo primeiro: mede a temperatura às 11h00 (**23°C → algor 12–16h**), extrai rigor
+Corpo primeiro: mede a temperatura às 13h00 (**~21°C → algor 14–18h**), extrai rigor
 pleno (12–24h), livores fixos (≥12h), a ferida de boca em losango, a reação vital e o
 vermelho-de-polir no canal; depois cena, oficina, interrogatórios e registros.
 

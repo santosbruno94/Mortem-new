@@ -157,7 +157,7 @@
 
 ## O perito (o monólogo final — voz do jogador)
 
-- **Quem é:** o Dr. Harlan Blackwell (a voz é "o perito"). Fala
+- **Quem é:** Harlan Blackwell, aprendiz de Dr. Alcott (a voz é "o perito"). Fala
   em primeira pessoa ao fim, recolhendo a cadeia que montou.
 - **Registro:** sóbrio, introspectivo, de quem julga o próprio trabalho. Primeira pessoa.
 - **Ritmo:** medido; **no máximo uma máxima por desfecho**, guardada para o fecho (guia

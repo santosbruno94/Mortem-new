@@ -20,9 +20,9 @@
   (instala 2–12h, pleno 12–24h, dissolve 24–36h), livor (fixa por volta de 12h), e a triangulação
   por interseção de janelas. **Fica como está**, com uma única mudança (ver seção 4).
 
-Conferência dos números do tutorial (batem com o `seed.js`): morte às **22h de 13/out**; chegada
-do perito às **11h de 14/out**; logo, **13h de IPM** na chegada. Corpo a 24 °C, sala a 11 °C →
-queda de 13 °C → ~13h, batendo com o resto.
+Conferência dos números do tutorial (batem com o `seed.js`): morte às **21h de 13/out**; chegada
+do perito às **13h de 14/out**; logo, **16h de IPM** na chegada. Corpo a ~21 °C, sala a 11 °C →
+queda de ~16 °C → ~16h, batendo com o resto.
 
 ---
 
@@ -82,7 +82,7 @@ mensagem de **telegrafia** (aviso antes) e uma de **anúncio** (no instante da p
 | Corpo ainda esfriando (IPM até ~10h) | "Janela apertada, ±2h" | **Telegrafia:** "o corpo ainda perde calor — meça logo, isto não se repete" |
 | Perto do equilíbrio com a sala (IPM > 10h) | "Já tão frio quanto o quarto — só dá um limite frouxo" | **Anúncio:** "o corpo igualou a temperatura da sala; não dá mais para datar com precisão" |
 
-> No tutorial, a temperatura na chegada (13h de IPM) já está **no limite** — medir cedo, antes de
+> No tutorial, a temperatura na chegada (16h de IPM) já está **no limite** — medir cedo, antes de
 > sair viajando, é o que mantém o algor útil. É a pressão do relógio funcionando de forma diegética.
 
 ### Modelo de "sangue" (para casos futuros; opcional no tutorial)

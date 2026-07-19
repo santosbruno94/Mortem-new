@@ -692,12 +692,12 @@ julgamento. Só então "Fechar o caderno" encerra de fato.
 
 Um único perito (decisão de jul/2026 — a perita Lenore foi removida do escopo):
 
-- **Dr. Harlan Blackwell** — cirurgião do Exército; perito independente desde 1887.
+- **Harlan Blackwell** — aprendiz de Dr. Alcott, 24 anos.
   Frio, metódico; especialista em intervalo post-mortem.
 
 **Sistema de variáveis (mantido — é estrutural):**
 ```js
-detective = { name: 'Harlan', surname: 'Blackwell', pronoun: 'ele', treatment: 'Sr.', title: 'Dr.' }
+detective = { name: 'Harlan', surname: 'Blackwell', pronoun: 'ele', treatment: 'Sr.', title: '' }
 ```
 Textos continuam usando interpolação `{detective.campo}` e flexão `{g:masc|fem}`
 (sempre resolvida no masculino; o mecanismo fica para personagens futuros). A tela
@@ -747,7 +747,7 @@ encenada como roubo de madrugada; relógio de lareira esmagado, parado às **08h
 
 **Calendário:** a morte ocorre às **21h de sexta-feira, 13/out/1893** (hora absoluta
 −3); o corpo é achado na manhã de **sábado, 14/out**, às 09h20, por Silas Crane; o
-perito chega às **11h00** (hora absoluta 11; IPM na chegada = 14h). Corpo a 23°C,
+perito chega às **13h00** (hora absoluta 13; IPM na chegada = 16h). Corpo a ~21°C,
 sala a 11°C.
 
 **Escala e cenário (fato canônico):** Briarstone é vila nucleada de **~500 almas
