@@ -312,11 +312,12 @@ vergonha. É a mesma família da mentira de vergonha que os diálogos gerados j�
   (a esfrega e a louça lavada); `sangue_alheio` não é, e o comentário do código dá a razão
   exata que este arquivo confirma: *o respingo alto em parede e mobília a esfrega do assoalho
   não apanha*. Ninguém esfrega o teto.
-- **O guaiaco é decisão de doutrina pendente.** `protocolo-exame.md` §2 descreve uma maleta de
-  campo de lente, termômetro, faca e nariz. Van Deen acrescenta-lhe um **reagente químico de
-  campo** — historicamente correto, e ainda assim uma extensão do que aquele arquivo hoje
-  descreve. Fica **apontado, não aplicado**: cabe ao usuário decidir se o perito de MORTEM
-  carrega tintura de guaiaco.
+- **O guaiaco — DECIDIDO em 19/07/2026 (usuário): não adicionar por ora.** `protocolo-exame.md`
+  §2 descreve uma maleta de campo de lente, termômetro, faca e nariz. Van Deen acrescenta-lhe
+  um **reagente químico de campo** — historicamente correto, e ainda assim uma extensão do que
+  aquele arquivo hoje descreve. **Decisão:** a maleta do perito de MORTEM permanece sem tintura
+  de guaiaco; o reagente fica **apontado, não aplicado**, para evitar scope creep em cartas/prosa/KB.
+  Pode ser retomado numa futura OS forense se um caso pedir prova de sangue de campo.
 - **A supressão inocente é o anti-tell mais valioso desta base.** Dá ao gerador um vestígio de
   segunda ordem **inocente** — assoalho esfregado pela criada, frasco sumido pela irmã — que
   se parece com culpa e não é. É a matéria-prima do Erro Judiciário e do inocente com segredo

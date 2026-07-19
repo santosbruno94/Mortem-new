@@ -267,13 +267,14 @@ Ordem de serviço: `PROMPT-overhaul-mortem.md` (overhaul do vertical slice), FAS
 - **0.5 — Assinatura limpa:** `buildDetective`/`escolherDetective` perderam o parâmetro
   morto `opcao` (call sites em `TelaPersonagem`, `App.jsx ?direto` e `qa.mjs`
   ajustados). Se o multi-perito voltar, o parâmetro volta com ele.
-- **0.6 — EM ABERTO (decisão do usuário):** ligar o relógio forjado (domínio
+- **0.6 — DECIDIDO (19/07/2026, usuário): opção (a).** Ligar o relógio forjado (domínio
   `ambiental`) à âncora Presença é aceito e ignorado pelo nexo. Opções apresentadas:
   (a) manter e registrar como ambiguidade deliberada — coerente com "nada valida até o
   julgamento"; (b) restringir `sustenta_presenca` a cartas com tag de presença
   relevante — ensina no ato, mas mexe na gramática do motor e encolhe a armadilha;
   (c) feedback visual de "fio frouxo" — ensina sem bloquear, mas vaza o juízo do motor
-  antes da submissão. Recomendação do agente: (a). Nada implementado.
+  antes da submissão. **Escolha: (a)** — a ligação segue como armadilha deliberada.
+  Nada a implementar no motor.
 
 ## Fase 1 do overhaul (13/07/2026) — A Ficha de Coleta
 

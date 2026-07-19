@@ -1112,7 +1112,8 @@ function Barbante({ a, b, aoRemover }) {
         }}
       />
       {/* O fio tem corpo (Q7): sombra por baixo, torção clara por cima.
-          Barbante rubro de investigação — cor de lacre, bem visível na cortiça. */}
+          Barbante rubro de investigação — vermelho-telha clareado (#c9553f) para
+          legibilidade sob protanopia sem perder o tom de lacre na cortiça. */}
       {QUADROS_BOIL.map((q, i) => (
         <g key={i} className={`boil-quadro boil-quadro--${i}`}>
           <path d={d(q, 0, 2)} fill="none" stroke="rgba(0,0,0,0.6)" strokeWidth={5} />
@@ -1120,7 +1121,7 @@ function Barbante({ a, b, aoRemover }) {
             ref={(el) => (refs.current[i] = el)}
             d={d(q)}
             fill="none"
-            stroke="#a13b2e"
+            stroke="#c9553f"
             strokeWidth={3.5}
             strokeLinecap="round"
           />
