@@ -117,6 +117,17 @@ detalhar antes).
 - **Pronto quando:** cada item tem decisão registrada em `historico-decisoes.md` (mesmo
   que a decisão seja "manter como está"); o que virar mudança de código/prosa ganha lote
   próprio.
+- **✅ Concluída (19/07/2026):** orquestrada e decidida via `docs/os-fair-play-s2.md`; os 9
+  itens registrados em `historico-decisoes.md` ("S2 — Decisões de fair play"). Resultados:
+  caso-escola (vidro **espalhado**, mural com **rótulo neutro**, **móbil por suspeito**);
+  gerador (âncora **híbrida**, compleição **adiada**, **cardápio amplo** de fôrmas com
+  culpado partilhando fôrma de inocente); diálogo → S1 (paradeiro universal, confronto com
+  ganho em **todos** os confrontos, deflexão preconceituosa só de inocente); espacial
+  (planta única navegável no caso-escola **e** na cena procedural → OS `palco-em-aneis`;
+  suspeitos saem de cena; transcrição da carta amassada). **Reordenação:** o lote do gerador
+  (P9 híbrido) re-gera os 21 casos e é o de maior custo; o item 8 estendido ao procedural
+  entra na OS `palco-em-aneis` (E1/E2, hoje em S5). Próxima sessão ativa: **S1 (diálogo)**,
+  que consome as decisões do Bloco C.
 
 ### S3 — Prosa dedicada *(uma sessão por item, pipeline obrigatório)*
 
