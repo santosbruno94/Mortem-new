@@ -33,7 +33,7 @@ if (!params.has('caso')) {
 }
 
 // Atalho de desenvolvimento: ?direto pula a seleção e a abertura,
-// caindo direto na escrivaninha às 11h00 de 14/out. Para ser determinístico,
+// caindo direto na escrivaninha às 13h00 de 14/out. Para ser determinístico,
 // descarta qualquer save antes de arrancar.
 if (params.has('direto')) {
   useJogo.getState().reiniciarCaso();

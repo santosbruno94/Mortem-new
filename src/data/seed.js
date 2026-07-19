@@ -5,7 +5,7 @@
 // Convenção de tempo do jogo inteiro:
 //   HORA ABSOLUTA = horas contadas a partir da meia-noite de 14/out/1893.
 //   Valores negativos pertencem ao dia 13/out (ex.: -3 = 21h00 de 13/out).
-//   A chegada do perito à cena ocorre na hora absoluta 11 (11h00 de 14/out).
+//   A chegada do perito à cena ocorre na hora absoluta 13 (13h00 de 14/out).
 //
 // O caso, em uma linha: o primeiro-oficial Silas Crane, com doze anos de
 // casa, vinha trocando ouro dos consertos por metal vil; descoberto na
@@ -18,8 +18,8 @@ export const SEED_TUTORIAL = {
   id: 'a_hora_emprestada',
   vitima: 'Sr. Geoffrey Arthurs',
   reuCorreto: 'silas_crane',
-  horasMorteAntesChegada: 14, // morte às 21h00 de 13/out; chegada às 11h00 de 14/out
-  horaMorteAbsoluta: -3, // 21h00 de 13/out na escala absoluta (derivada: 11 - 14)
+  horasMorteAntesChegada: 16, // morte às 21h00 de 13/out; chegada às 13h00 de 14/out
+  horaMorteAbsoluta: -3, // 21h00 de 13/out na escala absoluta (derivada: 13 - 16)
   mecanismoCorreto: 'ferida_arma_branca',
   instrumentoCorreto: 'buril_gravador',
   motivacaoCorreta: 'silenciamento',

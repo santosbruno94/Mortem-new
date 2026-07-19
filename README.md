@@ -42,7 +42,7 @@ npm run lint:prosa      # linter de prosa isolado: cheques mecânicos do guia de
 
 ## Como se joga
 
-1. **Atenda ao chamado** — o Dr. Harlan Blackwell ergue o convite da mesa.
+1. **Atenda ao chamado** — Harlan Blackwell ergue o convite da mesa.
 2. **Abertura** — da pensão em Caulfield ao briefing do Delegado Wycliffe (as perguntas ao
    delegado não custam tempo… mas plantam iscas).
 3. **Investigação** — tudo acontece sobre a escrivaninha. Localidades são cartas: clique para

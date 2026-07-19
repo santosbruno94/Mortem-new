@@ -1611,8 +1611,8 @@ function problemasDaPonte(caso) {
   const verdade = fatia.verdadeDeOuro;
   const horaMorte = crime.hora.morte;
   // E2: no palco externo a chegada é variável (descoberta + 2–4h, teto
-  // 11h); no interno, a convenção das 11h do caso-escola.
-  const horaExame = caso.escolha.palco?.externo ? caso.escolha.palco.descoberta.chegadaPerito : 11;
+  // 13h); no interno, a convenção das 13h do caso-escola.
+  const horaExame = caso.escolha.palco?.externo ? caso.escolha.palco.descoberta.chegadaPerito : 13;
   const ipm = horaExame - horaMorte;
 
   if (verdade.reuCorreto !== crime.assassinoId) problemas.push('réu da verdade ≠ assassino do registro');
@@ -1699,10 +1699,10 @@ if (!ponteConsumivel) {
 
 // Réplica independente do predicado R2 (mesmas funções do motor).
 function fatiaResolveSemQa(fatia, idsRemovidos) {
-  const horaExame = 11;
+  const verdade = fatia.verdadeDeOuro;
+  const horaExame = verdade.horaMorteAbsoluta + verdade.horasMorteAntesChegada;
   const removidos = new Set(idsRemovidos);
   const cartasFatia = fatia.cartas.filter((c) => !removidos.has(c.id));
-  const verdade = fatia.verdadeDeOuro;
   const ipm = horaExame - verdade.horaMorteAbsoluta;
   const temporais = cartasFatia
     .map((def) => ({ id: def.id, horaRegistro: horaExame, tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas }))
@@ -3316,7 +3316,7 @@ for (const seedE2 of SEEDS_E2) {
     )
       ge4Falhas.push(`${seedE2}: vestígio ${v.id} fora do grid`);
   }
-  if (!palcoE2.descoberta || palcoE2.descoberta.chegadaPerito > 11 || palcoE2.descoberta.hora < 6)
+  if (!palcoE2.descoberta || palcoE2.descoberta.chegadaPerito > 13 || palcoE2.descoberta.hora < 6)
     ge4Falhas.push(`${seedE2}: descoberta externa fora das bandas`);
   if (palcoE2.via === 'chamariz' && !brutoE2.fatiaForense.cartas.some((c) => c.id === 'gen_engodo'))
     ge6Falhas.push(`${seedE2}: chamariz sem vestígio do engodo`);

@@ -1,9 +1,10 @@
 // =====================================================================
 // ECOS DO MESTRE SOBRE A FALHA (FASE 6) — camada de PROSA, dado puro.
 //
-// Variantes da fala curta que o legista dá na Caderneta quando o jogador pede
-// para rever uma acusação que caiu. A seleção (qual código, qual variante) é
-// determinística e vive em src/logic/ecoMestre.js; aqui moram SÓ as palavras.
+// A voz aqui é a do Dr. Alcott na cabeça de Harlan: o mestre que não está
+// presente na cena, mas cujo ensino ecoa quando o aprendiz erra. A seleção
+// (qual código, qual variante) é determinística e vive em src/logic/ecoMestre.js;
+// aqui moram SÓ as palavras.
 //
 // Campo OPCIONAL do pacote de caso (`ecosDoMestre`): ausente, não há mestre e
 // não há eco (modo procedural, coerente com §13). O motor jamais o lê.

@@ -287,7 +287,7 @@ async function main() {
     // Esperado: Vitória Absoluta.
     // ============================================================
     console.log('\n=== ROTA 1 — Metódico (Harlan) → Vitória Absoluta ===');
-    await novaPartida(page, 'Dr. Harlan Blackwell');
+    await novaPartida(page, 'Harlan Blackwell');
 
     // O diorama 3D da vila sobe (chunk lazy); os nós seguem clicáveis por texto.
     await page.waitForSelector('canvas', { timeout: 15000 });
@@ -355,7 +355,7 @@ async function main() {
     await page.locator('[data-planta] [data-alvo="oficina"]').click();
     await espera(page, 500);
     checar('Fase 2: clicar um cômodo da planta viaja para o nó', (await page.locator('body').innerText()).includes('A Oficina de Consertos'));
-    checar('Fase 2: andar entre cômodos não gasta o relógio (11h00)', (await page.locator('body').innerText()).includes('11h00'));
+    checar('Fase 2: andar entre cômodos não gasta o relógio (13h00)', (await page.locator('body').innerText()).includes('13h00'));
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 2 ----
 
@@ -370,7 +370,7 @@ async function main() {
     await espera(page, 400);
     const mesaRetomada = await page.locator('body').innerText();
     checar('Onda 1: a mesa volta com as cartas registradas', mesaRetomada.includes('Corpo Endurecido'));
-    checar('Onda 1: o relógio retomado não andou (11h00)', mesaRetomada.includes('11h00'));
+    checar('Onda 1: o relógio retomado não andou (13h00)', mesaRetomada.includes('13h00'));
     // ---- fim do bloco da Onda 1 ----
 
     await visitarEExtrair(page, 'O Corpo'); // extrai os demais termos do corpo
@@ -539,7 +539,7 @@ async function main() {
     // acusa a governanta. Esperado: Erro Judiciário.
     // ============================================================
     console.log('\n=== ROTA 2 — Apressado (Harlan) → Erro Judiciário ===');
-    await novaPartida(page, 'Dr. Harlan Blackwell');
+    await novaPartida(page, 'Harlan Blackwell');
 
     await visitarEExtrair(page, 'A Cena do Crime');
     await fecharOverlay(page);
@@ -603,7 +603,7 @@ async function main() {
     // Edgar por faro. Esperado: Impunidade.
     // ============================================================
     console.log('\n=== ROTA 3 — Intuitivo (Harlan) → Impunidade ===');
-    await novaPartida(page, 'Dr. Harlan Blackwell');
+    await novaPartida(page, 'Harlan Blackwell');
 
     await interrogarEExtrair(page, 'A Saleta'); // §7.1: o interrogatório é diálogo
     await fecharOverlay(page);
@@ -646,7 +646,7 @@ async function main() {
     // a grade de localidades original precisa jogar igual.
     // ============================================================
     console.log('\n=== ROTA FLAT — grade 2D (?flat=1) ===');
-    await novaPartida(page, 'Dr. Harlan Blackwell', '?flat=1');
+    await novaPartida(page, 'Harlan Blackwell', '?flat=1');
     checar('Rota flat: sem canvas 3D', (await page.locator('canvas').count()) === 0);
     // §5.1: a planta é SVG 2D — funciona idêntico em ?flat=1. Abre o corpo,
     // confere a planta e anda para a cena por ela (0h).
@@ -681,7 +681,7 @@ async function main() {
       'Rota gerada: o modo réplica nasce selecionado pelo ?caso=',
       (await page.locator('[data-modo="replica"][aria-pressed="true"]').count()) === 1
     );
-    await page.click('text=Dr. Harlan Blackwell');
+    await page.click('text=Harlan Blackwell');
     await espera(page, 600);
     for (let i = 0; i < 5; i++) {
       await page.locator('button, [role=button], a').filter({ hasText: '→' }).last().click();

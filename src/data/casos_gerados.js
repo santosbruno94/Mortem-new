@@ -18,7 +18,7 @@ export const CASO_REPLICA = {
   "id": "gerado_a_hora_emprestada_replica_105",
   "vitima": "Albert Hall",
   "reuCorreto": "gen_7_lavadeira",
-  "horasMorteAntesChegada": 14,
+  "horasMorteAntesChegada": 16,
   "horaMorteAbsoluta": -3,
   "mecanismoCorreto": "ferida_arma_branca",
   "instrumentoCorreto": "lamina_de_oficio",
@@ -555,7 +555,7 @@ export const CASO_REPLICA = {
     "O morto jaz no chão do cômodo a que a vila chama copa, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -927,7 +927,7 @@ export const CASO_REPLICA = {
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -1359,7 +1359,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -1654,7 +1654,7 @@ export const CASO_REPLICA = {
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -1672,7 +1672,7 @@ export const CASO_REPLICA = {
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Albert Hall, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Albert Hall, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -1682,7 +1682,7 @@ export const CASO_REPLICA = {
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -1726,8 +1726,8 @@ export const CASO_REPLICA = {
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -1867,7 +1867,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_1",
   "vitima": "Charles Harris",
   "reuCorreto": "gen_1_pastor_de_ovelhas",
-  "horasMorteAntesChegada": 8,
+  "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": 3,
   "mecanismoCorreto": "estrangulamento_manual",
   "instrumentoCorreto": "pertence_arrancado",
@@ -2265,7 +2265,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama quarto, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -2435,7 +2435,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -2798,7 +2798,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -2837,7 +2837,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -3336,7 +3336,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -3354,7 +3354,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Charles Harris, moleiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Charles Harris, moleiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -3364,7 +3364,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -3408,8 +3408,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -3445,7 +3445,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_2",
   "vitima": "Thomas Watson",
   "reuCorreto": "gen_3_lavrador",
-  "horasMorteAntesChegada": 21,
+  "horasMorteAntesChegada": 23,
   "horaMorteAbsoluta": -10,
   "mecanismoCorreto": "estrangulamento_manual",
   "instrumentoCorreto": "pertence_arrancado",
@@ -3893,7 +3893,7 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -4063,7 +4063,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -4438,7 +4438,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -4623,7 +4623,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -4662,7 +4662,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -4957,7 +4957,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -4975,7 +4975,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Thomas Watson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Thomas Watson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -4985,7 +4985,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -5029,8 +5029,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -5066,7 +5066,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_3",
   "vitima": "William Harris",
   "reuCorreto": "gen_7_professora",
-  "horasMorteAntesChegada": 9,
+  "horasMorteAntesChegada": 11,
   "horaMorteAbsoluta": 2,
   "mecanismoCorreto": "envenenamento_laudano",
   "instrumentoCorreto": "frasco_de_laudano",
@@ -5472,7 +5472,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama quarto do sobrado, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -5620,7 +5620,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -6002,7 +6002,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -6186,7 +6186,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -6410,7 +6410,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -6527,7 +6527,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -6545,7 +6545,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. William Harris, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. William Harris, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Bexley, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -6555,7 +6555,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -6599,8 +6599,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -7025,7 +7025,7 @@ export const CASOS_POOL = [
     "A morta jaz ao relento, no canto a que a vila chama a vereda entre sebes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -7593,7 +7593,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -7745,7 +7745,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -8079,7 +8079,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -8097,7 +8097,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Florence Read, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Florence Read, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Quill, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -8107,7 +8107,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -8151,8 +8151,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -8173,7 +8173,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_5",
   "vitima": "Reuben Brown",
   "reuCorreto": "gen_3_ferreiro",
-  "horasMorteAntesChegada": 9,
+  "horasMorteAntesChegada": 11,
   "horaMorteAbsoluta": 2,
   "mecanismoCorreto": "trauma_contuso",
   "instrumentoCorreto": "arma_de_ocasiao",
@@ -8630,7 +8630,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -9461,7 +9461,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -9756,7 +9756,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -9774,7 +9774,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Reuben Brown, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Reuben Brown, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Harrow, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -9784,7 +9784,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -9828,8 +9828,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -9865,7 +9865,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_6",
   "vitima": "John Ward",
   "reuCorreto": "gen_5_carroceiro",
-  "horasMorteAntesChegada": 8,
+  "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": 3,
   "mecanismoCorreto": "sufocacao",
   "instrumentoCorreto": "travesseiro_ou_pano",
@@ -10357,7 +10357,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -10626,7 +10626,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -11342,7 +11342,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -11492,7 +11492,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -11510,7 +11510,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. John Ward, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. John Ward, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Fenwick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -11520,7 +11520,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -11564,8 +11564,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -11678,7 +11678,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_7",
   "vitima": "Henry Turner",
   "reuCorreto": "gen_0_ferreiro",
-  "horasMorteAntesChegada": 8,
+  "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": 3,
   "mecanismoCorreto": "ferida_arma_branca",
   "instrumentoCorreto": "lamina_de_oficio",
@@ -12175,7 +12175,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -12391,7 +12391,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -12632,7 +12632,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -12975,7 +12975,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -13166,7 +13166,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -13322,7 +13322,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -13340,7 +13340,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Henry Turner, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Henry Turner, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -13350,7 +13350,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -13394,8 +13394,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -13509,7 +13509,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_8",
   "vitima": "Eleanor Barnes",
   "reuCorreto": "gen_5_parteira",
-  "horasMorteAntesChegada": 13,
+  "horasMorteAntesChegada": 15,
   "horaMorteAbsoluta": -2,
   "mecanismoCorreto": "estrangulamento_ligadura",
   "instrumentoCorreto": "cordao_torcido",
@@ -13913,7 +13913,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -14077,7 +14077,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -14301,7 +14301,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -14446,7 +14446,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -14631,7 +14631,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -14815,7 +14815,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -14965,7 +14965,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -14983,7 +14983,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Eleanor Barnes, lavadeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Eleanor Barnes, lavadeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -14993,7 +14993,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -15037,8 +15037,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -15059,7 +15059,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_9",
   "vitima": "Fanny Mills",
   "reuCorreto": "gen_3_paroco",
-  "horasMorteAntesChegada": 10,
+  "horasMorteAntesChegada": 12,
   "horaMorteAbsoluta": 1,
   "mecanismoCorreto": "ferida_arma_branca",
   "instrumentoCorreto": "lamina_de_oficio",
@@ -15537,7 +15537,7 @@ export const CASOS_POOL = [
     "A morta jaz no chão do cômodo a que a vila chama quarto, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -15918,7 +15918,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -16452,7 +16452,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -16608,7 +16608,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -16626,7 +16626,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Fanny Mills, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Fanny Mills, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Harrow, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -16636,7 +16636,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -16680,8 +16680,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -16778,7 +16778,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_10",
   "vitima": "Amos Read",
   "reuCorreto": "gen_6_taverneiro",
-  "horasMorteAntesChegada": 8,
+  "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": 3,
   "mecanismoCorreto": "trauma_contuso",
   "instrumentoCorreto": "arma_de_ocasiao",
@@ -17220,7 +17220,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -17467,7 +17467,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -18335,7 +18335,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -18353,7 +18353,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Amos Read, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Amos Read, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Bexley, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -18363,7 +18363,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -18407,8 +18407,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -18898,7 +18898,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
-    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -19261,7 +19261,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -19485,7 +19485,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -19637,7 +19637,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -19854,7 +19854,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nomes não aponto. Desafeto declarado de Annie Morris, não me constou nenhum.\" Levanta-se pelo próprio aviso. \"A casa fica a par do que se apurar. Passar bem, {detective.title}.\""
+      "\"Nomes não aponto. Desafeto declarado de Annie Morris, não me constou nenhum.\" Levanta-se pelo próprio aviso. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
      ],
      "opcoes": []
     },
@@ -19887,7 +19887,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Annie Morris? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Levanta-se pelo próprio aviso. \"A casa fica a par do que se apurar. Passar bem, {detective.title}.\""
+      "\"Annie Morris? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Levanta-se pelo próprio aviso. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
      ],
      "opcoes": []
     },
@@ -19920,7 +19920,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Levanta-se pelo próprio aviso. \"A casa fica a par do que se apurar. Passar bem, {detective.title}.\""
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Levanta-se pelo próprio aviso. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
      ],
      "opcoes": []
     },
@@ -19953,7 +19953,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Levanta-se pelo próprio aviso. \"A casa fica a par do que se apurar. Passar bem, {detective.title}.\""
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Levanta-se pelo próprio aviso. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
      ],
      "opcoes": []
     }
@@ -19971,7 +19971,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -19989,7 +19989,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Annie Morris, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Annie Morris, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -19999,7 +19999,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -20043,8 +20043,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -20080,7 +20080,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_12",
   "vitima": "William Mills",
   "reuCorreto": "gen_1_lavadeira",
-  "horasMorteAntesChegada": 13,
+  "horasMorteAntesChegada": 15,
   "horaMorteAbsoluta": -2,
   "mecanismoCorreto": "ferida_arma_branca",
   "instrumentoCorreto": "lamina_de_oficio",
@@ -20625,7 +20625,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama cozinha, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -21051,7 +21051,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -21585,7 +21585,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -21741,7 +21741,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -21759,7 +21759,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. William Mills, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. William Mills, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -21769,7 +21769,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -21813,8 +21813,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -21950,7 +21950,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_13",
   "vitima": "Mary Ellis",
   "reuCorreto": "gen_0_costureira",
-  "horasMorteAntesChegada": 14,
+  "horasMorteAntesChegada": 14.25,
   "horaMorteAbsoluta": -3,
   "mecanismoCorreto": "envenenamento_laudano",
   "instrumentoCorreto": "frasco_de_laudano",
@@ -22341,7 +22341,7 @@ export const CASOS_POOL = [
     "A morta jaz ao relento, no canto a que a vila chama a alameda das lajes, vestida de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
-    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -22958,7 +22958,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -23431,7 +23431,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -23449,7 +23449,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Mary Ellis, parteira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Mary Ellis, parteira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Fenwick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -23459,7 +23459,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -23503,13 +23503,13 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
  "parametrosCena": {
-  "horasChegada": 11,
+  "horasChegada": 11.25,
   "ambiente": 11,
   "calendario": {
    "diaBase": 14,
@@ -23540,7 +23540,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_14",
   "vitima": "Ezra Taylor",
   "reuCorreto": "gen_2_lavrador",
-  "horasMorteAntesChegada": 9,
+  "horasMorteAntesChegada": 11,
   "horaMorteAbsoluta": 2,
   "mecanismoCorreto": "envenenamento_arsenico",
   "instrumentoCorreto": "papel_de_arsenico",
@@ -23949,7 +23949,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -24334,7 +24334,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -24373,7 +24373,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -25050,7 +25050,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -25068,7 +25068,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Ezra Taylor, taverneiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Ezra Taylor, taverneiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Harrow, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -25078,7 +25078,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -25122,8 +25122,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -25159,7 +25159,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_15",
   "vitima": "Harry Andrews",
   "reuCorreto": "gen_3_lavrador",
-  "horasMorteAntesChegada": 12,
+  "horasMorteAntesChegada": 14,
   "horaMorteAbsoluta": -1,
   "mecanismoCorreto": "envenenamento_laudano",
   "instrumentoCorreto": "frasco_de_laudano",
@@ -25563,7 +25563,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -25755,7 +25755,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -26309,7 +26309,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -26348,7 +26348,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -26643,7 +26643,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -26661,7 +26661,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Harry Andrews, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Harry Andrews, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Quill, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -26671,7 +26671,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -26715,8 +26715,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -26752,7 +26752,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_16",
   "vitima": "Herbert Jones",
   "reuCorreto": "gen_5_lavadeira",
-  "horasMorteAntesChegada": 8,
+  "horasMorteAntesChegada": 10,
   "horaMorteAbsoluta": 3,
   "mecanismoCorreto": "sufocacao",
   "instrumentoCorreto": "travesseiro_ou_pano",
@@ -27147,7 +27147,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama expediente, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -27548,7 +27548,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -27693,7 +27693,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -27871,7 +27871,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -28056,7 +28056,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -28212,7 +28212,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -28230,7 +28230,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Herbert Jones, constable do condado desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Herbert Jones, constable do condado desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Bexley, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -28240,7 +28240,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -28284,8 +28284,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -28306,7 +28306,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_17",
   "vitima": "George Wilson",
   "reuCorreto": "gen_7_lavrador",
-  "horasMorteAntesChegada": 22,
+  "horasMorteAntesChegada": 24,
   "horaMorteAbsoluta": -11,
   "mecanismoCorreto": "sufocacao",
   "instrumentoCorreto": "travesseiro_ou_pano",
@@ -28842,7 +28842,7 @@ export const CASOS_POOL = [
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "Fora do desenho da lesão principal, em sítio próprio: [[gen_incidental]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -29596,7 +29596,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -29792,7 +29792,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -29837,7 +29837,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -29954,7 +29954,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -29972,7 +29972,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. George Wilson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. George Wilson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Stanmore, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -29982,7 +29982,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -30026,8 +30026,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -30143,7 +30143,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_18",
   "vitima": "Florence Jones",
   "reuCorreto": "gen_3_costureira",
-  "horasMorteAntesChegada": 10,
+  "horasMorteAntesChegada": 12,
   "horaMorteAbsoluta": 1,
   "mecanismoCorreto": "sufocacao",
   "instrumentoCorreto": "travesseiro_ou_pano",
@@ -30555,7 +30555,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -31096,7 +31096,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -31326,7 +31326,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -31634,7 +31634,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -31652,7 +31652,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Florence Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Florence Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Roderick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -31662,7 +31662,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -31706,8 +31706,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -31743,7 +31743,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_19",
   "vitima": "Jane Wright",
   "reuCorreto": "gen_1_carroceiro",
-  "horasMorteAntesChegada": 14,
+  "horasMorteAntesChegada": 16,
   "horaMorteAbsoluta": -3,
   "mecanismoCorreto": "envenenamento_laudano",
   "instrumentoCorreto": "frasco_de_laudano",
@@ -32146,7 +32146,7 @@ export const CASOS_POOL = [
     "A morta jaz no chão do cômodo a que a vila chama sala de jantar, vestida como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -32894,7 +32894,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -33118,7 +33118,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -33235,7 +33235,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -33253,7 +33253,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Jane Wright, senhora da propriedade desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Jane Wright, senhora da propriedade desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Fenwick, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -33263,7 +33263,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -33307,8 +33307,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },
@@ -33345,7 +33345,7 @@ export const CASOS_POOL = [
   "id": "gerado_comarca_20",
   "vitima": "John Knight",
   "reuCorreto": "gen_5_pastor_de_ovelhas",
-  "horasMorteAntesChegada": 12,
+  "horasMorteAntesChegada": 14,
   "horaMorteAbsoluta": -1,
   "mecanismoCorreto": "estrangulamento_manual",
   "instrumentoCorreto": "pertence_arrancado",
@@ -33752,7 +33752,7 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.title} {detective.surname} houver por bem medir a temperatura do corpo."
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
   {
@@ -33908,7 +33908,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
      ],
      "opcoes": []
     },
@@ -33947,7 +33947,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.title}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -34789,7 +34789,7 @@ export const CASOS_POOL = [
     "titulo": "Caulfield, 14 de outubro de 1893",
     "paragrafos": [
      "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.title} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
     ],
     "rotuloBotao": "A vela queima"
    },
@@ -34807,7 +34807,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.title} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. John Knight, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de Haversham. Isto passa do meu ofício, e não fingirei o contrário. John Knight, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários.\"",
      "\"Quill, Delegado.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -34817,7 +34817,7 @@ export const CASOS_POOL = [
     "titulo": "A mesa se transforma",
     "paragrafos": [
      "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.title} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -34861,8 +34861,8 @@ export const CASOS_POOL = [
   "opcoesPersonagem": [
    {
     "id": "harlan",
-    "nome": "Dr. Harlan Blackwell",
-    "descricao": "Cirurgião do Exército em duas campanhas; perito independente desde 1887. Frio, metódico, conhecido nos tribunais do condado pela precisão com que fixa o intervalo post-mortem."
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
    }
   ]
  },

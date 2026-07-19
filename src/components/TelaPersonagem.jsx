@@ -17,7 +17,7 @@ function alternarModoLeve(ativar) {
 }
 
 // Tela inicial (§12): um único convite de papel pousa na mesa de madeira
-// à luz de vela; o Dr. Harlan Blackwell ergue-o e atende ao chamado.
+// à luz de vela; Harlan Blackwell ergue-o e atende ao chamado.
 //
 // Com um caso salvo (retomada), o convite cede lugar à decisão: continuar
 // o caso deixado sobre a mesa ou recomeçar do zero (apaga o save).

@@ -188,7 +188,7 @@ próprios. Toda peça nova de prosa se verifica contra:
 - **O calendário real**: o caso corre em 13–14/out/1893 — **sexta-feira e sábado**.
   (13/out/1893 caiu numa sexta.)
 - **A escala absoluta de tempo** (`src/data/seed.js`): morte às 21h de 13/out (hora
-  −3); chegada às 11h de 14/out (hora 11).
+  −3); chegada às 13h de 14/out (hora 13).
 - **O mapa** (`src/data/mapa.js`): Moorford fica a **hora e meia** de estrada por
   trecho (3h ida e volta); dentro da vila, 1 hora. Este número é amarrado à lógica do
   caso (o álibi de Walter em Moorford e o gabinete do procurador Pettigrew dependem

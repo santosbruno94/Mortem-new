@@ -112,5 +112,7 @@ export function interpolar(texto, detective) {
   // Slots de caso por último: leem o pacote carregado (nunca dependem do
   // detective). A ordem não importa — as sintaxes não se sobrepõem.
   resultado = substituirSlotsCaso(resultado, obterCaso());
+  // Colapsa espaços duplos (safety net para title vazio).
+  resultado = resultado.replace(/ {2,}/g, ' ');
   return resultado;
 }

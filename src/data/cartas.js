@@ -26,10 +26,10 @@ export const CARTAS = [
       {
         ipmAte: 24,
         textoDisplay: 'Corpo Endurecido',
-        carimboPadrao: 'Duro dos maxilares aos joelhos',
+        carimboPadrao: 'Rígido por inteiro; extremidades começando a ceder',
         descricao:
-          'Maxilar, pescoço e membros não cedem quando se tenta dobrá-los: o corpo enrijeceu por inteiro.',
-        vozMestre: 'Rígido dos maxilares aos joelhos — isto é de horas, não de minutos. Entre doze e vinte e quatro, eu diria.',
+          'Maxilar, pescoço e membros não cedem quando se tenta dobrá-los: o corpo enrijeceu por inteiro. Nos dedos e na mandíbula, porém, a resistência cede um ponto sob pressão firme.',
+        vozMestre: 'Rígido por inteiro, mas repare nas mãos e na mandíbula: já cedem um ponto. Dezesseis horas, talvez dezoito; não menos de doze. Perto disto, o termômetro mente por omissão: cruze com o rigor antes de cravar a faixa.',
         // A carta carrega o ESTADO observado bruto; quem o converte numa
         // janela é o modelo forense universal (src/logic/tempo_morte.js).
         tagsOcultas: {

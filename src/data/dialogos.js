@@ -75,7 +75,7 @@ export const DIALOGOS = {
       // lhe é próprio).
       abertura: {
         fala: [
-          'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.title}, {g:o senhor|a senhora} há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje a bancada amanheceu sem lume."',
+          'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.treatment}, {g:o senhor|a senhora} há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje a bancada amanheceu sem lume."',
         ],
         opcoes: [
           { rotulo: '"Onde esteve na noite de sexta. Sem rodeios."', vaiPara: 'b1_firme', tom: 'firme' },
@@ -101,7 +101,7 @@ export const DIALOGOS = {
       },
       b1_cordial: {
         fala: [
-          '"O {detective.title} é gentil, e eu respondo de bom grado; nesta casa a gente vive pelas horas." E as recita como quem devolve um favor, cada uma no seu lugar: [[alibi_silas]].',
+          '"O {detective.treatment} é gentil, e eu respondo de bom grado; nesta casa a gente vive pelas horas." E as recita como quem devolve um favor, cada uma no seu lugar: [[alibi_silas]].',
           'Ajeita então a calça sobre o joelho, ao costume de quem se senta o dia inteiro; a bainha esquerda sobe da botina, e nela reluz uma lasca: [[ev_vidro_dobra]].',
         ],
         opcoes: [
@@ -142,7 +142,7 @@ export const DIALOGOS = {
       // tom). No cordial, o retrato dos doze anos de casa vem por inteiro.
       b2_firme: {
         fala: [
-          'As mãos não deixam os joelhos. "Não sei nome, {detective.title}, e não hei de inventar um para agradar. O que penso, penso há muito." E volta a ela como quem retoma a mesma peça na bancada: [[comp_silas]].',
+          'As mãos não deixam os joelhos. "Não sei nome, {detective.treatment}, e não hei de inventar um para agradar. O que penso, penso há muito." E volta a ela como quem retoma a mesma peça na bancada: [[comp_silas]].',
         ],
         opcoes: [],
       },
@@ -154,7 +154,7 @@ export const DIALOGOS = {
       },
       b2_tecnico: {
         fala: [
-          '"Um nome eu não firmo sem prova, {detective.title}; a perícia é sua. A razão, essa eu dou, que é de senso: uma vila destas não tranca bem as portas, e caixa aberto à noite chama gente da estrada." E a expõe inteira: [[comp_silas]].',
+          '"Um nome eu não firmo sem prova, {detective.treatment}; a perícia é sua. A razão, essa eu dou, que é de senso: uma vila destas não tranca bem as portas, e caixa aberto à noite chama gente da estrada." E a expõe inteira: [[comp_silas]].',
         ],
         opcoes: [],
       },
@@ -170,25 +170,25 @@ export const DIALOGOS = {
       // RETOMA de onde estava (o componente oferece o retomar).
       confronto_estalagem: {
         fala: [
-          'Posto diante do que se conta na estalagem — o quarto às escuras às nove, o portão passado das dez —, Silas Crane pousa o bule sem ruído. "O estalajadeiro terá contado os quartos errados. A casa é grande, e a noite foi de movimento. Doze anos sem uma falta, {detective.title}; não é agora que hei de trocar as minhas horas." Dá a resposta no mesmo passo das outras e torna a erguer o bule.',
+          'Posto diante do que se conta na estalagem — o quarto às escuras às nove, o portão passado das dez —, Silas Crane pousa o bule sem ruído. "O estalajadeiro terá contado os quartos errados. A casa é grande, e a noite foi de movimento. Doze anos sem uma falta, {detective.treatment}; não é agora que hei de trocar as minhas horas." Dá a resposta no mesmo passo das outras e torna a erguer o bule.',
         ],
         opcoes: [],
       },
       confronto_livro: {
         fala: [
-          'Posto diante do livro — os três consertos reentrados com queixa, a rubrica "S.C." em cada um, e na última entrada a letra do morto: "pesar as caixas. Pettigrew, segunda" —, Silas Crane não muda de posição. "Conserto que volta é o pão da bancada, {detective.title}. Uma coroa que emperra, uma mola que canta, o cliente traz de novo e a gente refaz. Três num outono é outono ruim, não é mais que isso." As mãos seguem sobre os joelhos. Quanto à nota do patrão, aproxima o livro do lampião e corre os olhos pela nota. "A mão dele, sim, miúda assim." Devolve o livro aberto na mesma página.',
+          'Posto diante do livro — os três consertos reentrados com queixa, a rubrica "S.C." em cada um, e na última entrada a letra do morto: "pesar as caixas. Pettigrew, segunda" —, Silas Crane não muda de posição. "Conserto que volta é o pão da bancada, {detective.treatment}. Uma coroa que emperra, uma mola que canta, o cliente traz de novo e a gente refaz. Três num outono é outono ruim, não é mais que isso." As mãos seguem sobre os joelhos. Quanto à nota do patrão, aproxima o livro do lampião e corre os olhos pela nota. "A mão dele, sim, miúda assim." Devolve o livro aberto na mesma página.',
         ],
         opcoes: [],
       },
       confronto_vidro: {
         fala: [
-          'Silas Crane olha a lasca sem estender a mão. "Vidro de mostrador, {detective.title}, e dos finos. Numa oficina destas parte-se um por semana: a pinça escapa, o aro morde no encaixe, o chão fica com o resto. O rapaz varre toda noite; a bainha apanha o que a vassoura deixa."',
+          'Silas Crane olha a lasca sem estender a mão. "Vidro de mostrador, {detective.treatment}, e dos finos. Numa oficina destas parte-se um por semana: a pinça escapa, o aro morde no encaixe, o chão fica com o resto. O rapaz varre toda noite; a bainha apanha o que a vassoura deixa."',
         ],
         opcoes: [],
       },
       evasiva: {
         fala: [
-          'Silas Crane inclina-se sobre a mesa o bastante para ver, e torna ao espaldar. "Com licença de dizer, {detective.title}, a minha parte é corda e mola; o que isso valha, sabe a perícia." As mãos não deixam os joelhos. "O que eu penso, já disse: gente da estrada, atrás do caixa."',
+          'Silas Crane inclina-se sobre a mesa o bastante para ver, e torna ao espaldar. "Com licença de dizer, {detective.treatment}, a minha parte é corda e mola; o que isso valha, sabe a perícia." As mãos não deixam os joelhos. "O que eu penso, já disse: gente da estrada, atrás do caixa."',
         ],
         opcoes: [],
       },
@@ -215,7 +215,7 @@ export const DIALOGOS = {
     nos: {
       abertura: {
         fala: [
-          'A loja cheira a goma e a papel novo; o balcão reluz de cera. Ao fundo, o postigo do correio e a balança de cartas, com algumas por despachar. Sobre o mostrador, apartado do resto, papel de carta com tarja de luto. A Sra. Agnes Rooke atende de pé, do lado de dentro do balcão, e mede o visitante por cima dos óculos. "{detective.title}." Não oferece cadeira. Espera a pergunta.',
+          'A loja cheira a goma e a papel novo; o balcão reluz de cera. Ao fundo, o postigo do correio e a balança de cartas, com algumas por despachar. Sobre o mostrador, apartado do resto, papel de carta com tarja de luto. A Sra. Agnes Rooke atende de pé, do lado de dentro do balcão, e mede o visitante por cima dos óculos. "{detective.treatment}." Não oferece cadeira. Espera a pergunta.',
         ],
         opcoes: [
           { rotulo: '"A senhora esconde a sua noite de sexta. Onde esteve?"', vaiPara: 'b1_firme', tom: 'firme' },
@@ -228,7 +228,7 @@ export const DIALOGOS = {
       // BEAT 1 — o paradeiro (sustentação: alibi_agnes em todo tom).
       b1_firme: {
         fala: [
-          'Ergue o queixo uma linha. "Escondo o que não lhe compete, {detective.title}. Da sexta respondo, porque respondo a quem pergunta com direito." E responde, do tamanho da pergunta: [[alibi_agnes]].',
+          'Ergue o queixo uma linha. "Escondo o que não lhe compete, {detective.treatment}. Da sexta respondo, porque respondo a quem pergunta com direito." E responde, do tamanho da pergunta: [[alibi_agnes]].',
         ],
         opcoes: [
           { rotulo: '"O que a vila dizia do Sr. Arthurs?"', vaiPara: 'b2_firme', tom: 'firme' },
@@ -275,7 +275,7 @@ export const DIALOGOS = {
       // cordial e no oblíquo, o papel de luto pesa mais no ar.
       b2_firme: {
         fala: [
-          '"A vila que responda pela vila, {detective.title}; eu respondo pela minha loja." Atende, da primeira palavra à última, em [[comp_agnes]].',
+          '"A vila que responda pela vila, {detective.treatment}; eu respondo pela minha loja." Atende, da primeira palavra à última, em [[comp_agnes]].',
         ],
         opcoes: [],
       },
@@ -293,14 +293,14 @@ export const DIALOGOS = {
       },
       b2_obliquo: {
         fala: [
-          'Segue-lhe o olhar até o papel de luto e endireita a pilha antes de responder. "É papel de venda, {detective.title}, como qualquer outro." Mas atende mais seca do que antes, em [[comp_agnes]].',
+          'Segue-lhe o olhar até o papel de luto e endireita a pilha antes de responder. "É papel de venda, {detective.treatment}, como qualquer outro." Mas atende mais seca do que antes, em [[comp_agnes]].',
         ],
         opcoes: [],
       },
 
       reacao_cesta: {
         fala: [
-          'A Sra. Rooke olha o guardanapo bordado, depois o bilhete, e fica um momento sem falar. "A cesta é minha; o guardanapo também. Ceei com o Sr. Arthurs na sexta, às oito, e saí antes das nove. Estávamos ajustados para casar." Torna a dobrar o guardanapo pela dobra antiga. "Menti sobre a minha noite, {detective.title}; foi tudo o que menti."',
+          'A Sra. Rooke olha o guardanapo bordado, depois o bilhete, e fica um momento sem falar. "A cesta é minha; o guardanapo também. Ceei com o Sr. Arthurs na sexta, às oito, e saí antes das nove. Estávamos ajustados para casar." Torna a dobrar o guardanapo pela dobra antiga. "Menti sobre a minha noite, {detective.treatment}; foi tudo o que menti."',
         ],
         opcoes: [],
       },
@@ -318,7 +318,7 @@ export const DIALOGOS = {
       },
       evasiva: {
         fala: [
-          'A Sra. Rooke olha o que se lhe apresenta, o tempo de o ler ou de o reconhecer, e torna a erguer os olhos. "Se nisso há pergunta, {detective.title}, faça-a."',
+          'A Sra. Rooke olha o que se lhe apresenta, o tempo de o ler ou de o reconhecer, e torna a erguer os olhos. "Se nisso há pergunta, {detective.treatment}, faça-a."',
         ],
         opcoes: [],
       },
@@ -343,7 +343,7 @@ export const DIALOGOS = {
     nos: {
       abertura: {
         fala: [
-          'O moinho trabalha em pleno sábado: sacas na rampa, poeira de farinha na luz da porta, o carroceiro do Finch à espera com a parelha. Caleb Grey passa com uma saca ao ombro e não a pousa para cumprimentar. "Pergunte andando, {detective.title}, que a feira não espera defunto."',
+          'O moinho trabalha em pleno sábado: sacas na rampa, poeira de farinha na luz da porta, o carroceiro do Finch à espera com a parelha. Caleb Grey passa com uma saca ao ombro e não a pousa para cumprimentar. "Pergunte andando, {detective.treatment}, que a feira não espera defunto."',
         ],
         opcoes: [
           { rotulo: '"Pare a saca. Onde esteve na sexta à noite?"', vaiPara: 'b1_firme', tom: 'firme' },
@@ -368,7 +368,7 @@ export const DIALOGOS = {
       },
       b1_cordial: {
         fala: [
-          'Não pousa a saca, mas afrouxa o passo. "Dia de feira é dia de feira, {detective.title}, mas a sexta eu dou." E a dá, no vaivém das sacas: [[alibi_grey]].',
+          'Não pousa a saca, mas afrouxa o passo. "Dia de feira é dia de feira, {detective.treatment}, mas a sexta eu dou." E a dá, no vaivém das sacas: [[alibi_grey]].',
         ],
         opcoes: [
           { rotulo: '"O que o morto lhe devia? Diga o número."', vaiPara: 'b2_firme', tom: 'firme' },
@@ -409,7 +409,7 @@ export const DIALOGOS = {
       },
       b2_cordial: {
         fala: [
-          'Enxuga a testa com as costas da mão. "Desavença? O relógio caçador do meu pai entrou inteiro naquela loja e voltou mais leve. Não é desavença, {detective.title}, é conta." E do que isso lhe pesa: [[comp_grey]].',
+          'Enxuga a testa com as costas da mão. "Desavença? O relógio caçador do meu pai entrou inteiro naquela loja e voltou mais leve. Não é desavença, {detective.treatment}, é conta." E do que isso lhe pesa: [[comp_grey]].',
         ],
         opcoes: [],
       },
@@ -434,7 +434,7 @@ export const DIALOGOS = {
       },
       reacao_livro: {
         fala: [
-          'Limpa a mão na perna antes de tocar o livro. O dedo, branco de farinha, desce a coluna e para. "Este é o meu. O relógio do meu pai, e o preço adiantado somado à margem, da letra do próprio velho." Corre os olhos pelas linhas vizinhas. "Mais dois com queixa no mesmo outono. Eu pensava que o azar era só meu." Empurra o livro de volta pela tábua. "Eu sei o que entrou e o que saiu, {detective.title}; quem pôs a mão nele, a loja que diga."',
+          'Limpa a mão na perna antes de tocar o livro. O dedo, branco de farinha, desce a coluna e para. "Este é o meu. O relógio do meu pai, e o preço adiantado somado à margem, da letra do próprio velho." Corre os olhos pelas linhas vizinhas. "Mais dois com queixa no mesmo outono. Eu pensava que o azar era só meu." Empurra o livro de volta pela tábua. "Eu sei o que entrou e o que saiu, {detective.treatment}; quem pôs a mão nele, a loja que diga."',
         ],
         opcoes: [],
       },
@@ -473,7 +473,7 @@ export const DIALOGOS = {
     nos: {
       abertura: {
         fala: [
-          'Walter Arthurs desce à sala sem casaco, a barba de ontem por fazer, e fica de pé junto ao aparador. "Soube esta manhã e estou aqui desde então, às ordens de quem as tiver. A casa do meu tio está lacrada; tomei o quarto três. Pergunte-se o que houver, {detective.title}, e pergunte-se logo, que negociante parado é dinheiro andando para trás." Enquanto fala, abotoa e desabotoa o botão alto do colete.',
+          'Walter Arthurs desce à sala sem casaco, a barba de ontem por fazer, e fica de pé junto ao aparador. "Soube esta manhã e estou aqui desde então, às ordens de quem as tiver. A casa do meu tio está lacrada; tomei o quarto três. Pergunte-se o que houver, {detective.treatment}, e pergunte-se logo, que negociante parado é dinheiro andando para trás." Enquanto fala, abotoa e desabotoa o botão alto do colete.',
         ],
         opcoes: [
           { rotulo: '"Onde esteve na sexta à noite? Pense antes de responder."', vaiPara: 'b1_firme', tom: 'firme' },
@@ -498,7 +498,7 @@ export const DIALOGOS = {
       },
       b1_cordial: {
         fala: [
-          '"Duro, {detective.title}, é a palavra." Por um instante o botão fica quieto. "Estive com meu tio de tarde, tratamos de negócios, e segui o meu caminho." O botão do colete volta a girar enquanto ele dá o paradeiro: [[alibi_walter]].',
+          '"Duro, {detective.treatment}, é a palavra." Por um instante o botão fica quieto. "Estive com meu tio de tarde, tratamos de negócios, e segui o meu caminho." O botão do colete volta a girar enquanto ele dá o paradeiro: [[alibi_walter]].',
         ],
         opcoes: [
           { rotulo: '"Sabe o que a morte do tio lhe traz?"', vaiPara: 'b2_firme', tom: 'firme' },
@@ -534,7 +534,7 @@ export const DIALOGOS = {
       // que responde ao que ninguém perguntou).
       b2_firme: {
         fala: [
-          '"O que a morte me traz? Trabalho e credores, {detective.title}, na ordem que quiser." Puxa o colete para baixo, como quem se compõe para retrato. "Herdeiro único, sim; e o que herdo é uma loja lacrada, um inventário e juízo pela frente. Se isso me faz réu aos seus olhos, faça a conta inteira, que a minha lista de credores é mais longa do que qualquer herança."',
+          '"O que a morte me traz? Trabalho e credores, {detective.treatment}, na ordem que quiser." Puxa o colete para baixo, como quem se compõe para retrato. "Herdeiro único, sim; e o que herdo é uma loja lacrada, um inventário e juízo pela frente. Se isso me faz réu aos seus olhos, faça a conta inteira, que a minha lista de credores é mais longa do que qualquer herança."',
         ],
         opcoes: [],
       },
@@ -552,7 +552,7 @@ export const DIALOGOS = {
       },
       b2_obliquo: {
         fala: [
-          '"Custa, {detective.title}, e não é o pior que custa." O botão para. "Um negociante de quarenta e quatro anos que dorme a crédito aprende a não reparar em certas coisas. Perguntou-me da cama; a cama eu tenho. Do resto, pergunte à minha lista de credores, que é longa e verdadeira."',
+          '"Custa, {detective.treatment}, e não é o pior que custa." O botão para. "Um negociante de quarenta e quatro anos que dorme a crédito aprende a não reparar em certas coisas. Perguntou-me da cama; a cama eu tenho. Do resto, pergunte à minha lista de credores, que é longa e verdadeira."',
         ],
         opcoes: [],
       },
@@ -560,20 +560,20 @@ export const DIALOGOS = {
       confronto_registro: {
         fala: [
           'Walter Arthurs lê a própria assinatura e a linha das sete e quarenta. Puxa uma cadeira e senta-se antes de responder.',
-          '"Não houve carro." A voz sai baixa, e depois as palavras vêm de uma vez. "Vim na sexta pedir dinheiro ao meu tio. Pedido, implorado, a juro de praça e com a palavra que me resta. Ele recusou aos gritos, com a loja ainda aberta. Tomei este quarto porque àquela hora já não havia carro, e porque naquela noite eu não tinha ânimo de me apresentar em hotel nenhum. Fiquei no três a noite inteira, escrevendo: cartas a ele, cartas a credores. Pedi vela nova pela meia-noite; o caseiro que o diga. Menti, {detective.title}, porque a verdade era esta: um negociante de quarenta e quatro anos à porta do tio, de chapéu na mão, ouvindo não. Depois dos gritos, na loja não tornei a pôr os pés."',
+          '"Não houve carro." A voz sai baixa, e depois as palavras vêm de uma vez. "Vim na sexta pedir dinheiro ao meu tio. Pedido, implorado, a juro de praça e com a palavra que me resta. Ele recusou aos gritos, com a loja ainda aberta. Tomei este quarto porque àquela hora já não havia carro, e porque naquela noite eu não tinha ânimo de me apresentar em hotel nenhum. Fiquei no três a noite inteira, escrevendo: cartas a ele, cartas a credores. Pedi vela nova pela meia-noite; o caseiro que o diga. Menti, {detective.treatment}, porque a verdade era esta: um negociante de quarenta e quatro anos à porta do tio, de chapéu na mão, ouvindo não. Depois dos gritos, na loja não tornei a pôr os pés."',
           'Depois cala-se, as mãos abertas sobre a mesa.',
         ],
         opcoes: [],
       },
       confronto_suplica: {
         fala: [
-          'Walter desamassa a folha só até onde a letra aparece e torna a fechá-la pela mesma dobra. "A mão é minha; o pedido, também." Pousa-a na mesa com a escrita para baixo. "Um adiantamento entre parentes se propõe em toda parte, {detective.title}, e se lavra no gabinete de um procurador quando aceito. Escrevi-a como se escreve a um credor: com conta, prazo e juro. Esperava-lhe destino melhor. Meu tio não era homem de responder papéis que o desagradassem."',
+          'Walter desamassa a folha só até onde a letra aparece e torna a fechá-la pela mesma dobra. "A mão é minha; o pedido, também." Pousa-a na mesa com a escrita para baixo. "Um adiantamento entre parentes se propõe em toda parte, {detective.treatment}, e se lavra no gabinete de um procurador quando aceito. Escrevi-a como se escreve a um credor: com conta, prazo e juro. Esperava-lhe destino melhor. Meu tio não era homem de responder papéis que o desagradassem."',
         ],
         opcoes: [],
       },
       confronto_testamento: {
         fala: [
-          '"Herdeiro único. Sei o que se soma com isso: negócios em ruína de um lado, loja e casa do outro, e o meu nome no meio. É conta que qualquer credor meu já fez." Puxa o colete para baixo, como quem se compõe para retrato. "Pois faça-se a conta inteira, {detective.title}. Meu tio vivo valia-me um adiantamento assinado numa tarde; agora vale-me uma loja lacrada, um inventário e juízo pela frente. Diga-me qual dos dois convinha a um homem com credores à porta."',
+          '"Herdeiro único. Sei o que se soma com isso: negócios em ruína de um lado, loja e casa do outro, e o meu nome no meio. É conta que qualquer credor meu já fez." Puxa o colete para baixo, como quem se compõe para retrato. "Pois faça-se a conta inteira, {detective.treatment}. Meu tio vivo valia-me um adiantamento assinado numa tarde; agora vale-me uma loja lacrada, um inventário e juízo pela frente. Diga-me qual dos dois convinha a um homem com credores à porta."',
         ],
         opcoes: [],
       },
@@ -707,7 +707,7 @@ export const DIALOGOS = {
       },
       evasiva: {
         fala: [
-          'Davey chega o rosto para ver de perto, a testa franzida, e faz que não com a cabeça. "Isso eu não sei dizer o que é, {detective.title}. Se fosse coisa de relógio, eu conhecia; do resto, quem sabia era o patrão."',
+          'Davey chega o rosto para ver de perto, a testa franzida, e faz que não com a cabeça. "Isso eu não sei dizer o que é, {detective.treatment}. Se fosse coisa de relógio, eu conhecia; do resto, quem sabia era o patrão."',
         ],
         opcoes: [],
       },

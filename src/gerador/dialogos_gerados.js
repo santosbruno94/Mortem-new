@@ -178,7 +178,7 @@ const PRIMEIRAS_PALAVRAS = {
     '"Deixei a sacristia aberta e o sineiro à espera. Diga do que precisa."',
   ],
   profissional: [
-    '"Tenho a manhã tomada, {detective.title}, mas isto passa à frente de tudo. Ao seu dispor."',
+    '"Tenho a manhã tomada, {detective.treatment}, mas isto passa à frente de tudo. Ao seu dispor."',
     '"Adiei o que havia para adiar. Sirva-se do tempo."',
     '"Marquei as visitas para depois; o inquérito vem primeiro, e é o certo."',
   ],
@@ -313,7 +313,7 @@ function falaB2(ctx, tom) {
   const SAIDAS = {
     gentry: [
       () => 'Levanta-se pelo próprio aviso. "Se a lei precisar de mais, a casa sabe onde fica."',
-      () => 'Levanta-se pelo próprio aviso. "A casa fica a par do que se apurar. Passar bem, {detective.title}."',
+      () => 'Levanta-se pelo próprio aviso. "A casa fica a par do que se apurar. Passar bem, {detective.treatment}."',
     ],
     // KB vestuário: sobrecasaca clerical de pároco anglicano, não batina.
     clero: [
@@ -369,7 +369,7 @@ function falaB2(ctx, tom) {
   let corpo;
   if (papel === 'reu') {
     corpo = {
-      firme: `"Nome nenhum me cabe dar, ${'{detective.title}'}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora."`,
+      firme: `"Nome nenhum me cabe dar, ${'{detective.treatment}'}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora."`,
       cordial: `"${vitima.nome} era do trato de todos os dias; eu ${vitima.genero === 'feminino' ? 'a' : 'o'} conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo."`,
       tecnico: `"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta."`,
       obliquo: `"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo."`,
@@ -623,7 +623,7 @@ const EVASIVA_POR_CLASSE = {
   profissional: 'Corre os olhos pelo que se lhe mostra e o devolve. "Fora do meu ofício, não arrisco palavra. Pergunte do que é meu."',
   comerciante: 'Olha o que se lhe mostra como quem confere fatura alheia. "Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão."',
   artesao: 'Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. "Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta."',
-  lavrador: 'Chega o rosto para ver e faz que não com a cabeça. "Disso não sei dizer, {detective.title}. Da terra e do dia, pergunte o que quiser."',
+  lavrador: 'Chega o rosto para ver e faz que não com a cabeça. "Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser."',
   criadagem: 'Olha depressa e baixa os olhos. "Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra."',
   servico_do_condado: 'Examina como quem preenche folha. "Sem registro disto, não firmo nada. O que está lavrado, está lavrado; o resto se apura."',
 };

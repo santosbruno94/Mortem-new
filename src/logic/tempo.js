@@ -8,7 +8,7 @@
 // Hora absoluta de chegada do perito à cena — valor DEFAULT do caso-escola.
 // Deixou de ser cravado no motor: é parâmetro do pacote (parametrosCena.
 // horasChegada), e este constante é apenas o default preservado (§10).
-export const HORAS_CHEGADA_CENA = 11; // 11h00 de 14/out
+export const HORAS_CHEGADA_CENA = 13; // 13h00 de 14/out
 
 // Calendário-base do relógio — DEFAULT do caso-escola. Antes cravado dentro
 // de decompor/formatHora ("14", "out", "outubro"); agora é parâmetro do
