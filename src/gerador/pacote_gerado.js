@@ -64,7 +64,12 @@ import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 // (INT4 premeditado produz a peça) e os periféricos com segredo; segue
 // fora do alcance apenas o móbil "silenciamento de fraude".
 // ---------------------------------------------------------------------
-export const SEED_REPLICA = 'a_hora_emprestada_replica_96';
+// B3.4 da OS autobattler v2: o resolvedor novo quebrou o replay (fim
+// declarado); nova seleção sobre 240 candidatas pelo placar de
+// identidade de fatos (scripts/buscar-replica.mjs, D5/GB7) escolheu
+// _105: corpo movido, quadrante INT4+/WIS4+ (Silas), palco interno,
+// trava de fuga íntegra.
+export const SEED_REPLICA = 'a_hora_emprestada_replica_105';
 export const DIRIGIDO_REPLICA = {
   cenario: 'premeditado',
   faixa: 'noite',
