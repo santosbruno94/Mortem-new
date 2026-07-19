@@ -212,6 +212,10 @@ de classe**.
   navalha, jarro de louça; quintal = billhook, forcado, machadinha; oficina = as do
   ofício. **A ausência no par/jogo é vestígio gratuito**: poker fora do suporte,
   castiçal sem o irmão, dia vazio no estojo de navalhas, faca a menos no estojo.
+  A mobília leve de assento — a cadeira Windsor, a banqueta — ergue-se com as duas
+  mãos como escudo e porrete de ocasião; a pancada assina-se na contusão larga da
+  travessa (*inferência declarada: prática universal de briga, sem fonte de época
+  própria — mesma regra do pranchão do dossiê E2*).
 - **Transferências de ofício** (assinatura de presença para o gerador de vestígios):
   blacklead (criada), fuligem+limalha (ferreiro), farinha (padeiro), serragem
   (carpinteiro), breu (sapateiro), tinta ferrogálica (escrevente), areia sob unhas

@@ -40,6 +40,50 @@ export const VARIAVEIS_BATALHA = {
   rota_fuga: { descricao: 'Células que a fuga dirigida atravessou rumo à porta externa.' },
   grito: { descricao: 'Pico de ruído com hora própria, audível aos adjacentes (1× por batalha).' },
   lesoes_sitio_posterior: { descricao: 'Golpes recebidos de costas, em fuga — contagem no registro, canal de laudo.' },
+  // OS autobattler v2 (B2 §3): as variáveis das doutrinas — cada uma com
+  // classe própria abaixo (a matriz ação→vestígio vive em doutrinas.js).
+  arma_improvisada: { descricao: 'Peça de mobília empunhada em luta (por quem, qual peça).' },
+  desvencilhamento: { descricao: 'A vítima soltou-se de um agarre (o garrote falho que a doutrina explora).' },
+  lesao_incidental: { descricao: 'Lesão de ambiente: o corpo que passou/caiu contra quina perigosa (jamais sinal de mecanismo).' },
+  interposicao: { descricao: 'Peça bloqueadora girada/arrastada entre os dois (D1=a).' },
+  ferimento_reu_regiao: { descricao: 'Região do corpo do RÉU ferida na luta — o observável que faltava (B0: 0% no v1).' },
+};
+
+// ---------------------------------------------------------------------
+// SEDES ANATÔMICAS POR REGIÃO (OS autobattler v2, D2=b: cinco regiões,
+// mãos separadas de braços — o aparar de antebraço distingue-se do
+// agarrar a lâmina, de palma). Toda `sede` estampada num vestígio de
+// lesão (B3) tem de pertencer à lista da sua região (lint GB6).
+// ---------------------------------------------------------------------
+// A sede em língua de superfície (carimbo/prosa) — o id nunca vaza.
+export const SEDE_LEGIVEL = {
+  antebracos: 'antebraços',
+  bracos: 'braços',
+  ombros: 'ombros',
+  palmas: 'palmas das mãos',
+  dorso_das_maos: 'dorso das mãos',
+  sob_as_unhas: 'sob as unhas',
+  coxas: 'coxas',
+  canelas: 'canelas',
+  joelhos: 'joelhos',
+  couro_cabeludo: 'couro cabeludo',
+  fronte: 'fronte',
+  tempora: 'têmpora',
+  face: 'face',
+  pescoco: 'pescoço',
+  nuca: 'nuca',
+  torax: 'tórax',
+  dorso: 'dorso',
+  flancos: 'flancos',
+  abdome: 'abdome',
+};
+
+export const SEDES_POR_REGIAO = {
+  bracos: ['antebracos', 'bracos', 'ombros'],
+  maos: ['palmas', 'dorso_das_maos', 'sob_as_unhas'],
+  pernas: ['coxas', 'canelas', 'joelhos'],
+  cabeca: ['couro_cabeludo', 'fronte', 'tempora', 'face', 'pescoco', 'nuca'],
+  tronco: ['torax', 'dorso', 'flancos', 'abdome'],
 };
 
 // ---------------------------------------------------------------------
@@ -303,6 +347,100 @@ export const CLASSES_VESTIGIO = {
     noCorpo: false,
     semCelula: true, // vive nos ouvidos dos adjacentes, com hora própria
     proveniencia: 'docs/kb-medicina-legal/inquerito-e-policia.md (testemunho auditivo; o depoimento diante do coroner)',
+  },
+
+  // ===== OS autobattler v2 — a deposição das doutrinas (B2 §3/§4) =====
+  // Classes declaradas em B2 (a matriz ação→vestígio de doutrinas.js as
+  // referencia; portão GB4); a deposição em si liga em B3. `temSede`
+  // marca lesão que carrega sede anatômica ∈ SEDES_POR_REGIAO (GB6);
+  // `naoCausal` trava a classe fora de qualquer sinal de mecanismo e da
+  // solvência (a lesão incidental jamais concorre no cravar).
+  peca_deslocada: {
+    rotulo: 'Peça fora do lugar (tomada ou interposta)',
+    ordem: 1,
+    atributo: null, // governada pela doutrina (estado), não por atributo
+    evidenciaDe: ['arma_improvisada', 'interposicao'],
+    removivel: true, // recompor a peça é limpeza — 2ª ordem: mobilia_recomposta
+    noCorpo: false,
+    proveniencia:
+      'docs/kb-mundo-vitoriano/utensilios-e-objetos.md "Implicações" (a ausência no par/jogo é vestígio gratuito: poker fora do suporte, castiçal sem o irmão)',
+  },
+  lesao_padrao_de_peca: {
+    rotulo: 'Lesão com o padrão da peça improvisada',
+    ordem: 1,
+    atributo: null, // a assinatura vem da física da peça (espaco.js), não de atributo
+    evidenciaDe: ['arma_improvisada'],
+    removivel: false,
+    noCorpo: true,
+    temSede: true,
+    proveniencia:
+      'docs/kb-medicina-legal/traumas.md (a lesão única de forma definida — o padrão de golpe que a queda não explica; assinatura por peça em espaco.js/FISICA_DA_MOBILIA)',
+  },
+  residuo_na_peca: {
+    rotulo: 'Resíduo na peça improvisada (o sangue no castiçal)',
+    ordem: 1,
+    atributo: null,
+    evidenciaDe: ['arma_improvisada'],
+    removivel: true, // lavar a peça é limpeza — 2ª ordem: peca_limpa_fora_de_hora
+    noCorpo: false,
+    proveniencia:
+      'docs/kb-medicina-legal/vestigios.md (a cadeia pessoa ↔ instrumento ↔ lugar; sangue no instrumento, confirmado por Teichmann)',
+  },
+  peca_limpa_fora_de_hora: {
+    rotulo: 'Peça limpa fora de hora',
+    ordem: 2,
+    atributo: 'WIS',
+    evidenciaDe: ['arma_improvisada', 'higiene'],
+    removivel: false,
+    noCorpo: false,
+    proveniencia:
+      'docs/kb-medicina-legal/supressao-de-vestigios.md (a lavagem rudimentar falha por sistema; a peça limpa onde tudo tem poeira denuncia-se)',
+  },
+  ungueais_de_desvencilhamento: {
+    rotulo: 'Escoriações ungueais de desvencilhamento',
+    ordem: 1,
+    atributo: null, // nasce da doutrina (o agarre rompido), não de atributo
+    evidenciaDe: ['desvencilhamento'],
+    removivel: false,
+    noCorpo: true,
+    temSede: true,
+    proveniencia:
+      'docs/kb-medicina-legal/asfixias.md (escoriações em meia-lua — as marcas das unhas; no desvencilhar, as da PRÓPRIA vítima arrancando o laço, com fibras/pele sob as unhas)',
+  },
+  lesao_incidental: {
+    rotulo: 'Lesão incidental de ambiente (a quina no caminho)',
+    ordem: 1,
+    atributo: null,
+    evidenciaDe: ['lesao_incidental'],
+    removivel: false,
+    noCorpo: true,
+    temSede: true,
+    naoCausal: true, // trava dupla: jamais sinal de mecanismo, jamais solvência
+    proveniencia:
+      'docs/kb-medicina-legal/traumas.md ("Lesões de queda × lesões de golpe": a queda distribui pelas saliências; a lesão de forma definida na saliência lê a quina, não a mão alheia)',
+  },
+  fibra_na_aresta: {
+    rotulo: 'Cabelo/fibra na aresta da peça',
+    ordem: 1,
+    atributo: null,
+    evidenciaDe: ['lesao_incidental'],
+    removivel: false, // ninguém repara na aresta — o par honesto da incidental
+    noCorpo: false,
+    naoCausal: true,
+    proveniencia:
+      'docs/kb-medicina-legal/vestigios.md (cabelos caídos × arrancados; transferência de contato entre corpo e superfície)',
+  },
+  ferimento_do_agressor: {
+    rotulo: 'Ferimento no corpo do réu',
+    ordem: 1,
+    atributo: 'FOR', // FOR da vítima: quem resiste fere quem a ataca
+    evidenciaDe: ['ferimentos_assassino', 'ferimento_reu_regiao'],
+    removivel: false, // vive no corpo do réu — nenhuma esfrega o alcança
+    noCorpo: false,
+    semCelula: true, // fora da cena: o exame do agressor o encontra
+    temSede: true,
+    proveniencia:
+      'docs/kb-medicina-legal/vestigios.md ("Vestígios no agressor": escoriações, roupa rasgada, o exame do suspeito defendido por Hans Gross — o observável que faltava ao v1 (B0: 23,6% de réus feridos sem canal no corpo))',
   },
 };
 
