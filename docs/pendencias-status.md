@@ -85,7 +85,7 @@ Cada uma é uma **ordem de serviço própria**. Não executadas nesta sessão.
 | 4.8 Playtest manual em largura mobile real | Baixa | ⏭️ Sessão própria (playtest humano) |
 | 4.9 Destacar "Perguntas ao Delegado" | Baixa | ✅ Já resolvido (dica + `data-perguntas-pendentes`) |
 | 4.10 Convite de replay ao fechar o caderno | Baixa | ✅ Já resolvido (`data-convite-replay`) |
-| 4.11 Playtest humano de solubilidade no procedural | Questão em aberto | ⏭️ Sessão própria (playtest humano) |
+| 4.11 Playtest humano de solubilidade no procedural | Questão em aberto | ⏭️ Sessão própria (playtest humano) — **protocolo pronto**: `docs/playtest/protocolo-playtest-humano-procedural.md` + `scripts/gabarito-casos.mjs` |
 
 ---
 
@@ -157,9 +157,19 @@ Reunidos aqui porque decidem-se melhor juntos (direção de leitura/arte):
 
 ---
 
-## Observação fora do documento
+## Observação fora do documento — RESOLVIDA
 
-Há **1 falha pré-existente** no `scripts/qa-ui.mjs` — *"a Caderneta lista o carimbo da
-observação"* (espera a string `Duro dos maxilares aos joelhos`). Confirmado que **já falhava
-antes** desta sessão; não consta do documento de pendências. Fica sinalizada para uma
-correção dedicada de QA.
+A falha pré-existente do `scripts/qa-ui.mjs` — *"a Caderneta lista o carimbo da observação"* —
+foi **corrigida em 19/07/2026**. Causa: a constante `CARIMBO_RIGOR` do teste ficou com a
+string antiga (`Duro dos maxilares aos joelhos`, hoje só nos casos gerados); o carimbo do
+caso-escola havia sido reescrito para `Rígido por inteiro; extremidades começando a ceder`.
+Ajustada a constante ao texto real do jogo. **`qa-ui` agora: "UI VÁLIDA".**
+
+## Próximos passos preparados nesta sessão
+
+- **Playtest humano do procedural (4.11):** protocolo cego pronto em
+  `docs/playtest/protocolo-playtest-humano-procedural.md`, com folha de correção via
+  `scripts/gabarito-casos.mjs` e seleção de caso por `?caso=<id>`. **Falta o usuário rodar.**
+- **Sequência sugerida a seguir:** rodar o playtest → conforme o resultado, abrir a **OS de
+  diálogo** (consumo das flags psíquicas, itens 2.1 + 2.3) *ou* corrigir solubilidade → deixar
+  a **sessão de UI/arte** (1.2 b/c/e, 4.3) por último.
