@@ -277,9 +277,13 @@ export const MOBILIA_POR_CLASSE = {
       { id: 'relogio_da_familia', rotulo: 'o relógio da família', comodos: ['parlour', 'cozinha'] },
       { id: 'flores_de_cera', rotulo: 'flores de cera sob redoma', comodos: ['parlour'] },
       { id: 'retratos', rotulo: 'retratos emoldurados', comodos: ['parlour'] },
+      { id: 'lareira_com_guarda_fogo', rotulo: 'lareira com guarda-fogo', comodos: ['cozinha', 'parlour'] },
+      { id: 'aticador', rotulo: 'atiçador de lareira', comodos: ['cozinha', 'parlour'] },
+      { id: 'castical_de_latao', rotulo: 'castiçal de latão', comodos: ['parlour', 'quarto'] },
+      { id: 'ferro_de_engomar', rotulo: 'ferro de engomar', comodos: ['copa'] },
     ],
     proveniencia:
-      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (cottage: a vida na cozinha; copa suja; quartos de cama de ferro; a parlour como capital simbólico)',
+      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (cottage: a vida na cozinha; copa suja; quartos de cama de ferro; a parlour como capital simbólico) e utensilios-e-objetos.md §3–§4 (ferros de passar; a lareira como arsenal; chamberstick — OS autobattler v2 B1/D6)',
   },
   media: {
     itens: [
@@ -299,9 +303,13 @@ export const MOBILIA_POR_CLASSE = {
       { id: 'comoda', rotulo: 'cômoda', comodos: ['quarto'] },
       { id: 'escrivaninha', rotulo: 'escrivaninha', comodos: ['estudo'] },
       { id: 'estante_de_livros', rotulo: 'estante de livros', comodos: ['estudo'] },
+      { id: 'lareira_com_guarda_fogo', rotulo: 'lareira com guarda-fogo', comodos: ['cozinha', 'parlour'] },
+      { id: 'aticador', rotulo: 'atiçador de lareira', comodos: ['cozinha', 'parlour'] },
+      { id: 'castical_de_latao', rotulo: 'castiçal de latão', comodos: ['parlour', 'quarto'] },
+      { id: 'ferro_de_engomar', rotulo: 'ferro de engomar', comodos: ['copa'] },
     ],
     proveniencia:
-      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (casa de comerciante/classe média: hall, parlour, jantar, cozinha e copa; §5, eixo social × serviço)',
+      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (casa de comerciante/classe média: hall, parlour, jantar, cozinha e copa; §5, eixo social × serviço) e utensilios-e-objetos.md §3–§4 (ferros de passar; a lareira como arsenal; chamberstick — OS autobattler v2 B1/D6)',
   },
   alta: {
     itens: [
@@ -321,9 +329,13 @@ export const MOBILIA_POR_CLASSE = {
       { id: 'lavatorio', rotulo: 'lavatório de mármore', comodos: ['quarto'] },
       { id: 'escrivaninha', rotulo: 'escrivaninha do estudo', comodos: ['estudo'] },
       { id: 'estante_de_livros', rotulo: 'estante envidraçada', comodos: ['estudo'] },
+      { id: 'lareira_com_guarda_fogo', rotulo: 'lareira de mármore com guarda-fogo', comodos: ['cozinha', 'parlour'] },
+      { id: 'aticador', rotulo: 'atiçador de lareira', comodos: ['cozinha', 'parlour'] },
+      { id: 'castical_de_latao', rotulo: 'castiçal de latão', comodos: ['parlour', 'quarto'] },
+      { id: 'ferro_de_engomar', rotulo: 'ferro de engomar', comodos: ['copa'] },
     ],
     proveniencia:
-      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (gradiente vertical, criadagem) e §6 (sinos de criados: puxador → arame → régua na cozinha)',
+      'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §3 (gradiente vertical, criadagem) e §6 (sinos de criados: puxador → arame → régua na cozinha); utensilios-e-objetos.md §3–§4 (ferros de passar; a lareira como arsenal; chamberstick — OS autobattler v2 B1/D6)',
   },
 };
 
@@ -522,9 +534,195 @@ export const PROVENIENCIA_ESPACO = {
   mobiliaDeOficio: 'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §1 e §5 (plantas e circulação; loja, botica, estalagem)',
   logradouros:
     'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §2–§8 e arquitetura-em-detalhe.md §5/§7 (catálogo com fonte por peça no dossiê docs/os-palco-em-aneis-e2-dossie.md §1)',
+  fisicaDaMobilia:
+    'docs/kb-mundo-vitoriano/utensilios-e-objetos.md §3–§4, §5, §8 e "Implicações" (armas improvisadas por cômodo; a lareira como arsenal; o jarro de louça; o quintal de lavrador) — OS autobattler v2, B1',
+};
+
+// ---------------------------------------------------------------------
+// FÍSICA DA MOBÍLIA (OS autobattler v2, B1) — affordances por ID de item.
+// Tabela única chaveada por id (os vocabulários repetem ids entre degraus;
+// uma entrada por id evita divergência, e o palco herda de graça).
+//
+// Semântica dos campos:
+//   empunhavel   — a peça vira arma improvisada na batalha (B3); exige
+//                  classeGolpe + assinatura com fonte (lint GB2).
+//   duasMaos     — empunhável só com as duas mãos (peça de massa 'media').
+//   classeGolpe  — 'contundente' | 'cortante' | 'perfurante'.
+//   alcance      — 'curto' (à mão) | 'haste' (atiçador, forcado).
+//   massa        — 'leve' (ergue-se com uma mão) | 'media' (arrasta-se;
+//                  empunha-se só se duasMaos) | 'fixa' (imóvel — JAMAIS
+//                  empunhável, lint).
+//   bloqueia     — barra o passo no grid (BFS de B3, D1=a).
+//   quinaPerigosa— aresta dura à altura de queda: célula elegível à lesão
+//                  incidental (B2 §3.3) — jamais sinal de mecanismo.
+//   ancora       — âncora espacial de método ('agua', 'fogo'); a tabela
+//                  substitui a lista literal ITENS_COM_AGUA (derivada
+//                  abaixo — elegibilidade do afogamento byte-idêntica).
+//   assinatura   — { id, fonte }: a ferida que a peça produz, com
+//                  arquivo+seção da KB (lint GB1). Candidatas registradas
+//                  sem promover (mudariam elegibilidade — decisão futura):
+//                  tina_e_tabua e pia_batismal como âncora d'água.
+//
+// Números de eficácia NÃO vivem aqui: ficam em CALIBRACAO_MOBILIA,
+// marcados chute-calibrável (B5 os itera por Monte Carlo).
+// ---------------------------------------------------------------------
+export const FISICA_DA_MOBILIA = {
+  // ----- doméstico: cozinha / copa -----
+  range_de_ferro: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  mesa_raspada: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  cadeiras_windsor: {
+    empunhavel: true, duasMaos: true, classeGolpe: 'contundente', alcance: 'curto', massa: 'media',
+    bloqueia: false, quinaPerigosa: false,
+    assinatura: {
+      id: 'contusao_de_travessa',
+      fonte: 'docs/kb-mundo-vitoriano/utensilios-e-objetos.md "Implicações" (mobília de assento como arma de ocasião — inferência declarada)',
+    },
+  },
+  sofa_velho: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: false },
+  tapete_de_retalhos: { empunhavel: false, massa: 'leve', bloqueia: false, quinaPerigosa: false },
+  pia_de_copa: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  copper_de_ferver: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  tina_e_tabua: { empunhavel: false, massa: 'media', bloqueia: false, quinaPerigosa: false },
+  mesa_de_cozinha: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  prateleiras_da_despensa: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  regua_de_sinos: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: false },
+  ferro_de_engomar: {
+    empunhavel: true, classeGolpe: 'contundente', alcance: 'curto', massa: 'leve',
+    bloqueia: false, quinaPerigosa: false,
+    assinatura: {
+      id: 'contusao_de_face_plana',
+      fonte: 'docs/kb-mundo-vitoriano/utensilios-e-objetos.md §3 (ferros de passar: sad irons — arma contundente de 2–4 kg em toda casa; a dupla âncora do ferro quente)',
+    },
+  },
+  // ----- doméstico: quarto / parlour / jantar / estudo / hall -----
+  cama_de_ferro: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  cama_de_madeira: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: false },
+  bacia_e_jarro: {
+    empunhavel: true, classeGolpe: 'contundente', alcance: 'curto', massa: 'leve',
+    bloqueia: false, quinaPerigosa: false,
+    assinatura: {
+      id: 'fragmentos_de_faianca',
+      fonte: 'docs/kb-mundo-vitoriano/utensilios-e-objetos.md §5 (lavatório: jarro cheio ≈ 3–4 litros de louça — arma; e, quebrado, lâminas)',
+    },
+  },
+  bau: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  lavatorio: { empunhavel: false, massa: 'media', bloqueia: false, quinaPerigosa: true },
+  comoda: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  relogio_da_familia: { empunhavel: false, massa: 'leve', bloqueia: false, quinaPerigosa: false },
+  flores_de_cera: { empunhavel: false, massa: 'leve', bloqueia: false, quinaPerigosa: false },
+  retratos: { empunhavel: false, massa: 'leve', bloqueia: false, quinaPerigosa: false },
+  piano_ou_harmonio: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  louca_boa: { empunhavel: false, massa: 'leve', bloqueia: false, quinaPerigosa: false },
+  mesa_de_jantar: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  aparador: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  escrivaninha: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  estante_de_livros: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  relogio_de_pe: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  puxador_de_sino: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: false },
+  lareira_com_guarda_fogo: {
+    empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true, ancora: 'fogo',
+  },
+  aticador: {
+    empunhavel: true, classeGolpe: 'contundente', alcance: 'haste', massa: 'leve',
+    bloqueia: false, quinaPerigosa: false,
+    assinatura: {
+      id: 'contusao_padrao_de_haste',
+      fonte: 'docs/kb-mundo-vitoriano/utensilios-e-objetos.md §4 (a lareira como arsenal: o atiçador/poker — a arma improvisada canônica; a ausência do jogo de ferros é visível)',
+    },
+  },
+  castical_de_latao: {
+    empunhavel: true, classeGolpe: 'contundente', alcance: 'curto', massa: 'leve',
+    bloqueia: false, quinaPerigosa: false,
+    assinatura: {
+      id: 'ferida_contusocortante_de_base',
+      fonte: 'docs/kb-mundo-vitoriano/utensilios-e-objetos.md §4 (velas: chamberstick/castiçal — castiçal fora do par + pingos de cera = trilha)',
+    },
+  },
+  // ----- ofício: loja / botica / salão -----
+  balcao_de_loja: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  prateleiras_de_estoque: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  vitrine: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  sineta_da_porta: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: false },
+  drug_run: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: false },
+  carboys: { empunhavel: false, massa: 'leve', bloqueia: false, quinaPerigosa: false },
+  balanca_de_botica: { empunhavel: false, massa: 'leve', bloqueia: false, quinaPerigosa: false },
+  armario_de_venenos: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  bancos_corridos: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: false },
+  balcao_com_beer_engine: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  mesas_de_taverna: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  snug: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  // ----- ofício: forja / expediente / cela / nave / escola / moinho / paiol / estação -----
+  bigorna: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  forja_de_carvao: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  cocho_dagua: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true, ancora: 'agua' },
+  bancada_de_ferreiro: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  mesa_de_expediente: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  arquivo_de_madeira: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  lampiao_de_parede: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: false },
+  tarimba: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  bancos_de_igreja: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  pulpito: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  pia_batismal: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  carteiras: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  quadro_de_ardosia: { empunhavel: false, massa: 'media', bloqueia: false, quinaPerigosa: false },
+  estufa_de_ferro: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  ma_de_moinho: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  sacas_de_farinha: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: false },
+  guindaste_de_sacas: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  ferramentas_de_lavoura: {
+    empunhavel: true, classeGolpe: 'cortante', alcance: 'curto', massa: 'leve',
+    bloqueia: false, quinaPerigosa: false,
+    assinatura: {
+      id: 'ferida_cortante_de_poda',
+      fonte: 'docs/kb-mundo-vitoriano/utensilios-e-objetos.md §8 (ferramentas à mão: quintal de lavrador — billhook, foice, forcado, machadinha)',
+    },
+  },
+  arreios: { empunhavel: false, massa: 'leve', bloqueia: false, quinaPerigosa: false },
+  sacas_de_grao: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: false },
+  guiche: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  banco_de_espera: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: false },
+  relogio_de_estacao: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: false },
+  // ----- logradouros (E2, Anel 1) -----
+  lapides_enfileiradas: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  cova_recem_aberta: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  teixo_velho: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  lapide_tombada: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: true },
+  muro_baixo_de_pedra: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  banco_do_lychgate: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  pedra_dos_caixoes: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  carroca_desatrelada: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: true },
+  clamp_de_batata: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  feno_empilhado: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: false },
+  poco_com_tampa: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true, ancora: 'agua' },
+  cocho_de_gado: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true, ancora: 'agua' },
+  chiqueiro_do_porco: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  monturo: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  stile_na_cerca: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: false },
+  fingerpost: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: false },
+  lamina_do_acude: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false, ancora: 'agua' },
+  pranchao_de_travessia: { empunhavel: false, massa: 'media', bloqueia: false, quinaPerigosa: false },
+  comporta_de_engrenagem: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  sacas_esquecidas: { empunhavel: false, massa: 'media', bloqueia: false, quinaPerigosa: false },
+};
+
+// Números de eficácia das peças empunháveis — TODOS chute-calibrável
+// declarado (GB1); B5 os itera por Monte Carlo contra as bandas D3.
+export const CALIBRACAO_MOBILIA = {
+  aticador: { bonusDano: 1, chute: true },
+  castical_de_latao: { bonusDano: 1, chute: true },
+  ferro_de_engomar: { bonusDano: 1, chute: true },
+  cadeiras_windsor: { bonusDano: 1, chute: true },
+  bacia_e_jarro: { bonusDano: 1, chute: true },
+  ferramentas_de_lavoura: { bonusDano: 2, chute: true },
 };
 
 // Itens de mobília que valem como âncora espacial de ÁGUA (E2 §3.3): a
 // elegibilidade do afogamento lê esta lista, nunca o id literal — o açude
-// e o poço quebram o quase-invariante "afogamento ⇒ forja".
-export const ITENS_COM_AGUA = ['cocho_dagua', 'lamina_do_acude', 'poco_com_tampa', 'cocho_de_gado'];
+// e o poço quebram o quase-invariante "afogamento ⇒ forja". Desde B1 a
+// lista é DERIVADA da física (fisica.ancora === 'agua'); o lint GB2
+// garante igualdade com o conjunto canônico do E2 (elegibilidade
+// byte-idêntica: cocho_dagua, lamina_do_acude, poco_com_tampa,
+// cocho_de_gado).
+export const ITENS_COM_AGUA = Object.keys(FISICA_DA_MOBILIA).filter(
+  (id) => FISICA_DA_MOBILIA[id].ancora === 'agua'
+);

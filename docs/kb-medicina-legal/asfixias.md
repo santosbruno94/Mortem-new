@@ -213,3 +213,17 @@ petéquias sozinhas manteriam as cinco asfixias abertas; é a assinatura que fec
 uma. A `vozMestre` tem licença para nomear a família e a assinatura ("o sulco horizontal é
 de ligadura"), mas não para concluir autoria — a dedução é do jogador (ver guia de estilo,
 §2.4).
+
+## Tentativa × consumação — o que o pescoço conta quando o laço falha
+
+Taylor distingue o estrangulamento **tentado** do consumado pelo que FALTA: o sulco da
+tentativa é raso, não fecha a volta do pescoço e interrompe-se onde a vítima meteu os
+dedos e arrancou o laço; faltam-lhe os **sinais gerais** da asfixia consumada — a face
+não congestiona, as petéquias conjuntivais não vêm, não há cianose. O par honesto da
+tentativa são as **escoriações ungueais em meia-lua da própria vítima** no pescoço
+(as unhas dela, arrancando o que apertava) com fibras do laço sob as unhas. O mesmo
+raciocínio vale para a esganadura tentada: equimoses digitais esparsas, sem o
+fechamento da preensão nem os sinais gerais. **Regra pericial: sinal de tentativa não
+é causa de morte** — colore o caso (houve luta pelo pescoço), mas a causa crava-se
+pela lesão consumada, onde quer que ela esteja. (Verbete criado pela OS autobattler
+v2, B4 — licença doutrinária de traumas.md §capacidade de ação.)

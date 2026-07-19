@@ -49,6 +49,7 @@ import { hashDecisao } from './hash_gerador.js';
 import { formatHora, formatHoraComDia, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 import { gerarCasoBruto } from './caso.js';
+import { SEDE_LEGIVEL } from './vestigios.js';
 import { derivarDialogos, formasDoLugar, profissaoExibida, FAIXA_CURTA, variante } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 
@@ -63,7 +64,12 @@ import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 // (INT4 premeditado produz a peça) e os periféricos com segredo; segue
 // fora do alcance apenas o móbil "silenciamento de fraude".
 // ---------------------------------------------------------------------
-export const SEED_REPLICA = 'a_hora_emprestada_replica_96';
+// B3.4 da OS autobattler v2: o resolvedor novo quebrou o replay (fim
+// declarado); nova seleção sobre 240 candidatas pelo placar de
+// identidade de fatos (scripts/buscar-replica.mjs, D5/GB7) escolheu
+// _105: corpo movido, quadrante INT4+/WIS4+ (Silas), palco interno,
+// trava de fuga íntegra.
+export const SEED_REPLICA = 'a_hora_emprestada_replica_105';
 export const DIRIGIDO_REPLICA = {
   cenario: 'premeditado',
   faixa: 'noite',
@@ -913,6 +919,48 @@ function realizarCartas(bruto) {
           ? 'Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a saída; entre uma e outra, um passo largo.'
           : 'Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.';
         break;
+      // ---- OS autobattler v2 (B3): as superfícies das doutrinas ----
+      // Prosa sóbria de observação (lapidação fina fica com a OS de
+      // prosa); a sede sai em língua legível, nunca em id.
+      case 'gen_ungueais':
+        nova.carimboPadrao = 'Escoriações ungueais no pescoço; fibra e pele sob as unhas';
+        nova.descricao = `Sob a linha do queixo, escoriações curvas, em meia-lua, rasas. Sob as unhas ${doMorto}, fibra de cordoaria e um vestígio de pele. As marcas apontam para dentro: foi a própria mão que arranhou, puxando o que apertava o pescoço.`;
+        break;
+      case 'gen_incidental': {
+        const vInc = crime.vestigios.find((x) => x.classe === 'lesao_incidental');
+        const sedeInc = SEDE_LEGIVEL[vInc?.sede] || 'têmpora';
+        nova.carimboPadrao = `Contusão com padrão de quina (${sedeInc})`;
+        nova.descricao = `Fora do desenho das outras lesões, uma contusão de borda reta, na ${sedeInc}. O padrão é de aresta parada — canto de peça no caminho do corpo, não mão armada.`;
+        break;
+      }
+      case 'gen_peca_deslocada': {
+        const vPd = crime.vestigios.find((x) => x.classe === 'peca_deslocada' && !x.removido);
+        const interpostaPd = Boolean(vPd?.detalhe && vPd.detalhe.includes('girada'));
+        nova.carimboPadrao = interpostaPd ? 'Peça girada fora do seu assento' : 'Peça fora do seu lugar';
+        nova.descricao = interpostaPd
+          ? 'A peça está fora do esquadro do seu lugar, girada e arrastada; os pés riscaram o chão no sentido do vão da sala.'
+          : 'A peça não está no seu assento. O vazio no arranjo tem o feitio dela, e ninguém da casa a moveu.';
+        break;
+      }
+      case 'gen_fibra_aresta':
+        nova.carimboPadrao = 'Fibra e cabelo presos na aresta';
+        nova.descricao = 'Presos na aresta da peça, uma fibra de tecido e um fio de cabelo. A altura casa com um corpo em movimento, não com pancada de mão.';
+        break;
+      case 'gen_peca_limpa':
+        nova.carimboPadrao = 'A única peça limpa da sala';
+        nova.descricao = 'Entre superfícies com o pó de todos os dias, uma única peça limpa, passada a pano de fresco. A limpeza é a exceção — e a exceção se lê.';
+        break;
+      case 'gen_residuo_peca':
+        nova.carimboPadrao = 'Crosta escura no relevo da peça';
+        nova.descricao = `Na peça, uma crosta escura secou no relevo, onde o pano não desce. O feitio do relevo casa com uma lesão que não está ${femV ? 'na morta' : 'no morto'}.`;
+        break;
+      case 'gen_ferimento_reu': {
+        const vFr = crime.vestigios.find((x) => x.classe === 'ferimento_do_agressor');
+        const sedeFr = SEDE_LEGIVEL[vFr?.sede] || 'antebraços';
+        nova.carimboPadrao = `Ferimento recente no suspeito (${sedeFr})`;
+        nova.descricao = `De manga arregaçada por ordem do delegado, ${reu.nome} mostra o que a roupa cobria: a marca recente de luta, ${sedeFr === 'fronte' || sedeFr === 'têmpora' ? 'na' : 'nos'} ${sedeFr}. A lesão tem os dias do crime, e a explicação doméstica não vem.`;
+        break;
+      }
       case 'gen_engodo': {
         if (nova.tagsOcultas.tipoEngodo === 'bilhete_sem_assinatura') {
           // "não casa com": exclusão por cotejo, nunca certeza instantânea
@@ -1079,6 +1127,10 @@ function montarLocalidades(bruto, cartas) {
           : `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`,
       'Ao primeiro exame do tronco e dos membros, [[gen_rigor]].',
       pFerida,
+      // OS autobattler v2 (B3): as superfícies novas do laudo, em rótulo
+      // técnico até a OS de prosa.
+      ...(temCarta('gen_ungueais') ? ['No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].'] : []),
+      ...(temCarta('gen_incidental') ? ['Fora do desenho da lesão principal, em sítio próprio: [[gen_incidental]].'] : []),
       ...(cartas.some((c) => c.id === 'gen_engodo' && c.localidade === 'corpo')
         ? [
             femV
@@ -1375,7 +1427,11 @@ function montarLocalidades(bruto, cartas) {
   };
 
   // ---- Os pertences do réu (só quando a carta de nexo vive lá) ----
-  const cartaOficio = cartas.find((c) => c.localidade === 'oficio_do_reu');
+  // OS autobattler v2 (B3): a localidade pode carregar mais de uma carta
+  // (o instrumento levado E o ferimento no corpo do suspeito) — toda
+  // carta daqui ganha marcador próprio.
+  const cartasOficio = cartas.filter((c) => c.localidade === 'oficio_do_reu');
+  const cartaOficio = cartasOficio.find((c) => c.id !== 'gen_ferimento_reu') || cartasOficio[0];
   const localidades = [corpo, cena, delegacia, vizinhanca];
   if (cartaOficio) {
     const reu = pessoas.get(crime.assassinoId);
@@ -1390,7 +1446,12 @@ function montarLocalidades(bruto, cartas) {
       subtitulo: 'Busca autorizada pelo delegado',
       acoesEspeciais: [],
       prosa: [
-        `A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[${cartaOficio.id}]].`,
+        cartaOficio.id === 'gen_ferimento_reu'
+          ? 'A diligência corre com o delegado à porta e o dono das coisas a um canto. O delegado manda arregaçar as mangas: [[gen_ferimento_reu]].'
+          : `A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[${cartaOficio.id}]].`,
+        ...(cartaOficio.id !== 'gen_ferimento_reu' && cartasOficio.some((c) => c.id === 'gen_ferimento_reu')
+          ? ['Antes de liberar o dono das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]].']
+          : []),
       ],
       blocosContingentes: blocosPorLocalidade.oficio_do_reu || [],
     });

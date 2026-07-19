@@ -103,6 +103,27 @@ export const SINAIS = [
     descricao: 'Escoriação/equimose viva nas bordas de uma lesão: ferimento sofrido ainda em vida.',
     modificador: true,
   },
+  // ---- B4 da OS autobattler v2: sinais de TENTATIVA (domínio próprio).
+  // `modificador` os mantém fora do cravar (causasCompativeis os salta);
+  // `tentativa` marca o subdomínio: o método abortado colore o caso, o
+  // fatal crava sozinho. Fonte: kb-medicina-legal/asfixias.md (tentativa
+  // × consumação — Taylor).
+  {
+    id: 'sulco_interrompido',
+    rotulo: 'Sulco cervical interrompido',
+    descricao:
+      'Sulco raso e horizontal que não fecha a volta do pescoço, sem os sinais gerais da asfixia consumada (face sem congestão, sem petéquias). Marca de estrangulamento TENTADO — não é causa de morte.',
+    modificador: true,
+    tentativa: true,
+  },
+  {
+    id: 'preensao_cervical_incompleta',
+    rotulo: 'Preensão cervical incompleta',
+    descricao:
+      'Equimoses digitais esparsas no pescoço, sem o fechamento da preensão nem os sinais da asfixia consumada. Marca de esganadura TENTADA — não é causa de morte.',
+    modificador: true,
+    tentativa: true,
+  },
 ];
 
 export function obterSinal(id) {

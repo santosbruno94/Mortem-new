@@ -66,10 +66,15 @@ import {
   MOBILIA_DE_OFICIO,
   VOCABULARIO_DA_CLASSE,
   PROVENIENCIA_ESPACO,
+  FISICA_DA_MOBILIA,
+  CALIBRACAO_MOBILIA,
+  ITENS_COM_AGUA,
 } from '../src/gerador/espaco.js';
 import { gerarCasoBruto } from '../src/gerador/caso.js';
 import { METODOS, PROVENIENCIA_METODOS } from '../src/gerador/metodos.js';
-import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS } from '../src/gerador/vestigios.js';
+import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS, SEDES_POR_REGIAO } from '../src/gerador/vestigios.js';
+import { CATALOGO_ACOES, DOUTRINA_VITIMA, DOUTRINA_ASSASSINO, doutrina, acoesLegais } from '../src/gerador/doutrinas.js';
+import { hashString } from '../src/logic/hash.js';
 import {
   CATALOGO_INTERFERENCIA,
   CLASSES_VESTIGIO_INTERFERENCIA,
@@ -1476,7 +1481,11 @@ const rejeicaoIntegra = casosGeradosPrimeira.every((caso) => {
   return (
     caso.crime.posicaoCorpo != null &&
     typeof caso.crime.hora.morte === 'number' &&
-    b.tentativasDescartadas.every((t, i) => t.tentativa === i && ['assassino_ferido', 'vitima_resistiu'].includes(t.motivo)) &&
+    b.tentativasDescartadas.every(
+      (t, i) =>
+        t.tentativa === i &&
+        ['assassino_ferido', 'vitima_resistiu', 'vitima_escapou', 'vitima_venceu_armada', 'assassino_incapacitado'].includes(t.motivo)
+    ) &&
     (b.suprimida ? b.rodadas === 0 : b.rodadas >= 1) &&
     (b.desespero || b.tentativaAceita === b.tentativasDescartadas.length)
   );
@@ -1851,8 +1860,9 @@ function problemasDaInterferencia(caso) {
 // ocorre) — varridas deterministicamente na Fase 4; mudar o gerador pode
 // exigir nova varredura (o objetivo é nunca deixar os lints vazios).
 // Varredura refeita na F2 da OS priors compostos (o prior composto +
-// hashDecisao mudaram a amostragem; regra desta guarda).
-const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_4', 'intf_qa_5', 'intf_qa_7', 'intf_qa_11'];
+// hashDecisao mudaram a amostragem; regra desta guarda) e na B3 da OS
+// autobattler v2 (o resolvedor novo mudou o replay; cúmplice em _130).
+const SEEDS_QA_INTERFERENCIA = ['intf_qa_0', 'intf_qa_4', 'intf_qa_5', 'intf_qa_130'];
 const casosInterferencia = SEEDS_QA_INTERFERENCIA.map((sd) => gerarCasoBruto(sd));
 const problemasInterferencia = [...casosGeradosPrimeira, ...casosInterferencia].flatMap((caso) =>
   problemasDaInterferencia(caso).map((p) => `${caso.seed}: ${p}`)
@@ -3374,6 +3384,213 @@ let telegramaRuntimeOk = true;
   }
 }
 
+// ============================================================
+// GUARDAS DA OS AUTOBATTLER V2 — B1 (física da mobília). Provas:
+// GB1 — proveniência: toda assinatura de peça empunhável cita ARQUIVO
+// EXISTENTE da KB (a fonte resolve no disco); todo número de eficácia
+// vive em CALIBRACAO_MOBILIA marcado chute-calibrável (`chute: true`),
+// jamais disfarçado de fato de KB.
+// GB2 — integridade do schema: todo id usado em qualquer vocabulário
+// (classe, ofício, logradouro) tem entrada de física; empunhável exige
+// classeGolpe + assinatura e massa móvel (leve, ou media com duasMaos);
+// peça fixa jamais empunhável; calibração só de peça empunhável; âncora
+// d'água DERIVADA idêntica ao conjunto canônico do E2 (a elegibilidade
+// do afogamento não muda um byte).
+// ============================================================
+const idsDeVocabulario = new Set([
+  ...Object.values(MOBILIA_POR_CLASSE).flatMap((v) => v.itens.map((i) => i.id)),
+  ...Object.values(MOBILIA_DE_OFICIO).flatMap((v) => v.itens.map((i) => i.id)),
+]);
+const fonteResolveNoDisco = (fonte) => {
+  if (typeof fonte !== 'string' || !fonte.includes('docs/kb-')) return false;
+  const arquivo = fonte.split(/ [§("]/)[0].trim();
+  try {
+    return statSync(path.join(raizRepo, arquivo)).isFile();
+  } catch {
+    return false;
+  }
+};
+const empunhaveis = Object.entries(FISICA_DA_MOBILIA).filter(([, f]) => f.empunhavel);
+const gb1ProvenienciaFisicaOk =
+  empunhaveis.every(
+    ([, f]) => f.assinatura && typeof f.assinatura.id === 'string' && fonteResolveNoDisco(f.assinatura.fonte)
+  ) &&
+  Object.values(CALIBRACAO_MOBILIA).every((c) => c.chute === true) &&
+  fonteResolveNoDisco(PROVENIENCIA_ESPACO.fisicaDaMobilia);
+const CLASSES_GOLPE_VALIDAS = ['contundente', 'cortante', 'perfurante'];
+const MASSAS_VALIDAS = ['leve', 'media', 'fixa'];
+const ANCORAS_AGUA_CANONICAS = ['cocho_dagua', 'lamina_do_acude', 'poco_com_tampa', 'cocho_de_gado'];
+const gb2IntegridadeFisicaOk =
+  [...idsDeVocabulario].every((id) => FISICA_DA_MOBILIA[id] != null) &&
+  Object.values(FISICA_DA_MOBILIA).every(
+    (f) =>
+      MASSAS_VALIDAS.includes(f.massa) &&
+      typeof f.bloqueia === 'boolean' &&
+      typeof f.quinaPerigosa === 'boolean' &&
+      (!f.empunhavel ||
+        (CLASSES_GOLPE_VALIDAS.includes(f.classeGolpe) &&
+          f.assinatura != null &&
+          f.massa !== 'fixa' &&
+          (f.massa === 'leve' || f.duasMaos === true)))
+  ) &&
+  Object.keys(CALIBRACAO_MOBILIA).every((id) => FISICA_DA_MOBILIA[id]?.empunhavel) &&
+  empunhaveis.every(([id]) => CALIBRACAO_MOBILIA[id] != null) &&
+  ITENS_COM_AGUA.length === ANCORAS_AGUA_CANONICAS.length &&
+  ANCORAS_AGUA_CANONICAS.every((id) => ITENS_COM_AGUA.includes(id));
+
+// ============================================================
+// GUARDAS DA OS AUTOBATTLER V2 — B2 (doutrinas). Provas:
+// GB3 — pureza da política: fuzz de ≥10⁴ estados sintéticos (derivados
+// de hashString sob sal fixo de QA) — mesma entrada, construída duas
+// vezes, ⇒ mesma ação, para os dois papéis; toda ação devolvida é
+// legal; e o lint estático prova que doutrinas.js não importa hash
+// nenhum (a escolha não consome sal — só a resolução, em B3).
+// GB4 — matriz ação→vestígio completa: toda ação do catálogo declara
+// classe EXISTENTE em CLASSES_VESTIGIO; toda linha de doutrina aponta
+// ação do catálogo compatível com o papel; a rolagem paralela (grito)
+// fica fora das tabelas. (A parte estatística — rastro sobrevivente em
+// ≥ X% das ações realizadas — mede-se em B3, no lote.)
+// ============================================================
+const REGIOES_FUZZ = ['integro', 'ferido', 'inutilizado'];
+const estadoDeFuzz = (i, papel) => {
+  const h = (campo, mod) => hashString(`qa|doutrina|fuzz|${i}|${campo}`) % mod;
+  const regioes = (p) => ({
+    bracos: REGIOES_FUZZ[h(`${p}|bracos`, 3)],
+    maos: REGIOES_FUZZ[h(`${p}|maos`, 3)],
+    pernas: REGIOES_FUZZ[h(`${p}|pernas`, 3)],
+    cabeca: REGIOES_FUZZ[h(`${p}|cabeca`, 3)],
+    tronco: REGIOES_FUZZ[h(`${p}|tronco`, 3)],
+  });
+  const aPecaBruta = h('aPeca', 6);
+  const armaVitima = h('armaV', 2) === 0 ? null : { tipo: 'peca', pecaId: 'aticador' };
+  const armaAssassino = h('armaA', 3) === 0 ? { tipo: 'peca', pecaId: 'castical_de_latao' } : { tipo: 'metodo' };
+  const eu = papel === 'vitima'
+    ? { regioes: regioes('v'), agarre: h('agarre', 3) === 0 ? 'presa' : 'livre', arma: armaVitima, celula: { col: h('vc', 6), fila: h('vf', 5) } }
+    : { regioes: regioes('a'), agarre: 'livre', arma: armaAssassino, celula: { col: h('ac', 6), fila: h('af', 5) } };
+  const outro = papel === 'vitima'
+    ? { regioes: regioes('a'), arma: armaAssassino, celula: { col: h('ac', 6), fila: h('af', 5) } }
+    : { regioes: regioes('v'), arma: armaVitima, celula: { col: h('vc', 6), fila: h('vf', 5) } };
+  return {
+    rodada: 1 + h('rodada', 8),
+    eu,
+    outro,
+    forPropria: 1 + h('forP', 5),
+    forOutro: 1 + h('forO', 5),
+    portao: papel === 'vitima'
+      ? {
+          sobAtaque: { resistir: h('sar', 2), fugir: h('saf', 2), gritar: h('sag', 2) },
+          polaridade: h('pol', 2) === 0 ? 'ativa' : 'passiva',
+        }
+      : null,
+    metodo: { seguraAVitima: h('seg', 2) === 0, sangra: h('sang', 2) === 0 },
+    dist: { aoOutro: h('aoOutro', 4), aSaida: h('aSaida', 8), aPeca: aPecaBruta === 5 ? Infinity : aPecaBruta },
+    pecaBloqueiaEntreNos: h('bloq', 2) === 0,
+    gritou: h('gritou', 2) === 0,
+    trocaElegivel: h('troca', 4) === 0,
+    flags: { forcarVitoria: h('fv', 8) === 0, fugaSuprimida: h('fs', 8) === 0 },
+  };
+};
+let gb3Falhas = 0;
+for (let i = 0; i < 10000 && gb3Falhas === 0; i++) {
+  for (const papel of ['vitima', 'assassino']) {
+    const a1 = doutrina(papel, estadoDeFuzz(i, papel));
+    const a2 = doutrina(papel, estadoDeFuzz(i, papel));
+    const legais = acoesLegais(papel, estadoDeFuzz(i, papel));
+    if (a1 !== a2) gb3Falhas += 1;
+    else if (a1 !== null && !legais.includes(a1)) gb3Falhas += 1;
+    else if (a1 === null && legais.length > 0 && papel === 'assassino') gb3Falhas += 1; // assassino sempre age quando pode
+  }
+}
+const fonteDoutrinas = readFileSync(path.join(raizRepo, 'src/gerador/doutrinas.js'), 'utf8');
+const gb3PurezaDoutrinaOk =
+  gb3Falhas === 0 && !/hash/i.test(fonteDoutrinas.replace(/\/\/[^\n]*/g, '').match(/^import[^;]+;/gm)?.join('\n') ?? '') &&
+  !fonteDoutrinas.includes('hashString');
+const PAPEIS_ACAO_VALIDOS = ['vitima', 'assassino', 'ambos'];
+const linhaCompativel = (linha, papel) => {
+  const acao = CATALOGO_ACOES[linha.acao];
+  return acao != null && !acao.rolagemParalela && (acao.papel === 'ambos' || acao.papel === papel);
+};
+const gb4MatrizCompletaOk =
+  Object.values(CATALOGO_ACOES).every(
+    (a) => PAPEIS_ACAO_VALIDOS.includes(a.papel) && CLASSES_VESTIGIO[a.classeVestigio] != null && typeof a.precondicao === 'function'
+  ) &&
+  DOUTRINA_VITIMA.every((l) => linhaCompativel(l, 'vitima')) &&
+  DOUTRINA_ASSASSINO.every((l) => linhaCompativel(l, 'assassino')) &&
+  ['peca_deslocada', 'lesao_padrao_de_peca', 'residuo_na_peca', 'ungueais_de_desvencilhamento', 'lesao_incidental', 'fibra_na_aresta', 'ferimento_do_agressor'].every(
+    (c) => CLASSES_VESTIGIO[c] != null && CLASSES_VESTIGIO[c].evidenciaDe.every((v) => VARIAVEIS_BATALHA[v] != null)
+  ) &&
+  Object.values(CLASSES_VESTIGIO).every((c) => !c.naoCausal || c.ordem === 1) &&
+  Object.keys(SEDES_POR_REGIAO).length === 5 &&
+  ['bracos', 'maos', 'pernas', 'cabeca', 'tronco'].every((r) => Array.isArray(SEDES_POR_REGIAO[r]) && SEDES_POR_REGIAO[r].length > 0);
+
+// ============================================================
+// GUARDA DA OS AUTOBATTLER V2 — B3. GB6 (procedência total): todo
+// vestígio aponta evento de origem; toda sede estampada pertence a
+// SEDES_POR_REGIAO; a lesão incidental só nasce de peça com quina
+// perigosa; peça deslocada só com evento de armar-se/interpor; as
+// classes naoCausal jamais carregam `sinal` em carta (a incidental não
+// concorre no cravar).
+// ============================================================
+const SEDES_VALIDAS = new Set(Object.values(SEDES_POR_REGIAO).flat());
+const gb6Falhas = [];
+for (const caso of casosGeradosPrimeira) {
+  const { crime, fatiaForense } = caso;
+  const depositados = new Set(crime.eventos.flatMap((e) => e.vestigiosDepositados));
+  for (const v of crime.vestigios) {
+    if (!depositados.has(v.id)) gb6Falhas.push(`${caso.seed}: ${v.id} (${v.classe}) sem evento de origem`);
+    if (v.sede != null && !SEDES_VALIDAS.has(v.sede)) gb6Falhas.push(`${caso.seed}: ${v.id} sede inválida (${v.sede})`);
+    if (CLASSES_VESTIGIO[v.classe]?.temSede && v.sede == null) gb6Falhas.push(`${caso.seed}: ${v.id} (${v.classe}) exige sede`);
+  }
+  for (const e of crime.eventos.filter((x) => x.acao === 'lesao_incidental')) {
+    const peca = e.mobilia ? caso.mundo.interiores[caso.escolha.localId].mobilia.find((m) => m.id === e.mobilia) : null;
+    if (!peca || !FISICA_DA_MOBILIA[peca.item]?.quinaPerigosa)
+      gb6Falhas.push(`${caso.seed}: incidental fora de quina perigosa`);
+  }
+  for (const v of crime.vestigios.filter((x) => x.classe === 'peca_deslocada')) {
+    const tem = crime.eventos.some(
+      (e) => ['peca_tomada', 'interposicao_da_peca'].includes(e.acao) && e.vestigiosDepositados.includes(v.id)
+    );
+    if (!tem) gb6Falhas.push(`${caso.seed}: peca_deslocada sem evento de armar-se/interpor`);
+  }
+  for (const carta of fatiaForense.cartas) {
+    if (['gen_incidental', 'gen_fibra_aresta'].includes(carta.id) && carta.tagsOcultas.sinal != null)
+      gb6Falhas.push(`${caso.seed}: carta naoCausal com sinal (${carta.id})`);
+  }
+}
+const gb6ProcedenciaOk = gb6Falhas.length === 0;
+if (!gb6ProcedenciaOk) console.log('\nAUTOBATTLER V2 — GB6:', gb6Falhas.slice(0, 8).join(' | '));
+
+// ============================================================
+// GUARDAS DA OS AUTOBATTLER V2 — B4 (a troca de método, gated).
+// GB9 — cravar intacto: nas seeds com troca (varridas até achar ≥3), os
+// sinais causais das cartas cravam o mecanismo FATAL do registro.
+// GB10 — anti-ambiguidade: nenhum sinal de tentativa crava sozinho (nem
+// o par tentativa+reacao_vital); o motor é cego a metodoIniciado; a
+// frequência da troca fica medida (banda D4: rara — assinatura de caso).
+// ============================================================
+const casosComTroca = [];
+let varridosTroca = 0;
+for (let i = 1; i <= 4000 && casosComTroca.length < 3; i++) {
+  varridosTroca = i;
+  const c = gerarCasoBruto(`mc_${i}`);
+  if (c.crime.metodoIniciadoId != null) casosComTroca.push(c);
+}
+const gb9CravarIntacto =
+  casosComTroca.length >= 3 &&
+  casosComTroca.every((c) => {
+    const sinais = c.fatiaForense.cartas
+      .filter((k) => k.tagsOcultas?.dominio === 'causal' && k.tagsOcultas.sinal)
+      .map((k) => k.tagsOcultas.sinal);
+    return mecanismoCravado(sinais)?.id === METODOS[c.crime.metodoId].mecanismo;
+  });
+const sinaisTentativa = ['sulco_interrompido', 'preensao_cervical_incompleta'];
+const gb10AntiAmbiguidade =
+  sinaisTentativa.every((s) => mecanismoCravado([s]) === null && mecanismoCravado([s, 'reacao_vital']) === null) &&
+  ['logic/veredicto.js', 'logic/acusacao.js'].every(
+    (f) => !/metodoIniciado/.test(readFileSync(path.join(raizSrc, f), 'utf8'))
+  ) &&
+  casosComTroca.length / varridosTroca < 0.05; // rara: assinatura, não rotina
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -3475,6 +3692,13 @@ const checagens = [
   ['Comarca E3 — GE7/GE8 + LOD: só registro durável a distância, nunca essencial; sem interrogável fora da vila; satélite referenciado tem função, nó oculto, lead e custo (OS palco em anéis §4)', ge7e8Ok],
   ['Comarca E3 — GE9 anti-tell: função meramente corroborativa em 30–50% dos casos com nó (Z=40% do autor) (OS palco em anéis §4.4)', ge9AntiTellOk],
   ['Comarca E3 — telegrama (§4.6): dados acoplados ao nó no pacote e, em runtime, expedir + viajar entrega a resposta com as tags do registro', telegramaRuntimeOk],
+  ['Autobattler v2 — GB1 proveniência da física: assinatura de empunhável com fonte que resolve no disco; eficácia só em calibração chute-declarada (OS autobattler v2 B1)', gb1ProvenienciaFisicaOk],
+  ['Autobattler v2 — GB2 integridade da física: todo item de vocabulário com física; empunhável bem-formado; fixa jamais empunhável; âncora d\'água derivada == canônica do E2 (OS autobattler v2 B1)', gb2IntegridadeFisicaOk],
+  ['Autobattler v2 — GB3 pureza da doutrina: 10⁴ estados de fuzz ⇒ mesma ação; toda ação devolvida é legal; doutrinas.js sem hash (OS autobattler v2 B2)', gb3PurezaDoutrinaOk],
+  ['Autobattler v2 — GB4 matriz ação→vestígio: toda ação com classe existente; linhas de doutrina compatíveis com papel; classes novas bem-formadas; SEDES_POR_REGIAO com as 5 regiões (OS autobattler v2 B2/D2)', gb4MatrizCompletaOk],
+  ['Autobattler v2 — GB6 procedência total: vestígio com evento de origem; sede ∈ SEDES_POR_REGIAO; incidental só em quina perigosa; peça deslocada só por armar-se/interpor; naoCausal sem sinal (OS autobattler v2 B3)', gb6ProcedenciaOk],
+  ['Autobattler v2 — GB9 cravar intacto: nas seeds com troca, o mecanismo FATAL crava pelos sinais das cartas (OS autobattler v2 B4)', gb9CravarIntacto],
+  ['Autobattler v2 — GB10 anti-ambiguidade: sinal de tentativa não crava sozinho; motor cego a metodoIniciado; troca rara (<5%) (OS autobattler v2 B4)', gb10AntiAmbiguidade],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

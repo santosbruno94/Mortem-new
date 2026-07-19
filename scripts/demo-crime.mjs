@@ -23,7 +23,18 @@ import { CLASSES_VESTIGIO } from '../src/gerador/vestigios.js';
 // da fase pede uma cena externa à mostra neste demo.
 const seeds = process.argv[2]
   ? [process.argv[2]]
-  : ['a_hora_emprestada', 'vila_do_moinho', 'caso_do_charco', 'comarca_4'];
+  : [
+      'a_hora_emprestada',
+      'vila_do_moinho',
+      'caso_do_charco',
+      'comarca_4',
+      // B5 da OS autobattler v2 — as três vitrines do resolvedor novo
+      // (+ a troca de método): achadas por varredura do mc-batalha.
+      'mc_8', // garrote desvencilhado (o caso-escola do pedido)
+      'mc_37', // vítima armada de peça fere o réu (ferimento com sede)
+      'mc_19', // lesão incidental de quina + fibra na aresta
+      'mc_448', // B4: o método falha e a peça consuma (metodoIniciado)
+    ];
 
 // Hora absoluta → rótulo humano (0 = meia-noite de 14/out).
 function horaLegivel(h) {

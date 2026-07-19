@@ -17,3 +17,4 @@ relatório original, sem edição de conteúdo.
 | `2026-07-17-tres-modos-todos-desfechos.md` | 17–18/07/2026 | Os 3 modos, todos os 4 desfechos alcançados em cada um |
 | `2026-07-17-playtest-independente.md` | 17/07/2026 | Playtest independente dos 3 modos, avaliação qualitativa e funcional |
 | `2026-07-relatorio-playtest-independente.pdf` | julho/2026 (sem dia exato no documento) | Relatório de playtest independente em PDF |
+| `2026-07-18-playtest-independente-vertical-slice.md` | 18/07/2026 | Playtest independente do vertical slice (build de produção, PR #60): os 4 desfechos no caso-escola, réplica e procedural rodam sem erros de console; achado central: paridade visual (3D vs. grade 2D) entre modo artesanal e modos gerados |
