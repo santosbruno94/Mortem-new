@@ -62,6 +62,12 @@ const MAX_TENTATIVAS = 24; // teto da reamostragem antes do desespero
 const PASSO_PERSEGUICAO = 2; // o predador fecha 2 células/rodada; a presa foge 1 (chute calibrável)
 const ACERTO_METODO_OITAVOS = 7; // golpe do método acerta em 7/8 fora da surpresa (chute calibrável; B5: 6→7 pela banda de desespero)
 const CHANCE_INCIDENTAL = 11; // lesão incidental: 1/11 por exposição a quina perigosa (chute calibrável; B5: 16→12→11 pela banda D3)
+// B4 (gated): a troca de método em luta — liberada com GB8 nas bandas +
+// D4=a do autor. A flag NÃO consome sal: batalhas sem troca efetiva são
+// byte-idênticas por construção (GB10).
+const HABILITAR_TROCA_METODO = true;
+// O método fatal quando a peça consuma: a classe de golpe da física.
+const METODO_FATAL_DA_CLASSE = { contundente: 'contundente', cortante: 'laminada', perfurante: 'laminada' };
 
 function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
@@ -758,6 +764,7 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
     for (let t = 0; t < MAX_TENTATIVAS; t++) {
       const r = simularBatalha(`${sal}|batalha|${t}`, {
         assassino, vitima, metodo, cenario, interior, comodoId, portaoPsiquico, fugaSuprimida,
+        trocaHabilitada: HABILITAR_TROCA_METODO,
       });
       if (r.vitoria) {
         aceita = r;
@@ -772,6 +779,7 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
       // determinismo da âncora não pode depender da sorte da amostragem.
       aceita = simularBatalha(`${sal}|batalha|desespero`, {
         assassino, vitima, metodo, cenario, interior, comodoId, forcarVitoria: true, portaoPsiquico, fugaSuprimida,
+        trocaHabilitada: HABILITAR_TROCA_METODO,
       });
       tentativaAceita = MAX_TENTATIVAS;
       desespero = true;
@@ -808,6 +816,18 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
     const r = resultado;
     posicaoCorpo = { comodo: comodoDaCelula(interior, r.celulaQueda), celula: { ...r.celulaQueda } };
 
+    // ===== B4: a troca consumada — o FATAL crava sozinho; o iniciado
+    // colore (Taylor distingue tentativa de consumação). Se o golpe que
+    // matou veio da peça, o mecanismo fatal é o da classe de golpe dela;
+    // o método iniciado fica registrado ao lado (verdadeDeOuro, ponte).
+    const ultimaRodada = r.rodadasLog[r.rodadasLog.length - 1];
+    const trocouParaPeca = Boolean(ultimaRodada?.golpeComPeca && r.armaA?.tipo === 'peca');
+    const metodoFatal = trocouParaPeca
+      ? METODOS[METODO_FATAL_DA_CLASSE[FISICA_DA_MOBILIA[r.armaA.itemId]?.classeGolpe] || 'contundente']
+      : metodo;
+    var metodoFatalId = trocouParaPeca ? (METODO_FATAL_DA_CLASSE[FISICA_DA_MOBILIA[r.armaA.itemId]?.classeGolpe] || 'contundente') : metodoId;
+    var metodoIniciadoId = trocouParaPeca ? metodoId : null;
+
     // Golpes, doutrinas e reações, rodada a rodada (eventos sem vestígio
     // próprio; a deposição consolidada entra na queda e nos ferimentos).
     for (const log of r.rodadasLog) {
@@ -830,11 +850,11 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
       depositar(
         'ferida_fatal',
         { celula: r.celulaQueda },
-        `${metodo.rotulo.toLowerCase()}; ${r.ferimentosVitima} golpe(s); sede ${metodo.sedeFatal}; profundidade lê FOR ${forA}`,
-        { sede: metodo.sedeFatal }
+        `${metodoFatal.rotulo.toLowerCase()}${trocouParaPeca ? ` (peça improvisada: ${r.armaA.rotulo})` : ''}; ${r.ferimentosVitima} golpe(s); sede ${metodoFatal.sedeFatal}; profundidade lê FOR ${forA}`,
+        { sede: metodoFatal.sedeFatal }
       )
     );
-    if (metodo.sangra) {
+    if (metodoFatal.sangra) {
       depositadosNaQueda.push(depositar('poca_sangue', { celula: r.celulaQueda }, 'poça sob o corpo'));
     }
     if (r.ferimentosDefensivos > 0) {
@@ -1172,7 +1192,11 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
   return {
     seed: salDaSeed(seed),
     cenario,
-    metodoId,
+    // B4: o metodoId do registro é o FATAL (o mecanismo que crava); o
+    // iniciado — quando a troca consumou — fica ao lado, para a
+    // verdadeDeOuro e para o sinal de tentativa (que não concorre).
+    metodoId: typeof metodoFatalId !== 'undefined' ? metodoFatalId : metodoId,
+    metodoIniciadoId: typeof metodoIniciadoId !== 'undefined' ? metodoIniciadoId : null,
     assassinoId: assassino.id,
     vitimaId: vitima.id,
     local: { predioId: interior.predioId, comodoInicial: comodoId, faixa },

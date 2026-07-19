@@ -81,6 +81,10 @@ export function fatiaForenseDoCrime({
     horaMorteAbsoluta: horaMorte,
     mecanismoCorreto: metodo.mecanismo,
     instrumentoCorreto: metodo.instrumento,
+    // B4 (OS autobattler v2): o método que a luta abortou — o fatal
+    // crava sozinho; a tentativa colore. null quando não houve troca.
+    // O motor é cego a este campo (guarda no qa.mjs).
+    metodoIniciado: crime.metodoIniciadoId ?? null,
     motivacaoCorreta: assassino.motivoPotencial,
     cenaEncenada: crime.cenaEncenada,
     horaForjada: null,
@@ -164,6 +168,27 @@ export function fatiaForenseDoCrime({
     descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
     tagsOcultas: { dominio: 'causal', subDominio: 'ferida', sinal: metodo.sinalAssinatura },
   });
+
+  // B4: o sinal de TENTATIVA do método abortado — incompleto e marcado
+  // (sulco interrompido SEM os sinais gerais de asfixia consumada). Vive
+  // em domínio próprio no catálogo (`modificador` + `tentativa`): jamais
+  // concorre no mecanismoCravado — o fatal crava sozinho (GB10).
+  const SINAL_TENTATIVA = { garrote: 'sulco_interrompido', esganadura: 'preensao_cervical_incompleta' };
+  const sinalTentativa = crime.metodoIniciadoId ? SINAL_TENTATIVA[crime.metodoIniciadoId] : null;
+  if (sinalTentativa) {
+    cartas.push({
+      id: 'gen_tentativa',
+      localidade: 'corpo',
+      suporteFisico: 'corpo',
+      textoDisplay: 'A Marca da Tentativa',
+      carimboPadrao: `Sinal de ${METODOS[crime.metodoIniciadoId].rotulo.toLowerCase()} interrompido`,
+      descricao:
+        sinalTentativa === 'sulco_interrompido'
+          ? 'No pescoço, um sulco raso, horizontal, que se interrompe antes de fechar a volta. Faltam-lhe os sinais do estrangulamento consumado: a face não congestionou, as petéquias não vieram. O laço apertou em vida — e foi arrancado.'
+          : 'No pescoço, equimoses digitais esparsas, sem o fechamento da preensão. Faltam os sinais da asfixia consumada. A mão esteve ali, e foi desfeita.',
+      tagsOcultas: { dominio: 'causal', subDominio: 'tentativa', sinal: sinalTentativa },
+    });
+  }
 
   // Modificador de reação vital: só quando houve confronto em vida.
   if ((crime.variaveis.ferimentos_vitima || 0) > 0) {

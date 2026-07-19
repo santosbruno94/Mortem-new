@@ -3560,6 +3560,37 @@ for (const caso of casosGeradosPrimeira) {
 const gb6ProcedenciaOk = gb6Falhas.length === 0;
 if (!gb6ProcedenciaOk) console.log('\nAUTOBATTLER V2 — GB6:', gb6Falhas.slice(0, 8).join(' | '));
 
+// ============================================================
+// GUARDAS DA OS AUTOBATTLER V2 — B4 (a troca de método, gated).
+// GB9 — cravar intacto: nas seeds com troca (varridas até achar ≥3), os
+// sinais causais das cartas cravam o mecanismo FATAL do registro.
+// GB10 — anti-ambiguidade: nenhum sinal de tentativa crava sozinho (nem
+// o par tentativa+reacao_vital); o motor é cego a metodoIniciado; a
+// frequência da troca fica medida (banda D4: rara — assinatura de caso).
+// ============================================================
+const casosComTroca = [];
+let varridosTroca = 0;
+for (let i = 1; i <= 4000 && casosComTroca.length < 3; i++) {
+  varridosTroca = i;
+  const c = gerarCasoBruto(`mc_${i}`);
+  if (c.crime.metodoIniciadoId != null) casosComTroca.push(c);
+}
+const gb9CravarIntacto =
+  casosComTroca.length >= 3 &&
+  casosComTroca.every((c) => {
+    const sinais = c.fatiaForense.cartas
+      .filter((k) => k.tagsOcultas?.dominio === 'causal' && k.tagsOcultas.sinal)
+      .map((k) => k.tagsOcultas.sinal);
+    return mecanismoCravado(sinais)?.id === METODOS[c.crime.metodoId].mecanismo;
+  });
+const sinaisTentativa = ['sulco_interrompido', 'preensao_cervical_incompleta'];
+const gb10AntiAmbiguidade =
+  sinaisTentativa.every((s) => mecanismoCravado([s]) === null && mecanismoCravado([s, 'reacao_vital']) === null) &&
+  ['logic/veredicto.js', 'logic/acusacao.js'].every(
+    (f) => !/metodoIniciado/.test(readFileSync(path.join(raizSrc, f), 'utf8'))
+  ) &&
+  casosComTroca.length / varridosTroca < 0.05; // rara: assinatura, não rotina
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -3666,6 +3697,8 @@ const checagens = [
   ['Autobattler v2 — GB3 pureza da doutrina: 10⁴ estados de fuzz ⇒ mesma ação; toda ação devolvida é legal; doutrinas.js sem hash (OS autobattler v2 B2)', gb3PurezaDoutrinaOk],
   ['Autobattler v2 — GB4 matriz ação→vestígio: toda ação com classe existente; linhas de doutrina compatíveis com papel; classes novas bem-formadas; SEDES_POR_REGIAO com as 5 regiões (OS autobattler v2 B2/D2)', gb4MatrizCompletaOk],
   ['Autobattler v2 — GB6 procedência total: vestígio com evento de origem; sede ∈ SEDES_POR_REGIAO; incidental só em quina perigosa; peça deslocada só por armar-se/interpor; naoCausal sem sinal (OS autobattler v2 B3)', gb6ProcedenciaOk],
+  ['Autobattler v2 — GB9 cravar intacto: nas seeds com troca, o mecanismo FATAL crava pelos sinais das cartas (OS autobattler v2 B4)', gb9CravarIntacto],
+  ['Autobattler v2 — GB10 anti-ambiguidade: sinal de tentativa não crava sozinho; motor cego a metodoIniciado; troca rara (<5%) (OS autobattler v2 B4)', gb10AntiAmbiguidade],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
