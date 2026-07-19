@@ -1,5 +1,6 @@
 import { useJogo } from '../store/jogo.js';
 import { formatRelogio } from '../logic/tempo.js';
+import { modoDoCaso } from '../data/casos.js';
 import Overlay from './Overlay.jsx';
 
 // Caderneta — o BANCO DE ANOTAÇÕES (§5): tudo que já foi observado fica
@@ -19,6 +20,11 @@ export default function Caderneta() {
   const alternarModoPurista = useJogo((s) => s.alternarModoPurista);
   const escolhaContradicao = useJogo((s) => s.escolhaContradicao);
   const resolverContradicao = useJogo((s) => s.resolverContradicao);
+  const casoId = useJogo((s) => s.casoId);
+  // Nos casos GERADOS não há legista (playtest de 19/07, P1): a seção da
+  // leitura some por inteiro — cabeçalho, alternador purista e vazios. As
+  // conclusões que restarem (ecos pós-caso) exibem-se por conta própria.
+  const temLegista = modoDoCaso(casoId) === 'tutorial';
   // No purista só a leitura DO MESTRE cala; conclusões de outra origem
   // (se um dia existirem) continuam à vista.
   const conclusoesVisiveis = modoPurista ? conclusoes.filter((c) => c.origem !== 'mestre') : conclusoes;
@@ -94,22 +100,24 @@ export default function Caderneta() {
       {/* A leitura do legista (a "dica"): refaz-se sozinha a cada exame.
           Modo purista (Onda 8): a síntese cala — a Caderneta vira bloco de
           notas, não gabarito; religar não perde nada (o dado continua). */}
-      <div className="flex items-baseline justify-between gap-3 mb-3">
-        <h3 className="font-serif text-latao-claro text-lg titulo-gravado">Leitura do legista</h3>
-        <button
-          type="button"
-          onClick={alternarModoPurista}
-          className="text-stone-400 hover:text-stone-200 text-xs underline underline-offset-2"
-        >
-          {modoPurista ? 'Tornar a pedir a leitura' : 'Dispensar a leitura'}
-        </button>
-      </div>
-      {modoPurista && (
+      {temLegista && (
+        <div className="flex items-baseline justify-between gap-3 mb-3">
+          <h3 className="font-serif text-latao-claro text-lg titulo-gravado">Leitura do legista</h3>
+          <button
+            type="button"
+            onClick={alternarModoPurista}
+            className="text-stone-400 hover:text-stone-200 text-xs underline underline-offset-2"
+          >
+            {modoPurista ? 'Tornar a pedir a leitura' : 'Dispensar a leitura'}
+          </button>
+        </div>
+      )}
+      {temLegista && modoPurista && (
         <p className="text-stone-400 italic font-serif text-sm mb-8">
           Você dispensou a leitura do legista: a janela e o mecanismo correm por sua conta.
         </p>
       )}
-      {!modoPurista && conclusoesVisiveis.length === 0 && (
+      {temLegista && !modoPurista && conclusoesVisiveis.length === 0 && (
         <p className="text-stone-400 italic font-serif text-sm mb-8">O legista ainda não tem leitura — examine o corpo.</p>
       )}
       {conclusoesVisiveis.length > 0 && (

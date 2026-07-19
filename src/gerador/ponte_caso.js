@@ -164,6 +164,9 @@ export function fatiaForenseDoCrime({
     suporteFisico: 'corpo',
     textoDisplay: 'A Lesão Fatal',
     // OS autobattler v2 (B3): o laudo ganha a sede anatômica (M1 absorvido).
+    // Rótulo TÉCNICO de build: o pipeline de prosa o substitui pelo carimbo
+    // descritivo de PROSA_LESAO (P2 do playtest de 19/07 — descrever, não
+    // concluir; o nome do meio é dedução do jogador).
     carimboPadrao: `Sinal de ${metodo.rotulo.toLowerCase()}${metodo.sedeFatal ? `; sede: ${SEDE_LEGIVEL[metodo.sedeFatal] || metodo.sedeFatal}` : ''}`,
     descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
     tagsOcultas: { dominio: 'causal', subDominio: 'ferida', sinal: metodo.sinalAssinatura },
@@ -196,8 +199,10 @@ export function fatiaForenseDoCrime({
       id: 'gen_reacao_vital',
       localidade: 'corpo',
       suporteFisico: 'corpo',
-      textoDisplay: 'Bordas Vivas',
-      carimboPadrao: 'Lesões sofridas em vida',
+      // P3 (playtest 19/07): título e carimbo descrevem, não concluem — a
+      // leitura "em vida" é dedução do jogador (verbete de reação vital).
+      textoDisplay: 'As Bordas da Ferida',
+      carimboPadrao: 'Bordas afastadas, coágulo aderido',
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
       tagsOcultas: { dominio: 'causal', subDominio: 'reacao_vital', sinal: 'reacao_vital' },
     });

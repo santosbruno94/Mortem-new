@@ -50,6 +50,7 @@ import { formatHora, formatHoraComDia, CALENDARIO_PADRAO } from '../logic/tempo.
 import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 import { gerarCasoBruto } from './caso.js';
 import { SEDE_LEGIVEL } from './vestigios.js';
+import { METODOS } from './metodos.js';
 import { derivarDialogos, formasDoLugar, profissaoExibida, FAIXA_CURTA, variante } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 
@@ -111,8 +112,10 @@ const PROSA_MOTIVO = {
     `Cartas sobre um dote prometido e não pago atam ${reu.nome} a ${vitima.nome}, com somas e datas.`,
   salario_atrasado: (reu, vitima) =>
     `Consta queixa de paga retida: ${vitima.nome} devia a ${reu.nome} semanas de salário.`,
+  // P15 (playtest 19/07 r2): genérico pode, ininteligível não — a frase
+  // diz DO QUE trata o falatório, sem detalhe fino.
   escandalo_gravidez: (reu, vitima) =>
-    `Corre na vila um falatório em nome de ${reu.nome}; quem o repetia, de porta em porta, era ${vitima.nome}.`,
+    `Corre na vila um falatório sobre ${reu.nome}: criança por vir, e o nome ${reu.genero === 'feminino' ? 'dela' : 'dele'} atado ao caso. Quem o repetia, de porta em porta, era ${vitima.nome}.`,
   character_negado: (reu, vitima) =>
     `${vitima.nome} negou a ${reu.nome} a carta de referência; sem ela, casa nenhuma ${reu.genero === 'feminino' ? 'a' : 'o'} toma a serviço.`,
   despejo: (reu, vitima) =>
@@ -121,6 +124,16 @@ const PROSA_MOTIVO = {
     `A queixa pública entre ${reu.nome} e ${vitima.nome}, a capela contra a taverna, está lavrada em ata.`,
   recasamento_vigiado: (reu, vitima) =>
     `O recasamento de ${reu.nome} andava na boca da vila, e ${vitima.nome} era quem mais falava dele.`,
+  // F4 da OS priors compostos: os quatro motivos novos ganharam frase
+  // (P18 do playtest 19/07 r2 — sem frase, a carta caía no fallback mudo).
+  hipoteca_ou_arrendo: (reu, vitima) =>
+    `Os papéis do arrendo somam o que ${reu.nome} deve pela terra, prazo vencido; quem cobrava, com o despejo à mão, era ${vitima.nome}.`,
+  propriedade_da_esposa: (reu, vitima) =>
+    `Os papéis do banco põem a soma em nome de ${vitima.nome}, e só dela por lei; a ${reu.nome} a lei não dá alcance enquanto ${vitima.genero === 'feminino' ? 'ela' : 'ele'} viver.`,
+  divida_de_jogo: (reu, vitima) =>
+    `Vales de aposta guardados por ${vitima.nome}, com a soma e a rubrica de ${reu.nome}. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.`,
+  caridade_negada: (reu, vitima) =>
+    `Consta o pedido de socorro de ${reu.nome}, e consta a recusa; a palavra que abria ou fechava essa porta era a de ${vitima.nome}, e atrás da recusa espera a workhouse.`,
 };
 
 // ---------------------------------------------------------------------
@@ -242,15 +255,19 @@ const PROSA_SEGREDO = {
     textoDisplay: 'O Bilhete Amassado',
     tipoVestigio: 'bilhete_de_suplica',
     carimbo: (nome) => `Bilhete na letra de ${nome}`,
+    // P14/P15: o bilhete diz do que trata o pedido (socorro em dinheiro) —
+    // coerente com a admissão no confronto ("saí com a recusa e a vergonha").
     descricao: (nome) =>
-      `Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de ${nome}: um pedido, a palavra "desta vez" sublinhada, e nenhuma resposta no verso.`,
+      `Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de ${nome}: um pedido de socorro em dinheiro, a palavra "desta vez" sublinhada, e nenhuma resposta no verso.`,
   },
   acerto_reservado: {
     textoDisplay: 'A Nota por Assinar',
     tipoVestigio: 'nota_por_assinar',
     carimbo: (nome) => `Nota de trato com o nome de ${nome}`,
+    // P13/P15: a nota diz do que trata (acerto de dinheiro em reserva) —
+    // coerente com a admissão no confronto ("trato para se fechar calado").
     descricao: (nome) =>
-      `Meia folha pautada com soma, prazo e o nome de ${nome} por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.`,
+      `Meia folha pautada com soma, prazo e o nome de ${nome} por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.`,
   },
 };
 
@@ -372,7 +389,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
       carimboPadrao: `Móbil de ${alvo.nome}`,
       descricao: frase
         ? frase(alvo, vitima)
-        : `Papéis da delegacia ligam ${alvo.nome} ${vitima.genero === 'feminino' ? 'à morta' : 'ao morto'}.`,
+        : `Do arquivo: queixa registrada entre ${alvo.nome} e ${vitima.nome}, retirada dias depois sem explicação; o papel ficou.`,
       tagsOcultas: {
         dominio: 'comportamental',
         subDominio: 'motivo',
@@ -612,45 +629,70 @@ const SUPERFICIE_RESPINGO = {
   caminho_do_acude: 'no mourão da cerca',
 };
 
-// A lesão fatal por método: nome de carta e laudo de exame próximo.
+// O instrumento à vista, com artigo (P12 do playtest 19/07 r2: a carta diz
+// O QUE ficou na cena, não só "instrumento"). Chaves = METODOS[..].instrumento.
+const INSTRUMENTO_A_VISTA = {
+  lamina_de_oficio: 'uma lâmina de ofício',
+  cordao_torcido: 'um cordão torcido',
+  arma_de_ocasiao: 'uma peça pesada, de ocasião',
+  papel_de_arsenico: 'um papel de arsênico dobrado',
+  travesseiro_ou_pano: 'um pano de abafo',
+  frasco_de_laudano: 'um frasco de láudano',
+};
+
+// A lesão fatal por método: nome de carta, carimbo e laudo de exame próximo.
+// Playtest de 19/07 (P2): o carimbo é OBSERVAÇÃO, nunca conclusão — descreve
+// a morfologia e a sede; nomear o instrumento/meio ("arma branca") é dedução
+// do jogador, via glossário. Termos validados contra docs/kb-medicina-legal/.
 const PROSA_LESAO = {
   laminada: {
-    textoDisplay: 'A Ferida Incisa',
+    // Parecer do perito (19/07): lesão FATAL no tórax é perfuro-incisa (a
+    // punctura que mata em profundidade), não a incisa de superfície — a
+    // descrição segue o trajeto fundo, sem a "cauda rasa" do talho.
+    textoDisplay: 'A Ferida no Tórax',
+    carimbo: 'Ferida perfuro-incisa; sede: tórax',
     descricao:
-      'Corte de bordas regulares, mais fundo onde começa e raso onde termina. As margens são limpas, sem ponte de pele entre elas. Uma entrada única e funda; a pele ao redor não traz outros riscos rasos.',
+      'Uma fenda estreita, de bordas limpas e regulares, mais comprida que larga. A sonda desce fundo; o trajeto encerra mais do que a fenda aparenta. Sem ponte de pele entre as margens, e a pele ao redor não traz outros riscos rasos.',
   },
   garrote: {
     textoDisplay: 'O Sulco no Pescoço',
+    carimbo: 'Sulco horizontal; sede: pescoço',
     descricao:
       'Um vinco uniforme corre horizontal em volta do pescoço, na mesma profundidade de ponta a ponta, sem subir rumo à nuca.',
   },
   esganadura: {
     textoDisplay: 'As Marcas no Pescoço',
+    carimbo: 'Equimoses digitais; sede: pescoço',
     descricao:
       'Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.',
   },
   contundente: {
     textoDisplay: 'A Fratura no Crânio',
+    carimbo: 'Fratura com afundamento; sede: têmpora',
     descricao:
       'Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.',
   },
   veneno_arsenico: {
     textoDisplay: 'O Vômito Seco',
+    carimbo: 'Resto de vômito ressecado; odor de alho à chama',
     descricao:
       'Na boca e no queixo, um resto de vômito seco. Levada à chama, a amostra solta cheiro de alho; da ceia, prato nenhum o levava.',
   },
   sufocacao: {
     textoDisplay: 'Os Sinais em Volta da Boca',
+    carimbo: 'Escoriações em volta da boca e das narinas',
     descricao:
       'Pequenas marcas em torno dos lábios e das narinas, e um fiapo claro preso ao canto da boca. No pescoço, vinco nenhum.',
   },
   afogamento: {
     textoDisplay: 'A Espuma na Boca',
+    carimbo: 'Espuma fina à boca e às narinas',
     descricao:
       'Um cogumelo de espuma fina assoma à boca e às narinas; enxugado, torna a formar-se. A pele das mãos está branca e enrugada.',
   },
   laudano: {
     textoDisplay: 'As Pupilas Fechadas',
+    carimbo: 'Pupilas em ponta de alfinete',
     descricao:
       'No corpo, marca de luta nenhuma. As pupilas estão contraídas em ponta de alfinete, e um resquício de amargor fica no hálito.',
   },
@@ -829,12 +871,15 @@ function realizarCartas(bruto) {
       case 'gen_lesao_fatal': {
         const p = PROSA_LESAO[escolha.metodoId];
         nova.textoDisplay = p.textoDisplay;
+        nova.carimboPadrao = p.carimbo;
         nova.descricao = p.descricao;
         break;
       }
       case 'gen_reacao_vital':
+        // P3 (playtest 19/07): observação pura — a conclusão ("em vida",
+        // reação vital) é dedução do jogador, via glossário.
         nova.descricao =
-          'As lesões mostram bordas afastadas e sangue coagulado por dentro: o coração ainda batia quando as recebeu.';
+          'As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.';
         break;
       case 'gen_visto_vivo': {
         const quando = formatHoraComDia(c.tagsOcultas.horaAvistamento);
@@ -855,7 +900,11 @@ function realizarCartas(bruto) {
           nova.carimboPadrao = 'Instrumento deixado na cena';
           // Parecer do perito (E1): o instrumento fica na célula da queda e
           // o corpo pode ter sido arrastado — a descrição não jura vizinhança.
-          nova.descricao = `Ficou no chão, onde a mão o largou. O feitio casa com a lesão ${doMorto}, e a vila dá o dono pelo nome: ${reu.nome}.`;
+          // P12: a carta nomeia a peça e diz POR QUE a vila conhece o dono.
+          const aVista = INSTRUMENTO_A_VISTA[METODOS[escolha.metodoId]?.instrumento];
+          nova.descricao = aVista
+            ? `No chão, onde a mão o largou: ${aVista}. O feitio casa com a lesão ${doMorto}. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: ${reu.nome}.`
+            : `Ficou no chão, onde a mão o largou. O feitio casa com a lesão ${doMorto}, e a vila dá o dono pelo nome: ${reu.nome}.`;
         } else if (classe === 'instrumento_faltando') {
           nova.textoDisplay = 'O Lugar Vazio';
           nova.carimboPadrao = 'Instrumento que falta no seu lugar';
@@ -1010,7 +1059,7 @@ function realizarCartas(bruto) {
         nova.carimboPadrao = `Móbil de ${reu.nome}`;
         nova.descricao = frase
           ? frase(reu, vitima)
-          : `Nos papéis ${doMorto}, o nome de ${reu.nome} aparece mais de uma vez, e em mais de uma folha.`;
+          : `Do arquivo: queixa registrada entre ${reu.nome} e ${vitima.nome}, retirada dias depois sem explicação; o papel ficou.`;
         break;
       }
       default:
