@@ -19,6 +19,7 @@ import { hashString } from '../logic/hash.js';
 import { hashDecisao } from './hash_gerador.js';
 import { ITENS_COM_AGUA } from './espaco.js';
 import { sortearPonderado, derivarAtributosCompostos, amostrarForasteiro } from './amostragem.js';
+import { SOBRENOMES } from './arquetipos.js';
 import { quantizarComportamentos } from './quantizacao.js';
 import { gerarMundo } from './mundo.js';
 import { saoAdjacentes } from './cidade.js';
@@ -319,6 +320,26 @@ export function gerarCasoBruto(seed, opts = {}) {
   const locaisElegiveis = [...new Set([localId, ...esqueleto.locaisExtras])];
   const mundo = gerarMundo(seed, { n, locaisElegiveis });
   if (pousada) mundo.elenco.push(forasteiro);
+
+  // 6.1 P20 (playtest 19/07 r2): homônimo da vítima confunde — como o
+  // elenco não modela parentesco, ninguém além dela porta o sobrenome
+  // dela (a repetição de sobrenomes entre os DEMAIS segue livre, KB §6).
+  // Roda sobre o MUNDO DEFINITIVO (o mundo-base é descartado acima) com
+  // sal próprio: só quem colide re-sorteia o sobrenome; nenhum sorteio
+  // existente se desloca (paridade preservada).
+  const sobrenomeDe = (nomeCompleto) => nomeCompleto.split(' ').pop();
+  const sobrenomeVitima = sobrenomeDe(vitima.nome);
+  for (const p of mundo.elenco) {
+    if (p.id === vitima.id || sobrenomeDe(p.nome) !== sobrenomeVitima) continue;
+    const prenome = p.nome.slice(0, p.nome.length - sobrenomeVitima.length - 1);
+    const usados = new Set(mundo.elenco.map((x) => x.nome));
+    for (let t = 0; t < 50; t++) {
+      const s = SOBRENOMES[hashDecisao(`${sal}|renome|${p.id}|${t}`) % SOBRENOMES.length];
+      if (s === sobrenomeVitima || s === prenome || usados.has(`${prenome} ${s}`)) continue;
+      p.nome = `${prenome} ${s}`;
+      break;
+    }
+  }
   const interior = mundo.interiores[localId];
   const comodoId = comodoDoCrime(interior, faixa);
 

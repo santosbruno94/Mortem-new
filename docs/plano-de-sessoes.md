@@ -49,6 +49,13 @@ de playtest (itens que se cruzam decidem-se juntos).
 - **Pronto quando:** relatório de conclusões versionado e triado (mesmo fluxo do de 19/07).
 - **Por que é gate:** o resultado decide o rumo de S1 — se os casos forem solúveis, a
   frente seguinte é diálogo; se não, a correção de solubilidade fura a fila.
+- **✅ 2ª rodada jogada (19/07/2026):** relatório triado em
+  [`docs/playtest/2026-07-19-conclusoes-procedural-r2.md`](./playtest/2026-07-19-conclusoes-procedural-r2.md).
+  Lote A da rodada fechado (inteligibilidade dos vestígios sociais: móbeis sem frase,
+  instrumento nomeado, nota/bilhete com assunto; homônimo da vítima eliminado). Ficam:
+  o **canal de compleição física** (P16+P17 — características da vítima + pegadas
+  descritas; desenhar com o fair play, junto de P9) e os itens de diálogo (P21–P24 →
+  OS de diálogo).
 - **✅ 1ª rodada jogada (19/07/2026):** relatório triado em
   [`docs/playtest/2026-07-19-conclusoes-procedural.md`](./playtest/2026-07-19-conclusoes-procedural.md).
   **Resultado central: o caso estava fácil demais porque o jogo ENTREGAVA conclusões**
@@ -72,8 +79,10 @@ de playtest (itens que se cruzam decidem-se juntos).
 - **Do playtest procedural entram:** P6 (o interrogatório fala em vez de empurrar carta;
   se ficar carta, o negrito carrega a informação — "se recolheu às oito" — e não o título
   opaco), P11 (repensar a Mesa: ficha por pessoa com resumo de conversas e provas
-  ligadas, sem spoiler) e a decisão de voz do eco de interferência pós-caso (hoje ainda
-  fala pelo legista, que deixou de existir nos casos gerados).
+  ligadas, sem spoiler), P21 (a mentira do assassino não pode ser espontânea — o beat de
+  paradeiro deve ser perguntado a todos), P22 (o confronto tem que puxar mais que o já
+  dito) e a decisão de voz do eco de interferência pós-caso (hoje ainda fala pelo
+  legista, que deixou de existir nos casos gerados).
 - **Lembrete de arquitetura:** o motor segue cego a atributos — o diálogo lê flags
   pré-computadas do pacote de caso, nunca FOR/INT/WIS/CHA.
 
@@ -93,9 +102,12 @@ detalhar antes).
   (transcrição da carta amassada do sobrinho). Itens 8 (planta única navegável) e 9
   (suspeitos saem de cena) podem ser triados aqui, mas tocam dados espaciais/elenco —
   conversar com a camada 3D antes de prometer escopo. **Do playtest procedural entram:**
-  P8 (mentira pré-rotulada — mesmo problema do item 14, agora nos dois modos) e P9
+  P8 (mentira pré-rotulada — mesmo problema do item 14, agora nos dois modos), P9
   (âncora única de autoria: a marca de poeira sozinha liga a ré — âncora dupla ou
-  contra-hipótese jogável).
+  contra-hipótese jogável), P16+P17 (canal de compleição física: vítima descrita,
+  pegadas com tamanho — desenhar sem virar entrega de suspeito único), P23 (deflexões
+  do diálogo plausíveis dentro do elenco) e P24 (variar a fôrma das mentiras — o
+  "mente mas não matou" não pode ter assinatura reconhecível).
 - **Insumos:** `docs/kb-craft-narrativo/cliches-e-fair-play.md`,
   `docs/playtest/2026-07-19-conclusoes-humanas.md`, `MORTEM_CONTEXTO.md`.
 - **Regra:** a decisão é do usuário; o agente apresenta opções cruzadas com o KB de fair

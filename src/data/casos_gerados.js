@@ -252,7 +252,7 @@ export const CASO_REPLICA = {
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Florence Cooper",
-   "descricao": "Nos papéis do morto, o nome de Florence Cooper aparece mais de uma vez, e em mais de uma folha.",
+   "descricao": "Consta o pedido de socorro de Florence Cooper, e consta a recusa; a palavra que abria ou fechava essa porta era a de Albert Hall, e atrás da recusa espera a workhouse.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -423,7 +423,7 @@ export const CASO_REPLICA = {
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Elizabeth Knight",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Elizabeth Knight: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Elizabeth Knight: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -2115,7 +2115,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Rachel Page",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Rachel Page por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Rachel Page por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -2133,7 +2133,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Rose Wright",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rose Wright: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rose Wright: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -2148,7 +2148,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Rachel Page",
    "carimboPadrao": "Móbil de Rachel Page",
-   "descricao": "Corre na vila um falatório em nome de Rachel Page; quem o repetia, de porta em porta, era Charles Harris.",
+   "descricao": "Corre na vila um falatório sobre Rachel Page: criança por vir, e o nome dela atado ao caso. Quem o repetia, de porta em porta, era Charles Harris.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -3690,7 +3690,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Herbert Thomas",
-   "descricao": "Nos papéis do morto, o nome de Herbert Thomas aparece mais de uma vez, e em mais de uma folha.",
+   "descricao": "Vales de aposta guardados por Thomas Watson, com a soma e a rubrica de Herbert Thomas. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -3720,7 +3720,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Ernest Hall",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Ernest Hall: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Ernest Hall: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -3761,7 +3761,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Ernest Hall",
    "carimboPadrao": "Móbil de Ernest Hall",
-   "descricao": "Papéis da delegacia ligam Ernest Hall ao morto.",
+   "descricao": "Vales de aposta guardados por Thomas Watson, com a soma e a rubrica de Ernest Hall. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -5257,7 +5257,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão do morto, e a vila dá o dono pelo nome: Samuel Marsh.",
+   "descricao": "No chão, onde a mão o largou: um frasco de láudano. O feitio casa com a lesão do morto. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Samuel Marsh.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -5271,7 +5271,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Samuel Marsh",
-   "descricao": "Corre na vila um falatório em nome de Samuel Marsh; quem o repetia, de porta em porta, era William Harris.",
+   "descricao": "Corre na vila um falatório sobre Samuel Marsh: criança por vir, e o nome dele atado ao caso. Quem o repetia, de porta em porta, era William Harris.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -5322,7 +5322,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Ethel Thomas",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Ethel Thomas por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Ethel Thomas por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -5340,7 +5340,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Henry Walker",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Walker: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Walker: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -6850,7 +6850,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Florence Hill",
-   "descricao": "Corre na vila um falatório em nome de Florence Hill; quem o repetia, de porta em porta, era Florence Read.",
+   "descricao": "Corre na vila um falatório sobre Florence Hill: criança por vir, e o nome dela atado ao caso. Quem o repetia, de porta em porta, era Florence Read.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -6893,7 +6893,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de George Webb",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de George Webb: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de George Webb: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -6921,7 +6921,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de George Webb",
    "carimboPadrao": "Móbil de George Webb",
-   "descricao": "Papéis da delegacia ligam George Webb à morta.",
+   "descricao": "Vales de aposta guardados por Florence Read, com a soma e a rubrica de George Webb. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -8204,7 +8204,7 @@ export const CASOS_POOL = [
  "suspeitos": [
   {
    "id": "gen_7_criada",
-   "nome": "Florence Brown",
+   "nome": "Florence Morris",
    "idade": 18,
    "relacao": "Criada; mora na Taverna",
    "descricao": "Recebe de porta aberta e adianta-se às perguntas."
@@ -8358,7 +8358,7 @@ export const CASOS_POOL = [
    "origemTestemunha": "gen_7_criada",
    "textoDisplay": "Última Vez com Vida",
    "carimboPadrao": "Vítima com vida às 01h00 de 14/out",
-   "descricao": "Florence Brown esteve com Reuben Brown às 01h00 de 14/out, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.",
+   "descricao": "Florence Morris esteve com Reuben Brown às 01h00 de 14/out, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.",
    "tagsOcultas": {
     "dominio": "temporal",
     "subDominio": "ultima_vez_visto",
@@ -8389,7 +8389,7 @@ export const CASOS_POOL = [
    "origemTestemunha": "gen_7_criada",
    "textoDisplay": "O Barulho na Vizinhança",
    "carimboPadrao": "Barulho ouvido na madrugada de 14",
-   "descricao": "Florence Brown conta o que a parede deixou passar na madrugada de 14: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "descricao": "Florence Morris conta o que a parede deixou passar na madrugada de 14: \"Pancada, e móvel no chão, e depois mais nada.\"",
    "tagsOcultas": {
     "dominio": "testemunho",
     "subDominio": "ruido_ouvido",
@@ -8435,9 +8435,9 @@ export const CASOS_POOL = [
    "id": "gen_corrobora_gen_7_criada",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Florence Brown",
-   "carimboPadrao": "Paradeiro de Florence Brown, confirmado",
-   "descricao": "A rua dá Florence Brown na Taverna madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "textoDisplay": "Quem Responde por Florence Morris",
+   "carimboPadrao": "Paradeiro de Florence Morris, confirmado",
+   "descricao": "A rua dá Florence Morris na Taverna madrugada de sábado, das oito ao clarear, por mais de uma janela.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
@@ -8453,7 +8453,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Frank Jones",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Frank Jones por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Frank Jones por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -8471,7 +8471,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Jane Webb",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Jane Webb: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Jane Webb: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -8536,7 +8536,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_7_criada",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Florence Brown",
+   "textoDisplay": "A Madrugada de Florence Morris",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
    "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -8794,8 +8794,8 @@ export const CASOS_POOL = [
   "dialogo_gen_7_criada": {
    "suspeitoId": "gen_7_criada",
    "origemLocalidade": "delegacia",
-   "chamada": "Interrogar Florence Brown",
-   "titulo": "Interrogatório — Florence Brown",
+   "chamada": "Interrogar Florence Morris",
+   "titulo": "Interrogatório — Florence Morris",
    "subtitulo": "Criada, 18 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
@@ -8816,7 +8816,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Florence Brown entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+      "Florence Morris entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
      ],
      "opcoes": [
       {
@@ -8849,13 +8849,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Florence Brown responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+      "Florence Morris responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
      ],
      "opcoes": []
     },
     "reacao_gen_ruido_ouvido": {
      "fala": [
-      "Florence Brown conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+      "Florence Morris conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e mais nada até a manhã. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
      ],
      "opcoes": []
     },
@@ -9817,7 +9817,7 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Florence Brown, Leonard Smith — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dele? Florence Morris, Leonard Smith — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
@@ -10185,7 +10185,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Louisa Jackson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Louisa Jackson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Louisa Jackson: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -10226,7 +10226,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Louisa Jackson",
    "carimboPadrao": "Móbil de Louisa Jackson",
-   "descricao": "Papéis da delegacia ligam Louisa Jackson ao morto.",
+   "descricao": "Consta o pedido de socorro de Louisa Jackson, e consta a recusa; a palavra que abria ou fechava essa porta era a de John Ward, e atrás da recusa espera a workhouse.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -11716,7 +11716,7 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_0_ferreiro",
-   "nome": "John Turner",
+   "nome": "John Ward",
    "idade": 48,
    "relacao": "Ferreiro; mora no Cottage nº 2",
    "descricao": "Cita dia e hora como quem lê de um livro de assentos."
@@ -11879,7 +11879,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de John Turner, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "descricao": "Entre os pertences de John Ward, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -11906,8 +11906,8 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
-   "carimboPadrao": "Móbil de John Turner",
-   "descricao": "O livro de fretes do morto soma o que John Turner lhe devia, adiantado do bolso e cobrado na volta.",
+   "carimboPadrao": "Móbil de John Ward",
+   "descricao": "O livro de fretes do morto soma o que John Ward lhe devia, adiantado do bolso e cobrado na volta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -11961,7 +11961,7 @@ export const CASOS_POOL = [
    "localidade": "vizinhanca",
    "textoDisplay": "Soberanos Novos",
    "carimboPadrao": "Soberanos novos em mão de fiado",
-   "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: John Turner.",
+   "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: John Ward.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_dinheiro",
@@ -12011,7 +12011,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Robert Marsh",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Robert Marsh: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Robert Marsh: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -12029,7 +12029,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de William Cooper",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de William Cooper por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de William Cooper por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -12096,7 +12096,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_0_ferreiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de John Turner",
+   "textoDisplay": "A Madrugada de John Ward",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -12538,8 +12538,8 @@ export const CASOS_POOL = [
   "dialogo_gen_0_ferreiro": {
    "suspeitoId": "gen_0_ferreiro",
    "origemLocalidade": "delegacia",
-   "chamada": "Interrogar John Turner",
-   "titulo": "Interrogatório — John Turner",
+   "chamada": "Interrogar John Ward",
+   "titulo": "Interrogatório — John Ward",
    "subtitulo": "Ferreiro, 48 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
@@ -12560,7 +12560,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "John Turner entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Serviço parado esfria. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "John Ward entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Serviço parado esfria. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -12593,13 +12593,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "John Turner responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "John Ward responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
     "reacao_gen_intf_intf_1_soberanos": {
      "fala": [
-      "John Turner não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito.\""
+      "John Ward não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito.\""
      ],
      "opcoes": []
     },
@@ -13383,7 +13383,7 @@ export const CASOS_POOL = [
    {
     "id": "quem_convive",
     "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? John Turner, Leonard Smith — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
+    "resposta": "\"Do dia a dia dele? John Ward, Leonard Smith — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
    },
    {
     "id": "desafetos",
@@ -13547,7 +13547,7 @@ export const CASOS_POOL = [
   },
   {
    "id": "gen_5_parteira",
-   "nome": "Dorcas Barnes",
+   "nome": "Dorcas Wright",
    "idade": 72,
    "relacao": "Parteira; mora no Cottage nº 5",
    "descricao": "Responde de olhos no chão, uma palavra por vez."
@@ -13710,7 +13710,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Lavado",
    "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Dorcas Barnes, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
+   "descricao": "Entre os pertences de Dorcas Wright, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -13736,8 +13736,8 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
-   "carimboPadrao": "Móbil de Dorcas Barnes",
-   "descricao": "Uma caderneta de dívidas soma o que Dorcas Barnes deve a Eleanor Barnes, vencido e cobrado por carta.",
+   "carimboPadrao": "Móbil de Dorcas Wright",
+   "descricao": "Uma caderneta de dívidas soma o que Dorcas Wright deve a Eleanor Barnes, vencido e cobrado por carta.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -13780,7 +13780,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Henry Moore",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Moore: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Moore: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -13808,7 +13808,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Henry Moore",
    "carimboPadrao": "Móbil de Henry Moore",
-   "descricao": "Papéis da delegacia ligam Henry Moore à morta.",
+   "descricao": "Vales de aposta guardados por Eleanor Barnes, com a soma e a rubrica de Henry Moore. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -13834,7 +13834,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_5_parteira",
    "localidade": "delegacia",
-   "textoDisplay": "A Noite de Dorcas Barnes",
+   "textoDisplay": "A Noite de Dorcas Wright",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
    "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Declarado na sala do expediente, diante do delegado.",
    "tagsOcultas": {
@@ -14218,8 +14218,8 @@ export const CASOS_POOL = [
   "dialogo_gen_5_parteira": {
    "suspeitoId": "gen_5_parteira",
    "origemLocalidade": "delegacia",
-   "chamada": "Interrogar Dorcas Barnes",
-   "titulo": "Interrogatório — Dorcas Barnes",
+   "chamada": "Interrogar Dorcas Wright",
+   "titulo": "Interrogatório — Dorcas Wright",
    "subtitulo": "Parteira, 72 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
@@ -14235,7 +14235,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Dorcas Barnes entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença de entrar. Respondo o que souber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
+      "Dorcas Wright entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Com licença de entrar. Respondo o que souber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
      ],
      "opcoes": [
       {
@@ -14268,7 +14268,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Dorcas Barnes responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
+      "Dorcas Wright responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado.\" E devolve a resposta no mesmo passo das outras."
      ],
      "opcoes": []
     },
@@ -15090,7 +15090,7 @@ export const CASOS_POOL = [
  "suspeitos": [
   {
    "id": "gen_4_moleiro",
-   "nome": "Joseph Mills",
+   "nome": "Joseph Gray",
    "idade": 53,
    "relacao": "Moleiro; mora no Moinho",
    "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
@@ -15263,7 +15263,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Peter Roberts.",
+   "descricao": "No chão, onde a mão o largou: uma lâmina de ofício. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Peter Roberts.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -15311,7 +15311,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Peter Roberts",
-   "descricao": "Corre na vila um falatório em nome de Peter Roberts; quem o repetia, de porta em porta, era Fanny Mills.",
+   "descricao": "Corre na vila um falatório sobre Peter Roberts: criança por vir, e o nome dele atado ao caso. Quem o repetia, de porta em porta, era Fanny Mills.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -15369,9 +15369,9 @@ export const CASOS_POOL = [
    "id": "gen_corrobora_gen_4_moleiro",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Joseph Mills",
-   "carimboPadrao": "Paradeiro de Joseph Mills, confirmado",
-   "descricao": "A rua dá Joseph Mills no Moinho madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "textoDisplay": "Quem Responde por Joseph Gray",
+   "carimboPadrao": "Paradeiro de Joseph Gray, confirmado",
+   "descricao": "A rua dá Joseph Gray no Moinho madrugada de sábado, das oito ao clarear, por mais de uma janela.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "corroboracao",
@@ -15387,7 +15387,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Sarah Ward",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Sarah Ward por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Sarah Ward por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -15405,7 +15405,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Susan Wilson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Susan Wilson: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Susan Wilson: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -15433,7 +15433,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Sarah Ward",
    "carimboPadrao": "Móbil de Sarah Ward",
-   "descricao": "Papéis da delegacia ligam Sarah Ward à morta.",
+   "descricao": "Consta o pedido de socorro de Sarah Ward, e consta a recusa; a palavra que abria ou fechava essa porta era a de Fanny Mills, e atrás da recusa espera a workhouse.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -15444,7 +15444,7 @@ export const CASOS_POOL = [
   {
    "id": "gen_alibi_gen_4_moleiro",
    "localidade": "delegacia",
-   "textoDisplay": "A Madrugada de Joseph Mills",
+   "textoDisplay": "A Madrugada de Joseph Gray",
    "carimboPadrao": "Paradeiro declarado: O Moinho (madrugada de sábado)",
    "descricao": "\"Recolhi-me ao Moinho às oito e não tornei a sair antes de clarear.\" Tomado por termo na delegacia, pela mão do guarda.",
    "tagsOcultas": {
@@ -15657,8 +15657,8 @@ export const CASOS_POOL = [
   "dialogo_gen_4_moleiro": {
    "suspeitoId": "gen_4_moleiro",
    "origemLocalidade": "delegacia",
-   "chamada": "Interrogar Joseph Mills",
-   "titulo": "Interrogatório — Joseph Mills",
+   "chamada": "Interrogar Joseph Gray",
+   "titulo": "Interrogatório — Joseph Gray",
    "subtitulo": "Moleiro, 53 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
@@ -15667,7 +15667,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Joseph Mills entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Joseph Gray entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -17043,7 +17043,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Grace Moore",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Grace Moore: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Grace Moore: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -17061,7 +17061,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Leonard Ward",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Leonard Ward por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Leonard Ward por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -18648,7 +18648,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Edith Walker.",
+   "descricao": "No chão, onde a mão o largou: uma peça pesada, de ocasião. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Edith Walker.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -18696,7 +18696,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Edith Walker",
-   "descricao": "Nos papéis da morta, o nome de Edith Walker aparece mais de uma vez, e em mais de uma folha.",
+   "descricao": "Consta o pedido de socorro de Edith Walker, e consta a recusa; a palavra que abria ou fechava essa porta era a de Annie Morris, e atrás da recusa espera a workhouse.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -18739,7 +18739,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Harold Walker",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Harold Walker: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Harold Walker: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -18767,7 +18767,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Harold Walker",
    "carimboPadrao": "Móbil de Harold Walker",
-   "descricao": "Papéis da delegacia ligam Harold Walker à morta.",
+   "descricao": "Vales de aposta guardados por Annie Morris, com a soma e a rubrica de Harold Walker. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -20381,7 +20381,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Florence Roberts",
-   "descricao": "Nos papéis do morto, o nome de Florence Roberts aparece mais de uma vez, e em mais de uma folha.",
+   "descricao": "Consta o pedido de socorro de Florence Roberts, e consta a recusa; a palavra que abria ou fechava essa porta era a de William Mills, e atrás da recusa espera a workhouse.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -20462,7 +20462,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Eva Ellis",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Eva Ellis: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Eva Ellis: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -20493,7 +20493,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Harry Webb",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Harry Webb por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Harry Webb por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -20521,7 +20521,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Harry Webb",
    "carimboPadrao": "Móbil de Harry Webb",
-   "descricao": "Corre na vila um falatório em nome de Harry Webb; quem o repetia, de porta em porta, era William Mills.",
+   "descricao": "Corre na vila um falatório sobre Harry Webb: criança por vir, e o nome dele atado ao caso. Quem o repetia, de porta em porta, era William Mills.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -22166,7 +22166,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Os Papéis do Móbil",
    "carimboPadrao": "Móbil de Dora Saunders",
-   "descricao": "Nos papéis da morta, o nome de Dora Saunders aparece mais de uma vez, e em mais de uma folha.",
+   "descricao": "Os papéis do banco põem a soma em nome de Mary Ellis, e só dela por lei; a Dora Saunders a lei não dá alcance enquanto ela viver.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -22183,7 +22183,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Annie Knight",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Knight: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Knight: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -23772,7 +23772,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Elizabeth Wilson",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Elizabeth Wilson por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Elizabeth Wilson por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -23803,7 +23803,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Percy Andrews",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Percy Andrews: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Percy Andrews: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -25404,7 +25404,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Helen Evans",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Helen Evans: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Helen Evans: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -25432,7 +25432,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Helen Evans",
    "carimboPadrao": "Móbil de Helen Evans",
-   "descricao": "Corre na vila um falatório em nome de Helen Evans; quem o repetia, de porta em porta, era Harry Andrews.",
+   "descricao": "Corre na vila um falatório sobre Helen Evans: criança por vir, e o nome dela atado ao caso. Quem o repetia, de porta em porta, era Harry Andrews.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -26984,7 +26984,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Abigail Andrews",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Abigail Andrews: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Abigail Andrews: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -27028,7 +27028,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Richard Morris",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Richard Morris por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de Richard Morris por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -27043,7 +27043,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de Richard Morris",
    "carimboPadrao": "Móbil de Richard Morris",
-   "descricao": "Papéis da delegacia ligam Richard Morris ao morto.",
+   "descricao": "Vales de aposta guardados por Herbert Jones, com a soma e a rubrica de Richard Morris. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -28681,7 +28681,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de John Jones",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de John Jones: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de John Jones: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -28709,7 +28709,7 @@ export const CASOS_POOL = [
    "suporteFisico": "registro",
    "textoDisplay": "Papéis de John Jones",
    "carimboPadrao": "Móbil de John Jones",
-   "descricao": "Papéis da delegacia ligam John Jones ao morto.",
+   "descricao": "Consta o pedido de socorro de John Jones, e consta a recusa; a palavra que abria ou fechava essa porta era a de George Wilson, e atrás da recusa espera a workhouse.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "motivo",
@@ -30347,7 +30347,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "Ficou no chão, onde a mão o largou. O feitio casa com a lesão da morta, e a vila dá o dono pelo nome: Kate Harris.",
+   "descricao": "No chão, onde a mão o largou: um pano de abafo. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Kate Harris.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -30404,7 +30404,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de James Robinson",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de James Robinson por extenso. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Meia folha pautada com soma, prazo e o nome de James Robinson por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -30422,7 +30422,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Minnie Hill",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Minnie Hill: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Minnie Hill: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -31962,7 +31962,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Annie Wood",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Wood: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Wood: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -33619,7 +33619,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Matthew Mills",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Matthew Mills: um pedido, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Matthew Mills: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
