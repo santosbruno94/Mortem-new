@@ -530,7 +530,7 @@ async function main() {
     await page.getByRole('button', { name: 'Fechar o caderno' }).click();
     // Onda 1: fechar o caderno apaga o save — a página recarregada cai no
     // convite limpo, nunca no gate de retomada.
-    await page.waitForSelector('text=Quem atende ao chamado?', { timeout: 15000 });
+    await page.waitForSelector('text=O perito que atende ao chamado.', { timeout: 15000 });
     checar('Onda 1: fechar o caderno limpa o save (convite limpo)', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 0);
     await espera(page, 400);
 

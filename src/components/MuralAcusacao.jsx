@@ -1151,26 +1151,36 @@ function SeletorJanela({ acusacao, definirJanela }) {
   const opcoes = [];
   for (let h = HORA_MIN_JANELA; h <= HORA_MAX_JANELA; h++) opcoes.push(h);
   const classe = 'campo-vitoriano text-xs';
-  const linha = (rotulo, bound) => (
-    <div className="flex items-center gap-1">
-      <span className="text-stone-400 text-[10px] w-10">{rotulo}</span>
-      <select
-        className={classe}
-        value={acusacao.janela[bound] != null ? String(acusacao.janela[bound]) : ''}
-        onChange={(e) => {
-          if (e.target.value === '') return;
-          definirJanela({ [bound]: Number(e.target.value) });
-        }}
-      >
-        <option value="">— escolher —</option>
-        {opcoes.map((h) => (
-          <option key={h} value={h}>
-            {rotuloHoraAbs(h)}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
+  const inicio = acusacao.janela.inicio;
+  const linha = (rotulo, bound) => {
+    // QOL: a hora-fim nunca vem antes da início — as horas inválidas somem do
+    // seletor de Fim (rola direto para depois do início). Só camada de UI.
+    const opcoesLinha = bound === 'fim' && inicio != null ? opcoes.filter((h) => h >= inicio) : opcoes;
+    return (
+      <div className="flex items-center gap-1">
+        <span className="text-stone-400 text-[10px] w-10">{rotulo}</span>
+        <select
+          className={classe}
+          value={acusacao.janela[bound] != null ? String(acusacao.janela[bound]) : ''}
+          onChange={(e) => {
+            if (e.target.value === '') return;
+            const v = Number(e.target.value);
+            // Mover a início para frente do fim já escolhido invalida-o: refazê-lo.
+            if (bound === 'inicio' && acusacao.janela.fim != null && acusacao.janela.fim < v)
+              definirJanela({ inicio: v, fim: null });
+            else definirJanela({ [bound]: v });
+          }}
+        >
+          <option value="">— escolher —</option>
+          {opcoesLinha.map((h) => (
+            <option key={h} value={h}>
+              {rotuloHoraAbs(h)}
+            </option>
+          ))}
+        </select>
+      </div>
+    );
+  };
   return (
     <div className="space-y-1">
       {linha('Início', 'inicio')}
