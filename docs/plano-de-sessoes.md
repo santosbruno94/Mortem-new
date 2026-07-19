@@ -7,7 +7,9 @@ do playtest humano de 19/07/2026.
 ## Papel deste documento
 
 Este é o **plano de rota entre sessões**: diz *em que ordem* atacar o que falta, *com que
-escopo* por sessão, *quais insumos* carregar e *qual o critério de pronto*. O inventário
+escopo* por sessão, *quais insumos* carregar e *qual o critério de pronto*. O plano de
+ação detalhado (passo a passo por sessão, decisões pendentes do usuário) está em
+[`relatorio-2026-07-19-proximos-passos.md`](./relatorio-2026-07-19-proximos-passos.md). O inventário
 item a item do que falta continua sendo `docs/pendencias-status.md` — este documento não o
 duplica; referencia. A numeração dos itens (§1.2, item 12 etc.) é a daquele mapa e do
 relatório de playtest `docs/playtest/2026-07-19-conclusoes-humanas.md`.
