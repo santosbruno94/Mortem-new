@@ -276,4 +276,25 @@ nelas e não as decide.
 Menores (posso decidir com sua anuência): endurecer no `qa.mjs` a guarda de "abertura não
 vaza paradeiro" (P21); guarda de sustentação da 2ª camada (P22-A).
 
+---
+
+## 9. Decisões tomadas e execução (19/07/2026)
+
+Sessão executada; detalhe e razões em `historico-decisoes.md` ("S1 — Fair play do diálogo").
+Resumo de uma linha por item:
+
+| Item | Decisão | Estado |
+|---|---|---|
+| P21 — paradeiro universal | (já satisfeito) | ✅ verificado, sem código |
+| P6 — rótulo da carta | **Lugar + faixa** (A) | ✅ Fase 1 commitada |
+| P22 — 2ª camada | **Detalhe verificável** (A), em todos os confrontos | ✅ Fase 2 commitada (pipeline: 1 bloqueante + 2 altos corrigidos) |
+| P23 — deflexão | **Só a guarda de sustentação** (3b = B); fontes `vitima.forasteiro` + `ausencias` (3a) | ✅ Fase 3 commitada (bifurca 7/14) |
+
+**Pendências abertas por esta OS** (com gatilho): P23-**preconceito de inocente** (falso
+testemunho xenófobo retratável — feature nova, só sob ordem do usuário); a guarda menor
+`qa.mjs` "abertura não vaza paradeiro" (não feita; vale por construção hoje).
+
+**Verificação de fechamento:** `npm run gerar:casos` regenerado; `node scripts/qa.mjs` →
+CASO VÁLIDO; `node scripts/qa-ui.mjs` → UI VÁLIDA; `npm run build` limpo.
+
 — fim da OS S1 —

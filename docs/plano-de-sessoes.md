@@ -93,6 +93,17 @@ detalhar antes).
 
 - **Pronto quando (ambos):** `qa.mjs` e `qa-ui.mjs` verdes; se prosa mudou, pipeline
   `revisar-prosa` com zero achados bloqueantes.
+- **◐ Parcial (19/07/2026) — lote de fair play do Bloco C concluído** (OS
+  `os-dialogo-s1-fair-play.md`, ata em `historico-decisoes.md` "S1 — Fair play do diálogo"):
+  P21 (paradeiro universal) verificado como já satisfeito; **P6** (rótulo da carta de álibi
+  informativo: lugar + faixa); **P22** (2ª camada de detalhe verificável em todos os
+  confrontos — o réu aponta o paradeiro declarado, sem confessar; a testemunha dá um detalhe
+  de percepção); **P23** (guarda de sustentação da deflexão "veio de fora" — só sai com
+  forasteiro plausível; senão o réu não deflete). Três fases, um commit cada, pipeline de
+  prosa com zero bloqueantes; `qa`/`qa-ui`/build verdes. **Segue pendente do Ramo A:** o
+  consumo das flags psíquicas e pools de encenação, P11 (repensar a Mesa), o eco de
+  interferência pós-caso, e a metade "preconceito de inocente" do P23 (fase própria, só sob
+  ordem).
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 
