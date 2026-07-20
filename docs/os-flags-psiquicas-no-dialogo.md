@@ -250,10 +250,84 @@ store, nunca vira carta). É camada de apresentação + gerador + QA, não o mot
   #2 mantida como a única antítese sancionada). `qa.mjs` `CASO VÁLIDO`, `lint-prosa` limpo,
   `qa-ui.mjs` `UI VÁLIDA`, build limpo, casos re-gerados.
 
-### Fases 2–3 (projeção/decoro; par calma) — pendentes
+### Fase 2 — projeção e decoro (executada)
 
-Aguardam ordem do usuário. A mesma disciplina: tento discreto, paridade de têmpera, pipeline,
-re-geração, playtest de tell.
+Decisões do usuário: **Fase 2** primeiro (ordem §6); a projeção do `acusa_com_fervor` **aponta um
+nome do elenco**; o `omite_por_decoro` encosta na **evasiva + b2 oblíquo**. Dose = tento discreto
+(§9). Só camada narrativa: o motor segue cego (lê `tagsOcultas` + seed).
+
+- **Gerador** (`dialogos_gerados.js`): as duas flags, hoje compiladas só em **não-assassino** e
+  lidas por boca nenhuma, passam a **colorir beats que já existem** (nenhum nó novo):
+  - `acusa_com_fervor` → **b2 firme**: `projecaoFervor(alvo, grupo, fem)` — o inocente ativo
+    projeta e **nomeia outro inocente** com fervor (víscera, nunca dedução boa). O **alvo é
+    escolhido no derivador excluindo o réu** (`x.id !== crime.assassinoId`, `hashString` salgado):
+    apontar o culpado "resolveria" o caso (Knox nº6). A fala jamais cita janela/causa/nexo.
+  - `omite_por_decoro` → **evasiva** (`DECORO_EVASIVA_SUFIXO`) **+ b2 oblíquo** (`OBLIQUO_DECORO`,
+    por macrogrupo): recusa por pudor, nunca por culpa; jamais esconde matéria.
+  - **Paridade anti-tell:** o que muda é a **cor** (projeção, pudor), nunca o conteúdo probatório;
+    o **não-apontar** segue partilhado por réu, testemunha e periférico sem flag — o réu não é
+    separável por aqui.
+- **QA** (`qa.mjs`): **fair play fiscalizado no pacote** — nas árvores dos **outros** suspeitos, o
+  **nome do réu não aparece em fala nenhuma** (a projeção jamais acusa o culpado; a árvore do
+  próprio réu é excluída, pois lá o nome dele consta das rubricas de reação). Telemetria atualizada
+  (deixa de dizer "0 lidas": gatilho + fervor + decoro têm boca; Fase 3 pendente). Verificação
+  end-to-end no lote embarcado: **14 projeções, 0 violações**; todo alvo é inocente.
+- **Motor intocado:** nenhuma flag entra em `src/data`; b2 não carrega marcador `[[carta]]`; o
+  veredicto não muda. **`qa-ui.mjs` não muda de contrato** (a projeção/decoro colorem beats já
+  renderizados, sem novo seletor).
+- **Pipeline `revisar-prosa`** (três revisores, mandato do `CLAUDE.md`) — **zero bloqueantes**:
+  **perito-forense** aprovou (biografia ≠ caso confirmada nas seis falas; zero anacronismo;
+  aplicada a sugestão menor `de porta adentro` → `portas adentro`); **fiscal-continuidade** sem
+  bloqueantes (concordância de gênero, integridade de marcadores e colocação pronominal limpas) com
+  1 achado MÉDIA — tratamento `o senhor` hardcoded nas variantes `oficio`/`chao` da projeção —
+  **corrigido** para `{detective.treatment}` (uniformidade intra-personagem, sem viés de gênero);
+  **editor-crítico** aprovou sem bloqueante nem Alto, com dois menores aplicados (registro do `chao`
+  rebaixado à classe e clareza do `oficio`, o que de quebra desfez o trio de fechos-máxima). `qa.mjs`
+  `CASO VÁLIDO`, `lint-prosa` limpo, build limpo, casos re-gerados.
+
+### Fase 3 — o par calma/tensão + `defende_demais_o_morto` (executada)
+
+Decisões do usuário: **têmpera = postura B** (modula o tento de trait, não abre eixo novo);
+**`defende_demais` realizado agora**; **gate = guarda mecânica + playtest de tell dirigido**. Só
+camada narrativa; motor cego.
+
+- **Gerador** (`dialogos_gerados.js`):
+  - **têmpera da mentira no b1** — `TENTO_RESSONANTE` virou `[trait][temperamento]`
+    (`neutro`/`calmo`/`tenso`); a têmpera psíquica **modula** o tento de trait (postura B):
+    `mente_com_calma`/`_periferica` ⇒ `calmo` (a entrega assenta), `mente_sob_pressao` ⇒ `tenso`
+    (vacila, repete), senão `neutro` (o texto de sempre). Rende **só no tom ressonante** (esparso
+    de propósito: não vira um eixo de têmpera legível para todo o elenco). **Seleção cega ao
+    papel** (paridade §3): a variante depende só de `(trait, têmpera)`, nunca de `papel`.
+  - **`defende_demais_o_morto` no b2 cordial** — `cordialDefende` reescreve o cordial com
+    afeto+defensividade pelo morto.
+- **Achado da telemetria que reenquadrou o defende:** o `defende_demais` é **inocente-only** no
+  gerador (réu **0/200** — o vetor de vínculo nunca recai no assassino). Logo a "presença cruzada"
+  prevista é estruturalmente impossível; o defende é um **reverse-tell como o `acusa_com_fervor`**
+  ("quem super-defende é inocente"), mitigado porque **não-super-defender** é o partilhado (réu +
+  maioria dos inocentes). A guarda foi ajustada a isso.
+- **QA** (`qa.mjs`): guarda de **anti-tell das têmperas** — o **par calma/tensão** com presença
+  cruzada (calma no réu **e** no inocente; tensão no réu **e** na isca) e o **defende inocente-only**
+  (réu nunca super-defende). Telemetria com split de `defende` por papel. Verificação end-to-end:
+  têmpera b1 realizada (calmo/tenso), `defende` realizado **e nunca no réu**.
+- **O gate humano (decisão do usuário):** a paridade **perceptual** — indistinguir a calma do réu
+  da do inocente na leitura, e medir se a têmpera aponta o culpado — não é mensurável por máquina.
+  Protocolo dirigido em [`docs/playtest/protocolo-tell-fase3.md`](./playtest/protocolo-tell-fase3.md).
+  **A Fase 3 só se dá por fechada quando esse playtest passar** (o merge aguarda o usuário).
+- **Motor intocado; contrato do `qa-ui` inalterado.** Pipeline `revisar-prosa` com **zero
+  bloqueantes**: **perito-forense** aprovou (época e fair play mantidos; nenhuma variante toca
+  janela/causa/nexo; paridade verificada no código); **fiscal-continuidade** achou 1 MÉDIA
+  (concordância de gênero: "Posto contra a parede" na boca da lavadeira, defeito pré-existente que
+  a fase amplificou) — **corrigido** para "Contra a parede" nas três variantes; **editor-crítico**
+  aprovou sem bloqueante, com 1 ALTO obrigatório (`cordialDefende` cego ao grupo — o vínculo alcança
+  classe alta e recebia registro plebeu, §8.4) **corrigido** com variante `alto`, e 3 menores
+  aplicados (codas interpretativas "custa a assentar"/"mais assentado" e o eco de "inteiro"/"assenta"
+  que fazia o tagarela-calmo soar medroso). `qa.mjs` `CASO VÁLIDO`, `qa-ui.mjs` `UI VÁLIDA`,
+  `lint-prosa` limpo, build limpo, casos re-gerados.
+
+### Fase 3 — pendente só o gate humano
+
+O código, as guardas e a prosa estão prontos e verdes; resta **o playtest de tell dirigido**
+(§ acima), que é ação do usuário, antes de considerar a Fase 3 fechada e mergeável.
 
 ---
 

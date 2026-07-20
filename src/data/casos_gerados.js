@@ -853,7 +853,7 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]. No meio do rodeio, a fala desacelera e a mão fica no colo, e a volta que ele sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -978,7 +978,7 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Philip Jones. Por quê, não sei dizer; sei, e chega.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -1202,7 +1202,7 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Albert Hall? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Albert Hall? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -1449,7 +1449,7 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -1534,7 +1534,7 @@ export const CASO_REPLICA = {
     },
     "evasiva": {
      "fala": [
-      "Corre os olhos pelo que se lhe mostra e o devolve. \"Fora do meu ofício, não arrisco palavra. Pergunte do que é meu.\""
+      "Corre os olhos pelo que se lhe mostra e o devolve. \"Fora do meu ofício, não arrisco palavra. Pergunte do que é meu.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -1639,7 +1639,7 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_medico]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_medico]]. No meio do rodeio, a fala desacelera e a mão fica no colo, e a volta que ele sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -1666,7 +1666,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz o que sempre disse, e desta casa não sai eco. O mais que sei portas adentro, a boa educação manda guardar.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -2477,7 +2477,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
      ],
      "opcoes": [
       {
@@ -2504,7 +2504,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Charles Harris eu não conhecia.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Rachel Page. Por quê, não sei dizer; sei, e chega.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -3288,7 +3288,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Charles Harris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Charles Harris? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -4138,7 +4138,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Ernest Hall. Por quê, não sei dizer; sei, e chega.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -4474,7 +4474,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -4606,7 +4606,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -4876,7 +4876,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Thomas Watson tinha desafeto, não foi freguês meu.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Nome {detective.treatment} quer, nome eu dou: Ernest Hall. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
@@ -5892,7 +5892,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de William Harris eu não conhecia.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: James Jones. Por quê, não sei dizer; sei, e chega.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -6536,7 +6536,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -7251,7 +7251,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -7356,7 +7356,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a fala desacelera e a mão fica no colo, e a volta que ele sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -7383,7 +7383,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -7468,7 +7468,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_criada]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
      ],
      "opcoes": [
       {
@@ -7692,7 +7692,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_7_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_7_criada]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -7817,7 +7817,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -9106,7 +9106,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
+      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -9178,13 +9178,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Reuben Brown? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Reuben Brown? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -9244,7 +9244,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
@@ -9512,7 +9512,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_ferreiro]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -10788,7 +10788,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_carroceiro]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_carroceiro]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -11127,7 +11127,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de John Ward eu não conhecia.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Peter Gray. Por quê, não sei dizer; sei, e chega.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -11483,7 +11483,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de John Ward eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Peter Gray. Por quê, não sei dizer; sei, e chega.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -12499,7 +12499,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -12637,7 +12637,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -12779,7 +12779,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_ferreiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_ferreiro]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -12892,7 +12892,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -12904,7 +12904,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_ferreiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_ferreiro]]. Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -13030,7 +13030,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     }
@@ -13194,7 +13194,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavrador]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavrador]]. No meio do rodeio, a fala desacelera e a mão fica no colo, e a volta que ele sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -13274,7 +13274,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -13412,7 +13412,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -14251,7 +14251,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Eleanor Barnes? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Eleanor Barnes? Não me fale dela no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -14554,7 +14554,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -14686,7 +14686,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -15802,7 +15802,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
+      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -15934,7 +15934,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     }
@@ -16104,7 +16104,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_paroco]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_paroco]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -16190,7 +16190,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -16328,7 +16328,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -16381,7 +16381,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
+      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -16519,7 +16519,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Prende o xale e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Prende o xale e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     }
@@ -16578,7 +16578,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -16656,7 +16656,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -16716,7 +16716,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -17756,7 +17756,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -17888,7 +17888,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     }
@@ -18132,7 +18132,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
+      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -18270,7 +18270,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -18329,7 +18329,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -18467,7 +18467,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -19239,7 +19239,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -19317,7 +19317,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -19377,7 +19377,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -19495,7 +19495,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Annie Morris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
+      "\"Annie Morris? Não me fale dela no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer."
      ],
      "opcoes": []
     },
@@ -19665,7 +19665,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_criada]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
      ],
      "opcoes": [
       {
@@ -21040,7 +21040,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se William Mills tinha desafeto, não foi freguês meu.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome {detective.treatment} quer, nome eu dou: Harry Webb. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -21303,7 +21303,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -21395,7 +21395,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_carroceiro]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_carroceiro]]. Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -21777,7 +21777,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -21804,7 +21804,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Fred Jackson. Por quê, não sei dizer; sei, e chega.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -21837,7 +21837,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Mills era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"William Mills? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -22908,7 +22908,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -23046,7 +23046,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -23210,7 +23210,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -23283,13 +23283,13 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_1_lavadeira]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_1_lavadeira]]. Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -23415,7 +23415,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -23461,7 +23461,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -23593,7 +23593,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     }
@@ -24565,7 +24565,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
      ],
      "opcoes": [
       {
@@ -24762,7 +24762,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ezra Taylor eu não conhecia.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Percy Andrews. Por quê, não sei dizer; sei, e chega.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -25977,7 +25977,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_lavrador]]. Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -26182,7 +26182,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Harry Andrews tinha desafeto, não foi freguês meu.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Nome {detective.treatment} quer, nome eu dou: Helen Evans. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
@@ -26555,7 +26555,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -27866,7 +27866,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavadeira]]. No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -27951,7 +27951,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]. Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -29306,7 +29306,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -29438,7 +29438,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -29550,7 +29550,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"George Wilson? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"George Wilson? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -29669,7 +29669,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
+      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -29807,7 +29807,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     }
@@ -29872,7 +29872,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
      ],
      "opcoes": [
       {
@@ -30074,7 +30074,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_lavrador]]. Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -31063,13 +31063,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Florence Jones? Não me fale dela no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_criada]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -31742,7 +31742,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -31880,7 +31880,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     }
@@ -32657,7 +32657,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Jane Wright eu não conhecia.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Harold Moore. Por quê, não sei dizer; sei, e chega.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -33203,7 +33203,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Jane Wright eu não conhecia.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Ethel Turner. Por quê, não sei dizer; sei, e chega.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -33439,7 +33439,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -34413,7 +34413,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se John Knight tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome {detective.treatment} quer, nome eu dou: Matthew Mills. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -34446,7 +34446,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Knight? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"John Knight? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -34558,7 +34558,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
+      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -34690,7 +34690,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     }
@@ -34743,7 +34743,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Examina o que se lhe apresenta e o devolve com as duas mãos. \"Disso não sei dar testemunho. Pergunte do rebanho, que do rebanho respondo.\""
+      "Examina o que se lhe apresenta e o devolve com as duas mãos. \"Disso não sei dar testemunho. Pergunte do rebanho, que do rebanho respondo.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -34815,7 +34815,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Knight? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"John Knight? Rogo-lhe que não fale dele no pretérito ainda. Índole melhor não conheceu esta vila, e quem o contestar que o sustente na minha presença. A falta que nos faz não há medida nesta terra que a alcance.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     },
@@ -34881,7 +34881,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"A vila diz o que sempre disse, e desta casa não sai eco. O mais que sei portas adentro, a boa educação manda guardar.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\""
      ],
      "opcoes": []
     }
@@ -34927,7 +34927,7 @@ export const CASOS_POOL = [
     },
     "evasiva": {
      "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
      ],
      "opcoes": []
     },
@@ -35059,7 +35059,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }

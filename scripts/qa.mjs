@@ -2567,6 +2567,28 @@ function problemasDosDialogosGerados(pacote) {
   if (comGatilho === 1) {
     problemas.push(`gatilho solitário (${comGatilho}): o portão dos ≥2 falhou — viraria tell`);
   }
+  // Fase 2 — fair play da projeção (acusa_com_fervor): a projeção do b2 firme
+  // nomeia sempre um INOCENTE, NUNCA o réu (apontá-lo "resolveria" o caso —
+  // Knox nº6). O derivador escolhe o alvo excluindo o assassino; aqui é
+  // FISCALIZADO no pacote embarcado. Nas árvores dos OUTROS suspeitos, a única
+  // fala que nomeia um suspeito é a projeção (as demais citam a vítima ou a si
+  // mesmo em 3ª pessoa); logo o nome do réu ausente delas prova que ninguém o
+  // acusa. A árvore do PRÓPRIO réu é excluída — lá o nome dele consta das
+  // rubricas de reação, sem quebra de fair play.
+  const reuId = pacote.verdadeDeOuro?.reuCorreto;
+  const reuNome = (pacote.suspeitos || []).find((s) => s.id === reuId)?.nome;
+  if (reuNome) {
+    for (const [id, d] of Object.entries(dialogos)) {
+      if (d.suspeitoId === reuId) continue;
+      for (const no of Object.values(d.nos || {})) {
+        for (const f of no.fala || []) {
+          if (f.includes(reuNome)) {
+            problemas.push(`${id}: nome do réu em fala de outro suspeito — a projeção acusaria o culpado ("${f.slice(0, 40)}…")`);
+          }
+        }
+      }
+    }
+  }
   return problemas;
 }
 
@@ -3101,20 +3123,22 @@ let g6RegimesOk = true;
 }
 
 // ============================================================
-// TELEMETRIA — flags psíquicas no diálogo (Fase 0 da OS
-// `docs/os-flags-psiquicas-no-dialogo.md`, S1 Ramo A). RISCO ZERO: só
-// LÊ o lote e reporta — não toca o gerador, não muda byte de pacote, não
-// gateia CASO VÁLIDO. Mede quanto de cada flag o gerador já compila e
-// que hoje NENHUMA boca lê (o derivador dialogos_gerados.js é cego às
-// flags), para calibrar a dosagem das fases seguintes com número real —
-// mesmo padrão da Fase 0 de telemetria do P9 (PR #73). As flags vivem em
-// `bruto.psique.consequencias.porPessoa[id].flags` (build time; fora do
-// pacote), disponíveis ao derivador via o `bruto` que ele já recebe.
+// TELEMETRIA + GUARDA DE PARIDADE — flags psíquicas no diálogo (OS
+// `docs/os-flags-psiquicas-no-dialogo.md`, S1 Ramo A). Mede quanto de cada
+// flag o gerador compila e quais já ganharam boca (Fase 1: gatilho_de_complexo;
+// Fase 2: acusa_com_fervor + omite_por_decoro; Fase 3: têmpera calma/tensão que
+// modula o tento de trait no b1 + defende_demais_o_morto no b2 cordial). A
+// telemetria é leitura pura; a GUARDA (fase3ParidadeOk) exige presença cruzada
+// de cada têmpera nos dois papéis — nenhuma pode ser assinatura de papel. As
+// flags vivem em `bruto.psique.consequencias.porPessoa[id].flags` (build time;
+// fora do pacote), disponíveis ao derivador via o `bruto` que ele já recebe.
 // ============================================================
+let fase3ParidadeOk = true;
 {
   const conta = {
     reuCalma: 0, reuTensao: 0, inocenteCalmaPeriferica: 0,
     acusaComFervor: 0, omitePorDecoro: 0, defendeDemaisOMorto: 0,
+    defendeReu: 0, defendeInocente: 0,
     iscaMenteSobPressao: 0, gatilhoReu: 0, gatilhoInocente: 0,
     pessoas: 0, flagsTotais: 0, casosComGatilhoInocente: 0,
   };
@@ -3131,8 +3155,10 @@ let g6RegimesOk = true;
         else if (f.startsWith('mente_com_calma_periferica:')) conta.inocenteCalmaPeriferica++;
         else if (f === 'acusa_com_fervor') conta.acusaComFervor++;
         else if (f === 'omite_por_decoro') conta.omitePorDecoro++;
-        else if (f === 'defende_demais_o_morto') conta.defendeDemaisOMorto++;
-        else if (f.startsWith('gatilho_de_complexo:')) {
+        else if (f === 'defende_demais_o_morto') {
+          conta.defendeDemaisOMorto++;
+          ehReu ? conta.defendeReu++ : conta.defendeInocente++;
+        } else if (f.startsWith('gatilho_de_complexo:')) {
           if (ehReu) conta.gatilhoReu++;
           else { conta.gatilhoInocente++; gatilhoInocenteNesteCaso++; }
         }
@@ -3143,12 +3169,26 @@ let g6RegimesOk = true;
   const nCasos = loteF2.length;
   const calmaTotal = conta.reuCalma + conta.inocenteCalmaPeriferica;
   const fracInocenteCalma = calmaTotal > 0 ? (100 * conta.inocenteCalmaPeriferica / calmaTotal) : 0;
-  console.log(`\nTELEMETRIA — flags psíquicas no diálogo (Fase 0; lote de ${nCasos} casos; hoje SEM boca no diálogo):`);
+  // Fase 3 — o anti-tell das têmperas. Para o PAR calma/tensão, a garantia é a
+  // presença cruzada (paridade §3): calma no réu E no inocente; tensão no réu E
+  // na isca — nenhuma é assinatura de papel. Para defende_demais_o_morto, a
+  // telemetria mostra que o RÉU nunca o porta (vetor de vínculo não recai no
+  // assassino): é inocente-only, um REVERSE-TELL como o acusa_com_fervor ("quem
+  // super-defende é inocente"), mitigado porque NÃO-super-defender é o partilhado
+  // (réu + maioria dos inocentes). Logo a guarda exige o par cruzado e o defende
+  // realizado (não cruzado). A paridade PERCEPTUAL do par (indistinguir calma de
+  // réu e de inocente na leitura) é o que o playtest de tell dirigido fecha.
+  fase3ParidadeOk =
+    conta.reuCalma > 0 && conta.inocenteCalmaPeriferica > 0 &&
+    conta.reuTensao > 0 && conta.iscaMenteSobPressao > 0 &&
+    conta.defendeReu === 0 && conta.defendeInocente > 0;
+  console.log(`\nTELEMETRIA — flags psíquicas no diálogo (lote de ${nCasos} casos; bocas: Fase 1+2+3 lidas):`);
   console.log(`  réu mente_com_calma: ${conta.reuCalma}  ×  réu mente_sob_pressao: ${conta.reuTensao}`);
   console.log(`  inocente mente_com_calma_periferica: ${conta.inocenteCalmaPeriferica}  (paridade do tell calmo: ${fracInocenteCalma.toFixed(1)}% dos calmos são inocentes)`);
-  console.log(`  acusa_com_fervor: ${conta.acusaComFervor}  |  omite_por_decoro: ${conta.omitePorDecoro}  |  defende_demais_o_morto: ${conta.defendeDemaisOMorto}  |  isca mente_sob_pressao: ${conta.iscaMenteSobPressao}`);
+  console.log(`  acusa_com_fervor: ${conta.acusaComFervor}  |  omite_por_decoro: ${conta.omitePorDecoro}  |  isca mente_sob_pressao: ${conta.iscaMenteSobPressao}`);
+  console.log(`  defende_demais_o_morto — réu: ${conta.defendeReu}  |  inocente: ${conta.defendeInocente}  (inocente-only ⇒ reverse-tell, como o fervor)`);
   console.log(`  gatilho_de_complexo — réu: ${conta.gatilhoReu}  |  inocente: ${conta.gatilhoInocente}  (${conta.casosComGatilhoInocente}/${nCasos} casos têm ≥1 gatilho inocente)`);
-  console.log(`  total: ${conta.flagsTotais} flags compiladas em ${conta.pessoas} pessoas — 0 lidas por dialogos_gerados.js (a boca que esta OS abre).`);
+  console.log(`  total: ${conta.flagsTotais} flags compiladas em ${conta.pessoas} pessoas — lidas por dialogos_gerados.js: gatilho (Fase 1), fervor+decoro (Fase 2), têmpera calma/tensão + defende_demais (Fase 3).`);
 }
 
 // (G7) integridade de pools (F4 §5.3): todo prior é array de 5 com soma
@@ -3822,6 +3862,7 @@ const checagens = [
   ['Priors F2 — decorrelação: hashDecisao quebra o acoplamento de chaves-irmãs (≥20/25 pares INT×WIS, |corr| ≤ 0,15) (achado B✱)', decorrelacaoOk],
   ['Priors F3 — G5 tell calmo: ≥ 60% dos mentirosos-calmos do lote são inocentes ("serena ⇒ réu" morreu) (OS priors compostos §4.6)', g5TellCalmoOk],
   ['Priors F3 — G6 regimes: regime 1 em 30% ± 10 p.p.; nele o réu é modal, sem isca forçada, com móbil material na fatia (OS priors compostos §4.6)', g6RegimesOk],
+  ['Flags Fase 3 — anti-tell das têmperas: par calma/tensão com presença cruzada (calma réu+inocente; tensão réu+isca) e defende_demais inocente-only (réu nunca super-defende ⇒ reverse-tell, como o fervor) (OS flags psíquicas §3)', fase3ParidadeOk],
   ['Priors F4 — G7 integridade de pools: priors válidos, traits ≥ 3 mapeados, motivos 4–6 no catálogo, nomes ponderados, sobrenomes 50 únicos, fonte nos itens novos (OS priors compostos §5.3)', g7PoolsOk],
   ['Palco E1 — GE1 integridade: um ponto por cômodo do grid; toda carta de cena num único caminho; carta ancorada no ponto do próprio cômodo (OS palco em anéis §2)', ge1IntegridadeOk],
   ['Palco E1 — GE2 anti-telégrafo: pontos de ambiência em 40–60% do lote de 50 seeds (OS palco em anéis §2)', ge2AntiTelegrafoOk],
