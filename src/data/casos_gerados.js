@@ -1862,35 +1862,35 @@ export const CASO_REPLICA = {
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -11747,35 +11747,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -13578,35 +13578,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -16871,35 +16871,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -22091,35 +22091,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -30368,35 +30368,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }

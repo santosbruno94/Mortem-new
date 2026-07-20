@@ -192,8 +192,10 @@ com zero bloqueantes.
   dos priors construiu nos dados; esta OS o estende à prosa. A telemetria da Fase 0 conversa com
   a guarda G5.
 - **× P11 (repensar a Mesa) e × eco de interferência pós-caso:** os outros dois pedaços do Ramo A
-  da S1 — ficam para lotes próprios (o eco ainda fala pelo legista, que não existe no gerado;
-  decisão registrada no plano). Não bloqueiam esta OS.
+  da S1 — lotes próprios. **Eco: fechado (20/07/2026)** — a voz trocou do legista (abolido no
+  gerado, `falaDoMestre.js:16`) para o **perito em 1ª pessoa**; camada narrativa, pipeline com zero
+  bloqueantes, casos re-gerados (ver ata no `plano-de-sessoes.md`, "S1 Ramo A"). **P11 segue aberto**
+  (só sob ordem; toca o contrato do `qa-ui`). Nunca bloquearam esta OS.
 - **× P9 Via B (contra-hipótese):** independente; a Via B toca o gerador de vestígios, esta OS
   toca só a fala.
 

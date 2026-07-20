@@ -145,7 +145,25 @@ detalhar antes).
   de classe + 3 menores, todos aplicados). `qa`/`qa-ui`/`lint`/build verdes; casos re-gerados.
   **Gate pendente (ação do usuário):** o playtest de tell dirigido
   (`docs/playtest/protocolo-tell-fase3.md`) antes de dar a Fase 3 por fechada/mergeável.
-  **Segue pendente do Ramo A:** P11 (Mesa); eco de interferência.
+  **Nota:** a PR #75 (Fases 2–3) foi mergeada pelo usuário em 20/07 (`c59def2`) — o código da
+  Fase 3 já está no base; se o playtest reprovar, o recuo (postura C / tirar o eixo tenso /
+  segurar o defende) vira commit novo, não des-merge.
+- **✅ Ramo A — eco de interferência: voz do perito executada (20/07/2026).** Decisão do usuário:
+  o eco pós-caso das interferências (`ecos_interferencia.js`, hoje só no procedural, que **não tem
+  legista** — `falaDoMestre.js:16`) troca a boca do **legista** para o **perito em 1ª pessoa**
+  (opção 1 de 3: perito / delegado / narrador de método). Fair play já era *safe* (guia §2.4: eco
+  reconhece o FATO da interferência, devolve ao método, jamais nomeia ator/autoria/nexo da morte);
+  o lote foi **decisão de voz**, não de fair play. Só camada narrativa/apresentação: título + 12
+  variantes reescritas (2ª→1ª pessoa) + comentários; `origem: 'mestre'` mantida (balde de canal da
+  Caderneta, não a voz — documentado). **Motor cego; contrato do `qa-ui` intocado** (o eco é
+  pós-caso na Caderneta, fora das rotas checadas; os strings "leitura do legista" do tutorial ficam
+  intactos). Pipeline `revisar-prosa` **zero bloqueantes**: fiscal aprovou (gênero neutro,
+  marcadores íntegros); perito 1 bloqueante-limítrofe §2.4 ("se lê mais fácil que o primeiro"
+  arrastava a morte principal) **corrigido**; editor 1 ALTO (série de fecho reflexo "se lê/se data")
+  **corrigido** na mesma linha + 1 menor de anadiplose. `qa.mjs` `CASO VÁLIDO`, `qa-ui.mjs`
+  `UI VÁLIDA`, `lint:prosa` limpo, build limpo; os 21 casos re-gerados.
+  **Segue pendente do Ramo A:** P11 (repensar a Mesa) — único item aberto; toca o contrato do
+  `qa-ui` e pede OS própria (só sob ordem).
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 

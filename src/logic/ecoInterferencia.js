@@ -1,11 +1,13 @@
 // =====================================================================
-// O ECO DO MESTRE SOBRE A INTERFERÊNCIA (FASE 4 do gerador por simulação).
+// O ECO SOBRE A INTERFERÊNCIA (FASE 4 do gerador por simulação).
 //
-// Comentário determinístico PÓS-CASO do legista reconhecendo as
+// Nota determinística PÓS-CASO do PERITO (o jogador) reconhecendo as
 // interferências que ocorreram ou foram evitadas — o mesmo mecanismo dos
 // códigos de falha da FASE 6 (ecoMestre.js): variantes de prosa no pacote
 // (`ecosInterferencia`, src/data/ecos_interferencia.js) + sorteio
 // determinístico por hashString salgado. Sem Math.random/Date.now.
+// No procedural não há legista (falaDoMestre.js): é o próprio perito quem
+// relê o que se moveu na cena. A prosa vive em ecos_interferencia.js.
 //
 // Módulo de APRESENTAÇÃO, puro. Consome só a lista de eventos do pacote
 // (ids/tipos) e o registro de disparos do store (nunca id de carta,
@@ -22,7 +24,7 @@
 
 import { hashString } from './hash.js';
 
-// Deriva as falas do legista sobre as interferências do caso encerrado.
+// Deriva as notas do perito sobre as interferências do caso encerrado.
 //   eventos    : lista de `interferencias.eventos` do pacote (ou []).
 //   disparadas : registro do store — [{ id, hora, evitada }].
 //   ecos       : { titulo, porChave: { [`${tipo}_${desfecho}`]: string[] } }
@@ -41,6 +43,10 @@ export function derivarEcosInterferencia(eventos, disparadas, ecos, salga = '') 
     const resumo = variantes[hashString(`${salga}|eco_intf|${evento.id}|${chave}`) % variantes.length];
     resultado.push({
       id: `eco_interferencia_${evento.id}`,
+      // `origem: 'mestre'` é o balde de canal das conclusões pós-caso na
+      // Caderneta (consolidarLeituraMestre faz upsert por essa origem) —
+      // NÃO é afirmação de quem fala. A voz é do perito (a prosa em
+      // ecos_interferencia.js), que no procedural é quem relê a cena.
       origem: 'mestre',
       titulo: ecos.titulo,
       resumo,
