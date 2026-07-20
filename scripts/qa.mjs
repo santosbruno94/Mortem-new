@@ -2449,7 +2449,9 @@ console.log('pool[0]:', JSON.stringify(perfisPool));
 //       toda vaiPara existe; nenhum nó órfão; todo beat tem os 4 tons;
 //       bijeção confrontos↔reacoesProva; requerCarta e destino de reação
 //       existem; o beat de paradeiro sustenta a MESMA carta nos 4 tons;
-//       fala e rótulo não vazam id interno (fora dos marcadores).
+//       fala e rótulo não vazam id interno (fora dos marcadores). Gatilho
+//       de complexo: nó terminal, reação sem carta (biografia ≠ prova), e
+//       o anti-tell do portão dos ≥2 por caso (0 ou ≥2, nunca 1).
 //   (e) ARMADILHAS SINTÉTICAS (lição da Fase 5): beat de 3 tons,
 //       confronto sem reação, nó órfão e requerCarta fantasma TÊM de
 //       falhar — e o caso válido passa. `--self-test` verboseia.
@@ -2485,9 +2487,14 @@ function problemasDosDialogosGerados(pacote) {
         }
       }
     }
-    // Alcançabilidade: a descida desde noInicial, mais os nós de reação e
-    // a evasiva, tem de cobrir TODOS os nós da árvore.
-    const alcancados = new Set([d.noEvasiva, ...Object.values(d.reacoesProva || {})]);
+    // Alcançabilidade: a descida desde noInicial, mais os nós de reação, a
+    // evasiva e os destinos de gatilho (canal lateral), tem de cobrir TODOS
+    // os nós da árvore.
+    const alcancados = new Set([
+      d.noEvasiva,
+      ...Object.values(d.reacoesProva || {}),
+      ...(d.gatilhos || []).map((g) => g.vaiPara),
+    ]);
     const descer = (noId) => {
       if (!noId || alcancados.has(noId) || !nos[noId]) return;
       alcancados.add(noId);
@@ -2517,11 +2524,31 @@ function problemasDosDialogosGerados(pacote) {
       );
       if (comum.length === 0) problemas.push(`${id}: beat de paradeiro sem sustentação comum nos 4 tons`);
     }
+    // Gatilho de complexo (OS os-flags-psiquicas-no-dialogo.md, Fase 1):
+    // confronto SEM carta, canal lateral. Cada entrada aponta um nó real,
+    // TERMINAL (opcoes: [] — não desce a árvore), com rótulo não-vazio; e a
+    // reação é BIOGRAFIA, nunca prova — nenhum marcador [[carta]] na fala do
+    // nó de gatilho (o fair play que separa biografia de caso, §3 da OS).
+    for (const g of d.gatilhos || []) {
+      if (!g || typeof g.rotulo !== 'string' || g.rotulo.trim() === '') {
+        problemas.push(`${id}: gatilho com rótulo vazio`);
+      }
+      if (!idsNos.has(g?.vaiPara)) {
+        problemas.push(`${id}: gatilho aponta nó inexistente (${g?.vaiPara})`);
+      } else {
+        const alvo = nos[g.vaiPara];
+        if ((alvo.opcoes || []).length !== 0) problemas.push(`${id}: nó de gatilho não é terminal (${g.vaiPara})`);
+        if (marcadoresDoNo(g.vaiPara).size > 0) {
+          problemas.push(`${id}: gatilho cita carta na reação (biografia ≠ prova) (${g.vaiPara})`);
+        }
+      }
+    }
     // Fala e rótulo não vazam id interno (fora dos marcadores [[…]]).
     const textos = [
       ...Object.values(nos).flatMap((n) => n.fala || []),
       ...Object.values(nos).flatMap((n) => (n.opcoes || []).map((o) => o.rotulo)),
       ...(d.confrontos || []).map((c) => c.rotulo),
+      ...(d.gatilhos || []).map((g) => g.rotulo),
       d.chamada,
       d.titulo,
       d.subtitulo,
@@ -2531,6 +2558,14 @@ function problemasDosDialogosGerados(pacote) {
         problemas.push(`${id}: id interno vazando em fala/rótulo ("${t.slice(0, 40)}…")`);
       }
     }
+  }
+  // Anti-tell do gatilho (§3 da OS): por caso, o número de árvores com
+  // gatilho é 0 ou ≥ 2 — nunca 1. Se o réu fosse o único a "perder a linha",
+  // a compostura desmontada viraria tell. O portão dos ≥2 vive no derivador;
+  // aqui ele é FISCALIZADO no pacote embarcado.
+  const comGatilho = Object.values(dialogos).filter((d) => (d.gatilhos || []).length > 0).length;
+  if (comGatilho === 1) {
+    problemas.push(`gatilho solitário (${comGatilho}): o portão dos ≥2 falhou — viraria tell`);
   }
   return problemas;
 }

@@ -114,6 +114,15 @@ detalhar antes).
   `gatilho_de_complexo` (réu 200/200 × inocente 161/200 → tratar na Fase 1). **Realização em
   prosa (Fases 1–3) aguarda as decisões §8 da OS** (dose, boca do gatilho, ordem). Gatilho:
   ordem do usuário para abrir a Fase 1.
+- **✅ Ramo A — Fase 1 do gatilho de complexo executada (19/07/2026).** Decisões do usuário:
+  tento discreto, **nó de confronto sem carta** para o gatilho, ordem §6. O `gatilho_de_complexo`
+  ganhou boca: mapa `GATILHO_POR_TEMA` (13 temas, biografia do medo central, jamais
+  janela/causa/nexo), lido de `bruto.psique`, com **portão dos ≥2** (anti-tell dos ~20%
+  fiscalizado no `qa.mjs`). Toca gerador + apresentação (`InterrogatorioDialogo.jsx`, caixa
+  lateral nova) + QA; **motor intocado**. Pipeline `revisar-prosa`: perito sem bloqueantes,
+  fiscal 1 bloqueante de gênero (corrigido com ramos `fem`), editor aprovado com reescritas
+  (todas aplicadas). `qa`/`qa-ui`/`lint`/build verdes; casos re-gerados. **Segue pendente do
+  Ramo A:** Fases 2–3 (projeção/decoro; par calma/tensão), P11 (Mesa), eco de interferência.
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 

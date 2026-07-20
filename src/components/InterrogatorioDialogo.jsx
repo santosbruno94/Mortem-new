@@ -100,6 +100,17 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
     setSemParadeiro(false);
   };
 
+  // O gatilho de complexo (OS `os-flags-psiquicas-no-dialogo.md`): a pergunta
+  // que desmonta a compostura. Confronto SEM carta — canal lateral, sempre à
+  // mão, cuja reação é BIOGRAFIA (nunca prova). Transitório como o confronto:
+  // "retomar" descarta; nada se anota ao mural, nada persiste no store (o
+  // motor é cego a isto). Só existe nos diálogos gerados que o trazem.
+  const desmontar = (destino) => {
+    setSemParadeiro(false);
+    setCartaApresentada(null);
+    setReacaoAtual(destino);
+  };
+
   // O retrato segue o interrogado (suspeitoId); nas conversões antigas o
   // mapa localidade→personagem continua valendo como reserva.
   const personagemDaCena = suspeitoId || obterPersonagemDaLocalidade(localidade?.id);
@@ -119,6 +130,9 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const confrontosVisiveis = emReacao
     ? []
     : (dialogo.confrontos || []).filter((c) => temCarta(c.requerCarta));
+
+  // O gatilho é canal lateral sem carta: à mão fora da reação, some durante.
+  const gatilhosVisiveis = emReacao ? [] : dialogo.gatilhos || [];
 
   return (
     <Overlay titulo={interpolar(titulo, detective)} subtitulo={subtitulo} marca="dialogo">
@@ -213,6 +227,28 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
               </button>
             );
           })}
+        </div>
+      )}
+
+      {/* O gatilho de complexo (gerados): uma pergunta pessoal que desmonta a
+          compostura. Canal lateral SEM carta; a reação é biografia, não prova,
+          e a conversa retoma. Separado dos tons (sem data-tom) e dos confrontos. */}
+      {gatilhosVisiveis.length > 0 && (
+        <div className="mt-3 space-y-2" data-gatilhos-psique>
+          {gatilhosVisiveis.map((g) => (
+            <button
+              key={g.vaiPara}
+              type="button"
+              className="opcao-dialogo opcao-dialogo--gatilho"
+              data-gatilho=""
+              onClick={() => desmontar(g.vaiPara)}
+            >
+              <span className="opcao-marca" aria-hidden>
+                ⟡
+              </span>
+              <span className="opcao-rotulo-texto">{interpolar(g.rotulo, detective)}</span>
+            </button>
+          ))}
         </div>
       )}
 

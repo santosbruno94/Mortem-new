@@ -217,8 +217,47 @@ executada — não toca o gerador nem o desfecho.
 
 ## 9. Decisões e resultado
 
-**Decisões do usuário:** *(a preencher quando o §8 for respondido — mesmo padrão do §9 da
-`os-p9-ancora-hibrida.md`.)*
+**Decisões do usuário (19/07/2026):** FLAG-dose = **tento discreto** (o gatilho é a exceção com
+nó próprio); FLAG-gatilho = **nó de confronto sem carta** (pergunta clicável que desmonta a
+compostura); FLAG-ordem = **§6** (gatilho primeiro); FLAG-fase0 = **sim** (feita); FLAG-escopo =
+**sim** (só as flags de diálogo; P11 e o eco ficam para lotes próprios).
+
+**Nota de escopo revista (honestidade sobre o custo):** ao tocar o código, o "nó de confronto
+sem carta" **não é pura camada narrativa** como a caixa de confronto de hoje — o runtime e as
+guardas exigem que todo confronto tenha carta real. Logo a Fase 1 adiciona uma **caixa de
+apresentação nova** (`InterrogatorioDialogo.jsx`), além do gerador e do QA. **O motor segue
+intocado** (veredicto/lógica/`tagsOcultas` não mudam; o gatilho é transitório, nunca persiste no
+store, nunca vira carta). É camada de apresentação + gerador + QA, não o motor.
+
+### Fase 1 — `gatilho_de_complexo` (executada)
+
+- **Gerador** (`dialogos_gerados.js`): mapa `GATILHO_POR_TEMA` (13 temas: pergunta do detetive +
+  reação-biografia do medo central), lido de `bruto.psique.consequencias.porPessoa[id].flags`.
+  **Portão dos ≥2**: o gatilho só se realiza quando ≥2 interrogáveis do caso têm gatilho — senão
+  o réu seria o único a "perder a linha" (os ~20% da Fase 0) e viraria tell.
+- **Runtime** (`InterrogatorioDialogo.jsx`): caixa `[data-gatilhos-psique]` separada dos tons
+  (sem `data-tom`) e dos confrontos; clique mostra a reação transitória; "retomar" descarta.
+- **QA** (`qa.mjs`): nó de gatilho terminal, reação **sem marcador `[[carta]]`** (biografia ≠
+  prova), e o **anti-tell fiscalizado no pacote** (por caso, nº de árvores com gatilho é 0 ou ≥2,
+  nunca 1).
+- **Pipeline `revisar-prosa`** (três revisores, mandato do `CLAUDE.md`): **perito-forense** sem
+  bloqueantes (workhouse/asilo, enterro de indigente, penny→moeda, confissão neutra de
+  denominação); **fiscal-continuidade** achou **1 bloqueante** (concordância de gênero: "desde
+  menino" na boca de uma lavadeira) — **corrigido** dando ramo `fem` a todos os temas com palavra
+  gendrada (menina, trocada, senhora, Presa, calada, sozinha, filha, avarenta); **editor-crítico**
+  aprovou com correções obrigatórias (voz uniforme, máquina de máximas acima do teto, narrador
+  adjudicando intenção, psicologismo moderno) — **todas aplicadas** (reescritas de #1/#7/#9/#10/#12;
+  #2 mantida como a única antítese sancionada). `qa.mjs` `CASO VÁLIDO`, `lint-prosa` limpo,
+  `qa-ui.mjs` `UI VÁLIDA`, build limpo, casos re-gerados.
+
+### Fases 2–3 (projeção/decoro; par calma) — pendentes
+
+Aguardam ordem do usuário. A mesma disciplina: tento discreto, paridade de têmpera, pipeline,
+re-geração, playtest de tell.
+
+---
+
+*(histórico da instrução original abaixo)*
 
 **Fase 0 executada** (telemetria no `qa.mjs`, commit próprio; risco zero, só mede; `CASO
 VÁLIDO` sem regressão, build limpo). Lote de **200 casos**:

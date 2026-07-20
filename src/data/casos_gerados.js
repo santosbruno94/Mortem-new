@@ -712,6 +712,12 @@ export const CASO_REPLICA = {
    "noEvasiva": "evasiva",
    "reacoesProva": {},
    "confrontos": [],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca teve vontade de largar tudo e sumir por essa estrada afora?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -875,6 +881,12 @@ export const CASO_REPLICA = {
     "b2_obliquo": {
      "fala": [
       "\"A vila diz o que sempre disse; desta casa não sai eco.\" Recolhe as luvas. \"O inquérito sabe onde me encontrar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Algo se acende e logo se apaga no rosto de Amy Ellis. \"Todo dia me dá essa vontade. Fico à janela, vejo a carroça do correio partir, e uma parte de mim vai junto. Mas há quem fique por minha conta, e a gente se amarra por eles. Presa, é o que sou, e o senhor já sabe.\""
      ],
      "opcoes": []
     }
@@ -1284,6 +1296,12 @@ export const CASO_REPLICA = {
      "rotulo": "[Soberanos Novos] Por que soberanos novos, contados à vista de todos?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Um dia ninguém mais há de precisar de si. Que lhe fica, nesse dia?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -1461,6 +1479,12 @@ export const CASO_REPLICA = {
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Florence Cooper perde por um instante a compostura. \"O senhor há de saber o que é ficar sem serventia para os seus. Vi acontecer com gente de bem: chega o dia em que ninguém lhe pede mais nada, e sobra à mesa um lugar que ninguém disputa. Um dia é o meu lugar. Não me sai da cabeça.\""
+     ],
+     "opcoes": []
     }
    }
   },
@@ -1474,6 +1498,12 @@ export const CASO_REPLICA = {
    "noEvasiva": "evasiva",
    "reacoesProva": {},
    "confrontos": [],
+   "gatilhos": [
+    {
+     "rotulo": "\"Todos guardam algo que não querem à luz. Qual é o seu?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -1637,6 +1667,12 @@ export const CASO_REPLICA = {
     "b2_obliquo": {
      "fala": [
       "\"A vila diz o que sempre disse; desta casa não sai eco.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "As mãos de Philip Jones apertam-se uma na outra. \"Todos guardamos uma vergonha que só se confessa a Deus, ou nem a Ele. A minha não cabe num inquérito; hei de levá-la comigo à cova, se me for dada essa misericórdia.\""
      ],
      "opcoes": []
     }
@@ -5781,6 +5817,12 @@ export const CASOS_POOL = [
      "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Perder a casa, a terra, o chão onde os seus estão enterrados. Já lhe passou pela cabeça?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -5950,6 +5992,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Ethel Thomas olha para além da parede, como quem vê outro lugar. \"Os meus estão enterrados neste torrão: meu pai, o pai dele. Arrancar-me daqui seria arrancar raiz com terra e tudo, e o que se arranca assim não pega em canteiro nenhum. Já sonhei com a placa de vende-se ao portão, e acordo com o coração aos pulos.\""
      ],
      "opcoes": []
     }
@@ -6341,6 +6389,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca teve vontade de largar tudo e sumir por essa estrada afora?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -6510,6 +6564,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Algo se acende e logo se apaga no rosto de Samuel Marsh. \"Todo dia me dá essa vontade. Fico à janela, vejo a carroça do correio partir, e uma parte de mim vai junto. Mas há quem fique por minha conta, e a gente se amarra por eles. Preso, é o que sou, e o senhor já sabe.\""
      ],
      "opcoes": []
     }
@@ -9010,6 +9070,12 @@ export const CASOS_POOL = [
      "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Um dia ninguém mais há de precisar de si. Que lhe fica, nesse dia?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -9179,6 +9245,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Frank Jones perde por um instante a compostura. \"O senhor há de saber o que é ficar sem serventia para os seus. Vi acontecer com gente de bem: chega o dia em que ninguém lhe pede mais nada, e sobra à mesa um lugar que ninguém disputa. Um dia é o meu lugar. Não me sai da cabeça.\""
      ],
      "opcoes": []
     }
@@ -9392,6 +9464,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -9561,6 +9639,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Leonard Smith cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
      ],
      "opcoes": []
     }
@@ -10557,6 +10641,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Já esteve numa sala cheia e sentiu que ninguém dava por si?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -10728,6 +10818,12 @@ export const CASOS_POOL = [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Edwin Bennett ri sozinho um instante e para. \"A vida inteira falei alto e fiz palhaçada para que reparassem em mim. Tire-me a graça e ninguém nesta vila torna a me ver. Dito assim parece pouca coisa; para mim é tudo.\""
+     ],
+     "opcoes": []
     }
    }
   },
@@ -10751,6 +10847,12 @@ export const CASOS_POOL = [
     {
      "requerCarta": "gen_ruido_ouvido",
      "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Todos guardam algo que não querem à luz. Qual é o seu?\"",
+     "vaiPara": "gatilho"
     }
    ],
    "nos": {
@@ -10928,6 +11030,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Abotoa o casaco e ergue-se. \"Se faltar soma ou data, o livro do balcão as tem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "As mãos de Joseph Wright apertam-se uma na outra. \"Todos guardamos uma vergonha que só se confessa a Deus, ou nem a Ele. A minha não cabe num inquérito; hei de levá-la comigo à cova, se me for dada essa misericórdia.\""
      ],
      "opcoes": []
     }
@@ -15849,6 +15957,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"E quando a vila decide tudo sem lhe perguntar nada, como se não contasse?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -16018,6 +16132,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Ergue-se e alisa a sobrecasaca. \"A paróquia fica às ordens.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Peter Roberts inclina-se para a frente, e a voz ganha uma aresta. \"Decidem tudo como se eu fosse parte da parede. Pois desta vila sei mais do que o vigário e o médico juntos; é o que me faz alguém. Tirem-me isso e fico do lado de fora, com o nariz no vidro.\""
      ],
      "opcoes": []
     }
@@ -16422,6 +16542,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -16591,6 +16717,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "William Davies cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
      ],
      "opcoes": []
     }
@@ -17398,6 +17530,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Todos guardam algo que não querem à luz. Qual é o seu?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -17567,6 +17705,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "As mãos de Amelia Bennett apertam-se uma na outra. \"Todos guardamos uma vergonha que só se confessa a Deus, ou nem a Ele. A minha não cabe num inquérito; hei de levá-la comigo à cova, se me for dada essa misericórdia.\""
      ],
      "opcoes": []
     }
@@ -18149,6 +18293,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Levar uma afronta e engolir calado, sem poder cobrar. Já lhe fizeram isso?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -18318,6 +18468,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "O maxilar de William Carter trava um instante antes da resposta. \"Engoli afronta calado, mais de uma vez, e cada uma ficou entalada aqui. Bater, não bato; guardo, e guardo tudo. Pode lavrar isso, que vergonha não me dá.\""
      ],
      "opcoes": []
     }
@@ -19047,6 +19203,12 @@ export const CASOS_POOL = [
      "rotulo": "[Última Vez com Vida] A que horas, exatamente, viu a vítima com vida?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Perder a casa, a terra, o chão onde os seus estão enterrados. Já lhe passou pela cabeça?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -19216,6 +19378,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Beatrice Saunders olha para além da parede, como quem vê outro lugar. \"Os meus estão enterrados neste torrão: meu pai, o pai dele. Arrancar-me daqui seria arrancar raiz com terra e tudo, e o que se arranca assim não pega em canteiro nenhum. Já sonhei com a placa de vende-se ao portão, e acordo com o coração aos pulos.\""
      ],
      "opcoes": []
     }
@@ -19416,6 +19584,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Perder a casa, a terra, o chão onde os seus estão enterrados. Já lhe passou pela cabeça?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -19585,6 +19759,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Edith Walker olha para além da parede, como quem vê outro lugar. \"Os meus estão enterrados neste torrão: meu pai, o pai dele. Arrancar-me daqui seria arrancar raiz com terra e tudo, e o que se arranca assim não pega em canteiro nenhum. Já sonhei com a placa de vende-se ao portão, e acordo com o coração aos pulos.\""
      ],
      "opcoes": []
     }
@@ -24304,6 +24484,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Uma vida inteira de ofício, e um dia alguém a desfaz num gesto. Já imaginou?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -24475,6 +24661,12 @@ export const CASOS_POOL = [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Edwin Davies olha as próprias mãos como quem confere uma ferramenta. \"Ponho anos numa obra: o melhor da vista, o melhor dos dedos. Basta um que chegue depois e faça melhor, ou diga que faz, e o que levei a vida a erguer vira nada. Perder isso me tira o sono, e disso não me envergonho.\""
+     ],
+     "opcoes": []
     }
    }
   },
@@ -24493,6 +24685,12 @@ export const CASOS_POOL = [
     {
      "requerCarta": "gen_segredo_gen_0_lavadeira",
      "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Todos guardam algo que não querem à luz. Qual é o seu?\"",
+     "vaiPara": "gatilho"
     }
    ],
    "nos": {
@@ -24664,6 +24862,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "As mãos de Elizabeth Wilson apertam-se uma na outra. \"Todos guardamos uma vergonha que só se confessa a Deus, ou nem a Ele. A minha não cabe num inquérito; hei de levá-la comigo à cova, se me for dada essa misericórdia.\""
      ],
      "opcoes": []
     }
@@ -24864,6 +25068,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Amar e ser trocado por outro. Passou por isso, alguma vez?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -25033,6 +25243,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila diz o que sempre disse; desta casa não sai eco.\" Toma o chapéu. \"O inquérito sabe onde me encontrar.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "A frase seguinte não vem; Percy Andrews desvia os olhos. \"Estar trocado por outro. Sim. A pessoa está ali, do nosso lado, e um dia olha por cima do nosso ombro. Não desejaria isso ao meu pior desafeto. Sei do que falo, e paro por aqui.\""
      ],
      "opcoes": []
     }
@@ -26088,6 +26304,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -26259,6 +26481,12 @@ export const CASOS_POOL = [
       "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Helen Evans cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
+     ],
+     "opcoes": []
     }
    }
   },
@@ -26277,6 +26505,12 @@ export const CASOS_POOL = [
     {
      "requerCarta": "gen_instrumento",
      "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
+     "vaiPara": "gatilho"
     }
    ],
    "nos": {
@@ -26448,6 +26682,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Joseph Green cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
      ],
      "opcoes": []
     }
@@ -27479,6 +27719,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"E se o nome caísse na boca da vila, de uma tarde para a outra. Já temeu isso?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -27648,6 +27894,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Um músculo cede no rosto de Amy Chapman, e a voz baixa de tom. \"Um nome leva três gerações para se firmar e uma tarde para virar assunto de taverna. Quem nunca o teve ignora o peso de o poder perder. Eu carrego esse peso desde menina, e durmo mal com ele.\""
      ],
      "opcoes": []
     }
@@ -27841,6 +28093,12 @@ export const CASOS_POOL = [
    "noEvasiva": "evasiva",
    "reacoesProva": {},
    "confrontos": [],
+   "gatilhos": [
+    {
+     "rotulo": "\"E se o nome caísse na boca da vila, de uma tarde para a outra. Já temeu isso?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -28004,6 +28262,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Um músculo cede no rosto de Hugh Thompson, e a voz baixa de tom. \"Um nome leva três gerações para se firmar e uma tarde para virar assunto de taverna. Quem nunca o teve ignora o peso de o poder perder. Eu carrego esse peso desde menino, e durmo mal com ele.\""
      ],
      "opcoes": []
     }
@@ -32686,6 +32950,12 @@ export const CASOS_POOL = [
    "noEvasiva": "evasiva",
    "reacoesProva": {},
    "confrontos": [],
+   "gatilhos": [
+    {
+     "rotulo": "\"E se o nome caísse na boca da vila, de uma tarde para a outra. Já temeu isso?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -32849,6 +33119,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e ajeita o cinturão. \"A ronda não espera.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Um músculo cede no rosto de Harold Moore, e a voz baixa de tom. \"Um nome leva três gerações para se firmar e uma tarde para virar assunto de taverna. Quem nunca o teve ignora o peso de o poder perder. Eu carrego esse peso desde menino, e durmo mal com ele.\""
      ],
      "opcoes": []
     }
@@ -33049,6 +33325,12 @@ export const CASOS_POOL = [
      "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
     }
    ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Uma vida inteira de ofício, e um dia alguém a desfaz num gesto. Já imaginou?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -33218,6 +33500,12 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "John Morris olha as próprias mãos como quem confere uma ferramenta. \"Ponho anos numa obra: o melhor da vista, o melhor dos dedos. Basta um que chegue depois e faça melhor, ou diga que faz, e o que levei a vida a erguer vira nada. Perder isso me tira o sono, e disso não me envergonho.\""
      ],
      "opcoes": []
     }

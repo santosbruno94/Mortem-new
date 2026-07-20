@@ -646,6 +646,101 @@ const EVASIVA_POR_CLASSE = {
 };
 
 // ---------------------------------------------------------------------
+// O GATILHO DE COMPLEXO (OS `os-flags-psiquicas-no-dialogo.md`, Fase 1):
+// a pergunta que desmonta a compostura. O gerador já compila
+// `gatilho_de_complexo:<tema>` por pessoa (vetores_psiquicos.js); aqui ela
+// ganha BOCA — um confronto SEM carta (canal lateral, camada de
+// apresentação), cuja reação entrega BIOGRAFIA (o medo central do vetor),
+// JAMAIS janela/causa/nexo. Fair play (spec §3 da OS): a mesma espécie de
+// fala aparece no réu E em inocentes — nunca é assinatura de culpado. Por
+// isso o portão dos ≥2 (derivarDialogos): o gatilho só se realiza quando
+// há ao menos DOIS interrogáveis com gatilho no caso; senão (o réu seria o
+// único a "perder a linha" — ~20% dos casos, telemetria da Fase 0) o
+// gatilho fica mudo, para não virar tell.
+//
+// A pergunta é neutra de gênero do interrogado; a reação usa nome + gênero.
+// Nenhum marcador [[carta]] entra aqui — é biografia, não prova (guarda no
+// qa.mjs). Registro por época na kb-psique-e-crime (medo central de cada
+// vetor) e na kb-mundo-vitoriano (asilo dos pobres, enterro de indigente,
+// despejo e êxodo).
+// ---------------------------------------------------------------------
+const GATILHO_POR_TEMA = {
+  inutilidade: {
+    pergunta: '"Um dia ninguém mais há de precisar de si. Que lhe fica, nesse dia?"',
+    reacao: (nome) =>
+      `${nome} perde por um instante a compostura. "O senhor há de saber o que é ficar sem serventia para os seus. Vi acontecer com gente de bem: chega o dia em que ninguém lhe pede mais nada, e sobra à mesa um lugar que ninguém disputa. Um dia é o meu lugar. Não me sai da cabeça."`,
+  },
+  queda_de_status: {
+    pergunta: '"E se o nome caísse na boca da vila, de uma tarde para a outra. Já temeu isso?"',
+    reacao: (nome, fem) =>
+      `Um músculo cede no rosto de ${nome}, e a voz baixa de tom. "Um nome leva três gerações para se firmar e uma tarde para virar assunto de taverna. Quem nunca o teve ignora o peso de o poder perder. Eu carrego esse peso desde ${fem ? 'menina' : 'menino'}, e durmo mal com ele."`,
+  },
+  erro_em_publico: {
+    pergunta: '"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?"',
+    reacao: (nome) =>
+      `${nome} cala-se mais do que a pergunta pedia. "Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar."`,
+  },
+  pecado_exposto: {
+    pergunta: '"Todos guardam algo que não querem à luz. Qual é o seu?"',
+    reacao: (nome) =>
+      `As mãos de ${nome} apertam-se uma na outra. "Todos guardamos uma vergonha que só se confessa a Deus, ou nem a Ele. A minha não cabe num inquérito; hei de levá-la comigo à cova, se me for dada essa misericórdia."`,
+  },
+  obra_arruinada: {
+    pergunta: '"Uma vida inteira de ofício, e um dia alguém a desfaz num gesto. Já imaginou?"',
+    reacao: (nome) =>
+      `${nome} olha as próprias mãos como quem confere uma ferramenta. "Ponho anos numa obra: o melhor da vista, o melhor dos dedos. Basta um que chegue depois e faça melhor, ou diga que faz, e o que levei a vida a erguer vira nada. Perder isso me tira o sono, e disso não me envergonho."`,
+  },
+  substituicao: {
+    pergunta: '"Amar e ser trocado por outro. Passou por isso, alguma vez?"',
+    reacao: (nome, fem) =>
+      `A frase seguinte não vem; ${nome} desvia os olhos. "Estar ${fem ? 'trocada' : 'trocado'} por outro. Sim. A pessoa está ali, do nosso lado, e um dia olha por cima do nosso ombro. Não desejaria isso ao meu pior desafeto. Sei do que falo, e paro por aqui."`,
+  },
+  voltar_a_ser_ninguem: {
+    pergunta: '"Custou a chegar aonde chegou. E se lhe tirassem tudo, e voltasse a não ser ninguém?"',
+    reacao: (nome, fem) =>
+      `${nome} endireita-se depressa demais. "Subi do nada, o senhor não imagina de que fundo. Tenho hoje casa, mesa posta, gente que me chama de ${fem ? 'senhora' : 'senhor'}. Voltar a ser o que fui é o que me acorda de noite."`,
+  },
+  ficar_preso: {
+    pergunta: '"Nunca teve vontade de largar tudo e sumir por essa estrada afora?"',
+    reacao: (nome, fem) =>
+      `Algo se acende e logo se apaga no rosto de ${nome}. "Todo dia me dá essa vontade. Fico à janela, vejo a carroça do correio partir, e uma parte de mim vai junto. Mas há quem fique por minha conta, e a gente se amarra por eles. ${fem ? 'Presa' : 'Preso'}, é o que sou, e o senhor já sabe."`,
+  },
+  afronta_impune: {
+    pergunta: '"Levar uma afronta e engolir calado, sem poder cobrar. Já lhe fizeram isso?"',
+    reacao: (nome, fem) =>
+      `O maxilar de ${nome} trava um instante antes da resposta. "Engoli afronta ${fem ? 'calada' : 'calado'}, mais de uma vez, e cada uma ficou entalada aqui. Bater, não bato; guardo, e guardo tudo. Pode lavrar isso, que vergonha não me dá."`,
+  },
+  invisibilidade: {
+    pergunta: '"Já esteve numa sala cheia e sentiu que ninguém dava por si?"',
+    reacao: (nome, fem) =>
+      `${nome} ri ${fem ? 'sozinha' : 'sozinho'} um instante e para. "A vida inteira falei alto e fiz palhaçada para que reparassem em mim. Tire-me a graça e ninguém nesta vila torna a me ver. Dito assim parece pouca coisa; para mim é tudo."`,
+  },
+  irrelevancia: {
+    pergunta: '"E quando a vila decide tudo sem lhe perguntar nada, como se não contasse?"',
+    reacao: (nome) =>
+      `${nome} inclina-se para a frente, e a voz ganha uma aresta. "Decidem tudo como se eu fosse parte da parede. Pois desta vila sei mais do que o vigário e o médico juntos; é o que me faz alguém. Tirem-me isso e fico do lado de fora, com o nariz no vidro."`,
+  },
+  miseria_a_vista: {
+    pergunta: '"O asilo dos pobres, o enterro pago pela paróquia. Já teve medo de acabar assim?"',
+    reacao: (nome, fem) =>
+      `${nome} passa a mão pela roupa, devagar. "O asilo dos pobres. O caixão que a freguesia paga aos indigentes. Minha mãe temeu isso a vida toda, e o medo passou de mãe para ${fem ? 'filha' : 'filho'}. Guardo cada moeda por causa dele; quem me chama de ${fem ? 'avarenta' : 'avarento'} nunca sentiu esse frio."`,
+  },
+  perder_o_chao: {
+    pergunta: '"Perder a casa, a terra, o chão onde os seus estão enterrados. Já lhe passou pela cabeça?"',
+    reacao: (nome) =>
+      `${nome} olha para além da parede, como quem vê outro lugar. "Os meus estão enterrados neste torrão: meu pai, o pai dele. Arrancar-me daqui seria arrancar raiz com terra e tudo, e o que se arranca assim não pega em canteiro nenhum. Já sonhei com a placa de vende-se ao portão, e acordo com o coração aos pulos."`,
+  },
+};
+
+// O tema do gatilho de uma pessoa, lido das consequências psíquicas
+// compiladas (build time; fora do pacote). Null se não há gatilho.
+function temaDoGatilho(bruto, pessoaId) {
+  const flags = bruto.psique?.consequencias?.porPessoa?.[pessoaId]?.flags || [];
+  const f = flags.find((x) => x.startsWith('gatilho_de_complexo:'));
+  return f ? f.slice('gatilho_de_complexo:'.length) : null;
+}
+
+// ---------------------------------------------------------------------
 // O DERIVADOR: uma árvore por suspeito do pacote + as cartas de álibi.
 // Ordem estável: a dos próprios suspeitos (alfabética no pacote) e a do
 // array de cartas para os confrontos — replay byte a byte.
@@ -669,6 +764,14 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
   // Sem isso, apontar "para fora" seria um tell (só o réu lucra com a tese):
   // o arremate cai no registro que NÃO deflete (§5 do KB de fair play).
   const deflexaoSustentavel = Object.keys(ausencias).length > 0 || !!vitima.forasteiro;
+
+  // O gatilho de complexo (OS `os-flags-psiquicas-no-dialogo.md` §3): só se
+  // realiza quando há ≥2 INTERROGÁVEIS com gatilho — senão o réu seria o
+  // único a "perder a linha" e a compostura desmontada viraria tell (achado
+  // da Fase 0: ~20% dos casos têm o réu como único portador). O portão vive
+  // aqui, na camada de fala; o gerador de psique não muda.
+  const interrogaveisComGatilho = suspeitos.filter((s) => temaDoGatilho(bruto, s.id)).length;
+  const realizarGatilho = interrogaveisComGatilho >= 2;
 
   for (const s of suspeitos) {
     const pessoa = pessoas.get(s.id);
@@ -734,6 +837,18 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       nos[`b2_${tom}`] = { fala: falaB2(ctx, tom), opcoes: [] };
     }
 
+    // O gatilho de complexo (só quando o portão dos ≥2 abre): um confronto
+    // SEM carta, canal lateral. A reação é BIOGRAFIA (o medo central), nó
+    // terminal (opcoes: []), transitório no runtime — o motor nunca o lê.
+    const gatilhos = [];
+    const tema = realizarGatilho ? temaDoGatilho(bruto, pessoa.id) : null;
+    if (tema && GATILHO_POR_TEMA[tema]) {
+      const g = GATILHO_POR_TEMA[tema];
+      const fem = pessoa.genero === 'feminino';
+      nos.gatilho = { fala: [g.reacao(pessoa.nome, fem)], opcoes: [] };
+      gatilhos.push({ rotulo: g.pergunta, vaiPara: 'gatilho' });
+    }
+
     dialogos[`dialogo_${pessoa.id}`] = {
       suspeitoId: pessoa.id,
       origemLocalidade: 'delegacia',
@@ -744,6 +859,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       noEvasiva: 'evasiva',
       reacoesProva,
       confrontos,
+      ...(gatilhos.length ? { gatilhos } : {}),
       nos,
     };
   }
