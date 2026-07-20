@@ -2567,6 +2567,28 @@ function problemasDosDialogosGerados(pacote) {
   if (comGatilho === 1) {
     problemas.push(`gatilho solitário (${comGatilho}): o portão dos ≥2 falhou — viraria tell`);
   }
+  // Fase 2 — fair play da projeção (acusa_com_fervor): a projeção do b2 firme
+  // nomeia sempre um INOCENTE, NUNCA o réu (apontá-lo "resolveria" o caso —
+  // Knox nº6). O derivador escolhe o alvo excluindo o assassino; aqui é
+  // FISCALIZADO no pacote embarcado. Nas árvores dos OUTROS suspeitos, a única
+  // fala que nomeia um suspeito é a projeção (as demais citam a vítima ou a si
+  // mesmo em 3ª pessoa); logo o nome do réu ausente delas prova que ninguém o
+  // acusa. A árvore do PRÓPRIO réu é excluída — lá o nome dele consta das
+  // rubricas de reação, sem quebra de fair play.
+  const reuId = pacote.verdadeDeOuro?.reuCorreto;
+  const reuNome = (pacote.suspeitos || []).find((s) => s.id === reuId)?.nome;
+  if (reuNome) {
+    for (const [id, d] of Object.entries(dialogos)) {
+      if (d.suspeitoId === reuId) continue;
+      for (const no of Object.values(d.nos || {})) {
+        for (const f of no.fala || []) {
+          if (f.includes(reuNome)) {
+            problemas.push(`${id}: nome do réu em fala de outro suspeito — a projeção acusaria o culpado ("${f.slice(0, 40)}…")`);
+          }
+        }
+      }
+    }
+  }
   return problemas;
 }
 
@@ -3104,10 +3126,12 @@ let g6RegimesOk = true;
 // TELEMETRIA — flags psíquicas no diálogo (Fase 0 da OS
 // `docs/os-flags-psiquicas-no-dialogo.md`, S1 Ramo A). RISCO ZERO: só
 // LÊ o lote e reporta — não toca o gerador, não muda byte de pacote, não
-// gateia CASO VÁLIDO. Mede quanto de cada flag o gerador já compila e
-// que hoje NENHUMA boca lê (o derivador dialogos_gerados.js é cego às
-// flags), para calibrar a dosagem das fases seguintes com número real —
-// mesmo padrão da Fase 0 de telemetria do P9 (PR #73). As flags vivem em
+// gateia CASO VÁLIDO. Mede quanto de cada flag o gerador compila e quais já
+// ganharam boca no diálogo (Fase 1: gatilho_de_complexo; Fase 2:
+// acusa_com_fervor + omite_por_decoro; Fase 3, pendente: o par calma/tensão
+// e defende_demais_o_morto), para calibrar a dosagem das fases seguintes com
+// número real — mesmo padrão da Fase 0 de telemetria do P9 (PR #73). As
+// flags vivem em
 // `bruto.psique.consequencias.porPessoa[id].flags` (build time; fora do
 // pacote), disponíveis ao derivador via o `bruto` que ele já recebe.
 // ============================================================
@@ -3143,12 +3167,12 @@ let g6RegimesOk = true;
   const nCasos = loteF2.length;
   const calmaTotal = conta.reuCalma + conta.inocenteCalmaPeriferica;
   const fracInocenteCalma = calmaTotal > 0 ? (100 * conta.inocenteCalmaPeriferica / calmaTotal) : 0;
-  console.log(`\nTELEMETRIA — flags psíquicas no diálogo (Fase 0; lote de ${nCasos} casos; hoje SEM boca no diálogo):`);
+  console.log(`\nTELEMETRIA — flags psíquicas no diálogo (lote de ${nCasos} casos; bocas: Fase 1+2 lidas, Fase 3 pendente):`);
   console.log(`  réu mente_com_calma: ${conta.reuCalma}  ×  réu mente_sob_pressao: ${conta.reuTensao}`);
   console.log(`  inocente mente_com_calma_periferica: ${conta.inocenteCalmaPeriferica}  (paridade do tell calmo: ${fracInocenteCalma.toFixed(1)}% dos calmos são inocentes)`);
   console.log(`  acusa_com_fervor: ${conta.acusaComFervor}  |  omite_por_decoro: ${conta.omitePorDecoro}  |  defende_demais_o_morto: ${conta.defendeDemaisOMorto}  |  isca mente_sob_pressao: ${conta.iscaMenteSobPressao}`);
   console.log(`  gatilho_de_complexo — réu: ${conta.gatilhoReu}  |  inocente: ${conta.gatilhoInocente}  (${conta.casosComGatilhoInocente}/${nCasos} casos têm ≥1 gatilho inocente)`);
-  console.log(`  total: ${conta.flagsTotais} flags compiladas em ${conta.pessoas} pessoas — 0 lidas por dialogos_gerados.js (a boca que esta OS abre).`);
+  console.log(`  total: ${conta.flagsTotais} flags compiladas em ${conta.pessoas} pessoas — lidas por dialogos_gerados.js: gatilho_de_complexo (Fase 1), acusa_com_fervor + omite_por_decoro (Fase 2). Pendentes de boca (Fase 3): par calma/tensão e defende_demais_o_morto.`);
 }
 
 // (G7) integridade de pools (F4 §5.3): todo prior é array de 5 com soma

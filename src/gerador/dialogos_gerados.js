@@ -300,6 +300,61 @@ function falaB1(ctx, tom) {
 }
 
 // ---------------------------------------------------------------------
+// FASE 2 (OS os-flags-psiquicas-no-dialogo.md): projeção e decoro. Duas
+// flags que o gerador compila só em NÃO-assassino e que boca nenhuma lia —
+// agora COLOREM beats que já existem (tento discreto; nenhum nó novo de
+// mecânica). O motor segue cego: é prosa, nunca prova.
+//
+//   • acusa_com_fervor (inocente de polaridade ativa) → b2 FIRME: projeta e
+//     aponta OUTRO inocente com fervor, para enganar o apressado. É víscera,
+//     nunca dedução boa; o alvo (ctx.alvoFervor) é escolhido no derivador
+//     EXCLUINDO o réu — apontar o culpado "resolveria" o caso (Knox nº6).
+//     Jamais cita janela/causa/nexo (é alegação sobre a pessoa, não sobre o
+//     crime).
+//   • omite_por_decoro (inocente de polaridade passiva) → EVASIVA + b2
+//     OBLÍQUO: recusa por pudor, nunca por culpa; jamais esconde matéria.
+//
+// Paridade anti-tell (§3 da OS): o que estas flags mudam é a COR (projeção,
+// pudor), nunca o conteúdo probatório; NÃO-apontar segue partilhado pelo
+// réu, pela testemunha e pelo periférico sem flag — o réu não é separável
+// por aqui. Guarda no qa.mjs: o nome do réu não aparece em fala nenhuma (a
+// projeção jamais acusa o culpado).
+// ---------------------------------------------------------------------
+
+// A leitura de uma flag psíquica compilada (build time; fora do pacote —
+// mesma fonte do gatilho de complexo).
+function temFlag(bruto, id, nome) {
+  const flags = bruto.psique?.consequencias?.porPessoa?.[id]?.flags || [];
+  return flags.includes(nome);
+}
+
+// A projeção do fervor: nomeia o alvo UMA vez (anti vocativo, §4.10 do guia),
+// sem prova e sem matéria; a antítese "não trago prova, tenho a certeza"
+// marca a fala como víscera (leitura errada de fatos, não pista boa — KB de
+// fair play §4). Registro por macrogrupo de classe; gênero só onde a palavra
+// o exige.
+function projecaoFervor(alvo, grupo, fem) {
+  return {
+    alto: `"Se um nome hão de me arrancar, arranco-o eu: ${alvo}. Digo-o de viva voz e respondo pelo que digo. Prova, ninguém ma pediu; tenho a minha certeza, e ela não me falha desde ${fem ? 'moça' : 'moço'}."`,
+    oficio: `"Nome {detective.treatment} quer, nome eu dou: ${alvo}. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou."`,
+    chao: `"Um nome eu dou, já que {detective.treatment} o pede: ${alvo}. Por quê, não sei dizer; sei, e chega."`,
+  }[grupo];
+}
+
+// O b2 oblíquo colorido pelo decoro: a recusa por pudor dobrada à fala da
+// vila, num fraseado distinto do sufixo da evasiva (sem eco). Sem antítese
+// "não X, por Y" aqui — a única sancionada do lote vive no sufixo da evasiva.
+const OBLIQUO_DECORO = {
+  alto: `"A vila diz o que sempre disse, e desta casa não sai eco. O mais que sei portas adentro, a boa educação manda guardar."`,
+  oficio: `"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica."`,
+  chao: `"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal."`,
+};
+
+// O sufixo de decoro na evasiva: rubrica física (a voz baixa) e a recusa por
+// pudor. Aqui mora a única antítese "não por culpa" do lote.
+const DECORO_EVASIVA_SUFIXO = ' E emenda, mais baixo: "há o que se cala por pudor, não por culpa."';
+
+// ---------------------------------------------------------------------
 // BEAT 2 — o arremate, por papel de diálogo (réu, testemunha, periférico)
 // × tom. O réu deflete sem confessar; a testemunha fica no declarado; o
 // periférico dá a vila. A saída fecha a conversa (opcoes: []).
@@ -416,6 +471,17 @@ function falaB2(ctx, tom) {
         chao: `"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha."`,
       }[grupo],
     }[tom];
+  }
+  // Fase 2 — a projeção (fervor) reescreve o b2 FIRME; o decoro reescreve o
+  // b2 OBLÍQUO. Só em não-assassino (o réu nunca porta estas flags; a guarda
+  // do qa.mjs fiscaliza). Tento discreto: colore o beat, não cria nó. Ver o
+  // cabeçalho da Fase 2 acima.
+  if (papel !== 'reu') {
+    if (tom === 'firme' && ctx.acusaComFervor && ctx.alvoFervor) {
+      corpo = projecaoFervor(ctx.alvoFervor, grupo, fem);
+    } else if (tom === 'obliquo' && ctx.omitePorDecoro) {
+      corpo = OBLIQUO_DECORO[grupo];
+    }
   }
   // O tento do réu com linha do tempo NÃO pode desmenti-lo (spec §8.6):
   // ganha versão que preserva o trait sem cruzamento feito pelo narrador.
@@ -792,6 +858,21 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
           ? 'firme'
           : 'tecnico');
 
+    // Fase 2 — o alvo da projeção (acusa_com_fervor): um OUTRO suspeito do
+    // caso, NUNCA o réu (apontar o culpado "resolveria" — Knox nº6). Escolha
+    // determinística por hashString salgado; null quando não há inocente além
+    // de si (então o fervor não se realiza e o b2 firme fica no padrão).
+    const acusaComFervor = temFlag(bruto, pessoa.id, 'acusa_com_fervor');
+    let alvoFervor = null;
+    if (acusaComFervor) {
+      const candidatos = suspeitos.filter((x) => x.id !== pessoa.id && x.id !== crime.assassinoId);
+      if (candidatos.length > 0) {
+        const alvo = candidatos[hashString(`${bruto.seed}|fervor|${pessoa.id}`) % candidatos.length];
+        alvoFervor = pessoas.get(alvo.id)?.nome || null;
+      }
+    }
+    const omitePorDecoro = temFlag(bruto, pessoa.id, 'omite_por_decoro');
+
     const ctx = {
       pessoa,
       papel,
@@ -810,6 +891,11 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       // E3 §4.5: rótulo da vila-mercado quando o paradeiro declarado é a
       // AUSÊNCIA (verificável só pelo livro de hóspedes a distância).
       ausencia: ausencias[pessoa.id] || null,
+      // Fase 2: as flags de projeção/decoro (só em não-assassino; o réu
+      // nunca as porta). Colorem b2 firme / evasiva + b2 oblíquo.
+      acusaComFervor,
+      alvoFervor,
+      omitePorDecoro,
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));
@@ -829,7 +915,13 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
 
     const nos = {
       abertura: { fala: falaAbertura(ctx), opcoes: perguntasParadeiro(escolha.faixa) },
-      evasiva: { fala: [EVASIVA_POR_CLASSE[pessoa.classeSocial] || EVASIVA_POR_CLASSE.lavrador], opcoes: [] },
+      evasiva: {
+        fala: [
+          (EVASIVA_POR_CLASSE[pessoa.classeSocial] || EVASIVA_POR_CLASSE.lavrador) +
+            (omitePorDecoro && papel !== 'reu' ? DECORO_EVASIVA_SUFIXO : ''),
+        ],
+        opcoes: [],
+      },
       ...nosReacao,
     };
     for (const tom of TONS) {

@@ -1,6 +1,6 @@
 # MORTEM — Plano de sessões (rota de trabalho)
 
-**Atualizado em:** 19 de julho de 2026
+**Atualizado em:** 20 de julho de 2026
 **Marco de referência:** merge da PR #70 (`0f6b369`) — revisão de pendências + quick wins
 do playtest humano de 19/07/2026.
 
@@ -121,8 +121,19 @@ detalhar antes).
   fiscalizado no `qa.mjs`). Toca gerador + apresentação (`InterrogatorioDialogo.jsx`, caixa
   lateral nova) + QA; **motor intocado**. Pipeline `revisar-prosa`: perito sem bloqueantes,
   fiscal 1 bloqueante de gênero (corrigido com ramos `fem`), editor aprovado com reescritas
-  (todas aplicadas). `qa`/`qa-ui`/`lint`/build verdes; casos re-gerados. **Segue pendente do
-  Ramo A:** Fases 2–3 (projeção/decoro; par calma/tensão), P11 (Mesa), eco de interferência.
+  (todas aplicadas). `qa`/`qa-ui`/`lint`/build verdes; casos re-gerados.
+- **✅ Ramo A — Fase 2 (projeção/decoro) executada (20/07/2026).** Decisões do usuário: **Fase 2**
+  primeiro; a projeção do `acusa_com_fervor` **aponta um nome do elenco**; o `omite_por_decoro`
+  encosta na **evasiva + b2 oblíquo**. Duas flags antes lidas por boca nenhuma passam a **colorir
+  beats existentes** (tento discreto, nenhum nó novo): `projecaoFervor` no b2 firme (o inocente
+  ativo aponta **outro inocente**; o alvo é escolhido **excluindo o réu** — Knox nº6), decoro na
+  evasiva + b2 oblíquo. **Fair play fiscalizado no `qa.mjs`** (o nome do réu não aparece em fala de
+  outro suspeito: a projeção jamais acusa o culpado); verificação end-to-end **14 projeções, 0
+  violações**. Só gerador + QA; **motor cego, contrato do `qa-ui` intocado**. Pipeline
+  `revisar-prosa` com **zero bloqueantes** (perito aprovou; fiscal 1 achado MÉDIA de tratamento
+  hardcoded → `{detective.treatment}`; editor aprovou com dois menores aplicados). `qa`/`qa-ui`/
+  `lint`/build verdes; casos re-gerados. **Segue pendente do Ramo A:** Fase 3 (par calma/tensão;
+  `defende_demais_o_morto`) — pede playtest de tell dirigido; P11 (Mesa); eco de interferência.
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 
