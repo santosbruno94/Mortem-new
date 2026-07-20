@@ -108,8 +108,16 @@ detalhar antes).
   ⟺ forasteiro real. Pipeline `revisar-prosa` **zero bloqueantes** (perito aprovou época/coerência;
   fiscal 1 ALTO de gênero "o dono"→"a dona" corrigido nos 6 pontos; editor 2 ALTOs — arsênico não
   se "lava" e eco carta×fala — corrigidos). `qa`/`qa-ui`/`lint`/build verdes; 21 casos re-gerados.
-  **Achado adjacente (perito, mesmo bug para SUFOCAÇÃO — "pano de abafo casa com a lesão",
-  `casos_gerados.js`): registrado em `pendencias-status.md`, aguarda ordem.**
+- **✅ Ramo B — âncora de SUFOCAÇÃO estendida (20/07/2026, commit seguinte).** O perito, no lote
+  de veneno, achou o **mesmo bug para a sufocação**: o "pano de abafo" caía no ramo de lesão
+  ("casa com a lesão da morta"), e sufocação não faz ferida moldável. Sob ordem do usuário, o
+  conserto foi estendido: `VASO_VENENO` virou `ANCORA_SEM_LESAO` (veneno + abafo); a âncora do
+  pano liga-se ao corpo pelo **fiapo** (a trama larga um fiapo claro = o "fiapo claro preso ao
+  canto da boca" da carta do corpo, plantio honesto, KB `asfixias.md`), sem lesão; confronto e
+  guarda do `qa.mjs` estendidos. Pipeline `revisar-prosa` **zero bloqueantes** (perito aprovou a
+  fibra macroscópica de época; fiscal limpo; editor 1 ALTO de tautologia + 1 menor corrigidos).
+  `qa`/`qa-ui`/`lint`/build verdes; 4 casos de sufocação re-gerados. `pendencias-status.md` 2.5
+  fechado.
 - **◐ Parcial (19/07/2026) — lote de fair play do Bloco C concluído** (OS
   `os-dialogo-s1-fair-play.md`, ata em `historico-decisoes.md` "S1 — Fair play do diálogo"):
   P21 (paradeiro universal) verificado como já satisfeito; **P6** (rótulo da carta de álibi

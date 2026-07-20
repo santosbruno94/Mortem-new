@@ -10149,8 +10149,8 @@ export const CASOS_POOL = [
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Edwin Bennett, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "carimboPadrao": "Pano que falta no seu lugar",
+   "descricao": "Entre as coisas de Edwin Bennett, um vão limpo no pó da prateleira, do feitio do pano que ali esteve.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -10683,7 +10683,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edwin Bennett olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
+      "Edwin Bennett olha o vão apontado no papel como se o visse de novo. \"Falta, e pano velho gasta-se e troca-se; disso não guardo conta. Pano de abafo há em todo leito, e a feira o vende por quase nada. Onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -27191,9 +27191,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Amy Chapman, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Pano Lavado",
+   "carimboPadrao": "Pano lavado, fiapo na trama",
+   "descricao": "Entre os pertences de Amy Chapman, o pano lavado e reposto. Na trama, onde a água não desfaz o urdume, ficou um fiapo claro. Roupa de cama assim há em toda casa da vila.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -27716,7 +27716,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Pano Lavado] Por que a peça foi lavada e guardada, ainda com fiapo na trama?"
     }
    ],
    "gatilhos": [
@@ -27761,7 +27761,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Amy Chapman responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "Amy Chapman responde sem olhar a peça duas vezes. \"Lavo a roupa de cama; suja não se guarda. Pano de abafo há em todo leito, e a feira o vende por quase nada. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -28769,9 +28769,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de William Thompson, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Pano Lavado",
+   "carimboPadrao": "Pano lavado, fiapo na trama",
+   "descricao": "Entre os pertences de William Thompson, o pano lavado e reposto. Na trama, onde a água não desfaz o urdume, ficou um fiapo claro. Roupa de cama assim há em toda casa da vila.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -30019,7 +30019,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Pano Lavado] Por que a peça foi lavada e guardada, ainda com fiapo na trama?"
     },
     {
      "requerCarta": "gen_intf_intf_1_retalho",
@@ -30062,7 +30062,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "William Thompson responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "William Thompson responde sem olhar a peça duas vezes. \"Lavo a roupa de cama; suja não se guarda. Pano de abafo há em todo leito, e a feira o vende por quase nada. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -30609,9 +30609,9 @@ export const CASOS_POOL = [
     "fila": 1
    },
    "mobilia": null,
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: um pano de abafo. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá a dona pelo nome: Kate Harris.",
+   "textoDisplay": "O Pano de Abafo",
+   "carimboPadrao": "Pano de abafo deixado na cena",
+   "descricao": "No chão, junto ao corpo, um pano de abafo, a trama largando um fiapo claro. Mais de uma boca reconhece a peça, e a vila dá a dona pelo nome: Kate Harris.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -31518,7 +31518,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Pano de Abafo] Por que a peça achada junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
@@ -31557,7 +31557,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Kate Harris olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
+      "Kate Harris olha a peça sem estender a mão. \"Pano de abafo há em todo leito, e a feira o vende por quase nada; não sou só eu a tê-la. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },

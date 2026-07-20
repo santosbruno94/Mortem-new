@@ -2282,12 +2282,13 @@ function problemasDoPacoteGerado(pacote) {
       if (txt.includes('Rótulo técnico')) problemas.push(`${c.id}: rótulo técnico sem prosa realizada`);
     }
   }
-  // Coerência veneno × âncora (playtest 20/07): num envenenamento NÃO há lesão,
-  // logo nem a âncora de autoria (gen_instrumento) nem o confronto dela podem
-  // falar de arma branca ("casa com a lesão", "sob o rebite", "se lava
-  // ferramenta"…). A peça é o VASO do veneno (frasco/papel). Guarda o furo.
+  // Coerência método-sem-lesão × âncora (playtest 20/07): veneno e sufocação
+  // NÃO deixam ferida moldável, logo nem a âncora de autoria (gen_instrumento)
+  // nem o confronto dela podem falar de arma branca ("casa com a lesão", "sob o
+  // rebite", "se lava ferramenta"…). A peça é o VASO do veneno (frasco/papel)
+  // ou o pano de abafo. Guarda o furo.
   const mecPct = pacote.verdadeDeOuro?.mecanismoCorreto || '';
-  if (mecPct.startsWith('envenenamento')) {
+  if (mecPct.startsWith('envenenamento') || mecPct === 'sufocacao') {
     const gi = pacote.cartas.find((c) => c.id === 'gen_instrumento');
     const textoAncora = `${gi?.descricao || ''} ${gi?.carimboPadrao || ''} ${JSON.stringify(pacote.dialogos || {})}`;
     const termosArma = /casa com a lesão|sob o rebite|a lâmina brilha|crosta escura alojada|se lava ferramenta|ferrugem não espera/i;

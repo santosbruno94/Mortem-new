@@ -640,14 +640,16 @@ const INSTRUMENTO_A_VISTA = {
   frasco_de_laudano: 'um frasco de láudano',
 };
 
-// Âncora de autoria quando o método é VENENO. A morte por veneno NÃO deixa
-// lesão: a peça que liga o réu é o VASO (frasco de láudano, papel de arsênico),
-// nunca uma arma que "casa com a lesão" (fair play + KB medicina-legal). O tell
-// durável é o RESÍDUO — o fio de tintura no gargalo, o pó nas dobras —, análogo
-// à "crosta sob o rebite" da lâmina; e o "comum" preserva a paridade da
-// deflexão (láudano e arsênico eram de venda livre em 1893). Chaves =
-// METODOS[..].instrumento; ausente aqui ⇒ método de lesão, prosa de arma.
-const VASO_VENENO = {
+// Âncora de autoria dos métodos SEM lesão moldável — veneno (láudano/arsênico)
+// e sufocação (pano de abafo). A peça que liga o réu NÃO é uma arma que "casa
+// com a lesão" (fair play + KB medicina-legal); é o VASO do veneno ou o pano.
+// O tell durável é físico e específico do método — resíduo no frasco, pó nas
+// dobras, o fiapo que a trama larga (igual ao preso no canto da boca do corpo,
+// carta do corpo) —, análogo à "crosta sob o rebite" da lâmina. O "comum"
+// preserva a paridade da deflexão (láudano/arsênico de venda livre; pano em
+// todo leito). Chaves = METODOS[..].instrumento; ausente ⇒ método de lesão,
+// prosa de arma.
+const ANCORA_SEM_LESAO = {
   frasco_de_laudano: {
     aVista: 'um frasco de láudano de vidro escuro',
     abandono: 'a rolha de fora e o resto secando no gargalo',
@@ -675,6 +677,20 @@ const VASO_VENENO = {
     guardadoIntro: 'o papel de arsênico sacudido e dobrado de novo',
     guardadoResto: 'Nas dobras, onde a sacudida não desce, resta um pó branco',
     comum: 'Papel assim compra-se para o rato e a mosca, em qualquer venda.',
+  },
+  travesseiro_ou_pano: {
+    aVista: 'um pano de abafo',
+    abandono: 'a trama largando um fiapo claro',
+    vao: 'do pano',
+    abandonadoDisplay: 'O Pano de Abafo',
+    abandonadoCarimbo: 'Pano de abafo deixado na cena',
+    faltandoDisplay: 'O Lugar Vazio',
+    faltandoCarimbo: 'Pano que falta no seu lugar',
+    guardadoDisplay: 'O Pano Lavado',
+    guardadoCarimbo: 'Pano lavado, fiapo na trama',
+    guardadoIntro: 'o pano lavado e reposto',
+    guardadoResto: 'Na trama, onde a água não desfaz o urdume, ficou um fiapo claro',
+    comum: 'Roupa de cama assim há em toda casa da vila.',
   },
 };
 
@@ -933,21 +949,22 @@ function realizarCartas(bruto) {
           ['instrumento_abandonado', 'instrumento_faltando', 'instrumento_guardado_umido'].includes(x.classe)
         );
         const classe = v ? v.classe : 'instrumento_abandonado';
-        // VENENO: a âncora é o VASO, nunca "casa com a lesão" (não há lesão).
-        const vaso = VASO_VENENO[METODOS[escolha.metodoId]?.instrumento];
-        if (vaso) {
+        // Métodos SEM lesão moldável (veneno, sufocação): a âncora é o VASO /
+        // o pano, nunca "casa com a lesão" (não há ferida a moldar).
+        const anc = ANCORA_SEM_LESAO[METODOS[escolha.metodoId]?.instrumento];
+        if (anc) {
           if (classe === 'instrumento_abandonado') {
-            nova.textoDisplay = vaso.abandonadoDisplay;
-            nova.carimboPadrao = vaso.abandonadoCarimbo;
-            nova.descricao = `No chão, junto ao corpo, ${vaso.aVista}, ${vaso.abandono}. Mais de uma boca reconhece a peça, e a vila dá ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} pelo nome: ${reu.nome}.`;
+            nova.textoDisplay = anc.abandonadoDisplay;
+            nova.carimboPadrao = anc.abandonadoCarimbo;
+            nova.descricao = `No chão, junto ao corpo, ${anc.aVista}, ${anc.abandono}. Mais de uma boca reconhece a peça, e a vila dá ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} pelo nome: ${reu.nome}.`;
           } else if (classe === 'instrumento_faltando') {
-            nova.textoDisplay = vaso.faltandoDisplay;
-            nova.carimboPadrao = vaso.faltandoCarimbo;
-            nova.descricao = `Entre as coisas de ${reu.nome}, um vão limpo no pó da prateleira, do feitio ${vaso.vao} que ali esteve.`;
+            nova.textoDisplay = anc.faltandoDisplay;
+            nova.carimboPadrao = anc.faltandoCarimbo;
+            nova.descricao = `Entre as coisas de ${reu.nome}, um vão limpo no pó da prateleira, do feitio ${anc.vao} que ali esteve.`;
           } else {
-            nova.textoDisplay = vaso.guardadoDisplay;
-            nova.carimboPadrao = vaso.guardadoCarimbo;
-            nova.descricao = `Entre os pertences de ${reu.nome}, ${vaso.guardadoIntro}. ${vaso.guardadoResto}. ${vaso.comum}`;
+            nova.textoDisplay = anc.guardadoDisplay;
+            nova.carimboPadrao = anc.guardadoCarimbo;
+            nova.descricao = `Entre os pertences de ${reu.nome}, ${anc.guardadoIntro}. ${anc.guardadoResto}. ${anc.comum}`;
           }
           break;
         }

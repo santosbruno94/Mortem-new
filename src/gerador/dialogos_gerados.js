@@ -675,13 +675,13 @@ function cartaDeAlibi(ctx) {
 // CONFRONTOS (spec §8.4): a tabela fechada carta → pergunta → reação.
 // Cada entrada devolve { pergunta, reacao } já com nomes e lugares postos.
 // ---------------------------------------------------------------------
-// A fala do réu ao ser confrontado com o VASO de veneno (láudano/arsênico):
-// a paridade da deflexão vem de o veneno ser de venda livre em 1893 — a peça
-// não singulariza o réu. Nunca fala em lâmina, ferrugem ou lesão. O fraseado
-// do réu NÃO repete a legenda da carta (senão o suspeito parece recitá-la), e
-// o confronto de "guardado" segue o gesto do vaso: frasco se lava, papel se
-// sacode (arsênico é papel a seco — não se lava).
-const VASO_FALA = {
+// A fala do réu ao ser confrontado com a âncora sem lesão (vaso de veneno ou
+// pano de abafo): a paridade da deflexão vem de a peça ser de posse comum em
+// 1893 — não singulariza o réu. Nunca fala em lâmina, ferrugem ou lesão. O
+// fraseado do réu NÃO repete a legenda da carta (senão o suspeito parece
+// recitá-la), e o "guardado" segue o gesto da peça: frasco se lava, papel se
+// sacode (arsênico é papel a seco — não se lava), pano de cama se lava.
+const FALA_SEM_LESAO = {
   frasco_de_laudano: {
     comum: 'Láudano toma-se contra a dor, e a botica o dá a quem pede',
     descarte: 'frasco vazio joga-se fora',
@@ -694,6 +694,12 @@ const VASO_FALA = {
     guardadoPergunta: 'foi sacudida e dobrada de novo, com pó ainda nas dobras',
     guardadoDefesa: 'Sacudo o que é meu; não guardo papel sujo em casa',
   },
+  travesseiro_ou_pano: {
+    comum: 'Pano de abafo há em todo leito, e a feira o vende por quase nada',
+    descarte: 'pano velho gasta-se e troca-se',
+    guardadoPergunta: 'foi lavada e guardada, ainda com fiapo na trama',
+    guardadoDefesa: 'Lavo a roupa de cama; suja não se guarda',
+  },
 };
 
 function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
@@ -705,8 +711,9 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
     const classe = (bruto.crime.vestigios.find((v) =>
       ['instrumento_abandonado', 'instrumento_faltando', 'instrumento_guardado_umido'].includes(v.classe)
     ) || {}).classe;
-    // VENENO: o confronto é sobre o VASO, nunca a lâmina/lesão.
-    const vf = VASO_FALA[t.tipoVestigio];
+    // Métodos sem lesão (veneno, sufocação): o confronto é sobre a peça
+    // (vaso/pano), nunca a lâmina/lesão.
+    const vf = FALA_SEM_LESAO[t.tipoVestigio];
     if (vf) {
       if (classe === 'instrumento_faltando') {
         return {
