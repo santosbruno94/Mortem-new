@@ -142,6 +142,19 @@ Todos ⏭️ **triagem futura** (por definição). Registrados aqui só para nã
 - 5.7 `interferencia.js` ancora limpeza encenada no cômodo final do corpo
 - 5.8 Propostas de KB: Pawnbrokers Act 1872; protesto × cobrança rural; telegrama manuscrito (1893) × colado (1927); registro de hóspedes obrigatório só em 1914
 - 5.9 [DECISÃO futura] Sacristão-coveiro como arquétipo candidato (sustentado pelo KB; expansão pertence à OS priors)
+- 5.10 [IDEIA do usuário, 20/07/2026] **Exame do corpo por região solicitada.** Hoje a cena do
+  corpo entrega os sinais como cartas prontas (`gen_rigor`, `gen_livores`, `gen_lesao_fatal`,
+  `gen_reacao_vital`) + `medirTemperatura`. A ideia: dar ao jogador uma forma de **pedir/apontar
+  uma região do corpo** para examinar (boca e narinas, pescoço, pupilas, mãos, tronco…) e receber
+  o achado daquela região — exame ativo, mais agência de perito, no espírito do seletor de partes
+  do jogo *No, I'm Not a Human*. Casa naturalmente com o modelo: os sinais já são regionais
+  (escoriações periorais + fiapo na sufocação; sulco no pescoço na ligadura; miose nas pupilas no
+  veneno; feridas de defesa nas mãos). **Escopo:** UI/apresentação + talvez o gerador (mapa de
+  regiões×achados por caso); o **motor segue cego**. **Cautela de fair play a resolver no design:**
+  não pode virar um "qual parte clicar" que entregue a resposta — toda região relevante tem de
+  estar acessível e o achado é o que está lá (nunca uma parte que só o culpado "pede"). Precisa de
+  **OS própria** antes de qualquer build (cruzar com `kb-medicina-legal/protocolo-exame` e a
+  camada 3D do corpo). Não bloqueia nada; aguarda ordem.
 
 ---
 
