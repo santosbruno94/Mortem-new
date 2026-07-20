@@ -97,6 +97,8 @@ Cada uma é uma **ordem de serviço própria**. Não executadas nesta sessão.
 | 2.2 OS marca-e-luva inexistente | M2–M3 aguardam o documento; M0 (dossiê de traumas/datação) livre | ⏭️ OS forense própria |
 | 2.3 Realização de flags psíquicas no diálogo | Flags compiladas sem consumo (`acusa_com_fervor`, `omite_por_decoro`, `mente_com_calma`, `gatilho_de_complexo`) | ⏭️ OS de diálogo (natural seguinte) |
 | 2.4 Guarda de variante órfã no `qa.mjs` | Listar variantes de template que nenhum caso embarcado materializa | ⏭️ Opcional (QA) |
+| 2.5 Âncora de SUFOCAÇÃO incoerente | Mesmo bug que o de veneno (corrigido em 20/07), agora para asfixia: o `pano de abafo` cai no ramo de lesão e gera "O feitio casa com a lesão da morta" (`casos_gerados.js`) — sufocação deixa escoriações periorais, não ferida moldável. Estender a âncora-vaso a métodos de abafo (ancorar no objeto ligado ao réu, sem "casa com a lesão"). Achado pelo perito no lote de veneno. | ⏭️ Aguarda ordem (mesma família; prosa + guarda) |
+| 2.6 Arsênico "em qualquer venda" × livro de venenos | Vigilância (perito): a deflexão do réu diz que papel de arsênico se compra livremente (correto p/ mata-ratos/mata-moscas, cf. Maybrick 1889). Se algum caso plantar trilha de "livro de venenos" (Pharmacy Act 1868) como aquisição registrada, as duas pistas entram em atrito. Nenhum caso faz isso hoje. | ⏭️ Só se surgir a trilha de aquisição registrada |
 
 ---
 

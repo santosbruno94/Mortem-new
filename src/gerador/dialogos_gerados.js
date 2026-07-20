@@ -675,6 +675,27 @@ function cartaDeAlibi(ctx) {
 // CONFRONTOS (spec §8.4): a tabela fechada carta → pergunta → reação.
 // Cada entrada devolve { pergunta, reacao } já com nomes e lugares postos.
 // ---------------------------------------------------------------------
+// A fala do réu ao ser confrontado com o VASO de veneno (láudano/arsênico):
+// a paridade da deflexão vem de o veneno ser de venda livre em 1893 — a peça
+// não singulariza o réu. Nunca fala em lâmina, ferrugem ou lesão. O fraseado
+// do réu NÃO repete a legenda da carta (senão o suspeito parece recitá-la), e
+// o confronto de "guardado" segue o gesto do vaso: frasco se lava, papel se
+// sacode (arsênico é papel a seco — não se lava).
+const VASO_FALA = {
+  frasco_de_laudano: {
+    comum: 'Láudano toma-se contra a dor, e a botica o dá a quem pede',
+    descarte: 'frasco vazio joga-se fora',
+    guardadoPergunta: 'foi lavada, com resto ainda no gargalo',
+    guardadoDefesa: 'Lavo o que é meu; não guardo vidro sujo em casa',
+  },
+  papel_de_arsenico: {
+    comum: 'Papel de rato tem em toda venda, e em toda casa com celeiro',
+    descarte: 'papel de rato usa-se e some',
+    guardadoPergunta: 'foi sacudida e dobrada de novo, com pó ainda nas dobras',
+    guardadoDefesa: 'Sacudo o que é meu; não guardo papel sujo em casa',
+  },
+};
+
 function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   const t = carta.tagsOcultas || {};
   const td = carta.textoDisplay;
@@ -684,6 +705,26 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
     const classe = (bruto.crime.vestigios.find((v) =>
       ['instrumento_abandonado', 'instrumento_faltando', 'instrumento_guardado_umido'].includes(v.classe)
     ) || {}).classe;
+    // VENENO: o confronto é sobre o VASO, nunca a lâmina/lesão.
+    const vf = VASO_FALA[t.tipoVestigio];
+    if (vf) {
+      if (classe === 'instrumento_faltando') {
+        return {
+          pergunta: `[${td}] Por que falta essa peça entre as suas coisas?`,
+          reacao: `${pessoa.nome} olha o vão apontado no papel como se o visse de novo. "Falta, e ${vf.descarte}; disso não guardo conta. ${vf.comum}. Onde eu estava, dei por termo ao guarda, e lá está." As mãos ficam quietas enquanto responde.`,
+        };
+      }
+      if (classe === 'instrumento_guardado_umido') {
+        return {
+          pergunta: `[${td}] Por que a peça ${vf.guardadoPergunta}?`,
+          reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "${vf.guardadoDefesa}. ${vf.comum}. E o delegado lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
+        };
+      }
+      return {
+        pergunta: `[${td}] Por que a peça achada junto do corpo tem o seu nome na vila?`,
+        reacao: `${pessoa.nome} olha a peça sem estender a mão. "${vf.comum}; não sou só eu a tê-la. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita." A voz não muda do começo ao fim.`,
+      };
+    }
     if (classe === 'instrumento_faltando') {
       return {
         pergunta: `[${td}] Por que falta essa peça entre as suas coisas?`,
@@ -877,12 +918,14 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
   const cartasAlibi = [];
   const cartaVisto = cartas.find((c) => c.id === 'gen_visto_vivo');
   // P23 (guarda de sustentação da deflexão): a fala "veio de fora" do réu só
-  // é honesta se há forasteiro plausível no caso — a vítima de passagem
-  // (vitima.forasteiro; o forasteiro é sempre a vítima) ou um suspeito com
-  // paradeiro declarado fora da vila (ausencias: a vila-mercado satélite).
-  // Sem isso, apontar "para fora" seria um tell (só o réu lucra com a tese):
-  // o arremate cai no registro que NÃO deflete (§5 do KB de fair play).
-  const deflexaoSustentavel = Object.keys(ausencias).length > 0 || !!vitima.forasteiro;
+  // é honesta se há forasteiro REAL no caso — a vítima de passagem
+  // (vitima.forasteiro; o forasteiro é sempre a vítima, réu-forasteiro é
+  // vetado). Um mero álibi fora da vila (ausencias: a vila-mercado satélite)
+  // NÃO conta: é um aldeão que estava fora, não um forasteiro a acusar — a
+  // deflexão apontaria um fantasma (playtest 20/07). Sem forasteiro real, o
+  // réu não aponta para fora: recusa nomear e defere ao inquérito, sem o tell
+  // (§5 do KB de fair play).
+  const deflexaoSustentavel = !!vitima.forasteiro;
 
   // O gatilho de complexo (OS `os-flags-psiquicas-no-dialogo.md` §3): só se
   // realiza quando há ≥2 INTERROGÁVEIS com gatilho — senão o réu seria o

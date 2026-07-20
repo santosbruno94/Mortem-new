@@ -651,7 +651,7 @@ export const CASO_REPLICA = {
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -2873,7 +2873,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -2906,7 +2906,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Charles Harris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Charles Harris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -2939,7 +2939,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -5291,9 +5291,9 @@ export const CASOS_POOL = [
     "fila": 2
    },
    "mobilia": null,
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: um frasco de láudano. O feitio casa com a lesão do morto. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Samuel Marsh.",
+   "textoDisplay": "O Frasco Abandonado",
+   "carimboPadrao": "Frasco de láudano deixado na cena",
+   "descricao": "No chão, junto ao corpo, um frasco de láudano de vidro escuro, a rolha de fora e o resto secando no gargalo. Mais de uma boca reconhece a peça, e a vila dá o dono pelo nome: Samuel Marsh.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -6386,7 +6386,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Frasco Abandonado] Por que a peça achada junto do corpo tem o seu nome na vila?"
     }
    ],
    "gatilhos": [
@@ -6431,7 +6431,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Samuel Marsh olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
+      "Samuel Marsh olha a peça sem estender a mão. \"Láudano toma-se contra a dor, e a botica o dá a quem pede; não sou só eu a tê-la. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -7160,7 +7160,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -14094,7 +14094,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -17436,7 +17436,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   },
@@ -18804,7 +18804,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: uma peça pesada, de ocasião. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Edith Walker.",
+   "descricao": "No chão, onde a mão o largou: uma peça pesada, de ocasião. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá a dona pelo nome: Edith Walker.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -20902,8 +20902,8 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
-    "Antes de liberar o dono das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
+    "Antes de liberar a dona das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]]."
    ],
    "blocosContingentes": []
   }
@@ -22316,9 +22316,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Dora Saunders, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
+   "textoDisplay": "O Frasco Lavado",
+   "carimboPadrao": "Frasco lavado, resto no gargalo",
+   "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -22606,7 +22606,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   },
@@ -23066,7 +23066,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Frasco Lavado] Por que a peça foi lavada, com resto ainda no gargalo?"
     }
    ],
    "nos": {
@@ -23105,7 +23105,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Dora Saunders responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "Dora Saunders responde sem olhar a peça duas vezes. \"Lavo o que é meu; não guardo vidro sujo em casa. Láudano toma-se contra a dor, e a botica o dá a quem pede. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -23138,7 +23138,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -23171,7 +23171,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Ellis era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Mary Ellis era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -23204,7 +23204,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -23907,8 +23907,8 @@ export const CASOS_POOL = [
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Edwin Davies, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "carimboPadrao": "Papel que falta no seu lugar",
+   "descricao": "Entre as coisas de Edwin Davies, um vão limpo no pó da prateleira, do feitio do papel dobrado que ali esteve.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -24526,7 +24526,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edwin Davies olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
+      "Edwin Davies olha o vão apontado no papel como se o visse de novo. \"Falta, e papel de rato usa-se e some; disso não guardo conta. Papel de rato tem em toda venda, e em toda casa com celeiro. Onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -25561,9 +25561,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Joseph Green, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Frasco Lavado",
+   "carimboPadrao": "Frasco lavado, resto no gargalo",
+   "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -26504,7 +26504,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Frasco Lavado] Por que a peça foi lavada, com resto ainda no gargalo?"
     }
    ],
    "gatilhos": [
@@ -26549,7 +26549,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Joseph Green responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "Joseph Green responde sem olhar a peça duas vezes. \"Lavo o que é meu; não guardo vidro sujo em casa. Láudano toma-se contra a dor, e a botica o dá a quem pede. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -27460,7 +27460,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -30611,7 +30611,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: um pano de abafo. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Kate Harris.",
+   "descricao": "No chão, onde a mão o largou: um pano de abafo. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá a dona pelo nome: Kate Harris.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -31590,7 +31590,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -31623,7 +31623,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Jones era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Florence Jones era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -31656,7 +31656,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -32193,9 +32193,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de John Morris, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
+   "textoDisplay": "O Frasco Lavado",
+   "carimboPadrao": "Frasco lavado, resto no gargalo",
+   "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -33322,7 +33322,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Frasco Lavado] Por que a peça foi lavada, com resto ainda no gargalo?"
     }
    ],
    "gatilhos": [
@@ -33367,7 +33367,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "John Morris responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "John Morris responde sem olhar a peça duas vezes. \"Lavo o que é meu; não guardo vidro sujo em casa. Láudano toma-se contra a dor, e a botica o dá a quem pede. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },

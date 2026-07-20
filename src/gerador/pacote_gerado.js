@@ -640,6 +640,44 @@ const INSTRUMENTO_A_VISTA = {
   frasco_de_laudano: 'um frasco de láudano',
 };
 
+// Âncora de autoria quando o método é VENENO. A morte por veneno NÃO deixa
+// lesão: a peça que liga o réu é o VASO (frasco de láudano, papel de arsênico),
+// nunca uma arma que "casa com a lesão" (fair play + KB medicina-legal). O tell
+// durável é o RESÍDUO — o fio de tintura no gargalo, o pó nas dobras —, análogo
+// à "crosta sob o rebite" da lâmina; e o "comum" preserva a paridade da
+// deflexão (láudano e arsênico eram de venda livre em 1893). Chaves =
+// METODOS[..].instrumento; ausente aqui ⇒ método de lesão, prosa de arma.
+const VASO_VENENO = {
+  frasco_de_laudano: {
+    aVista: 'um frasco de láudano de vidro escuro',
+    abandono: 'a rolha de fora e o resto secando no gargalo',
+    vao: 'do frasco',
+    abandonadoDisplay: 'O Frasco Abandonado',
+    abandonadoCarimbo: 'Frasco de láudano deixado na cena',
+    faltandoDisplay: 'O Vidro que Falta',
+    faltandoCarimbo: 'Frasco que falta no seu lugar',
+    guardadoDisplay: 'O Frasco Lavado',
+    guardadoCarimbo: 'Frasco lavado, resto no gargalo',
+    guardadoIntro: 'o frasco de láudano lavado e reposto',
+    guardadoResto: 'No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura',
+    comum: 'A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.',
+  },
+  papel_de_arsenico: {
+    aVista: 'um papel de arsênico dobrado',
+    abandono: 'aberto, o pó branco preso na dobra',
+    vao: 'do papel dobrado',
+    abandonadoDisplay: 'O Papel Abandonado',
+    abandonadoCarimbo: 'Papel de arsênico deixado na cena',
+    faltandoDisplay: 'O Lugar Vazio',
+    faltandoCarimbo: 'Papel que falta no seu lugar',
+    guardadoDisplay: 'O Papel Sacudido',
+    guardadoCarimbo: 'Papel sacudido, pó nas dobras',
+    guardadoIntro: 'o papel de arsênico sacudido e dobrado de novo',
+    guardadoResto: 'Nas dobras, onde a sacudida não desce, resta um pó branco',
+    comum: 'Papel assim compra-se para o rato e a mosca, em qualquer venda.',
+  },
+};
+
 // A lesão fatal por método: nome de carta, carimbo e laudo de exame próximo.
 // Playtest de 19/07 (P2): o carimbo é OBSERVAÇÃO, nunca conclusão — descreve
 // a morfologia e a sede; nomear o instrumento/meio ("arma branca") é dedução
@@ -895,6 +933,24 @@ function realizarCartas(bruto) {
           ['instrumento_abandonado', 'instrumento_faltando', 'instrumento_guardado_umido'].includes(x.classe)
         );
         const classe = v ? v.classe : 'instrumento_abandonado';
+        // VENENO: a âncora é o VASO, nunca "casa com a lesão" (não há lesão).
+        const vaso = VASO_VENENO[METODOS[escolha.metodoId]?.instrumento];
+        if (vaso) {
+          if (classe === 'instrumento_abandonado') {
+            nova.textoDisplay = vaso.abandonadoDisplay;
+            nova.carimboPadrao = vaso.abandonadoCarimbo;
+            nova.descricao = `No chão, junto ao corpo, ${vaso.aVista}, ${vaso.abandono}. Mais de uma boca reconhece a peça, e a vila dá ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} pelo nome: ${reu.nome}.`;
+          } else if (classe === 'instrumento_faltando') {
+            nova.textoDisplay = vaso.faltandoDisplay;
+            nova.carimboPadrao = vaso.faltandoCarimbo;
+            nova.descricao = `Entre as coisas de ${reu.nome}, um vão limpo no pó da prateleira, do feitio ${vaso.vao} que ali esteve.`;
+          } else {
+            nova.textoDisplay = vaso.guardadoDisplay;
+            nova.carimboPadrao = vaso.guardadoCarimbo;
+            nova.descricao = `Entre os pertences de ${reu.nome}, ${vaso.guardadoIntro}. ${vaso.guardadoResto}. ${vaso.comum}`;
+          }
+          break;
+        }
         if (classe === 'instrumento_abandonado') {
           nova.textoDisplay = 'O Instrumento Abandonado';
           nova.carimboPadrao = 'Instrumento deixado na cena';
@@ -903,8 +959,8 @@ function realizarCartas(bruto) {
           // P12: a carta nomeia a peça e diz POR QUE a vila conhece o dono.
           const aVista = INSTRUMENTO_A_VISTA[METODOS[escolha.metodoId]?.instrumento];
           nova.descricao = aVista
-            ? `No chão, onde a mão o largou: ${aVista}. O feitio casa com a lesão ${doMorto}. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: ${reu.nome}.`
-            : `Ficou no chão, onde a mão o largou. O feitio casa com a lesão ${doMorto}, e a vila dá o dono pelo nome: ${reu.nome}.`;
+            ? `No chão, onde a mão o largou: ${aVista}. O feitio casa com a lesão ${doMorto}. Mais de uma boca reconhece a peça de uso, e a vila dá ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} pelo nome: ${reu.nome}.`
+            : `Ficou no chão, onde a mão o largou. O feitio casa com a lesão ${doMorto}, e a vila dá ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} pelo nome: ${reu.nome}.`;
         } else if (classe === 'instrumento_faltando') {
           nova.textoDisplay = 'O Lugar Vazio';
           nova.carimboPadrao = 'Instrumento que falta no seu lugar';
@@ -1496,10 +1552,10 @@ function montarLocalidades(bruto, cartas) {
       acoesEspeciais: [],
       prosa: [
         cartaOficio.id === 'gen_ferimento_reu'
-          ? 'A diligência corre com o delegado à porta e o dono das coisas a um canto. O delegado manda arregaçar as mangas: [[gen_ferimento_reu]].'
-          : `A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[${cartaOficio.id}]].`,
+          ? `A diligência corre com o delegado à porta e ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas a um canto. O delegado manda arregaçar as mangas: [[gen_ferimento_reu]].`
+          : `A diligência corre com o delegado à porta e ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[${cartaOficio.id}]].`,
         ...(cartaOficio.id !== 'gen_ferimento_reu' && cartasOficio.some((c) => c.id === 'gen_ferimento_reu')
-          ? ['Antes de liberar o dono das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]].']
+          ? [`Antes de liberar ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]].`]
           : []),
       ],
       blocosContingentes: blocosPorLocalidade.oficio_do_reu || [],

@@ -2282,6 +2282,18 @@ function problemasDoPacoteGerado(pacote) {
       if (txt.includes('Rótulo técnico')) problemas.push(`${c.id}: rótulo técnico sem prosa realizada`);
     }
   }
+  // Coerência veneno × âncora (playtest 20/07): num envenenamento NÃO há lesão,
+  // logo nem a âncora de autoria (gen_instrumento) nem o confronto dela podem
+  // falar de arma branca ("casa com a lesão", "sob o rebite", "se lava
+  // ferramenta"…). A peça é o VASO do veneno (frasco/papel). Guarda o furo.
+  const mecPct = pacote.verdadeDeOuro?.mecanismoCorreto || '';
+  if (mecPct.startsWith('envenenamento')) {
+    const gi = pacote.cartas.find((c) => c.id === 'gen_instrumento');
+    const textoAncora = `${gi?.descricao || ''} ${gi?.carimboPadrao || ''} ${JSON.stringify(pacote.dialogos || {})}`;
+    const termosArma = /casa com a lesão|sob o rebite|a lâmina brilha|crosta escura alojada|se lava ferramenta|ferrugem não espera/i;
+    const m = textoAncora.match(termosArma);
+    if (m) problemas.push(`veneno (${mecPct}) com prosa de arma branca na âncora/confronto: "${m[0]}"`);
+  }
   return problemas;
 }
 const problemasEmbarcados = [CASO_REPLICA, ...CASOS_POOL].flatMap((p) =>
@@ -2588,6 +2600,18 @@ function problemasDosDialogosGerados(pacote) {
         }
       }
     }
+  }
+  // P23 — deflexão "veio de fora" só com forasteiro REAL (playtest 20/07): a
+  // fala do réu "veio de fora do costume" apontaria um fantasma se não houver
+  // forasteiro (vítima de passagem, carta gen_papeis_forasteiro) no caso. Um
+  // mero álibi fora da vila não basta. FISCALIZADO no pacote: deflexão ⟺
+  // forasteiro real.
+  const temDeflexao = Object.values(dialogos).some((d) =>
+    Object.values(d.nos || {}).some((no) => (no.fala || []).some((f) => f.includes('veio de fora do costume')))
+  );
+  const temForasteiro = pacote.cartas.some((c) => c.id === 'gen_papeis_forasteiro');
+  if (temDeflexao && !temForasteiro) {
+    problemas.push('deflexão "veio de fora" sem forasteiro real (P23): apontaria um fantasma');
   }
   return problemas;
 }

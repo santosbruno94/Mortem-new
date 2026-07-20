@@ -93,6 +93,23 @@ detalhar antes).
 
 - **Pronto quando (ambos):** `qa.mjs` e `qa-ui.mjs` verdes; se prosa mudou, pipeline
   `revisar-prosa` com zero achados bloqueantes.
+- **✅ Ramo B — âncora de autoria coerente com veneno + deflexão P23 apertada (20/07/2026).**
+  Bug achado pelo playtest de tell da Fase 3 (caso `gerado_comarca_13`, ré Dora Saunders): num
+  **envenenamento** (láudano/arsênico), a âncora de autoria mostrava uma **lâmina "que casa com
+  a lesão da morta"** — ferida que veneno não produz —, tornando o caso incoerente/insolúvel
+  (fura "medicina legal precisa, sempre" + fair play). Afetava **5/21 casos** (todos os venenos).
+  **Correção (decisão do usuário — opção C, prosa agora):** a âncora passa a ser o **VASO** do
+  veneno (frasco de láudano com fio de tintura no gargalo; papel de arsênico com pó nas dobras),
+  sem lesão — carta (`VASO_VENENO` em `pacote_gerado.js`) e confronto (`VASO_FALA` em
+  `dialogos_gerados.js`), com a paridade da deflexão pela venda livre. O motor já lia o
+  `tipoVestigio` correto; era furo de prosa. **P23 apertado:** a deflexão "veio de fora" deixa de
+  contar mero álibi fora da vila; só sai com **forasteiro real** (vítima de passagem) — antes
+  apontava um fantasma. **Guardas novas no `qa.mjs`:** veneno sem prosa de arma branca; deflexão
+  ⟺ forasteiro real. Pipeline `revisar-prosa` **zero bloqueantes** (perito aprovou época/coerência;
+  fiscal 1 ALTO de gênero "o dono"→"a dona" corrigido nos 6 pontos; editor 2 ALTOs — arsênico não
+  se "lava" e eco carta×fala — corrigidos). `qa`/`qa-ui`/`lint`/build verdes; 21 casos re-gerados.
+  **Achado adjacente (perito, mesmo bug para SUFOCAÇÃO — "pano de abafo casa com a lesão",
+  `casos_gerados.js`): registrado em `pendencias-status.md`, aguarda ordem.**
 - **◐ Parcial (19/07/2026) — lote de fair play do Bloco C concluído** (OS
   `os-dialogo-s1-fair-play.md`, ata em `historico-decisoes.md` "S1 — Fair play do diálogo"):
   P21 (paradeiro universal) verificado como já satisfeito; **P6** (rótulo da carta de álibi
