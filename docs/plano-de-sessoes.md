@@ -176,11 +176,11 @@ detalhar antes).
   defende inocente-only). Pipeline `revisar-prosa` **zero bloqueantes** (perito aprovou; fiscal 1
   MÉDIA de gênero "Posto"→"Contra a parede", corrige bug pré-existente; editor 1 ALTO de registro
   de classe + 3 menores, todos aplicados). `qa`/`qa-ui`/`lint`/build verdes; casos re-gerados.
-  **Gate pendente (ação do usuário):** o playtest de tell dirigido
-  (`docs/playtest/protocolo-tell-fase3.md`) antes de dar a Fase 3 por fechada/mergeável.
-  **Nota:** a PR #75 (Fases 2–3) foi mergeada pelo usuário em 20/07 (`c59def2`) — o código da
-  Fase 3 já está no base; se o playtest reprovar, o recuo (postura C / tirar o eixo tenso /
-  segurar o defende) vira commit novo, não des-merge.
+  **Gate humano CUMPRIDO (20/07/2026):** o playtest de tell dirigido
+  (`docs/playtest/protocolo-tell-fase3.md`, kit em `kit-tell-fase3-2026-07-20.md`) foi rodado e
+  **passou** — o usuário reportou que a têmpera não vaza (palpite só-por-têmpera no acaso). **A
+  Fase 3 e todo o Ramo A das flags psíquicas estão fechados**, sem recuo. (A PR #75, Fases 2–3, já
+  fora mergeada em 20/07, `c59def2`.)
 - **✅ Ramo A — eco de interferência: voz do perito executada (20/07/2026).** Decisão do usuário:
   o eco pós-caso das interferências (`ecos_interferencia.js`, hoje só no procedural, que **não tem
   legista** — `falaDoMestre.js:16`) troca a boca do **legista** para o **perito em 1ª pessoa**

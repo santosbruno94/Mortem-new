@@ -326,10 +326,13 @@ camada narrativa; motor cego.
   que fazia o tagarela-calmo soar medroso). `qa.mjs` `CASO VÁLIDO`, `qa-ui.mjs` `UI VÁLIDA`,
   `lint-prosa` limpo, build limpo, casos re-gerados.
 
-### Fase 3 — pendente só o gate humano
+### Fase 3 — FECHADA (gate humano passou, 20/07/2026)
 
-O código, as guardas e a prosa estão prontos e verdes; resta **o playtest de tell dirigido**
-(§ acima), que é ação do usuário, antes de considerar a Fase 3 fechada e mergeável.
+O código, as guardas e a prosa já estavam prontos e verdes; **o playtest de tell dirigido**
+(§ acima) foi rodado e **passou** — o usuário reportou que a têmpera não aponta o culpado (palpite
+só-por-têmpera no acaso, sem tell). Kit do facilitador usado: `docs/playtest/kit-tell-fase3-2026-07-20.md`.
+Com o gate cumprido, **a Fase 3 (e todo o Ramo A das flags psíquicas, itens 2.1 + 2.3) está
+fechada e mergeável** — sem recuo de postura, sem tirar o eixo tenso, sem segurar o `defende`.
 
 ---
 
