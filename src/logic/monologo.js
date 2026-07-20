@@ -133,7 +133,7 @@ function textoDaFalha(falha, dados) {
     case 'sem_mecanismo':
       return 'Não afirmei como a vítima morreu.';
     case 'mecanismo_errado':
-      return 'A causa que sustentei não se firma nos sinais do corpo; o pescoço dizia outra coisa.';
+      return 'A causa que sustentei não se firma nos sinais do corpo; as lesões dizem outra coisa.';
     case 'sem_nexo':
       return `Nada na minha cadeia pôs ${comArtigo(nomeReu)} junto ao instrumento do crime.`;
     case 'nexo_errado':

@@ -38,7 +38,8 @@ const DICAS_TUTORIAL = {
     primeira: 'Não cravei a causa da morte. Devo afirmá-la e sustentá-la nos sinais discriminantes do corpo.',
   },
   mecanismo_errado: {
-    primeira: 'Afirmei uma causa que os sinais do corpo desmentem; devo voltar ao pescoço da vítima.',
+    primeira: 'Afirmei uma causa que os sinais do corpo desmentem; devo reler as lesões e repensar o que as fez.',
+    reincidencia: 'Ainda não acertei a causa. Os sinais discriminantes do corpo — o aspecto da ferida, o que sangrou e o que não sangrou — dizem como, não apenas onde.',
   },
   sem_nexo: {
     primeira: 'Falta-me materialidade: nenhum vestígio põe o réu na cena. Devo puxar um à âncora Presença.',
