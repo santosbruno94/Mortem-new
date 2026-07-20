@@ -2449,7 +2449,9 @@ console.log('pool[0]:', JSON.stringify(perfisPool));
 //       toda vaiPara existe; nenhum nó órfão; todo beat tem os 4 tons;
 //       bijeção confrontos↔reacoesProva; requerCarta e destino de reação
 //       existem; o beat de paradeiro sustenta a MESMA carta nos 4 tons;
-//       fala e rótulo não vazam id interno (fora dos marcadores).
+//       fala e rótulo não vazam id interno (fora dos marcadores). Gatilho
+//       de complexo: nó terminal, reação sem carta (biografia ≠ prova), e
+//       o anti-tell do portão dos ≥2 por caso (0 ou ≥2, nunca 1).
 //   (e) ARMADILHAS SINTÉTICAS (lição da Fase 5): beat de 3 tons,
 //       confronto sem reação, nó órfão e requerCarta fantasma TÊM de
 //       falhar — e o caso válido passa. `--self-test` verboseia.
@@ -2485,9 +2487,14 @@ function problemasDosDialogosGerados(pacote) {
         }
       }
     }
-    // Alcançabilidade: a descida desde noInicial, mais os nós de reação e
-    // a evasiva, tem de cobrir TODOS os nós da árvore.
-    const alcancados = new Set([d.noEvasiva, ...Object.values(d.reacoesProva || {})]);
+    // Alcançabilidade: a descida desde noInicial, mais os nós de reação, a
+    // evasiva e os destinos de gatilho (canal lateral), tem de cobrir TODOS
+    // os nós da árvore.
+    const alcancados = new Set([
+      d.noEvasiva,
+      ...Object.values(d.reacoesProva || {}),
+      ...(d.gatilhos || []).map((g) => g.vaiPara),
+    ]);
     const descer = (noId) => {
       if (!noId || alcancados.has(noId) || !nos[noId]) return;
       alcancados.add(noId);
@@ -2517,11 +2524,31 @@ function problemasDosDialogosGerados(pacote) {
       );
       if (comum.length === 0) problemas.push(`${id}: beat de paradeiro sem sustentação comum nos 4 tons`);
     }
+    // Gatilho de complexo (OS os-flags-psiquicas-no-dialogo.md, Fase 1):
+    // confronto SEM carta, canal lateral. Cada entrada aponta um nó real,
+    // TERMINAL (opcoes: [] — não desce a árvore), com rótulo não-vazio; e a
+    // reação é BIOGRAFIA, nunca prova — nenhum marcador [[carta]] na fala do
+    // nó de gatilho (o fair play que separa biografia de caso, §3 da OS).
+    for (const g of d.gatilhos || []) {
+      if (!g || typeof g.rotulo !== 'string' || g.rotulo.trim() === '') {
+        problemas.push(`${id}: gatilho com rótulo vazio`);
+      }
+      if (!idsNos.has(g?.vaiPara)) {
+        problemas.push(`${id}: gatilho aponta nó inexistente (${g?.vaiPara})`);
+      } else {
+        const alvo = nos[g.vaiPara];
+        if ((alvo.opcoes || []).length !== 0) problemas.push(`${id}: nó de gatilho não é terminal (${g.vaiPara})`);
+        if (marcadoresDoNo(g.vaiPara).size > 0) {
+          problemas.push(`${id}: gatilho cita carta na reação (biografia ≠ prova) (${g.vaiPara})`);
+        }
+      }
+    }
     // Fala e rótulo não vazam id interno (fora dos marcadores [[…]]).
     const textos = [
       ...Object.values(nos).flatMap((n) => n.fala || []),
       ...Object.values(nos).flatMap((n) => (n.opcoes || []).map((o) => o.rotulo)),
       ...(d.confrontos || []).map((c) => c.rotulo),
+      ...(d.gatilhos || []).map((g) => g.rotulo),
       d.chamada,
       d.titulo,
       d.subtitulo,
@@ -2531,6 +2558,14 @@ function problemasDosDialogosGerados(pacote) {
         problemas.push(`${id}: id interno vazando em fala/rótulo ("${t.slice(0, 40)}…")`);
       }
     }
+  }
+  // Anti-tell do gatilho (§3 da OS): por caso, o número de árvores com
+  // gatilho é 0 ou ≥ 2 — nunca 1. Se o réu fosse o único a "perder a linha",
+  // a compostura desmontada viraria tell. O portão dos ≥2 vive no derivador;
+  // aqui ele é FISCALIZADO no pacote embarcado.
+  const comGatilho = Object.values(dialogos).filter((d) => (d.gatilhos || []).length > 0).length;
+  if (comGatilho === 1) {
+    problemas.push(`gatilho solitário (${comGatilho}): o portão dos ≥2 falhou — viraria tell`);
   }
   return problemas;
 }
@@ -3063,6 +3098,57 @@ let g6RegimesOk = true;
       `\nPRIORS F3 — G6 (regimes) falhou: regime 1 em ${(100 * fracaoRegime1).toFixed(1)}% do lote; violações: ${g6Falhas.slice(0, 6).join(', ')}`
     );
   }
+}
+
+// ============================================================
+// TELEMETRIA — flags psíquicas no diálogo (Fase 0 da OS
+// `docs/os-flags-psiquicas-no-dialogo.md`, S1 Ramo A). RISCO ZERO: só
+// LÊ o lote e reporta — não toca o gerador, não muda byte de pacote, não
+// gateia CASO VÁLIDO. Mede quanto de cada flag o gerador já compila e
+// que hoje NENHUMA boca lê (o derivador dialogos_gerados.js é cego às
+// flags), para calibrar a dosagem das fases seguintes com número real —
+// mesmo padrão da Fase 0 de telemetria do P9 (PR #73). As flags vivem em
+// `bruto.psique.consequencias.porPessoa[id].flags` (build time; fora do
+// pacote), disponíveis ao derivador via o `bruto` que ele já recebe.
+// ============================================================
+{
+  const conta = {
+    reuCalma: 0, reuTensao: 0, inocenteCalmaPeriferica: 0,
+    acusaComFervor: 0, omitePorDecoro: 0, defendeDemaisOMorto: 0,
+    iscaMenteSobPressao: 0, gatilhoReu: 0, gatilhoInocente: 0,
+    pessoas: 0, flagsTotais: 0, casosComGatilhoInocente: 0,
+  };
+  for (const bruto of loteF2) {
+    const reuId = bruto.escolha.assassinoId;
+    let gatilhoInocenteNesteCaso = 0;
+    for (const [pid, c] of Object.entries(bruto.psique.consequencias.porPessoa)) {
+      conta.pessoas++;
+      conta.flagsTotais += c.flags.length;
+      const ehReu = pid === reuId;
+      for (const f of c.flags) {
+        if (f === 'mente_com_calma') conta.reuCalma++;
+        else if (f === 'mente_sob_pressao') ehReu ? conta.reuTensao++ : conta.iscaMenteSobPressao++;
+        else if (f.startsWith('mente_com_calma_periferica:')) conta.inocenteCalmaPeriferica++;
+        else if (f === 'acusa_com_fervor') conta.acusaComFervor++;
+        else if (f === 'omite_por_decoro') conta.omitePorDecoro++;
+        else if (f === 'defende_demais_o_morto') conta.defendeDemaisOMorto++;
+        else if (f.startsWith('gatilho_de_complexo:')) {
+          if (ehReu) conta.gatilhoReu++;
+          else { conta.gatilhoInocente++; gatilhoInocenteNesteCaso++; }
+        }
+      }
+    }
+    if (gatilhoInocenteNesteCaso > 0) conta.casosComGatilhoInocente++;
+  }
+  const nCasos = loteF2.length;
+  const calmaTotal = conta.reuCalma + conta.inocenteCalmaPeriferica;
+  const fracInocenteCalma = calmaTotal > 0 ? (100 * conta.inocenteCalmaPeriferica / calmaTotal) : 0;
+  console.log(`\nTELEMETRIA — flags psíquicas no diálogo (Fase 0; lote de ${nCasos} casos; hoje SEM boca no diálogo):`);
+  console.log(`  réu mente_com_calma: ${conta.reuCalma}  ×  réu mente_sob_pressao: ${conta.reuTensao}`);
+  console.log(`  inocente mente_com_calma_periferica: ${conta.inocenteCalmaPeriferica}  (paridade do tell calmo: ${fracInocenteCalma.toFixed(1)}% dos calmos são inocentes)`);
+  console.log(`  acusa_com_fervor: ${conta.acusaComFervor}  |  omite_por_decoro: ${conta.omitePorDecoro}  |  defende_demais_o_morto: ${conta.defendeDemaisOMorto}  |  isca mente_sob_pressao: ${conta.iscaMenteSobPressao}`);
+  console.log(`  gatilho_de_complexo — réu: ${conta.gatilhoReu}  |  inocente: ${conta.gatilhoInocente}  (${conta.casosComGatilhoInocente}/${nCasos} casos têm ≥1 gatilho inocente)`);
+  console.log(`  total: ${conta.flagsTotais} flags compiladas em ${conta.pessoas} pessoas — 0 lidas por dialogos_gerados.js (a boca que esta OS abre).`);
 }
 
 // (G7) integridade de pools (F4 §5.3): todo prior é array de 5 com soma
