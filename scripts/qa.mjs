@@ -2621,7 +2621,8 @@ function problemasDosDialogosGerados(pacote) {
   }
   // P9 Via B — contra-hipótese jogável: se um periférico é inocente_acesso,
   // o diálogo dele deve mencionar acesso ao instrumento (marcador "peguei
-  // emprestada" ou "já pus a mão") E o pacote deve ter o álibi dele.
+  // emprestada", "conheço de mão", "já pus a mão" ou "já comprei") E o
+  // pacote deve ter o álibi dele.
   const verdade = pacote.verdadeDeOuro || {};
   for (const [suspId, p] of Object.entries(verdade.perifericos || {})) {
     if (p.veredictoEsperado !== 'inocente_acesso') continue;
@@ -2631,7 +2632,7 @@ function problemasDosDialogosGerados(pacote) {
       continue;
     }
     const mencionaAcesso = Object.values(dialogo.nos || {}).some((no) =>
-      (no.fala || []).some((f) => f.includes('peguei emprestada') || f.includes('já pus a mão') || f.includes('conheço de mão'))
+      (no.fala || []).some((f) => f.includes('peguei emprestada') || f.includes('já pus a mão') || f.includes('conheço de mão') || f.includes('já comprei'))
     );
     if (!mencionaAcesso) {
       problemas.push(`P9 Via B: acessor ${suspId} sem fala de acesso ao instrumento`);

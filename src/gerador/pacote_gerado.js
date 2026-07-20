@@ -1871,7 +1871,8 @@ export function montarPacoteGerado(seed, opts = {}) {
   // declara a moradia (a mentira de vergonha que o rastro desmente).
   const ausencias =
     ausenteId && comarcaDoCaso ? { [ausenteId]: comarcaDoCaso.satelite.rotulo } : {};
-  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias, acessorId: perif.acessorId });
+  const instrumentoDoMetodo = METODOS[bruto.crime.metodoId]?.instrumento || null;
+  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias, acessorId: perif.acessorId, instrumento: instrumentoDoMetodo });
   cartas.push(...cartasAlibi);
 
   // A carta de NEXO define o instrumento que o veredicto cobra: o método
