@@ -405,24 +405,27 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
   // frequentar o prédio onde o instrumento vivia (o ofício/moradia do réu).
   // Se existe, o veredicto cobra que o jogador tenha o álibi dele na mesa
   // para cravar "inocente" (o gesto a mais que fecha a contra-hipótese).
-  const assassino = pessoas.get(crime.assassinoId);
-  const predioInstrumento = assassino.pacoteEspacial.trabalho || assassino.pacoteEspacial.moradia;
-  const candidatosAcesso = candidatos.filter((s) => {
-    if (comSegredo.includes(s.id)) return false;
-    if (s.id === ausenteId) return false;
-    const pe = pessoas.get(s.id)?.pacoteEspacial;
-    if (!pe) return false;
-    return (
-      pe.moradia === predioInstrumento ||
-      pe.trabalho === predioInstrumento ||
-      pe.frequentados.includes(predioInstrumento)
-    );
-  });
+  const metodo = METODOS[crime.metodoId];
   let acessorId = null;
-  if (candidatosAcesso.length > 0) {
-    const escolhido = candidatosAcesso[hashString(`${sal}|acessor`) % candidatosAcesso.length];
-    acessorId = escolhido.id;
-    perifericos[acessorId] = { ...perifericos[acessorId], veredictoEsperado: 'inocente_acesso' };
+  if (metodo?.instrumento) {
+    const assassino = pessoas.get(crime.assassinoId);
+    const predioInstrumento = assassino.pacoteEspacial.trabalho || assassino.pacoteEspacial.moradia;
+    const candidatosAcesso = candidatos.filter((s) => {
+      if (comSegredo.includes(s.id)) return false;
+      if (s.id === ausenteId) return false;
+      const pe = pessoas.get(s.id)?.pacoteEspacial;
+      if (!pe) return false;
+      return (
+        pe.moradia === predioInstrumento ||
+        pe.trabalho === predioInstrumento ||
+        pe.frequentados.includes(predioInstrumento)
+      );
+    });
+    if (candidatosAcesso.length > 0) {
+      const escolhido = candidatosAcesso[hashString(`${sal}|acessor`) % candidatosAcesso.length];
+      acessorId = escolhido.id;
+      perifericos[acessorId] = { ...perifericos[acessorId], veredictoEsperado: 'inocente_acesso' };
+    }
   }
 
   return { perifericos, cartasNovas, segredos, acessorId };
