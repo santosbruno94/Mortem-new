@@ -527,6 +527,9 @@ async function main() {
     // e o retrato nomeia o que ficou por abrir (o Gabinete, nesta rota).
     checar('Rota 1: epílogo paga a explicação da luz', epilogo.includes('lampião'));
     checar('Rota 1: retrato nomeia o que ficou por visitar', epilogo.includes('Ficou por visitar: Gabinete Pettigrew'));
+    // O laço de playtest: o epílogo oferece "Novo caso" (sorteia outro caso da
+    // comarca, sem voltar ao título) ao lado de "Fechar o caderno".
+    checar('Rota 1: epílogo oferece "Novo caso"', (await page.getByRole('button', { name: 'Novo caso' }).count()) === 1);
     await page.getByRole('button', { name: 'Fechar o caderno' }).click();
     // Onda 1: fechar o caderno apaga o save — a página recarregada cai no
     // convite limpo, nunca no gate de retomada.

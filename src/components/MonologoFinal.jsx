@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useJogo, CUSTO_REVISAO } from '../store/jogo.js';
 import { gerarMonologo, comArtigo } from '../logic/monologo.js';
 import { gerarEpilogo } from '../logic/epilogo.js';
-import { obterCartas, obterSuspeitos, obterLocalidades } from '../data/pacote_caso.js';
+import { obterCartas, obterSuspeitos, obterLocalidades, obterCaso } from '../data/pacote_caso.js';
+import { pacoteDoModo, TAMANHO_POOL } from '../data/casos.js';
 import { formatRelogio, formatHora, formatDuracao, HORAS_CHEGADA_CENA } from '../logic/tempo.js';
 import { tocarSom } from '../som.js';
 import Overlay from './Overlay.jsx';
@@ -77,6 +78,23 @@ export default function MonologoFinal() {
   const detective = useJogo((s) => s.detective);
   const revisarAcusacao = useJogo((s) => s.revisarAcusacao);
   const reiniciarCaso = useJogo((s) => s.reiniciarCaso);
+  const carregarCaso = useJogo((s) => s.carregarCaso);
+  const escolherDetective = useJogo((s) => s.escolherDetective);
+
+  // Sorteia um caso NOVO da comarca (≠ o atual) e cai direto na abertura dele
+  // — o laço de playtest sem voltar ao título. O sorteio é da camada de
+  // apresentação (Math.random permitido fora de logic/data/store); o caso
+  // sorteado é, em si, determinístico por seed.
+  const jogarNovoCaso = () => {
+    const atualId = obterCaso().id;
+    let pacote = pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
+    for (let i = 0; pacote.id === atualId && i < TAMANHO_POOL; i++) {
+      pacote = pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
+    }
+    tocarSom('lacre');
+    carregarCaso(pacote);
+    escolherDetective();
+  };
   const horasJogo = useJogo((s) => s.horasJogo);
   const nosVisitados = useJogo((s) => s.nosVisitados);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
@@ -161,7 +179,10 @@ export default function MonologoFinal() {
           </p>
         </div>
 
-        <div className="mt-5 flex justify-end">
+        <div className="mt-5 flex flex-wrap justify-end gap-3">
+          <button onClick={jogarNovoCaso} className="botao-mesa" data-novo-caso>
+            Novo caso
+          </button>
           <button
             onClick={() => {
               // O caderno fecha de vez: apaga o save antes do reload, para a
@@ -169,7 +190,7 @@ export default function MonologoFinal() {
               reiniciarCaso();
               window.location.reload();
             }}
-            className="botao-mesa"
+            className="botao-mesa botao-mesa--quieto"
           >
             Fechar o caderno
           </button>

@@ -118,6 +118,14 @@ detalhar antes).
   fibra macroscópica de época; fiscal limpo; editor 1 ALTO de tautologia + 1 menor corrigidos).
   `qa`/`qa-ui`/`lint`/build verdes; 4 casos de sufocação re-gerados. `pendencias-status.md` 2.5
   fechado.
+- **✅ QOL — botão "Novo caso" (20/07/2026, a pedido do usuário para o playtest sem terminal).**
+  O epílogo (`MonologoFinal`) e a retomada (`TelaPersonagem`) ganham um botão que sorteia um caso
+  novo da comarca (≠ o atual) e cai direto na abertura dele, sem voltar ao título nem recarregar.
+  Só apresentação: reusa `carregarCaso`+`escolherDetective`; o sorteio (`Math.random`) fica na
+  camada de componente (permitido fora de logic/data/store), e o caso é determinístico por seed.
+  **O runtime NÃO gera casos do zero** (regra de zero-geração em runtime); "novo" = outro caso do
+  lote de 21 já validado pelo `qa.mjs`. Novo check no `qa-ui` trava o botão. build/`qa`/`qa-ui`
+  verdes.
 - **◐ Parcial (19/07/2026) — lote de fair play do Bloco C concluído** (OS
   `os-dialogo-s1-fair-play.md`, ata em `historico-decisoes.md` "S1 — Fair play do diálogo"):
   P21 (paradeiro universal) verificado como já satisfeito; **P6** (rótulo da carta de álibi

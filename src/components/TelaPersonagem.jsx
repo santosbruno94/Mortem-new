@@ -50,6 +50,20 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
     escolherDetective();
   };
 
+  // Sorteia um caso NOVO da comarca (≠ o atual) e vai à abertura dele. Mesmo
+  // sorteio de apresentação do atenderChamado; serve o laço de playtest a
+  // partir da retomada, sem precisar do título limpo.
+  const jogarNovoCaso = () => {
+    const atualId = obterCaso().id;
+    let pacote = pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
+    for (let i = 0; pacote.id === atualId && i < TAMANHO_POOL; i++) {
+      pacote = pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
+    }
+    carregarCaso(pacote);
+    escolherDetective();
+    if (aoDecidirRetomada) aoDecidirRetomada();
+  };
+
   return (
     <div className="relative altura-tela-min mesa-madeira overflow-hidden flex flex-col items-center justify-center px-4 sm:px-6 py-12">
       {/* Halo de vela que respira sobre a mesa */}
@@ -77,6 +91,9 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
             <div className="flex flex-wrap justify-center gap-3 w-full max-w-md">
               <button onClick={() => aoDecidirRetomada()} className="botao-mesa">
                 Continuar o caso
+              </button>
+              <button onClick={jogarNovoCaso} className="botao-mesa botao-mesa--quieto" data-novo-caso>
+                Novo caso
               </button>
               <button
                 onClick={() => {
