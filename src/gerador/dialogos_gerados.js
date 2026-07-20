@@ -519,12 +519,34 @@ function falaB2(ctx, tom) {
       }[grupo],
     }[tom];
   }
+  // P9 Via B — a contra-hipótese: o ACESSOR menciona familiaridade com o
+  // instrumento. Aparece em NÃO-réu (periférico OU testemunha que também é
+  // acessor — o papel depende de ter carta com origemTestemunha, mas o
+  // acesso é ortogonal). firme e tecnico (2/4 tons). O verbo "peguei" /
+  // "conheço" ancora a QA guard.
+  if (papel !== 'reu' && ctx.ehAcessor) {
+    if (tom === 'firme') {
+      corpo = {
+        alto: `"Nomes não aponto. Ferramenta daquelas, porém, eu conheço de mão: passa pela casa mais de uma vez ao mês."`,
+        oficio: `"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez."`,
+        chao: `"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um."`,
+      }[grupo];
+    } else if (tom === 'tecnico') {
+      corpo = {
+        alto: `"Tratos, os de vizinho de terra; nada em papel que um inquérito leia. A peça de ofício eu conheço; mais de uma mão ali passou."`,
+        oficio: `"Tratos meus com ${eleVitima}, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi."`,
+        chao: `"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um."`,
+      }[grupo];
+    }
+  }
   // Fase 2 — a projeção (fervor) reescreve o b2 FIRME; o decoro reescreve o
   // b2 OBLÍQUO. Só em não-assassino (o réu nunca porta estas flags; a guarda
   // do qa.mjs fiscaliza). Tento discreto: colore o beat, não cria nó. Ver o
   // cabeçalho da Fase 2 acima.
   if (papel !== 'reu') {
-    if (tom === 'firme' && ctx.acusaComFervor && ctx.alvoFervor) {
+    // O acesso (P9) prevalece sobre o fervor em firme (fair play > colorido);
+    // fervor ainda vive nos outros tons se a flag existir.
+    if (tom === 'firme' && ctx.acusaComFervor && ctx.alvoFervor && !ctx.ehAcessor) {
       corpo = projecaoFervor(ctx.alvoFervor, grupo, fem);
     } else if (tom === 'obliquo' && ctx.omitePorDecoro) {
       corpo = OBLIQUO_DECORO[grupo];
@@ -912,7 +934,7 @@ function temaDoGatilho(bruto, pessoaId) {
 // Ordem estável: a dos próprios suspeitos (alfabética no pacote) e a do
 // array de cartas para os confrontos — replay byte a byte.
 // ---------------------------------------------------------------------
-export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {} }) {
+export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {}, acessorId = null }) {
   const { mundo, crime, escolha } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
@@ -1013,6 +1035,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       // papel — paridade anti-tell.
       temperamento,
       defendeDemais,
+      ehAcessor: pessoa.id === acessorId,
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));

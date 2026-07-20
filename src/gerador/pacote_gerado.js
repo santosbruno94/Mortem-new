@@ -399,7 +399,33 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
     });
   }
 
-  return { perifericos, cartasNovas, segredos };
+  // P9 Via B — contra-hipótese jogável: identificar o ACESSOR, o inocente
+  // com acesso plausível ao instrumento do crime. O acessor fica entre os
+  // inocente_alibi (nunca segredo — já tem mecânica própria) e deve
+  // frequentar o prédio onde o instrumento vivia (o ofício/moradia do réu).
+  // Se existe, o veredicto cobra que o jogador tenha o álibi dele na mesa
+  // para cravar "inocente" (o gesto a mais que fecha a contra-hipótese).
+  const assassino = pessoas.get(crime.assassinoId);
+  const predioInstrumento = assassino.pacoteEspacial.trabalho || assassino.pacoteEspacial.moradia;
+  const candidatosAcesso = candidatos.filter((s) => {
+    if (comSegredo.includes(s.id)) return false;
+    if (s.id === ausenteId) return false;
+    const pe = pessoas.get(s.id)?.pacoteEspacial;
+    if (!pe) return false;
+    return (
+      pe.moradia === predioInstrumento ||
+      pe.trabalho === predioInstrumento ||
+      pe.frequentados.includes(predioInstrumento)
+    );
+  });
+  let acessorId = null;
+  if (candidatosAcesso.length > 0) {
+    const escolhido = candidatosAcesso[hashString(`${sal}|acessor`) % candidatosAcesso.length];
+    acessorId = escolhido.id;
+    perifericos[acessorId] = { ...perifericos[acessorId], veredictoEsperado: 'inocente_acesso' };
+  }
+
+  return { perifericos, cartasNovas, segredos, acessorId };
 }
 
 // ---------------------------------------------------------------------
@@ -1845,7 +1871,7 @@ export function montarPacoteGerado(seed, opts = {}) {
   // declara a moradia (a mentira de vergonha que o rastro desmente).
   const ausencias =
     ausenteId && comarcaDoCaso ? { [ausenteId]: comarcaDoCaso.satelite.rotulo } : {};
-  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias });
+  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias, acessorId: perif.acessorId });
   cartas.push(...cartasAlibi);
 
   // A carta de NEXO define o instrumento que o veredicto cobra: o método

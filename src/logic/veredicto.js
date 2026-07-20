@@ -201,6 +201,11 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
         c.tagsOcultas.subDominio === 'alibi' &&
         c.tagsOcultas.declaranteId === suspeitoId
     );
+    // P9 Via B: o acessor com acesso ao instrumento exige álibi na mesa
+    // para que o "inocente" valha (o gesto que fecha a contra-hipótese).
+    if (esperado.veredictoEsperado === 'inocente_acesso' && declarado === 'inocente') {
+      ok = alibiNaMesa;
+    }
     // O monólogo só pode dizer que "razões não faltavam" se uma carta de
     // móbil apontando este suspeito está na mesa — sem ela, afirmar motivo
     // seria inventar fato (contrato do desfecho).

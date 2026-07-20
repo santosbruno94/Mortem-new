@@ -3491,7 +3491,7 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_0_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    },
    "gen_1_carroceiro": {
@@ -4138,7 +4138,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Ernest Hall. Por quê, não sei dizer; sei, e chega.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -4204,7 +4204,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -11800,7 +11800,7 @@ export const CASOS_POOL = [
     "segredo": null
    },
    "gen_7_ferreiro": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    },
    "gen_1_lavrador": {
@@ -12931,7 +12931,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -12997,7 +12997,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Tratos meus com ele, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -15177,7 +15177,7 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_4_moleiro": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    },
    "gen_2_lavadeira": {
@@ -15835,7 +15835,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Fanny Mills tinha desafeto, não foi freguês meu.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -15901,7 +15901,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos meus com ela, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -25385,7 +25385,7 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_4_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    },
    "gen_5_boticario": {
@@ -26004,7 +26004,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Harry Andrews eu não conhecia.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -26070,7 +26070,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -28592,7 +28592,7 @@ export const CASOS_POOL = [
     "segredo": "pedido_recusado"
    },
    "gen_1_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    }
   },
@@ -29899,7 +29899,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -29965,7 +29965,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },

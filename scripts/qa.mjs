@@ -2235,6 +2235,11 @@ console.log(
 console.log(`  ${p9Telemetria.fragil}/${p9Telemetria.total} com espécie-2 só FRÁGIL (sangue na cena, destrutível)`);
 console.log(`  ${p9Telemetria.soInstrumental}/${p9Telemetria.total} SÓ com a âncora instrumental → cairiam na Via B`);
 console.log(p9Telemetria.linhas.join('\n'));
+// P9 Via B — cobertura do acessor (quantos casos têm inocente_acesso).
+const p9ViaBCobertura = [CASO_REPLICA, ...CASOS_POOL].filter((p) =>
+  Object.values((p.verdadeDeOuro || {}).perifericos || {}).some((x) => x.veredictoEsperado === 'inocente_acesso')
+).length;
+console.log(`  Via B: ${p9ViaBCobertura}/${p9Telemetria.total} casos com acessor (inocente_acesso)`);
 const p9Fase0Ok = p9Telemetria.total === 21;
 
 // (b) Higiene de todos os pacotes embarcados.
@@ -2613,6 +2618,30 @@ function problemasDosDialogosGerados(pacote) {
   const temForasteiro = pacote.cartas.some((c) => c.id === 'gen_papeis_forasteiro');
   if (temDeflexao && !temForasteiro) {
     problemas.push('deflexão "veio de fora" sem forasteiro real (P23): apontaria um fantasma');
+  }
+  // P9 Via B — contra-hipótese jogável: se um periférico é inocente_acesso,
+  // o diálogo dele deve mencionar acesso ao instrumento (marcador "peguei
+  // emprestada" ou "já pus a mão") E o pacote deve ter o álibi dele.
+  const verdade = pacote.verdadeDeOuro || {};
+  for (const [suspId, p] of Object.entries(verdade.perifericos || {})) {
+    if (p.veredictoEsperado !== 'inocente_acesso') continue;
+    const dialogo = dialogos[`dialogo_${suspId}`];
+    if (!dialogo) {
+      problemas.push(`P9 Via B: acessor ${suspId} sem diálogo`);
+      continue;
+    }
+    const mencionaAcesso = Object.values(dialogo.nos || {}).some((no) =>
+      (no.fala || []).some((f) => f.includes('peguei emprestada') || f.includes('já pus a mão') || f.includes('conheço de mão'))
+    );
+    if (!mencionaAcesso) {
+      problemas.push(`P9 Via B: acessor ${suspId} sem fala de acesso ao instrumento`);
+    }
+    const temAlibi = pacote.cartas.some(
+      (c) => c.id === `gen_alibi_${suspId}` && (c.tagsOcultas || {}).subDominio === 'alibi'
+    );
+    if (!temAlibi) {
+      problemas.push(`P9 Via B: acessor ${suspId} sem carta de álibi (refutação da contra-hipótese)`);
+    }
   }
   return problemas;
 }
