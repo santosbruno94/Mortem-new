@@ -259,11 +259,36 @@ const ENTREGA_POR_TRAIT = {
 };
 
 // O tento do tom ressonante, por trait (prosa, nunca prova — spec §8.5).
+// FASE 3 (OS os-flags-psiquicas-no-dialogo.md): a TÊMPERA psíquica da mentira
+// MODULA este tento de trait (postura B, decisão do usuário) — não abre eixo
+// novo. `mente_com_calma`/`_periferica` ⇒ a entrega assenta (serena);
+// `mente_sob_pressao` ⇒ vacila e repete. Sem têmpera, fica o `neutro` (o texto
+// de sempre). Paridade anti-tell (§3): a variante depende só de (trait,
+// têmpera), NUNCA do papel — a mesma calma do réu é a do inocente-calmo, a
+// mesma tensão do réu é a da isca. Rende SÓ no tom ressonante (esparso de
+// propósito: não vira um eixo de têmpera legível para todo o elenco). Guarda de
+// presença cruzada no qa.mjs; a paridade perceptual, pelo playtest de tell.
 const TENTO_RESSONANTE = {
-  medroso: ' A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa.',
-  preciso: ' E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora.',
-  tagarela: ' No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido.',
-  linha_tempo_nao_confiavel: ' Posto contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma.',
+  medroso: {
+    neutro: ' A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa.',
+    calmo: ' A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas.',
+    tenso: ' A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira.',
+  },
+  preciso: {
+    neutro: ' E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora.',
+    calmo: ' As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora.',
+    tenso: ' As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas.',
+  },
+  tagarela: {
+    neutro: ' No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido.',
+    calmo: ' No meio do rodeio, a fala desacelera e a mão fica no colo, e a volta que ele sempre repete, desta vez fecha na primeira.',
+    tenso: ' O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez.',
+  },
+  linha_tempo_nao_confiavel: {
+    neutro: ' Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma.',
+    calmo: ' Contra a parede, alinha as horas com os dedos e não as desfaz depois.',
+    tenso: ' Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira.',
+  },
 };
 
 function falaB1(ctx, tom) {
@@ -295,7 +320,10 @@ function falaB1(ctx, tom) {
     ],
   }[tom];
   const frame = variante(frames, `${ctx.sal}|b1|${tom}`);
-  const tento = tom === ctx.tomRessonante ? TENTO_RESSONANTE[ctx.trait] || '' : '';
+  // Fase 3: no tom ressonante, a têmpera psíquica escolhe a variante do tento
+  // de trait (calmo/tenso/neutro). A seleção ignora o papel (paridade §3).
+  const beat = TENTO_RESSONANTE[ctx.trait];
+  const tento = tom === ctx.tomRessonante && beat ? beat[ctx.temperamento] || beat.neutro : '';
   return [frame + tento];
 }
 
@@ -326,6 +354,25 @@ function falaB1(ctx, tom) {
 function temFlag(bruto, id, nome) {
   const flags = bruto.psique?.consequencias?.porPessoa?.[id]?.flags || [];
   return flags.includes(nome);
+}
+
+// Fase 3 — a calma periférica viaja com tema (`mente_com_calma_periferica:<t>`),
+// então casa por prefixo.
+function temFlagPrefixo(bruto, id, prefixo) {
+  const flags = bruto.psique?.consequencias?.porPessoa?.[id]?.flags || [];
+  return flags.some((f) => f.startsWith(prefixo));
+}
+
+// Fase 3 — o excesso de afeto pelo morto (defende_demais_o_morto): reescreve o
+// b2 CORDIAL com afeto+defensividade, PARTILHADO por todo papel com vínculo
+// (o vetor de vínculo alcança qualquer classe — daí a variante de macrogrupo,
+// como projecaoFervor/OBLIQUO_DECORO). Afeto, nunca prova; nomeia a vítima uma
+// vez; jamais janela/causa/nexo. `femV` = gênero da vítima.
+function cordialDefende(vitimaNome, femV, grupo) {
+  if (grupo === 'alto') {
+    return `"${vitimaNome}? Rogo-lhe que não fale d${femV ? 'ela' : 'ele'} no pretérito ainda. Índole melhor não conheceu esta vila, e quem o contestar que o sustente na minha presença. A falta que nos faz não há medida nesta terra que a alcance."`;
+  }
+  return `"${vitimaNome}? Não me fale d${femV ? 'ela' : 'ele'} no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir."`;
 }
 
 // A projeção do fervor: nomeia o alvo UMA vez (anti vocativo, §4.10 do guia),
@@ -482,6 +529,12 @@ function falaB2(ctx, tom) {
     } else if (tom === 'obliquo' && ctx.omitePorDecoro) {
       corpo = OBLIQUO_DECORO[grupo];
     }
+  }
+  // Fase 3 — defende_demais_o_morto reescreve o b2 CORDIAL, em QUALQUER papel
+  // (réu com vínculo E inocente com vínculo dizem o mesmo — a presença cruzada
+  // é o anti-tell). Substitui o corpo cordial pelo afeto partilhado.
+  if (tom === 'cordial' && ctx.defendeDemais) {
+    corpo = cordialDefende(vitima.nome, vitima.genero === 'feminino', grupo);
   }
   // O tento do réu com linha do tempo NÃO pode desmenti-lo (spec §8.6):
   // ganha versão que preserva o trait sem cruzamento feito pelo narrador.
@@ -872,6 +925,15 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       }
     }
     const omitePorDecoro = temFlag(bruto, pessoa.id, 'omite_por_decoro');
+    // Fase 3 — a têmpera da mentira (postura B): calma (do réu ou periférica do
+    // inocente) ⇒ 'calmo'; tensão (réu ou isca) ⇒ 'tenso'; senão 'neutro'. Só
+    // modula o tento de trait no b1 (paridade §3, seleção cega ao papel).
+    const calmo =
+      temFlag(bruto, pessoa.id, 'mente_com_calma') ||
+      temFlagPrefixo(bruto, pessoa.id, 'mente_com_calma_periferica:');
+    const tenso = temFlag(bruto, pessoa.id, 'mente_sob_pressao');
+    const temperamento = calmo ? 'calmo' : tenso ? 'tenso' : 'neutro';
+    const defendeDemais = temFlag(bruto, pessoa.id, 'defende_demais_o_morto');
 
     const ctx = {
       pessoa,
@@ -896,6 +958,11 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       acusaComFervor,
       alvoFervor,
       omitePorDecoro,
+      // Fase 3: têmpera da mentira (modula o tento de trait no b1) e o excesso
+      // de afeto pelo morto (reescreve o b2 cordial). Ambos partilhados por
+      // papel — paridade anti-tell.
+      temperamento,
+      defendeDemais,
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));

@@ -132,8 +132,20 @@ detalhar antes).
   violações**. Só gerador + QA; **motor cego, contrato do `qa-ui` intocado**. Pipeline
   `revisar-prosa` com **zero bloqueantes** (perito aprovou; fiscal 1 achado MÉDIA de tratamento
   hardcoded → `{detective.treatment}`; editor aprovou com dois menores aplicados). `qa`/`qa-ui`/
-  `lint`/build verdes; casos re-gerados. **Segue pendente do Ramo A:** Fase 3 (par calma/tensão;
-  `defende_demais_o_morto`) — pede playtest de tell dirigido; P11 (Mesa); eco de interferência.
+  `lint`/build verdes; casos re-gerados.
+- **✅ Ramo A — Fase 3 (par calma/tensão + defende_demais) executada; falta só o gate humano
+  (20/07/2026).** Decisões do usuário: têmpera = **postura B** (modula o tento de trait no b1, não
+  abre eixo novo); **defende_demais realizado**; **gate = guarda mecânica + playtest de tell
+  dirigido**. `TENTO_RESSONANTE` virou `[trait][temperamento]` (calma assenta / tensão vacila, só no
+  tom ressonante, **seleção cega ao papel**); `cordialDefende` no b2 cordial (por macrogrupo).
+  **Achado:** `defende_demais` é **inocente-only** (réu 0/200 — vínculo nunca recai no assassino),
+  logo um **reverse-tell como o fervor**; guarda ajustada. QA: anti-tell das têmperas (par cruzado;
+  defende inocente-only). Pipeline `revisar-prosa` **zero bloqueantes** (perito aprovou; fiscal 1
+  MÉDIA de gênero "Posto"→"Contra a parede", corrige bug pré-existente; editor 1 ALTO de registro
+  de classe + 3 menores, todos aplicados). `qa`/`qa-ui`/`lint`/build verdes; casos re-gerados.
+  **Gate pendente (ação do usuário):** o playtest de tell dirigido
+  (`docs/playtest/protocolo-tell-fase3.md`) antes de dar a Fase 3 por fechada/mergeável.
+  **Segue pendente do Ramo A:** P11 (Mesa); eco de interferência.
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 
