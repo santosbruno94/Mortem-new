@@ -519,12 +519,34 @@ function falaB2(ctx, tom) {
       }[grupo],
     }[tom];
   }
+  // P9 Via B — a contra-hipótese: o ACESSOR menciona familiaridade com o
+  // instrumento. Aparece em NÃO-réu (periférico OU testemunha que também é
+  // acessor — o papel depende de ter carta com origemTestemunha, mas o
+  // acesso é ortogonal). firme e tecnico (2/4 tons). O verbo "peguei" /
+  // "conheço" ancora a QA guard.
+  if (papel !== 'reu' && ctx.ehAcessor) {
+    if (tom === 'firme') {
+      corpo = {
+        alto: `"Nomes não aponto. Ferramenta daquelas, porém, eu conheço de mão: passa pela casa mais de uma vez ao mês."`,
+        oficio: `"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez."`,
+        chao: `"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um."`,
+      }[grupo];
+    } else if (tom === 'tecnico') {
+      corpo = {
+        alto: `"Tratos, os de vizinho de terra; nada em papel que um inquérito leia. A peça de ofício eu conheço; mais de uma mão ali passou."`,
+        oficio: `"Tratos meus com ${eleVitima}, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi."`,
+        chao: `"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um."`,
+      }[grupo];
+    }
+  }
   // Fase 2 — a projeção (fervor) reescreve o b2 FIRME; o decoro reescreve o
   // b2 OBLÍQUO. Só em não-assassino (o réu nunca porta estas flags; a guarda
   // do qa.mjs fiscaliza). Tento discreto: colore o beat, não cria nó. Ver o
   // cabeçalho da Fase 2 acima.
   if (papel !== 'reu') {
-    if (tom === 'firme' && ctx.acusaComFervor && ctx.alvoFervor) {
+    // O acesso (P9) prevalece sobre o fervor em firme (fair play > colorido);
+    // fervor ainda vive nos outros tons se a flag existir.
+    if (tom === 'firme' && ctx.acusaComFervor && ctx.alvoFervor && !ctx.ehAcessor) {
       corpo = projecaoFervor(ctx.alvoFervor, grupo, fem);
     } else if (tom === 'obliquo' && ctx.omitePorDecoro) {
       corpo = OBLIQUO_DECORO[grupo];
@@ -675,6 +697,33 @@ function cartaDeAlibi(ctx) {
 // CONFRONTOS (spec §8.4): a tabela fechada carta → pergunta → reação.
 // Cada entrada devolve { pergunta, reacao } já com nomes e lugares postos.
 // ---------------------------------------------------------------------
+// A fala do réu ao ser confrontado com a âncora sem lesão (vaso de veneno ou
+// pano de abafo): a paridade da deflexão vem de a peça ser de posse comum em
+// 1893 — não singulariza o réu. Nunca fala em lâmina, ferrugem ou lesão. O
+// fraseado do réu NÃO repete a legenda da carta (senão o suspeito parece
+// recitá-la), e o "guardado" segue o gesto da peça: frasco se lava, papel se
+// sacode (arsênico é papel a seco — não se lava), pano de cama se lava.
+const FALA_SEM_LESAO = {
+  frasco_de_laudano: {
+    comum: 'Láudano toma-se contra a dor, e a botica o dá a quem pede',
+    descarte: 'frasco vazio joga-se fora',
+    guardadoPergunta: 'foi lavada, com resto ainda no gargalo',
+    guardadoDefesa: 'Lavo o que é meu; não guardo vidro sujo em casa',
+  },
+  papel_de_arsenico: {
+    comum: 'Papel de rato tem em toda venda, e em toda casa com celeiro',
+    descarte: 'papel de rato usa-se e some',
+    guardadoPergunta: 'foi sacudida e dobrada de novo, com pó ainda nas dobras',
+    guardadoDefesa: 'Sacudo o que é meu; não guardo papel sujo em casa',
+  },
+  travesseiro_ou_pano: {
+    comum: 'Pano de abafo há em todo leito, e a feira o vende por quase nada',
+    descarte: 'pano velho gasta-se e troca-se',
+    guardadoPergunta: 'foi lavada e guardada, ainda com fiapo na trama',
+    guardadoDefesa: 'Lavo a roupa de cama; suja não se guarda',
+  },
+};
+
 function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   const t = carta.tagsOcultas || {};
   const td = carta.textoDisplay;
@@ -684,6 +733,27 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
     const classe = (bruto.crime.vestigios.find((v) =>
       ['instrumento_abandonado', 'instrumento_faltando', 'instrumento_guardado_umido'].includes(v.classe)
     ) || {}).classe;
+    // Métodos sem lesão (veneno, sufocação): o confronto é sobre a peça
+    // (vaso/pano), nunca a lâmina/lesão.
+    const vf = FALA_SEM_LESAO[t.tipoVestigio];
+    if (vf) {
+      if (classe === 'instrumento_faltando') {
+        return {
+          pergunta: `[${td}] Por que falta essa peça entre as suas coisas?`,
+          reacao: `${pessoa.nome} olha o vão apontado no papel como se o visse de novo. "Falta, e ${vf.descarte}; disso não guardo conta. ${vf.comum}. Onde eu estava, dei por termo ao guarda, e lá está." As mãos ficam quietas enquanto responde.`,
+        };
+      }
+      if (classe === 'instrumento_guardado_umido') {
+        return {
+          pergunta: `[${td}] Por que a peça ${vf.guardadoPergunta}?`,
+          reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "${vf.guardadoDefesa}. ${vf.comum}. E o delegado lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
+        };
+      }
+      return {
+        pergunta: `[${td}] Por que a peça achada junto do corpo tem o seu nome na vila?`,
+        reacao: `${pessoa.nome} olha a peça sem estender a mão. "${vf.comum}; não sou só eu a tê-la. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita." A voz não muda do começo ao fim.`,
+      };
+    }
     if (classe === 'instrumento_faltando') {
       return {
         pergunta: `[${td}] Por que falta essa peça entre as suas coisas?`,
@@ -864,7 +934,7 @@ function temaDoGatilho(bruto, pessoaId) {
 // Ordem estável: a dos próprios suspeitos (alfabética no pacote) e a do
 // array de cartas para os confrontos — replay byte a byte.
 // ---------------------------------------------------------------------
-export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {} }) {
+export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {}, acessorId = null }) {
   const { mundo, crime, escolha } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
@@ -877,12 +947,14 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
   const cartasAlibi = [];
   const cartaVisto = cartas.find((c) => c.id === 'gen_visto_vivo');
   // P23 (guarda de sustentação da deflexão): a fala "veio de fora" do réu só
-  // é honesta se há forasteiro plausível no caso — a vítima de passagem
-  // (vitima.forasteiro; o forasteiro é sempre a vítima) ou um suspeito com
-  // paradeiro declarado fora da vila (ausencias: a vila-mercado satélite).
-  // Sem isso, apontar "para fora" seria um tell (só o réu lucra com a tese):
-  // o arremate cai no registro que NÃO deflete (§5 do KB de fair play).
-  const deflexaoSustentavel = Object.keys(ausencias).length > 0 || !!vitima.forasteiro;
+  // é honesta se há forasteiro REAL no caso — a vítima de passagem
+  // (vitima.forasteiro; o forasteiro é sempre a vítima, réu-forasteiro é
+  // vetado). Um mero álibi fora da vila (ausencias: a vila-mercado satélite)
+  // NÃO conta: é um aldeão que estava fora, não um forasteiro a acusar — a
+  // deflexão apontaria um fantasma (playtest 20/07). Sem forasteiro real, o
+  // réu não aponta para fora: recusa nomear e defere ao inquérito, sem o tell
+  // (§5 do KB de fair play).
+  const deflexaoSustentavel = !!vitima.forasteiro;
 
   // O gatilho de complexo (OS `os-flags-psiquicas-no-dialogo.md` §3): só se
   // realiza quando há ≥2 INTERROGÁVEIS com gatilho — senão o réu seria o
@@ -963,6 +1035,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       // papel — paridade anti-tell.
       temperamento,
       defendeDemais,
+      ehAcessor: pessoa.id === acessorId,
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));

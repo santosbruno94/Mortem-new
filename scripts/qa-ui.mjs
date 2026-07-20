@@ -313,12 +313,14 @@ async function main() {
     await espera(page, 300);
     checar('Fase 1: "Arquivar na mesa" fecha a ficha', (await page.locator('div.fixed[data-overlay="ficha"]').count()) === 0);
     await fecharOverlay(page); // fecha o corpo → volta à mesa
-    await page.locator('text=Corpo Endurecido').first().click(); // a carta pousada reabre a ficha
-    await espera(page, 300);
-    checar('Fase 1: a carta da mesa reabre a mesma ficha', (await page.locator('div.fixed[data-overlay="ficha"]').last().innerText()).includes(DESC_RIGOR));
-    await page.getByRole('button', { name: 'Arquivar na mesa' }).click();
-    await espera(page, 300);
+    // P11: a carta já não pousa na superfície da mesa (agora vive dentro
+    // da ficha de pessoa). A reabertura passa pela Caderneta.
     await page.click('text=Caderneta');
+    await espera(page, 400);
+    await page.locator('.carta-pergaminho', { hasText: CARIMBO_RIGOR }).first().click();
+    await espera(page, 300);
+    checar('Fase 1: a Caderneta reabre a mesma ficha', (await page.locator('div.fixed[data-overlay="ficha"]').last().innerText()).includes(DESC_RIGOR));
+    await page.getByRole('button', { name: 'Arquivar na mesa' }).click();
     await espera(page, 400);
     const textoCaderneta = await textoOverlay(page);
     checar('Fase 1: a Caderneta lista o carimbo da observação', textoCaderneta.includes(CARIMBO_RIGOR));
@@ -369,7 +371,7 @@ async function main() {
     await page.waitForSelector('.rotulo-papel', { timeout: 15000 });
     await espera(page, 400);
     const mesaRetomada = await page.locator('body').innerText();
-    checar('Onda 1: a mesa volta com as cartas registradas', mesaRetomada.includes('Corpo Endurecido'));
+    checar('Onda 1: a mesa volta com as fichas de pessoa', mesaRetomada.includes('Silas Crane'));
     checar('Onda 1: o relógio retomado não andou (13h00)', mesaRetomada.includes('13h00'));
     // ---- fim do bloco da Onda 1 ----
 
@@ -527,6 +529,9 @@ async function main() {
     // e o retrato nomeia o que ficou por abrir (o Gabinete, nesta rota).
     checar('Rota 1: epílogo paga a explicação da luz', epilogo.includes('lampião'));
     checar('Rota 1: retrato nomeia o que ficou por visitar', epilogo.includes('Ficou por visitar: Gabinete Pettigrew'));
+    // O laço de playtest: o epílogo oferece "Novo caso" (sorteia outro caso da
+    // comarca, sem voltar ao título) ao lado de "Fechar o caderno".
+    checar('Rota 1: epílogo oferece "Novo caso"', (await page.getByRole('button', { name: 'Novo caso' }).count()) === 1);
     await page.getByRole('button', { name: 'Fechar o caderno' }).click();
     // Onda 1: fechar o caderno apaga o save — a página recarregada cai no
     // convite limpo, nunca no gate de retomada.

@@ -192,8 +192,10 @@ com zero bloqueantes.
   dos priors construiu nos dados; esta OS o estende à prosa. A telemetria da Fase 0 conversa com
   a guarda G5.
 - **× P11 (repensar a Mesa) e × eco de interferência pós-caso:** os outros dois pedaços do Ramo A
-  da S1 — ficam para lotes próprios (o eco ainda fala pelo legista, que não existe no gerado;
-  decisão registrada no plano). Não bloqueiam esta OS.
+  da S1 — lotes próprios. **Eco: fechado (20/07/2026)** — a voz trocou do legista (abolido no
+  gerado, `falaDoMestre.js:16`) para o **perito em 1ª pessoa**; camada narrativa, pipeline com zero
+  bloqueantes, casos re-gerados (ver ata no `plano-de-sessoes.md`, "S1 Ramo A"). **P11 segue aberto**
+  (só sob ordem; toca o contrato do `qa-ui`). Nunca bloquearam esta OS.
 - **× P9 Via B (contra-hipótese):** independente; a Via B toca o gerador de vestígios, esta OS
   toca só a fala.
 
@@ -324,10 +326,13 @@ camada narrativa; motor cego.
   que fazia o tagarela-calmo soar medroso). `qa.mjs` `CASO VÁLIDO`, `qa-ui.mjs` `UI VÁLIDA`,
   `lint-prosa` limpo, build limpo, casos re-gerados.
 
-### Fase 3 — pendente só o gate humano
+### Fase 3 — FECHADA (gate humano passou, 20/07/2026)
 
-O código, as guardas e a prosa estão prontos e verdes; resta **o playtest de tell dirigido**
-(§ acima), que é ação do usuário, antes de considerar a Fase 3 fechada e mergeável.
+O código, as guardas e a prosa já estavam prontos e verdes; **o playtest de tell dirigido**
+(§ acima) foi rodado e **passou** — o usuário reportou que a têmpera não aponta o culpado (palpite
+só-por-têmpera no acaso, sem tell). Kit do facilitador usado: `docs/playtest/kit-tell-fase3-2026-07-20.md`.
+Com o gate cumprido, **a Fase 3 (e todo o Ramo A das flags psíquicas, itens 2.1 + 2.3) está
+fechada e mergeável** — sem recuo de postura, sem tirar o eixo tenso, sem segurar o `defende`.
 
 ---
 

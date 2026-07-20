@@ -651,7 +651,7 @@ export const CASO_REPLICA = {
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -1862,35 +1862,35 @@ export const CASO_REPLICA = {
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -2873,7 +2873,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -2906,7 +2906,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Charles Harris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Charles Harris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -2939,7 +2939,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -3491,7 +3491,7 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_0_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    },
    "gen_1_carroceiro": {
@@ -4138,7 +4138,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Ernest Hall. Por quê, não sei dizer; sei, e chega.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -4204,7 +4204,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -5291,9 +5291,9 @@ export const CASOS_POOL = [
     "fila": 2
    },
    "mobilia": null,
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: um frasco de láudano. O feitio casa com a lesão do morto. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Samuel Marsh.",
+   "textoDisplay": "O Frasco Abandonado",
+   "carimboPadrao": "Frasco de láudano deixado na cena",
+   "descricao": "No chão, junto ao corpo, um frasco de láudano de vidro escuro, a rolha de fora e o resto secando no gargalo. Mais de uma boca reconhece a peça, e a vila dá o dono pelo nome: Samuel Marsh.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -6386,7 +6386,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Frasco Abandonado] Por que a peça achada junto do corpo tem o seu nome na vila?"
     }
    ],
    "gatilhos": [
@@ -6431,7 +6431,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Samuel Marsh olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
+      "Samuel Marsh olha a peça sem estender a mão. \"Láudano toma-se contra a dor, e a botica o dá a quem pede; não sou só eu a tê-la. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -7160,7 +7160,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -10149,8 +10149,8 @@ export const CASOS_POOL = [
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Edwin Bennett, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "carimboPadrao": "Pano que falta no seu lugar",
+   "descricao": "Entre as coisas de Edwin Bennett, um vão limpo no pó da prateleira, do feitio do pano que ali esteve.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -10683,7 +10683,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edwin Bennett olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
+      "Edwin Bennett olha o vão apontado no papel como se o visse de novo. \"Falta, e pano velho gasta-se e troca-se; disso não guardo conta. Pano de abafo há em todo leito, e a feira o vende por quase nada. Onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -11747,35 +11747,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -11800,7 +11800,7 @@ export const CASOS_POOL = [
     "segredo": null
    },
    "gen_7_ferreiro": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    },
    "gen_1_lavrador": {
@@ -12931,7 +12931,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -12997,7 +12997,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Tratos meus com ele, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
@@ -13578,35 +13578,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -14094,7 +14094,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -15177,7 +15177,7 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_4_moleiro": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    },
    "gen_2_lavadeira": {
@@ -15835,7 +15835,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Fanny Mills tinha desafeto, não foi freguês meu.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -15901,7 +15901,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos meus com ela, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi.\" Levanta-se e abotoa o casaco. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -16871,35 +16871,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -17436,7 +17436,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   },
@@ -18804,7 +18804,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
    "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: uma peça pesada, de ocasião. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Edith Walker.",
+   "descricao": "No chão, onde a mão o largou: uma peça pesada, de ocasião. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá a dona pelo nome: Edith Walker.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -20902,8 +20902,8 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
-    "Antes de liberar o dono das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
+    "Antes de liberar a dona das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]]."
    ],
    "blocosContingentes": []
   }
@@ -22091,35 +22091,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -22316,9 +22316,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Dora Saunders, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
+   "textoDisplay": "O Frasco Lavado",
+   "carimboPadrao": "Frasco lavado, resto no gargalo",
+   "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -22606,7 +22606,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   },
@@ -23066,7 +23066,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Frasco Lavado] Por que a peça foi lavada, com resto ainda no gargalo?"
     }
    ],
    "nos": {
@@ -23105,7 +23105,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Dora Saunders responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "Dora Saunders responde sem olhar a peça duas vezes. \"Lavo o que é meu; não guardo vidro sujo em casa. Láudano toma-se contra a dor, e a botica o dá a quem pede. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -23138,7 +23138,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -23171,7 +23171,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Ellis era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Mary Ellis era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -23204,7 +23204,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -23907,8 +23907,8 @@ export const CASOS_POOL = [
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Lugar Vazio",
-   "carimboPadrao": "Instrumento que falta no seu lugar",
-   "descricao": "Entre as coisas de ofício de Edwin Davies, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "carimboPadrao": "Papel que falta no seu lugar",
+   "descricao": "Entre as coisas de Edwin Davies, um vão limpo no pó da prateleira, do feitio do papel dobrado que ali esteve.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -24526,7 +24526,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Edwin Davies olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
+      "Edwin Davies olha o vão apontado no papel como se o visse de novo. \"Falta, e papel de rato usa-se e some; disso não guardo conta. Papel de rato tem em toda venda, e em toda casa com celeiro. Onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
      ],
      "opcoes": []
     },
@@ -25385,7 +25385,7 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_4_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    },
    "gen_5_boticario": {
@@ -25561,9 +25561,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Joseph Green, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Frasco Lavado",
+   "carimboPadrao": "Frasco lavado, resto no gargalo",
+   "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -26004,7 +26004,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Harry Andrews eu não conhecia.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -26070,7 +26070,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -26504,7 +26504,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Frasco Lavado] Por que a peça foi lavada, com resto ainda no gargalo?"
     }
    ],
    "gatilhos": [
@@ -26549,7 +26549,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Joseph Green responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "Joseph Green responde sem olhar a peça duas vezes. \"Lavo o que é meu; não guardo vidro sujo em casa. Láudano toma-se contra a dor, e a botica o dá a quem pede. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -27191,9 +27191,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de Amy Chapman, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Pano Lavado",
+   "carimboPadrao": "Pano lavado, fiapo na trama",
+   "descricao": "Entre os pertences de Amy Chapman, o pano lavado e reposto. Na trama, onde a água não desfaz o urdume, ficou um fiapo claro. Roupa de cama assim há em toda casa da vila.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -27460,7 +27460,7 @@ export const CASOS_POOL = [
    "subtitulo": "Busca autorizada pelo delegado",
    "acoesEspeciais": [],
    "prosa": [
-    "A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
+    "A diligência corre com o delegado à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]]."
    ],
    "blocosContingentes": []
   }
@@ -27716,7 +27716,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Pano Lavado] Por que a peça foi lavada e guardada, ainda com fiapo na trama?"
     }
    ],
    "gatilhos": [
@@ -27761,7 +27761,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Amy Chapman responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "Amy Chapman responde sem olhar a peça duas vezes. \"Lavo a roupa de cama; suja não se guarda. Pano de abafo há em todo leito, e a feira o vende por quase nada. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -28592,7 +28592,7 @@ export const CASOS_POOL = [
     "segredo": "pedido_recusado"
    },
    "gen_1_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
+    "veredictoEsperado": "inocente_acesso",
     "segredo": null
    }
   },
@@ -28769,9 +28769,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de William Thompson, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "textoDisplay": "O Pano Lavado",
+   "carimboPadrao": "Pano lavado, fiapo na trama",
+   "descricao": "Entre os pertences de William Thompson, o pano lavado e reposto. Na trama, onde a água não desfaz o urdume, ficou um fiapo claro. Roupa de cama assim há em toda casa da vila.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -29899,7 +29899,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -29965,7 +29965,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -30019,7 +30019,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Pano Lavado] Por que a peça foi lavada e guardada, ainda com fiapo na trama?"
     },
     {
      "requerCarta": "gen_intf_intf_1_retalho",
@@ -30062,7 +30062,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "William Thompson responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "William Thompson responde sem olhar a peça duas vezes. \"Lavo a roupa de cama; suja não se guarda. Pano de abafo há em todo leito, e a feira o vende por quase nada. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },
@@ -30368,35 +30368,35 @@ export const CASOS_POOL = [
   ]
  },
  "ecosInterferencia": {
-  "titulo": "O legista, sobre o que se moveu",
+  "titulo": "O que se moveu enquanto eu ia e vinha",
   "porChave": {
    "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que o senhor ainda não tinha recolhido. Ficou no lugar a limpeza recente, e limpeza recente se lê como qualquer outro sinal."
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
    ],
    "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no seu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do seu registro. Guarde o método: primeiro o que pode sumir."
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
    ],
    "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as suas perguntas correram a vila. Anote o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procure o que sobrou em torno da recusa."
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
    ],
    "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado ao senhor. O depoimento estava colhido; o medo chegou atrasado.",
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
    ],
    "subornar_testemunha_ocorrida": [
-    "A mesma boca contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Há dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponha as três coisas lado a lado e meça as datas."
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
    ],
    "silenciar_ocorrida": [
-    "Perdemos a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias; e o segundo serviço, mais grosseiro, se lê mais fácil que o primeiro.",
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
    ],
    "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no seu caderno. O senhor chegou primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler — e o depoimento sobreviveu a quem o deu."
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
    ]
   }
  }
@@ -30609,9 +30609,9 @@ export const CASOS_POOL = [
     "fila": 1
    },
    "mobilia": null,
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: um pano de abafo. O feitio casa com a lesão da morta. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Kate Harris.",
+   "textoDisplay": "O Pano de Abafo",
+   "carimboPadrao": "Pano de abafo deixado na cena",
+   "descricao": "No chão, junto ao corpo, um pano de abafo, a trama largando um fiapo claro. Mais de uma boca reconhece a peça, e a vila dá a dona pelo nome: Kate Harris.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -31518,7 +31518,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
+     "rotulo": "[O Pano de Abafo] Por que a peça achada junto do corpo tem o seu nome na vila?"
     }
    ],
    "nos": {
@@ -31557,7 +31557,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "Kate Harris olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
+      "Kate Harris olha a peça sem estender a mão. \"Pano de abafo há em todo leito, e a feira o vende por quase nada; não sou só eu a tê-la. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
      ],
      "opcoes": []
     },
@@ -31590,7 +31590,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -31623,7 +31623,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Jones era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Florence Jones era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -31656,7 +31656,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Limpa as mãos uma na outra e levanta-se. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -32193,9 +32193,9 @@ export const CASOS_POOL = [
    "comodo": null,
    "celula": null,
    "mobilia": null,
-   "textoDisplay": "O Instrumento Lavado",
-   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
-   "descricao": "Entre os pertences de John Morris, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
+   "textoDisplay": "O Frasco Lavado",
+   "carimboPadrao": "Frasco lavado, resto no gargalo",
+   "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -33322,7 +33322,7 @@ export const CASOS_POOL = [
    "confrontos": [
     {
      "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+     "rotulo": "[O Frasco Lavado] Por que a peça foi lavada, com resto ainda no gargalo?"
     }
    ],
    "gatilhos": [
@@ -33367,7 +33367,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_instrumento": {
      "fala": [
-      "John Morris responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
+      "John Morris responde sem olhar a peça duas vezes. \"Lavo o que é meu; não guardo vidro sujo em casa. Láudano toma-se contra a dor, e a botica o dá a quem pede. E o delegado lavrou de próprio punho o lugar em que me achei.\" E encosta a peça na mesa sem a olhar de novo."
      ],
      "opcoes": []
     },

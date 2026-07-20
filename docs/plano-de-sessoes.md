@@ -93,6 +93,39 @@ detalhar antes).
 
 - **Pronto quando (ambos):** `qa.mjs` e `qa-ui.mjs` verdes; se prosa mudou, pipeline
   `revisar-prosa` com zero achados bloqueantes.
+- **✅ Ramo B — âncora de autoria coerente com veneno + deflexão P23 apertada (20/07/2026).**
+  Bug achado pelo playtest de tell da Fase 3 (caso `gerado_comarca_13`, ré Dora Saunders): num
+  **envenenamento** (láudano/arsênico), a âncora de autoria mostrava uma **lâmina "que casa com
+  a lesão da morta"** — ferida que veneno não produz —, tornando o caso incoerente/insolúvel
+  (fura "medicina legal precisa, sempre" + fair play). Afetava **5/21 casos** (todos os venenos).
+  **Correção (decisão do usuário — opção C, prosa agora):** a âncora passa a ser o **VASO** do
+  veneno (frasco de láudano com fio de tintura no gargalo; papel de arsênico com pó nas dobras),
+  sem lesão — carta (`VASO_VENENO` em `pacote_gerado.js`) e confronto (`VASO_FALA` em
+  `dialogos_gerados.js`), com a paridade da deflexão pela venda livre. O motor já lia o
+  `tipoVestigio` correto; era furo de prosa. **P23 apertado:** a deflexão "veio de fora" deixa de
+  contar mero álibi fora da vila; só sai com **forasteiro real** (vítima de passagem) — antes
+  apontava um fantasma. **Guardas novas no `qa.mjs`:** veneno sem prosa de arma branca; deflexão
+  ⟺ forasteiro real. Pipeline `revisar-prosa` **zero bloqueantes** (perito aprovou época/coerência;
+  fiscal 1 ALTO de gênero "o dono"→"a dona" corrigido nos 6 pontos; editor 2 ALTOs — arsênico não
+  se "lava" e eco carta×fala — corrigidos). `qa`/`qa-ui`/`lint`/build verdes; 21 casos re-gerados.
+- **✅ Ramo B — âncora de SUFOCAÇÃO estendida (20/07/2026, commit seguinte).** O perito, no lote
+  de veneno, achou o **mesmo bug para a sufocação**: o "pano de abafo" caía no ramo de lesão
+  ("casa com a lesão da morta"), e sufocação não faz ferida moldável. Sob ordem do usuário, o
+  conserto foi estendido: `VASO_VENENO` virou `ANCORA_SEM_LESAO` (veneno + abafo); a âncora do
+  pano liga-se ao corpo pelo **fiapo** (a trama larga um fiapo claro = o "fiapo claro preso ao
+  canto da boca" da carta do corpo, plantio honesto, KB `asfixias.md`), sem lesão; confronto e
+  guarda do `qa.mjs` estendidos. Pipeline `revisar-prosa` **zero bloqueantes** (perito aprovou a
+  fibra macroscópica de época; fiscal limpo; editor 1 ALTO de tautologia + 1 menor corrigidos).
+  `qa`/`qa-ui`/`lint`/build verdes; 4 casos de sufocação re-gerados. `pendencias-status.md` 2.5
+  fechado.
+- **✅ QOL — botão "Novo caso" (20/07/2026, a pedido do usuário para o playtest sem terminal).**
+  O epílogo (`MonologoFinal`) e a retomada (`TelaPersonagem`) ganham um botão que sorteia um caso
+  novo da comarca (≠ o atual) e cai direto na abertura dele, sem voltar ao título nem recarregar.
+  Só apresentação: reusa `carregarCaso`+`escolherDetective`; o sorteio (`Math.random`) fica na
+  camada de componente (permitido fora de logic/data/store), e o caso é determinístico por seed.
+  **O runtime NÃO gera casos do zero** (regra de zero-geração em runtime); "novo" = outro caso do
+  lote de 21 já validado pelo `qa.mjs`. Novo check no `qa-ui` trava o botão. build/`qa`/`qa-ui`
+  verdes.
 - **◐ Parcial (19/07/2026) — lote de fair play do Bloco C concluído** (OS
   `os-dialogo-s1-fair-play.md`, ata em `historico-decisoes.md` "S1 — Fair play do diálogo"):
   P21 (paradeiro universal) verificado como já satisfeito; **P6** (rótulo da carta de álibi
@@ -143,9 +176,32 @@ detalhar antes).
   defende inocente-only). Pipeline `revisar-prosa` **zero bloqueantes** (perito aprovou; fiscal 1
   MÉDIA de gênero "Posto"→"Contra a parede", corrige bug pré-existente; editor 1 ALTO de registro
   de classe + 3 menores, todos aplicados). `qa`/`qa-ui`/`lint`/build verdes; casos re-gerados.
-  **Gate pendente (ação do usuário):** o playtest de tell dirigido
-  (`docs/playtest/protocolo-tell-fase3.md`) antes de dar a Fase 3 por fechada/mergeável.
-  **Segue pendente do Ramo A:** P11 (Mesa); eco de interferência.
+  **Gate humano CUMPRIDO (20/07/2026):** o playtest de tell dirigido
+  (`docs/playtest/protocolo-tell-fase3.md`, kit em `kit-tell-fase3-2026-07-20.md`) foi rodado e
+  **passou** — o usuário reportou que a têmpera não vaza (palpite só-por-têmpera no acaso). **A
+  Fase 3 e todo o Ramo A das flags psíquicas estão fechados**, sem recuo. (A PR #75, Fases 2–3, já
+  fora mergeada em 20/07, `c59def2`.)
+- **✅ Ramo A — eco de interferência: voz do perito executada (20/07/2026).** Decisão do usuário:
+  o eco pós-caso das interferências (`ecos_interferencia.js`, hoje só no procedural, que **não tem
+  legista** — `falaDoMestre.js:16`) troca a boca do **legista** para o **perito em 1ª pessoa**
+  (opção 1 de 3: perito / delegado / narrador de método). Fair play já era *safe* (guia §2.4: eco
+  reconhece o FATO da interferência, devolve ao método, jamais nomeia ator/autoria/nexo da morte);
+  o lote foi **decisão de voz**, não de fair play. Só camada narrativa/apresentação: título + 12
+  variantes reescritas (2ª→1ª pessoa) + comentários; `origem: 'mestre'` mantida (balde de canal da
+  Caderneta, não a voz — documentado). **Motor cego; contrato do `qa-ui` intocado** (o eco é
+  pós-caso na Caderneta, fora das rotas checadas; os strings "leitura do legista" do tutorial ficam
+  intactos). Pipeline `revisar-prosa` **zero bloqueantes**: fiscal aprovou (gênero neutro,
+  marcadores íntegros); perito 1 bloqueante-limítrofe §2.4 ("se lê mais fácil que o primeiro"
+  arrastava a morte principal) **corrigido**; editor 1 ALTO (série de fecho reflexo "se lê/se data")
+  **corrigido** na mesma linha + 1 menor de anadiplose. `qa.mjs` `CASO VÁLIDO`, `qa-ui.mjs`
+  `UI VÁLIDA`, `lint:prosa` limpo, build limpo; os 21 casos re-gerados.
+  **Ramo A fechado.** P11 (repensar a Mesa) concluído em 20/07/2026: a superfície da mesa
+  deixa de exibir pergaminhos de evidência e passa a mostrar **fichas de pessoa** (um cartão
+  por suspeito interrogável). Clicar abre o dossiê (`FichaPessoa`): álibi declarado, trechos
+  do interrogatório, provas ligadas, menções em outras provas, possível móbil e o que outros
+  disseram — tudo QOL, nenhuma conclusão entregue. Contrato do `qa-ui` atualizado (a
+  reabertura de ficha agora passa pela Caderneta; a persistência verifica fichas de pessoa na
+  mesa em vez de pergaminhos). `qa.mjs` CASO VÁLIDO, `qa-ui.mjs` UI VÁLIDA, build limpo.
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 

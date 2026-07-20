@@ -399,7 +399,33 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
     });
   }
 
-  return { perifericos, cartasNovas, segredos };
+  // P9 Via B — contra-hipótese jogável: identificar o ACESSOR, o inocente
+  // com acesso plausível ao instrumento do crime. O acessor fica entre os
+  // inocente_alibi (nunca segredo — já tem mecânica própria) e deve
+  // frequentar o prédio onde o instrumento vivia (o ofício/moradia do réu).
+  // Se existe, o veredicto cobra que o jogador tenha o álibi dele na mesa
+  // para cravar "inocente" (o gesto a mais que fecha a contra-hipótese).
+  const assassino = pessoas.get(crime.assassinoId);
+  const predioInstrumento = assassino.pacoteEspacial.trabalho || assassino.pacoteEspacial.moradia;
+  const candidatosAcesso = candidatos.filter((s) => {
+    if (comSegredo.includes(s.id)) return false;
+    if (s.id === ausenteId) return false;
+    const pe = pessoas.get(s.id)?.pacoteEspacial;
+    if (!pe) return false;
+    return (
+      pe.moradia === predioInstrumento ||
+      pe.trabalho === predioInstrumento ||
+      pe.frequentados.includes(predioInstrumento)
+    );
+  });
+  let acessorId = null;
+  if (candidatosAcesso.length > 0) {
+    const escolhido = candidatosAcesso[hashString(`${sal}|acessor`) % candidatosAcesso.length];
+    acessorId = escolhido.id;
+    perifericos[acessorId] = { ...perifericos[acessorId], veredictoEsperado: 'inocente_acesso' };
+  }
+
+  return { perifericos, cartasNovas, segredos, acessorId };
 }
 
 // ---------------------------------------------------------------------
@@ -638,6 +664,60 @@ const INSTRUMENTO_A_VISTA = {
   papel_de_arsenico: 'um papel de arsênico dobrado',
   travesseiro_ou_pano: 'um pano de abafo',
   frasco_de_laudano: 'um frasco de láudano',
+};
+
+// Âncora de autoria dos métodos SEM lesão moldável — veneno (láudano/arsênico)
+// e sufocação (pano de abafo). A peça que liga o réu NÃO é uma arma que "casa
+// com a lesão" (fair play + KB medicina-legal); é o VASO do veneno ou o pano.
+// O tell durável é físico e específico do método — resíduo no frasco, pó nas
+// dobras, o fiapo que a trama larga (igual ao preso no canto da boca do corpo,
+// carta do corpo) —, análogo à "crosta sob o rebite" da lâmina. O "comum"
+// preserva a paridade da deflexão (láudano/arsênico de venda livre; pano em
+// todo leito). Chaves = METODOS[..].instrumento; ausente ⇒ método de lesão,
+// prosa de arma.
+const ANCORA_SEM_LESAO = {
+  frasco_de_laudano: {
+    aVista: 'um frasco de láudano de vidro escuro',
+    abandono: 'a rolha de fora e o resto secando no gargalo',
+    vao: 'do frasco',
+    abandonadoDisplay: 'O Frasco Abandonado',
+    abandonadoCarimbo: 'Frasco de láudano deixado na cena',
+    faltandoDisplay: 'O Vidro que Falta',
+    faltandoCarimbo: 'Frasco que falta no seu lugar',
+    guardadoDisplay: 'O Frasco Lavado',
+    guardadoCarimbo: 'Frasco lavado, resto no gargalo',
+    guardadoIntro: 'o frasco de láudano lavado e reposto',
+    guardadoResto: 'No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura',
+    comum: 'A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.',
+  },
+  papel_de_arsenico: {
+    aVista: 'um papel de arsênico dobrado',
+    abandono: 'aberto, o pó branco preso na dobra',
+    vao: 'do papel dobrado',
+    abandonadoDisplay: 'O Papel Abandonado',
+    abandonadoCarimbo: 'Papel de arsênico deixado na cena',
+    faltandoDisplay: 'O Lugar Vazio',
+    faltandoCarimbo: 'Papel que falta no seu lugar',
+    guardadoDisplay: 'O Papel Sacudido',
+    guardadoCarimbo: 'Papel sacudido, pó nas dobras',
+    guardadoIntro: 'o papel de arsênico sacudido e dobrado de novo',
+    guardadoResto: 'Nas dobras, onde a sacudida não desce, resta um pó branco',
+    comum: 'Papel assim compra-se para o rato e a mosca, em qualquer venda.',
+  },
+  travesseiro_ou_pano: {
+    aVista: 'um pano de abafo',
+    abandono: 'a trama largando um fiapo claro',
+    vao: 'do pano',
+    abandonadoDisplay: 'O Pano de Abafo',
+    abandonadoCarimbo: 'Pano de abafo deixado na cena',
+    faltandoDisplay: 'O Lugar Vazio',
+    faltandoCarimbo: 'Pano que falta no seu lugar',
+    guardadoDisplay: 'O Pano Lavado',
+    guardadoCarimbo: 'Pano lavado, fiapo na trama',
+    guardadoIntro: 'o pano lavado e reposto',
+    guardadoResto: 'Na trama, onde a água não desfaz o urdume, ficou um fiapo claro',
+    comum: 'Roupa de cama assim há em toda casa da vila.',
+  },
 };
 
 // A lesão fatal por método: nome de carta, carimbo e laudo de exame próximo.
@@ -895,6 +975,25 @@ function realizarCartas(bruto) {
           ['instrumento_abandonado', 'instrumento_faltando', 'instrumento_guardado_umido'].includes(x.classe)
         );
         const classe = v ? v.classe : 'instrumento_abandonado';
+        // Métodos SEM lesão moldável (veneno, sufocação): a âncora é o VASO /
+        // o pano, nunca "casa com a lesão" (não há ferida a moldar).
+        const anc = ANCORA_SEM_LESAO[METODOS[escolha.metodoId]?.instrumento];
+        if (anc) {
+          if (classe === 'instrumento_abandonado') {
+            nova.textoDisplay = anc.abandonadoDisplay;
+            nova.carimboPadrao = anc.abandonadoCarimbo;
+            nova.descricao = `No chão, junto ao corpo, ${anc.aVista}, ${anc.abandono}. Mais de uma boca reconhece a peça, e a vila dá ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} pelo nome: ${reu.nome}.`;
+          } else if (classe === 'instrumento_faltando') {
+            nova.textoDisplay = anc.faltandoDisplay;
+            nova.carimboPadrao = anc.faltandoCarimbo;
+            nova.descricao = `Entre as coisas de ${reu.nome}, um vão limpo no pó da prateleira, do feitio ${anc.vao} que ali esteve.`;
+          } else {
+            nova.textoDisplay = anc.guardadoDisplay;
+            nova.carimboPadrao = anc.guardadoCarimbo;
+            nova.descricao = `Entre os pertences de ${reu.nome}, ${anc.guardadoIntro}. ${anc.guardadoResto}. ${anc.comum}`;
+          }
+          break;
+        }
         if (classe === 'instrumento_abandonado') {
           nova.textoDisplay = 'O Instrumento Abandonado';
           nova.carimboPadrao = 'Instrumento deixado na cena';
@@ -903,8 +1002,8 @@ function realizarCartas(bruto) {
           // P12: a carta nomeia a peça e diz POR QUE a vila conhece o dono.
           const aVista = INSTRUMENTO_A_VISTA[METODOS[escolha.metodoId]?.instrumento];
           nova.descricao = aVista
-            ? `No chão, onde a mão o largou: ${aVista}. O feitio casa com a lesão ${doMorto}. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: ${reu.nome}.`
-            : `Ficou no chão, onde a mão o largou. O feitio casa com a lesão ${doMorto}, e a vila dá o dono pelo nome: ${reu.nome}.`;
+            ? `No chão, onde a mão o largou: ${aVista}. O feitio casa com a lesão ${doMorto}. Mais de uma boca reconhece a peça de uso, e a vila dá ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} pelo nome: ${reu.nome}.`
+            : `Ficou no chão, onde a mão o largou. O feitio casa com a lesão ${doMorto}, e a vila dá ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} pelo nome: ${reu.nome}.`;
         } else if (classe === 'instrumento_faltando') {
           nova.textoDisplay = 'O Lugar Vazio';
           nova.carimboPadrao = 'Instrumento que falta no seu lugar';
@@ -1496,10 +1595,10 @@ function montarLocalidades(bruto, cartas) {
       acoesEspeciais: [],
       prosa: [
         cartaOficio.id === 'gen_ferimento_reu'
-          ? 'A diligência corre com o delegado à porta e o dono das coisas a um canto. O delegado manda arregaçar as mangas: [[gen_ferimento_reu]].'
-          : `A diligência corre com o delegado à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[${cartaOficio.id}]].`,
+          ? `A diligência corre com o delegado à porta e ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas a um canto. O delegado manda arregaçar as mangas: [[gen_ferimento_reu]].`
+          : `A diligência corre com o delegado à porta e ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[${cartaOficio.id}]].`,
         ...(cartaOficio.id !== 'gen_ferimento_reu' && cartasOficio.some((c) => c.id === 'gen_ferimento_reu')
-          ? ['Antes de liberar o dono das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]].']
+          ? [`Antes de liberar ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]].`]
           : []),
       ],
       blocosContingentes: blocosPorLocalidade.oficio_do_reu || [],
@@ -1772,7 +1871,7 @@ export function montarPacoteGerado(seed, opts = {}) {
   // declara a moradia (a mentira de vergonha que o rastro desmente).
   const ausencias =
     ausenteId && comarcaDoCaso ? { [ausenteId]: comarcaDoCaso.satelite.rotulo } : {};
-  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias });
+  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias, acessorId: perif.acessorId });
   cartas.push(...cartasAlibi);
 
   // A carta de NEXO define o instrumento que o veredicto cobra: o método

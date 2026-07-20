@@ -2235,6 +2235,11 @@ console.log(
 console.log(`  ${p9Telemetria.fragil}/${p9Telemetria.total} com espécie-2 só FRÁGIL (sangue na cena, destrutível)`);
 console.log(`  ${p9Telemetria.soInstrumental}/${p9Telemetria.total} SÓ com a âncora instrumental → cairiam na Via B`);
 console.log(p9Telemetria.linhas.join('\n'));
+// P9 Via B — cobertura do acessor (quantos casos têm inocente_acesso).
+const p9ViaBCobertura = [CASO_REPLICA, ...CASOS_POOL].filter((p) =>
+  Object.values((p.verdadeDeOuro || {}).perifericos || {}).some((x) => x.veredictoEsperado === 'inocente_acesso')
+).length;
+console.log(`  Via B: ${p9ViaBCobertura}/${p9Telemetria.total} casos com acessor (inocente_acesso)`);
 const p9Fase0Ok = p9Telemetria.total === 21;
 
 // (b) Higiene de todos os pacotes embarcados.
@@ -2281,6 +2286,19 @@ function problemasDoPacoteGerado(pacote) {
       if (/\bgen_\w+/.test(txt)) problemas.push(`${c.id}: id interno vazando na prosa ("${txt.slice(0, 40)}…")`);
       if (txt.includes('Rótulo técnico')) problemas.push(`${c.id}: rótulo técnico sem prosa realizada`);
     }
+  }
+  // Coerência método-sem-lesão × âncora (playtest 20/07): veneno e sufocação
+  // NÃO deixam ferida moldável, logo nem a âncora de autoria (gen_instrumento)
+  // nem o confronto dela podem falar de arma branca ("casa com a lesão", "sob o
+  // rebite", "se lava ferramenta"…). A peça é o VASO do veneno (frasco/papel)
+  // ou o pano de abafo. Guarda o furo.
+  const mecPct = pacote.verdadeDeOuro?.mecanismoCorreto || '';
+  if (mecPct.startsWith('envenenamento') || mecPct === 'sufocacao') {
+    const gi = pacote.cartas.find((c) => c.id === 'gen_instrumento');
+    const textoAncora = `${gi?.descricao || ''} ${gi?.carimboPadrao || ''} ${JSON.stringify(pacote.dialogos || {})}`;
+    const termosArma = /casa com a lesão|sob o rebite|a lâmina brilha|crosta escura alojada|se lava ferramenta|ferrugem não espera/i;
+    const m = textoAncora.match(termosArma);
+    if (m) problemas.push(`veneno (${mecPct}) com prosa de arma branca na âncora/confronto: "${m[0]}"`);
   }
   return problemas;
 }
@@ -2587,6 +2605,42 @@ function problemasDosDialogosGerados(pacote) {
           }
         }
       }
+    }
+  }
+  // P23 — deflexão "veio de fora" só com forasteiro REAL (playtest 20/07): a
+  // fala do réu "veio de fora do costume" apontaria um fantasma se não houver
+  // forasteiro (vítima de passagem, carta gen_papeis_forasteiro) no caso. Um
+  // mero álibi fora da vila não basta. FISCALIZADO no pacote: deflexão ⟺
+  // forasteiro real.
+  const temDeflexao = Object.values(dialogos).some((d) =>
+    Object.values(d.nos || {}).some((no) => (no.fala || []).some((f) => f.includes('veio de fora do costume')))
+  );
+  const temForasteiro = pacote.cartas.some((c) => c.id === 'gen_papeis_forasteiro');
+  if (temDeflexao && !temForasteiro) {
+    problemas.push('deflexão "veio de fora" sem forasteiro real (P23): apontaria um fantasma');
+  }
+  // P9 Via B — contra-hipótese jogável: se um periférico é inocente_acesso,
+  // o diálogo dele deve mencionar acesso ao instrumento (marcador "peguei
+  // emprestada" ou "já pus a mão") E o pacote deve ter o álibi dele.
+  const verdade = pacote.verdadeDeOuro || {};
+  for (const [suspId, p] of Object.entries(verdade.perifericos || {})) {
+    if (p.veredictoEsperado !== 'inocente_acesso') continue;
+    const dialogo = dialogos[`dialogo_${suspId}`];
+    if (!dialogo) {
+      problemas.push(`P9 Via B: acessor ${suspId} sem diálogo`);
+      continue;
+    }
+    const mencionaAcesso = Object.values(dialogo.nos || {}).some((no) =>
+      (no.fala || []).some((f) => f.includes('peguei emprestada') || f.includes('já pus a mão') || f.includes('conheço de mão'))
+    );
+    if (!mencionaAcesso) {
+      problemas.push(`P9 Via B: acessor ${suspId} sem fala de acesso ao instrumento`);
+    }
+    const temAlibi = pacote.cartas.some(
+      (c) => c.id === `gen_alibi_${suspId}` && (c.tagsOcultas || {}).subDominio === 'alibi'
+    );
+    if (!temAlibi) {
+      problemas.push(`P9 Via B: acessor ${suspId} sem carta de álibi (refutação da contra-hipótese)`);
     }
   }
   return problemas;
