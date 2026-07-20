@@ -4,34 +4,18 @@ import { obterLocalidades, custoViagem, obterDialogo } from '../data/pacote_caso
 import { formatDuracao } from '../logic/tempo.js';
 import { resumoVisita } from '../logic/resumoVisita.js';
 import { textoLembreteVisita } from '../logic/lembreteTexto.js';
+import { suspeitosComDialogo, todasCartasDaPessoa } from '../logic/fichaPessoa.js';
 import CartaMesa from './CartaMesa.jsx';
+import RetratoPersonagem from './RetratoPersonagem.jsx';
 
 // =====================================================================
 // A SUPERFÍCIE 2D DA MESA — extraída da Escrivaninha para servir a dois
-// modos: como a mesa completa (grade de localidades + cartas), que é o
-// FALLBACK OBRIGATÓRIO quando não há WebGL (?flat=1, sonda falhou ou o
-// 3D quebrou); e como a bandeja de cartas sob o diorama (comDiorama:
-// as localidades moram na maquete 3D e aqui ficam só as cartas).
-// Comportamento idêntico ao original: grade responsiva, arrasto livre.
+// modos: como a mesa completa (grade de localidades + fichas de pessoa),
+// que é o FALLBACK OBRIGATÓRIO quando não há WebGL (?flat=1, sonda
+// falhou ou o 3D quebrou); e como a bandeja de fichas sob o diorama
+// (comDiorama: as localidades moram na maquete 3D e aqui ficam só as
+// fichas de pessoa). Grade responsiva, arrasto livre.
 // =====================================================================
-
-const ROTULOS_DOMINIO = {
-  temporal: 'Temporal',
-  causal: 'Causal',
-  ambiental: 'Ambiental',
-  comportamental: 'Comportamental',
-  vestigio: 'Vestígio',
-};
-
-// Ordem de repouso das cartas na mesa (Q9): agrupadas por domínio — o corpo
-// primeiro, depois causa, vestígios, cena e pessoas. Estável dentro do grupo
-// (ordem de coleta). Só muda o ARRUMO padrão; o arrasto continua livre.
-const ORDEM_DOMINIO = { temporal: 0, causal: 1, vestigio: 2, ambiental: 3, comportamental: 4 };
-function ordenarPorDominio(cartas) {
-  return [...cartas].sort(
-    (a, b) => (ORDEM_DOMINIO[a.tagsOcultas.dominio] ?? 9) - (ORDEM_DOMINIO[b.tagsOcultas.dominio] ?? 9)
-  );
-}
 
 // Passos da grade de repouso (antes de o jogador arrastar). O número de
 // colunas é derivado da largura real da mesa — em celular cabem menos.
@@ -60,8 +44,7 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
   const nosVisitados = useJogo((s) => s.nosVisitados);
-  const abrirFicha = useJogo((s) => s.abrirFicha);
-  const ultimaCartaPousada = useJogo((s) => s.ultimaCartaPousada);
+  const abrirOverlay = useJogo((s) => s.abrirOverlay);
 
   // A grade de repouso acompanha a largura da mesa: em tela estreita as
   // cartas se arrumam em menos colunas, e a superfície rola na vertical.
@@ -91,15 +74,17 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
   const posLoc = locsVisiveis.map(
     (loc, i) => posicoesCartas[`loc_${loc.id}`] || posicaoPadraoLocalidade(i)
   );
-  const cartasOrdenadas = ordenarPorDominio(cartasRegistradas);
-  const posCartas = cartasOrdenadas.map(
-    (carta, i) => posicoesCartas[carta.id] || posicaoPadraoCarta(i)
+  // Fichas de pessoa (P11): substituem os pergaminhos de evidência na mesa.
+  // Só os suspeitos com árvore de diálogo (o elenco interrogável).
+  const pessoas = suspeitosComDialogo();
+  const posPessoas = pessoas.map(
+    (p, i) => posicoesCartas[`pessoa_${p.id}`] || posicaoPadraoCarta(i)
   );
   // Altura rolável da superfície: alcança a carta mais baixa, com folga para
   // a última fileira respirar acima do rodapé da escrivaninha (achado A8).
   const alturaConteudo = Math.max(
     comDiorama ? 200 : 440,
-    ...[...posLoc, ...posCartas].map((p) => p.y + 184)
+    ...[...posLoc, ...posPessoas].map((p) => p.y + 184)
   );
 
   // Afordância de rolagem (A8): quando há cartas abaixo da dobra, a borda
@@ -167,28 +152,40 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
         );
       })}
 
-      {/* Cartas extraídas e registradas — agrupadas por domínio (Q9),
-          com papel e chegada em viravolta (Q7) */}
-      {cartasOrdenadas.map((carta, i) => (
-        <CartaMesa key={carta.id} id={carta.id} pos={posCartas[i]} aoClicar={() => abrirFicha(carta.id)}>
-          {/* A prova é papel escrito: pergaminho claro, tinta escura —
-              o claro que pousa sobre a mesa escura. Clicar reabre a ficha
-              de coleta (CartaMesa distingue clique de arrasto). */}
-          <div
-            className={`carta-surgir carta-pergaminho w-44 rounded-sm px-3 py-3 ${
-              carta.id === ultimaCartaPousada ? 'outline outline-2 outline-vela' : ''
-            }`}
-            title="Rever esta ficha"
+      {/* Fichas de pessoa (P11): cada suspeito interrogável tem um cartão
+          na mesa. Clicar abre o dossiê (overlay fichapessoa). */}
+      {pessoas.map((pessoa, i) => {
+        const nCartas = todasCartasDaPessoa(pessoa.id, cartasRegistradas).length;
+        return (
+          <CartaMesa
+            key={pessoa.id}
+            id={`pessoa_${pessoa.id}`}
+            pos={posPessoas[i]}
+            aoClicar={() => abrirOverlay('fichapessoa', pessoa.id)}
           >
-            <p className="text-cera text-rotulo uppercase">
-              {ROTULOS_DOMINIO[carta.tagsOcultas.dominio]}
-            </p>
-            {/* Só a observação CRUA na face da carta — a interpretação é
-                falada pelo legista, não carimbada (§6 do redesign). */}
-            <p className="font-serif text-tinta text-sm mt-1 leading-snug">{carta.textoDisplay}</p>
-          </div>
-        </CartaMesa>
-      ))}
+            <div
+              className="carta-surgir w-44 bg-stone-900 border border-latao/40 hover:border-latao/80 rounded-sm px-3 py-3"
+              data-pessoa={pessoa.id}
+              title="Abrir dossiê"
+            >
+              <div className="flex items-start gap-2">
+                <RetratoPersonagem personagemId={pessoa.id} tamanho={36} className="shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-serif text-amber-200 text-sm leading-snug">{pessoa.nome}</p>
+                  <p className="text-stone-400 text-[10px] mt-0.5 leading-snug truncate">
+                    {pessoa.relacao}
+                  </p>
+                </div>
+              </div>
+              {nCartas > 0 && (
+                <p className="text-latao-claro/70 text-[10px] mt-2">
+                  {nCartas} {nCartas === 1 ? 'prova' : 'provas'}
+                </p>
+              )}
+            </div>
+          </CartaMesa>
+        );
+      })}
 
       {/* Espaçador: garante que a rolagem alcance a carta mais baixa */}
       <div aria-hidden style={{ height: alturaConteudo }} />

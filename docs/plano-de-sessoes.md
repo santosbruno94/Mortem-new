@@ -195,8 +195,13 @@ detalhar antes).
   arrastava a morte principal) **corrigido**; editor 1 ALTO (série de fecho reflexo "se lê/se data")
   **corrigido** na mesma linha + 1 menor de anadiplose. `qa.mjs` `CASO VÁLIDO`, `qa-ui.mjs`
   `UI VÁLIDA`, `lint:prosa` limpo, build limpo; os 21 casos re-gerados.
-  **Segue pendente do Ramo A:** P11 (repensar a Mesa) — único item aberto; toca o contrato do
-  `qa-ui` e pede OS própria (só sob ordem).
+  **Ramo A fechado.** P11 (repensar a Mesa) concluído em 20/07/2026: a superfície da mesa
+  deixa de exibir pergaminhos de evidência e passa a mostrar **fichas de pessoa** (um cartão
+  por suspeito interrogável). Clicar abre o dossiê (`FichaPessoa`): álibi declarado, trechos
+  do interrogatório, provas ligadas, menções em outras provas, possível móbil e o que outros
+  disseram — tudo QOL, nenhuma conclusão entregue. Contrato do `qa-ui` atualizado (a
+  reabertura de ficha agora passa pela Caderneta; a persistência verifica fichas de pessoa na
+  mesa em vez de pergaminhos). `qa.mjs` CASO VÁLIDO, `qa-ui.mjs` UI VÁLIDA, build limpo.
 
 ### S2 — Fair play do caso-escola *(decisões do usuário)*
 

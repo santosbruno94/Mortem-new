@@ -18,6 +18,7 @@ import ModalGlossario from './ModalGlossario.jsx';
 import PainelAlibis from './PainelAlibis.jsx';
 import MuralAcusacao from './MuralAcusacao.jsx';
 import MonologoFinal from './MonologoFinal.jsx';
+import FichaPessoa from './FichaPessoa.jsx';
 
 // O diorama chega por chunk próprio (three.js pesa): a mesa nunca espera
 // o 3D — enquanto o chunk baixa, a grade 2D já é jogável (fallback do
@@ -166,6 +167,7 @@ export default function Escrivaninha() {
       {overlay?.tipo === 'alibis' && <PainelAlibis />}
       {overlay?.tipo === 'acusacao' && <MuralAcusacao />}
       {overlay?.tipo === 'monologo' && <MonologoFinal />}
+      {overlay?.tipo === 'fichapessoa' && <FichaPessoa suspeitoId={overlay.id} />}
 
       {/* A Ficha de Coleta (§6.2) empilha ACIMA de qualquer overlay: a
           primeira evidência do caso se apresenta nela; as demais, ao ser

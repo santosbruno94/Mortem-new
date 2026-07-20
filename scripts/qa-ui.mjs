@@ -313,12 +313,14 @@ async function main() {
     await espera(page, 300);
     checar('Fase 1: "Arquivar na mesa" fecha a ficha', (await page.locator('div.fixed[data-overlay="ficha"]').count()) === 0);
     await fecharOverlay(page); // fecha o corpo → volta à mesa
-    await page.locator('text=Corpo Endurecido').first().click(); // a carta pousada reabre a ficha
-    await espera(page, 300);
-    checar('Fase 1: a carta da mesa reabre a mesma ficha', (await page.locator('div.fixed[data-overlay="ficha"]').last().innerText()).includes(DESC_RIGOR));
-    await page.getByRole('button', { name: 'Arquivar na mesa' }).click();
-    await espera(page, 300);
+    // P11: a carta já não pousa na superfície da mesa (agora vive dentro
+    // da ficha de pessoa). A reabertura passa pela Caderneta.
     await page.click('text=Caderneta');
+    await espera(page, 400);
+    await page.locator('.carta-pergaminho', { hasText: CARIMBO_RIGOR }).first().click();
+    await espera(page, 300);
+    checar('Fase 1: a Caderneta reabre a mesma ficha', (await page.locator('div.fixed[data-overlay="ficha"]').last().innerText()).includes(DESC_RIGOR));
+    await page.getByRole('button', { name: 'Arquivar na mesa' }).click();
     await espera(page, 400);
     const textoCaderneta = await textoOverlay(page);
     checar('Fase 1: a Caderneta lista o carimbo da observação', textoCaderneta.includes(CARIMBO_RIGOR));
@@ -369,7 +371,7 @@ async function main() {
     await page.waitForSelector('.rotulo-papel', { timeout: 15000 });
     await espera(page, 400);
     const mesaRetomada = await page.locator('body').innerText();
-    checar('Onda 1: a mesa volta com as cartas registradas', mesaRetomada.includes('Corpo Endurecido'));
+    checar('Onda 1: a mesa volta com as fichas de pessoa', mesaRetomada.includes('Silas Crane'));
     checar('Onda 1: o relógio retomado não andou (13h00)', mesaRetomada.includes('13h00'));
     // ---- fim do bloco da Onda 1 ----
 
