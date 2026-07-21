@@ -1130,12 +1130,10 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       for (const [regId, reg] of Object.entries(REGIOES_EXIGIVEIS)) {
         const noId = `exigencia_${regId}`;
         const temMarcaNaRegiao = marcaDaPessoa && marcaDaPessoa.regiao === regId;
-        const nadaDeNota = SINAL_POR_METODO[bruto.escolha.metodoId]?.descricaoNadaDeNota
-          || 'Nada de nota.';
         if (temMarcaNaRegiao) {
           nos[noId] = { fala: [marcaDaPessoa.descricaoClose], opcoes: [] };
         } else {
-          nos[noId] = { fala: [nadaDeNota], opcoes: [] };
+          nos[noId] = { fala: [reg.descricaoNadaDeNota], opcoes: [] };
         }
         exigencias.push({
           requerCarta: 'gen_sinal_exigivel',

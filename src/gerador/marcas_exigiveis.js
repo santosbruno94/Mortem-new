@@ -33,16 +33,19 @@ export const REGIOES_EXIGIVEIS = {
     rotulo: 'as mãos',
     descricaoExigencia: 'Exigir que mostre as mãos',
     sedes: ['palmas', 'dorso_das_maos', 'sob_as_unhas'],
+    descricaoNadaDeNota: 'As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota.',
   },
   antebracos: {
     rotulo: 'os antebraços',
     descricaoExigencia: 'Exigir que mostre os antebraços',
     sedes: ['antebracos'],
+    descricaoNadaDeNota: 'Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota.',
   },
   botas: {
     rotulo: 'as botas',
     descricaoExigencia: 'Exigir que mostre as botas',
     sedes: ['canelas'], // a bota cobre até a canela; a lama está ali
+    descricaoNadaDeNota: 'As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota.',
   },
 };
 

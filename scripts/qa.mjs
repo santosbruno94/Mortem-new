@@ -2172,7 +2172,7 @@ if (casoComDestruicao && casoComEvento && casoComSilenciar) {
 const { montarPacoteGerado, SEED_REPLICA, DIRIGIDO_REPLICA } = await import(
   '../src/gerador/pacote_gerado.js'
 );
-const { CASO_REPLICA, CASOS_POOL } = await import('../src/data/casos_gerados.js');
+const { CASO_REPLICA, CASOS_POOL, CASOS_LUTA } = await import('../src/data/casos_gerados.js');
 
 // (a) Replay byte a byte do arquivo embarcado. A regeneração fica à mão
 // para o cheque (f) da árvore de diálogo (replay chamada a chamada).
@@ -2181,7 +2181,10 @@ const replayReplicaOk = JSON.stringify(regenReplica) === JSON.stringify(CASO_REP
 const replayPoolOk = CASOS_POOL.every(
   (p) => JSON.stringify(montarPacoteGerado(p.id.replace(/^gerado_/, ''))) === JSON.stringify(p)
 );
-const casosEmbarcadosReplay = replayReplicaOk && replayPoolOk;
+const replayLutaOk = CASOS_LUTA.every(
+  (p) => JSON.stringify(montarPacoteGerado(p.id.replace(/^gerado_/, ''))) === JSON.stringify(p)
+);
+const casosEmbarcadosReplay = replayReplicaOk && replayPoolOk && replayLutaOk;
 if (!casosEmbarcadosReplay) {
   console.log('\nGERADOR (FASE 6) — casos_gerados.js DIVERGE do montador (rodar npm run gerar:casos).');
 }
@@ -2227,7 +2230,7 @@ function telemetriaP9DuplaAncora(casos) {
   }
   return { total: casos.length, duravel, fragil, soInstrumental, linhas };
 }
-const p9Telemetria = telemetriaP9DuplaAncora([CASO_REPLICA, ...CASOS_POOL]);
+const p9Telemetria = telemetriaP9DuplaAncora([CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA]);
 console.log('\nP9 — FASE 0 (telemetria da âncora dupla; risco zero, só mede):');
 console.log(
   `  ${p9Telemetria.duravel}/${p9Telemetria.total} casos com 2ª âncora DURÁVEL independente (ferimento_do_agressor)`
@@ -2236,11 +2239,11 @@ console.log(`  ${p9Telemetria.fragil}/${p9Telemetria.total} com espécie-2 só F
 console.log(`  ${p9Telemetria.soInstrumental}/${p9Telemetria.total} SÓ com a âncora instrumental → cairiam na Via B`);
 console.log(p9Telemetria.linhas.join('\n'));
 // P9 Via B — cobertura do acessor (quantos casos têm inocente_acesso).
-const p9ViaBCobertura = [CASO_REPLICA, ...CASOS_POOL].filter((p) =>
+const p9ViaBCobertura = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA].filter((p) =>
   Object.values((p.verdadeDeOuro || {}).perifericos || {}).some((x) => x.veredictoEsperado === 'inocente_acesso')
 ).length;
 console.log(`  Via B: ${p9ViaBCobertura}/${p9Telemetria.total} casos com acessor (inocente_acesso)`);
-const p9Fase0Ok = p9Telemetria.total === 21;
+const p9Fase0Ok = p9Telemetria.total === 1 + CASOS_POOL.length + CASOS_LUTA.length;
 
 // (b) Higiene de todos os pacotes embarcados.
 function problemasDoPacoteGerado(pacote) {
@@ -2302,7 +2305,7 @@ function problemasDoPacoteGerado(pacote) {
   }
   return problemas;
 }
-const problemasEmbarcados = [CASO_REPLICA, ...CASOS_POOL].flatMap((p) =>
+const problemasEmbarcados = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA].flatMap((p) =>
   problemasDoPacoteGerado(p).map((x) => `${p.id}: ${x}`)
 );
 const casosEmbarcadosIntegros = problemasEmbarcados.length === 0;
@@ -2448,16 +2451,18 @@ function perfisDoCasoGerado(pacote) {
 
 const perfisReplica = perfisDoCasoGerado(CASO_REPLICA);
 const perfisPool = perfisDoCasoGerado(CASOS_POOL[0]);
+const perfisLuta = perfisDoCasoGerado(CASOS_LUTA[0]);
 const quatroDesfechos = (r) =>
   r.metodico === 'vitoria_absoluta' &&
   r.apressado === 'erro_judiciario' &&
   r.intuitivo === 'impunidade' &&
   r.desatento === 'sucesso_gafes' &&
   r.monologoGeradoOk !== false;
-const casosGeradosJogaveis = quatroDesfechos(perfisReplica) && quatroDesfechos(perfisPool);
+const casosGeradosJogaveis = quatroDesfechos(perfisReplica) && quatroDesfechos(perfisPool) && quatroDesfechos(perfisLuta);
 console.log('\n=== GERADOR (FASE 6) — perfis nos casos gerados ===');
 console.log('réplica:', JSON.stringify(perfisReplica));
 console.log('pool[0]:', JSON.stringify(perfisPool));
+console.log('luta[0]:', JSON.stringify(perfisLuta));
 
 // ============================================================
 // ÁRVORES DE DIÁLOGO GERADAS (OS árvore procedural — spec §8.7 em
@@ -2667,7 +2672,7 @@ function problemasDosDialogosGerados(pacote) {
 }
 
 // (d) Estrutura em todos os pacotes embarcados.
-const problemasDialogosGerados = [CASO_REPLICA, ...CASOS_POOL].flatMap((p) =>
+const problemasDialogosGerados = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA].flatMap((p) =>
   problemasDosDialogosGerados(p).map((x) => `${p.id}: ${x}`)
 );
 const dialogosGeradosIntegros = problemasDialogosGerados.length === 0;
@@ -2829,7 +2834,7 @@ const lintL2Ok = lintL2Violacoes.length === 0;
 if (!lintL2Ok) console.log('\nPSIQUE — L2 em identificador/chave do runtime:', lintL2Violacoes.slice(0, 10).join('; '));
 
 // (4) Não-vazamento nos pacotes embarcados (a réplica + o pool inteiro).
-const pacotesEmbarcados = [CASO_REPLICA, ...CASOS_POOL];
+const pacotesEmbarcados = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA];
 const chavesEIdsDoPacote = (valor, colhidas = []) => {
   if (Array.isArray(valor)) {
     valor.forEach((v) => chavesEIdsDoPacote(v, colhidas));
@@ -3866,7 +3871,7 @@ for (const bruto of casosGeradosPrimeira) {
 // G2: nos pacotes embarcados, gen_ferimento_reu nunca é a ÚNICA carta com
 // pertenceA === reuCorreto (a marca não é âncora única).
 const problemasAncoraUnica = [];
-for (const pacote of [CASO_REPLICA, ...CASOS_POOL]) {
+for (const pacote of [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA]) {
   const reuId = pacote.verdadeDeOuro?.reuCorreto;
   if (!reuId) continue;
   const cartasReu = (pacote.cartas || []).filter(
@@ -3876,6 +3881,11 @@ for (const pacote of [CASO_REPLICA, ...CASOS_POOL]) {
     problemasAncoraUnica.push(`${pacote.id}: gen_ferimento_reu é âncora única do réu`);
   }
 }
+// G3: todo caso do pool luta tem gen_sinal_exigivel (a luta é forçada).
+const problemasLutaForc = CASOS_LUTA.filter(
+  (p) => !(p.cartas || []).some((c) => c.id === 'gen_sinal_exigivel')
+).map((p) => `${p.id}: sem gen_sinal_exigivel (luta forçada violada)`);
+const exigenciaLutaForcadaOk = problemasLutaForc.length === 0;
 const exigenciaRuidoOk = problemasExigencia.length === 0;
 const exigenciaAncoraOk = problemasAncoraUnica.length === 0;
 if (!exigenciaRuidoOk) {
@@ -3885,6 +3895,10 @@ if (!exigenciaRuidoOk) {
 if (!exigenciaAncoraOk) {
   console.log('\nEXIGÊNCIA — âncora única:');
   for (const p of problemasAncoraUnica) console.log('  ·', p);
+}
+if (!exigenciaLutaForcadaOk) {
+  console.log('\nEXIGÊNCIA — luta forçada:');
+  for (const p of problemasLutaForc) console.log('  ·', p);
 }
 
 const checagens = [
@@ -3953,9 +3967,9 @@ const checagens = [
   ['Replay das seeds de interferência: mesma seed → mesmo caso com os mesmos eventos contingentes, byte a byte (FASE 5)', replayInterferenciaOk],
   ['Armadilhas detectadas: âncora destruível, gatilho órfão, rota órfã, silenciar sem prenúncio, saldo negativo — e o caso válido passa (FASE 5)', armadilhasDetectadas],
   ['Prosa sem regressão mecânica (lint-prosa): fórmula, travessões, léxico, exclamações, filtro sensorial, abertura repetida, vocativo', prosaSemRegressao],
-  ['Casos embarcados = montador de hoje, byte a byte (réplica dirigida + pool) (FASE 6)', casosEmbarcadosReplay],
+  ['Casos embarcados = montador de hoje, byte a byte (réplica dirigida + pool + luta) (FASE 6)', casosEmbarcadosReplay],
   ['Pacotes gerados íntegros: campos, marcadores↔cartas, blocos contingentes, slots, sem id/rótulo cru (FASE 6)', casosEmbarcadosIntegros],
-  ['Casos gerados jogáveis: os 4 perfis produzem os 4 desfechos na réplica e no pool (FASE 6)', casosGeradosJogaveis],
+  ['Casos gerados jogáveis: os 4 perfis produzem os 4 desfechos na réplica, pool e luta (FASE 6)', casosGeradosJogaveis],
   ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],
   ['Armadilhas da árvore detectadas: beat de 3 tons, confronto sem reação, nó órfão, requerCarta fantasma (OS diálogo)', armadilhasDialogoDetectadas],
   ['Replay da árvore: mesma seed → mesma árvore, chamada a chamada (OS diálogo)', replayArvoreOk],
@@ -4002,6 +4016,7 @@ const checagens = [
   ['Autobattler v2 — GB10 anti-ambiguidade: sinal de tentativa não crava sozinho; motor cego a metodoIniciado; troca rara (<5%) (OS autobattler v2 B4)', gb10AntiAmbiguidade],
   ['Inc. 6 — ruído honesto: todo réu-com-marca tem ≥1 inocente-com-marca (OS Exigir que mostre §5)', exigenciaRuidoOk],
   ['Inc. 6 — âncora única: gen_ferimento_reu nunca é a única carta de autoria do réu (Via B, OS P9)', exigenciaAncoraOk],
+  ['Inc. 6 — luta forçada: todo caso do pool luta tem gen_sinal_exigivel', exigenciaLutaForcadaOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

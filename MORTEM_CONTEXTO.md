@@ -499,6 +499,32 @@ e ainda assim é alcançável em algum caminho (a Vitória Absoluta segue possí
 Observação pura (guia §2): a calma do suspeito é gesto observável; quem estranha é o
 jogador.
 
+### 7.2.1 O verbo "Exigir que mostre" (Inc. 6 — marcas corporais)
+
+O perito pode **exigir que o suspeito mostre** uma região do corpo (mãos, antebraços,
+botas) durante o interrogatório. O verbo é um **canal lateral** como o confronto e o
+gatilho de complexo: transitório, a conversa retoma sem descer a árvore.
+
+**O circuito:** (1) a perícia do corpo da vítima anuncia um **sinal** que implica marca-
+espelho no agressor (carta `gen_sinal_exigivel`, `localidade: 'corpo'`); (2) a carta
+na mesa **desbloqueia** os botões ✋ nos interrogatórios; (3) exigir mostra um close —
+a marca do culpado ou "nada de nota" para os inocentes; (4) a reação é transitória
+(não persiste, não desce a árvore).
+
+**Ruído honesto (decisão 4.3, guarda no QA):** todo caso com marca-espelho no réu
+tem **≥2 inocentes com marca plausível** (1 ocupacional, por ofício — ferreiro,
+lavadeira, etc.; 1 situacional — arranhão de gato, queda, lama de outubro). A marca
+nunca é âncora única de autoria (Via B, `os-p9-ancora-hibrida.md`).
+
+**Frequência:** o autobattler só produz `ferimento_do_agressor` quando a vítima fere o
+assassino na luta (~15% das seeds). Em casos sem ferimento, o verbo não existe — não
+há sinal para anunciar. Veneno não produz marca corporal (design intencional).
+
+**Dados:** vocabulário em `src/gerador/marcas_exigiveis.js` (métodos, regiões, marcas
+inocentes); depósito em `src/gerador/caso.js` (`marcasCorporais`); nós de diálogo em
+`src/gerador/dialogos_gerados.js`; estado no store (`exigenciasFeitas`). O motor é
+cego — nenhuma regra em `src/logic` lê a marca ou o gesto.
+
 ### 7.3 Confronto que faz o suspeito agir (SEMENTE — mecânica futura)
 
 Hoje o confronto rende **prosa** (a reação) e, quando é o caso, **anota o mural** — mas
@@ -743,16 +769,20 @@ inicial apresenta um único convite (`faseJogo: 'selecao' → 'abertura' →
    presença, **sem ensinar**); a cena vem só com descrição física (sem `vozMestre`).
    Viável graças ao motor de tags.
 
-**Estado (jul/2026) — os três chamados da tela inicial.** A seleção de caso já
-oferece três modos: (1) **A Hora Emprestada**, o caso-escola artesanal, intocado;
+**Estado (jul/2026) — os quatro chamados da tela inicial.** A seleção de caso
+oferece quatro modos: (1) **A Hora Emprestada**, o caso-escola artesanal, intocado;
 (2) **A Hora Refeita**, a réplica procedural do caso-escola (seed fixa + variáveis
 dirigidas — ver `src/gerador/pacote_gerado.js`); (3) **Um Caso da Comarca**, um caso
 aleatório de um banco de **20 casos** pré-gerados em build time
 (`src/data/casos_gerados.js`, regenerável por `npm run gerar:casos` e conferido byte a
-byte pelo QA). O gerador
-segue ILHA de build time: o runtime carrega pacotes prontos, nunca importa
-`src/gerador`. Casos gerados jogam sem mestre (sem `vozMestre`, sem ecos do
-tutorial), na grade 2D da mesa (a maquete 3D permanece exclusiva do caso-escola,
+byte pelo QA); (4) **A Marca do Agressor**, um caso da comarca onde a luta corporal é
+certa — o corpo da vítima sempre anuncia a marca-espelho, garantindo o verbo "Exigir
+que mostre" (banco de **10 casos**, namespace `luta_*`, filtrado por presença de
+`gen_sinal_exigivel` e validado tanto estática quanto interativamente). Nos modos
+procedurais (comarca e luta), a abertura é omitida e o perito segue direto à
+investigação. O gerador segue ILHA de build time: o runtime carrega pacotes prontos,
+nunca importa `src/gerador`. Casos gerados jogam sem mestre (sem `vozMestre`, sem ecos
+do tutorial), na grade 2D da mesa (a maquete 3D permanece exclusiva do caso-escola,
 cujos nós ela conhece). A prosa dos templates passou pela OS de lapidação
 editorial (`docs/os-lapidacao-prosa-gerada.md`, 16/07/2026): pipeline
 `revisar-prosa` sobre o corpus realizado dos 9 casos embarcados, correção sempre

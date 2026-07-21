@@ -2,12 +2,15 @@
 
 Jogo de investigação forense em texto e cartas, ambientado na Inglaterra vitoriana (1893).
 Este repositório contém o **vertical slice jogável** — da tela de título ao Monólogo do
-Detetive, com os 4 desfechos possíveis — hoje em **três modos** sobre a mesma mesa:
+Detetive, com os 4 desfechos possíveis — hoje em **quatro modos** sobre a mesma mesa:
 
 1. **A Hora Emprestada** — o caso-escola artesanal, escrito à mão (com a maquete 3D da vila).
 2. **A Hora Refeita** — a réplica procedural do caso-escola (a máquina remonta o mesmo crime).
 3. **Um Caso da Comarca** — um caso sorteado de um banco de **20 casos** que a simulação
    gera em build time (vila, elenco e vestígios que nenhuma mão escreveu).
+4. **A Marca do Agressor** — um caso da comarca onde a luta corporal é certa: o corpo da
+   vítima sempre anuncia a marca-espelho, garantindo o verbo "Exigir que mostre" (banco de
+   **10 casos**).
 
 O gerador é uma **ilha de build time**: em runtime o jogo só carrega pacotes prontos, nunca
 importa `src/gerador`; tudo é determinístico, sem chamadas de rede.
@@ -62,16 +65,20 @@ Ferramentas de inspeção do gerador (build time, imprimem no terminal):
 
 ## Como se joga
 
-1. **Atenda ao chamado** — Harlan Blackwell ergue o convite da mesa e escolhe um dos **três
-   chamados** (o caso-escola artesanal, a réplica procedural, ou um caso da comarca sorteado).
+1. **Atenda ao chamado** — Harlan Blackwell ergue o convite da mesa e escolhe um dos **quatro
+   chamados** (o caso-escola artesanal, a réplica procedural, um caso da comarca sorteado, ou
+   um caso com luta corporal forçada).
 2. **Abertura** — da pensão em Caulfield ao briefing do Delegado Wycliffe (as perguntas ao
-   delegado não custam tempo… mas plantam iscas).
+   delegado não custam tempo… mas plantam iscas). Nos modos procedurais (comarca e luta), a
+   abertura é omitida e o perito segue direto à investigação.
 3. **Investigação** — tudo acontece sobre a escrivaninha. Localidades são cartas: clique para
    **viajar** até lá (só a viagem gasta o relógio) e abrir o exame ou o interrogatório como
    sobreposição. O exame do corpo é uma **prancha de atlas** (SVG, com lupa que segue o
    dedo, frente/dorso e necropsia); os interrogatórios compõem uma **cena ilustrada** (fundo
-   da localidade + sprite do interlocutor). **Termos em negrito** na prosa extraem cartas
-   para a mesa — examinar **não** custa tempo. A **voz do mestre** vai dando a leitura do
+   da localidade + sprite do interlocutor), com **confronto** (pousar uma prova diante do
+   suspeito) e **exigir que mostre** (mandar mostrar as mãos, os antebraços ou as botas —
+   quando o corpo da vítima anuncia a marca-espelho). **Termos em negrito** na prosa extraem
+   cartas para a mesa — examinar **não** custa tempo. A **voz do mestre** vai dando a leitura do
    corpo (uma dica; o Dr. Alcott, ausente, recordado pelo aprendiz). O perecível (rigor,
    temperatura) **perde precisão** com as horas, mas nunca some — o durável sempre resolve.
 4. **Construir a acusação** — o botão da parede abre o **mural com barbante**. Você **afirma**
@@ -95,7 +102,7 @@ salgado com a seed).
 ```
 src/
   data/         seed, catálogo de causas, cartas (com tagsOcultas), localidades, mapa, glossário,
-                abertura, rótulos, casos_gerados.js (banco de 20 casos da comarca)
+                abertura, rótulos, casos_gerados.js (banco de 30 casos: 20 comarca + 10 luta)
   logic/        tempo, tempo_morte, cronos, acusacao (gramática das ligações), veredicto, falaDoMestre, monólogo, interpolação
   store/        jogo.js (Zustand: fases, relógio, mapa, cartas registradas, conclusões, acusação, log)
   gerador/      ILHA de build time: autobattler do crime, cidade, elenco, vestígios, interferência
