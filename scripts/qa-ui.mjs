@@ -329,10 +329,10 @@ async function main() {
     // religa sem perder nada (o dado continua consolidando por baixo).
     await page.getByRole('button', { name: 'Dispensar a leitura' }).click();
     await espera(page, 200);
-    checar('Onda 8: purista dispensa a leitura do legista', (await page.locator('body').innerText()).includes('dispensou a leitura do legista'));
+    checar('Onda 8: purista dispensa a leitura do legista', (await page.locator('body').innerText()).includes('dispensou a leitura do mestre'));
     await page.getByRole('button', { name: 'Tornar a pedir a leitura' }).click();
     await espera(page, 200);
-    checar('Onda 8: religar devolve a leitura', !(await page.locator('body').innerText()).includes('dispensou a leitura do legista'));
+    checar('Onda 8: religar devolve a leitura', !(await page.locator('body').innerText()).includes('dispensou a leitura do mestre'));
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 1 ----
 

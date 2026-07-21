@@ -21,7 +21,7 @@
 // =====================================================================
 
 export const ECOS_MESTRE_TUTORIAL = {
-  titulo: 'O legista, à parte',
+  titulo: 'A voz do mestre',
   porCodigo: {
     // Quando — o perito não cravou hora nenhuma.
     sem_janela: [
