@@ -1,7 +1,5 @@
-import { lazy, Suspense, useState } from 'react';
+import { useState } from 'react';
 import { useJogo } from '../store/jogo.js';
-import { webglDisponivel, modoFlat } from '../logic/webgl.js';
-import Cena3DBoundary from './Cena3DBoundary.jsx';
 import PlantaRelojoaria from './PlantaRelojoaria.jsx';
 import {
   obterCaso,
@@ -20,10 +18,12 @@ import { ParagrafoProsa } from './ProsaComTermos.jsx';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
+import PranchaCorpo from './corpo3d/PranchaCorpo.jsx';
 
-// O exame 3D chega pelo mesmo chunk do three (lazy): a prosa nunca
-// espera o canvas — ela É o caminho canônico de extração.
-const CorpoCanvas = lazy(() => import('./corpo3d/CorpoCanvas.jsx'));
+// O exame do corpo é PRANCHA de atlas em SVG (pivô "Gabinete Ilustrado"):
+// a prancha é a vista padrão, aposentado o cadáver 3D (nota de design §8.1).
+// SVG puro — joga sem WebGL, sem arquivo de arte, e o ?flat=1 segue sem
+// canvas. A prosa continua sendo o caminho canônico de extração.
 
 // Evento de localidade (§5): prosa imersiva com termos clicáveis em
 // negrito. Clicar no termo extrai a carta com carimbo integrado (§6),
@@ -49,7 +49,6 @@ export default function EventoLocalidade({ localidadeId }) {
 
   const personagemDaCena = obterPersonagemDaLocalidade(localidade.id);
   const ehCorpo = localidade.id === 'corpo';
-  const corpo3D = ehCorpo && !modoFlat() && webglDisponivel();
   // A planta baixa (§5.1) só aparece nos nós do mesmo prédio — o grupo
   // relojoaria de src/data/mapa.js. Camada visual: lê o grupo, nunca o motor.
   const naRelojoaria = obterNo(localidade.id)?.grupo === 'relojoaria';
@@ -208,23 +207,17 @@ export default function EventoLocalidade({ localidadeId }) {
     <Overlay
       titulo={interpolar(localidade.titulo, detective)}
       subtitulo={localidade.subtitulo}
-      largura={corpo3D ? 'max-w-5xl' : 'max-w-2xl'}
+      largura={ehCorpo ? 'max-w-5xl' : 'max-w-2xl'}
     >
       {/* A planta baixa (§5.1): andar entre os cômodos do mesmo prédio. */}
       {naRelojoaria && <PlantaRelojoaria localidadeAtual={localidade.id} />}
-      {corpo3D ? (
-        // O exame em dois painéis: a mesa de exame 3D acompanha a prosa.
-        // O 3D é redundância deliberada — clicar no corpo extrai as
+      {ehCorpo ? (
+        // O exame em dois painéis: a PRANCHA de atlas acompanha a prosa.
+        // A prancha é redundância deliberada — clicar num hotspot extrai as
         // MESMAS cartas dos termos em negrito, que continuam valendo.
         <div className="lg:grid lg:grid-cols-[minmax(0,26rem)_1fr] lg:gap-6 lg:items-start">
-          <div className="h-48 sm:h-56 lg:h-80 lg:sticky lg:top-2 mb-4 lg:mb-0 rounded-sm border border-stone-800 bg-stone-950/60 overflow-hidden">
-            <Cena3DBoundary fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">— a mesa de exame segue na prosa —</div>}>
-              {(aoPerderContexto) => (
-                <Suspense fallback={<div className="h-full grid place-items-center text-stone-400 text-xs italic font-serif">a mesa de exame prepara-se…</div>}>
-                  <CorpoCanvas ipm={ipm} aoPerderContexto={aoPerderContexto} />
-                </Suspense>
-              )}
-            </Cena3DBoundary>
+          <div className="lg:sticky lg:top-2 mb-4 lg:mb-0">
+            <PranchaCorpo ipm={ipm} />
           </div>
           <div>{prosaEExames}</div>
         </div>

@@ -2,3 +2,7 @@ node_modules
 dist
 *.local
 .DS_Store
+
+# ferramentas de screenshot local (não-gate)
+scripts/shot-*.mjs
+scripts/_*.png
