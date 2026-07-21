@@ -120,7 +120,11 @@ function Traje({ traje, f }) {
   );
 }
 
-function RetratoPersonagem({ personagemId, tamanho = 88, className = '' }) {
+function RetratoPersonagem({ personagemId, tamanho = 88, className = '', variante = 'medalhao' }) {
+  // variante 'cena' (Sistema 2 do pivô): sprite meio-corpo SEM moldura nem
+  // fundo — a mesma gravura do genótipo, recortada para pousar sobre o fundo
+  // 2D da localidade. 'medalhao' (padrão) é o retrato oval de sempre.
+  const moldura = variante !== 'cena';
   // Paper-doll de gravura (FASE 3): se o manifesto trouxer camadas para este
   // genótipo, empilha-as no MESMO viewBox 120×150; sem arte, comporRetrato
   // devolve [] e cai no SVG procedural abaixo (fallback integral, idêntico
@@ -166,6 +170,7 @@ function RetratoPersonagem({ personagemId, tamanho = 88, className = '' }) {
   return (
     <svg
       data-retrato={personagemId}
+      data-variante={variante}
       viewBox="0 0 120 150"
       width={tamanho}
       height={tamanho * 1.25}
@@ -185,9 +190,10 @@ function RetratoPersonagem({ personagemId, tamanho = 88, className = '' }) {
         </pattern>
       </defs>
 
-      {/* Moldura e fundo oval de gravura */}
-      <rect x="0" y="0" width="120" height="150" fill="#241f1a" />
-      <ellipse cx="60" cy="74" rx="41" ry="54" fill="#2c2620" />
+      {/* Moldura e fundo oval de gravura (só no medalhão; na cena o sprite
+          pousa recortado sobre o fundo 2D da localidade) */}
+      {moldura && <rect x="0" y="0" width="120" height="150" fill="#241f1a" />}
+      {moldura && <ellipse cx="60" cy="74" rx="41" ry="54" fill="#2c2620" />}
 
       {/* Busto e traje */}
       <Traje traje={ap.traje} f={f} />
@@ -220,10 +226,11 @@ function RetratoPersonagem({ personagemId, tamanho = 88, className = '' }) {
         </g>
       )}
 
-      {/* Hachura de gravura + vinheta oval */}
-      <ellipse cx="60" cy="75" rx="52" ry="68" fill={`url(#${idHachura})`} opacity="0.5" />
-      <ellipse cx="60" cy="74" rx="46" ry="60" fill="none" stroke="#0c0a09" strokeWidth="12" opacity="0.32" />
-      <rect x="1" y="1" width="118" height="148" fill="none" stroke="#78350f" strokeOpacity="0.5" strokeWidth="2" />
+      {/* Hachura de gravura + vinheta oval (a vinheta e a moldura de latão só
+          existem no medalhão) */}
+      <ellipse cx="60" cy="75" rx="52" ry="68" fill={`url(#${idHachura})`} opacity={moldura ? 0.5 : 0.32} />
+      {moldura && <ellipse cx="60" cy="74" rx="46" ry="60" fill="none" stroke="#0c0a09" strokeWidth="12" opacity="0.32" />}
+      {moldura && <rect x="1" y="1" width="118" height="148" fill="none" stroke="#78350f" strokeOpacity="0.5" strokeWidth="2" />}
     </svg>
   );
 }

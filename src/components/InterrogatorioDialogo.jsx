@@ -10,7 +10,7 @@ import {
 import { confrontoSemParadeiro } from '../logic/acusacao.js';
 import { ParagrafoProsa } from './ProsaComTermos.jsx';
 import PlantaRelojoaria from './PlantaRelojoaria.jsx';
-import RetratoPersonagem from './RetratoPersonagem.jsx';
+import CenaDialogo from './CenaDialogo.jsx';
 import Overlay from './Overlay.jsx';
 
 // Interrogatório como DIÁLOGO VIVO (§7.2): a árvore ramificada agora DESCE e
@@ -138,12 +138,15 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
     <Overlay titulo={interpolar(titulo, detective)} subtitulo={subtitulo} marca="dialogo">
       {naRelojoaria && <PlantaRelojoaria localidadeAtual={localidade.id} />}
 
-      {/* Retrato de quem o perito interroga — camada visual, decorativa */}
-      {personagemDaCena && (
-        <div className="float-right ml-4 mb-2 border border-latao/40 rounded-sm shadow-pousado">
-          <RetratoPersonagem personagemId={personagemDaCena} tamanho={84} className="block" />
-        </div>
-      )}
+      {/* A cena ilustrada de quem o perito interroga (Sistema 2): fundo 2D da
+          localidade + sprite meio-corpo. Reage quando o perito confronta —
+          gesto observável, nunca legenda. Camada visual: o motor não a lê. */}
+      <CenaDialogo
+        personagemId={personagemDaCena}
+        localidadeId={localidade?.id || dialogoId || suspeitoId}
+        grupo={localidade ? obterNo(localidade.id)?.grupo : undefined}
+        reacao={emReacao}
+      />
 
       {/* A prova pousada diante do interrogado (linha conectiva do gesto) */}
       {cartaApresentada && (

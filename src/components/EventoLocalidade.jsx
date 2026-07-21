@@ -17,7 +17,7 @@ import { modoDoCaso } from '../data/casos.js';
 import { ParagrafoProsa } from './ProsaComTermos.jsx';
 import Overlay from './Overlay.jsx';
 import TermometroCorpo from './TermometroCorpo.jsx';
-import RetratoPersonagem from './RetratoPersonagem.jsx';
+import CenaDialogo from './CenaDialogo.jsx';
 import PranchaCorpo from './corpo3d/PranchaCorpo.jsx';
 
 // O exame do corpo é PRANCHA de atlas em SVG (pivô "Gabinete Ilustrado"):
@@ -111,12 +111,14 @@ export default function EventoLocalidade({ localidadeId }) {
 
   const prosaEExames = (
     <>
-      {/* Retrato de quem recebe o perito — camada visual, decorativa */}
-      {personagemDaCena && (
-        <div className="float-right ml-4 mb-2 border border-latao/40 rounded-sm shadow-pousado">
-          <RetratoPersonagem personagemId={personagemDaCena} tamanho={84} className="block" />
-        </div>
-      )}
+      {/* A cena ilustrada de quem recebe o perito (Sistema 2): fundo 2D +
+          sprite meio-corpo. No corpo não há anfitrião — a prancha ocupa o
+          painel; aqui o componente se cala (personagemDaCena nulo). */}
+      <CenaDialogo
+        personagemId={personagemDaCena}
+        localidadeId={localidade.id}
+        grupo={obterNo(localidade.id)?.grupo}
+      />
       {temPontos ? (
         <div className="space-y-3">
           {(localidade.introducao || []).map((t, i) => renderParagrafo(t, `intro_${i}`))}
