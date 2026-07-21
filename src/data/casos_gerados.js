@@ -20523,6 +20523,21 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_sinal_exigivel",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Sinal no Corpo da Vítima",
+   "carimboPadrao": "Marca-espelho esperada (palmas das mãos)",
+   "descricao": "Marca-espelho esperada (palmas das mãos)",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sinal_exigivel",
+    "regiao": "maos",
+    "sede": "palmas",
+    "metodoOrigem": "laminada"
+   }
+  },
+  {
    "id": "gen_ruido_ouvido",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
@@ -20805,6 +20820,7 @@ export const CASOS_POOL = [
     "O morto jaz no chão do cômodo a que a vila chama cozinha, vestido como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
    ]
   },
@@ -20969,6 +20985,29 @@ export const CASOS_POOL = [
     {
      "requerCarta": "gen_segredo_gen_4_costureira",
      "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
     }
    ],
    "nos": {
@@ -21142,6 +21181,24 @@ export const CASOS_POOL = [
       "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
     }
    }
   },
@@ -21160,6 +21217,29 @@ export const CASOS_POOL = [
     {
      "requerCarta": "gen_instrumento",
      "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
     }
    ],
    "nos": {
@@ -21333,6 +21413,24 @@ export const CASOS_POOL = [
       "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Levanta-se e recolhe a cadeira ao lugar. \"Se a casa puder servir em mais, é só mandar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Na palma, um corte inciso limpo, transversal, na base dos dedos. A borda é nítida: lâmina, não queda."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
     }
    }
   },
@@ -21351,6 +21449,29 @@ export const CASOS_POOL = [
     {
      "requerCarta": "gen_ruido_ouvido",
      "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
     }
    ],
    "nos": {
@@ -21524,6 +21645,24 @@ export const CASOS_POOL = [
       "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
     }
    }
   },
@@ -21542,6 +21681,29 @@ export const CASOS_POOL = [
     {
      "requerCarta": "gen_segredo_gen_3_criada",
      "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
     }
    ],
    "nos": {
@@ -21715,6 +21877,24 @@ export const CASOS_POOL = [
       "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Mãos vermelhas de quem esfrega assoalho de joelhos. Arranhões finos da grelha do fogão — trabalho, não luta."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
     }
    }
   },
@@ -21733,6 +21913,29 @@ export const CASOS_POOL = [
     {
      "requerCarta": "gen_visto_vivo",
      "rotulo": "[Última Vez com Vida] A que horas, exatamente, viu a vítima com vida?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
     }
    ],
    "nos": {
@@ -21904,6 +22107,24 @@ export const CASOS_POOL = [
     "b2_obliquo": {
      "fala": [
       "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Arranhões finos, paralelos, superficiais — garra de gato, sem dúvida. Frescos."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "Palmas calosas, sem corte recente. Nada de nota."
      ],
      "opcoes": []
     }

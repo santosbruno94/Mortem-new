@@ -46,6 +46,7 @@
 
 import { METODOS } from './metodos.js';
 import { SEDE_LEGIVEL } from './vestigios.js';
+import { SINAL_POR_METODO } from './marcas_exigiveis.js';
 
 // Hora de chegada padrão do perito à cena (mesma convenção do
 // caso-escola: 13h00 do dia 14/out na escala absoluta — src/logic/
@@ -399,6 +400,29 @@ export function fatiaForenseDoCrime({
       carimboPadrao: vFerimentoReu.detalhe,
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
       tagsOcultas: { dominio: 'vestigio', subDominio: 'ferimento_do_agressor', pertenceA: assassino.id, sede: vFerimentoReu.sede ?? null },
+    });
+  }
+
+  // O SINAL EXIGÍVEL: carta de corpo que anuncia a marca-espelho do agressor
+  // (Inc. 6 do pivô Gabinete Ilustrado — docs/os-exigir-que-mostre.md). Gate
+  // do verbo "Exigir que mostre" no interrogatório. Só quando há ferimento
+  // no agressor E o método tem sinal definido (venenos não têm).
+  if (vFerimentoReu && SINAL_POR_METODO[crime.metodoId]) {
+    const sinal = SINAL_POR_METODO[crime.metodoId];
+    cartas.push({
+      id: 'gen_sinal_exigivel',
+      localidade: 'corpo',
+      suporteFisico: 'corpo',
+      textoDisplay: 'Sinal no Corpo da Vítima',
+      carimboPadrao: sinal.sinal,
+      descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+      tagsOcultas: {
+        dominio: 'vestigio',
+        subDominio: 'sinal_exigivel',
+        regiao: sinal.regiao,
+        sede: sinal.sede,
+        metodoOrigem: crime.metodoId,
+      },
     });
   }
 
