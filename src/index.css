@@ -760,6 +760,16 @@ body {
     #0b0906;
 }
 
+/* Atmosfera do tampo sob a maquete (4.3): quando sobra mesa em telas altas,
+   uma vela na beira de baixo aquece o vão e um leve aterramento nas bordas
+   dá peso de tampo — o espaço passa a ler como mesa acesa, não como vazio.
+   Puro enfeite (aria-hidden, pointer-events-none); não desloca as fichas. */
+.mesa-desk-atmosfera {
+  background:
+    radial-gradient(58% 82% at 50% 116%, rgba(217, 140, 60, 0.16) 0%, rgba(217, 140, 60, 0.05) 34%, transparent 60%),
+    radial-gradient(130% 96% at 50% 104%, transparent 42%, rgba(10, 7, 5, 0.5) 100%);
+}
+
 /* Alvos de toque confortáveis em telas de dedo (#8): só onde o ponteiro é
    GROSSO — o desktop (ponteiro fino) e a geometria do qa-ui, que roda em
    desktop, ficam intactos. Apenas min-height, para não mexer no layout. */
@@ -899,4 +909,35 @@ body {
 .boil-quadro--2 { animation-name: boilQuadro2; opacity: 0; }
 @media (prefers-reduced-motion: reduce) {
   .boil-quadro { animation: none; }
+}
+
+/* ---------------------------------------------------------------------
+   GRAVURA QUE RESPIRA (Sistema 2 do pivô): o sprite meio-corpo da cena
+   de diálogo vibra de leve — micro-deslocamento em steps() (o pulo
+   discreto do traço a lápis, não interpolação), frequência baixa. É o
+   equivalente de época ao tremido de quadros da referência. Congela sob
+   prefers-reduced-motion (quadro único). Zero JS por frame.
+   --------------------------------------------------------------------- */
+@keyframes gravuraRespira {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  50%  { transform: translate(0.4px, -0.3px) rotate(0.14deg); }
+  100% { transform: translate(-0.3px, 0.2px) rotate(-0.1deg); }
+}
+.gravura-respira {
+  animation: gravuraRespira 0.52s steps(2) infinite;
+  transform-origin: 50% 100%;
+}
+/* Reação observável: o interrogado desvia de leve ao ser confrontado —
+   gesto de gravura (o olhar que foge), nunca legenda. Transição suave
+   sobre o wrapper; o boil segue no elemento interno. */
+.cena-sprite {
+  transition: transform 260ms ease;
+  transform-origin: 50% 100%;
+}
+.cena-sprite--reacao {
+  transform: translateX(-7px) rotate(-1.6deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gravura-respira { animation: none; }
+  .cena-sprite--reacao { transform: none; }
 }

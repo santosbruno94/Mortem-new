@@ -522,21 +522,55 @@ function falaB2(ctx, tom) {
   // P9 Via B — a contra-hipótese: o ACESSOR menciona familiaridade com o
   // instrumento. Aparece em NÃO-réu (periférico OU testemunha que também é
   // acessor — o papel depende de ter carta com origemTestemunha, mas o
-  // acesso é ortogonal). firme e tecnico (2/4 tons). O verbo "peguei" /
-  // "conheço" ancora a QA guard.
+  // acesso é ortogonal). firme e tecnico (2/4 tons). Ramificado por classe
+  // de instrumento (físico / veneno / doméstico): "ferramenta" e "peguei
+  // emprestada" não fazem sentido para venenos (consumíveis comprados na
+  // botica) nem para pano/travesseiro (item doméstico). Os marcadores da
+  // guarda do QA: "peguei emprestada", "conheço de mão", "já pus a mão"
+  // ou "já comprei".
   if (papel !== 'reu' && ctx.ehAcessor) {
+    const ehVeneno = ['papel_de_arsenico', 'frasco_de_laudano'].includes(ctx.instrumento);
+    const ehDomestico = ctx.instrumento === 'travesseiro_ou_pano';
     if (tom === 'firme') {
-      corpo = {
-        alto: `"Nomes não aponto. Ferramenta daquelas, porém, eu conheço de mão: passa pela casa mais de uma vez ao mês."`,
-        oficio: `"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez."`,
-        chao: `"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um."`,
-      }[grupo];
+      if (ehVeneno) {
+        corpo = {
+          alto: `"Nomes não aponto. O preparado, porém, eu conheço de mão: ficava à vista de quem visitava aquela casa."`,
+          oficio: `"Nome não tenho que dar. Preparado daqueles, já comprei do mesmo boticário; não fui o primeiro nem o último."`,
+          chao: `"Nome não dou, que não o tenho. Aquele preparado eu conheço de mão; ficava onde qualquer um via."`,
+        }[grupo];
+      } else if (ehDomestico) {
+        corpo = {
+          alto: `"Nomes não aponto. A peça, porém, eu conheço de mão: quem frequentava aquela casa via no mesmo lugar."`,
+          oficio: `"Nome não tenho que dar. Coisa daquelas eu conheço de mão; quem entrava ali encontrava à vista, como eu encontrei."`,
+          chao: `"Nome não dou, que não o tenho. Naquela coisa já pus a mão; ficava ali onde qualquer um via."`,
+        }[grupo];
+      } else {
+        corpo = {
+          alto: `"Nomes não aponto. Ferramenta daquelas, porém, eu conheço de mão: passa pela casa mais de uma vez ao mês."`,
+          oficio: `"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez."`,
+          chao: `"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um."`,
+        }[grupo];
+      }
     } else if (tom === 'tecnico') {
-      corpo = {
-        alto: `"Tratos, os de vizinho de terra; nada em papel que um inquérito leia. A peça de ofício eu conheço; mais de uma mão ali passou."`,
-        oficio: `"Tratos meus com ${eleVitima}, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi."`,
-        chao: `"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um."`,
-      }[grupo];
+      if (ehVeneno) {
+        corpo = {
+          alto: `"Tratos, os de vizinho de terra; nada em papel que um inquérito leia. O preparado eu conheço de mão; ficava ao alcance de qualquer visita."`,
+          oficio: `"Tratos meus com ${eleVitima}, poucos e pagos. O preparado eu conheço: já comprei do mesmo balcão, e não fui o único."`,
+          chao: `"Tratos, poucos; paga e trabalho, quando havia. Aquele preparado eu conheço de mão; ficava onde qualquer um alcançava."`,
+        }[grupo];
+      } else if (ehDomestico) {
+        corpo = {
+          alto: `"Tratos, os de vizinho de terra; nada em papel que um inquérito leia. A peça eu conheço de mão; mais de uma visita passou por aquele cômodo."`,
+          oficio: `"Tratos meus com ${eleVitima}, poucos e pagos. A peça eu conheço de mão; ficava onde qualquer um que entrasse via."`,
+          chao: `"Tratos, poucos; paga e trabalho, quando havia. Naquela coisa já pus a mão; quem entrava na casa via."`,
+        }[grupo];
+      } else {
+        corpo = {
+          alto: `"Tratos, os de vizinho de terra; nada em papel que um inquérito leia. A peça de ofício eu conheço de mão; passou por ali mais de uma vez."`,
+          oficio: `"Tratos meus com ${eleVitima}, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi."`,
+          chao: `"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um."`,
+        }[grupo];
+      }
     }
   }
   // Fase 2 — a projeção (fervor) reescreve o b2 FIRME; o decoro reescreve o
@@ -934,7 +968,7 @@ function temaDoGatilho(bruto, pessoaId) {
 // Ordem estável: a dos próprios suspeitos (alfabética no pacote) e a do
 // array de cartas para os confrontos — replay byte a byte.
 // ---------------------------------------------------------------------
-export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {}, acessorId = null }) {
+export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {}, acessorId = null, instrumento = null }) {
   const { mundo, crime, escolha } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
@@ -1036,6 +1070,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       temperamento,
       defendeDemais,
       ehAcessor: pessoa.id === acessorId,
+      instrumento,
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));

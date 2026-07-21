@@ -120,8 +120,11 @@ export default function Escrivaninha() {
                         aria-hidden
                       />
                     </div>
-                    {/* A bandeja de cartas, rolável, sob a maquete */}
+                    {/* A bandeja de cartas, rolável, sob a maquete. Em telas
+                        altas sobra tampo (P3/4.3): uma atmosfera de vela na
+                        beira baixa faz o vão ler como mesa acesa, não vazio. */}
                     <div className="relative flex-1 min-h-0">
+                      <div aria-hidden className="mesa-desk-atmosfera pointer-events-none absolute inset-0" />
                       <MesaLocalidades2D aoAbrirNo={aoAbrirNo} comDiorama />
                     </div>
                   </div>

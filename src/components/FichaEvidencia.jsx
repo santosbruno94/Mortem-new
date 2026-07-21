@@ -72,7 +72,7 @@ export default function FichaEvidencia({ cartaId }) {
         {/* A fala do legista, quando a carta a tem (regra atual preservada) */}
         {carta.vozMestre && (
           <div className="mt-4 border-l-2 border-cera/60 pl-3">
-            <p className="text-tinta-apagada text-rotulo uppercase mb-1">O legista</p>
+            <p className="text-tinta-apagada text-rotulo uppercase mb-1">A voz do mestre</p>
             <p className="text-tinta-clara font-serif italic text-sm leading-relaxed">
               “{carta.vozMestre}”
             </p>

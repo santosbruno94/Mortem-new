@@ -114,7 +114,7 @@ export const CAMPOS_OBRIGATORIOS_PACOTE = [
 // ---------------------------------------------------------------------
 // Montador do caso-escola "A Hora Emprestada": agrega os módulos atuais
 // num único objeto serializável. Os valores ANTES cravados no motor
-// (chegada às 11h, ambiente a 11°C, calendário 14/out/1893) entram como
+// (chegada às 13h, ambiente a 11°C, calendário 14/out/1893) entram como
 // parametrosCena, com os valores de hoje como default — o motor deixa de
 // os supor e passa a lê-los do pacote.
 // ---------------------------------------------------------------------

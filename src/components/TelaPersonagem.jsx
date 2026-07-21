@@ -169,8 +169,8 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
               className="mt-8 text-stone-400 hover:text-stone-200 text-xs underline underline-offset-2"
             >
               {modoPurista
-                ? 'Modo purista: aceso — o legista guarda a síntese consigo'
-                : 'Modo purista: apagado — o legista lê a janela e o mecanismo por você'}
+                ? 'Modo purista: aceso — a lição do mestre fica só na sua cabeça'
+                : 'Modo purista: apagado — a janela e o mecanismo já vêm lidos, como o mestre ensinou'}
             </button>
           </>
         )}

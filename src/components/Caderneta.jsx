@@ -102,7 +102,7 @@ export default function Caderneta() {
           notas, não gabarito; religar não perde nada (o dado continua). */}
       {temLegista && (
         <div className="flex items-baseline justify-between gap-3 mb-3">
-          <h3 className="font-serif text-latao-claro text-lg titulo-gravado">Leitura do legista</h3>
+          <h3 className="font-serif text-latao-claro text-lg titulo-gravado">Leitura do mestre</h3>
           <button
             type="button"
             onClick={alternarModoPurista}
@@ -114,11 +114,11 @@ export default function Caderneta() {
       )}
       {temLegista && modoPurista && (
         <p className="text-stone-400 italic font-serif text-sm mb-8">
-          Você dispensou a leitura do legista: a janela e o mecanismo correm por sua conta.
+          Você dispensou a leitura do mestre: a janela e o mecanismo correm por sua conta.
         </p>
       )}
       {temLegista && !modoPurista && conclusoesVisiveis.length === 0 && (
-        <p className="text-stone-400 italic font-serif text-sm mb-8">O legista ainda não tem leitura — examine o corpo.</p>
+        <p className="text-stone-400 italic font-serif text-sm mb-8">Ainda sem leitura — examine o corpo, e a lição do mestre volta.</p>
       )}
       {conclusoesVisiveis.length > 0 && (
         <ul className="space-y-3 mb-8">

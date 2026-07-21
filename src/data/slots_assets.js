@@ -49,14 +49,23 @@ export const ACERVOS_DOMINIO_PUBLICO = [
 //   retrato          : quadrado — ficha de personagem (retrato de gravura).
 //   ilustracao_local : paisagem — vista de um local no evento de cena.
 //   vinheta          : ornamento — enfeite pequeno da ficha de evidência.
+//   prancha_corpo    : paisagem — figura de atlas do exame do corpo (pivô
+//                      "Gabinete Ilustrado", Sistema 1).
+//   fundo_cena       : paisagem — backdrop da cena de diálogo (Sistema 2).
 // `formatos` lista as extensões aceitas; SVG primeiro (preferencial).
+//
+// Os slots do pivô visual (prancha_corpo, fundo_cena) são o CONTRATO para a
+// eventual arte externa: enquanto o manifesto não os traz, a renderização
+// procedural (PranchaCorpo.jsx, FundoCena.jsx) é o fallback obrigatório e o
+// jogo joga idêntico — "o placeholder É o fallback" (nota de design §3).
 // -----------------------------------------------------------------
 export const SLOTS_ASSETS = {
   retrato: {
     id: 'retrato',
     // Proporção 4:5 (o retrato é renderizado numa moldura de busto, viewBox
     // 120×150, altura = tamanho×1.25); 480×600 = viewBox ×4. As CAMADAS do
-    // paper-doll (camadas_retrato.js) são autoradas nesta caixa.
+    // paper-doll (camadas_retrato.js) são autoradas nesta caixa. Serve tanto
+    // ao medalhão quanto ao sprite meio-corpo da cena (variante 'cena').
     descricao: 'Retrato de personagem (ficha) — gravura de busto, 4:5.',
     dimensoes: { largura: 480, altura: 600 },
     formatos: ['svg', 'png'],
@@ -71,6 +80,22 @@ export const SLOTS_ASSETS = {
     id: 'vinheta',
     descricao: 'Ornamento de ficha de evidência — vinheta pequena.',
     dimensoes: { largura: 96, altura: 96 },
+    formatos: ['svg', 'png'],
+  },
+  prancha_corpo: {
+    id: 'prancha_corpo',
+    // A prancha SVG é desenhada num viewBox 620×344; 1240×688 = viewBox ×2.
+    // Uma figura por face/camada (frente, dorso, necropsia) autorada aqui.
+    descricao: 'Figura de atlas do corpo — prancha de exame, paisagem ~16:9.',
+    dimensoes: { largura: 1240, altura: 688 },
+    formatos: ['svg', 'png'],
+  },
+  fundo_cena: {
+    id: 'fundo_cena',
+    // O backdrop paramétrico da cena de diálogo (FundoCena viewBox 480×200);
+    // 960×400 = viewBox ×2. Uma gravura por tipo de local (oficina, loja…).
+    descricao: 'Backdrop da cena de diálogo — gravura de fundo, paisagem 12:5.',
+    dimensoes: { largura: 960, altura: 400 },
     formatos: ['svg', 'png'],
   },
 };

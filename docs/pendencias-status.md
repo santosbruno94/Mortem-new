@@ -55,9 +55,9 @@ Relatório versionado: [`docs/playtest/2026-07-19-conclusoes-humanas.md`](./play
 | 11 | Diálogos: exposição contida no próprio diálogo | Decisão + mecânica |
 | 8 | Mapa: cômodos de um local → planta única navegável | Design espacial |
 | 9 | Silas e o aprendiz saem da cena após a polícia cercar | Dados/narrativa |
-| 1 | Refazer a abertura | **Prosa — sessão dedicada** |
-| 2 | Voz do mestre via glossário + "o mestre já falou disso" | **Prosa + design — sessão dedicada** |
-| 7 | "O legista, examinando" ficou artificial → reescrever | **Prosa — sessão dedicada** |
+| 1 | Refazer a abertura | ✅ Feito (S3, prosa) |
+| 2 | Voz do mestre via glossário + "o mestre já falou disso" | ✅ Feito (S3): "A voz do mestre" + link ao Glossário |
+| 7 | "O legista, examinando" ficou artificial → reescrever | ✅ Feito (S3): vira "A voz do mestre" (mestre ausente) |
 | 3 | Glossário com cara de livro de medicina legal de época | Futuro (UI) |
 | 4 | Recortes de imagem nas cartas (feridas) | Futuro (asset 2D sob contrato) |
 | 17 | Maquete 3D da vila nos casos procedurais | Futuro (paridade; = 4.3) |
@@ -75,9 +75,9 @@ Relatório versionado: [`docs/playtest/2026-07-19-conclusoes-humanas.md`](./play
 | 1.2(a) Barbante contraste | Clarear para `#c9553f` | ✅ Feito (`MuralAcusacao.jsx`) |
 | 1.2(d) Alvo de toque 44px | Já cumprido (`.opcao-dialogo`) | ✅ Ratificado |
 | 1.2(f) Legista 14px itálico | Já cumprido (`FalaDoLegista`) | ✅ Ratificado |
-| 1.2(b) Prosa imersiva serifada 16px | — | ⏭️ Sessão de UI/arte |
-| 1.2(c) Cartas do mural 12px | — | ⏭️ Sessão de UI/arte |
-| 1.2(e) Prosa longa claro×escuro | — | ⏭️ Sessão de UI/arte |
+| 1.2(b) Prosa imersiva serifada 16px | Já cumprido (ParagrafoProsa serif, corpo base 16px) | ✅ Ratificado (S4) |
+| 1.2(c) Cartas do mural 12px | Já cumprido (.carta-pergaminho do mural em text-xs) | ✅ Ratificado (S4) |
+| 1.2(e) Prosa longa claro×escuro | Sistema dual já vige (prosa clara sobre couro; documento escuro sobre pergaminho) | ✅ Ratificado (S4) |
 | 1.3 Carimbos "20h–23h" | Convenção de UI + hipótese de troca (menu de opções / pipeline de traduções) | ✅ Registrado (`overhaul-2026-07-12.md`) |
 | 1.4 Cadeia da manhã (Caulfield) | Aceitar como vila vizinha | ✅ Registrado |
 | 1.8 Guaíaco (reagente de campo) | Não adicionar por ora | ✅ Registrado (`supressao-de-vestigios.md`) |
@@ -117,7 +117,7 @@ Cada uma é uma **ordem de serviço própria**. Não executadas nesta sessão.
 |---|---|---|
 | 4.1 Feedback ao "apresentar prova" sem confronto | Alta/Baixo | ✅ Já resolvido (`data-sem-paradeiro`) |
 | 4.2 Destaque em seções recolhidas | Alta/Baixo | ✅ Já resolvido (`.ponto-interesse` seta ▸ + contador `n/total`) |
-| 4.3 Espaço morto sob o diorama | Alta/Baixo | ⚠️ Parcial: textura/vinheta feitas; vão inferior ⏭️ sessão de UI/arte |
+| 4.3 Espaço morto sob o diorama | Alta/Baixo | ✅ Feito (S4): atmosfera de vela na beira baixa do tampo (`.mesa-desk-atmosfera`) |
 | 4.4 Expor `?flat=1` na tela-título | Alta/Baixo | ✅ Já resolvido (botão "Modo leve (2D)") |
 | 4.5 Rebalancear ritmo da investigação | Médio | ⏭️ Sessão de design (decisão ativa no meio do jogo) |
 | 4.6 Revisar tom do bloco "O QUE FALTOU" | Médio | ⏭️ Prosa (pipeline `revisar-prosa`) |
@@ -198,15 +198,21 @@ futura — exatamente as categorias que o usuário pediu para não executar nest
 
 ---
 
-## O que herda a próxima "sessão de UI/arte"
+## Sessão de UI/arte — ✅ FEITA (S4, 21/07/2026) + pivô Gabinete Ilustrado
 
-Reunidos aqui porque decidem-se melhor juntos (direção de leitura/arte):
+A direção de leitura/arte foi resolvida em duas frentes na sessão de 21/07:
 
-- 1.2(b) prosa imersiva serifada 16px
-- 1.2(c) corpo 12px das cartas do mural
-- 1.2(e) prosa longa claro-sobre-escuro × "documento claro"
-- 4.3 preencher o espaço morto sob o diorama em telas largas
-- 1.3 (futuro) rever os carimbos "20h–23h" para notação de época, junto do menu de opções / pipeline de traduções
+- **S4 (tipografia + tampo):** 1.2(b) 16px serif, 1.2(c) mural 12px e 1.2(e) claro×escuro
+  já cumpridos e ratificados; 4.3 espaço morto sob o diorama resolvido com a atmosfera de
+  vela no tampo. Resta só 1.3 (futuro): rever os carimbos "20h–23h" para notação de época,
+  junto do menu de opções / pipeline de traduções — sem ordem.
+- **Pivô Gabinete Ilustrado** (`docs/nota-gabinete-ilustrado.md`): a apresentação migrou
+  para visual novel de gravura — **A Prancha** do corpo (Sistema 1, aposenta o cadáver 3D)
+  e **A Cena** de diálogo (Sistema 2). Itens 3 (glossário com cara de livro de época) e 4
+  (recortes de imagem nas cartas/feridas) ganham lugar natural quando houver arte externa:
+  os slots `prancha_corpo`/`fundo_cena` já estão no contrato de assets, com o procedural
+  como fallback. O **verbo "Exigir que mostre"** (Inc. 6 da nota) fica deferido como fase
+  própria (marca-espelho de luta → pertence ao gerador; ver a nota §Inc.6).
 
 ---
 

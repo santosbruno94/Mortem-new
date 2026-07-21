@@ -3491,7 +3491,7 @@ export const CASOS_POOL = [
   "horaForjada": null,
   "perifericos": {
    "gen_0_lavrador": {
-    "veredictoEsperado": "inocente_acesso",
+    "veredictoEsperado": "inocente_alibi",
     "segredo": null
    },
    "gen_1_carroceiro": {
@@ -4138,7 +4138,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Ernest Hall. Por quê, não sei dizer; sei, e chega.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -4204,7 +4204,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -26004,7 +26004,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. Aquele preparado eu conheço de mão; ficava onde qualquer um via.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -26070,7 +26070,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Aquele preparado eu conheço de mão; ficava onde qualquer um alcançava.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -29899,7 +29899,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. Naquela coisa já pus a mão; ficava ali onde qualquer um via.\" Levanta-se devagar. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -29965,7 +29965,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Já pus a mão naquela ferramenta, que ficava ao alcance de qualquer um.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela coisa já pus a mão; quem entrava na casa via.\" Levanta-se devagar. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
