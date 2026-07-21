@@ -25,6 +25,10 @@
 //     resolve com Vitória Absoluta pelo caminho Metódico (validação
 //     abaixo, com as MESMAS funções do motor — agora inclusive os pilares
 //     de descuidos e de julgar inocentes).
+//   • CASOS_LUTA — o banco do modo "A Marca do Agressor": sementes do
+//     namespace luta_* filtradas por luta corporal (gen_sinal_exigivel
+//     presente), validadas tanto estática (metodicoResolve) quanto
+//     interativamente (perfilInterativoOk, os 4 perfis pelo store).
 // =====================================================================
 
 import { writeFileSync } from 'node:fs';
@@ -34,6 +38,9 @@ import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas, temperaturaPorIpm } from '../src/logic/tempo_morte.js';
 import { mecanismoCravado } from '../src/data/catalogo_causas.js';
 import { resolverEstadoCarta } from '../src/data/cartas.js';
+import { useJogo } from '../src/store/jogo.js';
+import { ANCORAS } from '../src/logic/acusacao.js';
+import { gerarMonologo } from '../src/logic/monologo.js';
 
 // A seed e as variáveis dirigidas da réplica vivem no gerador
 // (src/gerador/pacote_gerado.js), para o qa.mjs regenerar e comparar sem
@@ -42,6 +49,12 @@ import { resolverEstadoCarta } from '../src/data/cartas.js';
 // v2 (playtest 16/jul, P6/M8): o pool sobe de 8 para 20 casos.
 const N_POOL = 20;
 const CANDIDATAS_POOL = Array.from({ length: 120 }, (_, i) => `comarca_${i + 1}`);
+
+// Pool do modo "A Marca do Agressor": só sementes com luta corporal que
+// deixa marca-espelho (gen_sinal_exigivel presente no pacote). Namespace
+// próprio para não colidir com o pool da comarca.
+const N_POOL_LUTA = 10;
+const CANDIDATAS_LUTA = Array.from({ length: 300 }, (_, i) => `luta_${i + 1}`);
 
 // ---------------------------------------------------------------------
 // Validação de solvabilidade pelo caminho Metódico, com as funções do
@@ -152,6 +165,121 @@ function marcadoresFecham(pacote) {
 }
 
 // ---------------------------------------------------------------------
+// Validação interativa: os 4 perfis dirigindo o store, como no qa.mjs.
+// Garante que o caso é jogável de ponta a ponta (a validação estática
+// sozinha não cobre diferenças de localidade/extração no runtime).
+// ---------------------------------------------------------------------
+function perfilInterativoOk(pacote) {
+  const s = () => useJogo.getState();
+  const ligar = (de, para) => s().adicionarLigacao(de, para);
+  const verdade = pacote.verdadeDeOuro;
+  const idsCartas = new Set(pacote.cartas.map((c) => c.id));
+
+  const arrancar = () => {
+    s().carregarCaso(pacote);
+    s().escolherDetective();
+    s().iniciarInvestigacao();
+  };
+  const extrairTudo = () => {
+    s().viajarPara('corpo');
+    s().medirTemperatura();
+    ['gen_rigor', 'gen_livores', 'gen_lesao_fatal', 'gen_reacao_vital'].forEach(
+      (id) => idsCartas.has(id) && s().extrairCarta(id)
+    );
+    s().viajarPara('cena');
+    ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas', 'gen_hora_forjada'].forEach((id) => {
+      const c = pacote.cartas.find((x) => x.id === id);
+      if (c && c.localidade === 'cena') s().extrairCarta(id);
+    });
+    pacote.cartas
+      .filter((c) => c.localidade === 'cena' && (c.tagsOcultas || {}).subDominio === 'rastro_de_visita')
+      .forEach((c) => s().extrairCarta(c.id));
+    s().viajarPara('vizinhanca');
+    if (idsCartas.has('gen_ruido_ouvido')) s().extrairCarta('gen_ruido_ouvido');
+    s().viajarPara('delegacia');
+    ['gen_visto_vivo', 'gen_motivo'].forEach((id) => idsCartas.has(id) && s().extrairCarta(id));
+    for (const susp of pacote.suspeitos) {
+      if (idsCartas.has(`gen_alibi_${susp.id}`)) s().extrairCarta(`gen_alibi_${susp.id}`);
+    }
+    if (pacote.cartas.some((c) => c.localidade === 'oficio_do_reu')) {
+      s().viajarPara('oficio_do_reu');
+      s().extrairCarta('gen_instrumento');
+    }
+  };
+
+  // Metódico → vitoria_absoluta
+  arrancar();
+  extrairTudo();
+  const reg = s().cartasRegistradas;
+  const jan = intersecaoJanelas(
+    reg.filter((c) => c.tagsOcultas.dominio === 'temporal').map(janelaDaCarta).filter(Boolean)
+  );
+  const sinais = reg.filter((c) => c.tagsOcultas.dominio === 'causal').map((c) => c.tagsOcultas.sinal).filter(Boolean);
+  const causa = mecanismoCravado(sinais);
+  s().definirReu(verdade.reuCorreto);
+  s().definirJanela({ inicio: jan.inicio, fim: jan.fim });
+  s().definirCausa(causa ? causa.id : null);
+  s().definirMotivacao('gen_motivo');
+  for (const c of reg.filter((x) => x.tagsOcultas.dominio === 'temporal')) ligar(c.id, ANCORAS.quando);
+  for (const c of reg.filter((x) => x.tagsOcultas.dominio === 'causal')) ligar(c.id, ANCORAS.como);
+  const nexo = reg.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto);
+  if (nexo) ligar(nexo.id, ANCORAS.presenca);
+  if (verdade.cenaEncenada) {
+    for (const c of reg.filter((x) => x.tagsOcultas.dominio === 'temporal')) ligar(c.id, 'gen_hora_forjada');
+  }
+  for (const [sid, p] of Object.entries(verdade.perifericos || {})) {
+    s().definirJuizo(sid, 'inocente');
+    if (p.veredictoEsperado === 'inocente_segredo') ligar(`gen_segredo_${sid}`, `gen_alibi_${sid}`);
+  }
+  s().submeterAcusacao();
+  if (s().veredicto.tipo !== 'vitoria_absoluta') return false;
+  s().fecharVeredicto();
+
+  // Apressado → erro_judiciario
+  arrancar();
+  s().viajarPara('corpo');
+  ['gen_rigor', 'gen_livores'].forEach((id) => s().extrairCarta(id));
+  const outro = pacote.suspeitos.find((x) => x.id !== verdade.reuCorreto);
+  s().definirReu(outro.id);
+  s().definirJanela({ inicio: -24, fim: 10 });
+  for (const c of s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal')) ligar(c.id, ANCORAS.quando);
+  s().submeterAcusacao();
+  if (s().veredicto.tipo !== 'erro_judiciario') return false;
+  s().fecharVeredicto();
+
+  // Intuitivo → impunidade
+  arrancar();
+  s().viajarPara('corpo');
+  ['gen_rigor', 'gen_livores'].forEach((id) => s().extrairCarta(id));
+  s().definirReu(verdade.reuCorreto);
+  s().definirJanela({ inicio: -24, fim: 10 });
+  for (const c of s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal')) ligar(c.id, ANCORAS.quando);
+  s().submeterAcusacao();
+  if (s().veredicto.tipo !== 'impunidade') return false;
+  s().fecharVeredicto();
+
+  // Desatento → sucesso_gafes
+  arrancar();
+  extrairTudo();
+  const regs2 = s().cartasRegistradas;
+  const jRigor = janelaDaCarta(regs2.find((c) => c.id === 'gen_rigor'));
+  const sinais2 = regs2.filter((c) => c.tagsOcultas.dominio === 'causal').map((c) => c.tagsOcultas.sinal).filter(Boolean);
+  const causa2 = mecanismoCravado(sinais2);
+  s().definirReu(verdade.reuCorreto);
+  s().definirJanela({ inicio: Math.max(jRigor.inicio, -48), fim: jRigor.fim });
+  s().definirCausa(causa2 ? causa2.id : null);
+  ligar('gen_rigor', ANCORAS.quando);
+  for (const c of regs2.filter((x) => x.tagsOcultas.dominio === 'causal')) ligar(c.id, ANCORAS.como);
+  const nexo2 = regs2.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto);
+  if (nexo2) ligar(nexo2.id, ANCORAS.presenca);
+  s().submeterAcusacao();
+  if (s().veredicto.tipo !== 'sucesso_gafes') return false;
+  s().fecharVeredicto();
+
+  return true;
+}
+
+// ---------------------------------------------------------------------
 // Monta, valida e escreve.
 // ---------------------------------------------------------------------
 const replica = montarPacoteGerado(SEED_REPLICA, { dirigido: DIRIGIDO_REPLICA });
@@ -179,6 +307,22 @@ if (pool.length < N_POOL) {
   process.exit(1);
 }
 
+const poolLuta = [];
+const recusadasLuta = [];
+for (const seed of CANDIDATAS_LUTA) {
+  if (poolLuta.length >= N_POOL_LUTA) break;
+  const pacote = montarPacoteGerado(seed);
+  const m = metodicoResolve(pacote);
+  const h = marcadoresFecham(pacote);
+  const temLuta = pacote.cartas.some((c) => c.id === 'gen_sinal_exigivel');
+  if (m.ok && h.ok && temLuta && perfilInterativoOk(pacote)) poolLuta.push({ seed, pacote });
+  else recusadasLuta.push({ seed, motivo: !temLuta ? 'sem luta corporal' : !m.ok ? 'metódico não fecha' : !h.ok ? 'marcadores não fecham' : 'perfil interativo falha' });
+}
+if (poolLuta.length < N_POOL_LUTA) {
+  console.error(`POOL LUTA INSUFICIENTE: ${poolLuta.length}/${N_POOL_LUTA}.`, JSON.stringify(recusadasLuta));
+  process.exit(1);
+}
+
 const cab = `// =====================================================================
 // CASOS GERADOS — ARQUIVO ESCRITO POR scripts/gerar-casos.mjs. NÃO EDITAR
 // À MÃO: qualquer ajuste se faz no gerador (src/gerador/) ou no script, e
@@ -191,17 +335,20 @@ const cab = `// ================================================================
 //   • CASO_REPLICA: seed ${SEED_REPLICA} + variáveis dirigidas
 //     (a tentativa procedural de recriar "A Hora Emprestada").
 //   • CASOS_POOL: o banco do modo "caso da comarca" (aleatório).
+//   • CASOS_LUTA: o banco do modo "A Marca do Agressor" (luta forçada).
 // =====================================================================
 
 `;
 const corpo =
   `export const CASO_REPLICA = ${JSON.stringify(replica, null, 1)};\n\n` +
-  `export const CASOS_POOL = [\n${pool.map((p) => JSON.stringify(p.pacote, null, 1)).join(',\n')}\n];\n`;
+  `export const CASOS_POOL = [\n${pool.map((p) => JSON.stringify(p.pacote, null, 1)).join(',\n')}\n];\n\n` +
+  `export const CASOS_LUTA = [\n${poolLuta.map((p) => JSON.stringify(p.pacote, null, 1)).join(',\n')}\n];\n`;
 
 const destino = fileURLToPath(new URL('../src/data/casos_gerados.js', import.meta.url));
 writeFileSync(destino, cab + corpo);
 
 console.log(`gerar-casos: réplica ${SEED_REPLICA} + pool de ${pool.length} casos (${pool.map((p) => p.seed).join(', ')}).`);
+console.log(`gerar-casos: pool luta de ${poolLuta.length} casos (${poolLuta.map((p) => p.seed).join(', ')}).`);
 const encenados = pool.filter((p) => p.pacote.verdadeDeOuro.cenaEncenada).length;
 const comSegredo = pool.filter((p) =>
   Object.values(p.pacote.verdadeDeOuro.perifericos).some((x) => x.veredictoEsperado === 'inocente_segredo')
@@ -210,4 +357,5 @@ console.log(
   `gerar-casos: pilares v2 — ${encenados}/${pool.length} com encenação de hora; ${comSegredo}/${pool.length} com periférico de segredo (réplica: encenação=${replica.verdadeDeOuro.cenaEncenada}, segredos=${Object.values(replica.verdadeDeOuro.perifericos).filter((x) => x.segredo).length}).`
 );
 if (recusadas.length) console.log(`gerar-casos: recusadas ${recusadas.map((r) => `${r.seed} (${r.motivo})`).join('; ')}.`);
+if (recusadasLuta.length) console.log(`gerar-casos: recusadas luta ${recusadasLuta.length} sementes (maioria sem luta corporal).`);
 console.log(`gerar-casos: escrito em src/data/casos_gerados.js (${(cab.length + corpo.length) / 1024 | 0} KiB).`);

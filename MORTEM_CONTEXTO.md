@@ -769,16 +769,20 @@ inicial apresenta um único convite (`faseJogo: 'selecao' → 'abertura' →
    presença, **sem ensinar**); a cena vem só com descrição física (sem `vozMestre`).
    Viável graças ao motor de tags.
 
-**Estado (jul/2026) — os três chamados da tela inicial.** A seleção de caso já
-oferece três modos: (1) **A Hora Emprestada**, o caso-escola artesanal, intocado;
+**Estado (jul/2026) — os quatro chamados da tela inicial.** A seleção de caso
+oferece quatro modos: (1) **A Hora Emprestada**, o caso-escola artesanal, intocado;
 (2) **A Hora Refeita**, a réplica procedural do caso-escola (seed fixa + variáveis
 dirigidas — ver `src/gerador/pacote_gerado.js`); (3) **Um Caso da Comarca**, um caso
-aleatório de um banco de **21 casos** pré-gerados em build time
+aleatório de um banco de **20 casos** pré-gerados em build time
 (`src/data/casos_gerados.js`, regenerável por `npm run gerar:casos` e conferido byte a
-byte pelo QA). O gerador
-segue ILHA de build time: o runtime carrega pacotes prontos, nunca importa
-`src/gerador`. Casos gerados jogam sem mestre (sem `vozMestre`, sem ecos do
-tutorial), na grade 2D da mesa (a maquete 3D permanece exclusiva do caso-escola,
+byte pelo QA); (4) **A Marca do Agressor**, um caso da comarca onde a luta corporal é
+certa — o corpo da vítima sempre anuncia a marca-espelho, garantindo o verbo "Exigir
+que mostre" (banco de **10 casos**, namespace `luta_*`, filtrado por presença de
+`gen_sinal_exigivel` e validado tanto estática quanto interativamente). Nos modos
+procedurais (comarca e luta), a abertura é omitida e o perito segue direto à
+investigação. O gerador segue ILHA de build time: o runtime carrega pacotes prontos,
+nunca importa `src/gerador`. Casos gerados jogam sem mestre (sem `vozMestre`, sem ecos
+do tutorial), na grade 2D da mesa (a maquete 3D permanece exclusiva do caso-escola,
 cujos nós ela conhece). A prosa dos templates passou pela OS de lapidação
 editorial (`docs/os-lapidacao-prosa-gerada.md`, 16/07/2026): pipeline
 `revisar-prosa` sobre o corpus realizado dos 9 casos embarcados, correção sempre

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { OPCOES_PERSONAGEM } from '../data/abertura.js';
 import { obterCaso } from '../data/pacote_caso.js';
-import { MODOS_DE_JOGO, modoDoCaso, pacoteDoModo, TAMANHO_POOL } from '../data/casos.js';
+import { MODOS_DE_JOGO, modoDoCaso, pacoteDoModo, TAMANHO_POOL, TAMANHO_POOL_LUTA } from '../data/casos.js';
 import { formatRelogio } from '../logic/tempo.js';
 import { modoFlat } from '../logic/webgl.js';
 
@@ -23,6 +23,7 @@ function alternarModoLeve(ativar) {
 // o caso deixado sobre a mesa ou recomeçar do zero (apaga o save).
 export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) {
   const escolherDetective = useJogo((s) => s.escolherDetective);
+  const iniciarInvestigacao = useJogo((s) => s.iniciarInvestigacao);
   const reiniciarCaso = useJogo((s) => s.reiniciarCaso);
   const carregarCaso = useJogo((s) => s.carregarCaso);
   const horasJogo = useJogo((s) => s.horasJogo);
@@ -34,33 +35,41 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
   const [modo, setModo] = useState(() => modoDoCaso(obterCaso().id));
 
   // Atender ao chamado: carrega o pacote do modo (se o caso corrente já não
-  // é ele) e segue à abertura. No procedural, o SORTEIO do caso do banco é
-  // desta camada de apresentação (Math.random permitido fora de logic/data/
+  // é ele) e segue à abertura ou direto à investigação. Nos modos
+  // procedurais (comarca e luta), o SORTEIO do caso do banco é desta
+  // camada de apresentação (Math.random permitido fora de logic/data/
   // store); o caso sorteado é, em si, determinístico por seed.
+  const pulaAbertura = modo === 'procedural' || modo === 'luta';
   const atenderChamado = () => {
     const atualId = obterCaso().id;
-    if (modo === 'procedural') {
-      if (modoDoCaso(atualId) !== 'procedural') {
-        carregarCaso(pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL)));
+    if (modo === 'procedural' || modo === 'luta') {
+      const tamanho = modo === 'luta' ? TAMANHO_POOL_LUTA : TAMANHO_POOL;
+      if (modoDoCaso(atualId) !== modo) {
+        carregarCaso(pacoteDoModo(modo, Math.floor(Math.random() * tamanho)));
       }
     } else {
       const alvo = pacoteDoModo(modo);
       if (atualId !== alvo.id) carregarCaso(alvo);
     }
     escolherDetective();
+    if (pulaAbertura) iniciarInvestigacao();
   };
 
-  // Sorteia um caso NOVO da comarca (≠ o atual) e vai à abertura dele. Mesmo
-  // sorteio de apresentação do atenderChamado; serve o laço de playtest a
-  // partir da retomada, sem precisar do título limpo.
+  // Sorteia um caso NOVO do mesmo modo (≠ o atual) e pula direto à
+  // investigação. Mesmo sorteio de apresentação do atenderChamado; serve o
+  // laço de playtest a partir da retomada, sem precisar do título limpo.
   const jogarNovoCaso = () => {
     const atualId = obterCaso().id;
-    let pacote = pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
-    for (let i = 0; pacote.id === atualId && i < TAMANHO_POOL; i++) {
-      pacote = pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
+    const modoAtual = modoDoCaso(atualId);
+    const pool = modoAtual === 'luta' ? 'luta' : 'procedural';
+    const tamanho = pool === 'luta' ? TAMANHO_POOL_LUTA : TAMANHO_POOL;
+    let pacote = pacoteDoModo(pool, Math.floor(Math.random() * tamanho));
+    for (let i = 0; pacote.id === atualId && i < tamanho; i++) {
+      pacote = pacoteDoModo(pool, Math.floor(Math.random() * tamanho));
     }
     carregarCaso(pacote);
     escolherDetective();
+    iniciarInvestigacao();
     if (aoDecidirRetomada) aoDecidirRetomada();
   };
 
@@ -108,11 +117,12 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
           </>
         ) : (
           <>
-            {/* Os três chamados sobre a mesa (§13): o caso-escola, a réplica
-                procedural do caso-escola e o caso da comarca. Escolher aqui
-                não custa nada; o convite do perito é que abre o caso. */}
+            {/* Os quatro chamados sobre a mesa (§13): o caso-escola, a
+                réplica procedural, o caso da comarca e o caso com luta
+                forçada. Escolher aqui não custa nada; o convite do perito
+                é que abre o caso. */}
             <p className="mt-10 sm:mt-12 mb-4 font-serif italic text-base sm:text-lg text-amber-200/90 text-center">
-              Três chamados esperam sobre a mesa.
+              Quatro chamados esperam sobre a mesa.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-3 w-full max-w-3xl mb-8">
               {MODOS_DE_JOGO.map((m) => {
