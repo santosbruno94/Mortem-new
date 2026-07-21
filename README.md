@@ -68,8 +68,11 @@ Ferramentas de inspeção do gerador (build time, imprimem no terminal):
    delegado não custam tempo… mas plantam iscas).
 3. **Investigação** — tudo acontece sobre a escrivaninha. Localidades são cartas: clique para
    **viajar** até lá (só a viagem gasta o relógio) e abrir o exame ou o interrogatório como
-   sobreposição. **Termos em negrito** na prosa extraem cartas para a mesa — examinar **não**
-   custa tempo. O legista vai **falando** a leitura do corpo (uma dica). O perecível (rigor,
+   sobreposição. O exame do corpo é uma **prancha de atlas** (SVG, com lupa que segue o
+   dedo, frente/dorso e necropsia); os interrogatórios compõem uma **cena ilustrada** (fundo
+   da localidade + sprite do interlocutor). **Termos em negrito** na prosa extraem cartas
+   para a mesa — examinar **não** custa tempo. A **voz do mestre** vai dando a leitura do
+   corpo (uma dica; o Dr. Alcott, ausente, recordado pelo aprendiz). O perecível (rigor,
    temperatura) **perde precisão** com as horas, mas nunca some — o durável sempre resolve.
 4. **Construir a acusação** — o botão da parede abre o **mural com barbante**. Você **afirma**
    a cadeia nas âncoras (réu; janela da morte; causa; motivo; juízo sobre cada outro suspeito) e
@@ -82,9 +85,12 @@ Ferramentas de inspeção do gerador (build time, imprimem no terminal):
 ## Stack
 
 Vite + React (JSX) + Tailwind CSS + Zustand, com **three.js / react-three-fiber** para a
-maquete 3D (geometria 100% procedural, com fallback 2D via `?flat=1`). Sem TypeScript, sem
-engine de jogo, sem chamadas de rede em runtime — dados em módulos JS e lógica determinística
-em funções puras (toda variação vem de `hashString` salgado com a seed).
+maquete 3D da vila (geometria 100% procedural, com fallback 2D via `?flat=1`). Desde o pivô
+**"Gabinete Ilustrado"** (jul/2026), a apresentação é visual novel de gravura: o exame do
+corpo (A Prancha) e as conversas (A Cena) são **SVG procedural** — o 3D remanescente é só o
+diorama da vila. Sem TypeScript, sem engine de jogo, sem chamadas de rede em runtime — dados
+em módulos JS e lógica determinística em funções puras (toda variação vem de `hashString`
+salgado com a seed).
 
 ```
 src/
@@ -94,5 +100,7 @@ src/
   store/        jogo.js (Zustand: fases, relógio, mapa, cartas registradas, conclusões, acusação, log)
   gerador/      ILHA de build time: autobattler do crime, cidade, elenco, vestígios, interferência
                 — resolve o caso e emite um pacote pronto; o runtime nunca o importa
-  components/   Escrivaninha, MuralAcusacao (o mural), EventoLocalidade, diorama 3D, painéis, Caderneta, Monólogo do Detetive…
+  components/   Escrivaninha, MuralAcusacao (o mural), EventoLocalidade, PranchaCorpo (exame
+                do corpo em SVG), CenaDialogo/FundoCena (cena ilustrada), diorama 3D da vila,
+                painéis, Caderneta, Monólogo do Detetive…
 ```
