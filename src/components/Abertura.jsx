@@ -4,7 +4,7 @@ import { interpolar } from '../logic/interpolar.js';
 import { obterAbertura } from '../data/pacote_caso.js';
 import { tocarSom } from '../som.js';
 
-// Sequência de abertura em 6 passos (§4.1–4.2). O último passo é o
+// Sequência de abertura em 7 passos (§4.1–4.2). O último passo é o
 // briefing do Delegado Wycliffe, cujas perguntas (custo zero) plantam
 // informações e iscas antes de o relógio começar a contar.
 // Apresentação: mesa de madeira à luz de vela; a prosa imersiva fica
@@ -55,6 +55,16 @@ export default function Abertura() {
             </p>
           ))}
         </div>
+
+        {passo.pensamento && (
+          <div className="mt-4 space-y-3 border-l-2 border-amber-900/30 pl-4">
+            {passo.pensamento.map((p, i) => (
+              <p key={`t${i}`} className="text-stone-400 italic leading-relaxed">
+                {interpolar(p, detective)}
+              </p>
+            ))}
+          </div>
+        )}
 
         {passo.briefing && (
           <div className="mt-8 space-y-3">

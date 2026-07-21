@@ -115,8 +115,8 @@ async function novaPartida(page, perito, query = '') {
   await espera(page, 800);
   await page.click(`text=${perito}`);
   await espera(page, 600);
-  // Abertura: 5 avanços até o passo 6, depois entrar (sem as perguntas).
-  for (let i = 0; i < 5; i++) {
+  // Abertura: 6 avanços até o passo 7, depois entrar (sem as perguntas).
+  for (let i = 0; i < 6; i++) {
     await page.locator('button, [role=button], a').filter({ hasText: '→' }).last().click();
     await espera(page, 200);
   }
