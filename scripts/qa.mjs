@@ -2512,6 +2512,7 @@ function problemasDosDialogosGerados(pacote) {
       d.noEvasiva,
       ...Object.values(d.reacoesProva || {}),
       ...(d.gatilhos || []).map((g) => g.vaiPara),
+      ...(d.exigencias || []).map((e) => e.vaiPara),
     ]);
     const descer = (noId) => {
       if (!noId || alcancados.has(noId) || !nos[noId]) return;
@@ -2567,6 +2568,7 @@ function problemasDosDialogosGerados(pacote) {
       ...Object.values(nos).flatMap((n) => (n.opcoes || []).map((o) => o.rotulo)),
       ...(d.confrontos || []).map((c) => c.rotulo),
       ...(d.gatilhos || []).map((g) => g.rotulo),
+      ...(d.exigencias || []).map((e) => e.rotulo),
       d.chamada,
       d.titulo,
       d.subtitulo,
@@ -2574,6 +2576,23 @@ function problemasDosDialogosGerados(pacote) {
     for (const t of textos) {
       if (/\bgen_\w+/.test(t.replace(/\[\[\w+\]\]/g, ''))) {
         problemas.push(`${id}: id interno vazando em fala/rótulo ("${t.slice(0, 40)}…")`);
+      }
+    }
+    // Exigência (Inc. 6 — Exigir que mostre): canal lateral gated na carta
+    // gen_sinal_exigivel. Cada entrada aponta um nó real, TERMINAL, com
+    // rótulo e requerCarta existentes.
+    for (const e of d.exigencias || []) {
+      if (!e || typeof e.rotulo !== 'string' || e.rotulo.trim() === '') {
+        problemas.push(`${id}: exigência com rótulo vazio`);
+      }
+      if (!idsCartas.has(e?.requerCarta)) {
+        problemas.push(`${id}: exigência requerCarta fantasma (${e?.requerCarta})`);
+      }
+      if (!idsNos.has(e?.vaiPara)) {
+        problemas.push(`${id}: exigência aponta nó inexistente (${e?.vaiPara})`);
+      } else {
+        const alvo = nos[e.vaiPara];
+        if ((alvo.opcoes || []).length !== 0) problemas.push(`${id}: nó de exigência não é terminal (${e.vaiPara})`);
       }
     }
   }
@@ -3823,6 +3842,51 @@ const gb10AntiAmbiguidade =
   ) &&
   casosComTroca.length / varridosTroca < 0.05; // rara: assinatura, não rotina
 
+// ============================================================
+// GUARDAS DA Inc. 6 — "Exigir que mostre" (OS §5)
+// G1: todo réu-com-marca tem ≥1 inocente-com-marca (ruído honesto).
+// G2: a marca nunca é âncora única de autoria (Via B).
+// ============================================================
+const problemasExigencia = [];
+for (const bruto of casosGeradosPrimeira) {
+  const mc = bruto.marcasCorporais || {};
+  const temFerimentoReu = bruto.crime.vestigios.some((v) => v.classe === 'ferimento_do_agressor');
+  if (!temFerimentoReu) continue;
+  const reuId = bruto.crime.assassinoId;
+  const vitimaId = bruto.crime.vitimaId;
+  if (!mc[reuId]) {
+    problemasExigencia.push(`${bruto.seed}: réu com ferimento mas sem marca corporal`);
+    continue;
+  }
+  const inocentesComMarca = Object.keys(mc).filter((id) => id !== reuId && id !== vitimaId);
+  if (inocentesComMarca.length < 1) {
+    problemasExigencia.push(`${bruto.seed}: réu com marca mas 0 inocentes com marca (mínimo 1)`);
+  }
+}
+// G2: nos pacotes embarcados, gen_ferimento_reu nunca é a ÚNICA carta com
+// pertenceA === reuCorreto (a marca não é âncora única).
+const problemasAncoraUnica = [];
+for (const pacote of [CASO_REPLICA, ...CASOS_POOL]) {
+  const reuId = pacote.verdadeDeOuro?.reuCorreto;
+  if (!reuId) continue;
+  const cartasReu = (pacote.cartas || []).filter(
+    (c) => (c.tagsOcultas || {}).pertenceA === reuId
+  );
+  if (cartasReu.length === 1 && cartasReu[0].id === 'gen_ferimento_reu') {
+    problemasAncoraUnica.push(`${pacote.id}: gen_ferimento_reu é âncora única do réu`);
+  }
+}
+const exigenciaRuidoOk = problemasExigencia.length === 0;
+const exigenciaAncoraOk = problemasAncoraUnica.length === 0;
+if (!exigenciaRuidoOk) {
+  console.log('\nEXIGÊNCIA — ruído honesto:');
+  for (const p of problemasExigencia) console.log('  ·', p);
+}
+if (!exigenciaAncoraOk) {
+  console.log('\nEXIGÊNCIA — âncora única:');
+  for (const p of problemasAncoraUnica) console.log('  ·', p);
+}
+
 const checagens = [
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
@@ -3936,6 +4000,8 @@ const checagens = [
   ['Autobattler v2 — GB6 procedência total: vestígio com evento de origem; sede ∈ SEDES_POR_REGIAO; incidental só em quina perigosa; peça deslocada só por armar-se/interpor; naoCausal sem sinal (OS autobattler v2 B3)', gb6ProcedenciaOk],
   ['Autobattler v2 — GB9 cravar intacto: nas seeds com troca, o mecanismo FATAL crava pelos sinais das cartas (OS autobattler v2 B4)', gb9CravarIntacto],
   ['Autobattler v2 — GB10 anti-ambiguidade: sinal de tentativa não crava sozinho; motor cego a metodoIniciado; troca rara (<5%) (OS autobattler v2 B4)', gb10AntiAmbiguidade],
+  ['Inc. 6 — ruído honesto: todo réu-com-marca tem ≥1 inocente-com-marca (OS Exigir que mostre §5)', exigenciaRuidoOk],
+  ['Inc. 6 — âncora única: gen_ferimento_reu nunca é a única carta de autoria do réu (Via B, OS P9)', exigenciaAncoraOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

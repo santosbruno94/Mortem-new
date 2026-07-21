@@ -42,6 +42,7 @@
 // =====================================================================
 
 import { hashString } from '../logic/hash.js';
+import { REGIOES_EXIGIVEIS, SINAL_POR_METODO } from './marcas_exigiveis.js';
 
 // ---------------------------------------------------------------------
 // Tom ressonante por trait (tabela fechada da spec §8.5). Sem trait, cai
@@ -968,7 +969,7 @@ function temaDoGatilho(bruto, pessoaId) {
 // Ordem estável: a dos próprios suspeitos (alfabética no pacote) e a do
 // array de cartas para os confrontos — replay byte a byte.
 // ---------------------------------------------------------------------
-export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {}, acessorId = null, instrumento = null }) {
+export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {}, acessorId = null, instrumento = null, marcasCorporais = {} }) {
   const { mundo, crime, escolha } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
@@ -1116,6 +1117,36 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       gatilhos.push({ rotulo: g.pergunta, vaiPara: 'gatilho' });
     }
 
+    // O verbo "Exigir que mostre" (Inc. 6 do pivô Gabinete Ilustrado):
+    // gated na carta gen_sinal_exigivel (corpo da vítima anuncia a marca).
+    // Uma entrada por região exigível. A reação depende da marca corporal
+    // do suspeito (crime, ofício ou situacional) — ou da ausência de marca.
+    // Canal lateral como o confronto: transitório, retoma sem descer.
+    const exigencias = [];
+    const marcaDaPessoa = marcasCorporais[pessoa.id] || null;
+    const cartaSinal = cartas.find((c) => c.id === 'gen_sinal_exigivel');
+    if (cartaSinal) {
+      const regiaoDoSinal = cartaSinal.tagsOcultas.regiao;
+      for (const [regId, reg] of Object.entries(REGIOES_EXIGIVEIS)) {
+        const noId = `exigencia_${regId}`;
+        const temMarcaNaRegiao = marcaDaPessoa && marcaDaPessoa.regiao === regId;
+        const nadaDeNota = SINAL_POR_METODO[bruto.escolha.metodoId]?.descricaoNadaDeNota
+          || 'Nada de nota.';
+        if (temMarcaNaRegiao) {
+          nos[noId] = { fala: [marcaDaPessoa.descricaoClose], opcoes: [] };
+        } else {
+          nos[noId] = { fala: [nadaDeNota], opcoes: [] };
+        }
+        exigencias.push({
+          requerCarta: 'gen_sinal_exigivel',
+          regiao: regId,
+          rotulo: reg.descricaoExigencia,
+          vaiPara: noId,
+          regiaoDoSinal,
+        });
+      }
+    }
+
     dialogos[`dialogo_${pessoa.id}`] = {
       suspeitoId: pessoa.id,
       origemLocalidade: 'delegacia',
@@ -1127,6 +1158,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       reacoesProva,
       confrontos,
       ...(gatilhos.length ? { gatilhos } : {}),
+      ...(exigencias.length ? { exigencias } : {}),
       nos,
     };
   }

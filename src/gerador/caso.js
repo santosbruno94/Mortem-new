@@ -28,6 +28,7 @@ import { resolverCrime } from './crime.js';
 import { fatiaForenseDoCrime } from './ponte_caso.js';
 import { sortearEsqueletoInterferencia, gerarInterferencias } from './interferencia.js';
 import { derivarPsiqueDoCaso } from './vetores_psiquicos.js';
+import { SINAL_POR_METODO, PROFISSAO_PARA_MARCA, MARCAS_INOCENTES_OFICIO, MARCAS_SITUACIONAIS } from './marcas_exigiveis.js';
 
 function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
@@ -438,6 +439,79 @@ export function gerarCasoBruto(seed, opts = {}) {
     chamariz: palco ? palco.chamariz : null,
   });
 
+  // 9b. MARCAS CORPORAIS EXIGÍVEIS (Inc. 6 do pivô Gabinete Ilustrado):
+  // quando o crime teve luta (ferimento_do_agressor existe) E o método
+  // tem sinal definido (venenos não têm), o réu carrega a marca-espelho
+  // e ≥2 inocentes recebem marca plausível (ruído honesto — OS §4.3).
+  // `marcasCorporais`: { [pessoaId]: { marca, descricaoClose, regiao, sede, origem } }
+  // O motor JAMAIS lê — é dado de apresentação para o verbo no diálogo.
+  const marcasCorporais = {};
+  const temFerimentoReu = crime.vestigios.some((v) => v.classe === 'ferimento_do_agressor');
+  const sinaiDoMetodo = SINAL_POR_METODO[metodoId];
+  if (temFerimentoReu && sinaiDoMetodo) {
+    marcasCorporais[assassino.id] = {
+      marca: sinaiDoMetodo.marca,
+      descricaoClose: sinaiDoMetodo.descricaoClose,
+      regiao: sinaiDoMetodo.regiao,
+      sede: sinaiDoMetodo.sede,
+      origem: 'crime',
+    };
+    const inocentes = mundo.elenco.filter((p) => p.id !== assassino.id && p.id !== vitima.id);
+    // Via 1 — marca ocupacional: o arquétipo do inocente mapeia à profissão.
+    let marcaOcupAtribuida = false;
+    for (const p of inocentes) {
+      const marcaId = PROFISSAO_PARA_MARCA[p.arquetipo];
+      if (marcaId && MARCAS_INOCENTES_OFICIO[marcaId]) {
+        const m = MARCAS_INOCENTES_OFICIO[marcaId];
+        marcasCorporais[p.id] = {
+          marca: m.marca,
+          descricaoClose: m.descricaoClose,
+          regiao: m.regiao,
+          sede: m.sede,
+          origem: 'oficio',
+        };
+        marcaOcupAtribuida = true;
+        break;
+      }
+    }
+    // Via 2 — marca situacional: um segundo inocente (diferente do ocupacional)
+    // recebe um evento plausível recente, escolhido por hashString salgado.
+    const idsComMarca = new Set(Object.keys(marcasCorporais));
+    const candidatosSit = inocentes.filter((p) => !idsComMarca.has(p.id));
+    if (candidatosSit.length > 0) {
+      const idxPessoa = hashString(`${sal}|marca_sit_pessoa`) % candidatosSit.length;
+      const idxMarca = hashString(`${sal}|marca_sit_tipo`) % MARCAS_SITUACIONAIS.length;
+      const p = candidatosSit[idxPessoa];
+      const m = MARCAS_SITUACIONAIS[idxMarca];
+      marcasCorporais[p.id] = {
+        marca: m.marca,
+        descricaoClose: m.descricaoClose,
+        regiao: m.regiao,
+        sede: m.sede,
+        origem: 'situacional',
+      };
+    }
+    // Fallback: se nenhum ocupacional foi atribuído, o primeiro candidato
+    // restante recebe uma situacional extra para atingir o mínimo de 2.
+    if (!marcaOcupAtribuida) {
+      const idsComMarca2 = new Set(Object.keys(marcasCorporais));
+      const restantes = inocentes.filter((p) => !idsComMarca2.has(p.id));
+      if (restantes.length > 0) {
+        const idxP = hashString(`${sal}|marca_sit2_pessoa`) % restantes.length;
+        const idxM = hashString(`${sal}|marca_sit2_tipo`) % MARCAS_SITUACIONAIS.length;
+        const p = restantes[idxP];
+        const m = MARCAS_SITUACIONAIS[idxM];
+        marcasCorporais[p.id] = {
+          marca: m.marca,
+          descricaoClose: m.descricaoClose,
+          regiao: m.regiao,
+          sede: m.sede,
+          origem: 'situacional',
+        };
+      }
+    }
+  }
+
   const escolha = {
     vitimaId: vitima.id,
     assassinoId: assassino.id,
@@ -467,5 +541,6 @@ export function gerarCasoBruto(seed, opts = {}) {
     fatiaForense,
     interferencia,
     psique,
+    marcasCorporais,
   };
 }

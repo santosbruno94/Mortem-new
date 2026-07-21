@@ -1112,6 +1112,13 @@ function realizarCartas(bruto) {
         nova.descricao = `De manga arregaçada por ordem do delegado, ${reu.nome} mostra o que a roupa cobria: a marca recente de luta, ${sedeFr === 'fronte' || sedeFr === 'têmpora' ? 'na' : 'nos'} ${sedeFr}. A lesão tem os dias do crime, e a explicação doméstica não vem.`;
         break;
       }
+      case 'gen_sinal_exigivel': {
+        const sinalTag = nova.tagsOcultas;
+        const sedeSinal = SEDE_LEGIVEL[sinalTag.sede] || sinalTag.sede;
+        nova.carimboPadrao = `Marca-espelho esperada (${sedeSinal})`;
+        nova.descricao = nova.carimboPadrao;
+        break;
+      }
       case 'gen_engodo': {
         if (nova.tagsOcultas.tipoEngodo === 'bilhete_sem_assinatura') {
           // "não casa com": exclusão por cotejo, nunca certeza instantânea
@@ -1282,6 +1289,7 @@ function montarLocalidades(bruto, cartas) {
       // técnico até a OS de prosa.
       ...(temCarta('gen_ungueais') ? ['No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].'] : []),
       ...(temCarta('gen_incidental') ? ['Fora do desenho da lesão principal, em sítio próprio: [[gen_incidental]].'] : []),
+      ...(temCarta('gen_sinal_exigivel') ? ['Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].'] : []),
       ...(cartas.some((c) => c.id === 'gen_engodo' && c.localidade === 'corpo')
         ? [
             femV
@@ -1875,7 +1883,7 @@ export function montarPacoteGerado(seed, opts = {}) {
   const ausencias =
     ausenteId && comarcaDoCaso ? { [ausenteId]: comarcaDoCaso.satelite.rotulo } : {};
   const instrumentoDoMetodo = METODOS[bruto.crime.metodoId]?.instrumento || null;
-  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias, acessorId: perif.acessorId, instrumento: instrumentoDoMetodo });
+  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias, acessorId: perif.acessorId, instrumento: instrumentoDoMetodo, marcasCorporais: bruto.marcasCorporais || {} });
   cartas.push(...cartasAlibi);
 
   // A carta de NEXO define o instrumento que o veredicto cobra: o método

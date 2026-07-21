@@ -103,6 +103,9 @@ export function estadoInicialCaso() {
     // "feito" do seletor "Apresentar uma prova…". Dado puro de UI —
     // o motor não lê. { [suspeitoId]: [cartaId, ...] }
     provasApresentadas: {},
+    // Inc. 6 (Exigir que mostre): regiões já exigidas a cada suspeito. Dado
+    // puro de UI — o motor jamais o lê. { [suspeitoId]: [regiao, ...] }
+    exigenciasFeitas: {},
     // SEMENTE §7.3 (INERTE): a mecânica futura de "confrontar faz o personagem
     // AGIR" — mexer com as provas no mapa, fora do olhar do perito, ou chegar
     // à cena ao mesmo tempo que ele (concomitância). HOJE nada disto executa:
@@ -316,6 +319,19 @@ export const useJogo = create(
     }
     // FASE 4: o confronto em cena é ação observável (gatilho possível).
     get().dispararInterferencias();
+  },
+
+  // Inc. 6 (Exigir que mostre): exigir que o suspeito mostre uma região do
+  // corpo. Custo zero (interrogar é relógio mole). Registra o "já exigido"
+  // e anota a observação na Caderneta. O motor JAMAIS lê — dado de UI.
+  exigirQueMostre: (suspeitoId, regiao) => {
+    const s = get();
+    const ja = s.exigenciasFeitas[suspeitoId] || [];
+    if (!ja.includes(regiao)) {
+      set({
+        exigenciasFeitas: { ...s.exigenciasFeitas, [suspeitoId]: [...ja, regiao] },
+      });
+    }
   },
 
   // #5 — firma a escolha da contradição de horas (irreversível). Registra a

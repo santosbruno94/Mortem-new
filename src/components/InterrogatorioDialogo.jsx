@@ -41,6 +41,8 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const visitarNoDialogo = useJogo((s) => s.visitarNoDialogo);
   const provasApresentadas = useJogo((s) => s.provasApresentadas);
   const apresentarProva = useJogo((s) => s.apresentarProva);
+  const exigenciasFeitas = useJogo((s) => s.exigenciasFeitas);
+  const exigirQueMostre = useJogo((s) => s.exigirQueMostre);
 
   const dialogo = obterDialogo(dialogoId || localidadeId);
   const localidade = localidadeId ? obterLocalidade(localidadeId) : null;
@@ -111,6 +113,13 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
     setReacaoAtual(destino);
   };
 
+  const exigir = (regiao, destino) => {
+    exigirQueMostre(suspeitoId, regiao);
+    setSemParadeiro(false);
+    setCartaApresentada(null);
+    setReacaoAtual(destino);
+  };
+
   // O retrato segue o interrogado (suspeitoId); nas conversões antigas o
   // mapa localidade→personagem continua valendo como reserva.
   const personagemDaCena = suspeitoId || obterPersonagemDaLocalidade(localidade?.id);
@@ -133,6 +142,13 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
 
   // O gatilho é canal lateral sem carta: à mão fora da reação, some durante.
   const gatilhosVisiveis = emReacao ? [] : dialogo.gatilhos || [];
+
+  // O verbo "Exigir que mostre" (Inc. 6): gated na carta gen_sinal_exigivel.
+  // Canal lateral como o gatilho — transitório, retoma sem descer.
+  const exigidasDeste = exigenciasFeitas[suspeitoId] || [];
+  const exigenciasVisiveis = emReacao
+    ? []
+    : (dialogo.exigencias || []).filter((e) => temCarta(e.requerCarta));
 
   return (
     <Overlay titulo={interpolar(titulo, detective)} subtitulo={subtitulo} marca="dialogo">
@@ -252,6 +268,31 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
               <span className="opcao-rotulo-texto">{interpolar(g.rotulo, detective)}</span>
             </button>
           ))}
+        </div>
+      )}
+
+      {exigenciasVisiveis.length > 0 && (
+        <div className="mt-3 space-y-2" data-exigencias>
+          {exigenciasVisiveis.map((e) => {
+            const jaExigida = exigidasDeste.includes(e.regiao);
+            return (
+              <button
+                key={e.regiao}
+                type="button"
+                className="opcao-dialogo opcao-dialogo--exigencia"
+                data-exigencia={e.regiao}
+                onClick={() => exigir(e.regiao, e.vaiPara)}
+              >
+                <span className="opcao-marca" aria-hidden>
+                  ✋
+                </span>
+                <span className="opcao-rotulo-texto">
+                  {interpolar(e.rotulo, detective)}
+                  {jaExigida && <span className="text-stone-500 italic"> · já exigido</span>}
+                </span>
+              </button>
+            );
+          })}
         </div>
       )}
 
