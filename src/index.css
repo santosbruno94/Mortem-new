@@ -760,6 +760,16 @@ body {
     #0b0906;
 }
 
+/* Atmosfera do tampo sob a maquete (4.3): quando sobra mesa em telas altas,
+   uma vela na beira de baixo aquece o vão e um leve aterramento nas bordas
+   dá peso de tampo — o espaço passa a ler como mesa acesa, não como vazio.
+   Puro enfeite (aria-hidden, pointer-events-none); não desloca as fichas. */
+.mesa-desk-atmosfera {
+  background:
+    radial-gradient(58% 82% at 50% 116%, rgba(217, 140, 60, 0.16) 0%, rgba(217, 140, 60, 0.05) 34%, transparent 60%),
+    radial-gradient(130% 96% at 50% 104%, transparent 42%, rgba(10, 7, 5, 0.5) 100%);
+}
+
 /* Alvos de toque confortáveis em telas de dedo (#8): só onde o ponteiro é
    GROSSO — o desktop (ponteiro fino) e a geometria do qa-ui, que roda em
    desktop, ficam intactos. Apenas min-height, para não mexer no layout. */
