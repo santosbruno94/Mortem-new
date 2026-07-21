@@ -999,3 +999,37 @@ pelo pipeline `revisar-prosa` com zero achados bloqueantes.
   segue a `plano-de-sessoes.md`. Pendências abertas por esta sessão: P23-preconceito de
   inocente (fase própria) e a [DECISÃO menor] de endurecer no `qa.mjs` a guarda "abertura não
   vaza paradeiro" (não feita — a propriedade vale por construção hoje).
+
+## 21/07/2026 — S3/S4 e o pivô "Gabinete Ilustrado" (visual novel de gravura)
+
+Sessão de continuação (ramo A). Fechou S3 (prosa dedicada) e S4 (UI/arte) e implementou os
+Sistemas 1 e 2 do pivô de apresentação (`docs/nota-gabinete-ilustrado.md`). Autonomia
+expressa do usuário (commit/PR/merge sem input humano). Só camada de apresentação/prosa; o
+motor, o gerador e a gramática da acusação ficaram intocados. Gates verdes em cada commit.
+
+- **S3 itens 2 e 7 — a voz do mestre.** Com o backstory novo (Dr. Alcott ausente; Harlan
+  examina só), "a leitura do legista" (legista presente) soava artificial. Decisão: vira
+  **"A voz do mestre"** — a convenção já registrada no eco pós-falha (a voz de Alcott na
+  cabeça do aprendiz), que resolve a deixis sem reescrever os apartes `vozMestre`. Cada
+  aparte recordado remete ao Glossário ("o mestre já falou disso — veja no Glossário"),
+  preenchendo o ponteiro que o item 5 tirou da carta. Pipeline `revisar-prosa` zero
+  bloqueantes (fiscal pegou "O legista" residual na Ficha; editor pediu de-duplicar o link).
+- **S4 — tipografia já cumprida, ratificada; 4.3 resolvido.** 1.2(b/c/e) já vigiam no código
+  (prosa 16px serif, mural 12px, sistema dual claro×escuro). O espaço morto sob o diorama
+  ganhou uma atmosfera de vela na beira baixa do tampo (`.mesa-desk-atmosfera`).
+- **Sistema 1 — A Prancha (decisão §8.1: aposentar o corpo3d).** O exame do corpo passa a ser
+  prancha de atlas em SVG procedural (lupa, hotspots que extraem as mesmas cartas, pose/livor
+  pelo IPM). Verso frente↔dorso **rotulado pela FACE** (perito ALTO: "decúbito ventral" com
+  livor dorsal leria como corpo movido — sinal falso) e camada de necropsia ilustrativa (0
+  hotspots). O cadáver 3D foi aposentado do exame; o diorama da vila segue 3D, intocado. SVG
+  (nunca canvas) mantém o `?flat=1`.
+- **Sistema 2 — A Cena.** Interrogatórios e eventos de localidade compõem cena ilustrada:
+  fundo 2D paramétrico (`FundoCena`) + sprite meio-corpo (variante `'cena'` do retrato),
+  "gravura que respira" e "reação observável" (gesto, nunca legenda). Contrato do `qa-ui`
+  preservado (`data-retrato`, `data-opcoes-dialogo`).
+- **Inc. 7 — slots de asset** `prancha_corpo`/`fundo_cena` registrados (contrato pronto;
+  procedural é o fallback).
+- **Inc. 6 — "Exigir que mostre": DEFERIDO (fase própria).** O circuito exige marca-espelho
+  de luta no agressor; o caso-escola é homicídio por arma branca sem luta e não a suporta sem
+  fabricar um sinal que fura o fair play. Pertence ao gerador (autobattler produz a luta +
+  ruído honesto nos inocentes). Gatilho: ordem expressa. Detalhe na nota §Inc.6.

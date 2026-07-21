@@ -257,6 +257,13 @@ detalhar antes).
   forense) e, antes do commit, `revisar-prosa` + `anti-padrao-ia`.
 - **Pronto quando:** pipeline `revisar-prosa` com zero achados bloqueantes; `qa-ui.mjs`
   verde (abertura e monólogo são texto visível).
+- **✅ Concluída (21/07/2026).** Item 1 (abertura) refeito em sessão anterior; itens 2 e 7
+  fechados nesta: a "leitura do legista" (legista presente, artificial) vira **"A voz do
+  mestre"** — a convenção do eco pós-falha (Alcott ausente, a voz na cabeça de Harlan) — e
+  cada aparte recordado remete ao Glossário ("o mestre já falou disso — veja no Glossário"),
+  preenchendo o ponteiro que o item 5 tirou da carta. Pipeline `revisar-prosa` zero
+  bloqueantes (editor: deixis resolvida pela convenção de voz interna + link de-duplicado;
+  fiscal: resíduo "O legista" na Ficha corrigido; perito: limpo). `qa`/`qa-ui`/build verdes.
 
 ### S4 — UI/arte *(por último; decide-se em conjunto)*
 
@@ -270,6 +277,35 @@ detalhar antes).
   no `CLAUDE.md`.
 - **Pronto quando:** `qa-ui.mjs` verde (o contrato de textos/seletores do QA é intocável —
   qualquer mudança neles atualiza o QA no mesmo commit).
+- **✅ Concluída (21/07/2026).** A tipografia já cumpria o pedido — prosa imersiva serifada
+  16px (1.2b), cartas do mural 12px (1.2c), sistema dual claro×escuro (1.2e) — e foi
+  ratificada. O único item aberto, 4.3 (espaço morto sob o diorama em telas altas), ganhou
+  uma **atmosfera de vela na beira baixa do tampo** (glow quente + aterramento sutil): o vão
+  passa a ler como mesa acesa, não como vazio. Puro enfeite, sem tocar o contrato do QA.
+
+### Gabinete Ilustrado — pivô de apresentação (visual novel de gravura)
+
+- **Objetivo:** migrar a apresentação para o registro de *visual novel de gravura* — prancha
+  de atlas para o corpo, cena ilustrada para as conversas. **Só camada de apresentação**;
+  motor, gerador e prosa intocados. Nota normativa: `docs/nota-gabinete-ilustrado.md`.
+- **✅ Sistemas 1 e 2 entregues (21/07/2026)**, um commit por incremento:
+  - **Inc. 1–2 — A Prancha (`PranchaCorpo.jsx`):** o exame do corpo vira prancha de atlas em
+    SVG procedural (lupa que segue o ponteiro, hotspots que extraem as mesmas cartas, pose
+    e livor pelo IPM via `tempo_morte.js`). Verso ("Virar a prancha": frente ↔ dorso,
+    rotulado pela FACE) e camada de necropsia (dissecção ilustrativa, 0 hotspots). **Cadáver
+    3D aposentado; diorama da vila intocado.** SVG (nunca canvas) mantém o `?flat=1`.
+  - **Inc. 3–5 — A Cena (`CenaDialogo.jsx`, `FundoCena.jsx`):** interrogatórios e eventos de
+    localidade compõem cena ilustrada — fundo 2D paramétrico + sprite meio-corpo (variante
+    `'cena'` do retrato), "gravura que respira" e "reação observável". Contrato do `qa-ui`
+    preservado (`data-retrato`, `data-opcoes-dialogo` etc.).
+  - **Inc. 7 — Slots de asset:** `prancha_corpo` e `fundo_cena` registrados em
+    `slots_assets.js` (contrato para arte externa; procedural é o fallback obrigatório).
+  - Pareceres do perito-forense aplicados (rótulo da Fig. 2 pela face, não pelo decúbito;
+    "ferida cervical"). `qa`/`qa-ui`/build verdes em cada incremento.
+- **⏭️ Inc. 6 — verbo "Exigir que mostre": DEFERIDO (fase própria, só com ordem expressa).**
+  Precisa de marca-espelho de luta no agressor; o caso-escola é homicídio por arma branca
+  sem luta e não a suporta sem furar o fair play. Pertence ao **gerador** (autobattler produz
+  a luta + ruído honesto nos inocentes). Detalhe em `docs/nota-gabinete-ilustrado.md` §Inc.6.
 
 ### S5 — Balanceamento e OSs restantes
 

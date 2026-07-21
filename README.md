@@ -21,6 +21,7 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 |---|---|
 | [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md) | Design do jogo (estado atual) |
 | [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md) | Design do gerador por simulação (autobattler de build time) e da interferência |
+| [`docs/nota-gabinete-ilustrado.md`](./docs/nota-gabinete-ilustrado.md) | Pivô de apresentação (visual novel de gravura): a Prancha do corpo e a Cena de diálogo |
 | [`docs/pendencias-status.md`](./docs/pendencias-status.md) | Mapa vivo do que ainda falta (o que foi feito, o que fica para sessão própria) |
 | [`docs/guia-de-estilo.md`](./docs/guia-de-estilo.md) | Norma de toda a prosa (língua de época, observação pura, anti-padrões) |
 | [`docs/biblia-de-vozes.md`](./docs/biblia-de-vozes.md) | O idioleto de cada personagem |
