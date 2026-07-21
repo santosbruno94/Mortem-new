@@ -6,7 +6,7 @@ Detetive, com os 4 desfechos possíveis — hoje em **três modos** sobre a mesm
 
 1. **A Hora Emprestada** — o caso-escola artesanal, escrito à mão (com a maquete 3D da vila).
 2. **A Hora Refeita** — a réplica procedural do caso-escola (a máquina remonta o mesmo crime).
-3. **Um Caso da Comarca** — um caso sorteado de um banco de **20 casos** que a simulação
+3. **Um Caso da Comarca** — um caso sorteado de um banco de **21 casos** que a simulação
    gera em build time (vila, elenco e vestígios que nenhuma mão escreveu).
 
 O gerador é uma **ilha de build time**: em runtime o jogo só carrega pacotes prontos, nunca
@@ -70,8 +70,10 @@ Ferramentas de inspeção do gerador (build time, imprimem no terminal):
    **viajar** até lá (só a viagem gasta o relógio) e abrir o exame ou o interrogatório como
    sobreposição. O exame do corpo é uma **prancha de atlas** (SVG, com lupa que segue o
    dedo, frente/dorso e necropsia); os interrogatórios compõem uma **cena ilustrada** (fundo
-   da localidade + sprite do interlocutor). **Termos em negrito** na prosa extraem cartas
-   para a mesa — examinar **não** custa tempo. A **voz do mestre** vai dando a leitura do
+   da localidade + sprite do interlocutor), com **confronto** (pousar uma prova diante do
+   suspeito) e **exigir que mostre** (mandar mostrar as mãos, os antebraços ou as botas —
+   quando o corpo da vítima anuncia a marca-espelho). **Termos em negrito** na prosa extraem
+   cartas para a mesa — examinar **não** custa tempo. A **voz do mestre** vai dando a leitura do
    corpo (uma dica; o Dr. Alcott, ausente, recordado pelo aprendiz). O perecível (rigor,
    temperatura) **perde precisão** com as horas, mas nunca some — o durável sempre resolve.
 4. **Construir a acusação** — o botão da parede abre o **mural com barbante**. Você **afirma**
@@ -95,7 +97,7 @@ salgado com a seed).
 ```
 src/
   data/         seed, catálogo de causas, cartas (com tagsOcultas), localidades, mapa, glossário,
-                abertura, rótulos, casos_gerados.js (banco de 20 casos da comarca)
+                abertura, rótulos, casos_gerados.js (banco de 21 casos da comarca)
   logic/        tempo, tempo_morte, cronos, acusacao (gramática das ligações), veredicto, falaDoMestre, monólogo, interpolação
   store/        jogo.js (Zustand: fases, relógio, mapa, cartas registradas, conclusões, acusação, log)
   gerador/      ILHA de build time: autobattler do crime, cidade, elenco, vestígios, interferência

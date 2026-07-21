@@ -21184,19 +21184,19 @@ export const CASOS_POOL = [
     },
     "exigencia_maos": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
      ],
      "opcoes": []
     },
     "exigencia_antebracos": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
      ],
      "opcoes": []
     },
     "exigencia_botas": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
      ],
      "opcoes": []
     }
@@ -21422,13 +21422,13 @@ export const CASOS_POOL = [
     },
     "exigencia_antebracos": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
      ],
      "opcoes": []
     },
     "exigencia_botas": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
      ],
      "opcoes": []
     }
@@ -21648,19 +21648,19 @@ export const CASOS_POOL = [
     },
     "exigencia_maos": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
      ],
      "opcoes": []
     },
     "exigencia_antebracos": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
      ],
      "opcoes": []
     },
     "exigencia_botas": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
      ],
      "opcoes": []
     }
@@ -21886,13 +21886,13 @@ export const CASOS_POOL = [
     },
     "exigencia_antebracos": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
      ],
      "opcoes": []
     },
     "exigencia_botas": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
      ],
      "opcoes": []
     }
@@ -22118,13 +22118,13 @@ export const CASOS_POOL = [
     },
     "exigencia_antebracos": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
      ],
      "opcoes": []
     },
     "exigencia_botas": {
      "fala": [
-      "Palmas calosas, sem corte recente. Nada de nota."
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
      ],
      "opcoes": []
     }
