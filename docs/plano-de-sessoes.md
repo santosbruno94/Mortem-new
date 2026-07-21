@@ -305,7 +305,8 @@ detalhar antes).
 - **⏭️ Inc. 6 — verbo "Exigir que mostre": DEFERIDO (fase própria, só com ordem expressa).**
   Precisa de marca-espelho de luta no agressor; o caso-escola é homicídio por arma branca
   sem luta e não a suporta sem furar o fair play. Pertence ao **gerador** (autobattler produz
-  a luta + ruído honesto nos inocentes). Detalhe em `docs/nota-gabinete-ilustrado.md` §Inc.6.
+  a luta + ruído honesto nos inocentes). **Plano pronto em `docs/os-exigir-que-mostre.md`**
+  (design, escopo, decisões abertas, critério de pronto); gatilho: ordem expressa.
 
 ### S5 — Balanceamento e OSs restantes
 

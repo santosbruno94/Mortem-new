@@ -114,17 +114,26 @@ ilegibilidade). Tipografia serifada de época embarcada (**IM Fell English**, li
 OFL, `src/assets/fontes/`) para títulos e nomes; sem ícones modernos; ornamentos
 tipográficos discretos (§, ―, ❦).
 
-**Camada 3D (apresentação pura):** a mesa ganha profundidade em dois pontos — o
-**diorama da vila** (maquete de papel pousada no alto da escrivaninha: prédios
+**Camada 3D (apresentação pura):** a profundidade 3D da mesa concentra-se hoje num único
+ponto — o **diorama da vila** (maquete de papel pousada no alto da escrivaninha: prédios
 procedurais com **telhado de duas águas**, chaminés, marquise e pás — sempre primitivas
 compostas; clicar num prédio VIAJA, e Moorford surge crescendo com a estrada ao ser
-desbloqueado) e a **mesa de exame do corpo** (cadáver low-poly ao lado da prosa, cuja
-pose/manchas refletem rigor e livor pelo IPM; os hotspots extraem as MESMAS cartas dos
-termos em negrito). Regras da camada: geometria 100% procedural (proibido GLTF/textura
+desbloqueado). Regras da camada 3D: geometria 100% procedural (proibido GLTF/textura
 externa — three.js + @react-three/fiber v8 pinados, chunk lazy próprio), dados espaciais
-em `src/data/mapa_espacial.js` e `src/data/hotspots_corpo.js` (camada visual — o motor
-nunca lê), e **fallback 2D obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D,
-a grade de localidades original joga idêntico. Diálogos e pessoas permanecem 2D.
+em `src/data/mapa_espacial.js` (camada visual — o motor nunca lê), e **fallback 2D
+obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a grade de localidades
+original joga idêntico.
+
+**Pivô "Gabinete Ilustrado" (jul/2026 — `docs/nota-gabinete-ilustrado.md`):** a
+apresentação migrou para o registro de **visual novel de gravura**. O exame do corpo
+deixou de ser cadáver 3D e passou a ser **A Prancha** — figura de atlas de medicina legal
+em SVG procedural (`PranchaCorpo.jsx`: lente que segue o ponteiro, frente/dorso e camada
+de necropsia; pose/livor pelo IPM; hotspots que extraem as MESMAS cartas dos termos em
+negrito, via `hotspots_corpo.js`). Diálogos e localidades compõem **A Cena** ilustrada
+(`CenaDialogo.jsx`/`FundoCena.jsx`: fundo 2D paramétrico por localidade + sprite meio-corpo
+do genótipo de aparência, com "gravura que respira" e reação observável). Tudo procedural —
+o placeholder É o fallback (slots `prancha_corpo`/`fundo_cena` prontos para arte externa
+sob contrato). O diorama da vila segue 3D, intocado.
 
 **Asset 2D sob contrato (jul/2026):** a regra do 3D segue 100% procedural (proibido
 GLTF/textura de arquivo); mas a camada **2D** passa a admitir asset externo sob
@@ -151,8 +160,9 @@ mora em CSS na tag, não no emissivo 3D; as pás do moinho são silhueta estáti
 randomização); `src/logic/aparencia.js` expõe `obterAparencia` e
 `derivarAparenciaDeSeed` (hash da seed salgado — pronto para o procedural). Alimenta
 os **retratos 2D em gravura SVG** (`RetratoPersonagem.jsx`: interrogatórios,
-delegacia, Painel de Álibis, Juízos do mural) e o corpo 3D da vítima. JAMAIS entra em
-`tagsOcultas` nem é lida pelo veredicto (guarda no QA).
+delegacia, Painel de Álibis, Juízos do mural, e o sprite meio-corpo da Cena de diálogo) e
+a compleição/tom da **Prancha** do corpo da vítima. JAMAIS entra em `tagsOcultas` nem é
+lida pelo veredicto (guarda no QA).
 
 **Som:** cinco efeitos curtos, sintetizados offline e embarcados (`src/assets/sons/`,
 tocados por `src/som.js`): papel (extrair carta), sino (viajar), barbante (ligar/
@@ -169,11 +179,12 @@ apresentação — nenhuma regra depende dele — e desliga-se no rodapé da esc
    hub de investigação.
 2. **Briefing** — Chegada a Briarstone. O Delegado Wycliffe apresenta o caso (custo
    zero). Perguntas ao delegado plantam informações e iscas.
-3. **Investigação** — Chegada às 11:00. O relógio só corre ao **VIAJAR** no mapa;
+3. **Investigação** — Chegada às 13:00. O relógio só corre ao **VIAJAR** no mapa;
    dentro do local, congela. O jogador alterna entre:
    - **Viajar** entre nós do mapa (custa horas; o mapa cresce por leads);
    - **Examinar** localidades e **interrogar** suspeitos (clicar nos negritos extrai
-     cartas; custo zero) — o legista vai falando a leitura do corpo;
+     cartas; custo zero) — na prancha do corpo, a **voz do mestre** dá a leitura (o Dr.
+     Alcott, ausente, recordado pelo aprendiz);
    - Consultar Glossário, Caderneta e Painel de Álibis (custo zero).
 4. **Construção da Acusação** — O botão da parede abre o **mural com barbante**: o
    jogador afirma a cadeia (réu, janela, causa, motivo, juízos) e a sustenta ligando
@@ -362,20 +373,22 @@ sem sair da estação. Implementação: `fichaAberta` no store (id puro, seriali
 
 Consequência para a **Caderneta** (§5): rebaixada a **diário** — a lista de observações
 reunidas passa a ser compacta (carimbo + hora, cada linha reabrindo a ficha). A
-descrição de perto e a fala do legista moram na ficha, não na Caderneta; "Leitura do
-legista" e o diário da investigação seguem sendo a função verdadeira da Caderneta.
+descrição de perto e a voz do mestre moram na ficha, não na Caderneta; a "Leitura do
+mestre" e o diário da investigação seguem sendo a função verdadeira da Caderneta.
 
 ---
 
 ## 7. A leitura do mestre (a dica falada)
 
-Não há gavetas nem mostradores: a leitura forense é **falada pelo mestre/legista**
-(`src/logic/falaDoMestre.js`), em linguagem natural, a partir do que o jogador
-examinou — a janela via `calcularJanelaMorte` (`cronos.js`), o mecanismo via
-`mecanismoCravado` (`catalogo_causas.js`). A leitura é refeita a cada exame
+Não há gavetas nem mostradores: a leitura forense é **a voz do mestre**
+(`src/logic/falaDoMestre.js`) — o Dr. Alcott, ausente da cena (reforma da abertura,
+jul/2026), recordado pelo aprendiz Harlan enquanto examina. Em linguagem natural, a partir
+do que o jogador examinou — a janela via `calcularJanelaMorte` (`cronos.js`), o mecanismo
+via `mecanismoCravado` (`catalogo_causas.js`). A leitura é refeita a cada exame
 (`consolidarLeituraMestre`, ids estáveis `leitura_mestre_janela`/`leitura_mestre_mecanismo`)
-e guardada em `conclusoes` (`origem: 'mestre'`), exibida no exame do corpo e na
-Caderneta.
+e guardada em `conclusoes` (`origem: 'mestre'`), exibida no exame do corpo (ao lado da
+Prancha) e na Caderneta. Cada aparte recordado remete ao **Glossário** ("o mestre já falou
+disso"), onde o tutorial ensina a ler o sinal em vez de o entregar mastigado.
 
 **É DICA, não decisão**: não vincula o veredicto — quem afirma o quando/como na cadeia,
 e responde por isso, é o jogador. Limites da voz do mestre no texto: leitura técnica
