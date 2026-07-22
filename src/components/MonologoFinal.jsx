@@ -86,11 +86,11 @@ export default function MonologoFinal() {
   // — o laço de playtest sem voltar ao título. O sorteio é da camada de
   // apresentação (Math.random permitido fora de logic/data/store); o caso
   // sorteado é, em si, determinístico por seed.
-  const jogarNovoCaso = () => {
+  const jogarNovoCaso = async () => {
     const atualId = obterCaso().id;
-    let pacote = pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
+    let pacote = await pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
     for (let i = 0; pacote.id === atualId && i < TAMANHO_POOL; i++) {
-      pacote = pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
+      pacote = await pacoteDoModo('procedural', Math.floor(Math.random() * TAMANHO_POOL));
     }
     tocarSom('lacre');
     carregarCaso(pacote);

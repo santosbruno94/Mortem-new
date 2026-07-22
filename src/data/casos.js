@@ -22,7 +22,19 @@
 // =====================================================================
 
 import { montarPacoteTutorial } from './pacote_caso.js';
-import { CASO_REPLICA, CASOS_POOL, CASOS_LUTA } from './casos_gerados.js';
+import { REPLICA_ID, IDS_POOL, IDS_LUTA } from './casos_indice.js';
+
+// O BANCO PESADO (~1,8 MB de pacotes prontos) fica FORA do chunk de
+// arranque: chega por import() dinâmico na primeira vez que um caso
+// gerado é pedido (diagnóstico 21/07, Lote 5 — mesmo mecanismo do
+// diorama). A camada síncrona decide pelo ÍNDICE leve (casos_indice.js,
+// gerado junto do banco; paridade guardada no qa.mjs). É asset do próprio
+// bundle — zero rede externa em runtime, determinismo intacto.
+let bancoPromise = null;
+function carregarBanco() {
+  if (!bancoPromise) bancoPromise = import('./casos_gerados.js');
+  return bancoPromise;
+}
 
 // Os modos oferecidos na tela inicial, na ordem de apresentação.
 export const MODOS_DE_JOGO = [
@@ -49,10 +61,13 @@ export const MODOS_DE_JOGO = [
   },
 ];
 
-// Pacote de um caso pelo ID (retomada de save e atalho ?caso=). Devolve
-// null quando o id não é conhecido (save de banco antigo → recomeço).
-export function obterPacotePorCasoId(casoId) {
+// Pacote de um caso pelo ID (retomada de save e atalho ?caso=). ASSÍNCRONO
+// desde o Lote 5: o caminho do tutorial resolve sem tocar o banco; um id
+// desconhecido (save de banco antigo) devolve null SEM baixar o banco.
+export async function obterPacotePorCasoId(casoId) {
   if (!casoId || casoId === 'a_hora_emprestada') return montarPacoteTutorial();
+  if (casoId !== REPLICA_ID && !IDS_POOL.includes(casoId) && !IDS_LUTA.includes(casoId)) return null;
+  const { CASO_REPLICA, CASOS_POOL, CASOS_LUTA } = await carregarBanco();
   if (casoId === CASO_REPLICA.id) return CASO_REPLICA;
   return CASOS_POOL.find((p) => p.id === casoId)
     || CASOS_LUTA.find((p) => p.id === casoId)
@@ -60,29 +75,31 @@ export function obterPacotePorCasoId(casoId) {
 }
 
 // O modo a que um caso carregado pertence (para a tela inicial refletir
-// o estado corrente sem recarregar nada).
+// o estado corrente sem recarregar nada). SÍNCRONO: decide pelo índice.
 export function modoDoCaso(casoId) {
   if (!casoId || casoId === 'a_hora_emprestada') return 'tutorial';
-  if (casoId === CASO_REPLICA.id) return 'replica';
-  if (CASOS_LUTA.some((p) => p.id === casoId)) return 'luta';
+  if (casoId === REPLICA_ID) return 'replica';
+  if (IDS_LUTA.includes(casoId)) return 'luta';
   return 'procedural';
 }
 
-// Pacote-alvo de um modo. Para o procedural, `indice` escolhe no banco —
-// a tela inicial passa um índice sorteado (apresentação); qualquer número
-// resolve por módulo, determinística e defensivamente.
-export function pacoteDoModo(modoId, indice = 0) {
+// Pacote-alvo de um modo (assíncrono — puxa o banco na primeira vez).
+// Para o procedural, `indice` escolhe no banco — a tela inicial passa um
+// índice sorteado (apresentação); qualquer número resolve por módulo,
+// determinística e defensivamente.
+export async function pacoteDoModo(modoId, indice = 0) {
+  if (modoId !== 'replica' && modoId !== 'luta' && modoId !== 'procedural') {
+    return montarPacoteTutorial();
+  }
+  const { CASO_REPLICA, CASOS_POOL, CASOS_LUTA } = await carregarBanco();
   if (modoId === 'replica') return CASO_REPLICA;
   if (modoId === 'luta') {
     const n = CASOS_LUTA.length;
     return CASOS_LUTA[((Math.floor(indice) % n) + n) % n];
   }
-  if (modoId === 'procedural') {
-    const n = CASOS_POOL.length;
-    return CASOS_POOL[((Math.floor(indice) % n) + n) % n];
-  }
-  return montarPacoteTutorial();
+  const n = CASOS_POOL.length;
+  return CASOS_POOL[((Math.floor(indice) % n) + n) % n];
 }
 
-export const TAMANHO_POOL = CASOS_POOL.length;
-export const TAMANHO_POOL_LUTA = CASOS_LUTA.length;
+export const TAMANHO_POOL = IDS_POOL.length;
+export const TAMANHO_POOL_LUTA = IDS_LUTA.length;

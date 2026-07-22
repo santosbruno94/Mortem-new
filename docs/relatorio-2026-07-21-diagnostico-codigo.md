@@ -206,6 +206,18 @@ expressa.
   sobre as frases novas: zero bloqueantes; 3 ALTOS corrigidos (eco "Faltou a
   janela" ainda negava o gesto; dica gêmea do monólogo na mesma tela; variante
   irmã com o mesmo vício) + menores aplicados.
+- **Lote 3 executado** — M1 (marca-espelho pelo método FATAL, a fonte da carta),
+  M3 (guarda anti-tell de corroboração no `qa.mjs`; lote atual com 0 violações),
+  M4 (sal único da psique do forasteiro). Banco re-gerado byte-idêntico (nenhum
+  caso atual tinha troca-com-luta nem forasteiro — correções profiláticas).
+- **Lote 4 executado** — M8–M13 + baixos (cursor, key, imports, comentários do
+  vite.config, `horasChegadaCena`, reentrância do `revisarAcusacao`, vestígio
+  sem dono, minuto 60, interpolação do telegrama).
+- **Lote 5 executado** — banco de casos fora do arranque: `casos.js` decide o
+  modo pelo índice leve (`casos_indice.js`, gerado junto do banco; paridade
+  guardada no `qa.mjs`) e puxa `casos_gerados.js` por `import()` dinâmico;
+  boot do `App.jsx` assíncrono (tutorial resolve sem baixar o banco). Chunk
+  inicial: **1.818 → 403 KB** (gzip 410 → 132 KB). Pendência §4.7 fechada.
 - **Pendências NOVAS de prosa registradas pelo pipeline** (fora do diff, decisão
   do usuário; candidatas a uma sessão de prosa dos ecos):
   1. `ecos_mestre.js` (`janela_sem_sustentacao`): "não a prendeu a carta alguma"

@@ -2174,6 +2174,14 @@ const { montarPacoteGerado, SEED_REPLICA, DIRIGIDO_REPLICA } = await import(
   '../src/gerador/pacote_gerado.js'
 );
 const { CASO_REPLICA, CASOS_POOL, CASOS_LUTA } = await import('../src/data/casos_gerados.js');
+// Paridade índice × banco (Lote 5): casos_indice.js é a versão leve que o
+// chunk de arranque usa para decidir modo/tamanhos sem baixar o banco —
+// divergência = modoDoCaso mentindo (ex.: caso de luta tratado como comarca).
+const indiceCasos = await import('../src/data/casos_indice.js');
+const indiceBancoOk =
+  indiceCasos.REPLICA_ID === CASO_REPLICA.id &&
+  JSON.stringify(indiceCasos.IDS_POOL) === JSON.stringify(CASOS_POOL.map((p) => p.id)) &&
+  JSON.stringify(indiceCasos.IDS_LUTA) === JSON.stringify(CASOS_LUTA.map((p) => p.id));
 
 // (a) Replay byte a byte do arquivo embarcado. A regeneração fica à mão
 // para o cheque (f) da árvore de diálogo (replay chamada a chamada).
@@ -3983,6 +3991,7 @@ const checagens = [
   ['Armadilhas detectadas: âncora destruível, gatilho órfão, rota órfã, silenciar sem prenúncio, saldo negativo — e o caso válido passa (FASE 5)', armadilhasDetectadas],
   ['Prosa sem regressão mecânica (lint-prosa): fórmula, travessões, léxico, exclamações, filtro sensorial, abertura repetida, vocativo', prosaSemRegressao],
   ['Casos embarcados = montador de hoje, byte a byte (réplica dirigida + pool + luta) (FASE 6)', casosEmbarcadosReplay],
+  ['Índice leve = banco (ids da réplica/pool/luta em casos_indice.js) (Lote 5)', indiceBancoOk],
   ['Pacotes gerados íntegros: campos, marcadores↔cartas, blocos contingentes, slots, sem id/rótulo cru (FASE 6)', casosEmbarcadosIntegros],
   ['Casos gerados jogáveis: os 4 perfis produzem os 4 desfechos na réplica, pool e luta (FASE 6)', casosGeradosJogaveis],
   ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],
