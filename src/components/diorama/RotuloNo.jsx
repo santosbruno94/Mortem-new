@@ -1,5 +1,8 @@
 import { formatDuracao } from '../../logic/tempo.js';
-import { obterDialogo } from '../../data/dialogos.js';
+// Lê do PACOTE CORRENTE (não do dialogos.js estático do caso-escola):
+// se um caso gerado reutilizar ids de nó, o verbo sairia do caso errado
+// (diagnóstico 21/07, M8).
+import { obterDialogo } from '../../data/pacote_caso.js';
 import { resumoVisita } from '../../logic/resumoVisita.js';
 import { textoLembreteVisita } from '../../logic/lembreteTexto.js';
 import { useJogo } from '../../store/jogo.js';

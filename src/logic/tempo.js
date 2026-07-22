@@ -38,8 +38,11 @@ function decompor(horaAbsoluta, cal = CALENDARIO_PADRAO) {
 
 export function formatHora(horaAbsoluta, cal = CALENDARIO_PADRAO) {
   const { hora } = decompor(horaAbsoluta, cal);
-  const inteiro = Math.floor(hora);
-  const minutos = Math.round((hora - inteiro) * 60);
+  let inteiro = Math.floor(hora);
+  let minutos = Math.round((hora - inteiro) * 60);
+  // Fração ≥ 0,9917 arredonda a 60 minutos — carrega na hora ("14h00",
+  // nunca "13h60"). Inalcançável com dados em meias horas; blindado.
+  if (minutos === 60) { inteiro = (inteiro + 1) % 24; minutos = 0; }
   return `${String(inteiro).padStart(2, '0')}h${String(minutos).padStart(2, '0')}`;
 }
 
@@ -56,8 +59,9 @@ export function formatRelogio(horasJogo, cal = CALENDARIO_PADRAO) {
 
 // Duração em horas para exibição: 1 → "1h"; 1.5 → "1h30" (nunca decimal).
 export function formatDuracao(horas) {
-  const h = Math.floor(horas);
-  const m = Math.round((horas - h) * 60);
+  let h = Math.floor(horas);
+  let m = Math.round((horas - h) * 60);
+  if (m === 60) { h += 1; m = 0; } // mesma blindagem do formatHora
   return m > 0 ? `${h}h${String(m).padStart(2, '0')}` : `${h}h`;
 }
 

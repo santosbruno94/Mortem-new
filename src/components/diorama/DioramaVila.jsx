@@ -2,7 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { useJogo } from '../../store/jogo.js';
 import { LOCALIDADES } from '../../data/localidades.js';
-import { custoViagem } from '../../data/mapa.js';
+// Custo do PACOTE CORRENTE (não do mapa.js estático do caso-escola): o
+// rótulo 3D tem de mostrar o mesmo custo que o store cobra (M8).
+import { custoViagem } from '../../data/pacote_caso.js';
 import {
   POSICOES_DIORAMA,
   FORMAS_PREDIO,

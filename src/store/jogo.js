@@ -62,8 +62,9 @@ export function estadoInicialCaso() {
     passoAbertura: 0,
 
     // ---------------- Relógio ----------------
+    // (A hora de chegada em si vive no pacote — parametrosCena.horasChegada;
+    // o espelho horasChegadaCena que morava aqui nunca era lido e saiu.)
     horasJogo: horasChegada,
-    horasChegadaCena: horasChegada,
 
     // ---------------- Mapa (o "dia do perito") ----------------
     // O relógio só avança ao VIAJAR entre nós; dentro do local, congela.
@@ -408,7 +409,17 @@ export const useJogo = create(
             telegramaEnviado: { ...s.telegramaEnviado, entregue: true },
             cartasRegistradas: [
               ...s.cartasRegistradas,
-              { id: 'ev_telegrama', localidade: 'delegacia', ...t.resposta, horaRegistro: horaNova },
+              {
+                id: 'ev_telegrama',
+                localidade: 'delegacia',
+                ...t.resposta,
+                // Slots {detective...}/{suspeito:...} resolvem aqui, como em
+                // extrairCarta — sem isto, uma resposta com slot sairia crua.
+                ...(t.resposta.textoDisplay ? { textoDisplay: interpolar(t.resposta.textoDisplay, s.detective) } : {}),
+                ...(t.resposta.carimboPadrao ? { carimboPadrao: interpolar(t.resposta.carimboPadrao, s.detective) } : {}),
+                ...(t.resposta.descricao ? { descricao: interpolar(t.resposta.descricao, s.detective) } : {}),
+                horaRegistro: horaNova,
+              },
             ],
           }
         : {}),
@@ -750,6 +761,9 @@ export const useJogo = create(
   // O perecível ainda não colhido continua degradando nesse intervalo.
   revisarAcusacao: () => {
     const s = get();
+    // Guarda de reentrância: sem veredicto em pé não há o que revisar —
+    // um clique duplo cobrava CUSTO_REVISAO duas vezes (diagnóstico 21/07).
+    if (!s.veredicto) return;
     // FASE 6 — o eco do mestre: da falha que acabou de cair, o legista ganha
     // UMA fala na Caderneta (leitura de método, nunca autoria). Determinístico:
     // varia por caso e por perito, como o monólogo. Sem `ecosDoMestre` no

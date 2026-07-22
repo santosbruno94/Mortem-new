@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useJogo } from '../../store/jogo.js';
 import { estadoRigorPorIpm, estadoLivorPorIpm } from '../../logic/tempo_morte.js';
 import { obterAparencia } from '../../logic/aparencia.js';
@@ -113,13 +113,25 @@ export default function PranchaCorpo({ ipm }) {
   const idLenteClip = 'lente-clip';
   const registrada = (cartaId) => cartasRegistradas.some((c) => c.id === cartaId);
 
+  // A lente re-renderiza o SVG inteiro a cada atualização; o mousemove
+  // dispara mais rápido que o quadro. Um rAF-throttle limita a UM render
+  // por quadro sem mudar o comportamento (diagnóstico 21/07, M10).
+  const lenteAlvo = useRef(null);
+  const rafLente = useRef(0);
+  useEffect(() => () => cancelAnimationFrame(rafLente.current), []);
   function moverLente(ev) {
     const svg = svgRef.current;
     if (!svg) return;
     const r = svg.getBoundingClientRect();
     const px = ev.touches ? ev.touches[0].clientX : ev.clientX;
     const py = ev.touches ? ev.touches[0].clientY : ev.clientY;
-    setLente({ x: ((px - r.left) / r.width) * 620, y: ((py - r.top) / r.height) * 344 });
+    lenteAlvo.current = { x: ((px - r.left) / r.width) * 620, y: ((py - r.top) / r.height) * 344 };
+    if (!rafLente.current) {
+      rafLente.current = requestAnimationFrame(() => {
+        rafLente.current = 0;
+        if (lenteAlvo.current) setLente(lenteAlvo.current);
+      });
+    }
   }
 
   const tituloFigura =

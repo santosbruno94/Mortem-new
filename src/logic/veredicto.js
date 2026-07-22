@@ -108,8 +108,10 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       c.tagsOcultas.pertenceA === acusacao.reuId
   );
   const nexoOk = !!vestigioNexo && acusacao.reuId === seed.reuCorreto;
+  // Só vestígio COM dono conta como traço de terceiro: um vestígio neutro
+  // (sem pertenceA) não pode virar gafe (diagnóstico 21/07).
   const vestigioAcessorioErrado =
-    nexoOk && vestigiosLigados.some((c) => c.tagsOcultas.pertenceA !== acusacao.reuId);
+    nexoOk && vestigiosLigados.some((c) => c.tagsOcultas.pertenceA && c.tagsOcultas.pertenceA !== acusacao.reuId);
   if (vestigiosLigados.length === 0) falhas.push({ codigo: 'sem_nexo' });
   else if (!nexoOk) falhas.push({ codigo: 'nexo_errado' });
   if (nexoOk) acertos.push({ codigo: 'nexo' });
