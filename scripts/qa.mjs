@@ -2296,6 +2296,20 @@ function problemasDoPacoteGerado(pacote) {
   // nem o confronto dela podem falar de arma branca ("casa com a lesão", "sob o
   // rebite", "se lava ferramenta"…). A peça é o VASO do veneno (frasco/papel)
   // ou o pano de abafo. Guarda o furo.
+  // Anti-tell de corroboração (diagnóstico 21/07, M3): o réu jamais pode
+  // ser o ÚNICO suspeito sem carta de corroboração — os portadores de
+  // segredo e o ausente são as iscas que dividem com ele o conjunto "sem
+  // quem responda por si". Se todos os inocentes ganharem corroboração, o
+  // réu fica identificável por eliminação, sem cruzar prova.
+  const reuPct = pacote.verdadeDeOuro?.reuCorreto;
+  if (reuPct) {
+    const semCorroboracao = pacote.suspeitos
+      .map((s) => s.id)
+      .filter((id) => !pacote.cartas.some((c) => c.id === `gen_corrobora_${id}`));
+    if (semCorroboracao.includes(reuPct) && !semCorroboracao.some((id) => id !== reuPct)) {
+      problemas.push('anti-tell M3: o réu é o único suspeito sem corroboração');
+    }
+  }
   const mecPct = pacote.verdadeDeOuro?.mecanismoCorreto || '';
   if (mecPct.startsWith('envenenamento') || mecPct === 'sufocacao') {
     const gi = pacote.cartas.find((c) => c.id === 'gen_instrumento');

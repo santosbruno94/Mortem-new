@@ -531,11 +531,16 @@ export function derivarPsiqueDoCaso({ seed, elenco, assassinoId, vitimaId, cenar
   // 1. Sorteio ortogonal por personagem (OS §4.2).
   const log = { porPessoa: {}, reamostragens: [], falsoDestoanteId: null, regime: null };
   elenco.forEach((pessoa, indice) => {
-    const vetorId = sortearVetor(salBase, indice, pessoa.arquetipo);
+    // O forasteiro foi amostrado no namespace próprio ('forasteiro' —
+    // amostragem.js): re-sortear o vetor dele por índice posicional dava
+    // uma psique descorrelacionada dos atributos que ela mesma gerou
+    // (diagnóstico 21/07, M4). Mesmo índice-sal da amostragem.
+    const indiceSal = pessoa.forasteiro ? 'forasteiro' : indice;
+    const vetorId = sortearVetor(salBase, indiceSal, pessoa.arquetipo);
     log.porPessoa[pessoa.id] = {
       indice,
       vetorId,
-      polaridade: sortearPolaridade(salBase, indice),
+      polaridade: sortearPolaridade(salBase, indiceSal),
       magnitude: magnitudeDesencaixe(vetorId, pessoa.arquetipo),
     };
   });

@@ -448,7 +448,11 @@ export function gerarCasoBruto(seed, opts = {}) {
   // O motor JAMAIS lê — é dado de apresentação para o verbo no diálogo.
   const marcasCorporais = {};
   const temFerimentoReu = crime.vestigios.some((v) => v.classe === 'ferimento_do_agressor');
-  const sinaiDoMetodo = SINAL_POR_METODO[metodoId];
+  // O sinal é do método FATAL (crime.metodoId), nunca do iniciado: com
+  // troca de arma (B4), a carta gen_sinal_exigivel anuncia pelo fatal
+  // (ponte_caso.js) e a marca do réu tem de casar com ela — senão o
+  // circuito sinal→exigir→close descasa (diagnóstico 21/07, M1).
+  const sinaiDoMetodo = SINAL_POR_METODO[crime.metodoId];
   if (temFerimentoReu && sinaiDoMetodo) {
     marcasCorporais[assassino.id] = {
       marca: sinaiDoMetodo.marca,
