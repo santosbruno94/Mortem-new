@@ -868,6 +868,16 @@ function quarteiraoEmFala(rotulo) {
   return `${artigo} ${resto.charAt(0).toLowerCase()}${resto.slice(1)}`;
 }
 
+// O feitio da vila em VOZ DE PROSA (OS Vila Viva E4): a vizinhança lê a
+// morfologia que o gerador desenhou. Observação pura — descreve o traçado,
+// não conclui. A nucleada é o padrão e dispensa a nota (a prosa em volta já
+// pressupõe casario aglomerado).
+function descricaoMorfologia(morfologia) {
+  if (morfologia === 'linear') return 'A vila é uma rua só, e os fundos dos lotes dão para o campo aberto.';
+  if (morfologia === 'de_green') return 'As casas fazem anel em torno do gramado comunal, todas voltadas para o meio.';
+  return '';
+}
+
 // Frases de retrato comportamental por trait/comportamento — nota de
 // observação (gesto), nunca veredicto (guia §2). Três variantes por trait,
 // de armação variada, para a MESMA tela de suspeitos não repetir retrato
@@ -1680,6 +1690,12 @@ function montarLocalidades(bruto, cartas) {
       : 'As casas em volta, as janelas que dão para a rua',
     acoesEspeciais: [],
     prosa: [
+      // E4 (OS Vila Viva): a vizinhança lê a morfologia da vila (linear/de
+      // green trazem uma nota de traçado; nucleada dispensa). Observação
+      // pura — só em cena interna, onde há vizinhança de rua a descrever.
+      ...(!externo && descricaoMorfologia(retrato.cidade.morfologia)
+        ? [descricaoMorfologia(retrato.cidade.morfologia)]
+        : []),
       // E2 (OS Vila Viva): a vizinhança descreve a vila que o gerador
       // construiu — o quarteirão da cena e quem mora parede-meia (o mesmo
       // elenco que o motor conta como ouvinte/álibi). Fair play: só

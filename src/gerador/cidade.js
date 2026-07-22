@@ -113,6 +113,62 @@ const TRACADO = [
 // trabalhador, de 4 a 6 conforme a seed.
 const RUELA = { quarteirao: 'ruela_dos_cottages', z: 1.8, x0: -0.6, passo: 0.9, minimo: 4, maximo: 6 };
 
+// ---------------------------------------------------------------------
+// MORFOLOGIAS DA VILA (OS Vila Viva E4) — a mesma vila (mesmos prédios,
+// mesmos quarteirões, mesmos logradouros ancorados) desenhada em três
+// traçados da KB (urbanismo-e-morfologia.md §1), escolhidos por seed:
+//   • nucleada — o casario aglomerado do TRACADO acima (padrão histórico);
+//   • linear   — a "street village": tudo esticado ao longo de UMA rua,
+//                em duas fileiras que se encaram; a orla no extremo, após
+//                o vão de campo (fundo de lote dá no campo);
+//   • de_green — casas em anel em torno do gramado comunal vazio (o vazio
+//                central É o centro; igreja e pub se encaram por cima dele).
+// Só as COORDENADAS mudam: tipo, quarteirão e ancoragem de logradouro são
+// invariantes, então o regime-palco (moeda 70/20/10 + tipo do prédio da
+// rotina) não se move. O que muda é a `adjacencias` por distância — a
+// malha de avistamentos, que a E2 lê. Densidade calibrada para a banda da
+// nucleada (relatório espacial v1). Logradouros colados ao prédio-mãe.
+// ---------------------------------------------------------------------
+export const MORFOLOGIAS = ['nucleada', 'linear', 'de_green'];
+
+// LINEAR: fita poente→nascente. Fileira norte (z≈−0,85) e sul (z≈+0,95),
+// rua larga (o casario se encara mas a rua real afasta as fileiras),
+// passo ~1,2 na rua; a orla no nascente após o vão de campo.
+const POS_LINEAR = {
+  igreja: { x: -5.3, z: -0.85 }, vicarage: { x: -4.1, z: -0.85 }, delegacia: { x: -2.9, z: -0.85 },
+  botica: { x: -1.7, z: -0.85 }, mercearia: { x: -0.5, z: -0.85 }, escola: { x: 0.7, z: -0.85 },
+  solar: { x: -5.1, z: 0.95 }, capela: { x: -3.9, z: 0.95 }, pub: { x: -2.7, z: 0.95 },
+  casa_do_medico: { x: -1.5, z: 0.95 }, forja: { x: -0.3, z: 0.95 },
+  granja: { x: 4.0, z: 0.95 }, moinho: { x: 4.9, z: -0.85 }, estacao: { x: 5.4, z: 0.95 },
+  adro_da_igreja: { x: -4.7, z: 0.05 }, patio_da_granja: { x: 4.0, z: 1.9 }, caminho_do_acude: { x: 4.9, z: -1.85 },
+};
+const RUELA_LINEAR = { quarteirao: 'ruela_dos_cottages', z: 1.9, x0: -4.0, passo: 0.8, minimo: 4, maximo: 6 };
+
+// DE GREEN: anel elíptico em torno do gramado (centro vazio). Prédios
+// ordenados pela borda; igreja (poente-norte) e pub (poente-sul) se
+// encaram por cima do green; a orla ocupa o arco nascente.
+const POS_GREEN = {
+  solar: { x: -3.8, z: -1.6 }, igreja: { x: -2.6, z: -2.0 }, vicarage: { x: -1.3, z: -2.05 },
+  delegacia: { x: 0.0, z: -2.05 }, botica: { x: 1.3, z: -1.95 }, escola: { x: 2.5, z: -1.6 },
+  granja: { x: 3.6, z: -0.9 }, moinho: { x: 4.3, z: 0.2 }, estacao: { x: 4.0, z: 1.3 },
+  mercearia: { x: 2.7, z: 1.75 }, forja: { x: 1.4, z: 2.0 }, casa_do_medico: { x: 0.1, z: 2.05 },
+  pub: { x: -1.2, z: 2.0 }, capela: { x: -2.6, z: 1.7 },
+  adro_da_igreja: { x: -2.6, z: -1.35 }, patio_da_granja: { x: 4.3, z: -1.0 }, caminho_do_acude: { x: 4.95, z: -0.5 },
+};
+const RUELA_GREEN = { quarteirao: 'ruela_dos_cottages', z: 0.9, x0: -3.4, passo: 0.9, minimo: 4, maximo: 6 };
+
+// Posição-base de um lote na morfologia dada (nucleada = o próprio TRACADO).
+function posDoLote(morfologia, lote) {
+  if (morfologia === 'linear') return POS_LINEAR[lote.tipo] || { x: lote.x, z: lote.z };
+  if (morfologia === 'de_green') return POS_GREEN[lote.tipo] || { x: lote.x, z: lote.z };
+  return { x: lote.x, z: lote.z };
+}
+function ruelaDaMorfologia(morfologia) {
+  if (morfologia === 'linear') return RUELA_LINEAR;
+  if (morfologia === 'de_green') return RUELA_GREEN;
+  return RUELA;
+}
+
 const ROTULOS_QUARTEIRAO = {
   adro: 'O adro da igreja',
   parque_do_solar: 'O parque do solar',
@@ -131,14 +187,18 @@ function salDaSeed(seed) {
 }
 
 // A cidade de uma seed. Mesma seed → mesmo objeto, byte a byte.
-export function gerarCidade(seed) {
+// `morfForcada` (opcional) fixa a morfologia — só para medição/QA; em
+// produção a seed escolhe (nenhuma regra de runtime chama isto).
+export function gerarCidade(seed, morfForcada = null) {
   const sal = `${salDaSeed(seed)}|cidade`;
+  const morfologia = morfForcada || MORFOLOGIAS[hashString(`${sal}|morfologia`) % MORFOLOGIAS.length];
   const predios = [];
 
   for (const lote of TRACADO) {
     const tipo = TIPOS_PREDIO[lote.tipo];
     // Prédio opcional: metade das seeds o tem (sorteio por prédio).
     if (tipo.opcional && hashString(`${sal}|${lote.tipo}|existe`) % 2 !== 0) continue;
+    const base = posDoLote(morfologia, lote);
     predios.push({
       id: lote.tipo,
       tipo: lote.tipo,
@@ -146,25 +206,26 @@ export function gerarCidade(seed) {
       quarteirao: lote.quarteirao,
       ...(lote.logradouro ? { logradouro: true } : {}),
       pos: {
-        x: Math.round((lote.x + jitter(`${sal}|${lote.tipo}|jx`, lote.logradouro ? 0.02 : 0.16)) * 100) / 100,
-        z: Math.round((lote.z + jitter(`${sal}|${lote.tipo}|jz`, lote.logradouro ? 0.02 : 0.12)) * 100) / 100,
+        x: Math.round((base.x + jitter(`${sal}|${lote.tipo}|jx`, lote.logradouro ? 0.02 : 0.16)) * 100) / 100,
+        z: Math.round((base.z + jitter(`${sal}|${lote.tipo}|jz`, lote.logradouro ? 0.02 : 0.12)) * 100) / 100,
       },
       forma: amostrarForma(lote.tipo, `${sal}|${lote.tipo}|forma`),
     });
   }
 
-  // A ruela dos cottages.
-  const nCottages = RUELA.minimo + (hashString(`${sal}|cottages|n`) % (RUELA.maximo - RUELA.minimo + 1));
+  // A ruela dos cottages (fileira própria à morfologia).
+  const ruela = ruelaDaMorfologia(morfologia);
+  const nCottages = ruela.minimo + (hashString(`${sal}|cottages|n`) % (ruela.maximo - ruela.minimo + 1));
   for (let i = 0; i < nCottages; i++) {
     const id = `cottage_${i + 1}`;
     predios.push({
       id,
       tipo: 'cottage',
       rotulo: `Cottage nº ${i + 1}`,
-      quarteirao: RUELA.quarteirao,
+      quarteirao: ruela.quarteirao,
       pos: {
-        x: Math.round((RUELA.x0 + i * RUELA.passo + jitter(`${sal}|${id}|jx`, 0.12)) * 100) / 100,
-        z: Math.round((RUELA.z + jitter(`${sal}|${id}|jz`, 0.14)) * 100) / 100,
+        x: Math.round((ruela.x0 + i * ruela.passo + jitter(`${sal}|${id}|jx`, 0.12)) * 100) / 100,
+        z: Math.round((ruela.z + jitter(`${sal}|${id}|jz`, 0.14)) * 100) / 100,
       },
       forma: amostrarForma('cottage', `${sal}|${id}|forma`),
     });
@@ -202,7 +263,7 @@ export function gerarCidade(seed) {
     diorama.formas[p.id] = p.forma;
   }
 
-  return { seed: salDaSeed(seed), quarteiroes, predios, adjacencias, diorama };
+  return { seed: salDaSeed(seed), morfologia, quarteiroes, predios, adjacencias, diorama };
 }
 
 // Acessores de consulta (leitura de dado, sem regra).

@@ -29,7 +29,9 @@ import { gerarInterior } from './interiores.js';
 //     segundo (endereços que sempre existem).
 export function gerarMundo(seed, opts = {}) {
   const n = opts.n ?? 8;
-  const cidade = gerarCidade(seed);
+  // opts.morfologia: fixa a morfologia da vila — só para medição/QA
+  // (relatório espacial por morfologia). Em produção a seed escolhe.
+  const cidade = gerarCidade(seed, opts.morfologia || null);
   const elenco = inserirElenco(cidade, gerarElenco(seed, n), seed);
   const grafoAvistamentos = derivarGrafoAvistamentos(cidade, elenco);
 
