@@ -55,6 +55,7 @@ import { HORAS_CHEGADA_INTERNO } from './ponte_caso.js';
 import { derivarDialogos, formasDoLugar, profissaoExibida, FAIXA_CURTA, variante } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 import { obterPredio, saoAdjacentes } from './cidade.js';
+import { VOCABULARIO_DA_CLASSE } from './espaco.js';
 
 // ---------------------------------------------------------------------
 // A RÉPLICA do caso-escola (modo 2): seed fixa + variáveis dirigidas que
@@ -1264,6 +1265,69 @@ function retratoDaVila(bruto, cartas, pessoas) {
 }
 
 // ---------------------------------------------------------------------
+// ASSIMETRIA DE MOBÍLIA (OS Vila Viva E3): "o cômodo conta quem a pessoa
+// era". Uma frase de LEITURA SOCIAL da casa da vítima, escolhida no build
+// deterministicamente e ancorada em flags que o gerador já computou — a
+// CLASSE da vítima (o degrau de mobília, via VOCABULARIO_DA_CLASSE) e, só
+// quando o móbil do caso é de HERANÇA (a vítima tinha o que herdar), uma
+// peça de melhor feitio. É OBSERVAÇÃO PURA (guia §2): descreve o objeto,
+// não conclui. Camada narrativa — sem carta, sem [[id]], sem tagsOcultas:
+// o motor jamais a lê (mesma cegueira das aparências). Corrobora textura,
+// nunca prova, e nunca é a única via para uma dedução (fair play E3).
+// Fonte do vocabulário: docs/kb-mundo-vitoriano/mobiliario-por-classe.md.
+// ---------------------------------------------------------------------
+const MOTIVO_DE_HERANCA = new Set(['heranca', 'dote', 'propriedade_da_esposa', 'recasamento_vigiado']);
+const ASSIMETRIA_MOBILIA = {
+  trabalhadora: {
+    classe: [
+      'Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala.',
+      'A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro.',
+      'O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente.',
+    ],
+    heranca: [
+      'Entre a mobília gasta está um relógio de caixa alta, de feitio melhor que tudo à volta.',
+      'A cama é de armação boa, lavrada, no meio do resto surrado.',
+    ],
+  },
+  media: {
+    classe: [
+      'A louça boa fica no aparador da sala da frente, e os retratos, na mesma parede.',
+      'O piano ocupa a sala, de tampa fechada e sem partituras à vista.',
+      'O relógio da família e a estante de livros dividem a sala com as cadeiras do serão.',
+    ],
+    heranca: [
+      'Sobre o aparador, a prataria traz um monograma de outra família.',
+      'A cômoda do quarto é de mogno lavrado, de fatura acima do resto da casa.',
+    ],
+  },
+  alta: {
+    classe: [
+      'A régua de sinos etiquetados ordena a cozinha; cada aposento tem a sua chamada.',
+      'A prataria e a louça ficam no aparador de mogno da sala comprida, sob o puxador de sino.',
+      'Os retratos da linhagem cobrem a parede da sala, do teto à altura do ombro.',
+    ],
+    heranca: [
+      'A prataria do aparador traz o brasão de outra casa.',
+      'O relógio de pé do hall e a cama de dossel curto guardam-se intactos, de outra geração.',
+    ],
+  },
+};
+
+function assimetriaDaMobilia(bruto) {
+  const { crime, escolha, mundo } = bruto;
+  if (escolha.palco && escolha.palco.externo) return null; // palco a céu aberto não lê morador
+  const pessoas = indicePorId(mundo.elenco);
+  const vitima = pessoas.get(crime.vitimaId);
+  // Só a CASA da vítima lê a vítima (no serviço/loja a mobília é de outrem).
+  if (!vitima || !vitima.pacoteEspacial || vitima.pacoteEspacial.moradia !== escolha.localId) return null;
+  const tier = VOCABULARIO_DA_CLASSE[vitima.classeSocial] || 'trabalhadora';
+  const assassino = pessoas.get(crime.assassinoId);
+  const categoria = assassino && MOTIVO_DE_HERANCA.has(assassino.motivoPotencial) ? 'heranca' : 'classe';
+  const pool = ASSIMETRIA_MOBILIA[tier][categoria];
+  return pool[hashString(`${bruto.seed}|assimetria|mobilia`) % pool.length];
+}
+
+// ---------------------------------------------------------------------
 // Localidades: prosa com os marcadores [[id]] de todas as cartas, mais os
 // blocos contingentes da interferência ({ eventoId, quando, paragrafos }).
 // ---------------------------------------------------------------------
@@ -1289,6 +1353,9 @@ function montarLocalidades(bruto, cartas) {
   // OS Vila Viva E2: os fatos da vila gerada que a prosa das localidades
   // passa a mostrar (ruela, vizinhos parede-meia, distâncias).
   const retrato = retratoDaVila(bruto, cartas, pessoas);
+  // OS Vila Viva E3: a leitura social da casa da vítima (null fora da casa
+  // dela ou em palco externo). Camada narrativa — o motor jamais a lê.
+  const leituraDaMobilia = assimetriaDaMobilia(bruto);
   const fraseDescoberta =
     externo && palco.descoberta
       ? `${palco.descoberta.descobridorId ? nome(palco.descoberta.descobridorId) : 'Um transeunte'} deu com ${
@@ -1523,6 +1590,8 @@ function montarLocalidades(bruto, cartas) {
         externo ? 'canto a canto' : 'cômodo a cômodo'
       }.`,
       ...(fraseDescoberta ? [fraseDescoberta] : []),
+      // E3: a casa da vítima lida pela mobília (leitura social, não pista).
+      ...(leituraDaMobilia ? [leituraDaMobilia] : []),
     ],
     pontos: pontosCena,
     // E1 (OS Vila Viva): a planta projetada do grid (mesmo schema de

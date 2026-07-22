@@ -566,7 +566,8 @@ export const CASO_REPLICA = {
    "subtitulo": "Onde Albert Hall foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 3 guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "O Cottage nº 3 guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
     {
@@ -2365,7 +2366,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Charles Harris foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Moinho guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "O Moinho guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O piano ocupa a sala, de tampa fechada e sem partituras à vista."
    ],
    "pontos": [
     {
@@ -5665,7 +5667,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde William Harris foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A louça boa fica no aparador da sala da frente, e os retratos, na mesma parede."
    ],
    "pontos": [
     {
@@ -8953,7 +8956,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Reuben Brown foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro."
    ],
    "pontos": [
     {
@@ -10770,7 +10774,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde John Ward foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala."
    ],
    "pontos": [
     {
@@ -12678,7 +12683,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Henry Turner foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
     {
@@ -14482,7 +14488,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Eleanor Barnes foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 4 guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+    "O Cottage nº 4 guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro."
    ],
    "pontos": [
     {
@@ -16159,7 +16166,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Fanny Mills foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 2 guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+    "O Cottage nº 2 guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala."
    ],
    "pontos": [
     {
@@ -17919,7 +17927,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Amos Read foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro."
    ],
    "pontos": [
     {
@@ -21506,7 +21515,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde William Mills foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 3 guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "O Cottage nº 3 guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala."
    ],
    "pontos": [
     {
@@ -25151,7 +25161,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Ezra Taylor foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O piano ocupa a sala, de tampa fechada e sem partituras à vista."
    ],
    "pontos": [
     {
@@ -26867,7 +26878,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Harry Andrews foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A louça boa fica no aparador da sala da frente, e os retratos, na mesma parede."
    ],
    "pontos": [
     {
@@ -28528,7 +28540,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Herbert Jones foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Posto do Constable guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "O Posto do Constable guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
     {
@@ -32052,7 +32065,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Florence Jones foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "A cama é de armação boa, lavrada, no meio do resto surrado."
    ],
    "pontos": [
     {
@@ -33704,7 +33718,8 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Jane Wright foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo."
+    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "Os retratos da linhagem cobrem a parede da sala, do teto à altura do ombro."
    ],
    "pontos": [
     {
@@ -45325,7 +45340,8 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Edward Carter foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 6 guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "O Cottage nº 6 guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala."
    ],
    "pontos": [
     {
