@@ -18,6 +18,7 @@
 // =====================================================================
 
 import { calcularJanelaMorte } from './cronos.js';
+import { LARGURA_JANELA_PRECISA } from './veredicto.js';
 import { mecanismoCravado, obterCausa } from '../data/catalogo_causas.js';
 import { formatJanela } from './tempo.js';
 import { ROTULOS_INSTRUMENTO } from '../data/rotulos.js';
@@ -40,14 +41,15 @@ export function lerCorpo(cartas) {
   return { janela, causaId: causa ? causa.id : null, instrumento, livorFixoNaPosicao };
 }
 
-// Uma janela é "precisa" quando tem início e fim finitos e largura ≤ 6h —
-// o mesmo limiar que o tribunal usa (veredicto.js).
+// Uma janela é "precisa" quando tem início e fim finitos e largura dentro
+// do limiar do tribunal — a MESMA constante do veredicto (fonte única):
+// ajustar lá ajusta aqui, e o mestre nunca assina o que o tribunal rejeita.
 function janelaPrecisa(janela) {
   return (
     !!janela &&
     janela.inicio !== -Infinity &&
     janela.fim !== Infinity &&
-    janela.fim - janela.inicio <= 6
+    janela.fim - janela.inicio <= LARGURA_JANELA_PRECISA
   );
 }
 

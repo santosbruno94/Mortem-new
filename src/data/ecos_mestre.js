@@ -23,10 +23,10 @@
 export const ECOS_MESTRE_TUTORIAL = {
   titulo: 'A voz do mestre',
   porCodigo: {
-    // Quando — o perito não cravou hora nenhuma.
+    // Quando — hora não afirmada, ou afirmada sem carta que a prenda.
     sem_janela: [
-      'O senhor levou o caso a julgamento sem firmar a hora da morte. O corpo tinha o que dizer sobre isso, e ficou por ouvir.',
-      'Faltou a janela. Antes do nome e do meio, vem o quando — e o quando o senhor deixou em branco.',
+      'O senhor levou o caso a julgamento sem tirar do corpo a hora da morte. O corpo tinha o que dizer sobre isso, e ficou por ouvir.',
+      'Faltou firmar a janela. Antes do nome e do meio, vem o quando — e o quando o senhor não prendeu a sinal nenhum.',
     ],
     // Quando — a janela firmada não abarca a hora que o corpo aponta.
     janela_nao_cobre: [

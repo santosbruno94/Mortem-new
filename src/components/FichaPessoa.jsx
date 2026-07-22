@@ -1,5 +1,5 @@
 import { useJogo } from '../store/jogo.js';
-import { obterSuspeito, obterDialogos } from '../data/pacote_caso.js';
+import { obterSuspeito, obterDialogos, obterDefinicaoCarta } from '../data/pacote_caso.js';
 import { interpolar } from '../logic/interpolar.js';
 import {
   todasCartasDaPessoa,
@@ -178,9 +178,16 @@ function BotaoCarta({ carta, aoClicar }) {
   );
 }
 
-// Remove marcadores [[id]] da prosa para exibição plana (a ficha não extrai).
+// Achata marcadores [[id]] para exibição plana (a ficha não extrai): o
+// marcador vira o textoDisplay da carta, como na prosa viva — apagá-lo
+// mutilava a frase ("…sem procurar nenhuma: .") (diagnóstico 21/07, A4).
 function limparMarcadores(texto) {
-  return texto.replace(/\[\[[^\]]+\|([^\]]+)\]\]/g, '$1').replace(/\[\[[^\]]+\]\]/g, '');
+  return texto
+    .replace(/\[\[[^\]|]+\|([^\]]+)\]\]/g, '$1')
+    .replace(/\[\[([^\]]+)\]\]/g, (marcador, id) => {
+      const def = obterDefinicaoCarta(id);
+      return def?.textoDisplay || def?.estados?.[0]?.textoDisplay || '';
+    });
 }
 
 // Deduplica cartas por id.

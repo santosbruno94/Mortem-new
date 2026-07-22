@@ -7,7 +7,7 @@
 // conclusão é entregue — a ficha é QOL (organização de material colhido).
 // =====================================================================
 
-import { obterDialogos, obterSuspeitos, obterSuspeito } from '../data/pacote_caso.js';
+import { obterDialogos, obterSuspeitos, obterSuspeito, obterVerdadeDeOuro } from '../data/pacote_caso.js';
 
 // Quais suspeitos possuem árvore de diálogo (o elenco interrogável).
 export function suspeitosComDialogo() {
@@ -90,9 +90,17 @@ export function oQueOutrosDizem(suspeitoId, nosVisitadosDialogo) {
   if (!alvo) return [];
   const nome = alvo.nome;
   const partes = nome.split(' ');
-  const termosBusca = partes.length > 1
-    ? [nome, partes[partes.length - 1]]
-    : [nome];
+  // O sobrenome isolado só vira termo de busca se NÃO for ambíguo no caso:
+  // no caso-escola a vítima (Geoffrey Arthurs) partilha o sobrenome do
+  // suspeito Walter Arthurs, e toda menção ao morto caía no dossiê do vivo
+  // (diagnóstico 21/07, M14).
+  const sobrenome = partes.length > 1 ? partes[partes.length - 1] : null;
+  const vitimaNome = obterVerdadeDeOuro()?.vitima || '';
+  const sobrenomeAmbiguo =
+    !!sobrenome &&
+    (vitimaNome.includes(sobrenome) ||
+      obterSuspeitos().some((s) => s.id !== suspeitoId && s.nome.includes(sobrenome)));
+  const termosBusca = sobrenome && !sobrenomeAmbiguo ? [nome, sobrenome] : [nome];
   const dialogos = obterDialogos();
   const resultado = [];
   for (const chave of Object.keys(dialogos)) {

@@ -195,3 +195,26 @@ linhas; cursor sem cleanup no `Predio.jsx`; `key={op.rotulo}` fraca no
 
 Nenhuma correção foi aplicada neste diagnóstico; cada lote acima aguarda ordem
 expressa.
+
+---
+
+## 8. Execução (ordem do usuário de 22/07: "prosseguir com todas")
+
+- **Lote 1 executado** — commit "Lote 1 do diagnóstico" (A1, A2, A3, M2; casos
+  re-gerados; build/qa/qa-ui verdes).
+- **Lote 2 executado** — M5, M6, M7, A4, M14. Pipeline `revisar-prosa` rodado
+  sobre as frases novas: zero bloqueantes; 3 ALTOS corrigidos (eco "Faltou a
+  janela" ainda negava o gesto; dica gêmea do monólogo na mesma tela; variante
+  irmã com o mesmo vício) + menores aplicados.
+- **Pendências NOVAS de prosa registradas pelo pipeline** (fora do diff, decisão
+  do usuário; candidatas a uma sessão de prosa dos ecos):
+  1. `ecos_mestre.js` (`janela_sem_sustentacao`): "não a prendeu a carta alguma"
+     descreve o gesto errado — esse código só dispara com cartas ligadas que
+     CONTRADIZEM a janela (zero cartas cai em `sem_janela`).
+  2. `ecos_mestre.js` (`nexo_acessorio`): "vestígio que não é do meio da morte"
+     ≠ critério real (`pertenceA !== reuId` — pode casar com o meio e ser de
+     terceiro).
+  3. `ecos_mestre.js` (`reu_errado`): "o homem que o senhor levou ao banco" — o
+     acusado pode ser mulher já no tutorial.
+  4. `monologo.js`: frases de falha abrem majoritariamente com "Não…" — em
+     desfecho com 3+ falhas, monotonia de abertura (guia §4.9).

@@ -22,7 +22,7 @@ const DICAS_TUTORIAL = {
     primeira: 'A minha cadeia não se firma: falta ancorá-la em sinais do corpo de real valor pericial, não nos inconclusivos.',
   },
   sem_janela: {
-    primeira: 'Não fixei a hora da morte. Tenho de afirmar a janela e puxar a ela o rigor, o livor, o algor, o visto com vida.',
+    primeira: 'A hora da morte segue sem apoio nos sinais do corpo. Tenho de afirmar a janela e puxar a ela o rigor, o livor, o algor, o visto com vida.',
   },
   janela_nao_cobre: {
     primeira: 'Errei a hora do óbito: a janela que fixei não a alcança. Reúno os sinais colhidos a tempo e refaço a datação.',
