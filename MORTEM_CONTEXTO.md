@@ -625,8 +625,11 @@ validado contra `docs/kb-medicina-legal/`.
 
 ## 10. Tempo e Degradação (relógio MOLE)
 
-- Relógio global em horas (`horasJogo`), chegada às **11:00** (`horasChegadaCena: 11`,
-  imutável).
+- Relógio global em horas (`horasJogo`). A **hora de chegada vem do pacote**
+  (`parametrosCena.horasChegada` — fonte única desde o diagnóstico de 21/07): **13h00**
+  no caso-escola, **11h00** nos casos gerados de palco interno
+  (`HORAS_CHEGADA_INTERNO`, `src/gerador/ponte_caso.js`), variável no palco externo
+  (descoberta + 2–4h, teto 13h).
 - **Custa tempo:** só **VIAJAR** entre nós do mapa (`viajarPara`; custos em
   `src/data/mapa.js` — dentro da vila 1h; Moorford 1h30 por trecho, 3h ida e volta).
   Dentro do local, o relógio congela.
@@ -775,7 +778,9 @@ oferece quatro modos: (1) **A Hora Emprestada**, o caso-escola artesanal, intoca
 dirigidas — ver `src/gerador/pacote_gerado.js`); (3) **Um Caso da Comarca**, um caso
 aleatório de um banco de **20 casos** pré-gerados em build time
 (`src/data/casos_gerados.js`, regenerável por `npm run gerar:casos` e conferido byte a
-byte pelo QA); (4) **A Marca do Agressor**, um caso da comarca onde a luta corporal é
+byte pelo QA; o banco fica **fora do chunk de arranque** — chega por `import()`
+dinâmico via `src/data/casos.js`, com o índice leve `casos_indice.js` respondendo a
+camada síncrona); (4) **A Marca do Agressor**, um caso da comarca onde a luta corporal é
 certa — o corpo da vítima sempre anuncia a marca-espelho, garantindo o verbo "Exigir
 que mostre" (banco de **10 casos**, namespace `luta_*`, filtrado por presença de
 `gen_sinal_exigivel` e validado tanto estática quanto interativamente). Nos modos
@@ -954,6 +959,9 @@ expansão futura, em `docs/kb-medicina-legal/lacunas.md` (expansão é decisão 
 módulos JS · lógica determinística em funções puras · zero chamadas de rede em runtime ·
 3D com **three.js + @react-three/fiber v8 + drei v9** (versões EXATAS no package.json —
 fiber v9/drei v10 exigem React 19), carregado por chunk lazy; do drei, só o `<Html>`.
+O **banco de casos gerados** também é chunk lazy (diagnóstico 21/07, Lote 5): o arranque
+carrega só o índice leve (`casos_indice.js`); os pacotes chegam por `import()` na
+primeira vez que um caso gerado é pedido (arranque de 1.818 → 403 KB).
 
 **Estrutura de pastas:**
 ```
@@ -978,13 +986,15 @@ src/
                 Caderneta · TelaPersonagem · TermometroCorpo · Abertura · Overlay ·
                 CartaMesa · RelogioBolso · RetratoPersonagem · Cena3DBoundary ·
                 diorama/ (DioramaVila · Predio · RotuloNo) ·
-                corpo3d/ (CorpoCanvas · CorpoModelo · HotspotCorpo)
+                corpo3d/ (PranchaCorpo — a prancha de atlas em SVG; o cadáver 3D
+                foi aposentado pelo pivô Gabinete Ilustrado e os arquivos removidos)
 ```
 
 **Convenções:**
-- Estado central: `faseJogo`, `detective`, `horasJogo`, `horasChegadaCena`,
+- Estado central: `faseJogo`, `detective`, `horasJogo`,
   `localidadeAtual`, `nosDesbloqueados`, `cartasRegistradas`, `conclusoes`, `acusacao`,
-  `log`, `temperaturaMedida`.
+  `log`, `temperaturaMedida`. (A hora de chegada vive no pacote —
+  `parametrosCena.horasChegada`.)
 - `conclusoes` guarda **só** a leitura do legista (`origem: 'mestre'`), exibida como
   dica — não vincula o veredicto.
 - Determinismo: `Math.random()`/`Date.now()` proibidos em `src/logic|data|store`

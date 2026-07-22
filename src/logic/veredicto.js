@@ -22,7 +22,10 @@ import {
   segredoRevelado,
 } from './acusacao.js';
 
-const LARGURA_JANELA_PRECISA = 6; // horas: acima disso, a janela é "estimativa frouxa"
+// Horas: acima disso, a janela é "estimativa frouxa". FONTE ÚNICA do
+// limiar — a fala do mestre (falaDoMestre.js) importa daqui para nunca
+// assinar janela que o tribunal rejeita (diagnóstico 21/07, M7).
+export const LARGURA_JANELA_PRECISA = 6;
 
 // Duas janelas se sobrepõem?
 function janelasIntersectam(a, b) {
@@ -105,8 +108,10 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       c.tagsOcultas.pertenceA === acusacao.reuId
   );
   const nexoOk = !!vestigioNexo && acusacao.reuId === seed.reuCorreto;
+  // Só vestígio COM dono conta como traço de terceiro: um vestígio neutro
+  // (sem pertenceA) não pode virar gafe (diagnóstico 21/07).
   const vestigioAcessorioErrado =
-    nexoOk && vestigiosLigados.some((c) => c.tagsOcultas.pertenceA !== acusacao.reuId);
+    nexoOk && vestigiosLigados.some((c) => c.tagsOcultas.pertenceA && c.tagsOcultas.pertenceA !== acusacao.reuId);
   if (vestigiosLigados.length === 0) falhas.push({ codigo: 'sem_nexo' });
   else if (!nexoOk) falhas.push({ codigo: 'nexo_errado' });
   if (nexoOk) acertos.push({ codigo: 'nexo' });

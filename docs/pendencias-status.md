@@ -121,7 +121,7 @@ Cada uma é uma **ordem de serviço própria**. Não executadas nesta sessão.
 | 4.4 Expor `?flat=1` na tela-título | Alta/Baixo | ✅ Já resolvido (botão "Modo leve (2D)") |
 | 4.5 Rebalancear ritmo da investigação | Médio | ⏭️ Sessão de design (decisão ativa no meio do jogo) |
 | 4.6 Revisar tom do bloco "O QUE FALTOU" | Médio | ⏭️ Prosa (pipeline `revisar-prosa`) |
-| 4.7 Code-splitting do chunk three.js (819 KB) | Médio | ⏭️ Técnico, concreto — disponível quando o usuário ordenar |
+| 4.7 Code-splitting do chunk three.js (819 KB) | Médio | ✅ Feito (22/07/2026, diagnóstico Lote 5): o three.js já estava fora do arranque (chunk lazy do diorama); o peso real era o banco de casos (1,8 MB) embarcado no chunk inicial — agora chega por `import()` dinâmico (`casos.js` + índice leve `casos_indice.js`), arranque de 1.818→403 KB |
 | 4.8 Playtest manual em largura mobile real | Baixa | ⏭️ Sessão própria (playtest humano) |
 | 4.9 Destacar "Perguntas ao Delegado" | Baixa | ✅ Já resolvido (dica + `data-perguntas-pendentes`) |
 | 4.10 Convite de replay ao fechar o caderno | Baixa | ✅ Já resolvido (`data-convite-replay`) |

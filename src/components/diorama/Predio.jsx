@@ -70,6 +70,8 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
   const grupo = useRef();
   const lampadas = useRef([]);
   const [hover, setHover] = useState(false);
+  // Cleanup do cursor no unmount (par do onPointerOver abaixo).
+  useEffect(() => () => { document.body.style.cursor = ''; }, []);
   // A vila respira com a hora (Onda 9): janelas acendem por faixa horária
   // (determinístico, hash por prédio+índice) e a chaminé fumega nas horas
   // frias. Leitura de apresentação — o motor não participa.
@@ -140,6 +142,9 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
         e.stopPropagation();
         if (!interativo) return;
         setHover(true);
+        // O cursor volta ao normal no unmount também (efeito abaixo):
+        // sem isso, perder o canvas com o ponteiro em cima deixava a
+        // página inteira com cursor "pointer".
         document.body.style.cursor = 'pointer';
         invalidate();
       }}

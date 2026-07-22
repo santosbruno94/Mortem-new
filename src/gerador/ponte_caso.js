@@ -48,11 +48,15 @@ import { METODOS } from './metodos.js';
 import { SEDE_LEGIVEL } from './vestigios.js';
 import { SINAL_POR_METODO } from './marcas_exigiveis.js';
 
-// Hora de chegada padrão do perito à cena (mesma convenção do
-// caso-escola: 13h00 do dia 14/out na escala absoluta — src/logic/
-// tempo.js). E2: o palco EXTERNO tem descoberta própria e chegada
-// variável (caso.js §4.6) — vem por parâmetro; o interno segue no padrão.
-const HORAS_CHEGADA = 13;
+// Hora de chegada do perito ao palco INTERNO — FONTE ÚNICA (diagnóstico
+// 21/07, A3): é o MESMO valor gravado em parametrosCena.horasChegada do
+// pacote (pacote_gerado.js) e usado pelo juízo R2 da interferência. Antes
+// havia três valores divergentes (13 aqui, 11 no pacote, 11 na
+// interferência), o que inflava horasMorteAntesChegada em 2h no interno e
+// fazia o runtime obter dois IPMs para o mesmo instante. E2: o palco
+// EXTERNO tem descoberta própria e chegada variável (caso.js §4.6) — vem
+// por parâmetro.
+export const HORAS_CHEGADA_INTERNO = 11;
 
 // A fatia forense de um crime resolvido: { verdadeDeOuro, cartas }.
 // JSON puro, serializável — o mesmo contrato do pacote de caso.
@@ -65,7 +69,7 @@ export function fatiaForenseDoCrime({
   mundo,
   crime,
   testemunhaVistoVivoId = null,
-  horasChegada = HORAS_CHEGADA,
+  horasChegada = HORAS_CHEGADA_INTERNO,
   chamariz = null,
 }) {
   const metodo = METODOS[crime.metodoId];

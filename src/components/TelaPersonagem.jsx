@@ -40,15 +40,17 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
   // camada de apresentação (Math.random permitido fora de logic/data/
   // store); o caso sorteado é, em si, determinístico por seed.
   const pulaAbertura = modo === 'procedural' || modo === 'luta';
-  const atenderChamado = () => {
+  // Assíncrono (Lote 5): pacoteDoModo puxa o banco de casos por import()
+  // dinâmico na primeira vez — o clique espera o chunk chegar.
+  const atenderChamado = async () => {
     const atualId = obterCaso().id;
     if (modo === 'procedural' || modo === 'luta') {
       const tamanho = modo === 'luta' ? TAMANHO_POOL_LUTA : TAMANHO_POOL;
       if (modoDoCaso(atualId) !== modo) {
-        carregarCaso(pacoteDoModo(modo, Math.floor(Math.random() * tamanho)));
+        carregarCaso(await pacoteDoModo(modo, Math.floor(Math.random() * tamanho)));
       }
     } else {
-      const alvo = pacoteDoModo(modo);
+      const alvo = await pacoteDoModo(modo);
       if (atualId !== alvo.id) carregarCaso(alvo);
     }
     escolherDetective();
@@ -58,14 +60,14 @@ export default function TelaPersonagem({ retomada = false, aoDecidirRetomada }) 
   // Sorteia um caso NOVO do mesmo modo (≠ o atual) e pula direto à
   // investigação. Mesmo sorteio de apresentação do atenderChamado; serve o
   // laço de playtest a partir da retomada, sem precisar do título limpo.
-  const jogarNovoCaso = () => {
+  const jogarNovoCaso = async () => {
     const atualId = obterCaso().id;
     const modoAtual = modoDoCaso(atualId);
     const pool = modoAtual === 'luta' ? 'luta' : 'procedural';
     const tamanho = pool === 'luta' ? TAMANHO_POOL_LUTA : TAMANHO_POOL;
-    let pacote = pacoteDoModo(pool, Math.floor(Math.random() * tamanho));
+    let pacote = await pacoteDoModo(pool, Math.floor(Math.random() * tamanho));
     for (let i = 0; pacote.id === atualId && i < tamanho; i++) {
-      pacote = pacoteDoModo(pool, Math.floor(Math.random() * tamanho));
+      pacote = await pacoteDoModo(pool, Math.floor(Math.random() * tamanho));
     }
     carregarCaso(pacote);
     escolherDetective();

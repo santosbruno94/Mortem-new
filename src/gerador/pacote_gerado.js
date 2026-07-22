@@ -51,6 +51,7 @@ import { AMBIENTE_PADRAO } from '../logic/tempo_morte.js';
 import { gerarCasoBruto } from './caso.js';
 import { SEDE_LEGIVEL } from './vestigios.js';
 import { METODOS } from './metodos.js';
+import { HORAS_CHEGADA_INTERNO } from './ponte_caso.js';
 import { derivarDialogos, formasDoLugar, profissaoExibida, FAIXA_CURTA, variante } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 
@@ -1921,8 +1922,8 @@ export function montarPacoteGerado(seed, opts = {}) {
     abertura,
     parametrosCena: {
       // E2: palco externo tem descoberta própria e chegada mais cedo
-      // (caso.js §4.6); o interno segue na convenção das 11h.
-      horasChegada: bruto.escolha.palco?.externo ? bruto.escolha.palco.descoberta.chegadaPerito : 11,
+      // (caso.js §4.6); o interno usa a fonte única da ponte (A3).
+      horasChegada: bruto.escolha.palco?.externo ? bruto.escolha.palco.descoberta.chegadaPerito : HORAS_CHEGADA_INTERNO,
       ambiente: AMBIENTE_PADRAO,
       calendario: { ...CALENDARIO_PADRAO },
     },

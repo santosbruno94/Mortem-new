@@ -824,12 +824,19 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
           ? 'carta-pergaminho hover:outline hover:outline-2 hover:outline-vela'
           : 'carta-pergaminho hover:-translate-y-0.5';
         return (
-          <button
+          // Invólucro posicionado: o atalho "§/ficha" é controle interativo
+          // e não pode viver DENTRO do <button> da carta (HTML inválido,
+          // leitura ruim em leitor de tela — diagnóstico 21/07, M12). O
+          // botão preenche o invólucro; o atalho é irmão, no mesmo lugar.
+          <div
             key={n.id}
+            style={{ left: c.x, top: c.y, width: CARD_W, height: CARD_H }}
+            className={`absolute ${sel ? 'z-20' : ''}`}
+          >
+          <button
             onClick={() => aoClicar(n.id)}
             title={n.ehAncora ? n.rotulo : n.descricao}
-            style={{ left: c.x, top: c.y, width: CARD_W, height: CARD_H }}
-            className={`absolute text-left rounded-sm px-3 pt-3 pb-2 overflow-hidden transition-all duration-150 ${
+            className={`relative w-full h-full text-left rounded-sm px-3 pt-3 pb-2 overflow-hidden transition-all duration-150 ${
               n.ehAncora ? classeAncora : classePergaminho
             }`}
           >
@@ -846,6 +853,7 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
                 <CarimboColeta hora={n.horaRegistro} />
               </>
             )}
+          </button>
             {/* Atalho de leitura: abre a ficha de coleta sem desfazer/criar
                 ligação. Em ponteiro fino, o "§" discreto (hover evidente);
                 em ponteiro grosso, botão explícito "ficha" com área de
@@ -880,7 +888,7 @@ function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao
                 {ponteiroGrosso ? 'ficha' : '§'}
               </span>
             )}
-          </button>
+          </div>
         );
       })}
     </div>

@@ -97,12 +97,14 @@ maquete 3D da vila (geometria 100% procedural, com fallback 2D via `?flat=1`). D
 corpo (A Prancha) e as conversas (A Cena) são **SVG procedural** — o 3D remanescente é só o
 diorama da vila. Sem TypeScript, sem engine de jogo, sem chamadas de rede em runtime — dados
 em módulos JS e lógica determinística em funções puras (toda variação vem de `hashString`
-salgado com a seed).
+salgado com a seed). O banco de casos gerados e o diorama 3D são **chunks lazy**: o
+arranque (tela de título + tutorial) baixa ~400 KB de JS.
 
 ```
 src/
   data/         seed, catálogo de causas, cartas (com tagsOcultas), localidades, mapa, glossário,
-                abertura, rótulos, casos_gerados.js (banco de 30 casos: 20 comarca + 10 luta)
+                abertura, rótulos, casos_gerados.js (banco de 30 casos: 20 comarca + 10 luta —
+                chunk lazy, fora do arranque; casos_indice.js é o índice leve síncrono)
   logic/        tempo, tempo_morte, cronos, acusacao (gramática das ligações), veredicto, falaDoMestre, monólogo, interpolação
   store/        jogo.js (Zustand: fases, relógio, mapa, cartas registradas, conclusões, acusação, log)
   gerador/      ILHA de build time: autobattler do crime, cidade, elenco, vestígios, interferência

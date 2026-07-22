@@ -119,7 +119,10 @@ function textoDaFalha(falha, dados) {
     case 'corpo_sem_substancia':
       return 'Levei a acusação adiante sem uma leitura do corpo que a sustentasse.';
     case 'sem_janela':
-      return 'Não afirmei a hora da morte, e sem ela não havia como medir álibi algum.';
+      // O código cobre DOIS gestos (veredicto.js): não afirmar a janela e
+      // afirmá-la sem prendê-la a carta alguma — a frase vale para ambos,
+      // sem negar um gesto que o jogador fez (diagnóstico 21/07, M5).
+      return 'Não firmei a hora da morte em sinal algum do corpo, e sem ela não havia como medir os álibis.';
     case 'janela_nao_cobre':
       // Sem revelar a hora verdadeira: o perito que errou a janela não a
       // conhece — e, na retentativa, ela não pode sair de graça (Q1/Q2).
@@ -138,6 +141,10 @@ function textoDaFalha(falha, dados) {
       return `Nada na minha cadeia pôs ${comArtigo(nomeReu)} junto ao instrumento do crime.`;
     case 'nexo_errado':
       return 'O vestígio que invoquei não liga o acusado ao instrumento do óbito.';
+    case 'nexo_acessorio':
+      // A gafe que sozinha nega a Vitória Absoluta merecia frase própria:
+      // sem ela, um Sucesso com Gafes saía sem explicação (M6).
+      return 'Entre os vestígios que atei à presença há traço que não é do réu; carreguei a cadeia com marca de terceiro.';
     case 'sem_motivacao':
       return 'Não apontei o móbil; apresentei uma acusação sem porquê.';
     case 'motivacao_erronea':

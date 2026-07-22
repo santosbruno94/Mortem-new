@@ -347,6 +347,22 @@ const corpo =
 const destino = fileURLToPath(new URL('../src/data/casos_gerados.js', import.meta.url));
 writeFileSync(destino, cab + corpo);
 
+// O ÍNDICE LEVE do banco (diagnóstico 21/07, Lote 5): ids por modo, para a
+// camada síncrona (modoDoCaso, tamanhos de pool) decidir sem carregar os
+// pacotes — o banco pesado (~1,8 MB) chega por import() dinâmico em
+// src/data/casos.js. Guarda de paridade índice × banco no qa.mjs.
+const destinoIndice = fileURLToPath(new URL('../src/data/casos_indice.js', import.meta.url));
+writeFileSync(
+  destinoIndice,
+  '// GERADO por scripts/gerar-casos.mjs — NÃO EDITAR À MÃO.\n' +
+    '// Índice leve de casos_gerados.js (ids por modo): permite à camada\n' +
+    '// síncrona responder "de que modo é este caso?" sem puxar o banco\n' +
+    '// pesado para o chunk de arranque.\n' +
+    `export const REPLICA_ID = ${JSON.stringify(replica.id)};\n` +
+    `export const IDS_POOL = ${JSON.stringify(pool.map((p) => p.pacote.id))};\n` +
+    `export const IDS_LUTA = ${JSON.stringify(poolLuta.map((p) => p.pacote.id))};\n`
+);
+
 console.log(`gerar-casos: réplica ${SEED_REPLICA} + pool de ${pool.length} casos (${pool.map((p) => p.seed).join(', ')}).`);
 console.log(`gerar-casos: pool luta de ${poolLuta.length} casos (${poolLuta.map((p) => p.seed).join(', ')}).`);
 const encenados = pool.filter((p) => p.pacote.verdadeDeOuro.cenaEncenada).length;

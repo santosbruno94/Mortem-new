@@ -190,11 +190,11 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       {/* As escolhas do perito: as quatro falas do beat (tons) OU, na reação,
           o retomar da conversa. */}
       <div className="mt-6 space-y-2" data-opcoes-dialogo>
-        {opcoesVisiveis.map((op) => {
+        {opcoesVisiveis.map((op, i) => {
           const ehConfronto = !!op.requerCarta;
           return (
             <button
-              key={op.rotulo}
+              key={`${i}-${op.rotulo}`}
               type="button"
               className={`opcao-dialogo ${ehConfronto ? 'opcao-dialogo--confronto' : ''}`}
               data-confronto={ehConfronto ? '' : undefined}

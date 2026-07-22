@@ -71,6 +71,7 @@ import {
   ITENS_COM_AGUA,
 } from '../src/gerador/espaco.js';
 import { gerarCasoBruto } from '../src/gerador/caso.js';
+import { HORAS_CHEGADA_INTERNO } from '../src/gerador/ponte_caso.js';
 import { METODOS, PROVENIENCIA_METODOS } from '../src/gerador/metodos.js';
 import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS, SEDES_POR_REGIAO } from '../src/gerador/vestigios.js';
 import { CATALOGO_ACOES, DOUTRINA_VITIMA, DOUTRINA_ASSASSINO, doutrina, acoesLegais } from '../src/gerador/doutrinas.js';
@@ -1611,8 +1612,8 @@ function problemasDaPonte(caso) {
   const verdade = fatia.verdadeDeOuro;
   const horaMorte = crime.hora.morte;
   // E2: no palco externo a chegada é variável (descoberta + 2–4h, teto
-  // 13h); no interno, a convenção das 13h do caso-escola.
-  const horaExame = caso.escolha.palco?.externo ? caso.escolha.palco.descoberta.chegadaPerito : 13;
+  // 13h); no interno, a fonte única da ponte (11h — diagnóstico A3).
+  const horaExame = caso.escolha.palco?.externo ? caso.escolha.palco.descoberta.chegadaPerito : HORAS_CHEGADA_INTERNO;
   const ipm = horaExame - horaMorte;
 
   if (verdade.reuCorreto !== crime.assassinoId) problemas.push('réu da verdade ≠ assassino do registro');
@@ -2173,6 +2174,14 @@ const { montarPacoteGerado, SEED_REPLICA, DIRIGIDO_REPLICA } = await import(
   '../src/gerador/pacote_gerado.js'
 );
 const { CASO_REPLICA, CASOS_POOL, CASOS_LUTA } = await import('../src/data/casos_gerados.js');
+// Paridade índice × banco (Lote 5): casos_indice.js é a versão leve que o
+// chunk de arranque usa para decidir modo/tamanhos sem baixar o banco —
+// divergência = modoDoCaso mentindo (ex.: caso de luta tratado como comarca).
+const indiceCasos = await import('../src/data/casos_indice.js');
+const indiceBancoOk =
+  indiceCasos.REPLICA_ID === CASO_REPLICA.id &&
+  JSON.stringify(indiceCasos.IDS_POOL) === JSON.stringify(CASOS_POOL.map((p) => p.id)) &&
+  JSON.stringify(indiceCasos.IDS_LUTA) === JSON.stringify(CASOS_LUTA.map((p) => p.id));
 
 // (a) Replay byte a byte do arquivo embarcado. A regeneração fica à mão
 // para o cheque (f) da árvore de diálogo (replay chamada a chamada).
@@ -2295,6 +2304,20 @@ function problemasDoPacoteGerado(pacote) {
   // nem o confronto dela podem falar de arma branca ("casa com a lesão", "sob o
   // rebite", "se lava ferramenta"…). A peça é o VASO do veneno (frasco/papel)
   // ou o pano de abafo. Guarda o furo.
+  // Anti-tell de corroboração (diagnóstico 21/07, M3): o réu jamais pode
+  // ser o ÚNICO suspeito sem carta de corroboração — os portadores de
+  // segredo e o ausente são as iscas que dividem com ele o conjunto "sem
+  // quem responda por si". Se todos os inocentes ganharem corroboração, o
+  // réu fica identificável por eliminação, sem cruzar prova.
+  const reuPct = pacote.verdadeDeOuro?.reuCorreto;
+  if (reuPct) {
+    const semCorroboracao = pacote.suspeitos
+      .map((s) => s.id)
+      .filter((id) => !pacote.cartas.some((c) => c.id === `gen_corrobora_${id}`));
+    if (semCorroboracao.includes(reuPct) && !semCorroboracao.some((id) => id !== reuPct)) {
+      problemas.push('anti-tell M3: o réu é o único suspeito sem corroboração');
+    }
+  }
   const mecPct = pacote.verdadeDeOuro?.mecanismoCorreto || '';
   if (mecPct.startsWith('envenenamento') || mecPct === 'sufocacao') {
     const gi = pacote.cartas.find((c) => c.id === 'gen_instrumento');
@@ -3968,6 +3991,7 @@ const checagens = [
   ['Armadilhas detectadas: âncora destruível, gatilho órfão, rota órfã, silenciar sem prenúncio, saldo negativo — e o caso válido passa (FASE 5)', armadilhasDetectadas],
   ['Prosa sem regressão mecânica (lint-prosa): fórmula, travessões, léxico, exclamações, filtro sensorial, abertura repetida, vocativo', prosaSemRegressao],
   ['Casos embarcados = montador de hoje, byte a byte (réplica dirigida + pool + luta) (FASE 6)', casosEmbarcadosReplay],
+  ['Índice leve = banco (ids da réplica/pool/luta em casos_indice.js) (Lote 5)', indiceBancoOk],
   ['Pacotes gerados íntegros: campos, marcadores↔cartas, blocos contingentes, slots, sem id/rótulo cru (FASE 6)', casosEmbarcadosIntegros],
   ['Casos gerados jogáveis: os 4 perfis produzem os 4 desfechos na réplica, pool e luta (FASE 6)', casosGeradosJogaveis],
   ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],

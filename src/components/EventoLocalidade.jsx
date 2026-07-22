@@ -4,6 +4,7 @@ import PlantaRelojoaria from './PlantaRelojoaria.jsx';
 import {
   obterCaso,
   obterVerdadeDeOuro,
+  obterParametrosCena,
   obterLocalidade,
   obterNo,
   obterDialogos,
@@ -41,7 +42,8 @@ export default function EventoLocalidade({ localidadeId }) {
 
   const localidade = obterLocalidade(localidadeId);
   if (!localidade) return null;
-  const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada);
+  // Hora de chegada do pacote — mesmo IPM que o store computa (A3).
+  const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada, obterParametrosCena().horasChegada);
 
   // A prosa imersiva pousa sobre o couro escuro: serifada e legível. O
   // renderizador de [[id]]/interpolação é o util compartilhado (§7.1).

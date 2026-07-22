@@ -1,5 +1,5 @@
 import { useJogo } from '../store/jogo.js';
-import { obterVerdadeDeOuro, obterDefinicaoCarta, resolverEstadoCarta } from '../data/pacote_caso.js';
+import { obterVerdadeDeOuro, obterParametrosCena, obterDefinicaoCarta, resolverEstadoCarta } from '../data/pacote_caso.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
 
@@ -26,7 +26,9 @@ export function ParagrafoProsa({
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const extrairCarta = useJogo((s) => s.extrairCarta);
   const abrirFicha = useJogo((s) => s.abrirFicha);
-  const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada);
+  // A hora de chegada vem do pacote (11h nos internos gerados; variável no
+  // externo) — o default 13h de ipmAtual é só do caso-escola (A3).
+  const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada, obterParametrosCena().horasChegada);
 
   const partes = interpolar(texto, detective).split(/(\[\[\w+\]\])/g);
   return (
@@ -63,13 +65,27 @@ function TermoCarta({ cartaId, ipm, detective, registrada, aoExtrair, aoReabrir 
   // Resource binding (FASE 4): o termo em negrito resolve slots de caso como
   // qualquer prosa. Sem slots no textoDisplay do tutorial, byte-idêntico.
   const rotulo = interpolar(estado.textoDisplay, detective);
+  // Teclado: extrair/reabrir é a interação central do jogo e não podia
+  // viver só no clique (diagnóstico 21/07, M11). role/tabIndex/Enter não
+  // tocam as classes nem o data-carta-id do contrato do qa-ui.
+  const acessivel = (acao) => ({
+    role: 'button',
+    tabIndex: 0,
+    onClick: acao,
+    onKeyDown: (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        acao();
+      }
+    },
+  });
   if (registrada) {
     return (
       <span
         data-carta-id={cartaId}
         className="termo-extraido"
         title="Reabrir a carta"
-        onClick={() => aoReabrir(cartaId)}
+        {...acessivel(() => aoReabrir(cartaId))}
       >
         {rotulo}
       </span>
@@ -80,7 +96,7 @@ function TermoCarta({ cartaId, ipm, detective, registrada, aoExtrair, aoReabrir 
       data-carta-id={cartaId}
       className="termo-clicavel"
       title="Examinar e registrar (não custa tempo)"
-      onClick={() => aoExtrair(cartaId)}
+      {...acessivel(() => aoExtrair(cartaId))}
     >
       {rotulo}
     </span>

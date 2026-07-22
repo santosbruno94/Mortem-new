@@ -44,8 +44,10 @@ import { sortearPonderado } from './amostragem.js';
 // (WIS do ator − PENALIDADE), nunca contra o WIS pleno do crime planejado.
 export const PENALIDADE_WIS_INTERFERENCIA = 2;
 
-// Hora de chegada do perito (mesma convenção da ponte, ponte_caso.js).
-const HORAS_CHEGADA = 11;
+// A hora do exame do R2 deixa de ser constante própria (divergia da ponte
+// — diagnóstico 21/07, A3/M2): fatiaResolveSem deriva a hora real da
+// própria fatia (horaMorteAbsoluta + horasMorteAntesChegada), válida nos
+// dois palcos (interno 11h; externo com chegada variável).
 
 function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
@@ -237,14 +239,17 @@ export const PROSA_PRENUNCIO = [
 // presença e o móbil apontam o réu. Redundante = o que se pode perder
 // sem quebrar nenhum dos quatro.
 // ---------------------------------------------------------------------
-export function fatiaResolveSem(fatia, idsRemovidos, horaExame = HORAS_CHEGADA) {
+export function fatiaResolveSem(fatia, idsRemovidos, horaExame = null) {
   const removidos = new Set(idsRemovidos);
   const cartas = fatia.cartas.filter((c) => !removidos.has(c.id));
   const verdade = fatia.verdadeDeOuro;
-  const ipm = horaExame - verdade.horaMorteAbsoluta;
+  // Default: a hora REAL do exame deste caso, derivada da própria fatia
+  // (mesma conta da réplica do qa.mjs) — nunca uma constante de palco.
+  const hora = horaExame ?? verdade.horaMorteAbsoluta + verdade.horasMorteAntesChegada;
+  const ipm = hora - verdade.horaMorteAbsoluta;
 
   const temporais = cartas
-    .map((def) => ({ id: def.id, horaRegistro: horaExame, tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas }))
+    .map((def) => ({ id: def.id, horaRegistro: hora, tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas }))
     .filter((c) => c.tagsOcultas.dominio === 'temporal');
   const janela = intersecaoJanelas(temporais.map(janelaDaCarta).filter(Boolean));
   if (!janela || !(janela.inicio <= verdade.horaMorteAbsoluta && verdade.horaMorteAbsoluta <= janela.fim)) return false;

@@ -5,15 +5,16 @@ import react from '@vitejs/plugin-react';
 // Servido na raiz do domínio (Vercel) — sem `base` customizado.
 export default defineConfig({
   plugins: [react()],
-  // O chunk 3D chega por import() tardio: pré-otimizar as deps evita o
-  // full-reload do dev server no meio de uma sessão (e do QA de UI)
-  // quando o diorama é aberto pela primeira vez com o cache frio.
+  // O chunk 3D (diorama/* — a prancha do corpo é SVG estático, sem three)
+  // chega por import() tardio: pré-otimizar as deps evita o full-reload do
+  // dev server no meio de uma sessão (e do QA de UI) quando o diorama é
+  // aberto pela primeira vez com o cache frio.
   optimizeDeps: {
     include: ['three', '@react-three/fiber', '@react-three/drei'],
   },
   build: {
     // O ecossistema three/r3f (~820 KB min) já fica FORA do carregamento
-    // inicial: só o alcançam os módulos lazy (diorama/*, corpo3d/*), por
+    // inicial: só o alcança o módulo lazy do diorama (diorama/*), por
     // import() dinâmico dentro da investigação — o index.html do arranque
     // (título + abertura) não referencia three nem r3f, que só chegam ao
     // abrir a maquete/o corpo 3D. NÃO forçamos manualChunks: isolar o three

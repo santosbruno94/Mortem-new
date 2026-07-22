@@ -15,7 +15,7 @@
 
 // Vocabulários fechados do genótipo. Acrescentar valor novo aqui exige
 // desenhar a camada correspondente no RetratoPersonagem (e, para a
-// vítima, no CorpoModelo 3D).
+// vítima, na Prancha do corpo).
 export const VOCABULARIO_APARENCIA = {
   corpo: ['magro', 'medio', 'sobrepeso'],
   pele: ['palida', 'clara', 'corada', 'morena'],
