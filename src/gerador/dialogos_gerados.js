@@ -115,6 +115,10 @@ export function formasDoLugar(rotulo) {
 // ---------------------------------------------------------------------
 const PROFISSAO_EXIBIDA = {
   squire: 'senhor de terras',
+  // Desambiguação (OS Vila Viva E2): o morador-policial é "guarda do
+  // condado", reservando "constable" ao oficial do caso (o que convoca o
+  // perito) — casa com a glosa "o guarda da vila" da abertura.
+  'constable do condado': 'guarda do condado',
   'senhora da propriedade (viúva do squire)': 'senhora da propriedade',
   'professor de vila': 'mestre-escola',
   'professora de vila': 'mestra-escola',
@@ -231,7 +235,7 @@ function falaAbertura(ctx) {
   const { pessoa, sal } = ctx;
   let entrada;
   if (pessoa.comportamentos.includes('revela_facil')) {
-    entrada = `${pessoa.nome} entra na sala do expediente antes que o delegado acabe de chamar o nome, e toma a palavra junto com a cadeira.`;
+    entrada = `${pessoa.nome} entra na sala do expediente antes que o constable acabe de chamar o nome, e toma a palavra junto com a cadeira.`;
   } else if (pessoa.comportamentos.includes('revela_sob_custo')) {
     entrada = `${pessoa.nome} entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem.`;
   } else {
@@ -240,8 +244,8 @@ function falaAbertura(ctx) {
     // feminina fica atada; o chapéu na mão é gesto de homem).
     entrada =
       pessoa.genero === 'feminino'
-        ? `O delegado chama o nome; ${pessoa.nome} entra, senta-se e ajeita as fitas da touca.`
-        : `O delegado chama o nome; ${pessoa.nome} entra e senta-se de chapéu na mão.`;
+        ? `O constable chama o nome; ${pessoa.nome} entra, senta-se e ajeita as fitas da touca.`
+        : `O constable chama o nome; ${pessoa.nome} entra e senta-se de chapéu na mão.`;
   }
   const palavras = variante(PRIMEIRAS_PALAVRAS[pessoa.classeSocial] || PRIMEIRAS_PALAVRAS.lavrador, `${sal}|abertura`);
   const tique = TIQUE_ABERTURA[ctx.trait] || '';
@@ -628,7 +632,7 @@ function cartaDeAlibi(ctx) {
     // estrada de outubro escura desde as cinco e meia.
     const falaAus = `"Estive em ${ctx.ausencia} desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã."`;
     const fechoAus = variante(
-      ['Tomado por termo na delegacia, pela mão do guarda.', 'Declarado na sala do expediente, diante do delegado.'],
+      ['Tomado por termo no posto do constable, pela mão do guarda.', 'Declarado na sala do expediente, diante do constable.'],
       `${sal}|alibi|fecho`
     );
     return {
@@ -705,7 +709,7 @@ function cartaDeAlibi(ctx) {
   const fecho = variante(
     // KB inquérito §2: quem escreve o termo na estação de vila é o próprio
     // guarda/delegado — não há escrevente civil lotado ali em 1893.
-    ['Tomado por termo na delegacia, pela mão do guarda.', 'Declarado na sala do expediente, diante do delegado.'],
+    ['Tomado por termo no posto do constable, pela mão do guarda.', 'Declarado na sala do expediente, diante do constable.'],
     `${sal}|alibi|fecho`
   );
   return {
@@ -781,7 +785,7 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
       if (classe === 'instrumento_guardado_umido') {
         return {
           pergunta: `[${td}] Por que a peça ${vf.guardadoPergunta}?`,
-          reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "${vf.guardadoDefesa}. ${vf.comum}. E o delegado lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
+          reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "${vf.guardadoDefesa}. ${vf.comum}. E o constable lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
         };
       }
       return {
@@ -798,7 +802,7 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
     if (classe === 'instrumento_guardado_umido') {
       return {
         pergunta: `[${td}] Por que a peça foi guardada lavada, com a junta ainda úmida?`,
-        reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o delegado lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
+        reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o constable lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
       };
     }
     return {
@@ -837,7 +841,7 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   if (t.pertenceA === pessoa.id && t.subDominio === 'fuga_apressada') {
     return {
       pergunta: `[${td}] Por que o rasgo do seu casaco encaixa neste retalho?`,
-      reacao: `${pessoa.nome} estende o braço e mostra a manga pelo avesso. "Rasguei-o num prego, e prego não falta nesta vila. Se o pano encaixa, encaixa; a porta onde o acharam eu não conheço. O meu paradeiro daquela hora está escrito na delegacia." Recolhe o braço e espera a pergunta seguinte.`,
+      reacao: `${pessoa.nome} estende o braço e mostra a manga pelo avesso. "Rasguei-o num prego, e prego não falta nesta vila. Se o pano encaixa, encaixa; a porta onde o acharam eu não conheço. O meu paradeiro daquela hora está escrito no posto do constable." Recolhe o braço e espera a pergunta seguinte.`,
     };
   }
 

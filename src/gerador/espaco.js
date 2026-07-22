@@ -124,7 +124,7 @@ export const TIPOS_PREDIO = {
   },
   delegacia: {
     id: 'delegacia',
-    rotulo: 'A Delegacia',
+    rotulo: 'O Posto do Constable',
     unico: true,
     silhueta: {
       w: [1.2, 1.35], d: [0.9, 1.0], h: [0.92, 1.0], telhadoAltura: [0.48, 0.54],

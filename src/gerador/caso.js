@@ -92,11 +92,12 @@ function comodoDoCrime(interior, faixa) {
 export function gerarCasoBruto(seed, opts = {}) {
   const n = opts.n ?? 8;
   const dirigido = opts.dirigido || null;
+  const morfologia = opts.morfologia || null; // só medição/QA (ver gerarMundo)
   const sal = `${salDaSeed(seed)}|caso`;
 
   // O mundo nasce primeiro (Fases 1–2); a cena elegível vem da escolha
   // abaixo, então o mundo definitivo é gerado após a seleção do local.
-  const mundoBase = gerarMundo(seed, { n });
+  const mundoBase = gerarMundo(seed, { n, morfologia });
   const elenco = mundoBase.elenco;
 
   // 1. Cenário: ~1/3 briga escalada. A briga exige um PAR coabitante —
@@ -319,7 +320,7 @@ export function gerarCasoBruto(seed, opts = {}) {
   // a cena (LOD por relevância — a cena do crime e os locais de
   // interferência sorteados no esqueleto).
   const locaisElegiveis = [...new Set([localId, ...esqueleto.locaisExtras])];
-  const mundo = gerarMundo(seed, { n, locaisElegiveis });
+  const mundo = gerarMundo(seed, { n, locaisElegiveis, morfologia });
   if (pousada) mundo.elenco.push(forasteiro);
 
   // 6.1 P20 (playtest 19/07 r2): homônimo da vítima confunde — como o

@@ -15,6 +15,14 @@ Detetive, com os 4 desfechos possíveis — hoje em **quatro modos** sobre a mes
 O gerador é uma **ilha de build time**: em runtime o jogo só carrega pacotes prontos, nunca
 importa `src/gerador`; tudo é determinístico, sem chamadas de rede.
 
+Nos modos procedurais, a **OS Vila Viva** (etapas E1–E4) faz a vila que a simulação computa
+chegar ao jogador — sempre camada narrativa/visual, com o motor cego: a **planta** do prédio
+é desenhada na cena; a **vizinhança** nomeia o vizinho parede-meia e usa a terminologia de
+1893 (**constable**, "O Posto do Constable", petty sessions); a **mobília** lê a classe da
+vítima; e a vila nasce em **três morfologias por seed** (nucleada, linear, de green), que
+mudam o grafo de quem-ouve-quem sem regra nova de motor (balanço provado por Monte Carlo).
+A etapa E5 (a travessa dos fundos, o "segundo grafo" de becos) fica pendente.
+
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
 

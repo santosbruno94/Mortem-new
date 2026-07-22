@@ -151,28 +151,74 @@ ordem. Explicar o resultado para leigo em programação.
 
 ## Prompt E5 — O segundo grafo (travessa dos fundos)
 
+> **Estado (atualizado ao fim da sessão E1–E4):** E1–E4 estão ENTREGUES e no branch
+> (planta procedural; prosa da vila + constable; mobília social; morfologias de vila).
+> A bancada de balanço da E4 (Monte Carlo) está montada e as bandas v1 estão provadas.
+> O prompt abaixo foi enriquecido com o mapa concreto de implementação levantado na
+> investigação da E5.
+
 ```text
 Leia CLAUDE.md e docs/os-vila-viva-e0-plano.md (etapa E5) antes de tocar em código.
 Ordem expressa: implementar a etapa E5 da OS Vila Viva — ativar o logradouro
-travessa_dos_fundos (o "segundo grafo" de back lanes). Somente a E5 (pressupõe E4
-entregue e relatório espacial em dia).
+travessa_dos_fundos (o "segundo grafo" de back lanes). Somente a E5.
 
-Contexto:
-- A especificação já existe: docs/os-palco-em-aneis-e2-dossie.md §1.4 (partição,
-  pool, risco de saturação do grafo de avistamentos; a recomendação "v2" era
-  sequenciamento, não rejeição). Fundamento: docs/kb-mundo-vitoriano/
-  urbanismo-e-morfologia.md §5. plataforma_da_estacao segue v3 — NÃO ativar.
+Contexto e ESPECIFICAÇÃO:
+- Partição/pool prontos no dossiê: docs/os-palco-em-aneis-e2-dossie.md §1.4
+  (grid 8×3 linear: `viela` 8×1 fila 1; `fundos_do_pub` col 0 fila 0 3×1 — barris,
+  escotilha da adega; `quintais` col 3 fila 0 5×1 — varais, monturos, privadas;
+  `saidas` nas duas bocas da viela {col 0, fila 2} e {col 7, fila 2}). Mobília:
+  barris/escotilha, monturo, varal+tina, privada externa, coal hole. Rotinas (§3):
+  carroceiro dia → travessa (entregas de serviço); taverneiro manhã → fundos do pub.
+  Fundamento: urbanismo-e-morfologia.md §2/§5 (toda loja da rua tem porta discreta na
+  viela; é o "grafo discreto por excelência"). plataforma_da_estacao é v3 — NÃO ativar.
 
-O que entregar:
-1. Ativar travessa_dos_fundos no regime de palco conforme o dossiê E2, com a
-   partição/pool lá especificados.
-2. Controlar a saturação do grafo de avistamentos apontada no dossiê.
+DESAFIO CENTRAL (o dossiê §1.4d marca): a travessa fica ENTRE prédios; por distância
+ela satura o grafo de avistamentos (5–7 adjacências), o oposto do que um beco significa
+(deve ser POUCO vigiado/ouvido). A ativação exige controlar isso — o dossiê dá a saída:
+"posição mais excêntrica OU regra especial de adjacência". Recomendação da investigação:
+uma REGRA ESPECIAL de adjacência CURADA (a travessa só é adjacente aos prédios cujos
+fundos dão nela — o pub via fundos_do_pub e 1–2 cottages atrás —, não à malha de
+distância inteira). Isso a faz o "grafo discreto" que a KB pede e casa a saturação com
+a dos outros logradouros (~2 adjacências, como adro/pátio/açude).
 
-Verificação: node scripts/relatorio-espacial.mjs com regimes dentro das bandas
-(interno/logradouro/pousada) e saturação controlada; npm run build; node
-scripts/qa.mjs; node scripts/qa-ui.mjs; npm run gerar:casos; jogar 2 seeds cujo
-palco caia na travessa.
+MAPA DE IMPLEMENTAÇÃO (a infraestrutura de logradouro já existe; adicionar um 4º tipo):
+1. src/gerador/espaco.js — TIPOS_PREDIO: novo `travessa_dos_fundos` com `logradouro:true`
+   e silhueta (espelhar adro_da_igreja/patio_da_granja, ~l.215-245); a mobília do beco na
+   seção "logradouros" (~l.685) e a classe do tipo no mapa (~l.198: adro→clero etc.).
+2. src/gerador/interiores.js — LAYOUTS: novo layout `travessa_dos_fundos` (comodos +
+   saidas do dossiê §1.4b), espelhando os logradouros existentes (~l.159-181).
+3. src/gerador/cidade.js — adicionar o lote travessa ao TRACADO (nucleada) e às tabelas
+   POS_LINEAR/POS_GREEN (E4), ANCORADO ao pub em cada morfologia (fundos do pub). E a
+   REGRA ESPECIAL de adjacência curada (a travessa não entra na malha de distância comum;
+   é adjacente só ao pub e a 1–2 cottages atrás). LIMIAR_ADJACENCIA e a ancoragem dos 3
+   logradouros atuais (adro↔igreja, pátio↔granja, açude↔moinho) são o padrão a preservar.
+4. src/gerador/caso.js — wiring de palco (~l.219-260): incluir 'travessa_dos_fundos' na
+   lista de tipos do chamariz; LOGRADOURO_DO_PREDIO['pub']='travessa_dos_fundos' e
+   PREDIO_DO_LOGRADOURO/FAIXAS_DO_LOGRADOURO para a via de rotina (carroceiro/taverneiro).
+   Atenção: o pub pode ser opcional (checar TIPOS_PREDIO) — a via de rotina só vale quando
+   o pub existe; o chamariz não depende disso.
+5. Prosa: a prosa de palco externo (corpo/cena/vizinhança) já é genérica ("a céu aberto");
+   avaliar se a travessa merece uma nota de traçado própria (beco/fundos) — se sim, é prosa
+   nova e passa pelo pipeline redigir-prosa + revisar-prosa (zero bloqueantes).
 
-Desenvolver, commitar e dar push na branch designada da sessão. Não abrir PR sem
-ordem. Explicar o resultado para leigo em programação.
+BALANÇO (mesma bancada da E4, obrigatória ANTES de aceitar):
+- node scripts/relatorio-espacial.mjs 20000 — o regime-palco (interno ~76% / logradouro
+  na banda 10–30% / pousada ~10%) e magnitude/método/satélite devem ficar nas bandas do
+  relatório v1 (docs/os-palco-em-aneis-relatorio-espacial-v1.md). Os TIPOS de logradouro
+  passam de 3 para 4 (~25% cada) — isso é esperado, não é violação.
+- Medir a adjacência da travessa por morfologia (forçar via gerarCidade(seed, morf) e
+  montarPacoteGerado(seed, {morfologia})): deve ficar em ~2 (controlada), não 5–7.
+- Se QUALQUER banda sair fora, PARAR e reportar ao criador — não "consertar" sozinho
+  (ordem do plano E0 §4/E4).
+
+Verificação final: npm run build limpo; node scripts/qa.mjs verde (4 perfis → 4
+desfechos + guardas GE); node scripts/lint-prosa.mjs; node scripts/qa-ui.mjs verde;
+npm run gerar:casos; jogar 2 seeds cujo palco caia na travessa (?caso=gerado_<id>).
+
+Nota de processo (aprendido na E1–E4): NÃO rodar `npm run gerar:casos` enquanto o
+qa-ui.mjs estiver servindo — o reload de HMR quebra o teste no meio. Regenere o banco
+ANTES do qa-ui, não durante.
+
+Desenvolver, commitar e dar push na branch designada da sessão. Não abrir PR sem ordem.
+Explicar o resultado para leigo em programação.
 ```

@@ -10,8 +10,11 @@
 > e do craft do mistério pelas demais bases (`docs/kb-mundo-vitoriano/`,
 > `docs/kb-psique-e-crime/`, `docs/kb-craft-narrativo/`, `docs/kb-producao/`). O design do
 > gerador por simulação vive em [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md);
-> o plano (ainda não implementado) contra a genericidade espacial dos casos procedurais, em
-> [`docs/os-vila-viva-e0-plano.md`](./docs/os-vila-viva-e0-plano.md).
+> o plano contra a genericidade espacial dos casos procedurais (OS Vila Viva), em
+> [`docs/os-vila-viva-e0-plano.md`](./docs/os-vila-viva-e0-plano.md) — **etapas E1–E4
+> entregues** (planta procedural, prosa da vila + constable, mobília social, morfologias
+> de vila por seed); E5 (a travessa dos fundos) pendente, com prompt em
+> [`docs/os-vila-viva-prompts-implementacao.md`](./docs/os-vila-viva-prompts-implementacao.md).
 
 ---
 
@@ -248,6 +251,15 @@ em `?flat=1`**; em tela estreita, colapsa numa régua horizontal de cômodos.
 
 Camada VISUAL: `planta_relojoaria.js` referencia os ids de nó pelos alvos, mas **nenhuma
 regra o lê** — trocar a planta nunca toca o jogo.
+
+**A planta chega aos casos procedurais (OS Vila Viva E1).** O componente foi
+generalizado em `src/components/Planta.jsx` (o `PlantaRelojoaria.jsx` virou um wrapper
+fino), com dois modos: o **modo nó** do caso-escola (alvos que viajam entre nós, custo 0)
+e o **modo ponto** dos casos gerados — a planta projetada do grid do prédio
+(`interior.planta`, já no schema de `planta_relojoaria.js`, viaja no pacote na localidade
+`cena`) desenha os cômodos e liga cada um ao ponto do acordeão que dele deriva: clicar um
+cômodo **abre e realça** o ponto correspondente. Fallback obrigatório — sem planta no
+pacote ou em `?flat=1`, o acordeão de pontos de sempre assume, idêntico.
 
 **Pontos de interesse:** as localidades podem trazer o campo opcional
 `pontos: [{ id, rotulo, prosa }]` (mais um `introducao` de ambientação sem carta). Quando
@@ -1105,6 +1117,29 @@ design vive em [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md
   consequências (vestígios, flags de comportamento de diálogo, gatilhos de
   interferência); o motor é cego a atributos — mesma cegueira já garantida para
   aparências e papéis dramáticos.
+- **OS Vila Viva (E1–E4): a pesquisa espacial chega ao jogador.** Quatro etapas
+  fecham a "última milha" entre o mundo que o gerador computa e o que o jogador vê,
+  toda camada narrativa/visual (o motor segue lendo só `tagsOcultas` + seed):
+  **E1** — a planta projetada do grid é desenhada na cena procedural (§5.1). **E2** —
+  a prosa das localidades bebe da vila gerada: a `vizinhanca` nomeia o vizinho
+  parede-meia (o mesmo elenco que o motor conta como ouvinte/álibi) e situa a cena no
+  quarteirão; e a terminologia legal-policial de 1893 substitui "delegado/delegacia"
+  por **constable** (glosado) e **"O Posto do Constable"**, com as petty sessions como
+  etapa dos magistrados (validado contra a KB legal-policial). **E3** — a mobília lê a
+  classe da vítima na sua casa (uma frase de leitura social por seed, observação pura,
+  ancorada em `classeSocial` + móbil de herança; catálogo de
+  `kb-mundo-vitoriano/mobiliario-por-classe.md`). **E4** — a vila nasce em três
+  morfologias por seed (**nucleada**, **linear**, **de green**, de
+  `kb-mundo-vitoriano/urbanismo-e-morfologia.md` §1): só as coordenadas de `cidade.js`
+  mudam — tipo, quarteirão e ancoragem de logradouro são invariantes, então o grafo de
+  avistamentos (ouvintes, álibis, distâncias) deriva da forma sem regra nova de motor.
+  Prova de balanço por Monte Carlo (`relatorio-espacial.mjs`): as bandas moeda-dirigidas
+  (regime-palco, magnitude, método por palco, satélite) ficam idênticas ao relatório v1
+  nas três morfologias; `qa.mjs` verde mantém os 4 perfis → 4 desfechos e as guardas de
+  fair play. Toda prosa nova passou pelo pipeline `revisar-prosa` (zero bloqueantes).
+  Pendente: **E5** — ativar o logradouro `travessa_dos_fundos` (o "segundo grafo" de
+  becos), controlando a saturação do grafo de avistamentos (dossiê em
+  `docs/os-palco-em-aneis-e2-dossie.md` §1.4).
 
 ---
 
