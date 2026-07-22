@@ -107,6 +107,11 @@ const TRACADO = [
   { quarteirao: 'adro', tipo: 'adro_da_igreja', x: -4.3, z: -0.6, logradouro: true },
   { quarteirao: 'orla', tipo: 'patio_da_granja', x: 3.95, z: 1.05, logradouro: true },
   { quarteirao: 'orla', tipo: 'caminho_do_acude', x: 4.6, z: -1.6, logradouro: true },
+  // LOGRADOURO v2 (E5): a travessa dos fundos corre ATRÁS da High Street sul,
+  // entre o casario da rua e a ruela dos cottages — os fundos do pub. Por
+  // isso é do quarteirão do pub. A adjacência dela NÃO sai da distância (ver
+  // ADJACENCIA_CURADA): a back lane é o grafo discreto, pouco vigiado.
+  { quarteirao: 'high_street_sul', tipo: 'travessa_dos_fundos', x: -1.7, z: 1.15, logradouro: true },
 ];
 
 // A ruela dos cottages, ao sul da High Street: a fileira de casas de
@@ -141,6 +146,11 @@ const POS_LINEAR = {
   casa_do_medico: { x: -1.5, z: 0.95 }, forja: { x: -0.3, z: 0.95 },
   granja: { x: 4.0, z: 0.95 }, moinho: { x: 4.9, z: -0.85 }, estacao: { x: 5.4, z: 0.95 },
   adro_da_igreja: { x: -4.7, z: 0.05 }, patio_da_granja: { x: 4.0, z: 1.9 }, caminho_do_acude: { x: 4.9, z: -1.85 },
+  // Na fita linear, o vão entre a fila de lojas (z≈0,95) e a dos cottages
+  // (z≈1,9) é estreito demais para um lote com folga; a viela vai ao fim
+  // nascente da rua (a rota de serviço que sai da High Street). A vizinhança
+  // dela é curada ao pub, não à distância — a posição é só visual.
+  travessa_dos_fundos: { x: 1.2, z: 1.5 },
 };
 const RUELA_LINEAR = { quarteirao: 'ruela_dos_cottages', z: 1.9, x0: -4.0, passo: 0.8, minimo: 4, maximo: 6 };
 
@@ -154,6 +164,9 @@ const POS_GREEN = {
   mercearia: { x: 2.7, z: 1.75 }, forja: { x: 1.4, z: 2.0 }, casa_do_medico: { x: 0.1, z: 2.05 },
   pub: { x: -1.2, z: 2.0 }, capela: { x: -2.6, z: 1.7 },
   adro_da_igreja: { x: -2.6, z: -1.35 }, patio_da_granja: { x: 4.3, z: -1.0 }, caminho_do_acude: { x: 4.95, z: -0.5 },
+  // No anel do green, a viela fica no arco externo, a poente do pub (entre
+  // ele e a capela), puxada para fora do gramado — atrás da fita sul.
+  travessa_dos_fundos: { x: -2.0, z: 2.45 },
 };
 const RUELA_GREEN = { quarteirao: 'ruela_dos_cottages', z: 0.9, x0: -3.4, passo: 0.9, minimo: 4, maximo: 6 };
 
@@ -181,6 +194,18 @@ const ROTULOS_QUARTEIRAO = {
 // Distância grosseira sob a qual dois lotes se OUVEM/AVISTAM (alimenta o
 // grafo de avistamentos da inserção). Em unidades de maquete.
 const LIMIAR_ADJACENCIA = 1.9;
+
+// LOGRADOUROS DE ADJACÊNCIA CURADA (OS Vila Viva E5). A travessa dos fundos
+// fica ENTRE prédios; por distância ela ficaria adjacente a 5–7 lotes (pub,
+// médico, forja e vários cottages) — o OPOSTO do que uma back lane é. A KB
+// (urbanismo-e-morfologia.md §2/§5) pede o beco POUCO vigiado: "o grafo
+// discreto por excelência". Então ela NÃO entra na malha de distância comum;
+// a sua vizinhança é curada — só o prédio-mãe (o pub, pelos fundos) e a
+// cottage cujo quintal dá nela. Fica em ~2 adjacências, como adro/pátio/açude,
+// sem saturar o grafo de avistamentos (bandas do relatório espacial v1).
+const ADJACENCIA_CURADA = {
+  travessa_dos_fundos: { predioMae: 'pub', cottagesAtras: 1 },
+};
 
 function salDaSeed(seed) {
   return typeof seed === 'string' ? seed : seed?.id || 'caso';
@@ -232,15 +257,36 @@ export function gerarCidade(seed, morfForcada = null) {
   }
 
   // Adjacência grosseira por distância entre lotes (pares ordenados uma
-  // vez, a < b): quem pode OUVIR quem — insumo do grafo de avistamentos.
+  // vez, a < b): quem pode OUVIR quem — insumo do grafo de avistamentos. Os
+  // logradouros de adjacência curada (E5) ficam FORA desta malha — a sua
+  // vizinhança é fixada logo abaixo, não sai da distância.
+  const curados = new Set(Object.keys(ADJACENCIA_CURADA));
   const adjacencias = [];
   for (let i = 0; i < predios.length; i++) {
     for (let j = i + 1; j < predios.length; j++) {
       const a = predios[i];
       const b = predios[j];
+      if (curados.has(a.id) || curados.has(b.id)) continue;
       const dist = Math.hypot(a.pos.x - b.pos.x, a.pos.z - b.pos.z);
       if (dist <= LIMIAR_ADJACENCIA) adjacencias.push([a.id, b.id]);
     }
+  }
+  // Arestas CURADAS dos logradouros excêntricos (E5): prédio-mãe + a(s)
+  // cottage(s) mais próxima(s). Ordem determinística (distância, desempate
+  // por id) — o replay do mundo fica byte-idêntico.
+  for (const logId of Object.keys(ADJACENCIA_CURADA)) {
+    const regra = ADJACENCIA_CURADA[logId];
+    const log = predios.find((p) => p.id === logId);
+    if (!log) continue;
+    const vizinhos = [];
+    if (predios.some((p) => p.id === regra.predioMae)) vizinhos.push(regra.predioMae);
+    const cottages = predios
+      .filter((p) => p.tipo === 'cottage')
+      .map((p) => ({ id: p.id, d: Math.hypot(p.pos.x - log.pos.x, p.pos.z - log.pos.z) }))
+      .sort((a, b) => a.d - b.d || (a.id < b.id ? -1 : 1))
+      .slice(0, regra.cottagesAtras)
+      .map((p) => p.id);
+    for (const vId of [...vizinhos, ...cottages]) adjacencias.push([logId, vId]);
   }
 
   // Quarteirões presentes (na ordem do traçado).

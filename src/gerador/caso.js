@@ -225,7 +225,10 @@ export function gerarCasoBruto(seed, opts = {}) {
   // premeditado; todo engodo deposita vestígio — GE6). Sem via possível, a
   // moeda recai em interno (salvaguarda §3.6): nenhum sal existente é
   // tocado e o caso interno permanece byte-idêntico ao de antes da E2.
-  const LOGRADOURO_DO_PREDIO = { granja: 'patio_da_granja', moinho: 'caminho_do_acude', igreja: 'adro_da_igreja' };
+  // E5: a travessa dos fundos é anexa ao pub (a viela de serviço atrás da
+  // High Street sul). O pub NÃO é opcional em TIPOS_PREDIO, então existe em
+  // toda seed — a via de rotina pelo pub é sempre possível.
+  const LOGRADOURO_DO_PREDIO = { granja: 'patio_da_granja', moinho: 'caminho_do_acude', igreja: 'adro_da_igreja', pub: 'travessa_dos_fundos' };
   // Parecer do perito (E2, A3): a via de ROTINA só ativa em faixa cuja
   // descoberta ao amanhecer é plausível — um morto do meio-dia num pátio
   // ativo jazeria 18h sem ser achado. Pátio e adro (frequentação diurna)
@@ -236,6 +239,14 @@ export function gerarCasoBruto(seed, opts = {}) {
     patio_da_granja: [], // diurno — só por chamariz (noite/madrugada, deserto)
     caminho_do_acude: ['noite'], // o moleiro fecha a comporta ao fim do dia (§1.3e)
     adro_da_igreja: [], // diurno — só por chamariz
+    // E5: chamariz-only, como adro e pátio. A viela é rota DISCRETA e pouco
+    // frequentada (urbanismo §2/§5) — a sua força é o encontro furtivo, não a
+    // rotina. Uma via de rotina pelo pub inundaria o logradouro (o pub é o
+    // local noturno de maior tráfego da vila): mediu-se travessa em 42% dos
+    // logradouros com rotina-noite ligada, contra os ~25% de equilíbrio. A
+    // rotina do taverneiro/carroceiro pede keying mais estreito (só quando a
+    // vítima é a do ofício) — refino de v3, fora da E5.
+    travessa_dos_fundos: [],
   };
   const salBaseCaso = salBaseCasoCedo;
   let palco = null;
@@ -247,7 +258,7 @@ export function gerarCasoBruto(seed, opts = {}) {
     } else if (cenario === 'premeditado') {
       // Interceptação com chamariz (§3.4b): a vítima é atraída ao
       // logradouro — de noite/madrugada, todos estão desertos (dossiê §1e).
-      const tipos = ['adro_da_igreja', 'patio_da_granja', 'caminho_do_acude'];
+      const tipos = ['adro_da_igreja', 'patio_da_granja', 'caminho_do_acude', 'travessa_dos_fundos'];
       const logradouroId = tipos[hashDecisao(`${salBaseCaso}|caso|chamariz|local`) % tipos.length];
       const engodo = ['bilhete', 'recado'][hashDecisao(`${salBaseCaso}|caso|chamariz|engodo`) % 2];
       const outrosDoChamariz = elenco.filter((p) => p.id !== vitima.id && p.id !== assassino.id);
@@ -269,7 +280,7 @@ export function gerarCasoBruto(seed, opts = {}) {
     const salD = `${salBaseCaso}|caso|descoberta`;
     const horaDescoberta = 6 + (hashDecisao(`${salD}|hora`) % 11) * 0.25;
     const chegadaPerito = Math.min(13, horaDescoberta + 2 + (hashDecisao(`${salD}|perito`) % 9) * 0.25);
-    const PREDIO_DO_LOGRADOURO = { patio_da_granja: 'granja', caminho_do_acude: 'moinho', adro_da_igreja: 'igreja' };
+    const PREDIO_DO_LOGRADOURO = { patio_da_granja: 'granja', caminho_do_acude: 'moinho', adro_da_igreja: 'igreja', travessa_dos_fundos: 'pub' };
     const predioMae = PREDIO_DO_LOGRADOURO[palco.logradouroId];
     const descobridor = elenco.find(
       (p) =>

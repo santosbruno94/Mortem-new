@@ -156,6 +156,28 @@ ordem. Explicar o resultado para leigo em programação.
 > A bancada de balanço da E4 (Monte Carlo) está montada e as bandas v1 estão provadas.
 > O prompt abaixo foi enriquecido com o mapa concreto de implementação levantado na
 > investigação da E5.
+>
+> **Estado (E5 — sessão de implementação):** a travessa dos fundos está ATIVADA e no
+> branch — 4º tipo de logradouro em todos os canos (espaço/mobília/física, interior
+> 8×3, lote ancorado ao pub nas 3 morfologias, wiring de palco chamariz-only,
+> superfície do respingo). A **adjacência curada** deixa a viela em ~2 vizinhos (pub +
+> 1 cottage) nas 3 morfologias — o "grafo discreto" da KB, sem saturar 5–7. Balanço de
+> 20 000: regime-palco 74,6/15,5/10,0 (nas bandas); tipos de logradouro ~25% cada
+> (adro 23,3 · pátio 24,5 · açude 26,2 · travessa 26,0); afogamento externo 7,6%.
+> Build, integridade espacial, casos embarcados byte-a-byte, GE4, GE6, lint-prosa e as
+> demais 110 checagens do qa.mjs: VERDE.
+>
+> **PENDÊNCIA À ESPERA DE DECISÃO DO AUTOR — GE5.** O teto de 40% para a família
+> asfixia nas cenas externas ficou VERMELHO no lote fixo de 150 seeds (asfixia 52% em
+> só 23 cenas externas). NÃO é regressão da E5: a população segue em 41,6% (v1: 41,0% —
+> a MESMA condição já registrada no relatório espacial v1 §3 e no registro #10.6). O
+> guard de 150 seeds tem amostra minúscula; ao entrar o 4º tipo, reembaralhou quais
+> seeds são externas e o lote saltou de 39% (v1) para 52%. Lotes maiores convergem à
+> população: 500→39,7%, 1500→43,2%, 20 000→41,6%. Como asfixia agrupa 3 dos 8 métodos,
+> o teto de 40% sempre foi apertado. Por ordem do plano E0 §4 ("banda fora ⇒ parar e
+> reportar, não consertar sozinho"), a calibração do GE5 (ampliar o lote do guard e/ou
+> subir Y para ~45%, vs. pesar a seleção de método) fica para o autor decidir; o código
+> da travessa NÃO depende dessa decisão.
 
 ```text
 Leia CLAUDE.md e docs/os-vila-viva-e0-plano.md (etapa E5) antes de tocar em código.

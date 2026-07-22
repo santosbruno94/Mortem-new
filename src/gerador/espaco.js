@@ -251,6 +251,24 @@ export const TIPOS_PREDIO = {
     proveniencia:
       'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §7 (moinho d’água: açude e levada, ruído constante) e §5 (a rede de footpaths, stiles e portões como segundo grafo da vila)',
   },
+  // ----- LOGRADOURO v2 (OS Vila Viva E5) — a travessa dos fundos: o -----
+  // "segundo grafo" da vila, a viela de serviço atrás da fita de lotes.
+  // Silhueta de chão rasa como os demais logradouros; a adjacência dela é
+  // CURADA (cidade.js) — fica entre prédios, mas a KB pede o beco POUCO
+  // vigiado (grafo discreto), não o cruzamento de todas as vistas.
+  travessa_dos_fundos: {
+    id: 'travessa_dos_fundos',
+    rotulo: 'A Travessa dos Fundos',
+    unico: true,
+    logradouro: true,
+    silhueta: {
+      w: [1.25, 1.4], d: [0.5, 0.6], h: [0.04, 0.06], telhadoAltura: [0.01, 0.02],
+      beiral: 0, ristela: false, chamines: 0,
+      paletaParede: ['#6a6252', '#655e4f'], paletaTelhado: ['#565043', '#514c3f'],
+    },
+    proveniencia:
+      'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §2 (toda loja da rua tem porta discreta na viela) e §5 (a back lane, o grafo discreto por excelência; piso de terra, iluminação zero) e arquitetura-em-detalhe.md §8 (escotilha da adega do pub no pátio lateral)',
+  },
 };
 
 // ---------------------------------------------------------------------
@@ -523,6 +541,27 @@ export const MOBILIA_DE_OFICIO = {
     ],
     proveniencia: 'docs/kb-mundo-vitoriano/urbanismo-e-morfologia.md §7 (a comporta do açude) e arquitetura-e-espacos.md §1 (sacas, mobília canônica do moinho)',
   },
+  // ----- MOBÍLIA DA TRAVESSA DOS FUNDOS (E5, logradouro v2) — os cantos -----
+  // do beco de serviço. Dossiê docs/os-palco-em-aneis-e2-dossie.md §1.4c.
+  fundos_do_pub: {
+    itens: [
+      { id: 'barris_vazios', rotulo: 'barris vazios empilhados' },
+      { id: 'escotilha_da_adega', rotulo: 'escotilha da adega no calçamento' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-em-detalhe.md §8 (a escotilha da adega do pub no pátio lateral; os barris no fundo) e vida-cotidiana.md §1 (o cellarman desce à adega)',
+  },
+  quintais: {
+    itens: [
+      { id: 'varal_e_tina', rotulo: 'varal com a tina de lavar embaixo' },
+      { id: 'monturo', rotulo: 'monturo dos fundos' },
+      { id: 'privada_externa', rotulo: 'privada externa de tábua' },
+    ],
+    proveniencia: 'docs/kb-mundo-vitoriano/vida-cotidiana.md §4 (a segunda de lavar: varal e tina) e urbanismo-e-morfologia.md §4 (monturo junto de quase toda porta) e arquitetura-e-espacos.md §6 (privada externa dos quintais)',
+  },
+  viela: {
+    itens: [{ id: 'carvoeira', rotulo: 'boca da carvoeira rente ao chão' }],
+    proveniencia: 'docs/kb-mundo-vitoriano/arquitetura-e-espacos.md §6 (a coal hole que abre para a viela) e urbanismo-e-morfologia.md §4 (o beco de terra, iluminação zero)',
+  },
 };
 
 // Proveniência das tabelas deste arquivo (uma linha por tabela, modelo
@@ -703,6 +742,12 @@ export const FISICA_DA_MOBILIA = {
   pranchao_de_travessia: { empunhavel: false, massa: 'media', bloqueia: false, quinaPerigosa: false },
   comporta_de_engrenagem: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
   sacas_esquecidas: { empunhavel: false, massa: 'media', bloqueia: false, quinaPerigosa: false },
+  // ----- travessa dos fundos (E5, logradouro v2) -----
+  barris_vazios: { empunhavel: false, massa: 'media', bloqueia: true, quinaPerigosa: false },
+  escotilha_da_adega: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: true },
+  varal_e_tina: { empunhavel: false, massa: 'media', bloqueia: false, quinaPerigosa: false },
+  privada_externa: { empunhavel: false, massa: 'fixa', bloqueia: true, quinaPerigosa: false },
+  carvoeira: { empunhavel: false, massa: 'fixa', bloqueia: false, quinaPerigosa: true },
 };
 
 // Números de eficácia das peças empunháveis — TODOS chute-calibrável
