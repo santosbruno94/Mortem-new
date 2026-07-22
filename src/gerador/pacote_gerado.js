@@ -1476,6 +1476,12 @@ function montarLocalidades(bruto, cartas) {
       ...(fraseDescoberta ? [fraseDescoberta] : []),
     ],
     pontos: pontosCena,
+    // E1 (OS Vila Viva): a planta projetada do grid (mesmo schema de
+    // PLANTA_RELOJOARIA) viaja no pacote para o componente desenhá-la. Cada
+    // cômodo da planta tem o mesmo `id` do cômodo de que o ponto deriva
+    // (pontosCena[].comodo), o que liga a planta ao acordeão sem que regra
+    // alguma a leia. Camada VISUAL — o motor jamais toca aqui.
+    planta: interior.planta,
     blocosContingentes: blocosPorLocalidade.cena || [],
   };
 

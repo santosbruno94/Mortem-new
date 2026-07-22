@@ -680,7 +680,9 @@ async function main() {
     // ============================================================
     console.log('\n=== ROTA GERADA — a réplica procedural (?caso=) ===');
     await page.goto(BASE + `?caso=gerado_${SEED_REPLICA}`);
-    await espera(page, 800);
+    // Esperar o seletor de modos MONTAR (em vez de um tempo fixo) — robusto
+    // à latência de arranque, que varia com a carga da máquina.
+    await page.waitForSelector('[data-modo]', { timeout: 15000 });
     checar('Rota gerada: os 4 modos aparecem na tela inicial', (await page.locator('[data-modo]').count()) === 4);
     checar(
       'Rota gerada: o modo réplica nasce selecionado pelo ?caso=',
@@ -706,6 +708,12 @@ async function main() {
     // revela a prosa (com ou sem termo — pontos de ambiência existem).
     await abrirNo(page, 'A Cena do Crime');
     checar('Rota gerada: a cena expõe o acordeão de pontos', (await page.locator('.ponto-interesse').count()) >= 1);
+    // E1 (OS Vila Viva): a planta gerada do prédio chega ao jogador (SVG 2D,
+    // [data-planta]). Clicar um cômodo da planta abre o ponto do acordeão.
+    checar('Rota gerada: a planta gerada aparece na cena (data-planta)', (await page.locator('[data-planta]').count()) >= 1);
+    await page.locator('[data-planta] [data-alvo-comodo]').first().click();
+    await espera(page, 250);
+    checar('Rota gerada: clicar um cômodo da planta abre o ponto', (await page.locator('.ponto-corpo').count()) >= 1);
     await abrirPontos(page);
     checar(
       'Rota gerada: abrir os pontos revela a prosa dos cômodos',
@@ -757,7 +765,9 @@ async function main() {
     // ao MESMO caso (o save guarda o casoId; o App recarrega o pacote
     // certo antes do render — nunca se cai no caso-escola por engano).
     await page.goto(BASE);
-    await espera(page, 800);
+    // Esperar o gate de retomada MONTAR (em vez de um tempo fixo) — o botão
+    // "Continuar o caso" surge quando o App reidrata o save.
+    await page.getByRole('button', { name: 'Continuar o caso' }).waitFor({ timeout: 15000 });
     checar('Rota gerada: recarregar oferece a retomada', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 1);
     await page.getByRole('button', { name: 'Continuar o caso' }).click();
     await espera(page, 600);

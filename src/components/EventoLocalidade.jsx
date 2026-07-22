@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import PlantaRelojoaria from './PlantaRelojoaria.jsx';
+import Planta from './Planta.jsx';
+import { modoFlat } from '../logic/webgl.js';
 import {
   obterCaso,
   obterVerdadeDeOuro,
@@ -58,6 +60,26 @@ export default function EventoLocalidade({ localidadeId }) {
   // clicáveis (acordeão); senão, a prosa monolítica de sempre.
   const temPontos = Array.isArray(localidade.pontos) && localidade.pontos.length > 0;
   const alternarPonto = (id) => setPontosAbertos((s) => ({ ...s, [id]: !s[id] }));
+
+  // A planta da cena procedural (§5.1 / OS Vila Viva E1): a planta gerada
+  // (localidade.planta) desenha os cômodos e liga cada um ao ponto do
+  // acordeão que dele deriva (pt_cena_<comodo> tem `comodo === c.id`).
+  // Camada VISUAL: o motor não a lê. Fallback obrigatório — sem planta no
+  // pacote OU em ?flat=1, o acordeão de sempre assume, idêntico.
+  const mostrarPlantaCena = temPontos && !!localidade.planta && !modoFlat();
+  const pontoDoComodo = (comodoId) => (localidade.pontos || []).find((p) => p.comodo === comodoId);
+  const comodosAtivos = (localidade.pontos || []).filter((p) => pontosAbertos[p.id]).map((p) => p.comodo);
+  // Clicar um cômodo na planta abre o ponto correspondente e o traz à vista.
+  const abrirComodoNaPlanta = (comodoId) => {
+    const ponto = pontoDoComodo(comodoId);
+    if (!ponto) return;
+    setPontosAbertos((s) => ({ ...s, [ponto.id]: true }));
+    if (typeof document !== 'undefined') {
+      requestAnimationFrame(() =>
+        document.querySelector(`[data-ponto="${ponto.id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      );
+    }
+  };
   const idsDoTexto = (paragrafos) => [
     ...new Set(paragrafos.flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))),
   ];
@@ -215,6 +237,12 @@ export default function EventoLocalidade({ localidadeId }) {
     >
       {/* A planta baixa (§5.1): andar entre os cômodos do mesmo prédio. */}
       {naRelojoaria && <PlantaRelojoaria localidadeAtual={localidade.id} />}
+      {/* A planta da cena procedural (OS Vila Viva E1): desenha os cômodos
+          do grid e liga cada um ao ponto do acordeão. Não é navegação de
+          nós — é destaque do cômodo aberto. */}
+      {mostrarPlantaCena && (
+        <Planta planta={localidade.planta} comodosAtivos={comodosAtivos} onComodoClick={abrirComodoNaPlanta} />
+      )}
       {ehCorpo ? (
         // O exame em dois painéis: a PRANCHA de atlas acompanha a prosa.
         // A prancha é redundância deliberada — clicar num hotspot extrai as

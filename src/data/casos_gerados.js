@@ -594,6 +594,59 @@ export const CASO_REPLICA = {
      ]
     }
    ],
+   "planta": {
+    "titulo": "Cottage nº 3",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": [
     {
      "eventoId": "intf_1",
@@ -2340,6 +2393,58 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "O Moinho",
+    "viewBox": "0 0 178 178",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Casa do Moleiro",
+      "contorno": "M24 24 H76 V76 H24 Z",
+      "rotuloPos": {
+       "x": 50,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M76 24 H154 V76 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "piso_do_moinho",
+      "rotulo": "Piso do Moinho",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 89,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -3960,6 +4065,47 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 81 H123 V97 H107 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -5547,6 +5693,60 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Mercearia",
+    "viewBox": "0 0 204 178",
+    "comodos": [
+     {
+      "id": "deposito",
+      "rotulo": "Depósito",
+      "contorno": "M24 24 H128 V102 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto (sobrado)",
+      "contorno": "M128 24 H180 V102 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "loja",
+      "rotulo": "A Loja",
+      "contorno": "M24 102 H180 V154 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 29 H123 V45 H107 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M81 107 H97 V123 H81 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -7125,6 +7325,58 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "O Caminho do Açude",
+    "viewBox": "0 0 256 152",
+    "comodos": [
+     {
+      "id": "margem",
+      "rotulo": "A Margem de Junco",
+      "contorno": "M24 24 H180 V76 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "comporta",
+      "rotulo": "A Comporta do Açude",
+      "contorno": "M180 24 H232 V76 H180 Z",
+      "rotuloPos": {
+       "x": 206,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "vereda",
+      "rotulo": "A Vereda entre Sebes",
+      "contorno": "M24 76 H232 V128 H24 Z",
+      "rotuloPos": {
+       "x": 128,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M185 107 H201 V123 H185 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -8737,6 +8989,72 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 29 H123 V45 H107 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M211 107 H227 V123 H211 Z",
+     "M211 133 H227 V149 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -10488,6 +10806,72 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M107 81 H123 V97 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M185 81 H201 V97 H185 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -12330,6 +12714,72 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M185 81 H201 V97 H185 Z",
+     "M211 81 H227 V97 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -14060,6 +14510,59 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "Cottage nº 4",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 107 H123 V123 H107 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -15684,6 +16187,59 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "Cottage nº 2",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 107 H97 V123 H81 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": [
     {
      "eventoId": "intf_1",
@@ -17399,6 +17955,72 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M29 133 H45 V149 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M211 107 H227 V123 H211 Z",
+     "M211 133 H227 V149 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -19094,6 +19716,58 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "O Caminho do Açude",
+    "viewBox": "0 0 256 152",
+    "comodos": [
+     {
+      "id": "margem",
+      "rotulo": "A Margem de Junco",
+      "contorno": "M24 24 H180 V76 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "comporta",
+      "rotulo": "A Comporta do Açude",
+      "contorno": "M180 24 H232 V76 H180 Z",
+      "rotuloPos": {
+       "x": 206,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "vereda",
+      "rotulo": "A Vereda entre Sebes",
+      "contorno": "M24 76 H232 V128 H24 Z",
+      "rotuloPos": {
+       "x": 128,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M185 29 H201 V45 H185 Z",
+     "M55 81 H71 V97 H55 Z",
+     "M81 81 H97 V97 H81 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -20860,6 +21534,59 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "Cottage nº 3",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": [
     {
      "eventoId": "intf_2",
@@ -22790,6 +23517,69 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "O Adro da Igreja",
+    "viewBox": "0 0 230 178",
+    "comodos": [
+     {
+      "id": "quadra_sul",
+      "rotulo": "A Quadra das Lápides",
+      "contorno": "M24 24 H76 V154 H24 Z",
+      "rotuloPos": {
+       "x": 50,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "alameda",
+      "rotulo": "A Alameda das Lajes",
+      "contorno": "M76 24 H154 V128 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "lychgate",
+      "rotulo": "O Portão Coberto",
+      "contorno": "M76 128 H154 V154 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 142
+      },
+      "alvos": []
+     },
+     {
+      "id": "fundo_norte",
+      "rotulo": "O Fundo Evitado",
+      "contorno": "M154 24 H206 V154 H154 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 133 H45 V149 H29 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M107 133 H123 V149 H107 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M159 133 H175 V149 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 115,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -24397,6 +25187,72 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -26039,6 +26895,59 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Mercearia",
+    "viewBox": "0 0 204 178",
+    "comodos": [
+     {
+      "id": "deposito",
+      "rotulo": "Depósito",
+      "contorno": "M24 24 H102 V102 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto (sobrado)",
+      "contorno": "M102 24 H180 V102 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "loja",
+      "rotulo": "A Loja",
+      "contorno": "M24 102 H180 V154 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -27647,6 +28556,57 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Delegacia",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "expediente",
+      "rotulo": "Expediente",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cela",
+      "rotulo": "Cela",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "moradia",
+      "rotulo": "Moradia",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M159 81 H175 V97 H159 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -29358,6 +30318,47 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -31087,6 +32088,67 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "O Solar",
+    "viewBox": "0 0 256 204",
+    "comodos": [
+     {
+      "id": "jantar",
+      "rotulo": "Sala de Jantar",
+      "contorno": "M24 24 H154 V102 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V102 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M24 102 H154 V180 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 116
+      },
+      "alvos": []
+     },
+     {
+      "id": "hall",
+      "rotulo": "Hall",
+      "contorno": "M154 102 H232 V180 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M211 29 H227 V45 H211 Z",
+     "M211 81 H227 V97 H211 Z",
+     "M159 81 H175 V97 H159 Z",
+     "M55 159 H71 V175 H55 Z",
+     "M29 159 H45 V175 H29 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 196
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -32678,6 +33740,71 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "O Solar",
+    "viewBox": "0 0 256 204",
+    "comodos": [
+     {
+      "id": "jantar",
+      "rotulo": "Sala de Jantar",
+      "contorno": "M24 24 H128 V102 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V102 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M24 102 H128 V180 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 116
+      },
+      "alvos": []
+     },
+     {
+      "id": "hall",
+      "rotulo": "Hall",
+      "contorno": "M128 102 H232 V180 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 81 H71 V97 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M185 29 H201 V45 H185 Z",
+     "M81 159 H97 V175 H81 Z",
+     "M29 159 H45 V175 H29 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M211 133 H227 V149 H211 Z",
+     "M185 159 H201 V175 H185 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 196
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -34308,6 +35435,72 @@ export const CASOS_POOL = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M185 29 H201 V45 H185 Z",
+     "M107 133 H123 V149 H107 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M185 133 H201 V149 H185 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -35980,6 +37173,47 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": [
     {
      "eventoId": "intf_1",
@@ -38024,6 +39258,47 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": [
     {
      "eventoId": "intf_1",
@@ -39928,6 +41203,47 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -41902,6 +43218,47 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -43996,6 +45353,59 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "Cottage nº 6",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M159 107 H175 V123 H159 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": [
     {
      "eventoId": "intf_1",
@@ -46003,6 +47413,72 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M185 133 H201 V149 H185 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -48045,6 +49521,47 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -50076,6 +51593,47 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 107 H123 V123 H107 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -52060,6 +53618,72 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M185 81 H201 V97 H185 Z",
+     "M211 81 H227 V97 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
    "blocosContingentes": []
   },
   {
@@ -54097,6 +55721,47 @@ export const CASOS_LUTA = [
      ]
     }
    ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 29 H45 V45 H29 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M133 107 H149 V123 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
    "blocosContingentes": [
     {
      "eventoId": "intf_1",

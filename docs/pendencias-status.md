@@ -53,7 +53,7 @@ Relatório versionado: [`docs/playtest/2026-07-19-conclusoes-humanas.md`](./play
 | 14 | Mural: cartas de "mentiras" já rotuladas → repensar | Decisão de design |
 | 16 | Móbil ligado ao réu; cada suspeito com um móbil | Decisão + mecânica |
 | 11 | Diálogos: exposição contida no próprio diálogo | Decisão + mecânica |
-| 8 | Mapa: cômodos de um local → planta única navegável | Design espacial |
+| 8 | Mapa: cômodos de um local → planta única navegável | ✅ Feito (OS Vila Viva E1): planta generalizada (`Planta.jsx`) desenha a planta gerada do prédio na cena procedural; clicar o cômodo abre o ponto e o cômodo aberto realça. Fallback textual em `?flat=1`/sem planta |
 | 9 | Silas e o aprendiz saem da cena após a polícia cercar | Dados/narrativa |
 | 1 | Refazer a abertura | ✅ Feito (S3, prosa) |
 | 2 | Voz do mestre via glossário + "o mestre já falou disso" | ✅ Feito (S3): "A voz do mestre" + link ao Glossário |
