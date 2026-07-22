@@ -20,7 +20,7 @@ import {
   custoViagem,
   obterNo,
 } from '../data/pacote_caso.js';
-import { ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
+import { ipmAtual, formatDuracao, formatTemperatura, formatRelogio } from '../logic/tempo.js';
 import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { ligacaoDeConfrontoEmCena } from '../logic/acusacao.js';
@@ -233,7 +233,7 @@ export const useJogo = create(
   iniciarInvestigacao: () =>
     set((s) => ({
       faseJogo: 'investigacao',
-      localidadeAtual: 'cena', // o perito chega à cena (a relojoaria) às 13h
+      localidadeAtual: 'cena', // o perito chega à cena na hora do pacote (parametrosCena.horasChegada)
       nosVisitados: ['cena'],
       nosVisitadosDialogo: {},
       noAtualDialogo: {},
@@ -244,7 +244,9 @@ export const useJogo = create(
       ecoInterferencias: [],
       log: [
         ...s.log,
-        { hora: s.horasJogo, texto: 'Investigação iniciada na cena, às 13h00 de 14 de outubro.' },
+        // A hora sai do relógio corrente + calendário do pacote — nunca texto
+        // fixo: os casos gerados chegam em horas diferentes do caso-escola.
+        { hora: s.horasJogo, texto: `Investigação iniciada na cena — ${formatRelogio(s.horasJogo, obterCaso().parametrosCena.calendario)}.` },
       ],
     })),
 

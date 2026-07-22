@@ -681,7 +681,7 @@ async function main() {
     console.log('\n=== ROTA GERADA — a réplica procedural (?caso=) ===');
     await page.goto(BASE + `?caso=gerado_${SEED_REPLICA}`);
     await espera(page, 800);
-    checar('Rota gerada: os 3 modos aparecem na tela inicial', (await page.locator('[data-modo]').count()) === 3);
+    checar('Rota gerada: os 4 modos aparecem na tela inicial', (await page.locator('[data-modo]').count()) === 4);
     checar(
       'Rota gerada: o modo réplica nasce selecionado pelo ?caso=',
       (await page.locator('[data-modo="replica"][aria-pressed="true"]').count()) === 1

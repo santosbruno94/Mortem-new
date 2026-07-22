@@ -71,6 +71,7 @@ import {
   ITENS_COM_AGUA,
 } from '../src/gerador/espaco.js';
 import { gerarCasoBruto } from '../src/gerador/caso.js';
+import { HORAS_CHEGADA_INTERNO } from '../src/gerador/ponte_caso.js';
 import { METODOS, PROVENIENCIA_METODOS } from '../src/gerador/metodos.js';
 import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS, SEDES_POR_REGIAO } from '../src/gerador/vestigios.js';
 import { CATALOGO_ACOES, DOUTRINA_VITIMA, DOUTRINA_ASSASSINO, doutrina, acoesLegais } from '../src/gerador/doutrinas.js';
@@ -1611,8 +1612,8 @@ function problemasDaPonte(caso) {
   const verdade = fatia.verdadeDeOuro;
   const horaMorte = crime.hora.morte;
   // E2: no palco externo a chegada é variável (descoberta + 2–4h, teto
-  // 13h); no interno, a convenção das 13h do caso-escola.
-  const horaExame = caso.escolha.palco?.externo ? caso.escolha.palco.descoberta.chegadaPerito : 13;
+  // 13h); no interno, a fonte única da ponte (11h — diagnóstico A3).
+  const horaExame = caso.escolha.palco?.externo ? caso.escolha.palco.descoberta.chegadaPerito : HORAS_CHEGADA_INTERNO;
   const ipm = horaExame - horaMorte;
 
   if (verdade.reuCorreto !== crime.assassinoId) problemas.push('réu da verdade ≠ assassino do registro');

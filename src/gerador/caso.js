@@ -25,7 +25,7 @@ import { gerarMundo } from './mundo.js';
 import { saoAdjacentes } from './cidade.js';
 import { METODOS, metodosElegiveis } from './metodos.js';
 import { resolverCrime } from './crime.js';
-import { fatiaForenseDoCrime } from './ponte_caso.js';
+import { fatiaForenseDoCrime, HORAS_CHEGADA_INTERNO } from './ponte_caso.js';
 import { sortearEsqueletoInterferencia, gerarInterferencias } from './interferencia.js';
 import { derivarPsiqueDoCaso } from './vetores_psiquicos.js';
 import { SINAL_POR_METODO, PROFISSAO_PARA_MARCA, MARCAS_INOCENTES_OFICIO, MARCAS_SITUACIONAIS } from './marcas_exigiveis.js';
@@ -434,8 +434,9 @@ export function gerarCasoBruto(seed, opts = {}) {
     crime,
     testemunhaVistoVivoId: esqueleto.testemunhaVistoVivoId,
     // E2: chegada do perito variável no palco externo (descoberta + 2–4h,
-    // teto 13h); interno segue no default 13h — replay intacto.
-    horasChegada: descoberta ? descoberta.chegadaPerito : undefined,
+    // teto 13h); interno usa a fonte única HORAS_CHEGADA_INTERNO — a mesma
+    // hora que o pacote grava em parametrosCena.horasChegada (A3).
+    horasChegada: descoberta ? descoberta.chegadaPerito : HORAS_CHEGADA_INTERNO,
     chamariz: palco ? palco.chamariz : null,
   });
 

@@ -1,5 +1,5 @@
 import { useJogo } from '../store/jogo.js';
-import { obterVerdadeDeOuro, obterDefinicaoCarta, resolverEstadoCarta } from '../data/pacote_caso.js';
+import { obterVerdadeDeOuro, obterParametrosCena, obterDefinicaoCarta, resolverEstadoCarta } from '../data/pacote_caso.js';
 import { ipmAtual } from '../logic/tempo.js';
 import { interpolar } from '../logic/interpolar.js';
 
@@ -26,7 +26,9 @@ export function ParagrafoProsa({
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const extrairCarta = useJogo((s) => s.extrairCarta);
   const abrirFicha = useJogo((s) => s.abrirFicha);
-  const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada);
+  // A hora de chegada vem do pacote (11h nos internos gerados; variável no
+  // externo) — o default 13h de ipmAtual é só do caso-escola (A3).
+  const ipm = ipmAtual(horasJogo, obterVerdadeDeOuro().horasMorteAntesChegada, obterParametrosCena().horasChegada);
 
   const partes = interpolar(texto, detective).split(/(\[\[\w+\]\])/g);
   return (
