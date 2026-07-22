@@ -9,7 +9,9 @@
 > [`docs/kb-medicina-legal/`](./docs/kb-medicina-legal/), e o restante do mundo, da psique
 > e do craft do mistério pelas demais bases (`docs/kb-mundo-vitoriano/`,
 > `docs/kb-psique-e-crime/`, `docs/kb-craft-narrativo/`, `docs/kb-producao/`). O design do
-> gerador por simulação vive em [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md).
+> gerador por simulação vive em [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md);
+> o plano (ainda não implementado) contra a genericidade espacial dos casos procedurais, em
+> [`docs/os-vila-viva-e0-plano.md`](./docs/os-vila-viva-e0-plano.md).
 
 ---
 
