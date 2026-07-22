@@ -82,6 +82,12 @@ com zero achados bloqueantes.**
   overlay e a ordem dos dois `<select>` da janela no mural são INTOCÁVEIS —
   qualquer mudança neles exige atualizar o QA no mesmo commit.
 
+## Antes de abrir PR (ordem permanente do usuário, 22/07/2026)
+
+Toda solicitação de abrir PR inclui, **automaticamente e no mesmo commit final**,
+atualizar `MORTEM_CONTEXTO.md` e `README.md` ao estado entregue pela branch
+(seções tocadas pelo trabalho: modos, arquitetura, horas, pastas, comandos).
+
 ## Perfil do criador
 
 Advogado sem background em programação. Explicações executáveis sem conhecimento de
