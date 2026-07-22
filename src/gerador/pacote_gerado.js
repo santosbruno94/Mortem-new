@@ -54,6 +54,7 @@ import { METODOS } from './metodos.js';
 import { HORAS_CHEGADA_INTERNO } from './ponte_caso.js';
 import { derivarDialogos, formasDoLugar, profissaoExibida, FAIXA_CURTA, variante } from './dialogos_gerados.js';
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
+import { obterPredio, saoAdjacentes } from './cidade.js';
 
 // ---------------------------------------------------------------------
 // A RÉPLICA do caso-escola (modo 2): seed fixa + variáveis dirigidas que
@@ -605,7 +606,7 @@ function derivarComarcaDoCaso({ bruto, ausenteId = null }) {
       subtitulo: `${sat.rotulo}, hora e meia de estrada`,
       acoesEspeciais: [],
       prosa: [
-        `Hora e meia de estrada. No gabinete, o procurador que servia ${aoMorto} pesa a carta do delegado, corre o dedo pelo ${temCobranca ? 'copiador de cartas' : 'livro do gabinete'} e o deixa aberto sobre a mesa: [[gen_registro_comarca]].`,
+        `Hora e meia de estrada. No gabinete, o procurador que servia ${aoMorto} pesa a carta do constable, corre o dedo pelo ${temCobranca ? 'copiador de cartas' : 'livro do gabinete'} e o deixa aberto sobre a mesa: [[gen_registro_comarca]].`,
       ],
     };
   }
@@ -853,6 +854,17 @@ function comodoEmFala(rotulo) {
     .toLowerCase()
     .replace(/\s*\((.+)\)$/, ' do $1')
     .replace(/^quartos\b/, 'quarto');
+}
+
+// Rótulo de quarteirão em VOZ DE PROSA, como sintagma de lugar (OS Vila
+// Viva E2): "A orla de trabalho" → "na orla de trabalho"; "O adro da
+// igreja" → "no adro da igreja"; "High Street — lado norte" → "na High
+// Street". Lê o ROTULOS_QUARTEIRAO de cidade.js — trocar lá não quebra aqui.
+function quarteiraoEmFala(rotulo) {
+  if (/^High Street/.test(rotulo)) return 'na High Street';
+  const artigo = /^O /.test(rotulo) ? 'no' : 'na';
+  const resto = rotulo.replace(/^[OA] /, '');
+  return `${artigo} ${resto.charAt(0).toLowerCase()}${resto.slice(1)}`;
 }
 
 // Frases de retrato comportamental por trait/comportamento — nota de
@@ -1110,7 +1122,7 @@ function realizarCartas(bruto) {
         const vFr = crime.vestigios.find((x) => x.classe === 'ferimento_do_agressor');
         const sedeFr = SEDE_LEGIVEL[vFr?.sede] || 'antebraços';
         nova.carimboPadrao = `Ferimento recente no suspeito (${sedeFr})`;
-        nova.descricao = `De manga arregaçada por ordem do delegado, ${reu.nome} mostra o que a roupa cobria: a marca recente de luta, ${sedeFr === 'fronte' || sedeFr === 'têmpora' ? 'na' : 'nos'} ${sedeFr}. A lesão tem os dias do crime, e a explicação doméstica não vem.`;
+        nova.descricao = `De manga arregaçada por ordem do constable, ${reu.nome} mostra o que a roupa cobria: a marca recente de luta, ${sedeFr === 'fronte' || sedeFr === 'têmpora' ? 'na' : 'nos'} ${sedeFr}. A lesão tem os dias do crime, e a explicação doméstica não vem.`;
         break;
       }
       case 'gen_sinal_exigivel': {
@@ -1218,6 +1230,40 @@ function realizarCartas(bruto) {
 }
 
 // ---------------------------------------------------------------------
+// RETRATO DA VILA (OS Vila Viva E2): fatos geográficos da cidade gerada
+// que a prosa das localidades passa a MOSTRAR — a ruela da vítima, os
+// vizinhos parede-meia, as distâncias reais, o que fica ao alcance. Deriva
+// de mundo.cidade × pacoteEspacial (o MESMO dado que o motor usa como
+// ouvintes/álibis): a prosa exibe o que a mecânica já computou, sem
+// inventar informação nem ler tagsOcultas. Endereço e quarteirão são fato
+// público (não são tagsOcultas) — nomeá-los é observação, não vazamento.
+// ---------------------------------------------------------------------
+
+function retratoDaVila(bruto, cartas, pessoas) {
+  const { mundo, crime, escolha } = bruto;
+  const cidade = mundo.cidade;
+  const cenaId = escolha.localId;
+  const cenaPredio = obterPredio(cidade, cenaId);
+  const quarteiraoCena = cidade.quarteiroes.find((q) => q.id === cenaPredio?.quarteirao) || null;
+  // Vizinhos parede-meia: quem MORA em lote adjacente à cena. Priorizamos
+  // os que a mecânica já nomeia (testemunha do ruído/corroboração) — a
+  // prosa nomeia exatamente quem o motor conta como ouvinte —, depois o
+  // resto do elenco adjacente. Ordem estável (sem sorteio): replay intacto.
+  const nomeadosEmCartas = new Set(cartas.map((c) => c.origemTestemunha).filter(Boolean));
+  const adjacentes = mundo.elenco.filter(
+    (p) =>
+      p.id !== crime.vitimaId &&
+      p.pacoteEspacial &&
+      p.pacoteEspacial.moradia &&
+      saoAdjacentes(cidade, p.pacoteEspacial.moradia, cenaId)
+  );
+  adjacentes.sort(
+    (a, b) => (nomeadosEmCartas.has(b.id) ? 1 : 0) - (nomeadosEmCartas.has(a.id) ? 1 : 0)
+  );
+  return { cidade, cenaId, cenaPredio, quarteiraoCena, adjacentes, nomeadosEmCartas };
+}
+
+// ---------------------------------------------------------------------
 // Localidades: prosa com os marcadores [[id]] de todas as cartas, mais os
 // blocos contingentes da interferência ({ eventoId, quando, paragrafos }).
 // ---------------------------------------------------------------------
@@ -1240,6 +1286,9 @@ function montarLocalidades(bruto, cartas) {
   // parede-meia.
   const palco = escolha.palco || { externo: false };
   const externo = !!palco.externo;
+  // OS Vila Viva E2: os fatos da vila gerada que a prosa das localidades
+  // passa a mostrar (ruela, vizinhos parede-meia, distâncias).
+  const retrato = retratoDaVila(bruto, cartas, pessoas);
   const fraseDescoberta =
     externo && palco.descoberta
       ? `${palco.descoberta.descobridorId ? nome(palco.descoberta.descobridorId) : 'Um transeunte'} deu com ${
@@ -1280,10 +1329,10 @@ function montarLocalidades(bruto, cartas) {
     gestos: [{ id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'gen_livores' }],
     prosa: [
       externo
-        ? `${femV ? 'A morta jaz' : 'O morto jaz'} ao relento, no canto a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} de sair. O delegado pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.`
+        ? `${femV ? 'A morta jaz' : 'O morto jaz'} ao relento, no canto a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} de sair. O constable pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.`
         : palco.pousada
-          ? `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como quem se recolheu para a noite. A rota seguia de manhã para as aldeias de além; a cama na taverna era a de sempre. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`
-          : `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O delegado pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`,
+          ? `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como quem se recolheu para a noite. A rota seguia de manhã para as aldeias de além; a cama na taverna era a de sempre. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`
+          : `${femV ? 'A morta jaz' : 'O morto jaz'} no chão do cômodo a que a vila chama ${comodoEmFala(rotuloComodo)}, ${femV ? 'vestida' : 'vestido'} como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.`,
       'Ao primeiro exame do tronco e dos membros, [[gen_rigor]].',
       pFerida,
       // OS autobattler v2 (B3): as superfícies novas do laudo, em rótulo
@@ -1490,15 +1539,15 @@ function montarLocalidades(bruto, cartas) {
   const fraseVisto = 'No registro da ronda, na letra do guarda: [[gen_visto_vivo]].';
   const delegacia = {
     id: 'delegacia',
-    rotuloMesa: 'A Delegacia',
-    titulo: 'A Delegacia',
+    rotuloMesa: 'O Posto do Constable',
+    titulo: 'O Posto do Constable',
     subtitulo: 'Os papéis do caso',
     acoesEspeciais: [],
     prosa: [
       variante(
         [
-          `A delegacia é uma sala de armários abertos. O delegado põe sobre a mesa o que os papéis guardam ${femV ? 'da morta' : 'do morto'} e da vila, e deixa {g:o senhor|a senhora} ler por si.`,
-          `A delegacia cheira a tinta e a poeira de papel. O delegado abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre ${femV ? 'a morta' : 'o morto'} está aí para quem leia.`,
+          `O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam ${femV ? 'da morta' : 'do morto'} e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.`,
+          `No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre ${femV ? 'a morta' : 'o morto'} está aí para quem leia.`,
         ],
         `${bruto.seed}|prosa|delegacia`
       ),
@@ -1517,7 +1566,7 @@ function montarLocalidades(bruto, cartas) {
         : []),
       // A árvore de diálogo procedural (OS própria): os interrogatórios
       // vivem aqui — a sala do expediente serve de sala de inquérito.
-      'Um a um, ao chamado do delegado, os nomes dos papéis vêm à sala do expediente; a cadeira do interrogado espera de frente para a janela.',
+      'Um a um, ao chamado do constable, os nomes dos papéis vêm ao posto; a cadeira do interrogado espera de frente para a janela.',
     ],
     blocosContingentes: [
       ...(evVisto
@@ -1562,18 +1611,26 @@ function montarLocalidades(bruto, cartas) {
       : 'As casas em volta, as janelas que dão para a rua',
     acoesEspeciais: [],
     prosa: [
+      // E2 (OS Vila Viva): a vizinhança descreve a vila que o gerador
+      // construiu — o quarteirão da cena e quem mora parede-meia (o mesmo
+      // elenco que o motor conta como ouvinte/álibi). Fair play: só
+      // geografia pública; nenhum dado novo, nenhuma tagsOculta.
       externo
         ? [
             'A cena fica a céu aberto; as casas mais próximas olham-na de longe, por cima de muro e sebe.',
             'Em volta, campo e muro baixo; até a primeira casa vai um bom pedaço de caminho.',
           ][hashDecisao(`${bruto.seed}|prosa|vizinhanca|externa`) % 2]
-        : variante(
-            [
-              'As casas em volta da cena têm paredes finas e janelas que dão para a mesma rua; entre uma casa e outra, um braço de distância.',
-              'A rua em volta da cena é curta, e as portas se conhecem pelo rangido; da janela de uma casa se enxerga a soleira da outra.',
-            ],
-            `${bruto.seed}|prosa|vizinhanca`
-          ),
+        : retrato.adjacentes.length > 0
+          ? `${sujeitoDoLugar(predioCena)} fica ${
+              retrato.quarteiraoCena ? quarteiraoEmFala(retrato.quarteiraoCena.rotulo) : 'no miolo da vila'
+            }; ${retrato.adjacentes[0].nome}, ${profissaoExibida(retrato.adjacentes[0].profissao)}, ${
+              // Evita o eco de "parede-meia" quando a linha do ruído (adiante)
+              // já o usa (testemunha que mora no próprio prédio da cena).
+              moraNoPredio ? 'mora porta com porta' : 'mora parede-meia'
+            }, e da janela de uma casa se alcança a soleira da outra.`
+          : `${sujeitoDoLugar(predioCena)} fica ${
+              retrato.quarteiraoCena ? quarteiraoEmFala(retrato.quarteiraoCena.rotulo) : 'no miolo da vila'
+            }, à parte das casas de morada; até a porta mais próxima vai um bom pedaço de caminho.`,
       ...(cartas.some((c) => c.id === 'gen_engodo' && c.localidade === 'vizinhanca')
         ? ['Do recado que correu na véspera: [[gen_engodo]].']
         : []),
@@ -1609,14 +1666,14 @@ function montarLocalidades(bruto, cartas) {
       id: 'oficio_do_reu',
       rotuloMesa: predioOficio,
       titulo: `${predioOficio} — a diligência`,
-      subtitulo: 'Busca autorizada pelo delegado',
+      subtitulo: 'Busca à porta do constable',
       acoesEspeciais: [],
       prosa: [
         cartaOficio.id === 'gen_ferimento_reu'
-          ? `A diligência corre com o delegado à porta e ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas a um canto. O delegado manda arregaçar as mangas: [[gen_ferimento_reu]].`
-          : `A diligência corre com o delegado à porta e ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[${cartaOficio.id}]].`,
+          ? `A diligência corre com o constable à porta e ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas a um canto. O constable manda arregaçar as mangas: [[gen_ferimento_reu]].`
+          : `A diligência corre com o constable à porta e ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[${cartaOficio.id}]].`,
         ...(cartaOficio.id !== 'gen_ferimento_reu' && cartasOficio.some((c) => c.id === 'gen_ferimento_reu')
-          ? [`Antes de liberar ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas, o delegado manda arregaçar as mangas: [[gen_ferimento_reu]].`]
+          ? [`Antes de liberar ${reu.genero === 'feminino' ? 'a dona' : 'o dono'} das coisas, o constable manda arregaçar as mangas: [[gen_ferimento_reu]].`]
           : []),
       ],
       blocosContingentes: blocosPorLocalidade.oficio_do_reu || [],
@@ -1749,18 +1806,18 @@ function montarAbertura(bruto, sal, suspeitos) {
       id: 'chamado',
       titulo: 'Batem à porta',
       paragrafos: [
-        `A Sra. Potts entra com o castiçal numa mão e um envelope na outra. "Veio a cavalo, de ${vila}. O rapaz disse que o delegado de lá manda dizer que é urgente."`,
+        `A Sra. Potts entra com o castiçal numa mão e um envelope na outra. "Veio a cavalo, de ${vila}. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente."`,
       ],
       rotuloBotao: 'Abrir o envelope',
     },
     {
       id: 'carta',
-      titulo: 'A carta do Delegado',
+      titulo: 'A carta do Constable',
       carta: true,
       paragrafos: [
         'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
-        `"{detective.treatment} {detective.surname} — Escrevo-lhe como delegado de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; a vila paga os seus honorários."`,
-        `"${delegado}, Delegado."`,
+        `"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários."`,
+        `"${delegado}, Constable."`,
       ],
       rotuloBotao: 'Aceitar o chamado',
     },
@@ -1778,13 +1835,13 @@ function montarAbertura(bruto, sal, suspeitos) {
       titulo: vila,
       paragrafos: [
         `A plataforma cheira a carvão e palha molhada. ${vila} estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.`,
-        `O delegado ${delegado} espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. "Agradeço a presteza. Venha; explico-me pelo caminho."`,
+        `O constable ${delegado} espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. "Agradeço a presteza. Venha; explico-me pelo caminho."`,
       ],
-      rotuloBotao: 'Ouvir o delegado',
+      rotuloBotao: 'Ouvir o constable',
     },
     {
       id: 'briefing',
-      titulo: `O relato do delegado ${delegado}`,
+      titulo: `O relato do constable ${delegado}`,
       briefing: true,
       paragrafos: [
         `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${profissaoExibida(vitima.profissao)}. ${femV ? 'Achada morta' : 'Achado morto'} ${formasDoLugar(nomeDoPredio(mundo.cidade, bruto.escolha.localId)).em}. Não toquei em nada e não prendi ninguém."`,

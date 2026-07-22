@@ -721,12 +721,12 @@ async function main() {
     );
     await extrairTermosVisiveis(page);
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'A Delegacia');
-    // Árvore de diálogo procedural (OS diálogo): a delegacia chama um a um
+    await visitarEExtrair(page, 'O Posto do Constable');
+    // Árvore de diálogo procedural (OS diálogo): o constable chama um a um
     // os suspeitos; o beat de paradeiro sustenta a carta de álibi em
     // qualquer tom, e a conversa desce até se encerrar.
     checar(
-      'Rota gerada: a delegacia oferece um interrogatório por suspeito',
+      'Rota gerada: o posto do constable oferece um interrogatório por suspeito',
       (await page.locator('.botao-dialogo-local').count()) === 5
     );
     await page.locator('.botao-dialogo-local').first().click();

@@ -317,6 +317,9 @@ detalhar antes).
   **Do playtest procedural entram** (palco do procedural, com `os-palco-em-aneis-*.md` e
   o KB legal-policial): P4 (evidências e pessoas concentradas na delegacia — não é a
   visão do jogo) e P5 (o nome "delegacia" é impróprio; terminologia técnica de 1893).
+  **P5 resolvido na OS Vila Viva E2** (renome completo "delegado/delegacia" →
+  "constable"/"O Posto do Constable", com glosa e petty sessions, validado pelo
+  perito-forense contra o KB legal-policial).
 - **Insumos:** `docs/game-design-simulacao.md`, `docs/os-autobattler-v2-*.md`,
   `docs/os-priors-compostos-*.md`, `docs/kb-producao/assets-e-como-obter.md`.
 - **Pronto quando:** cada OS tem seu próprio critério; o comum é `qa.mjs` verde e as
