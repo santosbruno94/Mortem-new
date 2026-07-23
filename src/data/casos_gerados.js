@@ -973,7 +973,7 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -1759,7 +1759,7 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_1_medico]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_1_medico]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -2495,27 +2495,27 @@ export const CASO_REPLICA = {
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -3237,7 +3237,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
      ],
      "opcoes": [
       {
@@ -3270,7 +3270,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -3303,7 +3303,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -3336,7 +3336,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -5665,7 +5665,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -6225,7 +6225,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -6403,7 +6403,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -7134,27 +7134,27 @@ export const CASOS_POOL = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -7966,7 +7966,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -8163,7 +8163,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -8735,7 +8735,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -10192,7 +10192,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -10370,7 +10370,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -10561,7 +10561,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_7_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_7_criada]]."
      ],
      "opcoes": [
       {
@@ -10653,7 +10653,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -10686,7 +10686,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -10719,7 +10719,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -10752,7 +10752,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -10930,7 +10930,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -12463,7 +12463,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_criada]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_criada]]."
      ],
      "opcoes": [
       {
@@ -12627,7 +12627,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -12660,7 +12660,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -12857,7 +12857,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -12955,7 +12955,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -12988,7 +12988,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -13021,7 +13021,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -13054,7 +13054,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -13238,7 +13238,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -16487,27 +16487,27 @@ export const CASOS_POOL = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -17376,7 +17376,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -17409,7 +17409,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e as horas trocam de lugar na boca, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
+      "A madrugada de sábado vem contada do princípio, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -17442,7 +17442,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -17475,7 +17475,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -17769,7 +17769,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -17802,7 +17802,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -17835,7 +17835,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -17868,7 +17868,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -18059,7 +18059,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -18250,7 +18250,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -19018,27 +19018,27 @@ export const CASOS_POOL = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -20579,7 +20579,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -22841,7 +22841,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -22874,7 +22874,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -23568,27 +23568,27 @@ export const CASOS_POOL = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -24874,7 +24874,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
      ],
      "opcoes": [
       {
@@ -25262,7 +25262,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -26859,7 +26859,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Dá a hora, dá o lugar, e para; as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "Dá a hora, dá o lugar, e para; as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -27661,7 +27661,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_squire]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_squire]]."
      ],
      "opcoes": [
       {
@@ -31093,27 +31093,27 @@ export const CASOS_POOL = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -32428,7 +32428,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas trocam de lugar na boca, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -32461,7 +32461,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e as horas trocam de lugar na boca, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
+      "A sexta à noite vem contada do princípio, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -32494,7 +32494,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -32527,7 +32527,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -34259,7 +34259,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -34456,7 +34456,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_2_lavrador]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -34843,7 +34843,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_3_criada]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -36498,7 +36498,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -36531,7 +36531,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -36564,7 +36564,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -36597,7 +36597,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -36972,7 +36972,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -37359,7 +37359,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -39105,7 +39105,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -39138,7 +39138,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39171,7 +39171,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39204,7 +39204,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -41616,7 +41616,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_merceeiro]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -42736,27 +42736,27 @@ export const CASOS_POOL = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -43606,7 +43606,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_criada]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
       {
@@ -43975,7 +43975,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Mas a madrugada de sábado termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -46270,7 +46270,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
      ],
      "opcoes": [
       {
@@ -46618,7 +46618,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -46651,7 +46651,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -48173,7 +48173,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_pastor_de_ovelhas]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -48720,7 +48720,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_paroco]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_paroco]]."
      ],
      "opcoes": [
       {
@@ -52293,27 +52293,27 @@ export const CASOS_LUTA = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -53459,7 +53459,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Dá a hora, dá o lugar, e para; cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "Dá a hora, dá o lugar, e para; cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -54898,27 +54898,27 @@ export const CASOS_LUTA = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -56036,7 +56036,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_moleiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_moleiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -56261,7 +56261,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_boticario]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_boticario]]."
      ],
      "opcoes": [
       {
@@ -56505,7 +56505,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -58874,7 +58874,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_6_lavrador]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_6_lavrador]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -59007,7 +59007,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -59040,7 +59040,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -59073,7 +59073,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
+      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -59106,7 +59106,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -60083,27 +60083,27 @@ export const CASOS_LUTA = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -61125,7 +61125,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61607,7 +61607,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -62077,7 +62077,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -62844,27 +62844,27 @@ export const CASOS_LUTA = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -64019,7 +64019,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
      ],
      "opcoes": [
       {
@@ -64052,7 +64052,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -64085,7 +64085,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -64118,7 +64118,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -64788,7 +64788,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -65559,27 +65559,27 @@ export const CASOS_LUTA = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -66462,7 +66462,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -66495,7 +66495,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -66528,7 +66528,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
+      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -66561,7 +66561,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto as horas trocam de lugar na boca, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -66799,7 +66799,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -67256,7 +67256,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]."
      ],
      "opcoes": [
       {
@@ -69444,7 +69444,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
      ],
      "opcoes": [
       {
@@ -69873,7 +69873,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -70138,7 +70138,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -70863,27 +70863,27 @@ export const CASOS_LUTA = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -72617,7 +72617,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -72849,7 +72849,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Mas a sexta à noite termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -73635,27 +73635,27 @@ export const CASOS_LUTA = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -74793,7 +74793,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -75257,7 +75257,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Mas a sexta à tarde termina por vir inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -76608,27 +76608,27 @@ export const CASOS_LUTA = [
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
     "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma voz que respondia parou de responder no meio do inquérito. Guardo a data em que emudeceu, e leio em volta dela."
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
     "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "O susto bateu à porta de quem já assinara. Depoimento firmado não recua por ameaça tardia."
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
     "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "Duas versões saíram da mesma boca, e entre uma e outra uma conta velha se pagou. Alinho as datas antes de crer em qualquer das duas."
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
     "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "A testemunha calou-se num segundo corpo. Esse eu li pela mesma régua do primeiro, rigor e livor, e a pressa do gesto deixou os seus sinais."
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
     "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "Cheguei antes do silêncio: o depoimento estava firmado quando faltou quem o dera. O tribunal ouve o que o caderno guardou."
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }

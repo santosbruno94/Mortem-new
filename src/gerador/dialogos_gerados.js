@@ -295,7 +295,7 @@ const ENTREGA_POR_TRAIT = {
   ],
   linha_tempo_nao_confiavel: [
     'as horas saem fora de ordem, e ele as corrige no meio',
-    'as horas trocam de lugar na boca, e ele remenda a conta andando',
+    'as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando',
   ],
 };
 
@@ -318,11 +318,11 @@ const TENTO_RESSONANTE = {
   preciso: {
     neutro: ' E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora.',
     calmo: ' As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora.',
-    tenso: ' As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas.',
+    tenso: ' As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas.',
   },
   tagarela: {
     neutro: ' No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido.',
-    calmo: ' No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira.',
+    calmo: ' No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira.',
     tenso: ' O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez.',
   },
   linha_tempo_nao_confiavel: {
@@ -364,7 +364,7 @@ function falaB1(ctx, tom) {
     obliquo: [
       `${abreObliqua} E a ${FAIXA_CURTA[faixa]} acaba saindo por inteiro, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
       `${abreObliqua} O resto vem atrás, sem mais pergunta, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-      `${abreObliqua} Mas a ${FAIXA_CURTA[faixa]} termina por vir inteira, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `${abreObliqua} Passada a esquiva, hora e lugar vêm sem enfeite, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
     ],
   }[tom];
   const frame = variante(frames, `${ctx.sal}|b1|${tom}`);
