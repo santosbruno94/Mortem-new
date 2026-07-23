@@ -2131,51 +2131,120 @@ function montarAbertura(bruto, sal, suspeitos) {
     )
     .map((s) => s.nome);
 
+  // ---------------------------------------------------------------------
+  // Abertura procedural — cold open da descoberta (OS Prosa Viva E1).
+  // A pensão da Sra. Potts é abertura SÓ do tutorial (src/data/abertura.js);
+  // o caso gerado abre nos olhos de quem achou o corpo. Cada passo compõe-se
+  // por SLOTS escolhidos por hashDecisao (decorrelação — o hashString cru
+  // trava os slots numa coluna), poucos fragmentos explodindo em combinações.
+  // CERCA DE FAIR-PLAY: o cold open é observação pura de leigo — nunca revela
+  // mecanismo, hora da morte ou culpado, e jamais confirma ou desmente a
+  // encenação. Os fatos duros (nome, ofício, "nada se tocou") ficam na carta
+  // e no briefing. A assinatura recorrente do perito é o MÉTODO (a maleta, a
+  // caderneta em branco), não um lugar fixo (D1).
+  // ---------------------------------------------------------------------
+  const palco = bruto.escolha.palco || {};
+  const palcoChave = palco.externo ? 'externo' : palco.pousada ? 'pousada' : 'interno';
+  const predioEm = formasDoLugar(nomeDoPredio(mundo.cidade, bruto.escolha.localId)).em;
+  const escolher = (pool, chave) => pool[hashDecisao(`${sal}|abertura|${chave}`) % pool.length];
+
+  // Passo 1 — a descoberta (ramifica com o palco, como a prosa do corpo).
+  const DESCOBERTA = {
+    interno: [
+      'De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz.',
+      'A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz.',
+      'Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio.',
+    ],
+    externo: [
+      'Ao romper do dia, um carroceiro deu com o corpo à beira do caminho e susteve a parelha.',
+      'No descampado, à saída da vila, o corpo jazia ao relento. Um lavrador a caminho da lida foi quem primeiro passou.',
+      'Quem cruzava a ponte de manhã cedo estacou diante da forma caída na margem e voltou correndo para chamar o constable.',
+    ],
+    pousada: [
+      'O hóspede não desceu para o desjejum, e a porta do quarto seguiu fechada até o meio da manhã. O estalajadeiro bateu, não obteve resposta e mandou chamar o constable.',
+      'Foi a criada da taverna, subindo com a água quente, quem achou o quarto em silêncio e o corpo no chão. Largou o jarro e desceu aos gritos.',
+      'Na taverna, o quarto do fundo não abriu à hora do costume. O estalajadeiro subiu, forçou a porta e recuou até a escada para mandar recado ao posto.',
+    ],
+  };
+
+  // Passo 2 — o constable assume e manda chamar o perito.
+  const ALARME = [
+    `O constable ${delegado} pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo.`,
+    `${delegado}, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado.`,
+    `Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, ${delegado} reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo.`,
+  ];
+
+  // Passo 3 — a carta chega ao perito. Duas camadas: a linha de narrador que
+  // abre o envelope (varia) e o corpo do constable (moldura varia; os FATOS
+  // são estáveis — é o portador fair-play da informação).
+  const CARTA_LACRE = [
+    'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
+    'O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.',
+    'O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.',
+  ];
+  const CARTA_MOLDURA = [
+    `"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de ${vila}, e escrevo do que não entendo.`,
+    `"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de ${vila}, e isto passa do meu ofício.`,
+    `"{detective.treatment} {detective.surname} — Vai o meu recado de ${vila}, à pressa. O que aqui houve pede olho de perito, não de guarda.`,
+  ];
+  const cartaFatos = `${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários."`;
+
+  // Passo 4 — a assinatura: o método. O perito itinerante arruma a maleta.
+  const METODO = [
+    'Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco.',
+    'A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado.',
+    'O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação.',
+  ];
+
+  // Passo 5 — a chegada à vila (primeira vista varia; não antecipa fato).
+  const CHEGADA = [
+    `A plataforma cheira a carvão e palha molhada. ${vila} estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable ${delegado} espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos.`,
+    `O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e ${vila} começa logo ali, numa rua de lama e fachadas baixas. ${delegado} vem ao encontro, de chapéu na mão. "Agradeço a presteza. Explico-me pelo caminho."`,
+    `Chove fino sobre ${vila} quando o trem chega. ${delegado} espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. "Venha comigo; falo enquanto andamos."`,
+  ];
+
+  // Passo 6 — o briefing à porta. A moldura varia; os fatos e as perguntas
+  // (que plantam os coabitantes) são estáveis — portadores fair-play.
+  const BRIEFING_FECHO = [
+    'Detém-se à porta e baixa a voz. "Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}."',
+    'Para no umbral e cede o passo. "O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho."',
+    'Fica um passo atrás da porta, de chapéu na mão. "Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}."',
+  ];
+
   const passos = [
     {
-      id: 'caulfield',
-      titulo: 'Caulfield, 14 de outubro de 1893',
-      paragrafos: [
-        'A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.',
-        'Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco.',
-      ],
-      rotuloBotao: 'A vela queima',
+      id: 'descoberta',
+      titulo: `${vila}, 14 de outubro de 1893`,
+      paragrafos: [escolher(DESCOBERTA[palcoChave], `descoberta|${palcoChave}`)],
+      rotuloBotao: 'O constable é chamado',
     },
     {
-      id: 'chamado',
-      titulo: 'Batem à porta',
-      paragrafos: [
-        `A Sra. Potts entra com o castiçal numa mão e um envelope na outra. "Veio a cavalo, de ${vila}. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente."`,
-      ],
-      rotuloBotao: 'Abrir o envelope',
+      id: 'alarme',
+      titulo: 'O constable manda chamar',
+      paragrafos: [escolher(ALARME, 'alarme')],
+      rotuloBotao: 'Ler a carta',
     },
     {
       id: 'carta',
       titulo: 'A carta do Constable',
       carta: true,
       paragrafos: [
-        'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
-        `"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários."`,
+        escolher(CARTA_LACRE, 'carta-lacre'),
+        `${escolher(CARTA_MOLDURA, 'carta-moldura')} ${cartaFatos}`,
         `"${delegado}, Constable."`,
       ],
       rotuloBotao: 'Aceitar o chamado',
     },
     {
-      id: 'transformacao',
-      titulo: 'A mesa se transforma',
-      paragrafos: [
-        'A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.',
-        '{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer.',
-      ],
+      id: 'metodo',
+      titulo: 'A maleta pronta',
+      paragrafos: [escolher(METODO, 'metodo')],
       rotuloBotao: 'Tomar o trem',
     },
     {
       id: 'chegada',
       titulo: vila,
-      paragrafos: [
-        `A plataforma cheira a carvão e palha molhada. ${vila} estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.`,
-        `O constable ${delegado} espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. "Agradeço a presteza. Venha; explico-me pelo caminho."`,
-      ],
+      paragrafos: [escolher(CHEGADA, 'chegada')],
       rotuloBotao: 'Ouvir o constable',
     },
     {
@@ -2183,8 +2252,8 @@ function montarAbertura(bruto, sal, suspeitos) {
       titulo: `O relato do constable ${delegado}`,
       briefing: true,
       paragrafos: [
-        `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${profissaoExibida(vitima.profissao)}. ${femV ? 'Achada morta' : 'Achado morto'} ${formasDoLugar(nomeDoPredio(mundo.cidade, bruto.escolha.localId)).em}. Não toquei em nada e não prendi ninguém."`,
-        'Detém-se à porta e baixa a voz. "Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}."',
+        `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${profissaoExibida(vitima.profissao)}. ${femV ? 'Achada morta' : 'Achado morto'} ${predioEm}. Não toquei em nada e não prendi ninguém."`,
+        escolher(BRIEFING_FECHO, 'briefing-fecho'),
       ],
       rotuloBotao: 'Entrar — iniciar a investigação',
     },

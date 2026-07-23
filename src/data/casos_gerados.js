@@ -1806,39 +1806,37 @@ export const CASO_REPLICA = {
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Stanmore, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Albert Hall, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Haversham, à pressa. O que aqui houve pede olho de perito, não de guarda. Albert Hall, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -1846,8 +1844,7 @@ export const CASO_REPLICA = {
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -4124,21 +4121,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Roderick, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -4146,17 +4142,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Charles Harris, moleiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate, e escrevo do que não entendo. Charles Harris, moleiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -4164,8 +4159,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Aldergate começa logo ali, numa rua de lama e fachadas baixas. Roderick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -6443,21 +6437,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Stanmore reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -6465,17 +6458,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Thomas Watson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Haversham, e isto passa do meu ofício. Thomas Watson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -6483,8 +6475,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Haversham quando o trem chega. Stanmore espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -6494,7 +6485,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Thomas Watson, 63 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -8777,21 +8768,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Bexley pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -8799,17 +8789,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. William Harris, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. William Harris, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -8817,8 +8806,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Colbrook quando o trem chega. Bexley espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -8828,7 +8816,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William Harris, 59 anos, merceeiro. Achado morto na Mercearia. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -10969,39 +10957,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "No descampado, à saída da vila, o corpo jazia ao relento. Um lavrador a caminho da lida foi quem primeiro passou."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Dunmere. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Florence Read, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Dunmere, à pressa. O que aqui houve pede olho de perito, não de guarda. Florence Read, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -11009,8 +10995,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Dunmere",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -11020,7 +11005,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Florence Read, 35 anos, costureira. Achada morta no Caminho do Açude. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -13280,39 +13265,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O estalajadeiro subiu, forçou a porta e recuou até a escada para mandar recado ao posto."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Wrenfield. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Harrow pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Reuben Brown, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Reuben Brown, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -13320,8 +13303,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Wrenfield",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -13331,7 +13313,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Reuben Brown, 56 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -15791,39 +15773,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Marlow Green, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Foi a criada da taverna, subindo com a água quente, quem achou o quarto em silêncio e o corpo no chão. Largou o jarro e desceu aos gritos."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Marlow Green. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. John Ward, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Marlow Green, e isto passa do meu ofício. John Ward, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -15831,8 +15811,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Marlow Green",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Marlow Green estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Marlow Green quando o trem chega. Fenwick espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -15842,7 +15821,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: John Ward, 32 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -18291,39 +18270,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O estalajadeiro subiu, forçou a porta e recuou até a escada para mandar recado ao posto."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Henry Turner, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate, e escrevo do que não entendo. Henry Turner, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -18331,8 +18308,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Aldergate começa logo ali, numa rua de lama e fachadas baixas. Roderick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -18342,7 +18318,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Henry Turner, 33 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -20616,21 +20592,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Stanmore reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -20638,17 +20613,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Eleanor Barnes, lavadeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Haversham, à pressa. O que aqui houve pede olho de perito, não de guarda. Eleanor Barnes, lavadeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -20656,8 +20630,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Haversham começa logo ali, numa rua de lama e fachadas baixas. Stanmore vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -20667,7 +20640,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Eleanor Barnes, 35 anos, lavadeira. Achada morta no Cottage nº 4. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -22920,39 +22893,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Harrow, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Fanny Mills, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook, e escrevo do que não entendo. Fanny Mills, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -22960,8 +22931,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -22971,7 +22941,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Fanny Mills, 35 anos, costureira. Achada morta no Cottage nº 2. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -25304,39 +25274,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O estalajadeiro subiu, forçou a porta e recuou até a escada para mandar recado ao posto."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Amos Read, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Amos Read, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -25344,8 +25312,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Bexley vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -25355,7 +25322,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Amos Read, 52 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -27700,21 +27667,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "No descampado, à saída da vila, o corpo jazia ao relento. Um lavrador a caminho da lida foi quem primeiro passou."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Stanmore pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -27722,17 +27688,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Annie Morris, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham, e escrevo do que não entendo. Annie Morris, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -27740,8 +27705,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Haversham começa logo ali, numa rua de lama e fachadas baixas. Stanmore vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -27751,7 +27715,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Annie Morris, 19 anos, criada. Achada morta na Travessa dos Fundos. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -30372,21 +30336,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -30394,17 +30357,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. William Mills, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate, e escrevo do que não entendo. William Mills, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -30412,8 +30374,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -32743,21 +32704,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Marlow Green, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Quem cruzava a ponte de manhã cedo estacou diante da forma caída na margem e voltou correndo para chamar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Marlow Green. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Fenwick, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -32765,17 +32725,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Mary Ellis, parteira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Marlow Green, e isto passa do meu ofício. Mary Ellis, parteira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -32783,8 +32742,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Marlow Green",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Marlow Green estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Marlow Green começa logo ali, numa rua de lama e fachadas baixas. Fenwick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -32794,7 +32752,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Mary Ellis, 60 anos, parteira. Achada morta no Adro da Igreja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -35087,39 +35045,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Wrenfield. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Harrow pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Ezra Taylor, taverneiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Ezra Taylor, taverneiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -35127,8 +35083,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Wrenfield",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Wrenfield começa logo ali, numa rua de lama e fachadas baixas. Harrow vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -37403,39 +37358,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Dunmere. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Quill, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Harry Andrews, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere, e escrevo do que não entendo. Harry Andrews, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -37443,8 +37396,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Dunmere",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Dunmere começa logo ali, numa rua de lama e fachadas baixas. Quill vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -39632,21 +39584,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -39654,17 +39605,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Herbert Jones, guarda do condado desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook, e escrevo do que não entendo. Herbert Jones, guarda do condado desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -39672,8 +39622,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Colbrook quando o trem chega. Bexley espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -39683,7 +39632,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Herbert Jones, 20 anos, guarda do condado. Achado morto no Posto do Constable. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -42059,21 +42008,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Stanmore, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -42081,17 +42029,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. George Wilson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Haversham, e isto passa do meu ofício. George Wilson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -42099,8 +42046,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -42110,7 +42056,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: George Wilson, 37 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -44403,39 +44349,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Roderick pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Florence Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Aldergate, e isto passa do meu ofício. Florence Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -44443,8 +44387,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Aldergate quando o trem chega. Roderick espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -44454,7 +44397,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Florence Jones, 21 anos, criada. Achada morta no Solar. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -46706,39 +46649,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Marlow Green, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Marlow Green. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Jane Wright, senhora da propriedade desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green, e escrevo do que não entendo. Jane Wright, senhora da propriedade desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -46746,8 +46687,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Marlow Green",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Marlow Green estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Marlow Green começa logo ali, numa rua de lama e fachadas baixas. Fenwick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -48950,39 +48890,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. John Knight, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Haversham, à pressa. O que aqui houve pede olho de perito, não de guarda. John Knight, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -48990,8 +48928,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Haversham quando o trem chega. Quill espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -51542,39 +51479,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Daniel Morris, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Aldergate, à pressa. O que aqui houve pede olho de perito, não de guarda. Daniel Morris, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -51582,8 +51517,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Aldergate quando o trem chega. Bexley espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -51593,7 +51527,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Daniel Morris, 40 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -54244,39 +54178,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Arthur Palmer, pastor de ovelhas desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Arthur Palmer, pastor de ovelhas desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -54284,8 +54216,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -56795,39 +56726,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Dunmere. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Fenwick, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. William Field, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere, e escrevo do que não entendo. William Field, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -56835,8 +56764,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Dunmere",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Dunmere começa logo ali, numa rua de lama e fachadas baixas. Fenwick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -59406,39 +59334,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. William King, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham, e escrevo do que não entendo. William King, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -59446,8 +59372,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -59457,7 +59382,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William King, 36 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -62141,39 +62066,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Harrow, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Edward Carter, carroceiro de frete desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook, e escrevo do que não entendo. Edward Carter, carroceiro de frete desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -62181,8 +62104,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Colbrook quando o trem chega. Harrow espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -62192,7 +62114,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Edward Carter, 24 anos, carroceiro de frete. Achado morto no Cottage nº 6. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -64848,21 +64770,20 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -64870,17 +64791,16 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Samuel Ward, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham, e escrevo do que não entendo. Samuel Ward, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -64888,8 +64808,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -67562,39 +67481,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Wrenfield. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Harrow, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Sydney Cooper, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Sydney Cooper, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -67602,8 +67519,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Wrenfield",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -67613,7 +67529,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Sydney Cooper, 14 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -70197,21 +70113,20 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -70219,17 +70134,16 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Henry Jones, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Colbrook, à pressa. O que aqui houve pede olho de perito, não de guarda. Henry Jones, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -70237,8 +70151,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Bexley vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -70248,7 +70161,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Henry Jones, 60 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -72904,21 +72817,20 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Harrow reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -72926,17 +72838,16 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Cecil Wright, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook, e escrevo do que não entendo. Cecil Wright, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -72944,8 +72855,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Harrow vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -72955,7 +72865,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Cecil Wright, 28 anos, ferreiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -75794,39 +75704,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Harrow pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Joseph Smith, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Joseph Smith, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -75834,8 +75742,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Colbrook quando o trem chega. Harrow espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
