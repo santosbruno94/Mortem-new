@@ -122,12 +122,17 @@ tipográficos discretos (§, ―, ❦).
 **Camada 3D (apresentação pura):** a profundidade 3D da mesa concentra-se hoje num único
 ponto — o **diorama da vila** (maquete de papel pousada no alto da escrivaninha: prédios
 procedurais com **telhado de duas águas**, chaminés, marquise e pás — sempre primitivas
-compostas; clicar num prédio VIAJA, e Moorford surge crescendo com a estrada ao ser
-desbloqueado). Regras da camada 3D: geometria 100% procedural (proibido GLTF/textura
-externa — three.js + @react-three/fiber v8 pinados, chunk lazy próprio), dados espaciais
-em `src/data/mapa_espacial.js` (camada visual — o motor nunca lê), e **fallback 2D
-obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a grade de localidades
-original joga idêntico.
+compostas; clicar num prédio VIAJA, e o nó distante surge crescendo com a estrada ao ser
+desbloqueado). A fonte da maquete é **dupla** (OS da vila na mesa): o caso-escola usa o
+mapa espacial estático (`src/data/mapa_espacial.js`); o caso **gerado** traz a própria
+vila no campo visual `maquete` do pacote (posições dos nós, formas, a tábua sob medida e
+o **casario de cenário** — a vila inteira da seed na tábua, só os nós com etiqueta e
+clique; nós que dividem prédio viram **anexos** escalonados, na linhagem da
+relojoaria_fundos). Regras da camada 3D: geometria 100% procedural (proibido
+GLTF/textura externa — three.js + @react-three/fiber v8 pinados, chunk lazy próprio),
+dados espaciais como camada visual que o motor nunca lê (guarda GE3 cobre `maquete`), e
+**fallback 2D obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a grade de
+localidades original joga idêntico.
 
 **Pivô "Gabinete Ilustrado" (jul/2026 — `docs/nota-gabinete-ilustrado.md`):** a
 apresentação migrou para o registro de **visual novel de gravura**. O exame do corpo
@@ -801,8 +806,9 @@ que mostre" (banco de **10 casos**, namespace `luta_*`, filtrado por presença d
 procedurais (comarca e luta), a abertura é omitida e o perito segue direto à
 investigação. O gerador segue ILHA de build time: o runtime carrega pacotes prontos,
 nunca importa `src/gerador`. Casos gerados jogam sem mestre (sem `vozMestre`, sem ecos
-do tutorial), na grade 2D da mesa (a maquete 3D permanece exclusiva do caso-escola,
-cujos nós ela conhece). A prosa dos templates passou pela OS de lapidação
+do tutorial) e, desde a OS da vila na mesa, com **maquete 3D própria** (o campo visual
+`maquete` do pacote — a vila gerada inteira na tábua; sem WebGL, a grade 2D de sempre).
+A prosa dos templates passou pela OS de lapidação
 editorial (`docs/os-lapidacao-prosa-gerada.md`, 16/07/2026): pipeline
 `revisar-prosa` sobre o corpus realizado dos 9 casos embarcados, correção sempre
 na fonte (`src/gerador/pacote_gerado.js`) e regeneração no mesmo commit —
@@ -1137,9 +1143,27 @@ design vive em [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md
   (regime-palco, magnitude, método por palco, satélite) ficam idênticas ao relatório v1
   nas três morfologias; `qa.mjs` verde mantém os 4 perfis → 4 desfechos e as guardas de
   fair play. Toda prosa nova passou pelo pipeline `revisar-prosa` (zero bloqueantes).
-  Pendente: **E5** — ativar o logradouro `travessa_dos_fundos` (o "segundo grafo" de
-  becos), controlando a saturação do grafo de avistamentos (dossiê em
-  `docs/os-palco-em-aneis-e2-dossie.md` §1.4).
+  **E5** (entregue): a `travessa_dos_fundos` ativa como 4º logradouro — o "segundo
+  grafo" de becos, com **adjacência curada** (só o pub e a cottage dos fundos) para não
+  saturar o grafo de avistamentos; guarda GE5 calibrada pelo autor.
+- **OS da vila na mesa (E6 + interrogatório à porta): a vila gerada vira lugar.**
+  Três entregas, toda camada narrativa/visual (motor cego; guardas no `qa.mjs`):
+  (1) **a maquete 3D do caso gerado** — o pacote ganha o campo visual `maquete`
+  (derivado de `cidade.diorama`: posições dos nós, formas, casario de cenário, tábua sob
+  medida, estrada da comarca), consumido por `DioramaVila`/`Escrivaninha` com o fallback
+  2D intacto; era a etapa E6 do plano Vila Viva ("o diorama procedural é órfão").
+  (2) **o fim da "Vizinhança" abstrata** — o nó de testemunhos difusos (id `vizinhanca`
+  preservado: encanamento de cartas/interferência/QA) apresenta-se como o **prédio de
+  encontro** da vila (a taverna; mercearia/forja quando a taverna é a própria cena),
+  onde o ruído, as corroborações e o recado do engodo são ouvidos.
+  (3) **interrogatório à porta das casas** — cada suspeito é ouvido na própria moradia
+  (nós `casa_<predio>`; quem partilha teto partilha nó; morador do prédio de encontro
+  responde no serviço; morador do posto, no posto), com o constable um passo atrás — o
+  procedimento plausível de 1893 (KB legal-policial: o inquérito de vila anda de porta
+  em porta); o Posto do Constable fica só com os papéis do caso e o telégrafo, e as
+  cartas de álibi nascem no nó da conversa. Molduras de fala, saídas e fechos de termo
+  reescritos para o palco de porta; pipeline `revisar-prosa` completo (editor-crítico +
+  perito-forense + fiscal-continuidade) com os bloqueantes corrigidos e re-verificados.
 
 ---
 
