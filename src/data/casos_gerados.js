@@ -1809,7 +1809,7 @@ export const CASO_REPLICA = {
     "id": "descoberta",
     "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -1826,7 +1826,7 @@ export const CASO_REPLICA = {
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
      "\"{detective.treatment} {detective.surname} — Vai o meu recado de Haversham, à pressa. O que aqui houve pede olho de perito, não de guarda. Albert Hall, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
@@ -1836,7 +1836,7 @@ export const CASO_REPLICA = {
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -1854,7 +1854,7 @@ export const CASO_REPLICA = {
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Albert Hall, 30 anos, lavrador. Achado morto no Cottage nº 3. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -4124,7 +4124,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -4142,7 +4142,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate, e escrevo do que não entendo. Charles Harris, moleiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Charles Harris, moleiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -4151,7 +4151,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -4169,7 +4169,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Charles Harris, 59 anos, moleiro. Achado morto no Moinho. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -6440,7 +6440,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -6448,7 +6448,7 @@ export const CASOS_POOL = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Stanmore reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Stanmore pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -6467,7 +6467,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -6485,7 +6485,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Thomas Watson, 63 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -8771,7 +8771,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -8798,7 +8798,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -8816,7 +8816,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William Harris, 59 anos, merceeiro. Achado morto na Mercearia. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -10960,7 +10960,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "No descampado, à saída da vila, o corpo jazia ao relento. Um lavrador a caminho da lida foi quem primeiro passou."
+     "No descampado, à saída da vila, o corpo jazia caído na relva. Um lavrador a caminho da lida foi quem primeiro passou."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -10968,7 +10968,7 @@ export const CASOS_POOL = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -10987,7 +10987,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -11005,7 +11005,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Florence Read, 35 anos, costureira. Achada morta no Caminho do Açude. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -13268,7 +13268,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "Na taverna, o quarto do fundo não abriu à hora do costume. O estalajadeiro subiu, forçou a porta e recuou até a escada para mandar recado ao posto."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O taverneiro subiu, não obteve resposta e recuou até a escada para mandar recado ao posto."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -13285,7 +13285,7 @@ export const CASOS_POOL = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
      "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Reuben Brown, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
@@ -13295,7 +13295,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -13313,7 +13313,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Reuben Brown, 56 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -15776,7 +15776,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Marlow Green, 14 de outubro de 1893",
     "paragrafos": [
-     "Foi a criada da taverna, subindo com a água quente, quem achou o quarto em silêncio e o corpo no chão. Largou o jarro e desceu aos gritos."
+     "Foi a criada da taverna, subindo com a água quente, quem achou o quarto em silêncio. Largou o jarro e desceu aos gritos."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -15784,7 +15784,7 @@ export const CASOS_POOL = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -15793,7 +15793,7 @@ export const CASOS_POOL = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
      "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Marlow Green, e isto passa do meu ofício. John Ward, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
@@ -15803,7 +15803,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -15821,7 +15821,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: John Ward, 32 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -18273,7 +18273,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "Na taverna, o quarto do fundo não abriu à hora do costume. O estalajadeiro subiu, forçou a porta e recuou até a escada para mandar recado ao posto."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O taverneiro subiu, não obteve resposta e recuou até a escada para mandar recado ao posto."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -18281,7 +18281,7 @@ export const CASOS_POOL = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -18290,8 +18290,8 @@ export const CASOS_POOL = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate, e escrevo do que não entendo. Henry Turner, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Henry Turner, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -18300,7 +18300,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -18318,7 +18318,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Henry Turner, 33 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -20595,7 +20595,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -20603,7 +20603,7 @@ export const CASOS_POOL = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Stanmore reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Stanmore pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -20622,7 +20622,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -20640,7 +20640,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Eleanor Barnes, 35 anos, lavadeira. Achada morta no Cottage nº 4. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -22896,7 +22896,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -22913,8 +22913,8 @@ export const CASOS_POOL = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook, e escrevo do que não entendo. Fanny Mills, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Fanny Mills, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -22923,7 +22923,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -22941,7 +22941,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Fanny Mills, 35 anos, costureira. Achada morta no Cottage nº 2. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -25277,7 +25277,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "Na taverna, o quarto do fundo não abriu à hora do costume. O estalajadeiro subiu, forçou a porta e recuou até a escada para mandar recado ao posto."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O taverneiro subiu, não obteve resposta e recuou até a escada para mandar recado ao posto."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -25294,7 +25294,7 @@ export const CASOS_POOL = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
      "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Amos Read, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
@@ -25304,7 +25304,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -25322,7 +25322,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Amos Read, 52 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -27670,7 +27670,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "No descampado, à saída da vila, o corpo jazia ao relento. Um lavrador a caminho da lida foi quem primeiro passou."
+     "No descampado, à saída da vila, o corpo jazia caído na relva. Um lavrador a caminho da lida foi quem primeiro passou."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -27688,7 +27688,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham, e escrevo do que não entendo. Annie Morris, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Annie Morris, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -27697,7 +27697,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -27715,7 +27715,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Annie Morris, 19 anos, criada. Achada morta na Travessa dos Fundos. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -30339,7 +30339,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -30347,7 +30347,7 @@ export const CASOS_POOL = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -30357,7 +30357,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate, e escrevo do que não entendo. William Mills, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. William Mills, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -30366,7 +30366,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -30384,7 +30384,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William Mills, 63 anos, lavrador. Achado morto no Cottage nº 3. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -32734,7 +32734,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -32752,7 +32752,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Mary Ellis, 60 anos, parteira. Achada morta no Adro da Igreja. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -35048,7 +35048,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -35075,7 +35075,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -35093,7 +35093,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Ezra Taylor, 64 anos, taverneiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -37361,7 +37361,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -37379,7 +37379,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere, e escrevo do que não entendo. Harry Andrews, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Harry Andrews, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -37388,7 +37388,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -37406,7 +37406,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Harry Andrews, 36 anos, merceeiro. Achado morto na Mercearia. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -39587,7 +39587,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -39605,7 +39605,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook, e escrevo do que não entendo. Herbert Jones, guarda do condado desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Herbert Jones, guarda do condado desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -39614,7 +39614,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -39632,7 +39632,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Herbert Jones, 20 anos, guarda do condado. Achado morto no Posto do Constable. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -42011,7 +42011,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -42038,7 +42038,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -42056,7 +42056,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: George Wilson, 37 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -44352,7 +44352,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -44369,7 +44369,7 @@ export const CASOS_POOL = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
      "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Aldergate, e isto passa do meu ofício. Florence Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
@@ -44379,7 +44379,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -44397,7 +44397,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Florence Jones, 21 anos, criada. Achada morta no Solar. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -46652,7 +46652,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Marlow Green, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -46660,7 +46660,7 @@ export const CASOS_POOL = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -46670,7 +46670,7 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green, e escrevo do que não entendo. Jane Wright, senhora da propriedade desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Jane Wright, senhora da propriedade desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -46679,7 +46679,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -46697,7 +46697,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Jane Wright, 68 anos, senhora da propriedade. Achada morta no Solar. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -48893,7 +48893,7 @@ export const CASOS_POOL = [
     "id": "descoberta",
     "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -48901,7 +48901,7 @@ export const CASOS_POOL = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -48920,7 +48920,7 @@ export const CASOS_POOL = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -48938,7 +48938,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: John Knight, 27 anos, lavrador. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -51482,7 +51482,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz."
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -51499,7 +51499,7 @@ export const CASOS_LUTA = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
      "\"{detective.treatment} {detective.surname} — Vai o meu recado de Aldergate, à pressa. O que aqui houve pede olho de perito, não de guarda. Daniel Morris, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
@@ -51509,7 +51509,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -51527,7 +51527,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Daniel Morris, 40 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -54181,7 +54181,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -54189,7 +54189,7 @@ export const CASOS_LUTA = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -54208,7 +54208,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -54226,7 +54226,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Arthur Palmer, 17 anos, pastor de ovelhas. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -56729,7 +56729,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -56747,7 +56747,7 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere, e escrevo do que não entendo. William Field, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. William Field, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -56756,7 +56756,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -56774,7 +56774,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William Field, 51 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -59337,7 +59337,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz."
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -59345,7 +59345,7 @@ export const CASOS_LUTA = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -59354,8 +59354,8 @@ export const CASOS_LUTA = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham, e escrevo do que não entendo. William King, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. William King, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -59364,7 +59364,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -59382,7 +59382,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William King, 36 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -62069,7 +62069,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -62087,7 +62087,7 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook, e escrevo do que não entendo. Edward Carter, carroceiro de frete desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Edward Carter, carroceiro de frete desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -62096,7 +62096,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -62114,7 +62114,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Edward Carter, 24 anos, carroceiro de frete. Achado morto no Cottage nº 6. Não toquei em nada e não prendi ninguém.\"",
-     "Para no umbral e cede o passo. \"O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -64773,7 +64773,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -64781,7 +64781,7 @@ export const CASOS_LUTA = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -64791,7 +64791,7 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham, e escrevo do que não entendo. Samuel Ward, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Samuel Ward, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -64800,7 +64800,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -64818,7 +64818,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Samuel Ward, 45 anos, ferreiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -67484,7 +67484,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz."
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -67501,7 +67501,7 @@ export const CASOS_LUTA = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
      "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Sydney Cooper, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
@@ -67511,7 +67511,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -67529,7 +67529,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Sydney Cooper, 14 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -70116,7 +70116,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz."
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -70143,7 +70143,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -70161,7 +70161,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Henry Jones, 60 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -72820,7 +72820,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -72828,7 +72828,7 @@ export const CASOS_LUTA = [
     "id": "alarme",
     "titulo": "O constable manda chamar",
     "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Harrow reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Harrow pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
     "rotuloBotao": "Ler a carta"
    },
@@ -72838,7 +72838,7 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook, e escrevo do que não entendo. Cecil Wright, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Cecil Wright, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
@@ -72847,7 +72847,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -72865,7 +72865,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Cecil Wright, 28 anos, ferreiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta, de chapéu na mão. \"Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -75707,7 +75707,7 @@ export const CASOS_LUTA = [
     "id": "descoberta",
     "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
     "rotuloBotao": "O constable é chamado"
    },
@@ -75724,7 +75724,7 @@ export const CASOS_LUTA = [
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
      "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Joseph Smith, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
@@ -75734,7 +75734,7 @@ export const CASOS_LUTA = [
     "id": "metodo",
     "titulo": "A maleta pronta",
     "paragrafos": [
-     "O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -75752,7 +75752,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Joseph Smith, 14 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }

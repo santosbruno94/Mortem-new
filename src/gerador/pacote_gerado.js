@@ -2149,21 +2149,25 @@ function montarAbertura(bruto, sal, suspeitos) {
   const escolher = (pool, chave) => pool[hashDecisao(`${sal}|abertura|${chave}`) % pool.length];
 
   // Passo 1 — a descoberta (ramifica com o palco, como a prosa do corpo).
+  // Regra da cerca (perito-forense, E1): os pools de DESCOBERTA só contêm
+  // CIRCUNSTÂNCIA DO DESCOBRIDOR (quem, quando chegou, o que fez), nunca
+  // ESTADO FÍSICO DA CENA (porta trancada/aberta, posição do corpo, sangue,
+  // temperatura, desordem) — a escolha é decorrelada da cena e mentiria.
   const DESCOBERTA = {
     interno: [
-      'De manhã cedo, o leite ficou à porta e a chaminé não fumegou. A vizinha bateu, chamou pelo nome; a casa não devolveu voz.',
-      'A porta amanheceu fechada e a cortina corrida como na véspera. A aldrava sem uso, o cão preso ao mourão a ganir desde a primeira luz.',
-      'Vieram trazer um recado e acharam a entrada encostada, sem tranca. Da soleira, o chamado pelo nome caiu no corredor vazio.',
+      'De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz.',
+      'O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta.',
+      'Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable.',
     ],
     externo: [
-      'Ao romper do dia, um carroceiro deu com o corpo à beira do caminho e susteve a parelha.',
-      'No descampado, à saída da vila, o corpo jazia ao relento. Um lavrador a caminho da lida foi quem primeiro passou.',
+      'Ao romper do dia, um carroceiro deu com o corpo caído à beira do caminho e susteve a parelha.',
+      'No descampado, à saída da vila, o corpo jazia caído na relva. Um lavrador a caminho da lida foi quem primeiro passou.',
       'Quem cruzava a ponte de manhã cedo estacou diante da forma caída na margem e voltou correndo para chamar o constable.',
     ],
     pousada: [
-      'O hóspede não desceu para o desjejum, e a porta do quarto seguiu fechada até o meio da manhã. O estalajadeiro bateu, não obteve resposta e mandou chamar o constable.',
-      'Foi a criada da taverna, subindo com a água quente, quem achou o quarto em silêncio e o corpo no chão. Largou o jarro e desceu aos gritos.',
-      'Na taverna, o quarto do fundo não abriu à hora do costume. O estalajadeiro subiu, forçou a porta e recuou até a escada para mandar recado ao posto.',
+      'O hóspede não desceu para o desjejum nem à hora do almoço. O taverneiro bateu, não obteve resposta e mandou chamar o constable.',
+      'Foi a criada da taverna, subindo com a água quente, quem achou o quarto em silêncio. Largou o jarro e desceu aos gritos.',
+      'Na taverna, o quarto do fundo não abriu à hora do costume. O taverneiro subiu, não obteve resposta e recuou até a escada para mandar recado ao posto.',
     ],
   };
 
@@ -2171,7 +2175,7 @@ function montarAbertura(bruto, sal, suspeitos) {
   const ALARME = [
     `O constable ${delegado} pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo.`,
     `${delegado}, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado.`,
-    `Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, ${delegado} reconheceu o tamanho do que tinha à frente. Pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo.`,
+    `Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, ${delegado} pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo.`,
   ];
 
   // Passo 3 — a carta chega ao perito. Duas camadas: a linha de narrador que
@@ -2179,11 +2183,11 @@ function montarAbertura(bruto, sal, suspeitos) {
   // são estáveis — é o portador fair-play da informação).
   const CARTA_LACRE = [
     'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
-    'O envelope traz o carimbo do condado e a caligrafia aplicada de quem não escreve muitas cartas.',
+    'O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.',
     'O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.',
   ];
   const CARTA_MOLDURA = [
-    `"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de ${vila}, e escrevo do que não entendo.`,
+    `"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de ${vila}; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo.`,
     `"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de ${vila}, e isto passa do meu ofício.`,
     `"{detective.treatment} {detective.surname} — Vai o meu recado de ${vila}, à pressa. O que aqui houve pede olho de perito, não de guarda.`,
   ];
@@ -2191,9 +2195,9 @@ function montarAbertura(bruto, sal, suspeitos) {
 
   // Passo 4 — a assinatura: o método. O perito itinerante arruma a maleta.
   const METODO = [
-    'Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente, o termômetro de mercúrio com a trinca no vidro, a caderneta. A primeira página abre em branco.',
-    'A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta: a lente, o vidro trincado do termômetro que não erra por isso, o lápis apontado.',
-    'O ofício cabe numa maleta e numa página em branco. {detective.treatment} {detective.surname} fecha a fivela, guarda o termômetro de sempre e desce para a estação.',
+    'Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco.',
+    'A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado.',
+    'Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa.',
   ];
 
   // Passo 5 — a chegada à vila (primeira vista varia; não antecipa fato).
@@ -2206,9 +2210,9 @@ function montarAbertura(bruto, sal, suspeitos) {
   // Passo 6 — o briefing à porta. A moldura varia; os fatos e as perguntas
   // (que plantam os coabitantes) são estáveis — portadores fair-play.
   const BRIEFING_FECHO = [
-    'Detém-se à porta e baixa a voz. "Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}."',
-    'Para no umbral e cede o passo. "O que {g:o senhor|a senhora} quiser saber de mim, é agora; lá dentro eu só atrapalho."',
-    'Fica um passo atrás da porta, de chapéu na mão. "Pergunte-me antes; daqui para dentro, quem lê o corpo é {g:o senhor|a senhora}."',
+    'Detém-se à porta e baixa a voz. "Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}."',
+    'Remexe o chapéu nas mãos e não avança. "O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo."',
+    'Fica um passo atrás da porta e faz sinal ao guarda que se afaste. "Pergunte-me o que precisar; depois eu saio da frente."',
   ];
 
   const passos = [
