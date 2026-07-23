@@ -787,17 +787,54 @@ const PROSA_LESAO = {
 
 // Descrições dos estados temporais (universais — o modelo forense é o
 // mesmo de tempo_morte.js; validar contra docs/kb-medicina-legal/).
+// OS Prosa Viva E2: cada estado vira um POOL de variantes escolhidas por
+// hashDecisao. A VERDADE FORENSE é invariante — o rigor sobe e desce em
+// sequência céfalo-caudal (tanatologia §2), o livor fixo ≥12h não cede ao
+// polegar (§3) —; varia o RECORTE de observação (qual junta, a ordem, o
+// gesto do exame), nunca o sinal técnico que o motor pressupõe. Validado
+// pelo perito-forense.
 const PROSA_RIGOR = {
-  instalando:
+  instalando: [
     'O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.',
-  pleno: 'Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.',
-  resolucao: 'O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.',
-  resolvido: 'Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.',
+    'O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.',
+    'Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.',
+  ],
+  pleno: [
+    'Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.',
+    'Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.',
+    'O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.',
+  ],
+  resolucao: [
+    'O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.',
+    'A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.',
+    'Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.',
+  ],
+  resolvido: [
+    'Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.',
+    'O corpo está mole por completo; cotovelo e joelho movem-se sem resistência. A rigidez cumpriu o ciclo e saiu.',
+    'Todas as juntas cedem à mão. Do enrijecimento não resta sinal.',
+  ],
 };
 const PROSA_LIVOR = {
-  movel: 'As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.',
-  fixo: 'As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.',
+  movel: [
+    'As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.',
+    'A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.',
+    'Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.',
+  ],
+  fixo: [
+    'As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.',
+    'O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.',
+    'As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.',
+  ],
 };
+// Reação vital (a lesão feita em vida): bordas retraídas + sangue infiltrado
+// e coagulado, aderente à lavagem. A conclusão ("em vida") é do jogador, via
+// glossário (playtest 19/07) — a prosa só descreve o observável.
+const PROSA_REACAO_VITAL = [
+  'As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.',
+  'As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.',
+  'Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.',
+];
 // Só o livor FIXO testemunha postura anterior (tanatologia §3): o móvel
 // migra com o corpo e não guarda contradição. Sem conectivo adversativo —
 // os dois fatos se justapõem e o curto-circuito é do jogador (guia §2).
@@ -958,20 +995,26 @@ function realizarCartas(bruto) {
   const femV = vitima.genero === 'feminino';
   const doMorto = femV ? 'da morta' : 'do morto';
 
+  // E2: escolha decorrelada de variante de prosa do corpo (o sinal técnico
+  // é o mesmo; muda o recorte de observação).
+  const escolherCorpo = (pool, chave) => pool[hashDecisao(`${bruto.seed}|corpo|${chave}`) % pool.length];
+
   const cartas = [];
   for (const c of fatiaForense.cartas) {
     const nova = JSON.parse(JSON.stringify(c));
     switch (c.id) {
       case 'gen_rigor':
         for (const estado of nova.estados) {
-          estado.descricao = PROSA_RIGOR[estado.tagsOcultas.estadoRigor];
+          const e = estado.tagsOcultas.estadoRigor;
+          estado.descricao = escolherCorpo(PROSA_RIGOR[e], `rigor|${e}`);
         }
         break;
       case 'gen_livores':
         for (const estado of nova.estados) {
+          const e = estado.tagsOcultas.estadoLivor;
           estado.descricao =
-            PROSA_LIVOR[estado.tagsOcultas.estadoLivor] +
-            (estado.tagsOcultas.posicaoCompativel === false && estado.tagsOcultas.estadoLivor === 'fixo'
+            escolherCorpo(PROSA_LIVOR[e], `livor|${e}`) +
+            (estado.tagsOcultas.posicaoCompativel === false && e === 'fixo'
               ? NOTA_LIVOR_CONTRADITORIO
               : '');
         }
@@ -984,10 +1027,7 @@ function realizarCartas(bruto) {
         break;
       }
       case 'gen_reacao_vital':
-        // P3 (playtest 19/07): observação pura — a conclusão ("em vida",
-        // reação vital) é dedução do jogador, via glossário.
-        nova.descricao =
-          'As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.';
+        nova.descricao = escolherCorpo(PROSA_REACAO_VITAL, 'reacao_vital');
         break;
       case 'gen_visto_vivo': {
         const quando = formatHoraComDia(c.tagsOcultas.horaAvistamento);
