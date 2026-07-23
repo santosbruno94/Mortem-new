@@ -44,6 +44,7 @@
 // =====================================================================
 
 import { hashString } from '../logic/hash.js';
+import { hashDecisao } from './hash_gerador.js';
 import { REGIOES_EXIGIVEIS, SINAL_POR_METODO } from './marcas_exigiveis.js';
 
 // ---------------------------------------------------------------------
@@ -276,11 +277,26 @@ function falaAbertura(ctx) {
 // BEAT 1 — o paradeiro. Todo tom sustenta a MESMA carta de álibi
 // (solubilidade); o tom ressonante rende o tento a mais.
 // ---------------------------------------------------------------------
+// E4: pool de 2 por trait (pick por hashDecisao, keyed por suspeito). O "ele"
+// mora sempre entre espaços, para a troca de gênero (replaceAll ' ele '→' ela ')
+// funcionar; nunca inicia a locução.
 const ENTREGA_POR_TRAIT = {
-  preciso: 'as horas saem em fila, sem que ele procure nenhuma',
-  medroso: 'os olhos vão à porta entre uma hora e outra',
-  tagarela: 'a resposta vem embrulhada em coisa que ninguém perguntou',
-  linha_tempo_nao_confiavel: 'as horas saem fora de ordem, e ele as corrige no meio',
+  preciso: [
+    'as horas saem em fila, sem que ele procure nenhuma',
+    'cada hora sai de pronto, sem que ele a vá buscar na memória',
+  ],
+  medroso: [
+    'os olhos vão à porta entre uma hora e outra',
+    'entre uma hora e outra, ele mede a porta com o olho',
+  ],
+  tagarela: [
+    'a resposta vem embrulhada em coisa que ninguém perguntou',
+    'cada hora vem com uma história atrás que ninguém pediu',
+  ],
+  linha_tempo_nao_confiavel: [
+    'as horas saem fora de ordem, e ele as corrige no meio',
+    'as horas trocam de lugar na boca, e ele remenda a conta andando',
+  ],
 };
 
 // O tento do tom ressonante, por trait (prosa, nunca prova — spec §8.5).
@@ -318,7 +334,10 @@ const TENTO_RESSONANTE = {
 
 function falaB1(ctx, tom) {
   const { pessoa, idCartaAlibi, faixa } = ctx;
-  const entrega = ENTREGA_POR_TRAIT[ctx.trait] || 'a resposta sai do tamanho da pergunta';
+  const poolEntrega = ENTREGA_POR_TRAIT[ctx.trait];
+  const entrega = poolEntrega
+    ? poolEntrega[hashDecisao(`${ctx.sal}|entrega|${ctx.trait}|${pessoa.id}`) % poolEntrega.length]
+    : 'a resposta sai do tamanho da pergunta';
   const genero = pessoa.genero === 'feminino';
   const entregaDela = genero ? entrega.replaceAll(' ele ', ' ela ') : entrega;
   const abreObliqua = {
@@ -330,18 +349,22 @@ function falaB1(ctx, tom) {
     firme: [
       `"Sem rodeios, então." E o paradeiro vem, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
       `Um aceno curto, e o paradeiro sai por inteiro, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `"Vou direto." Dá hora e lugar de um fôlego, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
     ],
     cordial: [
       `A ${FAIXA_CURTA[faixa]} vem contada do princípio, e ${entregaDela}: [[${idCartaAlibi}]].`,
       `A resposta toma o caminho comprido e chega inteira, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `Conta a ${FAIXA_CURTA[faixa]} com vagar, do começo ao fim, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
     ],
     tecnico: [
       `"Hora e lugar." E os dá, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
       `Hora primeiro, lugar depois, sem que se peça duas vezes, e ${entregaDela}: [[${idCartaAlibi}]].`,
+      `Dá a hora, dá o lugar, e para; ${entregaDela}: [[${idCartaAlibi}]].`,
     ],
     obliquo: [
       `${abreObliqua} E a ${FAIXA_CURTA[faixa]} acaba saindo por inteiro, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
       `${abreObliqua} O resto vem atrás, sem mais pergunta, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `${abreObliqua} Mas a ${FAIXA_CURTA[faixa]} termina por vir inteira, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
     ],
   }[tom];
   const frame = variante(frames, `${ctx.sal}|b1|${tom}`);
