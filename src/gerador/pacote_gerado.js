@@ -263,12 +263,15 @@ const PROSA_SEGREDO = {
     tipoVestigio: 'bilhete_de_suplica',
     carimbo: (nome) => `Bilhete na letra de ${nome}`,
     descricao: [
+      // Ataque pelo conteúdo, fragmentado, períodos curtos.
       (nome) =>
-        `Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de ${nome}: um pedido de socorro em dinheiro, a palavra "desta vez" sublinhada, e nenhuma resposta no verso.`,
+        `Meia dúzia de linhas na letra de ${nome}: um pedido de socorro em dinheiro, "desta vez" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.`,
+      // Ataque pelo gesto, um período corrido.
       (nome) =>
-        `Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de ${nome}, um pedido de dinheiro em poucas linhas; "desta vez" vem grifado, e o verso ficou em branco.`,
+        `Amassado e depois alisado, o bilhete de ${nome} pede socorro em dinheiro, com "desta vez" riscado por baixo e resposta nenhuma.`,
+      // Ataque pelo estado do papel, dois períodos.
       (nome) =>
-        `Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve ${nome}, de próprio punho, um pedido de socorro em dinheiro, com "desta vez" riscado por baixo; resposta, nenhuma.`,
+        `O papel guarda os vincos de quem o amassou e o desamassou. Na letra de ${nome}, poucas linhas de súplica por dinheiro; "desta vez" vem grifado, e ninguém escreveu no verso.`,
     ],
   },
   acerto_reservado: {
@@ -276,12 +279,15 @@ const PROSA_SEGREDO = {
     tipoVestigio: 'nota_por_assinar',
     carimbo: (nome) => `Nota de trato com o nome de ${nome}`,
     descricao: [
+      // Ataque pela assinatura em falta.
       (nome) =>
-        `Meia folha pautada com soma, prazo e o nome de ${nome} por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.`,
+        `Falta a segunda assinatura na meia folha: soma, prazo e o nome de ${nome} por extenso, um acerto sem a outra mão. A dobra ainda não assentou.`,
+      // Ataque pela dobra fresca, períodos curtos.
       (nome) =>
-        `Numa meia folha pautada, soma e prazo, e o nome de ${nome} por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.`,
+        `A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de ${nome} por extenso, e uma assinatura só.`,
+      // Ataque pela soma, um período corrido.
       (nome) =>
-        `Soma e prazo lançados a tinta, o nome de ${nome} por extenso logo abaixo: acerto para correr em reserva. A linha da outra assinatura segue vazia, a dobra fresca.`,
+        `Numa meia folha pautada, uma soma e um prazo com o nome de ${nome} ao pé — acerto sem testemunha, à espera da segunda assinatura.`,
     ],
   },
 };
@@ -1118,10 +1124,13 @@ function realizarCartas(bruto) {
         // E3: pool de 3, mesmo sinal (respingo fino e alto, fora do alcance
         // da poça e do que as feridas da vítima alcançariam). A superfície do
         // palco (perito E2, A1): muro no adro, madeirame no pátio, cerca.
+        // A posição relativa (respingo à altura do peito × poça no chão ×
+        // linha das feridas) é observável e justaposta; a conclusão de que o
+        // sangue não é da vítima fica com o jogador (guia §2, editor E3).
         const respingoAlto = (sup) => [
-          `Um borrifo fino, de gotas miúdas, ${sup}, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`,
-          `À altura do peito, ${sup}, um salpico fino de gotas miúdas, longe de onde o sangue empoçou. Tão alto as feridas ${doMorto} não jogariam.`,
-          `Fora do alcance da poça, ${sup}, um borrifo miúdo à altura do peito. As feridas ${doMorto} não subiriam a esse ponto.`,
+          `Um borrifo fino, de gotas miúdas, ${sup}, à altura do peito. A poça no chão ficou a palmos abaixo.`,
+          `À altura do peito, ${sup}, um salpico fino, acima da linha das feridas ${doMorto}.`,
+          `Fora do alcance da poça, ${sup}, assoma um borrifo miúdo à altura do peito.`,
         ];
         if (externo) {
           nova.textoDisplay = 'O Respingo Alto';
@@ -1725,8 +1734,8 @@ function montarLocalidades(bruto, cartas, casasDoCaso) {
       // E3: a linha de abertura da cena compõe-se por slot (hashDecisao).
       [
         `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam; o exame corre ${externo ? 'canto a canto' : 'cômodo a cômodo'}.`,
-        `${sujeitoDoLugar(predioCena)} está como no dia do achado. O exame passa ${externo ? 'canto a canto' : 'cômodo a cômodo'}, sem deixar recanto.`,
-        `${sujeitoDoLugar(predioCena)} não mudou desde a manhã em que ${femV ? 'a' : 'o'} acharam; o exame vai ${externo ? 'canto a canto' : 'cômodo a cômodo'}.`,
+        `O exame corre ${externo ? 'canto a canto' : 'cômodo a cômodo'}: a cena está como ${femV ? 'a' : 'o'} acharam, nada movido.`,
+        `${sujeitoDoLugar(predioCena)} segue como estava na manhã do achado, nada fora do lugar; o exame vai ${externo ? 'canto a canto' : 'cômodo a cômodo'}.`,
       ][hashDecisao(`${bruto.seed}|prosa|cena-intro`) % 3],
       ...(fraseDescoberta ? [fraseDescoberta] : []),
       // E3: a casa da vítima lida pela mobília (leitura social, não pista).
