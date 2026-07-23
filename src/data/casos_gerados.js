@@ -94,7 +94,7 @@ export const CASO_REPLICA = {
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -106,7 +106,7 @@ export const CASO_REPLICA = {
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -118,7 +118,7 @@ export const CASO_REPLICA = {
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -130,7 +130,7 @@ export const CASO_REPLICA = {
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -161,7 +161,7 @@ export const CASO_REPLICA = {
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou. As manchas assentaram do lado que ora fica para cima.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou. As manchas assentaram do lado que ora fica para cima.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -2596,7 +2596,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -2608,7 +2608,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -2620,7 +2620,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4847,7 +4847,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4859,7 +4859,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4871,7 +4871,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4883,7 +4883,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "O corpo está mole por completo; cotovelo e joelho movem-se sem resistência. A rigidez cumpriu o ciclo e saiu.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4914,7 +4914,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -4943,7 +4943,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -7226,7 +7226,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -7238,7 +7238,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -7250,7 +7250,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9460,7 +9460,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9472,7 +9472,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9484,7 +9484,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9496,7 +9496,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9515,7 +9515,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -9527,7 +9527,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -9556,7 +9556,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -11605,7 +11605,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -11617,7 +11617,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -11629,7 +11629,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -14052,7 +14052,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -14064,7 +14064,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -14076,7 +14076,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -16572,7 +16572,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -16584,7 +16584,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -16596,7 +16596,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -16627,7 +16627,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -19096,7 +19096,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -19108,7 +19108,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -19120,7 +19120,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -19132,7 +19132,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -19151,7 +19151,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -21263,7 +21263,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -21275,7 +21275,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -21287,7 +21287,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -21318,7 +21318,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -23639,7 +23639,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -23651,7 +23651,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -23663,7 +23663,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -23675,7 +23675,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "O corpo está mole por completo; cotovelo e joelho movem-se sem resistência. A rigidez cumpriu o ciclo e saiu.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -26034,7 +26034,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -26046,7 +26046,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -26058,7 +26058,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -28398,7 +28398,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -28410,7 +28410,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -28422,7 +28422,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -31157,7 +31157,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -31169,7 +31169,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -31181,7 +31181,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -31224,7 +31224,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -33430,7 +33430,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -33442,7 +33442,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -33454,7 +33454,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -33466,7 +33466,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -33485,7 +33485,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -35793,7 +35793,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -35805,7 +35805,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -35817,7 +35817,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -35829,7 +35829,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -35848,7 +35848,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -38046,7 +38046,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -38058,7 +38058,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -38070,7 +38070,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -38082,7 +38082,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -40332,7 +40332,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -40344,7 +40344,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -40356,7 +40356,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -40387,7 +40387,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -42793,7 +42793,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -42805,7 +42805,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -42817,7 +42817,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -42860,7 +42860,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -45097,7 +45097,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -45109,7 +45109,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -45121,7 +45121,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -45133,7 +45133,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -47377,7 +47377,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -47389,7 +47389,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -47401,7 +47401,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -47413,7 +47413,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "O corpo está mole por completo; cotovelo e joelho movem-se sem resistência. A rigidez cumpriu o ciclo e saiu.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -49569,7 +49569,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -49581,7 +49581,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -49593,7 +49593,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -49636,7 +49636,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -49665,7 +49665,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -52343,7 +52343,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -52355,7 +52355,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -52367,7 +52367,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -52379,7 +52379,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "O corpo está mole por completo; cotovelo e joelho movem-se sem resistência. A rigidez cumpriu o ciclo e saiu.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -52410,7 +52410,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -52439,7 +52439,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -54941,7 +54941,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -54953,7 +54953,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -54965,7 +54965,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -54977,7 +54977,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "O corpo está mole por completo; cotovelo e joelho movem-se sem resistência. A rigidez cumpriu o ciclo e saiu.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -54996,7 +54996,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -55008,7 +55008,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -55037,7 +55037,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -57397,7 +57397,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -57409,7 +57409,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -57421,7 +57421,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -57433,7 +57433,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60119,7 +60119,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60131,7 +60131,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60143,7 +60143,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60155,7 +60155,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60215,7 +60215,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -62873,7 +62873,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -62885,7 +62885,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -62897,7 +62897,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -62909,7 +62909,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -62969,7 +62969,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -65581,7 +65581,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -65593,7 +65593,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -65605,7 +65605,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68224,7 +68224,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68236,7 +68236,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68248,7 +68248,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68260,7 +68260,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "O corpo está mole por completo; cotovelo e joelho movem-se sem resistência. A rigidez cumpriu o ciclo e saiu.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68279,7 +68279,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -70878,7 +70878,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -70890,7 +70890,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -70902,7 +70902,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -70933,7 +70933,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -73643,7 +73643,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -73655,7 +73655,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -73667,7 +73667,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -73698,7 +73698,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -73739,7 +73739,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",

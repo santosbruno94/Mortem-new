@@ -793,25 +793,30 @@ const PROSA_LESAO = {
 // polegar (§3) —; varia o RECORTE de observação (qual junta, a ordem, o
 // gesto do exame), nunca o sinal técnico que o motor pressupõe. Validado
 // pelo perito-forense.
+// Variantes com ARQUITETURA distinta (não o mesmo molde reescrito): variam
+// comprimento, ordem e ponto de ataque; parte fecha em fato seco, sem coda
+// interpretativa. Só o observável — nada de "começou", "caiu", "cumpriu o
+// ciclo" (a origem e o arco são dedução do jogador). Registro leigo de laudo
+// (o nome técnico vive no Glossário).
 const PROSA_RIGOR = {
   instalando: [
-    'O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.',
-    'O pescoço já resiste e a mandíbula travou; braços e pernas cedem à mão que os move. A rigidez começou por cima e ainda desce.',
-    'Duro o maxilar, dura a nuca; os dedos e os joelhos ainda obedecem. O enrijecimento não passou do tronco.',
+    'O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.',
+    'Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.',
+    'A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.',
   ],
   pleno: [
-    'Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.',
-    'Nenhuma junta cede à força da mão, do pescoço aos joelhos. O corpo guarda a posição em que caiu.',
-    'O corpo resiste de ponta a ponta, braço e perna presos por igual. Fixou-se na postura da morte.',
+    'Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.',
+    'Nenhuma junta cede à força da mão, do pescoço aos tornozelos.',
+    'O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.',
   ],
   resolucao: [
-    'O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.',
-    'A mandíbula afrouxou e o pescoço cede de novo; os joelhos ainda prendem. A rigidez recua na ordem em que veio.',
-    'Nos membros a rigidez persiste, mas a cabeça e o pescoço já se movem à mão. O corpo solta-se de cima para baixo.',
+    'O maxilar volta a ceder; os joelhos seguem presos.',
+    'Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.',
+    'Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.',
   ],
   resolvido: [
-    'Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.',
-    'O corpo está mole por completo; cotovelo e joelho movem-se sem resistência. A rigidez cumpriu o ciclo e saiu.',
+    'Junta nenhuma resiste ao exame; o corpo está mole por inteiro.',
+    'O cotovelo e o joelho movem-se sem resistência à mão.',
     'Todas as juntas cedem à mão. Do enrijecimento não resta sinal.',
   ],
 };
@@ -819,11 +824,11 @@ const PROSA_LIVOR = {
   movel: [
     'As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.',
     'A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.',
-    'Onde o polegar comprime, a hipóstase empalidece e logo retorna. As manchas ainda não se prenderam à carne.',
+    'Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.',
   ],
   fixo: [
     'As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.',
-    'O polegar comprime e a mancha arroxeada não empalidece: a hipóstase já se fixou.',
+    'O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.',
     'As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.',
   ],
 };
@@ -833,7 +838,7 @@ const PROSA_LIVOR = {
 const PROSA_REACAO_VITAL = [
   'As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.',
   'As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.',
-  'Sob as margens afastadas, o sangue penetrou os tecidos e ali coalhou. Passada a água, o coágulo continua aderido.',
+  'Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.',
 ];
 // Só o livor FIXO testemunha postura anterior (tanatologia §3): o móvel
 // migra com o corpo e não guarda contradição. Sem conectivo adversativo —
