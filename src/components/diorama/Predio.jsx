@@ -47,7 +47,7 @@ function criarTelhado(larguraX, profundidadeZ, altura, cumeeiraEmX) {
   return g;
 }
 
-function Telhado({ forma, emissiva, intensidade }) {
+export function Telhado({ forma, emissiva, intensidade }) {
   const geo = useMemo(
     () => criarTelhado(forma.w + forma.beiral * 2, forma.d + forma.beiral * 2, forma.telhadoAltura, forma.ristela),
     [forma.w, forma.d, forma.beiral, forma.telhadoAltura, forma.ristela]
@@ -119,7 +119,11 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
     if (precisa) invalidate();
   });
 
-  const alturaRotulo = forma.h + forma.telhadoAltura + 0.34;
+  // `rotuloAlto` (anexo da maquete gerada, numérico): o telheiro fica
+  // ATRÁS do prédio-mãe — a etiqueta sobe acima da linha do telhado da
+  // frente para não ser interceptada pela etiqueta dele (contrato de
+  // clique do QA); anexos irmãos escalonam alturas distintas.
+  const alturaRotulo = forma.h + forma.telhadoAltura + (forma.rotuloAlto || 0.34);
   const emissiva = hover && interativo ? '#d97706' : novo ? '#6b3410' : '#000000';
   const intensidade = hover && interativo ? 0.3 : novo ? 0.16 : 0;
 
@@ -209,20 +213,26 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
         </group>
       )}
 
-      {/* Porta (retângulo escuro) e janelas acesas na fachada +z */}
-      <mesh position={[-forma.w * 0.22, 0.17, forma.d / 2 + 0.006]}>
-        <planeGeometry args={[0.16, 0.3]} />
-        <meshStandardMaterial color="#2a2118" />
-      </mesh>
-      <mesh position={[forma.w * 0.18, forma.h * 0.55, forma.d / 2 + 0.006]}>
-        <planeGeometry args={[0.13, 0.16]} />
-        <meshStandardMaterial ref={registrarLampada(0)} color="#f4c07a" emissive="#d97706" emissiveIntensity={0.85} />
-      </mesh>
-      {forma.w > 1.1 && (
-        <mesh position={[-forma.w * 0.02, forma.h * 0.55, forma.d / 2 + 0.006]}>
-          <planeGeometry args={[0.13, 0.16]} />
-          <meshStandardMaterial ref={registrarLampada(1)} color="#f4c07a" emissive="#d97706" emissiveIntensity={0.85} />
-        </mesh>
+      {/* Porta (retângulo escuro) e janelas acesas na fachada +z. Prédio
+          de LAJE (logradouro da vila gerada, h rasa) não tem fachada — a
+          guarda é inerte no caso-escola (toda forma lá tem h ≥ 0,58). */}
+      {forma.h >= 0.2 && (
+        <>
+          <mesh position={[-forma.w * 0.22, 0.17, forma.d / 2 + 0.006]}>
+            <planeGeometry args={[0.16, 0.3]} />
+            <meshStandardMaterial color="#2a2118" />
+          </mesh>
+          <mesh position={[forma.w * 0.18, forma.h * 0.55, forma.d / 2 + 0.006]}>
+            <planeGeometry args={[0.13, 0.16]} />
+            <meshStandardMaterial ref={registrarLampada(0)} color="#f4c07a" emissive="#d97706" emissiveIntensity={0.85} />
+          </mesh>
+          {forma.w > 1.1 && (
+            <mesh position={[-forma.w * 0.02, forma.h * 0.55, forma.d / 2 + 0.006]}>
+              <planeGeometry args={[0.13, 0.16]} />
+              <meshStandardMaterial ref={registrarLampada(1)} color="#f4c07a" emissive="#d97706" emissiveIntensity={0.85} />
+            </mesh>
+          )}
+        </>
       )}
 
       {/* A etiqueta da maquete: HTML real (clicável por texto — QA) */}

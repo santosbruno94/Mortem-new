@@ -4,7 +4,7 @@ Jogo de investigação forense em texto e cartas, ambientado na Inglaterra vitor
 Este repositório contém o **vertical slice jogável** — da tela de título ao Monólogo do
 Detetive, com os 4 desfechos possíveis — hoje em **quatro modos** sobre a mesma mesa:
 
-1. **A Hora Emprestada** — o caso-escola artesanal, escrito à mão (com a maquete 3D da vila).
+1. **A Hora Emprestada** — o caso-escola artesanal, escrito à mão.
 2. **A Hora Refeita** — a réplica procedural do caso-escola (a máquina remonta o mesmo crime).
 3. **Um Caso da Comarca** — um caso sorteado de um banco de **20 casos** que a simulação
    gera em build time (vila, elenco e vestígios que nenhuma mão escreveu).
@@ -15,13 +15,17 @@ Detetive, com os 4 desfechos possíveis — hoje em **quatro modos** sobre a mes
 O gerador é uma **ilha de build time**: em runtime o jogo só carrega pacotes prontos, nunca
 importa `src/gerador`; tudo é determinístico, sem chamadas de rede.
 
-Nos modos procedurais, a **OS Vila Viva** (etapas E1–E4) faz a vila que a simulação computa
+Nos modos procedurais, a **OS Vila Viva** (etapas E1–E6) faz a vila que a simulação computa
 chegar ao jogador — sempre camada narrativa/visual, com o motor cego: a **planta** do prédio
-é desenhada na cena; a **vizinhança** nomeia o vizinho parede-meia e usa a terminologia de
-1893 (**constable**, "O Posto do Constable", petty sessions); a **mobília** lê a classe da
-vítima; e a vila nasce em **três morfologias por seed** (nucleada, linear, de green), que
-mudam o grafo de quem-ouve-quem sem regra nova de motor (balanço provado por Monte Carlo).
-A etapa E5 (a travessa dos fundos, o "segundo grafo" de becos) fica pendente.
+é desenhada na cena; a terminologia é a de 1893 (**constable**, "O Posto do Constable",
+petty sessions); a **mobília** lê a classe da vítima; a vila nasce em **três morfologias por
+seed** (nucleada, linear, de green), que mudam o grafo de quem-ouve-quem sem regra nova de
+motor (balanço provado por Monte Carlo); e a **travessa dos fundos** (E5) abre o "segundo
+grafo" de becos. Com a **OS da vila na mesa**, todo caso gerado traz a própria **maquete 3D**
+no pacote (a vila inteira da seed na tábua — casario de cenário incluído), os testemunhos da
+rua são ouvidos no **prédio de encontro** (a taverna; mercearia/forja quando a taverna é a
+cena) e cada suspeito é interrogado **à porta da própria casa**, com o constable um passo
+atrás — o posto fica só com os papéis e o telégrafo.
 
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
@@ -80,9 +84,10 @@ Ferramentas de inspeção do gerador (build time, imprimem no terminal):
 2. **Abertura** — da pensão em Caulfield ao briefing do Delegado Wycliffe (as perguntas ao
    delegado não custam tempo… mas plantam iscas). Nos modos procedurais (comarca e luta), a
    abertura é omitida e o perito segue direto à investigação.
-3. **Investigação** — tudo acontece sobre a escrivaninha. Localidades são cartas: clique para
-   **viajar** até lá (só a viagem gasta o relógio) e abrir o exame ou o interrogatório como
-   sobreposição. O exame do corpo é uma **prancha de atlas** (SVG, com lupa que segue o
+3. **Investigação** — tudo acontece sobre a escrivaninha. Localidades são cartas (ou os
+   prédios da maquete 3D): clique para **viajar** até lá (só a viagem gasta o relógio) e
+   abrir o exame ou o interrogatório como sobreposição — nos casos gerados, interrogar é
+   bater à porta da casa de cada suspeito. O exame do corpo é uma **prancha de atlas** (SVG, com lupa que segue o
    dedo, frente/dorso e necropsia); os interrogatórios compõem uma **cena ilustrada** (fundo
    da localidade + sprite do interlocutor), com **confronto** (pousar uma prova diante do
    suspeito) e **exigir que mostre** (mandar mostrar as mãos, os antebraços ou as botas —
@@ -101,7 +106,9 @@ Ferramentas de inspeção do gerador (build time, imprimem no terminal):
 ## Stack
 
 Vite + React (JSX) + Tailwind CSS + Zustand, com **three.js / react-three-fiber** para a
-maquete 3D da vila (geometria 100% procedural, com fallback 2D via `?flat=1`). Desde o pivô
+maquete 3D da vila (geometria 100% procedural, com fallback 2D via `?flat=1`; o caso-escola
+usa o mapa espacial estático, e cada caso gerado traz a própria vila no campo visual
+`maquete` do pacote). Desde o pivô
 **"Gabinete Ilustrado"** (jul/2026), a apresentação é visual novel de gravura: o exame do
 corpo (A Prancha) e as conversas (A Cena) são **SVG procedural** — o 3D remanescente é só o
 diorama da vila. Sem TypeScript, sem engine de jogo, sem chamadas de rede em runtime — dados

@@ -2326,6 +2326,36 @@ function problemasDoPacoteGerado(pacote) {
     const m = textoAncora.match(termosArma);
     if (m) problemas.push(`veneno (${mecPct}) com prosa de arma branca na âncora/confronto: "${m[0]}"`);
   }
+  // OS da vila na mesa — a MAQUETE do pacote (camada visual): todo nó do
+  // mapa tem posição e forma (paridade 3D do gerado com o caso-escola); o
+  // cenário só referencia formas existentes; números finitos (JSON limpo).
+  // A ausência da maquete inteira seria regressão (o gerado voltaria à
+  // grade 2D sem aviso) — acusa; o motor segue cego a ela (GE3).
+  if (!pacote.maquete) {
+    problemas.push('maquete ausente do pacote gerado');
+  } else {
+    const mq = pacote.maquete;
+    for (const no of pacote.nosMapa) {
+      const pos = mq.posicoes?.[no.id];
+      if (!pos) problemas.push(`maquete sem posição do nó ${no.id}`);
+      else if (!mq.formas?.[pos.predio]) problemas.push(`maquete sem forma do prédio ${pos.predio} (nó ${no.id})`);
+      else if (![pos.x, pos.z].every(Number.isFinite)) problemas.push(`maquete com coordenada inválida no nó ${no.id}`);
+    }
+    for (const c of mq.cenario || []) {
+      if (!mq.formas?.[c.predio]) problemas.push(`maquete: cenário sem forma (${c.predio})`);
+    }
+    if (!mq.tabua || ![mq.tabua.centroX, mq.tabua.largura, mq.tabua.fundo].every(Number.isFinite)) {
+      problemas.push('maquete sem tábua válida');
+    }
+    // Interrogatório à porta: toda árvore de diálogo do gerado ancora num
+    // nó EXISTENTE do mapa (a casa, o ponto de encontro ou a delegacia).
+    const idsNos = new Set(pacote.nosMapa.map((n) => n.id));
+    for (const [chave, d] of Object.entries(pacote.dialogos || {})) {
+      if (!idsNos.has(d.origemLocalidade)) {
+        problemas.push(`diálogo ${chave} ancorado em nó inexistente (${d.origemLocalidade})`);
+      }
+    }
+  }
   return problemas;
 }
 const problemasEmbarcados = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA].flatMap((p) =>
@@ -2368,9 +2398,14 @@ function perfisDoCasoGerado(pacote) {
     s().viajarPara('delegacia');
     ['gen_visto_vivo', 'gen_motivo'].forEach((id) => idsCartas.has(id) && s().extrairCarta(id));
     // v2: os álibis (cartas dos beats de diálogo) entram na mesa — o juízo
-    // periférico do Metódico é perícia, não convicção.
+    // periférico do Metódico é perícia, não convicção. OS da vila na mesa:
+    // o interrogatório corre à porta de cada suspeito — o Metódico viaja
+    // ao nó da carta (a casa; a delegacia só como fallback).
     for (const susp of pacote.suspeitos) {
-      if (idsCartas.has(`gen_alibi_${susp.id}`)) s().extrairCarta(`gen_alibi_${susp.id}`);
+      const alibi = pacote.cartas.find((c) => c.id === `gen_alibi_${susp.id}`);
+      if (!alibi) continue;
+      s().viajarPara(alibi.localidade || 'delegacia');
+      s().extrairCarta(alibi.id);
     }
     if (pacote.cartas.some((c) => c.localidade === 'oficio_do_reu')) {
       s().viajarPara('oficio_do_reu');
@@ -3530,8 +3565,10 @@ const ge2Fracao = ge2Total > 0 ? ge2SemCarta / ge2Total : 0;
 const ge2AntiTelegrafoOk = ge2Fracao >= 0.4 && ge2Fracao <= 0.6;
 if (!ge2AntiTelegrafoOk)
   console.log(`\nPALCO E1 — GE2 fora da banda 40–60%: ${(ge2Fracao * 100).toFixed(1)}% (${ge2SemCarta}/${ge2Total}).`);
+// OS da vila na mesa: `maquete` entra na regex — o campo visual da vila
+// gerada (posições/formas/cenário) é tão vedado ao motor quanto o palco.
 const ge3Violacoes = arquivosJs(path.join(raizSrc, 'logic')).filter((arquivo) =>
-  /\.(pontos|comodo|celula|mobilia|saidas|palco)\b/.test(semComentarios(readFileSync(arquivo, 'utf8')))
+  /\.(pontos|comodo|celula|mobilia|saidas|palco|maquete)\b/.test(semComentarios(readFileSync(arquivo, 'utf8')))
 );
 const ge3MotorCegoOk = ge3Violacoes.length === 0;
 if (!ge3MotorCegoOk) console.log('\nPALCO E1 — GE3: src/logic lê dado de palco em:', ge3Violacoes.join(', '));

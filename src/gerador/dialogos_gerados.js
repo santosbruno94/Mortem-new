@@ -11,10 +11,12 @@
 // byte (guarda de replay no qa.mjs).
 //
 // O QUE SAI, por suspeito do pacote:
-//   • uma árvore EMBUTIDA na delegacia (origemLocalidade: 'delegacia' —
-//     o delegado manda chamar, um a um, os nomes dos papéis), no MESMO
-//     shape de src/data/dialogos.js: { suspeitoId, noInicial, nos,
-//     noEvasiva, reacoesProva, confrontos };
+//   • uma árvore EMBUTIDA no nó onde a pessoa é interrogada (OS da vila
+//     na mesa: origemLocalidade = o nó da MORADIA do suspeito — o perito
+//     bate à porta com o constable, como no caso-escola; 'delegacia' fica
+//     só como fallback de pacote sem mapa de casas), no MESMO shape de
+//     src/data/dialogos.js: { suspeitoId, noInicial, nos, noEvasiva,
+//     reacoesProva, confrontos };
 //   • o esqueleto de 3 beats (§7.2 — a conversa desce e não volta):
 //     abertura (recepção por `comportamentos`) → b1_<tom> (o paradeiro;
 //     todo tom sustenta a MESMA carta de álibi) → b2_<tom> (o arremate;
@@ -173,7 +175,7 @@ function perguntasArremate(vitima) {
 // ---------------------------------------------------------------------
 const PRIMEIRAS_PALAVRAS = {
   gentry: [
-    '"Vim porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo."',
+    '"Recebo porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo."',
     '"A casa responde onde a lei pergunta. Vamos a isso."',
     '"A casa deve isto ao condado, e paga de bom grado. Ao que vem?"',
   ],
@@ -198,12 +200,12 @@ const PRIMEIRAS_PALAVRAS = {
     '"Larguei ferramenta quente na bancada. O que for, seja curto."',
   ],
   lavrador: [
-    '"Vim assim que o guarda mandou. Diga lá, que a lida não espera."',
-    '"O guarda mandou, eu vim. Pergunte, que o campo não espera."',
+    '"O guarda avisou que viriam. Diga lá, que a lida não espera."',
+    '"Pergunte daqui mesmo, que a tarde é curta."',
     '"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto."',
   ],
   criadagem: [
-    '"Com licença de entrar. Respondo o que souber."',
+    '"Posso falar, com licença da casa. Respondo o que souber."',
     '"Com licença. Digo o que souber, e volto ao serviço."',
     '"A casa deu licença. Respondo o que souber, e depressa."',
   ],
@@ -233,19 +235,37 @@ const TIQUE_ABERTURA = {
 // A recepção (abertura) por comportamento de diálogo.
 function falaAbertura(ctx) {
   const { pessoa, sal } = ctx;
+  // OS da vila na mesa: o interrogatório corre à porta da pessoa — o
+  // constable bate, o perito pergunta do batente. A recepção lê o
+  // comportamento de diálogo, como antes; muda a moldura, não a mecânica.
+  // Dois palcos especiais: quem MORA no posto (o guarda do condado) não
+  // tem porta a bater — atende na própria sala; quem mora no prédio de
+  // encontro (taverneiro, merceeiro, ferreiro) atende do serviço aberto.
+  const palco = ctx.palcoDialogo || 'casa';
   let entrada;
-  if (pessoa.comportamentos.includes('revela_facil')) {
-    entrada = `${pessoa.nome} entra na sala do expediente antes que o constable acabe de chamar o nome, e toma a palavra junto com a cadeira.`;
+  if (palco === 'posto') {
+    entrada = pessoa.comportamentos.includes('revela_facil')
+      ? `${pessoa.nome} atravessa a sala do posto e se apresenta antes que o chamem.`
+      : `${pessoa.nome} deixa o que fazia no posto e fica de pé, à espera da pergunta.`;
+  } else if (palco === 'encontro') {
+    entrada = pessoa.comportamentos.includes('revela_facil')
+      ? `${pessoa.nome} vem ao encontro antes que o constable chame, enxugando as mãos no avental.`
+      : pessoa.comportamentos.includes('revela_sob_custo')
+        ? `${pessoa.nome} deixa o serviço devagar e espera a pergunta da soleira.`
+        : `O constable acena da porta; ${pessoa.nome} deixa o serviço e vem, limpando as mãos.`;
+  } else if (pessoa.comportamentos.includes('revela_facil')) {
+    entrada = `${pessoa.nome} abre antes que o constable acabe de bater, e toma a palavra do batente.`;
   } else if (pessoa.comportamentos.includes('revela_sob_custo')) {
-    entrada = `${pessoa.nome} entra na sala do expediente, senta-se na beira da cadeira e espera que perguntem.`;
+    entrada = `${pessoa.nome} entreabre a porta e espera que perguntem, a mão ainda no trinco.`;
   } else {
     // Armação distinta da terceira entrada (contra a monotonia entre as
     // cinco conversas do caso) e gesto por gênero (KB vestuário: a touca
-    // feminina fica atada; o chapéu na mão é gesto de homem).
+    // feminina fica atada; descobrir-se à porta é gesto de homem). Os dois
+    // ficam no vão — o termo é tomado à porta, não na sala.
     entrada =
       pessoa.genero === 'feminino'
-        ? `O constable chama o nome; ${pessoa.nome} entra, senta-se e ajeita as fitas da touca.`
-        : `O constable chama o nome; ${pessoa.nome} entra e senta-se de chapéu na mão.`;
+        ? `O constable bate; ${pessoa.nome} abre, ajeita as fitas da touca e fica no vão da porta.`
+        : `O constable bate; ${pessoa.nome} abre e se descobre, o chapéu na mão.`;
   }
   const palavras = variante(PRIMEIRAS_PALAVRAS[pessoa.classeSocial] || PRIMEIRAS_PALAVRAS.lavrador, `${sal}|abertura`);
   const tique = TIQUE_ABERTURA[ctx.trait] || '';
@@ -285,12 +305,12 @@ const TENTO_RESSONANTE = {
     tenso: ' As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas.',
   },
   tagarela: {
-    neutro: ' No meio do rodeio, a mão pousa na mesa e a fala desacelera, como quem pisa chão conhecido.',
-    calmo: ' No meio do rodeio, a fala desacelera e a mão fica no colo, e a volta que ele sempre repete, desta vez fecha na primeira.',
+    neutro: ' No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido.',
+    calmo: ' No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira.',
     tenso: ' O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez.',
   },
   linha_tempo_nao_confiavel: {
-    neutro: ' Contra a parede, alinha as horas com os dedos na tábua da mesa, uma a uma.',
+    neutro: ' Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma.',
     calmo: ' Contra a parede, alinha as horas com os dedos e não as desfaz depois.',
     tenso: ' Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira.',
   },
@@ -417,52 +437,54 @@ function falaB2(ctx, tom) {
   const eleVitima = vitima.genero === 'feminino' ? 'ela' : 'ele';
   const fem = pessoa.genero === 'feminino';
   // Duas saídas por classe (v2 — contra falas gêmeas entre suspeitos da
-  // mesma classe no mesmo caso), sorteadas por suspeito.
+  // mesma classe no mesmo caso), sorteadas por suspeito. OS da vila na
+  // mesa: o palco é o BATENTE da casa do interrogado — ninguém se levanta
+  // de cadeira nem toma chapéu de mesa; quem encerra recua para dentro.
   const SAIDAS = {
     gentry: [
-      () => 'Levanta-se pelo próprio aviso. "Se a lei precisar de mais, a casa sabe onde fica."',
-      () => 'Levanta-se pelo próprio aviso. "A casa fica a par do que se apurar. Passar bem, {detective.treatment}."',
+      () => 'Recolhe-se um passo, a mão já na porta. "Se a lei precisar de mais, sabe onde a casa fica."',
+      () => 'Inclina a cabeça, medido. "A casa fica a par do que se apurar. Passar bem, {detective.treatment}."',
     ],
     // KB vestuário: sobrecasaca clerical de pároco anglicano, não batina.
     clero: [
-      () => 'Ergue-se e alisa a sobrecasaca. "A paróquia fica às ordens."',
-      () => 'Ergue-se com as duas mãos no espaldar. "Que se apure tudo, e depressa. A paróquia reza por isso."',
+      () => 'Alisa a sobrecasaca. "A paróquia fica às ordens."',
+      () => 'Pousa a mão na ombreira, um instante. "Que se apure tudo, e depressa. A paróquia reza por isso."',
     ],
     profissional: [
       (f) =>
         f
           ? 'Recolhe as luvas. "O inquérito sabe onde me encontrar."'
-          : 'Toma o chapéu. "O inquérito sabe onde me encontrar."',
+          : 'Recua para dentro do vão. "O inquérito sabe onde me encontrar."',
       (f) =>
         f
           ? 'Recolhe as luvas, um dedo por vez. "Qualquer papel que falte, mande buscar."'
-          : 'Toma o chapéu da mesa. "Qualquer papel que falte, mande buscar."',
+          : 'Ajeita o colarinho. "Qualquer papel que falte, mande buscar."',
     ],
     comerciante: [
       (f) =>
         f
           ? 'Ajeita o xale sobre os ombros. "O negócio não se guarda sozinho."'
-          : 'Levanta-se e abotoa o casaco. "O negócio não se guarda sozinho."',
+          : 'Abotoa o casaco contra o frio da porta. "O negócio não se guarda sozinho."',
       (f) =>
         f
-          ? 'Prende o xale e ergue-se. "Se faltar soma ou data, o livro do balcão as tem."'
-          : 'Abotoa o casaco e ergue-se. "Se faltar soma ou data, o livro do balcão as tem."',
+          ? 'Prende o xale. "Se faltar soma ou data, o livro do balcão as tem."'
+          : 'Abotoa o casaco. "Se faltar soma ou data, o livro do balcão as tem."',
     ],
     artesao: [
-      () => 'Levanta-se sem esperar licença. "O serviço ficou aceso."',
-      () => 'Limpa as mãos uma na outra e levanta-se. "Chamando, venho. O serviço fica onde ficou."',
+      () => 'Volta-se para dentro sem esperar licença. "O serviço ficou aceso."',
+      () => 'Limpa as mãos uma na outra. "Chamando, venho. O serviço fica onde ficou."',
     ],
     lavrador: [
-      () => 'Levanta-se devagar. "Se é tudo, volto à lida."',
-      () => 'Levanta-se e gira o chapéu uma volta nas mãos. "Deus ajude a achar quem foi. Passar bem."',
+      () => 'Assenta o chapéu de volta. "Se é tudo, volto à lida."',
+      () => 'Gira o chapéu uma volta nas mãos. "Deus ajude a achar quem foi. Passar bem."',
     ],
     criadagem: [
-      () => 'Levanta-se e alisa o avental. "Com licença, que a casa não para."',
-      () => 'Levanta-se e recolhe a cadeira ao lugar. "Se a casa puder servir em mais, é só mandar."',
+      () => 'Alisa o avental. "Com licença, que a casa não para."',
+      () => 'Recua com meia mesura. "Se a casa puder servir em mais, é só mandar."',
     ],
     servico_do_condado: [
-      () => 'Levanta-se e ajeita o cinturão. "A ronda não espera."',
-      () => 'Levanta-se e confere o próprio termo com os olhos. "Fica lavrado. Ao dispor do inquérito."',
+      () => 'Ajeita o cinturão. "A ronda não espera."',
+      () => 'Confere o próprio termo com os olhos. "Fica lavrado. Ao dispor do inquérito."',
     ],
   };
   const saida = variante(SAIDAS[pessoa.classeSocial] || SAIDAS.lavrador, `${ctx.sal}|saida`)(fem);
@@ -602,7 +624,7 @@ function falaB2(ctx, tom) {
   const tento =
     tom === ctx.tomRessonante
       ? {
-          medroso: ' Antes de sair, detém-se meio passo na porta, como quem ainda tem uma palavra; e sai sem a dizer.',
+          medroso: ' Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer.',
           preciso: ' Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato.',
           tagarela: ' Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada.',
           linha_tempo_nao_confiavel:
@@ -619,6 +641,15 @@ function falaB2(ctx, tom) {
 // pacoteEspacial na faixa do crime; o réu posto NA cena pela rotina
 // declara a moradia com recolhimento cedo (a mentira cai só por confronto).
 // ---------------------------------------------------------------------
+// O fecho do termo segue o PALCO do interrogatório (OS da vila na mesa):
+// à porta da casa, no serviço do prédio de encontro, ou no próprio posto
+// (o guarda que mora sob o teto dele — lá há mesa de tábua, não joelho).
+const FECHOS_TERMO = {
+  casa: ['Tomado por termo à porta, pela mão do constable.', 'Declarado do batente, o constable escrevendo sobre o joelho.'],
+  encontro: ['Tomado por termo ali mesmo, pela mão do constable.', 'Declarado de pé, o serviço à espera, diante do constable.'],
+  posto: ['Tomado por termo no próprio posto, pela mão do constable.', 'Declarado à mesa de tábua do posto, diante do constable.'],
+};
+
 function cartaDeAlibi(ctx) {
   const { pessoa, faixa, papel, nomePredio, cenaId, sal } = ctx;
   // E3 §4.5 — a AUSÊNCIA declarada: o paradeiro é a vila-mercado, fora do
@@ -631,13 +662,10 @@ function cartaDeAlibi(ctx) {
     // ancora a plausibilidade (parecer do perito): negócio fechado tarde,
     // estrada de outubro escura desde as cinco e meia.
     const falaAus = `"Estive em ${ctx.ausencia} desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã."`;
-    const fechoAus = variante(
-      ['Tomado por termo no posto do constable, pela mão do guarda.', 'Declarado na sala do expediente, diante do constable.'],
-      `${sal}|alibi|fecho`
-    );
+    const fechoAus = variante(FECHOS_TERMO[ctx.palcoDialogo] || FECHOS_TERMO.casa, `${sal}|alibi|fecho`);
     return {
       id: `gen_alibi_${pessoa.id}`,
-      localidade: 'delegacia',
+      localidade: ctx.localidadeInterrogatorio,
       // P6 (item 11): o rótulo clicável carrega a informação a cruzar — o
       // lugar declarado + a faixa —, não um título opaco ("A Noite de X").
       // O lugar (ctx.ausencia) é o que discrimina; a faixa é a mesma do caso.
@@ -706,15 +734,13 @@ function cartaDeAlibi(ctx) {
     falaDeclarada = `"Estive ${forma.em} das oito às onze; dali fui direto ${formaMoradia.para}, dormir."`;
   }
 
-  const fecho = variante(
-    // KB inquérito §2: quem escreve o termo na estação de vila é o próprio
-    // guarda/delegado — não há escrevente civil lotado ali em 1893.
-    ['Tomado por termo no posto do constable, pela mão do guarda.', 'Declarado na sala do expediente, diante do constable.'],
-    `${sal}|alibi|fecho`
-  );
+  // KB inquérito §2: quem escreve o termo na vila é o próprio guarda/
+  // constable — não há escrevente civil em 1893. OS da vila na mesa: o
+  // termo é tomado onde a pessoa é ouvida (FECHOS_TERMO, por palco).
+  const fecho = variante(FECHOS_TERMO[ctx.palcoDialogo] || FECHOS_TERMO.casa, `${sal}|alibi|fecho`);
   return {
     id: `gen_alibi_${pessoa.id}`,
-    localidade: 'delegacia',
+    localidade: ctx.localidadeInterrogatorio,
     // P6 (item 11): rótulo informativo — o lugar declarado + a faixa. O
     // lugar (rotulo) é o dado que cai por confronto; a mesma composição do
     // carimbo, agora também no negrito clicável.
@@ -785,7 +811,7 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
       if (classe === 'instrumento_guardado_umido') {
         return {
           pergunta: `[${td}] Por que a peça ${vf.guardadoPergunta}?`,
-          reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "${vf.guardadoDefesa}. ${vf.comum}. E o constable lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
+          reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "${vf.guardadoDefesa}. ${vf.comum}. E o constable lavrou de próprio punho o lugar em que me achei." E devolve a peça sem a olhar de novo.`,
         };
       }
       return {
@@ -802,7 +828,7 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
     if (classe === 'instrumento_guardado_umido') {
       return {
         pergunta: `[${td}] Por que a peça foi guardada lavada, com a junta ainda úmida?`,
-        reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o constable lavrou de próprio punho o lugar em que me achei." E encosta a peça na mesa sem a olhar de novo.`,
+        reacao: `${pessoa.nome} responde sem olhar a peça duas vezes. "Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o constable lavrou de próprio punho o lugar em que me achei." E devolve a peça sem a olhar de novo.`,
       };
     }
     return {
@@ -829,19 +855,19 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   if (t.pertenceA === pessoa.id && t.subDominio === 'objeto_pessoal') {
     return {
       pergunta: `[${td}] Por que o par disto está entre as suas coisas?`,
-      reacao: `${pessoa.nome} vira o achado nos dedos uma vez e o pousa. "Meu, ou do meu feitio; comprei o par em feira, e outros levaram igual. Como foi parar com quem morreu, isso pergunte a quem o pôs lá; àquela hora eu tinha onde estar, e disso há registro." E o empurra de volta pela mesa, devagar.`,
+      reacao: `${pessoa.nome} vira o achado nos dedos uma vez e o pousa. "Meu, ou do meu feitio; comprei o par em feira, e outros levaram igual. Como foi parar com quem morreu, isso pergunte a quem o pôs lá; àquela hora eu tinha onde estar, e disso há registro." E o devolve à mão aberta, devagar.`,
     };
   }
   if (t.pertenceA === pessoa.id && t.subDominio === 'rastro_de_dinheiro') {
     return {
       pergunta: `[${td}] Por que soberanos novos, contados à vista de todos?`,
-      reacao: `${pessoa.nome} não conta a moeda de novo. "Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito; das minhas horas já dei conta, e constam do expediente."`,
+      reacao: `${pessoa.nome} não conta a moeda de novo. "Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito; das minhas horas já dei conta, e ficou por termo."`,
     };
   }
   if (t.pertenceA === pessoa.id && t.subDominio === 'fuga_apressada') {
     return {
       pergunta: `[${td}] Por que o rasgo do seu casaco encaixa neste retalho?`,
-      reacao: `${pessoa.nome} estende o braço e mostra a manga pelo avesso. "Rasguei-o num prego, e prego não falta nesta vila. Se o pano encaixa, encaixa; a porta onde o acharam eu não conheço. O meu paradeiro daquela hora está escrito no posto do constable." Recolhe o braço e espera a pergunta seguinte.`,
+      reacao: `${pessoa.nome} estende o braço e mostra a manga pelo avesso. "Rasguei-o num prego, e prego não falta nesta vila. Se o pano encaixa, encaixa; a porta onde o acharam eu não conheço. Da minha hora dei razão ao constable, e ficou por termo." Recolhe o braço e espera a pergunta seguinte.`,
     };
   }
 
@@ -973,7 +999,7 @@ function temaDoGatilho(bruto, pessoaId) {
 // Ordem estável: a dos próprios suspeitos (alfabética no pacote) e a do
 // array de cartas para os confrontos — replay byte a byte.
 // ---------------------------------------------------------------------
-export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {}, acessorId = null, instrumento = null, marcasCorporais = {} }) {
+export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausencias = {}, acessorId = null, instrumento = null, marcasCorporais = {}, localidadeInterrogatorio = {} }) {
   const { mundo, crime, escolha } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const vitima = pessoas.get(crime.vitimaId);
@@ -1076,6 +1102,17 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       defendeDemais,
       ehAcessor: pessoa.id === acessorId,
       instrumento,
+      // OS da vila na mesa: o nó onde ESTA pessoa é interrogada (a casa
+      // dela, via montador); 'delegacia' só como fallback de pacote velho.
+      localidadeInterrogatorio: localidadeInterrogatorio[pessoa.id] || 'delegacia',
+      // O palco da conversa deriva do nó: quem mora no posto atende no
+      // posto; quem mora no prédio de encontro, no serviço; o resto, à porta.
+      palcoDialogo:
+        (localidadeInterrogatorio[pessoa.id] || 'delegacia') === 'delegacia'
+          ? 'posto'
+          : localidadeInterrogatorio[pessoa.id] === 'vizinhanca'
+            ? 'encontro'
+            : 'casa',
     };
 
     cartasAlibi.push(cartaDeAlibi(ctx));
@@ -1151,7 +1188,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
 
     dialogos[`dialogo_${pessoa.id}`] = {
       suspeitoId: pessoa.id,
-      origemLocalidade: 'delegacia',
+      origemLocalidade: ctx.localidadeInterrogatorio,
       chamada: `Interrogar ${pessoa.nome}`,
       titulo: `Interrogatório — ${pessoa.nome}`,
       subtitulo: `${profissaoExibida(pessoa.profissao).charAt(0).toUpperCase()}${profissaoExibida(pessoa.profissao).slice(1)}, ${pessoa.idade} anos`,
