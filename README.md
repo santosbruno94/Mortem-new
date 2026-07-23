@@ -39,6 +39,7 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/nota-gabinete-ilustrado.md`](./docs/nota-gabinete-ilustrado.md) | Pivô de apresentação (visual novel de gravura): a Prancha do corpo e a Cena de diálogo |
 | [`docs/pendencias-status.md`](./docs/pendencias-status.md) | Mapa vivo do que ainda falta (o que foi feito, o que fica para sessão própria) |
 | [`docs/os-vila-viva-e0-plano.md`](./docs/os-vila-viva-e0-plano.md) | Plano contra a genericidade espacial dos casos procedurais (etapas E1-E6; prompts de implementação em [`docs/os-vila-viva-prompts-implementacao.md`](./docs/os-vila-viva-prompts-implementacao.md)) |
+| [`docs/os-prosa-viva-e0-plano.md`](./docs/os-prosa-viva-e0-plano.md) | Plano contra a genericidade **textual** dos casos procedurais — sequência da Vila Viva (Fase 0 de telemetria + etapas E1-E5; prompts de implementação em [`docs/os-prosa-viva-prompts-implementacao.md`](./docs/os-prosa-viva-prompts-implementacao.md)) |
 | [`docs/guia-de-estilo.md`](./docs/guia-de-estilo.md) | Norma de toda a prosa (língua de época, observação pura, anti-padrões) |
 | [`docs/biblia-de-vozes.md`](./docs/biblia-de-vozes.md) | O idioleto de cada personagem |
 | [`docs/kb-medicina-legal/`](./docs/kb-medicina-legal/) | Verdade forense de época (Taylor, Casper, Lacassagne) + aparato legal-policial de 1893 |

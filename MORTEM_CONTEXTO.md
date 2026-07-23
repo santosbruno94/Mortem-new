@@ -813,7 +813,13 @@ editorial (`docs/os-lapidacao-prosa-gerada.md`, 16/07/2026): pipeline
 `revisar-prosa` sobre o corpus realizado dos 9 casos embarcados, correção sempre
 na fonte (`src/gerador/pacote_gerado.js`) e regeneração no mesmo commit —
 segundo passe com zero achados bloqueantes; roteiro de leitura em
-`docs/playtest-leitura-prosa-gerada.md`.
+`docs/playtest-leitura-prosa-gerada.md`. A frente seguinte — a **variedade** frásica
+dessas superfícies (a abertura de roteiro único, as tabelas forenses de variante única,
+os moldes de móbil/instrumento e os ecos rasos que se repetem entre os ~31 casos
+embarcados) — está planejada, não implementada, em `docs/os-prosa-viva-e0-plano.md`
+(Fase 0 de telemetria + etapas E1-E5; prompts em
+`docs/os-prosa-viva-prompts-implementacao.md`). Nenhuma etapa vira código sem ordem
+expressa do criador.
 
 ---
 
