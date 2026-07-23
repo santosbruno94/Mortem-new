@@ -184,5 +184,8 @@ próprio, importando `medir()` do script e comparando contra um baseline version
       frame do diálogo.
 - [x] Relatório de mesa datado (este documento) com a tabela do índice e a pauta E1–E5.
 - [x] `npm run build` limpo · `node scripts/qa.mjs` verde (nada em `src/` mudou).
-- [ ] **Decisões D1–D4 tomadas pelo autor** com o número à mão (§5) — pendência humana.
+- [x] **Decisões D1–D4 tomadas pelo autor** (23/07/2026): D1 = cold open da descoberta
+      (pensão só no tutorial; ideia do prólogo do crime rejeitada por colidir com a
+      encenação); D2–D4 = seguir recomendação. Registro em `os-prosa-viva-e0-plano.md` §6,
+      conceito da E1 revista em §4.
 - [ ] Guarda opcional no `qa.mjs` — a ligar depois de D2, se o autor quiser.
