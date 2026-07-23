@@ -659,6 +659,7 @@ const SUPERFICIE_RESPINGO = {
   adro_da_igreja: 'na pedra do muro',
   patio_da_granja: 'na tábua do alpendre',
   caminho_do_acude: 'no mourão da cerca',
+  travessa_dos_fundos: 'na aduela de um barril encostado',
 };
 
 // O instrumento à vista, com artigo (P12 do playtest 19/07 r2: a carta diz

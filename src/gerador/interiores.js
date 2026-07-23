@@ -185,6 +185,21 @@ const LAYOUTS = {
       { id: 'vereda', rotulo: 'A Vereda entre Sebes', tipoComodo: 'vereda', ret: { col: 0, fila: 2, colunas: 8, filas: 2 } },
     ],
   },
+  // TRAVESSA DOS FUNDOS (E5, logradouro v2): grid 8×3 linear (dossiê E2
+  // §1.4b). A viela é o corredor — cobre filas 1–2 até a borda de saída
+  // (espelha a vereda do açude, que também alcança a fila de fuga), não a
+  // única fila do dossiê, para não deixar a borda das saídas órfã de canto.
+  // Fundos do pub e quintais correm no fundo (fila 0). Duas bocas: a viela
+  // atravessa nos dois sentidos, como toda back lane.
+  travessa_dos_fundos: {
+    colunas: 8, filas: 3, split: [0, 0],
+    saidas: [{ col: 0, fila: 2 }, { col: 7, fila: 2 }],
+    comodos: () => [
+      { id: 'fundos_do_pub', rotulo: 'Os Fundos do Pub', tipoComodo: 'fundos_do_pub', ret: { col: 0, fila: 0, colunas: 3, filas: 1 } },
+      { id: 'quintais', rotulo: 'Os Quintais', tipoComodo: 'quintais', ret: { col: 3, fila: 0, colunas: 5, filas: 1 } },
+      { id: 'viela', rotulo: 'A Viela', tipoComodo: 'viela', ret: { col: 0, fila: 1, colunas: 8, filas: 2 } },
+    ],
+  },
 };
 
 // Classe social presumida do interior quando nenhum morador do elenco o
@@ -196,6 +211,8 @@ const CLASSE_PADRAO_DO_TIPO = {
   delegacia: 'servico_do_condado', forja: 'artesao', granja: 'lavrador', cottage: 'lavrador',
   // Logradouros (E2): a leitura social segue o prédio-mãe do anexo.
   adro_da_igreja: 'clero', patio_da_granja: 'lavrador', caminho_do_acude: 'comerciante',
+  // Travessa dos fundos (E5): anexa ao pub — comerciante, como a mercearia/pub.
+  travessa_dos_fundos: 'comerciante',
 };
 
 // Células do PERÍMETRO de um retângulo (mobília encosta na parede),

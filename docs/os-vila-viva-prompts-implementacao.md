@@ -156,6 +156,32 @@ ordem. Explicar o resultado para leigo em programação.
 > A bancada de balanço da E4 (Monte Carlo) está montada e as bandas v1 estão provadas.
 > O prompt abaixo foi enriquecido com o mapa concreto de implementação levantado na
 > investigação da E5.
+>
+> **Estado (E5 — sessão de implementação):** a travessa dos fundos está ATIVADA e no
+> branch — 4º tipo de logradouro em todos os canos (espaço/mobília/física, interior
+> 8×3, lote ancorado ao pub nas 3 morfologias, wiring de palco chamariz-only,
+> superfície do respingo). A **adjacência curada** deixa a viela em ~2 vizinhos (pub +
+> 1 cottage) nas 3 morfologias — o "grafo discreto" da KB, sem saturar 5–7. Balanço de
+> 20 000: regime-palco 74,6/15,5/10,0 (nas bandas); tipos de logradouro ~25% cada
+> (adro 23,3 · pátio 24,5 · açude 26,2 · travessa 26,0); afogamento externo 7,6%.
+> Build, integridade espacial, casos embarcados byte-a-byte, GE4, GE6, lint-prosa e as
+> demais 110 checagens do qa.mjs: VERDE.
+>
+> **GE5 — calibração decidida pelo autor (23/07, caminho 1).** Ao entrar o 4º tipo de
+> logradouro, o teto de 40% para a família asfixia nas cenas externas ficou vermelho no
+> lote fixo de 150 seeds (asfixia 52% em só 23 cenas externas). NÃO era regressão da E5:
+> a população seguia em 41,6% (v1: 41,0% — a MESMA condição já registrada no relatório
+> espacial v1 §3 e no registro #10.6); o guard de 150 seeds tinha amostra minúscula e o
+> reembaralhamento do 4º tipo o levou de 39% (v1) a 52%. Lotes maiores convergem à
+> população: 500→39,7%, 1500→43,2%, 20 000→41,6%. Como asfixia agrupa 3 dos 8 métodos, o
+> teto de 40% sempre foi apertado. Reportado ao autor (plano E0 §4), que escolheu o
+> **caminho 1**: **calibração de guard, sem tocar jogabilidade** — o lote do GE5 subiu
+> de 150 → **500 seeds** (mede o regime, não um punhado de casos) e o teto Y de
+> **40% → 45%** (folga honesta para uma família de 3 membros). O sorteio de método é o
+> de sempre. Com isso o `qa.mjs` fecha VERDE (113 checagens). Registro para o autor: se
+> um dia se quiser que NENHUMA família domine de fato (asfixia ~20%), o caminho é o
+> sorteio por-família (caminho 3) — mini-OS própria, com regeneração de banco e novo
+> playtest, fora do escopo da E5.
 
 ```text
 Leia CLAUDE.md e docs/os-vila-viva-e0-plano.md (etapa E5) antes de tocar em código.

@@ -19563,10 +19563,10 @@ export const CASOS_POOL = [
    "id": "gen_instrumento",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "vereda",
+   "comodo": "viela",
    "celula": {
     "col": 5,
-    "fila": 2
+    "fila": 1
    },
    "mobilia": null,
    "textoDisplay": "O Instrumento Abandonado",
@@ -19583,10 +19583,10 @@ export const CASOS_POOL = [
    "id": "gen_pegadas",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "vereda",
+   "comodo": "viela",
    "celula": {
     "col": 6,
-    "fila": 2
+    "fila": 1
    },
    "mobilia": null,
    "textoDisplay": "Pegadas Rumo à Saída",
@@ -19600,13 +19600,27 @@ export const CASOS_POOL = [
    }
   },
   {
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_2_lavrador",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na noite de 13",
+   "descricao": "Charles Baker conta o que a parede deixou passar na noite de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "noite"
+   }
+  },
+  {
    "id": "gen_engodo",
    "localidade": "vizinhanca",
    "suporteFisico": "testemunho",
    "origemTestemunha": "gen_7_ferreiro",
    "textoDisplay": "O Recado Levado",
    "carimboPadrao": "Recado que chamou a vítima",
-   "descricao": "Eli Mills conta o recado que levou a Annie Morris: que fosse ao Caminho do Açude sem falta. Quem lho pediu ficou fora da luz e não deixou nome.",
+   "descricao": "Eli Mills conta o recado que levou a Annie Morris: que fosse à Travessa dos Fundos sem falta. Quem lho pediu ficou fora da luz e não deixou nome.",
    "tagsOcultas": {
     "dominio": "testemunho",
     "subDominio": "engodo",
@@ -19657,7 +19671,7 @@ export const CASOS_POOL = [
    "id": "gen_segredo_gen_3_lavrador",
    "localidade": "cena",
    "suporteFisico": "cena",
-   "comodo": "vereda",
+   "comodo": "viela",
    "celula": null,
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
@@ -19804,7 +19818,7 @@ export const CASOS_POOL = [
   {
    "id": "corpo",
    "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — O Caminho do Açude",
+   "titulo": "O Corpo — A Travessa dos Fundos",
    "subtitulo": "Annie Morris, criada, 19 anos",
    "acoesEspeciais": [
     "termometro"
@@ -19817,7 +19831,7 @@ export const CASOS_POOL = [
     }
    ],
    "prosa": [
-    "A morta jaz ao relento, no canto a que a vila chama a vereda entre sebes, vestida de sair. O constable pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "A morta jaz ao relento, no canto a que a vila chama a viela, vestida de sair. O constable pôs guarda à entrada; até a chegada {g:do perito|da perita}, nada se tocou.",
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
@@ -19827,88 +19841,88 @@ export const CASOS_POOL = [
   {
    "id": "cena",
    "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — O Caminho do Açude",
+   "titulo": "A Cena — A Travessa dos Fundos",
    "subtitulo": "Onde Annie Morris foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Caminho do Açude guarda o dia em que a acharam; o exame corre canto a canto.",
+    "A Travessa dos Fundos guarda o dia em que a acharam; o exame corre canto a canto.",
     "Um transeunte deu com ela às 06h45; o alarme tomou a vila."
    ],
    "pontos": [
     {
-     "id": "pt_cena_margem",
-     "rotulo": "A Margem de Junco",
-     "comodo": "margem",
+     "id": "pt_cena_fundos_do_pub",
+     "rotulo": "Os Fundos do Pub",
+     "comodo": "fundos_do_pub",
      "prosa": [
-      "Do que ali está: pranchão de travessia, lâmina parada do açude. O que ali tinha prumo está tombado."
+      "No canto, escotilha da adega no calçamento, barris vazios empilhados."
      ]
     },
     {
-     "id": "pt_cena_comporta",
-     "rotulo": "A Comporta do Açude",
-     "comodo": "comporta",
+     "id": "pt_cena_quintais",
+     "rotulo": "Os Quintais",
+     "comodo": "quintais",
      "prosa": [
-      "No canto, sacas do moinho encostadas, engrenagem da comporta."
+      "Do que ali está: monturo dos fundos, privada externa de tábua, varal com a tina de lavar embaixo. O que ali tinha prumo está tombado."
      ]
     },
     {
-     "id": "pt_cena_vereda",
-     "rotulo": "A Vereda entre Sebes",
-     "comodo": "vereda",
+     "id": "pt_cena_viela",
+     "rotulo": "A Viela",
+     "comodo": "viela",
      "prosa": [
-      "No chão deste canto, a morta. Do que ali está: poste de braços indicadores, degraus de transpor a cerca. De uma borda a outra, nada guarda o seu lugar. Junto do corpo, no chão: [[gen_instrumento]]. Fora do caminho das pisadas, junto à borda: [[gen_segredo_gen_3_lavrador]]. Do chão até a saída: [[gen_pegadas]]."
+      "No chão deste canto, a morta. Do que ali está: boca da carvoeira rente ao chão. De uma borda a outra, nada guarda o seu lugar. Junto do corpo, no chão: [[gen_instrumento]]. Fora do caminho das pisadas, junto à borda: [[gen_segredo_gen_3_lavrador]]. Do chão até a saída: [[gen_pegadas]]."
      ]
     }
    ],
    "planta": {
-    "titulo": "O Caminho do Açude",
-    "viewBox": "0 0 256 152",
+    "titulo": "A Travessa dos Fundos",
+    "viewBox": "0 0 256 126",
     "comodos": [
      {
-      "id": "margem",
-      "rotulo": "A Margem de Junco",
-      "contorno": "M24 24 H180 V76 H24 Z",
+      "id": "fundos_do_pub",
+      "rotulo": "Os Fundos do Pub",
+      "contorno": "M24 24 H102 V50 H24 Z",
       "rotuloPos": {
-       "x": 102,
+       "x": 63,
        "y": 38
       },
       "alvos": []
      },
      {
-      "id": "comporta",
-      "rotulo": "A Comporta do Açude",
-      "contorno": "M180 24 H232 V76 H180 Z",
+      "id": "quintais",
+      "rotulo": "Os Quintais",
+      "contorno": "M102 24 H232 V50 H102 Z",
       "rotuloPos": {
-       "x": 206,
+       "x": 167,
        "y": 38
       },
       "alvos": []
      },
      {
-      "id": "vereda",
-      "rotulo": "A Vereda entre Sebes",
-      "contorno": "M24 76 H232 V128 H24 Z",
+      "id": "viela",
+      "rotulo": "A Viela",
+      "contorno": "M24 50 H232 V102 H24 Z",
       "rotuloPos": {
        "x": 128,
-       "y": 90
+       "y": 64
       },
       "alvos": []
      }
     ],
     "decorSalas": [],
     "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 29 H123 V45 H107 Z",
      "M159 29 H175 V45 H159 Z",
-     "M159 55 H175 V71 H159 Z",
-     "M185 55 H201 V71 H185 Z",
-     "M185 29 H201 V45 H185 Z",
-     "M55 81 H71 V97 H55 Z",
+     "M211 29 H227 V45 H211 Z",
      "M81 81 H97 V97 H81 Z"
     ],
     "rotulosDecor": [
      {
       "texto": "frente",
       "x": 128,
-      "y": 144
+      "y": 118
      }
     ]
    },
@@ -19939,6 +19953,7 @@ export const CASOS_POOL = [
    "prosa": [
     "A cena fica a céu aberto; as casas mais próximas olham-na de longe, por cima de muro e sebe.",
     "Do recado que correu na véspera: [[gen_engodo]].",
+    "Quem mora mais perto ouviu, e conta: [[gen_ruido_ouvido]].",
     "Perguntada porta a porta, a rua também responde pelos seus: [[gen_corrobora_gen_1_criada]], [[gen_corrobora_gen_2_lavrador]], [[gen_corrobora_gen_0_squire]]."
    ],
    "blocosContingentes": []
@@ -20216,8 +20231,15 @@ export const CASOS_POOL = [
    "subtitulo": "Lavrador, 45 anos",
    "noInicial": "abertura",
    "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
+   "reacoesProva": {
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
    "nos": {
     "abertura": {
      "fala": [
@@ -20252,6 +20274,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": []
     },
+    "reacao_gen_ruido_ouvido": {
+     "fala": [
+      "Charles Baker conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+     ],
+     "opcoes": []
+    },
     "b1_firme": {
      "fala": [
       "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
@@ -20281,7 +20309,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Annie Morris eu não conhecia.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -20347,7 +20375,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -20380,7 +20408,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Levanta-se e gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -21016,7 +21044,7 @@ export const CASOS_POOL = [
     "titulo": "O relato do constable Stanmore",
     "briefing": true,
     "paragrafos": [
-     "\"O essencial é isto: Annie Morris, 19 anos, criada. Achada morta no Caminho do Açude. Não toquei em nada e não prendi ninguém.\"",
+     "\"O essencial é isto: Annie Morris, 19 anos, criada. Achada morta na Travessa dos Fundos. Não toquei em nada e não prendi ninguém.\"",
      "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
