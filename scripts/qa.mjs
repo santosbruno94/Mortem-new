@@ -3543,14 +3543,22 @@ if (!ge3MotorCegoOk) console.log('\nPALCO E1 — GE3: src/logic lê dado de palc
 //       pseudo-interior de logradouro (planta derivada pela MESMA função
 //       — coberto pela guarda de planta da FASE 2).
 // (GE5) métodos externos: no lote, cenas externas cobrem ≥ 2 famílias e
-//       nenhuma família passa de 40% (Y aprovado pelo autor, 18/07).
+//       nenhuma família passa de 45% (Y CALIBRADO pelo autor na E5, 23/07).
+//       Racional: a família asfixia agrupa 3 dos 8 métodos e roda em ~41–43%
+//       na população (relatório espacial v1 §3 já a registrava em 41,0% — o
+//       teto antigo de 40% era apertado demais para uma família de 3
+//       membros). O lote subiu de 150 p/ 500 seeds: 150 dava só ~23 cenas
+//       externas (amostra ruidosa — a E5, ao entrar o 4º logradouro,
+//       reembaralhou o lote de 39%→52%); 500 dá ~78 cenas, medindo o regime,
+//       não um punhado de casos. Calibração de guard: zero mudança de
+//       jogabilidade (o sorteio de método é o de sempre).
 // (GE6) chamariz: interceptação ⇒ a carta do engodo existe na fatia (a
 //       alcançabilidade no pacote é coberta por marcadoresFecham do
 //       gerar-casos + checagem direta no lote de pacotes da E1).
 // (banda) regime-palco: externos em 10–30% do lote (moeda 20% menos a
 //       salvaguarda de fallback — §3.6).
 // ============================================================
-const SEEDS_E2 = Array.from({ length: 150 }, (_, i) => `comarca_${i + 1}`);
+const SEEDS_E2 = Array.from({ length: 500 }, (_, i) => `comarca_${i + 1}`);
 const FAMILIA_DO_METODO = {
   laminada: 'lamina', garrote: 'asfixia', esganadura: 'asfixia', sufocacao: 'asfixia',
   contundente: 'contuso', afogamento: 'afogamento', veneno_arsenico: 'veneno', laudano: 'veneno',
@@ -3604,7 +3612,7 @@ const ge4IntegridadeExternaOk = ge4Falhas.length === 0;
 if (!ge4IntegridadeExternaOk) console.log('\nPALCO E2 — GE4 falhou:', ge4Falhas.slice(0, 8).join('; '));
 const e2FamiliasN = Object.values(e2Familias);
 const ge5MetodosOk =
-  e2Externos > 0 && e2FamiliasN.length >= 2 && Math.max(...e2FamiliasN) / e2Externos <= 0.4;
+  e2Externos > 0 && e2FamiliasN.length >= 2 && Math.max(...e2FamiliasN) / e2Externos <= 0.45;
 if (!ge5MetodosOk)
   console.log(`\nPALCO E2 — GE5 falhou: famílias externas ${JSON.stringify(e2Familias)} em ${e2Externos} cenas.`);
 const ge6ChamarizOk = ge6Falhas.length === 0 && engodoInalcancavel.length === 0;
@@ -4025,9 +4033,9 @@ const checagens = [
   ['Palco E1 — GE2 anti-telégrafo: pontos de ambiência em 40–60% do lote de 50 seeds (OS palco em anéis §2)', ge2AntiTelegrafoOk],
   ['Palco E1 — GE3 motor cego ao palco: src/logic não lê pontos/comodo/celula/mobilia/saidas/palco (OS palco em anéis §2)', ge3MotorCegoOk],
   ['Palco E2 — GE4 integridade externa: saídas na borda do grid, vestígio externo dentro do grid, cena externa em logradouro, descoberta nas bandas (OS palco em anéis §3)', ge4IntegridadeExternaOk],
-  ['Palco E2 — GE5 métodos externos: ≥ 2 famílias e nenhuma acima de 40% das cenas externas do lote (OS palco em anéis §3.3)', ge5MetodosOk],
+  ['Palco E2 — GE5 métodos externos: ≥ 2 famílias e nenhuma acima de 45% das cenas externas do lote (OS palco em anéis §3.3; Y calibrado na E5)', ge5MetodosOk],
   ['Palco E2 — GE6 chamariz: toda interceptação deposita vestígio do engodo, alcançável no pacote (OS palco em anéis §3.4b)', ge6ChamarizOk],
-  ['Palco E2 — regime-palco na banda: cenas externas em 10–30% do lote de 150 seeds (OS palco em anéis §3.6)', bandaPalcoOk],
+  ['Palco E2 — regime-palco na banda: cenas externas em 10–30% do lote de 500 seeds (OS palco em anéis §3.6)', bandaPalcoOk],
   ['Comarca E3 — GE7/GE8 + LOD: só registro durável a distância, nunca essencial; sem interrogável fora da vila; satélite referenciado tem função, nó oculto, lead e custo (OS palco em anéis §4)', ge7e8Ok],
   ['Comarca E3 — GE9 anti-tell: função meramente corroborativa em 30–50% dos casos com nó (Z=40% do autor) (OS palco em anéis §4.4)', ge9AntiTellOk],
   ['Comarca E3 — telegrama (§4.6): dados acoplados ao nó no pacote e, em runtime, expedir + viajar entrega a resposta com as tags do registro', telegramaRuntimeOk],
