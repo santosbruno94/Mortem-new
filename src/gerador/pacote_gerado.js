@@ -254,23 +254,35 @@ function cartaHoraForjada(bruto) {
 const SEGREDOS_GERADOS = ['pedido_recusado', 'acerto_reservado'];
 
 const PROSA_SEGREDO = {
+  // E3: descricao vira POOL de 3 variantes (escolha por hashDecisao, keyed
+  // por suspeito). Os FATOS mecânicos são invariantes (pedido de socorro com
+  // "desta vez"; acerto de dinheiro com soma/prazo e a 2ª assinatura em
+  // falta) — coerentes com a admissão no confronto; varia só a descrição.
   pedido_recusado: {
     textoDisplay: 'O Bilhete Amassado',
     tipoVestigio: 'bilhete_de_suplica',
     carimbo: (nome) => `Bilhete na letra de ${nome}`,
-    // P14/P15: o bilhete diz do que trata o pedido (socorro em dinheiro) —
-    // coerente com a admissão no confronto ("saí com a recusa e a vergonha").
-    descricao: (nome) =>
-      `Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de ${nome}: um pedido de socorro em dinheiro, a palavra "desta vez" sublinhada, e nenhuma resposta no verso.`,
+    descricao: [
+      (nome) =>
+        `Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de ${nome}: um pedido de socorro em dinheiro, a palavra "desta vez" sublinhada, e nenhuma resposta no verso.`,
+      (nome) =>
+        `Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de ${nome}, um pedido de dinheiro em poucas linhas; "desta vez" vem grifado, e o verso ficou em branco.`,
+      (nome) =>
+        `Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve ${nome}, de próprio punho, um pedido de socorro em dinheiro, com "desta vez" riscado por baixo; resposta, nenhuma.`,
+    ],
   },
   acerto_reservado: {
     textoDisplay: 'A Nota por Assinar',
     tipoVestigio: 'nota_por_assinar',
     carimbo: (nome) => `Nota de trato com o nome de ${nome}`,
-    // P13/P15: a nota diz do que trata (acerto de dinheiro em reserva) —
-    // coerente com a admissão no confronto ("trato para se fechar calado").
-    descricao: (nome) =>
-      `Meia folha pautada com soma, prazo e o nome de ${nome} por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.`,
+    descricao: [
+      (nome) =>
+        `Meia folha pautada com soma, prazo e o nome de ${nome} por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.`,
+      (nome) =>
+        `Numa meia folha pautada, soma e prazo, e o nome de ${nome} por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.`,
+      (nome) =>
+        `Soma e prazo lançados a tinta, o nome de ${nome} por extenso logo abaixo: acerto para correr em reserva. A linha da outra assinatura segue vazia, a dobra fresca.`,
+    ],
   },
 };
 
@@ -327,6 +339,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
       perifericos[s.id] = { veredictoEsperado: 'inocente_segredo', segredo: tipo };
       segredos[s.id] = tipo;
       const p = PROSA_SEGREDO[tipo];
+      const descSeg = p.descricao[hashDecisao(`${bruto.seed}|segredo|${tipo}|${s.id}`) % p.descricao.length];
       cartasNovas.push({
         id: `gen_segredo_${s.id}`,
         localidade: 'cena',
@@ -336,7 +349,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
         mobilia: null,
         textoDisplay: p.textoDisplay,
         carimboPadrao: p.carimbo(pessoa.nome),
-        descricao: p.descricao(pessoa.nome),
+        descricao: descSeg(pessoa.nome),
         tagsOcultas: {
           dominio: 'vestigio',
           subDominio: 'rastro_de_visita',
@@ -1101,19 +1114,27 @@ function realizarCartas(bruto) {
       // fora do alcance da poça" (crime.js; removivel: false POR ISSO —
       // a esfrega do assoalho não o apanha). A prosa descreve o mesmo
       // fato, não uma trilha de gotas no chão que o dado não sustenta.
-      case 'gen_sangue_alheio':
+      case 'gen_sangue_alheio': {
+        // E3: pool de 3, mesmo sinal (respingo fino e alto, fora do alcance
+        // da poça e do que as feridas da vítima alcançariam). A superfície do
+        // palco (perito E2, A1): muro no adro, madeirame no pátio, cerca.
+        const respingoAlto = (sup) => [
+          `Um borrifo fino, de gotas miúdas, ${sup}, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`,
+          `À altura do peito, ${sup}, um salpico fino de gotas miúdas, longe de onde o sangue empoçou. Tão alto as feridas ${doMorto} não jogariam.`,
+          `Fora do alcance da poça, ${sup}, um borrifo miúdo à altura do peito. As feridas ${doMorto} não subiriam a esse ponto.`,
+        ];
         if (externo) {
-          // Parecer do perito (E2, A1): a superfície do respingo existe no
-          // palco — muro no adro, madeirame no pátio, cerca no açude.
           nova.textoDisplay = 'O Respingo Alto';
           nova.carimboPadrao = 'Respingo alto, fora do alcance da poça';
-          nova.descricao = `Um borrifo fino, de gotas miúdas, ${SUPERFICIE_RESPINGO[escolha.palco.logradouroId] || 'na superfície mais próxima'}, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`;
+          const sup = SUPERFICIE_RESPINGO[escolha.palco.logradouroId] || 'na superfície mais próxima';
+          nova.descricao = escolherCorpo(respingoAlto(sup), 'sangue_alheio');
         } else {
           nova.textoDisplay = 'O Respingo na Parede';
           nova.carimboPadrao = 'Respingo alto, fora do alcance da poça';
-          nova.descricao = `Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`;
+          nova.descricao = escolherCorpo(respingoAlto('na parede'), 'sangue_alheio');
         }
         break;
+      }
       // Parecer do perito (E2, A2): o guaiaco só fecha em substrato de
       // laje (adro); em terra, os óxidos de ferro e as peroxidases
       // vegetais coram igual — o teste é dito inconclusivo e o tell
@@ -1701,9 +1722,12 @@ function montarLocalidades(bruto, cartas, casasDoCaso) {
     subtitulo: `Onde ${vitima.nome} foi ${femV ? 'achada' : 'achado'}`,
     acoesEspeciais: [],
     introducao: [
-      `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam; o exame corre ${
-        externo ? 'canto a canto' : 'cômodo a cômodo'
-      }.`,
+      // E3: a linha de abertura da cena compõe-se por slot (hashDecisao).
+      [
+        `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam; o exame corre ${externo ? 'canto a canto' : 'cômodo a cômodo'}.`,
+        `${sujeitoDoLugar(predioCena)} está como no dia do achado. O exame passa ${externo ? 'canto a canto' : 'cômodo a cômodo'}, sem deixar recanto.`,
+        `${sujeitoDoLugar(predioCena)} não mudou desde a manhã em que ${femV ? 'a' : 'o'} acharam; o exame vai ${externo ? 'canto a canto' : 'cômodo a cômodo'}.`,
+      ][hashDecisao(`${bruto.seed}|prosa|cena-intro`) % 3],
       ...(fraseDescoberta ? [fraseDescoberta] : []),
       // E3: a casa da vítima lida pela mobília (leitura social, não pista).
       ...(leituraDaMobilia ? [leituraDaMobilia] : []),

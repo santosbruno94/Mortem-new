@@ -566,7 +566,7 @@ export const CASO_REPLICA = {
    "subtitulo": "Onde Albert Hall foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 3 guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O Cottage nº 3 não mudou desde a manhã em que o acharam; o exame vai cômodo a cômodo.",
     "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
@@ -2787,7 +2787,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Rose Wright",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rose Wright: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve Rose Wright, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -2929,7 +2929,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Charles Harris foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Moinho guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O Moinho está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto.",
     "O piano ocupa a sala, de tampa fechada e sem partituras à vista."
    ],
    "pontos": [
@@ -5082,7 +5082,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Ernest Hall",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Ernest Hall: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Ernest Hall, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -5265,7 +5265,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Thomas Watson foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Granja está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto."
    ],
    "pontos": [
     {
@@ -7407,7 +7407,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Ethel Thomas",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Ethel Thomas por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, soma e prazo, e o nome de Ethel Thomas por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -7425,7 +7425,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Henry Walker",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Walker: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Henry Walker, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -7567,7 +7567,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde William Harris foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A Mercearia está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto.",
     "A louça boa fica no aparador da sala da frente, e os retratos, na mesma parede."
    ],
    "pontos": [
@@ -9657,7 +9657,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de George Webb",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de George Webb: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve George Webb, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -9799,7 +9799,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Florence Read foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Caminho do Açude guarda o dia em que a acharam; o exame corre canto a canto.",
+    "O Caminho do Açude está como no dia do achado. O exame passa canto a canto, sem deixar recanto.",
     "Um transeunte deu com ela às 06h30; o alarme tomou a vila."
    ],
    "pontos": [
@@ -11810,7 +11810,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Frank Jones",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Frank Jones por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, soma e prazo, e o nome de Frank Jones por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -11828,7 +11828,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Jane Webb",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Jane Webb: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Jane Webb, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -14297,7 +14297,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Louisa Jackson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Louisa Jackson: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Louisa Jackson, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -16804,7 +16804,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Frances Evans",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Frances Evans: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Frances Evans, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -16848,7 +16848,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de William Cooper",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de William Cooper por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, soma e prazo, e o nome de William Cooper por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -17004,7 +17004,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Henry Turner foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A Taverna está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto.",
     "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
@@ -19435,7 +19435,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Eleanor Barnes foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 4 guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "O Cottage nº 4 não mudou desde a manhã em que a acharam; o exame vai cômodo a cômodo.",
     "A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro."
    ],
    "pontos": [
@@ -21534,7 +21534,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Susan Wilson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Susan Wilson: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve Susan Wilson, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -21676,7 +21676,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Fanny Mills foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 2 guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "O Cottage nº 2 não mudou desde a manhã em que a acharam; o exame vai cômodo a cômodo.",
     "Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala."
    ],
    "pontos": [
@@ -23829,7 +23829,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Grace Moore",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Grace Moore: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Grace Moore, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -23847,7 +23847,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Leonard Ward",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Leonard Ward por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Soma e prazo lançados a tinta, o nome de Leonard Ward por extenso logo abaixo: acerto para correr em reserva. A linha da outra assinatura segue vazia, a dobra fresca.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -24016,7 +24016,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Amos Read foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A Taverna está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto.",
     "A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro."
    ],
    "pontos": [
@@ -26268,7 +26268,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Harold Walker",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Harold Walker: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Harold Walker, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -28544,7 +28544,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "À altura do peito, na parede, um salpico fino de gotas miúdas, longe de onde o sangue empoçou. Tão alto as feridas do morto não jogariam.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -28745,7 +28745,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Harry Webb",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Harry Webb: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve Harry Webb, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -33587,7 +33587,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Elizabeth Wilson",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Elizabeth Wilson por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Soma e prazo lançados a tinta, o nome de Elizabeth Wilson por extenso logo abaixo: acerto para correr em reserva. A linha da outra assinatura segue vazia, a dobra fresca.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -33618,7 +33618,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Percy Andrews",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Percy Andrews: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve Percy Andrews, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -33774,7 +33774,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Ezra Taylor foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A Taverna está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto.",
     "O piano ocupa a sala, de tampa fechada e sem partituras à vista."
    ],
    "pontos": [
@@ -35963,7 +35963,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Helen Evans",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Helen Evans: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Helen Evans, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -36132,7 +36132,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Harry Andrews foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A Mercearia não mudou desde a manhã em que o acharam; o exame vai cômodo a cômodo.",
     "A louça boa fica no aparador da sala da frente, e os retratos, na mesma parede."
    ],
    "pontos": [
@@ -38203,7 +38203,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Abigail Andrews",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Abigail Andrews: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve Abigail Andrews, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -38247,7 +38247,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Richard Morris",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Richard Morris por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Soma e prazo lançados a tinta, o nome de Richard Morris por extenso logo abaixo: acerto para correr em reserva. A linha da outra assinatura segue vazia, a dobra fresca.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -38376,7 +38376,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Herbert Jones foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Posto do Constable guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O Posto do Constable está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto.",
     "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
@@ -40803,7 +40803,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde George Wilson foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Granja não mudou desde a manhã em que o acharam; o exame vai cômodo a cômodo."
    ],
    "pontos": [
     {
@@ -43140,7 +43140,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Florence Jones foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "O Solar está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto.",
     "A cama é de armação boa, lavrada, no meio do resto surrado."
    ],
    "pontos": [
@@ -45241,7 +45241,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Annie Wood",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Wood: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Annie Wood, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -45435,7 +45435,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Jane Wright foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "O Solar não mudou desde a manhã em que a acharam; o exame vai cômodo a cômodo.",
     "Os retratos da linhagem cobrem a parede da sala, do teto à altura do ombro."
    ],
    "pontos": [
@@ -49718,7 +49718,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -49884,7 +49884,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Thomas Taylor",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Thomas Taylor: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Thomas Taylor, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -50058,7 +50058,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Daniel Morris foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Granja está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto."
    ],
    "pontos": [
     {
@@ -52492,7 +52492,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -52631,7 +52631,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Mary Parsons",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Mary Parsons por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, soma e prazo, e o nome de Mary Parsons por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -55090,7 +55090,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Fora do alcance da poça, na parede, um borrifo miúdo à altura do peito. As feridas do morto não subiriam a esse ponto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -55189,7 +55189,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Rosanna Wood",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rosanna Wood: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Rosanna Wood, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -55333,7 +55333,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde William Field foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Granja não mudou desde a manhã em que o acharam; o exame vai cômodo a cômodo."
    ],
    "pontos": [
     {
@@ -57546,7 +57546,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Fora do alcance da poça, na parede, um borrifo miúdo à altura do peito. As feridas do morto não subiriam a esse ponto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -57730,7 +57730,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Bertha Green",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Bertha Green: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve Bertha Green, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -60268,7 +60268,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "À altura do peito, na parede, um salpico fino de gotas miúdas, longe de onde o sangue empoçou. Tão alto as feridas do morto não jogariam.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -60460,7 +60460,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de George Martin",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de George Martin por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, soma e prazo, e o nome de George Martin por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -60491,7 +60491,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Richard Brown",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Richard Brown: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Richard Brown, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -60621,7 +60621,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Edward Carter foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 6 guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O Cottage nº 6 não mudou desde a manhã em que o acharam; o exame vai cômodo a cômodo.",
     "Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala."
    ],
    "pontos": [
@@ -63022,7 +63022,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Fora do alcance da poça, na parede, um borrifo miúdo à altura do peito. As feridas do morto não subiriam a esse ponto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -63144,7 +63144,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Alice Baker",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Alice Baker: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Uma folha que foi bola e voltou a folha, os vincos brancos de tão apertados. Na letra de Alice Baker, um pedido de dinheiro em poucas linhas; \"desta vez\" vem grifado, e o verso ficou em branco.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -63314,7 +63314,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Samuel Ward foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Taverna está como no dia do achado. O exame passa cômodo a cômodo, sem deixar recanto."
    ],
    "pontos": [
     {
@@ -65730,7 +65730,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "À altura do peito, na parede, um salpico fino de gotas miúdas, longe de onde o sangue empoçou. Tão alto as feridas do morto não jogariam.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -65863,7 +65863,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Laura Smith",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Laura Smith: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve Laura Smith, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -68373,7 +68373,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -68567,7 +68567,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Emma Thomas",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Emma Thomas por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Soma e prazo lançados a tinta, o nome de Emma Thomas por extenso logo abaixo: acerto para correr em reserva. A linha da outra assinatura segue vazia, a dobra fresca.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -71027,7 +71027,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "À altura do peito, na parede, um salpico fino de gotas miúdas, longe de onde o sangue empoçou. Tão alto as feridas do morto não jogariam.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -71245,7 +71245,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Walter Hill",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Walter Hill por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, soma e prazo, e o nome de Walter Hill por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -73792,7 +73792,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -74045,7 +74045,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Bernard Moore",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Bernard Moore: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Alisado sobre o joelho depois de amassado, o papel guarda os vincos. Escreve Bernard Moore, de próprio punho, um pedido de socorro em dinheiro, com \"desta vez\" riscado por baixo; resposta, nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -74063,7 +74063,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de George Jones",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de George Jones por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, soma e prazo, e o nome de George Jones por extenso ao pé. Um trato de dinheiro para correr calado; a segunda assinatura falta, e a dobra ainda quer abrir.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -74232,7 +74232,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Joseph Smith foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Granja não mudou desde a manhã em que o acharam; o exame vai cômodo a cômodo."
    ],
    "pontos": [
     {
