@@ -1339,10 +1339,69 @@ function assimetriaDaMobilia(bruto) {
 }
 
 // ---------------------------------------------------------------------
+// OS DA VILA NA MESA — as casas do interrogatório e o ponto de encontro.
+//
+// (a) Cada MORADIA de suspeito vira nó do mapa (`casa_<predioId>`): o
+//     interrogatório corre à porta da pessoa, com o constable um passo
+//     atrás — o mesmo desenho do caso-escola (a saleta, a loja, o moinho),
+//     e o procedimento plausível de 1893 (o inquérito de vila anda de
+//     porta em porta; a "sala de interrogatório" é anacronismo). Quem
+//     partilha teto partilha nó: uma casa, um nó, os moradores dentro.
+// (b) O nó de testemunhos difusos deixa de ser "A Vizinhança" abstrata e
+//     ganha parede: o PRÉDIO DE ENCONTRO da vila (a taverna; a mercearia
+//     ou a forja quando a taverna é a própria cena). O ID 'vizinhanca'
+//     FICA — é encanamento lógico (cartas, interferência e QA o
+//     referenciam; camada narrativa ≠ camada lógica); muda a apresentação.
+// Casos especiais: morador do prédio de encontro é interrogado ali mesmo
+// (origemLocalidade 'vizinhanca'); morador da delegacia, no posto; morador
+// do prédio da cena ganha nó próprio no grupo 'cena_predio' (0h da cena).
+// Tudo camada narrativa — o motor segue cego a moradia/rotina.
+// ---------------------------------------------------------------------
+const PREDIOS_DE_ENCONTRO = ['pub', 'mercearia', 'forja'];
+
+function derivarCasasDoCaso(bruto, suspeitos) {
+  const { mundo, escolha } = bruto;
+  const pessoas = indicePorId(mundo.elenco);
+  const venuePredioId =
+    PREDIOS_DE_ENCONTRO.find(
+      (id) => id !== escolha.localId && mundo.cidade.predios.some((p) => p.id === id)
+    ) || 'pub';
+  const porSuspeito = {};
+  const casas = [];
+  for (const s of suspeitos) {
+    const pessoa = pessoas.get(s.id);
+    if (!pessoa) continue;
+    const moradia = pessoa.pacoteEspacial.moradia;
+    let noId;
+    if (moradia === venuePredioId) {
+      noId = 'vizinhanca';
+    } else if (moradia === 'delegacia') {
+      noId = 'delegacia';
+    } else {
+      noId = `casa_${moradia}`;
+      let casa = casas.find((c) => c.noId === noId);
+      if (!casa) {
+        casa = {
+          noId,
+          predioId: moradia,
+          rotulo: nomeDoPredio(mundo.cidade, moradia),
+          grupo: moradia === escolha.localId ? 'cena_predio' : 'vila',
+          moradores: [],
+        };
+        casas.push(casa);
+      }
+      casa.moradores.push(pessoa);
+    }
+    porSuspeito[s.id] = noId;
+  }
+  return { venuePredioId, porSuspeito, casas };
+}
+
+// ---------------------------------------------------------------------
 // Localidades: prosa com os marcadores [[id]] de todas as cartas, mais os
 // blocos contingentes da interferência ({ eventoId, quando, paragrafos }).
 // ---------------------------------------------------------------------
-function montarLocalidades(bruto, cartas) {
+function montarLocalidades(bruto, cartas, casasDoCaso) {
   const { mundo, crime, escolha, interferencia } = bruto;
   const pessoas = indicePorId(mundo.elenco);
   const nome = (id) => (pessoas.get(id) ? pessoas.get(id).nome : id);
@@ -1644,9 +1703,13 @@ function montarLocalidades(bruto, cartas) {
       ...(cartas.some((c) => c.id === 'gen_citacao_comarca')
         ? ['Presa por alfinete ao maço, a folha de praxe: [[gen_citacao_comarca]].']
         : []),
-      // A árvore de diálogo procedural (OS própria): os interrogatórios
-      // vivem aqui — a sala do expediente serve de sala de inquérito.
-      'Um a um, ao chamado do constable, os nomes dos papéis vêm ao posto; a cadeira do interrogado espera de frente para a janela.',
+      // OS da vila na mesa: os interrogatórios saíram do posto — correm à
+      // porta de cada morada (nós `casa_*`); o constable dá os endereços.
+      // Ressalva do morador do posto (o guarda do condado): ele responde
+      // aqui mesmo — sem ela, a frase mentiria nesses casos (fiscal, furo 4).
+      Object.values(casasDoCaso.porSuspeito).includes('delegacia')
+        ? 'Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa — salvo o de quem mora sob o teto do posto, ouvido aqui mesmo.'
+        : 'Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa.',
     ],
     blocosContingentes: [
       ...(evVisto
@@ -1663,48 +1726,67 @@ function montarLocalidades(bruto, cartas) {
     ],
   };
 
-  // ---- A vizinhança ----
+  // ---- O ponto de encontro (id 'vizinhanca' — ver derivarCasasDoCaso) ----
   const evRuido = eventoQueDestroi('gen_ruido_ouvido');
   // Moldura do ruído conforme o posto de escuta: quem mora (ou passava a
   // faixa do crime) no próprio prédio da cena não ouve "de uma janela
   // vizinha" (parecer Fase 1, fiscal 3). Quem só FREQUENTAVA o prédio não
   // "dormia parede-meia" — o álibi dele diz que foi dormir em casa
-  // (parecer Fase 3, N2): a moldura da rotina é neutra de pernoite.
+  // (parecer Fase 3, N2): a moldura da rotina é neutra de pernoite. A fala
+  // agora corre no prédio de encontro — o dizente está presente, contando.
   const cartaRuido = cartas.find((c) => c.id === 'gen_ruido_ouvido');
   const tRuido = cartaRuido && cartaRuido.origemTestemunha ? pessoas.get(cartaRuido.origemTestemunha) : null;
   const moraNoPredio = !!tRuido && tRuido.pacoteEspacial.moradia === escolha.localId;
   const frequentavaOPredio = !!tRuido && tRuido.pacoteEspacial.rotina[escolha.faixa] === escolha.localId;
   const fraseRuido = externo
-    ? 'Quem mora mais perto ouviu, e conta: [[gen_ruido_ouvido]].'
+    ? 'Quem mora mais perto do lugar conta: [[gen_ruido_ouvido]].'
     : moraNoPredio
-      ? 'De dentro do próprio prédio, quem dormia parede-meia conta: [[gen_ruido_ouvido]].'
+      ? 'Quem dormia sob o teto da própria cena conta, a meia-voz: [[gen_ruido_ouvido]].'
       : frequentavaOPredio
-        ? 'De dentro do próprio prédio, quem lá estava àquela hora conta: [[gen_ruido_ouvido]].'
-        : 'De uma janela vizinha, quem ouviu conta: [[gen_ruido_ouvido]].';
+        ? 'Quem lá estava àquela hora conta: [[gen_ruido_ouvido]].'
+        : 'Quem tem janela para a cena conta: [[gen_ruido_ouvido]].';
   const cartaPrenuncio = cartas.find((c) => (c.tagsOcultas || {}).subDominio === 'prenuncio');
+  const rotuloEncontro = nomeDoPredio(mundo.cidade, casasDoCaso.venuePredioId);
+  // A cor do lugar, por tipo de prédio de encontro (observação pura; o
+  // falatório é costume de 1893 — pub/loja/forja como praças de conversa,
+  // KB vida-cotidiana). Duas variantes por prédio, sorteio decorrelacionado.
+  const INTRO_ENCONTRO = {
+    pub: [
+      'Na taverna, serragem no chão e canecas que descem devagar; a conversa não espera pergunta.',
+      'A taverna junta a vila ao fim da lida: bancos corridos, o balcão úmido, e quem chega ouve antes de sentar.',
+    ],
+    mercearia: [
+      'Na mercearia, a fila da tarde anda devagar: cada freguês deixa a compra e leva o falatório.',
+      'No balcão da mercearia pesa-se farinha e conversa; a fila da tarde vai até a porta.',
+    ],
+    forja: [
+      'Na forja, a bigorna bate o dia inteiro; quem espera ferradura conversa, e espera-se bastante.',
+      'O fole da forja não abafa as vozes: quem traz ferro a consertar traz junto o que ouviu.',
+    ],
+  };
   const vizinhanca = {
     id: 'vizinhanca',
-    rotuloMesa: 'A Vizinhança',
-    titulo: 'A Vizinhança da Cena',
-    subtitulo: externo
-      ? 'As casas ao alcance de um grito'
-      : 'As casas em volta, as janelas que dão para a rua',
+    rotuloMesa: rotuloEncontro,
+    titulo: rotuloEncontro,
+    subtitulo: 'Onde a vila conta o que sabe',
     acoesEspeciais: [],
     prosa: [
-      // E4 (OS Vila Viva): a vizinhança lê a morfologia da vila (linear/de
-      // green trazem uma nota de traçado; nucleada dispensa). Observação
-      // pura — só em cena interna, onde há vizinhança de rua a descrever.
-      ...(!externo && descricaoMorfologia(retrato.cidade.morfologia)
+      (INTRO_ENCONTRO[casasDoCaso.venuePredioId] || INTRO_ENCONTRO.pub)[
+        hashDecisao(`${bruto.seed}|prosa|encontro`) % 2
+      ],
+      // E4 (OS Vila Viva): a nota de morfologia da vila (linear/de green;
+      // nucleada dispensa). Observação pura — vale em qualquer palco: quem
+      // descreve o traçado agora é a conversa do prédio de encontro.
+      ...(descricaoMorfologia(retrato.cidade.morfologia)
         ? [descricaoMorfologia(retrato.cidade.morfologia)]
         : []),
-      // E2 (OS Vila Viva): a vizinhança descreve a vila que o gerador
-      // construiu — o quarteirão da cena e quem mora parede-meia (o mesmo
-      // elenco que o motor conta como ouvinte/álibi). Fair play: só
-      // geografia pública; nenhum dado novo, nenhuma tagsOculta.
+      // E2 (OS Vila Viva): a geografia pública da cena — o quarteirão e
+      // quem mora parede-meia (o mesmo elenco que o motor conta como
+      // ouvinte/álibi). Fair play: nenhum dado novo, nenhuma tagsOculta.
       externo
         ? [
             'A cena fica a céu aberto; as casas mais próximas olham-na de longe, por cima de muro e sebe.',
-            'Em volta, campo e muro baixo; até a primeira casa vai um bom pedaço de caminho.',
+            'Em volta da cena, campo e muro baixo; até a primeira casa vai um bom pedaço de caminho.',
           ][hashDecisao(`${bruto.seed}|prosa|vizinhanca|externa`) % 2]
         : retrato.adjacentes.length > 0
           ? `${sujeitoDoLugar(predioCena)} fica ${
@@ -1724,10 +1806,10 @@ function montarLocalidades(bruto, cartas) {
       ...(() => {
         const corroboracoes = cartas.filter((c) => c.id.startsWith('gen_corrobora_'));
         return corroboracoes.length
-          ? [`Perguntada porta a porta, a rua também responde pelos seus: ${corroboracoes.map((c) => `[[${c.id}]]`).join(', ')}.`]
+          ? [`Um e outro, ali mesmo, respondem pelos seus: ${corroboracoes.map((c) => `[[${c.id}]]`).join(', ')}.`]
           : [];
       })(),
-      ...(cartaPrenuncio ? [`Uma porta se entreabre à passagem {g:do perito|da perita}: [[${cartaPrenuncio.id}]].`] : []),
+      ...(cartaPrenuncio ? [`Alguém se chega, sem convite, ao lado {g:do perito|da perita}: [[${cartaPrenuncio.id}]].`] : []),
     ],
     blocosContingentes: [
       ...(evRuido ? [{ eventoId: evRuido.id, quando: 'nao_disparado', paragrafos: [fraseRuido] }] : []),
@@ -1735,13 +1817,46 @@ function montarLocalidades(bruto, cartas) {
     ],
   };
 
+  // ---- As casas do interrogatório (OS da vila na mesa) ----
+  // Um nó por moradia de suspeito; a árvore de diálogo embute-se aqui
+  // (origemLocalidade = o nó da casa). A prosa é moldura de visita —
+  // nenhuma carta mora na prosa (o álibi nasce na fala do interrogado).
+  const casasLocalidades = casasDoCaso.casas.map((casa) => {
+    const nomes = casa.moradores.map((m) => m.nome);
+    const predioCasa = obterPredio(mundo.cidade, casa.predioId);
+    const quarteiraoCasa = predioCasa
+      ? mundo.cidade.quarteiroes.find((q) => q.id === predioCasa.quarteirao)
+      : null;
+    const ondeFica = quarteiraoCasa ? quarteiraoEmFala(quarteiraoCasa.rotulo) : 'na vila';
+    const mesmaDaCena = casa.predioId === escolha.localId;
+    return {
+      id: casa.noId,
+      rotuloMesa: casa.rotulo,
+      titulo: `${casa.rotulo} — à porta`,
+      subtitulo:
+        nomes.length > 1
+          ? `A morada de ${nomes.slice(0, -1).join(', ')} e ${nomes[nomes.length - 1]}`
+          : `A morada de ${nomes[0]}`,
+      acoesEspeciais: [],
+      prosa: [
+        mesmaDaCena
+          ? 'A casa é a mesma do achado; o guarda de sentinela dá passagem, e a conversa corre no batente.'
+          : [
+              `${sujeitoDoLugar(casa.rotulo)} fica ${ondeFica}. O constable acompanha até a soleira e fica um passo atrás.`,
+              `${sujeitoDoLugar(casa.rotulo)} fica ${ondeFica}. O constable bate, anuncia o inquérito e cede a vez.`,
+              `${sujeitoDoLugar(casa.rotulo)} fica ${ondeFica}. O constable vai adiante, bate com o nó dos dedos e recua um passo.`,
+            ][hashDecisao(`${bruto.seed}|prosa|casa|${casa.noId}`) % 3],
+      ],
+    };
+  });
+
   // ---- Os pertences do réu (só quando a carta de nexo vive lá) ----
   // OS autobattler v2 (B3): a localidade pode carregar mais de uma carta
   // (o instrumento levado E o ferimento no corpo do suspeito) — toda
   // carta daqui ganha marcador próprio.
   const cartasOficio = cartas.filter((c) => c.localidade === 'oficio_do_reu');
   const cartaOficio = cartasOficio.find((c) => c.id !== 'gen_ferimento_reu') || cartasOficio[0];
-  const localidades = [corpo, cena, delegacia, vizinhanca];
+  const localidades = [corpo, cena, delegacia, vizinhanca, ...casasLocalidades];
   if (cartaOficio) {
     const reu = pessoas.get(crime.assassinoId);
     const predioOficio = nomeDoPredio(
@@ -1750,9 +1865,11 @@ function montarLocalidades(bruto, cartas) {
     );
     localidades.push({
       id: 'oficio_do_reu',
-      rotuloMesa: predioOficio,
+      // OS da vila na mesa: a casa do réu agora é nó próprio (casa_*) — o
+      // rótulo da diligência distingue as duas cartas na mesa.
+      rotuloMesa: `${predioOficio} — a busca`,
       titulo: `${predioOficio} — a diligência`,
-      subtitulo: 'Busca à porta do constable',
+      subtitulo: 'Busca com o constable à porta',
       acoesEspeciais: [],
       prosa: [
         cartaOficio.id === 'gen_ferimento_reu'
@@ -1772,13 +1889,18 @@ function montarLocalidades(bruto, cartas) {
 // Mapa do caso: o prédio da cena é um grupo (corpo + cena, 0h entre si);
 // o resto da vila é outro (1h por trecho).
 // ---------------------------------------------------------------------
-function montarMapa(localidades, comarcaDoCaso = null) {
+function montarMapa(localidades, comarcaDoCaso = null, casasDoCaso = null) {
   // O nó da diligência (v2 — lacuna D6 do playtest) nasce OCULTO: só o
   // móbil lavrado nos papéis dá causa à busca nos pertences de alguém.
   // Extrair gen_motivo revela o nó — a progressão de mapa do caso-escola
   // (o gabinete Pettigrew), emulada com o que o caso gerado tem.
   // E3: o nó de comarca (comarca_<satelite>) nasce oculto e caro — o
   // grupo próprio carrega a distância real do satélite (relógio mole).
+  // OS da vila na mesa: os nós `casa_*` entram no grupo 'vila' (1h por
+  // trecho), salvo a casa que É o prédio da cena — grupo 'cena_predio'
+  // (andar dentro do mesmo prédio custa 0h, como corpo↔cena).
+  const grupoDaCasa = (noId) =>
+    (casasDoCaso && casasDoCaso.casas.find((c) => c.noId === noId)?.grupo) || 'vila';
   const nosMapa = localidades.map((loc) => ({
     id: loc.id,
     rotulo: loc.rotuloMesa,
@@ -1787,7 +1909,9 @@ function montarMapa(localidades, comarcaDoCaso = null) {
         ? 'cena_predio'
         : loc.id.startsWith('comarca_')
           ? loc.id
-          : 'vila',
+          : loc.id.startsWith('casa_')
+            ? grupoDaCasa(loc.id)
+            : 'vila',
     desbloqueadoInicio: loc.id !== 'oficio_do_reu' && !loc.id.startsWith('comarca_'),
   }));
   const leads = localidades.some((l) => l.id === 'oficio_do_reu')
@@ -1810,6 +1934,135 @@ function montarMapa(localidades, comarcaDoCaso = null) {
     custos[`cena_predio|${grupo}`] = dist;
   }
   return { nosMapa, custos, leads };
+}
+
+// ---------------------------------------------------------------------
+// A MAQUETE DA VILA (OS da vila na mesa — a etapa E6 do plano Vila Viva):
+// o diorama 3D do caso gerado, derivado da cidade da Fase 2 no MESMO
+// schema que o DioramaVila consome (posicoes por nó {x,z,predio} + formas
+// por prédio). Camada 100% VISUAL do pacote (linhagem do campo `planta`):
+// o motor jamais a lê (guarda GE3 no qa.mjs); ausente ou incompleta, a
+// Escrivaninha cai na grade 2D — o jogo joga idêntico (fallback ?flat=1).
+//   posicoes : { [noId]: { x, z, predio, distante? } } — um por nó do mapa;
+//   formas   : { [chave]: silhueta } — a do prédio da cidade, ou a do
+//              ANEXO (nós que dividem prédio: corpo↔cena, busca na casa);
+//   cenario  : [{ predio, x, z, logradouro? }] — o casario SEM nó (as
+//              casas da vila que faltavam à maquete), não clicável;
+//   tabua    : { centroX, largura, fundo } — a peça sob a vila;
+//   estrada  : polilinha até o nó de comarca (só quando o caso o tem).
+// Tudo determinístico: coordenadas da cidade seedada, zero sorteio novo.
+// ---------------------------------------------------------------------
+const FORMA_ANEXO = {
+  w: 0.62, d: 0.52, h: 0.42, corParede: '#7d684c', corTelhado: '#443328',
+  telhadoAltura: 0.28, beiral: 0.07, ristela: true, chamines: [],
+};
+// Deslocamentos dos anexos de um MESMO prédio, na ordem de chegada: o
+// segundo e o terceiro nó no mesmo lote não podem nascer no mesmo ponto
+// (z-fighting) nem à mesma altura de etiqueta (uma interceptaria a outra
+// — parecer do fiscal, furo 2: até 3 nós num prédio quando a cena, a casa
+// do réu e a busca coincidem). `rotuloAlto` é numérico: o Predio soma-o à
+// altura da etiqueta, escalonando-as.
+const DESLOC_ANEXO = [
+  { dx: 0.12, dz: -0.62, rotuloAlto: 1.3 },
+  { dx: -0.66, dz: -0.44, rotuloAlto: 1.75 },
+  { dx: 0.78, dz: -0.44, rotuloAlto: 2.1 },
+];
+const FORMA_COMARCA = {
+  w: 1.3, d: 1.0, h: 1.05, corParede: '#77705f', corTelhado: '#3a352d',
+  telhadoAltura: 0.56, beiral: 0.12, ristela: true,
+  chamines: [{ x: 0.45, z: -0.25, alt: 0.55 }],
+};
+
+function derivarMaquete({ bruto, nosMapa, casasDoCaso }) {
+  const cidade = bruto.mundo.cidade;
+  const arred = (v) => Math.round(v * 100) / 100;
+  const predioDoNo = (noId) => {
+    if (noId === 'cena' || noId === 'corpo') return bruto.escolha.localId;
+    if (noId === 'delegacia') return 'delegacia';
+    if (noId === 'vizinhanca') return casasDoCaso.venuePredioId;
+    if (noId.startsWith('casa_')) return noId.slice('casa_'.length);
+    if (noId === 'oficio_do_reu') {
+      const reu = bruto.mundo.elenco.find((p) => p.id === bruto.crime.assassinoId);
+      return reu.pacoteEspacial.trabalho || reu.pacoteEspacial.moradia;
+    }
+    return null; // comarca_*: fora da vila, tratado adiante
+  };
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minZ = Infinity;
+  let maxZ = -Infinity;
+  for (const p of cidade.predios) {
+    minX = Math.min(minX, p.pos.x);
+    maxX = Math.max(maxX, p.pos.x);
+    minZ = Math.min(minZ, p.pos.z);
+    maxZ = Math.max(maxZ, p.pos.z);
+  }
+  const posicoes = {};
+  const formas = {};
+  const reivindicados = new Set();
+  const anexosPorPredio = new Map();
+  for (const no of nosMapa) {
+    if (no.id.startsWith('comarca_')) continue;
+    const predioId = predioDoNo(no.id);
+    const predio = predioId ? obterPredio(cidade, predioId) : null;
+    if (!predio) continue; // defensivo: nó sem prédio cai no fallback 2D
+    if (!reivindicados.has(predioId)) {
+      reivindicados.add(predioId);
+      posicoes[no.id] = { x: predio.pos.x, z: predio.pos.z, predio: predioId };
+      formas[predioId] = predio.forma;
+    } else {
+      // O ANEXO: nó subsequente no mesmo prédio (o corpo nos fundos da
+      // cena, a casa que é a cena, a diligência na casa já mapeada) —
+      // telheiro pequeno ATRÁS do prédio-mãe, na linhagem da
+      // relojoaria_fundos. Atrás (−z), a etiqueta sobe na tela e não
+      // intercepta o clique da etiqueta da frente; anexos IRMÃOS do mesmo
+      // prédio escalonam posição e altura de etiqueta (DESLOC_ANEXO).
+      const n = anexosPorPredio.get(predioId) || 0;
+      anexosPorPredio.set(predioId, n + 1);
+      const d = DESLOC_ANEXO[Math.min(n, DESLOC_ANEXO.length - 1)];
+      const chave = `anexo_${no.id}`;
+      posicoes[no.id] = { x: arred(predio.pos.x + d.dx), z: arred(predio.pos.z + d.dz), predio: chave };
+      formas[chave] = { ...FORMA_ANEXO, rotuloAlto: d.rotuloAlto };
+    }
+  }
+  // O nó de comarca: na ponta da estrada, além da borda nascente da vila
+  // (linhagem do gabinete Pettigrew — o mapa CRESCE quando o lead abre).
+  let estrada = null;
+  for (const no of nosMapa) {
+    if (!no.id.startsWith('comarca_')) continue;
+    const x = arred(maxX + 2.1);
+    const z = -1.7;
+    const chave = `predio_${no.id}`;
+    posicoes[no.id] = { x, z, predio: chave, distante: true };
+    formas[chave] = { ...FORMA_COMARCA, chamines: FORMA_COMARCA.chamines.map((c) => ({ ...c })) };
+    estrada = [
+      { x: arred(maxX + 0.4), z: -0.7 },
+      { x: arred(maxX + 1.1), z: -1.15 },
+      { x: arred(maxX + 1.7), z: -1.45 },
+      { x, z },
+    ];
+  }
+  // O casario sem nó: TODA a vila gerada entra na maquete como cenário
+  // (era a lacuna do diorama órfão — a vila existia no dado e não na mesa).
+  const cenario = [];
+  for (const p of cidade.predios) {
+    if (reivindicados.has(p.id)) continue;
+    cenario.push({ predio: p.id, x: p.pos.x, z: p.pos.z, ...(p.logradouro ? { logradouro: true } : {}) });
+    formas[p.id] = p.forma;
+  }
+  const tabua = {
+    centroX: arred((minX + maxX) / 2),
+    largura: arred(maxX - minX + 3.4),
+    fundo: arred(maxZ - minZ + 2.6),
+  };
+  return {
+    morfologia: cidade.morfologia,
+    tabua,
+    posicoes,
+    formas,
+    cenario,
+    ...(estrada ? { estrada } : {}),
+  };
 }
 
 // ---------------------------------------------------------------------
@@ -2014,7 +2267,9 @@ export function montarPacoteGerado(seed, opts = {}) {
   // E3: a comarca do caso — o registro durável a distância e o seu lead.
   const comarcaDoCaso = derivarComarcaDoCaso({ bruto, ausenteId });
   if (comarcaDoCaso) cartas.push(...comarcaDoCaso.cartasNovas);
-  const localidades = montarLocalidades(bruto, cartas);
+  // OS da vila na mesa: as casas do interrogatório e o ponto de encontro.
+  const casasDoCaso = derivarCasasDoCaso(bruto, suspeitos);
+  const localidades = montarLocalidades(bruto, cartas, casasDoCaso);
   if (comarcaDoCaso) {
     localidades.push(comarcaDoCaso.localidade);
     // O fio despacha da delegacia (o expediente pede à estação): a ação
@@ -2022,7 +2277,8 @@ export function montarPacoteGerado(seed, opts = {}) {
     const delegaciaLoc = localidades.find((l) => l.id === 'delegacia');
     if (delegaciaLoc) delegaciaLoc.acoesEspeciais = [...delegaciaLoc.acoesEspeciais, 'telegrafo'];
   }
-  const { nosMapa, custos, leads } = montarMapa(localidades, comarcaDoCaso);
+  const { nosMapa, custos, leads } = montarMapa(localidades, comarcaDoCaso, casasDoCaso);
+  const maquete = derivarMaquete({ bruto, nosMapa, casasDoCaso });
   const abertura = montarAbertura(bruto, sal, suspeitos);
   // A árvore de diálogo procedural (OS própria): uma árvore por suspeito,
   // embutida na delegacia, + as cartas de álibi que os beats sustentam.
@@ -2033,7 +2289,7 @@ export function montarPacoteGerado(seed, opts = {}) {
   const ausencias =
     ausenteId && comarcaDoCaso ? { [ausenteId]: comarcaDoCaso.satelite.rotulo } : {};
   const instrumentoDoMetodo = METODOS[bruto.crime.metodoId]?.instrumento || null;
-  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias, acessorId: perif.acessorId, instrumento: instrumentoDoMetodo, marcasCorporais: bruto.marcasCorporais || {} });
+  const { dialogos, cartasAlibi } = derivarDialogos({ bruto, cartas, suspeitos, segredos: perif.segredos, ausencias, acessorId: perif.acessorId, instrumento: instrumentoDoMetodo, marcasCorporais: bruto.marcasCorporais || {}, localidadeInterrogatorio: casasDoCaso.porSuspeito });
   cartas.push(...cartasAlibi);
 
   // A carta de NEXO define o instrumento que o veredicto cobra: o método
@@ -2076,6 +2332,9 @@ export function montarPacoteGerado(seed, opts = {}) {
       ambiente: AMBIENTE_PADRAO,
       calendario: { ...CALENDARIO_PADRAO },
     },
+    // Camada VISUAL opcional (o motor jamais a lê — guarda GE3): a maquete
+    // da vila gerada, no schema do DioramaVila. Sem ela, grade 2D.
+    maquete,
     ...(comarcaDoCaso ? { telegrama: comarcaDoCaso.telegrama } : {}),
     ...(bruto.interferencia.eventos.length
       ? {

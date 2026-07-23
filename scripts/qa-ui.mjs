@@ -696,7 +696,14 @@ async function main() {
     }
     await page.click('text=Entrar — iniciar a investigação');
     await espera(page, 600);
-    checar('Rota gerada: a maquete 3D cede à grade 2D (nós fora do diorama)', (await page.locator('canvas').count()) === 0);
+    // OS da vila na mesa: o caso gerado agora traz a própria maquete no
+    // pacote (campo visual `maquete`) — a vila 3D monta como no caso-escola.
+    await page.waitForSelector('canvas', { timeout: 15000 });
+    checar('Rota gerada: a maquete 3D da vila gerada monta (canvas)', (await page.locator('canvas').count()) >= 1);
+    checar(
+      'Rota gerada: o ponto de encontro da vila está na mesa (A Taverna)',
+      (await page.locator('body').innerText()).includes('A Taverna')
+    );
     await visitarEExtrair(page, 'O Corpo');
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
@@ -722,12 +729,21 @@ async function main() {
     await extrairTermosVisiveis(page);
     await fecharOverlay(page);
     await visitarEExtrair(page, 'O Posto do Constable');
-    // Árvore de diálogo procedural (OS diálogo): o constable chama um a um
-    // os suspeitos; o beat de paradeiro sustenta a carta de álibi em
-    // qualquer tom, e a conversa desce até se encerrar.
+    // OS da vila na mesa: os interrogatórios saíram do posto — o constable
+    // só guarda os papéis; ouvir os suspeitos é bater à porta de cada casa.
     checar(
-      'Rota gerada: o posto do constable oferece um interrogatório por suspeito',
-      (await page.locator('.botao-dialogo-local').count()) === 5
+      'Rota gerada: o posto do constable não interroga mais ninguém',
+      (await page.locator('.botao-dialogo-local').count()) === 0
+    );
+    await fecharOverlay(page);
+    // A casa partilhada (réplica: Cottage nº 4 abriga duas suspeitas):
+    // quem partilha teto partilha nó — dois interrogatórios à mesma porta.
+    // O beat de paradeiro sustenta a carta de álibi em qualquer tom, e a
+    // conversa desce até se encerrar.
+    await abrirNo(page, 'Cottage nº 4');
+    checar(
+      'Rota gerada: a casa partilhada oferece um interrogatório por moradora',
+      (await page.locator('.botao-dialogo-local').count()) === 2
     );
     await page.locator('.botao-dialogo-local').first().click();
     await espera(page, 400);
@@ -771,9 +787,12 @@ async function main() {
     checar('Rota gerada: recarregar oferece a retomada', (await page.getByRole('button', { name: 'Continuar o caso' }).count()) === 1);
     await page.getByRole('button', { name: 'Continuar o caso' }).click();
     await espera(page, 600);
+    // O rótulo do ponto de encontro (a taverna da vila gerada) só existe no
+    // caso gerado — esperar o texto cobre a montagem assíncrona da maquete.
+    await page.getByText('A Taverna').first().waitFor({ timeout: 15000 });
     checar(
       'Rota gerada: a retomada volta ao caso gerado (não ao caso-escola)',
-      (await page.locator('body').innerText()).includes('A Vizinhança')
+      (await page.locator('body').innerText()).includes('A Taverna')
     );
     await page.evaluate(() => window.localStorage && window.localStorage.clear());
 

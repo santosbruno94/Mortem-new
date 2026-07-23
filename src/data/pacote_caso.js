@@ -33,6 +33,13 @@
 //                         ambiente     : °C do ambiente da cena.
 //                         calendario   : { diaBase, mesAbrev, mesExtenso, ano }.
 //   plantas           : objeto (visual, OPCIONAL). { relojoaria: PLANTA }.
+//   maquete           : objeto (visual, OPCIONAL — casos gerados). O diorama
+//                       da vila gerada: { morfologia, tabua, posicoes,
+//                       formas, cenario, estrada? } no schema que o
+//                       DioramaVila consome (posicoes por nó {x,z,predio};
+//                       formas por prédio; cenario = casario sem nó, não
+//                       clicável). O motor JAMAIS a lê (guarda GE3);
+//                       ausente/incompleta ⇒ grade 2D (fallback ?flat=1).
 //   aparencias        : objeto (visual, OPCIONAL). { curadas, porLocalidade }.
 //   papeisDramaticos  : objeto (metadado do gerador, OPCIONAL). Mapa de id de
 //                       entidade → id de papel (src/data/papeis.js). O motor
@@ -280,6 +287,13 @@ export function obterAbertura() {
 // pacote — retrato decorativo; o motor jamais lê).
 export function obterPersonagemDaLocalidade(localidadeId) {
   return casoCarregado.aparencias?.porLocalidade?.[localidadeId] || null;
+}
+
+// A maquete da vila do caso (camada VISUAL opcional — casos gerados; o
+// motor jamais a lê). Null no tutorial: lá o diorama vem do mapa espacial
+// estático (src/data/mapa_espacial.js).
+export function obterMaquete() {
+  return casoCarregado.maquete || null;
 }
 
 // Prosa do eco pós-caso sobre interferências (FASE 4, OPCIONAL):

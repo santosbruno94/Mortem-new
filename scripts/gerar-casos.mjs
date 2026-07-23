@@ -198,8 +198,13 @@ function perfilInterativoOk(pacote) {
     if (idsCartas.has('gen_ruido_ouvido')) s().extrairCarta('gen_ruido_ouvido');
     s().viajarPara('delegacia');
     ['gen_visto_vivo', 'gen_motivo'].forEach((id) => idsCartas.has(id) && s().extrairCarta(id));
+    // OS da vila na mesa: o álibi nasce no interrogatório À PORTA de cada
+    // suspeito — o Metódico bate de casa em casa (a carta diz o nó dela).
     for (const susp of pacote.suspeitos) {
-      if (idsCartas.has(`gen_alibi_${susp.id}`)) s().extrairCarta(`gen_alibi_${susp.id}`);
+      const alibi = pacote.cartas.find((c) => c.id === `gen_alibi_${susp.id}`);
+      if (!alibi) continue;
+      s().viajarPara(alibi.localidade || 'delegacia');
+      s().extrairCarta(alibi.id);
     }
     if (pacote.cartas.some((c) => c.localidade === 'oficio_do_reu')) {
       s().viajarPara('oficio_do_reu');

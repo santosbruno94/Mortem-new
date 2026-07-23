@@ -6,8 +6,10 @@ import { POSICOES_DIORAMA, guardaNaPorta } from '../../data/mapa_espacial.js';
 // ele está à porta; à noite sai de cena e fica a lanterna acesa no umbral.
 // Tudo determinístico pela hora do relógio; nada anima (frameloop demand).
 // =====================================================================
-export default function GuardaDelegacia({ horasJogo }) {
-  const pos = POSICOES_DIORAMA.delegacia;
+export default function GuardaDelegacia({ horasJogo, pos: posProp }) {
+  // OS da vila na mesa: a posição vem do chamador (maquete gerada) ou do
+  // mapa espacial estático (caso-escola) — mesmo guarda, outra porta.
+  const pos = posProp || POSICOES_DIORAMA.delegacia;
   if (!pos) return null;
   const presente = guardaNaPorta(horasJogo);
   return (
