@@ -136,6 +136,14 @@ export const APARENCIAS_CURADAS = {
   },
 };
 
+// Nomes de exibição dos personagens que NÃO são suspeitos (não vivem em
+// SUSPEITOS, mas recebem o perito e aparecem em lembretes/retratos).
+// Camada narrativa — nenhuma regra lê isto; o pacote a embarca e a lógica
+// de apresentação resolve nomes por obterNomePersonagem (pacote_caso.js).
+export const NOMES_NAO_SUSPEITOS = {
+  delegado_wycliffe: 'Delegado Wycliffe',
+};
+
 // Quem recebe o perito em cada localidade (para o retrato no overlay).
 // Camada visual — nenhuma regra lê isto.
 export const PERSONAGEM_POR_LOCALIDADE = {

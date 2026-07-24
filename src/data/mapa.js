@@ -131,11 +131,17 @@ export const LEADS_DESBLOQUEIO = [
 // Acessores de consulta (sem regra de jogo — apenas leitura de dado).
 // ---------------------------------------------------------------------
 
+/**
+ * @deprecated Lê SÓ o mapa do caso-escola. Em runtime use o acessor
+ * homônimo de pacote_caso.js, que responde pelo caso CARREGADO (inclusive
+ * os gerados). Este fica para o gerador/QA (ilhas de build).
+ */
 export function obterNo(id) {
   return NOS_MAPA.find((n) => n.id === id) || null;
 }
 
 // Custo em horas para viajar de um nó a outro.
+/** @deprecated Mesmo aviso de obterNo: use o de pacote_caso.js em runtime. */
 export function custoViagem(idOrigem, idDestino) {
   const origem = obterNo(idOrigem);
   const destino = obterNo(idDestino);

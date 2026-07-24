@@ -11,6 +11,7 @@ import {
   oQueOutrosDizem,
   alibiDeclarado,
 } from '../logic/fichaPessoa.js';
+import { ROTULOS_DOMINIO } from '../data/rotulos.js';
 import RetratoPersonagem from './RetratoPersonagem.jsx';
 import Overlay from './Overlay.jsx';
 
@@ -27,14 +28,6 @@ import Overlay from './Overlay.jsx';
 // Clicar numa carta abre a FichaEvidencia (z-50, empilha acima).
 // Nenhuma prosa nova é introduzida (sem pipeline de revisão).
 // =====================================================================
-
-const ROTULOS_DOMINIO = {
-  temporal: 'Temporal',
-  causal: 'Causal',
-  ambiental: 'Ambiental',
-  comportamental: 'Comportamental',
-  vestigio: 'Vestígio',
-};
 
 export default function FichaPessoa({ suspeitoId }) {
   const detective = useJogo((s) => s.detective);

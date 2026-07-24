@@ -36,7 +36,7 @@ function salDaSeed(seed) {
 
 // Quem tem o que tirar pesa mais como vítima (herança, cofre, salário
 // devido): peso demográfico invertido da pirâmide social.
-const PESO_VITIMA_POR_CLASSE = {
+export const PESO_VITIMA_POR_CLASSE = {
   gentry: 5,
   comerciante: 4,
   profissional: 3,

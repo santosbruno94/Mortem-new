@@ -156,7 +156,7 @@ export default function PranchaCorpo({ ipm }) {
         ref={svgRef}
         viewBox="0 0 620 344"
         className="w-full h-auto select-none touch-none"
-        role="img"
+        role="group"
         aria-label="Prancha de exame do corpo — figura de atlas de medicina legal"
         onMouseMove={moverLente}
         onMouseLeave={() => setLente(LENTE_POUSO)}
@@ -209,11 +209,28 @@ export default function PranchaCorpo({ ipm }) {
           const feito = registrada(h.cartaId);
           const raio = Math.max(15, Math.min(30, h.raio * 78));
           return (
+            // Acessível por teclado (o svg-pai é role="group", não "img", para
+            // os filhos interativos existirem na árvore de acessibilidade):
+            // Enter/Espaço extrai como o clique. As mesmas cartas também saem
+            // pelos termos da prosa — este é o caminho redundante.
             <g
               key={h.cartaId}
               data-carta-id={h.cartaId}
               className={feito ? 'prancha-hotspot prancha-hotspot--feito' : 'prancha-hotspot'}
+              role="button"
+              tabIndex={feito ? -1 : 0}
+              aria-label={feito ? 'Observação já registrada' : 'Registrar observação do corpo'}
               onClick={feito ? undefined : () => extrairCarta(h.cartaId)}
+              onKeyDown={
+                feito
+                  ? undefined
+                  : (e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        extrairCarta(h.cartaId);
+                      }
+                    }
+              }
               onMouseEnter={() => destacarTermo(h.cartaId, true)}
               onMouseLeave={() => destacarTermo(h.cartaId, false)}
               style={{ cursor: feito ? 'default' : 'pointer' }}

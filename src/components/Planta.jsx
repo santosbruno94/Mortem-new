@@ -58,9 +58,16 @@ function perturbarPath(d, quadro) {
 }
 
 // Variantes por path, calculadas uma vez (o quadro 0 é o traço original).
+// Teto no cache: cada caso gerado traz paths próprios — numa sessão longa
+// de vários casos, o Map crescia sem limite. Estourado o teto, esvazia-se
+// (recalcular é barato; os paths do caso corrente repovoam na hora).
+const TETO_CACHE_BOIL = 512;
 const cacheBoil = new Map();
 function quadrosDe(d) {
-  if (!cacheBoil.has(d)) cacheBoil.set(d, [d, perturbarPath(d, 1), perturbarPath(d, 2)]);
+  if (!cacheBoil.has(d)) {
+    if (cacheBoil.size >= TETO_CACHE_BOIL) cacheBoil.clear();
+    cacheBoil.set(d, [d, perturbarPath(d, 1), perturbarPath(d, 2)]);
+  }
   return cacheBoil.get(d);
 }
 

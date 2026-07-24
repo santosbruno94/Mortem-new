@@ -52,7 +52,7 @@ export function horaAlegada(carta) {
   if (typeof t.horaAvistamentoDeclarada === 'number') return t.horaAvistamentoDeclarada;
   return null;
 }
-export function ehAlegacaoDeHora(carta) {
+function ehAlegacaoDeHora(carta) {
   return horaAlegada(carta) !== null;
 }
 
@@ -112,7 +112,10 @@ export function classificarLigacao(ligacao, mapaCartas) {
   if (cartas.length < 2) return null;
   const [c1, c2] = cartas;
   const alegacao = [c1, c2].find(ehAlegacaoDeHora);
-  const indicador = [c1, c2].find(ehIndicadorTemporal);
+  // O indicador é procurado ENTRE as cartas que não são a alegação: se uma
+  // carta fosse ambas as coisas, o find ingênuo a elegeria duas vezes e o
+  // resultado dependeria da ordem de/para ("a direção não importa").
+  const indicador = [c1, c2].find((c) => ehIndicadorTemporal(c) && c !== alegacao);
   if (alegacao && indicador && alegacao !== indicador) {
     return { tipo: 'refuta_hora', alvo: alegacao, fato: indicador };
   }
@@ -214,23 +217,32 @@ export function refutacaoDeHoraEstabelecida(alegacao, fatos) {
   return hora < janela.inicio || hora > janela.fim;
 }
 
+// O álibi cai por REGISTRO: uma corroboração sobre o declarante registra
+// que ele deixou o lugar antes da hora que declarou (`horaFimObservada` <
+// fim declarado). FONTE ÚNICA do predicado — o veredicto (a frase "como
+// caiu" do monólogo) importa daqui; um ajuste aqui vale para os dois.
+export function quedaPorRegistro(alibi, fato) {
+  const t = (alibi && alibi.tagsOcultas) || {};
+  const ft = (fato && fato.tagsOcultas) || {};
+  return (
+    ft.subDominio === 'corroboracao' &&
+    ft.ligadoA === t.declaranteId &&
+    typeof ft.horaFimObservada === 'number' &&
+    typeof t.horaFimDeclarada === 'number' &&
+    ft.horaFimObservada < t.horaFimDeclarada
+  );
+}
+
 // Álibi: cai por VESTÍGIO (um traço do próprio declarante o põe onde jurou
-// não estar — a presença física basta, sem hora) ou por TESTEMUNHO (uma
-// corroboração sobre o declarante registra que ele deixou o lugar antes da
-// hora que declarou: `horaFimObservada` < fim declarado).
+// não estar — a presença física basta, sem hora) ou por TESTEMUNHO (a
+// queda por registro, acima).
 export function refutacaoDeAlibiEstabelecida(alibi, fatos) {
   const t = ((alibi && alibi.tagsOcultas) || {});
   const decl = t.declaranteId;
   return (fatos || []).some((f) => {
     const ft = f.tagsOcultas || {};
     if (ft.pertenceA === decl) return true;
-    return (
-      ft.subDominio === 'corroboracao' &&
-      ft.ligadoA === decl &&
-      typeof ft.horaFimObservada === 'number' &&
-      typeof t.horaFimDeclarada === 'number' &&
-      ft.horaFimObservada < t.horaFimDeclarada
-    );
+    return quedaPorRegistro(alibi, f);
   });
 }
 

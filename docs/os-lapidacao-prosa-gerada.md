@@ -92,7 +92,7 @@ revisão LÊ o realizado (como o jogador lê) e CORRIGE o template.
    passe do pipeline `revisar-prosa` (editor-crítico, perito-forense,
    fiscal-continuidade) sobre o corpus realizado. Cada achado é mapeado ao
    template de origem — o parecer é a pauta da reescrita, no molde do
-   `RELATORIO_QA.md`.
+   `docs/relatorio-qa-2026-07-13.md`.
 3. **Reescrita na fonte** (Fase 2): skill `redigir-prosa` (agente
    `escritor-prosa`) sobre os templates apontados, com atenção aos riscos
    próprios de prosa-molde:

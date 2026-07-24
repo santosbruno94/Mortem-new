@@ -23,7 +23,7 @@
 import { obterSuspeito } from '../data/pacote_caso.js';
 import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIVO } from '../data/rotulos.js';
 import { formatJanela, formatHora, formatHoraComDia } from './tempo.js';
-import { hashString } from './hash.js';
+import { escolherDeterministico } from './hash.js';
 
 const TITULOS = {
   vitoria_absoluta: 'Vitória Absoluta',
@@ -32,14 +32,8 @@ const TITULOS = {
   erro_judiciario: 'Erro Judiciário',
 };
 
-// Escolhe uma variante de forma determinística a partir de uma chave
-// (o hash mora em src/logic/hash.js — a fonte única de sorteio do jogo).
-// `nOcorrencia` desloca a escolha pela ordem dentro do mesmo pool: blocos
-// vizinhos do mesmo tipo nunca repetem a variante, por construção.
-function escolher(variantes, chave, nOcorrencia = 0) {
-  if (!variantes || variantes.length === 0) return null;
-  return variantes[(hashString(chave) + nOcorrencia) % variantes.length];
-}
+// Escolha determinística de variante: a fonte única mora em hash.js.
+const escolher = escolherDeterministico;
 
 // Sorteia abertura e fecho respeitando o teto do guia §3: quando a abertura
 // sorteada é máxima, só concorrem fechos sem máxima (e vice-versa é
@@ -236,7 +230,9 @@ function blocoTese(dados) {
   // (Lote 3); e a hora forjada pode ser adiantada (a vítima já estava morta) ou
   // recuada para antes da morte (ainda estava viva). A hora recuada é sempre
   // negativa (dia anterior) — leva o dia junto (formatHoraComDia).
-  if (dados.descuidosOk && dados.cenaEncenada) {
+  // Mesmo guard do epílogo (blocoHoraTomada): seed com cenaEncenada e sem
+  // horaForjada numérica não pode render "arranjada para dar NaNhNaN".
+  if (dados.descuidosOk && dados.cenaEncenada && typeof dados.horaForjada === 'number') {
     const antesDaMorte = dados.horaForjada < dados.horaMorteAbsoluta;
     const quando = antesDaMorte ? formatHoraComDia(dados.horaForjada) : formatHora(dados.horaForjada);
     const estado = antesDaMorte ? 'ainda estava viva' : 'já estava morta';

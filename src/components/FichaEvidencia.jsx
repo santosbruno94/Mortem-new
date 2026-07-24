@@ -4,16 +4,8 @@ import { formatRelogio } from '../logic/tempo.js';
 import { obterLocalidade } from '../data/pacote_caso.js';
 import { tocarSom } from '../som.js';
 import { resolverAsset } from '../logic/assets.js';
+import { ROTULOS_DOMINIO } from '../data/rotulos.js';
 import Overlay from './Overlay.jsx';
-
-// Rótulo do domínio na tarja da etiqueta (mesma nomenclatura da mesa).
-const ROTULOS_DOMINIO = {
-  temporal: 'Temporal',
-  causal: 'Causal',
-  ambiental: 'Ambiental',
-  comportamental: 'Comportamental',
-  vestigio: 'Vestígio',
-};
 
 // A FICHA DE COLETA (§6.2): a evidência se apresenta no ato. Ao extrair um
 // termo — ou ao clicar numa carta já pousada —, a ficha sobe por cima como

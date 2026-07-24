@@ -66,6 +66,19 @@
 //                       evitadas: { titulo, porChave:{ [tipo_desfecho]:[…] } }
 //                       (src/data/ecos_interferencia.js). Mesmo mecanismo dos
 //                       códigos de falha (FASE 6). O motor jamais o lê.
+//   contradicaoHoras  : objeto (#5, OPCIONAL — o caso-escola). Ids do par
+//                       contraditório e a prosa do ponto a decidir da
+//                       Caderneta (src/data/cartas.js, CONTRADICAO_HORAS).
+//                       O motor jamais a lê; ausente ⇒ sem ponto a decidir.
+//   telegrama         : objeto (Comarca E3 §4.6, OPCIONAL — casos gerados
+//                       com nó satélite). O registro durável a distância:
+//                       { destino, via, latencia, resposta }. `latencia` em
+//                       horas de jogo; `resposta` é a DEFINIÇÃO da carta que
+//                       o fio entrega ({ textoDisplay, termoCarimbo,
+//                       descricao, tagsOcultas }) — o store a registra quando
+//                       o relógio vence a latência (expedir + viajar). As
+//                       tags da resposta são as do registro (o motor as lê
+//                       como qualquer carta; o campo em si não é regra).
 //
 // Regra de ouro do schema: NADA de funções no pacote — só dado. Os acessores
 // (obterSuspeito, obterDefinicaoCarta, resolverEstadoCarta…) vivem NESTE
@@ -89,14 +102,14 @@
 // =====================================================================
 
 import { SEED_TUTORIAL, SUSPEITOS } from './seed.js';
-import { CARTAS, resolverEstadoCarta as resolverEstadoCartaCru } from './cartas.js';
+import { CARTAS, CONTRADICAO_HORAS, resolverEstadoCarta as resolverEstadoCartaCru } from './cartas.js';
 import { LOCALIDADES } from './localidades.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, CUSTO_ENTRE_GRUPOS } from './mapa.js';
 import { DIALOGOS } from './dialogos.js';
 import { ESTADO_SUSPEITO_INICIAL, CONSEQUENCIAS_CONFRONTO } from './confrontos.js';
 import { PASSOS_ABERTURA, PERGUNTAS_BRIEFING, OPCOES_PERSONAGEM } from './abertura.js';
 import { PLANTA_RELOJOARIA } from './planta_relojoaria.js';
-import { APARENCIAS_CURADAS, PERSONAGEM_POR_LOCALIDADE } from './aparencias.js';
+import { APARENCIAS_CURADAS, PERSONAGEM_POR_LOCALIDADE, NOMES_NAO_SUSPEITOS } from './aparencias.js';
 import { ELENCO_TUTORIAL } from './papeis.js';
 import { ECOS_MESTRE_TUTORIAL } from './ecos_mestre.js';
 import { HORAS_CHEGADA_CENA, CALENDARIO_PADRAO } from '../logic/tempo.js';
@@ -153,7 +166,7 @@ export function montarPacoteTutorial() {
     // Camadas visuais opcionais — o motor jamais as lê. Ausentes, o jogo
     // cai no procedural (contrato de assets, FASE 2 em diante).
     plantas: { relojoaria: PLANTA_RELOJOARIA },
-    aparencias: { curadas: APARENCIAS_CURADAS, porLocalidade: PERSONAGEM_POR_LOCALIDADE },
+    aparencias: { curadas: APARENCIAS_CURADAS, porLocalidade: PERSONAGEM_POR_LOCALIDADE, nomes: NOMES_NAO_SUSPEITOS },
     // Metadado do gerador (FASE 5), OPCIONAL — o motor jamais o lê. Mapa de
     // id de entidade → id de papel dramático (src/data/papeis.js). É o casting
     // que o futuro gerador escalará; aqui, o casting anotado do caso-escola.
@@ -162,6 +175,10 @@ export function montarPacoteTutorial() {
     // legista na retentativa, por código de falha. Ausente ⇒ sem mestre, sem
     // eco (modo procedural).
     ecosDoMestre: ECOS_MESTRE_TUTORIAL,
+    // #5 (OPCIONAL) — a contradição de horas: ids do par e prosa do ponto a
+    // decidir (src/data/cartas.js). O motor jamais a lê; ausente ⇒ o caso não
+    // tem o ponto a decidir (os gerados, hoje).
+    contradicaoHoras: CONTRADICAO_HORAS,
   };
 }
 
@@ -287,6 +304,22 @@ export function obterAbertura() {
 // pacote — retrato decorativo; o motor jamais lê).
 export function obterPersonagemDaLocalidade(localidadeId) {
   return casoCarregado.aparencias?.porLocalidade?.[localidadeId] || null;
+}
+
+// #5 — a contradição de horas do caso (ids do par + prosa do ponto a
+// decidir), ou null quando o caso não a tem. Camada narrativa/UI.
+export function obterContradicaoHoras() {
+  return casoCarregado.contradicaoHoras || null;
+}
+
+// Nome de exibição de QUALQUER personagem do caso: suspeito (elenco) ou
+// não-suspeito (aparencias.nomes — o delegado que recebe na delegacia).
+// Camada narrativa; devolve null quando o pacote não conhece o id.
+export function obterNomePersonagem(id) {
+  if (!id) return null;
+  const suspeito = obterSuspeito(id);
+  if (suspeito) return suspeito.nome;
+  return casoCarregado.aparencias?.nomes?.[id] || null;
 }
 
 // A maquete da vila do caso (camada VISUAL opcional — casos gerados; o

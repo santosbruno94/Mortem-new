@@ -19,7 +19,11 @@ export function hashString(s) {
 }
 
 // Escolhe um item de uma lista de forma determinística a partir de uma chave.
-export function escolherDeterministico(itens, chave) {
+// `nOcorrencia` desloca a escolha pela ordem dentro do mesmo pool: blocos
+// vizinhos do mesmo tipo nunca repetem a variante, por construção. FONTE
+// ÚNICA do sorteio de variantes — monólogo, epílogo e eco do mestre usam
+// esta função (não reimplementar o padrão hash % length em cada módulo).
+export function escolherDeterministico(itens, chave, nOcorrencia = 0) {
   if (!itens || itens.length === 0) return null;
-  return itens[hashString(chave) % itens.length];
+  return itens[(hashString(chave) + nOcorrencia) % itens.length];
 }

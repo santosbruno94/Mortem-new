@@ -17,6 +17,7 @@ import {
   obterEcosDoMestre,
   obterInterferencias,
   obterEcosInterferencia,
+  obterContradicaoHoras,
   custoViagem,
   obterNo,
 } from '../data/pacote_caso.js';
@@ -39,6 +40,38 @@ export function buildDetective() {
 // Custo (horas) de revisar a acusação após um desfecho (Q2): a regalia do
 // caso-escola deixa de ser grátis — a audiência adia-se a cada retentativa.
 export const CUSTO_REVISAO = 2;
+
+// E3 §4.6 — a entrega do telegrama acompanha QUALQUER avanço (ou consulta)
+// do relógio: viagem paga, viagem livre com a latência já vencida, revisão
+// da acusação. Devolve o pedaço de estado a aplicar (a carta-resposta e o
+// aviso de diário) ou null quando nada vence agora. Os slots resolvem aqui,
+// como em extrairCarta; o campo do carimbo é `termoCarimbo` — o MESMO nome
+// que o gerador emite e que a carta registrada carrega (contrato único).
+function entregaTelegramaSeVenceu(s, horaNova) {
+  const t = obterCaso().telegrama;
+  const vence =
+    t &&
+    s.telegramaEnviado &&
+    !s.telegramaEnviado.entregue &&
+    horaNova >= s.telegramaEnviado.horaEnvio + t.latencia;
+  if (!vence) return null;
+  return {
+    telegramaEnviado: { ...s.telegramaEnviado, entregue: true },
+    carta: {
+      id: 'ev_telegrama',
+      localidade: 'delegacia',
+      ...t.resposta,
+      ...(t.resposta.textoDisplay ? { textoDisplay: interpolar(t.resposta.textoDisplay, s.detective) } : {}),
+      ...(t.resposta.termoCarimbo ? { termoCarimbo: interpolar(t.resposta.termoCarimbo, s.detective) } : {}),
+      ...(t.resposta.descricao ? { descricao: interpolar(t.resposta.descricao, s.detective) } : {}),
+      horaRegistro: horaNova,
+    },
+    aviso: {
+      hora: horaNova,
+      texto: 'A resposta ao telegrama espera na delegacia, na letra do telegrafista, datada ao minuto.',
+    },
+  };
+}
 
 // ---------------------------------------------------------------------
 // O estado de dado de UM caso, num factory: é a fonte única tanto do
@@ -221,6 +254,14 @@ export const useJogo = create(
   // sair do pacote carregado. Hoje só o caso-escola existe; a ação já deixa a
   // porta pronta para o procedural (FASE 7). Apaga o save (o caso mudou).
   carregarCaso: (pacote) => {
+    // Falhar cedo e alto: um pacote sem hora de chegada numérica NaN-izaria
+    // o relógio em silêncio e o NaN se propagaria a IPM, janelas e diário.
+    const horas = pacote?.parametrosCena?.horasChegada;
+    if (typeof horas !== 'number' || Number.isNaN(horas)) {
+      throw new Error(
+        `Pacote de caso inválido: parametrosCena.horasChegada ausente ou não numérico (caso "${pacote?.id ?? '?'}").`
+      );
+    }
     aplicarCasoNoModulo(pacote);
     useJogo.persist.clearStorage();
     set({ ...estadoInicialCaso(), ultimaCartaPousada: null, ultimoConfrontoAnotado: null });
@@ -344,13 +385,13 @@ export const useJogo = create(
   resolverContradicao: (escolha) =>
     set((s) => {
       if (s.escolhaContradicao || (escolha !== 'relato' && escolha !== 'corpo')) return {};
-      const texto =
-        escolha === 'corpo'
-          ? 'Firmei-me: parto do que o corpo diz; o relato que o desminta que se explique.'
-          : 'Firmei-me: parto do relato do moço do padeiro; que o corpo se explique depois.';
+      // Toda a prosa vem do PACOTE (contradicaoHoras) — nada do caso-escola
+      // cravado aqui. Caso sem o campo: a ação é no-op (não há o que firmar).
+      const contradicao = obterContradicaoHoras();
+      if (!contradicao) return {};
       return {
         escolhaContradicao: escolha,
-        log: [...s.log, { hora: s.horasJogo, texto }],
+        log: [...s.log, { hora: s.horasJogo, texto: contradicao.firmadoDiario[escolha] }],
       };
     }),
 
@@ -379,10 +420,20 @@ export const useJogo = create(
     if (noId === s.localidadeAtual || custo === 0) {
       // Mesmo sem custo, visitar o nó consome o destaque "novo" — um nó
       // revelado por lead no mesmo grupo não pode continuar aceso após visto.
+      // A entrega do telegrama também é checada aqui: se a latência venceu
+      // por outro avanço (a revisão da acusação), a viagem livre a entrega.
+      const entregaLivre = entregaTelegramaSeVenceu(s, s.horasJogo);
       set({
         localidadeAtual: noId,
         nosVisitados: visitados,
         nosNovos: s.nosNovos.filter((id) => id !== noId),
+        ...(entregaLivre
+          ? {
+              telegramaEnviado: entregaLivre.telegramaEnviado,
+              cartasRegistradas: [...s.cartasRegistradas, entregaLivre.carta],
+              log: [...s.log, entregaLivre.aviso],
+            }
+          : {}),
       });
       // FASE 4: visitar um nó também é ação observável (gatilho possível).
       get().dispararInterferencias();
@@ -393,34 +444,16 @@ export const useJogo = create(
     // E3 §4.6: a resposta do telegrama chega quando a viagem faz o relógio
     // passar da hora prometida — carta de runtime (como a do termômetro),
     // montada dos dados do pacote; o motor não participa.
-    const t = obterCaso().telegrama;
-    const entregaTelegrama =
-      t &&
-      s.telegramaEnviado &&
-      !s.telegramaEnviado.entregue &&
-      horaNova >= s.telegramaEnviado.horaEnvio + t.latencia;
+    const entrega = entregaTelegramaSeVenceu(s, horaNova);
     set({
       localidadeAtual: noId,
       nosVisitados: visitados,
       horasJogo: horaNova,
       nosNovos: s.nosNovos.filter((id) => id !== noId),
-      ...(entregaTelegrama
+      ...(entrega
         ? {
-            telegramaEnviado: { ...s.telegramaEnviado, entregue: true },
-            cartasRegistradas: [
-              ...s.cartasRegistradas,
-              {
-                id: 'ev_telegrama',
-                localidade: 'delegacia',
-                ...t.resposta,
-                // Slots {detective...}/{suspeito:...} resolvem aqui, como em
-                // extrairCarta — sem isto, uma resposta com slot sairia crua.
-                ...(t.resposta.textoDisplay ? { textoDisplay: interpolar(t.resposta.textoDisplay, s.detective) } : {}),
-                ...(t.resposta.carimboPadrao ? { carimboPadrao: interpolar(t.resposta.carimboPadrao, s.detective) } : {}),
-                ...(t.resposta.descricao ? { descricao: interpolar(t.resposta.descricao, s.detective) } : {}),
-                horaRegistro: horaNova,
-              },
-            ],
+            telegramaEnviado: entrega.telegramaEnviado,
+            cartasRegistradas: [...s.cartasRegistradas, entrega.carta],
           }
         : {}),
       log: [
@@ -429,9 +462,7 @@ export const useJogo = create(
           hora: horaNova,
           texto: `Deslocou-se para ${no ? no.rotulo : noId} (${formatDuracao(custo)} de viagem).`,
         },
-        ...(entregaTelegrama
-          ? [{ hora: horaNova, texto: 'A resposta ao telegrama espera na delegacia, na letra do telegrafista, datada ao minuto.' }]
-          : []),
+        ...(entrega ? [entrega.aviso] : []),
       ],
     });
     // FASE 4: a viagem em público é ação observável (gatilho possível).
@@ -515,21 +546,19 @@ export const useJogo = create(
         texto: `Novo destino no mapa: ${noRevelado ? noRevelado.rotulo : lead.revelaNo}. ${lead.nota || ''}`.trim(),
       });
     }
-    // #5 — a contradição de horas (o corpo × o avistamento do padeiro):
-    // quando o par se completa na mesa, o diário aponta o ponto a decidir na
-    // caderneta (o perito ainda não escolheu). Dispara UMA vez, na transição.
-    const idsDepois = [...s.cartasRegistradas.map((c) => c.id), carta.id];
-    const CORPO_HORA = ['ev_rigor', 'ev_livores'];
-    const parCompletoAgora =
-      idsDepois.includes('dep_avistamento_padeiro') && idsDepois.some((id) => CORPO_HORA.includes(id));
-    const parCompletoAntes =
-      s.cartasRegistradas.some((c) => c.id === 'dep_avistamento_padeiro') &&
-      s.cartasRegistradas.some((c) => CORPO_HORA.includes(c.id));
-    if (parCompletoAgora && !parCompletoAntes && !s.escolhaContradicao) {
-      log.push({
-        hora: s.horasJogo,
-        texto: 'Duas horas se contradizem: o corpo e o moço do padeiro. Há um ponto a decidir na caderneta.',
-      });
+    // #5 — a contradição de horas: quando o par definido no PACOTE
+    // (contradicaoHoras) se completa na mesa, o diário aponta o ponto a
+    // decidir na caderneta. Dispara UMA vez, na transição; caso sem o campo
+    // (os gerados) não tem par a vigiar.
+    const contradicao = obterContradicaoHoras();
+    if (contradicao) {
+      const idsAntes = s.cartasRegistradas.map((c) => c.id);
+      const idsDepois = [...idsAntes, carta.id];
+      const parCompleto = (ids) =>
+        ids.includes(contradicao.alegacaoId) && ids.some((id) => contradicao.corpoIds.includes(id));
+      if (parCompleto(idsDepois) && !parCompleto(idsAntes) && !s.escolhaContradicao) {
+        log.push({ hora: s.horasJogo, texto: contradicao.avisoDiario });
+      }
     }
     // Só a PRIMEIRA evidência do caso se apresenta em ficha (aprende-se o
     // gesto); as demais pousam sozinhas na mesa, anunciadas pelo aviso de
@@ -686,7 +715,18 @@ export const useJogo = create(
     })),
 
   definirJanela: (janela) =>
-    set((s) => ({ acusacao: { ...s.acusacao, janela: { ...s.acusacao.janela, ...janela } } })),
+    set((s) => {
+      const nova = { ...s.acusacao.janela, ...janela };
+      // Janela invertida (início depois do fim) seria julgada "não cobre" —
+      // mensagem enganosa para um buraco que é só ordem. Normaliza trocando
+      // os extremos: a afirmação vale pelo intervalo, não pela ordem do clique.
+      if (typeof nova.inicio === 'number' && typeof nova.fim === 'number' && nova.inicio > nova.fim) {
+        const t = nova.inicio;
+        nova.inicio = nova.fim;
+        nova.fim = t;
+      }
+      return { acusacao: { ...s.acusacao, janela: nova } };
+    }),
 
   definirCausa: (id) =>
     set((s) => ({ acusacao: { ...s.acusacao, causaId: s.acusacao.causaId === id ? null : id } })),
@@ -726,7 +766,17 @@ export const useJogo = create(
   // contra a Verdade de Ouro (calcularVeredictoCadeia).
   submeterAcusacao: () => {
     const s = get();
+    // Guarda de pré-condição (espelho da guarda de reentrância da revisão):
+    // sem réu apontado não há cadeia a julgar — se a UI perder o gate do
+    // botão, o jogador não pode receber um desfecho sem erro visível.
+    if (!s.acusacao.reuId) return;
     const veredicto = calcularVeredictoCadeia(s.acusacao, s.cartasRegistradas, obterCaso().verdadeDeOuro);
+    // O eco do mestre comenta A falha da queda anterior: se o novo veredicto
+    // não repete aquele código, a fala envelheceu — limpa-se (a Caderneta
+    // não pode seguir lendo a falha antiga depois da vitória).
+    const codigoEco = s.ecoMestreFalha?.tagsOcultas?.codigo || null;
+    const ecoAindaVale =
+      !!codigoEco && veredicto.falhas.some((f) => f.codigo === codigoEco);
     // Conta a queda em cada ponto (código único por submissão): na segunda
     // queda no mesmo ponto, a dica do tutorial fica mais específica.
     const falhasVistas = { ...s.falhasVistas };
@@ -746,6 +796,7 @@ export const useJogo = create(
       veredicto,
       falhasVistas,
       ecoInterferencias,
+      ecoMestreFalha: ecoAindaVale ? s.ecoMestreFalha : null,
       nSubmissoes: s.nSubmissoes + 1,
       overlay: { tipo: 'monologo', id: null },
       log: [...s.log, { hora: s.horasJogo, texto: 'Acusação levada a julgamento.' }],
@@ -773,17 +824,28 @@ export const useJogo = create(
       obterEcosDoMestre(),
       `${obterCaso().id}|${(s.detective && s.detective.name) || ''}`
     );
+    // A revisão avança o relógio: a latência do telegrama corre por baixo
+    // dele — se venceu agora, a resposta registra-se sem esperar viagem paga.
+    const horaNova = s.horasJogo + CUSTO_REVISAO;
+    const entrega = entregaTelegramaSeVenceu(s, horaNova);
     set({
       veredicto: null,
       overlay: { tipo: 'acusacao', id: null },
-      horasJogo: s.horasJogo + CUSTO_REVISAO,
+      horasJogo: horaNova,
       ecoMestreFalha: eco,
+      ...(entrega
+        ? {
+            telegramaEnviado: entrega.telegramaEnviado,
+            cartasRegistradas: [...s.cartasRegistradas, entrega.carta],
+          }
+        : {}),
       log: [
         ...s.log,
         {
-          hora: s.horasJogo + CUSTO_REVISAO,
+          hora: horaNova,
           texto: `A audiência adiou-se em ${formatDuracao(CUSTO_REVISAO)} para a revisão da acusação.`,
         },
+        ...(entrega ? [entrega.aviso] : []),
       ],
     });
     // Reanexa o eco às conclusões do mestre na Caderneta.

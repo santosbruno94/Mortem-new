@@ -1,4 +1,9 @@
-# Relatório de QA — "A Hora Emprestada"
+# Relatório de QA — "A Hora Emprestada" (fotografia de 13/07/2026)
+
+> **Nota (24/07/2026):** este arquivo é uma FOTOGRAFIA do estado do QA na data
+> acima, movida da raiz para `docs/` na revisão do repositório. A fonte viva é
+> a saída de `npm run qa` (e `npm run qa:ui`) — este texto não acompanha
+> mudanças de guarda.
 
 QA estático conforme §17 do contexto: os perfis abaixo são traçados por
 `node scripts/qa.mjs`, que dirige o store e as funções puras exatamente como a

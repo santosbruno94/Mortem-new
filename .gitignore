@@ -3,6 +3,19 @@ dist
 *.local
 .DS_Store
 
+# logs e ambiente
+*.log
+npm-debug.log*
+.env
+.env.*
+
+# editores
+.vscode/
+.idea/
+
 # ferramentas de screenshot local (não-gate)
 scripts/shot-*.mjs
 scripts/_*.png
+
+# artefatos do Playwright (qa-ui)
+test-results/

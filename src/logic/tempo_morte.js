@@ -58,7 +58,7 @@ export const AMBIENTE_PADRAO = 11;
 // `max` pode ser Infinity (sem teto): a morte pode ter sido arbitrariamente
 // antes, então o início da janela fica em -Infinity.
 // ---------------------------------------------------------------------
-export function janelaIpmParaAbsoluta([ipmMin, ipmMax], horaExame) {
+function janelaIpmParaAbsoluta([ipmMin, ipmMax], horaExame) {
   const fim = horaExame - ipmMin;
   const inicio = ipmMax === Infinity ? -Infinity : horaExame - ipmMax;
   return { inicio, fim };
@@ -106,7 +106,10 @@ export function janelaAlgor(temperaturaCorpo, ambiente, horaExame) {
     return janelaIpmParaAbsoluta([horasAteEquilibrio, Infinity], horaExame);
   }
   const horas = (temperaturaInicial - temperaturaCorpo) / resfriamentoPorHora;
-  return janelaIpmParaAbsoluta([horas - margemAlgorHoras, horas + margemAlgorHoras], horaExame);
+  // Corpo quase a 37°C (horas < margem): o piso do IPM não pode ser negativo
+  // — sem a trava, o fim da janela cairia DEPOIS da hora do exame ("morte
+  // no futuro" exibível). Inatingível com os dados atuais; blindagem.
+  return janelaIpmParaAbsoluta([Math.max(0, horas - margemAlgorHoras), horas + margemAlgorHoras], horaExame);
 }
 
 // Rigor: cada estado é uma faixa de IPM. 'inconclusivo' não informa nada.

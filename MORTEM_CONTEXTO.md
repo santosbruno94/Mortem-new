@@ -1027,6 +1027,15 @@ O **banco de casos gerados** também é chunk lazy (diagnóstico 21/07, Lote 5):
 carrega só o índice leve (`casos_indice.js`); os pacotes chegam por `import()` na
 primeira vez que um caso gerado é pedido (arranque de 1.818 → 403 KB).
 
+**QA dos embarcados (revisão 24/07):** o `qa.mjs` joga os 4 perfis de jogador em **todos
+os 31 casos embarcados** (antes só o primeiro de cada pool), com a coreografia única de
+`scripts/lib/perfis.mjs` (compartilhada com o `gerar-casos.mjs`, que agora valida
+interativamente também o pool da comarca). Nota registrada: o filtro de seleção antigo
+rejeitava sementes de luta jogáveis por um bug da própria coreografia (o nexo ligava o
+primeiro vestígio do réu, não o instrumental); com o filtro corrigido, a **próxima**
+regeneração (`npm run gerar:casos`) trocará 5 dos 10 casos de luta — o banco commitado
+segue o antigo até o autor decidir regenerar.
+
 **Estrutura de pastas:**
 ```
 docs/           guia-de-estilo · biblia-de-vozes · kb-medicina-legal/ · historico-decisoes
@@ -1045,13 +1054,20 @@ src/
   store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes,
                 acusacao, log, detective, nosVisitados, nSubmissoes, somAtivo)
   som.js        efeitos sonoros da mesa (apresentação; nenhuma regra lê)
-  components/   Escrivaninha · MesaLocalidades2D (grade/fallback) · EventoLocalidade ·
-                MuralAcusacao · MonologoFinal · PainelAlibis · ModalGlossario ·
+  components/   Escrivaninha · MesaLocalidades2D (grade/fallback) · EventoLocalidade
+                (apoios em localidade/: FalaDoLegista · NotaFrescor · BotaoTelegrafo ·
+                GestoPericial) · MuralAcusacao (orquestrador; estações em mural/:
+                EstacaoCorpo · Estacoes · MesaLigacao · SeletorJanela · RevisaoFinal ·
+                comuns) · MonologoFinal · PainelAlibis · ModalGlossario ·
                 Caderneta · TelaPersonagem · TermometroCorpo · Abertura · Overlay ·
                 CartaMesa · RelogioBolso · RetratoPersonagem · Cena3DBoundary ·
-                diorama/ (DioramaVila · Predio · RotuloNo) ·
+                diorama/ (DioramaVila · Predio · RotuloNo · DesobstruirRotulos ·
+                LuzDoDia · apoio) ·
                 corpo3d/ (PranchaCorpo — a prancha de atlas em SVG; o cadáver 3D
                 foi aposentado pelo pivô Gabinete Ilustrado e os arquivos removidos)
+scripts/        qa.mjs · qa-ui.mjs · gerar-casos.mjs · lint-prosa.mjs · demos/auditorias ·
+                lib/ (perfis.mjs — os 4 perfis, fonte única · marcadores.mjs ·
+                fatia.mjs — núcleo de solvência · familias.mjs · monotonia.mjs)
 ```
 
 **Convenções:**
@@ -1061,8 +1077,11 @@ src/
   `parametrosCena.horasChegada`.)
 - `conclusoes` guarda **só** a leitura do legista (`origem: 'mestre'`), exibida como
   dica — não vincula o veredicto.
-- Determinismo: `Math.random()`/`Date.now()` proibidos em `src/logic|data|store`
-  (guarda no `qa.mjs`); variação vem de `hashString` (`src/logic/hash.js`) salgado.
+- Determinismo: `Math.random()`/`Date.now()` proibidos em `src/logic|data|store|gerador`
+  (guarda no `qa.mjs` — que também pega as variantes `new Date()` sem argumento,
+  `Math["random"]`, `performance.now` e `crypto` aleatório); variação vem de
+  `hashString` (`src/logic/hash.js`) salgado. As guardas de cegueira do motor valem
+  para o fecho transitivo de imports de `veredicto.js`/`acusacao.js`.
   O three.js usa `Math.random` em internos (uuid) — apresentação, exceção registrada.
 - QA de UI: os textos de botões/rótulos clicados pelo `qa-ui.mjs`, as classes
   `.termo-clicavel`/`.termo-extraido`, o `data-overlay` e a ordem dos `<select>` do

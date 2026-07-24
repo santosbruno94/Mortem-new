@@ -1,0 +1,4 @@
+# Banco de casos gerado por scripts/gerar-casos.mjs: marcado como gerado
+# para o diff não dominar PRs (o conteúdo confere-se pelo replay do qa.mjs).
+src/data/casos_gerados.js linguist-generated=true -diff
+src/data/casos_indice.js linguist-generated=true

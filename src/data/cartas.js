@@ -622,6 +622,11 @@ export const CARTAS = [
 // Utilitários de catálogo (sem lógica de regra — apenas consulta)
 // ---------------------------------------------------------------------
 
+/**
+ * @deprecated Lê SÓ o catálogo do caso-escola. Em runtime use o acessor
+ * homônimo de pacote_caso.js, que responde pelo caso CARREGADO (inclusive
+ * os gerados). Este fica para o gerador/QA (ilhas de build).
+ */
 export function obterDefinicaoCarta(id) {
   return CARTAS.find((c) => c.id === id) || null;
 }
@@ -644,3 +649,36 @@ export function resolverEstadoCarta(definicao, ipmAtual) {
   }
   return definicao.estados[definicao.estados.length - 1];
 }
+
+// ---------------------------------------------------------------------
+// #5 — A CONTRADIÇÃO DE HORAS do caso-escola (o corpo × o avistamento do
+// padeiro). Camada narrativa/UI: o store e a Caderneta leem DAQUI (via
+// pacote) os ids do par e toda a prosa do ponto a decidir — nenhum id de
+// carta do caso-escola fica cravado em código genérico. Um caso gerado
+// sem este campo simplesmente não tem o ponto a decidir (no-op).
+// A decisão NÃO rege o veredicto (o mural decide) — dado de UI.
+// ---------------------------------------------------------------------
+export const CONTRADICAO_HORAS = {
+  // A alegação de hora (o depoimento) e as cartas do corpo que a contradizem.
+  alegacaoId: 'dep_avistamento_padeiro',
+  corpoIds: ['ev_rigor', 'ev_livores'],
+  // Linha do diário quando o par se completa na mesa.
+  avisoDiario:
+    'Duas horas se contradizem: o corpo e o moço do padeiro. Há um ponto a decidir na caderneta.',
+  // O enunciado do ponto a decidir, na Caderneta.
+  apresentacao:
+    'O moço do padeiro jura o Sr. Arthurs vivo e à bancada às cinco e um quarto da madrugada de sábado. O corpo já esfriara: o rigor e o livor põem a morte na véspera, antes da meia-noite. Só uma das duas horas pode reger a minha conta, e de qual parto muda o caminho daqui em diante.',
+  // Rótulos dos dois botões de decisão.
+  botoes: { relato: 'Parto do relato do moço', corpo: 'Parto do que o corpo diz' },
+  // A decisão firmada: a frase da Caderneta e a linha do diário, por escolha.
+  firmadoCaderneta: {
+    corpo:
+      'Firmei-me no corpo: parto do rigor e do livor; ao relato que os contrarie compete o ônus da prova.',
+    relato:
+      'Firmei-me no relato do moço: parto da luz e da vida que ele jura ter visto na oficina; ao corpo compete então o ônus da prova.',
+  },
+  firmadoDiario: {
+    corpo: 'Firmei-me: parto do que o corpo diz; o relato que o desminta que se explique.',
+    relato: 'Firmei-me: parto do relato do moço do padeiro; que o corpo se explique depois.',
+  },
+};

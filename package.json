@@ -3,12 +3,22 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "qa": "node scripts/qa.mjs",
+    "qa:ui": "node scripts/qa-ui.mjs",
     "lint:prosa": "node scripts/lint-prosa.mjs",
     "gerar:casos": "node scripts/gerar-casos.mjs",
+    "gabarito": "node scripts/gabarito-casos.mjs",
+    "auditoria:elenco": "node scripts/auditoria-elenco.mjs",
+    "relatorio:espacial": "node scripts/relatorio-espacial.mjs",
+    "mc:batalha": "node scripts/mc-batalha.mjs",
+    "buscar:replica": "node scripts/buscar-replica.mjs",
     "telemetria:monotonia": "node scripts/telemetria-monotonia.mjs",
     "demo:elenco": "node scripts/demo-elenco.mjs",
     "demo:cidade": "node scripts/demo-cidade.mjs",
@@ -26,6 +36,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
+    "playwright": "^1.56.1",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "vite": "^5.4.11"

@@ -23,13 +23,10 @@
 
 import { montarPacoteGerado } from '../src/gerador/pacote_gerado.js';
 import { gerarCasoBruto } from '../src/gerador/caso.js';
+import { FAMILIA_DO_METODO } from './lib/familias.mjs';
 
 const N = Number(process.argv[2] || 200000);
 
-const FAMILIA_DO_METODO = {
-  laminada: 'lamina', garrote: 'asfixia', esganadura: 'asfixia', sufocacao: 'asfixia',
-  contundente: 'contuso', afogamento: 'afogamento', veneno_arsenico: 'veneno', laudano: 'veneno',
-};
 
 const conta = (obj, chave) => { obj[chave] = (obj[chave] || 0) + 1; };
 const pct = (x, total) => `${((100 * x) / total).toFixed(1)}%`;

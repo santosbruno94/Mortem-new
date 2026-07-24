@@ -27,7 +27,7 @@
 import { obterSuspeito } from '../data/pacote_caso.js';
 import { ROTULOS_EXPLICACAO } from '../data/rotulos.js';
 import { artigoDe, comArtigo, ComArtigo, deQuem } from './monologo.js';
-import { hashString } from './hash.js';
+import { escolherDeterministico } from './hash.js';
 
 function nome(suspeitoId) {
   const s = obterSuspeito(suspeitoId);
@@ -38,13 +38,8 @@ function flex(nomeCompleto, masc, fem) {
   return artigoDe(nomeCompleto) === 'a' ? fem : masc;
 }
 
-// Variante determinística (mesma fonte de sorteio do monólogo: hash salgado).
-// `nOcorrencia` desloca a escolha pela ordem dentro do MESMO tipo de bloco:
-// dois periféricos vizinhos do mesmo tipo nunca repetem a variante — a
-// garantia é por construção, não por sorte do hash.
-function escolher(variantes, chave, nOcorrencia = 0) {
-  return variantes[(hashString(chave) + nOcorrencia) % variantes.length];
-}
+// Escolha determinística de variante: a fonte única mora em hash.js.
+const escolher = escolherDeterministico;
 
 // ---------------- O destino do réu apontado, por desfecho ----------------
 function blocoReu(veredicto) {
@@ -147,8 +142,9 @@ function blocosExplicacoes(veredicto) {
 // luz de lampião, outra. `horasSelo` chega em escala absoluta do caso.
 function blocoPerito(veredicto, horasSelo) {
   const horaDoDia = typeof horasSelo === 'number' ? ((horasSelo % 24) + 24) % 24 : null;
-  // Outubro na Inglaterra: sol ~06h30–17h00. Fora disso, a vila está a
-  // lampiões — a variante diurna não pode afirmar luz do dia (fiscal, A1).
+  // Outubro na Inglaterra: sol pleno das 7h às 17h (o crepúsculo de ~06h30
+  // fica com os lampiões). Fora da faixa, a variante diurna não pode
+  // afirmar luz do dia (fiscal, A1).
   const deDia = horaDoDia === null || (horaDoDia >= 7 && horaDoDia < 17);
   switch (veredicto.tipo) {
     case 'vitoria_absoluta':

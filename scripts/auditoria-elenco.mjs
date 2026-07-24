@@ -24,18 +24,14 @@ import {
   LIMIAR_DESENCAIXE,
   derivarPsiqueDoCaso,
 } from '../src/gerador/vetores_psiquicos.js';
+// Peso de vítima por classe: a TABELA DO GERADOR (fonte única; a cópia
+// local que vivia aqui dessincronizaria em silêncio).
+import { PESO_VITIMA_POR_CLASSE } from '../src/gerador/caso.js';
 
 const N = Number(process.argv[2]) || 200000;
 const IDS = Object.keys(ARQUETIPOS);
 const VETS = Object.keys(VETORES_PSIQUICOS);
 
-// Peso de vítima por classe — cópia declarada da tabela de caso.js (o
-// módulo não a exporta; manter em sincronia é responsabilidade da
-// auditoria, não do gerador).
-const PESO_VITIMA_POR_CLASSE = {
-  gentry: 5, comerciante: 4, profissional: 3, clero: 2,
-  artesao: 2, lavrador: 1, criadagem: 1, servico_do_condado: 1,
-};
 
 const pct = (x, d = 1) => `${(100 * x).toFixed(d)}%`;
 const media = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
