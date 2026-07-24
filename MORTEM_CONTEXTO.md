@@ -153,6 +153,23 @@ de outubro, 13h10": ficha, mural, relógio de bolso, monólogo); lista compacta 
 (`formatHoraComDia` — "13h10 de 14/out": as duas listas da Caderneta). **Dia da semana
 não se imprime**: `tempo.js` não o formata e o `calendario` do pacote não o carrega.
 
+**A vila do hub — a Prancha e a maquete (OS Prancha da Vila, jul/2026):** a vista PADRÃO
+da escrivaninha é a **Prancha da Vila** (`src/components/prancha/PranchaVila.jsx`): a vila
+do caso estampada como **gravura de 1893** em SVG procedural — moldura de quadro gravado,
+horizonte, casario hachurado, um prédio por nó desbloqueado (silhueta derivada da MESMA
+`forma` que o diorama consome), escala gráfica e rosa dos ventos. As etiquetas dos nós são
+as MESMAS do diorama (`RotuloNo`, HTML real sobre o desenho, com o mesmo handler de
+viagem). A **hora vira tinta** em três alavancas — densidade da hachura do céu, véu em
+`multiply` sobre o quadro, e as janelas em âmbar pela mesma `janelaAcesa` do 3D —, o **beat
+de viagem** é a tacha de cera correndo a estrada desenhada (com a conta da hora numa linha
+lida) e o **nó revelado por lead** entra a **bico de pena vermelha**, com o carimbo
+`Acrescido <hora>`: gravado = estava lá desde a chegada; pena = você descobriu, e quando.
+No **estreito** (≤430px) a prancha é só figura e a navegação desce para a **régua de
+fichas** (alvo ≥44px). A **maquete 3D continua inteira**, a um clique no alternador
+"A prancha" / "A maquete" no pé da mesa (preferência em `localStorage`); sem WebGL, em
+`?flat=1` ou depois de o contexto cair, o botão diz por que não pode subir e a prancha
+segue — ela É o fallback. O chunk do three.js só desce se o jogador pedir a maquete.
+
 **Camada 3D (apresentação pura):** a profundidade 3D da mesa concentra-se hoje num único
 ponto — o **diorama da vila** (maquete de papel pousada no alto da escrivaninha: prédios
 procedurais com **telhado de duas águas**, chaminés, marquise e pás — sempre primitivas
@@ -165,8 +182,8 @@ clique; nós que dividem prédio viram **anexos** escalonados, na linhagem da
 relojoaria_fundos). Regras da camada 3D: geometria 100% procedural (proibido
 GLTF/textura externa — three.js + @react-three/fiber v8 pinados, chunk lazy próprio),
 dados espaciais como camada visual que o motor nunca lê (guarda GE3 cobre `maquete`), e
-**fallback 2D obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a grade de
-localidades original joga idêntico.
+**fallback 2D obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a prancha
+assume; sem espaço conhecido, a grade de localidades original joga idêntico.
 
 **Pivô "Gabinete Ilustrado" (jul/2026 — `docs/nota-gabinete-ilustrado.md`):** a
 apresentação migrou para o registro de **visual novel de gravura**. O exame do corpo
@@ -177,7 +194,8 @@ negrito, via `hotspots_corpo.js`). Diálogos e localidades compõem **A Cena** i
 (`CenaDialogo.jsx`/`FundoCena.jsx`: fundo 2D paramétrico por localidade + sprite meio-corpo
 do genótipo de aparência, com "gravura que respira" e reação observável). Tudo procedural —
 o placeholder É o fallback (slots `prancha_corpo`/`fundo_cena` prontos para arte externa
-sob contrato). O diorama da vila segue 3D, intocado.
+sob contrato). O código do diorama da vila segue intocado — desde a OS Prancha da Vila,
+como vista alternativa (ver acima).
 
 **Asset 2D sob contrato (jul/2026):** a regra do 3D segue 100% procedural (proibido
 GLTF/textura de arquivo); mas a camada **2D** passa a admitir asset externo sob
@@ -1134,6 +1152,7 @@ src/
                 comuns) · MonologoFinal · PainelAlibis · ModalGlossario ·
                 Caderneta · TelaPersonagem · TermometroCorpo · Abertura · Overlay ·
                 CartaMesa · RelogioBolso · RetratoPersonagem · Cena3DBoundary ·
+                prancha/ (PranchaVila · ReguaNos — a vila em gravura, vista padrão) ·
                 diorama/ (DioramaVila · Predio · RotuloNo · DesobstruirRotulos ·
                 LuzDoDia · apoio) ·
                 corpo3d/ (PranchaCorpo — a prancha de atlas em SVG; o cadáver 3D

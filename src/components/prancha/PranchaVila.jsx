@@ -255,7 +255,9 @@ function Fumaca({ forma, u }) {
 }
 
 // ---------------------------------------------------------------------
-export default function PranchaVila({ aoAbrirNo, aoCortarBeat }) {
+// `semEtiquetas` (E4): no estreito a prancha é SÓ FIGURA — a navegação
+// desce para a régua de fichas, e nenhuma etiqueta pisa no desenho.
+export default function PranchaVila({ aoAbrirNo, aoCortarBeat, semEtiquetas = false }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
@@ -507,7 +509,7 @@ export default function PranchaVila({ aoAbrirNo, aoCortarBeat }) {
               pertence ao pacote da seed, e cravá-lo acertaria um caso e
               erraria os outros trinta e um (sistema-visual §9). */}
           <p className="prancha-cabeca">
-            A VILA <span className="prancha-cabeca-nota">{tinta.nota}</span>
+            A VILA {!semEtiquetas && <span className="prancha-cabeca-nota">{tinta.nota}</span>}
           </p>
           <div className="relative" style={{ width: gravuraLargura, height: gravuraAltura }}>
           <svg
@@ -799,7 +801,7 @@ export default function PranchaVila({ aoAbrirNo, aoCortarBeat }) {
             )}
 
             {/* A escala gráfica e a rosa dos ventos — a mobília da prancha */}
-            {regua && (
+            {regua && !semEtiquetas && (
               <g opacity="0.7">
                 <line x1={20} y1={QUADRO.altura - 16} x2={20 + regua} y2={QUADRO.altura - 16} stroke={TINTA} strokeWidth="1.1" />
                 <line x1={20} y1={QUADRO.altura - 20} x2={20} y2={QUADRO.altura - 12} stroke={TINTA} strokeWidth="1.1" />
@@ -816,7 +818,11 @@ export default function PranchaVila({ aoAbrirNo, aoCortarBeat }) {
                 </text>
               </g>
             )}
-            <g opacity="0.65" transform={`translate(${QUADRO.largura - 30} ${QUADRO.altura - 30})`}>
+            <g
+              opacity="0.65"
+              transform={`translate(${QUADRO.largura - 30} ${QUADRO.altura - 30})`}
+              style={semEtiquetas ? { display: 'none' } : undefined}
+            >
               <circle cx="0" cy="0" r="10" fill="none" stroke={TINTA} strokeWidth="0.8" />
               <path d="M0 -13 L3 -3 L0 -6 L-3 -3 Z" fill={TINTA} />
               <path d="M0 8 L0 3 M-8 0 L-3 0 M8 0 L3 0" stroke={TINTA} strokeWidth="0.7" />
@@ -836,7 +842,7 @@ export default function PranchaVila({ aoAbrirNo, aoCortarBeat }) {
             height={gravuraAltura}
             aria-hidden
           >
-            {ordemDoHub.map((n) => {
+            {(semEtiquetas ? [] : ordemDoHub).map((n) => {
               const ancora = ancoraPorId.get(n.id);
               const posto = postos[n.id];
               return (
@@ -860,7 +866,7 @@ export default function PranchaVila({ aoAbrirNo, aoCortarBeat }) {
               — mesmo texto, mesmo handler e mesmo alvo de toque do diorama.
               Ficam fora da silhueta, presas por cordão, para nunca cobrir a
               fachada nem o letreiro gravado. */}
-          {ordemDoHub.map((n) => {
+          {(semEtiquetas ? [] : ordemDoHub).map((n) => {
             const loc = locsVisiveis.find((l) => l.id === n.id);
             if (!loc) return null;
             const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;

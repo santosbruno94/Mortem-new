@@ -1129,3 +1129,22 @@ pacote e gramática da acusação intocados. Gates verdes (`npm run build`, `qa.
   Trocar a frase num lugar troca nos dois. Save antigo, sem a linha: o carimbo não sai (o
   adendo continua em pena vermelha).
 - **Regra registrada** em `docs/kb-producao/ui-e-estetica.md` §8.
+
+### E4 — o estreito e o fechamento da OS
+
+- **No estreito (≤430px) a prancha é SÓ FIGURA.** Nenhuma etiqueta dentro do desenho: a
+  navegação passa a ser uma **régua de fichas** (`ReguaNos.jsx`) abaixo da folha, com alvo
+  de toque ≥44px, nome do nó, verbo, custo e as consequências da hora (a casa sem lampião;
+  `novo · acrescido <hora>`). A ficha do nó atual traz "— aqui —", e a ORDEM é a do hub —
+  reordenar por distância seria decidir a rota pelo jogador.
+- **O desobstrutor de rótulos não deixou código morto.** A prancha nunca o usou: o arranjo
+  dela é a função pura `arrumarEtiquetas`, e no estreito não há etiqueta a arrumar.
+  `DesobstruirRotulos.jsx` continua onde sempre esteve, servindo apenas à maquete 3D — que
+  ainda precisa dele e segue funcionando no celular onde há WebGL.
+- **A folha no estreito perde a mobília** (régua gráfica, rosa dos ventos e a nota da hora
+  na cabeça): a 150px de altura elas viravam ruído ilegível. A informação que elas davam
+  está na régua de fichas, em corpo de leitura.
+- **Fechamento:** `nota-gabinete-ilustrado.md` (prancha = padrão em desktop e celular),
+  `kb-producao/ui-e-estetica.md` §8 (a regra do adendo), `MORTEM_CONTEXTO.md` e `README.md`
+  ao estado entregue. Capturas do playtest curto do caso-escola em `docs/playtest-2026-07-24/`
+  (desktop: as três horas, o beat de viagem e o adendo; celular: o crepúsculo com a régua).

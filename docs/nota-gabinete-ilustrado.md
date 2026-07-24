@@ -78,11 +78,27 @@ diorama consome), escala gráfica e rosa dos ventos. As etiquetas dos nós conti
 construção. Nenhum dado novo: a fonte espacial é a dupla de sempre (campo visual `maquete` do
 pacote, ou `mapa_espacial.js` no caso-escola).
 
-**Estado das duas vistas:** a prancha é o PADRÃO; `DioramaVila` continua inteiro, atrás do
+**Estado das duas vistas:** a prancha é o PADRÃO **em desktop e em celular**; `DioramaVila` continua inteiro, atrás do
 alternador de dois botões no pé da mesa ("A prancha" / "A maquete"), com a preferência em
 `localStorage`. Sem WebGL, em `?flat=1` ou depois de o contexto 3D cair, "A maquete" fica
 desabilitada com o motivo legível e a prancha segue de pé — ela É o fallback. O chunk do
 three.js só desce se o jogador pedir a maquete.
+
+**No estreito (≤430px)** a prancha é SÓ FIGURA: nenhuma etiqueta dentro do desenho, e a
+navegação é uma **régua de fichas** abaixo dela (alvo ≥44px, nome do nó, verbo, custo e a
+consequência da hora; a ficha do nó atual traz "— aqui —", na ordem que o hub já usa). Com
+isso o desobstrutor de rótulos deixa de ser necessário no caminho da prancha — ele fica
+apenas onde a maquete 3D ainda precisa dele, e não sobrou código morto (a prancha nunca o
+usou: o arranjo dela é a função pura `arrumarEtiquetas`, e no estreito não há etiqueta a
+arrumar).
+
+**A hora e a viagem na prancha** (Inc. 8, etapas E2–E3): a hora vira tinta em três
+alavancas (hachura do céu, véu em `multiply`, janelas em âmbar pela mesma `janelaAcesa` do
+3D); a viagem ganha a tacha de cera correndo a estrada desenhada, com a conta da hora numa
+linha lida (relógio de → para, rigidez na chegada, perecível em risco); e o nó revelado por
+lead entra a bico de pena vermelha com o carimbo `Acrescido <hora>` — gravado = estava lá
+desde a chegada, pena = você descobriu, e quando (regra em
+`docs/kb-producao/ui-e-estetica.md` §8).
 
 ## Decisões (§8 da nota original), tomadas nesta sessão
 

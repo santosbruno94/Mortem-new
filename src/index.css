@@ -1462,3 +1462,65 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+/* ---------------------------------------------------------------------
+   A RÉGUA DE FICHAS DO ESTREITO (E4 da OS Prancha da Vila): no celular a
+   prancha é só figura e a navegação é esta lista de fichas de papel —
+   alvo de toque ≥44px, nome do nó, verbo, custo e o que a hora fez.
+   --------------------------------------------------------------------- */
+.regua-nos {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px 12px 12px;
+}
+.regua-ficha {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 7px 11px;
+  text-align: left;
+  border: 1px solid #a9976f;
+  border-radius: 2px;
+  background-color: #f0e6ce;
+  background-image: linear-gradient(168deg, rgba(255, 250, 235, 0.5), rgba(0, 0, 0, 0) 44%);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.regua-ficha--aqui {
+  border-color: #7a2e12;
+}
+.regua-ficha--nova {
+  border-color: #9e2a2b;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.35), 0 0 12px rgba(217, 119, 6, 0.2);
+}
+.regua-ficha-nome {
+  display: block;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 14px;
+  line-height: 1.15;
+  color: #251b10;
+}
+.regua-ficha-linha {
+  display: block;
+  margin-top: 2px;
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #6b4f2c;
+}
+.regua-ficha--aqui .regua-ficha-linha {
+  color: #7a2e12;
+}
+.regua-ficha--nova .regua-ficha-linha {
+  color: #9e2a2b;
+}
+.regua-ficha-lembrete {
+  display: block;
+  margin-top: 2px;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 11px;
+  line-height: 1.2;
+  color: #7a5c34;
+}

@@ -100,8 +100,10 @@ auditorias `npm run gabarito`, `auditoria:elenco`, `relatorio:espacial`, `mc:bat
 2. **Abertura** — da pensão em Caulfield ao briefing do Delegado Wycliffe (as perguntas ao
    delegado não custam tempo… mas plantam iscas). Nos modos procedurais (comarca e luta), a
    abertura é omitida e o perito segue direto à investigação.
-3. **Investigação** — tudo acontece sobre a escrivaninha. Localidades são cartas (ou os
-   prédios da maquete 3D): clique para **viajar** até lá (só a viagem gasta o relógio) e
+3. **Investigação** — tudo acontece sobre a escrivaninha. A vila do caso está estampada na
+   **Prancha da Vila** — uma gravura de 1893 no alto da mesa, onde cada nó é um prédio
+   desenhado e a hora do relógio vira tinta (o céu adensa, o papel esfria, as janelas
+   acendem em âmbar). Clique num prédio para **viajar** até lá (só a viagem gasta o relógio) e
    abrir o exame ou o interrogatório como sobreposição — nos casos gerados, interrogar é
    bater à porta da casa de cada suspeito. O exame do corpo é uma **prancha de atlas** (SVG, com lupa que segue o
    dedo, frente/dorso e necropsia); os interrogatórios compõem uma **cena ilustrada** (fundo
@@ -121,16 +123,18 @@ auditorias `npm run gabarito`, `auditoria:elenco`, `relatorio:espacial`, `mc:bat
 
 ## Stack
 
-Vite + React (JSX) + Tailwind CSS + Zustand, com **three.js / react-three-fiber** para a
-maquete 3D da vila (geometria 100% procedural, com fallback 2D via `?flat=1`; o caso-escola
-usa o mapa espacial estático, e cada caso gerado traz a própria vila no campo visual
-`maquete` do pacote). Desde o pivô
-**"Gabinete Ilustrado"** (jul/2026), a apresentação é visual novel de gravura: o exame do
-corpo (A Prancha) e as conversas (A Cena) são **SVG procedural** — o 3D remanescente é só o
-diorama da vila. Sem TypeScript, sem engine de jogo, sem chamadas de rede em runtime — dados
-em módulos JS e lógica determinística em funções puras (toda variação vem de `hashString`
-salgado com a seed). O banco de casos gerados e o diorama 3D são **chunks lazy**: o
-arranque (tela de título + tutorial) baixa ~400 KB de JS.
+Vite + React (JSX) + Tailwind CSS + Zustand. Desde o pivô **"Gabinete Ilustrado"**
+(jul/2026), a apresentação inteira é visual novel de gravura em **SVG procedural**: o exame
+do corpo (A Prancha), as conversas (A Cena) e — desde a **OS Prancha da Vila** — a vila do
+hub. A **maquete 3D** da vila (**three.js / react-three-fiber**, geometria 100% procedural)
+continua no jogo como vista alternativa, a um clique no alternador "A prancha" / "A maquete"
+no pé da mesa; sem WebGL ou em `?flat=1`, a prancha assume — ela é o fallback. A fonte
+espacial é dupla: o caso-escola usa o mapa espacial estático, e cada caso gerado traz a
+própria vila no campo visual `maquete` do pacote. Sem TypeScript, sem engine de jogo, sem
+chamadas de rede em runtime — dados em módulos JS e lógica determinística em funções puras
+(toda variação vem de `hashString` salgado com a seed). O banco de casos gerados e o diorama
+3D são **chunks lazy**: o arranque (tela de título + tutorial) baixa ~400 KB de JS, e uma
+sessão que fique na prancha nunca baixa o three.
 
 A interface é feita de **materiais procedurais** — gradientes, ruído SVG de `seed` fixo e
 sombra, definidos uma vez em `src/index.css` e `tailwind.config.js`: papel, couro, latão,
@@ -151,7 +155,8 @@ src/
                 — resolve o caso e emite um pacote pronto; o runtime nunca o importa
   components/   Escrivaninha, MuralAcusacao (orquestrador; as estações vivem em mural/),
                 EventoLocalidade (apoios em localidade/), PranchaCorpo (exame do corpo em
-                SVG), CenaDialogo/FundoCena (cena ilustrada), diorama 3D da vila (diorama/),
+                SVG), CenaDialogo/FundoCena (cena ilustrada), a vila do hub em gravura
+                (prancha/) com o diorama 3D como vista alternativa (diorama/),
                 painéis, Caderneta, Monólogo do Detetive…
 scripts/        qa.mjs (QA estático) · qa-ui.mjs (QA de interface) · gerar-casos.mjs ·
                 lib/ (coreografia dos 4 perfis, marcadores [[id]], núcleo de solvência da

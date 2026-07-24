@@ -8,6 +8,8 @@ import { tocarSom } from '../som.js';
 import RelogioBolso from './RelogioBolso.jsx';
 import MesaLocalidades2D from './MesaLocalidades2D.jsx';
 import PranchaVila from './prancha/PranchaVila.jsx';
+import ReguaNos from './prancha/ReguaNos.jsx';
+import { useEstreito } from './prancha/estreito.js';
 import Cena3DBoundary from './Cena3DBoundary.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import InterrogatorioDialogo from './InterrogatorioDialogo.jsx';
@@ -60,6 +62,8 @@ export default function Escrivaninha() {
   const abrirGlossario = useJogo((s) => s.abrirGlossario);
 
   const mesaDesfocada = overlay !== null || glossarioAberto !== null;
+  // O estreito (E4): tela de dedo, onde a prancha vira só figura.
+  const estreito = useEstreito();
 
   // O ESPAÇO do caso é conhecido? A fonte é dupla (OS da vila na mesa): o
   // caso GERADO traz a própria vila no campo visual `maquete` do pacote; o
@@ -147,11 +151,22 @@ export default function Escrivaninha() {
 
   // A vista PADRÃO: a prancha de gravura no alto da mesa e a bandeja de
   // fichas por baixo — o mesmo desenho de banda que a maquete ocupava.
+  // No ESTREITO (E4) a prancha é só figura, e entre ela e a bandeja entra a
+  // régua de fichas: a navegação sai de dentro do desenho.
   const vistaPrancha = (
     <div className="absolute inset-0 flex flex-col">
-      <div className="shrink-0 relative h-[54%] lg:h-[52%] min-h-[300px] border-b border-black/40 prancha-mesa-fundo">
-        <PranchaVila aoAbrirNo={aoAbrirNo} aoCortarBeat={cortarBeat} />
+      <div
+        className={`shrink-0 relative border-b border-black/40 prancha-mesa-fundo ${
+          estreito ? 'h-[28%] min-h-[150px]' : 'h-[54%] lg:h-[52%] min-h-[300px]'
+        }`}
+      >
+        <PranchaVila aoAbrirNo={aoAbrirNo} aoCortarBeat={cortarBeat} semEtiquetas={estreito} />
       </div>
+      {estreito && (
+        <div className="shrink-0 max-h-[40%] overflow-y-auto border-b border-black/40 bg-[#0d0a07]">
+          <ReguaNos aoAbrirNo={aoAbrirNo} />
+        </div>
+      )}
       <div className="relative flex-1 min-h-0">
         <div aria-hidden className="mesa-desk-atmosfera pointer-events-none absolute inset-0" />
         <MesaLocalidades2D aoAbrirNo={aoAbrirNo} comDiorama />

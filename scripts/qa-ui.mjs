@@ -922,6 +922,47 @@ async function main() {
     await page.evaluate(() => window.localStorage && window.localStorage.clear());
 
     // ============================================================
+    // ROTA CELULAR — o estreito (390×844, E4 da OS Prancha da Vila): a
+    // prancha é SÓ FIGURA e a navegação é a régua de fichas, com alvo de
+    // toque ≥44px. A sessão de celular padrão também não baixa three.
+    // ============================================================
+    rotaAtual = '\n=== ROTA CELULAR — o estreito (390×844) ===';
+    console.log('\n=== ROTA CELULAR — o estreito (390×844) ===');
+    const ctxCelular = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      isMobile: true,
+      hasTouch: true,
+    });
+    const celular = await ctxCelular.newPage();
+    celular.setDefaultTimeout(15000);
+    celular.on('console', (m) => m.type() === 'error' && errosConsole.push(m.text()));
+    celular.on('pageerror', (e) => errosConsole.push(String(e.message)));
+    const chunks3DCelular = [];
+    celular.on('request', (r) => {
+      if (/DioramaVila|\bthree\b|three\.module|@react-three/.test(r.url())) chunks3DCelular.push(r.url());
+    });
+    await novaPartida(celular, 'Harlan Blackwell');
+    await celular.waitForSelector('[data-regua-nos]', { timeout: 15000 });
+    checar('E4: no estreito a navegação é a régua de fichas ([data-regua-nos])', (await celular.locator('[data-regua-nos]').count()) === 1);
+    checar('E4: a prancha do estreito é só figura (nenhuma etiqueta no desenho)', (await celular.locator('.prancha-etiqueta').count()) === 0);
+    checar('E4: a prancha continua de pé no estreito', (await celular.locator('[data-prancha]').count()) === 1);
+    const alturasFicha = await celular.evaluate(() =>
+      [...document.querySelectorAll('.regua-ficha')].map((el) => el.getBoundingClientRect().height)
+    );
+    checar('E4: a régua tem uma ficha por nó desbloqueado', alturasFicha.length >= 4);
+    checar('E4: nenhum alvo de toque da régua abaixo de 44px', alturasFicha.every((h) => h >= 44));
+    checar('E4: a ficha do nó atual traz "— aqui —"', (await celular.locator('.regua-ficha--aqui').first().innerText()).includes('— aqui —'));
+    checar('E4: o alternador segue acessível no estreito', (await celular.getByRole('button', { name: 'A maquete' }).count()) === 1);
+    // A ficha viaja pelo MESMO handler das outras vistas.
+    await celular.locator('.regua-ficha', { hasText: 'A Delegacia' }).click();
+    await celular.waitForSelector('div.fixed[data-overlay]', { timeout: 15000 });
+    await espera(celular, 300);
+    checar('E4: tocar a ficha abre o local (mesmo handler de viagem)', (await celular.locator('body').innerText()).includes('14h00'));
+    checar('E4: a sessão de celular padrão não baixa chunk de three', chunks3DCelular.length === 0);
+    await celular.evaluate(() => window.localStorage && window.localStorage.clear());
+    await ctxCelular.close();
+
+    // ============================================================
     checar('Zero erros de console em todas as rotas', errosConsole.length === 0);
     if (errosConsole.length) console.error('Erros de console:', errosConsole);
   } catch (e) {
