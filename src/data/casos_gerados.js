@@ -557,7 +557,89 @@ export const CASO_REPLICA = {
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 3",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 141,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 161,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -617,7 +699,36 @@ export const CASO_REPLICA = {
        "x": 141,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 141,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 161,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "quarto",
@@ -850,17 +961,17 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -878,17 +989,17 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -911,17 +1022,17 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -944,17 +1055,17 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -977,17 +1088,17 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -1036,22 +1147,22 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -1080,17 +1191,17 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1113,17 +1224,17 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1146,17 +1257,17 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1179,17 +1290,17 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1232,17 +1343,17 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -1266,22 +1377,22 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1299,22 +1410,22 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1332,22 +1443,22 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1365,22 +1476,22 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Albert Hall, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1434,7 +1545,7 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -1444,7 +1555,7 @@ export const CASO_REPLICA = {
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -1474,7 +1585,7 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -1484,12 +1595,12 @@ export const CASO_REPLICA = {
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Albert Hall: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1507,7 +1618,7 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -1517,12 +1628,12 @@ export const CASO_REPLICA = {
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Albert Hall: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1540,7 +1651,7 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -1550,12 +1661,12 @@ export const CASO_REPLICA = {
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Albert Hall: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1573,7 +1684,7 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Albert Hall. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Albert Hall?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -1583,12 +1694,12 @@ export const CASO_REPLICA = {
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Albert Hall: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -1631,22 +1742,22 @@ export const CASO_REPLICA = {
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -1669,12 +1780,12 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Albert Hall?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -1702,12 +1813,12 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Albert Hall?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -1735,12 +1846,12 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Albert Hall?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -1768,12 +1879,12 @@ export const CASO_REPLICA = {
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Albert Hall, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Albert Hall?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Albert Hall? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Albert Hall? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -2927,7 +3038,88 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Moinho",
+    "viewBox": "0 0 178 178",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Casa do Moleiro",
+      "contorno": "M24 24 H76 V76 H24 Z",
+      "rotuloPos": {
+       "x": 50,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M76 24 H154 V76 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 77,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 96,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 115,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 135,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "piso_do_moinho",
+      "rotulo": "Piso do Moinho",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 89,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -2987,7 +3179,36 @@ export const CASOS_POOL = [
        "x": 115,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 77,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 96,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 115,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 135,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "piso_do_moinho",
@@ -3208,12 +3429,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -3246,7 +3467,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3256,7 +3477,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3279,7 +3500,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3289,7 +3510,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3312,7 +3533,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3322,7 +3543,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3345,7 +3566,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -3355,7 +3576,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3386,22 +3607,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -3419,22 +3640,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Charles Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3452,22 +3673,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Charles Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3485,22 +3706,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Charles Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3518,22 +3739,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Charles Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3581,12 +3802,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -3610,22 +3831,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Charles Harris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3643,22 +3864,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Charles Harris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3676,22 +3897,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Charles Harris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3709,22 +3930,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Charles Harris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -3762,22 +3983,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -3801,17 +4022,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -3834,17 +4055,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -3867,17 +4088,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -3900,17 +4121,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Charles Harris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -3958,7 +4179,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -3968,7 +4189,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -3992,22 +4213,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Charles Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -4025,22 +4246,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Charles Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -4058,22 +4279,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Charles Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -4091,22 +4312,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Charles Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Charles Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Charles Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Charles Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Charles Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Charles Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5263,7 +5484,77 @@ export const CASOS_POOL = [
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 81 H123 V97 H107 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -5304,7 +5595,36 @@ export const CASOS_POOL = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -5531,17 +5851,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -5570,22 +5890,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Watson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Thomas Watson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5603,22 +5923,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Watson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Thomas Watson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5636,22 +5956,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Watson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Thomas Watson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5669,22 +5989,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Watson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Thomas Watson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5722,22 +6042,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -5761,22 +6081,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Thomas Watson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Watson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5794,22 +6114,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Thomas Watson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Watson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5827,22 +6147,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Thomas Watson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Watson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5860,22 +6180,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Thomas Watson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Watson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -5906,22 +6226,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -5939,17 +6259,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Thomas Watson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Thomas Watson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -5972,17 +6292,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Thomas Watson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Thomas Watson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -6005,17 +6325,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Thomas Watson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Thomas Watson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -6038,17 +6358,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Thomas Watson. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Watson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Thomas Watson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Thomas Watson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Thomas Watson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -6096,17 +6416,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -6145,7 +6465,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -6178,7 +6498,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -6211,7 +6531,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -6244,7 +6564,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -6275,7 +6595,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -6285,7 +6605,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -6318,12 +6638,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Watson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -6351,12 +6671,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Watson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -6384,12 +6704,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Watson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -6417,12 +6737,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Thomas Watson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Watson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -7572,7 +7892,90 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Mercearia",
+    "viewBox": "0 0 204 178",
+    "comodos": [
+     {
+      "id": "deposito",
+      "rotulo": "Depósito",
+      "contorno": "M24 24 H128 V102 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto (sobrado)",
+      "contorno": "M128 24 H180 V102 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 129,
+         "y": 25,
+         "w": 25,
+         "h": 76
+        },
+        "pos": {
+         "x": 141,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 154,
+         "y": 25,
+         "w": 25,
+         "h": 76
+        },
+        "pos": {
+         "x": 167,
+         "y": 63
+        }
+       }
+      ]
+     },
+     {
+      "id": "loja",
+      "rotulo": "A Loja",
+      "contorno": "M24 102 H180 V154 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 29 H123 V45 H107 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M81 107 H97 V123 H81 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -7632,7 +8035,36 @@ export const CASOS_POOL = [
        "x": 154,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 129,
+         "y": 25,
+         "w": 25,
+         "h": 76
+        },
+        "pos": {
+         "x": 141,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 154,
+         "y": 25,
+         "w": 25,
+         "h": 76
+        },
+        "pos": {
+         "x": 167,
+         "y": 63
+        }
+       }
+      ]
      },
      {
       "id": "loja",
@@ -7832,7 +8264,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -7842,7 +8274,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -7871,12 +8303,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7904,12 +8336,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7937,12 +8369,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -7970,12 +8402,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8029,12 +8461,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -8044,7 +8476,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -8078,12 +8510,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8111,12 +8543,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8144,12 +8576,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8177,12 +8609,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8226,22 +8658,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -8265,7 +8697,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -8275,12 +8707,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8298,7 +8730,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -8308,12 +8740,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8331,7 +8763,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -8341,12 +8773,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8364,7 +8796,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -8374,12 +8806,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8410,12 +8842,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -8425,7 +8857,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -8443,12 +8875,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8476,12 +8908,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8509,12 +8941,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8542,12 +8974,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -8601,7 +9033,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -8616,7 +9048,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -8640,22 +9072,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8673,22 +9105,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8706,22 +9138,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -8739,22 +9171,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Harris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Harris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Harris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Harris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Harris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Harris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -9804,7 +10236,88 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Caminho do Açude",
+    "viewBox": "0 0 256 152",
+    "comodos": [
+     {
+      "id": "margem",
+      "rotulo": "A Margem de Junco",
+      "contorno": "M24 24 H180 V76 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "comporta",
+      "rotulo": "A Comporta do Açude",
+      "contorno": "M180 24 H232 V76 H180 Z",
+      "rotuloPos": {
+       "x": 206,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "vereda",
+      "rotulo": "A Vereda entre Sebes",
+      "contorno": "M24 76 H232 V128 H24 Z",
+      "rotuloPos": {
+       "x": 128,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 76,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 128,
+         "y": 77,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 102
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M185 107 H201 V123 H185 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -9874,7 +10387,36 @@ export const CASOS_POOL = [
        "x": 128,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 76,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 128,
+         "y": 77,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 102
+        }
+       }
+      ]
      }
     ],
     "decorSalas": [],
@@ -10069,17 +10611,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -10097,7 +10639,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -10107,12 +10649,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10130,7 +10672,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -10140,12 +10682,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10163,7 +10705,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -10173,12 +10715,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10196,7 +10738,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -10206,12 +10748,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10242,22 +10784,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -10290,7 +10832,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10323,7 +10865,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10356,7 +10898,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10389,7 +10931,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10427,7 +10969,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -10466,22 +11008,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Read?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10499,22 +11041,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Read?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10532,22 +11074,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Read?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10565,22 +11107,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Read?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10618,12 +11160,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -10633,7 +11175,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -10662,17 +11204,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Read?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10695,17 +11237,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Read?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10728,17 +11270,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Read?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10761,17 +11303,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Read?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10812,12 +11354,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -10840,17 +11382,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Florence Read, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10873,17 +11415,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Florence Read, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10906,17 +11448,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Florence Read, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -10939,17 +11481,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Read, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Florence Read, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12002,7 +12544,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 155,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 174,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 193,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 213,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 29 H123 V45 H107 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M211 107 H227 V123 H211 Z",
+     "M211 133 H227 V149 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -12070,7 +12707,36 @@ export const CASOS_POOL = [
        "x": 193,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 155,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 174,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 193,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 213,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "taproom",
@@ -12368,17 +13034,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Reuben Brown, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -12401,17 +13067,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Reuben Brown, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -12434,17 +13100,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Reuben Brown, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -12467,17 +13133,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Reuben Brown, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -12531,12 +13197,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -12565,12 +13231,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Reuben Brown, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12580,7 +13246,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12598,12 +13264,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Reuben Brown, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12613,7 +13279,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12631,12 +13297,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Reuben Brown, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12646,7 +13312,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12664,12 +13330,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Reuben Brown, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12679,7 +13345,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12723,17 +13389,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -12767,7 +13433,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12777,7 +13443,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12800,7 +13466,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12810,7 +13476,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12833,7 +13499,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12843,7 +13509,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12866,7 +13532,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -12876,7 +13542,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -12930,12 +13596,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -12959,17 +13625,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -12992,17 +13658,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -13025,17 +13691,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -13058,17 +13724,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -13110,12 +13776,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -13125,7 +13791,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -13143,22 +13809,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -13176,22 +13842,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -13209,22 +13875,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -13242,22 +13908,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Reuben Brown. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Reuben Brown?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Reuben Brown, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Reuben Brown?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Reuben Brown? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Reuben Brown? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -14484,7 +15150,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 50,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 102,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M107 81 H123 V97 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M185 81 H201 V97 H185 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -14542,7 +15303,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 50,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 102,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -14845,7 +15635,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -14860,7 +15650,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -14894,12 +15684,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -14927,12 +15717,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -14960,12 +15750,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -14993,12 +15783,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -15053,12 +15843,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -15098,7 +15888,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -15108,12 +15898,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Ward? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -15131,7 +15921,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -15141,12 +15931,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Ward? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -15164,7 +15954,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -15174,12 +15964,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Ward? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -15197,7 +15987,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -15207,12 +15997,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Ward? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -15261,12 +16051,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -15300,7 +16090,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era John Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -15333,7 +16123,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era John Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -15366,7 +16156,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era John Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -15399,7 +16189,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era John Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -15440,12 +16230,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -15455,7 +16245,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -15473,12 +16263,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era John Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -15506,12 +16296,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era John Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -15539,12 +16329,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era John Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -15572,12 +16362,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era John Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -15618,7 +16408,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -15628,7 +16418,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -15666,7 +16456,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -15699,7 +16489,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -15732,7 +16522,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -15765,7 +16555,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -17016,7 +17806,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M185 81 H201 V97 H185 Z",
+     "M211 81 H227 V97 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -17074,7 +17959,36 @@ export const CASOS_POOL = [
        "x": 89,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -17341,12 +18255,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -17356,7 +18270,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -17380,17 +18294,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Turner: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17413,17 +18327,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Turner: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17446,17 +18360,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Turner: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17479,17 +18393,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Turner: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17542,17 +18456,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -17582,17 +18496,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Turner: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17615,17 +18529,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Turner: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17648,17 +18562,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Turner: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17681,17 +18595,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Turner: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17734,7 +18648,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -17749,7 +18663,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -17773,17 +18687,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Henry Turner? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17806,17 +18720,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Henry Turner? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17839,17 +18753,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Henry Turner? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17872,17 +18786,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Henry Turner? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -17925,12 +18839,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -17940,7 +18854,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -17964,12 +18878,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -17979,7 +18893,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -17997,12 +18911,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -18012,7 +18926,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -18030,12 +18944,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -18045,7 +18959,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -18063,12 +18977,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Turner. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Turner?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -18078,7 +18992,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -18121,7 +19035,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -18131,7 +19045,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -18160,17 +19074,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Henry Turner? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -18193,17 +19107,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Henry Turner? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -18226,17 +19140,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Henry Turner? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -18259,17 +19173,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Turner, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Turner, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Turner? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Henry Turner? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -19454,7 +20368,89 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 4",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 107 H123 V123 H107 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -19504,7 +20500,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "copa",
@@ -19723,12 +20748,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -19746,17 +20771,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -19779,17 +20804,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -19812,17 +20837,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -19845,17 +20870,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -19898,22 +20923,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -19942,12 +20967,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -19975,12 +21000,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -20008,12 +21033,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -20041,12 +21066,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -20082,7 +21107,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -20092,7 +21117,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -20120,17 +21145,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Eleanor Barnes? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -20153,17 +21178,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Eleanor Barnes? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -20186,17 +21211,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Eleanor Barnes? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -20219,17 +21244,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Eleanor Barnes?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Eleanor Barnes? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -20267,22 +21292,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -20306,7 +21331,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -20316,7 +21341,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -20339,7 +21364,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -20349,7 +21374,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -20372,7 +21397,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -20382,7 +21407,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -20405,7 +21430,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -20415,7 +21440,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -20451,12 +21476,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -20466,7 +21491,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -20484,22 +21509,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Eleanor Barnes, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -20517,22 +21542,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Eleanor Barnes, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -20550,22 +21575,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Eleanor Barnes, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -20583,22 +21608,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Eleanor Barnes. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Eleanor Barnes?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Eleanor Barnes, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Eleanor Barnes, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Eleanor Barnes? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Eleanor Barnes: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -21695,7 +22720,89 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 2",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 77,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 141,
+         "y": 77,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 161,
+         "y": 102
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 107 H97 V123 H81 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -21765,7 +22872,36 @@ export const CASOS_POOL = [
        "x": 141,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 77,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 141,
+         "y": 77,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 161,
+         "y": 102
+        }
+       }
+      ]
      }
     ],
     "decorSalas": [],
@@ -21969,17 +23105,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -22007,12 +23143,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Fanny Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22040,12 +23176,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Fanny Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22073,12 +23209,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Fanny Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22106,12 +23242,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Fanny Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22155,17 +23291,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -22199,7 +23335,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -22209,7 +23345,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22232,7 +23368,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -22242,7 +23378,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22265,7 +23401,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -22275,7 +23411,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22298,7 +23434,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -22308,7 +23444,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22352,22 +23488,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -22396,12 +23532,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Fanny Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -22429,12 +23565,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Fanny Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -22462,12 +23598,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Fanny Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -22495,12 +23631,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Fanny Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -22543,7 +23679,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -22553,12 +23689,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -22587,17 +23723,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Fanny Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22620,17 +23756,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Fanny Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22653,17 +23789,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Fanny Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22686,17 +23822,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Fanny Mills, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Fanny Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Fanny Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -22740,22 +23876,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -22784,7 +23920,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Fanny Mills?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -22817,7 +23953,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Fanny Mills?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -22850,7 +23986,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Fanny Mills?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -22883,7 +24019,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Fanny Mills, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Fanny Mills?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -24042,7 +25178,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M29 133 H45 V149 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M211 107 H227 V123 H211 Z",
+     "M211 133 H227 V149 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -24100,7 +25331,36 @@ export const CASOS_POOL = [
        "x": 89,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -24365,22 +25625,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -24409,17 +25669,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Amos Read, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Amos Read, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Amos Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24442,17 +25702,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Amos Read, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Amos Read, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Amos Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24475,17 +25735,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Amos Read, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Amos Read, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Amos Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24508,17 +25768,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Amos Read, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Amos Read, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Amos Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24555,12 +25815,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -24570,7 +25830,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -24588,22 +25848,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Amos Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Amos Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Amos Read, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Amos Read, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Amos Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24621,22 +25881,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Amos Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Amos Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Amos Read, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Amos Read, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Amos Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24654,22 +25914,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Amos Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Amos Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Amos Read, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Amos Read, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Amos Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24687,22 +25947,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Amos Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Amos Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Amos Read, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Amos Read, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Amos Read? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24740,7 +26000,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -24750,12 +26010,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -24794,7 +26054,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24827,7 +26087,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24860,7 +26120,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24893,7 +26153,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -24931,22 +26191,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -24980,7 +26240,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Amos Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -25013,7 +26273,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Amos Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -25046,7 +26306,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Amos Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -25079,7 +26339,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Amos Read? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Amos Read: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -25167,7 +26427,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Amos Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Amos Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -25182,7 +26442,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -25200,7 +26460,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Amos Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Amos Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -25215,7 +26475,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -25233,7 +26493,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Amos Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Amos Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -25248,7 +26508,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -25266,7 +26526,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Amos Read. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Amos Read?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -25281,7 +26541,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -26463,7 +27723,88 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Travessa dos Fundos",
+    "viewBox": "0 0 256 126",
+    "comodos": [
+     {
+      "id": "fundos_do_pub",
+      "rotulo": "Os Fundos do Pub",
+      "contorno": "M24 24 H102 V50 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quintais",
+      "rotulo": "Os Quintais",
+      "contorno": "M102 24 H232 V50 H102 Z",
+      "rotuloPos": {
+       "x": 167,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "viela",
+      "rotulo": "A Viela",
+      "contorno": "M24 50 H232 V102 H24 Z",
+      "rotuloPos": {
+       "x": 128,
+       "y": 64
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 51,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 76,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 128,
+         "y": 51,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 76
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M81 81 H97 V97 H81 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 118
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -26533,7 +27874,36 @@ export const CASOS_POOL = [
        "x": 128,
        "y": 64
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 51,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 76,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 128,
+         "y": 51,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 76
+        }
+       }
+      ]
      }
     ],
     "decorSalas": [],
@@ -26763,17 +28133,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -26797,12 +28167,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -26830,12 +28200,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -26863,12 +28233,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -26896,12 +28266,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -26970,7 +28340,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -26994,17 +28364,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Annie Morris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -27027,17 +28397,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Annie Morris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -27060,17 +28430,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Annie Morris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -27093,17 +28463,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Annie Morris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -27152,12 +28522,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -27167,7 +28537,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -27196,17 +28566,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Annie Morris, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Annie Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27229,17 +28599,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Annie Morris, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Annie Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27262,17 +28632,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Annie Morris, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Annie Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27295,17 +28665,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Annie Morris, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Annie Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27354,17 +28724,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -27388,12 +28758,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -27403,7 +28773,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27421,12 +28791,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -27436,7 +28806,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27454,12 +28824,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -27469,7 +28839,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27487,12 +28857,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Annie Morris, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Annie Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -27502,7 +28872,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27533,22 +28903,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -27566,7 +28936,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -27576,12 +28946,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Annie Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27599,7 +28969,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -27609,12 +28979,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Annie Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27632,7 +29002,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -27642,12 +29012,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Annie Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -27665,7 +29035,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Annie Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Annie Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -27675,12 +29045,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Annie Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Annie Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -28914,7 +30284,89 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 3",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -28964,7 +30416,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "copa",
@@ -29245,22 +30726,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -29288,12 +30769,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29321,12 +30802,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29354,12 +30835,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29387,12 +30868,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Mills? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29471,22 +30952,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -29510,22 +30991,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Mills, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era William Mills?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29543,22 +31024,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Mills, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era William Mills?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29576,22 +31057,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Mills, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era William Mills?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29609,22 +31090,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Mills, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era William Mills?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29703,7 +31184,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -29713,12 +31194,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -29742,7 +31223,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -29757,7 +31238,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29775,7 +31256,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -29790,7 +31271,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29808,7 +31289,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -29823,7 +31304,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29841,7 +31322,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -29856,7 +31337,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -29935,7 +31416,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -29950,7 +31431,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -29974,7 +31455,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -29989,7 +31470,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -30007,7 +31488,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -30022,7 +31503,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -30040,7 +31521,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -30055,7 +31536,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -30073,7 +31554,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -30088,7 +31569,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -30172,12 +31653,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -30217,22 +31698,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Mills, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Mills, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -30250,22 +31731,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Mills, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Mills, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -30283,22 +31764,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Mills, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Mills, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -30316,22 +31797,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Mills. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Mills?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Mills, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Mills, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Mills? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William Mills: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -31516,7 +32997,99 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Adro da Igreja",
+    "viewBox": "0 0 230 178",
+    "comodos": [
+     {
+      "id": "quadra_sul",
+      "rotulo": "A Quadra das Lápides",
+      "contorno": "M24 24 H76 V154 H24 Z",
+      "rotuloPos": {
+       "x": 50,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "alameda",
+      "rotulo": "A Alameda das Lajes",
+      "contorno": "M76 24 H154 V128 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 77,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 96,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 115,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 135,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "lychgate",
+      "rotulo": "O Portão Coberto",
+      "contorno": "M76 128 H154 V154 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 142
+      },
+      "alvos": []
+     },
+     {
+      "id": "fundo_norte",
+      "rotulo": "O Fundo Evitado",
+      "contorno": "M154 24 H206 V154 H154 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 133 H45 V149 H29 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M107 133 H123 V149 H107 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M159 133 H175 V149 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 115,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -31584,7 +33157,36 @@ export const CASOS_POOL = [
        "x": 115,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 77,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 96,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 115,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 135,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "lychgate",
@@ -31839,22 +33441,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -31882,12 +33484,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Mary Ellis? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -31915,12 +33517,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Mary Ellis? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -31948,12 +33550,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Mary Ellis? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -31981,12 +33583,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Mary Ellis? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32024,7 +33626,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -32034,12 +33636,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -32073,12 +33675,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Mary Ellis? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32106,12 +33708,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Mary Ellis? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32139,12 +33741,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Mary Ellis? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32172,12 +33774,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Mary Ellis? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Mary Ellis? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32215,12 +33817,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -32259,7 +33861,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Mary Ellis, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -32269,7 +33871,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32292,7 +33894,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Mary Ellis, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -32302,7 +33904,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32325,7 +33927,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Mary Ellis, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -32335,7 +33937,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32358,7 +33960,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Mary Ellis, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -32368,7 +33970,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32399,17 +34001,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -32577,7 +34179,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -32587,7 +34189,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -32610,12 +34212,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Mary Ellis?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Mary Ellis?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -32625,7 +34227,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32643,12 +34245,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Mary Ellis?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Mary Ellis?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -32658,7 +34260,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32676,12 +34278,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Mary Ellis?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Mary Ellis?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -32691,7 +34293,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -32709,12 +34311,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Mary Ellis. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Mary Ellis?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Mary Ellis, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Mary Ellis?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -32724,7 +34326,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -33807,7 +35409,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -33865,7 +35562,36 @@ export const CASOS_POOL = [
        "x": 89,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -34131,12 +35857,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -34146,7 +35872,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -34164,7 +35890,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Ezra Taylor. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Ezra Taylor?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -34174,7 +35900,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -34197,7 +35923,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Ezra Taylor. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Ezra Taylor?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -34207,7 +35933,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -34230,7 +35956,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Ezra Taylor. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Ezra Taylor?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -34240,7 +35966,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -34263,7 +35989,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Ezra Taylor. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Ezra Taylor?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -34273,7 +35999,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -34322,7 +36048,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -34337,7 +36063,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -34371,7 +36097,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -34404,7 +36130,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -34437,7 +36163,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -34470,7 +36196,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -34525,12 +36251,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -34569,7 +36295,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Ezra Taylor?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -34579,7 +36305,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -34602,7 +36328,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Ezra Taylor?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -34612,7 +36338,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -34635,7 +36361,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Ezra Taylor?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -34645,7 +36371,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -34668,7 +36394,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Ezra Taylor?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -34678,7 +36404,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -34720,7 +36446,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -34753,17 +36479,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Ezra Taylor?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -34786,17 +36512,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Ezra Taylor?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -34819,17 +36545,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Ezra Taylor?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -34852,17 +36578,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Ezra Taylor?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Ezra Taylor? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Ezra Taylor: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -34906,22 +36632,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -34945,12 +36671,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Ezra Taylor. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Ezra Taylor?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Ezra Taylor, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -34978,12 +36704,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Ezra Taylor. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Ezra Taylor?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Ezra Taylor, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -35011,12 +36737,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Ezra Taylor. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Ezra Taylor?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Ezra Taylor, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -35044,12 +36770,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Ezra Taylor. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Ezra Taylor?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Ezra Taylor, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Ezra Taylor, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -36165,7 +37891,89 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Mercearia",
+    "viewBox": "0 0 204 178",
+    "comodos": [
+     {
+      "id": "deposito",
+      "rotulo": "Depósito",
+      "contorno": "M24 24 H102 V102 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto (sobrado)",
+      "contorno": "M102 24 H180 V102 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "loja",
+      "rotulo": "A Loja",
+      "contorno": "M24 102 H180 V154 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 116
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 103,
+         "w": 77,
+         "h": 50
+        },
+        "pos": {
+         "x": 63,
+         "y": 128
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 102,
+         "y": 103,
+         "w": 77,
+         "h": 50
+        },
+        "pos": {
+         "x": 141,
+         "y": 128
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -36235,7 +38043,36 @@ export const CASOS_POOL = [
        "x": 102,
        "y": 116
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 103,
+         "w": 77,
+         "h": 50
+        },
+        "pos": {
+         "x": 63,
+         "y": 128
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 102,
+         "y": 103,
+         "w": 77,
+         "h": 50
+        },
+        "pos": {
+         "x": 141,
+         "y": 128
+        }
+       }
+      ]
      }
     ],
     "decorSalas": [],
@@ -36469,22 +38306,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -36502,22 +38339,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Harry Andrews, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Harry Andrews: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -36535,22 +38372,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Harry Andrews, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Harry Andrews: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -36568,22 +38405,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Harry Andrews, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Harry Andrews: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -36601,22 +38438,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Harry Andrews, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Harry Andrews: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -36657,12 +38494,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -36680,22 +38517,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Harry Andrews: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -36713,22 +38550,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Harry Andrews: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -36746,22 +38583,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Harry Andrews: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -36779,22 +38616,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Harry Andrews: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -36838,22 +38675,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -36877,7 +38714,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -36910,7 +38747,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -36943,7 +38780,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -36976,7 +38813,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -37046,7 +38883,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -37056,7 +38893,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -37080,22 +38917,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Harry Andrews? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -37113,22 +38950,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Harry Andrews? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -37146,22 +38983,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Harry Andrews? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -37179,22 +39016,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Harry Andrews? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Harry Andrews? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -37231,7 +39068,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -37241,12 +39078,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -37264,12 +39101,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -37297,12 +39134,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -37330,12 +39167,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -37363,12 +39200,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Harry Andrews. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Harry Andrews?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Harry Andrews, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Harry Andrews?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -38409,7 +40246,87 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Posto do Constable",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "expediente",
+      "rotulo": "Expediente",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "cela",
+      "rotulo": "Cela",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "moradia",
+      "rotulo": "Moradia",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M159 81 H175 V97 H159 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -38459,7 +40376,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "cela",
@@ -38699,7 +40645,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -38728,17 +40674,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -38761,17 +40707,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -38794,17 +40740,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -38827,17 +40773,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -38886,22 +40832,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -38925,12 +40871,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -38958,12 +40904,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -38991,12 +40937,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -39024,12 +40970,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -39081,7 +41027,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -39091,7 +41037,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -39114,12 +41060,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -39147,12 +41093,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -39180,12 +41126,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -39213,12 +41159,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -39265,12 +41211,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -39293,22 +41239,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Herbert Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -39326,22 +41272,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Herbert Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -39359,22 +41305,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Herbert Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -39392,22 +41338,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Herbert Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -39456,17 +41402,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -39490,22 +41436,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -39523,22 +41469,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -39556,22 +41502,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -39589,22 +41535,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Herbert Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Herbert Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Herbert Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Herbert Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Herbert Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Herbert Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -40836,7 +42782,77 @@ export const CASOS_POOL = [
     "Fora do desenho da lesão principal, em sítio próprio: [[gen_incidental]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -40877,7 +42893,36 @@ export const CASOS_POOL = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -41119,12 +43164,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -41134,7 +43179,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -41157,17 +43202,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era George Wilson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com George Wilson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41190,17 +43235,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era George Wilson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com George Wilson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41223,17 +43268,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era George Wilson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com George Wilson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41256,17 +43301,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era George Wilson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com George Wilson? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41297,12 +43342,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -41312,7 +43357,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -41330,22 +43375,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a George Wilson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a George Wilson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era George Wilson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41363,22 +43408,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a George Wilson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a George Wilson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era George Wilson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41396,22 +43441,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a George Wilson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a George Wilson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era George Wilson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41429,22 +43474,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a George Wilson. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a George Wilson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era George Wilson?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41492,12 +43537,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -41521,22 +43566,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a George Wilson. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com George Wilson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era George Wilson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41554,22 +43599,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a George Wilson. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com George Wilson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era George Wilson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41587,22 +43632,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a George Wilson. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com George Wilson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era George Wilson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41620,22 +43665,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a George Wilson. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com George Wilson?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era George Wilson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41678,7 +43723,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -41688,7 +43733,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -41722,12 +43767,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41755,12 +43800,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41788,12 +43833,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41821,12 +43866,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41874,12 +43919,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -41919,17 +43964,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era George Wilson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41952,17 +43997,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era George Wilson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -41985,17 +44030,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era George Wilson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -42018,17 +44063,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era George Wilson, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era George Wilson, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com George Wilson? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com George Wilson: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43180,7 +45225,97 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Solar",
+    "viewBox": "0 0 256 204",
+    "comodos": [
+     {
+      "id": "jantar",
+      "rotulo": "Sala de Jantar",
+      "contorno": "M24 24 H154 V102 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 57,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 122,
+         "y": 63
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V102 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M24 102 H154 V180 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 116
+      },
+      "alvos": []
+     },
+     {
+      "id": "hall",
+      "rotulo": "Hall",
+      "contorno": "M154 102 H232 V180 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M211 29 H227 V45 H211 Z",
+     "M211 81 H227 V97 H211 Z",
+     "M159 81 H175 V97 H159 Z",
+     "M55 159 H71 V175 H55 Z",
+     "M29 159 H45 V175 H29 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 196
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -43238,7 +45373,36 @@ export const CASOS_POOL = [
        "x": 89,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 57,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 122,
+         "y": 63
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -43483,12 +45647,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -43516,17 +45680,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43549,17 +45713,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43582,17 +45746,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43615,17 +45779,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43656,7 +45820,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -43666,12 +45830,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -43689,7 +45853,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -43699,12 +45863,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43722,7 +45886,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -43732,12 +45896,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43755,7 +45919,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -43765,12 +45929,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43788,7 +45952,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Florence Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -43798,12 +45962,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -43841,12 +46005,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -43885,7 +46049,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -43918,7 +46082,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -43951,7 +46115,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -43984,7 +46148,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -44037,12 +46201,12 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -44071,22 +46235,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Florence Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -44104,22 +46268,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Florence Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -44137,22 +46301,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Florence Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -44170,22 +46334,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Florence Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Florence Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Florence Jones, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Florence Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Florence Jones? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -44223,22 +46387,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Tem o sono pesado?\"",
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -44272,7 +46436,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -44305,7 +46469,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -44338,7 +46502,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -44371,7 +46535,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Florence Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Florence Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -45475,7 +47639,101 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Solar",
+    "viewBox": "0 0 256 204",
+    "comodos": [
+     {
+      "id": "jantar",
+      "rotulo": "Sala de Jantar",
+      "contorno": "M24 24 H128 V102 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 63
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V102 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M24 102 H128 V180 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 116
+      },
+      "alvos": []
+     },
+     {
+      "id": "hall",
+      "rotulo": "Hall",
+      "contorno": "M128 102 H232 V180 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 81 H71 V97 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M185 29 H201 V45 H185 Z",
+     "M81 159 H97 V175 H81 Z",
+     "M29 159 H45 V175 H29 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M211 133 H227 V149 H211 Z",
+     "M185 159 H201 V175 H185 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 196
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -45533,7 +47791,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 63
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -45789,7 +48076,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -45818,17 +48105,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Jane Wright, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Jane Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -45851,17 +48138,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Jane Wright, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Jane Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -45884,17 +48171,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Jane Wright, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Jane Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -45917,17 +48204,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Jane Wright, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Jane Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -45958,12 +48245,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -45996,7 +48283,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Jane Wright, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -46006,7 +48293,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46029,7 +48316,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Jane Wright, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -46039,7 +48326,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46062,7 +48349,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Jane Wright, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -46072,7 +48359,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46095,7 +48382,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Que mulher era Jane Wright, aos olhos de quem convivia com ela?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -46105,7 +48392,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46142,22 +48429,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -46175,12 +48462,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Jane Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -46190,7 +48477,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46208,12 +48495,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Jane Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -46223,7 +48510,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46241,12 +48528,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Jane Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -46256,7 +48543,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46274,12 +48561,12 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Jane Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -46289,7 +48576,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46326,17 +48613,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -46359,7 +48646,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -46369,12 +48656,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Jane Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46392,7 +48679,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -46402,12 +48689,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Jane Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46425,7 +48712,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -46435,12 +48722,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Jane Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46458,7 +48745,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -46468,12 +48755,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Jane Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46517,17 +48804,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -46556,22 +48843,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Jane Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Jane Wright: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46589,22 +48876,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Jane Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Jane Wright: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46622,22 +48909,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Jane Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Jane Wright: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -46655,22 +48942,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Jane Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Jane Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que mulher era Jane Wright, para quem lidava com ela todos os dias?\"",
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Jane Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Jane Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Jane Wright: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -47759,7 +50046,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 115
+        }
+       }
+      ]
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M185 29 H201 V45 H185 Z",
+     "M107 133 H123 V149 H107 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M185 133 H201 V149 H185 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -47836,7 +50218,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 115
+        }
+       }
+      ]
      },
      {
       "id": "parlour",
@@ -48039,7 +50450,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -48049,7 +50460,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -48078,7 +50489,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48088,7 +50499,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Knight? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -48111,7 +50522,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48121,7 +50532,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Knight? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -48144,7 +50555,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48154,7 +50565,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Knight? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -48177,7 +50588,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48187,7 +50598,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Knight? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -48228,17 +50639,17 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -48256,7 +50667,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48271,7 +50682,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48289,7 +50700,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48304,7 +50715,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48322,7 +50733,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48337,7 +50748,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48355,7 +50766,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48370,7 +50781,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48406,7 +50817,7 @@ export const CASOS_POOL = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -48416,7 +50827,7 @@ export const CASOS_POOL = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -48434,22 +50845,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Knight, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era John Knight, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Knight? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48467,22 +50878,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Knight, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era John Knight, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Knight? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48500,22 +50911,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Knight, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era John Knight, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Knight? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48533,22 +50944,22 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era John Knight, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era John Knight, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com John Knight? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48586,17 +50997,17 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -48625,7 +51036,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48635,7 +51046,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Knight: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -48658,7 +51069,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48668,7 +51079,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Knight: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -48691,7 +51102,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48701,7 +51112,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Knight: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -48724,7 +51135,7 @@ export const CASOS_POOL = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a John Knight. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Knight?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -48734,7 +51145,7 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Knight: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -48813,12 +51224,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Knight: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48846,12 +51257,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Knight: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48879,12 +51290,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Knight: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -48912,12 +51323,12 @@ export const CASOS_POOL = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com John Knight? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com John Knight: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -50098,7 +52509,77 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -50139,7 +52620,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -50396,17 +52906,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -50435,12 +52945,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Daniel Morris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Daniel Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -50450,7 +52960,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -50468,12 +52978,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Daniel Morris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Daniel Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -50483,7 +52993,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -50501,12 +53011,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Daniel Morris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Daniel Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -50516,7 +53026,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -50534,12 +53044,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Daniel Morris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Daniel Morris?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -50549,7 +53059,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -50632,7 +53142,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -50642,7 +53152,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -50660,7 +53170,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -50670,7 +53180,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Daniel Morris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -50693,7 +53203,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -50703,7 +53213,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Daniel Morris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -50726,7 +53236,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -50736,7 +53246,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Daniel Morris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -50759,7 +53269,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -50769,7 +53279,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Daniel Morris? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -50870,17 +53380,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -51108,17 +53618,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -51142,7 +53652,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -51152,7 +53662,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Daniel Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -51175,7 +53685,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -51185,7 +53695,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Daniel Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -51208,7 +53718,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -51218,7 +53728,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Daniel Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -51241,7 +53751,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -51251,7 +53761,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Daniel Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -51345,12 +53855,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -51374,17 +53884,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Daniel Morris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Daniel Morris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Daniel Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -51407,17 +53917,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Daniel Morris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Daniel Morris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Daniel Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -51440,17 +53950,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Daniel Morris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Daniel Morris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Daniel Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -51473,17 +53983,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Daniel Morris. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Daniel Morris?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Daniel Morris, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Daniel Morris, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Daniel Morris? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Daniel Morris: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -52839,7 +55349,77 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -52880,7 +55460,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -53132,22 +55741,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -53165,22 +55774,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Arthur Palmer, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -53198,22 +55807,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Arthur Palmer, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -53231,22 +55840,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Arthur Palmer, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -53264,22 +55873,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Arthur Palmer, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -53358,22 +55967,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -53397,7 +56006,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -53407,7 +56016,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Arthur Palmer: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -53430,7 +56039,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -53440,7 +56049,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Arthur Palmer: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -53463,7 +56072,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -53473,7 +56082,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Arthur Palmer: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -53496,7 +56105,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -53506,7 +56115,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Arthur Palmer: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -53590,17 +56199,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -53634,17 +56243,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Arthur Palmer, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Arthur Palmer: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -53667,17 +56276,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Arthur Palmer, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Arthur Palmer: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -53700,17 +56309,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Arthur Palmer, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Arthur Palmer: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -53733,17 +56342,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Arthur Palmer, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Arthur Palmer: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -53822,7 +56431,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -53832,12 +56441,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -53861,17 +56470,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Arthur Palmer?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -53894,17 +56503,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Arthur Palmer?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -53927,17 +56536,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Arthur Palmer?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -53960,17 +56569,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Arthur Palmer. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Arthur Palmer?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Arthur Palmer?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -54057,12 +56666,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -54085,12 +56694,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Arthur Palmer?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -54118,12 +56727,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Arthur Palmer?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -54151,12 +56760,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Arthur Palmer?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -54184,12 +56793,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Arthur Palmer, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Arthur Palmer?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Arthur Palmer? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Arthur Palmer? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -55387,7 +57996,77 @@ export const CASOS_LUTA = [
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -55428,7 +58107,36 @@ export const CASOS_LUTA = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -55687,12 +58395,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -55726,12 +58434,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -55759,12 +58467,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -55792,12 +58500,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -55825,12 +58533,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -55908,12 +58616,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -55923,7 +58631,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -55941,7 +58649,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -55951,12 +58659,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -55974,7 +58682,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -55984,12 +58692,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -56007,7 +58715,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -56017,12 +58725,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -56040,7 +58748,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -56050,12 +58758,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -56133,22 +58841,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -56166,12 +58874,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Field, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Field, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -56199,12 +58907,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Field, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Field, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -56232,12 +58940,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Field, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Field, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -56265,12 +58973,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Field, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Field, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -56371,7 +59079,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -56381,12 +59089,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -56410,17 +59118,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Field, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Field, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -56443,17 +59151,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Field, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Field, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -56476,17 +59184,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Field, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Field, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -56509,17 +59217,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William Field, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William Field, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -56612,12 +59320,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -56635,7 +59343,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -56645,12 +59353,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -56668,7 +59376,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -56678,12 +59386,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -56701,7 +59409,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -56711,12 +59419,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -56734,7 +59442,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William Field. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a William Field?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -56744,12 +59452,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William Field? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William Field? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -57981,7 +60689,77 @@ export const CASOS_LUTA = [
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -58022,7 +60800,36 @@ export const CASOS_LUTA = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -58278,22 +61085,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -58317,7 +61124,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -58327,12 +61134,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William King? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58350,7 +61157,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -58360,12 +61167,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William King? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58383,7 +61190,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -58393,12 +61200,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William King? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58416,7 +61223,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -58426,12 +61233,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William King? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58503,22 +61310,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -58536,22 +61343,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58569,22 +61376,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58602,22 +61409,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58635,22 +61442,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58734,22 +61541,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -58779,22 +61586,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William King? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58812,22 +61619,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William King? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58845,22 +61652,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William King? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58878,22 +61685,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com William King? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -58972,7 +61779,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -58982,12 +61789,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -59016,12 +61823,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -59049,12 +61856,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -59082,12 +61889,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -59115,12 +61922,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era William King, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era William King, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -59204,17 +62011,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -59243,7 +62050,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -59253,12 +62060,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -59276,7 +62083,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -59286,12 +62093,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -59309,7 +62116,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -59319,12 +62126,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -59342,7 +62149,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a William King. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com William King?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -59352,12 +62159,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com William King? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com William King: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -60682,7 +63489,89 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 6",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M159 107 H175 V123 H159 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -60732,7 +63621,36 @@ export const CASOS_LUTA = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "copa",
@@ -60997,22 +63915,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -61030,22 +63948,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Edward Carter? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61063,22 +63981,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Edward Carter? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61096,22 +64014,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Edward Carter? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61129,22 +64047,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Edward Carter? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61229,22 +64147,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -61268,22 +64186,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Edward Carter?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61301,22 +64219,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Edward Carter?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61334,22 +64252,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Edward Carter?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61367,22 +64285,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Edward Carter?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61473,7 +64391,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -61483,12 +64401,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -61517,7 +64435,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -61550,7 +64468,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -61583,7 +64501,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -61616,7 +64534,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -61716,17 +64634,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -61750,7 +64668,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -61760,12 +64678,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61783,7 +64701,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -61793,12 +64711,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61816,7 +64734,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -61826,12 +64744,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61849,7 +64767,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -61859,12 +64777,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -61943,7 +64861,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -61953,12 +64871,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -61982,22 +64900,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -62015,22 +64933,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -62048,22 +64966,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -62081,22 +64999,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Edward Carter. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Edward Carter?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Edward Carter, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Edward Carter, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Edward Carter? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Edward Carter: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -63382,7 +66300,102 @@ export const CASOS_LUTA = [
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 115
+        }
+       }
+      ]
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M185 133 H201 V149 H185 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -63459,7 +66472,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 115
+        }
+       }
+      ]
      },
      {
       "id": "parlour",
@@ -63752,17 +66794,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -63796,7 +66838,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -63806,7 +66848,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -63829,7 +66871,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -63839,7 +66881,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -63862,7 +66904,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -63872,7 +66914,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -63895,7 +66937,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -63905,7 +66947,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -63984,7 +67026,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -63994,7 +67036,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -64028,12 +67070,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -64061,12 +67103,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -64094,12 +67136,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -64127,12 +67169,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -64209,7 +67251,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -64219,12 +67261,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -64247,17 +67289,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64280,17 +67322,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64313,17 +67355,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64346,17 +67388,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64435,12 +67477,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -64474,7 +67516,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -64484,12 +67526,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64507,7 +67549,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -64517,12 +67559,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64540,7 +67582,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -64550,12 +67592,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64573,7 +67615,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -64583,12 +67625,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64660,17 +67702,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -64693,22 +67735,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Samuel Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Samuel Ward? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64726,22 +67768,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Samuel Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Samuel Ward? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64759,22 +67801,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Samuel Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Samuel Ward? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -64792,22 +67834,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Samuel Ward?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Samuel Ward? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -66139,7 +69181,77 @@ export const CASOS_LUTA = [
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -66180,7 +69292,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -66427,7 +69568,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -66442,7 +69583,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -66471,17 +69612,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -66504,17 +69645,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -66537,17 +69678,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -66570,17 +69711,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -66665,17 +69806,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -66709,12 +69850,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Sydney Cooper?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Sydney Cooper? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -66742,12 +69883,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Sydney Cooper?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Sydney Cooper? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -66775,12 +69916,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Sydney Cooper?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Sydney Cooper? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -66808,12 +69949,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Sydney Cooper?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Sydney Cooper? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -66897,7 +70038,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -66907,7 +70048,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -66946,7 +70087,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -66979,7 +70120,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -67012,7 +70153,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -67045,7 +70186,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -67128,12 +70269,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -67143,7 +70284,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -67161,7 +70302,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -67171,12 +70312,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -67194,7 +70335,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -67204,12 +70345,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -67227,7 +70368,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -67237,12 +70378,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -67260,7 +70401,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -67270,12 +70411,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -67366,17 +70507,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -67405,12 +70546,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -67438,12 +70579,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -67471,12 +70612,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -67504,12 +70645,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -68816,7 +71957,77 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 107 H123 V123 H107 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -68857,7 +72068,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -69078,12 +72318,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -69117,12 +72357,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69150,12 +72390,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69183,12 +72423,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69216,12 +72456,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Henry Jones, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69310,7 +72550,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -69325,7 +72565,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -69349,22 +72589,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -69382,22 +72622,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -69415,22 +72655,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -69448,22 +72688,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Henry Jones: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -69535,12 +72775,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -69550,7 +72790,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -69568,12 +72808,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69583,7 +72823,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -69601,12 +72841,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69616,7 +72856,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -69634,12 +72874,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69649,7 +72889,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -69667,12 +72907,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69682,7 +72922,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -69766,17 +73006,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -69811,12 +73051,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69844,12 +73084,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69877,12 +73117,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -69910,12 +73150,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -70004,7 +73244,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -70014,12 +73254,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -70043,7 +73283,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -70058,7 +73298,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -70076,7 +73316,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -70091,7 +73331,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -70109,7 +73349,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -70124,7 +73364,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -70142,7 +73382,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Henry Jones. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -70157,7 +73397,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -71457,7 +74697,102 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 57,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 77,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 122,
+         "y": 115
+        }
+       }
+      ]
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M185 81 H201 V97 H185 Z",
+     "M211 81 H227 V97 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -71534,7 +74869,36 @@ export const CASOS_LUTA = [
        "x": 89,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 57,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 77,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 122,
+         "y": 115
+        }
+       }
+      ]
      },
      {
       "id": "parlour",
@@ -71820,7 +75184,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -71853,7 +75217,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -71886,7 +75250,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -71919,7 +75283,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -72013,7 +75377,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -72023,7 +75387,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -72068,7 +75432,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Cecil Wright: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -72101,7 +75465,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Cecil Wright: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -72134,7 +75498,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Cecil Wright: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -72167,7 +75531,7 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Cecil Wright: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -72251,22 +75615,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"É dos que se deitam cedo?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -72295,7 +75659,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -72328,7 +75692,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -72361,7 +75725,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -72394,7 +75758,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -72483,22 +75847,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
+       "rotulo": "\"A que horas costuma apagar a luz?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -72522,7 +75886,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Cecil Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -72537,7 +75901,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -72555,7 +75919,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Cecil Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -72570,7 +75934,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -72588,7 +75952,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Cecil Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -72603,7 +75967,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -72621,7 +75985,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Cecil Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -72636,7 +76000,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -72720,12 +76084,12 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
@@ -72754,17 +76118,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Cecil Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Cecil Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -72787,17 +76151,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Cecil Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Cecil Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -72820,17 +76184,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Cecil Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Cecil Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -72853,17 +76217,17 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Cecil Wright?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Cecil Wright? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
@@ -74321,7 +77685,77 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 29 H45 V45 H29 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M133 107 H149 V123 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -74362,7 +77796,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -74659,12 +78122,12 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
@@ -74698,7 +78161,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -74713,7 +78176,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -74731,7 +78194,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -74746,7 +78209,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -74764,7 +78227,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -74779,7 +78242,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -74797,7 +78260,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
@@ -74812,7 +78275,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -74896,17 +78359,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -74930,22 +78393,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Joseph Smith? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -74963,22 +78426,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Joseph Smith? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -74996,22 +78459,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Joseph Smith? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75029,22 +78492,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Que negócios tinha com Joseph Smith? Diga somas e datas.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75128,17 +78591,17 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -75162,22 +78625,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75195,22 +78658,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75228,22 +78691,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75261,22 +78724,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75366,7 +78829,7 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
@@ -75376,12 +78839,12 @@ export const CASOS_LUTA = [
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"Quando é que encerra o dia?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -75411,22 +78874,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75444,22 +78907,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75477,22 +78940,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75510,22 +78973,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Smith?\"",
        "vaiPara": "b2_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
        "vaiPara": "b2_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75609,22 +79072,22 @@ export const CASOS_LUTA = [
      ],
      "opcoes": [
       {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
        "vaiPara": "b1_firme",
        "tom": "firme"
       },
       {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
        "vaiPara": "b1_cordial",
        "tom": "cordial"
       },
       {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
        "vaiPara": "b1_tecnico",
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"A que horas larga o serviço?\"",
+       "rotulo": "\"A tarde acaba a que horas?\"",
        "vaiPara": "b1_obliquo",
        "tom": "obliquo"
       }
@@ -75647,7 +79110,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -75657,7 +79120,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75680,7 +79143,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -75690,7 +79153,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75713,7 +79176,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -75723,7 +79186,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }
@@ -75746,7 +79209,7 @@ export const CASOS_LUTA = [
        "tom": "firme"
       },
       {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
+       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
        "vaiPara": "b2_cordial",
        "tom": "cordial"
       },
@@ -75756,7 +79219,7 @@ export const CASOS_LUTA = [
        "tom": "tecnico"
       },
       {
-       "rotulo": "\"O que anda dizendo a vila?\"",
+       "rotulo": "\"E a vila, o que murmura?\"",
        "vaiPara": "b2_obliquo",
        "tom": "obliquo"
       }

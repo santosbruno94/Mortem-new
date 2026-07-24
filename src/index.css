@@ -854,6 +854,16 @@ body {
   .grupo-pena:hover .pena-tinta, .grupo-pena:focus-visible .pena-tinta { animation: none; background-size: 100% 1px; }
 }
 
+/* Etiquetas da maquete COMPACTAS no celular: numa vila densa cabem muitas
+   sobre a tábua estreita — encolher a tag reduz a altura que o desobstrutor
+   precisa empurrar e diminui a colisão (playtest mobile 24/07/2026). Só a
+   tag do diorama (.rotulo-papel); as cartas 2D usam outra classe. */
+@media (max-width: 639px) {
+  .rotulo-papel { padding: 0.18rem 0.4rem 0.2rem; }
+  .rotulo-nome { font-size: 11px; line-height: 1.1; }
+  .rotulo-custo { font-size: 8px; margin-top: 1px; }
+}
+
 /* ---------------------------------------------------------------------
    O aviso de pouso (Onda 4): a etiqueta que anuncia a observação recém-
    registrada e desliza em direção à mesa. Flourish curto; o componente
