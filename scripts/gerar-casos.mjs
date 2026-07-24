@@ -39,6 +39,8 @@ import { intersecaoJanelas, temperaturaPorIpm } from '../src/logic/tempo_morte.j
 import { mecanismoCravado } from '../src/data/catalogo_causas.js';
 import { resolverEstadoCarta } from '../src/data/cartas.js';
 import { perfisDoCasoGerado, quatroDesfechos } from './lib/perfis.mjs';
+import { marcadoresDoTexto } from './lib/marcadores.mjs';
+import { nucleoDaFatia } from './lib/fatia.mjs';
 
 // A seed e as variáveis dirigidas da réplica vivem no gerador
 // (src/gerador/pacote_gerado.js), para o qa.mjs regenerar e comparar sem
@@ -80,30 +82,21 @@ function metodicoResolve(pacote) {
       temperaturaAmbiente: pacote.parametrosCena.ambiente,
     },
   });
-  const temporais = registradas.filter((c) => c.tagsOcultas.dominio === 'temporal');
-  const janela = intersecaoJanelas(temporais.map(janelaDaCarta).filter(Boolean));
+  // Os quatro pilares medem-se pelo NÚCLEO único (scripts/lib/fatia.mjs);
+  // as réguas de embarque ficam locais DE PROPÓSITO: janela PRECISA
+  // (finita, ≤ 6h) e nexo INSTRUMENTAL (tipoVestigio casa com a arma).
+  const n = nucleoDaFatia(registradas, v);
+  const { janela } = n;
   const janelaOk =
-    !!janela &&
-    janela.inicio <= v.horaMorteAbsoluta &&
-    v.horaMorteAbsoluta <= janela.fim &&
-    janela.inicio !== -Infinity &&
-    janela.fim !== Infinity &&
-    janela.fim - janela.inicio <= 6;
-  const sinais = registradas
-    .filter((c) => c.tagsOcultas.dominio === 'causal')
-    .map((c) => c.tagsOcultas.sinal)
-    .filter(Boolean);
-  const cravado = mecanismoCravado(sinais);
-  const mecanismoOk = !!cravado && cravado.id === v.mecanismoCorreto;
+    n.janelaCobre && janela.inicio !== -Infinity && janela.fim !== Infinity && janela.fim - janela.inicio <= 6;
+  const mecanismoOk = n.mecanismoCrava;
   const nexoOk = registradas.some(
     (c) =>
       c.tagsOcultas.dominio === 'vestigio' &&
       c.tagsOcultas.tipoVestigio === v.instrumentoCorreto &&
       c.tagsOcultas.pertenceA === v.reuCorreto
   );
-  const motivoOk = registradas.some(
-    (c) => c.tagsOcultas.motivo === v.motivacaoCorreta && c.tagsOcultas.ligadoA === v.reuCorreto
-  );
+  const motivoOk = n.motivoOk;
   // Descuidos (v2): se a verdade exige a encenação exposta, a peça existe
   // no catálogo e a janela do corpo a EXCLUI (refutável por construção).
   const forjada = pacote.cartas.find((c) => c.tagsOcultas?.encenado);
@@ -149,12 +142,12 @@ function marcadoresFecham(pacote) {
       ...(l.pontos || []).flatMap((p) => p.prosa),
       ...(l.blocosContingentes || []).flatMap((b) => b.paragrafos),
     ];
-    for (const t of textos) for (const m of t.matchAll(/\[\[(\w+)\]\]/g)) marcados.add(m[1]);
+    for (const t of textos) for (const id of marcadoresDoTexto(t)) marcados.add(id);
     for (const g of l.gestos || []) marcados.add(g.cartaId);
   }
   for (const d of Object.values(pacote.dialogos || {})) {
     for (const no of Object.values(d.nos)) {
-      for (const t of no.fala || []) for (const m of t.matchAll(/\[\[(\w+)\]\]/g)) marcados.add(m[1]);
+      for (const t of no.fala || []) for (const id of marcadoresDoTexto(t)) marcados.add(id);
     }
   }
   const orfaos = [...marcados].filter((id) => !ids.has(id));

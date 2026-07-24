@@ -3,10 +3,12 @@ import { useJogo } from '../store/jogo.js';
 import { obterSuspeitos } from '../data/pacote_caso.js';
 import { CATALOGO_CAUSAS } from '../data/catalogo_causas.js';
 import { ANCORAS, analisarLigacoes, horaAlegada } from '../logic/acusacao.js';
-import { formatJanela, formatRelogio } from '../logic/tempo.js';
+import { formatJanela } from '../logic/tempo.js';
 import { deQuem } from '../logic/monologo.js';
 import { tocarSom } from '../som.js';
-import RetratoPersonagem from './RetratoPersonagem.jsx';
+import EstacaoCorpo from './mural/EstacaoCorpo.jsx';
+import { EstacaoPresenca, EstacaoMentiras, EstacaoMobil, EstacaoJuizos } from './mural/Estacoes.jsx';
+import RevisaoFinal from './mural/RevisaoFinal.jsx';
 
 
 // =====================================================================
@@ -28,12 +30,6 @@ import RetratoPersonagem from './RetratoPersonagem.jsx';
 // Nada valida até "Levar a julgamento": só o desfecho julga.
 // =====================================================================
 
-// Conversão da escala absoluta (horas desde a meia-noite de 14/out;
-// negativas = 13/out) para o relógio humano (dia 13/14 + hora).
-function deAbsoluto(abs) {
-  return { dia: 14 + Math.floor(abs / 24), hora: ((abs % 24) + 24) % 24 };
-}
-
 // Predicados de categoria (camada visual; o motor lê as tags por conta própria).
 const ehTemporal = (c) => c.tagsOcultas.dominio === 'temporal';
 const ehCausal = (c) => c.tagsOcultas.dominio === 'causal';
@@ -42,22 +38,6 @@ const ehVestigioOuAmbiental = (c) =>
 const ehMotivo = (c) => c.tagsOcultas.subDominio === 'motivo';
 const ehCorroboracao = (c) => c.tagsOcultas.subDominio === 'corroboracao';
 const ehAlibiDe = (c, sid) => c.tagsOcultas.subDominio === 'alibi' && c.tagsOcultas.declaranteId === sid;
-
-// Ponteiro grosso (dedo): sem hover, o atalho de ficha precisa ser botão
-// explícito com área de toque ≥ 44px. Decisão única por sessão — camada
-// visual, o motor não lê (e o dispositivo não muda no meio da partida).
-const ponteiroGrosso =
-  typeof window !== 'undefined' &&
-  typeof window.matchMedia === 'function' &&
-  window.matchMedia('(pointer: coarse)').matches;
-
-// Geometria das estações de ligação (coordenadas conhecidas → barbante simples).
-const CARD_W = 176;
-const CARD_H = 92; // altura acomoda o carimbo de coleta (P7, playtest 19/07)
-const ESPACO = 22;
-const MARGEM = 16;
-const VAO_LINHAS = 104; // respiro vertical entre a fileira de alvos e a de fontes
-const ROTULO_H = 18; // faixa para o rótulo de cada fileira
 
 const ETAPAS = [
   { id: 'corpo', titulo: 'I · O Corpo', subtitulo: 'quando e como' },
@@ -349,122 +329,6 @@ export default function MuralAcusacao() {
 }
 
 // ---------------------------------------------------------------------
-// A revisão final: o argumento inteiro, legível, antes de selar. Só lê o que
-// o jogador afirmou — nunca diz se está certo (a verdade é o Monólogo).
-// ---------------------------------------------------------------------
-function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refutaHora, refutaAlibi, naoAcusados, lacunas, aoVoltar, aoConfirmar }) {
-  // Selo com lacunas pede confissão explícita (P0 §5 do playtest de 17/07):
-  // errar segue permitido — Erro Judiciário e Impunidade são finais
-  // legítimos e pedagógicos, o botão nunca desabilita —, mas "revisei e
-  // assumo o risco" precisa se distinguir de "não vi que faltava algo".
-  // O jogador completo não vê este passo.
-  const [confirmandoLacunas, setConfirmandoLacunas] = useState(false);
-  const reu = obterSuspeitos().find((s) => s.id === acusacao.reuId);
-  const causa = CATALOGO_CAUSAS.find((c) => c.id === acusacao.causaId);
-  const temJanela = acusacao.janela.inicio != null && acusacao.janela.fim != null;
-  const vestNexo = sustentaPresenca.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.tipoVestigio);
-  const motivo = cartas.find((c) => c.id === acusacao.motivacaoId);
-  const semCor = '— por afirmar —';
-
-  const refutaAlibiDe = (sid) => {
-    for (const v of refutaAlibi.values()) if (v.alibi.tagsOcultas.declaranteId === sid) return v.vestigios[0];
-    return null;
-  };
-  // As mentiras expostas do caso: as de hora E o paradeiro do réu desmentido
-  // (P2 do playtest — a refutação do álibi do réu não pode ficar invisível).
-  const mentiras = [...refutaHora.values()].map((v) => v.alegacao.termoCarimbo);
-  const paradeiroReu = refutaAlibiDe(acusacao.reuId);
-  if (paradeiroReu) mentiras.push(`paradeiro desmentido por “${paradeiroReu.textoDisplay}”`);
-  const rotuloJuizo = (j) => (j === 'culpado' ? 'Cúmplice' : j === 'inocente' ? 'Inocente' : 'Sem juízo');
-
-  return (
-    <div className="absolute inset-0 z-50 bg-stone-950/80 overlay-fundo flex items-center justify-center p-3 sm:p-6">
-      <div className="mortem-surgir painel-couro w-full max-w-2xl max-h-full overflow-auto rounded-sm p-4 sm:p-6">
-        <h3 className="font-serif text-lg text-amber-200 titulo-gravado mb-1">A acusação, como você a montou</h3>
-        <p className="text-stone-400 text-xs mb-3">Releia antes de selar. Nada aqui diz se está certo — isso é o julgamento.</p>
-        <div className="divisor-ornado text-xs mb-4" aria-hidden="true">§</div>
-
-        <dl className="space-y-2 text-sm">
-          <LinhaRev rotulo="Quem" valor={reu ? reu.nome : semCor} />
-          <LinhaRev rotulo="Quando" valor={temJanela ? formatJanela(acusacao.janela) : semCor} />
-          <LinhaRev rotulo="Como" valor={causa ? causa.nome : semCor} />
-          <LinhaRev rotulo="Presença" valor={vestNexo ? vestNexo.textoDisplay : '— nada liga o réu à cena —'} />
-          <LinhaRev rotulo="Mentiras" valor={mentiras.length ? mentiras.join(' · ') : '— nenhuma mentira exposta —'} />
-          <LinhaRev rotulo="Móbil" valor={motivo ? motivo.termoCarimbo : semCor} />
-          <div className="flex gap-3">
-            <dt className="text-rotulo uppercase text-latao-claro/70 w-24 shrink-0 pt-0.5">Juízos</dt>
-            <dd className="text-stone-300 flex-1">
-              {naoAcusados.length === 0 ? (
-                <span className="text-stone-400 italic font-serif">— sem outros suspeitos —</span>
-              ) : (
-                <div className="flex flex-col gap-0.5">
-                  {naoAcusados.map((sp) => {
-                    const v = refutaAlibiDe(sp.id);
-                    return (
-                      <span key={sp.id}>
-                        {sp.nome}: <span className="text-stone-200">{rotuloJuizo(acusacao.juizos[sp.id])}</span>
-                        {/* Forma neutra: o nome da carta tem gênero próprio
-                            ("a Cesta…", "o Registro…") — nada de "pelo" fixo. */}
-                        {acusacao.juizos[sp.id] === 'inocente' && v && (
-                          <span className="text-stone-400"> — paradeiro desmentido por “{v.textoDisplay}”</span>
-                        )}
-                      </span>
-                    );
-                  })}
-                </div>
-              )}
-            </dd>
-          </div>
-        </dl>
-
-        {!confirmandoLacunas ? (
-          <div className="flex justify-end gap-3 mt-6">
-            <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
-              Voltar e revisar
-            </button>
-            <button
-              onClick={() => (lacunas.length > 0 ? setConfirmandoLacunas(true) : aoConfirmar())}
-              className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide"
-            >
-              Confirmar e julgar
-            </button>
-          </div>
-        ) : (
-          <div className="mt-6 mortem-surgir">
-            <div className="carta-pergaminho relative rounded-sm px-4 py-3">
-              <span className="tacha-latao absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5" aria-hidden="true" />
-              <p className="text-tinta text-sm">
-                A acusação não declara: <span className="text-tinta-clara">{lacunas.join(' · ')}</span>
-              </p>
-              <p className="text-tinta text-sm mt-1">
-                O julgamento correrá com o que está na mesa. Selar assim mesmo?
-              </p>
-            </div>
-            <div className="flex justify-end gap-3 mt-4">
-              <button onClick={aoVoltar} className="botao-mesa botao-mesa--quieto !text-sm">
-                Voltar ao mural
-              </button>
-              <button onClick={aoConfirmar} className="placa-latao px-5 py-2 rounded-sm font-serif text-sm tracking-wide">
-                Selar assim mesmo
-              </button>
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function LinhaRev({ rotulo, valor }) {
-  return (
-    <div className="flex gap-3">
-      <dt className="text-rotulo uppercase text-latao-claro/70 w-24 shrink-0 pt-0.5">{rotulo}</dt>
-      <dd className="text-stone-200 flex-1">{valor}</dd>
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------
 // Resumo de uma etapa concluída. Qualquer toque/clique reabre a etapa; o
 // arrasto (> 44px) é floreio opcional — quem completa o gesto ainda o vê,
 // mas soltar no meio do caminho reabre igual (P0 do playtest de 17/07:
@@ -538,7 +402,8 @@ function ResumoEstacao({ etapa, resumo, aoReabrir }) {
 
 // ---------------------------------------------------------------------
 // A moldura de uma estação aberta + o rodapé "Concluir esta parte".
-// O corpo varia conforme a etapa.
+// O corpo varia conforme a etapa. Cada estação recebe SÓ as props que usa
+// (explicitadas na decomposição — nada de espalhar o pacote inteiro).
 // ---------------------------------------------------------------------
 function EstacaoAberta({ etapa, ultima, aoConcluir, ...p }) {
   return (
@@ -554,11 +419,50 @@ function EstacaoAberta({ etapa, ultima, aoConcluir, ...p }) {
       <div className="divisor-ornado text-[10px] px-4 mt-1" aria-hidden="true">―</div>
 
       <div className="px-4 py-3 overflow-x-auto">
-        {etapa.id === 'corpo' && <EstacaoCorpo {...p} />}
-        {etapa.id === 'presenca' && <EstacaoPresenca {...p} />}
-        {etapa.id === 'mentiras' && <EstacaoMentiras {...p} />}
-        {etapa.id === 'mobil' && <EstacaoMobil {...p} />}
-        {etapa.id === 'juizos' && <EstacaoJuizos {...p} />}
+        {etapa.id === 'corpo' && (
+          <EstacaoCorpo
+            acusacao={p.acusacao}
+            definirJanela={p.definirJanela}
+            definirCausa={p.definirCausa}
+            temporais={p.temporais}
+            causais={p.causais}
+          />
+        )}
+        {etapa.id === 'presenca' && (
+          <EstacaoPresenca
+            acusacao={p.acusacao}
+            definirReu={p.definirReu}
+            vestigios={p.vestigios}
+            adicionarLigacao={p.adicionarLigacao}
+            removerLigacao={p.removerLigacao}
+          />
+        )}
+        {etapa.id === 'mentiras' && (
+          <EstacaoMentiras
+            acusacao={p.acusacao}
+            mentirasAlvo={p.mentirasAlvo}
+            fontesMentiras={p.fontesMentiras}
+            adicionarLigacao={p.adicionarLigacao}
+            removerLigacao={p.removerLigacao}
+          />
+        )}
+        {etapa.id === 'mobil' && (
+          <EstacaoMobil
+            acusacao={p.acusacao}
+            motivos={p.motivos}
+            definirMotivacao={p.definirMotivacao}
+          />
+        )}
+        {etapa.id === 'juizos' && (
+          <EstacaoJuizos
+            acusacao={p.acusacao}
+            naoAcusados={p.naoAcusados}
+            definirJuizo={p.definirJuizo}
+            cartas={p.cartas}
+            estaLigada={p.estaLigada}
+            alternarLigacao={p.alternarLigacao}
+          />
+        )}
       </div>
 
       <div className="flex justify-end px-4 pb-3">
@@ -570,697 +474,5 @@ function EstacaoAberta({ etapa, ultima, aoConcluir, ...p }) {
         </span>
       </div>
     </div>
-  );
-}
-
-// =====================================================================
-// ESTAÇÃO I — O CORPO: as evidências são APRESENTADAS (leitura); o jogador
-// calcula e DECLARA a janela e a causa. As evidências do corpo coletadas
-// entram sozinhas como base (ver o useEffect no componente-mãe). Sem clique
-// nas cartas — a dedução é ler e declarar.
-// =====================================================================
-function EstacaoCorpo({ acusacao, definirJanela, definirCausa, temporais, causais }) {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-      {/* QUANDO */}
-      <div>
-        <p className="text-rotulo uppercase text-latao-claro/70 mb-2">Quando — a janela</p>
-        <SeletorJanela acusacao={acusacao} definirJanela={definirJanela} />
-        {acusacao.janela.inicio != null && acusacao.janela.fim != null && (
-          <p className="text-latao-claro font-serif text-xs mt-2">{formatJanela(acusacao.janela)}</p>
-        )}
-        <p className="text-stone-400 text-[11px] mt-3 mb-2">O que o corpo diz do tempo:</p>
-        <div className="flex flex-col gap-2">
-          {temporais.map((c) => (
-            <CartaLeitura key={c.id} carta={c} declarada />
-          ))}
-          {temporais.length === 0 && (
-            <p className="text-stone-400 italic font-serif text-xs">Nenhum indicador de tempo no corpo.</p>
-          )}
-        </div>
-      </div>
-
-      {/* COMO */}
-      <div>
-        <p className="text-rotulo uppercase text-latao-claro/70 mb-2">Como — a causa</p>
-        <div className="flex flex-col gap-1 max-h-40 overflow-y-auto pr-1">
-          {CATALOGO_CAUSAS.map((c) => (
-            <Opcao key={c.id} ativa={acusacao.causaId === c.id} aoClicar={() => definirCausa(c.id)} rotulo={c.nome} />
-          ))}
-        </div>
-        <p className="text-stone-400 text-[11px] mt-3 mb-2">O que o corpo diz da causa:</p>
-        <div className="flex flex-col gap-2">
-          {causais.map((c) => (
-            <CartaLeitura
-              key={c.id}
-              carta={c}
-              declarada={!!(c.tagsOcultas.sinal || c.tagsOcultas.instrumento)}
-            />
-          ))}
-          {causais.length === 0 && (
-            <p className="text-stone-400 italic font-serif text-xs">Nenhum sinal de causa no corpo.</p>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Carta de evidência só para leitura (o jogador lê e deduz; não se clica).
-// É prova escrita: pergaminho claro, tinta escura. `declarada` marca as
-// cartas que o useEffect do mural ligou SOZINHO às âncoras quando/como
-// (P1 §7 do playtest de 17/07): a tese "o corpo é lido, não selecionado"
-// vivia só em comentário de código — o micro-rótulo a mostra ao jogador.
-function CartaLeitura({ carta, declarada = false }) {
-  return (
-    <div title={carta.descricao} className="carta-pergaminho rounded-sm px-3 py-2">
-      {declarada && (
-        <span className="block text-cera text-[9px] tracking-[0.18em] uppercase mb-0.5">
-          o corpo declara
-        </span>
-      )}
-      <p className="font-serif text-tinta text-xs leading-snug">{carta.textoDisplay}</p>
-      <CarimboColeta hora={carta.horaRegistro} />
-    </div>
-  );
-}
-
-// QOL do playtest de 19/07 (P7): toda prova exibida no mural declara QUANDO
-// foi coletada — a data/hora já viaja com a carta (horaRegistro); aqui só se
-// mostra. Não é resposta dada: é o registro do próprio perito.
-function CarimboColeta({ hora, clara = false }) {
-  if (hora == null) return null;
-  return (
-    <span className={`block text-[9px] leading-tight mt-0.5 ${clara ? 'opacity-70' : 'text-tinta-apagada'}`}>
-      coleta: {formatRelogio(hora)}
-    </span>
-  );
-}
-
-// =====================================================================
-// ESTAÇÃO II — A PRESENÇA: nomear o réu e LIGAR (barbante) um vestígio à cena.
-// =====================================================================
-function EstacaoPresenca({ acusacao, definirReu, vestigios, adicionarLigacao, removerLigacao }) {
-  const alvo = { id: ANCORAS.presenca, rotulo: 'Presença — o réu na cena', ehAncora: true };
-  return (
-    <div>
-      <div className="flex flex-wrap items-center gap-2 mb-3">
-        <span className="text-rotulo uppercase text-latao-claro/70">Réu:</span>
-        {obterSuspeitos().map((sp) => (
-          <Opcao key={sp.id} ativa={acusacao.reuId === sp.id} aoClicar={() => definirReu(sp.id)} rotulo={sp.nome} />
-        ))}
-      </div>
-      <p className="text-stone-400 text-[11px] mb-2">
-        Ligue à Presença o(s) vestígio(s) que ligam o réu à arma do óbito (clique no vestígio, depois
-        na âncora). Para desfazer uma ligação, clique no barbante.
-      </p>
-      <MesaLigacao
-        alvos={[alvo]}
-        fontes={vestigios}
-        ligacoes={acusacao.ligacoes}
-        adicionarLigacao={adicionarLigacao}
-        removerLigacao={removerLigacao}
-        rotuloFontes="Vestígios coletados"
-      />
-    </div>
-  );
-}
-
-// =====================================================================
-// ESTAÇÃO III — AS MENTIRAS: LIGAR (barbante) um fato à alegação que ele
-// derruba — o relógio encenado, o falso avistamento e, com o réu nomeado,
-// o paradeiro que o próprio réu declarou (refutável pelo registro de
-// testemunho — a corroboração de Moorford). Os álibis dos NÃO-acusados
-// seguem na estação dos Juízos.
-// =====================================================================
-function EstacaoMentiras({ acusacao, mentirasAlvo, fontesMentiras, adicionarLigacao, removerLigacao }) {
-  return (
-    <div>
-      <p className="text-stone-400 text-[11px] mb-2">
-        Ligue um fato — do corpo ou dos registros — à alegação de hora ou de paradeiro que ele
-        derruba (clique no fato, depois no depoimento). Para desfazer uma ligação, clique no barbante.
-      </p>
-      <MesaLigacao
-        alvos={mentirasAlvo}
-        fontes={fontesMentiras}
-        ligacoes={acusacao.ligacoes}
-        adicionarLigacao={adicionarLigacao}
-        removerLigacao={removerLigacao}
-        rotuloAlvos="As alegações — hora e paradeiro"
-        rotuloFontes="Os fatos — corpo e registros"
-      />
-    </div>
-  );
-}
-
-// ---------------------------------------------------------------------
-// Mesa de ligação: alvos em cima, fontes embaixo, em posições conhecidas;
-// clique-clique liga (barbante do Estágio 1). Coordenadas fixas → sem medir.
-// ---------------------------------------------------------------------
-function MesaLigacao({ alvos, fontes, ligacoes, adicionarLigacao, removerLigacao, rotuloAlvos, rotuloFontes }) {
-  const [origem, setOrigem] = useState(null);
-  // Ícone discreto de leitura (§6.2): rever a ficha de uma carta sem sair da
-  // estação. A ligação segue no clique do nó; a ficha, no "§" do canto.
-  const abrirFicha = useJogo((s) => s.abrirFicha);
-
-  // A mesa acompanha a largura real do painel (A6 do playtest de 13/07/2026):
-  // com muitos fatos, a fileira única estourava a tela e cortava a última
-  // carta. Acima do teto de colunas, as cartas QUEBRAM em nova fileira — os
-  // barbantes seguem os centros, e nada fica fora do alcance do clique.
-  const refMedida = useRef(null);
-  const [larguraDisponivel, setLarguraDisponivel] = useState(() => window.innerWidth - 48);
-  useEffect(() => {
-    const el = refMedida.current;
-    if (!el || typeof ResizeObserver === 'undefined') return;
-    const observador = new ResizeObserver(() => el.clientWidth && setLarguraDisponivel(el.clientWidth));
-    observador.observe(el);
-    if (el.clientWidth) setLarguraDisponivel(el.clientWidth);
-    return () => observador.disconnect();
-  }, []);
-
-  const colunasMax = Math.max(
-    2,
-    Math.floor((larguraDisponivel - MARGEM * 2 + ESPACO) / (CARD_W + ESPACO))
-  );
-  const VAO_FILEIRAS = 14; // respiro entre fileiras da MESMA banda (alvos ou fontes)
-  const filaAltura = (n) => Math.ceil(Math.max(n, 1) / colunasMax) * (CARD_H + VAO_FILEIRAS) - VAO_FILEIRAS;
-
-  const colunas = Math.min(Math.max(alvos.length, fontes.length, 1), colunasMax);
-  const largura = MARGEM * 2 + colunas * (CARD_W + ESPACO) - ESPACO;
-  const yAlvos = MARGEM + ROTULO_H;
-  const yFontes = yAlvos + filaAltura(alvos.length) + VAO_LINHAS;
-  const altura = yFontes + filaAltura(fontes.length) + MARGEM;
-
-  const idx = {};
-  alvos.forEach((a, i) => (idx[a.id] = { fila: 'alvo', i }));
-  fontes.forEach((f, i) => (idx[f.id] = { fila: 'fonte', i }));
-
-  function caixa(id) {
-    const e = idx[id];
-    if (!e) return null;
-    const x = MARGEM + (e.i % colunasMax) * (CARD_W + ESPACO);
-    const yBase = e.fila === 'alvo' ? yAlvos : yFontes;
-    const y = yBase + Math.floor(e.i / colunasMax) * (CARD_H + VAO_FILEIRAS);
-    return { x, y };
-  }
-  function centro(id) {
-    const c = caixa(id);
-    return c ? { x: c.x + CARD_W / 2, y: c.y + CARD_H / 2 } : null;
-  }
-
-  function aoClicar(id) {
-    if (!origem) {
-      setOrigem(id);
-      return;
-    }
-    if (origem === id) {
-      setOrigem(null);
-      return;
-    }
-    adicionarLigacao(origem, id);
-    tocarSom('barbante');
-    setOrigem(null);
-  }
-
-  // Só desenhamos as ligações cujos DOIS extremos pertencem a esta mesa.
-  const linhas = ligacoes.filter((l) => idx[l.de] && idx[l.para]);
-  const conectando = !!origem; // uma carta "na mão" → os alvos acendem
-
-  const rotulo = (texto, y) =>
-    texto ? (
-      <span
-        className="absolute text-rotulo uppercase text-latao-claro/70"
-        style={{ left: MARGEM, top: y - ROTULO_H + 2 }}
-      >
-        {texto}
-      </span>
-    ) : null;
-
-  return (
-    // O invólucro mede a largura viva do painel; a mesa interna usa a largura
-    // calculada (nunca maior que a disponível, graças ao teto de colunas).
-    <div ref={refMedida} className="w-full">
-    <div
-      className="relative"
-      style={{ width: largura, height: altura }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) setOrigem(null);
-      }}
-    >
-      {rotulo(rotuloAlvos, yAlvos)}
-      {rotulo(rotuloFontes, yFontes)}
-
-      <svg className="absolute inset-0" width={largura} height={altura} style={{ pointerEvents: 'none' }}>
-        {linhas.map((l) => {
-          const a = centro(l.de);
-          const b = centro(l.para);
-          if (!a || !b) return null;
-          return <Barbante key={l.id} a={a} b={b} aoRemover={() => removerLigacao(l.id)} />;
-        })}
-      </svg>
-
-      {[...alvos.map((a) => ({ ...a, fila: 'alvo' })), ...fontes.map((f) => ({ ...f, fila: 'fonte' }))].map((n) => {
-        const c = caixa(n.id);
-        if (!c) return null;
-        const sel = origem === n.id;
-        // Âncoras seguem escuras (placas do mural); as cartas de prova são
-        // pergaminho pregado. O pergaminho define a própria sombra, então o
-        // estado selecionado/alvo usa OUTLINE (não é engolido pela cascata).
-        const classeAncora = sel
-          ? 'border-2 bg-stone-900 border-amber-400 ring-2 ring-amber-400 z-20 shadow-vela-viva'
-          : conectando
-          ? 'border-2 bg-stone-900 border-latao-claro/80 hover:border-amber-400 shadow-vela'
-          : 'border-2 bg-stone-900 border-latao/70 hover:border-latao-claro';
-        const classePergaminho = sel
-          ? 'carta-pergaminho outline outline-2 outline-amber-400 z-20 -translate-y-0.5'
-          : conectando
-          ? 'carta-pergaminho hover:outline hover:outline-2 hover:outline-vela'
-          : 'carta-pergaminho hover:-translate-y-0.5';
-        return (
-          // Invólucro posicionado: o atalho "§/ficha" é controle interativo
-          // e não pode viver DENTRO do <button> da carta (HTML inválido,
-          // leitura ruim em leitor de tela — diagnóstico 21/07, M12). O
-          // botão preenche o invólucro; o atalho é irmão, no mesmo lugar.
-          <div
-            key={n.id}
-            style={{ left: c.x, top: c.y, width: CARD_W, height: CARD_H }}
-            className={`absolute ${sel ? 'z-20' : ''}`}
-          >
-          <button
-            onClick={() => aoClicar(n.id)}
-            title={n.ehAncora ? n.rotulo : n.descricao}
-            className={`relative w-full h-full text-left rounded-sm px-3 pt-3 pb-2 overflow-hidden transition-all duration-150 ${
-              n.ehAncora ? classeAncora : classePergaminho
-            }`}
-          >
-            {/* A tacha que prega a carta/placa no mural */}
-            <span
-              className={`tacha-latao absolute top-1 left-1/2 -translate-x-1/2 w-2 h-2 ${sel ? 'brightness-125' : ''}`}
-              aria-hidden="true"
-            />
-            {n.ehAncora ? (
-              <p className="text-latao-claro text-[10px] tracking-[0.15em] uppercase leading-snug">{n.rotulo}</p>
-            ) : (
-              <>
-                <p className="font-serif text-tinta text-xs leading-snug">{n.textoDisplay}</p>
-                <CarimboColeta hora={n.horaRegistro} />
-              </>
-            )}
-          </button>
-            {/* Atalho de leitura: abre a ficha de coleta sem desfazer/criar
-                ligação. Em ponteiro fino, o "§" discreto (hover evidente);
-                em ponteiro grosso, botão explícito "ficha" com área de
-                toque ≥ 44px (o ::after invisível estende o alvo além do
-                rótulo). Acessível a leitor de tela nos dois modos (P0 §2
-                do playtest de 17/07 — antes era aria-hidden e igual aos
-                ornamentos "§" dos divisores). */}
-            {!n.ehAncora && (
-              <span
-                role="button"
-                tabIndex={0}
-                aria-label="Rever a ficha de coleta"
-                title="Rever a ficha de coleta"
-                onPointerDown={(e) => e.stopPropagation()}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  abrirFicha(n.id);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    abrirFicha(n.id);
-                  }
-                }}
-                className={
-                  ponteiroGrosso
-                    ? "absolute top-0.5 right-1 grid h-7 place-items-center rounded-sm px-2 bg-black/25 text-cera-clara text-[10px] uppercase tracking-widest leading-none cursor-pointer after:content-[''] after:absolute after:-inset-2.5"
-                    : 'absolute top-0.5 right-1 grid h-5 w-5 place-items-center rounded-sm text-cera hover:text-cera-clara hover:bg-black/20 text-xs leading-none cursor-pointer'
-                }
-              >
-                {ponteiroGrosso ? 'ficha' : '§'}
-              </span>
-            )}
-          </div>
-        );
-      })}
-    </div>
-    </div>
-  );
-}
-
-// =====================================================================
-// ESTAÇÃO IV — O MÓBIL: apontar a carta de móbil ligada ao réu.
-// =====================================================================
-function EstacaoMobil({ acusacao, motivos, definirMotivacao }) {
-  if (!acusacao.reuId) {
-    return (
-      <p className="text-stone-400 italic font-serif text-xs">
-        Nomeie o réu na etapa da Presença para apontar o móbil.
-      </p>
-    );
-  }
-  if (motivos.length === 0) {
-    return <p className="text-stone-400 italic font-serif text-xs">Nenhuma carta de móbil ligada a este réu.</p>;
-  }
-  return (
-    <div className="flex flex-col gap-1 max-w-md">
-      <p className="text-rotulo uppercase text-latao-claro/70 mb-1">Aponte o móbil:</p>
-      {motivos.map((c) => (
-        <Opcao
-          key={c.id}
-          ativa={acusacao.motivacaoId === c.id}
-          aoClicar={() => definirMotivacao(c.id)}
-          rotulo={c.termoCarimbo}
-          sub={c.horaRegistro != null ? `coleta: ${formatRelogio(c.horaRegistro)}` : null}
-        />
-      ))}
-    </div>
-  );
-}
-
-// =====================================================================
-// ESTAÇÃO V — OS JUÍZOS: Cúmplice / Inocente / Sem juízo por não-acusado.
-// Inocente abre "confronte o paradeiro declarado": ligar o vestígio do
-// suspeito ao álibi dele é a refuta_alibi que o motor lê (governanta →
-// revela o segredo). Cúmplice abre "o porquê" (aposta do jogador; estado
-// local, sem efeito no motor). Tudo opcional — só pesa na Vitória Absoluta.
-// =====================================================================
-function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada, alternarLigacao }) {
-  const [porque, setPorque] = useState({});
-  function alternarPorque(sid, cid) {
-    setPorque((p) => {
-      const atual = { ...(p[sid] || {}) };
-      if (atual[cid]) delete atual[cid];
-      else atual[cid] = true;
-      return { ...p, [sid]: atual };
-    });
-  }
-
-  if (naoAcusados.length === 0) {
-    return <p className="text-stone-400 italic font-serif text-xs">Nomeie o réu na etapa da Presença primeiro.</p>;
-  }
-
-  const alibiDe = (sid) =>
-    cartas.find((c) => c.tagsOcultas.subDominio === 'alibi' && c.tagsOcultas.declaranteId === sid);
-  const vestigiosDe = (sid) =>
-    cartas.filter((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === sid);
-  const incriminamDe = (sid) =>
-    cartas.filter(
-      (c) => c.tagsOcultas.ligadoA === sid || (c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === sid)
-    );
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {naoAcusados.map((sp) => {
-        const juizo = acusacao.juizos[sp.id];
-        const alibi = alibiDe(sp.id);
-        return (
-          <div key={sp.id} className="relative rounded-sm border border-latao/40 bg-stone-900/80 shadow-pousado px-3 py-2">
-            {/* A tacha que prende a ficha do suspeito */}
-            <span className="tacha-latao absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2" aria-hidden="true" />
-            <div className="flex items-center gap-2 mb-2">
-              <RetratoPersonagem personagemId={sp.id} tamanho={30} className="block rounded-sm border border-latao/40" />
-              <p className="font-serif text-rotulo uppercase text-latao-claro/80">{sp.nome}</p>
-            </div>
-            <div className="flex flex-col gap-1">
-              {[
-                ['culpado', 'Cúmplice'],
-                ['inocente', 'Inocente'],
-                ['sem_juizo', 'Sem juízo'],
-              ].map(([val, rot]) => (
-                <Opcao key={val} ativa={juizo === val} aoClicar={() => definirJuizo(sp.id, val)} rotulo={rot} />
-              ))}
-            </div>
-
-            {/* INOCENTE → confrontar o paradeiro declarado: o mesmo gesto serve
-                ao álibi que se sustenta e ao álibi que quebra (mentira-segredo) */}
-            {juizo === 'inocente' && (
-              <SubPainelJuizo>
-                <p className="text-stone-400 text-[11px] mb-1">
-                  Confronte o paradeiro declarado — ligue o vestígio que o desmente, se houver:
-                </p>
-                {alibi && (
-                  <p className="text-stone-400 text-xs italic font-serif mb-1">Álibi: {alibi.textoDisplay}</p>
-                )}
-                {vestigiosDe(sp.id).length === 0 ? (
-                  <p className="text-stone-400 italic font-serif text-xs">
-                    Nenhum vestígio na sua mesa confronta este paradeiro.
-                  </p>
-                ) : (
-                  <div className="flex flex-col gap-1">
-                    {vestigiosDe(sp.id).map((v) => (
-                      <CartaSelecionavel
-                        key={v.id}
-                        carta={v}
-                        ativa={!!alibi && estaLigada(v.id, alibi.id)}
-                        aoClicar={() => alibi && alternarLigacao(v.id, alibi.id)}
-                      />
-                    ))}
-                  </div>
-                )}
-              </SubPainelJuizo>
-            )}
-
-            {/* CÚMPLICE → o porquê (aposta do jogador; narrativa) */}
-            {juizo === 'culpado' && (
-              <SubPainelJuizo>
-                <p className="text-stone-400 text-[11px] mb-1">Por que acusa de cúmplice:</p>
-                {incriminamDe(sp.id).length === 0 ? (
-                  <p className="text-stone-400 italic font-serif text-xs">Nenhuma carta sustenta a aposta.</p>
-                ) : (
-                  <div className="flex flex-col gap-1">
-                    {incriminamDe(sp.id).map((c) => (
-                      <CartaSelecionavel
-                        key={c.id}
-                        carta={c}
-                        ativa={!!(porque[sp.id] && porque[sp.id][c.id])}
-                        aoClicar={() => alternarPorque(sp.id, c.id)}
-                      />
-                    ))}
-                  </div>
-                )}
-              </SubPainelJuizo>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-// O sub-painel que se abre sob a ficha do suspeito (Inocente/Cúmplice) nasce
-// abaixo da dobra nas fichas de baixo do grid (P1 do playtest): ao montar,
-// rola o mural até ficar visível e surge com o gesto padrão da mesa.
-function SubPainelJuizo({ children }) {
-  const ref = useRef(null);
-  useEffect(() => {
-    ref.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  }, []);
-  return (
-    <div ref={ref} className="mt-2 border-t border-latao/25 pt-2 mortem-surgir">
-      {children}
-    </div>
-  );
-}
-
-// Carta selecionável (toggle), usada nos Juízos (a evidência / o porquê).
-function CartaSelecionavel({ carta, ativa, aoClicar }) {
-  return (
-    <button
-      onClick={aoClicar}
-      title={carta.descricao}
-      className={`text-left rounded-sm px-2 py-1 border text-xs transition-all duration-gesto ${
-        ativa
-          ? 'border-latao-claro bg-amber-950/40 text-amber-100 ring-1 ring-latao-claro/60 shadow-vela'
-          : 'border-stone-700 bg-stone-900 text-stone-400 hover:text-amber-100 hover:border-latao/70'
-      }`}
-    >
-      {carta.textoDisplay}
-      <CarimboColeta hora={carta.horaRegistro} clara />
-    </button>
-  );
-}
-
-// ---------------------------------------------------------------------
-// Um barbante já amarrado. Pende com leve CATENÁRIA (a barriga do fio sob
-// o próprio peso) e "se desenha sozinho" ao surgir (avança da origem ao
-// alvo). Depois vira um fio comum. A curva grossa invisível por cima é a
-// área de clique para REMOVER o barbante.
-//
-// BOIL (Tarefa 4): o fio existe em três quadros com perturbações FIXAS
-// (nada de aleatório em render) — leves nas pontas, maiores na barriga,
-// onde um fio real balança mais — alternados pelo CSS `.boil-quadro`
-// (index.css) a ~13fps. A área de clique é uma só e não treme.
-// ---------------------------------------------------------------------
-const QUADROS_BOIL = [
-  { ax: 0, ay: 0, cx: 0, cy: 0, bx: 0, by: 0 },
-  { ax: 0.6, ay: -0.5, cx: -2.4, cy: 1.8, bx: -0.5, by: 0.4 },
-  { ax: -0.5, ay: 0.5, cx: 2.0, cy: -2.2, bx: 0.6, by: -0.4 },
-];
-
-function Barbante({ a, b, aoRemover }) {
-  const refs = useRef([]);
-
-  // Curva de Bézier quadrática: o ponto de controle no meio, empurrado para
-  // baixo — a barriga do barbante pendurado (mais funda em fios longos).
-  const dist = Math.hypot(b.x - a.x, b.y - a.y);
-  const barriga = Math.min(30, 10 + dist * 0.12);
-  const cx = (a.x + b.x) / 2;
-  const cy = (a.y + b.y) / 2 + barriga;
-  const d = (q, dx = 0, dy = 0) =>
-    `M ${a.x + q.ax} ${a.y + q.ay + dy} Q ${cx + q.cx + dx} ${cy + q.cy + dy} ${b.x + q.bx} ${b.y + q.by + dy}`;
-
-  // O desenhar-se aplica aos três quadros ao mesmo tempo: os comprimentos
-  // diferem por frações de pixel, e o boil segue vivo durante o gesto.
-  useEffect(() => {
-    const els = refs.current.filter(Boolean);
-    if (!els.length) return;
-    els.forEach((el) => {
-      const L = el.getTotalLength();
-      el.style.transition = 'none';
-      el.style.strokeDasharray = String(L);
-      el.style.strokeDashoffset = String(L);
-    });
-    void els[0].getBoundingClientRect();
-    els.forEach((el) => {
-      el.style.transition = 'stroke-dashoffset 350ms ease-out';
-      el.style.strokeDashoffset = '0';
-    });
-    const t = setTimeout(() => {
-      refs.current.filter(Boolean).forEach((el) => {
-        el.style.strokeDasharray = 'none';
-        el.style.transition = 'none';
-      });
-    }, 380);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [a.x, a.y, b.x, b.y]);
-
-  return (
-    <g>
-      {/* Acessível por teclado: o barbante é focável e remove-se com
-          Enter/Espaço — desfazer uma ligação não pode exigir mouse. */}
-      <path
-        d={d(QUADROS_BOIL[0])}
-        fill="none"
-        stroke="transparent"
-        strokeWidth={24}
-        style={{ pointerEvents: 'stroke', cursor: 'pointer' }}
-        role="button"
-        tabIndex={0}
-        aria-label="Desfazer esta ligação"
-        onClick={() => {
-          tocarSom('barbante');
-          aoRemover();
-        }}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            tocarSom('barbante');
-            aoRemover();
-          }
-        }}
-      />
-      {/* O fio tem corpo (Q7): sombra por baixo, torção clara por cima.
-          Barbante rubro de investigação — vermelho-telha clareado (#c9553f) para
-          legibilidade sob protanopia sem perder o tom de lacre na cortiça. */}
-      {QUADROS_BOIL.map((q, i) => (
-        <g key={i} className={`boil-quadro boil-quadro--${i}`}>
-          <path d={d(q, 0, 2)} fill="none" stroke="rgba(0,0,0,0.6)" strokeWidth={5} />
-          <path
-            ref={(el) => (refs.current[i] = el)}
-            d={d(q)}
-            fill="none"
-            stroke="#c9553f"
-            strokeWidth={3.5}
-            strokeLinecap="round"
-          />
-          <path d={d(q, 0, -0.7)} fill="none" stroke="rgba(240,180,150,0.5)" strokeWidth={1.2} strokeDasharray="5 7" />
-        </g>
-      ))}
-    </g>
-  );
-}
-
-// ---------------------------------------------------------------------
-// Seletor de janela: DOIS seletores (início e fim), cada um com dia+hora
-// combinados numa lista só (Q9 — menos burocracia que os quatro antigos).
-// O intervalo oferecido é o que faz sentido no caso: da meia-noite de
-// 13/out à chegada do perito (13h de 14/out) — a morte não pode ser
-// posterior ao corpo achado.
-// ---------------------------------------------------------------------
-const HORA_MIN_JANELA = -24; // 00h de 13/out
-const HORA_MAX_JANELA = 13; // 13h de 14/out (chegada à cena)
-
-function rotuloHoraAbs(abs) {
-  const { dia, hora } = deAbsoluto(abs);
-  return `dia ${dia} · ${String(hora).padStart(2, '0')}h`;
-}
-
-function SeletorJanela({ acusacao, definirJanela }) {
-  const opcoes = [];
-  for (let h = HORA_MIN_JANELA; h <= HORA_MAX_JANELA; h++) opcoes.push(h);
-  const classe = 'campo-vitoriano text-xs';
-  const inicio = acusacao.janela.inicio;
-  const linha = (rotulo, bound) => {
-    // QOL: a hora-fim nunca vem antes da início — as horas inválidas somem do
-    // seletor de Fim (rola direto para depois do início). Só camada de UI.
-    const opcoesLinha = bound === 'fim' && inicio != null ? opcoes.filter((h) => h >= inicio) : opcoes;
-    return (
-      <div className="flex items-center gap-1">
-        <span className="text-stone-400 text-[10px] w-10">{rotulo}</span>
-        {/* aria-label associa o rótulo visual (um span solto) ao select para
-            leitores de tela. A ORDEM dos dois selects é contrato do qa-ui —
-            não reordenar. */}
-        <select
-          className={classe}
-          aria-label={`${rotulo} da janela da morte`}
-          value={acusacao.janela[bound] != null ? String(acusacao.janela[bound]) : ''}
-          onChange={(e) => {
-            if (e.target.value === '') return;
-            const v = Number(e.target.value);
-            // Mover a início para frente do fim já escolhido invalida-o: refazê-lo.
-            if (bound === 'inicio' && acusacao.janela.fim != null && acusacao.janela.fim < v)
-              definirJanela({ inicio: v, fim: null });
-            else definirJanela({ [bound]: v });
-          }}
-        >
-          <option value="">— escolher —</option>
-          {opcoesLinha.map((h) => (
-            <option key={h} value={h}>
-              {rotuloHoraAbs(h)}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
-  };
-  return (
-    <div className="space-y-1">
-      {linha('Início', 'inicio')}
-      {linha('Fim', 'fim')}
-    </div>
-  );
-}
-
-// Ficha de opção clicável (causa, réu, juízo…). O estado escolhido tem de
-// gritar na cortiça: fio de latão, halo de vela e um pingo de lacre.
-function Opcao({ ativa, aoClicar, rotulo, sub = null }) {
-  return (
-    <button
-      onClick={aoClicar}
-      className={`flex items-center gap-1.5 px-2.5 py-1 rounded-sm border font-serif text-xs text-left transition-all duration-gesto ${
-        ativa
-          ? 'border-latao-claro bg-amber-950/40 text-amber-100 ring-1 ring-latao-claro/60 shadow-vela'
-          : 'border-stone-700 bg-stone-900/60 text-stone-300 hover:text-amber-100 hover:border-latao/70'
-      }`}
-    >
-      {ativa && <span className="selo-cera shrink-0 w-2 h-2" aria-hidden="true" />}
-      <span>
-        {rotulo}
-        {sub && <span className="block text-[9px] leading-tight opacity-70">{sub}</span>}
-      </span>
-    </button>
   );
 }

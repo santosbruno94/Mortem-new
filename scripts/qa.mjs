@@ -25,6 +25,9 @@ import { useJogo } from '../src/store/jogo.js';
 import { hashDecisao as hashDecisaoQa } from '../src/gerador/hash_gerador.js';
 import { medir as medirMonotonia, guardaMonotonia } from './lib/monotonia.mjs';
 import { perfisDoCasoGerado as perfisDoCasoGeradoLib, quatroDesfechos } from './lib/perfis.mjs';
+import { FAMILIA_DO_METODO } from './lib/familias.mjs';
+import { marcadoresDoTexto, marcadoresDosTextos, semMarcadores } from './lib/marcadores.mjs';
+import { nucleoDaFatia } from './lib/fatia.mjs';
 import { ANCORAS, analisarLigacoes, refutacaoDeHoraEstabelecida } from '../src/logic/acusacao.js';
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
@@ -532,6 +535,27 @@ for (const { rotulo, monologo } of monologos) {
 // (componentes, three.js — que usa Math.random em uuids internos) fica
 // fora da guarda: a proibição é da lógica de jogo.
 // ============================================================
+// Utilitários únicos da revisão 24/07 (antes reimplementados em vários
+// pontos deste arquivo): clone/round-trip JSON, ids duplicados numa lista
+// e contiguidade de trilha (passos ortogonais de 1 célula).
+function clonar(x) {
+  return JSON.parse(JSON.stringify(x));
+}
+function sobreviveRoundTrip(x) {
+  return JSON.stringify(clonar(x)) === JSON.stringify(x);
+}
+function idsDuplicados(ids) {
+  return [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+}
+function trilhaContigua(celulas) {
+  return (
+    Array.isArray(celulas) &&
+    celulas.every(
+      (c, k) => k === 0 || Math.abs(c.col - celulas[k - 1].col) + Math.abs(c.fila - celulas[k - 1].fila) === 1
+    )
+  );
+}
+
 function arquivosJs(dir) {
   return readdirSync(dir).flatMap((nome) => {
     const p = path.join(dir, nome);
@@ -704,8 +728,7 @@ function medirPng(buf) {
 }
 function verificarManifesto() {
   const problemas = [];
-  const ids = MANIFESTO_ASSETS.map((a) => a.id);
-  const dup = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+  const dup = idsDuplicados(MANIFESTO_ASSETS.map((a) => a.id));
   if (dup.length) problemas.push(`ids duplicados no manifesto: ${dup.join(', ')}`);
   for (const a of MANIFESTO_ASSETS) {
     const slot = SLOTS_ASSETS[a.slot];
@@ -838,7 +861,7 @@ const hotspotsValidos =
 // real (nada de marcador solto). Prova a restrição dura da Fase 2.
 // ============================================================
 const marcadoresDe = (paragrafos) =>
-  new Set(paragrafos.flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1])));
+  marcadoresDosTextos(paragrafos);
 const localidadesComPontos = LOCALIDADES.filter((l) => Array.isArray(l.pontos) && l.pontos.length);
 // Onda 6: cartas cobertas por um diálogo EMBUTIDO no lugar (origemLocalidade)
 // não são órfãs do ponto — nascem na fala (ex.: alibi_davey na conversa com
@@ -1091,14 +1114,13 @@ function verificarPacote(p) {
   }
   let serializavel = false;
   try {
-    serializavel = JSON.stringify(JSON.parse(JSON.stringify(p))) === JSON.stringify(p);
+    serializavel = sobreviveRoundTrip(p);
   } catch {
     serializavel = false;
   }
   if (!serializavel) problemas.push('não é serializável (round-trip JSON diverge)');
   const idsUnicos = (lista, rotulo) => {
-    const ids = (lista || []).map((x) => x.id);
-    const dup = [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))];
+    const dup = idsDuplicados((lista || []).map((x) => x.id));
     if (dup.length) problemas.push(`${rotulo}: ids duplicados (${dup.join(', ')})`);
   };
   idsUnicos(p.suspeitos, 'suspeitos');
@@ -1244,7 +1266,7 @@ function problemasDoElenco(elenco) {
       problemas.push(`${p.id}: pacoteEspacial deveria ser null no elenco cru (a cidade nasce primeiro; a INSERÇÃO da Fase 2 o preenche)`);
   }
   try {
-    if (JSON.stringify(JSON.parse(JSON.stringify(elenco))) !== JSON.stringify(elenco))
+    if (!sobreviveRoundTrip(elenco))
       problemas.push('não sobrevive a round-trip JSON');
   } catch {
     problemas.push('não é serializável');
@@ -1612,11 +1634,6 @@ function problemasDoCrime(caso) {
     );
     return c ? c.id : null;
   };
-  const contigua = (celulas) =>
-    celulas.every(
-      (cel, i) => i === 0 || Math.abs(cel.col - celulas[i - 1].col) + Math.abs(cel.fila - celulas[i - 1].fila) === 1
-    );
-
   // Vestígios: classe do catálogo, âncora espacial coerente, remoção legal.
   for (const v of crime.vestigios) {
     const def = CLASSES_VESTIGIO[v.classe];
@@ -1632,7 +1649,7 @@ function problemasDoCrime(caso) {
     }
     if (v.celulas) {
       if (!v.celulas.every(dentroDoGrid)) problemas.push(`${v.id}: trilha sai do grid`);
-      if (!contigua(v.celulas)) problemas.push(`${v.id}: trilha não contígua`);
+      if (!trilhaContigua(v.celulas)) problemas.push(`${v.id}: trilha não contígua`);
     }
     if (v.mobilia && !interior.mobilia.some((m) => m.id === v.mobilia))
       problemas.push(`${v.id}: mobília inexistente (${v.mobilia})`);
@@ -1711,35 +1728,35 @@ function problemasDaPonte(caso) {
   if (verdade.horasMorteAntesChegada !== ipm) problemas.push('IPM da verdade incoerente');
   if (verdade.cenaEncenada !== crime.cenaEncenada) problemas.push('encenação da verdade ≠ registro');
 
-  // Janela do motor: cartas temporais resolvidas pelo IPM real do exame.
-  const cartasTemporais = fatia.cartas
-    .map((def) => ({ id: def.id, horaRegistro: horaExame, tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas }))
-    .filter((c) => c.tagsOcultas.dominio === 'temporal');
-  const janelas = cartasTemporais.map(janelaDaCarta).filter(Boolean);
-  const janela = intersecaoJanelas(janelas);
-  if (!janela) problemas.push('cartas temporais da ponte se contradizem (interseção nula)');
-  else if (!(janela.inicio <= horaMorte && horaMorte <= janela.fim))
-    problemas.push(`janela do motor [${janela.inicio}, ${janela.fim}] não cobre a morte (${horaMorte})`);
+  // Os quatro pilares medem-se pelo NÚCLEO único (scripts/lib/fatia.mjs) —
+  // como no original, só as temporais passam pelo resolvedor de estado.
+  const resolvidas = fatia.cartas.map((def) => ({
+    id: def.id,
+    horaRegistro: horaExame,
+    tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas,
+  }));
+  const temporais = resolvidas.filter((c) => c.tagsOcultas.dominio === 'temporal');
+  const idsTemporais = new Set(temporais.map((c) => c.id));
+  const n = nucleoDaFatia([...temporais, ...fatia.cartas.filter((c) => !idsTemporais.has(c.id))], verdade);
+  if (!n.janela) problemas.push('cartas temporais da ponte se contradizem (interseção nula)');
+  else if (!n.janelaCobre)
+    problemas.push(`janela do motor [${n.janela.inicio}, ${n.janela.fim}] não cobre a morte (${horaMorte})`);
 
   // Causa: os sinais causais cravam o mecanismo no catálogo universal.
-  const sinais = fatia.cartas.filter((c) => c.tagsOcultas?.dominio === 'causal').map((c) => c.tagsOcultas.sinal);
-  if (!causasCompativeis(sinais).some((c) => c.id === verdade.mecanismoCorreto))
+  if (!causasCompativeis(n.sinais).some((c) => c.id === verdade.mecanismoCorreto))
     problemas.push('mecanismo correto incompatível com os sinais da ponte');
-  if (mecanismoCravado(sinais)?.id !== verdade.mecanismoCorreto)
+  if (!n.mecanismoCrava)
     problemas.push('sinais da ponte não cravam o mecanismo (assinatura ausente)');
 
   // Presença e móbil apontam o réu.
-  if (!fatia.cartas.some((c) => c.tagsOcultas?.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto))
-    problemas.push('nenhum vestígio de presença pertence ao réu');
-  const motivo = fatia.cartas.find((c) => c.tagsOcultas?.subDominio === 'motivo');
-  if (!motivo || motivo.tagsOcultas.motivo !== verdade.motivacaoCorreta || motivo.tagsOcultas.ligadoA !== verdade.reuCorreto)
-    problemas.push('móbil da ponte não aponta o réu');
+  if (!n.presencaOk) problemas.push('nenhum vestígio de presença pertence ao réu');
+  if (!n.motivoOk) problemas.push('móbil da ponte não aponta o réu');
 
   // Ids únicos e fatia serializável (contrato do pacote).
   const ids = fatia.cartas.map((c) => c.id);
   if (new Set(ids).size !== ids.length) problemas.push('ids de carta duplicados na fatia');
   try {
-    if (JSON.stringify(JSON.parse(JSON.stringify(fatia))) !== JSON.stringify(fatia))
+    if (!sobreviveRoundTrip(fatia))
       problemas.push('fatia não sobrevive a round-trip JSON');
   } catch {
     problemas.push('fatia não é serializável');
@@ -1795,16 +1812,18 @@ function fatiaResolveSemQa(fatia, idsRemovidos) {
   const removidos = new Set(idsRemovidos);
   const cartasFatia = fatia.cartas.filter((c) => !removidos.has(c.id));
   const ipm = horaExame - verdade.horaMorteAbsoluta;
-  const temporais = cartasFatia
-    .map((def) => ({ id: def.id, horaRegistro: horaExame, tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas }))
-    .filter((c) => c.tagsOcultas.dominio === 'temporal');
-  const janela = intersecaoJanelas(temporais.map(janelaDaCarta).filter(Boolean));
-  if (!janela || !(janela.inicio <= verdade.horaMorteAbsoluta && verdade.horaMorteAbsoluta <= janela.fim)) return false;
-  const sinais = cartasFatia.filter((c) => c.tagsOcultas?.dominio === 'causal').map((c) => c.tagsOcultas.sinal);
-  if (mecanismoCravado(sinais)?.id !== verdade.mecanismoCorreto) return false;
-  if (!cartasFatia.some((c) => c.tagsOcultas?.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto)) return false;
-  if (!cartasFatia.some((c) => c.tagsOcultas?.subDominio === 'motivo' && c.tagsOcultas.ligadoA === verdade.reuCorreto)) return false;
-  return true;
+  // Como no original: só as TEMPORAIS passam pelo resolvedor de estado (o
+  // IPM do exame); as demais entram cruas — semântica preservada na
+  // extração do núcleo (scripts/lib/fatia.mjs).
+  const resolvidas = cartasFatia.map((def) => ({
+    id: def.id,
+    horaRegistro: horaExame,
+    tagsOcultas: resolverEstadoCarta(def, ipm).tagsOcultas,
+  }));
+  const temporais = resolvidas.filter((c) => c.tagsOcultas.dominio === 'temporal');
+  const idsTemporais = new Set(temporais.map((c) => c.id));
+  const n = nucleoDaFatia([...temporais, ...cartasFatia.filter((c) => !idsTemporais.has(c.id))], verdade);
+  return n.janelaCobre && n.mecanismoCrava && n.presencaOk && n.motivoOk;
 }
 
 // (1) Catálogo fechado íntegro + prosa do prenúncio + chaves dos ecos.
@@ -1974,7 +1993,7 @@ const motorSemInterferencia = ARQUIVOS_MOTOR.every(
 
 // (4) Runtime mínimo sobre pacote sintético (clone do tutorial + eventos).
 function pacoteSinteticoInterferencia() {
-  const p = JSON.parse(JSON.stringify(montarPacoteTutorial()));
+  const p = clonar(montarPacoteTutorial());
   p.id = 'sintetico_interferencia';
   p.cartas.push({
     id: 'sint_intf_cinzas',
@@ -2175,7 +2194,7 @@ const replayInterferenciaOk = casosInterferencia.every(
 // (6) ARMADILHAS — o aceite da fase: o QA tem de CAIR nos casos
 // deliberadamente quebrados e PASSAR no caso válido. Cada armadilha é um
 // clone de caso real com UMA violação injetada.
-const clonarCaso = (caso) => JSON.parse(JSON.stringify(caso));
+const clonarCaso = clonar;
 const casoComDestruicao = casosSobProva.find((c) => c.interferencia.eventos.some((e) => e.efeito?.cartaDestruida));
 const casoComEvento = casosSobProva.find((c) => c.interferencia.eventos.length > 0);
 const casoComSilenciar = casosSobProva.find((c) => c.interferencia.eventos.some((e) => e.tipo === 'silenciar'));
@@ -2427,7 +2446,7 @@ function problemasDoPacoteGerado(pacote) {
     for (const no of Object.values(d.nos)) textos.push(...(no.fala || []));
   }
   for (const t of textos) {
-    for (const m of t.matchAll(/\[\[(\w+)\]\]/g)) marcados.add(m[1]);
+    for (const id of marcadoresDoTexto(t)) marcados.add(id);
     for (const falta of slotsNaoResolvidos(t, pacote)) problemas.push(`slot não resolve: ${falta}`);
   }
   for (const id of marcados) if (!ids.has(id)) problemas.push(`marcador órfão: ${id}`);
@@ -2613,7 +2632,7 @@ function problemasDosDialogosGerados(pacote) {
     // qualquer tom (solubilidade — spec §8.2).
     const primeirosBeats = (nos[d.noInicial]?.opcoes || []).map((op) => op.vaiPara);
     const marcadoresDoNo = (noId) =>
-      new Set((nos[noId]?.fala || []).flatMap((t) => [...t.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1])));
+      marcadoresDosTextos(nos[noId]?.fala || []);
     if (primeirosBeats.length === 4) {
       const comum = [...marcadoresDoNo(primeirosBeats[0])].filter(
         (mk) => primeirosBeats.every((b) => marcadoresDoNo(b).has(mk)) && idsCartas.has(mk)
@@ -2651,7 +2670,7 @@ function problemasDosDialogosGerados(pacote) {
       d.subtitulo,
     ].filter(Boolean);
     for (const t of textos) {
-      if (/\bgen_\w+/.test(t.replace(/\[\[\w+\]\]/g, ''))) {
+      if (/\bgen_\w+/.test(semMarcadores(t))) {
         problemas.push(`${id}: id interno vazando em fala/rótulo ("${t.slice(0, 40)}…")`);
       }
     }
@@ -2756,7 +2775,7 @@ if (!dialogosGeradosIntegros) {
 // (e) Armadilhas sintéticas: cada clone quebrado TEM de acusar.
 const selfTestVerboso = process.argv.includes('--self-test');
 const armadilhaDialogo = (nome, mutar, esperado) => {
-  const clone = JSON.parse(JSON.stringify(CASO_REPLICA));
+  const clone = clonar(CASO_REPLICA);
   mutar(clone);
   const caiu = problemasDosDialogosGerados(clone).some((p) => p.includes(esperado));
   if (selfTestVerboso) console.log(`self-test árvore de diálogo — ${nome}: ${caiu ? 'DETECTADA' : 'PASSOU SEM CAIR'}`);
@@ -3005,11 +3024,6 @@ const varEvidenciada = (reg, varId) => {
   const vivos = reg.vestigios.filter((v) => !v.removido);
   return vivos.some((v) => (CLASSES_VESTIGIO_CONF[v.classe]?.evidenciaDe || []).includes(varId));
 };
-const trilhaContigua = (celulas) =>
-  Array.isArray(celulas) &&
-  celulas.every(
-    (c, k) => k === 0 || Math.abs(c.col - celulas[k - 1].col) + Math.abs(c.fila - celulas[k - 1].fila) === 1
-  );
 const fugaFalhas = [];
 for (const c of casosConfronto) {
   const reg = c.crime;
@@ -3449,7 +3463,7 @@ const e3Falhas = []; // GE7/GE8 + satélite órfão (E3), colhidas no mesmo lote
 let ge2Total = 0;
 let ge2SemCarta = 0;
 const marcadoresDoPonto = (pt) => [
-  ...new Set(pt.prosa.flatMap((t) => [...t.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))),
+  ...marcadoresDosTextos(pt.prosa),
 ];
 for (const seedE1 of SEEDS_E1) {
   const brutoE1 = gerarCasoBruto(seedE1);
@@ -3472,7 +3486,7 @@ for (const seedE1 of SEEDS_E1) {
     for (const id of marcadoresDoPonto(pt)) contagem.set(id, (contagem.get(id) || 0) + 1);
   const emBloco = new Set(
     (cenaE1.blocosContingentes || []).flatMap((b) =>
-      b.paragrafos.flatMap((t) => [...t.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))
+      b.paragrafos.flatMap((t) => marcadoresDoTexto(t))
     )
   );
   for (const c of pacoteE1.cartas.filter((x) => x.localidade === 'cena')) {
@@ -3621,10 +3635,6 @@ if (!ge3MotorCegoOk) console.log('\nPALCO E1 — GE3: src/logic lê dado de palc
 //       salvaguarda de fallback — §3.6).
 // ============================================================
 const SEEDS_E2 = Array.from({ length: 500 }, (_, i) => `comarca_${i + 1}`);
-const FAMILIA_DO_METODO = {
-  laminada: 'lamina', garrote: 'asfixia', esganadura: 'asfixia', sufocacao: 'asfixia',
-  contundente: 'contuso', afogamento: 'afogamento', veneno_arsenico: 'veneno', laudano: 'veneno',
-};
 const ge4Falhas = [];
 const ge6Falhas = [];
 let e2Externos = 0;
