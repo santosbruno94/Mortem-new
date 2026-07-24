@@ -17,13 +17,14 @@
 // perecível degrada perdendo precisão (não valor), com o durável resolvendo.
 // =====================================================================
 
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { useJogo } from '../src/store/jogo.js';
 import { hashDecisao as hashDecisaoQa } from '../src/gerador/hash_gerador.js';
 import { medir as medirMonotonia, guardaMonotonia } from './lib/monotonia.mjs';
+import { perfisDoCasoGerado as perfisDoCasoGeradoLib, quatroDesfechos } from './lib/perfis.mjs';
 import { ANCORAS, analisarLigacoes, refutacaoDeHoraEstabelecida } from '../src/logic/acusacao.js';
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
@@ -534,17 +535,73 @@ for (const { rotulo, monologo } of monologos) {
 function arquivosJs(dir) {
   return readdirSync(dir).flatMap((nome) => {
     const p = path.join(dir, nome);
-    return statSync(p).isDirectory() ? arquivosJs(p) : /\.jsx?$/.test(nome) ? [p] : [];
+    // .mjs/.ts/.tsx também contam: um arquivo novo com outra extensão não
+    // pode nascer fora de TODAS as guardas de conteúdo.
+    return statSync(p).isDirectory() ? arquivosJs(p) : /\.(m?jsx?|tsx?)$/.test(nome) ? [p] : [];
   });
 }
 // Comentários podem CITAR a proibição; a guarda olha só o código vivo.
+// Tokenizador mínimo (não regex crua): um `//` DENTRO de string (o campo
+// `url: 'https://…'` do manifesto) não pode engolir o resto da linha e dar
+// falso-verde ao que vier depois.
 function semComentarios(codigo) {
-  return codigo.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\/\/.*$/gm, '');
+  let saida = '';
+  let i = 0;
+  let dentroDe = null; // ' " ` — a string corrente, ou null
+  while (i < codigo.length) {
+    const c = codigo[i];
+    const par = codigo.slice(i, i + 2);
+    if (dentroDe) {
+      if (c === '\\') {
+        saida += codigo.slice(i, i + 2);
+        i += 2;
+        continue;
+      }
+      if (c === dentroDe) dentroDe = null;
+      saida += c;
+      i += 1;
+      continue;
+    }
+    if (c === "'" || c === '"' || c === '`') {
+      dentroDe = c;
+      saida += c;
+      i += 1;
+      continue;
+    }
+    if (par === '//') {
+      while (i < codigo.length && codigo[i] !== '\n') i += 1;
+      continue;
+    }
+    if (par === '/*') {
+      i += 2;
+      while (i < codigo.length && codigo.slice(i, i + 2) !== '*/') i += 1;
+      i += 2;
+      continue;
+    }
+    saida += c;
+    i += 1;
+  }
+  return saida;
 }
 const raizSrc = fileURLToPath(new URL('../src', import.meta.url));
+// O padrão proibido cobre as formas de contornar o grep ingênuo: referência
+// sem chamada (Math.random passado como função), acesso por colchete
+// (Math["random"]), desestruturação (const { random } = Math), new Date()
+// sem argumento (hora corrente), performance.now e crypto aleatório.
+const PADRAO_NAO_DETERMINISTA = new RegExp(
+  [
+    '\\bMath\\.random\\b',
+    '\\bDate\\.now\\b',
+    '\\bMath\\s*\\[',
+    '\\{[^}]*\\brandom\\b[^}]*\\}\\s*=\\s*Math',
+    'new\\s+Date\\s*\\(\\s*\\)',
+    '\\bperformance\\.now\\b',
+    '\\bcrypto\\.(randomUUID|getRandomValues)\\b',
+  ].join('|')
+);
 const violacoesDeterminismo = ['logic', 'data', 'store', 'gerador'].flatMap((pasta) =>
   arquivosJs(path.join(raizSrc, pasta)).filter((arquivo) =>
-    /Math\.random\s*\(|Date\.now\s*\(/.test(semComentarios(readFileSync(arquivo, 'utf8')))
+    PADRAO_NAO_DETERMINISTA.test(semComentarios(readFileSync(arquivo, 'utf8')))
   )
 );
 if (violacoesDeterminismo.length) {
@@ -565,11 +622,31 @@ const aparenciasOk =
   ) &&
   shapeAparencia(derivarAparenciaDeSeed(SEED_TUTORIAL, 'personagem_gerado_qualquer')) &&
   JSON.stringify(derivarAparenciaDeSeed(SEED_TUTORIAL, 'x')) === JSON.stringify(derivarAparenciaDeSeed(SEED_TUTORIAL, 'x'));
-const motorSemAparencia = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+// O FECHO DO MOTOR: veredicto.js + acusacao.js + tudo o que eles importam,
+// transitivamente, dentro de src. As guardas de cegueira valem para o fecho
+// inteiro — um helper novo importado pelo veredicto que lesse a camada
+// proibida não escaparia por morar noutro arquivo.
+function fechoDeImports(iniciais) {
+  const vistos = new Set();
+  const fila = iniciais.map((f) => path.join(raizSrc, f));
+  while (fila.length) {
+    const arq = fila.pop();
+    if (vistos.has(arq) || !existsSync(arq)) continue;
+    vistos.add(arq);
+    const src = readFileSync(arq, 'utf8');
+    for (const m of src.matchAll(/from\s+['"](\.[^'"]+)['"]/g)) {
+      fila.push(path.resolve(path.dirname(arq), m[1]));
+    }
+  }
+  return [...vistos].map((abs) => path.relative(raizSrc, abs));
+}
+const ARQUIVOS_MOTOR = fechoDeImports(['logic/veredicto.js', 'logic/acusacao.js']);
+
+const motorSemAparencia = ARQUIVOS_MOTOR.every(
   (f) => !/aparencia/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
 // Onda 8: o modo purista é flag de UI — o motor jamais a lê.
-const motorSemPurista = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+const motorSemPurista = ARQUIVOS_MOTOR.every(
   (f) => !/modoPurista/.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
 
@@ -580,11 +657,11 @@ const motorSemPurista = ['logic/veredicto.js', 'logic/acusacao.js'].every(
 // do elenco mapeia a um papel conhecido, os 5 suspeitos + Wycliffe têm papel,
 // e todo hábito pressuposto por um papel existe no currículo.
 // ============================================================
-const motorSemPapeis = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+const motorSemPapeis = ARQUIVOS_MOTOR.every(
   (f) => !/pap[eé]is|papelDramatico/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
 // FASE 6: o eco do mestre é camada de apresentação — o motor jamais o lê.
-const motorSemEco = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+const motorSemEco = ARQUIVOS_MOTOR.every(
   (f) => !/ecoMestre|ecosDoMestre|eco_mestre/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
 const elenco = pacote.papeisDramaticos || {};
@@ -675,14 +752,26 @@ const problemasManifesto = verificarManifesto();
 // Nenhuma arte importada por fora do manifesto: sem `import … from '…svg'` nem
 // `new URL('…png', …)` em componentes/lógica. O resolvedor usa import.meta.glob
 // (não casa com estes padrões), então só um bypass real acende esta guarda.
-const arteImportadaDireto = ['components', 'logic'].flatMap((pasta) =>
-  arquivosJs(path.join(raizSrc, pasta)).filter((arquivo) => {
-    const src = semComentarios(readFileSync(arquivo, 'utf8'));
-    return (
-      /from\s*["'][^"']*\.(svg|png)["']/i.test(src) ||
-      /new\s+URL\(\s*["'][^"']*\.(svg|png)["']/i.test(src)
-    );
-  })
+// Cobre também: sufixos do Vite (?url/?raw), import() dinâmico, os demais
+// formatos de imagem e TODAS as pastas de runtime (data/store/logic/
+// components + os arquivos da raiz de src) — não só components/logic.
+const EXT_ARTE = '\\.(svg|png|jpe?g|webp|gif)(\\?[a-z]+)?';
+const PADRAO_ARTE_DIRETA = new RegExp(
+  [
+    `from\\s*["'][^"']*${EXT_ARTE}["']`,
+    `new\\s+URL\\(\\s*["'][^"']*${EXT_ARTE}["']`,
+    `import\\(\\s*["'][^"']*${EXT_ARTE}["']`,
+  ].join('|'),
+  'i'
+);
+const arquivosRuntimeArte = [
+  ...['components', 'logic', 'data', 'store'].flatMap((pasta) => arquivosJs(path.join(raizSrc, pasta))),
+  ...readdirSync(raizSrc)
+    .filter((n) => /\.(m?jsx?)$/.test(n))
+    .map((n) => path.join(raizSrc, n)),
+];
+const arteImportadaDireto = arquivosRuntimeArte.filter((arquivo) =>
+  PADRAO_ARTE_DIRETA.test(semComentarios(readFileSync(arquivo, 'utf8')))
 );
 const manifestoValido = problemasManifesto.length === 0 && arteImportadaDireto.length === 0;
 if (problemasManifesto.length) {
@@ -723,7 +812,7 @@ const camadasBemFormadas =
       return !/[{}]/.test(k) && !/undefined/.test(k) && !/\/_|_$|\/$|^\//.test(k);
     })
   );
-const motorSemCompositorRetrato = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+const motorSemCompositorRetrato = ARQUIVOS_MOTOR.every(
   (f) => !/comporRetrato|logic\/retrato|camadas_retrato/.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
 const retratoEmCamadasOk = camadasBemFormadas && motorSemCompositorRetrato;
@@ -1172,7 +1261,7 @@ if (!geradorElencosPlausiveis) {
 
 // (3) Cegueira do motor: veredicto/acusação não citam nada da camada de
 // atributos (regex calibrada: zero ocorrências no motor atual).
-const motorSemAtributos = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+const motorSemAtributos = ARQUIVOS_MOTOR.every(
   (f) =>
     !/arquet[ií]p|\btraits?\b|atributos|quantiza|comportamentos|\b(FOR|INT|WIS|CHA)\b/.test(
       semComentarios(readFileSync(path.join(raizSrc, f), 'utf8'))
@@ -1879,7 +1968,7 @@ const coberturaInterferencia =
   casosInterferencia.some((c) => c.interferencia.eventos.some((e) => e.atorPapel === 'cumplice'));
 
 // (5) Cegueira do motor: veredicto/acusação não citam interferência.
-const motorSemInterferencia = ['logic/veredicto.js', 'logic/acusacao.js'].every(
+const motorSemInterferencia = ARQUIVOS_MOTOR.every(
   (f) => !/interferenc/i.test(semComentarios(readFileSync(path.join(raizSrc, f), 'utf8')))
 );
 
@@ -2421,160 +2510,31 @@ if (!casosEmbarcadosIntegros) {
   for (const p of problemasEmbarcados.slice(0, 12)) console.log('  ·', p);
 }
 
-// (c) Os 4 perfis nos casos gerados (dirigindo o store, como no §18).
-function perfisDoCasoGerado(pacote) {
-  const verdade = pacote.verdadeDeOuro;
-  const idsCartas = new Set(pacote.cartas.map((c) => c.id));
-  const resultados = {};
-  const arrancar = () => {
-    s().carregarCaso(pacote);
-    s().escolherDetective();
-    s().iniciarInvestigacao();
-  };
-  const extrairTudoDoMetodico = () => {
-    s().viajarPara('corpo');
-    s().medirTemperatura();
-    ['gen_rigor', 'gen_livores', 'gen_lesao_fatal', 'gen_reacao_vital'].forEach(
-      (id) => idsCartas.has(id) && s().extrairCarta(id)
-    );
-    s().viajarPara('cena');
-    // v2: a peça de hora forjada e os rastros de visita dos periféricos
-    // com segredo também vivem na cena — o Metódico recolhe tudo.
-    ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas', 'gen_hora_forjada'].forEach((id) => {
-      const c = pacote.cartas.find((x) => x.id === id);
-      if (c && c.localidade === 'cena') s().extrairCarta(id);
-    });
-    pacote.cartas
-      .filter((c) => c.localidade === 'cena' && (c.tagsOcultas || {}).subDominio === 'rastro_de_visita')
-      .forEach((c) => s().extrairCarta(c.id));
-    s().viajarPara('vizinhanca'); // antes do móbil: extração do móbil é gatilho comum
-    if (idsCartas.has('gen_ruido_ouvido')) s().extrairCarta('gen_ruido_ouvido');
-    s().viajarPara('delegacia');
-    ['gen_visto_vivo', 'gen_motivo'].forEach((id) => idsCartas.has(id) && s().extrairCarta(id));
-    // v2: os álibis (cartas dos beats de diálogo) entram na mesa — o juízo
-    // periférico do Metódico é perícia, não convicção. OS da vila na mesa:
-    // o interrogatório corre à porta de cada suspeito — o Metódico viaja
-    // ao nó da carta (a casa; a delegacia só como fallback).
-    for (const susp of pacote.suspeitos) {
-      const alibi = pacote.cartas.find((c) => c.id === `gen_alibi_${susp.id}`);
-      if (!alibi) continue;
-      s().viajarPara(alibi.localidade || 'delegacia');
-      s().extrairCarta(alibi.id);
-    }
-    if (pacote.cartas.some((c) => c.localidade === 'oficio_do_reu')) {
-      s().viajarPara('oficio_do_reu');
-      s().extrairCarta('gen_instrumento');
-    }
-  };
-  const ligarTripe = (registradas) => {
-    for (const c of registradas.filter((x) => x.tagsOcultas.dominio === 'temporal')) ligar(c.id, ANCORAS.quando);
-    for (const c of registradas.filter((x) => x.tagsOcultas.dominio === 'causal')) ligar(c.id, ANCORAS.como);
-    const nexo = registradas.find(
-      (c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto
-    );
-    if (nexo) ligar(nexo.id, ANCORAS.presenca);
-  };
+// (c) Os 4 perfis nos casos gerados: a coreografia ÚNICA mora em
+// scripts/lib/perfis.mjs (compartilhada com gerar-casos.mjs). O gancho
+// aoVeredito prova o monólogo do Metódico com o veredicto ainda em pé.
+const perfisDeUmPacote = (pacote) =>
+  perfisDoCasoGeradoLib(pacote, {
+    aoVeredito: (perfil, resultados) => {
+      if (perfil === 'metodico') {
+        resultados.monologoGeradoOk = gerarMonologo(s().veredicto, s().detective).blocos.length > 0;
+      }
+    },
+  });
 
-  // METÓDICO → vitoria_absoluta.
-  arrancar();
-  extrairTudoDoMetodico();
-  const registradas = s().cartasRegistradas;
-  const janelaGerada = intersecaoJanelas(
-    registradas.filter((c) => c.tagsOcultas.dominio === 'temporal').map(janelaDaCarta).filter(Boolean)
-  );
-  const sinaisGerados = registradas
-    .filter((c) => c.tagsOcultas.dominio === 'causal')
-    .map((c) => c.tagsOcultas.sinal)
-    .filter(Boolean);
-  const causaGerada = mecanismoCravado(sinaisGerados);
-  s().definirReu(verdade.reuCorreto);
-  s().definirJanela({ inicio: janelaGerada.inicio, fim: janelaGerada.fim });
-  s().definirCausa(causaGerada ? causaGerada.id : null);
-  s().definirMotivacao('gen_motivo');
-  ligarTripe(registradas);
-  // v2 — os dois pilares reativados no gerado:
-  // (a) descuidos: fatos temporais do corpo refutam a peça encenada;
-  if (verdade.cenaEncenada) {
-    for (const c of registradas.filter((x) => x.tagsOcultas.dominio === 'temporal')) {
-      ligar(c.id, 'gen_hora_forjada');
-    }
-  }
-  // (b) juízos: todo periférico declarado inocente; o de segredo, com o
-  // álibi quebrado pelo próprio rastro (a mentira de vergonha exposta).
-  for (const [suspeitoId, p] of Object.entries(verdade.perifericos || {})) {
-    s().definirJuizo(suspeitoId, 'inocente');
-    if (p.veredictoEsperado === 'inocente_segredo') {
-      ligar(`gen_segredo_${suspeitoId}`, `gen_alibi_${suspeitoId}`);
-    }
-  }
-  s().submeterAcusacao();
-  resultados.metodico = s().veredicto.tipo;
-  resultados.monologoGeradoOk = gerarMonologo(s().veredicto, s().detective).blocos.length > 0;
-  s().fecharVeredicto();
-
-  // APRESSADO (réu errado) → erro_judiciario.
-  arrancar();
-  s().viajarPara('corpo');
-  ['gen_rigor', 'gen_livores'].forEach((id) => s().extrairCarta(id));
-  const outro = pacote.suspeitos.find((x) => x.id !== verdade.reuCorreto);
-  s().definirReu(outro.id);
-  s().definirJanela({ inicio: -24, fim: 10 });
-  for (const c of s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal')) {
-    ligar(c.id, ANCORAS.quando);
-  }
-  s().submeterAcusacao();
-  resultados.apressado = s().veredicto.tipo;
-  s().fecharVeredicto();
-
-  // INTUITIVO (réu certo, sem materialidade) → impunidade.
-  arrancar();
-  s().viajarPara('corpo');
-  ['gen_rigor', 'gen_livores'].forEach((id) => s().extrairCarta(id));
-  s().definirReu(verdade.reuCorreto);
-  s().definirJanela({ inicio: -24, fim: 10 });
-  for (const c of s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal')) {
-    ligar(c.id, ANCORAS.quando);
-  }
-  s().submeterAcusacao();
-  resultados.intuitivo = s().veredicto.tipo;
-  s().fecharVeredicto();
-
-  // PERICIAL DESATENTO (tripé ok, janela larga só pelo rigor, sem móbil)
-  // → sucesso_gafes.
-  arrancar();
-  extrairTudoDoMetodico();
-  const regs2 = s().cartasRegistradas;
-  const jRigor = janelaDaCarta(regs2.find((c) => c.id === 'gen_rigor'));
-  const sinais2 = regs2.filter((c) => c.tagsOcultas.dominio === 'causal').map((c) => c.tagsOcultas.sinal).filter(Boolean);
-  const causa2 = mecanismoCravado(sinais2);
-  s().definirReu(verdade.reuCorreto);
-  s().definirJanela({ inicio: Math.max(jRigor.inicio, -48), fim: jRigor.fim });
-  s().definirCausa(causa2 ? causa2.id : null);
-  ligar('gen_rigor', ANCORAS.quando);
-  for (const c of regs2.filter((x) => x.tagsOcultas.dominio === 'causal')) ligar(c.id, ANCORAS.como);
-  const nexo2 = regs2.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto);
-  if (nexo2) ligar(nexo2.id, ANCORAS.presenca);
-  s().submeterAcusacao();
-  resultados.desatento = s().veredicto.tipo;
-  s().fecharVeredicto();
-
-  return resultados;
-}
-
-const perfisReplica = perfisDoCasoGerado(CASO_REPLICA);
-const perfisPool = perfisDoCasoGerado(CASOS_POOL[0]);
-const perfisLuta = perfisDoCasoGerado(CASOS_LUTA[0]);
-const quatroDesfechos = (r) =>
-  r.metodico === 'vitoria_absoluta' &&
-  r.apressado === 'erro_judiciario' &&
-  r.intuitivo === 'impunidade' &&
-  r.desatento === 'sucesso_gafes' &&
-  r.monologoGeradoOk !== false;
-const casosGeradosJogaveis = quatroDesfechos(perfisReplica) && quatroDesfechos(perfisPool) && quatroDesfechos(perfisLuta);
+// TODOS os casos embarcados jogam os 4 perfis (não só o primeiro de cada
+// pool): a validação estática de gerar-casos.mjs não cobre extração e
+// localidade em runtime — um caso do meio do pool podia falhar
+// interativamente e embarcar sem guarda nenhuma acusar.
+const perfisReplica = perfisDeUmPacote(CASO_REPLICA);
+const perfisFalhos = [...CASOS_POOL, ...CASOS_LUTA]
+  .map((p) => ({ id: p.id, perfis: perfisDeUmPacote(p) }))
+  .filter((x) => !quatroDesfechos(x.perfis));
+const casosGeradosJogaveis = quatroDesfechos(perfisReplica) && perfisFalhos.length === 0;
 console.log('\n=== GERADOR (FASE 6) — perfis nos casos gerados ===');
 console.log('réplica:', JSON.stringify(perfisReplica));
-console.log('pool[0]:', JSON.stringify(perfisPool));
-console.log('luta[0]:', JSON.stringify(perfisLuta));
+console.log(`pool+luta: ${CASOS_POOL.length + CASOS_LUTA.length} casos, 4 perfis cada — ${perfisFalhos.length} falha(s)`);
+for (const f of perfisFalhos) console.log(`  · ${f.id}:`, JSON.stringify(f.perfis));
 
 // ============================================================
 // ÁRVORES DE DIÁLOGO GERADAS (OS árvore procedural — spec §8.7 em
@@ -3621,8 +3581,19 @@ if (!ge2AntiTelegrafoOk)
   console.log(`\nPALCO E1 — GE2 fora da banda 40–60%: ${(ge2Fracao * 100).toFixed(1)}% (${ge2SemCarta}/${ge2Total}).`);
 // OS da vila na mesa: `maquete` entra na regex — o campo visual da vila
 // gerada (posições/formas/cenário) é tão vedado ao motor quanto o palco.
+// Três formas de acesso: ponto (`x.pontos`), colchete (`x['pontos']`) e
+// desestruturação (`const { comodo } = carta`) — o grep só do ponto deixava
+// as outras duas escaparem.
+const CAMPOS_PALCO = 'pontos|comodo|celula|mobilia|saidas|palco|maquete';
+const PADRAO_LE_PALCO = new RegExp(
+  [
+    `\\.(${CAMPOS_PALCO})\\b`,
+    `\\[['"](${CAMPOS_PALCO})['"]\\]`,
+    `\\{[^}]*\\b(${CAMPOS_PALCO})\\b[^}]*\\}\\s*=`,
+  ].join('|')
+);
 const ge3Violacoes = arquivosJs(path.join(raizSrc, 'logic')).filter((arquivo) =>
-  /\.(pontos|comodo|celula|mobilia|saidas|palco|maquete)\b/.test(semComentarios(readFileSync(arquivo, 'utf8')))
+  PADRAO_LE_PALCO.test(semComentarios(readFileSync(arquivo, 'utf8')))
 );
 const ge3MotorCegoOk = ge3Violacoes.length === 0;
 if (!ge3MotorCegoOk) console.log('\nPALCO E1 — GE3: src/logic lê dado de palco em:', ge3Violacoes.join(', '));
@@ -3964,7 +3935,7 @@ const gb9CravarIntacto =
 const sinaisTentativa = ['sulco_interrompido', 'preensao_cervical_incompleta'];
 const gb10AntiAmbiguidade =
   sinaisTentativa.every((s) => mecanismoCravado([s]) === null && mecanismoCravado([s, 'reacao_vital']) === null) &&
-  ['logic/veredicto.js', 'logic/acusacao.js'].every(
+  ARQUIVOS_MOTOR.every(
     (f) => !/metodoIniciado/.test(readFileSync(path.join(raizSrc, f), 'utf8'))
   ) &&
   casosComTroca.length / varridosTroca < 0.05; // rara: assinatura, não rotina

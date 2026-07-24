@@ -38,9 +38,7 @@ import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas, temperaturaPorIpm } from '../src/logic/tempo_morte.js';
 import { mecanismoCravado } from '../src/data/catalogo_causas.js';
 import { resolverEstadoCarta } from '../src/data/cartas.js';
-import { useJogo } from '../src/store/jogo.js';
-import { ANCORAS } from '../src/logic/acusacao.js';
-import { gerarMonologo } from '../src/logic/monologo.js';
+import { perfisDoCasoGerado, quatroDesfechos } from './lib/perfis.mjs';
 
 // A seed e as variáveis dirigidas da réplica vivem no gerador
 // (src/gerador/pacote_gerado.js), para o qa.mjs regenerar e comparar sem
@@ -165,123 +163,13 @@ function marcadoresFecham(pacote) {
 }
 
 // ---------------------------------------------------------------------
-// Validação interativa: os 4 perfis dirigindo o store, como no qa.mjs.
+// Validação interativa: os 4 perfis dirigindo o store, como no qa.mjs —
+// a coreografia ÚNICA mora em scripts/lib/perfis.mjs (fonte única).
 // Garante que o caso é jogável de ponta a ponta (a validação estática
 // sozinha não cobre diferenças de localidade/extração no runtime).
 // ---------------------------------------------------------------------
 function perfilInterativoOk(pacote) {
-  const s = () => useJogo.getState();
-  const ligar = (de, para) => s().adicionarLigacao(de, para);
-  const verdade = pacote.verdadeDeOuro;
-  const idsCartas = new Set(pacote.cartas.map((c) => c.id));
-
-  const arrancar = () => {
-    s().carregarCaso(pacote);
-    s().escolherDetective();
-    s().iniciarInvestigacao();
-  };
-  const extrairTudo = () => {
-    s().viajarPara('corpo');
-    s().medirTemperatura();
-    ['gen_rigor', 'gen_livores', 'gen_lesao_fatal', 'gen_reacao_vital'].forEach(
-      (id) => idsCartas.has(id) && s().extrairCarta(id)
-    );
-    s().viajarPara('cena');
-    ['gen_instrumento', 'gen_pertence', 'gen_sangue_alheio', 'gen_pegadas', 'gen_hora_forjada'].forEach((id) => {
-      const c = pacote.cartas.find((x) => x.id === id);
-      if (c && c.localidade === 'cena') s().extrairCarta(id);
-    });
-    pacote.cartas
-      .filter((c) => c.localidade === 'cena' && (c.tagsOcultas || {}).subDominio === 'rastro_de_visita')
-      .forEach((c) => s().extrairCarta(c.id));
-    s().viajarPara('vizinhanca');
-    if (idsCartas.has('gen_ruido_ouvido')) s().extrairCarta('gen_ruido_ouvido');
-    s().viajarPara('delegacia');
-    ['gen_visto_vivo', 'gen_motivo'].forEach((id) => idsCartas.has(id) && s().extrairCarta(id));
-    // OS da vila na mesa: o álibi nasce no interrogatório À PORTA de cada
-    // suspeito — o Metódico bate de casa em casa (a carta diz o nó dela).
-    for (const susp of pacote.suspeitos) {
-      const alibi = pacote.cartas.find((c) => c.id === `gen_alibi_${susp.id}`);
-      if (!alibi) continue;
-      s().viajarPara(alibi.localidade || 'delegacia');
-      s().extrairCarta(alibi.id);
-    }
-    if (pacote.cartas.some((c) => c.localidade === 'oficio_do_reu')) {
-      s().viajarPara('oficio_do_reu');
-      s().extrairCarta('gen_instrumento');
-    }
-  };
-
-  // Metódico → vitoria_absoluta
-  arrancar();
-  extrairTudo();
-  const reg = s().cartasRegistradas;
-  const jan = intersecaoJanelas(
-    reg.filter((c) => c.tagsOcultas.dominio === 'temporal').map(janelaDaCarta).filter(Boolean)
-  );
-  const sinais = reg.filter((c) => c.tagsOcultas.dominio === 'causal').map((c) => c.tagsOcultas.sinal).filter(Boolean);
-  const causa = mecanismoCravado(sinais);
-  s().definirReu(verdade.reuCorreto);
-  s().definirJanela({ inicio: jan.inicio, fim: jan.fim });
-  s().definirCausa(causa ? causa.id : null);
-  s().definirMotivacao('gen_motivo');
-  for (const c of reg.filter((x) => x.tagsOcultas.dominio === 'temporal')) ligar(c.id, ANCORAS.quando);
-  for (const c of reg.filter((x) => x.tagsOcultas.dominio === 'causal')) ligar(c.id, ANCORAS.como);
-  const nexo = reg.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto);
-  if (nexo) ligar(nexo.id, ANCORAS.presenca);
-  if (verdade.cenaEncenada) {
-    for (const c of reg.filter((x) => x.tagsOcultas.dominio === 'temporal')) ligar(c.id, 'gen_hora_forjada');
-  }
-  for (const [sid, p] of Object.entries(verdade.perifericos || {})) {
-    s().definirJuizo(sid, 'inocente');
-    if (p.veredictoEsperado === 'inocente_segredo') ligar(`gen_segredo_${sid}`, `gen_alibi_${sid}`);
-  }
-  s().submeterAcusacao();
-  if (s().veredicto.tipo !== 'vitoria_absoluta') return false;
-  s().fecharVeredicto();
-
-  // Apressado → erro_judiciario
-  arrancar();
-  s().viajarPara('corpo');
-  ['gen_rigor', 'gen_livores'].forEach((id) => s().extrairCarta(id));
-  const outro = pacote.suspeitos.find((x) => x.id !== verdade.reuCorreto);
-  s().definirReu(outro.id);
-  s().definirJanela({ inicio: -24, fim: 10 });
-  for (const c of s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal')) ligar(c.id, ANCORAS.quando);
-  s().submeterAcusacao();
-  if (s().veredicto.tipo !== 'erro_judiciario') return false;
-  s().fecharVeredicto();
-
-  // Intuitivo → impunidade
-  arrancar();
-  s().viajarPara('corpo');
-  ['gen_rigor', 'gen_livores'].forEach((id) => s().extrairCarta(id));
-  s().definirReu(verdade.reuCorreto);
-  s().definirJanela({ inicio: -24, fim: 10 });
-  for (const c of s().cartasRegistradas.filter((c) => c.tagsOcultas.dominio === 'temporal')) ligar(c.id, ANCORAS.quando);
-  s().submeterAcusacao();
-  if (s().veredicto.tipo !== 'impunidade') return false;
-  s().fecharVeredicto();
-
-  // Desatento → sucesso_gafes
-  arrancar();
-  extrairTudo();
-  const regs2 = s().cartasRegistradas;
-  const jRigor = janelaDaCarta(regs2.find((c) => c.id === 'gen_rigor'));
-  const sinais2 = regs2.filter((c) => c.tagsOcultas.dominio === 'causal').map((c) => c.tagsOcultas.sinal).filter(Boolean);
-  const causa2 = mecanismoCravado(sinais2);
-  s().definirReu(verdade.reuCorreto);
-  s().definirJanela({ inicio: Math.max(jRigor.inicio, -48), fim: jRigor.fim });
-  s().definirCausa(causa2 ? causa2.id : null);
-  ligar('gen_rigor', ANCORAS.quando);
-  for (const c of regs2.filter((x) => x.tagsOcultas.dominio === 'causal')) ligar(c.id, ANCORAS.como);
-  const nexo2 = regs2.find((c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === verdade.reuCorreto);
-  if (nexo2) ligar(nexo2.id, ANCORAS.presenca);
-  s().submeterAcusacao();
-  if (s().veredicto.tipo !== 'sucesso_gafes') return false;
-  s().fecharVeredicto();
-
-  return true;
+  return quatroDesfechos(perfisDoCasoGerado(pacote));
 }
 
 // ---------------------------------------------------------------------
@@ -304,8 +192,8 @@ for (const seed of CANDIDATAS_POOL) {
   const pacote = montarPacoteGerado(seed);
   const m = metodicoResolve(pacote);
   const h = marcadoresFecham(pacote);
-  if (m.ok && h.ok) pool.push({ seed, pacote });
-  else recusadas.push({ seed, motivo: !m.ok ? 'metódico não fecha' : 'marcadores não fecham' });
+  if (m.ok && h.ok && perfilInterativoOk(pacote)) pool.push({ seed, pacote });
+  else recusadas.push({ seed, motivo: !m.ok ? 'metódico não fecha' : !h.ok ? 'marcadores não fecham' : 'perfil interativo falha' });
 }
 if (pool.length < N_POOL) {
   console.error(`POOL INSUFICIENTE: ${pool.length}/${N_POOL}.`, JSON.stringify(recusadas));

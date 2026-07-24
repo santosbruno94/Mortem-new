@@ -38,7 +38,7 @@ Um alvo: arquivo(s) de prosa, ou o diff da branch (`git diff main...HEAD -- src/
    se decidiu não acatar e por quê.
 
 6. **Fechamento.** Repetir o passo 4; o parecer final acompanha o commit
-   (resumo na mensagem ou em `RELATORIO_QA.md` quando for o fechamento de fase).
+   (resumo na mensagem ou em `docs/relatorio-qa-2026-07-13.md` quando for o fechamento de fase).
 
 ## Regra
 

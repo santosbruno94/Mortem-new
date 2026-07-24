@@ -69,13 +69,35 @@ const { chromium } = carregarPlaywright();
 
 // ---------------------------------------------------------------------
 // Sobe o servidor de desenvolvimento e espera responder.
+// Robustez (revisão 24/07): (a) a porta ocupada por OUTRO servidor é erro
+// claro — sem isto, o fetch respondia e o QA rodava contra um build
+// errado em silêncio; (b) o stderr do vite é capturado e impresso na
+// falha — com stdio:'ignore', um vite morto virava só "não respondeu em
+// 30s"; (c) o processo morto durante a espera aborta na hora.
 // ---------------------------------------------------------------------
 async function subirServidor() {
+  try {
+    await fetch(BASE);
+    throw new Error(
+      `A porta ${PORTA} já está ocupada por outro servidor — encerre-o antes de rodar o QA ` +
+        '(senão as checagens correriam contra um build que não é o deste diretório).'
+    );
+  } catch (e) {
+    if (!(e instanceof TypeError)) throw e; // TypeError = ninguém na porta (fetch falhou): ok
+  }
+  // detached: o npm cria um filho (vite) que sobreviveria ao kill do pai —
+  // o grupo de processos permite matar os dois no encerramento.
   const proc = spawn('npm', ['run', 'dev', '--', '--port', String(PORTA), '--strictPort'], {
-    stdio: 'ignore',
-    detached: false,
+    stdio: ['ignore', 'pipe', 'pipe'],
+    detached: true,
   });
+  let saidaServidor = '';
+  proc.stdout.on('data', (d) => (saidaServidor += d));
+  proc.stderr.on('data', (d) => (saidaServidor += d));
+  let morto = false;
+  proc.on('exit', () => (morto = true));
   for (let i = 0; i < 60; i++) {
+    if (morto) break;
     try {
       const r = await fetch(BASE);
       if (r.ok) return proc;
@@ -84,8 +106,24 @@ async function subirServidor() {
     }
     await new Promise((res) => setTimeout(res, 500));
   }
-  proc.kill();
-  throw new Error(`Servidor não respondeu em ${BASE}`);
+  matarServidor(proc);
+  throw new Error(
+    `Servidor não respondeu em ${BASE}.` + (saidaServidor ? `\n--- saída do vite ---\n${saidaServidor.slice(-2000)}` : '')
+  );
+}
+
+// Mata o GRUPO de processos (npm + vite): o kill simples matava só o npm e
+// o vite órfão seguia segurando a porta — a rodada seguinte falhava.
+function matarServidor(proc) {
+  try {
+    process.kill(-proc.pid);
+  } catch {
+    try {
+      proc.kill();
+    } catch {
+      // já morto
+    }
+  }
 }
 
 // ---------------------------------------------------------------------
@@ -112,9 +150,11 @@ async function novaPartida(page, perito, query = '') {
   // para cada rota nascer do convite limpo, nunca do gate de retomada.
   await page.evaluate(() => window.localStorage && window.localStorage.clear());
   await page.reload();
-  await espera(page, 800);
+  // Espera por CONDIÇÃO (o convite montado), não por tempo fixo: máquina
+  // lenta estourava a espera; máquina rápida a desperdiçava.
+  await page.waitForSelector(`text=${perito}`, { timeout: 15000 });
   await page.click(`text=${perito}`);
-  await espera(page, 600);
+  await page.waitForSelector('text=→', { timeout: 15000 });
   // Abertura: 6 avanços até o passo 7, depois entrar (sem as perguntas).
   for (let i = 0; i < 6; i++) {
     await page.locator('button, [role=button], a').filter({ hasText: '→' }).last().click();
@@ -246,33 +286,46 @@ async function textoOverlay(page) {
 
 // Acusação com lacunas exige a confirmação explícita "Selar assim mesmo"
 // antes do selo (P0 §5 do playtest de 17/07); a completa sela direto. O
-// helper atravessa o passo quando ele existe e anota em `viuLacunas` se
-// apareceu — as rotas checam quem deve (e quem não deve) vê-lo.
+// helper atravessa o passo quando ele existe e DEVOLVE { texto, viuLacunas }
+// — as rotas checam quem deve (e quem não deve) ver o passo. (Estado
+// pendurado na função era frágil e não-óbvio; revisão 24/07.)
 async function julgar(page) {
   await page.getByRole('button', { name: 'Levar a julgamento' }).click();
   await espera(page, 400);
   await page.getByRole('button', { name: 'Confirmar e julgar' }).click();
   await espera(page, 400);
   const selar = page.getByRole('button', { name: 'Selar assim mesmo' });
-  julgar.viuLacunas = (await selar.count()) > 0;
-  if (julgar.viuLacunas) await selar.click();
+  const viuLacunas = (await selar.count()) > 0;
+  if (viuLacunas) await selar.click();
   await espera(page, 900);
-  return textoOverlay(page);
+  return { texto: await textoOverlay(page), viuLacunas };
 }
 
 // ---------------------------------------------------------------------
 // As checagens acumulam em vez de abortar: o relatório sai inteiro.
 // ---------------------------------------------------------------------
 const resultados = [];
+// A rota e a última checagem correntes: na falha dura (exceção), o relatório
+// diz ONDE parou em vez de morrer mudo (revisão 24/07).
+let rotaAtual = '(antes das rotas)';
 function checar(rotulo, ok) {
   resultados.push([rotulo, !!ok]);
+  checar.ultima = rotulo;
   console.log(`${ok ? 'OK ' : 'FALHA'} — ${rotulo}`);
 }
 
 // =====================================================================
 async function main() {
   const servidor = await subirServidor();
-  const browser = await chromium.launch();
+  // O navegador sobe DEPOIS do servidor: se o launch falhar (Chromium
+  // ausente/incompatível), o servidor não pode ficar órfão na porta.
+  let browser;
+  try {
+    browser = await chromium.launch();
+  } catch (e) {
+    matarServidor(servidor);
+    throw e;
+  }
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   const page = await context.newPage();
   page.setDefaultTimeout(15000);
@@ -286,6 +339,7 @@ async function main() {
     // ROTA 1 — METÓDICO (Harlan): corpo cedo, tudo ligado.
     // Esperado: Vitória Absoluta.
     // ============================================================
+    rotaAtual = '\n=== ROTA 1 — Metódico (Harlan) → Vitória Absoluta ===';
     console.log('\n=== ROTA 1 — Metódico (Harlan) → Vitória Absoluta ===');
     await novaPartida(page, 'Harlan Blackwell');
 
@@ -513,8 +567,8 @@ async function main() {
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(3).click();
     await espera(page, 200);
 
-    let texto = await julgar(page);
-    checar('P0 §5: acusação completa sela sem passo extra', !julgar.viuLacunas);
+    let { texto, viuLacunas } = await julgar(page);
+    checar('P0 §5: acusação completa sela sem passo extra', !viuLacunas);
     checar('Rota 1: desfecho Vitória Absoluta', texto.includes('Vitória Absoluta'));
     checar('Rota 1: monólogo sem id interno vazado', !/buril_gravador|vidro_mostrador|carta_suplica|assinatura_registro|cesta_ceia/.test(texto));
     checar('Rota 1: monólogo sem NaN/Infinity', !/NaN|Infinity/.test(texto));
@@ -543,6 +597,7 @@ async function main() {
     // ROTA 2 — APRESSADO (Harlan): iscas primeiro, corpo tarde,
     // acusa a governanta. Esperado: Erro Judiciário.
     // ============================================================
+    rotaAtual = '\n=== ROTA 2 — Apressado (Harlan) → Erro Judiciário ===';
     console.log('\n=== ROTA 2 — Apressado (Harlan) → Erro Judiciário ===');
     await novaPartida(page, 'Harlan Blackwell');
 
@@ -578,8 +633,8 @@ async function main() {
     await page.locator('text=PRESENÇA — O RÉU NA CENA').click();
     await espera(page, 250);
     // "Mentiu, logo matou": sem mentiras confrontadas, sem móbil, sem juízos.
-    texto = await julgar(page);
-    checar('P0 §5: acusação com lacunas exige "Selar assim mesmo"', julgar.viuLacunas);
+    ({ texto, viuLacunas } = await julgar(page));
+    checar('P0 §5: acusação com lacunas exige "Selar assim mesmo"', viuLacunas);
     checar('Rota 2: desfecho Erro Judiciário', texto.includes('Erro Judiciário'));
     checar('Rota 2: sem id interno vazado', !texto.includes('carta_suplica'));
     // Q2: com a retentativa de pé, o culpado NÃO é nomeado no monólogo.
@@ -591,7 +646,7 @@ async function main() {
     // Q9: o mural reaberto não volta à Estação I — abre na primeira pendência.
     const muralReaberto = await page.locator('body').innerText();
     checar('Rota 2: mural reaberto na pendência (móbil), não na Estação I', muralReaberto.includes('IV · O Móbil') && !muralReaberto.includes('QUANDO — A JANELA'));
-    texto = await julgar(page);
+    ({ texto } = await julgar(page));
     // Onda 3: na SEGUNDA queda no mesmo ponto (periférico), a cortesia do
     // tutorial escala — a dica nomeia o suspeito e ensina o confronto.
     checar('Onda 3: dica reincidente mais específica na segunda queda', texto.includes('pede um gesto a mais'));
@@ -607,6 +662,7 @@ async function main() {
     // ROTA 3 — INTUITIVO (Harlan): nunca examina o corpo, acusa
     // Edgar por faro. Esperado: Impunidade.
     // ============================================================
+    rotaAtual = '\n=== ROTA 3 — Intuitivo (Harlan) → Impunidade ===';
     console.log('\n=== ROTA 3 — Intuitivo (Harlan) → Impunidade ===');
     await novaPartida(page, 'Harlan Blackwell');
 
@@ -643,13 +699,14 @@ async function main() {
     await espera(page, 150);
     await page.getByRole('button', { name: 'Sem juízo', exact: true }).nth(3).click();
     await espera(page, 150);
-    texto = await julgar(page);
+    ({ texto } = await julgar(page));
     checar('Rota 3: desfecho Impunidade', texto.includes('Impunidade'));
 
     // ============================================================
     // ROTA FLAT — a rota de escape 2D (?flat=1): sem WebGL/diorama,
     // a grade de localidades original precisa jogar igual.
     // ============================================================
+    rotaAtual = '\n=== ROTA FLAT — grade 2D (?flat=1) ===';
     console.log('\n=== ROTA FLAT — grade 2D (?flat=1) ===');
     await novaPartida(page, 'Harlan Blackwell', '?flat=1');
     checar('Rota flat: sem canvas 3D', (await page.locator('canvas').count()) === 0);
@@ -678,6 +735,7 @@ async function main() {
     // mede a temperatura e abre o mural. Fumaça: a mecânica inteira
     // precisa jogar num pacote que nenhuma mão escreveu.
     // ============================================================
+    rotaAtual = '\n=== ROTA GERADA — a réplica procedural (?caso=) ===';
     console.log('\n=== ROTA GERADA — a réplica procedural (?caso=) ===');
     await page.goto(BASE + `?caso=gerado_${SEED_REPLICA}`);
     // Esperar o seletor de modos MONTAR (em vez de um tempo fixo) — robusto
@@ -799,9 +857,28 @@ async function main() {
     // ============================================================
     checar('Zero erros de console em todas as rotas', errosConsole.length === 0);
     if (errosConsole.length) console.error('Erros de console:', errosConsole);
+  } catch (e) {
+    // Falha dura (exceção de seletor/timeout): diz ONDE parou e tira um
+    // retrato da tela — para um criador não-dev, "e.message" solto era o
+    // pior modo de falha. O padrão scripts/_*.png já está no .gitignore.
+    const retrato = 'scripts/_falha-qa-ui.png';
+    console.error(`\nFALHA DURA na ${rotaAtual}`);
+    console.error(`Última checagem concluída: ${checar.ultima || '(nenhuma)'}`);
+    try {
+      await page.screenshot({ path: retrato, fullPage: true });
+      console.error(`Retrato da tela no momento da falha: ${retrato}`);
+    } catch {
+      // página já fechada — segue sem retrato
+    }
+    throw e;
   } finally {
-    await browser.close();
-    servidor.kill();
+    // O servidor morre SEMPRE, mesmo se fechar o navegador falhar — senão
+    // um vite órfão segura a porta e a rodada seguinte já nasce falhando.
+    try {
+      await browser.close();
+    } finally {
+      matarServidor(servidor);
+    }
   }
 
   const falhas = resultados.filter(([, ok]) => !ok);
