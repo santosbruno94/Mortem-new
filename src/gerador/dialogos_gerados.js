@@ -147,30 +147,114 @@ function horaFalada(h) {
 }
 
 // ---------------------------------------------------------------------
-// As perguntas do perito (voz universal do jogador; iguais em todo caso).
+// As perguntas do perito (a voz do jogador). O tom de cada uma é fixo (o
+// mecanismo tom→nó não muda), mas a REDAÇÃO varia por caso e por suspeito
+// (variante decorrelada por hashDecisao, salgada com a seed e o id da
+// pessoa) — antes eram iguais em todo caso, a superfície de diálogo que
+// mais "cansava" quem jogava vários (OS diálogos/escala/localização; a
+// intenção de cada tom é preservada, só muda o fraseado). As interpolações
+// {detective.*}/{g:} resolvem por DETECTIVE — nunca pelo interrogado —, daí
+// as variantes não gênero o interrogado (só a vítima, resolvida aqui).
 // ---------------------------------------------------------------------
-function perguntasParadeiro(faixa) {
-  const obliqua = {
-    noite: '"Costuma recolher-se cedo?"',
-    madrugada: '"Tem o sono pesado?"',
-    dia: '"A que horas larga o serviço?"',
+function perguntasParadeiro(faixa, sal) {
+  const V = (pool, chave) => variante(pool, `${sal}|pergP|${chave}`);
+  const obliquaPool = {
+    noite: ['"Costuma recolher-se cedo?"', '"A que horas costuma apagar a luz?"', '"É dos que se deitam cedo?"'],
+    madrugada: ['"Tem o sono pesado?"', '"Acorda com facilidade, de noite?"', '"Dorme a noite toda, ou desperta?"'],
+    dia: ['"A que horas larga o serviço?"', '"Quando é que encerra o dia?"', '"A tarde acaba a que horas?"'],
   }[faixa];
   return [
-    { rotulo: `"Onde esteve ${FAIXA_TXT[faixa]}? Sem rodeios."`, vaiPara: 'b1_firme', tom: 'firme' },
-    { rotulo: `"A sua ${FAIXA_CURTA[faixa]}, como foi? Conte com calma."`, vaiPara: 'b1_cordial', tom: 'cordial' },
-    { rotulo: `"O seu paradeiro ${FAIXA_TXT[faixa]}: hora e lugar."`, vaiPara: 'b1_tecnico', tom: 'tecnico' },
-    { rotulo: obliqua, vaiPara: 'b1_obliquo', tom: 'obliquo' },
+    {
+      rotulo: V(
+        [
+          `"Onde esteve ${FAIXA_TXT[faixa]}? Sem rodeios."`,
+          `"Diga-me onde esteve ${FAIXA_TXT[faixa]}, e diga direito."`,
+          `"Comecemos pelo simples: onde esteve ${FAIXA_TXT[faixa]}?"`,
+        ],
+        'firme'
+      ),
+      vaiPara: 'b1_firme',
+      tom: 'firme',
+    },
+    {
+      rotulo: V(
+        [
+          `"A sua ${FAIXA_CURTA[faixa]}, como foi? Conte com calma."`,
+          `"Conte-me da sua ${FAIXA_CURTA[faixa]}, a seu tempo."`,
+          `"Fale-me da ${FAIXA_CURTA[faixa]} com liberdade, do começo ao fim."`,
+        ],
+        'cordial'
+      ),
+      vaiPara: 'b1_cordial',
+      tom: 'cordial',
+    },
+    {
+      rotulo: V(
+        [
+          `"O seu paradeiro ${FAIXA_TXT[faixa]}: hora e lugar."`,
+          `"Vamos aos fatos: onde esteve ${FAIXA_TXT[faixa]}, e a que horas."`,
+          `"Preciso das horas ${FAIXA_TXT[faixa]}: onde, e de quando a quando."`,
+        ],
+        'tecnico'
+      ),
+      vaiPara: 'b1_tecnico',
+      tom: 'tecnico',
+    },
+    { rotulo: V(obliquaPool, 'obliquo'), vaiPara: 'b1_obliquo', tom: 'obliquo' },
   ];
 }
 
-function perguntasArremate(vitima) {
+function perguntasArremate(vitima, sal) {
+  const V = (pool, chave) => variante(pool, `${sal}|pergA|${chave}`);
   const quem = vitima.genero === 'feminino' ? `Que mulher era ${vitima.nome}` : `Que homem era ${vitima.nome}`;
+  const quemBaixo = quem.charAt(0).toLowerCase() + quem.slice(1);
   const ela = vitima.genero === 'feminino' ? 'ela' : 'ele';
+  const dela = vitima.genero === 'feminino' ? 'dela' : 'dele';
   return [
-    { rotulo: `"Alguém nesta vila queria mal a ${vitima.nome}. Diga um nome."`, vaiPara: 'b2_firme', tom: 'firme' },
-    { rotulo: `"${quem}, para quem lidava com ${ela} todos os dias?"`, vaiPara: 'b2_cordial', tom: 'cordial' },
-    { rotulo: `"Que tratos tinha com ${vitima.nome}? Somas e datas, se as houver."`, vaiPara: 'b2_tecnico', tom: 'tecnico' },
-    { rotulo: '"O que anda dizendo a vila?"', vaiPara: 'b2_obliquo', tom: 'obliquo' },
+    {
+      rotulo: V(
+        [
+          `"Alguém nesta vila queria mal a ${vitima.nome}. Diga um nome."`,
+          `"Um nome: quem, nesta vila, queria mal a ${vitima.nome}?"`,
+          `"Não me poupe: quem tinha contas a acertar com ${vitima.nome}?"`,
+        ],
+        'firme'
+      ),
+      vaiPara: 'b2_firme',
+      tom: 'firme',
+    },
+    {
+      rotulo: V(
+        [
+          `"${quem}, para quem lidava com ${ela} todos os dias?"`,
+          `"${quem}, aos olhos de quem convivia com ${ela}?"`,
+          `"Fale-me ${dela} a seu tempo: ${quemBaixo}?"`,
+        ],
+        'cordial'
+      ),
+      vaiPara: 'b2_cordial',
+      tom: 'cordial',
+    },
+    {
+      rotulo: V(
+        [
+          `"Que tratos tinha com ${vitima.nome}? Somas e datas, se as houver."`,
+          `"Que negócios tinha com ${vitima.nome}? Diga somas e datas."`,
+          `"Contas, dívidas, ajustes com ${vitima.nome}: o que houver, com data."`,
+        ],
+        'tecnico'
+      ),
+      vaiPara: 'b2_tecnico',
+      tom: 'tecnico',
+    },
+    {
+      rotulo: V(
+        ['"O que anda dizendo a vila?"', '"E a vila, o que murmura?"', '"Que se comenta por aí, de porta em porta?"'],
+        'obliquo'
+      ),
+      vaiPara: 'b2_obliquo',
+      tom: 'obliquo',
+    },
   ];
 }
 
@@ -1159,7 +1243,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
     }
 
     const nos = {
-      abertura: { fala: falaAbertura(ctx), opcoes: perguntasParadeiro(escolha.faixa) },
+      abertura: { fala: falaAbertura(ctx), opcoes: perguntasParadeiro(escolha.faixa, sal) },
       evasiva: {
         fala: [
           (EVASIVA_POR_CLASSE[pessoa.classeSocial] || EVASIVA_POR_CLASSE.lavrador) +
@@ -1170,7 +1254,7 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       ...nosReacao,
     };
     for (const tom of TONS) {
-      nos[`b1_${tom}`] = { fala: falaB1(ctx, tom), opcoes: perguntasArremate(vitima) };
+      nos[`b1_${tom}`] = { fala: falaB1(ctx, tom), opcoes: perguntasArremate(vitima, sal) };
       nos[`b2_${tom}`] = { fala: falaB2(ctx, tom), opcoes: [] };
     }
 
