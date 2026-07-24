@@ -5,7 +5,9 @@
 > em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md); o que ainda falta, em
 > [`docs/pendencias-status.md`](./docs/pendencias-status.md). A prosa é regida por
 > [`docs/guia-de-estilo.md`](./docs/guia-de-estilo.md) e
-> [`docs/biblia-de-vozes.md`](./docs/biblia-de-vozes.md); a verdade forense, por
+> [`docs/biblia-de-vozes.md`](./docs/biblia-de-vozes.md); o sistema visual (tokens de
+> cor, cardápio tipográfico, matéria e legenda dos carimbos), por
+> [`docs/sistema-visual.md`](./docs/sistema-visual.md); a verdade forense, por
 > [`docs/kb-medicina-legal/`](./docs/kb-medicina-legal/), e o restante do mundo, da psique
 > e do craft do mistério pelas demais bases (`docs/kb-mundo-vitoriano/`,
 > `docs/kb-psique-e-crime/`, `docs/kb-craft-narrativo/`, `docs/kb-producao/`). O design do
@@ -108,23 +110,48 @@ ao réu depois do registro da estalagem; reação observável, nunca confissão)
 overlay do caso-escola exibe o contador "N de M observações registradas aqui"
 (regalia pedagógica — o procedural pode omitir).
 
-**Estética visual:** mesa de madeira escura à luz de vela — e a matéria disso está na
-tela: veios de madeira e grão procedurais (gradientes + ruído SVG, sem assets externos),
-halo de vela que respira, papel com fibra e sombra nas cartas, barbante com corpo
-(sombra + torção). Desde o overhaul "vitoriano premium" (jul/2026), a interface é feita
-de **materiais**, definidos uma única vez em `src/index.css` e `tailwind.config.js`:
-pergaminho claro escrito a tinta (`.carta-pergaminho` — provas, fichas, etiquetas),
-couro escuro dos painéis (`.painel-couro` — moldura de todos os overlays), placa de
-latão (`.placa-latao` — só as ações solenes: construir a acusação, levar a julgamento),
-botão de mesa (`.botao-mesa` — todo botão comum), selo de cera (`.selo-cera` — marcador
-de novidade), campo vitoriano (`.campo-vitoriano` — selects sem a cara do navegador),
-mural de cortiça (`.mural-cortica`) e divisor ornado (`.divisor-ornado`). Tokens de
-cor: `madeira`, `vela`, `papel`, `tinta`, `latao`, `cera` (+ `equimose`/`sangue`
-forenses); os literais `stone/amber` sobrevivem como neutros de apoio, e **nenhum
-texto informativo desce de `stone-400`** (contraste é regra — atmosfera não desculpa
-ilegibilidade). Tipografia serifada de época embarcada (**IM Fell English**, licença
-OFL, `src/assets/fontes/`) para títulos e nomes; sem ícones modernos; ornamentos
-tipográficos discretos (§, ―, ❦).
+**Estética visual (`docs/sistema-visual.md` — registro completo das escolhas):** mesa de
+madeira escura à luz de vela, e a matéria disso está na tela — veios e grão procedurais
+(gradientes + ruído SVG de `seed` fixo, sem assets externos), halo de vela que respira,
+papel com fibra e sombra, barbante com corpo (sombra + torção). A pergunta que decide
+qualquer elemento novo é sempre a mesma: em 1893, que objeto físico faria este trabalho?
+A cena é escura; o documento, claro.
+
+*Tipografia — cinco vozes OFL embarcadas em woff2* (`src/assets/fontes/`, zero rede):
+`prosa` **Libre Caslon Text** (TODA leitura longa ≥15px — a face de texto do jogo e do
+`body`), `serif` **IM Fell English** (a voz do documento antigo: mestre, cartas,
+anotações, legendas do atlas), `titulo` **Bevan** (egípcia de manchete: títulos de
+painel), `rotulo` **Oswald** (condensada de balcão: carimbos, tarjas, horas, custos) e
+`cartaz` **Rye** (wood type — a única licença de display, confinada à tela de título e
+aos carimbos de desfecho). Hierarquia por corpo, caixa e espaço, não por peso.
+
+*Materiais*, definidos uma única vez em `src/index.css` (depois de `@tailwind
+utilities`) e `tailwind.config.js`: pergaminho escrito a tinta (`.carta-pergaminho`, com
+as variantes `--acesa` do convite na mão e `--clara` do impresso recente), couro dos
+painéis (`.painel-couro` — moldura de todos os overlays), placa de latão
+(`.placa-latao` — só as ações solenes), botão de mesa (`.botao-mesa`), lacre prensado
+(`.selo-lacre`) e selo de cera (`.selo-cera`), campo vitoriano (`.campo-vitoriano`),
+mural de cortiça (`.mural-cortica`), coluna de jornal (`.coluna-jornal`), pauta do rol
+(`.pauta-rol`), etiqueta de espécime com ilhó e barbante (`.etiqueta-especime`), carte
+de visite (`.carte-visite`), formulário de telégrafo (`.telegrama-form`) e divisor
+ornado (`.divisor-ornado`, com variante `--tinta` para papel claro).
+
+*Cor:* `breu`, `madeira`, `couro`, `vela`, `papel`, `tinta`, `latao`, `cera` e
+`garrafa` — este o único acento novo do pivô de imprensa — mais `equimose`/`sangue`
+forenses; a mesma paleta serve 2D e 3D. Três tintas carimbam e cada uma promete sempre a
+mesma coisa: **garrafa = conferido e registrado · cera = confronto e novidade · latão =
+a hora e o custo** (daí a proibição de carimbar de cera um estado gasto). Os literais
+`stone/amber` sobrevivem como neutros de apoio; **nenhum texto informativo desce de
+`stone-400`**, e `tinta.apagada` (#6b5c43, 4,81:1 sobre pergaminho) é piso de contraste
+— atmosfera não desculpa ilegibilidade. **Cor nunca informa sozinha**: toda distinção
+tem forma, textura ou palavra redundante (o barbante torcido contra o pontilhado, a
+etiqueta de papel ao lado do fio). Sem ícones modernos; ornamentos tipográficos
+discretos (§, ―, ❦).
+
+*Notação da hora — o suporte decide:* documento vai por extenso (`formatRelogio` — "14
+de outubro, 13h10": ficha, mural, relógio de bolso, monólogo); lista compacta vai curta
+(`formatHoraComDia` — "13h10 de 14/out": as duas listas da Caderneta). **Dia da semana
+não se imprime**: `tempo.js` não o formata e o `calendario` do pacote não o carrega.
 
 **Camada 3D (apresentação pura):** a profundidade 3D da mesa concentra-se hoje num único
 ponto — o **diorama da vila** (maquete de papel pousada no alto da escrivaninha: prédios
@@ -657,15 +684,37 @@ Vitória Absoluta); ligar só o errado falha o nexo. Um segundo vestígio do pr�
 **Estado:** `acusacao` = `{ reuId, janela:{inicio,fim}, causaId, motivacaoId,
 juizos, ligacoes }`.
 
+**A folha do inquérito e a espécie do barbante (apresentação pura).** Na coluna
+esquerda do mural — fixa em tela larga, ao pé no celular — pende um pergaminho pregado
+com duas tachas (`mural/FormularioInquerito.jsx`) que mostra em quatro claros numerados
+o que a acusação **afirma** (réu, janela, causa, móbil) e o que ainda está por afirmar,
+fechando com o lacre prensado. Lê só o objeto `acusacao` que o mural já tem em mão e não
+escreve nada. Cada barbante diz o que afirma por **textura e etiqueta de papel, nunca
+por cor sozinha** — presença é fio torcido, desmente é pontilhado; as etiquetas vivem
+numa camada de SVG acima das cartas (o fio pode passar por trás de uma carta pregada, a
+etiqueta não pode sumir com ele), e a `LegendaBarbantes` mostra só as espécies que o
+jogador de fato amarra, dizendo que *quando* e *como* o corpo declara sem fio.
+
 ---
 
 ## 9. Painel de Álibis
 
-Overlay de consulta intitulado **"Declarações de Paradeiro"**. Lista as cartas de
-depoimento de álibi já coletadas (`dominio: 'comportamental'`, `subDominio: 'alibi'`)
-de forma **estritamente neutra**: quem declarou, o que declarou, faixa horária
-declarada. **Sem marcadores de status**, sem cruzamento automático. O cruzamento ativo
-— desmentir uma alegação ligando-a aos fatos do corpo — é ATO do jogador no mural.
+Overlay de consulta intitulado **"Declarações de Paradeiro"**. A forma é a de um **rol
+de declarações tomadas a escrito** (pauta traçada à régua, três colunas: Nome ·
+Paradeiro declarado · Horas declaradas): **uma linha por suspeito**, na ordem do
+inquérito, alimentada pelas cartas de álibi já coletadas (`dominio: 'comportamental'`,
+`subDominio: 'alibi'`). Quem ainda não declarou ocupa a **linha em branco** — a pauta
+mostra o que falta colher tanto quanto o que já se colheu. O elenco vem de
+`obterSuspeitos()`, que a mesa já expõe por inteiro: listar os nomes não revela nada.
+Um mesmo declarante que retifique o paradeiro empilha as declarações na própria linha,
+na ordem em que foram colhidas. No celular a pauta empilha (cabeçalho some; nome,
+paradeiro e horas em três alturas).
+
+Segue **estritamente neutro**: **sem marcadores de status**, sem cruzamento automático,
+sem rótulo de origem da corroboração (leria a tag oculta `corroborado`). É o único
+painel do jogo sem voz própria — só colunas, nenhuma frase que conclua por quem lê. O
+cruzamento ativo — desmentir uma alegação ligando-a aos fatos do corpo — é ATO do
+jogador no mural.
 
 ## 9.1 Glossário Forense
 
@@ -674,6 +723,13 @@ termos → definição). Cada verbete: termo, definição tecnicamente precisa, 
 sinal observável. É o material que permite ao jogador interpretar os dados brutos sem
 que o jogo interprete por ele. Abre filtrado por contexto quando pertinente. Conteúdo
 validado contra `docs/kb-medicina-legal/`.
+
+A forma é a de uma **folha de compêndio impresso** (papel de tiragem recente,
+`.carta-pergaminho--clara`, sem a mancha de guarda das cartas que correram a cena):
+entrada em egípcia de manchete, linha de classe à maneira de léxico, corpo justificado,
+divisor § e o "Sinal observável" abaixo; o índice em letra de balcão, com a entrada
+aberta emoldurada a latão. Sem colofão de autoridade — o acervo mistura fontes e
+nenhum par de nomes o cobre.
 
 ---
 
@@ -787,9 +843,24 @@ moral** de expor um inocente (não troféu); as **explicações pagas** — aleg
 `explicacao` vira o parágrafo de `ROTULOS_EXPLICACAO` que conta o fato verdadeiro por
 trás da leitura falsa, ex.: a luz do padeiro era o lampião esquecido; a conta do
 perito, que flexiona pela **hora do selo**) — seguido de **O retrato da investigação**:
-horas usadas, lugares visitados (nomeando o que ficou por visitar entre os nós
-desbloqueados — nunca os não revelados), observações registradas, acusações levadas a
-julgamento. Só então "Fechar o caderno" encerra de fato.
+horas usadas (contadas a partir de `parametrosCena.horasChegada`, não de um 13h fixo),
+lugares visitados (nomeando o que ficou por visitar entre os nós desbloqueados — nunca
+os não revelados), observações registradas, acusações levadas a julgamento. Só então
+"Fechar o caderno" encerra de fato.
+
+**A forma é impressa: O MENSAGEIRO DO CONDADO** — cabeça de página com nº de edição,
+periodicidade ("Publicado aos sábados, dia de feira") e preço; manchete nominal em caixa
+alta com decks empilhados sob filete; crédito de correspondente; a matéria em duas
+colunas justificadas com capitular. Ao lado, **"A lápis, na margem"**: o que o perito
+sabe e a folha não podia imprimir. A divisão não é estética — o que é insinuação sobre
+quem o inquérito não acusou, juízo moral sobre quem mentiu ou fala em primeira pessoa
+do perito vai à margem; a coluna fica com o fato dos autos. A cabeça do **Erro
+Judiciário é idêntica à da Vitória Absoluta**, palavra por palavra: a imprensa não tinha
+como distinguir as duas, e é esse o ponto. O retrato da investigação fica **fora** da
+folha, na placa de latão (o jornal não teria como saber as horas e os lugares do
+perito). `epilogo.js` emite `colunas` e `margem` sem perder `blocos`, a ordem de sempre
+que o `qa.mjs` lê. **Nenhum particípio flexiona pelo réu** — o pacote não guarda gênero
+(§ Divergências em `docs/sistema-visual.md`).
 
 ---
 
@@ -1038,11 +1109,13 @@ segue o antigo até o autor decidir regenerar.
 
 **Estrutura de pastas:**
 ```
-docs/           guia-de-estilo · biblia-de-vozes · kb-medicina-legal/ · historico-decisoes
+docs/           guia-de-estilo · biblia-de-vozes · sistema-visual · kb-medicina-legal/ ·
+                nota-gabinete-ilustrado · historico-decisoes
 .claude/        agents/ (escritor-prosa, editor-critico, perito-forense, fiscal-continuidade)
                 skills/ (anti-padrao-ia, redigir-prosa, revisar-prosa)
 src/
-  assets/       fontes/ (IM Fell English, OFL) · sons/ (5 WAV sintetizados offline)
+  assets/       fontes/ (5 faces OFL em woff2: IM Fell English, Libre Caslon Text,
+                Bevan, Oswald, Rye) · sons/ (5 WAV sintetizados offline)
   data/         seed.js · catalogo_causas.js · cartas.js · localidades.js · mapa.js ·
                 curriculo.js · glossario.js · rotulos.js · abertura.js ·
                 aparencias.js (genótipo curado) · mapa_espacial.js (diorama) ·

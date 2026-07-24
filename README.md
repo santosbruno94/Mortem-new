@@ -47,6 +47,7 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md) | Design do jogo (estado atual) |
 | [`docs/game-design-simulacao.md`](./docs/game-design-simulacao.md) | Design do gerador por simulação (autobattler de build time) e da interferência |
 | [`docs/nota-gabinete-ilustrado.md`](./docs/nota-gabinete-ilustrado.md) | Pivô de apresentação (visual novel de gravura): a Prancha do corpo e a Cena de diálogo |
+| [`docs/sistema-visual.md`](./docs/sistema-visual.md) | Sistema visual da interface: paleta token a token, cardápio tipográfico, catálogo da matéria, legenda das tintas de carimbo e as divergências deliberadas do desenho |
 | [`docs/pendencias-status.md`](./docs/pendencias-status.md) | Mapa vivo do que ainda falta (o que foi feito, o que fica para sessão própria) |
 | [`docs/os-vila-viva-e0-plano.md`](./docs/os-vila-viva-e0-plano.md) | Plano contra a genericidade espacial dos casos procedurais (etapas E1-E6; prompts de implementação em [`docs/os-vila-viva-prompts-implementacao.md`](./docs/os-vila-viva-prompts-implementacao.md)) |
 | [`docs/os-prosa-viva-e0-plano.md`](./docs/os-prosa-viva-e0-plano.md) | Plano contra a genericidade **textual** dos casos procedurais — sequência da Vila Viva (Fase 0 de telemetria + etapas E1-E5; prompts de implementação em [`docs/os-prosa-viva-prompts-implementacao.md`](./docs/os-prosa-viva-prompts-implementacao.md)) |
@@ -130,6 +131,14 @@ diorama da vila. Sem TypeScript, sem engine de jogo, sem chamadas de rede em run
 em módulos JS e lógica determinística em funções puras (toda variação vem de `hashString`
 salgado com a seed). O banco de casos gerados e o diorama 3D são **chunks lazy**: o
 arranque (tela de título + tutorial) baixa ~400 KB de JS.
+
+A interface é feita de **materiais procedurais** — gradientes, ruído SVG de `seed` fixo e
+sombra, definidos uma vez em `src/index.css` e `tailwind.config.js`: papel, couro, latão,
+cera, cortiça e madeira, sem um único arquivo de imagem ou ícone de biblioteca. A
+tipografia são cinco faces OFL embarcadas em `woff2` (Libre Caslon Text para toda leitura
+longa, IM Fell English para a voz do documento, Bevan nos títulos, Oswald nos rótulos e
+Rye só no cartaz da tela de título). As escolhas estão registradas em
+[`docs/sistema-visual.md`](./docs/sistema-visual.md).
 
 ```
 src/
