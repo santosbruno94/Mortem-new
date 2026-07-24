@@ -24,6 +24,7 @@ export default function Overlay({
   aoFechar,
   marca = '',
   nivelZ = 'z-40',
+  climax = false,
 }) {
   const fecharOverlay = useJogo((s) => s.fecharOverlay);
   const fechar = aoFechar || fecharOverlay;
@@ -52,15 +53,43 @@ export default function Overlay({
       <div
         className={`${largura} overlay-surgir relative w-full max-h-[90vh] supports-[height:100dvh]:max-h-[90dvh] overflow-y-auto painel-couro rounded-sm`}
       >
+        {/* `climax`: os fins de caso não são um painel de consulta — o
+            desfecho vem centrado e em wood type, e o botão de fechar sai
+            do fluxo para o canto (sem deslocar o título). O contrato do
+            QA fica intacto: o mesmo rótulo, o mesmo gesto.
+            No celular não há largura para as duas coisas na mesma linha:
+            o botão fica com a primeira, e o título desce inteiro abaixo
+            dele. Do `sm` para cima o título volta a dividir a linha, com
+            a folga lateral que o botão pede de cada lado. */}
         <div className="sticky top-0 z-10 bg-[#1a1613]/95 backdrop-blur-sm px-4 sm:px-6 pt-3 sm:pt-4 pb-2">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <h2 className="font-serif titulo-gravado text-xl sm:text-2xl text-amber-200">{titulo}</h2>
-              {subtitulo && <p className="text-stone-400 text-sm mt-1">{subtitulo}</p>}
+          <div className={climax ? 'relative' : 'flex items-start justify-between gap-4'}>
+            <div className={climax ? 'text-center pt-9 sm:pt-0 sm:px-14' : undefined}>
+              <h2
+                className={
+                  climax
+                    ? 'font-cartaz titulo-gravado text-[22px] sm:text-[30px] leading-tight text-amber-200'
+                    : 'font-serif titulo-gravado text-xl sm:text-2xl text-amber-200'
+                }
+              >
+                {titulo}
+              </h2>
+              {subtitulo && (
+                <p
+                  className={
+                    climax
+                      ? 'text-rotulo uppercase text-stone-400 mt-2'
+                      : 'text-stone-400 text-sm mt-1'
+                  }
+                >
+                  {subtitulo}
+                </p>
+              )}
             </div>
             <button
               onClick={fechar}
-              className="botao-fechar text-stone-400 hover:text-amber-200 transition-colors duration-gesto text-sm tracking-widest shrink-0 mt-1 px-3 py-2 -mr-2"
+              className={`botao-fechar text-stone-400 hover:text-amber-200 transition-colors duration-gesto text-sm tracking-widest shrink-0 px-3 py-2 -mr-2 ${
+                climax ? 'absolute right-0 top-0' : 'mt-1'
+              }`}
             >
               fechar ✕
             </button>

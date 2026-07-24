@@ -340,6 +340,43 @@ a:hover {
   );
 }
 
+/* COLUNA DE JORNAL: o corpo da folha impressa do epílogo. Duas colunas
+   justificadas com o filete no meio, e a capitular de abertura em IM Fell,
+   como a prensa da vila a compunha. No celular desce a uma coluna só —
+   texto justificado em 390px vira rio de espaço em branco. */
+.coluna-jornal {
+  color: #2e2314;
+  text-align: justify;
+  hyphens: auto;
+}
+@media (min-width: 640px) {
+  .coluna-jornal {
+    columns: 2;
+    column-gap: 1.1rem;
+    column-rule: 1px solid #a8946c;
+  }
+}
+/* A cabeça da matéria mora DENTRO do fluxo de colunas (a manchete de 1893
+   cabe na medida de uma coluna), e não pode partir-se ao meio. */
+.cabeca-materia {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+}
+/* Os filetes curtos que separam os decks empilhados. */
+.filete-deck {
+  width: 2.2rem;
+  margin: 0.32rem auto;
+  border-top: 1px solid rgba(37, 27, 16, 0.55);
+}
+.coluna-jornal p.abre-coluna::first-letter {
+  float: left;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 2.9em;
+  line-height: 0.78;
+  padding: 0.1em 0.14em 0 0;
+  color: #251b10;
+}
+
 /* CAMPO VITORIANO: selects e inputs sem a cara do navegador — papel
    escuro, fio de latão e seta desenhada a tinta. */
 .campo-vitoriano {
