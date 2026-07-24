@@ -173,6 +173,19 @@ a:hover {
   color: #251b10;
 }
 
+/* CONVITE ACESO (1g): o chamado que está na mão do perito. Mesmo papel,
+   uma folha mais clara, o fio da borda em cor de vela e o halo do castiçal
+   por cima — o convite escolhido é o que está sob a luz, não o que está
+   marcado. Os outros três continuam pousados na sombra da mesa. */
+.carta-pergaminho--acesa {
+  background-color: #f4ecd9;
+  border-color: #d3a24a;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 250, 235, 0.45),
+    0 0 26px rgba(217, 119, 6, 0.28),
+    0 4px 10px rgba(0, 0, 0, 0.55);
+}
+
 /* FICHA DE COLETA (§6.2): a etiqueta de exposição/laudo que a evidência
    veste ao ser coletada. Sobre o pergaminho, um fio de cera na margem
    esquerda — a borda encerada de uma etiqueta pregada num mostruário. */
@@ -408,6 +421,17 @@ a:hover {
 /* TÍTULO GRAVADO: relevo de letra prensada no couro (títulos de painel) */
 .titulo-gravado {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8), 0 0 22px rgba(217, 119, 6, 0.25);
+}
+
+/* CARTAZ DE VILA (1g): o wood type do título, impresso em tipo grande e
+   posto à luz de vela. O mesmo relevo do .titulo-gravado, com a sombra
+   mais funda (o tipo é maior) e um segundo halo, largo e fraco, que é a
+   luz alcançando a parede atrás do cartaz. */
+.cartaz-gravado {
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.85),
+    0 0 34px rgba(217, 119, 6, 0.3),
+    0 0 80px rgba(217, 119, 6, 0.14);
 }
 
 /* ------------------------------------------------------------------ */
