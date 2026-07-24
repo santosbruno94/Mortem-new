@@ -15,6 +15,13 @@
 > entregues** (planta procedural, prosa da vila + constable, mobília social, morfologias
 > de vila por seed); E5 (a travessa dos fundos) pendente, com prompt em
 > [`docs/os-vila-viva-prompts-implementacao.md`](./docs/os-vila-viva-prompts-implementacao.md).
+> A genericidade **textual** dos casos procedurais foi atacada pela **OS Prosa Viva**
+> ([`docs/os-prosa-viva-e0-plano.md`](./docs/os-prosa-viva-e0-plano.md)) — **Fase 0 + E1–E5
+> entregues** (cold open da descoberta, corpo/forense variados dentro da precisão, banco
+> combinatório de móbil/instrumento/segredo/cena/ecos, decorrelação + guarda anti-monotonia
+> no QA). A **OS Diálogos/Escala/Localização** somou: a **variação das perguntas do perito**
+> (casos gerados e tutorial), o **corpo e a cena no mesmo lugar** pela planta nos casos
+> gerados, e a **maquete 3D sem sobreposição de etiquetas no celular**.
 
 ---
 
@@ -266,6 +273,17 @@ e o **modo ponto** dos casos gerados — a planta projetada do grid do prédio
 cômodo **abre e realça** o ponto correspondente. Fallback obrigatório — sem planta no
 pacote ou em `?flat=1`, o acordeão de pontos de sempre assume, idêntico.
 
+**Corpo e cena no mesmo lugar (procedural — OS Diálogos/Escala/Localização).** No
+caso-escola a planta já unia o corpo e a cena (os dois alvos do escritório dos fundos);
+nos casos gerados faltava o elo, porque a localidade do `corpo` não trazia planta e nada a
+ligava à `cena`. A montagem do pacote agora **liga o cômodo do corpo aos dois nós** — o
+gancho `alvos`, que nasce vazio na projeção do grid (`interiores.js`) e é preenchido na
+Fase 4 (`pacote_gerado.js`): o cômodo onde jaz o corpo ganha os alvos "a cena" e "o corpo".
+A **mesma planta ligada** viaja nas duas localidades (`corpo` e `cena`), e o perito anda
+entre elas a 0h pela planta — como no tutorial. O `Planta.jsx` é **híbrido**: o modo ponto
+(acordeão da cena) segue intacto, e sobre ele entra o **alvo de viagem** entre nós (na cena
+mostra "o corpo"; no corpo, "a cena"). Camada visual — o motor jamais lê a planta.
+
 **Pontos de interesse:** as localidades podem trazer o campo opcional
 `pontos: [{ id, rotulo, prosa }]` (mais um `introducao` de ambientação sem carta). Quando
 existem, a prosa monolítica se divide em **pontos clicáveis** (acordeão): clicar num ponto
@@ -299,6 +317,12 @@ relógio, o custo de viagem, os nós novos) — nunca as `tagsOcultas` nem o ver
   (silhueta estática); os rótulos são **tags de papel pendentes** (mesmos textos e handler),
   e o destaque de nó novo pulsa em **CSS** na tag — o `frameloop="demand"` da maquete segue
   intacto (parada = zero frame).
+- **Etiquetas sem sobreposição no celular (OS Diálogos/Escala/Localização).** Em tela
+  estreita a vila inteira **cabe na largura** (sem rolagem lateral, nada cortado) e um
+  **desobstrutor determinístico** projeta cada âncora ao espaço de tela (câmara ortográfica
+  fixa) e **afasta na vertical** as etiquetas que colidiriam — inclusive o retângulo do
+  relógio de bolso, tratado como obstáculo fixo. O deslocamento (px por nó) é estável por
+  tela e **sem `Math.random`**; só o cordão da tag alonga (o clique fica intacto).
 - **Microinterações da UI (§3).** O barbante do mural pende com **catenária**; concluir uma
   estação **carimba** o selo de cera; a pena **risca** ao avançar a abertura. Tudo cede a
   `prefers-reduced-motion`.
@@ -440,6 +464,17 @@ o **tom ressonante** de cada personagem rende um tento a mais de prosa (a lasca 
 bainha de Silas só se apanha de esguelha, no oblíquo). O peso da escolha é **narrativo
 por ora**: nenhuma prova que o veredicto lê depende do tom — o motor repousa no corpo e
 na cena (ver §7.3 para a evolução mecânica futura).
+
+**A pergunta do perito varia (OS Diálogos/Escala/Localização).** A redação das perguntas
+do perito era fixa — nos casos gerados, **igual em todo caso** (a superfície de diálogo que
+mais cansava quem jogava vários). Agora cada tom tem um **pool de fraseados**, escolhido
+deterministicamente, **preservando a intenção do tom** (e o mecanismo tom→nó): nos casos
+gerados, por `hashDecisao` salgado com a seed e o suspeito, baked no pacote; no caso-escola
+(seed fixa), pelo **eixo da persona do perito** — `op.rotuloVars` resolvido em render por
+`escolherDeterministico` (chave = perito|suspeito|nó|índice), de modo que cada perito ouve
+as próprias perguntas. As **respostas** dos NPCs gerados já variavam (OS Prosa Viva); esta
+frente fecha o alcance às **falas do jogador**. O contrato do QA fica intacto: as opções
+seguem clicadas por **tom** (`data-tom`), não pelo texto.
 
 **A mecânica do confronto** é o elo entre a mesa e as pessoas — e é uma **caixa gated**,
 não mais um seletor universal. Em qualquer nó de pergunta (e no encerramento), a caixa
@@ -814,12 +849,15 @@ editorial (`docs/os-lapidacao-prosa-gerada.md`, 16/07/2026): pipeline
 na fonte (`src/gerador/pacote_gerado.js`) e regeneração no mesmo commit —
 segundo passe com zero achados bloqueantes; roteiro de leitura em
 `docs/playtest-leitura-prosa-gerada.md`. A frente seguinte — a **variedade** frásica
-dessas superfícies (a abertura de roteiro único, as tabelas forenses de variante única,
-os moldes de móbil/instrumento e os ecos rasos que se repetem entre os ~31 casos
-embarcados) — está planejada, não implementada, em `docs/os-prosa-viva-e0-plano.md`
-(Fase 0 de telemetria + etapas E1-E5; prompts em
-`docs/os-prosa-viva-prompts-implementacao.md`). Nenhuma etapa vira código sem ordem
-expressa do criador.
+dessas superfícies — foi **entregue** pela **OS Prosa Viva** (`docs/os-prosa-viva-e0-plano.md`,
+Fase 0 de telemetria + E1–E5): o **cold open da descoberta** substitui a abertura fixa dos
+casos procedurais (o POV de quem achou o corpo; o tutorial mantém a pensão da Sra. Potts);
+o corpo, a lesão, o rigor e o livor variam **dentro da precisão** (cada variante pelo
+perito-forense); móbil, instrumento, segredo, cena e ecos sobem a **banco combinatório**; e
+a **decorrelação** (`hashDecisao`) mais uma **guarda anti-monotonia** no `qa.mjs` — com a
+telemetria de mesa `npm run telemetria:monotonia` — travam a regressão a molde raso. A
+**variação das perguntas do perito** (§7.1), da OS Diálogos/Escala/Localização, fecha o
+alcance às falas do jogador. Nenhuma etapa vira código sem ordem expressa do criador.
 
 ---
 

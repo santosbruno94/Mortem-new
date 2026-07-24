@@ -27,6 +27,16 @@ rua são ouvidos no **prédio de encontro** (a taverna; mercearia/forja quando a
 cena) e cada suspeito é interrogado **à porta da própria casa**, com o constable um passo
 atrás — o posto fica só com os papéis e o telégrafo.
 
+A **OS Prosa Viva** (Fase 0 + E1–E5) ataca a genericidade **textual**: os casos procedurais
+abrem com um **cold open da descoberta** (o POV de quem achou o corpo; o tutorial mantém a
+abertura da pensão), o exame do corpo e as superfícies de móbil/instrumento/segredo/cena/ecos
+ganham **variação combinatória** dentro da precisão forense, e uma **guarda anti-monotonia**
+no QA trava a regressão. A **OS Diálogos/Escala/Localização** somou a esta: as **perguntas do
+perito variam** (por seed nos casos gerados; pela persona escolhida no tutorial), o **corpo e
+a cena do crime ficam no mesmo lugar** — ligados pela planta do prédio nos casos gerados, como
+já eram no tutorial — e a **maquete 3D não sobrepõe mais as etiquetas no celular** (a vila cabe
+na largura e um desobstrutor determinístico afasta os rótulos).
+
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
 
@@ -72,6 +82,7 @@ node scripts/qa.mjs     # QA estático: traça os perfis de jogador pelo motor (
 node scripts/qa-ui.mjs  # QA de fumaça da interface (requer Playwright + Chromium)
 npm run lint:prosa      # linter de prosa isolado: cheques mecânicos do guia de estilo
 npm run gerar:casos     # regenera o banco de casos da comarca (src/data/casos_gerados.js)
+npm run telemetria:monotonia  # índice de monotonia da prosa gerada (mesa; fora do bundle)
 ```
 
 Ferramentas de inspeção do gerador (build time, imprimem no terminal):
