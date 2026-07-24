@@ -137,18 +137,27 @@ export default function Planta({ planta, localidadeAtual, comodosAtivos, onComod
           </text>
         ))}
 
-        {/* Cômodos, com o(s) cômodo(s) atual(is) realçado(s). */}
+        {/* Cômodos, com o(s) cômodo(s) atual(is) realçado(s). Um cômodo pode
+            trazer AMBOS: os alvos de VIAGEM entre nós (corpo↔cena — o hook
+            `alvos` da planta gerada, ligado no pacote) e, no modo ponto, o
+            gatilho do acordeão. No modo ponto só se mostra o alvo de OUTRO nó
+            (a viagem útil é ir ao corpo); no modo nó mostram-se todos, com o
+            atual marcado "aqui" (comportamento do caso-escola, intacto). */}
         {P.comodos.map((c) => {
-          const aqui = modoPonto ? ativos.has(c.id) : c === comodoAtual;
+          const temAlvoAtual = (c.alvos || []).some((a) => a.no === localidadeAtual);
+          const aqui = modoPonto ? ativos.has(c.id) : temAlvoAtual || c === comodoAtual;
+          const alvosViagem = modoPonto
+            ? (c.alvos || []).filter((a) => a.no !== localidadeAtual)
+            : c.alvos || [];
           return (
             <g key={c.id}>
               <TracoBoil d={c.contorno} className={`planta-comodo ${aqui ? 'planta-comodo--aqui' : ''}`} />
               <text x={c.rotuloPos.x} y={c.rotuloPos.y} textAnchor="middle" className="planta-rotulo">
                 {c.rotulo}
               </text>
-              {modoPonto ? (
-                // MODO PONTO: o cômodo inteiro é o alvo — abre o ponto do
-                // acordeão que deriva dele (o ponto tem `comodo === c.id`).
+              {modoPonto &&
+                // MODO PONTO: o cômodo inteiro abre o ponto do acordeão que
+                // dele deriva (o ponto tem `comodo === c.id`).
                 (() => {
                   const h = hitDoContorno(c.contorno);
                   return (
@@ -174,76 +183,76 @@ export default function Planta({ planta, localidadeAtual, comodosAtivos, onComod
                       )}
                     </g>
                   );
-                })()
-              ) : (
-                // MODO NÓ: cada alvo VIAJA para o seu nó (relojoaria).
-                (c.alvos || []).map((a) => {
-                  const alvoAqui = a.no === localidadeAtual;
-                  return (
-                    <g
-                      key={a.no}
-                      data-alvo={a.no}
-                      className="planta-alvo"
-                      role="button"
-                      tabIndex={0}
-                      aria-label={`Ir para ${a.rotulo}`}
-                      onClick={() => irPara(a.no)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          irPara(a.no);
-                        }
-                      }}
+                })()}
+              {/* Alvos de VIAGEM entre nós (corpo↔cena / relojoaria). */}
+              {alvosViagem.map((a) => {
+                const alvoAqui = a.no === localidadeAtual;
+                return (
+                  <g
+                    key={a.no}
+                    data-alvo={a.no}
+                    className="planta-alvo"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Ir para ${a.rotulo}`}
+                    onClick={() => irPara(a.no)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        irPara(a.no);
+                      }
+                    }}
+                  >
+                    <rect x={a.hit.x} y={a.hit.y} width={a.hit.w} height={a.hit.h} className="planta-hit" />
+                    <text
+                      x={a.pos.x}
+                      y={a.pos.y}
+                      textAnchor="middle"
+                      className={`planta-alvo-texto ${alvoAqui ? 'planta-alvo-texto--aqui' : ''}`}
                     >
-                      <rect x={a.hit.x} y={a.hit.y} width={a.hit.w} height={a.hit.h} className="planta-hit" />
-                      <text
-                        x={a.pos.x}
-                        y={a.pos.y}
-                        textAnchor="middle"
-                        className={`planta-alvo-texto ${alvoAqui ? 'planta-alvo-texto--aqui' : ''}`}
-                      >
-                        {a.rotulo}
+                      {a.rotulo}
+                    </text>
+                    {alvoAqui && (
+                      <text x={a.pos.x} y={a.pos.y + 13} textAnchor="middle" className="planta-aqui">
+                        — aqui —
                       </text>
-                      {alvoAqui && (
-                        <text x={a.pos.x} y={a.pos.y + 13} textAnchor="middle" className="planta-aqui">
-                          — aqui —
-                        </text>
-                      )}
-                    </g>
-                  );
-                })
-              )}
+                    )}
+                  </g>
+                );
+              })}
             </g>
           );
         })}
       </svg>
 
-      {/* Régua horizontal (telas estreitas): a mesma navegação em botões. */}
+      {/* Régua horizontal (telas estreitas): a mesma navegação em botões. Os
+          alvos de VIAGEM (corpo↔cena) entram em ambos os modos; no modo ponto,
+          só o alvo de OUTRO nó (ir ao corpo). */}
       <div className="planta-regua sm:hidden">
-        {modoPonto
-          ? P.comodos.map((c) => (
+        {(modoPonto ? P.comodos.flatMap((c) => (c.alvos || []).filter((a) => a.no !== localidadeAtual)) : P.comodos.flatMap((c) => c.alvos || [])).map(
+          (a) => {
+            const alvoAqui = a.no === localidadeAtual;
+            return (
               <button
-                key={c.id}
-                onClick={() => onComodoClick(c.id)}
-                className={`planta-regua-item ${ativos.has(c.id) ? 'planta-regua-item--aqui' : ''}`}
+                key={`alvo_${a.no}`}
+                onClick={() => irPara(a.no)}
+                className={`planta-regua-item ${alvoAqui ? 'planta-regua-item--aqui' : ''}`}
               >
-                {c.rotulo}
+                {a.rotulo}
               </button>
-            ))
-          : P.comodos
-              .flatMap((c) => c.alvos || [])
-              .map((a) => {
-                const alvoAqui = a.no === localidadeAtual;
-                return (
-                  <button
-                    key={a.no}
-                    onClick={() => irPara(a.no)}
-                    className={`planta-regua-item ${alvoAqui ? 'planta-regua-item--aqui' : ''}`}
-                  >
-                    {a.rotulo}
-                  </button>
-                );
-              })}
+            );
+          }
+        )}
+        {modoPonto &&
+          P.comodos.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => onComodoClick(c.id)}
+              className={`planta-regua-item ${ativos.has(c.id) ? 'planta-regua-item--aqui' : ''}`}
+            >
+              {c.rotulo}
+            </button>
+          ))}
       </div>
     </div>
   );

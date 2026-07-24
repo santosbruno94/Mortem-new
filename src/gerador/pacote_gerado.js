@@ -1580,6 +1580,37 @@ function montarLocalidades(bruto, cartas, casasDoCaso) {
   // ponto estático não saberia escondê-las quando o evento dispara).
   const comodoDoCorpo = crime.posicaoCorpo.comodo;
   const comodoValido = (id) => id && interior.comodos.some((k) => k.id === id);
+  // OS corpo↔cena no mesmo lugar (procedural): o corpo e a cena são o MESMO
+  // prédio; falta era a planta LIGAR os dois nós, como a da relojoaria no
+  // caso-escola (o escritório dos fundos com dois alvos — a cena e o corpo).
+  // Aqui, na montagem do pacote (o hook previsto em interiores.js — "os
+  // `alvos` nascem vazios, o pacote liga cômodo a nó"), o cômodo do corpo
+  // recebe DOIS alvos: "a cena" e "o corpo". A MESMA planta ligada viaja nas
+  // duas localidades, e o perito anda entre elas a 0h pela planta. Camada
+  // VISUAL — o motor jamais a lê; não muta a planta da Fase 2 (novo objeto).
+  const ligarAlvosCorpoCena = (planta) => {
+    const nums = (d) => (d.match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
+    return {
+      ...planta,
+      comodos: planta.comodos.map((c) => {
+        if (c.id !== comodoDoCorpo) return c;
+        const [x0, y0, x1, y1] = nums(c.contorno);
+        const meio = Math.round((x0 + x1) / 2);
+        const cy = Math.round((y0 + y1) / 2);
+        return {
+          ...c,
+          alvos: [
+            { no: 'cena', rotulo: 'a cena', hit: { x: x0 + 1, y: y0 + 1, w: Math.max(8, meio - x0 - 1), h: Math.max(8, y1 - y0 - 2) }, pos: { x: Math.round((x0 + meio) / 2), y: cy } },
+            { no: 'corpo', rotulo: 'o corpo', hit: { x: meio, y: y0 + 1, w: Math.max(8, x1 - meio - 1), h: Math.max(8, y1 - y0 - 2) }, pos: { x: Math.round((meio + x1) / 2), y: cy } },
+          ],
+        };
+      }),
+    };
+  };
+  const plantaLigada = ligarAlvosCorpoCena(interior.planta);
+  // A localidade do corpo passa a mostrar a MESMA planta ligada — assim, do
+  // corpo o perito volta à cena, e da cena vai ao corpo, sem o mapa (0h).
+  corpo.planta = plantaLigada;
   // As NASCIDAS de evento (cartasNovas da interferência) já vivem nos
   // blocos `disparado` distribuídos acima — não entram em ponto algum.
   const nascidasDeEvento = new Set(eventos.flatMap((e) => e.efeito.cartasNovas));
@@ -1746,8 +1777,9 @@ function montarLocalidades(bruto, cartas, casasDoCaso) {
     // PLANTA_RELOJOARIA) viaja no pacote para o componente desenhá-la. Cada
     // cômodo da planta tem o mesmo `id` do cômodo de que o ponto deriva
     // (pontosCena[].comodo), o que liga a planta ao acordeão sem que regra
-    // alguma a leia. Camada VISUAL — o motor jamais toca aqui.
-    planta: interior.planta,
+    // alguma a leia. Camada VISUAL — o motor jamais toca aqui. A `plantaLigada`
+    // acrescenta os alvos corpo↔cena no cômodo do corpo (mesma planta do corpo).
+    planta: plantaLigada,
     blocosContingentes: blocosPorLocalidade.cena || [],
   };
 

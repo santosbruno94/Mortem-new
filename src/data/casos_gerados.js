@@ -557,7 +557,89 @@ export const CASO_REPLICA = {
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 3",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 141,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 161,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -617,7 +699,36 @@ export const CASO_REPLICA = {
        "x": 141,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 141,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 161,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "quarto",
@@ -2927,7 +3038,88 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Moinho",
+    "viewBox": "0 0 178 178",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Casa do Moleiro",
+      "contorno": "M24 24 H76 V76 H24 Z",
+      "rotuloPos": {
+       "x": 50,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M76 24 H154 V76 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 77,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 96,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 115,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 135,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "piso_do_moinho",
+      "rotulo": "Piso do Moinho",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 89,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -2987,7 +3179,36 @@ export const CASOS_POOL = [
        "x": 115,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 77,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 96,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 115,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 135,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "piso_do_moinho",
@@ -5263,7 +5484,77 @@ export const CASOS_POOL = [
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 81 H123 V97 H107 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -5304,7 +5595,36 @@ export const CASOS_POOL = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -7572,7 +7892,90 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Mercearia",
+    "viewBox": "0 0 204 178",
+    "comodos": [
+     {
+      "id": "deposito",
+      "rotulo": "Depósito",
+      "contorno": "M24 24 H128 V102 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto (sobrado)",
+      "contorno": "M128 24 H180 V102 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 129,
+         "y": 25,
+         "w": 25,
+         "h": 76
+        },
+        "pos": {
+         "x": 141,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 154,
+         "y": 25,
+         "w": 25,
+         "h": 76
+        },
+        "pos": {
+         "x": 167,
+         "y": 63
+        }
+       }
+      ]
+     },
+     {
+      "id": "loja",
+      "rotulo": "A Loja",
+      "contorno": "M24 102 H180 V154 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 29 H123 V45 H107 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M81 107 H97 V123 H81 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -7632,7 +8035,36 @@ export const CASOS_POOL = [
        "x": 154,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 129,
+         "y": 25,
+         "w": 25,
+         "h": 76
+        },
+        "pos": {
+         "x": 141,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 154,
+         "y": 25,
+         "w": 25,
+         "h": 76
+        },
+        "pos": {
+         "x": 167,
+         "y": 63
+        }
+       }
+      ]
      },
      {
       "id": "loja",
@@ -9804,7 +10236,88 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Caminho do Açude",
+    "viewBox": "0 0 256 152",
+    "comodos": [
+     {
+      "id": "margem",
+      "rotulo": "A Margem de Junco",
+      "contorno": "M24 24 H180 V76 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "comporta",
+      "rotulo": "A Comporta do Açude",
+      "contorno": "M180 24 H232 V76 H180 Z",
+      "rotuloPos": {
+       "x": 206,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "vereda",
+      "rotulo": "A Vereda entre Sebes",
+      "contorno": "M24 76 H232 V128 H24 Z",
+      "rotuloPos": {
+       "x": 128,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 76,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 128,
+         "y": 77,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 102
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M185 107 H201 V123 H185 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -9874,7 +10387,36 @@ export const CASOS_POOL = [
        "x": 128,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 76,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 128,
+         "y": 77,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 102
+        }
+       }
+      ]
      }
     ],
     "decorSalas": [],
@@ -12002,7 +12544,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 155,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 174,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 193,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 213,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 29 H123 V45 H107 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M211 107 H227 V123 H211 Z",
+     "M211 133 H227 V149 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -12070,7 +12707,36 @@ export const CASOS_POOL = [
        "x": 193,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 155,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 174,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 193,
+         "y": 25,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 213,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "taproom",
@@ -14484,7 +15150,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 50,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 102,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M107 81 H123 V97 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M185 81 H201 V97 H185 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -14542,7 +15303,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 50,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 102,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -17016,7 +17806,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M185 81 H201 V97 H185 Z",
+     "M211 81 H227 V97 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -17074,7 +17959,36 @@ export const CASOS_POOL = [
        "x": 89,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -19454,7 +20368,89 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 4",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 107 H123 V123 H107 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -19504,7 +20500,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "copa",
@@ -21695,7 +22720,89 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 2",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 77,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 141,
+         "y": 77,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 161,
+         "y": 102
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 107 H97 V123 H81 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -21765,7 +22872,36 @@ export const CASOS_POOL = [
        "x": 141,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 77,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 141,
+         "y": 77,
+         "w": 38,
+         "h": 50
+        },
+        "pos": {
+         "x": 161,
+         "y": 102
+        }
+       }
+      ]
      }
     ],
     "decorSalas": [],
@@ -24042,7 +25178,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_papeis_forasteiro]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M29 133 H45 V149 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M211 107 H227 V123 H211 Z",
+     "M211 133 H227 V149 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -24100,7 +25331,36 @@ export const CASOS_POOL = [
        "x": 89,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -26463,7 +27723,88 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Travessa dos Fundos",
+    "viewBox": "0 0 256 126",
+    "comodos": [
+     {
+      "id": "fundos_do_pub",
+      "rotulo": "Os Fundos do Pub",
+      "contorno": "M24 24 H102 V50 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quintais",
+      "rotulo": "Os Quintais",
+      "contorno": "M102 24 H232 V50 H102 Z",
+      "rotuloPos": {
+       "x": 167,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "viela",
+      "rotulo": "A Viela",
+      "contorno": "M24 50 H232 V102 H24 Z",
+      "rotuloPos": {
+       "x": 128,
+       "y": 64
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 51,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 76,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 128,
+         "y": 51,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 76
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M81 81 H97 V97 H81 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 118
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -26533,7 +27874,36 @@ export const CASOS_POOL = [
        "x": 128,
        "y": 64
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 51,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 76,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 128,
+         "y": 51,
+         "w": 103,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 76
+        }
+       }
+      ]
      }
     ],
     "decorSalas": [],
@@ -28914,7 +30284,89 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 3",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -28964,7 +30416,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "copa",
@@ -31516,7 +32997,99 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta no chão, ao pé do corpo; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Adro da Igreja",
+    "viewBox": "0 0 230 178",
+    "comodos": [
+     {
+      "id": "quadra_sul",
+      "rotulo": "A Quadra das Lápides",
+      "contorno": "M24 24 H76 V154 H24 Z",
+      "rotuloPos": {
+       "x": 50,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "alameda",
+      "rotulo": "A Alameda das Lajes",
+      "contorno": "M76 24 H154 V128 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 77,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 96,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 115,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 135,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "lychgate",
+      "rotulo": "O Portão Coberto",
+      "contorno": "M76 128 H154 V154 H76 Z",
+      "rotuloPos": {
+       "x": 115,
+       "y": 142
+      },
+      "alvos": []
+     },
+     {
+      "id": "fundo_norte",
+      "rotulo": "O Fundo Evitado",
+      "contorno": "M154 24 H206 V154 H154 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 133 H45 V149 H29 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M107 133 H123 V149 H107 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M159 133 H175 V149 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 115,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -31584,7 +33157,36 @@ export const CASOS_POOL = [
        "x": 115,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 77,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 96,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 115,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 135,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "lychgate",
@@ -33807,7 +35409,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -33865,7 +35562,36 @@ export const CASOS_POOL = [
        "x": 89,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -36165,7 +37891,89 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Mercearia",
+    "viewBox": "0 0 204 178",
+    "comodos": [
+     {
+      "id": "deposito",
+      "rotulo": "Depósito",
+      "contorno": "M24 24 H102 V102 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto (sobrado)",
+      "contorno": "M102 24 H180 V102 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "loja",
+      "rotulo": "A Loja",
+      "contorno": "M24 102 H180 V154 H24 Z",
+      "rotuloPos": {
+       "x": 102,
+       "y": 116
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 103,
+         "w": 77,
+         "h": 50
+        },
+        "pos": {
+         "x": 63,
+         "y": 128
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 102,
+         "y": 103,
+         "w": 77,
+         "h": 50
+        },
+        "pos": {
+         "x": 141,
+         "y": 128
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -36235,7 +38043,36 @@ export const CASOS_POOL = [
        "x": 102,
        "y": 116
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 103,
+         "w": 77,
+         "h": 50
+        },
+        "pos": {
+         "x": 63,
+         "y": 128
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 102,
+         "y": 103,
+         "w": 77,
+         "h": 50
+        },
+        "pos": {
+         "x": 141,
+         "y": 128
+        }
+       }
+      ]
      }
     ],
     "decorSalas": [],
@@ -38409,7 +40246,87 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Posto do Constable",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "expediente",
+      "rotulo": "Expediente",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "cela",
+      "rotulo": "Cela",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "moradia",
+      "rotulo": "Moradia",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M159 81 H175 V97 H159 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -38459,7 +40376,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "cela",
@@ -40836,7 +42782,77 @@ export const CASOS_POOL = [
     "Fora do desenho da lesão principal, em sítio próprio: [[gen_incidental]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -40877,7 +42893,36 @@ export const CASOS_POOL = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -43180,7 +45225,97 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Solar",
+    "viewBox": "0 0 256 204",
+    "comodos": [
+     {
+      "id": "jantar",
+      "rotulo": "Sala de Jantar",
+      "contorno": "M24 24 H154 V102 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 57,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 122,
+         "y": 63
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V102 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M24 102 H154 V180 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 116
+      },
+      "alvos": []
+     },
+     {
+      "id": "hall",
+      "rotulo": "Hall",
+      "contorno": "M154 102 H232 V180 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M211 29 H227 V45 H211 Z",
+     "M211 81 H227 V97 H211 Z",
+     "M159 81 H175 V97 H159 Z",
+     "M55 159 H71 V175 H55 Z",
+     "M29 159 H45 V175 H29 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 196
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -43238,7 +45373,36 @@ export const CASOS_POOL = [
        "x": 89,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 57,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 122,
+         "y": 63
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -45475,7 +47639,101 @@ export const CASOS_POOL = [
     "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
     "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "O Solar",
+    "viewBox": "0 0 256 204",
+    "comodos": [
+     {
+      "id": "jantar",
+      "rotulo": "Sala de Jantar",
+      "contorno": "M24 24 H128 V102 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 63
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V102 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M24 102 H128 V180 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 116
+      },
+      "alvos": []
+     },
+     {
+      "id": "hall",
+      "rotulo": "Hall",
+      "contorno": "M128 102 H232 V180 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 116
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 81 H71 V97 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M185 29 H201 V45 H185 Z",
+     "M81 159 H97 V175 H81 Z",
+     "M29 159 H45 V175 H29 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M211 133 H227 V149 H211 Z",
+     "M185 159 H201 V175 H185 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 196
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -45533,7 +47791,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 63
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 63
+        }
+       }
+      ]
      },
      {
       "id": "cozinha",
@@ -47759,7 +50046,102 @@ export const CASOS_POOL = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 115
+        }
+       }
+      ]
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M185 29 H201 V45 H185 Z",
+     "M107 133 H123 V149 H107 Z",
+     "M81 133 H97 V149 H81 Z",
+     "M185 133 H201 V149 H185 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -47836,7 +50218,36 @@ export const CASOS_POOL = [
        "x": 76,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 115
+        }
+       }
+      ]
      },
      {
       "id": "parlour",
@@ -50098,7 +52509,77 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -50139,7 +52620,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -52839,7 +55349,77 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -52880,7 +55460,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -55387,7 +57996,77 @@ export const CASOS_LUTA = [
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -55428,7 +58107,36 @@ export const CASOS_LUTA = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -57981,7 +60689,77 @@ export const CASOS_LUTA = [
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M102 24 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 81 H175 V97 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -58022,7 +60800,36 @@ export const CASOS_LUTA = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -60682,7 +63489,89 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "Cottage nº 6",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V128 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M102 24 H180 V76 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 76 H180 V128 H102 Z",
+      "rotuloPos": {
+       "x": 141,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 55 H97 V71 H81 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M107 29 H123 V45 H107 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M159 107 H175 V123 H159 Z",
+     "M133 107 H149 V123 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -60732,7 +63621,36 @@ export const CASOS_LUTA = [
        "x": 63,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 44,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 63,
+         "y": 25,
+         "w": 38,
+         "h": 102
+        },
+        "pos": {
+         "x": 83,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "copa",
@@ -63382,7 +66300,102 @@ export const CASOS_LUTA = [
     "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H128 V76 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M128 24 H232 V76 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H128 V154 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 115
+        }
+       }
+      ]
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M128 76 H232 V154 H128 Z",
+      "rotuloPos": {
+       "x": 180,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M55 55 H71 V71 H55 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M211 55 H227 V71 H211 Z",
+     "M29 107 H45 V123 H29 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M185 133 H201 V149 H185 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -63459,7 +66472,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 50,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 77,
+         "w": 51,
+         "h": 76
+        },
+        "pos": {
+         "x": 102,
+         "y": 115
+        }
+       }
+      ]
      },
      {
       "id": "parlour",
@@ -66139,7 +69181,77 @@ export const CASOS_LUTA = [
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "Entre os pertences arrolados: [[gen_recibo_comarca]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -66180,7 +69292,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -68816,7 +71957,77 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M107 107 H123 V123 H107 Z",
+     "M55 107 H71 V123 H55 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -68857,7 +72068,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",
@@ -71457,7 +74697,102 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 57,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 77,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 122,
+         "y": 115
+        }
+       }
+      ]
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M133 133 H149 V149 H133 Z",
+     "M185 81 H201 V97 H185 Z",
+     "M211 81 H227 V97 H211 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -71534,7 +74869,36 @@ export const CASOS_LUTA = [
        "x": 89,
        "y": 90
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 77,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 57,
+         "y": 115
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 77,
+         "w": 64,
+         "h": 76
+        },
+        "pos": {
+         "x": 122,
+         "y": 115
+        }
+       }
+      ]
      },
      {
       "id": "parlour",
@@ -74321,7 +77685,77 @@ export const CASOS_LUTA = [
     "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
     "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
     "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ]
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 29 H45 V45 H29 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M133 107 H149 V123 H133 Z",
+     "M133 81 H149 V97 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
   },
   {
    "id": "cena",
@@ -74362,7 +77796,36 @@ export const CASOS_LUTA = [
        "x": 76,
        "y": 38
       },
-      "alvos": []
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
      },
      {
       "id": "paiol",

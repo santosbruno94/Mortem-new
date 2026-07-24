@@ -66,7 +66,11 @@ export default function EventoLocalidade({ localidadeId }) {
   // acordeão que dele deriva (pt_cena_<comodo> tem `comodo === c.id`).
   // Camada VISUAL: o motor não a lê. Fallback obrigatório — sem planta no
   // pacote OU em ?flat=1, o acordeão de sempre assume, idêntico.
-  const mostrarPlantaCena = temPontos && !!localidade.planta && !modoFlat();
+  // A planta do prédio da cena aparece na cena E no corpo (ambos a têm no
+  // pacote gerado — a `plantaLigada` com os alvos corpo↔cena): o perito anda
+  // entre os dois pela planta, a 0h, como no caso-escola. O acordeão (modo
+  // ponto) só existe onde há pontos (a cena); no corpo, a planta é só viagem.
+  const mostrarPlantaCena = !!localidade.planta && !modoFlat();
   const pontoDoComodo = (comodoId) => (localidade.pontos || []).find((p) => p.comodo === comodoId);
   const comodosAtivos = (localidade.pontos || []).filter((p) => pontosAbertos[p.id]).map((p) => p.comodo);
   // Clicar um cômodo na planta abre o ponto correspondente e o traz à vista.
@@ -241,7 +245,12 @@ export default function EventoLocalidade({ localidadeId }) {
           do grid e liga cada um ao ponto do acordeão. Não é navegação de
           nós — é destaque do cômodo aberto. */}
       {mostrarPlantaCena && (
-        <Planta planta={localidade.planta} comodosAtivos={comodosAtivos} onComodoClick={abrirComodoNaPlanta} />
+        <Planta
+          planta={localidade.planta}
+          localidadeAtual={localidade.id}
+          comodosAtivos={temPontos ? comodosAtivos : undefined}
+          onComodoClick={temPontos ? abrirComodoNaPlanta : undefined}
+        />
       )}
       {ehCorpo ? (
         // O exame em dois painéis: a PRANCHA de atlas acompanha a prosa.
