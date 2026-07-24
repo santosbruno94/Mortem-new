@@ -242,3 +242,71 @@ export function arrumarEtiquetas(itens, limites = {}) {
   }
   return saida;
 }
+
+// =====================================================================
+// A HORA COMO TINTA (E2 da OS) — o que o ciclo de luz faz na maquete 3D
+// (interpolarLuz: cor de luz, névoa, lampiões) a gravura faz com TRÊS
+// alavancas, e só três:
+//
+//   1. a densidade da hachura do céu — rala de dia, densa ao crepúsculo,
+//      traço em azul-tinta à noite;
+//   2. um véu retangular em `multiply` sobre o quadro — nada de dia,
+//      sépia ao crepúsculo, frio à noite;
+//   3. as janelas em âmbar, pela MESMA `janelaAcesa` que o 3D consome
+//      (src/data/mapa_espacial.js) — nenhuma regra de acendimento nova.
+//
+// As faixas herdam os limiares que já governam a vila: `janelaAcesa`
+// vira o dia às 17h e manda a vila dormir às 23h; os keyframes de
+// CICLO_LUZ passam ao azul entre 19h e 21h. Nada aqui é sorteado e nada
+// anima: a hora troca ATRIBUTOS, nunca geometria — zero frame, zero rAF.
+// =====================================================================
+export const FAIXAS_HORA = [
+  {
+    chave: 'dia',
+    // Céu quase branco: a hachura é só a marca da chapa.
+    ceu: { passo: 7, traco: 0.5, opacidade: 0.1, cor: '#251b10' },
+    veu: null,
+    nota: '— prancha do perito',
+  },
+  {
+    chave: 'crepusculo',
+    ceu: { passo: 5, traco: 0.62, opacidade: 0.22, cor: '#251b10' },
+    veu: { cor: '#6b4f2c', opacidade: 0.16 },
+    nota: '— a luz baixa; as janelas acendem',
+  },
+  {
+    chave: 'noite',
+    ceu: { passo: 4, traco: 0.85, opacidade: 0.4, cor: '#1d2436' },
+    veu: { cor: '#2b3350', opacidade: 0.34 },
+    nota: '— a vila às escuras, salvo onde há lampião',
+  },
+];
+
+// A faixa da hora corrente. Dia das 7h às 17h; crepúsculo das 17h às 20h;
+// noite das 20h às 7h (a madrugada é noite, não dia seguinte).
+export function tintaDaHora(horasJogo) {
+  const hora = ((horasJogo % 24) + 24) % 24;
+  if (hora >= 7 && hora < 17) return FAIXAS_HORA[0];
+  if (hora >= 17 && hora < 20) return FAIXAS_HORA[1];
+  return FAIXAS_HORA[2];
+}
+
+// ---------------------------------------------------------------------
+// Os vãos de janela de uma fachada, em unidades de maquete — o MESMO
+// arranjo do prédio 3D (uma janela na frente; uma segunda nos prédios
+// largos). A ordem dos índices importa: é por ela que `janelaAcesa`
+// acende uma e não outra. Uma fonte só para o desenho da gravura e para
+// o âmbar que a hora pousa por cima.
+// ---------------------------------------------------------------------
+export function vaosDaFachada(forma) {
+  if (forma.h < 0.2) return [];
+  const vaos = [{ i: 0, cx: forma.w * 0.18 }];
+  if (forma.w > 1.1) vaos.push({ i: 1, cx: -forma.w * 0.02 });
+  return vaos.map((v) => ({
+    i: v.i,
+    x: v.cx - 0.065,
+    y: -(forma.h * 0.55 + 0.08),
+    largura: 0.13,
+    altura: 0.16,
+  }));
+}

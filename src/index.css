@@ -1353,3 +1353,15 @@ body {
   letter-spacing: 0;
   color: #6b5c43;
 }
+
+/* A linha que a HORA acrescenta à etiqueta (E2 da OS Prancha da Vila): a
+   casa sem lampião depois do crepúsculo. Tinta apagada sobre papel claro
+   (4,81:1 — o piso de contraste do sistema visual), em condensada de
+   balcão, para ler como informação de relógio e não como prosa. */
+.rotulo-hora {
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: #6b5c43;
+  margin-top: 2px;
+}

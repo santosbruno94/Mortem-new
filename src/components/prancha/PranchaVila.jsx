@@ -4,8 +4,25 @@ import { LOCALIDADES } from '../../data/localidades.js';
 // Custo do PACOTE CORRENTE (não do mapa.js estático do caso-escola): a
 // etiqueta da prancha tem de mostrar o mesmo custo que o store cobra (M8).
 import { custoViagem, obterMaquete, obterLocalidades } from '../../data/pacote_caso.js';
-import { POSICOES_DIORAMA, FORMAS_PREDIO, ESTRADA_MOORFORD, MAQUETE } from '../../data/mapa_espacial.js';
-import { projetarVila, escalaGrafica, arrumarEtiquetas, QUADRO, MOLDURA } from '../../logic/prancha_vila.js';
+// A hora acende as janelas pela MESMA função que o diorama 3D consome —
+// nenhuma regra de acendimento nova, nenhuma cópia da lógica (E2).
+import {
+  POSICOES_DIORAMA,
+  FORMAS_PREDIO,
+  ESTRADA_MOORFORD,
+  MAQUETE,
+  janelaAcesa,
+  chamineFumega,
+} from '../../data/mapa_espacial.js';
+import {
+  projetarVila,
+  escalaGrafica,
+  arrumarEtiquetas,
+  tintaDaHora,
+  vaosDaFachada,
+  QUADRO,
+  MOLDURA,
+} from '../../logic/prancha_vila.js';
 import RotuloNo from '../diorama/RotuloNo.jsx';
 
 // =====================================================================
@@ -178,23 +195,20 @@ function Silhueta({ forma, u, cenario = false }) {
   );
 }
 
-// As janelas da fachada, no MESMO arranjo do prédio 3D (uma na frente,
-// uma segunda nos prédios largos) — a ordem dos índices importa: é ela
-// que a hora usa para acender uma e não outra (E2).
-function Janelas({ forma, u, acesa }) {
-  if (forma.h < 0.2) return null;
-  const vaos = [{ i: 0, cx: forma.w * 0.18 }];
-  if (forma.w > 1.1) vaos.push({ i: 1, cx: -forma.w * 0.02 });
+// As janelas da fachada, sempre em vidro de papel: o âmbar da hora NÃO
+// entra aqui — vem numa camada por cima (assim a figura da vila é a mesma
+// a qualquer hora, e a hora só troca atributos).
+function Janelas({ forma, u }) {
   return (
     <>
-      {vaos.map(({ i, cx }) => (
+      {vaosDaFachada(forma).map((v) => (
         <rect
-          key={i}
-          x={(cx - 0.065) * u}
-          y={-(forma.h * 0.55 + 0.08) * u}
-          width={0.13 * u}
-          height={0.16 * u}
-          fill={acesa && acesa(i) ? '#f2b03d' : PAPEL_VIDRO}
+          key={v.i}
+          x={v.x * u}
+          y={v.y * u}
+          width={v.largura * u}
+          height={v.altura * u}
+          fill={PAPEL_VIDRO}
           stroke={TINTA}
           strokeWidth={0.7}
           vectorEffect="non-scaling-stroke"
@@ -204,12 +218,32 @@ function Janelas({ forma, u, acesa }) {
   );
 }
 
+// A fumaça da chaminé nas horas frias — três novelos de traço sobre a
+// primeira chaminé, pela MESMA `chamineFumega` do diorama. Estática: é
+// gravura, não animação.
+function Fumaca({ forma, u }) {
+  const c = forma.chamines?.[0];
+  if (!c) return null;
+  const x = c.x * u;
+  const y = -(forma.h + c.alt) * u;
+  return (
+    <g stroke={TINTA} strokeWidth="0.6" fill="none" opacity="0.55" vectorEffect="non-scaling-stroke">
+      <path d={`M${x} ${y - 2} q${0.09 * u} ${-0.12 * u} ${0.18 * u} ${-0.05 * u}`} />
+      <path d={`M${x + 0.12 * u} ${y - 0.2 * u} q${0.1 * u} ${-0.1 * u} ${0.19 * u} ${-0.03 * u}`} />
+    </g>
+  );
+}
+
 // ---------------------------------------------------------------------
 export default function PranchaVila({ aoAbrirNo }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
   const overlayAberto = useJogo((s) => s.overlay) !== null;
+  // A hora do caso (estado derivado do relógio, nunca do motor): é ela que
+  // escolhe a tinta da prancha e acende as janelas.
+  const horasJogo = useJogo((s) => s.horasJogo);
+  const tinta = tintaDaHora(horasJogo);
 
   const refPalco = useRef(null);
   const caixa = useCaixaViva(refPalco);
@@ -310,6 +344,21 @@ export default function PranchaVila({ aoAbrirNo }) {
       altura: caixa.altura + 8,
     };
   });
+  // A hora diz INFORMAÇÃO, não só clima: fora do dia, a etiqueta declara em
+  // texto a casa sem lampião. O dado é o mesmo que acende a janela na
+  // gravura (janelaAcesa) — nenhum horário de funcionamento é inventado
+  // aqui, porque o jogo não tem nenhum: o nó abre a qualquer hora.
+  const notaDaHora = (id) => {
+    // Só à noite: ao crepúsculo as janelas ainda estão acendendo uma a uma,
+    // e anunciar "sem luz" em toda a vila seria ruído, não informação.
+    if (tinta.chave !== 'noite') return '';
+    const pos = posicoes[id];
+    if (!pos) return '';
+    const vaos = vaosDaFachada(formaDoNo(pos));
+    if (!vaos.length) return '';
+    return vaos.some((v) => janelaAcesa(id, v.i, horasJogo)) ? '' : 'sem luz a esta hora';
+  };
+
   const postos = arrumarEtiquetas(ancoras, limitesEtiqueta);
   const ancoraPorId = new Map(ancoras.map((a) => [a.id, a]));
   // As ETIQUETAS saem no DOM na ordem do hub (a do pacote), não na ordem
@@ -344,7 +393,7 @@ export default function PranchaVila({ aoAbrirNo }) {
               pertence ao pacote da seed, e cravá-lo acertaria um caso e
               erraria os outros trinta e um (sistema-visual §9). */}
           <p className="prancha-cabeca">
-            A VILA <span className="prancha-cabeca-nota">— prancha do perito</span>
+            A VILA <span className="prancha-cabeca-nota">{tinta.nota}</span>
           </p>
           <div className="relative" style={{ width: gravuraLargura, height: gravuraAltura }}>
           <svg
@@ -360,8 +409,24 @@ export default function PranchaVila({ aoAbrirNo }) {
               <pattern id="prancha-hachura-fina" width="4.6" height="4.6" patternUnits="userSpaceOnUse" patternTransform="rotate(90)">
                 <line x1="0" y1="0" x2="0" y2="4.6" stroke={TINTA} strokeWidth="0.55" opacity="0.36" />
               </pattern>
-              <pattern id="prancha-ceu" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(12)">
-                <line x1="0" y1="0" x2="0" y2="7" stroke={TINTA} strokeWidth="0.5" opacity="0.1" />
+              {/* O céu é a PRIMEIRA alavanca da hora: só o passo, o traço e
+                  a cor da hachura mudam — a chapa da vila fica a mesma. */}
+              <pattern
+                id="prancha-ceu"
+                width={tinta.ceu.passo}
+                height={tinta.ceu.passo}
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(12)"
+              >
+                <line
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2={tinta.ceu.passo}
+                  stroke={tinta.ceu.cor}
+                  strokeWidth={tinta.ceu.traco}
+                  opacity={tinta.ceu.opacidade}
+                />
               </pattern>
             </defs>
 
@@ -422,27 +487,76 @@ export default function PranchaVila({ aoAbrirNo }) {
               {proj.nos.map((n) => {
                 const pos = posicoes[n.id];
                 const forma = formaDoNo(pos);
-                const loc = locsVisiveis.find((l) => l.id === n.id);
-                const letreiro = letreiroDaFachada(loc?.rotuloMesa, rotulosVisiveis);
                 return (
                   <g key={n.id} transform={`translate(${n.sx} ${n.sy}) scale(${n.escala})`}>
                     <Silhueta forma={forma} u={proj.unidade} />
                     <Janelas forma={forma} u={proj.unidade} />
-                    {letreiro && forma.h >= 0.2 && (
-                      <text
-                        x={0}
-                        y={-(forma.h + forma.telhadoAltura) * proj.unidade - 2}
-                        textAnchor="middle"
-                        fontFamily="Oswald, sans-serif"
-                        fontSize={6.4}
-                        letterSpacing="1.3"
-                        fill={TINTA}
-                        opacity="0.8"
-                      >
-                        {letreiro}
-                      </text>
-                    )}
+                    {chamineFumega(n.id, horasJogo) && <Fumaca forma={forma} u={proj.unidade} />}
                   </g>
+                );
+              })}
+            </g>
+
+            {/* SEGUNDA alavanca: o véu em multiply sobre o quadro — nada de
+                dia, sépia ao crepúsculo, frio à noite. É decoração pura: o
+                motor não consulta densidade de hachura nem opacidade de véu. */}
+            {tinta.veu && (
+              <rect
+                x={proj.quadro.x}
+                y={proj.quadro.y}
+                width={proj.quadro.largura}
+                height={proj.quadro.altura}
+                fill={tinta.veu.cor}
+                opacity={tinta.veu.opacidade}
+                style={{ mixBlendMode: 'multiply' }}
+              />
+            )}
+
+            {/* TERCEIRA alavanca: as janelas acesas em âmbar, POR CIMA do
+                véu (a luz de dentro não obedece à noite lá fora), pela mesma
+                janelaAcesa do diorama. */}
+            <g>
+              {proj.nos.map((n) => {
+                const forma = formaDoNo(posicoes[n.id]);
+                return vaosDaFachada(forma)
+                  .filter((v) => janelaAcesa(n.id, v.i, horasJogo))
+                  .map((v) => (
+                    <rect
+                      key={`amb_${n.id}_${v.i}`}
+                      x={n.sx + v.x * proj.unidade * n.escala}
+                      y={n.sy + v.y * proj.unidade * n.escala}
+                      width={v.largura * proj.unidade * n.escala}
+                      height={v.altura * proj.unidade * n.escala}
+                      fill="#f2b03d"
+                      opacity="0.92"
+                    />
+                  ));
+              })}
+            </g>
+
+            {/* Os letreiros das fachadas ficam ACIMA do véu: matéria de leitura
+                não escurece com a hora (quando a estética briga com o conforto
+                de leitura, a estética cede — kb-producao/ui-e-estetica §6). */}
+            <g>
+              {proj.nos.map((n) => {
+                const forma = formaDoNo(posicoes[n.id]);
+                const loc = locsVisiveis.find((l) => l.id === n.id);
+                const letreiro = letreiroDaFachada(loc?.rotuloMesa, rotulosVisiveis);
+                if (!letreiro || forma.h < 0.2) return null;
+                return (
+                  <text
+                    key={`letreiro_${n.id}`}
+                    x={n.sx}
+                    y={n.sy - ((forma.h + forma.telhadoAltura) * proj.unidade + 2) * n.escala}
+                    textAnchor="middle"
+                    fontFamily="Oswald, sans-serif"
+                    fontSize={6.4}
+                    letterSpacing="1.3"
+                    fill={TINTA}
+                    opacity="0.85"
+                  >
+                    {letreiro}
+                  </text>
                 );
               })}
             </g>
@@ -536,6 +650,7 @@ export default function PranchaVila({ aoAbrirNo }) {
                   custo={custo}
                   interativo={!overlayAberto}
                   aoClicar={() => aoAbrirNo(loc)}
+                  notaDaHora={notaDaHora(loc.id)}
                 />
               </div>
             );

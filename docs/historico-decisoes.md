@@ -1077,3 +1077,28 @@ pacote e gramática da acusação intocados. Gates verdes (`npm run build`, `qa.
   3. **A régua "1H DE VILA" mede o menor percurso que ainda custa uma hora**, não a média: o
      custo do jogo é por GRUPO, não por distância, e a média deixaria a régua prometendo uma
      hora onde ela não vale.
+
+### E2 — a hora vira tinta
+
+- **Três alavancas, e só três** (`tintaDaHora` em `src/logic/prancha_vila.js`): a densidade da
+  hachura do céu (rala → densa → traço em azul-tinta), um véu retangular em `mix-blend-mode:
+  multiply` sobre o quadro (nada → sépia .16 → frio .34) e as janelas em âmbar. A hora troca
+  ATRIBUTOS; a figura da vila é a mesma a qualquer hora. Zero frame, zero rAF, zero transição
+  por tick — e por isso `prefers-reduced-motion` não muda a leitura da hora: a hora é estado,
+  não animação.
+- **O acendimento não ganhou dono novo.** `janelaAcesa`/`chamineFumega` continuam em
+  `src/data/mapa_espacial.js`, onde já eram funções puras consumidas pelo diorama; a prancha
+  passou a consumi-las de lá. A OS mandava extrair para `src/logic/` **se** morassem dentro
+  de um componente 3D — não moravam, e mudá-las de pasta só produziria churn em `Predio.jsx`,
+  `GuardaDelegacia.jsx` e `mapa_espacial.js` sem ganhar dono nenhum. O que era duplicável (o
+  arranjo dos vãos da fachada) virou uma fonte só: `vaosDaFachada`.
+- **A hora diz INFORMAÇÃO, não só clima — mas só o que o dado sustenta.** O jogo não tem
+  horário de funcionamento: nenhum nó fecha pelo relógio (o relógio só anda ao viajar, e a
+  porta abre a qualquer hora). Inventar "fecha às 21h" seria inventar mecânica na etiqueta.
+  O que existe é o lampião: da faixa da NOITE em diante, a etiqueta do nó sem janela acesa
+  declara `sem luz a esta hora` — mesmo dado que acende o âmbar no desenho. Ao crepúsculo a
+  nota fica calada de propósito (as janelas ainda estão acendendo uma a uma; anunciar "sem
+  luz" na vila inteira seria ruído).
+- **Contraste sob o véu:** as etiquetas são HTML ACIMA do SVG — o véu não as alcança, e a
+  tinta sobre papel claro segue muito acima de AA. Os letreiros das fachadas, que são SVG,
+  passaram a ser desenhados **depois** do véu, para não escurecerem com a hora.
