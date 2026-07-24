@@ -37,6 +37,13 @@ a cena do crime ficam no mesmo lugar** — ligados pela planta do prédio nos ca
 já eram no tutorial — e a **maquete 3D não sobrepõe mais as etiquetas no celular** (a vila cabe
 na largura e um desobstrutor determinístico afasta os rótulos).
 
+A **OS Prancha da Vila** fechou o pivô visual no hub: a vila do caso deixou de ser maquete 3D
+por padrão e passou a ser **prancha de gravura** em SVG procedural — a hora do relógio vira
+tinta (o céu adensa, o papel esfria, as janelas acendem em âmbar), a viagem é uma tacha de
+cera correndo a estrada desenhada, e o nó revelado por lead entra **a bico de pena vermelha**,
+carimbado com a hora em que o lead chegou. No celular a prancha é só figura e a navegação
+desce para uma régua de fichas. A maquete 3D continua inteira, a um clique no alternador.
+
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
 
@@ -77,6 +84,8 @@ Abra o endereço indicado no terminal (normalmente `http://localhost:5173`).
 Outros comandos:
 
 ```bash
+npm run verificar    # a bateria inteira, na ordem — build + qa + lint:prosa + qa:ui.
+                     # É o gate de commit.
 npm run build        # build de produção (pasta dist/)
 npm run preview      # serve o build de produção
 npm run qa           # QA estático: os 4 perfis de jogador em TODOS os casos embarcados + guardas
