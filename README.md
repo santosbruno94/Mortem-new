@@ -78,15 +78,18 @@ Outros comandos:
 ```bash
 npm run build        # build de produção (pasta dist/)
 npm run preview      # serve o build de produção
-node scripts/qa.mjs     # QA estático: traça os perfis de jogador pelo motor (inclui o linter de prosa)
-node scripts/qa-ui.mjs  # QA de fumaça da interface (requer Playwright + Chromium)
+npm run qa           # QA estático: os 4 perfis de jogador em TODOS os casos embarcados + guardas
+npm run qa:ui        # QA de fumaça da interface (Playwright já vem nas devDependencies;
+                     # na primeira vez: npx playwright install chromium)
 npm run lint:prosa      # linter de prosa isolado: cheques mecânicos do guia de estilo
 npm run gerar:casos     # regenera o banco de casos da comarca (src/data/casos_gerados.js)
 npm run telemetria:monotonia  # índice de monotonia da prosa gerada (mesa; fora do bundle)
 ```
 
 Ferramentas de inspeção do gerador (build time, imprimem no terminal):
-`npm run demo:elenco`, `demo:cidade`, `demo:crime`, `demo:interferencia`.
+`npm run demo:elenco`, `demo:cidade`, `demo:crime`, `demo:interferencia` — e as
+auditorias `npm run gabarito`, `auditoria:elenco`, `relatorio:espacial`, `mc:batalha`,
+`buscar:replica`.
 
 ## Como se joga
 
@@ -137,7 +140,11 @@ src/
   store/        jogo.js (Zustand: fases, relógio, mapa, cartas registradas, conclusões, acusação, log)
   gerador/      ILHA de build time: autobattler do crime, cidade, elenco, vestígios, interferência
                 — resolve o caso e emite um pacote pronto; o runtime nunca o importa
-  components/   Escrivaninha, MuralAcusacao (o mural), EventoLocalidade, PranchaCorpo (exame
-                do corpo em SVG), CenaDialogo/FundoCena (cena ilustrada), diorama 3D da vila,
+  components/   Escrivaninha, MuralAcusacao (orquestrador; as estações vivem em mural/),
+                EventoLocalidade (apoios em localidade/), PranchaCorpo (exame do corpo em
+                SVG), CenaDialogo/FundoCena (cena ilustrada), diorama 3D da vila (diorama/),
                 painéis, Caderneta, Monólogo do Detetive…
+scripts/        qa.mjs (QA estático) · qa-ui.mjs (QA de interface) · gerar-casos.mjs ·
+                lib/ (coreografia dos 4 perfis, marcadores [[id]], núcleo de solvência da
+                fatia, famílias de método, monotonia — fontes únicas dos scripts)
 ```
