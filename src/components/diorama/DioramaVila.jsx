@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { useJogo } from '../../store/jogo.js';
@@ -240,7 +240,7 @@ function DesobstruirRotulos({ anchors, aoCalcular }) {
   return null;
 }
 
-export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
+function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
@@ -250,6 +250,11 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
 
   // Objeto compartilhado do ciclo de luz (lido pelos lampiões dos prédios).
   const luzRef = useRef({ lamp: 0.2 });
+
+  // A prop de perda de contexto, atualizada a cada render, para o listener
+  // do canvas (registrado uma vez em onCreated) nunca ver closure obsoleta.
+  const aoPerderContextoRef = useRef(aoPerderContexto);
+  aoPerderContextoRef.current = aoPerderContexto;
 
   // A fonte da maquete: o campo visual do pacote (caso gerado) ou o mapa
   // espacial estático (caso-escola). Resolução única por render — o pacote
@@ -277,9 +282,16 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
   }, [localidadeAtual]);
 
   // As localidades vêm do PACOTE corrente (o caso gerado tem as suas); o
-  // import estático de LOCALIDADES segue para o caso-escola.
-  const locsVisiveis = (maquete ? obterLocalidades() : LOCALIDADES).filter((loc) =>
-    nosDesbloqueados.includes(loc.id)
+  // import estático de LOCALIDADES segue para o caso-escola. MEMOIZADO por
+  // referência: um array novo a cada render invalidava `anchors`, que
+  // disparava o efeito do desobstrutor, que gravava offsets novos no estado
+  // — um laço de re-render perpétuo e silencioso (mesmos valores, outra
+  // identidade) enquanto a maquete estivesse na tela.
+  const locsVisiveis = useMemo(
+    () => (maquete ? obterLocalidades() : LOCALIDADES).filter((loc) => nosDesbloqueados.includes(loc.id)),
+    // maquete é estável por caso (módulo do pacote); a lista só muda ao
+    // desbloquear nó.
+    [maquete, nosDesbloqueados]
   );
   // O nó DISTANTE (fora da vila, na ponta da estrada): no caso-escola é o
   // gabinete de Moorford; na maquete gerada, qualquer nó com `distante`.
@@ -311,8 +323,20 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
       };
   // Deslocamentos de etiqueta calculados pelo desobstrutor (id → px). Estado
   // porque Predio precisa re-renderizar quando o layout muda; estável por
-  // tela (a projeção é fixa).
+  // tela (a projeção é fixa). O setter compara com o estado corrente e
+  // DEVOLVE A MESMA REFERÊNCIA quando nada mudou — segundo cinto contra o
+  // laço de re-render (o React ignora set com referência idêntica).
   const [offsetsRotulo, setOffsetsRotulo] = useState({});
+  const aoCalcularOffsets = useCallback((novos) => {
+    setOffsetsRotulo((atuais) => {
+      const chavesAtuais = Object.keys(atuais);
+      const chavesNovas = Object.keys(novos);
+      const iguais =
+        chavesAtuais.length === chavesNovas.length &&
+        chavesNovas.every((k) => atuais[k] === novos[k]);
+      return iguais ? atuais : novos;
+    });
+  }, []);
   // Âncoras das etiquetas no mundo (topo do pendão de cada nó visível), para
   // a projeção do desobstrutor. Mesma fórmula de `alturaRotulo` do Predio.
   const anchors = useMemo(
@@ -349,15 +373,16 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
       onCreated={({ gl }) => {
         // O contexto WebGL pode morrer após longa inatividade da aba (P3):
         // em vez de deixar a maquete preta, cede ao fallback 2D do
-        // guarda-corpo (Cena3DBoundary).
+        // guarda-corpo (Cena3DBoundary). O listener lê a prop via ref (nunca
+        // a closure do primeiro render); morre junto com o canvas no unmount.
         gl.domElement.addEventListener('webglcontextlost', (e) => {
           e.preventDefault();
-          aoPerderContexto?.();
+          aoPerderContextoRef.current?.();
         });
       }}
     >
       <CameraIsometrica enquadramento={enquadramento} />
-      <DesobstruirRotulos anchors={anchors} aoCalcular={setOffsetsRotulo} />
+      <DesobstruirRotulos anchors={anchors} aoCalcular={aoCalcularOffsets} />
       <LuzDoDia luzRef={luzRef} />
 
       {/* A tábua da maquete e o terreno */}
@@ -415,3 +440,9 @@ export default function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
     </Canvas>
   );
 }
+
+// memo: a Escrivaninha re-renderiza a cada mudança de store que assina
+// (overlay, ficha, glossário, som…) — sem o memo, cada uma re-renderizava a
+// árvore r3f inteira da maquete. As props (aoAbrirNo em useCallback,
+// aoPerderContexto estável) permitem o curto-circuito.
+export default memo(DioramaVila);

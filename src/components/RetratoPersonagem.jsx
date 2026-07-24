@@ -138,7 +138,6 @@ function RetratoPersonagem({ personagemId, tamanho = 88, className = '', variant
         width={tamanho}
         height={tamanho * 1.25}
         className={className}
-        role="img"
         aria-hidden="true"
       >
         <rect x="0" y="0" width="120" height="150" fill="#241f1a" />
@@ -175,7 +174,6 @@ function RetratoPersonagem({ personagemId, tamanho = 88, className = '', variant
       width={tamanho}
       height={tamanho * 1.25}
       className={className}
-      role="img"
       aria-hidden="true"
     >
       <defs>

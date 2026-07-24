@@ -145,10 +145,21 @@ export default function MuralAcusacao() {
   // para o motor seguir julgando a hora/causa. A dedução continua sendo declarar
   // a janela e a causa certas — e, sem o sinal que distingue a causa, ela não crava.
   useEffect(() => {
+    // Filtra ANTES de ligar (não confiar só na dedupe de adicionarLigacao,
+    // que mora noutro arquivo): o efeito roda a cada mount do mural e não
+    // pode depender da idempotência remota para não duplicar ligações.
+    const jaLigada = (cartaId, ancora) =>
+      useJogo
+        .getState()
+        .acusacao.ligacoes.some(
+          (l) => (l.de === cartaId && l.para === ancora) || (l.de === ancora && l.para === cartaId)
+        );
     cartas.forEach((c) => {
-      if (c.tagsOcultas.dominio === 'temporal') adicionarLigacao(c.id, ANCORAS.quando);
-      else if (c.tagsOcultas.dominio === 'causal' && (c.tagsOcultas.sinal || c.tagsOcultas.instrumento))
-        adicionarLigacao(c.id, ANCORAS.como);
+      if (c.tagsOcultas.dominio === 'temporal') {
+        if (!jaLigada(c.id, ANCORAS.quando)) adicionarLigacao(c.id, ANCORAS.quando);
+      } else if (c.tagsOcultas.dominio === 'causal' && (c.tagsOcultas.sinal || c.tagsOcultas.instrumento)) {
+        if (!jaLigada(c.id, ANCORAS.como)) adicionarLigacao(c.id, ANCORAS.como);
+      }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartas]);
@@ -175,11 +186,13 @@ export default function MuralAcusacao() {
     if (acusacao.juizos[sp.id] !== 'inocente') continue;
     const alibi = cartas.find((c) => ehAlibiDe(c, sp.id));
     if (!alibi) continue;
-    const vestigios = cartas.filter(
+    // Nome próprio (não `vestigios`): sombrear a lista do componente
+    // (linha acima, os vestígios da Estação II) convida a erro.
+    const vestigiosDoSuspeito = cartas.filter(
       (c) => c.tagsOcultas.dominio === 'vestigio' && c.tagsOcultas.pertenceA === sp.id
     );
-    if (vestigios.length === 0) continue;
-    const confrontado = vestigios.some((v) =>
+    if (vestigiosDoSuspeito.length === 0) continue;
+    const confrontado = vestigiosDoSuspeito.some((v) =>
       acusacao.ligacoes.some(
         (l) => (l.de === v.id && l.para === alibi.id) || (l.de === alibi.id && l.para === v.id)
       )
@@ -647,7 +660,7 @@ function CarimboColeta({ hora, clara = false }) {
 // =====================================================================
 // ESTAÇÃO II — A PRESENÇA: nomear o réu e LIGAR (barbante) um vestígio à cena.
 // =====================================================================
-function EstacaoPresenca({ acusacao, definirReu, vestigios, estaLigada, adicionarLigacao, removerLigacao }) {
+function EstacaoPresenca({ acusacao, definirReu, vestigios, adicionarLigacao, removerLigacao }) {
   const alvo = { id: ANCORAS.presenca, rotulo: 'Presença — o réu na cena', ehAncora: true };
   return (
     <div>
@@ -1126,15 +1139,27 @@ function Barbante({ a, b, aoRemover }) {
 
   return (
     <g>
+      {/* Acessível por teclado: o barbante é focável e remove-se com
+          Enter/Espaço — desfazer uma ligação não pode exigir mouse. */}
       <path
         d={d(QUADROS_BOIL[0])}
         fill="none"
         stroke="transparent"
         strokeWidth={24}
         style={{ pointerEvents: 'stroke', cursor: 'pointer' }}
+        role="button"
+        tabIndex={0}
+        aria-label="Desfazer esta ligação"
         onClick={() => {
           tocarSom('barbante');
           aoRemover();
+        }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            tocarSom('barbante');
+            aoRemover();
+          }
         }}
       />
       {/* O fio tem corpo (Q7): sombra por baixo, torção clara por cima.
@@ -1185,8 +1210,12 @@ function SeletorJanela({ acusacao, definirJanela }) {
     return (
       <div className="flex items-center gap-1">
         <span className="text-stone-400 text-[10px] w-10">{rotulo}</span>
+        {/* aria-label associa o rótulo visual (um span solto) ao select para
+            leitores de tela. A ORDEM dos dois selects é contrato do qa-ui —
+            não reordenar. */}
         <select
           className={classe}
+          aria-label={`${rotulo} da janela da morte`}
           value={acusacao.janela[bound] != null ? String(acusacao.janela[bound]) : ''}
           onChange={(e) => {
             if (e.target.value === '') return;

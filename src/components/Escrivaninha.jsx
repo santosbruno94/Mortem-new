@@ -1,4 +1,4 @@
-import { lazy, Suspense, useMemo } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { custoViagem, obterCaso, obterDialogo, obterMaquete } from '../data/pacote_caso.js';
 import { POSICOES_DIORAMA } from '../data/mapa_espacial.js';
@@ -51,22 +51,35 @@ export default function Escrivaninha() {
     return obterCaso().nosMapa.every((n) => posicoes[n.id]);
   }, []);
 
+  // O beat da viagem 3D pendente: dois cliques rápidos em nós distintos não
+  // podem enfileirar duas aberturas (o overlay do primeiro abriria e fecharia
+  // por cima do segundo). O timeout corrente limpa-se no próximo clique e no
+  // desmonte.
+  const beatViagemRef = useRef(null);
+  useEffect(() => () => clearTimeout(beatViagemRef.current), []);
+
   // Um único handler de viagem serve à maquete 3D e à grade 2D —
   // paridade por construção (o QA joga pelos dois caminhos). Na maquete 3D,
   // uma viagem com custo real ganha um BEAT (~0,7s): o pino desliza o
   // trajeto e a luz vira com a hora antes de o local abrir (a mesa só
   // desfoca ao abrir o overlay). Viagem de 0h e o modo 2D abrem no ato.
-  const aoAbrirNo = (loc) => {
-    const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
-    const viagemReal = custo > 0 && loc.id !== localidadeAtual;
-    if (viagemReal) tocarSom('sino'); // a viagem tem sino (Q7)
-    viajarPara(loc.id);
-    if (usar3D && viagemReal) {
-      setTimeout(() => abrirOverlay('localidade', loc.id), 720);
-    } else {
-      abrirOverlay('localidade', loc.id);
-    }
-  };
+  // useCallback: a referência estável permite o memo do DioramaVila —
+  // sem ela, cada mudança de store re-renderizava a árvore r3f inteira.
+  const aoAbrirNo = useCallback(
+    (loc) => {
+      const custo = localidadeAtual ? custoViagem(localidadeAtual, loc.id) : 0;
+      const viagemReal = custo > 0 && loc.id !== localidadeAtual;
+      if (viagemReal) tocarSom('sino'); // a viagem tem sino (Q7)
+      viajarPara(loc.id);
+      clearTimeout(beatViagemRef.current);
+      if (usar3D && viagemReal) {
+        beatViagemRef.current = setTimeout(() => abrirOverlay('localidade', loc.id), 720);
+      } else {
+        abrirOverlay('localidade', loc.id);
+      }
+    },
+    [localidadeAtual, usar3D, viajarPara, abrirOverlay]
+  );
 
   const mesa2D = <MesaLocalidades2D aoAbrirNo={aoAbrirNo} />;
 
@@ -179,7 +192,10 @@ export default function Escrivaninha() {
       {/* O Glossário (§9) é camada própria ACIMA da ficha (P0 §3 do playtest
           de 17/07): a pilha é sempre base < ficha < glossário — abrir o
           verbete pela ficha não descarta o overlay que estava por baixo. */}
-      {glossarioAberto !== null && <ModalGlossario />}
+      {/* key por verbete: abrirGlossario(verbete) com o modal JÁ aberto
+          remonta no verbete pedido (o estado interno nasce da prop só no
+          mount — sem a key, ficaria preso no verbete antigo). */}
+      {glossarioAberto !== null && <ModalGlossario key={glossarioAberto.verbeteId ?? 'livre'} />}
 
       {/* O aviso de pouso (Onda 4): a etiqueta que anuncia a observação
           registrada deslizando para a mesa — clicável para abrir a ficha. */}

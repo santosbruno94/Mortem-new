@@ -69,7 +69,6 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
 
   // Os nós de reação/evasiva não são posição de conversa: são resposta a uma
   // prova. Nunca persistem como beat, e neles a conversa "retoma".
-  const nosReacao = new Set([...Object.values(dialogo.reacoesProva || {}), dialogo.noEvasiva]);
   const emReacao = !!reacaoAtual;
 
   // Escolher um tom: DESCE a árvore (definitivo) e persiste o novo beat.
