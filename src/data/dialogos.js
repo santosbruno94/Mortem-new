@@ -77,11 +77,13 @@ export const DIALOGOS = {
         fala: [
           'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.treatment}, {g:o senhor|a senhora} há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje a bancada amanheceu sem lume."',
         ],
+        // rotuloVars: a redação da pergunta varia pela identidade do perito
+        // (a intenção do tom é a mesma). Ver InterrogatorioDialogo.
         opcoes: [
-          { rotulo: '"Onde esteve na noite de sexta. Sem rodeios."', vaiPara: 'b1_firme', tom: 'firme' },
-          { rotulo: '"Conte-me da sexta com calma; o senhor conhecia bem a casa."', vaiPara: 'b1_cordial', tom: 'cordial' },
-          { rotulo: '"A sexta-feira, os seus passos, hora a hora."', vaiPara: 'b1_tecnico', tom: 'tecnico' },
-          { rotulo: '"Ficou até tarde na oficina, na sexta?"', vaiPara: 'b1_obliquo', tom: 'obliquo' },
+          { rotulo: '"Onde esteve na noite de sexta. Sem rodeios."', rotuloVars: ['"Onde esteve na noite de sexta. Sem rodeios."', '"A noite de sexta, sr. Crane: onde, e sem voltas."'], vaiPara: 'b1_firme', tom: 'firme' },
+          { rotulo: '"Conte-me da sexta com calma; o senhor conhecia bem a casa."', rotuloVars: ['"Conte-me da sexta com calma; o senhor conhecia bem a casa."', '"A seu tempo: a sexta do senhor, do fechar da loja em diante."'], vaiPara: 'b1_cordial', tom: 'cordial' },
+          { rotulo: '"A sexta-feira, os seus passos, hora a hora."', rotuloVars: ['"A sexta-feira, os seus passos, hora a hora."', '"Reconstitua-me a sexta: cada hora no seu lugar."'], vaiPara: 'b1_tecnico', tom: 'tecnico' },
+          { rotulo: '"Ficou até tarde na oficina, na sexta?"', rotuloVars: ['"Ficou até tarde na oficina, na sexta?"', '"A bancada apaga-se a que horas?"'], vaiPara: 'b1_obliquo', tom: 'obliquo' },
         ],
       },
 
@@ -218,10 +220,10 @@ export const DIALOGOS = {
           'A loja cheira a goma e a papel novo; o balcão reluz de cera. Ao fundo, o postigo do correio e a balança de cartas, com algumas por despachar. Sobre o mostrador, apartado do resto, papel de carta com tarja de luto. A Sra. Agnes Rooke atende de pé, do lado de dentro do balcão, e mede o visitante por cima dos óculos. "{detective.treatment}." Não oferece cadeira. Espera a pergunta.',
         ],
         opcoes: [
-          { rotulo: '"A senhora esconde a sua noite de sexta. Onde esteve?"', vaiPara: 'b1_firme', tom: 'firme' },
-          { rotulo: '"Perdão pela hora, minha senhora. A sexta-feira, como a passou?"', vaiPara: 'b1_cordial', tom: 'cordial' },
-          { rotulo: '"Preciso do seu paradeiro na sexta à noite."', vaiPara: 'b1_tecnico', tom: 'tecnico' },
-          { rotulo: '"A senhora fecha a loja tarde?"', vaiPara: 'b1_obliquo', tom: 'obliquo' },
+          { rotulo: '"A senhora esconde a sua noite de sexta. Onde esteve?"', rotuloVars: ['"A senhora esconde a sua noite de sexta. Onde esteve?"', '"A sua sexta à noite, minha senhora. Sem meias palavras."'], vaiPara: 'b1_firme', tom: 'firme' },
+          { rotulo: '"Perdão pela hora, minha senhora. A sexta-feira, como a passou?"', rotuloVars: ['"Perdão pela hora, minha senhora. A sexta-feira, como a passou?"', '"Com sua licença, minha senhora: a sexta-feira, como decorreu?"'], vaiPara: 'b1_cordial', tom: 'cordial' },
+          { rotulo: '"Preciso do seu paradeiro na sexta à noite."', rotuloVars: ['"Preciso do seu paradeiro na sexta à noite."', '"A sexta à noite: hora e lugar, se me faz o favor."'], vaiPara: 'b1_tecnico', tom: 'tecnico' },
+          { rotulo: '"A senhora fecha a loja tarde?"', rotuloVars: ['"A senhora fecha a loja tarde?"', '"A que horas corre o ferrolho da loja?"'], vaiPara: 'b1_obliquo', tom: 'obliquo' },
         ],
       },
 
@@ -346,10 +348,10 @@ export const DIALOGOS = {
           'O moinho trabalha em pleno sábado: sacas na rampa, poeira de farinha na luz da porta, o carroceiro do Finch à espera com a parelha. Caleb Grey passa com uma saca ao ombro e não a pousa para cumprimentar. "Pergunte andando, {detective.treatment}, que a feira não espera defunto."',
         ],
         opcoes: [
-          { rotulo: '"Pare a saca. Onde esteve na sexta à noite?"', vaiPara: 'b1_firme', tom: 'firme' },
-          { rotulo: '"Sei que é dia de feira; só a sua sexta-feira, e sigo."', vaiPara: 'b1_cordial', tom: 'cordial' },
-          { rotulo: '"Sexta à noite: hora e testemunha, se tiver."', vaiPara: 'b1_tecnico', tom: 'tecnico' },
-          { rotulo: '"Trabalha até tarde no moinho?"', vaiPara: 'b1_obliquo', tom: 'obliquo' },
+          { rotulo: '"Pare a saca. Onde esteve na sexta à noite?"', rotuloVars: ['"Pare a saca. Onde esteve na sexta à noite?"', '"Pouse a saca um instante. A sexta à noite: onde?"'], vaiPara: 'b1_firme', tom: 'firme' },
+          { rotulo: '"Sei que é dia de feira; só a sua sexta-feira, e sigo."', rotuloVars: ['"Sei que é dia de feira; só a sua sexta-feira, e sigo."', '"Não lhe roubo a feira: a sua sexta-feira, e o deixo à lida."'], vaiPara: 'b1_cordial', tom: 'cordial' },
+          { rotulo: '"Sexta à noite: hora e testemunha, se tiver."', rotuloVars: ['"Sexta à noite: hora e testemunha, se tiver."', '"A sexta à noite, ao certo: hora, lugar e quem o viu."'], vaiPara: 'b1_tecnico', tom: 'tecnico' },
+          { rotulo: '"Trabalha até tarde no moinho?"', rotuloVars: ['"Trabalha até tarde no moinho?"', '"O moinho mói até que horas?"'], vaiPara: 'b1_obliquo', tom: 'obliquo' },
         ],
       },
 
@@ -476,10 +478,10 @@ export const DIALOGOS = {
           'Walter Arthurs desce à sala sem casaco, a barba de ontem por fazer, e fica de pé junto ao aparador. "Soube esta manhã e estou aqui desde então, às ordens de quem as tiver. A casa do meu tio está lacrada; tomei o quarto três. Pergunte-se o que houver, {detective.treatment}, e pergunte-se logo, que negociante parado é dinheiro andando para trás." Enquanto fala, abotoa e desabotoa o botão alto do colete.',
         ],
         opcoes: [
-          { rotulo: '"Onde esteve na sexta à noite? Pense antes de responder."', vaiPara: 'b1_firme', tom: 'firme' },
-          { rotulo: '"Deve ter sido um dia duro. A sexta, como foi?"', vaiPara: 'b1_cordial', tom: 'cordial' },
-          { rotulo: '"O seu paradeiro na sexta, do fim da tarde à noite."', vaiPara: 'b1_tecnico', tom: 'tecnico' },
-          { rotulo: '"Dormiu bem, na sexta?"', vaiPara: 'b1_obliquo', tom: 'obliquo' },
+          { rotulo: '"Onde esteve na sexta à noite? Pense antes de responder."', rotuloVars: ['"Onde esteve na sexta à noite? Pense antes de responder."', '"A sexta à noite, sr. Arthurs. E pense bem no que diz."'], vaiPara: 'b1_firme', tom: 'firme' },
+          { rotulo: '"Deve ter sido um dia duro. A sexta, como foi?"', rotuloVars: ['"Deve ter sido um dia duro. A sexta, como foi?"', '"Não deve ter sido fácil. Conte-me da sua sexta."'], vaiPara: 'b1_cordial', tom: 'cordial' },
+          { rotulo: '"O seu paradeiro na sexta, do fim da tarde à noite."', rotuloVars: ['"O seu paradeiro na sexta, do fim da tarde à noite."', '"Do fim da tarde à noite de sexta: onde esteve, e quando."'], vaiPara: 'b1_tecnico', tom: 'tecnico' },
+          { rotulo: '"Dormiu bem, na sexta?"', rotuloVars: ['"Dormiu bem, na sexta?"', '"A que horas se recolheu, na sexta?"'], vaiPara: 'b1_obliquo', tom: 'obliquo' },
         ],
       },
 
@@ -613,10 +615,10 @@ export const DIALOGOS = {
           'Davey Tull varre um chão que já não dá pó. Ao ver gente, encosta a vassoura no ombro e espera a pergunta de olhos erguidos. "O Sr. Crane disse pra eu tomar conta da oficina. Eu tomo conta e vou varrendo, que parado o serviço não rende."',
         ],
         opcoes: [
-          { rotulo: '"Olha para mim, rapaz. Que costumes tinha o teu patrão?"', vaiPara: 'b1_firme', tom: 'firme' },
-          { rotulo: '"Não tenhas receio. Fala-me do teu patrão."', vaiPara: 'b1_cordial', tom: 'cordial' },
-          { rotulo: '"Os hábitos do Sr. Arthurs, à noite. Descreve-os."', vaiPara: 'b1_tecnico', tom: 'tecnico' },
-          { rotulo: '"Aprendias a dar corda aos relógios?"', vaiPara: 'b1_obliquo', tom: 'obliquo' },
+          { rotulo: '"Olha para mim, rapaz. Que costumes tinha o teu patrão?"', rotuloVars: ['"Olha para mim, rapaz. Que costumes tinha o teu patrão?"', '"Ergue os olhos, rapaz. Que homem era o teu patrão?"'], vaiPara: 'b1_firme', tom: 'firme' },
+          { rotulo: '"Não tenhas receio. Fala-me do teu patrão."', rotuloVars: ['"Não tenhas receio. Fala-me do teu patrão."', '"Fica descansado. Conta-me do Sr. Arthurs."'], vaiPara: 'b1_cordial', tom: 'cordial' },
+          { rotulo: '"Os hábitos do Sr. Arthurs, à noite. Descreve-os."', rotuloVars: ['"Os hábitos do Sr. Arthurs, à noite. Descreve-os."', '"Os costumes do teu patrão à noite: descreve-mos por ordem."'], vaiPara: 'b1_tecnico', tom: 'tecnico' },
+          { rotulo: '"Aprendias a dar corda aos relógios?"', rotuloVars: ['"Aprendias a dar corda aos relógios?"', '"Sabias dar corda aos relógios da casa?"'], vaiPara: 'b1_obliquo', tom: 'obliquo' },
         ],
       },
 

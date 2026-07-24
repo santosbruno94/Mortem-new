@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { interpolar } from '../logic/interpolar.js';
+import { escolherDeterministico } from '../logic/hash.js';
 import {
   obterLocalidade,
   obterDialogo,
@@ -192,9 +193,17 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       <div className="mt-6 space-y-2" data-opcoes-dialogo>
         {opcoesVisiveis.map((op, i) => {
           const ehConfronto = !!op.requerCarta;
+          // Variação da PERGUNTA (caso-escola): quando a opção traz um pool
+          // `rotuloVars`, a redação varia pela IDENTIDADE DO PERITO (o único
+          // eixo determinístico do tutorial — seed fixa) — cada persona ouve
+          // as próprias perguntas, a intenção do tom intacta. Sem pool, o
+          // rótulo de sempre. Os diálogos gerados já variam no build.
+          const rotuloBase = op.rotuloVars
+            ? escolherDeterministico(op.rotuloVars, `${detective.surname || ''}|${suspeitoId}|${noExibido}|${i}`)
+            : op.rotulo;
           return (
             <button
-              key={`${i}-${op.rotulo}`}
+              key={`${i}-${op.tom || op.rotulo}`}
               type="button"
               className={`opcao-dialogo ${ehConfronto ? 'opcao-dialogo--confronto' : ''}`}
               data-confronto={ehConfronto ? '' : undefined}
@@ -204,7 +213,7 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
               <span className="opcao-marca" aria-hidden>
                 {ehConfronto ? '❦' : MARCA_TOM[op.tom] || '›'}
               </span>
-              <span className="opcao-rotulo-texto">{interpolar(op.rotulo, detective)}</span>
+              <span className="opcao-rotulo-texto">{interpolar(rotuloBase, detective)}</span>
             </button>
           );
         })}
