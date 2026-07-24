@@ -10,6 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "verificar": "npm run build && npm run qa && npm run lint:prosa && npm run qa:ui",
     "qa": "node scripts/qa.mjs",
     "qa:ui": "node scripts/qa-ui.mjs",
     "lint:prosa": "node scripts/lint-prosa.mjs",

@@ -1033,3 +1033,47 @@ motor, o gerador e a gramática da acusação ficaram intocados. Gates verdes em
   de luta no agressor; o caso-escola é homicídio por arma branca sem luta e não a suporta sem
   fabricar um sinal que fura o fair play. Pertence ao gerador (autobattler produz a luta +
   ruído honesto nos inocentes). Gatilho: ordem expressa. Detalhe na nota §Inc.6.
+
+## 24/07/2026 — OS Prancha da Vila (E1): a gravura assume o hub
+
+Ordem de serviço "Prancha da Vila", etapa E1. Só camada de apresentação: motor, gerador,
+pacote e gramática da acusação intocados. Gates verdes (`npm run build`, `qa.mjs`, `qa-ui.mjs`).
+
+- **A prancha de gravura passa a ser a vista PADRÃO da escrivaninha; o diorama 3D vira
+  alternador opcional, intocado.** Motivo de design: depois do pivô do Gabinete Ilustrado,
+  corpo e conversas são gravura de 1893 e o diorama era a única superfície falando outra
+  língua. Motivo de custo: a vista 2D **já era o fallback obrigatório** (`?flat=1`, sonda de
+  WebGL, perda de contexto) — promovê-la deixa **uma** superfície de nó a manter em vez de
+  duas. `DioramaVila` não perdeu uma linha; só deixou de decidir sozinho qual vista sobe.
+- **`usar3D` deixou de existir**; no lugar entraram `temEspaco` (o caso conhece a posição de
+  todos os nós — a mesma dupla de fontes de sempre: campo visual `maquete` do pacote ou o
+  mapa espacial estático) e `tresDDisponivel` ("a maquete PODE subir"). Sem espaço, a grade
+  2D de cartas segue sendo o fallback derradeiro. Preferência do jogador em chave nova de
+  `localStorage` (`mortem-vista-da-mesa`); nenhuma chave existente foi tocada.
+- **O chunk do three.js só desce se o jogador pedir a maquete.** O `qa-ui.mjs` passou a
+  vigiar isto pela REDE (nenhuma requisição de `DioramaVila`/three numa sessão que fica na
+  prancha) — antes o import era lazy, mas subia sempre.
+- **Etiquetas: as mesmas, no mesmo lugar do documento.** A prancha reaproveita `RotuloNo`
+  (HTML real, nunca `<text>`), com o mesmo verbo, custo, "— aqui —" e lembrete de visita, e o
+  MESMO `aoAbrirNo`. Duas consequências registradas em código: (a) a ordem do DOM das
+  etiquetas é a **ordem do hub**, não a de profundidade — dois nós podem partilhar prefixo
+  ("Cottage nº 4" e "Cottage nº 4 — a busca") e quem vem primeiro tem de ser sempre o mesmo;
+  (b) o cordão saiu do CSS da tag e virou traço de SVG, porque o arranjo pode empurrar a
+  etiqueta para cima, para baixo ou para o lado da fachada.
+- **Arranjo de etiquetas: anel, não desobstrutor.** `arrumarEtiquetas` (pura, em
+  `src/logic/prancha_vila.js`) procura lugar em volta da fachada — primeiro sobe, depois
+  desce, por fim anda de lado — contra as caixas MEDIDAS das etiquetas já postas, e nunca
+  sai da folha. Foi preciso: a vila gerada é mais povoada e de nomes mais compridos que a do
+  caso-escola, e a primeira versão (só degrau para cima, caixa estimada única) deixava dois
+  nós um sobre o outro — o de baixo deixava de ser clicável.
+- **Divergências deliberadas do desenho de referência (turno 2 do documento de frontend):**
+  1. **O nome da vila não entra na cabeça da folha** ("BRIARSTONE" no desenho). Nome de vila
+     pertence ao pacote da seed; cravá-lo acertaria um caso e erraria os outros trinta e um
+     (`sistema-visual.md` §9). A folha diz "A VILA — prancha do perito".
+  2. **O letreiro gravado na fachada não repete o rótulo do nó.** Sai do rótulo sem o artigo,
+     em caixa-alta e reduzido à primeira palavra quando longo — e é **suprimido** quando
+     conteria o rótulo de algum nó visível, porque o `qa-ui` (e o leitor de tela) alcançam os
+     nós por texto e o letreiro roubaria o clique da etiqueta.
+  3. **A régua "1H DE VILA" mede o menor percurso que ainda custa uma hora**, não a média: o
+     custo do jogo é por GRUPO, não por distância, e a média deixaria a régua prometendo uma
+     hora onde ela não vale.

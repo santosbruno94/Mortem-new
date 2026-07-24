@@ -69,6 +69,8 @@ com zero achados bloqueantes.**
 
 ## Verificação
 
+- `npm run verificar` — a bateria inteira, na ordem: build + `qa.mjs` (inclui a auditoria de
+  determinismo) + `lint:prosa` + `qa-ui.mjs`. É o gate de commit.
 - `npm run build` — build limpo é obrigatório.
 - `node scripts/qa.mjs` — QA estático: os 4 perfis de jogador devem produzir os 4
   desfechos (Metódico → Vitória Absoluta; Apressado → Erro Judiciário; Intuitivo →

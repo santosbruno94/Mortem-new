@@ -43,6 +43,7 @@ idêntico com zero arquivos de arte no bundle.**
 | 5 | "Gravura que respira" + estado de reação observável | ✅ Feito (CSS `.gravura-respira`/`.cena-sprite--reacao`) |
 | 6 | Verbo "Exigir que mostre" | ⏭️ **Deferido — fase própria** (ver abaixo) |
 | 7 | Slots de asset sob contrato | ✅ Feito (slots `prancha_corpo`/`fundo_cena` em `slots_assets.js`) |
+| 8 | A vila do hub em gravura (OS Prancha da Vila) | ✅ Feito (`prancha/PranchaVila.jsx`) — **a prancha é a vista padrão; o diorama 3D é alternador opcional, intocado** |
 
 ### Sistema 1 — A Prancha (Inc. 1–2)
 
@@ -54,7 +55,8 @@ número novo, motor cego. Duas faces ("Virar a prancha": frente ↔ dorso, rotul
 e não pelo decúbito, para o livor dorsal não ler como corpo movido) e uma camada de
 **necropsia** (dissecção do trajeto da ferida — ilustrativa, 0 hotspots, "não acrescenta ao
 que o corpo já disse"). Placeholder que É o fallback: SVG (nunca `<canvas>`) preserva o
-`?flat=1`. **O cadáver 3D foi aposentado; o diorama da vila segue 3D, intocado.**
+`?flat=1`. **O cadáver 3D foi aposentado; o diorama da vila continua no repositório e
+intocado — mas desde a OS Prancha da Vila deixou de ser a vista padrão (ver Sistema 3).**
 
 ### Sistema 2 — A Cena (Inc. 3–5)
 
@@ -65,6 +67,22 @@ tipo derivado do nó) + **sprite meio-corpo** do interlocutor (`RetratoPersonage
 congela sob `prefers-reduced-motion`) e "reação observável" (o interrogado desvia de leve ao
 ser confrontado — gesto, nunca legenda; a regra "reação, nunca confissão" segue valendo). O
 contrato do `qa-ui` foi preservado (o sprite carrega `data-retrato`).
+
+### Sistema 3 — A Prancha da Vila (Inc. 8)
+
+O hub deixa de ser maquete 3D e passa a ser **prancha de gravura** em SVG procedural
+(`src/components/prancha/PranchaVila.jsx`): moldura de quadro gravado, linha de horizonte,
+casario hachurado, um prédio por nó desbloqueado (silhueta derivada da MESMA `forma` que o
+diorama consome), escala gráfica e rosa dos ventos. As etiquetas dos nós continuam HTML real
+(`RotuloNo`) sobre o desenho, com o mesmo texto e o mesmo handler de viagem — paridade por
+construção. Nenhum dado novo: a fonte espacial é a dupla de sempre (campo visual `maquete` do
+pacote, ou `mapa_espacial.js` no caso-escola).
+
+**Estado das duas vistas:** a prancha é o PADRÃO; `DioramaVila` continua inteiro, atrás do
+alternador de dois botões no pé da mesa ("A prancha" / "A maquete"), com a preferência em
+`localStorage`. Sem WebGL, em `?flat=1` ou depois de o contexto 3D cair, "A maquete" fica
+desabilitada com o motivo legível e a prancha segue de pé — ela É o fallback. O chunk do
+three.js só desce se o jogador pedir a maquete.
 
 ## Decisões (§8 da nota original), tomadas nesta sessão
 
@@ -95,6 +113,6 @@ guardas de solvabilidade/fair play novas no `qa.mjs`. **Abre-se só com ordem ex
 ## O que este pivô NÃO muda
 
 Motor e gramática da acusação; `tagsOcultas` como única leitura do veredicto; economia de
-tempo; mural, monólogo e os 4 desfechos; a Caderneta como diário; o diorama 3D da vila e a
-regra do 3D 100% procedural; a norma de prosa e o pipeline `revisar-prosa`; o contrato do
+tempo; mural, monólogo e os 4 desfechos; a Caderneta como diário; o código do diorama 3D da
+vila (que segue intocado, agora como vista alternativa) e a regra do 3D 100% procedural; a norma de prosa e o pipeline `revisar-prosa`; o contrato do
 `qa-ui.mjs`.

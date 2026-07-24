@@ -1,4 +1,4 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { custoViagem, obterCaso, obterDialogo, obterMaquete } from '../data/pacote_caso.js';
 import { POSICOES_DIORAMA } from '../data/mapa_espacial.js';
@@ -6,6 +6,7 @@ import { webglDisponivel, modoFlat } from '../logic/webgl.js';
 import { tocarSom } from '../som.js';
 import RelogioBolso from './RelogioBolso.jsx';
 import MesaLocalidades2D from './MesaLocalidades2D.jsx';
+import PranchaVila from './prancha/PranchaVila.jsx';
 import Cena3DBoundary from './Cena3DBoundary.jsx';
 import EventoLocalidade from './EventoLocalidade.jsx';
 import InterrogatorioDialogo from './InterrogatorioDialogo.jsx';
@@ -20,9 +21,29 @@ import MonologoFinal from './MonologoFinal.jsx';
 import FichaPessoa from './FichaPessoa.jsx';
 
 // O diorama chega por chunk próprio (three.js pesa): a mesa nunca espera
-// o 3D — enquanto o chunk baixa, a grade 2D já é jogável (fallback do
-// Suspense), e sem WebGL a grade fica em definitivo.
+// o 3D — enquanto o chunk baixa, a PRANCHA já é jogável (fallback do
+// Suspense), e sem WebGL a prancha fica em definitivo. Desde a OS Prancha
+// da Vila (E1) o import só acontece se o jogador PEDIR a maquete: numa
+// sessão que nunca abre "A maquete", nenhum chunk de three baixa.
 const DioramaVila = lazy(() => import('./diorama/DioramaVila.jsx'));
+
+// A vista da mesa, lembrada entre sessões. Chave NOVA (nenhuma chave
+// existente é tocada); ausente ou ilegível, o padrão é a prancha.
+const CHAVE_VISTA = 'mortem-vista-da-mesa';
+function lerVistaSalva() {
+  try {
+    return window.localStorage.getItem(CHAVE_VISTA) === 'maquete' ? 'maquete' : 'prancha';
+  } catch {
+    return 'prancha';
+  }
+}
+function gravarVista(vista) {
+  try {
+    window.localStorage.setItem(CHAVE_VISTA, vista);
+  } catch {
+    // armazenamento indisponível (aba privada): a preferência vale só a sessão
+  }
+}
 
 // O hub permanente (§5). O jogador nunca sai desta tela: eventos,
 // gavetas e painéis abrem como overlays e a mesa apenas se desfoca.
@@ -39,17 +60,40 @@ export default function Escrivaninha() {
 
   const mesaDesfocada = overlay !== null || glossarioAberto !== null;
 
-  // 3D só com WebGL e fora da rota de escape ?flat=1 (decisão única por
-  // sessão) — e só quando a maquete CONHECE todos os nós do caso. A fonte
-  // é dupla (OS da vila na mesa): o caso GERADO traz a própria vila no
-  // campo visual `maquete` do pacote; o caso-escola usa o mapa espacial
-  // estático. Nó sem posição em qualquer fonte ⇒ grade 2D, que é o
-  // fallback obrigatório de todo ponto 3D.
-  const usar3D = useMemo(() => {
-    if (modoFlat() || !webglDisponivel()) return false;
+  // O ESPAÇO do caso é conhecido? A fonte é dupla (OS da vila na mesa): o
+  // caso GERADO traz a própria vila no campo visual `maquete` do pacote; o
+  // caso-escola usa o mapa espacial estático. Nó sem posição em qualquer
+  // fonte ⇒ nem prancha nem maquete: a grade 2D de cartas, que segue sendo
+  // o fallback derradeiro.
+  const temEspaco = useMemo(() => {
     const posicoes = obterMaquete()?.posicoes || POSICOES_DIORAMA;
     return obterCaso().nosMapa.every((n) => posicoes[n.id]);
   }, []);
+
+  // A maquete 3D DISPONÍVEL (deixou de decidir sozinha qual vista sobe —
+  // OS Prancha da Vila, E1): só com WebGL, fora da rota de escape ?flat=1
+  // e com o espaço do caso conhecido.
+  const tresDDisponivel = useMemo(
+    () => temEspaco && !modoFlat() && webglDisponivel(),
+    [temEspaco]
+  );
+  const [vistaEscolhida, setVistaEscolhida] = useState(lerVistaSalva);
+  // Contexto WebGL perdido em runtime: a maquete cai de vez nesta sessão e
+  // a prancha assume — o alternador diz por quê, em vez de oferecer um
+  // botão que não faz nada.
+  const [contextoPerdido, setContextoPerdido] = useState(false);
+  const maqueteAberta = tresDDisponivel && !contextoPerdido && vistaEscolhida === 'maquete';
+  const escolherVista = useCallback((vista) => {
+    setVistaEscolhida(vista);
+    gravarVista(vista);
+  }, []);
+  const motivoSemMaquete = !temEspaco
+    ? 'este caso não traz maquete'
+    : modoFlat()
+      ? 'a rota ?flat=1 dispensa o 3D'
+      : contextoPerdido
+        ? 'o 3D caiu nesta sessão'
+        : 'sem WebGL neste navegador';
 
   // O beat da viagem 3D pendente: dois cliques rápidos em nós distintos não
   // podem enfileirar duas aberturas (o overlay do primeiro abriria e fecharia
@@ -58,11 +102,11 @@ export default function Escrivaninha() {
   const beatViagemRef = useRef(null);
   useEffect(() => () => clearTimeout(beatViagemRef.current), []);
 
-  // Um único handler de viagem serve à maquete 3D e à grade 2D —
-  // paridade por construção (o QA joga pelos dois caminhos). Na maquete 3D,
+  // Um único handler de viagem serve à prancha, à maquete 3D e à grade 2D —
+  // paridade por construção (o QA joga pelos três caminhos). Na maquete 3D,
   // uma viagem com custo real ganha um BEAT (~0,7s): o pino desliza o
   // trajeto e a luz vira com a hora antes de o local abrir (a mesa só
-  // desfoca ao abrir o overlay). Viagem de 0h e o modo 2D abrem no ato.
+  // desfoca ao abrir o overlay). Viagem de 0h e as vistas 2D abrem no ato.
   // useCallback: a referência estável permite o memo do DioramaVila —
   // sem ela, cada mudança de store re-renderizava a árvore r3f inteira.
   const aoAbrirNo = useCallback(
@@ -72,16 +116,30 @@ export default function Escrivaninha() {
       if (viagemReal) tocarSom('sino'); // a viagem tem sino (Q7)
       viajarPara(loc.id);
       clearTimeout(beatViagemRef.current);
-      if (usar3D && viagemReal) {
+      if (maqueteAberta && viagemReal) {
         beatViagemRef.current = setTimeout(() => abrirOverlay('localidade', loc.id), 720);
       } else {
         abrirOverlay('localidade', loc.id);
       }
     },
-    [localidadeAtual, usar3D, viajarPara, abrirOverlay]
+    [localidadeAtual, maqueteAberta, viajarPara, abrirOverlay]
   );
 
   const mesa2D = <MesaLocalidades2D aoAbrirNo={aoAbrirNo} />;
+
+  // A vista PADRÃO: a prancha de gravura no alto da mesa e a bandeja de
+  // fichas por baixo — o mesmo desenho de banda que a maquete ocupava.
+  const vistaPrancha = (
+    <div className="absolute inset-0 flex flex-col">
+      <div className="shrink-0 relative h-[54%] lg:h-[52%] min-h-[300px] border-b border-black/40 prancha-mesa-fundo">
+        <PranchaVila aoAbrirNo={aoAbrirNo} />
+      </div>
+      <div className="relative flex-1 min-h-0">
+        <div aria-hidden className="mesa-desk-atmosfera pointer-events-none absolute inset-0" />
+        <MesaLocalidades2D aoAbrirNo={aoAbrirNo} comDiorama />
+      </div>
+    </div>
+  );
 
   return (
     <div className="altura-tela flex flex-col">
@@ -111,10 +169,12 @@ export default function Escrivaninha() {
           <div className="luz-de-vela" aria-hidden />
           <RelogioBolso />
 
-          {usar3D ? (
-            <Cena3DBoundary fallback={mesa2D}>
+          {!temEspaco ? (
+            mesa2D
+          ) : maqueteAberta ? (
+            <Cena3DBoundary fallback={vistaPrancha} aoFalhar={() => setContextoPerdido(true)}>
               {(aoPerderContexto) => (
-                <Suspense fallback={mesa2D}>
+                <Suspense fallback={vistaPrancha}>
                   <div className="absolute inset-0 flex flex-col">
                     {/* A maquete da vila, pousada no alto da mesa. Em tela
                         larga, a maquete cresce (lg:h-[52%]) e come o vão
@@ -144,7 +204,7 @@ export default function Escrivaninha() {
               )}
             </Cena3DBoundary>
           ) : (
-            mesa2D
+            vistaPrancha
           )}
         </div>
 
@@ -154,6 +214,37 @@ export default function Escrivaninha() {
           className="shrink-0 flex flex-wrap justify-center gap-2 sm:gap-3 px-2 py-2 sm:py-3 bg-gradient-to-b from-[#12100d] to-[#0b0906] border-t border-latao/30"
           style={{ paddingBottom: 'max(0.5rem, env(safe-area-inset-bottom))' }}
         >
+          {/* O alternador de vista (OS Prancha da Vila, E1): a prancha é o
+              padrão; a maquete 3D continua a um clique, e o chunk do three
+              só desce se este botão for premido. Sem WebGL, em ?flat=1 ou
+              depois de o contexto cair, o botão diz por que não pode. */}
+          {temEspaco && (
+            <span className="alternador-vista inline-flex items-center gap-1.5">
+              <button
+                onClick={() => escolherVista('prancha')}
+                aria-pressed={!maqueteAberta}
+                className={`botao-mesa text-xs sm:text-sm ${maqueteAberta ? 'botao-mesa--quieto' : ''}`}
+              >
+                A prancha
+              </button>
+              <button
+                onClick={() => escolherVista('maquete')}
+                aria-pressed={maqueteAberta}
+                disabled={!tresDDisponivel || contextoPerdido}
+                title={!tresDDisponivel || contextoPerdido ? `A maquete não pode subir: ${motivoSemMaquete}.` : undefined}
+                className={`botao-mesa text-xs sm:text-sm ${maqueteAberta ? '' : 'botao-mesa--quieto'} ${
+                  !tresDDisponivel || contextoPerdido ? 'opacity-45 cursor-not-allowed' : ''
+                }`}
+              >
+                A maquete
+              </button>
+              {(!tresDDisponivel || contextoPerdido) && (
+                <span className="text-[10px] text-stone-400 italic max-w-[16rem] leading-snug">
+                  {motivoSemMaquete}
+                </span>
+              )}
+            </span>
+          )}
           <BotaoPainel rotulo="Caderneta" aoClicar={() => abrirOverlay('caderneta')} />
           <BotaoPainel rotulo="Painel de Álibis" aoClicar={() => abrirOverlay('alibis')} />
           <BotaoPainel rotulo="Glossário" aoClicar={() => abrirGlossario()} />
