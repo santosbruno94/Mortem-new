@@ -38,7 +38,7 @@ import { PAPEIS } from '../src/data/papeis.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
 import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.js';
-import { POSICOES_DIORAMA, FORMAS_PREDIO } from '../src/data/mapa_espacial.js';
+import { POSICOES_DIORAMA, FORMAS_PREDIO, janelaAcesa } from '../src/data/mapa_espacial.js';
 import { HOTSPOTS_CORPO } from '../src/data/hotspots_corpo.js';
 import {
   montarPacoteTutorial,
@@ -81,6 +81,8 @@ import { METODOS, PROVENIENCIA_METODOS } from '../src/gerador/metodos.js';
 import { CLASSES_VESTIGIO, VARIAVEIS_BATALHA, PROVENIENCIA_VESTIGIOS, SEDES_POR_REGIAO } from '../src/gerador/vestigios.js';
 import { CATALOGO_ACOES, DOUTRINA_VITIMA, DOUTRINA_ASSASSINO, doutrina, acoesLegais } from '../src/gerador/doutrinas.js';
 import { hashString } from '../src/logic/hash.js';
+// OS Prancha da Vila (E2): as três alavancas da hora e os vãos da fachada.
+import { tintaDaHora, vaosDaFachada } from '../src/logic/prancha_vila.js';
 import {
   CATALOGO_INTERFERENCIA,
   CLASSES_VESTIGIO_INTERFERENCIA,
@@ -4015,6 +4017,59 @@ if (!guardaMon.ok) {
   for (const v of guardaMon.violacoes) console.log('  ✖', v);
 }
 
+// =====================================================================
+// PRANCHA DA VILA (E2) — a hora como tinta. Snapshot pequeno: para um
+// conjunto de horas fixas, as TRÊS alavancas (hachura do céu, véu em
+// multiply, janelas em âmbar) dão sempre os mesmos valores, e o
+// acendimento continua saindo da MESMA função que o diorama 3D consome
+// (janelaAcesa) — nenhuma cópia da lógica, nenhum horário inventado.
+// A prancha é apresentação: nada disto é lido pelo motor.
+// =====================================================================
+const ESPERADO_TINTA = {
+  8: { faixa: 'dia', passo: 7, veu: null },
+  13: { faixa: 'dia', passo: 7, veu: null },
+  17: { faixa: 'crepusculo', passo: 5, veu: 0.16 },
+  19.5: { faixa: 'crepusculo', passo: 5, veu: 0.16 },
+  20: { faixa: 'noite', passo: 4, veu: 0.34 },
+  22: { faixa: 'noite', passo: 4, veu: 0.34 },
+  2: { faixa: 'noite', passo: 4, veu: 0.34 },
+};
+const problemasTinta = [];
+for (const [hora, esperado] of Object.entries(ESPERADO_TINTA)) {
+  const t = tintaDaHora(Number(hora));
+  if (t.chave !== esperado.faixa) problemasTinta.push(`${hora}h: faixa ${t.chave} ≠ ${esperado.faixa}`);
+  if (t.ceu.passo !== esperado.passo) problemasTinta.push(`${hora}h: passo de hachura ${t.ceu.passo} ≠ ${esperado.passo}`);
+  const veu = t.veu ? t.veu.opacidade : null;
+  if (veu !== esperado.veu) problemasTinta.push(`${hora}h: véu ${veu} ≠ ${esperado.veu}`);
+}
+// A hora avança e a tinta nunca volta atrás dentro do mesmo dia: dia →
+// crepúsculo → noite, sem oscilar (o jogador lê a hora pelo desenho).
+const ordemFaixas = ['dia', 'crepusculo', 'noite'];
+let anterior = -1;
+for (let h = 7; h < 24; h += 0.5) {
+  const i = ordemFaixas.indexOf(tintaDaHora(h).chave);
+  if (i < anterior) problemasTinta.push(`${h}h: a tinta retrocedeu para ${ordemFaixas[i]}`);
+  anterior = i;
+}
+// Os vãos da fachada são os MESMOS índices que o acendimento consome (a
+// segunda janela só existe no prédio largo — como no prédio 3D).
+if (vaosDaFachada(FORMAS_PREDIO.estalagem).length !== 2) problemasTinta.push('estalagem: prédio largo devia ter 2 vãos');
+if (vaosDaFachada(FORMAS_PREDIO.oficina).length !== 1) problemasTinta.push('oficina: prédio estreito devia ter 1 vão');
+if (vaosDaFachada({ ...FORMAS_PREDIO.oficina, h: 0.1 }).length !== 0) problemasTinta.push('laje: logradouro não tem fachada');
+// Determinismo do acendimento (a função é a do diorama; aqui só se confere
+// que a prancha lê a mesma coisa duas vezes seguidas e que o dia é apagado).
+for (const id of ['cena', 'estalagem', 'delegacia']) {
+  if (janelaAcesa(id, 0, 13) !== false) problemasTinta.push(`${id}: janela acesa às 13h (dia claro)`);
+  if (janelaAcesa(id, 0, 22) !== janelaAcesa(id, 0, 22)) problemasTinta.push(`${id}: acendimento instável`);
+}
+if (janelaAcesa('cena', 0, 2) !== false) problemasTinta.push('cena: a vila dorme às 2h — só delegacia e estalagem ficam acesas');
+if (janelaAcesa('estalagem', 0, 2) !== true) problemasTinta.push('estalagem: devia conservar luz na madrugada');
+const tintaDaHoraOk = problemasTinta.length === 0;
+if (!tintaDaHoraOk) {
+  console.log('\nPRANCHA DA VILA — a hora como tinta:');
+  for (const p of problemasTinta) console.log('  ·', p);
+}
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -4134,6 +4189,7 @@ const checagens = [
   ['Inc. 6 — âncora única: gen_ferimento_reu nunca é a única carta de autoria do réu (Via B, OS P9)', exigenciaAncoraOk],
   ['Inc. 6 — luta forçada: todo caso do pool luta tem gen_sinal_exigivel', exigenciaLutaForcadaOk],
   ['Cobertura de rótulos: todo id emitido pelo banco (e o catálogo de causas) tem rótulo em rotulos.js', problemasCoberturaRotulos.length === 0],
+  ['Prancha da vila (E2): a hora vira tinta — três alavancas estáveis por faixa, vãos no arranjo do 3D, acendimento pela janelaAcesa de sempre', tintaDaHoraOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

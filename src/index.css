@@ -1279,3 +1279,248 @@ body {
   .gravura-respira { animation: none; }
   .cena-sprite--reacao { transform: none; }
 }
+
+/* ---------------------------------------------------------------------
+   A PRANCHA DA VILA (OS Prancha da Vila) — a folha de gravura pousada na
+   mesa, vista PADRÃO da escrivaninha. Papel forte com fio de borda e
+   sombra pousada; as duas tachas de latão que a prendem ao tampo; e as
+   etiquetas de papel dos nós, que aqui pendem AO CONTRÁRIO do diorama (a
+   tag fica em cima e o cordão desce até a fachada). Matéria procedural,
+   como manda o sistema visual: gradiente e sombra, zero arquivo.
+   --------------------------------------------------------------------- */
+.prancha-folha {
+  background-color: #e7ddc8;
+  background-image:
+    linear-gradient(168deg, rgba(255, 250, 235, 0.55), rgba(0, 0, 0, 0) 44%),
+    linear-gradient(348deg, rgba(122, 98, 60, 0.16), rgba(0, 0, 0, 0) 48%);
+  border: 1px solid #a8946c;
+  border-radius: 2px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 250, 235, 0.3);
+}
+/* As duas tachas de latão no alto da folha (a mesma liga da .tacha-latao). */
+.prancha-folha::before,
+.prancha-folha::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-image: radial-gradient(circle at 35% 30%, #e8d5a2 0%, #c9a961 40%, #8a6d3b 72%, #54431f 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+.prancha-folha::before { left: 7px; }
+.prancha-folha::after { right: 7px; }
+
+/* A etiqueta na prancha: a mesma tag do diorama, sem o cordão embutido —
+   aqui o fio é desenhado numa camada de SVG própria, porque o arranjo pode
+   empurrar a etiqueta para cima OU para baixo da fachada. */
+.prancha-etiqueta .rotulo-cordao {
+  display: none;
+}
+
+/* O fundo da faixa da prancha: a mesma mesa à luz de vela do diorama —
+   trocar de vista não troca de móvel. */
+.prancha-mesa-fundo {
+  background:
+    radial-gradient(115% 85% at 50% 40%, rgba(74, 52, 32, 0.55) 0%, rgba(28, 20, 13, 0.85) 54%, rgba(10, 7, 5, 1) 100%),
+    #0b0906;
+}
+/* A cabeça impressa da folha: egípcia de manchete em caixa-alta, com a
+   nota do impressor em itálico de documento ao lado (o registro do
+   cardápio tipográfico: Bevan para display, IM Fell para a voz antiga). */
+.prancha-cabeca {
+  position: absolute;
+  top: 8px;
+  left: 22px;
+  right: 22px;
+  margin: 0;
+  font-family: Bevan, Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  color: #251b10;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+.prancha-cabeca-nota {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: 0;
+  color: #6b5c43;
+}
+
+/* A linha que a HORA acrescenta à etiqueta (E2 da OS Prancha da Vila): a
+   casa sem lampião depois do crepúsculo. Tinta apagada sobre papel claro
+   (4,81:1 — o piso de contraste do sistema visual), em condensada de
+   balcão, para ler como informação de relógio e não como prosa. */
+.rotulo-hora {
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: #6b5c43;
+  margin-top: 2px;
+}
+
+/* ---------------------------------------------------------------------
+   O BEAT DA VIAGEM E O ADENDO A BICO DE PENA (E3 da OS Prancha da Vila).
+   --------------------------------------------------------------------- */
+/* A tarja do relógio no alto da folha: de → para, em condensada de balcão. */
+.prancha-tarja-relogio {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 5px 11px;
+  border: 1px solid rgba(201, 169, 97, 0.6);
+  border-radius: 3px;
+  background: rgba(20, 16, 12, 0.92);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #f5e3b8;
+  pointer-events: none;
+}
+.prancha-tarja-relogio span {
+  color: #c9a961;
+}
+/* A conta da viagem, pousada na beira da folha enquanto o gesto corre. */
+.prancha-preco {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  max-width: 20rem;
+  padding: 9px 12px;
+  border: 1px solid #a9976f;
+  border-radius: 2px;
+  background-color: #f4ecd9;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+.prancha-preco-titulo {
+  margin: 0 0 6px;
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a5c34;
+}
+.prancha-preco-linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 3px 0;
+  border-top: 1px solid #c4b391;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #251b10;
+}
+.prancha-preco-linha span:last-child {
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: #6b4f2c;
+  text-align: right;
+}
+/* A camada invisível que corta o beat ao toque. */
+.prancha-corta-beat {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+/* O carimbo do adendo: batido torto, na tinta da descoberta. */
+.carimbo-acrescido {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 7px;
+  border: 1.5px solid #7f1d1d;
+  border-radius: 2px;
+  transform: rotate(-7deg);
+  opacity: 0.8;
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  color: #7f1d1d;
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .carimbo-acrescido {
+    transform: none;
+  }
+}
+/* O invólucro da etiqueta na prancha empilha papel + carimbo, centrados. */
+.prancha-etiqueta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------------
+   A RÉGUA DE FICHAS DO ESTREITO (E4 da OS Prancha da Vila): no celular a
+   prancha é só figura e a navegação é esta lista de fichas de papel —
+   alvo de toque ≥44px, nome do nó, verbo, custo e o que a hora fez.
+   --------------------------------------------------------------------- */
+.regua-nos {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 10px 12px 12px;
+}
+.regua-ficha {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 7px 11px;
+  text-align: left;
+  border: 1px solid #a9976f;
+  border-radius: 2px;
+  background-color: #f0e6ce;
+  background-image: linear-gradient(168deg, rgba(255, 250, 235, 0.5), rgba(0, 0, 0, 0) 44%);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.regua-ficha--aqui {
+  border-color: #7a2e12;
+}
+.regua-ficha--nova {
+  border-color: #9e2a2b;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.35), 0 0 12px rgba(217, 119, 6, 0.2);
+}
+.regua-ficha-nome {
+  display: block;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 14px;
+  line-height: 1.15;
+  color: #251b10;
+}
+.regua-ficha-linha {
+  display: block;
+  margin-top: 2px;
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #6b4f2c;
+}
+.regua-ficha--aqui .regua-ficha-linha {
+  color: #7a2e12;
+}
+.regua-ficha--nova .regua-ficha-linha {
+  color: #9e2a2b;
+}
+.regua-ficha-lembrete {
+  display: block;
+  margin-top: 2px;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 11px;
+  line-height: 1.2;
+  color: #7a5c34;
+}

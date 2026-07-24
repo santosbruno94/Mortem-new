@@ -207,6 +207,12 @@ async function acionarGestos(page) {
 // Micro-gestos visíveis também são acionados (Onda 7).
 async function visitarEExtrair(page, rotuloNo) {
   await abrirNo(page, rotuloNo);
+  await varrerLocalAberto(page);
+}
+
+// A varredura de um local JÁ ABERTO (extraída para o bloco do beat da E3
+// poder abrir o local à sua maneira e varrer com o mesmo gesto).
+async function varrerLocalAberto(page) {
   await abrirPontos(page);
   const termos = page.locator('.termo-clicavel');
   for (let i = 0; i < 20 && (await termos.count()) > 0; i++) {
@@ -334,6 +340,15 @@ async function main() {
   page.on('console', (m) => m.type() === 'error' && errosConsole.push(m.text()));
   page.on('pageerror', (e) => errosConsole.push(String(e.message)));
 
+  // OS Prancha da Vila (E1): o chunk do three.js só pode descer se o
+  // jogador PEDIR a maquete. A rede é a prova — nenhum caminho da sessão
+  // padrão pode encostar no diorama.
+  const chunksDe3D = [];
+  page.on('request', (r) => {
+    const url = r.url();
+    if (/DioramaVila|\bthree\b|three\.module|@react-three/.test(url)) chunksDe3D.push(url);
+  });
+
   try {
     // ============================================================
     // ROTA 1 — METÓDICO (Harlan): corpo cedo, tudo ligado.
@@ -343,13 +358,29 @@ async function main() {
     console.log('\n=== ROTA 1 — Metódico (Harlan) → Vitória Absoluta ===');
     await novaPartida(page, 'Harlan Blackwell');
 
-    // O diorama 3D da vila sobe (chunk lazy); os nós seguem clicáveis por texto.
-    await page.waitForSelector('canvas', { timeout: 15000 });
-    checar('Rota 1: diorama 3D presente (canvas)', (await page.locator('canvas').count()) >= 1);
-    // Fase 4: as etiquetas dos nós são tags de papel pendentes (HTML real do
-    // diorama, clicáveis por texto). O rótulo do nó atual pulsa/repousa; a
-    // viagem com custo ganha o beat do pino (esperado por abrirNo, adiante).
-    checar('Fase 4: etiquetas de papel do diorama presentes (.rotulo-papel)', (await page.locator('.rotulo-papel').count()) >= 1);
+    // OS Prancha da Vila (E1): a PRANCHA de gravura é a vista padrão da
+    // mesa — SVG puro, sem canvas e sem chunk de three. Os nós seguem
+    // clicáveis por texto (as mesmas etiquetas de papel do diorama).
+    await page.waitForSelector('[data-prancha]', { timeout: 15000 });
+    checar('E1: a prancha da vila é a vista padrão da mesa ([data-prancha])', (await page.locator('[data-prancha]').count()) === 1);
+    checar('E1: a sessão padrão não monta canvas 3D', (await page.locator('canvas').count()) === 0);
+    checar('E1: a sessão padrão não baixa nenhum chunk de three', chunksDe3D.length === 0);
+    // Fase 4: as etiquetas dos nós são tags de papel pendentes (HTML real,
+    // clicáveis por texto), as MESMAS nas duas vistas. O rótulo do nó atual
+    // pulsa/repousa; na maquete, a viagem com custo ganha o beat do pino.
+    checar('Fase 4: etiquetas de papel presentes na prancha (.rotulo-papel)', (await page.locator('.rotulo-papel').count()) >= 1);
+
+    // O alternador: a maquete 3D continua a um clique (e só aí o three
+    // desce), e voltar à prancha não perde nem o relógio nem o estado.
+    await page.getByRole('button', { name: 'A maquete' }).click();
+    await page.waitForSelector('canvas', { timeout: 20000 });
+    checar('E1: "A maquete" ainda sobe o diorama 3D (canvas)', (await page.locator('canvas').count()) >= 1);
+    checar('E1: pedir a maquete baixa o chunk de three', chunksDe3D.length >= 1);
+    checar('E1: a maquete mostra as mesmas etiquetas de nó', (await page.locator('.rotulo-papel').count()) >= 1);
+    await page.getByRole('button', { name: 'A prancha' }).click();
+    await espera(page, 500);
+    checar('E1: voltar à prancha descarta o canvas', (await page.locator('canvas').count()) === 0);
+    checar('E1: alternar não mexeu no relógio (13h00)', (await page.locator('body').innerText()).includes('13h00'));
 
     // ---- FASE 1 — A Ficha de Coleta (§6.2): a evidência se apresenta no ato ----
     // Extrair um termo abre a ficha (data-overlay="ficha") com a descrição
@@ -449,6 +480,14 @@ async function main() {
     checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
+    // E3: o nó revelado entra a bico de pena FORA do quadro gravado, com o
+    // carimbo da hora em que o lead chegou — a mesma hora que a Caderneta
+    // registrou para o desbloqueio.
+    checar('E3: o adendo traz o carimbo da hora do lead', (await page.locator('.carimbo-acrescido').count()) >= 1);
+    checar(
+      'E3: o carimbo diz "Acrescido <hora>"',
+      /^Acrescido \d\dh\d\d$/.test((await page.locator('.carimbo-acrescido').first().innerText()).trim())
+    );
     // Etapa 1 (mapa): um local já visitado e que não é o atual recorda no
     // rótulo que o perito esteve lá (corpo e cena, visitados antes da oficina).
     checar('Etapa 1: o mapa marca os locais visitados', (await page.locator('body').innerText()).includes('visitado ·'));
@@ -472,7 +511,28 @@ async function main() {
     checar('§7.2: a conversa se encerra sem volta ao hub', (await page.locator('[data-conversa-encerrada]').count()) === 1);
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 3 ----
-    await visitarEExtrair(page, 'A Delegacia');
+    // ---- E3 — O BEAT DA VIAGEM e o corte por toque ----
+    // A primeira viagem com custo real da rota: a tacha corre a estrada
+    // desenhada e a conta da hora se lê. Cortar o beat abre o local no ato
+    // e NÃO muda o estado — quem paga a hora é o motor, no clique.
+    await page.click('text=A Delegacia');
+    await espera(page, 240);
+    checar('E3: o beat da viagem diz o preço (relógio, rigidez, perecível)', (await page.locator('[data-preco-viagem]').count()) === 1);
+    const precoLido = await page.locator('[data-preco-viagem]').innerText();
+    checar('E3: a conta traz o relógio de → para', /13h00.*14h00/s.test(precoLido));
+    checar('E3: a conta traz a rigidez na chegada', /Rigidez na chegada/.test(precoLido));
+    const relogioNoBeat = (await page.locator('body').innerText()).match(/\d\dh\d\d/)?.[0];
+    await page.locator('.prancha-corta-beat').click();
+    await page.waitForSelector('div.fixed[data-overlay]', { timeout: 8000 });
+    await espera(page, 300);
+    checar('E3: cortar o beat abre o local no ato', (await page.locator('div.fixed[data-overlay]').count()) >= 1);
+    checar('E3: cortado, o beat some da prancha', (await page.locator('[data-preco-viagem]').count()) === 0);
+    checar(
+      'E3: cortar o beat produz o mesmo estado (o relógio já foi pago no clique)',
+      relogioNoBeat === (await page.locator('body').innerText()).match(/\d\dh\d\d/)?.[0]
+    );
+    await varrerLocalAberto(page);
+    // ---- fim do bloco da E3 ----
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Estalagem');
     // Onda 6: Walter conversa em diálogo embutido — o álibi nasce na fala; e
@@ -710,6 +770,11 @@ async function main() {
     console.log('\n=== ROTA FLAT — grade 2D (?flat=1) ===');
     await novaPartida(page, 'Harlan Blackwell', '?flat=1');
     checar('Rota flat: sem canvas 3D', (await page.locator('canvas').count()) === 0);
+    // E1: em ?flat=1 a prancha segue de pé (ela É o fallback) e o botão da
+    // maquete fica desabilitado, com o motivo legível ao lado.
+    checar('Rota flat: a prancha segue de pé', (await page.locator('[data-prancha]').count()) === 1);
+    checar('Rota flat: "A maquete" fica desabilitada', await page.getByRole('button', { name: 'A maquete' }).isDisabled());
+    checar('Rota flat: o motivo de não haver maquete é legível', (await page.locator('body').innerText()).includes('?flat=1 dispensa o 3D'));
     // §5.1: a planta é SVG 2D — funciona idêntico em ?flat=1. Abre o corpo,
     // confere a planta e anda para a cena por ela (0h).
     await abrirNo(page, 'O Corpo');
@@ -754,10 +819,12 @@ async function main() {
     }
     await page.click('text=Entrar — iniciar a investigação');
     await espera(page, 600);
-    // OS da vila na mesa: o caso gerado agora traz a própria maquete no
-    // pacote (campo visual `maquete`) — a vila 3D monta como no caso-escola.
-    await page.waitForSelector('canvas', { timeout: 15000 });
-    checar('Rota gerada: a maquete 3D da vila gerada monta (canvas)', (await page.locator('canvas').count()) >= 1);
+    // OS da vila na mesa: o caso gerado traz a própria vila no pacote
+    // (campo visual `maquete`). A prancha a estampa como no caso-escola —
+    // mesmas posições, mesmas formas, nenhum campo novo (E1).
+    await page.waitForSelector('[data-prancha]', { timeout: 15000 });
+    checar('Rota gerada: a prancha da vila gerada monta ([data-prancha])', (await page.locator('[data-prancha]').count()) === 1);
+    checar('Rota gerada: a vila gerada rende etiquetas de nó na prancha', (await page.locator('.rotulo-papel').count()) >= 1);
     checar(
       'Rota gerada: o ponto de encontro da vila está na mesa (A Taverna)',
       (await page.locator('body').innerText()).includes('A Taverna')
@@ -853,6 +920,47 @@ async function main() {
       (await page.locator('body').innerText()).includes('A Taverna')
     );
     await page.evaluate(() => window.localStorage && window.localStorage.clear());
+
+    // ============================================================
+    // ROTA CELULAR — o estreito (390×844, E4 da OS Prancha da Vila): a
+    // prancha é SÓ FIGURA e a navegação é a régua de fichas, com alvo de
+    // toque ≥44px. A sessão de celular padrão também não baixa three.
+    // ============================================================
+    rotaAtual = '\n=== ROTA CELULAR — o estreito (390×844) ===';
+    console.log('\n=== ROTA CELULAR — o estreito (390×844) ===');
+    const ctxCelular = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      isMobile: true,
+      hasTouch: true,
+    });
+    const celular = await ctxCelular.newPage();
+    celular.setDefaultTimeout(15000);
+    celular.on('console', (m) => m.type() === 'error' && errosConsole.push(m.text()));
+    celular.on('pageerror', (e) => errosConsole.push(String(e.message)));
+    const chunks3DCelular = [];
+    celular.on('request', (r) => {
+      if (/DioramaVila|\bthree\b|three\.module|@react-three/.test(r.url())) chunks3DCelular.push(r.url());
+    });
+    await novaPartida(celular, 'Harlan Blackwell');
+    await celular.waitForSelector('[data-regua-nos]', { timeout: 15000 });
+    checar('E4: no estreito a navegação é a régua de fichas ([data-regua-nos])', (await celular.locator('[data-regua-nos]').count()) === 1);
+    checar('E4: a prancha do estreito é só figura (nenhuma etiqueta no desenho)', (await celular.locator('.prancha-etiqueta').count()) === 0);
+    checar('E4: a prancha continua de pé no estreito', (await celular.locator('[data-prancha]').count()) === 1);
+    const alturasFicha = await celular.evaluate(() =>
+      [...document.querySelectorAll('.regua-ficha')].map((el) => el.getBoundingClientRect().height)
+    );
+    checar('E4: a régua tem uma ficha por nó desbloqueado', alturasFicha.length >= 4);
+    checar('E4: nenhum alvo de toque da régua abaixo de 44px', alturasFicha.every((h) => h >= 44));
+    checar('E4: a ficha do nó atual traz "— aqui —"', (await celular.locator('.regua-ficha--aqui').first().innerText()).includes('— aqui —'));
+    checar('E4: o alternador segue acessível no estreito', (await celular.getByRole('button', { name: 'A maquete' }).count()) === 1);
+    // A ficha viaja pelo MESMO handler das outras vistas.
+    await celular.locator('.regua-ficha', { hasText: 'A Delegacia' }).click();
+    await celular.waitForSelector('div.fixed[data-overlay]', { timeout: 15000 });
+    await espera(celular, 300);
+    checar('E4: tocar a ficha abre o local (mesmo handler de viagem)', (await celular.locator('body').innerText()).includes('14h00'));
+    checar('E4: a sessão de celular padrão não baixa chunk de three', chunks3DCelular.length === 0);
+    await celular.evaluate(() => window.localStorage && window.localStorage.clear());
+    await ctxCelular.close();
 
     // ============================================================
     checar('Zero erros de console em todas as rotas', errosConsole.length === 0);

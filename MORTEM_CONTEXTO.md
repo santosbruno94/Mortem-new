@@ -23,7 +23,10 @@
 > combinatório de móbil/instrumento/segredo/cena/ecos, decorrelação + guarda anti-monotonia
 > no QA). A **OS Diálogos/Escala/Localização** somou: a **variação das perguntas do perito**
 > (casos gerados e tutorial), o **corpo e a cena no mesmo lugar** pela planta nos casos
-> gerados, e a **maquete 3D sem sobreposição de etiquetas no celular**.
+> gerados, e a **maquete 3D sem sobreposição de etiquetas no celular**. A **OS Prancha da
+> Vila** fechou o pivô visual no hub: a vila do caso é agora **prancha de gravura** (vista
+> padrão em desktop e celular), com a hora em tinta, o beat de viagem em tacha de cera e o
+> nó revelado a bico de pena; a maquete 3D fica como vista alternativa, intocada.
 
 ---
 
@@ -153,6 +156,23 @@ de outubro, 13h10": ficha, mural, relógio de bolso, monólogo); lista compacta 
 (`formatHoraComDia` — "13h10 de 14/out": as duas listas da Caderneta). **Dia da semana
 não se imprime**: `tempo.js` não o formata e o `calendario` do pacote não o carrega.
 
+**A vila do hub — a Prancha e a maquete (OS Prancha da Vila, jul/2026):** a vista PADRÃO
+da escrivaninha é a **Prancha da Vila** (`src/components/prancha/PranchaVila.jsx`): a vila
+do caso estampada como **gravura de 1893** em SVG procedural — moldura de quadro gravado,
+horizonte, casario hachurado, um prédio por nó desbloqueado (silhueta derivada da MESMA
+`forma` que o diorama consome), escala gráfica e rosa dos ventos. As etiquetas dos nós são
+as MESMAS do diorama (`RotuloNo`, HTML real sobre o desenho, com o mesmo handler de
+viagem). A **hora vira tinta** em três alavancas — densidade da hachura do céu, véu em
+`multiply` sobre o quadro, e as janelas em âmbar pela mesma `janelaAcesa` do 3D —, o **beat
+de viagem** é a tacha de cera correndo a estrada desenhada (com a conta da hora numa linha
+lida) e o **nó revelado por lead** entra a **bico de pena vermelha**, com o carimbo
+`Acrescido <hora>`: gravado = estava lá desde a chegada; pena = você descobriu, e quando.
+No **estreito** (≤430px) a prancha é só figura e a navegação desce para a **régua de
+fichas** (alvo ≥44px). A **maquete 3D continua inteira**, a um clique no alternador
+"A prancha" / "A maquete" no pé da mesa (preferência em `localStorage`); sem WebGL, em
+`?flat=1` ou depois de o contexto cair, o botão diz por que não pode subir e a prancha
+segue — ela É o fallback. O chunk do three.js só desce se o jogador pedir a maquete.
+
 **Camada 3D (apresentação pura):** a profundidade 3D da mesa concentra-se hoje num único
 ponto — o **diorama da vila** (maquete de papel pousada no alto da escrivaninha: prédios
 procedurais com **telhado de duas águas**, chaminés, marquise e pás — sempre primitivas
@@ -165,8 +185,8 @@ clique; nós que dividem prédio viram **anexos** escalonados, na linhagem da
 relojoaria_fundos). Regras da camada 3D: geometria 100% procedural (proibido
 GLTF/textura externa — three.js + @react-three/fiber v8 pinados, chunk lazy próprio),
 dados espaciais como camada visual que o motor nunca lê (guarda GE3 cobre `maquete`), e
-**fallback 2D obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a grade de
-localidades original joga idêntico.
+**fallback 2D obrigatório** (`?flat=1`, sonda WebGL, ErrorBoundary): sem 3D, a prancha
+assume; sem espaço conhecido, a grade de localidades original joga idêntico.
 
 **Pivô "Gabinete Ilustrado" (jul/2026 — `docs/nota-gabinete-ilustrado.md`):** a
 apresentação migrou para o registro de **visual novel de gravura**. O exame do corpo
@@ -177,7 +197,8 @@ negrito, via `hotspots_corpo.js`). Diálogos e localidades compõem **A Cena** i
 (`CenaDialogo.jsx`/`FundoCena.jsx`: fundo 2D paramétrico por localidade + sprite meio-corpo
 do genótipo de aparência, com "gravura que respira" e reação observável). Tudo procedural —
 o placeholder É o fallback (slots `prancha_corpo`/`fundo_cena` prontos para arte externa
-sob contrato). O diorama da vila segue 3D, intocado.
+sob contrato). O código do diorama da vila segue intocado — desde a OS Prancha da Vila,
+como vista alternativa (ver acima).
 
 **Asset 2D sob contrato (jul/2026):** a regra do 3D segue 100% procedural (proibido
 GLTF/textura de arquivo); mas a camada **2D** passa a admitir asset externo sob
@@ -253,7 +274,7 @@ O jogador nunca sai desta tela. Layout:
 |        (cartas soltas + nós do mapa)    |
 |                                         |
 |-----------------------------------------|
-[Caderneta]   [Painel de Álibis]  [Glossário]
+[A prancha | A maquete]  [Caderneta]  [Painel de Álibis]  [Glossário]
 ```
 
 - **Relógio de Bolso** (sup. direito): avança apenas ao **VIAJAR**; dentro do local,
@@ -261,10 +282,11 @@ O jogador nunca sai desta tela. Layout:
 - **Superfície Livre** (centro): cartas arrastáveis, custo zero. **Localidades são nós
   do mapa**; clicar **VIAJA** (custa tempo, `src/data/mapa.js`) e abre o evento como
   overlay (`blur(6px)` + `opacity 0.3`, `position: fixed`). Só aparecem os nós
-  **desbloqueados** (o mapa cresce por leads). Não existe troca de tela. Com WebGL, os
-  nós vivem no **diorama 3D** no alto da mesa (rótulos em HTML real, mesmos textos);
-  sem WebGL ou com `?flat=1`, na grade 2D original (`MesaLocalidades2D.jsx`) — o
-  handler de viagem é um só para os dois modos.
+  **desbloqueados** (o mapa cresce por leads). Não existe troca de tela. Por padrão os
+  nós vivem na **Prancha da Vila** no alto da mesa (gravura em SVG; rótulos em HTML real,
+  mesmos textos); a **maquete 3D** é vista alternativa, a um clique no alternador do pé da
+  mesa; sem espaço conhecido no caso, a grade 2D original (`MesaLocalidades2D.jsx`) segue
+  como fallback derradeiro — o handler de viagem é **um só para as três vistas**.
 - **A parede** (botão "Construir a Acusação"): abre o mural com barbante (§8).
 - **Caderneta** (overlay, custo zero): log de tudo que foi extraído e concluído; exibe
   a leitura do mestre como dica.
@@ -323,23 +345,59 @@ localidade continua alcançável em algum ponto** — guarda estática no `scrip
 corpo (exame 3D) e a saleta seguem em prosa contínua. Observação pura (guia §2): o ambiente
 descreve; quem estranha é o jogador.
 
-### 5.2 A maquete e o teatro da mesa
+### 5.2 As duas vistas da vila e o teatro da mesa
 
-A maquete do diorama não persegue realismo (a geometria procedural sem GLTF/textura torna
-essa briga perdida): abraça **"maquete de papel sobre a escrivaninha"** — a vila é um modelo
-que o perito montou para pensar. O teatro é 100% apresentação, lendo estado derivado (o
-relógio, o custo de viagem, os nós novos) — nunca as `tagsOcultas` nem o veredicto.
+A vila do caso tem duas superfícies, e o teatro é 100% apresentação nas duas, lendo estado
+derivado (o relógio, o custo de viagem, os nós novos) — nunca as `tagsOcultas` nem o
+veredicto. A **Prancha da Vila** é o padrão: a vila estampada como gravura de 1893, tinta
+sobre papel, onde nome, custo, tacha e carimbo cabem nativamente. A **maquete 3D** é o
+diorama de sempre, agora atrás do alternador: não persegue realismo (a geometria procedural
+sem GLTF/textura torna essa briga perdida) e abraça **"maquete de papel sobre a
+escrivaninha"** — a vila é um modelo que o perito montou para pensar.
+
+**Na prancha (OS Prancha da Vila):**
+
+- **A hora vira tinta**, em três alavancas e só três (`tintaDaHora` em
+  `src/logic/prancha_vila.js`): a densidade da hachura do céu (rala → densa → traço em
+  azul-tinta), um véu em `mix-blend-mode: multiply` sobre o quadro (nada → sépia → frio) e
+  as **janelas em âmbar**, pela MESMA `janelaAcesa` que o 3D consome. A hora troca
+  atributos, nunca geometria: zero frame, zero rAF — e por isso `prefers-reduced-motion`
+  não muda a leitura da hora (a hora é estado, não animação). Da noite em diante, a etiqueta
+  do nó sem lampião declara `sem luz a esta hora`.
+- **O beat de viagem** é a **tacha de cera** correndo a estrada desenhada, com rasto
+  pontilhado, sob um véu de papel que esmaece o resto; a tarja do relógio mostra a hora de
+  partida → a de chegada, e a conta da hora se lê numa linha (`precoDaViagem`): relógio,
+  **rigidez na chegada** e o **perecível em risco**. Um toque **corta** o beat: o local abre
+  no ato e o estado final é idêntico (quem paga a hora é o motor, no clique).
+- **O nó acrescido.** Numa prancha impressa não cresce nada: **acrescenta-se**. O nó
+  revelado por lead entra **a bico de pena vermelha** — fora do quadro gravado quando fica
+  fora da vila (o quadro comprime e um fio pontilhado marca onde a estampa acaba), no seu
+  lugar geográfico quando é da própria vila —, com o carimbo `Acrescido <hora>`. **Gravado =
+  estava lá desde a chegada; pena = você descobriu, e quando** (regra em
+  `docs/kb-producao/ui-e-estetica.md` §8). A hora do carimbo sai da MESMA anotação que a
+  Caderneta registra para o desbloqueio (`src/logic/desbloqueio.js`).
+- **No estreito (≤430px)** a prancha é SÓ FIGURA e a navegação desce para a **régua de
+  fichas** (`ReguaNos.jsx`, alvo ≥44px, ordem do hub). Sem etiqueta no desenho, o
+  desobstrutor de rótulos deixa de ser preciso neste caminho.
+- **O arranjo das etiquetas** é a função pura `arrumarEtiquetas`: cada etiqueta procura
+  lugar em anel em volta da fachada (sobe, desce, por fim anda de lado), contra as caixas
+  medidas das vizinhas, e nunca sai da folha. O cordão é traço de SVG e segue nos dois
+  sentidos.
+
+**Na maquete 3D:**
 
 - **Luz da hora.** `src/data/mapa_espacial.js` traz `CICLO_LUZ` (keyframes por hora) e
   `interpolarLuz(horasJogo)` — dado **puro** (sem `Math.random`/`Date.now`). `DioramaVila`
   interpola a luz por frame (`LuzDoDia`): tarde dourada → crepúsculo → noite azulada com
   os **lampiões âmbar** das janelas queimando (`luzRef.lamp`), sob **névoa baixa de
   outubro** (fog). Ciclo **perceptível e contido**: a noite escurece sem apagar a leitura.
-- **Beat de viagem.** Na maquete 3D, uma viagem com **custo real** (>0h) ganha um beat de
-  ~0,7s: o **pino do perito** (alfinete de cabeça vermelha, `PinoPerito.jsx`) desliza o
-  trajeto com o custo em horas flutuando junto, e a luz vira com a hora — só então o local
-  abre (a mesa desfoca ao abrir o overlay, não antes). Viagem de 0h (andar pela planta) e o
-  modo `?flat=1` abrem no ato. O handler de viagem é o mesmo dos dois modos (paridade).
+- **Beat de viagem.** Uma viagem com **custo real** (>0h) ganha um beat de ~0,7s: o **pino
+  do perito** (alfinete de cabeça vermelha, `PinoPerito.jsx`) desliza o trajeto com o custo
+  em horas flutuando junto, e a luz vira com a hora — só então o local abre (a mesa desfoca
+  ao abrir o overlay, não antes). A **duração vive num lugar só**
+  (`src/logic/beat_viagem.js`), lida pelo pino, pela tacha da prancha e pelo hub. Viagem de
+  0h (andar pela planta) e a grade 2D de cartas abrem no ato. O handler de viagem é o mesmo
+  das três vistas (paridade).
 - **Silhueta e etiquetas.** Prédios com telhado de duas águas, chaminés, marquise e pás
   (silhueta estática); os rótulos são **tags de papel pendentes** (mesmos textos e handler),
   e o destaque de nó novo pulsa em **CSS** na tag — o `frameloop="demand"` da maquete segue
@@ -1094,6 +1152,8 @@ expansão futura, em `docs/kb-medicina-legal/lacunas.md` (expansão é decisão 
 módulos JS · lógica determinística em funções puras · zero chamadas de rede em runtime ·
 3D com **three.js + @react-three/fiber v8 + drei v9** (versões EXATAS no package.json —
 fiber v9/drei v10 exigem React 19), carregado por chunk lazy; do drei, só o `<Html>`.
+Desde a OS Prancha da Vila o 3D **não é mais o padrão do hub**: o chunk só desce se o
+jogador pedir "A maquete" — a sessão que fica na prancha nunca baixa three.
 O **banco de casos gerados** também é chunk lazy (diagnóstico 21/07, Lote 5): o arranque
 carrega só o índice leve (`casos_indice.js`); os pacotes chegam por `import()` na
 primeira vez que um caso gerado é pedido (arranque de 1.818 → 403 KB).
@@ -1123,7 +1183,10 @@ src/
   logic/        veredicto.js (calcularVeredictoCadeia) · acusacao.js (gramática das
                 ligações) · tempo_morte.js · cronos.js · falaDoMestre.js (dica) ·
                 monologo.js · epilogo.js · tempo.js · interpolar.js ·
-                hash.js (fonte única de sorteio) · aparencia.js · webgl.js (sonda)
+                hash.js (fonte única de sorteio) · aparencia.js · webgl.js (sonda) ·
+                prancha_vila.js (projeção da gravura, a hora em tinta, o arranjo das
+                etiquetas) · beat_viagem.js (a duração do beat, um dono só) ·
+                preco_da_viagem.js · desbloqueio.js — os quatro últimos: camada VISUAL
   store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes,
                 acusacao, log, detective, nosVisitados, nSubmissoes, somAtivo)
   som.js        efeitos sonoros da mesa (apresentação; nenhuma regra lê)
@@ -1134,6 +1197,8 @@ src/
                 comuns) · MonologoFinal · PainelAlibis · ModalGlossario ·
                 Caderneta · TelaPersonagem · TermometroCorpo · Abertura · Overlay ·
                 CartaMesa · RelogioBolso · RetratoPersonagem · Cena3DBoundary ·
+                prancha/ (PranchaVila · ReguaNos · estreito — a vila em gravura, a
+                vista PADRÃO; a régua de fichas serve o celular) ·
                 diorama/ (DioramaVila · Predio · RotuloNo · DesobstruirRotulos ·
                 LuzDoDia · apoio) ·
                 corpo3d/ (PranchaCorpo — a prancha de atlas em SVG; o cadáver 3D
@@ -1156,6 +1221,8 @@ scripts/        qa.mjs · qa-ui.mjs · gerar-casos.mjs · lint-prosa.mjs · demo
   `hashString` (`src/logic/hash.js`) salgado. As guardas de cegueira do motor valem
   para o fecho transitivo de imports de `veredicto.js`/`acusacao.js`.
   O three.js usa `Math.random` em internos (uuid) — apresentação, exceção registrada.
+- Gate de commit: **`npm run verificar`** — a bateria inteira, na ordem (build + `qa.mjs`,
+  que inclui a auditoria de determinismo, + `lint:prosa` + `qa-ui.mjs`).
 - QA de UI: os textos de botões/rótulos clicados pelo `qa-ui.mjs`, as classes
   `.termo-clicavel`/`.termo-extraido`, o `data-overlay` e a ordem dos `<select>` do
   mural são intocáveis — mudar qualquer um exige atualizar o QA no mesmo commit.

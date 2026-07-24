@@ -24,12 +24,17 @@ export default class Cena3DBoundary extends Component {
 
   componentDidCatch(erro) {
     console.warn('Cena 3D indisponível — a mesa segue em 2D.', erro?.message || erro);
+    this.props.aoFalhar?.();
   }
 
   perderContexto() {
     if (this.state.falhou) return;
     console.warn('Contexto WebGL perdido — a mesa segue em 2D.');
     this.setState({ falhou: true });
+    // O pai também precisa saber (OS Prancha da Vila, E1): o alternador
+    // desabilita "A maquete" e explica o motivo em vez de oferecer um
+    // botão que já não pode subir nesta sessão.
+    this.props.aoFalhar?.();
   }
 
   render() {

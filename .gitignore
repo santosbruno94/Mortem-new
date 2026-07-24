@@ -15,6 +15,7 @@ npm-debug.log*
 
 # ferramentas de screenshot local (não-gate)
 scripts/shot-*.mjs
+scripts/_*.mjs
 scripts/_*.png
 
 # artefatos do Playwright (qa-ui)

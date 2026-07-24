@@ -15,7 +15,11 @@ import { useJogo } from '../../store/jogo.js';
 // verbo, rótulo, custo. O destaque de "novo" pulsa em CSS na própria tag
 // (não no emissivo 3D) — assim não força o frameloop contínuo da maquete.
 // =====================================================================
-export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado, aoClicar, aoEntrar, aoSair }) {
+// `notaDaHora` (E2 da OS Prancha da Vila): uma linha que a HORA acrescenta —
+// hoje, a casa sem lampião depois do crepúsculo. Sai do mesmo dado que acende
+// a janela no desenho; a maquete 3D não a passa (lá a janela apagada já se
+// vê), e sem ela a etiqueta é byte-idêntica à de sempre.
+export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado, aoClicar, aoEntrar, aoSair, notaDaHora = '' }) {
   // O verbo segue a árvore de diálogo: nó com árvore própria é interrogatório
   // (camada visual lendo dado narrativo — o motor não participa).
   const verbo = obterDialogo(loc.id) ? 'Interrogar' : 'Examinar';
@@ -52,6 +56,7 @@ export default function RotuloNo({ loc, aqui, novo, custo, interativo, destacado
         <span className="block rotulo-custo">
           {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
         </span>
+        {notaDaHora && <span className="block rotulo-hora">{notaDaHora}</span>}
         {lembrete && <span className="block rotulo-lembrete">visitado · {lembrete}</span>}
       </button>
     </span>

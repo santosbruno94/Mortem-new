@@ -30,6 +30,7 @@ import { modoDoCaso } from '../data/casos.js';
 import { derivarEcoDoMestre } from '../logic/ecoMestre.js';
 import { derivarEcosInterferencia } from '../logic/ecoInterferencia.js';
 import { interpolar } from '../logic/interpolar.js';
+import { textoNovoDestino } from '../logic/desbloqueio.js';
 
 // Constrói o objeto detective do §12. Há um único perito jogável; o shape
 // (pronoun etc.) permanece porque as interpolações {g:...} são estruturais.
@@ -543,9 +544,12 @@ export const useJogo = create(
     const log = [...s.log, { hora: s.horasJogo, texto: `Registrado: ${carta.termoCarimbo}.` }];
     if (revelou) {
       const noRevelado = obterNo(lead.revelaNo);
+      // Uma string, uma fonte (E3 da OS Prancha da Vila): o carimbo
+      // "Acrescido <hora>" do adendo na prancha reencontra a hora por este
+      // mesmo texto — ver src/logic/desbloqueio.js.
       log.push({
         hora: s.horasJogo,
-        texto: `Novo destino no mapa: ${noRevelado ? noRevelado.rotulo : lead.revelaNo}. ${lead.nota || ''}`.trim(),
+        texto: textoNovoDestino(noRevelado ? noRevelado.rotulo : lead.revelaNo, lead.nota),
       });
     }
     // #5 — a contradição de horas: quando o par definido no PACOTE
