@@ -326,6 +326,19 @@ a:hover {
     rgba(138, 109, 59, 0)
   );
 }
+/* Sobre PAPEL o mesmo divisor vira tinta (o latão desaparece no claro). */
+.divisor-ornado--tinta {
+  color: rgba(37, 27, 16, 0.5);
+}
+.divisor-ornado--tinta::before,
+.divisor-ornado--tinta::after {
+  background: linear-gradient(
+    90deg,
+    rgba(37, 27, 16, 0),
+    rgba(37, 27, 16, 0.4),
+    rgba(37, 27, 16, 0)
+  );
+}
 
 /* CAMPO VITORIANO: selects e inputs sem a cara do navegador — papel
    escuro, fio de latão e seta desenhada a tinta. */
