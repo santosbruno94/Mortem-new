@@ -1,9 +1,13 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useJogo } from '../../store/jogo.js';
 import { LOCALIDADES } from '../../data/localidades.js';
+import { formatDuracao, formatHora } from '../../logic/tempo.js';
+import { BEAT_VIAGEM_S, BEAT_VIAGEM_MS, movimentoReduzido } from '../../logic/beat_viagem.js';
+import { precoDaViagem } from '../../logic/preco_da_viagem.js';
+import { horaDoAcrescimo } from '../../logic/desbloqueio.js';
 // Custo do PACOTE CORRENTE (não do mapa.js estático do caso-escola): a
 // etiqueta da prancha tem de mostrar o mesmo custo que o store cobra (M8).
-import { custoViagem, obterMaquete, obterLocalidades } from '../../data/pacote_caso.js';
+import { custoViagem, obterCaso, obterMaquete, obterLocalidades, obterNo } from '../../data/pacote_caso.js';
 // A hora acende as janelas pela MESMA função que o diorama 3D consome —
 // nenhuma regra de acendimento nova, nenhuma cópia da lógica (E2).
 import {
@@ -15,6 +19,7 @@ import {
   chamineFumega,
 } from '../../data/mapa_espacial.js';
 import {
+  CAMPO,
   projetarVila,
   escalaGrafica,
   arrumarEtiquetas,
@@ -49,6 +54,9 @@ import RotuloNo from '../diorama/RotuloNo.jsx';
 const TINTA = '#251b10';
 const PAPEL_PAREDE = '#ecdfc3';
 const PAPEL_VIDRO = '#f4ecd9';
+// A pena do perito: o que ele acrescentou à prancha depois de chegar.
+// Gravado = estava lá desde a chegada; pena vermelha = você descobriu.
+const PENA = '#7a2e12';
 
 // Caixa estimada de uma etiqueta de papel, em px de tela — só para o
 // escalonamento (as etiquetas são HTML de tamanho fixo, não escalam com
@@ -100,7 +108,7 @@ export function letreiroDaFachada(rotulo, rotulosVisiveis) {
 // unidades de maquete multiplicadas pela unidade da prancha; o grupo já
 // chega transladado e escalado pela profundidade.
 // ---------------------------------------------------------------------
-function Silhueta({ forma, u, cenario = false }) {
+function Silhueta({ forma, u, cenario = false, pena = false }) {
   const laje = forma.h < 0.2;
   const meia = (forma.w / 2) * u;
   const beiral = (forma.w / 2 + forma.beiral) * u;
@@ -108,6 +116,18 @@ function Silhueta({ forma, u, cenario = false }) {
   const cume = (forma.h + forma.telhadoAltura) * u;
   const traco = cenario ? 0.75 : 1.25;
   const opacidade = cenario ? 0.62 : 1;
+  // O adendo a bico de pena não é gravura: traço vermelho, sem chapa de
+  // hachura e sem preenchimento — a mão do perito sobre o impresso.
+  if (pena) {
+    return (
+      <g stroke={PENA} fill="none" strokeWidth="1.35" strokeLinecap="round" vectorEffect="non-scaling-stroke">
+        <path d={`M${-meia} 0 L${-meia} ${-alto} L${meia} ${-alto} L${meia} 0`} />
+        <path d={`M${-beiral} ${-alto} L0 ${-cume} L${beiral} ${-alto}`} />
+        <path d={`M${-meia * 0.35} 0 L${-meia * 0.35} ${-alto * 0.5} L${meia * 0.05} ${-alto * 0.5} L${meia * 0.05} 0`} />
+        <path d={`M${-meia * 0.9} 0 q${meia * 0.9} ${-3} ${meia * 1.8} 0`} />
+      </g>
+    );
+  }
   if (laje) {
     // Logradouro: chão murado, sem fachada nem telhado (o pátio, o adro).
     return (
@@ -235,11 +255,13 @@ function Fumaca({ forma, u }) {
 }
 
 // ---------------------------------------------------------------------
-export default function PranchaVila({ aoAbrirNo }) {
+export default function PranchaVila({ aoAbrirNo, aoCortarBeat }) {
   const localidadeAtual = useJogo((s) => s.localidadeAtual);
   const nosDesbloqueados = useJogo((s) => s.nosDesbloqueados);
   const nosNovos = useJogo((s) => s.nosNovos);
   const overlayAberto = useJogo((s) => s.overlay) !== null;
+  const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
+  const diario = useJogo((s) => s.log);
   // A hora do caso (estado derivado do relógio, nunca do motor): é ela que
   // escolhe a tinta da prancha e acende as janelas.
   const horasJogo = useJogo((s) => s.horasJogo);
@@ -295,13 +317,50 @@ export default function PranchaVila({ aoAbrirNo }) {
   const idsVisiveis = locsVisiveis.map((l) => l.id).filter((id) => posicoes[id]);
   const cenario = maquete ? maquete.cenario.filter((c) => maquete.formas[c.predio]) : [];
 
+  // O NÓ ACRESCIDO (E3): o que não estava no mapa quando o perito chegou.
+  // Gravado = estava lá desde a chegada; pena vermelha = você descobriu.
+  // O que fica FORA da vila entra na margem, e o quadro comprime para lhe
+  // dar lugar; o que foi revelado DENTRO da vila fica no seu lugar de
+  // sempre, só que a bico de pena (mudá-lo de sítio mentiria a geografia).
+  const idsDeChegada = useMemo(
+    () => new Set(obterCaso().nosMapa.filter((n) => n.desbloqueadoInicio).map((n) => n.id)),
+    []
+  );
+  const foraDaVila = (id) => (maquete ? !!posicoes[id]?.distante : id === 'gabinete_pettigrew');
+  const idsNaMargem = idsVisiveis.filter((id) => !idsDeChegada.has(id) && foraDaVila(id));
+  const idsNoQuadro = idsVisiveis.filter((id) => !idsNaMargem.includes(id));
+
   const proj = useMemo(
-    () => projetarVila({ posicoes, tabua, ids: idsVisiveis, cenario, estrada }),
+    () =>
+      projetarVila({
+        posicoes,
+        tabua,
+        ids: idsNoQuadro,
+        cenario,
+        estrada: idsNaMargem.length ? null : estrada,
+        comMargem: idsNaMargem.length > 0,
+      }),
     // posicoes/tabua/cenario são estáveis por caso (módulo do pacote); a
     // projeção só muda quando um nó novo entra em cena.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [idsVisiveis.join('|'), !!estrada]
+    [idsNoQuadro.join('|'), idsNaMargem.join('|'), !!estrada]
   );
+
+  // Os adendos da margem, empilhados de cima para baixo na faixa do poente.
+  const nosDaMargem = idsNaMargem.map((id, i) => {
+    const faixa = proj.margem || { x: proj.quadro.x, y: proj.quadro.y, largura: 0, altura: proj.quadro.altura };
+    const passo = faixa.altura / (idsNaMargem.length + 1);
+    return {
+      id,
+      sx: faixa.x + faixa.largura * 0.5,
+      sy: faixa.y + passo * (i + 1) + 24,
+      escala: 0.92,
+      margem: true,
+    };
+  });
+  // A prancha inteira: o que está gravado no quadro e o que foi acrescido
+  // na margem. As etiquetas e os cordões percorrem esta lista.
+  const nosDaPrancha = [...proj.nos, ...nosDaMargem];
 
   // A folha: a prancha inteira cabe no palco, sem distorção e sem corte.
   // A gravura é o miolo; em volta fica o papel, com a linha de cabeça
@@ -328,7 +387,7 @@ export default function PranchaVila({ aoAbrirNo }) {
     esquerda: maiorCaixa.largura / 2 + 2,
     direita: Math.max(maiorCaixa.largura / 2 + 2, gravuraLargura - maiorCaixa.largura / 2 - 2),
   };
-  const ancoras = proj.nos.map((n) => {
+  const ancoras = nosDaPrancha.map((n) => {
     const forma = formaDoNo(posicoes[n.id]);
     // Acima da cumeeira E do letreiro gravado na fachada: a etiqueta de
     // papel nunca cobre o desenho nem o nome que já está impresso nele.
@@ -359,6 +418,18 @@ export default function PranchaVila({ aoAbrirNo }) {
     return vaos.some((v) => janelaAcesa(id, v.i, horasJogo)) ? '' : 'sem luz a esta hora';
   };
 
+  // O carimbo "Acrescido <hora>" de um nó que não estava no mapa quando o
+  // perito chegou. A hora vem do diário — a mesma linha que a Caderneta
+  // mostra —, e sem ela (save antigo) o carimbo simplesmente não sai.
+  const carimboDeAcrescimo = (loc) => {
+    if (idsDeChegada.has(loc.id)) return '';
+    // O diário anota pelo rótulo do NÓ (mapa), não pelo da localidade: são
+    // a mesma string hoje, mas a fonte certa é a que o store usou.
+    const no = obterNo(loc.id);
+    const hora = horaDoAcrescimo(diario, no ? no.rotulo : loc.rotuloMesa);
+    return hora === null ? '' : `Acrescido ${formatHora(hora)}`;
+  };
+
   const postos = arrumarEtiquetas(ancoras, limitesEtiqueta);
   const ancoraPorId = new Map(ancoras.map((a) => [a.id, a]));
   // As ETIQUETAS saem no DOM na ordem do hub (a do pacote), não na ordem
@@ -366,8 +437,51 @@ export default function PranchaVila({ aoAbrirNo }) {
   // leitor de tela — alcançam os nós POR TEXTO, e dois rótulos podem
   // partilhar prefixo ("Cottage nº 4" e "Cottage nº 4 — a busca"); quem
   // vem primeiro no documento tem de ser sempre o mesmo nó.
-  const porId = new Map(proj.nos.map((n) => [n.id, n]));
+  const porId = new Map(nosDaPrancha.map((n) => [n.id, n]));
   const ordemDoHub = locsVisiveis.map((loc) => porId.get(loc.id)).filter(Boolean);
+
+  // ---------------------------------------------------------------------
+  // O BEAT DA VIAGEM (E3): a tacha de cera corre a estrada desenhada, a
+  // prancha esmaece sob um véu de papel, e a tarja do relógio mostra a hora
+  // de partida → a de chegada. O beat NÃO decide nada — o motor já cobrou a
+  // hora no clique; isto é o gesto que a torna visível.
+  // ---------------------------------------------------------------------
+  const noAnterior = useRef(localidadeAtual);
+  const [viagem, setViagem] = useState(null);
+  useEffect(() => {
+    const anterior = noAnterior.current;
+    noAnterior.current = localidadeAtual;
+    if (!anterior || anterior === localidadeAtual) return undefined;
+    const custo = custoViagem(anterior, localidadeAtual);
+    if (custo <= 0) return undefined;
+    // O preço é lido ANTES de o relógio andar: `horasJogo` já é a hora de
+    // chegada quando este efeito corre, então a partida é a chegada menos o
+    // custo — nenhuma cópia do relógio no save, nenhum campo novo.
+    setViagem({ origem: anterior, destino: localidadeAtual, custo, partida: horasJogo - custo });
+    const t = setTimeout(() => setViagem(null), BEAT_VIAGEM_MS);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [localidadeAtual]);
+  const beat = viagem && !overlayAberto ? viagem : null;
+  const preco = beat ? precoDaViagem(beat.partida, beat.custo, cartasRegistradas.map((c) => c.id)) : null;
+  const semDeslize = movimentoReduzido();
+  // O trajeto do beat, na prancha: a curva entre a fachada de origem e a de
+  // destino (a estrada DESENHADA, não uma reta abstrata).
+  const trajeto = (() => {
+    if (!beat) return null;
+    const a = porId.get(beat.origem);
+    const b = porId.get(beat.destino);
+    if (!a || !b) return null;
+    const my = Math.max(a.sy, b.sy) + 14;
+    return {
+      d: `M${a.sx} ${a.sy + 3} Q ${(a.sx + b.sx) / 2} ${my} ${b.sx} ${b.sy + 3}`,
+      a,
+      b,
+      x0: Math.min(a.sx, b.sx) - 8,
+      largura: Math.abs(b.sx - a.sx) + 16,
+      paraDireita: b.sx >= a.sx,
+    };
+  })();
 
   // A escala gráfica: quanto de prancha uma hora de caminhada cobre.
   const regua = escalaGrafica({
@@ -428,6 +542,30 @@ export default function PranchaVila({ aoAbrirNo }) {
                   opacity={tinta.ceu.opacidade}
                 />
               </pattern>
+              {/* O rasto pontilhado é revelado por uma cortina que corre no
+                  sentido da viagem — o mesmo tempo do beat, em SMIL: sem rAF,
+                  sem laço de frame. */}
+              {trajeto && !semDeslize && (
+                <clipPath id="prancha-rasto">
+                  <rect
+                    x={trajeto.paraDireita ? trajeto.x0 : trajeto.x0 + trajeto.largura}
+                    y={proj.quadro.y}
+                    width="0"
+                    height={proj.quadro.altura}
+                  >
+                    <animate attributeName="width" from="0" to={trajeto.largura} dur={`${BEAT_VIAGEM_S}s`} fill="freeze" />
+                    {!trajeto.paraDireita && (
+                      <animate
+                        attributeName="x"
+                        from={trajeto.x0 + trajeto.largura}
+                        to={trajeto.x0}
+                        dur={`${BEAT_VIAGEM_S}s`}
+                        fill="freeze"
+                      />
+                    )}
+                  </rect>
+                </clipPath>
+              )}
             </defs>
 
             {/* A moldura do quadro gravado e o céu hachurado */}
@@ -448,6 +586,20 @@ export default function PranchaVila({ aoAbrirNo }) {
               height={proj.quadro.altura}
               fill="url(#prancha-ceu)"
             />
+            {/* O quadro gravado comprimiu para dar margem ao adendo: o fio
+                pontilhado marca onde a estampa acaba e a mão começa. */}
+            {proj.margem && (
+              <line
+                x1={proj.quadro.x + proj.quadro.largura}
+                y1={proj.quadro.y + 2}
+                x2={proj.quadro.x + proj.quadro.largura}
+                y2={proj.quadro.y + proj.quadro.altura - 2}
+                stroke={TINTA}
+                strokeWidth="0.9"
+                strokeDasharray="4 4"
+                opacity="0.45"
+              />
+            )}
 
             {/* A vila: horizonte, caminho de terra, casario e nós, de trás
                 para diante (a ordem de desenho da projeção). */}
@@ -561,6 +713,91 @@ export default function PranchaVila({ aoAbrirNo }) {
               })}
             </g>
 
+            {/* O ADENDO A BICO DE PENA (E3): o que o perito acrescentou à
+                prancha depois de chegar — traço vermelho fora do quadro
+                gravado, com a estrada à mão e o custo anotado ao lado. */}
+            {nosDaMargem.map((n) => {
+              const forma = formaDoNo(posicoes[n.id]);
+              const custo = localidadeAtual ? custoViagem(localidadeAtual, n.id) : 0;
+              const borda = proj.quadro.x + proj.quadro.largura;
+              return (
+                <g key={`pena_${n.id}`}>
+                  <path
+                    d={`M${borda + 4} ${n.sy + 16} Q ${(borda + n.sx) / 2} ${n.sy + 6} ${n.sx - 6} ${n.sy + 2}`}
+                    fill="none"
+                    stroke={PENA}
+                    strokeWidth="1.35"
+                    strokeLinecap="round"
+                  />
+                  <g transform={`translate(${n.sx} ${n.sy}) scale(${n.escala})`}>
+                    <Silhueta forma={forma} u={proj.unidade} pena />
+                  </g>
+                  {custo > 0 && (
+                    <text
+                      x={borda + 8}
+                      y={n.sy + 30}
+                      fontFamily="'IM Fell English', Georgia, serif"
+                      fontStyle="italic"
+                      fontSize={9}
+                      fill={PENA}
+                    >
+                      {formatDuracao(custo)} de estrada →
+                    </text>
+                  )}
+                </g>
+              );
+            })}
+
+            {/* O BEAT DA VIAGEM: a prancha esmaece sob um véu de papel e só
+                a estrada e a tacha ficam em tinta cheia. */}
+            {trajeto && (
+              <g>
+                <rect
+                  x={proj.quadro.x}
+                  y={proj.quadro.y}
+                  width={CAMPO.largura}
+                  height={proj.quadro.altura}
+                  fill="#ecdfc3"
+                  opacity="0.46"
+                />
+                <path d={trajeto.d} fill="none" stroke={TINTA} strokeWidth="1.6" opacity="0.8" strokeLinecap="round" />
+                <g clipPath={semDeslize ? undefined : 'url(#prancha-rasto)'}>
+                  <path
+                    d={trajeto.d}
+                    fill="none"
+                    stroke={PENA}
+                    strokeWidth="1.8"
+                    strokeDasharray="2.5 4"
+                    strokeLinecap="round"
+                    opacity="0.85"
+                  />
+                </g>
+                <circle cx={trajeto.a.sx} cy={trajeto.a.sy + 3} r="3" fill="none" stroke={TINTA} strokeWidth="1.1" />
+                <circle cx={trajeto.b.sx} cy={trajeto.b.sy + 3} r="3.4" fill="none" stroke={TINTA} strokeWidth="1.3" />
+                {/* A tacha de cera. Sem deslize (prefers-reduced-motion) ela
+                    já nasce no destino — o relógio salta e o preço lê igual. */}
+                <g transform={semDeslize ? `translate(${trajeto.b.sx} ${trajeto.b.sy + 3})` : undefined}>
+                  {!semDeslize && (
+                    <animateMotion dur={`${BEAT_VIAGEM_S}s`} fill="freeze" path={trajeto.d} />
+                  )}
+                  <circle cx="0" cy="0" r="11" fill={PENA} opacity="0.12" />
+                  <circle cx="0" cy="0" r="6" fill={PENA} />
+                  <circle cx="-2" cy="-2" r="2.2" fill="#b04a38" opacity="0.85" />
+                </g>
+                <text
+                  x={(trajeto.a.sx + trajeto.b.sx) / 2}
+                  y={Math.min(trajeto.a.sy, trajeto.b.sy) - 12}
+                  textAnchor="middle"
+                  fontFamily="Oswald, sans-serif"
+                  fontSize={7}
+                  letterSpacing="1.6"
+                  fill={TINTA}
+                >
+                  A CAMINHO
+                </text>
+              </g>
+            )}
+
             {/* A escala gráfica e a rosa dos ventos — a mobília da prancha */}
             {regua && (
               <g opacity="0.7">
@@ -631,9 +868,10 @@ export default function PranchaVila({ aoAbrirNo }) {
               <div
                 key={n.id}
                 ref={(el) => {
-                  // Mede o PAPEL, não a tag inteira: medir o que o arranjo
-                  // move realimentaria o arranjo com a própria saída.
-                  if (el) refsEtiqueta.current.set(n.id, el.querySelector('.rotulo-papel'));
+                  // Mede o invólucro inteiro (papel + carimbo do adendo). O
+                  // cordão saiu daqui para uma camada de SVG: medir o que o
+                  // arranjo move realimentaria o arranjo com a própria saída.
+                  if (el) refsEtiqueta.current.set(n.id, el);
                   else refsEtiqueta.current.delete(n.id);
                 }}
                 className="prancha-etiqueta absolute"
@@ -652,9 +890,54 @@ export default function PranchaVila({ aoAbrirNo }) {
                   aoClicar={() => aoAbrirNo(loc)}
                   notaDaHora={notaDaHora(loc.id)}
                 />
+                {/* O carimbo do adendo: de QUANDO é esta informação. O texto
+                    sai da mesma anotação que a Caderneta registrou para o
+                    desbloqueio (src/logic/desbloqueio.js) — uma string, uma
+                    fonte, fair play sem legenda extra. */}
+                {carimboDeAcrescimo(loc) && (
+                  <span className="carimbo-acrescido">{carimboDeAcrescimo(loc)}</span>
+                )}
               </div>
             );
           })}
+          {/* A tarja do relógio: de → para. A única despesa do jogo, dita em
+              números enquanto o gesto corre. */}
+          {beat && (
+            <div className="prancha-tarja-relogio">
+              {formatHora(beat.partida)} <span>→ {formatHora(beat.partida + beat.custo)}</span>
+            </div>
+          )}
+
+          {/* O que a viagem custou, numa linha lida: relógio, rigidez na
+              chegada e o perecível em risco. Três dados que o estado já tem. */}
+          {preco && (
+            <div className="prancha-preco" data-preco-viagem>
+              <p className="prancha-preco-titulo">O que esta hora custa</p>
+              <p className="prancha-preco-linha">
+                <span>Relógio</span>
+                <span>{formatHora(preco.de)} → {formatHora(preco.para)}</span>
+              </p>
+              <p className="prancha-preco-linha">
+                <span>Rigidez na chegada</span>
+                <span>{preco.rigidez}</span>
+              </p>
+              <p className="prancha-preco-linha">
+                <span>Perecível em risco</span>
+                <span>{preco.pereciveis.length ? preco.pereciveis.join('; ') : 'nada por colher'}</span>
+              </p>
+            </div>
+          )}
+
+          {/* Cortar o beat por toque: a camada some com ele, e o estado final
+              é o mesmo de deixá-lo terminar (quem paga a hora é o motor). */}
+          {beat && (
+            <button
+              type="button"
+              className="prancha-corta-beat"
+              onClick={() => aoCortarBeat?.()}
+              aria-label="Chegar já"
+            />
+          )}
           </div>
         </div>
       )}

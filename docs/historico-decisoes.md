@@ -1102,3 +1102,30 @@ pacote e gramática da acusação intocados. Gates verdes (`npm run build`, `qa.
 - **Contraste sob o véu:** as etiquetas são HTML ACIMA do SVG — o véu não as alcança, e a
   tinta sobre papel claro segue muito acima de AA. Os letreiros das fachadas, que são SVG,
   passaram a ser desenhados **depois** do véu, para não escurecerem com a hora.
+
+### E3 — viagem e nó acrescido
+
+- **O beat da viagem tem um dono só.** A duração vivia em dois lugares (0,7s no
+  `PinoPerito`, 720ms na `Escrivaninha`) e podia divergir em silêncio; virou
+  `src/logic/beat_viagem.js` (`BEAT_VIAGEM_S`/`BEAT_VIAGEM_MS`), lido pelo pino 3D, pela
+  tacha da prancha e pelo hub que abre o overlay. O beat passou a valer para as duas
+  vistas de mapa (antes só a maquete o tinha) e continua ausente na grade 2D de cartas,
+  onde não há trajeto a percorrer.
+- **Cortar o beat não muda nada, por construção.** `viajarPara` corre no clique; o beat só
+  adia a abertura do local. O corte por toque (`.prancha-corta-beat`) limpa o timeout e
+  abre o local no ato — o `qa-ui` compara o relógio durante o beat e depois do corte.
+- **O beat DIZ o preço** (`src/logic/preco_da_viagem.js`, derivado, sem campo novo no save):
+  relógio de → para, rigidez na chegada (o mesmo `estadoRigorPorIpm` do exame) e o perecível
+  em risco — as observações ainda não colhidas cuja leitura muda de estado entre esta hora e
+  a da chegada. É a única despesa do jogo; merecia uma linha lida.
+- **O adendo a bico de pena** entra fora do quadro gravado quando o nó revelado fica FORA da
+  vila (o quadro comprime e um fio pontilhado marca onde a estampa acaba). **Divergência
+  deliberada do desenho:** o nó revelado DENTRO da vila (frequente nos casos gerados —
+  vizinhança, busca, ofício do réu) fica no seu lugar geográfico, só que em tinta de pena.
+  Mandá-lo para a margem porque foi descoberto mentiria a geografia, e a regra que importa —
+  gravado × pena — continua legível no lugar certo.
+- **Uma string, uma fonte** (`src/logic/desbloqueio.js`): o store escreve a linha do diário
+  por `textoNovoDestino`, e a prancha reencontra a hora do carimbo pelo mesmo prefixo.
+  Trocar a frase num lugar troca nos dois. Save antigo, sem a linha: o carimbo não sai (o
+  adendo continua em pena vermelha).
+- **Regra registrada** em `docs/kb-producao/ui-e-estetica.md` §8.

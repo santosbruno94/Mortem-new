@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import { formatDuracao } from '../../logic/tempo.js';
+import { BEAT_VIAGEM_S } from '../../logic/beat_viagem.js';
 
 // =====================================================================
 // O PINO DO PERITO — o alfinete de cabeça vermelha que marca o nó atual
@@ -14,7 +15,9 @@ import { formatDuracao } from '../../logic/tempo.js';
 // baixo; sem viagem, repousa no nó. O beat da abertura do local (~0,7s na
 // Escrivaninha) deixa o trajeto visível antes de a mesa desfocar.
 // =====================================================================
-const DURACAO = 0.7; // segundos do deslize
+// Segundos do deslize: a MESMA constante que a prancha e o hub leem
+// (src/logic/beat_viagem.js) — antes o número vivia em dois lugares.
+const DURACAO = BEAT_VIAGEM_S;
 
 export default function PinoPerito({ alvo, origem, custo, viagemId }) {
   const grupo = useRef();

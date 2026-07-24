@@ -3,6 +3,7 @@ import { useJogo } from '../store/jogo.js';
 import { custoViagem, obterCaso, obterDialogo, obterMaquete } from '../data/pacote_caso.js';
 import { POSICOES_DIORAMA } from '../data/mapa_espacial.js';
 import { webglDisponivel, modoFlat } from '../logic/webgl.js';
+import { BEAT_VIAGEM_MS } from '../logic/beat_viagem.js';
 import { tocarSom } from '../som.js';
 import RelogioBolso from './RelogioBolso.jsx';
 import MesaLocalidades2D from './MesaLocalidades2D.jsx';
@@ -100,7 +101,18 @@ export default function Escrivaninha() {
   // por cima do segundo). O timeout corrente limpa-se no próximo clique e no
   // desmonte.
   const beatViagemRef = useRef(null);
+  const destinoDoBeatRef = useRef(null);
   useEffect(() => () => clearTimeout(beatViagemRef.current), []);
+
+  // Cortar o beat por toque (E3): abre o local no ato. Não decide nada — a
+  // hora já foi paga no clique; cortar só antecipa a abertura, e o estado
+  // final é idêntico ao de deixar o beat terminar.
+  const cortarBeat = useCallback(() => {
+    if (!beatViagemRef.current) return;
+    clearTimeout(beatViagemRef.current);
+    beatViagemRef.current = null;
+    if (destinoDoBeatRef.current) abrirOverlay('localidade', destinoDoBeatRef.current);
+  }, [abrirOverlay]);
 
   // Um único handler de viagem serve à prancha, à maquete 3D e à grade 2D —
   // paridade por construção (o QA joga pelos três caminhos). Na maquete 3D,
@@ -116,13 +128,19 @@ export default function Escrivaninha() {
       if (viagemReal) tocarSom('sino'); // a viagem tem sino (Q7)
       viajarPara(loc.id);
       clearTimeout(beatViagemRef.current);
-      if (maqueteAberta && viagemReal) {
-        beatViagemRef.current = setTimeout(() => abrirOverlay('localidade', loc.id), 720);
+      // O beat só existe onde há mapa desenhado (prancha ou maquete): na
+      // grade 2D de cartas não há trajeto a percorrer, e o local abre no ato.
+      if (viagemReal && temEspaco) {
+        destinoDoBeatRef.current = loc.id;
+        beatViagemRef.current = setTimeout(() => {
+          beatViagemRef.current = null;
+          abrirOverlay('localidade', loc.id);
+        }, BEAT_VIAGEM_MS);
       } else {
         abrirOverlay('localidade', loc.id);
       }
     },
-    [localidadeAtual, maqueteAberta, viajarPara, abrirOverlay]
+    [localidadeAtual, temEspaco, viajarPara, abrirOverlay]
   );
 
   const mesa2D = <MesaLocalidades2D aoAbrirNo={aoAbrirNo} />;
@@ -132,7 +150,7 @@ export default function Escrivaninha() {
   const vistaPrancha = (
     <div className="absolute inset-0 flex flex-col">
       <div className="shrink-0 relative h-[54%] lg:h-[52%] min-h-[300px] border-b border-black/40 prancha-mesa-fundo">
-        <PranchaVila aoAbrirNo={aoAbrirNo} />
+        <PranchaVila aoAbrirNo={aoAbrirNo} aoCortarBeat={cortarBeat} />
       </div>
       <div className="relative flex-1 min-h-0">
         <div aria-hidden className="mesa-desk-atmosfera pointer-events-none absolute inset-0" />

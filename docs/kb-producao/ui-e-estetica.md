@@ -113,6 +113,27 @@
   (Audiokinetic): o som confirma o GESTO, não decora; um som por verbo, curto, com
   variação sutil contra a fadiga; o solene soa mais pesado que o custo zero.
 
+## 8. A regra do adendo — duas tintas, duas promessas
+
+Firmada na OS Prancha da Vila (E3) e válida para toda superfície de mapa do jogo.
+
+| Tinta | O que promete |
+|---|---|
+| **Gravado** (tinta de chapa, hachura, moldura) | Estava lá desde a chegada do perito — o mundo como o impresso o trazia |
+| **Pena vermelha** (traço à mão, fora do quadro gravado) | **Você** descobriu isto, e o carimbo diz **quando** |
+
+O nó revelado por lead não "cresce" no mapa: numa prancha impressa não cresce nada —
+**acrescenta-se**. Entra a bico de pena, com nome e custo de viagem à mão, e um carimbo
+`Acrescido <hora>` com a hora em que o lead chegou. O quadro gravado comprime para dar
+margem quando o adendo fica fora da vila; o adendo revelado *dentro* da vila fica no seu
+lugar geográfico, só que em tinta de pena (mudá-lo de sítio mentiria a geografia).
+
+**O carimbo é a fonte** — quem soube, a que hora — e por isso paga o fair play sem legenda
+extra: o jogador vê de quando é cada informação do mapa. A hora do carimbo sai da MESMA
+anotação que a Caderneta registra para aquele desbloqueio (`src/logic/desbloqueio.js`):
+uma string, uma fonte. Nada disto é asset: o traço é `<path>` com `stroke`, e o carimbo é
+borda + tipografia.
+
 ## Implicações para o jogo
 
 Cardápio — nada aqui é decisão; itens independentes para o criador escolher ou ignorar.

@@ -1365,3 +1365,100 @@ body {
   color: #6b5c43;
   margin-top: 2px;
 }
+
+/* ---------------------------------------------------------------------
+   O BEAT DA VIAGEM E O ADENDO A BICO DE PENA (E3 da OS Prancha da Vila).
+   --------------------------------------------------------------------- */
+/* A tarja do relógio no alto da folha: de → para, em condensada de balcão. */
+.prancha-tarja-relogio {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 5px 11px;
+  border: 1px solid rgba(201, 169, 97, 0.6);
+  border-radius: 3px;
+  background: rgba(20, 16, 12, 0.92);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #f5e3b8;
+  pointer-events: none;
+}
+.prancha-tarja-relogio span {
+  color: #c9a961;
+}
+/* A conta da viagem, pousada na beira da folha enquanto o gesto corre. */
+.prancha-preco {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  max-width: 20rem;
+  padding: 9px 12px;
+  border: 1px solid #a9976f;
+  border-radius: 2px;
+  background-color: #f4ecd9;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+.prancha-preco-titulo {
+  margin: 0 0 6px;
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7a5c34;
+}
+.prancha-preco-linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 3px 0;
+  border-top: 1px solid #c4b391;
+  font-family: 'IM Fell English', Georgia, serif;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #251b10;
+}
+.prancha-preco-linha span:last-child {
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: #6b4f2c;
+  text-align: right;
+}
+/* A camada invisível que corta o beat ao toque. */
+.prancha-corta-beat {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+/* O carimbo do adendo: batido torto, na tinta da descoberta. */
+.carimbo-acrescido {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 7px;
+  border: 1.5px solid #7f1d1d;
+  border-radius: 2px;
+  transform: rotate(-7deg);
+  opacity: 0.8;
+  font-family: Oswald, 'Helvetica Neue', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  color: #7f1d1d;
+  white-space: nowrap;
+}
+@media (prefers-reduced-motion: reduce) {
+  .carimbo-acrescido {
+    transform: none;
+  }
+}
+/* O invólucro da etiqueta na prancha empilha papel + carimbo, centrados. */
+.prancha-etiqueta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

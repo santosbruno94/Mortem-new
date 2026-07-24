@@ -207,6 +207,12 @@ async function acionarGestos(page) {
 // Micro-gestos visíveis também são acionados (Onda 7).
 async function visitarEExtrair(page, rotuloNo) {
   await abrirNo(page, rotuloNo);
+  await varrerLocalAberto(page);
+}
+
+// A varredura de um local JÁ ABERTO (extraída para o bloco do beat da E3
+// poder abrir o local à sua maneira e varrer com o mesmo gesto).
+async function varrerLocalAberto(page) {
   await abrirPontos(page);
   const termos = page.locator('.termo-clicavel');
   for (let i = 0; i < 20 && (await termos.count()) > 0; i++) {
@@ -474,6 +480,14 @@ async function main() {
     checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
+    // E3: o nó revelado entra a bico de pena FORA do quadro gravado, com o
+    // carimbo da hora em que o lead chegou — a mesma hora que a Caderneta
+    // registrou para o desbloqueio.
+    checar('E3: o adendo traz o carimbo da hora do lead', (await page.locator('.carimbo-acrescido').count()) >= 1);
+    checar(
+      'E3: o carimbo diz "Acrescido <hora>"',
+      /^Acrescido \d\dh\d\d$/.test((await page.locator('.carimbo-acrescido').first().innerText()).trim())
+    );
     // Etapa 1 (mapa): um local já visitado e que não é o atual recorda no
     // rótulo que o perito esteve lá (corpo e cena, visitados antes da oficina).
     checar('Etapa 1: o mapa marca os locais visitados', (await page.locator('body').innerText()).includes('visitado ·'));
@@ -497,7 +511,28 @@ async function main() {
     checar('§7.2: a conversa se encerra sem volta ao hub', (await page.locator('[data-conversa-encerrada]').count()) === 1);
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 3 ----
-    await visitarEExtrair(page, 'A Delegacia');
+    // ---- E3 — O BEAT DA VIAGEM e o corte por toque ----
+    // A primeira viagem com custo real da rota: a tacha corre a estrada
+    // desenhada e a conta da hora se lê. Cortar o beat abre o local no ato
+    // e NÃO muda o estado — quem paga a hora é o motor, no clique.
+    await page.click('text=A Delegacia');
+    await espera(page, 240);
+    checar('E3: o beat da viagem diz o preço (relógio, rigidez, perecível)', (await page.locator('[data-preco-viagem]').count()) === 1);
+    const precoLido = await page.locator('[data-preco-viagem]').innerText();
+    checar('E3: a conta traz o relógio de → para', /13h00.*14h00/s.test(precoLido));
+    checar('E3: a conta traz a rigidez na chegada', /Rigidez na chegada/.test(precoLido));
+    const relogioNoBeat = (await page.locator('body').innerText()).match(/\d\dh\d\d/)?.[0];
+    await page.locator('.prancha-corta-beat').click();
+    await page.waitForSelector('div.fixed[data-overlay]', { timeout: 8000 });
+    await espera(page, 300);
+    checar('E3: cortar o beat abre o local no ato', (await page.locator('div.fixed[data-overlay]').count()) >= 1);
+    checar('E3: cortado, o beat some da prancha', (await page.locator('[data-preco-viagem]').count()) === 0);
+    checar(
+      'E3: cortar o beat produz o mesmo estado (o relógio já foi pago no clique)',
+      relogioNoBeat === (await page.locator('body').innerText()).match(/\d\dh\d\d/)?.[0]
+    );
+    await varrerLocalAberto(page);
+    // ---- fim do bloco da E3 ----
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Estalagem');
     // Onda 6: Walter conversa em diálogo embutido — o álibi nasce na fala; e
