@@ -717,6 +717,11 @@ export const DIALOGOS = {
   },
 };
 
+/**
+ * @deprecated Lê SÓ os diálogos do caso-escola. Em runtime use obterDialogos
+ * de pacote_caso.js, que responde pelo caso CARREGADO (inclusive os gerados).
+ * Este fica para o gerador/QA (ilhas de build).
+ */
 export function obterDialogo(localidadeId) {
   return DIALOGOS[localidadeId] || null;
 }

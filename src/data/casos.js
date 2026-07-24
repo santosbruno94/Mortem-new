@@ -24,7 +24,7 @@
 import { montarPacoteTutorial } from './pacote_caso.js';
 import { REPLICA_ID, IDS_POOL, IDS_LUTA } from './casos_indice.js';
 
-// O BANCO PESADO (~1,8 MB de pacotes prontos) fica FORA do chunk de
+// O BANCO PESADO (~2,3 MB de pacotes prontos) fica FORA do chunk de
 // arranque: chega por import() dinâmico na primeira vez que um caso
 // gerado é pedido (diagnóstico 21/07, Lote 5 — mesmo mecanismo do
 // diorama). A camada síncrona decide pelo ÍNDICE leve (casos_indice.js,

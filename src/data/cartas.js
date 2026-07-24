@@ -622,6 +622,11 @@ export const CARTAS = [
 // Utilitários de catálogo (sem lógica de regra — apenas consulta)
 // ---------------------------------------------------------------------
 
+/**
+ * @deprecated Lê SÓ o catálogo do caso-escola. Em runtime use o acessor
+ * homônimo de pacote_caso.js, que responde pelo caso CARREGADO (inclusive
+ * os gerados). Este fica para o gerador/QA (ilhas de build).
+ */
 export function obterDefinicaoCarta(id) {
   return CARTAS.find((c) => c.id === id) || null;
 }

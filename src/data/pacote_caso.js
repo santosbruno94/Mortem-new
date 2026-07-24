@@ -66,6 +66,15 @@
 //                       evitadas: { titulo, porChave:{ [tipo_desfecho]:[…] } }
 //                       (src/data/ecos_interferencia.js). Mesmo mecanismo dos
 //                       códigos de falha (FASE 6). O motor jamais o lê.
+//   telegrama         : objeto (Comarca E3 §4.6, OPCIONAL — casos gerados
+//                       com nó satélite). O registro durável a distância:
+//                       { destino, via, latencia, resposta }. `latencia` em
+//                       horas de jogo; `resposta` é a DEFINIÇÃO da carta que
+//                       o fio entrega ({ textoDisplay, termoCarimbo,
+//                       descricao, tagsOcultas }) — o store a registra quando
+//                       o relógio vence a latência (expedir + viajar). As
+//                       tags da resposta são as do registro (o motor as lê
+//                       como qualquer carta; o campo em si não é regra).
 //
 // Regra de ouro do schema: NADA de funções no pacote — só dado. Os acessores
 // (obterSuspeito, obterDefinicaoCarta, resolverEstadoCarta…) vivem NESTE

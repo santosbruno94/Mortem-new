@@ -14,6 +14,7 @@ export const ROTULOS_MECANISMO = {
   afogamento: 'afogamento',
   envenenamento_cianeto: 'envenenamento por cianeto',
   envenenamento_arsenico: 'envenenamento por arsênico',
+  envenenamento_laudano: 'envenenamento por láudano',
   trauma_contuso: 'trauma contuso',
   ferida_arma_branca: 'ferida por arma branca',
   arma_de_fogo: 'ferida por arma de fogo',
@@ -28,6 +29,8 @@ export const ROTULOS_INSTRUMENTO = {
   arma_de_ocasiao: 'arma de ocasião',
   papel_de_arsenico: 'papel de arsênico',
   pertence_arrancado: 'pertence arrancado na luta',
+  travesseiro_ou_pano: 'pano de abafo',
+  frasco_de_laudano: 'frasco de láudano',
 };
 
 // Rótulos dos vestígios (material), usados no Confronto ao cravar o nexo
@@ -51,6 +54,17 @@ export const ROTULOS_VESTIGIO = {
   corpo_da_testemunha: 'o corpo da testemunha',
   esfrega_fresca: 'esfrega fresca na cena',
   limpeza_interrompida: 'limpeza interrompida',
+  // Vocabulário do palco em anéis e do autobattler v2 (src/gerador/vestigios.js
+  // + ponte da E2): classes que o banco já emite como tipoVestigio.
+  bilhete_de_suplica: 'bilhete de súplica',
+  nota_por_assinar: 'nota de trato por assinar',
+  travesseiro_ou_pano: 'pano de abafo',
+  frasco_de_laudano: 'frasco de láudano',
+  acumulacao_frestas: 'sangue nas frestas do assoalho',
+  peca_deslocada: 'peça fora do lugar',
+  residuo_na_peca: 'resíduo na peça improvisada',
+  peca_limpa_fora_de_hora: 'peça limpa fora de hora',
+  fibra_na_aresta: 'fibra na aresta da peça',
 };
 
 export const ROTULOS_ESTADO_CENA = {
@@ -74,12 +88,30 @@ export const ROTULOS_MOTIVO = {
   despejo: 'o despejo assinado',
   rivalidade_capela_taverna: 'a rixa da capela com a taverna',
   recasamento_vigiado: 'o recasamento vigiado pela vila',
+  // F4 da OS priors compostos (src/gerador/arquetipos.js §2.5).
+  hipoteca_ou_arrendo: 'a hipoteca que não se paga',
+  propriedade_da_esposa: 'o dinheiro que a lei deu à esposa',
+  divida_de_jogo: 'a dívida de jogo',
+  caridade_negada: 'o socorro negado',
 };
 
 export const ROTULOS_PERIFERICO = {
   inocente_alibi: 'Inocente — paradeiro firmado',
   inocente_segredo: 'Inocente — mas guarda um segredo',
+  inocente_acesso: 'Inocente — teve o instrumento à mão',
   sem_info: 'Sem juízo a declarar',
+};
+
+// Rótulo do domínio na tarja das fichas (etiqueta de exposição). Fonte
+// única — as fichas de evidência e de pessoa importam daqui. `testemunho`
+// existe só no banco gerado (não tem aba no Glossário: sem verbetes).
+export const ROTULOS_DOMINIO = {
+  temporal: 'Temporal',
+  causal: 'Causal',
+  ambiental: 'Ambiental',
+  comportamental: 'Comportamental',
+  vestigio: 'Vestígio',
+  testemunho: 'Testemunho',
 };
 
 // A explicação que o ENCERRAMENTO paga quando a alegação-isca correspondente

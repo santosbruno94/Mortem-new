@@ -182,6 +182,11 @@ export const LOCALIDADES = [
   },
 ];
 
+/**
+ * @deprecated Lê SÓ as localidades do caso-escola. Em runtime use o acessor
+ * homônimo de pacote_caso.js, que responde pelo caso CARREGADO (inclusive
+ * os gerados). Este fica para o gerador/QA (ilhas de build).
+ */
 export function obterLocalidade(id) {
   return LOCALIDADES.find((l) => l.id === id) || null;
 }

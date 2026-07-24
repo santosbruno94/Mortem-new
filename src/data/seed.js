@@ -79,6 +79,11 @@ export const SUSPEITOS = [
   },
 ];
 
+/**
+ * @deprecated Lê SÓ o elenco do caso-escola. Em runtime use o acessor
+ * homônimo de pacote_caso.js, que responde pelo caso CARREGADO (inclusive
+ * os gerados). Este fica para o gerador/QA (ilhas de build).
+ */
 export function obterSuspeito(id) {
   return SUSPEITOS.find((s) => s.id === id) || null;
 }

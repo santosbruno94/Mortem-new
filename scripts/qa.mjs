@@ -2200,6 +2200,59 @@ if (!casosEmbarcadosReplay) {
 }
 
 // ============================================================
+// COBERTURA DOS RÓTULOS — todo id que o banco (e o catálogo de causas)
+// emite tem rótulo de apresentação em src/data/rotulos.js. Sem esta
+// guarda, um id novo do gerador degrada silencioso: o monólogo e o
+// Confronto exibem o id cru ao jogador ("mediante envenenamento_laudano").
+// ============================================================
+const rotulos = await import('../src/data/rotulos.js');
+const { CATALOGO_CAUSAS } = await import('../src/data/catalogo_causas.js');
+function problemasDeCoberturaRotulos() {
+  const problemas = [];
+  const todosPacotes = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA];
+  const mec = new Set(CATALOGO_CAUSAS.map((c) => c.id));
+  const inst = new Set();
+  const mot = new Set();
+  const vest = new Set();
+  const per = new Set();
+  const dom = new Set();
+  const colher = (tags) => {
+    if (!tags) return;
+    if (tags.dominio) dom.add(tags.dominio);
+    if (tags.tipoVestigio) vest.add(tags.tipoVestigio);
+    if (tags.motivo) mot.add(tags.motivo);
+  };
+  for (const p of todosPacotes) {
+    const g = p.verdadeDeOuro;
+    mec.add(g.mecanismoCorreto);
+    if (g.instrumentoCorreto) inst.add(g.instrumentoCorreto);
+    if (g.motivacaoCorreta) mot.add(g.motivacaoCorreta);
+    for (const perif of Object.values(g.perifericos || {})) per.add(perif.veredictoEsperado);
+    for (const carta of p.cartas || []) {
+      colher(carta.tagsOcultas);
+      for (const e of carta.estados || []) colher(e.tagsOcultas);
+    }
+  }
+  const exigir = (conjunto, dicionario, nomeDic) => {
+    for (const id of conjunto) {
+      if (!(id in dicionario)) problemas.push(`${nomeDic} sem rótulo para "${id}"`);
+    }
+  };
+  exigir(mec, rotulos.ROTULOS_MECANISMO, 'ROTULOS_MECANISMO');
+  exigir(inst, rotulos.ROTULOS_INSTRUMENTO, 'ROTULOS_INSTRUMENTO');
+  exigir(mot, rotulos.ROTULOS_MOTIVO, 'ROTULOS_MOTIVO');
+  exigir(vest, rotulos.ROTULOS_VESTIGIO, 'ROTULOS_VESTIGIO');
+  exigir(per, rotulos.ROTULOS_PERIFERICO, 'ROTULOS_PERIFERICO');
+  exigir(dom, rotulos.ROTULOS_DOMINIO, 'ROTULOS_DOMINIO');
+  return problemas;
+}
+const problemasCoberturaRotulos = problemasDeCoberturaRotulos();
+if (problemasCoberturaRotulos.length) {
+  console.log('\nCOBERTURA DE RÓTULOS — ids sem rótulo de apresentação:');
+  for (const p of problemasCoberturaRotulos) console.log(`  - ${p}`);
+}
+
+// ============================================================
 // P9 — FASE 0: TELEMETRIA DA ÂNCORA DUPLA (só mede; não falha)
 // ------------------------------------------------------------
 // Antes de tocar o gerador, medir quanto do pool JÁ tem uma segunda âncora
@@ -4099,6 +4152,7 @@ const checagens = [
   ['Inc. 6 — ruído honesto: todo réu-com-marca tem ≥1 inocente-com-marca (OS Exigir que mostre §5)', exigenciaRuidoOk],
   ['Inc. 6 — âncora única: gen_ferimento_reu nunca é a única carta de autoria do réu (Via B, OS P9)', exigenciaAncoraOk],
   ['Inc. 6 — luta forçada: todo caso do pool luta tem gen_sinal_exigivel', exigenciaLutaForcadaOk],
+  ['Cobertura de rótulos: todo id emitido pelo banco (e o catálogo de causas) tem rótulo em rotulos.js', problemasCoberturaRotulos.length === 0],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
