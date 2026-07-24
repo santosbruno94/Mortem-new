@@ -105,19 +105,19 @@ export default function Escrivaninha() {
                   <div className="absolute inset-0 flex flex-col">
                     {/* A maquete da vila, pousada no alto da mesa. Em tela
                         larga, a maquete cresce (lg:h-[52%]) e come o vão
-                        escuro do meio (P3). Em tela estreita a maquete rola
-                        na horizontal (largura mínima de 620px) com um
-                        sombreado na borda como convite de rolagem (P2). */}
-                    <div className="shrink-0 relative h-[44%] lg:h-[52%] min-h-[210px] border-b border-black/40 diorama-mesa-fundo">
-                      <div className="absolute inset-0 overflow-x-auto overflow-y-hidden sm:overflow-hidden">
-                        <div className="h-full min-w-[620px] sm:min-w-0">
+                        escuro do meio (P3). Em tela estreita a vila INTEIRA
+                        cabe na largura (sem rolagem lateral, nada cortado): a
+                        câmara enquadra a tábua toda e o desobstrutor de
+                        rótulos (DioramaVila) afasta as etiquetas que se
+                        sobreporiam (playtest mobile 24/07/2026). A banda cresce
+                        um pouco no celular para o eixo isométrico espalhar os
+                        nós na vertical. */}
+                    <div className="shrink-0 relative h-[54%] lg:h-[52%] min-h-[300px] border-b border-black/40 diorama-mesa-fundo">
+                      <div className="absolute inset-0 overflow-hidden">
+                        <div className="h-full w-full">
                           <DioramaVila aoAbrirNo={aoAbrirNo} aoPerderContexto={aoPerderContexto} />
                         </div>
                       </div>
-                      <div
-                        className="sm:hidden pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-black/60 to-transparent"
-                        aria-hidden
-                      />
                     </div>
                     {/* A bandeja de cartas, rolável, sob a maquete. Em telas
                         altas sobra tampo (P3/4.3): uma atmosfera de vela na

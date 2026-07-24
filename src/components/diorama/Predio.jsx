@@ -66,7 +66,7 @@ export function Telhado({ forma, emissiva, intensidade }) {
   );
 }
 
-export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo, aoClicar, luzRef }) {
+export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo, aoClicar, luzRef, offsetRotuloY = 0 }) {
   const grupo = useRef();
   const lampadas = useRef([]);
   const [hover, setHover] = useState(false);
@@ -235,19 +235,27 @@ export default function Predio({ loc, pos, forma, aqui, novo, custo, interativo,
         </>
       )}
 
-      {/* A etiqueta da maquete: HTML real (clicável por texto — QA) */}
+      {/* A etiqueta da maquete: HTML real (clicável por texto — QA). O
+          desobstrutor de rótulos pode empurrá-la para baixo (offsetRotuloY,
+          px de tela) para não pisar em etiqueta vizinha nem no relógio — o
+          pendão só alonga o cordão; o clique e o texto ficam intactos. */}
       <Html center position={[0, alturaRotulo, 0]} zIndexRange={[30, 0]}>
-        <RotuloNo
-          loc={loc}
-          aqui={aqui}
-          novo={novo}
-          custo={custo}
-          interativo={interativo}
-          destacado={hover}
-          aoClicar={aoClicar}
-          aoEntrar={() => setHover(true)}
-          aoSair={() => setHover(false)}
-        />
+        <div
+          style={offsetRotuloY ? { transform: `translateY(${offsetRotuloY}px)` } : undefined}
+          className="transition-transform duration-300"
+        >
+          <RotuloNo
+            loc={loc}
+            aqui={aqui}
+            novo={novo}
+            custo={custo}
+            interativo={interativo}
+            destacado={hover}
+            aoClicar={aoClicar}
+            aoEntrar={() => setHover(true)}
+            aoSair={() => setHover(false)}
+          />
+        </div>
       </Html>
     </group>
   );
