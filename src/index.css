@@ -186,6 +186,31 @@ a:hover {
     0 4px 10px rgba(0, 0, 0, 0.55);
 }
 
+/* FOLHA DE LIVRO (1h): o pergaminho de tiragem recente, sem a mancha de
+   guarda das cartas que correram a cena. É o papel do verbete impresso —
+   material de gabinete, não documento do caso. */
+.carta-pergaminho--clara {
+  background-color: #f4ecd9;
+}
+
+/* PAUTA DO ROL (1h): a pauta que um escrivão traça à régua para reduzir
+   depoimento a escrito — filete grosso a abrir e a fechar o quadro, fio
+   fino sob o cabeçalho e pontilhado entre as linhas. O painel de álibis
+   organiza e não conclui: a pauta guarda o que foi declarado, e o juízo
+   fica com quem lê. */
+.pauta-rol {
+  border-top: 1.5px solid #251b10;
+  border-bottom: 1.5px solid #251b10;
+}
+
+.pauta-rol .rol-cabeca {
+  border-bottom: 1px solid #a8946c;
+}
+
+.pauta-rol .rol-linha + .rol-linha {
+  border-top: 1px dotted #b3a17f;
+}
+
 /* FICHA DE COLETA (§6.2): a etiqueta de exposição/laudo que a evidência
    veste ao ser coletada. Sobre o pergaminho, um fio de cera na margem
    esquerda — a borda encerada de uma etiqueta pregada num mostruário. */

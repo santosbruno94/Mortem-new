@@ -21,7 +21,7 @@ import {
   custoViagem,
   obterNo,
 } from '../data/pacote_caso.js';
-import { ipmAtual, formatDuracao, formatTemperatura, formatRelogio } from '../logic/tempo.js';
+import { ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
 import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
 import { calcularVeredictoCadeia } from '../logic/veredicto.js';
 import { ligacaoDeConfrontoEmCena } from '../logic/acusacao.js';
@@ -286,9 +286,11 @@ export const useJogo = create(
       ecoInterferencias: [],
       log: [
         ...s.log,
-        // A hora sai do relógio corrente + calendário do pacote — nunca texto
-        // fixo: os casos gerados chegam em horas diferentes do caso-escola.
-        { hora: s.horasJogo, texto: `Investigação iniciada na cena — ${formatRelogio(s.horasJogo, obterCaso().parametrosCena.calendario)}.` },
+        // A hora vive no campo `hora`, e o diário a carimba na margem: repeti-la
+        // dentro do texto punha a mesma hora duas vezes na mesma linha (1h). O
+        // campo é o relógio corrente — nunca texto fixo, que os casos gerados
+        // chegam em horas diferentes do caso-escola.
+        { hora: s.horasJogo, texto: 'Investigação iniciada na cena.' },
       ],
     })),
 
