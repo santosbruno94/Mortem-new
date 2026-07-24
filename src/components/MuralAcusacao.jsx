@@ -9,6 +9,8 @@ import { tocarSom } from '../som.js';
 import EstacaoCorpo from './mural/EstacaoCorpo.jsx';
 import { EstacaoPresenca, EstacaoMentiras, EstacaoMobil, EstacaoJuizos } from './mural/Estacoes.jsx';
 import RevisaoFinal from './mural/RevisaoFinal.jsx';
+import FormularioInquerito from './mural/FormularioInquerito.jsx';
+import { LegendaBarbantes } from './mural/MesaLigacao.jsx';
 
 
 // =====================================================================
@@ -238,7 +240,7 @@ export default function MuralAcusacao() {
       {/* Cabeçalho: a moldura alta do mural, com a placa solene à direita */}
       <div className="relative shrink-0 flex flex-wrap items-start justify-between gap-3 px-3 sm:px-6 py-3 border-b border-latao/40 bg-stone-950/60">
         <div>
-          <h2 className="font-serif text-2xl text-amber-200 titulo-gravado">A Construção da Acusação</h2>
+          <h2 className="font-titulo text-xl sm:text-2xl text-amber-200 titulo-gravado">A Construção da Acusação</h2>
           <p className="text-stone-400 text-xs mt-0.5">
             A mesa se constrói por partes: conclua uma para a próxima aparecer. Para rever uma parte
             já feita, clique nela ou arraste-a de volta. Construir não custa tempo.
@@ -272,8 +274,19 @@ export default function MuralAcusacao() {
         </div>
       )}
 
-      {/* O mural: pilha vertical de estações que cresce conforme se conclui */}
-      <div className="relative flex-1 overflow-auto p-3 sm:p-6 space-y-4">
+      {/* O mural: a folha do inquérito ao lado da pilha de estações. Em tela
+          larga a folha fica fixa à esquerda, sempre à vista, enquanto as
+          estações rolam; no celular ela desce para o pé, como material de
+          consulta. Uma rolagem só para as duas colunas. */}
+      <div className="relative flex-1 overflow-auto p-3 sm:p-6">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-4">
+          {/* A coluna de leitura: o que já foi afirmado e a chave dos fios */}
+          <aside className="order-last lg:order-first w-full lg:w-[320px] lg:shrink-0 lg:sticky lg:top-0 space-y-3">
+            <FormularioInquerito acusacao={acusacao} cartas={cartas} />
+            <LegendaBarbantes />
+          </aside>
+
+          <div className="min-w-0 flex-1 space-y-4">
         {ETAPAS.slice(0, revelado).map((et, i) => (
           <div key={et.id} className="mortem-surgir">
             {etapaAberta === i ? (
@@ -305,6 +318,8 @@ export default function MuralAcusacao() {
             )}
           </div>
         ))}
+          </div>
+        </div>
       </div>
 
       {revisando && (

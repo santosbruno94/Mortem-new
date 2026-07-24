@@ -1,7 +1,7 @@
 import { useJogo } from '../store/jogo.js';
-import { formatRelogio } from '../logic/tempo.js';
+import { formatHoraComDia, CALENDARIO_PADRAO } from '../logic/tempo.js';
 import { modoDoCaso } from '../data/casos.js';
-import { obterContradicaoHoras } from '../data/pacote_caso.js';
+import { obterContradicaoHoras, obterParametrosCena } from '../data/pacote_caso.js';
 import Overlay from './Overlay.jsx';
 
 // Caderneta — o BANCO DE ANOTAÇÕES (§5): tudo que já foi observado fica
@@ -29,6 +29,12 @@ export default function Caderneta() {
   // No purista só a leitura DO MESTRE cala; conclusões de outra origem
   // (se um dia existirem) continuam à vista.
   const conclusoesVisiveis = modoPurista ? conclusoes.filter((c) => c.origem !== 'mestre') : conclusoes;
+  // Duas notações de hora convivem no jogo, e a regra é o suporte, não o
+  // capricho: DOCUMENTO usa a forma por extenso ("14 de outubro, 13h10" —
+  // ficha de coleta, mural, relógio de bolso); LISTA COMPACTA usa a forma
+  // curta ("13h10 de 14/out" — as duas colunas desta caderneta). O calendário
+  // sai do pacote: os casos gerados podem cair em outro dia que não o 14.
+  const calendario = obterParametrosCena()?.calendario || CALENDARIO_PADRAO;
 
   // #5 — a escolha ativa: só aparece quando as DUAS horas contraditórias
   // estão na mesa. Ids e prosa vêm do PACOTE (contradicaoHoras) — caso sem
@@ -71,8 +77,10 @@ export default function Caderneta() {
         </div>
       )}
 
-      {/* Observações reunidas — diário compacto; clicar reabre a ficha */}
-      <h3 className="font-serif text-latao-claro text-lg titulo-gravado mb-3">Observações reunidas</h3>
+      {/* Observações reunidas — diário compacto; clicar reabre a ficha.
+          O carimbo vai em pergaminho e a hora em letra de balcão, curta
+          ("13h10 de 14/out"): é anotação de campo, não frontispício. */}
+      <h3 className="font-serif text-latao-ouro text-lg titulo-gravado mb-3">Observações reunidas</h3>
       {cartasRegistradas.length === 0 ? (
         <p className="text-stone-400 italic font-serif text-sm mb-8">Nada foi observado ainda. Examine os locais.</p>
       ) : (
@@ -85,8 +93,8 @@ export default function Caderneta() {
                 className="w-full text-left carta-pergaminho rounded-sm px-4 py-2 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 hover:outline hover:outline-1 hover:outline-cera/50 transition-all duration-gesto"
               >
                 <span className="text-tinta text-sm font-serif">{c.termoCarimbo}</span>
-                <span className="text-tinta-apagada text-rotulo uppercase shrink-0">
-                  {formatRelogio(c.horaRegistro)}
+                <span className="text-tinta-apagada font-rotulo text-[10px] tracking-[0.12em] shrink-0">
+                  {formatHoraComDia(c.horaRegistro, calendario)}
                 </span>
               </button>
             </li>
@@ -99,7 +107,7 @@ export default function Caderneta() {
           notas, não gabarito; religar não perde nada (o dado continua). */}
       {temLegista && (
         <div className="flex items-baseline justify-between gap-3 mb-3">
-          <h3 className="font-serif text-latao-claro text-lg titulo-gravado">Leitura do mestre</h3>
+          <h3 className="font-serif text-latao-ouro text-lg titulo-gravado">Leitura do mestre</h3>
           <button
             type="button"
             onClick={alternarModoPurista}
@@ -129,14 +137,17 @@ export default function Caderneta() {
       )}
 
       {/* Diário da investigação — meta do caso: permanece escuro, sobre o couro */}
-      <h3 className="font-serif text-latao-claro text-lg titulo-gravado mb-3">Diário da investigação</h3>
+      <h3 className="font-serif text-latao-ouro text-lg titulo-gravado mb-3">Diário da investigação</h3>
       {log.length === 0 ? (
         <p className="text-stone-400 italic font-serif text-sm">A página aguarda a primeira anotação.</p>
       ) : (
         <ul className="space-y-1">
           {log.map((entrada, i) => (
             <li key={i} className="text-sm text-stone-300">
-              <span className="text-latao-claro/70">{formatRelogio(entrada.hora)} —</span> {entrada.texto}
+              <span className="font-rotulo text-[10.5px] tracking-[0.1em] text-latao-ouro/80">
+                {formatHoraComDia(entrada.hora, calendario)} —
+              </span>{' '}
+              {entrada.texto}
             </li>
           ))}
         </ul>

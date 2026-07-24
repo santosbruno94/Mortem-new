@@ -120,17 +120,20 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
             : '';
         return (
           <CartaMesa key={loc.id} id={`loc_${loc.id}`} pos={posLoc[i]} aoClicar={() => aoAbrirNo(loc)}>
+            {/* Etiqueta de atlas: cada nó é uma etiqueta de pergaminho pousada
+                na prancha da vila — a mesma língua das tags do diorama 3D
+                (edição de imprensa 1b). Tinta escura sobre creme; verbo em
+                condensada, nome na voz do documento. Aqui = fio de cera;
+                novo = pingo de lacre. */}
             <div
-              className={`carta-papel w-40 bg-stone-900 border rounded-sm px-3 py-3 ${
-                novo
-                  ? 'border-vela/70 hover:border-vela-clara shadow-vela'
-                  : 'border-latao/40 hover:border-latao/80'
-              } ${aqui ? 'ring-1 ring-latao/40' : ''}`}
+              className={`carta-pergaminho w-40 rounded-sm px-3 py-2.5 ${
+                novo ? 'ring-1 ring-cera shadow-vela-viva' : aqui ? 'ring-1 ring-[#7a2e12]' : ''
+              }`}
             >
-              <p className="text-latao-claro/80 text-[10px] tracking-[0.25em] uppercase">
+              <p className="font-rotulo text-[10px] tracking-[0.2em] uppercase text-tinta-apagada">
                 {obterDialogo(loc.id) ? 'Interrogar' : 'Examinar'}
                 {novo && (
-                  <span className="text-amber-200 normal-case tracking-normal">
+                  <span className="normal-case tracking-normal text-cera">
                     {' '}
                     {/* Lacre de novidade: um pingo de cera ao lado do aviso */}
                     <span className="selo-cera w-2 h-2 inline-block align-baseline" aria-hidden />{' '}
@@ -138,12 +141,16 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
                   </span>
                 )}
               </p>
-              <p className="font-serif text-amber-200 mt-1 leading-snug">{loc.rotuloMesa}</p>
-              <p className="text-stone-300 text-[10px] mt-2 tracking-wide">
+              <p className="font-serif text-tinta mt-1 leading-snug">{loc.rotuloMesa}</p>
+              <p
+                className={`text-[10px] mt-2 tracking-wide ${
+                  aqui ? 'text-[#7a2e12] font-semibold' : 'text-tinta-apagada'
+                }`}
+              >
                 {aqui ? '— aqui —' : custo === 0 ? 'a um passo' : `viajar · ${formatDuracao(custo)}`}
               </p>
               {lembrete && (
-                <p className="rotulo-lembrete text-latao-claro/70 text-[10px] mt-1 leading-snug">
+                <p className="rotulo-lembrete font-serif italic text-[10px] mt-1 leading-snug text-[#7a5c34]">
                   visitado · {lembrete}
                 </p>
               )}
@@ -163,22 +170,25 @@ export default function MesaLocalidades2D({ aoAbrirNo, comDiorama = false }) {
             pos={posPessoas[i]}
             aoClicar={() => abrirOverlay('fichapessoa', pessoa.id)}
           >
+            {/* Carte de visite: a pessoa da vila num cartão de retrato — moldura
+                de latão, gravura do genótipo, nome na voz do documento e a
+                conta de provas em condensada (edição de imprensa 1b). */}
             <div
-              className="carta-surgir w-44 bg-stone-900 border border-latao/40 hover:border-latao/80 rounded-sm px-3 py-3"
+              className="carta-surgir w-44 rounded-sm px-3 py-3 bg-[#17110c] border border-latao/45 hover:border-latao shadow-pousado transition-colors"
               data-pessoa={pessoa.id}
               title="Abrir dossiê"
             >
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-2.5">
                 <RetratoPersonagem personagemId={pessoa.id} tamanho={36} className="shrink-0" />
                 <div className="min-w-0">
-                  <p className="font-serif text-amber-200 text-sm leading-snug">{pessoa.nome}</p>
-                  <p className="text-stone-400 text-[10px] mt-0.5 leading-snug truncate">
+                  <p className="font-serif text-[#f0dfb8] text-sm leading-snug">{pessoa.nome}</p>
+                  <p className="text-[#9d907c] text-[10px] mt-0.5 leading-snug truncate">
                     {pessoa.relacao}
                   </p>
                 </div>
               </div>
               {nCartas > 0 && (
-                <p className="text-latao-claro/70 text-[10px] mt-2">
+                <p className="font-rotulo text-[9px] tracking-[0.12em] uppercase text-latao-claro mt-2">
                   {nCartas} {nCartas === 1 ? 'prova' : 'provas'}
                 </p>
               )}

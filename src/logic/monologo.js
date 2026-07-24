@@ -25,7 +25,10 @@ import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIV
 import { formatJanela, formatHora, formatHoraComDia } from './tempo.js';
 import { escolherDeterministico } from './hash.js';
 
-const TITULOS = {
+// Os quatro desfechos, NA ORDEM em que a interface os carimba (do fechado
+// ao falho). A ordem das chaves é a ordem de exibição — a fileira de
+// carimbos do fim de caso percorre este objeto e não mantém lista própria.
+export const TITULOS = {
   vitoria_absoluta: 'Vitória Absoluta',
   sucesso_gafes: 'Sucesso, com Gafes',
   impunidade: 'Impunidade',

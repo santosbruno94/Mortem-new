@@ -36,6 +36,11 @@ export const PASSOS_ABERTURA = [
   {
     id: 'telegrama',
     titulo: 'O telegrama do Dr. Alcott',
+    // Este passo se apresenta no impresso do Post Office (Form A1): o
+    // primeiro parágrafo é a olhada de fora, e o que vem depois é a cópia
+    // do fio, na letra do balcão. Bandeira de APRESENTAÇÃO — nenhuma regra
+    // a lê; sem ela, o passo volta a ser prosa corrida e o jogo é o mesmo.
+    telegrama: true,
     paragrafos: [
       'O formulário pardo traz a letra do telegrafista da estação, copiada do fio: maiúsculas apertadas, o selo do Post Office no canto.',
       '"SR BLACKWELL PENSAO POTTS CAULFIELD. CHAMADO DE BRIARSTONE. RELOJOEIRO MORTO LOJA REVIRADA. PROVAVELMENTE BRIGA DE TABERNA OU GATUNO. VA OLHE O CORPO MANDE RESUMO PELO PRIMEIRO CORREIO. NAO ASSINE NADA. ALCOTT"',

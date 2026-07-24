@@ -11,6 +11,7 @@ PT-BR. Este arquivo orienta agentes de código; a fonte única de verdade do des
 | `MORTEM_CONTEXTO.md` | Design do jogo (estado atual) |
 | `docs/game-design-simulacao.md` | Design do gerador por simulação (autobattler de build time) e do sistema de interferência (Regras de Justiça R1–R6) |
 | `docs/nota-gabinete-ilustrado.md` | Design da camada de apresentação (pivô visual novel de gravura): a Prancha do corpo (Sistema 1) e a Cena de diálogo (Sistema 2); não rege motor, gerador nem prosa |
+| `docs/sistema-visual.md` | Sistema visual da interface inteira: paleta token a token, cardápio tipográfico (5 faces), catálogo da matéria procedural, legenda das tintas de carimbo, notação da hora e divergências deliberadas do desenho — não rege motor, gerador nem prosa |
 | `docs/historico-decisoes.md` | Arqueologia de playtests/redesigns (só consulta) |
 | `docs/guia-de-estilo.md` | TODA a prosa: norma de língua, observação pura, dosagem de brilho |
 | `docs/biblia-de-vozes.md` | Idioleto de cada personagem |

@@ -92,12 +92,14 @@ function PelosFaciais({ tipo, cor, fr }) {
   }
 }
 
-function Traje({ traje, f }) {
+function Traje({ traje, f, traco }) {
   const corTraje = CORES_TRAJE[traje] || CORES_TRAJE.modesto;
   const busto = `M ${60 - 45 * f} 150 Q ${60 - 40 * f} 112 ${60 - 14} 105 L ${60 + 14} 105 Q ${60 + 40 * f} 112 ${60 + 45 * f} 150 Z`;
   return (
     <g>
-      <path d={busto} fill={corTraje} />
+      {/* Na cena (sobre pergaminho claro) o busto ganha fio de tinta para não
+          se perder no creme; no medalhão (fundo escuro) segue sem contorno. */}
+      <path d={busto} fill={corTraje} stroke={traco || 'none'} strokeWidth={traco ? 1.4 : 0} strokeLinejoin="round" />
       {(traje === 'burgues' || traje === 'luto' || traje === 'modesto') && (
         <g>
           <polygon points="52,106 60,121 68,106" fill="#cfc4ae" />
@@ -165,6 +167,9 @@ function RetratoPersonagem({ personagemId, tamanho = 88, className = '', variant
   const idHachura = `hachura-${hashString(personagemId)}`;
   const anguloHachura = 34 + (hashString(personagemId) % 22);
   const idosa = ap.idadeAparente === 'idosa';
+  // Fio de tinta do contorno: só na cena (sobre pergaminho claro), para a
+  // figura tingida não se dissolver no creme. No medalhão fica sem contorno.
+  const tracoCena = moldura ? undefined : TINTA;
 
   return (
     <svg
@@ -194,11 +199,27 @@ function RetratoPersonagem({ personagemId, tamanho = 88, className = '', variant
       {moldura && <ellipse cx="60" cy="74" rx="41" ry="54" fill="#2c2620" />}
 
       {/* Busto e traje */}
-      <Traje traje={ap.traje} f={f} />
+      <Traje traje={ap.traje} f={f} traco={tracoCena} />
 
       {/* Pescoço e cabeça */}
-      <rect x={60 - 7 * fr} y="84" width={14 * fr} height="24" fill={pele} />
-      <ellipse cx="60" cy="68" rx={19 * fr} ry="25" fill={pele} />
+      <rect
+        x={60 - 7 * fr}
+        y="84"
+        width={14 * fr}
+        height="24"
+        fill={pele}
+        stroke={tracoCena || 'none'}
+        strokeWidth={tracoCena ? 1 : 0}
+      />
+      <ellipse
+        cx="60"
+        cy="68"
+        rx={19 * fr}
+        ry="25"
+        fill={pele}
+        stroke={tracoCena || 'none'}
+        strokeWidth={tracoCena ? 1.2 : 0}
+      />
       <ellipse cx={60 - 19 * fr} cy="68" rx="2.6" ry="4.5" fill={pele} />
       <ellipse cx={60 + 19 * fr} cy="68" rx="2.6" ry="4.5" fill={pele} />
 

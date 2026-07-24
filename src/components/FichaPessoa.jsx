@@ -55,8 +55,27 @@ export default function FichaPessoa({ suspeitoId }) {
       subtitulo={`${suspeito.idade} anos · ${suspeito.relacao}`}
       marca="fichapessoa"
     >
-      <div className="float-right ml-4 mb-2 border border-latao/40 rounded-sm shadow-pousado">
-        <RetratoPersonagem personagemId={suspeitoId} tamanho={72} className="block" />
+      {/* O retrato vem no suporte que a época dava a um retrato: o carte de
+          visite do fotógrafo — cartão claro, filete de latão por dentro e o
+          florão a fechar embaixo. A gravura é a mesma do sprite; muda só a
+          moldura. Sem crédito de fotógrafo: inventaria um nome, e a rua
+          seria a errada em quase todo caso gerado. */}
+      <div className="carte-visite float-right ml-4 mb-3 rounded-sm px-2.5 pt-2.5 pb-2">
+        {/* A variante `cena` é a gravura recortada — sem o fundo escuro do
+            medalhão, que sobre cartão claro abriria um buraco. É a mesma
+            figura, no fio de tinta que a época dava ao papel. */}
+        <div className="carte-moldura p-1.5">
+          <RetratoPersonagem
+            personagemId={suspeitoId}
+            variante="cena"
+            tamanho={82}
+            className="block"
+          />
+        </div>
+        <div className="flex items-center gap-1.5 mt-2 text-latao text-xs leading-none" aria-hidden>
+          <span className="flex-1 h-px bg-papel-borda" />❦
+          <span className="flex-1 h-px bg-papel-borda" />
+        </div>
       </div>
 
       <p className="font-serif text-stone-400 text-sm leading-relaxed mb-6">

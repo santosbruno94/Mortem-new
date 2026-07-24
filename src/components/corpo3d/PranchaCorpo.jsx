@@ -36,12 +36,16 @@ import { HOTSPOTS_CORPO } from '../../data/hotspots_corpo.js';
 // O SVG (nunca <canvas>) preserva o contrato do ?flat=1.
 // =====================================================================
 
-const COR_PAPEL = '#e7ddc8';
-const COR_TINTA = '#2b2119';
+// Paleta da prancha ao "edição de imprensa" (mesmos nomes de token, faces
+// evoluídas): pergaminho mais claro, tinta ferrogálica mais escura.
+const COR_PAPEL = '#ecdfc3';
+const COR_TINTA = '#251b10';
 const COR_LIVOR = '#4c1d43';
 const COR_FERIDA = '#3d0f0f';
 const COR_SANGUE = '#4a1a14';
-const COR_PANO = '#cabfa6';
+const COR_PANO = '#d8cbab';
+// A voz do documento antigo (IM Fell) nas legendas do atlas; Georgia de reserva.
+const FONTE_ATLAS = "'IM Fell English', Georgia, serif";
 
 // Projeção maquete → prancha (mesma dos HOTSPOTS_CORPO 3D reaproveitados).
 const ORIGEM_X = 292;
@@ -176,7 +180,7 @@ export default function PranchaCorpo({ ipm }) {
 
         <rect x="4" y="4" width="612" height="336" fill="none" stroke={COR_TINTA} strokeWidth="1.4" opacity="0.55" />
         <rect x="10" y="10" width="600" height="324" fill="none" stroke={COR_TINTA} strokeWidth="0.6" opacity="0.35" />
-        <text x="22" y="30" fill={COR_TINTA} fontSize="13" fontStyle="italic" fontFamily="Georgia, serif" opacity="0.85">
+        <text x="22" y="30" fill={COR_TINTA} fontSize="13" fontStyle="italic" fontFamily={FONTE_ATLAS} opacity="0.85">
           {tituloFigura}
         </text>
         <line x1="22" y1="38" x2="598" y2="38" stroke={COR_TINTA} strokeWidth="0.5" opacity="0.3" />
@@ -252,7 +256,7 @@ export default function PranchaCorpo({ ipm }) {
           );
         })}
 
-        <text x="22" y="326" fill={COR_TINTA} fontSize="11" fontFamily="Georgia, serif" opacity="0.7">
+        <text x="22" y="326" fill={COR_TINTA} fontSize="11" fontFamily={FONTE_ATLAS} opacity="0.7">
           {legendaPerecivel}
         </text>
         <text x="598" y="326" textAnchor="end" fill={COR_TINTA} fontSize="10" fontStyle="italic" opacity="0.55">
@@ -368,10 +372,10 @@ function FiguraNecropsia() {
       <path d={`M ${cx - 40} ${cy - 44} L ${cx - 30} ${cy - 44} L ${cx + 34} ${cy + 40} L ${cx + 26} ${cy + 46} Z`} fill="none" stroke={COR_SANGUE} strokeWidth="1.2" opacity="0.8" />
       {/* Seta de leitura e rótulos de atlas */}
       <line x1={cx + 60} y1={cy - 30} x2={cx + 4} y2={cy - 6} stroke={COR_TINTA} strokeWidth="0.7" opacity="0.6" markerEnd="" />
-      <text x={cx + 64} y={cy - 30} fill={COR_TINTA} fontSize="11" fontFamily="Georgia, serif" opacity="0.8">
+      <text x={cx + 64} y={cy - 30} fill={COR_TINTA} fontSize="11" fontFamily={FONTE_ATLAS} opacity="0.8">
         bordas nítidas, sem ponte de tecido
       </text>
-      <text x={cx + 40} y={cy + 60} fill={COR_TINTA} fontSize="11" fontFamily="Georgia, serif" opacity="0.8">
+      <text x={cx + 40} y={cy + 60} fill={COR_TINTA} fontSize="11" fontFamily={FONTE_ATLAS} opacity="0.8">
         canal mais fundo que comprido
       </text>
       <text x={cx - 148} y={cy - 54} fill={COR_TINTA} fontSize="10" fontStyle="italic" opacity="0.6">

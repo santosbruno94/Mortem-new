@@ -37,24 +37,29 @@ export default function Abertura() {
           §
         </div>
 
-        {/* A carta escrita pousa como pergaminho (tinta sobre papel);
-            a prosa imersiva permanece escura, em stone-300 legível */}
-        <div
-          className={
-            passo.carta
-              ? 'carta-pergaminho rounded-sm p-6 sm:p-7 space-y-4 italic'
-              : 'space-y-4'
-          }
-        >
-          {passo.paragrafos.map((p, i) => (
-            <p
-              key={i}
-              className={passo.carta ? 'leading-relaxed' : 'text-stone-300 leading-relaxed'}
-            >
-              {interpolar(p, detective)}
-            </p>
-          ))}
-        </div>
+        {/* Cada passo vem no suporte que lhe cabe: a carta do delegado em
+            pergaminho, o telegrama no formulário do Post Office, o resto em
+            prosa escura sobre a mesa. */}
+        {passo.telegrama ? (
+          <FormularioTelegrafo passo={passo} detective={detective} />
+        ) : (
+          <div
+            className={
+              passo.carta
+                ? 'carta-pergaminho rounded-sm p-6 sm:p-7 space-y-4 italic'
+                : 'space-y-4'
+            }
+          >
+            {passo.paragrafos.map((p, i) => (
+              <p
+                key={i}
+                className={passo.carta ? 'leading-relaxed' : 'text-stone-300 leading-relaxed'}
+              >
+                {interpolar(p, detective)}
+              </p>
+            ))}
+          </div>
+        )}
 
         {passo.pensamento && (
           <div className="mt-4 space-y-3 border-l-2 border-amber-900/30 pl-4">
@@ -118,4 +123,56 @@ export default function Abertura() {
       </div>
     </div>
   );
+}
+
+// O FORMULÁRIO DE TELÉGRAFO (1i). O impresso que o rapaz da estação
+// entregava à porta: papel pardo de repartição, o timbre do serviço acima
+// de um filete grosso e, abaixo, a mensagem em letra de balcão — só
+// maiúsculas, espaçadas, sem uma vírgula que custe palavra.
+//
+// O primeiro parágrafo do passo é a olhada de fora (quem descreve o papel
+// está do lado de cá); os seguintes são a cópia do fio e entram no corpo.
+// As aspas que os cercam na prosa saem aqui: dentro do formulário a
+// mensagem não é citação de ninguém — é o que está impresso.
+//
+// Do impresso de época ficou de fora o que este caso não sabe: a estação
+// de origem (Alcott despacha de quatro condados daqui, não de Caulfield,
+// que é onde o telegrama CHEGA) e a taxa por palavra (a mensagem tem o
+// dobro das doze palavras que caberiam no preço).
+function FormularioTelegrafo({ passo, detective }) {
+  const [lede, ...corpo] = passo.paragrafos;
+  return (
+    <>
+      <p className="text-stone-300 leading-relaxed mb-5">{interpolar(lede, detective)}</p>
+      <div className="telegrama-form rounded-sm">
+        <div className="telegrama-cabeca flex items-center justify-between gap-3 px-3 sm:px-4 py-2">
+          {/* A roseta do fio: o círculo cortado que o serviço punha no
+              timbre. Traço procedural, puro ornamento. */}
+          <svg viewBox="0 0 30 22" className="w-6 shrink-0" aria-hidden="true">
+            <circle cx="15" cy="11" r="9" fill="none" stroke="#251b10" strokeWidth="1.2" />
+            <path d="M15 2 v18 M6 11 h18" stroke="#251b10" strokeWidth=".8" />
+          </svg>
+          <p className="font-rotulo uppercase text-[9px] sm:text-[10px] tracking-[0.28em] text-center leading-tight">
+            Post Office Telegraphs
+          </p>
+          <p className="font-rotulo uppercase text-[8px] tracking-[0.16em] text-tinta-apagada shrink-0">
+            Form A1
+          </p>
+        </div>
+        <div className="telegrama-corpo px-3 sm:px-4 py-3 sm:py-4 space-y-3">
+          {corpo.map((p, i) => (
+            <p key={i} className="font-rotulo text-[11.5px] sm:text-[12.5px]">
+              {semAspas(interpolar(p, detective))}
+            </p>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// Tira as aspas que cercam a fala na prosa — só as das pontas, e só
+// quando fecham o parágrafo inteiro. O texto de dado fica intacto.
+function semAspas(texto) {
+  return texto.replace(/^["“](.*)["”]$/s, '$1');
 }
