@@ -1,4 +1,4 @@
-import { obterSuspeitos, obterPersonagemDaLocalidade } from '../data/pacote_caso.js';
+import { obterPersonagemDaLocalidade, obterNomePersonagem } from '../data/pacote_caso.js';
 
 // =====================================================================
 // LEMBRETE DE VISITA — o que o mapa recorda de um local JÁ VISITADO:
@@ -9,11 +9,10 @@ import { obterSuspeitos, obterPersonagemDaLocalidade } from '../data/pacote_caso
 // =====================================================================
 
 export function resumoVisita(localidadeId, cartasRegistradas) {
-  const nomes = Object.fromEntries(obterSuspeitos().map((s) => [s.id, s.nome]));
-  // O delegado recebe na delegacia mas não é suspeito (não está em SUSPEITOS).
-  nomes['delegado_wycliffe'] = 'Delegado Wycliffe';
   const nCartas = cartasRegistradas.filter((c) => c.localidade === localidadeId).length;
   const personagemId = obterPersonagemDaLocalidade(localidadeId);
-  const personagemNome = personagemId ? nomes[personagemId] || null : null;
+  // Nome resolvido pelo PACOTE (suspeitos + não-suspeitos): nada de id
+  // cravado aqui — num caso gerado, quem recebe é outro e o nome acompanha.
+  const personagemNome = personagemId ? obterNomePersonagem(personagemId) : null;
   return { personagemNome, nCartas };
 }

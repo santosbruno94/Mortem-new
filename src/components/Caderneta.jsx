@@ -1,6 +1,7 @@
 import { useJogo } from '../store/jogo.js';
 import { formatRelogio } from '../logic/tempo.js';
 import { modoDoCaso } from '../data/casos.js';
+import { obterContradicaoHoras } from '../data/pacote_caso.js';
 import Overlay from './Overlay.jsx';
 
 // Caderneta — o BANCO DE ANOTAÇÕES (§5): tudo que já foi observado fica
@@ -30,11 +31,14 @@ export default function Caderneta() {
   const conclusoesVisiveis = modoPurista ? conclusoes.filter((c) => c.origem !== 'mestre') : conclusoes;
 
   // #5 — a escolha ativa: só aparece quando as DUAS horas contraditórias
-  // estão na mesa (o corpo e o avistamento do padeiro). Firmá-la é o gesto
-  // de decisão do meio do caso; a decisão é definitiva e NÃO rege o veredicto.
-  const temPadeiro = cartasRegistradas.some((c) => c.id === 'dep_avistamento_padeiro');
-  const temCorpoHora = cartasRegistradas.some((c) => c.id === 'ev_rigor' || c.id === 'ev_livores');
-  const contradicaoNaMesa = temPadeiro && temCorpoHora;
+  // estão na mesa. Ids e prosa vêm do PACOTE (contradicaoHoras) — caso sem
+  // o campo (os gerados) não tem ponto a decidir. Firmá-la é o gesto de
+  // decisão do meio do caso; a decisão é definitiva e NÃO rege o veredicto.
+  const contradicao = obterContradicaoHoras();
+  const contradicaoNaMesa =
+    !!contradicao &&
+    cartasRegistradas.some((c) => c.id === contradicao.alegacaoId) &&
+    cartasRegistradas.some((c) => contradicao.corpoIds.includes(c.id));
 
   return (
     <Overlay titulo="Caderneta" subtitulo="Banco de anotações — reler não custa tempo">
@@ -49,24 +53,17 @@ export default function Caderneta() {
           <p className="text-rotulo uppercase text-amber-300/80 mb-2">Um ponto a decidir</p>
           {escolhaContradicao ? (
             <p className="text-stone-300 text-sm leading-relaxed font-serif italic" data-decisao-firmada>
-              {escolhaContradicao === 'corpo'
-                ? 'Firmei-me no corpo: parto do rigor e do livor; ao relato que os contrarie compete o ônus da prova.'
-                : 'Firmei-me no relato do moço: parto da luz e da vida que ele jura ter visto na oficina; ao corpo compete então o ônus da prova.'}
+              {contradicao.firmadoCaderneta[escolhaContradicao]}
             </p>
           ) : (
             <>
-              <p className="text-stone-300 text-sm leading-relaxed mb-3">
-                O moço do padeiro jura o Sr. Arthurs vivo e à bancada às cinco e um quarto da madrugada
-                de sábado. O corpo já esfriara: o rigor e o livor põem a morte na véspera, antes da
-                meia-noite. Só uma das duas horas pode reger a minha conta, e de qual parto muda o
-                caminho daqui em diante.
-              </p>
+              <p className="text-stone-300 text-sm leading-relaxed mb-3">{contradicao.apresentacao}</p>
               <div className="flex flex-wrap gap-2">
                 <button type="button" className="botao-mesa text-sm" onClick={() => resolverContradicao('relato')}>
-                  Parto do relato do moço
+                  {contradicao.botoes.relato}
                 </button>
                 <button type="button" className="botao-mesa text-sm" onClick={() => resolverContradicao('corpo')}>
-                  Parto do que o corpo diz
+                  {contradicao.botoes.corpo}
                 </button>
               </div>
             </>

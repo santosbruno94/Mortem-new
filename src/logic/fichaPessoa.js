@@ -35,12 +35,12 @@ export function cartasDeclaradas(suspeitoId, cartasRegistradas) {
   return cartasRegistradas.filter((c) => c.tagsOcultas?.declaranteId === suspeitoId);
 }
 
-// Cartas com potencial de MOTIVO ligadas a esta pessoa (subDominio de motivação).
+// Cartas de MOTIVO desta pessoa — o MESMO critério de móbil do veredicto
+// (subDominio 'motivo' apontando o suspeito): a seção "Possível móbil" da
+// ficha não pode listar álibi/corroboração como se fossem razões.
 export function cartasDeMotivo(suspeitoId, cartasRegistradas) {
   return cartasRegistradas.filter(
-    (c) =>
-      c.tagsOcultas?.dominio === 'comportamental' &&
-      (c.tagsOcultas?.pertenceA === suspeitoId || c.tagsOcultas?.ligadoA === suspeitoId)
+    (c) => c.tagsOcultas?.subDominio === 'motivo' && c.tagsOcultas?.ligadoA === suspeitoId
   );
 }
 

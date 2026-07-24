@@ -19,7 +19,7 @@
 // revisar-prosa.
 // =====================================================================
 
-import { hashString } from './hash.js';
+import { escolherDeterministico } from './hash.js';
 
 // Prioridade: uma fala por vez. Diante de várias falhas, o legista comenta a
 // mais central para o método do tutorial — a JANELA (a mecânica-assinatura, e
@@ -38,11 +38,8 @@ const PRIORIDADE_CODIGOS = [
   'reu_errado',
 ];
 
-// Sorteio determinístico de uma variante (mesmo padrão de monologo.js).
-function escolher(variantes, chave) {
-  if (!variantes || variantes.length === 0) return null;
-  return variantes[hashString(chave) % variantes.length];
-}
+// Escolha determinística de variante: a fonte única mora em hash.js.
+const escolher = escolherDeterministico;
 
 // Deriva a fala do legista a partir do veredicto que acabou de cair.
 //   veredicto : { tipo, falhas: [{ codigo }] } — o desfecho anterior.

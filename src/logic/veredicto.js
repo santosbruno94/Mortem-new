@@ -20,25 +20,41 @@ import {
   refutacaoDeHoraEstabelecida,
   refutacaoDeAlibiEstabelecida,
   segredoRevelado,
+  quedaPorRegistro,
 } from './acusacao.js';
 
-// Horas: acima disso, a janela é "estimativa frouxa". FONTE ÚNICA do
-// limiar — a fala do mestre (falaDoMestre.js) importa daqui para nunca
-// assinar janela que o tribunal rejeita (diagnóstico 21/07, M7).
+// Horas: acima disso, a janela é "estimativa frouxa" (diagnóstico 21/07, M7).
 export const LARGURA_JANELA_PRECISA = 6;
 
-// Duas janelas se sobrepõem?
-function janelasIntersectam(a, b) {
-  if (!a || !b) return false;
-  return Math.max(a.inicio, b.inicio) <= Math.min(a.fim, b.fim);
+// Uma janela é "precisa" quando tem início e fim finitos e largura dentro
+// do limiar do tribunal. FONTE ÚNICA do predicado — a fala do mestre
+// (falaDoMestre.js) importa daqui, e nunca assina o que o tribunal rejeita.
+export function ehJanelaPrecisa(janela) {
+  return (
+    !!janela &&
+    janela.inicio !== -Infinity &&
+    janela.fim !== Infinity &&
+    janela.fim - janela.inicio <= LARGURA_JANELA_PRECISA
+  );
 }
 
-// Encontra a refutação de álibi de um dado suspeito (pela tag declaranteId).
-function refutaAlibiDoSuspeito(refutaAlibi, suspeitoId) {
+// Duas janelas se sobrepõem? (Delegado à interseção de tempo_morte.js —
+// mesmo cálculo, um lugar só.)
+function janelasIntersectam(a, b) {
+  if (!a || !b) return false;
+  return intersecaoJanelas([a, b]) !== null;
+}
+
+// Encontra as refutações de álibi de um dado suspeito (pela tag
+// declaranteId). Devolve TODAS: se o procedural gerar mais de um álibi do
+// mesmo declarante, qualquer refutação estabelecida vale — a primeira do
+// Map não pode calar as demais.
+function refutacoesDeAlibiDoSuspeito(refutaAlibi, suspeitoId) {
+  const achadas = [];
   for (const v of refutaAlibi.values()) {
-    if (v.alibi.tagsOcultas.declaranteId === suspeitoId) return v;
+    if (v.alibi.tagsOcultas.declaranteId === suspeitoId) achadas.push(v);
   }
-  return null;
+  return achadas;
 }
 
 export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
@@ -70,11 +86,7 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
   const janelaCobre =
     !!janela && janela.inicio <= seed.horaMorteAbsoluta && seed.horaMorteAbsoluta <= janela.fim;
   const janelaOk = janelaSustentada && janelaCobre;
-  const janelaPrecisa =
-    janelaOk &&
-    janela.inicio !== -Infinity &&
-    janela.fim !== Infinity &&
-    janela.fim - janela.inicio <= LARGURA_JANELA_PRECISA;
+  const janelaPrecisa = janelaOk && ehJanelaPrecisa(janela);
   // Cascata de falhas do pilar Quando, da mais grave à mais branda:
   // sem janela → janela que erra a hora → janela certa que CONTRADIZ as
   // próprias cartas ligadas (código próprio: o buraco é contradição, não
@@ -153,14 +165,9 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       refutacaoDeAlibiEstabelecida(alibi, vestigios)
     ) {
       alibiReuExposto = true;
-      alibiReuPorRegistro = vestigios.some(
-        (f) =>
-          f.tagsOcultas.subDominio === 'corroboracao' &&
-          f.tagsOcultas.ligadoA === alibi.tagsOcultas.declaranteId &&
-          typeof f.tagsOcultas.horaFimObservada === 'number' &&
-          typeof alibi.tagsOcultas.horaFimDeclarada === 'number' &&
-          f.tagsOcultas.horaFimObservada < alibi.tagsOcultas.horaFimDeclarada
-      );
+      // A frase "caiu por registro" usa o MESMO predicado do estabelecimento
+      // (acusacao.js) — o monólogo nunca narra base que o motor não reconhece.
+      alibiReuPorRegistro = vestigios.some((f) => quedaPorRegistro(alibi, f));
       break;
     }
   }
@@ -191,11 +198,11 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       if (esperado.veredictoEsperado === 'inocente_alibi') {
         ok = true;
       } else if (esperado.veredictoEsperado === 'inocente_segredo') {
-        const ra = refutaAlibiDoSuspeito(refutaAlibi, suspeitoId);
-        ok =
-          !!ra &&
-          refutacaoDeAlibiEstabelecida(ra.alibi, ra.vestigios) &&
-          segredoRevelado(ra.alibi, ra.vestigios) === esperado.segredo;
+        ok = refutacoesDeAlibiDoSuspeito(refutaAlibi, suspeitoId).some(
+          (ra) =>
+            refutacaoDeAlibiEstabelecida(ra.alibi, ra.vestigios) &&
+            segredoRevelado(ra.alibi, ra.vestigios) === esperado.segredo
+        );
       }
     }
     // O monólogo só pode afirmar "conferi o paradeiro" se o álibi do suspeito
