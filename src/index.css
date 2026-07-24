@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Tipografia de época (Q7): IM Fell English (OFL), embarcada — sem rede em
-   runtime. Serve os títulos serifados; o corpo do texto segue no sans do
-   sistema, pela legibilidade. */
+/* O CARDÁPIO TIPOGRÁFICO DE 1893 (pivô "Gabinete Ilustrado, edição de
+   imprensa"). Cinco vozes OFL, todas embarcadas em woff2 — zero rede em
+   runtime, cada @font-face aponta um arquivo local. Os papéis vivem no
+   tailwind.config (font-serif/prosa/titulo/rotulo/cartaz); aqui só se
+   declaram as faces. Subconjunto latino (cobre o PT-BR acentuado + dashes e
+   aspas tipográficas); glifos ausentes caem na reserva serifada do sistema. */
+
+/* IM Fell English — a voz do documento antigo (mestre, cartas, anotações). */
 @font-face {
   font-family: 'IM Fell English';
   src: url('./assets/fontes/imfell-english-regular.woff2') format('woff2');
@@ -20,9 +25,72 @@
   font-display: swap;
 }
 
-/* Fundo de mesa de madeira escura à luz de vela */
+/* Libre Caslon Text — TODA a prosa e leitura longa (a face de texto do jogo). */
+@font-face {
+  font-family: 'Libre Caslon Text';
+  src: url('./assets/fontes/librecaslontext-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Caslon Text';
+  src: url('./assets/fontes/librecaslontext-italico.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Libre Caslon Text';
+  src: url('./assets/fontes/librecaslontext-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Bevan — egípcia de manchete: títulos de painel e cabeçalhos. */
+@font-face {
+  font-family: 'Bevan';
+  src: url('./assets/fontes/bevan-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Oswald — condensada de balcão (arquivo variável 200–700): carimbos, tarjas,
+   rótulos, horas. Uma face cobre todos os pesos usados (400/500/600). */
+@font-face {
+  font-family: 'Oswald';
+  src: url('./assets/fontes/oswald-variable.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Rye — wood type: a única licença de display (cartaz da vila e desfechos). */
+@font-face {
+  font-family: 'Rye';
+  src: url('./assets/fontes/rye-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Fundo de mesa à luz de vela: o breu por baixo, a prosa em pergaminho
+   apagado, TODO o corpo em Libre Caslon (cena escura, documento claro). */
 body {
-  @apply bg-stone-950 text-stone-300 antialiased;
+  @apply antialiased;
+  background-color: #0d0b08;
+  color: #d8cfc0;
+  font-family: 'Libre Caslon Text', Georgia, Cambria, 'Times New Roman', serif;
+}
+
+/* Os fios do documento: âncoras em ouro de latão, vivas ao toque. */
+a {
+  color: #d3b06a;
+}
+a:hover {
+  color: #f2b03d;
 }
 
 /* ------------------------------------------------------------------ */
@@ -33,7 +101,7 @@ body {
 
 /* Madeira da escrivaninha: veios, tábuas, halo de vela e vinheta funda */
 .mesa-madeira {
-  background-color: #12100d;
+  background-color: #161009;
   background-image:
     /* halo quente da vela, alto e à direita (onde vive o relógio) */
     radial-gradient(120% 90% at 72% 0%, rgba(217, 119, 6, 0.16), rgba(0, 0, 0, 0) 55%),
@@ -87,7 +155,7 @@ body {
 /* PERGAMINHO: a face clara do papel — cartas de prova escritas a tinta.
    Fibra, mancha de idade nos cantos e fio escuro na borda. */
 .carta-pergaminho {
-  background-color: #e7ddc8;
+  background-color: #ecdfc3;
   background-image:
     /* dobra de luz no alto e sombra de idade embaixo */
     linear-gradient(168deg, rgba(255, 250, 235, 0.55), rgba(0, 0, 0, 0) 38%),
@@ -97,12 +165,12 @@ body {
     radial-gradient(55% 45% at 100% 0%, rgba(122, 98, 60, 0.12), rgba(0, 0, 0, 0) 55%),
     /* fibra do papel */
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' seed='1866' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.07'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
-  border: 1px solid #b3a17f;
+  border: 1px solid #a8946c;
   box-shadow:
-    inset 0 0 0 1px rgba(255, 250, 235, 0.4),
-    0 3px 8px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(0, 0, 0, 0.35);
-  color: #2b2119;
+    inset 0 0 0 1px rgba(255, 250, 235, 0.45),
+    0 3px 9px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.3);
+  color: #251b10;
 }
 
 /* FICHA DE COLETA (§6.2): a etiqueta de exposição/laudo que a evidência
@@ -115,7 +183,7 @@ body {
 /* COURO DOS PAINÉIS: a moldura escura dos overlays — couro gasto com
    vinheta e costura de luz por dentro. */
 .painel-couro {
-  background-color: #1a1613;
+  background-color: #1c1512;
   background-image:
     radial-gradient(120% 90% at 50% 0%, rgba(217, 119, 6, 0.07), rgba(0, 0, 0, 0) 55%),
     radial-gradient(130% 110% at 50% 55%, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.5) 100%),
@@ -131,7 +199,7 @@ body {
    relevo — o texto vai gravado em tinta escura. */
 .placa-latao {
   background-image:
-    linear-gradient(178deg, #c9a961 0%, #b08c4a 55%, #a3823f 100%),
+    linear-gradient(178deg, #d3b06a 0%, #b08c4a 55%, #a3823f 100%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='77' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
   background-blend-mode: normal, overlay;
   border: 1px solid #54431f;
@@ -167,6 +235,47 @@ body {
     inset 0 1px 2px rgba(255, 200, 160, 0.3),
     inset 0 -2px 3px rgba(0, 0, 0, 0.5),
     0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* LACRE PRENSADO (edição de imprensa): o selo de cera de verdade — pingo
+   irregular, brilho quente no alto, sulco fundo e grão de cera por cima. As
+   variáveis --selo-* deixam a cor/textura serem afinadas por quem usa (padrão:
+   a cera vermelha do jogo). Usado como carimbo/assinatura em 1g e 1i. */
+.selo-lacre {
+  position: relative;
+  border-radius: var(--selo-blob, 46% 54% 52% 48% / 55% 45% 54% 46%);
+  background-image: radial-gradient(
+    circle at 34% 30%,
+    var(--selo-cl, #b04a38) 0%,
+    var(--selo-md, #7f1d1d) 52%,
+    var(--selo-dk, #40100e) 100%
+  );
+  box-shadow:
+    inset 0 1px 2px rgba(255, 200, 160, 0.32),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.55),
+    inset 0 0 7px rgba(0, 0, 0, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.6);
+}
+/* O relevo interno prensado no lacre (o brasão que a matriz deixa). */
+.selo-lacre::before {
+  content: '';
+  position: absolute;
+  inset: 13%;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 215, 180, 0.26);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 1px rgba(255, 215, 180, 0.16);
+  pointer-events: none;
+}
+/* O grão da cera derramada (ruído SVG determinístico, sobreposto). */
+.selo-lacre::after {
+  content: '';
+  position: absolute;
+  inset: -3%;
+  border-radius: inherit;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' seed='1893' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.9'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: var(--selo-tex, 0.55);
+  pointer-events: none;
 }
 
 /* BOTÃO DE MESA: o botão comum da interface — madeira escura, fio de
@@ -368,25 +477,41 @@ body {
   }
 }
 
-/* Termos clicáveis em negrito dentro da prosa imersiva.
-   padding-block dá alvo de toque ≥24px sem deslocar as linhas da prosa. */
+/* Termos clicáveis em negrito dentro da prosa imersiva. Âmbar de cera quente,
+   fio pontilhado por baixo — "por examinar". padding-block dá alvo de toque
+   ≥24px sem deslocar as linhas da prosa. (Nomes de classe intocáveis — contrato
+   do qa-ui; só a cor evolui para o ouro da edição de imprensa.) */
 .termo-clicavel {
-  @apply font-bold text-amber-200 cursor-pointer underline decoration-dotted decoration-amber-900 underline-offset-4 hover:text-amber-100;
+  color: #f3c76c;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 1px dotted #9a6a1f;
   padding-block: 0.3em;
+  transition: color 180ms ease;
+}
+.termo-clicavel:hover {
+  color: #ffe6ab;
 }
 
-/* Já extraído = "link visitado": roxo suave, ainda clicável para REABRIR a
-   ficha ali no texto (sem voltar à mesa). Distingue-se do âmbar do clicável.
-   text-violet-300 sobre o couro escuro: contraste alto e legível. */
+/* Já extraído = "link visitado": violeta apagado, ainda clicável para REABRIR
+   a ficha ali no texto (sem voltar à mesa). Distingue-se do âmbar do clicável;
+   contraste alto sobre o couro escuro. */
 .termo-extraido {
-  @apply font-bold text-violet-300 cursor-pointer underline decoration-dotted decoration-violet-800 underline-offset-4 hover:text-violet-200;
+  color: #c9b3e6;
+  font-weight: 700;
+  cursor: pointer;
+  border-bottom: 1px dotted #6a5488;
   padding-block: 0.3em;
+  transition: color 180ms ease;
+}
+.termo-extraido:hover {
+  color: #e2d4f4;
 }
 
-/* Destaque recíproco: passar o cursor num hotspot do corpo 3D acende o
-   termo correspondente na prosa (puro efeito visual). */
+/* Destaque recíproco: passar o cursor num hotspot da prancha acende o termo
+   correspondente na prosa (puro efeito visual — o "fundo aceso"). */
 .termo-destacado {
-  @apply text-amber-100;
+  color: #ffe6ab;
   background: rgba(217, 119, 6, 0.18);
   border-radius: 2px;
 }
@@ -397,7 +522,7 @@ body {
 /* funda e halo de vela. Só acréscimos abaixo desta linha.              */
 /* ------------------------------------------------------------------ */
 .mural-cortica {
-  background-color: #1a120d;
+  background-color: #1d130c;
   background-image:
     /* halo da vela alta, à direita do mural */
     radial-gradient(110% 80% at 70% 0%, rgba(217, 119, 6, 0.14), rgba(0, 0, 0, 0) 55%),
