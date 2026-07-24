@@ -60,8 +60,13 @@ export const MAPA_TRAIT_TOM = {
 
 export const TONS = ['firme', 'cordial', 'tecnico', 'obliquo'];
 
+// E5 (decorrelação): o pick de variante de prosa passa a hashDecisao — o
+// hashString cru não tem avalanche, e chaves-irmãs (b1|firme × b1|cordial)
+// caíam correlacionadas na mesma coluna. hashDecisao re-hasha e liberta os
+// slots. Muda os bytes dos casos embarcados (bump de golden, D4) — re-gerar
+// no mesmo commit. Só prosa; o motor jamais lê isto.
 export function variante(pool, chave) {
-  return pool[hashString(chave) % pool.length];
+  return pool[hashDecisao(chave) % pool.length];
 }
 
 function indicePorId(lista) {
