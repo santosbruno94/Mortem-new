@@ -188,4 +188,30 @@ próprio, importando `medir()` do script e comparando contra um baseline version
       (pensão só no tutorial; ideia do prólogo do crime rejeitada por colidir com a
       encenação); D2–D4 = seguir recomendação. Registro em `os-prosa-viva-e0-plano.md` §6,
       conceito da E1 revista em §4.
-- [ ] Guarda opcional no `qa.mjs` — a ligar depois de D2, se o autor quiser.
+- [x] Guarda anti-monotonia no `qa.mjs` — **ligada na E5** (o núcleo da medição virou
+      `scripts/lib/monotonia.mjs`, agora com cobertura da `introducao`). São 7 pisos de
+      superfície (E1–E4) que reprovam o QA se uma etapa futura regredir a molde raso.
+
+---
+
+## 8. Fecho da OS (24/07/2026) — E1–E5 entregues
+
+A pauta desta Fase 0 foi cumprida ponta a ponta. Estado das superfícies após E1–E5
+(medido por `npm run telemetria:monotonia`):
+
+| Etapa | Superfície | Antes | Depois |
+|---|---|---|---|
+| E1 | abertura (6 passos) | 4 passos CONGELADOS (pior 1) | nenhum passo congelado (pior 3) |
+| E2 | rigor / livores / reação vital | 1 variante por estado | 3 / 3 / 3 (pior 3) |
+| E3 | segredo / cena / sangue alheio | molde único (var/slot ≈2) | segredo var/slot 6; sangue 3; intro da cena por slot |
+| E4 | eco / frame do diálogo | 2 por chave; frame fixo | 3 por chave; frame 3× por tom; ENTREGA pool |
+| E5 | decorrelação + guarda | `variante`=`hashString` (colunas presas) | `variante`=`hashDecisao`; guarda no `qa.mjs` |
+
+Toda prosa nova passou pelo pipeline `revisar-prosa` (editor-crítico + perito-forense +
+fiscal-continuidade) com zero achados bloqueantes remanescentes. Cada variante foi lida
+da fonte pelos revisores (cobertura de variante órfã satisfeita). Bump de golden aceito
+(D4): os 31 casos foram re-gerados a cada etapa.
+
+**Fora de escopo, anotado:** `dialogo:opcao` (os rótulos clicáveis de tom, o maior reúso
+do lote) segue intocado — é contrato do `qa-ui.mjs`; variá-lo pede atualizar o QA no
+mesmo commit, e a E4 mirou o *frame* (fala), não os rótulos. Fica como possível OS futura.
