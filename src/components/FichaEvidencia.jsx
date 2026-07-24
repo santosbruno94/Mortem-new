@@ -46,7 +46,20 @@ export default function FichaEvidencia({ cartaId }) {
       nivelZ="z-50"
       aoFechar={fecharFicha}
     >
-      <div className="ficha-laudo carta-pergaminho rounded-sm px-5 py-5">
+      <div className="ficha-laudo etiqueta-especime carta-pergaminho px-5 py-5">
+        {/* O ilhó e o barbante (1i): a etiqueta vem amarrada à peça. Traço
+            procedural, puro ornamento — nenhuma regra o lê. */}
+        <svg viewBox="0 0 26 46" className="etiqueta-cordao" aria-hidden="true">
+          <path
+            d="M13 33 C 3 26, 3 5, 13 5 C 23 5, 23 26, 13 33 Z"
+            fill="none"
+            stroke="#8a7756"
+            strokeWidth="1.8"
+            strokeLinejoin="round"
+          />
+          <circle cx="13" cy="37" r="5" fill="#0d0b08" stroke="#8a7756" strokeWidth="1.6" />
+        </svg>
+
         {/* Tarja de domínio + carimbo: o cabeçalho de laudo */}
         <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-tinta-apagada/40 pb-2">
           {dominio && <span className="text-cera text-rotulo uppercase">{dominio}</span>}

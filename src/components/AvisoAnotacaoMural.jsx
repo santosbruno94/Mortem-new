@@ -25,9 +25,12 @@ export default function AvisoAnotacaoMural() {
   if (!visivel || !anotado) return null;
   return (
     <div data-aviso-mural className="fixed bottom-3 left-3 z-50 pointer-events-none">
-      <div className="aviso-pousada carta-pergaminho rounded-sm px-3 py-2 shadow-pousado max-w-[16rem]">
-        <span className="block text-cera text-rotulo uppercase">Confronto</span>
-        <span className="block font-serif text-tinta text-sm leading-snug mt-0.5">
+      {/* Este aviso não vem da mesa: vem do mural, e por isso é escuro —
+          fundo de cortiça no breu, filete de cera por fora, o carimbo de
+          cera a dizer o que a cor promete no jogo inteiro (há novidade). */}
+      <div className="aviso-pousada aviso-mural rounded-sm px-3 pt-3 pb-2 max-w-[16rem]">
+        <span className="carimbo carimbo--cera block w-fit text-rotulo uppercase">Confronto</span>
+        <span className="block font-serif text-papel text-sm leading-snug mt-1.5">
           A prova ficou anotada ao mural.
         </span>
       </div>

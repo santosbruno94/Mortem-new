@@ -218,6 +218,107 @@ a:hover {
   border-left: 3px solid rgba(122, 98, 60, 0.55);
 }
 
+/* ETIQUETA DE ESPÉCIME (1i): a ficha de coleta deixa de ser retângulo e
+   passa a ser a etiqueta que se amarra à peça num mostruário — o lado que
+   pende arredondado, o ilhó de latão furando o papel e o barbante passado
+   por ele. A forma diz o que a ficha é: coisa presa à prova, não página de
+   caderno. */
+.etiqueta-especime {
+  position: relative;
+  border-radius: 2px 12px 12px 2px;
+  padding-left: 2.1rem;
+}
+
+/* O ilhó e o barbante: um traço só. O SVG carrega a laçada e o furo de
+   latão no mesmo desenho, para que a ponta do cordão caia dentro do ilhó
+   em qualquer largura — dois elementos separados brigavam por um pixel. */
+.etiqueta-cordao {
+  position: absolute;
+  left: 0.24rem;
+  top: -0.85rem;
+  width: 26px;
+  pointer-events: none;
+}
+
+/* CARTE DE VISITE (1i): o retrato da pessoa monta como o cartão de
+   fotógrafo de 1893 — cartão claro de dobra grossa, filete de latão por
+   dentro e o florão a fechar. A gravura é a mesma do sprite; o que muda
+   é o suporte em que ela vem. */
+.carte-visite {
+  background-color: #f4ecd9;
+  border: 1px solid #a8946c;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 250, 235, 0.5),
+    0 6px 14px rgba(0, 0, 0, 0.6);
+  transform: rotate(-0.6deg);
+}
+
+/* O filete de latão por dentro do cartão, e o campo um tom mais quente que
+   ele: a prova de albumina colada sobre o mount, como se montava. */
+.carte-moldura {
+  border: 1px solid #a8946c;
+  background-color: #f2ead6;
+}
+
+/* FORMULÁRIO DE TELÉGRAFO (1i): o Form A1 do Post Office, tal como o
+   entregavam à porta — papel pardo de repartição, cabeçalho apartado por
+   filete grosso e o corpo em letra de balcão, espaçada como o telegrafista
+   copiava do fio: só maiúsculas, sem pontuação que custe palavra. */
+.telegrama-form {
+  background-color: #e3d3ae;
+  border: 1px solid #a8946c;
+  color: #251b10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.55);
+}
+
+.telegrama-cabeca {
+  border-bottom: 1.5px solid #251b10;
+}
+
+.telegrama-corpo {
+  letter-spacing: 0.12em;
+  line-height: 1.9;
+}
+
+/* CARIMBOS (1i): os dois tampões do gabinete, e o que cada tinta quer
+   dizer. GARRAFA carimba o que foi conferido e entrou para o registro;
+   CERA marca o confronto — a novidade que pede a mão do jogador. Entram
+   tortos, como entra carimbo batido à mão.
+   O terceiro estado do mostruário — "já apresentada" — ficou de fora de
+   propósito: é prova gasta, e a cera no jogo inteiro promete o contrário
+   (o ponto vermelho na vila, a anotação nova ao mural). Carimbar de
+   vermelho uma opção esgotada ensinaria a cor errada. */
+.carimbo {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  line-height: 1;
+}
+
+.carimbo--garrafa {
+  color: #7fae91;
+  border: 2px double #7fae91;
+  border-radius: 9999px;
+  transform: rotate(-6deg);
+}
+
+/* A cera só carimba sobre fundo escuro (o aviso de mural): daí o vermelho
+   claro, que no breu ainda se lê. */
+.carimbo--cera {
+  color: #c9767a;
+  border: 2px solid rgba(158, 42, 43, 0.7);
+  border-radius: 2px;
+  transform: rotate(4deg);
+}
+
+/* O AVISO DE MURAL (1i) veste o avesso do aviso de pouso: aquele é papel
+   que cai na mesa, este é o que ficou pregado ao mural, no escuro da
+   cortiça, com o filete de cera por fora. */
+.aviso-mural {
+  background-color: rgba(24, 19, 13, 0.95);
+  border: 1px solid rgba(158, 42, 43, 0.6);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.55);
+}
+
 /* COURO DOS PAINÉIS: a moldura escura dos overlays — couro gasto com
    vinheta e costura de luz por dentro. */
 .painel-couro {

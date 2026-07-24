@@ -37,11 +37,17 @@ export default function AvisoCartaPousada() {
           setVisivel(false);
           abrirFicha(carta.id);
         }}
-        className="aviso-pousada pointer-events-auto carta-pergaminho rounded-sm px-3 py-2 text-left shadow-pousado max-w-[16rem]"
+        className="aviso-pousada pointer-events-auto carta-pergaminho relative rounded-sm px-3 pt-3 pb-2 text-left shadow-pousado max-w-[16rem]"
         title="Abrir a ficha desta observação"
       >
-        <span className="block text-cera text-rotulo uppercase">Registrado na mesa</span>
-        <span className="block font-serif text-tinta text-sm leading-snug mt-0.5">
+        {/* A tacha que prende o papelucho: o aviso não flutua, foi espetado */}
+        <span className="tacha-latao absolute -top-1 left-3.5 w-2 h-2" aria-hidden />
+        {/* Tinta garrafa: no gabinete, é a cor do que já foi conferido e
+            entrou para o registro. */}
+        <span className="carimbo carimbo--garrafa block w-fit text-rotulo uppercase">
+          Registrado na mesa
+        </span>
+        <span className="block font-serif text-tinta text-sm leading-snug mt-1.5">
           {carta.termoCarimbo}
         </span>
       </button>
