@@ -94,7 +94,7 @@ export const CASO_REPLICA = {
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -106,7 +106,7 @@ export const CASO_REPLICA = {
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -118,7 +118,7 @@ export const CASO_REPLICA = {
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -130,7 +130,7 @@ export const CASO_REPLICA = {
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -149,7 +149,7 @@ export const CASO_REPLICA = {
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -161,7 +161,7 @@ export const CASO_REPLICA = {
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou. As manchas assentaram do lado que ora fica para cima.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou. As manchas assentaram do lado que ora fica para cima.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -190,7 +190,7 @@ export const CASO_REPLICA = {
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -424,7 +424,7 @@ export const CASO_REPLICA = {
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Elizabeth Knight",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Elizabeth Knight: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de Elizabeth Knight: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -480,7 +480,7 @@ export const CASO_REPLICA = {
    "localidade": "casa_cottage_2",
    "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
-   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -510,7 +510,7 @@ export const CASO_REPLICA = {
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -566,7 +566,7 @@ export const CASO_REPLICA = {
    "subtitulo": "Onde Albert Hall foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 3 guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O Cottage nº 3 segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo.",
     "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
@@ -583,7 +583,7 @@ export const CASO_REPLICA = {
      "rotulo": "Copa",
      "comodo": "copa",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, tina e tábua de lavar, ferro de engomar, pia da copa (a única torneira). À vista, sem procura: [[gen_hora_forjada]]."
+      "No chão deste cômodo, o morto. No cômodo, tina e tábua de lavar, ferro de engomar, pia da copa (a única torneira). À vista, sem procura: [[gen_hora_forjada]]."
      ]
     },
     {
@@ -591,7 +591,7 @@ export const CASO_REPLICA = {
      "rotulo": "Quarto",
      "comodo": "quarto",
      "prosa": [
-      "No cômodo, castiçal de latão, cama de ferro. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavadeira]]."
+      "Do mobiliário, castiçal de latão, cama de ferro. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavadeira]]."
      ]
     }
    ],
@@ -672,7 +672,7 @@ export const CASO_REPLICA = {
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
+    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_2_lavadeira]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -841,7 +841,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "Amy Ellis abre antes que o constable acabe de bater, e toma a palavra do batente. \"Marquei as visitas para depois; o inquérito vem primeiro, e é o certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Amy Ellis abre antes que o constable acabe de bater, e toma a palavra do batente. \"Tenho a manhã tomada, {detective.treatment}, mas isto passa à frente de tudo. Ao seu dispor.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -901,13 +901,13 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nomes não aponto. Desafeto declarado de Albert Hall, não me constou nenhum.\" Recolhe as luvas. \"O inquérito sabe onde me encontrar.\""
+      "\"Nomes não aponto. Desafeto declarado de Albert Hall, não me constou nenhum.\" Recolhe as luvas, um dedo por vez. \"Qualquer papel que falte, mande buscar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]."
+      "A sexta à noite vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]."
      ],
      "opcoes": [
       {
@@ -934,13 +934,13 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Albert Hall? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Recolhe as luvas. \"O inquérito sabe onde me encontrar.\""
+      "\"Albert Hall? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Recolhe as luvas, um dedo por vez. \"Qualquer papel que falte, mande buscar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]."
      ],
      "opcoes": [
       {
@@ -967,13 +967,13 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Recolhe as luvas. \"O inquérito sabe onde me encontrar.\""
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Recolhe as luvas, um dedo por vez. \"Qualquer papel que falte, mande buscar.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_professora]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -1000,7 +1000,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Recolhe as luvas. \"O inquérito sabe onde me encontrar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Recolhe as luvas, um dedo por vez. \"Qualquer papel que falte, mande buscar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -1071,7 +1071,7 @@ export const CASO_REPLICA = {
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -1098,13 +1098,13 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Philip Jones. Por quê, não sei dizer; sei, e chega.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Philip Jones. Por quê, não sei dizer; sei, e chega.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -1131,13 +1131,13 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Albert Hall era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Albert Hall era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -1164,13 +1164,13 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_5_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -1197,7 +1197,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -1223,7 +1223,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "Elizabeth Knight entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+      "Elizabeth Knight entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
      ],
      "opcoes": [
       {
@@ -1289,13 +1289,13 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Albert Hall eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Albert Hall eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -1322,13 +1322,13 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Albert Hall? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Albert Hall? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -1355,13 +1355,13 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -1388,7 +1388,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -1425,7 +1425,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "Florence Cooper entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Florence Cooper entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -1470,7 +1470,7 @@ export const CASO_REPLICA = {
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -1497,13 +1497,13 @@ export const CASO_REPLICA = {
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]."
+      "A sexta à noite vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -1530,13 +1530,13 @@ export const CASO_REPLICA = {
     },
     "b2_cordial": {
      "fala": [
-      "\"Albert Hall era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Albert Hall era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]."
+      "Dá a hora, dá o lugar, e para; a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -1563,13 +1563,13 @@ export const CASO_REPLICA = {
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -1596,7 +1596,7 @@ export const CASO_REPLICA = {
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Alisa o avental. \"Com licença, que a casa não para.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -1627,7 +1627,7 @@ export const CASO_REPLICA = {
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Philip Jones abre e se descobre, o chapéu na mão. \"Adiei o que havia para adiar. Sirva-se do tempo.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "O constable bate; Philip Jones abre e se descobre, o chapéu na mão. \"Marquei as visitas para depois; o inquérito vem primeiro, e é o certo.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -1660,7 +1660,7 @@ export const CASO_REPLICA = {
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_1_medico]]."
      ],
      "opcoes": [
       {
@@ -1693,7 +1693,7 @@ export const CASO_REPLICA = {
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
+      "A sexta à noite vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_1_medico]]."
      ],
      "opcoes": [
       {
@@ -1726,7 +1726,7 @@ export const CASO_REPLICA = {
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_1_medico]]."
      ],
      "opcoes": [
       {
@@ -1759,7 +1759,7 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_medico]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_1_medico]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -1806,39 +1806,37 @@ export const CASO_REPLICA = {
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Stanmore, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Albert Hall, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Haversham, à pressa. O que aqui houve pede olho de perito, não de guarda. Albert Hall, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -1846,8 +1844,7 @@ export const CASO_REPLICA = {
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -1857,7 +1854,7 @@ export const CASO_REPLICA = {
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Albert Hall, 30 anos, lavrador. Achado morto no Cottage nº 3. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -2487,31 +2484,38 @@ export const CASO_REPLICA = {
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -2599,7 +2603,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -2611,7 +2615,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -2623,7 +2627,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -2635,7 +2639,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -2695,7 +2699,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -2772,7 +2776,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Rachel Page",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Rachel Page por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de Rachel Page por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -2790,7 +2794,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Rose Wright",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rose Wright: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Rose Wright, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -2831,7 +2835,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Weldmere (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Weldmere (madrugada de sábado)",
-   "descricao": "\"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -2861,7 +2865,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -2891,7 +2895,7 @@ export const CASOS_POOL = [
    "localidade": "casa_casa_do_medico",
    "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -2932,7 +2936,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Charles Harris foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Moinho guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido.",
     "O piano ocupa a sala, de tampa fechada e sem partituras à vista."
    ],
    "pontos": [
@@ -2957,7 +2961,7 @@ export const CASOS_POOL = [
      "rotulo": "Piso do Moinho",
      "comodo": "piso_do_moinho",
      "prosa": [
-      "Do mobiliário, guindaste de sacas, mó de moinho. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_parteira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_4_criada]]."
+      "No cômodo, guindaste de sacas, mó de moinho. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_5_parteira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_4_criada]]."
      ]
     }
    ],
@@ -3024,7 +3028,7 @@ export const CASOS_POOL = [
     "telegrafo"
    ],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_5_parteira]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -3200,7 +3204,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Albert Hall abre e se descobre, o chapéu na mão. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O constable bate; Albert Hall abre e se descobre, o chapéu na mão. \"Pergunte daqui mesmo, que a tarde é curta.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -3233,7 +3237,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
      ],
      "opcoes": [
       {
@@ -3266,7 +3270,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -3299,7 +3303,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -3332,7 +3336,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -3411,7 +3415,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -3444,7 +3448,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_ferreiro]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -3477,7 +3481,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_ferreiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_ferreiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -3510,7 +3514,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -3563,7 +3567,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Maurice Martin abre e se descobre, o chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\""
+      "O constable bate; Maurice Martin abre e se descobre, o chapéu na mão. \"Pergunte daqui mesmo, que a tarde é curta.\""
      ],
      "opcoes": [
       {
@@ -3602,7 +3606,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -3635,7 +3639,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
+      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -3701,7 +3705,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -3754,7 +3758,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Rachel Page abre antes que o constable acabe de bater, e toma a palavra do batente. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
+      "Rachel Page abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deu licença. Respondo o que souber, e depressa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -3793,7 +3797,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
       {
@@ -3820,13 +3824,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Charles Harris eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Charles Harris eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -3853,13 +3857,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Charles Harris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"Charles Harris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
+      "Dá a hora, dá o lugar, e para; os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
       {
@@ -3886,13 +3890,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
       {
@@ -3919,7 +3923,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -3945,7 +3949,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Rose Wright entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\""
+      "Rose Wright entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\""
      ],
      "opcoes": [
       {
@@ -3984,7 +3988,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_criada]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
       {
@@ -4011,13 +4015,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Charles Harris eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Charles Harris eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_criada]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
       {
@@ -4044,7 +4048,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Charles Harris? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Charles Harris? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -4077,13 +4081,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_criada]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
       {
@@ -4110,7 +4114,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -4124,21 +4128,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Roderick, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -4146,17 +4149,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Charles Harris, moleiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Charles Harris, moleiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -4164,8 +4166,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Aldergate começa logo ali, numa rua de lama e fachadas baixas. Roderick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -4175,7 +4176,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Charles Harris, 59 anos, moleiro. Achado morto no Moinho. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -4853,7 +4854,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4865,7 +4866,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4877,7 +4878,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4889,7 +4890,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -4920,7 +4921,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -4949,7 +4950,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -5088,7 +5089,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Ernest Hall",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Ernest Hall: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Ernest Hall pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -5168,7 +5169,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_2",
    "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -5271,7 +5272,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Thomas Watson foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido."
    ],
    "pontos": [
     {
@@ -5565,7 +5566,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -5598,7 +5599,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -5664,7 +5665,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -5717,7 +5718,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Ernest Hall abre e se descobre, o chapéu na mão. \"Serviço parado esfria. Pergunte.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "O constable bate; Ernest Hall abre e se descobre, o chapéu na mão. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -5822,7 +5823,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]."
+      "Dá a hora, dá o lugar, e para; a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -5855,7 +5856,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -5901,7 +5902,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Ernest Read abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\""
+      "Ernest Read abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\""
      ],
      "opcoes": [
       {
@@ -5961,13 +5962,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Thomas Watson eu não conhecia.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Thomas Watson eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -5994,7 +5995,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Thomas Watson? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Thomas Watson? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -6027,7 +6028,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -6060,7 +6061,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -6086,7 +6087,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Herbert Thomas abre e se descobre, o chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\""
+      "O constable bate; Herbert Thomas abre e se descobre, o chapéu na mão. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\""
      ],
      "opcoes": [
       {
@@ -6125,7 +6126,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -6152,7 +6153,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -6185,7 +6186,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Thomas Watson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Thomas Watson era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -6218,7 +6219,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -6251,7 +6252,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -6270,7 +6271,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "John Carter abre antes que o constable acabe de bater, e toma a palavra do batente. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\""
+      "John Carter abre antes que o constable acabe de bater, e toma a palavra do batente. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\""
      ],
      "opcoes": [
       {
@@ -6303,7 +6304,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -6330,13 +6331,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome {detective.treatment} quer, nome eu dou: Ernest Hall. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Nome {detective.treatment} quer, nome eu dou: Ernest Hall. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -6363,13 +6364,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Thomas Watson? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Thomas Watson? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -6396,13 +6397,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -6429,7 +6430,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     }
@@ -6443,21 +6444,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Stanmore pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -6465,17 +6465,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Thomas Watson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Haversham, e isto passa do meu ofício. Thomas Watson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -6483,8 +6482,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Haversham quando o trem chega. Stanmore espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -6494,7 +6492,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Thomas Watson, 63 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -7125,31 +7123,38 @@ export const CASOS_POOL = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -7235,7 +7240,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -7247,7 +7252,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -7259,7 +7264,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -7271,7 +7276,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -7416,7 +7421,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Ethel Thomas",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Ethel Thomas por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de Ethel Thomas por extenso, e uma assinatura só.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -7434,7 +7439,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Henry Walker",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Walker: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Henry Walker pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -7505,7 +7510,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7520,7 +7525,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -7576,7 +7581,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde William Harris foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido.",
     "A louça boa fica no aparador da sala da frente, e os retratos, na mesma parede."
    ],
    "pontos": [
@@ -7593,7 +7598,7 @@ export const CASOS_POOL = [
      "rotulo": "Quarto (sobrado)",
      "comodo": "quarto",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, cômoda, castiçal de latão, cama de armação de madeira. À vista, sem procura: [[gen_hora_forjada]]. Junto do corpo, no chão: [[gen_instrumento]]."
+      "No chão deste cômodo, o morto. No cômodo, cômoda, castiçal de latão, cama de armação de madeira. À vista, sem procura: [[gen_hora_forjada]]. Junto do corpo, no chão: [[gen_instrumento]]."
      ]
     },
     {
@@ -7668,7 +7673,7 @@ export const CASOS_POOL = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_criada]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -7823,7 +7828,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Edward Hill entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+      "Edward Hill entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
      ],
      "opcoes": [
       {
@@ -7889,7 +7894,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -7922,13 +7927,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Harris era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"William Harris era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -7955,7 +7960,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -7988,7 +7993,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     }
@@ -8059,7 +8064,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -8125,7 +8130,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -8217,7 +8222,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Henry Walker entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Henry Walker entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -8256,7 +8261,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -8283,13 +8288,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de William Harris eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de William Harris eu não conhecia.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "A madrugada de sábado vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -8316,13 +8321,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Harris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"William Harris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -8349,13 +8354,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_5_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -8382,7 +8387,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -8434,7 +8439,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -8461,13 +8466,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de William Harris eu não conhecia.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de William Harris eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -8494,13 +8499,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Harris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"William Harris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -8527,7 +8532,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -8560,7 +8565,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -8631,7 +8636,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]."
      ],
      "opcoes": [
       {
@@ -8664,7 +8669,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]."
+      "A madrugada de sábado vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]."
      ],
      "opcoes": [
       {
@@ -8697,7 +8702,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]."
      ],
      "opcoes": [
       {
@@ -8730,7 +8735,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_professora]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -8777,21 +8782,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Bexley pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -8799,17 +8803,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. William Harris, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. William Harris, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -8817,8 +8820,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Colbrook quando o trem chega. Bexley espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -8828,7 +8830,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William Harris, 59 anos, merceeiro. Achado morto na Mercearia. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -9472,7 +9474,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9484,7 +9486,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9496,7 +9498,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9508,7 +9510,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -9527,7 +9529,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -9539,7 +9541,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -9568,7 +9570,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -9669,7 +9671,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de George Webb",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de George Webb: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de George Webb, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -9725,7 +9727,7 @@ export const CASOS_POOL = [
    "localidade": "vizinhanca",
    "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo ali mesmo, pela mão do constable.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado de pé, o serviço à espera, diante do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9740,7 +9742,7 @@ export const CASOS_POOL = [
    "localidade": "casa_casa_do_medico",
    "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -9811,7 +9813,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Florence Read foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Caminho do Açude guarda o dia em que a acharam; o exame corre canto a canto.",
+    "O exame corre canto a canto: a cena está como a acharam, nada movido.",
     "Um transeunte deu com ela às 06h30; o alarme tomou a vila."
    ],
    "pontos": [
@@ -10058,7 +10060,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Ada Chapman abre, ajeita as fitas da touca e fica no vão da porta. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "O constable bate; Ada Chapman abre, ajeita as fitas da touca e fica no vão da porta. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -10091,7 +10093,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -10118,13 +10120,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Florence Read tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome não tenho que dar. Se Florence Read tinha desafeto, não foi freguês meu.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -10151,13 +10153,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Read? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Florence Read? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -10184,13 +10186,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -10217,7 +10219,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -10236,7 +10238,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Emily Evans deixa o serviço devagar e espera a pergunta da soleira. \"Posso falar, com licença da casa. Respondo o que souber.\" Fala baixo e mede a porta antes de cada resposta."
+      "Emily Evans deixa o serviço devagar e espera a pergunta da soleira. \"Com licença. Digo o que souber, e volto ao serviço.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -10269,7 +10271,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -10296,13 +10298,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Florence Read eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Florence Read eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_criada]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
+      "A sexta à noite vem contada do princípio, e entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
      ],
      "opcoes": [
       {
@@ -10329,13 +10331,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Read? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"Florence Read? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_criada]]."
+      "\"Hora e lugar.\" E os dá, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -10362,13 +10364,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -10395,7 +10397,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -10421,7 +10423,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Florence Hill abre, ajeita as fitas da touca e fica no vão da porta. \"Posso falar, com licença da casa. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O constable bate; Florence Hill abre, ajeita as fitas da touca e fica no vão da porta. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -10460,7 +10462,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_7_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_7_criada]]."
      ],
      "opcoes": [
       {
@@ -10493,7 +10495,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_7_criada]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_7_criada]]."
      ],
      "opcoes": [
       {
@@ -10526,7 +10528,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_7_criada]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_7_criada]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -10559,7 +10561,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_7_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_7_criada]]."
      ],
      "opcoes": [
       {
@@ -10612,7 +10614,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "George Webb entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "George Webb entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -10651,7 +10653,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -10684,7 +10686,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -10717,7 +10719,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -10750,7 +10752,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -10796,7 +10798,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Sarah Bennett entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Sarah Bennett entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -10862,7 +10864,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
+      "A sexta à noite vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -10895,7 +10897,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
+      "Dá a hora, dá o lugar, e para; a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -10928,7 +10930,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -10969,39 +10971,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "No descampado, à saída da vila, o corpo jazia caído na relva. Um lavrador a caminho da lida foi quem primeiro passou."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Dunmere. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Florence Read, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Dunmere, à pressa. O que aqui houve pede olho de perito, não de guarda. Florence Read, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -11009,8 +11009,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Dunmere",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -11020,7 +11019,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Florence Read, 35 anos, costureira. Achada morta no Caminho do Açude. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -11620,7 +11619,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -11632,7 +11631,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -11644,7 +11643,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -11656,7 +11655,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -11716,7 +11715,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -11825,7 +11824,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Frank Jones",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Frank Jones por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de Frank Jones por extenso, e uma assinatura só.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -11843,7 +11842,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Jane Webb",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Jane Webb: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Jane Webb pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -11925,7 +11924,7 @@ export const CASOS_POOL = [
    "localidade": "vizinhanca",
    "textoDisplay": "A Mercearia (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado de pé, o serviço à espera, diante do constable.",
+   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Tomado por termo ali mesmo, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -12029,7 +12028,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, cadeiras Windsor, sofá velho, tapete de retalhos. À vista, sem procura: [[gen_hora_forjada]]."
+      "No chão deste cômodo, o morto. No cômodo, cadeiras Windsor, sofá velho, tapete de retalhos. À vista, sem procura: [[gen_hora_forjada]]."
      ]
     },
     {
@@ -12320,7 +12319,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Florence Morris abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+      "Florence Morris abre antes que o constable acabe de bater, e toma a palavra do batente. \"Posso falar, com licença da casa. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
      ],
      "opcoes": [
       {
@@ -12392,7 +12391,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
@@ -12425,13 +12424,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Reuben Brown era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Reuben Brown era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_criada]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_criada]]."
      ],
      "opcoes": [
       {
@@ -12458,13 +12457,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_criada]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_criada]]."
      ],
      "opcoes": [
       {
@@ -12491,7 +12490,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -12523,7 +12522,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Frank Jones deixa o serviço devagar e espera a pergunta da soleira. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Frank Jones deixa o serviço devagar e espera a pergunta da soleira. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -12562,7 +12561,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -12589,13 +12588,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Reuben Brown tinha desafeto, não foi freguês meu.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Nome não tenho que dar. Se Reuben Brown tinha desafeto, não foi freguês meu.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -12622,13 +12621,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Reuben Brown? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Reuben Brown? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -12655,13 +12654,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -12688,7 +12687,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -12759,7 +12758,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -12792,7 +12791,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -12825,7 +12824,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -12917,7 +12916,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Leonard Smith entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Leonard Smith entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Serviço parado esfria. Pergunte.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -12956,7 +12955,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_ferreiro]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -12983,13 +12982,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_ferreiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -13016,13 +13015,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Reuben Brown era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Reuben Brown era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -13049,13 +13048,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -13082,7 +13081,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -13107,7 +13106,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Peter Taylor abre antes que o constable acabe de bater, e toma a palavra do batente. \"Recebo porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Peter Taylor abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deve isto ao condado, e paga de bom grado. Ao que vem?\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -13206,7 +13205,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_squire]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_squire]]."
      ],
      "opcoes": [
       {
@@ -13239,7 +13238,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -13280,39 +13279,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O taverneiro subiu, não obteve resposta e recuou até a escada para mandar recado ao posto."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Wrenfield. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Harrow pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Reuben Brown, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Reuben Brown, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -13320,8 +13317,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Wrenfield",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -13331,7 +13327,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Reuben Brown, 56 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -14070,7 +14066,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -14082,7 +14078,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -14094,7 +14090,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -14106,7 +14102,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -14125,7 +14121,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -14137,7 +14133,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou. As manchas assentaram do lado que ora fica para cima.",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou. As manchas assentaram do lado que ora fica para cima.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -14315,7 +14311,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Louisa Jackson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Louisa Jackson: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Louisa Jackson pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -14455,7 +14451,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -14506,7 +14502,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, cama de armação de madeira, lavatório com bacia, cômoda. Um arranhão escapa de sob o pé de uma peça de mobília. À vista, sem procura: [[gen_hora_forjada]]."
+      "No chão deste cômodo, o morto. No cômodo, cama de armação de madeira, lavatório com bacia, cômoda. Um arranhão escapa de sob o pé de uma peça de mobília. À vista, sem procura: [[gen_hora_forjada]]."
      ]
     },
     {
@@ -14514,7 +14510,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No cômodo, mesa de cozinha, lareira com guarda-fogo."
+      "Do mobiliário, mesa de cozinha, lareira com guarda-fogo."
      ]
     },
     {
@@ -14530,7 +14526,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "Do mobiliário, atiçador de lareira, castiçal de latão, piano (ou harmônio). Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_criada]]."
+      "No cômodo, atiçador de lareira, castiçal de latão, piano (ou harmônio). Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_criada]]."
      ]
     }
    ],
@@ -14611,7 +14607,7 @@ export const CASOS_POOL = [
     "telegrafo"
    ],
    "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
+    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_2_criada]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
    ],
@@ -15053,7 +15049,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Joseph Wright abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Joseph Wright abre antes que o constable acabe de bater, e toma a palavra do batente. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -15098,7 +15094,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -15125,13 +15121,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -15158,13 +15154,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Ward era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"John Ward era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -15191,13 +15187,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_taverneiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -15224,7 +15220,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -15256,7 +15252,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Louisa Jackson abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Louisa Jackson abre antes que o constable acabe de bater, e toma a palavra do batente. \"Posso falar, com licença da casa. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -15295,7 +15291,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_2_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -15322,13 +15318,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Peter Gray. Por quê, não sei dizer; sei, e chega.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Peter Gray. Por quê, não sei dizer; sei, e chega.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_2_criada]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -15355,13 +15351,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Ward? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"John Ward? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_2_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_2_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -15388,13 +15384,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_2_criada]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -15421,7 +15417,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -15440,7 +15436,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Peter Gray entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Adiei o que havia para adiar. Sirva-se do tempo.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Peter Gray entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Tenho a manhã tomada, {detective.treatment}, mas isto passa à frente de tudo. Ao seu dispor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -15500,7 +15496,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nomes não aponto. Desafeto declarado de John Ward, não me constou nenhum.\" Ajeita o colarinho. \"Qualquer papel que falte, mande buscar.\""
+      "\"Nomes não aponto. Desafeto declarado de John Ward, não me constou nenhum.\" Recua para dentro do vão. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
@@ -15533,13 +15529,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Ward? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Ajeita o colarinho. \"Qualquer papel que falte, mande buscar.\""
+      "\"John Ward? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Recua para dentro do vão. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_medico]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Dá a hora, dá o lugar, e para; as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_medico]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -15566,13 +15562,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Ajeita o colarinho. \"Qualquer papel que falte, mande buscar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Recua para dentro do vão. \"O inquérito sabe onde me encontrar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_medico]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_medico]]."
      ],
      "opcoes": [
       {
@@ -15599,7 +15595,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Ajeita o colarinho. \"Qualquer papel que falte, mande buscar.\""
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Recua para dentro do vão. \"O inquérito sabe onde me encontrar.\""
      ],
      "opcoes": []
     }
@@ -15618,7 +15614,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Robert Turner entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Fala baixo e mede a porta antes de cada resposta."
+      "Robert Turner entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -15651,7 +15647,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_lavrador]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -15678,13 +15674,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Peter Gray. Por quê, não sei dizer; sei, e chega.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Peter Gray. Por quê, não sei dizer; sei, e chega.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A resposta toma o caminho comprido e chega inteira, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -15711,13 +15707,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Ward? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"John Ward? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -15744,13 +15740,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_lavrador]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -15777,7 +15773,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -15791,39 +15787,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Marlow Green, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Foi a criada da taverna, subindo com a água quente, quem achou o quarto em silêncio. Largou o jarro e desceu aos gritos."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Marlow Green. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. John Ward, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Marlow Green, e isto passa do meu ofício. John Ward, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -15831,8 +15825,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Marlow Green",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Marlow Green estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Marlow Green quando o trem chega. Fenwick espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -15842,7 +15835,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: John Ward, 32 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -16483,31 +16476,38 @@ export const CASOS_POOL = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -16593,7 +16593,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -16605,7 +16605,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -16617,7 +16617,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -16629,7 +16629,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -16648,7 +16648,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -16689,7 +16689,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -16825,7 +16825,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Frances Evans",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Frances Evans: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Frances Evans pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -16869,7 +16869,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de William Cooper",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de William Cooper por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de William Cooper por extenso, e uma assinatura só.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -16923,7 +16923,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_5",
    "textoDisplay": "Cottage nº 5 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -16938,7 +16938,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_2",
    "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -16968,7 +16968,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -16983,7 +16983,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -17025,7 +17025,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Henry Turner foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido.",
     "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
@@ -17042,7 +17042,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, fogão de ferro a carvão, mesa de cozinha, lareira com guarda-fogo."
+      "No cômodo, fogão de ferro a carvão, mesa de cozinha, lareira com guarda-fogo."
      ]
     },
     {
@@ -17337,7 +17337,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Frances Evans entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Frances Evans entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -17376,7 +17376,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -17403,13 +17403,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Turner eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Turner eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_3_lavadeira]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -17436,13 +17436,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Turner? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Henry Turner? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_3_lavadeira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -17469,13 +17469,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -17502,7 +17502,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -17533,7 +17533,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "John Ward entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Serviço parado esfria. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "John Ward entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -17578,7 +17578,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_ferreiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -17605,13 +17605,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_ferreiro]]."
+      "A madrugada de sábado vem contada do princípio, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -17638,13 +17638,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Turner era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Henry Turner era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_ferreiro]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_ferreiro]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -17671,13 +17671,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_ferreiro]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -17704,7 +17704,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     }
@@ -17730,7 +17730,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Leonard Smith entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Leonard Smith entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -17769,7 +17769,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -17802,7 +17802,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_ferreiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -17835,7 +17835,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_ferreiro]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -17868,7 +17868,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_ferreiro]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -17921,7 +17921,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Robert Marsh abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Robert Marsh abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -17987,13 +17987,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavrador]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -18020,7 +18020,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Turner era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Henry Turner era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -18053,13 +18053,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -18086,7 +18086,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -18178,13 +18178,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Turner eu não conhecia.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Turner eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -18211,13 +18211,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Turner? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Henry Turner? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -18244,7 +18244,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -18277,7 +18277,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -18291,39 +18291,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O taverneiro subiu, não obteve resposta e recuou até a escada para mandar recado ao posto."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Henry Turner, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Henry Turner, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -18331,8 +18329,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Aldergate começa logo ali, numa rua de lama e fachadas baixas. Roderick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -18342,7 +18339,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Henry Turner, 33 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -19010,31 +19007,38 @@ export const CASOS_POOL = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -19120,7 +19124,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -19132,7 +19136,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -19144,7 +19148,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -19156,7 +19160,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -19175,7 +19179,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -19316,7 +19320,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Henry Moore",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Moore: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de Henry Moore: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -19372,7 +19376,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_5",
    "textoDisplay": "Cottage nº 5 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -19387,7 +19391,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_2",
    "textoDisplay": "A Mercearia (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
-   "descricao": "\"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -19459,7 +19463,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Eleanor Barnes foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 4 guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "O Cottage nº 4 segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo.",
     "A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro."
    ],
    "pontos": [
@@ -19705,7 +19709,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Andrew Hill abre e se descobre, o chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+      "O constable bate; Andrew Hill abre e se descobre, o chapéu na mão. \"Pergunte daqui mesmo, que a tarde é curta.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
      ],
      "opcoes": [
       {
@@ -19771,7 +19775,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -19837,7 +19841,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -19890,7 +19894,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Dorcas Wright entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
+      "Dorcas Wright entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
      ],
      "opcoes": [
       {
@@ -19929,7 +19933,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_parteira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
       {
@@ -19956,7 +19960,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -19989,7 +19993,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Eleanor Barnes era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Eleanor Barnes era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -20022,7 +20026,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -20055,7 +20059,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -20074,7 +20078,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Frank Taylor entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Fala baixo e mede a porta antes de cada resposta."
+      "Frank Taylor entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -20140,7 +20144,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -20173,7 +20177,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
+      "Dá a hora, dá o lugar, e para; os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -20206,7 +20210,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -20259,7 +20263,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Henry Moore entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Henry Moore entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -20325,13 +20329,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Eleanor Barnes eu não conhecia.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Eleanor Barnes eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -20358,13 +20362,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Eleanor Barnes? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Eleanor Barnes? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Dá a hora, dá o lugar, e para; as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -20391,13 +20395,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -20424,7 +20428,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -20476,7 +20480,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -20503,13 +20507,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Eleanor Barnes eu não conhecia.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Eleanor Barnes eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -20536,13 +20540,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Eleanor Barnes? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Eleanor Barnes? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -20569,7 +20573,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -20602,7 +20606,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     }
@@ -20616,21 +20620,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Stanmore pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -20638,17 +20641,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Eleanor Barnes, lavadeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Haversham, à pressa. O que aqui houve pede olho de perito, não de guarda. Eleanor Barnes, lavadeira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -20656,8 +20658,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Haversham começa logo ali, numa rua de lama e fachadas baixas. Stanmore vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -20667,7 +20668,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Eleanor Barnes, 35 anos, lavadeira. Achada morta no Cottage nº 4. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -21290,7 +21291,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -21302,7 +21303,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -21314,7 +21315,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -21326,7 +21327,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -21345,7 +21346,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -21357,7 +21358,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -21386,7 +21387,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -21543,7 +21544,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Sarah Ward",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Sarah Ward por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de Sarah Ward por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -21561,7 +21562,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Susan Wilson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Susan Wilson: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Susan Wilson, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -21662,7 +21663,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -21703,7 +21704,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Fanny Mills foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 2 guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "O Cottage nº 2 segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo.",
     "Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala."
    ],
    "pontos": [
@@ -21712,7 +21713,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, atiçador de lareira, fogão de ferro a carvão."
+      "No cômodo, atiçador de lareira, fogão de ferro a carvão."
      ]
     },
     {
@@ -21720,7 +21721,7 @@ export const CASOS_POOL = [
      "rotulo": "Copa",
      "comodo": "copa",
      "prosa": [
-      "No cômodo, pia da copa (a única torneira), copper de ferver roupa, tina e tábua de lavar."
+      "Do mobiliário, pia da copa (a única torneira), copper de ferver roupa, tina e tábua de lavar."
      ]
     },
     {
@@ -21959,7 +21960,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Joseph Gray entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Joseph Gray entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -21992,7 +21993,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_moleiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_moleiro]]."
      ],
      "opcoes": [
       {
@@ -22019,7 +22020,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
@@ -22052,13 +22053,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Fanny Mills? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"Fanny Mills? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_moleiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Dá a hora, dá o lugar, e para; as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_moleiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -22085,13 +22086,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos meus com ela, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_moleiro]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_moleiro]]."
      ],
      "opcoes": [
       {
@@ -22118,7 +22119,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     }
@@ -22150,7 +22151,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Peter Roberts abre antes que o constable acabe de bater, e toma a palavra do batente. \"Deixei a sacristia aberta e o sineiro à espera. Diga do que precisa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Peter Roberts abre antes que o constable acabe de bater, e toma a palavra do batente. \"Entre um ofício e outro, o tempo é seu. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -22189,7 +22190,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_paroco]]."
      ],
      "opcoes": [
       {
@@ -22216,13 +22217,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Pousa a mão na ombreira, um instante. \"Que se apure tudo, e depressa. A paróquia reza por isso.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_paroco]]."
      ],
      "opcoes": [
       {
@@ -22249,13 +22250,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Fanny Mills era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Fanny Mills era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Pousa a mão na ombreira, um instante. \"Que se apure tudo, e depressa. A paróquia reza por isso.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
+      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_paroco]]."
      ],
      "opcoes": [
       {
@@ -22282,13 +22283,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Alisa a sobrecasaca. \"A paróquia fica às ordens.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Pousa a mão na ombreira, um instante. \"Que se apure tudo, e depressa. A paróquia reza por isso.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_paroco]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_paroco]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -22315,7 +22316,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Alisa a sobrecasaca. \"A paróquia fica às ordens.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Pousa a mão na ombreira, um instante. \"Que se apure tudo, e depressa. A paróquia reza por isso.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -22347,7 +22348,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Sarah Ward entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Sarah Ward entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -22386,7 +22387,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -22413,13 +22414,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Fanny Mills eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Fanny Mills eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "A madrugada de sábado vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -22446,13 +22447,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Fanny Mills? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Fanny Mills? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -22479,13 +22480,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -22512,7 +22513,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Alisa o avental. \"Com licença, que a casa não para.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -22610,7 +22611,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -22643,7 +22644,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -22676,7 +22677,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -22735,7 +22736,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Davies abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "William Davies abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -22774,7 +22775,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -22801,7 +22802,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -22834,13 +22835,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Fanny Mills era das que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Fanny Mills era das que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -22867,13 +22868,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -22900,7 +22901,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -22920,39 +22921,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Harrow, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Fanny Mills, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Fanny Mills, costureira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -22960,8 +22959,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -22971,7 +22969,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Fanny Mills, 35 anos, costureira. Achada morta no Cottage nº 2. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -23559,31 +23557,38 @@ export const CASOS_POOL = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -23669,7 +23674,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -23681,7 +23686,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -23693,7 +23698,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -23705,7 +23710,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -23736,7 +23741,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -23765,7 +23770,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -23859,7 +23864,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Grace Moore",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Grace Moore: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Grace Moore pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -23877,7 +23882,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Leonard Ward",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Leonard Ward por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, uma soma e um prazo com o nome de Leonard Ward ao pé — acerto sem testemunha, à espera da segunda assinatura.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -23944,7 +23949,7 @@ export const CASOS_POOL = [
    "localidade": "casa_pub",
    "textoDisplay": "A Taverna (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -23989,7 +23994,7 @@ export const CASOS_POOL = [
    "localidade": "vizinhanca",
    "textoDisplay": "A Mercearia (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado de pé, o serviço à espera, diante do constable.",
+   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Tomado por termo ali mesmo, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -24046,7 +24051,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Amos Read foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido.",
     "A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro."
    ],
    "pontos": [
@@ -24063,7 +24068,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão."
+      "No cômodo, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão."
      ]
     },
     {
@@ -24079,7 +24084,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "No cômodo, a louça boa no aparador, retratos emoldurados."
+      "Do mobiliário, a louça boa no aparador, retratos emoldurados."
      ]
     }
    ],
@@ -24356,7 +24361,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Amelia Bennett abre antes que o constable acabe de bater, e toma a palavra do batente. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+      "Amelia Bennett abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
      ],
      "opcoes": [
       {
@@ -24395,7 +24400,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_taverneiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -24422,13 +24427,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso é o que a vila pensa: casa com dinheiro chama olho de fora.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_taverneiro]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -24455,7 +24460,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Amos Read era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
+      "\"Amos Read era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto veio de fora do costume, é o que digo.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
@@ -24488,13 +24493,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. O resto é conversa de estrada, e estrada é por onde entra gente que ninguém conta.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_taverneiro]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -24521,7 +24526,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Ajeita o xale sobre os ombros. \"O negócio não se guarda sozinho.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
@@ -24612,7 +24617,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -24645,7 +24650,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -24731,7 +24736,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Grace Moore abre, ajeita as fitas da touca e fica no vão da porta. \"Serviço parado esfria. Pergunte.\""
+      "O constable bate; Grace Moore abre, ajeita as fitas da touca e fica no vão da porta. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\""
      ],
      "opcoes": [
       {
@@ -24770,7 +24775,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
      ],
      "opcoes": [
       {
@@ -24803,7 +24808,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
      ],
      "opcoes": [
       {
@@ -24836,7 +24841,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
      ],
      "opcoes": [
       {
@@ -24869,7 +24874,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_costureira]]."
      ],
      "opcoes": [
       {
@@ -24961,7 +24966,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -24994,7 +24999,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
+      "A madrugada de sábado vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -25027,7 +25032,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -25060,7 +25065,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_merceeiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -25119,7 +25124,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Carter entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\""
+      "William Carter entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\""
      ],
      "opcoes": [
       {
@@ -25158,7 +25163,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -25191,7 +25196,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -25224,7 +25229,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -25257,7 +25262,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -25304,39 +25309,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Na taverna, o quarto do fundo não abriu à hora do costume. O taverneiro subiu, não obteve resposta e recuou até a escada para mandar recado ao posto."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Amos Read, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Amos Read, carroceiro de frete, de passagem pela vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -25344,8 +25347,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Bexley vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -25355,7 +25357,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Amos Read, 52 anos, carroceiro de frete. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -26067,7 +26069,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -26079,7 +26081,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -26091,7 +26093,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -26103,7 +26105,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -26122,7 +26124,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -26134,7 +26136,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -26163,7 +26165,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -26301,7 +26303,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Harold Walker",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Harold Walker: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Harold Walker pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -26368,7 +26370,7 @@ export const CASOS_POOL = [
    "localidade": "casa_casa_do_medico",
    "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -26413,7 +26415,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_2",
    "textoDisplay": "Cottage nº 2 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -26562,7 +26564,7 @@ export const CASOS_POOL = [
     "telegrafo"
    ],
    "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
+    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_lavrador]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -26752,7 +26754,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Beatrice Saunders entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Beatrice Saunders entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -26824,7 +26826,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
       {
@@ -26857,7 +26859,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "Dá a hora, dá o lugar, e para; as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -26890,7 +26892,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
       {
@@ -26988,7 +26990,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -27054,7 +27056,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
+      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -27146,7 +27148,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Edith Walker entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" Fala baixo e mede a porta antes de cada resposta."
+      "Edith Walker entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -27185,7 +27187,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_criada]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_6_criada]]."
      ],
      "opcoes": [
       {
@@ -27218,7 +27220,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_criada]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_6_criada]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
      ],
      "opcoes": [
       {
@@ -27251,7 +27253,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_criada]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_6_criada]]."
      ],
      "opcoes": [
       {
@@ -27284,7 +27286,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_6_criada]]."
      ],
      "opcoes": [
       {
@@ -27343,7 +27345,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Harold Walker abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Harold Walker abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -27382,7 +27384,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -27409,13 +27411,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Annie Morris eu não conhecia.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Annie Morris eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
+      "A sexta à noite vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -27442,13 +27444,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Annie Morris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Annie Morris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -27475,13 +27477,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -27508,7 +27510,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -27560,7 +27562,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_squire]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_squire]]."
      ],
      "opcoes": [
       {
@@ -27593,7 +27595,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_squire]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_squire]]."
      ],
      "opcoes": [
       {
@@ -27700,21 +27702,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "No descampado, à saída da vila, o corpo jazia caído na relva. Um lavrador a caminho da lida foi quem primeiro passou."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Stanmore pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -27722,17 +27723,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Annie Morris, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Annie Morris, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -27740,8 +27740,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Haversham começa logo ali, numa rua de lama e fachadas baixas. Stanmore vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -27751,7 +27750,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Annie Morris, 19 anos, criada. Achada morta na Travessa dos Fundos. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -28434,7 +28433,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -28446,7 +28445,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -28458,7 +28457,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -28470,7 +28469,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -28580,7 +28579,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "À altura do peito, na parede, um salpico fino, acima da linha das feridas do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -28763,7 +28762,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Fred Jackson",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Fred Jackson por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de Fred Jackson por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -28781,7 +28780,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Harry Webb",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Harry Webb: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Harry Webb, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -28837,7 +28836,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -28852,7 +28851,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -28867,7 +28866,7 @@ export const CASOS_POOL = [
    "localidade": "casa_vicarage",
    "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -28941,7 +28940,7 @@ export const CASOS_POOL = [
      "rotulo": "Copa",
      "comodo": "copa",
      "prosa": [
-      "No cômodo, ferro de engomar, pia da copa (a única torneira)."
+      "Do mobiliário, ferro de engomar, pia da copa (a única torneira)."
      ]
     },
     {
@@ -29275,7 +29274,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_costureira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -29302,13 +29301,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome {detective.treatment} quer, nome eu dou: Harry Webb. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome {detective.treatment} quer, nome eu dou: Harry Webb. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_costureira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A sexta à noite vem contada do princípio, e entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_4_costureira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -29335,13 +29334,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Mills? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"William Mills? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_costureira]]."
+      "\"Hora e lugar.\" E os dá, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -29368,13 +29367,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_costureira]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -29401,7 +29400,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -29468,7 +29467,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Florence Roberts abre, ajeita as fitas da touca e fica no vão da porta. \"Com licença. Digo o que souber, e volto ao serviço.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "O constable bate; Florence Roberts abre, ajeita as fitas da touca e fica no vão da porta. \"Posso falar, com licença da casa. Respondo o que souber.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -29507,7 +29506,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -29534,13 +29533,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -29567,13 +29566,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Mills era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"William Mills era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
+      "Dá a hora, dá o lugar, e para; a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -29600,7 +29599,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -29633,7 +29632,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Alisa o avental. \"Com licença, que a casa não para.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -29700,7 +29699,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Fred Jackson abre antes que o constable acabe de bater, e toma a palavra do batente. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Fred Jackson abre antes que o constable acabe de bater, e toma a palavra do batente. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -29739,7 +29738,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_carroceiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_carroceiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -29766,7 +29765,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se William Mills tinha desafeto, não foi freguês meu.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não tenho que dar. Se William Mills tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -29799,13 +29798,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Mills? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"William Mills? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_carroceiro]]."
+      "Dá a hora, dá o lugar, e para; as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -29832,7 +29831,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -29865,7 +29864,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -29932,7 +29931,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Harry Webb entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Harry Webb entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -29971,7 +29970,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_criada]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -30004,7 +30003,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_criada]]."
+      "A sexta à noite vem contada do princípio, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -30037,7 +30036,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -30070,7 +30069,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -30169,7 +30168,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "John Lee abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Ao citar a primeira hora, corrige-a no meio da frase."
+      "John Lee abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -30214,7 +30213,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -30241,13 +30240,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Fred Jackson. Por quê, não sei dizer; sei, e chega.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Fred Jackson. Por quê, não sei dizer; sei, e chega.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -30274,7 +30273,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Mills? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"William Mills? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -30307,13 +30306,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -30340,7 +30339,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -30372,21 +30371,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -30394,17 +30392,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. William Mills, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. William Mills, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -30412,8 +30409,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -30423,7 +30419,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William Mills, 63 anos, lavrador. Achado morto no Cottage nº 3. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -31086,31 +31082,38 @@ export const CASOS_POOL = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -31196,7 +31199,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -31208,7 +31211,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -31220,7 +31223,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -31232,7 +31235,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -31251,7 +31254,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -31263,7 +31266,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -31354,7 +31357,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Annie Knight",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Knight: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de Annie Knight: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -31421,7 +31424,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Netherfield (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Netherfield (sexta à noite)",
-   "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -31832,7 +31835,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Alfred Lee abre antes que o constable acabe de bater, e toma a palavra do batente. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\""
+      "Alfred Lee abre antes que o constable acabe de bater, e toma a palavra do batente. \"Serviço parado esfria. Pergunte.\""
      ],
      "opcoes": [
       {
@@ -31865,7 +31868,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -31898,7 +31901,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_ferreiro]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -31964,7 +31967,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -32017,7 +32020,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Annie Knight abre, ajeita as fitas da touca e fica no vão da porta. \"Posso falar, com licença da casa. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
+      "O constable bate; Annie Knight abre, ajeita as fitas da touca e fica no vão da porta. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -32056,7 +32059,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_criada]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
       {
@@ -32083,13 +32086,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Ellis eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Mary Ellis eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_4_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -32116,13 +32119,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Mary Ellis? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"Mary Ellis? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_criada]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
       {
@@ -32149,13 +32152,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_4_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
       {
@@ -32182,7 +32185,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -32247,7 +32250,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -32280,7 +32283,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "A sexta à noite vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -32313,7 +32316,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -32346,7 +32349,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -32392,7 +32395,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Sarah Brown abre, ajeita as fitas da touca e fica no vão da porta. \"Posso falar, com licença da casa. Respondo o que souber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O constable bate; Sarah Brown abre, ajeita as fitas da touca e fica no vão da porta. \"Com licença. Digo o que souber, e volto ao serviço.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -32425,7 +32428,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_1_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -32458,7 +32461,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_1_lavadeira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -32491,7 +32494,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_1_lavadeira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -32524,7 +32527,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_1_lavadeira]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ela remenda a conta andando: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -32636,7 +32639,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -32669,7 +32672,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -32702,7 +32705,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -32743,21 +32746,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Marlow Green, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Quem cruzava a ponte de manhã cedo estacou diante da forma caída na margem e voltou correndo para chamar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Marlow Green. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Fenwick, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -32765,17 +32767,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Mary Ellis, parteira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Marlow Green, e isto passa do meu ofício. Mary Ellis, parteira desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -32783,8 +32784,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Marlow Green",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Marlow Green estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Marlow Green começa logo ali, numa rua de lama e fachadas baixas. Fenwick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -32794,7 +32794,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Mary Ellis, 60 anos, parteira. Achada morta no Adro da Igreja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -33472,7 +33472,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -33484,7 +33484,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -33496,7 +33496,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -33508,7 +33508,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -33527,7 +33527,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -33629,7 +33629,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Elizabeth Wilson",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Elizabeth Wilson por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, uma soma e um prazo com o nome de Elizabeth Wilson ao pé — acerto sem testemunha, à espera da segunda assinatura.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -33660,7 +33660,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Percy Andrews",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Percy Andrews: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Percy Andrews, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -33714,7 +33714,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_5",
    "textoDisplay": "Cottage nº 5 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 5 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -33729,7 +33729,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -33744,7 +33744,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -33816,7 +33816,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Ezra Taylor foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido.",
     "O piano ocupa a sala, de tampa fechada e sem partituras à vista."
    ],
    "pontos": [
@@ -33825,7 +33825,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "No chão deste cômodo, o morto. No cômodo, castiçal de latão, cama de armação de madeira."
+      "No chão deste cômodo, o morto. Do mobiliário, castiçal de latão, cama de armação de madeira."
      ]
     },
     {
@@ -33833,7 +33833,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão."
+      "No cômodo, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão."
      ]
     },
     {
@@ -33841,7 +33841,7 @@ export const CASOS_POOL = [
      "rotulo": "Taproom",
      "comodo": "taproom",
      "prosa": [
-      "Do mobiliário, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_lavadeira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_professora]]."
+      "No cômodo, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_lavadeira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_professora]]."
      ]
     },
     {
@@ -34160,7 +34160,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -34187,13 +34187,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Ezra Taylor tinha desafeto, não foi freguês meu.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome não tenho que dar. Se Ezra Taylor tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
+      "A madrugada de sábado vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -34220,13 +34220,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ezra Taylor? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Ezra Taylor? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
+      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -34253,13 +34253,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -34286,7 +34286,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -34357,7 +34357,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -34384,13 +34384,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
+      "A madrugada de sábado vem contada do princípio, e entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_2_lavrador]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
      ],
      "opcoes": [
       {
@@ -34417,13 +34417,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ezra Taylor era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"Ezra Taylor era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -34450,13 +34450,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_2_lavrador]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -34483,7 +34483,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -34521,7 +34521,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Elizabeth Wilson entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+      "Elizabeth Wilson entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
      ],
      "opcoes": [
       {
@@ -34626,7 +34626,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavadeira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -34659,7 +34659,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavadeira]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -34711,7 +34711,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Florence Baker abre antes que o constable acabe de bater, e toma a palavra do batente. \"Posso falar, com licença da casa. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Florence Baker abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -34771,13 +34771,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Ezra Taylor eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Ezra Taylor eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_3_criada]]."
+      "A madrugada de sábado vem contada do princípio, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -34804,13 +34804,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Ezra Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Ezra Taylor? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_3_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_3_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -34837,13 +34837,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_3_criada]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -34870,7 +34870,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -34974,7 +34974,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_professora]]."
+      "A madrugada de sábado vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_professora]]."
      ],
      "opcoes": [
       {
@@ -35040,7 +35040,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_professora]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_professora]]."
      ],
      "opcoes": [
       {
@@ -35087,39 +35087,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Wrenfield. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Harrow pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Ezra Taylor, taverneiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Ezra Taylor, taverneiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -35127,8 +35125,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Wrenfield",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Wrenfield começa logo ali, numa rua de lama e fachadas baixas. Harrow vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -35138,7 +35135,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Ezra Taylor, 64 anos, taverneiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -35838,7 +35835,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -35850,7 +35847,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -35862,7 +35859,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -35874,7 +35871,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -35893,7 +35890,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -35905,7 +35902,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -36008,7 +36005,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Helen Evans",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Helen Evans: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Helen Evans pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -36075,7 +36072,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
-   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -36090,7 +36087,7 @@ export const CASOS_POOL = [
    "localidade": "casa_botica",
    "textoDisplay": "A Botica (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Botica (sexta à noite)",
-   "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -36105,7 +36102,7 @@ export const CASOS_POOL = [
    "localidade": "casa_vicarage",
    "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -36120,7 +36117,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_2",
    "textoDisplay": "A Igreja (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Igreja (sexta à noite)",
-   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -36135,7 +36132,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -36177,7 +36174,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Harry Andrews foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Mercearia guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "A Mercearia segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo.",
     "A louça boa fica no aparador da sala da frente, e os retratos, na mesma parede."
    ],
    "pontos": [
@@ -36186,7 +36183,7 @@ export const CASOS_POOL = [
      "rotulo": "Depósito",
      "comodo": "deposito",
      "prosa": [
-      "Do mobiliário, ferro de engomar, pia da copa, prateleiras frias da despensa."
+      "No cômodo, ferro de engomar, pia da copa, prateleiras frias da despensa."
      ]
     },
     {
@@ -36194,7 +36191,7 @@ export const CASOS_POOL = [
      "rotulo": "Quarto (sobrado)",
      "comodo": "quarto",
      "prosa": [
-      "No cômodo, castiçal de latão, cama de armação de madeira."
+      "Do mobiliário, castiçal de latão, cama de armação de madeira."
      ]
     },
     {
@@ -36202,7 +36199,7 @@ export const CASOS_POOL = [
      "rotulo": "A Loja",
      "comodo": "loja",
      "prosa": [
-      "No chão deste cômodo, o morto. No cômodo, prateleiras e gavetas de estoque, vitrine envidraçada. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]]."
+      "No chão deste cômodo, o morto. Do mobiliário, prateleiras e gavetas de estoque, vitrine envidraçada. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_criada]]."
      ]
     }
    ],
@@ -36501,7 +36498,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -36534,7 +36531,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_lavrador]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -36567,7 +36564,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_lavrador]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -36600,7 +36597,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -36679,7 +36676,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_boticario]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_boticario]]."
      ],
      "opcoes": [
       {
@@ -36712,7 +36709,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_boticario]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_boticario]]."
      ],
      "opcoes": [
       {
@@ -36745,7 +36742,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_boticario]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_boticario]]."
      ],
      "opcoes": [
       {
@@ -36778,7 +36775,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_boticario]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_boticario]]."
      ],
      "opcoes": [
       {
@@ -36837,7 +36834,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Helen Evans abre antes que o constable acabe de bater, e toma a palavra do batente. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+      "Helen Evans abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
      ],
      "opcoes": [
       {
@@ -36876,7 +36873,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -36942,7 +36939,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -37040,7 +37037,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Joseph Green abre e se descobre, o chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "O constable bate; Joseph Green abre e se descobre, o chapéu na mão. \"Pergunte daqui mesmo, que a tarde é curta.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -37079,7 +37076,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -37112,7 +37109,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -37145,7 +37142,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -37230,7 +37227,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Leah Watson abre, ajeita as fitas da touca e fica no vão da porta. \"Posso falar, com licença da casa. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "O constable bate; Leah Watson abre, ajeita as fitas da touca e fica no vão da porta. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -37403,39 +37400,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Dunmere. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Quill, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. Harry Andrews, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Harry Andrews, merceeiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -37443,8 +37438,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Dunmere",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Dunmere começa logo ali, numa rua de lama e fachadas baixas. Quill vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -37454,7 +37448,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Harry Andrews, 36 anos, merceeiro. Achado morto na Mercearia. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -38094,7 +38088,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -38106,7 +38100,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -38118,7 +38112,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -38130,7 +38124,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -38149,7 +38143,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -38251,7 +38245,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Abigail Andrews",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Abigail Andrews: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Abigail Andrews, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -38295,7 +38289,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Richard Morris",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Richard Morris por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, uma soma e um prazo com o nome de Richard Morris ao pé — acerto sem testemunha, à espera da segunda assinatura.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -38323,7 +38317,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_2",
    "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -38338,7 +38332,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -38424,7 +38418,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Herbert Jones foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Posto do Constable guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido.",
     "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
    ],
    "pontos": [
@@ -38441,7 +38435,7 @@ export const CASOS_POOL = [
      "rotulo": "Cela",
      "comodo": "cela",
      "prosa": [
-      "No cômodo, tarimba de tábuas."
+      "Do mobiliário, tarimba de tábuas."
      ]
     },
     {
@@ -38730,7 +38724,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -38763,7 +38757,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -38796,7 +38790,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
+      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -38829,7 +38823,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -38960,7 +38954,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavadeira]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -39026,7 +39020,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -39111,7 +39105,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -39144,7 +39138,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39177,7 +39171,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39210,7 +39204,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_2_lavrador]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39262,7 +39256,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Hugh Thompson entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\""
+      "Hugh Thompson entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\""
      ],
      "opcoes": [
       {
@@ -39295,7 +39289,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39328,7 +39322,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39361,7 +39355,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39394,7 +39388,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39492,7 +39486,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39525,7 +39519,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39558,7 +39552,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -39632,21 +39626,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -39654,17 +39647,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Herbert Jones, guarda do condado desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Herbert Jones, guarda do condado desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -39672,8 +39664,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Colbrook quando o trem chega. Bexley espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -39683,7 +39674,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Herbert Jones, 20 anos, guarda do condado. Achado morto no Posto do Constable. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -40383,7 +40374,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -40395,7 +40386,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -40407,7 +40398,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -40419,7 +40410,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -40438,7 +40429,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -40479,7 +40470,7 @@ export const CASOS_POOL = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -40683,7 +40674,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de John Jones",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de John Jones: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de John Jones: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -40750,7 +40741,7 @@ export const CASOS_POOL = [
    "localidade": "casa_casa_do_medico",
    "textoDisplay": "Casa do Médico (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -40780,7 +40771,7 @@ export const CASOS_POOL = [
    "localidade": "casa_mercearia",
    "textoDisplay": "A Mercearia (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -40795,7 +40786,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -40854,7 +40845,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde George Wilson foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Granja segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo."
    ],
    "pontos": [
     {
@@ -40926,7 +40917,7 @@ export const CASOS_POOL = [
     "telegrafo"
    ],
    "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
+    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_merceeiro]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -41157,7 +41148,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_3_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -41184,13 +41175,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de George Wilson eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de George Wilson eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_3_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_3_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -41217,13 +41208,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"George Wilson? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"George Wilson? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_3_criada]]."
+      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -41250,13 +41241,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_3_criada]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -41283,7 +41274,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -41302,7 +41293,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Emma Mills abre antes que o constable acabe de bater, e toma a palavra do batente. \"Posso falar, com licença da casa. Respondo o que souber.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+      "Emma Mills abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deu licença. Respondo o que souber, e depressa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
      ],
      "opcoes": [
       {
@@ -41368,7 +41359,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_parteira]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_parteira]]."
      ],
      "opcoes": [
       {
@@ -41434,7 +41425,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_parteira]]."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_parteira]]."
      ],
      "opcoes": [
       {
@@ -41487,7 +41478,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; John Jones abre e se descobre, o chapéu na mão. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O constable bate; John Jones abre e se descobre, o chapéu na mão. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -41526,7 +41517,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_merceeiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -41559,7 +41550,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_merceeiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -41625,7 +41616,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_merceeiro]]."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -41678,7 +41669,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Thomas Wood abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Thomas Wood abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -41717,7 +41708,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -41783,7 +41774,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -41919,7 +41910,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -41985,7 +41976,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_lavrador]]."
+      "Dá a hora, dá o lugar, e para; as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -42018,7 +42009,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -42059,21 +42050,20 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Stanmore, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -42081,17 +42071,16 @@ export const CASOS_POOL = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. George Wilson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Haversham, e isto passa do meu ofício. George Wilson, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Stanmore, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -42099,8 +42088,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Stanmore espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -42110,7 +42098,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: George Wilson, 37 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -42737,31 +42725,38 @@ export const CASOS_POOL = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -42847,7 +42842,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -42859,7 +42854,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -42871,7 +42866,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -42883,7 +42878,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -42914,7 +42909,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -43033,7 +43028,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de James Robinson",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de James Robinson por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de James Robinson por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -43051,7 +43046,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Minnie Hill",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Minnie Hill: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de Minnie Hill: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -43092,7 +43087,7 @@ export const CASOS_POOL = [
    "localidade": "casa_casa_do_medico",
    "textoDisplay": "Casa do Médico (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
-   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -43137,7 +43132,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -43152,7 +43147,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_2",
    "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
-   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -43194,7 +43189,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Florence Jones foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "O exame corre cômodo a cômodo: a cena está como a acharam, nada movido.",
     "A cama é de armação boa, lavrada, no meio do resto surrado."
    ],
    "pontos": [
@@ -43203,7 +43198,7 @@ export const CASOS_POOL = [
      "rotulo": "Sala de Jantar",
      "comodo": "jantar",
      "prosa": [
-      "No chão deste cômodo, a morta. Vão sem mobília; sobra o assoalho nu. Junto do corpo, no chão: [[gen_instrumento]]."
+      "No chão deste cômodo, a morta. Cômodo de paredes nuas; mobília, nenhuma. Junto do corpo, no chão: [[gen_instrumento]]."
      ]
     },
     {
@@ -43303,7 +43298,7 @@ export const CASOS_POOL = [
     "telegrafo"
    ],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam da morta e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_lavrador]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -43479,7 +43474,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Edith Moore abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deu licença. Respondo o que souber, e depressa.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Edith Moore abre antes que o constable acabe de bater, e toma a palavra do batente. \"Com licença. Digo o que souber, e volto ao serviço.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -43539,13 +43534,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Florence Jones eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Florence Jones eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_criada]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
       {
@@ -43572,7 +43567,7 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Jones? Não me fale dela no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Florence Jones? Não me fale dela no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -43605,7 +43600,7 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
@@ -43638,7 +43633,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -43690,7 +43685,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -43717,7 +43712,7 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Florence Jones tinha desafeto, não foi freguês meu.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Nome não tenho que dar. Se Florence Jones tinha desafeto, não foi freguês meu.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -43750,13 +43745,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Jones? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Florence Jones? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -43783,13 +43778,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -43816,7 +43811,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     }
@@ -43842,7 +43837,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Robinson entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
+      "James Robinson entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
      ],
      "opcoes": [
       {
@@ -43881,7 +43876,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -43914,7 +43909,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -43947,7 +43942,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -43980,7 +43975,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -44072,7 +44067,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
      ],
      "opcoes": [
       {
@@ -44105,7 +44100,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
      ],
      "opcoes": [
       {
@@ -44171,7 +44166,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
      ],
      "opcoes": [
       {
@@ -44263,7 +44258,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_costureira]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_5_costureira]]."
      ],
      "opcoes": [
       {
@@ -44290,13 +44285,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Florence Jones tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome não tenho que dar. Se Florence Jones tinha desafeto, não foi freguês meu.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A madrugada de sábado vem contada do princípio, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_costureira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A madrugada de sábado vem contada do princípio, e entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_5_costureira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -44323,13 +44318,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Florence Jones? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"Florence Jones? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_costureira]]."
+      "Dá a hora, dá o lugar, e para; entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_5_costureira]]."
      ],
      "opcoes": [
       {
@@ -44356,13 +44351,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_costureira]]."
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_5_costureira]]."
      ],
      "opcoes": [
       {
@@ -44389,7 +44384,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     }
@@ -44403,39 +44398,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Roderick pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Florence Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Aldergate, e isto passa do meu ofício. Florence Jones, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -44443,8 +44436,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Aldergate quando o trem chega. Roderick espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -44454,7 +44446,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Florence Jones, 21 anos, criada. Achada morta no Solar. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -45154,7 +45146,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -45166,7 +45158,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -45178,7 +45170,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -45190,7 +45182,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -45209,7 +45201,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -45298,7 +45290,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Annie Wood",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Annie Wood: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Annie Wood pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -45391,7 +45383,7 @@ export const CASOS_POOL = [
    "localidade": "vizinhanca",
    "textoDisplay": "A Taverna (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo ali mesmo, pela mão do constable.",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado de pé, o serviço à espera, diante do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -45421,7 +45413,7 @@ export const CASOS_POOL = [
    "localidade": "delegacia",
    "textoDisplay": "O Posto do Constable (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Posto do Constable (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Posto do Constable às oito e não tornei a sair antes de clarear.\" Tomado por termo no próprio posto, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Posto do Constable às oito e não tornei a sair antes de clarear.\" Declarado à mesa de tábua do posto, diante do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -45451,7 +45443,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -45492,7 +45484,7 @@ export const CASOS_POOL = [
    "subtitulo": "Onde Jane Wright foi achada",
    "acoesEspeciais": [],
    "introducao": [
-    "O Solar guarda o dia em que a acharam; o exame corre cômodo a cômodo.",
+    "O Solar segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo.",
     "Os retratos da linhagem cobrem a parede da sala, do teto à altura do ombro."
    ],
    "pontos": [
@@ -45509,7 +45501,7 @@ export const CASOS_POOL = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No cômodo, régua de sinos etiquetados, lareira de mármore com guarda-fogo."
+      "Do mobiliário, régua de sinos etiquetados, lareira de mármore com guarda-fogo."
      ]
     },
     {
@@ -45517,7 +45509,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "Do mobiliário, piano de cauda curta, retratos da linhagem, puxador de sino de criados."
+      "No cômodo, piano de cauda curta, retratos da linhagem, puxador de sino de criados."
      ]
     },
     {
@@ -45778,7 +45770,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Annie Wood vem ao encontro antes que o constable chame, enxugando as mãos no avental. \"Posso falar, com licença da casa. Respondo o que souber.\""
+      "Annie Wood vem ao encontro antes que o constable chame, enxugando as mãos no avental. \"A casa deu licença. Respondo o que souber, e depressa.\""
      ],
      "opcoes": [
       {
@@ -45817,7 +45809,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -45844,13 +45836,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Harold Moore. Por quê, não sei dizer; sei, e chega.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Harold Moore. Por quê, não sei dizer; sei, e chega.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -45877,13 +45869,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Jane Wright? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Jane Wright? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -45910,13 +45902,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -45943,7 +45935,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
      ],
      "opcoes": []
     }
@@ -45962,7 +45954,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Ethel Turner abre, ajeita as fitas da touca e fica no vão da porta. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "O constable bate; Ethel Turner abre, ajeita as fitas da touca e fica no vão da porta. \"Serviço parado esfria. Pergunte.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -45995,7 +45987,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_costureira]]."
      ],
      "opcoes": [
       {
@@ -46022,13 +46014,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Jane Wright tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome não tenho que dar. Se Jane Wright tinha desafeto, não foi freguês meu.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
+      "A sexta à noite vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_costureira]]."
      ],
      "opcoes": [
       {
@@ -46055,13 +46047,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Jane Wright? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Jane Wright? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
+      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_costureira]]."
      ],
      "opcoes": [
       {
@@ -46088,13 +46080,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos meus com ela, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -46121,7 +46113,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     }
@@ -46179,7 +46171,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
      ],
      "opcoes": [
       {
@@ -46206,13 +46198,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Jane Wright eu não conhecia.\" Ajeita o cinturão. \"A ronda não espera.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Jane Wright eu não conhecia.\" Confere o próprio termo com os olhos. \"Fica lavrado. Ao dispor do inquérito.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
      ],
      "opcoes": [
       {
@@ -46239,13 +46231,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Jane Wright? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Ajeita o cinturão. \"A ronda não espera.\""
+      "\"Jane Wright? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Confere o próprio termo com os olhos. \"Fica lavrado. Ao dispor do inquérito.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
      ],
      "opcoes": [
       {
@@ -46272,13 +46264,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Ajeita o cinturão. \"A ronda não espera.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Confere o próprio termo com os olhos. \"Fica lavrado. Ao dispor do inquérito.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
      ],
      "opcoes": [
       {
@@ -46305,7 +46297,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Ajeita o cinturão. \"A ronda não espera.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Confere o próprio termo com os olhos. \"Fica lavrado. Ao dispor do inquérito.\""
      ],
      "opcoes": []
     },
@@ -46330,7 +46322,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Isaac Ellis entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+      "Isaac Ellis entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
      ],
      "opcoes": [
       {
@@ -46521,7 +46513,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; John Morris abre e se descobre, o chapéu na mão. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O constable bate; John Morris abre e se descobre, o chapéu na mão. \"Serviço parado esfria. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -46587,13 +46579,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -46620,13 +46612,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Jane Wright era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Jane Wright era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -46653,13 +46645,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -46686,7 +46678,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -46706,39 +46698,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Marlow Green, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Marlow Green. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green. Isto passa do meu ofício, e não fingirei o contrário. Jane Wright, senhora da propriedade desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Marlow Green; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Jane Wright, senhora da propriedade desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -46746,8 +46736,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Marlow Green",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Marlow Green estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Marlow Green começa logo ali, numa rua de lama e fachadas baixas. Fenwick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -46757,7 +46746,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Jane Wright, 68 anos, senhora da propriedade. Achada morta no Solar. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -47437,7 +47426,7 @@ export const CASOS_POOL = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -47449,7 +47438,7 @@ export const CASOS_POOL = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -47461,7 +47450,7 @@ export const CASOS_POOL = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -47473,7 +47462,7 @@ export const CASOS_POOL = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -47636,7 +47625,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Matthew Mills",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Matthew Mills: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de Matthew Mills: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -47677,7 +47666,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -47692,7 +47681,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -47707,7 +47696,7 @@ export const CASOS_POOL = [
    "localidade": "casa_botica",
    "textoDisplay": "A Botica (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Botica (sexta à noite)",
-   "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -47737,7 +47726,7 @@ export const CASOS_POOL = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -47787,7 +47776,7 @@ export const CASOS_POOL = [
      "rotulo": "Quartos (sobrado)",
      "comodo": "quartos",
      "prosa": [
-      "Do mobiliário, cômoda, castiçal de latão, cama de armação de madeira."
+      "No cômodo, cômoda, castiçal de latão, cama de armação de madeira."
      ]
     },
     {
@@ -47811,7 +47800,7 @@ export const CASOS_POOL = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "Do mobiliário, piano (ou harmônio), a louça boa no aparador, retratos emoldurados. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_paroco]]."
+      "No cômodo, piano (ou harmônio), a louça boa no aparador, retratos emoldurados. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_0_paroco]]."
      ]
     }
    ],
@@ -48046,7 +48035,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Amos Chapman abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+      "Amos Chapman abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
      ],
      "opcoes": [
       {
@@ -48151,7 +48140,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_pastor_de_ovelhas]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -48184,7 +48173,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_pastor_de_ovelhas]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -48230,7 +48219,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Eleanor Webb abre, ajeita as fitas da touca e fica no vão da porta. \"Larguei ferramenta quente na bancada. O que for, seja curto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O constable bate; Eleanor Webb abre, ajeita as fitas da touca e fica no vão da porta. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -48263,7 +48252,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_costureira]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -48296,7 +48285,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_costureira]]."
+      "A sexta à noite vem contada do princípio, e cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -48329,7 +48318,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_costureira]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_4_costureira]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -48362,7 +48351,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ela procure nenhuma: [[gen_alibi_gen_4_costureira]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto cada hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -48408,7 +48397,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Isaac Webb entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
+      "Isaac Webb entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
      ],
      "opcoes": [
       {
@@ -48441,7 +48430,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
      ],
      "opcoes": [
       {
@@ -48468,13 +48457,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se John Knight tinha desafeto, não foi freguês meu.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Se John Knight tinha desafeto, não foi freguês meu.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
      ],
      "opcoes": [
       {
@@ -48501,13 +48490,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Knight? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"John Knight? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
      ],
      "opcoes": [
       {
@@ -48534,13 +48523,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
      ],
      "opcoes": [
       {
@@ -48567,7 +48556,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     }
@@ -48593,7 +48582,7 @@ export const CASOS_POOL = [
    "nos": {
     "abertura": {
      "fala": [
-      "Matthew Mills abre antes que o constable acabe de bater, e toma a palavra do batente. \"Deixei a sacristia aberta e o sineiro à espera. Diga do que precisa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Matthew Mills abre antes que o constable acabe de bater, e toma a palavra do batente. \"Entre um ofício e outro, o tempo é seu. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -48632,7 +48621,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_paroco]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_paroco]]."
      ],
      "opcoes": [
       {
@@ -48665,7 +48654,7 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_paroco]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_paroco]]."
      ],
      "opcoes": [
       {
@@ -48698,7 +48687,7 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_paroco]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_paroco]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -48731,7 +48720,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_paroco]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_paroco]]."
      ],
      "opcoes": [
       {
@@ -48810,7 +48799,7 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]."
      ],
      "opcoes": [
       {
@@ -48837,13 +48826,13 @@ export const CASOS_POOL = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de John Knight eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de John Knight eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -48870,13 +48859,13 @@ export const CASOS_POOL = [
     },
     "b2_cordial": {
      "fala": [
-      "\"John Knight? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+      "\"John Knight? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]."
+      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]."
      ],
      "opcoes": [
       {
@@ -48903,13 +48892,13 @@ export const CASOS_POOL = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_parteira]]."
      ],
      "opcoes": [
       {
@@ -48936,7 +48925,7 @@ export const CASOS_POOL = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     }
@@ -48950,39 +48939,37 @@ export const CASOS_POOL = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. John Knight, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Haversham, à pressa. O que aqui houve pede olho de perito, não de guarda. John Knight, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -48990,8 +48977,7 @@ export const CASOS_POOL = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Haversham quando o trem chega. Quill espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -49001,7 +48987,7 @@ export const CASOS_POOL = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: John Knight, 27 anos, lavrador. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -49632,7 +49618,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -49644,7 +49630,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -49656,7 +49642,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -49668,7 +49654,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -49687,7 +49673,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -49699,7 +49685,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -49728,7 +49714,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -49781,7 +49767,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito. A poça no chão ficou a palmos abaixo.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -49947,7 +49933,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Thomas Taylor",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Thomas Taylor: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Thomas Taylor pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -49965,7 +49951,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Walter Hill",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Walter Hill por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de Walter Hill por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -50049,7 +50035,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_6",
    "textoDisplay": "Cottage nº 6 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 6 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 6, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 6, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -50064,7 +50050,7 @@ export const CASOS_LUTA = [
    "localidade": "vizinhanca",
    "textoDisplay": "A Taverna (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Taverna, e de porta para fora não pus o pé.\" Tomado por termo ali mesmo, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Taverna, e de porta para fora não pus o pé.\" Declarado de pé, o serviço à espera, diante do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -50079,7 +50065,7 @@ export const CASOS_LUTA = [
    "localidade": "delegacia",
    "textoDisplay": "O Posto do Constable (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: O Posto do Constable (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Posto do Constable, e de porta para fora não pus o pé.\" Declarado à mesa de tábua do posto, diante do constable.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Posto do Constable, e de porta para fora não pus o pé.\" Tomado por termo no próprio posto, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -50121,7 +50107,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Daniel Morris foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido."
    ],
    "pontos": [
     {
@@ -50208,7 +50194,7 @@ export const CASOS_LUTA = [
     "telegrafo"
    ],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_5_constable]].",
     "Presa por alfinete ao maço, a folha de praxe: [[gen_citacao_comarca]].",
@@ -50478,7 +50464,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -50511,7 +50497,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -50544,7 +50530,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -50637,7 +50623,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Francis Thomas entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\""
+      "Francis Thomas entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\""
      ],
      "opcoes": [
       {
@@ -50736,7 +50722,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -50769,7 +50755,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -50875,7 +50861,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Samuel Moore abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+      "Samuel Moore abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
      ],
      "opcoes": [
       {
@@ -50941,13 +50927,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -50974,7 +50960,7 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Daniel Morris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Daniel Morris era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -51007,13 +50993,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -51040,7 +51026,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -51152,7 +51138,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_taverneiro]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -51218,7 +51204,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_taverneiro]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -51345,7 +51331,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Walter Hill atravessa a sala do posto e se apresenta antes que o chamem. \"A folha do dia ficou com o colega. Pergunte pelo livro, que pelo livro respondo.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Walter Hill atravessa a sala do posto e se apresenta antes que o chamem. \"Respondo como se lavra ocorrência: pelo certo. Pergunte.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -51411,13 +51397,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Daniel Morris eu não conhecia.\" Confere o próprio termo com os olhos. \"Fica lavrado. Ao dispor do inquérito.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Daniel Morris eu não conhecia.\" Ajeita o cinturão. \"A ronda não espera.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_constable]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_constable]]."
      ],
      "opcoes": [
       {
@@ -51444,13 +51430,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Daniel Morris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Confere o próprio termo com os olhos. \"Fica lavrado. Ao dispor do inquérito.\""
+      "\"Daniel Morris? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Ajeita o cinturão. \"A ronda não espera.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_constable]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_constable]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -51477,13 +51463,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Confere o próprio termo com os olhos. \"Fica lavrado. Ao dispor do inquérito.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Ajeita o cinturão. \"A ronda não espera.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_constable]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_5_constable]]."
      ],
      "opcoes": [
       {
@@ -51510,7 +51496,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Confere o próprio termo com os olhos. \"Fica lavrado. Ao dispor do inquérito.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Ajeita o cinturão. \"A ronda não espera.\""
      ],
      "opcoes": []
     },
@@ -51542,39 +51528,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Aldergate. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Aldergate. Isto passa do meu ofício, e não fingirei o contrário. Daniel Morris, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Aldergate, à pressa. O que aqui houve pede olho de perito, não de guarda. Daniel Morris, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -51582,8 +51566,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Aldergate",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Aldergate estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Aldergate quando o trem chega. Bexley espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -51593,7 +51576,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Daniel Morris, 40 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -52299,31 +52282,38 @@ export const CASOS_LUTA = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -52409,7 +52399,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -52421,7 +52411,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -52433,7 +52423,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -52445,7 +52435,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -52464,7 +52454,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -52476,7 +52466,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -52505,7 +52495,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -52558,7 +52548,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito. A poça no chão ficou a palmos abaixo.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -52697,7 +52687,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Mary Parsons",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Mary Parsons por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de Mary Parsons por extenso, e uma assinatura só.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -52715,7 +52705,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Maud Jackson",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Maud Jackson: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de Maud Jackson: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -52771,7 +52761,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -52943,7 +52933,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_squire]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -53138,7 +53128,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Henry Wilson abre e se descobre, o chapéu na mão. \"Serviço parado esfria. Pergunte.\""
+      "O constable bate; Henry Wilson abre e se descobre, o chapéu na mão. \"Larguei ferramenta quente na bancada. O que for, seja curto.\""
      ],
      "opcoes": [
       {
@@ -53204,7 +53194,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -53237,7 +53227,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -53403,7 +53393,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -53430,13 +53420,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "A sexta à tarde vem contada do princípio, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -53463,13 +53453,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Arthur Palmer era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Arthur Palmer era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "Dá a hora, dá o lugar, e para; cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -53496,13 +53486,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -53529,7 +53519,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -53596,7 +53586,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Mary Parsons abre antes que o constable acabe de bater, e toma a palavra do batente. \"A casa deve isto ao condado, e paga de bom grado. Ao que vem?\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Mary Parsons abre antes que o constable acabe de bater, e toma a palavra do batente. \"Recebo porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -53662,13 +53652,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Se um nome hão de me arrancar, arranco-o eu: Henry Wilson. Digo-o de viva voz e respondo pelo que digo. Prova, ninguém ma pediu; tenho a minha certeza, e ela não me falha desde moça.\" Recolhe-se um passo, a mão já na porta. \"Se a lei precisar de mais, sabe onde a casa fica.\""
+      "\"Se um nome hão de me arrancar, arranco-o eu: Henry Wilson. Digo-o de viva voz e respondo pelo que digo. Prova, ninguém ma pediu; tenho a minha certeza, e ela não me falha desde moça.\" Inclina a cabeça, medido. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_squire]]."
+      "A sexta à tarde vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_squire]]."
      ],
      "opcoes": [
       {
@@ -53695,7 +53685,7 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Arthur Palmer? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Recolhe-se um passo, a mão já na porta. \"Se a lei precisar de mais, sabe onde a casa fica.\""
+      "\"Arthur Palmer? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Inclina a cabeça, medido. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
      ],
      "opcoes": []
     },
@@ -53728,13 +53718,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Recolhe-se um passo, a mão já na porta. \"Se a lei precisar de mais, sabe onde a casa fica.\""
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Inclina a cabeça, medido. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -53761,7 +53751,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Recolhe-se um passo, a mão já na porta. \"Se a lei precisar de mais, sabe onde a casa fica.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Inclina a cabeça, medido. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -53867,7 +53857,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
       {
@@ -53900,7 +53890,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
       {
@@ -53933,7 +53923,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
       {
@@ -54119,7 +54109,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_moleiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_5_moleiro]]."
      ],
      "opcoes": [
       {
@@ -54244,39 +54234,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Roderick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Arthur Palmer, pastor de ovelhas desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Arthur Palmer, pastor de ovelhas desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Roderick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -54284,8 +54272,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Roderick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -54295,7 +54282,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Arthur Palmer, 17 anos, pastor de ovelhas. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -54900,31 +54887,38 @@ export const CASOS_LUTA = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -55010,7 +55004,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -55022,7 +55016,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -55034,7 +55028,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -55046,7 +55040,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -55065,7 +55059,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -55077,7 +55071,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -55106,7 +55100,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -55159,7 +55153,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Fora do alcance da poça, na parede, assoma um borrifo miúdo à altura do peito.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -55258,7 +55252,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Rosanna Wood",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Rosanna Wood: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Rosanna Wood pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -55314,7 +55308,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_moinho",
    "textoDisplay": "O Moinho (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: O Moinho (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -55344,7 +55338,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_casa_do_medico",
    "textoDisplay": "Casa do Médico (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -55402,7 +55396,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde William Field foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Granja segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo."
    ],
    "pontos": [
     {
@@ -55472,7 +55466,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
+    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_criada]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -55679,7 +55673,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Charles Green entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\""
+      "Charles Green entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\""
      ],
      "opcoes": [
       {
@@ -55745,13 +55739,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -55778,13 +55772,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Field era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"William Field era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -55811,13 +55805,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -55844,7 +55838,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -55943,7 +55937,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_moleiro]]."
      ],
      "opcoes": [
       {
@@ -55970,13 +55964,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se William Field tinha desafeto, não foi freguês meu.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Nome não tenho que dar. Se William Field tinha desafeto, não foi freguês meu.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
+      "A sexta à tarde vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_moleiro]]."
      ],
      "opcoes": [
       {
@@ -56003,13 +55997,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Field? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"William Field? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_moleiro]]."
      ],
      "opcoes": [
       {
@@ -56036,13 +56030,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_moleiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -56069,7 +56063,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -56135,7 +56129,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "John King entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\""
+      "John King entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\""
      ],
      "opcoes": [
       {
@@ -56168,7 +56162,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_boticario]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_boticario]]."
      ],
      "opcoes": [
       {
@@ -56234,7 +56228,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_boticario]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_boticario]]."
      ],
      "opcoes": [
       {
@@ -56267,7 +56261,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_boticario]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_boticario]]."
      ],
      "opcoes": [
       {
@@ -56412,7 +56406,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
       {
@@ -56439,7 +56433,7 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de William Field eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de William Field eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -56472,7 +56466,7 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Field? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"William Field? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -56505,7 +56499,7 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -56538,7 +56532,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -56637,7 +56631,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -56664,13 +56658,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se William Field tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Nome não tenho que dar. Se William Field tinha desafeto, não foi freguês meu.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "A sexta à tarde vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -56697,13 +56691,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William Field? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"William Field? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -56730,13 +56724,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -56763,7 +56757,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -56795,39 +56789,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Dunmere, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Dunmere. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Fenwick, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere. Isto passa do meu ofício, e não fingirei o contrário. William Field, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Dunmere; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. William Field, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -56835,8 +56827,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Dunmere",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Dunmere estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Dunmere começa logo ali, numa rua de lama e fachadas baixas. Fenwick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -56846,7 +56837,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William Field, 51 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -57469,7 +57460,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -57481,7 +57472,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -57493,7 +57484,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -57505,7 +57496,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -57524,7 +57515,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -57618,7 +57609,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Fora do alcance da poça, na parede, assoma um borrifo miúdo à altura do peito.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -57802,7 +57793,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Bertha Green",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Bertha Green: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Bertha Green, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -57895,7 +57886,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -57910,7 +57901,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -57925,7 +57916,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -57940,7 +57931,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "A Forja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Forja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -57955,7 +57946,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -58015,7 +58006,7 @@ export const CASOS_LUTA = [
      "rotulo": "Paiol",
      "comodo": "paiol",
      "prosa": [
-      "Do mobiliário, ferramentas de lavoura, arreios pendurados, sacas de grão. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavadeira]]."
+      "No cômodo, ferramentas de lavoura, arreios pendurados, sacas de grão. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavadeira]]."
      ]
     }
    ],
@@ -58283,7 +58274,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Bertha Green abre, ajeita as fitas da touca e fica no vão da porta. \"A casa deu licença. Respondo o que souber, e depressa.\""
+      "O constable bate; Bertha Green abre, ajeita as fitas da touca e fica no vão da porta. \"Com licença. Digo o que souber, e volto ao serviço.\""
      ],
      "opcoes": [
       {
@@ -58349,13 +58340,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Henry Knight. Por quê, não sei dizer; sei, e chega.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Henry Knight. Por quê, não sei dizer; sei, e chega.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -58382,7 +58373,7 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William King? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"William King? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -58415,7 +58406,7 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -58448,7 +58439,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -58508,7 +58499,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Henry Knight entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Henry Knight entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -58541,7 +58532,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -58574,7 +58565,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -58607,7 +58598,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -58640,7 +58631,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -58784,7 +58775,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_6_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_6_lavrador]]."
      ],
      "opcoes": [
       {
@@ -58811,13 +58802,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_6_lavrador]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_6_lavrador]]."
      ],
      "opcoes": [
       {
@@ -58844,7 +58835,7 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William King era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"William King era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -58877,13 +58868,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_6_lavrador]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_6_lavrador]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -58910,7 +58901,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -59016,7 +59007,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
      ],
      "opcoes": [
       {
@@ -59043,13 +59034,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_ferreiro]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -59076,13 +59067,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William King era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"William King era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_ferreiro]]."
+      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -59109,13 +59100,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_ferreiro]]."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -59142,7 +59133,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -59209,7 +59200,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Wood abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\""
+      "William Wood abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\""
      ],
      "opcoes": [
       {
@@ -59248,7 +59239,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -59275,13 +59266,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Bertha Green. Por quê, não sei dizer; sei, e chega.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Bertha Green. Por quê, não sei dizer; sei, e chega.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -59308,7 +59299,7 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"William King era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"William King era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -59341,13 +59332,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -59374,7 +59365,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -59406,39 +59397,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Quill pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. William King, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. William King, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Quill, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -59446,8 +59435,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Quill espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -59457,7 +59445,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: William King, 36 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -60084,31 +60072,38 @@ export const CASOS_LUTA = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -60194,7 +60189,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60206,7 +60201,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60218,7 +60213,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60230,7 +60225,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -60249,7 +60244,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -60290,7 +60285,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -60343,7 +60338,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "À altura do peito, na parede, um salpico fino, acima da linha das feridas do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -60535,7 +60530,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de George Martin",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de George Martin por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de George Martin por extenso, e uma assinatura só.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -60566,7 +60561,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Richard Brown",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Richard Brown: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Richard Brown pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -60654,7 +60649,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_mercearia",
    "textoDisplay": "A Mercearia (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
-   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -60696,7 +60691,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Edward Carter foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "O Cottage nº 6 guarda o dia em que o acharam; o exame corre cômodo a cômodo.",
+    "O Cottage nº 6 segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo.",
     "Os retratos emoldurados e as flores de cera sob a redoma ocupam a parede principal da sala."
    ],
    "pontos": [
@@ -60721,7 +60716,7 @@ export const CASOS_LUTA = [
      "rotulo": "Quarto",
      "comodo": "quarto",
      "prosa": [
-      "Do mobiliário, castiçal de latão, cama de ferro. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_guarda_caca]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_2_merceeiro]]."
+      "No cômodo, castiçal de latão, cama de ferro. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_guarda_caca]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_2_merceeiro]]."
      ]
     }
    ],
@@ -60802,7 +60797,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_guarda_caca]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -60998,7 +60993,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Eli Wilson abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+      "Eli Wilson abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
      ],
      "opcoes": [
       {
@@ -61031,7 +61026,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61064,7 +61059,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61097,7 +61092,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61130,7 +61125,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61296,7 +61291,7 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Edward Carter eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Edward Carter eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -61329,7 +61324,7 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Edward Carter? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Edward Carter? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -61362,7 +61357,7 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -61395,7 +61390,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -61513,7 +61508,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61546,7 +61541,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61579,7 +61574,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61612,7 +61607,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -61751,7 +61746,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
       {
@@ -61784,7 +61779,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A resposta toma o caminho comprido e chega inteira, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_5_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -61817,7 +61812,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
       {
@@ -61850,7 +61845,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_5_parteira]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
       {
@@ -61983,7 +61978,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -62010,13 +62005,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não tenho que dar. Se Edward Carter tinha desafeto, não foi freguês meu.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"Nome não tenho que dar. Se Edward Carter tinha desafeto, não foi freguês meu.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -62043,13 +62038,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Edward Carter? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"Edward Carter? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -62076,13 +62071,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -62109,7 +62104,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
      ],
      "opcoes": []
     },
@@ -62141,39 +62136,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Harrow, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Edward Carter, carroceiro de frete desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Edward Carter, carroceiro de frete desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -62181,8 +62174,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Colbrook quando o trem chega. Harrow espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -62192,7 +62184,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Edward Carter, 24 anos, carroceiro de frete. Achado morto no Cottage nº 6. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -62841,31 +62833,38 @@ export const CASOS_LUTA = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -62951,7 +62950,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -62963,7 +62962,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -62975,7 +62974,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -62987,7 +62986,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -63018,7 +63017,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -63047,7 +63046,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -63100,7 +63099,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Fora do alcance da poça, na parede, assoma um borrifo miúdo à altura do peito.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -63222,7 +63221,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Alice Baker",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Alice Baker: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Amassado e depois alisado, o bilhete de Alice Baker pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -63289,7 +63288,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_solar",
    "textoDisplay": "O Solar (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Solar (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -63319,7 +63318,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_vicarage",
    "textoDisplay": "O Presbitério (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -63334,7 +63333,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -63349,7 +63348,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Netherfield (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Netherfield (sexta à noite)",
-   "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -63392,7 +63391,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Samuel Ward foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido."
    ],
    "pontos": [
     {
@@ -63408,7 +63407,7 @@ export const CASOS_LUTA = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "No cômodo, mesa de cozinha, lareira com guarda-fogo."
+      "Do mobiliário, mesa de cozinha, lareira com guarda-fogo."
      ]
     },
     {
@@ -63788,7 +63787,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
       {
@@ -63821,7 +63820,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "A resposta toma o caminho comprido e chega inteira, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -63854,7 +63853,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_criada]]."
+      "Dá a hora, dá o lugar, e para; entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
       {
@@ -63887,7 +63886,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
       {
@@ -63981,7 +63980,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "James Smith abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Ao citar a primeira hora, corrige-a no meio da frase."
+      "James Smith abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -64020,7 +64019,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
      ],
      "opcoes": [
       {
@@ -64047,13 +64046,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -64080,13 +64079,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Samuel Ward era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Samuel Ward era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -64113,13 +64112,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -64146,7 +64145,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -64239,7 +64238,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -64305,7 +64304,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -64338,7 +64337,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -64471,7 +64470,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -64498,13 +64497,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
+      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -64531,13 +64530,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Samuel Ward era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Samuel Ward era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -64564,13 +64563,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -64597,7 +64596,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -64657,7 +64656,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "William Taylor entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\""
+      "William Taylor entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\""
      ],
      "opcoes": [
       {
@@ -64690,7 +64689,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -64723,7 +64722,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -64756,7 +64755,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -64789,7 +64788,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -64848,21 +64847,20 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Haversham, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Haversham. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -64870,17 +64868,16 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham. Isto passa do meu ofício, e não fingirei o contrário. Samuel Ward, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Samuel Ward, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Fenwick, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -64888,8 +64885,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Haversham",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -64899,7 +64895,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Samuel Ward, 45 anos, ferreiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -65552,31 +65548,38 @@ export const CASOS_LUTA = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -65662,7 +65665,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -65674,7 +65677,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -65686,7 +65689,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -65698,7 +65701,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -65717,7 +65720,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -65729,7 +65732,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Manchas Fixas",
      "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -65811,7 +65814,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "À altura do peito, na parede, um salpico fino, acima da linha das feridas do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -65944,7 +65947,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Laura Smith",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Laura Smith: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Laura Smith, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -65962,7 +65965,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Mary Barnes",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Mary Barnes por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de Mary Barnes por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -66042,7 +66045,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -66057,7 +66060,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_casa_do_medico",
    "textoDisplay": "Casa do Médico (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -66072,7 +66075,7 @@ export const CASOS_LUTA = [
    "localidade": "vizinhanca",
    "textoDisplay": "A Taverna (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Taverna, e de porta para fora não pus o pé.\" Declarado de pé, o serviço à espera, diante do constable.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Taverna, e de porta para fora não pus o pé.\" Tomado por termo ali mesmo, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -66087,7 +66090,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -66102,7 +66105,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -66217,7 +66220,7 @@ export const CASOS_LUTA = [
     "telegrafo"
    ],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_taverneiro]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -66459,7 +66462,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -66492,7 +66495,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_lavrador]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -66525,7 +66528,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_lavrador]]."
+      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -66558,7 +66561,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_0_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
       {
@@ -66658,7 +66661,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Laura Smith entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+      "Laura Smith entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
      ],
      "opcoes": [
       {
@@ -66697,7 +66700,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -66724,13 +66727,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Sydney Cooper eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Sydney Cooper eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -66757,13 +66760,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Sydney Cooper? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Sydney Cooper? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -66790,7 +66793,7 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -66823,7 +66826,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -66890,7 +66893,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Mary Barnes deixa o serviço devagar e espera a pergunta da soleira. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Mary Barnes deixa o serviço devagar e espera a pergunta da soleira. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -67154,7 +67157,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]."
      ],
      "opcoes": [
       {
@@ -67187,7 +67190,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
      ],
      "opcoes": [
       {
@@ -67359,7 +67362,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Walter Ellis abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Fala baixo e mede a porta antes de cada resposta."
+      "Walter Ellis abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Fala baixo e mede a porta antes de cada resposta."
      ],
      "opcoes": [
       {
@@ -67398,7 +67401,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -67431,7 +67434,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_lavrador]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
      ],
      "opcoes": [
       {
@@ -67464,7 +67467,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_lavrador]]."
+      "\"Hora e lugar.\" E os dá, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -67497,7 +67500,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_1_lavrador]]."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -67562,39 +67565,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Wrenfield, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Wrenfield. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Harrow, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Wrenfield. Isto passa do meu ofício, e não fingirei o contrário. Sydney Cooper, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Sydney Cooper, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -67602,8 +67603,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Wrenfield",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -67613,7 +67613,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Sydney Cooper, 14 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -68308,7 +68308,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68320,7 +68320,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68332,7 +68332,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68344,7 +68344,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -68363,7 +68363,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -68457,7 +68457,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito. A poça no chão ficou a palmos abaixo.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -68651,7 +68651,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Emma Thomas",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Emma Thomas por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "Numa meia folha pautada, uma soma e um prazo com o nome de Emma Thomas ao pé — acerto sem testemunha, à espera da segunda assinatura.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -68669,7 +68669,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Henry Hill",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Henry Hill: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de Henry Hill: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -68723,7 +68723,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_1",
    "textoDisplay": "Cottage nº 1 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -68768,7 +68768,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_4",
    "textoDisplay": "Cottage nº 4 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -68841,7 +68841,7 @@ export const CASOS_LUTA = [
      "rotulo": "Paiol",
      "comodo": "paiol",
      "prosa": [
-      "No cômodo, sacas de grão, ferramentas de lavoura."
+      "Do mobiliário, sacas de grão, ferramentas de lavoura."
      ]
     }
    ],
@@ -68895,7 +68895,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_lavadeira]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -69074,7 +69074,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Emma Thomas abre antes que o constable acabe de bater, e toma a palavra do batente. \"Com licença. Digo o que souber, e volto ao serviço.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Emma Thomas abre antes que o constable acabe de bater, e toma a palavra do batente. \"Posso falar, com licença da casa. Respondo o que souber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -69113,7 +69113,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -69179,7 +69179,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -69212,7 +69212,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -69345,7 +69345,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
      ],
      "opcoes": [
       {
@@ -69372,13 +69372,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Jones eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Jones eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
      ],
      "opcoes": [
       {
@@ -69405,13 +69405,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Henry Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
      ],
      "opcoes": [
       {
@@ -69438,13 +69438,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
      ],
      "opcoes": [
       {
@@ -69471,7 +69471,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -69531,7 +69531,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Mary Read entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Mary Read entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -69564,7 +69564,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -69597,7 +69597,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -69630,7 +69630,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Hora e lugar.\" E os dá, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -69663,7 +69663,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -69807,7 +69807,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -69834,13 +69834,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -69867,13 +69867,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Jones era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Henry Jones era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e ele torna a conferi-las, uma a uma, antes de as dar por fechadas."
+      "Dá a hora, dá o lugar, e para; cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
      ],
      "opcoes": [
       {
@@ -69900,13 +69900,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -69933,7 +69933,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
@@ -70000,7 +70000,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Richard Morris entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Richard Morris entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -70039,7 +70039,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_lavrador]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -70066,13 +70066,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_lavrador]]."
+      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -70099,13 +70099,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Henry Jones era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Henry Jones era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_lavrador]]."
+      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -70132,13 +70132,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -70165,7 +70165,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -70197,21 +70197,20 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -70219,17 +70218,16 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Henry Jones, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Colbrook, à pressa. O que aqui houve pede olho de perito, não de guarda. Henry Jones, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Bexley, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -70237,8 +70235,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Bexley espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Bexley vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -70248,7 +70245,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Henry Jones, 60 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -70855,31 +70852,38 @@ export const CASOS_LUTA = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -70965,7 +70969,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -70977,7 +70981,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -70989,7 +70993,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -71001,7 +71005,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -71020,7 +71024,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -71061,7 +71065,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -71114,7 +71118,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "À altura do peito, na parede, um salpico fino, acima da linha das feridas do morto.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -71288,7 +71292,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Alice Jones",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Alice Jones: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "Meia dúzia de linhas na letra de Alice Jones: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -71332,7 +71336,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de Walter Hill",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de Walter Hill por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de Walter Hill por extenso, e uma assinatura só.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -71360,7 +71364,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_casa_do_medico",
    "textoDisplay": "Casa do Médico (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -71390,7 +71394,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Cottage nº 3 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito. Cecil Wright me bateu à porta às nove; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito. Cecil Wright me bateu à porta às nove; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -71405,7 +71409,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_2",
    "textoDisplay": "Cottage nº 2 (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -71420,7 +71424,7 @@ export const CASOS_LUTA = [
    "localidade": "vizinhanca",
    "textoDisplay": "A Mercearia (sexta à noite)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
-   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Tomado por termo ali mesmo, pela mão do constable.",
+   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado de pé, o serviço à espera, diante do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -71478,7 +71482,7 @@ export const CASOS_LUTA = [
      "rotulo": "Cozinha",
      "comodo": "cozinha",
      "prosa": [
-      "Do mobiliário, fogão de ferro a carvão, mesa de cozinha, lareira com guarda-fogo."
+      "No cômodo, fogão de ferro a carvão, mesa de cozinha, lareira com guarda-fogo."
      ]
     },
     {
@@ -71494,7 +71498,7 @@ export const CASOS_LUTA = [
      "rotulo": "Parlour",
      "comodo": "parlour",
      "prosa": [
-      "No cômodo, lareira com guarda-fogo, atiçador de lareira."
+      "Do mobiliário, lareira com guarda-fogo, atiçador de lareira."
      ]
     }
    ],
@@ -71573,7 +71577,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Os papéis do caso",
    "acoesEspeciais": [],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_merceeiro]].",
     "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
@@ -71834,13 +71838,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Philip Turner. Por quê, não sei dizer; sei, e chega.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Philip Turner. Por quê, não sei dizer; sei, e chega.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -71867,7 +71871,7 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Cecil Wright? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Cecil Wright? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -71900,13 +71904,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
       {
@@ -71933,7 +71937,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -72005,7 +72009,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Henry Roberts abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "Henry Roberts abre antes que o constable acabe de bater, e toma a palavra do batente. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -72050,7 +72054,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_taverneiro]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -72077,13 +72081,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à noite vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_taverneiro]]."
+      "A sexta à noite vem contada do princípio, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -72110,13 +72114,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Cecil Wright era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"Cecil Wright era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_taverneiro]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_taverneiro]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
      ],
      "opcoes": [
       {
@@ -72143,13 +72147,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_3_taverneiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -72176,7 +72180,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Abotoa o casaco. \"Se faltar soma ou data, o livro do balcão as tem.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
      ],
      "opcoes": []
     },
@@ -72243,7 +72247,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Philip Turner entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "Philip Turner entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Serviço parado esfria. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -72309,7 +72313,7 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome {detective.treatment} quer, nome eu dou: Walter Hill. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+      "\"Nome {detective.treatment} quer, nome eu dou: Walter Hill. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
      ],
      "opcoes": []
     },
@@ -72342,13 +72346,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Cecil Wright era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Cecil Wright era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_5_ferreiro]]."
+      "Dá a hora, dá o lugar, e para; as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_5_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -72375,13 +72379,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_5_ferreiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_5_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -72408,7 +72412,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
      ],
      "opcoes": []
     },
@@ -72580,7 +72584,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]."
+      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -72613,7 +72617,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -72707,7 +72711,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Walter Hill vem ao encontro antes que o constable chame, enxugando as mãos no avental. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\""
+      "Walter Hill vem ao encontro antes que o constable chame, enxugando as mãos no avental. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\""
      ],
      "opcoes": [
       {
@@ -72746,7 +72750,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -72779,7 +72783,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
+      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -72812,7 +72816,7 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -72845,7 +72849,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -72904,21 +72908,20 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Harrow pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
@@ -72926,17 +72929,16 @@ export const CASOS_LUTA = [
     "carta": true,
     "paragrafos": [
      "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Cecil Wright, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Cecil Wright, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -72944,8 +72946,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Harrow vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -72955,7 +72956,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Cecil Wright, 28 anos, ferreiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -73623,31 +73624,38 @@ export const CASOS_LUTA = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }
@@ -73733,7 +73741,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Rigidez Parcial",
      "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -73745,7 +73753,7 @@ export const CASOS_LUTA = [
      "ipmAte": 24,
      "textoDisplay": "Corpo Endurecido",
      "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -73757,7 +73765,7 @@ export const CASOS_LUTA = [
      "ipmAte": 36,
      "textoDisplay": "Rigidez Cedendo",
      "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -73769,7 +73777,7 @@ export const CASOS_LUTA = [
      "ipmAte": null,
      "textoDisplay": "Corpo Flácido",
      "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "rigor_mortis",
@@ -73788,7 +73796,7 @@ export const CASOS_LUTA = [
      "ipmAte": 12,
      "textoDisplay": "Manchas que Cedem ao Polegar",
      "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
      "tagsOcultas": {
       "dominio": "temporal",
       "subDominio": "livor_mortis",
@@ -73829,7 +73837,7 @@ export const CASOS_LUTA = [
    "suporteFisico": "corpo",
    "textoDisplay": "As Bordas da Ferida",
    "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
    "tagsOcultas": {
     "dominio": "causal",
     "subDominio": "reacao_vital",
@@ -73882,7 +73890,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Respingo na Parede",
    "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas do morto não alcançariam tão alto.",
+   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito. A poça no chão ficou a palmos abaixo.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "sangue_do_agressor",
@@ -74135,7 +74143,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "O Bilhete Amassado",
    "carimboPadrao": "Bilhete na letra de Bernard Moore",
-   "descricao": "Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de Bernard Moore: um pedido de socorro em dinheiro, a palavra \"desta vez\" sublinhada, e nenhuma resposta no verso.",
+   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Bernard Moore, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -74153,7 +74161,7 @@ export const CASOS_LUTA = [
    "mobilia": null,
    "textoDisplay": "A Nota por Assinar",
    "carimboPadrao": "Nota de trato com o nome de George Jones",
-   "descricao": "Meia folha pautada com soma, prazo e o nome de George Jones por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de George Jones por extenso, e uma assinatura só.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "rastro_de_visita",
@@ -74235,7 +74243,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_mercearia",
    "textoDisplay": "A Mercearia (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -74265,7 +74273,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_3",
    "textoDisplay": "Cottage nº 3 (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -74280,7 +74288,7 @@ export const CASOS_LUTA = [
    "localidade": "casa_cottage_6",
    "textoDisplay": "A Granja (sexta à tarde)",
    "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
    "tagsOcultas": {
     "dominio": "comportamental",
     "subDominio": "alibi",
@@ -74322,7 +74330,7 @@ export const CASOS_LUTA = [
    "subtitulo": "Onde Joseph Smith foi achado",
    "acoesEspeciais": [],
    "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+    "A Granja segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo."
    ],
    "pontos": [
     {
@@ -74409,7 +74417,7 @@ export const CASOS_LUTA = [
     "telegrafo"
    ],
    "prosa": [
-    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
     "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
     "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_criada]].",
     "Presa por alfinete ao maço, a folha de praxe: [[gen_citacao_comarca]].",
@@ -74686,7 +74694,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -74713,13 +74721,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_lavrador]]."
+      "A sexta à tarde vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -74746,13 +74754,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Joseph Smith era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Joseph Smith era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -74779,13 +74787,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que ele sempre repete, desta vez fecha na primeira."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
      ],
      "opcoes": [
       {
@@ -74812,7 +74820,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -74879,7 +74887,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "O constable bate; Bernard Moore abre e se descobre, o chapéu na mão. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+      "O constable bate; Bernard Moore abre e se descobre, o chapéu na mão. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Traz as datas prontas, como quem chega com a caderneta escrita."
      ],
      "opcoes": [
       {
@@ -74918,7 +74926,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -74951,7 +74959,7 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
+      "A sexta à tarde vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -75017,7 +75025,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -75150,7 +75158,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -75177,7 +75185,7 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Joseph Smith eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Joseph Smith eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -75210,13 +75218,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Joseph Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Joseph Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -75243,13 +75251,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
       {
@@ -75276,7 +75284,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
      ],
      "opcoes": []
     },
@@ -75354,7 +75362,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "John Walker entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+      "John Walker entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
      ],
      "opcoes": [
       {
@@ -75399,7 +75407,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -75426,7 +75434,7 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
      ],
      "opcoes": []
     },
@@ -75459,13 +75467,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Joseph Smith era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Joseph Smith era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]."
+      "Dá a hora, dá o lugar, e para; as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -75492,13 +75500,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -75525,7 +75533,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
      ],
      "opcoes": []
     },
@@ -75597,7 +75605,7 @@ export const CASOS_LUTA = [
    "nos": {
     "abertura": {
      "fala": [
-      "Philip Moore abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
+      "Philip Moore abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
      ],
      "opcoes": [
       {
@@ -75630,7 +75638,7 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -75657,13 +75665,13 @@ export const CASOS_LUTA = [
     },
     "b2_firme": {
      "fala": [
-      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_cordial": {
      "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "A sexta à tarde vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -75690,13 +75698,13 @@ export const CASOS_LUTA = [
     },
     "b2_cordial": {
      "fala": [
-      "\"Joseph Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Joseph Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -75723,13 +75731,13 @@ export const CASOS_LUTA = [
     },
     "b2_tecnico": {
      "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
      ],
      "opcoes": []
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
      ],
      "opcoes": [
       {
@@ -75756,7 +75764,7 @@ export const CASOS_LUTA = [
     },
     "b2_obliquo": {
      "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
      ],
      "opcoes": []
     },
@@ -75794,39 +75802,37 @@ export const CASOS_LUTA = [
  "abertura": {
   "passos": [
    {
-    "id": "caulfield",
-    "titulo": "Caulfield, 14 de outubro de 1893",
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
     "paragrafos": [
-     "A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.",
-     "Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco."
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
     ],
-    "rotuloBotao": "A vela queima"
+    "rotuloBotao": "O constable é chamado"
    },
    {
-    "id": "chamado",
-    "titulo": "Batem à porta",
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
     "paragrafos": [
-     "A Sra. Potts entra com o castiçal numa mão e um envelope na outra. \"Veio a cavalo, de Colbrook. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente.\""
+     "O constable Harrow pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
     ],
-    "rotuloBotao": "Abrir o envelope"
+    "rotuloBotao": "Ler a carta"
    },
    {
     "id": "carta",
     "titulo": "A carta do Constable",
     "carta": true,
     "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook. Isto passa do meu ofício, e não fingirei o contrário. Joseph Smith, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Joseph Smith, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
      "\"Harrow, Constable.\""
     ],
     "rotuloBotao": "Aceitar o chamado"
    },
    {
-    "id": "transformacao",
-    "titulo": "A mesa se transforma",
+    "id": "metodo",
+    "titulo": "A maleta pronta",
     "paragrafos": [
-     "A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.",
-     "{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer."
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
     ],
     "rotuloBotao": "Tomar o trem"
    },
@@ -75834,8 +75840,7 @@ export const CASOS_LUTA = [
     "id": "chegada",
     "titulo": "Colbrook",
     "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Colbrook estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.",
-     "O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. \"Agradeço a presteza. Venha; explico-me pelo caminho.\""
+     "Chove fino sobre Colbrook quando o trem chega. Harrow espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
     ],
     "rotuloBotao": "Ouvir o constable"
    },
@@ -75845,7 +75850,7 @@ export const CASOS_LUTA = [
     "briefing": true,
     "paragrafos": [
      "\"O essencial é isto: Joseph Smith, 14 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}.\""
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
     ],
     "rotuloBotao": "Entrar — iniciar a investigação"
    }
@@ -76592,31 +76597,38 @@ export const CASOS_LUTA = [
   "porChave": {
    "destruir_evidencia_ocorrida": [
     "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal."
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
    ],
    "destruir_evidencia_evitada": [
     "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir."
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
    ],
    "intimidar_testemunha_ocorrida": [
     "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa."
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
    ],
    "intimidar_testemunha_evitada": [
     "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco."
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
    ],
    "subornar_testemunha_ocorrida": [
     "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas."
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
    ],
    "silenciar_ocorrida": [
     "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais."
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
    ],
    "silenciar_evitada": [
     "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu."
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
    ]
   }
  }

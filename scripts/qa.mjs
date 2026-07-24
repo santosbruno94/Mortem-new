@@ -23,6 +23,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { useJogo } from '../src/store/jogo.js';
 import { hashDecisao as hashDecisaoQa } from '../src/gerador/hash_gerador.js';
+import { medir as medirMonotonia, guardaMonotonia } from './lib/monotonia.mjs';
 import { ANCORAS, analisarLigacoes, refutacaoDeHoraEstabelecida } from '../src/logic/acusacao.js';
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
@@ -3969,7 +3970,19 @@ if (!exigenciaLutaForcadaOk) {
   for (const p of problemasLutaForc) console.log('  ·', p);
 }
 
+// OS Prosa Viva E5 — GUARDA ANTI-MONOTONIA: mede o índice dos 31 casos
+// embarcados e trava a regressão do que E1–E4 escreveram (uma etapa futura
+// que faça uma superfície regredir a molde raso reprova aqui). Núcleo em
+// scripts/lib/monotonia.mjs; pisos por superfície documentados lá.
+const { linhas: linhasMonotonia } = medirMonotonia([CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA]);
+const guardaMon = guardaMonotonia(linhasMonotonia);
+if (!guardaMon.ok) {
+  console.log('\nPROSA VIVA E5 — guarda anti-monotonia REPROVOU:');
+  for (const v of guardaMon.violacoes) console.log('  ✖', v);
+}
+
 const checagens = [
+  [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
   ['Slots de caso resolvem contra o pacote (entidade e campo existem)', slotsResolvem],
   ['Metódico resolve (vitoria_absoluta)', vMetodico.tipo === 'vitoria_absoluta'],

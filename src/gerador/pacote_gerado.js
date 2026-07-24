@@ -254,23 +254,41 @@ function cartaHoraForjada(bruto) {
 const SEGREDOS_GERADOS = ['pedido_recusado', 'acerto_reservado'];
 
 const PROSA_SEGREDO = {
+  // E3: descricao vira POOL de 3 variantes (escolha por hashDecisao, keyed
+  // por suspeito). Os FATOS mecânicos são invariantes (pedido de socorro com
+  // "desta vez"; acerto de dinheiro com soma/prazo e a 2ª assinatura em
+  // falta) — coerentes com a admissão no confronto; varia só a descrição.
   pedido_recusado: {
     textoDisplay: 'O Bilhete Amassado',
     tipoVestigio: 'bilhete_de_suplica',
     carimbo: (nome) => `Bilhete na letra de ${nome}`,
-    // P14/P15: o bilhete diz do que trata o pedido (socorro em dinheiro) —
-    // coerente com a admissão no confronto ("saí com a recusa e a vergonha").
-    descricao: (nome) =>
-      `Papel amassado em bola e desfeito depois, as quebras ainda marcadas. Meia dúzia de linhas na letra de ${nome}: um pedido de socorro em dinheiro, a palavra "desta vez" sublinhada, e nenhuma resposta no verso.`,
+    descricao: [
+      // Ataque pelo conteúdo, fragmentado, períodos curtos.
+      (nome) =>
+        `Meia dúzia de linhas na letra de ${nome}: um pedido de socorro em dinheiro, "desta vez" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.`,
+      // Ataque pelo gesto, um período corrido.
+      (nome) =>
+        `Amassado e depois alisado, o bilhete de ${nome} pede socorro em dinheiro, com "desta vez" riscado por baixo e resposta nenhuma.`,
+      // Ataque pelo estado do papel, dois períodos.
+      (nome) =>
+        `O papel guarda os vincos de quem o amassou e o desamassou. Na letra de ${nome}, poucas linhas de súplica por dinheiro; "desta vez" vem grifado, e ninguém escreveu no verso.`,
+    ],
   },
   acerto_reservado: {
     textoDisplay: 'A Nota por Assinar',
     tipoVestigio: 'nota_por_assinar',
     carimbo: (nome) => `Nota de trato com o nome de ${nome}`,
-    // P13/P15: a nota diz do que trata (acerto de dinheiro em reserva) —
-    // coerente com a admissão no confronto ("trato para se fechar calado").
-    descricao: (nome) =>
-      `Meia folha pautada com soma, prazo e o nome de ${nome} por extenso: um acerto de dinheiro para correr em reserva. Falta a segunda assinatura, e o vinco da dobra ainda não assentou.`,
+    descricao: [
+      // Ataque pela assinatura em falta.
+      (nome) =>
+        `Falta a segunda assinatura na meia folha: soma, prazo e o nome de ${nome} por extenso, um acerto sem a outra mão. A dobra ainda não assentou.`,
+      // Ataque pela dobra fresca, períodos curtos.
+      (nome) =>
+        `A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de ${nome} por extenso, e uma assinatura só.`,
+      // Ataque pela soma, um período corrido.
+      (nome) =>
+        `Numa meia folha pautada, uma soma e um prazo com o nome de ${nome} ao pé — acerto sem testemunha, à espera da segunda assinatura.`,
+    ],
   },
 };
 
@@ -327,6 +345,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
       perifericos[s.id] = { veredictoEsperado: 'inocente_segredo', segredo: tipo };
       segredos[s.id] = tipo;
       const p = PROSA_SEGREDO[tipo];
+      const descSeg = p.descricao[hashDecisao(`${bruto.seed}|segredo|${tipo}|${s.id}`) % p.descricao.length];
       cartasNovas.push({
         id: `gen_segredo_${s.id}`,
         localidade: 'cena',
@@ -336,7 +355,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
         mobilia: null,
         textoDisplay: p.textoDisplay,
         carimboPadrao: p.carimbo(pessoa.nome),
-        descricao: p.descricao(pessoa.nome),
+        descricao: descSeg(pessoa.nome),
         tagsOcultas: {
           dominio: 'vestigio',
           subDominio: 'rastro_de_visita',
@@ -787,17 +806,59 @@ const PROSA_LESAO = {
 
 // Descrições dos estados temporais (universais — o modelo forense é o
 // mesmo de tempo_morte.js; validar contra docs/kb-medicina-legal/).
+// OS Prosa Viva E2: cada estado vira um POOL de variantes escolhidas por
+// hashDecisao. A VERDADE FORENSE é invariante — o rigor sobe e desce em
+// sequência céfalo-caudal (tanatologia §2), o livor fixo ≥12h não cede ao
+// polegar (§3) —; varia o RECORTE de observação (qual junta, a ordem, o
+// gesto do exame), nunca o sinal técnico que o motor pressupõe. Validado
+// pelo perito-forense.
+// Variantes com ARQUITETURA distinta (não o mesmo molde reescrito): variam
+// comprimento, ordem e ponto de ataque; parte fecha em fato seco, sem coda
+// interpretativa. Só o observável — nada de "começou", "caiu", "cumpriu o
+// ciclo" (a origem e o arco são dedução do jogador). Registro leigo de laudo
+// (o nome técnico vive no Glossário).
 const PROSA_RIGOR = {
-  instalando:
-    'O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão. A rigidez sobe pelo corpo e não o tomou inteiro.',
-  pleno: 'Duro do maxilar aos joelhos. O corpo fixou-se na postura em que a morte o encontrou.',
-  resolucao: 'O maxilar volta a ceder; os joelhos seguem presos. A rigidez que o tomou começa a desfazer-se.',
-  resolvido: 'Junta nenhuma resiste ao exame. A rigidez veio e já passou por inteiro.',
+  instalando: [
+    'O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.',
+    'Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.',
+    'A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.',
+  ],
+  pleno: [
+    'Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.',
+    'Nenhuma junta cede à força da mão, do pescoço aos tornozelos.',
+    'O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.',
+  ],
+  resolucao: [
+    'O maxilar volta a ceder; os joelhos seguem presos.',
+    'Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.',
+    'Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.',
+  ],
+  resolvido: [
+    'Junta nenhuma resiste ao exame; o corpo está mole por inteiro.',
+    'O cotovelo e o joelho movem-se sem resistência à mão.',
+    'Todas as juntas cedem à mão. Do enrijecimento não resta sinal.',
+  ],
 };
 const PROSA_LIVOR = {
-  movel: 'As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.',
-  fixo: 'As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.',
+  movel: [
+    'As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.',
+    'A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.',
+    'Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.',
+  ],
+  fixo: [
+    'As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.',
+    'O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.',
+    'As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.',
+  ],
 };
+// Reação vital (a lesão feita em vida): bordas retraídas + sangue infiltrado
+// e coagulado, aderente à lavagem. A conclusão ("em vida") é do jogador, via
+// glossário (playtest 19/07) — a prosa só descreve o observável.
+const PROSA_REACAO_VITAL = [
+  'As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.',
+  'As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.',
+  'Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.',
+];
 // Só o livor FIXO testemunha postura anterior (tanatologia §3): o móvel
 // migra com o corpo e não guarda contradição. Sem conectivo adversativo —
 // os dois fatos se justapõem e o curto-circuito é do jogador (guia §2).
@@ -958,20 +1019,26 @@ function realizarCartas(bruto) {
   const femV = vitima.genero === 'feminino';
   const doMorto = femV ? 'da morta' : 'do morto';
 
+  // E2: escolha decorrelada de variante de prosa do corpo (o sinal técnico
+  // é o mesmo; muda o recorte de observação).
+  const escolherCorpo = (pool, chave) => pool[hashDecisao(`${bruto.seed}|corpo|${chave}`) % pool.length];
+
   const cartas = [];
   for (const c of fatiaForense.cartas) {
     const nova = JSON.parse(JSON.stringify(c));
     switch (c.id) {
       case 'gen_rigor':
         for (const estado of nova.estados) {
-          estado.descricao = PROSA_RIGOR[estado.tagsOcultas.estadoRigor];
+          const e = estado.tagsOcultas.estadoRigor;
+          estado.descricao = escolherCorpo(PROSA_RIGOR[e], `rigor|${e}`);
         }
         break;
       case 'gen_livores':
         for (const estado of nova.estados) {
+          const e = estado.tagsOcultas.estadoLivor;
           estado.descricao =
-            PROSA_LIVOR[estado.tagsOcultas.estadoLivor] +
-            (estado.tagsOcultas.posicaoCompativel === false && estado.tagsOcultas.estadoLivor === 'fixo'
+            escolherCorpo(PROSA_LIVOR[e], `livor|${e}`) +
+            (estado.tagsOcultas.posicaoCompativel === false && e === 'fixo'
               ? NOTA_LIVOR_CONTRADITORIO
               : '');
         }
@@ -984,10 +1051,7 @@ function realizarCartas(bruto) {
         break;
       }
       case 'gen_reacao_vital':
-        // P3 (playtest 19/07): observação pura — a conclusão ("em vida",
-        // reação vital) é dedução do jogador, via glossário.
-        nova.descricao =
-          'As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.';
+        nova.descricao = escolherCorpo(PROSA_REACAO_VITAL, 'reacao_vital');
         break;
       case 'gen_visto_vivo': {
         const quando = formatHoraComDia(c.tagsOcultas.horaAvistamento);
@@ -1056,19 +1120,30 @@ function realizarCartas(bruto) {
       // fora do alcance da poça" (crime.js; removivel: false POR ISSO —
       // a esfrega do assoalho não o apanha). A prosa descreve o mesmo
       // fato, não uma trilha de gotas no chão que o dado não sustenta.
-      case 'gen_sangue_alheio':
+      case 'gen_sangue_alheio': {
+        // E3: pool de 3, mesmo sinal (respingo fino e alto, fora do alcance
+        // da poça e do que as feridas da vítima alcançariam). A superfície do
+        // palco (perito E2, A1): muro no adro, madeirame no pátio, cerca.
+        // A posição relativa (respingo à altura do peito × poça no chão ×
+        // linha das feridas) é observável e justaposta; a conclusão de que o
+        // sangue não é da vítima fica com o jogador (guia §2, editor E3).
+        const respingoAlto = (sup) => [
+          `Um borrifo fino, de gotas miúdas, ${sup}, à altura do peito. A poça no chão ficou a palmos abaixo.`,
+          `À altura do peito, ${sup}, um salpico fino, acima da linha das feridas ${doMorto}.`,
+          `Fora do alcance da poça, ${sup}, assoma um borrifo miúdo à altura do peito.`,
+        ];
         if (externo) {
-          // Parecer do perito (E2, A1): a superfície do respingo existe no
-          // palco — muro no adro, madeirame no pátio, cerca no açude.
           nova.textoDisplay = 'O Respingo Alto';
           nova.carimboPadrao = 'Respingo alto, fora do alcance da poça';
-          nova.descricao = `Um borrifo fino, de gotas miúdas, ${SUPERFICIE_RESPINGO[escolha.palco.logradouroId] || 'na superfície mais próxima'}, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`;
+          const sup = SUPERFICIE_RESPINGO[escolha.palco.logradouroId] || 'na superfície mais próxima';
+          nova.descricao = escolherCorpo(respingoAlto(sup), 'sangue_alheio');
         } else {
           nova.textoDisplay = 'O Respingo na Parede';
           nova.carimboPadrao = 'Respingo alto, fora do alcance da poça';
-          nova.descricao = `Um borrifo fino na parede, à altura do peito, fora do alcance da poça. As feridas ${doMorto} não alcançariam tão alto.`;
+          nova.descricao = escolherCorpo(respingoAlto('na parede'), 'sangue_alheio');
         }
         break;
+      }
       // Parecer do perito (E2, A2): o guaiaco só fecha em substrato de
       // laje (adro); em terra, os óxidos de ferro e as peroxidases
       // vegetais coram igual — o teste é dito inconclusivo e o tell
@@ -1656,9 +1731,12 @@ function montarLocalidades(bruto, cartas, casasDoCaso) {
     subtitulo: `Onde ${vitima.nome} foi ${femV ? 'achada' : 'achado'}`,
     acoesEspeciais: [],
     introducao: [
-      `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam; o exame corre ${
-        externo ? 'canto a canto' : 'cômodo a cômodo'
-      }.`,
+      // E3: a linha de abertura da cena compõe-se por slot (hashDecisao).
+      [
+        `${sujeitoDoLugar(predioCena)} guarda o dia em que ${femV ? 'a' : 'o'} acharam; o exame corre ${externo ? 'canto a canto' : 'cômodo a cômodo'}.`,
+        `O exame corre ${externo ? 'canto a canto' : 'cômodo a cômodo'}: a cena está como ${femV ? 'a' : 'o'} acharam, nada movido.`,
+        `${sujeitoDoLugar(predioCena)} segue como estava na manhã do achado, nada fora do lugar; o exame vai ${externo ? 'canto a canto' : 'cômodo a cômodo'}.`,
+      ][hashDecisao(`${bruto.seed}|prosa|cena-intro`) % 3],
       ...(fraseDescoberta ? [fraseDescoberta] : []),
       // E3: a casa da vítima lida pela mobília (leitura social, não pista).
       ...(leituraDaMobilia ? [leituraDaMobilia] : []),
@@ -2131,51 +2209,124 @@ function montarAbertura(bruto, sal, suspeitos) {
     )
     .map((s) => s.nome);
 
+  // ---------------------------------------------------------------------
+  // Abertura procedural — cold open da descoberta (OS Prosa Viva E1).
+  // A pensão da Sra. Potts é abertura SÓ do tutorial (src/data/abertura.js);
+  // o caso gerado abre nos olhos de quem achou o corpo. Cada passo compõe-se
+  // por SLOTS escolhidos por hashDecisao (decorrelação — o hashString cru
+  // trava os slots numa coluna), poucos fragmentos explodindo em combinações.
+  // CERCA DE FAIR-PLAY: o cold open é observação pura de leigo — nunca revela
+  // mecanismo, hora da morte ou culpado, e jamais confirma ou desmente a
+  // encenação. Os fatos duros (nome, ofício, "nada se tocou") ficam na carta
+  // e no briefing. A assinatura recorrente do perito é o MÉTODO (a maleta, a
+  // caderneta em branco), não um lugar fixo (D1).
+  // ---------------------------------------------------------------------
+  const palco = bruto.escolha.palco || {};
+  const palcoChave = palco.externo ? 'externo' : palco.pousada ? 'pousada' : 'interno';
+  const predioEm = formasDoLugar(nomeDoPredio(mundo.cidade, bruto.escolha.localId)).em;
+  const escolher = (pool, chave) => pool[hashDecisao(`${sal}|abertura|${chave}`) % pool.length];
+
+  // Passo 1 — a descoberta (ramifica com o palco, como a prosa do corpo).
+  // Regra da cerca (perito-forense, E1): os pools de DESCOBERTA só contêm
+  // CIRCUNSTÂNCIA DO DESCOBRIDOR (quem, quando chegou, o que fez), nunca
+  // ESTADO FÍSICO DA CENA (porta trancada/aberta, posição do corpo, sangue,
+  // temperatura, desordem) — a escolha é decorrelada da cena e mentiria.
+  const DESCOBERTA = {
+    interno: [
+      'De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz.',
+      'O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta.',
+      'Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable.',
+    ],
+    externo: [
+      'Ao romper do dia, um carroceiro deu com o corpo caído à beira do caminho e susteve a parelha.',
+      'No descampado, à saída da vila, o corpo jazia caído na relva. Um lavrador a caminho da lida foi quem primeiro passou.',
+      'Quem cruzava a ponte de manhã cedo estacou diante da forma caída na margem e voltou correndo para chamar o constable.',
+    ],
+    pousada: [
+      'O hóspede não desceu para o desjejum nem à hora do almoço. O taverneiro bateu, não obteve resposta e mandou chamar o constable.',
+      'Foi a criada da taverna, subindo com a água quente, quem achou o quarto em silêncio. Largou o jarro e desceu aos gritos.',
+      'Na taverna, o quarto do fundo não abriu à hora do costume. O taverneiro subiu, não obteve resposta e recuou até a escada para mandar recado ao posto.',
+    ],
+  };
+
+  // Passo 2 — o constable assume e manda chamar o perito.
+  const ALARME = [
+    `O constable ${delegado} pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo.`,
+    `${delegado}, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado.`,
+    `Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, ${delegado} pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo.`,
+  ];
+
+  // Passo 3 — a carta chega ao perito. Duas camadas: a linha de narrador que
+  // abre o envelope (varia) e o corpo do constable (moldura varia; os FATOS
+  // são estáveis — é o portador fair-play da informação).
+  const CARTA_LACRE = [
+    'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
+    'O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.',
+    'O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.',
+  ];
+  const CARTA_MOLDURA = [
+    `"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de ${vila}; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo.`,
+    `"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de ${vila}, e isto passa do meu ofício.`,
+    `"{detective.treatment} {detective.surname} — Vai o meu recado de ${vila}, à pressa. O que aqui houve pede olho de perito, não de guarda.`,
+  ];
+  const cartaFatos = `${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários."`;
+
+  // Passo 4 — a assinatura: o método. O perito itinerante arruma a maleta.
+  const METODO = [
+    'Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco.',
+    'A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado.',
+    'Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa.',
+  ];
+
+  // Passo 5 — a chegada à vila (primeira vista varia; não antecipa fato).
+  const CHEGADA = [
+    `A plataforma cheira a carvão e palha molhada. ${vila} estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable ${delegado} espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos.`,
+    `O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e ${vila} começa logo ali, numa rua de lama e fachadas baixas. ${delegado} vem ao encontro, de chapéu na mão. "Agradeço a presteza. Explico-me pelo caminho."`,
+    `Chove fino sobre ${vila} quando o trem chega. ${delegado} espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. "Venha comigo; falo enquanto andamos."`,
+  ];
+
+  // Passo 6 — o briefing à porta. A moldura varia; os fatos e as perguntas
+  // (que plantam os coabitantes) são estáveis — portadores fair-play.
+  const BRIEFING_FECHO = [
+    'Detém-se à porta e baixa a voz. "Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}."',
+    'Remexe o chapéu nas mãos e não avança. "O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo."',
+    'Fica um passo atrás da porta e faz sinal ao guarda que se afaste. "Pergunte-me o que precisar; depois eu saio da frente."',
+  ];
+
   const passos = [
     {
-      id: 'caulfield',
-      titulo: 'Caulfield, 14 de outubro de 1893',
-      paragrafos: [
-        'A pensão da Sra. Potts amanhece como sempre: o quarto estreito, a meia vela, o jornal de anteontem dobrado sobre a mesa.',
-        'Sobre essa mesa, {detective.treatment} {detective.surname} dispõe a lente e o termômetro de mercúrio. A caderneta abre na primeira página em branco.',
-      ],
-      rotuloBotao: 'A vela queima',
+      id: 'descoberta',
+      titulo: `${vila}, 14 de outubro de 1893`,
+      paragrafos: [escolher(DESCOBERTA[palcoChave], `descoberta|${palcoChave}`)],
+      rotuloBotao: 'O constable é chamado',
     },
     {
-      id: 'chamado',
-      titulo: 'Batem à porta',
-      paragrafos: [
-        `A Sra. Potts entra com o castiçal numa mão e um envelope na outra. "Veio a cavalo, de ${vila}. O rapaz disse que o constable de lá, o guarda da vila, manda dizer que é urgente."`,
-      ],
-      rotuloBotao: 'Abrir o envelope',
+      id: 'alarme',
+      titulo: 'O constable manda chamar',
+      paragrafos: [escolher(ALARME, 'alarme')],
+      rotuloBotao: 'Ler a carta',
     },
     {
       id: 'carta',
       titulo: 'A carta do Constable',
       carta: true,
       paragrafos: [
-        'O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.',
-        `"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de ${vila}. Isto passa do meu ofício, e não fingirei o contrário. ${vitima.nome}, ${profissaoExibida(vitima.profissao)}${vitima.forasteiro ? ', de passagem pela vila' : ' desta vila'}, foi ${femV ? 'achada morta' : 'achado morto'}. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários."`,
+        escolher(CARTA_LACRE, 'carta-lacre'),
+        `${escolher(CARTA_MOLDURA, 'carta-moldura')} ${cartaFatos}`,
         `"${delegado}, Constable."`,
       ],
       rotuloBotao: 'Aceitar o chamado',
     },
     {
-      id: 'transformacao',
-      titulo: 'A mesa se transforma',
-      paragrafos: [
-        'A mesa estreita da pensão fica sendo, enquanto durar o caso, uma escrivaninha de perícia: a lente de um lado, o termômetro do outro, a caderneta aberta.',
-        '{detective.treatment} {detective.surname} desce para a estação antes que a Sra. Potts encontre uma pergunta para fazer.',
-      ],
+      id: 'metodo',
+      titulo: 'A maleta pronta',
+      paragrafos: [escolher(METODO, 'metodo')],
       rotuloBotao: 'Tomar o trem',
     },
     {
       id: 'chegada',
       titulo: vila,
-      paragrafos: [
-        `A plataforma cheira a carvão e palha molhada. ${vila} estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados.`,
-        `O constable ${delegado} espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos. "Agradeço a presteza. Venha; explico-me pelo caminho."`,
-      ],
+      paragrafos: [escolher(CHEGADA, 'chegada')],
       rotuloBotao: 'Ouvir o constable',
     },
     {
@@ -2183,8 +2334,8 @@ function montarAbertura(bruto, sal, suspeitos) {
       titulo: `O relato do constable ${delegado}`,
       briefing: true,
       paragrafos: [
-        `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${profissaoExibida(vitima.profissao)}. ${femV ? 'Achada morta' : 'Achado morto'} ${formasDoLugar(nomeDoPredio(mundo.cidade, bruto.escolha.localId)).em}. Não toquei em nada e não prendi ninguém."`,
-        'Detém-se à porta e baixa a voz. "Pergunte o que quiser antes de entrarmos. Lá dentro, a perícia é {g:do senhor|da senhora}."',
+        `"O essencial é isto: ${vitima.nome}, ${vitima.idade} anos, ${profissaoExibida(vitima.profissao)}. ${femV ? 'Achada morta' : 'Achado morto'} ${predioEm}. Não toquei em nada e não prendi ninguém."`,
+        escolher(BRIEFING_FECHO, 'briefing-fecho'),
       ],
       rotuloBotao: 'Entrar — iniciar a investigação',
     },

@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "lint:prosa": "node scripts/lint-prosa.mjs",
     "gerar:casos": "node scripts/gerar-casos.mjs",
+    "telemetria:monotonia": "node scripts/telemetria-monotonia.mjs",
     "demo:elenco": "node scripts/demo-elenco.mjs",
     "demo:cidade": "node scripts/demo-cidade.mjs",
     "demo:crime": "node scripts/demo-crime.mjs",

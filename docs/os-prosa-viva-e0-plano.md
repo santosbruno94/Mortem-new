@@ -81,28 +81,50 @@ e priors compostos).
 - **Pronto quando:** relatório de mesa com o índice por superfície; decisão do usuário
   sobre o teto de variantes (D2) tomada com esse número à mão.
 
-### E1 — A abertura deixa de ser um roteiro único *(maior impacto)*
+### E1 — A abertura procedural: cold open da descoberta *(maior impacto)*
 
-**O que o jogador ganha:** o caso não abre sempre igual. A manhã na pensão, o modo do
-chamado, o trajeto até a vila e a primeira vista compõem-se de **slots de fragmento**
-independentes, alimentados pela textura de época (KB mundo-vitoriano) e pelos dados que o
-gerador já computa (vila, morfologia, estação/hora, se a vítima é forasteira).
+> **Conceito fechado em 23/07/2026 (D1 resolvida).** A pensão da Sra. Potts fica sendo
+> abertura **só do tutorial** (caso-escola). Os casos procedurais ganham abertura própria:
+> um **cold open da descoberta** — o caso abre nos olhos de *quem achou o corpo*. A
+> telemetria da Fase 0 provou que a raiz do problema é aqui: **4 dos 6 passos da abertura
+> são byte-idênticos nos 31 casos** (`caulfield`, `chamado`, `transformacao`, `chegada`
+> congelados; `docs/os-prosa-viva-fase-0-telemetria.md` §2).
 
-- **O que muda:** `montarAbertura` passa de roteiro fixo a **composição por slots** —
-  ex.: {detalhe da pensão} × {modo do chamado: telegrama / próprio a cavalo / bilhete} ×
-  {chegada: plataforma / estrada / adro} × {abertura do relato} —, cada slot escolhido por
-  `hashDecisao` decorrelado. Quatro slots de quatro fragmentos = 256 combinações a partir
-  de ~16 fragmentos escritos, sem custo de revisão linear. Nenhum fragmento cria
-  informação — só textura.
-- **[DECISÃO D1] — assinatura estável × variável.** Um detetive de série tem base fixa
-  (a pensão da Sra. Potts é o "221B" de Harlan). Recomenda-se **manter a pensão/Harlan
-  como assinatura recorrente** e concentrar a variação no lado da **vila** (chamado,
-  trajeto, chegada, briefing). O usuário decide o quanto da abertura é assinatura.
-- **Fair play/continuidade:** clima e estação presos a 14/out/1893 (fiscal-continuidade);
-  o modo do chamado e a chegada nunca antecipam fato do caso.
-- **Pronto quando:** 5 seeds produzem 5 aberturas textualmente distintas e coerentes;
-  `qa-ui.mjs` verde (a abertura é texto visível e a rota clica-a); pipeline `revisar-prosa`
-  com zero bloqueantes.
+**O que o jogador ganha:** o caso não abre sempre igual, e abre com tensão. Antes de o
+perito entrar em cena, um vislumbre do *achado* — o menino do leite que estranha a porta, a
+vizinha que bate e ninguém responde, o sacristão ao alvorecer. Varia por descobridor ×
+lugar × hora × o que se reparou, e cai como uma luva no pivô de gravura (visual novel).
+
+- **Por que é justo (a cerca inviolável):** o descobridor é **leigo** e viu **só o depois**
+  — a mesma cena fria que o perito vai ler. O cold open **jamais** revela o que a cena deve
+  provar: nada de mecanismo (um leigo não distingue garrote de esganadura), nada de hora da
+  morte, nada do culpado, e **nunca confirma nem desmente a encenação** (`cenaEncenada`/
+  `horaForjada`). Regra de ouro: *observação pura de leigo* — impressão, choque, frio,
+  cheiro, o chamado por socorro; **zero informação nova** (guia §2). Todo detalhe concreto
+  que entrar já é fato que a própria cena mostra — nunca uma dedução adiantada. Cada
+  variante passa por `perito-forense` (não vaza sinal) e `fiscal-continuidade` (não
+  contradiz as cartas).
+- **Os fatos duros continuam na carta/briefing.** Identidade da vítima (nome, idade,
+  profissão), o "nada se tocou", o "não sei datar defunto": tudo isso segue no chamado do
+  constable — o portador fair-play de sempre. O cold open **acrescenta textura e drama**, a
+  carta **carrega a informação**.
+- **O que muda:** `montarAbertura` passa de roteiro fixo a **composição por slots**. Nova
+  espinha dos passos procedurais (o tutorial mantém a sua): {descoberta: quem acha × onde ×
+  quando × o que reparou} → {o constable assume: guarda à porta} → {o chamado ao perito:
+  carta com os fatos} → {chegada: a primeira vista *desta* vila} → {briefing enxuto}. Cada
+  slot por `hashDecisao` decorrelado; poucos fragmentos por slot explodem em combinações
+  sem custo de revisão linear. Nenhum fragmento cria informação — só textura.
+- **[D1 — assinatura] resolvida:** a assinatura recorrente **deixa de ser um lugar** (a
+  pensão) e passa a ser o **método** — a maleta, a lente, o termômetro trincado, a primeira
+  página em branco da caderneta que o perito abre ao chegar. Fecha o cold open sem prendê-lo
+  a um cenário fixo (o perito é itinerante entre casos).
+- **Fair play/continuidade:** clima e estação presos a 14/out/1893 (fiscal-continuidade); o
+  descobridor, o modo do chamado e a chegada nunca antecipam fato do caso nem privilegiam o
+  culpado.
+- **Pronto quando:** 5 seeds produzem 5 aberturas textualmente distintas e coerentes, cada
+  passo com `pior ≥ 3` na telemetria (nenhum passo procedural congelado); `qa-ui.mjs` verde
+  (a abertura é texto visível e a rota clica-a); pipeline `revisar-prosa` com zero
+  bloqueantes; o tutorial (caso-escola) segue byte-idêntico.
 
 ### E2 — O corpo ganha variação dentro da precisão *(perito-forense é o portão)*
 
@@ -184,16 +206,24 @@ E5 (decorrelação+guarda)─► por último; mede e trava o que E1–E4 escreve
 Esforço relativo: Fase 0 pequeno · E1 médio · E2 médio (perito-heavy) · E3 médio-grande
 (muitas superfícies) · E4 grande (engine de diálogo) · E5 médio.
 
-## 6. Decisões abertas do usuário (não decide o agente)
+## 6. Decisões do usuário — TOMADAS em 23/07/2026 (com a telemetria à mão)
 
-- **D1 — Assinatura da abertura:** quanto da pensão/Harlan é âncora recorrente estável e
-  quanto varia (recomendação: base estável, variação do lado da vila).
-- **D2 — Teto de variantes por superfície:** com o índice da Fase 0 na mão, quantas
-  variantes por superfície valem o custo de revisão (recomendação: 3–4, priorizando slots
-  combinatórios).
-- **D3 — Slots × listas:** ratificar a preferência por combinatória de fragmentos sobre
-  profundidade de sinônimos (recomendação: slots).
-- **D4 — Bump de golden (E5):** aceitar re-gerar os 31 casos para a decorrelação.
+- **D1 — Abertura procedural:** ✅ **decidida.** A pensão da Sra. Potts fica **só no
+  tutorial**; os casos procedurais abrem com um **cold open da descoberta** (POV de quem
+  achou o corpo), e a assinatura recorrente migra do lugar para o **método** (a maleta, a
+  caderneta em branco). A ideia de mostrar o crime/o assassino foi **rejeitada** por colidir
+  com o núcleo forense: um prólogo do crime destrói a encenação (`cenaEncenada`/`horaForjada`
+  — o assassino forja a cena para enganar o perito; mostrá-la mata a dedução). Detalhe do
+  conceito e das cercas de fair-play na E1 revista (§4).
+- **D2 — Teto de variantes por superfície:** ✅ **seguir recomendação** — 3–4 variantes por
+  slot nas superfícies de banco raso (`reacao_vital`, `livores`, `cena`, `segredo`, `eco`),
+  priorizando combinatória de slots; **não** perseguir número onde o banco já é fundo
+  (`corpo`, `vizinhanca`, `dialogo:fala` — lá o trabalho é E5, sorteio).
+- **D3 — Slots × listas:** ✅ **seguir recomendação** — combinatória de fragmentos sobre
+  profundidade de sinônimos (a `vizinhanca`, feita por slots, tem teto 3828 contra 2–17 das
+  listas rasas).
+- **D4 — Bump de golden (E5):** ✅ **seguir recomendação** — aceita re-gerar os 31 casos
+  (byte novo) em troca da decorrelação.
 
 ## 7. Tamanho honesto
 
