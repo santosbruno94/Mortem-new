@@ -1790,8 +1790,15 @@ entra, e o Livro II sai dele).
 
 ### Aberto para a OS seguinte
 
-- **OS-R5** (móbeis e cartas): herda **6 cartas** de orçamento. Se não chegarem, a decisão —
-  cortar carta velha ou subir o teto — é de mesa, do utilizador.
+- **OS-R5** (móbeis e cartas): **escrita no fecho desta OS**
+  (`docs/os-r5-mobeis-e-cartas.md`, com prompt de arranque próprio). Herda **6 cartas** de
+  orçamento. Se não chegarem, a decisão — cortar carta velha ou subir o teto — é de mesa, do
+  utilizador. **E herda um achado que esta OS agravou:** o réu tem hoje **três** cartas de
+  móbil, Walter duas, Grey uma, e Agnes e Davey nenhuma — quem contar cartas de móbil acha o
+  réu sem raciocinar. O Livro II é a terceira de Silas, e entrou aqui sem que ninguém medisse
+  a coluna. A saída que a R5 recomenda não custa carta: medir a paridade por **motivos
+  distintos**, e não por cartas — Silas tem **um** motivo documentado três vezes, e Walter
+  tem **dois**.
 - **OS-R6:** `interrogatorio_silas` como localidade anómala (só Silas tem uma).
 - **OS-R8** (passe editorial): tudo o que a ata da OS-R3 deixou, mais o «ontem» da amostra
   de Silas na bíblia de vozes.

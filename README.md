@@ -88,6 +88,7 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/os-r2-cena-unica.md`](./docs/os-r2-cena-unica.md) | OS-R2 — fusão de corpo/cena/oficina na localidade `relojoaria` com sub-locais (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/os-r3-abertura.md`](./docs/os-r3-abertura.md) | OS-R3 — a abertura testemunhal, a ordem do coroner e a autoridade corrigida (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/os-r4-elenco-e-livros.md`](./docs/os-r4-elenco-e-livros.md) | OS-R4 — os dois livros do morto, a cifra, a torre de S. Miguel e o veraz sem crédito (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
+| [`docs/os-r5-mobeis-e-cartas.md`](./docs/os-r5-mobeis-e-cartas.md) | OS-R5 — os móbeis que faltam (Agnes, Davey), a agiotagem da vítima e o tell de contagem dos móbeis (**escrita, por executar**: quatro martelos abertos no §5; prompt de arranque em [`docs/os-r5-prompt-de-arranque.md`](./docs/os-r5-prompt-de-arranque.md)) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)
