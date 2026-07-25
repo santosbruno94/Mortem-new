@@ -94,6 +94,10 @@ function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
   const distanteVisivel = maquete
     ? nosDesbloqueados.some((id) => posicoesNos[id]?.distante)
     : nosDesbloqueados.includes('gabinete_pettigrew');
+  // O nó do posto policial, sob qualquer um dos dois ids em uso (OS-R2).
+  const noDoPosto = ['posto_do_guarda', 'delegacia'].find(
+    (id) => nosDesbloqueados.includes(id) && posicoesNos[id]
+  );
   const estrada = maquete ? maquete.estrada || null : ESTRADA_MOORFORD;
 
   // A tábua e o enquadramento: o caso-escola conserva os números afinados
@@ -224,10 +228,10 @@ function DioramaVila({ aoAbrirNo, aoPerderContexto }) {
         );
       })}
 
-      {/* O guarda à porta da delegacia (dia) / a lanterna do umbral (noite) */}
-      {nosDesbloqueados.includes('delegacia') && (
-        <GuardaDelegacia horasJogo={horasJogo} pos={posicoesNos.delegacia} />
-      )}
+      {/* O guarda à porta do posto (dia) / a lanterna do umbral (noite). O
+          caso-escola chama o nó `posto_do_guarda` desde a OS-R2; os casos
+          gerados continuam a chamá-lo `delegacia`. */}
+      {noDoPosto && <GuardaDelegacia horasJogo={horasJogo} pos={posicoesNos[noDoPosto]} />}
 
       {/* O pino do perito: marca o nó atual e anima o trajeto na viagem */}
       {posAtual && (

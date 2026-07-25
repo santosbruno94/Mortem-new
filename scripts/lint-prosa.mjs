@@ -491,9 +491,11 @@ function chequeVocativoRepetido(bloco, roster) {
 // Roster determinístico de nomes do caso-escola, com proveniência por fonte:
 //   • SUSPEITOS (src/data/seed.js): nome completo, primeiro nome e sobrenome;
 //   • vítima (SEED_TUTORIAL.vitima), sem o tratamento ("Sr.");
-//   • guarda: subtítulo da localidade de id `delegacia`
-//     (src/data/localidades.js), sem o posto ("Guarda"). O id é do
-//     balde T da OS-R1 e só muda na OS-R2; o posto visível já mudou.
+//   • guarda: subtítulo da localidade de id `posto_do_guarda`
+//     (src/data/localidades.js), sem o posto ("Guarda"). O id passou a
+//     este na OS-R2 — se ele mudar outra vez, esta linha vai junto, ou o
+//     roster perde o nome do guarda e o cheque de vocativo acusa falas
+//     legítimas.
 // Nomes do detetive são interpolação {detective.*} — fora do roster.
 function montarRosterDeNomes() {
   const nomes = new Set();
@@ -507,8 +509,8 @@ function montarRosterDeNomes() {
   };
   for (const s of SUSPEITOS) registrar(s.nome);
   registrar(SEED_TUTORIAL.vitima);
-  const delegacia = LOCALIDADES.find((l) => l.id === 'delegacia');
-  if (delegacia && delegacia.subtitulo) registrar(delegacia.subtitulo);
+  const posto = LOCALIDADES.find((l) => l.id === 'posto_do_guarda');
+  if (posto && posto.subtitulo) registrar(posto.subtitulo);
   // Ordem estável (o relatório é determinístico byte a byte).
   return [...nomes].sort();
 }

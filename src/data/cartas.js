@@ -18,10 +18,11 @@
 // =====================================================================
 
 export const CARTAS = [
-  // ===================== O CORPO =====================
+  // ===================== A RELOJOARIA · O CORPO =====================
   {
     id: 'ev_rigor',
-    localidade: 'corpo',
+    localidade: 'relojoaria',
+    subLocal: 'corpo',
     estados: [
       {
         ipmAte: 24,
@@ -73,7 +74,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_livores',
-    localidade: 'corpo',
+    localidade: 'relojoaria',
+    subLocal: 'corpo',
     textoDisplay: 'Manchas Arroxeadas nas Costas',
     carimboPadrao: 'Manchas fixas, sem empalidecer à pressão',
     descricao:
@@ -88,7 +90,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_ferida',
-    localidade: 'corpo',
+    localidade: 'relojoaria',
+    subLocal: 'corpo',
     textoDisplay: 'Ferida Estreita no Pescoço',
     carimboPadrao: 'Ferida funda, de boca em losango, no pescoço',
     descricao:
@@ -105,7 +108,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_reacao_vital',
-    localidade: 'corpo',
+    localidade: 'relojoaria',
+    subLocal: 'corpo',
     textoDisplay: 'Bordas Vivas na Ferida',
     carimboPadrao: 'Sangue infiltrado nas bordas da ferida',
     descricao:
@@ -121,7 +125,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_residuo_ferida',
-    localidade: 'corpo',
+    localidade: 'relojoaria',
+    subLocal: 'corpo',
     textoDisplay: 'Pó Vermelho na Ferida',
     carimboPadrao: 'Resíduo vermelho no canal da ferida',
     descricao:
@@ -136,7 +141,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_relogio_bolso',
-    localidade: 'corpo',
+    localidade: 'relojoaria',
+    subLocal: 'corpo',
     textoDisplay: 'Relógio de Bolso Parado',
     carimboPadrao: 'Relógio do morto parado às 05h05, corda no fim',
     descricao:
@@ -153,10 +159,11 @@ export const CARTAS = [
     },
   },
 
-  // ===================== A CENA DO CRIME =====================
+  // ===================== A RELOJOARIA · A CENA DO CRIME =====================
   {
     id: 'ev_relogio_lareira',
-    localidade: 'cena',
+    localidade: 'relojoaria',
+    subLocal: 'escritorio',
     textoDisplay: 'Relógio de Lareira Esmagado',
     carimboPadrao: 'Relógio Parado às 08h45',
     descricao:
@@ -171,7 +178,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_maquinismo',
-    localidade: 'cena',
+    localidade: 'relojoaria',
+    subLocal: 'escritorio',
     textoDisplay: 'Roda de Contagem das Badaladas',
     carimboPadrao: 'Roda de contagem pousada na nona batida',
     descricao:
@@ -189,7 +197,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_vitrine',
-    localidade: 'cena',
+    localidade: 'relojoaria',
+    subLocal: 'loja',
     textoDisplay: 'Balcão Revirado, Vitrine Fechada',
     carimboPadrao: 'Gavetas do balcão abertas; vitrine intacta',
     descricao:
@@ -204,7 +213,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_fechadura',
-    localidade: 'cena',
+    localidade: 'relojoaria',
+    subLocal: 'loja',
     textoDisplay: 'Fechadura dos Fundos Forçada',
     carimboPadrao: 'Marcas de alavanca no batente externo',
     descricao:
@@ -217,7 +227,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_cesta_rooke',
-    localidade: 'cena',
+    localidade: 'relojoaria',
+    subLocal: 'copa',
     textoDisplay: 'Cesta de Ceia para Dois',
     carimboPadrao: 'Cesta de vime com louça para dois',
     descricao:
@@ -232,7 +243,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_suplica_cesto',
-    localidade: 'cena',
+    localidade: 'relojoaria',
+    subLocal: 'escritorio',
     textoDisplay: 'Carta Amassada em Bola',
     carimboPadrao: 'Carta de súplica na letra de Walter Arthurs',
     descricao:
@@ -246,10 +258,11 @@ export const CARTAS = [
     },
   },
 
-  // ===================== A OFICINA =====================
+  // ===================== A RELOJOARIA · A OFICINA =====================
   {
     id: 'ev_livro_ordens',
-    localidade: 'oficina',
+    localidade: 'relojoaria',
+    subLocal: 'oficina',
     textoDisplay: 'Livro de Ordens de Serviço',
     carimboPadrao: 'Consertos reclamados na coluna de S.C.',
     descricao:
@@ -263,7 +276,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_estojo_buril',
-    localidade: 'oficina',
+    localidade: 'relojoaria',
+    subLocal: 'oficina',
     textoDisplay: 'Buril Claro no Estojo',
     carimboPadrao: 'Buril limpo entre ferramentas enceradas',
     descricao:
@@ -277,7 +291,8 @@ export const CARTAS = [
   },
   {
     id: 'ev_anel_encomenda',
-    localidade: 'oficina',
+    localidade: 'relojoaria',
+    subLocal: 'oficina',
     textoDisplay: 'Aro de Ouro por Gravar',
     carimboPadrao: 'Encomenda particular do relojoeiro',
     descricao:
@@ -290,7 +305,8 @@ export const CARTAS = [
   },
   {
     id: 'dep_habito_corda',
-    localidade: 'oficina',
+    localidade: 'relojoaria',
+    subLocal: 'oficina',
     textoDisplay: 'O Hábito da Corda',
     carimboPadrao: 'Corda ao relógio de bolso todas as noites, às 23h',
     descricao:
@@ -303,7 +319,8 @@ export const CARTAS = [
   },
   {
     id: 'alibi_davey',
-    localidade: 'oficina',
+    localidade: 'relojoaria',
+    subLocal: 'oficina',
     textoDisplay: 'A Mesma Resposta Duas Vezes',
     carimboPadrao: 'Paradeiro declarado: saiu às 19h30; em casa às 20h',
     descricao:
@@ -366,10 +383,10 @@ export const CARTAS = [
     },
   },
 
-  // ===================== A DELEGACIA =====================
+  // ===================== O POSTO DO GUARDA =====================
   {
     id: 'dep_testamento',
-    localidade: 'delegacia',
+    localidade: 'posto_do_guarda',
     textoDisplay: 'Testamento do Relojoeiro',
     carimboPadrao: 'Herdeiro Único: {suspeito:walter_arthurs.nome}',
     descricao:
@@ -384,7 +401,7 @@ export const CARTAS = [
   },
   {
     id: 'dep_dividas_walter',
-    localidade: 'delegacia',
+    localidade: 'posto_do_guarda',
     textoDisplay: 'Cartas de Cobrança',
     carimboPadrao: 'Dívidas de praça de {suspeito:walter_arthurs.nome}',
     descricao:
@@ -402,7 +419,7 @@ export const CARTAS = [
   },
   {
     id: 'dep_briga_walter',
-    localidade: 'delegacia',
+    localidade: 'posto_do_guarda',
     textoDisplay: 'Gritos Ouvidos da Rua',
     carimboPadrao: 'Altercação na loja, sexta ao anoitecer',
     descricao:
@@ -416,7 +433,7 @@ export const CARTAS = [
   },
   {
     id: 'dep_queixa_grey',
-    localidade: 'delegacia',
+    localidade: 'posto_do_guarda',
     textoDisplay: 'Queixa do Relógio Mais Leve',
     carimboPadrao: 'Queixa formal de {suspeito:caleb_grey.nome}, sexta à tarde',
     descricao:
@@ -433,7 +450,7 @@ export const CARTAS = [
   },
   {
     id: 'dep_visto_vivo',
-    localidade: 'delegacia',
+    localidade: 'posto_do_guarda',
     textoDisplay: 'Vitrine Fechada às Oito',
     carimboPadrao: 'Visto com Vida às 20h (13/out)',
     descricao:
@@ -448,7 +465,7 @@ export const CARTAS = [
   },
   {
     id: 'dep_avistamento_padeiro',
-    localidade: 'delegacia',
+    localidade: 'posto_do_guarda',
     textoDisplay: 'Luz Vista de Madrugada',
     carimboPadrao: 'Avistamento declarado: 05h15 (14/out)',
     descricao:
@@ -470,7 +487,7 @@ export const CARTAS = [
   },
   {
     id: 'dep_mulher_viela',
-    localidade: 'delegacia',
+    localidade: 'posto_do_guarda',
     textoDisplay: 'Uma Senhora na Viela',
     carimboPadrao: 'Relato: senhora deixou a viela ao anoitecer',
     descricao:

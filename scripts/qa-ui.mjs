@@ -155,8 +155,11 @@ async function novaPartida(page, perito, query = '') {
   await page.waitForSelector(`text=${perito}`, { timeout: 15000 });
   await page.click(`text=${perito}`);
   await page.waitForSelector('text=→', { timeout: 15000 });
-  // Abertura: 6 avanços até o passo 7, depois entrar (sem as perguntas).
-  for (let i = 0; i < 6; i++) {
+  // Abertura do CASO-ESCOLA: 8 avanços até o passo 9, depois entrar (sem as
+  // perguntas). Eram 6 até a OS-R3, que somou o cold open da descoberta e a
+  // ordem do coroner. A rota gerada tem contagem própria (6 passos), mais
+  // abaixo — este helper só serve ao caso-escola.
+  for (let i = 0; i < 8; i++) {
     await page.locator('button, [role=button], a').filter({ hasText: '→' }).last().click();
     await espera(page, 200);
   }
@@ -199,6 +202,22 @@ async function acionarGestos(page) {
     await espera(page, 150);
     await arquivarFicha(page);
   }
+}
+
+// OS-R2 (cena única) — andar DENTRO da relojoaria. O prédio é um nó só e a
+// planta é a navegação entre os seus sub-locais: clicar um cômodo não viaja,
+// troca de sala, e o relógio não se mexe. O alvo é o id do sub-local
+// (`corpo`, `escritorio`, `loja`, `copa`, `oficina`) — contrato de
+// src/data/planta_relojoaria.js.
+async function andarNaPlanta(page, subLocal) {
+  await page.locator(`[data-planta] [data-alvo="${subLocal}"]`).click();
+  await espera(page, 500);
+}
+
+// Anda até um sub-local do prédio já aberto e varre-o inteiro.
+async function varrerSubLocal(page, subLocal) {
+  await andarNaPlanta(page, subLocal);
+  await varrerLocalAberto(page);
 }
 
 // Viaja até um nó da mesa e extrai todos os termos em negrito do overlay.
@@ -388,7 +407,10 @@ async function main() {
     // mesma ficha; e a Caderneta, rebaixada a diário, não traz mais a descrição.
     const DESC_RIGOR = 'não cedem quando se tenta dobrá-los'; // trecho da descrição de ev_rigor
     const CARIMBO_RIGOR = 'Rígido por inteiro; extremidades começando a ceder'; // carimboPadrao de ev_rigor no estado "Corpo Endurecido" (ipmAte 24)
-    await abrirNo(page, 'O Corpo');
+    // OS-R2: o prédio é um nó só ("A Relojoaria") e abre no corpo — o
+    // primeiro sub-local que a localidade declara.
+    await abrirNo(page, 'A Relojoaria');
+    checar('OS-R2: a relojoaria abre no corpo (primeiro sub-local)', (await textoOverlay(page)).includes('O Corpo — Escritório dos Fundos'));
     await page.locator('.termo-clicavel').first().click(); // ev_rigor é o primeiro termo
     await espera(page, 300);
     checar('Fase 1: a ficha de coleta abre ao extrair (data-overlay="ficha")', (await page.locator('div.fixed[data-overlay="ficha"]').count()) >= 1);
@@ -424,8 +446,10 @@ async function main() {
     // ---- FASE 2 — A planta da relojoaria e os pontos de interesse (§5.1) ----
     // Andar entre cômodos pela planta (0h, mesmo prédio) e a coleta em
     // camadas: um ponto revela o parágrafo e os seus termos extraíveis.
-    await abrirNo(page, 'A Cena do Crime');
+    await abrirNo(page, 'A Relojoaria');
     checar('Fase 2: a planta da relojoaria aparece no nó (data-planta)', (await page.locator('[data-planta]').count()) >= 1);
+    await andarNaPlanta(page, 'escritorio');
+    checar('OS-R2: a planta leva ao escritório dos fundos', (await textoOverlay(page)).includes('A Cena — Escritório dos Fundos'));
     // Com pontos, os termos nascem escondidos: nenhum antes de abrir um ponto.
     checar('Fase 2: os pontos começam fechados (termos ocultos)', (await page.locator('.termo-clicavel').count()) === 0);
     await page.locator('.ponto-interesse', { hasText: 'A lareira' }).click();
@@ -438,10 +462,9 @@ async function main() {
     checar('Onda 4: a extração seguinte NÃO abre ficha (pousa sozinha)', (await page.locator('div.fixed[data-overlay="ficha"]').count()) === 0);
     checar('Onda 4: o aviso de pouso anuncia a carta registrada', (await page.locator('[data-aviso-pousada]').count()) >= 1);
     await arquivarFicha(page); // defensivo: não há ficha a arquivar
-    // Andar pela planta: clicar o cômodo "a oficina" viaja (0h) e abre a oficina.
-    await page.locator('[data-planta] [data-alvo="oficina"]').click();
-    await espera(page, 500);
-    checar('Fase 2: clicar um cômodo da planta viaja para o nó', (await page.locator('body').innerText()).includes('A Oficina de Consertos'));
+    // Andar pela planta: clicar o cômodo "a oficina" troca de sub-local (0h).
+    await andarNaPlanta(page, 'oficina');
+    checar('Fase 2: clicar um cômodo da planta anda no prédio', (await page.locator('body').innerText()).includes('A Oficina de Consertos'));
     checar('Fase 2: andar entre cômodos não gasta o relógio (13h00)', (await page.locator('body').innerText()).includes('13h00'));
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 2 ----
@@ -460,7 +483,10 @@ async function main() {
     checar('Onda 1: o relógio retomado não andou (13h00)', mesaRetomada.includes('13h00'));
     // ---- fim do bloco da Onda 1 ----
 
-    await visitarEExtrair(page, 'O Corpo'); // extrai os demais termos do corpo
+    // OS-R2: uma entrada no prédio, cinco cômodos varridos pela planta —
+    // corpo, escritório, loja da frente, copa e oficina —, e tudo a 0h.
+    await abrirNo(page, 'A Relojoaria');
+    await varrerSubLocal(page, 'corpo'); // extrai os demais termos do corpo
     // Onda 7: os dois micro-gestos do corpo (voltar o corpo, dar corda ao
     // relógio) foram acionados e ficaram marcados como feitos.
     checar('Onda 7: micro-gestos do corpo acionados e marcados', (await page.locator('.gesto-pericial[data-feito]').count()) === 2);
@@ -469,15 +495,18 @@ async function main() {
     await arquivarFicha(page); // defensivo: o algor pousa sozinho (Onda 4)
     // O contador de esgotamento do caso-escola: corpo esgotado = 7 de 7.
     checar('Rota 1: contador de observações da localidade (7 de 7 no corpo)', (await page.locator('body').innerText()).includes('7 de 7 observações registradas aqui'));
-    await fecharOverlay(page);
-    await visitarEExtrair(page, 'A Cena do Crime');
-    await fecharOverlay(page);
-    await visitarEExtrair(page, 'A Oficina'); // desbloqueia o Gabinete (lead do livro de ordens)
+    await varrerSubLocal(page, 'escritorio');
+    await varrerSubLocal(page, 'loja'); // a vitrine e a fechadura do beco (martelo §5: loja)
+    checar('OS-R2: a loja da frente é sala própria e rende a vitrine', (await textoOverlay(page)).includes('A Loja da Frente'));
+    await varrerSubLocal(page, 'copa');
+    await varrerSubLocal(page, 'oficina'); // desbloqueia o Gabinete (lead do livro de ordens)
     // Onda 6: Davey conversa em diálogo embutido — o hábito da corda e o
-    // álibi dele nascem das falas, não mais de um ponto de interesse.
+    // álibi dele nascem das falas, não mais de um ponto de interesse. O
+    // diálogo embutido segue o SUB-LOCAL onde a pessoa trabalha.
     await conversarEmbutido(page, 'Conversar com Davey Tull');
     // §7.2: a conversa desce (o hábito da corda e o álibi nascem das falas).
     checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
+    checar('OS-R2: o prédio inteiro se varre sem gastar o relógio (13h00)', (await page.locator('body').innerText()).includes('13h00'));
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
     // E3: o nó revelado entra a bico de pena FORA do quadro gravado, com o
@@ -488,10 +517,6 @@ async function main() {
       'E3: o carimbo diz "Acrescido <hora>"',
       /^Acrescido \d\dh\d\d$/.test((await page.locator('.carimbo-acrescido').first().innerText()).trim())
     );
-    // Etapa 1 (mapa): um local já visitado e que não é o atual recorda no
-    // rótulo que o perito esteve lá (corpo e cena, visitados antes da oficina).
-    checar('Etapa 1: o mapa marca os locais visitados', (await page.locator('body').innerText()).includes('visitado ·'));
-
     // ---- FASE 3 — Interrogatório como diálogo (§7.1) ----
     // Interrogar é escolher e confrontar: o nó abre em diálogo. A CAIXA de
     // confronto (gated) só expõe as perguntas cujas provas já estão na mesa —
@@ -511,6 +536,10 @@ async function main() {
     checar('§7.2: a conversa se encerra sem volta ao hub', (await page.locator('[data-conversa-encerrada]').count()) === 1);
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 3 ----
+    // Etapa 1 (mapa): um local já visitado e que não é o atual recorda no
+    // rótulo que o perito esteve lá (a relojoaria, deixada para trás quando
+    // o perito passou à saleta).
+    checar('Etapa 1: o mapa marca os locais visitados', (await page.locator('body').innerText()).includes('visitado ·'));
     // ---- E3 — O BEAT DA VIAGEM e o corte por toque ----
     // A primeira viagem com custo real da rota: a tacha corre a estrada
     // desenhada e a conta da hora se lê. Cortar o beat abre o local no ato
@@ -561,9 +590,14 @@ async function main() {
     checar('Canal lateral: retomar reabre a caixa de confronto no beat', (await page.locator('[data-confrontos]').count()) === 1);
     checar('Confronto gated: prova alheia possuída não abre pergunta de confronto', (await page.locator('[data-requer-carta="ev_rigor"]').count()) === 0);
     await fecharOverlay(page);
-    // Etapa 1 (mapa): o lembrete nomeia QUEM recebeu o perito — a oficina,
-    // visitada antes e agora não-atual, recorda o aprendiz Davey Tull.
-    checar('Etapa 1: o lembrete nomeia quem foi encontrado no local', (await page.locator('body').innerText()).includes('visitado · Davey Tull'));
+    // Etapa 1 (mapa): o lembrete nomeia QUEM recebeu o perito — a estalagem,
+    // visitada antes e agora não-atual, recorda Walter Arthurs.
+    // OS-R2: a relojoaria fundida não tem anfitrião único (Davey recebe na
+    // oficina, que virou sub-local), e o lembrete dela conta observações e
+    // cala o nome — divergência registrada na ata.
+    const mesaLembretes = await page.locator('body').innerText();
+    checar('Etapa 1: o lembrete nomeia quem foi encontrado no local', mesaLembretes.includes('visitado · Walter Arthurs'));
+    checar('OS-R2: o prédio sem anfitrião único conta as observações no lembrete', /visitado · \d+ observações/.test(mesaLembretes));
     // Onda 6: Agnes e Grey agora recebem em DIÁLOGO (conversão integral) —
     // as cartas (álibi, comportamento) nascem das falas, pelos assuntos.
     await interrogarEExtrair(page, 'A Loja da Sra. Rooke');
@@ -661,7 +695,10 @@ async function main() {
     console.log('\n=== ROTA 2 — Apressado (Harlan) → Erro Judiciário ===');
     await novaPartida(page, 'Harlan Blackwell');
 
-    await visitarEExtrair(page, 'A Cena do Crime');
+    // O Apressado entra no prédio e varre só a cena dos fundos — deixa o
+    // corpo para depois, que é a armadilha da rota.
+    await abrirNo(page, 'A Relojoaria');
+    await varrerSubLocal(page, 'escritorio');
     await fecharOverlay(page);
     await visitarEExtrair(page, 'O Posto do Guarda'); // o testamento desbloqueia o Gabinete
     await fecharOverlay(page);
@@ -673,7 +710,8 @@ async function main() {
     await fecharOverlay(page);
     await visitarEExtrair(page, 'A Estalagem');
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'O Corpo'); // só agora, degradado
+    await abrirNo(page, 'A Relojoaria');
+    await varrerSubLocal(page, 'corpo'); // só agora, degradado
     const corpoTexto = await page.locator('body').innerText();
     checar('Rota 2: interpolações resolvidas na prosa (sem marcador cru)', !corpoTexto.includes('{g:') && !corpoTexto.includes('{detective.'));
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
@@ -775,15 +813,13 @@ async function main() {
     checar('Rota flat: a prancha segue de pé', (await page.locator('[data-prancha]').count()) === 1);
     checar('Rota flat: "A maquete" fica desabilitada', await page.getByRole('button', { name: 'A maquete' }).isDisabled());
     checar('Rota flat: o motivo de não haver maquete é legível', (await page.locator('body').innerText()).includes('?flat=1 dispensa o 3D'));
-    // §5.1: a planta é SVG 2D — funciona idêntico em ?flat=1. Abre o corpo,
-    // confere a planta e anda para a cena por ela (0h).
-    await abrirNo(page, 'O Corpo');
+    // §5.1: a planta é SVG 2D — funciona idêntico em ?flat=1. Abre o prédio,
+    // confere a planta e anda para a cena dos fundos por ela (0h).
+    await abrirNo(page, 'A Relojoaria');
     checar('Rota flat: a planta da relojoaria aparece (SVG 2D)', (await page.locator('[data-planta]').count()) >= 1);
-    await page.locator('[data-planta] [data-alvo="cena"]').click();
-    await espera(page, 500);
-    checar('Rota flat: andar pela planta viaja para a cena', (await page.locator('body').innerText()).includes('A Cena — Escritório dos Fundos'));
-    await fecharOverlay(page);
-    await visitarEExtrair(page, 'O Corpo');
+    await andarNaPlanta(page, 'escritorio');
+    checar('Rota flat: andar pela planta chega à cena', (await page.locator('body').innerText()).includes('A Cena — Escritório dos Fundos'));
+    await varrerSubLocal(page, 'corpo');
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
     await arquivarFicha(page);

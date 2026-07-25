@@ -23,12 +23,11 @@ export const POSICOES_DIORAMA = {
   // separa na vertical da tela quem tem z diferente. O playtest de 13/07/2026
   // (achado A7) apontou o aglomerado central atropelando etiquetas — as
   // posições abaixo abriram o z entre vizinhos e afastaram a cena do corpo.
-  cena: { x: -3.5, z: -1.7, predio: 'relojoaria' },
-  corpo: { x: -4.7, z: 0.7, predio: 'relojoaria_fundos' },
-  oficina: { x: -2.7, z: 2.1, predio: 'oficina' },
+  // OS-R2: onde havia três prédios de maquete para o mesmo endereço, há um.
+  relojoaria: { x: -3.5, z: -1.7, predio: 'relojoaria' },
   interrogatorio_silas: { x: -1.2, z: -0.4, predio: 'saleta' },
   // A vila de Briarstone (espaçada para os rótulos não colidirem).
-  delegacia: { x: 0.5, z: -2.2, predio: 'civico' },
+  posto_do_guarda: { x: 0.5, z: -2.2, predio: 'civico' },
   estalagem: { x: 2.9, z: -0.2, predio: 'estalagem' },
   papelaria: { x: 0.6, z: 2.2, predio: 'papelaria' },
   moinho: { x: 4.6, z: 2.0, predio: 'moinho' },
@@ -186,24 +185,27 @@ export function interpolarLuz(horasJogo) {
 // Uma janela está acesa a esta hora? Dia claro: apagadas. Do crepúsculo em
 // diante, cada janela acende numa hora própria (entre 17h e 19h, sorteio
 // determinístico por prédio+índice). Madrugada alta (23h em diante): a vila
-// dorme — só a delegacia e a estalagem conservam luz.
+// dorme — só o posto do guarda e a estalagem conservam luz. Os dois ids do
+// posto convivem: `posto_do_guarda` é o do caso-escola desde a OS-R2, e
+// `delegacia` continua a ser o dos casos gerados.
 export function janelaAcesa(locId, indice, horasJogo) {
   const hora = ((horasJogo % 24) + 24) % 24;
   if (hora >= 7 && hora < 17) return false;
-  if (hora >= 23 || hora < 7) return locId === 'delegacia' || locId === 'estalagem';
+  if (hora >= 23 || hora < 7) return locId === 'posto_do_guarda' || locId === 'delegacia' || locId === 'estalagem';
   const acendeAs = 17 + (hashString(`janela_${locId}_${indice}`) % 120) / 60;
   return hora >= acendeAs;
 }
 
 // A chaminé fumega nas horas frias (manhã cedo e do fim da tarde em diante)
-// — só nas casas com fogo aceso de ofício ou de cozinha.
+// — só nas casas com fogo aceso de ofício ou de cozinha. `relojoaria` é o
+// prédio do caso-escola desde a OS-R2; `cena`, o dos casos gerados.
 export function chamineFumega(locId, horasJogo) {
   const hora = ((horasJogo % 24) + 24) % 24;
-  if (locId !== 'cena' && locId !== 'estalagem') return false;
+  if (locId !== 'relojoaria' && locId !== 'cena' && locId !== 'estalagem') return false;
   return hora < 9 || hora >= 17;
 }
 
-// O guarda está à porta da delegacia? Turno de dia (8h–20h); à noite a
+// O guarda está à porta do posto? Turno de dia (8h–20h); à noite a
 // porta fica com a lanterna.
 export function guardaNaPorta(horasJogo) {
   const hora = ((horasJogo % 24) + 24) % 24;

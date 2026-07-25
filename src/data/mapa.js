@@ -24,10 +24,11 @@
 // Grupos geográficos. O custo de viagem depende do grupo de origem e de
 // destino (ver CUSTO_ENTRE_GRUPOS).
 export const GRUPOS = {
-  // A relojoaria é um prédio só: o corpo e a cena no escritório dos fundos,
-  // a oficina de consertos e a saleta onde Silas recebe o perito. Andar
+  // A relojoaria é um prédio só. Desde a OS-R2 o prédio é UM nó (`relojoaria`,
+  // com sub-locais: corpo, escritório, loja, oficina, copa, porta do beco); a
+  // saleta onde Silas recebe o perito segue nó próprio, no mesmo grupo. Andar
   // entre eles não custa tempo.
-  relojoaria: 'A relojoaria — corpo, cena do crime, oficina e a saleta (mesmo prédio)',
+  relojoaria: 'A relojoaria — a loja inteira e a saleta (mesmo prédio)',
   // A vila de Briarstone: prédios diferentes, a um pulo de distância.
   vila: 'A vila de Briarstone — posto do guarda, estalagem, loja, moinho',
   // Fora da vila: caro de alcançar.
@@ -55,21 +56,12 @@ export const CUSTO_ENTRE_GRUPOS = {
 // investigação. Os demais aparecem quando um lead os revela (ver LEADS).
 export const NOS_MAPA = [
   {
-    id: 'corpo',
-    rotulo: 'O Corpo',
+    // OS-R2: um prédio, um nó. O corpo, o escritório dos fundos, a loja da
+    // frente, a copa e a oficina de consertos passaram a sub-locais — andar
+    // entre eles é a planta baixa, não o mapa.
+    id: 'relojoaria',
+    rotulo: 'A Relojoaria',
     grupo: 'relojoaria',
-    desbloqueadoInicio: true,
-  },
-  {
-    id: 'cena',
-    rotulo: 'A Cena do Crime',
-    grupo: 'relojoaria',
-    desbloqueadoInicio: true,
-  },
-  {
-    id: 'oficina',
-    rotulo: 'A Oficina',
-    grupo: 'relojoaria', // a oficina de consertos, nos fundos da loja; Davey trabalha aqui
     desbloqueadoInicio: true,
   },
   {
@@ -79,7 +71,7 @@ export const NOS_MAPA = [
     desbloqueadoInicio: true,
   },
   {
-    id: 'delegacia', // id do balde T — a OS-R2 renomeia-o
+    id: 'posto_do_guarda', // OS-R2: o id alcança o que o jogador já lê (D11 revista)
     rotulo: 'O Posto do Guarda',
     grupo: 'vila',
     desbloqueadoInicio: true,

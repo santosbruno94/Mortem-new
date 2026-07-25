@@ -162,6 +162,10 @@ export function montarPacoteTutorial() {
       horasChegada: HORAS_CHEGADA_CENA,
       ambiente: AMBIENTE_PADRAO,
       calendario: { ...CALENDARIO_PADRAO },
+      // OS-R2: o nó onde o perito põe o pé. Desde a cena única, a relojoaria
+      // inteira é um nó só — e é nele que a manhã começa. Os casos gerados
+      // não declaram o campo e continuam a chegar ao seu nó `cena`.
+      noChegada: 'relojoaria',
     },
     // Camadas visuais opcionais — o motor jamais as lê. Ausentes, o jogo
     // cai no procedural (contrato de assets, FASE 2 em diante).

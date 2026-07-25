@@ -44,6 +44,18 @@ cera correndo a estrada desenhada, e o nó revelado por lead entra **a bico de p
 carimbado com a hora em que o lead chegou. No celular a prancha é só figura e a navegação
 desce para uma régua de fichas. A maquete 3D continua inteira, a um clique no alternador.
 
+A **reforma do caso-escola** (OS-R0 a R8) corre em paralelo, uma OS de cada vez. A **OS-R1**
+acertou o vocabulário policial (o **guarda** Wycliffe, «O Posto do Guarda», o Dr. **Abbot**).
+A **OS-R2** fundiu a cena: a relojoaria Arthurs era três nós de mapa para o mesmo endereço da
+High Street e passou a ser **um nó com sub-locais** (o corpo, o escritório dos fundos, a loja
+da frente, a copa, a oficina), onde a **planta baixa deixou de ser desenho e virou a
+navegação** — andar o prédio inteiro não custa uma hora, como não custava antes. As cartas
+resolvem-se agora por `localidade` + `subLocal`; ausente o sub-local, nada muda, e os casos
+gerados seguem idênticos. A **OS-R3** refez a abertura: o jogo passa a abrir **pelos olhos
+de quem achou o corpo**, e o aparato legal ficou o de 1893 — quem ordena o exame e quem o
+paga é o **coroner**, não o guarda da vila, e a ordem dele traz a data do inquérito. O
+prazo é ficção: nenhuma regra o lê.
+
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
 
@@ -67,7 +79,9 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/kb-producao/`](./docs/kb-producao/) | Consulta de planejamento (game design de dedução, UI/estética, assets) |
 | [`docs/os-r0-mestra-reforma-hora-emprestada.md`](./docs/os-r0-mestra-reforma-hora-emprestada.md) | **Ordem-mestra** da reforma do caso-escola: 25 decisões marteladas, 12 invariantes, a sequência das oito OS e o gate global. Não se executa; governa |
 | [`docs/os-r1-vocabulario-e-postos.md`](./docs/os-r1-vocabulario-e-postos.md) | OS-R1 — vocabulário policial e nome do mestre (**fechada**; mapa em [`docs/os-r1-mapa-ocorrencias.md`](./docs/os-r1-mapa-ocorrencias.md)) |
-| [`docs/os-r2-cena-unica.md`](./docs/os-r2-cena-unica.md) | OS-R2 — fusão de corpo/cena/oficina numa localidade `relojoaria` com sub-locais (**próxima**) |
+| [`docs/os-r2-cena-unica.md`](./docs/os-r2-cena-unica.md) | OS-R2 — fusão de corpo/cena/oficina na localidade `relojoaria` com sub-locais (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
+| [`docs/os-r3-abertura.md`](./docs/os-r3-abertura.md) | OS-R3 — a abertura testemunhal, a ordem do coroner e a autoridade corrigida (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
+| [`docs/os-r4-elenco-e-livros.md`](./docs/os-r4-elenco-e-livros.md) | OS-R4 — os dois livros do morto, a cifra, a torre de S. Miguel e o veraz sem crédito (**escrita, por executar**: três martelos abertos no §5) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)

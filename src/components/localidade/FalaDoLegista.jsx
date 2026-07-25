@@ -24,7 +24,10 @@ export default function FalaDoLegista({ cartas }) {
   // Nos casos GERADOS não há mestre a ecoar (playtest de 19/07, P1): quem
   // examina é o próprio perito, sem voz de terceiro — nem aparte, nem síntese.
   if (modoDoCaso(casoId) !== 'tutorial') return null;
-  const asides = cartas.filter((c) => c.localidade === 'corpo' && c.vozMestre);
+  // As cartas do corpo: `corpo` é a localidade nos casos gerados e o
+  // SUB-LOCAL na relojoaria fundida do caso-escola (OS-R2). Um campo, duas
+  // topologias — o filtro lê o mais fino primeiro.
+  const asides = cartas.filter((c) => (c.subLocal || c.localidade) === 'corpo' && c.vozMestre);
   const primeiroComVerbete = asides.findIndex((c) => verbeteParaCarta(c.tagsOcultas));
   const { tempo, causa } = falaDoMestre(lerCorpo(cartas));
   const sintese = !modoPurista && (tempo || causa);

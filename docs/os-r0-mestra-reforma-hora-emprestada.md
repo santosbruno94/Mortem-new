@@ -138,7 +138,7 @@ o vocabulário em segundo. **Inverte-se**, por uma razão técnica:
 | 1.º | **OS-R1** — Vocabulário e nomes | escrita |
 | 2.º | **OS-R2** — Cena única | escrita |
 | 3.º | OS-R3 — Abertura (testemunhal + pensão + telegrama) | por escrever |
-| 4.º | OS-R4 — Elenco e livros (coroner, Amos, Wick, estalajadeiro; Livro I, cuvette, cifra, torre) | por escrever |
+| 4.º | OS-R4 — Elenco e livros (Amos, Wick, estalajadeiro; Livro I, cifra, Livro II, torre) | escrita |
 | 5.º | OS-R5 — Móbeis e cartas (v1 §3 e §6) | por escrever |
 | 6.º | OS-R6 — Exposição e interrogatórios (E0/E1/E2, beat 3, contaminação, alfinetadas, `apontadaPor`) | por escrever |
 | 7.º | OS-R7 — A reconstituição (revozação do `monologo.js`) | por escrever |

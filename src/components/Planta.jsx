@@ -10,8 +10,10 @@ import { useJogo } from '../store/jogo.js';
 //
 //   • MODO NÓ (caso-escola): `localidadeAtual` + `alvos` nos cômodos.
 //     Clicar um alvo VIAJA para o nó (custo 0 — mesmo prédio, regra de
-//     src/data/mapa.js) e reabre o overlay de localidade lá. É o
-//     comportamento histórico da relojoaria, inalterado.
+//     src/data/mapa.js) e reabre o overlay de localidade lá. Desde a OS-R2
+//     um alvo pode declarar também `sub`: aí o clique não muda de nó, muda
+//     de SUB-LOCAL dentro dele (a relojoaria fundida). O realce "— aqui —"
+//     compara `sub` com `subLocalAtual`; sem `sub`, com `localidadeAtual`.
 //   • MODO PONTO (caso procedural): `comodosAtivos` + `onComodoClick`. Os
 //     cômodos não são nós, e sim pontos de interesse do acordeão da mesma
 //     localidade; clicar um cômodo ABRE o ponto correspondente e o cômodo
@@ -87,28 +89,37 @@ function hitDoContorno(d) {
   return { x: Math.min(x0, x1), y: Math.min(y0, y1), w: Math.abs(x1 - x0), h: Math.abs(y1 - y0) };
 }
 
-export default function Planta({ planta, localidadeAtual, comodosAtivos, onComodoClick }) {
+export default function Planta({ planta, localidadeAtual, subLocalAtual, comodosAtivos, onComodoClick }) {
   const viajarPara = useJogo((s) => s.viajarPara);
   const abrirOverlay = useJogo((s) => s.abrirOverlay);
+  const irParaSubLocal = useJogo((s) => s.irParaSubLocal);
   if (!planta) return null;
   const P = planta;
   const modoPonto = typeof onComodoClick === 'function';
   const ativos = new Set(comodosAtivos || []);
 
+  // Um alvo está sob os pés do perito? Alvo de sub-local compara sub-local
+  // (dentro do mesmo nó); alvo de nó compara o nó.
+  const alvoAqui = (a) => (a.sub ? a.no === localidadeAtual && a.sub === subLocalAtual : a.no === localidadeAtual);
+
   // Andar de cômodo (modo nó) é a mesma viagem de custo 0 do grid/diorama:
-  // viaja e reabre a localidade de destino. Ir para onde já se está não faz
-  // nada.
-  const irPara = (no) => {
-    if (no === localidadeAtual) return;
-    viajarPara(no);
-    abrirOverlay('localidade', no);
+  // viaja e reabre a localidade de destino. Alvo com `sub` troca de
+  // sub-local (e viaja antes, se o perito estiver noutro nó — é assim que
+  // se volta da saleta para o corpo pela planta). Ir para onde já se está
+  // não faz nada.
+  const irPara = (a) => {
+    if (alvoAqui(a)) return;
+    if (a.sub) {
+      irParaSubLocal(a.no, a.sub);
+      return;
+    }
+    viajarPara(a.no);
+    abrirOverlay('localidade', a.no);
   };
 
-  // Cômodo realçado: no modo nó, o que contém o nó atual; no modo ponto,
-  // qualquer cômodo cujo ponto esteja aberto.
-  const comodoAtual = modoPonto
-    ? null
-    : P.comodos.find((c) => (c.alvos || []).some((a) => a.no === localidadeAtual));
+  // Cômodo realçado: no modo nó, o que contém o alvo sob os pés; no modo
+  // ponto, qualquer cômodo cujo ponto esteja aberto.
+  const comodoAtual = modoPonto ? null : P.comodos.find((c) => (c.alvos || []).some(alvoAqui));
 
   const rotulo = modoPonto ? 'Planta da cena — examinar cômodo a cômodo' : `${P.titulo} — andar entre cômodos`;
 
@@ -151,7 +162,7 @@ export default function Planta({ planta, localidadeAtual, comodosAtivos, onComod
             (a viagem útil é ir ao corpo); no modo nó mostram-se todos, com o
             atual marcado "aqui" (comportamento do caso-escola, intacto). */}
         {P.comodos.map((c) => {
-          const temAlvoAtual = (c.alvos || []).some((a) => a.no === localidadeAtual);
+          const temAlvoAtual = (c.alvos || []).some(alvoAqui);
           const aqui = modoPonto ? ativos.has(c.id) : temAlvoAtual || c === comodoAtual;
           const alvosViagem = modoPonto
             ? (c.alvos || []).filter((a) => a.no !== localidadeAtual)
@@ -191,22 +202,24 @@ export default function Planta({ planta, localidadeAtual, comodosAtivos, onComod
                     </g>
                   );
                 })()}
-              {/* Alvos de VIAGEM entre nós (corpo↔cena / relojoaria). */}
+              {/* Alvos de ANDAR: sub-locais do prédio (corpo, cena, loja,
+                  copa, oficina) e os nós vizinhos do mesmo grupo (a saleta).
+                  `data-alvo` é o sub-local quando há um — o QA clica por ele. */}
               {alvosViagem.map((a) => {
-                const alvoAqui = a.no === localidadeAtual;
+                const estaAqui = alvoAqui(a);
                 return (
                   <g
-                    key={a.no}
-                    data-alvo={a.no}
+                    key={a.sub || a.no}
+                    data-alvo={a.sub || a.no}
                     className="planta-alvo"
                     role="button"
                     tabIndex={0}
                     aria-label={`Ir para ${a.rotulo}`}
-                    onClick={() => irPara(a.no)}
+                    onClick={() => irPara(a)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        irPara(a.no);
+                        irPara(a);
                       }
                     }}
                   >
@@ -215,11 +228,11 @@ export default function Planta({ planta, localidadeAtual, comodosAtivos, onComod
                       x={a.pos.x}
                       y={a.pos.y}
                       textAnchor="middle"
-                      className={`planta-alvo-texto ${alvoAqui ? 'planta-alvo-texto--aqui' : ''}`}
+                      className={`planta-alvo-texto ${estaAqui ? 'planta-alvo-texto--aqui' : ''}`}
                     >
                       {a.rotulo}
                     </text>
-                    {alvoAqui && (
+                    {estaAqui && (
                       <text x={a.pos.x} y={a.pos.y + 13} textAnchor="middle" className="planta-aqui">
                         — aqui —
                       </text>
@@ -238,12 +251,12 @@ export default function Planta({ planta, localidadeAtual, comodosAtivos, onComod
       <div className="planta-regua sm:hidden">
         {(modoPonto ? P.comodos.flatMap((c) => (c.alvos || []).filter((a) => a.no !== localidadeAtual)) : P.comodos.flatMap((c) => c.alvos || [])).map(
           (a) => {
-            const alvoAqui = a.no === localidadeAtual;
+            const estaAqui = alvoAqui(a);
             return (
               <button
-                key={`alvo_${a.no}`}
-                onClick={() => irPara(a.no)}
-                className={`planta-regua-item ${alvoAqui ? 'planta-regua-item--aqui' : ''}`}
+                key={`alvo_${a.sub || a.no}`}
+                onClick={() => irPara(a)}
+                className={`planta-regua-item ${estaAqui ? 'planta-regua-item--aqui' : ''}`}
               >
                 {a.rotulo}
               </button>

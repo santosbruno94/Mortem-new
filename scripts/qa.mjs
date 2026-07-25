@@ -40,6 +40,7 @@ import { gerarEpilogo } from '../src/logic/epilogo.js';
 import { obterAparencia, derivarAparenciaDeSeed } from '../src/logic/aparencia.js';
 import { POSICOES_DIORAMA, FORMAS_PREDIO, janelaAcesa } from '../src/data/mapa_espacial.js';
 import { HOTSPOTS_CORPO } from '../src/data/hotspots_corpo.js';
+import { subLocaisDaPlanta } from '../src/data/planta_relojoaria.js';
 import {
   montarPacoteTutorial,
   carregarCaso,
@@ -147,20 +148,20 @@ function relatar(rotulo, veredicto) {
 // vergonha de Walter e Agnes. Esperado: vitoria_absoluta.
 // ============================================================
 reiniciar();
-s().viajarPara('corpo'); // 0h — corpo fresco às 11h
+s().viajarPara('relojoaria'); // 0h — corpo fresco às 11h
 s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_ferida', 'ev_reacao_vital', 'ev_residuo_ferida', 'ev_relogio_bolso'].forEach((id) =>
   s().extrairCarta(id)
 );
-s().viajarPara('cena'); // 0h — mesmo prédio
+s().viajarPara('relojoaria'); // 0h — mesmo prédio
 ['ev_relogio_lareira', 'ev_maquinismo', 'ev_vitrine', 'ev_fechadura', 'ev_cesta_rooke', 'ev_suplica_cesto'].forEach(
   (id) => s().extrairCarta(id)
 );
-s().viajarPara('oficina'); // 0h
+s().viajarPara('relojoaria'); // 0h
 ['ev_livro_ordens', 'ev_estojo_buril', 'dep_habito_corda', 'alibi_davey'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_silas'); // 0h
 ['alibi_silas', 'comp_silas', 'ev_vidro_dobra'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('delegacia'); // +1h
+s().viajarPara('posto_do_guarda'); // +1h
 ['dep_testamento', 'dep_visto_vivo', 'dep_avistamento_padeiro'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('estalagem'); // +1h
 ['alibi_walter', 'ev_registro_estalagem', 'corrob_estalajadeiro'].forEach((id) => s().extrairCarta(id));
@@ -208,15 +209,15 @@ relatar('(a) METÓDICO — esperado: vitoria_absoluta', vMetodico);
 // "mentiu, logo matou". Réu errado. Esperado: erro_judiciario.
 // ============================================================
 reiniciar();
-s().viajarPara('cena');
+s().viajarPara('relojoaria');
 ['ev_relogio_lareira', 'ev_vitrine', 'ev_fechadura', 'ev_suplica_cesto'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('delegacia'); // +1h — extrai o testamento → desbloqueia o gabinete
+s().viajarPara('posto_do_guarda'); // +1h — extrai o testamento → desbloqueia o gabinete
 ['dep_testamento', 'dep_dividas_walter', 'dep_briga_walter'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('gabinete_pettigrew'); // +1h30 atrás da isca (volta mais convencido)
 s().extrairCarta('corrob_pettigrew');
 s().viajarPara('estalagem'); // +1h30 de volta à vila
 ['alibi_walter', 'ev_registro_estalagem'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('corpo'); // +1h: só agora chega ao corpo
+s().viajarPara('relojoaria'); // +1h: só agora chega ao corpo
 console.log('\n--- Apressado: chega ao corpo às', formatRelogio(s().horasJogo), '---');
 ['ev_rigor', 'ev_livores'].forEach((id) => s().extrairCarta(id));
 s().medirTemperatura();
@@ -237,9 +238,9 @@ relatar('(b) APRESSADO — esperado: erro_judiciario', vApressado);
 // Réu certo, tese furada. Esperado: impunidade.
 // ============================================================
 reiniciar();
-s().viajarPara('corpo');
+s().viajarPara('relojoaria');
 ['ev_rigor', 'ev_livores'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('delegacia');
+s().viajarPara('posto_do_guarda');
 s().extrairCarta('dep_visto_vivo');
 s().definirReu('silas_crane');
 s().definirJanela({ inicio: -13, fim: -1 }); // cobre a verdade, mas larga
@@ -254,12 +255,12 @@ relatar('(c) INTUITIVO — esperado: impunidade', vIntuitivo);
 // Esperado: sucesso_gafes.
 // ============================================================
 reiniciar();
-s().viajarPara('corpo');
+s().viajarPara('relojoaria');
 s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_ferida', 'ev_relogio_bolso'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('cena');
+s().viajarPara('relojoaria');
 s().extrairCarta('ev_maquinismo');
-s().viajarPara('oficina');
+s().viajarPara('relojoaria');
 s().extrairCarta('ev_estojo_buril');
 s().definirReu('silas_crane');
 s().definirJanela({ inicio: -3, fim: -2 });
@@ -281,10 +282,10 @@ relatar('(d) PERICIAL DESATENTO — esperado: sucesso_gafes', vDesatento);
 // ============================================================
 reiniciar();
 useJogo.setState({ horasJogo: 52 }); // perito muito lento: IPM ~55h
-s().viajarPara('corpo');
+s().viajarPara('relojoaria');
 ['ev_rigor', 'ev_livores', 'ev_relogio_bolso'].forEach((id) => s().extrairCarta(id));
 s().medirTemperatura();
-s().viajarPara('delegacia');
+s().viajarPara('posto_do_guarda');
 s().extrairCarta('dep_visto_vivo');
 const rigorTardio = cartas('ev_rigor')[0];
 const duraveis = cartas('ev_livores', 'dep_visto_vivo', 'ev_relogio_bolso');
@@ -307,18 +308,18 @@ console.log('janela durável cobre a verdade e é finita:', cobreVerdade && jane
 // e acusa a Sra. Rooke cai em erro judiciário (réu errado).
 // ============================================================
 reiniciar();
-s().viajarPara('corpo');
+s().viajarPara('relojoaria');
 ['ev_rigor', 'ev_livores'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('delegacia');
+s().viajarPara('posto_do_guarda');
 s().extrairCarta('dep_avistamento_padeiro');
 ['ev_rigor', 'ev_livores'].forEach((id) => ligar(id, 'dep_avistamento_padeiro'));
 const refFalso = analisarLigacoes(s().acusacao, s().cartasRegistradas).refutaHora.get('dep_avistamento_padeiro');
 const testemunhoRefutavel = !!refFalso && refutacaoDeHoraEstabelecida(refFalso.alegacao, refFalso.fatos);
 
 reiniciar();
-s().viajarPara('delegacia');
+s().viajarPara('posto_do_guarda');
 s().extrairCarta('dep_mulher_viela');
-s().viajarPara('cena');
+s().viajarPara('relojoaria');
 s().extrairCarta('ev_cesta_rooke');
 s().definirReu('agnes_rooke'); // "a última com o morto" — acredita e acusa
 s().submeterAcusacao();
@@ -336,7 +337,7 @@ console.log('crente que acusa a Sra. Rooke:', vCrente.tipo);
 reiniciar();
 s().viajarPara('interrogatorio_silas');
 s().extrairCarta('ev_vidro_dobra');
-s().viajarPara('oficina');
+s().viajarPara('relojoaria');
 s().extrairCarta('ev_estojo_buril');
 s().definirReu('silas_crane');
 ligar('ev_estojo_buril', ANCORAS.presenca);
@@ -362,12 +363,12 @@ console.log('vidro sozinho falha o nexo (instrumental exigido):', soVidroFalha);
 // a encenação — o crédito exige a peça forjada (o mostrador da lareira).
 // ============================================================
 reiniciar();
-s().viajarPara('corpo');
+s().viajarPara('relojoaria');
 s().medirTemperatura();
 ['ev_rigor', 'ev_livores', 'ev_ferida', 'ev_relogio_bolso'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('oficina');
+s().viajarPara('relojoaria');
 ['ev_livro_ordens', 'ev_estojo_buril'].forEach((id) => s().extrairCarta(id));
-s().viajarPara('delegacia');
+s().viajarPara('posto_do_guarda');
 s().extrairCarta('dep_avistamento_padeiro');
 s().definirReu('silas_crane');
 s().definirJanela({ inicio: -4, fim: -1 });
@@ -851,9 +852,13 @@ const dioramaCompleto = NOS_MAPA.every((no) => {
   const pos = POSICOES_DIORAMA[no.id];
   return pos && FORMAS_PREDIO[pos.predio];
 });
+// OS-R2: `corpo` é a localidade nos casos gerados e o SUB-LOCAL da
+// relojoaria fundida no caso-escola. O lugar de uma carta é o mais fino
+// dos dois — a mesma leitura que FalaDoLegista faz na tela.
+const lugarDaCarta = (c) => c.subLocal || c.localidade;
 const hotspotsValidos =
   HOTSPOTS_CORPO.every((h) => obterDefinicaoCarta(h.cartaId)) &&
-  HOTSPOTS_CORPO.every((h) => obterDefinicaoCarta(h.cartaId).localidade === 'corpo');
+  HOTSPOTS_CORPO.every((h) => lugarDaCarta(obterDefinicaoCarta(h.cartaId)) === 'corpo');
 
 // ============================================================
 // GUARDA DOS PONTOS DE INTERESSE (§5.1): ao dividir a prosa de uma
@@ -864,7 +869,25 @@ const hotspotsValidos =
 // ============================================================
 const marcadoresDe = (paragrafos) =>
   marcadoresDosTextos(paragrafos);
-const localidadesComPontos = LOCALIDADES.filter((l) => Array.isArray(l.pontos) && l.pontos.length);
+// OS-R2: uma localidade que se dividiu guarda a prosa, os pontos e os
+// gestos nos SUB-LOCAIS. Uma CAMADA é um lugar colhível — a própria
+// localidade (chave = o seu id) ou um sub-local dela (chave = o par). Toda
+// varredura de prosa passa por aqui, para que fundir não esconda cartas.
+const camadasDe = (l) => [
+  { chave: l.id, localidadeId: l.id, subLocalId: null, fonte: l },
+  ...(l.subLocais || []).map((sl) => ({
+    chave: `${l.id}/${sl.id}`,
+    localidadeId: l.id,
+    subLocalId: sl.id,
+    fonte: sl,
+  })),
+];
+const TODAS_CAMADAS = LOCALIDADES.flatMap(camadasDe);
+const cartaNaCamada = (c, cam) =>
+  c.localidade === cam.localidadeId && (c.subLocal || null) === cam.subLocalId;
+const localidadesComPontos = TODAS_CAMADAS.filter(
+  (cam) => Array.isArray(cam.fonte.pontos) && cam.fonte.pontos.length
+);
 // Onda 6: cartas cobertas por um diálogo EMBUTIDO no lugar (origemLocalidade)
 // não são órfãs do ponto — nascem na fala (ex.: alibi_davey na conversa com
 // o aprendiz, dentro da oficina).
@@ -876,29 +899,65 @@ const idsEmDialogosEmbutidos = (locId) => {
   }
   return ids;
 };
-const cartasOrfasNosPontos = localidadesComPontos.flatMap((loc) => {
+const cartasOrfasNosPontos = localidadesComPontos.flatMap((cam) => {
+  const loc = cam.fonte;
   // Onda 7: micro-gestos também extraem — a carta de um gesto (do ponto ou
-  // da localidade) não é órfã.
+  // da camada) não é órfã.
   const idsNosPontos = new Set([
     ...marcadoresDe(loc.pontos.flatMap((p) => p.prosa)),
     ...loc.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)),
     ...(loc.gestos || []).map((g) => g.cartaId),
   ]);
-  const idsEmbutidos = idsEmDialogosEmbutidos(loc.id);
-  return CARTAS.filter((c) => c.localidade === loc.id)
+  // O diálogo embutido responde pelo lugar onde vive: a oficina é sub-local
+  // da relojoaria desde a OS-R2, e a conversa com Davey continua a nascer lá.
+  const idsEmbutidos = idsEmDialogosEmbutidos(cam.subLocalId || cam.localidadeId);
+  return CARTAS.filter((c) => cartaNaCamada(c, cam))
     .map((c) => c.id)
     .filter((id) => !idsNosPontos.has(id) && !idsEmbutidos.has(id))
-    .map((id) => `${loc.id}:${id}`);
+    .map((id) => `${cam.chave}:${id}`);
 });
-const marcadoresOrfaosNosPontos = localidadesComPontos.flatMap((loc) =>
-  [...marcadoresDe(loc.pontos.flatMap((p) => p.prosa))]
+const marcadoresOrfaosNosPontos = localidadesComPontos.flatMap((cam) =>
+  [...marcadoresDe(cam.fonte.pontos.flatMap((p) => p.prosa))]
     .filter((id) => !obterDefinicaoCarta(id))
-    .map((id) => `${loc.id}:${id}`)
+    .map((id) => `${cam.chave}:${id}`)
 );
 const pontosCobremCartas = cartasOrfasNosPontos.length === 0 && marcadoresOrfaosNosPontos.length === 0;
 if (!pontosCobremCartas) {
   console.log('\nPONTOS DE INTERESSE — cartas inalcançáveis:', cartasOrfasNosPontos.join(', ') || '—');
   console.log('PONTOS DE INTERESSE — marcadores sem carta:', marcadoresOrfaosNosPontos.join(', ') || '—');
+}
+
+// ============================================================
+// GR2-1 (OS-R2 §3) — TOPOLOGIA ALCANÇÁVEL. Depois da cena única, o par
+// (localidade, subLocal) de uma carta precisa existir de facto:
+//   a) a localidade existe e é NÓ do mapa (senão a carta fica num lugar
+//      onde o perito nunca põe o pé);
+//   b) o subLocal, quando declarado, é um dos `subLocais` dessa
+//      localidade;
+//   c) e ao contrário: todo sub-local declarado tem sala clicável na
+//      planta OU nasce sem carta (é topologia reservada, não beco).
+// É esta a asserção que a OS §4 (prova 2) manda estender ao qa.mjs.
+// ============================================================
+const idsDeNo = new Set(NOS_MAPA.map((n) => n.id));
+const cartasEmLugarInexistente = CARTAS.filter((c) => {
+  const loc = LOCALIDADES.find((l) => l.id === c.localidade);
+  if (!loc || !idsDeNo.has(c.localidade)) return true;
+  if (!c.subLocal) return false;
+  return !(loc.subLocais || []).some((sl) => sl.id === c.subLocal);
+}).map((c) => `${c.id}→${c.localidade}${c.subLocal ? '/' + c.subLocal : ''}`);
+const subLocaisClicaveis = new Set(subLocaisDaPlanta());
+const subLocaisEmBeco = LOCALIDADES.flatMap((l) =>
+  (l.subLocais || [])
+    .filter((sl) => {
+      const temCarta = CARTAS.some((c) => c.localidade === l.id && c.subLocal === sl.id);
+      return temCarta && !subLocaisClicaveis.has(sl.id);
+    })
+    .map((sl) => `${l.id}/${sl.id}`)
+);
+const topologiaAlcancavel = cartasEmLugarInexistente.length === 0 && subLocaisEmBeco.length === 0;
+if (!topologiaAlcancavel) {
+  console.log('\nGR2-1 — cartas em lugar que não existe:', cartasEmLugarInexistente.join(', ') || '—');
+  console.log('GR2-1 — sub-locais com carta e sem sala na planta:', subLocaisEmBeco.join(', ') || '—');
 }
 
 // ============================================================
@@ -1057,7 +1116,7 @@ if (!dialogosDescemESolvem) {
 // nasce da medição de temperatura.)
 // ============================================================
 const todosMarcadores = new Set([
-  ...LOCALIDADES.flatMap((l) => [
+  ...TODAS_CAMADAS.map((cam) => cam.fonte).flatMap((l) => [
     ...marcadoresDe(l.prosa || []),
     ...marcadoresDe(l.introducao || []),
     ...marcadoresDe((l.pontos || []).flatMap((p) => p.prosa)),
@@ -4058,11 +4117,15 @@ if (vaosDaFachada(FORMAS_PREDIO.oficina).length !== 1) problemasTinta.push('ofic
 if (vaosDaFachada({ ...FORMAS_PREDIO.oficina, h: 0.1 }).length !== 0) problemasTinta.push('laje: logradouro não tem fachada');
 // Determinismo do acendimento (a função é a do diorama; aqui só se confere
 // que a prancha lê a mesma coisa duas vezes seguidas e que o dia é apagado).
-for (const id of ['cena', 'estalagem', 'delegacia']) {
+// OS-R2: os ids do caso-escola (`relojoaria`, `posto_do_guarda`) ao lado dos
+// que os casos gerados continuam a usar (`cena`, `delegacia`).
+for (const id of ['relojoaria', 'cena', 'estalagem', 'posto_do_guarda', 'delegacia']) {
   if (janelaAcesa(id, 0, 13) !== false) problemasTinta.push(`${id}: janela acesa às 13h (dia claro)`);
   if (janelaAcesa(id, 0, 22) !== janelaAcesa(id, 0, 22)) problemasTinta.push(`${id}: acendimento instável`);
 }
-if (janelaAcesa('cena', 0, 2) !== false) problemasTinta.push('cena: a vila dorme às 2h — só delegacia e estalagem ficam acesas');
+if (janelaAcesa('relojoaria', 0, 2) !== false)
+  problemasTinta.push('relojoaria: a vila dorme às 2h — só o posto e a estalagem ficam acesos');
+if (janelaAcesa('posto_do_guarda', 0, 2) !== true) problemasTinta.push('posto do guarda: devia conservar luz na madrugada');
 if (janelaAcesa('estalagem', 0, 2) !== true) problemasTinta.push('estalagem: devia conservar luz na madrugada');
 const tintaDaHoraOk = problemasTinta.length === 0;
 if (!tintaDaHoraOk) {
@@ -4104,6 +4167,7 @@ const checagens = [
   ['Diorama: todo nó do mapa tem posição e forma na maquete', dioramaCompleto],
   ['Corpo 3D: todo hotspot aponta para carta real do corpo', hotspotsValidos],
   ['Pontos de interesse: nenhuma carta órfã ao dividir a prosa (§5.1)', pontosCobremCartas],
+  ['GR2-1 (cena única): toda carta resolve para localidade e sub-local que existem e se alcançam', topologiaAlcancavel],
   ['Interrogatórios em diálogo íntegros (§7.1): requerCarta/vaiPara/[[id]]/confrontos↔reacoesProva válidos, sem carta órfã', dialogosIntegros],
   ['Diálogo desce e não volta; toda descida rende a sustentação, precisão possível (§7.2)', dialogosDescemESolvem],
   ['Alcançabilidade global (Onda 6): toda carta nasce de algum [[id]]', cartasInalcancaveis.length === 0],

@@ -1,5 +1,13 @@
 # OS-R2 — Cena Única
 
+> **EXECUTADA em 25/07/2026.** Ata em `docs/historico-decisoes.md`. Duas
+> correções que a execução martelou e que o texto abaixo conserva como foi
+> escrito: o id do posto é **`posto_do_guarda`**, não `casa_condestavel`
+> (§1 é anterior à revisão da D11, que trocou `condestável` por `guarda`);
+> e a `loja` do §1 **nasce com cartas**, porque o §5 resolveu a vitrine em
+> favor dela — a linha «`loja` e `porta_beco` nascem sem cartas próprias»
+> vale hoje só para `porta_beco`.
+
 **Mestra:** OS-R0. **Decisões:** D11 (parte técnica), ponto 8 da revisão do
 utilizador. **Guardas:** G1, G4, G10, G11.
 **Pré-requisito:** OS-R1 com ata. **Não abre antes.**

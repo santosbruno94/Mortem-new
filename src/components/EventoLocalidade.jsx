@@ -38,6 +38,7 @@ export default function EventoLocalidade({ localidadeId }) {
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
   const interferenciasDisparadas = useJogo((s) => s.interferenciasDisparadas);
   const abrirOverlay = useJogo((s) => s.abrirOverlay);
+  const subLocalAtual = useJogo((s) => s.subLocalAtual);
   // Quais pontos de interesse estão abertos (revelados). Estado local de UI:
   // a coleta em camadas é escolha do jogador, não muda o motor.
   const [pontosAbertos, setPontosAbertos] = useState({});
@@ -51,14 +52,27 @@ export default function EventoLocalidade({ localidadeId }) {
   // renderizador de [[id]]/interpolação é o util compartilhado (§7.1).
   const renderParagrafo = (texto, indice) => <ParagrafoProsa key={indice} texto={texto} />;
 
-  const personagemDaCena = obterPersonagemDaLocalidade(localidade.id);
-  const ehCorpo = localidade.id === 'corpo';
+  // OS-R2 — SUB-LOCAIS. Uma localidade que se dividiu (a relojoaria do
+  // caso-escola) declara `subLocais`, e cada um carrega o que a sua antiga
+  // localidade carregava. `fonte` é o que se lê e se colhe agora: o
+  // sub-local sob os pés, ou a própria localidade quando ela não se divide.
+  // Sub-local desconhecido (save velho, id que saiu) cai no primeiro — o
+  // perito nunca fica num cômodo que não existe.
+  const subLocais = Array.isArray(localidade.subLocais) ? localidade.subLocais : [];
+  const subAtivo = subLocais.length
+    ? (subLocais.find((sl) => sl.id === subLocalAtual) || subLocais[0]).id
+    : null;
+  const fonte = subLocais.length ? subLocais.find((sl) => sl.id === subAtivo) : localidade;
+  const acoesEspeciais = fonte.acoesEspeciais || localidade.acoesEspeciais || [];
+  // Quem recebe o perito é de quem tem sala: na relojoaria, Davey na oficina.
+  const personagemDaCena = obterPersonagemDaLocalidade(subAtivo || localidade.id);
+  const ehCorpo = (subAtivo || localidade.id) === 'corpo';
   // A planta baixa (§5.1) só aparece nos nós do mesmo prédio — o grupo
   // relojoaria de src/data/mapa.js. Camada visual: lê o grupo, nunca o motor.
   const naRelojoaria = obterNo(localidade.id)?.grupo === 'relojoaria';
   // Pontos de interesse (§5.1): quando existem, a prosa se divide em pontos
   // clicáveis (acordeão); senão, a prosa monolítica de sempre.
-  const temPontos = Array.isArray(localidade.pontos) && localidade.pontos.length > 0;
+  const temPontos = Array.isArray(fonte.pontos) && fonte.pontos.length > 0;
   const alternarPonto = (id) => setPontosAbertos((s) => ({ ...s, [id]: !s[id] }));
 
   // A planta da cena procedural (§5.1 / OS Vila Viva E1): a planta gerada
@@ -114,18 +128,18 @@ export default function EventoLocalidade({ localidadeId }) {
   // omitir — a contagem é leitura dos marcadores [[id]] da prosa, não regra.
   // Os micro-gestos (Onda 7) entram na união: gesto também é observação.
   const fonteProsa = [
-    ...(temPontos ? localidade.pontos.flatMap((p) => p.prosa) : localidade.prosa || []),
+    ...(temPontos ? fonte.pontos.flatMap((p) => p.prosa) : fonte.prosa || []),
     ...paragrafosContingentes,
   ];
   const idsGestos = [
-    ...(localidade.gestos || []).map((g) => g.cartaId),
-    ...(temPontos ? localidade.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)) : []),
+    ...(fonte.gestos || []).map((g) => g.cartaId),
+    ...(temPontos ? fonte.pontos.flatMap((p) => (p.gestos || []).map((g) => g.cartaId)) : []),
   ];
   const idsExtraiveis = [
     ...new Set(
       fonteProsa
         .flatMap((p) => [...p.matchAll(/\[\[(\w+)\]\]/g)].map((m) => m[1]))
-        .concat(localidade.acoesEspeciais.includes('termometro') ? ['ev_algor'] : [])
+        .concat(acoesEspeciais.includes('termometro') ? ['ev_algor'] : [])
         .concat(idsGestos)
     ),
   ];
@@ -134,7 +148,7 @@ export default function EventoLocalidade({ localidadeId }) {
   // Diálogos embutidos neste lugar (origemLocalidade): rendem um botão de
   // conversa ao pé da prosa. Camada narrativa — o motor não participa.
   const dialogosEmbutidos = Object.entries(obterDialogos()).filter(
-    ([, d]) => d.origemLocalidade === localidade.id
+    ([, d]) => d.origemLocalidade === localidade.id || (!!subAtivo && d.origemLocalidade === subAtivo)
   );
 
   const prosaEExames = (
@@ -144,14 +158,14 @@ export default function EventoLocalidade({ localidadeId }) {
           painel; aqui o componente se cala (personagemDaCena nulo). */}
       <CenaDialogo
         personagemId={personagemDaCena}
-        localidadeId={localidade.id}
+        localidadeId={subAtivo || localidade.id}
         grupo={obterNo(localidade.id)?.grupo}
       />
       {temPontos ? (
         <div className="space-y-3">
-          {(localidade.introducao || []).map((t, i) => renderParagrafo(t, `intro_${i}`))}
+          {(fonte.introducao || []).map((t, i) => renderParagrafo(t, `intro_${i}`))}
           <div className="space-y-2">
-            {localidade.pontos.map((ponto) => {
+            {fonte.pontos.map((ponto) => {
               const aberto = !!pontosAbertos[ponto.id];
               const idsPonto = [
                 ...idsDoTexto(ponto.prosa),
@@ -187,24 +201,24 @@ export default function EventoLocalidade({ localidadeId }) {
         </div>
       ) : (
         <div className="space-y-4">
-          {localidade.prosa.map(renderParagrafo)}
+          {(fonte.prosa || []).map(renderParagrafo)}
           {paragrafosCondicionais.map((texto, i) => renderParagrafo(texto, `cond_${i}`))}
           {paragrafosContingentes.map((texto, i) => renderParagrafo(texto, `intf_${i}`))}
         </div>
       )}
       {/* Micro-gestos da localidade (Onda 7): o verbo encosta na ficção —
           voltar o corpo, dar corda — no espírito do termômetro. */}
-      {(localidade.gestos || []).length > 0 && (
+      {(fonte.gestos || []).length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
-          {localidade.gestos.map((g) => (
+          {fonte.gestos.map((g) => (
             <GestoPericial key={g.id} gesto={g} />
           ))}
         </div>
       )}
       {ehCorpo && <FalaDoLegista cartas={cartasRegistradas} />}
       {ehCorpo && <NotaFrescor ipm={ipm} />}
-      {localidade.acoesEspeciais.includes('termometro') && <TermometroCorpo />}
-      {localidade.acoesEspeciais.includes('telegrafo') && <BotaoTelegrafo />}
+      {acoesEspeciais.includes('termometro') && <TermometroCorpo />}
+      {acoesEspeciais.includes('telegrafo') && <BotaoTelegrafo />}
       {/* Diálogo embutido (Onda 6): pessoas que vivem DENTRO de um lugar
           (Walter na estalagem, Davey na oficina) conversam por um botão —
           o overlay 'dialogo' abre a árvore por cima da mesa, custo zero. */}
@@ -235,12 +249,13 @@ export default function EventoLocalidade({ localidadeId }) {
 
   return (
     <Overlay
-      titulo={interpolar(localidade.titulo, detective)}
-      subtitulo={localidade.subtitulo}
+      titulo={interpolar(fonte.titulo || localidade.titulo, detective)}
+      subtitulo={fonte.subtitulo || localidade.subtitulo}
       largura={ehCorpo ? 'max-w-5xl' : 'max-w-2xl'}
     >
-      {/* A planta baixa (§5.1): andar entre os cômodos do mesmo prédio. */}
-      {naRelojoaria && <PlantaRelojoaria localidadeAtual={localidade.id} />}
+      {/* A planta baixa (§5.1): andar entre os cômodos do mesmo prédio —
+          desde a OS-R2, entre os SUB-LOCAIS da relojoaria e a saleta. */}
+      {naRelojoaria && <PlantaRelojoaria localidadeAtual={localidade.id} subLocalAtual={subAtivo} />}
       {/* A planta da cena procedural (OS Vila Viva E1): desenha os cômodos
           do grid e liga cada um ao ponto do acordeão. Não é navegação de
           nós — é destaque do cômodo aberto. */}

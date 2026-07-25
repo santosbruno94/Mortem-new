@@ -1340,3 +1340,258 @@ mascarava.
   «Guarda» com acento e **não** admite a palavra como nome próprio (`vocativo_repetido=0`);
   e as horas, dias, idades e distâncias batem com `seed.js` e `mapa.js`.
 - **Aberto:** `cartas.js:369` (cabeçalho de seção `// A DELEGACIA`) sai com o id, na OS-R2.
+
+---
+
+## 25/07/2026 — OS-R2: Cena Única
+
+**Decisões aplicadas:** D11 (parte técnica, na redação revista de 25/07), ponto 8 da revisão
+do utilizador.
+**Guardas verificadas:** G1, G4, G10, G11, G12 · GR2-1 a GR2-6.
+**Arquivos tocados:** `src/data/localidades.js` · `src/data/cartas.js` · `src/data/mapa.js` ·
+`src/data/mapa_espacial.js` · `src/data/planta_relojoaria.js` · `src/data/pacote_caso.js` ·
+`src/data/aparencias.js` · `src/store/jogo.js` · `src/components/Planta.jsx` ·
+`src/components/PlantaRelojoaria.jsx` · `src/components/EventoLocalidade.jsx` ·
+`src/components/FundoCena.jsx` · `src/components/localidade/FalaDoLegista.jsx` ·
+`src/components/diorama/DioramaVila.jsx` · `scripts/qa.mjs` · `scripts/qa-ui.mjs` ·
+`scripts/lint-prosa.mjs`.
+**Gate:** lint-prosa nenhuma violação · qa.mjs CASO VÁLIDO · qa-ui.mjs UI VÁLIDA · build limpo.
+**Gate específico:** as três provas do §4, abaixo.
+**Divergências assumidas:** quatro, abaixo.
+**Aberto para a OS seguinte:** ao fim.
+
+### Os dois martelos do arranque
+
+**O id do posto: `posto_do_guarda`, não `casa_condestavel`.** A OS-R2 §1 fora escrita antes
+da revisão da D11, quando o policial ainda era `condestável`. Escrever hoje um id que diz
+`condestavel` seria pôr na topologia a palavra que a prosa acabara de perder. O utilizador
+martelou `posto_do_guarda`, que é o id que alcança o que o jogador lê («O Posto do Guarda»,
+guarda Lemuel Wycliffe).
+
+**A vitrine fica na `loja`** — a opção (a) do §5, recomendada pelo documento e confirmada
+pelo utilizador. **A ressalva do §5 materializou-se, e custa um clique:** para chegar a
+`ev_vitrine` o perito faz agora mesa → relojoaria → *a loja* → abrir o ponto (três cliques),
+onde antes fazia mesa → a cena → abrir o ponto (dois). Fica registado porque o §5 mandava
+reconsiderar se isso acontecesse; o martelo do utilizador manteve (a) com o custo à vista, e
+a troca é a que o documento previa: a loja da frente e o escritório revirado dos fundos
+deixaram de ser o mesmo cômodo aos olhos do jogador. O clique não é uma hora — dentro do
+prédio o relógio continua congelado, e o QA prova-o (13h00 depois de varrer os cinco cômodos).
+
+### A prova 3, e a escolha que o arranque mandava registar
+
+O prompt de arranque avisava que a prova 3 falharia como escrita, porque o cabeçalho de
+secção `// ===================== A DELEGACIA =====================` (`cartas.js:386`) nomeia
+o lugar que mudou de nome. **Não se relaxou a prova.** O cabeçalho saiu num commit à parte,
+depois de a prova correr — o que a mantém como está escrita na OS, literal:
+
+```
+git diff src/data/cartas.js | grep '^[+-]' | grep -v '^[+-][+-]' \
+  | grep -v "localidade:\|subLocal:"
+→ (vazio)   OK: só topologia
+```
+
+`41` linhas acrescidas, `24` removidas: as 24 trocas de `localidade` e as 17 linhas novas de
+`subLocal`. Nem um `texto`, nem uma `tag`, nem um `vozMestre`.
+
+**Prova 1 (contagem):** 35 cartas antes, 35 depois, e o multiconjunto de ids é idêntico —
+`diff` vazio. *(GR2-4)*
+**Prova 2 (órfãs):** a asserção de alcançabilidade entrou no `qa.mjs` como a OS mandava —
+«GR2-1 (cena única): toda carta resolve para localidade e sub-local que existem e se
+alcançam». Ela verifica os dois sentidos: nenhuma carta aponta para lugar inexistente, e
+nenhum sub-local **com carta** fica sem sala clicável na planta. *(GR2-1)*
+**Extra, não pedido mas barato:** a prosa e os gestos de `localidades.js` foram comparados
+com o estado pré-OS pelo conteúdo, não pelo diff — o conjunto ordenado de parágrafos e de
+gestos é **byte a byte idêntico**. Fundir mexeu no continente, não no conteúdo. *(GR2-3, GR2-5)*
+
+### O que o relógio disse
+
+O melhor argumento de que a fusão não mexeu no jogo: os quatro perfis do `qa.mjs` fecham em
+**17h00 · 18h00 · 14h00 · 13h00**, os mesmos minutos do estado pré-OS (medidos num worktree
+de `01d67dc`), com os mesmos quatro desfechos. Andar entre corpo, cena e oficina custava 0h
+como três nós do grupo `relojoaria`; custa 0h como três sub-locais do mesmo nó. O banco
+gerado saiu fora do diff — `sha256` de `casos_gerados.js` intacto em `b96f9caf…b05a760b2`,
+e `casos_indice.js` em `1fafae5c…b4038e29`. *(G12)*
+
+### Divergências assumidas
+
+1. **A prosa do ponto da vitrine lê-se de dentro da loja.** `pt_cena_vitrine` abre com «A loja
+   da frente fica para além do vão do escritório» — escrita para quem estava no escritório, e
+   agora lida por quem já está na loja. Corrigi-la seria escrever prosa nova, que a OS proíbe
+   (§1, fora de escopo). **Fica para o passe editorial, OS-R8.**
+2. **A relojoaria não tem anfitrião único.** `PERSONAGEM_POR_LOCALIDADE` dava a Davey Tull o
+   papel de quem recebia o perito na oficina; a oficina virou sub-local, e o prédio inteiro
+   não tem um dono de porta. O lembrete de visita do prédio conta as observações e cala o
+   nome. Dar-lhe um anfitrião seria mentir sobre um prédio de cinco cômodos — o QA passou a
+   provar as duas formas do lembrete (com nome, na estalagem; só contagem, na relojoaria).
+3. **`porta_beco` fica declarado e sem sala.** A OS §1 lista o sub-local, e ele está em
+   `localidades.js`. Não ganhou cômodo clicável na planta porque entrar nele mostraria uma
+   sala vazia, e enchê-la exigiria prosa nova. A soleira continua desenhada na planta como o
+   arco do batente. **Aberto para a OS-R8 ou para o pivô visual.**
+4. **`ev_telegrama` continua a nascer em `delegacia`.** É mecânica de caso gerado (só existe
+   com `telegrama` no pacote), e os gerados conservam o id antigo. O caso-escola não
+   telegrafa. Renomear ali partiria os gerados sem ganho.
+
+### O que mudou de contrato, e onde
+
+- **`qa-ui.mjs`:** os pontos que clicavam `O Corpo`, `A Cena do Crime` e `A Oficina` clicam
+  agora `A Relojoaria` e andam pela planta por `[data-alvo="<sub-local>"]` — `corpo`,
+  `escritorio`, `loja`, `copa`, `oficina`. O alvo `[data-alvo="cena"]` da rota flat passou a
+  `escritorio`. `O Posto do Guarda` não mudou de string (a OS-R1 já a tinha fixado).
+- **`lint-prosa.mjs:512`:** `montarRosterDeNomes()` procurava a localidade pelo id
+  `delegacia` para decapitar «Guarda» do subtítulo. Passou a `posto_do_guarda`. Era o ponto
+  que o arranque marcou como o mais fácil de esquecer; se caísse, `vocativo_repetido` passaria
+  a acusar falas legítimas — e não caiu (`vocativo_repetido=0`).
+- **`Planta.jsx`:** um alvo pode agora declarar `sub` além de `no`. Com `sub`, o clique troca
+  de sub-local (viajando antes, se o perito estiver noutro nó — é assim que se volta da saleta
+  ao corpo); sem `sub`, é a viagem entre nós de sempre. O modo ponto dos casos gerados não foi
+  tocado.
+- **`parametrosCena.noChegada`:** o nó onde o perito põe o pé passou a sair do pacote. O
+  caso-escola declara `relojoaria`; os gerados não declaram nada e continuam a chegar ao seu
+  nó `cena`, que é o default.
+
+### A fachada, conferida como o arranque pedia
+
+`letreiroDaFachada` grava `RELOJOARIA` (10 caracteres, dentro da janela 3–14) para o rótulo
+«A Relojoaria» — martelo do utilizador, escolhido também por isto. As fachadas de `CORPO`,
+`CENA` e `OFICINA` desapareceram com os nós, como o arranque previu: onde havia três prédios
+de maquete para o mesmo endereço da High Street, há um.
+
+### Aberto para a OS seguinte
+
+- **OS-R3 (abertura)** por escrever — a OS-R0 §4 manda escrevê-la contra a árvore real, que
+  esta OS acabou de mudar.
+- `interrogatorio_silas` como localidade anómala (só Silas tem uma) — **OS-R6**. Registada e
+  não tocada, como a §1 mandava.
+- A torre de S. Miguel por criar — **OS-R4**, junto com o posto de um homem só (Wycliffe *e*
+  Tobin).
+- A prosa da vitrine e a sala da `porta_beco` — **OS-R8**.
+- `guarda` × `constable` (o caso gerado continua a dizer *constable*) — **OS-R9**.
+- `FundoCena.jsx` desenha um armário de arquivo onde a prosa diz cômoda — camada de
+  apresentação.
+
+---
+
+## 25/07/2026 — OS-R3: A Abertura
+
+**Decisões aplicadas:** D12 (coroner, fora de cena), D13 (abertura testemunhal como
+molde), D21 (Bramwell Foy), D23 (Abbot), D25 (Harlan não assina uma grande).
+**Guardas verificadas:** G2, G3, G4, G8, G10, G11, G12 · GR3-1 a GR3-6.
+**Arquivos tocados:** `src/data/abertura.js` · `src/components/Abertura.jsx` ·
+`docs/biblia-de-vozes.md` · `scripts/qa-ui.mjs` · `docs/os-r3-abertura.md` (nova).
+**Gate:** lint-prosa nenhuma violação · qa.mjs CASO VÁLIDO · qa-ui.mjs UI VÁLIDA ·
+build limpo.
+**Gate específico:** pipeline `revisar-prosa` com os três revisores — **reprovou na
+primeira passada com três bloqueantes, um por revisor**; todos corrigidos, ver abaixo.
+**Divergências assumidas e aberto:** ao fim.
+
+### Os três martelos
+
+**(a) O cold open é pelos olhos de Silas Crane** — quem achou o corpo, e o réu. O
+utilizador escolheu a opção que a OS §5 classificava como a mais perigosa e a mais forte.
+A G3 passou a ser a guarda crítica, e o teste de cada gesto foi o do §3.1: se admite «este
+homem está a fingir», tem de admitir igualmente «este homem está em choque».
+
+**(b) O impresso do coroner nomeia só o Dr. Abbot.** Harlan atravessa o caso com uma
+autorização que não tem o seu nome — o que dá à ordem «NAO ASSINE NADA» o peso que ela
+nunca teve, e arma a D25.
+
+**(c) O prazo do inquérito é ficção.** Segunda-feira, 16 de outubro, às dez, no
+Wheatsheaf. Nenhuma regra o lê; os quatro perfis fecham nas mesmas horas de sempre.
+
+### O gate de prosa, que é o gate desta OS
+
+Três revisores, três bloqueantes — e cada um apanhou o seu, o que é o argumento mais
+forte a favor de correr os três em vez de um.
+
+**Bloqueante do `editor-critico` (G3).** No cold open, Silas mandava o aprendiz chamar
+Wycliffe «e que traga um homem consigo». Falha o teste das duas leituras: um homem em
+choque diz «corra, chame o guarda», não faz gestão de efetivo. A cláusula ainda *inventava*
+o homem à porta que a carta de Wycliffe depois reivindica, e caía na posição de acento do
+parágrafo — onde o craft de mistério proíbe pôr pista. Sete dos oito gestos passaram; este
+não. **Cortado.** O mesmo parecer desmentiu a contagem de frases de efeito (eram duas, não
+uma) e mostrou que a que eu julgava melhor — «um tempo que o rapaz, depois, não soube
+medir» — era o único verbo no passado de um bloco em presente e ancorava o foco em **Davey
+Tull**, isto é, na opção de POV que o utilizador não escolheu. **Cortada.**
+
+**Bloqueante do `perito-forense` (GR3-4).** O impresso citava «o Ato de 1836». O Medical
+Witnesses Act 1836 foi **revogado para Inglaterra e Gales pelo próprio Coroners Act 1887**,
+que reeditou a matéria nas s. 21 (ordem de exame) e s. 22 (honorários, mantido o teto de
+£2 2s). Em 1893, papelaria de coroner — reimpressa por causa da consolidação de 1887 — não
+cita 1836. Agravante: a minha própria OS §3.2 exigia «sob o Coroners Act 1887», e a lei não
+aparecia no arquivo. **Corrigido**, com a qualificação estatutária junto («praticante
+legalmente habilitado e inscrito»), que é justamente a que exclui Harlan e faz o papel
+dizer, sem uma linha de aula, por que o nome não pode ser o do assistente.
+
+**Bloqueante do `fiscal-continuidade` (G8).** O telegrama de Abbot afirmava «O CORONER JA
+ORDENOU O EXAME EM MEU NOME» — um documento que nenhum canal lhe entregara: a abertura só
+tinha dois canais para fora de Briarstone (o fio até o coroner e o cavalo até Caulfield), e
+nenhum alcançava Abbot, a quatro condados. **Corrigido nas duas pontas:** o telegrama passa
+a prever («HA DE ORDENAR»), que é o que um homem que conhece a máquina diria, e Wycliffe
+abre o canal que faltava — telegrafou também ao médico da lista, e foi a resposta dele que
+disse onde parava o assistente. Isso fecha de quebra o furo de por que o cavaleiro acaba na
+pensão da Sra. Potts.
+
+**Achados altos aplicados** (doze, entre os três pareceres). Os que valem nome:
+
+- **A voz da Sra. Potts.** Eu pusera na boca da senhoria as palavras do narrador («o
+  formulário», «o envelope») e apagara o «disse o rapaz» que a bíblia dá como marca dela —
+  e, sem ele, ela declarava com autoridade o remetente de um telegrama dobrado que não
+  leu. Restaurado o ouvir-dizer e o léxico dela.
+- **O verbete de Foy contradizia o texto que autoriza.** Eu prescrevera «terceira pessoa
+  de ofício» e ilustrara com primeira. O impresso está historicamente certo (o mandado do
+  coroner fala em primeira pessoa); o verbete é que estava errado, e quem escrevesse a
+  próxima peça de Foy pela letra dele escreveria contra o cânone. Corrigido na bíblia,
+  junto com a nota da lei de 1887.
+- **A batida do martelo (b) aparecia cinco vezes em cinco telas.** Reduzida ao pensamento
+  do passo da ordem, que é o único lugar onde a informação vira consequência pessoal.
+- **Autoridade residual por outra porta.** A frase que a OS-R1 acusara saíra sem resíduo,
+  mas Wycliffe voltava a consultar a lista, eleger o médico e convocá-lo. Agora quem o
+  nomeia da lista é o coroner; a Wycliffe toca lavrar a ordem no impresso e pô-la a
+  caminho, que é o ofício de *coroner's officer*.
+- **A cópia telegráfica não é a autorização.** Instrumentos de coroner eram escritos,
+  assinados e servidos pelo officer; um transcrito de balcão não traz assinatura nem é
+  título para reclamar os dois guinéus. O papel passou a dizer-se cópia, e o original vem
+  por mão do coroner — o que aumenta a tensão em vez de a gastar.
+- **A hora de abrir a loja.** O cold open punha Silas a abrir a relojoaria às nove e
+  vinte; o próprio Silas, em `dialogos.js:153`, diz que abre a loja, tira as tábuas e
+  acende o fogo da bancada, e só depois acha o corpo. O cold open contradizia o depoimento
+  do seu próprio protagonista. Reescrito para bater com ele: Silas abre à hora de sempre,
+  o Sr. Arthurs não desce, e às nove e vinte o oficial deixa a bancada e vai ao escritório.
+  Resolveu junto a contradição das tábuas da vitrine (que ficavam no vão às 9h20 e não
+  podiam estar lá às 13h, quando o perito vê o vidro com a cortina corrida por dentro).
+- **A vela e o castiçal.** A cena de Caulfield vinha de quando a abertura não tinha hora;
+  o cold open datou-a em meio da manhã de sábado, e senhoria não atravessa a casa de
+  castiçal aceso ao meio-dia. A Sra. Potts entra agora a limpar as mãos ao avental.
+
+### Divergências assumidas
+
+1. **A KB está incompleta e não foi emendada.** `kb-medicina-legal/inquerito-e-policia.md`
+   §1 imputa o poder de ordenar o exame e o honorário ao Ato de 1836 sem registar a
+   revogação/reedição pelo Coroners Act 1887. A prosa foi corrigida; a KB não, porque o
+   `CLAUDE.md` põe divergência de KB como decisão do utilizador. **A emenda está redigida
+   e à espera de martelo.**
+2. **Falta lastro de KB para o «NAO ASSINE NADA».** *Covering* — o médico registado que
+   empresta o nome a quem o não é — era conduta infame perante o General Medical Council,
+   com aviso próprio nos anos 1890. É a base histórica direta da D25 e do clímax, e não
+   está em KB nenhuma. Proposta de verbete registada, não escrita.
+3. **O glossário não tem verbete de «coroner».** A tabela de tradução da KB (§5) manda
+   grifar e glosar na primeira ocorrência. O impresso glosa-o funcionalmente («sendo meu
+   ofício inquirir dela»), o que resolve a compreensão, mas não há verbete.
+4. **O prazo do inquérito não tem consequência mecânica.** É o martelo (c), e é
+   deliberado. Fazer o relógio bater nele — o que acontece a quem chega ao Wheatsheaf de
+   mãos vazias — é mecânica nova e precisa de ordem expressa.
+
+### Aberto para a OS seguinte
+
+- **OS-R4** (elenco e livros): a torre de S. Miguel, Amos Kell, a Sra. Wick, o
+  estalajadeiro; e o posto de um homem só — Briarstone tem Wycliffe *e* Tobin.
+- **OS-R8** (passe editorial): «lavrar queixa» em `abertura.js`, ao lado do que esta OS
+  mexeu e propositadamente não tocou; a prosa do ponto da vitrine, que se lê de dentro da
+  loja desde a OS-R2; e a varredura de Davey na oficina, que contradiz o «nem uma cadeira
+  saiu do lugar» de Wycliffe agora que a oficina é sub-local do mesmo nó.
+- **OS-R9** (o gerador herda os padrões): os casos gerados ainda trazem **a mesma
+  autoridade indevida que esta OS extirpou do caso-escola** — «os que respondem pela vila
+  pagam os seus honorários» (`src/gerador/pacote_gerado.js`) — e o vocativo epistolar
+  moderno, sem subscrição. Registado e não tocado: o banco ficou fora do diff.
+- Tirar o «ontem» da amostra de Silas na bíblia de vozes (o interrogatório corre no mesmo
+  sábado; a prosa embarcada já está certa, a amostra é que não).

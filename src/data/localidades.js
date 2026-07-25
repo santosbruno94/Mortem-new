@@ -7,112 +7,164 @@
 //
 // A prosa admite interpolação {detective.campo} e a flexão de gênero
 // {g:texto no masculino|texto no feminino} (resolvida pelo pronome).
+//
+// CONTRATO DE SUB-LOCAIS (OS-R2, Fase 1). Uma carta resolve-se por
+// `localidade` + `subLocal`; `subLocal` ausente significa "raiz da
+// localidade" e continua válido para todas as localidades que não se
+// fundiram. Uma localidade que se divide declara `subLocais: [...]`, e cada
+// sub-local carrega o que a sua antiga localidade carregava (título,
+// subtítulo, ações especiais, introdução, prosa, gestos e pontos quentes);
+// cada ponto quente pertence ao sub-local em que está declarado.
 // =====================================================================
 
 export const LOCALIDADES = [
   {
-    id: 'corpo',
-    rotuloMesa: 'O Corpo',
-    titulo: 'O Corpo — Escritório dos Fundos',
+    // OS-R2 — CENA ÚNICA: `corpo`, `cena` e `oficina` eram três nós de mapa
+    // para o MESMO prédio (High Street, nº 7). Passam a ser sub-locais desta
+    // localidade; a planta baixa (src/data/planta_relojoaria.js) é a
+    // navegação entre eles, a custo zero. A saleta de Silas fica de fora,
+    // como nó próprio — anomalia registrada, aberta para a OS-R6.
+    id: 'relojoaria',
+    rotuloMesa: 'A Relojoaria',
+    titulo: 'A Relojoaria Arthurs — High Street, nº 7',
     subtitulo: 'Sr. Geoffrey Arthurs, relojoeiro, 61 anos',
-    acoesEspeciais: ['termometro'],
-    // Micro-gestos periciais (Onda 7): o input coincide com o gesto do perito
-    // — voltar o corpo e dar corda ao relógio extraem as MESMAS cartas que os
-    // antigos termos em negrito (os hotspots do corpo 3D seguem redundantes).
-    gestos: [
-      { id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'ev_livores' },
-      { id: 'gesto_corda_relogio', rotulo: 'Dar corda ao relógio do morto', cartaId: 'ev_relogio_bolso' },
-    ],
-    prosa: [
-      'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O guarda Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
-      'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. O homem de guarda espera a ordem para voltar o corpo.',
-      'Sob o ângulo esquerdo do maxilar abre-se uma [[ev_ferida]]. Afastado o colarinho, mostram-se [[ev_reacao_vital]]; à lente, no fundo do canal, [[ev_residuo_ferida]].',
-      'Na corrente do colete pende um relógio de bolso de tampa fechada, mudo. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} julgar oportuno medir a temperatura do corpo.',
-    ],
-  },
-  {
-    id: 'cena',
-    rotuloMesa: 'A Cena do Crime',
-    titulo: 'A Cena — Escritório dos Fundos da Relojoaria',
-    subtitulo: 'Briarstone, High Street, nº 7',
     acoesEspeciais: [],
-    // §5.1: a prosa monolítica se divide em pontos de interesse — coleta em
-    // camadas. A introdução ambienta sem carta; cada ponto revela as suas.
-    introducao: [
-      'O escritório dos fundos guarda o revirado da manhã em que o acharam: papéis pelo assoalho, a poltrona de couro empurrada para longe da escrivaninha. A luz de outubro entra de esguelha pela janela alta e assenta na poeira em suspensão; cheira a óleo fino de relojoeiro e à cinza fria da lareira. Num cabide atrás da porta estão pendurados um sobretudo escuro e um chapéu-coco. Sobre a repisa, um retângulo sem poeira marca o lugar onde alguma coisa esteve.',
-    ],
-    pontos: [
+    subLocais: [
       {
-        id: 'pt_cena_lareira',
-        rotulo: 'A lareira',
-        // Micro-gesto (Onda 7): contar os entalhes da roda é gesto de perito,
-        // não leitura — o botão extrai ev_maquinismo.
+        id: 'corpo',
+        rotulo: 'O Corpo',
+        titulo: 'O Corpo — Escritório dos Fundos',
+        subtitulo: 'Sr. Geoffrey Arthurs, relojoeiro, 61 anos',
+        acoesEspeciais: ['termometro'],
+        // Micro-gestos periciais (Onda 7): o input coincide com o gesto do perito
+        // — voltar o corpo e dar corda ao relógio extraem as MESMAS cartas que os
+        // antigos termos em negrito (os hotspots do corpo 3D seguem redundantes).
         gestos: [
-          { id: 'gesto_contar_entalhes', rotulo: 'Contar os entalhes da roda', cartaId: 'ev_maquinismo' },
+          { id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'ev_livores' },
+          { id: 'gesto_corda_relogio', rotulo: 'Dar corda ao relógio do morto', cartaId: 'ev_relogio_bolso' },
         ],
         prosa: [
-          'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.treatment}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo até a roda de contagem. Na repisa, um cachimbo de barro pousado de lado e a cinza por raspar na grelha.',
+          'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O guarda Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
+          'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. O homem de guarda espera a ordem para voltar o corpo.',
+          'Sob o ângulo esquerdo do maxilar abre-se uma [[ev_ferida]]. Afastado o colarinho, mostram-se [[ev_reacao_vital]]; à lente, no fundo do canal, [[ev_residuo_ferida]].',
+          'Na corrente do colete pende um relógio de bolso de tampa fechada, mudo. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} julgar oportuno medir a temperatura do corpo.',
         ],
       },
       {
-        id: 'pt_cena_escrivaninha',
-        rotulo: 'A escrivaninha',
-        prosa: [
-          'A escrivaninha está de través, uma gaveta meio puxada, o tinteiro seco e a pena atravessada no mata-borrão. Um par de óculos de aros finos repousa dobrado sobre o livro-razão aberto, ao lado de uma lupa de relojoeiro presa a um cordão. Ao pé dela, no cesto de vime, entre aparas e um sobrescrito rasgado, uma [[ev_suplica_cesto]].',
+        id: 'escritorio',
+        rotulo: 'A Cena do Crime',
+        titulo: 'A Cena — Escritório dos Fundos da Relojoaria',
+        subtitulo: 'Briarstone, High Street, nº 7',
+        acoesEspeciais: [],
+        // §5.1: a prosa monolítica se divide em pontos de interesse — coleta em
+        // camadas. A introdução ambienta sem carta; cada ponto revela as suas.
+        introducao: [
+          'O escritório dos fundos guarda o revirado da manhã em que o acharam: papéis pelo assoalho, a poltrona de couro empurrada para longe da escrivaninha. A luz de outubro entra de esguelha pela janela alta e assenta na poeira em suspensão; cheira a óleo fino de relojoeiro e à cinza fria da lareira. Num cabide atrás da porta estão pendurados um sobretudo escuro e um chapéu-coco. Sobre a repisa, um retângulo sem poeira marca o lugar onde alguma coisa esteve.',
+        ],
+        pontos: [
+          {
+            id: 'pt_cena_lareira',
+            rotulo: 'A lareira',
+            // Micro-gesto (Onda 7): contar os entalhes da roda é gesto de perito,
+            // não leitura — o botão extrai ev_maquinismo.
+            gestos: [
+              { id: 'gesto_contar_entalhes', rotulo: 'Contar os entalhes da roda', cartaId: 'ev_maquinismo' },
+            ],
+            prosa: [
+              'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.treatment}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo até a roda de contagem. Na repisa, um cachimbo de barro pousado de lado e a cinza por raspar na grelha.',
+            ],
+          },
+          {
+            id: 'pt_cena_escrivaninha',
+            rotulo: 'A escrivaninha',
+            prosa: [
+              'A escrivaninha está de través, uma gaveta meio puxada, o tinteiro seco e a pena atravessada no mata-borrão. Um par de óculos de aros finos repousa dobrado sobre o livro-razão aberto, ao lado de uma lupa de relojoeiro presa a um cordão. Ao pé dela, no cesto de vime, entre aparas e um sobrescrito rasgado, uma [[ev_suplica_cesto]].',
+            ],
+          },
         ],
       },
       {
-        id: 'pt_cena_vitrine',
-        rotulo: 'A vitrine e a porta do beco',
-        prosa: [
-          'A loja da frente fica para além do vão do escritório. Ali, contra a parede, [[ev_vitrine]]. Junto à porta acanhada que dá para o beco, na moldura do trinco, [[ev_fechadura]].',
+        // Martelo do utilizador (25/07/2026, OS-R2 §5 opção a): a vitrine é a
+        // da rua. Separá-la dos fundos torna navegável — e legível — a
+        // distância entre o que o ladrão teria levado e o que está revirado.
+        id: 'loja',
+        rotulo: 'A Loja da Frente',
+        titulo: 'A Loja da Frente — Relojoaria Arthurs',
+        subtitulo: 'Briarstone, High Street, nº 7',
+        acoesEspeciais: [],
+        pontos: [
+          {
+            id: 'pt_cena_vitrine',
+            rotulo: 'A vitrine e a porta do beco',
+            prosa: [
+              'A loja da frente fica para além do vão do escritório. Ali, contra a parede, [[ev_vitrine]]. Junto à porta acanhada que dá para o beco, na moldura do trinco, [[ev_fechadura]].',
+            ],
+          },
         ],
       },
       {
-        id: 'pt_cena_copa',
-        rotulo: 'A copa',
-        prosa: [
-          'Nos fundos, uma copa apertada: a chaleira fria no fogareiro, a pia com um resto de água parada, um pano de prato no gancho. Na bandeja estão duas xícaras: uma com o fundo de chá seco, a outra emborcada e limpa; a lata de chá aberta, a colher ainda dentro. Sobre a bancada de pedra, encostada à parede, uma [[ev_cesta_rooke]].',
+        id: 'copa',
+        rotulo: 'A Copa',
+        titulo: 'A Copa — Fundos da Relojoaria',
+        subtitulo: 'Briarstone, High Street, nº 7',
+        acoesEspeciais: [],
+        pontos: [
+          {
+            id: 'pt_cena_copa',
+            rotulo: 'A copa',
+            prosa: [
+              'Nos fundos, uma copa apertada: a chaleira fria no fogareiro, a pia com um resto de água parada, um pano de prato no gancho. Na bandeja estão duas xícaras: uma com o fundo de chá seco, a outra emborcada e limpa; a lata de chá aberta, a colher ainda dentro. Sobre a bancada de pedra, encostada à parede, uma [[ev_cesta_rooke]].',
+            ],
+          },
         ],
+      },
+      {
+        id: 'oficina',
+        rotulo: 'A Oficina',
+        titulo: 'A Oficina de Consertos',
+        subtitulo: 'Os fundos da loja; Davey Tull, aprendiz, 15 anos',
+        acoesEspeciais: [],
+        // §5.1: pontos de interesse. A intro planta de graça o relógio irmão (a
+        // roda de contagem à vista) — fair play; cada ponto revela as suas cartas.
+        introducao: [
+          'A oficina ocupa os fundos da loja: duas bancadas de tampo raspado, um torno pequeno aparafusado à ponta de uma delas, a parede coberta de ferramentas penduradas em ordem de tamanho. A limalha de latão presa ao tampo e o gume das limas penduradas guardam o brilho raso da janela alta. Junto à porta dos fundos, um cesto de vime guarda encomendas embrulhadas em papel pardo, cada uma com etiqueta de nome e vila de fora, para o carreteiro da semana. Um pêndulo comprido e rodas de mecanismo maior que os de sala esperam numa tábua à parte, ao lado de um bilhete da conserva anual do relógio da torre da paróquia. No gancho da bancada grande, o lampião de bancada está apagado. O depósito, seco; a chaminé de vidro, fumada até a boca. Na bancada menor, aberto para conserto, um relógio de lareira irmão do da cena mostra o trem das badaladas a descoberto; a cada hora que a máquina bate, a alavanca salta um entalhe da roda de contagem. Cheira a óleo e ao carvão frio do fogareiro.',
+        ],
+        pontos: [
+          {
+            id: 'pt_oficina_prateleira',
+            rotulo: 'A prateleira de gravar',
+            prosa: [
+              'A prateleira das ferramentas de gravar corre sobre a bancada menor: buris de vários feitios, dois punções de letra, um vidro tampado de pó de polir. Ao canto, um frasco de óleo fino pela metade, a rolha ao lado e um pano de linho manchado de dedadas. No meio deles, de tampa fechada, o [[ev_estojo_buril]].',
+            ],
+          },
+          {
+            id: 'pt_oficina_pulpito',
+            rotulo: 'O púlpito de ordens',
+            prosa: [
+              'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. No prego, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
+            ],
+          },
+          {
+            id: 'pt_oficina_gaveta',
+            rotulo: 'A gaveta funda',
+            prosa: [
+              'Sob a bancada grande corre uma fileira de gavetas; a mais funda range ao abrir e cheira a metal e a graxa velha. Dentro, sob um retalho de camurça, junto a molas soltas e a um envelope de peças, um [[ev_anel_encomenda]].',
+            ],
+          },
+        ],
+        // Onda 6: Davey conversa em diálogo próprio (dialogo_davey, botão ao pé
+        // da prosa) — o hábito da corda e o álibi dele nascem lá, não num ponto.
+      },
+      {
+        // Declarado pela OS-R2 §1, sem cartas próprias e sem sala clicável na
+        // planta: a soleira do beco existe para a topologia e para o pivô
+        // visual. Dar-lhe sala exigiria prosa nova, que esta OS proíbe —
+        // registrado na ata como aberto para o passe editorial (OS-R8).
+        id: 'porta_beco',
+        rotulo: 'A Porta do Beco',
+        acoesEspeciais: [],
       },
     ],
-  },
-  {
-    id: 'oficina',
-    rotuloMesa: 'A Oficina',
-    titulo: 'A Oficina de Consertos',
-    subtitulo: 'Os fundos da loja; Davey Tull, aprendiz, 15 anos',
-    acoesEspeciais: [],
-    // §5.1: pontos de interesse. A intro planta de graça o relógio irmão (a
-    // roda de contagem à vista) — fair play; cada ponto revela as suas cartas.
-    introducao: [
-      'A oficina ocupa os fundos da loja: duas bancadas de tampo raspado, um torno pequeno aparafusado à ponta de uma delas, a parede coberta de ferramentas penduradas em ordem de tamanho. A limalha de latão presa ao tampo e o gume das limas penduradas guardam o brilho raso da janela alta. Junto à porta dos fundos, um cesto de vime guarda encomendas embrulhadas em papel pardo, cada uma com etiqueta de nome e vila de fora, para o carreteiro da semana. Um pêndulo comprido e rodas de mecanismo maior que os de sala esperam numa tábua à parte, ao lado de um bilhete da conserva anual do relógio da torre da paróquia. No gancho da bancada grande, o lampião de bancada está apagado. O depósito, seco; a chaminé de vidro, fumada até a boca. Na bancada menor, aberto para conserto, um relógio de lareira irmão do da cena mostra o trem das badaladas a descoberto; a cada hora que a máquina bate, a alavanca salta um entalhe da roda de contagem. Cheira a óleo e ao carvão frio do fogareiro.',
-    ],
-    pontos: [
-      {
-        id: 'pt_oficina_prateleira',
-        rotulo: 'A prateleira de gravar',
-        prosa: [
-          'A prateleira das ferramentas de gravar corre sobre a bancada menor: buris de vários feitios, dois punções de letra, um vidro tampado de pó de polir. Ao canto, um frasco de óleo fino pela metade, a rolha ao lado e um pano de linho manchado de dedadas. No meio deles, de tampa fechada, o [[ev_estojo_buril]].',
-        ],
-      },
-      {
-        id: 'pt_oficina_pulpito',
-        rotulo: 'O púlpito de ordens',
-        prosa: [
-          'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. No prego, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
-        ],
-      },
-      {
-        id: 'pt_oficina_gaveta',
-        rotulo: 'A gaveta funda',
-        prosa: [
-          'Sob a bancada grande corre uma fileira de gavetas; a mais funda range ao abrir e cheira a metal e a graxa velha. Dentro, sob um retalho de camurça, junto a molas soltas e a um envelope de peças, um [[ev_anel_encomenda]].',
-        ],
-      },
-    ],
-    // Onda 6: Davey conversa em diálogo próprio (dialogo_davey, botão ao pé
-    // da prosa) — o hábito da corda e o álibi dele nascem lá, não num ponto.
   },
   {
     id: 'interrogatorio_silas',
@@ -125,9 +177,10 @@ export const LOCALIDADES = [
     // Escrivaninha abre InterrogatorioDialogo quando há árvore para o nó.
   },
   {
-    // OS-R1: o id fica `delegacia` até a OS-R2 renomeá-lo (matriz de
-    // colisão da OS-R0 §5). Aqui muda-se só o que o jogador lê.
-    id: 'delegacia',
+    // OS-R2: o id herdado da OS-R1 muda aqui. A D11 revista chama o policial
+    // de `guarda` e o lugar de «O Posto do Guarda» — `posto_do_guarda` é o id
+    // que deixa de contradizer o que o jogador lê (martelo de 25/07/2026).
+    id: 'posto_do_guarda',
     rotuloMesa: 'O Posto do Guarda',
     titulo: 'O Posto do Guarda — A Sala da Frente',
     subtitulo: 'Guarda Lemuel Wycliffe',
