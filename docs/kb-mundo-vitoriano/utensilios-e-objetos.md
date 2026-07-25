@@ -197,6 +197,51 @@ de classe**.
   patrão, na **corrente Albert** com barra em T e berloques/sinete. **Número de série
   + hallmark datado = o objeto mais rastreável da época; relógio parado no impacto =
   hora "dada" que pode ter sido forjada.** *Sovereign case* no colete do comerciante.
+- **O relógio de bolso POR DENTRO** (o que se abre e o que se grava). A caixa é de
+  três feitios: **caçador** (*hunter*, tampa inteira sobre o mostrador), **meio-caçador**
+  (tampa com janela e as horas gravadas em volta) e **mostrador aberto** (*open-face*).
+  Dentro dela há duas peças que se confundem e **não são a mesma**:
+  - **A cuvette** — *dome*, para o ofício inglês: a **tampa interna da caixa**, entre o
+    fundo e a máquina, articulada na mesma charneira e aberta **com a unha**, num entalhe
+    da borda oposta. É a superfície de legenda por excelência. Não tem incompatibilidade
+    nenhuma com a caixa de caçador: nesta, abre-se a tampa da frente para ver a hora e a
+    de trás para achar a cuvette.
+  - **O guarda-pó** — *dust cap*: a **calota que assenta sobre o maquinismo**, não sobre
+    a caixa. É peça do relógio inglês de platina inteira e corda a chave, em recuo nos
+    anos 1890.
+  **O que se grava na cuvette:** nome do fabricante ou do retalhista e a praça, número de
+  série, contagem de rubis (*15 RUBIS*), o feitio do escape e da espiral (*ANCRE LIGNE
+  DROITE*, *SPIRAL BREGUET*), medalhas de exposição, a palavra *chronometer*. **Uma
+  inscrição particular no meio das legendas de fábrica é plausível — e passa por mais
+  jargão de relojoaria aos olhos de um leigo.** Cabe folga: a cuvette de um relógio de
+  cavalheiro tem 38–42 mm de campo, e uma legenda de trinta e poucos caracteres entra numa
+  linha (as de fábrica correm em três a seis linhas, em arco).
+  **Metal e marca:** o ensaio inglês trata o *dome* como parte da caixa — mesmo metal,
+  contraste próprio; suíços e franceses não, e usam **latão dourado**. Um relógio de caixa
+  boa com cuvette de metal dourado e legendas francesas é, portanto, **suíço** — e a
+  distinção é gratuita para quem escreve.
+  **Quem grava, e o que se vê:** o gravador de caixas trabalha a **buril** (com o
+  cheio-e-fino da haste rodada) ou a **punção de letra** (letras idênticas, com rebarba
+  levantada). O pantógrafo já existe em 1893, mas é coisa de fábrica; em oficina de
+  província grava-se à mão. **Corte fresco brilha contra a pátina**: sulco antigo vem
+  carregado de escuro, e essa diferença vê-se a olho — é o que permite dizer que uma linha
+  foi cortada depois das outras, sem uma palavra de ciência que a época não tenha. (E é só
+  isso: ligar duas marcas ao **mesmo** buril é anacronismo — ver
+  `docs/kb-medicina-legal/vestigios.md`, "Marcas de ferramenta".)
+  **Vocabulário:** o ofício inglês diz *dome* / *dust cover*; a palavra **cuvette** é
+  francesa e suíça, e um aprendiz de vila só a saberia se o patrão lha tivesse ensinado.
+  Em português de época, **tampa de dentro** para a prosa leiga; *cuvette* fica para o
+  Glossário e para a boca do mestre. **"Cubeta" é falso amigo** (vaso de laboratório).
+- **Balança de fiel do ourives** (*gold scales*): braços iguais e pratos suspensos, sob
+  redoma de vidro ou em caixa de mogno, com o jogo de pesos de latão em caixinha forrada.
+  Instrumento barato e universal em loja de relojoeiro-ourives, sensível ao grão. A unidade
+  do ofício é **troy**: 24 grãos = 1 *pennyweight*, 20 *pennyweights* = 1 onça troy.
+  *Cautela de tradução: não verter* pennyweight *na prosa (o par "dinheiro-peso" soa a
+  arcaísmo falso) — ou não se nomeia a unidade, ou se diz "grãos".*
+  **Por que importa numa oficina:** pesar o ouro **à entrada e à saída** de cada serviço,
+  com a coluna do executor rubricada, é o controle clássico contra a subtração de material
+  e o desvio de *lemel* (a limalha) — matéria dos manuais de ofício contemporâneos. Uma
+  oficina que conserta ouro **tem** balança; um livro que registra pesagens pressupõe uma.
 - **Moedas de 1893:** bronze (¼d, ½d, 1d), prata (3d, 6d, 1s, florim 2s, half-crown
   2s6d, coroa 5s), ouro (meio-soberano 10s, soberano £1).
 - **Bengala com estoque (*sword cane*):** legal e corrente no cavalheiro — mas os
@@ -246,6 +291,9 @@ de classe**.
 - Victorian Web — *Canning* (abridor em toda cozinha média nos 1870s); *Mourning stationery*. https://victorianweb.org/technology/domestic/canning.html ; Canned Food UK — *History of food cans*. https://www.cannedfood.co.uk/history-of-food-cans/
 - Máquina de facas Kent: Science Museum Group. https://collection.sciencemuseumgroup.org.uk/objects/co48736/ ; Future Museum — *The family knife cleaner*. https://www.futuremuseum.co.uk/collections/life-work/social-history/home-life/housekeeping/the-family-knife-cleaner ; Mincer Spong: Grace's Guide. https://www.gracesguide.co.uk/Spong_and_Co ; Felbridge Society. https://www.felbridge.org.uk/index.php/publications/james-osborn-spong-founder-spong-co/
 - Wikipedia — *Willow pattern*; *Brown Betty (teapot)*; *Penny Lilac*; *Vesta case* (isqueiro só 1926); *Kerosene lamp*; *Woodbine (cigarette)*; *Florence Maybrick*; *Pharmacy Act 1868*; *Birmingham pen trade*; *Dip pen*; *Swordstick*; *Posser*; *Reckitt & Sons* (Zebra 1890); *Beecham's Pills*. https://en.wikipedia.org/wiki/Willow_pattern
+- Relógio por dentro: Vintage Watchstraps — *Watch Cases* (cuvette = *dome* para o ofício inglês; hunter/half-hunter/open-face; o ensaio inglês trata o dome como parte da caixa). https://www.vintagewatchstraps.com/watchcases.php ; Pieces of Time — *Horological Terms* (cuvette, dome, dust cover). https://antique-watch.com/horological-terms/ ; BADA — *Silver English Full Plate Duplex Pocket Watch* (o *gilt dust cover* do lever inglês de platina inteira). https://www.bada.org/object/silver-english-full-plate-duplex-pocket-watch
+- Gravura de cuvette e pantógrafo em 1893: CircuitousRoot — *Leschot Pantographs, Vacheron & Constantin*. https://circuitousroot.com/artifice/letters/pantocut/leschot/index.html ; Instituto Português de Relojoaria — *Guilloché*. https://www.institutoportuguesderelojoaria.pt/en/post/guilloche
+- Balança de fiel e controle do ouro em oficina: George E. Gee, *The Jeweller's Assistant in the Art of Working in Gold* (1892), "for masters and workmen" — pesagem de entrada e saída e o desvio de *lemel*. https://catalog.hathitrust.org/Record/102463716
 - Prata e EPNS: Antique Silver Hallmarks — *EPNS marks*. https://antiquesilverhallmarks.com/blog/silver-plated-marks-epns/ ; Antiques Trade Gazette — *Hallmarks* (duty mark 1784–1890). https://www.antiquestradegazette.com/guides/information-guides/hallmarks ; Mozeris — *How to read silver hallmarks*; *History of Albert chains*. https://www.mozerisfineantiques.com/how-to-read-silver-hallmarks
 - The Pewter Society — *Pewter drinking vessels* (canecas de pub seguem de estanho); *Timeline* (Britannia metal, EPBM). https://pewtersociety.org/about-pewter/pewter-drinking
 - Tea caddy com fechadura: Atlas Obscura. https://www.atlasobscura.com/articles/collectible-tea-caddies ; Colne Stour — *Tea caddies*. https://colnestour.org/magazine_article/tea-tea-caddy-brief-study-early-history-tea-containers/

@@ -24,6 +24,34 @@ no laboratório de Lyon a partir de 1910. Portanto: o perito de MORTEM **age** s
 princípio (compara fibras, procura transferências), mas **não o cita pelo nome** nem invoca
 uma "lei" que ainda não existe. É prática sem doutrina — e o jogo deve tratá-la assim.
 
+## Marcas de ferramenta — a mesma honestidade cronológica
+
+Que uma ferramenta deixe marca à sua feição é observação antiga, e o perito de 1893 trabalha
+com ela sem cerimônia: a alavanca no batente diz a **largura do gume** que a forçou; a boca de
+uma ferida diz a **secção da haste** que entrou — quatro faces, três faces, lâmina de um só
+gume; o entalhe na madeira separa pé-de-cabra de formão. Isso é leitura de **gênero**, e é
+legítima.
+
+O que **não existe em 1893** é a leitura do **exemplar**: dizer que *aquele* buril, e nenhum
+outro do mesmo feitio, cortou *aquela* marca. A comparação de estrias — o rasto microscópico
+e individual que o fio de uma ferramenta arrasta — é ciência do século XX, da linhagem que
+Waite e Goddard levantam nos anos 1920 e que só se firma com o microscópio de comparação. Um
+perito de vila em 1893 não tem o instrumento, não tem a doutrina, e não tem tribunal que a
+receba.
+
+**A regra é a mesma da fibra:** a lente estabelece **classe, não indivíduo**. E vale a mesma
+exceção, e só ela — o **encaixe físico**. Uma ponta de aço partida, achada na ferida, que
+case com o gume partido da ferramenta apreendida, individualiza: não por estria, mas porque
+duas fraturas irregulares só encaixam uma na outra. É o princípio que já casa duas pontas de
+corda (ver abaixo, "O que a análise de 1893 alcançava").
+
+**A armadilha de prosa, e é a mais fácil de pisar.** Quando o instrumento do crime e outro
+objeto do caso são da mesma família — dois buris de gravador, duas facas de mesa, dois
+martelos de bancada —, a tentação é escrever que *é o mesmo*. Nem o narrador, nem a
+`vozMestre`, nem personagem de ofício o podem dizer. Diga-se que a marca é **de buril**;
+jamais que é **daquele** buril. Quem quiser ligar os dois no jogo liga por outra ordem de
+prova — posse, oportunidade, o vestígio que viaja —, nunca pela marca.
+
 ## Fibras têxteis e de cordoaria à lente
 
 O núcleo da análise de vestígios da época. Sob a lente simples, quatro fibras correntes
@@ -79,6 +107,9 @@ fibra fala do instrumento; a fibra repetida fala do contato entre o instrumento 
 **Não alcançava:**
 - Dizer que a fibra veio **daquela** peça e de nenhuma outra igual: têxteis são fabricados aos
   milhares. A lente estabelece **classe**, não **indivíduo** (salvo o encaixe físico de pontas).
+- Dizer que **aquela** ferramenta, e nenhuma outra do mesmo feitio, fez a marca: a comparação
+  de estrias é dos anos 1920 em diante. Lê-se o **gênero** do instrumento, nunca o exemplar
+  (ver a seção própria, acima) — salvo, outra vez, o encaixe físico de uma ponta partida.
 - Dizer de **quem** é um cabelo ou uma fibra. Sem individualização biológica.
 - Distinguir sangue **humano** de animal: a prova de precipitina é de Uhlenhuth, **1901** —
   posterior a 1893.
@@ -166,6 +197,14 @@ da nota sobre Locard (acima) e sobre Hans Gross em `fontes.md`: prática sem dou
 - **A honestidade cronológica é jogável.** A prosa e a `vozMestre` podem comparar fibras à
   lente, mas não devem invocar "o princípio de Locard", grupos sanguíneos, sangue humano-versus-
   animal ou impressão digital como técnicas correntes: nada disso está ao alcance de 1893.
+- **O caso-escola tem a armadilha de marca de ferramenta armada e engatilhada.** Em "A Hora
+  Emprestada" a arma é um **buril de gravador** (`ev_residuo_ferida`, `ev_estojo_buril`) e a
+  cifra do morto está **gravada a buril** por dentro do relógio de bolso (`ev_cuvette`, OS-R4).
+  São duas marcas da mesma família de ferramenta no mesmo caso, e a primeira frase que as
+  aproximar («o mesmo buril», «a mesma mão», «casa com a lesão») comete o anacronismo. O que a
+  carta da cifra pode dizer, e diz, é outra coisa e é observação pura: **os sulcos frescos
+  brilham contra a pátina dos antigos** — logo aquela linha foi cortada depois das outras. Isso
+  é só olhar, e 1893 o tem.
 - **Observação pura.** Conforme o guia de estilo, a carta descreve o vestígio (o filamento, a
   torção, a cor) e cala a conclusão; ligar a fibra ao suspeito é raciocínio do jogador, não fala
   do narrador.

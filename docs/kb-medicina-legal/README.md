@@ -13,10 +13,10 @@ o perito sabe; o que veio depois, ele ignora.
 | [`asfixias.md`](./asfixias.md) | A família das asfixias e a distinção das espécies pelo sinal de assinatura. |
 | [`venenos.md`](./venenos.md) | Toxicologia de época: cianeto, arsênico, estricnina, ópio; testes de Marsh e de Prússia. |
 | [`traumas.md`](./traumas.md) | Trauma contuso, arma branca, arma de fogo; reação vital; lesões de defesa. |
-| [`vestigios.md`](./vestigios.md) | Fibras à lente, transferência, cadeia pessoa↔instrumento↔lugar e seus limites. |
+| [`vestigios.md`](./vestigios.md) | Fibras à lente, transferência, **marcas de ferramenta** (gênero, nunca exemplar), cadeia pessoa↔instrumento↔lugar e seus limites. |
 | [`protocolo-exame.md`](./protocolo-exame.md) | A ordem, os instrumentos e os gestos do exame; leitura de encenação; o que 1893 não alcançava. |
 | [`encenacao.md`](./encenacao.md) | A cena arranjada para mentir: os eixos da encenação (causa, autoria, tempo, lugar) e o sinal que trai cada um. |
-| [`supressao-de-vestigios.md`](./supressao-de-vestigios.md) | A cena limpa: reagentes de mancha (guaiaco, Teichmann, Sorby, azul da Prússia), o que a lavagem não remove, a supressão inocente. |
+| [`supressao-de-vestigios.md`](./supressao-de-vestigios.md) | A cena limpa: reagentes de mancha (guaiaco, Teichmann, Sorby, azul da Prússia), o que a lavagem não remove, o que a lareira não destrói (**roupas e documentos queimados**), a supressão inocente. |
 | [`inquerito-e-policia.md`](./inquerito-e-policia.md) | O aparato legal: coroner e inquérito (Coroners Act 1887), polícia de vila, murder × manslaughter, cena sem cadeia de custódia. |
 | [`vocabulario-de-epoca.md`](./vocabulario-de-epoca.md) | Termos técnicos e material/mundo de 1893; anacronismos proibidos. |
 | [`fontes.md`](./fontes.md) | Taylor, Casper, Lacassagne; datas dos marcos técnicos (o que existe e o que não). |

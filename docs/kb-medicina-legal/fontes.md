@@ -59,6 +59,8 @@ conhecê-lo.
 | Precipitina (sangue humano, Uhlenhuth) | 1901 | **Não** |
 | Criminalística sistemática (Gross, *Handbuch*) | 1893 | **Sim** — contemporâneo; exame do agressor e do vestígio |
 | Leitura formal de padrões de mancha de sangue (Piotrowski) | 1895 | **Não** — a trilha lê-se só por senso comum em 1893 |
+| Identificação de ferramenta por estrias (linhagem Waite/Goddard; microscópio de comparação) | anos 1920 | **Não** — lê-se o **gênero** do instrumento, nunca o exemplar; ver `vestigios.md` |
+| Decifração de documento carbonizado (fotografia de imagem latente, *Nature*) | 1941 | **Não** — a luz rasante dá geometria de pauta, nunca uma sílaba; ver `supressao-de-vestigios.md` |
 
 ## Bastidores modernos (fora do horizonte de 1893 — só para o gerador)
 

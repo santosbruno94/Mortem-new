@@ -1797,13 +1797,69 @@ entra, e o Livro II sai dele).
   de Silas na bíblia de vozes.
 - **OS-R9** (o gerador herda os padrões): idem, mais o **arquétipo do veraz sem crédito**,
   que agora tem marca de tag e guarda de motor — o gerador pode passar a produzi-lo.
-- **Propostas de KB do `perito-forense`, à espera de martelo do utilizador** (nenhuma
-  aplicada, na regra do `CLAUDE.md`): (i) dossiê «O documento queimado» em
-  `supressao-de-vestigios.md`, irmão do que já existe sobre roupas queimadas; (ii) **nota de
-  honestidade cronológica sobre marcas de ferramenta** em `vestigios.md` — a comparação de
-  estrias é do século XX, e em 1893 lê-se o gênero do instrumento, nunca o exemplar (é o
-  guarda-corpo que protege toda a prosa futura deste caso, e o próprio perito o marcou como
-  o ponto onde a prosa escorrega sozinha); (iii) verbete de **relógio de bolso por dentro**
-  (cuvette/dome × dust cap, o que se grava, vocabulário PT/EN) e da **balança de fiel** com
-  as unidades troy, em `utensilios-e-objetos.md`; (iv) «cubeta» na lista de falsos amigos de
-  `vocabulario-de-epoca.md`.
+- **Propostas de KB do `perito-forense`: as quatro foram marteladas e aplicadas** (ordem do
+  utilizador, 25/07/2026, logo após o fecho da OS). Ver a ata própria, abaixo.
+
+---
+
+## 25/07/2026 — Lote de KB: o que a OS-R4 passou a exigir da base
+
+**Ordem do utilizador** no fecho da OS-R4, sobre as quatro propostas do `perito-forense`.
+Não é OS: é lastro. Nenhuma linha de código foi tocada, nenhuma prosa embarcada mudou.
+
+**Por que agora, e não «quando der».** A prosa da R4 passou a depender de três domínios em
+que a base era **muda** — o que sobra de um livro queimado, a anatomia do relógio por
+dentro, e o que 1893 podia dizer de uma marca de ferramenta. A pesquisa com fontes já
+estava paga pelo parecer prévio do perito; adiar significaria pagá-la outra vez, ou (pior)
+escrever de cabeça na próxima sessão que precisasse dela.
+
+**Arquivos tocados:** `docs/kb-medicina-legal/vestigios.md` ·
+`docs/kb-medicina-legal/supressao-de-vestigios.md` ·
+`docs/kb-medicina-legal/vocabulario-de-epoca.md` · `docs/kb-medicina-legal/fontes.md` ·
+`docs/kb-medicina-legal/README.md` · `docs/kb-mundo-vitoriano/utensilios-e-objetos.md`.
+
+### O que entrou
+
+1. **Marcas de ferramenta, em `vestigios.md`** — a peça mais importante das quatro, e a
+   única que é **guarda-corpo**. Em 1893 lê-se o **gênero** do instrumento (a largura do
+   gume que forçou o batente, a secção da haste que abriu a ferida); ler o **exemplar** —
+   dizer que *aquele* buril fez *aquela* marca — é comparação de estrias, ciência dos anos
+   1920 em diante. Vale a mesma exceção da fibra, e só ela: o **encaixe físico** de uma
+   ponta partida. Registrada também a armadilha concreta: em «A Hora Emprestada» a arma é um
+   buril e a cifra do morto está gravada a buril, e a primeira frase que as aproximar comete
+   o anacronismo. O que a carta da cifra pode dizer, e diz, é que **o corte fresco brilha
+   contra a pátina** — logo aquela linha foi cortada depois das outras. Isso é só olhar.
+2. **Dossiê «O documento queimado», em `supressao-de-vestigios.md`** — irmão do que já
+   existia sobre roupas queimadas, com a mesma arquitetura e a mesma lição: *o que a cinza
+   guarda é a identidade da peça*. O achado que rege o dossiê é de física, e contraria o
+   senso comum: **um livro fechado não arde** — o calor escoa para o miolo e a camada de
+   carvão da capa sobe a temperatura de ignição, de modo que o volume sobrevive com o miolo
+   legível. Destruir um registro numa lareira exige **desmanchá-lo e alimentá-lo aos
+   punhados**, ao longo de uma hora — o que é gesto deliberado, não de pânico. A prova fica
+   na **carcaça** (dobra e furos de costura com o fio de linho, cola animal, lombo de mola,
+   pastas, cantos de couro retorcidos, fecho de latão), nunca nas folhas. E o limite é duro:
+   **não se lê nada** — a decifração de carbonizado é de 1941 em diante; a luz rasante dá
+   **geometria de pauta**, e mais nada.
+3. **Relógio por dentro e balança de fiel, em `utensilios-e-objetos.md` §11** — a **cuvette**
+   (*dome*, para o ofício inglês) é a tampa interna da caixa, aberta pela unha; o
+   **guarda-pó** (*dust cap*) é a calota sobre o maquinismo, e são peças diferentes. O que se
+   grava numa e a folga de campo que ela tem; a regra do ensaio inglês (o *dome* é parte da
+   caixa e leva contraste; suíço e francês usam latão dourado, o que datou e nacionalizou o
+   relógio do morto de graça). E a **balança de fiel do ourives** com as unidades troy — o
+   instrumento sem o qual o caderno de pesos do Livro II não teria lastro material.
+4. **Dois anacronismos novos em `vocabulario-de-epoca.md`** — «cubeta» (falso amigo: é o vaso
+   de laboratório) e a marca de ferramenta pelo exemplar. Mais duas linhas na tabela de
+   marcos técnicos de `fontes.md` (estrias, anos 1920; carbonizado, 1941).
+
+### Verificação
+
+O `perito-forense` releu as quatro peças contra o próprio parecer, com uma ordem explícita:
+marcar como bloqueante qualquer ponto em que a redação tivesse **endurecido** a pesquisa —
+transformado um «não consegui confirmar» em fato da base, ou uma inferência dele numa
+asserção normativa. É a cautela que esta base impõe a si mesma desde a nota sobre Locard:
+o valor dela está em distinguir o que 1893 sabia do que só veio depois, e uma KB que exagera
+para o lado da certeza estraga a prosa de todas as OS seguintes.
+
+**Aberto:** `CLASSES_VESTIGIO` continua sem classe de documento queimado, como já não tem de
+roupa queimada — o dossiê serve a prosa autoral e o gerador ainda não sabe produzir nenhum
+dos dois. Registrado nas divergências do próprio arquivo, não criado.
