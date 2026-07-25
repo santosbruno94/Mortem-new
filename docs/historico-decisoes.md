@@ -1468,3 +1468,130 @@ de maquete para o mesmo endereço da High Street, há um.
 - `guarda` × `constable` (o caso gerado continua a dizer *constable*) — **OS-R9**.
 - `FundoCena.jsx` desenha um armário de arquivo onde a prosa diz cômoda — camada de
   apresentação.
+
+---
+
+## 25/07/2026 — OS-R3: A Abertura
+
+**Decisões aplicadas:** D12 (coroner, fora de cena), D13 (abertura testemunhal como
+molde), D21 (Bramwell Foy), D23 (Abbot), D25 (Harlan não assina uma grande).
+**Guardas verificadas:** G2, G3, G4, G8, G10, G11, G12 · GR3-1 a GR3-6.
+**Arquivos tocados:** `src/data/abertura.js` · `src/components/Abertura.jsx` ·
+`docs/biblia-de-vozes.md` · `scripts/qa-ui.mjs` · `docs/os-r3-abertura.md` (nova).
+**Gate:** lint-prosa nenhuma violação · qa.mjs CASO VÁLIDO · qa-ui.mjs UI VÁLIDA ·
+build limpo.
+**Gate específico:** pipeline `revisar-prosa` com os três revisores — **reprovou na
+primeira passada com três bloqueantes, um por revisor**; todos corrigidos, ver abaixo.
+**Divergências assumidas e aberto:** ao fim.
+
+### Os três martelos
+
+**(a) O cold open é pelos olhos de Silas Crane** — quem achou o corpo, e o réu. O
+utilizador escolheu a opção que a OS §5 classificava como a mais perigosa e a mais forte.
+A G3 passou a ser a guarda crítica, e o teste de cada gesto foi o do §3.1: se admite «este
+homem está a fingir», tem de admitir igualmente «este homem está em choque».
+
+**(b) O impresso do coroner nomeia só o Dr. Abbot.** Harlan atravessa o caso com uma
+autorização que não tem o seu nome — o que dá à ordem «NAO ASSINE NADA» o peso que ela
+nunca teve, e arma a D25.
+
+**(c) O prazo do inquérito é ficção.** Segunda-feira, 16 de outubro, às dez, no
+Wheatsheaf. Nenhuma regra o lê; os quatro perfis fecham nas mesmas horas de sempre.
+
+### O gate de prosa, que é o gate desta OS
+
+Três revisores, três bloqueantes — e cada um apanhou o seu, o que é o argumento mais
+forte a favor de correr os três em vez de um.
+
+**Bloqueante do `editor-critico` (G3).** No cold open, Silas mandava o aprendiz chamar
+Wycliffe «e que traga um homem consigo». Falha o teste das duas leituras: um homem em
+choque diz «corra, chame o guarda», não faz gestão de efetivo. A cláusula ainda *inventava*
+o homem à porta que a carta de Wycliffe depois reivindica, e caía na posição de acento do
+parágrafo — onde o craft de mistério proíbe pôr pista. Sete dos oito gestos passaram; este
+não. **Cortado.** O mesmo parecer desmentiu a contagem de frases de efeito (eram duas, não
+uma) e mostrou que a que eu julgava melhor — «um tempo que o rapaz, depois, não soube
+medir» — era o único verbo no passado de um bloco em presente e ancorava o foco em **Davey
+Tull**, isto é, na opção de POV que o utilizador não escolheu. **Cortada.**
+
+**Bloqueante do `perito-forense` (GR3-4).** O impresso citava «o Ato de 1836». O Medical
+Witnesses Act 1836 foi **revogado para Inglaterra e Gales pelo próprio Coroners Act 1887**,
+que reeditou a matéria nas s. 21 (ordem de exame) e s. 22 (honorários, mantido o teto de
+£2 2s). Em 1893, papelaria de coroner — reimpressa por causa da consolidação de 1887 — não
+cita 1836. Agravante: a minha própria OS §3.2 exigia «sob o Coroners Act 1887», e a lei não
+aparecia no arquivo. **Corrigido**, com a qualificação estatutária junto («praticante
+legalmente habilitado e inscrito»), que é justamente a que exclui Harlan e faz o papel
+dizer, sem uma linha de aula, por que o nome não pode ser o do assistente.
+
+**Bloqueante do `fiscal-continuidade` (G8).** O telegrama de Abbot afirmava «O CORONER JA
+ORDENOU O EXAME EM MEU NOME» — um documento que nenhum canal lhe entregara: a abertura só
+tinha dois canais para fora de Briarstone (o fio até o coroner e o cavalo até Caulfield), e
+nenhum alcançava Abbot, a quatro condados. **Corrigido nas duas pontas:** o telegrama passa
+a prever («HA DE ORDENAR»), que é o que um homem que conhece a máquina diria, e Wycliffe
+abre o canal que faltava — telegrafou também ao médico da lista, e foi a resposta dele que
+disse onde parava o assistente. Isso fecha de quebra o furo de por que o cavaleiro acaba na
+pensão da Sra. Potts.
+
+**Achados altos aplicados** (doze, entre os três pareceres). Os que valem nome:
+
+- **A voz da Sra. Potts.** Eu pusera na boca da senhoria as palavras do narrador («o
+  formulário», «o envelope») e apagara o «disse o rapaz» que a bíblia dá como marca dela —
+  e, sem ele, ela declarava com autoridade o remetente de um telegrama dobrado que não
+  leu. Restaurado o ouvir-dizer e o léxico dela.
+- **O verbete de Foy contradizia o texto que autoriza.** Eu prescrevera «terceira pessoa
+  de ofício» e ilustrara com primeira. O impresso está historicamente certo (o mandado do
+  coroner fala em primeira pessoa); o verbete é que estava errado, e quem escrevesse a
+  próxima peça de Foy pela letra dele escreveria contra o cânone. Corrigido na bíblia,
+  junto com a nota da lei de 1887.
+- **A batida do martelo (b) aparecia cinco vezes em cinco telas.** Reduzida ao pensamento
+  do passo da ordem, que é o único lugar onde a informação vira consequência pessoal.
+- **Autoridade residual por outra porta.** A frase que a OS-R1 acusara saíra sem resíduo,
+  mas Wycliffe voltava a consultar a lista, eleger o médico e convocá-lo. Agora quem o
+  nomeia da lista é o coroner; a Wycliffe toca lavrar a ordem no impresso e pô-la a
+  caminho, que é o ofício de *coroner's officer*.
+- **A cópia telegráfica não é a autorização.** Instrumentos de coroner eram escritos,
+  assinados e servidos pelo officer; um transcrito de balcão não traz assinatura nem é
+  título para reclamar os dois guinéus. O papel passou a dizer-se cópia, e o original vem
+  por mão do coroner — o que aumenta a tensão em vez de a gastar.
+- **A hora de abrir a loja.** O cold open punha Silas a abrir a relojoaria às nove e
+  vinte; o próprio Silas, em `dialogos.js:153`, diz que abre a loja, tira as tábuas e
+  acende o fogo da bancada, e só depois acha o corpo. O cold open contradizia o depoimento
+  do seu próprio protagonista. Reescrito para bater com ele: Silas abre à hora de sempre,
+  o Sr. Arthurs não desce, e às nove e vinte o oficial deixa a bancada e vai ao escritório.
+  Resolveu junto a contradição das tábuas da vitrine (que ficavam no vão às 9h20 e não
+  podiam estar lá às 13h, quando o perito vê o vidro com a cortina corrida por dentro).
+- **A vela e o castiçal.** A cena de Caulfield vinha de quando a abertura não tinha hora;
+  o cold open datou-a em meio da manhã de sábado, e senhoria não atravessa a casa de
+  castiçal aceso ao meio-dia. A Sra. Potts entra agora a limpar as mãos ao avental.
+
+### Divergências assumidas
+
+1. **A KB está incompleta e não foi emendada.** `kb-medicina-legal/inquerito-e-policia.md`
+   §1 imputa o poder de ordenar o exame e o honorário ao Ato de 1836 sem registar a
+   revogação/reedição pelo Coroners Act 1887. A prosa foi corrigida; a KB não, porque o
+   `CLAUDE.md` põe divergência de KB como decisão do utilizador. **A emenda está redigida
+   e à espera de martelo.**
+2. **Falta lastro de KB para o «NAO ASSINE NADA».** *Covering* — o médico registado que
+   empresta o nome a quem o não é — era conduta infame perante o General Medical Council,
+   com aviso próprio nos anos 1890. É a base histórica direta da D25 e do clímax, e não
+   está em KB nenhuma. Proposta de verbete registada, não escrita.
+3. **O glossário não tem verbete de «coroner».** A tabela de tradução da KB (§5) manda
+   grifar e glosar na primeira ocorrência. O impresso glosa-o funcionalmente («sendo meu
+   ofício inquirir dela»), o que resolve a compreensão, mas não há verbete.
+4. **O prazo do inquérito não tem consequência mecânica.** É o martelo (c), e é
+   deliberado. Fazer o relógio bater nele — o que acontece a quem chega ao Wheatsheaf de
+   mãos vazias — é mecânica nova e precisa de ordem expressa.
+
+### Aberto para a OS seguinte
+
+- **OS-R4** (elenco e livros): a torre de S. Miguel, Amos Kell, a Sra. Wick, o
+  estalajadeiro; e o posto de um homem só — Briarstone tem Wycliffe *e* Tobin.
+- **OS-R8** (passe editorial): «lavrar queixa» em `abertura.js`, ao lado do que esta OS
+  mexeu e propositadamente não tocou; a prosa do ponto da vitrine, que se lê de dentro da
+  loja desde a OS-R2; e a varredura de Davey na oficina, que contradiz o «nem uma cadeira
+  saiu do lugar» de Wycliffe agora que a oficina é sub-local do mesmo nó.
+- **OS-R9** (o gerador herda os padrões): os casos gerados ainda trazem **a mesma
+  autoridade indevida que esta OS extirpou do caso-escola** — «os que respondem pela vila
+  pagam os seus honorários» (`src/gerador/pacote_gerado.js`) — e o vocativo epistolar
+  moderno, sem subscrição. Registado e não tocado: o banco ficou fora do diff.
+- Tirar o «ontem» da amostra de Silas na bíblia de vozes (o interrogatório corre no mesmo
+  sábado; a prosa embarcada já está certa, a amostra é que não).

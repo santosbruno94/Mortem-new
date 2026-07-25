@@ -193,7 +193,11 @@ function ImpressoDoCondado({ passo, detective }) {
     <>
       <p className="text-stone-300 leading-relaxed mb-5">{interpolar(lede, detective)}</p>
       <div className="carta-pergaminho rounded-sm p-5 sm:p-7 space-y-4">
-        <p className="font-rotulo uppercase text-[10px] sm:text-[11px] tracking-[0.22em] leading-relaxed border-b border-tinta-apagada/40 pb-3">
+        {/* Sem `uppercase`: a rubrica já vem em caixa alta no dado (é o texto
+            de fôrma), e o claro preenchido à mão — o nome do morto — precisa
+            manter a caixa mista, senão a distinção fôrma × letra à mão que o
+            parágrafo anterior arma morre na renderização. */}
+        <p className="font-rotulo text-[10px] sm:text-[11px] tracking-[0.22em] leading-relaxed border-b border-tinta-apagada/40 pb-3">
           {interpolar(rubrica, detective)}
         </p>
         {corpo.map((p, i) => (

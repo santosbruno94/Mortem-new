@@ -169,9 +169,15 @@
 - **Regra dura (D12):** Foy **não tem cena, não fala e não aparece**. Existe em papel
   timbrado, e só. Quem o quiser em cena escreve uma OS para isso.
 - **Registro:** o do impresso de repartição — texto de fôrma com claros preenchidos à
-  mão. Terceira pessoa de ofício, subordinadas longas de fórmula legal ("Havendo eu…,
-  e sendo meu ofício…, fica o Dr. Abbot requisitado a…"), nenhuma cortesia, nenhum
-  adjetivo. Datas e quantias por extenso.
+  mão. **Primeira pessoa de ofício**: o coroner declara em nome próprio, na fórmula do
+  mandado ("Havendo eu…, e sendo meu ofício…, fica o Dr. Abbot requisitado a…"), com
+  subordinadas longas de fórmula legal, nenhuma cortesia e nenhum adjetivo. Datas e
+  quantias por extenso.
+- **A lei que ele invoca é a de 1887, não a de 1836.** O Medical Witnesses Act 1836 foi
+  revogado para Inglaterra e Gales pelo próprio **Coroners Act 1887**, que reeditou a
+  matéria (ordem de exame e honorários, mantido o teto de £2 2s). Um médico podia
+  continuar a chamar a tabela pelo nome antigo numa conversa; um **instrumento de
+  fôrma**, não. Achado do `perito-forense` no gate da OS-R3.
 - **Tique:** não ter nenhum. É a única voz do jogo sem idioleto, e **não o ter é o
   idioleto dela**: onde toda a vila hesita, se desdiz e tempera, o condado declara.
 - **O que a voz carrega para o jogo:** o prazo (segunda-feira, 16 de outubro, às dez,

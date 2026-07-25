@@ -80,7 +80,7 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/os-r0-mestra-reforma-hora-emprestada.md`](./docs/os-r0-mestra-reforma-hora-emprestada.md) | **Ordem-mestra** da reforma do caso-escola: 25 decisões marteladas, 12 invariantes, a sequência das oito OS e o gate global. Não se executa; governa |
 | [`docs/os-r1-vocabulario-e-postos.md`](./docs/os-r1-vocabulario-e-postos.md) | OS-R1 — vocabulário policial e nome do mestre (**fechada**; mapa em [`docs/os-r1-mapa-ocorrencias.md`](./docs/os-r1-mapa-ocorrencias.md)) |
 | [`docs/os-r2-cena-unica.md`](./docs/os-r2-cena-unica.md) | OS-R2 — fusão de corpo/cena/oficina na localidade `relojoaria` com sub-locais (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
-| [`docs/os-r3-abertura.md`](./docs/os-r3-abertura.md) | OS-R3 — a abertura testemunhal, a ordem do coroner e a autoridade corrigida (**em execução**: prosa escrita, pipeline `revisar-prosa` pendente) |
+| [`docs/os-r3-abertura.md`](./docs/os-r3-abertura.md) | OS-R3 — a abertura testemunhal, a ordem do coroner e a autoridade corrigida (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)

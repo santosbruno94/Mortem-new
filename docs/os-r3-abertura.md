@@ -3,8 +3,9 @@
 **Mestra:** OS-R0. **Decisões:** D12, D13, D21 (coroner Bramwell Foy), D23 (Abbot).
 **Guardas:** G2, G3, G4, G8, G10, G11, G12.
 **Pré-requisito:** OS-R2 com ata (fechada em 25/07/2026).
-**Estado:** prosa escrita e gate técnico verde; **o gate de prosa (§6.1) ainda não
-correu até ao fim** — sem ele a OS não tem ata e não se dá por fechada.
+**Estado: FECHADA em 25/07/2026.** Ata em `docs/historico-decisoes.md`. O pipeline
+`revisar-prosa` reprovou na primeira passada com **três bloqueantes, um por revisor**;
+todos corrigidos, segunda passada com o gate global verde.
 **Namespace de sal:** nenhum. Esta OS escreve prosa fixa do caso-escola; não gera variação.
 
 Escrita no fecho da OS-R2, contra a árvore real, como a OS-R0 §4 manda.
