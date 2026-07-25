@@ -313,7 +313,7 @@ export function obterContradicaoHoras() {
 }
 
 // Nome de exibição de QUALQUER personagem do caso: suspeito (elenco) ou
-// não-suspeito (aparencias.nomes — o delegado que recebe na delegacia).
+// não-suspeito (aparencias.nomes — o guarda que recebe no posto).
 // Camada narrativa; devolve null quando o pacote não conhece o id.
 export function obterNomePersonagem(id) {
   if (!id) return null;

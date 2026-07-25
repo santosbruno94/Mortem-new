@@ -29,7 +29,7 @@ export const GRUPOS = {
   // entre eles não custa tempo.
   relojoaria: 'A relojoaria — corpo, cena do crime, oficina e a saleta (mesmo prédio)',
   // A vila de Briarstone: prédios diferentes, a um pulo de distância.
-  vila: 'A vila de Briarstone — delegacia, estalagem, loja, moinho',
+  vila: 'A vila de Briarstone — posto do guarda, estalagem, loja, moinho',
   // Fora da vila: caro de alcançar.
   fora: 'Fora de Briarstone (Moorford)',
 };
@@ -79,8 +79,8 @@ export const NOS_MAPA = [
     desbloqueadoInicio: true,
   },
   {
-    id: 'delegacia',
-    rotulo: 'A Delegacia',
+    id: 'delegacia', // id do balde T — a OS-R2 renomeia-o
+    rotulo: 'O Posto do Guarda',
     grupo: 'vila',
     desbloqueadoInicio: true,
   },

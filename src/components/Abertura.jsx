@@ -5,7 +5,7 @@ import { obterAbertura } from '../data/pacote_caso.js';
 import { tocarSom } from '../som.js';
 
 // Sequência de abertura em 7 passos (§4.1–4.2). O último passo é o
-// briefing do Delegado Wycliffe, cujas perguntas (custo zero) plantam
+// briefing do guarda Wycliffe, cujas perguntas (custo zero) plantam
 // informações e iscas antes de o relógio começar a contar.
 // Apresentação: mesa de madeira à luz de vela; a prosa imersiva fica
 // escura e legível (stone-300); só a carta escrita vira pergaminho.
@@ -37,7 +37,7 @@ export default function Abertura() {
           §
         </div>
 
-        {/* Cada passo vem no suporte que lhe cabe: a carta do delegado em
+        {/* Cada passo vem no suporte que lhe cabe: a carta do guarda em
             pergaminho, o telegrama no formulário do Post Office, o resto em
             prosa escura sobre a mesa. */}
         {passo.telegrama ? (
@@ -74,7 +74,7 @@ export default function Abertura() {
         {passo.briefing && (
           <div className="mt-8 space-y-3">
             <p className="font-serif italic text-stone-400 text-sm tracking-wide">
-              Perguntas ao Delegado <span className="text-latao-claro/70">(não custam tempo — o que não
+              Perguntas ao Guarda <span className="text-latao-claro/70">(não custam tempo — o que não
               perguntar aqui, fica por saber)</span>:
             </p>
             {PERGUNTAS_BRIEFING.map((q) => {
@@ -136,7 +136,7 @@ export default function Abertura() {
 // mensagem não é citação de ninguém — é o que está impresso.
 //
 // Do impresso de época ficou de fora o que este caso não sabe: a estação
-// de origem (Alcott despacha de quatro condados daqui, não de Caulfield,
+// de origem (Abbot despacha de quatro condados daqui, não de Caulfield,
 // que é onde o telegrama CHEGA) e a taxa por palavra (a mensagem tem o
 // dobro das doze palavras que caberiam no preço).
 function FormularioTelegrafo({ passo, detective }) {

@@ -177,6 +177,26 @@ com recomendação:
 | Assizes | "tribunal do júri" / "vara de circuito" | *assizes* | **B** grifado, ou "tribunal de circuito" |
 | Constable / Superintendent | "guarda" / "delegado" | manter posto inglês | **B** — a hierarquia inglesa é específica; glosar |
 
+> **Registro de decisão — D11, OS-R1, 25/07/2026.** O **caso-escola** ("A Hora
+> Emprestada") adota a **Opção A** desta linha: o policial de Briarstone é glosado
+> **"guarda"**, e o lugar onde ele despacha, **"o posto"**. O **caso gerado** segue a
+> recomendação B e diz *constable*; a unificação das duas prosas é da OS-R9.
+>
+> A D11 substituiu "delegado", que soava a polícia brasileira do século XX. A sua primeira
+> redação escolhia **"condestável"**, e essa foi descartada no parecer do `perito-forense`:
+> em português, *condestável* nomeou o **Condestável do Reino** (criado por D. Fernando I
+> em 1382, a segunda figura da hierarquia militar depois do rei) e, mais tarde, o **chefe
+> de artilharia** de praça ou navio. O **Caldas Aulete**, dicionário contemporâneo ao
+> presente do jogo, regista cinco acepções e **nenhuma policial** — o uso policial da
+> palavra é calco moderno do inglês norte-americano. Sobre um homem que esta KB (§2) define
+> como "o homem de ronda; a base da pirâmide", era inflação de patente.
+>
+> Consequência de "guarda", registrada para vigilância: a palavra passa a nomear **só quem
+> tem a patente** (Wycliffe e o guarda Tobin). O homem posto à porta da relojoaria é "um
+> homem", não "um guarda". Fica de pé a questão de fundo — um posto de vila é de **um homem
+> só**, e Briarstone tem dois; o correto de época seria o constable do beat vizinho ou um
+> *special constable* juramentado às pressas. Aberto para a OS-R4 (elenco).
+
 Princípio geral (alinhado ao guia de estilo §5): **traduzir o instituto quando o
 português tem par exato e limpo** (inquérito, pronúncia, doloso/culposo) e **manter o
 termo inglês grifado, glosado na primeira ocorrência, quando é peça idiossincrática do

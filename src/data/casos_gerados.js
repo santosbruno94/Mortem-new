@@ -51949,6 +51949,2669 @@ export const CASOS_POOL = [
 
 export const CASOS_LUTA = [
 {
+ "id": "gerado_luta_3",
+ "verdadeDeOuro": {
+  "id": "gerado_luta_3",
+  "vitima": "Sarah Hill",
+  "reuCorreto": "gen_7_lavrador",
+  "horasMorteAntesChegada": 8,
+  "horaMorteAbsoluta": 3,
+  "mecanismoCorreto": "trauma_contuso",
+  "instrumentoCorreto": "arma_de_ocasiao",
+  "metodoIniciado": null,
+  "motivacaoCorreta": "divida_caderneta",
+  "cenaEncenada": false,
+  "horaForjada": null,
+  "perifericos": {
+   "gen_4_pastor_de_ovelhas": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
+   },
+   "gen_1_criada": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
+   },
+   "gen_3_lavadeira": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
+   },
+   "gen_2_medico": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
+   }
+  },
+  "encenacaoInstrumento": null
+ },
+ "suspeitos": [
+  {
+   "id": "gen_4_pastor_de_ovelhas",
+   "nome": "Andrew Ward",
+   "idade": 43,
+   "relacao": "Pastor de ovelhas; mora no Cottage nº 3",
+   "descricao": "Conta a noite por canecas, não por horas."
+  },
+  {
+   "id": "gen_1_criada",
+   "nome": "Grace Wright",
+   "idade": 16,
+   "relacao": "Criada; mora na Taverna",
+   "descricao": "Descreve por alto o que viu; miudeza não lhe ficou."
+  },
+  {
+   "id": "gen_3_lavadeira",
+   "nome": "Hannah Jackson",
+   "idade": 55,
+   "relacao": "Lavadeira; mora no Cottage nº 2",
+   "descricao": "Não há pergunta curta que devolva curta."
+  },
+  {
+   "id": "gen_2_medico",
+   "nome": "Thomas Barnes",
+   "idade": 51,
+   "relacao": "Médico rural; mora na Casa do Médico",
+   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+  },
+  {
+   "id": "gen_7_lavrador",
+   "nome": "Thomas Walker",
+   "idade": 30,
+   "relacao": "Lavrador; mora no Cottage nº 4",
+   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
+  }
+ ],
+ "cartas": [
+  {
+   "id": "gen_rigor",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Rigidez Parcial",
+     "carimboPadrao": "Maxilar duro; membros ainda cedem",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "instalando",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 24,
+     "textoDisplay": "Corpo Endurecido",
+     "carimboPadrao": "Duro dos maxilares aos joelhos",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "pleno",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 36,
+     "textoDisplay": "Rigidez Cedendo",
+     "carimboPadrao": "Maxilar solto; joelhos rígidos",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolucao",
+      "estadoDegradacao": "degradado"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Corpo Flácido",
+     "carimboPadrao": "Corpo mole, sem rigidez",
+     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolvido",
+      "estadoDegradacao": "resolvido"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_livores",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Manchas que Cedem ao Polegar",
+     "carimboPadrao": "Manchas que empalidecem à pressão",
+     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "movel",
+      "posicaoCompativel": true
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Manchas Fixas",
+     "carimboPadrao": "Manchas fixas, sem empalidecer",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "fixo",
+      "posicaoCompativel": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_lesao_fatal",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "A Fratura no Crânio",
+   "carimboPadrao": "Fratura com afundamento; sede: têmpora",
+   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "ferida",
+    "sinal": "ferida_contusa"
+   }
+  },
+  {
+   "id": "gen_reacao_vital",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "As Bordas da Ferida",
+   "carimboPadrao": "Bordas afastadas, coágulo aderido",
+   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "reacao_vital",
+    "sinal": "reacao_vital"
+   }
+  },
+  {
+   "id": "gen_visto_vivo",
+   "localidade": "delegacia",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_2_medico",
+   "textoDisplay": "Última Vez com Vida",
+   "carimboPadrao": "Vítima com vida às 01h00 de 14/out",
+   "descricao": "Thomas Barnes esteve com Sarah Hill às 01h00 de 14/out, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.",
+   "tagsOcultas": {
+    "dominio": "temporal",
+    "subDominio": "ultima_vez_visto",
+    "horaAvistamento": 1
+   }
+  },
+  {
+   "id": "gen_instrumento",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de Thomas Walker, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão da morta.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "arma_de_ocasiao",
+    "pertenceA": "gen_7_lavrador"
+   }
+  },
+  {
+   "id": "gen_sangue_alheio",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 6,
+    "fila": 0
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "À altura do peito, na parede, um salpico fino, acima da linha das feridas da morta.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sangue_do_agressor",
+    "tipoVestigio": "sangue_alheio",
+    "pertenceA": "gen_7_lavrador"
+   }
+  },
+  {
+   "id": "gen_peca_deslocada",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 5,
+    "fila": 0
+   },
+   "mobilia": "quarto_bau",
+   "textoDisplay": "Peça Fora do Lugar",
+   "carimboPadrao": "Peça girada fora do seu assento",
+   "descricao": "A peça está fora do esquadro do seu lugar, girada e arrastada; os pés riscaram o chão no sentido do vão da sala.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ambiente_da_luta",
+    "tipoVestigio": "peca_deslocada"
+   }
+  },
+  {
+   "id": "gen_ferimento_reu",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "corpo_do_reu",
+   "textoDisplay": "Ferimento no Suspeito",
+   "carimboPadrao": "Ferimento recente no suspeito (antebraços)",
+   "descricao": "De manga arregaçada por ordem do constable, Thomas Walker mostra o que a roupa cobria: a marca recente de luta, nos antebraços. A lesão tem os dias do crime, e a explicação doméstica não vem.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ferimento_do_agressor",
+    "pertenceA": "gen_7_lavrador",
+    "sede": "antebracos"
+   }
+  },
+  {
+   "id": "gen_sinal_exigivel",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Sinal no Corpo da Vítima",
+   "carimboPadrao": "Marca-espelho esperada (dorso das mãos)",
+   "descricao": "Marca-espelho esperada (dorso das mãos)",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sinal_exigivel",
+    "regiao": "maos",
+    "sede": "dorso_das_maos",
+    "metodoOrigem": "contundente"
+   }
+  },
+  {
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_2_medico",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na madrugada de 14",
+   "descricao": "Thomas Barnes conta o que a parede deixou passar na madrugada de 14: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "madrugada"
+   }
+  },
+  {
+   "id": "gen_motivo",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Os Papéis do Móbil",
+   "carimboPadrao": "Móbil de Thomas Walker",
+   "descricao": "Uma caderneta de dívidas soma o que Thomas Walker deve a Sarah Hill, vencido e cobrado por carta.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "divida_caderneta",
+    "ligadoA": "gen_7_lavrador"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_4_pastor_de_ovelhas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "consultorio",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Andrew Ward",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de Andrew Ward por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_4_pastor_de_ovelhas",
+    "revelaSegredo": "acerto_reservado"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_1_criada",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "consultorio",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Grace Wright",
+   "descricao": "Meia dúzia de linhas na letra de Grace Wright: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_1_criada",
+    "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_3_lavadeira",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Hannah Jackson",
+   "carimboPadrao": "Paradeiro de Hannah Jackson, confirmado",
+   "descricao": "A rua dá Hannah Jackson no Cottage nº 2 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_3_lavadeira"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_2_medico",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Thomas Barnes",
+   "carimboPadrao": "Paradeiro de Thomas Barnes, confirmado",
+   "descricao": "A rua dá Thomas Barnes na Casa do Médico madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_medico"
+   }
+  },
+  {
+   "id": "gen_movel_gen_4_pastor_de_ovelhas",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Papéis de Andrew Ward",
+   "carimboPadrao": "Móbil de Andrew Ward",
+   "descricao": "A ordem de despejo do cottage de Andrew Ward veio no rasto de queixa que Sarah Hill levou ao senhorio.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "despejo",
+    "ligadoA": "gen_4_pastor_de_ovelhas"
+   }
+  },
+  {
+   "id": "gen_alibi_gen_4_pastor_de_ovelhas",
+   "localidade": "casa_cottage_3",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_4_pastor_de_ovelhas",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_1_criada",
+   "localidade": "vizinhanca",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado de pé, o serviço à espera, diante do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_1_criada",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_3_lavadeira",
+   "localidade": "casa_cottage_2",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_3_lavadeira",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_2_medico",
+   "localidade": "casa_casa_do_medico",
+   "textoDisplay": "Casa do Médico (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Casa do Médico (madrugada de sábado)",
+   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_2_medico",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_7_lavrador",
+   "localidade": "casa_cottage_4",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_7_lavrador",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  }
+ ],
+ "localidades": [
+  {
+   "id": "corpo",
+   "rotuloMesa": "O Corpo",
+   "titulo": "O Corpo — Casa do Médico",
+   "subtitulo": "Sarah Hill, criada, 23 anos",
+   "acoesEspeciais": [
+    "termometro"
+   ],
+   "gestos": [
+    {
+     "id": "gesto_voltar_corpo",
+     "rotulo": "Voltar o corpo",
+     "cartaId": "gen_livores"
+    }
+   ],
+   "prosa": [
+    "A morta jaz no chão do cômodo a que a vila chama quarto, vestida como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
+    "O exame de perto encontra a lesão que respondeu por ela: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
+   ],
+   "planta": {
+    "titulo": "Casa do Médico",
+    "viewBox": "0 0 230 178",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V76 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 24 H206 V76 H102 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 128,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 154,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M24 76 H102 V154 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "consultorio",
+      "rotulo": "Consultório",
+      "contorno": "M102 76 H206 V154 H102 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M81 133 H97 V149 H81 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 115,
+      "y": 170
+     }
+    ]
+   }
+  },
+  {
+   "id": "cena",
+   "rotuloMesa": "A Cena do Crime",
+   "titulo": "A Cena — Casa do Médico",
+   "subtitulo": "Onde Sarah Hill foi achada",
+   "acoesEspeciais": [],
+   "introducao": [
+    "O exame corre cômodo a cômodo: a cena está como a acharam, nada movido.",
+    "A boa sala dá para a rua e fica fechada; as cadeiras de uso estão ao pé do fogão de ferro."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "Do mobiliário, atiçador de lareira, fogão de ferro a carvão."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "No chão deste cômodo, a morta. Do mobiliário, bacia e jarro, baú de roupa. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Ao exame: [[gen_peca_deslocada]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+     ]
+    },
+    {
+     "id": "pt_cena_parlour",
+     "rotulo": "Parlour",
+     "comodo": "parlour",
+     "prosa": [
+      "Do mobiliário, retratos emoldurados, lareira com guarda-fogo, atiçador de lareira."
+     ]
+    },
+    {
+     "id": "pt_cena_consultorio",
+     "rotulo": "Consultório",
+     "comodo": "consultorio",
+     "prosa": [
+      "Vão sem mobília; sobra o assoalho nu. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_4_pastor_de_ovelhas]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_1_criada]]."
+     ]
+    }
+   ],
+   "planta": {
+    "titulo": "Casa do Médico",
+    "viewBox": "0 0 230 178",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H102 V76 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M102 24 H206 V76 H102 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 103,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 128,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 154,
+         "y": 25,
+         "w": 51,
+         "h": 50
+        },
+        "pos": {
+         "x": 180,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M24 76 H102 V154 H24 Z",
+      "rotuloPos": {
+       "x": 63,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "consultorio",
+      "rotulo": "Consultório",
+      "contorno": "M102 76 H206 V154 H102 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M55 29 H71 V45 H55 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M133 29 H149 V45 H133 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M81 133 H97 V149 H81 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 115,
+      "y": 170
+     }
+    ]
+   },
+   "blocosContingentes": []
+  },
+  {
+   "id": "delegacia",
+   "rotuloMesa": "O Posto do Constable",
+   "titulo": "O Posto do Constable",
+   "subtitulo": "Os papéis do caso",
+   "acoesEspeciais": [],
+   "prosa": [
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre a morta está aí para quem leia.",
+    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_4_pastor_de_ovelhas]].",
+    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "vizinhanca",
+   "rotuloMesa": "A Taverna",
+   "titulo": "A Taverna",
+   "subtitulo": "Onde a vila conta o que sabe",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A taverna junta a vila ao fim da lida: bancos corridos, o balcão úmido, e quem chega ouve antes de sentar.",
+    "As casas fazem anel em torno do gramado comunal, todas voltadas para o meio.",
+    "A Casa do Médico fica na High Street; Grace Wright, criada, mora porta com porta, e da janela de uma casa se alcança a soleira da outra.",
+    "Quem dormia sob o teto da própria cena conta, a meia-voz: [[gen_ruido_ouvido]].",
+    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_3_lavadeira]], [[gen_corrobora_gen_2_medico]]."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotuloMesa": "Cottage nº 3",
+   "titulo": "Cottage nº 3 — à porta",
+   "subtitulo": "A morada de Andrew Ward",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 3 fica na ruela dos cottages. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "casa_cottage_2",
+   "rotuloMesa": "Cottage nº 2",
+   "titulo": "Cottage nº 2 — à porta",
+   "subtitulo": "A morada de Hannah Jackson",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 2 fica na ruela dos cottages. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "casa_casa_do_medico",
+   "rotuloMesa": "Casa do Médico",
+   "titulo": "Casa do Médico — à porta",
+   "subtitulo": "A morada de Thomas Barnes",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A casa é a mesma do achado; o guarda de sentinela dá passagem, e a conversa corre no batente."
+   ]
+  },
+  {
+   "id": "casa_cottage_4",
+   "rotuloMesa": "Cottage nº 4",
+   "titulo": "Cottage nº 4 — à porta",
+   "subtitulo": "A morada de Thomas Walker",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 4 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
+   ]
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "A Granja — a busca",
+   "titulo": "A Granja — a diligência",
+   "subtitulo": "Busca com o constable à porta",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o constable à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
+    "Antes de liberar o dono das coisas, o constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
+   ],
+   "blocosContingentes": []
+  }
+ ],
+ "nosMapa": [
+  {
+   "id": "corpo",
+   "rotulo": "O Corpo",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "cena",
+   "rotulo": "A Cena do Crime",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "delegacia",
+   "rotulo": "O Posto do Constable",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "vizinhanca",
+   "rotulo": "A Taverna",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotulo": "Cottage nº 3",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_2",
+   "rotulo": "Cottage nº 2",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_casa_do_medico",
+   "rotulo": "Casa do Médico",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_4",
+   "rotulo": "Cottage nº 4",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "A Granja — a busca",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
+  }
+ ],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
+ "custos": {
+  "cena_predio|cena_predio": 0,
+  "cena_predio|vila": 1,
+  "vila|cena_predio": 1,
+  "vila|vila": 1
+ },
+ "dialogos": {
+  "dialogo_gen_4_pastor_de_ovelhas": {
+   "suspeitoId": "gen_4_pastor_de_ovelhas",
+   "origemLocalidade": "casa_cottage_3",
+   "chamada": "Interrogar Andrew Ward",
+   "titulo": "Interrogatório — Andrew Ward",
+   "subtitulo": "Pastor de ovelhas, 43 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_4_pastor_de_ovelhas": "reacao_gen_segredo_gen_4_pastor_de_ovelhas"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_4_pastor_de_ovelhas",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Andrew Ward entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" Ao citar a primeira hora, corrige-a no meio da frase."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Tem o sono pesado?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_4_pastor_de_ovelhas": {
+     "fala": [
+      "Andrew Ward cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Sarah Hill eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Sarah Hill? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_1_criada": {
+   "suspeitoId": "gen_1_criada",
+   "origemLocalidade": "vizinhanca",
+   "chamada": "Interrogar Grace Wright",
+   "titulo": "Interrogatório — Grace Wright",
+   "subtitulo": "Criada, 16 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_1_criada": "reacao_gen_segredo_gen_1_criada"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_1_criada",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Grace Wright vem ao encontro antes que o constable chame, enxugando as mãos no avental. \"Posso falar, com licença da casa. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"A sua madrugada de sábado, como foi? Conte com calma.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Tem o sono pesado?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_1_criada": {
+     "fala": [
+      "Grace Wright lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Sarah Hill estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Sarah Hill? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Sarah Hill eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Sarah Hill? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Sarah Hill? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Sarah Hill? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Sarah Hill? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Mãos vermelhas de quem esfrega assoalho de joelhos. Arranhões finos da grelha do fogão — trabalho, não luta."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_3_lavadeira": {
+   "suspeitoId": "gen_3_lavadeira",
+   "origemLocalidade": "casa_cottage_2",
+   "chamada": "Interrogar Hannah Jackson",
+   "titulo": "Interrogatório — Hannah Jackson",
+   "subtitulo": "Lavadeira, 55 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {},
+   "confrontos": [],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Hannah Jackson entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Sarah Hill. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Sarah Hill?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Sarah Hill eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Sarah Hill. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Sarah Hill?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Sarah Hill? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Sarah Hill. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Sarah Hill?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Sarah Hill. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dela a seu tempo: que mulher era Sarah Hill?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_2_medico": {
+   "suspeitoId": "gen_2_medico",
+   "origemLocalidade": "casa_casa_do_medico",
+   "chamada": "Interrogar Thomas Barnes",
+   "titulo": "Interrogatório — Thomas Barnes",
+   "subtitulo": "Médico rural, 51 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_visto_vivo": "reacao_gen_visto_vivo",
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_visto_vivo",
+     "rotulo": "[Última Vez com Vida] A que horas, exatamente, viu a vítima com vida?"
+    },
+    {
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Thomas Barnes abre antes que o constable acabe de bater, e toma a palavra do batente. \"Adiei o que havia para adiar. Sirva-se do tempo.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Tem o sono pesado?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Corre os olhos pelo que se lhe mostra e o devolve. \"Fora do meu ofício, não arrisco palavra. Pergunte do que é meu.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_visto_vivo": {
+     "fala": [
+      "Thomas Barnes responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_ruido_ouvido": {
+     "fala": [
+      "Thomas Barnes conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_medico]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Sarah Hill. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, para quem lidava com ela todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Sarah Hill? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Recua para dentro do vão. \"O inquérito sabe onde me encontrar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_medico]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Sarah Hill. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, para quem lidava com ela todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Sarah Hill? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Sarah Hill era das que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Recua para dentro do vão. \"O inquérito sabe onde me encontrar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_medico]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Sarah Hill. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, para quem lidava com ela todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Sarah Hill? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Recua para dentro do vão. \"O inquérito sabe onde me encontrar.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_medico]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Sarah Hill. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, para quem lidava com ela todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Sarah Hill? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila diz o que sempre disse, e desta casa não sai eco. O mais que sei portas adentro, a boa educação manda guardar.\" Recua para dentro do vão. \"O inquérito sabe onde me encontrar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_7_lavrador": {
+   "suspeitoId": "gen_7_lavrador",
+   "origemLocalidade": "casa_cottage_4",
+   "chamada": "Interrogar Thomas Walker",
+   "titulo": "Interrogatório — Thomas Walker",
+   "subtitulo": "Lavrador, 30 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_instrumento": "reacao_gen_instrumento"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Thomas Walker abre antes que o constable acabe de bater, e toma a palavra do batente. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Diga-me onde esteve na madrugada de sábado, e diga direito.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_instrumento": {
+     "fala": [
+      "Thomas Walker responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o constable lavrou de próprio punho o lugar em que me achei.\" E devolve a peça sem a olhar de novo."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A madrugada de sábado vem contada do princípio, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Sarah Hill era do trato de todos os dias; eu a conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "\"Hora e lugar.\" E os dá, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_7_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sarah Hill?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que mulher era Sarah Hill, aos olhos de quem convivia com ela?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Sarah Hill? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Nos nós dos dedos, equimoses frescas, circunscritas, com inchaço que os dias do crime explicam. Não é calo de ofício."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  }
+ },
+ "confrontos": {
+  "estadoInicial": "presente",
+  "consequencias": {}
+ },
+ "abertura": {
+  "passos": [
+   {
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
+    "paragrafos": [
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
+    ],
+    "rotuloBotao": "O constable é chamado"
+   },
+   {
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
+    "paragrafos": [
+     "Roderick, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
+    ],
+    "rotuloBotao": "Ler a carta"
+   },
+   {
+    "id": "carta",
+    "titulo": "A carta do Constable",
+    "carta": true,
+    "paragrafos": [
+     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Aldergate, à pressa. O que aqui houve pede olho de perito, não de guarda. Sarah Hill, criada desta vila, foi achada morta. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"Roderick, Constable.\""
+    ],
+    "rotuloBotao": "Aceitar o chamado"
+   },
+   {
+    "id": "metodo",
+    "titulo": "A maleta pronta",
+    "paragrafos": [
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
+    ],
+    "rotuloBotao": "Tomar o trem"
+   },
+   {
+    "id": "chegada",
+    "titulo": "Aldergate",
+    "paragrafos": [
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Aldergate começa logo ali, numa rua de lama e fachadas baixas. Roderick vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
+    ],
+    "rotuloBotao": "Ouvir o constable"
+   },
+   {
+    "id": "briefing",
+    "titulo": "O relato do constable Roderick",
+    "briefing": true,
+    "paragrafos": [
+     "\"O essencial é isto: Sarah Hill, 23 anos, criada. Achada morta na Casa do Médico. Não toquei em nada e não prendi ninguém.\"",
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
+    ],
+    "rotuloBotao": "Entrar — iniciar a investigação"
+   }
+  ],
+  "perguntas": [
+   {
+    "id": "sobre_a_hora",
+    "pergunta": "O que se sabe da hora da morte?",
+    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
+   },
+   {
+    "id": "quem_convive",
+    "pergunta": "Quem convivia com a vítima?",
+    "resposta": "\"Do dia a dia dela? Thomas Barnes — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
+   },
+   {
+    "id": "desafetos",
+    "pergunta": "A morta tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ela não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
+   }
+  ],
+  "opcoesPersonagem": [
+   {
+    "id": "harlan",
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
+   }
+  ]
+ },
+ "parametrosCena": {
+  "horasChegada": 11,
+  "ambiente": 11,
+  "calendario": {
+   "diaBase": 14,
+   "mesAbrev": "out",
+   "mesExtenso": "outubro",
+   "ano": 1893
+  }
+ },
+ "maquete": {
+  "morfologia": "de_green",
+  "tabua": {
+   "centroX": 0.59,
+   "largura": 12.13,
+   "fundo": 7.2
+  },
+  "posicoes": {
+   "corpo": {
+    "x": 0.02,
+    "z": 2.11,
+    "predio": "casa_do_medico"
+   },
+   "cena": {
+    "x": 0.14,
+    "z": 1.49,
+    "predio": "anexo_cena"
+   },
+   "delegacia": {
+    "x": 0.04,
+    "z": -2.13,
+    "predio": "delegacia"
+   },
+   "vizinhanca": {
+    "x": -1.28,
+    "z": 2,
+    "predio": "pub"
+   },
+   "casa_cottage_3": {
+    "x": -1.54,
+    "z": 0.94,
+    "predio": "cottage_3"
+   },
+   "casa_cottage_2": {
+    "x": -2.54,
+    "z": 0.96,
+    "predio": "cottage_2"
+   },
+   "casa_casa_do_medico": {
+    "x": -0.64,
+    "z": 1.67,
+    "predio": "anexo_casa_casa_do_medico"
+   },
+   "casa_cottage_4": {
+    "x": -0.8,
+    "z": 0.92,
+    "predio": "cottage_4"
+   },
+   "oficio_do_reu": {
+    "x": 3.48,
+    "z": -0.88,
+    "predio": "granja"
+   }
+  },
+  "formas": {
+   "casa_do_medico": {
+    "w": 1.1,
+    "d": 1,
+    "h": 0.95,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.5,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.33,
+      "z": -0.2,
+      "alt": 0.49
+     },
+     {
+      "x": -0.28,
+      "z": 0.16,
+      "alt": 0.49
+     }
+    ]
+   },
+   "anexo_cena": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.3
+   },
+   "delegacia": {
+    "w": 1.25,
+    "d": 0.95,
+    "h": 1.02,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.48,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.38,
+      "z": -0.19,
+      "alt": 0.5
+     }
+    ]
+   },
+   "pub": {
+    "w": 1.5,
+    "d": 1.1,
+    "h": 0.93,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.64,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.45,
+      "z": -0.22,
+      "alt": 0.49
+     },
+     {
+      "x": -0.38,
+      "z": 0.18,
+      "alt": 0.49
+     }
+    ]
+   },
+   "cottage_3": {
+    "w": 0.77,
+    "d": 0.6,
+    "h": 0.55,
+    "corParede": "#7d684c",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.46,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.23,
+      "z": -0.12,
+      "alt": 0.43
+     }
+    ]
+   },
+   "cottage_2": {
+    "w": 0.72,
+    "d": 0.65,
+    "h": 0.5,
+    "corParede": "#83704e",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.22,
+      "z": -0.13,
+      "alt": 0.42
+     }
+    ]
+   },
+   "anexo_casa_casa_do_medico": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.75
+   },
+   "cottage_4": {
+    "w": 0.82,
+    "d": 0.6,
+    "h": 0.55,
+    "corParede": "#83704e",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.25,
+      "z": -0.12,
+      "alt": 0.43
+     }
+    ]
+   },
+   "granja": {
+    "w": 1.45,
+    "d": 1.05,
+    "h": 0.8,
+    "corParede": "#83704e",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.6,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.44,
+      "z": -0.21,
+      "alt": 0.47
+     }
+    ]
+   },
+   "igreja": {
+    "w": 1,
+    "d": 1.5,
+    "h": 1.45,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.5,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "vicarage": {
+    "w": 1.15,
+    "d": 1,
+    "h": 0.95,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.57,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.35,
+      "z": -0.2,
+      "alt": 0.49
+     },
+     {
+      "x": -0.29,
+      "z": 0.16,
+      "alt": 0.49
+     }
+    ]
+   },
+   "capela": {
+    "w": 0.9,
+    "d": 1.15,
+    "h": 0.9,
+    "corParede": "#96825e",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.47,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "solar": {
+    "w": 1.5,
+    "d": 1.1,
+    "h": 1.05,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.63,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.45,
+      "z": -0.22,
+      "alt": 0.51
+     },
+     {
+      "x": -0.38,
+      "z": 0.18,
+      "alt": 0.51
+     }
+    ]
+   },
+   "botica": {
+    "w": 1,
+    "d": 0.83,
+    "h": 0.8,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.49,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.3,
+      "z": -0.17,
+      "alt": 0.47
+     }
+    ],
+    "marquise": true
+   },
+   "mercearia": {
+    "w": 1.05,
+    "d": 0.88,
+    "h": 0.7,
+    "corParede": "#8d7a5a",
+    "corTelhado": "#4d3a29",
+    "telhadoAltura": 0.54,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.32,
+      "z": -0.18,
+      "alt": 0.45
+     }
+    ],
+    "marquise": true
+   },
+   "escola": {
+    "w": 1.05,
+    "d": 0.85,
+    "h": 0.82,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.56,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.32,
+      "z": -0.17,
+      "alt": 0.47
+     }
+    ]
+   },
+   "forja": {
+    "w": 1.1,
+    "d": 0.8,
+    "h": 0.6,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.39,
+    "beiral": 0.1,
+    "ristela": false,
+    "chamines": [
+     {
+      "x": 0.33,
+      "z": -0.16,
+      "alt": 0.44
+     }
+    ]
+   },
+   "moinho": {
+    "w": 0.95,
+    "d": 0.9,
+    "h": 1.35,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.53,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": [],
+    "moinho": true
+   },
+   "estacao": {
+    "w": 1.2,
+    "d": 0.75,
+    "h": 0.62,
+    "corParede": "#8a7355",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.41,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.36,
+      "z": -0.15,
+      "alt": 0.44
+     }
+    ]
+   },
+   "adro_da_igreja": {
+    "w": 1.15,
+    "d": 0.9,
+    "h": 0.05,
+    "corParede": "#6a6656",
+    "corTelhado": "#514d40",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "patio_da_granja": {
+    "w": 1.1,
+    "d": 0.85,
+    "h": 0.04,
+    "corParede": "#716448",
+    "corTelhado": "#554b3c",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "caminho_do_acude": {
+    "w": 1.4,
+    "d": 0.7,
+    "h": 0.04,
+    "corParede": "#5e6650",
+    "corTelhado": "#4c5546",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "travessa_dos_fundos": {
+    "w": 1.35,
+    "d": 0.6,
+    "h": 0.04,
+    "corParede": "#6a6252",
+    "corTelhado": "#565043",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "cottage_1": {
+    "w": 0.87,
+    "d": 0.7,
+    "h": 0.5,
+    "corParede": "#84704f",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.26,
+      "z": -0.14,
+      "alt": 0.42
+     }
+    ]
+   },
+   "cottage_5": {
+    "w": 0.77,
+    "d": 0.6,
+    "h": 0.6,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.23,
+      "z": -0.12,
+      "alt": 0.44
+     }
+    ]
+   }
+  },
+  "cenario": [
+   {
+    "predio": "igreja",
+    "x": -2.64,
+    "z": -1.94
+   },
+   {
+    "predio": "vicarage",
+    "x": -1.14,
+    "z": -1.95
+   },
+   {
+    "predio": "capela",
+    "x": -2.52,
+    "z": 1.68
+   },
+   {
+    "predio": "solar",
+    "x": -3.78,
+    "z": -1.6
+   },
+   {
+    "predio": "botica",
+    "x": 1.32,
+    "z": -2.01
+   },
+   {
+    "predio": "mercearia",
+    "x": 2.56,
+    "z": 1.73
+   },
+   {
+    "predio": "escola",
+    "x": 2.5,
+    "z": -1.56
+   },
+   {
+    "predio": "forja",
+    "x": 1.28,
+    "z": 2
+   },
+   {
+    "predio": "moinho",
+    "x": 4.46,
+    "z": 0.14
+   },
+   {
+    "predio": "estacao",
+    "x": 4.1,
+    "z": 1.4
+   },
+   {
+    "predio": "adro_da_igreja",
+    "x": -2.6,
+    "z": -1.33,
+    "logradouro": true
+   },
+   {
+    "predio": "patio_da_granja",
+    "x": 4.32,
+    "z": -1.02,
+    "logradouro": true
+   },
+   {
+    "predio": "caminho_do_acude",
+    "x": 4.95,
+    "z": -0.48,
+    "logradouro": true
+   },
+   {
+    "predio": "travessa_dos_fundos",
+    "x": -2.02,
+    "z": 2.47,
+    "logradouro": true
+   },
+   {
+    "predio": "cottage_1",
+    "x": -3.28,
+    "z": 0.98
+   },
+   {
+    "predio": "cottage_5",
+    "x": 0.2,
+    "z": 0.9
+   }
+  ]
+ }
+},
+{
  "id": "gerado_luta_23",
  "verdadeDeOuro": {
   "id": "gerado_luta_23",
@@ -57533,6 +60196,2975 @@ export const CASOS_LUTA = [
  }
 },
 {
+ "id": "gerado_luta_49",
+ "verdadeDeOuro": {
+  "id": "gerado_luta_49",
+  "vitima": "Lawrence Ward",
+  "reuCorreto": "gen_4_lavadeira",
+  "horasMorteAntesChegada": 10,
+  "horaMorteAbsoluta": 1,
+  "mecanismoCorreto": "trauma_contuso",
+  "instrumentoCorreto": "arma_de_ocasiao",
+  "metodoIniciado": null,
+  "motivacaoCorreta": "seguro_de_enterro",
+  "cenaEncenada": false,
+  "horaForjada": null,
+  "perifericos": {
+   "gen_6_lavrador": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
+   },
+   "gen_1_criada": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
+   },
+   "gen_2_criada": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
+   },
+   "gen_0_paroco": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
+   }
+  },
+  "encenacaoInstrumento": null
+ },
+ "suspeitos": [
+  {
+   "id": "gen_6_lavrador",
+   "nome": "Alfred Gray",
+   "idade": 18,
+   "relacao": "Lavrador; mora no Cottage nº 3",
+   "descricao": "Recebe de porta aberta e adianta-se às perguntas."
+  },
+  {
+   "id": "gen_1_criada",
+   "nome": "Alfred Walker",
+   "idade": 40,
+   "relacao": "Moço de lavoura; mora na Taverna",
+   "descricao": "Descreve por alto o que viu; miudeza não lhe ficou."
+  },
+  {
+   "id": "gen_4_lavadeira",
+   "nome": "Annie Andrews",
+   "idade": 38,
+   "relacao": "Lavadeira; mora no Cottage nº 2",
+   "descricao": "Conta a noite por canecas, não por horas."
+  },
+  {
+   "id": "gen_2_criada",
+   "nome": "Minnie Martin",
+   "idade": 17,
+   "relacao": "Criada; mora no Solar",
+   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
+  },
+  {
+   "id": "gen_0_paroco",
+   "nome": "Thomas Brown",
+   "idade": 74,
+   "relacao": "Pároco; mora no Presbitério",
+   "descricao": "Fala baixo e mede a porta antes de responder."
+  }
+ ],
+ "cartas": [
+  {
+   "id": "gen_rigor",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Rigidez Parcial",
+     "carimboPadrao": "Maxilar duro; membros ainda cedem",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "instalando",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 24,
+     "textoDisplay": "Corpo Endurecido",
+     "carimboPadrao": "Duro dos maxilares aos joelhos",
+     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "pleno",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 36,
+     "textoDisplay": "Rigidez Cedendo",
+     "carimboPadrao": "Maxilar solto; joelhos rígidos",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolucao",
+      "estadoDegradacao": "degradado"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Corpo Flácido",
+     "carimboPadrao": "Corpo mole, sem rigidez",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolvido",
+      "estadoDegradacao": "resolvido"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_livores",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Manchas que Cedem ao Polegar",
+     "carimboPadrao": "Manchas que empalidecem à pressão",
+     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "movel",
+      "posicaoCompativel": true
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Manchas Fixas",
+     "carimboPadrao": "Manchas fixas, sem empalidecer",
+     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "fixo",
+      "posicaoCompativel": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_lesao_fatal",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "A Fratura no Crânio",
+   "carimboPadrao": "Fratura com afundamento; sede: têmpora",
+   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "ferida",
+    "sinal": "ferida_contusa"
+   }
+  },
+  {
+   "id": "gen_reacao_vital",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "As Bordas da Ferida",
+   "carimboPadrao": "Bordas afastadas, coágulo aderido",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "reacao_vital",
+    "sinal": "reacao_vital"
+   }
+  },
+  {
+   "id": "gen_visto_vivo",
+   "localidade": "delegacia",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_1_criada",
+   "textoDisplay": "Última Vez com Vida",
+   "carimboPadrao": "Vítima com vida às 23h00 de 13/out",
+   "descricao": "Alfred Walker esteve com Lawrence Ward às 23h00 de 13/out, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.",
+   "tagsOcultas": {
+    "dominio": "temporal",
+    "subDominio": "ultima_vez_visto",
+    "horaAvistamento": -1
+   }
+  },
+  {
+   "id": "gen_instrumento",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Instrumento Lavado",
+   "carimboPadrao": "Instrumento lavado, crosta sob o rebite",
+   "descricao": "Entre os pertences de Annie Andrews, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão do morto.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "arma_de_ocasiao",
+    "pertenceA": "gen_4_lavadeira"
+   }
+  },
+  {
+   "id": "gen_sangue_alheio",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "quartos",
+   "celula": {
+    "col": 2,
+    "fila": 0
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "À altura do peito, na parede, um salpico fino, acima da linha das feridas do morto.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sangue_do_agressor",
+    "tipoVestigio": "sangue_alheio",
+    "pertenceA": "gen_4_lavadeira"
+   }
+  },
+  {
+   "id": "gen_peca_deslocada",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "taproom",
+   "celula": {
+    "col": 2,
+    "fila": 2
+   },
+   "mobilia": "taproom_balcao_com_beer_engine",
+   "textoDisplay": "Peça Fora do Lugar",
+   "carimboPadrao": "Peça girada fora do seu assento",
+   "descricao": "A peça está fora do esquadro do seu lugar, girada e arrastada; os pés riscaram o chão no sentido do vão da sala.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ambiente_da_luta",
+    "tipoVestigio": "peca_deslocada"
+   }
+  },
+  {
+   "id": "gen_ferimento_reu",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "corpo_do_reu",
+   "textoDisplay": "Ferimento no Suspeito",
+   "carimboPadrao": "Ferimento recente no suspeito (antebraços)",
+   "descricao": "De manga arregaçada por ordem do constable, Annie Andrews mostra o que a roupa cobria: a marca recente de luta, nos antebraços. A lesão tem os dias do crime, e a explicação doméstica não vem.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ferimento_do_agressor",
+    "pertenceA": "gen_4_lavadeira",
+    "sede": "antebracos"
+   }
+  },
+  {
+   "id": "gen_sinal_exigivel",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Sinal no Corpo da Vítima",
+   "carimboPadrao": "Marca-espelho esperada (dorso das mãos)",
+   "descricao": "Marca-espelho esperada (dorso das mãos)",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sinal_exigivel",
+    "regiao": "maos",
+    "sede": "dorso_das_maos",
+    "metodoOrigem": "contundente"
+   }
+  },
+  {
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_1_criada",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na madrugada de 14",
+   "descricao": "Alfred Walker conta o que a parede deixou passar na madrugada de 14: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "madrugada"
+   }
+  },
+  {
+   "id": "gen_motivo",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Os Papéis do Móbil",
+   "carimboPadrao": "Móbil de Annie Andrews",
+   "descricao": "Uma apólice de enterro em nome de Lawrence Ward paga a Annie Andrews quando a morte vier.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "seguro_de_enterro",
+    "ligadoA": "gen_4_lavadeira"
+   }
+  },
+  {
+   "id": "gen_intf_intf_1_limpeza",
+   "localidade": "cena",
+   "textoDisplay": "Esfrega Fresca na Cena",
+   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
+   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "esfrega_fresca"
+   },
+   "vestigioInterferencia": {
+    "classe": "esfrega_fresca_pos_pericia",
+    "frescor": "fresco",
+    "localId": "pub",
+    "comodo": "quartos",
+    "celula": {
+     "col": 0,
+     "fila": 1
+    },
+    "mobilia": "quartos_bacia_e_jarro"
+   }
+  },
+  {
+   "id": "gen_intf_intf_2_recusa",
+   "localidade": "vizinhanca",
+   "textoDisplay": "A Boca que Fechou",
+   "carimboPadrao": "Recusa súbita da testemunha",
+   "descricao": "Alfred Walker não abre a porta mais que um palmo. O que declarou antes, nega agora ter declarado.",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "recusa_subita",
+    "testemunha": "gen_1_criada"
+   },
+   "vestigioInterferencia": {
+    "classe": "testemunha_amedrontada",
+    "frescor": "fresco",
+    "localId": null,
+    "comodo": null,
+    "celula": null,
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_intf_intf_2_ameaca",
+   "localidade": "vizinhanca",
+   "textoDisplay": "A Visita Fora de Hora",
+   "carimboPadrao": "Visita fora de hora notada na vizinhança",
+   "descricao": "Uma visita depois de escurecido, notada da rua, e uma voz baixa à porta. Mais de um vizinho dá o nome de quem veio: Annie Andrews.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "pressao_sobre_testemunha",
+    "pertenceA": "gen_4_lavadeira"
+   },
+   "vestigioInterferencia": {
+    "classe": "visita_fora_de_hora",
+    "frescor": "fresco",
+    "localId": null,
+    "comodo": null,
+    "celula": null,
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_segredo_gen_6_lavrador",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "taproom",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Alfred Gray",
+   "descricao": "Meia dúzia de linhas na letra de Alfred Gray: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_6_lavrador",
+    "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_1_criada",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Alfred Walker",
+   "carimboPadrao": "Paradeiro de Alfred Walker, confirmado",
+   "descricao": "A rua dá Alfred Walker na Taverna madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_criada"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_2_criada",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Minnie Martin",
+   "carimboPadrao": "Paradeiro de Minnie Martin, confirmado",
+   "descricao": "A rua dá Minnie Martin no Solar madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_criada"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_0_paroco",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "taproom",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Thomas Brown",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de Thomas Brown por extenso, e uma assinatura só.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_0_paroco",
+    "revelaSegredo": "acerto_reservado"
+   }
+  },
+  {
+   "id": "gen_movel_gen_0_paroco",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Papéis de Thomas Brown",
+   "carimboPadrao": "Móbil de Thomas Brown",
+   "descricao": "A queixa pública entre Thomas Brown e Lawrence Ward, a capela contra a taverna, está lavrada em ata.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "rivalidade_capela_taverna",
+    "ligadoA": "gen_0_paroco"
+   }
+  },
+  {
+   "id": "gen_alibi_gen_6_lavrador",
+   "localidade": "casa_cottage_3",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_6_lavrador",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_1_criada",
+   "localidade": "casa_pub",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_1_criada",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_4_lavadeira",
+   "localidade": "casa_cottage_2",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_4_lavadeira",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_2_criada",
+   "localidade": "casa_solar",
+   "textoDisplay": "O Solar (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: O Solar (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_2_criada",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_0_paroco",
+   "localidade": "casa_vicarage",
+   "textoDisplay": "O Presbitério (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: O Presbitério (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_0_paroco",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  }
+ ],
+ "localidades": [
+  {
+   "id": "corpo",
+   "rotuloMesa": "O Corpo",
+   "titulo": "O Corpo — A Taverna",
+   "subtitulo": "Lawrence Ward, taverneiro, 31 anos",
+   "acoesEspeciais": [
+    "termometro"
+   ],
+   "gestos": [
+    {
+     "id": "gesto_voltar_corpo",
+     "rotulo": "Voltar o corpo",
+     "cartaId": "gen_livores"
+    }
+   ],
+   "prosa": [
+    "O morto jaz no chão do cômodo a que a vila chama quarto do sobrado, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
+    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M185 133 H201 V149 H185 Z",
+     "M159 133 H175 V149 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   }
+  },
+  {
+   "id": "cena",
+   "rotuloMesa": "A Cena do Crime",
+   "titulo": "A Cena — A Taverna",
+   "subtitulo": "Onde Lawrence Ward foi achado",
+   "acoesEspeciais": [],
+   "introducao": [
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido.",
+    "O piano ocupa a sala, de tampa fechada e sem partituras à vista."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_quartos",
+     "rotulo": "Quartos (sobrado)",
+     "comodo": "quartos",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, bacia e jarro, baú de roupa. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+     ]
+    },
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No cômodo, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão."
+     ]
+    },
+    {
+     "id": "pt_cena_taproom",
+     "rotulo": "Taproom",
+     "comodo": "taproom",
+     "prosa": [
+      "Do mobiliário, bancos corridos sobre serragem, balcão com beer engine, mesas de taverna. Há mobília por erguer do chão. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_6_lavrador]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_0_paroco]]."
+     ]
+    },
+    {
+     "id": "pt_cena_parlour",
+     "rotulo": "Parlour",
+     "comodo": "parlour",
+     "prosa": [
+      "No cômodo, castiçal de latão, o relógio da família."
+     ]
+    }
+   ],
+   "planta": {
+    "titulo": "A Taverna",
+    "viewBox": "0 0 256 178",
+    "comodos": [
+     {
+      "id": "quartos",
+      "rotulo": "Quartos (sobrado)",
+      "contorno": "M24 24 H154 V76 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 57,
+         "y": 50
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 89,
+         "y": 25,
+         "w": 64,
+         "h": 50
+        },
+        "pos": {
+         "x": 122,
+         "y": 50
+        }
+       }
+      ]
+     },
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M154 24 H232 V76 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "taproom",
+      "rotulo": "Taproom",
+      "contorno": "M24 76 H154 V154 H24 Z",
+      "rotuloPos": {
+       "x": 89,
+       "y": 90
+      },
+      "alvos": []
+     },
+     {
+      "id": "parlour",
+      "rotulo": "Parlour",
+      "contorno": "M154 76 H232 V154 H154 Z",
+      "rotuloPos": {
+       "x": 193,
+       "y": 90
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 55 H45 V71 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M211 29 H227 V45 H211 Z",
+     "M185 55 H201 V71 H185 Z",
+     "M29 81 H45 V97 H29 Z",
+     "M81 81 H97 V97 H81 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M185 133 H201 V149 H185 Z",
+     "M159 133 H175 V149 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 128,
+      "y": 170
+     }
+    ]
+   },
+   "blocosContingentes": [
+    {
+     "eventoId": "intf_1",
+     "quando": "disparado",
+     "paragrafos": [
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]]."
+     ]
+    },
+    {
+     "eventoId": "intf_1",
+     "quando": "nao_disparado",
+     "paragrafos": [
+      "No cômodo chamado taproom, ao exame: [[gen_peca_deslocada]]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "delegacia",
+   "rotuloMesa": "O Posto do Constable",
+   "titulo": "O Posto do Constable",
+   "subtitulo": "Os papéis do caso",
+   "acoesEspeciais": [],
+   "prosa": [
+    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_paroco]].",
+    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
+   ],
+   "blocosContingentes": [
+    {
+     "eventoId": "intf_2",
+     "quando": "nao_disparado",
+     "paragrafos": [
+      "No registro da ronda, na letra do guarda: [[gen_visto_vivo]]."
+     ]
+    },
+    {
+     "eventoId": "intf_2",
+     "quando": "disparado",
+     "paragrafos": [
+      "A folha do avistamento sumiu do registro, e quem a ditou nega agora tê-la ditado."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "vizinhanca",
+   "rotuloMesa": "A Mercearia",
+   "titulo": "A Mercearia",
+   "subtitulo": "Onde a vila conta o que sabe",
+   "acoesEspeciais": [],
+   "prosa": [
+    "Na mercearia, a fila da tarde anda devagar: cada freguês deixa a compra e leva o falatório.",
+    "A Taverna fica na High Street, à parte das casas de morada; até a porta mais próxima vai um bom pedaço de caminho.",
+    "Quem dormia sob o teto da própria cena conta, a meia-voz: [[gen_ruido_ouvido]].",
+    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_1_criada]], [[gen_corrobora_gen_2_criada]]."
+   ],
+   "blocosContingentes": [
+    {
+     "eventoId": "intf_2",
+     "quando": "disparado",
+     "paragrafos": [
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_2_recusa]] [[gen_intf_intf_2_ameaca]]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotuloMesa": "Cottage nº 3",
+   "titulo": "Cottage nº 3 — à porta",
+   "subtitulo": "A morada de Alfred Gray",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 3 fica na ruela dos cottages. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "casa_pub",
+   "rotuloMesa": "A Taverna",
+   "titulo": "A Taverna — à porta",
+   "subtitulo": "A morada de Alfred Walker",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A casa é a mesma do achado; o guarda de sentinela dá passagem, e a conversa corre no batente."
+   ]
+  },
+  {
+   "id": "casa_cottage_2",
+   "rotuloMesa": "Cottage nº 2",
+   "titulo": "Cottage nº 2 — à porta",
+   "subtitulo": "A morada de Annie Andrews",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 2 fica na ruela dos cottages. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "casa_solar",
+   "rotuloMesa": "O Solar",
+   "titulo": "O Solar — à porta",
+   "subtitulo": "A morada de Minnie Martin",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Solar fica no parque do solar. O constable acompanha até a soleira e fica um passo atrás."
+   ]
+  },
+  {
+   "id": "casa_vicarage",
+   "rotuloMesa": "O Presbitério",
+   "titulo": "O Presbitério — à porta",
+   "subtitulo": "A morada de Thomas Brown",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Presbitério fica no adro da igreja. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "Cottage nº 2 — a busca",
+   "titulo": "Cottage nº 2 — a diligência",
+   "subtitulo": "Busca com o constable à porta",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o constable à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
+    "Antes de liberar a dona das coisas, o constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
+   ],
+   "blocosContingentes": []
+  }
+ ],
+ "nosMapa": [
+  {
+   "id": "corpo",
+   "rotulo": "O Corpo",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "cena",
+   "rotulo": "A Cena do Crime",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "delegacia",
+   "rotulo": "O Posto do Constable",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "vizinhanca",
+   "rotulo": "A Mercearia",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotulo": "Cottage nº 3",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_pub",
+   "rotulo": "A Taverna",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_2",
+   "rotulo": "Cottage nº 2",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_solar",
+   "rotulo": "O Solar",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_vicarage",
+   "rotulo": "O Presbitério",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "Cottage nº 2 — a busca",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
+  }
+ ],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
+ "custos": {
+  "cena_predio|cena_predio": 0,
+  "cena_predio|vila": 1,
+  "vila|cena_predio": 1,
+  "vila|vila": 1
+ },
+ "dialogos": {
+  "dialogo_gen_6_lavrador": {
+   "suspeitoId": "gen_6_lavrador",
+   "origemLocalidade": "casa_cottage_3",
+   "chamada": "Interrogar Alfred Gray",
+   "titulo": "Interrogatório — Alfred Gray",
+   "subtitulo": "Lavrador, 18 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_6_lavrador": "reacao_gen_segredo_gen_6_lavrador"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_6_lavrador",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Alfred Gray abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_6_lavrador": {
+     "fala": [
+      "Alfred Gray lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Lawrence Ward estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Lawrence Ward? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Lawrence Ward eu não conhecia.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Lawrence Ward? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Lawrence Ward? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Lawrence Ward? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Lawrence Ward? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_1_criada": {
+   "suspeitoId": "gen_1_criada",
+   "origemLocalidade": "casa_pub",
+   "chamada": "Interrogar Alfred Walker",
+   "titulo": "Interrogatório — Alfred Walker",
+   "subtitulo": "Moço de lavoura, 40 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_visto_vivo": "reacao_gen_visto_vivo",
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_visto_vivo",
+     "rotulo": "[Última Vez com Vida] A que horas, exatamente, viu a vítima com vida?"
+    },
+    {
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Alfred Walker entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_visto_vivo": {
+     "fala": [
+      "Alfred Walker responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_ruido_ouvido": {
+     "fala": [
+      "Alfred Walker conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Lawrence Ward era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Mãos vermelhas de quem esfrega assoalho de joelhos. Arranhões finos da grelha do fogão — trabalho, não luta."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_4_lavadeira": {
+   "suspeitoId": "gen_4_lavadeira",
+   "origemLocalidade": "casa_cottage_2",
+   "chamada": "Interrogar Annie Andrews",
+   "titulo": "Interrogatório — Annie Andrews",
+   "subtitulo": "Lavadeira, 38 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_instrumento": "reacao_gen_instrumento"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Instrumento Lavado] Por que a peça foi guardada lavada, com a junta ainda úmida?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Annie Andrews entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" Ao citar a primeira hora, corrige-a no meio da frase."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_instrumento": {
+     "fala": [
+      "Annie Andrews responde sem olhar a peça duas vezes. \"Lavei-a porque se lava ferramenta; ferrugem não espera inquérito. O feitio casa com a lesão, diz esse papel; casa também com metade das bancadas do condado. E o constable lavrou de próprio punho o lugar em que me achei.\" E devolve a peça sem a olhar de novo."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_4_lavadeira]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Alisa o avental. \"Com licença, que a casa não para.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_4_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Lawrence Ward era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Dá a hora, dá o lugar, e para; as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_4_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_4_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Annie Andrews cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Nos nós dos dedos, equimoses frescas, circunscritas, com inchaço que os dias do crime explicam. Não é calo de ofício."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_2_criada": {
+   "suspeitoId": "gen_2_criada",
+   "origemLocalidade": "casa_solar",
+   "chamada": "Interrogar Minnie Martin",
+   "titulo": "Interrogatório — Minnie Martin",
+   "subtitulo": "Criada, 17 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {},
+   "confrontos": [],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "O constable bate; Minnie Martin abre, ajeita as fitas da touca e fica no vão da porta. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Alfred Walker. Por quê, não sei dizer; sei, e chega.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A madrugada de sábado vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Lawrence Ward? Não me fale dele no passado ainda. Alma melhor não pisou esta vila, e quem disser o contrário há de o dizer na minha frente. Faz falta mais do que a vila sabe medir.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Lawrence Ward? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_0_paroco": {
+   "suspeitoId": "gen_0_paroco",
+   "origemLocalidade": "casa_vicarage",
+   "chamada": "Interrogar Thomas Brown",
+   "titulo": "Interrogatório — Thomas Brown",
+   "subtitulo": "Pároco, 74 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_0_paroco": "reacao_gen_segredo_gen_0_paroco"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_0_paroco",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Já esteve numa sala cheia e sentiu que ninguém dava por si?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "O constable bate; Thomas Brown abre e se descobre, o chapéu na mão. \"Deixei a sacristia aberta e o sineiro à espera. Diga do que precisa.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Fala baixo e mede a porta antes de cada resposta."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Preciso das horas na madrugada de sábado: onde, e de quando a quando.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Examina o que se lhe apresenta e o devolve com as duas mãos. \"Disso não sei dar testemunho. Pergunte do rebanho, que do rebanho respondo.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_0_paroco": {
+     "fala": [
+      "Thomas Brown cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_0_paroco]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Lawrence Ward? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Se um nome hão de me arrancar, arranco-o eu: Minnie Martin. Digo-o de viva voz e respondo pelo que digo. Prova, ninguém ma pediu; tenho a minha certeza, e ela não me falha desde moço.\" Pousa a mão na ombreira, um instante. \"Que se apure tudo, e depressa. A paróquia reza por isso.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_0_paroco]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Lawrence Ward? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Lawrence Ward? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Pousa a mão na ombreira, um instante. \"Que se apure tudo, e depressa. A paróquia reza por isso.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_0_paroco]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Lawrence Ward? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Pousa a mão na ombreira, um instante. \"Que se apure tudo, e depressa. A paróquia reza por isso.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_0_paroco]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Lawrence Ward?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Lawrence Ward, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Lawrence Ward? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Pousa a mão na ombreira, um instante. \"Que se apure tudo, e depressa. A paróquia reza por isso.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Thomas Brown ri sozinho um instante e para. \"A vida inteira falei alto e fiz palhaçada para que reparassem em mim. Tire-me a graça e ninguém nesta vila torna a me ver. Dito assim parece pouca coisa; para mim é tudo.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  }
+ },
+ "confrontos": {
+  "estadoInicial": "presente",
+  "consequencias": {}
+ },
+ "abertura": {
+  "passos": [
+   {
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
+    "paragrafos": [
+     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
+    ],
+    "rotuloBotao": "O constable é chamado"
+   },
+   {
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
+    "paragrafos": [
+     "O constable Bexley pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
+    ],
+    "rotuloBotao": "Ler a carta"
+   },
+   {
+    "id": "carta",
+    "titulo": "A carta do Constable",
+    "carta": true,
+    "paragrafos": [
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Aldergate, e isto passa do meu ofício. Lawrence Ward, taverneiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"Bexley, Constable.\""
+    ],
+    "rotuloBotao": "Aceitar o chamado"
+   },
+   {
+    "id": "metodo",
+    "titulo": "A maleta pronta",
+    "paragrafos": [
+     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
+    ],
+    "rotuloBotao": "Tomar o trem"
+   },
+   {
+    "id": "chegada",
+    "titulo": "Aldergate",
+    "paragrafos": [
+     "Chove fino sobre Aldergate quando o trem chega. Bexley espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
+    ],
+    "rotuloBotao": "Ouvir o constable"
+   },
+   {
+    "id": "briefing",
+    "titulo": "O relato do constable Bexley",
+    "briefing": true,
+    "paragrafos": [
+     "\"O essencial é isto: Lawrence Ward, 31 anos, taverneiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
+    ],
+    "rotuloBotao": "Entrar — iniciar a investigação"
+   }
+  ],
+  "perguntas": [
+   {
+    "id": "sobre_a_hora",
+    "pergunta": "O que se sabe da hora da morte?",
+    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
+   },
+   {
+    "id": "quem_convive",
+    "pergunta": "Quem convivia com a vítima?",
+    "resposta": "\"Do dia a dia dele? Alfred Gray, Alfred Walker — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
+   },
+   {
+    "id": "desafetos",
+    "pergunta": "O morto tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
+   }
+  ],
+  "opcoesPersonagem": [
+   {
+    "id": "harlan",
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
+   }
+  ]
+ },
+ "parametrosCena": {
+  "horasChegada": 11,
+  "ambiente": 11,
+  "calendario": {
+   "diaBase": 14,
+   "mesAbrev": "out",
+   "mesExtenso": "outubro",
+   "ano": 1893
+  }
+ },
+ "maquete": {
+  "morfologia": "nucleada",
+  "tabua": {
+   "centroX": 0.3,
+   "largura": 13.6,
+   "fundo": 6.34
+  },
+  "posicoes": {
+   "corpo": {
+    "x": -2,
+    "z": 0.52,
+    "predio": "pub"
+   },
+   "cena": {
+    "x": -1.88,
+    "z": -0.1,
+    "predio": "anexo_cena"
+   },
+   "delegacia": {
+    "x": -1.72,
+    "z": -1.32,
+    "predio": "delegacia"
+   },
+   "vizinhanca": {
+    "x": 0.78,
+    "z": -1.32,
+    "predio": "mercearia"
+   },
+   "casa_cottage_3": {
+    "x": 1.32,
+    "z": 1.8,
+    "predio": "cottage_3"
+   },
+   "casa_pub": {
+    "x": -2.66,
+    "z": 0.08,
+    "predio": "anexo_casa_pub"
+   },
+   "casa_cottage_2": {
+    "x": 0.32,
+    "z": 1.82,
+    "predio": "cottage_2"
+   },
+   "casa_solar": {
+    "x": -3.22,
+    "z": -1.88,
+    "predio": "solar"
+   },
+   "casa_vicarage": {
+    "x": -4.6,
+    "z": 0.24,
+    "predio": "vicarage"
+   },
+   "oficio_do_reu": {
+    "x": 0.44,
+    "z": 1.2,
+    "predio": "anexo_oficio_do_reu"
+   }
+  },
+  "formas": {
+   "pub": {
+    "w": 1.45,
+    "d": 1,
+    "h": 0.93,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.59,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.44,
+      "z": -0.2,
+      "alt": 0.49
+     },
+     {
+      "x": -0.36,
+      "z": 0.16,
+      "alt": 0.49
+     }
+    ]
+   },
+   "anexo_cena": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.3
+   },
+   "delegacia": {
+    "w": 1.35,
+    "d": 1,
+    "h": 0.97,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.48,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.41,
+      "z": -0.2,
+      "alt": 0.5
+     }
+    ]
+   },
+   "mercearia": {
+    "w": 1.05,
+    "d": 0.88,
+    "h": 0.7,
+    "corParede": "#8d7a5a",
+    "corTelhado": "#4d3a29",
+    "telhadoAltura": 0.44,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.32,
+      "z": -0.18,
+      "alt": 0.45
+     }
+    ],
+    "marquise": true
+   },
+   "cottage_3": {
+    "w": 0.77,
+    "d": 0.6,
+    "h": 0.55,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.23,
+      "z": -0.12,
+      "alt": 0.43
+     }
+    ]
+   },
+   "anexo_casa_pub": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.75
+   },
+   "cottage_2": {
+    "w": 0.72,
+    "d": 0.65,
+    "h": 0.5,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.22,
+      "z": -0.13,
+      "alt": 0.42
+     }
+    ]
+   },
+   "solar": {
+    "w": 1.65,
+    "d": 1.1,
+    "h": 1.05,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.63,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.49,
+      "z": -0.22,
+      "alt": 0.51
+     },
+     {
+      "x": -0.41,
+      "z": 0.18,
+      "alt": 0.51
+     }
+    ]
+   },
+   "vicarage": {
+    "w": 1.15,
+    "d": 1,
+    "h": 1.05,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.57,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.35,
+      "z": -0.2,
+      "alt": 0.51
+     },
+     {
+      "x": -0.29,
+      "z": 0.16,
+      "alt": 0.51
+     }
+    ]
+   },
+   "anexo_oficio_do_reu": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.3
+   },
+   "igreja": {
+    "w": 1,
+    "d": 1.6,
+    "h": 1.3,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.55,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "capela": {
+    "w": 0.9,
+    "d": 1.15,
+    "h": 0.9,
+    "corParede": "#96825e",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.52,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "botica": {
+    "w": 1,
+    "d": 0.83,
+    "h": 0.8,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.49,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.3,
+      "z": -0.17,
+      "alt": 0.47
+     }
+    ],
+    "marquise": true
+   },
+   "escola": {
+    "w": 1.15,
+    "d": 0.9,
+    "h": 0.77,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.51,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.35,
+      "z": -0.18,
+      "alt": 0.46
+     }
+    ]
+   },
+   "casa_do_medico": {
+    "w": 1.1,
+    "d": 0.9,
+    "h": 0.95,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.6,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.33,
+      "z": -0.18,
+      "alt": 0.49
+     },
+     {
+      "x": -0.28,
+      "z": 0.14,
+      "alt": 0.49
+     }
+    ]
+   },
+   "forja": {
+    "w": 1.1,
+    "d": 0.85,
+    "h": 0.55,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.39,
+    "beiral": 0.1,
+    "ristela": false,
+    "chamines": [
+     {
+      "x": 0.33,
+      "z": -0.17,
+      "alt": 0.43
+     }
+    ]
+   },
+   "granja": {
+    "w": 1.3,
+    "d": 1.05,
+    "h": 0.8,
+    "corParede": "#83704e",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.55,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.39,
+      "z": -0.21,
+      "alt": 0.47
+     }
+    ]
+   },
+   "moinho": {
+    "w": 0.95,
+    "d": 0.9,
+    "h": 1.35,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.53,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": [],
+    "moinho": true
+   },
+   "estacao": {
+    "w": 1.2,
+    "d": 0.7,
+    "h": 0.62,
+    "corParede": "#8a7355",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.41,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.36,
+      "z": -0.14,
+      "alt": 0.44
+     }
+    ]
+   },
+   "adro_da_igreja": {
+    "w": 1.15,
+    "d": 0.85,
+    "h": 0.05,
+    "corParede": "#6a6656",
+    "corTelhado": "#514d40",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "patio_da_granja": {
+    "w": 1.1,
+    "d": 0.85,
+    "h": 0.04,
+    "corParede": "#716448",
+    "corTelhado": "#554b3c",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "caminho_do_acude": {
+    "w": 1.4,
+    "d": 0.6,
+    "h": 0.04,
+    "corParede": "#5e6650",
+    "corTelhado": "#4c5546",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "travessa_dos_fundos": {
+    "w": 1.35,
+    "d": 0.5,
+    "h": 0.04,
+    "corParede": "#6a6252",
+    "corTelhado": "#565043",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "cottage_1": {
+    "w": 0.77,
+    "d": 0.65,
+    "h": 0.5,
+    "corParede": "#7d684c",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.46,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.23,
+      "z": -0.13,
+      "alt": 0.42
+     }
+    ]
+   },
+   "cottage_4": {
+    "w": 0.82,
+    "d": 0.6,
+    "h": 0.6,
+    "corParede": "#83704e",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.25,
+      "z": -0.12,
+      "alt": 0.44
+     }
+    ]
+   },
+   "cottage_5": {
+    "w": 0.87,
+    "d": 0.65,
+    "h": 0.6,
+    "corParede": "#7d684c",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.46,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.26,
+      "z": -0.13,
+      "alt": 0.44
+     }
+    ]
+   },
+   "cottage_6": {
+    "w": 0.72,
+    "d": 0.7,
+    "h": 0.55,
+    "corParede": "#83704e",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.22,
+      "z": -0.14,
+      "alt": 0.43
+     }
+    ]
+   }
+  },
+  "cenario": [
+   {
+    "predio": "igreja",
+    "x": -4.8,
+    "z": -1.62
+   },
+   {
+    "predio": "capela",
+    "x": -3.56,
+    "z": 1.66
+   },
+   {
+    "predio": "botica",
+    "x": -0.54,
+    "z": -1.4
+   },
+   {
+    "predio": "escola",
+    "x": 2.06,
+    "z": -1.44
+   },
+   {
+    "predio": "casa_do_medico",
+    "x": -0.18,
+    "z": 0.56
+   },
+   {
+    "predio": "forja",
+    "x": 1.04,
+    "z": 0.62
+   },
+   {
+    "predio": "granja",
+    "x": 4.62,
+    "z": 0.7
+   },
+   {
+    "predio": "moinho",
+    "x": 5.36,
+    "z": -1.9
+   },
+   {
+    "predio": "estacao",
+    "x": 5.4,
+    "z": 1.6
+   },
+   {
+    "predio": "adro_da_igreja",
+    "x": -4.3,
+    "z": -0.58,
+    "logradouro": true
+   },
+   {
+    "predio": "patio_da_granja",
+    "x": 3.93,
+    "z": 1.07,
+    "logradouro": true
+   },
+   {
+    "predio": "caminho_do_acude",
+    "x": 4.6,
+    "z": -1.62,
+    "logradouro": true
+   },
+   {
+    "predio": "travessa_dos_fundos",
+    "x": -1.68,
+    "z": 1.15,
+    "logradouro": true
+   },
+   {
+    "predio": "cottage_1",
+    "x": -0.68,
+    "z": 1.84
+   },
+   {
+    "predio": "cottage_4",
+    "x": 2.06,
+    "z": 1.78
+   },
+   {
+    "predio": "cottage_5",
+    "x": 3.06,
+    "z": 1.76
+   },
+   {
+    "predio": "cottage_6",
+    "x": 3.8,
+    "z": 1.74
+   }
+  ]
+ },
+ "interferencias": {
+  "eventos": [
+   {
+    "id": "intf_1",
+    "tipo": "destruir_evidencia",
+    "ator": "gen_4_lavadeira",
+    "atorPapel": "assassino",
+    "alvo": {
+     "tipo": "carta",
+     "cartaId": "gen_peca_deslocada",
+     "localId": "pub"
+    },
+    "gatilho": {
+     "tipo": "extracao_carta",
+     "cartaId": "gen_motivo",
+     "comoSoube": "o perito abriu o móbil do réu no posto do constable (extração de gen_motivo); o inquérito em público correu a vila até o ator"
+    },
+    "rota": {
+     "de": "cottage_2",
+     "para": "pub",
+     "faixa": "noite",
+     "sustentacao": "frequentado",
+     "comoChegou": "pub é parada habitual dele (frequentados da ficha); foi na faixa noite sem chamar atenção"
+    },
+    "rolagem": {
+     "wis": 3,
+     "penalidade": 2,
+     "alvo": 1,
+     "dado": 0,
+     "sucesso": true
+    },
+    "efeito": {
+     "cartaDestruida": "gen_peca_deslocada",
+     "cartasNovas": [
+      "gen_intf_intf_1_limpeza"
+     ]
+    },
+    "prenuncio": null,
+    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
+   },
+   {
+    "id": "intf_2",
+    "tipo": "intimidar_testemunha",
+    "ator": "gen_4_lavadeira",
+    "atorPapel": "assassino",
+    "alvo": {
+     "tipo": "testemunha",
+     "testemunhaId": "gen_1_criada",
+     "cartaId": "gen_visto_vivo",
+     "localId": "pub"
+    },
+    "gatilho": {
+     "tipo": "extracao_carta",
+     "cartaId": "gen_motivo",
+     "comoSoube": "o perito abriu o móbil no posto do constable (extração de gen_motivo); a vila comentou, e o ator soube que o cerco fechava"
+    },
+    "rota": {
+     "de": "cottage_2",
+     "para": "pub",
+     "faixa": "madrugada",
+     "sustentacao": "frequentado",
+     "comoChegou": "pub é parada habitual dele (frequentados da ficha); foi na faixa madrugada sem chamar atenção"
+    },
+    "rolagem": {
+     "wis": 3,
+     "penalidade": 2,
+     "alvo": 1,
+     "dado": 1,
+     "sucesso": false
+    },
+    "efeito": {
+     "cartaDestruida": "gen_visto_vivo",
+     "cartasNovas": [
+      "gen_intf_intf_2_recusa",
+      "gen_intf_intf_2_ameaca"
+     ]
+    },
+    "prenuncio": null,
+    "anuncio": "Uma testemunha que falava deixou de falar."
+   }
+  ]
+ },
+ "ecosInterferencia": {
+  "titulo": "O que se moveu enquanto eu ia e vinha",
+  "porChave": {
+   "destruir_evidencia_ocorrida": [
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
+   ],
+   "destruir_evidencia_evitada": [
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
+   ],
+   "intimidar_testemunha_ocorrida": [
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
+   ],
+   "intimidar_testemunha_evitada": [
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
+   ],
+   "subornar_testemunha_ocorrida": [
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
+   ],
+   "silenciar_ocorrida": [
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
+   ],
+   "silenciar_evitada": [
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
+   ]
+  }
+ }
+},
+{
  "id": "gerado_luta_51",
  "verdadeDeOuro": {
   "id": "gerado_luta_51",
@@ -60083,6 +65715,2599 @@ export const CASOS_LUTA = [
     "predio": "cottage_5",
     "x": 2.88,
     "z": 1.82
+   }
+  ]
+ }
+},
+{
+ "id": "gerado_luta_54",
+ "verdadeDeOuro": {
+  "id": "gerado_luta_54",
+  "vitima": "Thomas Davies",
+  "reuCorreto": "gen_0_lavrador",
+  "horasMorteAntesChegada": 23,
+  "horaMorteAbsoluta": -12,
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
+  "metodoIniciado": null,
+  "motivacaoCorreta": "divida_de_jogo",
+  "cenaEncenada": false,
+  "horaForjada": null,
+  "perifericos": {
+   "gen_2_lavrador": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
+   },
+   "gen_6_lavrador": {
+    "veredictoEsperado": "inocente_acesso",
+    "segredo": null
+   },
+   "gen_3_criada": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
+   },
+   "gen_1_criada": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
+   }
+  },
+  "encenacaoInstrumento": null
+ },
+ "suspeitos": [
+  {
+   "id": "gen_2_lavrador",
+   "nome": "Alfred Turner",
+   "idade": 14,
+   "relacao": "Lavrador; mora no Cottage nº 1",
+   "descricao": "Cada resposta sai ao preço de duas perguntas."
+  },
+  {
+   "id": "gen_6_lavrador",
+   "nome": "Gideon Wright",
+   "idade": 43,
+   "relacao": "Lavrador; mora no Cottage nº 3",
+   "descricao": "Descreve o que viu com hora e lugar."
+  },
+  {
+   "id": "gen_3_criada",
+   "nome": "Henry King",
+   "idade": 25,
+   "relacao": "Moço de lavoura; mora no Presbitério",
+   "descricao": "Recebe de porta aberta e adianta-se às perguntas."
+  },
+  {
+   "id": "gen_0_lavrador",
+   "nome": "Richard Gray",
+   "idade": 25,
+   "relacao": "Lavrador; mora no Cottage nº 4",
+   "descricao": "Responde o que se pergunta e volta ao trabalho."
+  },
+  {
+   "id": "gen_1_criada",
+   "nome": "Sarah Hill",
+   "idade": 22,
+   "relacao": "Criada; mora na Taverna",
+   "descricao": "Fala baixo e mede a porta antes de responder."
+  }
+ ],
+ "cartas": [
+  {
+   "id": "gen_rigor",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Rigidez Parcial",
+     "carimboPadrao": "Maxilar duro; membros ainda cedem",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "instalando",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 24,
+     "textoDisplay": "Corpo Endurecido",
+     "carimboPadrao": "Duro dos maxilares aos joelhos",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "pleno",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 36,
+     "textoDisplay": "Rigidez Cedendo",
+     "carimboPadrao": "Maxilar solto; joelhos rígidos",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolucao",
+      "estadoDegradacao": "degradado"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Corpo Flácido",
+     "carimboPadrao": "Corpo mole, sem rigidez",
+     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolvido",
+      "estadoDegradacao": "resolvido"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_livores",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Manchas que Cedem ao Polegar",
+     "carimboPadrao": "Manchas que empalidecem à pressão",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "movel",
+      "posicaoCompativel": true
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Manchas Fixas",
+     "carimboPadrao": "Manchas fixas, sem empalidecer",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "fixo",
+      "posicaoCompativel": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_lesao_fatal",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "A Ferida no Tórax",
+   "carimboPadrao": "Ferida perfuro-incisa; sede: tórax",
+   "descricao": "Uma fenda estreita, de bordas limpas e regulares, mais comprida que larga. A sonda desce fundo; o trajeto encerra mais do que a fenda aparenta. Sem ponte de pele entre as margens, e a pele ao redor não traz outros riscos rasos.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "ferida",
+    "sinal": "ferida_incisa"
+   }
+  },
+  {
+   "id": "gen_reacao_vital",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "As Bordas da Ferida",
+   "carimboPadrao": "Bordas afastadas, coágulo aderido",
+   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "reacao_vital",
+    "sinal": "reacao_vital"
+   }
+  },
+  {
+   "id": "gen_visto_vivo",
+   "localidade": "delegacia",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": null,
+   "textoDisplay": "Última Vez com Vida",
+   "carimboPadrao": "Vítima com vida às 11h00 de 13/out",
+   "descricao": "Do registro da ronda consta Thomas Davies com vida às 11h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
+   "tagsOcultas": {
+    "dominio": "temporal",
+    "subDominio": "ultima_vez_visto",
+    "horaAvistamento": -13
+   }
+  },
+  {
+   "id": "gen_instrumento",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de Richard Gray, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "lamina_de_oficio",
+    "pertenceA": "gen_0_lavrador"
+   }
+  },
+  {
+   "id": "gen_sangue_alheio",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 2,
+    "fila": 2
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "Fora do alcance da poça, na parede, assoma um borrifo miúdo à altura do peito.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sangue_do_agressor",
+    "tipoVestigio": "sangue_alheio",
+    "pertenceA": "gen_0_lavrador"
+   }
+  },
+  {
+   "id": "gen_ferimento_reu",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "corpo_do_reu",
+   "textoDisplay": "Ferimento no Suspeito",
+   "carimboPadrao": "Ferimento recente no suspeito (antebraços)",
+   "descricao": "De manga arregaçada por ordem do constable, Richard Gray mostra o que a roupa cobria: a marca recente de luta, nos antebraços. A lesão tem os dias do crime, e a explicação doméstica não vem.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ferimento_do_agressor",
+    "pertenceA": "gen_0_lavrador",
+    "sede": "antebracos"
+   }
+  },
+  {
+   "id": "gen_sinal_exigivel",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Sinal no Corpo da Vítima",
+   "carimboPadrao": "Marca-espelho esperada (palmas das mãos)",
+   "descricao": "Marca-espelho esperada (palmas das mãos)",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sinal_exigivel",
+    "regiao": "maos",
+    "sede": "palmas",
+    "metodoOrigem": "laminada"
+   }
+  },
+  {
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_2_lavrador",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na tarde de 13",
+   "descricao": "Alfred Turner conta o que a parede deixou passar na tarde de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "dia"
+   }
+  },
+  {
+   "id": "gen_frestas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 1,
+    "fila": 3
+   },
+   "mobilia": null,
+   "textoDisplay": "Sangue nas Frestas",
+   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
+   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "acumulacao_frestas"
+   }
+  },
+  {
+   "id": "gen_motivo",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Os Papéis do Móbil",
+   "carimboPadrao": "Móbil de Richard Gray",
+   "descricao": "Vales de aposta guardados por Thomas Davies, com a soma e a rubrica de Richard Gray. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "divida_de_jogo",
+    "ligadoA": "gen_0_lavrador"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_2_lavrador",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Alfred Turner",
+   "carimboPadrao": "Paradeiro de Alfred Turner, confirmado",
+   "descricao": "Gideon Wright esteve na Granja sexta à tarde e dá Alfred Turner por presente, do meio-dia às seis. Mais de uma boca diz o mesmo.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_2_lavrador"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_6_lavrador",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Gideon Wright",
+   "carimboPadrao": "Paradeiro de Gideon Wright, confirmado",
+   "descricao": "Alfred Turner esteve na Granja sexta à tarde e dá Gideon Wright por presente, do meio-dia às seis. Mais de uma boca diz o mesmo.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_6_lavrador"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_3_criada",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Henry King",
+   "descricao": "Meia dúzia de linhas na letra de Henry King: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_3_criada",
+    "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_1_criada",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Sarah Hill",
+   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de Sarah Hill por extenso, e uma assinatura só.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_1_criada",
+    "revelaSegredo": "acerto_reservado"
+   }
+  },
+  {
+   "id": "gen_movel_gen_1_criada",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Papéis de Sarah Hill",
+   "carimboPadrao": "Móbil de Sarah Hill",
+   "descricao": "Consta o pedido de socorro de Sarah Hill, e consta a recusa; a palavra que abria ou fechava essa porta era a de Thomas Davies, e atrás da recusa espera a workhouse.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "caridade_negada",
+    "ligadoA": "gen_1_criada"
+   }
+  },
+  {
+   "id": "gen_alibi_gen_2_lavrador",
+   "localidade": "casa_cottage_1",
+   "textoDisplay": "A Granja (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_2_lavrador",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_6_lavrador",
+   "localidade": "casa_cottage_3",
+   "textoDisplay": "A Granja (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_6_lavrador",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_3_criada",
+   "localidade": "casa_vicarage",
+   "textoDisplay": "O Presbitério (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Presbitério, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_3_criada",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_0_lavrador",
+   "localidade": "casa_cottage_4",
+   "textoDisplay": "Cottage nº 4 (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_0_lavrador",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_1_criada",
+   "localidade": "vizinhanca",
+   "textoDisplay": "A Taverna (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive em casa, na Taverna, e de porta para fora não pus o pé.\" Tomado por termo ali mesmo, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_1_criada",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  }
+ ],
+ "localidades": [
+  {
+   "id": "corpo",
+   "rotuloMesa": "O Corpo",
+   "titulo": "O Corpo — A Granja",
+   "subtitulo": "Thomas Davies, pastor de ovelhas, 29 anos",
+   "acoesEspeciais": [
+    "termometro"
+   ],
+   "gestos": [
+    {
+     "id": "gesto_voltar_corpo",
+     "rotulo": "Voltar o corpo",
+     "cartaId": "gen_livores"
+    }
+   ],
+   "prosa": [
+    "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
+    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
+  },
+  {
+   "id": "cena",
+   "rotuloMesa": "A Cena do Crime",
+   "titulo": "A Cena — A Granja",
+   "subtitulo": "Onde Thomas Davies foi achado",
+   "acoesEspeciais": [],
+   "introducao": [
+    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha da Granja",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, cadeiras Windsor, sofá velho, tapete de retalhos. De um canto a outro, nada guarda o seu lugar. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Um arranhão escapa de sob o pé de uma peça de mobília. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_criada]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_1_criada]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]. Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+     ]
+    },
+    {
+     "id": "pt_cena_paiol",
+     "rotulo": "Paiol",
+     "comodo": "paiol",
+     "prosa": [
+      "Do mobiliário, arreios pendurados, sacas de grão."
+     ]
+    }
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
+   "blocosContingentes": []
+  },
+  {
+   "id": "delegacia",
+   "rotuloMesa": "O Posto do Constable",
+   "titulo": "O Posto do Constable",
+   "subtitulo": "Os papéis do caso",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_criada]].",
+    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "vizinhanca",
+   "rotuloMesa": "A Taverna",
+   "titulo": "A Taverna",
+   "subtitulo": "Onde a vila conta o que sabe",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A taverna junta a vila ao fim da lida: bancos corridos, o balcão úmido, e quem chega ouve antes de sentar.",
+    "A vila é uma rua só, e os fundos dos lotes dão para o campo aberto.",
+    "A Granja fica na orla de trabalho, à parte das casas de morada; até a porta mais próxima vai um bom pedaço de caminho.",
+    "Quem lá estava àquela hora conta: [[gen_ruido_ouvido]].",
+    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_2_lavrador]], [[gen_corrobora_gen_6_lavrador]]."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "casa_cottage_1",
+   "rotuloMesa": "Cottage nº 1",
+   "titulo": "Cottage nº 1 — à porta",
+   "subtitulo": "A morada de Alfred Turner",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 1 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
+   ]
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotuloMesa": "Cottage nº 3",
+   "titulo": "Cottage nº 3 — à porta",
+   "subtitulo": "A morada de Gideon Wright",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 3 fica na ruela dos cottages. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "casa_vicarage",
+   "rotuloMesa": "O Presbitério",
+   "titulo": "O Presbitério — à porta",
+   "subtitulo": "A morada de Henry King",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Presbitério fica no adro da igreja. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "casa_cottage_4",
+   "rotuloMesa": "Cottage nº 4",
+   "titulo": "Cottage nº 4 — à porta",
+   "subtitulo": "A morada de Richard Gray",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 4 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
+   ]
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "A Granja — a busca",
+   "titulo": "A Granja — a diligência",
+   "subtitulo": "Busca com o constable à porta",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o constable à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
+    "Antes de liberar o dono das coisas, o constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
+   ],
+   "blocosContingentes": []
+  }
+ ],
+ "nosMapa": [
+  {
+   "id": "corpo",
+   "rotulo": "O Corpo",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "cena",
+   "rotulo": "A Cena do Crime",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "delegacia",
+   "rotulo": "O Posto do Constable",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "vizinhanca",
+   "rotulo": "A Taverna",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_1",
+   "rotulo": "Cottage nº 1",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotulo": "Cottage nº 3",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_vicarage",
+   "rotulo": "O Presbitério",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_4",
+   "rotulo": "Cottage nº 4",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "A Granja — a busca",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
+  }
+ ],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
+ "custos": {
+  "cena_predio|cena_predio": 0,
+  "cena_predio|vila": 1,
+  "vila|cena_predio": 1,
+  "vila|vila": 1
+ },
+ "dialogos": {
+  "dialogo_gen_2_lavrador": {
+   "suspeitoId": "gen_2_lavrador",
+   "origemLocalidade": "casa_cottage_1",
+   "chamada": "Interrogar Alfred Turner",
+   "titulo": "Interrogatório — Alfred Turner",
+   "subtitulo": "Lavrador, 14 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Alfred Turner entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"A que horas larga o serviço?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_ruido_ouvido": {
+     "fala": [
+      "Alfred Turner conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Davies?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Davies?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Thomas Davies era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Davies?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Davies?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Alfred Turner cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_6_lavrador": {
+   "suspeitoId": "gen_6_lavrador",
+   "origemLocalidade": "casa_cottage_3",
+   "chamada": "Interrogar Gideon Wright",
+   "titulo": "Interrogatório — Gideon Wright",
+   "subtitulo": "Lavrador, 43 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {},
+   "confrontos": [],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "O constable bate; Gideon Wright abre e se descobre, o chapéu na mão. \"Pergunte daqui mesmo, que a tarde é curta.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"A tarde acaba a que horas?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Thomas Davies? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_3_criada": {
+   "suspeitoId": "gen_3_criada",
+   "origemLocalidade": "casa_vicarage",
+   "chamada": "Interrogar Henry King",
+   "titulo": "Interrogatório — Henry King",
+   "subtitulo": "Moço de lavoura, 25 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_3_criada": "reacao_gen_segredo_gen_3_criada"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_3_criada",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Henry King abre antes que o constable acabe de bater, e toma a palavra do batente. \"Posso falar, com licença da casa. Respondo o que souber.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"A tarde acaba a que horas?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_3_criada": {
+     "fala": [
+      "Henry King lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Thomas Davies estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Thomas Davies eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Thomas Davies? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Thomas Davies?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_0_lavrador": {
+   "suspeitoId": "gen_0_lavrador",
+   "origemLocalidade": "casa_cottage_4",
+   "chamada": "Interrogar Richard Gray",
+   "titulo": "Interrogatório — Richard Gray",
+   "subtitulo": "Lavrador, 25 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_instrumento": "reacao_gen_instrumento"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Uma vida inteira de ofício, e um dia alguém a desfaz num gesto. Já imaginou?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "O constable bate; Richard Gray abre e se descobre, o chapéu na mão. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"A tarde acaba a que horas?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_instrumento": {
+     "fala": [
+      "Richard Gray olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Thomas Davies. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Davies?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Davies: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Thomas Davies. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Davies?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Davies: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Thomas Davies era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Thomas Davies. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Davies?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Davies: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Thomas Davies. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Thomas Davies?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com Thomas Davies: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Richard Gray olha as próprias mãos como quem confere uma ferramenta. \"Ponho anos numa obra: o melhor da vista, o melhor dos dedos. Basta um que chegue depois e faça melhor, ou diga que faz, e o que levei a vida a erguer vira nada. Perder isso me tira o sono, e disso não me envergonho.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Na palma, um corte inciso limpo, transversal, na base dos dedos. A borda é nítida: lâmina, não queda."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_1_criada": {
+   "suspeitoId": "gen_1_criada",
+   "origemLocalidade": "vizinhanca",
+   "chamada": "Interrogar Sarah Hill",
+   "titulo": "Interrogatório — Sarah Hill",
+   "subtitulo": "Criada, 22 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_1_criada": "reacao_gen_segredo_gen_1_criada"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_1_criada",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Sarah Hill deixa o serviço devagar e espera a pergunta da soleira. \"Com licença. Digo o que souber, e volto ao serviço.\" Fala baixo e mede a porta antes de cada resposta."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"A que horas larga o serviço?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_1_criada": {
+     "fala": [
+      "Sarah Hill cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Thomas Davies. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Thomas Davies eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Thomas Davies. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Thomas Davies? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Thomas Davies. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Thomas Davies. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Thomas Davies, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Thomas Davies? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Mãos vermelhas de quem esfrega assoalho de joelhos. Arranhões finos da grelha do fogão — trabalho, não luta."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  }
+ },
+ "confrontos": {
+  "estadoInicial": "presente",
+  "consequencias": {}
+ },
+ "abertura": {
+  "passos": [
+   {
+    "id": "descoberta",
+    "titulo": "Aldergate, 14 de outubro de 1893",
+    "paragrafos": [
+     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
+    ],
+    "rotuloBotao": "O constable é chamado"
+   },
+   {
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
+    "paragrafos": [
+     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
+    ],
+    "rotuloBotao": "Ler a carta"
+   },
+   {
+    "id": "carta",
+    "titulo": "A carta do Constable",
+    "carta": true,
+    "paragrafos": [
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Aldergate, e isto passa do meu ofício. Thomas Davies, pastor de ovelhas desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"Bexley, Constable.\""
+    ],
+    "rotuloBotao": "Aceitar o chamado"
+   },
+   {
+    "id": "metodo",
+    "titulo": "A maleta pronta",
+    "paragrafos": [
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
+    ],
+    "rotuloBotao": "Tomar o trem"
+   },
+   {
+    "id": "chegada",
+    "titulo": "Aldergate",
+    "paragrafos": [
+     "Chove fino sobre Aldergate quando o trem chega. Bexley espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
+    ],
+    "rotuloBotao": "Ouvir o constable"
+   },
+   {
+    "id": "briefing",
+    "titulo": "O relato do constable Bexley",
+    "briefing": true,
+    "paragrafos": [
+     "\"O essencial é isto: Thomas Davies, 29 anos, pastor de ovelhas. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
+     "Remexe o chapéu nas mãos e não avança. \"O que eu puder dizer, digo aqui fora; confesso que lá dentro mais atrapalho do que ajudo.\""
+    ],
+    "rotuloBotao": "Entrar — iniciar a investigação"
+   }
+  ],
+  "perguntas": [
+   {
+    "id": "sobre_a_hora",
+    "pergunta": "O que se sabe da hora da morte?",
+    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
+   },
+   {
+    "id": "quem_convive",
+    "pergunta": "Quem convivia com a vítima?",
+    "resposta": "\"Do dia a dia dele? Alfred Turner, Gideon Wright, Richard Gray — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
+   },
+   {
+    "id": "desafetos",
+    "pergunta": "O morto tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
+   }
+  ],
+  "opcoesPersonagem": [
+   {
+    "id": "harlan",
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
+   }
+  ]
+ },
+ "parametrosCena": {
+  "horasChegada": 11,
+  "ambiente": 11,
+  "calendario": {
+   "diaBase": 14,
+   "mesAbrev": "out",
+   "mesExtenso": "outubro",
+   "ano": 1893
+  }
+ },
+ "maquete": {
+  "morfologia": "linear",
+  "tabua": {
+   "centroX": 0.03,
+   "largura": 14.26,
+   "fundo": 6.51
+  },
+  "posicoes": {
+   "corpo": {
+    "x": 3.86,
+    "z": 0.83,
+    "predio": "granja"
+   },
+   "cena": {
+    "x": 3.98,
+    "z": 0.21,
+    "predio": "anexo_cena"
+   },
+   "delegacia": {
+    "x": -2.94,
+    "z": -0.73,
+    "predio": "delegacia"
+   },
+   "vizinhanca": {
+    "x": -2.58,
+    "z": 0.83,
+    "predio": "pub"
+   },
+   "casa_cottage_1": {
+    "x": -4.08,
+    "z": 2.02,
+    "predio": "cottage_1"
+   },
+   "casa_cottage_3": {
+    "x": -2.42,
+    "z": 1.76,
+    "predio": "cottage_3"
+   },
+   "casa_vicarage": {
+    "x": -4.08,
+    "z": -0.87,
+    "predio": "vicarage"
+   },
+   "casa_cottage_4": {
+    "x": -1.72,
+    "z": 1.78,
+    "predio": "cottage_4"
+   },
+   "oficio_do_reu": {
+    "x": 3.2,
+    "z": 0.39,
+    "predio": "anexo_oficio_do_reu"
+   }
+  },
+  "formas": {
+   "granja": {
+    "w": 1.4,
+    "d": 0.95,
+    "h": 0.75,
+    "corParede": "#83704e",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.55,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.42,
+      "z": -0.19,
+      "alt": 0.46
+     }
+    ]
+   },
+   "anexo_cena": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.3
+   },
+   "delegacia": {
+    "w": 1.35,
+    "d": 1,
+    "h": 0.92,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.48,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.41,
+      "z": -0.2,
+      "alt": 0.49
+     }
+    ]
+   },
+   "pub": {
+    "w": 1.5,
+    "d": 1.1,
+    "h": 0.93,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.54,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.45,
+      "z": -0.22,
+      "alt": 0.49
+     },
+     {
+      "x": -0.38,
+      "z": 0.18,
+      "alt": 0.49
+     }
+    ]
+   },
+   "cottage_1": {
+    "w": 0.77,
+    "d": 0.6,
+    "h": 0.55,
+    "corParede": "#83704e",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.46,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.23,
+      "z": -0.12,
+      "alt": 0.43
+     }
+    ]
+   },
+   "cottage_3": {
+    "w": 0.87,
+    "d": 0.65,
+    "h": 0.6,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.26,
+      "z": -0.13,
+      "alt": 0.44
+     }
+    ]
+   },
+   "vicarage": {
+    "w": 1.25,
+    "d": 1,
+    "h": 0.95,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.57,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.38,
+      "z": -0.2,
+      "alt": 0.49
+     },
+     {
+      "x": -0.31,
+      "z": 0.16,
+      "alt": 0.49
+     }
+    ]
+   },
+   "cottage_4": {
+    "w": 0.72,
+    "d": 0.7,
+    "h": 0.55,
+    "corParede": "#84704f",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.46,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.22,
+      "z": -0.14,
+      "alt": 0.43
+     }
+    ]
+   },
+   "anexo_oficio_do_reu": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.75
+   },
+   "igreja": {
+    "w": 0.9,
+    "d": 1.5,
+    "h": 1.3,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.55,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "capela": {
+    "w": 0.8,
+    "d": 1.15,
+    "h": 0.85,
+    "corParede": "#96825e",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.42,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "solar": {
+    "w": 1.55,
+    "d": 1.2,
+    "h": 1.15,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.58,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.47,
+      "z": -0.24,
+      "alt": 0.52
+     },
+     {
+      "x": -0.39,
+      "z": 0.19,
+      "alt": 0.52
+     }
+    ]
+   },
+   "botica": {
+    "w": 1,
+    "d": 0.78,
+    "h": 0.8,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.49,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.3,
+      "z": -0.16,
+      "alt": 0.47
+     }
+    ],
+    "marquise": true
+   },
+   "mercearia": {
+    "w": 0.95,
+    "d": 0.78,
+    "h": 0.75,
+    "corParede": "#8d7a5a",
+    "corTelhado": "#4d3a29",
+    "telhadoAltura": 0.44,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.28,
+      "z": -0.16,
+      "alt": 0.46
+     }
+    ],
+    "marquise": true
+   },
+   "escola": {
+    "w": 1.05,
+    "d": 0.8,
+    "h": 0.82,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.51,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.32,
+      "z": -0.16,
+      "alt": 0.47
+     }
+    ]
+   },
+   "casa_do_medico": {
+    "w": 1.2,
+    "d": 0.9,
+    "h": 0.95,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.5,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.36,
+      "z": -0.18,
+      "alt": 0.49
+     },
+     {
+      "x": -0.3,
+      "z": 0.14,
+      "alt": 0.49
+     }
+    ]
+   },
+   "forja": {
+    "w": 1,
+    "d": 0.75,
+    "h": 0.55,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.39,
+    "beiral": 0.1,
+    "ristela": false,
+    "chamines": [
+     {
+      "x": 0.3,
+      "z": -0.15,
+      "alt": 0.43
+     }
+    ]
+   },
+   "moinho": {
+    "w": 0.95,
+    "d": 0.85,
+    "h": 1.35,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.53,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": [],
+    "moinho": true
+   },
+   "estacao": {
+    "w": 1.3,
+    "d": 0.8,
+    "h": 0.52,
+    "corParede": "#8a7355",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.41,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.39,
+      "z": -0.16,
+      "alt": 0.42
+     }
+    ]
+   },
+   "adro_da_igreja": {
+    "w": 1.25,
+    "d": 0.85,
+    "h": 0.05,
+    "corParede": "#6a6656",
+    "corTelhado": "#514d40",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "patio_da_granja": {
+    "w": 1.2,
+    "d": 0.8,
+    "h": 0.04,
+    "corParede": "#716448",
+    "corTelhado": "#554b3c",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "caminho_do_acude": {
+    "w": 1.3,
+    "d": 0.65,
+    "h": 0.04,
+    "corParede": "#5e6650",
+    "corTelhado": "#4c5546",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "travessa_dos_fundos": {
+    "w": 1.25,
+    "d": 0.5,
+    "h": 0.04,
+    "corParede": "#6a6252",
+    "corTelhado": "#565043",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "cottage_2": {
+    "w": 0.82,
+    "d": 0.6,
+    "h": 0.6,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.25,
+      "z": -0.12,
+      "alt": 0.44
+     }
+    ]
+   }
+  },
+  "cenario": [
+   {
+    "predio": "igreja",
+    "x": -5.4,
+    "z": -0.93
+   },
+   {
+    "predio": "capela",
+    "x": -3.9,
+    "z": 0.87
+   },
+   {
+    "predio": "solar",
+    "x": -5.02,
+    "z": 0.97
+   },
+   {
+    "predio": "botica",
+    "x": -1.64,
+    "z": -0.89
+   },
+   {
+    "predio": "mercearia",
+    "x": -0.36,
+    "z": -0.79
+   },
+   {
+    "predio": "escola",
+    "x": 0.76,
+    "z": -0.93
+   },
+   {
+    "predio": "casa_do_medico",
+    "x": -1.46,
+    "z": 1.01
+   },
+   {
+    "predio": "forja",
+    "x": -0.16,
+    "z": 0.95
+   },
+   {
+    "predio": "moinho",
+    "x": 4.82,
+    "z": -0.89
+   },
+   {
+    "predio": "estacao",
+    "x": 5.46,
+    "z": 0.99
+   },
+   {
+    "predio": "adro_da_igreja",
+    "x": -4.72,
+    "z": 0.05,
+    "logradouro": true
+   },
+   {
+    "predio": "patio_da_granja",
+    "x": 4,
+    "z": 1.88,
+    "logradouro": true
+   },
+   {
+    "predio": "caminho_do_acude",
+    "x": 4.92,
+    "z": -1.87,
+    "logradouro": true
+   },
+   {
+    "predio": "travessa_dos_fundos",
+    "x": 1.22,
+    "z": 1.48,
+    "logradouro": true
+   },
+   {
+    "predio": "cottage_2",
+    "x": -3.12,
+    "z": 2.04
    }
   ]
  }
@@ -62871,6 +71096,5621 @@ export const CASOS_LUTA = [
      "texto": "William Wood recebe à soleira e não faz entrar. Fala baixo, o olho na rua: \"Não devia estar falando. Aqui todo mundo sabe quem abre a porta para quem.\" Despede-se antes da terceira pergunta."
     },
     "anuncio": "A testemunha que tinha o que contar foi encontrada morta."
+   }
+  ]
+ },
+ "ecosInterferencia": {
+  "titulo": "O que se moveu enquanto eu ia e vinha",
+  "porChave": {
+   "destruir_evidencia_ocorrida": [
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
+   ],
+   "destruir_evidencia_evitada": [
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
+   ],
+   "intimidar_testemunha_ocorrida": [
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
+   ],
+   "intimidar_testemunha_evitada": [
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
+   ],
+   "subornar_testemunha_ocorrida": [
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
+   ],
+   "silenciar_ocorrida": [
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
+   ],
+   "silenciar_evitada": [
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
+   ]
+  }
+ }
+},
+{
+ "id": "gerado_luta_76",
+ "verdadeDeOuro": {
+  "id": "gerado_luta_76",
+  "vitima": "John Read",
+  "reuCorreto": "gen_4_pastor_de_ovelhas",
+  "horasMorteAntesChegada": 21,
+  "horaMorteAbsoluta": -10,
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
+  "metodoIniciado": null,
+  "motivacaoCorreta": "divida_de_jogo",
+  "cenaEncenada": false,
+  "horaForjada": null,
+  "perifericos": {
+   "gen_1_pastor_de_ovelhas": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
+   },
+   "gen_3_costureira": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
+   },
+   "gen_2_squire": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
+   },
+   "gen_0_lavrador": {
+    "veredictoEsperado": "inocente_acesso",
+    "segredo": null
+   }
+  },
+  "encenacaoInstrumento": null
+ },
+ "suspeitos": [
+  {
+   "id": "gen_1_pastor_de_ovelhas",
+   "nome": "Alfred Evans",
+   "idade": 33,
+   "relacao": "Pastor de ovelhas; mora no Cottage nº 1",
+   "descricao": "Descreve o que viu com hora e lugar."
+  },
+  {
+   "id": "gen_3_costureira",
+   "nome": "Amy Clarke",
+   "idade": 39,
+   "relacao": "Costureira; mora no Cottage nº 2",
+   "descricao": "Recebe de porta aberta e adianta-se às perguntas."
+  },
+  {
+   "id": "gen_4_pastor_de_ovelhas",
+   "nome": "Benjamin Hill",
+   "idade": 46,
+   "relacao": "Pastor de ovelhas; mora no Cottage nº 3",
+   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
+  },
+  {
+   "id": "gen_2_squire",
+   "nome": "Henry Hill",
+   "idade": 68,
+   "relacao": "Senhor de terras; mora no Solar",
+   "descricao": "Cada resposta sai ao preço de duas perguntas."
+  },
+  {
+   "id": "gen_0_lavrador",
+   "nome": "James Harris",
+   "idade": 26,
+   "relacao": "Lavrador; mora no Cottage nº 6",
+   "descricao": "Espera a pergunta acabar de todo antes de abrir a boca."
+  }
+ ],
+ "cartas": [
+  {
+   "id": "gen_rigor",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Rigidez Parcial",
+     "carimboPadrao": "Maxilar duro; membros ainda cedem",
+     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "instalando",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 24,
+     "textoDisplay": "Corpo Endurecido",
+     "carimboPadrao": "Duro dos maxilares aos joelhos",
+     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "pleno",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 36,
+     "textoDisplay": "Rigidez Cedendo",
+     "carimboPadrao": "Maxilar solto; joelhos rígidos",
+     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolucao",
+      "estadoDegradacao": "degradado"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Corpo Flácido",
+     "carimboPadrao": "Corpo mole, sem rigidez",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolvido",
+      "estadoDegradacao": "resolvido"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_livores",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Manchas que Cedem ao Polegar",
+     "carimboPadrao": "Manchas que empalidecem à pressão",
+     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "movel",
+      "posicaoCompativel": true
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Manchas Fixas",
+     "carimboPadrao": "Manchas fixas, sem empalidecer",
+     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "fixo",
+      "posicaoCompativel": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_lesao_fatal",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "A Ferida no Tórax",
+   "carimboPadrao": "Ferida perfuro-incisa; sede: tórax",
+   "descricao": "Uma fenda estreita, de bordas limpas e regulares, mais comprida que larga. A sonda desce fundo; o trajeto encerra mais do que a fenda aparenta. Sem ponte de pele entre as margens, e a pele ao redor não traz outros riscos rasos.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "ferida",
+    "sinal": "ferida_incisa"
+   }
+  },
+  {
+   "id": "gen_reacao_vital",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "As Bordas da Ferida",
+   "carimboPadrao": "Bordas afastadas, coágulo aderido",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "reacao_vital",
+    "sinal": "reacao_vital"
+   }
+  },
+  {
+   "id": "gen_visto_vivo",
+   "localidade": "delegacia",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": null,
+   "textoDisplay": "Última Vez com Vida",
+   "carimboPadrao": "Vítima com vida às 13h00 de 13/out",
+   "descricao": "Do registro da ronda consta John Read com vida às 13h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
+   "tagsOcultas": {
+    "dominio": "temporal",
+    "subDominio": "ultima_vez_visto",
+    "horaAvistamento": -11
+   }
+  },
+  {
+   "id": "gen_instrumento",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de Benjamin Hill, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "lamina_de_oficio",
+    "pertenceA": "gen_4_pastor_de_ovelhas"
+   }
+  },
+  {
+   "id": "gen_sangue_alheio",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 2,
+    "fila": 2
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "Fora do alcance da poça, na parede, assoma um borrifo miúdo à altura do peito.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sangue_do_agressor",
+    "tipoVestigio": "sangue_alheio",
+    "pertenceA": "gen_4_pastor_de_ovelhas"
+   }
+  },
+  {
+   "id": "gen_peca_limpa",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 3,
+    "fila": 1
+   },
+   "mobilia": "cozinha_aticador",
+   "textoDisplay": "A Peça Limpa Fora de Hora",
+   "carimboPadrao": "A única peça limpa da sala",
+   "descricao": "Entre superfícies com o pó de todos os dias, uma única peça limpa, passada a pano de fresco. A limpeza é a exceção — e a exceção se lê.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ambiente_da_luta",
+    "tipoVestigio": "peca_limpa_fora_de_hora"
+   }
+  },
+  {
+   "id": "gen_ferimento_reu",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "corpo_do_reu",
+   "textoDisplay": "Ferimento no Suspeito",
+   "carimboPadrao": "Ferimento recente no suspeito (antebraços)",
+   "descricao": "De manga arregaçada por ordem do constable, Benjamin Hill mostra o que a roupa cobria: a marca recente de luta, nos antebraços. A lesão tem os dias do crime, e a explicação doméstica não vem.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ferimento_do_agressor",
+    "pertenceA": "gen_4_pastor_de_ovelhas",
+    "sede": "antebracos"
+   }
+  },
+  {
+   "id": "gen_sinal_exigivel",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Sinal no Corpo da Vítima",
+   "carimboPadrao": "Marca-espelho esperada (palmas das mãos)",
+   "descricao": "Marca-espelho esperada (palmas das mãos)",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sinal_exigivel",
+    "regiao": "maos",
+    "sede": "palmas",
+    "metodoOrigem": "laminada"
+   }
+  },
+  {
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_0_lavrador",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na tarde de 13",
+   "descricao": "James Harris conta o que a parede deixou passar na tarde de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "dia"
+   }
+  },
+  {
+   "id": "gen_frestas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": {
+    "col": 1,
+    "fila": 3
+   },
+   "mobilia": null,
+   "textoDisplay": "Sangue nas Frestas",
+   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
+   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "acumulacao_frestas"
+   }
+  },
+  {
+   "id": "gen_motivo",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Os Papéis do Móbil",
+   "carimboPadrao": "Móbil de Benjamin Hill",
+   "descricao": "Vales de aposta guardados por John Read, com a soma e a rubrica de Benjamin Hill. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "divida_de_jogo",
+    "ligadoA": "gen_4_pastor_de_ovelhas"
+   }
+  },
+  {
+   "id": "gen_intf_intf_1_retratacao",
+   "localidade": "vizinhanca",
+   "textoDisplay": "O Depoimento que Mudou",
+   "carimboPadrao": "Depoimento novo que desmente o anterior",
+   "descricao": "James Harris conta agora outra versão da mesma noite — palavra nova contra o que consta do primeiro registro.",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "retratacao",
+    "testemunha": "gen_0_lavrador",
+    "desmente": "gen_ruido_ouvido"
+   },
+   "vestigioInterferencia": {
+    "classe": "depoimento_contraditorio",
+    "frescor": "fresco",
+    "localId": null,
+    "comodo": null,
+    "celula": null,
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_intf_intf_1_dividas",
+   "localidade": "vizinhanca",
+   "textoDisplay": "A Caderneta Quitada",
+   "carimboPadrao": "Dívidas quitadas na mesma semana",
+   "descricao": "A caderneta de fiado amanheceu quitada, a soma cheia de uma vez, na mesma semana da nova versão.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_dinheiro",
+    "tipoVestigio": "dividas_quitadas"
+   },
+   "vestigioInterferencia": {
+    "classe": "dividas_quitadas",
+    "frescor": "fresco",
+    "localId": null,
+    "comodo": null,
+    "celula": null,
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_1_pastor_de_ovelhas",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Alfred Evans",
+   "carimboPadrao": "Paradeiro de Alfred Evans, confirmado",
+   "descricao": "James Harris esteve na Granja sexta à tarde e dá Alfred Evans por presente, do meio-dia às seis. Mais de uma boca diz o mesmo.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_1_pastor_de_ovelhas"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_3_costureira",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Amy Clarke",
+   "descricao": "Amassado e depois alisado, o bilhete de Amy Clarke pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_3_costureira",
+    "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_2_squire",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de Henry Hill",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de Henry Hill por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_2_squire",
+    "revelaSegredo": "acerto_reservado"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_0_lavrador",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por James Harris",
+   "carimboPadrao": "Paradeiro de James Harris, confirmado",
+   "descricao": "Alfred Evans esteve na Granja sexta à tarde e dá James Harris por presente, do meio-dia às seis. Mais de uma boca diz o mesmo.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_0_lavrador"
+   }
+  },
+  {
+   "id": "gen_movel_gen_2_squire",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Papéis de Henry Hill",
+   "carimboPadrao": "Móbil de Henry Hill",
+   "descricao": "Cartas sobre um dote prometido e não pago atam Henry Hill a John Read, com somas e datas.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "dote",
+    "ligadoA": "gen_2_squire"
+   }
+  },
+  {
+   "id": "gen_alibi_gen_1_pastor_de_ovelhas",
+   "localidade": "casa_cottage_1",
+   "textoDisplay": "A Granja (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_1_pastor_de_ovelhas",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_3_costureira",
+   "localidade": "casa_cottage_2",
+   "textoDisplay": "Cottage nº 2 (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 2, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_3_costureira",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_4_pastor_de_ovelhas",
+   "localidade": "casa_cottage_3",
+   "textoDisplay": "Cottage nº 3 (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_4_pastor_de_ovelhas",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_2_squire",
+   "localidade": "casa_solar",
+   "textoDisplay": "O Solar (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: O Solar (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_2_squire",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_0_lavrador",
+   "localidade": "casa_cottage_6",
+   "textoDisplay": "A Granja (sexta à tarde)",
+   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
+   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_0_lavrador",
+    "horaInicioDeclarada": -12,
+    "horaFimDeclarada": -6,
+    "corroborado": false
+   }
+  }
+ ],
+ "localidades": [
+  {
+   "id": "corpo",
+   "rotuloMesa": "O Corpo",
+   "titulo": "O Corpo — A Granja",
+   "subtitulo": "John Read, lavrador, 20 anos",
+   "acoesEspeciais": [
+    "termometro"
+   ],
+   "gestos": [
+    {
+     "id": "gesto_voltar_corpo",
+     "rotulo": "Voltar o corpo",
+     "cartaId": "gen_livores"
+    }
+   ],
+   "prosa": [
+    "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
+    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
+  },
+  {
+   "id": "cena",
+   "rotuloMesa": "A Cena do Crime",
+   "titulo": "A Cena — A Granja",
+   "subtitulo": "Onde John Read foi achado",
+   "acoesEspeciais": [],
+   "introducao": [
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha da Granja",
+     "comodo": "cozinha",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão. De um canto a outro, nada guarda o seu lugar. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Um arranhão escapa de sob o pé de uma peça de mobília. Ao exame: [[gen_peca_limpa]]. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_3_costureira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_2_squire]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]. Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+     ]
+    },
+    {
+     "id": "pt_cena_paiol",
+     "rotulo": "Paiol",
+     "comodo": "paiol",
+     "prosa": [
+      "No cômodo, arreios pendurados, sacas de grão. Um arranhão escapa de sob o pé de uma peça de mobília."
+     ]
+    }
+   ],
+   "planta": {
+    "titulo": "A Granja",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha da Granja",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 25,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 50,
+         "y": 76
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 76,
+         "y": 25,
+         "w": 51,
+         "h": 102
+        },
+        "pos": {
+         "x": 102,
+         "y": 76
+        }
+       }
+      ]
+     },
+     {
+      "id": "paiol",
+      "rotulo": "Paiol",
+      "contorno": "M128 24 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M81 29 H97 V45 H81 Z",
+     "M107 55 H123 V71 H107 Z",
+     "M107 107 H123 V123 H107 Z",
+     "M133 55 H149 V71 H133 Z",
+     "M133 29 H149 V45 H133 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
+   "blocosContingentes": []
+  },
+  {
+   "id": "delegacia",
+   "rotuloMesa": "O Posto do Constable",
+   "titulo": "O Posto do Constable",
+   "subtitulo": "Os papéis do caso",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_2_squire]].",
+    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "vizinhanca",
+   "rotuloMesa": "A Taverna",
+   "titulo": "A Taverna",
+   "subtitulo": "Onde a vila conta o que sabe",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A taverna junta a vila ao fim da lida: bancos corridos, o balcão úmido, e quem chega ouve antes de sentar.",
+    "A vila é uma rua só, e os fundos dos lotes dão para o campo aberto.",
+    "A Granja fica na orla de trabalho, à parte das casas de morada; até a porta mais próxima vai um bom pedaço de caminho.",
+    "Quem lá estava àquela hora conta: [[gen_ruido_ouvido]].",
+    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_1_pastor_de_ovelhas]], [[gen_corrobora_gen_0_lavrador]]."
+   ],
+   "blocosContingentes": [
+    {
+     "eventoId": "intf_1",
+     "quando": "disparado",
+     "paragrafos": [
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "casa_cottage_1",
+   "rotuloMesa": "Cottage nº 1",
+   "titulo": "Cottage nº 1 — à porta",
+   "subtitulo": "A morada de Alfred Evans",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 1 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
+   ]
+  },
+  {
+   "id": "casa_cottage_2",
+   "rotuloMesa": "Cottage nº 2",
+   "titulo": "Cottage nº 2 — à porta",
+   "subtitulo": "A morada de Amy Clarke",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 2 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
+   ]
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotuloMesa": "Cottage nº 3",
+   "titulo": "Cottage nº 3 — à porta",
+   "subtitulo": "A morada de Benjamin Hill",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 3 fica na ruela dos cottages. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "casa_solar",
+   "rotuloMesa": "O Solar",
+   "titulo": "O Solar — à porta",
+   "subtitulo": "A morada de Henry Hill",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Solar fica no parque do solar. O constable vai adiante, bate com o nó dos dedos e recua um passo."
+   ]
+  },
+  {
+   "id": "casa_cottage_6",
+   "rotuloMesa": "Cottage nº 6",
+   "titulo": "Cottage nº 6 — à porta",
+   "subtitulo": "A morada de James Harris",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 6 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
+   ]
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "A Granja — a busca",
+   "titulo": "A Granja — a diligência",
+   "subtitulo": "Busca com o constable à porta",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o constable à porta e o dono das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
+    "Antes de liberar o dono das coisas, o constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
+   ],
+   "blocosContingentes": []
+  }
+ ],
+ "nosMapa": [
+  {
+   "id": "corpo",
+   "rotulo": "O Corpo",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "cena",
+   "rotulo": "A Cena do Crime",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "delegacia",
+   "rotulo": "O Posto do Constable",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "vizinhanca",
+   "rotulo": "A Taverna",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_1",
+   "rotulo": "Cottage nº 1",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_2",
+   "rotulo": "Cottage nº 2",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotulo": "Cottage nº 3",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_solar",
+   "rotulo": "O Solar",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_6",
+   "rotulo": "Cottage nº 6",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "A Granja — a busca",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
+  }
+ ],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
+ "custos": {
+  "cena_predio|cena_predio": 0,
+  "cena_predio|vila": 1,
+  "vila|cena_predio": 1,
+  "vila|vila": 1
+ },
+ "dialogos": {
+  "dialogo_gen_1_pastor_de_ovelhas": {
+   "suspeitoId": "gen_1_pastor_de_ovelhas",
+   "origemLocalidade": "casa_cottage_1",
+   "chamada": "Interrogar Alfred Evans",
+   "titulo": "Interrogatório — Alfred Evans",
+   "subtitulo": "Pastor de ovelhas, 33 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {},
+   "confrontos": [],
+   "gatilhos": [
+    {
+     "rotulo": "\"Já esteve numa sala cheia e sentiu que ninguém dava por si?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "O constable bate; Alfred Evans abre e se descobre, o chapéu na mão. \"Pergunte daqui mesmo, que a tarde é curta.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"A tarde acaba a que horas?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com John Read: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Um nome eu dou, já que {detective.treatment} o pede: Amy Clarke. Por quê, não sei dizer; sei, e chega.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com John Read: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"John Read? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com John Read: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com John Read: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Alfred Evans ri sozinho um instante e para. \"A vida inteira falei alto e fiz palhaçada para que reparassem em mim. Tire-me a graça e ninguém nesta vila torna a me ver. Dito assim parece pouca coisa; para mim é tudo.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_3_costureira": {
+   "suspeitoId": "gen_3_costureira",
+   "origemLocalidade": "casa_cottage_2",
+   "chamada": "Interrogar Amy Clarke",
+   "titulo": "Interrogatório — Amy Clarke",
+   "subtitulo": "Costureira, 39 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_3_costureira": "reacao_gen_segredo_gen_3_costureira"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_3_costureira",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Amy Clarke abre antes que o constable acabe de bater, e toma a palavra do batente. \"Serviço parado esfria. Pergunte.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Quando é que encerra o dia?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_3_costureira": {
+     "fala": [
+      "Amy Clarke lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de John Read estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não tenho que dar. Se John Read tinha desafeto, não foi freguês meu.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"John Read? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_4_pastor_de_ovelhas": {
+   "suspeitoId": "gen_4_pastor_de_ovelhas",
+   "origemLocalidade": "casa_cottage_3",
+   "chamada": "Interrogar Benjamin Hill",
+   "titulo": "Interrogatório — Benjamin Hill",
+   "subtitulo": "Pastor de ovelhas, 46 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_instrumento": "reacao_gen_instrumento"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Custou a chegar aonde chegou. E se lhe tirassem tudo, e voltasse a não ser ninguém?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Benjamin Hill abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Traz as datas prontas, como quem chega com a caderneta escrita."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Quando é que encerra o dia?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_instrumento": {
+     "fala": [
+      "Benjamin Hill olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"John Read era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Dá a hora, dá o lugar, e para; as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_pastor_de_ovelhas]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"E a vila, o que murmura?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Benjamin Hill endireita-se depressa demais. \"Subi do nada, o senhor não imagina de que fundo. Tenho hoje casa, mesa posta, gente que me chama de senhor. Voltar a ser o que fui é o que me acorda de noite.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Na palma, um corte inciso limpo, transversal, na base dos dedos. A borda é nítida: lâmina, não queda."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_2_squire": {
+   "suspeitoId": "gen_2_squire",
+   "origemLocalidade": "casa_solar",
+   "chamada": "Interrogar Henry Hill",
+   "titulo": "Interrogatório — Henry Hill",
+   "subtitulo": "Senhor de terras, 68 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_2_squire": "reacao_gen_segredo_gen_2_squire"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_2_squire",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Henry Hill entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Recebo porque a lei pede, e esta casa atende ao que a lei pede. Diga em que sirvo.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"A tarde acaba a que horas?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha o que se lhe mostra o tempo de o reconhecer, e devolve. \"Disso a casa não sabe dar razão. Se há pergunta, faça-a por inteiro.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_2_squire": {
+     "fala": [
+      "Henry Hill cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_squire]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Se um nome hão de me arrancar, arranco-o eu: James Harris. Digo-o de viva voz e respondo pelo que digo. Prova, ninguém ma pediu; tenho a minha certeza, e ela não me falha desde moço.\" Inclina a cabeça, medido. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_squire]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"John Read? Trato de cumprimento, e pontual no banco da igreja, ao que se via.\" Inclina a cabeça, medido. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_squire]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, os de vizinho de terra; nada em papel que um inquérito leia.\" Inclina a cabeça, medido. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_squire]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com John Read? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila diz o que sempre disse; desta casa não sai eco.\" Inclina a cabeça, medido. \"A casa fica a par do que se apurar. Passar bem, {detective.treatment}.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_0_lavrador": {
+   "suspeitoId": "gen_0_lavrador",
+   "origemLocalidade": "casa_cottage_6",
+   "chamada": "Interrogar James Harris",
+   "titulo": "Interrogatório — James Harris",
+   "subtitulo": "Lavrador, 26 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "James Harris entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" Fala baixo e mede a porta antes de cada resposta."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Quando é que encerra o dia?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_ruido_ouvido": {
+     "fala": [
+      "James Harris conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_0_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com John Read: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_0_lavrador]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com John Read: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"John Read era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_0_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com John Read: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_0_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com John Read?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era John Read, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com John Read: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Palmas grossas de enxada, arranhões de cerca de arame nas costas das mãos. A terra está sob as unhas — sempre está."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  }
+ },
+ "confrontos": {
+  "estadoInicial": "presente",
+  "consequencias": {}
+ },
+ "abertura": {
+  "passos": [
+   {
+    "id": "descoberta",
+    "titulo": "Colbrook, 14 de outubro de 1893",
+    "paragrafos": [
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
+    ],
+    "rotuloBotao": "O constable é chamado"
+   },
+   {
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
+    "paragrafos": [
+     "O constable Harrow pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
+    ],
+    "rotuloBotao": "Ler a carta"
+   },
+   {
+    "id": "carta",
+    "titulo": "A carta do Constable",
+    "carta": true,
+    "paragrafos": [
+     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
+     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Colbrook, à pressa. O que aqui houve pede olho de perito, não de guarda. John Read, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"Harrow, Constable.\""
+    ],
+    "rotuloBotao": "Aceitar o chamado"
+   },
+   {
+    "id": "metodo",
+    "titulo": "A maleta pronta",
+    "paragrafos": [
+     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
+    ],
+    "rotuloBotao": "Tomar o trem"
+   },
+   {
+    "id": "chegada",
+    "titulo": "Colbrook",
+    "paragrafos": [
+     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Harrow vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
+    ],
+    "rotuloBotao": "Ouvir o constable"
+   },
+   {
+    "id": "briefing",
+    "titulo": "O relato do constable Harrow",
+    "briefing": true,
+    "paragrafos": [
+     "\"O essencial é isto: John Read, 20 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
+     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
+    ],
+    "rotuloBotao": "Entrar — iniciar a investigação"
+   }
+  ],
+  "perguntas": [
+   {
+    "id": "sobre_a_hora",
+    "pergunta": "O que se sabe da hora da morte?",
+    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
+   },
+   {
+    "id": "quem_convive",
+    "pergunta": "Quem convivia com a vítima?",
+    "resposta": "\"Do dia a dia dele? Alfred Evans, Benjamin Hill, James Harris — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
+   },
+   {
+    "id": "desafetos",
+    "pergunta": "O morto tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
+   }
+  ],
+  "opcoesPersonagem": [
+   {
+    "id": "harlan",
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
+   }
+  ]
+ },
+ "parametrosCena": {
+  "horasChegada": 11,
+  "ambiente": 11,
+  "calendario": {
+   "diaBase": 14,
+   "mesAbrev": "out",
+   "mesExtenso": "outubro",
+   "ano": 1893
+  }
+ },
+ "maquete": {
+  "morfologia": "linear",
+  "tabua": {
+   "centroX": 0.14,
+   "largura": 14.2,
+   "fundo": 6.33
+  },
+  "posicoes": {
+   "corpo": {
+    "x": 3.96,
+    "z": 1.01,
+    "predio": "granja"
+   },
+   "cena": {
+    "x": 4.08,
+    "z": 0.39,
+    "predio": "anexo_cena"
+   },
+   "delegacia": {
+    "x": -2.86,
+    "z": -0.89,
+    "predio": "delegacia"
+   },
+   "vizinhanca": {
+    "x": -2.8,
+    "z": 0.83,
+    "predio": "pub"
+   },
+   "casa_cottage_1": {
+    "x": -3.98,
+    "z": 1.8,
+    "predio": "cottage_1"
+   },
+   "casa_cottage_2": {
+    "x": -3.28,
+    "z": 1.82,
+    "predio": "cottage_2"
+   },
+   "casa_cottage_3": {
+    "x": -2.32,
+    "z": 1.84,
+    "predio": "cottage_3"
+   },
+   "casa_solar": {
+    "x": -5.1,
+    "z": 1.03,
+    "predio": "solar"
+   },
+   "casa_cottage_6": {
+    "x": 0.04,
+    "z": 1.9,
+    "predio": "cottage_6"
+   },
+   "oficio_do_reu": {
+    "x": 3.3,
+    "z": 0.57,
+    "predio": "anexo_oficio_do_reu"
+   }
+  },
+  "formas": {
+   "granja": {
+    "w": 1.5,
+    "d": 0.95,
+    "h": 0.85,
+    "corParede": "#83704e",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.6,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.45,
+      "z": -0.19,
+      "alt": 0.48
+     }
+    ]
+   },
+   "anexo_cena": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.3
+   },
+   "delegacia": {
+    "w": 1.25,
+    "d": 0.9,
+    "h": 1.02,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.48,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.38,
+      "z": -0.18,
+      "alt": 0.5
+     }
+    ]
+   },
+   "pub": {
+    "w": 1.45,
+    "d": 1.05,
+    "h": 0.88,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.59,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.44,
+      "z": -0.21,
+      "alt": 0.48
+     },
+     {
+      "x": -0.36,
+      "z": 0.17,
+      "alt": 0.48
+     }
+    ]
+   },
+   "cottage_1": {
+    "w": 0.87,
+    "d": 0.7,
+    "h": 0.55,
+    "corParede": "#7d684c",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.26,
+      "z": -0.14,
+      "alt": 0.43
+     }
+    ]
+   },
+   "cottage_2": {
+    "w": 0.82,
+    "d": 0.7,
+    "h": 0.5,
+    "corParede": "#83704e",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.25,
+      "z": -0.14,
+      "alt": 0.42
+     }
+    ]
+   },
+   "cottage_3": {
+    "w": 0.77,
+    "d": 0.65,
+    "h": 0.5,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.46,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.23,
+      "z": -0.13,
+      "alt": 0.42
+     }
+    ]
+   },
+   "solar": {
+    "w": 1.5,
+    "d": 1.2,
+    "h": 1.15,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.58,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.45,
+      "z": -0.24,
+      "alt": 0.52
+     },
+     {
+      "x": -0.38,
+      "z": 0.19,
+      "alt": 0.52
+     }
+    ]
+   },
+   "cottage_6": {
+    "w": 0.82,
+    "d": 0.65,
+    "h": 0.6,
+    "corParede": "#7d684c",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.46,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.25,
+      "z": -0.13,
+      "alt": 0.44
+     }
+    ]
+   },
+   "anexo_oficio_do_reu": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.75
+   },
+   "igreja": {
+    "w": 0.9,
+    "d": 1.55,
+    "h": 1.25,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.5,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "vicarage": {
+    "w": 1.25,
+    "d": 1,
+    "h": 0.95,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.62,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.38,
+      "z": -0.2,
+      "alt": 0.49
+     },
+     {
+      "x": -0.31,
+      "z": 0.16,
+      "alt": 0.49
+     }
+    ]
+   },
+   "capela": {
+    "w": 0.8,
+    "d": 1.05,
+    "h": 0.95,
+    "corParede": "#96825e",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.52,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "botica": {
+    "w": 0.9,
+    "d": 0.88,
+    "h": 0.7,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.49,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.27,
+      "z": -0.18,
+      "alt": 0.45
+     }
+    ],
+    "marquise": true
+   },
+   "mercearia": {
+    "w": 1.05,
+    "d": 0.88,
+    "h": 0.75,
+    "corParede": "#8d7a5a",
+    "corTelhado": "#4d3a29",
+    "telhadoAltura": 0.54,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.32,
+      "z": -0.18,
+      "alt": 0.46
+     }
+    ],
+    "marquise": true
+   },
+   "escola": {
+    "w": 1.15,
+    "d": 0.9,
+    "h": 0.72,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.51,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.35,
+      "z": -0.18,
+      "alt": 0.46
+     }
+    ]
+   },
+   "casa_do_medico": {
+    "w": 1.2,
+    "d": 1,
+    "h": 0.9,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.55,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.36,
+      "z": -0.2,
+      "alt": 0.48
+     },
+     {
+      "x": -0.3,
+      "z": 0.16,
+      "alt": 0.48
+     }
+    ]
+   },
+   "forja": {
+    "w": 1,
+    "d": 0.85,
+    "h": 0.5,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.39,
+    "beiral": 0.1,
+    "ristela": false,
+    "chamines": [
+     {
+      "x": 0.3,
+      "z": -0.17,
+      "alt": 0.42
+     }
+    ]
+   },
+   "moinho": {
+    "w": 0.85,
+    "d": 0.95,
+    "h": 1.45,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.53,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": [],
+    "moinho": true
+   },
+   "estacao": {
+    "w": 1.3,
+    "d": 0.8,
+    "h": 0.52,
+    "corParede": "#8a7355",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.41,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.39,
+      "z": -0.16,
+      "alt": 0.42
+     }
+    ]
+   },
+   "adro_da_igreja": {
+    "w": 1.25,
+    "d": 0.95,
+    "h": 0.05,
+    "corParede": "#6a6656",
+    "corTelhado": "#514d40",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "patio_da_granja": {
+    "w": 1.2,
+    "d": 0.85,
+    "h": 0.04,
+    "corParede": "#716448",
+    "corTelhado": "#554b3c",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "caminho_do_acude": {
+    "w": 1.3,
+    "d": 0.6,
+    "h": 0.04,
+    "corParede": "#5e6650",
+    "corTelhado": "#4c5546",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "travessa_dos_fundos": {
+    "w": 1.25,
+    "d": 0.55,
+    "h": 0.04,
+    "corParede": "#6a6252",
+    "corTelhado": "#565043",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "cottage_4": {
+    "w": 0.72,
+    "d": 0.6,
+    "h": 0.55,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.22,
+      "z": -0.12,
+      "alt": 0.43
+     }
+    ]
+   },
+   "cottage_5": {
+    "w": 0.87,
+    "d": 0.6,
+    "h": 0.6,
+    "corParede": "#7d684c",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.26,
+      "z": -0.12,
+      "alt": 0.44
+     }
+    ]
+   }
+  },
+  "cenario": [
+   {
+    "predio": "igreja",
+    "x": -5.26,
+    "z": -0.75
+   },
+   {
+    "predio": "vicarage",
+    "x": -3.96,
+    "z": -0.73
+   },
+   {
+    "predio": "capela",
+    "x": -4.04,
+    "z": 0.95
+   },
+   {
+    "predio": "botica",
+    "x": -1.78,
+    "z": -0.81
+   },
+   {
+    "predio": "mercearia",
+    "x": -0.34,
+    "z": -0.81
+   },
+   {
+    "predio": "escola",
+    "x": 0.62,
+    "z": -0.85
+   },
+   {
+    "predio": "casa_do_medico",
+    "x": -1.46,
+    "z": 0.83
+   },
+   {
+    "predio": "forja",
+    "x": -0.16,
+    "z": 1.03
+   },
+   {
+    "predio": "moinho",
+    "x": 4.8,
+    "z": -0.87
+   },
+   {
+    "predio": "estacao",
+    "x": 5.54,
+    "z": 0.85
+   },
+   {
+    "predio": "adro_da_igreja",
+    "x": -4.68,
+    "z": 0.05,
+    "logradouro": true
+   },
+   {
+    "predio": "patio_da_granja",
+    "x": 4,
+    "z": 1.88,
+    "logradouro": true
+   },
+   {
+    "predio": "caminho_do_acude",
+    "x": 4.88,
+    "z": -1.83,
+    "logradouro": true
+   },
+   {
+    "predio": "travessa_dos_fundos",
+    "x": 1.18,
+    "z": 1.5,
+    "logradouro": true
+   },
+   {
+    "predio": "cottage_4",
+    "x": -1.62,
+    "z": 1.86
+   },
+   {
+    "predio": "cottage_5",
+    "x": -0.92,
+    "z": 1.88
+   }
+  ]
+ },
+ "interferencias": {
+  "eventos": [
+   {
+    "id": "intf_1",
+    "tipo": "subornar_testemunha",
+    "ator": "gen_4_pastor_de_ovelhas",
+    "atorPapel": "assassino",
+    "alvo": {
+     "tipo": "testemunha",
+     "testemunhaId": "gen_0_lavrador",
+     "cartaId": "gen_ruido_ouvido",
+     "localId": "pub"
+    },
+    "gatilho": {
+     "tipo": "extracao_carta",
+     "cartaId": "gen_ruido_ouvido",
+     "comoSoube": "o depoimento de gen_0_lavrador foi tomado em público (extração de gen_ruido_ouvido); o ator soube o que a testemunha contou"
+    },
+    "rota": {
+     "de": "pub",
+     "para": "pub",
+     "faixa": "noite",
+     "sustentacao": "mesmo_local",
+     "comoChegou": "a rotina da faixa noite já o punha em pub — não precisou de trajeto"
+    },
+    "rolagem": {
+     "wis": 4,
+     "penalidade": 2,
+     "alvo": 2,
+     "dado": 0,
+     "sucesso": true
+    },
+    "efeito": {
+     "cartaDestruida": null,
+     "cartasNovas": [
+      "gen_intf_intf_1_retratacao",
+      "gen_intf_intf_1_dividas"
+     ]
+    },
+    "prenuncio": null,
+    "anuncio": "Uma testemunha mudou a própria história."
+   }
+  ]
+ },
+ "ecosInterferencia": {
+  "titulo": "O que se moveu enquanto eu ia e vinha",
+  "porChave": {
+   "destruir_evidencia_ocorrida": [
+    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
+    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
+    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
+   ],
+   "destruir_evidencia_evitada": [
+    "Vieram limpar a cena; o que importava já estava no meu caderno.",
+    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
+    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
+   ],
+   "intimidar_testemunha_ocorrida": [
+    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
+    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
+    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
+   ],
+   "intimidar_testemunha_evitada": [
+    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
+    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
+    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
+   ],
+   "subornar_testemunha_ocorrida": [
+    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
+    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
+    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
+   ],
+   "silenciar_ocorrida": [
+    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
+    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
+    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
+   ],
+   "silenciar_evitada": [
+    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
+    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
+    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
+   ]
+  }
+ }
+},
+{
+ "id": "gerado_luta_81",
+ "verdadeDeOuro": {
+  "id": "gerado_luta_81",
+  "vitima": "Joseph Clarke",
+  "reuCorreto": "gen_0_taverneiro",
+  "horasMorteAntesChegada": 8,
+  "horaMorteAbsoluta": 3,
+  "mecanismoCorreto": "ferida_arma_branca",
+  "instrumentoCorreto": "lamina_de_oficio",
+  "metodoIniciado": null,
+  "motivacaoCorreta": "divida_de_jogo",
+  "cenaEncenada": false,
+  "horaForjada": null,
+  "perifericos": {
+   "gen_3_lavadeira": {
+    "veredictoEsperado": "inocente_alibi",
+    "segredo": null
+   },
+   "gen_2_lavadeira": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "pedido_recusado"
+   },
+   "gen_5_lavrador": {
+    "veredictoEsperado": "inocente_acesso",
+    "segredo": null
+   },
+   "gen_1_ferreiro": {
+    "veredictoEsperado": "inocente_segredo",
+    "segredo": "acerto_reservado"
+   }
+  },
+  "encenacaoInstrumento": null
+ },
+ "suspeitos": [
+  {
+   "id": "gen_3_lavadeira",
+   "nome": "Annie Parsons",
+   "idade": 32,
+   "relacao": "Lavadeira; mora no Cottage nº 3",
+   "descricao": "Mede a noite por sinos e canecas, nunca pelo relógio."
+  },
+  {
+   "id": "gen_2_lavadeira",
+   "nome": "Ellen Brown",
+   "idade": 46,
+   "relacao": "Lavadeira; mora no Cottage nº 2",
+   "descricao": "Responde o que se pergunta e volta ao trabalho."
+  },
+  {
+   "id": "gen_0_taverneiro",
+   "nome": "Gertrude Parsons",
+   "idade": 31,
+   "relacao": "Taverneira; mora na Taverna",
+   "descricao": "Descreve o que viu com hora e lugar."
+  },
+  {
+   "id": "gen_5_lavrador",
+   "nome": "Leonard Green",
+   "idade": 25,
+   "relacao": "Lavrador; mora no Cottage nº 4",
+   "descricao": "Responde de olhos no chão, uma palavra por vez."
+  },
+  {
+   "id": "gen_1_ferreiro",
+   "nome": "William Roberts",
+   "idade": 49,
+   "relacao": "Ferreiro; mora no Cottage nº 1",
+   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
+  }
+ ],
+ "cartas": [
+  {
+   "id": "gen_rigor",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Rigidez Parcial",
+     "carimboPadrao": "Maxilar duro; membros ainda cedem",
+     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "instalando",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 24,
+     "textoDisplay": "Corpo Endurecido",
+     "carimboPadrao": "Duro dos maxilares aos joelhos",
+     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "pleno",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": 36,
+     "textoDisplay": "Rigidez Cedendo",
+     "carimboPadrao": "Maxilar solto; joelhos rígidos",
+     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolucao",
+      "estadoDegradacao": "degradado"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Corpo Flácido",
+     "carimboPadrao": "Corpo mole, sem rigidez",
+     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "rigor_mortis",
+      "estadoRigor": "resolvido",
+      "estadoDegradacao": "resolvido"
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_livores",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "estados": [
+    {
+     "ipmAte": 12,
+     "textoDisplay": "Manchas que Cedem ao Polegar",
+     "carimboPadrao": "Manchas que empalidecem à pressão",
+     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "movel",
+      "posicaoCompativel": true
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "Manchas Fixas",
+     "carimboPadrao": "Manchas fixas, sem empalidecer",
+     "descricao": "O polegar comprime e a mancha arroxeada não empalidece: o sangue assentado já se fixou.",
+     "tagsOcultas": {
+      "dominio": "temporal",
+      "subDominio": "livor_mortis",
+      "estadoLivor": "fixo",
+      "posicaoCompativel": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "gen_lesao_fatal",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "A Ferida no Tórax",
+   "carimboPadrao": "Ferida perfuro-incisa; sede: tórax",
+   "descricao": "Uma fenda estreita, de bordas limpas e regulares, mais comprida que larga. A sonda desce fundo; o trajeto encerra mais do que a fenda aparenta. Sem ponte de pele entre as margens, e a pele ao redor não traz outros riscos rasos.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "ferida",
+    "sinal": "ferida_incisa"
+   }
+  },
+  {
+   "id": "gen_reacao_vital",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "As Bordas da Ferida",
+   "carimboPadrao": "Bordas afastadas, coágulo aderido",
+   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
+   "tagsOcultas": {
+    "dominio": "causal",
+    "subDominio": "reacao_vital",
+    "sinal": "reacao_vital"
+   }
+  },
+  {
+   "id": "gen_visto_vivo",
+   "localidade": "delegacia",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": null,
+   "textoDisplay": "Última Vez com Vida",
+   "carimboPadrao": "Vítima com vida às 01h00 de 14/out",
+   "descricao": "Do registro da ronda consta Joseph Clarke com vida às 01h00 de 14/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
+   "tagsOcultas": {
+    "dominio": "temporal",
+    "subDominio": "ultima_vez_visto",
+    "horaAvistamento": 1
+   }
+  },
+  {
+   "id": "gen_instrumento",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "pertences_do_reu",
+   "comodo": null,
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Lugar Vazio",
+   "carimboPadrao": "Instrumento que falta no seu lugar",
+   "descricao": "Entre as coisas de ofício de Gertrude Parsons, um vão limpo no meio do pó, do comprimento e do desenho da lesão do morto.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "instrumento_oficio",
+    "tipoVestigio": "lamina_de_oficio",
+    "pertenceA": "gen_0_taverneiro"
+   }
+  },
+  {
+   "id": "gen_sangue_alheio",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 5,
+    "fila": 2
+   },
+   "mobilia": null,
+   "textoDisplay": "O Respingo na Parede",
+   "carimboPadrao": "Respingo alto, fora do alcance da poça",
+   "descricao": "Fora do alcance da poça, na parede, assoma um borrifo miúdo à altura do peito.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sangue_do_agressor",
+    "tipoVestigio": "sangue_alheio",
+    "pertenceA": "gen_0_taverneiro"
+   }
+  },
+  {
+   "id": "gen_peca_limpa",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 5,
+    "fila": 3
+   },
+   "mobilia": "quarto_bacia_e_jarro",
+   "textoDisplay": "A Peça Limpa Fora de Hora",
+   "carimboPadrao": "A única peça limpa da sala",
+   "descricao": "Entre superfícies com o pó de todos os dias, uma única peça limpa, passada a pano de fresco. A limpeza é a exceção — e a exceção se lê.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ambiente_da_luta",
+    "tipoVestigio": "peca_limpa_fora_de_hora"
+   }
+  },
+  {
+   "id": "gen_ferimento_reu",
+   "localidade": "oficio_do_reu",
+   "suporteFisico": "corpo_do_reu",
+   "textoDisplay": "Ferimento no Suspeito",
+   "carimboPadrao": "Ferimento recente no suspeito (fronte)",
+   "descricao": "De manga arregaçada por ordem do constable, Gertrude Parsons mostra o que a roupa cobria: a marca recente de luta, na fronte. A lesão tem os dias do crime, e a explicação doméstica não vem.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "ferimento_do_agressor",
+    "pertenceA": "gen_0_taverneiro",
+    "sede": "fronte"
+   }
+  },
+  {
+   "id": "gen_sinal_exigivel",
+   "localidade": "corpo",
+   "suporteFisico": "corpo",
+   "textoDisplay": "Sinal no Corpo da Vítima",
+   "carimboPadrao": "Marca-espelho esperada (palmas das mãos)",
+   "descricao": "Marca-espelho esperada (palmas das mãos)",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "sinal_exigivel",
+    "regiao": "maos",
+    "sede": "palmas",
+    "metodoOrigem": "laminada"
+   }
+  },
+  {
+   "id": "gen_ruido_ouvido",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "origemTestemunha": "gen_3_lavadeira",
+   "textoDisplay": "O Barulho na Vizinhança",
+   "carimboPadrao": "Barulho ouvido na madrugada de 14",
+   "descricao": "Annie Parsons conta o que a parede deixou passar na madrugada de 14: \"Pancada, e móvel no chão, e depois mais nada.\"",
+   "tagsOcultas": {
+    "dominio": "testemunho",
+    "subDominio": "ruido_ouvido",
+    "faixa": "madrugada"
+   }
+  },
+  {
+   "id": "gen_frestas",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "quarto",
+   "celula": {
+    "col": 5,
+    "fila": 2
+   },
+   "mobilia": null,
+   "textoDisplay": "Sangue nas Frestas",
+   "carimboPadrao": "Assoalho esfregado; guaiaco positivo na fresta",
+   "descricao": "A luz rente ao chão mostra a zona baça onde a esfrega passou: a madeira sem cera, a fibra levantada. Nas frestas entre as tábuas e no pé do rodapé, onde o esfregão não alcança, o papel de filtro comprimido cora de azul.",
+   "tagsOcultas": {
+    "dominio": "ambiental",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "acumulacao_frestas"
+   }
+  },
+  {
+   "id": "gen_motivo",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Os Papéis do Móbil",
+   "carimboPadrao": "Móbil de Gertrude Parsons",
+   "descricao": "Vales de aposta guardados por Joseph Clarke, com a soma e a rubrica de Gertrude Parsons. Dívida de jogo não vai a juízo: cobra-se, ou se apaga.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "divida_de_jogo",
+    "ligadoA": "gen_0_taverneiro"
+   }
+  },
+  {
+   "id": "gen_intf_intf_1_limpeza",
+   "localidade": "cena",
+   "textoDisplay": "Esfrega Fresca na Cena",
+   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
+   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "esfrega_fresca"
+   },
+   "vestigioInterferencia": {
+    "classe": "esfrega_fresca_pos_pericia",
+    "frescor": "fresco",
+    "localId": "cottage_5",
+    "comodo": "quarto",
+    "celula": {
+     "col": 5,
+     "fila": 2
+    },
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_intf_intf_1_meia_obra",
+   "localidade": "cena",
+   "textoDisplay": "Serviço pela Metade",
+   "carimboPadrao": "Serviço de limpeza pela metade",
+   "descricao": "A esfrega para no meio do gesto: a mancha arrastada até a metade e abandonada ali.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "limpeza_fresca",
+    "tipoVestigio": "limpeza_interrompida"
+   },
+   "vestigioInterferencia": {
+    "classe": "limpeza_interrompida",
+    "frescor": "fresco",
+    "localId": "cottage_5",
+    "comodo": "quarto",
+    "celula": {
+     "col": 5,
+     "fila": 2
+    },
+    "mobilia": null
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_3_lavadeira",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Annie Parsons",
+   "carimboPadrao": "Paradeiro de Annie Parsons, confirmado",
+   "descricao": "A rua dá Annie Parsons no Cottage nº 3 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_3_lavadeira"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_2_lavadeira",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "O Bilhete Amassado",
+   "carimboPadrao": "Bilhete na letra de Ellen Brown",
+   "descricao": "Meia dúzia de linhas na letra de Ellen Brown: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "bilhete_de_suplica",
+    "pertenceA": "gen_2_lavadeira",
+    "revelaSegredo": "pedido_recusado"
+   }
+  },
+  {
+   "id": "gen_corrobora_gen_5_lavrador",
+   "localidade": "vizinhanca",
+   "suporteFisico": "testemunho",
+   "textoDisplay": "Quem Responde por Leonard Green",
+   "carimboPadrao": "Paradeiro de Leonard Green, confirmado",
+   "descricao": "A rua dá Leonard Green no Cottage nº 4 madrugada de sábado, das oito ao clarear, por mais de uma janela.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "corroboracao",
+    "ligadoA": "gen_5_lavrador"
+   }
+  },
+  {
+   "id": "gen_segredo_gen_1_ferreiro",
+   "localidade": "cena",
+   "suporteFisico": "cena",
+   "comodo": "cozinha",
+   "celula": null,
+   "mobilia": null,
+   "textoDisplay": "A Nota por Assinar",
+   "carimboPadrao": "Nota de trato com o nome de William Roberts",
+   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de William Roberts por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
+   "tagsOcultas": {
+    "dominio": "vestigio",
+    "subDominio": "rastro_de_visita",
+    "tipoVestigio": "nota_por_assinar",
+    "pertenceA": "gen_1_ferreiro",
+    "revelaSegredo": "acerto_reservado"
+   }
+  },
+  {
+   "id": "gen_movel_gen_1_ferreiro",
+   "localidade": "delegacia",
+   "suporteFisico": "registro",
+   "textoDisplay": "Papéis de William Roberts",
+   "carimboPadrao": "Móbil de William Roberts",
+   "descricao": "A ordem de despejo do cottage de William Roberts veio no rasto de queixa que Joseph Clarke levou ao senhorio.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "motivo",
+    "motivo": "despejo",
+    "ligadoA": "gen_1_ferreiro"
+   }
+  },
+  {
+   "id": "gen_alibi_gen_3_lavadeira",
+   "localidade": "casa_cottage_3",
+   "textoDisplay": "Cottage nº 3 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_3_lavadeira",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_2_lavadeira",
+   "localidade": "casa_cottage_2",
+   "textoDisplay": "Cottage nº 2 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_2_lavadeira",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_0_taverneiro",
+   "localidade": "vizinhanca",
+   "textoDisplay": "A Taverna (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: A Taverna (madrugada de sábado)",
+   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Tomado por termo ali mesmo, pela mão do constable.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_0_taverneiro",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_5_lavrador",
+   "localidade": "casa_cottage_4",
+   "textoDisplay": "Cottage nº 4 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_5_lavrador",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  },
+  {
+   "id": "gen_alibi_gen_1_ferreiro",
+   "localidade": "casa_cottage_1",
+   "textoDisplay": "Cottage nº 1 (madrugada de sábado)",
+   "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (madrugada de sábado)",
+   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
+   "tagsOcultas": {
+    "dominio": "comportamental",
+    "subDominio": "alibi",
+    "declaranteId": "gen_1_ferreiro",
+    "horaInicioDeclarada": -4,
+    "horaFimDeclarada": 7,
+    "corroborado": false
+   }
+  }
+ ],
+ "localidades": [
+  {
+   "id": "corpo",
+   "rotuloMesa": "O Corpo",
+   "titulo": "O Corpo — Cottage nº 5",
+   "subtitulo": "Joseph Clarke, lavrador, 27 anos",
+   "acoesEspeciais": [
+    "termometro"
+   ],
+   "gestos": [
+    {
+     "id": "gesto_voltar_corpo",
+     "rotulo": "Voltar o corpo",
+     "cartaId": "gen_livores"
+    }
+   ],
+   "prosa": [
+    "O morto jaz no chão do cômodo a que a vila chama quarto, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
+    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
+    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
+    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
+    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
+   ],
+   "planta": {
+    "titulo": "Cottage nº 5",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 129,
+         "y": 77,
+         "w": 25,
+         "h": 50
+        },
+        "pos": {
+         "x": 141,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 154,
+         "y": 77,
+         "w": 25,
+         "h": 50
+        },
+        "pos": {
+         "x": 167,
+         "y": 102
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 81 H45 V97 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   }
+  },
+  {
+   "id": "cena",
+   "rotuloMesa": "A Cena do Crime",
+   "titulo": "A Cena — Cottage nº 5",
+   "subtitulo": "Onde Joseph Clarke foi achado",
+   "acoesEspeciais": [],
+   "introducao": [
+    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido.",
+    "O tapete de retalhos e o castiçal de latão lustrado ficam na sala da frente."
+   ],
+   "pontos": [
+    {
+     "id": "pt_cena_cozinha",
+     "rotulo": "Cozinha",
+     "comodo": "cozinha",
+     "prosa": [
+      "No cômodo, cadeiras Windsor, sofá velho, tapete de retalhos. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_lavadeira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_1_ferreiro]]."
+     ]
+    },
+    {
+     "id": "pt_cena_copa",
+     "rotulo": "Copa",
+     "comodo": "copa",
+     "prosa": [
+      "No cômodo, ferro de engomar, pia da copa (a única torneira). Um arranhão escapa de sob o pé de uma peça de mobília."
+     ]
+    },
+    {
+     "id": "pt_cena_quarto",
+     "rotulo": "Quarto",
+     "comodo": "quarto",
+     "prosa": [
+      "No chão deste cômodo, o morto. Do mobiliário, cama de ferro, bacia e jarro. De um canto a outro, nada guarda o seu lugar. A madeira do assoalho cheira à esfrega de sabão e soda e perdeu a cera numa área baça. Um arranhão escapa de sob o pé de uma peça de mobília. Ao exame: [[gen_peca_limpa]]. Rente ao rodapé, onde a esfrega passou: [[gen_frestas]]."
+     ]
+    }
+   ],
+   "planta": {
+    "titulo": "Cottage nº 5",
+    "viewBox": "0 0 204 152",
+    "comodos": [
+     {
+      "id": "cozinha",
+      "rotulo": "Cozinha",
+      "contorno": "M24 24 H128 V128 H24 Z",
+      "rotuloPos": {
+       "x": 76,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "copa",
+      "rotulo": "Copa",
+      "contorno": "M128 24 H180 V76 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 38
+      },
+      "alvos": []
+     },
+     {
+      "id": "quarto",
+      "rotulo": "Quarto",
+      "contorno": "M128 76 H180 V128 H128 Z",
+      "rotuloPos": {
+       "x": 154,
+       "y": 90
+      },
+      "alvos": [
+       {
+        "no": "cena",
+        "rotulo": "a cena",
+        "hit": {
+         "x": 129,
+         "y": 77,
+         "w": 25,
+         "h": 50
+        },
+        "pos": {
+         "x": 141,
+         "y": 102
+        }
+       },
+       {
+        "no": "corpo",
+        "rotulo": "o corpo",
+        "hit": {
+         "x": 154,
+         "y": 77,
+         "w": 25,
+         "h": 50
+        },
+        "pos": {
+         "x": 167,
+         "y": 102
+        }
+       }
+      ]
+     }
+    ],
+    "decorSalas": [],
+    "tracos": [
+     "M29 81 H45 V97 H29 Z",
+     "M29 29 H45 V45 H29 Z",
+     "M81 29 H97 V45 H81 Z",
+     "M159 29 H175 V45 H159 Z",
+     "M159 55 H175 V71 H159 Z",
+     "M133 81 H149 V97 H133 Z",
+     "M159 107 H175 V123 H159 Z"
+    ],
+    "rotulosDecor": [
+     {
+      "texto": "frente",
+      "x": 102,
+      "y": 144
+     }
+    ]
+   },
+   "blocosContingentes": [
+    {
+     "eventoId": "intf_1",
+     "quando": "disparado",
+     "paragrafos": [
+      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
+     ]
+    },
+    {
+     "eventoId": "intf_1",
+     "quando": "nao_disparado",
+     "paragrafos": [
+      "No cômodo chamado quarto, na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "delegacia",
+   "rotuloMesa": "O Posto do Constable",
+   "titulo": "O Posto do Constable",
+   "subtitulo": "Os papéis do caso",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O posto do constable é um cômodo só, de armário e mesa de tábua. O constable põe à vista o que os papéis guardam do morto e da vila, e deixa {g:o senhor|a senhora} ler por si; o que passar daqui segue às petty sessions, a audiência dos magistrados, na vila maior.",
+    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
+    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_ferreiro]].",
+    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "vizinhanca",
+   "rotuloMesa": "A Taverna",
+   "titulo": "A Taverna",
+   "subtitulo": "Onde a vila conta o que sabe",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A taverna junta a vila ao fim da lida: bancos corridos, o balcão úmido, e quem chega ouve antes de sentar.",
+    "O Cottage nº 5 fica na ruela dos cottages; Annie Parsons, lavadeira, mora parede-meia, e da janela de uma casa se alcança a soleira da outra.",
+    "Quem tem janela para a cena conta: [[gen_ruido_ouvido]].",
+    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_3_lavadeira]], [[gen_corrobora_gen_5_lavrador]]."
+   ],
+   "blocosContingentes": []
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotuloMesa": "Cottage nº 3",
+   "titulo": "Cottage nº 3 — à porta",
+   "subtitulo": "A morada de Annie Parsons",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 3 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
+   ]
+  },
+  {
+   "id": "casa_cottage_2",
+   "rotuloMesa": "Cottage nº 2",
+   "titulo": "Cottage nº 2 — à porta",
+   "subtitulo": "A morada de Ellen Brown",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 2 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
+   ]
+  },
+  {
+   "id": "casa_cottage_4",
+   "rotuloMesa": "Cottage nº 4",
+   "titulo": "Cottage nº 4 — à porta",
+   "subtitulo": "A morada de Leonard Green",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 4 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
+   ]
+  },
+  {
+   "id": "casa_cottage_1",
+   "rotuloMesa": "Cottage nº 1",
+   "titulo": "Cottage nº 1 — à porta",
+   "subtitulo": "A morada de William Roberts",
+   "acoesEspeciais": [],
+   "prosa": [
+    "O Cottage nº 1 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
+   ]
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotuloMesa": "A Taverna — a busca",
+   "titulo": "A Taverna — a diligência",
+   "subtitulo": "Busca com o constable à porta",
+   "acoesEspeciais": [],
+   "prosa": [
+    "A diligência corre com o constable à porta e a dona das coisas a um canto. Entre bancada e caixas, o que a busca encontra: [[gen_instrumento]].",
+    "Antes de liberar a dona das coisas, o constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
+   ],
+   "blocosContingentes": []
+  }
+ ],
+ "nosMapa": [
+  {
+   "id": "corpo",
+   "rotulo": "O Corpo",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "cena",
+   "rotulo": "A Cena do Crime",
+   "grupo": "cena_predio",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "delegacia",
+   "rotulo": "O Posto do Constable",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "vizinhanca",
+   "rotulo": "A Taverna",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_3",
+   "rotulo": "Cottage nº 3",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_2",
+   "rotulo": "Cottage nº 2",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_4",
+   "rotulo": "Cottage nº 4",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "casa_cottage_1",
+   "rotulo": "Cottage nº 1",
+   "grupo": "vila",
+   "desbloqueadoInicio": true
+  },
+  {
+   "id": "oficio_do_reu",
+   "rotulo": "A Taverna — a busca",
+   "grupo": "vila",
+   "desbloqueadoInicio": false
+  }
+ ],
+ "leads": [
+  {
+   "cartaId": "gen_motivo",
+   "revelaNo": "oficio_do_reu",
+   "nota": "O nome nos papéis dá causa à diligência."
+  }
+ ],
+ "custos": {
+  "cena_predio|cena_predio": 0,
+  "cena_predio|vila": 1,
+  "vila|cena_predio": 1,
+  "vila|vila": 1
+ },
+ "dialogos": {
+  "dialogo_gen_3_lavadeira": {
+   "suspeitoId": "gen_3_lavadeira",
+   "origemLocalidade": "casa_cottage_3",
+   "chamada": "Interrogar Annie Parsons",
+   "titulo": "Interrogatório — Annie Parsons",
+   "subtitulo": "Lavadeira, 32 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_ruido_ouvido",
+     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Annie Parsons abre antes que o constable acabe de bater, e toma a palavra do batente. \"Com licença. Digo o que souber, e volto ao serviço.\" Ao citar a primeira hora, corrige-a no meio da frase."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_ruido_ouvido": {
+     "fala": [
+      "Annie Parsons conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Clarke?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Joseph Clarke?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Joseph Clarke? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_3_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Clarke?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Joseph Clarke?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Joseph Clarke? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Joseph Clarke era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Dá a hora, dá o lugar, e para; as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_3_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Clarke?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Joseph Clarke?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Joseph Clarke? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem fora de ordem, e ela as corrige no meio: [[gen_alibi_gen_3_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Clarke?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Joseph Clarke?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Joseph Clarke? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Um arranhão longo, linear, no antebraço — a cerca de arame da pastagem, diz. Fresco."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_2_lavadeira": {
+   "suspeitoId": "gen_2_lavadeira",
+   "origemLocalidade": "casa_cottage_2",
+   "chamada": "Interrogar Ellen Brown",
+   "titulo": "Interrogatório — Ellen Brown",
+   "subtitulo": "Lavadeira, 46 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_2_lavadeira": "reacao_gen_segredo_gen_2_lavadeira"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_2_lavadeira",
+     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "O constable bate; Ellen Brown abre, ajeita as fitas da touca e fica no vão da porta. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_2_lavadeira": {
+     "fala": [
+      "Ellen Brown lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Joseph Clarke estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Joseph Clarke? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. Desafeto declarado de Joseph Clarke eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Joseph Clarke? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Joseph Clarke? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "\"Hora e lugar.\" E os dá, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Joseph Clarke? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" E a madrugada de sábado acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que tratos tinha com Joseph Clarke? Somas e datas, se as houver.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_0_taverneiro": {
+   "suspeitoId": "gen_0_taverneiro",
+   "origemLocalidade": "vizinhanca",
+   "chamada": "Interrogar Gertrude Parsons",
+   "titulo": "Interrogatório — Gertrude Parsons",
+   "subtitulo": "Taverneira, 31 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_instrumento": "reacao_gen_instrumento"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_instrumento",
+     "rotulo": "[O Lugar Vazio] Por que falta essa peça entre as suas coisas?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Gertrude Parsons deixa o serviço devagar e espera a pergunta da soleira. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\""
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Conte-me da sua madrugada de sábado, a seu tempo.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"O seu paradeiro na madrugada de sábado: hora e lugar.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_instrumento": {
+     "fala": [
+      "Gertrude Parsons olha o vão apontado no papel como se o visse de novo. \"Falta, e dou pela falta há dias. Ferramenta nesta vila empresta-se sem se pedir, e devolve-se quando lembra. Quem a levou não me deu o nome; onde eu estava, dei por termo ao guarda, e lá está.\" As mãos ficam quietas enquanto responde."
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_taverneiro]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Joseph Clarke? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "Conta a madrugada de sábado com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_taverneiro]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Joseph Clarke? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Joseph Clarke era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_taverneiro]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Joseph Clarke? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_taverneiro]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, aos olhos de quem convivia com ele?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Joseph Clarke? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Gertrude Parsons cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Na palma, um corte inciso limpo, transversal, na base dos dedos. A borda é nítida: lâmina, não queda."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_5_lavrador": {
+   "suspeitoId": "gen_5_lavrador",
+   "origemLocalidade": "casa_cottage_4",
+   "chamada": "Interrogar Leonard Green",
+   "titulo": "Interrogatório — Leonard Green",
+   "subtitulo": "Lavrador, 25 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {},
+   "confrontos": [],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "Leonard Green entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" Fala baixo e mede a porta antes de cada resposta."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Comecemos pelo simples: onde esteve na madrugada de sábado?\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Acorda com facilidade, de noite?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "Um aceno curto, e o paradeiro sai por inteiro, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_5_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Clarke?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Joseph Clarke?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Joseph Clarke? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A resposta toma o caminho comprido e chega inteira, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_5_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Clarke?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Joseph Clarke?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Joseph Clarke? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Joseph Clarke? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "\"Hora e lugar.\" E os dá, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_5_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Clarke?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Joseph Clarke?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Joseph Clarke? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_5_lavrador]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Clarke?\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me dele a seu tempo: que homem era Joseph Clarke?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Que negócios tinha com Joseph Clarke? Diga somas e datas.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  },
+  "dialogo_gen_1_ferreiro": {
+   "suspeitoId": "gen_1_ferreiro",
+   "origemLocalidade": "casa_cottage_1",
+   "chamada": "Interrogar William Roberts",
+   "titulo": "Interrogatório — William Roberts",
+   "subtitulo": "Ferreiro, 49 anos",
+   "noInicial": "abertura",
+   "noEvasiva": "evasiva",
+   "reacoesProva": {
+    "gen_segredo_gen_1_ferreiro": "reacao_gen_segredo_gen_1_ferreiro"
+   },
+   "confrontos": [
+    {
+     "requerCarta": "gen_segredo_gen_1_ferreiro",
+     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
+    }
+   ],
+   "gatilhos": [
+    {
+     "rotulo": "\"E se o nome caísse na boca da vila, de uma tarde para a outra. Já temeu isso?\"",
+     "vaiPara": "gatilho"
+    }
+   ],
+   "exigencias": [
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "maos",
+     "rotulo": "Exigir que mostre as mãos",
+     "vaiPara": "exigencia_maos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "antebracos",
+     "rotulo": "Exigir que mostre os antebraços",
+     "vaiPara": "exigencia_antebracos",
+     "regiaoDoSinal": "maos"
+    },
+    {
+     "requerCarta": "gen_sinal_exigivel",
+     "regiao": "botas",
+     "rotulo": "Exigir que mostre as botas",
+     "vaiPara": "exigencia_botas",
+     "regiaoDoSinal": "maos"
+    }
+   ],
+   "nos": {
+    "abertura": {
+     "fala": [
+      "William Roberts abre antes que o constable acabe de bater, e toma a palavra do batente. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Onde esteve na madrugada de sábado? Sem rodeios.\"",
+       "vaiPara": "b1_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Fale-me da madrugada de sábado com liberdade, do começo ao fim.\"",
+       "vaiPara": "b1_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Vamos aos fatos: onde esteve na madrugada de sábado, e a que horas.\"",
+       "vaiPara": "b1_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"Dorme a noite toda, ou desperta?\"",
+       "vaiPara": "b1_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "evasiva": {
+     "fala": [
+      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
+     ],
+     "opcoes": []
+    },
+    "reacao_gen_segredo_gen_1_ferreiro": {
+     "fala": [
+      "William Roberts cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
+     ],
+     "opcoes": []
+    },
+    "b1_firme": {
+     "fala": [
+      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_ferreiro]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Clarke: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_firme": {
+     "fala": [
+      "\"Nome não tenho que dar. Se Joseph Clarke tinha desafeto, não foi freguês meu.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
+     ],
+     "opcoes": []
+    },
+    "b1_cordial": {
+     "fala": [
+      "A madrugada de sábado vem contada do princípio, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_ferreiro]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Clarke: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_cordial": {
+     "fala": [
+      "\"Joseph Clarke? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+     ],
+     "opcoes": []
+    },
+    "b1_tecnico": {
+     "fala": [
+      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_ferreiro]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Clarke: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_tecnico": {
+     "fala": [
+      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+     ],
+     "opcoes": []
+    },
+    "b1_obliquo": {
+     "fala": [
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_1_ferreiro]]."
+     ],
+     "opcoes": [
+      {
+       "rotulo": "\"Alguém nesta vila queria mal a Joseph Clarke. Diga um nome.\"",
+       "vaiPara": "b2_firme",
+       "tom": "firme"
+      },
+      {
+       "rotulo": "\"Que homem era Joseph Clarke, para quem lidava com ele todos os dias?\"",
+       "vaiPara": "b2_cordial",
+       "tom": "cordial"
+      },
+      {
+       "rotulo": "\"Contas, dívidas, ajustes com Joseph Clarke: o que houver, com data.\"",
+       "vaiPara": "b2_tecnico",
+       "tom": "tecnico"
+      },
+      {
+       "rotulo": "\"O que anda dizendo a vila?\"",
+       "vaiPara": "b2_obliquo",
+       "tom": "obliquo"
+      }
+     ]
+    },
+    "b2_obliquo": {
+     "fala": [
+      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Volta-se para dentro sem esperar licença. \"O serviço ficou aceso.\""
+     ],
+     "opcoes": []
+    },
+    "gatilho": {
+     "fala": [
+      "Um músculo cede no rosto de William Roberts, e a voz baixa de tom. \"Um nome leva três gerações para se firmar e uma tarde para virar assunto de taverna. Quem nunca o teve ignora o peso de o poder perder. Eu carrego esse peso desde menino, e durmo mal com ele.\""
+     ],
+     "opcoes": []
+    },
+    "exigencia_maos": {
+     "fala": [
+      "Nós dos dedos calosos e engrossados — o martelo faz isto, ano após ano. Há queimaduras antigas de fagulha, redondas, cicatrizadas."
+     ],
+     "opcoes": []
+    },
+    "exigencia_antebracos": {
+     "fala": [
+      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
+     ],
+     "opcoes": []
+    },
+    "exigencia_botas": {
+     "fala": [
+      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
+     ],
+     "opcoes": []
+    }
+   }
+  }
+ },
+ "confrontos": {
+  "estadoInicial": "presente",
+  "consequencias": {}
+ },
+ "abertura": {
+  "passos": [
+   {
+    "id": "descoberta",
+    "titulo": "Wrenfield, 14 de outubro de 1893",
+    "paragrafos": [
+     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
+    ],
+    "rotuloBotao": "O constable é chamado"
+   },
+   {
+    "id": "alarme",
+    "titulo": "O constable manda chamar",
+    "paragrafos": [
+     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Harrow pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
+    ],
+    "rotuloBotao": "Ler a carta"
+   },
+   {
+    "id": "carta",
+    "titulo": "A carta do Constable",
+    "carta": true,
+    "paragrafos": [
+     "O papel é o do posto, pautado e barato; a tinta borra numa palavra ou outra, onde a mão pesou.",
+     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Joseph Clarke, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
+     "\"Harrow, Constable.\""
+    ],
+    "rotuloBotao": "Aceitar o chamado"
+   },
+   {
+    "id": "metodo",
+    "titulo": "A maleta pronta",
+    "paragrafos": [
+     "Onde quer que a carta o alcance, {detective.treatment} {detective.surname} arruma a maleta na ordem de sempre: a lente e a caderneta em cima, o termômetro de mercúrio embrulhado no lenço. A primeira página abre em branco."
+    ],
+    "rotuloBotao": "Tomar o trem"
+   },
+   {
+    "id": "chegada",
+    "titulo": "Wrenfield",
+    "paragrafos": [
+     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
+    ],
+    "rotuloBotao": "Ouvir o constable"
+   },
+   {
+    "id": "briefing",
+    "titulo": "O relato do constable Harrow",
+    "briefing": true,
+    "paragrafos": [
+     "\"O essencial é isto: Joseph Clarke, 27 anos, lavrador. Achado morto no Cottage nº 5. Não toquei em nada e não prendi ninguém.\"",
+     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
+    ],
+    "rotuloBotao": "Entrar — iniciar a investigação"
+   }
+  ],
+  "perguntas": [
+   {
+    "id": "sobre_a_hora",
+    "pergunta": "O que se sabe da hora da morte?",
+    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
+   },
+   {
+    "id": "quem_convive",
+    "pergunta": "Quem convivia com a vítima?",
+    "resposta": "\"Do dia a dia dele? Leonard Green — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
+   },
+   {
+    "id": "desafetos",
+    "pergunta": "O morto tinha desafetos declarados?",
+    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
+   }
+  ],
+  "opcoesPersonagem": [
+   {
+    "id": "harlan",
+    "nome": "Harlan Blackwell",
+    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
+   }
+  ]
+ },
+ "parametrosCena": {
+  "horasChegada": 11,
+  "ambiente": 11,
+  "calendario": {
+   "diaBase": 14,
+   "mesAbrev": "out",
+   "mesExtenso": "outubro",
+   "ano": 1893
+  }
+ },
+ "maquete": {
+  "morfologia": "nucleada",
+  "tabua": {
+   "centroX": 0.14,
+   "largura": 13.8,
+   "fundo": 6.46
+  },
+  "posicoes": {
+   "corpo": {
+    "x": 2.98,
+    "z": 1.72,
+    "predio": "cottage_5"
+   },
+   "cena": {
+    "x": 3.1,
+    "z": 1.1,
+    "predio": "anexo_cena"
+   },
+   "delegacia": {
+    "x": -1.62,
+    "z": -1.4,
+    "predio": "delegacia"
+   },
+   "vizinhanca": {
+    "x": -1.98,
+    "z": 0.48,
+    "predio": "pub"
+   },
+   "casa_cottage_3": {
+    "x": 1.24,
+    "z": 1.76,
+    "predio": "cottage_3"
+   },
+   "casa_cottage_2": {
+    "x": 0.24,
+    "z": 1.78,
+    "predio": "cottage_2"
+   },
+   "casa_cottage_4": {
+    "x": 1.98,
+    "z": 1.74,
+    "predio": "cottage_4"
+   },
+   "casa_cottage_1": {
+    "x": -0.5,
+    "z": 1.8,
+    "predio": "cottage_1"
+   },
+   "oficio_do_reu": {
+    "x": -1.86,
+    "z": -0.14,
+    "predio": "anexo_oficio_do_reu"
+   }
+  },
+  "formas": {
+   "cottage_5": {
+    "w": 0.87,
+    "d": 0.65,
+    "h": 0.6,
+    "corParede": "#84704f",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.26,
+      "z": -0.13,
+      "alt": 0.44
+     }
+    ]
+   },
+   "anexo_cena": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.3
+   },
+   "delegacia": {
+    "w": 1.35,
+    "d": 1,
+    "h": 0.97,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.48,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.41,
+      "z": -0.2,
+      "alt": 0.5
+     }
+    ]
+   },
+   "pub": {
+    "w": 1.5,
+    "d": 1.05,
+    "h": 0.98,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.54,
+    "beiral": 0.13,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.45,
+      "z": -0.21,
+      "alt": 0.5
+     },
+     {
+      "x": -0.38,
+      "z": 0.17,
+      "alt": 0.5
+     }
+    ]
+   },
+   "cottage_3": {
+    "w": 0.87,
+    "d": 0.6,
+    "h": 0.6,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.46,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.26,
+      "z": -0.12,
+      "alt": 0.44
+     }
+    ]
+   },
+   "cottage_2": {
+    "w": 0.72,
+    "d": 0.6,
+    "h": 0.55,
+    "corParede": "#83704e",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.41,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.22,
+      "z": -0.12,
+      "alt": 0.43
+     }
+    ]
+   },
+   "cottage_4": {
+    "w": 0.82,
+    "d": 0.6,
+    "h": 0.6,
+    "corParede": "#83704e",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.25,
+      "z": -0.12,
+      "alt": 0.44
+     }
+    ]
+   },
+   "cottage_1": {
+    "w": 0.77,
+    "d": 0.65,
+    "h": 0.5,
+    "corParede": "#84704f",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.36,
+    "beiral": 0.09,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.23,
+      "z": -0.13,
+      "alt": 0.42
+     }
+    ]
+   },
+   "anexo_oficio_do_reu": {
+    "w": 0.62,
+    "d": 0.52,
+    "h": 0.42,
+    "corParede": "#7d684c",
+    "corTelhado": "#443328",
+    "telhadoAltura": 0.28,
+    "beiral": 0.07,
+    "ristela": true,
+    "chamines": [],
+    "rotuloAlto": 1.3
+   },
+   "igreja": {
+    "w": 1,
+    "d": 1.55,
+    "h": 1.35,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.55,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "vicarage": {
+    "w": 1.15,
+    "d": 1.05,
+    "h": 1,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.62,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.35,
+      "z": -0.21,
+      "alt": 0.5
+     },
+     {
+      "x": -0.29,
+      "z": 0.17,
+      "alt": 0.5
+     }
+    ]
+   },
+   "capela": {
+    "w": 0.9,
+    "d": 1.05,
+    "h": 0.95,
+    "corParede": "#96825e",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.42,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": []
+   },
+   "solar": {
+    "w": 1.6,
+    "d": 1.1,
+    "h": 1.05,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.63,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.48,
+      "z": -0.22,
+      "alt": 0.51
+     },
+     {
+      "x": -0.4,
+      "z": 0.18,
+      "alt": 0.51
+     }
+    ]
+   },
+   "botica": {
+    "w": 0.95,
+    "d": 0.88,
+    "h": 0.75,
+    "corParede": "#96825e",
+    "corTelhado": "#523c28",
+    "telhadoAltura": 0.49,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.28,
+      "z": -0.18,
+      "alt": 0.46
+     }
+    ],
+    "marquise": true
+   },
+   "mercearia": {
+    "w": 0.95,
+    "d": 0.83,
+    "h": 0.7,
+    "corParede": "#8d7a5a",
+    "corTelhado": "#4d3a29",
+    "telhadoAltura": 0.54,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.28,
+      "z": -0.17,
+      "alt": 0.45
+     }
+    ],
+    "marquise": true
+   },
+   "escola": {
+    "w": 1.15,
+    "d": 0.9,
+    "h": 0.77,
+    "corParede": "#84704f",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.51,
+    "beiral": 0.1,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.35,
+      "z": -0.18,
+      "alt": 0.46
+     }
+    ]
+   },
+   "casa_do_medico": {
+    "w": 1.1,
+    "d": 1,
+    "h": 0.9,
+    "corParede": "#8a7355",
+    "corTelhado": "#4a3626",
+    "telhadoAltura": 0.5,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.33,
+      "z": -0.2,
+      "alt": 0.48
+     },
+     {
+      "x": -0.28,
+      "z": 0.16,
+      "alt": 0.48
+     }
+    ]
+   },
+   "forja": {
+    "w": 1.1,
+    "d": 0.75,
+    "h": 0.6,
+    "corParede": "#77705f",
+    "corTelhado": "#3a352d",
+    "telhadoAltura": 0.39,
+    "beiral": 0.1,
+    "ristela": false,
+    "chamines": [
+     {
+      "x": 0.33,
+      "z": -0.15,
+      "alt": 0.44
+     }
+    ]
+   },
+   "granja": {
+    "w": 1.45,
+    "d": 1.05,
+    "h": 0.85,
+    "corParede": "#83704e",
+    "corTelhado": "#463527",
+    "telhadoAltura": 0.5,
+    "beiral": 0.12,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.44,
+      "z": -0.21,
+      "alt": 0.48
+     }
+    ]
+   },
+   "moinho": {
+    "w": 0.9,
+    "d": 0.95,
+    "h": 1.45,
+    "corParede": "#8a8272",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.53,
+    "beiral": 0.08,
+    "ristela": false,
+    "chamines": [],
+    "moinho": true
+   },
+   "estacao": {
+    "w": 1.2,
+    "d": 0.7,
+    "h": 0.62,
+    "corParede": "#8a7355",
+    "corTelhado": "#3e3a34",
+    "telhadoAltura": 0.41,
+    "beiral": 0.14,
+    "ristela": true,
+    "chamines": [
+     {
+      "x": 0.36,
+      "z": -0.14,
+      "alt": 0.44
+     }
+    ]
+   },
+   "adro_da_igreja": {
+    "w": 1.25,
+    "d": 0.95,
+    "h": 0.05,
+    "corParede": "#6a6656",
+    "corTelhado": "#514d40",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "patio_da_granja": {
+    "w": 1.1,
+    "d": 0.8,
+    "h": 0.04,
+    "corParede": "#716448",
+    "corTelhado": "#554b3c",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "caminho_do_acude": {
+    "w": 1.4,
+    "d": 0.7,
+    "h": 0.04,
+    "corParede": "#5e6650",
+    "corTelhado": "#4c5546",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   },
+   "travessa_dos_fundos": {
+    "w": 1.35,
+    "d": 0.55,
+    "h": 0.04,
+    "corParede": "#6a6252",
+    "corTelhado": "#565043",
+    "telhadoAltura": 0.01,
+    "beiral": 0,
+    "ristela": false,
+    "chamines": []
+   }
+  },
+  "cenario": [
+   {
+    "predio": "igreja",
+    "x": -5.06,
+    "z": -1.62
+   },
+   {
+    "predio": "vicarage",
+    "x": -4.56,
+    "z": 0.22
+   },
+   {
+    "predio": "capela",
+    "x": -3.64,
+    "z": 1.66
+   },
+   {
+    "predio": "solar",
+    "x": -3.16,
+    "z": -2.06
+   },
+   {
+    "predio": "botica",
+    "x": -0.28,
+    "z": -1.4
+   },
+   {
+    "predio": "mercearia",
+    "x": 0.8,
+    "z": -1.34
+   },
+   {
+    "predio": "escola",
+    "x": 2.32,
+    "z": -1.44
+   },
+   {
+    "predio": "casa_do_medico",
+    "x": -0.4,
+    "z": 0.38
+   },
+   {
+    "predio": "forja",
+    "x": 1.04,
+    "z": 0.44
+   },
+   {
+    "predio": "granja",
+    "x": 4.7,
+    "z": 0.7
+   },
+   {
+    "predio": "moinho",
+    "x": 5.28,
+    "z": -1.9
+   },
+   {
+    "predio": "estacao",
+    "x": 5.34,
+    "z": 1.7
+   },
+   {
+    "predio": "adro_da_igreja",
+    "x": -4.32,
+    "z": -0.58,
+    "logradouro": true
+   },
+   {
+    "predio": "patio_da_granja",
+    "x": 3.97,
+    "z": 1.05,
+    "logradouro": true
+   },
+   {
+    "predio": "caminho_do_acude",
+    "x": 4.58,
+    "z": -1.6,
+    "logradouro": true
+   },
+   {
+    "predio": "travessa_dos_fundos",
+    "x": -1.72,
+    "z": 1.15,
+    "logradouro": true
+   }
+  ]
+ },
+ "interferencias": {
+  "eventos": [
+   {
+    "id": "intf_1",
+    "tipo": "destruir_evidencia",
+    "ator": "gen_0_taverneiro",
+    "atorPapel": "assassino",
+    "alvo": {
+     "tipo": "carta",
+     "cartaId": "gen_sangue_alheio",
+     "localId": "cottage_5"
+    },
+    "gatilho": {
+     "tipo": "extracao_carta",
+     "cartaId": "gen_motivo",
+     "comoSoube": "o perito abriu o móbil do réu no posto do constable (extração de gen_motivo); o inquérito em público correu a vila até o ator"
+    },
+    "rota": {
+     "de": "pub",
+     "para": "cottage_5",
+     "faixa": "noite",
+     "sustentacao": "retorno_a_cena",
+     "comoChegou": "refez, na faixa noite, o caminho do próprio crime até cottage_5"
+    },
+    "rolagem": {
+     "wis": 4,
+     "penalidade": 2,
+     "alvo": 2,
+     "dado": 4,
+     "sucesso": false
+    },
+    "efeito": {
+     "cartaDestruida": "gen_sangue_alheio",
+     "cartasNovas": [
+      "gen_intf_intf_1_limpeza",
+      "gen_intf_intf_1_meia_obra"
+     ]
+    },
+    "prenuncio": null,
+    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
    }
   ]
  },
@@ -65743,14315 +79583,6 @@ export const CASOS_LUTA = [
     },
     "prenuncio": null,
     "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
-   }
-  ]
- },
- "ecosInterferencia": {
-  "titulo": "O que se moveu enquanto eu ia e vinha",
-  "porChave": {
-   "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
-    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
-   ],
-   "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
-    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
-   ],
-   "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
-   ],
-   "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
-   ],
-   "subornar_testemunha_ocorrida": [
-    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
-   ],
-   "silenciar_ocorrida": [
-    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
-   ],
-   "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
-   ]
-  }
- }
-},
-{
- "id": "gerado_luta_99",
- "verdadeDeOuro": {
-  "id": "gerado_luta_99",
-  "vitima": "Samuel Ward",
-  "reuCorreto": "gen_7_lavrador",
-  "horasMorteAntesChegada": 14,
-  "horaMorteAbsoluta": -3,
-  "mecanismoCorreto": "estrangulamento_manual",
-  "instrumentoCorreto": "pertence_arrancado",
-  "metodoIniciado": null,
-  "motivacaoCorreta": "divida_caderneta",
-  "cenaEncenada": false,
-  "horaForjada": null,
-  "perifericos": {
-   "gen_1_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
-   },
-   "gen_4_pastor_de_ovelhas": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_0_criada": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_2_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   }
-  },
-  "encenacaoInstrumento": null
- },
- "suspeitos": [
-  {
-   "id": "gen_1_criada",
-   "nome": "Alice Baker",
-   "idade": 17,
-   "relacao": "Criada; mora no Solar",
-   "descricao": "Responde de olhos no chão, uma palavra por vez."
-  },
-  {
-   "id": "gen_4_pastor_de_ovelhas",
-   "nome": "James Smith",
-   "idade": 16,
-   "relacao": "Pastor de ovelhas; mora no Cottage nº 4",
-   "descricao": "Conta a noite por canecas, não por horas."
-  },
-  {
-   "id": "gen_0_criada",
-   "nome": "Kate Field",
-   "idade": 18,
-   "relacao": "Criada; mora no Presbitério",
-   "descricao": "Cada resposta sai ao preço de duas perguntas."
-  },
-  {
-   "id": "gen_7_lavrador",
-   "nome": "William King",
-   "idade": 21,
-   "relacao": "Lavrador; mora no Cottage nº 1",
-   "descricao": "Descreve o que viu com hora e lugar."
-  },
-  {
-   "id": "gen_2_lavrador",
-   "nome": "William Taylor",
-   "idade": 41,
-   "relacao": "Lavrador; mora no Cottage nº 3",
-   "descricao": "Descreve por alto o que viu; miudeza não lhe ficou."
-  }
- ],
- "cartas": [
-  {
-   "id": "gen_rigor",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Rigidez Parcial",
-     "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "instalando",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 24,
-     "textoDisplay": "Corpo Endurecido",
-     "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "pleno",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 36,
-     "textoDisplay": "Rigidez Cedendo",
-     "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Nos membros a rigidez persiste; a cabeça e o pescoço já se movem à mão.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolucao",
-      "estadoDegradacao": "degradado"
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Corpo Flácido",
-     "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Junta nenhuma resiste ao exame; o corpo está mole por inteiro.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolvido",
-      "estadoDegradacao": "resolvido"
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_livores",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Manchas que Cedem ao Polegar",
-     "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "As manchas de sangue assentado empalidecem sob o polegar e tornam à cor quando a pressão cessa.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "movel",
-      "posicaoCompativel": true
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Manchas Fixas",
-     "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "fixo",
-      "posicaoCompativel": true
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_lesao_fatal",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "As Marcas no Pescoço",
-   "carimboPadrao": "Equimoses digitais; sede: pescoço",
-   "descricao": "Manchas roxas do tamanho de polpas de dedo dos dois lados da garganta, e meias-luas de unha impressas na pele.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "ferida",
-    "sinal": "equimoses_digitais"
-   }
-  },
-  {
-   "id": "gen_reacao_vital",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "As Bordas da Ferida",
-   "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "reacao_vital",
-    "sinal": "reacao_vital"
-   }
-  },
-  {
-   "id": "gen_visto_vivo",
-   "localidade": "delegacia",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": null,
-   "textoDisplay": "Última Vez com Vida",
-   "carimboPadrao": "Vítima com vida às 19h00 de 13/out",
-   "descricao": "Do registro da ronda consta Samuel Ward com vida às 19h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
-   "tagsOcultas": {
-    "dominio": "temporal",
-    "subDominio": "ultima_vez_visto",
-    "horaAvistamento": -5
-   }
-  },
-  {
-   "id": "gen_pertence",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "taproom",
-   "celula": {
-    "col": 3,
-    "fila": 3
-   },
-   "mobilia": null,
-   "textoDisplay": "O Pertence Arrancado",
-   "carimboPadrao": "Botão com fio na mão da vítima",
-   "descricao": "Presos entre os dedos do morto, um botão de casaco com fio e um triângulo de pano. O casaco de William King perdeu o segundo botão.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "objeto_pessoal",
-    "tipoVestigio": "pertence_arrancado",
-    "pertenceA": "gen_7_lavrador"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "taproom",
-   "celula": {
-    "col": 2,
-    "fila": 3
-   },
-   "mobilia": null,
-   "textoDisplay": "O Respingo na Parede",
-   "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Fora do alcance da poça, na parede, assoma um borrifo miúdo à altura do peito.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
-    "pertenceA": "gen_7_lavrador"
-   }
-  },
-  {
-   "id": "gen_ungueais",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Escoriações Ungueais",
-   "carimboPadrao": "Escoriações ungueais no pescoço; fibra e pele sob as unhas",
-   "descricao": "Sob a linha do queixo, escoriações curvas, em meia-lua, rasas. Sob as unhas do morto, fibra de cordoaria e um vestígio de pele. As marcas apontam para dentro: foi a própria mão que arranhou, puxando o que apertava o pescoço.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "desvencilhamento",
-    "sede": "pescoco"
-   }
-  },
-  {
-   "id": "gen_ferimento_reu",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "corpo_do_reu",
-   "textoDisplay": "Ferimento no Suspeito",
-   "carimboPadrao": "Ferimento recente no suspeito (antebraços)",
-   "descricao": "De manga arregaçada por ordem do constable, William King mostra o que a roupa cobria: a marca recente de luta, nos antebraços. A lesão tem os dias do crime, e a explicação doméstica não vem.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ferimento_do_agressor",
-    "pertenceA": "gen_7_lavrador",
-    "sede": "antebracos"
-   }
-  },
-  {
-   "id": "gen_sinal_exigivel",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Sinal no Corpo da Vítima",
-   "carimboPadrao": "Marca-espelho esperada (dorso das mãos)",
-   "descricao": "Marca-espelho esperada (dorso das mãos)",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sinal_exigivel",
-    "regiao": "maos",
-    "sede": "dorso_das_maos",
-    "metodoOrigem": "esganadura"
-   }
-  },
-  {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_4_pastor_de_ovelhas",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na noite de 13",
-   "descricao": "James Smith conta o que a parede deixou passar na noite de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "noite"
-   }
-  },
-  {
-   "id": "gen_motivo",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Os Papéis do Móbil",
-   "carimboPadrao": "Móbil de William King",
-   "descricao": "Uma caderneta de dívidas soma o que William King deve a Samuel Ward, vencido e cobrado por carta.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "divida_caderneta",
-    "ligadoA": "gen_7_lavrador"
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_prenuncio",
-   "localidade": "vizinhanca",
-   "textoDisplay": "A Testemunha Inquieta",
-   "carimboPadrao": "Testemunha que pede sigilo",
-   "descricao": "James Smith recebe à soleira e não faz entrar. Fala baixo, o olho na rua: \"Não devia estar falando. Aqui todo mundo sabe quem abre a porta para quem.\" Despede-se antes da terceira pergunta.",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "prenuncio",
-    "testemunha": "gen_4_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_corpo",
-   "localidade": "vizinhanca",
-   "textoDisplay": "O Segundo Corpo",
-   "carimboPadrao": "Corpo da testemunha (morte de horas, não de dias)",
-   "descricao": "O segundo corpo tem rigor e manchas de poucas horas: morte posterior à primeira perícia. As lesões são largas, de bordas rasgadas, sem o desenho das que o primeiro morto levou.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "segunda_morte",
-    "tipoVestigio": "corpo_da_testemunha"
-   },
-   "vestigioInterferencia": {
-    "classe": "segunda_morte",
-    "frescor": "fresco",
-    "localId": "pub",
-    "comodo": "quartos",
-    "celula": {
-     "col": 2,
-     "fila": 0
-    },
-    "mobilia": "quartos_comoda"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_1_criada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "parlour",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Alice Baker",
-   "descricao": "Amassado e depois alisado, o bilhete de Alice Baker pede socorro em dinheiro, com \"desta vez\" riscado por baixo e resposta nenhuma.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_1_criada",
-    "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_4_pastor_de_ovelhas",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por James Smith",
-   "carimboPadrao": "Paradeiro de James Smith, confirmado",
-   "descricao": "A rua dá James Smith na Taverna sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_0_criada",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Kate Field",
-   "carimboPadrao": "Paradeiro de Kate Field, confirmado",
-   "descricao": "A rua dá Kate Field no Presbitério sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_0_criada"
-   }
-  },
-  {
-   "id": "gen_movel_gen_1_criada",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Alice Baker",
-   "carimboPadrao": "Móbil de Alice Baker",
-   "descricao": "Corre na vila um falatório sobre Alice Baker: criança por vir, e o nome dela atado ao caso. Quem o repetia, de porta em porta, era Samuel Ward.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "escandalo_gravidez",
-    "ligadoA": "gen_1_criada"
-   }
-  },
-  {
-   "id": "gen_registro_comarca",
-   "localidade": "comarca_vila_mercado",
-   "suporteFisico": "registro",
-   "textoDisplay": "O Livro de Hóspedes",
-   "carimboPadrao": "Livro da estalagem de Netherfield",
-   "descricao": "O assento de punho próprio: o nome de William Taylor, com a data; no borrador da casa, cama e ceia lançadas em conta.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_2_lavrador"
-   }
-  },
-  {
-   "id": "gen_alibi_gen_1_criada",
-   "localidade": "casa_solar",
-   "textoDisplay": "O Solar (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: O Solar (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_1_criada",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_4_pastor_de_ovelhas",
-   "localidade": "casa_cottage_4",
-   "textoDisplay": "A Taverna (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 4, dormir.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_4_pastor_de_ovelhas",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_0_criada",
-   "localidade": "casa_vicarage",
-   "textoDisplay": "O Presbitério (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: O Presbitério (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_0_criada",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_7_lavrador",
-   "localidade": "casa_cottage_1",
-   "textoDisplay": "Cottage nº 1 (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_7_lavrador",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_2_lavrador",
-   "localidade": "casa_cottage_3",
-   "textoDisplay": "Netherfield (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: Netherfield (sexta à noite)",
-   "descricao": "\"Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_2_lavrador",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  }
- ],
- "localidades": [
-  {
-   "id": "corpo",
-   "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — A Taverna",
-   "subtitulo": "Samuel Ward, ferreiro, 45 anos",
-   "acoesEspeciais": [
-    "termometro"
-   ],
-   "gestos": [
-    {
-     "id": "gesto_voltar_corpo",
-     "rotulo": "Voltar o corpo",
-     "cartaId": "gen_livores"
-    }
-   ],
-   "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama taproom, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
-    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "No pescoço, sob a linha do queixo, o exame de perto acha: [[gen_ungueais]].",
-    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ],
-   "planta": {
-    "titulo": "A Taverna",
-    "viewBox": "0 0 256 178",
-    "comodos": [
-     {
-      "id": "quartos",
-      "rotulo": "Quartos (sobrado)",
-      "contorno": "M24 24 H128 V76 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 38
-      },
-      "alvos": []
-     },
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha",
-      "contorno": "M128 24 H232 V76 H128 Z",
-      "rotuloPos": {
-       "x": 180,
-       "y": 38
-      },
-      "alvos": []
-     },
-     {
-      "id": "taproom",
-      "rotulo": "Taproom",
-      "contorno": "M24 76 H128 V154 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 90
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 77,
-         "w": 51,
-         "h": 76
-        },
-        "pos": {
-         "x": 50,
-         "y": 115
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 76,
-         "y": 77,
-         "w": 51,
-         "h": 76
-        },
-        "pos": {
-         "x": 102,
-         "y": 115
-        }
-       }
-      ]
-     },
-     {
-      "id": "parlour",
-      "rotulo": "Parlour",
-      "contorno": "M128 76 H232 V154 H128 Z",
-      "rotuloPos": {
-       "x": 180,
-       "y": 90
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M81 29 H97 V45 H81 Z",
-     "M107 55 H123 V71 H107 Z",
-     "M55 55 H71 V71 H55 Z",
-     "M211 29 H227 V45 H211 Z",
-     "M211 55 H227 V71 H211 Z",
-     "M29 107 H45 V123 H29 Z",
-     "M29 81 H45 V97 H29 Z",
-     "M185 133 H201 V149 H185 Z",
-     "M133 133 H149 V149 H133 Z",
-     "M133 81 H149 V97 H133 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 128,
-      "y": 170
-     }
-    ]
-   }
-  },
-  {
-   "id": "cena",
-   "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — A Taverna",
-   "subtitulo": "Onde Samuel Ward foi achado",
-   "acoesEspeciais": [],
-   "introducao": [
-    "O exame corre cômodo a cômodo: a cena está como o acharam, nada movido."
-   ],
-   "pontos": [
-    {
-     "id": "pt_cena_quartos",
-     "rotulo": "Quartos (sobrado)",
-     "comodo": "quartos",
-     "prosa": [
-      "Do mobiliário, cômoda, castiçal de latão, cama de armação de madeira."
-     ]
-    },
-    {
-     "id": "pt_cena_cozinha",
-     "rotulo": "Cozinha",
-     "comodo": "cozinha",
-     "prosa": [
-      "Do mobiliário, mesa de cozinha, lareira com guarda-fogo."
-     ]
-    },
-    {
-     "id": "pt_cena_taproom",
-     "rotulo": "Taproom",
-     "comodo": "taproom",
-     "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, o snug (cubículo com portinhola), bancos corridos sobre serragem. De um canto a outro, nada guarda o seu lugar. Por abrir desde a morte, a mão fechada do morto: [[gen_pertence]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
-     ]
-    },
-    {
-     "id": "pt_cena_parlour",
-     "rotulo": "Parlour",
-     "comodo": "parlour",
-     "prosa": [
-      "Do mobiliário, o relógio da família, lareira com guarda-fogo, atiçador de lareira. Um arranhão escapa de sob o pé de uma peça de mobília. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_criada]]."
-     ]
-    }
-   ],
-   "planta": {
-    "titulo": "A Taverna",
-    "viewBox": "0 0 256 178",
-    "comodos": [
-     {
-      "id": "quartos",
-      "rotulo": "Quartos (sobrado)",
-      "contorno": "M24 24 H128 V76 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 38
-      },
-      "alvos": []
-     },
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha",
-      "contorno": "M128 24 H232 V76 H128 Z",
-      "rotuloPos": {
-       "x": 180,
-       "y": 38
-      },
-      "alvos": []
-     },
-     {
-      "id": "taproom",
-      "rotulo": "Taproom",
-      "contorno": "M24 76 H128 V154 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 90
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 77,
-         "w": 51,
-         "h": 76
-        },
-        "pos": {
-         "x": 50,
-         "y": 115
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 76,
-         "y": 77,
-         "w": 51,
-         "h": 76
-        },
-        "pos": {
-         "x": 102,
-         "y": 115
-        }
-       }
-      ]
-     },
-     {
-      "id": "parlour",
-      "rotulo": "Parlour",
-      "contorno": "M128 76 H232 V154 H128 Z",
-      "rotuloPos": {
-       "x": 180,
-       "y": 90
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M81 29 H97 V45 H81 Z",
-     "M107 55 H123 V71 H107 Z",
-     "M55 55 H71 V71 H55 Z",
-     "M211 29 H227 V45 H211 Z",
-     "M211 55 H227 V71 H211 Z",
-     "M29 107 H45 V123 H29 Z",
-     "M29 81 H45 V97 H29 Z",
-     "M185 133 H201 V149 H185 Z",
-     "M133 133 H149 V149 H133 Z",
-     "M133 81 H149 V97 H133 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 128,
-      "y": 170
-     }
-    ]
-   },
-   "blocosContingentes": []
-  },
-  {
-   "id": "delegacia",
-   "rotuloMesa": "O Posto do Constable",
-   "titulo": "O Posto do Constable",
-   "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [
-    "telegrafo"
-   ],
-   "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
-    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_criada]].",
-    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "vizinhanca",
-   "rotuloMesa": "A Mercearia",
-   "titulo": "A Mercearia",
-   "subtitulo": "Onde a vila conta o que sabe",
-   "acoesEspeciais": [],
-   "prosa": [
-    "Na mercearia, a fila da tarde anda devagar: cada freguês deixa a compra e leva o falatório.",
-    "A vila é uma rua só, e os fundos dos lotes dão para o campo aberto.",
-    "A Taverna fica na High Street; James Smith, pastor de ovelhas, mora parede-meia, e da janela de uma casa se alcança a soleira da outra.",
-    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_4_pastor_de_ovelhas]], [[gen_corrobora_gen_0_criada]].",
-    "Alguém se chega, sem convite, ao lado {g:do perito|da perita}: [[gen_intf_intf_1_prenuncio]]."
-   ],
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_1",
-     "quando": "nao_disparado",
-     "paragrafos": [
-      "Quem lá estava àquela hora conta: [[gen_ruido_ouvido]]."
-     ]
-    },
-    {
-     "eventoId": "intf_1",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_corpo]]."
-     ]
-    }
-   ]
-  },
-  {
-   "id": "casa_solar",
-   "rotuloMesa": "O Solar",
-   "titulo": "O Solar — à porta",
-   "subtitulo": "A morada de Alice Baker",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Solar fica no parque do solar. O constable acompanha até a soleira e fica um passo atrás."
-   ]
-  },
-  {
-   "id": "casa_cottage_4",
-   "rotuloMesa": "Cottage nº 4",
-   "titulo": "Cottage nº 4 — à porta",
-   "subtitulo": "A morada de James Smith",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 4 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
-   ]
-  },
-  {
-   "id": "casa_vicarage",
-   "rotuloMesa": "O Presbitério",
-   "titulo": "O Presbitério — à porta",
-   "subtitulo": "A morada de Kate Field",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Presbitério fica no adro da igreja. O constable vai adiante, bate com o nó dos dedos e recua um passo."
-   ]
-  },
-  {
-   "id": "casa_cottage_1",
-   "rotuloMesa": "Cottage nº 1",
-   "titulo": "Cottage nº 1 — à porta",
-   "subtitulo": "A morada de William King",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 1 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
-   ]
-  },
-  {
-   "id": "casa_cottage_3",
-   "rotuloMesa": "Cottage nº 3",
-   "titulo": "Cottage nº 3 — à porta",
-   "subtitulo": "A morada de William Taylor",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 3 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
-   ]
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja — a busca",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca com o constable à porta",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o constable à porta e o dono das coisas a um canto. O constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "comarca_vila_mercado",
-   "rotuloMesa": "Netherfield",
-   "titulo": "A Estalagem de Netherfield",
-   "subtitulo": "Netherfield, hora e meia de estrada",
-   "acoesEspeciais": [],
-   "prosa": [
-    "Hora e meia de estrada. Na estalagem, o estalajadeiro traz o livro de hóspedes ao balcão, molha o polegar e o abre pela noite pedida: [[gen_registro_comarca]]."
-   ]
-  }
- ],
- "nosMapa": [
-  {
-   "id": "corpo",
-   "rotulo": "O Corpo",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "cena",
-   "rotulo": "A Cena do Crime",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "delegacia",
-   "rotulo": "O Posto do Constable",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "vizinhanca",
-   "rotulo": "A Mercearia",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_solar",
-   "rotulo": "O Solar",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_4",
-   "rotulo": "Cottage nº 4",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_vicarage",
-   "rotulo": "O Presbitério",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_1",
-   "rotulo": "Cottage nº 1",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_3",
-   "rotulo": "Cottage nº 3",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja — a busca",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
-  },
-  {
-   "id": "comarca_vila_mercado",
-   "rotulo": "Netherfield",
-   "grupo": "comarca_vila_mercado",
-   "desbloqueadoInicio": false
-  }
- ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  },
-  {
-   "cartaId": "gen_alibi_gen_2_lavrador",
-   "revelaNo": "comarca_vila_mercado",
-   "nota": "O paradeiro declarado remete ao livro de hóspedes da estalagem."
-  }
- ],
- "custos": {
-  "cena_predio|cena_predio": 0,
-  "cena_predio|vila": 1,
-  "vila|cena_predio": 1,
-  "vila|vila": 1,
-  "comarca_vila_mercado|comarca_vila_mercado": 0,
-  "comarca_vila_mercado|vila": 1.5,
-  "vila|comarca_vila_mercado": 1.5,
-  "comarca_vila_mercado|cena_predio": 1.5,
-  "cena_predio|comarca_vila_mercado": 1.5
- },
- "dialogos": {
-  "dialogo_gen_1_criada": {
-   "suspeitoId": "gen_1_criada",
-   "origemLocalidade": "casa_solar",
-   "chamada": "Interrogar Alice Baker",
-   "titulo": "Interrogatório — Alice Baker",
-   "subtitulo": "Criada, 17 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_1_criada": "reacao_gen_segredo_gen_1_criada"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_1_criada",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Alice Baker abre antes que o constable acabe de bater, e toma a palavra do batente. \"Com licença. Digo o que souber, e volto ao serviço.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Fala baixo e mede a porta antes de cada resposta."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_1_criada": {
-     "fala": [
-      "Alice Baker lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Samuel Ward estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Samuel Ward eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Samuel Ward? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto entre uma hora e outra, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Samuel Ward? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_4_pastor_de_ovelhas": {
-   "suspeitoId": "gen_4_pastor_de_ovelhas",
-   "origemLocalidade": "casa_cottage_4",
-   "chamada": "Interrogar James Smith",
-   "titulo": "Interrogatório — James Smith",
-   "subtitulo": "Pastor de ovelhas, 16 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "James Smith abre antes que o constable acabe de bater, e toma a palavra do batente. \"Pergunte daqui mesmo, que a tarde é curta.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro. Ao citar a primeira hora, corrige-a no meio da frase."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "James Smith conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos e não as desfaz depois."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Samuel Ward era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_0_criada": {
-   "suspeitoId": "gen_0_criada",
-   "origemLocalidade": "casa_vicarage",
-   "chamada": "Interrogar Kate Field",
-   "titulo": "Interrogatório — Kate Field",
-   "subtitulo": "Criada, 18 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Kate Field entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A que horas costuma apagar a luz?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Alice Baker. Por quê, não sei dizer; sei, e chega.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Samuel Ward? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Samuel Ward. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Mãos vermelhas de quem esfrega assoalho de joelhos. Arranhões finos da grelha do fogão — trabalho, não luta."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_7_lavrador": {
-   "suspeitoId": "gen_7_lavrador",
-   "origemLocalidade": "casa_cottage_1",
-   "chamada": "Interrogar William King",
-   "titulo": "Interrogatório — William King",
-   "subtitulo": "Lavrador, 21 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_pertence": "reacao_gen_pertence"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_pertence",
-     "rotulo": "[O Pertence Arrancado] Por que o par disto está entre as suas coisas?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "O constable bate; William King abre e se descobre, o chapéu na mão. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\""
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Conte-me da sua sexta à noite, a seu tempo.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_pertence": {
-     "fala": [
-      "William King vira o achado nos dedos uma vez e o pousa. \"Meu, ou do meu feitio; comprei o par em feira, e outros levaram igual. Como foi parar com quem morreu, isso pergunte a quem o pôs lá; àquela hora eu tinha onde estar, e disso há registro.\" E o devolve à mão aberta, devagar."
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Samuel Ward era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Samuel Ward, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Samuel Ward: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "No dorso de ambas as mãos, escoriações em arco, rasas, com halo avermelhado. Meias-luas de unha — de quem tinha as mãos presas e se debatia."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_2_lavrador": {
-   "suspeitoId": "gen_2_lavrador",
-   "origemLocalidade": "casa_cottage_3",
-   "chamada": "Interrogar William Taylor",
-   "titulo": "Interrogatório — William Taylor",
-   "subtitulo": "Lavrador, 41 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "William Taylor entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\""
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Samuel Ward?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Samuel Ward? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Alice Baker. Por quê, não sei dizer; sei, e chega.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Samuel Ward?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Samuel Ward? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Samuel Ward? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Samuel Ward?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Samuel Ward? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Samuel Ward?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Samuel Ward?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Samuel Ward? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  }
- },
- "confrontos": {
-  "estadoInicial": "presente",
-  "consequencias": {}
- },
- "abertura": {
-  "passos": [
-   {
-    "id": "descoberta",
-    "titulo": "Haversham, 14 de outubro de 1893",
-    "paragrafos": [
-     "Vieram trazer um recado e ninguém veio à porta. Chamaram da soleira, sem resposta, e foram buscar o constable."
-    ],
-    "rotuloBotao": "O constable é chamado"
-   },
-   {
-    "id": "alarme",
-    "titulo": "O constable manda chamar",
-    "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Fenwick pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
-    ],
-    "rotuloBotao": "Ler a carta"
-   },
-   {
-    "id": "carta",
-    "titulo": "A carta do Constable",
-    "carta": true,
-    "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Haversham; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Samuel Ward, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
-     "\"Fenwick, Constable.\""
-    ],
-    "rotuloBotao": "Aceitar o chamado"
-   },
-   {
-    "id": "metodo",
-    "titulo": "A maleta pronta",
-    "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
-    ],
-    "rotuloBotao": "Tomar o trem"
-   },
-   {
-    "id": "chegada",
-    "titulo": "Haversham",
-    "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Haversham estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Fenwick espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
-    ],
-    "rotuloBotao": "Ouvir o constable"
-   },
-   {
-    "id": "briefing",
-    "titulo": "O relato do constable Fenwick",
-    "briefing": true,
-    "paragrafos": [
-     "\"O essencial é isto: Samuel Ward, 45 anos, ferreiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
-    ],
-    "rotuloBotao": "Entrar — iniciar a investigação"
-   }
-  ],
-  "perguntas": [
-   {
-    "id": "sobre_a_hora",
-    "pergunta": "O que se sabe da hora da morte?",
-    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
-   },
-   {
-    "id": "quem_convive",
-    "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? James Smith, William King — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
-   },
-   {
-    "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
-   }
-  ],
-  "opcoesPersonagem": [
-   {
-    "id": "harlan",
-    "nome": "Harlan Blackwell",
-    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
-   }
-  ]
- },
- "parametrosCena": {
-  "horasChegada": 11,
-  "ambiente": 11,
-  "calendario": {
-   "diaBase": 14,
-   "mesAbrev": "out",
-   "mesExtenso": "outubro",
-   "ano": 1893
-  }
- },
- "maquete": {
-  "morfologia": "linear",
-  "tabua": {
-   "centroX": -0.27,
-   "largura": 13.7,
-   "fundo": 6.43
-  },
-  "posicoes": {
-   "corpo": {
-    "x": -2.62,
-    "z": 1.07,
-    "predio": "pub"
-   },
-   "cena": {
-    "x": -2.5,
-    "z": 0.45,
-    "predio": "anexo_cena"
-   },
-   "delegacia": {
-    "x": -2.86,
-    "z": -0.85,
-    "predio": "delegacia"
-   },
-   "vizinhanca": {
-    "x": -0.64,
-    "z": -0.79,
-    "predio": "mercearia"
-   },
-   "casa_solar": {
-    "x": -5.24,
-    "z": 1.03,
-    "predio": "solar"
-   },
-   "casa_cottage_4": {
-    "x": -1.62,
-    "z": 1.94,
-    "predio": "cottage_4"
-   },
-   "casa_vicarage": {
-    "x": -4.26,
-    "z": -0.73,
-    "predio": "vicarage"
-   },
-   "casa_cottage_1": {
-    "x": -4.06,
-    "z": 2,
-    "predio": "cottage_1"
-   },
-   "casa_cottage_3": {
-    "x": -2.52,
-    "z": 1.96,
-    "predio": "cottage_3"
-   },
-   "oficio_do_reu": {
-    "x": 4.14,
-    "z": 0.85,
-    "predio": "granja"
-   },
-   "comarca_vila_mercado": {
-    "x": 6.98,
-    "z": -1.7,
-    "predio": "predio_comarca_vila_mercado",
-    "distante": true
-   }
-  },
-  "formas": {
-   "pub": {
-    "w": 1.45,
-    "d": 1.1,
-    "h": 0.88,
-    "corParede": "#8d7a5a",
-    "corTelhado": "#4d3a29",
-    "telhadoAltura": 0.54,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.44,
-      "z": -0.22,
-      "alt": 0.48
-     },
-     {
-      "x": -0.36,
-      "z": 0.18,
-      "alt": 0.48
-     }
-    ]
-   },
-   "anexo_cena": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.3
-   },
-   "delegacia": {
-    "w": 1.3,
-    "d": 0.95,
-    "h": 1.02,
-    "corParede": "#7b7468",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.53,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.39,
-      "z": -0.19,
-      "alt": 0.5
-     }
-    ]
-   },
-   "mercearia": {
-    "w": 0.9,
-    "d": 0.88,
-    "h": 0.7,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.49,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.27,
-      "z": -0.18,
-      "alt": 0.45
-     }
-    ],
-    "marquise": true
-   },
-   "solar": {
-    "w": 1.55,
-    "d": 1.15,
-    "h": 1.1,
-    "corParede": "#8d7a5a",
-    "corTelhado": "#4d3a29",
-    "telhadoAltura": 0.68,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.47,
-      "z": -0.23,
-      "alt": 0.52
-     },
-     {
-      "x": -0.39,
-      "z": 0.18,
-      "alt": 0.52
-     }
-    ]
-   },
-   "cottage_4": {
-    "w": 0.77,
-    "d": 0.6,
-    "h": 0.6,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.36,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.23,
-      "z": -0.12,
-      "alt": 0.44
-     }
-    ]
-   },
-   "vicarage": {
-    "w": 1.3,
-    "d": 1.05,
-    "h": 0.95,
-    "corParede": "#84704f",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.62,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.39,
-      "z": -0.21,
-      "alt": 0.49
-     },
-     {
-      "x": -0.33,
-      "z": 0.17,
-      "alt": 0.49
-     }
-    ]
-   },
-   "cottage_1": {
-    "w": 0.72,
-    "d": 0.7,
-    "h": 0.5,
-    "corParede": "#84704f",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.36,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.22,
-      "z": -0.14,
-      "alt": 0.42
-     }
-    ]
-   },
-   "cottage_3": {
-    "w": 0.82,
-    "d": 0.6,
-    "h": 0.55,
-    "corParede": "#7d684c",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.41,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.25,
-      "z": -0.12,
-      "alt": 0.43
-     }
-    ]
-   },
-   "granja": {
-    "w": 1.3,
-    "d": 1,
-    "h": 0.85,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.5,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.39,
-      "z": -0.2,
-      "alt": 0.48
-     }
-    ]
-   },
-   "predio_comarca_vila_mercado": {
-    "w": 1.3,
-    "d": 1,
-    "h": 1.05,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.56,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.45,
-      "z": -0.25,
-      "alt": 0.55
-     }
-    ]
-   },
-   "igreja": {
-    "w": 1.05,
-    "d": 1.65,
-    "h": 1.45,
-    "corParede": "#7b7468",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.6,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "botica": {
-    "w": 0.9,
-    "d": 0.83,
-    "h": 0.7,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.44,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.27,
-      "z": -0.17,
-      "alt": 0.45
-     }
-    ],
-    "marquise": true
-   },
-   "escola": {
-    "w": 1,
-    "d": 0.85,
-    "h": 0.72,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.46,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.3,
-      "z": -0.17,
-      "alt": 0.46
-     }
-    ]
-   },
-   "casa_do_medico": {
-    "w": 1.15,
-    "d": 1,
-    "h": 0.95,
-    "corParede": "#8d7a5a",
-    "corTelhado": "#4d3a29",
-    "telhadoAltura": 0.6,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.35,
-      "z": -0.2,
-      "alt": 0.49
-     },
-     {
-      "x": -0.29,
-      "z": 0.16,
-      "alt": 0.49
-     }
-    ]
-   },
-   "forja": {
-    "w": 1.15,
-    "d": 0.8,
-    "h": 0.6,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.34,
-    "beiral": 0.1,
-    "ristela": false,
-    "chamines": [
-     {
-      "x": 0.35,
-      "z": -0.16,
-      "alt": 0.44
-     }
-    ]
-   },
-   "moinho": {
-    "w": 0.85,
-    "d": 0.95,
-    "h": 1.3,
-    "corParede": "#7b7468",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.48,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": [],
-    "moinho": true
-   },
-   "adro_da_igreja": {
-    "w": 1.1,
-    "d": 0.95,
-    "h": 0.05,
-    "corParede": "#6f6b58",
-    "corTelhado": "#565243",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "patio_da_granja": {
-    "w": 1.15,
-    "d": 0.8,
-    "h": 0.04,
-    "corParede": "#77694c",
-    "corTelhado": "#5a5040",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "caminho_do_acude": {
-    "w": 1.45,
-    "d": 0.6,
-    "h": 0.04,
-    "corParede": "#59614c",
-    "corTelhado": "#475041",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "travessa_dos_fundos": {
-    "w": 1.3,
-    "d": 0.6,
-    "h": 0.04,
-    "corParede": "#655e4f",
-    "corTelhado": "#514c3f",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "cottage_2": {
-    "w": 0.87,
-    "d": 0.65,
-    "h": 0.5,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.26,
-      "z": -0.13,
-      "alt": 0.42
-     }
-    ]
-   },
-   "cottage_5": {
-    "w": 0.72,
-    "d": 0.65,
-    "h": 0.6,
-    "corParede": "#84704f",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.22,
-      "z": -0.13,
-      "alt": 0.44
-     }
-    ]
-   },
-   "cottage_6": {
-    "w": 0.87,
-    "d": 0.7,
-    "h": 0.55,
-    "corParede": "#84704f",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.26,
-      "z": -0.14,
-      "alt": 0.43
-     }
-    ]
-   }
-  },
-  "cenario": [
-   {
-    "predio": "igreja",
-    "x": -5.42,
-    "z": -0.91
-   },
-   {
-    "predio": "botica",
-    "x": -1.62,
-    "z": -0.91
-   },
-   {
-    "predio": "escola",
-    "x": 0.78,
-    "z": -0.95
-   },
-   {
-    "predio": "casa_do_medico",
-    "x": -1.38,
-    "z": 0.83
-   },
-   {
-    "predio": "forja",
-    "x": -0.24,
-    "z": 1.03
-   },
-   {
-    "predio": "moinho",
-    "x": 4.84,
-    "z": -0.91
-   },
-   {
-    "predio": "adro_da_igreja",
-    "x": -4.7,
-    "z": 0.07,
-    "logradouro": true
-   },
-   {
-    "predio": "patio_da_granja",
-    "x": 4,
-    "z": 1.92,
-    "logradouro": true
-   },
-   {
-    "predio": "caminho_do_acude",
-    "x": 4.88,
-    "z": -1.83,
-    "logradouro": true
-   },
-   {
-    "predio": "travessa_dos_fundos",
-    "x": 1.18,
-    "z": 1.52,
-    "logradouro": true
-   },
-   {
-    "predio": "cottage_2",
-    "x": -3.16,
-    "z": 1.98
-   },
-   {
-    "predio": "cottage_5",
-    "x": -0.72,
-    "z": 1.92
-   },
-   {
-    "predio": "cottage_6",
-    "x": -0.08,
-    "z": 1.9
-   }
-  ],
-  "estrada": [
-   {
-    "x": 5.28,
-    "z": -0.7
-   },
-   {
-    "x": 5.98,
-    "z": -1.15
-   },
-   {
-    "x": 6.58,
-    "z": -1.45
-   },
-   {
-    "x": 6.98,
-    "z": -1.7
-   }
-  ]
- },
- "telegrama": {
-  "destino": "Netherfield",
-  "via": "portador",
-  "latencia": 4,
-  "resposta": {
-   "textoDisplay": "A Resposta por Fio",
-   "termoCarimbo": "Telegrama de Netherfield: o livro de hóspedes",
-   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o assento no nome de William Taylor, e a conta de cama e ceia conforme o borrador.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_2_lavrador"
-   }
-  }
- },
- "interferencias": {
-  "eventos": [
-   {
-    "id": "intf_1",
-    "tipo": "silenciar",
-    "ator": "gen_7_lavrador",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "testemunha",
-     "testemunhaId": "gen_4_pastor_de_ovelhas",
-     "cartaId": "gen_ruido_ouvido",
-     "localId": "pub"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_visto_vivo",
-     "comoSoube": "o perito perguntou em público quem viu a vítima por última vez (extração de gen_visto_vivo); o ator entendeu que a vizinhança seria ouvida em seguida"
-    },
-    "rota": {
-     "de": "pub",
-     "para": "pub",
-     "faixa": "noite",
-     "sustentacao": "mesmo_local",
-     "comoChegou": "a rotina da faixa noite já o punha em pub — não precisou de trajeto"
-    },
-    "rolagem": {
-     "wis": 4,
-     "penalidade": 2,
-     "alvo": 2,
-     "dado": 0,
-     "sucesso": true
-    },
-    "efeito": {
-     "cartaDestruida": "gen_ruido_ouvido",
-     "cartasNovas": [
-      "gen_intf_intf_1_corpo"
-     ]
-    },
-    "prenuncio": {
-     "cartaId": "gen_intf_intf_1_prenuncio",
-     "texto": "James Smith recebe à soleira e não faz entrar. Fala baixo, o olho na rua: \"Não devia estar falando. Aqui todo mundo sabe quem abre a porta para quem.\" Despede-se antes da terceira pergunta."
-    },
-    "anuncio": "A testemunha que tinha o que contar foi encontrada morta."
-   }
-  ]
- },
- "ecosInterferencia": {
-  "titulo": "O que se moveu enquanto eu ia e vinha",
-  "porChave": {
-   "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
-    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
-   ],
-   "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
-    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
-   ],
-   "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
-   ],
-   "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
-   ],
-   "subornar_testemunha_ocorrida": [
-    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
-   ],
-   "silenciar_ocorrida": [
-    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
-   ],
-   "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
-   ]
-  }
- }
-},
-{
- "id": "gerado_luta_108",
- "verdadeDeOuro": {
-  "id": "gerado_luta_108",
-  "vitima": "Sydney Cooper",
-  "reuCorreto": "gen_0_lavrador",
-  "horasMorteAntesChegada": 21,
-  "horaMorteAbsoluta": -10,
-  "mecanismoCorreto": "ferida_arma_branca",
-  "instrumentoCorreto": "lamina_de_oficio",
-  "metodoIniciado": null,
-  "motivacaoCorreta": "divida_caderneta",
-  "cenaEncenada": false,
-  "horaForjada": null,
-  "perifericos": {
-   "gen_2_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
-   },
-   "gen_3_taverneiro": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
-   },
-   "gen_6_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_1_lavrador": {
-    "veredictoEsperado": "inocente_acesso",
-    "segredo": null
-   }
-  },
-  "encenacaoInstrumento": null
- },
- "suspeitos": [
-  {
-   "id": "gen_0_lavrador",
-   "nome": "Enoch Barnes",
-   "idade": 54,
-   "relacao": "Lavrador; mora no Cottage nº 4",
-   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
-  },
-  {
-   "id": "gen_2_criada",
-   "nome": "Laura Smith",
-   "idade": 16,
-   "relacao": "Criada; mora na Casa do Médico",
-   "descricao": "Descreve o que viu com hora e lugar."
-  },
-  {
-   "id": "gen_3_taverneiro",
-   "nome": "Mary Barnes",
-   "idade": 63,
-   "relacao": "Taverneira; mora na Taverna",
-   "descricao": "Começa pela resposta e acaba na vida alheia."
-  },
-  {
-   "id": "gen_6_lavrador",
-   "nome": "Simon Barnes",
-   "idade": 48,
-   "relacao": "Lavrador; mora no Cottage nº 4",
-   "descricao": "Responde de olhos no chão, uma palavra por vez."
-  },
-  {
-   "id": "gen_1_lavrador",
-   "nome": "Walter Ellis",
-   "idade": 64,
-   "relacao": "Lavrador; mora no Cottage nº 1",
-   "descricao": "Fala baixo e mede a porta antes de responder."
-  }
- ],
- "cartas": [
-  {
-   "id": "gen_rigor",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Rigidez Parcial",
-     "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "Do pescoço para baixo a rigidez ainda não pegou: mandíbula travada, braços e pernas cedendo à mão.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "instalando",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 24,
-     "textoDisplay": "Corpo Endurecido",
-     "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "O corpo guarda, rígido, a postura em que ficou: braço e perna presos por igual.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "pleno",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 36,
-     "textoDisplay": "Rigidez Cedendo",
-     "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolucao",
-      "estadoDegradacao": "degradado"
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Corpo Flácido",
-     "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolvido",
-      "estadoDegradacao": "resolvido"
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_livores",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Manchas que Cedem ao Polegar",
-     "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "A pressão do polegar apaga a mancha arroxeada, que torna a corar assim que o dedo sai. O sangue assentado ainda corre sob a pele.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "movel",
-      "posicaoCompativel": true
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Manchas Fixas",
-     "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas já não migram nem cedem à pressão; prenderam-se no ponto em que o corpo esfriou.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "fixo",
-      "posicaoCompativel": true
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_lesao_fatal",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "A Ferida no Tórax",
-   "carimboPadrao": "Ferida perfuro-incisa; sede: tórax",
-   "descricao": "Uma fenda estreita, de bordas limpas e regulares, mais comprida que larga. A sonda desce fundo; o trajeto encerra mais do que a fenda aparenta. Sem ponte de pele entre as margens, e a pele ao redor não traz outros riscos rasos.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "ferida",
-    "sinal": "ferida_incisa"
-   }
-  },
-  {
-   "id": "gen_reacao_vital",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "As Bordas da Ferida",
-   "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "reacao_vital",
-    "sinal": "reacao_vital"
-   }
-  },
-  {
-   "id": "gen_visto_vivo",
-   "localidade": "delegacia",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": null,
-   "textoDisplay": "Última Vez com Vida",
-   "carimboPadrao": "Vítima com vida às 13h00 de 13/out",
-   "descricao": "Do registro da ronda consta Sydney Cooper com vida às 13h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
-   "tagsOcultas": {
-    "dominio": "temporal",
-    "subDominio": "ultima_vez_visto",
-    "horaAvistamento": -11
-   }
-  },
-  {
-   "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 2,
-    "fila": 3
-   },
-   "mobilia": null,
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: uma lâmina de ofício. O feitio casa com a lesão do morto. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Enoch Barnes.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "lamina_de_oficio",
-    "pertenceA": "gen_0_lavrador"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 2,
-    "fila": 2
-   },
-   "mobilia": null,
-   "textoDisplay": "O Respingo na Parede",
-   "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "À altura do peito, na parede, um salpico fino, acima da linha das feridas do morto.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
-    "pertenceA": "gen_0_lavrador"
-   }
-  },
-  {
-   "id": "gen_pegadas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 3
-   },
-   "mobilia": null,
-   "textoDisplay": "Pegadas Rumo à Porta",
-   "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "pegadas",
-    "tipoVestigio": "pegada_ensanguentada",
-    "pertenceA": "gen_0_lavrador"
-   }
-  },
-  {
-   "id": "gen_peca_deslocada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 1
-   },
-   "mobilia": "cozinha_aticador",
-   "textoDisplay": "Peça Fora do Lugar",
-   "carimboPadrao": "Peça fora do seu lugar",
-   "descricao": "A peça não está no seu assento. O vazio no arranjo tem o feitio dela, e ninguém da casa a moveu.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ambiente_da_luta",
-    "tipoVestigio": "peca_deslocada"
-   }
-  },
-  {
-   "id": "gen_residuo_peca",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 1
-   },
-   "mobilia": "cozinha_aticador",
-   "textoDisplay": "Resíduo na Peça",
-   "carimboPadrao": "Crosta escura no relevo da peça",
-   "descricao": "Na peça, uma crosta escura secou no relevo, onde o pano não desce. O feitio do relevo casa com uma lesão que não está no morto.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "residuo_na_peca",
-    "pertenceA": "gen_0_lavrador"
-   }
-  },
-  {
-   "id": "gen_ferimento_reu",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "corpo_do_reu",
-   "textoDisplay": "Ferimento no Suspeito",
-   "carimboPadrao": "Ferimento recente no suspeito (fronte)",
-   "descricao": "De manga arregaçada por ordem do constable, Enoch Barnes mostra o que a roupa cobria: a marca recente de luta, na fronte. A lesão tem os dias do crime, e a explicação doméstica não vem.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ferimento_do_agressor",
-    "pertenceA": "gen_0_lavrador",
-    "sede": "fronte"
-   }
-  },
-  {
-   "id": "gen_sinal_exigivel",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Sinal no Corpo da Vítima",
-   "carimboPadrao": "Marca-espelho esperada (palmas das mãos)",
-   "descricao": "Marca-espelho esperada (palmas das mãos)",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sinal_exigivel",
-    "regiao": "maos",
-    "sede": "palmas",
-    "metodoOrigem": "laminada"
-   }
-  },
-  {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_1_lavrador",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na tarde de 13",
-   "descricao": "Walter Ellis conta o que a parede deixou passar na tarde de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "dia"
-   }
-  },
-  {
-   "id": "gen_motivo",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Os Papéis do Móbil",
-   "carimboPadrao": "Móbil de Enoch Barnes",
-   "descricao": "Uma caderneta de dívidas soma o que Enoch Barnes deve a Sydney Cooper, vencido e cobrado por carta.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "divida_caderneta",
-    "ligadoA": "gen_0_lavrador"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_2_criada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Laura Smith",
-   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Laura Smith, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_2_criada",
-    "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_3_taverneiro",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Mary Barnes",
-   "descricao": "Falta a segunda assinatura na meia folha: soma, prazo e o nome de Mary Barnes por extenso, um acerto sem a outra mão. A dobra ainda não assentou.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
-    "pertenceA": "gen_3_taverneiro",
-    "revelaSegredo": "acerto_reservado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_6_lavrador",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Simon Barnes",
-   "carimboPadrao": "Paradeiro de Simon Barnes, confirmado",
-   "descricao": "Walter Ellis esteve na Granja sexta à tarde e dá Simon Barnes por presente, do meio-dia às seis. Mais de uma boca diz o mesmo.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_6_lavrador"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_1_lavrador",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Walter Ellis",
-   "carimboPadrao": "Paradeiro de Walter Ellis, confirmado",
-   "descricao": "Simon Barnes esteve na Granja sexta à tarde e dá Walter Ellis por presente, do meio-dia às seis. Mais de uma boca diz o mesmo.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_1_lavrador"
-   }
-  },
-  {
-   "id": "gen_movel_gen_3_taverneiro",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Mary Barnes",
-   "carimboPadrao": "Móbil de Mary Barnes",
-   "descricao": "Papéis de partilha: com a morte de Sydney Cooper, o que era dele passa às mãos de Mary Barnes.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "heranca",
-    "ligadoA": "gen_3_taverneiro"
-   }
-  },
-  {
-   "id": "gen_recibo_comarca",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "O Bilhete de Penhor",
-   "carimboPadrao": "Bilhete de penhor de Netherfield",
-   "descricao": "Bilhete impresso da casa de penhores de Netherfield: a data da semana passada, a soma por resgatar, o número de ordem.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_lavrador"
-   }
-  },
-  {
-   "id": "gen_registro_comarca",
-   "localidade": "comarca_vila_mercado",
-   "suporteFisico": "registro",
-   "textoDisplay": "O Assento do Penhorista",
-   "carimboPadrao": "Livro de penhores de Netherfield",
-   "descricao": "No livro, o assento: o número, o dia, a soma e o nome do morto por extenso.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_lavrador"
-   }
-  },
-  {
-   "id": "gen_alibi_gen_0_lavrador",
-   "localidade": "casa_cottage_4",
-   "textoDisplay": "Cottage nº 4 (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_0_lavrador",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_2_criada",
-   "localidade": "casa_casa_do_medico",
-   "textoDisplay": "Casa do Médico (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_2_criada",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_3_taverneiro",
-   "localidade": "vizinhanca",
-   "textoDisplay": "A Taverna (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Taverna, e de porta para fora não pus o pé.\" Tomado por termo ali mesmo, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_3_taverneiro",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_6_lavrador",
-   "localidade": "casa_cottage_4",
-   "textoDisplay": "A Granja (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_6_lavrador",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_1_lavrador",
-   "localidade": "casa_cottage_1",
-   "textoDisplay": "A Granja (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_1_lavrador",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  }
- ],
- "localidades": [
-  {
-   "id": "corpo",
-   "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — A Granja",
-   "subtitulo": "Sydney Cooper, lavrador, 14 anos",
-   "acoesEspeciais": [
-    "termometro"
-   ],
-   "gestos": [
-    {
-     "id": "gesto_voltar_corpo",
-     "rotulo": "Voltar o corpo",
-     "cartaId": "gen_livores"
-    }
-   ],
-   "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
-    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
-    "Entre os pertences arrolados: [[gen_recibo_comarca]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ],
-   "planta": {
-    "titulo": "A Granja",
-    "viewBox": "0 0 204 152",
-    "comodos": [
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha da Granja",
-      "contorno": "M24 24 H128 V128 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 38
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 50,
-         "y": 76
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 76,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 102,
-         "y": 76
-        }
-       }
-      ]
-     },
-     {
-      "id": "paiol",
-      "rotulo": "Paiol",
-      "contorno": "M128 24 H180 V128 H128 Z",
-      "rotuloPos": {
-       "x": 154,
-       "y": 38
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M81 29 H97 V45 H81 Z",
-     "M107 55 H123 V71 H107 Z",
-     "M107 107 H123 V123 H107 Z",
-     "M133 55 H149 V71 H133 Z",
-     "M133 29 H149 V45 H133 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 102,
-      "y": 144
-     }
-    ]
-   }
-  },
-  {
-   "id": "cena",
-   "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — A Granja",
-   "subtitulo": "Onde Sydney Cooper foi achado",
-   "acoesEspeciais": [],
-   "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
-   ],
-   "pontos": [
-    {
-     "id": "pt_cena_cozinha",
-     "rotulo": "Cozinha da Granja",
-     "comodo": "cozinha",
-     "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, lareira com guarda-fogo, atiçador de lareira, fogão de ferro a carvão. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Junto do corpo, no chão: [[gen_instrumento]]. Ao exame: [[gen_peca_deslocada]]. Ao exame: [[gen_residuo_peca]]. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_criada]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_3_taverneiro]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]. Do meio do vão até a porta: [[gen_pegadas]]."
-     ]
-    },
-    {
-     "id": "pt_cena_paiol",
-     "rotulo": "Paiol",
-     "comodo": "paiol",
-     "prosa": [
-      "Do mobiliário, arreios pendurados, sacas de grão. Há mobília por erguer do chão."
-     ]
-    }
-   ],
-   "planta": {
-    "titulo": "A Granja",
-    "viewBox": "0 0 204 152",
-    "comodos": [
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha da Granja",
-      "contorno": "M24 24 H128 V128 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 38
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 50,
-         "y": 76
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 76,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 102,
-         "y": 76
-        }
-       }
-      ]
-     },
-     {
-      "id": "paiol",
-      "rotulo": "Paiol",
-      "contorno": "M128 24 H180 V128 H128 Z",
-      "rotuloPos": {
-       "x": 154,
-       "y": 38
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M81 29 H97 V45 H81 Z",
-     "M107 55 H123 V71 H107 Z",
-     "M107 107 H123 V123 H107 Z",
-     "M133 55 H149 V71 H133 Z",
-     "M133 29 H149 V45 H133 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 102,
-      "y": 144
-     }
-    ]
-   },
-   "blocosContingentes": []
-  },
-  {
-   "id": "delegacia",
-   "rotuloMesa": "O Posto do Constable",
-   "titulo": "O Posto do Constable",
-   "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [
-    "telegrafo"
-   ],
-   "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
-    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_3_taverneiro]].",
-    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "vizinhanca",
-   "rotuloMesa": "A Taverna",
-   "titulo": "A Taverna",
-   "subtitulo": "Onde a vila conta o que sabe",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A taverna junta a vila ao fim da lida: bancos corridos, o balcão úmido, e quem chega ouve antes de sentar.",
-    "As casas fazem anel em torno do gramado comunal, todas voltadas para o meio.",
-    "A Granja fica na orla de trabalho, à parte das casas de morada; até a porta mais próxima vai um bom pedaço de caminho.",
-    "Quem lá estava àquela hora conta: [[gen_ruido_ouvido]].",
-    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_6_lavrador]], [[gen_corrobora_gen_1_lavrador]]."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "casa_cottage_4",
-   "rotuloMesa": "Cottage nº 4",
-   "titulo": "Cottage nº 4 — à porta",
-   "subtitulo": "A morada de Enoch Barnes e Simon Barnes",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 4 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
-   ]
-  },
-  {
-   "id": "casa_casa_do_medico",
-   "rotuloMesa": "Casa do Médico",
-   "titulo": "Casa do Médico — à porta",
-   "subtitulo": "A morada de Laura Smith",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A Casa do Médico fica na High Street. O constable bate, anuncia o inquérito e cede a vez."
-   ]
-  },
-  {
-   "id": "casa_cottage_1",
-   "rotuloMesa": "Cottage nº 1",
-   "titulo": "Cottage nº 1 — à porta",
-   "subtitulo": "A morada de Walter Ellis",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 1 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
-   ]
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja — a busca",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca com o constable à porta",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o constable à porta e o dono das coisas a um canto. O constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "comarca_vila_mercado",
-   "rotuloMesa": "Netherfield",
-   "titulo": "Casa de Penhores de Netherfield",
-   "subtitulo": "Netherfield, hora e meia de estrada",
-   "acoesEspeciais": [],
-   "prosa": [
-    "Hora e meia de estrada. Na casa de penhores, o balcão dividido em boxes de madeira; o penhorista abre o livro pela data pedida e o vira para {g:o senhor|a senhora}: [[gen_registro_comarca]]."
-   ]
-  }
- ],
- "nosMapa": [
-  {
-   "id": "corpo",
-   "rotulo": "O Corpo",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "cena",
-   "rotulo": "A Cena do Crime",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "delegacia",
-   "rotulo": "O Posto do Constable",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "vizinhanca",
-   "rotulo": "A Taverna",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_4",
-   "rotulo": "Cottage nº 4",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_casa_do_medico",
-   "rotulo": "Casa do Médico",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_1",
-   "rotulo": "Cottage nº 1",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja — a busca",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
-  },
-  {
-   "id": "comarca_vila_mercado",
-   "rotulo": "Netherfield",
-   "grupo": "comarca_vila_mercado",
-   "desbloqueadoInicio": false
-  }
- ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  },
-  {
-   "cartaId": "gen_recibo_comarca",
-   "revelaNo": "comarca_vila_mercado",
-   "nota": "O bilhete dá o endereço da casa de penhores."
-  }
- ],
- "custos": {
-  "cena_predio|cena_predio": 0,
-  "cena_predio|vila": 1,
-  "vila|cena_predio": 1,
-  "vila|vila": 1,
-  "comarca_vila_mercado|comarca_vila_mercado": 0,
-  "comarca_vila_mercado|vila": 1.5,
-  "vila|comarca_vila_mercado": 1.5,
-  "comarca_vila_mercado|cena_predio": 1.5,
-  "cena_predio|comarca_vila_mercado": 1.5
- },
- "dialogos": {
-  "dialogo_gen_0_lavrador": {
-   "suspeitoId": "gen_0_lavrador",
-   "origemLocalidade": "casa_cottage_4",
-   "chamada": "Interrogar Enoch Barnes",
-   "titulo": "Interrogatório — Enoch Barnes",
-   "subtitulo": "Lavrador, 54 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
-    }
-   ],
-   "gatilhos": [
-    {
-     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
-     "vaiPara": "gatilho"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Enoch Barnes entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Pergunte daqui mesmo, que a tarde é curta.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Quando é que encerra o dia?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_instrumento": {
-     "fala": [
-      "Enoch Barnes olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Sydney Cooper era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando: [[gen_alibi_gen_0_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "gatilho": {
-     "fala": [
-      "Enoch Barnes cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Na palma, um corte inciso limpo, transversal, na base dos dedos. A borda é nítida: lâmina, não queda."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_2_criada": {
-   "suspeitoId": "gen_2_criada",
-   "origemLocalidade": "casa_casa_do_medico",
-   "chamada": "Interrogar Laura Smith",
-   "titulo": "Interrogatório — Laura Smith",
-   "subtitulo": "Criada, 16 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_2_criada": "reacao_gen_segredo_gen_2_criada"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_2_criada",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Laura Smith entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A casa deu licença. Respondo o que souber, e depressa.\" A voz sai baixa, e cada resposta espera a pergunta acabar por inteiro."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A que horas larga o serviço?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_2_criada": {
-     "fala": [
-      "Laura Smith lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Sydney Cooper estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Sydney Cooper?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Sydney Cooper? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Sydney Cooper eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Sydney Cooper?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Sydney Cooper? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Sydney Cooper? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Sydney Cooper?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Sydney Cooper? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Sydney Cooper?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Sydney Cooper? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Arranhões finos, paralelos, superficiais — garra de gato, sem dúvida. Frescos."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_3_taverneiro": {
-   "suspeitoId": "gen_3_taverneiro",
-   "origemLocalidade": "vizinhanca",
-   "chamada": "Interrogar Mary Barnes",
-   "titulo": "Interrogatório — Mary Barnes",
-   "subtitulo": "Taverneira, 63 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_3_taverneiro": "reacao_gen_segredo_gen_3_taverneiro"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_3_taverneiro",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Mary Barnes deixa o serviço devagar e espera a pergunta da soleira. \"Pus gente de confiança no balcão, que freguês não espera. Diga o que falta saber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A que horas larga o serviço?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_3_taverneiro": {
-     "fala": [
-      "Mary Barnes cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_taverneiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não tenho que dar. Se Sydney Cooper tinha desafeto, não foi freguês meu.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_taverneiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Sydney Cooper? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_taverneiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_3_taverneiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Sydney Cooper. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Do que corre no balcão, muito não se repete: ficaria mal na boca, e assim fica.\" Prende o xale. \"Se faltar soma ou data, o livro do balcão as tem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_6_lavrador": {
-   "suspeitoId": "gen_6_lavrador",
-   "origemLocalidade": "casa_cottage_4",
-   "chamada": "Interrogar Simon Barnes",
-   "titulo": "Interrogatório — Simon Barnes",
-   "subtitulo": "Lavrador, 48 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
-   "gatilhos": [
-    {
-     "rotulo": "\"Uma vida inteira de ofício, e um dia alguém a desfaz num gesto. Já imaginou?\"",
-     "vaiPara": "gatilho"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Simon Barnes entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Fala baixo e mede a porta antes de cada resposta."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A tarde acaba a que horas?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Sydney Cooper eu não conhecia.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Sydney Cooper? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto os olhos vão à porta entre uma hora e outra: [[gen_alibi_gen_6_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Sydney Cooper: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "gatilho": {
-     "fala": [
-      "Simon Barnes olha as próprias mãos como quem confere uma ferramenta. \"Ponho anos numa obra: o melhor da vista, o melhor dos dedos. Basta um que chegue depois e faça melhor, ou diga que faz, e o que levei a vida a erguer vira nada. Perder isso me tira o sono, e disso não me envergonho.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_1_lavrador": {
-   "suspeitoId": "gen_1_lavrador",
-   "origemLocalidade": "casa_cottage_1",
-   "chamada": "Interrogar Walter Ellis",
-   "titulo": "Interrogatório — Walter Ellis",
-   "subtitulo": "Lavrador, 64 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
-   "gatilhos": [
-    {
-     "rotulo": "\"E se o nome caísse na boca da vila, de uma tarde para a outra. Já temeu isso?\"",
-     "vaiPara": "gatilho"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Walter Ellis abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" Fala baixo e mede a porta antes de cada resposta."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A que horas larga o serviço?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Walter Ellis conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Sydney Cooper era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já com a porta a meio fechar, detém-se, como quem ainda tem uma palavra; e a fecha sem a dizer."
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto entre uma hora e outra, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Sydney Cooper?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Sydney Cooper, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Sydney Cooper? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "gatilho": {
-     "fala": [
-      "Um músculo cede no rosto de Walter Ellis, e a voz baixa de tom. \"Um nome leva três gerações para se firmar e uma tarde para virar assunto de taverna. Quem nunca o teve ignora o peso de o poder perder. Eu carrego esse peso desde menino, e durmo mal com ele.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Palmas grossas de enxada, arranhões de cerca de arame nas costas das mãos. A terra está sob as unhas — sempre está."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  }
- },
- "confrontos": {
-  "estadoInicial": "presente",
-  "consequencias": {}
- },
- "abertura": {
-  "passos": [
-   {
-    "id": "descoberta",
-    "titulo": "Wrenfield, 14 de outubro de 1893",
-    "paragrafos": [
-     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
-    ],
-    "rotuloBotao": "O constable é chamado"
-   },
-   {
-    "id": "alarme",
-    "titulo": "O constable manda chamar",
-    "paragrafos": [
-     "Harrow, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
-    ],
-    "rotuloBotao": "Ler a carta"
-   },
-   {
-    "id": "carta",
-    "titulo": "A carta do Constable",
-    "carta": true,
-    "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
-     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Wrenfield, e isto passa do meu ofício. Sydney Cooper, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
-     "\"Harrow, Constable.\""
-    ],
-    "rotuloBotao": "Aceitar o chamado"
-   },
-   {
-    "id": "metodo",
-    "titulo": "A maleta pronta",
-    "paragrafos": [
-     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
-    ],
-    "rotuloBotao": "Tomar o trem"
-   },
-   {
-    "id": "chegada",
-    "titulo": "Wrenfield",
-    "paragrafos": [
-     "A plataforma cheira a carvão e palha molhada. Wrenfield estende-se além dos trilhos, e a luz de outubro deita rasa sobre os telhados. O constable Harrow espera junto ao portão e aperta a mão {g:do perito|da perita} com as duas mãos."
-    ],
-    "rotuloBotao": "Ouvir o constable"
-   },
-   {
-    "id": "briefing",
-    "titulo": "O relato do constable Harrow",
-    "briefing": true,
-    "paragrafos": [
-     "\"O essencial é isto: Sydney Cooper, 14 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
-    ],
-    "rotuloBotao": "Entrar — iniciar a investigação"
-   }
-  ],
-  "perguntas": [
-   {
-    "id": "sobre_a_hora",
-    "pergunta": "O que se sabe da hora da morte?",
-    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
-   },
-   {
-    "id": "quem_convive",
-    "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Enoch Barnes, Simon Barnes, Walter Ellis — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
-   },
-   {
-    "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
-   }
-  ],
-  "opcoesPersonagem": [
-   {
-    "id": "harlan",
-    "nome": "Harlan Blackwell",
-    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
-   }
-  ]
- },
- "parametrosCena": {
-  "horasChegada": 11,
-  "ambiente": 11,
-  "calendario": {
-   "diaBase": 14,
-   "mesAbrev": "out",
-   "mesExtenso": "outubro",
-   "ano": 1893
-  }
- },
- "maquete": {
-  "morfologia": "de_green",
-  "tabua": {
-   "centroX": 0.59,
-   "largura": 12.17,
-   "fundo": 7.16
-  },
-  "posicoes": {
-   "corpo": {
-    "x": 3.64,
-    "z": -0.94,
-    "predio": "granja"
-   },
-   "cena": {
-    "x": 3.76,
-    "z": -1.56,
-    "predio": "anexo_cena"
-   },
-   "delegacia": {
-    "x": -0.04,
-    "z": -2.03,
-    "predio": "delegacia"
-   },
-   "vizinhanca": {
-    "x": -1.36,
-    "z": 2.02,
-    "predio": "pub"
-   },
-   "casa_cottage_4": {
-    "x": -0.66,
-    "z": 1,
-    "predio": "cottage_4"
-   },
-   "casa_casa_do_medico": {
-    "x": 0,
-    "z": 1.93,
-    "predio": "casa_do_medico"
-   },
-   "casa_cottage_1": {
-    "x": -3.32,
-    "z": 0.94,
-    "predio": "cottage_1"
-   },
-   "oficio_do_reu": {
-    "x": 2.98,
-    "z": -1.38,
-    "predio": "anexo_oficio_do_reu"
-   },
-   "comarca_vila_mercado": {
-    "x": 7.07,
-    "z": -1.7,
-    "predio": "predio_comarca_vila_mercado",
-    "distante": true
-   }
-  },
-  "formas": {
-   "granja": {
-    "w": 1.5,
-    "d": 0.95,
-    "h": 0.85,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.6,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.45,
-      "z": -0.19,
-      "alt": 0.48
-     }
-    ]
-   },
-   "anexo_cena": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.3
-   },
-   "delegacia": {
-    "w": 1.35,
-    "d": 0.95,
-    "h": 1.02,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.48,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.41,
-      "z": -0.19,
-      "alt": 0.5
-     }
-    ]
-   },
-   "pub": {
-    "w": 1.6,
-    "d": 1.1,
-    "h": 0.88,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.54,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.48,
-      "z": -0.22,
-      "alt": 0.48
-     },
-     {
-      "x": -0.4,
-      "z": 0.18,
-      "alt": 0.48
-     }
-    ]
-   },
-   "cottage_4": {
-    "w": 0.72,
-    "d": 0.6,
-    "h": 0.6,
-    "corParede": "#84704f",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.22,
-      "z": -0.12,
-      "alt": 0.44
-     }
-    ]
-   },
-   "casa_do_medico": {
-    "w": 1.2,
-    "d": 0.95,
-    "h": 1,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.6,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.36,
-      "z": -0.19,
-      "alt": 0.5
-     },
-     {
-      "x": -0.3,
-      "z": 0.15,
-      "alt": 0.5
-     }
-    ]
-   },
-   "cottage_1": {
-    "w": 0.77,
-    "d": 0.7,
-    "h": 0.5,
-    "corParede": "#7d684c",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.23,
-      "z": -0.14,
-      "alt": 0.42
-     }
-    ]
-   },
-   "anexo_oficio_do_reu": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.75
-   },
-   "predio_comarca_vila_mercado": {
-    "w": 1.3,
-    "d": 1,
-    "h": 1.05,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.56,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.45,
-      "z": -0.25,
-      "alt": 0.55
-     }
-    ]
-   },
-   "igreja": {
-    "w": 0.9,
-    "d": 1.6,
-    "h": 1.4,
-    "corParede": "#8a8272",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.5,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "vicarage": {
-    "w": 1.25,
-    "d": 1,
-    "h": 1.05,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.57,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.38,
-      "z": -0.2,
-      "alt": 0.51
-     },
-     {
-      "x": -0.31,
-      "z": 0.16,
-      "alt": 0.51
-     }
-    ]
-   },
-   "capela": {
-    "w": 0.8,
-    "d": 1.15,
-    "h": 0.95,
-    "corParede": "#96825e",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.52,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "solar": {
-    "w": 1.5,
-    "d": 1.2,
-    "h": 1.15,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.58,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.45,
-      "z": -0.24,
-      "alt": 0.52
-     },
-     {
-      "x": -0.38,
-      "z": 0.19,
-      "alt": 0.52
-     }
-    ]
-   },
-   "botica": {
-    "w": 0.95,
-    "d": 0.88,
-    "h": 0.75,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.49,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.28,
-      "z": -0.18,
-      "alt": 0.46
-     }
-    ],
-    "marquise": true
-   },
-   "mercearia": {
-    "w": 0.95,
-    "d": 0.88,
-    "h": 0.7,
-    "corParede": "#8d7a5a",
-    "corTelhado": "#4d3a29",
-    "telhadoAltura": 0.49,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.28,
-      "z": -0.18,
-      "alt": 0.45
-     }
-    ],
-    "marquise": true
-   },
-   "escola": {
-    "w": 1.05,
-    "d": 0.9,
-    "h": 0.77,
-    "corParede": "#84704f",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.56,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.32,
-      "z": -0.18,
-      "alt": 0.46
-     }
-    ]
-   },
-   "forja": {
-    "w": 1,
-    "d": 0.75,
-    "h": 0.55,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.39,
-    "beiral": 0.1,
-    "ristela": false,
-    "chamines": [
-     {
-      "x": 0.3,
-      "z": -0.15,
-      "alt": 0.43
-     }
-    ]
-   },
-   "moinho": {
-    "w": 0.9,
-    "d": 0.95,
-    "h": 1.35,
-    "corParede": "#8a8272",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.53,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": [],
-    "moinho": true
-   },
-   "estacao": {
-    "w": 1.3,
-    "d": 0.75,
-    "h": 0.52,
-    "corParede": "#8a7355",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.41,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.39,
-      "z": -0.15,
-      "alt": 0.42
-     }
-    ]
-   },
-   "adro_da_igreja": {
-    "w": 1.25,
-    "d": 0.9,
-    "h": 0.05,
-    "corParede": "#6a6656",
-    "corTelhado": "#514d40",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "patio_da_granja": {
-    "w": 1.1,
-    "d": 0.85,
-    "h": 0.04,
-    "corParede": "#716448",
-    "corTelhado": "#554b3c",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "caminho_do_acude": {
-    "w": 1.3,
-    "d": 0.65,
-    "h": 0.04,
-    "corParede": "#5e6650",
-    "corTelhado": "#4c5546",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "travessa_dos_fundos": {
-    "w": 1.25,
-    "d": 0.55,
-    "h": 0.04,
-    "corParede": "#6a6252",
-    "corTelhado": "#565043",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "cottage_2": {
-    "w": 0.82,
-    "d": 0.65,
-    "h": 0.5,
-    "corParede": "#83704e",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.36,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.25,
-      "z": -0.13,
-      "alt": 0.42
-     }
-    ]
-   },
-   "cottage_3": {
-    "w": 0.87,
-    "d": 0.6,
-    "h": 0.55,
-    "corParede": "#84704f",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.41,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.26,
-      "z": -0.12,
-      "alt": 0.43
-     }
-    ]
-   }
-  },
-  "cenario": [
-   {
-    "predio": "igreja",
-    "x": -2.64,
-    "z": -2.08
-   },
-   {
-    "predio": "vicarage",
-    "x": -1.32,
-    "z": -2.09
-   },
-   {
-    "predio": "capela",
-    "x": -2.74,
-    "z": 1.64
-   },
-   {
-    "predio": "solar",
-    "x": -3.8,
-    "z": -1.66
-   },
-   {
-    "predio": "botica",
-    "x": 1.44,
-    "z": -2.05
-   },
-   {
-    "predio": "mercearia",
-    "x": 2.84,
-    "z": 1.71
-   },
-   {
-    "predio": "escola",
-    "x": 2.64,
-    "z": -1.66
-   },
-   {
-    "predio": "forja",
-    "x": 1.28,
-    "z": 2.08
-   },
-   {
-    "predio": "moinho",
-    "x": 4.4,
-    "z": 0.24
-   },
-   {
-    "predio": "estacao",
-    "x": 4,
-    "z": 1.24
-   },
-   {
-    "predio": "adro_da_igreja",
-    "x": -2.6,
-    "z": -1.33,
-    "logradouro": true
-   },
-   {
-    "predio": "patio_da_granja",
-    "x": 4.32,
-    "z": -1.02,
-    "logradouro": true
-   },
-   {
-    "predio": "caminho_do_acude",
-    "x": 4.97,
-    "z": -0.5,
-    "logradouro": true
-   },
-   {
-    "predio": "travessa_dos_fundos",
-    "x": -2,
-    "z": 2.47,
-    "logradouro": true
-   },
-   {
-    "predio": "cottage_2",
-    "x": -2.52,
-    "z": 0.96
-   },
-   {
-    "predio": "cottage_3",
-    "x": -1.72,
-    "z": 0.98
-   }
-  ],
-  "estrada": [
-   {
-    "x": 5.37,
-    "z": -0.7
-   },
-   {
-    "x": 6.07,
-    "z": -1.15
-   },
-   {
-    "x": 6.67,
-    "z": -1.45
-   },
-   {
-    "x": 7.07,
-    "z": -1.7
-   }
-  ]
- },
- "telegrama": {
-  "destino": "Netherfield",
-  "via": "estacao",
-  "latencia": 2,
-  "resposta": {
-   "textoDisplay": "A Resposta por Fio",
-   "termoCarimbo": "Telegrama de Netherfield: o assento do penhorista",
-   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: o número do assento, o dia, a soma e o nome do morto por extenso.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_lavrador"
-   }
-  }
- }
-},
-{
- "id": "gerado_luta_119",
- "verdadeDeOuro": {
-  "id": "gerado_luta_119",
-  "vitima": "Henry Jones",
-  "reuCorreto": "gen_0_pastor_de_ovelhas",
-  "horasMorteAntesChegada": 21,
-  "horaMorteAbsoluta": -10,
-  "mecanismoCorreto": "ferida_arma_branca",
-  "instrumentoCorreto": "lamina_de_oficio",
-  "metodoIniciado": null,
-  "motivacaoCorreta": "seguro_de_enterro",
-  "cenaEncenada": false,
-  "horaForjada": null,
-  "perifericos": {
-   "gen_1_lavadeira": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
-   },
-   "gen_5_guarda_caca": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
-   },
-   "gen_2_lavadeira": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_4_lavrador": {
-    "veredictoEsperado": "inocente_acesso",
-    "segredo": null
-   }
-  },
-  "encenacaoInstrumento": null
- },
- "suspeitos": [
-  {
-   "id": "gen_1_lavadeira",
-   "nome": "Emma Thomas",
-   "idade": 72,
-   "relacao": "Lavadeira; mora no Cottage nº 1",
-   "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
-  },
-  {
-   "id": "gen_5_guarda_caca",
-   "nome": "Henry Hill",
-   "idade": 33,
-   "relacao": "Guarda-caça; mora no Cottage nº 1",
-   "descricao": "Descreve por alto o que viu; miudeza não lhe ficou."
-  },
-  {
-   "id": "gen_2_lavadeira",
-   "nome": "Mary Read",
-   "idade": 46,
-   "relacao": "Lavadeira; mora no Cottage nº 2",
-   "descricao": "Começa pela resposta e acaba na vida alheia."
-  },
-  {
-   "id": "gen_0_pastor_de_ovelhas",
-   "nome": "Ralph Morris",
-   "idade": 31,
-   "relacao": "Pastor de ovelhas; mora no Cottage nº 4",
-   "descricao": "Cita dia e hora como quem lê de um livro de assentos."
-  },
-  {
-   "id": "gen_4_lavrador",
-   "nome": "Richard Morris",
-   "idade": 32,
-   "relacao": "Lavrador; mora no Cottage nº 4",
-   "descricao": "Não há pergunta curta que devolva curta."
-  }
- ],
- "cartas": [
-  {
-   "id": "gen_rigor",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Rigidez Parcial",
-     "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "instalando",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 24,
-     "textoDisplay": "Corpo Endurecido",
-     "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "pleno",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 36,
-     "textoDisplay": "Rigidez Cedendo",
-     "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolucao",
-      "estadoDegradacao": "degradado"
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Corpo Flácido",
-     "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "O cotovelo e o joelho movem-se sem resistência à mão.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolvido",
-      "estadoDegradacao": "resolvido"
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_livores",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Manchas que Cedem ao Polegar",
-     "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "movel",
-      "posicaoCompativel": true
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Manchas Fixas",
-     "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "fixo",
-      "posicaoCompativel": true
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_lesao_fatal",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "A Ferida no Tórax",
-   "carimboPadrao": "Ferida perfuro-incisa; sede: tórax",
-   "descricao": "Uma fenda estreita, de bordas limpas e regulares, mais comprida que larga. A sonda desce fundo; o trajeto encerra mais do que a fenda aparenta. Sem ponte de pele entre as margens, e a pele ao redor não traz outros riscos rasos.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "ferida",
-    "sinal": "ferida_incisa"
-   }
-  },
-  {
-   "id": "gen_reacao_vital",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "As Bordas da Ferida",
-   "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As lesões mostram bordas afastadas e retraídas; por dentro, o sangue está coagulado e preso à carne. Lavado o corte, o coágulo não se desprende.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "reacao_vital",
-    "sinal": "reacao_vital"
-   }
-  },
-  {
-   "id": "gen_visto_vivo",
-   "localidade": "delegacia",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": null,
-   "textoDisplay": "Última Vez com Vida",
-   "carimboPadrao": "Vítima com vida às 13h00 de 13/out",
-   "descricao": "Do registro da ronda consta Henry Jones com vida às 13h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
-   "tagsOcultas": {
-    "dominio": "temporal",
-    "subDominio": "ultima_vez_visto",
-    "horaAvistamento": -11
-   }
-  },
-  {
-   "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 2,
-    "fila": 1
-   },
-   "mobilia": null,
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: uma lâmina de ofício. O feitio casa com a lesão do morto. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Ralph Morris.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "lamina_de_oficio",
-    "pertenceA": "gen_0_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 2,
-    "fila": 2
-   },
-   "mobilia": null,
-   "textoDisplay": "O Respingo na Parede",
-   "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito. A poça no chão ficou a palmos abaixo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
-    "pertenceA": "gen_0_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_pegadas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 1
-   },
-   "mobilia": null,
-   "textoDisplay": "Pegadas Rumo à Porta",
-   "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "pegadas",
-    "tipoVestigio": "pegada_ensanguentada",
-    "pertenceA": "gen_0_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_peca_deslocada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 3
-   },
-   "mobilia": "cozinha_cadeiras_windsor",
-   "textoDisplay": "Peça Fora do Lugar",
-   "carimboPadrao": "Peça fora do seu lugar",
-   "descricao": "A peça não está no seu assento. O vazio no arranjo tem o feitio dela, e ninguém da casa a moveu.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ambiente_da_luta",
-    "tipoVestigio": "peca_deslocada"
-   }
-  },
-  {
-   "id": "gen_residuo_peca",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 3
-   },
-   "mobilia": "cozinha_cadeiras_windsor",
-   "textoDisplay": "Resíduo na Peça",
-   "carimboPadrao": "Crosta escura no relevo da peça",
-   "descricao": "Na peça, uma crosta escura secou no relevo, onde o pano não desce. O feitio do relevo casa com uma lesão que não está no morto.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "residuo_na_peca",
-    "pertenceA": "gen_0_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_ferimento_reu",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "corpo_do_reu",
-   "textoDisplay": "Ferimento no Suspeito",
-   "carimboPadrao": "Ferimento recente no suspeito (antebraços)",
-   "descricao": "De manga arregaçada por ordem do constable, Ralph Morris mostra o que a roupa cobria: a marca recente de luta, nos antebraços. A lesão tem os dias do crime, e a explicação doméstica não vem.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ferimento_do_agressor",
-    "pertenceA": "gen_0_pastor_de_ovelhas",
-    "sede": "antebracos"
-   }
-  },
-  {
-   "id": "gen_sinal_exigivel",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Sinal no Corpo da Vítima",
-   "carimboPadrao": "Marca-espelho esperada (palmas das mãos)",
-   "descricao": "Marca-espelho esperada (palmas das mãos)",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sinal_exigivel",
-    "regiao": "maos",
-    "sede": "palmas",
-    "metodoOrigem": "laminada"
-   }
-  },
-  {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_4_lavrador",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na tarde de 13",
-   "descricao": "Richard Morris conta o que a parede deixou passar na tarde de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "dia"
-   }
-  },
-  {
-   "id": "gen_motivo",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Os Papéis do Móbil",
-   "carimboPadrao": "Móbil de Ralph Morris",
-   "descricao": "Uma apólice de enterro em nome de Henry Jones paga a Ralph Morris quando a morte vier.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "seguro_de_enterro",
-    "ligadoA": "gen_0_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_retratacao",
-   "localidade": "vizinhanca",
-   "textoDisplay": "O Depoimento que Mudou",
-   "carimboPadrao": "Depoimento novo que desmente o anterior",
-   "descricao": "Richard Morris conta agora outra versão da mesma noite — palavra nova contra o que consta do primeiro registro.",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "retratacao",
-    "testemunha": "gen_4_lavrador",
-    "desmente": "gen_ruido_ouvido"
-   },
-   "vestigioInterferencia": {
-    "classe": "depoimento_contraditorio",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_dividas",
-   "localidade": "vizinhanca",
-   "textoDisplay": "A Caderneta Quitada",
-   "carimboPadrao": "Dívidas quitadas na mesma semana",
-   "descricao": "A caderneta de fiado amanheceu quitada, a soma cheia de uma vez, na mesma semana da nova versão.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_dinheiro",
-    "tipoVestigio": "dividas_quitadas"
-   },
-   "vestigioInterferencia": {
-    "classe": "dividas_quitadas",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_soberanos",
-   "localidade": "vizinhanca",
-   "textoDisplay": "Soberanos Novos",
-   "carimboPadrao": "Soberanos novos em mão de fiado",
-   "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: Ralph Morris.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_dinheiro",
-    "pertenceA": "gen_0_pastor_de_ovelhas"
-   },
-   "vestigioInterferencia": {
-    "classe": "soberanos_novos",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_segredo_gen_1_lavadeira",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Emma Thomas",
-   "descricao": "Numa meia folha pautada, uma soma e um prazo com o nome de Emma Thomas ao pé — acerto sem testemunha, à espera da segunda assinatura.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
-    "pertenceA": "gen_1_lavadeira",
-    "revelaSegredo": "acerto_reservado"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_5_guarda_caca",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Henry Hill",
-   "descricao": "Meia dúzia de linhas na letra de Henry Hill: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_5_guarda_caca",
-    "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_2_lavadeira",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Mary Read",
-   "carimboPadrao": "Paradeiro de Mary Read, confirmado",
-   "descricao": "A rua dá Mary Read no Cottage nº 2 sexta à tarde, do meio-dia às seis, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_2_lavadeira"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_4_lavrador",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Richard Morris",
-   "carimboPadrao": "Paradeiro de Richard Morris, confirmado",
-   "descricao": "A rua dá Richard Morris na Granja sexta à tarde, do meio-dia às seis, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_lavrador"
-   }
-  },
-  {
-   "id": "gen_movel_gen_1_lavadeira",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Emma Thomas",
-   "carimboPadrao": "Móbil de Emma Thomas",
-   "descricao": "Consta o pedido de socorro de Emma Thomas, e consta a recusa; a palavra que abria ou fechava essa porta era a de Henry Jones, e atrás da recusa espera a workhouse.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "caridade_negada",
-    "ligadoA": "gen_1_lavadeira"
-   }
-  },
-  {
-   "id": "gen_alibi_gen_1_lavadeira",
-   "localidade": "casa_cottage_1",
-   "textoDisplay": "Cottage nº 1 (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_1_lavadeira",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_5_guarda_caca",
-   "localidade": "casa_cottage_1",
-   "textoDisplay": "Cottage nº 1 (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 1 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_5_guarda_caca",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_2_lavadeira",
-   "localidade": "casa_cottage_2",
-   "textoDisplay": "Cottage nº 2 (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 2, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_2_lavadeira",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_0_pastor_de_ovelhas",
-   "localidade": "casa_cottage_4",
-   "textoDisplay": "Cottage nº 4 (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 4 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_0_pastor_de_ovelhas",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_4_lavrador",
-   "localidade": "casa_cottage_4",
-   "textoDisplay": "A Granja (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_4_lavrador",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  }
- ],
- "localidades": [
-  {
-   "id": "corpo",
-   "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — A Granja",
-   "subtitulo": "Henry Jones, lavrador, 60 anos",
-   "acoesEspeciais": [
-    "termometro"
-   ],
-   "gestos": [
-    {
-     "id": "gesto_voltar_corpo",
-     "rotulo": "Voltar o corpo",
-     "cartaId": "gen_livores"
-    }
-   ],
-   "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
-    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ],
-   "planta": {
-    "titulo": "A Granja",
-    "viewBox": "0 0 204 152",
-    "comodos": [
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha da Granja",
-      "contorno": "M24 24 H128 V128 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 38
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 50,
-         "y": 76
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 76,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 102,
-         "y": 76
-        }
-       }
-      ]
-     },
-     {
-      "id": "paiol",
-      "rotulo": "Paiol",
-      "contorno": "M128 24 H180 V128 H128 Z",
-      "rotuloPos": {
-       "x": 154,
-       "y": 38
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M107 107 H123 V123 H107 Z",
-     "M55 107 H71 V123 H55 Z",
-     "M29 81 H45 V97 H29 Z",
-     "M133 55 H149 V71 H133 Z",
-     "M133 29 H149 V45 H133 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 102,
-      "y": 144
-     }
-    ]
-   }
-  },
-  {
-   "id": "cena",
-   "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — A Granja",
-   "subtitulo": "Onde Henry Jones foi achado",
-   "acoesEspeciais": [],
-   "introducao": [
-    "A Granja guarda o dia em que o acharam; o exame corre cômodo a cômodo."
-   ],
-   "pontos": [
-    {
-     "id": "pt_cena_cozinha",
-     "rotulo": "Cozinha da Granja",
-     "comodo": "cozinha",
-     "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, cadeiras Windsor, sofá velho, tapete de retalhos. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Junto do corpo, no chão: [[gen_instrumento]]. Ao exame: [[gen_peca_deslocada]]. Ao exame: [[gen_residuo_peca]]. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_1_lavadeira]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_5_guarda_caca]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]. Do meio do vão até a porta: [[gen_pegadas]]."
-     ]
-    },
-    {
-     "id": "pt_cena_paiol",
-     "rotulo": "Paiol",
-     "comodo": "paiol",
-     "prosa": [
-      "Do mobiliário, sacas de grão, ferramentas de lavoura."
-     ]
-    }
-   ],
-   "planta": {
-    "titulo": "A Granja",
-    "viewBox": "0 0 204 152",
-    "comodos": [
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha da Granja",
-      "contorno": "M24 24 H128 V128 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 38
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 50,
-         "y": 76
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 76,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 102,
-         "y": 76
-        }
-       }
-      ]
-     },
-     {
-      "id": "paiol",
-      "rotulo": "Paiol",
-      "contorno": "M128 24 H180 V128 H128 Z",
-      "rotuloPos": {
-       "x": 154,
-       "y": 38
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M107 107 H123 V123 H107 Z",
-     "M55 107 H71 V123 H55 Z",
-     "M29 81 H45 V97 H29 Z",
-     "M133 55 H149 V71 H133 Z",
-     "M133 29 H149 V45 H133 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 102,
-      "y": 144
-     }
-    ]
-   },
-   "blocosContingentes": []
-  },
-  {
-   "id": "delegacia",
-   "rotuloMesa": "O Posto do Constable",
-   "titulo": "O Posto do Constable",
-   "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
-   "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
-    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_1_lavadeira]].",
-    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "vizinhanca",
-   "rotuloMesa": "A Taverna",
-   "titulo": "A Taverna",
-   "subtitulo": "Onde a vila conta o que sabe",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A taverna junta a vila ao fim da lida: bancos corridos, o balcão úmido, e quem chega ouve antes de sentar.",
-    "A vila é uma rua só, e os fundos dos lotes dão para o campo aberto.",
-    "A Granja fica na orla de trabalho, à parte das casas de morada; até a porta mais próxima vai um bom pedaço de caminho.",
-    "Quem lá estava àquela hora conta: [[gen_ruido_ouvido]].",
-    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_2_lavadeira]], [[gen_corrobora_gen_4_lavrador]]."
-   ],
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_1",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]."
-     ]
-    }
-   ]
-  },
-  {
-   "id": "casa_cottage_1",
-   "rotuloMesa": "Cottage nº 1",
-   "titulo": "Cottage nº 1 — à porta",
-   "subtitulo": "A morada de Emma Thomas e Henry Hill",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 1 fica na ruela dos cottages. O constable vai adiante, bate com o nó dos dedos e recua um passo."
-   ]
-  },
-  {
-   "id": "casa_cottage_2",
-   "rotuloMesa": "Cottage nº 2",
-   "titulo": "Cottage nº 2 — à porta",
-   "subtitulo": "A morada de Mary Read",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 2 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
-   ]
-  },
-  {
-   "id": "casa_cottage_4",
-   "rotuloMesa": "Cottage nº 4",
-   "titulo": "Cottage nº 4 — à porta",
-   "subtitulo": "A morada de Ralph Morris e Richard Morris",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 4 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
-   ]
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja — a busca",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca com o constable à porta",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o constable à porta e o dono das coisas a um canto. O constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
-   ],
-   "blocosContingentes": []
-  }
- ],
- "nosMapa": [
-  {
-   "id": "corpo",
-   "rotulo": "O Corpo",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "cena",
-   "rotulo": "A Cena do Crime",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "delegacia",
-   "rotulo": "O Posto do Constable",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "vizinhanca",
-   "rotulo": "A Taverna",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_1",
-   "rotulo": "Cottage nº 1",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_2",
-   "rotulo": "Cottage nº 2",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_4",
-   "rotulo": "Cottage nº 4",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja — a busca",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
-  }
- ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
- "custos": {
-  "cena_predio|cena_predio": 0,
-  "cena_predio|vila": 1,
-  "vila|cena_predio": 1,
-  "vila|vila": 1
- },
- "dialogos": {
-  "dialogo_gen_1_lavadeira": {
-   "suspeitoId": "gen_1_lavadeira",
-   "origemLocalidade": "casa_cottage_1",
-   "chamada": "Interrogar Emma Thomas",
-   "titulo": "Interrogatório — Emma Thomas",
-   "subtitulo": "Lavadeira, 72 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_1_lavadeira": "reacao_gen_segredo_gen_1_lavadeira"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_1_lavadeira",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Emma Thomas abre antes que o constable acabe de bater, e toma a palavra do batente. \"Posso falar, com licença da casa. Respondo o que souber.\" Acrescenta, antes da primeira pergunta: \"Na minha idade responde-se uma vez, e certo.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A que horas larga o serviço?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_1_lavadeira": {
-     "fala": [
-      "Emma Thomas cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Henry Jones, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Jones eu não conhecia.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Henry Jones, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Henry Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Henry Jones, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Henry Jones, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Recua com meia mesura. \"Se a casa puder servir em mais, é só mandar.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Mãos vermelhas, esfoladas, rachadas — a soda cáustica e a esfrega do tanque. Nenhum corte, só castigo."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_5_guarda_caca": {
-   "suspeitoId": "gen_5_guarda_caca",
-   "origemLocalidade": "casa_cottage_1",
-   "chamada": "Interrogar Henry Hill",
-   "titulo": "Interrogatório — Henry Hill",
-   "subtitulo": "Guarda-caça, 33 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_5_guarda_caca": "reacao_gen_segredo_gen_5_guarda_caca"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_5_guarda_caca",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Henry Hill abre antes que o constable acabe de bater, e toma a palavra do batente. \"Posso falar, com licença da casa. Respondo o que souber.\""
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A tarde acaba a que horas?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_5_guarda_caca": {
-     "fala": [
-      "Henry Hill lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Henry Jones estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Henry Jones: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Jones eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "Conta a sexta à tarde com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Henry Jones: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Henry Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Henry Jones: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_guarda_caca]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Henry Jones: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_2_lavadeira": {
-   "suspeitoId": "gen_2_lavadeira",
-   "origemLocalidade": "casa_cottage_2",
-   "chamada": "Interrogar Mary Read",
-   "titulo": "Interrogatório — Mary Read",
-   "subtitulo": "Lavadeira, 46 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Mary Read entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Quando é que encerra o dia?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Henry Jones eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Henry Jones? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_0_pastor_de_ovelhas": {
-   "suspeitoId": "gen_0_pastor_de_ovelhas",
-   "origemLocalidade": "casa_cottage_4",
-   "chamada": "Interrogar Ralph Morris",
-   "titulo": "Interrogatório — Ralph Morris",
-   "subtitulo": "Pastor de ovelhas, 31 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento",
-    "gen_intf_intf_1_soberanos": "reacao_gen_intf_intf_1_soberanos"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
-    },
-    {
-     "requerCarta": "gen_intf_intf_1_soberanos",
-     "rotulo": "[Soberanos Novos] Por que soberanos novos, contados à vista de todos?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Ralph Morris entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Traz as datas prontas, como quem chega com a caderneta escrita."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A que horas larga o serviço?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_instrumento": {
-     "fala": [
-      "Ralph Morris olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_intf_intf_1_soberanos": {
-     "fala": [
-      "Ralph Morris não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito; das minhas horas já dei conta, e ficou por termo.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Henry Jones era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Henry Jones?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Na palma, um corte inciso limpo, transversal, na base dos dedos. A borda é nítida: lâmina, não queda."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_4_lavrador": {
-   "suspeitoId": "gen_4_lavrador",
-   "origemLocalidade": "casa_cottage_4",
-   "chamada": "Interrogar Richard Morris",
-   "titulo": "Interrogatório — Richard Morris",
-   "subtitulo": "Lavrador, 32 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Richard Morris entreabre a porta e espera que perguntem, a mão ainda no trinco. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A tarde acaba a que horas?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\" E emenda, mais baixo: \"há o que se cala por pudor, não por culpa.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Richard Morris conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Henry Jones era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Henry Jones?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Henry Jones, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Henry Jones? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco. O que não é de se dizer fica comigo, e não me leve a mal.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  }
- },
- "confrontos": {
-  "estadoInicial": "presente",
-  "consequencias": {}
- },
- "abertura": {
-  "passos": [
-   {
-    "id": "descoberta",
-    "titulo": "Colbrook, 14 de outubro de 1893",
-    "paragrafos": [
-     "O cão preso ao mourão ganiu desde a primeira luz. Um vizinho a caminho da lida parou à cerca, chamou, e não teve resposta."
-    ],
-    "rotuloBotao": "O constable é chamado"
-   },
-   {
-    "id": "alarme",
-    "titulo": "O constable manda chamar",
-    "paragrafos": [
-     "Bexley, o constable da vila, chegou, olhou o que havia para olhar e recuou um passo. Fechou a cena, deixou um homem de guarda e sentou-se a escrever ao condado."
-    ],
-    "rotuloBotao": "Ler a carta"
-   },
-   {
-    "id": "carta",
-    "titulo": "A carta do Constable",
-    "carta": true,
-    "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Vai o meu recado de Colbrook, à pressa. O que aqui houve pede olho de perito, não de guarda. Henry Jones, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
-     "\"Bexley, Constable.\""
-    ],
-    "rotuloBotao": "Aceitar o chamado"
-   },
-   {
-    "id": "metodo",
-    "titulo": "A maleta pronta",
-    "paragrafos": [
-     "A caderneta abre numa página limpa antes de o trem partir. {detective.treatment} {detective.surname} confere a maleta e encaixa no lugar o termômetro de vidro trincado."
-    ],
-    "rotuloBotao": "Tomar o trem"
-   },
-   {
-    "id": "chegada",
-    "titulo": "Colbrook",
-    "paragrafos": [
-     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Bexley vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
-    ],
-    "rotuloBotao": "Ouvir o constable"
-   },
-   {
-    "id": "briefing",
-    "titulo": "O relato do constable Bexley",
-    "briefing": true,
-    "paragrafos": [
-     "\"O essencial é isto: Henry Jones, 60 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
-    ],
-    "rotuloBotao": "Entrar — iniciar a investigação"
-   }
-  ],
-  "perguntas": [
-   {
-    "id": "sobre_a_hora",
-    "pergunta": "O que se sabe da hora da morte?",
-    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
-   },
-   {
-    "id": "quem_convive",
-    "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Ralph Morris, Richard Morris — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
-   },
-   {
-    "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
-   }
-  ],
-  "opcoesPersonagem": [
-   {
-    "id": "harlan",
-    "nome": "Harlan Blackwell",
-    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
-   }
-  ]
- },
- "parametrosCena": {
-  "horasChegada": 11,
-  "ambiente": 11,
-  "calendario": {
-   "diaBase": 14,
-   "mesAbrev": "out",
-   "mesExtenso": "outubro",
-   "ano": 1893
-  }
- },
- "maquete": {
-  "morfologia": "linear",
-  "tabua": {
-   "centroX": 0.08,
-   "largura": 13.88,
-   "fundo": 6.43
-  },
-  "posicoes": {
-   "corpo": {
-    "x": 4.06,
-    "z": 0.93,
-    "predio": "granja"
-   },
-   "cena": {
-    "x": 4.18,
-    "z": 0.31,
-    "predio": "anexo_cena"
-   },
-   "delegacia": {
-    "x": -3.04,
-    "z": -0.81,
-    "predio": "delegacia"
-   },
-   "vizinhanca": {
-    "x": -2.86,
-    "z": 0.97,
-    "predio": "pub"
-   },
-   "casa_cottage_1": {
-    "x": -4.02,
-    "z": 2,
-    "predio": "cottage_1"
-   },
-   "casa_cottage_2": {
-    "x": -3.12,
-    "z": 1.98,
-    "predio": "cottage_2"
-   },
-   "casa_cottage_4": {
-    "x": -1.58,
-    "z": 1.94,
-    "predio": "cottage_4"
-   },
-   "oficio_do_reu": {
-    "x": 3.4,
-    "z": 0.49,
-    "predio": "anexo_oficio_do_reu"
-   }
-  },
-  "formas": {
-   "granja": {
-    "w": 1.5,
-    "d": 0.95,
-    "h": 0.85,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.55,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.45,
-      "z": -0.19,
-      "alt": 0.48
-     }
-    ]
-   },
-   "anexo_cena": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.3
-   },
-   "delegacia": {
-    "w": 1.35,
-    "d": 1,
-    "h": 0.92,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.48,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.41,
-      "z": -0.2,
-      "alt": 0.49
-     }
-    ]
-   },
-   "pub": {
-    "w": 1.5,
-    "d": 1.05,
-    "h": 0.98,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.64,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.45,
-      "z": -0.21,
-      "alt": 0.5
-     },
-     {
-      "x": -0.38,
-      "z": 0.17,
-      "alt": 0.5
-     }
-    ]
-   },
-   "cottage_1": {
-    "w": 0.77,
-    "d": 0.6,
-    "h": 0.55,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.36,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.23,
-      "z": -0.12,
-      "alt": 0.43
-     }
-    ]
-   },
-   "cottage_2": {
-    "w": 0.82,
-    "d": 0.6,
-    "h": 0.6,
-    "corParede": "#83704e",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.41,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.25,
-      "z": -0.12,
-      "alt": 0.44
-     }
-    ]
-   },
-   "cottage_4": {
-    "w": 0.72,
-    "d": 0.65,
-    "h": 0.6,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.41,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.22,
-      "z": -0.13,
-      "alt": 0.44
-     }
-    ]
-   },
-   "anexo_oficio_do_reu": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.75
-   },
-   "igreja": {
-    "w": 0.9,
-    "d": 1.7,
-    "h": 1.25,
-    "corParede": "#8a8272",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.55,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "vicarage": {
-    "w": 1.25,
-    "d": 1.05,
-    "h": 0.95,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.52,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.38,
-      "z": -0.21,
-      "alt": 0.49
-     },
-     {
-      "x": -0.31,
-      "z": 0.17,
-      "alt": 0.49
-     }
-    ]
-   },
-   "capela": {
-    "w": 0.8,
-    "d": 1.15,
-    "h": 0.9,
-    "corParede": "#96825e",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.47,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "solar": {
-    "w": 1.65,
-    "d": 1.2,
-    "h": 1.15,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.63,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.49,
-      "z": -0.24,
-      "alt": 0.52
-     },
-     {
-      "x": -0.41,
-      "z": 0.19,
-      "alt": 0.52
-     }
-    ]
-   },
-   "botica": {
-    "w": 0.9,
-    "d": 0.83,
-    "h": 0.7,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.49,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.27,
-      "z": -0.17,
-      "alt": 0.45
-     }
-    ],
-    "marquise": true
-   },
-   "mercearia": {
-    "w": 0.95,
-    "d": 0.78,
-    "h": 0.75,
-    "corParede": "#8d7a5a",
-    "corTelhado": "#4d3a29",
-    "telhadoAltura": 0.54,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.28,
-      "z": -0.16,
-      "alt": 0.46
-     }
-    ],
-    "marquise": true
-   },
-   "escola": {
-    "w": 1.05,
-    "d": 0.85,
-    "h": 0.72,
-    "corParede": "#84704f",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.56,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.32,
-      "z": -0.17,
-      "alt": 0.46
-     }
-    ]
-   },
-   "casa_do_medico": {
-    "w": 1.2,
-    "d": 0.9,
-    "h": 1,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.55,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.36,
-      "z": -0.18,
-      "alt": 0.5
-     },
-     {
-      "x": -0.3,
-      "z": 0.14,
-      "alt": 0.5
-     }
-    ]
-   },
-   "forja": {
-    "w": 1,
-    "d": 0.8,
-    "h": 0.6,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.39,
-    "beiral": 0.1,
-    "ristela": false,
-    "chamines": [
-     {
-      "x": 0.3,
-      "z": -0.16,
-      "alt": 0.44
-     }
-    ]
-   },
-   "moinho": {
-    "w": 0.85,
-    "d": 0.95,
-    "h": 1.45,
-    "corParede": "#8a8272",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.53,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": [],
-    "moinho": true
-   },
-   "estacao": {
-    "w": 1.3,
-    "d": 0.75,
-    "h": 0.62,
-    "corParede": "#8a7355",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.41,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.39,
-      "z": -0.15,
-      "alt": 0.44
-     }
-    ]
-   },
-   "adro_da_igreja": {
-    "w": 1.25,
-    "d": 0.85,
-    "h": 0.05,
-    "corParede": "#6a6656",
-    "corTelhado": "#514d40",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "patio_da_granja": {
-    "w": 1.1,
-    "d": 0.9,
-    "h": 0.04,
-    "corParede": "#716448",
-    "corTelhado": "#554b3c",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "caminho_do_acude": {
-    "w": 1.3,
-    "d": 0.7,
-    "h": 0.04,
-    "corParede": "#5e6650",
-    "corTelhado": "#4c5546",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "travessa_dos_fundos": {
-    "w": 1.25,
-    "d": 0.5,
-    "h": 0.04,
-    "corParede": "#6a6252",
-    "corTelhado": "#565043",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "cottage_3": {
-    "w": 0.77,
-    "d": 0.6,
-    "h": 0.6,
-    "corParede": "#84704f",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.23,
-      "z": -0.12,
-      "alt": 0.44
-     }
-    ]
-   }
-  },
-  "cenario": [
-   {
-    "predio": "igreja",
-    "x": -5.16,
-    "z": -0.83
-   },
-   {
-    "predio": "vicarage",
-    "x": -4.18,
-    "z": -0.83
-   },
-   {
-    "predio": "capela",
-    "x": -3.98,
-    "z": 0.89
-   },
-   {
-    "predio": "solar",
-    "x": -5.14,
-    "z": 1.05
-   },
-   {
-    "predio": "botica",
-    "x": -1.84,
-    "z": -0.95
-   },
-   {
-    "predio": "mercearia",
-    "x": -0.5,
-    "z": -0.93
-   },
-   {
-    "predio": "escola",
-    "x": 0.86,
-    "z": -0.77
-   },
-   {
-    "predio": "casa_do_medico",
-    "x": -1.58,
-    "z": 0.83
-   },
-   {
-    "predio": "forja",
-    "x": -0.2,
-    "z": 1.05
-   },
-   {
-    "predio": "moinho",
-    "x": 4.9,
-    "z": -0.95
-   },
-   {
-    "predio": "estacao",
-    "x": 5.32,
-    "z": 0.89
-   },
-   {
-    "predio": "adro_da_igreja",
-    "x": -4.72,
-    "z": 0.07,
-    "logradouro": true
-   },
-   {
-    "predio": "patio_da_granja",
-    "x": 4,
-    "z": 1.88,
-    "logradouro": true
-   },
-   {
-    "predio": "caminho_do_acude",
-    "x": 4.9,
-    "z": -1.83,
-    "logradouro": true
-   },
-   {
-    "predio": "travessa_dos_fundos",
-    "x": 1.22,
-    "z": 1.5,
-    "logradouro": true
-   },
-   {
-    "predio": "cottage_3",
-    "x": -2.48,
-    "z": 1.96
-   }
-  ]
- },
- "interferencias": {
-  "eventos": [
-   {
-    "id": "intf_1",
-    "tipo": "subornar_testemunha",
-    "ator": "gen_0_pastor_de_ovelhas",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "testemunha",
-     "testemunhaId": "gen_4_lavrador",
-     "cartaId": "gen_ruido_ouvido",
-     "localId": "cottage_4"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_ruido_ouvido",
-     "comoSoube": "o depoimento de gen_4_lavrador foi tomado em público (extração de gen_ruido_ouvido); o ator soube o que a testemunha contou"
-    },
-    "rota": {
-     "de": "pub",
-     "para": "cottage_4",
-     "faixa": "noite",
-     "sustentacao": "adjacente",
-     "comoChegou": "saiu de pub, prédio vizinho de cottage_4, na faixa noite (adjacência do grafo)"
-    },
-    "rolagem": {
-     "wis": 2,
-     "penalidade": 2,
-     "alvo": 0,
-     "dado": 4,
-     "sucesso": false
-    },
-    "efeito": {
-     "cartaDestruida": null,
-     "cartasNovas": [
-      "gen_intf_intf_1_retratacao",
-      "gen_intf_intf_1_dividas",
-      "gen_intf_intf_1_soberanos"
-     ]
-    },
-    "prenuncio": null,
-    "anuncio": "Uma testemunha mudou a própria história."
-   }
-  ]
- },
- "ecosInterferencia": {
-  "titulo": "O que se moveu enquanto eu ia e vinha",
-  "porChave": {
-   "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
-    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
-   ],
-   "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
-    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
-   ],
-   "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
-   ],
-   "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
-   ],
-   "subornar_testemunha_ocorrida": [
-    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
-   ],
-   "silenciar_ocorrida": [
-    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
-   ],
-   "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
-   ]
-  }
- }
-},
-{
- "id": "gerado_luta_122",
- "verdadeDeOuro": {
-  "id": "gerado_luta_122",
-  "vitima": "Cecil Wright",
-  "reuCorreto": "gen_3_taverneiro",
-  "horasMorteAntesChegada": 13,
-  "horaMorteAbsoluta": -2,
-  "mecanismoCorreto": "ferida_arma_branca",
-  "instrumentoCorreto": "lamina_de_oficio",
-  "metodoIniciado": null,
-  "motivacaoCorreta": "heranca",
-  "cenaEncenada": false,
-  "horaForjada": null,
-  "perifericos": {
-   "gen_2_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
-   },
-   "gen_5_ferreiro": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_1_carroceiro": {
-    "veredictoEsperado": "inocente_acesso",
-    "segredo": null
-   },
-   "gen_0_merceeiro": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
-   }
-  },
-  "encenacaoInstrumento": null
- },
- "suspeitos": [
-  {
-   "id": "gen_2_criada",
-   "nome": "Alice Jones",
-   "idade": 29,
-   "relacao": "Criada; mora na Casa do Médico",
-   "descricao": "Cada resposta sai ao preço de duas perguntas."
-  },
-  {
-   "id": "gen_3_taverneiro",
-   "nome": "Henry Roberts",
-   "idade": 42,
-   "relacao": "Taverneiro; mora na Taverna",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
-  },
-  {
-   "id": "gen_5_ferreiro",
-   "nome": "Philip Turner",
-   "idade": 50,
-   "relacao": "Ferreiro; mora no Cottage nº 3",
-   "descricao": "Do serão, lembra a ordem das coisas; das horas, não se prende."
-  },
-  {
-   "id": "gen_1_carroceiro",
-   "nome": "Rosanna Jones",
-   "idade": 44,
-   "relacao": "Carroceira de frete; mora no Cottage nº 2",
-   "descricao": "Responde o perguntado e emenda três coisas que ninguém perguntou."
-  },
-  {
-   "id": "gen_0_merceeiro",
-   "nome": "Walter Hill",
-   "idade": 33,
-   "relacao": "Merceeiro; mora na Mercearia",
-   "descricao": "Não há pergunta curta que devolva curta."
-  }
- ],
- "cartas": [
-  {
-   "id": "gen_rigor",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Rigidez Parcial",
-     "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "O maxilar não cede ao polegar; os cotovelos ainda dobram ao peso da mão.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "instalando",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 24,
-     "textoDisplay": "Corpo Endurecido",
-     "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Duro do maxilar aos joelhos, o corpo resiste por inteiro à mão.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "pleno",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 36,
-     "textoDisplay": "Rigidez Cedendo",
-     "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "Os joelhos e os tornozelos ainda prendem, mas a mandíbula afrouxou e o pescoço cede à mão.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolucao",
-      "estadoDegradacao": "degradado"
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Corpo Flácido",
-     "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolvido",
-      "estadoDegradacao": "resolvido"
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_livores",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Manchas que Cedem ao Polegar",
-     "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "movel",
-      "posicaoCompativel": true
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Manchas Fixas",
-     "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "fixo",
-      "posicaoCompativel": true
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_lesao_fatal",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "A Ferida no Tórax",
-   "carimboPadrao": "Ferida perfuro-incisa; sede: tórax",
-   "descricao": "Uma fenda estreita, de bordas limpas e regulares, mais comprida que larga. A sonda desce fundo; o trajeto encerra mais do que a fenda aparenta. Sem ponte de pele entre as margens, e a pele ao redor não traz outros riscos rasos.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "ferida",
-    "sinal": "ferida_incisa"
-   }
-  },
-  {
-   "id": "gen_reacao_vital",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "As Bordas da Ferida",
-   "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "As bordas da ferida abriram-se e retraíram; no fundo, o sangue infiltrou a carne e coagulou. A água corre por cima sem levar o coágulo.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "reacao_vital",
-    "sinal": "reacao_vital"
-   }
-  },
-  {
-   "id": "gen_visto_vivo",
-   "localidade": "delegacia",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_5_ferreiro",
-   "textoDisplay": "Última Vez com Vida",
-   "carimboPadrao": "Vítima com vida às 21h00 de 13/out",
-   "descricao": "Philip Turner esteve com Cecil Wright às 21h00 de 13/out, e o declara à ronda. Depois dessa hora, avistamento nenhum consta do registro.",
-   "tagsOcultas": {
-    "dominio": "temporal",
-    "subDominio": "ultima_vez_visto",
-    "horaAvistamento": -3
-   }
-  },
-  {
-   "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "taproom",
-   "celula": {
-    "col": 1,
-    "fila": 2
-   },
-   "mobilia": null,
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: uma lâmina de ofício. O feitio casa com a lesão do morto. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: Henry Roberts.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "lamina_de_oficio",
-    "pertenceA": "gen_3_taverneiro"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "taproom",
-   "celula": {
-    "col": 1,
-    "fila": 3
-   },
-   "mobilia": null,
-   "textoDisplay": "O Respingo na Parede",
-   "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "À altura do peito, na parede, um salpico fino, acima da linha das feridas do morto.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
-    "pertenceA": "gen_3_taverneiro"
-   }
-  },
-  {
-   "id": "gen_pegadas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "taproom",
-   "celula": {
-    "col": 2,
-    "fila": 2
-   },
-   "mobilia": null,
-   "textoDisplay": "Pegadas Rumo à Porta",
-   "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "pegadas",
-    "tipoVestigio": "pegada_ensanguentada",
-    "pertenceA": "gen_3_taverneiro"
-   }
-  },
-  {
-   "id": "gen_peca_deslocada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "taproom",
-   "celula": {
-    "col": 2,
-    "fila": 2
-   },
-   "mobilia": "taproom_mesas_de_taverna",
-   "textoDisplay": "Peça Fora do Lugar",
-   "carimboPadrao": "Peça girada fora do seu assento",
-   "descricao": "A peça está fora do esquadro do seu lugar, girada e arrastada; os pés riscaram o chão no sentido do vão da sala.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ambiente_da_luta",
-    "tipoVestigio": "peca_deslocada"
-   }
-  },
-  {
-   "id": "gen_ferimento_reu",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "corpo_do_reu",
-   "textoDisplay": "Ferimento no Suspeito",
-   "carimboPadrao": "Ferimento recente no suspeito (antebraços)",
-   "descricao": "De manga arregaçada por ordem do constable, Henry Roberts mostra o que a roupa cobria: a marca recente de luta, nos antebraços. A lesão tem os dias do crime, e a explicação doméstica não vem.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ferimento_do_agressor",
-    "pertenceA": "gen_3_taverneiro",
-    "sede": "antebracos"
-   }
-  },
-  {
-   "id": "gen_sinal_exigivel",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Sinal no Corpo da Vítima",
-   "carimboPadrao": "Marca-espelho esperada (palmas das mãos)",
-   "descricao": "Marca-espelho esperada (palmas das mãos)",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sinal_exigivel",
-    "regiao": "maos",
-    "sede": "palmas",
-    "metodoOrigem": "laminada"
-   }
-  },
-  {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_1_carroceiro",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na noite de 13",
-   "descricao": "Rosanna Jones conta o que a parede deixou passar na noite de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "noite"
-   }
-  },
-  {
-   "id": "gen_motivo",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Os Papéis do Móbil",
-   "carimboPadrao": "Móbil de Henry Roberts",
-   "descricao": "Papéis de partilha: com a morte de Cecil Wright, o que era dele passa às mãos de Henry Roberts.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "heranca",
-    "ligadoA": "gen_3_taverneiro"
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_retratacao",
-   "localidade": "vizinhanca",
-   "textoDisplay": "O Depoimento que Mudou",
-   "carimboPadrao": "Depoimento novo que desmente o anterior",
-   "descricao": "Philip Turner conta agora outra versão da mesma noite — palavra nova contra o que consta do primeiro registro.",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "retratacao",
-    "testemunha": "gen_5_ferreiro",
-    "desmente": "gen_visto_vivo"
-   },
-   "vestigioInterferencia": {
-    "classe": "depoimento_contraditorio",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_dividas",
-   "localidade": "vizinhanca",
-   "textoDisplay": "A Caderneta Quitada",
-   "carimboPadrao": "Dívidas quitadas na mesma semana",
-   "descricao": "A caderneta de fiado amanheceu quitada, a soma cheia de uma vez, na mesma semana da nova versão.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_dinheiro",
-    "tipoVestigio": "dividas_quitadas"
-   },
-   "vestigioInterferencia": {
-    "classe": "dividas_quitadas",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_soberanos",
-   "localidade": "vizinhanca",
-   "textoDisplay": "Soberanos Novos",
-   "carimboPadrao": "Soberanos novos em mão de fiado",
-   "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: Henry Roberts.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_dinheiro",
-    "pertenceA": "gen_3_taverneiro"
-   },
-   "vestigioInterferencia": {
-    "classe": "soberanos_novos",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_segredo_gen_2_criada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "taproom",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Alice Jones",
-   "descricao": "Meia dúzia de linhas na letra de Alice Jones: um pedido de socorro em dinheiro, \"desta vez\" sublinhado. O verso, em branco. O papel foi bola e voltou a folha.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_2_criada",
-    "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_5_ferreiro",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Philip Turner",
-   "carimboPadrao": "Paradeiro de Philip Turner, confirmado",
-   "descricao": "A rua dá Philip Turner no Cottage nº 3 sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_5_ferreiro"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_1_carroceiro",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Rosanna Jones",
-   "carimboPadrao": "Paradeiro de Rosanna Jones, confirmado",
-   "descricao": "A rua dá Rosanna Jones no Cottage nº 2 sexta à noite, das oito ao clarear, por mais de uma janela.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_1_carroceiro"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_0_merceeiro",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "taproom",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de Walter Hill",
-   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de Walter Hill por extenso, e uma assinatura só.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
-    "pertenceA": "gen_0_merceeiro",
-    "revelaSegredo": "acerto_reservado"
-   }
-  },
-  {
-   "id": "gen_movel_gen_0_merceeiro",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Papéis de Walter Hill",
-   "carimboPadrao": "Móbil de Walter Hill",
-   "descricao": "Uma caderneta de dívidas soma o que Walter Hill deve a Cecil Wright, vencido e cobrado por carta.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "divida_caderneta",
-    "ligadoA": "gen_0_merceeiro"
-   }
-  },
-  {
-   "id": "gen_alibi_gen_2_criada",
-   "localidade": "casa_casa_do_medico",
-   "textoDisplay": "Casa do Médico (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à noite)",
-   "descricao": "\"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_2_criada",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_3_taverneiro",
-   "localidade": "casa_pub",
-   "textoDisplay": "A Taverna (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: A Taverna (sexta à noite)",
-   "descricao": "\"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_3_taverneiro",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_5_ferreiro",
-   "localidade": "casa_cottage_3",
-   "textoDisplay": "Cottage nº 3 (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 3 às oito. Cecil Wright me bateu à porta às nove; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_5_ferreiro",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_1_carroceiro",
-   "localidade": "casa_cottage_2",
-   "textoDisplay": "Cottage nº 2 (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 2 (sexta à noite)",
-   "descricao": "\"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_1_carroceiro",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_0_merceeiro",
-   "localidade": "vizinhanca",
-   "textoDisplay": "A Mercearia (sexta à noite)",
-   "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à noite)",
-   "descricao": "\"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\" Declarado de pé, o serviço à espera, diante do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_0_merceeiro",
-    "horaInicioDeclarada": -4,
-    "horaFimDeclarada": 7,
-    "corroborado": false
-   }
-  }
- ],
- "localidades": [
-  {
-   "id": "corpo",
-   "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — A Taverna",
-   "subtitulo": "Cecil Wright, ferreiro, 28 anos",
-   "acoesEspeciais": [
-    "termometro"
-   ],
-   "gestos": [
-    {
-     "id": "gesto_voltar_corpo",
-     "rotulo": "Voltar o corpo",
-     "cartaId": "gen_livores"
-    }
-   ],
-   "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama taproom, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
-    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ],
-   "planta": {
-    "titulo": "A Taverna",
-    "viewBox": "0 0 256 178",
-    "comodos": [
-     {
-      "id": "quartos",
-      "rotulo": "Quartos (sobrado)",
-      "contorno": "M24 24 H154 V76 H24 Z",
-      "rotuloPos": {
-       "x": 89,
-       "y": 38
-      },
-      "alvos": []
-     },
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha",
-      "contorno": "M154 24 H232 V76 H154 Z",
-      "rotuloPos": {
-       "x": 193,
-       "y": 38
-      },
-      "alvos": []
-     },
-     {
-      "id": "taproom",
-      "rotulo": "Taproom",
-      "contorno": "M24 76 H154 V154 H24 Z",
-      "rotuloPos": {
-       "x": 89,
-       "y": 90
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 77,
-         "w": 64,
-         "h": 76
-        },
-        "pos": {
-         "x": 57,
-         "y": 115
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 89,
-         "y": 77,
-         "w": 64,
-         "h": 76
-        },
-        "pos": {
-         "x": 122,
-         "y": 115
-        }
-       }
-      ]
-     },
-     {
-      "id": "parlour",
-      "rotulo": "Parlour",
-      "contorno": "M154 76 H232 V154 H154 Z",
-      "rotuloPos": {
-       "x": 193,
-       "y": 90
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M29 55 H45 V71 H29 Z",
-     "M29 29 H45 V45 H29 Z",
-     "M211 29 H227 V45 H211 Z",
-     "M185 55 H201 V71 H185 Z",
-     "M159 29 H175 V45 H159 Z",
-     "M81 81 H97 V97 H81 Z",
-     "M133 81 H149 V97 H133 Z",
-     "M133 133 H149 V149 H133 Z",
-     "M185 81 H201 V97 H185 Z",
-     "M211 81 H227 V97 H211 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 128,
-      "y": 170
-     }
-    ]
-   }
-  },
-  {
-   "id": "cena",
-   "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — A Taverna",
-   "subtitulo": "Onde Cecil Wright foi achado",
-   "acoesEspeciais": [],
-   "introducao": [
-    "A Taverna guarda o dia em que o acharam; o exame corre cômodo a cômodo."
-   ],
-   "pontos": [
-    {
-     "id": "pt_cena_quartos",
-     "rotulo": "Quartos (sobrado)",
-     "comodo": "quartos",
-     "prosa": [
-      "Do mobiliário, castiçal de latão, cama de armação de madeira. Há mobília por erguer do chão."
-     ]
-    },
-    {
-     "id": "pt_cena_cozinha",
-     "rotulo": "Cozinha",
-     "comodo": "cozinha",
-     "prosa": [
-      "No cômodo, fogão de ferro a carvão, mesa de cozinha, lareira com guarda-fogo."
-     ]
-    },
-    {
-     "id": "pt_cena_taproom",
-     "rotulo": "Taproom",
-     "comodo": "taproom",
-     "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, mesas de taverna, o snug (cubículo com portinhola), bancos corridos sobre serragem. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Junto do corpo, no chão: [[gen_instrumento]]. Ao exame: [[gen_peca_deslocada]]. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_criada]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_0_merceeiro]]. Na parede, fora do alcance da poça: [[gen_sangue_alheio]]. Do meio do vão até a porta: [[gen_pegadas]]."
-     ]
-    },
-    {
-     "id": "pt_cena_parlour",
-     "rotulo": "Parlour",
-     "comodo": "parlour",
-     "prosa": [
-      "Do mobiliário, lareira com guarda-fogo, atiçador de lareira."
-     ]
-    }
-   ],
-   "planta": {
-    "titulo": "A Taverna",
-    "viewBox": "0 0 256 178",
-    "comodos": [
-     {
-      "id": "quartos",
-      "rotulo": "Quartos (sobrado)",
-      "contorno": "M24 24 H154 V76 H24 Z",
-      "rotuloPos": {
-       "x": 89,
-       "y": 38
-      },
-      "alvos": []
-     },
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha",
-      "contorno": "M154 24 H232 V76 H154 Z",
-      "rotuloPos": {
-       "x": 193,
-       "y": 38
-      },
-      "alvos": []
-     },
-     {
-      "id": "taproom",
-      "rotulo": "Taproom",
-      "contorno": "M24 76 H154 V154 H24 Z",
-      "rotuloPos": {
-       "x": 89,
-       "y": 90
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 77,
-         "w": 64,
-         "h": 76
-        },
-        "pos": {
-         "x": 57,
-         "y": 115
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 89,
-         "y": 77,
-         "w": 64,
-         "h": 76
-        },
-        "pos": {
-         "x": 122,
-         "y": 115
-        }
-       }
-      ]
-     },
-     {
-      "id": "parlour",
-      "rotulo": "Parlour",
-      "contorno": "M154 76 H232 V154 H154 Z",
-      "rotuloPos": {
-       "x": 193,
-       "y": 90
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M29 55 H45 V71 H29 Z",
-     "M29 29 H45 V45 H29 Z",
-     "M211 29 H227 V45 H211 Z",
-     "M185 55 H201 V71 H185 Z",
-     "M159 29 H175 V45 H159 Z",
-     "M81 81 H97 V97 H81 Z",
-     "M133 81 H149 V97 H133 Z",
-     "M133 133 H149 V149 H133 Z",
-     "M185 81 H201 V97 H185 Z",
-     "M211 81 H227 V97 H211 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 128,
-      "y": 170
-     }
-    ]
-   },
-   "blocosContingentes": []
-  },
-  {
-   "id": "delegacia",
-   "rotuloMesa": "O Posto do Constable",
-   "titulo": "O Posto do Constable",
-   "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [],
-   "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
-    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_merceeiro]].",
-    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "vizinhanca",
-   "rotuloMesa": "A Mercearia",
-   "titulo": "A Mercearia",
-   "subtitulo": "Onde a vila conta o que sabe",
-   "acoesEspeciais": [],
-   "prosa": [
-    "No balcão da mercearia pesa-se farinha e conversa; a fila da tarde vai até a porta.",
-    "A vila é uma rua só, e os fundos dos lotes dão para o campo aberto.",
-    "A Taverna fica na High Street; Rosanna Jones, carroceira de frete, mora parede-meia, e da janela de uma casa se alcança a soleira da outra.",
-    "Quem tem janela para a cena conta: [[gen_ruido_ouvido]].",
-    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_5_ferreiro]], [[gen_corrobora_gen_1_carroceiro]]."
-   ],
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_1",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_retratacao]] [[gen_intf_intf_1_dividas]] [[gen_intf_intf_1_soberanos]]."
-     ]
-    }
-   ]
-  },
-  {
-   "id": "casa_casa_do_medico",
-   "rotuloMesa": "Casa do Médico",
-   "titulo": "Casa do Médico — à porta",
-   "subtitulo": "A morada de Alice Jones",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A Casa do Médico fica na High Street. O constable vai adiante, bate com o nó dos dedos e recua um passo."
-   ]
-  },
-  {
-   "id": "casa_pub",
-   "rotuloMesa": "A Taverna",
-   "titulo": "A Taverna — à porta",
-   "subtitulo": "A morada de Henry Roberts",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A casa é a mesma do achado; o guarda de sentinela dá passagem, e a conversa corre no batente."
-   ]
-  },
-  {
-   "id": "casa_cottage_3",
-   "rotuloMesa": "Cottage nº 3",
-   "titulo": "Cottage nº 3 — à porta",
-   "subtitulo": "A morada de Philip Turner",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 3 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
-   ]
-  },
-  {
-   "id": "casa_cottage_2",
-   "rotuloMesa": "Cottage nº 2",
-   "titulo": "Cottage nº 2 — à porta",
-   "subtitulo": "A morada de Rosanna Jones",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 2 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
-   ]
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Taverna — a busca",
-   "titulo": "A Taverna — a diligência",
-   "subtitulo": "Busca com o constable à porta",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o constable à porta e o dono das coisas a um canto. O constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
-   ],
-   "blocosContingentes": []
-  }
- ],
- "nosMapa": [
-  {
-   "id": "corpo",
-   "rotulo": "O Corpo",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "cena",
-   "rotulo": "A Cena do Crime",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "delegacia",
-   "rotulo": "O Posto do Constable",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "vizinhanca",
-   "rotulo": "A Mercearia",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_casa_do_medico",
-   "rotulo": "Casa do Médico",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_pub",
-   "rotulo": "A Taverna",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_3",
-   "rotulo": "Cottage nº 3",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_2",
-   "rotulo": "Cottage nº 2",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Taverna — a busca",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
-  }
- ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  }
- ],
- "custos": {
-  "cena_predio|cena_predio": 0,
-  "cena_predio|vila": 1,
-  "vila|cena_predio": 1,
-  "vila|vila": 1
- },
- "dialogos": {
-  "dialogo_gen_2_criada": {
-   "suspeitoId": "gen_2_criada",
-   "origemLocalidade": "casa_casa_do_medico",
-   "chamada": "Interrogar Alice Jones",
-   "titulo": "Interrogatório — Alice Jones",
-   "subtitulo": "Criada, 29 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_2_criada": "reacao_gen_segredo_gen_2_criada"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_2_criada",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Alice Jones entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Com licença. Digo o que souber, e volto ao serviço.\""
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à noite: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_2_criada": {
-     "fala": [
-      "Alice Jones lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Cecil Wright estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Um nome eu dou, já que {detective.treatment} o pede: Philip Turner. Por quê, não sei dizer; sei, e chega.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "Conta a sexta à noite com vagar, do começo ao fim, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Cecil Wright? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_3_taverneiro": {
-   "suspeitoId": "gen_3_taverneiro",
-   "origemLocalidade": "casa_pub",
-   "chamada": "Interrogar Henry Roberts",
-   "titulo": "Interrogatório — Henry Roberts",
-   "subtitulo": "Taverneiro, 42 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento",
-    "gen_intf_intf_1_soberanos": "reacao_gen_intf_intf_1_soberanos"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
-    },
-    {
-     "requerCarta": "gen_intf_intf_1_soberanos",
-     "rotulo": "[Soberanos Novos] Por que soberanos novos, contados à vista de todos?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Henry Roberts abre antes que o constable acabe de bater, e toma a palavra do batente. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\" Traz as datas prontas, como quem chega com a caderneta escrita."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à noite, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à noite, e a que horas.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_instrumento": {
-     "fala": [
-      "Henry Roberts olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_intf_intf_1_soberanos": {
-     "fala": [
-      "Henry Roberts não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito; das minhas horas já dei conta, e ficou por termo.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_taverneiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Cecil Wright: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à noite vem contada do princípio, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_taverneiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Cecil Wright: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Cecil Wright era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_taverneiro]]. As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Cecil Wright: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto cada hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_3_taverneiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Cecil Wright: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Na palma, um corte inciso limpo, transversal, na base dos dedos. A borda é nítida: lâmina, não queda."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_5_ferreiro": {
-   "suspeitoId": "gen_5_ferreiro",
-   "origemLocalidade": "casa_cottage_3",
-   "chamada": "Interrogar Philip Turner",
-   "titulo": "Interrogatório — Philip Turner",
-   "subtitulo": "Ferreiro, 50 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_visto_vivo": "reacao_gen_visto_vivo"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_visto_vivo",
-     "rotulo": "[Última Vez com Vida] A que horas, exatamente, viu a vítima com vida?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Philip Turner entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Serviço parado esfria. Pergunte.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" Ao citar a primeira hora, corrige-a no meio da frase."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à noite?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"É dos que se deitam cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_visto_vivo": {
-     "fala": [
-      "Philip Turner responde sem pedir o termo para ler. \"Declarei à ronda e torno a declarar: vi quem vi, em pé e falando, à hora que dei. Não foi de passagem: parei, troquei o cumprimento, e só então segui caminho. Disso não tiro uma linha.\" E deixa que o papel diga o resto."
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_5_ferreiro]]. Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome {detective.treatment} quer, nome eu dou: Walter Hill. Isso me corre na cabeça desde o primeiro dia e não me larga. Papel que o firme, não tenho; dá-me o faro, que raramente me atraiçoou.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Na despedida, cita a mesma hora de antes, e a hora vem diferente."
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_5_ferreiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Cecil Wright era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_5_ferreiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_5_ferreiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Cecil Wright. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_1_carroceiro": {
-   "suspeitoId": "gen_1_carroceiro",
-   "origemLocalidade": "casa_cottage_2",
-   "chamada": "Interrogar Rosanna Jones",
-   "titulo": "Interrogatório — Rosanna Jones",
-   "subtitulo": "Carroceira de frete, 44 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "O constable bate; Rosanna Jones abre, ajeita as fitas da touca e fica no vão da porta. \"Deixei serviço pela metade na bancada. Seja {g:direto|direta}, se puder ser.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à noite, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A que horas costuma apagar a luz?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha por cima, o tempo de dois fôlegos, e encolhe os ombros. \"Disso não entendo. Pergunte de ferramenta e de serviço, que disso dou conta.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Rosanna Jones conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Cecil Wright?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não tenho que dar. Daquela ferramenta, sim, já me servi; peguei emprestada mais de uma vez.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Cecil Wright?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Cecil Wright era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Cecil Wright?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos meus com ele, poucos e pagos. A ferramenta eu conheço: peguei emprestada do mesmo gancho, e devolvi.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" E a sexta à noite acaba saindo por inteiro, enquanto a resposta vem embrulhada em coisa que ninguém perguntou: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Cecil Wright?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Cecil Wright, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Cecil Wright? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Limpa as mãos uma na outra. \"Chamando, venho. O serviço fica onde ficou.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Um corte inciso no dedo indicador — a faca da cozinha, diz. Recente, com a crosta do fim de semana."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_0_merceeiro": {
-   "suspeitoId": "gen_0_merceeiro",
-   "origemLocalidade": "vizinhanca",
-   "chamada": "Interrogar Walter Hill",
-   "titulo": "Interrogatório — Walter Hill",
-   "subtitulo": "Merceeiro, 33 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_0_merceeiro": "reacao_gen_segredo_gen_0_merceeiro"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_0_merceeiro",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Walter Hill vem ao encontro antes que o constable chame, enxugando as mãos no avental. \"O negócio espera trancado. Pergunte de uma vez, faça o favor.\""
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Onde esteve na sexta à noite? Sem rodeios.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me da sexta à noite com liberdade, do começo ao fim.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à noite: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Costuma recolher-se cedo?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_0_merceeiro": {
-     "fala": [
-      "Walter Hill cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Cecil Wright?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Cecil Wright? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não tenho que dar. Se Cecil Wright tinha desafeto, não foi freguês meu.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à noite vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Cecil Wright?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Cecil Wright? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Cecil Wright? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Cecil Wright?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Cecil Wright? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_merceeiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Cecil Wright?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me dele a seu tempo: que homem era Cecil Wright?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Cecil Wright? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"O que anda dizendo a vila?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Manchas de tinta no indicador e no médio da mão direita — da pena do balcão. Calos de caixa nas palmas."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  }
- },
- "confrontos": {
-  "estadoInicial": "presente",
-  "consequencias": {}
- },
- "abertura": {
-  "passos": [
-   {
-    "id": "descoberta",
-    "titulo": "Colbrook, 14 de outubro de 1893",
-    "paragrafos": [
-     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
-    ],
-    "rotuloBotao": "O constable é chamado"
-   },
-   {
-    "id": "alarme",
-    "titulo": "O constable manda chamar",
-    "paragrafos": [
-     "Constable de uma vila que raramente lhe pedia mais que apartar uma bebedeira, Harrow pôs guarda, lavrou a ocorrência e chamou quem soubesse ler um corpo."
-    ],
-    "rotuloBotao": "Ler a carta"
-   },
-   {
-    "id": "carta",
-    "titulo": "A carta do Constable",
-    "carta": true,
-    "paragrafos": [
-     "O lacre de cera racha sob o polegar. A letra corre inclinada, firme no começo de cada linha.",
-     "\"{detective.treatment} {detective.surname} — Escrevo-lhe como constable de Colbrook; isto é, o que faz as vezes de constable, que para tanto a vila não tem senão um homem. Escrevo do que não entendo. Cecil Wright, ferreiro desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
-     "\"Harrow, Constable.\""
-    ],
-    "rotuloBotao": "Aceitar o chamado"
-   },
-   {
-    "id": "metodo",
-    "titulo": "A maleta pronta",
-    "paragrafos": [
-     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
-    ],
-    "rotuloBotao": "Tomar o trem"
-   },
-   {
-    "id": "chegada",
-    "titulo": "Colbrook",
-    "paragrafos": [
-     "O trem larga {detective.treatment} {detective.surname} num apeadeiro de tábua, e Colbrook começa logo ali, numa rua de lama e fachadas baixas. Harrow vem ao encontro, de chapéu na mão. \"Agradeço a presteza. Explico-me pelo caminho.\""
-    ],
-    "rotuloBotao": "Ouvir o constable"
-   },
-   {
-    "id": "briefing",
-    "titulo": "O relato do constable Harrow",
-    "briefing": true,
-    "paragrafos": [
-     "\"O essencial é isto: Cecil Wright, 28 anos, ferreiro. Achado morto na Taverna. Não toquei em nada e não prendi ninguém.\"",
-     "Fica um passo atrás da porta e faz sinal ao guarda que se afaste. \"Pergunte-me o que precisar; depois eu saio da frente.\""
-    ],
-    "rotuloBotao": "Entrar — iniciar a investigação"
-   }
-  ],
-  "perguntas": [
-   {
-    "id": "sobre_a_hora",
-    "pergunta": "O que se sabe da hora da morte?",
-    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
-   },
-   {
-    "id": "quem_convive",
-    "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Henry Roberts, Philip Turner — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
-   },
-   {
-    "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
-   }
-  ],
-  "opcoesPersonagem": [
-   {
-    "id": "harlan",
-    "nome": "Harlan Blackwell",
-    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
-   }
-  ]
- },
- "parametrosCena": {
-  "horasChegada": 11,
-  "ambiente": 11,
-  "calendario": {
-   "diaBase": 14,
-   "mesAbrev": "out",
-   "mesExtenso": "outubro",
-   "ano": 1893
-  }
- },
- "maquete": {
-  "morfologia": "linear",
-  "tabua": {
-   "centroX": -0.02,
-   "largura": 14.28,
-   "fundo": 6.51
-  },
-  "posicoes": {
-   "corpo": {
-    "x": -2.6,
-    "z": 0.93,
-    "predio": "pub"
-   },
-   "cena": {
-    "x": -2.48,
-    "z": 0.31,
-    "predio": "anexo_cena"
-   },
-   "delegacia": {
-    "x": -2.92,
-    "z": -0.81,
-    "predio": "delegacia"
-   },
-   "vizinhanca": {
-    "x": -0.34,
-    "z": -0.87,
-    "predio": "mercearia"
-   },
-   "casa_casa_do_medico": {
-    "x": -1.48,
-    "z": 0.83,
-    "predio": "casa_do_medico"
-   },
-   "casa_pub": {
-    "x": -3.26,
-    "z": 0.49,
-    "predio": "anexo_casa_pub"
-   },
-   "casa_cottage_3": {
-    "x": -2.28,
-    "z": 2.04,
-    "predio": "cottage_3"
-   },
-   "casa_cottage_2": {
-    "x": -3.18,
-    "z": 1.76,
-    "predio": "cottage_2"
-   },
-   "oficio_do_reu": {
-    "x": -1.82,
-    "z": 0.49,
-    "predio": "anexo_oficio_do_reu"
-   }
-  },
-  "formas": {
-   "pub": {
-    "w": 1.6,
-    "d": 1,
-    "h": 0.93,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.59,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.48,
-      "z": -0.2,
-      "alt": 0.49
-     },
-     {
-      "x": -0.4,
-      "z": 0.16,
-      "alt": 0.49
-     }
-    ]
-   },
-   "anexo_cena": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.3
-   },
-   "delegacia": {
-    "w": 1.25,
-    "d": 1,
-    "h": 0.97,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.48,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.38,
-      "z": -0.2,
-      "alt": 0.5
-     }
-    ]
-   },
-   "mercearia": {
-    "w": 1.05,
-    "d": 0.83,
-    "h": 0.7,
-    "corParede": "#8d7a5a",
-    "corTelhado": "#4d3a29",
-    "telhadoAltura": 0.54,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.32,
-      "z": -0.17,
-      "alt": 0.45
-     }
-    ],
-    "marquise": true
-   },
-   "casa_do_medico": {
-    "w": 1.2,
-    "d": 1,
-    "h": 0.95,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.6,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.36,
-      "z": -0.2,
-      "alt": 0.49
-     },
-     {
-      "x": -0.3,
-      "z": 0.16,
-      "alt": 0.49
-     }
-    ]
-   },
-   "anexo_casa_pub": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.75
-   },
-   "cottage_3": {
-    "w": 0.77,
-    "d": 0.6,
-    "h": 0.6,
-    "corParede": "#84704f",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.23,
-      "z": -0.12,
-      "alt": 0.44
-     }
-    ]
-   },
-   "cottage_2": {
-    "w": 0.82,
-    "d": 0.6,
-    "h": 0.55,
-    "corParede": "#84704f",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.36,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.25,
-      "z": -0.12,
-      "alt": 0.43
-     }
-    ]
-   },
-   "anexo_oficio_do_reu": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 2.1
-   },
-   "igreja": {
-    "w": 0.9,
-    "d": 1.6,
-    "h": 1.4,
-    "corParede": "#8a8272",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.6,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "vicarage": {
-    "w": 1.25,
-    "d": 1.05,
-    "h": 0.95,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.62,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.38,
-      "z": -0.21,
-      "alt": 0.49
-     },
-     {
-      "x": -0.31,
-      "z": 0.17,
-      "alt": 0.49
-     }
-    ]
-   },
-   "capela": {
-    "w": 0.8,
-    "d": 1.15,
-    "h": 0.95,
-    "corParede": "#96825e",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.42,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "solar": {
-    "w": 1.65,
-    "d": 1.2,
-    "h": 1.15,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.68,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.49,
-      "z": -0.24,
-      "alt": 0.52
-     },
-     {
-      "x": -0.41,
-      "z": 0.19,
-      "alt": 0.52
-     }
-    ]
-   },
-   "botica": {
-    "w": 0.95,
-    "d": 0.88,
-    "h": 0.75,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.49,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.28,
-      "z": -0.18,
-      "alt": 0.46
-     }
-    ],
-    "marquise": true
-   },
-   "escola": {
-    "w": 1.05,
-    "d": 0.9,
-    "h": 0.77,
-    "corParede": "#84704f",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.46,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.32,
-      "z": -0.18,
-      "alt": 0.46
-     }
-    ]
-   },
-   "forja": {
-    "w": 1,
-    "d": 0.75,
-    "h": 0.6,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.39,
-    "beiral": 0.1,
-    "ristela": false,
-    "chamines": [
-     {
-      "x": 0.3,
-      "z": -0.15,
-      "alt": 0.44
-     }
-    ]
-   },
-   "granja": {
-    "w": 1.35,
-    "d": 0.95,
-    "h": 0.8,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.5,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.41,
-      "z": -0.19,
-      "alt": 0.47
-     }
-    ]
-   },
-   "moinho": {
-    "w": 0.9,
-    "d": 0.95,
-    "h": 1.35,
-    "corParede": "#8a8272",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.53,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": [],
-    "moinho": true
-   },
-   "estacao": {
-    "w": 1.3,
-    "d": 0.8,
-    "h": 0.57,
-    "corParede": "#8a7355",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.41,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.39,
-      "z": -0.16,
-      "alt": 0.43
-     }
-    ]
-   },
-   "adro_da_igreja": {
-    "w": 1.25,
-    "d": 0.9,
-    "h": 0.05,
-    "corParede": "#6a6656",
-    "corTelhado": "#514d40",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "patio_da_granja": {
-    "w": 1.2,
-    "d": 0.85,
-    "h": 0.04,
-    "corParede": "#716448",
-    "corTelhado": "#554b3c",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "caminho_do_acude": {
-    "w": 1.3,
-    "d": 0.65,
-    "h": 0.04,
-    "corParede": "#5e6650",
-    "corTelhado": "#4c5546",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "travessa_dos_fundos": {
-    "w": 1.25,
-    "d": 0.55,
-    "h": 0.04,
-    "corParede": "#6a6252",
-    "corTelhado": "#565043",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "cottage_1": {
-    "w": 0.87,
-    "d": 0.65,
-    "h": 0.5,
-    "corParede": "#7d684c",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.41,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.26,
-      "z": -0.13,
-      "alt": 0.42
-     }
-    ]
-   },
-   "cottage_4": {
-    "w": 0.72,
-    "d": 0.65,
-    "h": 0.6,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.41,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.22,
-      "z": -0.13,
-      "alt": 0.44
-     }
-    ]
-   },
-   "cottage_5": {
-    "w": 0.87,
-    "d": 0.7,
-    "h": 0.55,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.36,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.26,
-      "z": -0.14,
-      "alt": 0.43
-     }
-    ]
-   },
-   "cottage_6": {
-    "w": 0.82,
-    "d": 0.7,
-    "h": 0.5,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.25,
-      "z": -0.14,
-      "alt": 0.42
-     }
-    ]
-   }
-  },
-  "cenario": [
-   {
-    "predio": "igreja",
-    "x": -5.46,
-    "z": -0.87
-   },
-   {
-    "predio": "vicarage",
-    "x": -4.06,
-    "z": -0.83
-   },
-   {
-    "predio": "capela",
-    "x": -3.92,
-    "z": 0.83
-   },
-   {
-    "predio": "solar",
-    "x": -5,
-    "z": 0.97
-   },
-   {
-    "predio": "botica",
-    "x": -1.78,
-    "z": -0.75
-   },
-   {
-    "predio": "escola",
-    "x": 0.62,
-    "z": -0.97
-   },
-   {
-    "predio": "forja",
-    "x": -0.34,
-    "z": 0.97
-   },
-   {
-    "predio": "granja",
-    "x": 3.92,
-    "z": 0.97
-   },
-   {
-    "predio": "moinho",
-    "x": 4.88,
-    "z": -0.75
-   },
-   {
-    "predio": "estacao",
-    "x": 5.42,
-    "z": 0.93
-   },
-   {
-    "predio": "adro_da_igreja",
-    "x": -4.72,
-    "z": 0.07,
-    "logradouro": true
-   },
-   {
-    "predio": "patio_da_granja",
-    "x": 4.02,
-    "z": 1.9,
-    "logradouro": true
-   },
-   {
-    "predio": "caminho_do_acude",
-    "x": 4.9,
-    "z": -1.87,
-    "logradouro": true
-   },
-   {
-    "predio": "travessa_dos_fundos",
-    "x": 1.18,
-    "z": 1.52,
-    "logradouro": true
-   },
-   {
-    "predio": "cottage_1",
-    "x": -4.08,
-    "z": 1.78
-   },
-   {
-    "predio": "cottage_4",
-    "x": -1.64,
-    "z": 2.02
-   },
-   {
-    "predio": "cottage_5",
-    "x": -0.74,
-    "z": 2
-   },
-   {
-    "predio": "cottage_6",
-    "x": -0.1,
-    "z": 1.98
-   }
-  ]
- },
- "interferencias": {
-  "eventos": [
-   {
-    "id": "intf_1",
-    "tipo": "subornar_testemunha",
-    "ator": "gen_3_taverneiro",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "testemunha",
-     "testemunhaId": "gen_5_ferreiro",
-     "cartaId": "gen_visto_vivo",
-     "localId": "cottage_3"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_visto_vivo",
-     "comoSoube": "o depoimento de gen_5_ferreiro foi tomado em público (extração de gen_visto_vivo); o ator soube o que a testemunha contou"
-    },
-    "rota": {
-     "de": "pub",
-     "para": "cottage_3",
-     "faixa": "noite",
-     "sustentacao": "adjacente",
-     "comoChegou": "saiu de pub, prédio vizinho de cottage_3, na faixa noite (adjacência do grafo)"
-    },
-    "rolagem": {
-     "wis": 2,
-     "penalidade": 2,
-     "alvo": 0,
-     "dado": 2,
-     "sucesso": false
-    },
-    "efeito": {
-     "cartaDestruida": null,
-     "cartasNovas": [
-      "gen_intf_intf_1_retratacao",
-      "gen_intf_intf_1_dividas",
-      "gen_intf_intf_1_soberanos"
-     ]
-    },
-    "prenuncio": null,
-    "anuncio": "Uma testemunha mudou a própria história."
-   }
-  ]
- },
- "ecosInterferencia": {
-  "titulo": "O que se moveu enquanto eu ia e vinha",
-  "porChave": {
-   "destruir_evidencia_ocorrida": [
-    "Esfregaram a cena entre uma visita e outra; quando voltei, a madeira ainda estava úmida. A peça que se perdeu não volta, mas esfrega fresca também se data.",
-    "Levaram da cena o que eu ainda não tinha recolhido. Ficou no lugar a limpeza recente, e ela se lê como qualquer outro sinal.",
-    "Faltava da cena o que eu deixara para recolher na volta. A esfrega recente não some sozinha: também ela guarda a sua hora."
-   ],
-   "destruir_evidencia_evitada": [
-    "Vieram limpar a cena; o que importava já estava no meu caderno.",
-    "Quando esfregaram o assoalho, a peça já constava do meu registro. Guardo o método: primeiro o que pode sumir.",
-    "Esfregaram tarde. O que podia sumir já tinha ido para o caderno, antes de tudo o mais."
-   ],
-   "intimidar_testemunha_ocorrida": [
-    "Aquela boca fechou depois que as minhas perguntas correram a vila. Anoto o dia em que fechou.",
-    "A testemunha recuou antes de assinar o que sabia. Onde o depoimento faltar, procuro o que sobrou em torno da recusa.",
-    "Uma testemunha emudeceu no meio do inquérito. O silêncio dela vira marco: o caso mede-se pelo antes e pelo depois."
-   ],
-   "intimidar_testemunha_evitada": [
-    "Tentaram calar quem já tinha falado comigo. O depoimento estava colhido; o medo chegou atrasado.",
-    "A ameaça veio depois do registro, e contra registro feito o medo pode pouco.",
-    "Ameaçaram quem já tinha assinado. A folha ficou onde estava, e o inquérito seguiu por ela."
-   ],
-   "subornar_testemunha_ocorrida": [
-    "A mesma boca me contou duas histórias, e a segunda veio na semana em que uma dívida antiga se quitou.",
-    "Tenho dois depoimentos que não se encontram e uma dívida quitada entre um e outro. Ponho as três coisas lado a lado e meço as datas.",
-    "A segunda versão veio depois que um dinheiro trocou de mãos. Entre as duas, não decido de ouvido: confronto cada uma com o que o dinheiro não move — o corpo, a hora, o registro."
-   ],
-   "silenciar_ocorrida": [
-    "Perdi a testemunha antes do depoimento. O segundo corpo é morte de horas, não de dias, e sinais frescos ainda apertam essa conta.",
-    "Quem ouviu aquela noite não chegou a depor. O segundo corpo se lia como o primeiro: rigor, livor, a conta das horas. O que o gesto teve de grosseiro ficou nos sinais.",
-    "Onde esperava uma voz, achei um corpo. O que a testemunha já não diz, o estado do corpo ainda diz, e essa hora entra na conta."
-   ],
-   "silenciar_evitada": [
-    "A testemunha morreu com o depoimento já no meu caderno. Cheguei primeiro; o que sabia, o tribunal ainda ouve.",
-    "O aviso estava lá, para quem quisesse ler, e o depoimento sobreviveu a quem o deu.",
-    "A testemunha faltou ao tribunal; o depoimento, não. Assinado e datado, depõe sozinho."
-   ]
-  }
- }
-},
-{
- "id": "gerado_luta_131",
- "verdadeDeOuro": {
-  "id": "gerado_luta_131",
-  "vitima": "Joseph Smith",
-  "reuCorreto": "gen_3_pastor_de_ovelhas",
-  "horasMorteAntesChegada": 23,
-  "horaMorteAbsoluta": -12,
-  "mecanismoCorreto": "trauma_contuso",
-  "instrumentoCorreto": "arma_de_ocasiao",
-  "metodoIniciado": null,
-  "motivacaoCorreta": "salario_atrasado",
-  "cenaEncenada": false,
-  "horaForjada": null,
-  "perifericos": {
-   "gen_4_lavrador": {
-    "veredictoEsperado": "inocente_alibi",
-    "segredo": null
-   },
-   "gen_2_merceeiro": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "pedido_recusado"
-   },
-   "gen_0_criada": {
-    "veredictoEsperado": "inocente_segredo",
-    "segredo": "acerto_reservado"
-   },
-   "gen_7_lavrador": {
-    "veredictoEsperado": "inocente_acesso",
-    "segredo": null
-   }
-  },
-  "encenacaoInstrumento": null
- },
- "suspeitos": [
-  {
-   "id": "gen_4_lavrador",
-   "nome": "Amos Hill",
-   "idade": 56,
-   "relacao": "Lavrador; mora no Cottage nº 4",
-   "descricao": "Começa pela resposta e acaba na vida alheia."
-  },
-  {
-   "id": "gen_2_merceeiro",
-   "nome": "Bernard Moore",
-   "idade": 40,
-   "relacao": "Merceeiro; mora na Mercearia",
-   "descricao": "Dá horas e quantias de um fôlego, sem procurá-las."
-  },
-  {
-   "id": "gen_0_criada",
-   "nome": "George Jones",
-   "idade": 29,
-   "relacao": "Moço de lavoura; mora na Casa do Médico",
-   "descricao": "Descreve o que viu com hora e lugar."
-  },
-  {
-   "id": "gen_3_pastor_de_ovelhas",
-   "nome": "John Walker",
-   "idade": 23,
-   "relacao": "Pastor de ovelhas; mora no Cottage nº 3",
-   "descricao": "Conta a noite por canecas, não por horas."
-  },
-  {
-   "id": "gen_7_lavrador",
-   "nome": "Philip Moore",
-   "idade": 43,
-   "relacao": "Lavrador; mora no Cottage nº 6",
-   "descricao": "Não há pergunta curta que devolva curta."
-  }
- ],
- "cartas": [
-  {
-   "id": "gen_rigor",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Rigidez Parcial",
-     "carimboPadrao": "Maxilar duro; membros ainda cedem",
-     "descricao": "A mão dobra o cotovelo e o joelho sem custo; no alto, o maxilar e a nuca já resistem.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "instalando",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 24,
-     "textoDisplay": "Corpo Endurecido",
-     "carimboPadrao": "Duro dos maxilares aos joelhos",
-     "descricao": "Nenhuma junta cede à força da mão, do pescoço aos tornozelos.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "pleno",
-      "estadoDegradacao": "ativo"
-     }
-    },
-    {
-     "ipmAte": 36,
-     "textoDisplay": "Rigidez Cedendo",
-     "carimboPadrao": "Maxilar solto; joelhos rígidos",
-     "descricao": "O maxilar volta a ceder; os joelhos seguem presos.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolucao",
-      "estadoDegradacao": "degradado"
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Corpo Flácido",
-     "carimboPadrao": "Corpo mole, sem rigidez",
-     "descricao": "Todas as juntas cedem à mão. Do enrijecimento não resta sinal.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "rigor_mortis",
-      "estadoRigor": "resolvido",
-      "estadoDegradacao": "resolvido"
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_livores",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "estados": [
-    {
-     "ipmAte": 12,
-     "textoDisplay": "Manchas que Cedem ao Polegar",
-     "carimboPadrao": "Manchas que empalidecem à pressão",
-     "descricao": "Onde o polegar comprime, o sangue assentado empalidece e logo retorna à cor. As manchas ainda não se prenderam à carne.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "movel",
-      "posicaoCompativel": true
-     }
-    },
-    {
-     "ipmAte": null,
-     "textoDisplay": "Manchas Fixas",
-     "carimboPadrao": "Manchas fixas, sem empalidecer",
-     "descricao": "As manchas de sangue assentado já não cedem ao polegar: fixaram-se onde o corpo repousou.",
-     "tagsOcultas": {
-      "dominio": "temporal",
-      "subDominio": "livor_mortis",
-      "estadoLivor": "fixo",
-      "posicaoCompativel": true
-     }
-    }
-   ]
-  },
-  {
-   "id": "gen_lesao_fatal",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "A Fratura no Crânio",
-   "carimboPadrao": "Fratura com afundamento; sede: têmpora",
-   "descricao": "Sob o cabelo, o couro cede ao tato num afundamento de bordas irregulares; o osso acompanha a depressão.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "ferida",
-    "sinal": "ferida_contusa"
-   }
-  },
-  {
-   "id": "gen_reacao_vital",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "As Bordas da Ferida",
-   "carimboPadrao": "Bordas afastadas, coágulo aderido",
-   "descricao": "Corre a água sobre o corte, e o coágulo infiltrado na carne não larga. As margens estão afastadas e retraídas.",
-   "tagsOcultas": {
-    "dominio": "causal",
-    "subDominio": "reacao_vital",
-    "sinal": "reacao_vital"
-   }
-  },
-  {
-   "id": "gen_visto_vivo",
-   "localidade": "delegacia",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": null,
-   "textoDisplay": "Última Vez com Vida",
-   "carimboPadrao": "Vítima com vida às 11h00 de 13/out",
-   "descricao": "Do registro da ronda consta Joseph Smith com vida às 11h00 de 13/out; depois dessa hora, linha nenhuma torna a nomeá-lo.",
-   "tagsOcultas": {
-    "dominio": "temporal",
-    "subDominio": "ultima_vez_visto",
-    "horaAvistamento": -13
-   }
-  },
-  {
-   "id": "gen_instrumento",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 2,
-    "fila": 1
-   },
-   "mobilia": null,
-   "textoDisplay": "O Instrumento Abandonado",
-   "carimboPadrao": "Instrumento deixado na cena",
-   "descricao": "No chão, onde a mão o largou: uma peça pesada, de ocasião. O feitio casa com a lesão do morto. Mais de uma boca reconhece a peça de uso, e a vila dá o dono pelo nome: John Walker.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "instrumento_oficio",
-    "tipoVestigio": "arma_de_ocasiao",
-    "pertenceA": "gen_3_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_sangue_alheio",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 2,
-    "fila": 2
-   },
-   "mobilia": null,
-   "textoDisplay": "O Respingo na Parede",
-   "carimboPadrao": "Respingo alto, fora do alcance da poça",
-   "descricao": "Um borrifo fino, de gotas miúdas, na parede, à altura do peito. A poça no chão ficou a palmos abaixo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "sangue_alheio",
-    "pertenceA": "gen_3_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_pegadas",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 1
-   },
-   "mobilia": null,
-   "textoDisplay": "Pegadas Rumo à Porta",
-   "carimboPadrao": "Meias-solas impressas em sangue",
-   "descricao": "Impressas em sangue, meias-solas do mesmo par, as pontas voltadas para a porta; entre uma e outra, um passo largo.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "pegadas",
-    "tipoVestigio": "pegada_ensanguentada",
-    "pertenceA": "gen_3_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_peca_deslocada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 1
-   },
-   "mobilia": "cozinha_cadeiras_windsor",
-   "textoDisplay": "Peça Fora do Lugar",
-   "carimboPadrao": "Peça fora do seu lugar",
-   "descricao": "A peça não está no seu assento. O vazio no arranjo tem o feitio dela, e ninguém da casa a moveu.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ambiente_da_luta",
-    "tipoVestigio": "peca_deslocada"
-   }
-  },
-  {
-   "id": "gen_residuo_peca",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": {
-    "col": 3,
-    "fila": 1
-   },
-   "mobilia": "cozinha_cadeiras_windsor",
-   "textoDisplay": "Resíduo na Peça",
-   "carimboPadrao": "Crosta escura no relevo da peça",
-   "descricao": "Na peça, uma crosta escura secou no relevo, onde o pano não desce. O feitio do relevo casa com uma lesão que não está no morto.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sangue_do_agressor",
-    "tipoVestigio": "residuo_na_peca",
-    "pertenceA": "gen_3_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_ferimento_reu",
-   "localidade": "oficio_do_reu",
-   "suporteFisico": "corpo_do_reu",
-   "textoDisplay": "Ferimento no Suspeito",
-   "carimboPadrao": "Ferimento recente no suspeito (fronte)",
-   "descricao": "De manga arregaçada por ordem do constable, John Walker mostra o que a roupa cobria: a marca recente de luta, na fronte. A lesão tem os dias do crime, e a explicação doméstica não vem.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "ferimento_do_agressor",
-    "pertenceA": "gen_3_pastor_de_ovelhas",
-    "sede": "fronte"
-   }
-  },
-  {
-   "id": "gen_sinal_exigivel",
-   "localidade": "corpo",
-   "suporteFisico": "corpo",
-   "textoDisplay": "Sinal no Corpo da Vítima",
-   "carimboPadrao": "Marca-espelho esperada (dorso das mãos)",
-   "descricao": "Marca-espelho esperada (dorso das mãos)",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "sinal_exigivel",
-    "regiao": "maos",
-    "sede": "dorso_das_maos",
-    "metodoOrigem": "contundente"
-   }
-  },
-  {
-   "id": "gen_ruido_ouvido",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "origemTestemunha": "gen_4_lavrador",
-   "textoDisplay": "O Barulho na Vizinhança",
-   "carimboPadrao": "Barulho ouvido na tarde de 13",
-   "descricao": "Amos Hill conta o que a parede deixou passar na tarde de 13: \"Pancada, e móvel no chão, e depois mais nada.\"",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "ruido_ouvido",
-    "faixa": "dia"
-   }
-  },
-  {
-   "id": "gen_motivo",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Os Papéis do Móbil",
-   "carimboPadrao": "Móbil de John Walker",
-   "descricao": "Consta queixa de paga retida: Joseph Smith devia a John Walker semanas de salário.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "salario_atrasado",
-    "ligadoA": "gen_3_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_limpeza",
-   "localidade": "cena",
-   "textoDisplay": "Esfrega Fresca na Cena",
-   "carimboPadrao": "Esfrega fresca, posterior à primeira perícia",
-   "descricao": "A madeira da cena, esfregada de fresco — ainda úmida ao tato, dias depois do crime e horas depois da primeira perícia.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "esfrega_fresca"
-   },
-   "vestigioInterferencia": {
-    "classe": "esfrega_fresca_pos_pericia",
-    "frescor": "fresco",
-    "localId": "granja",
-    "comodo": "cozinha",
-    "celula": {
-     "col": 2,
-     "fila": 1
-    },
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_1_meia_obra",
-   "localidade": "cena",
-   "textoDisplay": "Serviço pela Metade",
-   "carimboPadrao": "Serviço de limpeza pela metade",
-   "descricao": "A esfrega para no meio do gesto: a mancha arrastada até a metade e abandonada ali.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "limpeza_fresca",
-    "tipoVestigio": "limpeza_interrompida"
-   },
-   "vestigioInterferencia": {
-    "classe": "limpeza_interrompida",
-    "frescor": "fresco",
-    "localId": "granja",
-    "comodo": "cozinha",
-    "celula": {
-     "col": 2,
-     "fila": 1
-    },
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_2_retratacao",
-   "localidade": "vizinhanca",
-   "textoDisplay": "O Depoimento que Mudou",
-   "carimboPadrao": "Depoimento novo que desmente o anterior",
-   "descricao": "Amos Hill conta agora outra versão da mesma noite — palavra nova contra o que consta do primeiro registro.",
-   "tagsOcultas": {
-    "dominio": "testemunho",
-    "subDominio": "retratacao",
-    "testemunha": "gen_4_lavrador",
-    "desmente": "gen_ruido_ouvido"
-   },
-   "vestigioInterferencia": {
-    "classe": "depoimento_contraditorio",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_2_dividas",
-   "localidade": "vizinhanca",
-   "textoDisplay": "A Caderneta Quitada",
-   "carimboPadrao": "Dívidas quitadas na mesma semana",
-   "descricao": "A caderneta de fiado amanheceu quitada, a soma cheia de uma vez, na mesma semana da nova versão.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_dinheiro",
-    "tipoVestigio": "dividas_quitadas"
-   },
-   "vestigioInterferencia": {
-    "classe": "dividas_quitadas",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_intf_intf_2_soberanos",
-   "localidade": "vizinhanca",
-   "textoDisplay": "Soberanos Novos",
-   "carimboPadrao": "Soberanos novos em mão de fiado",
-   "descricao": "Soberanos novos, contados à vista de todos, em mão que na semana passada comprava fiado. À pergunta de onde vieram, a resposta é sempre o mesmo nome: John Walker.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_dinheiro",
-    "pertenceA": "gen_3_pastor_de_ovelhas"
-   },
-   "vestigioInterferencia": {
-    "classe": "soberanos_novos",
-    "frescor": "fresco",
-    "localId": null,
-    "comodo": null,
-    "celula": null,
-    "mobilia": null
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_4_lavrador",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Amos Hill",
-   "carimboPadrao": "Paradeiro de Amos Hill, confirmado",
-   "descricao": "Philip Moore esteve na Granja sexta à tarde e dá Amos Hill por presente, do meio-dia às seis. Mais de uma boca diz o mesmo.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_4_lavrador"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_2_merceeiro",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "O Bilhete Amassado",
-   "carimboPadrao": "Bilhete na letra de Bernard Moore",
-   "descricao": "O papel guarda os vincos de quem o amassou e o desamassou. Na letra de Bernard Moore, poucas linhas de súplica por dinheiro; \"desta vez\" vem grifado, e ninguém escreveu no verso.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "bilhete_de_suplica",
-    "pertenceA": "gen_2_merceeiro",
-    "revelaSegredo": "pedido_recusado"
-   }
-  },
-  {
-   "id": "gen_segredo_gen_0_criada",
-   "localidade": "cena",
-   "suporteFisico": "cena",
-   "comodo": "cozinha",
-   "celula": null,
-   "mobilia": null,
-   "textoDisplay": "A Nota por Assinar",
-   "carimboPadrao": "Nota de trato com o nome de George Jones",
-   "descricao": "A dobra fresca ainda quer abrir. Dentro, soma e prazo, o nome de George Jones por extenso, e uma assinatura só.",
-   "tagsOcultas": {
-    "dominio": "vestigio",
-    "subDominio": "rastro_de_visita",
-    "tipoVestigio": "nota_por_assinar",
-    "pertenceA": "gen_0_criada",
-    "revelaSegredo": "acerto_reservado"
-   }
-  },
-  {
-   "id": "gen_corrobora_gen_7_lavrador",
-   "localidade": "vizinhanca",
-   "suporteFisico": "testemunho",
-   "textoDisplay": "Quem Responde por Philip Moore",
-   "carimboPadrao": "Paradeiro de Philip Moore, confirmado",
-   "descricao": "Amos Hill esteve na Granja sexta à tarde e dá Philip Moore por presente, do meio-dia às seis. Mais de uma boca diz o mesmo.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "corroboracao",
-    "ligadoA": "gen_7_lavrador"
-   }
-  },
-  {
-   "id": "gen_movel_gen_0_criada",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "Papéis de George Jones",
-   "carimboPadrao": "Móbil de George Jones",
-   "descricao": "Cartas sobre um dote prometido e não pago atam George Jones a Joseph Smith, com somas e datas.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "dote",
-    "ligadoA": "gen_0_criada"
-   }
-  },
-  {
-   "id": "gen_citacao_comarca",
-   "localidade": "delegacia",
-   "suporteFisico": "registro",
-   "textoDisplay": "A Nota do Procurador",
-   "carimboPadrao": "Nota do procurador de Netherfield",
-   "descricao": "Meia folha de ofício: a cobrança correu pelas mãos do procurador, em Netherfield, com data e número de folha.",
-   "tagsOcultas": {
-    "dominio": "ambiental",
-    "subDominio": "referencia_comarca"
-   }
-  },
-  {
-   "id": "gen_registro_comarca",
-   "localidade": "comarca_vila_mercado",
-   "suporteFisico": "registro",
-   "textoDisplay": "A Carta de Cobrança Copiada",
-   "carimboPadrao": "Livro do procurador de Netherfield",
-   "descricao": "No copiador do procurador que servia ao morto, a carta de cobrança, com data e soma; nela, o nome de John Walker.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "salario_atrasado",
-    "ligadoA": "gen_3_pastor_de_ovelhas"
-   }
-  },
-  {
-   "id": "gen_alibi_gen_4_lavrador",
-   "localidade": "casa_cottage_4",
-   "textoDisplay": "A Granja (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_4_lavrador",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_2_merceeiro",
-   "localidade": "casa_mercearia",
-   "textoDisplay": "A Mercearia (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: A Mercearia (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_2_merceeiro",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_0_criada",
-   "localidade": "casa_casa_do_medico",
-   "textoDisplay": "Casa do Médico (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: Casa do Médico (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_0_criada",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_3_pastor_de_ovelhas",
-   "localidade": "casa_cottage_3",
-   "textoDisplay": "Cottage nº 3 (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: Cottage nº 3 (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\" Declarado do batente, o constable escrevendo sobre o joelho.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_3_pastor_de_ovelhas",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  },
-  {
-   "id": "gen_alibi_gen_7_lavrador",
-   "localidade": "casa_cottage_6",
-   "textoDisplay": "A Granja (sexta à tarde)",
-   "carimboPadrao": "Paradeiro declarado: A Granja (sexta à tarde)",
-   "descricao": "\"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\" Tomado por termo à porta, pela mão do constable.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "alibi",
-    "declaranteId": "gen_7_lavrador",
-    "horaInicioDeclarada": -12,
-    "horaFimDeclarada": -6,
-    "corroborado": false
-   }
-  }
- ],
- "localidades": [
-  {
-   "id": "corpo",
-   "rotuloMesa": "O Corpo",
-   "titulo": "O Corpo — A Granja",
-   "subtitulo": "Joseph Smith, lavrador, 14 anos",
-   "acoesEspeciais": [
-    "termometro"
-   ],
-   "gestos": [
-    {
-     "id": "gesto_voltar_corpo",
-     "rotulo": "Voltar o corpo",
-     "cartaId": "gen_livores"
-    }
-   ],
-   "prosa": [
-    "O morto jaz no chão do cômodo a que a vila chama cozinha da granja, vestido como andava em casa. O constable pôs guarda à porta; até a chegada {g:do perito|da perita}, nada se tocou.",
-    "Ao primeiro exame do tronco e dos membros, [[gen_rigor]].",
-    "O exame de perto encontra a lesão que respondeu por ele: [[gen_lesao_fatal]]. Em volta dela, [[gen_reacao_vital]].",
-    "Na pele da vítima, o exame apura outro sinal: [[gen_sinal_exigivel]].",
-    "A maleta de instrumentos espera aberta sobre uma cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} houver por bem medir a temperatura do corpo."
-   ],
-   "planta": {
-    "titulo": "A Granja",
-    "viewBox": "0 0 204 152",
-    "comodos": [
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha da Granja",
-      "contorno": "M24 24 H128 V128 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 38
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 50,
-         "y": 76
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 76,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 102,
-         "y": 76
-        }
-       }
-      ]
-     },
-     {
-      "id": "paiol",
-      "rotulo": "Paiol",
-      "contorno": "M128 24 H180 V128 H128 Z",
-      "rotuloPos": {
-       "x": 154,
-       "y": 38
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M29 29 H45 V45 H29 Z",
-     "M81 29 H97 V45 H81 Z",
-     "M107 55 H123 V71 H107 Z",
-     "M133 107 H149 V123 H133 Z",
-     "M133 81 H149 V97 H133 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 102,
-      "y": 144
-     }
-    ]
-   }
-  },
-  {
-   "id": "cena",
-   "rotuloMesa": "A Cena do Crime",
-   "titulo": "A Cena — A Granja",
-   "subtitulo": "Onde Joseph Smith foi achado",
-   "acoesEspeciais": [],
-   "introducao": [
-    "A Granja segue como estava na manhã do achado, nada fora do lugar; o exame vai cômodo a cômodo."
-   ],
-   "pontos": [
-    {
-     "id": "pt_cena_cozinha",
-     "rotulo": "Cozinha da Granja",
-     "comodo": "cozinha",
-     "prosa": [
-      "No chão deste cômodo, o morto. Do mobiliário, fogão de ferro a carvão, mesa de tampo raspado, cadeiras Windsor. De um canto a outro, nada guarda o seu lugar. Há mobília por erguer do chão. Junto do corpo, no chão: [[gen_instrumento]]. Ao exame: [[gen_peca_deslocada]]. Ao exame: [[gen_residuo_peca]]. Junto ao rodapé, fora do caminho das pisadas: [[gen_segredo_gen_2_merceeiro]]. A vassoura não alcança a beira de um móvel; ali, [[gen_segredo_gen_0_criada]]. Do meio do vão até a porta: [[gen_pegadas]]."
-     ]
-    },
-    {
-     "id": "pt_cena_paiol",
-     "rotulo": "Paiol",
-     "comodo": "paiol",
-     "prosa": [
-      "Do mobiliário, sacas de grão, ferramentas de lavoura. Há mobília por erguer do chão."
-     ]
-    }
-   ],
-   "planta": {
-    "titulo": "A Granja",
-    "viewBox": "0 0 204 152",
-    "comodos": [
-     {
-      "id": "cozinha",
-      "rotulo": "Cozinha da Granja",
-      "contorno": "M24 24 H128 V128 H24 Z",
-      "rotuloPos": {
-       "x": 76,
-       "y": 38
-      },
-      "alvos": [
-       {
-        "no": "cena",
-        "rotulo": "a cena",
-        "hit": {
-         "x": 25,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 50,
-         "y": 76
-        }
-       },
-       {
-        "no": "corpo",
-        "rotulo": "o corpo",
-        "hit": {
-         "x": 76,
-         "y": 25,
-         "w": 51,
-         "h": 102
-        },
-        "pos": {
-         "x": 102,
-         "y": 76
-        }
-       }
-      ]
-     },
-     {
-      "id": "paiol",
-      "rotulo": "Paiol",
-      "contorno": "M128 24 H180 V128 H128 Z",
-      "rotuloPos": {
-       "x": 154,
-       "y": 38
-      },
-      "alvos": []
-     }
-    ],
-    "decorSalas": [],
-    "tracos": [
-     "M29 29 H45 V45 H29 Z",
-     "M81 29 H97 V45 H81 Z",
-     "M107 55 H123 V71 H107 Z",
-     "M133 107 H149 V123 H133 Z",
-     "M133 81 H149 V97 H133 Z"
-    ],
-    "rotulosDecor": [
-     {
-      "texto": "frente",
-      "x": 102,
-      "y": 144
-     }
-    ]
-   },
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_1",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_1_limpeza]] [[gen_intf_intf_1_meia_obra]]."
-     ]
-    },
-    {
-     "eventoId": "intf_1",
-     "quando": "nao_disparado",
-     "paragrafos": [
-      "No cômodo chamado cozinha da granja, na parede, fora do alcance da poça: [[gen_sangue_alheio]]."
-     ]
-    }
-   ]
-  },
-  {
-   "id": "delegacia",
-   "rotuloMesa": "O Posto do Constable",
-   "titulo": "O Posto do Constable",
-   "subtitulo": "Os papéis do caso",
-   "acoesEspeciais": [
-    "telegrafo"
-   ],
-   "prosa": [
-    "No posto do constable cheira a tinta e a poeira de papel. O constable abre o armário sem que se peça e afasta a própria cadeira: o que a vila lavrou sobre o morto está aí para quem leia.",
-    "No registro da ronda, na letra do guarda: [[gen_visto_vivo]].",
-    "Entre os papéis recolhidos por precaução: [[gen_motivo]] e [[gen_movel_gen_0_criada]].",
-    "Presa por alfinete ao maço, a folha de praxe: [[gen_citacao_comarca]].",
-    "Dos nomes que os papéis guardam, o constable dá as moradas, uma a uma; os interrogatórios correm à porta de cada casa."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "vizinhanca",
-   "rotuloMesa": "A Taverna",
-   "titulo": "A Taverna",
-   "subtitulo": "Onde a vila conta o que sabe",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A taverna junta a vila ao fim da lida: bancos corridos, o balcão úmido, e quem chega ouve antes de sentar.",
-    "A vila é uma rua só, e os fundos dos lotes dão para o campo aberto.",
-    "A Granja fica na orla de trabalho, à parte das casas de morada; até a porta mais próxima vai um bom pedaço de caminho.",
-    "Quem lá estava àquela hora conta: [[gen_ruido_ouvido]].",
-    "Um e outro, ali mesmo, respondem pelos seus: [[gen_corrobora_gen_4_lavrador]], [[gen_corrobora_gen_7_lavrador]]."
-   ],
-   "blocosContingentes": [
-    {
-     "eventoId": "intf_2",
-     "quando": "disparado",
-     "paragrafos": [
-      "Na volta, o que a primeira visita não viu: [[gen_intf_intf_2_retratacao]] [[gen_intf_intf_2_dividas]] [[gen_intf_intf_2_soberanos]]."
-     ]
-    }
-   ]
-  },
-  {
-   "id": "casa_cottage_4",
-   "rotuloMesa": "Cottage nº 4",
-   "titulo": "Cottage nº 4 — à porta",
-   "subtitulo": "A morada de Amos Hill",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 4 fica na ruela dos cottages. O constable vai adiante, bate com o nó dos dedos e recua um passo."
-   ]
-  },
-  {
-   "id": "casa_mercearia",
-   "rotuloMesa": "A Mercearia",
-   "titulo": "A Mercearia — à porta",
-   "subtitulo": "A morada de Bernard Moore",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A Mercearia fica na High Street. O constable vai adiante, bate com o nó dos dedos e recua um passo."
-   ]
-  },
-  {
-   "id": "casa_casa_do_medico",
-   "rotuloMesa": "Casa do Médico",
-   "titulo": "Casa do Médico — à porta",
-   "subtitulo": "A morada de George Jones",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A Casa do Médico fica na High Street. O constable vai adiante, bate com o nó dos dedos e recua um passo."
-   ]
-  },
-  {
-   "id": "casa_cottage_3",
-   "rotuloMesa": "Cottage nº 3",
-   "titulo": "Cottage nº 3 — à porta",
-   "subtitulo": "A morada de John Walker",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 3 fica na ruela dos cottages. O constable bate, anuncia o inquérito e cede a vez."
-   ]
-  },
-  {
-   "id": "casa_cottage_6",
-   "rotuloMesa": "Cottage nº 6",
-   "titulo": "Cottage nº 6 — à porta",
-   "subtitulo": "A morada de Philip Moore",
-   "acoesEspeciais": [],
-   "prosa": [
-    "O Cottage nº 6 fica na ruela dos cottages. O constable acompanha até a soleira e fica um passo atrás."
-   ]
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotuloMesa": "A Granja — a busca",
-   "titulo": "A Granja — a diligência",
-   "subtitulo": "Busca com o constable à porta",
-   "acoesEspeciais": [],
-   "prosa": [
-    "A diligência corre com o constable à porta e o dono das coisas a um canto. O constable manda arregaçar as mangas: [[gen_ferimento_reu]]."
-   ],
-   "blocosContingentes": []
-  },
-  {
-   "id": "comarca_vila_mercado",
-   "rotuloMesa": "Netherfield",
-   "titulo": "O Gabinete do Procurador — Netherfield",
-   "subtitulo": "Netherfield, hora e meia de estrada",
-   "acoesEspeciais": [],
-   "prosa": [
-    "Hora e meia de estrada. No gabinete, o procurador que servia ao morto pesa a carta do constable, corre o dedo pelo copiador de cartas e o deixa aberto sobre a mesa: [[gen_registro_comarca]]."
-   ]
-  }
- ],
- "nosMapa": [
-  {
-   "id": "corpo",
-   "rotulo": "O Corpo",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "cena",
-   "rotulo": "A Cena do Crime",
-   "grupo": "cena_predio",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "delegacia",
-   "rotulo": "O Posto do Constable",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "vizinhanca",
-   "rotulo": "A Taverna",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_4",
-   "rotulo": "Cottage nº 4",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_mercearia",
-   "rotulo": "A Mercearia",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_casa_do_medico",
-   "rotulo": "Casa do Médico",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_3",
-   "rotulo": "Cottage nº 3",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "casa_cottage_6",
-   "rotulo": "Cottage nº 6",
-   "grupo": "vila",
-   "desbloqueadoInicio": true
-  },
-  {
-   "id": "oficio_do_reu",
-   "rotulo": "A Granja — a busca",
-   "grupo": "vila",
-   "desbloqueadoInicio": false
-  },
-  {
-   "id": "comarca_vila_mercado",
-   "rotulo": "Netherfield",
-   "grupo": "comarca_vila_mercado",
-   "desbloqueadoInicio": false
-  }
- ],
- "leads": [
-  {
-   "cartaId": "gen_motivo",
-   "revelaNo": "oficio_do_reu",
-   "nota": "O nome nos papéis dá causa à diligência."
-  },
-  {
-   "cartaId": "gen_citacao_comarca",
-   "revelaNo": "comarca_vila_mercado",
-   "nota": "A nota aponta o gabinete do procurador."
-  }
- ],
- "custos": {
-  "cena_predio|cena_predio": 0,
-  "cena_predio|vila": 1,
-  "vila|cena_predio": 1,
-  "vila|vila": 1,
-  "comarca_vila_mercado|comarca_vila_mercado": 0,
-  "comarca_vila_mercado|vila": 1.5,
-  "vila|comarca_vila_mercado": 1.5,
-  "comarca_vila_mercado|cena_predio": 1.5,
-  "cena_predio|comarca_vila_mercado": 1.5
- },
- "dialogos": {
-  "dialogo_gen_4_lavrador": {
-   "suspeitoId": "gen_4_lavrador",
-   "origemLocalidade": "casa_cottage_4",
-   "chamada": "Interrogar Amos Hill",
-   "titulo": "Interrogatório — Amos Hill",
-   "subtitulo": "Lavrador, 56 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_ruido_ouvido": "reacao_gen_ruido_ouvido"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_ruido_ouvido",
-     "rotulo": "[O Barulho na Vizinhança] O que exatamente a parede deixou passar naquela hora?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Amos Hill entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Diz do ofício, sem que ninguém pergunte: \"É a vida inteira nisto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"O seu paradeiro na sexta à tarde: hora e lugar.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A que horas larga o serviço?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_ruido_ouvido": {
-     "fala": [
-      "Amos Hill conta de novo, na mesma ordem. \"Pancada primeiro, móvel no chão depois, e depois mais nada. A divisa ali é de tábua, e tábua deixa passar tudo; por isso ouvi. Foi o que ouvi e foi o que declarei. Em barulho eu não ponho nome de gente.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não ponho em ninguém. O que declarei à ronda, declarei; palavra dada não se tira.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à tarde vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Joseph Smith era dos que se cumprimentam na rua. O que sei do resto está no livro do guarda, tal e qual.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Do que vi e ouvi já dei conta por termo, com hora. Fora disso, nada tenho que sirva a um inquérito.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_4_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, para quem lidava com ele todos os dias?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala, e fala alto. Eu digo só o que passou pelos meus olhos e ouvidos; o resto morre comigo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_2_merceeiro": {
-   "suspeitoId": "gen_2_merceeiro",
-   "origemLocalidade": "casa_mercearia",
-   "chamada": "Interrogar Bernard Moore",
-   "titulo": "Interrogatório — Bernard Moore",
-   "subtitulo": "Merceeiro, 40 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_2_merceeiro": "reacao_gen_segredo_gen_2_merceeiro"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_2_merceeiro",
-     "rotulo": "[O Bilhete Amassado] Este papel é da sua letra. O que foi pedir?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "O constable bate; Bernard Moore abre e se descobre, o chapéu na mão. \"Deixei o negócio fechado por esta hora. Aproveitemo-la.\" Traz as datas prontas, como quem chega com a caderneta escrita."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Conte-me da sua sexta à tarde, a seu tempo.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Vamos aos fatos: onde esteve na sexta à tarde, e a que horas.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A tarde acaba a que horas?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha o que se lhe mostra como quem confere fatura alheia. \"Isto não passou pelo meu balcão. Do que passou, respondo com o livro na mão.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_2_merceeiro": {
-     "fala": [
-      "Bernard Moore lê as próprias linhas até o fim antes de falar. \"Fui pedir, e o papel diz o quê. Saí com a recusa e com a vergonha, e das duas fiz segredo. À porta de Joseph Smith estive; à hora da morte, não.\" E devolve o bilhete dobrado ao meio."
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Joseph Smith? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não tenho que dar. Se Joseph Smith tinha desafeto, não foi freguês meu.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à tarde vem contada do princípio, e as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Joseph Smith? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Joseph Smith? Gente de conta certa, ao que me constou. Pagava em dia e não pedia fiado.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "\"Hora e lugar.\" E os dá, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Joseph Smith? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos meus com ele, poucos e pagos. Se há soma pendente em algum livro, o livro que fale.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\" Já de pé, corrige uma miudeza da própria resposta, para que o termo fique exato."
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto as horas saem em fila, sem que ele procure nenhuma: [[gen_alibi_gen_2_merceeiro]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que negócios tinha com Joseph Smith? Diga somas e datas.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila diz muita coisa, e metade se desdiz no dia seguinte. Eu fico com o que se vê.\" Abotoa o casaco contra o frio da porta. \"O negócio não se guarda sozinho.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "As mãos não trazem marca fresca: calos do ofício, a pele do dia-a-dia. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_0_criada": {
-   "suspeitoId": "gen_0_criada",
-   "origemLocalidade": "casa_casa_do_medico",
-   "chamada": "Interrogar George Jones",
-   "titulo": "Interrogatório — George Jones",
-   "subtitulo": "Moço de lavoura, 29 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_segredo_gen_0_criada": "reacao_gen_segredo_gen_0_criada"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_segredo_gen_0_criada",
-     "rotulo": "[A Nota por Assinar] O seu nome está nesta nota. Que trato era esse?"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "George Jones entreabre a porta e espera que perguntem, a mão ainda no trinco. \"Posso falar, com licença da casa. Respondo o que souber.\""
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Onde esteve na sexta à tarde? Sem rodeios.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Quando é que encerra o dia?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Olha depressa e baixa os olhos. \"Isso eu não sei o que é. Da casa e do serviço respondo; do resto não ponho palavra.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_segredo_gen_0_criada": {
-     "fala": [
-      "George Jones cobre a soma com a mão, devagar, e a descobre. \"Trato havia, e era para se fechar calado; a vila come um nome em três dias. Estive lá para o assinar e voltei sem assinatura. Disso menti; do resto, não.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Sem rodeios, então.\" E o paradeiro vem, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. Desafeto declarado de Joseph Smith eu não conhecia.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à tarde vem contada do princípio, e a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Joseph Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Papel entre nós nunca correu.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" E a sexta à tarde acaba saindo por inteiro, enquanto a resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Não me poupe: quem tinha contas a acertar com Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Alisa o avental. \"Com licença, que a casa não para.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Mãos vermelhas de quem esfrega assoalho de joelhos. Arranhões finos da grelha do fogão — trabalho, não luta."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_3_pastor_de_ovelhas": {
-   "suspeitoId": "gen_3_pastor_de_ovelhas",
-   "origemLocalidade": "casa_cottage_3",
-   "chamada": "Interrogar John Walker",
-   "titulo": "Interrogatório — John Walker",
-   "subtitulo": "Pastor de ovelhas, 23 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {
-    "gen_instrumento": "reacao_gen_instrumento",
-    "gen_intf_intf_2_soberanos": "reacao_gen_intf_intf_2_soberanos"
-   },
-   "confrontos": [
-    {
-     "requerCarta": "gen_instrumento",
-     "rotulo": "[O Instrumento Abandonado] Por que o instrumento achado junto do corpo tem o seu nome na vila?"
-    },
-    {
-     "requerCarta": "gen_intf_intf_2_soberanos",
-     "rotulo": "[Soberanos Novos] Por que soberanos novos, contados à vista de todos?"
-    }
-   ],
-   "gatilhos": [
-    {
-     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
-     "vaiPara": "gatilho"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "John Walker entreabre a porta e espera que perguntem, a mão ainda no trinco. \"O guarda avisou que viriam. Diga lá, que a lida não espera.\" Ao citar a primeira hora, corrige-a no meio da frase."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Comecemos pelo simples: onde esteve na sexta à tarde?\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"A sua sexta à tarde, como foi? Conte com calma.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Quando é que encerra o dia?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_instrumento": {
-     "fala": [
-      "John Walker olha a peça sem estender a mão. \"Do meu uso, quem o nega. Perde-se ferramenta como se perde chapéu, e assim se some, sem que ninguém peça licença. Onde a acharam, não fui eu que a pus; à ronda dei razão da minha hora, e razão ficou escrita.\" A voz não muda do começo ao fim."
-     ],
-     "opcoes": []
-    },
-    "reacao_gen_intf_intf_2_soberanos": {
-     "fala": [
-      "John Walker não conta a moeda de novo. \"Contei-os à vista porque não devia nada a ninguém. Foi paga de serviço, e serviço pago não é crime. O nome de quem pagou, esse fica comigo até a lei o exigir por escrito; das minhas horas já dei conta, e ficou por termo.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "\"Vou direto.\" Dá hora e lugar de um fôlego, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]. Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome nenhum me cabe dar, {detective.treatment}. O que penso, penso baixo; suspeita sem ter com quê eu não boto em ninguém.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\" Na despedida, torna a citar a hora, devagar, como quem a confere pela primeira vez."
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A resposta toma o caminho comprido e chega inteira, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Joseph Smith era do trato de todos os dias; eu o conhecia como se conhece vizinho. Quem fez isto, não sei, e não hei de fingir que sei.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, os do ofício, e pagos em dia. Papel contra mim ninguém há de achar. Quem aponta é o inquérito; eu respondo o que me perguntam.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite, enquanto as horas saem fora de ordem, e ele as corrige no meio: [[gen_alibi_gen_3_pastor_de_ovelhas]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Um nome: quem, nesta vila, queria mal a Joseph Smith?\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Contas, dívidas, ajustes com Joseph Smith: o que houver, com data.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"Que se comenta por aí, de porta em porta?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"A vila fala o que sempre falou: cada um por si. De mim hão de dizer que trabalho e calo.\" Gira o chapéu uma volta nas mãos. \"Deus ajude a achar quem foi. Passar bem.\""
-     ],
-     "opcoes": []
-    },
-    "gatilho": {
-     "fala": [
-      "John Walker cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Nos nós dos dedos, equimoses frescas, circunscritas, com inchaço que os dias do crime explicam. Não é calo de ofício."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  },
-  "dialogo_gen_7_lavrador": {
-   "suspeitoId": "gen_7_lavrador",
-   "origemLocalidade": "casa_cottage_6",
-   "chamada": "Interrogar Philip Moore",
-   "titulo": "Interrogatório — Philip Moore",
-   "subtitulo": "Lavrador, 43 anos",
-   "noInicial": "abertura",
-   "noEvasiva": "evasiva",
-   "reacoesProva": {},
-   "confrontos": [],
-   "gatilhos": [
-    {
-     "rotulo": "\"Nunca lhe aconteceu errar diante de todos, e a vila inteira ver?\"",
-     "vaiPara": "gatilho"
-    }
-   ],
-   "exigencias": [
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "maos",
-     "rotulo": "Exigir que mostre as mãos",
-     "vaiPara": "exigencia_maos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "antebracos",
-     "rotulo": "Exigir que mostre os antebraços",
-     "vaiPara": "exigencia_antebracos",
-     "regiaoDoSinal": "maos"
-    },
-    {
-     "requerCarta": "gen_sinal_exigivel",
-     "regiao": "botas",
-     "rotulo": "Exigir que mostre as botas",
-     "vaiPara": "exigencia_botas",
-     "regiaoDoSinal": "maos"
-    }
-   ],
-   "nos": {
-    "abertura": {
-     "fala": [
-      "Philip Moore abre antes que o constable acabe de bater, e toma a palavra do batente. \"A terra ficou por lavrar hoje. Pergunte, que eu respondo e volto.\" E emenda, sem pergunta, o frio que fez e o preço do pão."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Diga-me onde esteve na sexta à tarde, e diga direito.\"",
-       "vaiPara": "b1_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Fale-me da sexta à tarde com liberdade, do começo ao fim.\"",
-       "vaiPara": "b1_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Preciso das horas na sexta à tarde: onde, e de quando a quando.\"",
-       "vaiPara": "b1_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"A tarde acaba a que horas?\"",
-       "vaiPara": "b1_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "evasiva": {
-     "fala": [
-      "Chega o rosto para ver e faz que não com a cabeça. \"Disso não sei dizer, {detective.treatment}. Da terra e do dia, pergunte o que quiser.\""
-     ],
-     "opcoes": []
-    },
-    "b1_firme": {
-     "fala": [
-      "Um aceno curto, e o paradeiro sai por inteiro, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_firme": {
-     "fala": [
-      "\"Nome não dou, que não o tenho. A ferramenta eu conheço de vista; já peguei emprestada, como qualquer um.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_cordial": {
-     "fala": [
-      "A sexta à tarde vem contada do princípio, e cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_cordial": {
-     "fala": [
-      "\"Joseph Smith? Gente de trato certo, ao que me constou. Cruzávamos na rua e na igreja, como todos.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_tecnico": {
-     "fala": [
-      "Dá a hora, dá o lugar, e para; cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_tecnico": {
-     "fala": [
-      "\"Tratos, poucos; paga e trabalho, quando havia. Naquela ferramenta já pus a mão; ficava ao alcance de qualquer um.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\""
-     ],
-     "opcoes": []
-    },
-    "b1_obliquo": {
-     "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta, enquanto cada hora vem com uma história atrás que ninguém pediu: [[gen_alibi_gen_7_lavrador]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
-     ],
-     "opcoes": [
-      {
-       "rotulo": "\"Alguém nesta vila queria mal a Joseph Smith. Diga um nome.\"",
-       "vaiPara": "b2_firme",
-       "tom": "firme"
-      },
-      {
-       "rotulo": "\"Que homem era Joseph Smith, aos olhos de quem convivia com ele?\"",
-       "vaiPara": "b2_cordial",
-       "tom": "cordial"
-      },
-      {
-       "rotulo": "\"Que tratos tinha com Joseph Smith? Somas e datas, se as houver.\"",
-       "vaiPara": "b2_tecnico",
-       "tom": "tecnico"
-      },
-      {
-       "rotulo": "\"E a vila, o que murmura?\"",
-       "vaiPara": "b2_obliquo",
-       "tom": "obliquo"
-      }
-     ]
-    },
-    "b2_obliquo": {
-     "fala": [
-      "\"Dizem muito, e eu ouço pouco; o dia come as horas de quem trabalha.\" Assenta o chapéu de volta. \"Se é tudo, volto à lida.\" Já na porta, ainda oferece o tempo que fez na sexta e o nome de quem passou tarde pela estrada."
-     ],
-     "opcoes": []
-    },
-    "gatilho": {
-     "fala": [
-      "Philip Moore cala-se mais do que a pergunta pedia. \"Uma vez, faz vinte anos, enganei-me diante da vila inteira. Ainda me lembro do silêncio da sala depois. Passei a conferir tudo três vezes, e ainda assim a mão treme quando sei que vão me ver trabalhar.\""
-     ],
-     "opcoes": []
-    },
-    "exigencia_maos": {
-     "fala": [
-      "Arranhões finos, paralelos, superficiais — garra de gato, sem dúvida. Frescos."
-     ],
-     "opcoes": []
-    },
-    "exigencia_antebracos": {
-     "fala": [
-      "Os antebraços não trazem arranhão fresco nem equimose recente. Nada de nota."
-     ],
-     "opcoes": []
-    },
-    "exigencia_botas": {
-     "fala": [
-      "As botas trazem a poeira comum da estrada, sem lama de margem nem mancha fora de hora. Nada de nota."
-     ],
-     "opcoes": []
-    }
-   }
-  }
- },
- "confrontos": {
-  "estadoInicial": "presente",
-  "consequencias": {}
- },
- "abertura": {
-  "passos": [
-   {
-    "id": "descoberta",
-    "titulo": "Colbrook, 14 de outubro de 1893",
-    "paragrafos": [
-     "De manhã cedo, o leite ficou à porta, intacto. A vizinha bateu, chamou pelo nome; a casa não devolveu voz."
-    ],
-    "rotuloBotao": "O constable é chamado"
-   },
-   {
-    "id": "alarme",
-    "titulo": "O constable manda chamar",
-    "paragrafos": [
-     "O constable Harrow pôs guarda à porta antes das nove e mandou que nada se tocasse. O caso passava do seu ofício, e ele foi o primeiro a dizê-lo."
-    ],
-    "rotuloBotao": "Ler a carta"
-   },
-   {
-    "id": "carta",
-    "titulo": "A carta do Constable",
-    "carta": true,
-    "paragrafos": [
-     "O envelope traz o carimbo do condado e a caligrafia aplicada, letra a letra desenhada.",
-     "\"{detective.treatment} {detective.surname} — Perdoe a letra. Sou o constable de Colbrook, e isto passa do meu ofício. Joseph Smith, lavrador desta vila, foi achado morto. Pus guarda à porta e mandei que nada se tocasse até a sua chegada. Venha pelo primeiro trem; os que respondem pela vila pagam os seus honorários.\"",
-     "\"Harrow, Constable.\""
-    ],
-    "rotuloBotao": "Aceitar o chamado"
-   },
-   {
-    "id": "metodo",
-    "titulo": "A maleta pronta",
-    "paragrafos": [
-     "Fechada a fivela, {detective.treatment} {detective.surname} desce para a estação. A maleta numa mão, a caderneta na outra, aberta na página ainda limpa."
-    ],
-    "rotuloBotao": "Tomar o trem"
-   },
-   {
-    "id": "chegada",
-    "titulo": "Colbrook",
-    "paragrafos": [
-     "Chove fino sobre Colbrook quando o trem chega. Harrow espera sob o beiral da estação e adianta-se assim que reconhece a maleta na mão {g:do perito|da perita}. \"Venha comigo; falo enquanto andamos.\""
-    ],
-    "rotuloBotao": "Ouvir o constable"
-   },
-   {
-    "id": "briefing",
-    "titulo": "O relato do constable Harrow",
-    "briefing": true,
-    "paragrafos": [
-     "\"O essencial é isto: Joseph Smith, 14 anos, lavrador. Achado morto na Granja. Não toquei em nada e não prendi ninguém.\"",
-     "Detém-se à porta e baixa a voz. \"Pergunte o que quiser antes de entrarmos; lá dentro, a perícia é {g:do senhor|da senhora}.\""
-    ],
-    "rotuloBotao": "Entrar — iniciar a investigação"
-   }
-  ],
-  "perguntas": [
-   {
-    "id": "sobre_a_hora",
-    "pergunta": "O que se sabe da hora da morte?",
-    "resposta": "\"De horas não me arrisco: papel meu não data defunto. O corpo está como o achamos; {g:o senhor|a senhora} dirá por ele.\""
-   },
-   {
-    "id": "quem_convive",
-    "pergunta": "Quem convivia com a vítima?",
-    "resposta": "\"Do dia a dia dele? Amos Hill, Bernard Moore, John Walker, Philip Moore — gente que partilhava teto, trabalho ou as mesmas noites. Os nomes estão nos meus papéis.\""
-   },
-   {
-    "id": "desafetos",
-    "pergunta": "O morto tinha desafetos declarados?",
-    "resposta": "\"Queixa lavrada contra ele não guardo. O que se diz por baixo da voz, {g:o senhor|a senhora} há de ouvir por si.\""
-   }
-  ],
-  "opcoesPersonagem": [
-   {
-    "id": "harlan",
-    "nome": "Harlan Blackwell",
-    "descricao": "Assistente de perito há dois anos; sem registro, sem laudo próprio. O que tem é o olho treinado do mestre e um termômetro emprestado com uma trinca que \"não afeta a leitura\"."
-   }
-  ]
- },
- "parametrosCena": {
-  "horasChegada": 11,
-  "ambiente": 11,
-  "calendario": {
-   "diaBase": 14,
-   "mesAbrev": "out",
-   "mesExtenso": "outubro",
-   "ano": 1893
-  }
- },
- "maquete": {
-  "morfologia": "linear",
-  "tabua": {
-   "centroX": 0,
-   "largura": 14.28,
-   "fundo": 6.47
-  },
-  "posicoes": {
-   "corpo": {
-    "x": 3.94,
-    "z": 1.07,
-    "predio": "granja"
-   },
-   "cena": {
-    "x": 4.06,
-    "z": 0.45,
-    "predio": "anexo_cena"
-   },
-   "delegacia": {
-    "x": -2.96,
-    "z": -0.81,
-    "predio": "delegacia"
-   },
-   "vizinhanca": {
-    "x": -2.66,
-    "z": 0.87,
-    "predio": "pub"
-   },
-   "casa_cottage_4": {
-    "x": -1.68,
-    "z": 1.78,
-    "predio": "cottage_4"
-   },
-   "casa_mercearia": {
-    "x": -0.4,
-    "z": -0.75,
-    "predio": "mercearia"
-   },
-   "casa_casa_do_medico": {
-    "x": -1.54,
-    "z": 0.83,
-    "predio": "casa_do_medico"
-   },
-   "casa_cottage_3": {
-    "x": -2.38,
-    "z": 1.76,
-    "predio": "cottage_3"
-   },
-   "casa_cottage_6": {
-    "x": -0.02,
-    "z": 1.82,
-    "predio": "cottage_6"
-   },
-   "oficio_do_reu": {
-    "x": 3.28,
-    "z": 0.63,
-    "predio": "anexo_oficio_do_reu"
-   },
-   "comarca_vila_mercado": {
-    "x": 7.54,
-    "z": -1.7,
-    "predio": "predio_comarca_vila_mercado",
-    "distante": true
-   }
-  },
-  "formas": {
-   "granja": {
-    "w": 1.45,
-    "d": 1.05,
-    "h": 0.85,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.5,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.44,
-      "z": -0.21,
-      "alt": 0.48
-     }
-    ]
-   },
-   "anexo_cena": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.3
-   },
-   "delegacia": {
-    "w": 1.35,
-    "d": 1,
-    "h": 0.97,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.48,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.41,
-      "z": -0.2,
-      "alt": 0.5
-     }
-    ]
-   },
-   "pub": {
-    "w": 1.5,
-    "d": 1,
-    "h": 0.93,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.54,
-    "beiral": 0.13,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.45,
-      "z": -0.2,
-      "alt": 0.49
-     },
-     {
-      "x": -0.38,
-      "z": 0.16,
-      "alt": 0.49
-     }
-    ]
-   },
-   "cottage_4": {
-    "w": 0.82,
-    "d": 0.6,
-    "h": 0.6,
-    "corParede": "#84704f",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.36,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.25,
-      "z": -0.12,
-      "alt": 0.44
-     }
-    ]
-   },
-   "mercearia": {
-    "w": 0.95,
-    "d": 0.83,
-    "h": 0.7,
-    "corParede": "#8d7a5a",
-    "corTelhado": "#4d3a29",
-    "telhadoAltura": 0.54,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.28,
-      "z": -0.17,
-      "alt": 0.45
-     }
-    ],
-    "marquise": true
-   },
-   "casa_do_medico": {
-    "w": 1.1,
-    "d": 1,
-    "h": 0.9,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.55,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.33,
-      "z": -0.2,
-      "alt": 0.48
-     },
-     {
-      "x": -0.28,
-      "z": 0.16,
-      "alt": 0.48
-     }
-    ]
-   },
-   "cottage_3": {
-    "w": 0.87,
-    "d": 0.6,
-    "h": 0.6,
-    "corParede": "#83704e",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.26,
-      "z": -0.12,
-      "alt": 0.44
-     }
-    ]
-   },
-   "cottage_6": {
-    "w": 0.72,
-    "d": 0.7,
-    "h": 0.55,
-    "corParede": "#7d684c",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.22,
-      "z": -0.14,
-      "alt": 0.43
-     }
-    ]
-   },
-   "anexo_oficio_do_reu": {
-    "w": 0.62,
-    "d": 0.52,
-    "h": 0.42,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.28,
-    "beiral": 0.07,
-    "ristela": true,
-    "chamines": [],
-    "rotuloAlto": 1.75
-   },
-   "predio_comarca_vila_mercado": {
-    "w": 1.3,
-    "d": 1,
-    "h": 1.05,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.56,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.45,
-      "z": -0.25,
-      "alt": 0.55
-     }
-    ]
-   },
-   "igreja": {
-    "w": 1,
-    "d": 1.55,
-    "h": 1.35,
-    "corParede": "#8a8272",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.6,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "vicarage": {
-    "w": 1.15,
-    "d": 1.05,
-    "h": 1,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.57,
-    "beiral": 0.12,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.35,
-      "z": -0.21,
-      "alt": 0.5
-     },
-     {
-      "x": -0.29,
-      "z": 0.17,
-      "alt": 0.5
-     }
-    ]
-   },
-   "capela": {
-    "w": 0.9,
-    "d": 1.05,
-    "h": 0.95,
-    "corParede": "#96825e",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.42,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": []
-   },
-   "solar": {
-    "w": 1.6,
-    "d": 1.1,
-    "h": 1.05,
-    "corParede": "#8a7355",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.58,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.48,
-      "z": -0.22,
-      "alt": 0.51
-     },
-     {
-      "x": -0.4,
-      "z": 0.18,
-      "alt": 0.51
-     }
-    ]
-   },
-   "botica": {
-    "w": 0.95,
-    "d": 0.88,
-    "h": 0.75,
-    "corParede": "#96825e",
-    "corTelhado": "#523c28",
-    "telhadoAltura": 0.49,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.28,
-      "z": -0.18,
-      "alt": 0.46
-     }
-    ],
-    "marquise": true
-   },
-   "escola": {
-    "w": 1.05,
-    "d": 0.9,
-    "h": 0.72,
-    "corParede": "#84704f",
-    "corTelhado": "#4a3626",
-    "telhadoAltura": 0.46,
-    "beiral": 0.1,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.32,
-      "z": -0.18,
-      "alt": 0.46
-     }
-    ]
-   },
-   "forja": {
-    "w": 1.1,
-    "d": 0.75,
-    "h": 0.55,
-    "corParede": "#77705f",
-    "corTelhado": "#3a352d",
-    "telhadoAltura": 0.39,
-    "beiral": 0.1,
-    "ristela": false,
-    "chamines": [
-     {
-      "x": 0.33,
-      "z": -0.15,
-      "alt": 0.43
-     }
-    ]
-   },
-   "moinho": {
-    "w": 0.9,
-    "d": 0.95,
-    "h": 1.45,
-    "corParede": "#8a8272",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.53,
-    "beiral": 0.08,
-    "ristela": false,
-    "chamines": [],
-    "moinho": true
-   },
-   "estacao": {
-    "w": 1.2,
-    "d": 0.8,
-    "h": 0.52,
-    "corParede": "#8a7355",
-    "corTelhado": "#3e3a34",
-    "telhadoAltura": 0.41,
-    "beiral": 0.14,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.36,
-      "z": -0.16,
-      "alt": 0.42
-     }
-    ]
-   },
-   "adro_da_igreja": {
-    "w": 1.15,
-    "d": 0.95,
-    "h": 0.05,
-    "corParede": "#6a6656",
-    "corTelhado": "#514d40",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "patio_da_granja": {
-    "w": 1.1,
-    "d": 0.8,
-    "h": 0.04,
-    "corParede": "#716448",
-    "corTelhado": "#554b3c",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "caminho_do_acude": {
-    "w": 1.4,
-    "d": 0.65,
-    "h": 0.04,
-    "corParede": "#5e6650",
-    "corTelhado": "#4c5546",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "travessa_dos_fundos": {
-    "w": 1.35,
-    "d": 0.55,
-    "h": 0.04,
-    "corParede": "#6a6252",
-    "corTelhado": "#565043",
-    "telhadoAltura": 0.01,
-    "beiral": 0,
-    "ristela": false,
-    "chamines": []
-   },
-   "cottage_1": {
-    "w": 0.77,
-    "d": 0.65,
-    "h": 0.5,
-    "corParede": "#83704e",
-    "corTelhado": "#463527",
-    "telhadoAltura": 0.36,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.23,
-      "z": -0.13,
-      "alt": 0.42
-     }
-    ]
-   },
-   "cottage_2": {
-    "w": 0.72,
-    "d": 0.6,
-    "h": 0.55,
-    "corParede": "#7d684c",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.46,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.22,
-      "z": -0.12,
-      "alt": 0.43
-     }
-    ]
-   },
-   "cottage_5": {
-    "w": 0.87,
-    "d": 0.65,
-    "h": 0.6,
-    "corParede": "#83704e",
-    "corTelhado": "#443328",
-    "telhadoAltura": 0.41,
-    "beiral": 0.09,
-    "ristela": true,
-    "chamines": [
-     {
-      "x": 0.26,
-      "z": -0.13,
-      "alt": 0.44
-     }
-    ]
-   }
-  },
-  "cenario": [
-   {
-    "predio": "igreja",
-    "x": -5.44,
-    "z": -0.77
-   },
-   {
-    "predio": "vicarage",
-    "x": -4.24,
-    "z": -0.87
-   },
-   {
-    "predio": "capela",
-    "x": -3.82,
-    "z": 0.85
-   },
-   {
-    "predio": "solar",
-    "x": -5.04,
-    "z": 1.07
-   },
-   {
-    "predio": "botica",
-    "x": -1.8,
-    "z": -0.85
-   },
-   {
-    "predio": "escola",
-    "x": 0.6,
-    "z": -0.81
-   },
-   {
-    "predio": "forja",
-    "x": -0.44,
-    "z": 1.07
-   },
-   {
-    "predio": "moinho",
-    "x": 4.9,
-    "z": -0.91
-   },
-   {
-    "predio": "estacao",
-    "x": 5.44,
-    "z": 0.83
-   },
-   {
-    "predio": "adro_da_igreja",
-    "x": -4.72,
-    "z": 0.07,
-    "logradouro": true
-   },
-   {
-    "predio": "patio_da_granja",
-    "x": 4,
-    "z": 1.88,
-    "logradouro": true
-   },
-   {
-    "predio": "caminho_do_acude",
-    "x": 4.88,
-    "z": -1.83,
-    "logradouro": true
-   },
-   {
-    "predio": "travessa_dos_fundos",
-    "x": 1.18,
-    "z": 1.5,
-    "logradouro": true
-   },
-   {
-    "predio": "cottage_1",
-    "x": -4.04,
-    "z": 2.02
-   },
-   {
-    "predio": "cottage_2",
-    "x": -3.08,
-    "z": 2.04
-   },
-   {
-    "predio": "cottage_5",
-    "x": -0.72,
-    "z": 1.8
-   }
-  ],
-  "estrada": [
-   {
-    "x": 5.84,
-    "z": -0.7
-   },
-   {
-    "x": 6.54,
-    "z": -1.15
-   },
-   {
-    "x": 7.14,
-    "z": -1.45
-   },
-   {
-    "x": 7.54,
-    "z": -1.7
-   }
-  ]
- },
- "telegrama": {
-  "destino": "Netherfield",
-  "via": "estacao",
-  "latencia": 2,
-  "resposta": {
-   "textoDisplay": "A Resposta por Fio",
-   "termoCarimbo": "Telegrama de Netherfield: o livro do procurador",
-   "descricao": "No formulário pardo, na letra do telegrafista, hora de expedição e de chegada ao minuto: a data, a soma e o nome de John Walker; o procurador responde o que o livro consigna, e nada além.",
-   "tagsOcultas": {
-    "dominio": "comportamental",
-    "subDominio": "motivo",
-    "motivo": "salario_atrasado",
-    "ligadoA": "gen_3_pastor_de_ovelhas"
-   }
-  }
- },
- "interferencias": {
-  "eventos": [
-   {
-    "id": "intf_1",
-    "tipo": "destruir_evidencia",
-    "ator": "gen_3_pastor_de_ovelhas",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "carta",
-     "cartaId": "gen_sangue_alheio",
-     "localId": "granja"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_motivo",
-     "comoSoube": "o perito abriu o móbil do réu no posto do constable (extração de gen_motivo); o inquérito em público correu a vila até o ator"
-    },
-    "rota": {
-     "de": "pub",
-     "para": "granja",
-     "faixa": "noite",
-     "sustentacao": "retorno_a_cena",
-     "comoChegou": "refez, na faixa noite, o caminho do próprio crime até granja"
-    },
-    "rolagem": {
-     "wis": 2,
-     "penalidade": 2,
-     "alvo": 0,
-     "dado": 2,
-     "sucesso": false
-    },
-    "efeito": {
-     "cartaDestruida": "gen_sangue_alheio",
-     "cartasNovas": [
-      "gen_intf_intf_1_limpeza",
-      "gen_intf_intf_1_meia_obra"
-     ]
-    },
-    "prenuncio": null,
-    "anuncio": "Há sinais de que alguém esteve na cena desde a última visita."
-   },
-   {
-    "id": "intf_2",
-    "tipo": "subornar_testemunha",
-    "ator": "gen_3_pastor_de_ovelhas",
-    "atorPapel": "assassino",
-    "alvo": {
-     "tipo": "testemunha",
-     "testemunhaId": "gen_4_lavrador",
-     "cartaId": "gen_ruido_ouvido",
-     "localId": "cottage_4"
-    },
-    "gatilho": {
-     "tipo": "extracao_carta",
-     "cartaId": "gen_ruido_ouvido",
-     "comoSoube": "o depoimento de gen_4_lavrador foi tomado em público (extração de gen_ruido_ouvido); o ator soube o que a testemunha contou"
-    },
-    "rota": {
-     "de": "pub",
-     "para": "cottage_4",
-     "faixa": "noite",
-     "sustentacao": "adjacente",
-     "comoChegou": "saiu de pub, prédio vizinho de cottage_4, na faixa noite (adjacência do grafo)"
-    },
-    "rolagem": {
-     "wis": 2,
-     "penalidade": 2,
-     "alvo": 0,
-     "dado": 4,
-     "sucesso": false
-    },
-    "efeito": {
-     "cartaDestruida": null,
-     "cartasNovas": [
-      "gen_intf_intf_2_retratacao",
-      "gen_intf_intf_2_dividas",
-      "gen_intf_intf_2_soberanos"
-     ]
-    },
-    "prenuncio": null,
-    "anuncio": "Uma testemunha mudou a própria história."
    }
   ]
  },

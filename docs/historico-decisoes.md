@@ -1148,3 +1148,195 @@ pacote e gramática da acusação intocados. Gates verdes (`npm run build`, `qa.
   `kb-producao/ui-e-estetica.md` §8 (a regra do adendo), `MORTEM_CONTEXTO.md` e `README.md`
   ao estado entregue. Capturas do playtest curto do caso-escola em `docs/playtest-2026-07-24/`
   (desktop: as três horas, o beat de viagem e o adendo; celular: o crepúsculo com a régua).
+
+---
+
+## 25/07/2026 — OS-R1: Vocabulário e Postos
+
+**Grafia martelada do nome do mestre: `Abbot`.** Confirmada pelo usuário no arranque.
+A premissa do §0 da OS — "a KB do projeto regista `Abbott`" — não se confirmou: o único
+acerto de `abbot` em `docs/` é *Abbotsbury*, topônimo citado como exemplo de *tithe barn*.
+Não havia conflito; havia string a fixar.
+
+**Decisões aplicadas:** D11, D23.
+**Guardas verificadas:** G3, G4, G12 · GR1-1 a GR1-6.
+
+**Arquivos tocados:** `src/data/abertura.js`, `localidades.js`, `dialogos.js`, `mapa.js`,
+`aparencias.js`, `ecos_mestre.js`, `pacote_caso.js` · `src/store/jogo.js` ·
+`src/components/Abertura.jsx`, `localidade/FalaDoLegista.jsx` · `scripts/lint-prosa.mjs`,
+`qa-ui.mjs`, `demo-interferencia.mjs` · `docs/os-r1-mapa-ocorrencias.md` (novo),
+`docs/biblia-de-vozes.md`, `docs/guia-de-estilo.md`,
+`docs/kb-medicina-legal/inquerito-e-policia.md`.
+
+**Gate:** lint-prosa nenhuma violação · qa.mjs CASO VÁLIDO · qa-ui.mjs UI VÁLIDA ·
+build ✓.
+**Gate específico (§5):** o banco saiu **byte a byte intacto** —
+`sha256sum src/data/casos_gerados.js` = `600365a5…b5f93a7c2f`, igual ao commitado; e
+`casos_indice.js` idem. O passo 1 do gate teve o sinal invertido (ver abaixo).
+
+### As duas premissas do §2 que a árvore não confirmou
+
+**1. As 257 ocorrências do banco não são vocabulário — são um id.** Contadas uma a uma,
+as 257 são a mesma string: `"localidade": "delegacia"` (105), `"id": "delegacia"` (62),
+chaves de volume e posição do diorama (32), e referências de id (58). Nenhuma é prosa.
+Como o id está fora de escopo por decisão expressa do §1 (é propriedade da OS-R2), o banco
+também está — e o passo 1 do gate deixou de ser "prova que a única diferença é o
+vocabulário" para ser a prova mais forte disponível: `sha256sum` idêntico.
+
+**2. O balde V de `src/gerador/` é vazio.** O vocabulário que o gerador *mostra* é
+`constable` (1 644 ocorrências no banco, 364 capitalizadas), e a escolha está lavrada em
+`inquerito-e-policia.md` §5 (decisão B: manter posto inglês) e reafirmada na
+`biblia-de-vozes.md`: "Delegado" é a **glosa vernácula**. A D11 troca a glosa; não toca no
+posto inglês. A Fase 2 não tinha o que renomear.
+
+### Quatro baldes, não três
+
+A OS previa V (visível), T (técnico) e H (histórico). A árvore exigiu um quarto: **C
+(comentário)**, que acompanha o balde V quando descreve texto visível e fica intacto quando
+descreve id do balde T. Mapa completo em `docs/os-r1-mapa-ocorrencias.md`.
+
+**Balde T preservado, com justificação:** o id `delegacia` e as ~91 referências a ele
+(OS-R2); a chave `delegado_wycliffe` (esquema, lido por `papeis.js` e `aparencias.js`);
+`GuardaDelegacia.jsx` (nome de arquivo, GR1-2); `SOBRENOMES_DELEGADO` e `delegaciaLoc`
+(variáveis); e — o mais perigoso — o **sal de hash** `` `${sal}|delegado` `` em
+`pacote_gerado.js:2233`, cuja troca mudaria o sobrenome sorteado do policial em todas as
+seeds do banco sem que uma linha de vocabulário mudasse. Falso positivo preservado:
+`veredicto.js:41`, onde "Delegado" é particípio do verbo *delegar*.
+
+### Divergências assumidas
+
+1. **`constable` (gerado) × `condestável` (caso-escola).** Divergência real de superfície
+   entre as duas prosas do mesmo build. Unificar reescreveria ~2 000 strings de um produto
+   de 2,3 MiB sob guarda da G12. **Aberto para a OS-R9** (OS-R0 §8).
+2. **A D11 contraria a recomendação B da própria KB.** Registrada em
+   `inquerito-e-policia.md` §5, com a fundamentação histórica. Ver o achado abaixo.
+
+### Achado do pipeline `revisar-prosa` que o usuário precisa decidir
+
+Os dois revisores convergiram, independentemente, sobre a D11. O `perito-forense` trouxe
+prova de época: em português, *condestável* nomeou o **Condestável do Reino** (1382, a
+segunda figura da hierarquia militar depois do rei) e depois o **chefe de artilharia**; o
+**Caldas Aulete**, dicionário contemporâneo a 1893, regista cinco acepções e **nenhuma
+policial**. O uso policial é calco moderno do inglês norte-americano. O efeito é **inflação
+de patente** sobre um homem que a KB define como "o homem de ronda; a base da pirâmide" —
+e a prosa passa a ter duas glosas portuguesas para a mesma patente (*condestável* para
+Wycliffe, *guarda* para Tobin), desenhando uma escada que o posto de um homem não tinha.
+
+A D11 está **martelada e fechada** (OS-R0 §2); reabri-la exige ata própria, e é decisão do
+usuário, não do agente (`CLAUDE.md`). **Não foi reaberta.** O registro da divergência
+entrou na KB e na bíblia para que a prosa não contradiga em silêncio a sua fonte.
+
+### Correções aplicadas a partir do parecer
+
+`editor-critico`: colisão de homógrafo criada pela substituição (`a este posto` ao lado de
+`homem posto fora da sua profundidade` → `homem que nunca me deu trabalho`); "o expediente
+é a sala" (o expediente é o horário, não o cômodo → `O posto de Briarstone é a sala da
+frente`); **"os autos"** — vocabulário do foro brasileiro, exatamente o registro que a D11
+existe para expurgar, e factualmente errado para o que está nas gavetas (→ `o arquivo da
+vila`); eco de `veio + infinitivo` em frases seguidas; repetição de "gavetas".
+`perito-forense` confirmou o achado dos autos por via independente.
+
+**O erro de classificação corrigido:** a primeira versão do mapa arquivou
+`docs/biblia-de-vozes.md` no balde H e adiou-a para a OS-R8. Errado — a GR1-3 protege
+`playtest/`, `historico-decisoes.md` e relatórios datados, e a bíblia não é histórico: é a
+**norma viva** que o `escritor-prosa` e o `editor-critico` obedecem em toda OS seguinte.
+Deixá-la velha faria a próxima OS reintroduzir `Delegado` e `Alcott` a partir da própria
+norma. Entrou nesta OS, junto com `guia-de-estilo.md` §1.
+
+### Aberto para as OS seguintes
+
+- **OS-R2:** o id de localidade `delegacia` → `casa_condestavel`, com o remapeamento do
+  campo `localidade` das 7 cartas e das ~91 referências.
+- **OS-R3:** a carta de Wycliffe (`abertura.js:59-60`) — o `perito-forense` acusa que ela
+  assume autoridade que um constable não tinha ("Briarstone paga os seus honorários e, se o
+  caso assim pedir, o seu silêncio"): quem autoriza e remunera o perito é o **coroner**
+  (Medical Witnesses Act 1836), e o constable é *coroner's officer*, não contratante. Acusa
+  também forma epistolar moderna (o vocativo com travessão e a subscrição nua, onde a época
+  pedia "Senhor —" e "Sou, senhor, seu criado obediente"). A D12 já põe o coroner em campo.
+- **OS-R8 (passe editorial):** "lavrar termo" e "lavrar queixa" são instrumentos do direito
+  luso-brasileiro — o constable inglês **anota no livro de ocorrências**, e o queixoso jura
+  *information* perante o magistrado, de onde sai o *summons*. Atinge `abertura.js:123`,
+  `dialogos.js:420,426,433` e o carimbo de `dep_queixa_grey` em `cartas.js:418-423`. É
+  pré-existente à OS-R1, não introduzido por ela. Também: a cena da casa do condestável tem
+  três frases de efeito contra o teto de uma (guia §3); e `vocabulario-de-epoca.md:63` e
+  `demografia-e-sociedade.md:59` ainda listam "delegado".
+- **OS de apresentação:** `FundoCena.jsx:83-95` desenha um armário de arquivo alto de três
+  fileiras — a ilustração exata do antigo "Wycliffe abre **os armários**". A prosa agora diz
+  cômoda de cozinha na sala da frente de uma casa. É a camada em que a D11 gasta o dinheiro
+  dela.
+- **Sem dono, e urgente:** ver a seção seguinte.
+
+### O banco commitado está dessincronizado do gerador (fora do escopo, não corrigido)
+
+O gate de determinismo apanhou-o no primeiro passo. A geração **é** determinística (dois
+`sha256sum` consecutivos iguais), mas `node scripts/gerar-casos.mjs` hoje produz um banco
+diferente do embarcado:
+
+| | `CASOS_LUTA` |
+|---|---|
+| Banco commitado | 23, 45, 51, 59, 85, **99, 108, 119, 122, 131** |
+| Gerador de hoje | 23, 45, 51, 59, 85, **3, 49, 54, 76, 81** |
+
+27 577 linhas de diferença; os 20 casos de `comarca` são idênticos. A divergência foi datada
+por bissecção: regerar na árvore de `238f4fb` reproduz o banco commitado byte a byte
+(`600365a5…`); regerar em `HEAD` não (`b96f9caf…`). O responsável é **`bde4290`** (Revisão do
+repositório — Lote E, 24/07), que unificou a coreografia dos quatro perfis em
+`scripts/lib/perfis.mjs` e, ao fazê-lo, **corrigiu** a escolha do nexo do Metódico: passou a
+exigir o vestígio *instrumental* (`tipoVestigio` casa com a arma **e** pertence ao réu) em vez
+do primeiro vestígio do réu. O conserto é correto e está documentado no cabeçalho do próprio
+arquivo; o que faltou foi rodar `gerar-casos.mjs`. A mensagem daquele commit afirma "Seleção
+do gerador conferida: as mesmas sementes de antes do refactor" — verdadeiro para o pool
+`comarca`, falso para o pool `luta`.
+
+**Não foi regerado aqui.** Enterrar uma mudança de 27 mil linhas dentro de uma OS de
+vocabulário viola a GR1-4, e a escolha — regerar e revalidar o pool `luta` novo, ou concluir
+que o conserto do nexo mudou o critério de embarque mais do que se pretendia — é de desenho,
+não de execução. **Bloqueia a OS-R2 na prática:** o gate global roda no fecho de toda OS, e
+esta armadilha vai reaparecer em todas.
+
+### Adendo à ata — a D11 revista no mesmo dia
+
+O parecer do `perito-forense` derrubou `condestável`, e o usuário decidiu com o parecer
+à frente: a glosa passa a **`guarda`**, e o lugar a **`o posto`** — `rotuloMesa: 'O Posto
+do Guarda'`. Não é reabertura arbitrária da D11: é a mesma decisão, corrigida no ponto em
+que a KB do projeto a contradizia, e a nova escolha é a **Opção A da própria tabela de
+tradução** (`inquerito-e-policia.md` §5), não uma terceira via.
+
+**Por que `posto` e não `a casa do guarda`.** A D11 fixara «a casa do condestável», e o
+decalque seria «a casa do guarda» — mas em PT-BR isso lê-se como casa de porteiro ou de
+guarda-florestal. `posto` é o termo que a KB e a bíblia já usavam («destacado no posto de
+um homem de Briarstone») e o que o caso gerado já diz («O Posto do Constable»), o que
+reduz a divergência entre as duas prosas em vez de aumentá-la. A materialidade que a D11
+exigia — a sala da frente de uma casa, não uma repartição — fica na prosa, que é onde ela
+importa: «O posto de Briarstone é a sala da frente da casa do guarda.»
+
+**A colisão que a troca criou, e como se resolveu.** Com Wycliffe a chamar-se «guarda», a
+palavra passou a chocar com «pus um guarda à porta», «um guarda moço» e «o guarda Tobin».
+`guarda` passa a nomear **só quem tem a patente** (Wycliffe e Tobin); o homem posto à porta
+da relojoaria é «um homem» (`abertura.js:60,75,84`, `localidades.js:28`). Isto também
+desfaz a escada de patente falsa que o `perito-forense` acusava.
+
+**Fica de pé, e é da OS-R4:** um posto de vila é de **um homem só**, e Briarstone tem
+Wycliffe *e* Tobin. O correto de época seria o constable do beat vizinho ou um *special
+constable* juramentado às pressas. É anterior a esta OS — a hierarquia falsa apenas a
+mascarava.
+
+### Achados do `fiscal-continuidade` (zero bloqueantes)
+
+- **O letreiro da fachada.** `PranchaVila.jsx` grava na fachada a primeira palavra de
+  rótulos com mais de 12 caracteres. Com «A Casa do Condestável» a tabuleta passou a ler
+  **`CASA`** — a única fachada da vila sem significado, onde antes lia `DELEGACIA`.
+  Resolvido pela escolha de `O Posto do Guarda`, que grava **`POSTO`**; nenhuma linha de
+  código mudou.
+- **`store/jogo.js:72` estava mal classificado por mim.** A ação `telegrafo` é acoplada
+  pelo gerador (`pacote_gerado.js:2461`) e a localidade do caso-escola tem
+  `acoesEspeciais: []` — a string **só renderiza em caso gerado**, onde o lugar é «O Posto
+  do Constable». Passou a dizer «no posto do constable», com o vocabulário do gerador, e
+  não o do caso-escola. Mesma correção no cordel de `demo-interferencia.mjs`.
+- **Conferido e limpo:** `Alcott` = zero em `src/**` e `scripts/**`, inclusive no banco;
+  os resíduos de `delegad|delegaci` são todos balde T ou C, um a um; o multiconjunto de
+  `[[id]]`, `{g:…}` e `{detective.*}` é **byte a byte idêntico** ao estado pré-OS (32
+  marcadores, 0 órfãos, 14 flexões com dois lados distintos); o roster do lint decapita
+  «Guarda» com acento e **não** admite a palavra como nome próprio (`vocativo_repetido=0`);
+  e as horas, dias, idades e distâncias batem com `seed.js` e `mapa.js`.
+- **Aberto:** `cartas.js:369` (cabeçalho de seção `// A DELEGACIA`) sai com o id, na OS-R2.

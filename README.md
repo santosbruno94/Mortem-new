@@ -65,6 +65,9 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/kb-psique-e-crime/`](./docs/kb-psique-e-crime/) | Mente, desvio e crime de época (alienismo, criminologia, insanidade e lei) |
 | [`docs/kb-craft-narrativo/`](./docs/kb-craft-narrativo/) | Craft do mistério (fair play, clichês, construção de caso) |
 | [`docs/kb-producao/`](./docs/kb-producao/) | Consulta de planejamento (game design de dedução, UI/estética, assets) |
+| [`docs/os-r0-mestra-reforma-hora-emprestada.md`](./docs/os-r0-mestra-reforma-hora-emprestada.md) | **Ordem-mestra** da reforma do caso-escola: 25 decisões marteladas, 12 invariantes, a sequência das oito OS e o gate global. Não se executa; governa |
+| [`docs/os-r1-vocabulario-e-postos.md`](./docs/os-r1-vocabulario-e-postos.md) | OS-R1 — vocabulário policial e nome do mestre (**fechada**; mapa em [`docs/os-r1-mapa-ocorrencias.md`](./docs/os-r1-mapa-ocorrencias.md)) |
+| [`docs/os-r2-cena-unica.md`](./docs/os-r2-cena-unica.md) | OS-R2 — fusão de corpo/cena/oficina numa localidade `relojoaria` com sub-locais (**próxima**) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)
@@ -106,8 +109,8 @@ auditorias `npm run gabarito`, `auditoria:elenco`, `relatorio:espacial`, `mc:bat
 1. **Atenda ao chamado** — Harlan Blackwell ergue o convite da mesa e escolhe um dos **quatro
    chamados** (o caso-escola artesanal, a réplica procedural, um caso da comarca sorteado, ou
    um caso com luta corporal forçada).
-2. **Abertura** — da pensão em Caulfield ao briefing do Delegado Wycliffe (as perguntas ao
-   delegado não custam tempo… mas plantam iscas). Nos modos procedurais (comarca e luta), a
+2. **Abertura** — da pensão em Caulfield ao briefing do guarda Wycliffe (as perguntas ao
+   guarda não custam tempo… mas plantam iscas). Nos modos procedurais (comarca e luta), a
    abertura é omitida e o perito segue direto à investigação.
 3. **Investigação** — tudo acontece sobre a escrivaninha. A vila do caso está estampada na
    **Prancha da Vila** — uma gravura de 1893 no alto da mesa, onde cada nó é um prédio
@@ -120,7 +123,7 @@ auditorias `npm run gabarito`, `auditoria:elenco`, `relatorio:espacial`, `mc:bat
    suspeito) e **exigir que mostre** (mandar mostrar as mãos, os antebraços ou as botas —
    quando o corpo da vítima anuncia a marca-espelho). **Termos em negrito** na prosa extraem
    cartas para a mesa — examinar **não** custa tempo. A **voz do mestre** vai dando a leitura do
-   corpo (uma dica; o Dr. Alcott, ausente, recordado pelo aprendiz). O perecível (rigor,
+   corpo (uma dica; o Dr. Abbot, ausente, recordado pelo aprendiz). O perecível (rigor,
    temperatura) **perde precisão** com as horas, mas nunca some — o durável sempre resolve.
 4. **Construir a acusação** — o botão da parede abre o **mural com barbante**. Você **afirma**
    a cadeia nas âncoras (réu; janela da morte; causa; motivo; juízo sobre cada outro suspeito) e
