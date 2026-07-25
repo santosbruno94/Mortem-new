@@ -1,6 +1,6 @@
 // =====================================================================
 // Sequência de abertura em 7 passos: da pensão em Caulfield ao briefing
-// do Condestável Wycliffe. O Dr. Abbot recebe o chamado de Briarstone e
+// do guarda Wycliffe. O Dr. Abbot recebe o chamado de Briarstone e
 // despacha Harlan por telegrama, julgando o caso rotineiro; quem chega
 // na vila é o aprendiz, não o mestre.
 // Toda a prosa admite {detective.campo} e {g:masc|fem}.
@@ -48,19 +48,19 @@ export const PASSOS_ABERTURA = [
     pensamento: [
       'Provavelmente. A palavra preferida do Dr. Abbot para tudo que lhe dá trabalho. Provavelmente não é nada, provavelmente é morte natural, provavelmente o rapaz resolve. A vila fica a uma estação daqui; ele, a quatro condados de distância, onde nenhum usurário o procure. Não era isto que eu queria, mas era o que estava no preço.',
     ],
-    rotuloBotao: 'Ler a carta do condestável',
+    rotuloBotao: 'Ler a carta do guarda',
   },
   {
     id: 'carta',
-    titulo: 'A carta do Condestável',
+    titulo: 'A carta do Guarda',
     carta: true,
     paragrafos: [
       'A carta lacrada traz o brasão gasto de uma repartição, prensado torto no lacre de cera vermelha. A cera racha sob o polegar. O papel é grosso, de bom fornecedor; a letra inclina-se para a direita, firme no começo de cada linha e mais corrida ao fim dela.',
-      '"Dr. Abbot — Escrevo-lhe na qualidade de condestável de Briarstone e na condição, que não me envergonho de confessar, de homem posto fora da sua profundidade. O Sr. Geoffrey Arthurs, relojoeiro desta vila e homem que nunca me deu trabalho, foi achado morto esta manhã no escritório dos fundos da sua loja, com a garganta aberta e a casa toda revirada."',
-      '"Não toquei em nada; mandei que nem uma cadeira saísse do lugar, e pus um guarda à porta até que o senhor chegue. Venha, peço-lhe, pelo primeiro trem que o traga a nós. Briarstone paga os seus honorários e, se o caso assim pedir, o seu silêncio; disso trataremos melhor com um copo na mão. Perdoe a letra: escrevo de pé, e a mão ainda não me voltou ao sossego. — Lemuel Wycliffe, Condestável."',
+      '"Dr. Abbot — Escrevo-lhe na qualidade de guarda de Briarstone e na condição, que não me envergonho de confessar, de homem posto fora da sua profundidade. O Sr. Geoffrey Arthurs, relojoeiro desta vila e homem que nunca me deu trabalho, foi achado morto esta manhã no escritório dos fundos da sua loja, com a garganta aberta e a casa toda revirada."',
+      '"Não toquei em nada; mandei que nem uma cadeira saísse do lugar, e pus um homem à porta até que o senhor chegue. Venha, peço-lhe, pelo primeiro trem que o traga a nós. Briarstone paga os seus honorários e, se o caso assim pedir, o seu silêncio; disso trataremos melhor com um copo na mão. Perdoe a letra: escrevo de pé, e a mão ainda não me voltou ao sossego. — Lemuel Wycliffe, guarda."',
     ],
     pensamento: [
-      'A garganta aberta. Não é queda na escada, não é bêbado de taberna. O condestável escreveu ao Dr. Abbot, e o Dr. Abbot mandou a mim.',
+      'A garganta aberta. Não é queda na escada, não é bêbado de taberna. O guarda escreveu ao Dr. Abbot, e o Dr. Abbot mandou a mim.',
     ],
     rotuloBotao: 'Aceitar o chamado',
   },
@@ -72,7 +72,7 @@ export const PASSOS_ABERTURA = [
       '{detective.surname} veste o casaco ainda úmido da véspera e desce para a estação.',
     ],
     pensamento: [
-      'O Dr. Abbot mandou não assinar nada. A garganta aberta, a loja revirada, o guarda à porta: e o Dr. Abbot mandou não assinar nada. O trem não espera, e o velho não virá.',
+      'O Dr. Abbot mandou não assinar nada. A garganta aberta, a loja revirada, o homem à porta: e o Dr. Abbot mandou não assinar nada. O trem não espera, e o velho não virá.',
     ],
     rotuloBotao: 'Tomar o trem',
   },
@@ -81,17 +81,17 @@ export const PASSOS_ABERTURA = [
     titulo: 'Briarstone',
     paragrafos: [
       'A plataforma cheira a carvão e a palha molhada de chuva. Além dos trilhos, Briarstone estende-se numa única rua, e a luz de outubro bate rasa nos telhados e deixa a calçada meio na sombra, meio no sol.',
-      'Os sinos da igreja dão a hora num extremo da rua; um cão responde do outro. A meia rua, uma vitrine tem a cortina corrida por dentro, e à porta dela um guarda moço mantém-se de mãos cruzadas às costas, o rosto sem cor.',
-      'O Condestável Wycliffe espera junto ao portão. Os olhos vão do rosto de {detective.surname} ao trem que se afasta, à plataforma que se esvazia. Ninguém mais desceu.',
+      'Os sinos da igreja dão a hora num extremo da rua; um cão responde do outro. A meia rua, uma vitrine tem a cortina corrida por dentro, e à porta dela um homem moço mantém-se de mãos cruzadas às costas, o rosto sem cor.',
+      'O guarda Wycliffe espera junto ao portão. Os olhos vão do rosto de {detective.surname} ao trem que se afasta, à plataforma que se esvazia. Ninguém mais desceu.',
       '"O Dr. Abbot não pôde vir, então." "{g:O senhor|A senhora} é…"',
       '"{detective.surname}. Assistente do Dr. Abbot."',
       'Wycliffe mede {g:o rapaz|a moça} dos sapatos ao colarinho. Mas o corpo não espera. Aperta a mão com uma só, breve. "Pois bem, {detective.treatment} {detective.surname}. O Sr. Arthurs está como o encontramos ontem… esta manhã, quero dizer. Venha; explico-me pelo caminho, que a andar me saio melhor."',
     ],
-    rotuloBotao: 'Ouvir o condestável',
+    rotuloBotao: 'Ouvir o guarda',
   },
   {
     id: 'briefing',
-    titulo: 'O relato do Condestável Wycliffe',
+    titulo: 'O relato do guarda Wycliffe',
     briefing: true,
     paragrafos: [
       '"O essencial é isto: Sr. Geoffrey Arthurs, sessenta e um anos, relojoeiro. Achado morto no escritório dos fundos, sábado às nove e vinte da manhã, por Silas Crane — o oficial dele, homem de doze anos de casa. A porta do beco forçada, o troco do caixa levado, a loja fechada desde a noite de sexta, dia 13."',

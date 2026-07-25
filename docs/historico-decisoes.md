@@ -1293,3 +1293,50 @@ vocabulário viola a GR1-4, e a escolha — regerar e revalidar o pool `luta` no
 que o conserto do nexo mudou o critério de embarque mais do que se pretendia — é de desenho,
 não de execução. **Bloqueia a OS-R2 na prática:** o gate global roda no fecho de toda OS, e
 esta armadilha vai reaparecer em todas.
+
+### Adendo à ata — a D11 revista no mesmo dia
+
+O parecer do `perito-forense` derrubou `condestável`, e o usuário decidiu com o parecer
+à frente: a glosa passa a **`guarda`**, e o lugar a **`o posto`** — `rotuloMesa: 'O Posto
+do Guarda'`. Não é reabertura arbitrária da D11: é a mesma decisão, corrigida no ponto em
+que a KB do projeto a contradizia, e a nova escolha é a **Opção A da própria tabela de
+tradução** (`inquerito-e-policia.md` §5), não uma terceira via.
+
+**Por que `posto` e não `a casa do guarda`.** A D11 fixara «a casa do condestável», e o
+decalque seria «a casa do guarda» — mas em PT-BR isso lê-se como casa de porteiro ou de
+guarda-florestal. `posto` é o termo que a KB e a bíblia já usavam («destacado no posto de
+um homem de Briarstone») e o que o caso gerado já diz («O Posto do Constable»), o que
+reduz a divergência entre as duas prosas em vez de aumentá-la. A materialidade que a D11
+exigia — a sala da frente de uma casa, não uma repartição — fica na prosa, que é onde ela
+importa: «O posto de Briarstone é a sala da frente da casa do guarda.»
+
+**A colisão que a troca criou, e como se resolveu.** Com Wycliffe a chamar-se «guarda», a
+palavra passou a chocar com «pus um guarda à porta», «um guarda moço» e «o guarda Tobin».
+`guarda` passa a nomear **só quem tem a patente** (Wycliffe e Tobin); o homem posto à porta
+da relojoaria é «um homem» (`abertura.js:60,75,84`, `localidades.js:28`). Isto também
+desfaz a escada de patente falsa que o `perito-forense` acusava.
+
+**Fica de pé, e é da OS-R4:** um posto de vila é de **um homem só**, e Briarstone tem
+Wycliffe *e* Tobin. O correto de época seria o constable do beat vizinho ou um *special
+constable* juramentado às pressas. É anterior a esta OS — a hierarquia falsa apenas a
+mascarava.
+
+### Achados do `fiscal-continuidade` (zero bloqueantes)
+
+- **O letreiro da fachada.** `PranchaVila.jsx` grava na fachada a primeira palavra de
+  rótulos com mais de 12 caracteres. Com «A Casa do Condestável» a tabuleta passou a ler
+  **`CASA`** — a única fachada da vila sem significado, onde antes lia `DELEGACIA`.
+  Resolvido pela escolha de `O Posto do Guarda`, que grava **`POSTO`**; nenhuma linha de
+  código mudou.
+- **`store/jogo.js:72` estava mal classificado por mim.** A ação `telegrafo` é acoplada
+  pelo gerador (`pacote_gerado.js:2461`) e a localidade do caso-escola tem
+  `acoesEspeciais: []` — a string **só renderiza em caso gerado**, onde o lugar é «O Posto
+  do Constable». Passou a dizer «no posto do constable», com o vocabulário do gerador, e
+  não o do caso-escola. Mesma correção no cordel de `demo-interferencia.mjs`.
+- **Conferido e limpo:** `Alcott` = zero em `src/**` e `scripts/**`, inclusive no banco;
+  os resíduos de `delegad|delegaci` são todos balde T ou C, um a um; o multiconjunto de
+  `[[id]]`, `{g:…}` e `{detective.*}` é **byte a byte idêntico** ao estado pré-OS (32
+  marcadores, 0 órfãos, 14 flexões com dois lados distintos); o roster do lint decapita
+  «Guarda» com acento e **não** admite a palavra como nome próprio (`vocativo_repetido=0`);
+  e as horas, dias, idades e distâncias batem com `seed.js` e `mapa.js`.
+- **Aberto:** `cartas.js:369` (cabeçalho de seção `// A DELEGACIA`) sai com o id, na OS-R2.

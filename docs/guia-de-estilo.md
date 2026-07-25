@@ -26,7 +26,7 @@ nunca pelo pastiche.
 
 **Tratamentos de 1893.** *O senhor / a senhora* entre adultos que não se conhecem;
 *{detective.title} {detective.surname}* em contexto formal; criados tratam patrões por
-*o patrão, o Sr. Arthurs*; o condestável trata o perito por *{detective.title}*. Ninguém se
+*o patrão, o Sr. Arthurs*; o guarda trata o perito por *{detective.title}*. Ninguém se
 tuteia. "Você" só na boca de personagem de baixa extração, e com parcimônia.
 
 **Léxico.** Preferir o termo de época quando existir sem custo de clareza: *lampião,

@@ -2,7 +2,7 @@
 
 > Cada personagem fala de um jeito só dele. O teste: **cubra o nome do falante e leia a
 > fala; se não dá para adivinhar quem é, a voz falhou.** No texto anterior, todos —
-> condestável, taverneiro, governanta, narrador — produziam o mesmo aforismo polido; esta é
+> guarda, taverneiro, governanta, narrador — produziam o mesmo aforismo polido; esta é
 > a correção. Cada verbete traz: registro, ritmo, tique verbal, léxico e uma amostra
 > curta. A norma-mãe é `docs/guia-de-estilo.md`.
 
@@ -36,7 +36,7 @@
 - **Amostra:** *"Rígido dos maxilares aos joelhos: isto é de horas, não de minutos. Doze
   a vinte e quatro, eu diria."*
 
-## Condestável Lemuel Wycliffe
+## Guarda Lemuel Wycliffe
 
 - **Quem é:** policial de vila, honesto e fora de sua profundidade; quer o caso fechado
   para poder jantar. Confia no óbvio (a "história A": relógio das 08h45 + luz da
@@ -45,17 +45,25 @@
   posto de um homem de Briarstone (casa + expediente + cela) — a patente que a KB dá ao
   policial de vila (`demografia-e-sociedade.md` §3), que patrulha e prende mas quase não
   investiga e serve de *coroner's officer* (`inquerito-e-policia.md` §1–§2).
-  **"Condestável" é a glosa vernácula da vila** (D11, OS-R1, 25/07/2026); substituiu
-  "Delegado", que soava a polícia brasileira do século XX. Ele **assina "Condestável"** —
-  a glosa é uniforme; a verdade da patente fica lavrada aqui. O idioleto abaixo não muda.
-- **Divergência assumida:** a tabela de tradução (`inquerito-e-policia.md` §5, decisão B)
-  manda **manter o posto inglês grifado**, e o caso *gerado* obedece — diz *constable*,
-  1 644 vezes no banco. O caso-escola diverge por decisão do usuário. Consequências
-  conhecidas: a escada `condestável > guarda` (Tobin, o guarda à porta) não existia na
-  *county constabulary*, onde o posto de vila é de um homem só; e `condestável`, em
-  português, foi historicamente o comandante supremo das forças do reino, não o policial
-  de ronda. A carta de abertura contextualiza o cargo, de modo que o sentido se decodifica
-  em cena. Reabrir exige ata própria; a unificação com o gerador é da OS-R9.
+  **"Guarda" é a glosa vernácula da vila** (D11, revista na OS-R1, 25/07/2026): é a
+  **Opção A** da tabela de tradução (`inquerito-e-policia.md` §5), e substituiu "Delegado",
+  que soava a polícia brasileira do século XX. Ele **assina "guarda"**; o lugar chama-se
+  **"o posto"**. A glosa é uniforme; a verdade da patente fica lavrada aqui. O idioleto
+  abaixo não muda.
+- **Por que não "condestável".** Foi a primeira escolha da D11 e caiu no parecer do
+  `perito-forense`: em português, *condestável* nomeou o **Condestável do Reino** (1382, a
+  segunda figura da hierarquia militar depois do rei) e depois o **chefe de artilharia**;
+  o **Caldas Aulete**, dicionário contemporâneo a 1893, regista cinco acepções e **nenhuma
+  policial**. O uso policial é calco moderno do inglês norte-americano. Sobre o homem que
+  esta KB define como "o homem de ronda; a base da pirâmide", era inflação de patente.
+- **Divergência assumida, e é pequena.** A tabela recomenda **B** (manter o posto inglês
+  grifado), e o caso *gerado* obedece — diz *constable*. O caso-escola usa a Opção A da
+  mesma tabela. As duas prosas divergem na superfície; unificá-las é da OS-R9.
+- **Consequência a vigiar:** "guarda" passou a nomear só quem tem a patente — Wycliffe e
+  Tobin. O homem posto à porta da relojoaria é "um homem", não "um guarda", para que a
+  palavra não signifique duas coisas na mesma cena. Pendente para a OS-R4: um posto de vila
+  é de **um homem só**, e Briarstone tem Wycliffe *e* Tobin; o correto de época seria o
+  constable do beat vizinho ou um *special constable* juramentado às pressas.
 - **Registro:** cordial, prolixo, provinciano-formal. Adora uma frase que se ache
   espirituosa e às vezes tropeça nela.
 - **Ritmo:** períodos que começam firmes e se desdizem no meio ("isto é… quero dizer…").
@@ -80,7 +88,7 @@
 - **Tique:** oferece teoria sobre o ladrão a quem não pediu — e volta a ela, com
   variações, ao longo da conversa. Nunca pergunta o que a perícia achou.
 - **Amostra:** *"Doze anos nesta casa. Fui eu que o achei, ontem às nove e vinte, e
-  mandei o rapaz correr à casa do condestável. Gente da estrada, digo eu — atrás do caixa."*
+  mandei o rapaz correr ao posto do guarda. Gente da estrada, digo eu — atrás do caixa."*
 
 ## Walter Arthurs (a isca — o herdeiro quebrado)
 
@@ -156,7 +164,7 @@
 
 - **Função:** produzir a alegação que o corpo desmente (a "luz do velho" às 05h15) ou
   o registro que sustenta (a vitrine fechada às 20h; o quarto às escuras às 21h; a
-  senhora na viela). Aparecem citados no registro do condestável ou falam uma linha só.
+  senhora na viela). Aparecem citados no registro do guarda ou falam uma linha só.
 - **Registro:** relato de terceiros, filtrado pela voz de quem conta (em geral
   Wycliffe). Convictos no que viram, prudentes no que não viram ("conhece o passo,
   diz, mas não jura").

@@ -93,17 +93,34 @@ E a `docs/biblia-de-vozes.md` §Wycliffe fecha o raciocínio: *«"Delegado" é a
 grifado.»*
 
 **Leitura adotada.** A D11 troca a **glosa vernácula** — `delegado`, que soa a
-polícia brasileira do século XX — por outra glosa vernácula, `condestável`, que
-é portuguesa e arcaica. Não toca no **posto inglês lavrado**, que é `constable`
-e que a KB manda preservar. O gerador só usa o posto inglês. Logo o gerador não
-tem nada a renomear nesta OS.
+polícia brasileira do século XX. Não toca no **posto inglês lavrado**, que é
+`constable` e que a KB manda preservar. O gerador só usa o posto inglês. Logo o
+gerador não tem nada a renomear nesta OS.
 
-**Divergência assumida e registada:** o caso-escola passa a dizer «condestável»
-onde o caso gerado diz «constable». É inconsistência real de superfície entre as
-duas prosas. Não se resolve aqui: a mestra põe a herança dos padrões da reforma
-pelo gerador na **OS-R9** (OS-R0 §8), e uma troca de `constable` para
-`condestável` reescreveria ~2 000 strings de um produto de 2,3 MiB sob guarda da
-G12. Fica **aberto para a OS-R9**, com esta nota como fundamentação.
+**A glosa escolhida mudou a meio da OS, e o registo fica.** A primeira redação
+desta OS escreveu **`condestável`**, e a prosa chegou a ser commitada assim
+(`a38bcd9`, `2add757`). O parecer do `perito-forense` derrubou a escolha com
+prova de época: em português, *condestável* nomeou o **Condestável do Reino**
+(1382, a segunda figura da hierarquia militar depois do rei) e depois o **chefe
+de artilharia**; o **Caldas Aulete**, dicionário contemporâneo a 1893, regista
+cinco acepções e **nenhuma policial**. Sobre o homem que a KB define como «o
+homem de ronda; a base da pirâmide», era inflação de patente. O utilizador
+decidiu, com o parecer à frente: passa a **`guarda`**, que é a **Opção A** da
+mesma tabela de tradução da KB, e o lugar passa a **`o posto`**.
+
+**Divergência assumida e registada:** o caso-escola diz «guarda» onde o caso
+gerado diz «constable». É a diferença entre a Opção A e a recomendação B da mesma
+linha da tabela — divergência de superfície, não de facto. Não se resolve aqui: a
+mestra põe a herança dos padrões da reforma pelo gerador na **OS-R9** (OS-R0 §8),
+e uniformizar reescreveria ~2 000 strings de um produto de 2,3 MiB sob guarda da
+G12. Fica **aberto para a OS-R9**.
+
+**Consequência da escolha, a vigiar:** `guarda` passa a nomear **só quem tem a
+patente** — Wycliffe e o guarda Tobin. O homem posto à porta da relojoaria passou
+a ser «um homem», para que a palavra não signifique duas coisas na mesma cena
+(`abertura.js:60,75,84`, `localidades.js:28`). Fica de pé a questão de fundo, que
+o `perito-forense` levantou e esta OS não resolve: um posto de vila é de **um
+homem só**, e Briarstone tem dois. **Aberto para a OS-R4.**
 
 ---
 
@@ -120,17 +137,17 @@ G12. Fica **aberto para a OS-R9**, com esta nota como fundamentação.
 | 38 | `O telegrama do Dr. Alcott` | `O telegrama do Dr. Abbot` | título |
 | 46 | `ALCOTT` | `ABBOT` | assinatura do fio, em maiúsculas |
 | 49 | `Dr. Alcott` | `Dr. Abbot` | conteúdo **intacto** (Fase 4, nota 2) |
-| 51 | `Ler a carta do delegado` | `Ler a carta do condestável` | rótulo de botão |
-| 55 | `A carta do Delegado` | `A carta do Condestável` | título |
-| 59 | `Dr. Alcott`, `qualidade de delegado`, `a esta delegacia` | `Dr. Abbot`, `qualidade de condestável`, `a este posto` | conteúdo **intacto** (Fase 4, nota 2) |
-| 60 | `Lemuel Wycliffe, Delegado` | `Lemuel Wycliffe, Condestável` | assinatura |
-| 63 | `O delegado escreveu ao Dr. Alcott, e o Dr. Alcott` | `O condestável escreveu ao Dr. Abbot, e o Dr. Abbot` | |
+| 51 | `Ler a carta do delegado` | `Ler a carta do guarda` | rótulo de botão |
+| 55 | `A carta do Delegado` | `A carta do Guarda` | título |
+| 59 | `Dr. Alcott`, `qualidade de delegado`, `a esta delegacia` | `Dr. Abbot`, `qualidade de guarda`, `a este posto` | conteúdo **intacto** (Fase 4, nota 2) |
+| 60 | `Lemuel Wycliffe, Delegado` | `Lemuel Wycliffe, guarda` | assinatura |
+| 63 | `O delegado escreveu ao Dr. Alcott, e o Dr. Alcott` | `O guarda escreveu ao Dr. Abbot, e o Dr. Abbot` | |
 | 75 | `Dr. Alcott` ×2 | `Dr. Abbot` ×2 | |
-| 85 | `O Delegado Wycliffe` | `O Condestável Wycliffe` | |
+| 85 | `O Delegado Wycliffe` | `O Guarda Wycliffe` | |
 | 86 | `Dr. Alcott` | `Dr. Abbot` | |
 | 87 | `Dr. Alcott` | `Dr. Abbot` | |
-| 90 | `Ouvir o delegado` | `Ouvir o condestável` | rótulo de botão |
-| 94 | `O relato do Delegado Wycliffe` | `O relato do Condestável Wycliffe` | título |
+| 90 | `Ouvir o delegado` | `Ouvir o guarda` | rótulo de botão |
+| 94 | `O relato do Delegado Wycliffe` | `O relato do Guarda Wycliffe` | título |
 | 98 | `Dr. Alcott` | `Dr. Abbot` | |
 | 111 | `Dr. Alcott` | `Dr. Abbot` | |
 | 123 | `passou na delegacia para lavrar queixa` | **reescrita D11** | ver §5 |
@@ -140,10 +157,10 @@ G12. Fica **aberto para a OS-R9**, com esta nota como fundamentação.
 
 | Linha | De | Para |
 |---|---|---|
-| 27 | `O Delegado Wycliffe mandou` | `O Condestável Wycliffe mandou` |
-| 129 | `rotuloMesa: 'A Delegacia'` | `rotuloMesa: 'A Casa do Condestável'` |
+| 27 | `O Delegado Wycliffe mandou` | `O Guarda Wycliffe mandou` |
+| 129 | `rotuloMesa: 'A Delegacia'` | `rotuloMesa: 'O Posto do Guarda'` |
 | 130 | `titulo: 'Arquivos da Delegacia de Briarstone'` | **reescrita D11** — ver §5 |
-| 131 | `subtitulo: 'Delegado Lemuel Wycliffe'` | `subtitulo: 'Condestável Lemuel Wycliffe'` |
+| 131 | `subtitulo: 'Delegado Lemuel Wycliffe'` | `subtitulo: 'Guarda Lemuel Wycliffe'` |
 | 134 | `A delegacia é uma sala única…` | **reescrita D11** — ver §5 |
 
 O **id** da linha 128 fica `delegacia`. É da OS-R2.
@@ -152,14 +169,14 @@ O **id** da linha 128 fica `delegacia`. É da OS-R2.
 
 | Ficheiro:linha | De | Para |
 |---|---|---|
-| `src/data/mapa.js:32` | `— delegacia, estalagem, loja, moinho` | `— a casa do condestável, estalagem, loja, moinho` |
-| `src/data/mapa.js:83` | `rotulo: 'A Delegacia'` | `rotulo: 'A Casa do Condestável'` |
-| `src/data/aparencias.js:144` | `'Delegado Wycliffe'` | `'Condestável Wycliffe'` |
+| `src/data/mapa.js:32` | `— delegacia, estalagem, loja, moinho` | `— o posto do guarda, estalagem, loja, moinho` |
+| `src/data/mapa.js:83` | `rotulo: 'A Delegacia'` | `rotulo: 'O Posto do Guarda'` |
+| `src/data/aparencias.js:144` | `'Delegado Wycliffe'` | `'Guarda Wycliffe'` |
 | `src/data/dialogos.js:420` | `lavrei termo na delegacia` | **reescrita D11** — ver §5 |
 | `src/store/jogo.js:72` | `espera na delegacia` | **reescrita D11** — ver §5 |
-| `src/components/Abertura.jsx:77` | `Perguntas ao Delegado` | `Perguntas ao Condestável` |
-| `scripts/lint-prosa.mjs:553` | `aberto na delegacia` (fixture de autoteste) | `aberto em casa do condestável` |
-| `scripts/demo-interferencia.mjs:72` | `o testamento aberto na delegacia` | `o testamento aberto em casa do condestável` |
+| `src/components/Abertura.jsx:77` | `Perguntas ao Delegado` | `Perguntas ao Guarda` |
+| `scripts/lint-prosa.mjs:553` | `aberto na delegacia` (fixture de autoteste) | `aberto em casa do Wycliffe` |
+| `scripts/demo-interferencia.mjs:72` | `o testamento aberto na delegacia` | `o testamento aberto em casa do Wycliffe` |
 
 As duas últimas não são prosa de jogo — são cordel de teste e de demonstração.
 Renomeiam-se para que o passo 3 do gate (§5 da OS) saia limpo e para que
@@ -171,24 +188,35 @@ ninguém, daqui a três meses, leia o fixture como vocabulário vivo.
 
 A D11 existe porque `delegacia` não se substitui por decalque. Onde o texto
 dizia «na delegacia», a frase reescreve-se para a coisa real: a sala da frente
-da casa do condestável, com os autos numa cômoda de cozinha. Um
-find-and-replace por «na casa do condestável» **não cumpre a D11** — cumpre a
-letra e falha o motivo.
+da casa do guarda, com o arquivo da vila numa cômoda de cozinha. Um
+find-and-replace por «no posto do guarda» **não cumpre a D11** — cumpre a letra
+e falha o motivo.
 
 *(Nota de língua: a OS está escrita em português europeu; a prosa do jogo é
 PT-BR por regra do `CLAUDE.md`. «cómoda» entra como **cômoda**.)*
 
-| # | Onde | Texto atual |
-|---|---|---|
-| 1 | `localidades.js:134` | «A delegacia é uma sala única, com cheiro de tinta e turfa.» |
-| 2 | `localidades.js:130` | «Arquivos da Delegacia de Briarstone» |
-| 3 | `abertura.js:123` | «…e ainda passou na delegacia para lavrar queixa.» |
-| 4 | `dialogos.js:420` | «…lavrei termo na delegacia, tudo antes de o homem morrer…» |
-| 5 | `store/jogo.js:72` | «A resposta ao telegrama espera na delegacia, na letra do telegrafista…» |
+| # | Onde | Antes | Depois (entregue) |
+|---|---|---|---|
+| 1 | `localidades.js` prosa | «A delegacia é uma sala única, com cheiro de tinta e turfa. Wycliffe abre os armários…» | «O posto de Briarstone é a sala da frente da casa do guarda: mesa de tábua, duas cadeiras e uma cômoda de cozinha em que o arquivo da vila ocupa as gavetas da roupa. Cheira a tinta e a turfa. Wycliffe abre-as…» |
+| 2 | `localidades.js` título | «Arquivos da Delegacia de Briarstone» | «O Posto do Guarda — A Sala da Frente» |
+| 3 | `abertura.js` (Wycliffe) | «…e ainda passou na delegacia para lavrar queixa.» | «…e ainda me bateu à porta para lavrar queixa.» |
+| 4 | `dialogos.js` (Caleb Grey) | «…lavrei termo na delegacia…» | «…lavrei termo em casa do Wycliffe…» |
+| 5 | `store/jogo.js` | «A resposta ao telegrama espera na delegacia…» | «…espera no posto do constable…» — **ver a correção abaixo** |
 
-As reescritas propostas ficam no diff da Fase 4 e vão ao martelo do utilizador
-exigido pelo §6 da OS (ler três amostras e confirmar que a frase **melhorou**,
-não que apenas mudou de palavra).
+**Correção de classificação na frase 5.** O mapa arrumou `store/jogo.js:72` como
+balde V *do caso-escola*. Está errado, e o `fiscal-continuidade` provou-o: a ação
+`telegrafo` é acoplada pelo gerador (`pacote_gerado.js:2461`) e a localidade do
+caso-escola tem `acoesEspeciais: []` — **a string só renderiza em caso gerado**,
+onde o lugar chama-se «O Posto do Constable». Por isso ela recebe o vocabulário do
+gerador, não o do caso-escola. Mesma razão para o cordel de
+`demo-interferencia.mjs`.
+
+Três dessas cinco frases foram ainda corrigidas no parecer do `editor-critico`:
+a nº 1 dizia «o expediente é a sala» (expediente é o horário, não o cômodo) e «os
+autos» (peça de processo judicial — vocabulário do foro brasileiro, e um constable
+de vila não instrui processo); a nº 3 repetia `veio + infinitivo` em frases
+seguidas; a nº 4 punha perífrase de repartição na boca de um moleiro que, doze
+linhas abaixo, já nomeia o homem («diante do próprio Wycliffe»).
 
 ---
 
@@ -300,7 +328,7 @@ para a OS-R8. **Errado.** A GR1-3 protege `docs/playtest/`,
 não é histórico: é **norma viva**, a que o `escritor-prosa` e o `editor-critico`
 obedecem em toda OS seguinte. Deixá-la velha faria a próxima OS reintroduzir
 `Delegado` e `Alcott` a partir da própria norma. Entra nesta OS: o verbete de
-Wycliffe passa a `## Condestável Lemuel Wycliffe`, a linha da assinatura e o
+Wycliffe passa a `## Guarda Lemuel Wycliffe`, a linha da assinatura e o
 léxico acompanham, a amostra de Silas deixa de dizer «correr à delegacia», e o
 parágrafo «Patente (lavrada)» ganha um **registro de divergência assumida**
 contra a decisão B da KB (ver §3). A única ocorrência de `Delegado` que fica é a

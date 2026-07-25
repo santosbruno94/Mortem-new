@@ -5,7 +5,7 @@ import { obterAbertura } from '../data/pacote_caso.js';
 import { tocarSom } from '../som.js';
 
 // Sequência de abertura em 7 passos (§4.1–4.2). O último passo é o
-// briefing do Condestável Wycliffe, cujas perguntas (custo zero) plantam
+// briefing do guarda Wycliffe, cujas perguntas (custo zero) plantam
 // informações e iscas antes de o relógio começar a contar.
 // Apresentação: mesa de madeira à luz de vela; a prosa imersiva fica
 // escura e legível (stone-300); só a carta escrita vira pergaminho.
@@ -37,7 +37,7 @@ export default function Abertura() {
           §
         </div>
 
-        {/* Cada passo vem no suporte que lhe cabe: a carta do condestável em
+        {/* Cada passo vem no suporte que lhe cabe: a carta do guarda em
             pergaminho, o telegrama no formulário do Post Office, o resto em
             prosa escura sobre a mesa. */}
         {passo.telegrama ? (
@@ -74,7 +74,7 @@ export default function Abertura() {
         {passo.briefing && (
           <div className="mt-8 space-y-3">
             <p className="font-serif italic text-stone-400 text-sm tracking-wide">
-              Perguntas ao Condestável <span className="text-latao-claro/70">(não custam tempo — o que não
+              Perguntas ao Guarda <span className="text-latao-claro/70">(não custam tempo — o que não
               perguntar aqui, fica por saber)</span>:
             </p>
             {PERGUNTAS_BRIEFING.map((q) => {
