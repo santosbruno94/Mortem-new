@@ -697,7 +697,7 @@ export const DIALOGOS = {
 
       reacao_relogio: {
         fala: [
-          'Davey encosta a vassoura na parede e estende as duas mãos. "Posso ouvir?" Encosta o relógio do morto no ouvido do jeito que o patrão fazia com ele, e fica assim um bom tempo, os olhos parados na parede. "Anda certo. Compasso bem posto." Devolve-o com as duas mãos. "A corda das onze, pro patrão, era coisa sagrada, que nem reza; dois anos de casa, e esse relógio nunca soube o que era ficar sem corda." E torna à vassoura sem que ninguém o mande.',
+          'Davey encosta a vassoura na parede e estende as duas mãos. "Posso ouvir?" Encosta o relógio do morto no ouvido do jeito que o patrão fazia com ele, e fica assim um bom tempo, os olhos parados na parede. "Anda certo. Compasso bem posto." Antes de devolver, vira-o de fundo e passa a unha pela borda. "Este tem guarda-pó: por baixo da tampa do fundo vem outra, que se levanta pela unha, no entalhe. O patrão chamava-lhe cuvette, à francesa, e ria-se de mim quando eu errava a palavra. É por dentro dela que se grava o que não fica à vista: nome de fábrica, conta de rubis." Devolve-o com as duas mãos. "A corda das onze, pro patrão, era coisa sagrada, que nem reza; dois anos de casa, e esse relógio nunca soube o que era ficar sem corda." E torna à vassoura sem que ninguém o mande.',
         ],
         opcoes: [],
       },

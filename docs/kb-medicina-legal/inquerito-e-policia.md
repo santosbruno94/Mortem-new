@@ -247,7 +247,15 @@ com recomendação:
 > tem a patente** (Wycliffe e o guarda Tobin). O homem posto à porta da relojoaria é "um
 > homem", não "um guarda". Fica de pé a questão de fundo — um posto de vila é de **um homem
 > só**, e Briarstone tem dois; o correto de época seria o constable do beat vizinho ou um
-> *special constable* juramentado às pressas. Aberto para a OS-R4 (elenco).
+> *special constable* juramentado às pressas.
+>
+> **Resolvido na OS-R4 (25/07/2026), pela primeira via.** O posto de Briarstone é de um
+> homem, e o homem é Wycliffe. **Tobin faz a ronda vizinha (Caulfield)** e desce a High
+> Street às oito, no ponto em que as duas rondas se encontram — prática corrente das forças
+> de condado, cujos beats eram extensos e se cobriam nas extremas. A segunda via (*special
+> constable*) foi descartada por razão de calendário, não de época: um special juramentado
+> **depois** da morte não poderia ter lavrado a ronda da sexta às oito, e essa ronda é a
+> carta que fixa o piso da janela do caso.
 
 Princípio geral (alinhado ao guia de estilo §5): **traduzir o instituto quando o
 português tem par exato e limpo** (inquérito, pronúncia, doloso/culposo) e **manter o

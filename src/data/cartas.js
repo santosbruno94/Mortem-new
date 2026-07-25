@@ -159,6 +159,32 @@ export const CARTAS = [
     },
   },
 
+  {
+    // OS-R4, Fase 2 — A CIFRA (D19). Segunda camada do objeto que o jogador
+    // já tem na mão: a cuvette (o guarda-pó; `dome`, para o ofício inglês) é
+    // a tampa interna da caixa, que se levanta pela unha num entalhe. A
+    // legenda particular esconde-se ENTRE as de fábrica — a um leigo, e a
+    // quem revistou o corpo, lê-se como mais jargão de relojoaria.
+    // O texto da D19 sai daqui byte a byte.
+    // Guarda de época (perito-forense, 25/07/2026): o corte fresco brilha
+    // contra a pátina, e isso vê-se; o que NÃO se pode dizer, em 1893, é que
+    // um buril seja O buril — comparar estrias de ferramenta é ciência do
+    // século XX. Lê-se o gênero do instrumento, nunca o exemplar. Por isso
+    // esta carta não tem `vozMestre`: a licença do mestre é forense, e aqui
+    // não há sinal do corpo a ler.
+    id: 'ev_cuvette',
+    localidade: 'relojoaria',
+    subLocal: 'corpo',
+    textoDisplay: 'Gravação na Tampa de Dentro',
+    carimboPadrao: 'Gravado no relógio do morto: S. MIGUEL · IV · MEIA-VOLTA À ESQUERDA',
+    descricao:
+      'Sob a tampa do fundo há ainda uma segunda tampa, de metal dourado, que se levanta pela unha num entalhe da borda. Por dentro correm as legendas da casa que a fez, gravadas em arco: 15 RUBIS, ANCRE LIGNE DROITE. Entre elas, na mesma altura de letra, três linhas curtas: S. MIGUEL · IV · MEIA-VOLTA À ESQUERDA. Os sulcos destas três estão claros e limpos; os das outras, carregados de escuro.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'inscricao',
+    },
+  },
+
   // ===================== A RELOJOARIA · A CENA DO CRIME =====================
   {
     id: 'ev_relogio_lareira',
@@ -193,6 +219,31 @@ export const CARTAS = [
       subDominio: 'registro_mecanico',
       janelaInicio: -3, // 21h00 de 13/out
       janelaFim: -2, // 22h00 de 13/out
+    },
+  },
+  {
+    // OS-R4, Fase 1 — O LIVRO I. Nasce onde a prosa já apontava desde antes da
+    // reforma («a cinza por raspar na grelha»). A carta NÃO prova: acusa a
+    // destruição, e a fome do que ardeu é o que manda o perito à torre.
+    // Parecer do perito-forense (25/07/2026): livro fechado não arde numa
+    // grelha doméstica — o miolo sobrevive legível. O que se destrói assim é
+    // livro DESMANCHADO e alimentado ao fogo aos punhados, e a prova fica na
+    // carcaça (costura, lombada, capas, ferragem), nunca nas folhas. O que
+    // 1893 lê em papel carbonizado é a GEOMETRIA da pauta sob luz rasante —
+    // nunca uma sílaba: decifrar carbonizado é ciência de 1941 em diante.
+    id: 'ev_cinza_livro',
+    localidade: 'relojoaria',
+    subLocal: 'escritorio',
+    textoDisplay: 'Cinza de Papel na Grelha',
+    carimboPadrao: 'Cinza de papel, fio de costura e fecho de latão',
+    descricao:
+      'A grelha carrega mais do que uma noite de fogo: cinza pálida que se levanta ao mínimo sopro, lâminas negras encurvadas que estilhaçam em vez de vincar, e uma crosta espessa, em camadas. Posta a vela ao rés da grelha, as lâminas devolvem um brilho de linhas paralelas, e entre as linhas outras marcas de brilho, sem forma que se leia. No resto do leito, um fecho de latão com a sua chapa, escurecido e torto, e um fio de linho preso a uma dobra de folhas queimadas.',
+    // Domínio `comportamental` por ordem da G1: a cadeia física do crime não
+    // recebe carta nova. Sub-domínio próprio, que o motor não lê — esta carta
+    // não sustenta âncora nenhuma, e é esse o desenho.
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'destruicao',
     },
   },
   {
@@ -454,7 +505,7 @@ export const CARTAS = [
     textoDisplay: 'Vitrine Fechada às Oito',
     carimboPadrao: 'Visto com Vida às 20h (13/out)',
     descricao:
-      'Do registro da ronda: às oito em ponto da noite de sexta, o guarda Tobin viu o relojoeiro, de dentro da loja, correr as tampas da vitrine e acenar-lhe pelo vidro, como todas as noites.',
+      'Do registro da ronda: às oito em ponto da noite de sexta, o guarda Tobin, que desce a High Street a caminho de Caulfield, viu o relojoeiro, de dentro da loja, correr as tampas da vitrine e acenar-lhe pelo vidro, como todas as noites.',
     // Âncora DURÁVEL de piso: a morte não pode anteceder as 20h. Junto do
     // relógio de bolso (teto durável), fecha janela finita em qualquer rota.
     tagsOcultas: {
@@ -491,7 +542,7 @@ export const CARTAS = [
     textoDisplay: 'Uma Senhora na Viela',
     carimboPadrao: 'Relato: senhora deixou a viela ao anoitecer',
     descricao:
-      'A Sra. Wick, dos fundos do nº 9, declarou ter visto uma senhora de escuro deixar a viela da relojoaria "pouco antes das nove" da noite de sexta. Não lhe viu o rosto; conhece o passo, diz, mas não jura.',
+      'A Sra. Wick, dos fundos do nº 9, declarou ter visto uma senhora de escuro deixar a viela da relojoaria "pouco antes das nove" da noite de sexta. Não lhe viu o rosto; conhece o passo, diz, mas não jura. Ao pé da folha, em tinta mais nova: procurada outra vez antes do meio-dia, disse não ter visto nada e fechou a janela.',
     // Testemunho VERDADEIRO (e sem hora nas tags: não há o que refutar).
     // A lição inversa do padeiro: nem todo depoimento é falso — este apenas
     // pede o nome que a cesta e o aro de ouro sabem dar.
@@ -500,6 +551,44 @@ export const CARTAS = [
       subDominio: 'avistamento',
       declaranteId: 'sra_wick',
       isca: true,
+    },
+  },
+
+  // ===================== A TORRE DE S. MIGUEL =====================
+  // OS-R4. Duas cartas, e nenhuma delas entra em `temporal` ou `causal`
+  // (G1/GR4-2): a cadeia física do crime sai desta OS byte a byte.
+  {
+    id: 'dep_sineiro_beco',
+    localidade: 'torre_sino',
+    textoDisplay: 'Um Homem na Boca do Beco',
+    carimboPadrao: 'Avistamento declarado: 21h15 (13/out); fora do registro',
+    descricao:
+      '"Dou corda ao relógio da torre nas sextas, depois das nove, que é quando a igreja esvazia. Desci com a lanterna e, do portão do adro, um homem saiu pela boca do beco da relojoaria e subiu a rua. O andar do Sr. Crane conheço-o de doze anos de o ver passar." Espera até que a pena pare. "O guarda perguntou-me primeiro quanto eu tinha bebido. Depois já não perguntou mais nada, e não escreveu."',
+    // G6 — O VERAZ SEM CRÉDITO. O sineiro diz a verdade, e a marca de
+    // insuficiência nas tags faz o motor recusá-lo como sustentação de
+    // qualquer âncora e como fato de qualquer refutação (acusacao.js,
+    // ehInsuficiente). Aponta; não prova. A hora declarada é a verdadeira —
+    // por isso o par corpo × sineiro nunca fecha refutação nenhuma.
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'avistamento',
+      declaranteId: 'amos_kell',
+      horaAvistamentoDeclarada: -2.75, // 21h15 de 13/out
+      insuficiente: true,
+    },
+  },
+  {
+    id: 'ev_livro_ii',
+    localidade: 'torre_sino',
+    textoDisplay: 'Caderno de Pesos do Relojoeiro',
+    carimboPadrao: 'Ouro pesado à entrada e à saída; diferença somada ao mês',
+    descricao:
+      'Um caderno de capa de oleado, do tamanho da palma. Cada linha traz a data, a peça, o peso do ouro à entrada e o peso à saída, e a coluna do executor rubricada. Ao pé de cada mês, a diferença somada na letra miúda do morto, e a soma do ano por baixo, sublinhada duas vezes.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'motivo',
+      motivo: 'silenciamento',
+      ligadoA: 'silas_crane',
     },
   },
 

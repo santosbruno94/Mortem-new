@@ -487,14 +487,16 @@ async function main() {
     // corpo, escritório, loja da frente, copa e oficina —, e tudo a 0h.
     await abrirNo(page, 'A Relojoaria');
     await varrerSubLocal(page, 'corpo'); // extrai os demais termos do corpo
-    // Onda 7: os dois micro-gestos do corpo (voltar o corpo, dar corda ao
-    // relógio) foram acionados e ficaram marcados como feitos.
-    checar('Onda 7: micro-gestos do corpo acionados e marcados', (await page.locator('.gesto-pericial[data-feito]').count()) === 2);
+    // Onda 7: os micro-gestos do corpo (voltar o corpo, dar corda ao relógio
+    // e — desde a OS-R4 — abrir o fundo da caixa) foram acionados e ficaram
+    // marcados como feitos.
+    checar('Onda 7: micro-gestos do corpo acionados e marcados', (await page.locator('.gesto-pericial[data-feito]').count()) === 3);
     await page.getByRole('button', { name: 'Medir temperatura' }).click();
     await espera(page, 400);
     await arquivarFicha(page); // defensivo: o algor pousa sozinho (Onda 4)
-    // O contador de esgotamento do caso-escola: corpo esgotado = 7 de 7.
-    checar('Rota 1: contador de observações da localidade (7 de 7 no corpo)', (await page.locator('body').innerText()).includes('7 de 7 observações registradas aqui'));
+    // O contador de esgotamento do caso-escola: corpo esgotado = 8 de 8
+    // (a OS-R4 acrescentou a gravação sob a tampa de dentro).
+    checar('Rota 1: contador de observações da localidade (8 de 8 no corpo)', (await page.locator('body').innerText()).includes('8 de 8 observações registradas aqui'));
     await varrerSubLocal(page, 'escritorio');
     await varrerSubLocal(page, 'loja'); // a vitrine e a fechadura do beco (martelo §5: loja)
     checar('OS-R2: a loja da frente é sala própria e rende a vitrine', (await textoOverlay(page)).includes('A Loja da Frente'));
@@ -563,6 +565,26 @@ async function main() {
     await varrerLocalAberto(page);
     // ---- fim do bloco da E3 ----
     await fecharOverlay(page);
+    // ---- OS-R4 — A TORRE, E O QUE A CIFRA ABRE ----
+    // A torre nasce aberta no mapa (G10). O esconderijo é que não se acha por
+    // tropeço: o parágrafo da câmara dos sinos é prosa CONDICIONAL e só entra
+    // com a gravação da tampa de dentro na mesa. Nesta rota ela já foi colhida
+    // no corpo, pelo gesto — logo o parágrafo tem de estar de pé.
+    await abrirNo(page, 'A Torre de S. Miguel');
+    const torreTexto = await textoOverlay(page);
+    checar('OS-R4: a torre recebe com o sineiro e conta os seis sinos', /seis cordas/.test(torreTexto));
+    checar('OS-R4: com a cifra na mesa, a câmara dos sinos entra na prosa', /Meia-volta para a esquerda/.test(torreTexto));
+    await varrerLocalAberto(page);
+    checar(
+      'OS-R4: o Livro II sai da câmara dos sinos',
+      (await page.locator('.termo-extraido', { hasText: 'Caderno de Pesos' }).count()) === 1
+    );
+    checar(
+      'OS-R4: o relato do sineiro sai da prosa base',
+      (await page.locator('.termo-extraido', { hasText: 'Um Homem na Boca do Beco' }).count()) === 1
+    );
+    await fecharOverlay(page);
+    // ---- fim do bloco da OS-R4 ----
     await visitarEExtrair(page, 'A Estalagem');
     // Onda 6: Walter conversa em diálogo embutido — o álibi nasce na fala; e
     // confrontá-lo com o registro (a própria assinatura das 19h40) desmorona a
@@ -674,7 +696,8 @@ async function main() {
     checar('Rota 1: epílogo presente ao encerrar', epilogo.includes('Epílogo'));
     checar('Rota 1: retrato da investigação presente', /retrato da investiga/i.test(epilogo));
     // O encerramento paga a explicação da luz (a isca do padeiro refutada)
-    // e o retrato nomeia o que ficou por abrir (o Gabinete, nesta rota).
+    // e o retrato nomeia o que ficou por abrir (o Gabinete, nesta rota — a
+    // torre passou a ser visitada, desde a OS-R4).
     checar('Rota 1: epílogo paga a explicação da luz', epilogo.includes('lampião'));
     checar('Rota 1: retrato nomeia o que ficou por visitar', epilogo.includes('Ficou por visitar: Gabinete Pettigrew'));
     // O laço de playtest: o epílogo oferece "Novo caso" (sorteia outro caso da

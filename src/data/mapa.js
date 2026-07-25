@@ -95,6 +95,15 @@ export const NOS_MAPA = [
     desbloqueadoInicio: true,
   },
   {
+    // OS-R4: a torre da paróquia. Nasce ABERTA (G10 — Amos Kell é sempre
+    // alcançável); o que a cifra abre não é o nó, é a câmara dos sinos: o
+    // parágrafo condicional da localidade só entra com `ev_cuvette` na mesa.
+    id: 'torre_sino',
+    rotulo: 'A Torre de S. Miguel',
+    grupo: 'vila', // no extremo da High Street; Amos Kell, sineiro
+    desbloqueadoInicio: true,
+  },
+  {
     id: 'gabinete_pettigrew',
     rotulo: 'Gabinete Pettigrew',
     grupo: 'fora',

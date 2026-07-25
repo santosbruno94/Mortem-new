@@ -333,6 +333,17 @@ tela estreita, colapsa numa régua horizontal de cômodos.
 O posto policial chama-se `posto_do_guarda` desde a OS-R2 (era `delegacia`), em acordo com
 a D11 revista: a glosa do policial é **guarda**, e o lugar, «O Posto do Guarda».
 
+**A torre, e o que a cifra abre (OS-R4).** O mapa ganhou o nó `torre_sino` («A Torre de S.
+Miguel», grupo `vila`), onde recebe o sineiro **Amos Kell**. O nó **nasce aberto** — a G10
+proíbe beco sem saída, e Amos tem de ser sempre alcançável. O que a cifra abre não é o nó:
+é um **parágrafo de prosa condicional** (`prosaCondicional`, campo já existente da
+localidade, com `requerCartas`). Sem a gravação da tampa de dentro na mesa, o perito sobe,
+conta seis sinos e desce de mãos vazias; com ela, entra o parágrafo da câmara dos sinos, e
+com ele o marcador do Livro II. É **camada narrativa pura**: a condição lê ids de carta
+registrada, o motor não a lê, e a extração continua a ser a de sempre. O contador de
+esgotamento do lugar passou a contar também a prosa condicional já visível — sem isso, um
+lugar anunciava-se esgotado com uma carta ainda por colher.
+
 Camada VISUAL: `planta_relojoaria.js` referencia os ids de nó pelos alvos, mas **nenhuma
 regra o lê** — trocar a planta nunca toca o jogo.
 
@@ -1026,14 +1037,22 @@ alcance às falas do jogador. Nenhuma etapa vira código sem ordem expressa do c
 >
 > **Fechada: OS-R1** (vocabulário e postos, 25/07/2026) — `Dr. Alcott` → **`Dr. Abbot`**;
 > a glosa vernácula do policial passa de `delegado` para **`guarda`** (Opção A da tabela de
-> tradução da KB) e o lugar, de `delegacia` para **"O Posto do Guarda"**. O **id** de
-> localidade `delegacia` NÃO mudou — é da OS-R2. Ata e achados em
-> `docs/historico-decisoes.md`.
+> tradução da KB) e o lugar, de `delegacia` para **"O Posto do Guarda"**.
 >
-> **Próxima: OS-R2** — fundir `corpo`, `cena` e `oficina` numa localidade `relojoaria`
-> com sub-locais, e renomear o id `delegacia`. **Atenção:** a OS-R2 §1 escreve esse id
-> novo como `casa_condestavel`, redação anterior à revisão da D11 — com a glosa em
-> `guarda` e o lugar em "o posto", o id coerente é `posto_do_guarda`. Martelo pendente.
+> **Fechada: OS-R2** (cena única, 25/07/2026) — `corpo`, `cena` e `oficina` fundiram-se na
+> localidade `relojoaria` com sub-locais, e o id do posto passou a `posto_do_guarda`.
+>
+> **Fechada: OS-R3** (a abertura, 25/07/2026) — o jogo abre pelos olhos de quem achou o
+> corpo; o coroner Bramwell Foy entra fora de cena, com o impresso e o prazo.
+>
+> **Fechada: OS-R4** (elenco e livros, 25/07/2026) — os **dois livros do morto**, a
+> **cifra** e o **veraz sem crédito**. Quatro cartas novas (catálogo 35 → 39; **40 de 46**
+> em jogo com o `ev_algor` de runtime, **6 livres** para R5 e R6), todas
+> `comportamental`: a cadeia física do crime sai intacta, byte a byte (G1, com guarda
+> própria no `qa.mjs`). Um nó novo — **A Torre de S. Miguel** —, e uma pessoa nova, o
+> sineiro **Amos Kell**.
+>
+> **Próxima: OS-R5** — móbeis e cartas, com o orçamento que a R4 deixou.
 
 **Cenário:** Briarstone, outubro de 1893. Vítima: **Sr. Geoffrey Arthurs**, relojoeiro,
 61 anos, morto no escritório dos fundos por **ferida de buril no pescoço**. Cena

@@ -28,7 +28,12 @@ import { perfisDoCasoGerado as perfisDoCasoGeradoLib, quatroDesfechos } from './
 import { FAMILIA_DO_METODO } from './lib/familias.mjs';
 import { marcadoresDoTexto, marcadoresDosTextos, semMarcadores } from './lib/marcadores.mjs';
 import { nucleoDaFatia } from './lib/fatia.mjs';
-import { ANCORAS, analisarLigacoes, refutacaoDeHoraEstabelecida } from '../src/logic/acusacao.js';
+import {
+  ANCORAS,
+  analisarLigacoes,
+  classificarLigacao,
+  refutacaoDeHoraEstabelecida,
+} from '../src/logic/acusacao.js';
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
@@ -150,11 +155,12 @@ function relatar(rotulo, veredicto) {
 reiniciar();
 s().viajarPara('relojoaria'); // 0h — corpo fresco às 11h
 s().medirTemperatura();
-['ev_rigor', 'ev_livores', 'ev_ferida', 'ev_reacao_vital', 'ev_residuo_ferida', 'ev_relogio_bolso'].forEach((id) =>
+// OS-R4: a cifra sai do mesmo corpo, pelo gesto que abre o fundo da caixa.
+['ev_rigor', 'ev_livores', 'ev_ferida', 'ev_reacao_vital', 'ev_residuo_ferida', 'ev_relogio_bolso', 'ev_cuvette'].forEach((id) =>
   s().extrairCarta(id)
 );
 s().viajarPara('relojoaria'); // 0h — mesmo prédio
-['ev_relogio_lareira', 'ev_maquinismo', 'ev_vitrine', 'ev_fechadura', 'ev_cesta_rooke', 'ev_suplica_cesto'].forEach(
+['ev_relogio_lareira', 'ev_maquinismo', 'ev_cinza_livro', 'ev_vitrine', 'ev_fechadura', 'ev_cesta_rooke', 'ev_suplica_cesto'].forEach(
   (id) => s().extrairCarta(id)
 );
 s().viajarPara('relojoaria'); // 0h
@@ -163,6 +169,8 @@ s().viajarPara('interrogatorio_silas'); // 0h
 ['alibi_silas', 'comp_silas', 'ev_vidro_dobra'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('posto_do_guarda'); // +1h
 ['dep_testamento', 'dep_visto_vivo', 'dep_avistamento_padeiro'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('torre_sino'); // +1h — OS-R4: o sineiro e o que a cifra abre
+['dep_sineiro_beco', 'ev_livro_ii'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('estalagem'); // +1h
 ['alibi_walter', 'ev_registro_estalagem', 'corrob_estalajadeiro'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('papelaria'); // +1h
@@ -405,6 +413,100 @@ const alibiReuCai =
   vAlibiReu.dadosMonologo.alibiReuExposto === true && vAlibiReu.dadosMonologo.alibiReuPorRegistro === true;
 console.log('\n=== (i) ÁLIBI DO RÉU ===');
 console.log('o registro da estalagem derruba o paradeiro do réu:', alibiReuCai);
+
+// ============================================================
+// (k) O VERAZ SEM CRÉDITO (G6 / GR4-3 da OS-R4). O sineiro Amos Kell viu o
+// que viu, e diz a verdade. As cartas dele carregam MARCA DE INSUFICIÊNCIA
+// nas tags, e o motor recusa-as como nexo e como álibi. Prova-se em dois
+// tempos, porque um só não bastaria:
+//   1. end-to-end — a acusação que se apoia SÓ na carta dele falha o nexo e
+//      não derruba paradeiro nenhum (impunidade, réu certo);
+//   2. isolando a MARCA — o gêmeo de controle, com forma de vestígio do réu,
+//      é aceite sem a marca e recusado com ela. Quem recusa é a marca, não o
+//      domínio: a falha é pelo código próprio da insuficiência, não por acaso.
+// ============================================================
+reiniciar();
+s().viajarPara('relojoaria');
+s().medirTemperatura();
+['ev_rigor', 'ev_livores', 'ev_ferida', 'ev_relogio_bolso'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('interrogatorio_silas');
+s().extrairCarta('alibi_silas');
+s().viajarPara('torre_sino');
+s().extrairCarta('dep_sineiro_beco');
+s().definirReu('silas_crane');
+s().definirJanela({ inicio: -4, fim: -1 });
+s().definirCausa('ferida_arma_branca');
+['ev_rigor', 'ev_livores', 'ev_algor', 'ev_relogio_bolso'].forEach((id) => ligar(id, ANCORAS.quando));
+ligar('ev_ferida', ANCORAS.como);
+ligar('dep_sineiro_beco', ANCORAS.presenca); // o sineiro põe o réu na boca do beco…
+ligar('dep_sineiro_beco', 'alibi_silas'); // …e desmentiria o paradeiro dele
+s().submeterAcusacao();
+const vSineiro = s().veredicto;
+const sineiroNaoPresta =
+  vSineiro.tipo === 'impunidade' &&
+  vSineiro.falhas.some((f) => f.codigo === 'sem_nexo') &&
+  vSineiro.dadosMonologo.alibiReuExposto === false;
+
+// O controle que isola a marca: mesma carta, forma de vestígio do réu.
+const alibiDoReu = s().cartasRegistradas.find((c) => c.id === 'alibi_silas');
+const gemeoLimpo = {
+  id: 'gemeo_controle',
+  tagsOcultas: {
+    dominio: 'vestigio',
+    subDominio: 'fragmento',
+    tipoVestigio: 'vidro_mostrador',
+    pertenceA: 'silas_crane',
+  },
+};
+const gemeoMarcado = {
+  id: 'gemeo_marcado',
+  tagsOcultas: { ...gemeoLimpo.tagsOcultas, insuficiente: true },
+};
+const mapaControle = {
+  gemeo_controle: gemeoLimpo,
+  gemeo_marcado: gemeoMarcado,
+  alibi_silas: alibiDoReu,
+};
+const aceitaSemMarca =
+  !!classificarLigacao({ de: 'gemeo_controle', para: ANCORAS.presenca }, mapaControle) &&
+  !!classificarLigacao({ de: 'gemeo_controle', para: 'alibi_silas' }, mapaControle);
+const recusaComMarca =
+  classificarLigacao({ de: 'gemeo_marcado', para: ANCORAS.presenca }, mapaControle) === null &&
+  classificarLigacao({ de: 'gemeo_marcado', para: 'alibi_silas' }, mapaControle) === null;
+const verazSemCredito = sineiroNaoPresta && aceitaSemMarca && recusaComMarca;
+console.log('\n=== (k) O VERAZ SEM CRÉDITO ===');
+console.log('acusação apoiada só no sineiro:', vSineiro.tipo, '| falhas:', vSineiro.falhas.map((f) => f.codigo).join(', '));
+console.log('a marca é que recusa (gêmeo aceite sem ela, recusado com ela):', aceitaSemMarca && recusaComMarca);
+
+// ============================================================
+// (l) O LIVRO II VALE COMO MÓBIL (OS-R4 §3.1). O registro paralelo do morto,
+// achado na câmara dos sinos, aponta o réu pela mesma tag de motivo que o
+// livro de ordens da oficina: é a prova documental que faltava ao caso, e o
+// veredicto reconhece-a sem uma linha de código nova.
+// ============================================================
+reiniciar();
+s().viajarPara('relojoaria');
+s().medirTemperatura();
+['ev_rigor', 'ev_livores', 'ev_ferida', 'ev_relogio_bolso', 'ev_cuvette'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('relojoaria');
+['ev_maquinismo', 'ev_estojo_buril'].forEach((id) => s().extrairCarta(id));
+s().viajarPara('torre_sino'); // +1h: a torre custa viagem como qualquer nó da vila
+s().extrairCarta('ev_livro_ii');
+s().definirReu('silas_crane');
+s().definirJanela({ inicio: -3, fim: -2 });
+s().definirCausa('ferida_arma_branca');
+['ev_rigor', 'ev_livores', 'ev_algor', 'ev_relogio_bolso', 'ev_maquinismo'].forEach((id) => ligar(id, ANCORAS.quando));
+ligar('ev_ferida', ANCORAS.como);
+ligar('ev_estojo_buril', ANCORAS.presenca);
+s().definirMotivacao('ev_livro_ii');
+s().submeterAcusacao();
+const vLivroII = s().veredicto;
+const livroIIValeMobil =
+  vLivroII.dadosMonologo.motivacaoOk === true &&
+  vLivroII.acertos.some((a) => a.codigo === 'motivacao') &&
+  vLivroII.falhas.every((f) => f.codigo !== 'motivacao_erronea' && f.codigo !== 'sem_motivacao');
+console.log('\n=== (l) O LIVRO II COMO MÓBIL ===');
+console.log('o caderno dos pesos sustenta o móbil do réu:', livroIIValeMobil);
 
 // ============================================================
 // (j) ROTINA INTERROMPIDA dá TETO durável: o hábito não cumprido do morto
@@ -4133,6 +4235,69 @@ if (!tintaDaHoraOk) {
   for (const p of problemasTinta) console.log('  ·', p);
 }
 
+// ============================================================
+// GUARDAS DA OS-R4 (elenco e livros) — todas leem o PACOTE do caso-escola.
+// ============================================================
+// GR4-1 (G11) — TETO DE CARTAS. O catálogo mais a carta que nasce em runtime
+// (ev_algor, do termômetro) não passa de 46: acima disso o mural satura. A
+// conta imprime-se para a OS seguinte a ler antes de gastar.
+const TETO_CARTAS = 46;
+const cartasEmJogo = CARTAS.length + 1; // + ev_algor
+const tetoDeCartasOk = cartasEmJogo <= TETO_CARTAS;
+
+// GR4-2 (G1) — A CADEIA FÍSICA É INTOCÁVEL, inclusive por acréscimo: o
+// conjunto das cartas em domínio `temporal` ou `causal` é EXATAMENTE este.
+// Livros, cifra e elenco entram como `comportamental`; carta nova em
+// temporal/causal reprova aqui, mesmo que nada quebre no jogo.
+const CADEIA_FISICA = [
+  'dep_visto_vivo',
+  'ev_ferida',
+  'ev_livores',
+  'ev_maquinismo',
+  'ev_reacao_vital',
+  'ev_relogio_bolso',
+  'ev_residuo_ferida',
+  'ev_rigor',
+];
+const dominiosDaCarta = (c) =>
+  [c.tagsOcultas, ...(c.estados || []).map((e) => e.tagsOcultas)].filter(Boolean).map((t) => t.dominio);
+const cadeiaFisicaHoje = CARTAS.filter((c) =>
+  dominiosDaCarta(c).some((d) => d === 'temporal' || d === 'causal')
+)
+  .map((c) => c.id)
+  .sort();
+const cadeiaFisicaIntacta = cadeiaFisicaHoje.join(',') === CADEIA_FISICA.join(',');
+if (!cadeiaFisicaIntacta) console.log('\nGR4-2 — cadeia física alterada:', cadeiaFisicaHoje.join(', '));
+
+// GR4-6 (G4) — `dep_visto_vivo` mantém id, tags, domínio e disponibilidade.
+// A OS-R4 mexeu na letra de quem a lavrou (o guarda Tobin, da ronda vizinha)
+// e em mais nada: é a carta que fixa o piso da janela, e o veredicto a lê.
+const vistoVivo = CARTAS.find((c) => c.id === 'dep_visto_vivo');
+const vistoVivoIntacto =
+  !!vistoVivo &&
+  vistoVivo.localidade === 'posto_do_guarda' &&
+  !vistoVivo.subLocal &&
+  JSON.stringify(vistoVivo.tagsOcultas) ===
+    JSON.stringify({ dominio: 'temporal', subDominio: 'ultima_vez_visto', horaAvistamento: -4 });
+
+// GR4-5 (G10, G4) — SEM BECO SEM SAÍDA. A torre nasce aberta no mapa e o
+// sineiro fala na prosa BASE (nunca na condicional): Amos é sempre
+// alcançável. A cifra sai de um gesto do corpo — sem tom, sem ordem, sem
+// conversa —, e o único parágrafo que ela abre é o da câmara dos sinos.
+const noTorre = NOS_MAPA.find((n) => n.id === 'torre_sino');
+const locTorre = LOCALIDADES.find((l) => l.id === 'torre_sino');
+const subCorpo = (LOCALIDADES.find((l) => l.id === 'relojoaria')?.subLocais || []).find((sl) => sl.id === 'corpo');
+const gestosDoCorpo = (subCorpo?.gestos || []).map((g) => g.cartaId);
+const blocoDaCifra = (locTorre?.prosaCondicional || [])[0];
+const torreSemBeco =
+  !!noTorre &&
+  noTorre.desbloqueadoInicio === true &&
+  marcadoresDe(locTorre?.prosa || []).has('dep_sineiro_beco') &&
+  gestosDoCorpo.includes('ev_cuvette') &&
+  !!blocoDaCifra &&
+  blocoDaCifra.requerCartas.join(',') === 'ev_cuvette' &&
+  marcadoresDe(blocoDaCifra.paragrafos).has('ev_livro_ii');
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -4254,6 +4419,12 @@ const checagens = [
   ['Inc. 6 — luta forçada: todo caso do pool luta tem gen_sinal_exigivel', exigenciaLutaForcadaOk],
   ['Cobertura de rótulos: todo id emitido pelo banco (e o catálogo de causas) tem rótulo em rotulos.js', problemasCoberturaRotulos.length === 0],
   ['Prancha da vila (E2): a hora vira tinta — três alavancas estáveis por faixa, vãos no arranjo do 3D, acendimento pela janelaAcesa de sempre', tintaDaHoraOk],
+  [`GR4-1 (teto de cartas): ${cartasEmJogo} de ${TETO_CARTAS} em jogo (catálogo + ev_algor); ${TETO_CARTAS - cartasEmJogo} livres para as OS seguintes`, tetoDeCartasOk],
+  ['GR4-2 (cadeia física intocável): nenhuma carta nova em domínio temporal ou causal', cadeiaFisicaIntacta],
+  ['GR4-3 (o veraz sem crédito): a carta do sineiro não firma nexo nem derruba paradeiro, e é a MARCA que a recusa', verazSemCredito],
+  ['GR4-4 (o Livro II prova o móbil): o caderno dos pesos vale como carta de motivação do réu', livroIIValeMobil],
+  ['GR4-5 (sem beco sem saída): torre aberta de início, sineiro na prosa base, cifra por gesto do corpo, Livro II só atrás da cifra', torreSemBeco],
+  ['GR4-6 (dep_visto_vivo intacta): id, tags, domínio e lugar inalterados', vistoVivoIntacto],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

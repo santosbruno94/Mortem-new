@@ -31,6 +31,10 @@ export const POSICOES_DIORAMA = {
   estalagem: { x: 2.9, z: -0.2, predio: 'estalagem' },
   papelaria: { x: 0.6, z: 2.2, predio: 'papelaria' },
   moinho: { x: 4.6, z: 2.0, predio: 'moinho' },
+  // OS-R4: a igreja fecha o extremo da rua oposto à estrada de Moorford. A
+  // torre é o prédio mais alto da maquete e por isso vai à FRENTE e à ponta:
+  // posta ao lado da relojoaria, a agulha comia a fachada dela na prancha.
+  torre_sino: { x: -4.3, z: 2.4, predio: 'torre' },
   // Fora da vila, na ponta da estrada.
   gabinete_pettigrew: { x: 6.0, z: -1.9, predio: 'gabinete' },
 };
@@ -93,6 +97,13 @@ export const FORMAS_PREDIO = {
   moinho: {
     w: 0.9, d: 0.9, h: 1.35, corParede: '#8a8272', corTelhado: '#3e3a34',
     telhadoAltura: 0.5, beiral: 0.08, ristela: false, chamines: [], moinho: true,
+  },
+  // OS-R4: a torre da paróquia — estreita e alta, telhado em agulha curta,
+  // sem chaminé (igreja não cozinha). A altura é a silhueta que a distingue
+  // do moinho, que é alto e roliço.
+  torre: {
+    w: 0.72, d: 0.72, h: 1.95, corParede: '#8b8578', corTelhado: '#3a352d',
+    telhadoAltura: 0.66, beiral: 0.07, ristela: false, chamines: [],
   },
   gabinete: {
     w: 1.35, d: 1.05, h: 1.1, corParede: '#77705f', corTelhado: '#3a352d',

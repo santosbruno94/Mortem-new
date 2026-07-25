@@ -127,8 +127,12 @@ export default function EventoLocalidade({ localidadeId }) {
   // esta localidade oferece e quantas já estão na mesa. O procedural pode
   // omitir — a contagem é leitura dos marcadores [[id]] da prosa, não regra.
   // Os micro-gestos (Onda 7) entram na união: gesto também é observação.
+  // OS-R4: a prosa CONDICIONAL já visível entra na conta. Sem isto, um lugar
+  // cujo parágrafo condicional acabou de abrir (a câmara dos sinos, com a
+  // cifra na mesa) anunciava-se esgotado com uma carta ainda por colher.
   const fonteProsa = [
     ...(temPontos ? fonte.pontos.flatMap((p) => p.prosa) : fonte.prosa || []),
+    ...paragrafosCondicionais,
     ...paragrafosContingentes,
   ];
   const idsGestos = [

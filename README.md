@@ -54,7 +54,13 @@ resolvem-se agora por `localidade` + `subLocal`; ausente o sub-local, nada muda,
 gerados seguem idênticos. A **OS-R3** refez a abertura: o jogo passa a abrir **pelos olhos
 de quem achou o corpo**, e o aparato legal ficou o de 1893 — quem ordena o exame e quem o
 paga é o **coroner**, não o guarda da vila, e a ordem dele traz a data do inquérito. O
-prazo é ficção: nenhuma regra o lê.
+prazo é ficção: nenhuma regra o lê. A **OS-R4** deu ao caso a prova documental do móbil e
+a lição que faltava: o livro de pesos do morto ardeu na grelha do escritório, mas havia um
+segundo, escondido na **câmara dos sinos de S. Miguel** — e a chave é uma cifra gravada por
+dentro do relógio de bolso que o jogador já tinha na mão. Entrou também o **veraz sem
+crédito**: o sineiro Amos Kell viu quem saiu pela boca do beco e diz a verdade, e o motor
+recusa a palavra dele como prova. Não é bug: é a lição de que uma testemunha pode estar
+certa e não servir.
 
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
@@ -81,7 +87,7 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/os-r1-vocabulario-e-postos.md`](./docs/os-r1-vocabulario-e-postos.md) | OS-R1 — vocabulário policial e nome do mestre (**fechada**; mapa em [`docs/os-r1-mapa-ocorrencias.md`](./docs/os-r1-mapa-ocorrencias.md)) |
 | [`docs/os-r2-cena-unica.md`](./docs/os-r2-cena-unica.md) | OS-R2 — fusão de corpo/cena/oficina na localidade `relojoaria` com sub-locais (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/os-r3-abertura.md`](./docs/os-r3-abertura.md) | OS-R3 — a abertura testemunhal, a ordem do coroner e a autoridade corrigida (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
-| [`docs/os-r4-elenco-e-livros.md`](./docs/os-r4-elenco-e-livros.md) | OS-R4 — os dois livros do morto, a cifra, a torre de S. Miguel e o veraz sem crédito (**escrita, por executar**: três martelos abertos no §5) |
+| [`docs/os-r4-elenco-e-livros.md`](./docs/os-r4-elenco-e-livros.md) | OS-R4 — os dois livros do morto, a cifra, a torre de S. Miguel e o veraz sem crédito (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)

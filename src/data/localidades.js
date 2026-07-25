@@ -42,6 +42,10 @@ export const LOCALIDADES = [
         gestos: [
           { id: 'gesto_voltar_corpo', rotulo: 'Voltar o corpo', cartaId: 'ev_livores' },
           { id: 'gesto_corda_relogio', rotulo: 'Dar corda ao relógio do morto', cartaId: 'ev_relogio_bolso' },
+          // OS-R4: o gesto que abre a segunda camada do mesmo objeto. Nasce
+          // sempre visível — a cifra não pode depender de tom, de conversa
+          // nem de ordem de visita (G4, G10).
+          { id: 'gesto_abrir_fundo', rotulo: 'Abrir o fundo da caixa do relógio', cartaId: 'ev_cuvette' },
         ],
         prosa: [
           'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O guarda Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
@@ -71,7 +75,7 @@ export const LOCALIDADES = [
               { id: 'gesto_contar_entalhes', rotulo: 'Contar os entalhes da roda', cartaId: 'ev_maquinismo' },
             ],
             prosa: [
-              'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.treatment}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo até a roda de contagem. Na repisa, um cachimbo de barro pousado de lado e a cinza por raspar na grelha.',
+              'No tapete, a meio caminho da lareira, o [[ev_relogio_lareira]] jaz de borco. Da porta, sem pôr o pé para dentro, Wycliffe aponta-o com o queixo: "A peça, {detective.treatment}. É dela que a vila inteira fala." A caixa cedeu de um lado e escancarou o mecanismo até a roda de contagem. Na repisa, um cachimbo de barro pousado de lado; na grelha por raspar, [[ev_cinza_livro]].',
             ],
           },
           {
@@ -189,8 +193,36 @@ export const LOCALIDADES = [
       'O posto de Briarstone é a sala da frente da casa do guarda: mesa de tábua, duas cadeiras e uma cômoda de cozinha em que o arquivo da vila ocupa as gavetas da roupa. Cheira a tinta e a turfa. Wycliffe abre-as sem cerimônia: "O que é meu é {g:do senhor|da senhora}, {detective.treatment} {detective.surname}. Papel, aqui, nunca faltou; imaginação é que não temos."',
       'Entre os papéis do morto, recolhidos por precaução, está o [[dep_testamento]] e, presas a ele por um alfinete, [[dep_dividas_walter]].',
       'No livro de ocorrências, com a tinta de ontem, uma [[dep_queixa_grey]]; na página de sábado, os [[dep_briga_walter]] que um carroceiro veio contar por conta própria.',
-      'Do registro da ronda consta a [[dep_visto_vivo]], na letra redonda do guarda Tobin.',
+      'Do registro da ronda consta a [[dep_visto_vivo]], na letra redonda do guarda Tobin. "Tobin faz a ronda de Caulfield e desce a nossa rua às oito, que é onde as duas se encontram. Passa e segue; o que vê pelo caminho lavra no livro dele e copia no meu, e eu faço o mesmo com o que vejo do lado de lá."',
       'Wycliffe guarda para o fim os relatos da manhã: a [[dep_avistamento_padeiro]] — "se havia luz àquela hora, havia homem aceso dentro dela, digo eu" — e o de uma vizinha, [[dep_mulher_viela]]. "A senhora da viela não me tira o sono. A luz das cinco, essa me arruma o caso: ladrão de madrugada, relógio parado nas quase nove, caixa vazada. O palpite é meu; a perícia, essa, é {g:do senhor|da senhora}."',
+    ],
+  },
+  {
+    // OS-R4 — A TORRE. Nó novo, aberto desde o início (G10: Amos é sempre
+    // alcançável). O que a cifra abre não é o nó: é o parágrafo condicional
+    // da câmara dos sinos, que só entra com `ev_cuvette` na mesa. Sem a
+    // cifra, o perito sobe, conta quatro sinos e desce de mãos vazias.
+    id: 'torre_sino',
+    rotuloMesa: 'A Torre de S. Miguel',
+    titulo: 'A Torre de S. Miguel',
+    subtitulo: 'Amos Kell, sineiro da paróquia, 63 anos',
+    acoesEspeciais: [],
+    prosa: [
+      'S. Miguel fecha o extremo da rua, do lado oposto à estrada de Moorford. A porta da torre dá numa câmara caiada de teto baixo: seis cordas descem por buracos no forro, as manoplas de lã à altura do peito, e um banco corrido onde os tocadores esperam a hora. Num prego, o registro dos toques; ao lado, a tabela da conserva do relógio, assinada de ano em ano na mesma letra miúda que corre pelo livro de ordens da oficina. Amos Kell varre o piso de tijolo e não larga a vassoura para responder.',
+      'Perguntado da noite de sexta, encosta a vassoura à parede e conta o que a vila já lhe ouviu: [[dep_sineiro_beco]].',
+      'Da câmara sobe uma escada de caracol, primeiro ao maquinismo do relógio, com o peso pendurado no poço, e depois à câmara dos sinos. São seis, no cavalete de carvalho, e Amos numera-os sem levantar a cabeça do serviço: "Do mais leve ao mais pesado, senhor, que é como se contam. O primeiro abre o repique; o sexto dá a hora à rua. Os do meio, só quem toca os separa." A vassoura volta ao tijolo. "Amanhã é domingo. O que estiver solto lá em cima, cai."',
+    ],
+    // OS-R4 — O QUE A CIFRA ABRE. Sem `ev_cuvette` na mesa, o perito sobe,
+    // conta seis sinos e desce de mãos vazias: o esconderijo existe e não se
+    // encontra por tropeço. A condição é de PROSA (camada narrativa); o motor
+    // não a lê, e a carta continua a extrair-se pelo caminho de sempre.
+    prosaCondicional: [
+      {
+        requerCartas: ['ev_cuvette'],
+        paragrafos: [
+          'Sobre a armação, de gatas em madeira de duzentos anos, alcança-se o quarto cabeçote. No vão entre o cabeçote de olmo e o barrote, uma chapa de latão de charneira fecha um vazio do tamanho de uma mão, presa por um parafuso serrilhado. O parafuso não cede para a direita. Meia-volta para a esquerda, e a chapa gira; dentro, embrulhado em oleado, o [[ev_livro_ii]].',
+        ],
+      },
     ],
   },
   {

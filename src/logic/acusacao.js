@@ -82,6 +82,16 @@ function ehCorroboracao(carta) {
   return t.dominio === 'comportamental' && t.subDominio === 'corroboracao';
 }
 
+// G6 — O VERAZ SEM CRÉDITO (OS-R4). Uma carta pode trazer marca de
+// INSUFICIÊNCIA nas tags (`insuficiente: true`): a testemunha diz a verdade e
+// o testemunho não presta ao tribunal. O motor recusa a carta marcada como
+// SUSTENTAÇÃO de qualquer âncora e como FATO de qualquer refutação — ela
+// aponta, nunca prova. Continua podendo ser o ALVO refutado (é alegação como
+// outra qualquer). Só tag: nenhum id, nenhum nome, nenhum texto.
+export function ehInsuficiente(carta) {
+  return !!((carta && carta.tagsOcultas) || {}).insuficiente;
+}
+
 // ---------------------------------------------------------------------
 // Classificação de uma ligação a partir das tags dos seus extremos.
 // Devolve { tipo, fato, alvo } | null. `alvo` é a âncora (string) ou a
@@ -96,6 +106,7 @@ export function classificarLigacao(ligacao, mapaCartas) {
   if (ancora) {
     const carta = cartas[0];
     if (!carta) return null;
+    if (ehInsuficiente(carta)) return null; // G6: aponta, não sustenta
     if (ancora === ANCORAS.quando && ehIndicadorTemporal(carta)) {
       return { tipo: 'sustenta_quando', fato: carta, alvo: ancora };
     }
@@ -115,18 +126,19 @@ export function classificarLigacao(ligacao, mapaCartas) {
   // O indicador é procurado ENTRE as cartas que não são a alegação: se uma
   // carta fosse ambas as coisas, o find ingênuo a elegeria duas vezes e o
   // resultado dependeria da ordem de/para ("a direção não importa").
-  const indicador = [c1, c2].find((c) => ehIndicadorTemporal(c) && c !== alegacao);
+  // G6: a carta insuficiente nunca entra como FATO — só como alvo.
+  const indicador = [c1, c2].find((c) => ehIndicadorTemporal(c) && !ehInsuficiente(c) && c !== alegacao);
   if (alegacao && indicador && alegacao !== indicador) {
     return { tipo: 'refuta_hora', alvo: alegacao, fato: indicador };
   }
   const alibi = [c1, c2].find(ehAlibi);
-  const vestigio = [c1, c2].find(ehVestigio);
+  const vestigio = [c1, c2].find((c) => ehVestigio(c) && !ehInsuficiente(c));
   if (alibi && vestigio) {
     return { tipo: 'refuta_alibi', alvo: alibi, fato: vestigio };
   }
   // Um álibi também pode cair por TESTEMUNHO: a corroboração que registra o
   // declarante saindo antes da hora que jurou (o livro de presença do clube).
-  const corroboracao = [c1, c2].find(ehCorroboracao);
+  const corroboracao = [c1, c2].find((c) => ehCorroboracao(c) && !ehInsuficiente(c));
   if (alibi && corroboracao) {
     return { tipo: 'refuta_alibi', alvo: alibi, fato: corroboracao };
   }
@@ -143,7 +155,7 @@ export function classificarLigacao(ligacao, mapaCartas) {
 // resultante nasce visível e removível no mural — a autoria fica no jogador.
 // ---------------------------------------------------------------------
 export function ligacaoDeConfrontoEmCena(carta, suspeitoId, cartasRegistradas) {
-  if (!carta) return null;
+  if (!carta || ehInsuficiente(carta)) return null; // G6: não desmente ninguém
   const t = carta.tagsOcultas || {};
   const desmentePorRastro = ehVestigio(carta) && t.pertenceA === suspeitoId;
   const desmentePorRegistro = ehCorroboracao(carta) && t.ligadoA === suspeitoId;
@@ -159,7 +171,7 @@ export function ligacaoDeConfrontoEmCena(carta, suspeitoId, cartasRegistradas) {
 // no-op de mural: a reação joga, mas nenhuma ligação nasce. Serve à UI para
 // avisar o jogador (em vez do silêncio). Só tags — o motor não muda.
 export function confrontoSemParadeiro(carta, suspeitoId, cartasRegistradas) {
-  if (!carta) return false;
+  if (!carta || ehInsuficiente(carta)) return false; // G6: idem
   const t = carta.tagsOcultas || {};
   const desmente = (ehVestigio(carta) && t.pertenceA === suspeitoId) || (ehCorroboracao(carta) && t.ligadoA === suspeitoId);
   if (!desmente) return false;

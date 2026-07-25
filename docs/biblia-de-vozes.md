@@ -61,9 +61,12 @@
   mesma tabela. As duas prosas divergem na superfície; unificá-las é da OS-R9.
 - **Consequência a vigiar:** "guarda" passou a nomear só quem tem a patente — Wycliffe e
   Tobin. O homem posto à porta da relojoaria é "um homem", não "um guarda", para que a
-  palavra não signifique duas coisas na mesma cena. Pendente para a OS-R4: um posto de vila
-  é de **um homem só**, e Briarstone tem Wycliffe *e* Tobin; o correto de época seria o
-  constable do beat vizinho ou um *special constable* juramentado às pressas.
+  palavra não signifique duas coisas na mesma cena.
+- **Resolvido na OS-R4 (25/07/2026):** o posto de Briarstone é de **um homem só**, e o homem
+  é Wycliffe. **Tobin faz a ronda de Caulfield** e desce a High Street às oito, no ponto em
+  que as duas rondas se encontram — de passagem, o que explica por que vê a vitrine e não
+  fica. Martelo do utilizador entre as três opções da OS §5(b); é a única que não obriga a
+  mexer em `dep_visto_vivo`, a carta que fixa o piso da janela (G4).
 - **Registro:** cordial, prolixo, provinciano-formal. Adora uma frase que se ache
   espirituosa e às vezes tropeça nela.
 - **Ritmo:** períodos que começam firmes e se desdizem no meio ("isto é… quero dizer…").
@@ -184,13 +187,40 @@
   no Wheatsheaf) e o nome que não é o do perito. Harlan atravessa o caso com uma
   autorização passada ao mestre — é o que dá peso à ordem "NAO ASSINE NADA" (D25).
 - **Amostra:** *"Pelo exame e pelo depoimento serão pagas duas libras e dois xelins, na
-  forma do Ato de 1836."*
+  forma do mesmo Ato."* (A amostra dizia "do Ato de 1836" e contradizia o próprio verbete
+  acima e o impresso embarcado; corrigida na OS-R4.)
+
+## Amos Kell (o veraz sem crédito — o sineiro)
+
+- **Quem é:** sineiro e zelador do relógio de S. Miguel, 63 anos. Deu corda ao relógio da
+  torre na noite de sexta, depois das nove, e do portão do adro viu sair um homem pela boca
+  do beco da relojoaria. Diz a verdade. Bebe, e a vila sabe — martelo do utilizador entre as
+  três opções da OS-R4 §5(c).
+- **A função mecânica É a voz (G6).** As cartas dele carregam **marca de insuficiência** nas
+  tags, e o motor recusa-as como nexo e como álibi (`acusacao.js`, `ehInsuficiente`). Ele
+  **aponta, nunca prova**. A prosa jamais o endossa nem o desmente: o crédito é juízo do
+  jogador, e a lição do arquétipo é que uma testemunha pode estar certa e não servir.
+- **Registro:** de ofício e de igreja. Conta o tempo por serviços e por toques ("depois das
+  nove", "amanhã é domingo"), não por relógio de algibeira.
+- **Ritmo:** frases curtas, com uma pausa antes do que já sabe que não vão acreditar.
+  **Antecipa o descrédito em vez de o negar** — nunca se defende.
+- **Léxico:** da torre (corda, manopla, cavalete, cabeçote, câmara dos sinos, repique, adro,
+  a conserva do relógio). Numera os sinos do mais leve ao mais pesado, que é como se contam.
+- **Tique:** responde sem largar o serviço, e diz ele próprio o que a vila diria dele.
+- **Amostra:** *"O guarda perguntou-me primeiro quanto eu tinha bebido. Depois já não
+  perguntou mais nada, e não escreveu."*
 
 ## As testemunhas de fundo (o moço do padeiro, a Sra. Wick, o guarda Tobin, o estalajadeiro)
 
 - **Função:** produzir a alegação que o corpo desmente (a "luz do velho" às 05h15) ou
   o registro que sustenta (a vitrine fechada às 20h; o quarto às escuras às 21h; a
   senhora na viela). Aparecem citados no registro do guarda ou falam uma linha só.
+- **Tobin, desde a OS-R4:** não é o segundo homem do posto de Briarstone — faz a **ronda de
+  Caulfield** e desce a High Street às oito, no ponto em que as duas rondas se encontram.
+  Passa e segue. É por isso que vê a vitrine correr-se e não fica.
+- **A Sra. Wick, desde a OS-R4:** a declaração dela fica de pé como foi tomada, e o registro
+  ganha o que veio depois — procurada outra vez antes do meio-dia, disse não ter visto nada
+  e fechou a janela. O fio de coação da D16 **mostra-se; não se explica**.
 - **Registro:** relato de terceiros, filtrado pela voz de quem conta (em geral
   Wycliffe). Convictos no que viram, prudentes no que não viram ("conhece o passo,
   diz, mas não jura").
