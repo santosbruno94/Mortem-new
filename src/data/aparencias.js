@@ -145,12 +145,13 @@ export const NOMES_NAO_SUSPEITOS = {
 };
 
 // Quem recebe o perito em cada localidade (para o retrato no overlay).
-// Camada visual — nenhuma regra lê isto.
+// Camada visual — nenhuma regra lê isto. Desde a OS-R2 a chave pode ser um
+// SUB-LOCAL: na relojoaria fundida quem recebe é Davey, e só na oficina.
 export const PERSONAGEM_POR_LOCALIDADE = {
   interrogatorio_silas: 'silas_crane',
   oficina: 'davey_tull',
   estalagem: 'walter_arthurs',
   papelaria: 'agnes_rooke',
   moinho: 'caleb_grey',
-  delegacia: 'delegado_wycliffe',
+  posto_do_guarda: 'delegado_wycliffe',
 };

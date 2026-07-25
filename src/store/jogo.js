@@ -20,6 +20,7 @@ import {
   obterContradicaoHoras,
   custoViagem,
   obterNo,
+  obterLocalidade,
 } from '../data/pacote_caso.js';
 import { ipmAtual, formatDuracao, formatTemperatura } from '../logic/tempo.js';
 import { temperaturaPorIpm, CONSTANTES_FORENSES } from '../logic/tempo_morte.js';
@@ -60,6 +61,9 @@ function entregaTelegramaSeVenceu(s, horaNova) {
     telegramaEnviado: { ...s.telegramaEnviado, entregue: true },
     carta: {
       id: 'ev_telegrama',
+      // O fio é mecânica de caso GERADO (só existe com `telegrama` no
+      // pacote), e os gerados conservam o id `delegacia` — a renomeação da
+      // OS-R2 é do caso-escola, que não telegrafa.
       localidade: 'delegacia',
       ...t.resposta,
       ...(t.resposta.textoDisplay ? { textoDisplay: interpolar(t.resposta.textoDisplay, s.detective) } : {}),
@@ -72,6 +76,21 @@ function entregaTelegramaSeVenceu(s, horaNova) {
       texto: 'A resposta ao telegrama espera no posto do constable, na letra do telegrafista, datada ao minuto.',
     },
   };
+}
+
+// OS-R2 — o nó onde o perito põe o pé ao começar. Sai do pacote; sem o
+// campo, 'cena', o id histórico que os casos gerados continuam a usar.
+function noDeChegada() {
+  return obterCaso().parametrosCena?.noChegada || 'cena';
+}
+
+// OS-R2 — onde mora o termômetro NESTE caso: a localidade corrente e, se ela
+// se divide, o sub-local que declara a ação especial. As cartas de runtime
+// (o algor) nascem carimbadas com essa origem, como as de cartas.js.
+function origemDaAcao(localidadeId, acao) {
+  const loc = obterLocalidade(localidadeId);
+  const sub = (loc?.subLocais || []).find((sl) => (sl.acoesEspeciais || []).includes(acao));
+  return sub ? { localidade: localidadeId, subLocal: sub.id } : { localidade: localidadeId };
 }
 
 // ---------------------------------------------------------------------
@@ -103,6 +122,11 @@ export function estadoInicialCaso() {
     // ---------------- Mapa (o "dia do perito") ----------------
     // O relógio só avança ao VIAJAR entre nós; dentro do local, congela.
     localidadeAtual: null, // definido ao iniciar a investigação
+    // OS-R2: dentro de uma localidade que se divide (a relojoaria do caso-
+    // escola), qual sub-local está sob os pés do perito. Andar entre eles é
+    // de graça — é o mesmo prédio. Dado puro de UI: nem o veredicto nem a
+    // acusação o leem; null ⇒ a raiz (todas as localidades não fundidas).
+    subLocalAtual: null,
     nosDesbloqueados: caso.nosMapa.filter((n) => n.desbloqueadoInicio).map((n) => n.id),
     nosNovos: [], // nós revelados por lead e ainda não visitados (destaque na mesa)
 
@@ -276,8 +300,12 @@ export const useJogo = create(
   iniciarInvestigacao: () =>
     set((s) => ({
       faseJogo: 'investigacao',
-      localidadeAtual: 'cena', // o perito chega à cena na hora do pacote (parametrosCena.horasChegada)
-      nosVisitados: ['cena'],
+      // O nó de chegada vem do PACOTE (parametrosCena.noChegada): o caso-
+      // escola chega à relojoaria fundida (OS-R2); os gerados continuam a
+      // chegar ao seu nó `cena`, que é o default histórico.
+      localidadeAtual: noDeChegada(),
+      nosVisitados: [noDeChegada()],
+      subLocalAtual: null,
       nosVisitadosDialogo: {},
       noAtualDialogo: {},
       estadosSuspeito: {},
@@ -428,6 +456,9 @@ export const useJogo = create(
       const entregaLivre = entregaTelegramaSeVenceu(s, s.horasJogo);
       set({
         localidadeAtual: noId,
+        // Mudar de nó devolve o perito à porta: o sub-local recomeça no
+        // primeiro que a localidade declarar (OS-R2).
+        ...(noId === s.localidadeAtual ? {} : { subLocalAtual: null }),
         nosVisitados: visitados,
         nosNovos: s.nosNovos.filter((id) => id !== noId),
         ...(entregaLivre
@@ -450,6 +481,7 @@ export const useJogo = create(
     const entrega = entregaTelegramaSeVenceu(s, horaNova);
     set({
       localidadeAtual: noId,
+      subLocalAtual: null, // nó novo, sub-local na porta (OS-R2)
       nosVisitados: visitados,
       horasJogo: horaNova,
       nosNovos: s.nosNovos.filter((id) => id !== noId),
@@ -470,6 +502,18 @@ export const useJogo = create(
     });
     // FASE 4: a viagem em público é ação observável (gatilho possível).
     get().dispararInterferencias();
+  },
+
+  // OS-R2 — andar DENTRO de um prédio: trocar de sub-local. Nunca custa
+  // hora (é o mesmo nó); quando o perito está noutro nó, viaja primeiro
+  // pelo custo do mapa — é assim que a planta traz da saleta de volta ao
+  // corpo. A ação não decide nada de motor: só move a vista.
+  irParaSubLocal: (noId, subLocalId) => {
+    const s = get();
+    if (!s.nosDesbloqueados.includes(noId)) return;
+    if (noId !== s.localidadeAtual) get().viajarPara(noId);
+    set({ subLocalAtual: subLocalId });
+    get().abrirOverlay('localidade', noId);
   },
 
   // E3 §4.6 — expedir a consulta por fio (camada de apresentação; grátis:
@@ -526,6 +570,9 @@ export const useJogo = create(
     const carta = {
       id: definicao.id,
       localidade: definicao.localidade,
+      // OS-R2: a carta registrada carrega o sub-local de origem quando a
+      // definição o declara (a relojoaria fundida). Ausente, nada muda.
+      ...(definicao.subLocal ? { subLocal: definicao.subLocal } : {}),
       textoDisplay: interpolar(estado.textoDisplay, s.detective),
       termoCarimbo: interpolar(estado.carimboPadrao, s.detective),
       descricao: interpolar(estado.descricao, s.detective),
@@ -636,11 +683,14 @@ export const useJogo = create(
     const ambiente = caso.parametrosCena.ambiente;
     const ipm = ipmAtual(s.horasJogo, caso.verdadeDeOuro.horasMorteAntesChegada, caso.parametrosCena.horasChegada);
     const temperatura = temperaturaPorIpm(ipm, ambiente);
+    // OS-R2: a carta do termômetro nasce onde o termômetro está — a raiz
+    // `corpo` dos casos gerados, o sub-local `corpo` da relojoaria fundida.
+    const origem = origemDaAcao(s.localidadeAtual, 'termometro');
     let carta;
     if (temperatura <= ambiente) {
       carta = {
         id: 'ev_algor',
-        localidade: 'corpo',
+        ...origem,
         // Texto neutro de lugar (parecer E2, B1): a mesma carta serve ao
         // escritório do caso-escola, à loja gerada e ao corpo ao relento.
         textoDisplay: 'Corpo Frio como o Ar',
@@ -660,7 +710,7 @@ export const useJogo = create(
     } else {
       carta = {
         id: 'ev_algor',
-        localidade: 'corpo',
+        ...origem,
         textoDisplay: `Corpo Ainda Morno: ${formatTemperatura(temperatura)}`,
         termoCarimbo: `Corpo a ${formatTemperatura(temperatura)} (o ar a ${formatTemperatura(ambiente)})`,
         // A carta entrega só a LEITURA (temperaturas); a aritmética do

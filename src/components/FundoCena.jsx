@@ -30,7 +30,7 @@ export function tipoCenaDe(localidadeId = '', grupo = '') {
   if (id.includes('corpo') || id.includes('saleta') || id.includes('gabinete')) return 'gabinete';
   if (id.includes('oficina') || id.includes('cena')) return 'oficina';
   if (id.includes('loja') || id.includes('correio') || id.includes('rooke') || id.includes('agnes')) return 'loja';
-  if (id.includes('delegacia') || id.includes('wycliffe')) return 'delegacia';
+  if (id.includes('delegacia') || id.includes('posto') || id.includes('wycliffe')) return 'delegacia';
   if (id.includes('estalagem') || id.includes('walter')) return 'estalagem';
   if (id.includes('moinho') || id.includes('grey') || id.includes('moleiro')) return 'moinho';
   if (grupo === 'relojoaria') return 'oficina';
