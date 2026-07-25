@@ -542,7 +542,7 @@ export const CARTAS = [
     textoDisplay: 'Uma Senhora na Viela',
     carimboPadrao: 'Relato: senhora deixou a viela ao anoitecer',
     descricao:
-      'A Sra. Wick, dos fundos do nº 9, declarou ter visto uma senhora de escuro deixar a viela da relojoaria "pouco antes das nove" da noite de sexta. Não lhe viu o rosto; conhece o passo, diz, mas não jura. Abaixo, em tinta mais nova: procurada outra vez antes do meio-dia, disse não ter visto nada e fechou a janela.',
+      'A Sra. Wick, dos fundos do nº 9, declarou ter visto uma senhora de escuro deixar a viela da relojoaria "pouco antes das nove" da noite de sexta. Não lhe viu o rosto; conhece o passo, diz, mas não jura. Abaixo, em tinta mais nova: procurada outra vez ao meio-dia, disse não ter visto nada e fechou a janela.',
     // Testemunho VERDADEIRO (e sem hora nas tags: não há o que refutar).
     // A lição inversa do padeiro: nem todo depoimento é falso — este apenas
     // pede o nome que a cesta e o aro de ouro sabem dar.
@@ -563,7 +563,7 @@ export const CARTAS = [
     textoDisplay: 'Um Homem na Boca do Beco',
     carimboPadrao: 'Avistamento declarado: depois das nove (13/out); fora do registro',
     descricao:
-      '"Dou corda ao relógio da torre nas sextas, depois das nove, que é quando a igreja esvazia. Desci com a lanterna e, do portão do adro, vi sair um homem pela boca do beco da relojoaria. Subiu a rua. Conheço o andar do Sr. Crane: são doze anos de vê-lo passar." Espera que a pena do escrivão pare. "O guarda perguntou-me primeiro quanto eu tinha bebido. Depois já não perguntou mais nada, e não escreveu."',
+      '"Dou corda ao relógio da torre nas sextas, depois das nove, que é quando fecho o adro. Desci com a lanterna e, do portão, vi sair um homem pela boca do beco da relojoaria. Subiu a rua. Conheço o andar do Sr. Crane: são doze anos de vê-lo passar." Espera que a pena pare. "O guarda perguntou-me primeiro quanto eu tinha bebido. Depois já não perguntou mais nada, e não escreveu."',
     // G6 — O VERAZ SEM CRÉDITO. O sineiro diz a verdade, e a marca de
     // insuficiência nas tags faz o motor recusá-lo como sustentação de
     // qualquer âncora e como fato de qualquer refutação (acusacao.js,
@@ -573,7 +573,12 @@ export const CARTAS = [
       dominio: 'comportamental',
       subDominio: 'avistamento',
       declaranteId: 'amos_kell',
-      horaAvistamentoDeclarada: -2.75, // 21h15 de 13/out
+      // 21h45 de 13/out. A morte é às 21h e o portão da estalagem bate
+      // "passado das dez": entre uma coisa e outra o réu encena a cena e
+      // desmancha o Livro I na grelha, e isso não cabe num quarto de hora
+      // (achado do `fiscal-continuidade` no gate da R4). O jogador não vê
+      // este número — o carimbo diz o que Amos diz, "depois das nove".
+      horaAvistamentoDeclarada: -2.25,
       insuficiente: true,
     },
   },

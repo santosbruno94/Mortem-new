@@ -1695,10 +1695,7 @@ custa a Vitória Absoluta), é inércia. A lição pune quem se apoia nela, não
 
 ### O gate de prosa, que é o gate desta OS
 
-Três revisores; e outra vez cada um apanhou o que os outros dois não viram. *(Nota de
-processo: esta ata foi lavrada com os pareceres do `editor-critico` e do `perito-forense`
-já aplicados; o do `fiscal-continuidade` entra no parágrafo próprio, abaixo, quando
-fechar.)*
+Três revisores; e outra vez cada um apanhou o que os outros dois não viram.
 
 **`editor-critico` — 1 bloqueante e 11 altos, todos corrigidos.** O **bloqueante** era
 dedução vazada, e da pior espécie: a prosa da torre dizia que a tabela da conserva do
@@ -1735,6 +1732,28 @@ pesos, que é o instrumento sem o qual o registro não tem lastro material. Dave
 **barrote da armação**, que é fixo; e meia-volta não solta um parafuso de fixação, solta uma
 **trava** de cabeça serrilhada.
 
+**`fiscal-continuidade` — sem bloqueantes, 1 alto e 6 menores, todos aplicados.** O **alto**
+era uma correção da própria ronda anterior: para fechar um referente flutuante, o sineiro
+passara a esperar «que a pena **do escrivão** pare» — e não há escrivão na torre. O perito
+sobe sozinho, e a única pena em cena é a caderneta dele; pior, é justamente o contraste com
+essa pena que faz o «e não escreveu» de Amos significar alguma coisa. Revertido. Dos
+menores, os que mudaram fato: **a hora da tag do sineiro passou de 21h15 para 21h45** — com
+a morte às 21h e o portão da estalagem a bater «passado das dez», um quarto de hora não
+chega para matar, encenar o roubo, esmagar o relógio e desmanchar o Livro I na grelha aos
+punhados; o número é invisível ao jogador (o carimbo diz o que Amos diz) e continua dentro
+da janela mecânica da roda de contagem. **A razão do horário de Amos mudou**: dizia «quando
+a igreja esvazia», e a prosa da torre acabara de estabelecer que as cordas ficam enroladas
+até domingo — não há ensaio de repique na sexta que encha a igreja, e ofício de sexta que
+esvaziasse às nove seria tarde para 1893. Passou a «quando fecho o adro», que de quebra
+explica por que ele está ao portão quando vê o homem sair. E a Sra. Wick é procurada **ao
+meio-dia**, não antes dele — a manhã de sábado já está lotada pela abertura.
+
+O fiscal registrou ainda um **falso positivo de gate, e a explicação vale para a casa**: o
+`qa-ui.mjs` falhou na árvore dele por concorrência, não por regressão — ele sobe o `vite`
+com HMR, e o hot-reload de um arquivo salvo por outro agente durante a corrida derruba o
+overlay e leva o botão embora. Duas corridas limpas depois, `UI VÁLIDA`. **Não rodar o
+`qa-ui` com outra coisa a escrever na árvore.**
+
 ### Gate específico (§7 da OS)
 
 1. **Pipeline `revisar-prosa`** — corrido; zero bloqueantes remanescentes.
@@ -1761,7 +1780,7 @@ entra, e o Livro II sai dele).
 1. **A prosa condicional não tem gate de teto.** Um lugar pode acumular blocos condicionais
    sem que nada avise; hoje é um só, e o `qa.mjs` prova que ele existe e o que exige. Se a
    R5 ou a R6 quiserem mais, convém guarda própria.
-2. **O carimbo do sineiro diz «depois das nove» e a tag diz 21h15.** É deliberado: o carimbo
+2. **O carimbo do sineiro diz «depois das nove» e a tag diz 21h45.** É deliberado: o carimbo
    é o que a testemunha declara, a tag é a hora que o motor lê. O padeiro tem 05h15 no
    carimbo porque a fala dele diz «cinco e um quarto»; Amos não dá hora de relógio, e não
    podia dar.

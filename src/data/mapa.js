@@ -30,7 +30,7 @@ export const GRUPOS = {
   // entre eles não custa tempo.
   relojoaria: 'A relojoaria — a loja inteira e a saleta (mesmo prédio)',
   // A vila de Briarstone: prédios diferentes, a um pulo de distância.
-  vila: 'A vila de Briarstone — posto do guarda, estalagem, loja, moinho',
+  vila: 'A vila de Briarstone — posto do guarda, estalagem, loja, moinho, torre',
   // Fora da vila: caro de alcançar.
   fora: 'Fora de Briarstone (Moorford)',
 };
