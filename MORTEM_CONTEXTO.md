@@ -225,7 +225,7 @@ mora em CSS na tag, não no emissivo 3D; as pás do moinho são silhueta estáti
 randomização); `src/logic/aparencia.js` expõe `obterAparencia` e
 `derivarAparenciaDeSeed` (hash da seed salgado — pronto para o procedural). Alimenta
 os **retratos 2D em gravura SVG** (`RetratoPersonagem.jsx`: interrogatórios,
-delegacia, Painel de Álibis, Juízos do mural, e o sprite meio-corpo da Cena de diálogo) e
+posto do guarda, Painel de Álibis, Juízos do mural, e o sprite meio-corpo da Cena de diálogo) e
 a compleição/tom da **Prancha** do corpo da vítima. JAMAIS entra em `tagsOcultas` nem é
 lida pelo veredicto (guarda no QA).
 
@@ -240,16 +240,16 @@ apresentação — nenhuma regra depende dele — e desliga-se no rodapé da esc
 ## 4. O loop de jogo
 
 1. **Abertura** — Escrivaninha vazia em Caulfield (pensão miserável). A Sra. Potts
-   entrega uma carta do delegado de Briarstone. Aceitar transforma a escrivaninha no
+   entrega uma carta do guarda de Briarstone. Aceitar transforma a escrivaninha no
    hub de investigação.
-2. **Briefing** — Chegada a Briarstone. O Delegado Wycliffe apresenta o caso (custo
-   zero). Perguntas ao delegado plantam informações e iscas.
+2. **Briefing** — Chegada a Briarstone. O guarda Wycliffe apresenta o caso (custo
+   zero). Perguntas ao guarda plantam informações e iscas.
 3. **Investigação** — Chegada às 13:00. O relógio só corre ao **VIAJAR** no mapa;
    dentro do local, congela. O jogador alterna entre:
    - **Viajar** entre nós do mapa (custa horas; o mapa cresce por leads);
    - **Examinar** localidades e **interrogar** suspeitos (clicar nos negritos extrai
      cartas; custo zero) — na prancha do corpo, a **voz do mestre** dá a leitura (o Dr.
-     Alcott, ausente, recordado pelo aprendiz);
+     Abbot, ausente, recordado pelo aprendiz);
    - Consultar Glossário, Caderneta e Painel de Álibis (custo zero).
 4. **Construção da Acusação** — O botão da parede abre o **mural com barbante**: o
    jogador afirma a cadeia (réu, janela, causa, motivo, juízos) e a sustenta ligando
@@ -509,7 +509,7 @@ mestre" e o diário da investigação seguem sendo a função verdadeira da Cade
 ## 7. A leitura do mestre (a dica falada)
 
 Não há gavetas nem mostradores: a leitura forense é **a voz do mestre**
-(`src/logic/falaDoMestre.js`) — o Dr. Alcott, ausente da cena (reforma da abertura,
+(`src/logic/falaDoMestre.js`) — o Dr. Abbot, ausente da cena (reforma da abertura,
 jul/2026), recordado pelo aprendiz Harlan enquanto examina. Em linguagem natural, a partir
 do que o jogador examinou — a janela via `calcularJanelaMorte` (`cronos.js`), o mecanismo
 via `mecanismoCravado` (`catalogo_causas.js`). A leitura é refeita a cada exame
@@ -926,7 +926,7 @@ que o `qa.mjs` lê. **Nenhum particípio flexiona pelo réu** — o pacote não 
 
 Um único perito (decisão de jul/2026 — a perita Lenore foi removida do escopo):
 
-- **Harlan Blackwell** — aprendiz de Dr. Alcott, 24 anos.
+- **Harlan Blackwell** — aprendiz de Dr. Abbot, 24 anos.
   Frio, metódico; especialista em intervalo post-mortem.
 
 **Sistema de variáveis (mantido — é estrutural):**
@@ -992,6 +992,23 @@ alcance às falas do jogador. Nenhuma etapa vira código sem ordem expressa do c
 
 ## 14. Caso do vertical slice: "A Hora Emprestada" (CONTÉM SPOILERS)
 
+> **Em reforma (jul/2026).** O caso-escola está a ser reformado em oito OS sequenciais,
+> governadas por `docs/os-r0-mestra-reforma-hora-emprestada.md` (ordem-mestra: 25 decisões
+> marteladas D1–D25, 12 invariantes G1–G12, matriz de colisão e gate global). **A cadeia
+> física do crime é intocável** (G1): hora 21h, buril, vermelho-de-polir, lasca de vidro,
+> roda de contagem, rigor, livor, reação vital — nada disso muda em nenhuma OS.
+>
+> **Fechada: OS-R1** (vocabulário e postos, 25/07/2026) — `Dr. Alcott` → **`Dr. Abbot`**;
+> a glosa vernácula do policial passa de `delegado` para **`guarda`** (Opção A da tabela de
+> tradução da KB) e o lugar, de `delegacia` para **"O Posto do Guarda"**. O **id** de
+> localidade `delegacia` NÃO mudou — é da OS-R2. Ata e achados em
+> `docs/historico-decisoes.md`.
+>
+> **Próxima: OS-R2** — fundir `corpo`, `cena` e `oficina` numa localidade `relojoaria`
+> com sub-locais, e renomear o id `delegacia`. **Atenção:** a OS-R2 §1 escreve esse id
+> novo como `casa_condestavel`, redação anterior à revisão da D11 — com a glosa em
+> `guarda` e o lugar em "o posto", o id coerente é `posto_do_guarda`. Martelo pendente.
+
 **Cenário:** Briarstone, outubro de 1893. Vítima: **Sr. Geoffrey Arthurs**, relojoeiro,
 61 anos, morto no escritório dos fundos por **ferida de buril no pescoço**. Cena
 encenada como roubo de madrugada; relógio de lareira esmagado, parado às **08h45**.
@@ -1008,7 +1025,7 @@ primeiro trem. A relojoaria de Arthurs vive da **redondeza, não da vila**: cons
 chegam e partem pelo *carrier* semanal — o carreteiro que faz o circuito à *market
 town* —, o que sustenta três postos de bancada onde a vila sozinha não sustentaria um.
 A polícia é um **posto** da *county constabulary* — casa do policial, expediente e a
-cela — sob o *constable* Lemuel Wycliffe ("delegado", na boca da vila). A loja da Sra.
+cela — sob o *constable* Lemuel Wycliffe ("guarda", na boca da vila). A loja da Sra.
 Rooke **acumula o correio**. O inquérito formal, quando vier, instala-se na sala da
 estalagem (`docs/kb-medicina-legal/inquerito-e-policia.md` §1).
 
@@ -1079,11 +1096,13 @@ aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
   fraude de Silas. Álibi corroborado (moinho, véspera de feira, três homens).
 - **Davey Tull** (15, aprendiz) — mente ensaiado pelo oficial ("saímos juntos às sete
   e meia"), por medo. Expô-lo é bônus, não pilar (`inocente_alibi`).
-- **Delegado Lemuel Wycliffe** (de ofício, *constable* da *county constabulary* no
+- **Guarda Lemuel Wycliffe** (de ofício, *constable* da *county constabulary* no
   posto de um homem de Briarstone — a patente que a KB dá ao policial de vila,
   `demografia-e-sociedade.md` §3; a tabela de tradução de `inquerito-e-policia.md` §5
-  manda, na decisão B, **manter o posto inglês** grifado, e "delegado" é a glosa
-  vernácula que a vila põe por cima) — fonte, não suspeito. Briefing planta a história A
+  recomenda, na decisão B, **manter o posto inglês** grifado — o caso-escola adota a
+  **Opção A** da mesma tabela, e **"guarda"** é a glosa vernácula que a vila põe por
+  cima, enquanto o caso gerado diz *constable*; D11, OS-R1, 25/07/2026) — fonte, não
+  suspeito. Briefing planta a história A
   (relógio 08h45 + luz às 05h15 + caixa vazada = ladrão de madrugada) e as iscas.
 
 ### Cartas-chave além do corpo
