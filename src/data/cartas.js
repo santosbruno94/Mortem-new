@@ -320,7 +320,7 @@ export const CARTAS = [
     textoDisplay: 'Bilhete do Vigário de S. Miguel',
     carimboPadrao: 'Proclamas de G. Arthurs e da {suspeito:agnes_rooke.nome}, três domingos de outubro',
     descricao:
-      'Meia folha com o timbre de S. Miguel, dobrada em três e ainda com o vinco do sobrescrito; ao pé, o pedido de que os nomes se confiram antes do ofício. O vigário dá por recebida a nota do princípio do mês e marca os proclamas de Geoffrey Arthurs, viúvo, e da {suspeito:agnes_rooke.nome}, viúva, ambos desta paróquia: o primeiro no domingo, 15 de outubro; os outros dois nos dois domingos seguintes.',
+      'Meia folha com o timbre de S. Miguel, dobrada em três. O vigário dá por recebida a nota do princípio do mês e marca os proclamas do {vitima.nome}, viúvo, e da {suspeito:agnes_rooke.nome}, viúva, ambos desta paróquia: o primeiro no domingo, 15 de outubro; os outros dois nos dois domingos seguintes.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
@@ -347,17 +347,20 @@ export const CARTAS = [
     },
   },
   {
-    // OS-R5 (D6, G7): o móbil de Davey Tull, quinze anos. É ECONÓMICO E SÓ, e
-    // chega por documento — o rapaz não precisa de se queixar do patrão para
-    // o jogo ter a razão dele. A carta mostra dinheiro retido e a conta que
-    // não fecha; a palavra que a explica é do jogador, não da prosa (D1).
+    // OS-R5 (D6, G7): o móbil de Davey Tull, quinze anos. É ECONÔMICO E SÓ, e
+    // chega por documento — o rapaz não precisa se queixar do patrão para o
+    // jogo ter a razão dele. A agiotagem da vítima (D1) entra pela ESCALA da
+    // conta, nunca por juros declarados: £8 adiantados a uma viúva, cobrados
+    // tomando o salário inteiro do filho de quinze anos por quarenta semanas.
+    // Vinte e nove estão lançadas; faltam onze. A palavra que isso tem nome
+    // é do jogador, não da prosa.
     id: 'ev_livro_pagamentos',
     localidade: 'relojoaria',
     subLocal: 'oficina',
     textoDisplay: 'Livro de Pagamentos da Oficina',
-    carimboPadrao: 'Jornal de D. Tull descontado por inteiro desde março',
+    carimboPadrao: 'Salário do aprendiz Tull descontado por inteiro desde março',
     descricao:
-      'Livro de meia-folha, três colunas: o jornal da semana, o desconto e o que fica em dívida. Na linha de {suspeito:davey_tull.nome}, quatro xelins entram e quatro xelins saem, desde a última semana de março; vinte e nove ao todo. Na margem daquele mês, a letra do morto anotou "adiantado à Sra. Tull, £2". Ao pé de setembro, a mesma letra soma a dívida: £2 4s.',
+      'Livro estreito, três colunas: o salário da semana, o desconto e o que fica em dívida. Na linha de {suspeito:davey_tull.nome}, quatro xelins entram e quatro xelins saem, desde o último sábado de março; vinte e nove semanas ao todo. A margem daquele mês traz, na letra do morto, "adiantado à Sra. Tull, £8". Ao pé da última linha, a mesma letra soma o que fica: £2 4s.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
