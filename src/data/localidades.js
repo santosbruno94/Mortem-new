@@ -82,7 +82,7 @@ export const LOCALIDADES = [
             id: 'pt_cena_escrivaninha',
             rotulo: 'A escrivaninha',
             prosa: [
-              'A escrivaninha está de través, uma gaveta meio puxada, o tinteiro seco e a pena atravessada no mata-borrão. Um par de óculos de aros finos repousa dobrado sobre o livro-razão aberto, ao lado de uma lupa de relojoeiro presa a um cordão. Ao pé dela, no cesto de vime, entre aparas e um sobrescrito rasgado, uma [[ev_suplica_cesto]].',
+              'A escrivaninha está de través, uma gaveta meio puxada, o tinteiro seco e a pena atravessada no mata-borrão. Um par de óculos de aros finos repousa dobrado sobre o livro-razão aberto, ao lado de uma lupa de relojoeiro presa a um cordão. Entre as folhas, a servir de marca, um [[ev_bilhete_vigario]]. Ao pé dela, no cesto de vime, entre aparas e um sobrescrito rasgado, uma [[ev_suplica_cesto]].',
             ],
           },
         ],
@@ -145,7 +145,7 @@ export const LOCALIDADES = [
             id: 'pt_oficina_pulpito',
             rotulo: 'O púlpito de ordens',
             prosa: [
-              'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. No prego, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
+              'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. No prego, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Aberto sobre a inclinação, o [[ev_livro_ordens]]. Na prateleira de baixo, entre o mata-borrão e a caixa de bicos de pena, o [[ev_livro_pagamentos]].',
             ],
           },
           {

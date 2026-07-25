@@ -160,11 +160,15 @@ s().medirTemperatura();
   s().extrairCarta(id)
 );
 s().viajarPara('relojoaria'); // 0h — mesmo prédio
-['ev_relogio_lareira', 'ev_maquinismo', 'ev_cinza_livro', 'ev_vitrine', 'ev_fechadura', 'ev_cesta_rooke', 'ev_suplica_cesto'].forEach(
+// OS-R5: o bilhete do vigário sai da mesma escrivaninha que a súplica.
+['ev_relogio_lareira', 'ev_maquinismo', 'ev_cinza_livro', 'ev_vitrine', 'ev_fechadura', 'ev_cesta_rooke', 'ev_suplica_cesto', 'ev_bilhete_vigario'].forEach(
   (id) => s().extrairCarta(id)
 );
 s().viajarPara('relojoaria'); // 0h
-['ev_livro_ordens', 'ev_estojo_buril', 'dep_habito_corda', 'alibi_davey'].forEach((id) => s().extrairCarta(id));
+// OS-R5: o livro de pagamentos está no mesmo púlpito que o de ordens.
+['ev_livro_ordens', 'ev_livro_pagamentos', 'ev_estojo_buril', 'dep_habito_corda', 'alibi_davey'].forEach((id) =>
+  s().extrairCarta(id)
+);
 s().viajarPara('interrogatorio_silas'); // 0h
 ['alibi_silas', 'comp_silas', 'ev_vidro_dobra'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('posto_do_guarda'); // +1h
@@ -569,10 +573,41 @@ console.log('mostrador forjado refutado pelo próprio maquinismo:', mostradorCai
 const monMetodico = monologos[0].monologo;
 const nucleoBloco = (b) => (b || '').replace(/Quanto [^,]+,/, '');
 const blocoDe = (mon, nomeParte) => mon.blocos.find((b) => b.includes(nomeParte));
-const daveySemMotivoInventado =
-  vMetodico.perifericos.davey_tull.temMotivoNaMesa === false &&
-  !!blocoDe(monMetodico, 'Davey Tull') &&
-  !blocoDe(monMetodico, 'Davey Tull').includes('razões contra a vítima');
+// OS-R5: a guarda deixou de poder apoiar-se em Davey, que agora TEM móbil no
+// catálogo. Ela passa a valer nos dois sentidos e nos quatro perfis: quem não
+// tem a carta na mesa não ganha a frase, e quem a tem, ganha. É a mesma
+// exigência de sempre — o monólogo não inventa razão nenhuma —, medida agora
+// contra quem colheu o quê, e não contra quem o catálogo esqueceu.
+const NOME_DO_PERIFERICO = {
+  walter_arthurs: 'Walter Arthurs',
+  agnes_rooke: 'Agnes Rooke',
+  caleb_grey: 'Caleb Grey',
+  davey_tull: 'Davey Tull',
+};
+// O pool `alibi_com_motivo` tem três variantes, e só uma diz a frase ao pé da
+// letra: testa-se o POOL, que é o invariante, e não a string de uma delas. O
+// periférico de tipo `inocente_segredo` sai sempre pelo pool do segredo, que
+// nada afirma sobre móbil — fica de fora, e é por desenho do monólogo.
+const DIZ_MOTIVO = /razões contra a vítima|motivo havia|razões que tinha contra a vítima/;
+const paresMotivoBloco = [
+  [vMetodico, monologos[0].monologo],
+  [vApressado, monologos[1].monologo],
+  [vIntuitivo, monologos[2].monologo],
+  [vDesatento, monologos[3].monologo],
+].flatMap(([v, mon]) =>
+  Object.entries(NOME_DO_PERIFERICO)
+    .map(([id, nome]) => ({ p: v.perifericos[id], bloco: blocoDe(mon, nome) }))
+    .filter(({ p }) => p?.ok && p.esperado === 'inocente_alibi' && p.alibiNaMesa)
+    .map(({ p, bloco }) => ({ temMotivo: p.temMotivoNaMesa === true, bloco }))
+);
+const motivoSegueAMesa = paresMotivoBloco.every(
+  ({ temMotivo, bloco }) => !!bloco && DIZ_MOTIVO.test(bloco) === temMotivo
+);
+// Sem os dois casos a guarda não teria dentes: exige-se que ambos ocorram.
+const monologoNaoInventaMotivo =
+  motivoSegueAMesa &&
+  paresMotivoBloco.some((p) => p.temMotivo) &&
+  paresMotivoBloco.some((p) => !p.temMotivo);
 const perifericosSemEco =
   nucleoBloco(blocoDe(monMetodico, 'Walter Arthurs')) !== nucleoBloco(blocoDe(monMetodico, 'Agnes Rooke')) &&
   nucleoBloco(blocoDe(monMetodico, 'Caleb Grey')) !== nucleoBloco(blocoDe(monMetodico, 'Davey Tull'));
@@ -588,7 +623,7 @@ const epilogoDeterministico =
   JSON.stringify(gerarMonologo(vMetodico, s().detective)) !== '' &&
   JSON.stringify(gerarEpilogo(vMetodico, { horasSelo: 16 })) !== JSON.stringify(gerarEpilogo(vMetodico, { horasSelo: 22 }));
 console.log('\n=== (l) PERIFÉRICOS E EXPLICAÇÕES ===');
-console.log('Davey sem móbil na mesa não ganha "razões contra a vítima":', daveySemMotivoInventado);
+console.log('móbil no monólogo segue a mesa (nunca inventa, nunca cala):', monologoNaoInventaMotivo);
 console.log('pares de periféricos sem eco verbatim:', perifericosSemEco);
 console.log('a luz do padeiro é paga no epílogo, e só com a refutação:', luzPagaSoComRefutacao);
 console.log('epílogo sem blocos duplicados; conta do perito lê a hora do selo:', epilogoSemEco && epilogoDeterministico);
@@ -4391,7 +4426,7 @@ const checagens = [
   ['Rotina interrompida trava o teto; com o piso fecha janela finita', rotinaDaTeto && pisoMaisTetoFecham],
   ['Registro mecânico: janela fixa e refutação do mostrador forjado', registroMecanicoFixo && mostradorCaiPelaMaquina],
   ['Janela que cobre mas contradiz o suporte: código próprio e monólogo de contradição', codigoProprioContradicao && monologoExpoeContradicao],
-  ['Periférico sem móbil na mesa não ganha "razões contra a vítima"', daveySemMotivoInventado],
+  ['Móbil no monólogo segue a mesa, nos dois sentidos e nos quatro perfis (nunca inventa, nunca cala)', monologoNaoInventaMotivo],
   ['Blocos de periféricos sem eco verbatim (monólogo e epílogo)', perifericosSemEco && epilogoSemEco],
   ['A explicação da luz é paga no epílogo, e só com a refutação', luzPagaSoComRefutacao],
   ['Epílogo determinístico; a conta do perito lê a hora do selo', epilogoDeterministico],
@@ -4500,6 +4535,12 @@ const checagens = [
   ['GR4-4 (o Livro II prova o móbil): o caderno dos pesos vale como carta de motivação do réu', livroIIValeMobil],
   ['GR4-5 (sem beco sem saída): torre aberta de início, sineiro na prosa base, cifra por gesto do corpo, Livro II só atrás da cifra', torreSemBeco],
   ['GR4-6 (dep_visto_vivo intacta): id, tags, domínio e lugar inalterados', vistoVivoIntacto],
+  ['GR5-3 (móbil por suspeito): réu e periféricos, todos com ao menos uma carta de motivo apontando-os', todoSuspeitoTemMobil],
+  [
+    `GR5-4 (paridade de móbil): o réu não é o máximo em motivos distintos (${motivosDoReu} contra ${maxMotivosInocente} do maior inocente)`,
+    paridadeDeMobilOk,
+  ],
+  ['GR5-6 (isca honesta): as cartas de móbil dos inocentes carregam isca; a do réu, não', iscaHonestaOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

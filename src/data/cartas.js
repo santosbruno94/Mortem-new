@@ -308,6 +308,27 @@ export const CARTAS = [
       revelaSegredo: 'suplica_recusada',
     },
   },
+  {
+    // OS-R5 (D5): o móbil de Agnes Rooke. A decisão manda que seja AMBÍGUO e
+    // decidido pelas cartas que o jogador colhe — por isso a carta traz o
+    // fato datado e mais nada. Ao lado da cesta de ceia e do aro por gravar,
+    // o bilhete lê-se como o noivado que ia ser anunciado; sozinho, lê-se
+    // como o que a vila ia saber no domingo. A escolha é do jogador.
+    id: 'ev_bilhete_vigario',
+    localidade: 'relojoaria',
+    subLocal: 'escritorio',
+    textoDisplay: 'Bilhete do Vigário de S. Miguel',
+    carimboPadrao: 'Proclamas de G. Arthurs e de {suspeito:agnes_rooke.nome}; o primeiro em 15 de outubro',
+    descricao:
+      'Meia folha com o timbre de S. Miguel, dobrada em três e ainda com o vinco do sobrescrito. O vigário dá por recebida a nota do princípio do mês e marca os proclamas de Geoffrey Arthurs, viúvo, e de {suspeito:agnes_rooke.nome}, viúva, ambos desta paróquia: o primeiro no domingo, 15 de outubro; os outros dois nos dois domingos seguintes. Ao pé, pede que os nomes se confiram antes do ofício.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'motivo',
+      motivo: 'recasamento_vigiado',
+      ligadoA: 'agnes_rooke',
+      isca: true,
+    },
+  },
 
   // ===================== A RELOJOARIA · A OFICINA =====================
   {
@@ -323,6 +344,26 @@ export const CARTAS = [
       subDominio: 'motivo',
       motivo: 'silenciamento',
       ligadoA: 'silas_crane',
+    },
+  },
+  {
+    // OS-R5 (D6, G7): o móbil de Davey Tull, quinze anos. É ECONÓMICO E SÓ, e
+    // chega por documento — o rapaz não precisa de se queixar do patrão para
+    // o jogo ter a razão dele. A carta mostra dinheiro retido e a conta que
+    // não fecha; a palavra que a explica é do jogador, não da prosa (D1).
+    id: 'ev_livro_pagamentos',
+    localidade: 'relojoaria',
+    subLocal: 'oficina',
+    textoDisplay: 'Livro de Pagamentos da Oficina',
+    carimboPadrao: 'Jornal de D. Tull descontado por inteiro desde março',
+    descricao:
+      'Livro de meia-folha, três colunas: o jornal da semana, o desconto e o saldo. Na linha de {suspeito:davey_tull.nome}, quatro xelins entram e quatro xelins saem, semana após semana, desde a última de março; vinte e nove ao todo. Na margem daquele mês, a letra do morto anotou "adiantado à Sra. Tull, 2 £". Ao pé de setembro, a mesma letra soma o saldo: 2 £ 4 s.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'motivo',
+      motivo: 'salario_atrasado',
+      ligadoA: 'davey_tull',
+      isca: true,
     },
   },
   {
