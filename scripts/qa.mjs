@@ -4298,6 +4298,81 @@ const torreSemBeco =
   blocoDaCifra.requerCartas.join(',') === 'ev_cuvette' &&
   marcadoresDe(blocoDaCifra.paragrafos).has('ev_livro_ii');
 
+// ============================================================
+// GUARDAS DA OS-R5 (móbeis e cartas).
+// ============================================================
+// TELEMETRIA DA PARIDADE DE MÓBIL (OS-R5, Fase 0). Duas colunas por suspeito,
+// e a diferença entre elas é a questão inteira: CARTAS de móbil contam papel,
+// MOTIVOS DISTINTOS contam razão. Três documentos da mesma fraude são um
+// móbil registrado três vezes, não três móbeis. Quem conta cartas acha o réu
+// sem raciocinar sobre o caso — é tell de contagem, o mesmo defeito que o
+// gerador combate com a paridade de iscas.
+const SUSPEITOS_DO_CASO = [SEED_TUTORIAL.reuCorreto, ...Object.keys(SEED_TUTORIAL.perifericos)];
+const cartasDeMobil = (suspeitoId) =>
+  CARTAS.filter((c) =>
+    [c.tagsOcultas, ...(c.estados || []).map((e) => e.tagsOcultas)]
+      .filter(Boolean)
+      .some((t) => t.subDominio === 'motivo' && t.ligadoA === suspeitoId)
+  );
+const paridadeDeMobil = SUSPEITOS_DO_CASO.map((id) => {
+  const cartas = cartasDeMobil(id);
+  const motivos = [
+    ...new Set(
+      cartas.flatMap((c) =>
+        [c.tagsOcultas, ...(c.estados || []).map((e) => e.tagsOcultas)]
+          .filter(Boolean)
+          .filter((t) => t.subDominio === 'motivo' && t.ligadoA === id)
+          .map((t) => t.motivo)
+          .filter(Boolean)
+      )
+    ),
+  ].sort();
+  return { id, ehReu: id === SEED_TUTORIAL.reuCorreto, cartas: cartas.map((c) => c.id), motivos };
+});
+console.log('\nPARIDADE DE MÓBIL (OS-R5 Fase 0) — cartas × motivos distintos:');
+for (const linha of paridadeDeMobil) {
+  console.log(
+    `  ${linha.ehReu ? '▸' : ' '} ${linha.id.padEnd(15)} cartas: ${String(linha.cartas.length).padEnd(2)} · motivos: ${String(linha.motivos.length).padEnd(2)} · ${linha.motivos.join(', ') || '—'} [${linha.cartas.join(', ') || '—'}]`
+  );
+}
+
+// GR5-3 (S2) — TODO SUSPEITO TEM CARTA DE MÓBIL. A decisão da sessão S2
+// («móbil por suspeito, com isca») virando guarda: réu e periféricos, todos.
+const semMobil = paridadeDeMobil.filter((l) => l.cartas.length === 0).map((l) => l.id);
+const todoSuspeitoTemMobil = semMobil.length === 0;
+if (!todoSuspeitoTemMobil) console.log('\nGR5-3 — suspeito sem carta de móbil:', semMobil.join(', '));
+
+// GR5-4 (G3) — PARIDADE DE MÓBIL. O réu não é o máximo em motivos distintos:
+// se contar razões (e não papéis), o culpado não se denuncia pela coluna.
+const motivosDoReu = paridadeDeMobil.find((l) => l.ehReu)?.motivos.length ?? 0;
+const maxMotivosInocente = Math.max(0, ...paridadeDeMobil.filter((l) => !l.ehReu).map((l) => l.motivos.length));
+const paridadeDeMobilOk = motivosDoReu <= maxMotivosInocente;
+if (!paridadeDeMobilOk) {
+  console.log(`\nGR5-4 — o réu é o máximo em motivos distintos (${motivosDoReu} contra ${maxMotivosInocente}).`);
+}
+
+// GR5-6 (G3, S2) — ISCA HONESTA. As cartas de móbil dos INOCENTES carregam
+// `isca: true`; as do réu, não. Isca não é mentira: é razão verdadeira que
+// não conduz ao crime, e é ela que faz o móbil dos inocentes pesar de facto.
+const tagsDeMobilDe = (suspeitoId) =>
+  cartasDeMobil(suspeitoId).map((c) => ({
+    id: c.id,
+    tags: [c.tagsOcultas, ...(c.estados || []).map((e) => e.tagsOcultas)]
+      .filter(Boolean)
+      .filter((t) => t.subDominio === 'motivo' && t.ligadoA === suspeitoId),
+  }));
+const iscasFora = [];
+for (const { id, ehReu } of paridadeDeMobil) {
+  for (const { id: cartaId, tags } of tagsDeMobilDe(id)) {
+    for (const t of tags) {
+      if (ehReu && t.isca === true) iscasFora.push(`${cartaId} (do réu, marcada isca)`);
+      if (!ehReu && t.isca !== true) iscasFora.push(`${cartaId} (de inocente, sem isca)`);
+    }
+  }
+}
+const iscaHonestaOk = iscasFora.length === 0;
+if (!iscaHonestaOk) console.log('\nGR5-6 — marca de isca fora do lugar:', iscasFora.join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
