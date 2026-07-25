@@ -69,7 +69,7 @@ function entregaTelegramaSeVenceu(s, horaNova) {
     },
     aviso: {
       hora: horaNova,
-      texto: 'A resposta ao telegrama espera em casa do condestável, na letra do telegrafista, datada ao minuto.',
+      texto: 'A resposta ao telegrama espera na casa do condestável, na letra do telegrafista, datada ao minuto.',
     },
   };
 }

@@ -283,18 +283,28 @@ Ficam intactos por descreverem o id do balde T: `cartas.js:369` ·
 
 ## 8. Balde H — o que não se reescreve
 
-`docs/historico-decisoes.md` (8) · `docs/biblia-de-vozes.md` (8) ·
-`docs/playtest/**` e `docs/playtest-*` · `docs/relatorio-*` ·
-`docs/plano-de-sessoes.md` · `docs/sistema-visual.md` · `MORTEM_CONTEXTO.md` ·
-`README.md`.
+`docs/historico-decisoes.md` (8) · `docs/playtest/**` e `docs/playtest-*` ·
+`docs/relatorio-*` · `docs/plano-de-sessoes.md` · `docs/sistema-visual.md` ·
+`MORTEM_CONTEXTO.md` · `README.md`.
 
 **Exceção deliberada:** `MORTEM_CONTEXTO.md` e `README.md` não são histórico —
 são estado. A ordem permanente do utilizador de 22/07/2026 (`CLAUDE.md`) manda
 atualizá-los ao estado entregue no commit final da branch. Recebem o
 vocabulário novo **no fecho da reforma**, não a cada OS, para não versionar
-oito vezes o mesmo parágrafo. A `biblia-de-vozes.md` §Wycliffe descreve a glosa
-e vai precisar de uma linha nova — fica **aberto para o passe editorial da
-OS-R8**.
+oito vezes o mesmo parágrafo.
+
+**Correção deste mapa, feita depois do parecer do `editor-critico`.** A primeira
+versão arquivou `docs/biblia-de-vozes.md` (8 ocorrências) no balde H e adiou-a
+para a OS-R8. **Errado.** A GR1-3 protege `docs/playtest/`,
+`docs/historico-decisoes.md` e relatórios datados — a bíblia não está na lista, e
+não é histórico: é **norma viva**, a que o `escritor-prosa` e o `editor-critico`
+obedecem em toda OS seguinte. Deixá-la velha faria a próxima OS reintroduzir
+`Delegado` e `Alcott` a partir da própria norma. Entra nesta OS: o verbete de
+Wycliffe passa a `## Condestável Lemuel Wycliffe`, a linha da assinatura e o
+léxico acompanham, a amostra de Silas deixa de dizer «correr à delegacia», e o
+parágrafo «Patente (lavrada)» ganha um **registro de divergência assumida**
+contra a decisão B da KB (ver §3). A única ocorrência de `Delegado` que fica é a
+citação histórica que documenta o que a D11 substituiu.
 
 ---
 

@@ -177,6 +177,26 @@ com recomendação:
 | Assizes | "tribunal do júri" / "vara de circuito" | *assizes* | **B** grifado, ou "tribunal de circuito" |
 | Constable / Superintendent | "guarda" / "delegado" | manter posto inglês | **B** — a hierarquia inglesa é específica; glosar |
 
+> **Registro de divergência deliberada — D11, OS-R1, 25/07/2026.** O **caso-escola**
+> ("A Hora Emprestada") não segue a recomendação B desta linha. Por decisão do usuário,
+> o policial de Briarstone é glosado **"condestável"**, e o posto dele, **"a casa do
+> condestável"**. O **caso gerado** continua a seguir a recomendação B e diz *constable*
+> (1 644 ocorrências no banco); a unificação das duas prosas é da OS-R9.
+>
+> A KB não endossa a escolha, e regista por quê: em português, *condestável* nomeou o
+> **Condestável do Reino** (criado por D. Fernando I em 1382, a segunda figura da
+> hierarquia militar depois do rei) e, mais tarde, o **chefe de artilharia** de praça ou
+> navio. O **Caldas Aulete**, dicionário contemporâneo ao presente do jogo, regista cinco
+> acepções e **nenhuma policial** — o uso policial da palavra é calco moderno do inglês
+> norte-americano. O efeito é inflação de patente sobre um homem que, nesta KB (§2), é
+> "o homem de ronda; a base da pirâmide". Efeito colateral conhecido: a prosa passa a ter
+> duas glosas portuguesas para a mesma patente — *condestável* (Wycliffe) e *guarda*
+> (Tobin, e o homem posto à porta) —, desenhando uma escada que o posto de um homem da
+> *county constabulary* não tinha.
+>
+> Reabrir a D11 exige ata própria (OS-R0 §2). Este registro existe para que a prosa não
+> fique em contradição silenciosa com a sua própria fonte.
+
 Princípio geral (alinhado ao guia de estilo §5): **traduzir o instituto quando o
 português tem par exato e limpo** (inquérito, pronúncia, doloso/culposo) e **manter o
 termo inglês grifado, glosado na primeira ocorrência, quando é peça idiossincrática do

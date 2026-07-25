@@ -2,7 +2,7 @@
 
 > Cada personagem fala de um jeito só dele. O teste: **cubra o nome do falante e leia a
 > fala; se não dá para adivinhar quem é, a voz falhou.** No texto anterior, todos —
-> delegado, taverneiro, governanta, narrador — produziam o mesmo aforismo polido; esta é
+> condestável, taverneiro, governanta, narrador — produziam o mesmo aforismo polido; esta é
 > a correção. Cada verbete traz: registro, ritmo, tique verbal, léxico e uma amostra
 > curta. A norma-mãe é `docs/guia-de-estilo.md`.
 
@@ -36,23 +36,31 @@
 - **Amostra:** *"Rígido dos maxilares aos joelhos: isto é de horas, não de minutos. Doze
   a vinte e quatro, eu diria."*
 
-## Delegado Lemuel Wycliffe
+## Condestável Lemuel Wycliffe
 
-- **Quem é:** delegado de vila, honesto e fora de sua profundidade; quer o caso fechado
+- **Quem é:** policial de vila, honesto e fora de sua profundidade; quer o caso fechado
   para poder jantar. Confia no óbvio (a "história A": relógio das 08h45 + luz da
   madrugada = ladrão de fora).
 - **Patente (lavrada):** de ofício é *constable* da *county constabulary*, destacado no
   posto de um homem de Briarstone (casa + expediente + cela) — a patente que a KB dá ao
   policial de vila (`demografia-e-sociedade.md` §3), que patrulha e prende mas quase não
-  investiga e serve de *coroner's officer* (`inquerito-e-policia.md` §1–§2). "Delegado" é
-  a **glosa vernácula** da vila; a tabela de tradução (`inquerito-e-policia.md` §5,
-  decisão B) manda manter o posto inglês grifado. Ele **assina "Delegado"** — a glosa é
-  uniforme; a verdade da patente fica lavrada aqui. O idioleto abaixo não muda.
+  investiga e serve de *coroner's officer* (`inquerito-e-policia.md` §1–§2).
+  **"Condestável" é a glosa vernácula da vila** (D11, OS-R1, 25/07/2026); substituiu
+  "Delegado", que soava a polícia brasileira do século XX. Ele **assina "Condestável"** —
+  a glosa é uniforme; a verdade da patente fica lavrada aqui. O idioleto abaixo não muda.
+- **Divergência assumida:** a tabela de tradução (`inquerito-e-policia.md` §5, decisão B)
+  manda **manter o posto inglês grifado**, e o caso *gerado* obedece — diz *constable*,
+  1 644 vezes no banco. O caso-escola diverge por decisão do usuário. Consequências
+  conhecidas: a escada `condestável > guarda` (Tobin, o guarda à porta) não existia na
+  *county constabulary*, onde o posto de vila é de um homem só; e `condestável`, em
+  português, foi historicamente o comandante supremo das forças do reino, não o policial
+  de ronda. A carta de abertura contextualiza o cargo, de modo que o sentido se decodifica
+  em cena. Reabrir exige ata própria; a unificação com o gerador é da OS-R9.
 - **Registro:** cordial, prolixo, provinciano-formal. Adora uma frase que se ache
   espirituosa e às vezes tropeça nela.
 - **Ritmo:** períodos que começam firmes e se desdizem no meio ("isto é… quero dizer…").
   Autocorreção é o tique dele.
-- **Léxico:** burocrático de delegacia (livro de ocorrências, diligência, arquivos),
+- **Léxico:** burocrático de posto de vila (livro de ocorrências, diligência, arquivos),
   salpicado de ditados caseiros ("não temperar a sopa antes do cozinheiro").
 - **Tique:** entrega a perícia ao perito com uma deferência que é meio alívio, meio
   covardia ("o palpite é meu, a perícia é sua").
@@ -72,7 +80,7 @@
 - **Tique:** oferece teoria sobre o ladrão a quem não pediu — e volta a ela, com
   variações, ao longo da conversa. Nunca pergunta o que a perícia achou.
 - **Amostra:** *"Doze anos nesta casa. Fui eu que o achei, ontem às nove e vinte, e
-  mandei o rapaz correr à delegacia. Gente da estrada, digo eu — atrás do caixa."*
+  mandei o rapaz correr à casa do condestável. Gente da estrada, digo eu — atrás do caixa."*
 
 ## Walter Arthurs (a isca — o herdeiro quebrado)
 
@@ -148,7 +156,7 @@
 
 - **Função:** produzir a alegação que o corpo desmente (a "luz do velho" às 05h15) ou
   o registro que sustenta (a vitrine fechada às 20h; o quarto às escuras às 21h; a
-  senhora na viela). Aparecem citados no registro do delegado ou falam uma linha só.
+  senhora na viela). Aparecem citados no registro do condestável ou falam uma linha só.
 - **Registro:** relato de terceiros, filtrado pela voz de quem conta (em geral
   Wycliffe). Convictos no que viram, prudentes no que não viram ("conhece o passo,
   diz, mas não jura").
@@ -157,7 +165,7 @@
 
 ## O perito (o monólogo final — voz do jogador)
 
-- **Quem é:** Harlan Blackwell, aprendiz de Dr. Alcott (a voz é "o perito"). Fala
+- **Quem é:** Harlan Blackwell, aprendiz de Dr. Abbot (a voz é "o perito"). Fala
   em primeira pessoa ao fim, recolhendo a cadeia que montou.
 - **Registro:** sóbrio, introspectivo, de quem julga o próprio trabalho. Primeira pessoa.
 - **Ritmo:** medido; **no máximo uma máxima por desfecho**, guardada para o fecho (guia

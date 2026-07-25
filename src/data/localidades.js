@@ -133,7 +133,7 @@ export const LOCALIDADES = [
     subtitulo: 'Condestável Lemuel Wycliffe',
     acoesEspeciais: [],
     prosa: [
-      'O expediente de Briarstone é a sala da frente da casa de Wycliffe: mesa de tábua, duas cadeiras e uma cômoda de cozinha em que os autos ocupam as gavetas da roupa. Cheira a tinta e a turfa. Wycliffe abre as gavetas sem cerimônia: "O que é meu é {g:do senhor|da senhora}, {detective.treatment} {detective.surname}. Papel, aqui, nunca faltou; imaginação é que não temos."',
+      'O posto de Briarstone é a sala da frente da casa de Wycliffe: mesa de tábua, duas cadeiras e uma cômoda de cozinha em que o arquivo da vila ocupa as gavetas da roupa. Cheira a tinta e a turfa. Wycliffe abre-as sem cerimônia: "O que é meu é {g:do senhor|da senhora}, {detective.treatment} {detective.surname}. Papel, aqui, nunca faltou; imaginação é que não temos."',
       'Entre os papéis do morto, recolhidos por precaução, está o [[dep_testamento]] e, presas a ele por um alfinete, [[dep_dividas_walter]].',
       'No livro de ocorrências, com a tinta de ontem, uma [[dep_queixa_grey]]; na página de sábado, os [[dep_briga_walter]] que um carroceiro veio contar por conta própria.',
       'Do registro da ronda consta a [[dep_visto_vivo]], na letra redonda do guarda Tobin.',
