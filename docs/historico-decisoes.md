@@ -1902,3 +1902,143 @@ Herculano** com as tentativas químicas falhadas de Davy — que fixa o limite p
 **Aberto:** `CLASSES_VESTIGIO` continua sem classe de documento queimado, como já não tem de
 roupa queimada — o dossiê serve a prosa autoral e o gerador ainda não sabe produzir nenhum
 dos dois. Registrado nas divergências do próprio arquivo, não criado.
+
+---
+
+## 25/07/2026 — OS-R5: Móbeis e cartas
+
+**Decisões aplicadas:** D1, D5, D6 · **Registradas e não tocadas:** D3, D17
+**Guardas verificadas:** G1, G2, G3, G4, G7, G10, G11, G12 · **Novas:** GR5-3, GR5-4, GR5-6
+**Arquivos tocados:** `src/data/cartas.js` · `src/data/localidades.js` · `scripts/qa.mjs` ·
+`MORTEM_CONTEXTO.md` · `README.md` · este arquivo
+**Gate:** lint-prosa sem violação ✓ · qa.mjs CASO VÁLIDO ✓ · qa-ui.mjs UI VÁLIDA ✓ · build ✓
+**Gate específico:** pipeline `revisar-prosa` com os três revisores, zero bloqueantes em
+aberto ✓ · contagem de cartas declarada ✓ · telemetria da paridade publicada ✓ · os quatro
+perfis dão os quatro desfechos, com as horas inalteradas ✓ · gerador e banco fora do diff ✓
+**Divergências assumidas:** o móbil de Agnes saiu pela opção **não recomendada** da OS
+(ver os martelos, abaixo).
+
+### Os martelos do §5, e o que se escreveu por causa deles
+
+| Martelo | Decisão | Recomendação da OS |
+|---|---|---|
+| (a) Móbil de Agnes | **O escândalo do noivado** | era a caderneta da loja |
+| (b) Carta de Davey | O livro de pagamentos, no púlpito de ordens | igual |
+| (c) Carta do 2.º degrau de Walter (D3) | Não; a R6 planta e colhe | igual |
+| (d) A agiotagem ganha carta própria | Não; entra pela prosa e pelos móbeis | igual |
+
+**O martelo (a) teve consequência, e ela obrigou a trabalho que a OS não previa.** Era a
+caderneta — a opção recomendada — que amarrava a agiotagem da **D1** ao móbil de Agnes.
+Escolhido o escândalo, a D1 ficou sem suporte, e teve de encontrar outro. Encontrou-o onde
+o próprio §3.2 já o nomeava: **o salário que Davey não recebeu**. É por isso que a carta do
+rapaz carrega duas coisas nesta OS e não uma.
+
+**Em compensação, o escândalo saiu mais barato do que a OS temia.** O §5(a) avisava que
+essa via «pede história antiga contada em algum lugar». Não pediu nenhuma: os **proclamas**
+são ato futuro, datado e documental. E o material já embarcado fechou o calendário sozinho
+— a ordem de serviço do aro de ouro diz «pronto até 30 de outubro», que é a segunda-feira
+imediatamente seguinte à terceira proclama, o primeiro dia em que o casamento seria lícito.
+Ninguém tinha escrito isso de propósito.
+
+**A ambiguidade que a D5 exige está na mesa, não na carta.** O bilhete traz o fato datado e
+mais nada. Ao lado da cesta de ceia e do aro por gravar, lê-se como o noivado que ia ser
+anunciado; sozinho, lê-se como o que a vila ia saber no domingo. A KB dá o peso da segunda
+leitura sem que a prosa a enuncie: a viúva que recasa «herda suspeita», e Agnes vive do
+balcão e do correio da High Street.
+
+### As duas colunas da paridade, antes e depois
+
+| Suspeito | Cartas (antes) | Motivos (antes) | Cartas (depois) | Motivos (depois) |
+|---|:-:|:-:|:-:|:-:|
+| **Silas Crane (réu)** | **3** | 1 | **3** | 1 |
+| Walter Arthurs | 2 | **2** | 2 | **2** |
+| Agnes Rooke | 0 | 0 | 1 | 1 |
+| Caleb Grey | 1 | 1 | 1 | 1 |
+| Davey Tull | 0 | 0 | 1 | 1 |
+
+**O tell de contagem morreu por medição, não por gasto.** A Fase 0 — telemetria pura, antes
+de tocar em nada — mostrou que pela métrica honesta o problema não existia: o réu tem **um**
+motivo documentado três vezes (o livro de ordens, a consulta ao procurador, o caderno de
+pesos), e Walter tem **dois**. Contar cartas acha o réu; contar razões acha Walter. A Fase 3
+não custou carta nenhuma, e a lição fica registrada para a R6: **medir antes de mexer**.
+
+### Orçamento
+
+| | |
+|---|---|
+| Antes | 40 de 46 em jogo · 6 livres |
+| Gasto pela R5 | **2** (`ev_bilhete_vigario`, `ev_livro_pagamentos`) |
+| Depois | **42 de 46** em jogo · **4 livres** |
+| Herda | **OS-R6** |
+
+Ambas `comportamental`/`subDominio: motivo`, ambas com `isca: true` — a cadeia física sai
+intacta (G1) e a marca de isca ficou onde devia (G3, GR5-6).
+
+### O parecer do pipeline
+
+Correram os três. **Zero bloqueantes do editor**, **um bloqueante do fiscal**, e o perito
+contradisse o fiscal exatamente nesse ponto. A contradição valeu mais do que qualquer dos
+pareceres isolados, e é o registro mais útil desta ata.
+
+**A conta do livro de pagamentos, em três voltas.** Escrevi £2 adiantados à mãe de Davey,
+quatro xelins descontados por semana durante vinte e nove semanas, e uma dívida remanescente
+de £2 4s — com a intenção de que a dívida **crescesse enquanto era paga**, e que a agiotagem
+aparecesse por aí, sem a palavra. O **fiscal** julgou a conta impossível: £2 são quarenta
+xelins e quitam-se na décima semana. O **perito** mostrou que era possível *com* juro, e que
+a taxa implícita cabia na faixa documentada da usura de rua vitoriana. Os dois tinham razão
+sobre coisas diferentes: eu acertara o desenho e errara a legibilidade. **Um leitor cuja
+função é conferir somas leu a carta como erro de aritmética — se ele leu assim, o jogador lê
+também, e uma armadilha que se lê como engano não é armadilha.**
+
+A saída foi do perito, e é melhor do que o que eu escrevera e do que a emenda do fiscal.
+À taxa que a época **nomeava** (um penny por xelim por semana), um adiantamento de **£2 8s**
+servido a quatro xelins semanais fica **exatamente parado**: 48 xelins vencem 48 pence de
+juro por semana, que são os mesmos quatro xelins que se descontam. Por isso as duas somas do
+livro são idênticas — £2 8s na margem de março, £2 8s na última linha — com **£5 16s pagos
+entre uma e outra**. Quem não conferir vê um livro de contas; quem conferir encontra a
+armadilha fechada. E as vinte e nove sextas correm de 31 de março a **13 de outubro**: a
+última linha do livro é a noite da morte.
+
+**Os outros achados aplicados.** O editor apanhou que `{suspeito:agnes_rooke.nome}` resolve
+para «Sra. Agnes Rooke» — Agnes é o único suspeito cujo nome carrega título, e por isso o
+defeito nunca tinha aparecido: as minhas frases diziam «de Sra. Agnes Rooke», sem artigo. O
+fiscal apanhou que o carimbo dizia «Jornal de D. Tull», que em PT-BR se lê *Dona* Tull e
+convidava a tomar o salário como o da mãe, que a mesma carta nomeia; e que o assento dos
+proclamas tratava os dois nomes de forma assimétrica, o homem nu e a mulher titulada. Os
+dois, independentemente, apanharam «jornal» como nome de coluna semanal: *jornal* é a paga
+de **um dia**, e o mesmo jogo usa a palavra com o sentido de periódico. O perito confirmou o
+procedimento inteiro contra o **Marriage Act 1823** (três domingos sucessivos, aviso escrito
+sete dias antes, nulidade por nome errado, caducidade em três meses) e corrigiu o timbre:
+papel de presbitério trazia o **endereço**, não a dedicação da igreja.
+
+**Achado de desenho que o perito registrou e vale guardar:** tomar **proclamas** em vez de
+**licença** (£2–£3, sem leitura pública) é caracterização legível para um relojoeiro de 61
+anos que podia pagá-la. É a via que faz a vila saber no domingo — e é por isso que serve.
+
+### Aberto para a OS seguinte
+
+- **OS-R6** (exposição e interrogatórios): herda **4 cartas** de orçamento; mais a **D3**
+  (o 2.º degrau do confronto de Walter), o **`apontadaPor`** (D17) e `interrogatorio_silas`
+  como localidade anómala. **E herda uma lição de método:** a paridade dos móbeis mede-se por
+  motivos distintos, não por cartas, e mede-se **antes** de escrever.
+- **OS-R8** (passe editorial): tudo o que a ata da R4 deixou, mais o **«púlpito de escrever
+  forrado de cortiça»** de `pt_oficina_pulpito` — prosa anterior a esta OS, e achado do
+  perito: «púlpito» em PT é o da igreja (e o caso já tem uma), a KB verte o móvel como
+  «escrivaninha alta de tampo inclinado», e cortiça como forro de tampo não está documentada
+  (o atestado é couro). Mexer no rótulo do ponto toca o contrato do `qa-ui`.
+- **OS-R9** (o gerador herda os padrões): idem, mais o móbil que se prova por **aritmética de
+  livro** em vez de por depoimento — padrão novo que esta OS estreou.
+- **Guarda rebaseada, e é preciso saber porquê.** A que provava que o monólogo não inventa
+  móbil apoiava-se em **Davey não ter carta de móbil no catálogo**, o que esta OS tornou
+  falso. Passou a valer nos dois sentidos e nos quatro perfis, e a testar o **pool** do
+  monólogo em vez da string literal de uma das três variantes — a versão antiga, medida
+  hoje, daria falso positivo.
+- **De KB, registado e não criado** (falta ordem do utilizador): o regime de **proclamas e
+  licença** (a KB do mundo vitoriano não cobre casamento); a **escala salarial do aprendiz**
+  (a tabela desce a lavrador e a artesão, e para no rapaz — a calibragem dos quatro xelins
+  repousa hoje num único *indenture* de relojoeiro de 1891); e os **Truck Acts** de 1831 e
+  1887 com as taxas de usura de rua. Nota que vale por si: pelos Truck Acts o desconto
+  integral do salário contra dívida da mãe é **dedução não autorizada**, ainda que banal numa
+  oficina de vila — **nenhuma personagem pode afirmar que aquilo era de direito**. O Ato de
+  1896 e o Moneylenders Act de 1900 são posteriores: em 1893 o saldo era exigível, e o rapaz
+  não tem remédio.
