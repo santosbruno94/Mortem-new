@@ -515,7 +515,7 @@ async function main() {
     // A primeira viagem com custo real da rota: a tacha corre a estrada
     // desenhada e a conta da hora se lê. Cortar o beat abre o local no ato
     // e NÃO muda o estado — quem paga a hora é o motor, no clique.
-    await page.click('text=A Delegacia');
+    await page.click('text=A Casa do Condestável');
     await espera(page, 240);
     checar('E3: o beat da viagem diz o preço (relógio, rigidez, perecível)', (await page.locator('[data-preco-viagem]').count()) === 1);
     const precoLido = await page.locator('[data-preco-viagem]').innerText();
@@ -663,7 +663,7 @@ async function main() {
 
     await visitarEExtrair(page, 'A Cena do Crime');
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'A Delegacia'); // o testamento desbloqueia o Gabinete
+    await visitarEExtrair(page, 'A Casa do Condestável'); // o testamento desbloqueia o Gabinete
     await fecharOverlay(page);
     await page.click('text=Caderneta');
     await espera(page, 400);
@@ -728,7 +728,7 @@ async function main() {
 
     await interrogarEExtrair(page, 'A Saleta'); // §7.1: o interrogatório é diálogo
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'A Delegacia'); // inclui o "visto com vida" (janela aberta)
+    await visitarEExtrair(page, 'A Casa do Condestável'); // inclui o "visto com vida" (janela aberta)
     await fecharOverlay(page);
 
     // REGRESSÃO (agora na Caderneta — Q3 tirou a leitura do mural): com só a
@@ -789,7 +789,7 @@ async function main() {
     await arquivarFicha(page);
     checar('Rota flat: extração pela prosa funciona', (await page.locator('.termo-extraido').count()) >= 3);
     await fecharOverlay(page);
-    await visitarEExtrair(page, 'A Delegacia'); // viagem pela grade 2D (lead do Gabinete)
+    await visitarEExtrair(page, 'A Casa do Condestável'); // viagem pela grade 2D (lead do Gabinete)
     await fecharOverlay(page);
     checar('Rota flat: Gabinete desbloqueado pela grade 2D', (await page.locator('body').innerText()).includes('Gabinete Pettigrew'));
 
@@ -954,7 +954,7 @@ async function main() {
     checar('E4: a ficha do nó atual traz "— aqui —"', (await celular.locator('.regua-ficha--aqui').first().innerText()).includes('— aqui —'));
     checar('E4: o alternador segue acessível no estreito', (await celular.getByRole('button', { name: 'A maquete' }).count()) === 1);
     // A ficha viaja pelo MESMO handler das outras vistas.
-    await celular.locator('.regua-ficha', { hasText: 'A Delegacia' }).click();
+    await celular.locator('.regua-ficha', { hasText: 'A Casa do Condestável' }).click();
     await celular.waitForSelector('div.fixed[data-overlay]', { timeout: 15000 });
     await espera(celular, 300);
     checar('E4: tocar a ficha abre o local (mesmo handler de viagem)', (await celular.locator('body').innerText()).includes('14h00'));

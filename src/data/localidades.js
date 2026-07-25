@@ -24,7 +24,7 @@ export const LOCALIDADES = [
       { id: 'gesto_corda_relogio', rotulo: 'Dar corda ao relógio do morto', cartaId: 'ev_relogio_bolso' },
     ],
     prosa: [
-      'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O Delegado Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
+      'O morto jaz de costas entre a escrivaninha e a estante, o colete abotoado, a gola dura manchada de escuro. O Condestável Wycliffe mandou que nada se tocasse até a chegada {g:do perito|da perita}, e nada se tocou.',
       'Ao primeiro exame do tronco e dos membros, [[ev_rigor]]. O guarda espera a ordem para voltar o corpo.',
       'Sob o ângulo esquerdo do maxilar abre-se uma [[ev_ferida]]. Afastado o colarinho, mostram-se [[ev_reacao_vital]]; à lente, no fundo do canal, [[ev_residuo_ferida]].',
       'Na corrente do colete pende um relógio de bolso de tampa fechada, mudo. A maleta de instrumentos está aberta sobre a cadeira; o termômetro de mercúrio fica à mão, se {detective.treatment} {detective.surname} julgar oportuno medir a temperatura do corpo.',
@@ -125,13 +125,15 @@ export const LOCALIDADES = [
     // Escrivaninha abre InterrogatorioDialogo quando há árvore para o nó.
   },
   {
+    // OS-R1: o id fica `delegacia` até a OS-R2 renomeá-lo (matriz de
+    // colisão da OS-R0 §5). Aqui muda-se só o que o jogador lê.
     id: 'delegacia',
-    rotuloMesa: 'A Delegacia',
-    titulo: 'Arquivos da Delegacia de Briarstone',
-    subtitulo: 'Delegado Lemuel Wycliffe',
+    rotuloMesa: 'A Casa do Condestável',
+    titulo: 'A Casa do Condestável — A Sala da Frente',
+    subtitulo: 'Condestável Lemuel Wycliffe',
     acoesEspeciais: [],
     prosa: [
-      'A delegacia é uma sala única, com cheiro de tinta e turfa. Wycliffe abre os armários sem cerimônia: "O que é meu é {g:do senhor|da senhora}, {detective.treatment} {detective.surname}. Papel, aqui, nunca faltou; imaginação é que não temos."',
+      'O expediente de Briarstone é a sala da frente da casa de Wycliffe: mesa de tábua, duas cadeiras e uma cômoda de cozinha em que os autos ocupam as gavetas da roupa. Cheira a tinta e a turfa. Wycliffe abre as gavetas sem cerimônia: "O que é meu é {g:do senhor|da senhora}, {detective.treatment} {detective.surname}. Papel, aqui, nunca faltou; imaginação é que não temos."',
       'Entre os papéis do morto, recolhidos por precaução, está o [[dep_testamento]] e, presas a ele por um alfinete, [[dep_dividas_walter]].',
       'No livro de ocorrências, com a tinta de ontem, uma [[dep_queixa_grey]]; na página de sábado, os [[dep_briga_walter]] que um carroceiro veio contar por conta própria.',
       'Do registro da ronda consta a [[dep_visto_vivo]], na letra redonda do guarda Tobin.',

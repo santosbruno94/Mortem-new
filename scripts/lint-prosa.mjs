@@ -43,7 +43,7 @@
 //   7. vocativo_repetido — o mesmo nome próprio do roster do caso 2+ vezes
 //                   dentro da MESMA fala entre aspas (guia §4.10 / skill
 //                   nº 12); roster derivado dos dados (SUSPEITOS, vítima
-//                   da seed, delegado do subtítulo da delegacia).
+//                   da seed, condestável do subtítulo da casa dele).
 //
 // AUTOTESTE (aceite da OS dos cheques 5–7): armadilhas sintéticas — uma
 // string-veneno por cheque novo — rodam SEMPRE, antes do corpus; se uma
@@ -491,13 +491,14 @@ function chequeVocativoRepetido(bloco, roster) {
 // Roster determinístico de nomes do caso-escola, com proveniência por fonte:
 //   • SUSPEITOS (src/data/seed.js): nome completo, primeiro nome e sobrenome;
 //   • vítima (SEED_TUTORIAL.vitima), sem o tratamento ("Sr.");
-//   • delegado: subtítulo da localidade `delegacia` (src/data/localidades.js),
-//     sem o posto ("Delegado").
+//   • condestável: subtítulo da localidade de id `delegacia`
+//     (src/data/localidades.js), sem o posto ("Condestável"). O id é do
+//     balde T da OS-R1 e só muda na OS-R2; o posto visível já mudou.
 // Nomes do detetive são interpolação {detective.*} — fora do roster.
 function montarRosterDeNomes() {
   const nomes = new Set();
   const registrar = (nomeCompleto) => {
-    const limpo = (nomeCompleto || '').replace(/^(Sr|Sra|Srta|Dr)\.ª?\s+/u, '').replace(/^Delegado\s+/u, '').trim();
+    const limpo = (nomeCompleto || '').replace(/^(Sr|Sra|Srta|Dr)\.ª?\s+/u, '').replace(/^Condestável\s+/u, '').trim();
     if (!limpo) return;
     nomes.add(limpo);
     for (const parte of limpo.split(/\s+/)) {
@@ -550,7 +551,7 @@ function autoteste(verboso = false) {
     {
       nome: 'abertura_repetida: artigo conta pelo segundo token (não pune "O relógio… O corpo…")',
       achados: chequeAberturaRepetida(
-        b(['O relógio parou na prateleira. O corpo esfriou durante a noite. O caso segue aberto na delegacia.'])
+        b(['O relógio parou na prateleira. O corpo esfriou durante a noite. O caso segue aberto em casa do condestável.'])
       ),
       espera: (a) => a.length === 0,
     },

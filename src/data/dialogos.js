@@ -417,7 +417,7 @@ export const DIALOGOS = {
       },
       b2_tecnico: {
         fala: [
-          '"Exigi pesagem diante de testemunhas e lavrei termo na delegacia, tudo antes de o homem morrer; as datas estão no papel. Quatro libras e dez xelins, conserto pago adiantado." A soma sai sem um erro, e por baixo dela: [[comp_grey]].',
+          '"Exigi pesagem diante de testemunhas e lavrei termo em casa do condestável, tudo antes de o homem morrer; as datas estão no papel. Quatro libras e dez xelins, conserto pago adiantado." A soma sai sem um erro, e por baixo dela: [[comp_grey]].',
         ],
         opcoes: [],
       },

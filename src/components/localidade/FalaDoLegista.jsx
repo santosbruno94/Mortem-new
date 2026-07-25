@@ -10,9 +10,9 @@ import { modoDoCaso } from '../../data/casos.js';
 // jogador, já perito, lê o corpo por conta própria.
 // Visual: aparte com filete de latão à esquerda e fala em serif itálico.
 export default function FalaDoLegista({ cartas }) {
-  // O mestre (Dr. Alcott) não veio: Harlan examina só, e a voz do mestre lhe
+  // O mestre (Dr. Abbot) não veio: Harlan examina só, e a voz do mestre lhe
   // guia o olho por dentro (a mesma convenção do eco pós-falha — a voz de
-  // Alcott na cabeça do aprendiz). Itens 7 e 2 do playtest de 19/07: os
+  // Abbot na cabeça do aprendiz). Itens 7 e 2 do playtest de 19/07: os
   // apartes vozMestre são leitura técnica — observação, não conclusão; e
   // remetem ao Glossário ("o mestre já falou disso"), onde o tutorial ensina
   // a ler o sinal em vez de o entregar mastigado. O link vem UMA vez por

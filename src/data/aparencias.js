@@ -108,7 +108,7 @@ export const APARENCIAS_CURADAS = {
     idadeAparente: 'jovem',
     traje: 'modesto',
   },
-  // Delegado Lemuel Wycliffe — fonte de informação, não suspeito.
+  // Condestável Lemuel Wycliffe — fonte de informação, não suspeito.
   delegado_wycliffe: {
     corpo: 'sobrepeso',
     pele: 'corada',
@@ -141,7 +141,7 @@ export const APARENCIAS_CURADAS = {
 // Camada narrativa — nenhuma regra lê isto; o pacote a embarca e a lógica
 // de apresentação resolve nomes por obterNomePersonagem (pacote_caso.js).
 export const NOMES_NAO_SUSPEITOS = {
-  delegado_wycliffe: 'Delegado Wycliffe',
+  delegado_wycliffe: 'Condestável Wycliffe',
 };
 
 // Quem recebe o perito em cada localidade (para o retrato no overlay).

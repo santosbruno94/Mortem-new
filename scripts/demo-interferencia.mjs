@@ -69,7 +69,7 @@ function pacoteDemonstracao() {
         tipo: 'destruir_evidencia',
         ator: 'silas_crane',
         atorPapel: 'assassino',
-        gatilho: { tipo: 'extracao_carta', cartaId: 'dep_testamento', comoSoube: 'o testamento aberto na delegacia correu a vila' },
+        gatilho: { tipo: 'extracao_carta', cartaId: 'dep_testamento', comoSoube: 'o testamento aberto em casa do condestável correu a vila' },
         rota: { de: 'oficina', para: 'cena', faixa: 'noite', sustentacao: 'retorno_a_cena', comoChegou: 'refez o caminho do próprio crime' },
         rolagem: { wis: 3, penalidade: 2, alvo: 1, dado: 4, sucesso: false },
         efeito: { cartaDestruida: 'ev_suplica_cesto', cartasNovas: ['demo_cinzas'] },
