@@ -1595,3 +1595,310 @@ pensão da Sra. Potts.
   moderno, sem subscrição. Registado e não tocado: o banco ficou fora do diff.
 - Tirar o «ontem» da amostra de Silas na bíblia de vozes (o interrogatório corre no mesmo
   sábado; a prosa embarcada já está certa, a amostra é que não).
+
+---
+
+## 25/07/2026 — OS-R4: Elenco e Livros
+
+**Decisões aplicadas:** D2 (onde mora o Livro II), D6 (o móbil de Davey, sob a guarda de
+menoridade), D15, D16 (a forma da cumplicidade — o fio de coação na Sra. Wick), D19 (a
+cifra), D21 (Amos Kell), D22 (onde arde o Livro I).
+**Guardas verificadas:** G1, G2, G4, G6, G7, G10, G11, G12 · GR4-1 a GR4-7.
+**Arquivos tocados:** `src/data/cartas.js` · `src/data/localidades.js` ·
+`src/data/dialogos.js` · `src/data/glossario.js` · `src/data/mapa.js` ·
+`src/data/mapa_espacial.js` · `src/data/aparencias.js` · `src/logic/acusacao.js` ·
+`src/components/EventoLocalidade.jsx` · `scripts/qa.mjs` · `scripts/qa-ui.mjs` ·
+`docs/biblia-de-vozes.md` · `docs/kb-medicina-legal/inquerito-e-policia.md`.
+**Gate:** lint-prosa nenhuma violação · qa.mjs CASO VÁLIDO · qa-ui.mjs UI VÁLIDA ·
+build limpo.
+**Gate específico:** os cinco itens do §7, abaixo.
+**Divergências assumidas e aberto:** ao fim.
+
+### Os três martelos
+
+**(a) A cifra vive na cuvette do relógio do morto** — a opção recomendada do §5. É a
+segunda camada de um objeto que o jogador já tem na mão desde o exame do corpo, e custa
+uma carta e nenhuma localidade. O parecer do `perito-forense` acrescentou o que a torna
+boa de verdade: a legenda particular esconde-se **entre as de fábrica** (`15 RUBIS`,
+`ANCRE LIGNE DROITE`), e a um leigo — ou a quem revistou o corpo — lê-se como mais jargão
+de relojoaria. O corte fresco brilha contra a pátina dos outros sulcos, e isso o perito de
+1893 pode dizer.
+
+**(b) Tobin é o constable da ronda vizinha (Caulfield)**, de passagem pela High Street às
+oito. É a única das três opções que não obriga a mexer em `dep_visto_vivo` (G4), e tem
+nome de ofício: **conference point**, o ponto e a hora em que dois beats se conferem. A KB
+foi emendada com o instituto, as fontes e a ressalva de época (o ponto fixo era criticado
+justamente por ser previsível — as oito de Tobin são o ponto marcado daquela ronda, não um
+relógio infalível da vila).
+
+**(c) Amos Kell bebe, e a vila sabe.** O descrédito entra pela boca dele («O guarda
+perguntou-me primeiro quanto eu tinha bebido») e pelo estado do registro («e não
+escreveu») — o narrador não avalia em lugar nenhum.
+
+### O orçamento de cartas — o dado que a OS seguinte lê primeiro
+
+| | |
+|---|---|
+| Catálogo antes | 35 |
+| Catálogo depois | **39** |
+| Em jogo (com `ev_algor`, de runtime) | **40** |
+| Teto (G11) | 46 |
+| **Livre para a R5 e a R6** | **6** |
+
+As quatro cartas: `ev_cinza_livro` (o Livro I, na grelha do escritório), `ev_cuvette` (a
+cifra), `dep_sineiro_beco` (o veraz sem crédito) e `ev_livro_ii` (o caderno de pesos, na
+câmara dos sinos). **Todas `comportamental`** — a G1 não admite acréscimo em `temporal`
+nem em `causal`, e o `qa.mjs` passou a provar isso por asserção (GR4-2 congela o conjunto
+das oito cartas da cadeia física). A Sra. Wick custou **zero**: a carta que já existia
+ganhou o que lhe faltava.
+
+### As horas dos quatro perfis
+
+| Perfil | Antes | Depois | Desfecho |
+|---|---|---|---|
+| Metódico | 17h00 | **18h00** | Vitória Absoluta |
+| Apressado | 18h00 | 18h00 | Erro Judiciário |
+| Intuitivo | 14h00 | 14h00 | Impunidade |
+| Pericial desatento | 13h00 | 13h00 | Sucesso com Gafes |
+
+Só o Metódico andou, e andou exatamente a hora que a torre custa — ela é nó da vila como
+qualquer outro. Os outros três não sobem lá. Os quatro desfechos de pé.
+
+### O que a cifra abre não é o nó
+
+A torre **nasce aberta** no mapa: a G10 manda que Amos seja sempre alcançável, e um nó
+trancado atrás de uma carta não o seria. O que a cifra abre é um **parágrafo de prosa
+condicional** (`prosaCondicional`, campo que a localidade já tinha e que ninguém usava),
+com `requerCartas: ['ev_cuvette']`. Sem a cifra o perito sobe, conta seis sinos e desce de
+mãos vazias; com ela entra o parágrafo da câmara dos sinos, e com ele o marcador do Livro
+II. É camada narrativa pura — a condição lê ids de carta registrada, o motor não a lê.
+**Efeito colateral consertado no mesmo lote:** o contador de esgotamento do lugar não
+contava a prosa condicional, e um lugar anunciava-se «esgotado» com uma carta ainda por
+colher.
+
+### O veraz sem crédito, provado por asserção
+
+A G6 pedia que as cartas de Amos fossem recusadas «como nexo e como álibi», e que isso se
+provasse no `qa.mjs`, «não a olho». As tags dele carregam `insuficiente: true`, e
+`acusacao.js` ganhou `ehInsuficiente`: a carta marcada não sustenta âncora nenhuma nem
+entra como **fato** de refutação (continua podendo ser o alvo refutado — é alegação como
+outra qualquer). A prova corre em dois tempos, porque um só não bastaria:
+
+1. **End-to-end:** a acusação apoiada só no sineiro sai `impunidade`, com `sem_nexo` nas
+   falhas e o paradeiro do réu de pé.
+2. **Isolando a marca:** um gêmeo de controle com forma de vestígio do réu é **aceite** sem
+   a marca e **recusado** com ela. Quem recusa é a marca, não o domínio — é isto que faz a
+   falha ser pelo código próprio da insuficiência, e não por acaso.
+
+Nota de desenho, para quem vier depois: ligar a carta dele a uma âncora **não é gafe** (não
+custa a Vitória Absoluta), é inércia. A lição pune quem se apoia nela, não quem a recolhe.
+
+### O gate de prosa, que é o gate desta OS
+
+Três revisores; e outra vez cada um apanhou o que os outros dois não viram.
+
+**`editor-critico` — 1 bloqueante e 11 altos, todos corrigidos.** O **bloqueante** era
+dedução vazada, e da pior espécie: a prosa da torre dizia que a tabela da conserva do
+relógio estava assinada «na mesma letra miúda que corre pelo livro de ordens da oficina» —
+o narrador executando a identificação de duas escritas e entregando o resultado, que é
+justamente o elo que explica por que o morto tinha acesso à câmara dos sinos. Cortado para
+«em letra miúda»; o jogador cruza sozinho. Dos altos, os que valem nome: **duas frases de
+efeito na cena da torre** (o teto é uma), e a segunda fechava a cena com uma cotovelada
+(«o que estiver solto lá em cima, cai»); **o tique de Amos era de outros dois** — a
+vassoura é de Davey e o «não para o serviço para responder» é de Caleb Grey, e o teste do
+nome coberto falhava no eixo do tique (Amos passou a trabalhar a corda, e a bíblia
+registra a divisão); **a voz de Wycliffe** na fala nova sobre Tobin não tinha nenhum dos
+três marcadores do verbete dele (entrou a autocorreção, e só ela — o bloco do posto já tem
+as duas frases espirituosas que o §3 permite); **o carimbo do sineiro afiava a hora além do
+que a boca dele declara** (dizia 21h15; passou a «depois das nove», que é o que Amos diz —
+a tag fica); e **o marcador não fluía com o `textoDisplay`**, que na tela dava «na grelha
+por raspar, *Cinza de Papel na Grelha*».
+
+**`perito-forense` — sem bloqueantes, 4 altos e duas correções mecânicas.** As três
+proibições do parecer prévio foram respeitadas e ele verificou-as por varredura: a carta da
+cinza não lê letra nenhuma, e em lugar nenhum a prosa insinua que o buril da cifra seja **o**
+buril da ferida (comparar estrias de ferramenta é ciência do século XX; em 1893 lê-se o
+gênero, nunca o exemplar). Os altos: faltava à cinza **a parte mais indestrutível do livro**
+— a pasta e a lombada, que numa grelha doméstica empenam e sobram (entraram); o verbete do
+glossário dizia **«praticante»** onde a lei diz *practitioner*, isto é, **médico em
+exercício** — num caso cujo eixo é mestre inscrito × aprendiz sem registro, o verbete
+mandava a ordem do coroner ao aprendiz (corrigido); e **o caderno de pesos não tinha
+balança** em cena nenhuma — a oficina ganhou a balança de fiel do ouro com a caixinha dos
+pesos, que é o instrumento sem o qual o registro não tem lastro material. Davey dizia
+**«guarda-pó»**, que no ofício inglês é a *outra* peça (a calota do maquinismo): passou a
+«tampa de dentro», e a piada do patrão («chamava aquilo de cuvette, à francesa») ficou.
+**As duas correções mecânicas são as que mais importam:** o esconderijo estava no
+**cabeçote**, que gira com o sino e daria a volta inteira no domingo — passou para o
+**barrote da armação**, que é fixo; e meia-volta não solta um parafuso de fixação, solta uma
+**trava** de cabeça serrilhada.
+
+**`fiscal-continuidade` — sem bloqueantes, 1 alto e 6 menores, todos aplicados.** O **alto**
+era uma correção da própria ronda anterior: para fechar um referente flutuante, o sineiro
+passara a esperar «que a pena **do escrivão** pare» — e não há escrivão na torre. O perito
+sobe sozinho, e a única pena em cena é a caderneta dele; pior, é justamente o contraste com
+essa pena que faz o «e não escreveu» de Amos significar alguma coisa. Revertido. Dos
+menores, os que mudaram fato: **a hora da tag do sineiro passou de 21h15 para 21h45** — com
+a morte às 21h e o portão da estalagem a bater «passado das dez», um quarto de hora não
+chega para matar, encenar o roubo, esmagar o relógio e desmanchar o Livro I na grelha aos
+punhados; o número é invisível ao jogador (o carimbo diz o que Amos diz) e continua dentro
+da janela mecânica da roda de contagem. **A razão do horário de Amos mudou**: dizia «quando
+a igreja esvazia», e a prosa da torre acabara de estabelecer que as cordas ficam enroladas
+até domingo — não há ensaio de repique na sexta que encha a igreja, e ofício de sexta que
+esvaziasse às nove seria tarde para 1893. Passou a «quando fecho o adro», que de quebra
+explica por que ele está ao portão quando vê o homem sair. E a Sra. Wick é procurada **ao
+meio-dia**, não antes dele — a manhã de sábado já está lotada pela abertura.
+
+O fiscal registrou ainda um **falso positivo de gate, e a explicação vale para a casa**: o
+`qa-ui.mjs` falhou na árvore dele por concorrência, não por regressão — ele sobe o `vite`
+com HMR, e o hot-reload de um arquivo salvo por outro agente durante a corrida derruba o
+overlay e leva o botão embora. Duas corridas limpas depois, `UI VÁLIDA`. **Não rodar o
+`qa-ui` com outra coisa a escrever na árvore.**
+
+### Gate específico (§7 da OS)
+
+1. **Pipeline `revisar-prosa`** — corrido; zero bloqueantes remanescentes.
+2. **Contagem de cartas** — 35 → 39; 40 de 46 em jogo; 6 livres. Impressa pelo `qa.mjs` a
+   cada corrida, para a OS seguinte não ter de a recalcular.
+3. **Asserção do veraz sem crédito** — GR4-3, nos dois tempos descritos acima.
+4. **Os quatro perfis** — os quatro desfechos, com as horas da tabela.
+5. **Diff** — `src/gerador/`, `casos_gerados.js` e `casos_indice.js` fora dele; `sha256`
+   dos dois ficheiros intacto (`b96f9caf…b05a760b2` e `1fafae5c…b4038e29`).
+
+Guardas novas no `qa.mjs`: **GR4-1** (teto de cartas, com a conta impressa), **GR4-2**
+(cadeia física congelada por conjunto de ids), **GR4-3** (o veraz sem crédito), **GR4-4** (o
+Livro II vale como carta de móbil), **GR4-5** (sem beco sem saída: torre aberta, sineiro na
+prosa base, cifra por gesto do corpo, Livro II só atrás da cifra) e **GR4-6**
+(`dep_visto_vivo` intacta em id, tags, domínio e lugar).
+
+**Contrato do `qa-ui` atualizado no mesmo commit,** como o `CLAUDE.md` exige: três
+micro-gestos no corpo em vez de dois, contador do corpo em «8 de 8», e a rota 1 passou a
+subir à torre — o que dá cobertura de navegador ao mecanismo novo (o parágrafo condicional
+entra, e o Livro II sai dele).
+
+### Divergências assumidas
+
+1. **A prosa condicional não tem gate de teto.** Um lugar pode acumular blocos condicionais
+   sem que nada avise; hoje é um só, e o `qa.mjs` prova que ele existe e o que exige. Se a
+   R5 ou a R6 quiserem mais, convém guarda própria.
+2. **O carimbo do sineiro diz «depois das nove» e a tag diz 21h45.** É deliberado: o carimbo
+   é o que a testemunha declara, a tag é a hora que o motor lê. O padeiro tem 05h15 no
+   carimbo porque a fala dele diz «cinco e um quarto»; Amos não dá hora de relógio, e não
+   podia dar.
+3. **A posição da torre na maquete mudou depois de ver a prancha.** Posta ao lado da
+   relojoaria, a agulha comia a fachada dela; foi para a ponta e para a frente. Camada
+   visual pura.
+
+### Aberto para a OS seguinte
+
+- **OS-R5** (móbeis e cartas): **escrita no fecho desta OS**
+  (`docs/os-r5-mobeis-e-cartas.md`, com prompt de arranque próprio). Herda **6 cartas** de
+  orçamento. Se não chegarem, a decisão — cortar carta velha ou subir o teto — é de mesa, do
+  utilizador. **E herda um achado que esta OS agravou:** o réu tem hoje **três** cartas de
+  móbil, Walter duas, Grey uma, e Agnes e Davey nenhuma — quem contar cartas de móbil acha o
+  réu sem raciocinar. O Livro II é a terceira de Silas, e entrou aqui sem que ninguém medisse
+  a coluna. A saída que a R5 recomenda não custa carta: medir a paridade por **motivos
+  distintos**, e não por cartas — Silas tem **um** motivo documentado três vezes, e Walter
+  tem **dois**.
+- **OS-R6:** `interrogatorio_silas` como localidade anómala (só Silas tem uma).
+- **OS-R8** (passe editorial): tudo o que a ata da OS-R3 deixou, mais o «ontem» da amostra
+  de Silas na bíblia de vozes.
+- **OS-R9** (o gerador herda os padrões): idem, mais o **arquétipo do veraz sem crédito**,
+  que agora tem marca de tag e guarda de motor — o gerador pode passar a produzi-lo.
+- **Propostas de KB do `perito-forense`: as quatro foram marteladas e aplicadas** (ordem do
+  utilizador, 25/07/2026, logo após o fecho da OS). Ver a ata própria, abaixo.
+
+---
+
+## 25/07/2026 — Lote de KB: o que a OS-R4 passou a exigir da base
+
+**Ordem do utilizador** no fecho da OS-R4, sobre as quatro propostas do `perito-forense`.
+Não é OS: é lastro. Nenhuma linha de código foi tocada, nenhuma prosa embarcada mudou.
+
+**Por que agora, e não «quando der».** A prosa da R4 passou a depender de três domínios em
+que a base era **muda** — o que sobra de um livro queimado, a anatomia do relógio por
+dentro, e o que 1893 podia dizer de uma marca de ferramenta. A pesquisa com fontes já
+estava paga pelo parecer prévio do perito; adiar significaria pagá-la outra vez, ou (pior)
+escrever de cabeça na próxima sessão que precisasse dela.
+
+**Arquivos tocados:** `docs/kb-medicina-legal/vestigios.md` ·
+`docs/kb-medicina-legal/supressao-de-vestigios.md` ·
+`docs/kb-medicina-legal/vocabulario-de-epoca.md` · `docs/kb-medicina-legal/fontes.md` ·
+`docs/kb-medicina-legal/README.md` · `docs/kb-mundo-vitoriano/utensilios-e-objetos.md`.
+
+### O que entrou
+
+1. **Marcas de ferramenta, em `vestigios.md`** — a peça mais importante das quatro, e a
+   única que é **guarda-corpo**. Em 1893 lê-se o **gênero** do instrumento (a largura do
+   gume que forçou o batente, a secção da haste que abriu a ferida); ler o **exemplar** —
+   dizer que *aquele* buril fez *aquela* marca — é comparação de estrias, ciência dos anos
+   1920 em diante. Vale a mesma exceção da fibra, e só ela: o **encaixe físico** de uma
+   ponta partida. Registrada também a armadilha concreta: em «A Hora Emprestada» a arma é um
+   buril e a cifra do morto está gravada a buril, e a primeira frase que as aproximar comete
+   o anacronismo. O que a carta da cifra pode dizer, e diz, é que **o corte fresco brilha
+   contra a pátina** — logo aquela linha foi cortada depois das outras. Isso é só olhar.
+2. **Dossiê «O documento queimado», em `supressao-de-vestigios.md`** — irmão do que já
+   existia sobre roupas queimadas, com a mesma arquitetura e a mesma lição: *o que a cinza
+   guarda é a identidade da peça*. O achado que rege o dossiê é de física, e contraria o
+   senso comum: **um livro fechado não arde** — o calor escoa para o miolo e a camada de
+   carvão da capa sobe a temperatura de ignição, de modo que o volume sobrevive com o miolo
+   legível. Destruir um registro numa lareira exige **desmanchá-lo e alimentá-lo aos
+   punhados**, ao longo de uma hora — o que é gesto deliberado, não de pânico. A prova fica
+   na **carcaça** (dobra e furos de costura com o fio de linho, cola animal, lombo de mola,
+   pastas, cantos de couro retorcidos, fecho de latão), nunca nas folhas. E o limite é duro:
+   **não se lê nada** — a decifração de carbonizado é de 1941 em diante; a luz rasante dá
+   **geometria de pauta**, e mais nada.
+3. **Relógio por dentro e balança de fiel, em `utensilios-e-objetos.md` §11** — a **cuvette**
+   (*dome*, para o ofício inglês) é a tampa interna da caixa, aberta pela unha; o
+   **guarda-pó** (*dust cap*) é a calota sobre o maquinismo, e são peças diferentes. O que se
+   grava numa e a folga de campo que ela tem; a regra do ensaio inglês (o *dome* é parte da
+   caixa e leva contraste; suíço e francês usam latão dourado, o que datou e nacionalizou o
+   relógio do morto de graça). E a **balança de fiel do ourives** com as unidades troy — o
+   instrumento sem o qual o caderno de pesos do Livro II não teria lastro material.
+4. **Dois anacronismos novos em `vocabulario-de-epoca.md`** — «cubeta» (falso amigo: é o vaso
+   de laboratório) e a marca de ferramenta pelo exemplar. Mais duas linhas na tabela de
+   marcos técnicos de `fontes.md` (estrias, anos 1920; carbonizado, 1941).
+
+### Verificação
+
+O `perito-forense` releu as quatro peças contra o próprio parecer, com uma ordem explícita:
+marcar como bloqueante qualquer ponto em que a redação tivesse **endurecido** a pesquisa —
+transformado um «não consegui confirmar» em fato da base, ou uma inferência dele numa
+asserção normativa. É a cautela que esta base impõe a si mesma desde a nota sobre Locard:
+o valor dela está em distinguir o que 1893 sabia do que só veio depois, e uma KB que exagera
+para o lado da certeza estraga a prosa de todas as OS seguintes.
+
+**Veio sem bloqueantes e com cinco altos, todos aplicados — e todos eram endurecimento meu.**
+Valem por si:
+
+- **«Em 1893 não se lê o exemplar» era absoluto demais**, e tem contraexemplo inglês anterior
+  ao jogo: em **1835**, o Bow Street Runner **Henry Goddard** ligou balas ao molde do mordomo
+  por uma saliência do tamanho de uma cabeça de alfinete. O que 1893 não tem é a **estria
+  microscópica**, não o exemplar em absoluto. A base passou a ter **duas portas** de olho
+  armado — o encaixe físico e o defeito conspícuo —, e um aviso de homónimo: aquele Goddard
+  não é o Calvin Goddard das estrias, de **1925**.
+- **A luz rasante estava afirmada como se desse sempre.** O mecanismo é documentado; a
+  garantia, não — a própria literatura que criou o método fotográfico de 1941 registra que a
+  luz oblíqua **falhava** sobre a folha plenamente enegrecida, e foi por isso que se foi
+  buscar a fotografia. A ressalva entrou onde faltava, no mesmo tom em que o dossiê já se
+  recusava a afirmar cor.
+- **A pesagem de entrada e saída estava atribuída a Gee (1892)** com mais firmeza do que se
+  confirma no texto dele. O **fato sobrevive; a fonte é outra** — um registro de oficina do
+  período, no acervo do Public Record Office Victoria. Gee fica com o que é dele (a coleta e
+  o refino da limalha), e a citação passou a ser a verificável.
+- **O verbete do relógio reabria, no fim, a confusão que abrira dizendo resolver:** dava
+  *dust cover* à tampa de dentro, quando é nome da calota. A base agora **fixa os dois** e
+  explica por que o ofício os embaralha.
+- **O repertório de legendas é prática suíça e francesa**, não inglesa — e isso **decide o
+  objeto do caso**: uma inscrição particular *esconde-se* no jargão de uma cuvette suíça e
+  *salta* num dome inglês. O truque que a carta da cifra usa só funciona porque o relógio do
+  morto é suíço, o que a própria carta já dizia sem saber (cuvette de metal dourado, legendas
+  francesas).
+
+Ficaram também três omissões que fariam falta a quem escrevesse depois, e entraram: o **leito
+de cinzas anormalmente alto** (o tell mais robusto do dossiê, e eu não o tinha escrito), a
+**placa de vidro** que estabiliza a escama antes do exame, e o precedente dos **papiros de
+Herculano** com as tentativas químicas falhadas de Davy — que fixa o limite pelos dois lados.
+
+**Aberto:** `CLASSES_VESTIGIO` continua sem classe de documento queimado, como já não tem de
+roupa queimada — o dossiê serve a prosa autoral e o gerador ainda não sabe produzir nenhum
+dos dois. Registrado nas divergências do próprio arquivo, não criado.

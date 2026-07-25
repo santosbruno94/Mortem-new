@@ -59,6 +59,9 @@ conhecê-lo.
 | Precipitina (sangue humano, Uhlenhuth) | 1901 | **Não** |
 | Criminalística sistemática (Gross, *Handbuch*) | 1893 | **Sim** — contemporâneo; exame do agressor e do vestígio |
 | Leitura formal de padrões de mancha de sangue (Piotrowski) | 1895 | **Não** — a trilha lê-se só por senso comum em 1893 |
+| Individualização de ferramenta por **defeito visível** (Henry Goddard, Bow Street) | 1835 | **Sim** — a olho: uma falha de gume que se repita em todas as marcas. Não confundir com o Calvin Goddard das estrias |
+| Identificação de ferramenta por **estrias** (Waite/Calvin Goddard; microscópio de comparação) | 1925 | **Não** — fora daquele defeito visível, lê-se o **gênero** do instrumento; ver `vestigios.md` |
+| Decifração de documento carbonizado (fotografia de imagem latente, *Nature* 147, 1941) | 1941 | **Não** — a luz rasante quando muito dá geometria de pauta, nunca uma sílaba; ver `supressao-de-vestigios.md` |
 
 ## Bastidores modernos (fora do horizonte de 1893 — só para o gerador)
 

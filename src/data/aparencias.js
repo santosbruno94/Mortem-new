@@ -134,6 +134,16 @@ export const APARENCIAS_CURADAS = {
     idadeAparente: 'idosa',
     traje: 'modesto',
   },
+  // OS-R4: Amos Kell, sineiro de S. Miguel — fonte de informação, não
+  // suspeito. Recebe o perito na torre.
+  amos_kell: {
+    corpo: 'medio',
+    pele: 'corada',
+    cabelo: { cor: 'grisalho', estilo: 'despenteado' },
+    pelosFaciais: 'costeletas',
+    idadeAparente: 'idosa',
+    traje: 'modesto',
+  },
 };
 
 // Nomes de exibição dos personagens que NÃO são suspeitos (não vivem em
@@ -142,6 +152,7 @@ export const APARENCIAS_CURADAS = {
 // de apresentação resolve nomes por obterNomePersonagem (pacote_caso.js).
 export const NOMES_NAO_SUSPEITOS = {
   delegado_wycliffe: 'Guarda Wycliffe',
+  amos_kell: 'Amos Kell',
 };
 
 // Quem recebe o perito em cada localidade (para o retrato no overlay).
@@ -154,4 +165,5 @@ export const PERSONAGEM_POR_LOCALIDADE = {
   papelaria: 'agnes_rooke',
   moinho: 'caleb_grey',
   posto_do_guarda: 'delegado_wycliffe',
+  torre_sino: 'amos_kell',
 };

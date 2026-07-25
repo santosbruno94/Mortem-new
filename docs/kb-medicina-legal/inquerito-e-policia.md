@@ -247,7 +247,21 @@ com recomendação:
 > tem a patente** (Wycliffe e o guarda Tobin). O homem posto à porta da relojoaria é "um
 > homem", não "um guarda". Fica de pé a questão de fundo — um posto de vila é de **um homem
 > só**, e Briarstone tem dois; o correto de época seria o constable do beat vizinho ou um
-> *special constable* juramentado às pressas. Aberto para a OS-R4 (elenco).
+> *special constable* juramentado às pressas.
+>
+> **Resolvido na OS-R4 (25/07/2026), pela primeira via.** O posto de Briarstone é de um
+> homem, e o homem é Wycliffe. **Tobin faz a ronda vizinha (Caulfield)** e desce a High
+> Street às oito, no ponto em que as duas rondas se encontram — prática corrente das forças
+> de condado, cujos beats eram extensos e se cobriam nas extremas. A prática tinha nome de
+> ofício: **conference point** (também *meeting point*) — o ponto e a hora em que dois beats
+> se conferem, lavrados no livro de cada um, e que serviam tanto à troca de informação como
+> à conferência do homem pelo sargento. **Ressalva de época, e vale para a ficção:** a
+> previsibilidade do ponto fixo era crítica corrente (o gatuno aprendia a hora do guarda), e
+> as forças variavam horários por isso — logo, as oito de Tobin são *o ponto marcado daquela
+> ronda*, não um relógio infalível da vila. A segunda via (*special constable*) foi
+> descartada por razão de calendário, não de época: um special juramentado **depois** da
+> morte não poderia ter lavrado a ronda da sexta às oito, e essa ronda é a carta que fixa o
+> piso da janela do caso.
 
 Princípio geral (alinhado ao guia de estilo §5): **traduzir o instituto quando o
 português tem par exato e limpo** (inquérito, pronúncia, doloso/culposo) e **manter o
@@ -306,6 +320,12 @@ brasileiro moderno.
 - Clive Emsley, historiografia da polícia inglesa, via Surrey Constabulary 1851-1901 e
   "Early county chief constables 1880-1905" (Open University). Recrutamento e progressão
   na county constabulary. http://www.open.ac.uk/Arts/history-from-police-archives/
+- Essex Police Museum, "Night Conference Points" — o ponto e a hora em que beats contíguos
+  se conferem, e os livros de beat/conference points das forças de condado (§2, resolução
+  do posto de um homem só). https://essexpolicemuseum.substack.com/p/hn-17-night-conference-points-1915
+- "Rural Police Patrol in England and Wales", Journal of Criminal Law & Criminology
+  (Northwestern Scholarly Commons) — extensão do beat rural e cobertura entre vizinhos.
+  https://scholarlycommons.law.northwestern.edu/cgi/viewcontent.cgi?article=4294&context=jclc
 - Jack-the-Ripper Tour / Whitechapel Jack, "A Victorian CSI" e "Crime Scene Investigation
   1888" — rotina do constable diante do corpo; contaminação de cena em Whitechapel.
   https://www.jack-the-ripper-tour.com/generalnews/a-victorian-csi/ ; https://whitechapeljack.com/csi-whitechapel/

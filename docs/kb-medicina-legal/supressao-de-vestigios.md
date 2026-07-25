@@ -180,6 +180,111 @@ tentar **Teichmann**.
 
 ---
 
+## Dossiê de supressão — o documento queimado
+
+**O método, e ele não é o que se imagina.** Um livro **fechado não arde**. O calor escoa para
+o miolo, que não chega à temperatura de ignição, e a camada de carvão que se forma na capa
+sobe ainda mais essa temperatura: um livro-razão grosso atirado à grelha carboniza pelas
+bordas e **sobrevive como bloco, com o miolo legível**. Quem quer destruir um registro numa
+lareira doméstica tem de o **desmanchar e alimentá-lo ao fogo aos punhados**, ao longo de uma
+hora ou mais. Isso importa duas vezes: pela física, e porque destruição demorada é gesto
+deliberado — não é o gesto de quem entra em pânico.
+
+**O que sobrevive.** A mesma lição das roupas queimadas, com outro objeto: *o que a cinza
+guarda é a identidade da peça*. Aqui a prova não está nas folhas, que ardem. Está na
+**carcaça** — e, antes dela, na **quantidade**.
+
+- **O leito de cinzas alto.** É o tell mais robusto do dossiê, e o mais fácil de esquecer.
+  Um livro-razão desmanchado e alimentado ao fogo por uma hora deixa a grelha com **muito
+  mais cinza do que uma noite de outubro justifica**, e com sinal de ter sido atiçada
+  repetidas vezes. Quem raspa a grelha vê isso antes de ver qualquer outra coisa.
+
+- **As folhas.** O papel de livro de contas é de trapo ou de polpa carregada de **caulim**,
+  amido e cola. A parte orgânica queima; a mineral fica, e dá uma **cinza pálida, leve, em
+  escamas de pluma** que levanta ao mínimo sopro — nada parecida com a cinza grítica e
+  escorificada do carvão. Nas bordas frias do leito ficam **lâminas negras carbonizadas** com o
+  formato da folha.
+- **Os cadernos costurados.** Arde o que está solto; o que está preso pela dobra fica preso.
+  Sobra um bloco em que se distinguem **a dobra do caderno, os furos da costura e o fio de
+  linho** carbonizado ainda a atravessá-los. É a prova estrutural, e é a mais forte.
+- **A lombada.** Cola animal quente é o padrão da encadernação vitoriana: proteína, que incha,
+  borbulha, endurece e **cheira a chifre queimado** — a mesma distinção que a lã já dá contra
+  as fibras vegetais. *Ressalva de honestidade: dezesseis horas depois, num cômodo fechado de
+  outubro, o cheiro é fraco. Serve de confirmação, nunca de pilar.*
+- **O lombo de mola (*spring back*).** Encadernação corrente do livro de papelaria dos 1890.
+  A mola é lâmina curva de papelão laminado — às vezes de metal. Em metal, sobrevive tal e
+  qual; em papelão, sobra uma **crosta curva e rígida, em camadas**, que nenhuma folha produz.
+- **As capas.** *Millboard* ou *strawboard*, forradas de pano ou meio-couro: uma **laje de
+  carvão de vários milímetros**, que se descama em lâminas ao lado de escamas finas como
+  pétala. **A espessura é o argumento.**
+- **Couro e pergaminho de cantos e lombada.** Não viram cinza: **encolhem e retorcem-se em
+  grumos duros, córneos, translúcidos.**
+- **Os metais.** Fecho de latão e a sua chapa, cantoneiras, ilhoses, rebites. O latão funde
+  **na casa dos 900 °C** (900–940 °C, conforme a liga) e a periferia de um leito doméstico
+  fica bem abaixo: deformam, escurecem e **ficam**. Observável de graça: o zinco **ferve a
+  ~907 °C**, e latão que esteve no fogo perde zinco e **avermelha** à superfície — tell de
+  olho nu, sem uma palavra de ciência.
+
+**Queimado × amassado e sujo.** O carvão é **negro na fratura**, não só à superfície: parta-se
+a escama e o corte é preto de lado a lado, enquanto a sujidade fica por cima. Além disso o
+carbonizado **não vinca — estilhaça**; **encolheu** (uma folha in-quarto encolhe à vista);
+**encurvou** para o lado do fogo; e **pesa muito menos do que aparenta**.
+
+**O gesto de exame.** Antes de tudo, **matar a corrente de ar** — a escama voa e não volta.
+Não tocar com os dedos: levantar o conjunto **por baixo**, com uma folha de cartão rígido, e
+**cobri-lo com uma placa de vidro** — examina-se através dela, e o que se examina para de
+esfarelar. Ler em **luz rasante** de vela ou lampião posto ao rés da grelha (a luz oblíqua de Gross, que
+esta base já autoriza para o assoalho esfregado). O resto do leito passa por **crivos de malha
+progressiva**, separando o metálico do calcinado — o mesmo protocolo das roupas queimadas.
+Muda o objeto; o método é o que já está escrito.
+
+**O limite de 1893, e aqui a honestidade vale mais que o resultado.**
+
+- **Não se lê nada.** Nem uma palavra, nem um algarismo, nem uma data, nem uma inicial, nem a
+  letra de alguém. A decifração de documentos carbonizados é ciência da Segunda Guerra em
+  diante — o marco fotográfico é de **1941**.
+- **O que a luz rasante chega a dar é geometria.** Sobre a escama negra pode aparecer um
+  **brilho de linhas regulares e paralelas**: isso autoriza dizer que o papel era **pautado**
+  — logo, de livro de contas, e não carta nem embrulho. E entre as pautas, **marcas
+  irregulares de brilho diferente**: houve escrita ali. **Sem uma sílaba legível.** É juízo de
+  geometria, não de leitura. **Ressalva, e é dura:** o mecanismo do resíduo de tinta é
+  documentado; que a pauta apareça **sempre**, não. Trate-se como possível numa escama que
+  ainda guarde relevo, nunca como leitura garantida — a própria literatura que criou o método
+  fotográfico de 1941 registra que a luz oblíqua **falhava** sobre a folha plenamente
+  enegrecida, e foi por isso que se foi buscar a fotografia.
+- **Por que a escrita chega a aparecer.** A tinta impede a saída dos gases durante a queima e
+  deixa imagem latente, de brilho e cor próprios. A **ferro-galhada** contrasta melhor, porque
+  o resíduo dela é óxido de ferro — matéria mineral, que não arde; a tinta de impressão é
+  negro-de-fumo, isto é, **carbono sobre carbono**, e some no fundo.
+- **Não afirmar cor.** Se a pauta impressa a azul e vermelho deixa ou não traço colorido sobre
+  a cinza, não há fonte que o sustente. Afirme-se brilho e geometria; cor, não.
+- **Fora de época, todos:** banhos de fixação, transferência, retroiluminação (inútil sobre
+  carvão opaco), fotografia forense de qualquer espécie, infravermelho, ultravioleta.
+- **Não atribuir método a Gross.** A contribuição dele ao papel queimado é de **manuseio** —
+  fixar o fragmento a um suporte para o examinar plano —, e a tradução inglesa do manual é de
+  **1906**, vertida da **4.ª edição alemã, de 1904**: nada garante que a matéria estivesse na
+  1.ª, de 1893. A luz oblíqua, sim, é dele e é corrente.
+- **O precedente que legitima o pouco que se vê, e mostra o muito que não.** Os **papiros de
+  Herculano**, carbonizados, foram desenrolados e lidos em parte ao longo do século — o que
+  prova que carbonizado *pode* dar leitura a olho, em condições que uma grelha de vila não
+  oferece. E as tentativas químicas de **Humphry Davy** (Royal Society, 1819–1821, cloro)
+  tiveram sucesso limitado: o século XIX **tentou por químico e falhou**. É citação que um
+  perito culto de 1893 reconheceria, e fixa o limite pelos dois lados.
+- **Não datar a queima.** Uma grelha doméstica esfria em horas. "Cinza fria" na tarde de
+  sábado é compatível com a sexta à noite **e** com a madrugada de sábado, e nada mais fino
+  que isso.
+
+**Vocabulário de época.** *Grelha*, *leito de cinzas*, *escama*, *carbonizado*, *calcinado*,
+*crivo*, *lombada*, *lombo de mola*, *pasta* (a capa), *guardas*, *caderno* (o fascículo
+costurado), *papel de razão*, *tinta ferro-galhada*, *luz rasante*.
+
+**No jogo.** É o lastro da carta `ev_cinza_livro` do caso-escola (OS-R4): o Livro I do
+relojoeiro arde na grelha do escritório, e a carta acusa **a destruição** sem dizer uma
+palavra do que o livro registava — porque não há como dizê-la. A fome do que ardeu é o que
+manda o jogador atrás do segundo livro.
+
+---
+
 ## O álibi do sangue de porco — a lacuna serológica
 
 **O desafio.** O suspeito diz: *"o sangue no meu casaco é do porco que abati."* Em 1893 esta
@@ -337,6 +442,11 @@ vergonha. É a mesma família da mentira de vergonha que os diálogos gerados j�
 - **Proveniências órfãs.** Ver acima: `vestigios.js` cita `vestigios.md` para matéria que
   nasce neste arquivo. Aponta-se; a correção das strings é de OS.
 - **Sem classe de roupa queimada.** §3.3 promete o exemplo; a tabela não o entrega.
+- **Sem classe de documento queimado, pelo mesmo motivo.** O dossiê da cinza do livro está
+  escrito e o caso-escola já o usa à mão (`ev_cinza_livro`), mas `CLASSES_VESTIGIO` não tem
+  classe para ele — o **gerador não sabe produzir** um registro destruído. Registrado, não
+  criado: a regra da casa é não criar feature sem ordem expressa. Candidato natural a entrar
+  junto com a classe de roupa queimada, se e quando o usuário abrir esse lote.
 - **`instrumento_guardado_umido` cobre só a umidade.** O dossiê da arma lavada mostra que o
   vestígio forte não é a umidade da junta (que seca em um dia), e sim o **coágulo sob o
   rebite**, que não seca nunca e Teichmann acha décadas depois. A classe atual é a versão

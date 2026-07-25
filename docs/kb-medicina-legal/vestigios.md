@@ -24,6 +24,50 @@ no laboratório de Lyon a partir de 1910. Portanto: o perito de MORTEM **age** s
 princípio (compara fibras, procura transferências), mas **não o cita pelo nome** nem invoca
 uma "lei" que ainda não existe. É prática sem doutrina — e o jogo deve tratá-la assim.
 
+## Marcas de ferramenta — a mesma honestidade cronológica
+
+Que uma ferramenta deixe marca à sua feição é observação antiga, e o perito de 1893 trabalha
+com ela sem cerimônia: a alavanca no batente diz a **largura do gume** que a forçou; a boca de
+uma ferida diz a **secção da haste** que entrou — quatro faces, três faces, lâmina de um só
+gume; o entalhe na madeira separa pé-de-cabra de formão. Isso é leitura de **gênero**, e é
+legítima.
+
+O que **não existe em 1893** é a leitura da **estria**: o rasto microscópico e individual que
+o fio de uma ferramenta arrasta, e que permite dizer que *aquele* buril, e nenhum outro do
+mesmo feitio, cortou *aquela* marca. Essa comparação é ciência do século XX — a linhagem que
+Waite e **Calvin** Goddard levantam no Bureau of Forensic Ballistics, e que só se firma com o
+**microscópio de comparação, em 1925**. Um perito de vila em 1893 não tem o instrumento, não
+tem a doutrina, e não tem tribunal que a receba.
+
+**A regra é a mesma da fibra:** a lente estabelece **classe, não indivíduo**. E valem as
+mesmas duas exceções, ambas de olho armado e nenhuma de microscópio:
+
+- **O encaixe físico.** Uma ponta de aço partida, achada na ferida, que case com o gume
+  partido da ferramenta apreendida, individualiza — não por estria, mas porque duas fraturas
+  irregulares só encaixam uma na outra. É o princípio que já casa duas pontas de corda (ver
+  abaixo, "O que a análise de 1893 alcançava").
+- **O defeito conspícuo.** Um gume mossado que repita a mesma falha em cada marca é o mesmo
+  raciocínio, e tem precedente inglês **anterior ao jogo**: em 1835, o Bow Street Runner
+  **Henry Goddard** ligou as balas ao molde do próprio mordomo por uma saliência do tamanho
+  de uma cabeça de alfinete, comum a todas. É individualização por defeito **visível**, e é
+  legítima. *(Cuidado com o homónimo: este Goddard é de 1835 e nada tem com o Calvin Goddard
+  das estrias, de 1925.)*
+
+Fora dessas duas portas: **classe, nunca exemplar**.
+
+**O que o perito de 1893 FAZ, então.** A leitura de classe é canônica no próprio ano do jogo:
+o *Handbuch* de Gross (1893) trata do exame das ferramentas de arrombamento e das marcas que
+deixam. O gesto que a acompanha é **preservar a impressão antes que ela se perca** — moldá-la
+em cera, lacre ou gesso, porque a madeira seca, o batente é trocado e a marca vai-se com ele.
+*(A moldagem é prática de época; não a atribua a Gross — não se confirma no texto dele.)*
+
+**A armadilha de prosa, e é a mais fácil de pisar.** Quando o instrumento do crime e outro
+objeto do caso são da mesma família — dois buris de gravador, duas facas de mesa, dois
+martelos de bancada —, a tentação é escrever que *é o mesmo*. Nem o narrador, nem a
+`vozMestre`, nem personagem de ofício o podem dizer. Diga-se que a marca é **de buril**;
+jamais que é **daquele** buril. Quem quiser ligar os dois no jogo liga por outra ordem de
+prova — posse, oportunidade, o vestígio que viaja —, nunca pela marca.
+
 ## Fibras têxteis e de cordoaria à lente
 
 O núcleo da análise de vestígios da época. Sob a lente simples, quatro fibras correntes
@@ -79,6 +123,10 @@ fibra fala do instrumento; a fibra repetida fala do contato entre o instrumento 
 **Não alcançava:**
 - Dizer que a fibra veio **daquela** peça e de nenhuma outra igual: têxteis são fabricados aos
   milhares. A lente estabelece **classe**, não **indivíduo** (salvo o encaixe físico de pontas).
+- Dizer que **aquela** ferramenta, e nenhuma outra do mesmo feitio, fez a marca: a comparação
+  de **estrias** é de 1925 em diante. Lê-se o **gênero** do instrumento (ver a seção própria,
+  acima) — salvo pelas duas portas de olho armado, o encaixe físico de uma ponta partida e o
+  defeito conspícuo que se repete em todas as marcas.
 - Dizer de **quem** é um cabelo ou uma fibra. Sem individualização biológica.
 - Distinguir sangue **humano** de animal: a prova de precipitina é de Uhlenhuth, **1901** —
   posterior a 1893.
@@ -166,6 +214,14 @@ da nota sobre Locard (acima) e sobre Hans Gross em `fontes.md`: prática sem dou
 - **A honestidade cronológica é jogável.** A prosa e a `vozMestre` podem comparar fibras à
   lente, mas não devem invocar "o princípio de Locard", grupos sanguíneos, sangue humano-versus-
   animal ou impressão digital como técnicas correntes: nada disso está ao alcance de 1893.
+- **O caso-escola tem a armadilha de marca de ferramenta armada e engatilhada.** Em "A Hora
+  Emprestada" a arma é um **buril de gravador** (`ev_residuo_ferida`, `ev_estojo_buril`) e a
+  cifra do morto está **gravada a buril** por dentro do relógio de bolso (`ev_cuvette`, OS-R4).
+  São duas marcas da mesma família de ferramenta no mesmo caso, e a primeira frase que as
+  aproximar («o mesmo buril», «a mesma mão», «casa com a lesão») comete o anacronismo. O que a
+  carta da cifra pode dizer, e diz, é outra coisa e é observação pura: **os sulcos frescos
+  brilham contra a pátina dos antigos** — logo aquela linha foi cortada depois das outras. Isso
+  é só olhar, e 1893 o tem.
 - **Observação pura.** Conforme o guia de estilo, a carta descreve o vestígio (o filamento, a
   torção, a cor) e cala a conclusão; ligar a fibra ao suspeito é raciocínio do jogador, não fala
   do narrador.

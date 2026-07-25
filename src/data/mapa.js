@@ -30,7 +30,7 @@ export const GRUPOS = {
   // entre eles não custa tempo.
   relojoaria: 'A relojoaria — a loja inteira e a saleta (mesmo prédio)',
   // A vila de Briarstone: prédios diferentes, a um pulo de distância.
-  vila: 'A vila de Briarstone — posto do guarda, estalagem, loja, moinho',
+  vila: 'A vila de Briarstone — posto do guarda, estalagem, loja, moinho, torre',
   // Fora da vila: caro de alcançar.
   fora: 'Fora de Briarstone (Moorford)',
 };
@@ -92,6 +92,15 @@ export const NOS_MAPA = [
     id: 'moinho',
     rotulo: 'O Moinho',
     grupo: 'vila', // na orla da vila; Caleb Grey
+    desbloqueadoInicio: true,
+  },
+  {
+    // OS-R4: a torre da paróquia. Nasce ABERTA (G10 — Amos Kell é sempre
+    // alcançável); o que a cifra abre não é o nó, é a câmara dos sinos: o
+    // parágrafo condicional da localidade só entra com `ev_cuvette` na mesa.
+    id: 'torre_sino',
+    rotulo: 'A Torre de S. Miguel',
+    grupo: 'vila', // no extremo da High Street; Amos Kell, sineiro
     desbloqueadoInicio: true,
   },
   {
