@@ -234,10 +234,10 @@ export const CARTAS = [
     id: 'ev_cinza_livro',
     localidade: 'relojoaria',
     subLocal: 'escritorio',
-    textoDisplay: 'Cinza de Papel na Grelha',
+    textoDisplay: 'Cinza de Papel Queimado',
     carimboPadrao: 'Cinza de papel, fio de costura e fecho de latão',
     descricao:
-      'A grelha carrega mais do que uma noite de fogo: cinza pálida que se levanta ao mínimo sopro, lâminas negras encurvadas que estilhaçam em vez de vincar, e uma crosta espessa, em camadas. Posta a vela ao rés da grelha, as lâminas devolvem um brilho de linhas paralelas, e entre as linhas outras marcas de brilho, sem forma que se leia. No resto do leito, um fecho de latão com a sua chapa, escurecido e torto, e um fio de linho preso a uma dobra de folhas queimadas.',
+      'A cinza sobe acima das barras: cinza pálida que se levanta ao mínimo sopro, lâminas negras encurvadas que estilhaçam em vez de vincar, uma crosta espessa em camadas. Posta a vela ao rés da grelha, as lâminas devolvem um brilho de linhas paralelas, e entre as linhas outras marcas de brilho, sem forma que se leia. No resto do leito, um fecho de latão com a sua chapa, escurecido e torto, um fio de linho preso a uma dobra de folhas queimadas e, de encontro à grade, um pedaço de pasta empenada com a pele torrada, ainda com o vinco das nervuras.',
     // Domínio `comportamental` por ordem da G1: a cadeia física do crime não
     // recebe carta nova. Sub-domínio próprio, que o motor não lê — esta carta
     // não sustenta âncora nenhuma, e é esse o desenho.
@@ -505,7 +505,7 @@ export const CARTAS = [
     textoDisplay: 'Vitrine Fechada às Oito',
     carimboPadrao: 'Visto com Vida às 20h (13/out)',
     descricao:
-      'Do registro da ronda: às oito em ponto da noite de sexta, o guarda Tobin, que desce a High Street a caminho de Caulfield, viu o relojoeiro, de dentro da loja, correr as tampas da vitrine e acenar-lhe pelo vidro, como todas as noites.',
+      'Do registro da ronda: às oito em ponto da noite de sexta, o guarda Tobin viu o relojoeiro, de dentro da loja, correr as tampas da vitrine e acenar-lhe pelo vidro, como todas as noites.',
     // Âncora DURÁVEL de piso: a morte não pode anteceder as 20h. Junto do
     // relógio de bolso (teto durável), fecha janela finita em qualquer rota.
     tagsOcultas: {
@@ -542,7 +542,7 @@ export const CARTAS = [
     textoDisplay: 'Uma Senhora na Viela',
     carimboPadrao: 'Relato: senhora deixou a viela ao anoitecer',
     descricao:
-      'A Sra. Wick, dos fundos do nº 9, declarou ter visto uma senhora de escuro deixar a viela da relojoaria "pouco antes das nove" da noite de sexta. Não lhe viu o rosto; conhece o passo, diz, mas não jura. Ao pé da folha, em tinta mais nova: procurada outra vez antes do meio-dia, disse não ter visto nada e fechou a janela.',
+      'A Sra. Wick, dos fundos do nº 9, declarou ter visto uma senhora de escuro deixar a viela da relojoaria "pouco antes das nove" da noite de sexta. Não lhe viu o rosto; conhece o passo, diz, mas não jura. Abaixo, em tinta mais nova: procurada outra vez antes do meio-dia, disse não ter visto nada e fechou a janela.',
     // Testemunho VERDADEIRO (e sem hora nas tags: não há o que refutar).
     // A lição inversa do padeiro: nem todo depoimento é falso — este apenas
     // pede o nome que a cesta e o aro de ouro sabem dar.
@@ -561,9 +561,9 @@ export const CARTAS = [
     id: 'dep_sineiro_beco',
     localidade: 'torre_sino',
     textoDisplay: 'Um Homem na Boca do Beco',
-    carimboPadrao: 'Avistamento declarado: 21h15 (13/out); fora do registro',
+    carimboPadrao: 'Avistamento declarado: depois das nove (13/out); fora do registro',
     descricao:
-      '"Dou corda ao relógio da torre nas sextas, depois das nove, que é quando a igreja esvazia. Desci com a lanterna e, do portão do adro, um homem saiu pela boca do beco da relojoaria e subiu a rua. O andar do Sr. Crane conheço-o de doze anos de o ver passar." Espera até que a pena pare. "O guarda perguntou-me primeiro quanto eu tinha bebido. Depois já não perguntou mais nada, e não escreveu."',
+      '"Dou corda ao relógio da torre nas sextas, depois das nove, que é quando a igreja esvazia. Desci com a lanterna e, do portão do adro, vi sair um homem pela boca do beco da relojoaria. Subiu a rua. Conheço o andar do Sr. Crane: são doze anos de vê-lo passar." Espera que a pena do escrivão pare. "O guarda perguntou-me primeiro quanto eu tinha bebido. Depois já não perguntou mais nada, e não escreveu."',
     // G6 — O VERAZ SEM CRÉDITO. O sineiro diz a verdade, e a marca de
     // insuficiência nas tags faz o motor recusá-lo como sustentação de
     // qualquer âncora e como fato de qualquer refutação (acusacao.js,
@@ -581,7 +581,7 @@ export const CARTAS = [
     id: 'ev_livro_ii',
     localidade: 'torre_sino',
     textoDisplay: 'Caderno de Pesos do Relojoeiro',
-    carimboPadrao: 'Ouro pesado à entrada e à saída; diferença somada ao mês',
+    carimboPadrao: 'Ouro pesado à entrada e à saída; diferença somada ao fim de cada mês',
     descricao:
       'Um caderno de capa de oleado, do tamanho da palma. Cada linha traz a data, a peça, o peso do ouro à entrada e o peso à saída, e a coluna do executor rubricada. Ao pé de cada mês, a diferença somada na letra miúda do morto, e a soma do ano por baixo, sublinhada duas vezes.',
     tagsOcultas: {

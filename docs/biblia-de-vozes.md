@@ -204,9 +204,13 @@
   nove", "amanhã é domingo"), não por relógio de algibeira.
 - **Ritmo:** frases curtas, com uma pausa antes do que já sabe que não vão acreditar.
   **Antecipa o descrédito em vez de o negar** — nunca se defende.
-- **Léxico:** da torre (corda, manopla, cavalete, cabeçote, câmara dos sinos, repique, adro,
-  a conserva do relógio). Numera os sinos do mais leve ao mais pesado, que é como se contam.
-- **Tique:** responde sem largar o serviço, e diz ele próprio o que a vila diria dele.
+- **Léxico:** da torre (corda, manopla, breu, armação, cabeçote, câmara dos toques, câmara
+  dos sinos, repique, adro, a conserva do relógio). Numera os sinos do mais leve ao mais
+  pesado, que é como se contam.
+- **Tique:** responde **de dentro do serviço** — a corda não lhe sai das mãos —, e diz ele
+  próprio o que a vila diria dele. **A vassoura é de Davey e o "não para o serviço para
+  responder" é de Caleb Grey**: o adereço de Amos é a corda, e é assim que o teste do nome
+  coberto se sustenta (achado do `editor-critico` no gate da R4).
 - **Amostra:** *"O guarda perguntou-me primeiro quanto eu tinha bebido. Depois já não
   perguntou mais nada, e não escreveu."*
 

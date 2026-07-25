@@ -269,9 +269,9 @@ export const GLOSSARIO = [
     termo: 'Coroner',
     dominio: 'comportamental',
     definicao:
-      'Oficial da Coroa incumbido de inquirir das mortes violentas, súbitas ou de causa ignorada ocorridas no seu condado, na forma do Ato dos Coroners de 1887. Não julga o crime: apura, perante júri de doze homens, quem era o morto e quando, onde e por que meios morreu. Dele partem a ordem de exame do corpo, dirigida a praticante legalmente habilitado e inscrito, o honorário de duas libras e dois xelins que a paga, e a data do inquérito. O guarda da vila serve-lhe de oficial: notifica, lavra e cita, sem autoridade própria sobre o exame.',
+      'Oficial da Coroa incumbido de inquirir, no seu condado, das mortes violentas ou não naturais, das mortes súbitas de causa ignorada e das mortes na prisão, na forma do Ato dos Coroners de 1887. Não julga o crime: apura, perante júri de não menos de doze homens, quem era o morto e quando, onde e por que meios morreu. Dele partem a ordem de exame do corpo, dirigida a médico legalmente habilitado e inscrito no registro, o honorário de duas libras e dois xelins com que se paga o exame, e a data do inquérito. O guarda da vila serve-lhe de oficial: notifica, lavra e cita, sem autoridade própria sobre o exame.',
     sinalObservavel:
-      'A ordem escrita que autoriza o exame, com o nome do médico requisitado; e, ao fim, o veredicto do júri, que pode remeter o acusado a julgamento por mandado do próprio coroner.',
+      'A ordem escrita que autoriza o exame, com o nome do médico requisitado; e, ao fim, o veredicto do júri, que pode pronunciar o acusado por mandado do próprio coroner.',
   },
 
   // ===================== VESTÍGIO =====================
