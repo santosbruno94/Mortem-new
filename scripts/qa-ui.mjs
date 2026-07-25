@@ -155,8 +155,11 @@ async function novaPartida(page, perito, query = '') {
   await page.waitForSelector(`text=${perito}`, { timeout: 15000 });
   await page.click(`text=${perito}`);
   await page.waitForSelector('text=→', { timeout: 15000 });
-  // Abertura: 6 avanços até o passo 7, depois entrar (sem as perguntas).
-  for (let i = 0; i < 6; i++) {
+  // Abertura do CASO-ESCOLA: 8 avanços até o passo 9, depois entrar (sem as
+  // perguntas). Eram 6 até a OS-R3, que somou o cold open da descoberta e a
+  // ordem do coroner. A rota gerada tem contagem própria (6 passos), mais
+  // abaixo — este helper só serve ao caso-escola.
+  for (let i = 0; i < 8; i++) {
     await page.locator('button, [role=button], a').filter({ hasText: '→' }).last().click();
     await espera(page, 200);
   }

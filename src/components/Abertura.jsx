@@ -38,10 +38,13 @@ export default function Abertura() {
         </div>
 
         {/* Cada passo vem no suporte que lhe cabe: a carta do guarda em
-            pergaminho, o telegrama no formulário do Post Office, o resto em
-            prosa escura sobre a mesa. */}
+            pergaminho, o telegrama no formulário do Post Office, a ordem do
+            coroner no impresso do condado, o resto em prosa escura sobre a
+            mesa. */}
         {passo.telegrama ? (
           <FormularioTelegrafo passo={passo} detective={detective} />
+        ) : passo.ordem ? (
+          <ImpressoDoCondado passo={passo} detective={detective} />
         ) : (
           <div
             className={
@@ -166,6 +169,39 @@ function FormularioTelegrafo({ passo, detective }) {
             </p>
           ))}
         </div>
+      </div>
+    </>
+  );
+}
+
+// O IMPRESSO DO CONDADO (OS-R3). A ordem que o coroner expede ao médico
+// que vai examinar o corpo: papel de repartição, texto de fôrma e os
+// claros preenchidos à mão — aqui, na letra do telegrafista, porque a
+// ordem desceu pelo fio e foi copiada no balcão de Briarstone.
+//
+// O primeiro parágrafo do passo é a olhada de fora (quem descreve o papel
+// está do lado de cá); o segundo é a rubrica do impresso, em versalete; o
+// último é a assinatura. O meio é o corpo da ordem.
+//
+// Camada de APRESENTAÇÃO: nenhuma regra lê a bandeira `ordem`. Sem ela, o
+// passo cai na prosa corrida de sempre e o jogo é idêntico.
+function ImpressoDoCondado({ passo, detective }) {
+  const [lede, rubrica, ...resto] = passo.paragrafos;
+  const assinatura = resto[resto.length - 1];
+  const corpo = resto.slice(0, -1);
+  return (
+    <>
+      <p className="text-stone-300 leading-relaxed mb-5">{interpolar(lede, detective)}</p>
+      <div className="carta-pergaminho rounded-sm p-5 sm:p-7 space-y-4">
+        <p className="font-rotulo uppercase text-[10px] sm:text-[11px] tracking-[0.22em] leading-relaxed border-b border-tinta-apagada/40 pb-3">
+          {interpolar(rubrica, detective)}
+        </p>
+        {corpo.map((p, i) => (
+          <p key={i} className="leading-relaxed">
+            {interpolar(p, detective)}
+          </p>
+        ))}
+        <p className="font-serif italic text-right pt-2">{interpolar(assinatura, detective)}</p>
       </div>
     </>
   );

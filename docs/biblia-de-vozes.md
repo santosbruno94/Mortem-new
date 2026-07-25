@@ -160,6 +160,26 @@
 - **Amostra:** *"Veio a cavalo, de Briarstone. Urgente, disse o rapaz. Briarstone…
   então mataram alguém por lá."*
 
+## Coroner Bramwell Foy (a autoridade que nunca entra em cena)
+
+- **Quem é:** coroner de Sua Majestade para o condado, sob o Coroners Act 1887. É ele
+  quem **ordena** o exame do corpo e quem o **paga** (£2 2s, Medical Witnesses Act
+  1836), e é dele a data do inquérito. O guarda Wycliffe é o *coroner's officer*: o
+  intermediário que notifica, nunca o contratante.
+- **Regra dura (D12):** Foy **não tem cena, não fala e não aparece**. Existe em papel
+  timbrado, e só. Quem o quiser em cena escreve uma OS para isso.
+- **Registro:** o do impresso de repartição — texto de fôrma com claros preenchidos à
+  mão. Terceira pessoa de ofício, subordinadas longas de fórmula legal ("Havendo eu…,
+  e sendo meu ofício…, fica o Dr. Abbot requisitado a…"), nenhuma cortesia, nenhum
+  adjetivo. Datas e quantias por extenso.
+- **Tique:** não ter nenhum. É a única voz do jogo sem idioleto, e **não o ter é o
+  idioleto dela**: onde toda a vila hesita, se desdiz e tempera, o condado declara.
+- **O que a voz carrega para o jogo:** o prazo (segunda-feira, 16 de outubro, às dez,
+  no Wheatsheaf) e o nome que não é o do perito. Harlan atravessa o caso com uma
+  autorização passada ao mestre — é o que dá peso à ordem "NAO ASSINE NADA" (D25).
+- **Amostra:** *"Pelo exame e pelo depoimento serão pagas duas libras e dois xelins, na
+  forma do Ato de 1836."*
+
 ## As testemunhas de fundo (o moço do padeiro, a Sra. Wick, o guarda Tobin, o estalajadeiro)
 
 - **Função:** produzir a alegação que o corpo desmente (a "luz do velho" às 05h15) ou

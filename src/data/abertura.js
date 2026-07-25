@@ -1,9 +1,30 @@
 // =====================================================================
-// Sequência de abertura em 7 passos: da pensão em Caulfield ao briefing
-// do guarda Wycliffe. O Dr. Abbot recebe o chamado de Briarstone e
-// despacha Harlan por telegrama, julgando o caso rotineiro; quem chega
-// na vila é o aprendiz, não o mestre.
+// Sequência de abertura em 9 passos: da manhã de sábado em Briarstone à
+// porta da relojoaria, passando pela pensão em Caulfield. O guarda
+// Wycliffe dá notícia da morte ao coroner do condado e escreve ao Dr.
+// Abbot; o Dr. Abbot despacha Harlan por telegrama, julgando o caso
+// rotineiro. Quem chega na vila é o aprendiz, não o mestre — com uma
+// ordem de exame que traz o nome do mestre, e não o dele.
 // Toda a prosa admite {detective.campo} e {g:masc|fem}.
+//
+// OS-R3 — A ABERTURA. Três coisas mudaram aqui, e por quê:
+//   • O jogo abre pelos olhos de quem achou o corpo (D13), e não mais na
+//     pensão. CERCA DE FAIR-PLAY, e ela é dura porque quem acha o corpo
+//     é o réu: o cold open é observação pura de leigo — a hora da
+//     DESCOBERTA (fato público), nunca a da morte; nada do estado da
+//     cena; nem uma palavra sobre o relógio da lareira. E a regra que
+//     rege cada gesto de Silas neste passo: se o texto admite "este
+//     homem está a fingir", tem de admitir igualmente "este homem está
+//     em choque". Se só admite uma leitura, está errado (G3).
+//   • O coroner entra, fora de cena (D12): é ele quem ORDENA o exame e
+//     quem o PAGA — £2 2s, Medical Witnesses Act 1836 —, e é a ordem
+//     dele que traz a data do inquérito. O constable é coroner's
+//     officer, o intermediário que notifica; nunca o contratante
+//     (docs/kb-medicina-legal/inquerito-e-policia.md §1–§2).
+//   • A carta do guarda perdeu a autoridade que um constable não tinha e
+//     ganhou a forma epistolar de 1893 ("Senhor —", subscrição).
+// O prazo do inquérito (segunda, 16/out, 10h, no Wheatsheaf) é FICÇÃO:
+// nenhuma regra o lê, nenhum desfecho muda por ele.
 //
 // Prosa regida por docs/guia-de-estilo.md e docs/biblia-de-vozes.md:
 // observação pura, vozes diferenciadas, brilho racionado.
@@ -12,6 +33,17 @@
 // =====================================================================
 
 export const PASSOS_ABERTURA = [
+  {
+    id: 'descoberta',
+    titulo: 'Briarstone, sábado, 14 de outubro de 1893',
+    paragrafos: [
+      'A relojoaria Arthurs está de portas fechadas desde a noite de sexta. Às nove e vinte da manhã de sábado, Silas Crane abre a porta da loja com a sua chave, e o aprendiz fica na calçada com as tábuas da vitrine encostadas à parede, à espera da ordem de as tirar.',
+      'O corredor da loja vai dar ao escritório dos fundos.',
+      'Silas Crane atravessa-o, dá dois passos no escritório e para. Fica ali um tempo que o rapaz, depois, não soube medir. Volta ao corredor sem tornar a fechar nada e diz, da soleira da rua: "Corre ao posto. Diz ao guarda Wycliffe que venha, e que traga um homem consigo."',
+      'O rapaz corre. As tábuas da vitrine ficam onde estavam. Silas Crane senta-se no degrau da loja, de costas para dentro, as mãos sobre os joelhos, e ali fica até o guarda dobrar a esquina.',
+    ],
+    rotuloBotao: 'A uma estação dali',
+  },
   {
     id: 'caulfield',
     titulo: 'Caulfield, 14 de outubro de 1893',
@@ -28,8 +60,8 @@ export const PASSOS_ABERTURA = [
     id: 'sra_potts',
     titulo: 'Batem à porta',
     paragrafos: [
-      'A Sra. Potts não espera resposta: entra com o castiçal numa mão e, na outra, um formulário pardo dobrado sobre uma carta lacrada. Pousa os dois sobre a mesa.',
-      '"Veio da estação agora mesmo. O rapaz disse que era do Dr. Abbot para {g:o senhor|a senhora}, urgente." Fica onde está, o olhar no formulário, no rosto {g:do hóspede|da hóspede}. Vira a carta entre os dedos, lendo o remetente. "Briarstone. Então mataram alguém por lá."',
+      'A Sra. Potts não espera resposta: entra com o castiçal numa mão e, na outra, um formulário pardo dobrado sobre um envelope gordo. Pousa os dois sobre a mesa.',
+      '"O formulário veio da estação agora mesmo, do Dr. Abbot para {g:o senhor|a senhora}, urgente. O envelope veio a cavalo." Fica onde está, o olhar nos dois papéis, no rosto {g:do hóspede|da hóspede}. Vira o envelope entre os dedos, lendo o remetente. "Briarstone. Então mataram alguém por lá."',
     ],
     rotuloBotao: 'Ler o telegrama',
   },
@@ -43,10 +75,30 @@ export const PASSOS_ABERTURA = [
     telegrama: true,
     paragrafos: [
       'O formulário pardo traz a letra do telegrafista da estação, copiada do fio: maiúsculas apertadas, o selo do Post Office no canto.',
-      '"SR BLACKWELL PENSAO POTTS CAULFIELD. CHAMADO DE BRIARSTONE. RELOJOEIRO MORTO LOJA REVIRADA. PROVAVELMENTE BRIGA DE TABERNA OU GATUNO. VA OLHE O CORPO MANDE RESUMO PELO PRIMEIRO CORREIO. NAO ASSINE NADA. ABBOT"',
+      '"SR BLACKWELL PENSAO POTTS CAULFIELD. CHAMADO DE BRIARSTONE. RELOJOEIRO MORTO LOJA REVIRADA. PROVAVELMENTE BRIGA DE TABERNA OU GATUNO. O CORONER JA ORDENOU O EXAME EM MEU NOME. VA OLHE O CORPO MANDE RESUMO PELO PRIMEIRO CORREIO. NAO ASSINE NADA. ABBOT"',
     ],
     pensamento: [
       'Provavelmente. A palavra preferida do Dr. Abbot para tudo que lhe dá trabalho. Provavelmente não é nada, provavelmente é morte natural, provavelmente o rapaz resolve. A vila fica a uma estação daqui; ele, a quatro condados de distância, onde nenhum usurário o procure. Não era isto que eu queria, mas era o que estava no preço.',
+    ],
+    rotuloBotao: 'Abrir o envelope de Briarstone',
+  },
+  {
+    id: 'ordem_do_coroner',
+    titulo: 'A ordem do coroner',
+    // Impresso do condado: texto de fôrma com os claros preenchidos à mão.
+    // Bandeira de APRESENTAÇÃO — nenhuma regra a lê; sem ela, o passo volta a
+    // ser prosa corrida e o jogo é o mesmo.
+    ordem: true,
+    paragrafos: [
+      'O envelope traz dois papéis. O de cima é impresso, do condado: texto de fôrma com claros deixados em branco, e os claros preenchidos na letra do telegrafista de Briarstone, copiada do fio.',
+      'CONDADO. INQUÉRITO SOBRE A MORTE DE Geoffrey Arthurs, relojoeiro, da vila de Briarstone.',
+      'Havendo eu, Bramwell Foy, coroner de Sua Majestade para este condado, recebido notícia de morte violenta ou não natural, e sendo meu ofício inquirir dela, fica o Dr. Abbot requisitado a examinar o dito corpo e a comparecer perante mim e o júri para depor do que apurar.',
+      'Pelo exame e pelo depoimento serão pagas duas libras e dois xelins, na forma do Ato de 1836.',
+      'O inquérito abre na segunda-feira, dia dezesseis de outubro, às dez horas da manhã, na estalagem The Wheatsheaf, em Briarstone.',
+      'Bramwell Foy, coroner.',
+    ],
+    pensamento: [
+      'Duas libras e dois xelins pelo exame e pelo depoimento. Quem paga o perito é o coroner, e o coroner escreve ao médico de quem tem o nome em lista. O nome nesta lista é o do Dr. Abbot. Quem vai pôr as mãos no corpo sou eu.',
     ],
     rotuloBotao: 'Ler a carta do guarda',
   },
@@ -55,9 +107,11 @@ export const PASSOS_ABERTURA = [
     titulo: 'A carta do Guarda',
     carta: true,
     paragrafos: [
-      'A carta lacrada traz o brasão gasto de uma repartição, prensado torto no lacre de cera vermelha. A cera racha sob o polegar. O papel é grosso, de bom fornecedor; a letra inclina-se para a direita, firme no começo de cada linha e mais corrida ao fim dela.',
-      '"Dr. Abbot — Escrevo-lhe na qualidade de guarda de Briarstone e na condição, que não me envergonho de confessar, de homem posto fora da sua profundidade. O Sr. Geoffrey Arthurs, relojoeiro desta vila e homem que nunca me deu trabalho, foi achado morto esta manhã no escritório dos fundos da sua loja, com a garganta aberta e a casa toda revirada."',
-      '"Não toquei em nada; mandei que nem uma cadeira saísse do lugar, e pus um homem à porta até que o senhor chegue. Venha, peço-lhe, pelo primeiro trem que o traga a nós. Briarstone paga os seus honorários e, se o caso assim pedir, o seu silêncio; disso trataremos melhor com um copo na mão. Perdoe a letra: escrevo de pé, e a mão ainda não me voltou ao sossego. — Lemuel Wycliffe, guarda."',
+      'O segundo papel vem lacrado, com o brasão gasto de uma repartição prensado torto na cera vermelha. A cera racha sob o polegar. O papel é grosso, de bom fornecedor; a letra inclina-se para a direita, firme no começo de cada linha e mais corrida ao fim dela.',
+      '"Senhor — Escrevo-lhe na qualidade de guarda de Briarstone e na condição, que não me envergonho de confessar, de homem posto fora da sua profundidade. O Sr. Geoffrey Arthurs, relojoeiro desta vila e homem que nunca me deu trabalho, foi achado morto esta manhã no escritório dos fundos da sua loja, com a garganta aberta e a casa toda revirada."',
+      '"Cumpri o que me toca cumprir, que é pouco e é tudo o que sei fazer: não toquei em nada, mandei que nem uma cadeira saísse do lugar, pus um homem à porta e dei notícia da morte ao coroner do condado, pelo fio, na primeira hora. A ordem dele voltou pelo mesmo caminho e segue com esta, copiada no impresso pelo telegrafista. Do que passa disso, nada entendo."',
+      '"A lista dos médicos do condado dá o seu nome, e ao lado dele um endereço em Caulfield; é por isso que mando homem a cavalo, e não pelo correio de segunda-feira. Venha, peço-lhe, pelo primeiro trem que o traga a nós. Perdoe a letra: escrevo de pé, e a mão ainda não me voltou ao sossego."',
+      '"Sou, senhor, seu criado obediente, — Lemuel Wycliffe, guarda de Briarstone."',
     ],
     pensamento: [
       'A garganta aberta. Não é queda na escada, não é bêbado de taberna. O guarda escreveu ao Dr. Abbot, e o Dr. Abbot mandou a mim.',
@@ -72,7 +126,8 @@ export const PASSOS_ABERTURA = [
       '{detective.surname} veste o casaco ainda úmido da véspera e desce para a estação.',
     ],
     pensamento: [
-      'O Dr. Abbot mandou não assinar nada. A garganta aberta, a loja revirada, o homem à porta: e o Dr. Abbot mandou não assinar nada. O trem não espera, e o velho não virá.',
+      'Segunda-feira às dez, no salão de uma estalagem, doze homens jurados vão dizer de que morreu o Sr. Arthurs. Entre isto e aquilo há um sábado e um domingo, e o que eu levar ao Wheatsheaf é o que eles terão para jurar em cima.',
+      'O Dr. Abbot mandou não assinar nada. A garganta aberta, a loja revirada, o homem à porta, o nome dele no papel do coroner: e o Dr. Abbot mandou não assinar nada. O trem não espera, e o velho não virá.',
     ],
     rotuloBotao: 'Tomar o trem',
   },

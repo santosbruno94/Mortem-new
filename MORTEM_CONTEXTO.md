@@ -239,9 +239,15 @@ apresentação — nenhuma regra depende dele — e desliga-se no rodapé da esc
 
 ## 4. O loop de jogo
 
-1. **Abertura** — Escrivaninha vazia em Caulfield (pensão miserável). A Sra. Potts
-   entrega uma carta do guarda de Briarstone. Aceitar transforma a escrivaninha no
-   hub de investigação.
+1. **Abertura** (nove passos, OS-R3) — O jogo abre **pelos olhos de quem achou o
+   corpo**, na manhã de sábado em Briarstone (D13: a abertura testemunhal é o molde de
+   todos os casos), e só então corta para a escrivaninha vazia de Caulfield (pensão
+   miserável). A Sra. Potts entrega o maço: o telegrama do Dr. Abbot, a **ordem do
+   coroner** Bramwell Foy — quem manda examinar o corpo e quem paga por ele, £2 2s do
+   Medical Witnesses Act 1836, com a data do inquérito — e a carta do guarda de
+   Briarstone, que é *coroner's officer* e notifica, nunca contrata. Aceitar transforma
+   a escrivaninha no hub de investigação. **O prazo do inquérito é ficção**: nenhuma
+   regra o lê (D12).
 2. **Briefing** — Chegada a Briarstone. O guarda Wycliffe apresenta o caso (custo
    zero). Perguntas ao guarda plantam informações e iscas.
 3. **Investigação** — Chegada às 13:00. O relógio só corre ao **VIAJAR** no mapa;
@@ -999,7 +1005,8 @@ segundo passe com zero achados bloqueantes; roteiro de leitura em
 `docs/playtest-leitura-prosa-gerada.md`. A frente seguinte — a **variedade** frásica
 dessas superfícies — foi **entregue** pela **OS Prosa Viva** (`docs/os-prosa-viva-e0-plano.md`,
 Fase 0 de telemetria + E1–E5): o **cold open da descoberta** substitui a abertura fixa dos
-casos procedurais (o POV de quem achou o corpo; o tutorial mantém a pensão da Sra. Potts);
+casos procedurais (o POV de quem achou o corpo — e, desde a **OS-R3**, o tutorial adotou o
+mesmo molde, com a pensão da Sra. Potts a seguir ao cold open em vez de o substituir);
 o corpo, a lesão, o rigor e o livor variam **dentro da precisão** (cada variante pelo
 perito-forense); móbil, instrumento, segredo, cena e ecos sobem a **banco combinatório**; e
 a **decorrelação** (`hashDecisao`) mais uma **guarda anti-monotonia** no `qa.mjs` — com a
