@@ -18,7 +18,7 @@
 // =====================================================================
 
 export const CARTAS = [
-  // ===================== O CORPO =====================
+  // ===================== A RELOJOARIA · O CORPO =====================
   {
     id: 'ev_rigor',
     localidade: 'relojoaria',
@@ -159,7 +159,7 @@ export const CARTAS = [
     },
   },
 
-  // ===================== A CENA DO CRIME =====================
+  // ===================== A RELOJOARIA · A CENA DO CRIME =====================
   {
     id: 'ev_relogio_lareira',
     localidade: 'relojoaria',
@@ -258,7 +258,7 @@ export const CARTAS = [
     },
   },
 
-  // ===================== A OFICINA =====================
+  // ===================== A RELOJOARIA · A OFICINA =====================
   {
     id: 'ev_livro_ordens',
     localidade: 'relojoaria',
@@ -383,7 +383,7 @@ export const CARTAS = [
     },
   },
 
-  // ===================== A DELEGACIA =====================
+  // ===================== O POSTO DO GUARDA =====================
   {
     id: 'dep_testamento',
     localidade: 'posto_do_guarda',

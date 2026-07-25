@@ -296,19 +296,36 @@ O jogador nunca sai desta tela. Layout:
 **Regras UX:** nenhuma ação exige mais de 2 cliques; feedback visual imediato; a
 interface ensina pela forma, não por texto tutorial.
 
-### 5.1 A planta da relojoaria e os pontos de interesse
+### 5.1 A cena única, a planta da relojoaria e os pontos de interesse
 
-Os quatro nós do **mesmo prédio** (grupo `relojoaria` de `src/data/mapa.js` — corpo,
-cena, oficina e a saleta onde Silas recebe) ganham uma **planta baixa** que permite
-**andar entre cômodos** sem tocar o motor. Ao abrir qualquer nó da relojoaria, a visão
-pousa a planta no topo (`src/components/PlantaRelojoaria.jsx`, sobre o dado visual puro
-`src/data/planta_relojoaria.js`): SVG procedural em **traço de tinta sobre papel** — a
-loja com balcão e vitrine à frente, o corredor com a escada, o escritório dos fundos e a
-oficina ao fundo, a saleta, a porta do beco. O **escritório dos fundos é uma sala só com
-dois alvos** (o corpo jaz na cena): a sala tem os cliques "a cena" e "o corpo". Clicar num
-cômodo **viaja** para o nó (custo 0 — mesmo prédio, a regra de `mapa.js`) e reabre a
-localidade lá; o cômodo atual fica marcado "— aqui —". É SVG 2D puro: **funciona idêntico
-em `?flat=1`**; em tela estreita, colapsa numa régua horizontal de cômodos.
+**Um prédio, um nó (OS-R2 — Cena Única).** A relojoaria Arthurs era três nós de mapa para
+o mesmo endereço (`corpo`, `cena`, `oficina`). Passou a ser **um**: `relojoaria`, com
+**sub-locais** — `corpo`, `escritorio`, `loja`, `copa`, `oficina` e `porta_beco`. A saleta
+onde Silas recebe continua nó próprio, no mesmo grupo. O contrato do esquema: **uma carta
+resolve-se por `localidade` + `subLocal`**; `subLocal` ausente significa "raiz da
+localidade" e continua válido para tudo o que não se fundiu — os casos gerados não
+declaram sub-locais e jogam idêntico. Uma localidade que se divide declara
+`subLocais: [...]`, e **cada sub-local carrega o que a sua antiga localidade carregava**
+(título, subtítulo, ações especiais, introdução, prosa, gestos, pontos quentes). O
+sub-local corrente vive em `subLocalAtual` no store — dado de UI, que nem o veredicto nem
+a acusação leem. O nó de chegada do perito sai do pacote (`parametrosCena.noChegada`): o
+caso-escola chega à `relojoaria`; os gerados, ao seu nó `cena`.
+
+Os nós do **mesmo prédio** (grupo `relojoaria` de `src/data/mapa.js`) ganham uma **planta
+baixa** que permite **andar entre cômodos** sem tocar o motor. Ao abrir a relojoaria ou a
+saleta, a visão pousa a planta no topo (`src/components/PlantaRelojoaria.jsx`, sobre o dado
+visual puro `src/data/planta_relojoaria.js`): SVG procedural em **traço de tinta sobre
+papel** — a loja com balcão e vitrine à frente, o corredor com a escada, o escritório dos
+fundos, a copa apertada e a oficina ao fundo, a saleta, a porta do beco. O **escritório dos
+fundos é uma sala só com dois alvos** (o corpo jaz na cena): a sala tem os cliques "a cena"
+e "o corpo". Um alvo que declara `sub` **troca de sub-local** (viajando antes, se o perito
+estiver noutro nó — é assim que se volta da saleta ao corpo); um alvo só com `no` **viaja**
+para o nó (custo 0 — mesmo prédio, a regra de `mapa.js`). Em qualquer dos casos o cômodo
+sob os pés fica marcado "— aqui —". É SVG 2D puro: **funciona idêntico em `?flat=1`**; em
+tela estreita, colapsa numa régua horizontal de cômodos.
+
+O posto policial chama-se `posto_do_guarda` desde a OS-R2 (era `delegacia`), em acordo com
+a D11 revista: a glosa do policial é **guarda**, e o lugar, «O Posto do Guarda».
 
 Camada VISUAL: `planta_relojoaria.js` referencia os ids de nó pelos alvos, mas **nenhuma
 regra o lê** — trocar a planta nunca toca o jogo.
@@ -333,17 +350,19 @@ entre elas a 0h pela planta — como no tutorial. O `Planta.jsx` é **híbrido**
 (acordeão da cena) segue intacto, e sobre ele entra o **alvo de viagem** entre nós (na cena
 mostra "o corpo"; no corpo, "a cena"). Camada visual — o motor jamais lê a planta.
 
-**Pontos de interesse:** as localidades podem trazer o campo opcional
+**Pontos de interesse:** as localidades (e os sub-locais) podem trazer o campo opcional
 `pontos: [{ id, rotulo, prosa }]` (mais um `introducao` de ambientação sem carta). Quando
 existem, a prosa monolítica se divide em **pontos clicáveis** (acordeão): clicar num ponto
 revela o parágrafo com os seus termos extraíveis — **coleta em camadas**. Cada ponto exibe
-um contador `n/total` das suas cartas. Restrição dura: **todo `[[id]]` extraível na
-localidade continua alcançável em algum ponto** — guarda estática no `scripts/qa.mjs`
-(cartas com `localidade === nó` ⊆ união dos `[[id]]` dos pontos). No vertical slice, a
-**cena** (a lareira, a escrivaninha, a vitrine e a porta do beco, a copa) e a **oficina**
-(a prateleira de gravar, o púlpito de ordens, a gaveta funda, o aprendiz) têm pontos; o
-corpo (exame 3D) e a saleta seguem em prosa contínua. Observação pura (guia §2): o ambiente
-descreve; quem estranha é o jogador.
+um contador `n/total` das suas cartas. Restrição dura: **todo `[[id]]` extraível continua
+alcançável em algum ponto** — guarda estática no `scripts/qa.mjs`, que varre a localidade e
+os seus sub-locais (cartas do lugar ⊆ união dos `[[id]]` dos pontos). Uma segunda guarda,
+a **GR2-1**, prova a topologia nos dois sentidos: nenhuma carta aponta para localidade ou
+sub-local que não exista, e nenhum sub-local **com carta** fica sem sala clicável na planta.
+No vertical slice têm pontos o **escritório** (a lareira, a escrivaninha), a **loja** (a
+vitrine e a porta do beco), a **copa** e a **oficina** (a prateleira de gravar, o púlpito
+de ordens, a gaveta funda, o aprendiz); o corpo (exame em prancha) e a saleta seguem em
+prosa contínua. Observação pura (guia §2): o ambiente descreve; quem estranha é o jogador.
 
 ### 5.2 As duas vistas da vila e o teatro da mesa
 
