@@ -318,9 +318,9 @@ export const CARTAS = [
     localidade: 'relojoaria',
     subLocal: 'escritorio',
     textoDisplay: 'Bilhete do Vigário de S. Miguel',
-    carimboPadrao: 'Proclamas de G. Arthurs e de {suspeito:agnes_rooke.nome}; o primeiro em 15 de outubro',
+    carimboPadrao: 'Proclamas de G. Arthurs e da {suspeito:agnes_rooke.nome}, três domingos de outubro',
     descricao:
-      'Meia folha com o timbre de S. Miguel, dobrada em três e ainda com o vinco do sobrescrito. O vigário dá por recebida a nota do princípio do mês e marca os proclamas de Geoffrey Arthurs, viúvo, e de {suspeito:agnes_rooke.nome}, viúva, ambos desta paróquia: o primeiro no domingo, 15 de outubro; os outros dois nos dois domingos seguintes. Ao pé, pede que os nomes se confiram antes do ofício.',
+      'Meia folha com o timbre de S. Miguel, dobrada em três e ainda com o vinco do sobrescrito; ao pé, o pedido de que os nomes se confiram antes do ofício. O vigário dá por recebida a nota do princípio do mês e marca os proclamas de Geoffrey Arthurs, viúvo, e da {suspeito:agnes_rooke.nome}, viúva, ambos desta paróquia: o primeiro no domingo, 15 de outubro; os outros dois nos dois domingos seguintes.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
@@ -357,7 +357,7 @@ export const CARTAS = [
     textoDisplay: 'Livro de Pagamentos da Oficina',
     carimboPadrao: 'Jornal de D. Tull descontado por inteiro desde março',
     descricao:
-      'Livro de meia-folha, três colunas: o jornal da semana, o desconto e o saldo. Na linha de {suspeito:davey_tull.nome}, quatro xelins entram e quatro xelins saem, semana após semana, desde a última de março; vinte e nove ao todo. Na margem daquele mês, a letra do morto anotou "adiantado à Sra. Tull, 2 £". Ao pé de setembro, a mesma letra soma o saldo: 2 £ 4 s.',
+      'Livro de meia-folha, três colunas: o jornal da semana, o desconto e o que fica em dívida. Na linha de {suspeito:davey_tull.nome}, quatro xelins entram e quatro xelins saem, desde a última semana de março; vinte e nove ao todo. Na margem daquele mês, a letra do morto anotou "adiantado à Sra. Tull, £2". Ao pé de setembro, a mesma letra soma a dívida: £2 4s.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'motivo',
