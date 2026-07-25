@@ -32,18 +32,34 @@ uma ferida diz a **secção da haste** que entrou — quatro faces, três faces,
 gume; o entalhe na madeira separa pé-de-cabra de formão. Isso é leitura de **gênero**, e é
 legítima.
 
-O que **não existe em 1893** é a leitura do **exemplar**: dizer que *aquele* buril, e nenhum
-outro do mesmo feitio, cortou *aquela* marca. A comparação de estrias — o rasto microscópico
-e individual que o fio de uma ferramenta arrasta — é ciência do século XX, da linhagem que
-Waite e Goddard levantam nos anos 1920 e que só se firma com o microscópio de comparação. Um
-perito de vila em 1893 não tem o instrumento, não tem a doutrina, e não tem tribunal que a
-receba.
+O que **não existe em 1893** é a leitura da **estria**: o rasto microscópico e individual que
+o fio de uma ferramenta arrasta, e que permite dizer que *aquele* buril, e nenhum outro do
+mesmo feitio, cortou *aquela* marca. Essa comparação é ciência do século XX — a linhagem que
+Waite e **Calvin** Goddard levantam no Bureau of Forensic Ballistics, e que só se firma com o
+**microscópio de comparação, em 1925**. Um perito de vila em 1893 não tem o instrumento, não
+tem a doutrina, e não tem tribunal que a receba.
 
-**A regra é a mesma da fibra:** a lente estabelece **classe, não indivíduo**. E vale a mesma
-exceção, e só ela — o **encaixe físico**. Uma ponta de aço partida, achada na ferida, que
-case com o gume partido da ferramenta apreendida, individualiza: não por estria, mas porque
-duas fraturas irregulares só encaixam uma na outra. É o princípio que já casa duas pontas de
-corda (ver abaixo, "O que a análise de 1893 alcançava").
+**A regra é a mesma da fibra:** a lente estabelece **classe, não indivíduo**. E valem as
+mesmas duas exceções, ambas de olho armado e nenhuma de microscópio:
+
+- **O encaixe físico.** Uma ponta de aço partida, achada na ferida, que case com o gume
+  partido da ferramenta apreendida, individualiza — não por estria, mas porque duas fraturas
+  irregulares só encaixam uma na outra. É o princípio que já casa duas pontas de corda (ver
+  abaixo, "O que a análise de 1893 alcançava").
+- **O defeito conspícuo.** Um gume mossado que repita a mesma falha em cada marca é o mesmo
+  raciocínio, e tem precedente inglês **anterior ao jogo**: em 1835, o Bow Street Runner
+  **Henry Goddard** ligou as balas ao molde do próprio mordomo por uma saliência do tamanho
+  de uma cabeça de alfinete, comum a todas. É individualização por defeito **visível**, e é
+  legítima. *(Cuidado com o homónimo: este Goddard é de 1835 e nada tem com o Calvin Goddard
+  das estrias, de 1925.)*
+
+Fora dessas duas portas: **classe, nunca exemplar**.
+
+**O que o perito de 1893 FAZ, então.** A leitura de classe é canônica no próprio ano do jogo:
+o *Handbuch* de Gross (1893) trata do exame das ferramentas de arrombamento e das marcas que
+deixam. O gesto que a acompanha é **preservar a impressão antes que ela se perca** — moldá-la
+em cera, lacre ou gesso, porque a madeira seca, o batente é trocado e a marca vai-se com ele.
+*(A moldagem é prática de época; não a atribua a Gross — não se confirma no texto dele.)*
 
 **A armadilha de prosa, e é a mais fácil de pisar.** Quando o instrumento do crime e outro
 objeto do caso são da mesma família — dois buris de gravador, duas facas de mesa, dois
@@ -108,8 +124,9 @@ fibra fala do instrumento; a fibra repetida fala do contato entre o instrumento 
 - Dizer que a fibra veio **daquela** peça e de nenhuma outra igual: têxteis são fabricados aos
   milhares. A lente estabelece **classe**, não **indivíduo** (salvo o encaixe físico de pontas).
 - Dizer que **aquela** ferramenta, e nenhuma outra do mesmo feitio, fez a marca: a comparação
-  de estrias é dos anos 1920 em diante. Lê-se o **gênero** do instrumento, nunca o exemplar
-  (ver a seção própria, acima) — salvo, outra vez, o encaixe físico de uma ponta partida.
+  de **estrias** é de 1925 em diante. Lê-se o **gênero** do instrumento (ver a seção própria,
+  acima) — salvo pelas duas portas de olho armado, o encaixe físico de uma ponta partida e o
+  defeito conspícuo que se repete em todas as marcas.
 - Dizer de **quem** é um cabelo ou uma fibra. Sem individualização biológica.
 - Distinguir sangue **humano** de animal: a prova de precipitina é de Uhlenhuth, **1901** —
   posterior a 1893.

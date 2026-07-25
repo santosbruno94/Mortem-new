@@ -192,7 +192,12 @@ deliberado — não é o gesto de quem entra em pânico.
 
 **O que sobrevive.** A mesma lição das roupas queimadas, com outro objeto: *o que a cinza
 guarda é a identidade da peça*. Aqui a prova não está nas folhas, que ardem. Está na
-**carcaça**.
+**carcaça** — e, antes dela, na **quantidade**.
+
+- **O leito de cinzas alto.** É o tell mais robusto do dossiê, e o mais fácil de esquecer.
+  Um livro-razão desmanchado e alimentado ao fogo por uma hora deixa a grelha com **muito
+  mais cinza do que uma noite de outubro justifica**, e com sinal de ter sido atiçada
+  repetidas vezes. Quem raspa a grelha vê isso antes de ver qualquer outra coisa.
 
 - **As folhas.** O papel de livro de contas é de trapo ou de polpa carregada de **caulim**,
   amido e cola. A parte orgânica queima; a mineral fica, e dá uma **cinza pálida, leve, em
@@ -215,8 +220,10 @@ guarda é a identidade da peça*. Aqui a prova não está nas folhas, que ardem.
 - **Couro e pergaminho de cantos e lombada.** Não viram cinza: **encolhem e retorcem-se em
   grumos duros, córneos, translúcidos.**
 - **Os metais.** Fecho de latão e a sua chapa, cantoneiras, ilhoses, rebites. O latão funde
-  perto dos 900 °C e a periferia de um leito doméstico fica bem abaixo: deformam, escurecem
-  e **ficam**.
+  **na casa dos 900 °C** (900–940 °C, conforme a liga) e a periferia de um leito doméstico
+  fica bem abaixo: deformam, escurecem e **ficam**. Observável de graça: o zinco **ferve a
+  ~907 °C**, e latão que esteve no fogo perde zinco e **avermelha** à superfície — tell de
+  olho nu, sem uma palavra de ciência.
 
 **Queimado × amassado e sujo.** O carvão é **negro na fratura**, não só à superfície: parta-se
 a escama e o corte é preto de lado a lado, enquanto a sujidade fica por cima. Além disso o
@@ -224,8 +231,9 @@ carbonizado **não vinca — estilhaça**; **encolheu** (uma folha in-quarto enc
 **encurvou** para o lado do fogo; e **pesa muito menos do que aparenta**.
 
 **O gesto de exame.** Antes de tudo, **matar a corrente de ar** — a escama voa e não volta.
-Não tocar com os dedos: levantar o conjunto **por baixo**, com uma folha de cartão rígido.
-Ler em **luz rasante** de vela ou lampião posto ao rés da grelha (a luz oblíqua de Gross, que
+Não tocar com os dedos: levantar o conjunto **por baixo**, com uma folha de cartão rígido, e
+**cobri-lo com uma placa de vidro** — examina-se através dela, e o que se examina para de
+esfarelar. Ler em **luz rasante** de vela ou lampião posto ao rés da grelha (a luz oblíqua de Gross, que
 esta base já autoriza para o assoalho esfregado). O resto do leito passa por **crivos de malha
 progressiva**, separando o metálico do calcinado — o mesmo protocolo das roupas queimadas.
 Muda o objeto; o método é o que já está escrito.
@@ -235,11 +243,15 @@ Muda o objeto; o método é o que já está escrito.
 - **Não se lê nada.** Nem uma palavra, nem um algarismo, nem uma data, nem uma inicial, nem a
   letra de alguém. A decifração de documentos carbonizados é ciência da Segunda Guerra em
   diante — o marco fotográfico é de **1941**.
-- **O que a luz rasante dá é geometria.** Sobre a escama negra aparece um **brilho de linhas
-  regulares e paralelas**: isso autoriza dizer que o papel era **pautado** — logo, de livro de
-  contas, e não carta nem embrulho. E entre as pautas, **marcas irregulares de brilho
-  diferente**: houve escrita ali. **Sem uma sílaba legível.** É juízo de geometria, não de
-  leitura.
+- **O que a luz rasante chega a dar é geometria.** Sobre a escama negra pode aparecer um
+  **brilho de linhas regulares e paralelas**: isso autoriza dizer que o papel era **pautado**
+  — logo, de livro de contas, e não carta nem embrulho. E entre as pautas, **marcas
+  irregulares de brilho diferente**: houve escrita ali. **Sem uma sílaba legível.** É juízo de
+  geometria, não de leitura. **Ressalva, e é dura:** o mecanismo do resíduo de tinta é
+  documentado; que a pauta apareça **sempre**, não. Trate-se como possível numa escama que
+  ainda guarde relevo, nunca como leitura garantida — a própria literatura que criou o método
+  fotográfico de 1941 registra que a luz oblíqua **falhava** sobre a folha plenamente
+  enegrecida, e foi por isso que se foi buscar a fotografia.
 - **Por que a escrita chega a aparecer.** A tinta impede a saída dos gases durante a queima e
   deixa imagem latente, de brilho e cor próprios. A **ferro-galhada** contrasta melhor, porque
   o resíduo dela é óxido de ferro — matéria mineral, que não arde; a tinta de impressão é
@@ -250,8 +262,14 @@ Muda o objeto; o método é o que já está escrito.
   carvão opaco), fotografia forense de qualquer espécie, infravermelho, ultravioleta.
 - **Não atribuir método a Gross.** A contribuição dele ao papel queimado é de **manuseio** —
   fixar o fragmento a um suporte para o examinar plano —, e a tradução inglesa do manual é de
-  **1906**. Não se confirma que a matéria estivesse na 1.ª edição, de 1893. A luz oblíqua, sim,
-  é dele e é corrente.
+  **1906**, vertida da **4.ª edição alemã, de 1904**: nada garante que a matéria estivesse na
+  1.ª, de 1893. A luz oblíqua, sim, é dele e é corrente.
+- **O precedente que legitima o pouco que se vê, e mostra o muito que não.** Os **papiros de
+  Herculano**, carbonizados, foram desenrolados e lidos em parte ao longo do século — o que
+  prova que carbonizado *pode* dar leitura a olho, em condições que uma grelha de vila não
+  oferece. E as tentativas químicas de **Humphry Davy** (Royal Society, 1819–1821, cloro)
+  tiveram sucesso limitado: o século XIX **tentou por químico e falhou**. É citação que um
+  perito culto de 1893 reconheceria, e fixa o limite pelos dois lados.
 - **Não datar a queima.** Uma grelha doméstica esfria em horas. "Cinza fria" na tarde de
   sábado é compatível com a sexta à noite **e** com a madrugada de sábado, e nada mais fino
   que isso.

@@ -1860,6 +1860,38 @@ asserção normativa. É a cautela que esta base impõe a si mesma desde a nota 
 o valor dela está em distinguir o que 1893 sabia do que só veio depois, e uma KB que exagera
 para o lado da certeza estraga a prosa de todas as OS seguintes.
 
+**Veio sem bloqueantes e com cinco altos, todos aplicados — e todos eram endurecimento meu.**
+Valem por si:
+
+- **«Em 1893 não se lê o exemplar» era absoluto demais**, e tem contraexemplo inglês anterior
+  ao jogo: em **1835**, o Bow Street Runner **Henry Goddard** ligou balas ao molde do mordomo
+  por uma saliência do tamanho de uma cabeça de alfinete. O que 1893 não tem é a **estria
+  microscópica**, não o exemplar em absoluto. A base passou a ter **duas portas** de olho
+  armado — o encaixe físico e o defeito conspícuo —, e um aviso de homónimo: aquele Goddard
+  não é o Calvin Goddard das estrias, de **1925**.
+- **A luz rasante estava afirmada como se desse sempre.** O mecanismo é documentado; a
+  garantia, não — a própria literatura que criou o método fotográfico de 1941 registra que a
+  luz oblíqua **falhava** sobre a folha plenamente enegrecida, e foi por isso que se foi
+  buscar a fotografia. A ressalva entrou onde faltava, no mesmo tom em que o dossiê já se
+  recusava a afirmar cor.
+- **A pesagem de entrada e saída estava atribuída a Gee (1892)** com mais firmeza do que se
+  confirma no texto dele. O **fato sobrevive; a fonte é outra** — um registro de oficina do
+  período, no acervo do Public Record Office Victoria. Gee fica com o que é dele (a coleta e
+  o refino da limalha), e a citação passou a ser a verificável.
+- **O verbete do relógio reabria, no fim, a confusão que abrira dizendo resolver:** dava
+  *dust cover* à tampa de dentro, quando é nome da calota. A base agora **fixa os dois** e
+  explica por que o ofício os embaralha.
+- **O repertório de legendas é prática suíça e francesa**, não inglesa — e isso **decide o
+  objeto do caso**: uma inscrição particular *esconde-se* no jargão de uma cuvette suíça e
+  *salta* num dome inglês. O truque que a carta da cifra usa só funciona porque o relógio do
+  morto é suíço, o que a própria carta já dizia sem saber (cuvette de metal dourado, legendas
+  francesas).
+
+Ficaram também três omissões que fariam falta a quem escrevesse depois, e entraram: o **leito
+de cinzas anormalmente alto** (o tell mais robusto do dossiê, e eu não o tinha escrito), a
+**placa de vidro** que estabiliza a escama antes do exame, e o precedente dos **papiros de
+Herculano** com as tentativas químicas falhadas de Davy — que fixa o limite pelos dois lados.
+
 **Aberto:** `CLASSES_VESTIGIO` continua sem classe de documento queimado, como já não tem de
 roupa queimada — o dossiê serve a prosa autoral e o gerador ainda não sabe produzir nenhum
 dos dois. Registrado nas divergências do próprio arquivo, não criado.

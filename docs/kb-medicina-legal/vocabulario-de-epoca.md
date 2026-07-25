@@ -81,7 +81,7 @@ cianeto em usos industriais/fotográficos.
   de bolso → **tampa de dentro** (em português, cubeta é o vaso de laboratório; o nome de
   ofício está em `docs/kb-mundo-vitoriano/utensilios-e-objetos.md` §11).
 - **Marca de ferramenta pelo exemplar.** "O mesmo buril", "a mesma lâmina", "casa com a
-  marca" — comparar estrias para individualizar uma ferramenta é ciência dos anos 1920.
+  marca" — comparar **estrias** para individualizar uma ferramenta é ciência de 1925.
   Em 1893 diz-se o **gênero** do instrumento ("marca de buril", "haste de quatro faces"),
   nunca o exemplar. Ver `vestigios.md`, "Marcas de ferramenta".
 
