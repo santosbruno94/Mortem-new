@@ -22,13 +22,14 @@
 // Nunca Math.random. O fecho NÃO se sorteia — ele é função de quantos
 // gestos caíram, porque é a única coisa que a cena tem a dizer sobre si.
 //
-// DÍVIDA REGISTRADA PARA A OS-R9: as três aberturas cravam a geografia do
-// caso-escola (a relojoaria, o balcão, a oficina, o escritório, a vila que
-// dorme cedo), e o irmão `monologo.js` declara o contrato oposto — nenhum
-// texto exclusivo do caso. Hoje não vaza, porque sem catálogo de gestos
-// esta função devolve null e só o caso-escola tem catálogo. No dia em que o
-// gerador produzir intervenções, estas três frases vão para o pacote, como
-// as próprias `intervencoes` já foram.
+// A DÍVIDA DE GEOGRAFIA, PAGA (OS-R9 · Fase 3). A R7 registou que as três
+// aberturas cravavam a relojoaria, o balcão, a oficina e o escritório dentro
+// deste módulo de LÓGICA, e que aquilo vazaria no dia em que o gerador
+// produzisse intervenções. Vazaria neste commit; por isso o texto saiu daqui.
+// O que ficou é a RÉGUA — qual abertura, qual faixa de fecho —, e o texto vem
+// do pacote de caso, como as próprias `intervencoes` já vinham. Os fechos
+// saíram junto: três deles pousavam o lampião numa BANCADA, e bancada é
+// mobília de relojoeiro. Este módulo não conhece mais nenhum cômodo.
 //
 // BRILHO: zero frases de efeito, com UMA exceção deliberada — o «Saio como
 // entrei.» da faixa `nenhuma`. O guia §3 dá uma máxima por desfecho, e ela
@@ -42,41 +43,15 @@
 // =====================================================================
 
 import { intervencoesRebatidas } from '../data/intervencoes.js';
-import { obterIntervencoes } from '../data/pacote_caso.js';
+import { obterIntervencoes, obterCenaDaNoite } from '../data/pacote_caso.js';
 import { escolherDeterministico } from './hash.js';
 
+// O título é do JOGO e não do caso: toda reconstituição se chama assim, em
+// qualquer vila. O subtítulo é que situa, e por isso é do caso.
 export const TITULO_RECONSTITUICAO = 'A Reconstituição';
-export const SUBTITULO_RECONSTITUICAO = 'Domingo à noite, na relojoaria';
 
 // O sal desta OS. Trocar esta string troca a leitura de todas as partidas.
 const SAL = 'reforma:r7:intervencao';
-
-export const ABERTURAS_RECONSTITUICAO = [
-  'Domingo à noite. A loja está fechada e o lume apagado; o lampião de mão vai à frente, do balcão à oficina e da oficina ao escritório. Sobre a bancada, em fila, o que trouxe comigo.',
-  'Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua e a relojoaria é minha por uma hora. Refaço a noite de sexta com o que a mesa sustenta, e paro onde ela parar.',
-  'Domingo à noite, e a vila dorme cedo. Ando pela sala com o lampião baixo, e não há ninguém a quem perguntar. A sexta-feira volta em pedaços, e só nos pedaços que colhi.',
-];
-
-// O fecho é FUNÇÃO DA COLHEITA, não sorteio: quatro faixas, do nada ao
-// quase tudo. A faixa vazia diz que a sala ficou como estava — e não diz
-// que havia mais, porque dizê-lo seria provar de graça o que o jogador não
-// provou. Se um dia o playtest mostrar que a cena vazia se lê como defeito
-// em vez de consequência, o remédio é desta prosa, e nunca da mecânica.
-//
-// NENHUM FECHO DECLARA PROPORÇÃO ("metade", "quase toda"), e a razão é de
-// epistemologia, não de gosto: o perito sabe quantos gestos desfez e NÃO
-// sabe quantos lhe escaparam. Um fecho que dissesse a fração entregaria,
-// de graça, o tamanho do que ele não provou.
-export const FECHOS_RECONSTITUICAO = {
-  nenhuma:
-    'Apago o lampião. Percorri a sala inteira e ela ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.',
-  poucas:
-    'Ponho o lampião na bancada. A sala cedeu nos pontos em que eu tinha com que a pressionar, e ficou inteira no resto.',
-  varias:
-    'Ponho o lampião na bancada. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.',
-  quase_toda:
-    'Ponho o lampião na bancada e fico olhando a sala. A noite de sexta voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo.',
-};
 
 // O corte é RELATIVO ao tamanho do catálogo, e não absoluto — é a lição da
 // Fase 1 da OS-R6, onde o corte absoluto de exposição fazia o nível delatar
@@ -121,14 +96,18 @@ export function montarReconstituicao(idsNaMesa, chave = '') {
   // catálogo é o caso não a suportar, e aí o fim de caso vai direto ao
   // monólogo. Os gerados estão no segundo caso até a OS-R9.
   const catalogo = obterIntervencoes();
-  if (!catalogo.length) return null;
+  const cena = obterCenaDaNoite();
+  // Sem catálogo OU sem texto de cena não há reconstituição — as duas coisas
+  // vêm do pacote e vêm juntas; um caso com gestos e sem cena seria um caso
+  // que não sabe onde a cena se passa.
+  if (!catalogo.length || !cena) return null;
   const rebatidas = intervencoesRebatidas(idsNaMesa, catalogo);
-  const abertura = escolherDeterministico(ABERTURAS_RECONSTITUICAO, `${SAL}|${chave}|abertura`);
-  const fecho = FECHOS_RECONSTITUICAO[faixaDoFecho(rebatidas.length, catalogo.length)];
+  const abertura = escolherDeterministico(cena.aberturas, `${SAL}|${chave}|abertura`);
+  const fecho = cena.fechos[faixaDoFecho(rebatidas.length, catalogo.length)];
   const passos = rebatidas.map((i) => ({ id: i.id, hora: i.hora, prosa: i.prosa }));
   return {
     titulo: TITULO_RECONSTITUICAO,
-    subtitulo: SUBTITULO_RECONSTITUICAO,
+    subtitulo: cena.subtitulo,
     abertura,
     passos,
     fecho,

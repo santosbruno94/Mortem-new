@@ -66,6 +66,12 @@
 //                       evitadas: { titulo, porChave:{ [tipo_desfecho]:[…] } }
 //                       (src/data/ecos_interferencia.js). Mesmo mecanismo dos
 //                       códigos de falha (FASE 6). O motor jamais o lê.
+//   cenaDaNoite       : objeto (OS-R9 Fase 3, OPCIONAL). O texto que situa a
+//                       reconstituição: { subtitulo, aberturas: [...],
+//                       fechos: { nenhuma, poucas, varias, quase_toda } }.
+//                       Camada NARRATIVA; o motor jamais a lê. Sem ela — ou
+//                       sem `intervencoes` — o caso não tem reconstituição e
+//                       o fim de caso vai direto ao monólogo.
 //   procedencia       : objeto (OS-R9 Fase 1, OPCIONAL). O mapa da D17: de
 //                       que BOCA saiu cada alegação, `{ [cartaId]:
 //                       { apontadaPor, forma } }`. `forma` é lastro de prosa
@@ -111,7 +117,7 @@
 
 import { SEED_TUTORIAL, SUSPEITOS } from './seed.js';
 import { CARTAS, CONTRADICAO_HORAS, resolverEstadoCarta as resolverEstadoCartaCru } from './cartas.js';
-import { INTERVENCOES_NOITE } from './intervencoes.js';
+import { INTERVENCOES_NOITE, CENA_DA_NOITE_TUTORIAL } from './intervencoes.js';
 import { PROCEDENCIA_ALEGACOES } from './procedencia.js';
 import { LOCALIDADES } from './localidades.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, CUSTO_ENTRE_GRUPOS } from './mapa.js';
@@ -197,6 +203,11 @@ export function montarPacoteTutorial() {
     // reconstituição, e o fim de caso vai direto ao monólogo (os gerados,
     // hoje: produzi-los é trabalho da OS-R9).
     intervencoes: INTERVENCOES_NOITE,
+    // A cena da noite (OS-R9 Fase 3, OPCIONAL) — o texto que situa a
+    // reconstituição. Saiu de `src/logic/reconstituicao.js` neste commit:
+    // era geografia de caso dentro de um módulo de lógica, e vazaria no
+    // dia (este) em que o gerador passasse a produzir gestos.
+    cenaDaNoite: CENA_DA_NOITE_TUTORIAL,
     // O mapa da D17 (OS-R9 Fase 1, OPCIONAL) — o motor jamais o lê. Até
     // aqui `contaminacao.js` importava este mapa direto do módulo de dados,
     // o que fazia dele o mapa de TODO caso — e, na prática, o mapa de
@@ -273,6 +284,13 @@ export function obterEcosDoMestre() {
 // motor jamais a lê, e a GR6-6 cobra por leitura de fonte.
 export function obterIntervencoes() {
   return casoCarregado.intervencoes || [];
+}
+
+// O texto que situa a reconstituição (OS-R9 Fase 3, OPCIONAL): subtítulo,
+// aberturas e fechos do caso, ou null quando o pacote não o traz. Camada
+// narrativa pura — o motor jamais a lê.
+export function obterCenaDaNoite() {
+  return casoCarregado.cenaDaNoite || null;
 }
 
 // O mapa de procedência do caso (OS-R9 Fase 1, OPCIONAL): de que boca saiu

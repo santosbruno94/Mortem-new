@@ -57,6 +57,7 @@ import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 import { obterPredio, saoAdjacentes } from './cidade.js';
 import { VOCABULARIO_DA_CLASSE } from './espaco.js';
 import { derivarProcedencia } from './procedencia_gerada.js';
+import { derivarIntervencoes, derivarCenaDaNoite } from './intervencoes_geradas.js';
 
 // ---------------------------------------------------------------------
 // A RÉPLICA do caso-escola (modo 2): seed fixa + variáveis dirigidas que
@@ -2484,6 +2485,24 @@ export function montarPacoteGerado(seed, opts = {}) {
   // A carta de NEXO define o instrumento que o veredicto cobra: o método
   // com instrumento aponta o próprio; o sem instrumento (esganadura), o
   // pertence arrancado — sem isto, a Vitória Absoluta seria impossível.
+  // OS-R9 Fase 3 — a geografia do fato, em voz de prosa, para a cena da
+  // noite. Sai do próprio caso: o prédio onde o crime foi e o cômodo em que
+  // começou. É isto que substitui a relojoaria cravada no módulo de lógica.
+  const interiorDoFato = bruto.mundo.interiores[bruto.escolha.localId];
+  const comodoDoFato = interiorDoFato
+    ? comodoEmFala(
+        (interiorDoFato.comodos.find((k) => k.id === bruto.crime.local.comodoInicial) || {}).rotulo ||
+          bruto.crime.local.comodoInicial
+      )
+    : null;
+  const predioDoFato = nomeDoPredio(bruto.mundo.cidade, bruto.crime.local.predioId);
+  const gestosDaNoite = derivarIntervencoes({
+    bruto,
+    cartas,
+    comodo: comodoDoFato,
+    predio: predioDoFato,
+  });
+
   const cartaNexo = cartas.find(
     (c) => (c.tagsOcultas || {}).dominio === 'vestigio' && c.tagsOcultas.pertenceA === bruto.crime.assassinoId
   );
@@ -2533,6 +2552,17 @@ export function montarPacoteGerado(seed, opts = {}) {
       eventos: bruto.interferencia.eventos,
       bocasDeCorroboracao: perif.bocasDeCorroboracao,
     }),
+    // OS-R9 Fase 3 — os gestos da noite e o texto que situa a cena. Os dois
+    // andam juntos: sem catálogo não há cena, e sem cena o catálogo não
+    // teria onde se ler. Abaixo do piso de três, o caso não recebe nem um
+    // nem outro, e o fim de caso vai direto ao monólogo (G9: não se inventa
+    // gesto para encher). Camada NARRATIVA — o motor jamais os lê.
+    ...(gestosDaNoite.length
+      ? {
+          intervencoes: gestosDaNoite,
+          cenaDaNoite: derivarCenaDaNoite({ bruto, comodo: comodoDoFato, predio: predioDoFato }),
+        }
+      : {}),
     ...(comarcaDoCaso ? { telegrama: comarcaDoCaso.telegrama } : {}),
     ...(bruto.interferencia.eventos.length
       ? {

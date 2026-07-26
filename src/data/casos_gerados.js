@@ -3579,6 +3579,79 @@ export const CASO_REPLICA = {
    "forma": "ensaio"
   }
  },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na noite de sexta",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_7_lavadeira",
+    "gen_visto_vivo"
+   ],
+   "prosa": "Uma hora e um lugar entram no termo do guarda, ditados de uma vez e sem que se peçam duas. A mesma noite de sexta tem outra hora escrita noutro papel, e nessa a vítima ainda está em pé e a falar com quem a cumprimenta."
+  },
+  {
+   "id": "hora_forjada",
+   "hora": "Na cozinha, na noite de sexta",
+   "rubrica": "a hora posta a marcar o que não foi",
+   "exige": [
+    "gen_hora_forjada",
+    "gen_rigor"
+   ],
+   "prosa": "Uma hora fica marcada onde toda gente há de a ler primeiro, e fica marcada com firmeza. O corpo, esse, conta a sua por conta própria, e as duas contas não se encontram em ponto nenhum."
+  },
+  {
+   "id": "corpo_mudado",
+   "hora": "Da cozinha para onde foi achado",
+   "rubrica": "o corpo posto num sítio que não é o da queda",
+   "exige": [
+    "gen_livores"
+   ],
+   "prosa": "O corpo é levado do sítio em que ficou para o sítio em que há de ser encontrado, e ali é composto. As manchas de baixo assentaram antes da mudança, e assentaram do lado que agora fica para cima."
+  },
+  {
+   "id": "peca_levada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça que saiu com quem saiu",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Do conjunto sai uma peça só, e sai inteira. As vizinhas ficam na ordem em que estavam, e o lugar vazio tem o feitio exato da que se levou."
+  },
+  {
+   "id": "vestigio_apagado",
+   "hora": "Com o inquérito já aberto",
+   "rubrica": "o rastro apagado depois de o perito o ter perguntado em público",
+   "exige": [
+    "gen_intf_intf_1_limpeza"
+   ],
+   "prosa": "O que estava no chão deixa de estar, e deixa de estar entre uma visita e outra. Fica no lugar dele uma faixa de assoalho de cor diferente do assoalho."
+  },
+  {
+   "id": "boca_comprada",
+   "hora": "Nos dias seguintes, na vizinhança",
+   "rubrica": "o depoimento trocado por outro, e a caderneta quitada na mesma semana",
+   "exige": [
+    "gen_intf_intf_2_retratacao",
+    "gen_intf_intf_2_dividas"
+   ],
+   "prosa": "A versão muda entre uma tomada e a seguinte, e muda inteira. Pela mesma altura, dívidas de mercearia que vinham de trás ficam pagas todas no mesmo dia."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, no Cottage nº 3",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim no Cottage nº 3 e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e a cozinha é minha por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
+  }
+ },
  "interferencias": {
   "eventos": [
    {
@@ -17292,6 +17365,50 @@ export const CASOS_POOL = [
    "apontadaPor": "gen_3_lavadeira",
    "forma": "propria"
   }
+ },
+ "intervencoes": [
+  {
+   "id": "recado_mandado",
+   "hora": "Antes do fato, na noite de sexta",
+   "rubrica": "o recado que marcou o lugar e a hora",
+   "exige": [
+    "gen_engodo"
+   ],
+   "prosa": "Um recado corre e marca lugar e hora, e quem o pediu não deixa nome. A vítima vai onde o papel diz, à hora que o papel diz, e é ali que a acham."
+  },
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na noite de sexta",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_7_criada",
+    "gen_visto_vivo"
+   ],
+   "prosa": "Uma hora e um lugar entram no termo do guarda, ditados de uma vez e sem que se peçam duas. A mesma noite de sexta tem outra hora escrita noutro papel, e nessa a vítima ainda está em pé e a falar com quem a cumprimenta."
+  },
+  {
+   "id": "peca_lavada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça lavada e recolhida ao lugar dela",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "A peça é lavada por alto e reposta no sítio de sempre, no meio das companheiras. A crosta sai; o que se meteu por baixo do encaixe não sai, e a junta continua úmida quando já devia estar seca."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, no Caminho do Açude",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim no Caminho do Açude e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e a a vereda entre sebes é minha por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
+  }
  }
 },
 {
@@ -20886,6 +21003,60 @@ export const CASOS_POOL = [
   "gen_alibi_gen_0_squire": {
    "apontadaPor": "gen_0_squire",
    "forma": "propria"
+  }
+ },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na madrugada de sábado",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_3_ferreiro",
+    "gen_visto_vivo"
+   ],
+   "prosa": "O paradeiro é dado inteiro, com a hora de chegar e a de sair, e fica lavrado. Noutro assento da mesma madrugada de sábado há alguém a trocar palavra com a vítima, e essa hora não cabe dentro da primeira."
+  },
+  {
+   "id": "hora_forjada",
+   "hora": "No quarto do sobrado, na madrugada de sábado",
+   "rubrica": "a hora posta a marcar o que não foi",
+   "exige": [
+    "gen_hora_forjada",
+    "gen_rigor"
+   ],
+   "prosa": "A hora é posta de modo a ser a primeira coisa que se lê ao entrar. O que o frio e a rigidez do corpo dão não bate com ela, e o corpo não se ajusta a papel nenhum."
+  },
+  {
+   "id": "corpo_mudado",
+   "hora": "Do quarto do sobrado para onde foi achado",
+   "rubrica": "o corpo posto num sítio que não é o da queda",
+   "exige": [
+    "gen_livores"
+   ],
+   "prosa": "De um sítio para outro, e no segundo fica arrumado como quem cai fica. O sangue já se tinha deitado no fundo do primeiro, e ficou onde se deitou."
+  },
+  {
+   "id": "peca_lavada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça lavada e recolhida ao lugar dela",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Uma peça passa pela água e volta ao lugar onde costuma estar, entre as outras do mesmo uso. A água tira o que está à vista e não entra na junta; o que a junta guarda fica lá, e a umidade demora a sair dali."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, na Taverna",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim na Taverna e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e o quarto do sobrado é meu por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
   }
  },
  "telegrama": {
@@ -24562,6 +24733,69 @@ export const CASOS_POOL = [
   "gen_alibi_gen_1_lavrador": {
    "apontadaPor": "gen_1_lavrador",
    "forma": "propria"
+  }
+ },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na madrugada de sábado",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_5_carroceiro",
+    "gen_visto_vivo"
+   ],
+   "prosa": "Uma hora e um lugar entram no termo do guarda, ditados de uma vez e sem que se peçam duas. A mesma madrugada de sábado tem outra hora escrita noutro papel, e nessa a vítima ainda está em pé e a falar com quem a cumprimenta."
+  },
+  {
+   "id": "hora_forjada",
+   "hora": "No quarto do sobrado, na madrugada de sábado",
+   "rubrica": "a hora posta a marcar o que não foi",
+   "exige": [
+    "gen_hora_forjada",
+    "gen_rigor"
+   ],
+   "prosa": "Uma hora fica marcada onde toda gente há de a ler primeiro, e fica marcada com firmeza. O corpo, esse, conta a sua por conta própria, e as duas contas não se encontram em ponto nenhum."
+  },
+  {
+   "id": "corpo_mudado",
+   "hora": "Do quarto do sobrado para onde foi achado",
+   "rubrica": "o corpo posto num sítio que não é o da queda",
+   "exige": [
+    "gen_livores"
+   ],
+   "prosa": "O corpo é levado do sítio em que ficou para o sítio em que há de ser encontrado, e ali é composto. As manchas de baixo assentaram antes da mudança, e assentaram do lado que agora fica para cima."
+  },
+  {
+   "id": "peca_levada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça que saiu com quem saiu",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Do conjunto sai uma peça só, e sai inteira. As vizinhas ficam na ordem em que estavam, e o lugar vazio tem o feitio exato da que se levou."
+  },
+  {
+   "id": "boca_fechada",
+   "hora": "Nos dias seguintes, na vizinhança",
+   "rubrica": "a boca que se fechou depois das perguntas feitas em público",
+   "exige": [
+    "gen_intf_intf_1_recusa"
+   ],
+   "prosa": "Quem tinha contado o que viu deixa de contar, e deixa de contar a partir de um dia certo. O silêncio tem data, e a data é a das perguntas feitas à porta aberta."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, na Taverna",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim na Taverna e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e o quarto do sobrado é meu por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
   }
  },
  "telegrama": {
@@ -28293,6 +28527,51 @@ export const CASOS_POOL = [
   "gen_intf_intf_1_retratacao": {
    "apontadaPor": "gen_0_ferreiro",
    "forma": "ensaio"
+  }
+ },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na madrugada de sábado",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_0_ferreiro",
+    "gen_visto_vivo"
+   ],
+   "prosa": "O paradeiro é dado inteiro, com a hora de chegar e a de sair, e fica lavrado. Noutro assento da mesma madrugada de sábado há alguém a trocar palavra com a vítima, e essa hora não cabe dentro da primeira."
+  },
+  {
+   "id": "peca_lavada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça lavada e recolhida ao lugar dela",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Uma peça passa pela água e volta ao lugar onde costuma estar, entre as outras do mesmo uso. A água tira o que está à vista e não entra na junta; o que a junta guarda fica lá, e a umidade demora a sair dali."
+  },
+  {
+   "id": "boca_comprada",
+   "hora": "Nos dias seguintes, na vizinhança",
+   "rubrica": "o depoimento trocado por outro, e a caderneta quitada na mesma semana",
+   "exige": [
+    "gen_intf_intf_1_retratacao",
+    "gen_intf_intf_1_dividas"
+   ],
+   "prosa": "Um depoimento já tomado é contado outra vez, e da segunda vez conta outra coisa. Na mesma semana, uma caderneta de fiado que se arrastava há meses aparece quitada de uma assentada."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, na Taverna",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim na Taverna e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e o quarto do sobrado é meu por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
   }
  },
  "telegrama": {
@@ -46205,6 +46484,59 @@ export const CASOS_POOL = [
    "forma": "propria"
   }
  },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na noite de sexta",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_1_lavadeira",
+    "gen_visto_vivo"
+   ],
+   "prosa": "O paradeiro é dado inteiro, com a hora de chegar e a de sair, e fica lavrado. Noutro assento da mesma noite de sexta há alguém a trocar palavra com a vítima, e essa hora não cabe dentro da primeira."
+  },
+  {
+   "id": "peca_levada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça que saiu com quem saiu",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Uma peça deixa de estar onde sempre esteve, e o vão dela fica aberto entre as outras. Nada mais falta na fileira, e o pó do tampo guarda o contorno do que se tirou."
+  },
+  {
+   "id": "superficie_lavada",
+   "hora": "Na cozinha, antes de sair",
+   "rubrica": "a superfície esfregada onde nada pedia esfrega",
+   "exige": [
+    "gen_peca_limpa"
+   ],
+   "prosa": "Uma superfície é esfregada até ficar mais limpa do que as vizinhas, e só ela. À roda, a poeira de dias continua onde estava, e a linha entre as duas coisas é reta."
+  },
+  {
+   "id": "vestigio_apagado",
+   "hora": "Com o inquérito já aberto",
+   "rubrica": "o rastro apagado depois de o perito o ter perguntado em público",
+   "exige": [
+    "gen_intf_intf_2_limpeza"
+   ],
+   "prosa": "Entre a primeira vez em que se olhou aquele canto e a segunda, o canto mudou. O que se tirou de lá levou consigo a camada de cima da madeira."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, no Cottage nº 3",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim no Cottage nº 3 e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e a cozinha é minha por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
+  }
+ },
  "interferencias": {
   "eventos": [
    {
@@ -49752,6 +50084,50 @@ export const CASOS_POOL = [
   "gen_alibi_gen_2_ferreiro": {
    "apontadaPor": "gen_2_ferreiro",
    "forma": "propria"
+  }
+ },
+ "intervencoes": [
+  {
+   "id": "recado_mandado",
+   "hora": "Antes do fato, na noite de sexta",
+   "rubrica": "o recado que marcou o lugar e a hora",
+   "exige": [
+    "gen_engodo"
+   ],
+   "prosa": "Um recado corre e marca lugar e hora, e quem o pediu não deixa nome. A vítima vai onde o papel diz, à hora que o papel diz, e é ali que a acham."
+  },
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na noite de sexta",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_0_costureira",
+    "gen_visto_vivo"
+   ],
+   "prosa": "Uma hora e um lugar entram no termo do guarda, ditados de uma vez e sem que se peçam duas. A mesma noite de sexta tem outra hora escrita noutro papel, e nessa a vítima ainda está em pé e a falar com quem a cumprimenta."
+  },
+  {
+   "id": "peca_lavada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça lavada e recolhida ao lugar dela",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "A peça é lavada por alto e reposta no sítio de sempre, no meio das companheiras. A crosta sai; o que se meteu por baixo do encaixe não sai, e a junta continua úmida quando já devia estar seca."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, no Adro da Igreja",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim no Adro da Igreja e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e a a alameda das lajes é minha por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
   }
  },
  "telegrama": {
@@ -77767,6 +78143,50 @@ export const CASOS_LUTA = [
    "apontadaPor": "gen_7_lavrador",
    "forma": "propria"
   }
+ },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na madrugada de sábado",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_7_lavrador",
+    "gen_visto_vivo"
+   ],
+   "prosa": "O paradeiro é dado inteiro, com a hora de chegar e a de sair, e fica lavrado. Noutro assento da mesma madrugada de sábado há alguém a trocar palavra com a vítima, e essa hora não cabe dentro da primeira."
+  },
+  {
+   "id": "peca_lavada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça lavada e recolhida ao lugar dela",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Uma peça passa pela água e volta ao lugar onde costuma estar, entre as outras do mesmo uso. A água tira o que está à vista e não entra na junta; o que a junta guarda fica lá, e a umidade demora a sair dali."
+  },
+  {
+   "id": "sala_recomposta",
+   "hora": "No quarto, antes de sair",
+   "rubrica": "a peça reposta no lugar, e reposta ao contrário",
+   "exige": [
+    "gen_peca_deslocada"
+   ],
+   "prosa": "O que tinha ido ao chão volta ao lugar e fica de pé como estava. Volta virado de outro lado: a face que dava para a parede é a que agora dá para a sala."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, na Casa do Médico",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim na Casa do Médico e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e o quarto é meu por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
+  }
  }
 },
 {
@@ -89274,6 +89694,68 @@ export const CASOS_LUTA = [
   "gen_alibi_gen_0_paroco": {
    "apontadaPor": "gen_0_paroco",
    "forma": "propria"
+  }
+ },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na madrugada de sábado",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_4_lavadeira",
+    "gen_visto_vivo"
+   ],
+   "prosa": "O paradeiro é dado inteiro, com a hora de chegar e a de sair, e fica lavrado. Noutro assento da mesma madrugada de sábado há alguém a trocar palavra com a vítima, e essa hora não cabe dentro da primeira."
+  },
+  {
+   "id": "peca_lavada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça lavada e recolhida ao lugar dela",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Uma peça passa pela água e volta ao lugar onde costuma estar, entre as outras do mesmo uso. A água tira o que está à vista e não entra na junta; o que a junta guarda fica lá, e a umidade demora a sair dali."
+  },
+  {
+   "id": "sala_recomposta",
+   "hora": "No quarto do sobrado, antes de sair",
+   "rubrica": "a peça reposta no lugar, e reposta ao contrário",
+   "exige": [
+    "gen_peca_deslocada"
+   ],
+   "prosa": "O que tinha ido ao chão volta ao lugar e fica de pé como estava. Volta virado de outro lado: a face que dava para a parede é a que agora dá para a sala."
+  },
+  {
+   "id": "vestigio_apagado",
+   "hora": "Com o inquérito já aberto",
+   "rubrica": "o rastro apagado depois de o perito o ter perguntado em público",
+   "exige": [
+    "gen_intf_intf_1_limpeza"
+   ],
+   "prosa": "Entre a primeira vez em que se olhou aquele canto e a segunda, o canto mudou. O que se tirou de lá levou consigo a camada de cima da madeira."
+  },
+  {
+   "id": "boca_fechada",
+   "hora": "Nos dias seguintes, na vizinhança",
+   "rubrica": "a boca que se fechou depois das perguntas feitas em público",
+   "exige": [
+    "gen_intf_intf_2_recusa"
+   ],
+   "prosa": "A porta que se abria à primeira batida passa a não se abrir. Antes daquela semana falava-se; depois dela, não, e ninguém explica o que mudou no meio."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, na Taverna",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim na Taverna e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e o quarto do sobrado é meu por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
   }
  },
  "interferencias": {
@@ -104208,6 +104690,60 @@ export const CASOS_LUTA = [
    "forma": "ensaio"
   }
  },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na tarde de sexta",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_4_pastor_de_ovelhas",
+    "gen_visto_vivo"
+   ],
+   "prosa": "O paradeiro é dado inteiro, com a hora de chegar e a de sair, e fica lavrado. Noutro assento da mesma tarde de sexta há alguém a trocar palavra com a vítima, e essa hora não cabe dentro da primeira."
+  },
+  {
+   "id": "peca_levada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça que saiu com quem saiu",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Uma peça deixa de estar onde sempre esteve, e o vão dela fica aberto entre as outras. Nada mais falta na fileira, e o pó do tampo guarda o contorno do que se tirou."
+  },
+  {
+   "id": "superficie_lavada",
+   "hora": "Na cozinha da granja, antes de sair",
+   "rubrica": "a superfície esfregada onde nada pedia esfrega",
+   "exige": [
+    "gen_peca_limpa"
+   ],
+   "prosa": "Uma superfície é esfregada até ficar mais limpa do que as vizinhas, e só ela. À roda, a poeira de dias continua onde estava, e a linha entre as duas coisas é reta."
+  },
+  {
+   "id": "boca_comprada",
+   "hora": "Nos dias seguintes, na vizinhança",
+   "rubrica": "o depoimento trocado por outro, e a caderneta quitada na mesma semana",
+   "exige": [
+    "gen_intf_intf_1_retratacao",
+    "gen_intf_intf_1_dividas"
+   ],
+   "prosa": "Um depoimento já tomado é contado outra vez, e da segunda vez conta outra coisa. Na mesma semana, uma caderneta de fiado que se arrastava há meses aparece quitada de uma assentada."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, na Granja",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim na Granja e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e a cozinha da granja é minha por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
+  }
+ },
  "interferencias": {
   "eventos": [
    {
@@ -108071,6 +108607,59 @@ export const CASOS_LUTA = [
   "gen_alibi_gen_1_ferreiro": {
    "apontadaPor": "gen_1_ferreiro",
    "forma": "propria"
+  }
+ },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na madrugada de sábado",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_0_taverneiro",
+    "gen_visto_vivo"
+   ],
+   "prosa": "O paradeiro é dado inteiro, com a hora de chegar e a de sair, e fica lavrado. Noutro assento da mesma madrugada de sábado há alguém a trocar palavra com a vítima, e essa hora não cabe dentro da primeira."
+  },
+  {
+   "id": "peca_levada",
+   "hora": "Entre os pertences, depois do fato",
+   "rubrica": "a peça que saiu com quem saiu",
+   "exige": [
+    "gen_instrumento"
+   ],
+   "prosa": "Uma peça deixa de estar onde sempre esteve, e o vão dela fica aberto entre as outras. Nada mais falta na fileira, e o pó do tampo guarda o contorno do que se tirou."
+  },
+  {
+   "id": "superficie_lavada",
+   "hora": "No quarto, antes de sair",
+   "rubrica": "a superfície esfregada onde nada pedia esfrega",
+   "exige": [
+    "gen_peca_limpa"
+   ],
+   "prosa": "Uma superfície é esfregada até ficar mais limpa do que as vizinhas, e só ela. À roda, a poeira de dias continua onde estava, e a linha entre as duas coisas é reta."
+  },
+  {
+   "id": "vestigio_apagado",
+   "hora": "Com o inquérito já aberto",
+   "rubrica": "o rastro apagado depois de o perito o ter perguntado em público",
+   "exige": [
+    "gen_intf_intf_1_limpeza"
+   ],
+   "prosa": "Entre a primeira vez em que se olhou aquele canto e a segunda, o canto mudou. O que se tirou de lá levou consigo a camada de cima da madeira."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, no Cottage nº 5",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim no Cottage nº 5 e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e o quarto é meu por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
   }
  },
  "interferencias": {
@@ -111977,6 +112566,50 @@ export const CASOS_LUTA = [
   "gen_alibi_gen_2_merceeiro": {
    "apontadaPor": "gen_2_merceeiro",
    "forma": "propria"
+  }
+ },
+ "intervencoes": [
+  {
+   "id": "hora_declarada",
+   "hora": "À hora que se declarou, na noite de sexta",
+   "rubrica": "o paradeiro dado, contra a hora em que a vítima ainda falava",
+   "exige": [
+    "gen_alibi_gen_0_lavrador",
+    "gen_visto_vivo"
+   ],
+   "prosa": "O paradeiro é dado inteiro, com a hora de chegar e a de sair, e fica lavrado. Noutro assento da mesma noite de sexta há alguém a trocar palavra com a vítima, e essa hora não cabe dentro da primeira."
+  },
+  {
+   "id": "sala_recomposta",
+   "hora": "Na cozinha, antes de sair",
+   "rubrica": "a peça reposta no lugar, e reposta ao contrário",
+   "exige": [
+    "gen_peca_deslocada"
+   ],
+   "prosa": "O que tinha ido ao chão volta ao lugar e fica de pé como estava. Volta virado de outro lado: a face que dava para a parede é a que agora dá para a sala."
+  },
+  {
+   "id": "vestigio_apagado",
+   "hora": "Com o inquérito já aberto",
+   "rubrica": "o rastro apagado depois de o perito o ter perguntado em público",
+   "exige": [
+    "gen_intf_intf_1_limpeza"
+   ],
+   "prosa": "Entre a primeira vez em que se olhou aquele canto e a segunda, o canto mudou. O que se tirou de lá levou consigo a camada de cima da madeira."
+  }
+ ],
+ "cenaDaNoite": {
+  "subtitulo": "Domingo à noite, no Cottage nº 6",
+  "aberturas": [
+   "Domingo à noite. A porta ficou aberta para mim no Cottage nº 6 e o lume está apagado; o lampião de mão vai à frente. Sobre a mesa, em fila, o que trouxe comigo.",
+   "Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua, e a cozinha é minha por uma hora. Refaço aquela noite com o que a mesa sustenta, e paro onde ela parar.",
+   "Domingo à noite, e a vila dorme cedo. Ando de um lado ao outro com o lampião baixo, e não há ninguém a quem perguntar. A noite volta em pedaços, e só nos pedaços que colhi."
+  ],
+  "fechos": {
+   "nenhuma": "Apago o lampião. Percorri tudo e ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.",
+   "poucas": "Ponho o lampião de lado. O lugar cedeu nos pontos em que eu tinha com que o pressionar, e ficou inteiro no resto.",
+   "varias": "Ponho o lampião de lado. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.",
+   "quase_toda": "Ponho o lampião de lado e fico olhando o lugar. A noite voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo."
   }
  },
  "interferencias": {

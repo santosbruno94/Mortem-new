@@ -48,11 +48,9 @@ import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
 import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/exposicao.js';
 import { PROCEDENCIA_ALEGACOES } from '../src/data/procedencia.js';
 import { agruparPorOrigem, contarVozes, contarVozesIndependentes, feixesContaminados } from '../src/logic/contaminacao.js';
-import { INTERVENCOES_NOITE, intervencoesRebatidas } from '../src/data/intervencoes.js';
+import { INTERVENCOES_NOITE, CENA_DA_NOITE_TUTORIAL, intervencoesRebatidas } from '../src/data/intervencoes.js';
 import {
   montarReconstituicao,
-  ABERTURAS_RECONSTITUICAO,
-  FECHOS_RECONSTITUICAO,
 } from '../src/logic/reconstituicao.js';
 import { PAPEIS } from '../src/data/papeis.js';
 import { HABITOS } from '../src/data/curriculo.js';
@@ -4903,8 +4901,8 @@ const gr71Furos = [];
 {
   const textosDoCatalogo = [
     ...INTERVENCOES_NOITE.flatMap((i) => [i.hora, i.rubrica, i.prosa]),
-    ...ABERTURAS_RECONSTITUICAO,
-    ...Object.values(FECHOS_RECONSTITUICAO),
+    ...CENA_DA_NOITE_TUTORIAL.aberturas,
+    ...Object.values(CENA_DA_NOITE_TUTORIAL.fechos),
   ];
   const marcados = marcadoresDosTextos(textosDoCatalogo);
   if (marcados.length) gr71Furos.push(`o catálogo marca cartas: ${marcados.join(' ')}`);
@@ -4991,8 +4989,8 @@ const gr76Furos = [];
   const PRIMEIROS = NOMES.flatMap((n) => n.replace(/^(Sr\.|Sra\.|Srta\.|Dr\.|Dr\.ª)\s+/, '').split(/\s+/));
   const textos = [
     ...INTERVENCOES_NOITE.flatMap((i) => [i.hora, i.rubrica, i.prosa]),
-    ...ABERTURAS_RECONSTITUICAO,
-    ...Object.values(FECHOS_RECONSTITUICAO),
+    ...CENA_DA_NOITE_TUTORIAL.aberturas,
+    ...Object.values(CENA_DA_NOITE_TUTORIAL.fechos),
   ];
   for (const texto of textos) {
     for (const nome of [...NOMES, ...PRIMEIROS]) {
@@ -5518,6 +5516,85 @@ console.log(
 );
 if (!gr92ParidadeLoteOk) console.log('GR9-2 — paridade em lote:', gr92Furos.slice(0, 12).join(' · '));
 
+// ============================================================
+// OS-R9 · FASE 3 — A NOITE NO BANCO GERADO (GR9-3).
+// ============================================================
+// As GR7-1/2/3/6 provam a cena DE UM CASO. Esta prova a de um banco, e a
+// diferença que importa é esta: no tutorial o catálogo foi escrito à mão e
+// lido inteiro antes de entrar; aqui ele é derivado por seed, e ninguém lê
+// 31 catálogos. As pernas são as regras do catálogo, cobradas em lote:
+//
+//   (1) A CENA NÃO PROVA (G9) — nenhum marcador de carta na prosa dos
+//       gestos nem no texto que situa a cena;
+//   (2) NENHUM GESTO TEM AUTOR (G3) — nenhum nome de suspeito, de vítima
+//       nem id de pessoa entra na prosa da cena. Sem nome, não há por onde
+//       o texto ramificar no bit `culpado`;
+//   (3) REBATE SÓ O QUE A MESA TEM — todo id de `exige` é carta que existe
+//       naquele caso. Um gesto que exigisse carta inexistente ficaria de pé
+//       para sempre, e a cena calaria sem que ninguém soubesse por quê;
+//   (4) O PISO É GATE — nenhum catálogo entre 1 e 2, nenhum acima de 9, e
+//       catálogo e texto de cena andam sempre juntos;
+//   (5) A GEOGRAFIA SAIU DA LÓGICA (§2.7) — `src/logic/reconstituicao.js`
+//       não nomeia mais cômodo nenhum. É a dívida da R7, e a guarda existe
+//       para que ela não volte pela porta dos fundos.
+const gr93Furos = [];
+let casosComCena = 0;
+let gestosNoBanco = 0;
+for (const caso of BANCO_R9) {
+  const catalogo = caso.intervencoes || [];
+  const cena = caso.cenaDaNoite || null;
+  if (!catalogo.length && !cena) continue;
+  if (!catalogo.length || !cena) {
+    gr93Furos.push(`${caso.id}: catálogo e cena não vieram juntos`);
+    continue;
+  }
+  casosComCena += 1;
+  gestosNoBanco += catalogo.length;
+  if (catalogo.length < 3 || catalogo.length > 9) {
+    gr93Furos.push(`${caso.id}: catálogo de ${catalogo.length} fora de 3–9`);
+  }
+  const idsDoCaso = new Set(caso.cartas.map((c) => c.id));
+  const nomes = [
+    ...caso.suspeitos.map((s) => s.nome),
+    ...caso.suspeitos.map((s) => s.id),
+    caso.verdadeDeOuro.vitima,
+  ].filter(Boolean);
+  const textoDaCena = [
+    ...catalogo.flatMap((g) => [g.prosa, g.hora, g.rubrica]),
+    cena.subtitulo,
+    ...cena.aberturas,
+    ...Object.values(cena.fechos || {}),
+  ];
+  for (const texto of textoDaCena) {
+    const marcadas = marcadoresDoTexto(String(texto || ''));
+    if (marcadas.size) gr93Furos.push(`${caso.id}: a cena pare carta (${[...marcadas].join(' ')})`);
+    for (const nome of nomes) {
+      if (String(texto || '').includes(nome)) gr93Furos.push(`${caso.id}: a cena nomeia «${nome}»`);
+    }
+  }
+  for (const gesto of catalogo) {
+    if (!(gesto.exige || []).length) gr93Furos.push(`${caso.id}/${gesto.id}: gesto sem carta que o desfaça`);
+    for (const id of gesto.exige || []) {
+      if (!idsDoCaso.has(id)) gr93Furos.push(`${caso.id}/${gesto.id}: exige ${id}, que não existe no caso`);
+    }
+  }
+  // A cena tem de ser FUNÇÃO DA MESA: mesa vazia não desfaz gesto nenhum.
+  const semMesa = (caso.intervencoes || []).filter((g) => (g.exige || []).length === 0);
+  if (semMesa.length) gr93Furos.push(`${caso.id}: ${semMesa.length} gesto(s) caem com a mesa vazia`);
+}
+// (5) — a dívida de geografia, e ela prova-se por fonte, como a GR6-6.
+const fonteCena = semComentarios(readFileSync(path.join(raizSrc, 'logic/reconstituicao.js'), 'utf8'));
+if (/relojoaria|bancada|oficina|escrit[óo]rio|balc[ãa]o/i.test(fonteCena)) {
+  gr93Furos.push('a geografia do caso-escola voltou para dentro de src/logic/reconstituicao.js');
+}
+const gr93NoiteOk = gr93Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 3 — A NOITE NO BANCO ===');
+console.log(
+  `  ${casosComCena}/${BANCO_R9.length} casos com reconstituição · ${gestosNoBanco} gestos ao todo · ` +
+    `${(gestosNoBanco / (casosComCena || 1)).toFixed(1)} por caso (teto 9, piso 3 como gate)`
+);
+if (!gr93NoiteOk) console.log('GR9-3 — a noite no banco:', gr93Furos.slice(0, 12).join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5685,6 +5762,10 @@ const checagens = [
   [
     `GR9-2 (paridade de exposição em lote): ${dossiesMedidos} dossiês, os três níveis alcançáveis por TODOS — réu e inocente com a mesma média de níveis (${mediaReu.toFixed(2)}); beat 3 em toda árvore e em todo tom, alcançável de qualquer tom do beat 2; nenhum marcador de carta em beat 3, alfinetada ou degrau; e o corte de todo degrau é o próprio corteDeE2 da sua lista`,
     gr92ParidadeLoteOk,
+  ],
+  [
+    `GR9-3 (a noite no banco gerado): ${casosComCena}/${BANCO_R9.length} casos com reconstituição, ${gestosNoBanco} gestos — nenhum marcador de carta e nenhum nome de gente na prosa da cena; todo id de exige existe no caso; catálogo entre 3 e 9, sempre acompanhado do texto que o situa; e a geografia do caso-escola saiu de src/logic/reconstituicao.js`,
+    gr93NoiteOk,
   ],
   [
     `GR9-1 (procedência no banco gerado): ${casosComMapa}/${BANCO_R9.length} casos com mapa, ${entradasR9} entradas com lastro (carta do catálogo, boca do elenco, forma do vocabulário); feixe em ${Math.round((100 * casosComFeixe) / BANCO_R9.length)}% dos casos (banda 40–95%), com ${casosComFeixeD16} a realizar a D16 — e toda alegação posta na boca de outrem tem o evento que a sustenta`,
