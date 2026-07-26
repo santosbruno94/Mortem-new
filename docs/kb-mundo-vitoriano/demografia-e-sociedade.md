@@ -24,7 +24,9 @@ visível a olho nu e todos sabem o lugar de todos:
 | Pobres da paróquia | viúvas sem renda, velhos, inválidos | socorro da Poor Law | nenhum; o horror final é a *workhouse* |
 
 O laço squire–pároco–lavrador ainda estrutura a vila, mas está esgarçado pela depressão
-agrícola (trigo: de 50s o *quarter* em 1871 para 23s em 1894) e pelas capelas.
+agrícola (trigo: de ~46s o *quarter* em 1870 para ~22s em 1894 — a série de
+[`economia-e-estrutura-social.md`](./economia-e-estrutura-social.md) §1, que é a canônica do
+projeto desde 26/07/2026) e pelas capelas.
 
 **Formas de tratamento.** Criado a patrão: "Sir" / "Ma'am" (ou "m'Lady" se titulada).
 Patrão a criado: primeiro nome; a cozinheira é "Cook"; mordomo e governanta ganham

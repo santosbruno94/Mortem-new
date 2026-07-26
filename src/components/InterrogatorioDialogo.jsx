@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useJogo } from '../store/jogo.js';
 import { interpolar } from '../logic/interpolar.js';
 import { escolherDeterministico } from '../logic/hash.js';
+import { montarDossies, exposicaoDiante } from '../logic/exposicao.js';
 import {
   obterLocalidade,
   obterDialogo,
   obterNo,
   obterPersonagemDaLocalidade,
+  obterCartas,
+  obterDialogos,
 } from '../data/pacote_caso.js';
 import { confrontoSemParadeiro } from '../logic/acusacao.js';
 import { ParagrafoProsa } from './ProsaComTermos.jsx';
@@ -70,6 +73,25 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   // Os nós de reação/evasiva não são posição de conversa: são resposta a uma
   // prova. Nunca persistem como beat, e neles a conversa "retoma".
   const emReacao = !!reacaoAtual;
+
+  // EXPOSIÇÃO (OS-R6, G5): quanto do dossiê daquele suspeito o perito trouxe
+  // para a sala. É função pura das cartas na mesa — o nível não abre nem
+  // fecha nó nenhum; só paga a `alfinetada` do beat 3. Camada narrativa: o
+  // veredicto continua sem saber que isto existe.
+  const dossies = useMemo(() => montarDossies(obterCartas(), obterDialogos()), []);
+  const exposicao = exposicaoDiante(
+    cartasRegistradas.map((c) => c.id),
+    dossies[suspeitoId] || []
+  );
+  const alfinetada = (no.alfinetada || {})[exposicao.nivel] || [];
+
+  // A ESCADA DE CONFRONTO (D8): contador autoral, nunca `requerTodas`. Cada
+  // degrau traz a sua lista curada e o corte; vale o ÚLTIMO degrau cuja
+  // contagem a mesa satisfaz. Rende prosa e mais nada — o degrau não abre nó
+  // nem marca carta.
+  const degrau = (no.degraus || [])
+    .filter((d) => (d.contaEntre || []).filter(temCarta).length >= (d.aPartirDe ?? 1))
+    .slice(-1)[0];
 
   // Escolher um tom: DESCE a árvore (definitivo) e persiste o novo beat.
   const irPara = (destino) => {
@@ -181,9 +203,22 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       )}
 
       {/* A fala corrente do suspeito (com os termos extraíveis) */}
-      <div data-no-dialogo={noExibido} className="space-y-3">
+      <div data-no-dialogo={noExibido} data-exposicao={exposicao.nivel} className="space-y-3">
         {no.fala.map((t, i) => (
           <ParagrafoProsa key={`${noExibido}_${i}`} texto={t} />
+        ))}
+
+        {/* A alfinetada: o que o beat da pressão rende A MAIS quando o perito
+            chega sabendo. Nunca traz carta (guarda GR6-4) — é a compostura
+            que falha, e só. Em E0 não há nada aqui. */}
+        {alfinetada.map((t, i) => (
+          <ParagrafoProsa key={`${noExibido}_alf_${i}`} texto={t} />
+        ))}
+
+        {/* O degrau do confronto: o que a mesa cobra a mais quando os papéis
+            se juntam. Prosa, nunca carta. */}
+        {(degrau?.fala || []).map((t, i) => (
+          <ParagrafoProsa key={`${noExibido}_deg_${i}`} texto={t} />
         ))}
       </div>
 

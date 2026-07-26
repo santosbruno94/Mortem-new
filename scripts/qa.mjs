@@ -39,6 +39,9 @@ import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
+import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/exposicao.js';
+import { PROCEDENCIA_ALEGACOES } from '../src/data/procedencia.js';
+import { agruparPorOrigem, contarVozesIndependentes, feixesContaminados } from '../src/logic/contaminacao.js';
 import { PAPEIS } from '../src/data/papeis.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
@@ -146,6 +149,52 @@ function relatar(rotulo, veredicto) {
 }
 
 // ============================================================
+// OS-R6 · FASE 0 — TELEMETRIA DA EXPOSIÇÃO.
+//
+// Lê e conta; não muda nada. Mede quantas cartas o jogador tem na mesa AO
+// ENTRAR em cada conversa — antes de a própria conversa parir as dela —, por
+// suspeito e por perfil. É este número que justifica os cortes de E0/E1/E2:
+// arbitrá-los antes de medir é o erro que a R5 quase cometeu com a paridade
+// dos móbeis.
+//
+// "Apontar aquele suspeito" usa os três campos que o catálogo já tem:
+// `ligadoA` (a carta trata dele), `pertenceA` (a carta é dele) e
+// `declaranteId` (ele é quem depõe). Nenhum campo novo.
+// ============================================================
+const CONVERSAS_R6 = [
+  { conversaId: 'interrogatorio_silas', suspeitoId: 'silas_crane' },
+  { conversaId: 'papelaria', suspeitoId: 'agnes_rooke' },
+  { conversaId: 'moinho', suspeitoId: 'caleb_grey' },
+  { conversaId: 'dialogo_walter', suspeitoId: 'walter_arthurs' },
+  { conversaId: 'dialogo_davey', suspeitoId: 'davey_tull' },
+];
+
+function cartasQueApontam(suspeitoId, registradas = s().cartasRegistradas) {
+  return registradas.filter((c) => {
+    const t = c.tagsOcultas || {};
+    return t.ligadoA === suspeitoId || t.pertenceA === suspeitoId || t.declaranteId === suspeitoId;
+  });
+}
+
+const telemetriaR6 = [];
+function medirEntrada(perfil, conversaId) {
+  const alvo = CONVERSAS_R6.find((c) => c.conversaId === conversaId);
+  const apontam = cartasQueApontam(alvo.suspeitoId);
+  telemetriaR6.push({
+    perfil,
+    conversaId,
+    suspeitoId: alvo.suspeitoId,
+    hora: formatRelogio(s().horasJogo),
+    mesa: s().cartasRegistradas.length,
+    apontam: apontam.length,
+    ids: apontam.map((c) => c.id),
+    // A mesa inteira, para que a Fase 1 possa reler a mesma fotografia com
+    // a régua do dossiê (que soma as cartas a que a árvore reage).
+    mesaIds: s().cartasRegistradas.map((c) => c.id),
+  });
+}
+
+// ============================================================
 // (a) METÓDICO — corpo primeiro (fresco), reúne tudo, AFIRMA a janela e a
 // causa, liga as sustentações, derruba o MOSTRADOR FORJADO pela própria
 // roda de contagem (a encenação exposta), desmente o padeiro, fura o
@@ -166,20 +215,24 @@ s().viajarPara('relojoaria'); // 0h — mesmo prédio
 );
 s().viajarPara('relojoaria'); // 0h
 // OS-R5: o livro de pagamentos está no mesmo púlpito que o de ordens.
-['ev_livro_ordens', 'ev_livro_pagamentos', 'ev_estojo_buril', 'dep_habito_corda', 'alibi_davey'].forEach((id) =>
-  s().extrairCarta(id)
-);
+['ev_livro_ordens', 'ev_livro_pagamentos', 'ev_estojo_buril'].forEach((id) => s().extrairCarta(id));
+medirEntrada('Metódico', 'dialogo_davey'); // a oficina é a sala do aprendiz
+['dep_habito_corda', 'alibi_davey'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_silas'); // 0h
+medirEntrada('Metódico', 'interrogatorio_silas');
 ['alibi_silas', 'comp_silas', 'ev_vidro_dobra'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('posto_do_guarda'); // +1h
 ['dep_testamento', 'dep_visto_vivo', 'dep_avistamento_padeiro'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('torre_sino'); // +1h — OS-R4: o sineiro e o que a cifra abre
 ['dep_sineiro_beco', 'ev_livro_ii'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('estalagem'); // +1h
+medirEntrada('Metódico', 'dialogo_walter');
 ['alibi_walter', 'ev_registro_estalagem', 'corrob_estalajadeiro'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('papelaria'); // +1h
+medirEntrada('Metódico', 'papelaria');
 ['alibi_agnes'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('moinho'); // +1h
+medirEntrada('Metódico', 'moinho');
 ['alibi_grey'].forEach((id) => s().extrairCarta(id));
 
 // Afirmações estruturadas:
@@ -228,6 +281,7 @@ s().viajarPara('posto_do_guarda'); // +1h — extrai o testamento → desbloquei
 s().viajarPara('gabinete_pettigrew'); // +1h30 atrás da isca (volta mais convencido)
 s().extrairCarta('corrob_pettigrew');
 s().viajarPara('estalagem'); // +1h30 de volta à vila
+medirEntrada('Apressado', 'dialogo_walter');
 ['alibi_walter', 'ev_registro_estalagem'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('relojoaria'); // +1h: só agora chega ao corpo
 console.log('\n--- Apressado: chega ao corpo às', formatRelogio(s().horasJogo), '---');
@@ -274,6 +328,7 @@ s().viajarPara('relojoaria');
 s().extrairCarta('ev_maquinismo');
 s().viajarPara('relojoaria');
 s().extrairCarta('ev_estojo_buril');
+medirEntrada('Pericial Desatento', 'dialogo_davey');
 s().definirReu('silas_crane');
 s().definirJanela({ inicio: -3, fim: -2 });
 s().definirCausa('ferida_arma_branca');
@@ -284,6 +339,43 @@ ligar('ev_estojo_buril', ANCORAS.presenca);
 s().submeterAcusacao();
 const vDesatento = s().veredicto;
 relatar('(d) PERICIAL DESATENTO — esperado: sucesso_gafes', vDesatento);
+
+// ============================================================
+// OS-R6 · FASE 0 — a tabela que justifica os cortes.
+// ============================================================
+console.log('\n=== OS-R6 · FASE 0 — TELEMETRIA DA EXPOSIÇÃO ===');
+console.log('Cartas na mesa que apontam o suspeito, no instante de entrar na conversa.');
+const PERFIS_R6 = ['Metódico', 'Apressado', 'Intuitivo', 'Pericial Desatento'];
+for (const perfil of PERFIS_R6) {
+  const linhas = CONVERSAS_R6.map(({ conversaId, suspeitoId }) => {
+    const m = telemetriaR6.find((t) => t.perfil === perfil && t.conversaId === conversaId);
+    const marca = m ? String(m.apontam) : '—';
+    return `${suspeitoId.padEnd(15)} ${marca.padStart(2)}${m ? `  (mesa ${m.mesa}, ${m.hora})  ${m.ids.join(' ')}` : '  não visitada'}`;
+  });
+  console.log(`\n  ${perfil}`);
+  linhas.forEach((l) => console.log(`    ${l}`));
+}
+const apontamMedidos = telemetriaR6.map((t) => t.apontam);
+console.log(
+  `\n  Amplitude medida: ${Math.min(...apontamMedidos)}–${Math.max(...apontamMedidos)} cartas por suspeito à entrada.`
+);
+
+// O teto por suspeito — e é ele que reprova o corte absoluto. Uma carta que
+// nasce da boca do próprio suspeito (marcada [[id]] na árvore dele) não é o
+// perito chegando sabendo: é a conversa a pagar-se a si mesma. Contadas à
+// parte para que o número de fora apareça sozinho.
+console.log('\n  Teto do catálogo, por suspeito:');
+for (const { conversaId, suspeitoId } of CONVERSAS_R6) {
+  const arvore = DIALOGOS[conversaId];
+  const nascemAqui = marcadoresDosTextos(Object.values(arvore.nos).flatMap((n) => n.fala || []));
+  const apontam = cartasQueApontam(suspeitoId, CARTAS);
+  const deFora = apontam.filter((c) => !nascemAqui.has(c.id));
+  console.log(
+    `    ${suspeitoId.padEnd(15)} apontam ${String(apontam.length).padStart(2)} · nascem na conversa ${String(
+      apontam.length - deFora.length
+    ).padStart(2)} · de fora ${String(deFora.length).padStart(2)}   ${deFora.map((c) => c.id).join(' ')}`
+  );
+}
 
 // ============================================================
 // (e) DEGRADAÇÃO POR PRECISÃO + SOLVABILIDADE DURÁVEL (relógio mole).
@@ -4408,6 +4500,253 @@ for (const { id, ehReu } of paridadeDeMobil) {
 const iscaHonestaOk = iscasFora.length === 0;
 if (!iscaHonestaOk) console.log('\nGR5-6 — marca de isca fora do lugar:', iscasFora.join(' · '));
 
+// ============================================================
+// OS-R6 · FASE 1 — AUDITORIA DA EXPOSIÇÃO (GR6-3, GR6-4, GR6-5, GR6-6).
+//
+// A ordem aqui é a que a OS mandou: a guarda antes do conteúdo. A exposição
+// é a peça onde é mais fácil furar a G4 sem dar por isso, e o furo só
+// apareceria no perfil que não subiu de nível.
+// ============================================================
+const dossiesR6 = montarDossies(CARTAS, DIALOGOS);
+const SUSPEITOS_R6 = CONVERSAS_R6.map((c) => c.suspeitoId);
+const reuR6 = SEED_TUTORIAL.reuCorreto;
+
+console.log('\n=== OS-R6 · FASE 1 — A EXPOSIÇÃO ===');
+console.log('Dossiê externo por suspeito, e o corte de E2 (dois terços, para cima):');
+for (const suspeitoId of SUSPEITOS_R6) {
+  const dossie = dossiesR6[suspeitoId] || [];
+  const escada = dossie.map((_, i) => exposicaoDiante(dossie.slice(0, i + 1), dossie).nivel);
+  console.log(
+    `  ${suspeitoId === reuR6 ? '▸' : ' '} ${suspeitoId.padEnd(15)} dossiê ${String(dossie.length).padStart(
+      2
+    )} · E2 a partir de ${corteDeE2(dossie.length)} · escada E0→${escada.join('→')}   ${dossie.join(' ')}`
+  );
+}
+
+// GR6-3 — FUNÇÃO PURA. Mesmas cartas ⇒ mesmo nível, em replay byte a byte;
+// a ordem de chegada das cartas à mesa não entra na conta; e o arquivo não
+// tem fonte de variação própria.
+const dossiesReplay = montarDossies(CARTAS, DIALOGOS);
+const dossiesReplayOk = JSON.stringify(dossiesR6) === JSON.stringify(dossiesReplay);
+const ordemNaoImportaR6 = SUSPEITOS_R6.every((suspeitoId) => {
+  const dossie = dossiesR6[suspeitoId] || [];
+  const direta = exposicaoDiante(dossie, dossie);
+  const invertida = exposicaoDiante([...dossie].reverse(), dossie);
+  const comIntrusas = exposicaoDiante([...dossie, 'ev_rigor', 'ev_livores'], dossie);
+  return (
+    JSON.stringify(direta) === JSON.stringify(invertida) && direta.nivel === comIntrusas.nivel
+  );
+});
+const fonteExposicao = semComentarios(readFileSync(path.join(raizSrc, 'logic/exposicao.js'), 'utf8'));
+const exposicaoSemVariacaoPropria = !/Math\.random|Date\.now|new Date\(/.test(fonteExposicao);
+const gr63PuraOk = dossiesReplayOk && ordemNaoImportaR6 && exposicaoSemVariacaoPropria;
+if (!gr63PuraOk) {
+  console.log(
+    `\nGR6-3 — replay ${dossiesReplayOk} · ordem ${ordemNaoImportaR6} · sem variação própria ${exposicaoSemVariacaoPropria}`
+  );
+}
+
+// GR6-4 — A EXPOSIÇÃO NÃO É CHAVE DE SOLUBILIDADE. Nenhuma carta nasce
+// atrás do nível: o conjunto de marcadores [[id]] alcançável numa árvore é
+// o MESMO em E0 e em E2. A prosa que varia por nível (`falaPorNivel`) não
+// pode marcar carta nenhuma — é o que torna a G4 satisfeita por construção
+// em vez de por vigilância.
+const gr64Furos = [];
+for (const [conversaId, arvore] of Object.entries(DIALOGOS)) {
+  for (const [noId, no] of Object.entries(arvore.nos || {})) {
+    const porNivel = no.falaPorNivel || {};
+    for (const nivel of Object.keys(porNivel)) {
+      if (!NIVEIS.includes(nivel)) gr64Furos.push(`${conversaId}.${noId}: nível "${nivel}" fora de E0/E1/E2`);
+      const marcadas = marcadoresDosTextos(porNivel[nivel] || []);
+      if (marcadas.size) {
+        gr64Furos.push(`${conversaId}.${noId}[${nivel}] pare carta atrás do nível: ${[...marcadas].join(' ')}`);
+      }
+    }
+    // A mesma regra vale para a escada de confronto (D8): degrau rende prosa,
+    // nunca carta. Um degrau que parisse [[id]] poria prova atrás de posse de
+    // prova — que é o beco que a G4 proíbe, por outro caminho.
+    for (const [i, d] of (no.degraus || []).entries()) {
+      const marcadas = marcadoresDosTextos(d.fala || []);
+      if (marcadas.size) {
+        gr64Furos.push(`${conversaId}.${noId} degrau ${i} pare carta: ${[...marcadas].join(' ')}`);
+      }
+      if (!(d.contaEntre || []).length) gr64Furos.push(`${conversaId}.${noId} degrau ${i} sem lista de contagem`);
+      const corte = d.aPartirDe ?? 1;
+      // Contador autoral, não `requerTodas` (D8): o corte tem de caber na
+      // lista, e a lista tem de citar carta que existe.
+      if (corte < 1 || corte > (d.contaEntre || []).length) {
+        gr64Furos.push(`${conversaId}.${noId} degrau ${i}: corte ${corte} fora da lista`);
+      }
+      for (const id of d.contaEntre || []) {
+        if (!CARTAS.some((c) => c.id === id)) gr64Furos.push(`${conversaId}.${noId} degrau ${i} conta carta inexistente: ${id}`);
+      }
+    }
+  }
+}
+const gr64SemChaveOk = gr64Furos.length === 0;
+if (!gr64SemChaveOk) console.log('\nGR6-4 — carta atrás do nível:', gr64Furos.join(' · '));
+
+// GR6-5 — PARIDADE DE EXPOSIÇÃO. A regra é uma só e vale para os cinco, réu
+// incluído: E0 é mesa vazia daquele dossiê, e E2 é dois terços dele. Provado
+// por caminhada exaustiva — para todo suspeito e todo k de 0 ao tamanho do
+// dossiê, o nível bate com a fração e com nada mais. Material equivalente,
+// nível equivalente: é a GR6-5 por construção, e não por promessa.
+const gr65Furos = [];
+for (const suspeitoId of SUSPEITOS_R6) {
+  const dossie = dossiesR6[suspeitoId] || [];
+  const total = dossie.length;
+  const vistos = new Set();
+  for (let k = 0; k <= total; k += 1) {
+    const { nivel } = exposicaoDiante(dossie.slice(0, k), dossie);
+    vistos.add(nivel);
+    const esperado = k === 0 ? 'E0' : k / total >= 2 / 3 ? 'E2' : 'E1';
+    if (nivel !== esperado) {
+      gr65Furos.push(`${suspeitoId} com ${k}/${total} deu ${nivel}, esperado ${esperado}`);
+    }
+  }
+  // E nenhum suspeito fica sem degrau: os três níveis são alcançáveis para
+  // os cinco. Um dossiê que só desse E0 e E2 seria beco (G10).
+  for (const nivel of NIVEIS) {
+    if (!vistos.has(nivel)) gr65Furos.push(`${suspeitoId} não alcança ${nivel} (dossiê ${total})`);
+  }
+}
+const gr65ParidadeOk = gr65Furos.length === 0;
+if (!gr65ParidadeOk) console.log('\nGR6-5 — paridade de exposição:', gr65Furos.join(' · '));
+
+// GR6-6 — O MOTOR CONTINUA CEGO. `veredicto.js` e `acusacao.js` não leem
+// exposição nem `apontadaPor`. Mesma cegueira que já vale para aparências,
+// papéis e atributos — leitura de fonte, não confiança.
+const ARQUIVOS_DO_MOTOR = ['logic/veredicto.js', 'logic/acusacao.js'];
+const gr66Violacoes = ARQUIVOS_DO_MOTOR.filter((relativo) =>
+  /exposicao|exposicaoDiante|nivelDeExposicao|apontadaPor|procedencia|contaminacao/.test(
+    semComentarios(readFileSync(path.join(raizSrc, relativo), 'utf8'))
+  )
+);
+const gr66MotorCegoOk = gr66Violacoes.length === 0;
+if (!gr66MotorCegoOk) console.log('\nGR6-6 — o motor lê exposição/apontadaPor em:', gr66Violacoes.join(', '));
+
+// ============================================================
+// OS-R6 · FASE 2 — O BEAT 3 (GR6-7, GR6-9).
+// ============================================================
+const TONS_R6 = ['firme', 'cordial', 'tecnico', 'obliquo'];
+
+// GR6-7 — BEAT 3 NOS CINCO, EM QUALQUER TOM. Os cinco têm terceiro beat; ele
+// sai nos quatro tons; e chega-se a ele por QUALQUER dos quatro tons do beat
+// 2 — um terceiro beat que só o tom ressonante abrisse seria beco (G4, G10).
+const gr67Furos = [];
+for (const { conversaId } of CONVERSAS_R6) {
+  const nos = DIALOGOS[conversaId]?.nos || {};
+  for (const tom of TONS_R6) {
+    const b3 = nos[`b3_${tom}`];
+    if (!b3) {
+      gr67Furos.push(`${conversaId}: falta b3_${tom}`);
+      continue;
+    }
+    if (!(b3.fala || []).length) gr67Furos.push(`${conversaId}.b3_${tom}: fala vazia`);
+    const b2 = nos[`b2_${tom}`];
+    const destinos = (b2?.opcoes || []).map((o) => o.vaiPara);
+    for (const alvo of TONS_R6) {
+      if (!destinos.includes(`b3_${alvo}`)) {
+        gr67Furos.push(`${conversaId}.b2_${tom} não oferece b3_${alvo}`);
+      }
+    }
+    // Os tons das opções do beat 2 têm de ser os quatro, sem repetição — é o
+    // que o qa-ui conta em tela (.opcao-dialogo[data-tom] === 4).
+    const tonsOferecidos = (b2?.opcoes || []).map((o) => o.tom);
+    if (new Set(tonsOferecidos).size !== 4) {
+      gr67Furos.push(`${conversaId}.b2_${tom} não oferece os quatro tons: ${tonsOferecidos.join(',')}`);
+    }
+  }
+}
+const gr67BeatTresOk = gr67Furos.length === 0;
+if (!gr67BeatTresOk) console.log('\nGR6-7 — beat 3:', gr67Furos.join(' · '));
+
+// GR6-9 — MENORIDADE. O beat 3 de Davey é econômico e só, em qualquer tom e
+// em qualquer nível de exposição. A R5 apontou que o risco fino não é o
+// óbvio: é dar-lhe RESSENTIMENTO em vez de facto. A guarda cobra as duas
+// coisas — o vocabulário do assunto tem de ser o do dinheiro, e nenhuma
+// palavra de mágoa entra na boca dele.
+const LEXICO_ECONOMICO_DAVEY = /ordenado|xelim|xelins|paga|pagou|pagava|dívida|livro|marmita|serviço/i;
+const LEXICO_DE_MAGOA = /injust|revolt|ódio|odei|rancor|vingan|maldade|explora|roubad|me devia|merecia/i;
+const gr69Furos = [];
+{
+  const nos = DIALOGOS.dialogo_davey?.nos || {};
+  for (const tom of TONS_R6) {
+    const no = nos[`b3_${tom}`] || {};
+    const blocos = [...(no.fala || []), ...Object.values(no.alfinetada || {}).flat()];
+    const texto = blocos.join(' ');
+    if (!LEXICO_ECONOMICO_DAVEY.test(texto)) gr69Furos.push(`b3_${tom}: o assunto não é econômico`);
+    if (LEXICO_DE_MAGOA.test(texto)) gr69Furos.push(`b3_${tom}: mágoa posta na boca do rapaz`);
+  }
+}
+const gr69MenoridadeOk = gr69Furos.length === 0;
+if (!gr69MenoridadeOk) console.log('\nGR6-9 — menoridade:', gr69Furos.join(' · '));
+
+// ============================================================
+// OS-R6 · FASE 3 — A CONTAMINAÇÃO (GR6-8, D16/D17).
+// ============================================================
+console.log('\n=== OS-R6 · FASE 3 — PROCEDÊNCIA DAS ALEGAÇÕES ===');
+for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES))) {
+  const marca = ids.length > 1 ? '▸' : ' ';
+  console.log(`  ${marca} ${origem.padEnd(16)} ${ids.length} alegação(ões)  ${ids.join(' ')}`);
+}
+
+// GR6-8 — CONTAMINAÇÃO LEGÍVEL. Duas alegações com a mesma origem não contam
+// como duas corroborações. A prova é por asserção e tem três pernas:
+//
+//   (1) o feixe da D16 existe e é o que a decisão descreve — o álibi do réu,
+//       a lição que o rapaz repete e a senhora da viela, uma boca só;
+//   (2) somar papéis dá mais do que somar bocas: dois papéis do mesmo feixe
+//       valem UMA voz, e dois de feixes distintos valem duas;
+//   (3) o mapa de procedência cita gente que existe no caso — origem órfã é
+//       lastro podre, e mentiria na auditoria antes de mentir na prosa.
+const gr68Furos = [];
+const FEIXE_D16 = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela'];
+
+const feixesDoCatalogo = feixesContaminados(Object.keys(PROCEDENCIA_ALEGACOES));
+const feixeDoReu = feixesDoCatalogo.find((f) => f.origem === SEED_TUTORIAL.reuCorreto);
+if (!feixeDoReu) gr68Furos.push('a D16 não tem feixe: nenhuma origem responde por mais de uma alegação');
+else if (JSON.stringify(feixeDoReu.ids.slice().sort()) !== JSON.stringify(FEIXE_D16.slice().sort())) {
+  gr68Furos.push(`o feixe da D16 mudou de composição: ${feixeDoReu.ids.join(' ')}`);
+}
+
+// A conta que dá nome à guarda.
+if (contarVozesIndependentes(['alibi_silas', 'alibi_davey']) !== 1) {
+  gr68Furos.push('o álibi do réu e a lição do rapaz contam como duas vozes');
+}
+if (contarVozesIndependentes(['alibi_silas', 'alibi_grey']) !== 2) {
+  gr68Furos.push('duas alegações de bocas distintas não contam como duas vozes');
+}
+if (contarVozesIndependentes(FEIXE_D16) !== 1) {
+  gr68Furos.push('o feixe inteiro da D16 não colapsa numa voz só');
+}
+
+const PESSOAS_DO_CASO = new Set([
+  ...pacote.suspeitos.map((s) => s.id),
+  'moco_padeiro',
+  'sra_wick',
+  'amos_kell',
+  'estalajadeiro',
+  'pettigrew',
+]);
+for (const [cartaId, { apontadaPor: origem, forma }] of Object.entries(PROCEDENCIA_ALEGACOES)) {
+  if (!CARTAS.some((c) => c.id === cartaId)) gr68Furos.push(`${cartaId}: procedência de carta que não existe`);
+  if (!PESSOAS_DO_CASO.has(origem)) gr68Furos.push(`${cartaId}: origem "${origem}" não é gente deste caso`);
+  if (!['propria', 'ensaio', 'coacao'].includes(forma)) gr68Furos.push(`${cartaId}: forma "${forma}" fora do catálogo`);
+}
+const gr68ContaminacaoOk = gr68Furos.length === 0;
+if (!gr68ContaminacaoOk) console.log('\nGR6-8 — contaminação:', gr68Furos.join(' · '));
+
+// A telemetria da Fase 0, agora traduzida em nível — o «depois» que a ata pede.
+console.log('\n  Telemetria da Fase 0, traduzida em nível:');
+for (const t of telemetriaR6) {
+  const dossie = dossiesR6[t.suspeitoId] || [];
+  const e = exposicaoDiante(t.mesaIds, dossie);
+  console.log(
+    `    ${t.perfil.padEnd(18)} ${t.suspeitoId.padEnd(15)} ${e.nivel}  (${e.tem}/${e.total})  ${e.ids.join(' ')}`
+  );
+}
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -4541,6 +4880,18 @@ const checagens = [
     paridadeDeMobilOk,
   ],
   ['GR5-6 (isca honesta): as cartas de móbil dos inocentes carregam isca; a do réu, não', iscaHonestaOk],
+  ['GR6-3 (exposição é função pura): mesmas cartas ⇒ mesmo nível; a ordem não entra na conta; sem variação própria', gr63PuraOk],
+  ['GR6-4 (a exposição não é chave de solubilidade): nenhuma carta nasce atrás do nível — os marcadores são os mesmos em E0 e em E2', gr64SemChaveOk],
+  [
+    `GR6-5 (paridade de exposição): a mesma régua para os cinco — E0 é dossiê vazio, E2 são dois terços — e os três níveis alcançáveis por todos (réu: dossiê ${
+      (dossiesR6[reuR6] || []).length
+    })`,
+    gr65ParidadeOk,
+  ],
+  ['GR6-6 (o motor continua cego): veredicto.js e acusacao.js não leem exposição, procedência nem contaminação', gr66MotorCegoOk],
+  ['GR6-8 (contaminação legível): o feixe da D16 colapsa numa voz só — o álibi do réu, a lição do rapaz e a senhora da viela saem da mesma boca', gr68ContaminacaoOk],
+  ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
+  ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

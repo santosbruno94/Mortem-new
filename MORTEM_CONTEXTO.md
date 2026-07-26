@@ -586,6 +586,43 @@ bainha de Silas só se apanha de esguelha, no oblíquo). O peso da escolha é **
 por ora**: nenhuma prova que o veredicto lê depende do tom — o motor repousa no corpo e
 na cena (ver §7.3 para a evolução mecânica futura).
 
+**São TRÊS beats, e o terceiro é o da pressão (OS-R6, D7).** Até 26/07/2026 a conversa
+morria no segundo, e quem chegasse sem carta nenhuma fazia duas perguntas e saía. O beat
+3 existe nas cinco árvores, nos quatro tons, e o eixo é comum: **o que esta morte muda
+para quem ficou**. Ele **não pede carta, não abre nó e não marca nenhum `[[id]]`** — é
+por esse desenho que a solubilidade fica satisfeita por construção.
+
+**A exposição (E0/E1/E2) — `src/logic/exposicao.js`.** Função **pura** das cartas na
+mesa, sem estado e sem flag escondida: mede **quanto do dossiê daquele suspeito o perito
+trouxe para a sala**, e paga com isso a `alfinetada` do beat 3 — em E0 o suspeito
+responde o perguntado; em E1 a compostura falha num gesto; em E2 ele diz, do seu jeito,
+que o perito chegou sabendo. O acréscimo é **caráter, nunca fato novo do caso**.
+
+O dossiê de um suspeito é o que se acha **fora** da conversa dele: as cartas que o
+apontam (`ligadoA`/`pertenceA`/`declaranteId`), mais as que a árvore dele está escrita
+para reagir (`reacoesProva`), **menos** as que nascem da própria boca dele. O corte de E2
+são **dois terços do próprio dossiê** — relativo, e não absoluto, porque o réu tem o
+maior dossiê do caso (5, empatado com Walter) e um corte absoluto o faria subir de nível
+antes dos inocentes, transformando o nível em delator. Com a régua relativa, **material
+equivalente dá nível equivalente**, e os cinco alcançam os três níveis.
+
+O **motor é cego** à exposição: `veredicto.js` e `acusacao.js` não a leem, e o `qa.mjs`
+cobra por leitura de fonte.
+
+**A escada de confronto (D8) é contador autoral.** Um nó de reação pode trazer `degraus`:
+cada degrau declara uma **lista curada** (`contaEntre`) e um **corte** (`aPartirDe`), e
+vale o último degrau cuja contagem a mesa satisfaz — nunca `requerTodas`. O segundo
+degrau do testamento de Walter é o caso vivo: com dois dos três papéis na mesa, ele
+admite que soube da mudança e diz por que a omitiu. Degrau rende **prosa e nada mais**.
+
+**A procedência das alegações (`apontadaPor`, D17) — `src/data/procedencia.js`.** Quem
+**pôs** a alegação em circulação, que não é quem ela acusa. Vive **fora de
+`tagsOcultas`**, pela mesma razão que a aparência de personagem vive: campo dentro das
+tags é campo que o motor pode ler amanhã sem que ninguém repare.
+`src/logic/contaminacao.js` faz a conta que a D16 pedia — **papéis somam-se, bocas é que
+corroboram**: o álibi do réu, a lição que Davey repete e a senhora da viela da Sra. Wick
+saem da mesma boca, e valem **uma** voz, não três.
+
 **A pergunta do perito varia (OS Diálogos/Escala/Localização).** A redação das perguntas
 do perito era fixa — nos casos gerados, **igual em todo caso** (a superfície de diálogo que
 mais cansava quem jogava vários). Agora cada tom tem um **pool de fraseados**, escolhido
@@ -652,8 +689,15 @@ DIALOGOS.interrogatorio_silas = {
     // (ev_vidro_dobra, a lasca) só no oblíquo. Cada beat aponta ao próximo.
     b1_obliquo: { fala: ['…: [[alibi_silas]].', '…presa à bainha…: [[ev_vidro_dobra]].'],
       opcoes: [ /* as quatro falas do beat 2 */ ] },
-    b2_obliquo: { fala: ['…: [[comp_silas]].'], opcoes: [] }, // terminal: sem volta
+    b2_obliquo: { fala: ['…: [[comp_silas]].'], opcoes: OPCOES_B3_SILAS },
+    // O beat da pressão: sem carta, sem nó novo. `alfinetada` é o que a
+    // exposição paga (E1/E2); em E0 não há acréscimo. Terminal: sem volta.
+    b3_obliquo: { fala: ['…'], alfinetada: ALFINETADA_SILAS, opcoes: [] },
     confronto_estalagem: { fala: ['…'], opcoes: [] }, // reação; a conversa retoma
+    // Escada de confronto (D8): contador autoral, nunca `requerTodas`.
+    confronto_testamento: { fala: ['… o 1.º degrau …'], opcoes: [],
+      degraus: [{ contaEntre: ['corrob_pettigrew', 'ev_bilhete_vigario', 'ev_suplica_cesto'],
+                  aPartirDe: 2, fala: ['… o 2.º degrau: "Sabia." …'] }] },
     …
   },
 };
@@ -1253,14 +1297,19 @@ src/
   data/         seed.js · catalogo_causas.js · cartas.js · localidades.js · mapa.js ·
                 curriculo.js · glossario.js · rotulos.js · abertura.js ·
                 aparencias.js (genótipo curado) · mapa_espacial.js (diorama) ·
-                hotspots_corpo.js (exame 3D) — os três últimos: camada VISUAL
+                hotspots_corpo.js (exame 3D) — os três últimos: camada VISUAL ·
+                procedencia.js (o `apontadaPor` da D17: quem pôs a alegação em
+                circulação — camada NARRATIVA, fora de tagsOcultas de propósito)
   logic/        veredicto.js (calcularVeredictoCadeia) · acusacao.js (gramática das
                 ligações) · tempo_morte.js · cronos.js · falaDoMestre.js (dica) ·
                 monologo.js · epilogo.js · tempo.js · interpolar.js ·
                 hash.js (fonte única de sorteio) · aparencia.js · webgl.js (sonda) ·
                 prancha_vila.js (projeção da gravura, a hora em tinta, o arranjo das
                 etiquetas) · beat_viagem.js (a duração do beat, um dono só) ·
-                preco_da_viagem.js · desbloqueio.js — os quatro últimos: camada VISUAL
+                preco_da_viagem.js · desbloqueio.js — os quatro últimos: camada VISUAL ·
+                exposicao.js (E0/E1/E2, função pura das cartas na mesa) ·
+                contaminacao.js (papéis somam-se, bocas é que corroboram) — os dois
+                últimos: camada NARRATIVA, e o motor é cego a eles (GR6-6)
   store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes,
                 acusacao, log, detective, nosVisitados, nSubmissoes, somAtivo)
   som.js        efeitos sonoros da mesa (apresentação; nenhuma regra lê)

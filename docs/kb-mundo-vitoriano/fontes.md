@@ -73,13 +73,14 @@
   urbanos (courts, gasworks, pavimentação, esterco) têm base documental de cidade
   grande extrapolada para town pequena — sinalizado no texto onde ocorre.
 
-- **Divergência interna registrada e não resolvida (25/07/2026), sobre o preço do trigo.**
-  `economia-e-estrutura-social.md` §1 dá **~46s o *quarter* em 1870 → ~22s em 1894**;
-  `demografia-e-sociedade.md` §2 dá **50s em 1871 → 23s em 1894**. Séries diferentes, e
-  nenhuma das duas está errada em si — mas os dois arquivos citam-se um ao outro, e um
-  leitor que cruze as páginas encontra números que não batem. **Escolher a série é decisão
-  do usuário**, não do agente; até lá, quem escrever prosa cita a ordem de grandeza (o trigo
-  caiu para menos de metade) e não o número exato.
+- **Preço do trigo: divergência RESOLVIDA em 26/07/2026 (martelo do usuário, OS-R6).**
+  Havia duas séries, e os dois arquivos citavam-se um ao outro: `economia` dava ~46s o
+  *quarter* em 1870 → ~22s em 1894, e `demografia` dava 50s em 1871 → 23s em 1894. Nenhuma
+  estava errada em si, mas quem cruzasse as páginas encontrava números que não batiam.
+  **A série canônica do projeto passa a ser a de `economia-e-estrutura-social.md` §1
+  (~46s em 1870 → ~22s em 1894)**, por ser a que traz a fonte nomeada; `demografia` §2 foi
+  alinhada a ela no mesmo commit. Quem escrever prosa continua livre para citar a ordem de
+  grandeza (o trigo caiu para menos de metade) em vez do número exato.
 - **O que entrou no lote de 25/07/2026** (casamento em `demografia` §7; aprendizagem e
   dívida em `economia` §§7–8) traz as incertezas declaradas **dentro de cada seção**, e não
   aqui: o timbre de presbitério, a escala salarial do aprendiz (um único *indenture* de

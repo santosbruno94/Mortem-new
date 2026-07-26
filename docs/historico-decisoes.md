@@ -2135,3 +2135,291 @@ casamento vale e a parte enganada fica casada).
 citam-se um ao outro. Séries diferentes, nenhuma errada em si, mas quem cruzar as páginas
 encontra números que não batem. Registrado em `fontes.md` e **não resolvido**: escolher a
 série é do utilizador. Até lá, a prosa cita a ordem de grandeza e não o número.
+
+---
+
+## 26/07/2026 — OS-R6: Exposição e interrogatórios
+
+**Decisões aplicadas:** D3, D7, D8, D16, D17 · **Registrada com desconforto:** a anomalia
+do `interrogatorio_silas`
+**Guardas verificadas:** G2, G3, G4, G5, G7, G8, G10, G11, G12 · **Novas:** GR6-3, GR6-4,
+GR6-5, GR6-6, GR6-7, GR6-8, GR6-9
+**Arquivos tocados:** `src/logic/exposicao.js` (novo) · `src/logic/contaminacao.js` (novo) ·
+`src/data/procedencia.js` (novo) · `src/data/dialogos.js` ·
+`src/components/InterrogatorioDialogo.jsx` · `scripts/qa.mjs` · `scripts/qa-ui.mjs` ·
+`docs/kb-mundo-vitoriano/{economia-e-estrutura-social,demografia-e-sociedade,fontes}.md` ·
+`docs/os-r7-a-reconstituicao.md` (novo) · `docs/os-r7-prompt-de-arranque.md` (novo) ·
+`docs/plano-de-sessoes.md` · `docs/os-r0-mestra-reforma-hora-emprestada.md` ·
+`MORTEM_CONTEXTO.md` · `README.md` · este arquivo
+**Gate:** lint-prosa sem violação ✓ · qa.mjs CASO VÁLIDO ✓ · qa-ui.mjs UI VÁLIDA ✓ · build ✓
+**Gate específico:** pipeline `revisar-prosa` com os três revisores ✓ · contagem de cartas e
+saldo final declarados ✓ · telemetria da exposição publicada, com a paridade provada ✓ · os
+quatro perfis dão os quatro desfechos, com as horas **conferidas** e inalteradas ✓ ·
+contrato do `qa-ui` atualizado no mesmo commit que mexeu na árvore ✓ · gerador e banco fora
+do diff ✓
+**Divergências assumidas:** o `interrogatorio_silas` continua sendo o único suspeito com nó
+de mapa próprio (martelo (e), opção recomendada, com o desconforto declarado no próprio
+arquivo).
+
+### Os sete martelos, e o que se escreveu por causa deles
+
+Os sete saíram **nas recomendações** — o primeiro fecho da reforma em que isso acontece.
+
+| Martelo | Decisão | O que se escreveu |
+|---|---|---|
+| (a) O que a exposição mede | Cartas do próprio suspeito; muda só o rendimento | `src/logic/exposicao.js`, e um corte **relativo** que a telemetria obrigou |
+| (b) O que é o beat 3 | O beat da pressão, onde a exposição se paga | 20 nós `b3_*` e cinco `alfinetada` |
+| (c) O motor lê `apontadaPor`? | **Não** — lastro narrativo com guarda no QA | `src/data/procedencia.js`, **fora de `tagsOcultas`** |
+| (d) A D3 custa carta? | **Não** — o 2.º degrau cobra o que já está na mesa | o `degraus` de `confronto_testamento` |
+| (e) A anomalia do `interrogatorio_silas` | Deixar como está e registrar | nota longa no próprio `dialogos.js`, com o custo de normalizar |
+| (f) As 4 cartas que sobram | Aceitar o saldo 4 como decisão | zero gastas; o caso-escola fecha em 42 de 46 |
+| (g) A série do preço do trigo | Fixar a de `economia` (46s → 22s) | `demografia` §2 alinhada; `fontes.md` passa a registrar a decisão |
+
+### A telemetria da exposição, antes e depois
+
+**Antes (Fase 0, cartas brutas que apontam o suspeito à entrada da conversa).** A medida
+achou 0–4, e reprovou o corte absoluto por duas vias independentes: o réu tem o **maior**
+teto bruto do caso (8 cartas o apontam), logo subiria de nível antes dos inocentes — o
+nível viraria delator, e a GR6-5 cairia; e Grey e Davey, com **uma** carta de fora cada,
+nunca alcançariam um corte alto — beco de exposição, contra a G10.
+
+Descontado o que nasce da boca do próprio suspeito, o que vem de fora era 5 · 5 · 3 · 1 · 1.
+
+**Depois (a régua do dossiê: o que aponta + o que a árvore reage − o que nasce na
+conversa; E2 são dois terços).**
+
+| Suspeito | Dossiê | E2 a partir de | Escada |
+|---|:-:|:-:|---|
+| **Silas Crane (réu)** | 5 | 4 | E0→E1→E1→E1→E2→E2 |
+| Walter Arthurs | 5 | 4 | E0→E1→E1→E1→E2→E2 |
+| Agnes Rooke | 4 | 3 | E0→E1→E1→E2→E2 |
+| Davey Tull | 3 | 2 | E0→E1→E2→E2 |
+| Caleb Grey | 2 | 2 | E0→E1→E2 |
+
+**A paridade, provada e não prometida.** A GR6-5 caminha exaustivamente todo suspeito e
+todo `k` de 0 ao tamanho do dossiê, e cobra a equivalência exata: **E0 ⟺ dossiê vazio,
+E2 ⟺ `tem/total ≥ 2/3`**, a mesma régua para os cinco, sem exceção para o réu. Material
+equivalente dá nível equivalente por construção. Os três níveis são alcançáveis pelos
+cinco — nenhum beco.
+
+O réu **empata** no topo com um inocente em vez de reinar nele, e não é sequer o mais
+barato de levar a E2: em fração, Davey chega lá com 2/3 e Silas só com 4/5.
+
+**O que a Fase 0, relida com a régua nova, mostrou** — e é o achado que vale por si:
+
+| Perfil | Suspeito | Nível à entrada |
+|---|---|---|
+| Metódico | Davey | **E2** (3/3) |
+| Metódico | Silas · Walter · Agnes · Grey | **E1** (2/5 · 2/5 · 2/4 · 1/2) |
+| **Apressado** | **Walter** | **E2** (4/5) |
+| Pericial Desatento | Davey | E2 (2/3) |
+| Intuitivo | — | nenhuma conversa visitada |
+
+O perfil que **acerta** entra em E1 em quatro dos cinco. Quem entra em E2 diante de
+Walter é o **Apressado** — o perfil que erra o réu, diante do inocente que vai acusar. A
+exposição mede o que se carrega, não o que se acertou, e a tabela prova isso sozinha.
+
+### O orçamento, e o saldo é final
+
+| | |
+|---|---|
+| Catálogo antes | **42** (41 em `cartas.js` + `ev_algor`) |
+| Gasto pela R6 | **0** |
+| Catálogo depois | **42** |
+| Teto (G11) | 46 |
+| **Saldo final** | **4** |
+
+**Não há OS seguinte que possa gastá-lo.** A R7 está proibida pela G9, a R8 é passe
+editorial e a R9 é do gerador. O caso-escola fecha para sempre com **4 de 46 por usar**, e
+isso é decisão do martelo (f), não sobra: carta sem função é ruído no mural, e o teto dos
+46 existe por jogabilidade medida em playtest, não por contabilidade.
+
+Três peças que a OS previa poderem custar carta não custaram nenhuma:
+
+- **O beat 3** não pede carta por desenho — é o que faz a G4 valer por construção.
+- **A D3** cobrou o que já estava na mesa: `corrob_pettigrew` traz a mudança «por razão de
+  matrimônio», `ev_bilhete_vigario` (da R5) datou-a, e `ev_suplica_cesto` põe o sobrinho à
+  porta na própria sexta.
+- **A D16** já estava escrita nas cartas sem que o jogo soubesse ligá-las.
+
+### A contaminação: a D16 estava na ficção, e não no sistema
+
+A decisão pedia «dois comprados com a mesma mentira, com fio de coação na Sra. Wick». Os
+dois estavam lá desde a R4:
+
+| Carta | Forma | O que a carta já dizia |
+|---|---|---|
+| `alibi_silas` | própria | «Fechei a oficina às sete e meia e saí com o rapaz» |
+| `alibi_davey` | **ensaio** | «Perguntado de novo ao fim da visita, repete as mesmas palavras, na mesma ordem» |
+| `dep_mulher_viela` | **coação** | «procurada outra vez ao meio-dia, disse não ter visto nada e fechou a janela» |
+
+Três papéis, uma boca. `contarVozesIndependentes(['alibi_silas','alibi_davey'])` devolve
+**1**, e a GR6-8 cobra isso por asserção, junto com a composição do feixe e a integridade
+do mapa de procedência.
+
+**O campo não entrou em `tagsOcultas`, e a razão é de arquitetura.** O `CLAUDE.md` já fixou
+o precedente com a aparência de personagem: camada narrativa fora das tags, porque campo
+dentro delas é campo que o motor pode ler amanhã sem que ninguém repare. Em
+`src/data/procedencia.js` a cegueira é **estrutural**, e não uma promessa vigiada — que é
+exatamente o que o martelo (c) escolheu.
+
+### A anomalia do `interrogatorio_silas`, declarada
+
+Só o réu tem nó de mapa próprio para ser interrogado: Agnes e Grey **são** a localidade,
+Walter e Davey abrem por botão de dentro de outra. Três formas para o mesmo ato, e a G3
+existe justamente para impedir marca que só o culpado receba.
+
+Fica como está, e o desconforto está escrito **no próprio `dialogos.js`**, não só aqui.
+Normalizar toca `localidades.js`, `mapa.js`, `mapa_espacial.js`, o diorama e o contrato do
+`qa-ui`; normalizar para cima custaria hora, e as quatro horas do gate mudariam. Elas foram
+**conferidas em vez de assumidas**, como o §7 da OS pede: seguem **18h00 · 18h00 · 14h00 ·
+13h00**. A assimetria é real mas fraca — o réu é também quem achou o corpo, e ter sido
+chamado a depor formalmente explica-se sozinho na ficção.
+
+Reabrir é **depois da R8**, com ata própria.
+
+### O parecer do pipeline
+
+**Reprovado na primeira passada, e aprovado na segunda** — o mesmo destino da R3, da R4
+e da R5. Desta vez os três revisores acharam coisas de naturezas diferentes, e **nenhum
+sozinho teria bastado**.
+
+**Dois bloqueantes, ambos do `editor-critico`:**
+
+1. **O segundo degrau de Walter entregava de graça o pagamento do `confronto_registro`.**
+   A cadeia de pretéritos acabava em «e eu fui dormir a crédito no quarto três» — que é
+   exatamente o que `alibi_walter` nega e o que `ev_registro_estalagem` existe para
+   desmentir. Como o degrau dispara com dois dos três papéis e **nenhum deles é da
+   estalagem**, um jogador que nunca lá pisasse via a mentira do carro cair sozinha. O
+   comentário de desenho dizia «aprofunda a isca sem tocar na cadeia física que o
+   inocenta»; a frase tocava, e era justamente ela.
+2. **Davey afirmava o falso contra a carta que carrega o móbil dele.** «Sexta ele pagou,
+   como sempre» — e `ev_livro_pagamentos` diz que quatro xelins entram e quatro saem
+   desde o fim de março. Como o jogador vê **um tom só por partida**, quem escolhesse o
+   cordial levava para a mesa uma falsidade e depois leria a carta como se o menino
+   tivesse mentido: contradição fantasma, sem função, num rapaz que na bíblia só mente
+   sobre o álibi ensaiado.
+
+**Do `perito-forense`, e é correção de direito, não de estilo:**
+
+- **«A queixa corre contra o espólio» estava errado.** Processo criminal **morre com o
+  acusado**: não se acusa, não se intima nem se pronuncia um defunto, e a queixa de Grey
+  acabou na noite de sexta. O que sobrevive é a **dívida**, por contrato, e contra quem
+  responder pelos bens. A correção melhora o personagem em vez de o encolher: Grey perde
+  a vingança e fica com a conta, que é o que a bíblia de vozes diz dele desde sempre.
+- **«Inventário com imóvel leva meses» é o mecanismo brasileiro.** Em 1893 o *freehold*
+  não passava pelas mãos do testamenteiro — só a partir do Land Transfer Act **1897**. O
+  que demora é **provar o testamento**, e o resultado prático que Walter quer (meses de
+  espera, nenhum comprador antes do papel) continua verdadeiro pela via correta.
+- «Queixado» não é substantivo em português (é *querelado*); «mola de fora» e «caseiro»
+  também corrigidos.
+- **Passou limpo, e é o que mais importava:** o rapaz **não** afirma direito nenhum sobre
+  o desconto — dá três fatos e nomeia o registro, e a conta quem faz é o jogador. A
+  guarda da R5 sobre os Truck Acts está cumprida.
+
+**Do `fiscal-continuidade`, cinco furos que só aparecem cruzando dados:**
+
+| O que a fala dizia | O que a fonte diz |
+|---|---|
+| Grey: «poupa a minha manhã» | o perito chega às **13h**, e o moinho custa viagem — nunca há manhã com ele |
+| Silas: «abria amanhã» | amanhã é **domingo**, e o próprio jogo o diz na boca de Amos |
+| Silas: «quem manda ainda está chegando» | Walter está na vila **desde a manhã de sábado**, no quarto 3 |
+| Silas: «o carvão está onde ficou de sexta» | `abertura.js` narra que ele **acendeu o fogo** no sábado de manhã |
+| Agnes: «Abriu ontem e abre na segunda» | a loja está aberta **agora**, e a frase saltava o dia em que ela fala |
+
+Mais quatro **colisões de gesto** nas alfinetadas: como elas rendem sobre os quatro tons,
+pressupunham um movimento que a fala já gastara — as mãos «voltavam» aos joelhos de onde
+nunca tinham saído; a saca descia duas vezes, a dois lugares. Ficaram autossuficientes.
+
+**O achado de maior peso foi de quantidade, e é o anti-padrão nº 2 do catálogo:
+16 dos 20 nós fechavam em epigrama**, e três telas traziam **duas** máximas porque a
+alfinetada é renderizada logo abaixo da fala. São **4** agora, e nenhuma tela tem duas.
+
+**Dois revisores discordaram sobre a mesma linha, e ambos tinham razão sobre coisas
+diferentes — outra vez.** O editor queria cortar o vínculo da dívida da mãe na boca de
+Davey (o móbil chega por documento, e o rapaz não precisa entregá-lo); o fiscal apontou
+que «livro da bancada» é a abertura literal da `descricao` de **outra** carta
+(`ev_livro_ordens`) e mandaria o jogador à errada. Ficou **«livro estreito da bancada»**,
+que é o adjetivo próprio de `ev_livro_pagamentos`: o vínculo sai e o ponteiro fica certo.
+Na segunda passada o editor confirmou que a solução serve às duas razões — e **retirou**
+um menor seu sobre a fala de Agnes, depois de o perito validar contra a KB que a viúva
+além dos vinte e quatro meses devia ter voltado à cor.
+
+**Segunda passada:** os dois bloqueantes caíram, e sobraram dois altos — o degrau tomava
+emprestado o relógio de `dep_visto_vivo` («antes de correr as tampas da vitrine» é a ação
+das 20h em ponto, e a hora da briga é do carroceiro, que diz «cair da tarde»), e a saca
+de Grey ainda se largava duas vezes. Corrigidos. **Zero bloqueantes em aberto.**
+
+**Não-bloqueantes herdados pela OS-R8** (passe editorial): a rubrica «Puxa o colete para
+baixo, como quem se compõe para retrato» aparece duas vezes na árvore de Walter (prosa
+anterior a esta OS, em telas diferentes); e a abertura de `interrogatorio_silas` diz «a
+bancada amanheceu sem lume», que puxa contra a abertura do caso pela mesma razão que o
+carvão de Silas puxava.
+
+### Aberto para a OS seguinte
+
+- **OS-R7** (a reconstituição): herda **zero cartas** de orçamento — está proibida de
+  gastar pela G9, e não há saldo que lhe sirva. Herda a **D24** (a reconstituição, que não
+  tem uma linha de código), a **D25** (a regra da assinatura, que nunca apareceu em prosa)
+  e, sobretudo, **a conta de bocas**: o `blocoTestemunhas` do `monologo.js` diz «duas
+  testemunhas juravam contra a hora que o corpo dá», e depois desta OS existe
+  `contarVozesIndependentes`. É o **único ponto do jogo onde o erro sairia na voz do
+  perito, no fecho do caso**. A OS e o prompt estão escritos
+  (`docs/os-r7-a-reconstituicao.md`, `docs/os-r7-prompt-de-arranque.md`).
+  **E herda uma lição de método:** medir antes de arbitrar já é o método da casa — na R5
+  a telemetria dispensou uma fase inteira, e na R6 trocou o corte absoluto pelo relativo
+  antes que o nível virasse delator.
+- **OS-R8** (passe editorial): tudo o que a ata da R4 deixou; o **«púlpito de escrever
+  forrado de cortiça»** de `pt_oficina_pulpito` (achado do perito na R5); a
+  **normalização do `interrogatorio_silas`**, que esta OS deixou de pé com o desconforto
+  declarado; e os dois não-bloqueantes do parecer acima. Os primeiros tocam o contrato do
+  `qa-ui`.
+- **OS-R9** (o gerador herda os padrões): a fila da R4, mais o **arquétipo do veraz sem
+  crédito**, o **móbil que se prova por aritmética de livro** (R5) e — novos desta OS — a
+  **exposição** (E0/E1/E2 por fração de dossiê), o **`apontadaPor`** e a **escada de
+  confronto por contador autoral**.
+- **De KB, registado e não criado:** `CLASSES_VESTIGIO` continua sem classe de **roupa
+  queimada** nem de **documento queimado**. Registro novo do perito, para quando a cena da
+  pesagem se escrever: £4 10s equivalem a cerca de 36 g de ouro de lei — a caixa inteira,
+  não a raspa que um oficial tira sem que se veja. A soma da queixa é o valor da **peça**,
+  não o do metal.
+
+### Triagem de pendências e martelos antecipados da R7 (mesmo dia, a pedido do utilizador)
+
+Fechada a OS-R6, o utilizador mandou triar as pendências sem dono e **martelar
+antecipadamente os três pontos de decisão da R7**, para que a sessão seguinte execute sem
+parar. O inventário está em `docs/pendencias-status.md` §«Triagem de 26/07/2026»; aqui fica
+o que é decisão.
+
+**Os três martelos da OS-R7, fechados sem esperar o arranque dela:** a reconstituição é
+**peça de leitura** entre o mural e o monólogo; a **D25** entra **no fecho do monólogo**,
+uma variante por desfecho; e, sem carta para rebater, **a cena roda curta e a intervenção
+fica de pé**. O terceiro carrega um aviso registrado na OS: uma cena que não mostra nada
+pode ler-se como bug em vez de consequência — **mede-se no playtest, não se suaviza antes
+de ter o número**, e se um dia o remédio for preciso é de prosa, nunca de mecânica.
+
+**Duas pendências mudaram de natureza ao serem olhadas contra o código:**
+
+- **O item 14 não é desenho, são três strings.** A queixa dizia que o mural entregava as
+  cartas «já rotuladas como mentiras». O motor não vaza nada: a Estação III lista *todas* as
+  alegações de hora — inclusive as **verdadeiras**, como o guarda Tobin correndo as tampas
+  da vitrine às 20h em ponto — e, só depois de o réu ser nomeado, o paradeiro dele. Dentro
+  da estação o rótulo já é honesto. O que conclui pelo jogador é o **nome da gaveta**:
+  `III · As Mentiras` / `depoimentos desmentidos`, e a linha `Mentiras` da revisão final.
+  **Vai para a R8**, com as três linhas identificadas.
+- **O item 12 é calibração, e não se arbitra antes de medir.** O vidro na dobra nasce no
+  beat 1 em todos os tons, mas não é a única âncora de presença (`ev_estojo_buril` também
+  é) e **o próprio réu a desarma** de forma convincente no `confronto_vidro`. Lê-se como
+  inocência, que é o padrão que a R5 fixou. O próximo playtest humano mede se quem a apanha
+  cedo **abandona** o resto; mexer antes seria arbitrar antes de medir — o erro que a Fase 0
+  desta OS existiu para evitar, e que já se pagou duas vezes.
+
+**Fechadas sem gastar sessão:** o **item 16** («cada suspeito com um móbil») estava feito
+desde a R5 e o inventário não sabia — a `GR5-3` reprova sozinha se faltar; o **item 9**
+(Silas e o aprendiz saindo de cena) foi **arquivado**, porque custa dados, mapa e horas por
+verossimilhança marginal, e a cena única da R2 já resolveu o problema de fundo; e o **prazo
+do inquérito com consequência mecânica** segue fechado — pressão de prazo briga de frente
+com o **relógio mole**, que é pilar.
+
+**Martelado também, e poupa uma investigação à R8:** o `interrogatorio_silas` **não se
+normaliza**. Fica a assimetria, declarada no próprio `dialogos.js`.

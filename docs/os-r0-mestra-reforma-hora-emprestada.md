@@ -140,8 +140,8 @@ o vocabulário em segundo. **Inverte-se**, por uma razão técnica:
 | 3.º | OS-R3 — Abertura (testemunhal + pensão + telegrama) | por escrever |
 | 4.º | OS-R4 — Elenco e livros (Amos, Wick, estalajadeiro; Livro I, cifra, Livro II, torre) | escrita |
 | 5.º | OS-R5 — Móbeis e cartas (v1 §3 e §6) | **executada, com ata** |
-| 6.º | OS-R6 — Exposição e interrogatórios (E0/E1/E2, beat 3, contaminação, alfinetadas, `apontadaPor`) | escrita |
-| 7.º | OS-R7 — A reconstituição (revozação do `monologo.js`) | por escrever |
+| 6.º | OS-R6 — Exposição e interrogatórios (E0/E1/E2, beat 3, contaminação, alfinetadas, `apontadaPor`) | **executada, com ata** |
+| 7.º | OS-R7 — A reconstituição (revozação do `monologo.js`) | escrita |
 | 8.º | OS-R8 — Passe editorial e QA de fecho | por escrever |
 
 **Por que R3–R8 não estão escritas.** Não é adiamento: R1 e R2 alteram as

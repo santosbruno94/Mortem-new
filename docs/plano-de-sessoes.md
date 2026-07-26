@@ -332,14 +332,22 @@ manutenção do topo. Fica corrigido.
 | 3.º | R3 — Abertura | ✅ fechada |
 | 4.º | R4 — Elenco e livros | ✅ fechada |
 | 5.º | R5 — Móbeis e cartas | ✅ fechada (25/07/2026) |
-| 6.º | R6 — Exposição e interrogatórios | **escrita, por executar** — cinco martelos abertos; prompt em [`os-r6-prompt-de-arranque.md`](./os-r6-prompt-de-arranque.md) |
-| 7.º | R7 — A reconstituição | por escrever (escreve-se no fecho da R6) |
+| 6.º | R6 — Exposição e interrogatórios | ✅ fechada (26/07/2026) — os sete martelos saíram nas recomendações |
+| 7.º | R7 — A reconstituição | **escrita, martelada e por executar** — os três pontos de decisão já foram fechados em 26/07/2026, e o prompt em [`os-r7-prompt-de-arranque.md`](./os-r7-prompt-de-arranque.md) entra direto na Fase 0, sem rodada de perguntas |
 | 8.º | R8 — Passe editorial e QA de fecho | por escrever |
 | — | R9 — O gerador herda os padrões | fora da reforma; fila registrada nas atas |
 
-- **Orçamento de cartas (G11, teto 46):** **42 em jogo, 4 livres**. A **R6 é a última OS que
-  pode gastar** — a R7 está proibida pela G9, a R8 é editorial e a R9 é do gerador.
-- **Próxima sessão desta frente:** executar a R6 pelo prompt de arranque.
+- **Orçamento de cartas (G11, teto 46):** **42 em jogo, 4 livres — e é o número final.**
+  A R6 era a última OS que podia gastar, e gastou **zero**: o martelo (f) aceitou o saldo 4
+  como decisão, não como sobra. A R7 está proibida pela G9, a R8 é editorial e a R9 é do
+  gerador; **não há mais quem gaste**, e o caso-escola fecha assim.
+- **Próxima sessão desta frente:** executar a R7 pelo prompt de arranque. **Não há
+  decisão a recolher** — os três martelos foram fechados no fecho da R6, de propósito, para
+  que a sessão corra do arranque à ata sem parar.
+- **Fila da R8, já triada** (26/07/2026): o púlpito de cortiça da R5; o rename da Estação III
+  do mural (item 14 — três strings identificadas, não é redesenho); os itens 10 e 11 do
+  playtest; e os dois não-bloqueantes do pipeline da R6. O `interrogatorio_silas`
+  **não** se normaliza — martelado.
 
 ### S5 — Balanceamento e OSs restantes
 

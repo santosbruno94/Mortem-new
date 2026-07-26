@@ -47,9 +47,118 @@
 // A prosa admite `{detective.campo}` e a flexão `{g:masc|fem}`; os
 // marcadores `[[id]]` na fala extraem a carta (carimbo integrado, §6).
 // Navegar não custa tempo (relógio mole).
+//
+// ---------------------------------------------------------------------
+// BEAT 3 — O BEAT DA PRESSÃO (OS-R6, D7). Os cinco têm terceiro beat, nos
+// quatro tons, e o eixo é o mesmo para todos: o que esta morte muda para
+// quem ficou. Não pede carta, não abre nó, não marca nenhum [[id]] — e é
+// por isso que a G4 fica satisfeita por construção: subir de nível não
+// destranca prova nenhuma, e quem nunca subir resolve o caso igual.
+//
+// `alfinetada` é o rendimento do beat 3, e é o que a exposição paga
+// (src/logic/exposicao.js). Em E0 o suspeito responde o perguntado e mais
+// nada; em E1 a compostura falha uma vez, num gesto; em E2 ele diz, à sua
+// maneira, que o perito chegou sabendo. O acréscimo é CARÁTER, nunca fato
+// novo do caso — nenhuma alfinetada cita carta, porque o jogador em E2
+// pode ter QUALQUER dois terços do dossiê, e não um par específico.
+//
+// A alfinetada é por suspeito e por nível, não por tom: os dois eixos são
+// ortogonais de propósito, e a conversa desce sem voltar (o jogador vê um
+// tom só por partida). Escrever quatro cópias por nível seria repetir a
+// mesma peça para ninguém comparar.
 // =====================================================================
 
+// As alfinetadas de cada um. Cada suspeito escorrega no seu próprio
+// registro — o artífice perde as mãos quietas, o moleiro AQUECE em vez de
+// fechar-se, o rapaz ergue os olhos. Nenhum deles ganha marca que os
+// outros não tenham: é a GR6-5 lida como prosa.
+const ALFINETADA_SILAS = {
+  E1: ['Responde e não emenda. O bule fica onde está, e a xícara do visitante fica por servir.'],
+  E2: [
+    '"O {detective.treatment} andou perguntando de mim pela vila." Não é pergunta, e ele não espera resposta. As mãos deixam os joelhos, e ele alisa o avental dobrado sobre o braço, do vinco para fora. "Perguntem. A bancada está à vista de quem a queira conferir." E torna à teoria de sempre, mais curta desta vez: gente da estrada, atrás do caixa.',
+  ],
+};
+
+const ALFINETADA_AGNES = {
+  E1: ['A pilha fica por endireitar, e a mão pousa na beira do balcão sem tornar a mexer-se.'],
+  E2: [
+    '"{g:O senhor|A senhora} não veio saber a que horas eu fecho." Diz sem levantar a voz e sem largar o visitante dos olhos. "Pois pergunte o que veio perguntar. O que houver de meu nesta vila é meu, e ao Sr. Arthurs não devi xelim nem satisfação." E não torna a tocar no papel de luto.',
+  ],
+};
+
+const ALFINETADA_GREY = {
+  E1: ['Não torna à saca seguinte. O carroceiro do Finch chama uma vez, e ele não responde.'],
+  E2: [
+    '"{g:O senhor|A senhora} já sabe disso tudo, então." Bate a farinha de uma mão na outra. "Melhor. Gente que chega sabendo poupa o meu resto de dia." Larga o serviço e fica de frente para responder. "Pergunte o que ainda não sabe, que eu respondo de pé."',
+  ],
+};
+
+const ALFINETADA_WALTER = {
+  E1: ['O botão do colete para no meio da volta e fica preso entre os dedos até o fim da resposta.'],
+  E2: [
+    '"{g:O senhor|A senhora} já fez a conta antes de entrar." A voz sai alta e não se sustenta até o fim da frase. "Pois estude o resto: um homem que deve às três casas que lhe escreveram não precisa matar ninguém para ser a pior pessoa de uma sala." Larga o botão. "O meu paradeiro já dei. Do que mais {g:o senhor|a senhora} trouxer, respondo sentado."',
+  ],
+};
+
+const ALFINETADA_DAVEY = {
+  E1: ['Acaba a resposta e não torna logo ao serviço. A vassoura fica parada mais tempo do que precisa.'],
+  E2: [
+    'Os olhos sobem do serviço e ficam erguidos. "{g:O senhor|A senhora} já andou pela bancada, então." Espera, e ninguém lhe responde. Depois, mais baixo: "O Sr. Crane diz que é assim em toda oficina, e eu não conheço outra." A vassoura volta ao chão, e ele varre o que já está varrido.',
+  ],
+};
+
+// As perguntas do beat 3, por suspeito. O eixo é comum — o que a morte muda
+// para quem ficou —, e cada tom o aborda pelo lado que lhe cabe.
+const OPCOES_B3_SILAS = [
+  { rotulo: '"E o senhor, do que vive na segunda-feira?"', vaiPara: 'b3_firme', tom: 'firme' },
+  { rotulo: '"Doze anos de casa. Como fica o senhor agora?"', vaiPara: 'b3_cordial', tom: 'cordial' },
+  { rotulo: '"O serviço atrasado da bancada: quem responde por ele?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
+  { rotulo: '"A loja reabre quando?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
+];
+
+const OPCOES_B3_AGNES = [
+  { rotulo: '"O que a senhora perde com esta morte?"', vaiPara: 'b3_firme', tom: 'firme' },
+  { rotulo: '"A vila há de comentar. A senhora tem quem a acompanhe?"', vaiPara: 'b3_cordial', tom: 'cordial' },
+  { rotulo: '"A loja abre na segunda?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
+  { rotulo: '"Esse meio-luto, minha senhora: é por quem?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
+];
+
+const OPCOES_B3_GREY = [
+  { rotulo: '"O senhor cobra de um morto como cobrava de um vivo?"', vaiPara: 'b3_firme', tom: 'firme' },
+  { rotulo: '"A queixa lhe custou o quê, até aqui?"', vaiPara: 'b3_cordial', tom: 'cordial' },
+  { rotulo: '"A queixa lavrada sobrevive ao morto?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
+  { rotulo: '"Quem pesa o ouro na vila, agora?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
+];
+
+const OPCOES_B3_WALTER = [
+  { rotulo: '"O que o senhor faz com a loja, fechado o inventário?"', vaiPara: 'b3_firme', tom: 'firme' },
+  { rotulo: '"O senhor tem para onde ir, depois disto?"', vaiPara: 'b3_cordial', tom: 'cordial' },
+  { rotulo: '"O inventário leva meses. Os seus credores esperam?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
+  { rotulo: '"Por quanto tempo o senhor paga o quarto três?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
+];
+
+const OPCOES_B3_DAVEY = [
+  { rotulo: '"O teu ordenado, rapaz. Quem te paga agora?"', vaiPara: 'b3_firme', tom: 'firme' },
+  { rotulo: '"Quem responde pelo teu pagamento agora, Davey?"', vaiPara: 'b3_cordial', tom: 'cordial' },
+  { rotulo: '"Quanto te davam, e de quanto em quanto tempo?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
+  { rotulo: '"Levas alguma coisa para casa, ao fim da semana?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
+];
+
 export const DIALOGOS = {
+  // ASSIMETRIA REGISTRADA (OS-R6, martelo (e), 26/07/2026). Só o réu tem nó de
+  // mapa próprio para ser interrogado: Agnes e Grey SÃO a localidade
+  // (`papelaria`, `moinho`), e Walter e Davey abrem por botão de dentro de
+  // outra. Três formas para o mesmo ato, e a G3 existe justamente para impedir
+  // que o culpado receba marca que os inocentes não recebam.
+  //
+  // Fica como está, com o desconforto declarado. Normalizar toca
+  // `localidades.js`, `mapa.js`, `mapa_espacial.js`, o diorama e o contrato do
+  // `qa-ui`; normalizar PARA CIMA custaria hora (nó novo custa viagem) e
+  // mudaria as quatro horas do gate, que são 18h00 · 18h00 · 14h00 · 13h00.
+  // A assimetria é real mas fraca: o réu é também quem achou o corpo, e ter
+  // sido chamado a depor formalmente explica-se sozinho na ficção.
+  //
+  // Quem reabrir isto, reabra depois da R8, e com ata própria.
   interrogatorio_silas: {
     suspeitoId: 'silas_crane',
     noInicial: 'abertura',
@@ -146,24 +255,55 @@ export const DIALOGOS = {
         fala: [
           'As mãos não deixam os joelhos. "Não sei nome, {detective.treatment}, e não hei de inventar um para agradar. O que penso, penso há muito." E volta a ela como quem retoma a mesma peça na bancada: [[comp_silas]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_SILAS,
       },
       b2_cordial: {
         fala: [
           '"Doze anos nesta casa: abro eu a loja, tiro as tábuas da vitrine, acendo o fogo da bancada, e o Sr. Arthurs descia depois, com os óculos na mão. Foi no escritório dos fundos que o achei, às nove e vinte, caído entre a escrivaninha e a estante." Baixa a voz. "Gente da estrada, é o que eu penso; eu bem lhe dizia que recolhesse o caixa ao cofre." E torna a ela: [[comp_silas]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_SILAS,
       },
       b2_tecnico: {
         fala: [
           '"Um nome eu não firmo sem prova, {detective.treatment}; a perícia é sua. A razão, essa eu dou, que é de senso: uma vila destas não tranca bem as portas, e caixa aberto à noite chama gente da estrada." E a expõe inteira: [[comp_silas]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_SILAS,
       },
       b2_obliquo: {
         fala: [
           '"O caixa? Ficava na loja, e eu bem dizia ao Sr. Arthurs que o recolhesse ao cofre — homem velho tem os seus costumes." As mãos seguem sobre os joelhos. "É por aí que eu penso a coisa": [[comp_silas]].',
         ],
+        opcoes: OPCOES_B3_SILAS,
+      },
+
+      // BEAT 3 — a pressão: o que a morte muda para quem ficou. Sem carta,
+      // sem nó novo. O rendimento é a `alfinetada`, que a exposição paga.
+      b3_firme: {
+        fala: [
+          '"Do que vivo." As mãos seguem sobre os joelhos. "Da bancada, como vivi até sexta. Há peça entregue por cobrar e peça por acabar; enquanto a casa não se resolver, é esse o serviço. O rapaz veio hoje de manhã, como vem sempre, e ficou comigo à porta."',
+        ],
+        alfinetada: ALFINETADA_SILAS,
+        opcoes: [],
+      },
+      b3_cordial: {
+        fala: [
+          '"Doze anos, sim." Olha o avental dobrado sobre o braço antes de responder. "Fico com o que sei fazer e com uma loja que nunca foi minha. Há de vir o sobrinho mandar, e eu hei de esperar que mande."',
+        ],
+        alfinetada: ALFINETADA_SILAS,
+        opcoes: [],
+      },
+      b3_tecnico: {
+        fala: [
+          '"O atraso está no livro, e o livro está na bancada." Enumera sem procurar. "Enquanto não vier procurador dizer o contrário, responde o oficial da casa, que sou eu. O que sai daquela porta sai anotado."',
+        ],
+        alfinetada: ALFINETADA_SILAS,
+        opcoes: [],
+      },
+      b3_obliquo: {
+        fala: [
+          '"Reabrir depende de quem manda, e quem manda já chegou sem mandar nada." As mãos não deixam os joelhos. "Por mim, abria na segunda: freguês que deixou peça não tem culpa do que houve. Mas casa de defunto tem os seus dias."',
+        ],
+        alfinetada: ALFINETADA_SILAS,
         opcoes: [],
       },
 
@@ -279,24 +419,56 @@ export const DIALOGOS = {
         fala: [
           '"A vila que responda pela vila, {detective.treatment}; eu respondo pela minha loja." Atende, da primeira palavra à última, em [[comp_agnes]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_AGNES,
       },
       b2_cordial: {
         fala: [
           '"O Sr. Arthurs comprava nesta casa o papel de escrituração. Homem pontual." A mão pousa junto ao papel de tarja preta e retira-se logo. "O que a vila acrescente é assunto da vila." Diz tudo em [[comp_agnes]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_AGNES,
       },
       b2_tecnico: {
         fala: [
           '"Negócios: papel de escrituração, à vista, uma vez por mês. Conta paga em dia, vinte anos." Nada além do livro-caixa: [[comp_agnes]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_AGNES,
       },
       b2_obliquo: {
         fala: [
           'Segue-lhe o olhar até o papel de luto e endireita a pilha antes de responder. "É papel de venda, {detective.treatment}, como qualquer outro." Mas atende mais seca do que antes, em [[comp_agnes]].',
         ],
+        opcoes: OPCOES_B3_AGNES,
+      },
+
+      // BEAT 3 — a pressão. No oblíquo, o meio-luto é perguntado de frente, e
+      // a resposta dela não desfaz a ambiguidade da D5: o broche é do viúvo
+      // que ela enterrou, e do domingo que não chegou ela não diz palavra.
+      b3_firme: {
+        fala: [
+          '"Perco um freguês de vinte anos e o papel de escrituração que ele levava todo mês." Endireita a pilha ao alcance da mão. "Se a pergunta é de dinheiro, está respondida. Se é de outra coisa, faça-a."',
+        ],
+        alfinetada: ALFINETADA_AGNES,
+        opcoes: [],
+      },
+      b3_cordial: {
+        fala: [
+          '"Comentar é ofício da vila, e a minha loja fica na rua dela." A mão procura a beira do balcão e ali fica. "Tenho a casa e tenho o balcão. Basta-me."',
+        ],
+        alfinetada: ALFINETADA_AGNES,
+        opcoes: [],
+      },
+      b3_tecnico: {
+        fala: [
+          '"Abre. Está aberta agora, esteve ontem, e abre na segunda." Confere o postigo do correio antes de continuar. "Encomenda que chega tem dia de sair, e o dia está marcado no livro do correio."',
+        ],
+        alfinetada: ALFINETADA_AGNES,
+        opcoes: [],
+      },
+      b3_obliquo: {
+        fala: [
+          'Endireita as folhas do papel com tarja antes de erguer os olhos. "Do Sr. Rooke, que enterrei. Devia ter deixado o azeviche no fim do prazo, e não deixei." Alinha a pilha uma última vez. "{g:O senhor|A senhora} há de ter outra pergunta."',
+        ],
+        alfinetada: ALFINETADA_AGNES,
         opcoes: [],
       },
 
@@ -407,24 +579,58 @@ export const DIALOGOS = {
         fala: [
           '"Quatro libras e dez xelins, e o conserto pago adiantado." Não pestaneja. "Morto, o homem me deve o mesmo que devia vivo; a queixa está lavrada e de pé." Sobre o que sente: [[comp_grey]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_GREY,
       },
       b2_cordial: {
         fala: [
           'Enxuga a testa com as costas da mão. "Desavença? O relógio caçador do meu pai entrou inteiro naquela loja e voltou mais leve. Não é desavença, {detective.treatment}, é conta." E do que isso lhe pesa: [[comp_grey]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_GREY,
       },
       b2_tecnico: {
         fala: [
           '"Exigi pesagem diante de testemunhas e lavrei termo em casa do Wycliffe, tudo antes de o homem morrer; as datas estão no papel. Quatro libras e dez xelins, conserto pago adiantado." A soma sai sem um erro, e por baixo dela: [[comp_grey]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_GREY,
       },
       b2_obliquo: {
         fala: [
           '"Confiei uma vez, e paguei o conserto adiantado por cima." Passa a saca de um ombro ao outro. "Entrou pesado e voltou leve; o resto está em termo lavrado." E o que ficou por baixo do termo: [[comp_grey]].',
         ],
+        opcoes: OPCOES_B3_GREY,
+      },
+
+      // BEAT 3 — a pressão. Correção do perito-forense (26/07/2026): processo
+      // criminal MORRE com o acusado — não há queixa que «corra contra o
+      // espólio». O que sobrevive é a DÍVIDA, por contrato, e contra quem
+      // responder pelos bens. Grey perde a vingança e fica com a conta, que é
+      // o que a bíblia de vozes diz dele desde sempre.
+      b3_firme: {
+        fala: [
+          '"Cobro do espólio, que é o que a lei me deixa." Passa a saca ao outro ombro. "Quatro libras e dez xelins não morreram com ele. Quando houver quem responda pelos bens, é a esse que eu cobro."',
+        ],
+        alfinetada: ALFINETADA_GREY,
+        opcoes: [],
+      },
+      b3_cordial: {
+        fala: [
+          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe." Enxuga a testa com as costas da mão. "E custou o relógio do meu pai, que não voltou nem inteiro nem pesado."',
+        ],
+        alfinetada: ALFINETADA_GREY,
+        opcoes: [],
+      },
+      b3_tecnico: {
+        fala: [
+          '"Ao homem, já não. Guarda nenhum prende defunto, e disso eu já me fiz a razão." Desce a saca na carroça. "Mas quatro libras e dez xelins são dívida da casa, e dívida a casa paga antes de repartir. Quando houver quem responda pelo espólio, respondo-lhe eu com o papel na mão, e a pesagem que eu pedi continua por fazer."',
+        ],
+        alfinetada: ALFINETADA_GREY,
+        opcoes: [],
+      },
+      b3_obliquo: {
+        fala: [
+          '"Na vila, ninguém. Pesava ele, e a balança é dele." Encolhe o ombro que carrega a saca. "Para pesar como se deve, é o ourives de Moorford, e Moorford é hora e meia de estrada. Faço o caminho no dia em que me disserem que aquela balança está livre."',
+        ],
+        alfinetada: ALFINETADA_GREY,
         opcoes: [],
       },
 
@@ -538,24 +744,56 @@ export const DIALOGOS = {
         fala: [
           '"O que a morte me traz? Trabalho e credores, {detective.treatment}, na ordem que quiser." Puxa o colete para baixo, como quem se compõe para retrato. "Herdeiro único, sim; e o que herdo é uma loja lacrada, um inventário e juízo pela frente. Se isso me faz réu aos seus olhos, faça a conta inteira, que a minha lista de credores é mais longa do que qualquer herança."',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_WALTER,
       },
       b2_cordial: {
         fala: [
           '"Meu tio era homem de uma peça. Recolheu-me quando meu pai morreu, pagou-me o colégio, e não me deixou esquecer nem uma coisa nem outra." O polegar corre a barba por fazer. "Achei-o como sempre: são, duro no dinheiro, senhor das suas horas. Quem lhe fez isto que responda, e hei de cobrar eu mesmo, que afinal é o que se espera de um herdeiro, não é assim que dizem?"',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_WALTER,
       },
       b2_tecnico: {
         fala: [
           '"Vão mal, e disso nunca fiz segredo. Devo às fazendas, devo ao armazém que anda em juízo, devo até ao Station de Moorford, onde durmo a crédito. A lista é pública e eu a sei de cor." A voz, alta no princípio, acaba quase para dentro. "Da herança falem os outros; eu falo do que devo, que ao menos é meu."',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_WALTER,
       },
       b2_obliquo: {
         fala: [
           '"Custa, {detective.treatment}, e não é o pior que custa." O botão para. "Um negociante de quarenta e quatro anos que dorme a crédito aprende a não reparar em certas coisas. Perguntou-me da cama; a cama eu tenho. Do resto, pergunte à minha lista de credores, que é longa e verdadeira."',
         ],
+        opcoes: OPCOES_B3_WALTER,
+      },
+
+      // BEAT 3 — a pressão. O herdeiro faz a conta do que herda em voz alta,
+      // que é o que ele faz desde o primeiro beat; a novidade é o tamanho da
+      // voz, e ela encolhe.
+      b3_firme: {
+        fala: [
+          '"Vendo." O botão do colete para entre os dedos. "Vendo a loja, vendo a casa, pago o que devo e fico com o que sobrar. Não tenho mão para relógio nem paciência para bancada, e nunca fingi que tinha."',
+        ],
+        alfinetada: ALFINETADA_WALTER,
+        opcoes: [],
+      },
+      b3_cordial: {
+        fala: [
+          '"Tenho Moorford, e em Moorford tenho um armazém em juízo." O polegar corre a barba por fazer. "Meu tio me recolheu quando meu pai morreu. Agora não há quem recolha, e aos quarenta e quatro anos é que vou aprender a coisa."',
+        ],
+        alfinetada: ALFINETADA_WALTER,
+        opcoes: [],
+      },
+      b3_tecnico: {
+        fala: [
+          '"Não esperam. Nunca esperaram." Conta pelos dedos, como quem alinha uma fatura. "Testamento a provar leva meses, e casa não se vende sem papel provado; a minha letra mais próxima vence antes do Natal. Hei de pedir prazo com papel de procurador na mão, e é o papel que o credor lê, não a minha cara."',
+        ],
+        alfinetada: ALFINETADA_WALTER,
+        opcoes: [],
+      },
+      b3_obliquo: {
+        fala: [
+          '"O quarto três eu pago com o que trouxe, e o que trouxe cabe no bolso do colete." Abotoa o botão alto e torna a desabotoá-lo. "Enquanto o estalajadeiro me fiar, durmo aqui."',
+        ],
+        alfinetada: ALFINETADA_WALTER,
         opcoes: [],
       },
 
@@ -573,9 +811,34 @@ export const DIALOGOS = {
         ],
         opcoes: [],
       },
+      // O SEGUNDO DEGRAU (D3, OS-R6 Fase 4). A D3 dizia «Walter sabia da
+      // mudança do testamento e omite», e mandava que isso caísse no 2.º
+      // degrau do confronto. O degrau cobra o que JÁ está na mesa e não custa
+      // carta nova: o procurador guardou o pedido de tratar «mudanças no
+      // testamento, por razão de matrimônio»; o bilhete do vigário datou-o,
+      // marcando os proclamas para o domingo seguinte à morte; e a súplica
+      // amassada põe o sobrinho à porta do tio na própria sexta.
+      //
+      // A escada é CONTADOR AUTORAL, não `requerTodas` (D8): a lista é
+      // curada, o corte é uma contagem. Dois dos três bastam para o perito
+      // pressionar — e nenhum deles, sozinho, prova que ele soube.
+      //
+      // O degrau rende PROSA e mais nada: nenhum [[id]], nenhum nó novo.
+      // Aprofunda a isca sem tocar na cadeia física que o inocenta.
       confronto_testamento: {
         fala: [
           '"Herdeiro único. Sei o que se soma com isso: negócios em ruína de um lado, loja e casa do outro, e o meu nome no meio. É conta que qualquer credor meu já fez." Puxa o colete para baixo, como quem se compõe para retrato. "Pois faça-se a conta inteira, {detective.treatment}. Meu tio vivo valia-me um adiantamento assinado numa tarde; agora vale-me uma loja lacrada, um inventário e juízo pela frente. Diga-me qual dos dois convinha a um homem com credores à porta."',
+        ],
+        degraus: [
+          {
+            contaEntre: ['corrob_pettigrew', 'ev_bilhete_vigario', 'ev_suplica_cesto'],
+            aPartirDe: 2,
+            fala: [
+              'Ouve o resto sem estender a mão para a folha que lhe puseram diante. O botão do colete fica onde está.',
+              '"Sabia." Diz de uma vez, e o resto vem devagar. "Ele me contou na sexta, atrás do balcão, ao cair da tarde. Que ia casar, que ia lavrar tudo de novo na segunda-feira, e que eu me arranjasse. Foi por isso que gritei, e foi por isso que ele gritou. Quem passasse na rua ouviu os dois."',
+              '"E omiti." Endireita-se na cadeira. "Omiti porque a vergonha do que ouvi naquela loja pesa mais do que a herança que se soma depois dela. Pois ponha no papel: eu soube, eu pedi, ele recusou, e saí de lá com o chapéu na mão."',
+            ],
+          },
         ],
         opcoes: [],
       },
@@ -674,24 +937,57 @@ export const DIALOGOS = {
         fala: [
           'Os olhos descem para a vassoura e lá ficam. "Sem gaguejar, senhor; já contei mais de uma vez." E conta, a recitação de cor: [[alibi_davey]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_DAVEY,
       },
       b2_cordial: {
         fala: [
           '"A sexta eu conto certinho, que já contei mais de uma vez." A vassoura fica quieta, e ele conta sem pressa, de olhos erguidos até o fim: [[alibi_davey]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_DAVEY,
       },
       b2_tecnico: {
         fala: [
           '"Do fecho em diante, senhor." Os olhos descem para o serviço e lá ficam até o fim das palavras: [[alibi_davey]].',
         ],
-        opcoes: [],
+        opcoes: OPCOES_B3_DAVEY,
       },
       b2_obliquo: {
         fala: [
           '"Não, senhor; durmo em casa, com a minha gente. Da oficina saio quando o Sr. Crane tranca." E, da sexta, conta o que lhe cabe: [[alibi_davey]].',
         ],
+        opcoes: OPCOES_B3_DAVEY,
+      },
+
+      // BEAT 3 — a pressão, e ela é ECONÔMICA E SÓ (G7, GR6-9). O rapaz dá os
+      // números que sabe de cor e não faz a conta: quem a faz é o jogador, com
+      // o livro na mão. Nada de ressentimento posto na boca dele — foi esse o
+      // risco fino que a R5 apontou, e é por aqui que ele entraria.
+      b3_firme: {
+        fala: [
+          'Aperta o cabo da vassoura com as duas mãos. "O Sr. Crane disse que a casa paga quando a casa puder. Eu venho assim mesmo."',
+        ],
+        alfinetada: ALFINETADA_DAVEY,
+        opcoes: [],
+      },
+      b3_cordial: {
+        fala: [
+          '"O patrão pagava às sextas, antes de fechar." A vassoura fica quieta. "Sexta ele lançou o meu, como sempre, e escreveu no livro. Na outra sexta é que eu não sei quem escreve."',
+        ],
+        alfinetada: ALFINETADA_DAVEY,
+        opcoes: [],
+      },
+      b3_tecnico: {
+        fala: [
+          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Responde de olhos erguidos, sem procurar os números. "Desde o fim de março nenhum deles vem comigo; ficam com a casa. O patrão anotava tudo no livro estreito da bancada."',
+        ],
+        alfinetada: ALFINETADA_DAVEY,
+        opcoes: [],
+      },
+      b3_obliquo: {
+        fala: [
+          '"Levo a marmita, para a minha mãe tornar a enchê-la." Encosta a vassoura no ombro. "De dinheiro não levo nada desde o fim de março. Isso o patrão anotava no livro, todas as sextas."',
+        ],
+        alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
       },
 
