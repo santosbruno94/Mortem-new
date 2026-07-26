@@ -42,6 +42,10 @@ export const ROTULOS_VESTIGIO = {
   cesta_ceia: 'cesta de ceia',
   carta_suplica: 'carta de súplica',
   assinatura_registro: 'assinatura no registro da estalagem',
+  // OS-S1: as três classes novas do caso-escola.
+  pegada_argila: 'meia pegada de argila da estrada',
+  cera_de_bancada: 'cera de encerar cabo de ferramenta',
+  maco_de_cartas: 'maço de cartas atadas',
   // Vocabulário do gerador (ponte da Fase 3 + interferência da Fase 4).
   lamina_de_oficio: 'lâmina de ofício',
   cordao_torcido: 'cordão torcido',
@@ -78,6 +82,9 @@ export const ROTULOS_MOTIVO = {
   dividas: 'as dívidas',
   rancor: 'o rancor',
   silenciamento: 'o silêncio sobre a fraude descoberta',
+  // OS-S1: o móbil do sexto homem. Não é a dívida em si (essa meia vila
+  // tinha): é o que ficou em penhor por ela.
+  divida_penhor: 'a dívida com o penhor tomado',
   // Vocabulário do gerador (MOTIVOS_POTENCIAIS de src/gerador/arquetipos.js).
   divida_caderneta: 'a dívida de caderneta',
   seguro_de_enterro: 'a apólice de enterro',
@@ -121,4 +128,8 @@ export const ROTULOS_DOMINIO = {
 export const ROTULOS_EXPLICACAO = {
   luz_esquecida:
     'A luz vista de madrugada teve explicação mais simples que um homem vivo: o lampião da bancada, aceso desde a véspera, queimou sozinho até secar o depósito. Era essa a claridade que o moço do padeiro tomou pelo velho a trabalhar.',
+  // OS-S1 (PD-06): a segunda verdade por baixo da mesma leitura falsa. O
+  // rapaz do padeiro errou o morador da sala, e não a sala.
+  homem_da_madrugada:
+    'Houve mesmo gente naquela sala antes de o dia nascer, e não era o relojoeiro. O recoveiro voltou à vila para a corrida das sacas que devia ao moinho, achou a porta do beco já mordida no batente, entrou pela claridade, e saiu levando da gaveta puxada o relógio de prata que empenhara em setembro. Chegou sete horas depois do buril, e foi preso por isso.',
 };

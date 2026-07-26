@@ -277,7 +277,7 @@ export const LOCALIDADES = [
         eventoId: 'silenciar_herrick',
         quando: 'disparado',
         paragrafos: [
-          'A porta gradeada está aberta e o corredor tem mais gente do que da outra vez. O legista Harlan já lavrou o que havia a lavrar, e estende a folha sem comentário: [[dep_achado_cela]].',
+          'A porta gradeada está aberta e o corredor tem mais gente do que da outra vez. Wycliffe fica de fora, à entrada, e não pergunta nada. O que houver a examinar examina-o quem veio para isso, e o termo lavra-se ali mesmo, sobre o joelho: [[dep_achado_cela]].',
           'A tira do casaco continua atada à grade do postigo, cortada de um lado. Na aresta da tábua da tarimba, do lado que dá para a porta, [[ev_cera_tarimba]].',
         ],
       },

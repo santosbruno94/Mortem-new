@@ -78,7 +78,10 @@ export const PROCEDENCIA_ALEGACOES = {
   dep_briga_walter: { apontadaPor: 'nathan_herrick', forma: 'propria' },
   alibi_herrick: { apontadaPor: 'nathan_herrick', forma: 'propria' },
   dep_cela_herrick: { apontadaPor: 'nathan_herrick', forma: 'propria' },
-  dep_achado_cela: { apontadaPor: 'harlan', forma: 'propria' },
+  // `dep_achado_cela` NÃO entra aqui, e a ausência é a decisão: o auto de
+  // exame da cela é lavrado pelo próprio perito. Não há boca de vila a contar
+  // num papel que ele mesmo assinou, e pô-lo no mapa faria `contarVozes`
+  // somar o perito à vila que ele está a medir.
 
   // A retratação sai da MESMA boca que o relato que ela desdiz (a vizinha),
   // e pela mesma razão que a primeira versão foi recuada: `coacao`. Somar as

@@ -33,7 +33,12 @@ import {
   analisarLigacoes,
   classificarLigacao,
   refutacaoDeHoraEstabelecida,
+  // OS-S1: as guardas do sexto homem provam pela MESMA régua do motor, e não
+  // por reimplementação — se o predicado mudar, a guarda muda com ele.
+  refutacaoDeAlibiEstabelecida,
+  segredoRevelado,
 } from '../src/logic/acusacao.js';
+import { derivarEcosInterferencia } from '../src/logic/ecoInterferencia.js';
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
@@ -4801,10 +4806,6 @@ const PESSOAS_DO_CASO = new Set([
   'amos_kell',
   'estalajadeiro',
   'pettigrew',
-  // OS-S1: o legista assina o auto de exame da cela. É a única alegação do
-  // caso cuja boca é a do próprio aparato pericial, e por isso ela existe:
-  // a conta de vozes precisa saber que aquele papel não vem da vila.
-  'harlan',
 ]);
 for (const [cartaId, { apontadaPor: origem, forma }] of Object.entries(PROCEDENCIA_ALEGACOES)) {
   if (!CARTAS.some((c) => c.id === cartaId)) gr68Furos.push(`${cartaId}: procedência de carta que não existe`);
@@ -5781,6 +5782,200 @@ console.log('\n=== OS-R9 · FASE 4 — PROVENIÊNCIA DAS CLASSES DE VESTÍGIO ==
 console.log(`  ${Object.keys(CLASSES_VESTIGIO).length} classes, todas com fonte na KB: ${gr96ProvenienciaOk}`);
 if (!gr96ProvenienciaOk) console.log('GR9-6 —', gr96Furos.slice(0, 10).join(' · '));
 
+// ============================================================
+// OS-S1 — O SEXTO HOMEM E A MÃO DO OFICIAL (GRS1-1 a GRS1-4).
+//
+// A proposta v4 acrescentou duas coisas que nenhuma guarda anterior cobria:
+// um suspeito a mais no veredicto, e um culpado que AGE durante o inquérito.
+// As quatro guardas abaixo são a conta dessas duas.
+// ============================================================
+const EVENTOS_S1 = montarPacoteTutorial().interferencias.eventos;
+console.log('\n=== OS-S1 — O SEXTO HOMEM E AS TRÊS INTERFERÊNCIAS ===');
+for (const ev of EVENTOS_S1) {
+  console.log(
+    `  ${ev.id.padEnd(18)} ${ev.tipo.padEnd(22)} gatilho ${ev.gatilho.tipo} · destrói ${
+      ev.efeito.cartaDestruida || '—'
+    } · nascem ${ev.efeito.cartasNovas.join(' ') || '—'}`
+  );
+}
+
+// GRS1-1 — O SEXTO HOMEM FECHA O VEREDICTO. O periférico novo entra pela
+// mesma régua dos outros dois que mentem por segredo: tem álibi na mesa, tem
+// carta de móbil que o aponta, e o vestígio que lhe derruba o paradeiro
+// revela EXATAMENTE o segredo que a seed espera. Sem esta última perna, o
+// juízo «inocente» nunca fecharia, e a Vitória Absoluta ficaria inalcançável.
+const grs11Furos = [];
+{
+  const esperado = SEED_TUTORIAL.perifericos.nathan_herrick;
+  if (!esperado) grs11Furos.push('nathan_herrick não está entre os periféricos da seed');
+  else {
+    if (esperado.veredictoEsperado !== 'inocente_segredo') {
+      grs11Furos.push(`veredicto esperado é "${esperado.veredictoEsperado}", não inocente_segredo`);
+    }
+    const alibi = CARTAS.find(
+      (c) => c.tagsOcultas?.subDominio === 'alibi' && c.tagsOcultas.declaranteId === 'nathan_herrick'
+    );
+    if (!alibi) grs11Furos.push('sem carta de álibi para o sexto homem');
+    const rastro = CARTAS.find(
+      (c) => c.tagsOcultas?.dominio === 'vestigio' && c.tagsOcultas.pertenceA === 'nathan_herrick'
+    );
+    if (!rastro) grs11Furos.push('sem vestígio do sexto homem para derrubar o paradeiro dele');
+    else if (rastro.tagsOcultas.revelaSegredo !== esperado.segredo) {
+      grs11Furos.push(`o rastro revela "${rastro.tagsOcultas.revelaSegredo}", e a seed espera "${esperado.segredo}"`);
+    }
+    if (alibi && rastro) {
+      // A régua do motor, e não uma promessa: o mesmo predicado que o
+      // veredicto usa para decidir se a mentira foi de vergonha.
+      if (!refutacaoDeAlibiEstabelecida(alibi, [rastro])) grs11Furos.push('o rastro não estabelece a refutação do álibi');
+      if (segredoRevelado(alibi, [rastro]) !== esperado.segredo) grs11Furos.push('o segredo revelado não bate com a seed');
+    }
+    if (!CARTAS.some((c) => c.tagsOcultas?.subDominio === 'motivo' && c.tagsOcultas.ligadoA === 'nathan_herrick')) {
+      grs11Furos.push('o sexto homem não tem carta de móbil (GR5-3 por outro caminho)');
+    }
+  }
+}
+const grs11SextoHomemOk = grs11Furos.length === 0;
+if (!grs11SextoHomemOk) console.log('\nGRS1-1 — o sexto homem:', grs11Furos.join(' · '));
+
+// GRS1-2 (R2, saldo ≥ 0) — NENHUMA INTERFERÊNCIA TOCA PILAR. O que os três
+// degraus destroem não pode ser carta de que a acusação dependa: nem
+// sustentação de âncora, nem a carta de motivação, nem o rastro que fecha um
+// juízo periférico. A conta é sobre as TAGS, não sobre a lista da rota — uma
+// rota pode mudar de ordem amanhã; a natureza da carta, não.
+const grs12Furos = [];
+{
+  const ehPilar = (carta) => {
+    const t = carta?.tagsOcultas || {};
+    if (t.dominio === 'temporal' || t.dominio === 'causal') return 'sustenta uma âncora do corpo';
+    if (t.dominio === 'vestigio' && t.tipoVestigio === SEED_TUTORIAL.instrumentoCorreto) return 'é o nexo instrumental';
+    if (t.dominio === 'vestigio' && t.revelaSegredo) return 'é o rastro que fecha um juízo periférico';
+    if (t.subDominio === 'motivo' && t.motivo === SEED_TUTORIAL.motivacaoCorreta) {
+      // Móbil do réu só é pilar quando é o ÚNICO: a redundância é o que
+      // autoriza destruí-lo. Três cartas trazem `silenciamento` no caso.
+      const irmas = CARTAS.filter(
+        (c) => c.tagsOcultas?.motivo === SEED_TUTORIAL.motivacaoCorreta && c.id !== carta.id
+      );
+      if (irmas.length === 0) return 'é o único móbil do réu';
+    }
+    return null;
+  };
+  for (const ev of EVENTOS_S1) {
+    const alvoId = ev.efeito?.cartaDestruida;
+    if (!alvoId) continue;
+    const alvo = CARTAS.find((c) => c.id === alvoId);
+    if (!alvo) {
+      grs12Furos.push(`${ev.id}: destrói carta inexistente (${alvoId})`);
+      continue;
+    }
+    const razao = ehPilar(alvo);
+    if (razao) grs12Furos.push(`${ev.id}: ${alvoId} ${razao}`);
+    // E o que nasce tem de existir no catálogo, senão o efeito é promessa.
+    for (const novaId of ev.efeito.cartasNovas || []) {
+      if (!CARTAS.some((c) => c.id === novaId)) grs12Furos.push(`${ev.id}: carta nova inexistente (${novaId})`);
+    }
+  }
+}
+const grs12SaldoOk = grs12Furos.length === 0;
+if (!grs12SaldoOk) console.log('\nGRS1-2 — saldo da interferência:', grs12Furos.join(' · '));
+
+// GRS1-3 (R3) — A AUTORIA NÃO SE ANUNCIA. O diário regista efeitos; quem os
+// fez é leitura do jogador. Um anúncio que nomeasse o oficial resolveria o
+// caso de graça, e um que nomeasse um inocente seria mentira do narrador.
+const grs13Furos = [];
+{
+  const elencoS1 = pacote.suspeitos;
+  const NOMES_VIGIADOS = [
+    ...elencoS1.map((x) => x.nome),
+    ...elencoS1.map((x) => x.nome.split(' ').slice(-1)[0]),
+    SEED_TUTORIAL.vitima,
+  ];
+  for (const ev of EVENTOS_S1) {
+    const texto = String(ev.anuncio || '');
+    for (const nome of NOMES_VIGIADOS) {
+      if (nome && texto.includes(nome)) grs13Furos.push(`${ev.id}: o anúncio nomeia "${nome}"`);
+    }
+    if (!texto.trim()) grs13Furos.push(`${ev.id}: sem anúncio`);
+  }
+}
+const grs13SemAutoriaOk = grs13Furos.length === 0;
+if (!grs13SemAutoriaOk) console.log('\nGRS1-3 — autoria anunciada:', grs13Furos.join(' · '));
+
+// GRS1-4 — A MÁQUINA ANDA, E A G4 SEGURA. Prova em runtime, dirigindo o
+// store de verdade, e em duas passadas sobre o mesmo evento:
+//
+//   (a) quem CONFRONTA antes de colher perde a peça, e ganha em troca o
+//       vestígio grosseiro do improviso (R1);
+//   (b) quem colheu primeiro dispara o mesmo gatilho e sai `evitada` — papel
+//       lavrado não morre com a boca que o ditou.
+const grs14Furos = [];
+{
+  // (a) A CORRIDA À TORRE, perdida. Confrontar o oficial antes de subir.
+  reiniciar();
+  s().viajarPara('relojoaria');
+  s().extrairCarta('ev_cuvette');
+  s().apresentarProva('silas_crane', 'ev_cuvette');
+  const correu = s().interferenciasDisparadas.find((d) => d.id === 'corrida_a_torre');
+  if (!correu) grs14Furos.push('(a) o confronto ao oficial não disparou a corrida à torre');
+  else if (correu.evitada) grs14Furos.push('(a) o evento saiu evitado sem a peça na mesa');
+  s().viajarPara('torre_sino');
+  s().extrairCarta('ev_livro_ii');
+  if (s().cartasRegistradas.some((c) => c.id === 'ev_livro_ii')) {
+    grs14Furos.push('(a) o caderno de pesos continuou colhível depois de destruído');
+  }
+  s().extrairCarta('ev_esconderijo_vazio');
+  if (!s().cartasRegistradas.some((c) => c.id === 'ev_esconderijo_vazio')) {
+    grs14Furos.push('(a) o esconderijo violado não nasceu no lugar do caderno');
+  }
+
+  // (b) A MESMA CORRIDA, evitada. Subir primeiro, confrontar depois.
+  reiniciar();
+  s().viajarPara('relojoaria');
+  s().extrairCarta('ev_cuvette');
+  s().viajarPara('torre_sino');
+  s().extrairCarta('ev_livro_ii');
+  if (!s().cartasRegistradas.some((c) => c.id === 'ev_livro_ii')) {
+    grs14Furos.push('(b) o caderno de pesos não estava colhível antes do gatilho');
+  }
+  s().viajarPara('interrogatorio_silas');
+  s().apresentarProva('silas_crane', 'ev_livro_ii');
+  const evitou = s().interferenciasDisparadas.find((d) => d.id === 'corrida_a_torre');
+  if (!evitou) grs14Furos.push('(b) o gatilho não disparou');
+  else if (!evitou.evitada) grs14Furos.push('(b) o evento não se registou como evitado');
+
+  // (c) O SILÊNCIO NA CELA, e o termo que sobrevive. A cela só abre com a
+  // prisão (PD-03), e é isso que se prova de caminho.
+  reiniciar();
+  s().viajarPara('relojoaria');
+  s().extrairCarta('ev_pegada_argila');
+  if (s().nosDesbloqueados.includes('cela')) grs14Furos.push('(c) a cela nasceu aberta');
+  s().viajarPara('posto_do_guarda');
+  s().extrairCarta('dep_avistamento_padeiro');
+  if (!s().nosDesbloqueados.includes('cela')) grs14Furos.push('(c) o relato da luz não abriu a cela');
+  s().viajarPara('cela');
+  s().extrairCarta('dep_cela_herrick');
+  s().apresentarProva('nathan_herrick', 'ev_pegada_argila');
+  const calou = s().interferenciasDisparadas.find((d) => d.id === 'silenciar_herrick');
+  if (!calou) grs14Furos.push('(c) o confronto na cela não disparou o silenciamento');
+  else if (!calou.evitada) grs14Furos.push('(c) o termo já lavrado não protegeu a alegação (G4)');
+  s().extrairCarta('dep_achado_cela');
+  s().extrairCarta('ev_cera_tarimba');
+  for (const id of ['dep_achado_cela', 'ev_cera_tarimba']) {
+    if (!s().cartasRegistradas.some((c) => c.id === id)) grs14Furos.push(`(c) o auto de exame não rendeu ${id}`);
+  }
+  // O eco pós-caso reconhece o que se moveu, e reconhece pelo desfecho certo.
+  const ecos = derivarEcosInterferencia(
+    EVENTOS_S1,
+    s().interferenciasDisparadas,
+    montarPacoteTutorial().ecosInterferencia,
+    'qa'
+  );
+  if (!ecos.some((e) => e.tagsOcultas.chave === 'silenciar_evitada')) {
+    grs14Furos.push('(c) o eco não registou o silenciamento evitado');
+  }
+}
+const grs14MaquinaOk = grs14Furos.length === 0;
+if (!grs14MaquinaOk) console.log('\nGRS1-4 — a máquina da interferência:', grs14Furos.join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5907,6 +6102,19 @@ const checagens = [
   ['Cobertura de rótulos: todo id emitido pelo banco (e o catálogo de causas) tem rótulo em rotulos.js', problemasCoberturaRotulos.length === 0],
   ['Prancha da vila (E2): a hora vira tinta — três alavancas estáveis por faixa, vãos no arranjo do 3D, acendimento pela janelaAcesa de sempre', tintaDaHoraOk],
   ['GR4-2 (cadeia física intocável): nenhuma carta nova em domínio temporal ou causal', cadeiaFisicaIntacta],
+  [
+    'GRS1-1 (o sexto homem fecha o veredicto): Herrick entra pela régua dos outros dois que mentem por segredo — álibi na mesa, carta de móbil, e o rastro que lhe derruba o paradeiro revela o segredo que a seed espera',
+    grs11SextoHomemOk,
+  ],
+  [
+    'GRS1-2 (saldo ≥ 0 nas três interferências): nada do que os três degraus destroem sustenta âncora, crava nexo, fecha juízo periférico ou é o único móbil do réu — e toda carta que nasce existe no catálogo',
+    grs12SaldoOk,
+  ],
+  ['GRS1-3 (a autoria não se anuncia): nenhum anúncio de interferência nomeia suspeito ou vítima — o diário regista efeitos, e quem os fez é leitura do jogador', grs13SemAutoriaOk],
+  [
+    'GRS1-4 (a máquina anda, e a G4 segura): em runtime, confrontar antes de colher perde a peça e rende o vestígio grosseiro; colher antes de confrontar sai `evitada`; a cela só abre com a prisão; e o eco pós-caso lê o desfecho certo',
+    grs14MaquinaOk,
+  ],
   ['GR4-3 (o veraz sem crédito): a carta do sineiro não firma nexo nem derruba paradeiro, e é a MARCA que a recusa', verazSemCredito],
   ['GR4-4 (o Livro II prova o móbil): o caderno dos pesos vale como carta de motivação do réu', livroIIValeMobil],
   ['GR4-5 (sem beco sem saída): torre aberta de início, sineiro na prosa base, cifra por gesto do corpo, Livro II só atrás da cifra', torreSemBeco],

@@ -655,7 +655,12 @@ export const CARTAS = [
       isca: true,
       // Refutada, esta alegação dá ao epílogo o direito de explicar a luz
       // (ROTULOS_EXPLICACAO.luz_esquecida) — o encerramento paga o "aha".
-      explicacao: 'luz_esquecida',
+      // OS-S1 (PD-06): e passa a pagar dois. A leitura do rapaz estava errada
+      // por inteiro, e por duas razões independentes: a claridade era do
+      // lampião esquecido, e houve mesmo um homem naquela sala antes do dia.
+      // Nenhuma das duas o rapaz podia saber, e é isso que faz do relato dele
+      // um erro honesto em vez de uma mentira.
+      explicacao: ['luz_esquecida', 'homem_da_madrugada'],
     },
   },
   {
@@ -813,10 +818,12 @@ export const CARTAS = [
       'Auto lavrado ao princípio da tarde: o preso foi achado suspenso pela tira do próprio casaco, presa à trave da janela alta, com os pés a três dedos do chão e a tarimba encostada à parede oposta. Ao exame do pescoço, o sulco que sobe em diagonal para o nó está pálido e seco, e a pele em volta dele não reagiu. Por baixo desse, e a atravessar a garganta a direito, corre um segundo sulco, uniforme de um lado ao outro, com a pele arroxeada e viva nas duas bordas. Nas conjuntivas, pontos vermelhos miúdos.',
     vozMestre:
       'Dois sulcos, e a ordem lê-se pela reação vital: o de baixo é horizontal e tem a equimose viva, o de cima sobe para o nó e não tem nenhuma. O laço horizontal apertou-o com ele vivo; a corda oblíqua veio depois, sobre um homem que já não sangrava. Quem o pendurou não sabia que a pele guarda a conta.',
+    // Sem `declaranteId`: o auto não é alegação de terceiro. Quem examina o
+    // pescoço é o próprio perito, e por isso esta carta não entra no mapa de
+    // procedência — não há boca a contar num papel que ele mesmo lavrou.
     tagsOcultas: {
       dominio: 'comportamental',
-      subDominio: 'avistamento',
-      declaranteId: 'harlan',
+      subDominio: 'exame',
     },
   },
   {
