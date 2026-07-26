@@ -146,6 +146,49 @@ function relatar(rotulo, veredicto) {
 }
 
 // ============================================================
+// OS-R6 · FASE 0 — TELEMETRIA DA EXPOSIÇÃO.
+//
+// Lê e conta; não muda nada. Mede quantas cartas o jogador tem na mesa AO
+// ENTRAR em cada conversa — antes de a própria conversa parir as dela —, por
+// suspeito e por perfil. É este número que justifica os cortes de E0/E1/E2:
+// arbitrá-los antes de medir é o erro que a R5 quase cometeu com a paridade
+// dos móbeis.
+//
+// "Apontar aquele suspeito" usa os três campos que o catálogo já tem:
+// `ligadoA` (a carta trata dele), `pertenceA` (a carta é dele) e
+// `declaranteId` (ele é quem depõe). Nenhum campo novo.
+// ============================================================
+const CONVERSAS_R6 = [
+  { conversaId: 'interrogatorio_silas', suspeitoId: 'silas_crane' },
+  { conversaId: 'papelaria', suspeitoId: 'agnes_rooke' },
+  { conversaId: 'moinho', suspeitoId: 'caleb_grey' },
+  { conversaId: 'dialogo_walter', suspeitoId: 'walter_arthurs' },
+  { conversaId: 'dialogo_davey', suspeitoId: 'davey_tull' },
+];
+
+function cartasQueApontam(suspeitoId, registradas = s().cartasRegistradas) {
+  return registradas.filter((c) => {
+    const t = c.tagsOcultas || {};
+    return t.ligadoA === suspeitoId || t.pertenceA === suspeitoId || t.declaranteId === suspeitoId;
+  });
+}
+
+const telemetriaR6 = [];
+function medirEntrada(perfil, conversaId) {
+  const alvo = CONVERSAS_R6.find((c) => c.conversaId === conversaId);
+  const apontam = cartasQueApontam(alvo.suspeitoId);
+  telemetriaR6.push({
+    perfil,
+    conversaId,
+    suspeitoId: alvo.suspeitoId,
+    hora: formatRelogio(s().horasJogo),
+    mesa: s().cartasRegistradas.length,
+    apontam: apontam.length,
+    ids: apontam.map((c) => c.id),
+  });
+}
+
+// ============================================================
 // (a) METÓDICO — corpo primeiro (fresco), reúne tudo, AFIRMA a janela e a
 // causa, liga as sustentações, derruba o MOSTRADOR FORJADO pela própria
 // roda de contagem (a encenação exposta), desmente o padeiro, fura o
@@ -166,20 +209,24 @@ s().viajarPara('relojoaria'); // 0h — mesmo prédio
 );
 s().viajarPara('relojoaria'); // 0h
 // OS-R5: o livro de pagamentos está no mesmo púlpito que o de ordens.
-['ev_livro_ordens', 'ev_livro_pagamentos', 'ev_estojo_buril', 'dep_habito_corda', 'alibi_davey'].forEach((id) =>
-  s().extrairCarta(id)
-);
+['ev_livro_ordens', 'ev_livro_pagamentos', 'ev_estojo_buril'].forEach((id) => s().extrairCarta(id));
+medirEntrada('Metódico', 'dialogo_davey'); // a oficina é a sala do aprendiz
+['dep_habito_corda', 'alibi_davey'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('interrogatorio_silas'); // 0h
+medirEntrada('Metódico', 'interrogatorio_silas');
 ['alibi_silas', 'comp_silas', 'ev_vidro_dobra'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('posto_do_guarda'); // +1h
 ['dep_testamento', 'dep_visto_vivo', 'dep_avistamento_padeiro'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('torre_sino'); // +1h — OS-R4: o sineiro e o que a cifra abre
 ['dep_sineiro_beco', 'ev_livro_ii'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('estalagem'); // +1h
+medirEntrada('Metódico', 'dialogo_walter');
 ['alibi_walter', 'ev_registro_estalagem', 'corrob_estalajadeiro'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('papelaria'); // +1h
+medirEntrada('Metódico', 'papelaria');
 ['alibi_agnes'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('moinho'); // +1h
+medirEntrada('Metódico', 'moinho');
 ['alibi_grey'].forEach((id) => s().extrairCarta(id));
 
 // Afirmações estruturadas:
@@ -228,6 +275,7 @@ s().viajarPara('posto_do_guarda'); // +1h — extrai o testamento → desbloquei
 s().viajarPara('gabinete_pettigrew'); // +1h30 atrás da isca (volta mais convencido)
 s().extrairCarta('corrob_pettigrew');
 s().viajarPara('estalagem'); // +1h30 de volta à vila
+medirEntrada('Apressado', 'dialogo_walter');
 ['alibi_walter', 'ev_registro_estalagem'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('relojoaria'); // +1h: só agora chega ao corpo
 console.log('\n--- Apressado: chega ao corpo às', formatRelogio(s().horasJogo), '---');
@@ -274,6 +322,7 @@ s().viajarPara('relojoaria');
 s().extrairCarta('ev_maquinismo');
 s().viajarPara('relojoaria');
 s().extrairCarta('ev_estojo_buril');
+medirEntrada('Pericial Desatento', 'dialogo_davey');
 s().definirReu('silas_crane');
 s().definirJanela({ inicio: -3, fim: -2 });
 s().definirCausa('ferida_arma_branca');
@@ -284,6 +333,43 @@ ligar('ev_estojo_buril', ANCORAS.presenca);
 s().submeterAcusacao();
 const vDesatento = s().veredicto;
 relatar('(d) PERICIAL DESATENTO — esperado: sucesso_gafes', vDesatento);
+
+// ============================================================
+// OS-R6 · FASE 0 — a tabela que justifica os cortes.
+// ============================================================
+console.log('\n=== OS-R6 · FASE 0 — TELEMETRIA DA EXPOSIÇÃO ===');
+console.log('Cartas na mesa que apontam o suspeito, no instante de entrar na conversa.');
+const PERFIS_R6 = ['Metódico', 'Apressado', 'Intuitivo', 'Pericial Desatento'];
+for (const perfil of PERFIS_R6) {
+  const linhas = CONVERSAS_R6.map(({ conversaId, suspeitoId }) => {
+    const m = telemetriaR6.find((t) => t.perfil === perfil && t.conversaId === conversaId);
+    const marca = m ? String(m.apontam) : '—';
+    return `${suspeitoId.padEnd(15)} ${marca.padStart(2)}${m ? `  (mesa ${m.mesa}, ${m.hora})  ${m.ids.join(' ')}` : '  não visitada'}`;
+  });
+  console.log(`\n  ${perfil}`);
+  linhas.forEach((l) => console.log(`    ${l}`));
+}
+const apontamMedidos = telemetriaR6.map((t) => t.apontam);
+console.log(
+  `\n  Amplitude medida: ${Math.min(...apontamMedidos)}–${Math.max(...apontamMedidos)} cartas por suspeito à entrada.`
+);
+
+// O teto por suspeito — e é ele que reprova o corte absoluto. Uma carta que
+// nasce da boca do próprio suspeito (marcada [[id]] na árvore dele) não é o
+// perito chegando sabendo: é a conversa a pagar-se a si mesma. Contadas à
+// parte para que o número de fora apareça sozinho.
+console.log('\n  Teto do catálogo, por suspeito:');
+for (const { conversaId, suspeitoId } of CONVERSAS_R6) {
+  const arvore = DIALOGOS[conversaId];
+  const nascemAqui = marcadoresDosTextos(Object.values(arvore.nos).flatMap((n) => n.fala || []));
+  const apontam = cartasQueApontam(suspeitoId, CARTAS);
+  const deFora = apontam.filter((c) => !nascemAqui.has(c.id));
+  console.log(
+    `    ${suspeitoId.padEnd(15)} apontam ${String(apontam.length).padStart(2)} · nascem na conversa ${String(
+      apontam.length - deFora.length
+    ).padStart(2)} · de fora ${String(deFora.length).padStart(2)}   ${deFora.map((c) => c.id).join(' ')}`
+  );
+}
 
 // ============================================================
 // (e) DEGRADAÇÃO POR PRECISÃO + SOLVABILIDADE DURÁVEL (relógio mole).
