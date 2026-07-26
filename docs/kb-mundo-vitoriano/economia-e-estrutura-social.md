@@ -127,6 +127,99 @@ O aparelho que vigia a respeitabilidade (complementa
   domínio — o benfeitor que vigia, o pároco que decide quem "merece". A caridade é vínculo e
   coleira.
 
+## 7. A aprendizagem e o jornal do rapaz
+
+A tabela de renda de [`demografia-e-sociedade.md`](./demografia-e-sociedade.md) §4 desce até
+o lavrador (13s 9d/semana) e o artesão (20–35s) e **para no rapaz**. Quem escreve um aprendiz
+não tinha número nenhum. Este é o pouco que se documenta, com a incerteza declarada.
+
+**A âncora, e é uma só.** Um *indenture* de relojoeiro de **novembro de 1891** (Richard Coad
+com David Chippindale, em Otley, Yorkshire), de sete anos, fixa a escala: *«wages from 1sh.
+up to the 7th year of 6sh. weekly»* — isto é, **1 xelim por semana no primeiro ano subindo a
+6 xelins no sétimo**, o que põe o terceiro ano por volta de **2s a 3s**.
+
+**Por que a escala é tão baixa, e quando não se aplica.** O *indenture* formal de sete anos
+pressupõe o mestre a **alimentar e alojar** o aprendiz: o dinheiro é bolso, não sustento.
+O rapaz que **mora em casa da mãe** e vai à oficina de manhã não é alimentado pelo mestre, e a
+paga dele tem de encostar mais no salário de mercado de um adolescente — que era bem acima
+disso. Numa oficina de vila sem contrato de sete anos assinado, a faixa realista abre.
+
+| Situação | Faixa defensável |
+|---|---|
+| Aprendiz sob *indenture*, alojado pelo mestre, 3.º ano | 2s–3s/semana |
+| Aprendiz que mora em casa, oficina de vila, sem contrato formal | 3s–5s/semana |
+| Rapaz de 14–15 em trabalho comum (não aprendizagem) | acima disso |
+
+Regra prática para a prosa: **3s leem como «indenture», 5s leem como «salário de rapaz», e 4s
+ficam no meio** — que é onde se põe um aprendiz de vila que dorme em casa.
+
+**Idade de entrada.** Entrar aos 13 anos era legal em 1893: a escolaridade obrigatória ia aos
+10, e a elevação para 11 é do Ato de **1893**, em vigor só a partir de **1.º de janeiro de
+1894**. Um rapaz de 15 com dois anos de casa entrou aos 13, em 1891 — sem problema.
+
+**Incerteza declarada:** não há aqui série nacional nenhuma. Um único *indenture* de 1891
+sustenta a escala. Tratar como âncora, não como tabela; e se um caso precisar de precisão
+maior, a pesquisa tem de ser refeita.
+
+## 8. Dinheiro emprestado, dinheiro retido
+
+A vila corre a crédito, e quem empresta tem poder. Duas frentes, com datas que **decidem** o
+que é anacronismo.
+
+### 8.1 A usura era livre — e o remédio ainda não existia
+
+- As **leis de usura foram revogadas em 1854**. Em 1893 **não há teto legal de juro**: o que
+  se contratou, cobra-se.
+- O **Moneylenders Act de 1900** — o que permitiu ao juiz reabrir barganha *«harsh and
+  unconscionable»* — é **posterior**. Em 1893 o devedor sufocado **não tem esse remédio**.
+- A **Select Committee on Money Lending de 1897–98** é igualmente posterior ao jogo, mas o
+  que ela colheu descreve a prática que já corria: confissões de taxas até **3.000% ao ano**.
+
+**As taxas de rua, na forma em que a época as dizia** — e esta é a parte utilizável, porque
+se enuncia por regra e não por percentagem:
+
+| Regra de rua | Ao ano |
+|---|:-:|
+| **1 penny por xelim, por semana** | ~433% |
+| 2 pence por xelim, por semana | ~866% |
+| 3 pence por xelim, por semana | ~1.300% |
+
+A aritmética que isso permite é a mais cruel e a mais legível: a **1d por xelim por semana**,
+uma dívida de **48 xelins (£2 8s)** vence **48 pence = 4 xelins** de juro por semana. Quem
+pague 4 xelins por semana paga **exatamente o juro** e **a dívida não anda um farthing** — pode
+servi-la até morrer. Um livro de contas que mostre a mesma soma no princípio e no fim do ano,
+com meses de pagamentos entre as duas, **prova a agiotagem sem a palavra**: quem conferir os
+números encontra a armadilha fechada, e quem não conferir vê contabilidade.
+
+### 8.2 Reter salário: banal na prática, duvidoso em direito
+
+- O **Truck Act de 1831** manda pagar o salário **integralmente em moeda corrente** e admite
+  dedução só nas rubricas taxativas: s. 23 (remédio e assistência médica, combustível,
+  forragem, renda de casa, comida preparada e consumida sob o teto do patrão, ferramentas
+  para mineiros), **mediante acordo escrito assinado pelo trabalhador** e pelo custo; s. 24
+  (adiantamentos para *friendly society*, caixa econômica, socorro em doença, educação dos
+  filhos).
+- O **Truck Amendment Act de 1887** estendeu a proteção a praticamente todo trabalhador
+  manual, por remissão ao **Employers and Workmen Act 1875**, cuja **s. 6 equipara
+  expressamente aprendiz a trabalhador** e mestre a patrão para os fins daquele Ato.
+- O **Truck Act de 1896** — o que exigiu deduções por escrito, «justas e razoáveis», com
+  discriminação de parcelas — é **posterior a 1893**. Ninguém no jogo pode invocá-lo.
+
+**A leitura para a prosa, e é guarda-corpo.** Um adiantamento em dinheiro à família, recuperado
+retendo o salário do trabalhador ou do aprendiz, **não cabe em nenhuma rubrica autorizada**. Na
+letra da lei é dedução indevida; na prática de uma oficina de vila é rigorosamente banal e não
+seria fiscalizado. Portanto:
+
+> **Nenhuma personagem — nem o *constable*, nem o perito, nem o patrão — pode afirmar que
+> reter salário contra dívida era de direito.** Quem quiser transformar isso em alavanca tem a
+> via de época: queixa sob os Truck Acts. Quem não quiser, deixa como está: pressão real, sem
+> remédio à mão.
+
+**Incerteza declarada:** o Ato de 1875 equipara aprendiz a trabalhador **para os seus próprios
+fins**, e o de 1887 toma-lhe a definição emprestada — mas **não se localizou jurisprudência**
+sobre se o «salário» de aprendiz conta como *wages* para efeito dos Truck Acts. Tratar como
+**juridicamente duvidoso**, nunca como «ilegal, ponto final».
+
 ## Implicações para o jogo
 
 - **Móveis econômicos macro que a época autoriza:** a fazenda falindo na depressão agrícola (o
@@ -158,3 +251,6 @@ O aparelho que vigia a respeitabilidade (complementa
 - Esferas separadas e "anjo do lar": [Victorian Gender, Separate Spheres, Brewminate](https://brewminate.com/victorian-gender-separate-spheres-new-woman/)
 - Coverture e Married Women's Property Acts (1870, 1882); Matrimonial Causes Act 1857: [Married Women's Property Act 1870, Wikipedia](https://en.wikipedia.org/wiki/Married_Women's_Property_Act_1870); [Married Women's Property Act 1882, Wikipedia](https://en.m.wikipedia.org/wiki/Married_Women%27s_Property_Act_1882)
 - Temperança e Band of Hope: [Temperance movement in the UK, Wikipedia](https://en.wikipedia.org/wiki/Temperance_movement_in_the_United_Kingdom); [History of Hope UK (PDF)](https://www.hopeuk.org/wp-content/uploads/History.pdf)
+- Aprendizagem de relojoeiro, escala de salário (indenture Coad/Chippindale, Otley, 1891): [Otley Local History Bulletin](https://otleylocalhistorybulletin.wordpress.com/2025/06/04/otley-clockmakers/)
+- Truck Acts (1831, 1887, 1896), texto e comentário: [archive.org](https://archive.org/stream/op1265933-1001/op1265933-1001_djvu.txt); [Truck Acts, Wikipedia](https://en.wikipedia.org/wiki/Truck_Acts); Employers and Workmen Act 1875 (s. 6, aprendiz equiparado a trabalhador): [Irish Statute Book](https://www.irishstatutebook.ie/eli/1875/act/90/enacted/en/print.html)
+- Usura livre desde 1854, Moneylenders Act 1900 e taxas de rua (1d/xelim/semana = 433% a.a.; Select Committee 1897–98): [Money Lending in the Victorian Era](https://randombitsoffascination.com/2025/09/30/money-lending-in-the-victorian-era-from-prohibition-to-predation/); [Victorian Money, victorianlondon.org](https://www.victorianlondon.org/finance/money.htm)

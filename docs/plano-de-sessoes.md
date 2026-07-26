@@ -1,6 +1,6 @@
 # MORTEM — Plano de sessões (rota de trabalho)
 
-**Atualizado em:** 20 de julho de 2026
+**Atualizado em:** 25 de julho de 2026
 **Marco de referência:** merge da PR #70 (`0f6b369`) — revisão de pendências + quick wins
 do playtest humano de 19/07/2026.
 
@@ -307,6 +307,39 @@ detalhar antes).
   sem luta e não a suporta sem furar o fair play. Pertence ao **gerador** (autobattler produz
   a luta + ruído honesto nos inocentes). **Plano pronto em `docs/os-exigir-que-mostre.md`**
   (design, escopo, decisões abertas, critério de pronto); gatilho: ordem expressa.
+
+### SR — A reforma do caso-escola *(frente ativa desde 25/07/2026)*
+
+Registrada aqui em 25/07/2026, no fecho da OS-R5: esta frente abriu **depois** da última
+atualização deste plano e correu cinco sessões sem constar dele, contra a regra de
+manutenção do topo. Fica corrigido.
+
+- **Objetivo:** reformar «A Hora Emprestada» em oito OS sequenciais, sem tocar na cadeia
+  física do crime, e extrair da reforma os padrões que o gerador vai herdar.
+- **Governo:** [`docs/os-r0-mestra-reforma-hora-emprestada.md`](./os-r0-mestra-reforma-hora-emprestada.md)
+  — 25 decisões marteladas, 12 invariantes, a matriz de colisão e o gate global. **Não se
+  executa; governa.**
+- **Regra dura:** nenhuma OS abre enquanto a anterior não tiver ata, e **cada OS escreve-se
+  no fecho da anterior**, contra a árvore real (OS-R0 §4). Sem paralelismo, em nenhuma
+  circunstância.
+- **Cada OS fecha com:** `npm run verificar` verde **e** pipeline `revisar-prosa` com zero
+  achados bloqueantes.
+
+| Ordem | OS | Estado |
+|---|---|---|
+| 1.º | R1 — Vocabulário e nomes | ✅ fechada |
+| 2.º | R2 — Cena única | ✅ fechada |
+| 3.º | R3 — Abertura | ✅ fechada |
+| 4.º | R4 — Elenco e livros | ✅ fechada |
+| 5.º | R5 — Móbeis e cartas | ✅ fechada (25/07/2026) |
+| 6.º | R6 — Exposição e interrogatórios | **escrita, por executar** — cinco martelos abertos; prompt em [`os-r6-prompt-de-arranque.md`](./os-r6-prompt-de-arranque.md) |
+| 7.º | R7 — A reconstituição | por escrever (escreve-se no fecho da R6) |
+| 8.º | R8 — Passe editorial e QA de fecho | por escrever |
+| — | R9 — O gerador herda os padrões | fora da reforma; fila registrada nas atas |
+
+- **Orçamento de cartas (G11, teto 46):** **42 em jogo, 4 livres**. A **R6 é a última OS que
+  pode gastar** — a R7 está proibida pela G9, a R8 é editorial e a R9 é do gerador.
+- **Próxima sessão desta frente:** executar a R6 pelo prompt de arranque.
 
 ### S5 — Balanceamento e OSs restantes
 
