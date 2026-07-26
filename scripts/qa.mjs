@@ -4604,6 +4604,63 @@ const gr66Violacoes = ARQUIVOS_DO_MOTOR.filter((relativo) =>
 const gr66MotorCegoOk = gr66Violacoes.length === 0;
 if (!gr66MotorCegoOk) console.log('\nGR6-6 — o motor lê exposição/apontadaPor em:', gr66Violacoes.join(', '));
 
+// ============================================================
+// OS-R6 · FASE 2 — O BEAT 3 (GR6-7, GR6-9).
+// ============================================================
+const TONS_R6 = ['firme', 'cordial', 'tecnico', 'obliquo'];
+
+// GR6-7 — BEAT 3 NOS CINCO, EM QUALQUER TOM. Os cinco têm terceiro beat; ele
+// sai nos quatro tons; e chega-se a ele por QUALQUER dos quatro tons do beat
+// 2 — um terceiro beat que só o tom ressonante abrisse seria beco (G4, G10).
+const gr67Furos = [];
+for (const { conversaId } of CONVERSAS_R6) {
+  const nos = DIALOGOS[conversaId]?.nos || {};
+  for (const tom of TONS_R6) {
+    const b3 = nos[`b3_${tom}`];
+    if (!b3) {
+      gr67Furos.push(`${conversaId}: falta b3_${tom}`);
+      continue;
+    }
+    if (!(b3.fala || []).length) gr67Furos.push(`${conversaId}.b3_${tom}: fala vazia`);
+    const b2 = nos[`b2_${tom}`];
+    const destinos = (b2?.opcoes || []).map((o) => o.vaiPara);
+    for (const alvo of TONS_R6) {
+      if (!destinos.includes(`b3_${alvo}`)) {
+        gr67Furos.push(`${conversaId}.b2_${tom} não oferece b3_${alvo}`);
+      }
+    }
+    // Os tons das opções do beat 2 têm de ser os quatro, sem repetição — é o
+    // que o qa-ui conta em tela (.opcao-dialogo[data-tom] === 4).
+    const tonsOferecidos = (b2?.opcoes || []).map((o) => o.tom);
+    if (new Set(tonsOferecidos).size !== 4) {
+      gr67Furos.push(`${conversaId}.b2_${tom} não oferece os quatro tons: ${tonsOferecidos.join(',')}`);
+    }
+  }
+}
+const gr67BeatTresOk = gr67Furos.length === 0;
+if (!gr67BeatTresOk) console.log('\nGR6-7 — beat 3:', gr67Furos.join(' · '));
+
+// GR6-9 — MENORIDADE. O beat 3 de Davey é econômico e só, em qualquer tom e
+// em qualquer nível de exposição. A R5 apontou que o risco fino não é o
+// óbvio: é dar-lhe RESSENTIMENTO em vez de facto. A guarda cobra as duas
+// coisas — o vocabulário do assunto tem de ser o do dinheiro, e nenhuma
+// palavra de mágoa entra na boca dele.
+const LEXICO_ECONOMICO_DAVEY = /ordenado|xelim|xelins|paga|pagou|pagava|dívida|livro|marmita|serviço/i;
+const LEXICO_DE_MAGOA = /injust|revolt|ódio|odei|rancor|vingan|maldade|explora|roubad|me devia|merecia/i;
+const gr69Furos = [];
+{
+  const nos = DIALOGOS.dialogo_davey?.nos || {};
+  for (const tom of TONS_R6) {
+    const no = nos[`b3_${tom}`] || {};
+    const blocos = [...(no.fala || []), ...Object.values(no.alfinetada || {}).flat()];
+    const texto = blocos.join(' ');
+    if (!LEXICO_ECONOMICO_DAVEY.test(texto)) gr69Furos.push(`b3_${tom}: o assunto não é econômico`);
+    if (LEXICO_DE_MAGOA.test(texto)) gr69Furos.push(`b3_${tom}: mágoa posta na boca do rapaz`);
+  }
+}
+const gr69MenoridadeOk = gr69Furos.length === 0;
+if (!gr69MenoridadeOk) console.log('\nGR6-9 — menoridade:', gr69Furos.join(' · '));
+
 // A telemetria da Fase 0, agora traduzida em nível — o «depois» que a ata pede.
 console.log('\n  Telemetria da Fase 0, traduzida em nível:');
 for (const t of telemetriaR6) {
@@ -4756,6 +4813,8 @@ const checagens = [
     gr65ParidadeOk,
   ],
   ['GR6-6 (o motor continua cego): veredicto.js e acusacao.js não leem exposição nem apontadaPor', gr66MotorCegoOk],
+  ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
+  ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

@@ -246,11 +246,14 @@ async function varrerLocalAberto(page) {
 // a ficha de coleta, arquivada antes do próximo termo).
 async function extrairTermosVisiveis(page) {
   const termos = page.locator('.termo-clicavel');
+  let extraidos = 0;
   for (let i = 0; i < 10 && (await termos.count()) > 0; i++) {
     await termos.first().click();
     await espera(page, 150);
     await arquivarFicha(page);
+    extraidos += 1;
   }
+  return extraidos;
 }
 
 // Percorre um diálogo JÁ ABERTO (§7.2): a conversa DESCE e não volta. A cada
@@ -259,21 +262,26 @@ async function extrairTermosVisiveis(page) {
 // até a conversa se encerrar. Os confrontos ficam de fora (canal lateral, só
 // apresentando a prova). Só as falas do perito têm [data-tom].
 async function percorrerDialogo(page) {
-  await extrairTermosVisiveis(page); // a fala de abertura
+  // OS-R6: devolve quantos termos a descida inteira extraiu. Antes bastava
+  // olhar a tela no fim, porque o último beat era o segundo e trazia carta;
+  // com o beat 3 (que por desenho NÃO marca carta nenhuma — GR6-4) a tela
+  // final está limpa, e contar nela mediria a coisa errada.
+  let extraidos = await extrairTermosVisiveis(page); // a fala de abertura
   const seletorTom = '.opcao-dialogo[data-tom]';
   for (let guarda = 0; guarda < 6; guarda++) {
     const n = await page.locator(seletorTom).count();
     if (n === 0) break; // a conversa se encerrou (sem volta)
     await page.locator(seletorTom).last().click(); // tom oblíquo
     await espera(page, 250);
-    await extrairTermosVisiveis(page);
+    extraidos += await extrairTermosVisiveis(page);
   }
+  return extraidos;
 }
 
 // Interrogatório num nó do mapa (conversão integral: Silas, Agnes, Grey).
 async function interrogarEExtrair(page, rotuloNo) {
   await abrirNo(page, rotuloNo);
-  await percorrerDialogo(page);
+  return percorrerDialogo(page);
 }
 
 // Diálogo EMBUTIDO (Onda 6): de dentro da localidade aberta, o botão
@@ -281,7 +289,7 @@ async function interrogarEExtrair(page, rotuloNo) {
 async function conversarEmbutido(page, rotuloBotao) {
   await page.getByRole('button', { name: rotuloBotao }).click();
   await espera(page, 400);
-  await percorrerDialogo(page);
+  return percorrerDialogo(page);
 }
 
 async function fecharOverlay(page) {
@@ -505,9 +513,10 @@ async function main() {
     // Onda 6: Davey conversa em diálogo embutido — o hábito da corda e o
     // álibi dele nascem das falas, não mais de um ponto de interesse. O
     // diálogo embutido segue o SUB-LOCAL onde a pessoa trabalha.
-    await conversarEmbutido(page, 'Conversar com Davey Tull');
+    const extraidasDavey = await conversarEmbutido(page, 'Conversar com Davey Tull');
     // §7.2: a conversa desce (o hábito da corda e o álibi nascem das falas).
-    checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', (await page.locator('.termo-extraido').count()) >= 1);
+    // OS-R6: conta a DESCIDA inteira — o beat 3 fecha a conversa sem carta.
+    checar('Onda 6: a conversa embutida com o aprendiz extrai cartas', extraidasDavey >= 1);
     checar('OS-R2: o prédio inteiro se varre sem gastar o relógio (13h00)', (await page.locator('body').innerText()).includes('13h00'));
     await fecharOverlay(page);
     checar('Rota 1: Gabinete desbloqueado e destacado como novo', (await page.locator('body').innerText()).includes('· novo'));
@@ -533,9 +542,23 @@ async function main() {
     checar('Confronto gated: prova não colhida não abre pergunta de confronto', (await page.locator('[data-requer-carta="corrob_estalajadeiro"]').count()) === 0);
     // §7.2: a conversa desce (tom oblíquo em cada beat): a lasca na bainha e o
     // álibi saem no primeiro beat; a teoria do ladrão de fora, no segundo.
-    await percorrerDialogo(page);
-    checar('Fase 3: extraiu carta de dentro do diálogo (álibi registrado)', (await page.locator('.termo-extraido').count()) >= 1);
+    const extraidasSilas = await percorrerDialogo(page);
+    checar('Fase 3: extraiu carta de dentro do diálogo (álibi registrado)', extraidasSilas >= 1);
     checar('§7.2: a conversa se encerra sem volta ao hub', (await page.locator('[data-conversa-encerrada]').count()) === 1);
+    // OS-R6: a conversa desce até o TERCEIRO beat (D7) e para lá. Antes da
+    // R6 ela morria no segundo, e quem chegasse sem carta fazia duas
+    // perguntas e saía.
+    checar('OS-R6: a conversa desce até o beat 3', (await page.locator('[data-no-dialogo^="b3_"]').count()) === 1);
+    // OS-R6: o nível de exposição é legível na tela, e diante do réu, com a
+    // mesa quase vazia neste ponto da rota, ele é o piso.
+    checar('OS-R6: o beat 3 declara o nível de exposição', (await page.locator('[data-exposicao]').count()) === 1);
+    // OS-R6: nesta altura o perito varreu a relojoaria e não mais que isso —
+    // tem parte do dossiê do réu, e longe dos dois terços. O nível é o do
+    // meio, e é ele que paga a alfinetada pequena.
+    checar(
+      'OS-R6: com parte do dossiê na mesa, o beat 3 roda em E1',
+      (await page.locator('[data-exposicao="E1"]').count()) === 1
+    );
     await fecharOverlay(page);
     // ---- fim do bloco da Fase 3 ----
     // Etapa 1 (mapa): um local já visitado e que não é o atual recorda no
@@ -600,6 +623,13 @@ async function main() {
     // rende a reação de Silas (observável, nunca confissão — o veredicto é do
     // mural) e ANOTA a refutação do paradeiro dele no mural (barbante removível).
     await abrirNo(page, 'A Saleta');
+    // OS-R6: de volta ao réu DEPOIS da estalagem, o dossiê passou os dois
+    // terços e o nível sobe. É a prova em tela de que a exposição é função
+    // das cartas na mesa, e de mais nada: a mesma conversa, outro nível.
+    checar(
+      'OS-R6: colhida mais prova, a mesma conversa sobe a E2',
+      (await page.locator('[data-exposicao="E2"]').count()) === 1
+    );
     checar('Rota 1: prova colhida abre a pergunta de confronto', (await page.locator('[data-confrontos] [data-requer-carta="corrob_estalajadeiro"]').count()) === 1);
     await page.locator('[data-confrontos] [data-requer-carta="corrob_estalajadeiro"]').click();
     await espera(page, 300);
