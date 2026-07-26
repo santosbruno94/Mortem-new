@@ -2625,3 +2625,80 @@ data de medição.
 - **Para o playtest humano, e é o item com número:** os dois perfis que chegam à cena com
   **0 de 9**. Medir se a cena curta se lê como consequência da própria colheita ou como
   defeito. É a única pergunta que esta OS deixou por responder de propósito.
+
+### Adendo de decisão sobre as quatro divergências (mesmo dia, a pedido do utilizador)
+
+Fechada a ata acima, o utilizador martelou **as quatro divergências que ela tinha
+registado** e mandou executar as recomendações. Três eram executáveis e foram feitas **no
+próprio fecho da R7**, para que a R8 abra sem decisão nenhuma pendente — é a mesma
+disciplina com que a R6 martelou a R7 de antemão, agora com a execução junto.
+
+| # | Divergência | Decisão | O que se fez |
+|---|---|---|---|
+| 1 | «Carrilhão» × «relógio de badalar» | **Alinhar o CONTEXTO** | duas linhas do `MORTEM_CONTEXTO.md` |
+| 2 | A queima do Livro I (~45 min × «uma hora ou mais») | **Dizer em prosa que o fogo não terminou** | uma oração no gesto `livro_desmanchado` |
+| 3 | A janela de `ev_maquinismo` | **Blindar a carta, sem mover o número** | uma oração na `descricao` |
+| 4 | O vestígio perecível do buril | **Arquivar para a R9** | nada no código; entrou na fila do gerador |
+
+**O argumento que decidiu a (1) não era de vocabulário.** «Carrilhão» é *chime*, e bate os
+quartos de hora. O `CLAUDE.md` põe o `MORTEM_CONTEXTO.md` como fonte da verdade de design —
+logo, o documento, como estava, **contradizia um valor do motor**: lido à letra, a janela do
+caso encolheria de uma hora para quinze minutos e a janela `[−3,−2]` de `ev_maquinismo`
+deixaria de fazer sentido. O glossário, o motor e a carta já diziam «badalar». A passagem
+reescrita aproveitou para trocar a razão fraca pela forte, que a execução da R7 tinha
+descoberto: **adiantar teria consertado a prova**, e não apenas feito barulho.
+
+**A (2) recusou a saída cara.** Alargar a hora do sineiro mexeria num número que o fiscal da
+R4 fixou de propósito para dar tempo aos gestos, e arrastaria o portão da estalagem atrás.
+A prosa não declarava duração — logo não mentia —, mas dizer que o fogo foi começado e não
+terminado fecha a divergência **sem mover número nenhum**, e é o que a própria carta já
+sustentava: o que ela mostra é muita carcaça sobrevivente (o fecho de latão, o fio de linho,
+a pasta empenada), que é o que sobra de uma queima interrompida.
+
+**A (3) preferiu tornar observável o que era pressuposto.** A janela nunca esteve em risco
+de partir o caso — um movimento que batesse as meias fecharia às 21h30, o que **estreita** e
+continua a conter a morte às 21h. O que estava errado era a janela depender de uma suposição
+que a carta não declarava. Agora a roda «traz um entalhe por hora, e nenhum dos curtos que
+marcariam as meias», e o número deixou de ser assumido.
+
+**A (4) não tinha defeito a corrigir.** A carta observa a umidade na junta ~16h depois do
+gesto, dentro da janela de secagem que a KB dá. O vestígio durável (o coágulo sob a virola)
+exigiria carta nova, vedada pela G9 e pelo número final de 42 — e é **capacidade do
+gerador**, não dívida do caso-escola.
+
+**O que ficou por decidir, e é o único:** os perfis **Intuitivo** e **Pericial Desatento**
+chegam à reconstituição com **0 de 9**. Medido a mais no fecho: o Desatento está **a uma
+carta de dois gestos** (tem `ev_maquinismo` e falta-lhe `ev_relogio_lareira`; tem
+`ev_estojo_buril` e falta-lhe `ev_residuo_ferida`), e o Intuitivo está longe de tudo, com
+três cartas na mesa e desfecho de impunidade. Ou seja: **o caso dissonante — condenar e não
+ver nada — é um quase, e não um precipício**, o que reforça manter o martelo (c) como está.
+Fica para o playtest humano, e a pergunta é uma só: a cena curta lê-se como culpa própria ou
+como defeito?
+
+**Registrada a tentação, e recusada:** dá para subir a taxa de acerto afrouxando os pares de
+`exige`. Seria vender barato o «quem não colheu não vê» da G9, e transformaria a cena numa
+que mostra o que o jogador não provou. **Não se faz** sem ata própria.
+
+**O pipeline correu sobre os três ajustes, e apanhou um ALTO no que parecia o mais seguro.**
+A blindagem de `ev_maquinismo` dizia «um entalhe por hora, e nenhum **dos curtos** que
+marcariam as meias» — e numa roda de contagem **os entalhes são todos iguais**. O que conta
+as pancadas é o **arco** que a alavanca percorre entre um entalhe e o seguinte, e uma roda
+que batesse as meias traria um entalhe **rente** ao da hora, não um entalhe curto. A frase
+encarregada de blindar o número negava a existência de uma coisa que não existe em roda
+nenhuma. Corrigida para o espaçamento, que é o observável verdadeiro.
+
+O fiscal apanhou, na mesma passagem que se editava, **um furo pré-existente do documento**:
+a cópia da Verdade de Ouro no §14 dizia `horasMorteAntesChegada: 14` contra os **16** de
+`seed.js` — e contra a própria linha do §14 que diz «IPM na chegada = 16h». Entrou em
+17/07, quando a chegada passou de 11h para 13h, e ninguém a acompanhou. Corrigida. Mais
+duas do mesmo fôlego: a encenação levava «a hora seguinte» onde a janela até o sineiro dá
+**três quartos de hora**, e a razão do silêncio estava fundida com a da janela (o silêncio
+vem de recuar; «bater só às horas» é o que faz a janela fechar às 22h em vez das 21h30).
+
+E um achado que **cresceu** com o ajuste: o «vinco das nervuras» passou a viver em dois
+arquivos, porque a reescrita do gesto herdou a frase da carta. A R8 corrige **aos pares**.
+Fica registada também uma emenda à KB que o perito propôs e não aplicou — o leito de cinza
+alto está ancorado em «uma hora de alimentação», e com a queima declarada interrompida o
+tell precisa de ser desacoplado da duração. A física corre a favor da prosa (fogo abafado
+carboniza mais e colapsa menos, logo o leito interrompido é **mais** volumoso), mas a KB,
+como está escrita, deixou de justificar o que a carta afirma.

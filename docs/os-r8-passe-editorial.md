@@ -76,23 +76,35 @@ contrato do `CLAUDE.md` exige atualizar o QA no mesmo commit.
   a abertura do caso pela mesma razão que o carvão de Silas puxava (ele acendeu o fogo no
   sábado de manhã, por `abertura.js`).
 
-### 3.4 Os quatro achados novos da R7
+### 3.4 O que sobrou dos achados da R7
 
-- **A divergência «carrilhão»** — `MORTEM_CONTEXTO.md` chama carrilhão à peça que o
-  glossário, o motor e a carta chamam **relógio de badalar**. Carrilhão é *chime*: soaria a
-  cada quarto de hora e encolheria a janela do caso de uma hora para quinze minutos, e não
-  convive com uma roda de contagem na mesma caixa. **A prosa do jogo já está correta** (a
-  R7 não propagou o termo); o que está fora de passo é o documento de desenho.
-  **É decisão do utilizador**, e a R8 só a executa se ele mandar.
-- **O «vinco das nervuras» de `ev_cinza_livro`** — as nervuras são os nervos da **lombada**,
-  não da pasta, e o livro-razão de papelaria dos 1890 é tipicamente de **lombo de mola**,
-  que não tem nervos. Sobrevivente canónico e mais rico, que a KB já documenta: a **crosta
-  curva e rígida, em camadas**, que nenhuma folha solta produz. É achado de carta, não de
-  prosa nova.
-- **A bíblia de vozes diz «antes do meio-dia»** onde a carta `dep_mulher_viela` diz **«ao
-  meio-dia»**. A fonte de código vence a de doc; corrigir a bíblia.
-- **A fila da R4 que nunca se esgotou** — releitura dos textos anteriores à reforma que as
-  OS seguintes não tocaram.
+**Três dos quatro foram executados no próprio fecho da R7**, depois de o utilizador
+martelar as quatro divergências em 26/07/2026. **Não reabrir**: estão feitos, com ata.
+
+| Achado | Estado |
+|---|---|
+| A divergência «carrilhão» | ✅ **alinhada** — o `MORTEM_CONTEXTO.md` já diz «bate só às horas», e ganhou a razão mais forte (adiantar teria consertado a prova) |
+| A janela de `ev_maquinismo` | ✅ **blindada sem mover o número** — a `descricao` passou a dizer que a roda traz um entalhe por hora e nenhum dos curtos das meias |
+| A hora de queima do Livro I | ✅ **resolvida em prosa** — o gesto diz agora que o fogo não chegou ao fim, o que explica a carcaça sobrevivente sem mexer na hora do sineiro |
+| O «vinco das nervuras» | ⬜ **fica para esta OS, e agora em DOIS arquivos** — `cartas.js` (`ev_cinza_livro`) e `intervencoes.js` (`livro_desmanchado`), que herdou a frase. Corrigir **aos pares, no mesmo commit**. As nervuras são da lombada, e o livro-razão dos 1890 é de lombo de mola, sem nervos; sobrevivente canónico melhor, já na KB: a **crosta curva e rígida, em camadas** |
+| A bíblia de vozes diz «antes do meio-dia» | ⬜ **fica para esta OS** — a carta `dep_mulher_viela` diz «ao meio-dia», e a fonte de código vence a de doc |
+
+**Arquivado, e não é desta OS:** o vestígio do buril é o **perecível** (a umidade na junta seca
+em um dia); o durável — o coágulo sob a virola — exigiria carta nova, vedada pela G9 e pelo
+número final de 42. **Vai para a fila da R9** como capacidade do gerador, não como dívida do
+caso-escola. Não há defeito a corrigir: a carta observa ~16h depois do gesto, dentro da
+janela de secagem.
+
+### 3.4-bis Uma emenda à KB, proposta pelo perito e NÃO aplicada
+
+`docs/kb-medicina-legal/supressao-de-vestigios.md:197-200` ancora o leito de cinza alto em
+«alimentado ao fogo por uma hora» e no «sinal de ter sido atiçada repetidas vezes». Com a
+queima do Livro I agora declarada **interrompida**, o atiçamento repetido deixa de estar
+coberto — e ainda bem que `ev_cinza_livro` nunca o mencionou. A física corre a favor da
+prosa (fogo abafado carboniza mais e colapsa menos, logo o leito interrompido é **mais**
+volumoso que o completo), mas a KB, como está escrita, deixa de justificar o que a carta
+afirma. **Emenda proposta:** desacoplar o tell da duração — o leito alto mede a massa
+introduzida, e o atiçamento passa a sinal acessório de queima levada até o fim.
 
 ### 3.5 O QA de fecho
 
@@ -127,7 +139,8 @@ menor risco: três strings.
 
 **Fase 2 — O púlpito** (§3.2), com o `qa-ui` no mesmo commit.
 
-**Fase 3 — Os ecos e as colisões de prosa** (§3.3, §3.4).
+**Fase 3 — Os ecos e as colisões de prosa** (§3.3) e os dois achados da R7 que
+sobraram (§3.4): o «vinco das nervuras» e o «antes do meio-dia» da bíblia.
 
 **Fase 4 — O QA de fecho** (§3.5).
 
@@ -137,20 +150,13 @@ menor risco: três strings.
 
 ## 5. Pontos de decisão
 
-**Um só, e o utilizador pode fechá-lo no arranque em uma linha:**
+**Nenhum.** O único que esta OS tinha — a divergência «carrilhão» — foi martelado pelo
+utilizador em 26/07/2026, junto com as outras três divergências registadas na ata da R7, e
+**executado no fecho da própria R7**. A R8 entra direto na Fase 0.
 
-### (a) A divergência «carrilhão» alinha-se, ou fica registada?
-
-- **Alinhar** — trocar as duas linhas do `MORTEM_CONTEXTO.md` para «relógio de badalar».
-  Custo: duas linhas. Ganho: o documento de desenho deixa de contradizer o glossário do
-  próprio jogo, e a próxima auditoria não bate na mesma pedra.
-- **Ficar registada** — a ata da R7 já a documenta, e o `CLAUDE.md` põe o CONTEXTO como
-  fonte da verdade de design, o que faz de qualquer edição dele matéria do utilizador.
-
-*Recomendação:* alinhar. Não é divergência de desenho — é um termo técnico errado num
-documento que descreve corretamente tudo o resto do mecanismo.
-
----
+Se a execução revelar contradição entre uma decisão e uma guarda, pergunta-se na hora, e só
+isso. (Na R6 e na R7 essa cláusula foi usada **zero vezes** — em ambas, reler resolveu o que
+parecia exigir decisão.)
 
 ## 6. Guardas
 

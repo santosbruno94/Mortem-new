@@ -115,10 +115,16 @@ export const INTERVENCOES_NOITE = [
   {
     id: 'livro_desmanchado',
     hora: 'Na grelha do escritório',
-    rubrica: 'o livro desmanchado e alimentado à grelha aos punhados',
+    rubrica: 'o livro desmanchado e alimentado à grelha, sem que o fogo chegue ao fim',
+    // A KB põe a destruição de um livro-razão em grelha doméstica em «uma
+    // hora ou mais», e a noite canônica dá ~45 minutos para cinco gestos. A
+    // prosa resolve isso sem mover número nenhum: o fogo foi COMEÇADO e não
+    // terminado, e é por isso que sobra tanta carcaça — que é exatamente o
+    // que a carta mostra (fecho, linho, pasta empenada). Decidido pelo
+    // utilizador em 26/07/2026, sobre as três saídas registadas na ata.
     exige: ['ev_cinza_livro'],
     prosa:
-      'O livro é desmanchado antes de ir ao lume: a costura cede, e as folhas descem à grelha aos punhados. Fica entre as barras o que o fogo não come — o fecho de latão com a sua chapa, um fio de linho preso à dobra e um pedaço de pasta empenada com o vinco das nervuras.',
+      'O livro é desmanchado antes de ir ao lume: a costura cede, e as folhas descem à grelha aos punhados. O fogo não chega ao fim do que lhe deram: no leito sobra o fecho de latão com a sua chapa, um fio de linho preso à dobra e um pedaço de pasta empenada com o vinco das nervuras.',
   },
   {
     id: 'bainha_por_sacudir',

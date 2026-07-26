@@ -342,15 +342,20 @@ manutenção do topo. Fica corrigido.
   como decisão, não como sobra. A R7 está proibida pela G9, a R8 é editorial e a R9 é do
   gerador; **não há mais quem gaste**, e o caso-escola fecha assim.
 - **Próxima sessão desta frente:** executar a **R8** pelo prompt de arranque, e ela **fecha
-  a reforma**. Há **uma** pergunta a recolher no arranque (a divergência «carrilhão» do
-  `MORTEM_CONTEXTO.md`, com recomendação escrita); tudo o resto está martelado ou triado.
+  a reforma**. **Não há pergunta a recolher** — é a primeira OS da reforma a abrir com o §5
+  vazio. As quatro divergências que a R7 registou foram marteladas em 26/07/2026 e as três
+  executáveis foram feitas no fecho dela.
 - **Fila da R8, triada e agora completa:** o púlpito de cortiça da R5; o rename da Estação
   III do mural (item 14 — três strings identificadas, não é redesenho); os itens 10 e 11 do
-  playtest; os dois não-bloqueantes do pipeline da R6; e **quatro achados novos da R7** — a
-  divergência «carrilhão» × «relógio de badalar», o «vinco das nervuras» de `ev_cinza_livro`,
-  o «antes do meio-dia» da bíblia de vozes, e o QA de fecho (a única fase da reforma que pode
-  REMOVER guarda, e só com justificação na ata). O `interrogatorio_silas` **não** se
-  normaliza — martelado.
+  playtest; os dois não-bloqueantes do pipeline da R6; o **«vinco das nervuras»** de
+  `ev_cinza_livro`; o **«antes do meio-dia»** da bíblia de vozes; e o **QA de fecho** (a
+  única fase da reforma que pode REMOVER guarda, e só com justificação na ata). O
+  `interrogatorio_silas` **não** se normaliza — martelado.
+- **Executado no fecho da R7, a mando do utilizador (26/07/2026):** a divergência
+  «carrilhão» **alinhada** no `MORTEM_CONTEXTO.md`; a janela de `ev_maquinismo` **blindada
+  sem mover o número**; e a hora de queima do Livro I **resolvida em prosa** (o fogo não
+  chegou ao fim), em vez de na hora do sineiro, que era a saída cara. O vestígio durável do
+  buril foi **arquivado para a R9** — exigiria carta nova, e 42 é o número final.
 - **O que a R7 entregou:** a **reconstituição** (D24) como peça de leitura entre o mural e o
   monólogo, com nenhum gesto nomeando autor — é isso que faz a G3 valer ali por construção;
   a **conta de bocas** no `blocoTestemunhas`; a **D25** nos cinco pools de fecho do monólogo;

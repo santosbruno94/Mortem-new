@@ -22,8 +22,8 @@ primeira mensagem da sessão nova.
 >    cada um, precisamente para que esta sessão **não reinvestigue** o que
 >    três OS já investigaram.
 > 3. A ata da **OS-R7** no fim de `docs/historico-decisoes.md` — em especial
->    a secção «Divergências registadas, e NÃO criadas», que é de onde saem
->    quatro dos itens da fila.
+>    a secção «Divergências registadas, e NÃO criadas» e o adendo de decisão
+>    que a fecha — três das quatro já estão executadas, e a ata diz como.
 > 4. `docs/guia-de-estilo.md` inteiro. Numa OS que só relê texto, o guia não
 >    é consulta: é a especificação.
 > 5. `CLAUDE.md` — regras invioláveis e o contrato com o `qa-ui.mjs`, que
@@ -31,22 +31,30 @@ primeira mensagem da sessão nova.
 >
 > ---
 >
-> ### HÁ UMA PERGUNTA SÓ, E CABE NUMA LINHA
+> ### NÃO HÁ RODADA DE PERGUNTAS. Não sobrou decisão nenhuma.
 >
-> O §5 tem **um** ponto de decisão: a divergência «carrilhão» do
-> `MORTEM_CONTEXTO.md` **alinha-se ou fica registada?** A recomendação está
-> escrita (alinhar — não é divergência de desenho, é um termo técnico errado
-> num documento que descreve corretamente todo o resto do mecanismo).
-> **Perguntar no arranque, em uma linha, e seguir.** Tudo o resto está
-> martelado ou triado.
+> A R8 é a **primeira OS da reforma a abrir com o §5 vazio**. O único ponto
+> de decisão que ela tinha — a divergência «carrilhão» — foi martelado pelo
+> utilizador em **26/07/2026**, junto com as outras três divergências que a
+> ata da R7 tinha registado, e **as três executáveis foram executadas no
+> fecho da própria R7**. Não reabrir:
 >
-> Três coisas estão FECHADAS e não se reabrem: o `interrogatorio_silas`
-> **não se normaliza** (26/07/2026); o prazo do inquérito **continua ficção**
-> (R3); e o catálogo **fecha em 42 de 46**. Se um item da fila parecer exigir
-> carta nova, o item está mal formulado — **reler antes de pedir**, que é a
-> lição que a R6 e a R7 já pagaram duas vezes.
+> - **«carrilhão» → alinhado.** O `MORTEM_CONTEXTO.md` já usa o termo do
+>   glossário e ganhou a razão mais forte (adiantar teria **consertado a
+>   prova**, porque cada hora batida avança a roda de contagem).
+> - **A janela de `ev_maquinismo` → blindada sem mover o número.** A
+>   `descricao` passou a dizer que a roda traz um entalhe por hora e nenhum
+>   dos curtos das meias, e a janela `[−3,−2]` deixou de ser pressuposto.
+> - **A queima do Livro I → resolvida em prosa.** O gesto diz agora que o
+>   fogo não chegou ao fim, o que explica a carcaça sobrevivente sem tocar
+>   na hora do sineiro (a saída cara, que se recusou).
+> - **O vestígio do buril → arquivado para a R9.** O durável exigiria carta
+>   nova, e 42 é o número final. Não há defeito a corrigir.
 >
-> ---
+> **Executar do arranque ao fecho sem nova consulta**, salvo se a execução
+> revelar contradição entre uma decisão e uma guarda — caso em que se
+> pergunta na hora, e só isso. Na R6 e na R7 essa cláusula foi usada **zero
+> vezes**: nas duas, **reler resolveu o que parecia exigir decisão**.
 >
 > ### A execução
 >
@@ -123,7 +131,9 @@ epigramas seguidos em jogo.
 `contradicaoHoras`. Sem catálogo, `montarReconstituicao` devolve `null` e o fim de caso vai
 direto ao monólogo — é o que impede os trinta casos gerados de abrirem uma cena vazia.
 
-**As horas são 18h00 · 18h00 · 14h00 · 13h00**, inalteradas pela R7.
+**As horas são 18h00 · 18h00 · 14h00 · 13h00**, inalteradas pela R7 — e pelos três ajustes
+do fecho, que de propósito **não moveram número nenhum**: o do relógio blindou a janela em
+vez de a mudar, e o do Livro I resolveu-se em prosa em vez de na hora do sineiro.
 
 **O banco está em sincronia e a R8 não toca no gerador.** `gerar-casos.mjs` escreve
 `casos_gerados.js` **e** `casos_indice.js` — se algum comando o correr por engano,
@@ -151,10 +161,11 @@ nada» é exatamente o gesto que, meses depois, deixa passar a regressão que el
 apanhar. A GR8-6 obriga a justificar cada remoção na ata; se a justificação não sair fácil
 em duas linhas, a guarda fica.
 
-**Duas divergências ficam abertas de propósito, e não são desta OS resolver:** a hora de
-queima do Livro I (a KB pede «uma hora ou mais», a janela canónica dá ~45 minutos para
-cinco gestos) e a janela de `ev_maquinismo`, que pressupõe relógio de badalada só às horas.
-Ambas estão na ata da R7 como registadas e não criadas. **São decisão do utilizador.**
+**As divergências da R7 já não estão abertas, e é preciso não as reabrir por hábito.** A
+hora de queima do Livro I e a janela de `ev_maquinismo` foram decididas e executadas no
+fecho da R7 — a primeira em prosa (o fogo não chegou ao fim), a segunda blindando a carta
+sem mover o número. Um revisor que releia a KB vai reencontrá-las; a resposta está na ata,
+e **nenhuma das duas se reabre sem ata própria**.
 
 ---
 
@@ -171,15 +182,19 @@ Ambas estão na ata da R7 como registadas e não criadas. **São decisão do uti
 
 **Aberto, por OS:**
 
-- **OS-R8** (esta): a fila do §3, com quatro itens novos vindos da R7 — a divergência
-  «carrilhão», o «vinco das nervuras» de `ev_cinza_livro`, o «antes do meio-dia» da bíblia
-  de vozes, e o QA de fecho.
+- **OS-R8** (esta): a fila do §3. Dos quatro achados da R7, **três já foram executados** no
+  fecho dela (o «carrilhão», a janela de `ev_maquinismo` e a queima do Livro I); sobram o
+  **«vinco das nervuras»** de `ev_cinza_livro` e o **«antes do meio-dia»** da bíblia de
+  vozes, mais o **QA de fecho**, que é a única fase da reforma que pode REMOVER guarda.
 - **OS-R9** (o gerador herda os padrões): a fila que já existia — abertura testemunhal,
   `apontadaPor`, exposição (E0/E1/E2), arquétipo do veraz sem crédito, móbil por aritmética
   de livro, escada de confronto por contador autoral — mais os **dois novos desta OS**: as
   **intervenções da noite** (sem catálogo, os casos gerados não têm reconstituição) e a
   **dívida de geografia** das três aberturas de `reconstituicao.js`, que cravam a
-  relojoaria num módulo cujo irmão declara não ter texto exclusivo de caso.
+  relojoaria num módulo cujo irmão declara não ter texto exclusivo de caso. Acresce, do
+  martelo de 26/07/2026, o **vestígio durável do instrumento lavado** (o coágulo sob a
+  virola, que a KB documenta e o caso-escola não pode comprar): é capacidade do gerador,
+  não dívida do tutorial.
 - **Para o playtest humano, com número:** os perfis **Intuitivo** e **Pericial Desatento**
   chegam à reconstituição com **0 de 9** gestos rebatíveis, e o segundo **condena**. Medir
   se a cena curta se lê como consequência da própria colheita ou como defeito. Se não se

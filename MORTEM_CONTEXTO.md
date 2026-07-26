@@ -1185,7 +1185,7 @@ SEED_TUTORIAL = {
   id: 'a_hora_emprestada',
   vitima: 'Sr. Geoffrey Arthurs',
   reuCorreto: 'silas_crane',
-  horasMorteAntesChegada: 14,
+  horasMorteAntesChegada: 16,
   horaMorteAbsoluta: -3,
   mecanismoCorreto: 'ferida_arma_branca',
   instrumentoCorreto: 'buril_gravador',
@@ -1205,11 +1205,15 @@ SEED_TUTORIAL = {
 consertos por metal vil. Na sexta a fraude foi descoberta (a queixa do relógio "mais
 leve" de Caleb Grey; a coluna "S.C." do livro de ordens; a nota do morto "pesar as
 caixas. Pettigrew, segunda"). Às 21h, confrontado com a denúncia que viria na
-segunda-feira, matou o mestre com o próprio buril de gravador e passou a hora seguinte
+segunda-feira, matou o mestre com o próprio buril de gravador e passou os três quartos de hora seguintes
 encenando um roubo de madrugada: porta do beco forçada por fora, troco do caixa
 levado (a vitrine de ouro intocada — o descuido), buril lavado e devolvido ao estojo,
 e o relógio da lareira **recuado** para 08h45 e esmagado — recuado, e não avançado,
-porque avançar faria o carrilhão badalar na rua morta. O lampião da oficina ficou
+porque avançar teria consertado a prova: cada hora batida avança a roda de contagem, e
+no mostrador de 08h45 a alavanca estaria no oitavo entalhe, de acordo com a hora falsa.
+Recuar é o único gesto que produz a discórdia entre o mostrador e a roda, e é também o
+único silencioso: para trás, o trem das badaladas não se solta. (Que a peça bata **só às
+horas** é outra coisa, e é o que faz a janela fechar às 22h em vez das 21h30.) O lampião da oficina ficou
 aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
 
 ### O relógio como pivô — três leituras
@@ -1218,7 +1222,7 @@ aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
    encenação.
 2. **A roda de contagem** (`ev_maquinismo`, `registro_mecanico`, janela [−3,−2]): a
    segunda leitura da MESMA peça — a roda repousa na 9ª batida; os ponteiros marcam
-   hora que o carrilhão não bateu → ponteiros recuados; esmagamento entre 21h e 22h.
+   hora que a máquina não bateu → ponteiros recuados; esmagamento entre 21h e 22h.
    Refuta o mostrador sozinha E sustenta o Quando. Saber plantado: relógio irmão
    aberto na oficina + verbete "O Registro Mecânico" do Glossário.
 3. **O relógio de bolso do morto** (`ev_relogio_bolso`, `rotina_interrompida`,
