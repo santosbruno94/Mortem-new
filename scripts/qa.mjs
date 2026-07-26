@@ -40,6 +40,8 @@ import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
 import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/exposicao.js';
+import { PROCEDENCIA_ALEGACOES } from '../src/data/procedencia.js';
+import { agruparPorOrigem, contarVozesIndependentes, feixesContaminados } from '../src/logic/contaminacao.js';
 import { PAPEIS } from '../src/data/papeis.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
@@ -4597,7 +4599,7 @@ if (!gr65ParidadeOk) console.log('\nGR6-5 — paridade de exposição:', gr65Fur
 // papéis e atributos — leitura de fonte, não confiança.
 const ARQUIVOS_DO_MOTOR = ['logic/veredicto.js', 'logic/acusacao.js'];
 const gr66Violacoes = ARQUIVOS_DO_MOTOR.filter((relativo) =>
-  /exposicao|exposicaoDiante|nivelDeExposicao|apontadaPor/.test(
+  /exposicao|exposicaoDiante|nivelDeExposicao|apontadaPor|procedencia|contaminacao/.test(
     semComentarios(readFileSync(path.join(raizSrc, relativo), 'utf8'))
   )
 );
@@ -4660,6 +4662,61 @@ const gr69Furos = [];
 }
 const gr69MenoridadeOk = gr69Furos.length === 0;
 if (!gr69MenoridadeOk) console.log('\nGR6-9 — menoridade:', gr69Furos.join(' · '));
+
+// ============================================================
+// OS-R6 · FASE 3 — A CONTAMINAÇÃO (GR6-8, D16/D17).
+// ============================================================
+console.log('\n=== OS-R6 · FASE 3 — PROCEDÊNCIA DAS ALEGAÇÕES ===');
+for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES))) {
+  const marca = ids.length > 1 ? '▸' : ' ';
+  console.log(`  ${marca} ${origem.padEnd(16)} ${ids.length} alegação(ões)  ${ids.join(' ')}`);
+}
+
+// GR6-8 — CONTAMINAÇÃO LEGÍVEL. Duas alegações com a mesma origem não contam
+// como duas corroborações. A prova é por asserção e tem três pernas:
+//
+//   (1) o feixe da D16 existe e é o que a decisão descreve — o álibi do réu,
+//       a lição que o rapaz repete e a senhora da viela, uma boca só;
+//   (2) somar papéis dá mais do que somar bocas: dois papéis do mesmo feixe
+//       valem UMA voz, e dois de feixes distintos valem duas;
+//   (3) o mapa de procedência cita gente que existe no caso — origem órfã é
+//       lastro podre, e mentiria na auditoria antes de mentir na prosa.
+const gr68Furos = [];
+const FEIXE_D16 = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela'];
+
+const feixesDoCatalogo = feixesContaminados(Object.keys(PROCEDENCIA_ALEGACOES));
+const feixeDoReu = feixesDoCatalogo.find((f) => f.origem === SEED_TUTORIAL.reuCorreto);
+if (!feixeDoReu) gr68Furos.push('a D16 não tem feixe: nenhuma origem responde por mais de uma alegação');
+else if (JSON.stringify(feixeDoReu.ids.slice().sort()) !== JSON.stringify(FEIXE_D16.slice().sort())) {
+  gr68Furos.push(`o feixe da D16 mudou de composição: ${feixeDoReu.ids.join(' ')}`);
+}
+
+// A conta que dá nome à guarda.
+if (contarVozesIndependentes(['alibi_silas', 'alibi_davey']) !== 1) {
+  gr68Furos.push('o álibi do réu e a lição do rapaz contam como duas vozes');
+}
+if (contarVozesIndependentes(['alibi_silas', 'alibi_grey']) !== 2) {
+  gr68Furos.push('duas alegações de bocas distintas não contam como duas vozes');
+}
+if (contarVozesIndependentes(FEIXE_D16) !== 1) {
+  gr68Furos.push('o feixe inteiro da D16 não colapsa numa voz só');
+}
+
+const PESSOAS_DO_CASO = new Set([
+  ...pacote.suspeitos.map((s) => s.id),
+  'moco_padeiro',
+  'sra_wick',
+  'amos_kell',
+  'estalajadeiro',
+  'pettigrew',
+]);
+for (const [cartaId, { apontadaPor: origem, forma }] of Object.entries(PROCEDENCIA_ALEGACOES)) {
+  if (!CARTAS.some((c) => c.id === cartaId)) gr68Furos.push(`${cartaId}: procedência de carta que não existe`);
+  if (!PESSOAS_DO_CASO.has(origem)) gr68Furos.push(`${cartaId}: origem "${origem}" não é gente deste caso`);
+  if (!['propria', 'ensaio', 'coacao'].includes(forma)) gr68Furos.push(`${cartaId}: forma "${forma}" fora do catálogo`);
+}
+const gr68ContaminacaoOk = gr68Furos.length === 0;
+if (!gr68ContaminacaoOk) console.log('\nGR6-8 — contaminação:', gr68Furos.join(' · '));
 
 // A telemetria da Fase 0, agora traduzida em nível — o «depois» que a ata pede.
 console.log('\n  Telemetria da Fase 0, traduzida em nível:');
@@ -4812,7 +4869,8 @@ const checagens = [
     })`,
     gr65ParidadeOk,
   ],
-  ['GR6-6 (o motor continua cego): veredicto.js e acusacao.js não leem exposição nem apontadaPor', gr66MotorCegoOk],
+  ['GR6-6 (o motor continua cego): veredicto.js e acusacao.js não leem exposição, procedência nem contaminação', gr66MotorCegoOk],
+  ['GR6-8 (contaminação legível): o feixe da D16 colapsa numa voz só — o álibi do réu, a lição do rapaz e a senhora da viela saem da mesma boca', gr68ContaminacaoOk],
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
 ];
