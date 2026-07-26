@@ -56,6 +56,7 @@ import { derivarDialogos, formasDoLugar, profissaoExibida, FAIXA_CURTA, variante
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 import { obterPredio, saoAdjacentes } from './cidade.js';
 import { VOCABULARIO_DA_CLASSE } from './espaco.js';
+import { derivarProcedencia } from './procedencia_gerada.js';
 
 // ---------------------------------------------------------------------
 // A RÉPLICA do caso-escola (modo 2): seed fixa + variáveis dirigidas que
@@ -337,6 +338,10 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
   const perifericos = {};
   const cartasNovas = [];
   const segredos = {};
+  // OS-R9 Fase 1: de que boca sai cada corroboração, quando ela TEM boca.
+  // O ramo coletivo («por mais de uma janela») não entra — não há um
+  // confirmante a nomear, e o mapa de procedência não inventa testemunha.
+  const bocasDeCorroboracao = {};
   for (const s of candidatos) {
     const pessoa = pessoas.get(s.id);
     if (comSegredo.includes(s.id)) {
@@ -384,6 +389,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
           o.pacoteEspacial.rotina[escolha.faixa] === lugarId
       );
       const fraseJanela = FRASE_JANELA_CORROBORACAO[escolha.faixa];
+      if (confirmante) bocasDeCorroboracao[`gen_corrobora_${s.id}`] = confirmante.id;
       cartasNovas.push({
         id: `gen_corrobora_${s.id}`,
         localidade: 'vizinhanca',
@@ -450,7 +456,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
     }
   }
 
-  return { perifericos, cartasNovas, segredos, acessorId };
+  return { perifericos, cartasNovas, segredos, acessorId, bocasDeCorroboracao };
 }
 
 // ---------------------------------------------------------------------
@@ -2518,6 +2524,15 @@ export function montarPacoteGerado(seed, opts = {}) {
     // Camada VISUAL opcional (o motor jamais a lê — guarda GE3): a maquete
     // da vila gerada, no schema do DioramaVila. Sem ela, grade 2D.
     maquete,
+    // OS-R9 Fase 1 — o mapa da D17. Camada NARRATIVA: o motor jamais o lê
+    // (GR9-4); quem o consome é a conta de bocas do desfecho. Deriva-se
+    // DEPOIS das cartas de álibi porque são elas que fecham o mapa.
+    procedencia: derivarProcedencia({
+      cartas,
+      suspeitos,
+      eventos: bruto.interferencia.eventos,
+      bocasDeCorroboracao: perif.bocasDeCorroboracao,
+    }),
     ...(comarcaDoCaso ? { telegrama: comarcaDoCaso.telegrama } : {}),
     ...(bruto.interferencia.eventos.length
       ? {

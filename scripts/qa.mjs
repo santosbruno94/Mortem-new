@@ -4722,7 +4722,7 @@ if (!gr69MenoridadeOk) console.log('\nGR6-9 — menoridade:', gr69Furos.join(' �
 // OS-R6 · FASE 3 — A CONTAMINAÇÃO (GR6-8, D16/D17).
 // ============================================================
 console.log('\n=== OS-R6 · FASE 3 — PROCEDÊNCIA DAS ALEGAÇÕES ===');
-for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES))) {
+for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES), PROCEDENCIA_ALEGACOES)) {
   const marca = ids.length > 1 ? '▸' : ' ';
   console.log(`  ${marca} ${origem.padEnd(16)} ${ids.length} alegação(ões)  ${ids.join(' ')}`);
 }
@@ -4739,7 +4739,7 @@ for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES
 const gr68Furos = [];
 const FEIXE_D16 = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela'];
 
-const feixesDoCatalogo = feixesContaminados(Object.keys(PROCEDENCIA_ALEGACOES));
+const feixesDoCatalogo = feixesContaminados(Object.keys(PROCEDENCIA_ALEGACOES), PROCEDENCIA_ALEGACOES);
 const feixeDoReu = feixesDoCatalogo.find((f) => f.origem === SEED_TUTORIAL.reuCorreto);
 if (!feixeDoReu) gr68Furos.push('a D16 não tem feixe: nenhuma origem responde por mais de uma alegação');
 else if (JSON.stringify(feixeDoReu.ids.slice().sort()) !== JSON.stringify(FEIXE_D16.slice().sort())) {
@@ -4747,13 +4747,13 @@ else if (JSON.stringify(feixeDoReu.ids.slice().sort()) !== JSON.stringify(FEIXE_
 }
 
 // A conta que dá nome à guarda.
-if (contarVozesIndependentes(['alibi_silas', 'alibi_davey']) !== 1) {
+if (contarVozesIndependentes(['alibi_silas', 'alibi_davey'], PROCEDENCIA_ALEGACOES) !== 1) {
   gr68Furos.push('o álibi do réu e a lição do rapaz contam como duas vozes');
 }
-if (contarVozesIndependentes(['alibi_silas', 'alibi_grey']) !== 2) {
+if (contarVozesIndependentes(['alibi_silas', 'alibi_grey'], PROCEDENCIA_ALEGACOES) !== 2) {
   gr68Furos.push('duas alegações de bocas distintas não contam como duas vozes');
 }
-if (contarVozesIndependentes(FEIXE_D16) !== 1) {
+if (contarVozesIndependentes(FEIXE_D16, PROCEDENCIA_ALEGACOES) !== 1) {
   gr68Furos.push('o feixe inteiro da D16 não colapsa numa voz só');
 }
 
@@ -4858,24 +4858,24 @@ console.log(`  Corroborações aparentes: ${divergenciasR7.join(' · ') || 'nenh
 const gr74Furos = [];
 {
   const feixe = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela']; // três papéis, uma boca
-  if (contarVozes(feixe) !== 1) gr74Furos.push('o feixe da D16 não colapsa numa voz');
-  if (contarVozes(['alibi_silas', 'alibi_grey']) !== 2) gr74Furos.push('duas bocas distintas não contam duas');
+  if (contarVozes(feixe, PROCEDENCIA_ALEGACOES) !== 1) gr74Furos.push('o feixe da D16 não colapsa numa voz');
+  if (contarVozes(['alibi_silas', 'alibi_grey'], PROCEDENCIA_ALEGACOES) !== 2) gr74Furos.push('duas bocas distintas não contam duas');
   // Alegação sem registro de procedência é voz PRÓPRIA: os casos gerados não
   // têm mapa de procedência, e uma conta que os zerasse apagaria o bloco das
   // testemunhas de todo o banco. Esta perna existe contra essa regressão.
-  if (contarVozes(['forasteira_a', 'forasteira_b']) !== 2) gr74Furos.push('alegações sem registro não contam por si');
-  if (contarVozes([...feixe, 'forasteira_a']) !== 2) gr74Furos.push('feixe + anônima não dá duas vozes');
+  if (contarVozes(['forasteira_a', 'forasteira_b'], PROCEDENCIA_ALEGACOES) !== 2) gr74Furos.push('alegações sem registro não contam por si');
+  if (contarVozes([...feixe, 'forasteira_a'], PROCEDENCIA_ALEGACOES) !== 2) gr74Furos.push('feixe + anônima não dá duas vozes');
   // E o bloco, que é onde o erro sairia na voz do perito, no fecho do caso.
-  const blocoDoFeixe = blocoTestemunhas(feixe) || '';
+  const blocoDoFeixe = blocoTestemunhas(feixe, PROCEDENCIA_ALEGACOES) || '';
   if (/duas|três testemunhas|Três testemunhas/.test(blocoDoFeixe)) {
     gr74Furos.push(`o bloco pluraliza o feixe: "${blocoDoFeixe}"`);
   }
   if (!/uma boca s\u00f3/.test(blocoDoFeixe)) gr74Furos.push(`o bloco não declara a boca única: "${blocoDoFeixe}"`);
-  const blocoDeDuas = blocoTestemunhas(['alibi_silas', 'alibi_grey']) || '';
+  const blocoDeDuas = blocoTestemunhas(['alibi_silas', 'alibi_grey'], PROCEDENCIA_ALEGACOES) || '';
   if (!/^Duas testemunhas/.test(blocoDeDuas)) gr74Furos.push(`o bloco não conta duas bocas distintas: "${blocoDeDuas}"`);
-  if (blocoTestemunhas([]) !== null) gr74Furos.push('mesa sem refutação rende bloco');
+  if (blocoTestemunhas([], PROCEDENCIA_ALEGACOES) !== null) gr74Furos.push('mesa sem refutação rende bloco');
   // Papéis > vozes > 1: a divergência parcial também tem de sair dita.
-  const blocoParcial = blocoTestemunhas([...feixe, 'alibi_grey', 'alibi_agnes']) || '';
+  const blocoParcial = blocoTestemunhas([...feixe, 'alibi_grey', 'alibi_agnes'], PROCEDENCIA_ALEGACOES) || '';
   if (!/três bocas/.test(blocoParcial)) gr74Furos.push(`a divergência parcial não sai dita: "${blocoParcial}"`);
 }
 const gr74ContaDeBocasOk = gr74Furos.length === 0;
@@ -5231,6 +5231,110 @@ for (const [arvoreId, arvore] of Object.entries(DIALOGOS)) {
 const gr84RubricaUnicaOk = gr84Furos.length === 0;
 if (!gr84RubricaUnicaOk) console.log('\nGR8-4 — rubrica repetida:', gr84Furos.join(' · '));
 
+// ============================================================
+// OS-R9 · FASE 1 — A PROCEDÊNCIA NO BANCO GERADO (GR9-1).
+// ============================================================
+// A GR6-8 prova o mapa DE UM CASO, por asserção sobre um feixe conhecido.
+// Esta prova o mapa DE UM BANCO, e por isso é de outra espécie: mede em
+// LOTE e em BANDA, no molde da GE2/GE5/regime-palco, porque nenhuma leitura
+// cobre 31 casos e um mapa certo em três deles não diz nada dos outros 28.
+//
+// As quatro pernas, e nenhuma é decorativa:
+//
+//   (1) COBERTURA — todo caso tem mapa, e todo mapa cobre os álibis. O
+//       álibi é a alegação mais própria que existe, e um mapa que o
+//       deixasse de fora não colapsaria feixe nenhum;
+//   (2) LASTRO — nenhuma entrada aponta carta que não existe nem boca que
+//       não é gente do caso. Origem órfã mente na auditoria antes de
+//       mentir na prosa (é a terceira perna da GR6-8, agora em lote);
+//   (3) O FEIXE EXISTE, E EM BANDA — a conta de bocas só ganha sentido
+//       quando há boca que responde por duas alegações. A banda é larga de
+//       propósito: o feixe depende de a mesma pessoa ser testemunha e
+//       suspeita, o que a geração produz sem ninguém mandar;
+//   (4) NADA DE GRAÇA (GR9-3) — toda entrada de forma `ensaio`/`coacao` tem
+//       um evento de interferência do mesmo ator no mesmo caso. É a perna
+//       que impede o mapa de saber mais do que o caso mostra: a versão
+//       posta na boca de alguém só se registra quando a ficção já a
+//       anunciou em diário e já traçou o dinheiro até o ator.
+const BANCO_R9 = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA];
+const FORMAS_R9 = ['propria', 'ensaio', 'coacao'];
+const gr91Furos = [];
+let casosComMapa = 0;
+let casosComFeixe = 0;
+let casosComFeixeD16 = 0;
+let entradasR9 = 0;
+for (const caso of BANCO_R9) {
+  const mapa = caso.procedencia || {};
+  const chaves = Object.keys(mapa);
+  if (!chaves.length) {
+    gr91Furos.push(`${caso.id}: sem mapa de procedência`);
+    continue;
+  }
+  casosComMapa += 1;
+  entradasR9 += chaves.length;
+
+  const idsDoCaso = new Set(caso.cartas.map((c) => c.id));
+  const gente = new Set(caso.suspeitos.map((s) => s.id));
+  // Boca que não é suspeito ainda é gente do caso: o confirmante da
+  // vizinhança e o portador do recado vivem no elenco, não no elenco de
+  // suspeitos. O que a guarda recusa é a boca que não está em lado nenhum.
+  for (const c of caso.cartas) if (c.origemTestemunha) gente.add(c.origemTestemunha);
+  for (const e of caso.interferencias?.eventos || []) if (e.ator) gente.add(e.ator);
+  for (const c of caso.cartas) {
+    const t = c.tagsOcultas || {};
+    if (t.declaranteId) gente.add(t.declaranteId);
+  }
+
+  // (1) cobertura dos álibis.
+  for (const c of caso.cartas) {
+    if ((c.tagsOcultas || {}).subDominio !== 'alibi') continue;
+    if (!mapa[c.id]) gr91Furos.push(`${caso.id}: álibi ${c.id} fora do mapa`);
+  }
+
+  const porBoca = new Map();
+  for (const [cartaId, entrada] of Object.entries(mapa)) {
+    // (2) lastro.
+    if (!idsDoCaso.has(cartaId)) gr91Furos.push(`${caso.id}: ${cartaId} não existe no catálogo`);
+    if (!FORMAS_R9.includes(entrada.forma)) gr91Furos.push(`${caso.id}: ${cartaId} forma "${entrada.forma}" fora do catálogo`);
+    if (!entrada.apontadaPor) gr91Furos.push(`${caso.id}: ${cartaId} sem boca`);
+    else {
+      if (!gente.has(entrada.apontadaPor)) gr91Furos.push(`${caso.id}: ${cartaId} aponta "${entrada.apontadaPor}", que não é gente deste caso`);
+      if (!porBoca.has(entrada.apontadaPor)) porBoca.set(entrada.apontadaPor, []);
+      porBoca.get(entrada.apontadaPor).push(entrada.forma);
+    }
+    // (4) nada de graça: a alegação posta na boca de outrem exige o evento.
+    if (entrada.forma !== 'propria') {
+      const temEvento = (caso.interferencias?.eventos || []).some(
+        (e) => e.ator === entrada.apontadaPor && (e.efeito?.cartasNovas || []).includes(cartaId)
+      );
+      if (!temEvento) gr91Furos.push(`${caso.id}: ${cartaId} é "${entrada.forma}" sem evento que o sustente`);
+    }
+  }
+  const feixes = [...porBoca.values()].filter((formas) => formas.length > 1);
+  if (feixes.length) casosComFeixe += 1;
+  if (feixes.some((formas) => formas.some((f) => f !== 'propria'))) casosComFeixeD16 += 1;
+
+  // A conta de bocas tem de bater com o mapa, e prova-se com a função que o
+  // desfecho usa — não com uma reimplementação que poderia divergir dela.
+  const todas = Object.keys(mapa);
+  const vozes = contarVozes(todas, mapa);
+  if (vozes !== porBoca.size) gr91Furos.push(`${caso.id}: contarVozes deu ${vozes}, o mapa tem ${porBoca.size} bocas`);
+  if (feixes.length && vozes >= todas.length) gr91Furos.push(`${caso.id}: há feixe e a conta não o colapsa`);
+}
+// (3) a banda. Larga de propósito: o feixe é produto da geração, não de
+// uma quota — apertá-la faria a guarda reprovar por sorte de seed.
+const fracaoFeixe = casosComFeixe / BANCO_R9.length;
+const bandaFeixeOk = fracaoFeixe >= 0.4 && fracaoFeixe <= 0.95;
+if (!bandaFeixeOk) gr91Furos.push(`feixe em ${Math.round(100 * fracaoFeixe)}% dos casos, fora da banda 40–95%`);
+if (casosComFeixeD16 < 1) gr91Furos.push('nenhum caso do banco realiza o feixe da D16 (boca posta por terceiro)');
+const gr91ProcedenciaOk = gr91Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 1 — PROCEDÊNCIA NO BANCO ===');
+console.log(
+  `  ${casosComMapa}/${BANCO_R9.length} casos com mapa · ${entradasR9} entradas (${(entradasR9 / BANCO_R9.length).toFixed(1)}/caso) · ` +
+    `feixe em ${casosComFeixe} (${Math.round(100 * fracaoFeixe)}%) · feixe da D16 em ${casosComFeixeD16}`
+);
+if (!gr91ProcedenciaOk) console.log('GR9-1 — procedência no banco:', gr91Furos.slice(0, 12).join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5394,6 +5498,10 @@ const checagens = [
   [
     `GR8-2 (nenhum rótulo conclui pelo jogador): ${gr82Medidas} strings visíveis medidas em ${ARQUIVOS_MURAL.length} arquivos do mural (literais + texto JSX) — nenhuma diz «mentira», «desmente», «forjado» nem «culpado»; a gaveta nomeia o que contém, e quem julga é o desfecho`,
     gr82RotuloNaoConcluiOk,
+  ],
+  [
+    `GR9-1 (procedência no banco gerado): ${casosComMapa}/${BANCO_R9.length} casos com mapa, ${entradasR9} entradas com lastro (carta do catálogo, boca do elenco, forma do vocabulário); feixe em ${Math.round((100 * casosComFeixe) / BANCO_R9.length)}% dos casos (banda 40–95%), com ${casosComFeixeD16} a realizar a D16 — e toda alegação posta na boca de outrem tem o evento que a sustenta`,
+    gr91ProcedenciaOk,
   ],
   ['GR8-4 (a rubrica não se lê duas vezes): nenhuma frase de narração se repete verbatim entre beats da mesma árvore, nem entre a fala e a alfinetada do mesmo nó; nós do mesmo beat são alternativas, e o paradeiro sai igual em todo tom (G4)', gr84RubricaUnicaOk],
 ];

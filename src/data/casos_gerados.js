@@ -2506,6 +2506,36 @@ export const CASO_REPLICA = {
    }
   ]
  },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_5_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_professora": {
+   "apontadaPor": "gen_0_professora",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_lavrador": {
+   "apontadaPor": "gen_5_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavadeira": {
+   "apontadaPor": "gen_2_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_lavadeira": {
+   "apontadaPor": "gen_7_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_medico": {
+   "apontadaPor": "gen_1_medico",
+   "forma": "propria"
+  },
+  "gen_intf_intf_2_retratacao": {
+   "apontadaPor": "gen_7_lavadeira",
+   "forma": "ensaio"
+  }
+ },
  "interferencias": {
   "eventos": [
    {
@@ -4978,6 +5008,28 @@ export const CASOS_POOL = [
    }
   ]
  },
+ "procedencia": {
+  "gen_alibi_gen_0_pastor_de_ovelhas": {
+   "apontadaPor": "gen_0_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_ferreiro": {
+   "apontadaPor": "gen_3_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_pastor_de_ovelhas": {
+   "apontadaPor": "gen_1_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_parteira": {
+   "apontadaPor": "gen_5_parteira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_criada": {
+   "apontadaPor": "gen_4_criada",
+   "forma": "propria"
+  }
+ },
  "telegrama": {
   "destino": "Weldmere",
   "via": "estacao",
@@ -7376,6 +7428,40 @@ export const CASOS_POOL = [
     "z": -1.7
    }
   ]
+ },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_0_lavrador": {
+   "apontadaPor": "gen_7_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_7_lavrador": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_lavrador": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_carroceiro": {
+   "apontadaPor": "gen_1_carroceiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_lavrador": {
+   "apontadaPor": "gen_7_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavrador": {
+   "apontadaPor": "gen_3_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_merceeiro": {
+   "apontadaPor": "gen_4_merceeiro",
+   "forma": "propria"
+  }
  },
  "telegrama": {
   "destino": "Weldmere",
@@ -9823,6 +9909,32 @@ export const CASOS_POOL = [
     "z": 1.88
    }
   ]
+ },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_criada": {
+   "apontadaPor": "gen_0_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_lavrador": {
+   "apontadaPor": "gen_5_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavrador": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_professora": {
+   "apontadaPor": "gen_7_professora",
+   "forma": "propria"
+  }
  }
 },
 {
@@ -12078,6 +12190,32 @@ export const CASOS_POOL = [
     "z": 0.9
    }
   ]
+ },
+ "procedencia": {
+  "gen_engodo": {
+   "apontadaPor": "gen_6_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_costureira": {
+   "apontadaPor": "gen_0_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_criada": {
+   "apontadaPor": "gen_2_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_criada": {
+   "apontadaPor": "gen_7_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavadeira": {
+   "apontadaPor": "gen_3_lavadeira",
+   "forma": "propria"
+  }
  }
 },
 {
@@ -14634,6 +14772,36 @@ export const CASOS_POOL = [
     "z": -1.7
    }
   ]
+ },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_7_criada",
+   "forma": "propria"
+  },
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_7_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_criada": {
+   "apontadaPor": "gen_7_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_merceeiro": {
+   "apontadaPor": "gen_1_merceeiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavadeira": {
+   "apontadaPor": "gen_2_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_ferreiro": {
+   "apontadaPor": "gen_3_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_squire": {
+   "apontadaPor": "gen_0_squire",
+   "forma": "propria"
+  }
  },
  "telegrama": {
   "destino": "Weldmere",
@@ -17201,6 +17369,36 @@ export const CASOS_POOL = [
     "z": -1.7
    }
   ]
+ },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_4_taverneiro",
+   "forma": "propria"
+  },
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_4_taverneiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_carroceiro": {
+   "apontadaPor": "gen_5_carroceiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_taverneiro": {
+   "apontadaPor": "gen_4_taverneiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_criada": {
+   "apontadaPor": "gen_2_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_medico": {
+   "apontadaPor": "gen_0_medico",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  }
  },
  "telegrama": {
   "destino": "Netherfield",
@@ -19856,6 +20054,40 @@ export const CASOS_POOL = [
    }
   ]
  },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_7_ferreiro",
+   "forma": "propria"
+  },
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavadeira": {
+   "apontadaPor": "gen_3_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_ferreiro": {
+   "apontadaPor": "gen_0_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_ferreiro": {
+   "apontadaPor": "gen_7_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavrador": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_intf_intf_1_retratacao": {
+   "apontadaPor": "gen_0_ferreiro",
+   "forma": "ensaio"
+  }
+ },
  "telegrama": {
   "destino": "Thornbrook",
   "via": "estacao",
@@ -22233,6 +22465,28 @@ export const CASOS_POOL = [
     "logradouro": true
    }
   ]
+ },
+ "procedencia": {
+  "gen_alibi_gen_1_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_parteira": {
+   "apontadaPor": "gen_5_parteira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavrador": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_pastor_de_ovelhas": {
+   "apontadaPor": "gen_0_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavrador": {
+   "apontadaPor": "gen_3_lavrador",
+   "forma": "propria"
+  }
  }
 },
 {
@@ -24644,6 +24898,32 @@ export const CASOS_POOL = [
     "z": 1.02
    }
   ]
+ },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_0_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_moleiro": {
+   "apontadaPor": "gen_4_moleiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_paroco": {
+   "apontadaPor": "gen_3_paroco",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavadeira": {
+   "apontadaPor": "gen_2_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_merceeiro": {
+   "apontadaPor": "gen_1_merceeiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_pastor_de_ovelhas": {
+   "apontadaPor": "gen_0_pastor_de_ovelhas",
+   "forma": "propria"
+  }
  },
  "interferencias": {
   "eventos": [
@@ -27232,6 +27512,32 @@ export const CASOS_POOL = [
    }
   ]
  },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_0_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_6_taverneiro": {
+   "apontadaPor": "gen_6_taverneiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_ferreiro": {
+   "apontadaPor": "gen_2_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_costureira": {
+   "apontadaPor": "gen_1_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_merceeiro": {
+   "apontadaPor": "gen_3_merceeiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_criada": {
+   "apontadaPor": "gen_0_criada",
+   "forma": "propria"
+  }
+ },
  "telegrama": {
   "destino": "Weldmere",
   "via": "estacao",
@@ -29705,6 +30011,40 @@ export const CASOS_POOL = [
     "z": -1.7
    }
   ]
+ },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_1_criada",
+   "forma": "propria"
+  },
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_engodo": {
+   "apontadaPor": "gen_7_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_criada": {
+   "apontadaPor": "gen_1_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavrador": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_6_criada": {
+   "apontadaPor": "gen_6_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavrador": {
+   "apontadaPor": "gen_3_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_squire": {
+   "apontadaPor": "gen_0_squire",
+   "forma": "propria"
+  }
  },
  "telegrama": {
   "destino": "Weldmere",
@@ -32474,6 +32814,36 @@ export const CASOS_POOL = [
    }
   ]
  },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_0_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_0_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_costureira": {
+   "apontadaPor": "gen_4_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavadeira": {
+   "apontadaPor": "gen_1_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_carroceiro": {
+   "apontadaPor": "gen_2_carroceiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_criada": {
+   "apontadaPor": "gen_3_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_pastor_de_ovelhas": {
+   "apontadaPor": "gen_0_pastor_de_ovelhas",
+   "forma": "propria"
+  }
+ },
  "interferencias": {
   "eventos": [
    {
@@ -34977,6 +35347,32 @@ export const CASOS_POOL = [
    }
   ]
  },
+ "procedencia": {
+  "gen_engodo": {
+   "apontadaPor": "gen_2_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_ferreiro": {
+   "apontadaPor": "gen_3_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_criada": {
+   "apontadaPor": "gen_4_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_costureira": {
+   "apontadaPor": "gen_0_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavadeira": {
+   "apontadaPor": "gen_1_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_ferreiro": {
+   "apontadaPor": "gen_2_ferreiro",
+   "forma": "propria"
+  }
+ },
  "telegrama": {
   "destino": "Netherfield",
   "via": "portador",
@@ -37464,6 +37860,28 @@ export const CASOS_POOL = [
    }
   ]
  },
+ "procedencia": {
+  "gen_alibi_gen_4_costureira": {
+   "apontadaPor": "gen_4_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavrador": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_lavadeira": {
+   "apontadaPor": "gen_0_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_criada": {
+   "apontadaPor": "gen_3_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_professora": {
+   "apontadaPor": "gen_5_professora",
+   "forma": "propria"
+  }
+ },
  "telegrama": {
   "destino": "Ashmere",
   "via": "estacao",
@@ -39827,6 +40245,28 @@ export const CASOS_POOL = [
     "z": -1.7
    }
   ]
+ },
+ "procedencia": {
+  "gen_alibi_gen_4_lavrador": {
+   "apontadaPor": "gen_4_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_boticario": {
+   "apontadaPor": "gen_5_boticario",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_criada": {
+   "apontadaPor": "gen_0_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavrador": {
+   "apontadaPor": "gen_3_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavadeira": {
+   "apontadaPor": "gen_2_lavadeira",
+   "forma": "propria"
+  }
  },
  "telegrama": {
   "destino": "Thornbrook",
@@ -42237,6 +42677,28 @@ export const CASOS_POOL = [
     "z": 1.92
    }
   ]
+ },
+ "procedencia": {
+  "gen_alibi_gen_3_lavadeira": {
+   "apontadaPor": "gen_3_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_lavadeira": {
+   "apontadaPor": "gen_5_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavrador": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_lavrador": {
+   "apontadaPor": "gen_4_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_lavrador": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  }
  }
 },
 {
@@ -44702,6 +45164,32 @@ export const CASOS_POOL = [
     "z": -1.7
    }
   ]
+ },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_criada": {
+   "apontadaPor": "gen_3_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_parteira": {
+   "apontadaPor": "gen_4_parteira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_merceeiro": {
+   "apontadaPor": "gen_0_merceeiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_lavrador": {
+   "apontadaPor": "gen_7_lavrador",
+   "forma": "propria"
+  }
  },
  "telegrama": {
   "destino": "Netherfield",
@@ -47213,6 +47701,28 @@ export const CASOS_POOL = [
    }
   ]
  },
+ "procedencia": {
+  "gen_alibi_gen_4_criada": {
+   "apontadaPor": "gen_4_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_merceeiro": {
+   "apontadaPor": "gen_1_merceeiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_lavrador": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_costureira": {
+   "apontadaPor": "gen_3_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_costureira": {
+   "apontadaPor": "gen_5_costureira",
+   "forma": "propria"
+  }
+ },
  "telegrama": {
   "destino": "Netherfield",
   "via": "estacao",
@@ -49615,6 +50125,28 @@ export const CASOS_POOL = [
    }
   ]
  },
+ "procedencia": {
+  "gen_alibi_gen_0_criada": {
+   "apontadaPor": "gen_0_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_costureira": {
+   "apontadaPor": "gen_2_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_constable": {
+   "apontadaPor": "gen_7_constable",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavrador": {
+   "apontadaPor": "gen_3_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_carroceiro": {
+   "apontadaPor": "gen_1_carroceiro",
+   "forma": "propria"
+  }
+ },
  "telegrama": {
   "destino": "Weldmere",
   "via": "portador",
@@ -51943,6 +52475,28 @@ export const CASOS_POOL = [
     "z": 1.82
    }
   ]
+ },
+ "procedencia": {
+  "gen_alibi_gen_5_pastor_de_ovelhas": {
+   "apontadaPor": "gen_5_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_costureira": {
+   "apontadaPor": "gen_4_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_boticario": {
+   "apontadaPor": "gen_2_boticario",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_paroco": {
+   "apontadaPor": "gen_0_paroco",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_parteira": {
+   "apontadaPor": "gen_1_parteira",
+   "forma": "propria"
+  }
  }
 }
 ];
@@ -54609,6 +55163,36 @@ export const CASOS_LUTA = [
     "z": 0.9
    }
   ]
+ },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_2_medico",
+   "forma": "propria"
+  },
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_2_medico",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_pastor_de_ovelhas": {
+   "apontadaPor": "gen_4_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_criada": {
+   "apontadaPor": "gen_1_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavadeira": {
+   "apontadaPor": "gen_3_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_medico": {
+   "apontadaPor": "gen_2_medico",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_lavrador": {
+   "apontadaPor": "gen_7_lavrador",
+   "forma": "propria"
+  }
  }
 },
 {
@@ -57391,6 +57975,40 @@ export const CASOS_LUTA = [
    }
   ]
  },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_1_lavrador": {
+   "apontadaPor": "gen_4_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_4_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_lavrador": {
+   "apontadaPor": "gen_4_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_lavrador": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_taverneiro": {
+   "apontadaPor": "gen_2_taverneiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_constable": {
+   "apontadaPor": "gen_5_constable",
+   "forma": "propria"
+  }
+ },
  "telegrama": {
   "destino": "Thornbrook",
   "via": "estacao",
@@ -60110,6 +60728,28 @@ export const CASOS_LUTA = [
     "z": 2.04
    }
   ]
+ },
+ "procedencia": {
+  "gen_alibi_gen_2_ferreiro": {
+   "apontadaPor": "gen_2_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_pastor_de_ovelhas": {
+   "apontadaPor": "gen_0_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_squire": {
+   "apontadaPor": "gen_4_squire",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_criada": {
+   "apontadaPor": "gen_1_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_moleiro": {
+   "apontadaPor": "gen_5_moleiro",
+   "forma": "propria"
+  }
  },
  "interferencias": {
   "eventos": [
@@ -63041,6 +63681,36 @@ export const CASOS_LUTA = [
    }
   ]
  },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_1_criada",
+   "forma": "propria"
+  },
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_1_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_6_lavrador": {
+   "apontadaPor": "gen_6_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_criada": {
+   "apontadaPor": "gen_1_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_lavadeira": {
+   "apontadaPor": "gen_4_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_criada": {
+   "apontadaPor": "gen_2_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_paroco": {
+   "apontadaPor": "gen_0_paroco",
+   "forma": "propria"
+  }
+ },
  "interferencias": {
   "eventos": [
    {
@@ -65717,6 +66387,28 @@ export const CASOS_LUTA = [
     "z": 1.82
    }
   ]
+ },
+ "procedencia": {
+  "gen_alibi_gen_7_lavrador": {
+   "apontadaPor": "gen_7_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_moleiro": {
+   "apontadaPor": "gen_2_moleiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_boticario": {
+   "apontadaPor": "gen_4_boticario",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_criada": {
+   "apontadaPor": "gen_3_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_costureira": {
+   "apontadaPor": "gen_0_costureira",
+   "forma": "propria"
+  }
  }
 },
 {
@@ -68310,6 +69002,40 @@ export const CASOS_LUTA = [
     "z": 2.04
    }
   ]
+ },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_2_lavrador": {
+   "apontadaPor": "gen_6_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_6_lavrador": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavrador": {
+   "apontadaPor": "gen_2_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_6_lavrador": {
+   "apontadaPor": "gen_6_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_criada": {
+   "apontadaPor": "gen_3_criada",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_lavrador": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_criada": {
+   "apontadaPor": "gen_1_criada",
+   "forma": "propria"
+  }
  }
 },
 {
@@ -71036,6 +71762,44 @@ export const CASOS_LUTA = [
     "z": -1.7
    }
   ]
+ },
+ "procedencia": {
+  "gen_visto_vivo": {
+   "apontadaPor": "gen_0_ferreiro",
+   "forma": "propria"
+  },
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_7_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_1_lavrador": {
+   "apontadaPor": "gen_7_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavadeira": {
+   "apontadaPor": "gen_2_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_7_lavrador": {
+   "apontadaPor": "gen_7_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_6_lavrador": {
+   "apontadaPor": "gen_6_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_ferreiro": {
+   "apontadaPor": "gen_0_ferreiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_lavrador": {
+   "apontadaPor": "gen_1_lavrador",
+   "forma": "propria"
+  }
  },
  "telegrama": {
   "destino": "Weldmere",
@@ -73860,6 +74624,44 @@ export const CASOS_LUTA = [
    }
   ]
  },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_1_pastor_de_ovelhas": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_0_lavrador": {
+   "apontadaPor": "gen_1_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_pastor_de_ovelhas": {
+   "apontadaPor": "gen_1_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_costureira": {
+   "apontadaPor": "gen_3_costureira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_4_pastor_de_ovelhas": {
+   "apontadaPor": "gen_4_pastor_de_ovelhas",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_squire": {
+   "apontadaPor": "gen_2_squire",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_lavrador": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_intf_intf_1_retratacao": {
+   "apontadaPor": "gen_4_pastor_de_ovelhas",
+   "forma": "ensaio"
+  }
+ },
  "interferencias": {
   "eventos": [
    {
@@ -76670,6 +77472,32 @@ export const CASOS_LUTA = [
     "logradouro": true
    }
   ]
+ },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_3_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavadeira": {
+   "apontadaPor": "gen_3_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_lavadeira": {
+   "apontadaPor": "gen_2_lavadeira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_taverneiro": {
+   "apontadaPor": "gen_0_taverneiro",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_lavrador": {
+   "apontadaPor": "gen_5_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_ferreiro": {
+   "apontadaPor": "gen_1_ferreiro",
+   "forma": "propria"
+  }
  },
  "interferencias": {
   "eventos": [
@@ -79542,6 +80370,36 @@ export const CASOS_LUTA = [
     "z": 1.98
    }
   ]
+ },
+ "procedencia": {
+  "gen_ruido_ouvido": {
+   "apontadaPor": "gen_5_parteira",
+   "forma": "propria"
+  },
+  "gen_corrobora_gen_3_lavrador": {
+   "apontadaPor": "gen_1_guarda_caca",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_3_lavrador": {
+   "apontadaPor": "gen_3_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_1_guarda_caca": {
+   "apontadaPor": "gen_1_guarda_caca",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_0_lavrador": {
+   "apontadaPor": "gen_0_lavrador",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_5_parteira": {
+   "apontadaPor": "gen_5_parteira",
+   "forma": "propria"
+  },
+  "gen_alibi_gen_2_merceeiro": {
+   "apontadaPor": "gen_2_merceeiro",
+   "forma": "propria"
+  }
  },
  "interferencias": {
   "eventos": [
