@@ -157,18 +157,10 @@ const EXCECOES = [
     chave: 'CARTAS[ev_anel_encomenda].descricao',
     motivo: 'par de travessões citando a encomenda gravada — pontuação de citação',
   },
-  {
-    arquivo: 'src/data/dialogos.js',
-    cheque: 'travessao',
-    chave: 'DIALOGOS.interrogatorio_silas.nos.confronto_estalagem.fala',
-    motivo: 'par parentético: a lista do que se conta na estalagem, dentro da rubrica',
-  },
-  {
-    arquivo: 'src/data/dialogos.js',
-    cheque: 'travessao',
-    chave: 'DIALOGOS.interrogatorio_silas.nos.confronto_livro.fala',
-    motivo: 'par parentético: a lista dos consertos reentrados, dentro da rubrica',
-  },
+  // As duas exceções de travessão dos confrontos de Silas (o par parentético
+  // da estalagem e o do livro) SAÍRAM no playtest de 26/07/2026: o bloco
+  // partido em três parágrafos elevou o teto do cheque, e o par passou a
+  // caber sem dispensa. Exceção que não é mais necessária não fica.
   {
     arquivo: 'src/data/glossario.js',
     cheque: 'travessao',

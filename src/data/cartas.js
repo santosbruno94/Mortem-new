@@ -417,8 +417,13 @@ export const CARTAS = [
     subLocal: 'oficina',
     textoDisplay: 'O Hábito da Corda',
     carimboPadrao: 'Corda ao relógio de bolso todas as noites, às 23h',
+    // A ficha é o TERMO, não a fala (guia §5.1): o depoimento sai pela boca do
+    // rapaz no beat 1, e aqui fica o registro do guarda, em terceira pessoa e
+    // com o que só o papel guarda — quem declarou, e o que o patrão dizia da
+    // reserva de corda. A emenda de 26/07/2026 tirou o "deixava eu ouvir o
+    // tique" da noite: o aprendiz sai às 19h30, e não podia estar ali às 23h.
     descricao:
-      'Davey, os olhos erguidos do serviço: "O patrão dava corda no relógio do bolso às onze, antes de subir pra deitar. Todas as noites, sem faltar uma. Deixava eu ouvir o tique depois, dizia que o de bolso guarda trinta horas e que homem que deixa a corda acabar não merece o ofício."',
+      'Declara o aprendiz Tull que o patrão dava corda ao relógio de bolso às onze da noite, antes de subir para deitar, todas as noites e sem faltar uma. Acrescenta o que o ouviu repetir na bancada: que aquele relógio guarda trinta horas de corda, e que homem que deixa a corda acabar não merece o ofício. Tomado por termo na oficina, pela mão do guarda.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',
@@ -426,6 +431,12 @@ export const CARTAS = [
     },
   },
   {
+    // EXCEÇÃO REGISTRADA à regra das duas texturas (guia §5.1). As outras
+    // fichas de paradeiro viraram termo em terceira pessoa para não repetirem
+    // a fala; esta guarda as palavras exatas, e de propósito: a RECITAÇÃO é a
+    // prova. O que o `textoDisplay` nomeia ("A Mesma Resposta Duas Vezes") só
+    // se lê se as palavras forem as mesmas, aqui e na boca dele. Não
+    // «corrigir» numa próxima passada.
     id: 'alibi_davey',
     localidade: 'relojoaria',
     subLocal: 'oficina',
@@ -450,7 +461,7 @@ export const CARTAS = [
     textoDisplay: 'Recolhido à Estalagem às Oito',
     carimboPadrao: 'Paradeiro declarado: 20h–manhã (estalagem)',
     descricao:
-      '"Fechei a oficina às sete e meia e saí com o rapaz. Ceei pouco, recolhi-me ao quarto às oito e não tornei a sair. De manhã abri a loja, como sempre." Dá as horas de um fôlego, sem pausa entre elas.',
+      'Declara ter fechado a oficina às sete e meia e saído com o aprendiz; ter ceado pouco e recolhido ao quarto às oito, sem tornar a sair; e ter aberto a loja pela manhã, como de costume. Deu as horas de um fôlego, sem pausa entre elas. Tomado por termo na saleta, pela mão do guarda.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -661,7 +672,7 @@ export const CARTAS = [
     textoDisplay: 'O Carro das Seis',
     carimboPadrao: 'Paradeiro declarado: Moorford, a noite inteira',
     descricao:
-      '"Tomei o carro das seis para Moorford e dormi no Station. Soube da desgraça esta manhã e vim no primeiro trem; tomei este quarto porque a casa do meu tio está lacrada." Alisa o colarinho ao dar as horas.',
+      'Declara ter tomado o carro das seis para Moorford e pernoitado no Station; ter sabido da morte pela manhã e regressado no primeiro trem; e ter tomado quarto na estalagem por estar lacrada a casa do tio. Alisou o colarinho ao dar as horas. Tomado por termo na sala da estalagem, pela mão do guarda.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -711,7 +722,7 @@ export const CARTAS = [
     textoDisplay: 'Em Casa desde as Seis',
     carimboPadrao: 'Paradeiro declarado: em casa desde as 18h',
     descricao:
-      '"Fechei a loja às seis e recolhi-me. Uma viúva não tem serões." Diz e volta a alinhar os cadernos da prateleira, o lombo de cada um à mesma altura.',
+      'Declara ter fechado a loja às seis e recolhido a casa, sem tornar a sair até a manhã de sábado; e que uma viúva não tem serões. Respondeu alinhando os cadernos da prateleira, o lombo de cada um à mesma altura. Tomado por termo ao balcão, pela mão do guarda.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -742,7 +753,7 @@ export const CARTAS = [
     textoDisplay: 'Véspera de Feira no Moinho',
     carimboPadrao: 'Paradeiro declarado: moinho, 19h–23h, com três homens',
     descricao:
-      '"Sexta é véspera de feira. Das sete às onze carreguei o moinho com dois jornaleiros e o carroceiro do Finch; os nomes, anote aí." Os três, ouvidos em separado, dão as mesmas horas.',
+      'Declara ter carregado o moinho das sete às onze da noite de sexta, véspera de feira, na companhia de dois jornaleiros e do carroceiro do Finch, cujos nomes ele próprio mandou anotar. Os três, ouvidos em separado, dão as mesmas horas. Tomado por termo na rampa, pela mão do guarda.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -758,7 +769,7 @@ export const CARTAS = [
     textoDisplay: 'Rancor Sem Rodeios',
     carimboPadrao: 'Hostilidade aberta',
     descricao:
-      '"Fui roubado dentro da loja dele e ainda paguei o conserto adiantado. Se me perguntam se choro, não choro." Bate a farinha do avental e volta às sacas.',
+      'Fala da queixa a quem lhe pergunte e a quem não pergunte, sempre com a mesma soma e sem baixar a voz: o relógio do pai, o conserto pago adiantado, o peso que voltou menor. Da morte do relojoeiro não diz uma palavra de pesar. Bate a farinha do avental e volta às sacas.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',

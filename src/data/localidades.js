@@ -63,7 +63,8 @@ export const LOCALIDADES = [
         // §5.1: a prosa monolítica se divide em pontos de interesse — coleta em
         // camadas. A introdução ambienta sem carta; cada ponto revela as suas.
         introducao: [
-          'O escritório dos fundos guarda o revirado da manhã em que o acharam: papéis pelo assoalho, a poltrona de couro empurrada para longe da escrivaninha. A luz de outubro entra de esguelha pela janela alta e assenta na poeira em suspensão; cheira a óleo fino de relojoeiro e à cinza fria da lareira. Num cabide atrás da porta estão pendurados um sobretudo escuro e um chapéu-coco. Sobre a repisa, um retângulo sem poeira marca o lugar onde alguma coisa esteve.',
+          'O escritório dos fundos guarda o revirado da manhã em que o acharam: papéis pelo assoalho, a poltrona de couro empurrada para longe da escrivaninha. A luz de outubro entra de esguelha pela janela alta e assenta na poeira em suspensão; cheira a óleo fino de relojoeiro e à cinza fria da lareira.',
+      'Num cabide atrás da porta estão pendurados um sobretudo escuro e um chapéu-coco. Sobre a repisa, um retângulo sem poeira marca o lugar onde alguma coisa esteve.',
         ],
         pontos: [
           {
@@ -131,7 +132,10 @@ export const LOCALIDADES = [
         // §5.1: pontos de interesse. A intro planta de graça o relógio irmão (a
         // roda de contagem à vista) — fair play; cada ponto revela as suas cartas.
         introducao: [
-          'A oficina ocupa os fundos da loja: duas bancadas de tampo raspado, um torno pequeno aparafusado à ponta de uma delas, a parede coberta de ferramentas penduradas em ordem de tamanho. Sob a redoma, ao canto da bancada grande, a balança de fiel do ouro, com a caixinha dos pesos ao lado. A limalha de latão presa ao tampo e o gume das limas penduradas guardam o brilho raso da janela alta. Junto à porta dos fundos, um cesto de vime guarda encomendas embrulhadas em papel pardo, cada uma com etiqueta de nome e vila de fora, para o carreteiro da semana. Um pêndulo comprido e rodas de mecanismo maior que os de sala esperam numa tábua à parte, ao lado de um bilhete da conserva anual do relógio da torre da paróquia. No gancho da bancada grande, o lampião de bancada está apagado. O depósito, seco; a chaminé de vidro, fumada até a boca. Na bancada menor, aberto para conserto, um relógio de lareira irmão do da cena mostra o trem das badaladas a descoberto; a cada hora que a máquina bate, a alavanca salta um entalhe da roda de contagem. Cheira a óleo e ao carvão frio do fogareiro.',
+          'A oficina ocupa os fundos da loja: duas bancadas de tampo raspado, um torno pequeno aparafusado à ponta de uma delas, a parede coberta de ferramentas penduradas em ordem de tamanho. Sob a redoma, ao canto da bancada grande, a balança de fiel do ouro, com a caixinha dos pesos ao lado. A limalha de latão presa ao tampo e o gume das limas penduradas guardam o brilho raso da janela alta.',
+      'Junto à porta dos fundos, um cesto de vime guarda encomendas embrulhadas em papel pardo, cada uma com etiqueta de nome e vila de fora, para o carreteiro da semana. Um pêndulo comprido e rodas de mecanismo maior que os de sala esperam numa tábua à parte, ao lado de um bilhete da conserva anual do relógio da torre da paróquia.',
+      'No gancho da bancada grande, o lampião de bancada está apagado. O depósito, seco; a chaminé de vidro, fumada até a boca.',
+      'Na bancada menor, aberto para conserto, um relógio de lareira irmão do da cena mostra o trem das badaladas a descoberto; a cada hora que a máquina bate, a alavanca salta um entalhe da roda de contagem. Cheira a óleo e ao carvão frio do fogareiro.',
         ],
         pontos: [
           {
@@ -221,9 +225,11 @@ export const LOCALIDADES = [
     subtitulo: 'Amos Kell, sineiro da paróquia, 63 anos',
     acoesEspeciais: [],
     prosa: [
-      'S. Miguel fecha o extremo da rua, do lado oposto à estrada de Moorford. A porta da torre dá na câmara dos toques, caiada e de teto baixo: seis cordas descem por buracos no forro e ficam enroladas nos ganchos até domingo, as manoplas de lã ao alcance da mão. Num prego, o registro dos toques; ao lado, a tabela da conserva do relógio, assinada de ano em ano em letra miúda. Amos Kell passa breu na ponta de uma corda e não ergue os olhos.',
+      'S. Miguel fecha o extremo da rua, do lado oposto à estrada de Moorford. A porta da torre dá na câmara dos toques, caiada e de teto baixo: seis cordas descem por buracos no forro e ficam enroladas nos ganchos até domingo, as manoplas de lã ao alcance da mão.',
+      'Num prego, o registro dos toques; ao lado, a tabela da conserva do relógio, assinada de ano em ano em letra miúda. Amos Kell passa breu na ponta de uma corda e não ergue os olhos.',
       'Perguntado da noite de sexta, prende a corda ao gancho e conta: [[dep_sineiro_beco]].',
-      'Da câmara sobe uma escada de caracol, primeiro ao maquinismo do relógio, com os pesos pendurados no poço, e depois à câmara dos sinos. São seis, na armação de carvalho, e Amos numera-os sem se voltar para a escada: "Do mais leve ao mais pesado, senhor, que é como se contam. O primeiro abre o repique; o sexto dá a hora à rua. Os do meio, só quem toca os separa. Estão todos de boca para baixo até amanhã; amanhã é domingo, e estes seis trabalham desde as oito." A corda volta às mãos.',
+      'Da câmara sobe uma escada de caracol, primeiro ao maquinismo do relógio, com os pesos pendurados no poço, e depois à câmara dos sinos. São seis, na armação de carvalho, e Amos numera-os sem se voltar para a escada.',
+      '"Do mais leve ao mais pesado, senhor, que é como se contam. O primeiro abre o repique; o sexto dá a hora à rua. Os do meio, só quem toca os separa. Estão todos de boca para baixo até amanhã; amanhã é domingo, e estes seis trabalham desde as oito." A corda volta às mãos.',
     ],
     // OS-R4 — O QUE A CIFRA ABRE. Sem `ev_cuvette` na mesa, o perito sobe,
     // conta seis sinos e desce de mãos vazias: o esconderijo existe e não se

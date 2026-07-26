@@ -37,6 +37,12 @@ import Overlay from './Overlay.jsx';
 // pessoa vive dentro de um lugar (Walter, Davey — a árvore traz `titulo`/`subtitulo`).
 const MARCA_TOM = { firme: '‹', cordial: '◦', tecnico: '▪', obliquo: '~' };
 
+// A tela da conversa respira mais que a da localidade (item 3 do playtest de
+// 26/07/2026): entrelinha larga e parágrafos afastados, porque aqui se lê
+// fala — e fala em bloco fechado cansa antes de acabar. A prosa das
+// localidades fica como está; quem muda é o interrogatório.
+const CLASSE_FALA = 'font-serif text-stone-300 leading-loose';
+
 export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   const detective = useJogo((s) => s.detective);
   const cartasRegistradas = useJogo((s) => s.cartasRegistradas);
@@ -203,22 +209,22 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
       )}
 
       {/* A fala corrente do suspeito (com os termos extraíveis) */}
-      <div data-no-dialogo={noExibido} data-exposicao={exposicao.nivel} className="space-y-3">
+      <div data-no-dialogo={noExibido} data-exposicao={exposicao.nivel} className="space-y-5">
         {no.fala.map((t, i) => (
-          <ParagrafoProsa key={`${noExibido}_${i}`} texto={t} />
+          <ParagrafoProsa key={`${noExibido}_${i}`} texto={t} className={CLASSE_FALA} />
         ))}
 
         {/* A alfinetada: o que o beat da pressão rende A MAIS quando o perito
             chega sabendo. Nunca traz carta (guarda GR6-4) — é a compostura
             que falha, e só. Em E0 não há nada aqui. */}
         {alfinetada.map((t, i) => (
-          <ParagrafoProsa key={`${noExibido}_alf_${i}`} texto={t} />
+          <ParagrafoProsa key={`${noExibido}_alf_${i}`} texto={t} className={CLASSE_FALA} />
         ))}
 
         {/* O degrau do confronto: o que a mesa cobra a mais quando os papéis
             se juntam. Prosa, nunca carta. */}
         {(degrau?.fala || []).map((t, i) => (
-          <ParagrafoProsa key={`${noExibido}_deg_${i}`} texto={t} />
+          <ParagrafoProsa key={`${noExibido}_deg_${i}`} texto={t} className={CLASSE_FALA} />
         ))}
       </div>
 
