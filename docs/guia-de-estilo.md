@@ -151,7 +151,17 @@ Detalhados na skill `.claude/skills/anti-padrao-ia/` — resumo das proibições
    corpo…" variam; "Ele… Ele… Ele…" não). A monotonia é auditiva: vale dentro do
    bloco inteiro, atravessando parágrafos. Anáfora retórica deliberada é decisão de
    mesa (allowlist), não hábito.
-10. **Vocativo repetido**: nome próprio dentro de fala é raro; atribuição e
+10. **Rubrica que briga com a rubrica de baixo** (OS-R8, e a régua saiu de uma colisão
+    medida). Quando duas rubricas se imprimem na **mesma tela** — a fala base de um nó de
+    diálogo e a `alfinetada` que a exposição paga —, a de cima não pode repetir nem
+    contradizer o adereço da de baixo. **Nunca duas mãos ocupadas na mesma tela:** a xícara
+    que arrefece contra a xícara que «não torna a encher-se»; os braços cruzados contra o
+    botão «preso entre os dedos até o fim da resposta»; a pilha endireitada contra a pilha
+    que «fica por endireitar». Rubrica que **não** colide fica, e deve ficar — ambiente,
+    olhar, tempo, ou um gesto de outra parte do corpo —, porque em E0 a alfinetada não
+    existe e a fala ficaria sem corpo justamente para quem colheu menos. Guarda: **GR8-4**
+    no `qa.mjs`, que lê a fala e a alfinetada do mesmo nó.
+11. **Vocativo repetido**: nome próprio dentro de fala é raro; atribuição e
     identificação pertencem à rubrica e à narração. O mesmo nome duas vezes na mesma
     fala ("…, Silas; …, Silas, …") denuncia gerador — interlocutores reais não
     vocativam a cada frase. Menção em terceira pessoa a um ausente não é vocativo.
@@ -211,8 +221,9 @@ num arquivo de dados — ou não se cita.
 7. Termos técnicos batem com `docs/kb-medicina-legal/`?
 8. O narrador intermedia alguma percepção ("viu que", "podia ouvir")? (§4.8)
 9. Três períodos seguidos abrem com a mesma palavra? (§4.9)
-10. Algum nome próprio aparece duas vezes na mesma fala? (§4.10)
-11. Li em voz alta: onde tropecei, reescrevi?
+10. A rubrica da fala repete ou contradiz a `alfinetada` que sai na mesma tela? (§4.10)
+11. Algum nome próprio aparece duas vezes na mesma fala? (§4.11)
+12. Li em voz alta: onde tropecei, reescrevi?
 
 ---
 

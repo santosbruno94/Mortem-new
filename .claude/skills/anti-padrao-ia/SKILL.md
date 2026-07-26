@@ -122,6 +122,22 @@ cheque `vocativo_repetido` do `lint-prosa.mjs` (roster derivado dos dados do cas
 **Reescrita:** corte o vocativo excedente; se a fala precisa de endereçamento, mova a
 identificação para a rubrica ("volta-se para o oficial").
 
+### 13. Duas rubricas a brigar na mesma tela (OS-R8)
+Duas peças de prosa que se imprimem juntas — a fala base de um nó de diálogo e a
+`alfinetada` que a exposição paga — descrevendo o mesmo adereço em estados
+incompatíveis. Medido na R8 em três árvores de uma vez: a xícara que arrefece contra a
+xícara que «não torna a encher-se»; os braços cruzados contra o botão «preso entre os
+dedos até o fim da resposta»; a pilha endireitada contra a pilha que «fica por
+endireitar». É anti-padrão de MONTAGEM, e o mais invisível de todos: cada peça, lida
+sozinha, está impecável.
+**Detecção:** para cada nó com `alfinetada`, listar os adereços citados na fala base e
+os citados em cada nível; qualquer objeto que apareça nos dois com estado diferente é
+achado. Mecanicamente, a **GR8-4** do `qa.mjs` apanha a repetição verbatim entre a fala
+e a alfinetada do mesmo nó — a *contradição* continua a ser trabalho de leitura.
+**Reescrita:** cortar a de cima (a de baixo é a que o jogador pagou para ver), ou
+trocá-la por rubrica que não toque no mesmo adereço — ambiente, olhar, tempo, outra
+parte do corpo. Nunca duas mãos ocupadas na mesma tela.
+
 ## Procedimento de revisão
 
 1. Rodar os greps do catálogo sobre os arquivos-alvo; anotar contagens.

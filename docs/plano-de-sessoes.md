@@ -349,7 +349,7 @@ não é reforma: é o gerador a herdar os padrões que o tutorial provou.
   gerador. **Três decisões a recolher no arranque**, todas com recomendação escrita.
 - **O que a R8 entregou:** os três rótulos da Estação III que concluíam pelo jogador (a
   gaveta passou a dizer o que CONTÉM); o púlpito de cortiça, que era o da igreja e virou a
-  escrivaninha alta que a KB atesta; **oito** rubricas repetidas verbatim — a fila dizia uma,
+  escrivaninha das ordens que a KB atesta; **oito** rubricas repetidas verbatim — a fila dizia uma,
   e a **GR8-4**, escrita como guarda em vez de lida como achado, mediu oito; a colisão do
   lume na abertura do interrogatório; o «vinco das nervuras» corrigido **aos pares** (carta e
   gesto) e a emenda à KB que o desacopla da duração da queima; o «ao meio-dia» da bíblia; e

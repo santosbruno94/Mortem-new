@@ -810,7 +810,7 @@ juízos (culpado/inocente/sem juízo) seguem **100% manuais**; e o precedente j�
 existia — os sinais do corpo se ligam sozinhos às âncoras ("o corpo é lido, não
 selecionado").
 
-**A cadeia** soma: Quem · Quando · Como · Presença · Mentiras expostas · Motivo ·
+**A cadeia** soma: Quem · Quando · Como · Presença · Depoimentos contestados · Motivo ·
 Juízo sobre cada não-acusado (`culpado` | `inocente` | `sem_juizo`). A armadilha do
 §2: quebrar a mentira do inocente e julgá-lo *culpado* → **Erro Judiciário**.
 
@@ -1156,8 +1156,12 @@ alcance às falas do jogador. Nenhuma etapa vira código sem ordem expressa do c
 > métrica o réu (1) nunca foi o máximo — é Walter (2).
 >
 > **OS-R6** fechou a exposição (E0/E1/E2), o beat 3 nos cinco e a contaminação; **OS-R7**
-> fechou a reconstituição, a conta de bocas e a D25. **Próxima: OS-R8** — passe editorial e
-> QA de fecho, e ela encerra a reforma. O catálogo fecha em **42 de 46**, e é o número final.
+> fechou a reconstituição, a conta de bocas e a D25; e a **OS-R8** fechou a REFORMA, com o
+> passe editorial e o QA de fecho — os rótulos do mural que concluíam pelo jogador, o púlpito
+> que era o da igreja, oito rubricas repetidas verbatim, o «vinco das nervuras» corrigido aos
+> pares, duas guardas removidas com justificação e duas tornadas honestas. O catálogo fecha
+> em **42 de 46**, e é o número final. **Próxima: OS-R9**, e já não é reforma — é o gerador a
+> herdar os padrões que o tutorial provou.
 
 **Cenário:** Briarstone, outubro de 1893. Vítima: **Sr. Geoffrey Arthurs**, relojoeiro,
 61 anos, morto no escritório dos fundos por **ferida de buril no pescoço**. Cena

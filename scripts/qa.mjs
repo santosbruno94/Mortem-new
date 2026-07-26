@@ -5108,25 +5108,46 @@ if (!gr77TetoCartasOk) console.log('\nGR7-7 — teto de cartas:', gr77Furos.join
 // Fora do mural a palavra é legítima e não se toca: no monólogo e no epílogo
 // o perito fala DEPOIS do julgamento, e ali uma mentira provada é uma
 // mentira.
+// A lista NÃO é escrita à mão: um arquivo renomeado na OS seguinte sairia de
+// uma lista à mão sem que nada reprovasse, e a guarda passaria a medir menos e
+// a continuar verde — que é o defeito que a Fase 4 desta OS foi caçar. Varre-se
+// a pasta inteira do mural, e o número entra no rótulo.
 const ARQUIVOS_MURAL = [
   'components/MuralAcusacao.jsx',
-  'components/mural/Estacoes.jsx',
-  'components/mural/RevisaoFinal.jsx',
-  'components/mural/MesaLigacao.jsx',
-  'components/mural/EstacaoCorpo.jsx',
+  ...readdirSync(path.join(raizSrc, 'components/mural'))
+    .filter((n) => n.endsWith('.jsx'))
+    .map((n) => `components/mural/${n}`),
 ].filter((f) => existsSync(path.join(raizSrc, f)));
-const VEREDICTO_NO_ROTULO = /mentira|desmentid|forjad|culpad[oa]\b/i;
+const VEREDICTO_NO_ROTULO = /ment(ira|iu|e\b|iros)|desment|forjad|fals[oa]|culpad[oa]\b/i;
+// Uma classe do Tailwind tem espaço e aspas como qualquer rótulo — e sem este
+// descarte 27 das 32 literais de `Estacoes.jsx` eram folha de estilo.
+const EH_CLASSE = (s) => /^[a-z0-9:/[\]().,%\-\s]+$/.test(s);
 const gr82Furos = [];
+let gr82Medidas = 0;
 for (const arquivo of ARQUIVOS_MURAL) {
   const fonte = semComentarios(readFileSync(path.join(raizSrc, arquivo), 'utf8'));
-  // Só as literais de texto visível: strings entre aspas/backtick que contenham
-  // espaço (um id não tem) — é a heurística que separa rótulo de identificador.
+  const visiveis = [];
+  // (a) Literais: strings entre aspas/backtick com espaço (um id não tem).
   for (const m of fonte.matchAll(/(['"`])((?:[^'"`\\\n]|\\.){4,}?)\1/g)) {
-    const literal = m[2];
-    if (!/\s/.test(literal)) continue;
-    if (VEREDICTO_NO_ROTULO.test(literal)) {
-      gr82Furos.push(`${arquivo}: «${literal.slice(0, 56)}»`);
-    }
+    if (/\s/.test(m[2]) && !EH_CLASSE(m[2])) visiveis.push(m[2]);
+  }
+  // (b) TEXTO JSX — e é aqui que a primeira versão desta guarda era cega. A
+  // cópia visível do mural mora, em boa parte, entre `>` e `<`, fora de
+  // qualquer aspa: foi assim que «ligue o vestígio que o desmente» sobreviveu
+  // à Fase 1 e só o pipeline a viu. Guarda que não mede o que promete é
+  // exatamente o defeito que a Fase 4 desta OS foi caçar — não se recria duas
+  // seções abaixo.
+  for (const m of fonte.matchAll(/>([^<>{}]{8,})</g)) {
+    const texto = m[1].replace(/\s+/g, ' ').trim();
+    // O `>` de uma seta (`=>`) abre o mesmo casamento que o de uma tag, e o
+    // corpo da função entra como se fosse cópia. Texto de tela não tem sinal
+    // de código: sem `=`, sem `;` e sem aspas.
+    if (/[=;'"`]/.test(texto)) continue;
+    if (/[a-zà-ú]/i.test(texto)) visiveis.push(texto);
+  }
+  gr82Medidas += visiveis.length;
+  for (const texto of visiveis) {
+    if (VEREDICTO_NO_ROTULO.test(texto)) gr82Furos.push(`${arquivo}: «${texto.slice(0, 56)}»`);
   }
 }
 const gr82RotuloNaoConcluiOk = gr82Furos.length === 0;
@@ -5155,6 +5176,17 @@ const beatDoNo = (nome) => {
   const m = /^b(\d)_/.exec(nome);
   return m ? `beat${m[1]}` : `avulso:${nome}`; // confrontos/evasiva: cada um é o seu
 };
+// A `alfinetada` do nó imprime-se na MESMA tela que a fala base
+// (InterrogatorioDialogo), logo entra na conta — e por isso a isenção do
+// mesmo beat exige também nós DIFERENTES: repetição entre a fala e a
+// alfinetada do próprio nó é a que o jogador lê de seguida, sem alternativa.
+// (Achado do `fiscal-continuidade` na 2.ª passada: a guarda não lia
+// alfinetada nenhuma, e havia colisão viva em três árvores.)
+const textosDoNo = (no) => [
+  ...(no.fala || []),
+  ...(no.degraus || []).flatMap((d) => d.fala || []),
+  ...Object.values(no.alfinetada || {}).flat(),
+];
 const narracaoDaFala = (texto) =>
   texto
     .replace(/[“"][^”"]*[”"]/g, ' ') // fora as falas entre aspas
@@ -5165,8 +5197,7 @@ const gr84Furos = [];
 for (const [arvoreId, arvore] of Object.entries(DIALOGOS)) {
   const ondeApareceu = new Map(); // frase → [{ no, beat }]
   for (const [nomeNo, no] of Object.entries(arvore.nos || {})) {
-    const falas = [...(no.fala || []), ...(no.degraus || []).flatMap((d) => d.fala || [])];
-    for (const fala of falas) {
+    for (const fala of textosDoNo(no)) {
       for (const frase of narracaoDaFala(fala)) {
         const chave = frase.toLowerCase().replace(/\s+/g, ' ');
         if (!ondeApareceu.has(chave)) ondeApareceu.set(chave, []);
@@ -5176,7 +5207,12 @@ for (const [arvoreId, arvore] of Object.entries(DIALOGOS)) {
   }
   for (const [frase, sitios] of ondeApareceu) {
     const beats = new Set(sitios.map((s) => s.beat));
-    if (beats.size > 1) {
+    const nos = new Set(sitios.map((s) => s.no));
+    // Isento SÓ o que é alternativa: mesmo beat E nós diferentes. Repetição
+    // dentro do MESMO nó (fala × alfinetada, ou duas linhas da mesma fala)
+    // lê-se sempre de seguida, e reprova.
+    const alternativasDoMesmoBeat = beats.size === 1 && nos.size === sitios.length && nos.size > 1;
+    if (!alternativasDoMesmoBeat && sitios.length > 1) {
       gr84Furos.push(`${arvoreId}: «${frase.slice(0, 46)}…» em ${sitios.map((s) => s.no).join(' + ')}`);
     }
   }
@@ -5345,10 +5381,10 @@ const checagens = [
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
   [
-    `GR8-2 (nenhum rótulo conclui pelo jogador): ${ARQUIVOS_MURAL.length} arquivos do mural varridos por lista de strings — nenhum rótulo visível diz «mentira», «desmentido» nem «culpado»; a gaveta nomeia o que contém, e quem julga é o desfecho`,
+    `GR8-2 (nenhum rótulo conclui pelo jogador): ${gr82Medidas} strings visíveis medidas em ${ARQUIVOS_MURAL.length} arquivos do mural (literais + texto JSX) — nenhuma diz «mentira», «desmente», «forjado» nem «culpado»; a gaveta nomeia o que contém, e quem julga é o desfecho`,
     gr82RotuloNaoConcluiOk,
   ],
-  ['GR8-4 (a rubrica não se lê duas vezes): nenhuma frase de narração se repete verbatim entre beats da mesma árvore; nós do mesmo beat são alternativas, e o paradeiro sai igual em todo tom (G4)', gr84RubricaUnicaOk],
+  ['GR8-4 (a rubrica não se lê duas vezes): nenhuma frase de narração se repete verbatim entre beats da mesma árvore, nem entre a fala e a alfinetada do mesmo nó; nós do mesmo beat são alternativas, e o paradeiro sai igual em todo tom (G4)', gr84RubricaUnicaOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

@@ -124,7 +124,7 @@ export const INTERVENCOES_NOITE = [
     // utilizador em 26/07/2026, sobre as três saídas registadas na ata.
     exige: ['ev_cinza_livro'],
     prosa:
-      'O livro é desmanchado antes de ir ao lume: a costura cede, e as folhas descem à grelha aos punhados. O fogo não chega ao fim do que lhe deram: a capa grossa fica de encontro às barras, e ali para.',
+      'O livro é desmanchado antes de ir ao lume: a costura cede, e as folhas descem aos punhados. O fogo não chega ao fim do que lhe deram. A capa grossa fica presa nas barras, e ali para.',
   },
   {
     id: 'bainha_por_sacudir',

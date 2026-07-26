@@ -158,7 +158,7 @@ export const LOCALIDADES = [
             // O id do ponto não muda: é do motor, e o motor não lê rótulo.
             rotulo: 'A escrivaninha das ordens',
             prosa: [
-              'A um canto, uma escrivaninha alta de tampo inclinado, o couro gasto onde o braço se apoia. No rebordo plano do alto, um tinteiro de bancada e um espeto de recibos; no espeto, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Na prateleira de baixo, entre o mata-borrão e a caixa de bicos de pena, o [[ev_livro_pagamentos]] está de capa fechada. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
+              'A um canto, uma escrivaninha alta de tampo inclinado, o couro gasto onde o braço se apoia. No rebordo plano do topo, um tinteiro e um espeto de arame; no espeto, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Na prateleira de baixo, entre o mata-borrão e a caixa de bicos de pena, o [[ev_livro_pagamentos]] está de capa fechada. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
             ],
           },
           {

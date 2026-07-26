@@ -184,11 +184,12 @@ tentar **Teichmann**.
 
 **O método, e ele não é o que se imagina.** Um livro **fechado não arde**. O calor escoa para
 o miolo, que não chega à temperatura de ignição, e a camada de carvão que se forma na capa
-sobe ainda mais essa temperatura: um livro-razão grosso atirado à grelha carboniza pelas
+**isola o miolo e barra-lhe o ar**: um livro-razão grosso atirado à grelha carboniza pelas
 bordas e **sobrevive como bloco, com o miolo legível**. Quem quer destruir um registro numa
 lareira doméstica tem de o **desmanchar e alimentá-lo ao fogo aos punhados**, ao longo de uma
-hora ou mais. Quem para antes do fim não salva o registro: deixa-o ilegível e deixa a
-**carcaça inteira** — ver o leito de cinzas alto, abaixo.
+hora ou mais. Quem para antes do fim não salva o registro — deixa-o **em regra** ilegível,
+salvo o **fragmento tostado que escape ao leito** (ver abaixo) — e deixa a **carcaça
+inteira**.
 
 **A marca de deliberação não é o relógio: é o desmanche.** Quem entra em pânico atira o livro
 fechado à grelha, e o livro fechado sobrevive. Quem o desmancha — arranca as pastas, rompe a
@@ -215,11 +216,14 @@ guarda é a identidade da peça*. Aqui a prova não está nas folhas, que ardem.
   de **composição** antes de ser de altura: leito completo é pálido, mineral, em escamas de
   pluma; leito interrompido é **negro, laminar, com carcaça reconhecível**. E a interrupção
   não se desfaz durante a noite — apagada a chama, a brasa só avança onde o ar chega, e carga
-  densa sob leito abafado extingue-se sozinha.
+  densa sob leito abafado extingue-se sozinha. *(Esta última é inferência de fogo doméstico,
+  não doutrina citada: trate-se como o que é.)*
   **Corolário que o perito tem de perseguir:** o que se interrompeu foi o **consumo**, não a
-  carbonização — a carga abafada enegrece por inteiro sob o próprio peso. Mas a folha que
-  escapou ao leito não vem carbonizada: vem **tostada**, castanha, retraída nas bordas — e
-  essa **lê-se a olho nu**. Procurá-la é obrigação, e é o gesto que a queima interrompida
+  carbonização — no corpo da carga, abafada sob o próprio peso, o papel enegrece. Mas a
+  fronteira é **gradiente**, e corre pelas margens da carga e até dentro de uma folha só
+  (centro negro, margem castanha e retraída): num mesmo punhado de borda convivem os dois
+  estados, e separá-los é trabalho do perito. A folha que escapou ao leito não vem
+  carbonizada: vem **tostada**, castanha, retraída nas bordas — e essa **lê-se a olho nu**. Procurá-la é obrigação, e é o gesto que a queima interrompida
   acrescenta ao exame: bordas frias do leito, sob a grelha, na cinza da pá, atrás do
   guarda-fogo. Achá-la é achar o registro; não achá-la é o que autoriza dizer que não se lê
   nada.
@@ -310,11 +314,11 @@ costurado), *papel de razão*, *tinta ferro-galhada*, *luz rasante*, *tostado* (
 chegou a carbonizar).
 
 **No jogo.** É o lastro da carta `ev_cinza_livro` do caso-escola (OS-R4): o Livro I do
-relojoeiro **arde e não se consome** na grelha do escritório, e a carta acusa **a destruição**
-sem dizer uma palavra do que o livro registava — porque não há como dizê-la. A fome do que
+relojoeiro, **desmanchado**, arde e não se consome na grelha do escritório, e a carta acusa **a destruição**
+sem dizer uma palavra do que o livro registrava — porque não há como dizê-la. A fome do que
 ardeu é o que manda o jogador atrás do segundo livro.
 
-**Emenda de 26/07/2026 (OS-R8 §3.4-bis), e o que a obrigou.** O utilizador decidiu, no fecho
+**Emenda de 26/07/2026 (OS-R8 §3.4-bis), e o que a obrigou.** O usuário decidiu, no fecho
 da OS-R7, que a queima do Livro I foi **interrompida** — o fogo não chegou ao fim do que lhe
 deram —, para fechar em prosa a divergência entre a hora do sineiro (~45 min de janela) e a
 «hora ou mais» que este dossiê pede para a destruição completa. Três consertos vieram atrás,

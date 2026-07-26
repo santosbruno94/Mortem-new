@@ -67,15 +67,20 @@
 // tom só por partida). Escrever quatro cópias por nível seria repetir a
 // mesma peça para ninguém comparar.
 //
-// REGRA DE PROSA DO BEAT 3 (OS-R8, e a descoberta foi do pipeline). A fala
-// base de um nó com `alfinetada` NÃO leva rubrica de gesto. A alfinetada
-// imprime-se na MESMA tela, logo abaixo da fala, e é ELA o gesto que a
-// exposição paga: pôr um segundo gesto na prosa base ou contradiz o
-// primeiro — a xícara que arrefece contra a xícara «por servir» de E1, os
-// braços cruzados contra o botão «preso entre os dedos até o fim da
-// resposta» — ou gasta de graça o rendimento que o nível existia para
-// comprar. O beat 3 responde e para; quem quiser ver a compostura falhar
-// paga em cartas.
+// REGRA DE PROSA DO BEAT 3 (OS-R8, e a descoberta foi do pipeline). Quando a
+// rubrica da fala base repete ou CONTRADIZ o adereço da `alfinetada` do mesmo
+// nó, a fala base não a leva: nunca duas mãos ocupadas na mesma tela. Foi
+// assim que a xícara que arrefece bateu de frente com a xícara «por servir»
+// do E1 de Silas, e os braços cruzados com o botão «preso entre os dedos até
+// o fim da resposta» do E1 de Walter — a alfinetada imprime-se logo abaixo da
+// fala, e o segundo gesto ou nega o primeiro ou gasta de graça o rendimento
+// que o nível existia para comprar.
+//
+// Rubrica que NÃO colide fica, e deve ficar: ambiente, olhar, tempo, ou um
+// gesto de outra parte do corpo. Treze dos vinte nós com alfinetada levam a
+// sua, e é por isso que o beat 3 tem corpo em E0 — nível em que a alfinetada
+// não existe (só E1 e E2 estão definidos). Cortar por regra o que não colide
+// deixaria a fala sem corpo justamente para quem chega de dossiê vazio.
 // =====================================================================
 
 // As alfinetadas de cada um. Cada suspeito escorrega no seu próprio
@@ -83,7 +88,7 @@
 // fechar-se, o rapaz ergue os olhos. Nenhum deles ganha marca que os
 // outros não tenham: é a GR6-5 lida como prosa.
 const ALFINETADA_SILAS = {
-  E1: ['Responde e não emenda. O bule fica onde está, e a xícara do visitante fica por servir.'],
+  E1: ['Responde e não emenda. O bule fica onde está, e a xícara do visitante não torna a encher-se.'],
   E2: [
     '"O {detective.treatment} andou perguntando de mim pela vila." Não é pergunta, e ele não espera resposta. As mãos deixam os joelhos, e ele alisa o avental dobrado sobre o braço, do vinco para fora. "Perguntem. A bancada está à vista de quem a queira conferir." E torna à teoria de sempre, mais curta desta vez: gente da estrada, atrás do caixa.',
   ],
@@ -290,7 +295,7 @@ export const DIALOGOS = {
       // sem nó novo. O rendimento é a `alfinetada`, que a exposição paga.
       b3_firme: {
         fala: [
-          '"Do que vivo? Da bancada, como vivi até sexta. Há peça entregue por cobrar e peça por acabar; enquanto a casa não se resolver, é esse o serviço. O rapaz veio hoje de manhã, como vem sempre, e ficou comigo à porta."',
+          '"Da bancada, como vivi até sexta. Há peça entregue por cobrar e peça por acabar; enquanto a casa não se resolver, é esse o serviço. O rapaz veio hoje de manhã, como vem sempre, e ficou comigo à porta."',
         ],
         alfinetada: ALFINETADA_SILAS,
         opcoes: [],
@@ -340,7 +345,7 @@ export const DIALOGOS = {
       },
       evasiva: {
         fala: [
-          'Silas Crane inclina-se sobre a mesa o bastante para ver, e torna ao espaldar. "Com licença de dizer, {detective.treatment}, a minha parte é corda e mola; o que isso valha, sabe a perícia. O que eu penso, já disse: gente da estrada, atrás do caixa."',
+          'Silas Crane inclina-se sobre a mesa o bastante para ver, e torna a endireitar-se. "Com licença de dizer, {detective.treatment}, a minha parte é corda e mola; o que isso valha, sabe a perícia. O que eu penso, já disse: gente da estrada, atrás do caixa."',
         ],
         opcoes: [],
       },
@@ -455,7 +460,7 @@ export const DIALOGOS = {
       // que ela enterrou, e do domingo que não chegou ela não diz palavra.
       b3_firme: {
         fala: [
-          '"Perco um freguês de vinte anos e o papel de escrituração que ele levava todo mês." Endireita a pilha ao alcance da mão. "Se a pergunta é de dinheiro, está respondida. Se é de outra coisa, faça-a."',
+          '"Perco um freguês de vinte anos e o papel de escrituração que ele levava todo mês. Se a pergunta é de dinheiro, está respondida. Se é de outra coisa, faça-a."',
         ],
         alfinetada: ALFINETADA_AGNES,
         opcoes: [],
@@ -476,7 +481,7 @@ export const DIALOGOS = {
       },
       b3_obliquo: {
         fala: [
-          'Endireita as folhas do papel com tarja antes de erguer os olhos. "Do Sr. Rooke, que enterrei. Devia ter deixado o azeviche no fim do prazo, e não deixei." Alinha a pilha uma última vez. "{g:O senhor|A senhora} há de ter outra pergunta."',
+          'Ergue os olhos do papel com tarja antes de responder. "Do Sr. Rooke, que enterrei. Devia ter deixado o azeviche no fim do prazo, e não deixei. {g:O senhor|A senhora} há de ter outra pergunta."',
         ],
         alfinetada: ALFINETADA_AGNES,
         opcoes: [],
@@ -624,7 +629,7 @@ export const DIALOGOS = {
       },
       b3_cordial: {
         fala: [
-          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe. E custou o relógio do meu pai, que não voltou nem inteiro nem pesado."',
+          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe." Atrás dele a mó troca de compasso, e ele não vira a cabeça. "E custou o relógio do meu pai, que não voltou nem inteiro nem pesado."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
@@ -638,7 +643,7 @@ export const DIALOGOS = {
       },
       b3_obliquo: {
         fala: [
-          '"Na vila, ninguém. Pesava ele, e a balança é dele. Para pesar como se deve, é o ourives de Moorford, e Moorford é hora e meia de estrada. Faço o caminho no dia em que me disserem que aquela balança está livre."',
+          '"Na vila, ninguém. Pesava ele, e a balança é dele." A farinha assenta-lhe no antebraço enquanto fala. "Para pesar como se deve, é o ourives de Moorford, e Moorford é hora e meia de estrada. Faço o caminho no dia em que me disserem que aquela balança está livre."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
@@ -780,7 +785,7 @@ export const DIALOGOS = {
       // voz, e ela encolhe.
       b3_firme: {
         fala: [
-          '"Vendo. Vendo a loja, vendo a casa, pago o que devo e fico com o que sobrar. Não tenho mão para relógio nem paciência para bancada, e nunca fingi que tinha."',
+          '"Vendo a loja, vendo a casa, pago o que devo e fico com o que sobrar. Não tenho mão para relógio nem paciência para bancada, e nunca fingi que tinha."',
         ],
         alfinetada: ALFINETADA_WALTER,
         opcoes: [],
@@ -981,14 +986,14 @@ export const DIALOGOS = {
       },
       b3_cordial: {
         fala: [
-          '"O patrão pagava às sextas, antes de fechar." A vassoura fica quieta. "Sexta ele lançou o meu, como sempre, e escreveu no livro. Na outra sexta é que eu não sei quem escreve."',
+          '"O patrão pagava às sextas, antes de fechar. Sexta ele lançou o meu, como sempre, e escreveu no livro. Na outra sexta é que eu não sei quem escreve."',
         ],
         alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
       },
       b3_tecnico: {
         fala: [
-          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Responde de olhos erguidos, sem procurar os números. "Desde o fim de março nenhum deles vem comigo; ficam com a casa. O patrão anotava tudo no livro estreito da bancada."',
+          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Responde sem parar para somar. "Desde o fim de março nenhum deles vem comigo; ficam com a casa. O patrão anotava tudo no livro estreito da bancada."',
         ],
         alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
