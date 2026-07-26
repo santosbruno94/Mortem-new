@@ -39,6 +39,7 @@ import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
 import { gerarMonologo } from '../src/logic/monologo.js';
 import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
+import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/exposicao.js';
 import { PAPEIS } from '../src/data/papeis.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
@@ -185,6 +186,9 @@ function medirEntrada(perfil, conversaId) {
     mesa: s().cartasRegistradas.length,
     apontam: apontam.length,
     ids: apontam.map((c) => c.id),
+    // A mesa inteira, para que a Fase 1 possa reler a mesma fotografia com
+    // a régua do dossiê (que soma as cartas a que a árvore reage).
+    mesaIds: s().cartasRegistradas.map((c) => c.id),
   });
 }
 
@@ -4494,6 +4498,122 @@ for (const { id, ehReu } of paridadeDeMobil) {
 const iscaHonestaOk = iscasFora.length === 0;
 if (!iscaHonestaOk) console.log('\nGR5-6 — marca de isca fora do lugar:', iscasFora.join(' · '));
 
+// ============================================================
+// OS-R6 · FASE 1 — AUDITORIA DA EXPOSIÇÃO (GR6-3, GR6-4, GR6-5, GR6-6).
+//
+// A ordem aqui é a que a OS mandou: a guarda antes do conteúdo. A exposição
+// é a peça onde é mais fácil furar a G4 sem dar por isso, e o furo só
+// apareceria no perfil que não subiu de nível.
+// ============================================================
+const dossiesR6 = montarDossies(CARTAS, DIALOGOS);
+const SUSPEITOS_R6 = CONVERSAS_R6.map((c) => c.suspeitoId);
+const reuR6 = SEED_TUTORIAL.reuCorreto;
+
+console.log('\n=== OS-R6 · FASE 1 — A EXPOSIÇÃO ===');
+console.log('Dossiê externo por suspeito, e o corte de E2 (dois terços, para cima):');
+for (const suspeitoId of SUSPEITOS_R6) {
+  const dossie = dossiesR6[suspeitoId] || [];
+  const escada = dossie.map((_, i) => exposicaoDiante(dossie.slice(0, i + 1), dossie).nivel);
+  console.log(
+    `  ${suspeitoId === reuR6 ? '▸' : ' '} ${suspeitoId.padEnd(15)} dossiê ${String(dossie.length).padStart(
+      2
+    )} · E2 a partir de ${corteDeE2(dossie.length)} · escada E0→${escada.join('→')}   ${dossie.join(' ')}`
+  );
+}
+
+// GR6-3 — FUNÇÃO PURA. Mesmas cartas ⇒ mesmo nível, em replay byte a byte;
+// a ordem de chegada das cartas à mesa não entra na conta; e o arquivo não
+// tem fonte de variação própria.
+const dossiesReplay = montarDossies(CARTAS, DIALOGOS);
+const dossiesReplayOk = JSON.stringify(dossiesR6) === JSON.stringify(dossiesReplay);
+const ordemNaoImportaR6 = SUSPEITOS_R6.every((suspeitoId) => {
+  const dossie = dossiesR6[suspeitoId] || [];
+  const direta = exposicaoDiante(dossie, dossie);
+  const invertida = exposicaoDiante([...dossie].reverse(), dossie);
+  const comIntrusas = exposicaoDiante([...dossie, 'ev_rigor', 'ev_livores'], dossie);
+  return (
+    JSON.stringify(direta) === JSON.stringify(invertida) && direta.nivel === comIntrusas.nivel
+  );
+});
+const fonteExposicao = semComentarios(readFileSync(path.join(raizSrc, 'logic/exposicao.js'), 'utf8'));
+const exposicaoSemVariacaoPropria = !/Math\.random|Date\.now|new Date\(/.test(fonteExposicao);
+const gr63PuraOk = dossiesReplayOk && ordemNaoImportaR6 && exposicaoSemVariacaoPropria;
+if (!gr63PuraOk) {
+  console.log(
+    `\nGR6-3 — replay ${dossiesReplayOk} · ordem ${ordemNaoImportaR6} · sem variação própria ${exposicaoSemVariacaoPropria}`
+  );
+}
+
+// GR6-4 — A EXPOSIÇÃO NÃO É CHAVE DE SOLUBILIDADE. Nenhuma carta nasce
+// atrás do nível: o conjunto de marcadores [[id]] alcançável numa árvore é
+// o MESMO em E0 e em E2. A prosa que varia por nível (`falaPorNivel`) não
+// pode marcar carta nenhuma — é o que torna a G4 satisfeita por construção
+// em vez de por vigilância.
+const gr64Furos = [];
+for (const [conversaId, arvore] of Object.entries(DIALOGOS)) {
+  for (const [noId, no] of Object.entries(arvore.nos || {})) {
+    const porNivel = no.falaPorNivel || {};
+    for (const nivel of Object.keys(porNivel)) {
+      if (!NIVEIS.includes(nivel)) gr64Furos.push(`${conversaId}.${noId}: nível "${nivel}" fora de E0/E1/E2`);
+      const marcadas = marcadoresDosTextos(porNivel[nivel] || []);
+      if (marcadas.size) {
+        gr64Furos.push(`${conversaId}.${noId}[${nivel}] pare carta atrás do nível: ${[...marcadas].join(' ')}`);
+      }
+    }
+  }
+}
+const gr64SemChaveOk = gr64Furos.length === 0;
+if (!gr64SemChaveOk) console.log('\nGR6-4 — carta atrás do nível:', gr64Furos.join(' · '));
+
+// GR6-5 — PARIDADE DE EXPOSIÇÃO. A regra é uma só e vale para os cinco, réu
+// incluído: E0 é mesa vazia daquele dossiê, e E2 é dois terços dele. Provado
+// por caminhada exaustiva — para todo suspeito e todo k de 0 ao tamanho do
+// dossiê, o nível bate com a fração e com nada mais. Material equivalente,
+// nível equivalente: é a GR6-5 por construção, e não por promessa.
+const gr65Furos = [];
+for (const suspeitoId of SUSPEITOS_R6) {
+  const dossie = dossiesR6[suspeitoId] || [];
+  const total = dossie.length;
+  const vistos = new Set();
+  for (let k = 0; k <= total; k += 1) {
+    const { nivel } = exposicaoDiante(dossie.slice(0, k), dossie);
+    vistos.add(nivel);
+    const esperado = k === 0 ? 'E0' : k / total >= 2 / 3 ? 'E2' : 'E1';
+    if (nivel !== esperado) {
+      gr65Furos.push(`${suspeitoId} com ${k}/${total} deu ${nivel}, esperado ${esperado}`);
+    }
+  }
+  // E nenhum suspeito fica sem degrau: os três níveis são alcançáveis para
+  // os cinco. Um dossiê que só desse E0 e E2 seria beco (G10).
+  for (const nivel of NIVEIS) {
+    if (!vistos.has(nivel)) gr65Furos.push(`${suspeitoId} não alcança ${nivel} (dossiê ${total})`);
+  }
+}
+const gr65ParidadeOk = gr65Furos.length === 0;
+if (!gr65ParidadeOk) console.log('\nGR6-5 — paridade de exposição:', gr65Furos.join(' · '));
+
+// GR6-6 — O MOTOR CONTINUA CEGO. `veredicto.js` e `acusacao.js` não leem
+// exposição nem `apontadaPor`. Mesma cegueira que já vale para aparências,
+// papéis e atributos — leitura de fonte, não confiança.
+const ARQUIVOS_DO_MOTOR = ['logic/veredicto.js', 'logic/acusacao.js'];
+const gr66Violacoes = ARQUIVOS_DO_MOTOR.filter((relativo) =>
+  /exposicao|exposicaoDiante|nivelDeExposicao|apontadaPor/.test(
+    semComentarios(readFileSync(path.join(raizSrc, relativo), 'utf8'))
+  )
+);
+const gr66MotorCegoOk = gr66Violacoes.length === 0;
+if (!gr66MotorCegoOk) console.log('\nGR6-6 — o motor lê exposição/apontadaPor em:', gr66Violacoes.join(', '));
+
+// A telemetria da Fase 0, agora traduzida em nível — o «depois» que a ata pede.
+console.log('\n  Telemetria da Fase 0, traduzida em nível:');
+for (const t of telemetriaR6) {
+  const dossie = dossiesR6[t.suspeitoId] || [];
+  const e = exposicaoDiante(t.mesaIds, dossie);
+  console.log(
+    `    ${t.perfil.padEnd(18)} ${t.suspeitoId.padEnd(15)} ${e.nivel}  (${e.tem}/${e.total})  ${e.ids.join(' ')}`
+  );
+}
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -4627,6 +4747,15 @@ const checagens = [
     paridadeDeMobilOk,
   ],
   ['GR5-6 (isca honesta): as cartas de móbil dos inocentes carregam isca; a do réu, não', iscaHonestaOk],
+  ['GR6-3 (exposição é função pura): mesmas cartas ⇒ mesmo nível; a ordem não entra na conta; sem variação própria', gr63PuraOk],
+  ['GR6-4 (a exposição não é chave de solubilidade): nenhuma carta nasce atrás do nível — os marcadores são os mesmos em E0 e em E2', gr64SemChaveOk],
+  [
+    `GR6-5 (paridade de exposição): a mesma régua para os cinco — E0 é dossiê vazio, E2 são dois terços — e os três níveis alcançáveis por todos (réu: dossiê ${
+      (dossiesR6[reuR6] || []).length
+    })`,
+    gr65ParidadeOk,
+  ],
+  ['GR6-6 (o motor continua cego): veredicto.js e acusacao.js não leem exposição nem apontadaPor', gr66MotorCegoOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;
