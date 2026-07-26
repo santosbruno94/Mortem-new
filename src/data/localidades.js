@@ -143,9 +143,14 @@ export const LOCALIDADES = [
           },
           {
             id: 'pt_oficina_pulpito',
-            rotulo: 'O púlpito de ordens',
+            // OS-R8 §3.2: era «o púlpito de ordens». Em PT, púlpito é o da
+            // igreja — e o caso tem uma (S. Miguel). O móvel de oficina que
+            // a KB atesta é o clerk's desk: escrivaninha alta de tampo
+            // inclinado (kb-mundo-vitoriano/mobiliario-por-classe.md:134), e
+            // o forro atestado é couro, não cortiça. O id do ponto não muda.
+            rotulo: 'A escrivaninha alta',
             prosa: [
-              'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. No prego, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Na prateleira de baixo, entre o mata-borrão e a caixa de bicos de pena, o [[ev_livro_pagamentos]] está de capa fechada. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
+              'A um canto, uma escrivaninha alta de tampo inclinado, o couro do tampo gasto onde o braço apoia, com um tinteiro de bancada e um prego de espetar recibos. No prego, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Na prateleira de baixo, entre o mata-borrão e a caixa de bicos de pena, o [[ev_livro_pagamentos]] está de capa fechada. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
             ],
           },
           {
