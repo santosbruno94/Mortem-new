@@ -73,37 +73,37 @@
 // fechar-se, o rapaz ergue os olhos. Nenhum deles ganha marca que os
 // outros não tenham: é a GR6-5 lida como prosa.
 const ALFINETADA_SILAS = {
-  E1: ['Responde e não emenda. O bule fica onde está, e as mãos voltam aos joelhos sem passar pela xícara.'],
+  E1: ['Responde e não emenda. O bule fica onde está, e a xícara do visitante fica por servir.'],
   E2: [
-    '"O {detective.treatment} andou perguntando de mim pela vila." Não é pergunta, e ele não espera resposta. As mãos deixam os joelhos, e ele alisa o avental dobrado sobre o braço, do vinco para fora, duas vezes. "Perguntem. Doze anos de bancada estão à vista de quem os queira conferir." E torna à teoria de sempre, mais curta desta vez: gente da estrada, atrás do caixa.',
+    '"O {detective.treatment} andou perguntando de mim pela vila." Não é pergunta, e ele não espera resposta. As mãos deixam os joelhos, e ele alisa o avental dobrado sobre o braço, do vinco para fora. "Perguntem. A bancada está à vista de quem a queira conferir." E torna à teoria de sempre, mais curta desta vez: gente da estrada, atrás do caixa.',
   ],
 };
 
 const ALFINETADA_AGNES = {
-  E1: ['A mão que alinhava a pilha para na metade do gesto e volta à beira do balcão.'],
+  E1: ['A pilha fica por endireitar, e a mão pousa na beira do balcão sem tornar a mexer-se.'],
   E2: [
-    '"{g:O senhor|A senhora} não veio saber a que horas eu fecho." Diz sem levantar a voz e sem largar o visitante dos olhos. "Pois pergunte o que veio perguntar. O que houver de meu nesta vila é meu, e ao Sr. Arthurs não devi xelim nem satisfação." A pilha do papel de luto fica por endireitar.',
+    '"{g:O senhor|A senhora} não veio saber a que horas eu fecho." Diz sem levantar a voz e sem largar o visitante dos olhos. "Pois pergunte o que veio perguntar. O que houver de meu nesta vila é meu, e ao Sr. Arthurs não devi xelim nem satisfação." E não torna a tocar no papel de luto.',
   ],
 };
 
 const ALFINETADA_GREY = {
-  E1: ['A saca desce à tábua da rampa e ali fica. O carroceiro do Finch chama uma vez, e ele não responde.'],
+  E1: ['Não torna à saca seguinte. O carroceiro do Finch chama uma vez, e ele não responde.'],
   E2: [
-    '"O {detective.treatment} já sabe disso tudo, então." Bate a farinha de uma mão na outra, duas vezes. "Melhor. Gente que chega sabendo poupa a minha manhã." Faz sinal ao carroceiro que espere, e desta vez fica de frente para responder. "Pergunte o que ainda não sabe, que eu respondo de pé."',
+    '"{g:O senhor|A senhora} já sabe disso tudo, então." Bate a farinha de uma mão na outra. "Melhor. Gente que chega sabendo poupa o meu resto de dia." Larga a saca na rampa e fica de frente para responder. "Pergunte o que ainda não sabe, que eu respondo de pé."',
   ],
 };
 
 const ALFINETADA_WALTER = {
   E1: ['O botão do colete para no meio da volta e fica preso entre os dedos até o fim da resposta.'],
   E2: [
-    '"{g:O senhor|A senhora} já fez a conta antes de entrar." A voz sai alta e não se sustenta até o fim da frase. "Pois estude o resto: um homem que deve a meia dúzia de casas não precisa matar ninguém para ser a pior pessoa de uma sala." Larga o botão. "O meu paradeiro já dei. Do que mais {g:o senhor|a senhora} trouxer, respondo sentado."',
+    '"{g:O senhor|A senhora} já fez a conta antes de entrar." A voz sai alta e não se sustenta até o fim da frase. "Pois estude o resto: um homem que deve às três casas que lhe escreveram não precisa matar ninguém para ser a pior pessoa de uma sala." Larga o botão. "O meu paradeiro já dei. Do que mais {g:o senhor|a senhora} trouxer, respondo sentado."',
   ],
 };
 
 const ALFINETADA_DAVEY = {
-  E1: ['Acaba a resposta e não torna logo ao chão. A vassoura fica encostada no ombro mais tempo do que precisa.'],
+  E1: ['Acaba a resposta e não torna logo ao serviço. A vassoura fica parada mais tempo do que precisa.'],
   E2: [
-    'Os olhos sobem do serviço e ficam erguidos. "{g:O senhor|A senhora} já andou pela bancada, então." Não é pergunta, e ele espera assim mesmo. Depois, mais baixo: "O Sr. Crane diz que é assim em toda oficina, e eu não conheço outra." A vassoura volta ao chão, e ele varre o que já está varrido.',
+    'Os olhos sobem do serviço e ficam erguidos. "{g:O senhor|A senhora} já andou pela bancada, então." Espera, e ninguém lhe responde. Depois, mais baixo: "O Sr. Crane diz que é assim em toda oficina, e eu não conheço outra." A vassoura volta ao chão, e ele varre o que já está varrido.',
   ],
 };
 
@@ -126,7 +126,7 @@ const OPCOES_B3_AGNES = [
 const OPCOES_B3_GREY = [
   { rotulo: '"O senhor cobra de um morto como cobrava de um vivo?"', vaiPara: 'b3_firme', tom: 'firme' },
   { rotulo: '"A queixa lhe custou o quê, até aqui?"', vaiPara: 'b3_cordial', tom: 'cordial' },
-  { rotulo: '"A queixa lavrada sobrevive ao queixado?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
+  { rotulo: '"A queixa lavrada sobrevive ao morto?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
   { rotulo: '"Quem pesa o ouro na vila, agora?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
 ];
 
@@ -139,8 +139,8 @@ const OPCOES_B3_WALTER = [
 
 const OPCOES_B3_DAVEY = [
   { rotulo: '"O teu ordenado, rapaz. Quem te paga agora?"', vaiPara: 'b3_firme', tom: 'firme' },
-  { rotulo: '"E o teu ordenado, Davey? Quem responde por ele?"', vaiPara: 'b3_cordial', tom: 'cordial' },
-  { rotulo: '"O teu ordenado: quanto, e de quanto em quanto tempo?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
+  { rotulo: '"Quem responde pelo teu pagamento agora, Davey?"', vaiPara: 'b3_cordial', tom: 'cordial' },
+  { rotulo: '"Quanto te davam, e de quanto em quanto tempo?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
   { rotulo: '"Levas alguma coisa para casa, ao fim da semana?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
 ];
 
@@ -280,28 +280,28 @@ export const DIALOGOS = {
       // sem nó novo. O rendimento é a `alfinetada`, que a exposição paga.
       b3_firme: {
         fala: [
-          '"Do que vivo." As mãos seguem sobre os joelhos. "Da bancada, como vivi até sexta. Há peça entregue por cobrar e peça por acabar; enquanto a casa não se resolver, é esse o serviço. O rapaz vem de manhã, e eu abro."',
+          '"Do que vivo." As mãos seguem sobre os joelhos. "Da bancada, como vivi até sexta. Há peça entregue por cobrar e peça por acabar; enquanto a casa não se resolver, é esse o serviço. O rapaz veio hoje de manhã, como vem sempre, e ficou comigo à porta."',
         ],
         alfinetada: ALFINETADA_SILAS,
         opcoes: [],
       },
       b3_cordial: {
         fala: [
-          '"Doze anos, sim." Olha o avental dobrado sobre o braço antes de responder. "Fico com o que sei fazer e com uma loja que nunca foi minha. Acendia eu aquele fogo antes de o Sr. Arthurs descer; hoje o carvão está onde ficou de sexta. Há de vir o sobrinho mandar, e eu hei de esperar que mande."',
+          '"Doze anos, sim." Olha o avental dobrado sobre o braço antes de responder. "Fico com o que sei fazer e com uma loja que nunca foi minha. Há de vir o sobrinho mandar, e eu hei de esperar que mande."',
         ],
         alfinetada: ALFINETADA_SILAS,
         opcoes: [],
       },
       b3_tecnico: {
         fala: [
-          '"O atraso está no livro, e o livro está na bancada: quatro peças em serviço, duas à espera de mola de fora." Enumera sem procurar. "Enquanto não vier procurador dizer o contrário, responde o oficial da casa, que sou eu. O que sai daquela porta sai com recibo, como sempre saiu."',
+          '"O atraso está no livro, e o livro está na bancada." Enumera sem procurar. "Enquanto não vier procurador dizer o contrário, responde o oficial da casa, que sou eu. O que sai daquela porta sai anotado, como sempre saiu."',
         ],
         alfinetada: ALFINETADA_SILAS,
         opcoes: [],
       },
       b3_obliquo: {
         fala: [
-          '"Reabrir depende de quem manda, e quem manda ainda está chegando." As mãos não deixam os joelhos. "Por mim, abria amanhã: freguês que deixou peça não tem culpa do que houve. Mas casa de defunto tem os seus dias, e eu espero."',
+          '"Reabrir depende de quem manda, e quem manda já chegou sem mandar nada." As mãos não deixam os joelhos. "Por mim, abria na segunda: freguês que deixou peça não tem culpa do que houve. Mas casa de defunto tem os seus dias."',
         ],
         alfinetada: ALFINETADA_SILAS,
         opcoes: [],
@@ -452,21 +452,21 @@ export const DIALOGOS = {
       },
       b3_cordial: {
         fala: [
-          '"Comentar é ofício da vila, e a minha loja fica na rua dela." A mão procura a beira do balcão e ali fica. "Tenho a casa, tenho o balcão e tenho quem me traga a encomenda das quintas. Basta-me."',
+          '"Comentar é ofício da vila, e a minha loja fica na rua dela." A mão procura a beira do balcão e ali fica. "Tenho a casa e tenho o balcão. Basta-me."',
         ],
         alfinetada: ALFINETADA_AGNES,
         opcoes: [],
       },
       b3_tecnico: {
         fala: [
-          '"Abre. Abriu ontem e abre na segunda." Confere o postigo do correio antes de continuar. "Encomenda que chega tem dia de sair, e o correio de Sua Majestade não fecha por luto de ninguém."',
+          '"Abre. Está aberta agora, esteve ontem, e abre na segunda." Confere o postigo do correio antes de continuar. "Encomenda que chega tem dia de sair, e o dia está marcado no livro do correio."',
         ],
         alfinetada: ALFINETADA_AGNES,
         opcoes: [],
       },
       b3_obliquo: {
         fala: [
-          'Endireita as folhas do papel com tarja antes de erguer os olhos. "Deste broche eu não me despi quando devia, e não me despi mais. Enterrei o Sr. Rooke e fiquei com o azeviche." Alinha a pilha uma última vez. "{g:O senhor|A senhora} há de ter outra pergunta."',
+          'Endireita as folhas do papel com tarja antes de erguer os olhos. "Do Sr. Rooke, que enterrei. Devia ter deixado o azeviche no fim do prazo, e não deixei." Alinha a pilha uma última vez. "{g:O senhor|A senhora} há de ter outra pergunta."',
         ],
         alfinetada: ALFINETADA_AGNES,
         opcoes: [],
@@ -600,25 +600,28 @@ export const DIALOGOS = {
         opcoes: OPCOES_B3_GREY,
       },
 
-      // BEAT 3 — a pressão. A queixa lavrada corre contra o espólio, e ele
-      // sabe disso sem precisar de quem lho explique.
+      // BEAT 3 — a pressão. Correção do perito-forense (26/07/2026): processo
+      // criminal MORRE com o acusado — não há queixa que «corra contra o
+      // espólio». O que sobrevive é a DÍVIDA, por contrato, e contra quem
+      // responder pelos bens. Grey perde a vingança e fica com a conta, que é
+      // o que a bíblia de vozes diz dele desde sempre.
       b3_firme: {
         fala: [
-          '"Cobro do espólio, que é o que a lei me deixa." Passa a saca ao outro ombro. "Quatro libras e dez xelins não morreram com ele. Quem herdar a loja herda a conta que a loja deve."',
+          '"Cobro do espólio, que é o que a lei me deixa." Passa a saca ao outro ombro. "Quatro libras e dez xelins não morreram com ele. Quando houver quem responda pelos bens, é a esse que eu cobro."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
       },
       b3_cordial: {
         fala: [
-          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe." Enxuga a testa com as costas da mão. "E custou o relógio do meu pai, que é o que não se lavra em papel nenhum."',
+          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe." Enxuga a testa com as costas da mão. "E custou o relógio do meu pai, que não voltou nem inteiro nem pesado."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
       },
       b3_tecnico: {
         fala: [
-          '"Sobrevive. O termo tem data e testemunha, e a data é anterior à morte." Desce a saca na carroça. "Quem me disser o contrário que me mostre em que folha. Até lá a queixa corre contra o espólio, e a pesagem que eu pedi continua por fazer."',
+          '"Ao homem, já não. Guarda nenhum prende defunto, e disso eu já me fiz a razão." Desce a saca na carroça. "Mas quatro libras e dez xelins são dívida da casa, e dívida a casa paga antes de repartir. Quando houver quem responda pelo espólio, respondo-lhe eu com o papel na mão, e a pesagem que eu pedi continua por fazer."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
@@ -767,28 +770,28 @@ export const DIALOGOS = {
       // voz, e ela encolhe.
       b3_firme: {
         fala: [
-          '"Vendo." O botão do colete para entre os dedos. "Vendo a loja, vendo a casa, pago o que devo e fico com o que sobrar. Não tenho mão para relógio nem paciência para bancada, e mentir sobre isso não me poupava um xelim."',
+          '"Vendo." O botão do colete para entre os dedos. "Vendo a loja, vendo a casa, pago o que devo e fico com o que sobrar. Não tenho mão para relógio nem paciência para bancada, e nunca fingi que tinha."',
         ],
         alfinetada: ALFINETADA_WALTER,
         opcoes: [],
       },
       b3_cordial: {
         fala: [
-          '"Tenho Moorford, e em Moorford tenho um armazém em juízo." O polegar corre a barba por fazer. "Meu tio me recolheu quando meu pai morreu. Agora não há quem recolha, e eu tenho quarenta e quatro anos para aprender a coisa."',
+          '"Tenho Moorford, e em Moorford tenho um armazém em juízo." O polegar corre a barba por fazer. "Meu tio me recolheu quando meu pai morreu. Agora não há quem recolha, e aos quarenta e quatro anos é que vou aprender a coisa."',
         ],
         alfinetada: ALFINETADA_WALTER,
         opcoes: [],
       },
       b3_tecnico: {
         fala: [
-          '"Não esperam. Nunca esperaram." Conta pelos dedos, como quem alinha uma fatura. "Inventário com imóvel leva meses, e a minha letra mais próxima vence antes do Natal. Hei de pedir prazo com papel de procurador na mão, que é a única coisa que um credor lê."',
+          '"Não esperam. Nunca esperaram." Conta pelos dedos, como quem alinha uma fatura. "Testamento a provar leva meses, e casa não se vende sem papel provado; a minha letra mais próxima vence antes do Natal. Hei de pedir prazo com papel de procurador na mão, e é o papel que o credor lê, não a minha cara."',
         ],
         alfinetada: ALFINETADA_WALTER,
         opcoes: [],
       },
       b3_obliquo: {
         fala: [
-          '"O quarto três eu pago com o que trouxe, e o que trouxe cabe no bolso do colete." Abotoa o botão alto e torna a desabotoá-lo. "Enquanto o caseiro me fiar, durmo aqui. Quando não fiar, durmo no trem."',
+          '"O quarto três eu pago com o que trouxe, e o que trouxe cabe no bolso do colete." Abotoa o botão alto e torna a desabotoá-lo. "Enquanto o estalajadeiro me fiar, durmo aqui."',
         ],
         alfinetada: ALFINETADA_WALTER,
         opcoes: [],
@@ -831,9 +834,9 @@ export const DIALOGOS = {
             contaEntre: ['corrob_pettigrew', 'ev_bilhete_vigario', 'ev_suplica_cesto'],
             aPartirDe: 2,
             fala: [
-              'Postos os papéis lado a lado sobre a mesa, Walter Arthurs olha-os sem estender a mão para nenhum. O botão do colete fica onde está.',
-              '"Sabia." Diz de uma vez, e o resto vem devagar. "Ele me contou na sexta, de pé atrás do balcão, com a loja ainda aberta. Que ia casar, que ia lavrar tudo de novo na segunda-feira, e que eu me arranjasse. Foi por isso que gritei, e foi por isso que ele gritou. Quem passasse na rua ouviu os dois."',
-              '"E omiti. Omiti porque um homem que sabe disso e bate à porta do tio no mesmo dia é exatamente o homem que {g:o senhor|a senhora} veio procurar." Puxa o colete para baixo, como quem se compõe para retrato. "Pois ponha no papel: eu soube, eu pedi, ele recusou, e eu fui dormir a crédito no quarto três. A conta é essa, e é a única que sei fazer sem mentir."',
+              'Ouve o resto sem estender a mão para a folha que lhe puseram diante. O botão do colete fica onde está.',
+              '"Sabia." Diz de uma vez, e o resto vem devagar. "Ele me contou na sexta, atrás do balcão, antes de correr as tampas da vitrine. Que ia casar, que ia lavrar tudo de novo na segunda-feira, e que eu me arranjasse. Foi por isso que gritei, e foi por isso que ele gritou. Quem passasse na rua ouviu os dois."',
+              '"E omiti." Endireita-se na cadeira. "Omiti porque a vergonha do que ouvi naquela loja pesa mais do que a herança que se soma depois dela. Pois ponha no papel: eu soube, eu pedi, ele recusou, e saí de lá com o chapéu na mão."',
             ],
           },
         ],
@@ -961,28 +964,28 @@ export const DIALOGOS = {
       // risco fino que a R5 apontou, e é por aqui que ele entraria.
       b3_firme: {
         fala: [
-          'Os olhos descem para a vassoura. "O Sr. Crane disse que a casa paga quando a casa puder. Eu venho assim mesmo, que o serviço não espera."',
+          'Aperta o cabo da vassoura com as duas mãos. "O Sr. Crane disse que a casa paga quando a casa puder. Eu venho assim mesmo."',
         ],
         alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
       },
       b3_cordial: {
         fala: [
-          '"O patrão pagava às sextas, antes de fechar." A vassoura fica quieta. "Sexta ele pagou, como sempre, e escreveu no livro. Na outra sexta é que eu não sei quem escreve."',
+          '"O patrão pagava às sextas, antes de fechar." A vassoura fica quieta. "Sexta ele lançou o meu, como sempre, e escreveu no livro. Na outra sexta é que eu não sei quem escreve."',
         ],
         alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
       },
       b3_tecnico: {
         fala: [
-          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Responde sem erguer os olhos do chão que varre. "Desde o fim de março nenhum deles vem comigo; ficam na casa, por conta de uma dívida da minha mãe. O patrão anotava tudo no livro da bancada."',
+          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Responde de olhos erguidos, sem procurar os números. "Desde o fim de março nenhum deles vem comigo; ficam na casa. O patrão anotava tudo no livro estreito da bancada."',
         ],
         alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
       },
       b3_obliquo: {
         fala: [
-          '"Levo a marmita, e o que a minha mãe mandar de volta dentro dela." Encosta a vassoura no ombro. "De dinheiro não levo nada desde o fim de março. Isso o patrão anotava no livro, todas as sextas."',
+          '"Levo a marmita, para a minha mãe tornar a enchê-la." Encosta a vassoura no ombro. "De dinheiro não levo nada desde o fim de março. Isso o patrão anotava no livro, todas as sextas."',
         ],
         alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
