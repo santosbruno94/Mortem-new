@@ -85,6 +85,14 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
   );
   const alfinetada = (no.alfinetada || {})[exposicao.nivel] || [];
 
+  // A ESCADA DE CONFRONTO (D8): contador autoral, nunca `requerTodas`. Cada
+  // degrau traz a sua lista curada e o corte; vale o ÚLTIMO degrau cuja
+  // contagem a mesa satisfaz. Rende prosa e mais nada — o degrau não abre nó
+  // nem marca carta.
+  const degrau = (no.degraus || [])
+    .filter((d) => (d.contaEntre || []).filter(temCarta).length >= (d.aPartirDe ?? 1))
+    .slice(-1)[0];
+
   // Escolher um tom: DESCE a árvore (definitivo) e persiste o novo beat.
   const irPara = (destino) => {
     setReacaoAtual(null);
@@ -205,6 +213,12 @@ export default function InterrogatorioDialogo({ localidadeId, dialogoId }) {
             que falha, e só. Em E0 não há nada aqui. */}
         {alfinetada.map((t, i) => (
           <ParagrafoProsa key={`${noExibido}_alf_${i}`} texto={t} />
+        ))}
+
+        {/* O degrau do confronto: o que a mesa cobra a mais quando os papéis
+            se juntam. Prosa, nunca carta. */}
+        {(degrau?.fala || []).map((t, i) => (
+          <ParagrafoProsa key={`${noExibido}_deg_${i}`} texto={t} />
         ))}
       </div>
 

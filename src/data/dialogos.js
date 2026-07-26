@@ -794,9 +794,34 @@ export const DIALOGOS = {
         ],
         opcoes: [],
       },
+      // O SEGUNDO DEGRAU (D3, OS-R6 Fase 4). A D3 dizia «Walter sabia da
+      // mudança do testamento e omite», e mandava que isso caísse no 2.º
+      // degrau do confronto. O degrau cobra o que JÁ está na mesa e não custa
+      // carta nova: o procurador guardou o pedido de tratar «mudanças no
+      // testamento, por razão de matrimônio»; o bilhete do vigário datou-o,
+      // marcando os proclamas para o domingo seguinte à morte; e a súplica
+      // amassada põe o sobrinho à porta do tio na própria sexta.
+      //
+      // A escada é CONTADOR AUTORAL, não `requerTodas` (D8): a lista é
+      // curada, o corte é uma contagem. Dois dos três bastam para o perito
+      // pressionar — e nenhum deles, sozinho, prova que ele soube.
+      //
+      // O degrau rende PROSA e mais nada: nenhum [[id]], nenhum nó novo.
+      // Aprofunda a isca sem tocar na cadeia física que o inocenta.
       confronto_testamento: {
         fala: [
           '"Herdeiro único. Sei o que se soma com isso: negócios em ruína de um lado, loja e casa do outro, e o meu nome no meio. É conta que qualquer credor meu já fez." Puxa o colete para baixo, como quem se compõe para retrato. "Pois faça-se a conta inteira, {detective.treatment}. Meu tio vivo valia-me um adiantamento assinado numa tarde; agora vale-me uma loja lacrada, um inventário e juízo pela frente. Diga-me qual dos dois convinha a um homem com credores à porta."',
+        ],
+        degraus: [
+          {
+            contaEntre: ['corrob_pettigrew', 'ev_bilhete_vigario', 'ev_suplica_cesto'],
+            aPartirDe: 2,
+            fala: [
+              'Postos os papéis lado a lado sobre a mesa, Walter Arthurs olha-os sem estender a mão para nenhum. O botão do colete fica onde está.',
+              '"Sabia." Diz de uma vez, e o resto vem devagar. "Ele me contou na sexta, de pé atrás do balcão, com a loja ainda aberta. Que ia casar, que ia lavrar tudo de novo na segunda-feira, e que eu me arranjasse. Foi por isso que gritei, e foi por isso que ele gritou. Quem passasse na rua ouviu os dois."',
+              '"E omiti. Omiti porque um homem que sabe disso e bate à porta do tio no mesmo dia é exatamente o homem que {g:o senhor|a senhora} veio procurar." Puxa o colete para baixo, como quem se compõe para retrato. "Pois ponha no papel: eu soube, eu pedi, ele recusou, e eu fui dormir a crédito no quarto três. A conta é essa, e é a única que sei fazer sem mentir."',
+            ],
+          },
         ],
         opcoes: [],
       },

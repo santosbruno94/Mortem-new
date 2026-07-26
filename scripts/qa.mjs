@@ -4562,6 +4562,25 @@ for (const [conversaId, arvore] of Object.entries(DIALOGOS)) {
         gr64Furos.push(`${conversaId}.${noId}[${nivel}] pare carta atrás do nível: ${[...marcadas].join(' ')}`);
       }
     }
+    // A mesma regra vale para a escada de confronto (D8): degrau rende prosa,
+    // nunca carta. Um degrau que parisse [[id]] poria prova atrás de posse de
+    // prova — que é o beco que a G4 proíbe, por outro caminho.
+    for (const [i, d] of (no.degraus || []).entries()) {
+      const marcadas = marcadoresDosTextos(d.fala || []);
+      if (marcadas.size) {
+        gr64Furos.push(`${conversaId}.${noId} degrau ${i} pare carta: ${[...marcadas].join(' ')}`);
+      }
+      if (!(d.contaEntre || []).length) gr64Furos.push(`${conversaId}.${noId} degrau ${i} sem lista de contagem`);
+      const corte = d.aPartirDe ?? 1;
+      // Contador autoral, não `requerTodas` (D8): o corte tem de caber na
+      // lista, e a lista tem de citar carta que existe.
+      if (corte < 1 || corte > (d.contaEntre || []).length) {
+        gr64Furos.push(`${conversaId}.${noId} degrau ${i}: corte ${corte} fora da lista`);
+      }
+      for (const id of d.contaEntre || []) {
+        if (!CARTAS.some((c) => c.id === id)) gr64Furos.push(`${conversaId}.${noId} degrau ${i} conta carta inexistente: ${id}`);
+      }
+    }
   }
 }
 const gr64SemChaveOk = gr64Furos.length === 0;

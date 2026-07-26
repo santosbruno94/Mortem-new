@@ -617,6 +617,23 @@ async function main() {
     await page.locator('[data-confrontos] [data-requer-carta="ev_registro_estalagem"]').click();
     await espera(page, 300);
     checar('Onda 6: o registro desmorona o álibi de Walter', (await page.locator('body').innerText()).includes('Não houve carro'));
+    await page.locator('.opcao-dialogo--voltar').first().click();
+    await espera(page, 200);
+    // OS-R6 (D3): o SEGUNDO DEGRAU do confronto do testamento. A escada é
+    // contador autoral (D8): com dois dos três papéis na mesa, o herdeiro
+    // admite que soube da mudança e diz por que a omitiu. Rende prosa e
+    // nenhuma carta — a cadeia física que o inocenta fica onde estava.
+    checar(
+      'OS-R6: a mesa autoriza o confronto do testamento',
+      (await page.locator('[data-confrontos] [data-requer-carta="dep_testamento"]').count()) === 1
+    );
+    await page.locator('[data-confrontos] [data-requer-carta="dep_testamento"]').click();
+    await espera(page, 300);
+    const falaDoTestamento = await page.locator('body').innerText();
+    checar('OS-R6: o primeiro degrau do testamento continua de pé', falaDoTestamento.includes('Herdeiro único'));
+    checar('OS-R6 (D3): o segundo degrau cobra o que a mesa já tem, e Walter admite que soube', falaDoTestamento.includes('Sabia.'));
+    await page.locator('.opcao-dialogo--voltar').first().click();
+    await espera(page, 200);
     await fecharOverlay(page);
     // Segunda visita ao réu DEPOIS do registro da estalagem: agora a prova está
     // na mesa e a caixa de confronto abre a pergunta da estalagem; confrontá-la
