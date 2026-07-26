@@ -5335,6 +5335,189 @@ console.log(
 );
 if (!gr91ProcedenciaOk) console.log('GR9-1 — procedência no banco:', gr91Furos.slice(0, 12).join(' · '));
 
+// ============================================================
+// OS-R9 · FASE 2 — A EXPOSIÇÃO E O DEGRAU NO BANCO (GR9-2).
+// ============================================================
+// A GR6-5 prova a paridade de UM elenco de cinco, por caminhada exaustiva.
+// Esta prova a de 155, e acrescenta a perna que o tutorial não precisava de
+// ter: lá os cinco dossiês são 5·4·2·5·3 e os três níveis são de todos por
+// acidente feliz do material; aqui o material varia por seed, e a Fase 0
+// mediu o que isso custava — o réu alcançava os três níveis em 31 casos de
+// 31, e os inocentes em 43%. **Quantos degraus um suspeito tem era um
+// delator**, e nenhuma guarda o apanhava porque todas olhavam o corte.
+//
+// As cinco pernas:
+//   (1) OS TRÊS NÍVEIS SÃO DE TODOS — a caminhada exaustiva da GR6-5, agora
+//       sobre 155 dossiês em vez de cinco;
+//   (2) O NÚMERO DE DEGRAUS NÃO DELATA — réu e inocente alcançam a mesma
+//       quantidade de níveis, e a igualdade é medida, não prometida;
+//   (3) O BEAT 3 EXISTE EM TODA ÁRVORE E EM TODO TOM, e alcança-se de
+//       qualquer tom do beat 2 (a régua da GR6-7, em lote);
+//   (4) NADA DE GRAÇA (GR9-3) — nenhum `[[id]]` na fala do beat 3, na
+//       alfinetada nem no degrau: o que eles rendem é caráter, e caráter não
+//       é carta;
+//   (5) O DEGRAU É A EXPOSIÇÃO DITA — o corte de todo degrau gerado é
+//       exatamente `corteDeE2` da sua própria lista. Se as duas contas
+//       divergissem, o degrau viraria um segundo eixo, com uma segunda
+//       chance de delatar.
+const gr92Furos = [];
+const TONS_R9 = ['firme', 'cordial', 'tecnico', 'obliquo'];
+let dossiesMedidos = 0;
+const niveisDoReu = [];
+const niveisDoInocente = [];
+for (const caso of BANCO_R9) {
+  const dossies = montarDossies(caso.cartas, caso.dialogos);
+  const reu = caso.verdadeDeOuro.reuCorreto;
+  for (const [arvoreId, arvore] of Object.entries(caso.dialogos || {})) {
+    const suspeitoId = arvore.suspeitoId;
+    if (!suspeitoId) continue;
+    const dossie = dossies[suspeitoId] || [];
+    dossiesMedidos += 1;
+
+    // (1) e (2) — a caminhada, e a conta que compara réu com inocente.
+    const vistos = new Set();
+    for (let k = 0; k <= dossie.length; k += 1) {
+      const { nivel } = exposicaoDiante(dossie.slice(0, k), dossie);
+      vistos.add(nivel);
+      const esperado = dossie.length === 0 || k === 0 ? 'E0' : k / dossie.length >= 2 / 3 ? 'E2' : 'E1';
+      if (nivel !== esperado) {
+        gr92Furos.push(`${caso.id}/${suspeitoId} com ${k}/${dossie.length} deu ${nivel}, esperado ${esperado}`);
+      }
+    }
+    (suspeitoId === reu ? niveisDoReu : niveisDoInocente).push(vistos.size);
+    for (const nivel of NIVEIS) {
+      if (!vistos.has(nivel)) gr92Furos.push(`${caso.id}/${suspeitoId} não alcança ${nivel} (dossiê ${dossie.length})`);
+    }
+
+    // (3) — o beat 3 em todo tom, e alcançável de qualquer tom do beat 2.
+    for (const tom of TONS_R9) {
+      const b3 = arvore.nos?.[`b3_${tom}`];
+      if (!b3) {
+        gr92Furos.push(`${caso.id}/${arvoreId}: sem b3_${tom}`);
+        continue;
+      }
+      const saidas = new Set((arvore.nos?.[`b2_${tom}`]?.opcoes || []).map((o) => o.vaiPara));
+      for (const destino of TONS_R9) {
+        if (!saidas.has(`b3_${destino}`)) gr92Furos.push(`${caso.id}/${arvoreId}: b2_${tom} não chega a b3_${destino}`);
+      }
+    }
+
+    // (4) e (5) — o que o beat 3, a alfinetada e o degrau podem render.
+    for (const [noId, no] of Object.entries(arvore.nos || {})) {
+      const textosSemCarta = [
+        ...(noId.startsWith('b3_') ? no.fala || [] : []),
+        ...Object.values(no.alfinetada || {}).flat(),
+        ...(no.degraus || []).flatMap((d) => d.fala || []),
+      ];
+      const marcadas = marcadoresDosTextos(textosSemCarta);
+      if (marcadas.size) gr92Furos.push(`${caso.id}/${arvoreId}.${noId} pare carta: ${[...marcadas].join(' ')}`);
+      for (const [i, d] of (no.degraus || []).entries()) {
+        const lista = d.contaEntre || [];
+        if (!lista.length) gr92Furos.push(`${caso.id}/${arvoreId}.${noId} degrau ${i} sem lista`);
+        for (const id of lista) {
+          if (!caso.cartas.some((c) => c.id === id)) gr92Furos.push(`${caso.id}/${arvoreId}.${noId} degrau ${i} conta carta inexistente: ${id}`);
+        }
+        const corte = d.aPartirDe ?? 1;
+        if (corte < 1 || corte > lista.length) gr92Furos.push(`${caso.id}/${arvoreId}.${noId} degrau ${i}: corte ${corte} fora da lista`);
+        if (corte !== corteDeE2(lista.length)) {
+          gr92Furos.push(`${caso.id}/${arvoreId}.${noId} degrau ${i}: corte ${corte} ≠ corteDeE2(${lista.length})=${corteDeE2(lista.length)}`);
+        }
+      }
+    }
+  }
+}
+// (2), a conta: a média de níveis alcançados tem de bater exatamente. Não é
+// banda — é igualdade, porque qualquer diferença aqui É o tell.
+const mediaReu = niveisDoReu.reduce((a, b) => a + b, 0) / (niveisDoReu.length || 1);
+const mediaInocente = niveisDoInocente.reduce((a, b) => a + b, 0) / (niveisDoInocente.length || 1);
+if (mediaReu !== mediaInocente) {
+  gr92Furos.push(`níveis alcançados: réu ${mediaReu.toFixed(2)} × inocente ${mediaInocente.toFixed(2)} — a diferença é o tell`);
+}
+// E a paridade do BEAT 3 quanto à G3, em duas pernas — porque a primeira
+// que se escreveu media ruído de amostragem, e não tell. A grade tem 8
+// classes × 4 tons × 2 saídas × 4 têmperas de idade; com 31 réus contra 124
+// inocentes, um texto que calhe a um réu e a nenhum inocente é o tamanho da
+// amostra a falar, não o gerador. O que É verificável são estas duas:
+//
+//   (a) POR FONTE, como a GR6-6 faz: o derivador do beat 3 não sabe quem é
+//       o réu. `falaB3`, `alfinetadaDe` e `degrauDoTrato` não recebem o
+//       papel e não o consultam — se o consultassem, haveria por onde nascer
+//       marca textual do culpado, e nenhuma amostra a apanharia de fora;
+//   (b) POR LOTE: nenhuma CLASSE SOCIAL é exclusiva de réus no banco. A
+//       célula é de classe, e uma classe que só o culpado ocupasse faria da
+//       própria grade um delator, com prosa impecável.
+const fonteDerivador = semComentarios(readFileSync(path.join(raizSrc, 'gerador/dialogos_gerados.js'), 'utf8'));
+// As STRINGS saem antes da varredura, e não é detalhe: a prosa deste
+// derivador diz «ponha no papel» na boca de um suspeito, e uma guarda que
+// lesse literais acusaria o gerador de consultar o papel dramático por
+// causa de uma folha de papel. Mede-se CÓDIGO; a prosa mede-se noutro lugar.
+const semLiterais = (fonte) => fonte.replace(/'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"|`(?:\\.|[^`\\])*`/g, "''");
+const trechoBeat3 = semLiterais(
+  fonteDerivador.slice(
+    fonteDerivador.indexOf('const FECHO_POR_CLASSE'),
+    fonteDerivador.indexOf('function degrauDoTrato') + 400
+  )
+);
+if (/\bpapel\b|\breu\b|assassino|culpado/.test(trechoBeat3)) {
+  gr92Furos.push('o derivador do beat 3 consulta o papel de quem responde');
+}
+// E o CASTING é cego ao ofício: o assassino sai de `candidatos` por hash
+// puro, sem ponderação nenhuma (a vítima é que é ponderada por classe — «quem
+// tem o que tirar»). Provado por fonte, porque em lote de 31 a coincidência
+// é indistinguível da regra.
+const fonteCaso = semLiterais(semComentarios(readFileSync(path.join(raizSrc, 'gerador/caso.js'), 'utf8')));
+if (!/candidatos\[hashString\([^)]*\)\s*%\s*candidatos\.length\]/.test(fonteCaso)) {
+  gr92Furos.push('o sorteio do assassino deixou de ser uniforme sobre os candidatos');
+}
+if (/PESO_[A-Z_]*ASSASSINO|pesoAssassino/.test(fonteCaso)) {
+  gr92Furos.push('há ponderação de classe no sorteio do assassino');
+}
+const classesDoReu = new Set();
+const classesDoInocente = new Set();
+for (const caso of BANCO_R9) {
+  for (const s of caso.suspeitos) {
+    const alvo = s.id === caso.verdadeDeOuro.reuCorreto ? classesDoReu : classesDoInocente;
+    // A classe do suspeito lê-se do subtítulo da árvore dele (o pacote não
+    // serializa a ficha); o que importa é a CÉLULA, e o subtítulo é ela.
+    const arvore = Object.values(caso.dialogos || {}).find((a) => a.suspeitoId === s.id);
+    if (arvore?.subtitulo) alvo.add(String(arvore.subtitulo).split(',')[0]);
+  }
+}
+// O ofício exclusivo de réu mede-se em BANDA, e não a zero. Com 31 réus
+// sorteados uniformemente sobre 23 ofícios distintos, exigir que nenhum
+// ofício calhe só a réus é exigir que uma coincidência não aconteça — a
+// guarda reprovaria por sorte de seed, que é o defeito que a OS-R9 §3
+// manda evitar. O que reprova é CONCENTRAÇÃO: um ofício que seja réu três
+// vezes e inocente nenhuma já não é coincidência, e a fração do banco em
+// ofício exclusivo tem teto.
+const oficiosSoDeReu = [...classesDoReu].filter((c) => !classesDoInocente.has(c));
+let reusEmOficioExclusivo = 0;
+for (const caso of BANCO_R9) {
+  const arvore = Object.values(caso.dialogos || {}).find((a) => a.suspeitoId === caso.verdadeDeOuro.reuCorreto);
+  const oficio = String(arvore?.subtitulo || '').split(',')[0];
+  if (oficiosSoDeReu.includes(oficio)) reusEmOficioExclusivo += 1;
+}
+const contagemPorOficio = new Map();
+for (const caso of BANCO_R9) {
+  const arvore = Object.values(caso.dialogos || {}).find((a) => a.suspeitoId === caso.verdadeDeOuro.reuCorreto);
+  const oficio = String(arvore?.subtitulo || '').split(',')[0];
+  if (oficiosSoDeReu.includes(oficio)) contagemPorOficio.set(oficio, (contagemPorOficio.get(oficio) || 0) + 1);
+}
+for (const [oficio, n] of contagemPorOficio) {
+  if (n >= 3) gr92Furos.push(`ofício ${oficio} é réu ${n} vezes e inocente nenhuma — deixou de ser coincidência`);
+}
+const fracaoExclusiva = reusEmOficioExclusivo / BANCO_R9.length;
+if (fracaoExclusiva > 0.2) {
+  gr92Furos.push(`${Math.round(100 * fracaoExclusiva)}% dos réus em ofício que nenhum inocente ocupa (teto 20%)`);
+}
+const gr92ParidadeLoteOk = gr92Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 2 — EXPOSIÇÃO E DEGRAU NO BANCO ===');
+console.log(
+  `  ${dossiesMedidos} dossiês medidos · níveis alcançados: réu ${mediaReu.toFixed(2)} · inocente ${mediaInocente.toFixed(2)} · ` +
+    `${classesDoReu.size} ofícios de réu, ${oficiosSoDeReu.length} sem inocente (${Math.round(100 * fracaoExclusiva)}% do banco, teto 20%)`
+);
+if (!gr92ParidadeLoteOk) console.log('GR9-2 — paridade em lote:', gr92Furos.slice(0, 12).join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5498,6 +5681,10 @@ const checagens = [
   [
     `GR8-2 (nenhum rótulo conclui pelo jogador): ${gr82Medidas} strings visíveis medidas em ${ARQUIVOS_MURAL.length} arquivos do mural (literais + texto JSX) — nenhuma diz «mentira», «desmente», «forjado» nem «culpado»; a gaveta nomeia o que contém, e quem julga é o desfecho`,
     gr82RotuloNaoConcluiOk,
+  ],
+  [
+    `GR9-2 (paridade de exposição em lote): ${dossiesMedidos} dossiês, os três níveis alcançáveis por TODOS — réu e inocente com a mesma média de níveis (${mediaReu.toFixed(2)}); beat 3 em toda árvore e em todo tom, alcançável de qualquer tom do beat 2; nenhum marcador de carta em beat 3, alfinetada ou degrau; e o corte de todo degrau é o próprio corteDeE2 da sua lista`,
+    gr92ParidadeLoteOk,
   ],
   [
     `GR9-1 (procedência no banco gerado): ${casosComMapa}/${BANCO_R9.length} casos com mapa, ${entradasR9} entradas com lastro (carta do catálogo, boca do elenco, forma do vocabulário); feixe em ${Math.round((100 * casosComFeixe) / BANCO_R9.length)}% dos casos (banda 40–95%), com ${casosComFeixeD16} a realizar a D16 — e toda alegação posta na boca de outrem tem o evento que a sustenta`,

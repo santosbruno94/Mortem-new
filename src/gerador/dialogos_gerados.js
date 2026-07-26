@@ -46,6 +46,10 @@
 import { hashString } from '../logic/hash.js';
 import { hashDecisao } from './hash_gerador.js';
 import { REGIOES_EXIGIVEIS, SINAL_POR_METODO } from './marcas_exigiveis.js';
+// O corte do E2 vem do MOTOR (src/logic/exposicao.js), e não de uma cópia
+// aqui: o degrau só cai no mesmo ponto que o nível se as duas contas forem
+// literalmente a mesma função (OS-R9 Fase 2).
+import { corteDeE2 } from '../logic/exposicao.js';
 
 // ---------------------------------------------------------------------
 // Tom ressonante por trait (tabela fechada da spec §8.5). Sem trait, cai
@@ -256,6 +260,376 @@ function perguntasArremate(vitima, sal) {
       tom: 'obliquo',
     },
   ];
+}
+
+// ---------------------------------------------------------------------
+// O BEAT 3 GERADO (OS-R9 · Fase 2) — a pergunta da consequência.
+//
+// O tutorial estreou o terceiro beat como o beat do que esta morte CUSTA
+// ou RENDE a quem responde: o ordenado do aprendiz, o inventário do
+// sobrinho, a loja da governanta. É o beat em que a exposição se paga, e
+// é por isso que ele é o último a descer.
+//
+// PARIDADE POR CONSTRUÇÃO (GR9-2, e é a razão de o beat não olhar o
+// papel): `falaB2` ramifica em `papel === 'reu'` — com guarda própria e
+// decisão registada. Este não ramifica em nada. A mesma grade de classe e
+// de tom responde por réu e por inocente, e nenhuma célula existe só de
+// um lado. A G3 vale aqui sem vigilância nenhuma.
+// ---------------------------------------------------------------------
+function perguntasFecho(vitima, pessoa, sal) {
+  const V = (pool, chave) => variante(pool, `${sal}|pergF|${pessoa.id}|${chave}`);
+  // A vítima e o interrogado têm gênero próprio, e nenhum dos dois é o do
+  // perito: `{g:…}` flexiona pelo pronome do DETECTIVE e não serve aqui.
+  const mortoA = vitima.genero === 'feminino' ? 'Morta ela' : 'Morto ele';
+  const oSr = pessoa.genero === 'feminino' ? 'a senhora' : 'o senhor';
+  return [
+    {
+      rotulo: V(
+        ['"O que lhe muda, com esta morte?"', '"Diga o que esta morte lhe muda."', `"${mortoA}, o que muda para si?"`],
+        'firme'
+      ),
+      vaiPara: 'b3_firme',
+      tom: 'firme',
+    },
+    {
+      rotulo: V(
+        [
+          `"E ${oSr}, como fica depois disto?"`,
+          '"Como fica a sua vida, passado o enterro?"',
+          `"Há de ser um baque. Como fica ${oSr}?"`,
+        ],
+        'cordial'
+      ),
+      vaiPara: 'b3_cordial',
+      tom: 'cordial',
+    },
+    {
+      rotulo: V(
+        [
+          '"Do que vive daqui para a frente? Diga a fonte."',
+          '"De onde lhe vem o sustento, agora? Quero a fonte."',
+          '"Quem lhe paga, a partir de agora, e de quanto em quanto tempo?"',
+        ],
+        'tecnico'
+      ),
+      vaiPara: 'b3_tecnico',
+      tom: 'tecnico',
+    },
+    {
+      rotulo: V(
+        ['"A vila amanhece igual, depois disto?"', '"Amanhã a vila abre as portas na mesma hora?"', '"E a vila, perde o quê?"'],
+        'obliquo'
+      ),
+      vaiPara: 'b3_obliquo',
+      tom: 'obliquo',
+    },
+  ];
+}
+
+// A REGRA DE RUBRICA DESTE BEAT (guia §4.10, e é a lição da OS-R8). A fala
+// base e a `alfinetada` imprimem-se na MESMA tela. Para que nunca haja duas
+// mãos ocupadas ali, os dois textos ocupam partes diferentes do corpo por
+// construção: a fala base fica na VOZ, no OLHAR e no TEMPO; a alfinetada
+// fica nas MÃOS e no que elas seguram. Nenhuma célula desta grade toca a
+// outra, e é assim que a colisão fica impossível em vez de improvável.
+// A GRADE É DE CLASSE, E NÃO DE MACROGRUPO, e a razão é de conteúdo: este
+// beat pergunta DE QUE SE VIVE, e disso cada ofício responde com as suas
+// próprias palavras. O macrogrupo de três serve à `falaB2`, que abre a
+// conversa; aqui ele punha renda de terra na boca de uma mestra-escola e
+// gado na de uma lavadeira. Oito classes, quatro tons, duas saídas cada.
+const FECHO_POR_CLASSE = {
+  gentry: {
+    firme: [
+      'A resposta não vem de pronto. "Muda-me a vizinhança e o trato de anos. De renda, nada: o que me sustenta sustentava-me antes."',
+      'Deixa a pergunta assentar antes de responder. "Perco quem me tratava por igual nesta vila. De haveres, não perco nem ganho."',
+    ],
+    cordial: [
+      'A voz baixa um tom e demora nele. "Fica-se pior, {detective.treatment}. Não de bolso: de companhia. Nesta vila conta-se pelos dedos quem se pode receber sem cerimônia."',
+      'Responde devagar, como quem escolhe. "Fica-se com uma cadeira vazia à mesa e o mesmo rendimento de sempre. Das duas, a primeira pesa mais."',
+    ],
+    tecnico: [
+      'Dá a resposta na ordem em que foi pedida. "Rendas de terra e arrendamentos ao ano. Nada disso passava por quem morreu; o procurador confirma cada verba, se quiser."',
+      'Responde sem procurar a palavra. "O sustento vem de renda, e vinha antes. Nem uma linha das minhas contas se lê diferente amanhã."',
+    ],
+    obliquo: [
+      'Olha a rua para além da porta antes de responder. "Abre. A vila abre sempre. Há de abrir a falar disto, e daqui a um mês fala de outra coisa."',
+      'Espera que passe uma carroça na rua e só então responde. "Amanhece igual, e aí está o que custa. Uma morte destas devia parar alguma coisa, e não para."',
+    ],
+  },
+  clero: {
+    firme: [
+      'A resposta vem sem que o rosto mude. "Muda-me um banco vazio na nave e um nome a mais no livro dos óbitos. De côngrua, nada: quem a paga é a diocese."',
+      'Junta as mãos e responde de uma vez. "Perco uma alma que me era dada a guardar. É o que muda, e não é pouco."',
+    ],
+    cordial: [
+      'A voz desce ao registro com que se fala a quem chora. "Fica-se com o trabalho de consolar os que ficaram, {detective.treatment}, e esse é o mais pesado que a paróquia tem."',
+      'Demora na resposta, e a voz não se levanta. "Fica-se de luto com a freguesia inteira. Enterra-se, e depois é que a falta se aprende."',
+    ],
+    tecnico: [
+      'Responde como quem já deu esta conta a um bispo. "Da côngrua, paga por trimestre, e do que a paróquia arrecada em ofertório. Nem uma coisa nem outra vinha de quem morreu."',
+      'Dá a fonte antes que se peça. "A côngrua e a casa paroquial, ambas da diocese. Os livros da paróquia estão abertos a quem os quiser conferir."',
+    ],
+    obliquo: [
+      'Olha o relógio da torre pela janela antes de falar. "Toca-se às sete, como em toda quarta-feira. A vila levanta-se ao sino, e o sino não sabe de luto."',
+      'Deixa a pergunta assentar. "Amanhece, e no domingo há de estar a igreja cheia. Uma morte destas enche igreja por três semanas."',
+    ],
+  },
+  profissional: {
+    firme: [
+      'A resposta é curta e não se enfeita. "Muda-me um nome entre os que me procuravam. De honorários, o que se perde perde-se; havia outros nomes."',
+      'Responde de pronto, e o rosto não acompanha. "Perco quem me buscava. Não é a primeira vez que perco assim, e não é disso que se vive."',
+    ],
+    cordial: [
+      'A voz baixa, e a frase leva o seu tempo. "Fica-se pior, {detective.treatment}. Doze anos a servir a mesma casa criam coisa que não se lança em conta nenhuma."',
+      'Responde como quem já respondeu a isto noutras casas. "Fica-se com o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez."',
+    ],
+    tecnico: [
+      'Responde na ordem pedida, e não acrescenta. "De honorários, cobrados por serviço e lançados em livro próprio. O que esta casa devia está lá, e vai a inventário como qualquer outra dívida."',
+      'Dá a resposta com a exatidão de quem a tem escrita. "Vivo do exercício, e o exercício não depende de uma casa só. O livro mostra quantas casas são."',
+    ],
+    obliquo: [
+      'Volta-se um instante para a janela. "Abre. A vila há de precisar de mim amanhã como precisou ontem, e não escolhe a semana para isso."',
+      'Espera, e a resposta vem inteira. "Amanhece igual. A vila fala disto uma semana e depois volta a falar de chuva."',
+    ],
+  },
+  comerciante: {
+    firme: [
+      '"Muda-me a freguesia." Responde de pronto, sem enfeitar. "Quem morre leva o que comprava. Conta-se, e conta-se depressa."',
+      '"Muda-me uma conta corrente." A resposta sai inteira, de uma vez. "O que se devia e o que se comprava fica em aberto, e aberto assim resolve-se mal."',
+    ],
+    cordial: [
+      'Demora a responder, e a voz vem mais rouca. "Faz-se falta, {detective.treatment}. Não é só o que se comprava: é a conversa da hora de abrir, que agora não vem."',
+      'A resposta vem contada com vagar. "Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras."',
+    ],
+    tecnico: [
+      'Responde com números, sem que se peça duas vezes. "Vivo do que passa pelo balcão, e o que passava por esta conta era pouco do total. Está escrito no livro; o livro está ali."',
+      'Dá a fonte antes de dar o valor. "Do balcão, e do fiado que se cobra ao fim do mês. Se quiser conferir a soma, o caderno abre-se agora."',
+    ],
+    obliquo: [
+      'Volta os olhos para o interior da loja antes de responder. "Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro."',
+      'Deixa a pergunta no ar um instante. "Amanhece igual. Perde uma casa que gastava, e disso a vila lembra-se por um tempo."',
+    ],
+  },
+  artesao: {
+    firme: [
+      '"Muda-me uma encomenda." Responde sem largar o que tem entre mãos. "Ficou serviço começado que agora ninguém vem buscar. Paga-se com o inventário, dizem."',
+      'A resposta sai curta, e a bancada continua a ser olhada. "Muda-me trabalho que estava ajustado. Ajusta-se outro; é o que há."',
+    ],
+    cordial: [
+      'Limpa as mãos uma na outra antes de responder. "Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa."',
+      'A voz vem mais devagar do que o resto da conversa. "Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa."',
+    ],
+    tecnico: [
+      'Responde e volta o olho ao que estava a fazer. "Do serviço encomendado, e há encomenda ajustada até o Natal. Deste morto vinha uma parte pequena, e está anotada."',
+      'Dá a conta sem procurar. "Vivo do que sai da bancada. O que esta casa devia está no caderno, com a data em que se ajustou."',
+    ],
+    obliquo: [
+      'Olha para dentro da oficina antes de falar. "Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre."',
+      'Espera o tempo de dois fôlegos. "Amanhece. O serviço não se faz sozinho por causa de enterro nenhum."',
+    ],
+  },
+  lavrador: {
+    firme: [
+      '"Muda pouco." A resposta é curta e não se alonga. "Quem anda no campo anda na mesma. O nome do patrão é que troca, e o meu não."',
+      '"Muda o quê?" Repete a pergunta antes de a responder. "Trabalho havia antes e há de haver depois. Come-se do que se fizer."',
+    ],
+    cordial: [
+      'A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. "Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim."',
+      'Responde baixo, e o chapéu gira uma volta nas mãos. "Fica-se como se estava, com uma morte a mais para se pensar de noite."',
+    ],
+    tecnico: [
+      'Responde o perguntado e para. "Do jornal do dia, pago ao sábado. Quem me paga é quem me pagava, e não era quem morreu."',
+      'Dá a conta como lhe ensinaram a dar. "Tanto por dia, e a semana fecha ao sábado. Da casa do morto não me vinha nada, nem me vem."',
+    ],
+    obliquo: [
+      'Olha o céu antes de responder, como quem mede o dia. "Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma."',
+      'Cala-se um instante, e a resposta vem depois disso. "Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida."',
+    ],
+  },
+  criadagem: {
+    firme: [
+      '"Muda-me uma porta onde eu era chamada, se a fecharem." A resposta sai baixa e inteira. "Chamam-me noutras. Costumo ter com que me ocupar."',
+      'Responde sem levantar os olhos. "Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou."',
+    ],
+    cordial: [
+      'A voz falha uma vez e recompõe-se. "Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas."',
+      'Responde miúdo, e os dedos prendem-se um no outro. "Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite."',
+    ],
+    tecnico: [
+      'Responde o que se lhe pergunta, e nada além. "Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto."',
+      'Dá a conta com cuidado, como quem repete o que ouviu ler. "Tanto por vez, e mais nas semanas de mais serviço. Quem me paga há de dizer o mesmo, se lho perguntarem."',
+    ],
+    obliquo: [
+      'Olha para o caminho antes de responder. "Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho."',
+      'Baixa a voz mais ainda. "Amanhece. Fala-se disto de cozinha em cozinha a manhã inteira, e depois mandam calar, e cala-se."',
+    ],
+  },
+  servico_do_condado: {
+    firme: [
+      'Responde como quem lavra. "Muda-me um nome no livro de ocorrências. De soldo, nada: quem o paga é o condado."',
+      'A resposta vem lavrada. "Muda-me serviço a mais até isto fechar. O soldo é o mesmo, com morte ou sem ela."',
+    ],
+    cordial: [
+      'Tira o quepe antes de responder. "Fica-se pior, {detective.treatment}. Numa vila desta conta, a gente conhece todo mundo pelo nome."',
+      'A voz sai mais baixa do que o uniforme faria supor. "Fica-se com a vila a olhar para a gente à espera. É o que mais pesa."',
+    ],
+    tecnico: [
+      'Responde na ordem de folha. "Soldo do condado, pago ao mês, mais a fardeta ao ano. Nenhum dos dois passava por particular nenhum."',
+      'Dá a resposta como quem preenche linha. "Do soldo, e do soldo só. Está tudo em folha, e a folha assina-se na sede."',
+    ],
+    obliquo: [
+      'Confere a hora antes de responder. "Abre. A ronda sai à mesma hora, e há de sair amanhã, e no domingo também."',
+      'Espera, e a resposta sai medida. "Amanhece. Por uns dias há de haver mais gente à porta da estalagem a comentar, e depois passa."',
+    ],
+  },
+};
+
+// A TÊMPERA DE IDADE (guia §8.2). Entra como acréscimo curto, e sempre em
+// VOZ, OLHAR ou TEMPO — nunca em mão nem em objeto, que é o território da
+// `alfinetada` que sai na mesma tela (§4.10). Sem isto, a grade responderia
+// igual por um rapaz de catorze anos e por uma mulher de cinquenta e sete.
+const TEMPERA_POR_IDADE = {
+  jovem: [
+    ' E acrescenta, mais baixo: "É o que me disseram em casa, senhor."',
+    ' A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte.',
+  ],
+  plena: ['', ''],
+  madura: [
+    ' "São vinte e tantos anos disto", acrescenta, "e nunca vi ano nenhum mudar por causa de uma morte."',
+    ' Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu.',
+  ],
+  velha: [
+    ' Mede o presente por outro tempo: "Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé."',
+    ' A memória longa entra como fato: "Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora."',
+  ],
+};
+
+function faixaEtaria(idade) {
+  if (idade <= 19) return 'jovem';
+  if (idade <= 44) return 'plena';
+  if (idade <= 59) return 'madura';
+  return 'velha';
+}
+
+function falaB3(ctx, tom) {
+  const { pessoa } = ctx;
+  const grade = FECHO_POR_CLASSE[pessoa.classeSocial] || FECHO_POR_CLASSE.lavrador;
+  const base = variante(grade[tom], `${ctx.sal}|b3|${tom}`);
+  const faixa = faixaEtaria(pessoa.idade);
+  let tempera = variante(TEMPERA_POR_IDADE[faixa], `${ctx.sal}|b3idade|${tom}`);
+  // Duas têmperas trazem palavra flexionada na boca de quem fala; as outras
+  // duas não têm nenhuma, e por isso não passam por aqui.
+  if (pessoa.genero === 'feminino') {
+    tempera = tempera.replace('quando eu era moço', 'quando eu era moça').replace(', senhor."', ', senhora."');
+  }
+  return [base + tempera];
+}
+
+// A ALFINETADA — o que o beat 3 rende A MAIS conforme o perito chegou com
+// mais ou menos dossiê na mesa (src/logic/exposicao.js).
+//
+// E1: a compostura falha UMA vez, num gesto. E2: {g:o suspeito|a suspeita}
+// diz, à sua maneira, que o perito chegou sabendo. O acréscimo é CARÁTER,
+// nunca fato novo do caso — nenhuma alfinetada cita carta, porque quem
+// chega em E2 pode ter QUAISQUER dois terços do dossiê, e não um par certo.
+//
+// O eixo é o TIQUE (guia §8.3), e não a classe: a classe já responde pela
+// fala base, e repetir o eixo faria o beat inteiro dizer a mesma coisa duas
+// vezes. E não é por tom, pelo mesmo motivo do tutorial — o jogador desce
+// um tom só por partida, e quatro cópias seriam peça escrita para ninguém
+// comparar.
+const ALFINETADA_POR_TRAIT = {
+  preciso: {
+    E1: ['Ao dar a última data, os dedos batem a contagem na coxa, e param no meio dela.'],
+    E2: [
+      'Pousa as duas mãos na madeira, abertas. "Metade disto {g:o senhor|a senhora} já traz escrito. Pergunte o que falta, que eu completo, e acabemos com a outra metade."',
+    ],
+  },
+  medroso: {
+    E1: ['A mão fecha-se na ombreira, e fica fechada até a frase acabar.'],
+    E2: [
+      'As mãos descem e ficam ao lado do corpo, quietas pela primeira vez. "{g:O senhor|A senhora} não veio perguntar: veio conferir. Confira, então, e me diga quando posso fechar esta porta."',
+    ],
+  },
+  tagarela: {
+    E1: ['A história seguinte começa, e desta vez não chega ao fim; a mão fica parada em cima do que ia mostrar.'],
+    E2: [
+      'Cala-se antes de acabar, e afasta com um dedo o que tinha na mão. "Estou a contar o que já lhe contaram, não estou? Pois pergunte de uma vez, {detective.treatment}, que eu poupo a saliva."',
+    ],
+  },
+  linha_tempo_nao_confiavel: {
+    E1: ['Levanta a mão para corrigir a hora que acabou de dar, e a deixa cair sem a corrigir.'],
+    E2: [
+      'Junta as mãos e desiste de contar pelos dedos. "As minhas horas {g:o senhor|a senhora} já tem de outra boca, e a outra há de as ter dado melhor. Fique com as dela."',
+    ],
+  },
+};
+
+// A alfinetada é do TIQUE, e o tique não tem gênero: nenhuma destas peças
+// fala do corpo de quem responde em palavra flexionada. O que se flexiona é
+// o tratamento ao perito, e isso é `{g:…}`, que já resolve sozinho.
+function alfinetadaDe(ctx) {
+  const bloco = ALFINETADA_POR_TRAIT[ctx.trait];
+  if (!bloco) return null;
+  return { E1: [...bloco.E1], E2: [...bloco.E2] };
+}
+
+// ---------------------------------------------------------------------
+// A ESCADA DE CONFRONTO GERADA (D8) — contador autoral, nunca `requerTodas`.
+//
+// O tutorial curou a lista à mão: três papéis que, dois a dois, bastam para
+// o perito pressionar Walter sobre o que ele sabia. Num banco de 31 casos
+// não há quem cure lista nenhuma, e a lista tem de sair de uma REGRA — que
+// é a lição da GR9-2: paridade por construção, não por contagem fixa.
+//
+// A regra é a mais curta que serve, e amarra o degrau à exposição em vez de
+// inventar um segundo eixo: **a lista é o dossiê externo daquele suspeito,
+// e o corte é o mesmo corte do E2** (`corteDeE2`, dois terços para cima).
+// O degrau cai, portanto, exatamente quando a conversa chega ao nível mais
+// fundo — o que faz do degrau a exposição DITA, e não um paralelo dela.
+//
+// Vale para dossiê de qualquer tamanho, que é o que a GR9-2 cobra: com dois
+// papéis o corte é dois, com seis é quatro, e a fração é a mesma para o réu
+// e para quem passava na rua.
+//
+// O degrau rende PROSA e mais nada (GR6-4): nenhum `[[id]]`, nenhum nó novo,
+// nenhum fato do caso. O que ele acrescenta é o que a pessoa concede quando
+// já não vale a pena poupar — e conceder não é confessar.
+// O QUE O DEGRAU PODE CONCEDER, E O QUE NÃO PODE. Ele cai em 31 casos com
+// elencos que o gerador sorteia, e por isso não pode afirmar FATO do caso:
+// uma versão que dissesse «devia-se-me dinheiro» mentiria em todo caso onde
+// não há dívida nenhuma entre aquela pessoa e a vítima. O que ele concede é
+// o que vale para qualquer boca diante de um perito bem abastecido — que
+// houve atrito, que houve palavra, e que se calou por conta própria.
+// Conceder não é confessar, e é essa a linha.
+const DEGRAU_POR_GRUPO = {
+  alto: [
+    'Espera que a última folha seja pousada e só então retoma, noutro tom. "Já que a casa está aberta assim, poupemos o rodeio: houve desavença entre nós, e houve mais de uma. Nenhuma que eu levasse à porta de ninguém, e todas que a vila sabe de cor."',
+    'Recua na cadeira e cruza as mãos sobre o colete. "Vejo que não me poupa, e faço o mesmo: nem sempre nos tratámos bem, e da última vez separámo-nos mal. Omiti-o porque não me pareceu do inquérito. Ponha no papel, se lhe parecer."',
+  ],
+  oficio: [
+    'Olha os papéis alinhados diante de si e recolhe as mãos da bancada. "Ponha então tudo à vista, que eu ponho o resto: houve palavra dura entre nós, e não foi uma só vez. Calei-a porque não fica bem falar assim de quem já não responde."',
+    'Alinha o que lhe mostraram e não o devolve. "Com isso tudo na mesa, escusado é fingir bom trato: havia mágoa antiga, e a vila conhece-a melhor do que eu a conto. Não a trouxe primeiro por vergonha, e não por outra coisa."',
+  ],
+  chao: [
+    'Deixa de olhar a porta e olha o que lhe puseram à frente. "Se {g:o senhor|a senhora} já tem isso tudo, então tem o que eu ia calar. Houve zanga entre nós, e houve quem ouvisse. Não me envergonho de o dizer agora que o dizem por mim."',
+    'Baixa os ombros e responde de outro modo. "Pois seja. Andámos de mal, e disso não falei quando me perguntaram da primeira vez. Não falei por medo de que se virasse contra mim, e é a verdade toda que tenho."',
+  ],
+};
+
+function degrauDoTrato(ctx, dossieExterno) {
+  const lista = (dossieExterno || []).slice();
+  if (lista.length < 2) return null;
+  const grupo = ['gentry', 'clero', 'profissional'].includes(ctx.pessoa.classeSocial)
+    ? 'alto'
+    : ['comerciante', 'artesao'].includes(ctx.pessoa.classeSocial)
+      ? 'oficio'
+      : 'chao';
+  return {
+    contaEntre: lista,
+    aPartirDe: corteDeE2(lista.length),
+    fala: [variante(DEGRAU_POR_GRUPO[grupo], `${ctx.sal}|degrau`)],
+  };
 }
 
 // ---------------------------------------------------------------------
@@ -999,6 +1373,103 @@ function confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }) {
   return null;
 }
 
+// ---------------------------------------------------------------------
+// O PISO DE CONFRONTO (OS-R9 · Fase 2) — e por que ele teve de existir.
+//
+// `confrontoDaCarta` só responde quando a carta É daquela pessoa, ou saiu
+// da boca dela. A Fase 0 mediu o que isso custa em lote: 53 das 155
+// árvores não tinham confronto NENHUM, e o dossiê externo mediano tinha
+// UMA carta. Com dossiê de um, `corteDeE2(1) = 1` — ter zero é E0, ter a
+// única é E2, e não existe nada entre as duas.
+//
+// E a medida seguinte é a que obrigou a agir: o réu alcança os três níveis
+// em 31 casos de 31; os inocentes, em 43%. **Quantos degraus um suspeito
+// tem passaria a ser um delator** — o mesmo defeito que a GR6-5 matou no
+// tutorial, chegando pela porta do tamanho do dossiê em vez da do corte.
+//
+// O piso resolve-o na origem e sem carta nova: o perito pode pôr diante de
+// QUALQUER pessoa do caso as duas peças que todo caso tem — o que o corpo
+// mostra e a última hora em que se viu a vítima viva. Toda gente reage a
+// isso, e reage no seu registro. Com o piso, nenhum dossiê fica abaixo de
+// dois, e os três níveis passam a ser alcançáveis por construção.
+//
+// TRÊS REGRAS QUE O PISO NÃO PODE QUEBRAR:
+//   • não entrega prova (GR9-3): a reação é caráter e recusa, jamais fato
+//     novo do caso, e nenhuma delas traz marcador de carta;
+//   • não sabe medicina: quem responde é leigo de 1893 diante de um papel
+//     de perícia. Devolve o papel, benze-se, ou diz que disso não entende.
+//     Nenhuma boca do piso lê lesão — quem lê é o mestre (G8);
+//   • é a MESMA para todos (GR9-2): a grade é de classe, e não há célula
+//     que só o réu ou só o inocente ocupe.
+// ---------------------------------------------------------------------
+const CARTAS_DO_PISO = ['gen_lesao_fatal', 'gen_visto_vivo'];
+
+const PISO_CORPO = {
+  alto: [
+    (v) =>
+      `Recebe o papel, lê duas linhas e o pousa virado para baixo. "Disto não sou ${v.leitorA} nem quero ser. Mandei o que havia a mandar à casa enlutada; do que está escrito aí, responde quem o escreveu."`,
+    () =>
+      'Segura o papel pela borda e devolve-o sem o virar. "Deixe isso com o médico do condado, faça o favor. O que a casa deve a esta morte já foi mandado, e não é leitura de papel."',
+  ],
+  oficio: [
+    (v) =>
+      `Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. "Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ${v.eleVitima} depois disso é conta de outro."`,
+    () => 'Olha o papel de onde está, sem chegar a mão. "Guarde. Uma coisa é saber que morreu; outra é ler como. Da primeira dou conta, da segunda não."',
+  ],
+  chao: [
+    (v) =>
+      `Faz o sinal da cruz depressa, e só depois olha o papel. "Deus ${v.oVitima} tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo."`,
+    () =>
+      'Recua meio passo do papel estendido. "Isso é coisa de médico. Perguntou-me da minha hora, e da minha hora respondi. Do resto não ponho palavra."',
+  ],
+};
+
+const PISO_ULTIMA_HORA = {
+  alto: [
+    'Confere a hora escrita no papel contra a própria memória antes de falar. "Àquela hora esta casa jantava, e jantava com gente à mesa. Se a hora é essa, é essa; não é a minha."',
+    'Lê a hora e devolve o papel dobrado no mesmo vinco. "Não ponho em dúvida quem a deu. Digo apenas que a minha hora daquele dia está lavrada, e não é matéria de opinião."',
+  ],
+  oficio: [
+    'Segue a hora com o dedo até o fim da linha. "Àquela hora eu fechava a porta do serviço, e fecho-a à mesma hora há anos. Quem passa na rua a essa hora vê-me fechá-la."',
+    'Olha a hora e assente uma vez. "Pode ser. A essa hora estou onde estou todos os dias, e há quem passe e me veja lá."',
+  ],
+  chao: [
+    'Repete a hora em voz alta, como quem a fixa. "Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda."',
+    'Ouve a hora e não a discute. "Se foi a essa hora, foi. Eu a essa hora estava na lida, e a lida tem quem a veja de longe."',
+  ],
+};
+
+function confrontoDePiso({ carta, pessoa, vitima, sal }) {
+  const grupo = ['gentry', 'clero', 'profissional'].includes(pessoa.classeSocial)
+    ? 'alto'
+    : ['comerciante', 'artesao'].includes(pessoa.classeSocial)
+      ? 'oficio'
+      : 'chao';
+  // Três gêneros diferentes cruzam-se nestas duas linhas, e nenhum é o do
+  // perito: quem responde, a vítima, e o tratamento. `{g:…}` só resolve o
+  // terceiro — os outros dois flexionam-se aqui, com a ficha na mão.
+  const femV = vitima.genero === 'feminino';
+  const femP = pessoa.genero === 'feminino';
+  const v = {
+    eleVitima: femV ? 'ela' : 'ele',
+    oVitima: femV ? 'a' : 'o',
+    vistoA: femV ? 'vista' : 'visto',
+    leitorA: femP ? 'leitora' : 'leitor',
+  };
+  const oSr = femP ? 'a senhora' : 'o senhor';
+  const td = carta.textoDisplay;
+  if (carta.id === 'gen_lesao_fatal') {
+    return {
+      pergunta: `[${td}] Olhe isto, e diga-me o que lhe ocorre.`,
+      reacao: variante(PISO_CORPO[grupo], `${sal}|piso|corpo|${pessoa.id}`)(v),
+    };
+  }
+  return {
+    pergunta: `[${td}] Esta é a última hora em que ${vitima.nome} foi ${v.vistoA} com vida. Onde estava ${oSr}?`,
+    reacao: variante(PISO_ULTIMA_HORA[grupo], `${sal}|piso|hora|${pessoa.id}`),
+  };
+}
+
 // A evasiva (fallback defensivo), por classe social.
 const EVASIVA_POR_CLASSE = {
   gentry: 'Olha o que se lhe mostra o tempo de o reconhecer, e devolve. "Disso a casa não sabe dar razão. Se há pergunta, faça-a por inteiro."',
@@ -1229,17 +1700,27 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
 
     cartasAlibi.push(cartaDeAlibi(ctx));
 
-    // Confrontos: um por carta que toca o suspeito, na ordem das cartas.
+    // Confrontos: um por carta que toca o suspeito, na ordem das cartas —
+    // mais o PISO da OS-R9 Fase 2, que vale para toda gente do caso e é o
+    // que impede o número de degraus de exposição de delatar o réu.
     const confrontos = [];
     const reacoesProva = {};
     const nosReacao = {};
-    for (const carta of cartas) {
-      const c = confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio });
-      if (!c) continue;
+    const acrescentarConfronto = (carta, c) => {
+      if (!c || reacoesProva[carta.id]) return;
       const noId = `reacao_${carta.id}`;
       confrontos.push({ requerCarta: carta.id, rotulo: c.pergunta });
       reacoesProva[carta.id] = noId;
       nosReacao[noId] = { fala: [c.reacao], opcoes: [] };
+    };
+    for (const carta of cartas) {
+      acrescentarConfronto(carta, confrontoDaCarta({ carta, pessoa, papel, bruto, nomePredio }));
+    }
+    // O piso vem DEPOIS do confronto próprio, e o `acrescentarConfronto`
+    // não sobrescreve: quem já tem a sua reação àquela carta fica com ela.
+    for (const id of CARTAS_DO_PISO) {
+      const carta = cartas.find((c) => c.id === id);
+      if (carta) acrescentarConfronto(carta, confrontoDePiso({ carta, pessoa, vitima, sal }));
     }
 
     const nos = {
@@ -1253,9 +1734,42 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
       },
       ...nosReacao,
     };
+    // O DOSSIÊ EXTERNO daquele suspeito, computado aqui com a MESMA régua
+    // que `montarDossies` corre em runtime: carta que o aponta ou a que a
+    // árvore reage, menos a que nasce na boca dele (o álibi, que entra no
+    // catálogo depois deste ponto e por isso nem aparece nesta lista).
+    // Serve ao degrau, e a nada mais — o nível continua a derivar-se dos
+    // dados em runtime, nunca de um número gravado aqui (G5).
+    const dossieExterno = cartas
+      .filter((c) => {
+        const t = c.tagsOcultas || {};
+        return (
+          t.ligadoA === pessoa.id ||
+          t.pertenceA === pessoa.id ||
+          t.declaranteId === pessoa.id ||
+          reacoesProva[c.id]
+        );
+      })
+      .map((c) => c.id);
+
     for (const tom of TONS) {
       nos[`b1_${tom}`] = { fala: falaB1(ctx, tom), opcoes: perguntasArremate(vitima, sal) };
-      nos[`b2_${tom}`] = { fala: falaB2(ctx, tom), opcoes: [] };
+      // O beat 3 alcança-se de QUALQUER tom do beat 2 (a régua da GR6-7 no
+      // tutorial): o tom é cor, e nunca porta fechada.
+      // O DEGRAU fica no beat 2 e a ALFINETADA no beat 3, em telas
+      // separadas de propósito: as duas pagam-se do mesmo dossiê, e juntas
+      // dariam três blocos de rubrica na mesma tela. O tutorial faz o
+      // mesmo — o degrau dele mora num confronto, longe da alfinetada.
+      nos[`b2_${tom}`] = {
+        fala: falaB2(ctx, tom),
+        opcoes: perguntasFecho(vitima, pessoa, sal),
+        ...(degrauDoTrato(ctx, dossieExterno) ? { degraus: [degrauDoTrato(ctx, dossieExterno)] } : {}),
+      };
+      nos[`b3_${tom}`] = {
+        fala: falaB3(ctx, tom),
+        opcoes: [],
+        ...(alfinetadaDe(ctx) ? { alfinetada: alfinetadaDe(ctx) } : {}),
+      };
     }
 
     // O gatilho de complexo (só quando o portão dos ≥2 abre): um confronto
