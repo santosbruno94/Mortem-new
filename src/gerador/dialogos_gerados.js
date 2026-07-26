@@ -770,12 +770,12 @@ const ENTREGA_POR_TRAIT = {
     'antes de dar a hora, ele mede a porta com o olho',
   ],
   tagarela: [
-    'a resposta traz atrás um pedaço que ninguém pediu',
-    'ao que se pergunta, ele emenda o que ninguém perguntou',
+    'a resposta sai inteira, e traz atrás um pedaço que ninguém pediu',
+    'ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou',
   ],
   linha_tempo_nao_confiavel: [
-    'a conta remenda-se andando, e é pelo sino que ele a faz',
-    'as horas saem contadas por sinos, e ele remenda a conta no meio',
+    'a hora sai, e logo ele a põe em dúvida',
+    'dá a hora e não a garante',
   ],
 };
 
@@ -783,9 +783,24 @@ const ENTREGA_POR_TRAIT = {
 // executar. O acréscimo é oração fechada, colada ao fim do paradeiro, e não
 // move NENHUMA hora declarada — as tags do termo continuam a ser a fonte, e o
 // termo arquivado ignora o rabo de fala, como o constable ignoraria.
+// POOL, nunca frase única: com uma só, 120 suspeitos diziam a mesma linha
+// palavra por palavra, e em nove casos dois a quatro deles a repetiam DENTRO
+// do mesmo caso — a tipografia denunciando o trait, que é o inverso da
+// paridade que o gerador protege em toda parte. O pick é por pessoa, como o
+// de ENTREGA_POR_TRAIT. As variantes de `linha_tempo` não pressupõem hora
+// anterior (há ramos que declaram só «pela manhã» ou «no serviço»).
 const SUFIXO_FALADO = {
-  tagarela: ' Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.',
-  linha_tempo_nao_confiavel: ' Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.',
+  tagarela: [
+    ' Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.',
+    ' E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.',
+    ' Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.',
+    ' {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.',
+  ],
+  linha_tempo_nao_confiavel: [
+    ' A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.',
+    ' Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.',
+    ' Não me firme muito na hora, que eu conto o tempo pelo serviço feito.',
+  ],
 };
 
 // O tento do tom ressonante, por trait (prosa, nunca prova — spec §8.5).
@@ -799,20 +814,23 @@ const SUFIXO_FALADO = {
 // propósito: não vira um eixo de têmpera legível para todo o elenco). Guarda de
 // presença cruzada no qa.mjs; a paridade perceptual, pelo playtest de tell.
 const TENTO_RESSONANTE = {
+  // Estes tentos foram reescritos no mesmo passe que ENTREGA_POR_TRAIT, e pela
+  // mesma razão: descreviam uma fala que ninguém podia conferir. O que sobra é
+  // GESTO — corpo, voz, olhar —, que a fala impressa ao lado não contradiz.
   medroso: {
-    neutro: ' A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa.',
-    calmo: ' A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas.',
-    tenso: ' A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira.',
+    neutro: ' A voz firma-se um fio ao dar a hora, e torna a baixar depois dela.',
+    calmo: ' A voz firma-se ao dar a hora, e a mão larga o trinco enquanto a diz.',
+    tenso: ' A voz vacila no meio da hora, e a mão não larga o trinco até ela acabar.',
   },
   preciso: {
-    neutro: ' E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora.',
-    calmo: ' A hora sai sem tropeço, e ainda vem atrás o tempo que fazia àquela hora.',
-    tenso: ' A hora sai certa, e ele torna a conferi-la antes de a dar por fechada.',
+    neutro: ' Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar.',
+    calmo: ' Dita a hora, as mãos sossegam, e ele não acrescenta nada por conta própria.',
+    tenso: ' Dita a hora, os lábios repetem-na sem som, uma vez, antes de a dar por fechada.',
   },
   tagarela: {
     neutro: ' No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido.',
-    calmo: ' No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira.',
-    tenso: ' O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez.',
+    calmo: ' A mão sossega ao lado do corpo, e ele emenda o resto de olhos no visitante.',
+    tenso: ' A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta.',
   },
   linha_tempo_nao_confiavel: {
     neutro: ' Contra a parede, alinha a conta com os dedos na madeira da ombreira.',
@@ -842,7 +860,9 @@ function falaB1(ctx, tom) {
   // O tique acontece na boca, em vez de ser anunciado pela rubrica: o
   // tagarela emenda o que ninguém pediu, e quem conta pelo sino põe em dúvida
   // a própria hora sem a mudar (a hora declarada continua a das tags).
-  const falado = `${dito}${SUFIXO_FALADO[ctx.trait] || ''}`;
+  const poolSufixo = SUFIXO_FALADO[ctx.trait];
+  const sufixo = poolSufixo ? variante(poolSufixo, `${ctx.sal}|sufixo|${pessoa.id}`) : '';
+  const falado = `${dito}${sufixo}`;
   const frames = {
     // As molduras não prometem tamanho («sai por inteiro», «chega inteira»,
     // «com vagar, do começo ao fim»): 228 dos 259 nós que as usavam traziam
@@ -864,7 +884,7 @@ function falaB1(ctx, tom) {
     ],
     obliquo: [
       `${abreObliqua} Depois a resposta vem. "${falado}"`,
-      `${abreObliqua} O resto vem atrás, sem mais pergunta. "${falado}"`,
+      `${abreObliqua} E então a resposta vem, sem mais pergunta. "${falado}"`,
       `${abreObliqua} Passada a esquiva, hora e lugar vêm sem enfeite. "${falado}"`,
     ],
   }[tom];

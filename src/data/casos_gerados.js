@@ -1009,8 +1009,8 @@ export const CASO_REPLICA = {
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me à Escola às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_professora]]."
+      "\"Sem rodeios, então. Recolhi-me à Escola às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_professora]]."
      ],
      "opcoes": [
       {
@@ -1091,8 +1091,8 @@ export const CASO_REPLICA = {
     },
     "b1_cordial": {
      "fala": [
-      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_professora]]."
+      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_professora]]."
      ],
      "opcoes": [
       {
@@ -1173,8 +1173,8 @@ export const CASO_REPLICA = {
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_professora]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_professora]]."
      ],
      "opcoes": [
       {
@@ -1255,8 +1255,8 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_professora]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_professora]]. A mão sossega ao lado do corpo, e ele emenda o resto de olhos no visitante."
      ],
      "opcoes": [
       {
@@ -1413,8 +1413,8 @@ export const CASO_REPLICA = {
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "\"Vou direto. Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -1495,8 +1495,8 @@ export const CASO_REPLICA = {
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "A resposta chega sem rodeio e sem secura. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -1577,8 +1577,8 @@ export const CASO_REPLICA = {
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -1659,8 +1659,8 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -2220,8 +2220,8 @@ export const CASO_REPLICA = {
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_lavadeira]]."
+      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -2304,8 +2304,8 @@ export const CASO_REPLICA = {
     },
     "b1_cordial": {
      "fala": [
-      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_lavadeira]]."
+      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -2388,8 +2388,8 @@ export const CASO_REPLICA = {
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_lavadeira]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -2472,8 +2472,8 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_lavadeira]]. A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta."
      ],
      "opcoes": [
       {
@@ -2638,8 +2638,8 @@ export const CASO_REPLICA = {
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
+      "\"Vou direto. Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
      ],
      "opcoes": [
       {
@@ -2720,8 +2720,8 @@ export const CASO_REPLICA = {
     },
     "b1_cordial": {
      "fala": [
-      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
+      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
      ],
      "opcoes": [
       {
@@ -2802,8 +2802,8 @@ export const CASO_REPLICA = {
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
+      "\"Hora e lugar. Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_1_medico]]."
      ],
      "opcoes": [
       {
@@ -2884,8 +2884,8 @@ export const CASO_REPLICA = {
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_1_medico]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
+      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_1_medico]]. A mão sossega ao lado do corpo, e ele emenda o resto de olhos no visitante."
      ],
      "opcoes": [
       {
@@ -4648,8 +4648,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha a conta com os dedos, e desta vez não a desfaz."
+      "Um aceno curto, e a resposta não se faz esperar. \"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha a conta com os dedos, e desta vez não a desfaz."
      ],
      "opcoes": [
       {
@@ -4730,8 +4730,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "A resposta chega sem rodeio e sem secura. \"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -4812,8 +4812,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Pois anote. Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -4894,8 +4894,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -5211,7 +5211,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\"",
-      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_3_ferreiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_3_ferreiro]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -5680,7 +5680,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
      ],
      "opcoes": [
@@ -5920,7 +5920,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
-      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_5_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_5_parteira]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -6085,7 +6085,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
       "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
@@ -8515,8 +8515,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_carroceiro]]."
+      "\"Sem rodeios, então. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -8598,8 +8598,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_carroceiro]]."
+      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -8681,8 +8681,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_carroceiro]]."
+      "\"Pois anote. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -8764,8 +8764,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_carroceiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -11770,7 +11770,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito. William Harris me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito. William Harris me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
@@ -12156,7 +12156,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
@@ -12318,8 +12318,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "\"Vou direto. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -12400,8 +12400,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -12482,8 +12482,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]."
      ],
      "opcoes": [
       {
@@ -12564,8 +12564,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_5_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -13099,8 +13099,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_professora]]."
+      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_professora]]."
      ],
      "opcoes": [
       {
@@ -13182,8 +13182,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_professora]]."
+      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_professora]]."
      ],
      "opcoes": [
       {
@@ -13265,8 +13265,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_professora]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_professora]]."
      ],
      "opcoes": [
       {
@@ -13348,8 +13348,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_professora]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me à Escola às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_7_professora]]. A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta."
      ],
      "opcoes": [
       {
@@ -14943,7 +14943,7 @@ export const CASOS_POOL = [
     "b1_firme": {
      "fala": [
       "\"Vou direto. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -15025,7 +15025,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -15107,7 +15107,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Pois anote. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -15189,7 +15189,7 @@ export const CASOS_POOL = [
     "b1_obliquo": {
      "fala": [
       "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. A mão sossega ao lado do corpo, e ele emenda o resto de olhos no visitante."
      ],
      "opcoes": [
       {
@@ -15423,7 +15423,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Da sexta à noite responde sem que a voz suba. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
+      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]. A voz firma-se ao dar a hora, e a mão larga o trinco enquanto a diz."
      ],
      "opcoes": [
       {
@@ -15586,7 +15586,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\"",
       "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
@@ -15916,7 +15916,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\"",
-      "A hora vem posta, e ela não a procura: [[gen_alibi_gen_7_criada]]. A hora sai sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
+      "A hora vem posta, e ela não a procura: [[gen_alibi_gen_7_criada]]. Dita a hora, as mãos sossegam, e ele não acrescenta nada por conta própria."
      ],
      "opcoes": [
       {
@@ -16162,8 +16162,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -16245,8 +16245,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a sexta à noite com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_1_lavrador]]."
+      "Conta a sexta à noite com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -16328,8 +16328,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_1_lavrador]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -16411,8 +16411,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_1_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -16564,8 +16564,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -16646,8 +16646,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
+      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -16728,8 +16728,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -16810,8 +16810,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -19078,7 +19078,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\"",
-      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_1_merceeiro]]. A hora sai certa, e ele torna a conferi-la antes de a dar por fechada."
+      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_1_merceeiro]]. Dita a hora, os lábios repetem-na sem som, uma vez, antes de a dar por fechada."
      ],
      "opcoes": [
       {
@@ -19713,8 +19713,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_3_ferreiro]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
+      "\"Vou direto. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_3_ferreiro]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -19796,8 +19796,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_3_ferreiro]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -19879,8 +19879,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Hora e lugar. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -19962,8 +19962,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_3_ferreiro]]."
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_3_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -20121,8 +20121,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me ao Solar às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_squire]]."
+      "\"Sem rodeios, então. Recolhi-me ao Solar às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_squire]]."
      ],
      "opcoes": [
       {
@@ -20203,8 +20203,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_squire]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_squire]]."
      ],
      "opcoes": [
       {
@@ -20285,8 +20285,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_squire]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_squire]]."
      ],
      "opcoes": [
       {
@@ -20367,8 +20367,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_0_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -22288,8 +22288,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_carroceiro]]."
+      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -22372,8 +22372,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_carroceiro]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -22456,8 +22456,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_carroceiro]]."
+      "\"Hora e lugar. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -22540,8 +22540,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_carroceiro]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_carroceiro]]. A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta."
      ],
      "opcoes": [
       {
@@ -22718,7 +22718,7 @@ export const CASOS_POOL = [
     "b1_firme": {
      "fala": [
       "\"Vou direto. Recolhi-me à Taverna às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -22801,7 +22801,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -22884,7 +22884,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]."
      ],
      "opcoes": [
       {
@@ -22967,7 +22967,7 @@ export const CASOS_POOL = [
     "b1_obliquo": {
      "fala": [
       "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_4_taverneiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -23303,7 +23303,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\"",
-      "A hora vem posta, e ela não a procura: [[gen_alibi_gen_2_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora vem posta, e ela não a procura: [[gen_alibi_gen_2_criada]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -23703,7 +23703,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Pois anote. Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_medico]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_medico]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -24019,7 +24019,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -24182,7 +24182,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
       "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
@@ -26126,8 +26126,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ela remenda a conta no meio: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Vou direto. Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -26208,8 +26208,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ela remenda a conta no meio: [[gen_alibi_gen_3_lavadeira]]."
+      "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -26290,8 +26290,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ela remenda a conta no meio: [[gen_alibi_gen_3_lavadeira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -26372,8 +26372,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ela remenda a conta no meio: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -26715,7 +26715,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\"",
-      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_0_ferreiro]]. A hora sai sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
+      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_0_ferreiro]]. Dita a hora, as mãos sossegam, e ele não acrescenta nada por conta própria."
      ],
      "opcoes": [
       {
@@ -26798,7 +26798,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\"",
       "A hora vem posta, e ele não a procura: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
@@ -26952,8 +26952,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_7_ferreiro]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Vou direto. Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_7_ferreiro]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -27034,8 +27034,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_7_ferreiro]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -27116,8 +27116,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_7_ferreiro]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -27198,8 +27198,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_7_ferreiro]]."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 2 às oito. Henry Turner me bateu à porta à uma; do batente mesmo nos despedimos, e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_7_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -27361,8 +27361,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavrador]]."
+      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -27444,8 +27444,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavrador]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -27527,8 +27527,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -27610,8 +27610,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavrador]]. No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavrador]]. A mão sossega ao lado do corpo, e ele emenda o resto de olhos no visitante."
      ],
      "opcoes": [
       {
@@ -30375,7 +30375,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_5_parteira]]."
      ],
      "opcoes": [
@@ -30603,7 +30603,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Estive na Mercearia das oito às onze; dali fui direto para o Cottage nº 2, dormir.\"",
-      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_2_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_2_lavrador]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -31096,7 +31096,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Pois anote. Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -31178,7 +31178,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\"",
       "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
@@ -33330,7 +33330,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Pois anote. Recolhi-me ao Moinho às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_4_moleiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_4_moleiro]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -33411,7 +33411,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Moinho às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Moinho às oito e não tornei a sair antes de clarear.\"",
       "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_4_moleiro]]."
      ],
      "opcoes": [
@@ -33580,8 +33580,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
+      "\"Vou direto. Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
      ],
      "opcoes": [
       {
@@ -33664,8 +33664,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
+      "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
      ],
      "opcoes": [
       {
@@ -33748,8 +33748,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
+      "\"Pois anote. Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_paroco]]."
      ],
      "opcoes": [
       {
@@ -33832,8 +33832,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_paroco]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_paroco]]. A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta."
      ],
      "opcoes": [
       {
@@ -34003,8 +34003,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -34086,8 +34086,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -34169,8 +34169,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
+      "\"Hora e lugar. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -34252,8 +34252,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -34581,7 +34581,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -34998,7 +34998,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. A hora sai certa, e ele torna a conferi-la antes de a dar por fechada."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Dita a hora, os lábios repetem-na sem som, uma vez, antes de a dar por fechada."
      ],
      "opcoes": [
       {
@@ -37423,7 +37423,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Estive em Weldmere desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
@@ -37955,7 +37955,7 @@ export const CASOS_POOL = [
     "b1_firme": {
      "fala": [
       "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -38038,7 +38038,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -38121,7 +38121,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]."
      ],
      "opcoes": [
       {
@@ -38204,7 +38204,7 @@ export const CASOS_POOL = [
     "b1_obliquo": {
      "fala": [
       "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_merceeiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -40483,7 +40483,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Pois anote. Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_1_criada]]. A hora sai certa, e ele torna a conferi-la antes de a dar por fechada."
+      "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_1_criada]]. Dita a hora, os lábios repetem-na sem som, uma vez, antes de a dar por fechada."
      ],
      "opcoes": [
       {
@@ -40817,7 +40817,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
-      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_2_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_2_lavrador]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -40982,7 +40982,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
       "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
@@ -41237,7 +41237,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Conta a sexta à noite com o vagar de quem não tem pressa. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_6_criada]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
+      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_6_criada]]. A voz vacila no meio da hora, e a mão não larga o trinco até ela acabar."
      ],
      "opcoes": [
       {
@@ -41575,8 +41575,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
+      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -41658,8 +41658,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
+      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -41741,8 +41741,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -41824,8 +41824,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -42199,7 +42199,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_squire]]."
      ],
      "opcoes": [
@@ -44105,7 +44105,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_4_costureira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_4_costureira]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -44473,7 +44473,7 @@ export const CASOS_POOL = [
     "b1_firme": {
      "fala": [
       "\"Vou direto. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -44558,7 +44558,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -44643,7 +44643,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Pois anote. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -44727,8 +44727,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_1_lavadeira]]. A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta."
      ],
      "opcoes": [
       {
@@ -44934,8 +44934,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_2_carroceiro]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Vou direto. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_2_carroceiro]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -45017,8 +45017,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_2_carroceiro]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_2_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -45100,8 +45100,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_2_carroceiro]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_2_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -45183,8 +45183,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_2_carroceiro]]."
+      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_2_carroceiro]]."
      ],
      "opcoes": [
       {
@@ -45553,7 +45553,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\"",
-      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_3_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_3_criada]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -45838,8 +45838,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Vou direto. Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -45921,8 +45921,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a sexta à noite com o vagar de quem não tem pressa. \"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "Conta a sexta à noite com o vagar de quem não tem pressa. \"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -46004,8 +46004,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -46087,8 +46087,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_0_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -48408,7 +48408,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Conta a sexta à noite com o vagar de quem não tem pressa. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_4_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_4_criada]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -48738,7 +48738,7 @@ export const CASOS_POOL = [
     "b1_firme": {
      "fala": [
       "\"Vou direto. Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -48821,7 +48821,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -48904,7 +48904,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -48986,8 +48986,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta."
      ],
      "opcoes": [
       {
@@ -49139,8 +49139,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ela remenda a conta no meio: [[gen_alibi_gen_1_lavadeira]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Vou direto. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_1_lavadeira]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -49221,8 +49221,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ela remenda a conta no meio: [[gen_alibi_gen_1_lavadeira]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -49303,8 +49303,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ela remenda a conta no meio: [[gen_alibi_gen_1_lavadeira]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -49385,8 +49385,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ela remenda a conta no meio: [[gen_alibi_gen_1_lavadeira]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_1_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -49759,7 +49759,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Estive na Taverna das oito às onze; dali fui direto para o Cottage nº 2, dormir.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
@@ -51473,8 +51473,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
+      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -51555,8 +51555,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
+      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -51637,8 +51637,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_4_costureira]]."
      ],
      "opcoes": [
       {
@@ -51719,8 +51719,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_4_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_4_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -51972,7 +51972,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_2_lavrador]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
+      "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_2_lavrador]]. A voz firma-se ao dar a hora, e a mão larga o trinco enquanto a diz."
      ],
      "opcoes": [
       {
@@ -52854,7 +52854,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_3_criada]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_3_criada]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -53269,7 +53269,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me à Escola às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_5_professora]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_5_professora]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -55040,8 +55040,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_4_lavrador]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Vou direto. Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_4_lavrador]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -55122,8 +55122,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a sexta à noite com o vagar de quem não tem pressa. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_4_lavrador]]."
+      "Conta a sexta à noite com o vagar de quem não tem pressa. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -55204,8 +55204,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_4_lavrador]]."
+      "\"Pois anote. Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -55286,8 +55286,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_4_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 3, dormir. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
       {
@@ -56214,8 +56214,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_3_lavrador]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
+      "\"Vou direto. Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_3_lavrador]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -56297,8 +56297,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a sexta à noite com o vagar de quem não tem pressa. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_3_lavrador]]."
+      "Conta a sexta à noite com o vagar de quem não tem pressa. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -56380,8 +56380,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_3_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -56463,8 +56463,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_3_lavrador]]."
+      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Estive na Igreja das oito às onze; dali fui direto para o Cottage nº 2, dormir. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_3_lavrador]]."
      ],
      "opcoes": [
       {
@@ -56623,7 +56623,7 @@ export const CASOS_POOL = [
     "b1_firme": {
      "fala": [
       "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -56705,7 +56705,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -56787,7 +56787,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -56868,8 +56868,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_2_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -58461,8 +58461,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -58543,8 +58543,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -58625,8 +58625,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -58707,8 +58707,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_3_lavadeira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -58877,7 +58877,7 @@ export const CASOS_POOL = [
     "b1_firme": {
      "fala": [
       "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -58960,7 +58960,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -59043,7 +59043,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_lavadeira]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -59126,7 +59126,7 @@ export const CASOS_POOL = [
     "b1_obliquo": {
      "fala": [
       "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_lavadeira]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_lavadeira]]. A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta."
      ],
      "opcoes": [
       {
@@ -59284,8 +59284,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_2_lavrador]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Vou direto. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_2_lavrador]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -59366,8 +59366,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_2_lavrador]]."
+      "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -59448,8 +59448,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_2_lavrador]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -59530,8 +59530,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_2_lavrador]]."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_2_lavrador]]."
      ],
      "opcoes": [
       {
@@ -59910,7 +59910,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
@@ -62155,7 +62155,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\"",
-      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_3_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_3_criada]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -62692,7 +62692,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_parteira]]."
      ],
      "opcoes": [
@@ -63014,7 +63014,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Do meio-dia às seis estive em casa, na Mercearia, e de porta para fora não pus o pé.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_0_merceeiro]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -63260,8 +63260,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "Um aceno curto, e a resposta não se faz esperar. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_1_lavrador]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -63343,8 +63343,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_1_lavrador]]."
+      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -63426,8 +63426,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_1_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -63509,8 +63509,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Depois a resposta vem. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_1_lavrador]]."
+      "\"Quando a luz acaba.\" Depois a resposta vem. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
       {
@@ -63684,8 +63684,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_7_lavrador]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
+      "\"Vou direto. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_7_lavrador]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -63768,8 +63768,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_7_lavrador]]."
+      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -63852,8 +63852,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_7_lavrador]]."
+      "\"Pois anote. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -63936,8 +63936,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_7_lavrador]]."
+      "\"Quando a luz acaba.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -65819,7 +65819,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_4_criada]]. A hora sai sem tropeço, e ainda vem atrás o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_4_criada]]. Dita a hora, as mãos sossegam, e ele não acrescenta nada por conta própria."
      ],
      "opcoes": [
       {
@@ -65900,7 +65900,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\"",
       "A hora sai de pronto, sem que ela a vá buscar na memória: [[gen_alibi_gen_4_criada]]."
      ],
      "opcoes": [
@@ -66217,7 +66217,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Estive em Netherfield desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_merceeiro]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -66686,7 +66686,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 5 às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
@@ -67306,7 +67306,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_5_costureira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_5_costureira]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -69388,7 +69388,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_criada]]."
      ],
      "opcoes": [
@@ -69533,8 +69533,8 @@ export const CASOS_POOL = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
+      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
      ],
      "opcoes": [
       {
@@ -69615,8 +69615,8 @@ export const CASOS_POOL = [
     },
     "b1_cordial": {
      "fala": [
-      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
+      "Da sexta à noite responde sem que a voz suba. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
      ],
      "opcoes": [
       {
@@ -69697,8 +69697,8 @@ export const CASOS_POOL = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_costureira]]."
      ],
      "opcoes": [
       {
@@ -69779,8 +69779,8 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_2_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Cedo ou tarde, conforme o dia.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -70159,7 +70159,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Posto do Constable às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Posto do Constable às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_constable]]."
      ],
      "opcoes": [
@@ -70861,7 +70861,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_carroceiro]]. A hora sai certa, e ele torna a conferi-la antes de a dar por fechada."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_carroceiro]]. Dita a hora, os lábios repetem-na sem som, uma vez, antes de a dar por fechada."
      ],
      "opcoes": [
       {
@@ -70944,7 +70944,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
       "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_1_carroceiro]]."
      ],
      "opcoes": [
@@ -73121,7 +73121,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
-      "A hora vem posta, e ela não a procura: [[gen_alibi_gen_4_costureira]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora vem posta, e ela não a procura: [[gen_alibi_gen_4_costureira]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -73576,7 +73576,7 @@ export const CASOS_POOL = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me à Botica às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_boticario]]."
      ],
      "opcoes": [
@@ -73898,7 +73898,7 @@ export const CASOS_POOL = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\"",
-      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_0_paroco]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_0_paroco]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -74216,7 +74216,7 @@ export const CASOS_POOL = [
     "b1_cordial": {
      "fala": [
       "Conta a sexta à noite com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
-      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_1_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_1_parteira]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -76088,8 +76088,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -76171,8 +76171,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "Conta a madrugada de sábado com o vagar de quem não tem pressa. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -76254,8 +76254,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "\"Hora e lugar. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -76337,8 +76337,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_4_pastor_de_ovelhas]]."
      ],
      "opcoes": [
       {
@@ -77534,7 +77534,7 @@ export const CASOS_LUTA = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Casa do Médico às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_2_medico]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_2_medico]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -77821,8 +77821,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_7_lavrador]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
+      "\"Vou direto. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_7_lavrador]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -77906,8 +77906,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_7_lavrador]]."
+      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -77991,8 +77991,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_7_lavrador]]."
+      "\"Hora e lugar. Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -78076,8 +78076,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_7_lavrador]]."
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -80543,7 +80543,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_4_lavrador]]."
      ],
      "opcoes": [
@@ -81780,7 +81780,7 @@ export const CASOS_LUTA = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Do meio-dia às seis estive em casa, no Posto do Constable, e de porta para fora não pus o pé.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_5_constable]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_5_constable]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -83983,7 +83983,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_ferreiro]]."
      ],
      "opcoes": [
@@ -84352,7 +84352,7 @@ export const CASOS_LUTA = [
     "b1_tecnico": {
      "fala": [
       "\"Pois anote. Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\"",
-      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_0_pastor_de_ovelhas]]. A hora sai certa, e ele torna a conferi-la antes de a dar por fechada."
+      "A hora vem posta, e ele não a procura: [[gen_alibi_gen_0_pastor_de_ovelhas]]. Dita a hora, os lábios repetem-na sem som, uma vez, antes de a dar por fechada."
      ],
      "opcoes": [
       {
@@ -84645,8 +84645,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_4_squire]]."
+      "\"Sem rodeios, então. Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_4_squire]]."
      ],
      "opcoes": [
       {
@@ -84728,8 +84728,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "Da sexta à tarde responde sem que a voz suba. \"Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_4_squire]]."
+      "Da sexta à tarde responde sem que a voz suba. \"Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_4_squire]]."
      ],
      "opcoes": [
       {
@@ -84811,8 +84811,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_4_squire]]."
+      "\"Hora e lugar. Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_4_squire]]."
      ],
      "opcoes": [
       {
@@ -84894,8 +84894,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_4_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Solar, e de porta para fora não pus o pé. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_4_squire]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -85506,8 +85506,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_moleiro]]."
+      "Um aceno curto, e a resposta não se faz esperar. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_moleiro]]."
      ],
      "opcoes": [
       {
@@ -85588,8 +85588,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_moleiro]]."
+      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_moleiro]]."
      ],
      "opcoes": [
       {
@@ -85670,8 +85670,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_moleiro]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_moleiro]]."
      ],
      "opcoes": [
       {
@@ -85752,8 +85752,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_moleiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_5_moleiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -87913,7 +87913,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_6_lavrador]]."
      ],
      "opcoes": [
@@ -88334,7 +88334,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me à Taverna às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_criada]]."
      ],
      "opcoes": [
@@ -88537,8 +88537,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ela a faz: [[gen_alibi_gen_4_lavadeira]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
+      "Um aceno curto, e a resposta não se faz esperar. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ela a põe em dúvida: [[gen_alibi_gen_4_lavadeira]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -88623,8 +88623,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ela a faz: [[gen_alibi_gen_4_lavadeira]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ela a põe em dúvida: [[gen_alibi_gen_4_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -88709,8 +88709,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ela a faz: [[gen_alibi_gen_4_lavadeira]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ela a põe em dúvida: [[gen_alibi_gen_4_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -88795,8 +88795,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ela a faz: [[gen_alibi_gen_4_lavadeira]]."
+      "\"Pesado o bastante.\" Depois a resposta vem. \"Recolhi-me ao Cottage nº 2 às oito e não tornei a sair antes de clarear. A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.\"",
+      "A hora sai, e logo ela a põe em dúvida: [[gen_alibi_gen_4_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -89220,7 +89220,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\"",
+      "\"Pesado o bastante.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Solar às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_criada]]."
      ],
      "opcoes": [
@@ -89506,7 +89506,7 @@ export const CASOS_LUTA = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Presbitério às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_0_paroco]]. A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira."
+      "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_0_paroco]]. A voz vacila no meio da hora, e a mão não larga o trinco até ela acabar."
      ],
      "opcoes": [
       {
@@ -91808,7 +91808,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
@@ -92003,7 +92003,7 @@ export const CASOS_LUTA = [
     "b1_firme": {
      "fala": [
       "Um aceno curto, e a resposta não se faz esperar. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
      ],
      "opcoes": [
       {
@@ -92085,7 +92085,7 @@ export const CASOS_LUTA = [
     "b1_cordial": {
      "fala": [
       "Da sexta à tarde responde sem que a voz suba. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
      ],
      "opcoes": [
       {
@@ -92167,7 +92167,7 @@ export const CASOS_LUTA = [
     "b1_tecnico": {
      "fala": [
       "\"Hora e lugar. Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]."
      ],
      "opcoes": [
       {
@@ -92249,7 +92249,7 @@ export const CASOS_LUTA = [
     "b1_obliquo": {
      "fala": [
       "\"Quando a luz acaba.\" Depois a resposta vem. \"Do meio-dia às seis estive em casa, no Moinho, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_2_moleiro]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -93102,7 +93102,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, na Casa do Médico, e de porta para fora não pus o pé.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_criada]]."
      ],
      "opcoes": [
@@ -93294,8 +93294,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "\"Sem rodeios, então. Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -93376,8 +93376,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "Da sexta à tarde responde sem que a voz suba. \"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "Da sexta à tarde responde sem que a voz suba. \"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -93458,8 +93458,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
+      "\"Hora e lugar. Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]."
      ],
      "opcoes": [
       {
@@ -93540,8 +93540,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ela emenda o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé. {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.\"",
+      "Ao paradeiro ela emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_0_costureira]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -96668,7 +96668,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
@@ -96957,7 +96957,7 @@ export const CASOS_LUTA = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, na Taverna, e de porta para fora não pus o pé.\"",
-      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_1_criada]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -99151,7 +99151,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 1, e de porta para fora não pus o pé.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_2_lavadeira]]."
      ],
      "opcoes": [
@@ -99337,8 +99337,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "\"Sem rodeios, então. Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -99419,8 +99419,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "Conta a sexta à tarde com o vagar de quem não tem pressa. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "Conta a sexta à tarde com o vagar de quem não tem pressa. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -99501,8 +99501,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]."
      ],
      "opcoes": [
       {
@@ -99583,8 +99583,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" Depois a resposta vem. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "Ao que se pergunta, ele emenda o que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
+      "\"Quando a luz acaba.\" Depois a resposta vem. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu. Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.\"",
+      "Ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou: [[gen_alibi_gen_7_lavrador]]. No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido."
      ],
      "opcoes": [
       {
@@ -99799,7 +99799,7 @@ export const CASOS_LUTA = [
     "b1_firme": {
      "fala": [
       "\"Sem rodeios, então. Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_6_lavrador]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_6_lavrador]]."
      ],
      "opcoes": [
       {
@@ -99886,7 +99886,7 @@ export const CASOS_LUTA = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_6_lavrador]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_6_lavrador]]."
      ],
      "opcoes": [
       {
@@ -99973,7 +99973,7 @@ export const CASOS_LUTA = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_6_lavrador]]."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_6_lavrador]]."
      ],
      "opcoes": [
       {
@@ -100060,7 +100060,7 @@ export const CASOS_LUTA = [
     "b1_obliquo": {
      "fala": [
       "\"Quando a luz acaba.\" Depois a resposta vem. \"Do meio-dia às seis estive em casa, no Cottage nº 4, e de porta para fora não pus o pé. Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.\"",
-      "A resposta traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_6_lavrador]]. O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez."
+      "A resposta sai inteira, e traz atrás um pedaço que ninguém pediu: [[gen_alibi_gen_6_lavrador]]. A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta."
      ],
      "opcoes": [
       {
@@ -100257,8 +100257,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_0_ferreiro]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Sem rodeios, então. Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_0_ferreiro]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -100339,8 +100339,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_0_ferreiro]]."
+      "A resposta chega sem rodeio e sem secura. \"Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -100421,8 +100421,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Hora e lugar. Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_0_ferreiro]]."
+      "\"Hora e lugar. Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -100503,8 +100503,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "As horas saem contadas por sinos, e ele remenda a conta no meio: [[gen_alibi_gen_0_ferreiro]]."
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive na Forja, no serviço. Quem lá esteve me viu. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "Dá a hora e não a garante: [[gen_alibi_gen_0_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -100932,7 +100932,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_lavrador]]."
      ],
      "opcoes": [
@@ -102995,7 +102995,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_pastor_de_ovelhas]]."
      ],
      "opcoes": [
@@ -103419,7 +103419,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Quando a luz acaba.\" O resto vem atrás, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 2, e de porta para fora não pus o pé.\"",
+      "\"Quando a luz acaba.\" E então a resposta vem, sem mais pergunta. \"Do meio-dia às seis estive em casa, no Cottage nº 2, e de porta para fora não pus o pé.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_3_costureira]]."
      ],
      "opcoes": [
@@ -103792,7 +103792,7 @@ export const CASOS_LUTA = [
     "b1_tecnico": {
      "fala": [
       "\"Pois anote. Do meio-dia às seis estive em casa, no Cottage nº 3, e de porta para fora não pus o pé.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_4_pastor_de_ovelhas]]. A hora sai certa, e ele torna a conferi-la antes de a dar por fechada."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_4_pastor_de_ovelhas]]. Dita a hora, os lábios repetem-na sem som, uma vez, antes de a dar por fechada."
      ],
      "opcoes": [
       {
@@ -104595,7 +104595,7 @@ export const CASOS_LUTA = [
     "b1_cordial": {
      "fala": [
       "Conta a sexta à tarde com o vagar de quem não tem pressa. \"Do meio-dia às seis estive na Granja, no serviço. Quem lá esteve me viu.\"",
-      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_0_lavrador]]. A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas."
+      "Os olhos vão à porta antes de a hora sair, e voltam depois dela: [[gen_alibi_gen_0_lavrador]]. A voz firma-se ao dar a hora, e a mão larga o trinco enquanto a diz."
      ],
      "opcoes": [
       {
@@ -106719,8 +106719,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ela a faz: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
+      "\"Sem rodeios, então. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "A hora sai, e logo ela a põe em dúvida: [[gen_alibi_gen_3_lavadeira]]. Contra a parede, alinha a conta com os dedos na madeira da ombreira."
      ],
      "opcoes": [
       {
@@ -106802,8 +106802,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ela a faz: [[gen_alibi_gen_3_lavadeira]]."
+      "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "A hora sai, e logo ela a põe em dúvida: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -106885,8 +106885,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "\"Pois anote. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ela a faz: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Pois anote. Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "A hora sai, e logo ela a põe em dúvida: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -106968,8 +106968,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ela a faz: [[gen_alibi_gen_3_lavadeira]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 3 às oito e não tornei a sair antes de clarear. Não me firme muito na hora, que eu conto o tempo pelo serviço feito.\"",
+      "A hora sai, e logo ela a põe em dúvida: [[gen_alibi_gen_3_lavadeira]]."
      ],
      "opcoes": [
       {
@@ -108105,7 +108105,7 @@ export const CASOS_LUTA = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_5_lavrador]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Antes de dar a hora, ele mede a porta com o olho: [[gen_alibi_gen_5_lavrador]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -108478,8 +108478,8 @@ export const CASOS_LUTA = [
     },
     "b1_firme": {
      "fala": [
-      "\"Vou direto. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_1_ferreiro]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
+      "\"Vou direto. Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_1_ferreiro]]. Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira."
      ],
      "opcoes": [
       {
@@ -108561,8 +108561,8 @@ export const CASOS_LUTA = [
     },
     "b1_cordial": {
      "fala": [
-      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_1_ferreiro]]."
+      "Da madrugada de sábado responde sem que a voz suba. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_1_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -108644,8 +108644,8 @@ export const CASOS_LUTA = [
     },
     "b1_tecnico": {
      "fala": [
-      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_1_ferreiro]]."
+      "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_1_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -108727,8 +108727,8 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Ou seria mais tarde; eu conto as horas pelo sino, e nem sempre o ouço bater.\"",
-      "A conta remenda-se andando, e é pelo sino que ele a faz: [[gen_alibi_gen_1_ferreiro]]."
+      "\"Pesado o bastante.\" Passada a esquiva, hora e lugar vêm sem enfeite. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear. Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.\"",
+      "A hora sai, e logo ele a põe em dúvida: [[gen_alibi_gen_1_ferreiro]]."
      ],
      "opcoes": [
       {
@@ -111334,7 +111334,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 1 às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_1_guarda_caca]]."
      ],
      "opcoes": [
@@ -111780,7 +111780,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me ao Cottage nº 6 às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me ao Cottage nº 6 às oito e não tornei a sair antes de clarear.\"",
       "A resposta sai do tamanho da pergunta: [[gen_alibi_gen_0_lavrador]]."
      ],
      "opcoes": [
@@ -112071,7 +112071,7 @@ export const CASOS_LUTA = [
     "b1_cordial": {
      "fala": [
       "A resposta chega sem rodeio e sem secura. \"Recolhi-me ao Cottage nº 4 às oito e não tornei a sair antes de clarear.\"",
-      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_5_parteira]]. A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa."
+      "Antes de dar a hora, ela mede a porta com o olho: [[gen_alibi_gen_5_parteira]]. A voz firma-se um fio ao dar a hora, e torna a baixar depois dela."
      ],
      "opcoes": [
       {
@@ -112606,7 +112606,7 @@ export const CASOS_LUTA = [
     "b1_tecnico": {
      "fala": [
       "Hora primeiro, lugar depois, sem que se peça duas vezes. \"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\"",
-      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_2_merceeiro]]. E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora."
+      "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_2_merceeiro]]. Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar."
      ],
      "opcoes": [
       {
@@ -112687,7 +112687,7 @@ export const CASOS_LUTA = [
     },
     "b1_obliquo": {
      "fala": [
-      "\"Cedo ou tarde, conforme o dia.\" O resto vem atrás, sem mais pergunta. \"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\"",
+      "\"Cedo ou tarde, conforme o dia.\" E então a resposta vem, sem mais pergunta. \"Recolhi-me à Mercearia às oito e não tornei a sair antes de clarear.\"",
       "A hora sai de pronto, sem que ele a vá buscar na memória: [[gen_alibi_gen_2_merceeiro]]."
      ],
      "opcoes": [

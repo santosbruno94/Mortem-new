@@ -243,7 +243,7 @@ export const DIALOGOS = {
       b1_tecnico: {
         fala: [
           '"Hora a hora eu digo, que é como se leva uma bancada."',
-          '"Fechei às sete e meia, com o rapaz até a esquina. Ceia curta, e o quarto às oito; depois das oito, nada, que dormi. A loja tornei a abri-la às sete, como abro sempre." As horas vêm sem que ele as procure: [[alibi_silas]].',
+          '"Fechei às sete e meia, com o rapaz até a esquina. Ceei pouco e subi ao quarto às oito, e dali não desci mais, que dormi. A loja tornei a abri-la às sete, como abro sempre." As horas vêm sem que ele as procure: [[alibi_silas]].',
           'A pedido, chega a cadeira para junto do lampião, para que as horas passem ao papel, e a ergue em vez de arrastá-la; à claridade de perto, antes que ele torne ao seu lugar, aparece na bainha esquerda uma lasca fina: [[ev_vidro_dobra]].',
         ],
         opcoes: [
@@ -274,21 +274,21 @@ export const DIALOGOS = {
       b2_firme: {
         fala: [
           'As mãos não deixam os joelhos. "Não sei nome, {detective.treatment}, e não hei de inventar um para agradar."',
-          '"O que penso, penso desde esta manhã: gente de fora, da estrada, que forçou a porta do beco atrás do troco do caixa." As mãos voltam aos joelhos: [[comp_silas]].',
+          '"O que penso, penso desde esta manhã: gente de fora, da estrada, que forçou a porta do beco atrás do troco do caixa." Os dedos abrem-se um instante sobre o pano do joelho e tornam a fechar-se: [[comp_silas]].',
         ],
         opcoes: OPCOES_B3_SILAS,
       },
       b2_cordial: {
         fala: [
           '"Doze anos nesta casa: abro eu a loja, tiro as tábuas da vitrine, acendo o fogo da bancada, e o Sr. Arthurs descia depois, com os óculos na mão. Foi no escritório dos fundos que o achei, às nove e vinte, caído entre a escrivaninha e a estante."',
-          'Baixa a voz. "Gente da estrada, é o que eu penso; eu bem lhe dizia que recolhesse o caixa ao cofre, e ele ria de mim." Diz a teoria sem que lha peçam: [[comp_silas]].',
+          'Baixa a voz. "Gente da estrada, é o que eu penso; eu bem lhe dizia que recolhesse o caixa ao cofre, e ele ria de mim." E torna a erguê-la para o que vem depois: [[comp_silas]].',
         ],
         opcoes: OPCOES_B3_SILAS,
       },
       b2_tecnico: {
         fala: [
           '"Um nome eu não firmo sem prova, {detective.treatment}; a perícia é sua."',
-          '"A razão, essa eu dou, que é de senso: uma vila destas não tranca bem as portas, e caixa aberto à noite chama gente da estrada. Entra pelo beco, que a porta dos fundos é fraca, e sai por onde entrou." Expõe a coisa inteira sem que lha peçam: [[comp_silas]].',
+          '"A razão, essa eu dou, que é de senso: uma vila destas não tranca bem as portas, e caixa aberto à noite chama gente da estrada. Entra pelo beco, que a porta dos fundos é fraca, e sai por onde entrou." Dá a razão de corrida, e a mão não larga o joelho: [[comp_silas]].',
         ],
         opcoes: OPCOES_B3_SILAS,
       },
@@ -436,7 +436,7 @@ export const DIALOGOS = {
       b1_obliquo: {
         fala: [
           '"Fecho quando a rua esvazia; loja não é taberna." O olhar não larga o visitante.',
-          '"Na sexta a rua esvaziou às seis, e às seis fechei. Subi, e em cima fiquei." Do outro lado da vitrine, a High Street segue com o seu movimento de sábado: [[alibi_agnes]].',
+          '"Na sexta a rua esvaziou às seis, e às seis fechei. Subi, e em cima fiquei": [[alibi_agnes]]. Do outro lado da vitrine, a High Street segue com o movimento de sábado.',
         ],
         opcoes: [
           { rotulo: '"O que a vila dizia do Sr. Arthurs?"', vaiPara: 'b2_firme', tom: 'firme' },
@@ -451,7 +451,7 @@ export const DIALOGOS = {
       b2_firme: {
         fala: [
           '"A vila que responda pela vila, {detective.treatment}; eu respondo pela minha loja."',
-          'A resposta tem o tamanho exato da pergunta. Veste cinza-escuro, e no cinza um broche de azeviche: [[comp_agnes]].',
+          'A resposta tem o tamanho exato da pergunta: [[comp_agnes]]. Os dedos ficam abertos sobre o balcão, sem tocar em nada.',
         ],
         opcoes: OPCOES_B3_AGNES,
       },
@@ -465,14 +465,14 @@ export const DIALOGOS = {
       b2_tecnico: {
         fala: [
           '"Negócios: papel de escrituração, à vista, uma vez por mês. Conta paga em dia, vinte anos."',
-          'Nada além do livro-caixa. Ao fundo, o postigo do correio, e na balança de cartas as que ainda hão de sair hoje: [[comp_agnes]].',
+          'Nada além do livro-caixa: [[comp_agnes]]. Ao fundo, o postigo do correio, e na balança de cartas as que ainda hão de sair hoje.',
         ],
         opcoes: OPCOES_B3_AGNES,
       },
       b2_obliquo: {
         fala: [
           'Segue-lhe o olhar até o papel de luto e endireita a pilha antes de responder. "É papel de venda, {detective.treatment}, como qualquer outro."',
-          'Daí por diante responde mais seca do que antes. Os óculos sobem, e ela mede o visitante por cima deles: [[comp_agnes]].',
+          'Daí por diante responde mais seca do que antes: [[comp_agnes]]. Os óculos sobem, e ela mede o visitante por cima deles.',
         ],
         opcoes: OPCOES_B3_AGNES,
       },
@@ -525,7 +525,12 @@ export const DIALOGOS = {
         ],
         degraus: [
           {
-            contaEntre: ['ev_anel_encomenda', 'ev_bilhete_vigario', 'corrob_pettigrew'],
+            // A lista NÃO é a de Walter (que conta pettigrew + vigário +
+            // súplica): partilhar dois papéis com corte 2 faria os dois
+            // degraus abrirem sempre juntos, e o casamento cairia duas vezes
+            // na mesma partida. Aqui contam os papéis que tocam ELA — o aro
+            // com as iniciais, os proclamas, e a senhora vista na viela.
+            contaEntre: ['ev_anel_encomenda', 'ev_bilhete_vigario', 'dep_mulher_viela'],
             aPartirDe: 2,
             fala: [
               'Os papéis ficam onde os puseram, e ela não estende a mão para nenhum.',
@@ -643,7 +648,7 @@ export const DIALOGOS = {
       b2_firme: {
         fala: [
           '"Quatro libras e dez xelins, e o conserto pago adiantado." Não pestaneja. "Morto, o homem me deve o mesmo que devia vivo; a queixa está lavrada e de pé."',
-          '"E se me perguntam se choro, não choro." Não pousa a saca para o dizer: [[comp_grey]].',
+          '"E se me perguntam se choro, não choro." Diz de frente, e o carroceiro levanta a cabeça: [[comp_grey]].',
         ],
         opcoes: OPCOES_B3_GREY,
       },
@@ -657,14 +662,14 @@ export const DIALOGOS = {
       b2_tecnico: {
         fala: [
           '"Exigi pesagem diante de testemunhas e lavrei termo em casa do Wycliffe, tudo antes de o homem morrer; as datas estão no papel. Quatro libras e dez xelins, conserto pago adiantado." A soma sai sem um erro.',
-          '"Roubado dentro da loja dele, e ainda adiantei o dinheiro. Chorar não choro; cobrar, cobro enquanto houver de quem." Espera a pergunta seguinte sem largar a saca: [[comp_grey]].',
+          '"Roubado dentro da loja dele, e ainda adiantei o dinheiro. Chorar não choro; cobrar, cobro enquanto houver de quem." A mó troca de compasso atrás dele, e ele espera a pergunta seguinte: [[comp_grey]].',
         ],
         opcoes: OPCOES_B3_GREY,
       },
       b2_obliquo: {
         fala: [
           '"Confiei uma vez, e paguei o conserto adiantado por cima." Passa a saca de um ombro ao outro. "Entrou pesado e voltou leve; o resto está em termo lavrado."',
-          '"Se choro pelo homem? Fui roubado dentro da loja dele. Não choro." Diz sem baixar a voz, e o carroceiro do Finch ouve da rampa: [[comp_grey]].',
+          '"Se choro pelo homem? Fui roubado dentro da loja dele. Não choro." O carroceiro do Finch ouve da rampa e não se volta: [[comp_grey]].',
         ],
         opcoes: OPCOES_B3_GREY,
       },
@@ -1001,7 +1006,7 @@ export const DIALOGOS = {
       b1_tecnico: {
         fala: [
           '"À noite, senhor, o patrão fechava sempre pela mesma ordem." A vassoura encosta no ombro.',
-          '"Primeiro as tampas da vitrine, depois o lampião da loja, à boca da noite." Conta seguro, como quem repete lição de bancada.',
+          '"Primeiro as tampas da vitrine, depois apagar o lampião da loja." Conta a ordem sem se enganar em nenhuma.',
           '"A corda do de bolso era mais tarde: onze horas, antes de subir pra deitar, e isso era todas as noites." Diz a hora e para nela: [[dep_habito_corda]].',
         ],
         opcoes: [
@@ -1049,7 +1054,7 @@ export const DIALOGOS = {
       b2_obliquo: {
         fala: [
           '"Não, senhor; durmo em casa, com a minha gente. Da oficina saio quando o Sr. Crane tranca."',
-          '"Na sexta saímos juntos às sete e meia, o Sr. Crane e eu. Ele foi para a estalagem, eu para casa. Minha mãe serviu a sopa às oito." A resposta vem inteira, e vem com as palavras da primeira vez: [[alibi_davey]].',
+          '"Saímos juntos às sete e meia, o Sr. Crane e eu. Ele foi para a estalagem, eu para casa. Minha mãe serviu a sopa às oito." A resposta vem inteira, e vem com as palavras da primeira vez: [[alibi_davey]].',
         ],
         opcoes: OPCOES_B3_DAVEY,
       },
@@ -1101,7 +1106,7 @@ export const DIALOGOS = {
         fala: [
           'Davey chega sem que o chamem e para a um passo do estojo, as mãos atrás das costas. "Esse é o do Sr. Crane. Ferramenta dele ninguém pega; a minha é a do caixote, de cabo de freixo."',
           '"Buril a gente limpa na flanela, com a cera da bancada, e é da cera que vem esse pardo todo nos cabos. Molhar não pode, que a água entra por baixo da virola e enferruja o espigão; isso o patrão me ensinou no primeiro mês. O de ponta é o de gravar miúdo, por dentro de tampa; um igual já me escapou e me abriu o dedo, no primeiro ano."',
-          'O olho corre a fileira, cabo por cabo, e para num deles. "Esse aí está sem cera nenhuma, senhor. E o Sr. Crane cuida do que é dele: passa a flanela em cada um antes de fechar o estojo, toda noite, e nunca o vi deixar ferramenta por limpar."',
+          'O olho corre a fileira, cabo por cabo. "O Sr. Crane cuida do que é dele, senhor: passa a flanela em cada um antes de fechar o estojo, toda noite, e nunca o vi deixar ferramenta por limpar."',
           'Recua o passo que tinha dado.',
         ],
         opcoes: [],

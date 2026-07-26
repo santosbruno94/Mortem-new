@@ -672,7 +672,7 @@ export const CARTAS = [
     textoDisplay: 'O Carro das Seis',
     carimboPadrao: 'Paradeiro declarado: Moorford, a noite inteira',
     descricao:
-      'Declara ter tomado o carro das seis para Moorford e pernoitado no Station; ter sabido da morte pela manhã e regressado no primeiro trem; e ter tomado quarto na estalagem por estar lacrada a casa do tio. Alisou o colarinho ao dar as horas. Tomado por termo na sala da estalagem, pela mão do guarda.',
+      'Declara ter tomado o carro das seis para Moorford e pernoitado no Station; ter sabido da morte pela manhã e regressado no primeiro trem; e ter tomado quarto na estalagem por estar lacrada a casa do tio. Não pediu para reler o que se lhe escreveu. Tomado por termo na sala da estalagem, pela mão do guarda.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -722,7 +722,7 @@ export const CARTAS = [
     textoDisplay: 'Em Casa desde as Seis',
     carimboPadrao: 'Paradeiro declarado: em casa desde as 18h',
     descricao:
-      'Declara ter fechado a loja às seis e recolhido a casa, sem tornar a sair até a manhã de sábado; e que uma viúva não tem serões. Respondeu alinhando os cadernos da prateleira, o lombo de cada um à mesma altura. Tomado por termo ao balcão, pela mão do guarda.',
+      'Declara ter fechado a loja às seis e recolhido a casa, sem tornar a sair até a manhã de sábado; e acrescenta que uma viúva não tem serões. Não deixou o balcão enquanto se escrevia. Tomado por termo ao balcão, pela mão do guarda.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -769,7 +769,7 @@ export const CARTAS = [
     textoDisplay: 'Rancor Sem Rodeios',
     carimboPadrao: 'Hostilidade aberta',
     descricao:
-      'Fala da queixa a quem lhe pergunte e a quem não pergunte, sempre com a mesma soma e sem baixar a voz: o relógio do pai, o conserto pago adiantado, o peso que voltou menor. Da morte do relojoeiro não diz uma palavra de pesar. Bate a farinha do avental e volta às sacas.',
+      'Fala da queixa a quem lhe pergunte e a quem não pergunte, sempre com a mesma soma e sem baixar a voz: o relógio do pai, o conserto pago adiantado, o peso que voltou menor. Da morte do relojoeiro fala só a soma. Bate a farinha do avental e volta às sacas.',
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'comportamento',
