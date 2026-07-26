@@ -609,19 +609,41 @@ equivalente dá nível equivalente**, e os cinco alcançam os três níveis.
 O **motor é cego** à exposição: `veredicto.js` e `acusacao.js` não a leem, e o `qa.mjs`
 cobra por leitura de fonte.
 
+**Nos casos gerados (OS-R9): beat 3 nas 155 árvores, nos quatro tons.** E a régua relativa
+não bastava: no banco, o dossiê mediano tinha UMA carta, e com dossiê de um o corte de E2 é
+um — o suspeito saltava de E0 a E2 sem nada entre as duas. Medido: o réu alcançava os três
+níveis em 31 casos de 31, e os inocentes em 43%; **quantos degraus um suspeito tem seria um
+delator**, pela porta do tamanho do dossiê em vez da do corte. O conserto foi na origem e
+sem carta nova — um **piso de confronto**: o perito pode pôr diante de qualquer pessoa do
+caso as duas peças que todo caso tem (o que o corpo mostra e a última hora em que se viu a
+vítima viva). Nenhum dossiê fica abaixo de dois, as 155 árvores passam a ter confronto, e
+os três níveis são alcançáveis por todos — **réu 3,00 e inocente 3,00**.
+
 **A escada de confronto (D8) é contador autoral.** Um nó de reação pode trazer `degraus`:
 cada degrau declara uma **lista curada** (`contaEntre`) e um **corte** (`aPartirDe`), e
-vale o último degrau cuja contagem a mesa satisfaz — nunca `requerTodas`. O segundo
+vale o último degrau cuja contagem a mesa satisfaz — nunca `requerTodas`. **Nos gerados
+(OS-R9) a lista não se cura à mão:** ela é o dossiê do próprio suspeito e o corte é o
+próprio `corteDeE2`, importado do motor e não copiado — o degrau cai exatamente quando a
+conversa chega ao nível mais fundo, e é a exposição DITA em vez de um segundo eixo. O segundo
 degrau do testamento de Walter é o caso vivo: com dois dos três papéis na mesa, ele
 admite que soube da mudança e diz por que a omitiu. Degrau rende **prosa e nada mais**.
 
-**A procedência das alegações (`apontadaPor`, D17) — `src/data/procedencia.js`.** Quem
-**pôs** a alegação em circulação, que não é quem ela acusa. Vive **fora de
-`tagsOcultas`**, pela mesma razão que a aparência de personagem vive: campo dentro das
-tags é campo que o motor pode ler amanhã sem que ninguém repare.
-`src/logic/contaminacao.js` faz a conta que a D16 pedia — **papéis somam-se, bocas é que
-corroboram**: o álibi do réu, a lição que Davey repete e a senhora da viela da Sra. Wick
-saem da mesma boca, e valem **uma** voz, não três.
+**A procedência das alegações (`apontadaPor`, D17).** Quem **pôs** a alegação em
+circulação, que não é quem ela acusa. Vive **fora de `tagsOcultas`**, pela mesma razão que
+a aparência de personagem vive: campo dentro das tags é campo que o motor pode ler amanhã
+sem que ninguém repare. `src/logic/contaminacao.js` faz a conta que a D16 pedia — **papéis
+somam-se, bocas é que corroboram**: o álibi do réu, a lição que Davey repete e a senhora da
+viela da Sra. Wick saem da mesma boca, e valem **uma** voz, não três.
+
+**Desde a OS-R9 o mapa é campo de pacote** (`procedencia`), e não de um módulo só: o
+caso-escola declara o dele em `src/data/procedencia.js` e o gerador deriva o dos outros
+trinta (`src/gerador/procedencia_gerada.js`) — **199 entradas em 31/31 casos**, com feixe em
+20 deles. A regra da R7 («alegação sem procedência registrada é voz própria») fica, e deixa
+de ser o *fallback* de 31 casos em 31: vale para o que o mapa honestamente não sabe, como a
+corroboração que vem «por mais de uma janela» e não tem boca única. **O feixe da D16 no
+gerado já existia e ninguém o registrava:** a retratação que a interferência arranca de uma
+testemunha comprada é a versão que o ator pôs na boca dela, e junta-se ao álibi do próprio
+ator.
 
 **A pergunta do perito varia (OS Diálogos/Escala/Localização).** A redação das perguntas
 do perito era fixa — nos casos gerados, **igual em todo caso** (a superfície de diálogo que
@@ -932,12 +954,20 @@ demais (`janela_imprecisa`).
 ### A reconstituição (D24) — a cena que dramatiza e não prova
 
 Entre o mural de acusação e o monólogo corre a **reconstituição**
-(`src/logic/reconstituicao.js`): domingo à noite, na relojoaria, sem inquérito em cena.
+(`src/logic/reconstituicao.js`): domingo à noite, no lugar do fato, sem inquérito em cena.
 É **peça de leitura** — não há escolha a fazer, e por isso não há o que contornar.
 
-O catálogo dos **gestos da noite** vive em `src/data/intervencoes.js` e entra no pacote do
-caso como campo **opcional** (`intervencoes`), no padrão de `ecosDoMestre`. Cada gesto
-declara em `exige` as cartas que TÊM DE ESTAR NA MESA para que ele se desfaça em cena.
+O catálogo dos **gestos da noite** entra no pacote do caso como campo **opcional**
+(`intervencoes`), no padrão de `ecosDoMestre`; o do caso-escola vive em
+`src/data/intervencoes.js` e o dos gerados sai de `src/gerador/intervencoes_geradas.js`
+(OS-R9). Cada gesto declara em `exige` as cartas que TÊM DE ESTAR NA MESA para que ele se
+desfaça em cena.
+
+**O texto que SITUA a cena também é do caso** (`cenaDaNoite`: subtítulo, três aberturas e
+os quatro fechos). Até a OS-R9 ele vivia dentro do módulo de lógica e cravava a relojoaria,
+o balcão e a bancada — dívida que a OS-R7 registrou e a R9 pagou no commit que a faria
+vazar. Hoje `reconstituicao.js` guarda a **régua** (qual abertura, qual faixa de fecho) e
+não conhece cômodo nenhum.
 
 **O contrato é a G9 e cabe numa linha: a cena dramatiza; não prova.** Do que decorrem
 quatro regras que não são de gosto:
@@ -954,9 +984,17 @@ quatro regras que não são de gosto:
 4. **A prosa de um gesto não afirma o que outro gesto prova.** É o furo de G9 que nenhuma
    guarda apanha — as guardas veem marcador e nome, não excesso de tese.
 
-Caso **sem** catálogo de gestos (os gerados, até a OS-R9) não tem reconstituição:
-`montarReconstituicao` devolve `null` e o fim de caso vai direto ao monólogo. **Cena vazia**
-(colheita magra) e **ausência de cena** (o caso não a suporta) são coisas diferentes.
+Caso **sem** catálogo de gestos não tem reconstituição: `montarReconstituicao` devolve
+`null` e o fim de caso vai direto ao monólogo. **Cena vazia** (colheita magra) e **ausência
+de cena** (o caso não a suporta) são coisas diferentes.
+
+**Nos casos gerados (OS-R9): 12 dos 31.** O catálogo deriva-se das CARTAS e não dos eventos
+da batalha — golpe, queda e mobília derrubada são a luta, e a luta não é arrumação de nada.
+Teto **nove** (o do tutorial) e piso **três**, e o piso é **gate, não quota**: um caso que
+só reúna dois gestos não recebe catálogo, porque inventar um terceiro seria pôr na cena uma
+arrumação que a simulação não fez (G9). O teto de doze não está no catálogo: está na ponte
+— `mobilia_recomposta`, a arrumação mais comum do banco (20 ocorrências), ainda não tem
+carta, logo não há o que colher nem o que desfazer.
 
 O fecho da cena é **função da colheita**, em faixas relativas ao tamanho do catálogo — nunca
 sorteio, e nunca declarando proporção: o perito sabe quantos gestos desfez e **não sabe
@@ -1160,8 +1198,18 @@ alcance às falas do jogador. Nenhuma etapa vira código sem ordem expressa do c
 > passe editorial e o QA de fecho — os rótulos do mural que concluíam pelo jogador, o púlpito
 > que era o da igreja, oito rubricas repetidas verbatim, o «vinco das nervuras» corrigido aos
 > pares, duas guardas removidas com justificação e duas tornadas honestas. O catálogo fecha
-> em **42 de 46**, e é o número final. **Próxima: OS-R9**, e já não é reforma — é o gerador a
-> herdar os padrões que o tutorial provou.
+> em **42 de 46**, e é o número final.
+>
+> **OS-R9** saiu da reforma e mudou de alvo: 31 casos embarcados, 155 árvores e um banco que
+> é produto. O gerador passou a saber **procedência** (199 entradas em 31/31, com o feixe da
+> D16 que a interferência já produzia e ninguém registrava), **exposição e degrau** nas 155
+> árvores — com o piso de confronto que matou o delator que a Fase 0 mediu (réu alcançava os
+> três níveis em 31/31 e o inocente em 43%; hoje 100% e 100%) —, as **intervenções da noite**
+> em 12 dos 31 casos, e o **durável do instrumento lavado**. A **dívida de geografia** da R7
+> foi paga no commit que a faria vazar. Ficaram por fazer, com número na ata, o veraz sem
+> crédito, o móbil por aritmética e os dois queimados. **O melhor rendimento em aberto:** dar
+> carta a `mobilia_recomposta` (20 ocorrências sem carta) sobe a reconstituição de 12/31 para
+> perto de 30/31.
 
 **Cenário:** Briarstone, outubro de 1893. Vítima: **Sr. Geoffrey Arthurs**, relojoeiro,
 61 anos, morto no escritório dos fundos por **ferida de buril no pescoço**. Cena
