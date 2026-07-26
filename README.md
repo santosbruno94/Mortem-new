@@ -60,7 +60,15 @@ segundo, escondido na **câmara dos sinos de S. Miguel** — e a chave é uma ci
 dentro do relógio de bolso que o jogador já tinha na mão. Entrou também o **veraz sem
 crédito**: o sineiro Amos Kell viu quem saiu pela boca do beco e diz a verdade, e o motor
 recusa a palavra dele como prova. Não é bug: é a lição de que uma testemunha pode estar
-certa e não servir.
+certa e não servir. A **OS-R5** deu voz aos dois suspeitos que o jogo tinha mudos: a viúva
+Rooke e o aprendiz de quinze anos passaram a ter razão contra a vítima, e a razão chega por
+documento em vez de por queixa — o bilhete em que o vigário marca os proclamas do morto com
+ela para o domingo seguinte à morte, e o livro em que o salário do rapaz é descontado por
+inteiro contra uma dívida da mãe que não anda. É nessa conta que a **agiotagem da vítima**
+entra no jogo, sem uma palavra sobre juros: quem conferir os números encontra a armadilha
+fechada. E o **tell de contagem** — o réu tinha mais cartas de móbil que qualquer outro —
+morreu por medição e não por gasto: a paridade lê-se por **motivos distintos**, e por essa
+métrica o réu nunca foi o máximo.
 
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
@@ -88,7 +96,8 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/os-r2-cena-unica.md`](./docs/os-r2-cena-unica.md) | OS-R2 — fusão de corpo/cena/oficina na localidade `relojoaria` com sub-locais (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/os-r3-abertura.md`](./docs/os-r3-abertura.md) | OS-R3 — a abertura testemunhal, a ordem do coroner e a autoridade corrigida (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/os-r4-elenco-e-livros.md`](./docs/os-r4-elenco-e-livros.md) | OS-R4 — os dois livros do morto, a cifra, a torre de S. Miguel e o veraz sem crédito (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
-| [`docs/os-r5-mobeis-e-cartas.md`](./docs/os-r5-mobeis-e-cartas.md) | OS-R5 — os móbeis que faltam (Agnes, Davey), a agiotagem da vítima e o tell de contagem dos móbeis (**escrita, por executar**: quatro martelos abertos no §5; prompt de arranque em [`docs/os-r5-prompt-de-arranque.md`](./docs/os-r5-prompt-de-arranque.md)) |
+| [`docs/os-r5-mobeis-e-cartas.md`](./docs/os-r5-mobeis-e-cartas.md) | OS-R5 — os móbeis de Agnes e Davey, a agiotagem da vítima e o tell de contagem dos móbeis (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
+| [`docs/os-r6-exposicao-e-interrogatorios.md`](./docs/os-r6-exposicao-e-interrogatorios.md) | OS-R6 — a exposição (E0/E1/E2), o beat 3 nos cinco, a contaminação e o `apontadaPor` (**escrita, por executar**: cinco martelos abertos no §5; prompt de arranque em [`docs/os-r6-prompt-de-arranque.md`](./docs/os-r6-prompt-de-arranque.md)) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)

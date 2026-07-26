@@ -73,5 +73,20 @@
   urbanos (courts, gasworks, pavimentação, esterco) têm base documental de cidade
   grande extrapolada para town pequena — sinalizado no texto onde ocorre.
 
+- **Divergência interna registrada e não resolvida (25/07/2026), sobre o preço do trigo.**
+  `economia-e-estrutura-social.md` §1 dá **~46s o *quarter* em 1870 → ~22s em 1894**;
+  `demografia-e-sociedade.md` §2 dá **50s em 1871 → 23s em 1894**. Séries diferentes, e
+  nenhuma das duas está errada em si — mas os dois arquivos citam-se um ao outro, e um
+  leitor que cruze as páginas encontra números que não batem. **Escolher a série é decisão
+  do usuário**, não do agente; até lá, quem escrever prosa cita a ordem de grandeza (o trigo
+  caiu para menos de metade) e não o número exato.
+- **O que entrou no lote de 25/07/2026** (casamento em `demografia` §7; aprendizagem e
+  dívida em `economia` §§7–8) traz as incertezas declaradas **dentro de cada seção**, e não
+  aqui: o timbre de presbitério, a escala salarial do aprendiz (um único *indenture* de
+  1891, com duas das três linhas da tabela marcadas como convenção de jogo sem fonte), a
+  data de vigência do Ato de escolaridade de 1893, e a cobertura do aprendiz pelos Truck
+  Acts. As taxas de rua de 2d e 3d no xelim estão atestadas só em **1924** e assim
+  marcadas — só a de 1d é de época.
+
 Nada disso impede o uso em prosa — impede tratar esses números como inegociáveis.
 Se um caso futuro depender criticamente de um deles, refinar a pesquisa antes.

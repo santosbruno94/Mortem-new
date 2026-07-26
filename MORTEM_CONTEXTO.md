@@ -1052,7 +1052,17 @@ alcance às falas do jogador. Nenhuma etapa vira código sem ordem expressa do c
 > própria no `qa.mjs`). Um nó novo — **A Torre de S. Miguel** —, e uma pessoa nova, o
 > sineiro **Amos Kell**.
 >
-> **Próxima: OS-R5** — móbeis e cartas, com o orçamento que a R4 deixou.
+> **Fechada: OS-R5** (móbeis e cartas, 25/07/2026) — todo suspeito passa a ter carta de
+> móbil. Duas cartas novas (catálogo 39 → 41; **42 de 46** em jogo com o `ev_algor`,
+> **4 livres** para a R6), ambas `comportamental`/`motivo`: o **bilhete do vigário** que
+> marca os proclamas do morto com a Sra. Rooke para o domingo seguinte à morte, e o
+> **livro de pagamentos** em que o salário do aprendiz é descontado por inteiro contra
+> uma dívida da mãe que não anda. A **agiotagem da vítima** (D1) entra pela aritmética
+> desse livro, sem uma palavra sobre juros. O **tell de contagem** morreu por medição, não
+> por gasto: a paridade lê-se por **motivos distintos** e não por cartas, e por essa
+> métrica o réu (1) nunca foi o máximo — é Walter (2).
+>
+> **Próxima: OS-R6** — exposição e interrogatórios, com as 4 cartas que a R5 deixou.
 
 **Cenário:** Briarstone, outubro de 1893. Vítima: **Sr. Geoffrey Arthurs**, relojoeiro,
 61 anos, morto no escritório dos fundos por **ferida de buril no pescoço**. Cena

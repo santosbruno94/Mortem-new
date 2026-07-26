@@ -308,6 +308,27 @@ export const CARTAS = [
       revelaSegredo: 'suplica_recusada',
     },
   },
+  {
+    // OS-R5 (D5): o móbil de Agnes Rooke. A decisão manda que seja AMBÍGUO e
+    // decidido pelas cartas que o jogador colhe — por isso a carta traz o
+    // fato datado e mais nada. Ao lado da cesta de ceia e do aro por gravar,
+    // o bilhete lê-se como o noivado que ia ser anunciado; sozinho, lê-se
+    // como o que a vila ia saber no domingo. A escolha é do jogador.
+    id: 'ev_bilhete_vigario',
+    localidade: 'relojoaria',
+    subLocal: 'escritorio',
+    textoDisplay: 'Bilhete do Vigário de S. Miguel',
+    carimboPadrao: 'Proclamas de G. Arthurs e da {suspeito:agnes_rooke.nome}, três domingos de outubro',
+    descricao:
+      'Meia folha com o timbre do presbitério de S. Miguel, dobrada em três. O vigário dá por recebida a nota do princípio do mês e marca os proclamas do {vitima.nome}, viúvo, e da {suspeito:agnes_rooke.nome}, viúva, ambos desta paróquia: o primeiro no domingo, 15 de outubro; os outros dois nos dois domingos seguintes.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'motivo',
+      motivo: 'recasamento_vigiado',
+      ligadoA: 'agnes_rooke',
+      isca: true,
+    },
+  },
 
   // ===================== A RELOJOARIA · A OFICINA =====================
   {
@@ -323,6 +344,34 @@ export const CARTAS = [
       subDominio: 'motivo',
       motivo: 'silenciamento',
       ligadoA: 'silas_crane',
+    },
+  },
+  {
+    // OS-R5 (D6, G7): o móbil de Davey Tull, quinze anos. É ECONÔMICO E SÓ, e
+    // chega por documento — o rapaz não precisa se queixar do patrão para o
+    // jogo ter a razão dele.
+    //
+    // A agiotagem da vítima (D1) entra pela ARITMÉTICA, e a conta é exata. À
+    // taxa que a época nomeava (um penny por xelim por semana), £2 8s = 48
+    // xelins vencem 48 pence de juro por semana, que são os mesmos 4 xelins
+    // que se descontam: a dívida fica PARADA. Por isso as duas somas do livro
+    // são idênticas, a de março e a da última linha, com £5 16s pagos entre
+    // uma e outra. A palavra "juros" não aparece, e não precisa: quem conferir
+    // os números encontra a armadilha fechada. As vinte e nove sextas correm
+    // de 31 de março a 13 de outubro — a última linha é a noite da morte.
+    id: 'ev_livro_pagamentos',
+    localidade: 'relojoaria',
+    subLocal: 'oficina',
+    textoDisplay: 'Livro de Pagamentos da Oficina',
+    carimboPadrao: 'Salário do aprendiz Tull descontado por inteiro desde março',
+    descricao:
+      'Livro estreito, três colunas: o salário da semana, o desconto e o que fica em dívida. Na linha de {suspeito:davey_tull.nome}, quatro xelins entram e quatro xelins saem, todas as sextas desde o último dia de março; vinte e nove semanas ao todo. A margem daquele mês traz, na letra do morto, "adiantado à Sra. Tull, £2 8s". Ao pé da última linha, na mesma letra, a soma: £2 8s.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'motivo',
+      motivo: 'salario_atrasado',
+      ligadoA: 'davey_tull',
+      isca: true,
     },
   },
   {
