@@ -382,7 +382,10 @@ Sucede a SR e **não é a SR**: a reforma tinha um caso à mão; esta tem 31 cas
 
 - **Objetivo:** o gerador passar a produzir os padrões que o tutorial provou em oito OS.
 - **OS:** [`os-r9-gerador-herda-os-padroes.md`](./os-r9-gerador-herda-os-padroes.md); prompt
-  em [`os-r9-prompt-de-arranque.md`](./os-r9-prompt-de-arranque.md).
+  em [`os-r9-prompt-de-arranque.md`](./os-r9-prompt-de-arranque.md) — **é o prompt versionado
+  da sessão seguinte:** copiar o bloco do §1 como primeira mensagem.
+- **Gatilho:** o **PR #100** (a R8, que fecha a reforma) **integrado**. Sem isso a R9 não abre
+  — regra dura da OS-R0 §5, e a ata da R8 vive nesse PR.
 - **A fila, medida contra a árvore (dez itens):** procedência (`apontadaPor`) — hoje só o
   caso-escola a tem, e é por isso que a `contarVozes` da R7 trata alegação sem procedência
   como voz própria; exposição E0/E1/E2 — **zero** ocorrências em `src/gerador/`; o veraz sem

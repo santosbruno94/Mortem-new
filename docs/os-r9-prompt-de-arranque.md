@@ -13,8 +13,10 @@ precisava de carregar era um caso; nesta, é um banco.
 
 > Executar a **OS-R9 — O gerador herda os padrões**
 > (`docs/os-r9-gerador-herda-os-padroes.md`) do repositório MORTEM, do arranque ao
-> fecho com ata. **A reforma está fechada** (oito OS, ata da R8 em 26/07/2026);
-> esta OS sai dela e muda de frente.
+> fecho com ata. **A reforma está fechada** (oito OS, ata da R8 em 26/07/2026,
+> entregue no **PR #100**); esta OS sai dela e muda de frente. **Confirmar que o
+> PR #100 está integrado antes de abrir ramo** — é a regra dura da OS-R0 §5, e a
+> ata da R8 vive nele.
 >
 > **Antes de tocar em qualquer ficheiro, ler nesta ordem:**
 > 1. `docs/os-r0-mestra-reforma-hora-emprestada.md` — a ordem-mestra. Não se
@@ -75,7 +77,14 @@ precisava de carregar era um caso; nesta, é um banco.
 > **Toda prosa gerada nova passa pelo pipeline `revisar-prosa`** com os três
 > revisores, e o gate é **zero achados bloqueantes** — com uma diferença desta
 > OS: a amostra tem de ser **de lote**, várias seeds, não um caso só. Prosa gerada
-> é matéria em série, e a guarda automática não chega à matéria.
+> é matéria em série, e a guarda automática não chega à matéria. **Contar com mais
+> de duas passadas:** na R8 foram três, e a terceira foi a que achou os dois
+> documentos normativos a ensinar o exemplo invertido.
+>
+> **Toda regra que esta OS escrever passa por uma passada de USO antes de se dar
+> por escrita** — é a quarta lição de método da reforma, e é da R8: a regra da
+> rubrica nasceu larga em três pontos, e só o uso a mostrou. Vale em dobro aqui,
+> onde o que se escreve é regra que **31 casos** vão cumprir.
 >
 > **Gate no fecho:** `npm run verificar`, mais o gate específico do §7.
 >
@@ -155,13 +164,32 @@ aberto. Não se conserta «de passagem» numa OS de gerador.
 
 | | |
 |---|---|
-| Ramo | `claude/prompt-versionado-continuacao-xolmmh` |
+| Ramo entregue | `claude/prompt-versionado-continuacao-xolmmh` (9 commits) |
+| PR | **#100** — `OS-R8 — Passe editorial e QA de fecho: a reforma do caso-escola fecha aqui` |
 | Base | `claude/mortem-vertical-slice-zzrcto` |
 | Gate | `npm run verificar` — a bateria inteira, verde |
+| `qa.mjs` | **CASO VÁLIDO**, 140 checagens, **25 guardas numeradas** |
 | Cartas | **42 de 46**, **4 livres — número final** |
 | Horas | 18h00 · 18h00 · 14h00 · 13h00 |
-| Guardas | GR4-2…GR4-6, GR5-3…GR5-6, GR6-3…GR6-9, GR7-1…GR7-7, **GR8-4** |
+| Guardas | GR2-1, GR4-2…GR4-6, GR5-3/4/6, GR6-3…GR6-9, GR7-1…GR7-7, **GR8-2**, **GR8-4** |
 | Banco | 31 casos embarcados, 155 árvores, replay byte a byte verde |
+| Pipeline da R8 | **três passadas** — reprovou na 1.ª (4 bloqueantes), a 2.ª achou 1 em árvore nunca medida, a 3.ª fechou com zero |
+
+> **A R9 NÃO ABRE antes de o PR #100 estar integrado** — é a regra dura da OS-R0 §5 («nenhuma
+> OS abre enquanto a anterior não tiver ata»), e a ata da R8 vive nesse PR. Confirmar o merge
+> antes de criar o ramo próprio. Se o PR tiver sido integrado e depois surgirem correções de
+> revisão, elas são trabalho da R8, não da R9.
+
+**Duas guardas que a R9 herda e não pode supor mais fortes do que são:**
+
+- a **GR8-4** compara **frases inteiras**, logo não apanha oração repetida dentro de uma frase
+  maior (foi assim que uma rubrica de Davey passou); e apanha **só verbatim** — a contradição
+  entre a fala e a alfinetada continua a ser leitura humana;
+- a **GR8-2** varre a pasta do mural por `readdirSync` e descarta folha de estilo por
+  **posição** (o que está dentro de `className=`), nunca pela forma. A versão que descartava
+  pela forma engolia três rótulos visíveis de verdade e passava verde numa injeção real. **Se
+  a R9 escrever guarda de string, é este o molde** — e o rótulo dela imprime quantas strings
+  mediu, de propósito.
 
 **Aberto, e por onde:**
 
