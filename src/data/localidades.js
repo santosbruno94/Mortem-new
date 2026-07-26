@@ -143,9 +143,22 @@ export const LOCALIDADES = [
           },
           {
             id: 'pt_oficina_pulpito',
-            rotulo: 'O púlpito de ordens',
+            // OS-R8 §3.2: era «o púlpito de ordens». Em PT, púlpito é o da
+            // igreja — e o caso tem uma (S. Miguel). O móvel que a KB atesta
+            // para a escrituração de balcão é o clerk's desk: escrivaninha
+            // alta de tampo inclinado com banqueta
+            // (kb-mundo-vitoriano/mobiliario-por-classe.md:134). O forro NÃO
+            // vem da KB — é escolha de prosa entre os dois correntes do móvel
+            // (couro embutido ou baeta); o que a KB não documenta em parte
+            // nenhuma é a CORTIÇA, e era ela que estava aqui.
+            //
+            // «das ordens», e não «alta», porque o escritório do morto já tem
+            // um ponto chamado «A escrivaninha» — dois rótulos a um adjetivo
+            // de distância confundiriam quem os refere de memória no mural.
+            // O id do ponto não muda: é do motor, e o motor não lê rótulo.
+            rotulo: 'A escrivaninha das ordens',
             prosa: [
-              'A um canto, um púlpito de escrever forrado de cortiça gasta, com um tinteiro de bancada e um prego de espetar recibos. No prego, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Na prateleira de baixo, entre o mata-borrão e a caixa de bicos de pena, o [[ev_livro_pagamentos]] está de capa fechada. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
+              'A um canto, uma escrivaninha alta de tampo inclinado, o couro gasto onde o braço se apoia. No rebordo plano do topo, um tinteiro e um espeto de arame; no espeto, uma pilha de recibos furados, o de cima datado de sexta na mesma letra miúda. Na prateleira de baixo, entre o mata-borrão e a caixa de bicos de pena, o [[ev_livro_pagamentos]] está de capa fechada. Aberto sobre a inclinação, o [[ev_livro_ordens]].',
             ],
           },
           {

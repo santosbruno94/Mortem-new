@@ -245,7 +245,7 @@ export const CARTAS = [
     textoDisplay: 'Cinza de Papel Queimado',
     carimboPadrao: 'Cinza de papel, fio de costura e fecho de latão',
     descricao:
-      'A cinza sobe acima das barras: cinza pálida que se levanta ao mínimo sopro, lâminas negras encurvadas que estilhaçam em vez de vincar, uma crosta espessa em camadas. Posta a vela ao rés da grelha, as lâminas devolvem um brilho de linhas paralelas, e entre as linhas outras marcas de brilho, sem forma que se leia. No resto do leito, um fecho de latão com a sua chapa, escurecido e torto, um fio de linho preso a uma dobra de folhas queimadas e, de encontro à grade, um pedaço de pasta empenada com a pele torrada, ainda com o vinco das nervuras.',
+      'A cinza sobe acima das barras: cinza pálida que se levanta ao mínimo sopro, lâminas negras encurvadas que estilhaçam em vez de vincar, uma crosta estreita e arqueada, em camadas. Posta a vela ao rés da grelha, as lâminas devolvem um brilho de linhas paralelas, e entre as linhas outras marcas de brilho, sem forma que se leia. No resto do leito, um fecho de latão com a sua chapa, escurecido e torto, um fio de linho preso a uma dobra de folhas queimadas e, de encontro às barras, um pedaço de pasta empenada. O pano do forro está carbonizado; por baixo dele, um carvão da grossura da própria pasta, que se descama em placas. Nas bordas frias do leito e sob a grelha, nenhuma folha apenas tostada.',
     // Domínio `comportamental` por ordem da G1: a cadeia física do crime não
     // recebe carta nova. Sub-domínio próprio, que o motor não lê — esta carta
     // não sustenta âncora nenhuma, e é esse o desenho.

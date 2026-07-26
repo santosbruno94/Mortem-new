@@ -2702,3 +2702,452 @@ alto está ancorado em «uma hora de alimentação», e com a queima declarada i
 tell precisa de ser desacoplado da duração. A física corre a favor da prosa (fogo abafado
 carboniza mais e colapsa menos, logo o leito interrompido é **mais** volumoso), mas a KB,
 como está escrita, deixou de justificar o que a carta afirma.
+
+---
+
+## 26/jul/2026 — OS-R8: Passe editorial e QA de fecho (**a reforma fecha aqui**)
+
+**Decisões aplicadas:** nenhuma nova — a R8 executou o que sete OS deixaram, e abriu com o
+§5 vazio (a primeira e única da série). Herdadas: D13 (o rótulo que não conclui), D24/D25
+(as duas peças da R7 que a fila tocou), e os três martelos de 26/07/2026 que a R7 já tinha
+executado.
+**Guardas verificadas:** G1, G3, G4, G8, G9, G10, G11, G12 · **Novas:** GR8-2, GR8-4 ·
+**Removidas, com justificação:** GR4-1 e a linha «P9 Fase 0» (§ próprio, abaixo)
+**Arquivos tocados:** `src/components/MuralAcusacao.jsx` · `src/components/mural/RevisaoFinal.jsx` ·
+`src/data/localidades.js` · `src/data/dialogos.js` · `src/data/cartas.js` ·
+`src/data/intervencoes.js` · `scripts/qa.mjs` · `scripts/qa-ui.mjs` ·
+`docs/kb-medicina-legal/supressao-de-vestigios.md` · `docs/biblia-de-vozes.md` ·
+`docs/os-r8-fase-0-inventario.md` (novo) · `docs/os-r9-*` (novos) ·
+`docs/os-fair-play-s2.md` e `docs/os-r5-mobeis-e-cartas.md` (emendas datadas) ·
+`docs/plano-de-sessoes.md` · `docs/pendencias-status.md` · `MORTEM_CONTEXTO.md` · `README.md` ·
+este arquivo
+**Gate:** lint-prosa sem violação ✓ · qa.mjs CASO VÁLIDO (140 checagens) ✓ · qa-ui.mjs UI
+VÁLIDA ✓ · build ✓
+**Gate específico:** pipeline `revisar-prosa` com os três revisores, em **três passadas** —
+reprovou na primeira (quatro bloqueantes), a segunda achou um em árvore que ninguém tinha
+medido, e a terceira fechou com **zero nos dois revisores convocados** ✓ ·
+**42 cartas antes, 42 depois**, provado pela GR7-7 ✓ · os quatro perfis dão os quatro
+desfechos, com as horas **18h00 · 18h00 · 14h00 · 13h00** conferidas e inalteradas ✓ ·
+contrato do `qa-ui` atualizado no mesmo commit que mexeu na string ✓ · `src/gerador/`,
+`casos_gerados.js` e `casos_indice.js` fora do diff ✓
+**Divergências assumidas:** nenhuma nova. Duas pré-existentes ficam **registadas e não
+corrigidas**, por estarem fora da fila (§ próprio).
+
+### A Fase 0, e o que ela mudou no plano antes de o plano começar
+
+A Fase 0 das três OS anteriores mediu jogo; esta mediu **texto**: por arquivo, cada item da
+fila com a linha exata e o que o QA toca nela (`docs/os-r8-fase-0-inventario.md`). Rendeu
+três medidas, e duas mudaram a OS:
+
+1. **O púlpito NÃO toca o `qa-ui`.** O §3.2 da própria OS e o prompt de arranque diziam que
+   tocava; contra a árvore, os pontos abrem por classe (`.ponto-interesse`) e nenhuma
+   asserção lê rótulo de ponto. Caiu o custo suposto da Fase 2. **A frase que criou a suposição
+   foi encontrada:** `docs/os-fair-play-s2.md:116` afirmava que o QA clica os rótulos das
+   estações — é falso, e fez o item 14 do playtest parecer caro em **três OS seguidas**. Ganhou
+   emenda datada, porque quem abrir aquele documento primeiro continuaria a ser enganado.
+2. **A GR8-4 não tinha um furo: tinha oito.** A fila herdou do pipeline da R6 **uma** rubrica
+   repetida verbatim. Escrita como guarda geral em vez de lida como achado, a régua mediu
+   **oito**, todas entre nós **co-alcançáveis** — a conversa desce um beat por vez e os
+   confrontos correm por canal lateral na mesma sessão, logo cada par se lia de seguida numa
+   trilha só. É a lição de método da OS: *uma guarda acha o que uma leitura não acha, e é mais
+   barata de escrever do que a leitura é de repetir.*
+3. **Dois itens do playtest que o `pendencias-status.md` roteava para cá não eram desta OS**,
+   e ficam fechados por triagem em vez de herdados por inércia: o **item 11** já estava
+   satisfeito desde a S1 (o `textoDisplay` das cartas de álibi carrega lugar + faixa, no idioma
+   que o caso-escola já tinha) e fecha por verificação; o **item 10** (ler a transcrição
+   completa da carta amassada) é **lote de UI** — componente novo e prosa nova —, e a S2 já o
+   tinha aprovado assim. Num passe de acabamento seria feature sem ordem expressa. Mesmo
+   destino para a sala da `porta_beco`, que a R2 tinha registado «para o passe editorial»: custa
+   prosa nova, sala clicável na planta e contrato de `qa-ui`.
+
+### A fila, item a item, com o estado de cada um
+
+| Item | Estado |
+|---|---|
+| Os três rótulos da Estação III (item 14) | ✅ **feito, e por inteiro só na 2.ª passada** — ver abaixo |
+| O púlpito de cortiça (achado da R5) | ✅ **feito** — «A escrivaninha das ordens», tampo inclinado e couro |
+| A rubrica do colete repetida (não-bloqueante da R6) | ✅ **feito**, e com ela **sete** que ninguém tinha visto |
+| «a bancada amanheceu sem lume» (não-bloqueante da R6) | ✅ **feito** — a fala passou a repetir a abertura em vez de a negar |
+| O «vinco das nervuras» (achado da R7) | ✅ **feito aos pares**, carta e gesto, e a matéria mudou duas vezes (ver o pipeline) |
+| «antes do meio-dia» na bíblia de vozes (achado da R7) | ✅ **feito** — a fonte de código vence a de doc |
+| A emenda à KB do §3.4-bis | ✅ **feita, e cresceu** — três consertos em vez de um |
+| O QA de fecho (§3.5) | ✅ **feito** — duas guardas removidas, duas tornadas honestas, uma duplicação medida e mantida |
+| O `interrogatorio_silas` normalizado | ⛔ **não se fez, e é martelo** (26/07/2026) |
+| Carta nova, em qualquer domínio | ⛔ **zero**, e o catálogo sai com os mesmos 42 |
+
+### A Fase 1, e o erro que ela cometeu por lista feita à mão
+
+O motor nunca vazou nada: a Estação III sempre listou **todas** as alegações de hora, as
+verdadeiras junto das falsas — o guarda Tobin correndo as tampas da vitrine às 20h na mesma
+gaveta que o moço do padeiro. O que concluía pelo jogador era o **nome da gaveta**:
+
+- `III · As Mentiras` / `depoimentos desmentidos` → **`III · Os Depoimentos` / `hora e
+  paradeiro declarados`**;
+- na revisão final, `Mentiras` → **`Contestados`**, e a mesma relação deixou de ser
+  «desmentida» nas duas linhas da tela.
+
+**E ficou meio feita.** O pipeline apanhou três strings do MESMO defeito que sobreviveram na
+mesma tela: `Nenhuma mentira confrontada.`, `N mentira(s) de hora exposta(s)` e
+`N paradeiro(s) desmentido(s)`. Eu tinha justificado a última como *resultado* do barbante do
+jogador, e não etiqueta prévia — o argumento cai, porque **a ligação pode estar errada** (a
+Rota 2 do `qa-ui` liga errado e condena um inocente) e ali era o jogo a endossá-la antes do
+julgamento. A GR8-2 pedia prova por **lista de strings**; uma lista feita à mão erra assim, e
+um `grep` não. A guarda entrou no `qa.mjs`, varre as literais visíveis dos cinco arquivos do
+mural, e o contrato do `qa-ui` mudou no mesmo commit.
+
+**Fora do mural a palavra fica.** No monólogo e no epílogo o perito fala **depois** do
+julgamento, e ali uma mentira provada é uma mentira.
+
+### As oito repetições, as onze correções, e a regra que as resolveu
+
+**Dois números, e não são o mesmo:** a **GR8-4 mediu oito repetições verbatim**; corrigi-las
+mexeu em **dez rubricas** (as oito repetidas, mais o par «Passa a saca de um ombro ao
+outro»/«Passa a saca ao outro ombro», que é a mesma rubrica com uma palavra mudada de lugar).
+Na primeira passada do pipeline **nove** saíram por corte e uma foi reescrita; na segunda,
+**duas voltaram** — as de Grey, que não colidiam com nada — e mais **quatro** caíram nas
+árvores de Agnes e Davey, que a primeira passada nunca mediu. O que fica entregue: **onze
+rubricas mexidas, sete cortadas.**
+
+Onde eu tinha posto observável novo, entrou o **corte**. A razão é de desenho, e ficou escrita
+em `dialogos.js` acima das alfinetadas, no `guia-de-estilo.md` §4.10 e no catálogo da skill
+`anti-padrao-ia` (nº 13) — porque uma regra que vive só num comentário de código não é
+herdada por OS nenhuma:
+
+> **A fala base de um nó com `alfinetada` não leva rubrica de gesto.** A alfinetada
+> imprime-se na MESMA tela, logo abaixo da fala, e é ela o gesto que a exposição paga. Um
+> segundo gesto na prosa base ou **contradiz** o primeiro, ou gasta de graça o rendimento que
+> o nível existia para comprar.
+
+E contradizia mesmo, em dois sítios que o pipeline provou: «A xícara arrefece ao lado, sem
+que a toque» contra o E1 de Silas, que diz que **a xícara do visitante fica por servir** (e a
+xícara é do visitante, não dele); «Cruza os braços e não os desfaz até acabar» contra o E1 de
+Walter, que põe o botão do colete **preso entre os dedos até o fim da resposta**.
+
+**Um par não verbatim foi corrigido à mão e fica registado:** «Passa a saca de um ombro ao
+outro» e «Passa a saca ao outro ombro» são a mesma rubrica com uma palavra mudada de lugar. A
+guarda continua **estrita** de propósito — as mãos quietas de Silas e a saca de Grey são
+adereços de personagem, e uma guarda difusa reprovaria a caracterização junto com o vício.
+
+**A isenção da guarda é fair play, não conveniência:** nós do **mesmo beat** são alternativas
+mutuamente exclusivas, e que o paradeiro de Walter saia com a mesma redação em qualquer tom é
+o que a G4 exige — o tom é cor, nunca chave.
+
+**Preço registado:** a limpeza tirou três das quatro plantações de «mãos nos joelhos» de
+Silas. Numa trilha cordial ou técnica, o E2 dele («As mãos deixam os joelhos») passa a ser
+pago por um plantio só, o da abertura — que é sempre lido. Fica de pé, e fica anotado.
+
+### O QA de fecho: o que saiu, e por quê (GR8-6)
+
+**Removida 1 — «P9 Fase 0 (telemetria da âncora dupla)».** A asserção comparava
+`p9Telemetria.total` com `1 + CASOS_POOL.length + CASOS_LUTA.length`, e `total` é o
+comprimento do **mesmo array** que a chamada monta com esses três termos: comparava um
+comprimento consigo próprio. Não podia falhar, em árvore nenhuma, nunca. E não havia perna
+honesta a acrescentar-lhe — a cobertura do banco já é do `indiceBancoOk`, e a classificação é
+exaustiva por construção. **A medição fica inteira**, impressa acima, que é de onde a P9 a
+leu. O rótulo dizia «só mede», e era verdade; o errado era ela figurar entre as guardas.
+
+**Removida 2 — GR4-1 (teto de cartas).** Cobrava `<= 46`; a GR7-7 cobra `=== 42`, que o
+implica. O que a GR4-1 tinha de próprio não era asserção: era a **conta impressa** para a OS
+seguinte ler antes de gastar, e essa passou para o rótulo da GR7-7. **O teto da G11 continua
+com asserção própria lá, e de propósito:** «=== 42» é o pino desta era, «> 46» é a invariante
+permanente — no dia em que uma OS gastar carta com ata, é a segunda perna que continua a
+segurar o mural. Na mesma passada, a GR7-7 passou a **contar e a cobrar pela mesma variável**:
+imprimia por um nome e cobrava por outro, que é como uma OS futura conserta um e não o outro.
+
+**Tornada honesta 1 — o contrato de assets.** A primeira perna varre o manifesto, e o
+manifesto está **vazio**: passava por vacuidade. Quem lesse «manifesto válido» em verde
+concluiria que houve arte conferida. O rótulo passa a dizer o número («0 asset(s)
+conferido(s)»), e a perna viva — nenhuma arte importada por fora — continua a medir o que
+sempre mediu.
+
+**Tornada honesta 2 — os pontos da cena gerada (`qa-ui`).** A checagem media `.ponto-corpo >=
+1` **depois** de a linha anterior já ter aberto um ponto e provado exactamente isso; abrir
+mais pontos não baixa a conta. Passa a cobrar o que o rótulo promete: todos os pontos do
+acordeão abertos, cada um com o seu corpo de prosa — e o rótulo diz o número medido (3, na
+réplica).
+
+**Medida e MANTIDA, com a razão escrita:** o `lint-prosa` corre **duas vezes** no
+`npm run verificar` (uma por spawn dentro do `qa.mjs`, outra como passo próprio). É duplicação
+real, mas compra uma coisa: `node scripts/qa.mjs` sozinho — que o `CLAUDE.md` documenta como
+comando de mesa — continua a cobrir prosa. Custa um relatório impresso duas vezes. Fica.
+
+### O parecer do pipeline — reprovou na primeira passada, e o furo era a minha própria Fase 1
+
+**Primeira passada: quatro bloqueantes do editor, dois do fiscal (coincidentes), zero do
+perito.** As contagens mecânicas ficaram na linha de base exacta de antes da OS (formula=5 ·
+travessao=10 · lexico=8 · zero filtro sensorial, zero monotonia), e ainda assim **seis dos
+onze textos novos eram piores do que os que substituíram** — o que é a prova mais dura de que
+guarda automática não alcança matéria.
+
+O mais instrutivo não foi uma frase: foi **a Fase 1 estar meio aplicada**, com o mesmo defeito
+a sobreviver em três strings da mesma tela que eu tinha acabado de corrigir. O segundo mais
+instrutivo foi o **único texto não-observável do lote** — «Deixa passar um instante antes do
+resto», no nó da evasiva: hesitação etiquetada pelo narrador, e imediatamente antes de o
+assassino repetir a teoria falsa. A KB do craft é expressa (a hesitação vai para a fala), e o
+texto que ela substituía era observação pura. Saiu.
+
+**Do perito, três consertos de matéria e um furo que a própria emenda abriu:**
+
+- **«vários milímetros» é metrologia fora de época.** A Inglaterra de 1893 mede em polegadas —
+  e a carta irmã do mesmo dossiê diz «meia polegada escassa». Passou a «um carvão da grossura
+  da própria pasta», que diz a física da KB («a espessura é o argumento») sem unidade nenhuma.
+- **«a pele torrada» → «o pano do forro torrado»** (a KB atesta pano ou meio-couro, e dá ao
+  couro no fogo outra fenomenologia: encolhe e fica córneo); **«descasca» → «descama»**, que é
+  o verbo de arte; e a **«crosta espessa em camadas» voltou a ser «curva e rígida»**, que é o
+  discriminante do lombo de mola — sem ele, a carta passava a ter duas crostas grossas e nenhum
+  modo de saber que eram duas peças distintas da carcaça. Este último defeito **foi criado pelo
+  meu diff**: ao dar espessura à pasta, emprestei à crosta o argumento que era da capa.
+- **O gesto da cena deixou de relistar o laudo** (guia §5, nunca copiar frase entre camadas) e
+  passou a narrar o acto: a capa fica de encontro às barras, e ali para.
+- **E o furo, que é o achado da OS:** com a queima declarada interrompida, o «**não se lê
+  nada**» do dossiê deixou de se sustentar sozinho. O que a interrupção deixa nas bordas frias
+  não é folha carbonizada: é folha **tostada** — castanha, retraída —, e essa **lê-se a olho
+  nu em 1893**. Se existisse uma no caso, cairia o desenho inteiro da carta (a fome do que
+  ardeu é o que manda o jogador à torre). A emenda 1, sozinha, tinha aberto isto.
+
+### Segunda passada: zero bloqueantes, e os três achados foram das próprias correções
+
+**O gate passou.** Os três revisores aprovaram sem bloqueante, e os achados que restaram são
+das correções da primeira passada — que é o padrão desta série, e o sinal de que ela funciona.
+
+**A regra que eu escrevi era mais forte do que a árvore.** O editor mediu: dos vinte nós com
+`alfinetada`, **treze continuam a levar rubrica**, e dois dos meus nove cortes estavam em nós
+**sem alfinetada nenhuma**. Lida à letra, a regra mandaria uma OS futura cortar os treze — e o
+beat 3 ficaria sem corpo. Reescrita para o critério que realmente a decidiu: *rubrica que
+REPETE ou CONTRADIZ o adereço da alfinetada do mesmo nó sai; rubrica que não colide fica.*
+
+**E ficaria sem corpo justamente para quem tem menos.** As alfinetadas só existem em E1 e E2 —
+em **E0 não há nada** —, logo um corte por regra deixaria a fala nua para quem chega de dossiê
+vazio. Foi por aí que se viu que **Grey tinha perdido a marca que a bíblia lhe dá** («não para
+o serviço para responder»): as duas rubricas dele que eu cortara não colidiam com nada, porque
+eram ambiente e olhar. Voltaram, e voltaram **melhores** do que eram — a objeção da primeira
+passada era que a mó identificava o lugar e não o falante, e agora ela identifica-o: «Atrás
+dele a mó troca de compasso, **e ele não vira a cabeça**». Um homem que não volta a cara quando
+o seu próprio moinho muda de ritmo é o moleiro.
+
+**A GR8-2 era cega onde mais importava, e o defeito era o mesmo que a Fase 4 tinha ido caçar.**
+A guarda varria literais entre aspas — e a cópia visível do mural mora, em boa parte, em
+**texto JSX**, fora de qualquer aspa. Prova: sobreviveu à Fase 1 e à própria guarda a frase
+`ligue o vestígio que o desmente, se houver`, na Estação V. Uma guarda que promete a lista
+inteira e mede um terço dela é a irmã gémea do «manifesto válido» com o manifesto vazio, e eu
+recriei-a duas secções abaixo de a ter consertado. Agora soma o texto JSX (com o descarte das
+classes de estilo e das setas de função, que abrem o mesmo casamento que uma tag), **imprime
+quantas strings mediu** — 101, em cinco arquivos — e foi provada por reintrodução: com a
+palavra velha de volta, reprova.
+
+**Do perito, três consertos, e um deles contra a minha própria emenda.** A frase «Quem para
+antes do fim não salva o registro: deixa-o ilegível» — que eu tinha escrito no mesmo commit —
+**contradizia frontalmente a emenda 3**, três parágrafos abaixo dela: quem para antes do fim
+pode ter deixado folha tostada, e essa lê-se. Ganhou a ressalva. O mecanismo do livro fechado
+estava errado desde antes da OS («a camada de carvão sobe a temperatura de ignição» — não
+sobe: **isola e barra o ar**), e o «enegrece por inteiro» virou gradiente, que é o que a
+matéria faz.
+
+**E o fair play cobrou uma oração.** Com a KB a mandar procurar o fragmento tostado, a carta
+passou a ter de mostrar a busca: *«Nas bordas frias do leito e na cinza da pá, nenhuma folha
+escapou apenas tostada.»* É observação negativa, não custa carta, e é ela que autoriza o caso
+a mandar o jogador atrás do Livro II sem flanco.
+
+**E o fiscal foi buscar as duas árvores que ninguém tinha medido — e achou lá o bloqueante
+da segunda passada.** A regra vale para as cinco árvores; a primeira passada só nomeou três,
+e eu corrigi as três. Em **Agnes**, a prosa base endireitava a pilha em dois nós enquanto a
+alfinetada de E1, no parágrafo imediatamente abaixo, dizia que **«a pilha fica por
+endireitar»** — a mesma classe de contradição da xícara e dos braços, viva desde a R6. Em
+**Davey**, o beat 3 técnico respondia «de olhos erguidos» e o E2 fazia-lhe os olhos
+**subirem** do serviço; e «A vassoura fica quieta.» repetia-se entre o beat 2 e o beat 3, num
+sítio que a GR8-4 não via porque a guarda compara **frases inteiras** e ali a oração vinha
+dentro de uma maior. E em **Silas**, a alfinetada de E1 continuava a declarar a xícara «por
+servir» depois de o beat 1 o ter posto a enchê-la duas vezes — a rubrica que a primeira
+passada cortou era o sintoma; a causa estava na alfinetada, e passou a «não torna a
+encher-se».
+
+**Duas guardas ganharam perna por causa disto**, e as duas correções são do mesmo feitio da
+Fase 4:
+
+- a **GR8-4 passou a ler a `alfinetada`** do nó, e a isenção do mesmo beat exige agora
+  também **nós diferentes** — repetição entre a fala e a alfinetada do próprio nó lê-se
+  sempre de seguida, sem alternativa. Provada por injeção;
+- a **GR8-2 deixou de varrer uma lista à mão.** Um arquivo do mural renomeado sairia da lista
+  sem que nada reprovasse, e a guarda passaria a medir menos **e a continuar verde** — que é
+  exatamente o defeito que esta OS foi caçar. Varre a pasta inteira (8 arquivos, 111 strings),
+  e o número está no rótulo.
+
+**Registada, e é uma cegueira que fica:** a GR8-4 compara frases inteiras, logo não apanha
+oração repetida **dentro** de uma frase maior (foi assim que a vassoura de Davey passou). Fica
+para o olho do pipeline, e fica escrito aqui para a R9 não a supor mais forte do que é.
+
+**Não acatado, com razão registada:** restaurar «Bate a unha na madeira a cada prazo que diz»
+no beat 3 técnico de Walter. O editor deu-o como restauro opcional, argumentando que unha e
+botão são gestos sequenciais; mas o E1 dele diz que o botão fica preso entre os dedos **até o
+fim da resposta**, e isso é simultaneidade declarada. Recriaria a colisão que a regra existe
+para impedir.
+
+### Terceira passada: zero bloqueantes nos dois revisores, e a regra nova a ser testada pelo uso
+
+Correu-se uma **terceira passada focada** — só sobre as correções da segunda — porque a
+segunda tinha fechado com um bloqueante, e o gate desta OS é zero. Os dois revisores
+convocados devolveram **zero bloqueantes**, e o que acharam foi a regra nova a ser exercitada
+contra a árvore pela primeira vez.
+
+**A GR8-2 tinha um buraco provado por injeção, e era o meu descarte que o abria.** Ela
+descartava «folha de estilo» pela **forma** — literal só de minúsculas sem acento —, e nessa
+rede caíam três rótulos visíveis de verdade: `quando e como`, `hora e paradeiro declarados` e
+`por concluir`. Ou seja: a guarda era cega **exatamente no subtítulo que a Fase 1 escreveu**, e
+uma injeção de «hora e paradeiro falsos» passava verde. A frase que escapou à Fase 1 só era
+apanhada por acidente, porque *vestígio* leva acento. O descarte passou a ser **posicional** —
+o que está dentro de um `className=` é classe, e mais nada é —, a conta subiu de 111 para
+**123 strings**, e a injeção agora reprova. Terceira vez nesta OS que o mesmo defeito
+reaparece com outra roupa: **guarda que mede menos do que promete e continua verde.**
+
+**A minha correção de E1 criou uma regressão no eixo em que o jogador compara.** Trocar «fica
+por servir» por «não torna a encher-se» resolveu a contradição e pôs **quatro das cinco
+alfinetadas de E1 na mesma perífrase** («não torna a», «sem tornar a», «não torna à», «não
+torna logo») — e as cinco saem no mesmo lugar para quem pressiona os cinco suspeitos. Pior: a
+falha de compostura perdeu o agente, porque quem falhava passou a ser a louça. Reescrita para
+«A xícara do visitante fica pelo meio, e ele não estende a mão ao bule» — o gesto volta a ser
+dele, e a perífrase morre.
+
+**Duas rubricas minhas repetiam a FIGURA da alfinetada, não o adereço.** Em Grey, «a mó troca
+de compasso, e ele não vira a cabeça» contra o E1 «o carroceiro chama uma vez, e ele não
+responde»: dois períodos com a mesma armação (*estímulo, e ele não reage*), e o de cima
+gastando o rendimento do de baixo. Cortou-se a segunda oração. Em Agnes, a rubrica nomeava o
+papel de luto e o E2 fecha em «não torna a tocar no papel de luto» — o mesmo adereço, duas
+designações, e a pressuposição do E2 pendurada. Ficou «Ergue os olhos antes de responder».
+
+**E o achado que mais valia: os dois documentos normativos ensinavam o contrário da regra.**
+O guia e a skill citavam como exemplo canónico «a xícara que arrefece contra a xícara que **não
+torna a encher-se**» — mas esse par nunca existiu: «arrefece» nasceu e morreu na primeira
+passada, e o que colidia com ela era «fica por servir». Quem lesse a norma concluiria que a
+frase **aprovada** era a proibida. Corrigido nos dois, e a regra ganhou o que lhe faltava —
+três testes que saíram dos achados desta passada:
+
+1. **o mesmo adereço pode voltar se o segundo estado for CONSEQUÊNCIA do primeiro** na ordem
+   em que a tela imprime (a farinha que assenta e depois é batida passa; o papel que só se
+   olha, sob um «não torna a tocar», não);
+2. **alfinetada que diz «não torna a X» pressupõe um X**, e esse planta-se num nó que toda
+   partida atravessa — foi por isso que o tique de Agnes foi para a abertura;
+3. **são DUAS telas, não uma:** E1 e E2 conferem-se à parte, e a rubrica tem de sobreviver às
+   duas.
+
+Acresce a ressalva que faltava no guia (a GR8-4 apanha **só verbatim**; a contradição é
+leitura humana), a contenção que faltava na skill (treze dos vinte nós **mantêm** a rubrica —
+cortar o que não colide é o defeito irmão), e um despejo executável de `fala` × `alfinetada`
+por nó, para a leitura monotemática que o achado exige. A skill era a única do catálogo sem
+ferramenta.
+
+**Órfã da renumeração, e estava no pior lugar:** o `lint-prosa.mjs` mandava o autor a «guia
+§4.10» quando apanhava vocativo repetido — e §4.10 passou a ser a regra da rubrica. Corrigido
+nos dois sítios, incluída a string que o escritor lê na falha.
+
+### A emenda à KB, que entrou como um conserto e saiu como três
+
+O §3.4-bis pedia desacoplar o leito de cinza alto da duração da queima. Executado, o pipeline
+mostrou que a emenda **arrastava duas dívidas**:
+
+1. **O leito alto** mede a massa que entrou na grelha, não o tempo que levou a entrar; o
+   atiçamento repetido desceu a **sinal acessório**, de queima levada ao fim. E ganhou o seu
+   *ceteris paribus*, que faltava: **à mesma massa entregue ao fogo**, o leito interrompido é
+   mais volumoso que o completo — sem essa cláusula a frase era falsa no caso trivial de quem
+   para ao terceiro punhado. A via está escrita: fogo sobrecarregado abafa, carboniza sem
+   consumir, e o que não se consome não colapsa em cinza fina. Daí um discriminante **de
+   composição** antes de altura: leito completo é pálido e mineral; interrompido é negro,
+   laminar, com carcaça reconhecível.
+2. **A deliberação estava ancorada no relógio** («destruição demorada é gesto deliberado») — e
+   a interrupção tirou-lhe o chão. Passou para onde sempre pertenceu: **o desmanche**. Ninguém
+   desmancha um livro-razão em pânico; arrancar as pastas, romper a costura e separar os
+   cadernos é trabalho de minutos com decisão tomada. É melhor física do que a redação antiga,
+   porque amarra a intenção ao gesto que a própria física já exigia.
+3. **A ilegibilidade ganhou a sua condição:** «não se lê nada» vale para o papel **plenamente
+   carbonizado**, e o dossiê passa a exigir que quem se apoie nela declare que a busca do
+   fragmento tostado saiu vazia. O exame ganhou um gesto novo — bordas frias, sob a grelha, na
+   cinza da pá, atrás do guarda-fogo.
+
+A **nota datada saiu do verbete doutrinário** e foi para a seção «No jogo», que é onde esta KB
+guarda as decisões de projeto: o cabeçalho promete tratado técnico impessoal, e vocabulário de
+bastidor no meio da matéria quebra a promessa.
+
+### Registadas e NÃO corrigidas (fora da fila, e é decisão de método)
+
+1. **As falas dizem que o livro de ordens está «na bancada»** (`dialogos.js`, Silas e Davey),
+   quando as cartas o põem na escrivaninha. É **pré-existente** — era igualmente falso quando
+   o móvel se chamava púlpito — e é fala de personagem, onde a linguagem é solta. Fora da fila.
+2. **Formas de PT-PT em comentários de código** («utilizador», «registada»), contra a norma
+   PT-BR do `CLAUDE.md`. Pré-existente e generalizado nos documentos da reforma; normalizar é
+   varredura própria, não passe editorial.
+3. **«O carvão frio do fogareiro»** na prosa da oficina, às 13h de sábado, com o fogo da
+   bancada aceso naquela manhã. **Fecha** por duas razões que o fiscal verificou: a casa parou
+   às 09h20 (ninguém tocou em nada) e «frio», nesta prosa, significa *queimado e apagado* — o
+   mesmo arquivo usa «à cinza fria da lareira» para um fogo que certamente queimou.
+
+### O balanço da reforma inteira — as oito OS
+
+Nenhuma outra ata pôde escrever isto, e é o que a R8 deve à série.
+
+| OS | O que entregou | Cartas |
+|---|---|---|
+| **R1** | Vocabulário policial (**guarda** Wycliffe, «O Posto do Guarda») e o nome do mestre (**Abbot**), por renomeação mecânica verificável | 0 |
+| **R2** | A **cena única**: a relojoaria deixou de ser três nós do mapa e passou a **um nó com sub-locais**, com a planta baixa a virar navegação (andar o prédio custa 0h) | 0 |
+| **R3** | A **abertura testemunhal** (D13), a pensão, o telegrama e o **coroner fora de cena** (D12) — prazo e autoridade, nunca uma cena | — |
+| **R4** | Os **dois livros** do morto, a **cifra**, a torre de S. Miguel e o **veraz sem crédito** (Amos Kell, que aponta e nunca prova) | — |
+| **R5** | Os **móbeis** de Agnes e Davey, a **agiotagem** pela aritmética de um livro, e o **tell de contagem** morto por medição em vez de gasto | 2 |
+| **R6** | A **exposição** (E0/E1/E2) como função pura das cartas, o **beat 3** nos cinco, a **contaminação** e o `apontadaPor` | **0**, e por decisão: o saldo de 4 foi aceite como número, não como sobra |
+| **R7** | A **reconstituição** (D24) entre o mural e o monólogo, sem autor nomeado em nenhum gesto; a **conta de bocas**; a **D25** nos cinco fechos | 0 |
+| **R8** | O **passe editorial** e o **QA de fecho**: os rótulos que concluíam, o púlpito, oito repetições de rubrica (onze corrigidas), a KB emendada em três pontos, duas guardas removidas e duas tornadas honestas | 0 |
+
+**O número final:** **42 de 46**, 4 livres. A R5 foi a última a gastar; a R6 podia e não gastou;
+a R7 estava proibida pela G9; a R8 é editorial. **Não há mais quem gaste**, e o caso-escola
+fecha assim.
+
+**As guardas:** 25 guardas numeradas da reforma vivas no `qa.mjs` (GR2-1, GR4-2…GR4-6,
+GR5-3/4/6, GR6-3…GR6-9, GR7-1…GR7-7, GR8-2, GR8-4), dentro de **140 checagens**. Duas
+guardas removidas nesta OS, ambas com justificação — e é a única fase da reforma que o pôde
+fazer.
+
+**Três lições de método que a série provou, e que a R9 herda antes de herdar qualquer padrão:**
+
+1. **Medir antes de escrever poupa uma fase, quatro vezes em quatro.** A paridade dos móbeis
+   na R5, o corte de exposição na R6, o tamanho da cena na R7, a fila de rubricas na R8 — em
+   todas, a Fase 0 desmentiu a suposição que teria guiado o trabalho.
+2. **Guarda vale mais do que leitura, e é mais barata.** A GR8-4 achou oito onde três
+   revisores tinham achado uma. Uma régua escrita mede sempre; um olho mede uma vez.
+3. **O pipeline não é formalidade — é onde a matéria se decide.** Reprovou na primeira passada
+   em R3, R4, R5 e R8; em R7 apanhou o pivô do caso escrito ao contrário, visto por **um** dos
+   três; em R8 apanhou a minha própria Fase 1 meio feita e seis textos piores do que os que
+   substituíam. As contagens automáticas estavam perfeitas em todas as passadas — o que elas
+   medem nunca foi o que estava errado.
+4. **Uma regra nova não fica pronta quando se escreve: fica pronta quando se usa.** A regra da
+   rubrica nasceu na segunda passada, e a terceira mostrou-a larga em três pontos, com os dois
+   documentos normativos a ensinar o exemplo invertido. Toda regra que a R9 herdar da reforma
+   deve passar por uma passada de USO antes de se dar por escrita.
+
+### Aberto para a OS seguinte
+
+- **OS-R9 — o gerador herda os padrões** (`docs/os-r9-gerador-herda-os-padroes.md`, com prompt
+  de arranque próprio). **Sai da reforma**: o alvo deixa de ser um caso à mão e passa a ser 31
+  casos embarcados, 155 árvores de diálogo e um banco que é **produto** (G12). A fila tem dez
+  itens, medidos contra a árvore: procedência (`apontadaPor` — hoje só o caso-escola a tem, e é
+  por isso que a `contarVozes` da R7 trata alegação sem procedência como voz própria);
+  exposição E0/E1/E2 (**zero** ocorrências em `src/gerador/`); o veraz sem crédito; o móbil por
+  aritmética de livro; o degrau de confronto por contador autoral (**nenhuma** árvore gerada tem
+  `degraus`); as **intervenções da noite** (sem catálogo, `montarReconstituicao` devolve `null`
+  nos 31 — e destravá-lo arrasta a **dívida de geografia** de `reconstituicao.js` no mesmo
+  commit, porque as três aberturas da cena cravam a relojoaria dentro de `src/logic`); o
+  vestígio **durável** do instrumento lavado; as classes de **roupa queimada** e **documento
+  queimado**, que a KB tem e o gerador não; e a **GR8-4 no gerado**.
+- **A GR8-4 no gerado, já medida no fecho desta OS:** 31 casos, 155 árvores, **11 casos com
+  repetição verbatim entre nós co-alcançáveis, 55 ocorrências — e uma frase só**, «Nada de
+  nota.», todas em nós `exigencia_*`. Fora dali o derivador varia as rubricas. **É decisão
+  antes de ser trabalho:** a resposta nula uniforme pode ser fair play, porque variar o «nada
+  aqui» faria do estilo um sinal — e o jogador aprenderia a ler no floreado o que a marca não
+  diz. A recomendação escrita na R9 é manter uniforme e isentar por nome na guarda.
+- **Lote de UI:** o item 10 do playtest (ler a transcrição completa da carta amassada).
+- **Lote do caso-escola:** a sala da `porta_beco` (prosa nova, sala clicável na planta,
+  contrato de `qa-ui`).
+- **Para o playtest humano, e continua a ser o item com número:** os perfis **Intuitivo** e
+  **Pericial Desatento** chegam à reconstituição com **0 de 9** gestos rebatíveis, e o segundo
+  **condena**. Medir se a cena curta se lê como consequência da própria colheita ou como
+  defeito. Se não se ler, o remédio é **de prosa**, nunca de mecânica.
+- **Sem dono, e é decisão de mesa:** o prazo do inquérito com consequência mecânica (ficção só,
+  martelado na R3); a normalização do `interrogatorio_silas` (martelada como **não fazer**).
+- **Fora de toda a série** (OS-R0 §8): a camada psíquica, o pivô visual de gravura, o bug de
+  `reacao_vital`.

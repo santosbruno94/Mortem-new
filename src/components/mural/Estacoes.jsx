@@ -151,7 +151,7 @@ export function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, est
             {juizo === 'inocente' && (
               <SubPainelJuizo>
                 <p className="text-stone-400 text-[11px] mb-1">
-                  Confronte o paradeiro declarado — ligue o vestígio que o desmente, se houver:
+                  Confronte o paradeiro declarado — ligue o vestígio que o conteste, se houver:
                 </p>
                 {alibi && (
                   <p className="text-stone-400 text-xs italic font-serif mb-1">Álibi: {alibi.textoDisplay}</p>

@@ -44,7 +44,9 @@ cera correndo a estrada desenhada, e o nó revelado por lead entra **a bico de p
 carimbado com a hora em que o lead chegou. No celular a prancha é só figura e a navegação
 desce para uma régua de fichas. A maquete 3D continua inteira, a um clique no alternador.
 
-A **reforma do caso-escola** (OS-R0 a R8) corre em paralelo, uma OS de cada vez. A **OS-R1**
+A **reforma do caso-escola** (OS-R0 a R8) está **fechada** — oito OS sequenciais, uma de cada
+vez, cada uma escrita no fecho da anterior e nenhuma abrindo sem que a precedente tivesse ata.
+A **OS-R1**
 acertou o vocabulário policial (o **guarda** Wycliffe, «O Posto do Guarda», o Dr. **Abbot**).
 A **OS-R2** fundiu a cena: a relojoaria Arthurs era três nós de mapa para o mesmo endereço da
 High Street e passou a ser **um nó com sub-locais** (o corpo, o escritório dos fundos, a loja
@@ -83,6 +85,23 @@ testemunhas do mesmo homem são uma —, a noite entrou no que ele mede, e a ré
 assinatura pesa em cada um dos quatro finais: ele assina as mortes pequenas em nome do
 mestre, e esta não era pequena.
 
+A **OS-R8** fechou a reforma com um passe editorial e um QA de fecho, e o critério era
+estreito de propósito: numa OS que não inventa nada, todo diff é gratuito se não fechar um
+item da fila. As gavetas do mural deixaram de concluir pelo jogador — a Estação III chamava
+«mentiras» a alegações que incluem as verdadeiras, e passou a **«Os Depoimentos — hora e
+paradeiro declarados»**, com o vocabulário da acusação inteira a dizer «contestado» no lugar
+de «desmentido», porque quem julga é o desfecho e a ligação do jogador pode estar errada. O
+«púlpito de escrever forrado de cortiça» da oficina — em português, púlpito é o da igreja, e
+o caso tem uma — virou a **escrivaninha das ordens**, tampo inclinado e couro, que é o móvel
+que a base histórica atesta. **Oito rubricas de diálogo** repetiam-se palavra por
+palavra entre falas que o mesmo jogador lê de seguida — a fila herdada dizia uma, e medir
+disse oito —, e a régua que as apanhou é agora uma guarda, que passou a ler também a rubrica
+que a exposição imprime logo abaixo da fala: onze rubricas foram mexidas ao todo, sete
+cortadas, porque um segundo gesto na mesma tela ou contradiz o primeiro ou o paga de graça. E o QA de fecho fez o que nenhuma outra
+fase da reforma pôde fazer — **removeu** duas guardas, cada uma com justificação na ata: uma
+comparava um comprimento consigo mesmo e não podia falhar; a outra cobrava um teto que a sua
+sucessora já implicava.
+
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
 
@@ -112,7 +131,8 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/os-r5-mobeis-e-cartas.md`](./docs/os-r5-mobeis-e-cartas.md) | OS-R5 — os móbeis de Agnes e Davey, a agiotagem da vítima e o tell de contagem dos móbeis (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/os-r6-exposicao-e-interrogatorios.md`](./docs/os-r6-exposicao-e-interrogatorios.md) | OS-R6 — a exposição (E0/E1/E2), o beat 3 nos cinco, a contaminação e o `apontadaPor` (**executada, com ata em 26/07/2026**; os sete martelos saíram nas recomendações, e o caso-escola fechou com 42 de 46 cartas) |
 | [`docs/os-r7-a-reconstituicao.md`](./docs/os-r7-a-reconstituicao.md) | OS-R7 — a reconstituição do clímax e a revozação do `monologo.js` (**executada, com ata em 26/07/2026**: cena de leitura sem autor nomeado, conta de bocas no desfecho, D25 nos cinco fechos, sete guardas novas e **zero cartas gastas**) |
-| [`docs/os-r8-passe-editorial.md`](./docs/os-r8-passe-editorial.md) | OS-R8 — passe editorial e QA de fecho, a última da reforma (**escrita, por executar**: fila triada item a item, **um só** ponto de decisão; prompt em [`docs/os-r8-prompt-de-arranque.md`](./docs/os-r8-prompt-de-arranque.md)) |
+| [`docs/os-r8-passe-editorial.md`](./docs/os-r8-passe-editorial.md) | OS-R8 — passe editorial e QA de fecho, a última da reforma (**executada, com ata em 26/07/2026**: os rótulos que concluíam pelo jogador, o púlpito de cortiça, oito rubricas repetidas, o «vinco das nervuras» aos pares, duas guardas removidas com justificação e duas tornadas honestas; inventário da Fase 0 em [`docs/os-r8-fase-0-inventario.md`](./docs/os-r8-fase-0-inventario.md)) |
+| [`docs/os-r9-gerador-herda-os-padroes.md`](./docs/os-r9-gerador-herda-os-padroes.md) | OS-R9 — o gerador herda os padrões que o tutorial provou, e **já fora da reforma** (**escrita, por executar**: dez itens medidos contra a árvore, três pontos de decisão com recomendação; prompt em [`docs/os-r9-prompt-de-arranque.md`](./docs/os-r9-prompt-de-arranque.md)) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)

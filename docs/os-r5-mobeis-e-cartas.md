@@ -205,6 +205,9 @@ A **D5** fixa que é **ambíguo** e cala sobre o conteúdo.
 
 **GR5-1.** Teto de cartas respeitado: o catálogo não passa de **46** com `ev_algor` contado.
 Verificação automatizada no `qa.mjs` (a guarda **GR4-1** já existe e imprime a conta). *(G11)*
+> *Emenda de 26/07/2026 (OS-R8, Fase 4): a **GR4-1 foi removida** — cobrava `<= 46`, que a
+> GR7-7 implica ao cobrar `=== 42`. A conta impressa, que era o que a GR4-1 tinha de próprio,
+> passou para o rótulo da GR7-7, e o teto da G11 continua com asserção própria lá.*
 
 **GR5-2.** Nenhuma carta nova em `temporal` ou `causal`. A guarda **GR4-2** já congela o
 conjunto por id — se a R5 acrescentar carta física, ela reprova sozinha. *(G1)*

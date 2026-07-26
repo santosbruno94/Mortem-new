@@ -713,8 +713,11 @@ async function main() {
     await espera(page, 250);
     await concluirParte(page);
     // Onda 2 (P2): o rótulo da Estação III recolhida conta TAMBÉM o
-    // paradeiro do réu desmentido, não só as mentiras de hora.
-    checar('Onda 2: Estação III conta o paradeiro desmentido do réu', (await page.locator('body').innerText()).includes('paradeiro(s) desmentido(s)'));
+    // paradeiro do réu contestado, não só as horas.
+    // OS-R8 §3.1: a string mudou de «paradeiro(s) desmentido(s)» para
+    // «paradeiro(s) contestado(s)» — o vocabulário da estação inteira deixou
+    // de concluir pelo jogador, e o contrato acompanha no mesmo commit.
+    checar('Onda 2: Estação III conta o paradeiro contestado do réu', (await page.locator('body').innerText()).includes('paradeiro(s) contestado(s)'));
     await page.getByRole('button', { name: 'Consertos reclamados na coluna de S.C.' }).click();
     await concluirParte(page);
     // Juízos: Walter e Agnes inocentes com as mentiras expostas; Grey e
@@ -996,9 +999,15 @@ async function main() {
     await espera(page, 250);
     checar('Rota gerada: clicar um cômodo da planta abre o ponto', (await page.locator('.ponto-corpo').count()) >= 1);
     await abrirPontos(page);
+    // OS-R8 · Fase 4: esta checagem media `.ponto-corpo >= 1`, que a linha de
+    // cima (clicar UM cômodo) já tinha estabelecido — abrir mais pontos não
+    // pode baixar a conta, logo ela não podia falhar depois de a outra passar.
+    // Passa a cobrar o que o seu rótulo promete: TODOS os pontos do acordeão
+    // abriram, e cada um rendeu o seu corpo de prosa.
+    const pontosDaCena = await page.locator('.ponto-interesse').count();
     checar(
-      'Rota gerada: abrir os pontos revela a prosa dos cômodos',
-      (await page.locator('.ponto-corpo').count()) >= 1
+      `Rota gerada: abrir os pontos revela a prosa dos ${pontosDaCena} cômodos`,
+      pontosDaCena >= 1 && (await page.locator('.ponto-corpo').count()) === pontosDaCena
     );
     await extrairTermosVisiveis(page);
     await fecharOverlay(page);
