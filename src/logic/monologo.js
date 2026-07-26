@@ -25,6 +25,7 @@ import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIV
 import { formatJanela, formatHora, formatHoraComDia } from './tempo.js';
 import { escolherDeterministico } from './hash.js';
 import { contarVozes } from './contaminacao.js';
+import { faixaDaColheita } from './reconstituicao.js';
 
 // Os quatro desfechos, NA ORDEM em que a interface os carimba (do fechado
 // ao falho). A ordem das chaves é a ordem de exibição — a fileira de
@@ -288,6 +289,37 @@ function ComPrimeiraMaiuscula(palavra) {
   return palavra.charAt(0).toUpperCase() + palavra.slice(1);
 }
 
+// ---------------------------------------------------------------------
+// A NOITE (OS-R7 §3.2). Até aqui o desfecho contava a QUALIDADE DA CADEIA
+// e não contava o que aconteceu na relojoaria. A reconstituição dá a
+// matéria, e este bloco é o perito a medir quanto dela a cadeia dele
+// alcançou — juízo sobre o próprio trabalho, nunca fato novo.
+//
+// A regra que governa as quatro variantes é a mesma do fecho da cena: o
+// perito sabe quantos gestos desfez e NÃO sabe quantos lhe escaparam.
+// Nenhuma delas declara fração, e nenhuma afirma facto físico (G8 vale
+// para o mestre; a mesma disciplina vale para o perito no fecho).
+//
+// Ausente o catálogo de gestos (os casos gerados, até a OS-R9), a faixa é
+// null e o bloco não sai — o desfecho fica byte a byte o de antes.
+// ---------------------------------------------------------------------
+const NOITE_POR_FAIXA = {
+  nenhuma:
+    'Da noite em si não refiz um só gesto. Levo a cadeia que montei, e a sexta-feira continua a ser a que a sala me contou quando entrei nela.',
+  poucas:
+    'Da noite refiz os poucos gestos que as minhas cartas alcançavam. É pouco para o que ali se passou, e é o que tenho.',
+  varias:
+    'Da noite refiz uma sequência de gestos, cada um preso a um papel meu. Onde o papel faltou, a sexta-feira ficou por refazer.',
+  quase_toda:
+    'Refiz a noite quase gesto a gesto, e cada um deles saiu de um papel que trouxe da vila.',
+};
+
+function blocoDaNoite(idsNaMesa) {
+  if (!idsNaMesa) return null;
+  const faixa = faixaDaColheita(idsNaMesa);
+  return faixa ? NOITE_POR_FAIXA[faixa] : null;
+}
+
 // ---------------- Juízo sobre os não-acusados (variantes) ----------------
 // Uma frase fixa por tipo repetia-se palavra por palavra quando dois
 // periféricos caíam no mesmo tipo (playtest de 13/07/2026, achado A2). Cada
@@ -317,6 +349,9 @@ const PERIFERICO_SEGREDO = [
 
 // `opcoes.nomearCulpado`: no Erro Judiciário com retentativa de pé, o fecho
 // não entrega o nome do verdadeiro autor (default: nomeia — encerramento).
+// `opcoes.cartasNaMesa`: os ids da mesa no momento de acusar. Servem a UM
+// bloco só (a noite), e o desfecho continua a sair sem eles — o gerador e
+// as guardas antigas chamam sem passar nada, e recebem o texto de antes.
 export function gerarMonologo(veredicto, detective, opcoes = {}) {
   const nomearCulpado = opcoes.nomearCulpado !== false;
   const dados = veredicto.dadosMonologo;
@@ -350,6 +385,13 @@ export function gerarMonologo(veredicto, detective, opcoes = {}) {
   // agrupa por origem é a camada narrativa (OS-R7 §3.2).
   const testemunhas = blocoTestemunhas(dados.idsTestemunhasDesmentidas);
   if (testemunhas) blocos.push(testemunhas);
+
+  // ---------------- A noite (OS-R7) ----------------
+  // Fecha o que a cadeia sustentou, antes de a narração passar ao que lhe
+  // faltou. O lugar é este por ordem de leitura: primeiro o que se prova,
+  // depois o quanto da noite isso alcançou, e só então os buracos.
+  const noite = blocoDaNoite(opcoes.cartasNaMesa);
+  if (noite) blocos.push(noite);
 
   // ---------------- Os buracos da cadeia ----------------
   // Juízos periféricos errados em série: a partir do segundo, frase abreviada,

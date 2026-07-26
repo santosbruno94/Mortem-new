@@ -293,7 +293,8 @@ export default function MonologoFinal() {
   const vitoria = veredicto.tipo === 'vitoria_absoluta';
   // Enquanto a retentativa está de pé, o Erro Judiciário NÃO nomeia o
   // verdadeiro autor — o nome só sai no encerramento definitivo (Q2).
-  const monologo = gerarMonologo(veredicto, detective, { nomearCulpado: false });
+  const idsNaMesa = cartasRegistradas.map((c) => c.id);
+  const monologo = gerarMonologo(veredicto, detective, { nomearCulpado: false, cartasNaMesa: idsNaMesa });
 
   // Dicas únicas, na ordem das falhas. Na segunda queda no mesmo ponto
   // (falhasVistas), a dica escala para a versão mais específica; {nome}
@@ -397,11 +398,10 @@ export default function MonologoFinal() {
   // A cena não sabe do veredicto, e a chave de variação também não: só o
   // caso e o perito entram nela. Um sorteio que lesse o desfecho poria a
   // apresentação a chavear no que a G9 mandou a cena ignorar.
-  if (!viuReconstituicao) {
-    const cena = montarReconstituicao(
-      cartasRegistradas.map((c) => c.id),
-      `${obterCaso().id}|${(detective && detective.name) || ''}`
-    );
+  // `cena` é null quando o caso não traz catálogo de gestos (os gerados, até
+  // a OS-R9): aí o fim de caso vai direto ao monólogo, sem tela intermédia.
+  const cena = montarReconstituicao(idsNaMesa, `${obterCaso().id}|${(detective && detective.name) || ''}`);
+  if (!viuReconstituicao && cena) {
     return (
       <Overlay titulo={cena.titulo} subtitulo={cena.subtitulo} climax>
         <div className="divisor-ornado text-sm mb-6" aria-hidden="true">❦</div>

@@ -756,6 +756,10 @@ async function main() {
     checar('Rota 1: monólogo sem id interno vazado', !/buril_gravador|vidro_mostrador|carta_suplica|assinatura_registro|cesta_ceia/.test(texto));
     checar('Rota 1: monólogo sem NaN/Infinity', !/NaN|Infinity/.test(texto));
     checar('Rota 1: monólogo narra o álibi do réu desmentido (Q4)', texto.includes('O registro desmente o paradeiro'));
+    // OS-R7 §3.2: o desfecho contava a qualidade da cadeia e não contava a
+    // noite. Agora conta — e mede, sem declarar fração, quanto dela a cadeia
+    // alcançou.
+    checar('Rota 1: o monólogo cita a noite que a cena refez', texto.includes('Refiz a noite quase gesto a gesto'));
     // Q5: o encerramento paga com epílogo + retrato da investigação.
     await page.getByRole('button', { name: 'Encerrar o caso' }).click();
     await espera(page, 700);
@@ -906,6 +910,7 @@ async function main() {
     checar('Rota 3: a cena não refaz o assalto que esta rota nunca leu', !reconstituicao.includes('degrau do beco'));
     checar('Rota 3: o fecho declara a cena curta, sem dizer o que ficou de pé', reconstituicao.includes('ficou inteira no resto'));
     checar('Rota 3: desfecho Impunidade', texto.includes('Impunidade'));
+    checar('Rota 3: o monólogo mede a noite pela colheita magra', texto.includes('É pouco para o que ali se passou'));
 
     // ============================================================
     // ROTA FLAT — a rota de escape 2D (?flat=1): sem WebGL/diorama,

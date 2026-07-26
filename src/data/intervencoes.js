@@ -115,10 +115,17 @@ export const INTERVENCOES_NOITE = [
  * carta de `exige` tem de estar na mesa — é a GR7-3 escrita na função que
  * a cena consome, e não numa promessa de prosa.
  *
+ * O catálogo entra por parâmetro porque ele é DO CASO, não do motor: o
+ * caso-escola declara o seu no pacote (`intervencoes`), e os gerados não
+ * declaram nenhum enquanto a OS-R9 não lhes ensinar a produzi-lo. Catálogo
+ * vazio devolve lista vazia, e é a camada de cima que decide o que fazer
+ * com isso (ver `montarReconstituicao`).
+ *
  * @param {Iterable<string>} idsNaMesa
- * @returns {Array<object>} subconjunto de INTERVENCOES_NOITE, em ordem
+ * @param {Array<object>} catalogo
+ * @returns {Array<object>} subconjunto do catálogo, na ordem dele
  */
-export function intervencoesRebatidas(idsNaMesa) {
+export function intervencoesRebatidas(idsNaMesa, catalogo = INTERVENCOES_NOITE) {
   const mesa = new Set(idsNaMesa || []);
-  return INTERVENCOES_NOITE.filter((i) => i.exige.every((id) => mesa.has(id)));
+  return (catalogo || []).filter((i) => i.exige.every((id) => mesa.has(id)));
 }

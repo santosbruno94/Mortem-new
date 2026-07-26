@@ -27,7 +27,8 @@
 // seguir. Uma cena que também brilhasse poria duas na mesma tela.
 // =====================================================================
 
-import { INTERVENCOES_NOITE, intervencoesRebatidas } from '../data/intervencoes.js';
+import { intervencoesRebatidas } from '../data/intervencoes.js';
+import { obterIntervencoes } from '../data/pacote_caso.js';
 import { escolherDeterministico } from './hash.js';
 
 export const TITULO_RECONSTITUICAO = 'A Reconstituição';
@@ -75,6 +76,20 @@ function faixaDoFecho(quantas, total) {
 }
 
 /**
+ * A faixa da colheita da noite para uma mesa — a mesma que gradua o fecho
+ * da cena, exportada para que o monólogo cite a noite sem refazer a conta.
+ * Devolve null quando o caso não tem catálogo de gestos.
+ *
+ * @param {Iterable<string>} idsNaMesa
+ * @returns {'nenhuma'|'poucas'|'varias'|'quase_toda'|null}
+ */
+export function faixaDaColheita(idsNaMesa) {
+  const catalogo = obterIntervencoes();
+  if (!catalogo.length) return null;
+  return faixaDoFecho(intervencoesRebatidas(idsNaMesa, catalogo).length, catalogo.length);
+}
+
+/**
  * Monta a reconstituição para uma mesa de cartas.
  *
  * FUNÇÃO PURA e cega ao veredicto: não recebe réu, não recebe desfecho,
@@ -86,9 +101,16 @@ function faixaDoFecho(quantas, total) {
  * @returns {{titulo, subtitulo, abertura, passos, fecho, blocos, rebatidas, total}}
  */
 export function montarReconstituicao(idsNaMesa, chave = '') {
-  const rebatidas = intervencoesRebatidas(idsNaMesa);
+  // Caso sem catálogo de gestos NÃO TEM reconstituição, e a diferença entre
+  // isso e a cena vazia é de natureza, não de grau: a cena vazia é a
+  // colheita magra do jogador (martelo (c), e mostra-se); a ausência de
+  // catálogo é o caso não a suportar, e aí o fim de caso vai direto ao
+  // monólogo. Os gerados estão no segundo caso até a OS-R9.
+  const catalogo = obterIntervencoes();
+  if (!catalogo.length) return null;
+  const rebatidas = intervencoesRebatidas(idsNaMesa, catalogo);
   const abertura = escolherDeterministico(ABERTURAS_RECONSTITUICAO, `${SAL}|${chave}|abertura`);
-  const fecho = FECHOS_RECONSTITUICAO[faixaDoFecho(rebatidas.length, INTERVENCOES_NOITE.length)];
+  const fecho = FECHOS_RECONSTITUICAO[faixaDoFecho(rebatidas.length, catalogo.length)];
   const passos = rebatidas.map((i) => ({ id: i.id, hora: i.hora, prosa: i.prosa }));
   return {
     titulo: TITULO_RECONSTITUICAO,
@@ -100,6 +122,6 @@ export function montarReconstituicao(idsNaMesa, chave = '') {
     // guardas varrem à procura de marcador de carta e de nome de suspeito.
     blocos: [abertura, ...passos.map((p) => p.prosa), fecho],
     rebatidas: rebatidas.length,
-    total: INTERVENCOES_NOITE.length,
+    total: catalogo.length,
   };
 }

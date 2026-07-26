@@ -151,13 +151,17 @@ function relatar(rotulo, veredicto) {
   console.log(
     `Falhas: ${veredicto.falhas.map((f) => f.codigo + (f.suspeitoId ? `(${f.suspeitoId})` : '')).join(', ') || '—'}`
   );
+  const mesaIds = s().cartasRegistradas.map((c) => c.id);
   monologos.push({
     rotulo,
-    monologo: gerarMonologo(veredicto, s().detective),
+    // A mesa entra no monólogo por um bloco só (a noite, OS-R7 §3.2): sem
+    // ela o desfecho sai byte a byte o de antes, e é assim que as guardas
+    // antigas continuam a valer sem tocar numa linha.
+    monologo: gerarMonologo(veredicto, s().detective, { cartasNaMesa: mesaIds }),
     // A mesa NO MOMENTO DE ACUSAR — a fotografia que a Fase 0 da OS-R7 relê
     // com a régua das intervenções e com a das bocas. Guardar aqui poupa
     // reencenar os perfis: quem chega ao veredicto já passou por este ponto.
-    mesaIds: s().cartasRegistradas.map((c) => c.id),
+    mesaIds,
     veredicto,
   });
 }
@@ -4859,6 +4863,12 @@ const gr74Furos = [];
 const gr74ContaDeBocasOk = gr74Furos.length === 0;
 if (!gr74ContaDeBocasOk) console.log('\nGR7-4 — a conta de bocas:', gr74Furos.join(' · '));
 
+// O caso corrente pode ter sido trocado por um gerado mais acima (a perna
+// do telegrama). Antes de medir a cena, prova-se o que a troca revela — e
+// depois devolve-se o caso-escola, que é contra quem as guardas correm.
+const cenaDoCasoGerado = montarReconstituicao(['ev_rigor'], 'qa|gerado');
+carregarCaso(pacote);
+
 // ============================================================
 // OS-R7 · FASE 2 — A RECONSTITUIÇÃO (GR7-1, GR7-2, GR7-3, GR7-6).
 //
@@ -4887,6 +4897,10 @@ const gr71Furos = [];
     if (marcadosNaCena.length) gr71Furos.push(`${t.perfil}: ${marcadosNaCena.join(' ')}`);
   }
 }
+// E o caso que não declara catálogo de gestos NÃO TEM cena: os gerados vão
+// direto ao monólogo, em vez de receberem uma reconstituição vazia que
+// nada teria a refazer. Produzir o catálogo deles é trabalho da OS-R9.
+if (cenaDoCasoGerado !== null) gr71Furos.push('caso sem catálogo de gestos rendeu cena');
 const gr71CenaNaoProvaOk = gr71Furos.length === 0;
 if (!gr71CenaNaoProvaOk) console.log('\nGR7-1 — a cena prova:', gr71Furos.join(' · '));
 
