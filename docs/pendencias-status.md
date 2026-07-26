@@ -48,16 +48,74 @@ Relatório versionado: [`docs/playtest/2026-07-19-conclusoes-humanas.md`](./play
 
 | # | Item | Trilha |
 |---|---|---|
-| 10 | Carta amassada do sobrinho: opção de ler a transcrição | UI + prosa |
-| 12 | Vidro na dobra da calça de Silas dá a pista máxima → repensar | Decisão de fair play |
-| 14 | Mural: cartas de "mentiras" já rotuladas → repensar | Decisão de design |
-| 16 | Móbil ligado ao réu; cada suspeito com um móbil | Decisão + mecânica |
-| 11 | Diálogos: exposição contida no próprio diálogo | Decisão + mecânica |
+| 10 | Carta amassada do sobrinho: opção de ler a transcrição | ⏭️ **OS-R8** (passe editorial) |
+| 12 | Vidro na dobra da calça de Silas dá a pista máxima → repensar | ⏭️ **Calibração, não decisão** — triado em 26/07/2026 (ver abaixo) |
+| 14 | Mural: cartas de "mentiras" já rotuladas → repensar | ⏭️ **OS-R8** — triado em 26/07/2026: são **três strings**, não desenho (ver abaixo) |
+| 16 | Móbil ligado ao réu; cada suspeito com um móbil | ✅ **Feito (OS-R5)**: a guarda `GR5-3` exige carta de móbil por suspeito, réu e periféricos, e reprova sozinha se faltar. A `GR5-4` acrescenta a paridade (o réu não é o máximo em motivos distintos) e a `GR5-6`, a isca honesta |
+| 11 | Diálogos: exposição contida no próprio diálogo | ⏭️ **OS-R8** (passe editorial) |
 | 8 | Mapa: cômodos de um local → planta única navegável | ✅ Feito (OS Vila Viva E1): planta generalizada (`Planta.jsx`) desenha a planta gerada do prédio na cena procedural; clicar o cômodo abre o ponto e o cômodo aberto realça. Fallback textual em `?flat=1`/sem planta |
-| 9 | Silas e o aprendiz saem da cena após a polícia cercar | Dados/narrativa |
+| 9 | Silas e o aprendiz saem da cena após a polícia cercar | 🗄️ **Arquivado em 26/07/2026** (ver abaixo) |
 | 1 | Refazer a abertura | ✅ Feito (S3, prosa) |
 | 2 | Voz do mestre via glossário + "o mestre já falou disso" | ✅ Feito (S3): "A voz do mestre" + link ao Glossário |
 | 7 | "O legista, examinando" ficou artificial → reescrever | ✅ Feito (S3): vira "A voz do mestre" (mestre ausente) |
+
+---
+
+## Triagem de 26/07/2026 (fecho da OS-R6)
+
+Feita a pedido do usuário, sobre os itens que tinham ficado como «Decisão» sem dono.
+Duas mudaram de natureza ao serem olhadas contra o código.
+
+### Item 14 — o mural NÃO vaza quais depoimentos são mentira
+
+A queixa do playtest dizia que as cartas de «mentiras» chegavam já rotuladas. **O motor não
+vaza nada.** A Estação III lista, em `MuralAcusacao.jsx:114`, *todas* as alegações de hora
+(`horaAlegada(c) !== null`) e — só depois de o réu ser nomeado — o paradeiro que ele próprio
+declarou. Isso inclui as alegações **verdadeiras**: o guarda Tobin vendo o relojoeiro correr
+as tampas da vitrine às 20h em ponto está na mesma gaveta que o moço do padeiro. E dentro da
+estação o rótulo já é honesto: *«As alegações — hora e paradeiro»*.
+
+O que vaza é **o nome da gaveta**, e são três strings:
+
+| Onde | Hoje | Problema |
+|---|---|---|
+| `MuralAcusacao.jsx:47` (título) | `III · As Mentiras` | chama de mentira o que o jogador ainda não provou |
+| `MuralAcusacao.jsx:47` (subtítulo) | `depoimentos desmentidos` | idem, e no pretérito |
+| `RevisaoFinal.jsx:47` (rótulo) | `Mentiras` | idem, na revisão final |
+
+**Decisão: corrigir, e é da OS-R8** (passe editorial). O rótulo deve dizer o que a gaveta
+**é**, não o que ela conclui — no espírito do pilar nº 2 («o jogo nunca entrega conclusões»).
+O `qa-ui` **não** clica nenhuma das três, então o custo é um commit pequeno; ainda assim,
+conferir antes de mexer, porque é a regra do `CLAUDE.md`.
+
+### Item 12 — é calibração, e não se arbitra antes de medir
+
+`ev_vidro_dobra` nasce no beat 1 de Silas em **todos os quatro tons**, e serve de âncora de
+presença. A queixa é que entrega a pista máxima cedo demais. Contra o código, o quadro é
+menos grave do que a queixa:
+
+- **não é a única âncora de presença** — `ev_estojo_buril` também o é;
+- **o próprio réu a desarma** de forma convincente em `confronto_vidro` («numa oficina destas
+  parte-se um por semana; o rapaz varre toda noite»), que é exatamente o padrão que a R5
+  fixou: *uma armadilha que se lê como engano não é armadilha* — e esta lê-se como inocência.
+
+**Decisão: medir antes de mexer.** O próximo playtest humano registra se quem apanha o vidro
+no beat 1 **abandona** o resto da investigação. Se abandonar, é problema de fair play e vira
+OS; se não, o desenho está certo e a queixa era impressão. Mexer agora seria arbitrar antes de
+medir — o erro que a Fase 0 da OS-R6 existiu para evitar, e que já se pagou duas vezes
+(a paridade dos móbeis na R5, o corte de exposição na R6).
+
+### Item 9 — arquivado
+
+«Silas e o aprendiz saem da cena para suas casas após a polícia cercar.» Custa dados, mapa e
+horas; o ganho é de verossimilhança marginal, e a cena única da R2 já resolveu o problema de
+fundo (o prédio é um nó só). Arquivado — reabre só sob ordem expressa.
+
+### O prazo do inquérito com consequência mecânica — segue fechado
+
+O usuário martelou «ficção só, por agora» na R3, e a triagem confirma: pressão de prazo briga
+de frente com o **relógio mole**, que é pilar de desenho (o relógio só anda ao viajar).
+Reabrir continua sendo decisão de mesa, e continua prevista para **depois da R8**.
 | 3 | Glossário com cara de livro de medicina legal de época | Futuro (UI) |
 | 4 | Recortes de imagem nas cartas (feridas) | Futuro (asset 2D sob contrato) |
 | 17 | Maquete 3D da vila nos casos procedurais | Futuro (paridade; = 4.3) |

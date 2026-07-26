@@ -117,6 +117,9 @@ resolve sozinha **onde** ela entra — é o martelo (b) do §5.
 
 ## 4. Fases
 
+Os três martelos do §5 estão fechados desde 26/07/2026: **não há rodada de perguntas no
+arranque**, e a execução começa na Fase 0.
+
 **Fase 0 — Telemetria, e já é tradição.** Antes de escrever: imprimir no `qa.mjs`,
 por perfil, **quantas intervenções do réu o jogador possui carta para rebater** e
 **quantas vozes independentes** sustentam a tese de cada um. São esses dois números
@@ -136,36 +139,50 @@ a R6 trocou o corte absoluto pelo relativo por causa da medida.
 
 ---
 
-## 5. Pontos de decisão — três, e todos antes da Fase 2
+## 5. Pontos de decisão — MARTELADOS EM 26/07/2026, no fecho da R6
+
+**Os três estão fechados.** O usuário martelou-os no fecho da OS-R6, junto com a triagem
+de pendências, para que esta OS **não pare para perguntar**. A sessão que a executar
+entra direto na Fase 0. Reabrir qualquer um exige ata própria.
 
 ### (a) A reconstituição é cena jogável ou peça de leitura?
 
-- **(1) Peça de leitura, entre o mural e o monólogo.** *Recomendada.* A cena corre
-  como prosa, e o que ela mostra depende só das cartas que o jogador tem. Satisfaz a
-  G9 por construção (não há o que jogar, logo não há o que contornar), não toca o mapa
-  nem as horas, e não acrescenta superfície ao `qa-ui`.
-- **(2) Cena jogável, com escolhas.** Vistosa e cara: escolha no clímax é escolha
-  depois do veredicto calculado, e cada uma delas pede resposta à pergunta «e se o
-  jogador escolher o contrário do que provou?».
-- **(3) Cena com o elenco presente.** Bonita e proibida pela D24, que manda a
-  reconstituição sem inquérito em cena.
+**MARTELADO: peça de leitura**, entre o mural e o monólogo. A cena corre como prosa, e o
+que ela mostra depende só das cartas que o jogador tem. Satisfaz a G9 por construção (não
+há o que jogar, logo não há o que contornar), não toca o mapa nem as horas, e não
+acrescenta superfície ao `qa-ui`.
+
+*O custo do que se recusou:* escolha no clímax é escolha **depois** de o veredicto estar
+calculado, e cada uma delas obriga a responder «e se o jogador escolher o contrário do que
+provou?» — pergunta cuja única resposta interessante a G9 já proíbe. A terceira via (cena
+com o elenco presente) é vedada pela própria D24, que manda a reconstituição **sem
+inquérito em cena**.
 
 ### (b) Onde entra a D25 (a regra da assinatura)
 
-- **(1) No fecho do monólogo, uma variante por desfecho.** *Recomendada.* É o lugar
-  onde o teto de máxima já é governado por construção, e onde a régua pesa sem
-  explicar-se.
-- **(2) Na reconstituição.** Mistura o que a cena é (a noite) com o que ela não é (a
-  biografia do perito).
-- **(3) No epílogo (`epilogo.js`).** Fica longe do desfecho e perde o peso.
+**MARTELADO: no fecho do monólogo, uma variante por desfecho.** É o único lugar do código
+onde o teto de uma máxima por desfecho já é governado **por construção** (`maxima: true`
+nas variantes, e o sorteio de fecho respeita a abertura), e onde a régua pesa sem
+explicar-se.
+
+*O custo do que se recusou:* pôr a régua na reconstituição mistura o que a cena é (a
+noite) com o que ela não é (a biografia do perito); pô-la no `epilogo.js` afasta-a do
+desfecho e ela perde o peso.
 
 ### (c) O que a cena faz quando o jogador não tem carta nenhuma para rebater
 
-- **(1) A cena roda curta, e a intervenção fica de pé.** *Recomendada.* É a G9 lida ao
-  pé da letra, e é a leitura mais dura: quem não colheu vê o réu sair inteiro da
-  própria reconstituição.
-- **(2) A cena não roda.** Mais simples e pior: esconde do jogador que havia o que
-  rebater, e transforma a ausência de prova em ausência de cena.
+**MARTELADO: a cena roda curta, e a intervenção fica de pé.** É a G9 lida ao pé da letra,
+e é a leitura mais dura: quem não colheu vê o réu sair inteiro da própria reconstituição.
+O custo da falha não desaparece — ele reaparece nos **graus de falha** do monólogo, que é
+onde já mora.
+
+**Aviso que acompanha o martelo, e é o único dos três que pode envelhecer mal.** Uma cena
+que não mostra nada pode ler-se como **bug** em vez de consequência. A decisão fica de pé
+como está; o que se faz é **medir**, não suavizar antes de ter o número. Registrar no
+próximo playtest humano se o jogador sem cartas entende que a cena foi curta **por culpa
+dele**. Se não entender, o remédio é de prosa (a cena dizer que houve o que não se
+rebateu, sem dizer o quê), nunca de mecânica — mostrar o que o jogador não provou é
+provar por ele.
 
 ---
 

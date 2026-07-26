@@ -2383,3 +2383,43 @@ carvão de Silas puxava.
   pesagem se escrever: £4 10s equivalem a cerca de 36 g de ouro de lei — a caixa inteira,
   não a raspa que um oficial tira sem que se veja. A soma da queixa é o valor da **peça**,
   não o do metal.
+
+### Triagem de pendências e martelos antecipados da R7 (mesmo dia, a pedido do utilizador)
+
+Fechada a OS-R6, o utilizador mandou triar as pendências sem dono e **martelar
+antecipadamente os três pontos de decisão da R7**, para que a sessão seguinte execute sem
+parar. O inventário está em `docs/pendencias-status.md` §«Triagem de 26/07/2026»; aqui fica
+o que é decisão.
+
+**Os três martelos da OS-R7, fechados sem esperar o arranque dela:** a reconstituição é
+**peça de leitura** entre o mural e o monólogo; a **D25** entra **no fecho do monólogo**,
+uma variante por desfecho; e, sem carta para rebater, **a cena roda curta e a intervenção
+fica de pé**. O terceiro carrega um aviso registrado na OS: uma cena que não mostra nada
+pode ler-se como bug em vez de consequência — **mede-se no playtest, não se suaviza antes
+de ter o número**, e se um dia o remédio for preciso é de prosa, nunca de mecânica.
+
+**Duas pendências mudaram de natureza ao serem olhadas contra o código:**
+
+- **O item 14 não é desenho, são três strings.** A queixa dizia que o mural entregava as
+  cartas «já rotuladas como mentiras». O motor não vaza nada: a Estação III lista *todas* as
+  alegações de hora — inclusive as **verdadeiras**, como o guarda Tobin correndo as tampas
+  da vitrine às 20h em ponto — e, só depois de o réu ser nomeado, o paradeiro dele. Dentro
+  da estação o rótulo já é honesto. O que conclui pelo jogador é o **nome da gaveta**:
+  `III · As Mentiras` / `depoimentos desmentidos`, e a linha `Mentiras` da revisão final.
+  **Vai para a R8**, com as três linhas identificadas.
+- **O item 12 é calibração, e não se arbitra antes de medir.** O vidro na dobra nasce no
+  beat 1 em todos os tons, mas não é a única âncora de presença (`ev_estojo_buril` também
+  é) e **o próprio réu a desarma** de forma convincente no `confronto_vidro`. Lê-se como
+  inocência, que é o padrão que a R5 fixou. O próximo playtest humano mede se quem a apanha
+  cedo **abandona** o resto; mexer antes seria arbitrar antes de medir — o erro que a Fase 0
+  desta OS existiu para evitar, e que já se pagou duas vezes.
+
+**Fechadas sem gastar sessão:** o **item 16** («cada suspeito com um móbil») estava feito
+desde a R5 e o inventário não sabia — a `GR5-3` reprova sozinha se faltar; o **item 9**
+(Silas e o aprendiz saindo de cena) foi **arquivado**, porque custa dados, mapa e horas por
+verossimilhança marginal, e a cena única da R2 já resolveu o problema de fundo; e o **prazo
+do inquérito com consequência mecânica** segue fechado — pressão de prazo briga de frente
+com o **relógio mole**, que é pilar.
+
+**Martelado também, e poupa uma investigação à R8:** o `interrogatorio_silas` **não se
+normaliza**. Fica a assimetria, declarada no próprio `dialogos.js`.

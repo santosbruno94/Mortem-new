@@ -28,32 +28,27 @@ primeira mensagem da sessão nova.
 >
 > ---
 >
-> ### Recolher os três martelos numa rodada só, antes da Fase 2
+> ### NÃO HÁ RODADA DE PERGUNTAS. Os três martelos já estão fechados.
 >
-> São **três**, e estão no §5 da própria OS com o custo das alternativas
-> escrito lá. Perguntar os três **de uma vez** (uma rodada de
-> `AskUserQuestion`, com as recomendações em primeiro lugar) e **não parar
-> mais** depois de respondidos, salvo se a execução revelar contradição
-> entre uma decisão e uma guarda — caso em que se pergunta na hora, e só
-> isso.
+> O utilizador martelou os três pontos de decisão do §5 em **26/07/2026**, no
+> fecho da R6, junto com a triagem de pendências, **precisamente para que esta
+> sessão não pare**. Estão escritos na OS com o custo do que se recusou:
 >
-> **(a) A reconstituição é cena jogável ou peça de leitura?** Recomendação:
-> **peça de leitura**, entre o mural e o monólogo — satisfaz a G9 por
-> construção, não toca mapa nem horas, e não acrescenta superfície ao
-> `qa-ui`.
+> - **(a)** a reconstituição é **peça de leitura**, entre o mural e o monólogo;
+> - **(b)** a **D25** entra **no fecho do monólogo**, uma variante por desfecho;
+> - **(c)** sem carta para rebater, **a cena roda curta e a intervenção fica de
+>   pé** — e o custo reaparece nos graus de falha, onde já mora.
 >
-> **(b) Onde entra a D25** (Harlan assina as mortes pequenas em nome de
-> Abbot; nunca assinou uma grande). Recomendação: **no fecho do monólogo,
-> uma variante por desfecho** — é onde o teto de máxima já é governado por
-> construção.
->
-> **(c) O que a cena faz com quem não tem carta nenhuma para rebater.**
-> Recomendação: **roda curta, e a intervenção fica de pé** — é a G9 ao pé da
-> letra, e é a leitura mais dura.
+> **Executar do arranque ao fecho sem nova consulta**, salvo se a execução
+> revelar contradição entre uma decisão e uma guarda — caso em que se pergunta
+> na hora, e só isso. (Na R6 essa cláusula foi usada zero vezes: a D16 parecia
+> exigir uma carta que o orçamento proibia, e a releitura das cartas mostrou
+> que a decisão já estava realizada na ficção desde a R4. **Reler antes de
+> perguntar.**)
 >
 > ---
 >
-> ### Depois de respondidos: executar sem parar
+> ### A execução
 >
 > **Fase 0 primeiro, que é telemetria e não muda nada:** imprimir no
 > `qa.mjs`, por perfil, quantas intervenções do réu o jogador tem carta para
@@ -75,6 +70,14 @@ primeira mensagem da sessão nova.
 >
 > **Seguir as fases pela ordem** (§4 da OS), **um commit por fase**, como as
 > seis OS anteriores fizeram.
+>
+> **O martelo (c) traz um aviso que é para cumprir, não para admirar.** Uma cena
+> que não mostra nada pode ler-se como **bug** em vez de consequência. A decisão
+> fica de pé; o que se faz é **medir** — registrar na ata o que a Fase 0 disser
+> sobre quantos perfis chegam à cena sem carta nenhuma para rebater, e deixar
+> anotado para o playtest humano. Se um dia o remédio for preciso, é **de
+> prosa** (a cena dizer que houve o que não se rebateu, sem dizer o quê), nunca
+> de mecânica: mostrar o que o jogador não provou é provar por ele.
 >
 > **Toda prosa nova passa pelo pipeline `revisar-prosa`** com os três
 > revisores, e o gate é **zero achados bloqueantes**. A R3, a R4 e a R5
@@ -194,8 +197,20 @@ tecnicamente correto e narrativamente mais fraco. Reescrever os três casos do b
 - **OS-R8** (passe editorial): tudo o que a ata da R4 deixou; o **«púlpito de escrever
   forrado de cortiça»** de `pt_oficina_pulpito` (achado do perito na R5 — «púlpito» em
   PT é o da igreja, e o caso já tem uma); e a **normalização do `interrogatorio_silas`**,
-  que a R6 deixou de pé com o desconforto declarado. Os dois tocam o contrato do
-  `qa-ui`.
+  que a R6 deixou de pé com o desconforto declarado — **e que o utilizador martelou em
+  26/07/2026 como NÃO normalizar**: o custo é mapa, diorama, horas e `qa-ui`, e a
+  assimetria é fraca e já está declarada no próprio `dialogos.js`.
+
+  Acresceram-se, na triagem de 26/07/2026 (`docs/pendencias-status.md`), quatro itens do
+  playtest humano que estavam sem dono, **já investigados contra o código** para que a R8
+  não os reinvestigue:
+
+  | # | O que fazer | Achado da triagem |
+  |---|---|---|
+  | 14 | Renomear a Estação III do mural | **São três strings, não desenho.** O motor não vaza nada: a gaveta lista todas as alegações de hora, inclusive as verdadeiras (Tobin às 20h). O que conclui pelo jogador é o **nome**: `III · As Mentiras` / `depoimentos desmentidos` (`MuralAcusacao.jsx:47`) e `Mentiras` (`RevisaoFinal.jsx:47`). O `qa-ui` **não** clica nenhuma das três |
+  | 10 | Transcrição legível da carta amassada do sobrinho | UI + prosa |
+  | 11 | A exposição contida no próprio diálogo (o «hábito da corda») | prosa |
+  | — | Os dois não-bloqueantes do pipeline da R6 | a rubrica «Puxa o colete para baixo…» repetida na árvore de Walter; «a bancada amanheceu sem lume» puxando contra a abertura |
 - **OS-R9** (o gerador herda os padrões): a fila da R4, mais o **arquétipo do veraz sem
   crédito**, o **móbil que se prova por aritmética de livro** (R5), e — novos desta OS —
   a **exposição** (E0/E1/E2 por fração de dossiê), o **`apontadaPor`** e a **escada de
