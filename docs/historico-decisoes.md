@@ -3286,7 +3286,14 @@ arquétipos e não valia para a matéria forense.
    diz «ponha no papel» na boca de um suspeito, e a guarda acusou o gerador de consultar o
    papel dramático por causa de uma folha de papel. Mede-se código; a prosa mede-se noutro
    lugar. É a lição da GR8-2 da R8, noutra roupa.
-3. **Um gerador denuncia-se numa preposição.** Saíam «No cozinha», «A mesma a noite de sexta»
+3. **A quarta lição da R8 repetiu-se, e agora com número.** «Regra nova não fica pronta
+   quando se escreve: fica pronta quando se usa.» Das cinco correções da 2.ª passada,
+   **três foram causadas pelas correções da 1.ª** — a reescrita que estreitou uma célula
+   de lavradores para vacas (a classe também tem pastores), a coordenação que a minha
+   emenda do constable quebrou, e o vigário que passou a dizer «no domingo» depois de o
+   comerciante ter passado a dizer «amanhã é domingo». Numa OS cujo produto é prosa que 31
+   casos vão imprimir, uma passada só é meia passada.
+4. **Um gerador denuncia-se numa preposição.** Saíam «No cozinha», «A mesma a noite de sexta»
    e «em cottage nº 3». Cômodo e prédio passaram a entrar como sintagma de lugar, com o
    artigo resolvido — o do prédio pelo mesmo `formasDoLugar` que o resto do gerador já usava.
 
@@ -3300,6 +3307,16 @@ arquétipos e não valia para a matéria forense.
 
 **Gate:** lint-prosa **zero** · qa.mjs **CASO VÁLIDO** (145 checagens, **30 guardas
 numeradas**) · qa-ui.mjs **UI VÁLIDA** · build **limpo** · banco regenerado byte a byte.
+**Pipeline de prosa: três passadas, 28 correções** — e as guardas automáticas estavam
+verdes em todas as três. A 1.ª achou cinco bloqueantes, e os três melhores são
+estruturais: a classe `criadagem` cobre o guarda-caça, que é sempre homem, e a fala vinha
+no feminino; o grupo `chao` do piso cobre o constable, que dizia «não sei ler nem o nome»
+num arquivo onde as falas dele lavram o livro de ocorrências; e o inquérito corre no
+sábado, logo «amanhã» é domingo — três células punham loja, oficina e ronda a abrir. A
+2.ª achou cinco, e **três eram consequência das correções da primeira**. A 3.ª (perito)
+não achou bloqueante nenhum no §2.8, e achou que **«coágulo» no rótulo da carta é
+conclusão** — só Teichmann estabelece que a matéria é sangue —, que o anel de tintura na
+cortiça é durável e não perecível, e que o pó de arsênico não tem física de secagem.
 **Gate específico:** os 4 perfis produzem os 4 desfechos na réplica, no pool e no lote de
 luta; o caso-escola sai intocado (42 cartas, horas 18h00 · 18h00 · 14h00 · 13h00).
 
