@@ -97,7 +97,8 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/os-r3-abertura.md`](./docs/os-r3-abertura.md) | OS-R3 — a abertura testemunhal, a ordem do coroner e a autoridade corrigida (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/os-r4-elenco-e-livros.md`](./docs/os-r4-elenco-e-livros.md) | OS-R4 — os dois livros do morto, a cifra, a torre de S. Miguel e o veraz sem crédito (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
 | [`docs/os-r5-mobeis-e-cartas.md`](./docs/os-r5-mobeis-e-cartas.md) | OS-R5 — os móbeis de Agnes e Davey, a agiotagem da vítima e o tell de contagem dos móbeis (**fechada**; ata em [`docs/historico-decisoes.md`](./docs/historico-decisoes.md)) |
-| [`docs/os-r6-exposicao-e-interrogatorios.md`](./docs/os-r6-exposicao-e-interrogatorios.md) | OS-R6 — a exposição (E0/E1/E2), o beat 3 nos cinco, a contaminação e o `apontadaPor` (**escrita, por executar**: cinco martelos abertos no §5; prompt de arranque em [`docs/os-r6-prompt-de-arranque.md`](./docs/os-r6-prompt-de-arranque.md)) |
+| [`docs/os-r6-exposicao-e-interrogatorios.md`](./docs/os-r6-exposicao-e-interrogatorios.md) | OS-R6 — a exposição (E0/E1/E2), o beat 3 nos cinco, a contaminação e o `apontadaPor` (**executada, com ata em 26/07/2026**; os sete martelos saíram nas recomendações, e o caso-escola fechou com 42 de 46 cartas) |
+| [`docs/os-r7-a-reconstituicao.md`](./docs/os-r7-a-reconstituicao.md) | OS-R7 — a reconstituição do clímax e a revozação do `monologo.js` (**escrita, por executar**: três martelos abertos no §5; prompt de arranque em [`docs/os-r7-prompt-de-arranque.md`](./docs/os-r7-prompt-de-arranque.md)). **Não pode gastar carta** (G9) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)
