@@ -2723,8 +2723,9 @@ executado.
 este arquivo
 **Gate:** lint-prosa sem violação ✓ · qa.mjs CASO VÁLIDO (140 checagens) ✓ · qa-ui.mjs UI
 VÁLIDA ✓ · build ✓
-**Gate específico:** pipeline `revisar-prosa` com os três revisores, em **duas passadas** —
-reprovou na primeira (quatro bloqueantes) e passou na segunda com zero ✓ ·
+**Gate específico:** pipeline `revisar-prosa` com os três revisores, em **três passadas** —
+reprovou na primeira (quatro bloqueantes), a segunda achou um em árvore que ninguém tinha
+medido, e a terceira fechou com **zero nos dois revisores convocados** ✓ ·
 **42 cartas antes, 42 depois**, provado pela GR7-7 ✓ · os quatro perfis dão os quatro
 desfechos, com as horas **18h00 · 18h00 · 14h00 · 13h00** conferidas e inalteradas ✓ ·
 contrato do `qa-ui` atualizado no mesmo commit que mexeu na string ✓ · `src/gerador/`,
@@ -2981,6 +2982,63 @@ botão são gestos sequenciais; mas o E1 dele diz que o botão fica preso entre 
 fim da resposta**, e isso é simultaneidade declarada. Recriaria a colisão que a regra existe
 para impedir.
 
+### Terceira passada: zero bloqueantes nos dois revisores, e a regra nova a ser testada pelo uso
+
+Correu-se uma **terceira passada focada** — só sobre as correções da segunda — porque a
+segunda tinha fechado com um bloqueante, e o gate desta OS é zero. Os dois revisores
+convocados devolveram **zero bloqueantes**, e o que acharam foi a regra nova a ser exercitada
+contra a árvore pela primeira vez.
+
+**A GR8-2 tinha um buraco provado por injeção, e era o meu descarte que o abria.** Ela
+descartava «folha de estilo» pela **forma** — literal só de minúsculas sem acento —, e nessa
+rede caíam três rótulos visíveis de verdade: `quando e como`, `hora e paradeiro declarados` e
+`por concluir`. Ou seja: a guarda era cega **exatamente no subtítulo que a Fase 1 escreveu**, e
+uma injeção de «hora e paradeiro falsos» passava verde. A frase que escapou à Fase 1 só era
+apanhada por acidente, porque *vestígio* leva acento. O descarte passou a ser **posicional** —
+o que está dentro de um `className=` é classe, e mais nada é —, a conta subiu de 111 para
+**123 strings**, e a injeção agora reprova. Terceira vez nesta OS que o mesmo defeito
+reaparece com outra roupa: **guarda que mede menos do que promete e continua verde.**
+
+**A minha correção de E1 criou uma regressão no eixo em que o jogador compara.** Trocar «fica
+por servir» por «não torna a encher-se» resolveu a contradição e pôs **quatro das cinco
+alfinetadas de E1 na mesma perífrase** («não torna a», «sem tornar a», «não torna à», «não
+torna logo») — e as cinco saem no mesmo lugar para quem pressiona os cinco suspeitos. Pior: a
+falha de compostura perdeu o agente, porque quem falhava passou a ser a louça. Reescrita para
+«A xícara do visitante fica pelo meio, e ele não estende a mão ao bule» — o gesto volta a ser
+dele, e a perífrase morre.
+
+**Duas rubricas minhas repetiam a FIGURA da alfinetada, não o adereço.** Em Grey, «a mó troca
+de compasso, e ele não vira a cabeça» contra o E1 «o carroceiro chama uma vez, e ele não
+responde»: dois períodos com a mesma armação (*estímulo, e ele não reage*), e o de cima
+gastando o rendimento do de baixo. Cortou-se a segunda oração. Em Agnes, a rubrica nomeava o
+papel de luto e o E2 fecha em «não torna a tocar no papel de luto» — o mesmo adereço, duas
+designações, e a pressuposição do E2 pendurada. Ficou «Ergue os olhos antes de responder».
+
+**E o achado que mais valia: os dois documentos normativos ensinavam o contrário da regra.**
+O guia e a skill citavam como exemplo canónico «a xícara que arrefece contra a xícara que **não
+torna a encher-se**» — mas esse par nunca existiu: «arrefece» nasceu e morreu na primeira
+passada, e o que colidia com ela era «fica por servir». Quem lesse a norma concluiria que a
+frase **aprovada** era a proibida. Corrigido nos dois, e a regra ganhou o que lhe faltava —
+três testes que saíram dos achados desta passada:
+
+1. **o mesmo adereço pode voltar se o segundo estado for CONSEQUÊNCIA do primeiro** na ordem
+   em que a tela imprime (a farinha que assenta e depois é batida passa; o papel que só se
+   olha, sob um «não torna a tocar», não);
+2. **alfinetada que diz «não torna a X» pressupõe um X**, e esse planta-se num nó que toda
+   partida atravessa — foi por isso que o tique de Agnes foi para a abertura;
+3. **são DUAS telas, não uma:** E1 e E2 conferem-se à parte, e a rubrica tem de sobreviver às
+   duas.
+
+Acresce a ressalva que faltava no guia (a GR8-4 apanha **só verbatim**; a contradição é
+leitura humana), a contenção que faltava na skill (treze dos vinte nós **mantêm** a rubrica —
+cortar o que não colide é o defeito irmão), e um despejo executável de `fala` × `alfinetada`
+por nó, para a leitura monotemática que o achado exige. A skill era a única do catálogo sem
+ferramenta.
+
+**Órfã da renumeração, e estava no pior lugar:** o `lint-prosa.mjs` mandava o autor a «guia
+§4.10» quando apanhava vocativo repetido — e §4.10 passou a ser a regra da rubrica. Corrigido
+nos dois sítios, incluída a string que o escritor lê na falha.
+
 ### A emenda à KB, que entrou como um conserto e saiu como três
 
 O §3.4-bis pedia desacoplar o leito de cinza alto da duração da queima. Executado, o pipeline
@@ -3055,7 +3113,12 @@ fazer.
 3. **O pipeline não é formalidade — é onde a matéria se decide.** Reprovou na primeira passada
    em R3, R4, R5 e R8; em R7 apanhou o pivô do caso escrito ao contrário, visto por **um** dos
    três; em R8 apanhou a minha própria Fase 1 meio feita e seis textos piores do que os que
-   substituíam. As contagens automáticas estavam perfeitas nas duas vezes.
+   substituíam. As contagens automáticas estavam perfeitas em todas as passadas — o que elas
+   medem nunca foi o que estava errado.
+4. **Uma regra nova não fica pronta quando se escreve: fica pronta quando se usa.** A regra da
+   rubrica nasceu na segunda passada, e a terceira mostrou-a larga em três pontos, com os dois
+   documentos normativos a ensinar o exemplo invertido. Toda regra que a R9 herdar da reforma
+   deve passar por uma passada de USO antes de se dar por escrita.
 
 ### Aberto para a OS seguinte
 

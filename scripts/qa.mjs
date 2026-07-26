@@ -5118,18 +5118,29 @@ const ARQUIVOS_MURAL = [
     .filter((n) => n.endsWith('.jsx'))
     .map((n) => `components/mural/${n}`),
 ].filter((f) => existsSync(path.join(raizSrc, f)));
-const VEREDICTO_NO_ROTULO = /ment(ira|iu|e\b|iros)|desment|forjad|fals[oa]|culpad[oa]\b/i;
-// Uma classe do Tailwind tem espaço e aspas como qualquer rótulo — e sem este
-// descarte 27 das 32 literais de `Estacoes.jsx` eram folha de estilo.
-const EH_CLASSE = (s) => /^[a-z0-9:/[\]().,%\-\s]+$/.test(s);
+// `\bment…\b` e não `mente` solto: `e\b` acendia em todo advérbio em -mente
+// («ligue novamente», «somente») — falso positivo latente, achado por injeção
+// na 3.ª passada do pipeline.
+const VEREDICTO_NO_ROTULO = /\bment(ira|iras|iu|e|em|iroso|irosa)\b|desment|forjad|\bfals[oa]s?\b|culpad[oa]\b/i;
 const gr82Furos = [];
 let gr82Medidas = 0;
 for (const arquivo of ARQUIVOS_MURAL) {
   const fonte = semComentarios(readFileSync(path.join(raizSrc, arquivo), 'utf8'));
   const visiveis = [];
+  // A folha de estilo descarta-se por POSIÇÃO — o que estiver dentro de um
+  // `className=` é classe —, e nunca pela FORMA. A primeira versão descartava
+  // pela forma (minúsculas sem acento) e engolia três rótulos visíveis de
+  // verdade: «quando e como», «hora e paradeiro declarados», «por concluir».
+  // Ou seja: era cega justamente no subtítulo que a Fase 1 escreveu, e uma
+  // injeção de «hora e paradeiro falsos» passava verde. (3.ª passada.)
+  const faixasDeClasse = [];
+  for (const m of fonte.matchAll(/class(?:Name)?\s*=\s*(\{[^}]*\}|"[^"]*"|'[^']*')/g)) {
+    faixasDeClasse.push([m.index, m.index + m[0].length]);
+  }
+  const dentroDeClasse = (i) => faixasDeClasse.some(([a, b]) => i >= a && i < b);
   // (a) Literais: strings entre aspas/backtick com espaço (um id não tem).
   for (const m of fonte.matchAll(/(['"`])((?:[^'"`\\\n]|\\.){4,}?)\1/g)) {
-    if (/\s/.test(m[2]) && !EH_CLASSE(m[2])) visiveis.push(m[2]);
+    if (/\s/.test(m[2]) && !dentroDeClasse(m.index)) visiveis.push(m[2]);
   }
   // (b) TEXTO JSX — e é aqui que a primeira versão desta guarda era cega. A
   // cópia visível do mural mora, em boa parte, entre `>` e `<`, fora de

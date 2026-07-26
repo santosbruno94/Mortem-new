@@ -125,18 +125,31 @@ identificação para a rubrica ("volta-se para o oficial").
 ### 13. Duas rubricas a brigar na mesma tela (OS-R8)
 Duas peças de prosa que se imprimem juntas — a fala base de um nó de diálogo e a
 `alfinetada` que a exposição paga — descrevendo o mesmo adereço em estados
-incompatíveis. Medido na R8 em três árvores de uma vez: a xícara que arrefece contra a
-xícara que «não torna a encher-se»; os braços cruzados contra o botão «preso entre os
-dedos até o fim da resposta»; a pilha endireitada contra a pilha que «fica por
-endireitar». É anti-padrão de MONTAGEM, e o mais invisível de todos: cada peça, lida
-sozinha, está impecável.
-**Detecção:** para cada nó com `alfinetada`, listar os adereços citados na fala base e
-os citados em cada nível; qualquer objeto que apareça nos dois com estado diferente é
-achado. Mecanicamente, a **GR8-4** do `qa.mjs` apanha a repetição verbatim entre a fala
-e a alfinetada do mesmo nó — a *contradição* continua a ser trabalho de leitura.
-**Reescrita:** cortar a de cima (a de baixo é a que o jogador pagou para ver), ou
-trocá-la por rubrica que não toque no mesmo adereço — ambiente, olhar, tempo, outra
-parte do corpo. Nunca duas mãos ocupadas na mesma tela.
+incompatíveis. Medido na R8 em **cinco** árvores: a xícara que arrefece contra a xícara
+«por servir»; os braços cruzados contra o botão «preso entre os dedos até o fim da
+resposta»; a pilha endireitada contra a pilha que «fica por endireitar»; os olhos
+erguidos contra os olhos que «sobem do serviço». É anti-padrão de MONTAGEM, e o mais
+invisível de todos: cada peça, lida sozinha, está impecável.
+**Detecção:** para cada nó com `alfinetada`, despejar lado a lado a `fala` e cada nível
+(E1, E2) e ler os pares em passada monotemática — é a única do catálogo sem grep, porque
+o achado é de estado e não de forma:
+```bash
+node -e 'const {DIALOGOS}=await import("./src/data/dialogos.js");
+for(const[a,t]of Object.entries(DIALOGOS))for(const[k,n]of Object.entries(t.nos||{}))
+if(n.alfinetada)console.log(`\n### ${a}.${k}\nFALA: ${(n.fala||[]).join(" ")}\n`+
+Object.entries(n.alfinetada).map(([l,v])=>`${l}: ${v.join(" ")}`).join("\n"))' --input-type=module
+```
+Mecanicamente, a **GR8-4** do `qa.mjs` apanha a repetição **verbatim** entre a fala e a
+alfinetada do mesmo nó; a contradição não tem guarda.
+Três testes: (a) o mesmo adereço só volta se o segundo estado for **consequência** do
+primeiro na ordem da tela; (b) alfinetada que diz «não torna a X» **pressupõe** um X, que
+se planta num nó que toda partida atravessa, nunca no próprio beat; (c) **E1 e E2 são
+duas telas** — a rubrica tem de sobreviver às duas.
+**Reescrita:** cortar a de cima (a de baixo é a que o jogador pagou para ver), ou trocá-la
+por rubrica que não toque no mesmo adereço — ambiente, olhar, tempo, outra parte do corpo.
+Nunca duas mãos ocupadas na mesma tela. **Mas não raspe as rubricas:** treze dos vinte nós
+com alfinetada mantêm a sua, e é por isso que o beat 3 tem corpo em **E0**, onde
+alfinetada não há. Cortar o que não colide é o defeito irmão.
 
 ## Procedimento de revisão
 

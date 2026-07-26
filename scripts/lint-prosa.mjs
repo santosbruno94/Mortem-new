@@ -41,7 +41,7 @@
 //                   (guia §4.9 / skill nº 11); artigos e contrações contam
 //                   pelo segundo token.
 //   7. vocativo_repetido — o mesmo nome próprio do roster do caso 2+ vezes
-//                   dentro da MESMA fala entre aspas (guia §4.10 / skill
+//                   dentro da MESMA fala entre aspas (guia §4.11 / skill
 //                   nº 12); roster derivado dos dados (SUSPEITOS, vítima
 //                   da seed, guarda do subtítulo do posto dele).
 //
@@ -486,7 +486,7 @@ function chequeVocativoRepetido(bloco, roster) {
           chave: bloco.chave,
           cheque: 'vocativo_repetido',
           trecho: trechoEm(texto, fala.indice),
-          detalhe: `"${nome}" ${ocorrencias.length}× na mesma fala (guia §4.10; teto 1)`,
+          detalhe: `"${nome}" ${ocorrencias.length}× na mesma fala (guia §4.11; teto 1)`,
         });
       }
     }

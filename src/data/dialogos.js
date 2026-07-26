@@ -88,7 +88,7 @@
 // fechar-se, o rapaz ergue os olhos. Nenhum deles ganha marca que os
 // outros não tenham: é a GR6-5 lida como prosa.
 const ALFINETADA_SILAS = {
-  E1: ['Responde e não emenda. O bule fica onde está, e a xícara do visitante não torna a encher-se.'],
+  E1: ['Responde e não emenda. A xícara do visitante fica pelo meio, e ele não estende a mão ao bule.'],
   E2: [
     '"O {detective.treatment} andou perguntando de mim pela vila." Não é pergunta, e ele não espera resposta. As mãos deixam os joelhos, e ele alisa o avental dobrado sobre o braço, do vinco para fora. "Perguntem. A bancada está à vista de quem a queira conferir." E torna à teoria de sempre, mais curta desta vez: gente da estrada, atrás do caixa.',
   ],
@@ -345,7 +345,7 @@ export const DIALOGOS = {
       },
       evasiva: {
         fala: [
-          'Silas Crane inclina-se sobre a mesa o bastante para ver, e torna a endireitar-se. "Com licença de dizer, {detective.treatment}, a minha parte é corda e mola; o que isso valha, sabe a perícia. O que eu penso, já disse: gente da estrada, atrás do caixa."',
+          'Silas Crane inclina-se sobre a mesa o bastante para ver, e endireita-se. "Com licença de dizer, {detective.treatment}, a minha parte é corda e mola; o que isso valha, sabe a perícia. O que eu penso, já disse: gente da estrada, atrás do caixa."',
         ],
         opcoes: [],
       },
@@ -481,7 +481,7 @@ export const DIALOGOS = {
       },
       b3_obliquo: {
         fala: [
-          'Ergue os olhos do papel com tarja antes de responder. "Do Sr. Rooke, que enterrei. Devia ter deixado o azeviche no fim do prazo, e não deixei. {g:O senhor|A senhora} há de ter outra pergunta."',
+          'Ergue os olhos antes de responder. "Do Sr. Rooke, que enterrei. Devia ter deixado o azeviche no fim do prazo, e não deixei. {g:O senhor|A senhora} há de ter outra pergunta."',
         ],
         alfinetada: ALFINETADA_AGNES,
         opcoes: [],
@@ -629,7 +629,7 @@ export const DIALOGOS = {
       },
       b3_cordial: {
         fala: [
-          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe." Atrás dele a mó troca de compasso, e ele não vira a cabeça. "E custou o relógio do meu pai, que não voltou nem inteiro nem pesado."',
+          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe." Atrás dele a mó troca de compasso. "E custou o relógio do meu pai, que não voltou nem inteiro nem pesado."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
@@ -643,7 +643,7 @@ export const DIALOGOS = {
       },
       b3_obliquo: {
         fala: [
-          '"Na vila, ninguém. Pesava ele, e a balança é dele." A farinha assenta-lhe no antebraço enquanto fala. "Para pesar como se deve, é o ourives de Moorford, e Moorford é hora e meia de estrada. Faço o caminho no dia em que me disserem que aquela balança está livre."',
+          '"Na vila, ninguém. Pesava ele, e a balança é dele." A farinha assenta-lhe no antebraço. "Para pesar como se deve, é o ourives de Moorford, e Moorford é hora e meia de estrada. Faço o caminho no dia em que me disserem que aquela balança está livre."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
@@ -993,7 +993,7 @@ export const DIALOGOS = {
       },
       b3_tecnico: {
         fala: [
-          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Responde sem parar para somar. "Desde o fim de março nenhum deles vem comigo; ficam com a casa. O patrão anotava tudo no livro estreito da bancada."',
+          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Dá a quantia depressa. "Desde o fim de março nenhum deles vem comigo; ficam com a casa. O patrão anotava tudo no livro estreito da bancada."',
         ],
         alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
