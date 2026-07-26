@@ -5059,6 +5059,18 @@ const gr75Furos = [];
 const gr75TetoMaximaOk = gr75Furos.length === 0;
 if (!gr75TetoMaximaOk) console.log('\nGR7-5 — teto de máxima / D25:', gr75Furos.join(' · '));
 
+// GR7-7 — TETO DE CARTAS: ZERO GASTO. A R7 está PROIBIDA de gastar carta
+// pela G9 (a cena nunca introduz evidência nova), e o saldo de 4 livres foi
+// decisão da R6, não sobra. O caso-escola sai desta OS com os mesmos 42 —
+// 41 em `cartas.js` mais a carta de algor que a medição de temperatura
+// gera — e nenhuma intervenção cita carta fora do catálogo.
+const CATALOGO_R7 = CARTAS.length + 1;
+const gr77Furos = [];
+if (CATALOGO_R7 !== 42) gr77Furos.push(`o catálogo saiu de 42 para ${CATALOGO_R7}`);
+if (CATALOGO_R7 > 46) gr77Furos.push('o teto da G11 (46) foi rompido');
+const gr77TetoCartasOk = gr77Furos.length === 0;
+if (!gr77TetoCartasOk) console.log('\nGR7-7 — teto de cartas:', gr77Furos.join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5208,6 +5220,7 @@ const checagens = [
   [`GR7-3 (rebate só o que a mesa tem): toda intervenção cai com as cartas que exige e volta ao pé sem qualquer uma delas; mesa vazia roda curta (${INTERVENCOES_NOITE.length} gestos no catálogo)`, gr73SoAMesaOk],
   ['GR7-6 (a cena não chaveia no culpado): a função não recebe réu, e nenhum nome de suspeito entra na prosa da cena', gr76SemBitCulpadoOk],
   ['GR7-5 (teto de máxima intacto): toda variante declara `maxima`, nenhuma combinação sorteável traz duas, e a D25 pesa uma vez em cada um dos quatro desfechos', gr75TetoMaximaOk],
+  [`GR7-7 (teto de cartas): a R7 não gasta — o caso-escola sai com ${CATALOGO_R7} de 46, e as intervenções só citam cartas que já existiam`, gr77TetoCartasOk],
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
 ];
