@@ -145,6 +145,20 @@ const OPCOES_B3_DAVEY = [
 ];
 
 export const DIALOGOS = {
+  // ASSIMETRIA REGISTRADA (OS-R6, martelo (e), 26/07/2026). Só o réu tem nó de
+  // mapa próprio para ser interrogado: Agnes e Grey SÃO a localidade
+  // (`papelaria`, `moinho`), e Walter e Davey abrem por botão de dentro de
+  // outra. Três formas para o mesmo ato, e a G3 existe justamente para impedir
+  // que o culpado receba marca que os inocentes não recebam.
+  //
+  // Fica como está, com o desconforto declarado. Normalizar toca
+  // `localidades.js`, `mapa.js`, `mapa_espacial.js`, o diorama e o contrato do
+  // `qa-ui`; normalizar PARA CIMA custaria hora (nó novo custa viagem) e
+  // mudaria as quatro horas do gate, que são 18h00 · 18h00 · 14h00 · 13h00.
+  // A assimetria é real mas fraca: o réu é também quem achou o corpo, e ter
+  // sido chamado a depor formalmente explica-se sozinho na ficção.
+  //
+  // Quem reabrir isto, reabra depois da R8, e com ata própria.
   interrogatorio_silas: {
     suspeitoId: 'silas_crane',
     noInicial: 'abertura',

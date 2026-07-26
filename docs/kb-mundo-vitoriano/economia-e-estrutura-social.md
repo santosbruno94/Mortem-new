@@ -34,8 +34,8 @@ período):
   deixara aberto.
 - **Consequência em cadeia:** colapso de preços, rendas e valores de terra; falências de
   fazendas; **êxodo rural** (os jovens partem para as cidades — cf.
-  [`demografia-e-sociedade.md`](./demografia-e-sociedade.md) §2). O trigo a 23 xelins em 1894 já
-  aparece na tabela daquele arquivo (§1) — aqui está o **porquê**.
+  [`demografia-e-sociedade.md`](./demografia-e-sociedade.md) §2), que cita esta mesma série —
+  aqui está o **porquê** dela.
 - **Móbil de época pronto:** a fazenda que não paga mais a hipoteca, a terra herdada que
   desvalorizou, o arrendatário sufocado pela renda que o senhorio não baixa. A ruína agrícola é
   lenta, documentada e socialmente visível.
