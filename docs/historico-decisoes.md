@@ -3337,3 +3337,105 @@ luta; o caso-escola sai intocado (42 cartas, horas 18h00 · 18h00 · 14h00 · 13
   peça que falta.
 - **Fora de toda a série** (OS-R0 §8): a camada psíquica, o pivô visual, o bug de
   `reacao_vital`.
+
+---
+
+### 26/07/2026 — OS-S1: A Proposta Mestra v4, "A Hora Emprestada"
+
+**Fonte de desenho:** Proposta Mestra v4, que consolida e supersede a v3, a v3.1, o
+dossiê de elenco e teia e o adendo de Agnes. A OS executável está em
+`docs/os-s1-a-hora-emprestada-v4.md`.
+
+**Decisões aplicadas:** PD-01 a PD-21, as vinte e uma recomendações aceites em bloco,
+com **uma divergência declarada** (PD-07, abaixo).
+**Guardas verificadas:** G1, G3, G4, G7, G9, G10, G11 (recortada), G12 · GR4-2, GR4-5,
+GR4-6, GR5-3, GR5-4, GR5-6, GR6-4, GR6-5, GR6-7, GR6-8, GR6-9, GR7-3, GR7-7 (recortada).
+**Guardas novas:** GRS1-1 a GRS1-4.
+
+#### O diagnóstico que a proposta trouxe, e que o código confirmou
+
+Três defeitos localizados, e uma causa estrutural por baixo dos três. **O assalto morria
+sem rosto** (`ev_vitrine`/`ev_fechadura` carregavam a refutação à vista e nenhum ser
+humano habitava a solução falsa). **A agiotagem fora contida por decisão** (R5 §5(d),
+"sem carta própria"): a espinha do caso era invisível por desenho. **A D15 não tinha
+livro em que morar** — "Wycliffe está no livro" e não havia registro de credor algum.
+
+E a causa: **topologia em estrela.** Todo personagem ligava à vítima e a mais ninguém.
+Um caso assim resolve-se por eliminação de raios; um caso em teia resolve-se por leitura
+de vila.
+
+#### O que entrou
+
+**O sexto homem (PD-01/02/03).** Nathan Herrick, recoveiro, `inocente_segredo` com
+segredo `penhor_recolhido`. Papel dramático novo, `bode_expiatorio`: móbil e acesso
+verdadeiros, e uma passagem pela cena que ele esconde por medo do que fez lá — não do
+crime. Árvore de diálogo completa (quatro tons, três beats, alfinetadas E1/E2, três
+confrontos), e a **cela** como único nó que nasce fechado, aberto pela extração de
+`dep_avistamento_padeiro`. A dobradiça do ato é um ATO DO INQUÉRITO, e não uma dedução
+do jogador — é por isso que ela pode fechar um ato sem ferir a G4.
+
+**A Frente A (PD-04/05).** `ev_livro_emprestimos`, na gaveta com chave. Reabre a R5 §5(d)
+com ata. Aritmética primária, sem a palavra "juros": um penny por xelim por semana faz a
+dívida ficar parada, e é a mesma armadilha que o livro de pagamentos já ensinava com o
+salário do aprendiz. Traz "N.H." com o penhor, "L.W." vazia desde julho (a D15 enfim com
+corpo), "S.C." com a soma repetida em cada fim de mês (PD-08), "A.R." riscada em setembro
+e a "—W." antiga (a moeda da coação, PD-14).
+
+**A Frente B — três interferências.** Na máquina da FASE 4, que estava pronta e inerte
+desde o gerador por simulação: **nenhuma linha de motor mudou para isto.** Coagir a
+testemunha da viela (gatilho: pôr o pé na papelaria, que é o correio da vila), correr à
+torre (gatilho: pousar um papel diante do oficial) e silenciar o preso (gatilho: pousar
+um papel diante dele). Nenhum anúncio nomeia ninguém. Papel lavrado não morre com a boca
+que o ditou, e é essa a G4 realizada em mecânica: quem tomou o termo antes de confrontar
+guarda-o.
+
+**A teia.** As arestas E1–E15 em cena, e a primeira cadeia de confronto do jogo que
+atravessa DUAS ÁRVORES: a papelaria entrega o maço de cartas e a chave que o morto citou
+à ceia ("sangue meu"), e é ela que abre o terceiro degrau de Walter — a delação
+premeditada (PD-19/20/21). A mecânica é a que já havia: contador autoral sobre lista
+curada (D8), sem carta nova.
+
+#### A divergência declarada — PD-07 (anéis de ato)
+
+A proposta pedia que o mapa endurecesse em três anéis. **Executou-se só o anel do Ato
+III** (a cela). Os demais não, e a razão é dura: a G10 e a `GR4-5` exigem que a torre
+nasça aberta e que nenhuma cadeia dependa de ordem única; fechar posto, estalagem,
+papelaria e moinho atrás de leads reescreve o gate de QA da interface inteira e
+transforma a topologia do caso. É trabalho de OS própria, com ata própria, e não efeito
+colateral desta. A proposta já previa a fricção ("G10 ressalvada por ata"); a ata é esta.
+
+#### O defeito que a guarda achou
+
+`apresentarProva` chamava `dispararInterferencias` DEPOIS de um `return` que só se
+atravessa quando a prova rende ligação de mural. Logo, um confronto que só rendesse
+reação nunca chegava à vila. Era silencioso enquanto nenhum caso usava o gatilho
+`prova_apresentada` — os casos gerados usam `extracao_carta` —, e as três interferências
+do caso-escola o tornaram visível na primeira execução da GRS1-4. O gatilho passou para
+antes do return, que é onde o comentário da FASE 4 sempre disse que ele estava.
+
+**Arquivos tocados:** `src/data/seed.js`, `cartas.js`, `dialogos.js`, `localidades.js`,
+`mapa.js`, `mapa_espacial.js`, `aparencias.js`, `papeis.js`, `procedencia.js`,
+`confrontos.js`, `rotulos.js`, `pacote_caso.js`, **`interferencias.js` (novo)** ·
+`src/logic/veredicto.js` · `src/store/jogo.js` · `src/components/EventoLocalidade.jsx` ·
+`scripts/qa.mjs`, `qa-ui.mjs`, `lint-prosa.mjs` · `MORTEM_CONTEXTO.md`, `README.md`.
+
+**Gate:** build limpo · `qa.mjs` CASO VÁLIDO (os 4 perfis, os 4 desfechos, e os 31 casos
+gerados intactos) · `lint:prosa` zero violações · `qa-ui.mjs` UI VÁLIDA.
+**Gate específico (PD-10):** o teto de cartas subiu de 42 para 51, e o gate honesto foi
+pago — a rota do Metódico no `qa-ui.mjs` percorre o mural com o dossiê inteiro na mesa,
+incluindo os juízos dos cinco periféricos.
+
+**Divergências assumidas:** PD-07 parcial (só o anel do Ato III), pela razão acima.
+A OS "Reação Vital Condicionante", que a proposta punha entre as duas escadas, **não
+foi escrita**: a proposta a declara "recomendada, não bloqueante na forma auto-de-exame",
+e a cela entrou como auto de exame.
+
+### Aberto para a OS seguinte
+
+- **Os anéis do Ato I e do Ato II** (PD-07 por inteiro), com o gate de QA da interface
+  refeito no mesmo commit.
+- **A OS "Reação Vital Condicionante"**, ainda ausente do repositório.
+- **Playtest humano do mural a 51 cartas**: a máquina percorre-o; medir se a mesa a 51
+  ainda se lê, ou se a Estação II satura.
+- **Medir se as três interferências se leem como AUTORIA** ou como acaso: a R3 manda que
+  a autoria seja reconstruível de trás para frente, e isso só um humano diz.
