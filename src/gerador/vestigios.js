@@ -190,7 +190,7 @@ export const CLASSES_VESTIGIO = {
     proveniencia: 'docs/kb-medicina-legal/vestigios.md (pegadas e trilhas de saída)',
   },
   instrumento_guardado_umido: {
-    rotulo: 'Instrumento lavado com coágulo sob o rebite',
+    rotulo: 'Instrumento lavado, junta do cabo ainda úmida',
     ordem: 2,
     atributo: 'WIS', // WIS mediana: lavou por alto, guardou no lugar
     evidenciaDe: ['higiene'],
@@ -213,7 +213,7 @@ export const CLASSES_VESTIGIO = {
   // não expira, na promessa que o caso-escola já cumpre («o durável sempre
   // resolve»).
   instrumento_lavado_coagulo: {
-    rotulo: 'Coágulo sob a virola do instrumento lavado',
+    rotulo: 'Crosta escura sob a virola do instrumento lavado',
     ordem: 2,
     atributo: 'WIS', // WIS mediana: lavou por alto, e a junta é o que a água não alcança
     evidenciaDe: ['higiene'],

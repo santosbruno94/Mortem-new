@@ -272,20 +272,22 @@ export function fatiaForenseDoCrime({
         ? {
             estados: [
               {
-                // A janela de secagem da junta: um dia. Fonte do número —
-                // o próprio comentário da classe perecível, que a R8 emendou.
+                // A janela de secagem da junta: um dia. Fonte do número, e
+                // são duas independentes na KB — supressao-de-vestigios.md:141-142
+                // (a arma lavada «de véspera» ainda guarda a umidade na junta,
+                // logo o sinal atravessa a noite) e :504 («que seca em um dia»).
                 ipmAte: 24,
                 textoDisplay: 'O Instrumento, a Junta Úmida',
                 carimboPadrao: vestigioInstrumento.detalhe,
                 descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
-                tagsOcultas: { ...tagsInstrumento, estadoDegradacao: 'ativo' },
+                tagsOcultas: { ...tagsInstrumento },
               },
               {
                 ipmAte: null,
-                textoDisplay: 'O Instrumento, o Coágulo sob a Virola',
+                textoDisplay: 'O Instrumento, a Crosta sob a Virola',
                 carimboPadrao: vCoagulo.detalhe,
                 descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
-                tagsOcultas: { ...tagsInstrumento, estadoDegradacao: 'durável' },
+                tagsOcultas: { ...tagsInstrumento },
               },
             ],
           }

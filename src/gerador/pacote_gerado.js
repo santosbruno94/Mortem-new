@@ -720,12 +720,12 @@ const ANCORA_SEM_LESAO = {
     guardadoDisplay: 'O Frasco Lavado',
     guardadoCarimbo: 'Frasco lavado, resto no gargalo',
     guardadoIntro: 'o frasco de láudano lavado e reposto',
-    guardadoResto: 'No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura',
+    guardadoResto: 'No fundo do gargalo resta um fio escuro da tintura, e a rolha, reposta sobre a boca por lavar, ficou com um anel castanho que já não sai da cortiça',
     // OS-R9 §2.8 — a leitura PERECÍVEL, a que só quem chega cedo apanha: o
     // sinal de que a lavagem foi HÁ POUCO. Passada a janela, resta o durável.
-    umidoDisplay: 'O Frasco Lavado Há Pouco',
-    umidoCarimbo: 'Frasco lavado; água ainda no vidro',
-    umidoResto: 'O vidro está frio e molhado por dentro, e a rolha, posta de volta sobre a boca úmida, criou um anel de tintura na cortiça',
+    umidoDisplay: 'O Frasco Reposto Molhado',
+    umidoCarimbo: 'Frasco reposto molhado; círculo úmido na prateleira',
+    umidoResto: 'O frasco foi reposto molhado por fora, e a prateleira guarda o círculo úmido em que ele assentou, com o pó afastado em volta',
     comum: 'A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.',
   },
   papel_de_arsenico: {
@@ -740,9 +740,9 @@ const ANCORA_SEM_LESAO = {
     guardadoCarimbo: 'Papel sacudido, pó nas dobras',
     guardadoIntro: 'o papel de arsênico sacudido e dobrado de novo',
     guardadoResto: 'Nas dobras, onde a sacudida não desce, resta um pó branco',
-    umidoDisplay: 'O Papel Sacudido Há Pouco',
-    umidoCarimbo: 'Papel sacudido; o pó ainda solto',
-    umidoResto: 'O pó branco ainda corre solto pelo vinco quando se abre o papel, e assenta na palma antes de a mão o inclinar',
+    umidoDisplay: 'O Papel Sacudido, e o Pó em Volta',
+    umidoCarimbo: 'Papel sacudido; pó por fora, ainda por varrer',
+    umidoResto: 'Há pó branco salpicado por fora do papel e na tábua da prateleira em volta, ainda por varrer',
     comum: 'Papel assim compra-se para o rato e a mosca, em qualquer venda.',
   },
   travesseiro_ou_pano: {
@@ -1142,9 +1142,9 @@ function realizarCartas(bruto) {
             nova.estados[0].textoDisplay = 'O Instrumento Lavado, a Junta Úmida';
             nova.estados[0].carimboPadrao = 'Instrumento lavado há pouco; junta ainda úmida';
             nova.estados[0].descricao = `Entre os pertences de ${reu.nome}, a peça lavada e reposta no lugar dela. A junta do aço com o cabo está úmida ao toque, e a madeira em volta escureceu de água. O feitio casa com a lesão ${doMorto}.`;
-            nova.estados[1].textoDisplay = 'O Instrumento Lavado, o Coágulo sob a Virola';
-            nova.estados[1].carimboPadrao = 'Instrumento lavado; coágulo sob a virola e os rebites';
-            nova.estados[1].descricao = `Entre os pertences de ${reu.nome}, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão ${doMorto}.`;
+            nova.estados[1].textoDisplay = 'O Instrumento Lavado, a Crosta sob a Virola';
+            nova.estados[1].carimboPadrao = 'Instrumento lavado; crosta escura sob a virola e os rebites';
+            nova.estados[1].descricao = `Entre os pertences de ${reu.nome}, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura; tirados os rebites e separadas as talas do cabo, ela raspa-se para a lâmina de vidro. O feitio casa com a lesão ${doMorto}.`;
           }
         }
         break;

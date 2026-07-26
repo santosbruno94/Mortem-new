@@ -256,7 +256,7 @@ export function derivarIntervencoes({ bruto, cartas, comodo, predio }) {
     gestos.push({
       id: 'superficie_lavada',
       hora: `${lugar ? lugar.em.charAt(0).toUpperCase() + lugar.em.slice(1) : 'Na sala'}, antes de sair`,
-      rubrica: 'a superfície esfregada onde nada pedia esfrega',
+      rubrica: 'a superfície esfregada, e só ela',
       exige: ['gen_peca_limpa'],
       prosa: variante(
         [
@@ -301,7 +301,7 @@ export function derivarIntervencoes({ bruto, cartas, comodo, predio }) {
       prosa: variante(
         [
           'Um depoimento já tomado é contado outra vez, e da segunda vez conta outra coisa. Na mesma semana, uma caderneta de fiado que se arrastava há meses aparece quitada de uma assentada.',
-          'A versão muda entre uma tomada e a seguinte, e muda inteira. Pela mesma altura, dívidas de mercearia que vinham de trás ficam pagas todas no mesmo dia.',
+          'A versão muda entre uma tomada e a seguinte, e muda inteira. Pela mesma altura, dívidas de fiado que vinham de trás ficam pagas todas no mesmo dia.',
         ],
         `${bruto.seed}|boca_comprada`
       ),

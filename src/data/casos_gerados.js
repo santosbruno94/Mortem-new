@@ -1157,7 +1157,7 @@ export const CASO_REPLICA = {
     },
     "b3_cordial": {
      "fala": [
-      "A voz baixa, e a frase leva o seu tempo. \"Fica-se pior, {detective.treatment}. Doze anos a servir a mesma casa criam coisa que não se lança em conta nenhuma.\""
+      "A voz baixa, e a frase leva o seu tempo. \"Fica-se pior, {detective.treatment}. Anos a atender a mesma vila criam coisa que não se lança em conta nenhuma.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -1238,7 +1238,7 @@ export const CASO_REPLICA = {
     },
     "b3_tecnico": {
      "fala": [
-      "Responde na ordem pedida, e não acrescenta. \"De honorários, cobrados por serviço e lançados em livro próprio. O que esta casa devia está lá, e vai a inventário como qualquer outra dívida.\""
+      "Responde na ordem pedida, e não acrescenta. \"De honorários, cobrados por serviço e lançados em livro próprio. O que aquela casa me tenha dado a lançar está lá, linha a linha, e o livro abre-se.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -1476,7 +1476,7 @@ export const CASO_REPLICA = {
     },
     "b3_firme": {
      "fala": [
-      "\"Muda pouco.\" A resposta é curta e não se alonga. \"Quem anda no campo anda na mesma. O nome do patrão é que troca, e o meu não.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "\"Muda pouco.\" A resposta é curta e não se alonga. \"Quem anda no campo anda na mesma. O nome do patrão é que troca, e o meu não.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -1719,7 +1719,7 @@ export const CASO_REPLICA = {
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -2030,7 +2030,7 @@ export const CASO_REPLICA = {
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     },
@@ -2104,7 +2104,7 @@ export const CASO_REPLICA = {
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     }
@@ -2196,7 +2196,7 @@ export const CASO_REPLICA = {
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -2360,7 +2360,7 @@ export const CASO_REPLICA = {
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -2443,7 +2443,7 @@ export const CASO_REPLICA = {
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -2526,7 +2526,7 @@ export const CASO_REPLICA = {
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -2770,7 +2770,7 @@ export const CASO_REPLICA = {
     },
     "b3_cordial": {
      "fala": [
-      "Responde como quem já respondeu a isto noutras casas. \"Fica-se com o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde como quem já respondeu a isto noutras casas. \"Sobra-me o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -2851,7 +2851,7 @@ export const CASO_REPLICA = {
     },
     "b3_tecnico": {
      "fala": [
-      "Responde na ordem pedida, e não acrescenta. \"De honorários, cobrados por serviço e lançados em livro próprio. O que esta casa devia está lá, e vai a inventário como qualquer outra dívida.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde na ordem pedida, e não acrescenta. \"De honorários, cobrados por serviço e lançados em livro próprio. O que aquela casa me tenha dado a lançar está lá, linha a linha, e o livro abre-se.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -3635,7 +3635,7 @@ export const CASO_REPLICA = {
     "gen_intf_intf_2_retratacao",
     "gen_intf_intf_2_dividas"
    ],
-   "prosa": "A versão muda entre uma tomada e a seguinte, e muda inteira. Pela mesma altura, dívidas de mercearia que vinham de trás ficam pagas todas no mesmo dia."
+   "prosa": "A versão muda entre uma tomada e a seguinte, e muda inteira. Pela mesma altura, dívidas de fiado que vinham de trás ficam pagas todas no mesmo dia."
   }
  ],
  "cenaDaNoite": {
@@ -4938,7 +4938,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -5170,7 +5170,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -5569,7 +5569,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": []
     },
@@ -5717,7 +5717,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     }
@@ -5798,7 +5798,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -5872,7 +5872,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -6036,7 +6036,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -6207,7 +6207,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -6280,7 +6280,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
      ],
      "opcoes": []
     },
@@ -6353,7 +6353,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\""
      ],
      "opcoes": []
     },
@@ -8384,7 +8384,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     }
@@ -8621,7 +8621,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -8785,7 +8785,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -8857,13 +8857,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -9009,7 +9009,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": []
     },
@@ -9155,7 +9155,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": []
     }
@@ -9236,7 +9236,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -9384,7 +9384,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": []
     },
@@ -9532,7 +9532,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     }
@@ -9596,7 +9596,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -9748,7 +9748,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
      ],
      "opcoes": []
     },
@@ -9894,7 +9894,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Volta os olhos para o interior da loja antes de responder. \"Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro.\""
+      "Volta os olhos para o interior da loja antes de responder. \"Amanhã não abre: é domingo. Segunda abre à hora de sempre, com enterro ou sem ele.\""
      ],
      "opcoes": []
     }
@@ -11555,7 +11555,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda pouco.\" A resposta é curta e não se alonga. \"Quem anda no campo anda na mesma. O nome do patrão é que troca, e o meu não.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "\"Muda pouco.\" A resposta é curta e não se alonga. \"Quem anda no campo anda na mesma. O nome do patrão é que troca, e o meu não.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -11628,7 +11628,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. \"Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. \"Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -11701,7 +11701,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o perguntado e para. \"Do jornal do dia, pago ao sábado. Quem me paga é quem me pagava, e não era quem morreu.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "Responde o perguntado e para. \"Do jornal do dia, pago ao sábado. Quem me paga é quem me pagava, e não era quem morreu.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -11774,7 +11774,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": []
     }
@@ -11935,7 +11935,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "Responde sem levantar os olhos. \"Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde sem levantar os olhos. \"Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -12009,7 +12009,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -12157,7 +12157,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -12238,13 +12238,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -12560,7 +12560,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -12638,7 +12638,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -12930,7 +12930,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     }
@@ -13173,7 +13173,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde como quem já respondeu a isto noutras casas. \"Fica-se com o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez.\""
+      "Responde como quem já respondeu a isto noutras casas. \"Sobra-me o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -13255,7 +13255,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde na ordem pedida, e não acrescenta. \"De honorários, cobrados por serviço e lançados em livro próprio. O que esta casa devia está lá, e vai a inventário como qualquer outra dívida.\""
+      "Responde na ordem pedida, e não acrescenta. \"De honorários, cobrados por serviço e lançados em livro próprio. O que aquela casa me tenha dado a lançar está lá, linha a linha, e o livro abre-se.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -14226,21 +14226,19 @@ export const CASOS_POOL = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "cordao_torcido",
-      "pertenceA": "gen_7_criada",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_7_criada"
      }
     },
     {
      "ipmAte": null,
-     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
-     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
-     "descricao": "Entre os pertences de Florence Hill, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão da morta.",
+     "textoDisplay": "O Instrumento Lavado, a Crosta sob a Virola",
+     "carimboPadrao": "Instrumento lavado; crosta escura sob a virola e os rebites",
+     "descricao": "Entre os pertences de Florence Hill, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura; tirados os rebites e separadas as talas do cabo, ela raspa-se para a lâmina de vidro. O feitio casa com a lesão da morta.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "cordao_torcido",
-      "pertenceA": "gen_7_criada",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_7_criada"
      }
     }
    ]
@@ -15012,7 +15010,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -15174,7 +15172,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -15325,7 +15323,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -15657,7 +15655,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -15731,7 +15729,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -15813,7 +15811,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -15895,7 +15893,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -15977,7 +15975,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -16066,7 +16064,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -16222,7 +16220,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -16386,7 +16384,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -16458,7 +16456,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -16537,7 +16535,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -16618,7 +16616,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -16699,7 +16697,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -16780,7 +16778,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -17663,21 +17661,19 @@ export const CASOS_POOL = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "arma_de_ocasiao",
-      "pertenceA": "gen_3_ferreiro",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_3_ferreiro"
      }
     },
     {
      "ipmAte": null,
-     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
-     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
-     "descricao": "Entre os pertences de Leonard Smith, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão do morto.",
+     "textoDisplay": "O Instrumento Lavado, a Crosta sob a Virola",
+     "carimboPadrao": "Instrumento lavado; crosta escura sob a virola e os rebites",
+     "descricao": "Entre os pertences de Leonard Smith, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura; tirados os rebites e separadas as talas do cabo, ela raspa-se para a lâmina de vidro. O feitio casa com a lesão do morto.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "arma_de_ocasiao",
-      "pertenceA": "gen_3_ferreiro",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_3_ferreiro"
      }
     }
    ]
@@ -18422,7 +18418,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -18496,7 +18492,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": []
     },
@@ -18644,7 +18640,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Dá a conta com cuidado, como quem repete o que ouviu ler. \"Tanto por vez, e mais nas semanas de mais serviço. Quem me paga há de dizer o mesmo, se lho perguntarem.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Dá a conta com cuidado, como quem repete o que ouviu ler. \"Tanto por vez, e mais nas semanas de mais serviço. Quem me paga há de dizer o mesmo, se lho perguntarem.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -18718,7 +18714,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     }
@@ -18961,7 +18957,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -19125,7 +19121,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Volta os olhos para o interior da loja antes de responder. \"Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro.\""
+      "Volta os olhos para o interior da loja antes de responder. \"Amanhã não abre: é domingo. Segunda abre à hora de sempre, com enterro ou sem ele.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -19293,7 +19289,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     },
@@ -19366,7 +19362,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -19439,7 +19435,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -19512,7 +19508,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     }
@@ -19755,7 +19751,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -20076,7 +20072,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "Deixa a pergunta assentar antes de responder. \"Perco quem me tratava por igual nesta vila. De haveres, não perco nem ganho.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora.\""
+      "Deixa a pergunta assentar antes de responder. \"Perco um nome que se contava nesta vila. De haveres, não perco nem ganho.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -20157,7 +20153,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde devagar, como quem escolhe. \"Fica-se com uma cadeira vazia à mesa e o mesmo rendimento de sempre. Das duas, a primeira pesa mais.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
+      "Responde devagar, como quem escolhe. \"Uma cadeira vazia à mesa, e o mesmo rendimento de sempre. Das duas, a primeira pesa mais.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -22324,7 +22320,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -22591,7 +22587,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -22747,7 +22743,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -23080,7 +23076,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -23162,7 +23158,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -23326,7 +23322,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -23558,7 +23554,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz baixa, e a frase leva o seu tempo. \"Fica-se pior, {detective.treatment}. Doze anos a servir a mesma casa criam coisa que não se lança em conta nenhuma.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "A voz baixa, e a frase leva o seu tempo. \"Fica-se pior, {detective.treatment}. Anos a atender a mesma vila criam coisa que não se lança em conta nenhuma.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -23792,13 +23788,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -24114,7 +24110,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -25178,21 +25174,19 @@ export const CASOS_POOL = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "lamina_de_oficio",
-      "pertenceA": "gen_0_ferreiro",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_0_ferreiro"
      }
     },
     {
      "ipmAte": null,
-     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
-     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
-     "descricao": "Entre os pertences de John Ward, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão do morto.",
+     "textoDisplay": "O Instrumento Lavado, a Crosta sob a Virola",
+     "carimboPadrao": "Instrumento lavado; crosta escura sob a virola e os rebites",
+     "descricao": "Entre os pertences de John Ward, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura; tirados os rebites e separadas as talas do cabo, ela raspa-se para a lâmina de vidro. O feitio casa com a lesão do morto.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "lamina_de_oficio",
-      "pertenceA": "gen_0_ferreiro",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_0_ferreiro"
      }
     }
    ]
@@ -25980,13 +25974,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -26059,7 +26053,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -26140,7 +26134,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -26221,7 +26215,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -26396,7 +26390,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -26560,7 +26554,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -26726,7 +26720,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -26958,7 +26952,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -27120,7 +27114,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -27529,7 +27523,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -27612,13 +27606,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -27914,7 +27908,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     }
@@ -28983,21 +28977,19 @@ export const CASOS_POOL = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "cordao_torcido",
-      "pertenceA": "gen_5_parteira",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_5_parteira"
      }
     },
     {
      "ipmAte": null,
-     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
-     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
-     "descricao": "Entre os pertences de Dorcas Wright, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão da morta.",
+     "textoDisplay": "O Instrumento Lavado, a Crosta sob a Virola",
+     "carimboPadrao": "Instrumento lavado; crosta escura sob a virola e os rebites",
+     "descricao": "Entre os pertences de Dorcas Wright, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura; tirados os rebites e separadas as talas do cabo, ela raspa-se para a lâmina de vidro. O feitio casa com a lesão da morta.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "cordao_torcido",
-      "pertenceA": "gen_5_parteira",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_5_parteira"
      }
     }
    ]
@@ -29609,7 +29601,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -29907,7 +29899,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     }
@@ -29982,7 +29974,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -30210,7 +30202,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moça, e a vila fez o mesmo que há de fazer agora.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moça, e a vila fez o mesmo que há de fazer agora.\""
      ],
      "opcoes": []
     },
@@ -30284,7 +30276,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moça, e a vila fez o mesmo que há de fazer agora.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moça, e a vila fez o mesmo que há de fazer agora.\""
      ],
      "opcoes": []
     }
@@ -30354,7 +30346,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -30508,7 +30500,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -30670,7 +30662,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -30759,7 +30751,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -30915,7 +30907,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -31079,7 +31071,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -31157,7 +31149,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -31303,7 +31295,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": []
     },
@@ -31449,7 +31441,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     }
@@ -32981,7 +32973,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ela depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ela depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -33556,7 +33548,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Demora na resposta, e a voz não se levanta. \"Fica-se de luto com a freguesia inteira. Enterra-se, e depois é que a falta se aprende.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Demora na resposta, e a voz não se levanta. \"De luto com a freguesia inteira, é como se fica. Enterra-se, e depois é que a falta se aprende.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -33722,7 +33714,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Deixa a pergunta assentar. \"Amanhece, e no domingo há de estar a igreja cheia. Uma morte destas enche igreja por três semanas.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Deixa a pergunta assentar. \"Amanhece, e amanhã há de estar a igreja cheia. Uma morte destas enche igreja por três semanas.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -33817,7 +33809,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -33891,7 +33883,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -34220,7 +34212,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ela depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ela depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -34380,7 +34372,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moça, e a vila fez o mesmo que há de fazer agora.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moça, e a vila fez o mesmo que há de fazer agora.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -34793,7 +34785,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -34957,7 +34949,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -36624,7 +36616,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -36926,7 +36918,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Volta os olhos para o interior da loja antes de responder. \"Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Volta os olhos para o interior da loja antes de responder. \"Amanhã não abre: é domingo. Segunda abre à hora de sempre, com enterro ou sem ele.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -37146,7 +37138,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": []
     },
@@ -37290,7 +37282,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": []
     }
@@ -37365,7 +37357,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -37517,7 +37509,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": []
     },
@@ -37663,7 +37655,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": []
     }
@@ -37900,7 +37892,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -38153,13 +38145,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -40173,7 +40165,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -40254,7 +40246,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -40335,7 +40327,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -40505,7 +40497,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -40667,7 +40659,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -40831,7 +40823,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -40920,13 +40912,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -41084,7 +41076,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -41250,7 +41242,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -41345,7 +41337,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -41419,7 +41411,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda pouco.\" A resposta é curta e não se alonga. \"Quem anda no campo anda na mesma. O nome do patrão é que troca, e o meu não.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "\"Muda pouco.\" A resposta é curta e não se alonga. \"Quem anda no campo anda na mesma. O nome do patrão é que troca, e o meu não.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -41501,7 +41493,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -41665,7 +41657,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -41816,7 +41808,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "Deixa a pergunta assentar antes de responder. \"Perco quem me tratava por igual nesta vila. De haveres, não perco nem ganho.\""
+      "Deixa a pergunta assentar antes de responder. \"Perco um nome que se contava nesta vila. De haveres, não perco nem ganho.\""
      ],
      "opcoes": []
     },
@@ -43778,7 +43770,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -43938,7 +43930,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -44100,7 +44092,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -44224,13 +44216,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -44474,7 +44466,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -44558,7 +44550,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -44844,7 +44836,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -45008,7 +45000,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -45138,7 +45130,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -45211,7 +45203,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -45292,7 +45284,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -45373,7 +45365,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -45454,7 +45446,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -45658,7 +45650,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda o quê?\" Repete a pergunta antes de a responder. \"Trabalho havia antes e há de haver depois. Come-se do que se fizer.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "\"Muda o quê?\" Repete a pergunta antes de a responder. \"Trabalho havia antes e há de haver depois. Come-se do que se fizer.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -45740,7 +45732,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -45904,7 +45896,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -46619,7 +46611,7 @@ export const CASOS_POOL = [
   {
    "id": "superficie_lavada",
    "hora": "Na cozinha, antes de sair",
-   "rubrica": "a superfície esfregada onde nada pedia esfrega",
+   "rubrica": "a superfície esfregada, e só ela",
    "exige": [
     "gen_peca_limpa"
    ],
@@ -46968,7 +46960,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Frasco Lavado",
    "carimboPadrao": "Frasco lavado, resto no gargalo",
-   "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+   "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. No fundo do gargalo resta um fio escuro da tintura, e a rolha, reposta sobre a boca por lavar, ficou com um anel castanho que já não sai da cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -46978,28 +46970,26 @@ export const CASOS_POOL = [
    "estados": [
     {
      "ipmAte": 24,
-     "textoDisplay": "O Frasco Lavado Há Pouco",
-     "carimboPadrao": "Frasco lavado; água ainda no vidro",
-     "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. O vidro está frio e molhado por dentro, e a rolha, posta de volta sobre a boca úmida, criou um anel de tintura na cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "textoDisplay": "O Frasco Reposto Molhado",
+     "carimboPadrao": "Frasco reposto molhado; círculo úmido na prateleira",
+     "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. O frasco foi reposto molhado por fora, e a prateleira guarda o círculo úmido em que ele assentou, com o pó afastado em volta. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "frasco_de_laudano",
-      "pertenceA": "gen_0_costureira",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_0_costureira"
      }
     },
     {
      "ipmAte": null,
      "textoDisplay": "O Frasco Lavado",
      "carimboPadrao": "Frasco lavado, resto no gargalo",
-     "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. No fundo do gargalo resta um fio escuro da tintura, e a rolha, reposta sobre a boca por lavar, ficou com um anel castanho que já não sai da cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "frasco_de_laudano",
-      "pertenceA": "gen_0_costureira",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_0_costureira"
      }
     }
    ]
@@ -47685,7 +47675,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ela depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ela depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -47837,7 +47827,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": []
     },
@@ -47983,7 +47973,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": []
     }
@@ -48058,13 +48048,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -48220,7 +48210,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz falha uma vez e recompõe-se. \"Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "A voz falha uma vez e recompõe-se. \"Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -48629,7 +48619,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -48793,7 +48783,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -48871,7 +48861,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -49411,7 +49401,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": []
     },
@@ -51191,7 +51181,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -51351,7 +51341,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -51608,7 +51598,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -51928,7 +51918,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -52023,13 +52013,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -52177,7 +52167,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -52395,13 +52385,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -52474,7 +52464,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -52555,7 +52545,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -52636,7 +52626,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -52966,7 +52956,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz baixa, e a frase leva o seu tempo. \"Fica-se pior, {detective.treatment}. Doze anos a servir a mesma casa criam coisa que não se lança em conta nenhuma.\""
+      "A voz baixa, e a frase leva o seu tempo. \"Fica-se pior, {detective.treatment}. Anos a atender a mesma vila criam coisa que não se lança em conta nenhuma.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -54039,7 +54029,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Frasco Lavado",
    "carimboPadrao": "Frasco lavado, resto no gargalo",
-   "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+   "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. No fundo do gargalo resta um fio escuro da tintura, e a rolha, reposta sobre a boca por lavar, ficou com um anel castanho que já não sai da cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -54049,28 +54039,26 @@ export const CASOS_POOL = [
    "estados": [
     {
      "ipmAte": 24,
-     "textoDisplay": "O Frasco Lavado Há Pouco",
-     "carimboPadrao": "Frasco lavado; água ainda no vidro",
-     "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. O vidro está frio e molhado por dentro, e a rolha, posta de volta sobre a boca úmida, criou um anel de tintura na cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "textoDisplay": "O Frasco Reposto Molhado",
+     "carimboPadrao": "Frasco reposto molhado; círculo úmido na prateleira",
+     "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. O frasco foi reposto molhado por fora, e a prateleira guarda o círculo úmido em que ele assentou, com o pó afastado em volta. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "frasco_de_laudano",
-      "pertenceA": "gen_3_lavrador",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_3_lavrador"
      }
     },
     {
      "ipmAte": null,
      "textoDisplay": "O Frasco Lavado",
      "carimboPadrao": "Frasco lavado, resto no gargalo",
-     "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. No fundo do gargalo resta um fio escuro da tintura, e a rolha, reposta sobre a boca por lavar, ficou com um anel castanho que já não sai da cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "frasco_de_laudano",
-      "pertenceA": "gen_3_lavrador",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_3_lavrador"
      }
     }
    ]
@@ -54900,7 +54888,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -55062,7 +55050,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -55134,7 +55122,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -55286,7 +55274,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
      ],
      "opcoes": []
     },
@@ -55513,13 +55501,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -55741,7 +55729,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -55815,7 +55803,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -55902,7 +55890,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -56064,7 +56052,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -56228,7 +56216,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -57503,8 +57491,7 @@ export const CASOS_POOL = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "travesseiro_ou_pano",
-      "pertenceA": "gen_5_lavadeira",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_5_lavadeira"
      }
     },
     {
@@ -57516,8 +57503,7 @@ export const CASOS_POOL = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "travesseiro_ou_pano",
-      "pertenceA": "gen_5_lavadeira",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_5_lavadeira"
      }
     }
    ]
@@ -58143,13 +58129,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -58222,7 +58208,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -58384,7 +58370,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -58634,7 +58620,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -58798,7 +58784,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -58964,7 +58950,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -59199,7 +59185,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Dá a conta como lhe ensinaram a dar. \"Tanto por dia, e a semana fecha ao sábado. Da casa do morto não me vinha nada, nem me vem.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "Dá a conta como lhe ensinaram a dar. \"Tanto por dia, e a semana fecha ao sábado. Da casa do morto não me vinha nada, nem me vem.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -59280,7 +59266,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -59358,13 +59344,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -59510,7 +59496,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": []
     },
@@ -59656,7 +59642,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     },
@@ -59737,13 +59723,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -60039,7 +60025,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     }
@@ -60966,8 +60952,7 @@ export const CASOS_POOL = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "travesseiro_ou_pano",
-      "pertenceA": "gen_7_lavrador",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_7_lavrador"
      }
     },
     {
@@ -60979,8 +60964,7 @@ export const CASOS_POOL = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "travesseiro_ou_pano",
-      "pertenceA": "gen_7_lavrador",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_7_lavrador"
      }
     }
    ]
@@ -61815,7 +61799,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "Responde sem levantar os olhos. \"Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde sem levantar os olhos. \"Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -61977,7 +61961,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Dá a conta com cuidado, como quem repete o que ouviu ler. \"Tanto por vez, e mais nas semanas de mais serviço. Quem me paga há de dizer o mesmo, se lho perguntarem.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Dá a conta com cuidado, como quem repete o que ouviu ler. \"Tanto por vez, e mais nas semanas de mais serviço. Quem me paga há de dizer o mesmo, se lho perguntarem.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -62058,7 +62042,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Baixa a voz mais ainda. \"Amanhece. Fala-se disto de cozinha em cozinha a manhã inteira, e depois mandam calar, e cala-se.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Baixa a voz mais ainda. \"Amanhece. Fala-se disto de cozinha em cozinha a manhã inteira, e depois mandam calar, e cala-se.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -62209,7 +62193,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     },
@@ -62282,7 +62266,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     },
@@ -62355,7 +62339,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     },
@@ -62665,7 +62649,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -62829,7 +62813,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Volta os olhos para o interior da loja antes de responder. \"Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Volta os olhos para o interior da loja antes de responder. \"Amanhã não abre: é domingo. Segunda abre à hora de sempre, com enterro ou sem ele.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -62912,13 +62896,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -63238,7 +63222,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -63332,13 +63316,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -63662,7 +63646,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -65620,7 +65604,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -65692,7 +65676,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ela depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ela depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -66251,7 +66235,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
      ],
      "opcoes": []
     },
@@ -66399,7 +66383,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
      ],
      "opcoes": []
     }
@@ -66474,7 +66458,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ela depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ela depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -66628,7 +66612,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": []
     },
@@ -66776,7 +66760,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": []
     }
@@ -67011,7 +66995,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -68078,7 +68062,7 @@ export const CASOS_POOL = [
    "mobilia": null,
    "textoDisplay": "O Frasco Lavado",
    "carimboPadrao": "Frasco lavado, resto no gargalo",
-   "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+   "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. No fundo do gargalo resta um fio escuro da tintura, e a rolha, reposta sobre a boca por lavar, ficou com um anel castanho que já não sai da cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
    "tagsOcultas": {
     "dominio": "vestigio",
     "subDominio": "instrumento_oficio",
@@ -68088,28 +68072,26 @@ export const CASOS_POOL = [
    "estados": [
     {
      "ipmAte": 24,
-     "textoDisplay": "O Frasco Lavado Há Pouco",
-     "carimboPadrao": "Frasco lavado; água ainda no vidro",
-     "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. O vidro está frio e molhado por dentro, e a rolha, posta de volta sobre a boca úmida, criou um anel de tintura na cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "textoDisplay": "O Frasco Reposto Molhado",
+     "carimboPadrao": "Frasco reposto molhado; círculo úmido na prateleira",
+     "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. O frasco foi reposto molhado por fora, e a prateleira guarda o círculo úmido em que ele assentou, com o pó afastado em volta. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "frasco_de_laudano",
-      "pertenceA": "gen_1_carroceiro",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_1_carroceiro"
      }
     },
     {
      "ipmAte": null,
      "textoDisplay": "O Frasco Lavado",
      "carimboPadrao": "Frasco lavado, resto no gargalo",
-     "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. No fundo do gargalo resta um fio escuro da tintura, e a rolha, reposta sobre a boca por lavar, ficou com um anel castanho que já não sai da cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "frasco_de_laudano",
-      "pertenceA": "gen_1_carroceiro",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_1_carroceiro"
      }
     }
    ]
@@ -68789,13 +68771,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -68869,7 +68851,7 @@ export const CASOS_POOL = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
      ],
      "opcoes": []
     },
@@ -69315,7 +69297,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -69477,7 +69459,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -69555,13 +69537,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -69707,7 +69689,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz sai mais baixa do que o uniforme faria supor. \"Fica-se com a vila a olhar para a gente à espera. É o que mais pesa.\""
+      "A voz sai mais baixa do que o uniforme faria supor. \"A vila passa a olhar para a gente à espera. É o que mais pesa.\""
      ],
      "opcoes": []
     },
@@ -69853,7 +69835,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Confere a hora antes de responder. \"Abre. A ronda sai à mesma hora, e há de sair amanhã, e no domingo também.\""
+      "Confere a hora antes de responder. \"Abre. A ronda sai à mesma hora, e há de sair amanhã, que é domingo, e nos domingos que vierem.\""
      ],
      "opcoes": []
     },
@@ -69923,13 +69905,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -70221,7 +70203,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     }
@@ -70302,7 +70284,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ela depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ela depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -70466,7 +70448,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -70632,7 +70614,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -72192,13 +72174,13 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -72494,7 +72476,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     }
@@ -72718,7 +72700,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -72952,7 +72934,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -73104,7 +73086,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
      ],
      "opcoes": []
     },
@@ -73651,7 +73633,7 @@ export const CASOS_POOL = [
     },
     "b3_obliquo": {
      "fala": [
-      "Deixa a pergunta assentar. \"Amanhece, e no domingo há de estar a igreja cheia. Uma morte destas enche igreja por três semanas.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Deixa a pergunta assentar. \"Amanhece, e amanhã há de estar a igreja cheia. Uma morte destas enche igreja por três semanas.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -73723,7 +73705,7 @@ export const CASOS_POOL = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -73883,7 +73865,7 @@ export const CASOS_POOL = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -73964,7 +73946,7 @@ export const CASOS_POOL = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moça, e a vila fez o mesmo que há de fazer agora.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moça, e a vila fez o mesmo que há de fazer agora.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -74911,21 +74893,19 @@ export const CASOS_LUTA = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "arma_de_ocasiao",
-      "pertenceA": "gen_7_lavrador",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_7_lavrador"
      }
     },
     {
      "ipmAte": null,
-     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
-     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
-     "descricao": "Entre os pertences de Thomas Walker, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão da morta.",
+     "textoDisplay": "O Instrumento Lavado, a Crosta sob a Virola",
+     "carimboPadrao": "Instrumento lavado; crosta escura sob a virola e os rebites",
+     "descricao": "Entre os pertences de Thomas Walker, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura; tirados os rebites e separadas as talas do cabo, ela raspa-se para a lâmina de vidro. O feitio casa com a lesão da morta.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "arma_de_ocasiao",
-      "pertenceA": "gen_7_lavrador",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_7_lavrador"
      }
     }
    ]
@@ -75682,7 +75662,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -75838,7 +75818,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -76002,7 +75982,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -76126,13 +76106,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -76205,7 +76185,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": []
     },
@@ -76278,7 +76258,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz falha uma vez e recompõe-se. \"Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "A voz falha uma vez e recompõe-se. \"Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -76424,7 +76404,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": []
     },
@@ -76681,7 +76661,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -76827,7 +76807,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -77105,7 +77085,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde como quem já respondeu a isto noutras casas. \"Fica-se com o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde como quem já respondeu a isto noutras casas. \"Sobra-me o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -77187,7 +77167,7 @@ export const CASOS_LUTA = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde na ordem pedida, e não acrescenta. \"De honorários, cobrados por serviço e lançados em livro próprio. O que esta casa devia está lá, e vai a inventário como qualquer outra dívida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde na ordem pedida, e não acrescenta. \"De honorários, cobrados por serviço e lançados em livro próprio. O que aquela casa me tenha dado a lançar está lá, linha a linha, e o livro abre-se.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -77393,13 +77373,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus a tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -77727,7 +77707,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -79478,7 +79458,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -79626,7 +79606,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -79774,7 +79754,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -79885,13 +79865,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -80037,7 +80017,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": []
     },
@@ -80183,7 +80163,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     },
@@ -80311,13 +80291,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -80395,7 +80375,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda o quê?\" Repete a pergunta antes de a responder. \"Trabalho havia antes e há de haver depois. Come-se do que se fizer.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "\"Muda o quê?\" Repete a pergunta antes de a responder. \"Trabalho havia antes e há de haver depois. Come-se do que se fizer.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -80473,7 +80453,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. \"Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. \"Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -80629,7 +80609,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte."
      ],
      "opcoes": []
     },
@@ -81165,13 +81145,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -83309,7 +83289,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -83461,7 +83441,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": []
     },
@@ -83729,7 +83709,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -84061,7 +84041,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -84641,7 +84621,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -84714,7 +84694,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "Responde sem levantar os olhos. \"Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde sem levantar os olhos. \"Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -84787,7 +84767,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz falha uma vez e recompõe-se. \"Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "A voz falha uma vez e recompõe-se. \"Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -84860,7 +84840,7 @@ export const CASOS_LUTA = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -84933,7 +84913,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Baixa a voz mais ainda. \"Amanhece. Fala-se disto de cozinha em cozinha a manhã inteira, e depois mandam calar, e cala-se.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Baixa a voz mais ainda. \"Amanhece. Fala-se disto de cozinha em cozinha a manhã inteira, e depois mandam calar, e cala-se.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -85038,7 +85018,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -85198,7 +85178,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -85360,7 +85340,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Volta os olhos para o interior da loja antes de responder. \"Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro.\""
+      "Volta os olhos para o interior da loja antes de responder. \"Amanhã não abre: é domingo. Segunda abre à hora de sempre, com enterro ou sem ele.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -86335,21 +86315,19 @@ export const CASOS_LUTA = [
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "arma_de_ocasiao",
-      "pertenceA": "gen_4_lavadeira",
-      "estadoDegradacao": "ativo"
+      "pertenceA": "gen_4_lavadeira"
      }
     },
     {
      "ipmAte": null,
-     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
-     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
-     "descricao": "Entre os pertences de Annie Andrews, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão do morto.",
+     "textoDisplay": "O Instrumento Lavado, a Crosta sob a Virola",
+     "carimboPadrao": "Instrumento lavado; crosta escura sob a virola e os rebites",
+     "descricao": "Entre os pertences de Annie Andrews, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura; tirados os rebites e separadas as talas do cabo, ela raspa-se para a lâmina de vidro. O feitio casa com a lesão do morto.",
      "tagsOcultas": {
       "dominio": "vestigio",
       "subDominio": "instrumento_oficio",
       "tipoVestigio": "arma_de_ocasiao",
-      "pertenceA": "gen_4_lavadeira",
-      "estadoDegradacao": "durável"
+      "pertenceA": "gen_4_lavadeira"
      }
     }
    ]
@@ -87221,7 +87199,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -87373,7 +87351,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. \"Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. \"Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -87519,7 +87497,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -87641,7 +87619,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -87937,7 +87915,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": []
     },
@@ -88065,7 +88043,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -88397,7 +88375,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -88595,7 +88573,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "Responde sem levantar os olhos. \"Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Responde sem levantar os olhos. \"Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -88668,7 +88646,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz falha uma vez e recompõe-se. \"Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "A voz falha uma vez e recompõe-se. \"Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -88814,7 +88792,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Baixa a voz mais ainda. \"Amanhece. Fala-se disto de cozinha em cozinha a manhã inteira, e depois mandam calar, e cala-se.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhora.\""
+      "Baixa a voz mais ainda. \"Amanhece. Fala-se disto de cozinha em cozinha a manhã inteira, e depois mandam calar, e cala-se.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -89098,7 +89076,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Demora na resposta, e a voz não se levanta. \"Fica-se de luto com a freguesia inteira. Enterra-se, e depois é que a falta se aprende.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora.\""
+      "Demora na resposta, e a voz não se levanta. \"De luto com a freguesia inteira, é como se fica. Enterra-se, e depois é que a falta se aprende.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -89262,7 +89240,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Deixa a pergunta assentar. \"Amanhece, e no domingo há de estar a igreja cheia. Uma morte destas enche igreja por três semanas.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
+      "Deixa a pergunta assentar. \"Amanhece, e amanhã há de estar a igreja cheia. Uma morte destas enche igreja por três semanas.\" Mede o presente por outro tempo: \"Vi esta vila enterrar gente melhor, e no dia seguinte estava tudo de pé.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -91093,7 +91071,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -91245,7 +91223,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": []
     },
@@ -91397,7 +91375,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     },
@@ -91508,7 +91486,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -91830,7 +91808,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Volta os olhos para o interior da loja antes de responder. \"Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Volta os olhos para o interior da loja antes de responder. \"Amanhã não abre: é domingo. Segunda abre à hora de sempre, com enterro ou sem ele.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -91949,7 +91927,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -92247,7 +92225,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Volta os olhos para o interior da loja antes de responder. \"Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro.\""
+      "Volta os olhos para o interior da loja antes de responder. \"Amanhã não abre: é domingo. Segunda abre à hora de sempre, com enterro ou sem ele.\""
      ],
      "opcoes": []
     },
@@ -92375,13 +92353,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -92677,7 +92655,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": []
     },
@@ -92788,7 +92766,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -92948,7 +92926,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -93110,7 +93088,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -94668,13 +94646,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -94822,7 +94800,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. \"Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. \"Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -94896,7 +94874,7 @@ export const CASOS_LUTA = [
     },
     "b3_tecnico": {
      "fala": [
-      "Dá a conta como lhe ensinaram a dar. \"Tanto por dia, e a semana fecha ao sábado. Da casa do morto não me vinha nada, nem me vem.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "Dá a conta como lhe ensinaram a dar. \"Tanto por dia, e a semana fecha ao sábado. Da casa do morto não me vinha nada, nem me vem.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -94970,7 +94948,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" E acrescenta, mais baixo: \"É o que me disseram em casa, senhor.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" E acrescenta, mais baixo: \"É o que me disseram em casa, {g:senhor|senhora}.\""
      ],
      "opcoes": []
     },
@@ -95087,7 +95065,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -95379,7 +95357,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     },
@@ -95501,7 +95479,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -95574,7 +95552,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
      ],
      "opcoes": []
     },
@@ -95720,7 +95698,7 @@ export const CASOS_LUTA = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\""
      ],
      "opcoes": []
     },
@@ -96225,7 +96203,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     },
@@ -96347,13 +96325,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -96427,7 +96405,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -96591,7 +96569,7 @@ export const CASOS_LUTA = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -96673,7 +96651,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -98550,7 +98528,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\""
      ],
      "opcoes": []
     },
@@ -98698,7 +98676,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": []
     },
@@ -98803,13 +98781,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -99125,7 +99103,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -99260,7 +99238,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -99430,7 +99408,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -99602,7 +99580,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -99721,7 +99699,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -99875,7 +99853,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -100167,7 +100145,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -100315,7 +100293,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": []
     },
@@ -100463,7 +100441,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": []
     },
@@ -102521,7 +102499,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": []
     },
@@ -102643,7 +102621,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -102795,7 +102773,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa.\""
+      "Limpa as mãos uma na outra antes de responder. \"Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa.\""
      ],
      "opcoes": []
     },
@@ -102941,7 +102919,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\""
      ],
      "opcoes": []
     },
@@ -103069,7 +103047,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -103229,7 +103207,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {
@@ -103397,7 +103375,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -103607,7 +103585,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "Deixa a pergunta assentar antes de responder. \"Perco quem me tratava por igual nesta vila. De haveres, não perco nem ganho.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora.\""
+      "Deixa a pergunta assentar antes de responder. \"Perco um nome que se contava nesta vila. De haveres, não perco nem ganho.\" A memória longa entra como fato: \"Já houve morte assim aqui, quando eu era moço, e a vila fez o mesmo que há de fazer agora.\""
      ],
      "opcoes": []
     },
@@ -103945,13 +103923,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -104271,7 +104249,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -105021,7 +104999,7 @@ export const CASOS_LUTA = [
   {
    "id": "superficie_lavada",
    "hora": "Na cozinha da granja, antes de sair",
-   "rubrica": "a superfície esfregada onde nada pedia esfrega",
+   "rubrica": "a superfície esfregada, e só ela",
    "exige": [
     "gen_peca_limpa"
    ],
@@ -106155,7 +106133,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -106678,7 +106656,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     },
@@ -106897,7 +106875,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -107177,7 +107155,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\""
      ],
      "opcoes": []
     },
@@ -107600,7 +107578,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\""
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -107762,7 +107740,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma.\""
+      "Olha o céu antes de responder, como quem mede o dia. \"Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -107892,7 +107870,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ele depois disso é conta de outro.\""
+      "Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. \"Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ele depois disso é conta de outro.\""
      ],
      "opcoes": []
     },
@@ -108054,7 +108032,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A voz vem mais devagar do que o resto da conversa. \"Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "A voz vem mais devagar do que o resto da conversa. \"Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -108218,7 +108196,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para dentro da oficina antes de falar. \"Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Olha para dentro da oficina antes de falar. \"Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -108940,7 +108918,7 @@ export const CASOS_LUTA = [
   {
    "id": "superficie_lavada",
    "hora": "No quarto, antes de sair",
-   "rubrica": "a superfície esfregada onde nada pedia esfrega",
+   "rubrica": "a superfície esfregada, e só ela",
    "exige": [
     "gen_peca_limpa"
    ],
@@ -110247,7 +110225,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Fica-se como se estava, com uma morte a mais para se pensar de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "Responde baixo, e o chapéu gira uma volta nas mãos. \"Como se estava, e com uma morte a mais para se pensar de noite.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     },
@@ -110393,7 +110371,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -110595,7 +110573,7 @@ export const CASOS_LUTA = [
     },
     "b3_firme": {
      "fala": [
-      "\"Muda-me uma porta onde eu era chamada, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "\"Muda-me uma porta onde me chamavam, se a fecharem.\" A resposta sai baixa e inteira. \"Chamam-me noutras. Costumo ter com que me ocupar.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": []
     },
@@ -110743,7 +110721,7 @@ export const CASOS_LUTA = [
     },
     "b3_tecnico": {
      "fala": [
-      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
+      "Responde o que se lhe pergunta, e nada além. \"Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto.\" \"São vinte e tantos anos disto\", acrescenta, \"e nunca vi ano nenhum mudar por causa de uma morte.\""
      ],
      "opcoes": []
     },
@@ -110945,13 +110923,13 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
     "reacao_gen_visto_vivo": {
      "fala": [
-      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda.\""
+      "Repete a hora em voz alta, como quem a fixa. \"Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado.\""
      ],
      "opcoes": []
     },
@@ -111263,7 +111241,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida.\""
+      "Cala-se um instante, e a resposta vem depois disso. \"Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida.\""
      ],
      "opcoes": []
     },
@@ -111385,7 +111363,7 @@ export const CASOS_LUTA = [
     },
     "reacao_gen_lesao_fatal": {
      "fala": [
-      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
+      "Faz o sinal da cruz depressa, e só depois olha o papel. \"Deus o tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo.\""
      ],
      "opcoes": []
     },
@@ -111547,7 +111525,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "Responde miúdo, e os dedos prendem-se um no outro. \"Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite.\""
+      "Responde miúdo, e os dedos prendem-se um no outro. \"Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -111711,7 +111689,7 @@ export const CASOS_LUTA = [
     },
     "b3_obliquo": {
      "fala": [
-      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho.\""
+      "Olha para o caminho antes de responder. \"Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis.\""
      ],
      "opcoes": [],
      "alfinetada": {
@@ -111995,7 +111973,7 @@ export const CASOS_LUTA = [
     },
     "b3_cordial": {
      "fala": [
-      "A resposta vem contada com vagar. \"Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
+      "A resposta vem contada com vagar. \"Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras.\" Acrescenta a credencial sem que se peça: os anos de casa, contados pelo nome de quem os viu."
      ],
      "opcoes": [],
      "alfinetada": {

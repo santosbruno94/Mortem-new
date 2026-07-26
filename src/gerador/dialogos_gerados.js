@@ -341,11 +341,11 @@ const FECHO_POR_CLASSE = {
   gentry: {
     firme: [
       'A resposta não vem de pronto. "Muda-me a vizinhança e o trato de anos. De renda, nada: o que me sustenta sustentava-me antes."',
-      'Deixa a pergunta assentar antes de responder. "Perco quem me tratava por igual nesta vila. De haveres, não perco nem ganho."',
+      'Deixa a pergunta assentar antes de responder. "Perco um nome que se contava nesta vila. De haveres, não perco nem ganho."',
     ],
     cordial: [
       'A voz baixa um tom e demora nele. "Fica-se pior, {detective.treatment}. Não de bolso: de companhia. Nesta vila conta-se pelos dedos quem se pode receber sem cerimônia."',
-      'Responde devagar, como quem escolhe. "Fica-se com uma cadeira vazia à mesa e o mesmo rendimento de sempre. Das duas, a primeira pesa mais."',
+      'Responde devagar, como quem escolhe. "Uma cadeira vazia à mesa, e o mesmo rendimento de sempre. Das duas, a primeira pesa mais."',
     ],
     tecnico: [
       'Dá a resposta na ordem em que foi pedida. "Rendas de terra e arrendamentos ao ano. Nada disso passava por quem morreu; o procurador confirma cada verba, se quiser."',
@@ -363,15 +363,15 @@ const FECHO_POR_CLASSE = {
     ],
     cordial: [
       'A voz desce ao registro com que se fala a quem chora. "Fica-se com o trabalho de consolar os que ficaram, {detective.treatment}, e esse é o mais pesado que a paróquia tem."',
-      'Demora na resposta, e a voz não se levanta. "Fica-se de luto com a freguesia inteira. Enterra-se, e depois é que a falta se aprende."',
+      'Demora na resposta, e a voz não se levanta. "De luto com a freguesia inteira, é como se fica. Enterra-se, e depois é que a falta se aprende."',
     ],
     tecnico: [
       'Responde como quem já deu esta conta a um bispo. "Da côngrua, paga por trimestre, e do que a paróquia arrecada em ofertório. Nem uma coisa nem outra vinha de quem morreu."',
       'Dá a fonte antes que se peça. "A côngrua e a casa paroquial, ambas da diocese. Os livros da paróquia estão abertos a quem os quiser conferir."',
     ],
     obliquo: [
-      'Olha o relógio da torre pela janela antes de falar. "Toca-se às sete, como em toda quarta-feira. A vila levanta-se ao sino, e o sino não sabe de luto."',
-      'Deixa a pergunta assentar. "Amanhece, e no domingo há de estar a igreja cheia. Uma morte destas enche igreja por três semanas."',
+      'Olha o relógio da torre pela janela antes de falar. "Toca-se às sete, como se toca todos os dias. A vila levanta-se ao sino, e o sino não sabe de luto."',
+      'Deixa a pergunta assentar. "Amanhece, e amanhã há de estar a igreja cheia. Uma morte destas enche igreja por três semanas."',
     ],
   },
   profissional: {
@@ -380,11 +380,11 @@ const FECHO_POR_CLASSE = {
       'Responde de pronto, e o rosto não acompanha. "Perco quem me buscava. Não é a primeira vez que perco assim, e não é disso que se vive."',
     ],
     cordial: [
-      'A voz baixa, e a frase leva o seu tempo. "Fica-se pior, {detective.treatment}. Doze anos a servir a mesma casa criam coisa que não se lança em conta nenhuma."',
-      'Responde como quem já respondeu a isto noutras casas. "Fica-se com o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez."',
+      'A voz baixa, e a frase leva o seu tempo. "Fica-se pior, {detective.treatment}. Anos a atender a mesma vila criam coisa que não se lança em conta nenhuma."',
+      'Responde como quem já respondeu a isto noutras casas. "Sobra-me o trabalho de dar a notícia aos que faltam saber. Faço-o hoje, e não é a primeira vez."',
     ],
     tecnico: [
-      'Responde na ordem pedida, e não acrescenta. "De honorários, cobrados por serviço e lançados em livro próprio. O que esta casa devia está lá, e vai a inventário como qualquer outra dívida."',
+      'Responde na ordem pedida, e não acrescenta. "De honorários, cobrados por serviço e lançados em livro próprio. O que aquela casa me tenha dado a lançar está lá, linha a linha, e o livro abre-se."',
       'Dá a resposta com a exatidão de quem a tem escrita. "Vivo do exercício, e o exercício não depende de uma casa só. O livro mostra quantas casas são."',
     ],
     obliquo: [
@@ -399,14 +399,14 @@ const FECHO_POR_CLASSE = {
     ],
     cordial: [
       'Demora a responder, e a voz vem mais rouca. "Faz-se falta, {detective.treatment}. Não é só o que se comprava: é a conversa da hora de abrir, que agora não vem."',
-      'A resposta vem contada com vagar. "Fica-se com um freguês a menos e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras."',
+      'A resposta vem contada com vagar. "Um freguês a menos, e uma hora do dia sem ninguém. A gente do balcão acostuma-se às caras."',
     ],
     tecnico: [
       'Responde com números, sem que se peça duas vezes. "Vivo do que passa pelo balcão, e o que passava por esta conta era pouco do total. Está escrito no livro; o livro está ali."',
       'Dá a fonte antes de dar o valor. "Do balcão, e do fiado que se cobra ao fim do mês. Se quiser conferir a soma, o caderno abre-se agora."',
     ],
     obliquo: [
-      'Volta os olhos para o interior da loja antes de responder. "Abre na mesma hora. Fecha-se por enterro e por domingo, e nem sempre por enterro."',
+      'Volta os olhos para o interior da loja antes de responder. "Amanhã não abre: é domingo. Segunda abre à hora de sempre, com enterro ou sem ele."',
       'Deixa a pergunta no ar um instante. "Amanhece igual. Perde uma casa que gastava, e disso a vila lembra-se por um tempo."',
     ],
   },
@@ -416,15 +416,15 @@ const FECHO_POR_CLASSE = {
       'A resposta sai curta, e a bancada continua a ser olhada. "Muda-me trabalho que estava ajustado. Ajusta-se outro; é o que há."',
     ],
     cordial: [
-      'Limpa as mãos uma na outra antes de responder. "Faz-se falta, {detective.treatment}. Era freguês de anos, e freguês de anos vira quase gente da casa."',
-      'A voz vem mais devagar do que o resto da conversa. "Fica-se sem quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa."',
+      'Limpa as mãos uma na outra antes de responder. "Faz-se falta, {detective.treatment}. Quem entra e sai pela porta da oficina acaba por virar quase gente da casa."',
+      'A voz vem mais devagar do que o resto da conversa. "Perde-se quem sabia esperar pelo serviço bem feito. Isso não se substitui à pressa."',
     ],
     tecnico: [
       'Responde e volta o olho ao que estava a fazer. "Do serviço encomendado, e há encomenda ajustada até o Natal. Deste morto vinha uma parte pequena, e está anotada."',
       'Dá a conta sem procurar. "Vivo do que sai da bancada. O que esta casa devia está no caderno, com a data em que se ajustou."',
     ],
     obliquo: [
-      'Olha para dentro da oficina antes de falar. "Abre. A oficina abre-se antes de o sol nascer, e há de abrir-se amanhã como sempre."',
+      'Olha para dentro da oficina antes de falar. "Amanhã é domingo. Na segunda a oficina abre-se antes de o sol nascer, como se abre sempre."',
       'Espera o tempo de dois fôlegos. "Amanhece. O serviço não se faz sozinho por causa de enterro nenhum."',
     ],
   },
@@ -435,32 +435,32 @@ const FECHO_POR_CLASSE = {
     ],
     cordial: [
       'A voz vem mais miúda, e {detective.treatment} {detective.surname} tem de se chegar para ouvir. "Fica-se com medo, é o que fica. Da lida não, que a lida continua. Do resto, sim."',
-      'Responde baixo, e o chapéu gira uma volta nas mãos. "Fica-se como se estava, com uma morte a mais para se pensar de noite."',
+      'Responde baixo, e o chapéu gira uma volta nas mãos. "Como se estava, e com uma morte a mais para se pensar de noite."',
     ],
     tecnico: [
       'Responde o perguntado e para. "Do jornal do dia, pago ao sábado. Quem me paga é quem me pagava, e não era quem morreu."',
       'Dá a conta como lhe ensinaram a dar. "Tanto por dia, e a semana fecha ao sábado. Da casa do morto não me vinha nada, nem me vem."',
     ],
     obliquo: [
-      'Olha o céu antes de responder, como quem mede o dia. "Amanhece. O gado não sabe de enterro, e a hora de o soltar é a mesma."',
-      'Cala-se um instante, e a resposta vem depois disso. "Igual. Fala-se disso à porta da igreja no domingo, e na segunda cada um vai à sua lida."',
+      'Olha o céu antes de responder, como quem mede o dia. "Amanhece. O gado sai à mesma hora, e recolhe-se à hora de sempre."',
+      'Cala-se um instante, e a resposta vem depois disso. "Igual. Fala-se disso à porta da igreja amanhã, e na segunda cada um vai à sua lida."',
     ],
   },
   criadagem: {
     firme: [
-      '"Muda-me uma porta onde eu era chamada, se a fecharem." A resposta sai baixa e inteira. "Chamam-me noutras. Costumo ter com que me ocupar."',
+      '"Muda-me uma porta onde me chamavam, se a fecharem." A resposta sai baixa e inteira. "Chamam-me noutras. Costumo ter com que me ocupar."',
       'Responde sem levantar os olhos. "Muda-me pouco. Quem trabalha por conta alheia trabalha onde a chamarem, e de mim ninguém se queixou."',
     ],
     cordial: [
       'A voz falha uma vez e recompõe-se. "Fica-se com pena, {detective.treatment}, com licença de o dizer. Era casa de bom trato, e disso já não há muitas."',
-      'Responde miúdo, e os dedos prendem-se um no outro. "Fica-se sem esse ganho, é o que se teme. E fica-se com aquela casa às escuras na cabeça, de noite."',
+      'Responde miúdo, e os dedos prendem-se um no outro. "Sem esse ganho é que se fica, é o que se teme. E com aquela casa às escuras na cabeça, de noite."',
     ],
     tecnico: [
-      'Responde o que se lhe pergunta, e nada além. "Do que me pagam por serviço feito, e é pouco de cada vez. Quem me paga são as casas que me chamam, e não era a do morto."',
+      'Responde o que se lhe pergunta, e nada além. "Do que me pagam pelo serviço que faço, e é pouco de cada vez. Quem me paga é quem me põe a trabalhar, e não era a casa do morto."',
       'Dá a conta com cuidado, como quem repete o que ouviu ler. "Tanto por vez, e mais nas semanas de mais serviço. Quem me paga há de dizer o mesmo, se lho perguntarem."',
     ],
     obliquo: [
-      'Olha para o caminho antes de responder. "Abre. As casas acordam à mesma hora, com defunto ou sem ele. O serviço delas não se faz sozinho."',
+      'Olha para o caminho antes de responder. "Abre. As casas acordam à mesma hora, com defunto ou sem ele. Há serviço posto antes das seis."',
       'Baixa a voz mais ainda. "Amanhece. Fala-se disto de cozinha em cozinha a manhã inteira, e depois mandam calar, e cala-se."',
     ],
   },
@@ -471,14 +471,14 @@ const FECHO_POR_CLASSE = {
     ],
     cordial: [
       'Tira o quepe antes de responder. "Fica-se pior, {detective.treatment}. Numa vila desta conta, a gente conhece todo mundo pelo nome."',
-      'A voz sai mais baixa do que o uniforme faria supor. "Fica-se com a vila a olhar para a gente à espera. É o que mais pesa."',
+      'A voz sai mais baixa do que o uniforme faria supor. "A vila passa a olhar para a gente à espera. É o que mais pesa."',
     ],
     tecnico: [
       'Responde na ordem de folha. "Soldo do condado, pago ao mês, mais a fardeta ao ano. Nenhum dos dois passava por particular nenhum."',
       'Dá a resposta como quem preenche linha. "Do soldo, e do soldo só. Está tudo em folha, e a folha assina-se na sede."',
     ],
     obliquo: [
-      'Confere a hora antes de responder. "Abre. A ronda sai à mesma hora, e há de sair amanhã, e no domingo também."',
+      'Confere a hora antes de responder. "Abre. A ronda sai à mesma hora, e há de sair amanhã, que é domingo, e nos domingos que vierem."',
       'Espera, e a resposta sai medida. "Amanhece. Por uns dias há de haver mais gente à porta da estalagem a comentar, e depois passa."',
     ],
   },
@@ -490,7 +490,7 @@ const FECHO_POR_CLASSE = {
 // igual por um rapaz de catorze anos e por uma mulher de cinquenta e sete.
 const TEMPERA_POR_IDADE = {
   jovem: [
-    ' E acrescenta, mais baixo: "É o que me disseram em casa, senhor."',
+    ' E acrescenta, mais baixo: "É o que me disseram em casa, {g:senhor|senhora}."',
     ' A resposta acaba antes do fôlego, e os olhos ficam à espera da pergunta seguinte.',
   ],
   plena: ['', ''],
@@ -517,10 +517,12 @@ function falaB3(ctx, tom) {
   const base = variante(grade[tom], `${ctx.sal}|b3|${tom}`);
   const faixa = faixaEtaria(pessoa.idade);
   let tempera = variante(TEMPERA_POR_IDADE[faixa], `${ctx.sal}|b3idade|${tom}`);
-  // Duas têmperas trazem palavra flexionada na boca de quem fala; as outras
-  // duas não têm nenhuma, e por isso não passam por aqui.
+  // UMA têmpera traz palavra flexionada por quem FALA (a memória de quando
+  // era moço/moça), e é só essa que passa por aqui. O tratamento ao perito
+  // não entra: quem o flexiona é `{g:…}`, pelo pronome dele — foi assim que
+  // a primeira versão pôs uma criada a chamar «senhora» a um perito homem.
   if (pessoa.genero === 'feminino') {
-    tempera = tempera.replace('quando eu era moço', 'quando eu era moça').replace(', senhor."', ', senhora."');
+    tempera = tempera.replace('quando eu era moço', 'quando eu era moça');
   }
   return [base + tempera];
 }
@@ -1413,12 +1415,12 @@ const PISO_CORPO = {
   ],
   oficio: [
     (v) =>
-      `Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. "Não me ponha isso à frente. Servi aquela casa doze anos; o que fizeram com ${v.eleVitima} depois disso é conta de outro."`,
+      `Enxuga a mão no avental antes de tocar o papel, e mesmo assim não o toma. "Não me ponha isso à frente. Servi àquela casa o que ela me encomendava; o que fizeram com ${v.eleVitima} depois disso é conta de outro."`,
     () => 'Olha o papel de onde está, sem chegar a mão. "Guarde. Uma coisa é saber que morreu; outra é ler como. Da primeira dou conta, da segunda não."',
   ],
   chao: [
     (v) =>
-      `Faz o sinal da cruz depressa, e só depois olha o papel. "Deus ${v.oVitima} tenha. Do que aí está escrito eu não sei ler nem o nome, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo."`,
+      `Faz o sinal da cruz depressa, e só depois olha o papel. "Deus ${v.oVitima} tenha. Do que aí está escrito não sou eu que hei de dar conta, {detective.treatment}. Diga-me o que quer perguntar, que eu respondo."`,
     () =>
       'Recua meio passo do papel estendido. "Isso é coisa de médico. Perguntou-me da minha hora, e da minha hora respondi. Do resto não ponho palavra."',
   ],
@@ -1434,7 +1436,7 @@ const PISO_ULTIMA_HORA = {
     'Olha a hora e assente uma vez. "Pode ser. A essa hora estou onde estou todos os dias, e há quem passe e me veja lá."',
   ],
   chao: [
-    'Repete a hora em voz alta, como quem a fixa. "Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já dei conta ao guarda."',
+    'Repete a hora em voz alta, como quem a fixa. "Essa hora eu tinha o que fazer, e o que fazia não se larga no meio. Da minha, já está dito e lavrado."',
     'Ouve a hora e não a discute. "Se foi a essa hora, foi. Eu a essa hora estava na lida, e a lida tem quem a veja de longe."',
   ],
 };
