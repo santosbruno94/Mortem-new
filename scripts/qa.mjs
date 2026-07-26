@@ -37,7 +37,13 @@ import {
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
-import { gerarMonologo, blocoTestemunhas } from '../src/logic/monologo.js';
+import {
+  gerarMonologo,
+  blocoTestemunhas,
+  ABERTURAS as ABERTURAS_MONOLOGO,
+  FECHOS as FECHOS_MONOLOGO,
+  FECHOS_ERRO_ANONIMOS as FECHOS_ERRO_ANONIMOS_MONOLOGO,
+} from '../src/logic/monologo.js';
 import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
 import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/exposicao.js';
 import { PROCEDENCIA_ALEGACOES } from '../src/data/procedencia.js';
@@ -4998,6 +5004,61 @@ const gr76Furos = [];
 const gr76SemBitCulpadoOk = gr76Furos.length === 0;
 if (!gr76SemBitCulpadoOk) console.log('\nGR7-6 — a cena chaveia no culpado:', gr76Furos.join(' · '));
 
+// ============================================================
+// OS-R7 · FASE 4 — A D25 E O TETO DE BRILHO (GR7-5).
+// ============================================================
+
+// GR7-5 — TETO DE MÁXIMA INTACTO. No máximo uma máxima por desfecho, nos
+// quatro, em TODAS as combinações de abertura e fecho — inclusive as do
+// fecho anônimo do Erro Judiciário. A garantia é POR CONSTRUÇÃO no
+// `monologo.js` (cada variante declara `maxima`, e abertura com máxima só
+// concorre com fecho sem); esta guarda prova que a construção não foi
+// afrouxada pela D25.
+//
+// A perna que mais importa é a última: uma revozação que ACRESCENTE
+// variante sem declarar `maxima` não quebra teste nenhum até alguém ler
+// dois epigramas seguidos em jogo.
+const gr75Furos = [];
+{
+  const POOLS = Object.entries(ABERTURAS_MONOLOGO).flatMap(([tipo, aberturas]) => {
+    const conjuntos = [[`${tipo}`, FECHOS_MONOLOGO[tipo]]];
+    if (tipo === 'erro_judiciario') conjuntos.push([`${tipo} (anônimo)`, FECHOS_ERRO_ANONIMOS_MONOLOGO]);
+    return conjuntos.map(([rotulo, fechos]) => ({ rotulo, aberturas, fechos }));
+  });
+  for (const { rotulo, aberturas, fechos } of POOLS) {
+    for (const a of aberturas) {
+      if (typeof a.maxima !== 'boolean') gr75Furos.push(`${rotulo}: abertura sem declaração de máxima`);
+    }
+    for (const f of fechos) {
+      if (typeof f.maxima !== 'boolean') gr75Furos.push(`${rotulo}: fecho sem declaração de máxima`);
+    }
+    // Toda abertura com máxima tem de deixar ao menos um fecho sóbrio no
+    // sorteio: sem candidato, o `monologo.js` cai no conjunto inteiro e o
+    // teto rompe-se em silêncio.
+    const sobrios = fechos.filter((f) => !f.maxima);
+    if (aberturas.some((a) => a.maxima) && sobrios.length === 0) {
+      gr75Furos.push(`${rotulo}: abertura com máxima sem fecho sóbrio disponível`);
+    }
+    // E nenhuma combinação que o sorteio possa produzir traz duas máximas.
+    for (const a of aberturas) {
+      for (const f of a.maxima ? sobrios : fechos) {
+        if (a.maxima && f.maxima) gr75Furos.push(`${rotulo}: duas máximas na mesma leitura`);
+      }
+    }
+  }
+  // A D25 está nos quatro desfechos, e nos dois pools do erro: a régua da
+  // assinatura pesa em todo fecho, e não só no que dá jeito.
+  const ASSINATURA = /Dr\. Abbot/;
+  for (const { rotulo, fechos } of POOLS) {
+    const comAssinatura = fechos.filter((f) => ASSINATURA.test(f.molde('Fulano de Tal')));
+    if (comAssinatura.length !== 1) {
+      gr75Furos.push(`${rotulo}: ${comAssinatura.length} variantes da D25 (esperado 1)`);
+    }
+  }
+}
+const gr75TetoMaximaOk = gr75Furos.length === 0;
+if (!gr75TetoMaximaOk) console.log('\nGR7-5 — teto de máxima / D25:', gr75Furos.join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5146,6 +5207,7 @@ const checagens = [
   ['GR7-2 (a cena não contorna o mural): montá-la não toca o veredicto, e a mesma mesa repete a mesma cena', gr72NaoContornaOk],
   [`GR7-3 (rebate só o que a mesa tem): toda intervenção cai com as cartas que exige e volta ao pé sem qualquer uma delas; mesa vazia roda curta (${INTERVENCOES_NOITE.length} gestos no catálogo)`, gr73SoAMesaOk],
   ['GR7-6 (a cena não chaveia no culpado): a função não recebe réu, e nenhum nome de suspeito entra na prosa da cena', gr76SemBitCulpadoOk],
+  ['GR7-5 (teto de máxima intacto): toda variante declara `maxima`, nenhuma combinação sorteável traz duas, e a D25 pesa uma vez em cada um dos quatro desfechos', gr75TetoMaximaOk],
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
 ];
