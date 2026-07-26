@@ -163,7 +163,7 @@ export default function MuralAcusacao() {
   if (sustentaComo.length === 0) lacunas.push('Nenhum sinal sustenta a causa.');
   if (!acusacao.reuId) lacunas.push('Falta nomear o réu.');
   if (sustentaPresenca.length === 0) lacunas.push('Nada põe o réu na cena.');
-  if (refutaHora.size === 0 && refutaAlibi.size === 0) lacunas.push('Nenhuma mentira confrontada.');
+  if (refutaHora.size === 0 && refutaAlibi.size === 0) lacunas.push('Nenhum depoimento contestado.');
   if (!acusacao.motivacaoId) lacunas.push('O móbil não foi apontado.');
   if (naoAcusados.some((sp) => !acusacao.juizos[sp.id])) lacunas.push('Há suspeitos sem juízo.');
   // "Inocente" com paradeiro por confrontar (P1 do playtest): há álibi do
@@ -216,13 +216,18 @@ export default function MuralAcusacao() {
     }
     if (id === 'mentiras') {
       // A Estação III também derruba o paradeiro do RÉU (refuta_alibi) — o
-      // rótulo conta as duas espécies de mentira, não só as de hora (P2).
+      // rótulo conta as duas espécies de contestação, não só as de hora (P2).
+      // OS-R8 §3.1: o resumo conta o que o BARBANTE do jogador estabeleceu, e
+      // ainda assim diz «contestada», não «mentira exposta» — a ligação pode
+      // estar errada (a Rota 2 do qa-ui liga errado e condena um inocente), e
+      // era o jogo a endossá-la antes do julgamento. É a mesma GR8-2 do
+      // título, provada pela lista de strings e não pela tela.
       const paradeirosReu = [...refutaAlibi.values()].filter(
         (v) => v.alibi.tagsOcultas.declaranteId === acusacao.reuId
       ).length;
       const partes = [];
-      if (refutaHora.size) partes.push(`${refutaHora.size} mentira(s) de hora exposta(s)`);
-      if (paradeirosReu) partes.push(`${paradeirosReu} paradeiro(s) desmentido(s)`);
+      if (refutaHora.size) partes.push(`${refutaHora.size} hora(s) contestada(s)`);
+      if (paradeirosReu) partes.push(`${paradeirosReu} paradeiro(s) contestado(s)`);
       return partes.length ? partes.join(' · ') : 'por concluir';
     }
     if (id === 'mobil') {

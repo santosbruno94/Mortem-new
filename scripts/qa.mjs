@@ -238,7 +238,8 @@ s().viajarPara('relojoaria'); // 0h — mesmo prédio
   (id) => s().extrairCarta(id)
 );
 s().viajarPara('relojoaria'); // 0h
-// OS-R5: o livro de pagamentos está no mesmo púlpito que o de ordens.
+// OS-R5: o livro de pagamentos está na mesma escrivaninha que o de ordens
+// (o ponto chamava-se «púlpito» até a OS-R8 §3.2).
 ['ev_livro_ordens', 'ev_livro_pagamentos', 'ev_estojo_buril'].forEach((id) => s().extrairCarta(id));
 medirEntrada('Metódico', 'dialogo_davey'); // a oficina é a sala do aprendiz
 ['dep_habito_corda', 'alibi_davey'].forEach((id) => s().extrairCarta(id));
@@ -5075,12 +5076,61 @@ if (!gr75TetoMaximaOk) console.log('\nGR7-5 — teto de máxima / D25:', gr75Fur
 // decisão da R6, não sobra. O caso-escola sai desta OS com os mesmos 42 —
 // 41 em `cartas.js` mais a carta de algor que a medição de temperatura
 // gera — e nenhuma intervenção cita carta fora do catálogo.
-const CATALOGO_R7 = CARTAS.length + 1;
+// OS-R8 · Fase 4: a guarda passou a ser a ÚNICA do teto de cartas (a GR4-1 era
+// implicada por esta), e por isso conta e cobra pela MESMA variável — o rótulo
+// imprimia `cartasEmJogo`/`TETO_CARTAS` enquanto a asserção usava um segundo
+// nome para o mesmo número, e era assim que uma OS futura consertaria um e não
+// o outro (achado do `fiscal-continuidade` no pipeline).
+const CATALOGO_R7 = cartasEmJogo;
 const gr77Furos = [];
 if (CATALOGO_R7 !== 42) gr77Furos.push(`o catálogo saiu de 42 para ${CATALOGO_R7}`);
-if (CATALOGO_R7 > 46) gr77Furos.push('o teto da G11 (46) foi rompido');
+// O pino de 42 é desta era; o teto da G11 é permanente. No dia em que uma OS
+// gastar carta com ata, é a segunda perna que continua a segurar o mural.
+if (CATALOGO_R7 > TETO_CARTAS) gr77Furos.push(`o teto da G11 (${TETO_CARTAS}) foi rompido`);
 const gr77TetoCartasOk = gr77Furos.length === 0;
 if (!gr77TetoCartasOk) console.log('\nGR7-7 — teto de cartas:', gr77Furos.join(' · '));
+
+// ============================================================
+// OS-R8 · FASE 1 — NENHUM RÓTULO CONCLUI PELO JOGADOR (GR8-2).
+// ============================================================
+// A OS pede esta guarda «provada por LISTA DE STRINGS, não por leitura de
+// tela» — e a razão de a querer automática apareceu na primeira passada do
+// pipeline: a Fase 1 trocou o título da Estação III e o rótulo da revisão, e
+// DEIXOU três strings do mesmo defeito («Nenhuma mentira confrontada.», «N
+// mentira(s) de hora exposta(s)», «N paradeiro(s) desmentido(s)») a dizer o
+// contrário, na mesma tela. Uma lista feita à mão erra assim; um `grep` não.
+//
+// O que se proíbe: o vocabulário de VEREDICTO nos rótulos do mural. A gaveta
+// contém alegações — as verdadeiras junto das falsas —, e quem julga é o
+// desfecho. Vale para as strings visíveis; ids internos (`mentiras`,
+// `EstacaoMentiras`, `fontesMentiras`) são do motor, que não lê rótulo.
+//
+// Fora do mural a palavra é legítima e não se toca: no monólogo e no epílogo
+// o perito fala DEPOIS do julgamento, e ali uma mentira provada é uma
+// mentira.
+const ARQUIVOS_MURAL = [
+  'components/MuralAcusacao.jsx',
+  'components/mural/Estacoes.jsx',
+  'components/mural/RevisaoFinal.jsx',
+  'components/mural/MesaLigacao.jsx',
+  'components/mural/EstacaoCorpo.jsx',
+].filter((f) => existsSync(path.join(raizSrc, f)));
+const VEREDICTO_NO_ROTULO = /mentira|desmentid|forjad|culpad[oa]\b/i;
+const gr82Furos = [];
+for (const arquivo of ARQUIVOS_MURAL) {
+  const fonte = semComentarios(readFileSync(path.join(raizSrc, arquivo), 'utf8'));
+  // Só as literais de texto visível: strings entre aspas/backtick que contenham
+  // espaço (um id não tem) — é a heurística que separa rótulo de identificador.
+  for (const m of fonte.matchAll(/(['"`])((?:[^'"`\\\n]|\\.){4,}?)\1/g)) {
+    const literal = m[2];
+    if (!/\s/.test(literal)) continue;
+    if (VEREDICTO_NO_ROTULO.test(literal)) {
+      gr82Furos.push(`${arquivo}: «${literal.slice(0, 56)}»`);
+    }
+  }
+}
+const gr82RotuloNaoConcluiOk = gr82Furos.length === 0;
+if (!gr82RotuloNaoConcluiOk) console.log('\nGR8-2 — rótulo que conclui pelo jogador:', gr82Furos.join(' · '));
 
 // ============================================================
 // OS-R8 · FASE 3 — A RUBRICA QUE SE LÊ DUAS VEZES (GR8-4).
@@ -5287,13 +5337,17 @@ const checagens = [
   ['GR7-6 (a cena não chaveia no culpado): a função não recebe réu, e nenhum nome de suspeito entra na prosa da cena', gr76SemBitCulpadoOk],
   ['GR7-5 (teto de máxima intacto): toda variante declara `maxima`, nenhuma combinação sorteável traz duas, e a D25 pesa uma vez em cada um dos quatro desfechos', gr75TetoMaximaOk],
   [
-    `GR7-7 (teto de cartas, e a conta que a OS seguinte lê antes de gastar): ${cartasEmJogo} de ${TETO_CARTAS} em jogo (catálogo + ev_algor), ${
-      TETO_CARTAS - cartasEmJogo
+    `GR7-7 (teto de cartas, e a conta que a OS seguinte lê antes de gastar): ${CATALOGO_R7} de ${TETO_CARTAS} em jogo (catálogo + ev_algor), ${
+      TETO_CARTAS - CATALOGO_R7
     } livres; o número é o final da R6, e as intervenções só citam cartas que já existiam`,
     gr77TetoCartasOk,
   ],
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
+  [
+    `GR8-2 (nenhum rótulo conclui pelo jogador): ${ARQUIVOS_MURAL.length} arquivos do mural varridos por lista de strings — nenhum rótulo visível diz «mentira», «desmentido» nem «culpado»; a gaveta nomeia o que contém, e quem julga é o desfecho`,
+    gr82RotuloNaoConcluiOk,
+  ],
   ['GR8-4 (a rubrica não se lê duas vezes): nenhuma frase de narração se repete verbatim entre beats da mesma árvore; nós do mesmo beat são alternativas, e o paradeiro sai igual em todo tom (G4)', gr84RubricaUnicaOk],
 ];
 console.log('\n=== Critério de validação ===');

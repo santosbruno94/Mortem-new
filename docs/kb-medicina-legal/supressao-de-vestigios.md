@@ -187,8 +187,14 @@ o miolo, que não chega à temperatura de ignição, e a camada de carvão que s
 sobe ainda mais essa temperatura: um livro-razão grosso atirado à grelha carboniza pelas
 bordas e **sobrevive como bloco, com o miolo legível**. Quem quer destruir um registro numa
 lareira doméstica tem de o **desmanchar e alimentá-lo ao fogo aos punhados**, ao longo de uma
-hora ou mais. Isso importa duas vezes: pela física, e porque destruição demorada é gesto
-deliberado — não é o gesto de quem entra em pânico.
+hora ou mais. Quem para antes do fim não salva o registro: deixa-o ilegível e deixa a
+**carcaça inteira** — ver o leito de cinzas alto, abaixo.
+
+**A marca de deliberação não é o relógio: é o desmanche.** Quem entra em pânico atira o livro
+fechado à grelha, e o livro fechado sobrevive. Quem o desmancha — arranca as pastas, rompe a
+costura, separa os cadernos — decidiu antes de acender, e o gesto leva minutos de trabalho
+com as duas mãos. A inferência mora aqui, e não na duração: a queima pode ser interrompida
+sem deixar de ser deliberada.
 
 **O que sobrevive.** A mesma lição das roupas queimadas, com outro objeto: *o que a cinza
 guarda é a identidade da peça*. Aqui a prova não está nas folhas, que ardem. Está na
@@ -200,11 +206,23 @@ guarda é a identidade da peça*. Aqui a prova não está nas folhas, que ardem.
   justifica**, e deixa-o desde os primeiros punhados. Quem raspa a grelha vê isso antes de
   ver qualquer outra coisa. O **sinal de ter sido atiçada repetidas vezes** é sinal
   acessório, e de outra coisa: de queima **levada até o fim**.
-  *(Emenda de 26/07/2026, OS-R8 §3.4-bis.* A redação anterior ancorava o tell em «alimentado
-  ao fogo por uma hora» e no atiçamento — e assim deixava de cobrir a queima **interrompida**,
-  que é o que o caso-escola passou a declarar. A física corre a favor: fogo sobrecarregado
-  de carga abafa, carboniza sem consumir, e o que não se consome não colapsa em cinza fina.
-  O leito interrompido é, portanto, **mais** volumoso que o completo — e não menos.*)
+
+- **O leito interrompido, e por que ele é o MAIOR.** À **mesma massa entregue ao fogo**, a
+  queima interrompida deixa leito mais volumoso que a completa — não menos. Fogo
+  sobrecarregado de carga abafa: carboniza sem consumir, e o que não se consome não colapsa
+  em cinza fina. A folha carbonizada guarda a **geometria da folha** e empilha-se com ar
+  entre as lâminas; a folha consumida entrega um floco mineral. Daí o discriminante, que é
+  de **composição** antes de ser de altura: leito completo é pálido, mineral, em escamas de
+  pluma; leito interrompido é **negro, laminar, com carcaça reconhecível**. E a interrupção
+  não se desfaz durante a noite — apagada a chama, a brasa só avança onde o ar chega, e carga
+  densa sob leito abafado extingue-se sozinha.
+  **Corolário que o perito tem de perseguir:** o que se interrompeu foi o **consumo**, não a
+  carbonização — a carga abafada enegrece por inteiro sob o próprio peso. Mas a folha que
+  escapou ao leito não vem carbonizada: vem **tostada**, castanha, retraída nas bordas — e
+  essa **lê-se a olho nu**. Procurá-la é obrigação, e é o gesto que a queima interrompida
+  acrescenta ao exame: bordas frias do leito, sob a grelha, na cinza da pá, atrás do
+  guarda-fogo. Achá-la é achar o registro; não achá-la é o que autoriza dizer que não se lê
+  nada.
 
 - **As folhas.** O papel de livro de contas é de trapo ou de polpa carregada de **caulim**,
   amido e cola. A parte orgânica queima; a mineral fica, e dá uma **cinza pálida, leve, em
@@ -247,9 +265,14 @@ Muda o objeto; o método é o que já está escrito.
 
 **O limite de 1893, e aqui a honestidade vale mais que o resultado.**
 
-- **Não se lê nada.** Nem uma palavra, nem um algarismo, nem uma data, nem uma inicial, nem a
-  letra de alguém. A decifração de documentos carbonizados é ciência da Segunda Guerra em
-  diante — o marco fotográfico é de **1941**.
+- **Não se lê nada — do papel PLENAMENTE CARBONIZADO.** Nem uma palavra, nem um algarismo,
+  nem uma data, nem uma inicial, nem a letra de alguém. A decifração de documentos
+  carbonizados é ciência da Segunda Guerra em diante — o marco fotográfico é de **1941**.
+  **O limite é da carbonização, não do fogo:** a folha apenas **tostada** — castanha,
+  retraída, com a tinta ainda escura sobre o fundo escurecido — lê-se sem instrumento
+  nenhum, e é o que uma queima interrompida deixa nas bordas frias (ver o leito interrompido,
+  acima). Um dossiê que se apoie na ilegibilidade tem de dizer, primeiro, que a busca do
+  fragmento tostado foi feita e saiu vazia.
 - **O que a luz rasante chega a dar é geometria.** Sobre a escama negra pode aparecer um
   **brilho de linhas regulares e paralelas**: isso autoriza dizer que o papel era **pautado**
   — logo, de livro de contas, e não carta nem embrulho. E entre as pautas, **marcas
@@ -283,12 +306,30 @@ Muda o objeto; o método é o que já está escrito.
 
 **Vocabulário de época.** *Grelha*, *leito de cinzas*, *escama*, *carbonizado*, *calcinado*,
 *crivo*, *lombada*, *lombo de mola*, *pasta* (a capa), *guardas*, *caderno* (o fascículo
-costurado), *papel de razão*, *tinta ferro-galhada*, *luz rasante*.
+costurado), *papel de razão*, *tinta ferro-galhada*, *luz rasante*, *tostado* (o que não
+chegou a carbonizar).
 
 **No jogo.** É o lastro da carta `ev_cinza_livro` do caso-escola (OS-R4): o Livro I do
-relojoeiro arde na grelha do escritório, e a carta acusa **a destruição** sem dizer uma
-palavra do que o livro registava — porque não há como dizê-la. A fome do que ardeu é o que
-manda o jogador atrás do segundo livro.
+relojoeiro **arde e não se consome** na grelha do escritório, e a carta acusa **a destruição**
+sem dizer uma palavra do que o livro registava — porque não há como dizê-la. A fome do que
+ardeu é o que manda o jogador atrás do segundo livro.
+
+**Emenda de 26/07/2026 (OS-R8 §3.4-bis), e o que a obrigou.** O utilizador decidiu, no fecho
+da OS-R7, que a queima do Livro I foi **interrompida** — o fogo não chegou ao fim do que lhe
+deram —, para fechar em prosa a divergência entre a hora do sineiro (~45 min de janela) e a
+«hora ou mais» que este dossiê pede para a destruição completa. Três consertos vieram atrás,
+e nenhum move número nenhum:
+
+1. **O leito de cinzas alto deixou de estar ancorado na duração.** Ele mede a massa que
+   entrou na grelha; o atiçamento repetido desceu a sinal acessório, de queima levada ao fim.
+2. **A deliberação mudou de lugar.** Estava no relógio («destruição demorada é gesto
+   deliberado»), que a interrupção tirou de baixo dela; passou para o **desmanche**, que é
+   onde sempre pertenceu — e onde a física já a exigia.
+3. **A ilegibilidade ganhou a sua condição.** «Não se lê nada» vale para o papel plenamente
+   carbonizado; a queima interrompida abre a porta ao fragmento **tostado**, que se lê a olho
+   nu. O dossiê passa a mandar procurá-lo, e é por não o achar que a carta pode afirmar o que
+   afirma. *(Achado do `perito-forense` no pipeline da R8 — a emenda 1, sozinha, tinha aberto
+   este furo.)*
 
 ---
 

@@ -1,6 +1,7 @@
 # MORTEM — Status das Pendências (o que falta)
 
-**Atualizado em:** 19 de julho de 2026
+**Atualizado em:** 26 de julho de 2026 (fecho da OS-R8: itens 11 e 14 fechados, item 10
+re-roteado para lote de UI)
 **Branch da revisão:** `claude/pendencias-documento-86thrt`
 **Fonte:** documento *"MORTEM — Pendências de Revisão do Usuário"* (varredura de 19/07/2026),
 cruzado com o estado real do código nesta data.
@@ -48,11 +49,11 @@ Relatório versionado: [`docs/playtest/2026-07-19-conclusoes-humanas.md`](./play
 
 | # | Item | Trilha |
 |---|---|---|
-| 10 | Carta amassada do sobrinho: opção de ler a transcrição | ⏭️ **OS-R8** (passe editorial) |
+| 10 | Carta amassada do sobrinho: opção de ler a transcrição | ⏭️ **Lote de UI** — triado para fora da R8 em 26/07/2026: a S2 aprovou-o como «lote pequeno de UI» (QOL de leitura, não fair play), e exige componente novo + prosa nova de transcrição. Num passe de acabamento seria feature sem ordem expressa |
 | 12 | Vidro na dobra da calça de Silas dá a pista máxima → repensar | ⏭️ **Calibração, não decisão** — triado em 26/07/2026 (ver abaixo) |
-| 14 | Mural: cartas de "mentiras" já rotuladas → repensar | ⏭️ **OS-R8** — triado em 26/07/2026: são **três strings**, não desenho (ver abaixo) |
+| 14 | Mural: cartas de "mentiras" já rotuladas → repensar | ✅ **Feito (OS-R8, Fase 1)**: `III · As Mentiras / depoimentos desmentidos` → `III · Os Depoimentos / hora e paradeiro declarados`; na revisão final, `Mentiras` → `Contestados`, e a mesma relação deixou de ser «desmentida» nas duas linhas da tela. O motor nunca vazou nada — era o nome da gaveta |
 | 16 | Móbil ligado ao réu; cada suspeito com um móbil | ✅ **Feito (OS-R5)**: a guarda `GR5-3` exige carta de móbil por suspeito, réu e periféricos, e reprova sozinha se faltar. A `GR5-4` acrescenta a paridade (o réu não é o máximo em motivos distintos) e a `GR5-6`, a isca honesta |
-| 11 | Diálogos: exposição contida no próprio diálogo | ⏭️ **OS-R8** (passe editorial) |
+| 11 | Diálogos: exposição contida no próprio diálogo | ✅ **Satisfeito, verificado na OS-R8**: executado na S1 (19/07) sobre o derivador — o `textoDisplay` das cartas de álibi deixou o título opaco e passou a carregar lugar + faixa, **espelhando o idioma que o caso-escola já tinha** (`Recolhido à Estalagem às Oito`). Nada a fazer no caso-escola; fecha por verificação |
 | 8 | Mapa: cômodos de um local → planta única navegável | ✅ Feito (OS Vila Viva E1): planta generalizada (`Planta.jsx`) desenha a planta gerada do prédio na cena procedural; clicar o cômodo abre o ponto e o cômodo aberto realça. Fallback textual em `?flat=1`/sem planta |
 | 9 | Silas e o aprendiz saem da cena após a polícia cercar | 🗄️ **Arquivado em 26/07/2026** (ver abaixo) |
 | 1 | Refazer a abertura | ✅ Feito (S3, prosa) |
@@ -87,6 +88,13 @@ O que vaza é **o nome da gaveta**, e são três strings:
 **é**, não o que ela conclui — no espírito do pilar nº 2 («o jogo nunca entrega conclusões»).
 O `qa-ui` **não** clica nenhuma das três, então o custo é um commit pequeno; ainda assim,
 conferir antes de mexer, porque é a regra do `CLAUDE.md`.
+
+**✅ Feito na OS-R8, Fase 1 (26/07/2026).** `III · Os Depoimentos` / `hora e paradeiro
+declarados`, e `Contestados` na revisão final. A conferência foi feita por leitura e confirmou
+o que esta triagem supunha: nenhuma das três está no contrato do QA. O que ela **não** supunha,
+e a Fase 0 mediu: as vizinhas estão — `IV · O Móbil` é cobrado em `qa-ui.mjs:851`, e
+`paradeiro(s) desmentido(s)` (o resumo recolhido, que fica e é honesto porque conta o que o
+barbante do jogador estabeleceu) em `qa-ui.mjs:717`.
 
 ### Item 12 — é calibração, e não se arbitra antes de medir
 

@@ -1,6 +1,7 @@
 # MORTEM — Plano de sessões (rota de trabalho)
 
-**Atualizado em:** 25 de julho de 2026
+**Atualizado em:** 26 de julho de 2026 (fecho da OS-R8 — a reforma do caso-escola encerrada,
+e a frente SG aberta no lugar dela)
 **Marco de referência:** merge da PR #70 (`0f6b369`) — revisão de pendências + quick wins
 do playtest humano de 19/07/2026.
 
@@ -308,11 +309,13 @@ detalhar antes).
   a luta + ruído honesto nos inocentes). **Plano pronto em `docs/os-exigir-que-mostre.md`**
   (design, escopo, decisões abertas, critério de pronto); gatilho: ordem expressa.
 
-### SR — A reforma do caso-escola *(frente ativa desde 25/07/2026)*
+### SR — A reforma do caso-escola *(frente **FECHADA** em 26/07/2026, com a ata da R8)*
 
 Registrada aqui em 25/07/2026, no fecho da OS-R5: esta frente abriu **depois** da última
 atualização deste plano e correu cinco sessões sem constar dele, contra a regra de
-manutenção do topo. Fica corrigido.
+manutenção do topo. Ficou corrigido — e agora fica **encerrada**: as oito OS têm ata, e a
+da R8 traz o balanço das oito. O que sai desta frente e continua vivo é a **OS-R9**, que já
+não é reforma: é o gerador a herdar os padrões que o tutorial provou.
 
 - **Objetivo:** reformar «A Hora Emprestada» em oito OS sequenciais, sem tocar na cadeia
   física do crime, e extrair da reforma os padrões que o gerador vai herdar.
@@ -334,23 +337,29 @@ manutenção do topo. Fica corrigido.
 | 5.º | R5 — Móbeis e cartas | ✅ fechada (25/07/2026) |
 | 6.º | R6 — Exposição e interrogatórios | ✅ fechada (26/07/2026) — os sete martelos saíram nas recomendações |
 | 7.º | R7 — A reconstituição | ✅ fechada (26/07/2026) — os três martelos estavam fechados de antemão e a sessão correu do arranque à ata sem parar |
-| 8.º | R8 — Passe editorial e QA de fecho | **escrita e por executar** — [`os-r8-passe-editorial.md`](./os-r8-passe-editorial.md), com a fila triada item a item; prompt em [`os-r8-prompt-de-arranque.md`](./os-r8-prompt-de-arranque.md). **Um só ponto de decisão**, e cabe numa linha |
-| — | R9 — O gerador herda os padrões | fora da reforma; fila registrada nas atas |
+| 8.º | R8 — Passe editorial e QA de fecho | ✅ **fechada (26/07/2026)** — abriu com o §5 vazio, correu do arranque à ata sem consultar, e **fecha a reforma**. Inventário da Fase 0 em [`os-r8-fase-0-inventario.md`](./os-r8-fase-0-inventario.md) |
+| — | R9 — O gerador herda os padrões | **escrita e por executar**, e já **fora da reforma** — [`os-r9-gerador-herda-os-padroes.md`](./os-r9-gerador-herda-os-padroes.md), com a fila medida item a item; prompt em [`os-r9-prompt-de-arranque.md`](./os-r9-prompt-de-arranque.md). **Três pontos de decisão**, todos com recomendação |
 
 - **Orçamento de cartas (G11, teto 46):** **42 em jogo, 4 livres — e é o número final.**
   A R6 era a última OS que podia gastar, e gastou **zero**: o martelo (f) aceitou o saldo 4
   como decisão, não como sobra. A R7 está proibida pela G9, a R8 é editorial e a R9 é do
   gerador; **não há mais quem gaste**, e o caso-escola fecha assim.
-- **Próxima sessão desta frente:** executar a **R8** pelo prompt de arranque, e ela **fecha
-  a reforma**. **Não há pergunta a recolher** — é a primeira OS da reforma a abrir com o §5
-  vazio. As quatro divergências que a R7 registou foram marteladas em 26/07/2026 e as três
-  executáveis foram feitas no fecho dela.
-- **Fila da R8, triada e agora completa:** o púlpito de cortiça da R5; o rename da Estação
-  III do mural (item 14 — três strings identificadas, não é redesenho); os itens 10 e 11 do
-  playtest; os dois não-bloqueantes do pipeline da R6; o **«vinco das nervuras»** de
-  `ev_cinza_livro`; o **«antes do meio-dia»** da bíblia de vozes; e o **QA de fecho** (a
-  única fase da reforma que pode REMOVER guarda, e só com justificação na ata). O
-  `interrogatorio_silas` **não** se normaliza — martelado.
+- **Próxima sessão desta frente: não há.** A frente fechou. A sessão seguinte é da **R9**,
+  pelo prompt de arranque dela, e é mudança de frente: sai do caso-escola e entra no
+  gerador. **Três decisões a recolher no arranque**, todas com recomendação escrita.
+- **O que a R8 entregou:** os três rótulos da Estação III que concluíam pelo jogador (a
+  gaveta passou a dizer o que CONTÉM); o púlpito de cortiça, que era o da igreja e virou a
+  escrivaninha alta que a KB atesta; **oito** rubricas repetidas verbatim — a fila dizia uma,
+  e a **GR8-4**, escrita como guarda em vez de lida como achado, mediu oito; a colisão do
+  lume na abertura do interrogatório; o «vinco das nervuras» corrigido **aos pares** (carta e
+  gesto) e a emenda à KB que o desacopla da duração da queima; o «ao meio-dia» da bíblia; e
+  o **QA de fecho**, com duas guardas removidas e justificadas e duas tornadas honestas. O
+  `interrogatorio_silas` **não** se normalizou — martelado.
+- **Triado para fora do passe editorial pela R8:** o **item 10** do playtest (ler a
+  transcrição completa da carta amassada) é **lote de UI**, não acabamento — a S2 já o tinha
+  aprovado assim; o **item 11** já estava **satisfeito** desde a S1, e fecha por verificação;
+  a sala da **`porta_beco`** custa prosa nova, sala clicável e contrato de `qa-ui`, e é lote
+  do caso-escola.
 - **Executado no fecho da R7, a mando do utilizador (26/07/2026):** a divergência
   «carrilhão» **alinhada** no `MORTEM_CONTEXTO.md`; a janela de `ev_maquinismo` **blindada
   sem mover o número**; e a hora de queima do Livro I **resolvida em prosa** (o fogo não
@@ -364,6 +373,36 @@ manutenção do topo. Fica corrigido.
   chegam à reconstituição com **0 de 9** gestos rebatíveis — e o segundo **condena**. Medir
   se a cena curta se lê como consequência da própria colheita ou como defeito. É a única
   pergunta que a R7 deixou por responder de propósito.
+
+### SG — O gerador herda os padrões *(frente nova, aberta no fecho da R8)*
+
+Sucede a SR e **não é a SR**: a reforma tinha um caso à mão; esta tem 31 casos embarcados,
+155 árvores de diálogo e um banco que é **produto** (G12 — muda-se o gerador, corre-se
+`node scripts/gerar-casos.mjs`, e o `qa.mjs` cobra os dois arquivos por replay).
+
+- **Objetivo:** o gerador passar a produzir os padrões que o tutorial provou em oito OS.
+- **OS:** [`os-r9-gerador-herda-os-padroes.md`](./os-r9-gerador-herda-os-padroes.md); prompt
+  em [`os-r9-prompt-de-arranque.md`](./os-r9-prompt-de-arranque.md).
+- **A fila, medida contra a árvore (dez itens):** procedência (`apontadaPor`) — hoje só o
+  caso-escola a tem, e é por isso que a `contarVozes` da R7 trata alegação sem procedência
+  como voz própria; exposição E0/E1/E2 — **zero** ocorrências em `src/gerador/`; o veraz sem
+  crédito; o móbil por aritmética de livro; o degrau de confronto por contador autoral —
+  nenhuma árvore gerada tem `degraus`; as **intervenções da noite** — sem catálogo,
+  `montarReconstituicao` devolve `null` nos 31 casos, e destravá-lo arrasta a **dívida de
+  geografia** de `reconstituicao.js` no mesmo commit; o vestígio **durável** do instrumento
+  lavado (o coágulo sob a virola, que a KB documenta); as classes de **roupa queimada** e
+  **documento queimado**, que a KB tem e o gerador não; e a **GR8-4 no gerado**.
+- **A GR8-4 no gerado, já medida no fecho da R8:** 31 casos, 155 árvores, **11 casos com
+  repetição verbatim, 55 ocorrências — e uma frase só**, «Nada de nota.», todas em nós
+  `exigencia_*`. Fora dali o derivador varia as rubricas. **É decisão antes de ser trabalho:**
+  a resposta nula uniforme pode ser fair play, porque variar o «nada aqui» faria do estilo
+  um sinal.
+- **Mede-se em lote, nunca em leitura.** Nenhuma leitura cobre 31 casos; o molde é o das
+  guardas em banda que o `qa.mjs` já tem (GE2 em 40–60%, GE5 abaixo de 45%, regime-palco em
+  10–30%).
+- **Pronto quando:** `npm run verificar` verde, pipeline `revisar-prosa` com zero
+  bloqueantes **sobre amostra de lote**, replay byte a byte dos 31 casos e do índice leve, e
+  o caso-escola intocado (42 cartas, horas inalteradas).
 
 ### S5 — Balanceamento e OSs restantes
 

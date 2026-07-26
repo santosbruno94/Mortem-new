@@ -713,8 +713,11 @@ async function main() {
     await espera(page, 250);
     await concluirParte(page);
     // Onda 2 (P2): o rótulo da Estação III recolhida conta TAMBÉM o
-    // paradeiro do réu desmentido, não só as mentiras de hora.
-    checar('Onda 2: Estação III conta o paradeiro desmentido do réu', (await page.locator('body').innerText()).includes('paradeiro(s) desmentido(s)'));
+    // paradeiro do réu contestado, não só as horas.
+    // OS-R8 §3.1: a string mudou de «paradeiro(s) desmentido(s)» para
+    // «paradeiro(s) contestado(s)» — o vocabulário da estação inteira deixou
+    // de concluir pelo jogador, e o contrato acompanha no mesmo commit.
+    checar('Onda 2: Estação III conta o paradeiro contestado do réu', (await page.locator('body').innerText()).includes('paradeiro(s) contestado(s)'));
     await page.getByRole('button', { name: 'Consertos reclamados na coluna de S.C.' }).click();
     await concluirParte(page);
     // Juízos: Walter e Agnes inocentes com as mentiras expostas; Grey e

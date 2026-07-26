@@ -378,7 +378,7 @@ a **GR2-1**, prova a topologia nos dois sentidos: nenhuma carta aponta para loca
 sub-local que não exista, e nenhum sub-local **com carta** fica sem sala clicável na planta.
 No vertical slice têm pontos o **escritório** (a lareira, a escrivaninha), a **loja** (a
 vitrine e a porta do beco), a **copa** e a **oficina** (a prateleira de gravar, a escrivaninha
-alta, a gaveta funda, o aprendiz); o corpo (exame em prancha) e a saleta seguem em
+das ordens, a gaveta funda — e o aprendiz, que desde a Onda 6 é botão de diálogo, não ponto); o corpo (exame em prancha) e a saleta seguem em
 prosa contínua. Observação pura (guia §2): o ambiente descreve; quem estranha é o jogador.
 
 ### 5.2 As duas vistas da vila e o teatro da mesa

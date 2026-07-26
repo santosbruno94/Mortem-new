@@ -66,6 +66,16 @@
 // ortogonais de propósito, e a conversa desce sem voltar (o jogador vê um
 // tom só por partida). Escrever quatro cópias por nível seria repetir a
 // mesma peça para ninguém comparar.
+//
+// REGRA DE PROSA DO BEAT 3 (OS-R8, e a descoberta foi do pipeline). A fala
+// base de um nó com `alfinetada` NÃO leva rubrica de gesto. A alfinetada
+// imprime-se na MESMA tela, logo abaixo da fala, e é ELA o gesto que a
+// exposição paga: pôr um segundo gesto na prosa base ou contradiz o
+// primeiro — a xícara que arrefece contra a xícara «por servir» de E1, os
+// braços cruzados contra o botão «preso entre os dedos até o fim da
+// resposta» — ou gasta de graça o rendimento que o nível existia para
+// comprar. O beat 3 responde e para; quem quiser ver a compostura falhar
+// paga em cartas.
 // =====================================================================
 
 // As alfinetadas de cada um. Cada suspeito escorrega no seu próprio
@@ -184,7 +194,7 @@ export const DIALOGOS = {
       // lhe é próprio).
       abertura: {
         fala: [
-          'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.treatment}, {g:o senhor|a senhora} há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje acendi-o como sempre, e ninguém desceu."',
+          'Silas Crane recebe na saleta, o avental de couro dobrado sobre o braço. Traz chá sem que se peça e senta-se na beira da cadeira, as mãos quietas sobre os joelhos. "Com licença de dizer, {detective.treatment}, {g:o senhor|a senhora} há de perdoar a casa: doze anos de bancada ao lado do Sr. Arthurs e nunca a vi assim parada. Acendia eu o fogo mal abria a loja, e ele descia ao cheiro do carvão; hoje acendi o fogo como sempre, e ninguém desceu."',
         ],
         // rotuloVars: a redação da pergunta varia pela identidade do perito
         // (a intenção do tom é a mesma). Ver InterrogatorioDialogo.
@@ -280,7 +290,7 @@ export const DIALOGOS = {
       // sem nó novo. O rendimento é a `alfinetada`, que a exposição paga.
       b3_firme: {
         fala: [
-          '"Do que vivo." A xícara arrefece ao lado, sem que a toque. "Da bancada, como vivi até sexta. Há peça entregue por cobrar e peça por acabar; enquanto a casa não se resolver, é esse o serviço. O rapaz veio hoje de manhã, como vem sempre, e ficou comigo à porta."',
+          '"Do que vivo? Da bancada, como vivi até sexta. Há peça entregue por cobrar e peça por acabar; enquanto a casa não se resolver, é esse o serviço. O rapaz veio hoje de manhã, como vem sempre, e ficou comigo à porta."',
         ],
         alfinetada: ALFINETADA_SILAS,
         opcoes: [],
@@ -301,7 +311,7 @@ export const DIALOGOS = {
       },
       b3_obliquo: {
         fala: [
-          '"Reabrir depende de quem manda, e quem manda já chegou sem mandar nada." Continua na beira da cadeira, sem tocar no espaldar. "Por mim, abria na segunda: freguês que deixou peça não tem culpa do que houve. Mas casa de defunto tem os seus dias."',
+          '"Reabrir depende de quem manda, e quem manda já chegou sem mandar nada. Por mim, abria na segunda: freguês que deixou peça não tem culpa do que houve. Mas casa de defunto tem os seus dias."',
         ],
         alfinetada: ALFINETADA_SILAS,
         opcoes: [],
@@ -330,7 +340,7 @@ export const DIALOGOS = {
       },
       evasiva: {
         fala: [
-          'Silas Crane inclina-se sobre a mesa o bastante para ver, e torna ao espaldar. "Com licença de dizer, {detective.treatment}, a minha parte é corda e mola; o que isso valha, sabe a perícia." Deixa passar um instante antes do resto. "O que eu penso, já disse: gente da estrada, atrás do caixa."',
+          'Silas Crane inclina-se sobre a mesa o bastante para ver, e torna ao espaldar. "Com licença de dizer, {detective.treatment}, a minha parte é corda e mola; o que isso valha, sabe a perícia. O que eu penso, já disse: gente da estrada, atrás do caixa."',
         ],
         opcoes: [],
       },
@@ -607,14 +617,14 @@ export const DIALOGOS = {
       // o que a bíblia de vozes diz dele desde sempre.
       b3_firme: {
         fala: [
-          '"Cobro do espólio, que é o que a lei me deixa." Muda o pé de apoio, e a saca vai com ele. "Quatro libras e dez xelins não morreram com ele. Quando houver quem responda pelos bens, é a esse que eu cobro."',
+          '"Cobro do espólio, que é o que a lei me deixa." Passa o peso ao outro pé, e a saca acompanha. "Quatro libras e dez xelins não morreram com ele. Quando houver quem responda pelos bens, é a esse que eu cobro."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
       },
       b3_cordial: {
         fala: [
-          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe." Atrás dele a mó troca de compasso. "E custou o relógio do meu pai, que não voltou nem inteiro nem pesado."',
+          '"Custou o dia da lavratura e o caminho até a casa do Wycliffe. E custou o relógio do meu pai, que não voltou nem inteiro nem pesado."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
@@ -628,7 +638,7 @@ export const DIALOGOS = {
       },
       b3_obliquo: {
         fala: [
-          '"Na vila, ninguém. Pesava ele, e a balança é dele." Olha a estrada, para além da rampa. "Para pesar como se deve, é o ourives de Moorford, e Moorford é hora e meia de estrada. Faço o caminho no dia em que me disserem que aquela balança está livre."',
+          '"Na vila, ninguém. Pesava ele, e a balança é dele. Para pesar como se deve, é o ourives de Moorford, e Moorford é hora e meia de estrada. Faço o caminho no dia em que me disserem que aquela balança está livre."',
         ],
         alfinetada: ALFINETADA_GREY,
         opcoes: [],
@@ -742,7 +752,7 @@ export const DIALOGOS = {
       // que responde ao que ninguém perguntou).
       b2_firme: {
         fala: [
-          '"O que a morte me traz? Trabalho e credores, {detective.treatment}, na ordem que quiser." Fica de pé onde está, sem se encostar. "Herdeiro único, sim; e o que herdo é uma loja lacrada, um inventário e juízo pela frente. Se isso me faz réu aos seus olhos, faça a conta inteira, que a minha lista de credores é mais longa do que qualquer herança."',
+          '"O que a morte me traz? Trabalho e credores, {detective.treatment}, na ordem que quiser. Herdeiro único, sim; e o que herdo é uma loja lacrada, um inventário e juízo pela frente. Se isso me faz réu aos seus olhos, faça a conta inteira, que a minha lista de credores é mais longa do que qualquer herança."',
         ],
         opcoes: OPCOES_B3_WALTER,
       },
@@ -770,21 +780,21 @@ export const DIALOGOS = {
       // voz, e ela encolhe.
       b3_firme: {
         fala: [
-          '"Vendo." Cruza os braços e não os desfaz até acabar. "Vendo a loja, vendo a casa, pago o que devo e fico com o que sobrar. Não tenho mão para relógio nem paciência para bancada, e nunca fingi que tinha."',
+          '"Vendo. Vendo a loja, vendo a casa, pago o que devo e fico com o que sobrar. Não tenho mão para relógio nem paciência para bancada, e nunca fingi que tinha."',
         ],
         alfinetada: ALFINETADA_WALTER,
         opcoes: [],
       },
       b3_cordial: {
         fala: [
-          '"Tenho Moorford, e em Moorford tenho um armazém em juízo." Endireita o colarinho com dois dedos. "Meu tio me recolheu quando meu pai morreu. Agora não há quem recolha, e aos quarenta e quatro anos é que vou aprender a coisa."',
+          '"Tenho Moorford, e em Moorford tenho um armazém em juízo. Meu tio me recolheu quando meu pai morreu. Agora não há quem recolha, e aos quarenta e quatro anos é que vou aprender a coisa."',
         ],
         alfinetada: ALFINETADA_WALTER,
         opcoes: [],
       },
       b3_tecnico: {
         fala: [
-          '"Não esperam. Nunca esperaram." Bate a unha na madeira a cada prazo que diz. "Testamento a provar leva meses, e casa não se vende sem papel provado; a minha letra mais próxima vence antes do Natal. Hei de pedir prazo com papel de procurador na mão, e é o papel que o credor lê, não a minha cara."',
+          '"Não esperam. Nunca esperaram. Testamento a provar leva meses, e casa não se vende sem papel provado; a minha letra mais próxima vence antes do Natal. Hei de pedir prazo com papel de procurador na mão, e é o papel que o credor lê, não a minha cara."',
         ],
         alfinetada: ALFINETADA_WALTER,
         opcoes: [],

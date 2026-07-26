@@ -115,6 +115,12 @@ no confronto herda a decisão do item 16; a deflexão de P23 herda a de P9). D �
     neutro até ele provar a mentira. **É a mais fiel ao KB.** Custo: revisar rótulos e o
     contrato do `qa-ui` (o texto `III · As Mentiras` e os rótulos de estação são clicados
     pelo QA — atualizar no mesmo commit se mudarem).
+    > **Emenda de 26/07/2026 (OS-R8, Fase 0): esta última parênteses era FALSA, e custou
+    > caro.** Nenhuma asserção do `qa-ui` lia `III · As Mentiras` nem qualquer rótulo de
+    > estação; o que ele cobra é `IV · O Móbil` (mural reaberto na pendência) e a string do
+    > resumo recolhido. A frase fez o item 14 parecer caro em **três** OS seguidas, e o custo
+    > real foi de três strings. Medir o contrato por leitura, e não por memória, é
+    > precisamente o que a Fase 0 da R8 existiu para fazer.
   - **B) Rótulo neutro** — "depoimento" / "declaração de paradeiro" no lugar de "mentira";
     a natureza (verdade ou mentira) só emerge da ligação. Custo médio.
   - **C) Manter** — aceitar que o mural pré-classifica. Custo: zero, mas conflita com §7.
