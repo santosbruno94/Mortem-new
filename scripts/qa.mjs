@@ -5071,6 +5071,58 @@ if (CATALOGO_R7 > 46) gr77Furos.push('o teto da G11 (46) foi rompido');
 const gr77TetoCartasOk = gr77Furos.length === 0;
 if (!gr77TetoCartasOk) console.log('\nGR7-7 — teto de cartas:', gr77Furos.join(' · '));
 
+// ============================================================
+// OS-R8 · FASE 3 — A RUBRICA QUE SE LÊ DUAS VEZES (GR8-4).
+// ============================================================
+// Anti-padrão nº 6: rubrica repetida verbatim denuncia gerador. A guarda mede
+// a NARRAÇÃO (o que está fora das aspas) de cada nó e reprova a mesma frase em
+// dois nós da mesma árvore.
+//
+// A exceção é de desenho, não de conveniência: dois nós do MESMO beat são
+// alternativas mutuamente exclusivas (o jogador desce um beat por vez), e que
+// o paradeiro saia com a mesma redação em qualquer tom é o que a G4 exige — o
+// tom é cor, nunca chave. Cobrar repetição entre `b1_firme` e `b1_obliquo`
+// seria cobrar o contrário do fair play. Entre beats diferentes — e entre um
+// beat e um confronto, que corre por canal lateral na mesma sessão — a
+// repetição É legível numa trilha só, e é essa que a guarda apanha.
+//
+// A guarda é ESTRITA (verbatim). Variantes próximas de um mesmo gesto ficam
+// para o olho do pipeline: as mãos quietas de Silas e a saca de Grey são
+// adereços de personagem, e uma guarda difusa reprovaria a caracterização
+// junto com o vício.
+const beatDoNo = (nome) => {
+  const m = /^b(\d)_/.exec(nome);
+  return m ? `beat${m[1]}` : `avulso:${nome}`; // confrontos/evasiva: cada um é o seu
+};
+const narracaoDaFala = (texto) =>
+  texto
+    .replace(/[“"][^”"]*[”"]/g, ' ') // fora as falas entre aspas
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 12);
+const gr84Furos = [];
+for (const [arvoreId, arvore] of Object.entries(DIALOGOS)) {
+  const ondeApareceu = new Map(); // frase → [{ no, beat }]
+  for (const [nomeNo, no] of Object.entries(arvore.nos || {})) {
+    const falas = [...(no.fala || []), ...(no.degraus || []).flatMap((d) => d.fala || [])];
+    for (const fala of falas) {
+      for (const frase of narracaoDaFala(fala)) {
+        const chave = frase.toLowerCase().replace(/\s+/g, ' ');
+        if (!ondeApareceu.has(chave)) ondeApareceu.set(chave, []);
+        ondeApareceu.get(chave).push({ no: nomeNo, beat: beatDoNo(nomeNo) });
+      }
+    }
+  }
+  for (const [frase, sitios] of ondeApareceu) {
+    const beats = new Set(sitios.map((s) => s.beat));
+    if (beats.size > 1) {
+      gr84Furos.push(`${arvoreId}: «${frase.slice(0, 46)}…» em ${sitios.map((s) => s.no).join(' + ')}`);
+    }
+  }
+}
+const gr84RubricaUnicaOk = gr84Furos.length === 0;
+if (!gr84RubricaUnicaOk) console.log('\nGR8-4 — rubrica repetida:', gr84Furos.join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5223,6 +5275,7 @@ const checagens = [
   [`GR7-7 (teto de cartas): a R7 não gasta — o caso-escola sai com ${CATALOGO_R7} de 46, e as intervenções só citam cartas que já existiam`, gr77TetoCartasOk],
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
+  ['GR8-4 (a rubrica não se lê duas vezes): nenhuma frase de narração se repete verbatim entre beats da mesma árvore; nós do mesmo beat são alternativas, e o paradeiro sai igual em todo tom (G4)', gr84RubricaUnicaOk],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

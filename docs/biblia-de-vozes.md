@@ -223,8 +223,9 @@
   Caulfield** e desce a High Street às oito, no ponto em que as duas rondas se encontram.
   Passa e segue. É por isso que vê a vitrine correr-se e não fica.
 - **A Sra. Wick, desde a OS-R4:** a declaração dela fica de pé como foi tomada, e o registro
-  ganha o que veio depois — procurada outra vez antes do meio-dia, disse não ter visto nada
-  e fechou a janela. O fio de coação da D16 **mostra-se; não se explica**.
+  ganha o que veio depois — procurada outra vez ao meio-dia, disse não ter visto nada e
+  fechou a janela. (A hora é a da carta `dep_mulher_viela`, que é a fonte: em divergência
+  entre código e doc, o código vence — corrigido na OS-R8 §3.4.) O fio de coação da D16 **mostra-se; não se explica**.
 - **Registro:** relato de terceiros, filtrado pela voz de quem conta (em geral
   Wycliffe). Convictos no que viram, prudentes no que não viram ("conhece o passo,
   diz, mas não jura").

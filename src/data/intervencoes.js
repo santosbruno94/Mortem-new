@@ -124,7 +124,7 @@ export const INTERVENCOES_NOITE = [
     // utilizador em 26/07/2026, sobre as três saídas registadas na ata.
     exige: ['ev_cinza_livro'],
     prosa:
-      'O livro é desmanchado antes de ir ao lume: a costura cede, e as folhas descem à grelha aos punhados. O fogo não chega ao fim do que lhe deram: no leito sobra o fecho de latão com a sua chapa, um fio de linho preso à dobra e um pedaço de pasta empenada com o vinco das nervuras.',
+      'O livro é desmanchado antes de ir ao lume: a costura cede, e as folhas descem à grelha aos punhados. O fogo não chega ao fim do que lhe deram: no leito sobra o fecho de latão com a sua chapa, um fio de linho preso à dobra e um pedaço de pasta empenada, de carvão fundo, que a chama não vence.',
   },
   {
     id: 'bainha_por_sacudir',

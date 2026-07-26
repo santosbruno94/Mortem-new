@@ -195,9 +195,16 @@ guarda é a identidade da peça*. Aqui a prova não está nas folhas, que ardem.
 **carcaça** — e, antes dela, na **quantidade**.
 
 - **O leito de cinzas alto.** É o tell mais robusto do dossiê, e o mais fácil de esquecer.
-  Um livro-razão desmanchado e alimentado ao fogo por uma hora deixa a grelha com **muito
-  mais cinza do que uma noite de outubro justifica**, e com sinal de ter sido atiçada
-  repetidas vezes. Quem raspa a grelha vê isso antes de ver qualquer outra coisa.
+  O que ele mede é a **massa que entrou na grelha**, não o tempo que levou a entrar: um
+  livro-razão desmanchado aos punhados deixa **muito mais cinza do que uma noite de outubro
+  justifica**, e deixa-o desde os primeiros punhados. Quem raspa a grelha vê isso antes de
+  ver qualquer outra coisa. O **sinal de ter sido atiçada repetidas vezes** é sinal
+  acessório, e de outra coisa: de queima **levada até o fim**.
+  *(Emenda de 26/07/2026, OS-R8 §3.4-bis.* A redação anterior ancorava o tell em «alimentado
+  ao fogo por uma hora» e no atiçamento — e assim deixava de cobrir a queima **interrompida**,
+  que é o que o caso-escola passou a declarar. A física corre a favor: fogo sobrecarregado
+  de carga abafa, carboniza sem consumir, e o que não se consome não colapsa em cinza fina.
+  O leito interrompido é, portanto, **mais** volumoso que o completo — e não menos.*)
 
 - **As folhas.** O papel de livro de contas é de trapo ou de polpa carregada de **caulim**,
   amido e cola. A parte orgânica queima; a mineral fica, e dá uma **cinza pálida, leve, em
