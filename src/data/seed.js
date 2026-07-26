@@ -30,6 +30,11 @@ export const SEED_TUTORIAL = {
     agnes_rooke: { veredictoEsperado: 'inocente_segredo', segredo: 'noivado_secreto' },
     caleb_grey: { veredictoEsperado: 'inocente_alibi', segredo: null },
     davey_tull: { veredictoEsperado: 'inocente_alibi', segredo: null },
+    // OS-S1 (PD-01): o sexto homem. O recoveiro esteve na cena — de madrugada,
+    // depois do crime, e para recolher o que era dele. Mente sobre a estrada
+    // porque a verdade o põe dentro da sala com o morto no chão; o rastro que
+    // o desmente é o mesmo que o inocenta (`ev_pegada_argila`).
+    nathan_herrick: { veredictoEsperado: 'inocente_segredo', segredo: 'penhor_recolhido' },
   },
 };
 
@@ -76,6 +81,17 @@ export const SUSPEITOS = [
     relacao: 'Aprendiz da relojoaria há dois anos',
     descricao:
       'Magro, atento, o olho no que as mãos dos outros fazem. Responde depressa; perguntado de novo, não muda uma palavra.',
+  },
+  {
+    // OS-S1 (PD-01) — o sexto homem. Terceira geração de recoveiro: as sacas do
+    // moleiro, os embrulhos do correio, as caixas da relojoaria entregues à
+    // porta dos fundos. Desde o penhor de setembro anda sem relógio.
+    id: 'nathan_herrick',
+    nome: 'Nathan Herrick',
+    idade: 41,
+    relacao: 'Recoveiro da estrada de Moorford; preso no sábado por ordem do guarda',
+    descricao:
+      'Casaco de estrada com o cotovelo remendado, botas de argila até o cano. Pergunta as horas antes de responder às perguntas, e conta o dinheiro que não tem em voz alta.',
   },
 ];
 

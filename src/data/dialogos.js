@@ -152,6 +152,29 @@ const OPCOES_B3_WALTER = [
   { rotulo: '"Por quanto tempo o senhor paga o quarto três?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
 ];
 
+// OS-S1 — o sexto homem. O recoveiro escorrega no que é dele: a hora. Perde-a
+// de vista quando a compostura falha, e reclama-a de volta em voz alta.
+const ALFINETADA_HERRICK = {
+  E1: ['Acaba a resposta e não torna a sentar-se. O casaco dobrado passa de um braço para o outro, e volta ao primeiro.'],
+  E2: [
+    '"{g:O senhor|A senhora} já falou com meia rua antes de descer a este corredor." Não é pergunta, e ele não espera resposta. Puxa o casaco contra o peito e senta-se na tábua. "Pois pergunte o que falta. Sou o único desta vila que não tem ofício nesta rua para responder por si, e disso já me fiz a razão." E, mais baixo, quase para dentro: "Que horas são agora?"',
+  ],
+};
+
+const OPCOES_B3_HERRICK = [
+  { rotulo: '"Quem lhe paga as corridas agora, com a loja lacrada?"', vaiPara: 'b3_firme', tom: 'firme' },
+  { rotulo: '"O senhor tem quem responda por si nesta vila?"', vaiPara: 'b3_cordial', tom: 'cordial' },
+  { rotulo: '"As entregas da relojoaria: quem as recebe daqui em diante?"', vaiPara: 'b3_tecnico', tom: 'tecnico' },
+  { rotulo: '"O seu relógio, quando é que o senhor o resgata?"', vaiPara: 'b3_obliquo', tom: 'obliquo' },
+];
+
+const OPCOES_B2_HERRICK = [
+  { rotulo: '"O moleiro diz que lhe devia a corrida de sábado. Devia?"', vaiPara: 'b2_firme', tom: 'firme' },
+  { rotulo: '"Falaram-me das sacas da feira. Como foi essa madrugada?"', vaiPara: 'b2_cordial', tom: 'cordial' },
+  { rotulo: '"A corrida das sacas do moinho: a que horas se carrega?"', vaiPara: 'b2_tecnico', tom: 'tecnico' },
+  { rotulo: '"A feira de sábado abre cedo?"', vaiPara: 'b2_obliquo', tom: 'obliquo' },
+];
+
 const OPCOES_B3_DAVEY = [
   { rotulo: '"O teu ordenado, rapaz. Quem te paga agora?"', vaiPara: 'b3_firme', tom: 'firme' },
   { rotulo: '"Quem responde pelo teu pagamento agora, Davey?"', vaiPara: 'b3_cordial', tom: 'cordial' },
@@ -186,12 +209,21 @@ export const DIALOGOS = {
       corrob_estalajadeiro: 'confronto_estalagem',
       ev_livro_ordens: 'confronto_livro',
       ev_vidro_dobra: 'confronto_vidro',
+      // OS-S1 — as três arestas novas do oficial: a dívida dele (PD-08), o
+      // aro que o gravador da casa conhecia antes da vila (E1), e o homem
+      // da estrada que ele pôs na boca do guarda (E-Herrick).
+      ev_livro_emprestimos: 'confronto_emprestimos',
+      ev_anel_encomenda: 'confronto_anel',
+      dep_cela_herrick: 'confronto_recoveiro',
     },
     // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
     confrontos: [
       { requerCarta: 'corrob_estalajadeiro', rotulo: '[O Quarto Cinco às Escuras] Por que a estalagem conta o seu quarto às escuras às nove?' },
       { requerCarta: 'ev_livro_ordens', rotulo: '[Livro de Ordens de Serviço] Por que três consertos voltaram com a sua rubrica?' },
       { requerCarta: 'ev_vidro_dobra', rotulo: '[Vidro na Dobra da Calça] Por que traz vidro de mostrador preso à bainha?' },
+      { requerCarta: 'ev_livro_emprestimos', rotulo: '[Livro de Empréstimos] Por que a sua linha nunca desce, se o senhor paga todas as sextas?' },
+      { requerCarta: 'ev_anel_encomenda', rotulo: '[Aro de Ouro por Gravar] Por que a bancada do senhor tinha esta encomenda por gravar?' },
+      { requerCarta: 'dep_cela_herrick', rotulo: '[O Que o Recoveiro Achou de Madrugada] Por que apontou o recoveiro ao guarda?' },
     ],
     nos: {
       // O hub: Silas recebe o perito. A lasca de vidro NÃO se anuncia aqui
@@ -356,6 +388,42 @@ export const DIALOGOS = {
         ],
         opcoes: [],
       },
+      // OS-S1 (PD-08) — A DÍVIDA DO OFICIAL, e a única retenção do caso com
+      // contradição findável (G3). Ele conta a origem inteira, sem se poupar,
+      // e é a aritmética que o desmente: quem paga ao penny todas as sextas
+      // devia ver a soma descer, e a soma dele é a mesma há doze anos. O
+      // jogador que fizer a conta encontra a jaula; o texto não a nomeia.
+      confronto_emprestimos: {
+        fala: [
+          'Silas Crane lê a página de longe. Depois estende a mão, volta as folhas para trás até as primeiras, e para numa delas.',
+          '"A minha está aí, {detective.treatment}, e está desde o primeiro ano de casa. A minha mulher esteve doente onze meses, e enterrá-la custou o que custa a um homem de bancada. O patrão adiantou; eu aceitei."',
+          '"Pago todas as sextas, ao penny, e nunca falhei uma." Devolve o livro fechado, com as duas mãos. "Homem justo, o Sr. Arthurs. Justo como balança: não perdoava fiel."',
+        ],
+        opcoes: [],
+      },
+      // OS-S1 (E1) — O ARO. O gravador da casa soube do casamento antes da
+      // vila, pela própria ordem de serviço. A retenção é do tamanho da dos
+      // inocentes (G3): ele responde tudo o que se lhe pergunta sobre o
+      // serviço, e não menciona uma vez o que a ordem lhe ensinou.
+      confronto_anel: {
+        fala: [
+          'Toma o aro pelo bordo, entre dois dedos, e lê a ordem de serviço sem a desdobrar por inteiro.',
+          '"A letra é do patrão, e a mão que havia de gravar era a minha: gravar por dentro de aro é serviço de ponta fina, e nesta casa faço-o eu." Pousa o aro no pano, com o papel por cima, como o achou.',
+          '"Encomenda particular é particular, {detective.treatment}. Gravo o que se me manda gravar, e o que está por gravar não se comenta ao balcão."',
+        ],
+        opcoes: [],
+      },
+      // OS-S1 — O HOMEM DA ESTRADA. Quem pôs o forasteiro na boca do guarda
+      // fica dito por ele mesmo, e dito como se fosse zelo. A frase final é a
+      // que o jogador há de reler depois de saber o que aconteceu na cela.
+      confronto_recoveiro: {
+        fala: [
+          'Ouve o termo até o fim, as mãos nos joelhos. "O homem da estrada."',
+          '"Eu disse ao guarda que ele rondava a porta dos fundos desde o verão, e disse-o porque é verdade: recebia-lhe eu as caixas, contava-lhe as peças à frente dele, e nunca o deixei pousar nada cá dentro." A xícara do visitante fica onde está. "Não me alegra ter dito."',
+          '"Do que ele conta da madrugada, o senhor há de tirar o peso. Gente da estrada é a estrada: passa." E, depois de um momento: "Homem preso conta o que o solte."',
+        ],
+        opcoes: [],
+      },
       evasiva: {
         fala: [
           'Silas Crane inclina-se sobre a mesa o bastante para ver, e endireita-se. "Com licença de dizer, {detective.treatment}, a minha parte é corda e mola; o que isso valha, sabe a perícia. O que eu penso, já disse: gente da estrada, atrás do caixa."',
@@ -375,12 +443,15 @@ export const DIALOGOS = {
       ev_cesta_rooke: 'reacao_cesta',
       ev_anel_encomenda: 'reacao_anel',
       dep_mulher_viela: 'reacao_viela',
+      // OS-S1 (PD-16, PD-18, E15) — o fio nasce na cela e o maço aparece aqui.
+      dep_cela_herrick: 'reacao_cartas',
     },
     // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
     confrontos: [
       { requerCarta: 'ev_cesta_rooke', rotulo: '[Cesta de Ceia para Dois] Por que uma ceia para dois, se a senhora diz que passou a noite só?' },
       { requerCarta: 'ev_anel_encomenda', rotulo: '[Aro de Ouro por Gravar] Por que um aro por gravar com as suas iniciais?' },
       { requerCarta: 'dep_mulher_viela', rotulo: '[Uma Senhora na Viela] Por que a viram sair pela viela àquela hora?' },
+      { requerCarta: 'dep_cela_herrick', rotulo: '[O Que o Recoveiro Achou de Madrugada] Que cartas eram as que não iam no saco?' },
     ],
     nos: {
       abertura: {
@@ -555,6 +626,24 @@ export const DIALOGOS = {
         ],
         opcoes: [],
       },
+      // OS-S1 (PD-16, PD-17, PD-18) — A QUARTA LEITURA DA LINHA RISCADA, e a
+      // PONTE E15. O recoveiro carregava cartas fora do saco, e é isso, e só
+      // isso, que a faz abrir a gaveta funda. O pretendente fica sem nome e
+      // sem rosto (PD-17); o que ela entrega, além do maço, é a CHAVE do
+      // terceiro degrau de Walter: a fonte que o morto citou à ceia.
+      //
+      // A jaula dela fecha-se aqui e o texto não a explica: ela só pôde dizer
+      // «sangue dele» depois de as cartas estarem sobre o mostrador. Não havia
+      // como acusar sem confessar, e é por isso que ela calou três dias.
+      reacao_cartas: {
+        fala: [
+          'Ouve o termo do recoveiro sem interromper. Quando a leitura chega às cartas que não iam no saco, a mão esquerda procura a beira do balcão e ali fica.',
+          '"Pois veja-as {g:o senhor|a senhora} mesmo, que eu não as leio outra vez." Abre a gaveta funda, tira o maço e põe-no sobre o mostrador, atado como estava: [[ev_cartas_do_passado]].',
+          '"Quatro anos de sobrescritos de Moorford. A de cima é de agosto, e é a resposta a uma minha: fui eu que pedi que se acabasse, e acabou-se antes de qualquer papel de igreja."',
+          '"E já que se fala em cartas." Endireita a pilha do papel de luto, que não estava por endireitar. "Na sexta à noite o Sr. Arthurs pôs-me este maço diante dos olhos sem nunca o ter tido nas mãos. Sabia dos sobrescritos, sabia das datas, e fez questão de dizer que não o inventava: que quem lho contara era sangue dele. Sangue, na família que lhe resta, é um só."',
+        ],
+        opcoes: [],
+      },
       evasiva: {
         fala: [
           'A Sra. Rooke olha o que se lhe apresenta, o tempo de o ler ou de o reconhecer, e torna a erguer os olhos. "Se nisso há pergunta, {detective.treatment}, faça-a."',
@@ -573,11 +662,14 @@ export const DIALOGOS = {
     reacoesProva: {
       dep_queixa_grey: 'reacao_queixa',
       ev_livro_ordens: 'reacao_livro',
+      // OS-S1 (PD-13) — a cena condicional: o caderno de pesos na mão dele.
+      ev_livro_ii: 'reacao_pesos',
     },
     // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
     confrontos: [
       { requerCarta: 'dep_queixa_grey', rotulo: '[Queixa do Relógio Mais Leve] Por que lavrou queixa contra o morto na véspera?' },
       { requerCarta: 'ev_livro_ordens', rotulo: '[Livro de Ordens de Serviço] Por que o seu relógio consta neste livro de consertos?' },
+      { requerCarta: 'ev_livro_ii', rotulo: '[Caderno de Pesos do Relojoeiro] O peso do seu relógio está aqui. Confere?' },
     ],
     nos: {
       abertura: {
@@ -729,6 +821,21 @@ export const DIALOGOS = {
         ],
         opcoes: [],
       },
+      // OS-S1 (PD-13, PD-14) — O DETONADOR QUE NÃO SOUBE. Grey é o único da
+      // High Street fora do livro de empréstimos, e por isso a fraude o
+      // queimou como a ninguém. A queixa dele acertou dois relógios: acordou
+      // a desconfiança do patrão no outono e apressou a mão do oficial na
+      // sexta. A cena não lhe diz isso; dá-lhe o número e o balcão, e a conta
+      // é dele. A última frase é a única coisa que ele conclui, e é sobre si.
+      reacao_pesos: {
+        fala: [
+          'Limpa as duas mãos na perna antes de tocar o caderno de oleado. O dedo, branco de farinha, desce a coluna dos pesos e para na linha de outubro.',
+          '"Entrada, quatro onças e meia. Saída, quatro e um quarto." Fica no número mais tempo do que precisa. "Está aqui escrito. Estava aqui escrito antes de eu me queixar."',
+          'Fecha o caderno e pousa-o na tábua da rampa. "Levei a queixa três vezes ao balcão daquela loja, {detective.treatment}, e três vezes fui atendido pelo oficial. À terceira exigi papel, e o papel lavrei-o em casa do guarda, diante de testemunhas."',
+          'A mó troca de compasso atrás dele, e ele não se volta. "Chamei ladrão ao morto. O ladrão recebia-me ao balcão."',
+        ],
+        opcoes: [],
+      },
     },
   },
 
@@ -748,12 +855,16 @@ export const DIALOGOS = {
       ev_registro_estalagem: 'confronto_registro',
       ev_suplica_cesto: 'confronto_suplica',
       dep_testamento: 'confronto_testamento',
+      // OS-S1 (PD-02, PD-19, PD-20, E14/E15) — a ocorrência-gangorra, e o
+      // terceiro degrau da escada dele.
+      dep_briga_walter: 'confronto_briga',
     },
     // Perguntas de confronto (rótulos provisórios): uma por chave de reacoesProva.
     confrontos: [
       { requerCarta: 'ev_registro_estalagem', rotulo: '[Registro da Estalagem] Por que o registro traz a sua assinatura às sete e quarenta?' },
       { requerCarta: 'ev_suplica_cesto', rotulo: '[Carta Amassada em Bola] Por que escreveu ao seu tio pedindo dinheiro?' },
       { requerCarta: 'dep_testamento', rotulo: '[Testamento do Relojoeiro] Por que é o senhor o herdeiro único?' },
+      { requerCarta: 'dep_briga_walter', rotulo: '[Gritos Ouvidos da Rua] O que mais se disse naquela loja além do que a rua ouviu?' },
     ],
     nos: {
       abertura: {
@@ -840,6 +951,10 @@ export const DIALOGOS = {
         fala: [
           '"Vão mal, e disso nunca fiz segredo. Devo às fazendas, devo ao armazém que anda em juízo, devo até ao Station de Moorford, onde durmo a crédito. A lista é pública e eu a sei de cor." A voz, alta no princípio, acaba quase para dentro.',
           '"Da herança falem os outros; eu falo do que devo, que ao menos é meu."',
+          // OS-S1 (E6) — a aresta Walter ↔ Silas. O negociante viu o que o
+          // perito há de provar, disse-o ao tio, e o tio riu-se. A frase do
+          // morto é a máscara dele inteira em nove palavras.
+          '"De números eu percebo, e uma vez disse-lho: loja sempre cheia, caixa sempre magro, as somas não batiam. Riu-se de mim." Encolhe um ombro. "\'De números tratas tu, de horas trato eu\', foi o que ele me respondeu."',
         ],
         opcoes: OPCOES_B3_WALTER,
       },
@@ -927,6 +1042,36 @@ export const DIALOGOS = {
               'Ouve o resto sem estender a mão para a folha que lhe puseram diante. O botão do colete fica onde está.',
               '"Sabia." Diz de uma vez, e o resto vem devagar. "Ele me contou na sexta, atrás do balcão, ao cair da tarde. Que ia casar, que ia lavrar tudo de novo na segunda-feira, e que eu me arranjasse. Foi por isso que gritei, e foi por isso que ele gritou. Quem passasse na rua ouviu os dois."',
               '"E omiti." Endireita-se na cadeira. "Omiti porque a vergonha do que ouvi naquela loja pesa mais do que a herança que se soma depois dela. Pois ponha no papel: eu soube, eu pedi, ele recusou, e saí de lá com o chapéu na mão."',
+            ],
+          },
+        ],
+        opcoes: [],
+      },
+      // O TERCEIRO DEGRAU (PD-19, PD-20, E14). A escada de Walter tinha dois:
+      // a mentira do carro cai pelo registro, e o «sabia do testamento» cai no
+      // degrau de `confronto_testamento`. Faltava o de cima, e ele não se paga
+      // com papel da árvore dele: paga-se com o que a papelaria entrega depois
+      // de a cela abrir a boca. É a primeira cadeia de confronto do jogo que
+      // ATRAVESSA DUAS ÁRVORES (a ponte E15), e a mecânica é a que já havia —
+      // contador autoral sobre uma lista curada (D8), sem carta nova (PD-21).
+      //
+      // A LEITURA DUPLA DO MÓBIL. Quem só vê dívida, herança e briga condena-o;
+      // quem chega a este degrau descobre que às nove daquela noite ele se
+      // julgava ganho SEM ter matado ninguém. O móbil não morre: muda de
+      // temperatura, e o mural desempata pelo nexo, como o jogo quer.
+      confronto_briga: {
+        fala: [
+          'Walter Arthurs lê a ocorrência e devolve-a pela beira, com dois dedos. "O recoveiro. Só podia ser o recoveiro."',
+          '"Apanhou a minha pior hora do degrau da rua e vendeu-a ao guarda por um álibi." O botão do colete para no meio da volta. "Não o desminto, {detective.treatment}. Gritámos os dois, e eu gritei primeiro."',
+        ],
+        degraus: [
+          {
+            contaEntre: ['ev_cartas_do_passado', 'ev_cesta_rooke', 'dep_cela_herrick'],
+            aPartirDe: 2,
+            fala: [
+              'Ouve o resto sem mexer as mãos, que ficam abertas sobre a mesa.',
+              '"Uma frase o homem da estrada apanhou, e essa é minha. A outra não apanhou, e essa também é minha." Endireita-se na cadeira, e a voz sai sem altura nenhuma. "Fui eu que lhe contei das cartas de Moorford. Trouxe-as sabidas de casa, para o caso de o pedido falhar; o pedido falhou, e eu disse-lho da porta antes de sair."',
+              '"Sabia o que o casamento fazia ao testamento e sabia o que aquilo fazia ao casamento. Às nove daquela noite eu julgava-me ganho sem ter posto a mão em ninguém." Cala-se, e o resto vem devagar. "Se aquilo pesou na ceia, é {g:o senhor|a senhora} que mo há de dizer. Eu não durmo para mo dizer sozinho."',
             ],
           },
         ],
@@ -1114,6 +1259,181 @@ export const DIALOGOS = {
       evasiva: {
         fala: [
           'Davey chega o rosto para ver de perto, a testa franzida, e faz que não com a cabeça. "Isso eu não sei dizer o que é, {detective.treatment}. Se fosse coisa de relógio, eu conhecia; do resto, quem sabia era o patrão."',
+        ],
+        opcoes: [],
+      },
+    },
+  },
+
+  // OS-S1 — O SEXTO HOMEM. Diálogo EMBUTIDO na cela (origemLocalidade), e não
+  // nó de conversa: o cubículo tem prosa própria, e é nela que o auto de exame
+  // entra se o corredor se fechar. `someSeEvento` retira o botão quando isso
+  // acontece — não se interroga quem o legista já lavrou.
+  //
+  // Tom ressonante: FIRME. É o único do elenco que responde melhor a quem o
+  // empurra: doze anos de guardas a pará-lo na estrada ensinaram-lhe que quem
+  // pergunta com jeito quer alguma coisa a mais.
+  dialogo_herrick: {
+    suspeitoId: 'nathan_herrick',
+    origemLocalidade: 'cela',
+    someSeEvento: 'silenciar_herrick',
+    chamada: 'Interrogar Nathan Herrick',
+    titulo: 'Interrogatório — Nathan Herrick',
+    subtitulo: 'Recoveiro, preso na cela do posto',
+    noInicial: 'abertura',
+    noEvasiva: 'evasiva',
+    reacoesProva: {
+      ev_pegada_argila: 'reacao_pegada',
+      ev_livro_emprestimos: 'reacao_livro',
+      dep_briga_walter: 'reacao_briga',
+    },
+    confrontos: [
+      { requerCarta: 'ev_pegada_argila', rotulo: '[Meia Pegada de Argila] Por que há argila da estrada no degrau do beco?' },
+      { requerCarta: 'ev_livro_emprestimos', rotulo: '[Livro de Empréstimos] Por que o morto guardava um relógio seu em penhor?' },
+      { requerCarta: 'dep_briga_walter', rotulo: '[Gritos Ouvidos da Rua] Por que foi o senhor quem levou a briga ao posto?' },
+    ],
+    nos: {
+      abertura: {
+        fala: [
+          'O guarda abre o corredor com o joelho, que traz as duas mãos ocupadas de papel, e fica à porta. Nathan Herrick espera de pé junto à grade, o casaco de estrada dobrado sobre o braço, as botas cobertas de argila seca até o cano.',
+          '"Que horas são, senhor? Não é por pressa." A pergunta vem antes de qualquer outra coisa, e a resposta ele recebe sem comentar. "Puseram-me aqui no sábado à tarde. Ninguém me disse por quanto tempo, e daqui não se ouve sino."',
+        ],
+        opcoes: [
+          { rotulo: '"A sua noite de sexta. E deixe a história da estrada para depois."', rotuloVars: ['"A sua noite de sexta. E deixe a história da estrada para depois."', '"A sexta à noite, Herrick. Sem a estrada por cima."'], vaiPara: 'b1_firme', tom: 'firme' },
+          { rotulo: '"Sente-se. Conte-me a sua sexta-feira do fim da tarde em diante."', rotuloVars: ['"Sente-se. Conte-me a sua sexta-feira do fim da tarde em diante."', '"Fique à vontade. A sua sexta-feira, do fim da tarde em diante."'], vaiPara: 'b1_cordial', tom: 'cordial' },
+          { rotulo: '"A sexta: hora de partida, caminho e paragens."', rotuloVars: ['"A sexta: hora de partida, caminho e paragens."', '"Dê-me a sexta por partes: hora, caminho, paragens."'], vaiPara: 'b1_tecnico', tom: 'tecnico' },
+          { rotulo: '"Faz esta estrada há muito tempo?"', rotuloVars: ['"Faz esta estrada há muito tempo?"', '"Há quanto tempo corre o senhor esta estrada?"'], vaiPara: 'b1_obliquo', tom: 'obliquo' },
+        ],
+      },
+
+      // BEAT 1 — o paradeiro (sustentação: alibi_herrick em todo tom). A
+      // estrada é a história que ele deu ao guarda no sábado, e é a que ele
+      // repete aqui. Não se corrige a si mesmo neste beat, em nenhum tom.
+      b1_firme: {
+        fala: [
+          'Endireita-se contra a grade e não desvia os olhos. "A estrada é a história porque é onde eu estava, senhor."',
+          '"Saí da vila às sete, com a carroça vazia. Dormi sob a lona, à altura da ponte de Caulfield. Tornei a entrar já com a feira aberta, e pela High Street não passei." Dá as horas depressa, e ao fim de cada uma olha a porta do corredor: [[alibi_herrick]].',
+        ],
+        opcoes: OPCOES_B2_HERRICK,
+      },
+      b1_cordial: {
+        fala: [
+          'Senta-se na beira da tábua e põe o casaco sobre os joelhos. "É bom que alguém pergunte com jeito. Vou-lhe dizer como foi."',
+          '"Sete horas, carroça vazia, estrada fora. A lona é o meu teto desde rapaz; a ponte de Caulfield tem abrigo do vento e água para a mula, e é ali que se dorme." Conta o caminho aos bocados, como quem o mede a pé: [[alibi_herrick]].',
+          'E acrescenta o resto sem que se lhe peça: "Entrei outra vez com a feira já aberta."',
+        ],
+        opcoes: OPCOES_B2_HERRICK,
+      },
+      b1_tecnico: {
+        fala: [
+          '"Hora de partida, sete. Caminho, a estrada de Moorford até a ponte de Caulfield: três milhas e meia por vala funda."',
+          '"Paragens, nenhuma, que carroça vazia não se para. Dormi sob a lona e vim com o dia." As milhas saem sem que ele as procure: [[alibi_herrick]].',
+          'A meio da conta interrompe-se. "Desculpe. O senhor pode dizer-me as horas outra vez?"',
+        ],
+        opcoes: OPCOES_B2_HERRICK,
+      },
+      b1_obliquo: {
+        fala: [
+          '"Terceira geração, senhor. O meu avô fazia isto a pé, com o cesto às costas, e o meu pai já com a mula."',
+          'Depois responde ao que ninguém lhe perguntou ainda, e no mesmo tom em que falava dos avós. "Na sexta saí às sete, com a carroça vazia. Dormi na estrada, sob a lona, e entrei com a feira aberta." As horas vêm já postas em fila: [[alibi_herrick]].',
+        ],
+        opcoes: OPCOES_B2_HERRICK,
+      },
+
+      // BEAT 2 — a corrida das sacas (sustentação: dep_cela_herrick em todo
+      // tom). A aresta E8 é o que abre este beat: quem o pôs na vila antes de
+      // clarear não foi a perícia, foi a dívida com o moleiro. E o segundo
+      // termo derruba a manhã inteira do guarda — às cinco menos um quarto a
+      // porta já estava mordida no batente.
+      b2_firme: {
+        fala: [
+          'A resposta demora, e quando vem é mais baixa que as outras. "Devia. Devia-lhe a corrida, e fui buscá-la antes de clarear, que é como se faz na véspera de feira."',
+          '"Vou dizer ao senhor o que não disse ao guarda. Chame quem escreve, que eu assino por baixo." E dá-o de uma vez, sem que se lhe torne a perguntar: [[dep_cela_herrick]].',
+        ],
+        opcoes: OPCOES_B3_HERRICK,
+      },
+      b2_cordial: {
+        fala: [
+          'Passa a mão pela barba por fazer e demora a olhar para cima. "As sacas eram minhas de dever, senhor. O Sr. Grey fia-me desde o tempo do meu pai, e quem fia cobra em serviço."',
+          '"Fui buscá-las antes das cinco, que a feira não espera." Cala-se um momento e depois pede o papel. "Escreva o resto, faça favor, e escreva tudo, que eu não quero contar isto duas vezes": [[dep_cela_herrick]].',
+        ],
+        opcoes: OPCOES_B3_HERRICK,
+      },
+      b2_tecnico: {
+        fala: [
+          '"Carrega-se antes das cinco. Doze sacas de cento e quarenta libras, e a rampa do moinho é de tábua: com o dia claro já não se sobe sozinho."',
+          '"Portanto às quatro e três quartos eu estava na vila, e não à hora que disse ao guarda." Diz a correção como quem corrige um peso, e pede que se lave o termo: [[dep_cela_herrick]].',
+        ],
+        opcoes: OPCOES_B3_HERRICK,
+      },
+      b2_obliquo: {
+        fala: [
+          '"Abre com o dia, senhor, mas quem vende monta antes. Feira de outubro é escura até as sete."',
+          'Fica um momento a olhar a argila das próprias botas. "E eu montei a do Sr. Grey, o que quer dizer que estive na vila antes de clarear. Já que se escreve, escreva-se o resto": [[dep_cela_herrick]].',
+        ],
+        opcoes: OPCOES_B3_HERRICK,
+      },
+
+      // BEAT 3 — a pressão. O eixo é o de todos (o que a morte muda para quem
+      // ficou), e o dele é aritmética de estrada: corridas por semana, libras
+      // por saca, uma soma que não para de correr.
+      b3_firme: {
+        fala: [
+          '"As corridas da relojoaria eram três por semana, e acabaram na sexta. Ficam-me as sacas do moinho e o que o correio mandar." Conta pelos dedos e para no terceiro. "Dá para a mula. Para a mula e para mim é que não dá."',
+        ],
+        alfinetada: ALFINETADA_HERRICK,
+        opcoes: [],
+      },
+      b3_cordial: {
+        fala: [
+          '"Responder por mim?" Passa a mão pela barba. "O meu pai fez esta estrada, e o pai dele. Na vila isso não vale um papel assinado, e é papel que o guarda pede."',
+          '"Quem me fiava o porte era a senhora do correio. Fiava."',
+        ],
+        alfinetada: ALFINETADA_HERRICK,
+        opcoes: [],
+      },
+      b3_tecnico: {
+        fala: [
+          '"À porta dos fundos entregava-se ao oficial. Era ele quem contava as peças à minha frente e assinava por baixo do meu nome; dentro nunca me deixou pousar caixa nenhuma."',
+          '"Enquanto a casa não abrir, o que vier de fora fica na estação de Moorford, e quem o quiser que o vá buscar."',
+        ],
+        alfinetada: ALFINETADA_HERRICK,
+        opcoes: [],
+      },
+      b3_obliquo: {
+        fala: [
+          '"Resgatava-o no dia em que a soma parasse de correr, e ela não parava." Olha o pulso, que não tem nada, e deixa a mão cair. "Três libras em março. Em setembro eram três libras e o relógio. Pergunte-me pelo mês que vem, que a conta há de ser a mesma."',
+        ],
+        alfinetada: ALFINETADA_HERRICK,
+        opcoes: [],
+      },
+
+      reacao_pegada: {
+        fala: [
+          'Olha o desenho da sola por cima do papel e não estende a mão. "É minha. Bota de recoveiro tem a sola cravejada em três fileiras, e argila da vala de Moorford não sai nem à escova."',
+          '"Pisei o degrau depois de a porta estar aberta, e não antes. O senhor tem aí a ordem em que as coisas caíram: a tinta primeiro, a minha sola por cima." Torna a sentar-se. "Se eu tivesse aberto aquela porta, a argila estaria por baixo das lascas."',
+        ],
+        opcoes: [],
+      },
+      reacao_livro: {
+        fala: [
+          'Corre a linha com o dedo e para no seu nome antes de o encontrarem por ele. "Três libras, em março, pelo inverno mau. A mula esteve para morrer e eu não tinha com que a tratar."',
+          '"Em setembro já não bastava, e ele tomou o relógio. De prata, do meu pai." Fecha o livro sem que lho peçam. "Na estrada dizia-se que o relojoeiro ajudava. Ajuda, aprendi a soletrar: são cinco letras e o juro corrido por baixo delas."',
+          '"Desde setembro pergunto as horas a quem passa, senhor. Um recoveiro sem relógio é um homem a pedir a hora aos outros."',
+        ],
+        opcoes: [],
+      },
+      reacao_briga: {
+        fala: [
+          'Reconhece o termo pelo formato antes de o ler. "Fui eu que a levei ao posto, no sábado à tarde."',
+          '"Estive à porta às sete, para pedir prazo, e não cheguei a bater: lá dentro havia dois homens aos gritos e não se pede prazo em casa de briga. Do degrau apanhei uma frase, e uma só."',
+          '"Fui dizer o que ouvi para não me perguntarem o que fazia eu ali." Passa o casaco de um braço para o outro. "Grito de gente da família é pior que o de credor: credor quer o dinheiro, família quer razão."',
+        ],
+        opcoes: [],
+      },
+      evasiva: {
+        fala: [
+          'Chega o rosto à grade o tempo de ver, e recua. "Disso não sei, senhor, e não vou dizer que sei para agradar a ninguém. Pergunte-me de estrada, de porte ou do que eu devo, que dessas três eu respondo."',
         ],
         opcoes: [],
       },

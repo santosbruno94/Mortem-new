@@ -28,6 +28,10 @@ export const POSICOES_DIORAMA = {
   interrogatorio_silas: { x: -1.2, z: -0.4, predio: 'saleta' },
   // A vila de Briarstone (espaçada para os rótulos não colidirem).
   posto_do_guarda: { x: 0.5, z: -2.2, predio: 'civico' },
+  // OS-S1: a cela é o corpo baixo dos fundos do posto, encostado a ele e um
+  // passo atrás na rua. Prédio próprio na maquete porque é nó próprio no
+  // mapa; a ficha continua a dizer que se anda de um ao outro pelo corredor.
+  cela: { x: 1.0, z: -3.3, predio: 'cela' },
   estalagem: { x: 2.9, z: -0.2, predio: 'estalagem' },
   papelaria: { x: 0.6, z: 2.2, predio: 'papelaria' },
   moinho: { x: 4.6, z: 2.0, predio: 'moinho' },
@@ -83,6 +87,12 @@ export const FORMAS_PREDIO = {
   civico: {
     w: 1.3, d: 0.95, h: 0.98, corParede: '#7b7468', corTelhado: '#3e3a34',
     telhadoAltura: 0.5, beiral: 0.13, ristela: true, chamines: [],
+  },
+  // OS-S1: o anexo da cela. Mais baixo e mais estreito que o posto, telhado
+  // raso, sem chaminé — o corpo de tijolo que se encosta aos fundos.
+  cela: {
+    w: 0.9, d: 0.7, h: 0.72, corParede: '#6e6659', corTelhado: '#39352f',
+    telhadoAltura: 0.26, beiral: 0.08, ristela: true, chamines: [],
   },
   estalagem: {
     w: 1.45, d: 1.05, h: 0.92, corParede: '#8d7a5a', corTelhado: '#4d3a29',

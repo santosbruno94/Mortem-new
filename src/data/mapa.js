@@ -104,6 +104,17 @@ export const NOS_MAPA = [
     desbloqueadoInicio: true,
   },
   {
+    // OS-S1 (PD-03, PD-07) — O ANEL DO ATO III. A cela dos fundos do posto é o
+    // único nó desta reforma que nasce FECHADO: abre-se quando o perito extrai
+    // o avistamento do padeiro, porque é esse papel que manda o guarda prender
+    // um homem da estrada. A dobradiça é o ato do inquérito, não uma dedução
+    // do jogador — e é por isso que ela pode fechar um ato.
+    id: 'cela',
+    rotulo: 'A Cela do Posto',
+    grupo: 'vila',
+    desbloqueadoInicio: false,
+  },
+  {
     id: 'gabinete_pettigrew',
     rotulo: 'Gabinete Pettigrew',
     grupo: 'fora',
@@ -116,6 +127,14 @@ export const NOS_MAPA = [
 // LEADS: quando o perito extrai certa carta, um novo nó se revela no mapa.
 // É assim que o mapa de lugares relevantes CRESCE durante a investigação.
 export const LEADS_DESBLOQUEIO = [
+  {
+    // OS-S1 (PD-03): a prisão. O relato da luz de madrugada é o que dá a
+    // Wycliffe o inquérito curto que ele quer — um forasteiro na rua àquela
+    // hora —, e o forasteiro que a vila tem à mão é o recoveiro.
+    cartaId: 'dep_avistamento_padeiro',
+    revelaNo: 'cela',
+    nota: 'O guarda mandou prender o recoveiro da estrada, e tem-no na cela dos fundos do posto.',
+  },
   {
     cartaId: 'dep_testamento',
     revelaNo: 'gabinete_pettigrew',

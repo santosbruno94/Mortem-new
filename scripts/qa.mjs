@@ -189,6 +189,10 @@ const CONVERSAS_R6 = [
   { conversaId: 'moinho', suspeitoId: 'caleb_grey' },
   { conversaId: 'dialogo_walter', suspeitoId: 'walter_arthurs' },
   { conversaId: 'dialogo_davey', suspeitoId: 'davey_tull' },
+  // OS-S1: o sexto homem. A conversa é EMBUTIDA na cela (origemLocalidade),
+  // como as de Walter e Davey — a cela tem prosa própria, e é nela que o auto
+  // de exame entra se o corredor se fechar.
+  { conversaId: 'dialogo_herrick', suspeitoId: 'nathan_herrick' },
 ];
 
 function cartasQueApontam(suspeitoId, registradas = s().cartasRegistradas) {
@@ -232,7 +236,9 @@ s().medirTemperatura();
 );
 s().viajarPara('relojoaria'); // 0h — mesmo prédio
 // OS-R5: o bilhete do vigário sai da mesma escrivaninha que a súplica.
-['ev_relogio_lareira', 'ev_maquinismo', 'ev_cinza_livro', 'ev_vitrine', 'ev_fechadura', 'ev_cesta_rooke', 'ev_suplica_cesto', 'ev_bilhete_vigario'].forEach(
+// OS-S1: e da gaveta com chave, o Livro de Empréstimos; do degrau do beco, a
+// meia pegada de argila do sexto homem.
+['ev_relogio_lareira', 'ev_maquinismo', 'ev_cinza_livro', 'ev_vitrine', 'ev_fechadura', 'ev_cesta_rooke', 'ev_suplica_cesto', 'ev_bilhete_vigario', 'ev_livro_emprestimos', 'ev_pegada_argila'].forEach(
   (id) => s().extrairCarta(id)
 );
 s().viajarPara('relojoaria'); // 0h
@@ -245,7 +251,18 @@ s().viajarPara('interrogatorio_silas'); // 0h
 medirEntrada('Metódico', 'interrogatorio_silas');
 ['alibi_silas', 'comp_silas', 'ev_vidro_dobra'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('posto_do_guarda'); // +1h
-['dep_testamento', 'dep_visto_vivo', 'dep_avistamento_padeiro'].forEach((id) => s().extrairCarta(id));
+// OS-S1: o Metódico leva também o relato da viela. Não é zelo de auditoria —
+// é a lição: quem colhe cedo o que pode recuar não o perde quando a vila
+// comentar a sua visita ao correio (a interferência `coacao_wick` dispara ao
+// pôr o pé na papelaria, e sai `evitada` porque a folha já está no caderno).
+['dep_testamento', 'dep_visto_vivo', 'dep_avistamento_padeiro', 'dep_mulher_viela'].forEach((id) =>
+  s().extrairCarta(id)
+);
+// OS-S1 (PD-03): a extração do relato da luz abriu a cela. O sexto homem
+// depõe duas vezes, e é o segundo termo que desmonta a manhã do guarda.
+s().viajarPara('cela'); // +1h
+medirEntrada('Metódico', 'dialogo_herrick');
+['alibi_herrick', 'dep_cela_herrick'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('torre_sino'); // +1h — OS-R4: o sineiro e o que a cifra abre
 ['dep_sineiro_beco', 'ev_livro_ii'].forEach((id) => s().extrairCarta(id));
 s().viajarPara('estalagem'); // +1h
@@ -282,10 +299,16 @@ s().definirJuizo('walter_arthurs', 'inocente');
 s().definirJuizo('agnes_rooke', 'inocente');
 s().definirJuizo('caleb_grey', 'inocente');
 s().definirJuizo('davey_tull', 'inocente');
+s().definirJuizo('nathan_herrick', 'inocente');
 // Expõe as mentiras-segredo: a assinatura de sexta na estalagem (Walter) e
 // a cesta de ceia na copa (Agnes) — mentiram, mas por outra razão.
 ligar('ev_registro_estalagem', 'alibi_walter');
 ligar('ev_cesta_rooke', 'alibi_agnes');
+// OS-S1: e a do recoveiro. A meia pegada de argila põe-no na sala que ele
+// jurou não ter pisado, e o que ela revela é o penhor que ele foi buscar.
+// A mesma régua dos outros dois, e é essa a prova de que o sexto homem
+// entrou pelo desenho e não por acréscimo.
+ligar('ev_pegada_argila', 'alibi_herrick');
 
 s().submeterAcusacao();
 const vMetodico = s().veredicto;
@@ -1373,6 +1396,12 @@ const todosMarcadores = new Set([
     ...marcadoresDe(l.introducao || []),
     ...marcadoresDe((l.pontos || []).flatMap((p) => p.prosa)),
     ...marcadoresDe((l.prosaCondicional || []).flatMap((b) => b.paragrafos)),
+    // OS-S1: os blocos CONTINGENTES da interferência também parem carta —
+    // o relato da viela e a retratação que o substitui, o auto de exame da
+    // cela. Sem esta linha, uma carta que só nasce depois de um evento
+    // disparar era acusada de inalcançável, e o dia em que uma carta ficasse
+    // MESMO órfã a guarda já não o veria por baixo do ruído.
+    ...marcadoresDe((l.blocosContingentes || []).flatMap((b) => b.paragrafos)),
     // Onda 7: cartas extraídas por micro-gesto (da localidade ou de ponto).
     ...(l.gestos || []).map((g) => g.cartaId),
     ...(l.pontos || []).flatMap((p) => (p.gestos || []).map((g) => g.cartaId)),
@@ -4403,7 +4432,13 @@ if (!tintaDaHoraOk) {
 // GR4-1 tinha de próprio — a CONTA impressa para a OS seguinte ler antes de
 // gastar — passou para o rótulo da GR7-7, que é onde o número já vive. O teto
 // da G11 continua cobrado lá, e por asserção própria (ver `gr77Furos`).
-const TETO_CARTAS = 46;
+// OS-S1 (PD-10): o teto da G11 sobe de 46 para 51. A decisão é de mesa, e o
+// gate honesto que a acompanha é o playtest do mural com o dossiê inteiro na
+// mesa (rota do Metódico no qa-ui.mjs). O número não é sobra: é exatamente o
+// que a teia custou — o Livro dos Empréstimos, o sexto homem com álibi e
+// deposição, as duas trocas das interferências, o auto de exame da cela e o
+// maço de cartas da papelaria.
+const TETO_CARTAS = 51;
 const cartasEmJogo = CARTAS.length + 1; // + ev_algor
 
 // GR4-2 (G1) — A CADEIA FÍSICA É INTOCÁVEL, inclusive por acréscimo: o
@@ -4735,7 +4770,11 @@ for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES
 //   (3) o mapa de procedência cita gente que existe no caso — origem órfã é
 //       lastro podre, e mentiria na auditoria antes de mentir na prosa.
 const gr68Furos = [];
-const FEIXE_D16 = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela'];
+// OS-S1: o feixe do réu ganha uma quarta folha, e ela é a MESMA mentira. A
+// retratação da Sra. Wick sai da mesma coação que já enterrara o primeiro
+// relato; somar a folha nova à velha é somar a mesma mulher duas vezes,
+// comprada com o que o livro de empréstimos sabe dela (PD-14).
+const FEIXE_D16 = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela', 'dep_retratacao_wick'];
 
 const feixesDoCatalogo = feixesContaminados(Object.keys(PROCEDENCIA_ALEGACOES), PROCEDENCIA_ALEGACOES);
 const feixeDoReu = feixesDoCatalogo.find((f) => f.origem === SEED_TUTORIAL.reuCorreto);
@@ -4762,6 +4801,10 @@ const PESSOAS_DO_CASO = new Set([
   'amos_kell',
   'estalajadeiro',
   'pettigrew',
+  // OS-S1: o legista assina o auto de exame da cela. É a única alegação do
+  // caso cuja boca é a do próprio aparato pericial, e por isso ela existe:
+  // a conta de vozes precisa saber que aquele papel não vem da vila.
+  'harlan',
 ]);
 for (const [cartaId, { apontadaPor: origem, forma }] of Object.entries(PROCEDENCIA_ALEGACOES)) {
   if (!CARTAS.some((c) => c.id === cartaId)) gr68Furos.push(`${cartaId}: procedência de carta que não existe`);
@@ -5081,7 +5124,9 @@ if (!gr75TetoMaximaOk) console.log('\nGR7-5 — teto de máxima / D25:', gr75Fur
 // o outro (achado do `fiscal-continuidade` no pipeline).
 const CATALOGO_R7 = cartasEmJogo;
 const gr77Furos = [];
-if (CATALOGO_R7 !== 42) gr77Furos.push(`o catálogo saiu de 42 para ${CATALOGO_R7}`);
+// OS-S1: o pino passa de 42 a 51 (PD-10). 50 em `cartas.js` mais a carta de
+// algor que a medição de temperatura gera.
+if (CATALOGO_R7 !== 51) gr77Furos.push(`o catálogo saiu de 51 para ${CATALOGO_R7}`);
 // O pino de 42 é desta era; o teto da G11 é permanente. No dia em que uma OS
 // gastar carta com ata, é a segunda perna que continua a segurar o mural.
 if (CATALOGO_R7 > TETO_CARTAS) gr77Furos.push(`o teto da G11 (${TETO_CARTAS}) foi rompido`);

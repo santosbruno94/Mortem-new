@@ -285,6 +285,30 @@ export const CARTAS = [
     },
   },
   {
+    // OS-S1 (PD-01) — O RASTRO DO SEXTO HOMEM. A meia sola de argila está POR
+    // CIMA das lascas que a alavanca fez: quem a deixou passou depois de a
+    // porta estar aberta. É o vestígio que derruba o paradeiro de Herrick e,
+    // no mesmo gesto, o inocenta — revela o que ele veio buscar (o penhor),
+    // não o que ele teria feito.
+    //
+    // Ligá-lo à âncora de Presença, ao lado do buril, é GAFE de nexo (traço
+    // de terceiro): o motor já cobra por tag, e a lição é a mesma da isca.
+    id: 'ev_pegada_argila',
+    localidade: 'relojoaria',
+    subLocal: 'loja',
+    textoDisplay: 'Meia Pegada de Argila',
+    carimboPadrao: 'Meia sola de argila amarela sobre as lascas de tinta',
+    descricao:
+      'No degrau do beco, assente sobre as lascas de tinta caídas do batente, a metade dianteira de uma sola marcada em argila amarela, já seca e a estalar nas bordas. A marca cobre as lascas, e nenhuma lasca a cobre. O salto não chegou a pousar: o pé apoiou-se na ponta e saiu por onde entrou. Argila daquele tom está na vala funda da estrada de Moorford, e o calçamento da High Street não a tem.',
+    tagsOcultas: {
+      dominio: 'vestigio',
+      subDominio: 'rastro',
+      tipoVestigio: 'pegada_argila',
+      pertenceA: 'nathan_herrick',
+      revelaSegredo: 'penhor_recolhido',
+    },
+  },
+  {
     id: 'ev_cesta_rooke',
     localidade: 'relojoaria',
     subLocal: 'copa',
@@ -334,6 +358,36 @@ export const CARTAS = [
       subDominio: 'motivo',
       motivo: 'recasamento_vigiado',
       ligadoA: 'agnes_rooke',
+      isca: true,
+    },
+  },
+  {
+    // OS-S1 · FRENTE A (PD-04, D1) — O LIVRO DOS EMPRÉSTIMOS. Reabre a R5
+    // §5(d), que tinha contido a agiotagem «sem carta própria»: a espinha do
+    // caso ficava invisível por desenho. Vive na gaveta com chave da
+    // escrivaninha, e a chave sai do molho que o exame do corpo rende.
+    //
+    // Sobreviveu à noite porque NÃO ameaçava o assassino: névoa de suspeitos
+    // de graça. A palavra «juros» não aparece, e não precisa — a aritmética é
+    // primária, e é a mesma armadilha que o livro de pagamentos já ensina: um
+    // penny por xelim por semana faz a dívida ficar parada. Quem soma acha
+    // metade da High Street dentro dela.
+    //
+    // A tag prende a linha do RECOVEIRO porque é a dele que o motor precisa
+    // ler (o móbil do sexto suspeito, PD-01). As outras iniciais são leitura
+    // do jogador, como manda a PD-05.
+    id: 'ev_livro_emprestimos',
+    localidade: 'relojoaria',
+    subLocal: 'escritorio',
+    textoDisplay: 'Livro de Empréstimos',
+    carimboPadrao: 'Iniciais, soma emprestada e um penny por xelim, semana a semana',
+    descricao:
+      'Na gaveta que a chave pequena do molho abre, um livro de capa dura, mais estreito que o livro-razão e da mesma letra miúda. Cada linha traz duas iniciais, a soma emprestada, o mês, e uma coluna de pence somados semana a semana. Muitas estão riscadas de ponta a ponta, com a data da quitação à margem. Ficam abertas: "N.H., £3, mar.", e por baixo "penhor: relógio de recoveiro, set."; "L.W.", em dia até julho e sem lançamento depois; "S.C.", das primeiras páginas, com a soma inicial repetida ao pé de cada mês, sempre a mesma. Riscadas, e riscadas em setembro, "A.R." e uma antiga "—W.". Ao pé da folha de março, a mesma mão anotou: "adiantado à Sra. Tull, £2 8s".',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'motivo',
+      motivo: 'divida_penhor',
+      ligadoA: 'nathan_herrick',
       isca: true,
     },
   },
@@ -621,6 +675,24 @@ export const CARTAS = [
       isca: true,
     },
   },
+  {
+    // OS-S1 · INTERFERÊNCIA `coacao_wick`. Esta carta NÃO nasce com o caso:
+    // entra no lugar de `dep_mulher_viela` quando o evento ocorre, e some do
+    // catálogo alcançável enquanto ele não dispara (gate em extrairCarta).
+    // Perder a Sra. Wick é perder quem DATA a saída de Agnes da viela — a
+    // interferência feita pela hora cobra o seu preço na suspeita mais dolorosa.
+    id: 'dep_retratacao_wick',
+    localidade: 'posto_do_guarda',
+    textoDisplay: 'A Vizinha Desdiz o Que Disse',
+    carimboPadrao: 'Retratação lavrada: nada viu na noite de sexta',
+    descricao:
+      'Termo curto, lavrado depois do primeiro e na mesma folha: a Sra. Wick, dos fundos do nº 9, declara que se enganou, que da janela dela não se alcança a boca da viela, e que na sexta recolheu antes do escurecer. Levou a mão ao ferrolho duas vezes enquanto se lhe lia o texto. À margem, na letra do guarda: "assinou de cruz; sabe assinar o nome".',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'avistamento',
+      declaranteId: 'sra_wick',
+    },
+  },
 
   // ===================== A TORRE DE S. MIGUEL =====================
   // OS-R4. Duas cartas, e nenhuma delas entra em `temporal` ou `causal`
@@ -662,6 +734,106 @@ export const CARTAS = [
       subDominio: 'motivo',
       motivo: 'silenciamento',
       ligadoA: 'silas_crane',
+    },
+  },
+  {
+    // OS-S1 · INTERFERÊNCIA `corrida_a_torre`. O que sobra do esconderijo
+    // quando alguém chega primeiro. R1: o improviso é MAIS GROSSEIRO que o
+    // crime original — o crime deixou uma lasca de vidro numa bainha, e isto
+    // deixa quatro apoios na poeira, sebo novo e a trava por fechar.
+    // Não sustenta âncora nenhuma, e é esse o desenho.
+    id: 'ev_esconderijo_vazio',
+    localidade: 'torre_sino',
+    textoDisplay: 'O Esconderijo Aberto',
+    carimboPadrao: 'Chapa de latão presa para trás; vazio limpo, sebo novo na trava',
+    descricao:
+      'A chapa de latão do quarto cabeçote está aberta e presa para trás pela própria charneira. Por dentro, a poeira levantou-se em duas faixas paralelas da largura de um caderno, e nada mais fica no vazio. Nos dentes da trava serrilhada há riscos claros, de metal ainda por escurecer, e um resto de sebo que cede à unha. Na poeira das vigas em volta ficaram quatro apoios: dois de mão, dois de joelho.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'destruicao',
+    },
+  },
+
+  // ===================== A CELA DO POSTO =====================
+  // OS-S1 (PD-01, PD-03, PD-09, PD-11). Nó que nasce fechado e abre com a
+  // prisão. Nenhuma destas cartas entra em domínio `temporal` ou `causal`
+  // (G1/GR4-2): a cadeia física do crime de sexta sai desta OS byte a byte.
+  {
+    id: 'alibi_herrick',
+    localidade: 'cela',
+    textoDisplay: 'A Estrada a Noite Inteira',
+    carimboPadrao: 'Paradeiro declarado: estrada de Moorford, 19h–manhã',
+    descricao:
+      'Declara ter deixado Briarstone às sete da tarde de sexta com a carroça vazia; ter dormido sob a lona, à altura da ponte de Caulfield; e ter entrado na vila já com a feira aberta, sem passar pela High Street. Interrompeu o termo duas vezes para perguntar as horas. Tomado por termo na cela, pela mão do guarda.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'alibi',
+      declaranteId: 'nathan_herrick',
+      horaInicioDeclarada: -5, // 19h00 de 13/out, a hora em que diz ter partido
+      horaFimDeclarada: 9, // manhã de 14/out, quando diz ter chegado à feira
+      corroborado: false,
+    },
+  },
+  {
+    // O SEGUNDO TERMO, e o que ele desmonta: às 4h45 de sábado a porta JÁ
+    // estava forçada. A manhã do guarda cai por aqui, e não por dedução.
+    //
+    // Sem hora nas tags, de propósito: a hora que ele dá é VERDADEIRA, e uma
+    // alegação verdadeira que o corpo «refutasse» seria armadilha desleal. A
+    // lição inversa do padeiro, pela segunda vez no caso.
+    //
+    // O PRENÚNCIO da R4 vive na última linha: quem o lê tem o que precisa
+    // para tomar o termo antes de o confrontar.
+    id: 'dep_cela_herrick',
+    localidade: 'cela',
+    textoDisplay: 'O Que o Recoveiro Achou de Madrugada',
+    carimboPadrao: 'Porta já mordida no batente e lampião aceso, antes de clarear',
+    descricao:
+      'Segundo termo, tomado a pedido do preso. Declara ter voltado à vila antes das cinco da madrugada de sábado, para a corrida das sacas que devia ao moleiro; ter achado a porta do beco entreaberta, com a madeira já mordida no batente; ter entrado por haver claridade dentro; e ter achado o Sr. Arthurs caído entre a escrivaninha e a estante, com uma gaveta puxada. Declara ainda ter tomado dessa gaveta um relógio de prata, seu, empenhado em setembro por três libras, e ter saído sem tocar em mais nada. Ao fim, pergunta quem mais tem entrada franca no corredor da cela, que o primeiro-oficial da relojoaria passou por ali duas vezes desde a véspera.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'avistamento',
+      declaranteId: 'nathan_herrick',
+    },
+  },
+  {
+    // OS-S1 · INTERFERÊNCIA `silenciar_herrick` (PD-11). A carta nasce com o
+    // evento. Domínio `comportamental` por ordem da G1: a leitura forense vai
+    // na prosa e na voz do legista, e nenhuma âncora se sustenta nela.
+    //
+    // O que Harlan lê é o vocabulário que o catálogo universal já tem: o
+    // sulco oblíquo ascendente é de peso de corpo suspenso; o horizontal é de
+    // laço apertado por mãos alheias. Um deles tem equimose viva por baixo, e
+    // o outro não tem nenhuma — o de cima foi feito depois.
+    id: 'dep_achado_cela',
+    localidade: 'cela',
+    textoDisplay: 'Auto de Exame na Cela',
+    carimboPadrao: 'Preso achado suspenso; dois sulcos no pescoço, um só com reação vital',
+    descricao:
+      'Auto lavrado ao princípio da tarde: o preso foi achado suspenso pela tira do próprio casaco, presa à trave da janela alta, com os pés a três dedos do chão e a tarimba encostada à parede oposta. Ao exame do pescoço, o sulco que sobe em diagonal para o nó está pálido e seco, e a pele em volta dele não reagiu. Por baixo desse, e a atravessar a garganta a direito, corre um segundo sulco, uniforme de um lado ao outro, com a pele arroxeada e viva nas duas bordas. Nas conjuntivas, pontos vermelhos miúdos.',
+    vozMestre:
+      'Dois sulcos, e a ordem lê-se pela reação vital: o de baixo é horizontal e tem a equimose viva, o de cima sobe para o nó e não tem nenhuma. O laço horizontal apertou-o com ele vivo; a corda oblíqua veio depois, sobre um homem que já não sangrava. Quem o pendurou não sabia que a pele guarda a conta.',
+    tagsOcultas: {
+      dominio: 'comportamental',
+      subDominio: 'avistamento',
+      declaranteId: 'harlan',
+    },
+  },
+  {
+    // O VESTÍGIO FRESCO DA CELA (PD-09). Vestígio do RÉU, como a lasca de
+    // vidro: não casa com a arma do crime de sexta, e por isso não firma nexo
+    // sozinho. Ligado à Presença ao lado do buril, reforça sem gafe.
+    id: 'ev_cera_tarimba',
+    localidade: 'cela',
+    textoDisplay: 'Cera Parda na Tábua da Tarimba',
+    carimboPadrao: 'Três dedadas de cera de encerar cabo, ainda moles',
+    descricao:
+      'Na aresta da tábua da tarimba, do lado que dá para a porta, três dedadas de uma cera parda que cede ao calor da mão e ainda não assentou o brilho. Do outro lado da tábua, onde a mão de quem dorme se apoia, a madeira está limpa. Na cela não há bancada, nem estojo, nem ferramenta que se encere: o balde, a enxerga e esta tábua são o que o cubículo tem.',
+    tagsOcultas: {
+      dominio: 'vestigio',
+      subDominio: 'fragmento',
+      tipoVestigio: 'cera_de_bancada',
+      pertenceA: 'silas_crane',
     },
   },
 
@@ -743,6 +915,31 @@ export const CARTAS = [
       dominio: 'comportamental',
       subDominio: 'comportamento',
       ligadoA: 'agnes_rooke',
+    },
+  },
+  {
+    // OS-S1 (PD-16, PD-17, PD-18) — A QUARTA LEITURA DA LINHA RISCADA. O fio
+    // nasce na cela («havia cartas que não iam no saco»); o maço aparece aqui,
+    // no confronto dela, e nunca antes. O pretendente fica SEM NOME e SEM
+    // ROSTO: uma letra de Moorford, e mais nada (PD-17).
+    //
+    // A despedida está POR CIMA e é de agosto, anterior aos proclamas: era ela
+    // quem terminava. Segunda rota para o mesmo segredo — a cesta de ceia é a
+    // primeira —, e é por isso que carrega a mesma `revelaSegredo`. Sem essa
+    // paridade, quebrar-lhe o paradeiro por aqui seria armadilha: o juízo
+    // «inocente» cairia por ter-se usado o papel errado.
+    id: 'ev_cartas_do_passado',
+    localidade: 'papelaria',
+    textoDisplay: 'Maço de Cartas Atadas',
+    carimboPadrao: 'Maço de Moorford; a de cima, de agosto, é uma despedida',
+    descricao:
+      'Um maço de sobrescritos atado com fita de luto, tirado da gaveta funda do balcão. Vêm todos de Moorford, sem remetente ao verso, na mesma letra de homem, e o carimbo mais antigo tem quatro anos. A de cima está fora da ordem dos carimbos: é de agosto deste ano, e foi tornada a dobrar pelo avesso da dobra. Nela quem escreve despede-se, deseja saúde, e pede que se lhe não responda mais.',
+    tagsOcultas: {
+      dominio: 'vestigio',
+      subDominio: 'documento',
+      tipoVestigio: 'maco_de_cartas',
+      pertenceA: 'agnes_rooke',
+      revelaSegredo: 'noivado_secreto',
     },
   },
 

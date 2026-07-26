@@ -76,6 +76,7 @@ import { SINAIS, CATALOGO_CAUSAS } from '../src/data/catalogo_causas.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { CONSEQUENCIAS_CONFRONTO } from '../src/data/confrontos.js';
 import { INTERVENCOES_NOITE } from '../src/data/intervencoes.js';
+import { INTERFERENCIAS_TUTORIAL, ECOS_INTERFERENCIA_TUTORIAL } from '../src/data/interferencias.js';
 import {
   ROTULOS_MECANISMO,
   ROTULOS_INSTRUMENTO,
@@ -108,6 +109,7 @@ const FONTES = [
   ['src/data/curriculo.js', { HABITOS }],
   ['src/data/confrontos.js', { CONSEQUENCIAS_CONFRONTO }],
   ['src/data/intervencoes.js', { INTERVENCOES_NOITE }],
+  ['src/data/interferencias.js', { INTERFERENCIAS_TUTORIAL, ECOS_INTERFERENCIA_TUTORIAL }],
   [
     'src/data/rotulos.js',
     {

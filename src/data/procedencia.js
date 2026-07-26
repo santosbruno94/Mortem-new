@@ -62,6 +62,29 @@ export const PROCEDENCIA_ALEGACOES = {
   dep_sineiro_beco: { apontadaPor: 'amos_kell', forma: 'propria' },
   corrob_estalajadeiro: { apontadaPor: 'estalajadeiro', forma: 'propria' },
   corrob_pettigrew: { apontadaPor: 'pettigrew', forma: 'propria' },
+
+  // ---------------------------------------------------------------------
+  // OS-S1 — AS DUAS BOCAS LIMPAS. Até aqui o caso ensinava `contarVozes` por
+  // um lado só: três papéis de uma boca só (a cadeia contaminada acima). O
+  // sexto homem traz o lado oposto — duas fontes INDEPENDENTES que se
+  // corroboram de verdade, e é por elas que o jogador aprende que somar vila
+  // às vezes soma mesmo.
+  //
+  // A briga na loja passa a ter boca com nome (PD-02): quem a ouviu do
+  // degrau foi o recoveiro, e é ele quem a leva ao posto no sábado à tarde,
+  // com medo de ter sido visto a rondar. A alegação continua verdadeira; o
+  // que muda é que ela deixa de vir de um carroceiro sem rosto.
+  // ---------------------------------------------------------------------
+  dep_briga_walter: { apontadaPor: 'nathan_herrick', forma: 'propria' },
+  alibi_herrick: { apontadaPor: 'nathan_herrick', forma: 'propria' },
+  dep_cela_herrick: { apontadaPor: 'nathan_herrick', forma: 'propria' },
+  dep_achado_cela: { apontadaPor: 'harlan', forma: 'propria' },
+
+  // A retratação sai da MESMA boca que o relato que ela desdiz (a vizinha),
+  // e pela mesma razão que a primeira versão foi recuada: `coacao`. Somar as
+  // duas folhas é somar a mesma mulher duas vezes, e a segunda vez foi
+  // comprada com o que o livro de empréstimos sabe dela.
+  dep_retratacao_wick: { apontadaPor: 'silas_crane', forma: 'coacao' },
 };
 
 /**
