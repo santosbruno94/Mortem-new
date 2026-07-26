@@ -22,6 +22,14 @@
 // Nunca Math.random. O fecho NÃO se sorteia — ele é função de quantos
 // gestos caíram, porque é a única coisa que a cena tem a dizer sobre si.
 //
+// DÍVIDA REGISTRADA PARA A OS-R9: as três aberturas cravam a geografia do
+// caso-escola (a relojoaria, o balcão, a oficina, o escritório, a vila que
+// dorme cedo), e o irmão `monologo.js` declara o contrato oposto — nenhum
+// texto exclusivo do caso. Hoje não vaza, porque sem catálogo de gestos
+// esta função devolve null e só o caso-escola tem catálogo. No dia em que o
+// gerador produzir intervenções, estas três frases vão para o pacote, como
+// as próprias `intervencoes` já foram.
+//
 // BRILHO: zero frases de efeito, de propósito. O guia §3 dá uma máxima
 // por desfecho, e ela pertence ao fecho do monólogo, que vem logo a
 // seguir. Uma cena que também brilhasse poria duas na mesma tela.
@@ -38,9 +46,9 @@ export const SUBTITULO_RECONSTITUICAO = 'Domingo à noite, na relojoaria';
 const SAL = 'reforma:r7:intervencao';
 
 export const ABERTURAS_RECONSTITUICAO = [
-  'Domingo à noite. A loja está fechada e o lume apagado; o lampião de mão vai à frente, do balcão à oficina e da oficina ao escritório. Sobre a bancada, em fila, o que trouxe na mesa: é até onde estas cartas alcançam que a sexta-feira se deixa refazer.',
-  'Domingo, passada a hora da ceia. O guarda ficou no portão da rua e a relojoaria é minha por uma hora. Refaço a noite de sexta com o que a mesa sustenta, e paro onde ela parar.',
-  'Domingo à noite, e a vila dorme cedo. Ando a sala com o lampião baixo, e não há ninguém a quem perguntar. A sexta-feira volta em pedaços, e só nos pedaços que colhi.',
+  'Domingo à noite. A loja está fechada e o lume apagado; o lampião de mão vai à frente, do balcão à oficina e da oficina ao escritório. Sobre a bancada, em fila, o que trouxe comigo.',
+  'Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua e a relojoaria é minha por uma hora. Refaço a noite de sexta com o que a mesa sustenta, e paro onde ela parar.',
+  'Domingo à noite, e a vila dorme cedo. Percorro a sala com o lampião baixo, e não há ninguém a quem perguntar. A sexta-feira volta em pedaços, e só nos pedaços que colhi.',
 ];
 
 // O fecho é FUNÇÃO DA COLHEITA, não sorteio: quatro faixas, do nada ao
@@ -59,9 +67,9 @@ export const FECHOS_RECONSTITUICAO = {
   poucas:
     'Ponho o lampião na bancada. A sala cedeu nos pontos em que eu tinha com que a pressionar, e ficou inteira no resto.',
   varias:
-    'Ponho o lampião na bancada. A noite refez-se aos pedaços diante de mim, na ordem em que foi feita, e parou onde a minha mesa parou.',
+    'Ponho o lampião na bancada. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.',
   quase_toda:
-    'Ponho o lampião na bancada e fico a olhar a sala. Passo a passo, a noite de sexta refez-se diante de mim, e cada passo dela ficou preso a um papel que trouxe da vila.',
+    'Ponho o lampião na bancada e fico olhando a sala. Gesto após gesto, a noite de sexta refez-se diante de mim, e nenhum deles saiu sem papel meu por baixo.',
 };
 
 // O corte é RELATIVO ao tamanho do catálogo, e não absoluto — é a lição da

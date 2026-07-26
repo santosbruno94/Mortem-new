@@ -13,11 +13,18 @@
 // O CONTRATO É A G9, E CABE NUMA LINHA: **a cena dramatiza; não prova.**
 // Do que decorrem as três regras deste catálogo:
 //
-//   • `exige` são as cartas que TÊM DE ESTAR NA MESA para que o gesto se
-//     desfaça em cena. Não basta uma: a arrumação só cede quando o par que
-//     a denuncia está colhido. Sem elas, o gesto não entra na cena — não
-//     entra encoberto, não entra insinuado, não entra de modo nenhum. Quem
-//     não colheu não vê, e a intervenção fica de pé (martelo (c) da OS-R7).
+//   • `exige` são TODAS as cartas que têm de estar na mesa para que o gesto
+//     se desfaça em cena — às vezes um par, às vezes uma só, conforme o que
+//     a arrumação precisa para ceder. Faltando qualquer uma, o gesto não
+//     entra na cena — não entra encoberto, não entra insinuado, não entra
+//     de modo nenhum. Quem não colheu não vê, e a intervenção fica de pé
+//     (martelo (c) da OS-R7).
+//   • A PROSA DE UM GESTO NÃO AFIRMA O QUE OUTRO GESTO PROVA. Cada texto
+//     fica dentro do que as suas próprias cartas de `exige` sustentam: dizer
+//     na lasca de vidro que a sala foi arrumada para ser lida entregaria a
+//     encenação inteira a quem pagou só pela lasca. É o furo de G9 que
+//     nenhuma guarda apanha — as guardas veem marcador e nome, não excesso
+//     de tese —, e por isso fica escrito aqui.
 //   • NENHUM GESTO TEM AUTOR. A prosa diz a mão, nunca o nome: nomear quem
 //     pôs os ponteiros seria provar por conta do jogador, e é exatamente o
 //     que a G9 proíbe. Quem nomeia é o monólogo, depois, e só até onde a
@@ -31,10 +38,16 @@
 //     proibido por construção: a cena é uma lista FILTRADA, e o gesto de
 //     cima pode não estar lá.
 //
-// A ordem do array é a ordem da noite, e depois a dos dias que se seguiram.
-// A cena percorre-a de cima a baixo; não há sorteio de ordem.
+// A ordem do array é a ordem em que os GESTOS foram feitos — a noite, e
+// depois os dias que se seguiram. Não é a ordem dos factos que os desfazem:
+// o quarto às escuras às nove e o portão passado das dez derrubam um gesto
+// das oito, e chegam mais longe na noite do que o gesto seguinte. A cena
+// percorre o array de cima a baixo; não há sorteio de ordem.
 // =====================================================================
 
+// `rubrica` NÃO vai à tela (a cena renderiza só `hora` e `prosa`): é o
+// rótulo de auditoria com que a telemetria da Fase 0 imprime o catálogo.
+// Por isso pode nomear o gesto pelo que ele é, sem ferir a observação pura.
 export const INTERVENCOES_NOITE = [
   {
     id: 'saida_ensaiada',
@@ -42,7 +55,7 @@ export const INTERVENCOES_NOITE = [
     rubrica: 'a hora de sair, dada duas vezes com as mesmas palavras',
     exige: ['alibi_silas', 'alibi_davey'],
     prosa:
-      'A oficina fecha-se com dois do lado de fora. A hora de sair sai depois pela boca de um e pela do outro, nas mesmas palavras e na mesma ordem, e uma das duas foi ensaiada antes de ser dita.',
+      'A oficina fecha-se com dois do lado de fora. A hora de sair sai depois pela boca de um e pela do outro, a mesma hora e a mesma ordem de gestos. Uma das duas, perguntada segunda vez, volta com as mesmas palavras na mesma ordem, e foi ensaiada antes de ser dita.',
   },
   {
     id: 'quarto_recolhido',
@@ -50,15 +63,23 @@ export const INTERVENCOES_NOITE = [
     rubrica: 'o recolhimento ao quarto, contra o quarto às escuras às nove',
     exige: ['alibi_silas', 'corrob_estalajadeiro'],
     prosa:
-      'O quarto cinco recebe quem declarou recolher-se às oito e não tornar a sair. Às nove, com a água quente a subir ao três, o cinco está às escuras e a cama por desfazer; o portão do pátio bate passado das dez.',
+      'O quarto cinco é o de quem declarou recolher-se às oito e não tornar a sair. Às nove, com a água quente subindo ao três, o cinco está às escuras e a cama por desfazer; o portão do pátio bate passado das dez.',
   },
   {
     id: 'mostrador_posto',
     hora: 'No escritório, passadas as nove',
-    rubrica: 'os ponteiros do relógio de lareira num quarto para as nove',
+    rubrica: 'os ponteiros recuados a um quarto para as nove, e só então o esmagamento',
     exige: ['ev_relogio_lareira', 'ev_maquinismo'],
+    // A ORDEM AQUI É O PIVÔ DO CASO, e não detalhe de prosa: os ponteiros
+    // recuam com a máquina ainda viva, e a peça só vem ao chão depois. Uma
+    // cena que esmagasse primeiro tornaria a direção indiferente — num
+    // relógio morto, adiantar seria tão silencioso quanto recuar — e o
+    // «08h45» perderia a razão de ser. As duas cartas de `exige` bastam
+    // para a derivar: a roda parou na nona badalada, logo os ponteiros não
+    // atravessaram as dez, as onze e o meio-dia sem que o carrilhão desse
+    // sinal.
     prosa:
-      'O relógio de lareira vem ao chão com a alavanca das badaladas pousada no nono entalhe da roda, e dali a roda não passa. Uma mão abre depois a caixa pelo lado que cedeu e leva os ponteiros a um quarto para as nove.',
+      'Os ponteiros do relógio de lareira recuam até um quarto para as nove, e a máquina ainda está viva quando isso se faz: adiantá-los teria feito o carrilhão bater na rua vazia. Só depois a peça vem ao chão, e a alavanca das badaladas fica pousada no nono entalhe da roda, de onde não passou.',
   },
   {
     id: 'assalto_encenado',
@@ -66,7 +87,7 @@ export const INTERVENCOES_NOITE = [
     rubrica: 'as gavetas puxadas e a fechadura forçada pelo lado de fora',
     exige: ['ev_vitrine', 'ev_fechadura'],
     prosa:
-      'As gavetas do balcão saem uma a uma e a caixa do troco esvazia-se. A vitrine dos dez relógios de ouro fica com as tampas corridas e as etiquetas voltadas para cima. Na porta dos fundos a alavanca morde o batente pelo lado de fora, e as lascas de tinta caem para o degrau do beco.',
+      'As gavetas do balcão saem uma a uma e a caixa do troco esvazia-se. A vitrine dos dez relógios de ouro fica com as tampas por abrir e as etiquetas voltadas para cima. Na porta dos fundos a alavanca morde o batente pelo lado de fora, e as lascas de tinta caem para o degrau do beco.',
   },
   {
     id: 'buril_lavado',
@@ -86,27 +107,31 @@ export const INTERVENCOES_NOITE = [
   },
   {
     id: 'bainha_por_sacudir',
-    hora: 'Antes de a porta dos fundos se fechar',
+    hora: 'Ao sair da sala',
     rubrica: 'a bainha que saiu da sala sem ser sacudida',
     exige: ['ev_vidro_dobra'],
     prosa:
-      'A sala fica arrumada para ser lida. A bainha de calça que sai por aquela porta leva presa uma lasca de vidro de mostrador do tamanho de meia unha, abaulada, com um fio de tinta dourada na borda.',
-  },
-  {
-    id: 'teoria_do_estranho',
-    hora: 'No sábado',
-    rubrica: 'a teoria do ladrão de fora, oferecida sem que se pergunte',
-    exige: ['comp_silas'],
-    prosa:
-      'A explicação já está pronta antes de alguém a pedir: gente de fora, da estrada, atrás do troco do caixa. Volta três vezes na mesma conversa, com variações, e nenhuma das três responde a pergunta que se fez.',
+      'A bainha de calça que sai daquela sala leva presa uma lasca de vidro de mostrador do tamanho de meia unha, abaulada, com um fio de tinta dourada na borda.',
   },
   {
     id: 'janela_fechada',
     hora: 'Ao meio-dia de sábado',
-    rubrica: 'a senhora da viela retratada, e a janela fechada',
+    rubrica: 'o avistamento da viela retirado, e a janela fechada',
     exige: ['dep_mulher_viela'],
     prosa:
-      'A senhora dos fundos do nº 9 pôs uma mulher de escuro na viela, pouco antes das nove da noite de sexta. Procurada outra vez ao meio-dia, diz não ter visto nada, e fecha a janela.',
+      'Dos fundos do nº 9 saiu o relato de uma senhora de escuro deixando a viela pouco antes das nove da noite de sexta. Procurada outra vez ao meio-dia, a testemunha diz não ter visto nada, e fecha a janela.',
+  },
+  {
+    // A `hora` diz o cômodo, e não o dia: `comp_silas` não traz data, e o
+    // relógio do jogo corre — quem gastar a tarde na estrada chega à saleta
+    // já no domingo. Rótulo de dia que a mesa não dá é rótulo falsificável
+    // em jogo.
+    id: 'teoria_do_estranho',
+    hora: 'Na saleta, depois do achado',
+    rubrica: 'a teoria do ladrão de fora, oferecida sem que se pergunte',
+    exige: ['comp_silas'],
+    prosa:
+      'A explicação já está pronta antes de alguém a pedir: gente de fora, da estrada, atrás do troco do caixa. Volta três vezes na mesma conversa, com variações, e nenhuma das três vem de pergunta que se tenha feito.',
   },
 ];
 

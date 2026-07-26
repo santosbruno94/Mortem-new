@@ -910,7 +910,7 @@ async function main() {
     checar('Rota 3: a cena não refaz o assalto que esta rota nunca leu', !reconstituicao.includes('degrau do beco'));
     checar('Rota 3: o fecho declara a cena curta, sem dizer o que ficou de pé', reconstituicao.includes('ficou inteira no resto'));
     checar('Rota 3: desfecho Impunidade', texto.includes('Impunidade'));
-    checar('Rota 3: o monólogo mede a noite pela colheita magra', texto.includes('É pouco para o que ali se passou'));
+    checar('Rota 3: o monólogo mede a noite pela colheita magra', texto.includes('não fui além deles'));
 
     // ============================================================
     // ROTA FLAT — a rota de escape 2D (?flat=1): sem WebGL/diorama,
