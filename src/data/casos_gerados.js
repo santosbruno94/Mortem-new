@@ -14215,7 +14215,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "cordao_torcido",
     "pertenceA": "gen_7_criada"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Instrumento Lavado, a Junta Úmida",
+     "carimboPadrao": "Instrumento lavado há pouco; junta ainda úmida",
+     "descricao": "Entre os pertences de Florence Hill, a peça lavada e reposta no lugar dela. A junta do aço com o cabo está úmida ao toque, e a madeira em volta escureceu de água. O feitio casa com a lesão da morta.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "cordao_torcido",
+      "pertenceA": "gen_7_criada",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
+     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
+     "descricao": "Entre os pertences de Florence Hill, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão da morta.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "cordao_torcido",
+      "pertenceA": "gen_7_criada",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_engodo",
@@ -17624,7 +17652,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "arma_de_ocasiao",
     "pertenceA": "gen_3_ferreiro"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Instrumento Lavado, a Junta Úmida",
+     "carimboPadrao": "Instrumento lavado há pouco; junta ainda úmida",
+     "descricao": "Entre os pertences de Leonard Smith, a peça lavada e reposta no lugar dela. A junta do aço com o cabo está úmida ao toque, e a madeira em volta escureceu de água. O feitio casa com a lesão do morto.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "arma_de_ocasiao",
+      "pertenceA": "gen_3_ferreiro",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
+     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
+     "descricao": "Entre os pertences de Leonard Smith, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão do morto.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "arma_de_ocasiao",
+      "pertenceA": "gen_3_ferreiro",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_ruido_ouvido",
@@ -25111,7 +25167,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "lamina_de_oficio",
     "pertenceA": "gen_0_ferreiro"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Instrumento Lavado, a Junta Úmida",
+     "carimboPadrao": "Instrumento lavado há pouco; junta ainda úmida",
+     "descricao": "Entre os pertences de John Ward, a peça lavada e reposta no lugar dela. A junta do aço com o cabo está úmida ao toque, e a madeira em volta escureceu de água. O feitio casa com a lesão do morto.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "lamina_de_oficio",
+      "pertenceA": "gen_0_ferreiro",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
+     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
+     "descricao": "Entre os pertences de John Ward, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão do morto.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "lamina_de_oficio",
+      "pertenceA": "gen_0_ferreiro",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_ruido_ouvido",
@@ -28888,7 +28972,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "cordao_torcido",
     "pertenceA": "gen_5_parteira"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Instrumento Lavado, a Junta Úmida",
+     "carimboPadrao": "Instrumento lavado há pouco; junta ainda úmida",
+     "descricao": "Entre os pertences de Dorcas Wright, a peça lavada e reposta no lugar dela. A junta do aço com o cabo está úmida ao toque, e a madeira em volta escureceu de água. O feitio casa com a lesão da morta.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "cordao_torcido",
+      "pertenceA": "gen_5_parteira",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
+     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
+     "descricao": "Entre os pertences de Dorcas Wright, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão da morta.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "cordao_torcido",
+      "pertenceA": "gen_5_parteira",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_ungueais",
@@ -46862,7 +46974,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "frasco_de_laudano",
     "pertenceA": "gen_0_costureira"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Frasco Lavado Há Pouco",
+     "carimboPadrao": "Frasco lavado; água ainda no vidro",
+     "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. O vidro está frio e molhado por dentro, e a rolha, posta de volta sobre a boca úmida, criou um anel de tintura na cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "frasco_de_laudano",
+      "pertenceA": "gen_0_costureira",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Frasco Lavado",
+     "carimboPadrao": "Frasco lavado, resto no gargalo",
+     "descricao": "Entre os pertences de Dora Saunders, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "frasco_de_laudano",
+      "pertenceA": "gen_0_costureira",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_engodo",
@@ -53905,7 +54045,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "frasco_de_laudano",
     "pertenceA": "gen_3_lavrador"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Frasco Lavado Há Pouco",
+     "carimboPadrao": "Frasco lavado; água ainda no vidro",
+     "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. O vidro está frio e molhado por dentro, e a rolha, posta de volta sobre a boca úmida, criou um anel de tintura na cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "frasco_de_laudano",
+      "pertenceA": "gen_3_lavrador",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Frasco Lavado",
+     "carimboPadrao": "Frasco lavado, resto no gargalo",
+     "descricao": "Entre os pertences de Joseph Green, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "frasco_de_laudano",
+      "pertenceA": "gen_3_lavrador",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_motivo",
@@ -57324,7 +57492,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "travesseiro_ou_pano",
     "pertenceA": "gen_5_lavadeira"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Pano Lavado Há Pouco",
+     "carimboPadrao": "Pano lavado; a dobra ainda por secar",
+     "descricao": "Entre os pertences de Amy Chapman, o pano lavado e reposto. O pano está seco na face e úmido no vinco da dobra, e pesa mais do que o linho seco ao lado dele. Roupa de cama assim há em toda casa da vila.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "travesseiro_ou_pano",
+      "pertenceA": "gen_5_lavadeira",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Pano Lavado",
+     "carimboPadrao": "Pano lavado, fiapo na trama",
+     "descricao": "Entre os pertences de Amy Chapman, o pano lavado e reposto. Na trama, onde a água não desfaz o urdume, ficou um fiapo claro. Roupa de cama assim há em toda casa da vila.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "travesseiro_ou_pano",
+      "pertenceA": "gen_5_lavadeira",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_motivo",
@@ -60759,7 +60955,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "travesseiro_ou_pano",
     "pertenceA": "gen_7_lavrador"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Pano Lavado Há Pouco",
+     "carimboPadrao": "Pano lavado; a dobra ainda por secar",
+     "descricao": "Entre os pertences de William Thompson, o pano lavado e reposto. O pano está seco na face e úmido no vinco da dobra, e pesa mais do que o linho seco ao lado dele. Roupa de cama assim há em toda casa da vila.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "travesseiro_ou_pano",
+      "pertenceA": "gen_7_lavrador",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Pano Lavado",
+     "carimboPadrao": "Pano lavado, fiapo na trama",
+     "descricao": "Entre os pertences de William Thompson, o pano lavado e reposto. Na trama, onde a água não desfaz o urdume, ficou um fiapo claro. Roupa de cama assim há em toda casa da vila.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "travesseiro_ou_pano",
+      "pertenceA": "gen_7_lavrador",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_fibra_aresta",
@@ -67860,7 +68084,35 @@ export const CASOS_POOL = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "frasco_de_laudano",
     "pertenceA": "gen_1_carroceiro"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Frasco Lavado Há Pouco",
+     "carimboPadrao": "Frasco lavado; água ainda no vidro",
+     "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. O vidro está frio e molhado por dentro, e a rolha, posta de volta sobre a boca úmida, criou um anel de tintura na cortiça. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "frasco_de_laudano",
+      "pertenceA": "gen_1_carroceiro",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Frasco Lavado",
+     "carimboPadrao": "Frasco lavado, resto no gargalo",
+     "descricao": "Entre os pertences de John Morris, o frasco de láudano lavado e reposto. No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura. A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "frasco_de_laudano",
+      "pertenceA": "gen_1_carroceiro",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_motivo",
@@ -74648,7 +74900,35 @@ export const CASOS_LUTA = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "arma_de_ocasiao",
     "pertenceA": "gen_7_lavrador"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Instrumento Lavado, a Junta Úmida",
+     "carimboPadrao": "Instrumento lavado há pouco; junta ainda úmida",
+     "descricao": "Entre os pertences de Thomas Walker, a peça lavada e reposta no lugar dela. A junta do aço com o cabo está úmida ao toque, e a madeira em volta escureceu de água. O feitio casa com a lesão da morta.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "arma_de_ocasiao",
+      "pertenceA": "gen_7_lavrador",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
+     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
+     "descricao": "Entre os pertences de Thomas Walker, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão da morta.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "arma_de_ocasiao",
+      "pertenceA": "gen_7_lavrador",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_sangue_alheio",
@@ -86044,7 +86324,35 @@ export const CASOS_LUTA = [
     "subDominio": "instrumento_oficio",
     "tipoVestigio": "arma_de_ocasiao",
     "pertenceA": "gen_4_lavadeira"
-   }
+   },
+   "estados": [
+    {
+     "ipmAte": 24,
+     "textoDisplay": "O Instrumento Lavado, a Junta Úmida",
+     "carimboPadrao": "Instrumento lavado há pouco; junta ainda úmida",
+     "descricao": "Entre os pertences de Annie Andrews, a peça lavada e reposta no lugar dela. A junta do aço com o cabo está úmida ao toque, e a madeira em volta escureceu de água. O feitio casa com a lesão do morto.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "arma_de_ocasiao",
+      "pertenceA": "gen_4_lavadeira",
+      "estadoDegradacao": "ativo"
+     }
+    },
+    {
+     "ipmAte": null,
+     "textoDisplay": "O Instrumento Lavado, o Coágulo sob a Virola",
+     "carimboPadrao": "Instrumento lavado; coágulo sob a virola e os rebites",
+     "descricao": "Entre os pertences de Annie Andrews, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura que se raspa para a lâmina de vidro. O feitio casa com a lesão do morto.",
+     "tagsOcultas": {
+      "dominio": "vestigio",
+      "subDominio": "instrumento_oficio",
+      "tipoVestigio": "arma_de_ocasiao",
+      "pertenceA": "gen_4_lavadeira",
+      "estadoDegradacao": "durável"
+     }
+    }
+   ]
   },
   {
    "id": "gen_sangue_alheio",

@@ -1119,8 +1119,15 @@ export function resolverCrime({ assassino, vitima, metodoId, cenario, interior, 
       registrarEvento(assassino.id, 'fuga_desleixada', { celula: posicaoCorpo.celula }, { depositados: depositadosErro });
     }
   } else if (metodo.instrumento) {
-    const vUmido = depositar('instrumento_guardado_umido', {}, `${metodo.instrumento} lavado por alto e reposto; coágulo escuro alojado sob o rebite do cabo, onde a água não entrou`);
-    registrarEvento(assassino.id, 'instrumento_reposto', { comodo: comodoId }, { depositados: [vUmido] });
+    // OS-R9 §2.8: a lavagem por alto deposita DOIS vestígios no mesmo gesto,
+    // e a diferença entre eles é de PRAZO, não de grau. A umidade da junta é
+    // o sinal perecível (seca em um dia); o coágulo sob a virola é o durável
+    // que a KB documenta, e é ele que sobrevive à água e ao tempo. Antes
+    // desta OS só existia o perecível, e o jogo mostrava a junta úmida por
+    // mais tarde que o perito chegasse — impreciso, e a KB não o perdoa.
+    const vUmido = depositar('instrumento_guardado_umido', {}, `${metodo.instrumento} lavado por alto e reposto; a junta do aço com o cabo ainda úmida`);
+    const vCoagulo = depositar('instrumento_lavado_coagulo', {}, `${metodo.instrumento} lavado por alto e reposto; coágulo escuro alojado sob a virola e em torno dos rebites, onde a água não entrou`);
+    registrarEvento(assassino.id, 'instrumento_reposto', { comodo: comodoId }, { depositados: [vUmido, vCoagulo] });
   }
 
   // ===================== PÓS-FATO: ENCENAÇÃO (arrasto) =====================

@@ -5595,6 +5595,91 @@ console.log(
 );
 if (!gr93NoiteOk) console.log('GR9-3 — a noite no banco:', gr93Furos.slice(0, 12).join(' · '));
 
+// ============================================================
+// OS-R9 · FASE 5 — A GR8-4 SOBRE AS ÁRVORES GERADAS (GR9-5).
+// ============================================================
+// A GR8-4 nasceu na R8 medindo as cinco árvores do caso-escola. Aqui ela
+// corre sobre as 155 do banco, com a MESMA régua — a função é copiada do
+// bloco de cima e não reimplementada, porque duas cópias divergem.
+//
+// A ISENÇÃO É POR NOME, E NUNCA POR TOLERÂNCIA NUMÉRICA. Martelo (a) do
+// utilizador em 26/07/2026, sobre a medida da Fase 0: a resposta nula do
+// exame — «Nada de nota.» — sai igual em 137 dos 165 nós `exigencia_*` do
+// banco, e FICA igual. A razão não é economia de prosa: **variar a redação
+// do «não há nada aqui» transformaria estilo em informação.** O jogador
+// aprenderia a ler no floreado o que a marca não diz, e é exatamente esse
+// telégrafo que a GE2 e a GR5-6 existem para matar. A alternativa honesta,
+// se um dia se quiser variedade, é variar por PERSONAGEM (o registro de
+// quem responde) e nunca pelo RESULTADO do exame.
+//
+// Uma tolerância numérica («até N repetições») teria escondido o dia em que
+// o derivador começasse a repetir OUTRA coisa. Por isso a isenção nomeia o
+// prefixo do nó, e o resto da árvore continua a reprovar.
+const NOS_ISENTOS_R9 = ['exigencia_'];
+const gr95Furos = [];
+let arvoresMedidasR9 = 0;
+let nosIsentosContados = 0;
+for (const caso of BANCO_R9) {
+  for (const [arvoreId, arvore] of Object.entries(caso.dialogos || {})) {
+    arvoresMedidasR9 += 1;
+    const ondeApareceu = new Map();
+    for (const [nomeNo, no] of Object.entries(arvore.nos || {})) {
+      if (NOS_ISENTOS_R9.some((p) => nomeNo.startsWith(p))) {
+        nosIsentosContados += 1;
+        continue;
+      }
+      for (const fala of textosDoNo(no)) {
+        for (const frase of narracaoDaFala(fala)) {
+          const chave = frase.toLowerCase().replace(/\s+/g, ' ');
+          if (!ondeApareceu.has(chave)) ondeApareceu.set(chave, []);
+          ondeApareceu.get(chave).push({ no: nomeNo, beat: beatDoNo(nomeNo) });
+        }
+      }
+    }
+    for (const [frase, sitios] of ondeApareceu) {
+      const beats = new Set(sitios.map((s) => s.beat));
+      const nos = new Set(sitios.map((s) => s.no));
+      const alternativasDoMesmoBeat = beats.size === 1 && nos.size === sitios.length && nos.size > 1;
+      if (!alternativasDoMesmoBeat && sitios.length > 1) {
+        gr95Furos.push(`${caso.id}/${arvoreId}: «${frase.slice(0, 40)}…» em ${sitios.map((s) => s.no).join(' + ')}`);
+      }
+    }
+  }
+}
+const gr95RubricaGeradaOk = gr95Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 5 — A RUBRICA NAS ÁRVORES GERADAS ===');
+console.log(
+  `  ${arvoresMedidasR9} árvores medidas · ${nosIsentosContados} nós de exigência isentos por nome · ` +
+    `${gr95Furos.length} repetição(ões) fora da isenção`
+);
+if (!gr95RubricaGeradaOk) console.log('GR9-5 —', gr95Furos.slice(0, 10).join(' · '));
+
+// ============================================================
+// OS-R9 · FASE 4 — TODA CLASSE DE VESTÍGIO CITA A KB (GR9-6).
+// ============================================================
+// A proveniência por linha já era exigida dos ARQUÉTIPOS e das tabelas
+// auxiliares, e não das CLASSES DE VESTÍGIO — que são a matéria forense do
+// jogo, e onde um anacronismo custa mais caro. A guarda fecha o buraco e
+// vale para o que já existia: uma classe sem fonte é uma classe cuja
+// medicina ninguém conferiu.
+//
+// A citação tem de apontar arquivo E linha (ou seção nomeada): «a KB diz»
+// não é proveniência, é memória.
+const gr96Furos = [];
+for (const [id, classe] of Object.entries(CLASSES_VESTIGIO)) {
+  const p = classe.proveniencia;
+  if (typeof p !== 'string' || !p.trim()) {
+    gr96Furos.push(`${id}: sem proveniência`);
+    continue;
+  }
+  if (!/docs\/kb-/.test(p)) gr96Furos.push(`${id}: proveniência não aponta a KB`);
+  else if (!/\.md[:\s]/.test(p)) gr96Furos.push(`${id}: proveniência sem arquivo resolvível`);
+}
+const gr96ProvenienciaOk = gr96Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 4 — PROVENIÊNCIA DAS CLASSES DE VESTÍGIO ===');
+console.log(`  ${Object.keys(CLASSES_VESTIGIO).length} classes, todas com fonte na KB: ${gr96ProvenienciaOk}`);
+if (!gr96ProvenienciaOk) console.log('GR9-6 —', gr96Furos.slice(0, 10).join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5762,6 +5847,14 @@ const checagens = [
   [
     `GR9-2 (paridade de exposição em lote): ${dossiesMedidos} dossiês, os três níveis alcançáveis por TODOS — réu e inocente com a mesma média de níveis (${mediaReu.toFixed(2)}); beat 3 em toda árvore e em todo tom, alcançável de qualquer tom do beat 2; nenhum marcador de carta em beat 3, alfinetada ou degrau; e o corte de todo degrau é o próprio corteDeE2 da sua lista`,
     gr92ParidadeLoteOk,
+  ],
+  [
+    `GR9-5 (a rubrica nas árvores geradas): a GR8-4 corre sobre as ${arvoresMedidasR9} árvores do banco com a MESMA régua do tutorial, e a isenção é POR NOME (${nosIsentosContados} nós de exigência) — nunca por tolerância numérica; fora da exigência, nenhuma frase de narração se repete entre beats`,
+    gr95RubricaGeradaOk,
+  ],
+  [
+    `GR9-6 (proveniência das classes de vestígio): as ${Object.keys(CLASSES_VESTIGIO).length} classes citam a KB por arquivo e linha — a exigência que já valia para arquétipos passa a valer para a matéria forense`,
+    gr96ProvenienciaOk,
   ],
   [
     `GR9-3 (a noite no banco gerado): ${casosComCena}/${BANCO_R9.length} casos com reconstituição, ${gestosNoBanco} gestos — nenhum marcador de carta e nenhum nome de gente na prosa da cena; todo id de exige existe no caso; catálogo entre 3 e 9, sempre acompanhado do texto que o situa; e a geografia do caso-escola saiu de src/logic/reconstituicao.js`,
