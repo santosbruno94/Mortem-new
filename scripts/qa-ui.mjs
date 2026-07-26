@@ -996,9 +996,15 @@ async function main() {
     await espera(page, 250);
     checar('Rota gerada: clicar um cômodo da planta abre o ponto', (await page.locator('.ponto-corpo').count()) >= 1);
     await abrirPontos(page);
+    // OS-R8 · Fase 4: esta checagem media `.ponto-corpo >= 1`, que a linha de
+    // cima (clicar UM cômodo) já tinha estabelecido — abrir mais pontos não
+    // pode baixar a conta, logo ela não podia falhar depois de a outra passar.
+    // Passa a cobrar o que o seu rótulo promete: TODOS os pontos do acordeão
+    // abriram, e cada um rendeu o seu corpo de prosa.
+    const pontosDaCena = await page.locator('.ponto-interesse').count();
     checar(
-      'Rota gerada: abrir os pontos revela a prosa dos cômodos',
-      (await page.locator('.ponto-corpo').count()) >= 1
+      `Rota gerada: abrir os pontos revela a prosa dos ${pontosDaCena} cômodos`,
+      pontosDaCena >= 1 && (await page.locator('.ponto-corpo').count()) === pontosDaCena
     );
     await extrairTermosVisiveis(page);
     await fecharOverlay(page);

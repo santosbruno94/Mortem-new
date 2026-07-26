@@ -2728,7 +2728,16 @@ const p9ViaBCobertura = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA].filter((p) 
   Object.values((p.verdadeDeOuro || {}).perifericos || {}).some((x) => x.veredictoEsperado === 'inocente_acesso')
 ).length;
 console.log(`  Via B: ${p9ViaBCobertura}/${p9Telemetria.total} casos com acessor (inocente_acesso)`);
-const p9Fase0Ok = p9Telemetria.total === 1 + CASOS_POOL.length + CASOS_LUTA.length;
+// A OS-R8 · Fase 4 RETIROU esta linha da lista de checagens, e a razão fica
+// escrita: a asserção era `p9Telemetria.total === 1 + CASOS_POOL.length +
+// CASOS_LUTA.length`, e `total` é `casos.length` do MESMO array que a chamada
+// monta com esses mesmos três termos. Comparava um comprimento consigo próprio
+// — não podia falhar, em nenhuma árvore, nunca. E não havia perna honesta a
+// acrescentar-lhe: a cobertura do banco (índice × banco) já é cobrada pelo
+// `indiceBancoOk`, e a classificação é exaustiva por construção (if/else if/
+// else). O que esta secção faz é MEDIR, e a medição continua inteira — sai nas
+// linhas impressas acima, que é onde a P9 a foi buscar. O rótulo dizia «só
+// mede» e era verdade; o que estava errado era ela figurar entre as guardas.
 
 // (b) Higiene de todos os pacotes embarcados.
 function problemasDoPacoteGerado(pacote) {
@@ -4389,12 +4398,14 @@ if (!tintaDaHoraOk) {
 // ============================================================
 // GUARDAS DA OS-R4 (elenco e livros) — todas leem o PACOTE do caso-escola.
 // ============================================================
-// GR4-1 (G11) — TETO DE CARTAS. O catálogo mais a carta que nasce em runtime
-// (ev_algor, do termômetro) não passa de 46: acima disso o mural satura. A
-// conta imprime-se para a OS seguinte a ler antes de gastar.
+// GR4-1 — REMOVIDA na OS-R8 · Fase 4, e a razão fica escrita: a asserção era
+// `cartasEmJogo <= 46`, e a GR7-7 já cobra `=== 42`, que a implica. Duas
+// guardas para o mesmo número, e a mais fraca não acrescentava perna. O que
+// GR4-1 tinha de próprio — a CONTA impressa para a OS seguinte ler antes de
+// gastar — passou para o rótulo da GR7-7, que é onde o número já vive. O teto
+// da G11 continua cobrado lá, e por asserção própria (ver `gr77Furos`).
 const TETO_CARTAS = 46;
 const cartasEmJogo = CARTAS.length + 1; // + ev_algor
-const tetoDeCartasOk = cartasEmJogo <= TETO_CARTAS;
 
 // GR4-2 (G1) — A CADEIA FÍSICA É INTOCÁVEL, inclusive por acréscimo: o
 // conjunto das cartas em domínio `temporal` ou `causal` é EXATAMENTE este.
@@ -5146,7 +5157,15 @@ const checagens = [
   ['A explicação da luz é paga no epílogo, e só com a refutação', luzPagaSoComRefutacao],
   ['Epílogo determinístico; a conta do perito lê a hora do selo', epilogoDeterministico],
   ['Determinismo: sem Math.random/Date.now em logic/data/store/gerador', violacoesDeterminismo.length === 0],
-  ['Contrato de assets: manifesto válido (arquivo, dimensão, licença) e sem arte fora do manifesto', manifestoValido],
+  [
+    // OS-R8 · Fase 4: o rótulo passa a dizer QUANTOS assets foram medidos. A
+    // primeira perna (arquivo, dimensão, licença) varre o manifesto, e o
+    // manifesto está VAZIO — logo, hoje, ela passa por vacuidade. Quem lesse
+    // «manifesto válido» em verde concluiria que houve arte conferida. A perna
+    // que mede de verdade é a segunda, e essa está viva desde sempre.
+    `Contrato de assets: ${MANIFESTO_ASSETS.length} asset(s) no manifesto conferido(s) (arquivo, dimensão, licença) e nenhuma arte importada fora dele`,
+    manifestoValido,
+  ],
   ['Retrato em camadas: moldes bem-formados e compositor fora do motor', retratoEmCamadasOk],
   ['Aparência: genótipo completo (curadoria + derivação determinística)', aparenciasOk],
   ['Aparência fora do motor: veredicto/acusação não leem a camada', motorSemAparencia],
@@ -5198,10 +5217,6 @@ const checagens = [
   ['Árvores de diálogo geradas íntegras: árvore por suspeito, 4 tons por beat, sem nó órfão, bijeção confrontos↔reacoesProva, sustentação comum (OS diálogo)', dialogosGeradosIntegros],
   ['Armadilhas da árvore detectadas: beat de 3 tons, confronto sem reação, nó órfão, requerCarta fantasma (OS diálogo)', armadilhasDialogoDetectadas],
   ['Replay da árvore: mesma seed → mesma árvore, chamada a chamada (OS diálogo)', replayArvoreOk],
-  [
-    `P9 Fase 0 — telemetria da âncora dupla (só mede): ${p9Telemetria.duravel}/${p9Telemetria.total} já têm 2ª âncora durável independente; ${p9Telemetria.soInstrumental} cairiam na Via B (OS P9 §6)`,
-    p9Fase0Ok,
-  ],
   ['Psique: catálogo v2 íntegro — 13 vetores completos × 18 demográficos, degrau raro alcançável, sem afinidadePapeis (decisão 12), matriz de encenação com proveniência (OS psíquica + priors F4)', psiqueCatalogoIntegro],
   ['Lint léxico L1: nosologia/jargão pós-1893 fora de toda superfície do jogo (OS psíquica §5)', lintL1Ok],
   ['Lint léxico L2: sombra/persona/vetor/desencaixe/complexo fora de identificadores e chaves do runtime (OS psíquica §5)', lintL2Ok],
@@ -5244,7 +5259,6 @@ const checagens = [
   ['Inc. 6 — luta forçada: todo caso do pool luta tem gen_sinal_exigivel', exigenciaLutaForcadaOk],
   ['Cobertura de rótulos: todo id emitido pelo banco (e o catálogo de causas) tem rótulo em rotulos.js', problemasCoberturaRotulos.length === 0],
   ['Prancha da vila (E2): a hora vira tinta — três alavancas estáveis por faixa, vãos no arranjo do 3D, acendimento pela janelaAcesa de sempre', tintaDaHoraOk],
-  [`GR4-1 (teto de cartas): ${cartasEmJogo} de ${TETO_CARTAS} em jogo (catálogo + ev_algor); ${TETO_CARTAS - cartasEmJogo} livres para as OS seguintes`, tetoDeCartasOk],
   ['GR4-2 (cadeia física intocável): nenhuma carta nova em domínio temporal ou causal', cadeiaFisicaIntacta],
   ['GR4-3 (o veraz sem crédito): a carta do sineiro não firma nexo nem derruba paradeiro, e é a MARCA que a recusa', verazSemCredito],
   ['GR4-4 (o Livro II prova o móbil): o caderno dos pesos vale como carta de motivação do réu', livroIIValeMobil],
@@ -5272,7 +5286,12 @@ const checagens = [
   [`GR7-3 (rebate só o que a mesa tem): toda intervenção cai com as cartas que exige e volta ao pé sem qualquer uma delas; mesa vazia roda curta (${INTERVENCOES_NOITE.length} gestos no catálogo)`, gr73SoAMesaOk],
   ['GR7-6 (a cena não chaveia no culpado): a função não recebe réu, e nenhum nome de suspeito entra na prosa da cena', gr76SemBitCulpadoOk],
   ['GR7-5 (teto de máxima intacto): toda variante declara `maxima`, nenhuma combinação sorteável traz duas, e a D25 pesa uma vez em cada um dos quatro desfechos', gr75TetoMaximaOk],
-  [`GR7-7 (teto de cartas): a R7 não gasta — o caso-escola sai com ${CATALOGO_R7} de 46, e as intervenções só citam cartas que já existiam`, gr77TetoCartasOk],
+  [
+    `GR7-7 (teto de cartas, e a conta que a OS seguinte lê antes de gastar): ${cartasEmJogo} de ${TETO_CARTAS} em jogo (catálogo + ev_algor), ${
+      TETO_CARTAS - cartasEmJogo
+    } livres; o número é o final da R6, e as intervenções só citam cartas que já existiam`,
+    gr77TetoCartasOk,
+  ],
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
   ['GR8-4 (a rubrica não se lê duas vezes): nenhuma frase de narração se repete verbatim entre beats da mesma árvore; nós do mesmo beat são alternativas, e o paradeiro sai igual em todo tom (G4)', gr84RubricaUnicaOk],
