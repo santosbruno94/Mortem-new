@@ -748,8 +748,9 @@ async function main() {
     // cena roda por extenso. É o teto — nenhuma mesa desfaz mais do que isto.
     checar('Rota 1: a mesa completa desfaz os nove gestos da noite', passosReconstituicao === 9);
     checar('Rota 1: a cena refaz o mostrador posto num quarto para as nove', reconstituicao.includes('um quarto para as nove'));
-    // O feixe da D16 dramatizado: a hora dita duas vezes nas mesmas palavras.
-    checar('Rota 1: a cena mostra a hora ensaiada antes de ser dita', reconstituicao.includes('na mesma ordem'));
+    // O feixe da D16 dramatizado: a hora que passa de uma boca para a outra
+    // antes de chegar ao papel, e a resposta que volta palavra por palavra.
+    checar('Rota 1: a cena mostra a hora ensaiada antes de ser dita', reconstituicao.includes('volta palavra por palavra'));
     checar('Rota 1: a cena não nomeia autor de gesto nenhum', !/Silas Crane|Crane/.test(reconstituicao));
     checar('Rota 1: a cena sem id interno vazado', !/alibi_|ev_|dep_|comp_|corrob_/.test(reconstituicao));
     checar('Rota 1: desfecho Vitória Absoluta', texto.includes('Vitória Absoluta'));

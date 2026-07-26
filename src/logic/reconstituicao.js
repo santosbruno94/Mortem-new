@@ -30,9 +30,15 @@
 // gerador produzir intervenções, estas três frases vão para o pacote, como
 // as próprias `intervencoes` já foram.
 //
-// BRILHO: zero frases de efeito, de propósito. O guia §3 dá uma máxima
-// por desfecho, e ela pertence ao fecho do monólogo, que vem logo a
-// seguir. Uma cena que também brilhasse poria duas na mesma tela.
+// BRILHO: zero frases de efeito, com UMA exceção deliberada — o «Saio como
+// entrei.» da faixa `nenhuma`. O guia §3 dá uma máxima por desfecho, e ela
+// pertence ao fecho do monólogo, que vem logo a seguir; uma cena que também
+// brilhasse poria duas na mesma tela. A faixa vazia é o caso em que o texto
+// tem de comunicar CONSEQUÊNCIA («foi curta por culpa tua») sem comunicar
+// CONTEÚDO («eis o que te escapou»), e um fecho plano ali corre o risco
+// maior — o de se ler como defeito, que é o próprio aviso do martelo (c).
+// Fica sob medição no próximo playtest humano: se o jogador não ler a cena
+// curta como culpa própria, o remédio é desta frase.
 // =====================================================================
 
 import { intervencoesRebatidas } from '../data/intervencoes.js';
@@ -48,7 +54,7 @@ const SAL = 'reforma:r7:intervencao';
 export const ABERTURAS_RECONSTITUICAO = [
   'Domingo à noite. A loja está fechada e o lume apagado; o lampião de mão vai à frente, do balcão à oficina e da oficina ao escritório. Sobre a bancada, em fila, o que trouxe comigo.',
   'Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua e a relojoaria é minha por uma hora. Refaço a noite de sexta com o que a mesa sustenta, e paro onde ela parar.',
-  'Domingo à noite, e a vila dorme cedo. Percorro a sala com o lampião baixo, e não há ninguém a quem perguntar. A sexta-feira volta em pedaços, e só nos pedaços que colhi.',
+  'Domingo à noite, e a vila dorme cedo. Ando pela sala com o lampião baixo, e não há ninguém a quem perguntar. A sexta-feira volta em pedaços, e só nos pedaços que colhi.',
 ];
 
 // O fecho é FUNÇÃO DA COLHEITA, não sorteio: quatro faixas, do nada ao
@@ -69,7 +75,7 @@ export const FECHOS_RECONSTITUICAO = {
   varias:
     'Ponho o lampião na bancada. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.',
   quase_toda:
-    'Ponho o lampião na bancada e fico olhando a sala. Gesto após gesto, a noite de sexta refez-se diante de mim, e nenhum deles saiu sem papel meu por baixo.',
+    'Ponho o lampião na bancada e fico olhando a sala. A noite de sexta voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo.',
 };
 
 // O corte é RELATIVO ao tamanho do catálogo, e não absoluto — é a lição da

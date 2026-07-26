@@ -31,15 +31,19 @@
 //     cadeia dele alcança. É também o que faz a G3 valer por construção —
 //     sem nome na cena, não há como o texto ramificar no bit `culpado`.
 //   • A `hora` de cada gesto É AUTOSSUFICIENTE, e nunca afirma relógio que
-//     as cartas de `exige` não deem. As três da noite fechada trazem hora
-//     porque as cartas a trazem (a declaração das sete e meia, a das oito,
-//     a roda de contagem pousada na nona badalada); as outras dizem o
-//     cômodo, que é o que se sabe. Marcador relativo ("depois disso") fica
-//     proibido por construção: a cena é uma lista FILTRADA, e o gesto de
-//     cima pode não estar lá.
+//     as cartas de `exige` não deem. Três trazem hora porque as cartas a
+//     trazem (a declaração das sete e meia, a das oito, a roda de contagem
+//     pousada na nona badalada) e uma traz dia porque é assento de polícia
+//     já lavrado quando o perito chega (a retratação ao meio-dia); as
+//     outras dizem o cômodo, que é o que se sabe. Marcador relativo
+//     ("depois disso") fica proibido por construção: a cena é uma lista
+//     FILTRADA, e o gesto de cima pode não estar lá.
 //
-// A ordem do array é a ordem em que os GESTOS foram feitos — a noite, e
-// depois os dias que se seguiram. Não é a ordem dos factos que os desfazem:
+// A ordem do array é a da hora que cada arrumação OCUPA na noite: a dos
+// álibis é a hora que eles alegam (a resposta ensaiada e o «recolhi-me às
+// oito» são ditos ao perito no sábado, mas ocupam as sete e meia e as
+// oito); a dos gestos materiais é a hora em que foram feitos; e no fim
+// vêm os dias seguintes. Não é a ordem dos fatos que os desfazem:
 // o quarto às escuras às nove e o portão passado das dez derrubam um gesto
 // das oito, e chegam mais longe na noite do que o gesto seguinte. A cena
 // percorre o array de cima a baixo; não há sorteio de ordem.
@@ -55,7 +59,7 @@ export const INTERVENCOES_NOITE = [
     rubrica: 'a hora de sair, dada duas vezes com as mesmas palavras',
     exige: ['alibi_silas', 'alibi_davey'],
     prosa:
-      'A oficina fecha-se com dois do lado de fora. A hora de sair sai depois pela boca de um e pela do outro, a mesma hora e a mesma ordem de gestos. Uma das duas, perguntada segunda vez, volta com as mesmas palavras na mesma ordem, e foi ensaiada antes de ser dita.',
+      'A oficina fecha-se com dois do lado de fora, e a hora de sair passa de um para o outro antes de passar ao papel. Sai depois pela boca de ambos, a mesma hora e a mesma ordem de gestos; perguntada segunda vez, uma das duas respostas volta palavra por palavra.',
   },
   {
     id: 'quarto_recolhido',
@@ -63,27 +67,38 @@ export const INTERVENCOES_NOITE = [
     rubrica: 'o recolhimento ao quarto, contra o quarto às escuras às nove',
     exige: ['alibi_silas', 'corrob_estalajadeiro'],
     prosa:
-      'O quarto cinco é o de quem declarou recolher-se às oito e não tornar a sair. Às nove, com a água quente subindo ao três, o cinco está às escuras e a cama por desfazer; o portão do pátio bate passado das dez.',
+      'O quarto cinco é o de quem declarou recolher-se às oito e não tornar a sair. Às nove o cinco está às escuras e a cama por desfazer; o portão do pátio bate passado das dez.',
   },
   {
     id: 'mostrador_posto',
     hora: 'No escritório, passadas as nove',
-    rubrica: 'os ponteiros recuados a um quarto para as nove, e só então o esmagamento',
+    rubrica: 'os ponteiros recuados a um quarto para as nove, e logo o esmagamento',
     exige: ['ev_relogio_lareira', 'ev_maquinismo'],
-    // A ORDEM AQUI É O PIVÔ DO CASO, e não detalhe de prosa: os ponteiros
-    // recuam com a máquina ainda viva, e a peça só vem ao chão depois. Uma
-    // cena que esmagasse primeiro tornaria a direção indiferente — num
-    // relógio morto, adiantar seria tão silencioso quanto recuar — e o
-    // «08h45» perderia a razão de ser. As duas cartas de `exige` bastam
-    // para a derivar: a roda parou na nona badalada, logo os ponteiros não
-    // atravessaram as dez, as onze e o meio-dia sem que o carrilhão desse
-    // sinal.
+    // A ORDEM AQUI É O PIVÔ DO CASO, e não detalhe de prosa. Os ponteiros
+    // recuam com a máquina ainda viva, e a peça vem ao chão logo a seguir.
+    // Duas razões, e a segunda é a que fecha o caso:
+    //
+    //   • RECUAR é a única direção que não solta o trem das badaladas — num
+    //     movimento de roda de contagem, a peça de levantamento sobe pelo
+    //     pino da roda das horas no sentido horário, e para trás o pino
+    //     desce sem soltar nada;
+    //   • ADIANTAR teria CONSERTADO A PROVA. Cada hora batida avança a
+    //     roda — as dez, as onze, a meia-noite e as horas da manhã —, e
+    //     chegando ao mostrador das 08h45 a alavanca estaria no
+    //     oitavo entalhe, em concordância perfeita com a hora falsa, e não
+    //     haveria caso nenhum. É recuar que produz a discórdia entre o
+    //     mostrador e a roda — a discórdia que dá nome a «A Hora Emprestada».
+    //
+    // E o esmagamento tem prazo: com o mostrador correndo desde as 08h45, a
+    // peça bateria dez um quarto de hora depois, e morreriam de uma vez o
+    // silêncio e a nona badalada. Que assim foi, prova-o a carta — o
+    // mostrador é achado AINDA em 08h45, onde foi posto.
     prosa:
-      'Os ponteiros do relógio de lareira recuam até um quarto para as nove, e a máquina ainda está viva quando isso se faz: adiantá-los teria feito o carrilhão bater na rua vazia. Só depois a peça vem ao chão, e a alavanca das badaladas fica pousada no nono entalhe da roda, de onde não passou.',
+      'Os ponteiros do relógio de lareira recuam até um quarto para as nove, com a máquina ainda viva. Logo depois a peça vem ao chão, e a alavanca das badaladas fica pousada no nono entalhe da roda, de onde não passou.',
   },
   {
     id: 'assalto_encenado',
-    hora: 'Na loja, na mesma noite',
+    hora: 'Na loja, na noite de sexta',
     rubrica: 'as gavetas puxadas e a fechadura forçada pelo lado de fora',
     exige: ['ev_vitrine', 'ev_fechadura'],
     prosa:
@@ -91,7 +106,7 @@ export const INTERVENCOES_NOITE = [
   },
   {
     id: 'buril_lavado',
-    hora: 'Na oficina, na mesma noite',
+    hora: 'Na oficina, na noite de sexta',
     rubrica: 'o buril lavado e recolhido à cera dos outros',
     exige: ['ev_estojo_buril', 'ev_residuo_ferida'],
     prosa:
@@ -111,7 +126,7 @@ export const INTERVENCOES_NOITE = [
     rubrica: 'a bainha que saiu da sala sem ser sacudida',
     exige: ['ev_vidro_dobra'],
     prosa:
-      'A bainha de calça que sai daquela sala leva presa uma lasca de vidro de mostrador do tamanho de meia unha, abaulada, com um fio de tinta dourada na borda.',
+      'A bainha de calça passa a porta sem ser sacudida, e leva presa uma lasca de vidro de mostrador do tamanho de meia unha, abaulada, com um fio de tinta dourada na borda.',
   },
   {
     id: 'janela_fechada',
@@ -119,7 +134,7 @@ export const INTERVENCOES_NOITE = [
     rubrica: 'o avistamento da viela retirado, e a janela fechada',
     exige: ['dep_mulher_viela'],
     prosa:
-      'Dos fundos do nº 9 saiu o relato de uma senhora de escuro deixando a viela pouco antes das nove da noite de sexta. Procurada outra vez ao meio-dia, a testemunha diz não ter visto nada, e fecha a janela.',
+      'Dos fundos do nº 9 vem o relato de que uma senhora de escuro deixou a viela pouco antes das nove da noite de sexta. Procurada outra vez, a testemunha diz não ter visto nada, e fecha a janela.',
   },
   {
     // A `hora` diz o cômodo, e não o dia: `comp_silas` não traz data, e o
@@ -131,7 +146,7 @@ export const INTERVENCOES_NOITE = [
     rubrica: 'a teoria do ladrão de fora, oferecida sem que se pergunte',
     exige: ['comp_silas'],
     prosa:
-      'A explicação já está pronta antes de alguém a pedir: gente de fora, da estrada, atrás do troco do caixa. Volta três vezes na mesma conversa, com variações, e nenhuma das três vem de pergunta que se tenha feito.',
+      'A explicação vem antes da pergunta: gente de fora, da estrada, atrás do troco do caixa. Volta três vezes na mesma conversa, com variações.',
   },
 ];
 
