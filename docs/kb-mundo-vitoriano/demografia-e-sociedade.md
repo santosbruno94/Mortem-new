@@ -137,8 +137,9 @@ seguro de vida é móbil de época perfeitamente documentado.
 
 A KB era muda sobre casamento, e casamento é onde metade dos móbeis de vila mora. O regime
 em vigor em 1893 é o do **Marriage Act 1823** (4 Geo. IV c. 76), com o registro civil do
-**Marriage Act 1836** por cima. Há **duas portas**, e escolher entre elas é ato social
-legível — é essa a parte que interessa ao desenho de casos.
+**Marriage Act 1836** por cima. Há **três portas** — proclamas, licença e certificado do
+registrador —, e escolher entre elas é ato social legível: é essa a parte que interessa ao
+desenho de casos.
 
 ### 7.1 A porta pública: os proclamas (*banns*)
 
@@ -148,11 +149,17 @@ legível — é essa a parte que interessa ao desenho de casos.
 - **Aviso escrito das partes ao ministro**, entregue **pelo menos sete dias antes** da
   primeira publicação, com nomes de batismo e sobrenomes verdadeiros, a morada na paróquia e
   o tempo de residência.
-- **Nome falso invalida**: se as partes se casarem sabendo que a publicação foi indevida, o
-  casamento é **nulo**. É por isso que o pároco confere nomes antes de ler — a ansiedade dele
-  é legal, não decorativa.
+- **Nome falso nem sempre invalida, e a metade que sobra é a utilizável.** O casamento só é
+  nulo se **ambas as partes**, sabendo e de propósito (*both parties knowingly and
+  wilfully*), casarem sem a devida publicação — foi essa a mudança de 1823 contra o regime de
+  1753, que anulava por defeito técnico. **Se apenas um sabia do nome falso, o casamento
+  vale**, e a parte enganada fica casada com quem não é quem disse ser. O pároco confere
+  nomes antes de ler porque a ansiedade dele é legal, não decorativa.
 - **Caducidade em três meses** contados da última publicação. Passado isso, recomeça tudo.
-- **Custo**: gratuito ou de taxa mínima.
+- **Custo**: a publicação em si é de xelins, mas o casamento por proclamas sai por
+  **11s 6d a 15s 6d** conforme a paróquia (publicação mais taxa do celebrante) — perto de
+  **uma semana inteira do salário de um lavrador** (§4). Barato ao lado da licença; nunca
+  grátis.
 
 Consequência de enredo: os proclamas são um **relógio público**. Entre o aviso e o terceiro
 domingo há um mínimo de três semanas em que a vila inteira fica sabendo, por parcelas, o que
@@ -162,22 +169,42 @@ o casal decidiu. Quem tiver razão para impedir tem prazo, e quem tiver vergonha
 
 - Concedida pelo bispo ou pelo *surrogate* dele. **Dispensa a leitura pública.**
 - Custava, no fim do século, algo em torno de **£2 a £3**, incluído o selo de 10 xelins.
-- Exigia residência prévia numa das paróquias e o juramento de um dos nubentes.
+- Exigia o juramento de um dos nubentes e **quinze dias de residência** numa das paróquias
+  (desde 1823) — prazo que a própria literatura dá por facilmente contornável.
 
 Desde cedo é a marca de quem tem posição e **não quer os próprios proclamas gritados na
-igreja**. £2–£3 são semanas de salário de um artesão: a licença é, ela mesma, declaração de
+igreja**. £2–£3 são **três a quatro semanas e meia** do salário de um lavrador (13s 9d) e
+pouco mais de uma do de um artesão no topo da faixa: a licença é, ela mesma, declaração de
 classe.
 
-**A leitura de desenho, e é a mais útil das duas:** *quem pode pagar a licença e mesmo assim
+### 7.2-bis A porta civil: o certificado do registrador
+
+A terceira porta é a do **Marriage Act 1836**, e é por ela que casa quem não é anglicano —
+o que importa nesta base, porque o §5 deste mesmo arquivo faz da capela peça de elenco.
+**Escrever um casal metodista a casar por proclamas é errar o rito.**
+
+- Aviso ao ***superintendent registrar***, lançado no **livro de avisos**, que fica exposto
+  no gabinete e aberto à inspeção durante **vinte e um dias**.
+- Casamento no **cartório** ou em **capela registada** para o efeito.
+- O livro de avisos regista a **idade** — ao contrário dos proclamas (§7.3).
+
+**A leitura de desenho é o inverso exato dos proclamas: é público por escrito, e ninguém
+ouve.** Vinte e um dias afixados numa parede que a vila não frequenta — publicidade sem
+plateia. Quem quer cumprir a lei sem dar espetáculo tem aqui a via barata; a licença faz o
+mesmo por £2–£3.
+
+**A leitura de desenho que atravessa as três:** *quem pode pagar a licença e mesmo assim
 toma proclamas está a escolher ser ouvido.* Pode ser economia, pode ser a respeitabilidade
 que se exibe em vez de se esconder — e pode ser um homem a forçar a mão de alguém que
 preferia silêncio. A escolha da porta caracteriza sem uma linha de exposição.
 
 ### 7.3 O que os proclamas dizem, e o que não dizem
 
-Vão os **nomes**, a **condição** (solteiro/solteira, viúvo/viúva) e a **paróquia**. **Não vão
-idades** — idade é campo do assento de casamento, não da proclamação. Pôr idade na fórmula de
-uma proclama é erro.
+Vão os **nomes**, a **condição** (solteiro/solteira, viúvo/viúva) e a **paróquia**. Ressalva
+de precisão: o aviso escrito da s. 7 exige nomes verdadeiros, morada e tempo de residência; a
+**condição** vem da **fórmula costumeira de publicação**, e não da letra do estatuto. **Não
+vão idades** — idade é campo do assento de casamento e do livro de avisos civil (§7.2-bis),
+nunca da proclamação. Pôr idade na fórmula de uma proclama é erro.
 
 ### 7.4 O peso cai sobre a viúva
 
@@ -187,16 +214,23 @@ recasavam). Uma viúva com loja, pensão ou taverna herdada é crível **e vigia
 perder e a vila sabe disso.
 
 Some-se o luto codificado de [`vestuario.md`](./vestuario.md) §3: a viúva cumpre **dois anos**
-(12 meses de crepe, ~9 de segundo luto, 3 de meio-luto). Uma viúva **em meio-luto** já cumpriu
-o prazo — pode casar sem violar o código —, mas continua a vestir a memória do primeiro
-marido enquanto se prepara para o segundo. É desse intervalo que sai a ambiguidade utilizável:
-o mesmo fato lê-se como afeto ou como cálculo, e o que decide é o resto da mesa.
+(12 meses de crepe, ~9 de segundo luto, 3 de meio-luto). Uma viúva **em meio-luto** está no
+**último trecho** dos dois anos — meses 22 a 24, o crepe já fora e a cor ainda por voltar. Se
+o código autoriza recasar aí, **as fontes de etiqueta não dizem**: os manuais do período
+legislam sobre o **traje**, não sobre o segundo casamento. O que é seguro é a ambiguidade do
+traje — ela continua a vestir a memória do primeiro marido enquanto se prepara para o
+segundo. É desse intervalo que sai a ambiguidade utilizável: o mesmo fato lê-se como afeto ou
+como cálculo, e o que decide é o resto da mesa.
 
 ### 7.5 O que o casamento faz aos papéis
 
 - **Revoga o testamento.** Pelo **Wills Act 1837, s. 18**, casar anula o testamento anterior.
   Quem ia casar tinha de refazê-lo — e quem herdava pelo testamento velho tinha um prazo até
   perder tudo. É um dos móbeis mais limpos que a época oferece, porque é documental e datado.
+  **Guarda contra o reflexo do direito moderno:** em 1893 **não existe** o testamento «feito
+  em contemplação do casamento» que escapa à revogação — essa exceção é da **Law of Property
+  Act 1925, s. 177**. A única ressalva de 1837 é o testamento em exercício de **poder de
+  nomeação**. Casou, caiu; só refazendo.
 - **Desde 1882, a mulher casada possui e dispõe** (Married Women's Property Act; ver
   [`economia-e-estrutura-social.md`](./economia-e-estrutura-social.md) §5). O casamento já não
   transfere ao marido o que é dela.
@@ -206,8 +240,9 @@ o mesmo fato lê-se como afeto ou como cálculo, e o que decide é o resto da me
 - **Timbre de presbitério**: o que se documenta é papel com o **endereço** impresso ou gofrado
   a seco («The Vicarage, …»). **Não se confirmou** timbre de paróquia de vila trazendo a
   *dedicação* da igreja (o orago). Na dúvida, timbrar pelo endereço.
-- As somas da licença (£2–£3, selo de 10s) são de fim de século e variavam por diocese;
-  tratar como ordem de grandeza, não como tabela.
+- As somas da licença (£2–£3, selo de 10s) e as dos proclamas (11s 6d–15s 6d) são de fim de
+  século e variavam por diocese e por paróquia; tratar como ordem de grandeza, não como
+  tabela.
 
 ## Implicações para o jogo
 
@@ -245,5 +280,5 @@ o mesmo fato lê-se como afeto ou como cálculo, e o que decide é o resto da me
 - Não-conformismo e capelas de vila: [Historic England](https://heritagecalling.com/2018/06/01/5-nonconformist-chapels-of-england/); [FamilySearch, Nonconformist History Late Victorian Era](https://www.familysearch.org/en/wiki/England_Nonconformist_History_Late_Victorian_Era_(National_Institute))
 - E. Higgs & A. Wilkinson, "Women, Occupations and Work in the Victorian Censuses Revisited", *HWJ* 81 (2016): [Oxford Academic](https://academic.oup.com/hwj/article/81/1/17/2385582); ofícios de vila: [Kelly's Directory, Wikipedia](https://en.wikipedia.org/wiki/Kelly%27s_Directory)
 - Nomes de batismo (E&W, 1890): [British Baby Names](https://www.britishbabynames.com/blog/2012/09/top-200-most-popular-names-in-england-and-wales-in-1890.html); sobrenomes 1881: [SNSBI, Smith and Smythe](https://www.snsbi.org.uk/exploring-names/surnames/smith-and-smythe/)
-- Casamento: Marriage Act 1823 (4 Geo. 4 c. 76), texto e regime: [vLex UK](https://vlex.co.uk/vid/marriage-act-1823-808362601); proclamas × licença e o custo social de cada via: [Regency History](https://www.regencyhistory.net/blog/marriage-licences-banns-regency-history-guide); [FamilySearch, Marriage Allegations, Bonds and Licences in England and Wales](https://www.familysearch.org/en/wiki/Marriage_Allegations,_Bonds_and_Licences_in_England_and_Wales)
-- Revogação do testamento pelo casamento (Wills Act 1837, s. 18): [Wills Act 1837, Wikipedia](https://en.wikipedia.org/wiki/Wills_Act_1837)
+- Casamento: Marriage Act 1823 (4 Geo. IV c. 76), texto e regime: [vLex UK](https://vlex.co.uk/vid/marriage-act-1823-808362601); Marriage Act 1836 (certificado do superintendent registrar, livro de avisos, 21 dias): [vLex UK](https://vlex.co.uk/vid/marriage-act-1836-808226165); proclamas × licença e o custo social de cada via: [Regency History](https://www.regencyhistory.net/blog/marriage-licences-banns-regency-history-guide); [FamilySearch, Marriage Allegations, Bonds and Licences in England and Wales](https://www.familysearch.org/en/wiki/Marriage_Allegations,_Bonds_and_Licences_in_England_and_Wales)
+- Revogação do testamento pelo casamento (Wills Act 1837, s. 18), e a exceção do testamento «em contemplação do casamento» como sendo de 1925 (Law of Property Act, s. 177): [Wills Act 1837, Wikipedia](https://en.wikipedia.org/wiki/Wills_Act_1837)
