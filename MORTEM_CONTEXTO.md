@@ -929,6 +929,39 @@ o suporte que o jogador invocou não intersecta o que afirmou (`janela_sem_suste
 o monólogo expõe contradição, nunca imprecisão); janela certa e sustentada, porém larga
 demais (`janela_imprecisa`).
 
+### A reconstituição (D24) — a cena que dramatiza e não prova
+
+Entre o mural de acusação e o monólogo corre a **reconstituição**
+(`src/logic/reconstituicao.js`): domingo à noite, na relojoaria, sem inquérito em cena.
+É **peça de leitura** — não há escolha a fazer, e por isso não há o que contornar.
+
+O catálogo dos **gestos da noite** vive em `src/data/intervencoes.js` e entra no pacote do
+caso como campo **opcional** (`intervencoes`), no padrão de `ecosDoMestre`. Cada gesto
+declara em `exige` as cartas que TÊM DE ESTAR NA MESA para que ele se desfaça em cena.
+
+**O contrato é a G9 e cabe numa linha: a cena dramatiza; não prova.** Do que decorrem
+quatro regras que não são de gosto:
+
+1. **Nenhuma carta nasce na cena**, nenhum vestígio, nenhum nó. O veredicto já está
+   calculado quando ela roda, e ela não o lê nem o toca.
+2. **Sem as cartas, o gesto não entra** — nem encoberto, nem insinuado. Quem não colheu não
+   vê, e a intervenção fica de pé (martelo (c) da OS-R7). Uma cena curta é consequência da
+   colheita, e o custo dela reaparece nos graus de falha do monólogo, onde já morava.
+3. **Nenhum gesto tem autor nomeado.** A prosa diz a mão, nunca o nome: nomear quem pôs os
+   ponteiros seria concluir por conta do jogador. Quem nomeia é o monólogo, depois. E como
+   não há nome na cena, **a G3 vale ali por construção** — não há marca textual que o réu
+   receba e os inocentes não recebam.
+4. **A prosa de um gesto não afirma o que outro gesto prova.** É o furo de G9 que nenhuma
+   guarda apanha — as guardas veem marcador e nome, não excesso de tese.
+
+Caso **sem** catálogo de gestos (os gerados, até a OS-R9) não tem reconstituição:
+`montarReconstituicao` devolve `null` e o fim de caso vai direto ao monólogo. **Cena vazia**
+(colheita magra) e **ausência de cena** (o caso não a suporta) são coisas diferentes.
+
+O fecho da cena é **função da colheita**, em faixas relativas ao tamanho do catálogo — nunca
+sorteio, e nunca declarando proporção: o perito sabe quantos gestos desfez e **não sabe
+quantos lhe escaparam**.
+
 ### Monólogo por templates universais — e o CONTRATO do desfecho
 
 Gerado por **BLOCOS** parametrizados (`src/logic/monologo.js`): abertura por tipo de
@@ -945,6 +978,22 @@ tags, mesma refutação pelos relógios duráveis do corpo, §16.1); "o paradeir
 firmei" exige o álibi do periférico na mesa (sem ele, o juízo é narrado como
 convicção); o instrumento citado vem do sinal que cravou a causa, nunca de um
 vestígio avulso.
+
+**A conta das testemunhas é de BOCAS, não de papéis** (OS-R7, herança da D16). O motor
+entrega os ids das alegações de hora derrubadas como lastro narrativo — não lê nenhum para
+decidir coisa alguma — e `contarVozes` (`src/logic/contaminacao.js`) agrupa-os por origem:
+duas alegações que saem do mesmo homem valem uma. Quando os papéis são mais que as bocas, o
+bloco **diz** a corroboração que não existe. Alegação sem procedência registada conta como
+voz própria — sem essa regra, o bloco desapareceria de todo o banco gerado.
+
+**A noite entra no desfecho** (OS-R7): um bloco graduado pela mesma faixa que gradua o fecho
+da cena, medindo quanto da noite a cadeia alcançou. É juízo do perito sobre o próprio
+trabalho, nunca fato novo, e não declara fração pela mesma razão que a cena não declara.
+
+**A D25 — a regra da assinatura** — mora nos fechos, uma variante por desfecho (mais o fecho
+anónimo do erro). Harlan assina as mortes pequenas em nome do Dr. Abbot e nunca assinou uma
+grande; a régua entra como **peso**, não como explicação, e nenhuma variante o põe a assinar
+esta — a ordem «NAO ASSINE NADA» do telegrama fica intacta.
 
 **Variação determinística:** as variantes de abertura e fecho saem de hash da seed
 **salgado com o nome do perito** (nunca `Math.random`) — a mesma partida repete o
@@ -1106,7 +1155,9 @@ alcance às falas do jogador. Nenhuma etapa vira código sem ordem expressa do c
 > por gasto: a paridade lê-se por **motivos distintos** e não por cartas, e por essa
 > métrica o réu (1) nunca foi o máximo — é Walter (2).
 >
-> **Próxima: OS-R6** — exposição e interrogatórios, com as 4 cartas que a R5 deixou.
+> **OS-R6** fechou a exposição (E0/E1/E2), o beat 3 nos cinco e a contaminação; **OS-R7**
+> fechou a reconstituição, a conta de bocas e a D25. **Próxima: OS-R8** — passe editorial e
+> QA de fecho, e ela encerra a reforma. O catálogo fecha em **42 de 46**, e é o número final.
 
 **Cenário:** Briarstone, outubro de 1893. Vítima: **Sr. Geoffrey Arthurs**, relojoeiro,
 61 anos, morto no escritório dos fundos por **ferida de buril no pescoço**. Cena
@@ -1308,8 +1359,9 @@ src/
                 etiquetas) · beat_viagem.js (a duração do beat, um dono só) ·
                 preco_da_viagem.js · desbloqueio.js — os quatro últimos: camada VISUAL ·
                 exposicao.js (E0/E1/E2, função pura das cartas na mesa) ·
-                contaminacao.js (papéis somam-se, bocas é que corroboram) — os dois
-                últimos: camada NARRATIVA, e o motor é cego a eles (GR6-6)
+                contaminacao.js (papéis somam-se, bocas é que corroboram) ·
+                reconstituicao.js (a cena do clímax, montada só a partir da mesa) — os
+                três últimos: camada NARRATIVA, e o motor é cego a eles (GR6-6)
   store/        jogo.js (Zustand: fases, relógio, mapa, cartasRegistradas, conclusoes,
                 acusacao, log, detective, nosVisitados, nSubmissoes, somAtivo)
   som.js        efeitos sonoros da mesa (apresentação; nenhuma regra lê)
