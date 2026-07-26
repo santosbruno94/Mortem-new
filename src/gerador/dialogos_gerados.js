@@ -745,22 +745,61 @@ function falaAbertura(ctx) {
 // E4: pool de 2 por trait (pick por hashDecisao, keyed por suspeito). O "ele"
 // mora sempre entre espaços, para a troca de gênero (replaceAll ' ele '→' ela ')
 // funcionar; nunca inicia a locução.
+//
+// REESCRITA DO PLAYTEST DE 26/07/2026. Estas rubricas foram escritas quando o
+// paradeiro vivia DENTRO da ficha: ninguém podia conferi-las contra a fala,
+// porque não havia fala na tela. Com o depoimento dito em cena (guia §5.1),
+// passaram a ser auditáveis — e 364 dos 620 nós do banco descreviam uma
+// entrega que a fala não executava: «as horas saem em fila» sobre UMA hora,
+// «vem embrulhada em coisa que ninguém perguntou» sobre uma oração seca.
+// Rubrica que mente sobre a fala impressa dois centímetros acima é o defeito
+// que o guia §4.10 proíbe, agora do lado do gerador.
+//
+// A correção tem dois lados, e os dois são precisos: onde o tique podia ser
+// DITO (o tagarela que emenda, o que conta pelo sino), ele passou para dentro
+// das aspas — SUFIXO_FALADO abaixo; onde é de corpo (o medroso que mede a
+// porta, o preciso que não procura a hora), a rubrica ficou, no singular que
+// a fala sustenta.
 const ENTREGA_POR_TRAIT = {
   preciso: [
-    'as horas saem em fila, sem que ele procure nenhuma',
-    'cada hora sai de pronto, sem que ele a vá buscar na memória',
+    'a hora sai de pronto, sem que ele a vá buscar na memória',
+    'a hora vem posta, e ele não a procura',
   ],
   medroso: [
-    'os olhos vão à porta entre uma hora e outra',
-    'entre uma hora e outra, ele mede a porta com o olho',
+    'os olhos vão à porta antes de a hora sair, e voltam depois dela',
+    'antes de dar a hora, ele mede a porta com o olho',
   ],
   tagarela: [
-    'a resposta vem embrulhada em coisa que ninguém perguntou',
-    'cada hora vem com uma história atrás que ninguém pediu',
+    'a resposta sai inteira, e traz atrás um pedaço que ninguém pediu',
+    'ao paradeiro ele emenda, sem que se peça, o que ninguém perguntou',
   ],
   linha_tempo_nao_confiavel: [
-    'as horas saem fora de ordem, e ele as corrige no meio',
-    'as horas trocam de lugar na boca, contadas por canecas e sinos, e ele remenda a conta andando',
+    'a hora sai, e logo ele a põe em dúvida',
+    'dá a hora e não a garante',
+  ],
+};
+
+// O tique DITO (playtest de 26/07/2026): dois traits só existem se a boca os
+// executar. O acréscimo é oração fechada, colada ao fim do paradeiro, e não
+// move NENHUMA hora declarada — as tags do termo continuam a ser a fonte, e o
+// termo arquivado ignora o rabo de fala, como o constable ignoraria.
+// POOL, nunca frase única: com uma só, 120 suspeitos diziam a mesma linha
+// palavra por palavra, e em nove casos dois a quatro deles a repetiam DENTRO
+// do mesmo caso — a tipografia denunciando o trait, que é o inverso da
+// paridade que o gerador protege em toda parte. O pick é por pessoa, como o
+// de ENTREGA_POR_TRAIT. As variantes de `linha_tempo` não pressupõem hora
+// anterior (há ramos que declaram só «pela manhã» ou «no serviço»).
+const SUFIXO_FALADO = {
+  tagarela: [
+    ' Isto mesmo dei ao constable, e ao vizinho, que perguntou antes dele.',
+    ' E já agora: a estrada estava um lodaçal, que ninguém a arranja desde a feira grande.',
+    ' Perguntasse ao meu vizinho, que ele lhe conta o mesmo e ainda lhe conta o resto.',
+    ' {g:O senhor|A senhora} há de desculpar a conversa, que quem trabalha sozinho fala pelos cotovelos.',
+  ],
+  linha_tempo_nao_confiavel: [
+    ' A hora certa não lha garanto; conto pelo sino, e nem sempre o ouço bater.',
+    ' Se calhar foi mais tarde, ou mais cedo; de relógio não sou eu que trato.',
+    ' Não me firme muito na hora, que eu conto o tempo pelo serviço feito.',
   ],
 };
 
@@ -775,25 +814,28 @@ const ENTREGA_POR_TRAIT = {
 // propósito: não vira um eixo de têmpera legível para todo o elenco). Guarda de
 // presença cruzada no qa.mjs; a paridade perceptual, pelo playtest de tell.
 const TENTO_RESSONANTE = {
+  // Estes tentos foram reescritos no mesmo passe que ENTREGA_POR_TRAIT, e pela
+  // mesma razão: descreviam uma fala que ninguém podia conferir. O que sobra é
+  // GESTO — corpo, voz, olhar —, que a fala impressa ao lado não contradiz.
   medroso: {
-    neutro: ' A voz firma-se um fio, e a resposta sai mais inteira do que qualquer outra da conversa.',
-    calmo: ' A voz firma-se, e o paradeiro sai inteiro, de uma vez, sem o recomeço das outras respostas.',
-    tenso: ' A voz vacila no meio da hora, recomeça, e só na segunda vez a deixa inteira.',
+    neutro: ' A voz firma-se um fio ao dar a hora, e torna a baixar depois dela.',
+    calmo: ' A voz firma-se ao dar a hora, e a mão larga o trinco enquanto a diz.',
+    tenso: ' A voz vacila no meio da hora, e a mão não larga o trinco até ela acabar.',
   },
   preciso: {
-    neutro: ' E acrescenta, por conta própria, o que ninguém pediu: o tempo que fazia àquela hora.',
-    calmo: ' As horas saem em fila, sem tropeço, e ainda vem atrás o tempo que fazia àquela hora.',
-    tenso: ' As horas saem certas, e torna a conferi-las, uma a uma, antes de as dar por fechadas.',
+    neutro: ' Fica à espera da pergunta seguinte com as mãos quietas, como quem já a viu chegar.',
+    calmo: ' Dita a hora, as mãos sossegam, e ele não acrescenta nada por conta própria.',
+    tenso: ' Dita a hora, os lábios repetem-na sem som, uma vez, antes de a dar por fechada.',
   },
   tagarela: {
     neutro: ' No meio do rodeio, a mão pousa na ombreira e a fala desacelera, como quem pisa chão conhecido.',
-    calmo: ' No meio do rodeio, a fala desacelera e a mão sossega ao lado do corpo, e a volta que sempre repete, desta vez fecha na primeira.',
-    tenso: ' O rodeio aperta o passo, a mesma volta vem duas vezes, e o paradeiro sai aos pedaços, uma volta de cada vez.',
+    calmo: ' A mão sossega ao lado do corpo, e ele emenda o resto de olhos no visitante.',
+    tenso: ' A mão não encontra onde pousar, e ele emenda o resto sem esperar a pergunta.',
   },
   linha_tempo_nao_confiavel: {
-    neutro: ' Contra a parede, alinha as horas com os dedos na madeira da ombreira, uma a uma.',
-    calmo: ' Contra a parede, alinha as horas com os dedos e não as desfaz depois.',
-    tenso: ' Contra a parede, alinha as horas com os dedos, desfaz a conta e recomeça, e a segunda não bate com a primeira.',
+    neutro: ' Contra a parede, alinha a conta com os dedos na madeira da ombreira.',
+    calmo: ' Contra a parede, alinha a conta com os dedos, e desta vez não a desfaz.',
+    tenso: ' Contra a parede, refaz a conta com os dedos, e a segunda não bate com a primeira.',
   },
 };
 
@@ -810,26 +852,40 @@ function falaB1(ctx, tom) {
     madrugada: '"Pesado o bastante."',
     dia: '"Quando a luz acaba."',
   }[faixa];
+  // O que ele DIZ, dito em cena (guia §5.1): o paradeiro sai pela boca do
+  // interrogado, no beat, e não fica guardado atrás de um negrito para ser
+  // descoberto na ficha. Quando o tom já abre em fala, a resposta emenda
+  // dentro das MESMAS aspas; quando abre em rubrica, a fala vem depois dela.
+  const { dito } = ctx.paradeiro || paradeiroDeclarado(ctx);
+  // O tique acontece na boca, em vez de ser anunciado pela rubrica: o
+  // tagarela emenda o que ninguém pediu, e quem conta pelo sino põe em dúvida
+  // a própria hora sem a mudar (a hora declarada continua a das tags).
+  const poolSufixo = SUFIXO_FALADO[ctx.trait];
+  const sufixo = poolSufixo ? variante(poolSufixo, `${ctx.sal}|sufixo|${pessoa.id}`) : '';
+  const falado = `${dito}${sufixo}`;
   const frames = {
+    // As molduras não prometem tamanho («sai por inteiro», «chega inteira»,
+    // «com vagar, do começo ao fim»): 228 dos 259 nós que as usavam traziam
+    // fala de uma oração, e a promessa desmentia-se sozinha na mesma linha.
     firme: [
-      `"Sem rodeios, então." E o paradeiro vem, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-      `Um aceno curto, e o paradeiro sai por inteiro, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-      `"Vou direto." Dá hora e lugar de um fôlego, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `"Sem rodeios, então. ${falado}"`,
+      `Um aceno curto, e a resposta não se faz esperar. "${falado}"`,
+      `"Vou direto. ${falado}"`,
     ],
     cordial: [
-      `A ${FAIXA_CURTA[faixa]} vem contada do princípio, e ${entregaDela}: [[${idCartaAlibi}]].`,
-      `A resposta toma o caminho comprido e chega inteira, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-      `Conta a ${FAIXA_CURTA[faixa]} com vagar, do começo ao fim, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `Da ${FAIXA_CURTA[faixa]} responde sem que a voz suba. "${falado}"`,
+      `A resposta chega sem rodeio e sem secura. "${falado}"`,
+      `Conta a ${FAIXA_CURTA[faixa]} com o vagar de quem não tem pressa. "${falado}"`,
     ],
     tecnico: [
-      `"Hora e lugar." E os dá, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-      `Hora primeiro, lugar depois, sem que se peça duas vezes, e ${entregaDela}: [[${idCartaAlibi}]].`,
-      `Dá a hora, dá o lugar, e para; ${entregaDela}: [[${idCartaAlibi}]].`,
+      `"Hora e lugar. ${falado}"`,
+      `Hora primeiro, lugar depois, sem que se peça duas vezes. "${falado}"`,
+      `"Pois anote. ${falado}"`,
     ],
     obliquo: [
-      `${abreObliqua} E a ${FAIXA_CURTA[faixa]} acaba saindo por inteiro, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-      `${abreObliqua} O resto vem atrás, sem mais pergunta, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
-      `${abreObliqua} Passada a esquiva, hora e lugar vêm sem enfeite, enquanto ${entregaDela}: [[${idCartaAlibi}]].`,
+      `${abreObliqua} Depois a resposta vem. "${falado}"`,
+      `${abreObliqua} E então a resposta vem, sem mais pergunta. "${falado}"`,
+      `${abreObliqua} Passada a esquiva, hora e lugar vêm sem enfeite. "${falado}"`,
     ],
   }[tom];
   const frame = variante(frames, `${ctx.sal}|b1|${tom}`);
@@ -837,7 +893,12 @@ function falaB1(ctx, tom) {
   // de trait (calmo/tenso/neutro). A seleção ignora o papel (paridade §3).
   const beat = TENTO_RESSONANTE[ctx.trait];
   const tento = tom === ctx.tomRessonante && beat ? beat[ctx.temperamento] || beat.neutro : '';
-  return [frame + tento];
+  // Parágrafo SEGUNDO: como a resposta saiu, e o termo a arquivar. Separar a
+  // fala da rubrica dá ar à tela do interrogatório (item 3 do playtest de
+  // 26/07/2026) e põe o marcador onde ele pertence — a ficha do que já foi
+  // dito, não a revelação do que não se disse.
+  const comoSaiu = entregaDela.charAt(0).toUpperCase() + entregaDela.slice(1);
+  return [frame, `${comoSaiu}: [[${idCartaAlibi}]].${tento}`];
 }
 
 // ---------------------------------------------------------------------
@@ -1138,36 +1199,30 @@ const FECHOS_TERMO = {
   posto: ['Tomado por termo no próprio posto, pela mão do constable.', 'Declarado à mesa de tábua do posto, diante do constable.'],
 };
 
-function cartaDeAlibi(ctx) {
-  const { pessoa, faixa, papel, nomePredio, cenaId, sal } = ctx;
+// O PARADEIRO DECLARADO, calculado UMA vez por suspeito: o que ele DIZ
+// (`dito`, sem as aspas), o rótulo do lugar e a janela. A fala do beat 1 e o
+// termo que o jogador arquiva saem daqui, e por isso não podem divergir —
+// é a regra «a carta é dita antes de ser fichada» (guia de estilo §5.1,
+// playtest de 26/07/2026): o depoimento nasce na BOCA do interrogado, em
+// voz ativa, e a carta é o termo do mesmo depoimento, não a sua estreia.
+export function paradeiroDeclarado(ctx) {
+  const { pessoa, faixa, papel, nomePredio, cenaId } = ctx;
   // E3 §4.5 — a AUSÊNCIA declarada: o paradeiro é a vila-mercado, fora do
   // grafo da vila. Fala verdadeira (o ausente é inocente); a corroboração
   // mora no livro de hóspedes, a hora e meia de estrada ou um telegrama.
   if (ctx.ausencia) {
-    const janelaAus = JANELA_DECLARADA[faixa];
     // Só noite/madrugada chega aqui (o montador veta ausência na faixa
     // dia — o livro de hóspedes corrobora uma noite). O motivo do pernoite
     // ancora a plausibilidade (parecer do perito): negócio fechado tarde,
     // estrada de outubro escura desde as cinco e meia.
-    const falaAus = `"Estive em ${ctx.ausencia} desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã."`;
-    const fechoAus = variante(FECHOS_TERMO[ctx.palcoDialogo] || FECHOS_TERMO.casa, `${sal}|alibi|fecho`);
     return {
-      id: `gen_alibi_${pessoa.id}`,
-      localidade: ctx.localidadeInterrogatorio,
-      // P6 (item 11): o rótulo clicável carrega a informação a cruzar — o
-      // lugar declarado + a faixa —, não um título opaco ("A Noite de X").
-      // O lugar (ctx.ausencia) é o que discrimina; a faixa é a mesma do caso.
-      textoDisplay: `${ctx.ausencia} (${FAIXA_CURTA[faixa]})`,
-      carimboPadrao: `Paradeiro declarado: ${ctx.ausencia} (${FAIXA_CURTA[faixa]})`,
-      descricao: `${falaAus} ${fechoAus}`,
-      tagsOcultas: {
-        dominio: 'comportamental',
-        subDominio: 'alibi',
-        declaranteId: pessoa.id,
-        horaInicioDeclarada: janelaAus.inicio,
-        horaFimDeclarada: janelaAus.fim,
-        corroborado: false,
-      },
+      dito: `Estive em ${ctx.ausencia} desde a véspera, que o negócio só se fechou ao escurecer; dormi na estalagem de lá e tomei a estrada de volta pela manhã.`,
+      // O TERMO não é a fala: é o que o constable escreve depois de a ouvir
+      // (guia §5, cada camada com a sua textura). Terceira pessoa, telegráfico,
+      // com o dado a cruzar à vista — a fala em cena fica com as palavras dele.
+      termo: `Declara ter passado a noite em ${ctx.ausencia}, aonde fora na véspera a negócio, com pernoite na estalagem de lá e regresso pela manhã.`,
+      rotulo: ctx.ausencia,
+      janela: JANELA_DECLARADA[faixa],
     };
   }
   const lugarReal = pessoa.pacoteEspacial.rotina[faixa];
@@ -1197,31 +1252,49 @@ function cartaDeAlibi(ctx) {
     ctx.vitima.pacoteEspacial.rotina[faixa] !== lugarDeclarado;
   const horaEncontro = encontroNaJanela ? horaFalada(ctx.horaVistoVivo) : null;
 
-  let falaDeclarada;
+  let dito;
+  let termo;
   if (faixa === 'dia') {
     // Redação neutra de classe ("serviço de porta para dentro" é idioma
     // de criadagem) e partilhada entre inocente caseiro e réu — sem
     // assinatura de template.
-    falaDeclarada =
-      lugarDeclarado === moradia
-        ? encontroNaJanela
-          ? `"Do meio-dia às seis estive em casa, ${forma.em}. ${ctx.vitima.nome} me bateu à porta ${horaEncontro}; da porta mesmo nos despedimos, e de sair não saí."`
-          : `"Do meio-dia às seis estive em casa, ${forma.em}, e de porta para fora não pus o pé."`
-        : `"Do meio-dia às seis estive ${forma.em}, no serviço. Quem lá esteve me viu."`;
+    if (lugarDeclarado === moradia) {
+      dito = encontroNaJanela
+        ? `Do meio-dia às seis estive em casa, ${forma.em}. ${ctx.vitima.nome} me bateu à porta ${horaEncontro}; da porta mesmo nos despedimos, e de sair não saí.`
+        : `Do meio-dia às seis estive em casa, ${forma.em}, e de porta para fora não pus o pé.`;
+      termo = encontroNaJanela
+        ? `Declara ter estado em casa, ${forma.em}, do meio-dia às seis, sem sair; e ter recebido ${ctx.vitima.nome} à porta ${horaEncontro}, despedindo-se do batente.`
+        : `Declara ter estado em casa, ${forma.em}, do meio-dia às seis, sem pôr o pé fora da porta.`;
+    } else {
+      dito = `Do meio-dia às seis estive ${forma.em}, no serviço. Quem lá esteve me viu.`;
+      termo = `Declara ter estado ${forma.em}, no serviço, do meio-dia às seis, e remete a quem ali esteve.`;
+    }
   } else if (mentiraDeCena) {
     // MESMA redação do ramo inocente-caseiro (abaixo): fraseado exclusivo
     // do réu seria assinatura tipográfica — o jogador acharia o réu
     // comparando as cinco cartas, não cruzando provas. A mentira está no
     // LUGAR declarado, e cai por confronto, como a de Silas.
-    falaDeclarada = `"Recolhi-me ${formaMoradia.a} às oito e não tornei a sair antes de clarear."`;
+    dito = `Recolhi-me ${formaMoradia.a} às oito e não tornei a sair antes de clarear.`;
+    termo = `Declara ter-se recolhido ${formaMoradia.a} às oito, e não ter tornado a sair antes de clarear.`;
   } else if (lugarDeclarado === moradia) {
-    falaDeclarada = encontroNaJanela
-      ? `"Recolhi-me ${forma.a} às oito. ${ctx.vitima.nome} me bateu à porta ${horaEncontro}; do batente mesmo nos despedimos, e não tornei a sair antes de clarear."`
-      : `"Recolhi-me ${forma.a} às oito e não tornei a sair antes de clarear."`;
+    dito = encontroNaJanela
+      ? `Recolhi-me ${forma.a} às oito. ${ctx.vitima.nome} me bateu à porta ${horaEncontro}; do batente mesmo nos despedimos, e não tornei a sair antes de clarear.`
+      : `Recolhi-me ${forma.a} às oito e não tornei a sair antes de clarear.`;
+    termo = encontroNaJanela
+      ? `Declara ter-se recolhido ${forma.a} às oito, e não ter tornado a sair antes de clarear; e ter recebido ${ctx.vitima.nome} à porta ${horaEncontro}, despedindo-se do batente.`
+      : `Declara ter-se recolhido ${forma.a} às oito, e não ter tornado a sair antes de clarear.`;
   } else {
-    falaDeclarada = `"Estive ${forma.em} das oito às onze; dali fui direto ${formaMoradia.para}, dormir."`;
+    dito = `Estive ${forma.em} das oito às onze; dali fui direto ${formaMoradia.para}, dormir.`;
+    termo = `Declara ter estado ${forma.em} das oito às onze, e ter seguido dali ${formaMoradia.para}, para dormir.`;
   }
+  return { dito, termo, rotulo, janela };
+}
 
+function cartaDeAlibi(ctx) {
+  const { pessoa, faixa, sal } = ctx;
+  // O termo arquiva o que foi DITO no beat 1 (paradeiroDeclarado): mesma
+  // fonte, para que a carta na mesa e a fala em cena nunca se contradigam.
+  const { termo, rotulo, janela } = ctx.paradeiro || paradeiroDeclarado(ctx);
   // KB inquérito §2: quem escreve o termo na vila é o próprio guarda/
   // constable — não há escrevente civil em 1893. OS da vila na mesa: o
   // termo é tomado onde a pessoa é ouvida (FECHOS_TERMO, por palco).
@@ -1234,7 +1307,7 @@ function cartaDeAlibi(ctx) {
     // carimbo, agora também no negrito clicável.
     textoDisplay: `${rotulo} (${FAIXA_CURTA[faixa]})`,
     carimboPadrao: `Paradeiro declarado: ${rotulo} (${FAIXA_CURTA[faixa]})`,
-    descricao: `${falaDeclarada} ${fecho}`,
+    descricao: `${termo} ${fecho}`,
     tagsOcultas: {
       dominio: 'comportamental',
       subDominio: 'alibi',
@@ -1700,6 +1773,10 @@ export function derivarDialogos({ bruto, cartas, suspeitos, segredos = {}, ausen
             : 'casa',
     };
 
+    // O paradeiro declarado, computado UMA vez: a fala do beat 1 e o termo
+    // que o jogador arquiva leem a mesma linha (guia §5.1 — a carta é dita
+    // antes de ser fichada).
+    ctx.paradeiro = paradeiroDeclarado(ctx);
     cartasAlibi.push(cartaDeAlibi(ctx));
 
     // Confrontos: um por carta que toca o suspeito, na ordem das cartas —

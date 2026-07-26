@@ -5230,6 +5230,62 @@ const gr84RubricaUnicaOk = gr84Furos.length === 0;
 if (!gr84RubricaUnicaOk) console.log('\nGR8-4 — rubrica repetida:', gr84Furos.join(' · '));
 
 // ============================================================
+// GR10-1 — A CARTA É DITA ANTES DE SER FICHADA (playtest de 26/07/2026).
+// ============================================================
+// O defeito medido: o beat do paradeiro dizia «e o paradeiro vem: [[carta]]»
+// e a informação só existia DENTRO da ficha. O jogador ouvia um título e
+// tinha de abrir uma gaveta para saber o que lhe disseram — o diálogo
+// deixava de ser diálogo e virava índice.
+//
+// A régua, e o lugar dela importa: em todo nó que faz nascer uma carta de
+// ÁLIBI (`subDominio: 'alibi'`), o depoimento tem de estar DIANTE do
+// marcador — no próprio parágrafo que o traz, ou no imediatamente anterior.
+// Discurso direto conta como depoimento a partir de 55 caracteres entre
+// aspas; abaixo disso é abertura de fala («Costumes eu conto, senhor.» tem
+// 48, «Paradeiro.» tem 10), e uma abertura não é um paradeiro. O piso ficou
+// entre a maior abertura medida (48) e o menor paradeiro gerado (65), com
+// folga dos dois lados: colado em 60 ele reprovaria a próxima geração que
+// sorteasse um rótulo de prédio mais curto, sem que a prosa tivesse piorado.
+//
+// A primeira versão desta guarda aceitava aspas em QUALQUER parágrafo do nó,
+// e por isso deixou passar a regressão simulada no gate: o nó abria com uma
+// frase curta e mandava o paradeiro para dentro da ficha. Vizinhança e
+// tamanho são o que a torna capaz de reprovar.
+//
+// Não se verifica aqui se o que se diz BATE com o termo (isso é leitura, e é
+// do pipeline `revisar-prosa`): verifica-se que o jogador OUVIU antes de a
+// gaveta abrir. Corre sobre o tutorial e sobre as 155 árvores do banco, com a
+// mesma régua — foi por não ter guarda nenhuma que o padrão sobreviveu a
+// duas OS de prosa.
+const RE_DEPOIMENTO = /"([^"]{55,})"/;
+const gr101Furos = [];
+function medirDitoAntesDeFichado(rotulo, dialogos, cartasDoCaso) {
+  const alibis = new Set(
+    cartasDoCaso.filter((c) => (c.tagsOcultas || {}).subDominio === 'alibi').map((c) => c.id)
+  );
+  if (!alibis.size) return;
+  for (const [arvoreId, arvore] of Object.entries(dialogos || {})) {
+    for (const [noId, no] of Object.entries(arvore.nos || {})) {
+      const falas = no.fala || [];
+      for (const [i, paragrafo] of falas.entries()) {
+        const nasce = [...marcadoresDosTextos([paragrafo])].filter((id) => alibis.has(id));
+        if (!nasce.length) continue;
+        const diante = RE_DEPOIMENTO.test(paragrafo) || (i > 0 && RE_DEPOIMENTO.test(falas[i - 1]));
+        if (!diante) {
+          gr101Furos.push(`${rotulo}/${arvoreId}.${noId}[${i}]: ficha ${nasce.join(' ')} sem depoimento diante`);
+        }
+      }
+    }
+  }
+}
+medirDitoAntesDeFichado('tutorial', DIALOGOS, CARTAS);
+for (const caso of [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA]) {
+  medirDitoAntesDeFichado(caso.id, caso.dialogos, caso.cartas || []);
+}
+const gr101DitoAntesOk = gr101Furos.length === 0;
+if (!gr101DitoAntesOk) console.log('\nGR10-1 — ficha sem depoimento diante:', gr101Furos.slice(0, 12).join(' · '));
+
+// ============================================================
 // OS-R9 · FASE 1 — A PROCEDÊNCIA NO BANCO GERADO (GR9-1).
 // ============================================================
 // A GR6-8 prova o mapa DE UM CASO, por asserção sobre um feixe conhecido.
@@ -5865,6 +5921,10 @@ const checagens = [
     gr91ProcedenciaOk,
   ],
   ['GR8-4 (a rubrica não se lê duas vezes): nenhuma frase de narração se repete verbatim entre beats da mesma árvore, nem entre a fala e a alfinetada do mesmo nó; nós do mesmo beat são alternativas, e o paradeiro sai igual em todo tom (G4)', gr84RubricaUnicaOk],
+  [
+    'GR10-1 (a carta é dita antes de ser fichada): todo marcador de carta de álibi — no tutorial e nas 155 árvores do banco — tem depoimento em discurso direto no próprio parágrafo ou no anterior; o negrito arquiva o que já se ouviu, nunca estreia a informação',
+    gr101DitoAntesOk,
+  ],
 ];
 console.log('\n=== Critério de validação ===');
 let todasOk = true;

@@ -200,6 +200,39 @@ camadas**:
 | Glossário | Referência de época | Laudo técnico impessoal, sem graça nem juízo |
 | Monólogo | O perito pensa alto ao fim | Primeira pessoa, sóbria; ver §3 e §4.5 |
 
+### 5.1 A carta é dita antes de ser fichada (diálogo)
+
+Regra do playtest de 26/07/2026, e vale para **toda fala de interrogatório**, escrita à mão
+ou derivada pelo gerador.
+
+**O marcador `[[id]]` nunca estreia a informação.** Em diálogo, o depoimento sai pela boca
+do interrogado, em discurso direto, no próprio beat; o negrito **arquiva** o que o jogador
+acabou de ouvir. Escrever *"E, dos costumes da noite, conta [[dep_habito_corda]]"* é
+mandar o jogador abrir uma gaveta para saber o que lhe disseram — o diálogo deixa de ser
+diálogo e vira índice.
+
+| Antes (a ficha fala pelo personagem) | Depois (o personagem fala) |
+|---|---|
+| "Costumes eu conto, senhor." E conta, curto: [[dep_habito_corda]]. | "Costumes eu conto, senhor."<br>"O patrão dava corda no relógio do bolso às onze, antes de subir pra deitar. Todas as noites, sem faltar uma." Conta curto, o que lhe perguntam e nada mais: [[dep_habito_corda]]. |
+
+Três consequências práticas:
+
+- **Protagonismo da fala.** A rubrica de narrador em cena de diálogo é pontual: entra pelo
+  gesto (a vassoura que desce, o colarinho alisado, as mãos nos joelhos) e sai. Quem carrega
+  a cena é a voz.
+- **A ficha não repete a fala.** Camadas com texturas próprias (§5): em cena o depoimento é
+  **falado**, com as palavras dele; na carta é o **termo** — o registro que o constable
+  escreve, condensado, e nos casos gerados em terceira pessoa (*"Declara ter-se recolhido
+  à Taverna às oito…"*). Mesmo fato, duas texturas; nunca a mesma frase duas vezes.
+- **Blocos curtos.** Fala e rubrica em parágrafos separados. Um nó de diálogo com um único
+  bloco de quatrocentos caracteres cansa antes de acabar; dois a cinco parágrafos curtos são
+  a forma padrão, e a tela do interrogatório imprime-os com entrelinha larga.
+
+Guarda: **GR10-1** no `qa.mjs` — todo marcador de carta de álibi exige discurso direto de
+55+ caracteres no próprio parágrafo ou no anterior, no tutorial e nas 155 árvores do banco.
+A guarda prova que **alguém falou**; se o que se falou bate com o termo, é leitura do
+pipeline `revisar-prosa`.
+
 **Interpolação**: `{detective.title}`, `{detective.surname}`, `{g:masculino|feminino}`.
 Toda `{g:…}` deve ter os dois lados **diferentes** (se são iguais, não é interpolação).
 Os marcadores `[[id_da_carta]]` são estruturais: a reescrita os mantém intactos e o
@@ -241,7 +274,8 @@ num arquivo de dados — ou não se cita.
 10. A rubrica da fala contradiz — ou gasta — a `alfinetada` que sai na mesma tela, em E1 **e**
     em E2? (§4.10)
 11. Algum nome próprio aparece duas vezes na mesma fala? (§4.11)
-12. Li em voz alta: onde tropecei, reescrevi?
+12. Em diálogo: o `[[id]]` arquiva o que já foi **dito em cena**, ou estreia a informação? (§5.1)
+13. Li em voz alta: onde tropecei, reescrevi?
 
 ---
 

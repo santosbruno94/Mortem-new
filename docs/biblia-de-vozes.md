@@ -90,8 +90,11 @@
   a cerimônia de quem serve há décadas ("com licença de dizer").
 - **Tique:** oferece teoria sobre o ladrão a quem não pediu — e volta a ela, com
   variações, ao longo da conversa. Nunca pergunta o que a perícia achou.
-- **Amostra:** *"Doze anos nesta casa. Fui eu que o achei, ontem às nove e vinte, e
+- **Amostra:** *"Doze anos nesta casa. Fui eu que o achei, esta manhã às nove e vinte, e
   mandei o rapaz correr ao posto do guarda. Gente da estrada, digo eu — atrás do caixa."*
+  (A amostra dizia *"ontem às nove e vinte"* e contradizia o calendário do caso — o corpo
+  é achado na manhã de **sábado, 14**, e o perito chega às 13h do mesmo dia. Corrigida no
+  playtest de 26/07/2026, depois de o erro ter migrado da bíblia para uma fala nova.)
 
 ## Walter Arthurs (a isca — o herdeiro quebrado)
 
