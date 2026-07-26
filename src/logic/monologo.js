@@ -24,6 +24,7 @@ import { obterSuspeito } from '../data/pacote_caso.js';
 import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIVO } from '../data/rotulos.js';
 import { formatJanela, formatHora, formatHoraComDia } from './tempo.js';
 import { escolherDeterministico } from './hash.js';
+import { contarVozes } from './contaminacao.js';
 
 // Os quatro desfechos, NA ORDEM em que a interface os carimba (do fechado
 // ao falho). A ordem das chaves é a ordem de exibição — a fileira de
@@ -248,13 +249,43 @@ function blocoTese(dados) {
   return frase;
 }
 
+// ---------------------------------------------------------------------
 // Bloco das testemunhas desmentidas (só quando houve refutação estabelecida
 // de alegação de hora que NÃO era a peça encenada).
-function blocoTestemunhas(n) {
-  if (!n || n < 1) return null;
-  if (n === 1) return 'Uma testemunha jurava contra a hora que o corpo dá; o corpo prevaleceu.';
-  if (n === 2) return 'Duas testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre ambas.';
-  return 'As testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre todas.';
+//
+// A CONTA É DE BOCAS, e não de papéis (OS-R7 §3.2, herança direta da D16).
+// Um perito que diga "duas testemunhas" sobre duas alegações que saem do
+// mesmo homem está somando o mesmo homem duas vezes — e a somaria na voz
+// dele, no fecho do caso, que é o pior lugar do jogo para esse erro. Quem
+// agrupa é `contarVozes`, e ela mora fora do motor de propósito.
+//
+// Quando os dois números divergem, o bloco DIZ a divergência: a
+// corroboração que não existe é achado do perito, não ruído a esconder.
+// ---------------------------------------------------------------------
+const NUMERAL_MASC = ['nenhum', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove'];
+const NUMERAL_FEM = ['nenhuma', 'uma', 'duas', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove'];
+const porExtensoM = (n) => NUMERAL_MASC[n] || String(n);
+const porExtensoF = (n) => NUMERAL_FEM[n] || String(n);
+
+export function blocoTestemunhas(idsDesmentidas) {
+  const ids = [...(idsDesmentidas || [])];
+  const papeis = ids.length;
+  if (papeis < 1) return null;
+  const vozes = contarVozes(ids);
+  if (papeis > vozes) {
+    // A corroboração aparente. Uma só boca por trás de tudo, ou menos bocas
+    // do que papéis: em qualquer dos casos o perito conta o que sobra.
+    return vozes === 1
+      ? `${ComPrimeiraMaiuscula(porExtensoM(papeis))} depoimentos juravam contra a hora que o corpo dá, e saíram todos de uma boca só. O corpo prevaleceu sobre ela.`
+      : `${ComPrimeiraMaiuscula(porExtensoM(papeis))} depoimentos juravam contra a hora que o corpo dá, e ${porExtensoF(vozes)} bocas respondiam por eles. O corpo prevaleceu sobre todas.`;
+  }
+  if (vozes === 1) return 'Uma testemunha jurava contra a hora que o corpo dá; o corpo prevaleceu sobre ela.';
+  if (vozes === 2) return 'Duas testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre ambas.';
+  return `${ComPrimeiraMaiuscula(porExtensoF(vozes))} testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre todas.`;
+}
+
+function ComPrimeiraMaiuscula(palavra) {
+  return palavra.charAt(0).toUpperCase() + palavra.slice(1);
 }
 
 // ---------------- Juízo sobre os não-acusados (variantes) ----------------
@@ -315,7 +346,9 @@ export function gerarMonologo(veredicto, detective, opcoes = {}) {
   }
 
   // ---------------- As testemunhas desmentidas (se houve) ----------------
-  const testemunhas = blocoTestemunhas(dados.testemunhasDesmentidas);
+  // A conta é de bocas: o motor entrega os papéis derrubados, e quem os
+  // agrupa por origem é a camada narrativa (OS-R7 §3.2).
+  const testemunhas = blocoTestemunhas(dados.idsTestemunhasDesmentidas);
   if (testemunhas) blocos.push(testemunhas);
 
   // ---------------- Os buracos da cadeia ----------------

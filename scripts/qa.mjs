@@ -37,7 +37,7 @@ import {
 import { janelaDaCarta } from '../src/logic/cronos.js';
 import { intersecaoJanelas } from '../src/logic/tempo_morte.js';
 import { formatRelogio } from '../src/logic/tempo.js';
-import { gerarMonologo } from '../src/logic/monologo.js';
+import { gerarMonologo, blocoTestemunhas } from '../src/logic/monologo.js';
 import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
 import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/exposicao.js';
 import { PROCEDENCIA_ALEGACOES } from '../src/data/procedencia.js';
@@ -4818,6 +4818,42 @@ const divergenciasR7 = telemetriaR7.flatMap((t) =>
 );
 console.log(`  Corroborações aparentes: ${divergenciasR7.join(' · ') || 'nenhuma nas quatro rotas'}`);
 
+// ============================================================
+// OS-R7 · FASE 1 — A CONTA DE BOCAS (GR7-4).
+// ============================================================
+
+// GR7-4 — A CONTA É DE BOCAS. O desfecho não diz "duas testemunhas" sobre
+// alegações que compartilham origem. Provado por ASSERÇÃO sobre o feixe da
+// D16, como a OS manda: no caso-escola só uma alegação de hora é refutável
+// sem ser a peça encenada (o moço do padeiro), e o bloco nunca chega a
+// render plural em jogo. É por asserção que a régua se prova antes de haver
+// caso que a use — e o gerador vai usá-la.
+const gr74Furos = [];
+{
+  const feixe = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela']; // três papéis, uma boca
+  if (contarVozes(feixe) !== 1) gr74Furos.push('o feixe da D16 não colapsa numa voz');
+  if (contarVozes(['alibi_silas', 'alibi_grey']) !== 2) gr74Furos.push('duas bocas distintas não contam duas');
+  // Alegação sem registro de procedência é voz PRÓPRIA: os casos gerados não
+  // têm mapa de procedência, e uma conta que os zerasse apagaria o bloco das
+  // testemunhas de todo o banco. Esta perna existe contra essa regressão.
+  if (contarVozes(['forasteira_a', 'forasteira_b']) !== 2) gr74Furos.push('alegações sem registro não contam por si');
+  if (contarVozes([...feixe, 'forasteira_a']) !== 2) gr74Furos.push('feixe + anônima não dá duas vozes');
+  // E o bloco, que é onde o erro sairia na voz do perito, no fecho do caso.
+  const blocoDoFeixe = blocoTestemunhas(feixe) || '';
+  if (/duas|três testemunhas|Três testemunhas/.test(blocoDoFeixe)) {
+    gr74Furos.push(`o bloco pluraliza o feixe: "${blocoDoFeixe}"`);
+  }
+  if (!/uma boca s\u00f3/.test(blocoDoFeixe)) gr74Furos.push(`o bloco não declara a boca única: "${blocoDoFeixe}"`);
+  const blocoDeDuas = blocoTestemunhas(['alibi_silas', 'alibi_grey']) || '';
+  if (!/^Duas testemunhas/.test(blocoDeDuas)) gr74Furos.push(`o bloco não conta duas bocas distintas: "${blocoDeDuas}"`);
+  if (blocoTestemunhas([]) !== null) gr74Furos.push('mesa sem refutação rende bloco');
+  // Papéis > vozes > 1: a divergência parcial também tem de sair dita.
+  const blocoParcial = blocoTestemunhas([...feixe, 'alibi_grey', 'alibi_agnes']) || '';
+  if (!/três bocas/.test(blocoParcial)) gr74Furos.push(`a divergência parcial não sai dita: "${blocoParcial}"`);
+}
+const gr74ContaDeBocasOk = gr74Furos.length === 0;
+if (!gr74ContaDeBocasOk) console.log('\nGR7-4 — a conta de bocas:', gr74Furos.join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -4961,6 +4997,7 @@ const checagens = [
   ],
   ['GR6-6 (o motor continua cego): veredicto.js e acusacao.js não leem exposição, procedência nem contaminação', gr66MotorCegoOk],
   ['GR6-8 (contaminação legível): o feixe da D16 colapsa numa voz só — o álibi do réu, a lição do rapaz e a senhora da viela saem da mesma boca', gr68ContaminacaoOk],
+  ['GR7-4 (a conta é de bocas): o bloco das testemunhas conta vozes, não papéis, e diz a corroboração que não existe', gr74ContaDeBocasOk],
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
 ];
