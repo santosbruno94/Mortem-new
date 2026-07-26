@@ -48,11 +48,9 @@ import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
 import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/exposicao.js';
 import { PROCEDENCIA_ALEGACOES } from '../src/data/procedencia.js';
 import { agruparPorOrigem, contarVozes, contarVozesIndependentes, feixesContaminados } from '../src/logic/contaminacao.js';
-import { INTERVENCOES_NOITE, intervencoesRebatidas } from '../src/data/intervencoes.js';
+import { INTERVENCOES_NOITE, CENA_DA_NOITE_TUTORIAL, intervencoesRebatidas } from '../src/data/intervencoes.js';
 import {
   montarReconstituicao,
-  ABERTURAS_RECONSTITUICAO,
-  FECHOS_RECONSTITUICAO,
 } from '../src/logic/reconstituicao.js';
 import { PAPEIS } from '../src/data/papeis.js';
 import { HABITOS } from '../src/data/curriculo.js';
@@ -4722,7 +4720,7 @@ if (!gr69MenoridadeOk) console.log('\nGR6-9 — menoridade:', gr69Furos.join(' �
 // OS-R6 · FASE 3 — A CONTAMINAÇÃO (GR6-8, D16/D17).
 // ============================================================
 console.log('\n=== OS-R6 · FASE 3 — PROCEDÊNCIA DAS ALEGAÇÕES ===');
-for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES))) {
+for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES), PROCEDENCIA_ALEGACOES)) {
   const marca = ids.length > 1 ? '▸' : ' ';
   console.log(`  ${marca} ${origem.padEnd(16)} ${ids.length} alegação(ões)  ${ids.join(' ')}`);
 }
@@ -4739,7 +4737,7 @@ for (const { origem, ids } of agruparPorOrigem(Object.keys(PROCEDENCIA_ALEGACOES
 const gr68Furos = [];
 const FEIXE_D16 = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela'];
 
-const feixesDoCatalogo = feixesContaminados(Object.keys(PROCEDENCIA_ALEGACOES));
+const feixesDoCatalogo = feixesContaminados(Object.keys(PROCEDENCIA_ALEGACOES), PROCEDENCIA_ALEGACOES);
 const feixeDoReu = feixesDoCatalogo.find((f) => f.origem === SEED_TUTORIAL.reuCorreto);
 if (!feixeDoReu) gr68Furos.push('a D16 não tem feixe: nenhuma origem responde por mais de uma alegação');
 else if (JSON.stringify(feixeDoReu.ids.slice().sort()) !== JSON.stringify(FEIXE_D16.slice().sort())) {
@@ -4747,13 +4745,13 @@ else if (JSON.stringify(feixeDoReu.ids.slice().sort()) !== JSON.stringify(FEIXE_
 }
 
 // A conta que dá nome à guarda.
-if (contarVozesIndependentes(['alibi_silas', 'alibi_davey']) !== 1) {
+if (contarVozesIndependentes(['alibi_silas', 'alibi_davey'], PROCEDENCIA_ALEGACOES) !== 1) {
   gr68Furos.push('o álibi do réu e a lição do rapaz contam como duas vozes');
 }
-if (contarVozesIndependentes(['alibi_silas', 'alibi_grey']) !== 2) {
+if (contarVozesIndependentes(['alibi_silas', 'alibi_grey'], PROCEDENCIA_ALEGACOES) !== 2) {
   gr68Furos.push('duas alegações de bocas distintas não contam como duas vozes');
 }
-if (contarVozesIndependentes(FEIXE_D16) !== 1) {
+if (contarVozesIndependentes(FEIXE_D16, PROCEDENCIA_ALEGACOES) !== 1) {
   gr68Furos.push('o feixe inteiro da D16 não colapsa numa voz só');
 }
 
@@ -4858,24 +4856,24 @@ console.log(`  Corroborações aparentes: ${divergenciasR7.join(' · ') || 'nenh
 const gr74Furos = [];
 {
   const feixe = ['alibi_silas', 'alibi_davey', 'dep_mulher_viela']; // três papéis, uma boca
-  if (contarVozes(feixe) !== 1) gr74Furos.push('o feixe da D16 não colapsa numa voz');
-  if (contarVozes(['alibi_silas', 'alibi_grey']) !== 2) gr74Furos.push('duas bocas distintas não contam duas');
+  if (contarVozes(feixe, PROCEDENCIA_ALEGACOES) !== 1) gr74Furos.push('o feixe da D16 não colapsa numa voz');
+  if (contarVozes(['alibi_silas', 'alibi_grey'], PROCEDENCIA_ALEGACOES) !== 2) gr74Furos.push('duas bocas distintas não contam duas');
   // Alegação sem registro de procedência é voz PRÓPRIA: os casos gerados não
   // têm mapa de procedência, e uma conta que os zerasse apagaria o bloco das
   // testemunhas de todo o banco. Esta perna existe contra essa regressão.
-  if (contarVozes(['forasteira_a', 'forasteira_b']) !== 2) gr74Furos.push('alegações sem registro não contam por si');
-  if (contarVozes([...feixe, 'forasteira_a']) !== 2) gr74Furos.push('feixe + anônima não dá duas vozes');
+  if (contarVozes(['forasteira_a', 'forasteira_b'], PROCEDENCIA_ALEGACOES) !== 2) gr74Furos.push('alegações sem registro não contam por si');
+  if (contarVozes([...feixe, 'forasteira_a'], PROCEDENCIA_ALEGACOES) !== 2) gr74Furos.push('feixe + anônima não dá duas vozes');
   // E o bloco, que é onde o erro sairia na voz do perito, no fecho do caso.
-  const blocoDoFeixe = blocoTestemunhas(feixe) || '';
+  const blocoDoFeixe = blocoTestemunhas(feixe, PROCEDENCIA_ALEGACOES) || '';
   if (/duas|três testemunhas|Três testemunhas/.test(blocoDoFeixe)) {
     gr74Furos.push(`o bloco pluraliza o feixe: "${blocoDoFeixe}"`);
   }
   if (!/uma boca s\u00f3/.test(blocoDoFeixe)) gr74Furos.push(`o bloco não declara a boca única: "${blocoDoFeixe}"`);
-  const blocoDeDuas = blocoTestemunhas(['alibi_silas', 'alibi_grey']) || '';
+  const blocoDeDuas = blocoTestemunhas(['alibi_silas', 'alibi_grey'], PROCEDENCIA_ALEGACOES) || '';
   if (!/^Duas testemunhas/.test(blocoDeDuas)) gr74Furos.push(`o bloco não conta duas bocas distintas: "${blocoDeDuas}"`);
-  if (blocoTestemunhas([]) !== null) gr74Furos.push('mesa sem refutação rende bloco');
+  if (blocoTestemunhas([], PROCEDENCIA_ALEGACOES) !== null) gr74Furos.push('mesa sem refutação rende bloco');
   // Papéis > vozes > 1: a divergência parcial também tem de sair dita.
-  const blocoParcial = blocoTestemunhas([...feixe, 'alibi_grey', 'alibi_agnes']) || '';
+  const blocoParcial = blocoTestemunhas([...feixe, 'alibi_grey', 'alibi_agnes'], PROCEDENCIA_ALEGACOES) || '';
   if (!/três bocas/.test(blocoParcial)) gr74Furos.push(`a divergência parcial não sai dita: "${blocoParcial}"`);
 }
 const gr74ContaDeBocasOk = gr74Furos.length === 0;
@@ -4903,8 +4901,8 @@ const gr71Furos = [];
 {
   const textosDoCatalogo = [
     ...INTERVENCOES_NOITE.flatMap((i) => [i.hora, i.rubrica, i.prosa]),
-    ...ABERTURAS_RECONSTITUICAO,
-    ...Object.values(FECHOS_RECONSTITUICAO),
+    ...CENA_DA_NOITE_TUTORIAL.aberturas,
+    ...Object.values(CENA_DA_NOITE_TUTORIAL.fechos),
   ];
   const marcados = marcadoresDosTextos(textosDoCatalogo);
   if (marcados.length) gr71Furos.push(`o catálogo marca cartas: ${marcados.join(' ')}`);
@@ -4991,8 +4989,8 @@ const gr76Furos = [];
   const PRIMEIROS = NOMES.flatMap((n) => n.replace(/^(Sr\.|Sra\.|Srta\.|Dr\.|Dr\.ª)\s+/, '').split(/\s+/));
   const textos = [
     ...INTERVENCOES_NOITE.flatMap((i) => [i.hora, i.rubrica, i.prosa]),
-    ...ABERTURAS_RECONSTITUICAO,
-    ...Object.values(FECHOS_RECONSTITUICAO),
+    ...CENA_DA_NOITE_TUTORIAL.aberturas,
+    ...Object.values(CENA_DA_NOITE_TUTORIAL.fechos),
   ];
   for (const texto of textos) {
     for (const nome of [...NOMES, ...PRIMEIROS]) {
@@ -5231,6 +5229,457 @@ for (const [arvoreId, arvore] of Object.entries(DIALOGOS)) {
 const gr84RubricaUnicaOk = gr84Furos.length === 0;
 if (!gr84RubricaUnicaOk) console.log('\nGR8-4 — rubrica repetida:', gr84Furos.join(' · '));
 
+// ============================================================
+// OS-R9 · FASE 1 — A PROCEDÊNCIA NO BANCO GERADO (GR9-1).
+// ============================================================
+// A GR6-8 prova o mapa DE UM CASO, por asserção sobre um feixe conhecido.
+// Esta prova o mapa DE UM BANCO, e por isso é de outra espécie: mede em
+// LOTE e em BANDA, no molde da GE2/GE5/regime-palco, porque nenhuma leitura
+// cobre 31 casos e um mapa certo em três deles não diz nada dos outros 28.
+//
+// As quatro pernas, e nenhuma é decorativa:
+//
+//   (1) COBERTURA — todo caso tem mapa, e todo mapa cobre os álibis. O
+//       álibi é a alegação mais própria que existe, e um mapa que o
+//       deixasse de fora não colapsaria feixe nenhum;
+//   (2) LASTRO — nenhuma entrada aponta carta que não existe nem boca que
+//       não é gente do caso. Origem órfã mente na auditoria antes de
+//       mentir na prosa (é a terceira perna da GR6-8, agora em lote);
+//   (3) O FEIXE EXISTE, E EM BANDA — a conta de bocas só ganha sentido
+//       quando há boca que responde por duas alegações. A banda é larga de
+//       propósito: o feixe depende de a mesma pessoa ser testemunha e
+//       suspeita, o que a geração produz sem ninguém mandar;
+//   (4) NADA DE GRAÇA (GR9-3) — toda entrada de forma `ensaio`/`coacao` tem
+//       um evento de interferência do mesmo ator no mesmo caso. É a perna
+//       que impede o mapa de saber mais do que o caso mostra: a versão
+//       posta na boca de alguém só se registra quando a ficção já a
+//       anunciou em diário e já traçou o dinheiro até o ator.
+const BANCO_R9 = [CASO_REPLICA, ...CASOS_POOL, ...CASOS_LUTA];
+const FORMAS_R9 = ['propria', 'ensaio', 'coacao'];
+const gr91Furos = [];
+let casosComMapa = 0;
+let casosComFeixe = 0;
+let casosComFeixeD16 = 0;
+let entradasR9 = 0;
+for (const caso of BANCO_R9) {
+  const mapa = caso.procedencia || {};
+  const chaves = Object.keys(mapa);
+  if (!chaves.length) {
+    gr91Furos.push(`${caso.id}: sem mapa de procedência`);
+    continue;
+  }
+  casosComMapa += 1;
+  entradasR9 += chaves.length;
+
+  const idsDoCaso = new Set(caso.cartas.map((c) => c.id));
+  const gente = new Set(caso.suspeitos.map((s) => s.id));
+  // Boca que não é suspeito ainda é gente do caso: o confirmante da
+  // vizinhança e o portador do recado vivem no elenco, não no elenco de
+  // suspeitos. O que a guarda recusa é a boca que não está em lado nenhum.
+  for (const c of caso.cartas) if (c.origemTestemunha) gente.add(c.origemTestemunha);
+  for (const e of caso.interferencias?.eventos || []) if (e.ator) gente.add(e.ator);
+  for (const c of caso.cartas) {
+    const t = c.tagsOcultas || {};
+    if (t.declaranteId) gente.add(t.declaranteId);
+  }
+
+  // (1) cobertura dos álibis.
+  for (const c of caso.cartas) {
+    if ((c.tagsOcultas || {}).subDominio !== 'alibi') continue;
+    if (!mapa[c.id]) gr91Furos.push(`${caso.id}: álibi ${c.id} fora do mapa`);
+  }
+
+  const porBoca = new Map();
+  for (const [cartaId, entrada] of Object.entries(mapa)) {
+    // (2) lastro.
+    if (!idsDoCaso.has(cartaId)) gr91Furos.push(`${caso.id}: ${cartaId} não existe no catálogo`);
+    if (!FORMAS_R9.includes(entrada.forma)) gr91Furos.push(`${caso.id}: ${cartaId} forma "${entrada.forma}" fora do catálogo`);
+    if (!entrada.apontadaPor) gr91Furos.push(`${caso.id}: ${cartaId} sem boca`);
+    else {
+      if (!gente.has(entrada.apontadaPor)) gr91Furos.push(`${caso.id}: ${cartaId} aponta "${entrada.apontadaPor}", que não é gente deste caso`);
+      if (!porBoca.has(entrada.apontadaPor)) porBoca.set(entrada.apontadaPor, []);
+      porBoca.get(entrada.apontadaPor).push(entrada.forma);
+    }
+    // (4) nada de graça: a alegação posta na boca de outrem exige o evento.
+    if (entrada.forma !== 'propria') {
+      const temEvento = (caso.interferencias?.eventos || []).some(
+        (e) => e.ator === entrada.apontadaPor && (e.efeito?.cartasNovas || []).includes(cartaId)
+      );
+      if (!temEvento) gr91Furos.push(`${caso.id}: ${cartaId} é "${entrada.forma}" sem evento que o sustente`);
+    }
+  }
+  const feixes = [...porBoca.values()].filter((formas) => formas.length > 1);
+  if (feixes.length) casosComFeixe += 1;
+  if (feixes.some((formas) => formas.some((f) => f !== 'propria'))) casosComFeixeD16 += 1;
+
+  // A conta de bocas tem de bater com o mapa, e prova-se com a função que o
+  // desfecho usa — não com uma reimplementação que poderia divergir dela.
+  const todas = Object.keys(mapa);
+  const vozes = contarVozes(todas, mapa);
+  if (vozes !== porBoca.size) gr91Furos.push(`${caso.id}: contarVozes deu ${vozes}, o mapa tem ${porBoca.size} bocas`);
+  if (feixes.length && vozes >= todas.length) gr91Furos.push(`${caso.id}: há feixe e a conta não o colapsa`);
+}
+// (3) a banda. Larga de propósito: o feixe é produto da geração, não de
+// uma quota — apertá-la faria a guarda reprovar por sorte de seed.
+const fracaoFeixe = casosComFeixe / BANCO_R9.length;
+const bandaFeixeOk = fracaoFeixe >= 0.4 && fracaoFeixe <= 0.95;
+if (!bandaFeixeOk) gr91Furos.push(`feixe em ${Math.round(100 * fracaoFeixe)}% dos casos, fora da banda 40–95%`);
+if (casosComFeixeD16 < 1) gr91Furos.push('nenhum caso do banco realiza o feixe da D16 (boca posta por terceiro)');
+const gr91ProcedenciaOk = gr91Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 1 — PROCEDÊNCIA NO BANCO ===');
+console.log(
+  `  ${casosComMapa}/${BANCO_R9.length} casos com mapa · ${entradasR9} entradas (${(entradasR9 / BANCO_R9.length).toFixed(1)}/caso) · ` +
+    `feixe em ${casosComFeixe} (${Math.round(100 * fracaoFeixe)}%) · feixe da D16 em ${casosComFeixeD16}`
+);
+if (!gr91ProcedenciaOk) console.log('GR9-1 — procedência no banco:', gr91Furos.slice(0, 12).join(' · '));
+
+// ============================================================
+// OS-R9 · FASE 2 — A EXPOSIÇÃO E O DEGRAU NO BANCO (GR9-2).
+// ============================================================
+// A GR6-5 prova a paridade de UM elenco de cinco, por caminhada exaustiva.
+// Esta prova a de 155, e acrescenta a perna que o tutorial não precisava de
+// ter: lá os cinco dossiês são 5·4·2·5·3 e os três níveis são de todos por
+// acidente feliz do material; aqui o material varia por seed, e a Fase 0
+// mediu o que isso custava — o réu alcançava os três níveis em 31 casos de
+// 31, e os inocentes em 43%. **Quantos degraus um suspeito tem era um
+// delator**, e nenhuma guarda o apanhava porque todas olhavam o corte.
+//
+// As cinco pernas:
+//   (1) OS TRÊS NÍVEIS SÃO DE TODOS — a caminhada exaustiva da GR6-5, agora
+//       sobre 155 dossiês em vez de cinco;
+//   (2) O NÚMERO DE DEGRAUS NÃO DELATA — réu e inocente alcançam a mesma
+//       quantidade de níveis, e a igualdade é medida, não prometida;
+//   (3) O BEAT 3 EXISTE EM TODA ÁRVORE E EM TODO TOM, e alcança-se de
+//       qualquer tom do beat 2 (a régua da GR6-7, em lote);
+//   (4) NADA DE GRAÇA (GR9-3) — nenhum `[[id]]` na fala do beat 3, na
+//       alfinetada nem no degrau: o que eles rendem é caráter, e caráter não
+//       é carta;
+//   (5) O DEGRAU É A EXPOSIÇÃO DITA — o corte de todo degrau gerado é
+//       exatamente `corteDeE2` da sua própria lista. Se as duas contas
+//       divergissem, o degrau viraria um segundo eixo, com uma segunda
+//       chance de delatar.
+const gr92Furos = [];
+const TONS_R9 = ['firme', 'cordial', 'tecnico', 'obliquo'];
+let dossiesMedidos = 0;
+const niveisDoReu = [];
+const niveisDoInocente = [];
+for (const caso of BANCO_R9) {
+  const dossies = montarDossies(caso.cartas, caso.dialogos);
+  const reu = caso.verdadeDeOuro.reuCorreto;
+  for (const [arvoreId, arvore] of Object.entries(caso.dialogos || {})) {
+    const suspeitoId = arvore.suspeitoId;
+    if (!suspeitoId) continue;
+    const dossie = dossies[suspeitoId] || [];
+    dossiesMedidos += 1;
+
+    // (1) e (2) — a caminhada, e a conta que compara réu com inocente.
+    const vistos = new Set();
+    for (let k = 0; k <= dossie.length; k += 1) {
+      const { nivel } = exposicaoDiante(dossie.slice(0, k), dossie);
+      vistos.add(nivel);
+      const esperado = dossie.length === 0 || k === 0 ? 'E0' : k / dossie.length >= 2 / 3 ? 'E2' : 'E1';
+      if (nivel !== esperado) {
+        gr92Furos.push(`${caso.id}/${suspeitoId} com ${k}/${dossie.length} deu ${nivel}, esperado ${esperado}`);
+      }
+    }
+    (suspeitoId === reu ? niveisDoReu : niveisDoInocente).push(vistos.size);
+    for (const nivel of NIVEIS) {
+      if (!vistos.has(nivel)) gr92Furos.push(`${caso.id}/${suspeitoId} não alcança ${nivel} (dossiê ${dossie.length})`);
+    }
+
+    // (3) — o beat 3 em todo tom, e alcançável de qualquer tom do beat 2.
+    for (const tom of TONS_R9) {
+      const b3 = arvore.nos?.[`b3_${tom}`];
+      if (!b3) {
+        gr92Furos.push(`${caso.id}/${arvoreId}: sem b3_${tom}`);
+        continue;
+      }
+      const saidas = new Set((arvore.nos?.[`b2_${tom}`]?.opcoes || []).map((o) => o.vaiPara));
+      for (const destino of TONS_R9) {
+        if (!saidas.has(`b3_${destino}`)) gr92Furos.push(`${caso.id}/${arvoreId}: b2_${tom} não chega a b3_${destino}`);
+      }
+    }
+
+    // (4) e (5) — o que o beat 3, a alfinetada e o degrau podem render.
+    for (const [noId, no] of Object.entries(arvore.nos || {})) {
+      const textosSemCarta = [
+        ...(noId.startsWith('b3_') ? no.fala || [] : []),
+        ...Object.values(no.alfinetada || {}).flat(),
+        ...(no.degraus || []).flatMap((d) => d.fala || []),
+      ];
+      const marcadas = marcadoresDosTextos(textosSemCarta);
+      if (marcadas.size) gr92Furos.push(`${caso.id}/${arvoreId}.${noId} pare carta: ${[...marcadas].join(' ')}`);
+      for (const [i, d] of (no.degraus || []).entries()) {
+        const lista = d.contaEntre || [];
+        if (!lista.length) gr92Furos.push(`${caso.id}/${arvoreId}.${noId} degrau ${i} sem lista`);
+        for (const id of lista) {
+          if (!caso.cartas.some((c) => c.id === id)) gr92Furos.push(`${caso.id}/${arvoreId}.${noId} degrau ${i} conta carta inexistente: ${id}`);
+        }
+        const corte = d.aPartirDe ?? 1;
+        if (corte < 1 || corte > lista.length) gr92Furos.push(`${caso.id}/${arvoreId}.${noId} degrau ${i}: corte ${corte} fora da lista`);
+        if (corte !== corteDeE2(lista.length)) {
+          gr92Furos.push(`${caso.id}/${arvoreId}.${noId} degrau ${i}: corte ${corte} ≠ corteDeE2(${lista.length})=${corteDeE2(lista.length)}`);
+        }
+      }
+    }
+  }
+}
+// (2), a conta: a média de níveis alcançados tem de bater exatamente. Não é
+// banda — é igualdade, porque qualquer diferença aqui É o tell.
+const mediaReu = niveisDoReu.reduce((a, b) => a + b, 0) / (niveisDoReu.length || 1);
+const mediaInocente = niveisDoInocente.reduce((a, b) => a + b, 0) / (niveisDoInocente.length || 1);
+if (mediaReu !== mediaInocente) {
+  gr92Furos.push(`níveis alcançados: réu ${mediaReu.toFixed(2)} × inocente ${mediaInocente.toFixed(2)} — a diferença é o tell`);
+}
+// E a paridade do BEAT 3 quanto à G3, em duas pernas — porque a primeira
+// que se escreveu media ruído de amostragem, e não tell. A grade tem 8
+// classes × 4 tons × 2 saídas × 4 têmperas de idade; com 31 réus contra 124
+// inocentes, um texto que calhe a um réu e a nenhum inocente é o tamanho da
+// amostra a falar, não o gerador. O que É verificável são estas duas:
+//
+//   (a) POR FONTE, como a GR6-6 faz: o derivador do beat 3 não sabe quem é
+//       o réu. `falaB3`, `alfinetadaDe` e `degrauDoTrato` não recebem o
+//       papel e não o consultam — se o consultassem, haveria por onde nascer
+//       marca textual do culpado, e nenhuma amostra a apanharia de fora;
+//   (b) POR LOTE: nenhuma CLASSE SOCIAL é exclusiva de réus no banco. A
+//       célula é de classe, e uma classe que só o culpado ocupasse faria da
+//       própria grade um delator, com prosa impecável.
+const fonteDerivador = semComentarios(readFileSync(path.join(raizSrc, 'gerador/dialogos_gerados.js'), 'utf8'));
+// As STRINGS saem antes da varredura, e não é detalhe: a prosa deste
+// derivador diz «ponha no papel» na boca de um suspeito, e uma guarda que
+// lesse literais acusaria o gerador de consultar o papel dramático por
+// causa de uma folha de papel. Mede-se CÓDIGO; a prosa mede-se noutro lugar.
+const semLiterais = (fonte) => fonte.replace(/'(?:\\.|[^'\\])*'|"(?:\\.|[^"\\])*"|`(?:\\.|[^`\\])*`/g, "''");
+const trechoBeat3 = semLiterais(
+  fonteDerivador.slice(
+    fonteDerivador.indexOf('const FECHO_POR_CLASSE'),
+    fonteDerivador.indexOf('function degrauDoTrato') + 400
+  )
+);
+if (/\bpapel\b|\breu\b|assassino|culpado/.test(trechoBeat3)) {
+  gr92Furos.push('o derivador do beat 3 consulta o papel de quem responde');
+}
+// E o CASTING é cego ao ofício: o assassino sai de `candidatos` por hash
+// puro, sem ponderação nenhuma (a vítima é que é ponderada por classe — «quem
+// tem o que tirar»). Provado por fonte, porque em lote de 31 a coincidência
+// é indistinguível da regra.
+const fonteCaso = semLiterais(semComentarios(readFileSync(path.join(raizSrc, 'gerador/caso.js'), 'utf8')));
+if (!/candidatos\[hashString\([^)]*\)\s*%\s*candidatos\.length\]/.test(fonteCaso)) {
+  gr92Furos.push('o sorteio do assassino deixou de ser uniforme sobre os candidatos');
+}
+if (/PESO_[A-Z_]*ASSASSINO|pesoAssassino/.test(fonteCaso)) {
+  gr92Furos.push('há ponderação de classe no sorteio do assassino');
+}
+const classesDoReu = new Set();
+const classesDoInocente = new Set();
+for (const caso of BANCO_R9) {
+  for (const s of caso.suspeitos) {
+    const alvo = s.id === caso.verdadeDeOuro.reuCorreto ? classesDoReu : classesDoInocente;
+    // A classe do suspeito lê-se do subtítulo da árvore dele (o pacote não
+    // serializa a ficha); o que importa é a CÉLULA, e o subtítulo é ela.
+    const arvore = Object.values(caso.dialogos || {}).find((a) => a.suspeitoId === s.id);
+    if (arvore?.subtitulo) alvo.add(String(arvore.subtitulo).split(',')[0]);
+  }
+}
+// O ofício exclusivo de réu mede-se em BANDA, e não a zero. Com 31 réus
+// sorteados uniformemente sobre 23 ofícios distintos, exigir que nenhum
+// ofício calhe só a réus é exigir que uma coincidência não aconteça — a
+// guarda reprovaria por sorte de seed, que é o defeito que a OS-R9 §3
+// manda evitar. O que reprova é CONCENTRAÇÃO: um ofício que seja réu três
+// vezes e inocente nenhuma já não é coincidência, e a fração do banco em
+// ofício exclusivo tem teto.
+const oficiosSoDeReu = [...classesDoReu].filter((c) => !classesDoInocente.has(c));
+let reusEmOficioExclusivo = 0;
+for (const caso of BANCO_R9) {
+  const arvore = Object.values(caso.dialogos || {}).find((a) => a.suspeitoId === caso.verdadeDeOuro.reuCorreto);
+  const oficio = String(arvore?.subtitulo || '').split(',')[0];
+  if (oficiosSoDeReu.includes(oficio)) reusEmOficioExclusivo += 1;
+}
+const contagemPorOficio = new Map();
+for (const caso of BANCO_R9) {
+  const arvore = Object.values(caso.dialogos || {}).find((a) => a.suspeitoId === caso.verdadeDeOuro.reuCorreto);
+  const oficio = String(arvore?.subtitulo || '').split(',')[0];
+  if (oficiosSoDeReu.includes(oficio)) contagemPorOficio.set(oficio, (contagemPorOficio.get(oficio) || 0) + 1);
+}
+for (const [oficio, n] of contagemPorOficio) {
+  if (n >= 3) gr92Furos.push(`ofício ${oficio} é réu ${n} vezes e inocente nenhuma — deixou de ser coincidência`);
+}
+const fracaoExclusiva = reusEmOficioExclusivo / BANCO_R9.length;
+if (fracaoExclusiva > 0.2) {
+  gr92Furos.push(`${Math.round(100 * fracaoExclusiva)}% dos réus em ofício que nenhum inocente ocupa (teto 20%)`);
+}
+const gr92ParidadeLoteOk = gr92Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 2 — EXPOSIÇÃO E DEGRAU NO BANCO ===');
+console.log(
+  `  ${dossiesMedidos} dossiês medidos · níveis alcançados: réu ${mediaReu.toFixed(2)} · inocente ${mediaInocente.toFixed(2)} · ` +
+    `${classesDoReu.size} ofícios de réu, ${oficiosSoDeReu.length} sem inocente (${Math.round(100 * fracaoExclusiva)}% do banco, teto 20%)`
+);
+if (!gr92ParidadeLoteOk) console.log('GR9-2 — paridade em lote:', gr92Furos.slice(0, 12).join(' · '));
+
+// ============================================================
+// OS-R9 · FASE 3 — A NOITE NO BANCO GERADO (GR9-3).
+// ============================================================
+// As GR7-1/2/3/6 provam a cena DE UM CASO. Esta prova a de um banco, e a
+// diferença que importa é esta: no tutorial o catálogo foi escrito à mão e
+// lido inteiro antes de entrar; aqui ele é derivado por seed, e ninguém lê
+// 31 catálogos. As pernas são as regras do catálogo, cobradas em lote:
+//
+//   (1) A CENA NÃO PROVA (G9) — nenhum marcador de carta na prosa dos
+//       gestos nem no texto que situa a cena;
+//   (2) NENHUM GESTO TEM AUTOR (G3) — nenhum nome de suspeito, de vítima
+//       nem id de pessoa entra na prosa da cena. Sem nome, não há por onde
+//       o texto ramificar no bit `culpado`;
+//   (3) REBATE SÓ O QUE A MESA TEM — todo id de `exige` é carta que existe
+//       naquele caso. Um gesto que exigisse carta inexistente ficaria de pé
+//       para sempre, e a cena calaria sem que ninguém soubesse por quê;
+//   (4) O PISO É GATE — nenhum catálogo entre 1 e 2, nenhum acima de 9, e
+//       catálogo e texto de cena andam sempre juntos;
+//   (5) A GEOGRAFIA SAIU DA LÓGICA (§2.7) — `src/logic/reconstituicao.js`
+//       não nomeia mais cômodo nenhum. É a dívida da R7, e a guarda existe
+//       para que ela não volte pela porta dos fundos.
+const gr93Furos = [];
+let casosComCena = 0;
+let gestosNoBanco = 0;
+for (const caso of BANCO_R9) {
+  const catalogo = caso.intervencoes || [];
+  const cena = caso.cenaDaNoite || null;
+  if (!catalogo.length && !cena) continue;
+  if (!catalogo.length || !cena) {
+    gr93Furos.push(`${caso.id}: catálogo e cena não vieram juntos`);
+    continue;
+  }
+  casosComCena += 1;
+  gestosNoBanco += catalogo.length;
+  if (catalogo.length < 3 || catalogo.length > 9) {
+    gr93Furos.push(`${caso.id}: catálogo de ${catalogo.length} fora de 3–9`);
+  }
+  const idsDoCaso = new Set(caso.cartas.map((c) => c.id));
+  const nomes = [
+    ...caso.suspeitos.map((s) => s.nome),
+    ...caso.suspeitos.map((s) => s.id),
+    caso.verdadeDeOuro.vitima,
+  ].filter(Boolean);
+  const textoDaCena = [
+    ...catalogo.flatMap((g) => [g.prosa, g.hora, g.rubrica]),
+    cena.subtitulo,
+    ...cena.aberturas,
+    ...Object.values(cena.fechos || {}),
+  ];
+  for (const texto of textoDaCena) {
+    const marcadas = marcadoresDoTexto(String(texto || ''));
+    if (marcadas.size) gr93Furos.push(`${caso.id}: a cena pare carta (${[...marcadas].join(' ')})`);
+    for (const nome of nomes) {
+      if (String(texto || '').includes(nome)) gr93Furos.push(`${caso.id}: a cena nomeia «${nome}»`);
+    }
+  }
+  for (const gesto of catalogo) {
+    if (!(gesto.exige || []).length) gr93Furos.push(`${caso.id}/${gesto.id}: gesto sem carta que o desfaça`);
+    for (const id of gesto.exige || []) {
+      if (!idsDoCaso.has(id)) gr93Furos.push(`${caso.id}/${gesto.id}: exige ${id}, que não existe no caso`);
+    }
+  }
+  // A cena tem de ser FUNÇÃO DA MESA: mesa vazia não desfaz gesto nenhum.
+  const semMesa = (caso.intervencoes || []).filter((g) => (g.exige || []).length === 0);
+  if (semMesa.length) gr93Furos.push(`${caso.id}: ${semMesa.length} gesto(s) caem com a mesa vazia`);
+}
+// (5) — a dívida de geografia, e ela prova-se por fonte, como a GR6-6.
+const fonteCena = semComentarios(readFileSync(path.join(raizSrc, 'logic/reconstituicao.js'), 'utf8'));
+if (/relojoaria|bancada|oficina|escrit[óo]rio|balc[ãa]o/i.test(fonteCena)) {
+  gr93Furos.push('a geografia do caso-escola voltou para dentro de src/logic/reconstituicao.js');
+}
+const gr93NoiteOk = gr93Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 3 — A NOITE NO BANCO ===');
+console.log(
+  `  ${casosComCena}/${BANCO_R9.length} casos com reconstituição · ${gestosNoBanco} gestos ao todo · ` +
+    `${(gestosNoBanco / (casosComCena || 1)).toFixed(1)} por caso (teto 9, piso 3 como gate)`
+);
+if (!gr93NoiteOk) console.log('GR9-3 — a noite no banco:', gr93Furos.slice(0, 12).join(' · '));
+
+// ============================================================
+// OS-R9 · FASE 5 — A GR8-4 SOBRE AS ÁRVORES GERADAS (GR9-5).
+// ============================================================
+// A GR8-4 nasceu na R8 medindo as cinco árvores do caso-escola. Aqui ela
+// corre sobre as 155 do banco, com a MESMA régua — a função é copiada do
+// bloco de cima e não reimplementada, porque duas cópias divergem.
+//
+// A ISENÇÃO É POR NOME, E NUNCA POR TOLERÂNCIA NUMÉRICA. Martelo (a) do
+// utilizador em 26/07/2026, sobre a medida da Fase 0: a resposta nula do
+// exame — «Nada de nota.» — sai igual em 137 dos 165 nós `exigencia_*` do
+// banco, e FICA igual. A razão não é economia de prosa: **variar a redação
+// do «não há nada aqui» transformaria estilo em informação.** O jogador
+// aprenderia a ler no floreado o que a marca não diz, e é exatamente esse
+// telégrafo que a GE2 e a GR5-6 existem para matar. A alternativa honesta,
+// se um dia se quiser variedade, é variar por PERSONAGEM (o registro de
+// quem responde) e nunca pelo RESULTADO do exame.
+//
+// Uma tolerância numérica («até N repetições») teria escondido o dia em que
+// o derivador começasse a repetir OUTRA coisa. Por isso a isenção nomeia o
+// prefixo do nó, e o resto da árvore continua a reprovar.
+const NOS_ISENTOS_R9 = ['exigencia_'];
+const gr95Furos = [];
+let arvoresMedidasR9 = 0;
+let nosIsentosContados = 0;
+for (const caso of BANCO_R9) {
+  for (const [arvoreId, arvore] of Object.entries(caso.dialogos || {})) {
+    arvoresMedidasR9 += 1;
+    const ondeApareceu = new Map();
+    for (const [nomeNo, no] of Object.entries(arvore.nos || {})) {
+      if (NOS_ISENTOS_R9.some((p) => nomeNo.startsWith(p))) {
+        nosIsentosContados += 1;
+        continue;
+      }
+      for (const fala of textosDoNo(no)) {
+        for (const frase of narracaoDaFala(fala)) {
+          const chave = frase.toLowerCase().replace(/\s+/g, ' ');
+          if (!ondeApareceu.has(chave)) ondeApareceu.set(chave, []);
+          ondeApareceu.get(chave).push({ no: nomeNo, beat: beatDoNo(nomeNo) });
+        }
+      }
+    }
+    for (const [frase, sitios] of ondeApareceu) {
+      const beats = new Set(sitios.map((s) => s.beat));
+      const nos = new Set(sitios.map((s) => s.no));
+      const alternativasDoMesmoBeat = beats.size === 1 && nos.size === sitios.length && nos.size > 1;
+      if (!alternativasDoMesmoBeat && sitios.length > 1) {
+        gr95Furos.push(`${caso.id}/${arvoreId}: «${frase.slice(0, 40)}…» em ${sitios.map((s) => s.no).join(' + ')}`);
+      }
+    }
+  }
+}
+const gr95RubricaGeradaOk = gr95Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 5 — A RUBRICA NAS ÁRVORES GERADAS ===');
+console.log(
+  `  ${arvoresMedidasR9} árvores medidas · ${nosIsentosContados} nós de exigência isentos por nome · ` +
+    `${gr95Furos.length} repetição(ões) fora da isenção`
+);
+if (!gr95RubricaGeradaOk) console.log('GR9-5 —', gr95Furos.slice(0, 10).join(' · '));
+
+// ============================================================
+// OS-R9 · FASE 4 — TODA CLASSE DE VESTÍGIO CITA A KB (GR9-6).
+// ============================================================
+// A proveniência por linha já era exigida dos ARQUÉTIPOS e das tabelas
+// auxiliares, e não das CLASSES DE VESTÍGIO — que são a matéria forense do
+// jogo, e onde um anacronismo custa mais caro. A guarda fecha o buraco e
+// vale para o que já existia: uma classe sem fonte é uma classe cuja
+// medicina ninguém conferiu.
+//
+// A citação tem de apontar arquivo E linha (ou seção nomeada): «a KB diz»
+// não é proveniência, é memória.
+const gr96Furos = [];
+for (const [id, classe] of Object.entries(CLASSES_VESTIGIO)) {
+  const p = classe.proveniencia;
+  if (typeof p !== 'string' || !p.trim()) {
+    gr96Furos.push(`${id}: sem proveniência`);
+    continue;
+  }
+  if (!/docs\/kb-/.test(p)) gr96Furos.push(`${id}: proveniência não aponta a KB`);
+  else if (!/\.md[:\s]/.test(p)) gr96Furos.push(`${id}: proveniência sem arquivo resolvível`);
+}
+const gr96ProvenienciaOk = gr96Furos.length === 0;
+console.log('\n=== OS-R9 · FASE 4 — PROVENIÊNCIA DAS CLASSES DE VESTÍGIO ===');
+console.log(`  ${Object.keys(CLASSES_VESTIGIO).length} classes, todas com fonte na KB: ${gr96ProvenienciaOk}`);
+if (!gr96ProvenienciaOk) console.log('GR9-6 —', gr96Furos.slice(0, 10).join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -5394,6 +5843,26 @@ const checagens = [
   [
     `GR8-2 (nenhum rótulo conclui pelo jogador): ${gr82Medidas} strings visíveis medidas em ${ARQUIVOS_MURAL.length} arquivos do mural (literais + texto JSX) — nenhuma diz «mentira», «desmente», «forjado» nem «culpado»; a gaveta nomeia o que contém, e quem julga é o desfecho`,
     gr82RotuloNaoConcluiOk,
+  ],
+  [
+    `GR9-2 (paridade de exposição em lote): ${dossiesMedidos} dossiês, os três níveis alcançáveis por TODOS — réu e inocente com a mesma média de níveis (${mediaReu.toFixed(2)}); beat 3 em toda árvore e em todo tom, alcançável de qualquer tom do beat 2; nenhum marcador de carta em beat 3, alfinetada ou degrau; e o corte de todo degrau é o próprio corteDeE2 da sua lista`,
+    gr92ParidadeLoteOk,
+  ],
+  [
+    `GR9-5 (a rubrica nas árvores geradas): a GR8-4 corre sobre as ${arvoresMedidasR9} árvores do banco com a MESMA régua do tutorial, e a isenção é POR NOME (${nosIsentosContados} nós de exigência) — nunca por tolerância numérica; fora da exigência, nenhuma frase de narração se repete entre beats`,
+    gr95RubricaGeradaOk,
+  ],
+  [
+    `GR9-6 (proveniência das classes de vestígio): as ${Object.keys(CLASSES_VESTIGIO).length} classes citam a KB por arquivo e linha — a exigência que já valia para arquétipos passa a valer para a matéria forense`,
+    gr96ProvenienciaOk,
+  ],
+  [
+    `GR9-3 (a noite no banco gerado): ${casosComCena}/${BANCO_R9.length} casos com reconstituição, ${gestosNoBanco} gestos — nenhum marcador de carta e nenhum nome de gente na prosa da cena; todo id de exige existe no caso; catálogo entre 3 e 9, sempre acompanhado do texto que o situa; e a geografia do caso-escola saiu de src/logic/reconstituicao.js`,
+    gr93NoiteOk,
+  ],
+  [
+    `GR9-1 (procedência no banco gerado): ${casosComMapa}/${BANCO_R9.length} casos com mapa, ${entradasR9} entradas com lastro (carta do catálogo, boca do elenco, forma do vocabulário); feixe em ${Math.round((100 * casosComFeixe) / BANCO_R9.length)}% dos casos (banda 40–95%), com ${casosComFeixeD16} a realizar a D16 — e toda alegação posta na boca de outrem tem o evento que a sustenta`,
+    gr91ProcedenciaOk,
   ],
   ['GR8-4 (a rubrica não se lê duas vezes): nenhuma frase de narração se repete verbatim entre beats da mesma árvore, nem entre a fala e a alfinetada do mesmo nó; nós do mesmo beat são alternativas, e o paradeiro sai igual em todo tom (G4)', gr84RubricaUnicaOk],
 ];

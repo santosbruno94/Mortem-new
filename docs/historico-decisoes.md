@@ -3151,3 +3151,189 @@ fazer.
   martelado na R3); a normalização do `interrogatorio_silas` (martelada como **não fazer**).
 - **Fora de toda a série** (OS-R0 §8): a camada psíquica, o pivô visual de gravura, o bug de
   `reacao_vital`.
+
+---
+
+### 26/07/2026 — OS-R9: O gerador herda os padrões
+
+**A primeira OS fora da reforma.** As oito anteriores tinham um alvo único e artesanal, e
+podia-se ler o caso inteiro antes de mexer nele. Esta tem 31 casos embarcados, 155 árvores
+de diálogo e um banco que é **produto** (G12). A consequência de método é toda: aqui um
+achado não é uma frase, é uma **distribuição**, e nenhuma leitura cobre 31 casos.
+
+**Decisões aplicadas:** D8 (contador autoral), D16, D17, D24. **Guardas verificadas:** G2, G3,
+G4, G5, G6, G7, G9, G10, G12.
+
+**Pontos de decisão do §5, recolhidos de uma vez no arranque, e os três pela recomendação:**
+(a) a resposta nula da exigência fica **uniforme**, isenta por nome; (b) catálogo de gestos
+com **teto nove e piso três**; (c) **mantém-se** a ordem das Fases 3 e 4.
+
+#### A telemetria da Fase 0, e as três medidas que mudaram o plano
+
+A Fase 0 mediu lote, item a item do §2. Sete medidas confirmaram a fila sem emenda. Três
+não:
+
+| | Antes |
+|---|---|
+| Casos com mapa de procedência | **0/31** |
+| Casos cuja árvore declara nível de exposição | **0/31** |
+| Suspeitos gerados que **não alcançam E1** | **71/155 (46%)** |
+| Árvores **sem confronto nenhum** | **53/155 (34%)** |
+| Casos com catálogo de gestos | **0/31** |
+| Cartas marcadas `insuficiente` | **0** |
+
+**A primeira é a que decidiu a OS.** O corte relativo da R6 protege o NÍVEL e não protege a
+ESCADA: com dossiê de uma carta, `corteDeE2(1)` é um, e o suspeito salta de E0 a E2 sem nada
+entre as duas. Medido em seguida: **o réu alcança os três níveis em 31 casos de 31; os
+inocentes, em 43%.** Portar o beat 3 como estava teria posto um delator em 31 casos — e
+nenhuma guarda o apanharia, porque todas olham o corte.
+
+**A segunda desmentiu a própria OS.** O §2.5 supunha confronto com segunda camada em TODAS as
+árvores geradas. São 102 de 155. Logo a exposição e o degrau não são dois itens que andam
+juntos por agenda: são o mesmo item, e o item é **densidade de dossiê**.
+
+**A terceira decompôs o número da R8 sem o contradizer.** Os «55» são ÁRVORES (11 casos × 5
+suspeitos); os SÍTIOS são 137, de 165 nós `exigencia_*`. Uma frase só, e 83% dos nós de
+exigência imprimem-na — o que reforça a decisão (a): variá-los seria escrever 137 redações
+de «não há nada aqui», cada uma um sinal.
+
+#### O que o gerador passou a saber fazer
+
+| Padrão | Antes | Depois |
+|---|---|---|
+| Procedência (D17) | 0/31 | **31/31**, 199 entradas, feixe em 20 (65%) |
+| Feixe da D16 (boca posta por terceiro) | 0/31 | **3/31** |
+| Exposição: os três níveis alcançáveis | réu 100%, inocente 43% | **100% e 100%** |
+| Árvores com confronto | 102/155 | **155/155** |
+| Beat 3 (declara o nível, paga a alfinetada) | 0 árvores | **155 árvores × 4 tons** |
+| Degrau de confronto (D8) | 0 árvores | **155 árvores**, corte = `corteDeE2` da própria lista |
+| Reconstituição | 0/31 | **12/31**, 47 gestos, 3,9 por caso |
+| Geografia da cena dentro de `src/logic` | 3 aberturas + 3 fechos | **nenhuma** |
+| Classes de vestígio | 34 | **35** (o durável do instrumento lavado) |
+
+**O feixe da D16 já estava gerado, e ninguém o registava.** O sistema de interferência faz o
+ator subornar uma testemunha, e a carta de retratação que nasce dali é, literalmente, a
+versão que ele pôs na boca dela — que junta ao álibi do próprio ator dá duas alegações e uma
+boca. O desenho de Silas com Davey e a Sra. Wick, produzido pela simulação em vez de escrito
+à mão.
+
+**A exposição consertou-se na origem, e sem carta nova.** O confronto gerado só existia para
+carta que fosse da pessoa ou tivesse saído da boca dela. Agora há um PISO: o perito pode pôr
+diante de qualquer um as duas peças que todo caso tem — o que o corpo mostra e a última hora
+em que se viu a vítima viva. Nenhum dossiê fica abaixo de dois, e os três níveis passam a ser
+alcançáveis por construção.
+
+**O degrau amarrou-se à exposição em vez de inventar um segundo eixo:** a lista é o dossiê do
+próprio suspeito, e o corte é o próprio `corteDeE2`, importado do motor e não copiado. O
+degrau cai exatamente quando a conversa chega ao nível mais fundo — é a exposição DITA.
+
+**A dívida de geografia foi paga no commit que a faria vazar**, como a R7 previu. As três
+aberturas e três dos quatro fechos cravavam a relojoaria, o balcão, a oficina e a BANCADA —
+mobília de relojoeiro — dentro de um módulo de lógica. O texto saiu para o pacote
+(`cenaDaNoite`); o módulo guarda a régua e não conhece mais nenhum cômodo.
+
+#### O que o gerador continua a não saber fazer, e com número
+
+- **§2.3 — o veraz sem crédito:** **0 cartas `insuficiente` em 31 casos.** O arquétipo não
+  existe, nem por acidente.
+- **§2.4 — o móbil por aritmética de livro:** 31/31 provam móbil por depoimento e por
+  vestígio social; **nenhum** por soma de livro.
+- **§2.9 — roupa queimada e documento queimado:** as duas classes continuam ausentes das 35.
+  Os dossiês de KB estão escritos e são dos melhores que o projeto tem.
+
+**Os três ficaram por fazer, e a razão é a mesma para os três:** cada um exige **família de
+carta nova** em muitos dos 31 casos, e carta nova mexe no equilíbrio que `metodicoResolve` e
+os quatro perfis validam. Não é trabalho de ajuste; é trabalho de OS, com Fase 0 própria.
+Fazê-los à pressa no fim desta seria exatamente o «aproveitar a viagem» que o §3 escreveu
+para fora.
+
+#### O achado que fixa o teto da reconstituição, e não estava na fila
+
+**O teto dos doze casos não está no catálogo: está na ponte.** Medido: `mobilia_recomposta` é
+a arrumação mais comum do banco — **20 ocorrências** —, e a ponte não lhe dá carta nenhuma.
+Idem `assoalho_esfregado` (5), `trilha_arrasto` (2), `louca_lavada_fora_de_hora` (1),
+`assoalho_esfregado_faixa` (1). O `crime.js` deposita esses vestígios de segunda ordem — a
+conservação da evidência do §3.3 do design manda —, o jogo não os mostra, logo o jogador não
+os pode colher, logo nenhum gesto os pode desfazer.
+
+É um furo da própria conservação: o óbvio vira sutil, e o sutil vira invisível. **Dar carta a
+`mobilia_recomposta` subiria a reconstituição de doze para perto de trinta**, e é a coisa de
+melhor rendimento que ficou em aberto neste repositório.
+
+#### As guardas novas
+
+**GR9-1** procedência no banco: cobertura dos álibis, lastro de carta e de boca, feixe em
+banda 40–95%, e toda alegação de forma `ensaio`/`coacao` com o evento que a sustenta — a
+perna que impede o mapa de saber o que o caso esconde.
+**GR9-2** paridade de exposição em lote: os três níveis alcançáveis por todos os 155, a média
+de níveis do réu igual à do inocente (qualquer diferença É o tell), e o derivador do beat 3
+cego ao papel por leitura de fonte.
+**GR9-3** a noite no banco: sem marcador de carta e sem nome de gente na prosa da cena, todo
+`exige` existente, catálogo entre 3 e 9, e a geografia fora de `src/logic`.
+**GR9-5** a GR8-4 sobre as 155 árvores, com a isenção **por nome** (165 nós de exigência) e
+nunca por tolerância numérica.
+**GR9-6** toda classe de vestígio cita a KB por arquivo e linha — exigência que já valia para
+arquétipos e não valia para a matéria forense.
+
+#### Três coisas que a execução ensinou
+
+1. **Uma guarda pode medir ruído de amostragem e chamar-lhe tell.** A primeira versão da
+   GR9-2 exigia que nenhuma fala de beat 3 fosse exclusiva do réu; com 256 textos possíveis,
+   31 réus e 124 inocentes, isso é exigir que uma coincidência não aconteça. O que é
+   verificável é a PROPRIEDADE (o derivador não lê o papel), e prova-se por fonte. O mesmo
+   valeu para o ofício que calha só a réus: mede-se em banda, com o número publicado.
+2. **Uma guarda de fonte tem de retirar os literais antes de varrer.** A prosa do derivador
+   diz «ponha no papel» na boca de um suspeito, e a guarda acusou o gerador de consultar o
+   papel dramático por causa de uma folha de papel. Mede-se código; a prosa mede-se noutro
+   lugar. É a lição da GR8-2 da R8, noutra roupa.
+3. **A quarta lição da R8 repetiu-se, e agora com número.** «Regra nova não fica pronta
+   quando se escreve: fica pronta quando se usa.» Das cinco correções da 2.ª passada,
+   **três foram causadas pelas correções da 1.ª** — a reescrita que estreitou uma célula
+   de lavradores para vacas (a classe também tem pastores), a coordenação que a minha
+   emenda do constable quebrou, e o vigário que passou a dizer «no domingo» depois de o
+   comerciante ter passado a dizer «amanhã é domingo». Numa OS cujo produto é prosa que 31
+   casos vão imprimir, uma passada só é meia passada.
+4. **Um gerador denuncia-se numa preposição.** Saíam «No cozinha», «A mesma a noite de sexta»
+   e «em cottage nº 3». Cômodo e prédio passaram a entrar como sintagma de lugar, com o
+   artigo resolvido — o do prédio pelo mesmo `formasDoLugar` que o resto do gerador já usava.
+
+**Arquivos tocados:** `src/gerador/procedencia_gerada.js` (novo),
+`src/gerador/intervencoes_geradas.js` (novo), `src/gerador/dialogos_gerados.js`,
+`src/gerador/pacote_gerado.js`, `src/gerador/vestigios.js`, `src/gerador/crime.js`,
+`src/gerador/ponte_caso.js`, `src/data/procedencia.js`, `src/data/intervencoes.js`,
+`src/data/pacote_caso.js`, `src/logic/contaminacao.js`, `src/logic/reconstituicao.js`,
+`src/logic/monologo.js`, `scripts/qa.mjs`, `src/data/casos_gerados.js` (produto),
+`src/data/casos_indice.js` (produto), `docs/os-r9-fase-0-telemetria.md` (novo).
+
+**Gate:** lint-prosa **zero** · qa.mjs **CASO VÁLIDO** (145 checagens, **30 guardas
+numeradas**) · qa-ui.mjs **UI VÁLIDA** · build **limpo** · banco regenerado byte a byte.
+**Pipeline de prosa: três passadas, 28 correções** — e as guardas automáticas estavam
+verdes em todas as três. A 1.ª achou cinco bloqueantes, e os três melhores são
+estruturais: a classe `criadagem` cobre o guarda-caça, que é sempre homem, e a fala vinha
+no feminino; o grupo `chao` do piso cobre o constable, que dizia «não sei ler nem o nome»
+num arquivo onde as falas dele lavram o livro de ocorrências; e o inquérito corre no
+sábado, logo «amanhã» é domingo — três células punham loja, oficina e ronda a abrir. A
+2.ª achou cinco, e **três eram consequência das correções da primeira**. A 3.ª (perito)
+não achou bloqueante nenhum no §2.8, e achou que **«coágulo» no rótulo da carta é
+conclusão** — só Teichmann estabelece que a matéria é sangue —, que o anel de tintura na
+cortiça é durável e não perecível, e que o pó de arsênico não tem física de secagem.
+**Gate específico:** os 4 perfis produzem os 4 desfechos na réplica, no pool e no lote de
+luta; o caso-escola sai intocado (42 cartas, horas 18h00 · 18h00 · 14h00 · 13h00).
+
+**Divergências assumidas:** a Fase 4 entrega **um** dos quatro itens (§2.8); §2.3, §2.4 e
+§2.9 ficam abertos com a razão medida acima.
+
+### Aberto para a OS seguinte
+
+- **A carta de `mobilia_recomposta`** — 20 ocorrências sem carta, e o melhor rendimento em
+  aberto: sobe a reconstituição de 12/31 para perto de 30/31. Com ela vêm
+  `assoalho_esfregado` e as três irmãs.
+- **§2.3 o veraz sem crédito, §2.4 o móbil por aritmética, §2.9 os dois queimados** — os três
+  restantes da fila da R9, cada um com família de carta nova e Fase 0 própria.
+- **Lote de UI:** o item 10 do playtest (transcrição completa da carta amassada).
+- **Lote do caso-escola:** a sala da `porta_beco`.
+- **Para o playtest humano, agora com número novo:** a reconstituição existe em 12 dos 31
+  casos gerados. Medir se a AUSÊNCIA dela nos outros 19 se lê como fim de caso normal ou como
+  peça que falta.
+- **Fora de toda a série** (OS-R0 §8): a camada psíquica, o pivô visual, o bug de
+  `reacao_vital`.

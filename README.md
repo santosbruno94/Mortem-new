@@ -102,6 +102,23 @@ fase da reforma pôde fazer — **removeu** duas guardas, cada uma com justifica
 comparava um comprimento consigo mesmo e não podia falhar; a outra cobrava um teto que a sua
 sucessora já implicava.
 
+A **OS-R9** foi a primeira fora da reforma, e mudou de alvo: em vez de um caso escrito à mão,
+**31 casos gerados, 155 árvores de diálogo e um banco que é produto**. O gerador passou a
+saber os padrões que o tutorial provou. Registra agora **de que boca saiu cada alegação** nos
+31 casos — e descobriu-se que o feixe da contaminação já era produzido pela simulação e
+ninguém o anotava: quando o culpado compra uma testemunha, a versão que ela passa a contar é
+a dele, e soma-se ao próprio álibi dele. A **exposição** e o **degrau de confronto** entraram
+nas 155 árvores, mas só depois de a medição mostrar um defeito que ninguém tinha visto: nos
+casos gerados o dossiê típico tinha uma carta só, e com uma carta o suspeito saltava do nível
+mais raso ao mais fundo sem passar pelo meio — de modo que **quantos degraus alguém tinha
+denunciava o culpado** (ele alcançava os três em todos os casos; os inocentes, em menos de
+metade). A saída não custou carta nova: o perito passou a poder pôr diante de qualquer pessoa
+as duas peças que todo caso tem, e com isso os três níveis ficaram ao alcance de todos.
+Entraram ainda a **reconstituição em doze dos trinta e um casos** — nos outros a noite
+simplesmente não foi arrumada por ninguém, e inventar-lhe gestos seria mentir — e o
+**vestígio durável do instrumento lavado**, que faz a peça deixar de expirar: quem chega
+tarde já não acha a junta úmida, mas o coágulo sob a virola continua lá.
+
 A fonte única de verdade do design é o arquivo [`MORTEM_CONTEXTO.md`](./MORTEM_CONTEXTO.md);
 o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-status.md).
 
@@ -132,7 +149,7 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/os-r6-exposicao-e-interrogatorios.md`](./docs/os-r6-exposicao-e-interrogatorios.md) | OS-R6 — a exposição (E0/E1/E2), o beat 3 nos cinco, a contaminação e o `apontadaPor` (**executada, com ata em 26/07/2026**; os sete martelos saíram nas recomendações, e o caso-escola fechou com 42 de 46 cartas) |
 | [`docs/os-r7-a-reconstituicao.md`](./docs/os-r7-a-reconstituicao.md) | OS-R7 — a reconstituição do clímax e a revozação do `monologo.js` (**executada, com ata em 26/07/2026**: cena de leitura sem autor nomeado, conta de bocas no desfecho, D25 nos cinco fechos, sete guardas novas e **zero cartas gastas**) |
 | [`docs/os-r8-passe-editorial.md`](./docs/os-r8-passe-editorial.md) | OS-R8 — passe editorial e QA de fecho, a última da reforma (**executada, com ata em 26/07/2026**: os rótulos que concluíam pelo jogador, o púlpito de cortiça, oito rubricas repetidas, o «vinco das nervuras» aos pares, duas guardas removidas com justificação e duas tornadas honestas; inventário da Fase 0 em [`docs/os-r8-fase-0-inventario.md`](./docs/os-r8-fase-0-inventario.md)) |
-| [`docs/os-r9-gerador-herda-os-padroes.md`](./docs/os-r9-gerador-herda-os-padroes.md) | OS-R9 — o gerador herda os padrões que o tutorial provou, e **já fora da reforma** (**escrita, por executar**: dez itens medidos contra a árvore, três pontos de decisão com recomendação; prompt em [`docs/os-r9-prompt-de-arranque.md`](./docs/os-r9-prompt-de-arranque.md)) |
+| [`docs/os-r9-gerador-herda-os-padroes.md`](./docs/os-r9-gerador-herda-os-padroes.md) | OS-R9 — o gerador herda os padrões, a primeira fora da reforma (**executada, com ata em 26/07/2026**: procedência em 31/31 casos com o feixe da D16, exposição e degrau nas 155 árvores com o piso de confronto que matou o delator medido na Fase 0, a reconstituição em 12/31 e a dívida de geografia da R7 paga, o durável do instrumento lavado, cinco guardas novas; telemetria da Fase 0 em [`docs/os-r9-fase-0-telemetria.md`](./docs/os-r9-fase-0-telemetria.md)) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)

@@ -288,11 +288,15 @@ const NUMERAL_FEM = ['nenhuma', 'uma', 'duas', 'três', 'quatro', 'cinco', 'seis
 const porExtensoM = (n) => NUMERAL_MASC[n] || 'vários';
 const porExtensoF = (n) => NUMERAL_FEM[n] || 'várias';
 
-export function blocoTestemunhas(idsDesmentidas) {
+// O `mapa` é opcional e existe para a AUDITORIA: em jogo, a conta usa o
+// mapa do caso carregado (é o que `contarVozes` faz sozinha), e o QA passa
+// o mapa do caso que está a auditar em vez de depender de qual pacote está
+// carregado no momento — que foi como a OS-R9 apanhou a fragilidade.
+export function blocoTestemunhas(idsDesmentidas, mapa) {
   const ids = [...(idsDesmentidas || [])];
   const papeis = ids.length;
   if (papeis < 1) return null;
-  const vozes = contarVozes(ids);
+  const vozes = mapa ? contarVozes(ids, mapa) : contarVozes(ids);
   if (papeis > vozes) {
     // A corroboração aparente. Uma só boca por trás de tudo, ou menos bocas
     // do que papéis: em qualquer dos casos o perito conta o que sobra.

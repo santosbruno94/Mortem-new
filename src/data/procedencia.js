@@ -33,6 +33,17 @@
 //   'propria'  — a pessoa alega do que viu ou fez; a origem é ela mesma
 //   'ensaio'   — repete o que lhe puseram na boca
 //   'coacao'   — alega sob pressão de terceiro, e recua quando pode
+//
+// ---------------------------------------------------------------------
+// OS-R9 · FASE 1 — O MAPA PASSA A SER DO CASO, E NÃO DESTE ARQUIVO
+//
+// Até aqui o mapa era único porque o caso era único. O gerador produz o
+// seu (src/gerador/procedencia_gerada.js), e o pacote de caso passa a
+// carregá-lo no campo `procedencia` — como já carrega `intervencoes`.
+// Este arquivo continua a ser a fonte do mapa DO CASO-ESCOLA, e as
+// funções abaixo recebem o mapa por parâmetro para que a mesma régua
+// corra sobre qualquer caso. Quem resolve de que caso é o mapa é
+// `contaminacao.js`, que o pede ao pacote carregado.
 // =====================================================================
 
 export const PROCEDENCIA_ALEGACOES = {
@@ -53,7 +64,12 @@ export const PROCEDENCIA_ALEGACOES = {
   corrob_pettigrew: { apontadaPor: 'pettigrew', forma: 'propria' },
 };
 
-/** A boca de onde saiu a alegação daquela carta, ou null se não há registro. */
-export function apontadaPor(cartaId) {
-  return PROCEDENCIA_ALEGACOES[cartaId]?.apontadaPor ?? null;
+/**
+ * A boca de onde saiu a alegação daquela carta, ou null se não há registro.
+ * O mapa entra por parâmetro porque ele é DO CASO (o caso-escola declara o
+ * seu acima; os gerados declaram o deles no pacote). Sem mapa, todo papel
+ * é de boca desconhecida — e a regra de `contarVozes` cuida disso.
+ */
+export function apontadaPor(cartaId, mapa = PROCEDENCIA_ALEGACOES) {
+  return (mapa || {})[cartaId]?.apontadaPor ?? null;
 }

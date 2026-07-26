@@ -190,7 +190,7 @@ export const CLASSES_VESTIGIO = {
     proveniencia: 'docs/kb-medicina-legal/vestigios.md (pegadas e trilhas de saída)',
   },
   instrumento_guardado_umido: {
-    rotulo: 'Instrumento lavado com coágulo sob o rebite',
+    rotulo: 'Instrumento lavado, junta do cabo ainda úmida',
     ordem: 2,
     atributo: 'WIS', // WIS mediana: lavou por alto, guardou no lugar
     evidenciaDe: ['higiene'],
@@ -204,6 +204,24 @@ export const CLASSES_VESTIGIO = {
     // o sinal perecível.
     proveniencia:
       'docs/kb-medicina-legal/supressao-de-vestigios.md ("a arma branca lavada": coágulo sob a virola e os rebites do cabo, confirmado por Teichmann; a umidade da junta é a versão perecível)',
+  },
+  // OS-R9 §2.8 — O DURÁVEL do instrumento lavado. A classe irmã de cima é o
+  // PERECÍVEL: a umidade da junta seca em um dia, e até esta OS o jogo a
+  // mostrava úmida por mais tarde que o perito chegasse, o que é
+  // impreciso e a KB não perdoa. O coágulo sob a virola é o que sobrevive
+  // à lavagem e ao tempo — e é ele que faz do instrumento uma prova que
+  // não expira, na promessa que o caso-escola já cumpre («o durável sempre
+  // resolve»).
+  instrumento_lavado_coagulo: {
+    rotulo: 'Crosta escura sob a virola do instrumento lavado',
+    ordem: 2,
+    atributo: 'WIS', // WIS mediana: lavou por alto, e a junta é o que a água não alcança
+    evidenciaDe: ['higiene'],
+    removivel: false,
+    noCorpo: false,
+    semCelula: true, // vive entre os pertences do assassino, fora da cena
+    proveniencia:
+      'docs/kb-medicina-legal/supressao-de-vestigios.md:129-135 (sob a virola — a junção da lâmina com o cabo —, no canal de escoamento e em torno dos rebites; remover os rebites e separar as talas do cabo, raspar a matéria escura e levá-la a Teichmann)',
   },
   instrumento_faltando: {
     rotulo: 'Instrumento que falta no seu lugar',

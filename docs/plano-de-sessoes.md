@@ -314,7 +314,7 @@ detalhar antes).
 Registrada aqui em 25/07/2026, no fecho da OS-R5: esta frente abriu **depois** da última
 atualização deste plano e correu cinco sessões sem constar dele, contra a regra de
 manutenção do topo. Ficou corrigido — e agora fica **encerrada**: as oito OS têm ata, e a
-da R8 traz o balanço das oito. O que sai desta frente e continua vivo é a **OS-R9**, que já
+da R8 traz o balanço das oito. O que saiu desta frente e já foi executado é a **OS-R9**, que já
 não é reforma: é o gerador a herdar os padrões que o tutorial provou.
 
 - **Objetivo:** reformar «A Hora Emprestada» em oito OS sequenciais, sem tocar na cadeia
@@ -338,7 +338,7 @@ não é reforma: é o gerador a herdar os padrões que o tutorial provou.
 | 6.º | R6 — Exposição e interrogatórios | ✅ fechada (26/07/2026) — os sete martelos saíram nas recomendações |
 | 7.º | R7 — A reconstituição | ✅ fechada (26/07/2026) — os três martelos estavam fechados de antemão e a sessão correu do arranque à ata sem parar |
 | 8.º | R8 — Passe editorial e QA de fecho | ✅ **fechada (26/07/2026)** — abriu com o §5 vazio, correu do arranque à ata sem consultar, e **fecha a reforma**. Inventário da Fase 0 em [`os-r8-fase-0-inventario.md`](./os-r8-fase-0-inventario.md) |
-| — | R9 — O gerador herda os padrões | **escrita e por executar**, e já **fora da reforma** — [`os-r9-gerador-herda-os-padroes.md`](./os-r9-gerador-herda-os-padroes.md), com a fila medida item a item; prompt em [`os-r9-prompt-de-arranque.md`](./os-r9-prompt-de-arranque.md). **Três pontos de decisão**, todos com recomendação |
+| — | R9 — O gerador herda os padrões | ✅ **executada, com ata (26/07/2026)** — e já **fora da reforma**. Seis de dez itens entregues; telemetria da Fase 0 em [`os-r9-fase-0-telemetria.md`](./os-r9-fase-0-telemetria.md). Os três pontos de decisão saíram no arranque, todos pela recomendação |
 
 - **Orçamento de cartas (G11, teto 46):** **42 em jogo, 4 livres — e é o número final.**
   A R6 era a última OS que podia gastar, e gastou **zero**: o martelo (f) aceitou o saldo 4
@@ -384,28 +384,33 @@ Sucede a SR e **não é a SR**: a reforma tinha um caso à mão; esta tem 31 cas
 - **OS:** [`os-r9-gerador-herda-os-padroes.md`](./os-r9-gerador-herda-os-padroes.md); prompt
   em [`os-r9-prompt-de-arranque.md`](./os-r9-prompt-de-arranque.md) — **é o prompt versionado
   da sessão seguinte:** copiar o bloco do §1 como primeira mensagem.
-- **Gatilho:** o **PR #100** (a R8, que fecha a reforma) **integrado**. Sem isso a R9 não abre
-  — regra dura da OS-R0 §5, e a ata da R8 vive nesse PR.
-- **A fila, medida contra a árvore (dez itens):** procedência (`apontadaPor`) — hoje só o
-  caso-escola a tem, e é por isso que a `contarVozes` da R7 trata alegação sem procedência
-  como voz própria; exposição E0/E1/E2 — **zero** ocorrências em `src/gerador/`; o veraz sem
-  crédito; o móbil por aritmética de livro; o degrau de confronto por contador autoral —
-  nenhuma árvore gerada tem `degraus`; as **intervenções da noite** — sem catálogo,
-  `montarReconstituicao` devolve `null` nos 31 casos, e destravá-lo arrasta a **dívida de
-  geografia** de `reconstituicao.js` no mesmo commit; o vestígio **durável** do instrumento
-  lavado (o coágulo sob a virola, que a KB documenta); as classes de **roupa queimada** e
-  **documento queimado**, que a KB tem e o gerador não; e a **GR8-4 no gerado**.
-- **A GR8-4 no gerado, já medida no fecho da R8:** 31 casos, 155 árvores, **11 casos com
-  repetição verbatim, 55 ocorrências — e uma frase só**, «Nada de nota.», todas em nós
-  `exigencia_*`. Fora dali o derivador varia as rubricas. **É decisão antes de ser trabalho:**
-  a resposta nula uniforme pode ser fair play, porque variar o «nada aqui» faria do estilo
-  um sinal.
-- **Mede-se em lote, nunca em leitura.** Nenhuma leitura cobre 31 casos; o molde é o das
-  guardas em banda que o `qa.mjs` já tem (GE2 em 40–60%, GE5 abaixo de 45%, regime-palco em
-  10–30%).
-- **Pronto quando:** `npm run verificar` verde, pipeline `revisar-prosa` com zero
-  bloqueantes **sobre amostra de lote**, replay byte a byte dos 31 casos e do índice leve, e
-  o caso-escola intocado (42 cartas, horas inalteradas).
+- **Gatilho:** o **PR #100** (a R8) integrado — **cumprido**; a R9 abriu depois do merge.
+- **O que a R9 entregou (seis dos dez itens):** a **procedência** em 31/31 casos (199
+  entradas, feixe em 20), com o feixe da D16 que a interferência já produzia e ninguém
+  registrava; a **exposição** e o **degrau** nas 155 árvores; as **intervenções da noite**
+  em 12/31, com a **dívida de geografia** paga no mesmo commit; o **durável do instrumento
+  lavado**; e a **GR8-4 no gerado**, com a isenção por nome que a decisão (a) fixou. Cinco
+  guardas novas (GR9-1, GR9-2, GR9-3, GR9-5, GR9-6).
+- **O achado que decidiu a OS, e não estava na fila:** a régua relativa da exposição protege
+  o NÍVEL e não protege a ESCADA. No banco, o dossiê mediano tinha UMA carta, e o réu
+  alcançava os três níveis em 31 casos de 31 contra 43% dos inocentes — **quantos degraus um
+  suspeito tem era um delator**. O conserto foi um **piso de confronto**, sem carta nova, e
+  hoje é 100% contra 100%.
+- **Ficaram por fazer, com número na ata:** §2.3 o veraz sem crédito (0 cartas
+  `insuficiente` em 31 casos), §2.4 o móbil por aritmética de livro (0 casos provam por
+  soma) e §2.9 as duas classes de queimado. Os três exigem **família de carta nova** em
+  muitos dos 31, e carta nova mexe no equilíbrio que os quatro perfis validam — é trabalho
+  de OS com Fase 0 própria, não de ajuste no fim de uma sessão.
+- **O melhor rendimento em aberto no repositório:** dar carta a `mobilia_recomposta`. É a
+  arrumação mais comum do banco (**20 ocorrências**) e a ponte não a realiza — o `crime.js`
+  deposita, o jogo não mostra, o jogador não colhe, nenhum gesto desfaz. Com ela vêm
+  `assoalho_esfregado` (5) e três irmãs, e a **reconstituição sobe de 12/31 para perto de
+  30/31**.
+- **Pronto quando (cumprido):** `npm run verificar` verde — 145 checagens, 30 guardas
+  numeradas —, replay byte a byte dos 31 casos e do índice leve, e o caso-escola intocado
+  (42 cartas, horas 18h00 · 18h00 · 14h00 · 13h00).
+- **Próxima sessão desta frente:** a carta de `mobilia_recomposta` e os três itens restantes
+  da fila. Prompt versionado em [`os-r10-prompt-de-arranque.md`](./os-r10-prompt-de-arranque.md).
 
 ### S5 — Balanceamento e OSs restantes
 

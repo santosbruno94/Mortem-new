@@ -238,6 +238,25 @@ export function fatiaForenseDoCrime({
     ['instrumento_abandonado', 'instrumento_faltando', 'instrumento_guardado_umido'].includes(v.classe)
   );
   if (vestigioInstrumento) {
+    // OS-R9 §2.8 — o instrumento LAVADO passa a ter dois tempos de leitura,
+    // e é a única das três classes que os tem. A umidade da junta é sinal
+    // PERECÍVEL: seca em cerca de um dia, e o perito que chegue depois disso
+    // não a acha. O coágulo sob a virola é o DURÁVEL, e é o que Teichmann
+    // ainda revela décadas depois.
+    //
+    // AS TAGS SÃO AS MESMAS NOS DOIS ESTADOS, e isto é deliberado: o nexo do
+    // veredicto não pode depender de o perito ter sido rápido. É o contrato
+    // do caso-escola — «o perecível degrada perdendo PRECISÃO, não valor; o
+    // durável sempre resolve» — cumprido aqui pela primeira vez no gerado.
+    // O que muda é o que a carta MOSTRA, e a diferença é de leitura.
+    const tagsInstrumento = {
+      dominio: 'vestigio',
+      subDominio: 'instrumento_oficio',
+      tipoVestigio: metodo.instrumento,
+      pertenceA: assassino.id,
+    };
+    const lavado = vestigioInstrumento.classe === 'instrumento_guardado_umido';
+    const vCoagulo = crime.vestigios.find((v) => v.classe === 'instrumento_lavado_coagulo');
     cartas.push({
       id: 'gen_instrumento',
       localidade: vestigioInstrumento.classe === 'instrumento_abandonado' ? 'cena' : 'oficio_do_reu',
@@ -248,12 +267,31 @@ export function fatiaForenseDoCrime({
       textoDisplay: 'O Instrumento',
       carimboPadrao: vestigioInstrumento.detalhe,
       descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
-      tagsOcultas: {
-        dominio: 'vestigio',
-        subDominio: 'instrumento_oficio',
-        tipoVestigio: metodo.instrumento,
-        pertenceA: assassino.id,
-      },
+      tagsOcultas: tagsInstrumento,
+      ...(lavado && vCoagulo
+        ? {
+            estados: [
+              {
+                // A janela de secagem da junta: um dia. Fonte do número, e
+                // são duas independentes na KB — supressao-de-vestigios.md:141-142
+                // (a arma lavada «de véspera» ainda guarda a umidade na junta,
+                // logo o sinal atravessa a noite) e :504 («que seca em um dia»).
+                ipmAte: 24,
+                textoDisplay: 'O Instrumento, a Junta Úmida',
+                carimboPadrao: vestigioInstrumento.detalhe,
+                descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+                tagsOcultas: { ...tagsInstrumento },
+              },
+              {
+                ipmAte: null,
+                textoDisplay: 'O Instrumento, a Crosta sob a Virola',
+                carimboPadrao: vCoagulo.detalhe,
+                descricao: 'Rótulo técnico da fase 3 — prosa nasce no pipeline.',
+                tagsOcultas: { ...tagsInstrumento },
+              },
+            ],
+          }
+        : {}),
     });
   } else {
     // Método sem instrumento (as mãos): a presença vem do pertence que a

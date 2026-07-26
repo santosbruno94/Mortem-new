@@ -56,6 +56,8 @@ import { derivarDialogos, formasDoLugar, profissaoExibida, FAIXA_CURTA, variante
 import { ECOS_INTERFERENCIA_PADRAO } from '../data/ecos_interferencia.js';
 import { obterPredio, saoAdjacentes } from './cidade.js';
 import { VOCABULARIO_DA_CLASSE } from './espaco.js';
+import { derivarProcedencia } from './procedencia_gerada.js';
+import { derivarIntervencoes, derivarCenaDaNoite } from './intervencoes_geradas.js';
 
 // ---------------------------------------------------------------------
 // A RÉPLICA do caso-escola (modo 2): seed fixa + variáveis dirigidas que
@@ -337,6 +339,10 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
   const perifericos = {};
   const cartasNovas = [];
   const segredos = {};
+  // OS-R9 Fase 1: de que boca sai cada corroboração, quando ela TEM boca.
+  // O ramo coletivo («por mais de uma janela») não entra — não há um
+  // confirmante a nomear, e o mapa de procedência não inventa testemunha.
+  const bocasDeCorroboracao = {};
   for (const s of candidatos) {
     const pessoa = pessoas.get(s.id);
     if (comSegredo.includes(s.id)) {
@@ -384,6 +390,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
           o.pacoteEspacial.rotina[escolha.faixa] === lugarId
       );
       const fraseJanela = FRASE_JANELA_CORROBORACAO[escolha.faixa];
+      if (confirmante) bocasDeCorroboracao[`gen_corrobora_${s.id}`] = confirmante.id;
       cartasNovas.push({
         id: `gen_corrobora_${s.id}`,
         localidade: 'vizinhanca',
@@ -450,7 +457,7 @@ function derivarPerifericos({ bruto, suspeitos, cartas, ausenteId = null }) {
     }
   }
 
-  return { perifericos, cartasNovas, segredos, acessorId };
+  return { perifericos, cartasNovas, segredos, acessorId, bocasDeCorroboracao };
 }
 
 // ---------------------------------------------------------------------
@@ -713,7 +720,12 @@ const ANCORA_SEM_LESAO = {
     guardadoDisplay: 'O Frasco Lavado',
     guardadoCarimbo: 'Frasco lavado, resto no gargalo',
     guardadoIntro: 'o frasco de láudano lavado e reposto',
-    guardadoResto: 'No fundo do gargalo, onde a água não alcança, resta um fio escuro da tintura',
+    guardadoResto: 'No fundo do gargalo resta um fio escuro da tintura, e a rolha, reposta sobre a boca por lavar, ficou com um anel castanho que já não sai da cortiça',
+    // OS-R9 §2.8 — a leitura PERECÍVEL, a que só quem chega cedo apanha: o
+    // sinal de que a lavagem foi HÁ POUCO. Passada a janela, resta o durável.
+    umidoDisplay: 'O Frasco Reposto Molhado',
+    umidoCarimbo: 'Frasco reposto molhado; círculo úmido na prateleira',
+    umidoResto: 'O frasco foi reposto molhado por fora, e a prateleira guarda o círculo úmido em que ele assentou, com o pó afastado em volta',
     comum: 'A botica da vila vende o igual, e mais de uma casa tem o seu para a dor e o sono.',
   },
   papel_de_arsenico: {
@@ -728,6 +740,9 @@ const ANCORA_SEM_LESAO = {
     guardadoCarimbo: 'Papel sacudido, pó nas dobras',
     guardadoIntro: 'o papel de arsênico sacudido e dobrado de novo',
     guardadoResto: 'Nas dobras, onde a sacudida não desce, resta um pó branco',
+    umidoDisplay: 'O Papel Sacudido, e o Pó em Volta',
+    umidoCarimbo: 'Papel sacudido; pó por fora, ainda por varrer',
+    umidoResto: 'Há pó branco salpicado por fora do papel e na tábua da prateleira em volta, ainda por varrer',
     comum: 'Papel assim compra-se para o rato e a mosca, em qualquer venda.',
   },
   travesseiro_ou_pano: {
@@ -742,6 +757,9 @@ const ANCORA_SEM_LESAO = {
     guardadoCarimbo: 'Pano lavado, fiapo na trama',
     guardadoIntro: 'o pano lavado e reposto',
     guardadoResto: 'Na trama, onde a água não desfaz o urdume, ficou um fiapo claro',
+    umidoDisplay: 'O Pano Lavado Há Pouco',
+    umidoCarimbo: 'Pano lavado; a dobra ainda por secar',
+    umidoResto: 'O pano está seco na face e úmido no vinco da dobra, e pesa mais do que o linho seco ao lado dele',
     comum: 'Roupa de cama assim há em toda casa da vila.',
   },
 };
@@ -1083,6 +1101,18 @@ function realizarCartas(bruto) {
             nova.textoDisplay = anc.guardadoDisplay;
             nova.carimboPadrao = anc.guardadoCarimbo;
             nova.descricao = `Entre os pertences de ${reu.nome}, ${anc.guardadoIntro}. ${anc.guardadoResto}. ${anc.comum}`;
+            // OS-R9 §2.8 — os dois tempos, também no método sem lesão: o
+            // vaso e o pano têm o seu perecível (a água ainda no vidro, o
+            // vinco por secar) e o seu durável (o fio no gargalo, o fiapo na
+            // trama). É a mesma régua da lâmina, noutra matéria.
+            if (nova.estados) {
+              nova.estados[0].textoDisplay = anc.umidoDisplay;
+              nova.estados[0].carimboPadrao = anc.umidoCarimbo;
+              nova.estados[0].descricao = `Entre os pertences de ${reu.nome}, ${anc.guardadoIntro}. ${anc.umidoResto}. ${anc.comum}`;
+              nova.estados[1].textoDisplay = anc.guardadoDisplay;
+              nova.estados[1].carimboPadrao = anc.guardadoCarimbo;
+              nova.estados[1].descricao = `Entre os pertences de ${reu.nome}, ${anc.guardadoIntro}. ${anc.guardadoResto}. ${anc.comum}`;
+            }
           }
           break;
         }
@@ -1104,6 +1134,18 @@ function realizarCartas(bruto) {
           nova.textoDisplay = 'O Instrumento Lavado';
           nova.carimboPadrao = 'Instrumento lavado, crosta sob o rebite';
           nova.descricao = `Entre os pertences de ${reu.nome}, a peça lavada e reposta. A lâmina brilha, mas sob o rebite do cabo, onde a água não entra, há uma crosta escura alojada. O feitio casa com a lesão ${doMorto}.`;
+          // OS-R9 §2.8 — os dois tempos de leitura. Dentro da janela de
+          // secagem, a junta úmida acrescenta a HORA da lavagem, que é o que
+          // o perecível dá a mais; passada ela, resta o coágulo, que dá o
+          // mesmo nexo sem a hora. Perde-se precisão, nunca valor.
+          if (nova.estados) {
+            nova.estados[0].textoDisplay = 'O Instrumento Lavado, a Junta Úmida';
+            nova.estados[0].carimboPadrao = 'Instrumento lavado há pouco; junta ainda úmida';
+            nova.estados[0].descricao = `Entre os pertences de ${reu.nome}, a peça lavada e reposta no lugar dela. A junta do aço com o cabo está úmida ao toque, e a madeira em volta escureceu de água. O feitio casa com a lesão ${doMorto}.`;
+            nova.estados[1].textoDisplay = 'O Instrumento Lavado, a Crosta sob a Virola';
+            nova.estados[1].carimboPadrao = 'Instrumento lavado; crosta escura sob a virola e os rebites';
+            nova.estados[1].descricao = `Entre os pertences de ${reu.nome}, a peça lavada e reposta no lugar dela. A junta está seca. Sob a virola e em torno dos rebites, onde a água não entra, assenta matéria escura; tirados os rebites e separadas as talas do cabo, ela raspa-se para a lâmina de vidro. O feitio casa com a lesão ${doMorto}.`;
+          }
         }
         break;
       }
@@ -2478,6 +2520,24 @@ export function montarPacoteGerado(seed, opts = {}) {
   // A carta de NEXO define o instrumento que o veredicto cobra: o método
   // com instrumento aponta o próprio; o sem instrumento (esganadura), o
   // pertence arrancado — sem isto, a Vitória Absoluta seria impossível.
+  // OS-R9 Fase 3 — a geografia do fato, em voz de prosa, para a cena da
+  // noite. Sai do próprio caso: o prédio onde o crime foi e o cômodo em que
+  // começou. É isto que substitui a relojoaria cravada no módulo de lógica.
+  const interiorDoFato = bruto.mundo.interiores[bruto.escolha.localId];
+  const comodoDoFato = interiorDoFato
+    ? comodoEmFala(
+        (interiorDoFato.comodos.find((k) => k.id === bruto.crime.local.comodoInicial) || {}).rotulo ||
+          bruto.crime.local.comodoInicial
+      )
+    : null;
+  const predioDoFato = nomeDoPredio(bruto.mundo.cidade, bruto.crime.local.predioId);
+  const gestosDaNoite = derivarIntervencoes({
+    bruto,
+    cartas,
+    comodo: comodoDoFato,
+    predio: predioDoFato,
+  });
+
   const cartaNexo = cartas.find(
     (c) => (c.tagsOcultas || {}).dominio === 'vestigio' && c.tagsOcultas.pertenceA === bruto.crime.assassinoId
   );
@@ -2518,6 +2578,26 @@ export function montarPacoteGerado(seed, opts = {}) {
     // Camada VISUAL opcional (o motor jamais a lê — guarda GE3): a maquete
     // da vila gerada, no schema do DioramaVila. Sem ela, grade 2D.
     maquete,
+    // OS-R9 Fase 1 — o mapa da D17. Camada NARRATIVA: o motor jamais o lê
+    // (GR9-4); quem o consome é a conta de bocas do desfecho. Deriva-se
+    // DEPOIS das cartas de álibi porque são elas que fecham o mapa.
+    procedencia: derivarProcedencia({
+      cartas,
+      suspeitos,
+      eventos: bruto.interferencia.eventos,
+      bocasDeCorroboracao: perif.bocasDeCorroboracao,
+    }),
+    // OS-R9 Fase 3 — os gestos da noite e o texto que situa a cena. Os dois
+    // andam juntos: sem catálogo não há cena, e sem cena o catálogo não
+    // teria onde se ler. Abaixo do piso de três, o caso não recebe nem um
+    // nem outro, e o fim de caso vai direto ao monólogo (G9: não se inventa
+    // gesto para encher). Camada NARRATIVA — o motor jamais os lê.
+    ...(gestosDaNoite.length
+      ? {
+          intervencoes: gestosDaNoite,
+          cenaDaNoite: derivarCenaDaNoite({ bruto, comodo: comodoDoFato, predio: predioDoFato }),
+        }
+      : {}),
     ...(comarcaDoCaso ? { telegrama: comarcaDoCaso.telegrama } : {}),
     ...(bruto.interferencia.eventos.length
       ? {

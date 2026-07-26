@@ -156,6 +156,52 @@ export const INTERVENCOES_NOITE = [
   },
 ];
 
+// =====================================================================
+// A CENA DA NOITE DO CASO-ESCOLA (OS-R9 · Fase 3) — a dívida de geografia
+// da OS-R7, paga.
+//
+// Estas frases viviam dentro de `src/logic/reconstituicao.js`, e a própria
+// R7 registou por que aquilo não podia ficar: elas cravam a relojoaria, o
+// balcão, a oficina, o escritório e a bancada dentro de um módulo de
+// LÓGICA, cujo irmão `monologo.js` declara o contrato oposto — nenhum texto
+// exclusivo de caso. Enquanto só o tutorial tinha catálogo de gestos, não
+// vazava; no dia em que o gerador produzisse intervenções, vazaria no mesmo
+// commit. Este é esse commit, e por isso a dívida vem paga com ele.
+//
+// O que o motor guarda agora é a RÉGUA (qual faixa, qual índice); o texto é
+// do caso, e cada caso traz o seu. Os fechos entram junto pela mesma razão
+// que as aberturas: três deles pousam o lampião numa BANCADA, e bancada é
+// mobília de relojoeiro — num moinho ou numa cabana não há nenhuma.
+// =====================================================================
+export const CENA_DA_NOITE_TUTORIAL = {
+  subtitulo: 'Domingo à noite, na relojoaria',
+  aberturas: [
+    'Domingo à noite. A loja está fechada e o lume apagado; o lampião de mão vai à frente, do balcão à oficina e da oficina ao escritório. Sobre a bancada, em fila, o que trouxe comigo.',
+    'Domingo, passada a hora da ceia. O homem de guarda ficou à porta da rua e a relojoaria é minha por uma hora. Refaço a noite de sexta com o que a mesa sustenta, e paro onde ela parar.',
+    'Domingo à noite, e a vila dorme cedo. Ando pela sala com o lampião baixo, e não há ninguém a quem perguntar. A sexta-feira volta em pedaços, e só nos pedaços que colhi.',
+  ],
+  // O fecho é FUNÇÃO DA COLHEITA, não sorteio: quatro faixas, do nada ao
+  // quase tudo. A faixa vazia diz que a sala ficou como estava — e não diz
+  // que havia mais, porque dizê-lo seria provar de graça o que o jogador não
+  // provou. Se um dia o playtest mostrar que a cena vazia se lê como defeito
+  // em vez de consequência, o remédio é desta prosa, e nunca da mecânica.
+  //
+  // NENHUM FECHO DECLARA PROPORÇÃO ("metade", "quase toda"), e a razão é de
+  // epistemologia, não de gosto: o perito sabe quantos gestos desfez e NÃO
+  // sabe quantos lhe escaparam. Um fecho que dissesse a fração entregaria,
+  // de graça, o tamanho do que ele não provou.
+  fechos: {
+    nenhuma:
+      'Apago o lampião. Percorri a sala inteira e ela ficou como estava: nada do que trouxe moveu coisa alguma aqui dentro. Saio como entrei.',
+    poucas:
+      'Ponho o lampião na bancada. A sala cedeu nos pontos em que eu tinha com que a pressionar, e ficou inteira no resto.',
+    varias:
+      'Ponho o lampião na bancada. A noite refez-se diante de mim na ordem em que foi feita, e parou onde a minha mesa parou.',
+    quase_toda:
+      'Ponho o lampião na bancada e fico olhando a sala. A noite de sexta voltou diante de mim uma arrumação de cada vez, e nenhuma delas se desfez sem papel meu por baixo.',
+  },
+};
+
 /**
  * As intervenções que a mesa do jogador desfaz, na ordem da noite. Toda
  * carta de `exige` tem de estar na mesa — é a GR7-3 escrita na função que
