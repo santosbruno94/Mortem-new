@@ -2042,3 +2042,96 @@ anos que podia pagá-la. É a via que faz a vila saber no domingo — e é por i
   oficina de vila — **nenhuma personagem pode afirmar que aquilo era de direito**. O Ato de
   1896 e o Moneylenders Act de 1900 são posteriores: em 1893 o saldo era exigível, e o rapaz
   não tem remédio.
+
+---
+
+## 25/07/2026 — Lote de KB: o que a OS-R5 passou a exigir da base
+
+**Ordem do utilizador** no fecho da OS-R5, sobre as três lacunas que a OS registrou como
+«aberto». Não é OS: é lastro. Nenhuma linha de código foi tocada, nenhuma prosa embarcada
+mudou.
+
+**Por que agora, e não «quando der».** É o mesmo argumento do lote da R4, e vale duas vezes
+aqui: a prosa da R5 passou a depender de três domínios em que a base era **muda** — como se
+casa em 1893, quanto ganha um aprendiz, e o que a lei deixava fazer a quem emprestava e a
+quem retinha salário. A pesquisa com fontes **já estava paga** pelo parecer do
+`perito-forense` sobre as duas cartas; adiar significaria pagá-la outra vez, ou (pior)
+escrever de cabeça na próxima sessão que precisasse dela. E há um agravante que a R4 não
+tinha: **essa pesquisa vivia só no parecer**, que é efémero.
+
+**Arquivos tocados:** `docs/kb-mundo-vitoriano/demografia-e-sociedade.md` ·
+`docs/kb-mundo-vitoriano/economia-e-estrutura-social.md` ·
+`docs/kb-mundo-vitoriano/fontes.md` · `docs/kb-mundo-vitoriano/README.md`.
+
+### O que entrou
+
+1. **Casar em 1893, em `demografia-e-sociedade.md` §7** — o regime do **Marriage Act 1823**
+   com as **três portas**: proclamas (três domingos sucessivos, aviso escrito sete dias
+   antes, caducidade em três meses, 11s 6d–15s 6d), licença comum (£2–£3, sem leitura
+   pública, quinze dias de residência) e o **certificado do superintendent registrar** do
+   Ato de 1836 (aviso exposto vinte e um dias, cartório ou capela registada), que é a via do
+   não-conformista. Mais o que os proclamas **não** dizem (idade), o peso assimétrico sobre
+   a viúva, e o **Wills Act 1837 s. 18** — o casamento revoga o testamento, que é o relógio
+   por trás de metade dos móbeis de herança.
+2. **A aprendizagem, em `economia-e-estrutura-social.md` §7** — a escala documentada de um
+   *indenture* de relojoeiro de 1891 (1s no 1.º ano a 6s no 7.º), a faixa por situação com a
+   **origem de cada linha declarada**, e a idade de entrada.
+3. **Dinheiro emprestado e retido, em `economia-e-estrutura-social.md` §8** — a peça mais
+   importante das três, e a única que é **guarda-corpo**. Usura livre desde 1854; as taxas
+   de rua na forma em que a época as dizia; a aritmética que faz uma dívida de £2 8s ficar
+   **parada** sob pagamento de quatro xelins semanais (que é o livro de Davey, e é o que faz
+   a agiotagem aparecer sem a palavra); e os **Truck Acts** de 1831 e 1887, com a
+   consequência escrita como proibição de prosa.
+
+### Verificação
+
+O `perito-forense` releu as três peças contra o próprio parecer, com a ordem explícita que a
+R4 inventou: **marcar como bloqueante qualquer ponto em que a redação tivesse endurecido a
+pesquisa** — transformado um «não consegui confirmar» em fato da base, uma inferência numa
+asserção normativa, uma ordem de grandeza numa tabela, ou uma faixa defensável numa regra.
+
+**Veio com três bloqueantes e oito altos, todos aplicados, e todos eram endurecimento meu.**
+A aritmética e as datas passaram intactas. Os que valem por si:
+
+- **A s. 6 do Employers and Workmen Act 1875 não diz o que eu escrevi.** Ela manda o
+  tribunal julgar a disputa entre mestre e aprendiz **como se** fosse entre patrão e
+  trabalhador — equiparação **de foro**, não de definição. A definição que o Truck Act de
+  1887 importa é a da **s. 10**, que não nomeia o aprendiz.
+- **A criadagem está FORA dos Truck Acts** (a definição de 1875 exclui o *domestic or menial
+  servant*), e o §4 da mesma pasta lista «salário atrasado da criada» como móbil padrão. O
+  cruzamento descuidado das duas páginas produziria uma cena em que alguém ameaça queixa dos
+  Truck Acts em nome de uma criada — erro jurídico de época, plantado pela própria KB. Já o
+  *servant in husbandry* — o lavrador — está **dentro**, e é o único caso de vila em que a
+  alavanca funciona.
+- **Um único documento tinha virado tabela.** O *indenture* de 1891 documenta data, prazo e
+  escala, e **nada** sobre alojamento; a minha explicação causal era leitura de desenhista
+  apresentada como achado. Duas das três linhas da tabela não tinham fonte alguma. Passaram
+  a declarar a origem, e a régua 3s/4s/5s passou a dizer de si mesma que é **convenção de
+  MORTEM, não dado histórico**.
+- **As taxas de 2d e 3d no xelim são de um debate dos Lordes de 1924**, e estavam sob o
+  título «a forma em que a época as dizia» — atestação posterior em trinta anos, numa base
+  cujo valor inteiro é separar 1893 do que veio depois. Só a de 1d é de época.
+- **As duas fontes que eu citara para o §8.1 não sustentavam nenhum dos números.** Os fatos
+  estavam certos e as fontes não os provavam, que é a pior combinação: quem reconferisse ou
+  apagaria um fato correto ou perderia a confiança na página inteira.
+- **Havia um remédio, e eu escrevera que não havia:** a equidade já reabria barganha com
+  herdeiro expectante (*Earl of Aylesford v Morris*, 1873). Serve ao filho do squire; não ao
+  lavrador.
+- **Faltava a guarda contra o reflexo do direito moderno:** em 1893 não existe testamento
+  «feito em contemplação do casamento» que escape à revogação — a exceção é da **Law of
+  Property Act 1925, s. 177**.
+
+Entraram ainda, por não estarem escritas: as **três portas** (eu tinha escrito duas, e
+faltava justamente a do não-conformista, que a mesma pasta faz de peça de elenco); o **custo
+real dos proclamas** (eu escrevera «gratuito», o que destruía a comparação de classe que a
+seção existe para fazer); a correção do **meio-luto** (a viúva nele **não** cumpriu o prazo —
+está nos meses 22 a 24 de 24 —, e «pode casar sem violar o código» não vem de fonte alguma,
+porque os manuais legislam sobre traje e não sobre recasar); e a metade que faltava do
+**nome falso** (o teste é *ambas* as partes, sabendo e de propósito — se só um sabia, o
+casamento vale e a parte enganada fica casada).
+
+**Aberto, e é decisão do utilizador:** os dois arquivos discordam sobre o preço do trigo —
+`economia` §1 dá 46s (1870) → 22s (1894), `demografia` §2 dá 50s (1871) → 23s (1894) — e
+citam-se um ao outro. Séries diferentes, nenhuma errada em si, mas quem cruzar as páginas
+encontra números que não batem. Registrado em `fontes.md` e **não resolvido**: escolher a
+série é do utilizador. Até lá, a prosa cita a ordem de grandeza e não o número.
