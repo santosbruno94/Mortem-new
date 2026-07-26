@@ -41,7 +41,8 @@ import { gerarMonologo } from '../src/logic/monologo.js';
 import { slotsNaoResolvidos } from '../src/logic/interpolar.js';
 import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/exposicao.js';
 import { PROCEDENCIA_ALEGACOES } from '../src/data/procedencia.js';
-import { agruparPorOrigem, contarVozesIndependentes, feixesContaminados } from '../src/logic/contaminacao.js';
+import { agruparPorOrigem, contarVozes, contarVozesIndependentes, feixesContaminados } from '../src/logic/contaminacao.js';
+import { INTERVENCOES_NOITE, intervencoesRebatidas } from '../src/data/intervencoes.js';
 import { PAPEIS } from '../src/data/papeis.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
@@ -145,7 +146,15 @@ function relatar(rotulo, veredicto) {
   console.log(
     `Falhas: ${veredicto.falhas.map((f) => f.codigo + (f.suspeitoId ? `(${f.suspeitoId})` : '')).join(', ') || '—'}`
   );
-  monologos.push({ rotulo, monologo: gerarMonologo(veredicto, s().detective) });
+  monologos.push({
+    rotulo,
+    monologo: gerarMonologo(veredicto, s().detective),
+    // A mesa NO MOMENTO DE ACUSAR — a fotografia que a Fase 0 da OS-R7 relê
+    // com a régua das intervenções e com a das bocas. Guardar aqui poupa
+    // reencenar os perfis: quem chega ao veredicto já passou por este ponto.
+    mesaIds: s().cartasRegistradas.map((c) => c.id),
+    veredicto,
+  });
 }
 
 // ============================================================
@@ -4746,6 +4755,68 @@ for (const t of telemetriaR6) {
     `    ${t.perfil.padEnd(18)} ${t.suspeitoId.padEnd(15)} ${e.nivel}  (${e.tem}/${e.total})  ${e.ids.join(' ')}`
   );
 }
+
+// ============================================================
+// OS-R7 · FASE 0 — TELEMETRIA DA RECONSTITUIÇÃO.
+//
+// Lê e conta; não muda nada. São os dois números que dizem o TAMANHO que a
+// cena pode ter, e medi-los antes de escrevê-la é o método da casa (na R5 a
+// telemetria dispensou uma fase inteira; na R6 trocou o corte absoluto pelo
+// relativo antes que o nível de exposição virasse delator):
+//
+//   (1) quantas INTERVENÇÕES o perfil tem carta para rebater — uma cena que
+//       ninguém alcança é prosa escrita para o vazio, e uma que todos
+//       alcançam por inteiro não mede colheita nenhuma;
+//   (2) quantas VOZES INDEPENDENTES sustentam a tese de cada suspeito, ao
+//       lado de quantos PAPÉIS a mesa tem. Onde os dois números divergem, a
+//       corroboração é aparente: é o feixe da D16, e é a razão de a Fase 1
+//       trocar a conta do `blocoTestemunhas`.
+//
+// A tese de cada suspeito é declarada aqui, e não derivada: o que sustenta
+// o relato de alguém é juízo de ficção (o álibi que ele dá, o que outra
+// boca repete por ele, o dedo que aponta para longe dele), e derivá-lo de
+// tags faria a telemetria medir o esquema em vez do caso.
+// ============================================================
+const TESE_R7 = {
+  silas_crane: ['alibi_silas', 'alibi_davey', 'dep_mulher_viela'],
+  walter_arthurs: ['alibi_walter'],
+  agnes_rooke: ['alibi_agnes'],
+  caleb_grey: ['alibi_grey'],
+  davey_tull: ['alibi_davey'],
+};
+const PERFIS_CANONICOS_R7 = ['(a) METÓDICO', '(b) APRESSADO', '(c) INTUITIVO', '(d) PERICIAL DESATENTO'];
+const telemetriaR7 = PERFIS_CANONICOS_R7.map((prefixo) => {
+  const registro = monologos.find((m) => m.rotulo.startsWith(prefixo));
+  const mesa = registro ? registro.mesaIds : [];
+  const rebatidas = intervencoesRebatidas(mesa);
+  const teses = Object.entries(TESE_R7).map(([suspeitoId, ids]) => {
+    const naMesa = ids.filter((id) => mesa.includes(id));
+    return { suspeitoId, papeis: naMesa.length, vozes: contarVozes(naMesa) };
+  });
+  return { perfil: prefixo, rebatidas, teses };
+});
+
+console.log('\n=== OS-R7 · FASE 0 — INTERVENÇÕES REBATÍVEIS E VOZES POR TESE ===');
+console.log(`  Catálogo da noite: ${INTERVENCOES_NOITE.length} intervenções.`);
+for (const t of telemetriaR7) {
+  console.log(
+    `  ${t.perfil.padEnd(22)} rebate ${String(t.rebatidas.length).padStart(2)}/${INTERVENCOES_NOITE.length}  ${
+      t.rebatidas.map((i) => i.id).join(' ') || '—'
+    }`
+  );
+  const feixes = t.teses.filter((x) => x.papeis > 0);
+  console.log(
+    `  ${''.padEnd(22)} teses:  ${
+      feixes.map((x) => `${x.suspeitoId} ${x.papeis}p/${x.vozes}v`).join('  ') || '—'
+    }`
+  );
+}
+// O número que justifica a régua da Fase 1: onde papéis e vozes divergem,
+// somar papéis conta o mesmo homem duas vezes.
+const divergenciasR7 = telemetriaR7.flatMap((t) =>
+  t.teses.filter((x) => x.papeis > x.vozes).map((x) => `${t.perfil} · ${x.suspeitoId} ${x.papeis}p/${x.vozes}v`)
+);
+console.log(`  Corroborações aparentes: ${divergenciasR7.join(' · ') || 'nenhuma nas quatro rotas'}`);
 
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
