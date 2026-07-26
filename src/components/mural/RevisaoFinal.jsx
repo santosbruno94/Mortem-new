@@ -25,11 +25,14 @@ export default function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refut
     for (const v of refutaAlibi.values()) if (v.alibi.tagsOcultas.declaranteId === sid) return v.vestigios[0];
     return null;
   };
-  // As mentiras expostas do caso: as de hora E o paradeiro do réu desmentido
-  // (P2 do playtest — a refutação do álibi do réu não pode ficar invisível).
-  const mentiras = [...refutaHora.values()].map((v) => v.alegacao.termoCarimbo);
+  // Os depoimentos que ESTA acusação contesta: as alegações de hora e o
+  // paradeiro do réu (P2 do playtest — a refutação do álibi do réu não pode
+  // ficar invisível). O rótulo diz «contestados», e não «mentiras»: esta tela
+  // é a releitura do que o jogador montou, e ela mesma avisa que nada aqui
+  // diz se está certo. Quem julga é o desfecho (OS-R8 §3.1).
+  const contestados = [...refutaHora.values()].map((v) => v.alegacao.termoCarimbo);
   const paradeiroReu = refutaAlibiDe(acusacao.reuId);
-  if (paradeiroReu) mentiras.push(`paradeiro desmentido por “${paradeiroReu.textoDisplay}”`);
+  if (paradeiroReu) contestados.push(`paradeiro contestado por “${paradeiroReu.textoDisplay}”`);
   const rotuloJuizo = (j) => (j === 'culpado' ? 'Cúmplice' : j === 'inocente' ? 'Inocente' : 'Sem juízo');
 
   return (
@@ -44,7 +47,7 @@ export default function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refut
           <LinhaRev rotulo="Quando" valor={temJanela ? formatJanela(acusacao.janela) : semCor} />
           <LinhaRev rotulo="Como" valor={causa ? causa.nome : semCor} />
           <LinhaRev rotulo="Presença" valor={vestNexo ? vestNexo.textoDisplay : '— nada liga o réu à cena —'} />
-          <LinhaRev rotulo="Mentiras" valor={mentiras.length ? mentiras.join(' · ') : '— nenhuma mentira exposta —'} />
+          <LinhaRev rotulo="Contestados" valor={contestados.length ? contestados.join(' · ') : '— nenhum depoimento contestado —'} />
           <LinhaRev rotulo="Móbil" valor={motivo ? motivo.termoCarimbo : semCor} />
           <div className="flex gap-3">
             <dt className="text-rotulo uppercase text-latao-claro/70 w-24 shrink-0 pt-0.5">Juízos</dt>
@@ -61,7 +64,7 @@ export default function RevisaoFinal({ acusacao, cartas, sustentaPresenca, refut
                         {/* Forma neutra: o nome da carta tem gênero próprio
                             ("a Cesta…", "o Registro…") — nada de "pelo" fixo. */}
                         {acusacao.juizos[sp.id] === 'inocente' && v && (
-                          <span className="text-stone-400"> — paradeiro desmentido por “{v.textoDisplay}”</span>
+                          <span className="text-stone-400"> — paradeiro contestado por “{v.textoDisplay}”</span>
                         )}
                       </span>
                     );

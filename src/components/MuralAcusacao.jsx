@@ -44,7 +44,12 @@ const ehAlibiDe = (c, sid) => c.tagsOcultas.subDominio === 'alibi' && c.tagsOcul
 const ETAPAS = [
   { id: 'corpo', titulo: 'I · O Corpo', subtitulo: 'quando e como' },
   { id: 'presenca', titulo: 'II · A Presença', subtitulo: 'o réu na cena' },
-  { id: 'mentiras', titulo: 'III · As Mentiras', subtitulo: 'depoimentos desmentidos' },
+  // OS-R8 §3.1: a gaveta nomeia o que CONTÉM (as alegações de hora e o
+  // paradeiro declarado pelo réu), não o que o jogador deve concluir delas —
+  // e nela estão as alegações VERDADEIRAS junto das falsas. Chamá-las
+  // «mentiras» antes de o barbante as derrubar era o rótulo a concluir pelo
+  // jogador. O id interno ('mentiras') é do motor e não muda.
+  { id: 'mentiras', titulo: 'III · Os Depoimentos', subtitulo: 'hora e paradeiro declarados' },
   { id: 'mobil', titulo: 'IV · O Móbil', subtitulo: 'a razão do crime' },
   { id: 'juizos', titulo: 'V · Os Juízos', subtitulo: 'sobre cada não-acusado' },
 ];
