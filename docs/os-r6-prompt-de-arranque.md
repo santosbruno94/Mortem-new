@@ -9,7 +9,8 @@ primeira mensagem da sessão nova.
 ## 1. O prompt
 
 > Executar a **OS-R6 — Exposição e Interrogatórios**
-> (`docs/os-r6-exposicao-e-interrogatorios.md`) do repositório MORTEM.
+> (`docs/os-r6-exposicao-e-interrogatorios.md`) do repositório MORTEM, do
+> arranque ao fecho com ata.
 >
 > **Antes de tocar em qualquer ficheiro, ler nesta ordem:**
 > 1. `docs/os-r0-mestra-reforma-hora-emprestada.md` — a ordem-mestra. Não se
@@ -28,45 +29,116 @@ primeira mensagem da sessão nova.
 > 5. `CLAUDE.md` — regras invioláveis do código e o **contrato com o
 >    `qa-ui.mjs`**, que nesta OS é o risco número um.
 >
-> **Cinco martelos são precisos no arranque, e a OS não os tem resolvidos.**
-> Estão no §5, cada um com recomendação e com o custo das alternativas.
-> Confirmar os cinco com o utilizador **antes da Fase 1**:
+> ---
 >
-> **(a) O que a exposição mede e o que ela muda.** A recomendação é **medir as
+> ### Recolher TODAS as decisões pendentes numa rodada só, antes da Fase 1
+>
+> São **sete**, e é o conjunto completo do que está aberto no repositório —
+> não há outra pendência de desenho à espera. Perguntar as sete **de uma vez**
+> (uma rodada de `AskUserQuestion`, com as recomendações em primeiro lugar), e
+> **não parar mais** depois de respondidas: da Fase 0 ao fecho com ata, sem
+> nova consulta, salvo se a execução revelar contradição entre uma decisão e
+> uma guarda — caso em que se pergunta na hora, e só isso.
+>
+> As **seis primeiras** são os martelos do **§5 da própria OS**, cada uma com o
+> custo das alternativas escrito lá. A **sétima** não é da OS: é uma divergência
+> de KB que ficou registrada e por resolver, e é do utilizador.
+>
+> **(a) O que a exposição mede, e o que ela muda.** Recomendação: **medir as
 > cartas do próprio suspeito e mudar só o rendimento**, nunca a
-> disponibilidade — satisfaz a G4 por construção e não pode virar beco.
+> disponibilidade — satisfaz a G4 por construção e não pode virar beco. As
+> alternativas (medir a mesa inteira; medir e abrir nós) estão no §5(a).
 >
-> **(b) O que é o beat 3.** A recomendação é **o beat da pressão, onde a
-> exposição se paga**: um terceiro par de perguntas nos quatro tons, sem carta
-> nova e sem nó novo.
+> **(b) O que é o beat 3.** Recomendação: **o beat da pressão, onde a exposição
+> se paga** — um terceiro par de perguntas nos quatro tons, sem carta nova e
+> sem nó novo. As alternativas (promover o confronto a beat; eixo novo de
+> pergunta) estão no §5(b).
 >
-> **(c) Se o motor lê o `apontadaPor`.** A recomendação é **não** — lastro
-> narrativo com guarda no QA, como aparências, papéis e atributos. Se ler, é
-> decisão de mesa **com ata própria**.
+> **(c) O motor lê o `apontadaPor`?** Recomendação: **não** — lastro narrativo
+> com guarda no QA, como aparências, papéis e atributos. Se ler, vira contrato
+> do veredicto e é **decisão de mesa com ata própria**.
 >
-> **(d) Se a D3 custa carta.** A recomendação é **não**: o segundo degrau de
-> Walter cobra o que já está na mesa (`corrob_pettigrew` traz a mudança do
-> testamento por razão de matrimônio, e o bilhete do vigário da R5 datou-a).
+> **(d) A D3 custa carta?** Recomendação: **não** — o segundo degrau de Walter
+> cobra o que já está na mesa: `corrob_pettigrew` traz a mudança do testamento
+> «por razão de matrimônio», e o `ev_bilhete_vigario` da R5 datou-a.
 >
-> **(e) O que fazer com a anomalia do `interrogatorio_silas`.** A recomendação
-> é **deixar como está e registrar**, com desconforto declarado: normalizar
-> toca mapa, diorama, horas e o contrato do `qa-ui`.
+> **(e) A anomalia do `interrogatorio_silas`.** Só o réu tem nó de mapa próprio
+> para ser interrogado; Agnes e Grey **são** a localidade, Walter e Davey abrem
+> por botão de dentro de outra. Recomendação: **deixar como está e registrar**,
+> com o desconforto declarado — normalizar toca mapa, diorama, horas e o
+> contrato do `qa-ui`, e a R6 já é a maior OS que resta.
 >
-> **Começar pela Fase 0, que é telemetria e não muda nada:** imprimir, no
-> `qa.mjs`, quantas cartas o jogador tem na mesa ao entrar em cada conversa,
-> por suspeito e por perfil. **É esse número que define os cortes de
-> E0/E1/E2.** Na R5 a telemetria da Fase 0 dispensou a fase de execução
-> inteira; aqui ela evita cortes arbitrados no escuro.
+> **(f) O que fazer com as 4 cartas que sobram** (§5(f) da OS). É consequência
+> dos martelos acima e é o único **irreversível**: a R6 é a última OS que pode
+> gastar carta — a R7 está proibida pela G9, a R8 é passe editorial, a R9 é do
+> gerador. Se (b), (c) e (d) saírem nas recomendações, **a R6 gasta zero**, e o
+> caso-escola fecha para sempre com **4 de 46 por usar**. Três saídas:
+> **(1)** aceitar o saldo 4 e declará-lo na ata como decisão consciente, não
+> como sobra — *recomendada, porque carta que não tem função é ruído no mural,
+> e o teto existe por jogabilidade medida em playtest*;
+> **(2)** gastar 1 na D3, dando a Walter o documento que prova que ele **soube**
+> da mudança do testamento — o único candidato com função já desenhada;
+> **(3)** abrir uma fase de escopo próprio para gastar as quatro, o que é
+> alargar a OS e pede ata à parte.
 >
-> **Seguir as fases pela ordem**, com o gate global no fecho — `npm run
-> verificar` corre a bateria toda. Acresce o gate específico do §7 da própria
-> OS, cujo **item 1 é o pipeline `revisar-prosa` com zero achados
-> bloqueantes**. Fechar com ata em `docs/historico-decisoes.md` no modelo da
-> OS-R0 §9, acrescentando o que o §8 da R6 pede: os martelos, **o orçamento
-> gasto e o saldo final**, e a telemetria da exposição.
+> **(g) A série do preço do trigo na KB** (independente das outras seis, e
+> barata). `kb-mundo-vitoriano/economia-e-estrutura-social.md` §1 dá **~46s o
+> *quarter* em 1870 → ~22s em 1894**; `demografia-e-sociedade.md` §2 dá **50s
+> em 1871 → 23s em 1894**. Séries diferentes, nenhuma errada em si, mas os dois
+> arquivos citam-se um ao outro e quem os cruzar encontra números que não
+> batem. Está registrada em `kb-mundo-vitoriano/fontes.md` e por resolver.
+> Recomendação: **fixar a série de `economia` (46s → 22s) e alinhar
+> `demografia` a ela**, por ser a que traz a fonte nomeada; alternativa é o
+> inverso, ou manter as duas com a divergência explicada no corpo dos dois
+> arquivos.
 >
-> Trabalhar num ramo próprio a partir de `claude/mortem-vertical-slice-zzrcto`
-> (ou do ramo designado da sessão), **depois de o PR da R5 estar integrado**.
+> ---
+>
+> ### Depois de respondidas: executar sem parar
+>
+> **Fase 0 primeiro, que é telemetria e não muda nada:** imprimir, no `qa.mjs`,
+> quantas cartas o jogador tem na mesa ao entrar em cada conversa, por suspeito
+> e por perfil. **É esse número que define os cortes de E0/E1/E2**, e arbitrá-los
+> antes de medir é o erro que a R5 quase cometeu com a paridade dos móbeis. Na
+> R5 a telemetria da Fase 0 dispensou uma fase de execução inteira.
+>
+> **Escrever a guarda antes do conteúdo, ao menos a GR6-4.** A exposição é a
+> peça onde é mais fácil furar a G4 sem dar por isso: a primeira carta que o
+> veredicto leia e que só saia em E1 fura a solubilidade, e o furo só aparece
+> no perfil que não subiu de nível.
+>
+> **Seguir as fases pela ordem** (§4 da OS: exposição → beat 3 → `apontadaPor`
+> e contaminação → D3 → anomalia → gate e ata), **um commit por fase**, como as
+> OS anteriores fizeram.
+>
+> **Toda prosa nova passa pelo pipeline `revisar-prosa`** com os três revisores,
+> e o gate é **zero achados bloqueantes** — é o item 1 do §7 da OS e regra do
+> `CLAUDE.md`. A R3, a R4 e a R5 reprovaram na primeira passada, cada uma por
+> revisor diferente. Na R5 dois revisores contradisseram-se sobre a mesma conta
+> e **ambos tinham razão sobre coisas diferentes**: o desenho estava certo e a
+> legibilidade errada. A frase que ficou vale para esta OS inteira — *uma
+> armadilha que se lê como engano não é armadilha.*
+>
+> **Gate no fecho:** `npm run verificar` corre a bateria toda (build + `qa.mjs`
+> + `lint:prosa` + `qa-ui.mjs`). Acresce o gate específico do §7 da OS.
+> **Atenção ao `qa-ui`:** a R6 é dona da árvore de diálogo, que é a superfície
+> mais coberta por ele — qualquer rótulo que mude entra no mesmo commit que a
+> atualização do QA. E não correr o `qa-ui` com outro processo a escrever na
+> árvore: o hot-reload derruba o overlay e produz falha falsa.
+>
+> **Fechar com ata** em `docs/historico-decisoes.md`, no modelo da OS-R0 §9,
+> acrescentando o que o §8 da R6 pede: os martelos e o que se escreveu por
+> causa deles, **o orçamento gasto e o saldo final** (com a nota de que não há
+> OS seguinte que possa gastá-lo), a **telemetria da exposição** antes e depois
+> com a paridade provada, o parecer do pipeline, e o aberto para a R7.
+>
+> **Escrever, no mesmo fecho, a OS-R7 e o seu prompt de arranque**, como a
+> OS-R0 §4 manda — contra a árvore real, não contra a de hoje.
+>
+> **Ramo próprio a partir de `claude/mortem-vertical-slice-zzrcto`** (ou o ramo
+> designado da sessão), **depois de o PR #97 estar integrado**. Atualizar
+> `MORTEM_CONTEXTO.md`, `README.md` e `docs/plano-de-sessoes.md` (frente SR) ao
+> estado entregue, no commit final.
 
 ---
 

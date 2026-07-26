@@ -195,7 +195,7 @@ medir é como a R5 quase mediu a paridade dos móbeis depois de a estragar. Risc
 
 ---
 
-## 5. Pontos de decisão — cinco, e todos antes da Fase 1
+## 5. Pontos de decisão — seis, e todos antes da Fase 1
 
 ### (a) O que a exposição mede, e o que ela muda
 
@@ -250,6 +250,22 @@ medir é como a R5 quase mediu a paridade dos móbeis depois de a estragar. Risc
   (nó novo custa hora, e as quatro horas do gate mudariam).
 - **(3) Normalizar para baixo:** Silas perde o nó e passa a abrir de dentro da relojoaria,
   como Walter e Davey. Mais barato que (2) e ainda assim toca mapa, diorama e QA.
+
+### (f) O que fazer com as 4 cartas que sobram
+
+Este martelo é consequência dos outros, e por isso vem por último — mas é o único
+**irreversível**, porque não há OS depois desta que possa gastar (§2). Se (b), (c) e (d)
+saírem nas recomendações, **a R6 gasta zero** e o caso-escola fecha para sempre com **4 de
+46 por usar**.
+
+- **(1) Aceitar o saldo 4, e declará-lo na ata como decisão e não como sobra.**
+  *Recomendada.* Carta sem função é ruído no mural, e o teto dos 46 existe por jogabilidade
+  medida em playtest, não por contabilidade: ficar abaixo dele não é desperdício, é folga.
+- **(2) Gastar 1 na D3** — o documento que prova que Walter **soube** da mudança do
+  testamento. É o único candidato com função já desenhada, e transforma o martelo (d) na
+  opção 2. Sai com saldo 3.
+- **(3) Abrir fase de escopo próprio para gastar as quatro.** Alarga a OS que já é a maior
+  do que resta, e pede **ata à parte**. Só sob ordem expressa.
 
 ---
 
