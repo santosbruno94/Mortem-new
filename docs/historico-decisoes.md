@@ -2423,3 +2423,282 @@ com o **relógio mole**, que é pilar.
 
 **Martelado também, e poupa uma investigação à R8:** o `interrogatorio_silas` **não se
 normaliza**. Fica a assimetria, declarada no próprio `dialogos.js`.
+
+---
+
+## 26/07/2026 — OS-R7: A reconstituição
+
+**Decisões aplicadas:** D24, D25, D14, D16 (herdada), D23
+**Guardas verificadas:** G1, G3, G4, G8, **G9**, G10, G11, G12 · **Novas:** GR7-1, GR7-2,
+GR7-3, GR7-4, GR7-5, GR7-6, GR7-7 · **Estendida:** GR6-6 (passa a cobrar que o motor
+também não leia a reconstituição nem as intervenções)
+**Arquivos tocados:** `src/data/intervencoes.js` (novo) · `src/logic/reconstituicao.js`
+(novo) · `src/logic/monologo.js` · `src/logic/contaminacao.js` · `src/logic/veredicto.js` ·
+`src/data/pacote_caso.js` · `src/components/MonologoFinal.jsx` · `scripts/qa.mjs` ·
+`scripts/qa-ui.mjs` · `scripts/lint-prosa.mjs` · `docs/os-r8-*` (novos) ·
+`docs/plano-de-sessoes.md` · `MORTEM_CONTEXTO.md` · `README.md` · este arquivo
+**Gate:** lint-prosa sem violação ✓ · qa.mjs CASO VÁLIDO ✓ · qa-ui.mjs UI VÁLIDA ✓ · build ✓
+**Gate específico:** pipeline `revisar-prosa` com os três revisores, em **duas passadas**,
+zero bloqueantes em aberto ✓ · **42 cartas antes, 42 depois**, provado por guarda ✓ ·
+telemetria da Fase 0 publicada ✓ · os quatro perfis dão os quatro desfechos, com as horas
+**18h00 · 18h00 · 14h00 · 13h00** conferidas e inalteradas ✓ · contrato do `qa-ui`
+atualizado no mesmo commit que mexeu na árvore ✓ · `src/gerador/`, `casos_gerados.js` e
+`casos_indice.js` fora do diff ✓
+**Divergências assumidas:** o `MORTEM_CONTEXTO.md` chama «carrilhão» à peça que o
+glossário, o motor e as cartas chamam «relógio de badalar» (ver abaixo — a prosa nova não
+propaga o termo, e alinhar as duas linhas é decisão do utilizador).
+
+### Os três martelos, e o que se escreveu por causa deles
+
+Fechados em 26/07/2026, no fecho da R6, **de propósito, para que esta sessão não parasse**.
+A cláusula de consulta na hora foi usada **zero vezes**, como na R6.
+
+| Martelo | Decisão | O que se escreveu |
+|---|---|---|
+| (a) Cena jogável ou peça de leitura | **Peça de leitura**, entre o mural e o monólogo | uma tela nova em `MonologoFinal.jsx`, sem escolha e com um só botão de saída |
+| (b) Onde entra a D25 | **No fecho do monólogo**, uma variante por desfecho | cinco variantes (os quatro desfechos, mais o fecho anónimo do erro) |
+| (c) Sem carta para rebater | **A cena roda curta, e a intervenção fica de pé** | a faixa `nenhuma` do fecho, e a Fase 0 mediu quantos perfis caem nela |
+
+### A telemetria da Fase 0, e o tamanho que ela justificou
+
+Nove gestos no catálogo da noite. Por perfil canónico:
+
+| Perfil | Rebate | Desfecho |
+|---|---|---|
+| Metódico | **8 / 9** | vitoria_absoluta |
+| Apressado | **1 / 9** | erro_judiciario |
+| Intuitivo | **0 / 9** | impunidade |
+| Pericial Desatento | **0 / 9** | **sucesso_gafes** |
+
+**Duas leituras, e a segunda é a que interessa ao playtest.** A primeira: a cena tem
+amplitude real — de moldura vazia a noite quase inteira —, e nove gestos é o tamanho certo
+para essa amplitude. A segunda: **metade das rotas canónicas chega à reconstituição sem
+carta nenhuma**, e uma delas **condena** — o Pericial Desatento fecha em `sucesso_gafes`
+com o tripé inteiro e sem ter visto a noite. É exatamente o risco que o aviso do martelo (c)
+antecipou, agora **medido em vez de suposto**. A decisão fica de pé como está: mede-se no
+playtest humano se o jogador sem cartas entende que a cena foi curta **por culpa dele**, e
+o remédio, se for preciso, é de prosa e nunca de mecânica.
+
+Nas rotas do `qa-ui` (que colhem mais que os perfis do `qa.mjs`) a distribuição é 9 / 3 / 3
+— a moldura vazia **não** aparece em nenhuma das três rotas de navegador, e por isso ela é
+provada no `qa.mjs`, por asserção sobre a cena de mesa vazia.
+
+A telemetria também achou o feixe da D16 **vivo na rota canónica**: no Metódico, a tese do
+réu tem **dois papéis e uma boca só**. É esse número que a Fase 1 obrigou o monólogo a
+contar.
+
+### A contagem de cartas, e o zero
+
+**42 antes, 42 depois** (41 em `cartas.js` + `ev_algor`), com a GR7-7 a cobrar. A R7 estava
+proibida de gastar pela G9, e não gastou: as nove intervenções citam **dezoito referências
+a cartas que já existiam**, e a guarda reprova `exige` órfão. O caso-escola fecha em 42 de
+46, como a R6 decidiu.
+
+### O que a cena é, e a decisão de desenho que a define
+
+**Nenhum gesto tem autor nomeado.** A cena diz a mão, nunca o nome: nomear quem pôs os
+ponteiros seria concluir por conta do jogador, que é o que a G9 proíbe. Quem nomeia é o
+monólogo, depois, e só até onde a cadeia dele alcança. O efeito colateral é o melhor da OS
+— **sem nome na cena, não há como o texto ramificar no bit `culpado`**, e a G3 passa a
+valer ali por construção em vez de por vigilância.
+
+**A distinção que a execução obrigou a escrever.** Cena **vazia** é colheita magra do
+jogador (martelo (c), e mostra-se); **ausência** de cena é o caso não a suportar. O
+catálogo de gestos é DO CASO, e os gerados não têm nenhum: sem o gate, os trinta casos do
+banco abririam uma reconstituição vazia que nada teria a refazer. As intervenções passaram
+a campo **opcional** do pacote, no padrão de `ecosDoMestre` e `contradicaoHoras`, e a GR7-1
+ganhou a perna que prova o segundo caso contra um caso gerado de verdade.
+
+### A conta de bocas, e o que ela custou em número
+
+O `blocoTestemunhas` somava papéis. Passa a somar **vozes**: o motor entrega os ids das
+alegações derrubadas como lastro narrativo — não lê nenhum para decidir coisa alguma — e
+quem os agrupa por origem é a camada narrativa, onde a procedência mora de propósito.
+
+`contarVozes` entra em `contaminacao.js` com a regra que a conta de auditoria não podia ter:
+**alegação sem procedência registada é voz própria**. Os casos gerados não têm mapa de
+procedência nenhum, e a conta estrita teria apagado o bloco das testemunhas de todo o banco.
+
+Os três casos do bloco foram reescritos e ganharam um quarto: quando os papéis são mais que
+as bocas, o bloco **diz** a corroboração que não existe. A conta mais honesta é também mais
+pobre em número, e esconder a razão de o número ter encolhido deixaria o desfecho
+tecnicamente correto e narrativamente mais fraco.
+
+**Registrado para não se reinvestigar:** no caso-escola o bloco só chega a render o caso de
+UMA testemunha. Só o moço do padeiro é alegação de hora refutável sem ser a peça encenada
+(o sineiro diz a hora verdadeira e o motor recusa-o; a Sra. Wick não tem hora nas tags). A
+GR7-4 prova a régua **por asserção**, como a OS mandou — é assim que ela se prova antes de
+haver caso que a use, e o gerador vai usá-la.
+
+### O parecer do pipeline — reprovou na primeira passada, e um dos furos era o pivô
+
+**Primeira passada: cinco bloqueantes.** As contagens mecânicas foram as melhores que este
+repositório já mediu (0,06 travessão por bloco de cena contra um teto de 0,5; zero filtro
+sensorial, zero tríade, zero monotonia de abertura; **o perito não achou um anacronismo nos
+três arquivos**). Todos os achados foram de **matéria** — que é precisamente onde a guarda
+automática não chega.
+
+**O mais grave foi do fiscal, e nenhum dos outros dois o viu.** A cena punha o relógio a
+ser esmagado ANTES de os ponteiros recuarem. O `MORTEM_CONTEXTO.md` fixa o inverso e diz
+por quê: recuado, e não avançado, porque avançar faria a peça badalar na rua morta. Era o
+pivô do caso escrito ao contrário.
+
+Na arbitragem, **o perito retirou o próprio parecer** (ele tinha validado a ordem original
+por uma razão material) e deu ao cânone um argumento mais forte do que o que o cânone
+escreve: **adiantar teria consertado a prova**. Cada hora batida avança a roda de contagem;
+ao chegar ao mostrador das 08h45 a alavanca estaria no **oitavo** entalhe, em concordância
+perfeita com a hora falsa, e não haveria caso nenhum. É recuar que produz a discórdia entre
+o mostrador e a roda — a discórdia que dá nome a «A Hora Emprestada». E o esmagamento ganhou
+prazo: com o mostrador correndo desde as 08h45, a peça bateria dez um quarto de hora depois,
+e a carta acha o mostrador ainda onde foi posto. **A roda passa a datar os dois gestos.**
+
+**O segundo foi visto pelos três: a D25 punha o perito a ASSINAR a morte grande.** O
+telegrama da abertura diz «NAO ASSINE NADA», a própria D25 diz que ele nunca assinou uma, e
+a KB é mais dura — o assistente sem registo que assina não está a fazer *covering*, está a
+falsificar. Resolvia numa oração subordinada uma decisão de personagem que o jogo nunca deu
+ao jogador. Fica o peso, sai o evento.
+
+**Os outros três:** um clítico de género que saía errado na tela do desfecho com ré mulher;
+a lasca de vidro afirmando «a sala fica arrumada para ser lida», que é a encenação inteira
+entregue a quem pagou só pela lasca; e a hora ensaiada transplantada de um eixo para o
+outro — as duas declarações não coincidem entre si, quem repete as mesmas palavras é o rapaz
+consigo mesmo.
+
+**Duas regras que o próprio arquivo não cumpria** ficaram escritas como são: `exige` é
+«todas as que denunciam», não «o par»; e a ordem do array é a da hora que cada arrumação
+OCUPA na noite (a dos álibis é a que eles alegam), não a dos fatos que os desfazem.
+
+**Segunda passada: zero bloqueantes, e os achados foram das próprias correções.** O editor
+apanhou o mais fino: a explicação que a correção pusera na cena («adiantá-los teria posto o
+martelo a bater na rua vazia») era a **única oração explicativa dos nove gestos**, e
+atribuía à mão um cálculo entre alternativas — motivo, que o guia §2.2 proíbe. O raciocínio
+já morava no comentário, que é onde nenhum jogador o lê. Mais: o gesto do quarto
+transcrevia a carta em cinco sintagmas em vez de a dramatizar; a cessão do eco anterior
+trocara o eco de lugar em vez de o desfazer; e a abertura 1, ao perder a âncora de
+sexta-feira, deixava «na mesma noite» a apontar para o domingo da própria reconstituição.
+
+**Não acatado, com razão registrada e escrita no arquivo:** o «Saio como entrei.» do fecho
+vazio. O editor pediu o corte por ser epigrama, e depois concordou em mantê-lo com um
+argumento melhor do que o meu — é a única faixa em que o texto tem de comunicar
+CONSEQUÊNCIA sem comunicar CONTEÚDO, e um fecho plano ali corre o risco maior, o de se ler
+como defeito. O contrato de brilho do `reconstituicao.js` passa a declarar a exceção e a
+data de medição.
+
+### Divergências registadas, e NÃO criadas
+
+1. **«Carrilhão» × «relógio de badalar».** `MORTEM_CONTEXTO.md` usa «carrilhão» em duas
+   linhas; o glossário (`glossario.js`), o motor (`tempo_morte.js`) e a carta
+   (`ev_maquinismo`: «o martelo caído sobre a campainha») dizem «relógio de badalar».
+   Carrilhão é *chime*: soaria a cada quarto de hora — e encolheria a janela do caso de uma
+   hora para quinze minutos — e praticamente todos os movimentos de quartos do período são
+   de cremalheira e caracol, não de roda de contagem. **A prosa nova não propaga o termo.**
+   Alinhar as duas linhas do documento de desenho é decisão do utilizador.
+2. **A hora de queima do Livro I.** A KB põe a destruição de um livro-razão em lareira
+   doméstica em «uma hora ou mais»; a janela canónica entre a morte (21h) e o sineiro
+   (21h45) é de ~45 minutos, para cinco gestos. A prosa da cena **não declara duração**,
+   logo não mente — mas é ela que põe a queima na sequência da noite pela primeira vez.
+   Três saídas, todas do utilizador: alargar a hora do sineiro, aceitar a compressão, ou
+   dizer em prosa que o fogo foi começado e não terminado.
+3. **A janela de `ev_maquinismo` pressupõe batida só às horas.** Num movimento que batesse
+   também a meia-hora, a alavanca no nono entalhe fecharia a janela às 21h30, não às 22h.
+   É valor de motor e sustenta a resolubilidade; não se tocou.
+4. **O vestígio do buril é o perecível.** A umidade na junta seca em um dia; o durável (o
+   coágulo sob a virola) exigiria carta nova, vedada pela G9 e pela GR7-7.
+
+### Aberto para a OS seguinte
+
+- **OS-R8** (passe editorial): tudo o que já estava na fila — o «púlpito de escrever
+  forrado de cortiça» de `pt_oficina_pulpito`, as três strings da Estação III do mural
+  (item 14), os itens 10 e 11 do playtest, os dois não-bloqueantes da R6 — **mais quatro
+  desta OS**: a divergência «carrilhão» (se o utilizador mandar alinhar); o «vinco das
+  nervuras» de `ev_cinza_livro` (as nervuras são da lombada, e o livro-razão dos 1890 é de
+  lombo de mola, sem nervos — sobrevivente canónico melhor: a crosta curva em camadas); a
+  bíblia de vozes dizendo «antes do meio-dia» onde a carta diz «ao meio-dia»; e o
+  `interrogatorio_silas`, que **não se normaliza** — martelado em 26/07/2026.
+- **OS-R9** (o gerador herda os padrões): a fila que já existia, mais — novos desta OS — as
+  **intervenções da noite** (o gerador não sabe produzir catálogo de gestos, e por isso os
+  casos gerados não têm reconstituição) e a **dívida de geografia**: as três aberturas de
+  `reconstituicao.js` cravam a relojoaria, o balcão, a oficina e o escritório num módulo de
+  `src/logic`, cujo irmão `monologo.js` declara o contrato oposto. Hoje não vaza, porque sem
+  catálogo a função devolve `null`; no dia em que o gerador produzir intervenções, aquelas
+  três frases vão para o pacote, como as próprias `intervencoes` já foram.
+- **Para o playtest humano, e é o item com número:** os dois perfis que chegam à cena com
+  **0 de 9**. Medir se a cena curta se lê como consequência da própria colheita ou como
+  defeito. É a única pergunta que esta OS deixou por responder de propósito.
+
+### Adendo de decisão sobre as quatro divergências (mesmo dia, a pedido do utilizador)
+
+Fechada a ata acima, o utilizador martelou **as quatro divergências que ela tinha
+registado** e mandou executar as recomendações. Três eram executáveis e foram feitas **no
+próprio fecho da R7**, para que a R8 abra sem decisão nenhuma pendente — é a mesma
+disciplina com que a R6 martelou a R7 de antemão, agora com a execução junto.
+
+| # | Divergência | Decisão | O que se fez |
+|---|---|---|---|
+| 1 | «Carrilhão» × «relógio de badalar» | **Alinhar o CONTEXTO** | duas linhas do `MORTEM_CONTEXTO.md` |
+| 2 | A queima do Livro I (~45 min × «uma hora ou mais») | **Dizer em prosa que o fogo não terminou** | uma oração no gesto `livro_desmanchado` |
+| 3 | A janela de `ev_maquinismo` | **Blindar a carta, sem mover o número** | uma oração na `descricao` |
+| 4 | O vestígio perecível do buril | **Arquivar para a R9** | nada no código; entrou na fila do gerador |
+
+**O argumento que decidiu a (1) não era de vocabulário.** «Carrilhão» é *chime*, e bate os
+quartos de hora. O `CLAUDE.md` põe o `MORTEM_CONTEXTO.md` como fonte da verdade de design —
+logo, o documento, como estava, **contradizia um valor do motor**: lido à letra, a janela do
+caso encolheria de uma hora para quinze minutos e a janela `[−3,−2]` de `ev_maquinismo`
+deixaria de fazer sentido. O glossário, o motor e a carta já diziam «badalar». A passagem
+reescrita aproveitou para trocar a razão fraca pela forte, que a execução da R7 tinha
+descoberto: **adiantar teria consertado a prova**, e não apenas feito barulho.
+
+**A (2) recusou a saída cara.** Alargar a hora do sineiro mexeria num número que o fiscal da
+R4 fixou de propósito para dar tempo aos gestos, e arrastaria o portão da estalagem atrás.
+A prosa não declarava duração — logo não mentia —, mas dizer que o fogo foi começado e não
+terminado fecha a divergência **sem mover número nenhum**, e é o que a própria carta já
+sustentava: o que ela mostra é muita carcaça sobrevivente (o fecho de latão, o fio de linho,
+a pasta empenada), que é o que sobra de uma queima interrompida.
+
+**A (3) preferiu tornar observável o que era pressuposto.** A janela nunca esteve em risco
+de partir o caso — um movimento que batesse as meias fecharia às 21h30, o que **estreita** e
+continua a conter a morte às 21h. O que estava errado era a janela depender de uma suposição
+que a carta não declarava. Agora a roda «traz um entalhe por hora, e nenhum dos curtos que
+marcariam as meias», e o número deixou de ser assumido.
+
+**A (4) não tinha defeito a corrigir.** A carta observa a umidade na junta ~16h depois do
+gesto, dentro da janela de secagem que a KB dá. O vestígio durável (o coágulo sob a virola)
+exigiria carta nova, vedada pela G9 e pelo número final de 42 — e é **capacidade do
+gerador**, não dívida do caso-escola.
+
+**O que ficou por decidir, e é o único:** os perfis **Intuitivo** e **Pericial Desatento**
+chegam à reconstituição com **0 de 9**. Medido a mais no fecho: o Desatento está **a uma
+carta de dois gestos** (tem `ev_maquinismo` e falta-lhe `ev_relogio_lareira`; tem
+`ev_estojo_buril` e falta-lhe `ev_residuo_ferida`), e o Intuitivo está longe de tudo, com
+três cartas na mesa e desfecho de impunidade. Ou seja: **o caso dissonante — condenar e não
+ver nada — é um quase, e não um precipício**, o que reforça manter o martelo (c) como está.
+Fica para o playtest humano, e a pergunta é uma só: a cena curta lê-se como culpa própria ou
+como defeito?
+
+**Registrada a tentação, e recusada:** dá para subir a taxa de acerto afrouxando os pares de
+`exige`. Seria vender barato o «quem não colheu não vê» da G9, e transformaria a cena numa
+que mostra o que o jogador não provou. **Não se faz** sem ata própria.
+
+**O pipeline correu sobre os três ajustes, e apanhou um ALTO no que parecia o mais seguro.**
+A blindagem de `ev_maquinismo` dizia «um entalhe por hora, e nenhum **dos curtos** que
+marcariam as meias» — e numa roda de contagem **os entalhes são todos iguais**. O que conta
+as pancadas é o **arco** que a alavanca percorre entre um entalhe e o seguinte, e uma roda
+que batesse as meias traria um entalhe **rente** ao da hora, não um entalhe curto. A frase
+encarregada de blindar o número negava a existência de uma coisa que não existe em roda
+nenhuma. Corrigida para o espaçamento, que é o observável verdadeiro.
+
+O fiscal apanhou, na mesma passagem que se editava, **um furo pré-existente do documento**:
+a cópia da Verdade de Ouro no §14 dizia `horasMorteAntesChegada: 14` contra os **16** de
+`seed.js` — e contra a própria linha do §14 que diz «IPM na chegada = 16h». Entrou em
+17/07, quando a chegada passou de 11h para 13h, e ninguém a acompanhou. Corrigida. Mais
+duas do mesmo fôlego: a encenação levava «a hora seguinte» onde a janela até o sineiro dá
+**três quartos de hora**, e a razão do silêncio estava fundida com a da janela (o silêncio
+vem de recuar; «bater só às horas» é o que faz a janela fechar às 22h em vez das 21h30).
+
+E um achado que **cresceu** com o ajuste: o «vinco das nervuras» passou a viver em dois
+arquivos, porque a reescrita do gesto herdou a frase da carta. A R8 corrige **aos pares**.
+Fica registada também uma emenda à KB que o perito propôs e não aplicou — o leito de cinza
+alto está ancorado em «uma hora de alimentação», e com a queima declarada interrompida o
+tell precisa de ser desacoplado da duração. A física corre a favor da prosa (fogo abafado
+carboniza mais e colapsa menos, logo o leito interrompido é **mais** volumoso), mas a KB,
+como está escrita, deixou de justificar o que a carta afirma.

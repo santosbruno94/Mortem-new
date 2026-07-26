@@ -45,6 +45,23 @@ export function contarVozesIndependentes(idsNaMesa) {
 }
 
 /**
+ * A conta que a PROSA usa, e ela difere da de cima numa regra só: alegação
+ * sem procedência registrada conta como voz PRÓPRIA.
+ *
+ * A de cima é a conta de auditoria — só sabe somar o que o mapa conhece, e
+ * é assim que tem de ser para provar um feixe. Esta é a do desfecho, e a
+ * regra existe por uma razão prática: os casos gerados não têm mapa de
+ * procedência nenhum, e uma conta que devolvesse zero para eles apagaria o
+ * bloco das testemunhas de todos os casos do banco. Um papel de boca
+ * desconhecida não se soma a boca nenhuma — vale por si, e só por si.
+ */
+export function contarVozes(idsNaMesa) {
+  const ids = [...(idsNaMesa || [])];
+  const comRegistro = ids.filter((id) => apontadaPor(id));
+  return contarVozesIndependentes(comRegistro) + (ids.length - comRegistro.length);
+}
+
+/**
  * Os feixes contaminados: origens que respondem por mais de uma alegação na
  * mesa. Cada feixe é uma corroboração aparente que não existe.
  */

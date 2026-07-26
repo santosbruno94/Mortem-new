@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useJogo, CUSTO_REVISAO } from '../store/jogo.js';
 import { gerarMonologo, comArtigo, TITULOS } from '../logic/monologo.js';
 import { gerarEpilogo } from '../logic/epilogo.js';
+import { montarReconstituicao } from '../logic/reconstituicao.js';
 import {
   obterCartas,
   obterSuspeitos,
@@ -96,6 +97,38 @@ function CarimbosDesfecho({ tipo }) {
           </span>
         );
       })}
+    </div>
+  );
+}
+
+// =====================================================================
+// A RECONSTITUIÇÃO — a peça de leitura entre o mural e o monólogo (D24,
+// martelo (a) da OS-R7). Apresentação pura: a cena vem montada de
+// `montarReconstituicao`, que só conhece a mesa; este componente não
+// decide o que entra nem o que fica de fora.
+//
+// A hora de cada gesto sai como RUBRICA em versalete, do lado do bloco —
+// a mesma convenção de rótulo do resto da mesa. Uma cena sem gesto nenhum
+// renderiza abertura e fecho, e é assim que tem de ser: a colheita magra
+// tem cena magra.
+// =====================================================================
+function Reconstituicao({ cena }) {
+  return (
+    <div className="max-w-[600px] mx-auto">
+      <p className="font-prosa text-stone-200 text-[15px] sm:text-[16.5px] leading-[1.85]">{cena.abertura}</p>
+
+      {cena.passos.length > 0 && (
+        <div className="mt-6 space-y-5 border-l border-latao/30 pl-4 sm:pl-5">
+          {cena.passos.map((p) => (
+            <div key={p.id} data-passo-reconstituicao>
+              <p className="text-rotulo uppercase text-latao-claro/70 mb-1">{p.hora}</p>
+              <p className="font-prosa text-stone-300 text-[14.5px] sm:text-[16px] leading-[1.8]">{p.prosa}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <p className="font-prosa text-stone-200 text-[15px] sm:text-[16.5px] leading-[1.85] mt-6">{cena.fecho}</p>
     </div>
   );
 }
@@ -251,12 +284,17 @@ export default function MonologoFinal() {
   const nSubmissoes = useJogo((s) => s.nSubmissoes);
   const falhasVistas = useJogo((s) => s.falhasVistas);
   const [encerrando, setEncerrando] = useState(false);
+  // A reconstituição roda ANTES do monólogo e uma vez por acusação selada:
+  // revisar a acusação fecha este overlay, e a cena volta a correr sobre a
+  // mesa nova. É o desenho — a noite refaz-se com o que se colheu desde.
+  const [viuReconstituicao, setViuReconstituicao] = useState(false);
 
   if (!veredicto) return null;
   const vitoria = veredicto.tipo === 'vitoria_absoluta';
   // Enquanto a retentativa está de pé, o Erro Judiciário NÃO nomeia o
   // verdadeiro autor — o nome só sai no encerramento definitivo (Q2).
-  const monologo = gerarMonologo(veredicto, detective, { nomearCulpado: false });
+  const idsNaMesa = cartasRegistradas.map((c) => c.id);
+  const monologo = gerarMonologo(veredicto, detective, { nomearCulpado: false, cartasNaMesa: idsNaMesa });
 
   // Dicas únicas, na ordem das falhas. Na segunda queda no mesmo ponto
   // (falhasVistas), a dica escala para a versão mais específica; {nome}
@@ -350,6 +388,27 @@ export default function MonologoFinal() {
             className="botao-mesa botao-mesa--quieto min-h-[44px]"
           >
             Fechar o caderno
+          </button>
+        </div>
+      </Overlay>
+    );
+  }
+
+  // ---------------- A reconstituição (D24): a noite, antes do juízo ----------------
+  // A cena não sabe do veredicto, e a chave de variação também não: só o
+  // caso e o perito entram nela. Um sorteio que lesse o desfecho poria a
+  // apresentação a chavear no que a G9 mandou a cena ignorar.
+  // `cena` é null quando o caso não traz catálogo de gestos (os gerados, até
+  // a OS-R9): aí o fim de caso vai direto ao monólogo, sem tela intermédia.
+  const cena = montarReconstituicao(idsNaMesa, `${obterCaso().id}|${(detective && detective.name) || ''}`);
+  if (!viuReconstituicao && cena) {
+    return (
+      <Overlay titulo={cena.titulo} subtitulo={cena.subtitulo} climax>
+        <div className="divisor-ornado text-sm mb-6" aria-hidden="true">❦</div>
+        <Reconstituicao cena={cena} />
+        <div className="mt-8 max-w-[600px] mx-auto flex sm:justify-end">
+          <button onClick={() => setViuReconstituicao(true)} className="botao-mesa min-h-[44px]">
+            O que ficou por dizer
           </button>
         </div>
       </Overlay>

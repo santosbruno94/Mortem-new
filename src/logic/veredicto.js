@@ -139,12 +139,20 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
   // texto mora em ROTULOS_EXPLICACAO (camada narrativa); aqui só a tag.
   let encenacaoExposta = false;
   let testemunhasDesmentidas = 0;
+  // Os ids das alegações derrubadas viajam como LASTRO NARRATIVO, e é a
+  // única coisa que se faz com eles aqui: nenhuma regra desta função os lê,
+  // nenhum desfecho ramifica neles. Existem porque a conta honesta de
+  // testemunhas é de BOCAS, e a boca de uma alegação vive fora das tags de
+  // propósito (src/data/procedencia.js explica por quê). O motor conta os
+  // papéis, que é o que ele pode ver; quem os agrupa é a camada narrativa.
+  const idsTestemunhasDesmentidas = [];
   const explicacoesPagas = [];
   for (const { alegacao, fatos } of refutaHora.values()) {
     if (!refutacaoDeHoraEstabelecida(alegacao, fatos)) continue;
     if (alegacao.tagsOcultas.encenado) encenacaoExposta = true;
     else {
       testemunhasDesmentidas += 1;
+      idsTestemunhasDesmentidas.push(alegacao.id);
       if (alegacao.tagsOcultas.explicacao) explicacoesPagas.push(alegacao.tagsOcultas.explicacao);
     }
   }
@@ -283,6 +291,7 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
       horaMorteAbsoluta: seed.horaMorteAbsoluta,
       sustentada,
       testemunhasDesmentidas,
+      idsTestemunhasDesmentidas,
       // Tags `explicacao` das alegações-isca refutadas: o epílogo troca cada
       // uma pelo texto de ROTULOS_EXPLICACAO — o "aha" pago no encerramento.
       explicacoesPagas,

@@ -333,21 +333,37 @@ manutenção do topo. Fica corrigido.
 | 4.º | R4 — Elenco e livros | ✅ fechada |
 | 5.º | R5 — Móbeis e cartas | ✅ fechada (25/07/2026) |
 | 6.º | R6 — Exposição e interrogatórios | ✅ fechada (26/07/2026) — os sete martelos saíram nas recomendações |
-| 7.º | R7 — A reconstituição | **escrita, martelada e por executar** — os três pontos de decisão já foram fechados em 26/07/2026, e o prompt em [`os-r7-prompt-de-arranque.md`](./os-r7-prompt-de-arranque.md) entra direto na Fase 0, sem rodada de perguntas |
-| 8.º | R8 — Passe editorial e QA de fecho | por escrever |
+| 7.º | R7 — A reconstituição | ✅ fechada (26/07/2026) — os três martelos estavam fechados de antemão e a sessão correu do arranque à ata sem parar |
+| 8.º | R8 — Passe editorial e QA de fecho | **escrita e por executar** — [`os-r8-passe-editorial.md`](./os-r8-passe-editorial.md), com a fila triada item a item; prompt em [`os-r8-prompt-de-arranque.md`](./os-r8-prompt-de-arranque.md). **Um só ponto de decisão**, e cabe numa linha |
 | — | R9 — O gerador herda os padrões | fora da reforma; fila registrada nas atas |
 
 - **Orçamento de cartas (G11, teto 46):** **42 em jogo, 4 livres — e é o número final.**
   A R6 era a última OS que podia gastar, e gastou **zero**: o martelo (f) aceitou o saldo 4
   como decisão, não como sobra. A R7 está proibida pela G9, a R8 é editorial e a R9 é do
   gerador; **não há mais quem gaste**, e o caso-escola fecha assim.
-- **Próxima sessão desta frente:** executar a R7 pelo prompt de arranque. **Não há
-  decisão a recolher** — os três martelos foram fechados no fecho da R6, de propósito, para
-  que a sessão corra do arranque à ata sem parar.
-- **Fila da R8, já triada** (26/07/2026): o púlpito de cortiça da R5; o rename da Estação III
-  do mural (item 14 — três strings identificadas, não é redesenho); os itens 10 e 11 do
-  playtest; e os dois não-bloqueantes do pipeline da R6. O `interrogatorio_silas`
-  **não** se normaliza — martelado.
+- **Próxima sessão desta frente:** executar a **R8** pelo prompt de arranque, e ela **fecha
+  a reforma**. **Não há pergunta a recolher** — é a primeira OS da reforma a abrir com o §5
+  vazio. As quatro divergências que a R7 registou foram marteladas em 26/07/2026 e as três
+  executáveis foram feitas no fecho dela.
+- **Fila da R8, triada e agora completa:** o púlpito de cortiça da R5; o rename da Estação
+  III do mural (item 14 — três strings identificadas, não é redesenho); os itens 10 e 11 do
+  playtest; os dois não-bloqueantes do pipeline da R6; o **«vinco das nervuras»** de
+  `ev_cinza_livro`; o **«antes do meio-dia»** da bíblia de vozes; e o **QA de fecho** (a
+  única fase da reforma que pode REMOVER guarda, e só com justificação na ata). O
+  `interrogatorio_silas` **não** se normaliza — martelado.
+- **Executado no fecho da R7, a mando do utilizador (26/07/2026):** a divergência
+  «carrilhão» **alinhada** no `MORTEM_CONTEXTO.md`; a janela de `ev_maquinismo` **blindada
+  sem mover o número**; e a hora de queima do Livro I **resolvida em prosa** (o fogo não
+  chegou ao fim), em vez de na hora do sineiro, que era a saída cara. O vestígio durável do
+  buril foi **arquivado para a R9** — exigiria carta nova, e 42 é o número final.
+- **O que a R7 entregou:** a **reconstituição** (D24) como peça de leitura entre o mural e o
+  monólogo, com nenhum gesto nomeando autor — é isso que faz a G3 valer ali por construção;
+  a **conta de bocas** no `blocoTestemunhas`; a **D25** nos cinco pools de fecho do monólogo;
+  e sete guardas novas. **Zero cartas gastas**, como a G9 obrigava.
+- **Para o playtest humano, com número:** os perfis **Intuitivo** e **Pericial Desatento**
+  chegam à reconstituição com **0 de 9** gestos rebatíveis — e o segundo **condena**. Medir
+  se a cena curta se lê como consequência da própria colheita ou como defeito. É a única
+  pergunta que a R7 deixou por responder de propósito.
 
 ### S5 — Balanceamento e OSs restantes
 

@@ -103,6 +103,7 @@
 
 import { SEED_TUTORIAL, SUSPEITOS } from './seed.js';
 import { CARTAS, CONTRADICAO_HORAS, resolverEstadoCarta as resolverEstadoCartaCru } from './cartas.js';
+import { INTERVENCOES_NOITE } from './intervencoes.js';
 import { LOCALIDADES } from './localidades.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, CUSTO_ENTRE_GRUPOS } from './mapa.js';
 import { DIALOGOS } from './dialogos.js';
@@ -182,6 +183,11 @@ export function montarPacoteTutorial() {
     // #5 (OPCIONAL) — a contradição de horas: ids do par e prosa do ponto a
     // decidir (src/data/cartas.js). O motor jamais a lê; ausente ⇒ o caso não
     // tem o ponto a decidir (os gerados, hoje).
+    // Os gestos da noite (OS-R7, OPCIONAL) — o motor jamais os lê. É o
+    // catálogo que a reconstituição percorre; ausente ⇒ o caso não tem
+    // reconstituição, e o fim de caso vai direto ao monólogo (os gerados,
+    // hoje: produzi-los é trabalho da OS-R9).
+    intervencoes: INTERVENCOES_NOITE,
     contradicaoHoras: CONTRADICAO_HORAS,
   };
 }
@@ -246,6 +252,13 @@ export function obterPapeisDramaticos() {
 // quando o pacote não a traz (modo procedural — sem mestre, sem eco).
 export function obterEcosDoMestre() {
   return casoCarregado.ecosDoMestre || null;
+}
+
+// Os gestos da noite (OS-R7, OPCIONAL): o catálogo que a reconstituição
+// percorre, ou [] quando o pacote não o traz. Camada narrativa pura — o
+// motor jamais a lê, e a GR6-6 cobra por leitura de fonte.
+export function obterIntervencoes() {
+  return casoCarregado.intervencoes || [];
 }
 
 // Eventos de interferência do caso (FASE 4, OPCIONAL): a lista de eventos

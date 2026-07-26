@@ -209,9 +209,17 @@ export const CARTAS = [
     textoDisplay: 'Roda de Contagem das Badaladas',
     carimboPadrao: 'Roda de contagem pousada na nona batida',
     descricao:
-      'Pela caixa partida vê-se o trem das badaladas. A alavanca repousa no nono entalhe da roda de contagem; dali a roda não passou. O martelo está caído sobre a campainha, em descanso.',
+      'Pela caixa partida vê-se o trem das badaladas. Os entalhes da roda de contagem abrem-se em distâncias crescentes, um por hora, e nenhum vem rente a outro, como viria o da meia; a alavanca repousa no nono, e dali a roda não passou. O martelo está caído sobre a campainha, em descanso.',
     // Registro MECÂNICO: a roda de contagem data o esmagamento entre a nona
-    // batida (21h) e a décima (22h) — a segunda leitura da mesma peça. O
+    // batida (21h) e a décima (22h) — a segunda leitura da mesma peça. A
+    // janela só fecha às 22h porque a peça bate SÓ ÀS HORAS: num movimento
+    // que batesse também as meias, o nono entalhe fecharia às 21h30. Isso
+    // era pressuposto e passou a ser observável (decisão do utilizador,
+    // 26/07/2026: blindar o número em vez de o mover). O observável é o
+    // ESPAÇAMENTO, e não a forma do entalhe: numa roda de contagem os
+    // entalhes são todos iguais, e o que conta as pancadas é o arco que a
+    // alavanca percorre entre um e o seguinte. Uma roda que batesse as meias
+    // traria um entalhe rente ao da hora, à distância de uma só pancada. O
     // saber que a converte está plantado no relógio irmão da oficina e no
     // verbete do Glossário; a conversão é do jogador.
     tagsOcultas: {

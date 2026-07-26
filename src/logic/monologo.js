@@ -10,6 +10,14 @@
 // qualquer caso procedural. As variáveis (nomes, janela, mecanismo, motivo)
 // vêm do veredicto. Nunca LLM. Voz em primeira pessoa — é o monólogo dele.
 //
+// A D25 (A REGRA DA ASSINATURA) mora nos fechos, uma variante por desfecho
+// (martelo (b) da OS-R7). Harlan assina as mortes pequenas em nome do Dr.
+// Abbot e nunca assinou uma grande; esta é a primeira. A régua entra como
+// PESO, nunca como explicação: o mesmo homem, o mesmo laudo em nome
+// alheio, e um significado diferente em cada um dos quatro desfechos. O
+// fecho é o único lugar do código onde o teto de uma máxima por desfecho
+// já é governado por construção, e é por isso que ela cabe aqui.
+//
 // VARIAÇÃO DETERMINÍSTICA: aberturas e fechos têm variantes; a escolha é
 // função de um HASH da identidade do caso (dados.seedId) SALGADO com o nome
 // do perito — nunca de Math.random. A mesma partida (caso + perito) escolhe
@@ -24,6 +32,8 @@ import { obterSuspeito } from '../data/pacote_caso.js';
 import { ROTULOS_MECANISMO, ROTULOS_INSTRUMENTO, ROTULOS_VESTIGIO, ROTULOS_MOTIVO } from '../data/rotulos.js';
 import { formatJanela, formatHora, formatHoraComDia } from './tempo.js';
 import { escolherDeterministico } from './hash.js';
+import { contarVozes } from './contaminacao.js';
+import { faixaDaColheita } from './reconstituicao.js';
 
 // Os quatro desfechos, NA ORDEM em que a interface os carimba (do fechado
 // ao falho). A ordem das chaves é a ordem de exibição — a fileira de
@@ -50,7 +60,7 @@ function escolherAberturaEFecho(aberturas, fechos, chave) {
 
 // ---------------- Aberturas, por tipo de desfecho ----------------
 // Cada variante declara `maxima` quando carrega uma frase de efeito.
-const ABERTURAS = {
+export const ABERTURAS = {
   vitoria_absoluta: [
     { texto: 'Recolho as cartas em silêncio. A cadeia fechou-se elo a elo, e cada elo carrega atrás de si o peso do corpo.', maxima: true },
     { texto: 'Ponho a última carta sobre a mesa e recuo um passo. A cadeia está inteira: começa no corpo e não se solta em nenhum ponto.', maxima: false },
@@ -75,37 +85,47 @@ const ABERTURAS = {
 
 // ---------------- Fechos, por tipo de desfecho ----------------
 // (Aqui mora a única máxima permitida por desfecho — guia §3.)
-const FECHOS = {
+export const FECHOS = {
   vitoria_absoluta: [
     { molde: (reu) => `Guardo os instrumentos sem pressa. ${ComArtigo(reu)} responderá pelo que fez, e um caso bem lido dispensa o aplauso.`, maxima: true },
     { molde: (reu) => `${ComArtigo(reu)} responderá pelo que fez. Fecho a maleta: o corpo disse tudo o que tinha a dizer, e foi ouvido.`, maxima: true },
     { molde: (reu) => `Não há mais o que somar. ${ComArtigo(reu)} vai a julgamento, e a cadeia inteira vai junto.`, maxima: false },
+    // D25
+    { molde: (reu) => `${ComArtigo(reu)} responderá pelo que fez, e o laudo que sustenta o julgamento sai com a assinatura do Dr. Abbot, como saíram as mortes pequenas. Esta não era pequena.`, maxima: true },
   ],
   sucesso_gafes: [
     { molde: (reu) => `${ComArtigo(reu)} responderá assim mesmo. Mas fica o travo das gafes, e é nelas que se faz ou se perde a fama de um perito.`, maxima: true },
     { molde: (reu) => `A condenação ${deQuem(reu)} está de pé. Guardo, para mim, a lista do que faria melhor numa segunda vez.`, maxima: false },
     { molde: (reu) => `${ComArtigo(reu)} vai a julgamento. Levo comigo os pontos frouxos, que ninguém viu senão eu — por ora.`, maxima: false },
+    // D25
+    { molde: (reu) => `${ComArtigo(reu)} responderá assim mesmo. O laudo sai com a assinatura do Dr. Abbot, e os pontos frouxos ficam com o nome dele.`, maxima: false },
   ],
   impunidade: [
     { molde: (reu) => `${ComArtigo(reu)} sairá livre, e a lei nada terá a lhe dizer. Um culpado solto é um erro que continua a trabalhar.`, maxima: true },
     { molde: (reu) => `${ComArtigo(reu)} deixa a sala pela porta da frente. A certeza sem prova não prende ninguém, e eu que o diga.`, maxima: true },
     { molde: (reu) => `${ComArtigo(reu)} fica em liberdade por falta do que só eu deveria ter trazido. A intuição não assina laudo.`, maxima: true },
     { molde: (reu) => `${ComArtigo(reu)} sai da sala sem pressa, e ninguém lhe barra a porta. Fecho a caderneta sobre o nome que não pude sustentar.`, maxima: false },
+    // D25
+    { molde: (reu) => `${ComArtigo(reu)} sairá livre. As mortes pequenas que saíram em nome do Dr. Abbot pediam-me menos do que esta, e a esta eu não cheguei.`, maxima: false },
   ],
   erro_judiciario: [
     { molde: (correto) => `Enquanto se lê a sentença, ${comArtigo(correto)} observa de longe, de mãos limpas. A forca de um inocente tem dois carrascos: quem ata o nó e quem assina o laudo.`, maxima: true },
     { molde: (correto) => `A sentença cai sobre o nome errado, e ${comArtigo(correto)} assiste sem pestanejar. O verdadeiro erro foi meu, e leva a minha assinatura.`, maxima: false },
     { molde: (correto) => `${ComArtigo(correto)} sai da sala como quem cumpriu uma formalidade. Condenei a pessoa errada, e é isso que ficará no meu nome.`, maxima: false },
+    // D25
+    { molde: (correto) => `A sentença cai sobre o nome errado, e ${comArtigo(correto)} fica onde estava. O laudo que a sustenta sai, como todos os meus, em nome do Dr. Abbot: é a primeira morte grande que passa pelas minhas mãos, e passou errada.`, maxima: true },
   ],
 };
 
 // Fechos do Erro Judiciário SEM nomear o culpado (enquanto a retentativa do
 // caso-escola está de pé, o nome do verdadeiro autor é trabalho do jogador —
 // só o encerramento definitivo o revela).
-const FECHOS_ERRO_ANONIMOS = [
+export const FECHOS_ERRO_ANONIMOS = [
   { molde: () => 'A sentença cai sobre o nome errado, e o verdadeiro autor a escuta de onde quer que esteja, calado. O erro leva a minha assinatura.', maxima: false },
   { molde: () => 'Condenei quem não devia. Quem de fato matou segue à solta, sem nome na minha caderneta — e o meu laudo é hoje o seu melhor abrigo.', maxima: true },
   { molde: () => 'Assino uma cadeia coerente sobre um nome errado. O certo, esse, ainda está por escrever.', maxima: true },
+  // D25
+  { molde: () => 'A sentença cai sobre o nome errado, e o laudo que a sustenta sai em nome do Dr. Abbot, como saem todos os meus. Nenhuma das mortes pequenas me custou isto.', maxima: true },
 ];
 
 // Mapeia cada código de falha para a frase universal — o buraco que o próprio
@@ -248,13 +268,76 @@ function blocoTese(dados) {
   return frase;
 }
 
+// ---------------------------------------------------------------------
 // Bloco das testemunhas desmentidas (só quando houve refutação estabelecida
 // de alegação de hora que NÃO era a peça encenada).
-function blocoTestemunhas(n) {
-  if (!n || n < 1) return null;
-  if (n === 1) return 'Uma testemunha jurava contra a hora que o corpo dá; o corpo prevaleceu.';
-  if (n === 2) return 'Duas testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre ambas.';
-  return 'As testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre todas.';
+//
+// A CONTA É DE BOCAS, e não de papéis (OS-R7 §3.2, herança direta da D16).
+// Um perito que diga "duas testemunhas" sobre duas alegações que saem do
+// mesmo homem está somando o mesmo homem duas vezes — e a somaria na voz
+// dele, no fecho do caso, que é o pior lugar do jogo para esse erro. Quem
+// agrupa é `contarVozes`, e ela mora fora do motor de propósito.
+//
+// Quando os dois números divergem, o bloco DIZ a divergência: a
+// corroboração que não existe é achado do perito, não ruído a esconder.
+// ---------------------------------------------------------------------
+const NUMERAL_MASC = ['nenhum', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove'];
+const NUMERAL_FEM = ['nenhuma', 'uma', 'duas', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove'];
+// Acima de nove, a prosa não conta: um algarismo no meio do desfecho
+// denuncia o template. `vários/várias` é a saída honesta e sem número.
+const porExtensoM = (n) => NUMERAL_MASC[n] || 'vários';
+const porExtensoF = (n) => NUMERAL_FEM[n] || 'várias';
+
+export function blocoTestemunhas(idsDesmentidas) {
+  const ids = [...(idsDesmentidas || [])];
+  const papeis = ids.length;
+  if (papeis < 1) return null;
+  const vozes = contarVozes(ids);
+  if (papeis > vozes) {
+    // A corroboração aparente. Uma só boca por trás de tudo, ou menos bocas
+    // do que papéis: em qualquer dos casos o perito conta o que sobra.
+    return vozes === 1
+      ? `${ComPrimeiraMaiuscula(porExtensoM(papeis))} depoimentos juravam contra a hora que o corpo dá, e saíram ${papeis === 2 ? 'ambos' : 'todos'} de uma boca só. O corpo prevaleceu sobre ela.`
+      : `${ComPrimeiraMaiuscula(porExtensoM(papeis))} depoimentos juravam contra a hora que o corpo dá, e ${porExtensoF(vozes)} bocas respondiam por eles. O corpo prevaleceu sobre todas.`;
+  }
+  if (vozes === 1) return 'Uma testemunha jurava contra a hora que o corpo dá; o corpo prevaleceu sobre ela.';
+  if (vozes === 2) return 'Duas testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre ambas.';
+  return `${ComPrimeiraMaiuscula(porExtensoF(vozes))} testemunhas juravam contra a hora que o corpo dá; o corpo prevaleceu sobre todas.`;
+}
+
+function ComPrimeiraMaiuscula(palavra) {
+  return palavra.charAt(0).toUpperCase() + palavra.slice(1);
+}
+
+// ---------------------------------------------------------------------
+// A NOITE (OS-R7 §3.2). Até aqui o desfecho contava a QUALIDADE DA CADEIA
+// e não contava o que aconteceu na relojoaria. A reconstituição dá a
+// matéria, e este bloco é o perito a medir quanto dela a cadeia dele
+// alcançou — juízo sobre o próprio trabalho, nunca fato novo.
+//
+// A regra que governa as quatro variantes é a mesma do fecho da cena: o
+// perito sabe quantos gestos desfez e NÃO sabe quantos lhe escaparam.
+// Nenhuma delas declara fração, e nenhuma afirma fato físico (G8 vale
+// para o mestre; a mesma disciplina vale para o perito no fecho).
+//
+// Ausente o catálogo de gestos (os casos gerados, até a OS-R9), a faixa é
+// null e o bloco não sai — o desfecho fica byte a byte o de antes.
+// ---------------------------------------------------------------------
+const NOITE_POR_FAIXA = {
+  nenhuma:
+    'Da noite em si não refiz um só gesto. Levo a cadeia que montei, e a sexta-feira continua a ser a que a sala me contou quando entrei nela.',
+  poucas:
+    'Da noite refiz os poucos gestos que as minhas cartas alcançavam, e não fui além deles. É o que tenho.',
+  varias:
+    'Da noite refiz uma sequência de gestos, cada um preso a um papel meu. Onde o papel faltou, a sexta-feira ficou por refazer.',
+  quase_toda:
+    'Refiz a noite quase gesto a gesto, e cada um deles saiu de um papel que trouxe da vila.',
+};
+
+function blocoDaNoite(idsNaMesa) {
+  if (!idsNaMesa) return null;
+  const faixa = faixaDaColheita(idsNaMesa);
+  return faixa ? NOITE_POR_FAIXA[faixa] : null;
 }
 
 // ---------------- Juízo sobre os não-acusados (variantes) ----------------
@@ -286,6 +369,9 @@ const PERIFERICO_SEGREDO = [
 
 // `opcoes.nomearCulpado`: no Erro Judiciário com retentativa de pé, o fecho
 // não entrega o nome do verdadeiro autor (default: nomeia — encerramento).
+// `opcoes.cartasNaMesa`: os ids da mesa no momento de acusar. Servem a UM
+// bloco só (a noite), e o desfecho continua a sair sem eles — o gerador e
+// as guardas antigas chamam sem passar nada, e recebem o texto de antes.
 export function gerarMonologo(veredicto, detective, opcoes = {}) {
   const nomearCulpado = opcoes.nomearCulpado !== false;
   const dados = veredicto.dadosMonologo;
@@ -315,8 +401,17 @@ export function gerarMonologo(veredicto, detective, opcoes = {}) {
   }
 
   // ---------------- As testemunhas desmentidas (se houve) ----------------
-  const testemunhas = blocoTestemunhas(dados.testemunhasDesmentidas);
+  // A conta é de bocas: o motor entrega os papéis derrubados, e quem os
+  // agrupa por origem é a camada narrativa (OS-R7 §3.2).
+  const testemunhas = blocoTestemunhas(dados.idsTestemunhasDesmentidas);
   if (testemunhas) blocos.push(testemunhas);
+
+  // ---------------- A noite (OS-R7) ----------------
+  // Fecha o que a cadeia sustentou, antes de a narração passar ao que lhe
+  // faltou. O lugar é este por ordem de leitura: primeiro o que se prova,
+  // depois o quanto da noite isso alcançou, e só então os buracos.
+  const noite = blocoDaNoite(opcoes.cartasNaMesa);
+  if (noite) blocos.push(noite);
 
   // ---------------- Os buracos da cadeia ----------------
   // Juízos periféricos errados em série: a partir do segundo, frase abreviada,
