@@ -43,6 +43,11 @@ import { montarDossies, exposicaoDiante, corteDeE2, NIVEIS } from '../src/logic/
 import { PROCEDENCIA_ALEGACOES } from '../src/data/procedencia.js';
 import { agruparPorOrigem, contarVozes, contarVozesIndependentes, feixesContaminados } from '../src/logic/contaminacao.js';
 import { INTERVENCOES_NOITE, intervencoesRebatidas } from '../src/data/intervencoes.js';
+import {
+  montarReconstituicao,
+  ABERTURAS_RECONSTITUICAO,
+  FECHOS_RECONSTITUICAO,
+} from '../src/logic/reconstituicao.js';
 import { PAPEIS } from '../src/data/papeis.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { gerarEpilogo } from '../src/logic/epilogo.js';
@@ -4627,7 +4632,7 @@ if (!gr65ParidadeOk) console.log('\nGR6-5 — paridade de exposição:', gr65Fur
 // papéis e atributos — leitura de fonte, não confiança.
 const ARQUIVOS_DO_MOTOR = ['logic/veredicto.js', 'logic/acusacao.js'];
 const gr66Violacoes = ARQUIVOS_DO_MOTOR.filter((relativo) =>
-  /exposicao|exposicaoDiante|nivelDeExposicao|apontadaPor|procedencia|contaminacao/.test(
+  /exposicao|exposicaoDiante|nivelDeExposicao|apontadaPor|procedencia|contaminacao|reconstituicao|intervencoes|intervencoesRebatidas/.test(
     semComentarios(readFileSync(path.join(raizSrc, relativo), 'utf8'))
   )
 );
@@ -4854,6 +4859,131 @@ const gr74Furos = [];
 const gr74ContaDeBocasOk = gr74Furos.length === 0;
 if (!gr74ContaDeBocasOk) console.log('\nGR7-4 — a conta de bocas:', gr74Furos.join(' · '));
 
+// ============================================================
+// OS-R7 · FASE 2 — A RECONSTITUIÇÃO (GR7-1, GR7-2, GR7-3, GR7-6).
+//
+// As guardas nasceram ANTES do conteúdo, como a OS manda: a cena é a peça
+// do jogo onde é mais fácil furar a G9 sem dar por isso, porque a tentação
+// de uma cena de clímax é mostrar o que aconteceu — e mostrar o que o
+// jogador não provou é provar por ele.
+// ============================================================
+
+// GR7-1 — A CENA NÃO PROVA. Nenhuma carta nasce na reconstituição: o
+// conjunto de marcadores `[[id]]` da cena é VAZIO, no catálogo e em toda
+// mesa que as quatro rotas produzem. Por varredura, não por confiança.
+const gr71Furos = [];
+{
+  const textosDoCatalogo = [
+    ...INTERVENCOES_NOITE.flatMap((i) => [i.hora, i.rubrica, i.prosa]),
+    ...ABERTURAS_RECONSTITUICAO,
+    ...Object.values(FECHOS_RECONSTITUICAO),
+  ];
+  const marcados = marcadoresDosTextos(textosDoCatalogo);
+  if (marcados.length) gr71Furos.push(`o catálogo marca cartas: ${marcados.join(' ')}`);
+  for (const t of telemetriaR7) {
+    const registro = monologos.find((m) => m.rotulo.startsWith(t.perfil));
+    const cena = montarReconstituicao(registro ? registro.mesaIds : [], `${t.perfil}|gr7-1`);
+    const marcadosNaCena = marcadoresDosTextos(cena.blocos);
+    if (marcadosNaCena.length) gr71Furos.push(`${t.perfil}: ${marcadosNaCena.join(' ')}`);
+  }
+}
+const gr71CenaNaoProvaOk = gr71Furos.length === 0;
+if (!gr71CenaNaoProvaOk) console.log('\nGR7-1 — a cena prova:', gr71Furos.join(' · '));
+
+// GR7-2 — A CENA NÃO CONTORNA O MURAL. Montar a reconstituição não lê nem
+// escreve estado de acusação: o veredicto de antes é byte a byte o de
+// depois, nos quatro perfis. E a cegueira do outro lado é estrutural —
+// `veredicto.js` e `acusacao.js` não citam a camada (a GR6-6 foi estendida
+// a `reconstituicao` e a `intervencoes` no mesmo commit).
+const gr72Furos = [];
+for (const t of telemetriaR7) {
+  const registro = monologos.find((m) => m.rotulo.startsWith(t.perfil));
+  if (!registro) continue;
+  const antes = JSON.stringify(registro.veredicto);
+  const cena = montarReconstituicao(registro.mesaIds, `${t.perfil}|gr7-2`);
+  if (JSON.stringify(registro.veredicto) !== antes) gr72Furos.push(`${t.perfil}: a cena mexeu no veredicto`);
+  // E é determinística: a mesma mesa com a mesma chave dá a mesma cena.
+  if (JSON.stringify(montarReconstituicao(registro.mesaIds, `${t.perfil}|gr7-2`)) !== JSON.stringify(cena)) {
+    gr72Furos.push(`${t.perfil}: a cena não repete`);
+  }
+}
+const gr72NaoContornaOk = gr72Furos.length === 0;
+if (!gr72NaoContornaOk) console.log('\nGR7-2 — a cena contorna o mural:', gr72Furos.join(' · '));
+
+// GR7-3 — REBATE SÓ O QUE A MESA TEM. Toda intervenção que a cena desfaz
+// tem, na mesa, TODAS as cartas que exige; e retirar qualquer uma delas
+// devolve a intervenção ao pé. A segunda perna é a que morde: sem ela, a
+// guarda provaria que o filtro existe, não que ele filtra.
+const gr73Furos = [];
+for (const t of telemetriaR7) {
+  const registro = monologos.find((m) => m.rotulo.startsWith(t.perfil));
+  if (!registro) continue;
+  const mesa = registro.mesaIds;
+  for (const i of intervencoesRebatidas(mesa)) {
+    const faltantes = i.exige.filter((id) => !mesa.includes(id));
+    if (faltantes.length) gr73Furos.push(`${t.perfil}: ${i.id} rebatida sem ${faltantes.join(',')}`);
+    for (const id of i.exige) {
+      if (intervencoesRebatidas(mesa.filter((x) => x !== id)).some((r) => r.id === i.id)) {
+        gr73Furos.push(`${t.perfil}: ${i.id} sobrevive sem ${id}`);
+      }
+    }
+  }
+}
+// A mesa vazia não rebate nada, e a cena dela é só moldura: é o martelo (c)
+// provado, e não prometido.
+if (intervencoesRebatidas([]).length !== 0) gr73Furos.push('mesa vazia rebate intervenção');
+const cenaVazia = montarReconstituicao([], 'qa|gr7-3');
+if (cenaVazia.passos.length !== 0 || cenaVazia.blocos.length !== 2) {
+  gr73Furos.push('a cena sem cartas não roda curta');
+}
+// E toda carta exigida existe no catálogo do caso: `exige` órfão faria a
+// intervenção inalcançável sem que nenhum teste reclamasse.
+for (const i of INTERVENCOES_NOITE) {
+  for (const id of i.exige) {
+    if (!CARTAS.some((c) => c.id === id)) gr73Furos.push(`${i.id} exige carta inexistente: ${id}`);
+  }
+}
+const gr73SoAMesaOk = gr73Furos.length === 0;
+if (!gr73SoAMesaOk) console.log('\nGR7-3 — rebate sem carta:', gr73Furos.join(' · '));
+
+// GR7-6 — A CENA NÃO CHAVEIA NO BIT `culpado` (G3). Duas pernas:
+//
+//   (1) a assinatura da função não admite réu nem veredicto — a cena
+//       recebe a mesa e mais nada, e é isso que torna a G3 estrutural;
+//   (2) nenhum texto da cena traz nome de suspeito. Sem nome, não há
+//       marca textual que o réu receba e os inocentes não recebam.
+const gr76Furos = [];
+{
+  if (montarReconstituicao.length > 2) gr76Furos.push('a cena passou a receber mais do que a mesa e a chave');
+  const NOMES = pacote.suspeitos.map((x) => x.nome);
+  const PRIMEIROS = NOMES.flatMap((n) => n.replace(/^(Sr\.|Sra\.|Srta\.|Dr\.|Dr\.ª)\s+/, '').split(/\s+/));
+  const textos = [
+    ...INTERVENCOES_NOITE.flatMap((i) => [i.hora, i.rubrica, i.prosa]),
+    ...ABERTURAS_RECONSTITUICAO,
+    ...Object.values(FECHOS_RECONSTITUICAO),
+  ];
+  for (const texto of textos) {
+    for (const nome of [...NOMES, ...PRIMEIROS]) {
+      if (new RegExp(`\\b${nome}\\b`).test(texto)) gr76Furos.push(`nome de suspeito na cena: ${nome}`);
+    }
+  }
+  // E a mesma mesa dá a mesma cena, acuse o jogador quem acusar: as quatro
+  // rotas acusam três réus diferentes, e a cena não sabe disso.
+  const porMesa = new Map();
+  for (const t of telemetriaR7) {
+    const registro = monologos.find((m) => m.rotulo.startsWith(t.perfil));
+    if (!registro) continue;
+    const chaveMesa = registro.mesaIds.slice().sort().join(',');
+    const cena = JSON.stringify(montarReconstituicao(registro.mesaIds, 'chave fixa'));
+    if (porMesa.has(chaveMesa) && porMesa.get(chaveMesa) !== cena) {
+      gr76Furos.push(`${t.perfil}: mesa igual e cena diferente`);
+    }
+    porMesa.set(chaveMesa, cena);
+  }
+}
+const gr76SemBitCulpadoOk = gr76Furos.length === 0;
+if (!gr76SemBitCulpadoOk) console.log('\nGR7-6 — a cena chaveia no culpado:', gr76Furos.join(' · '));
+
 const checagens = [
   [`Prosa Viva E5 — anti-monotonia: ${guardaMon.pisos} pisos de superfície (E1–E4) sem regressão a molde raso`, guardaMon.ok],
   ['Pacote de caso serializável e completo (campos obrigatórios, ids únicos)', pacoteSerializavelCompleto],
@@ -4995,9 +5125,13 @@ const checagens = [
     })`,
     gr65ParidadeOk,
   ],
-  ['GR6-6 (o motor continua cego): veredicto.js e acusacao.js não leem exposição, procedência nem contaminação', gr66MotorCegoOk],
+  ['GR6-6 (o motor continua cego): veredicto.js e acusacao.js não leem exposição, procedência, contaminação nem a reconstituição', gr66MotorCegoOk],
   ['GR6-8 (contaminação legível): o feixe da D16 colapsa numa voz só — o álibi do réu, a lição do rapaz e a senhora da viela saem da mesma boca', gr68ContaminacaoOk],
   ['GR7-4 (a conta é de bocas): o bloco das testemunhas conta vozes, não papéis, e diz a corroboração que não existe', gr74ContaDeBocasOk],
+  ['GR7-1 (a cena não prova): nenhum marcador de carta na reconstituição, no catálogo e nas quatro rotas', gr71CenaNaoProvaOk],
+  ['GR7-2 (a cena não contorna o mural): montá-la não toca o veredicto, e a mesma mesa repete a mesma cena', gr72NaoContornaOk],
+  [`GR7-3 (rebate só o que a mesa tem): toda intervenção cai com as cartas que exige e volta ao pé sem qualquer uma delas; mesa vazia roda curta (${INTERVENCOES_NOITE.length} gestos no catálogo)`, gr73SoAMesaOk],
+  ['GR7-6 (a cena não chaveia no culpado): a função não recebe réu, e nenhum nome de suspeito entra na prosa da cena', gr76SemBitCulpadoOk],
   ['GR6-7 (beat 3 nos cinco): os cinco têm terceiro beat, nos quatro tons, alcançável a partir de qualquer tom do beat 2', gr67BeatTresOk],
   ['GR6-9 (menoridade): o beat 3 de Davey é econômico e só, em todo tom e em todo nível — sem mágoa posta na boca dele', gr69MenoridadeOk],
 ];

@@ -75,6 +75,7 @@ import { SUSPEITOS, SEED_TUTORIAL } from '../src/data/seed.js';
 import { SINAIS, CATALOGO_CAUSAS } from '../src/data/catalogo_causas.js';
 import { HABITOS } from '../src/data/curriculo.js';
 import { CONSEQUENCIAS_CONFRONTO } from '../src/data/confrontos.js';
+import { INTERVENCOES_NOITE } from '../src/data/intervencoes.js';
 import {
   ROTULOS_MECANISMO,
   ROTULOS_INSTRUMENTO,
@@ -106,6 +107,7 @@ const FONTES = [
   ['src/data/catalogo_causas.js', { SINAIS, CATALOGO_CAUSAS }],
   ['src/data/curriculo.js', { HABITOS }],
   ['src/data/confrontos.js', { CONSEQUENCIAS_CONFRONTO }],
+  ['src/data/intervencoes.js', { INTERVENCOES_NOITE }],
   [
     'src/data/rotulos.js',
     {
@@ -129,7 +131,11 @@ const FONTES = [
 
 // Arquivos cuja prosa vive em constantes não exportadas (templates): os
 // literais são extraídos da própria fonte.
-const FONTES_POR_LITERAL = ['src/logic/monologo.js', 'src/logic/epilogo.js'];
+const FONTES_POR_LITERAL = [
+  'src/logic/monologo.js',
+  'src/logic/epilogo.js',
+  'src/logic/reconstituicao.js',
+];
 
 const MIN_CARACTERES = 40;
 const CHAVES_IGNORADAS = new Set(['tagsOcultas', 'proveniencia', 'licenca', 'caminho', 'url']);

@@ -322,6 +322,10 @@ async function textoOverlay(page) {
 // helper atravessa o passo quando ele existe e DEVOLVE { texto, viuLacunas }
 // — as rotas checam quem deve (e quem não deve) ver o passo. (Estado
 // pendurado na função era frágil e não-óbvio; revisão 24/07.)
+// (OS-R7) Entre o selo e o monólogo passa a RECONSTITUIÇÃO — peça de
+// leitura, sem escolha, com um só botão de saída. O helper atravessa-a e
+// DEVOLVE o texto dela em `reconstituicao`, para que as rotas possam
+// cobrar o que a cena mostra (e o que ela se recusa a mostrar).
 async function julgar(page) {
   await page.getByRole('button', { name: 'Levar a julgamento' }).click();
   await espera(page, 400);
@@ -331,7 +335,11 @@ async function julgar(page) {
   const viuLacunas = (await selar.count()) > 0;
   if (viuLacunas) await selar.click();
   await espera(page, 900);
-  return { texto: await textoOverlay(page), viuLacunas };
+  const reconstituicao = await textoOverlay(page);
+  const passos = await page.locator('[data-passo-reconstituicao]').count();
+  await page.getByRole('button', { name: 'O que ficou por dizer' }).click();
+  await espera(page, 700);
+  return { texto: await textoOverlay(page), viuLacunas, reconstituicao, passosReconstituicao: passos };
 }
 
 // ---------------------------------------------------------------------
@@ -730,8 +738,20 @@ async function main() {
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(3).click();
     await espera(page, 200);
 
-    let { texto, viuLacunas } = await julgar(page);
+    let { texto, viuLacunas, reconstituicao, passosReconstituicao } = await julgar(page);
     checar('P0 §5: acusação completa sela sem passo extra', !viuLacunas);
+    // OS-R7: a reconstituição corre ANTES do monólogo, e mostra só o que a
+    // mesa desfaz. O Metódico colheu oito dos nove gestos da noite.
+    checar('Rota 1: a reconstituição vem antes do monólogo', reconstituicao.includes('A Reconstituição'));
+    checar('Rota 1: a cena situa-se no domingo, na relojoaria', /DOMINGO À NOITE, NA RELOJOARIA/i.test(reconstituicao));
+    // Esta rota colhe a vila inteira: os nove gestos do catálogo caem, e a
+    // cena roda por extenso. É o teto — nenhuma mesa desfaz mais do que isto.
+    checar('Rota 1: a mesa completa desfaz os nove gestos da noite', passosReconstituicao === 9);
+    checar('Rota 1: a cena refaz o mostrador posto num quarto para as nove', reconstituicao.includes('um quarto para as nove'));
+    // O feixe da D16 dramatizado: a hora dita duas vezes nas mesmas palavras.
+    checar('Rota 1: a cena mostra a hora ensaiada antes de ser dita', reconstituicao.includes('na mesma ordem'));
+    checar('Rota 1: a cena não nomeia autor de gesto nenhum', !/Silas Crane|Crane/.test(reconstituicao));
+    checar('Rota 1: a cena sem id interno vazado', !/alibi_|ev_|dep_|comp_|corrob_/.test(reconstituicao));
     checar('Rota 1: desfecho Vitória Absoluta', texto.includes('Vitória Absoluta'));
     checar('Rota 1: monólogo sem id interno vazado', !/buril_gravador|vidro_mostrador|carta_suplica|assinatura_registro|cesta_ceia/.test(texto));
     checar('Rota 1: monólogo sem NaN/Infinity', !/NaN|Infinity/.test(texto));
@@ -801,8 +821,18 @@ async function main() {
     await page.locator('text=PRESENÇA — O RÉU NA CENA').click();
     await espera(page, 250);
     // "Mentiu, logo matou": sem mentiras confrontadas, sem móbil, sem juízos.
-    ({ texto, viuLacunas } = await julgar(page));
+    ({ texto, viuLacunas, reconstituicao, passosReconstituicao } = await julgar(page));
     checar('P0 §5: acusação com lacunas exige "Selar assim mesmo"', viuLacunas);
+    // G3/GR7-6: a cena é a mesma peça acuse-se quem se acusar. Esta rota
+    // acusa o inocente, e a reconstituição continua sem nomear ninguém —
+    // mostra o único gesto cujas cartas esta mesa tem (o assalto encenado).
+    checar('Rota 2: a reconstituição corre também no erro judiciário', reconstituicao.includes('A Reconstituição'));
+    checar('Rota 2: a cena mostra só os gestos que esta mesa desfaz', passosReconstituicao === 3);
+    // G9 ao pé da letra: o que esta mesa não colheu não aparece. O buril e o
+    // quarto da estalagem ficam de pé, e a cena não os insinua.
+    checar('Rota 2: o gesto da oficina fica FORA da cena', !reconstituicao.includes('volta ao estojo'));
+    checar('Rota 2: o gesto da estalagem fica FORA da cena', !reconstituicao.includes('quarto cinco'));
+    checar('Rota 2: a cena não nomeia o acusado nem o culpado', !/Walter Arthurs|Silas Crane/.test(reconstituicao));
     checar('Rota 2: desfecho Erro Judiciário', texto.includes('Erro Judiciário'));
     checar('Rota 2: sem id interno vazado', !texto.includes('carta_suplica'));
     // Q2: com a retentativa de pé, o culpado NÃO é nomeado no monólogo.
@@ -867,7 +897,14 @@ async function main() {
     await espera(page, 150);
     await page.getByRole('button', { name: 'Sem juízo', exact: true }).nth(3).click();
     await espera(page, 150);
-    ({ texto } = await julgar(page));
+    ({ texto, reconstituicao, passosReconstituicao } = await julgar(page));
+    // OS-R7, martelo (c): sem carta para rebater, a cena roda CURTA e as
+    // intervenções ficam de pé. O Intuitivo nunca colheu nada da noite —
+    // e a cena não lhe entrega nada, que é o desenho e não um defeito.
+    checar('Rota 3: a colheita magra dá cena magra (três gestos)', passosReconstituicao === 3);
+    checar('Rota 3: a cena não refaz o mostrador que esta rota nunca leu', !/um quarto para as nove|nono entalhe/.test(reconstituicao));
+    checar('Rota 3: a cena não refaz o assalto que esta rota nunca leu', !reconstituicao.includes('degrau do beco'));
+    checar('Rota 3: o fecho declara a cena curta, sem dizer o que ficou de pé', reconstituicao.includes('ficou inteira no resto'));
     checar('Rota 3: desfecho Impunidade', texto.includes('Impunidade'));
 
     // ============================================================
