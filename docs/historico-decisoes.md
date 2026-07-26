@@ -2277,3 +2277,109 @@ Normalizar toca `localidades.js`, `mapa.js`, `mapa_espacial.js`, o diorama e o c
 chamado a depor formalmente explica-se sozinho na ficção.
 
 Reabrir é **depois da R8**, com ata própria.
+
+### O parecer do pipeline
+
+**Reprovado na primeira passada, e aprovado na segunda** — o mesmo destino da R3, da R4
+e da R5. Desta vez os três revisores acharam coisas de naturezas diferentes, e **nenhum
+sozinho teria bastado**.
+
+**Dois bloqueantes, ambos do `editor-critico`:**
+
+1. **O segundo degrau de Walter entregava de graça o pagamento do `confronto_registro`.**
+   A cadeia de pretéritos acabava em «e eu fui dormir a crédito no quarto três» — que é
+   exatamente o que `alibi_walter` nega e o que `ev_registro_estalagem` existe para
+   desmentir. Como o degrau dispara com dois dos três papéis e **nenhum deles é da
+   estalagem**, um jogador que nunca lá pisasse via a mentira do carro cair sozinha. O
+   comentário de desenho dizia «aprofunda a isca sem tocar na cadeia física que o
+   inocenta»; a frase tocava, e era justamente ela.
+2. **Davey afirmava o falso contra a carta que carrega o móbil dele.** «Sexta ele pagou,
+   como sempre» — e `ev_livro_pagamentos` diz que quatro xelins entram e quatro saem
+   desde o fim de março. Como o jogador vê **um tom só por partida**, quem escolhesse o
+   cordial levava para a mesa uma falsidade e depois leria a carta como se o menino
+   tivesse mentido: contradição fantasma, sem função, num rapaz que na bíblia só mente
+   sobre o álibi ensaiado.
+
+**Do `perito-forense`, e é correção de direito, não de estilo:**
+
+- **«A queixa corre contra o espólio» estava errado.** Processo criminal **morre com o
+  acusado**: não se acusa, não se intima nem se pronuncia um defunto, e a queixa de Grey
+  acabou na noite de sexta. O que sobrevive é a **dívida**, por contrato, e contra quem
+  responder pelos bens. A correção melhora o personagem em vez de o encolher: Grey perde
+  a vingança e fica com a conta, que é o que a bíblia de vozes diz dele desde sempre.
+- **«Inventário com imóvel leva meses» é o mecanismo brasileiro.** Em 1893 o *freehold*
+  não passava pelas mãos do testamenteiro — só a partir do Land Transfer Act **1897**. O
+  que demora é **provar o testamento**, e o resultado prático que Walter quer (meses de
+  espera, nenhum comprador antes do papel) continua verdadeiro pela via correta.
+- «Queixado» não é substantivo em português (é *querelado*); «mola de fora» e «caseiro»
+  também corrigidos.
+- **Passou limpo, e é o que mais importava:** o rapaz **não** afirma direito nenhum sobre
+  o desconto — dá três fatos e nomeia o registro, e a conta quem faz é o jogador. A
+  guarda da R5 sobre os Truck Acts está cumprida.
+
+**Do `fiscal-continuidade`, cinco furos que só aparecem cruzando dados:**
+
+| O que a fala dizia | O que a fonte diz |
+|---|---|
+| Grey: «poupa a minha manhã» | o perito chega às **13h**, e o moinho custa viagem — nunca há manhã com ele |
+| Silas: «abria amanhã» | amanhã é **domingo**, e o próprio jogo o diz na boca de Amos |
+| Silas: «quem manda ainda está chegando» | Walter está na vila **desde a manhã de sábado**, no quarto 3 |
+| Silas: «o carvão está onde ficou de sexta» | `abertura.js` narra que ele **acendeu o fogo** no sábado de manhã |
+| Agnes: «Abriu ontem e abre na segunda» | a loja está aberta **agora**, e a frase saltava o dia em que ela fala |
+
+Mais quatro **colisões de gesto** nas alfinetadas: como elas rendem sobre os quatro tons,
+pressupunham um movimento que a fala já gastara — as mãos «voltavam» aos joelhos de onde
+nunca tinham saído; a saca descia duas vezes, a dois lugares. Ficaram autossuficientes.
+
+**O achado de maior peso foi de quantidade, e é o anti-padrão nº 2 do catálogo:
+16 dos 20 nós fechavam em epigrama**, e três telas traziam **duas** máximas porque a
+alfinetada é renderizada logo abaixo da fala. São **4** agora, e nenhuma tela tem duas.
+
+**Dois revisores discordaram sobre a mesma linha, e ambos tinham razão sobre coisas
+diferentes — outra vez.** O editor queria cortar o vínculo da dívida da mãe na boca de
+Davey (o móbil chega por documento, e o rapaz não precisa entregá-lo); o fiscal apontou
+que «livro da bancada» é a abertura literal da `descricao` de **outra** carta
+(`ev_livro_ordens`) e mandaria o jogador à errada. Ficou **«livro estreito da bancada»**,
+que é o adjetivo próprio de `ev_livro_pagamentos`: o vínculo sai e o ponteiro fica certo.
+Na segunda passada o editor confirmou que a solução serve às duas razões — e **retirou**
+um menor seu sobre a fala de Agnes, depois de o perito validar contra a KB que a viúva
+além dos vinte e quatro meses devia ter voltado à cor.
+
+**Segunda passada:** os dois bloqueantes caíram, e sobraram dois altos — o degrau tomava
+emprestado o relógio de `dep_visto_vivo` («antes de correr as tampas da vitrine» é a ação
+das 20h em ponto, e a hora da briga é do carroceiro, que diz «cair da tarde»), e a saca
+de Grey ainda se largava duas vezes. Corrigidos. **Zero bloqueantes em aberto.**
+
+**Não-bloqueantes herdados pela OS-R8** (passe editorial): a rubrica «Puxa o colete para
+baixo, como quem se compõe para retrato» aparece duas vezes na árvore de Walter (prosa
+anterior a esta OS, em telas diferentes); e a abertura de `interrogatorio_silas` diz «a
+bancada amanheceu sem lume», que puxa contra a abertura do caso pela mesma razão que o
+carvão de Silas puxava.
+
+### Aberto para a OS seguinte
+
+- **OS-R7** (a reconstituição): herda **zero cartas** de orçamento — está proibida de
+  gastar pela G9, e não há saldo que lhe sirva. Herda a **D24** (a reconstituição, que não
+  tem uma linha de código), a **D25** (a regra da assinatura, que nunca apareceu em prosa)
+  e, sobretudo, **a conta de bocas**: o `blocoTestemunhas` do `monologo.js` diz «duas
+  testemunhas juravam contra a hora que o corpo dá», e depois desta OS existe
+  `contarVozesIndependentes`. É o **único ponto do jogo onde o erro sairia na voz do
+  perito, no fecho do caso**. A OS e o prompt estão escritos
+  (`docs/os-r7-a-reconstituicao.md`, `docs/os-r7-prompt-de-arranque.md`).
+  **E herda uma lição de método:** medir antes de arbitrar já é o método da casa — na R5
+  a telemetria dispensou uma fase inteira, e na R6 trocou o corte absoluto pelo relativo
+  antes que o nível virasse delator.
+- **OS-R8** (passe editorial): tudo o que a ata da R4 deixou; o **«púlpito de escrever
+  forrado de cortiça»** de `pt_oficina_pulpito` (achado do perito na R5); a
+  **normalização do `interrogatorio_silas`**, que esta OS deixou de pé com o desconforto
+  declarado; e os dois não-bloqueantes do parecer acima. Os primeiros tocam o contrato do
+  `qa-ui`.
+- **OS-R9** (o gerador herda os padrões): a fila da R4, mais o **arquétipo do veraz sem
+  crédito**, o **móbil que se prova por aritmética de livro** (R5) e — novos desta OS — a
+  **exposição** (E0/E1/E2 por fração de dossiê), o **`apontadaPor`** e a **escada de
+  confronto por contador autoral**.
+- **De KB, registado e não criado:** `CLASSES_VESTIGIO` continua sem classe de **roupa
+  queimada** nem de **documento queimado**. Registro novo do perito, para quando a cena da
+  pesagem se escrever: £4 10s equivalem a cerca de 36 g de ouro de lei — a caixa inteira,
+  não a raspa que um oficial tira sem que se veja. A soma da queixa é o valor da **peça**,
+  não o do metal.

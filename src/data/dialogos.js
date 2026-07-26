@@ -89,7 +89,7 @@ const ALFINETADA_AGNES = {
 const ALFINETADA_GREY = {
   E1: ['Não torna à saca seguinte. O carroceiro do Finch chama uma vez, e ele não responde.'],
   E2: [
-    '"{g:O senhor|A senhora} já sabe disso tudo, então." Bate a farinha de uma mão na outra. "Melhor. Gente que chega sabendo poupa o meu resto de dia." Larga a saca na rampa e fica de frente para responder. "Pergunte o que ainda não sabe, que eu respondo de pé."',
+    '"{g:O senhor|A senhora} já sabe disso tudo, então." Bate a farinha de uma mão na outra. "Melhor. Gente que chega sabendo poupa o meu resto de dia." Larga o serviço e fica de frente para responder. "Pergunte o que ainda não sabe, que eu respondo de pé."',
   ],
 };
 
@@ -294,7 +294,7 @@ export const DIALOGOS = {
       },
       b3_tecnico: {
         fala: [
-          '"O atraso está no livro, e o livro está na bancada." Enumera sem procurar. "Enquanto não vier procurador dizer o contrário, responde o oficial da casa, que sou eu. O que sai daquela porta sai anotado, como sempre saiu."',
+          '"O atraso está no livro, e o livro está na bancada." Enumera sem procurar. "Enquanto não vier procurador dizer o contrário, responde o oficial da casa, que sou eu. O que sai daquela porta sai anotado."',
         ],
         alfinetada: ALFINETADA_SILAS,
         opcoes: [],
@@ -835,7 +835,7 @@ export const DIALOGOS = {
             aPartirDe: 2,
             fala: [
               'Ouve o resto sem estender a mão para a folha que lhe puseram diante. O botão do colete fica onde está.',
-              '"Sabia." Diz de uma vez, e o resto vem devagar. "Ele me contou na sexta, atrás do balcão, antes de correr as tampas da vitrine. Que ia casar, que ia lavrar tudo de novo na segunda-feira, e que eu me arranjasse. Foi por isso que gritei, e foi por isso que ele gritou. Quem passasse na rua ouviu os dois."',
+              '"Sabia." Diz de uma vez, e o resto vem devagar. "Ele me contou na sexta, atrás do balcão, ao cair da tarde. Que ia casar, que ia lavrar tudo de novo na segunda-feira, e que eu me arranjasse. Foi por isso que gritei, e foi por isso que ele gritou. Quem passasse na rua ouviu os dois."',
               '"E omiti." Endireita-se na cadeira. "Omiti porque a vergonha do que ouvi naquela loja pesa mais do que a herança que se soma depois dela. Pois ponha no papel: eu soube, eu pedi, ele recusou, e saí de lá com o chapéu na mão."',
             ],
           },
@@ -978,7 +978,7 @@ export const DIALOGOS = {
       },
       b3_tecnico: {
         fala: [
-          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Responde de olhos erguidos, sem procurar os números. "Desde o fim de março nenhum deles vem comigo; ficam na casa. O patrão anotava tudo no livro estreito da bancada."',
+          '"Quatro xelins por semana, {detective.treatment}, às sextas, antes de fechar." Responde de olhos erguidos, sem procurar os números. "Desde o fim de março nenhum deles vem comigo; ficam com a casa. O patrão anotava tudo no livro estreito da bancada."',
         ],
         alfinetada: ALFINETADA_DAVEY,
         opcoes: [],
