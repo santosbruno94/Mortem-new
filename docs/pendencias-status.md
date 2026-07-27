@@ -1,7 +1,7 @@
 # MORTEM — Status das Pendências (o que falta)
 
-**Atualizado em:** 26 de julho de 2026 (fecho da OS-R8: itens 11 e 14 fechados, item 10
-re-roteado para lote de UI)
+**Atualizado em:** 27 de julho de 2026 (triagem do playtest cego de 27/07 — 5 dos 7 itens
+consertados; ver a seção no fim do arquivo)
 **Branch da revisão:** `claude/pendencias-documento-86thrt`
 **Fonte:** documento *"MORTEM — Pendências de Revisão do Usuário"* (varredura de 19/07/2026),
 cruzado com o estado real do código nesta data.
@@ -298,3 +298,142 @@ Ajustada a constante ao texto real do jogo. **`qa-ui` agora: "UI VÁLIDA".**
 - **Sequência sugerida a seguir:** rodar o playtest → conforme o resultado, abrir a **OS de
   diálogo** (consumo das flags psíquicas, itens 2.1 + 2.3) *ou* corrigir solubilidade → deixar
   a **sessão de UI/arte** (1.2 b/c/e, 4.3) por último.
+
+---
+
+## Triagem do playtest cego de 27/07/2026
+
+Relatório versionado: [`docs/playtest/2026-07-27-playtest-cego.md`](./playtest/2026-07-27-playtest-cego.md).
+Partida completa até o epílogo, desfecho **Sucesso com Gafes**. Sete itens levantados;
+**cinco consertados nesta rodada**, por escolha do usuário.
+
+### O achado central: uma causa, três sintomas
+
+Os itens 1 e 3 do relatório eram **o mesmo defeito**, e maior do que o jogador pôde ver.
+As cartas que nascem dentro de um diálogo viviam só no texto transitório de um beat:
+escolher a pergunta seguinte substituía o nó e **destruía a carta em silêncio**, sem
+segunda chance e sem aviso. A carta e o botão que a apagava dividiam a mesma tela.
+
+São **13 das 50 cartas do caso** — todos os seis paradeiros declarados entre elas.
+Reproduzido no navegador antes de qualquer conserto: descer a árvore de Silas sem clicar
+nos termos deixava o Painel de Álibis vazio até o fim da partida.
+
+A cascata que isso produziu:
+
+| Sintoma relatado | Origem |
+|---|---|
+| Item 1 — o Painel de Álibis nunca registrou | nenhuma carta de álibi chegou à mesa; o painel estava correto |
+| Item 1 — o monólogo cobrou juízo «sem paradeiro colhido» | `veredicto.js` lê a mesma mesa vazia |
+| Item 3 — o «Inocente» não correspondeu ao que as cartas provam | `inocente_segredo` exige refutar o álibi pelo vestígio que revela o segredo; **sem a carta de álibi na mesa essa ligação é impossível de construir** — o jogador foi cobrado por um juízo que o defeito tornara infazível |
+
+### O que se fez
+
+| # | Item | Estado |
+|---|---|---|
+| 1 | Painel de Álibis nunca registrou | ✅ **O termo da conversa**: o que o interrogado já declarou fica escrito acima da fala corrente, com a pergunta que o perito fez, e os termos por colher continuam clicáveis. A conversa **continua a descer e a não voltar** — a escolha segue definitiva; o que deixa de acontecer é o dito se desdizer. Rodapé de aviso quando há coisa dita e não anotada |
+| 2 | Confronto antes da declaração gera contradição | ✅ **A trava passou do depois para o antes**: a pergunta de confronto que desmentiria um paradeiro ainda não declarado vem **travada e legível** (a razão vai escrita no próprio botão), em vez de avisar que nada se anotaria e rodar a confissão assim mesmo. Colhido o paradeiro, a trava cai |
+| 3 | Feedback dos juízos é opaco | ✅ **A lição do mestre** na Estação V, em voz de Abbot (tutorial só, como em `FalaDoLegista.jsx`): diz o que funda um juízo, sem entregar nada do caso — não reabre a porta que a Q3 fechou, que era o *gabarito*, não o critério. E o painel do «Inocente» sem paradeiro na mesa passa a nomear o que falta e onde se colhe, em vez de listar cartas e engolir o clique |
+| 4 | «Voltar o corpo» sem efeito visível | ✅ **Parcial, e o relatório errou num ponto**: o botão *já* marcava «· feito» (verificado). O que procedia era o resto — a cena dizia que o guarda esperava a ordem muito depois de o corpo ter sido voltado, e a prancha não virava. Os dois estados da cena passam a alternar-se pela carta do livor (campo novo `semCartas`), e o gesto **vira a prancha para a Fig. 2** |
+| 5 | A Cela cobra 1h estando no Posto | ✅ **Grupo `posto`**: a cela dos fundos e a sala da frente passam a ser o mesmo prédio, pelo precedente que a saleta de Silas já abrira na relojoaria — nó próprio, custo 0 entre os dois. Atravessar um corredor deixa de custar o mesmo que atravessar a vila |
+| 6 | O relógio nunca apertou | ⏭️ **Decisão do usuário, não defeito**: o prazo do inquérito é ficção declarada em `abertura.js` («nenhuma regra o lê, nenhum desfecho muda por ele»). O jogador leu certo. Calibrar a pressão do relógio é mudança de design, e fica para ordem expressa |
+| 7 | Fio solto: o esconderijo da torre | ⏭️ **Não é fio solto — é a Degrau 2 da OS-S1 a não se ler.** Ver a verificação abaixo. Fica aberto, mas com a pergunta trocada |
+
+### Guardas e verificação
+
+Nenhum contrato do `qa-ui.mjs` precisou mudar: a rota canônica colhe o álibi antes de
+confrontar, e por isso a trava do item 2 não a alcança. `data-no-dialogo` continua a
+marcar **só** a fala corrente (o registro usa `data-fala-registrada`), para os seletores
+do QA seguirem casando um nó por vez.
+
+**A trava do item 2 não fecha nenhum gatilho de interferência.** Verificado contra os
+dados: ela alcança 6 confrontos em 4 suspeitos (`corrob_estalajadeiro` e `ev_vidro_dobra`
+em Silas, `ev_cesta_rooke`, `ev_registro_estalagem`, `ev_suplica_cesto`,
+`ev_pegada_argila`), e os gatilhos de `corrida_a_torre` e `silenciar_herrick` são
+`prova_apresentada` sem carta fixa — sobram 4 confrontos livres em Silas e 2 em Herrick
+mesmo com a mesa sem álibi nenhum.
+
+### O que o pipeline `revisar-prosa` achou e ficou por fazer
+
+As três passadas correram sobre a prosa nova (parecer resumido nas mensagens de commit
+`8692e62` e no fecho desta rodada). Consertou-se tudo o que era bloqueante e alto. Estes
+cinco ficaram, e cada um por um motivo:
+
+| # | Achado | Por que ficou |
+|---|---|---|
+| P-1 | **Os outros dois gestos do corpo têm o defeito do item 4.** O conserto deu estado ao gesto do livor; o relógio de bolso e o termômetro continuam sem. A prosa-base diz «pende um relógio de bolso de tampa fechada, mudo» e «o termômetro fica à mão, se … julgar oportuno medir» — e as duas frases ficam falsas depois de dar corda e de medir, que é exatamente o defeito que o item 4 denunciou. A máquina já existe (`semCartas`/`requerCartas`) e o conserto é de dados | **Precisa de ordem expressa** — é estender uma feature a dois gestos que o playtest não citou |
+| P-2 | **A cela desenha-se como gabinete.** `tipoCenaDe('cela', 'posto')` cai no default `'gabinete'` (estante de livros-razão + escrivaninha), contra a prosa: «um cubículo de porta gradeada: enxerga, balde, e uma tábua de tarimba». Pré-existente — com `grupo: 'vila'` caía no mesmo default —, mas o grupo `posto` novo torna a correção de uma linha possível (`if (grupo === 'posto') return 'delegacia';`) | Pré-existente e **fora do escopo do playtest**; camada de apresentação, nenhuma regra a lê. Fica à sua ordem |
+| P-3 | **`carimboPadrao` de `ev_rigor` × faixa do glossário.** O carimbo que viaja para o mural diz «extremidades começando a ceder», e o verbete mapeia essa formulação à faixa de **24–36 h**, enquanto a carta está na de **12–24 h**. Um jogador metódico que cruze os dois desloca o corpo uma faixa inteira. Não quebra a solubilidade (as âncoras duráveis de 20 h/23 h resolvem sozinhas) | **Divergência KB × motor: decisão sua, não do agente** (regra do `CLAUDE.md`). É a que eu levaria a sério primeiro |
+| P-4 | **Duas derivas da KB em relação ao código.** O exemplo trabalhado de algor em `tanatologia.md` §1 usa morte às 22 h e IPM 13 h, contra as 21 h e IPM 16 h do `seed.js`; e a KB atribui o teto de 23 h da janela durável ao livor fixo, quando hoje ele vem da rotina interrompida do relógio de bolso (`horaRotina: -1`) | Idem — **decisão sua**. Nenhuma foi introduzida nesta rodada |
+| P-5 | **O relatório de 27/07 diz «Walter terminou com 5 provas contra si (mais que o culpado!)».** Verdadeiro da mesa daquele jogador (34 de 51); falso do catálogo, onde 5 apontam Walter e **7** apontam Silas | O relatório é versionado **verbatim** e não se corrige. Fica a ressalva aqui, para o número não fundar decisão de paridade de iscas |
+
+---
+
+## Verificação das pendências da OS-S1 (27/07/2026)
+
+A OS-S1 («A Hora Emprestada», PR #103) deixou quatro itens em aberto, listados na ata de
+`historico-decisoes.md`. Conferidos contra o código nesta data — **dois seguem abertos
+intactos, um estava bloqueado sem que se soubesse, e um já tinha resposta e ninguém a
+tinha lido.**
+
+### 1. Os anéis do Ato I e do Ato II (PD-07 por inteiro) — 🔓 **aberto, intacto**
+
+Verificado em `src/data/mapa.js`: dos nove nós, sete nascem com `desbloqueadoInicio:
+true`; só `cela` e `gabinete_pettigrew` nascem fechados. O anel do Ato III (a cela, aberta
+pela extração de `dep_avistamento_padeiro`) está lá e funciona; posto, estalagem,
+papelaria, moinho e torre continuam abertos desde a primeira hora, como a ata declarou.
+
+O conserto do item 5 do playtest tocou este arquivo, mas **só o `grupo` da cela** — o
+estado de anel ficou inalterado. Continua sendo trabalho de OS própria, com o gate de
+`qa-ui.mjs` refeito no mesmo commit, pela razão que a OS-S1 já registrou (G10 + `GR4-5`).
+
+### 2. A OS «Reação Vital Condicionante» — 🔓 **aberto, intacto**
+
+Ausente do repositório; a única menção em todo o `docs/` é a linha da ata que a declara
+ausente. Continua «recomendada, não bloqueante», pelo motivo original: a cela entrou como
+auto de exame.
+
+### 3. Playtest do mural a 51 cartas — 🚫 **estava BLOQUEADO, e agora não está**
+
+Não era «por fazer»: era **infazível**. O playtest de 27/07 parou em **34 de 51**
+observações, e 13 das 17 que faltaram eram exatamente as cartas que nascem dentro de
+diálogo — as que o defeito do item 1 apagava ao descer a árvore. Nenhuma partida podia
+chegar a 51 enquanto o defeito existisse, e por isso a medida que a OS-S1 pediu não podia
+ser tomada.
+
+Corrigido o item 1, a medida passa a ser possível. **Fica como o primeiro pedido de
+playtest da próxima rodada**, e agora com sentido: medir se a Estação II satura com o
+dossiê inteiro na mesa.
+
+### 4. As três interferências leem-se como AUTORIA? — ✅ **respondido, e a resposta é NÃO**
+
+**O playtest de 27/07 já tinha respondido, sem saber.** O item 7 do relatório («fio solto:
+o esconderijo da torre») descreve «chapa presa para trás, vazio limpo, sebo na trava» —
+que é, palavra por palavra, o `carimboPadrao` de `ev_esconderijo_vazio`. Essa carta **só
+existe depois de `corrida_a_torre` disparar**. O jogador pôs um papel diante de Silas,
+Silas correu à torre, o jogador subiu depois e achou o vão limpo — e arquivou aquilo
+como «a única promessa que o caso faz e não paga».
+
+O mecanismo funcionou inteiro. O que falhou foi a leitura, e as três causas estão no
+código:
+
+- **O anúncio é uma linha no fim de uma lista comprida.** `dispararInterferencias`
+  escreve em `s.log`, e o `log` só se lê no «Diário da investigação», última seção da
+  Caderneta, em `text-sm text-stone-300`, misturado com um `Registrado: …` por carta
+  extraída — ~50 linhas naquela partida. Os dois usos de `log` na prancha da vila são
+  `horaDoAcrescimo`; **nada do anúncio chega ao mapa ou à cena**.
+- **O mundo muda, mas só se vê o depois.** Os `blocosContingentes` do posto e da torre
+  trocam a prosa quando o evento dispara (bem desenhado: nunca sobra termo clicável para
+  carta que já não se colhe). Só que quem visita o lugar **uma vez** lê apenas o estado
+  final e nunca soube que houve um anterior.
+- **A ponte causal existe e chega tarde demais.** `ECOS_INTERFERENCIA_TUTORIAL` tem a
+  frase que fecharia a leitura — «A retratação veio depois da minha volta ao correio, e
+  não antes» —, mas `derivarEcosInterferencia` só corre dentro de `julgar`, e o eco cai
+  na Caderneta **depois de a partida acabar**, num painel que ninguém reabre.
+
+A R3 manda que a autoria seja reconstruível de trás para frente. A cadeia está toda
+montada; o que falta é o jogador ter uma razão para percorrê-la enquanto ainda joga.
+**Fica aberto como pergunta de desenho, não de medição** — a medição está feita.
+
+Nota de escopo: `silenciar_herrick` não chegou a disparar naquela partida (o relatório
+julga Herrick vivo), e `coacao_wick` não aparece no relatório de forma alguma. A amostra
+é de um jogador e de um degrau; a conclusão que ela sustenta com firmeza é a do Degrau 2.

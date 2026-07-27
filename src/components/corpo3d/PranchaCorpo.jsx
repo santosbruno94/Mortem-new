@@ -83,6 +83,27 @@ export default function PranchaCorpo({ ipm }) {
   const [face, setFace] = useState('frente'); // 'frente' (Fig.1) | 'dorso' (Fig.2)
   const vista = camada === 'necropsia' ? 'necropsia' : face;
 
+  // O GESTO VIRA A PRANCHA (playtest cego de 27/07/2026, item 4). Voltar o
+  // corpo é o gesto que expõe o dorso; a prancha ficava na face anterior, e o
+  // livor dorsal — a 8ª observação do exame — só se alcançava caçando um
+  // hotspot pequeno na figura ou o outro botão, o de virar a folha. Quando a
+  // carta do livor entra na mesa, a prancha passa à Fig. 2 sozinha: o perito
+  // voltou o corpo, e o atlas mostra o lado que ele acabou de descobrir.
+  // Só na TRANSIÇÃO — reabrir o exame com o livor já colhido não força a face,
+  // e virar a folha de volta continua sendo do jogador.
+  //
+  // E só com o EXAME EXTERNO em tela (fiscal-continuidade, 27/07/2026): a
+  // necropsia desenha a sua própria vista, e a viragem corria por baixo dela
+  // — o jogador voltava do corte e achava a folha trocada sem ter visto nada
+  // virar. O gesto tem de ser visível para ser gesto; com a necropsia aberta,
+  // a face fica como estava e o botão de virar continua onde sempre esteve.
+  const tinhaLivores = useRef(cartasRegistradas.some((c) => c.id === 'ev_livores'));
+  const temLivores = cartasRegistradas.some((c) => c.id === 'ev_livores');
+  useEffect(() => {
+    if (temLivores && !tinhaLivores.current && camada === 'externo') setFace('dorso');
+    tinhaLivores.current = temLivores;
+  }, [temLivores, camada]);
+
   const aparencia = obterAparencia('vitima');
   const f = aparencia.corpo === 'sobrepeso' ? 1.22 : aparencia.corpo === 'magro' ? 0.86 : 1;
   const pele = CORES_PELE[aparencia.pele] || CORES_PELE.palida;

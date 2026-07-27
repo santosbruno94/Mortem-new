@@ -954,6 +954,20 @@ body {
   background: rgba(80, 28, 24, 0.45);
   border-color: rgba(158, 42, 43, 0.8);
 }
+/* A pergunta de confronto TRAVADA (playtest cego de 27/07/2026, item 2): a
+   prova está na mesa, mas o interrogado ainda não declarou a noite dele.
+   Lê-se, e não se clica — a razão vai escrita no próprio botão. */
+.opcao-dialogo--travado {
+  cursor: not-allowed;
+  opacity: 0.62;
+  border-style: dashed;
+  border-color: rgba(158, 42, 43, 0.35);
+  background: rgba(20, 16, 12, 0.3);
+}
+.opcao-dialogo--travado:hover {
+  background: rgba(20, 16, 12, 0.3);
+  border-color: rgba(158, 42, 43, 0.35);
+}
 .opcao-dialogo--voltar {
   border-style: dashed;
   border-color: rgba(168, 162, 158, 0.3);
@@ -978,6 +992,38 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #a8a29e;
+}
+
+/* ------------------------------------------------------------------ */
+/* O TERMO DA CONVERSA (playtest cego de 27/07/2026, item 1): o que já  */
+/* se declarou fica escrito acima da fala corrente, recuado atrás de    */
+/* uma barra — a margem do escrivão. O passado lê-se mais apagado; o    */
+/* termo em negrito que ainda não foi à mesa continua com a cor de      */
+/* sempre, porque é ele que precisa ser visto.                          */
+/* ------------------------------------------------------------------ */
+.registro-conversa {
+  border-left: 1px solid rgba(201, 162, 68, 0.22);
+  padding-left: 0.9rem;
+}
+/* A pergunta do perito: travessão de fala, versaletes, tinta apagada —  */
+/* lê-se como rubrica de quem tomou o termo, não como fala de novo.      */
+.pergunta-registrada {
+  font-family: 'IM Fell English', Georgia, serif;
+  font-style: italic;
+  font-size: 0.86rem;
+  letter-spacing: 0.015em;
+  color: #a8a29e;
+}
+.pergunta-registrada::before {
+  content: '— ';
+  color: #c9a961;
+  font-style: normal;
+}
+/* A pergunta que abriu a fala corrente não é passado: sai da margem e   */
+/* respira acima da resposta que está em tela.                           */
+.pergunta-registrada--corrente {
+  margin-bottom: 0.9rem;
+  color: #bdb7b1;
 }
 
 @media (prefers-reduced-motion: reduce) {

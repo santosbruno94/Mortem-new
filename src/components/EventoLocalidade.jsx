@@ -122,12 +122,28 @@ export default function EventoLocalidade({ localidadeId }) {
     (bloco.quando === 'disparado'
       ? eventosDisparados.has(bloco.eventoId)
       : !eventosDisparados.has(bloco.eventoId));
-  const paragrafosCondicionais = (localidade.prosaCondicional || [])
-    .filter((bloco) => (bloco.requerCartas || []).every((id) => cartasRegistradas.some((c) => c.id === id)))
+  // `semCartas` é o espelho de `requerCartas`: o parágrafo só vale ENQUANTO
+  // aquelas cartas ainda não estão na mesa (playtest cego de 27/07/2026,
+  // item 4 — o guarda esperava a ordem de voltar o corpo muito depois de o
+  // corpo ter sido voltado). Os dois campos convivem no mesmo bloco; ausentes,
+  // o comportamento é o de sempre.
+  const naMesa = (id) => cartasRegistradas.some((c) => c.id === id);
+  // OS-R2: a prosa condicional é de quem tem a prosa. Numa localidade sem
+  // sub-locais `fonte` É a localidade, e isto lê exatamente o que lia antes;
+  // num prédio dividido, cada cômodo passa a poder ter a sua (o corpo tem).
+  const paragrafosCondicionais = (fonte.prosaCondicional || [])
+    .filter((bloco) => (bloco.requerCartas || []).every(naMesa))
+    .filter((bloco) => !(bloco.semCartas || []).some(naMesa))
     .filter(eventoPermite)
     .flatMap((bloco) => bloco.paragrafos);
 
-  const paragrafosContingentes = (localidade.blocosContingentes || [])
+  // Mesma regra do irmão acima, e pela mesma razão (fiscal-continuidade,
+  // 27/07/2026): a prosa contingente é de quem tem a prosa. Hoje inócuo — só
+  // `posto_do_guarda` e `cela` declaram `blocosContingentes`, e nenhum dos dois
+  // tem sub-locais —, mas o gerador pode dividir um prédio com interferência
+  // dentro, e aí o cômodo precisa da sua. A reserva pela localidade fica: nada
+  // do que hoje funciona deixa de funcionar.
+  const paragrafosContingentes = (fonte.blocosContingentes || localidade.blocosContingentes || [])
     .filter((bloco) =>
       bloco.quando === 'disparado'
         ? eventosDisparados.has(bloco.eventoId)

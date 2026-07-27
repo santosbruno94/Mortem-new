@@ -1,10 +1,21 @@
 # MORTEM — Plano de sessões (rota de trabalho)
 
-**Atualizado em:** 26 de julho de 2026 (fecho da **OS-S1** — a Proposta Mestra v4
-executada: o caso-escola deixa de ser estrela e passa a teia, com o sexto homem, o Livro
-dos Empréstimos e as três interferências do oficial. Ata em `historico-decisoes.md`; o que
-ficou aberto está lá, e o de maior rendimento são **os anéis do Ato I e do Ato II**,
-adiados por colidirem com a G10 e com o gate de QA da interface)
+**Atualizado em:** 27 de julho de 2026 (triagem do **playtest cego de 27/07** — cinco dos
+sete itens consertados, as quatro pendências da OS-S1 conferidas contra o código e o
+pipeline de prosa fechado. **A frente seguinte está escrita e engatilhada** em
+[`docs/os-s2-prompt-de-arranque.md`](./os-s2-prompt-de-arranque.md): a **OS-S2 — O mundo
+que não responde**, com três frentes, duas delas à espera de decisão do usuário. Triagem
+item a item em `pendencias-status.md`)
+
+**A sessão anterior** foi o fecho da **OS-S1** — a Proposta Mestra v4 executada: o
+caso-escola deixa de ser estrela e passa a teia, com o sexto homem, o Livro dos
+Empréstimos e as três interferências do oficial. Ata em `historico-decisoes.md`. Das
+quatro pendências que ela deixou, **duas seguem abertas intactas** (os anéis do Ato I e do
+Ato II, adiados por colidirem com a G10 e com o gate de QA da interface; e a OS «Reação
+Vital Condicionante»), **uma estava bloqueada sem que se soubesse** (o playtest do mural a
+51 cartas era infazível enquanto 13 cartas de diálogo se apagavam — hoje é possível) e
+**uma já tinha resposta** (as três interferências não se leem como autoria: é a Frente A
+da OS-S2).
 **Marco de referência:** merge da PR #70 (`0f6b369`) — revisão de pendências + quick wins
 do playtest humano de 19/07/2026.
 
@@ -44,6 +55,25 @@ resultado em uma linha e reordena o que restou, se o resultado mudar a ordem.
 A ordem parte da sequência registrada em `pendencias-status.md` ("rodar o playtest →
 diálogo *ou* solubilidade → UI/arte por último") e das observações de triagem do relatório
 de playtest (itens que se cruzam decidem-se juntos).
+
+### PRÓXIMA — OS-S2, «O mundo que não responde» *(escrita e engatilhada)*
+
+- **Prompt de arranque pronto:** [`docs/os-s2-prompt-de-arranque.md`](./os-s2-prompt-de-arranque.md).
+  Copiar o §1 como primeira mensagem da sessão nova.
+- **Frente A — as interferências que não se leem.** A quarta pendência da OS-S1, hoje
+  respondida: o mecanismo funciona inteiro e o jogador não o lê. Diagnóstico fechado, três
+  causas localizadas no código. **Para e propõe antes de construir** — mexe na dosagem que
+  a OS-S1 martelou.
+- **Frente B — o carimbo de `ev_rigor` que mente ao metódico**, mais duas derivas da KB.
+  **Decisão do usuário** por regra do `CLAUDE.md` (divergência KB × motor).
+- **Frente C — o mundo que não reconhece o gesto:** os dois gestos do corpo que sobraram
+  (relógio e termômetro) e a cela que se desenha como gabinete. **Executável de arranque**,
+  já tem ordem.
+- **Fora da OS, por decisão registrada:** os anéis do Ato I/II (custo alto, sem evidência
+  de necessidade), o relógio do inquérito (esperar o playtest a 51 cartas) e a OS «Reação
+  Vital Condicionante».
+- **Gate do usuário antes de decidir o relógio:** rodar o **playtest do mural a 51 cartas**
+  — impossível até 27/07, possível agora.
 
 ### S0 — Playtest humano do procedural *(gate — usuário roda)*
 

@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { obterSuspeitos } from '../../data/pacote_caso.js';
 import { ANCORAS } from '../../logic/acusacao.js';
+import { modoDoCaso } from '../../data/casos.js';
+import { useJogo } from '../../store/jogo.js';
 import { formatRelogio } from '../../logic/tempo.js';
+import { interpolar } from '../../logic/interpolar.js';
 import RetratoPersonagem from '../RetratoPersonagem.jsx';
 import MesaLigacao from './MesaLigacao.jsx';
 import { CarimboColeta, Opcao } from './comuns.jsx';
@@ -100,6 +103,8 @@ export function EstacaoMobil({ acusacao, motivos, definirMotivacao }) {
 // local, sem efeito no motor). Tudo opcional — só pesa na Vitória Absoluta.
 // =====================================================================
 export function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, estaLigada, alternarLigacao }) {
+  const casoId = useJogo((s) => s.casoId);
+  const detective = useJogo((s) => s.detective);
   const [porque, setPorque] = useState({});
   function alternarPorque(sid, cid) {
     setPorque((p) => {
@@ -114,6 +119,48 @@ export function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, est
     return <p className="text-stone-400 italic font-serif text-xs">Nomeie o réu na etapa da Presença primeiro.</p>;
   }
 
+  // A LIÇÃO DO JUÍZO (playtest cego de 27/07/2026, item 3). O desfecho cobrava
+  // do jogador um critério que a tela nunca enunciou: as três opções estavam
+  // ali, o monólogo dizia depois que o «Inocente» não correspondia ao que as
+  // cartas provam, e em lugar nenhum se dizia o que funda um juízo. A punição
+  // era justa; a pedagogia, não.
+  //
+  // Isto NÃO reabre a porta que a Q3 fechou: o que a Q3 tirou do mural foi o
+  // GABARITO (a leitura pronta do legista pendurada no topo). Aqui não se diz
+  // nada do caso — nenhum nome, nenhuma carta, nenhuma resposta. Diz-se a
+  // regra do instrumento, que é o que um mestre ensina a um aprendiz.
+  // Tutorial só: nos casos gerados não há mestre a ecoar (mesma convenção de
+  // FalaDoLegista.jsx), e ali o perito julga por conta própria.
+  //
+  // PIPELINE `revisar-prosa`, 27/07/2026 — BLOQUEANTE do editor-crítico, e
+  // procedente: a primeira versão desta lição mandava responder «Sem juízo»
+  // onde não houvesse em que fundar, e o motor faz o CONTRÁRIO. Em
+  // `veredicto.js:210` o acerto do periférico exige `declarado === 'inocente'`
+  // e só isso; qualquer outro valor — `sem_juizo` inclusive — empurra
+  // `falhas.push({ codigo: 'periferico' })` e derruba a Vitória Absoluta. Pior:
+  // o monólogo já tem prosa para a inocência dada SEM paradeiro colhido
+  // (`PERIFERICO_ALIBI_CONVICCAO`) e trata-a como acerto com repreensão — «dei-lhe
+  // a inocência por convicção, não por perícia, e a convicção acertou». Logo a regra
+  // verdadeira é: juízo lavrado em todos, sempre; o paradeiro na mesa é o que
+  // separa perícia de convicção; e o laço vestígio→álibi é o que se exige de
+  // quem mentiu por segredo. Um painel que existe para ensinar o critério não
+  // pode ensinar o lance que o motor pune.
+  const licaoDoMestre = modoDoCaso(casoId) === 'tutorial' && (
+    <div className="mb-4 border-l-2 border-latao/70 pl-4 space-y-2" data-licao-juizo>
+      <p className="text-rotulo uppercase text-latao-claro/70">A voz do mestre</p>
+      <p className="font-serif italic text-stone-200 text-sm leading-relaxed">
+        {interpolar(
+          '“Cada nome que {g:o senhor|a senhora} não levar a júri sai do inquérito com juízo lavrado. Deixar em branco conta como peça que faltou.”',
+          detective
+        )}
+      </p>
+      <p className="font-serif italic text-stone-200 text-sm leading-relaxed">
+        “Inocência lavra-se com o paradeiro na mesa, tomado da própria boca. Havendo vestígio que o
+        contrarie, ate um ao outro: o laço responde pelo que ficou escondido.”
+      </p>
+    </div>
+  );
+
   const alibiDe = (sid) =>
     cartas.find((c) => c.tagsOcultas.subDominio === 'alibi' && c.tagsOcultas.declaranteId === sid);
   const vestigiosDe = (sid) =>
@@ -124,7 +171,9 @@ export function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, est
     );
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <>
+      {licaoDoMestre}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
       {naoAcusados.map((sp) => {
         const juizo = acusacao.juizos[sp.id];
         const alibi = alibiDe(sp.id);
@@ -150,13 +199,35 @@ export function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, est
                 ao álibi que se sustenta e ao álibi que quebra (mentira-segredo) */}
             {juizo === 'inocente' && (
               <SubPainelJuizo>
-                <p className="text-stone-400 text-[11px] mb-1">
-                  Confronte o paradeiro declarado — ligue o vestígio que o conteste, se houver:
-                </p>
+                {/* A rubrica só sai quando há paradeiro a confrontar: com a
+                    mesa sem álibi ela mandava fazer o que a linha de baixo
+                    declara impossível, e o guia §4.10 proíbe justamente isso —
+                    rubrica que nega a que sai com ela (pipeline `revisar-prosa`
+                    de 27/07/2026). */}
                 {alibi && (
-                  <p className="text-stone-400 text-xs italic font-serif mb-1">Álibi: {alibi.textoDisplay}</p>
+                  <>
+                    <p className="text-stone-400 text-[11px] mb-1">
+                      Confronte o paradeiro declarado — ligue o vestígio que o conteste, se houver:
+                    </p>
+                    <p className="text-stone-400 text-xs italic font-serif mb-1">Álibi: {alibi.textoDisplay}</p>
+                  </>
                 )}
-                {vestigiosDe(sp.id).length === 0 ? (
+                {/* Sem o paradeiro na mesa não há a que ligar o vestígio, e o
+                    painel dizia-o pela metade: listava as cartas e engolia o
+                    clique (playtest cego de 27/07/2026, item 3 — o jogador
+                    ficou sem saber por que o juízo não pegava). Diz-se o que
+                    falta e onde se colhe.
+                    Sem pronome de terceira pessoa: o painel roda por
+                    não-acusado, e a lista tem mulheres (a Sra. Rooke no
+                    caso-escola, e suspeitas nos gerados). Este arquivo não
+                    interpolava `{g:…}` até esta rodada, e o masculino cravado
+                    imprimia-se para elas. */}
+                {!alibi ? (
+                  <p className="text-stone-400 italic font-serif text-xs">
+                    O paradeiro ainda não está na sua mesa: colhe-se no interrogatório, antes de
+                    haver o que confrontar.
+                  </p>
+                ) : vestigiosDe(sp.id).length === 0 ? (
                   <p className="text-stone-400 italic font-serif text-xs">
                     Nenhum vestígio na sua mesa confronta este paradeiro.
                   </p>
@@ -198,7 +269,8 @@ export function EstacaoJuizos({ acusacao, naoAcusados, definirJuizo, cartas, est
           </div>
         );
       })}
-    </div>
+      </div>
+    </>
   );
 }
 
