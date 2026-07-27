@@ -108,6 +108,15 @@ export const APARENCIAS_CURADAS = {
     idadeAparente: 'jovem',
     traje: 'modesto',
   },
+  // OS-S1: Nathan Herrick, 41 — recoveiro da estrada, o sexto suspeito.
+  nathan_herrick: {
+    corpo: 'medio',
+    pele: 'morena',
+    cabelo: { cor: 'preto', estilo: 'despenteado' },
+    pelosFaciais: 'barba',
+    idadeAparente: 'madura',
+    traje: 'servico',
+  },
   // Guarda Lemuel Wycliffe — fonte de informação, não suspeito.
   delegado_wycliffe: {
     corpo: 'sobrepeso',
@@ -166,4 +175,5 @@ export const PERSONAGEM_POR_LOCALIDADE = {
   moinho: 'caleb_grey',
   posto_do_guarda: 'delegado_wycliffe',
   torre_sino: 'amos_kell',
+  cela: 'nathan_herrick',
 };

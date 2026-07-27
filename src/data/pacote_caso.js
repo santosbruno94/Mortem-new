@@ -60,7 +60,8 @@
 //                       ids; a disponibilidade é o gate (store). O runtime
 //                       NÃO decide nada: verifica o gatilho e aplica. O motor
 //                       de veredicto jamais lê este campo (guarda no qa.mjs).
-//                       Ausente ⇒ caso sem interferência (o tutorial).
+//                       Ausente ⇒ caso sem interferência. Desde a OS-S1 o
+//                       caso-escola também o traz (src/data/interferencias.js).
 //   ecosInterferencia : objeto (FASE 4, OPCIONAL). Prosa do comentário
 //                       pós-caso do legista sobre interferências ocorridas/
 //                       evitadas: { titulo, porChave:{ [tipo_desfecho]:[…] } }
@@ -118,6 +119,7 @@
 import { SEED_TUTORIAL, SUSPEITOS } from './seed.js';
 import { CARTAS, CONTRADICAO_HORAS, resolverEstadoCarta as resolverEstadoCartaCru } from './cartas.js';
 import { INTERVENCOES_NOITE, CENA_DA_NOITE_TUTORIAL } from './intervencoes.js';
+import { INTERFERENCIAS_TUTORIAL, ECOS_INTERFERENCIA_TUTORIAL } from './interferencias.js';
 import { PROCEDENCIA_ALEGACOES } from './procedencia.js';
 import { LOCALIDADES } from './localidades.js';
 import { NOS_MAPA, LEADS_DESBLOQUEIO, CUSTO_ENTRE_GRUPOS } from './mapa.js';
@@ -214,6 +216,14 @@ export function montarPacoteTutorial() {
     // nenhum caso gerado. Agora é campo de pacote, como as intervenções.
     procedencia: PROCEDENCIA_ALEGACOES,
     contradicaoHoras: CONTRADICAO_HORAS,
+    // OS-S1 · Frente B — as três interferências do oficial. Até aqui o campo
+    // era exclusivo dos casos gerados e o comentário do schema dizia
+    // «ausente ⇒ caso sem interferência (o tutorial)». Deixa de o dizer: o
+    // caso-escola passa a ensinar também que o culpado age durante o
+    // inquérito. Nenhuma linha de motor mudou para isto — a máquina da FASE 4
+    // já estava pronta e inerte.
+    interferencias: INTERFERENCIAS_TUTORIAL,
+    ecosInterferencia: ECOS_INTERFERENCIA_TUTORIAL,
   };
 }
 

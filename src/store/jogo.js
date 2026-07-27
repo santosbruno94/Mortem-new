@@ -379,6 +379,14 @@ export const useJogo = create(
         provasApresentadas: { ...s.provasApresentadas, [suspeitoId]: [...ja, cartaId] },
       });
     }
+    // FASE 4 / OS-S1: o confronto é ação OBSERVÁVEL, e é-o quer o papel
+    // desminta o paradeiro do interrogado, quer não. Até aqui o gatilho vivia
+    // depois do `return` de baixo, e portanto só disparava quando a prova
+    // rendia ligação de mural — um confronto que só rendesse reação passava
+    // despercebido pela vila. Era defeito silencioso enquanto nenhum caso
+    // usava `prova_apresentada`; as três interferências do caso-escola o
+    // tornaram visível.
+    get().dispararInterferencias();
     const carta = s.cartasRegistradas.find((c) => c.id === cartaId);
     const par = ligacaoDeConfrontoEmCena(carta, suspeitoId, s.cartasRegistradas);
     if (!par) return;
@@ -392,8 +400,6 @@ export const useJogo = create(
       // cena, não só no diário. Transiente — o componente o exibe e esquece.
       set({ ultimoConfrontoAnotado: { cartaId } });
     }
-    // FASE 4: o confronto em cena é ação observável (gatilho possível).
-    get().dispararInterferencias();
   },
 
   // Inc. 6 (Exigir que mostre): exigir que o suspeito mostre uma região do

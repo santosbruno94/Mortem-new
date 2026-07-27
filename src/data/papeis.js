@@ -112,6 +112,28 @@ export const PAPEIS = {
     },
   },
 
+  // OS-S1 — O BODE EXPIATÓRIO. Móbil e acesso reais, e o inquérito prende-o
+  // primeiro por ser de fora. Mente sobre o paradeiro por causa do que fez NA
+  // CENA (e não do crime); o segredo que o explica é o objeto que ele recolheu.
+  // Distingue-se do `veu` por não ter estado com a vítima viva, e da
+  // `isca_do_apressado` por ser o inquérito, e não o jogador, quem o elege.
+  bode_expiatorio: {
+    funcaoDramatica:
+      'O forasteiro que o inquérito prende primeiro. Móbil e acesso verdadeiros, e uma passagem pela cena que ele esconde por medo. A mentira de paradeiro cai pelo próprio rastro, e o rastro é o que o inocenta: revela o que ele foi buscar, não o que ele fez.',
+    tipoMentira: 'moral',
+    habitosPressupostos: ['cruze_a_fala_com_o_corpo', 'significancia', 'convergencia_do_tempo'],
+    modulosMinimos: {
+      mobilForte: true, // dívida registrada e penhor tomado
+      alibiRefutavel: true, // a estrada que ele jura, contra o rastro na sala
+      // ROTA ÚNICA, e é desenho, não falta: o mesmo rastro que lhe derruba o
+      // paradeiro é o que revela o que ele foi buscar. Não vira armadilha
+      // porque quem quebra o álibi recebe o segredo no mesmo gesto — ao
+      // contrário do véu e da isca, que têm duas rotas cada.
+      segredoDuasRotas: false,
+      presoPeloInquerito: true, // a prisão é ato da fonte, não conclusão do jogador
+    },
+  },
+
   // A fonte: não é suspeito. Planta a história A (a falsa solução que o
   // briefing defende) e as iscas. O aparato legal-policial de 1893 fala por ela.
   fonte: {
@@ -138,6 +160,7 @@ export const ELENCO_TUTORIAL = {
   agnes_rooke: 'veu',
   caleb_grey: 'ruido_pista_dupla',
   davey_tull: 'mentiroso_por_medo',
+  nathan_herrick: 'bode_expiatorio',
   delegado_wycliffe: 'fonte',
 };
 

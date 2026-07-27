@@ -4,7 +4,12 @@ Jogo de investigação forense em texto e cartas, ambientado na Inglaterra vitor
 Este repositório contém o **vertical slice jogável** — da tela de título ao Monólogo do
 Detetive, com os 4 desfechos possíveis — hoje em **quatro modos** sobre a mesma mesa:
 
-1. **A Hora Emprestada** — o caso-escola artesanal, escrito à mão.
+1. **A Hora Emprestada** — o caso-escola artesanal, escrito à mão. Desde a **OS-S1**
+   (26/07/2026) ele é uma **teia**, e não uma estrela: seis suspeitos ligados uns aos
+   outros pela economia da dívida do morto, um culpado que **age durante o inquérito**
+   (coage uma testemunha, corre a destruir o que o perito anunciou querer, e assina o
+   crime com o nome de um preso) e uma cadeia de confronto que atravessa duas árvores
+   de diálogo.
 2. **A Hora Refeita** — a réplica procedural do caso-escola (a máquina remonta o mesmo crime).
 3. **Um Caso da Comarca** — um caso sorteado de um banco de **20 casos** que a simulação
    gera em build time (vila, elenco e vestígios que nenhuma mão escreveu).
@@ -150,6 +155,7 @@ o que ainda falta está em [`docs/pendencias-status.md`](./docs/pendencias-statu
 | [`docs/os-r7-a-reconstituicao.md`](./docs/os-r7-a-reconstituicao.md) | OS-R7 — a reconstituição do clímax e a revozação do `monologo.js` (**executada, com ata em 26/07/2026**: cena de leitura sem autor nomeado, conta de bocas no desfecho, D25 nos cinco fechos, sete guardas novas e **zero cartas gastas**) |
 | [`docs/os-r8-passe-editorial.md`](./docs/os-r8-passe-editorial.md) | OS-R8 — passe editorial e QA de fecho, a última da reforma (**executada, com ata em 26/07/2026**: os rótulos que concluíam pelo jogador, o púlpito de cortiça, oito rubricas repetidas, o «vinco das nervuras» aos pares, duas guardas removidas com justificação e duas tornadas honestas; inventário da Fase 0 em [`docs/os-r8-fase-0-inventario.md`](./docs/os-r8-fase-0-inventario.md)) |
 | [`docs/os-r9-gerador-herda-os-padroes.md`](./docs/os-r9-gerador-herda-os-padroes.md) | OS-R9 — o gerador herda os padrões, a primeira fora da reforma (**executada, com ata em 26/07/2026**: procedência em 31/31 casos com o feixe da D16, exposição e degrau nas 155 árvores com o piso de confronto que matou o delator medido na Fase 0, a reconstituição em 12/31 e a dívida de geografia da R7 paga, o durável do instrumento lavado, cinco guardas novas; telemetria da Fase 0 em [`docs/os-r9-fase-0-telemetria.md`](./docs/os-r9-fase-0-telemetria.md)) |
+| [`docs/os-s1-a-hora-emprestada-v4.md`](./docs/os-s1-a-hora-emprestada-v4.md) | OS-S1 — a Proposta Mestra v4 em execução (**executada, com ata em 26/07/2026**): o **sexto suspeito** com rosto, o **Livro dos Empréstimos** que põe a agiotagem em cena, as **três interferências** do oficial durante o inquérito, a cela como auto de exame e a primeira cadeia de confronto que atravessa duas árvores. Teto de cartas de 42 para 51; quatro guardas novas (GRS1-1 a GRS1-4) |
 | [`docs/historico-decisoes.md`](./docs/historico-decisoes.md) | Histórico de playtests e redesigns |
 
 O repositório também traz agentes e skills de redação em [`.claude/`](./.claude/)

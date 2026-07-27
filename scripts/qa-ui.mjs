@@ -595,7 +595,52 @@ async function main() {
     );
     await varrerLocalAberto(page);
     // ---- fim do bloco da E3 ----
+    // OS-S1 (PD-03): extraído o relato da luz, o guarda mandou prender um
+    // homem da estrada — e a cela abre no mapa. É o único anel de ato desta
+    // reforma, e a dobradiça é um ATO DO INQUÉRITO, não uma dedução.
+    checar(
+      'OS-S1: o relato da luz abre a cela do posto',
+      (await page.locator('body').innerText()).includes('A Cela do Posto')
+    );
+    // OS-S1 (PD-15): lavrado o relato, o guarda conta a vila por ofícios, e
+    // só um homem recebe nome e ofício inteiros — aquele de quem nada consta
+    // no posto. O tique é a última peça da teia.
+    checar(
+      'OS-S1 (PD-15): o guarda individualiza só quem não tem ficha',
+      (await textoOverlay(page)).includes('primeiro-oficial da relojoaria, não consta nada aqui')
+    );
     await fecharOverlay(page);
+    // ---- OS-S1 — A CELA, E O SEXTO HOMEM ----
+    // O recoveiro dá duas versões: a estrada, que é a que deu ao guarda, e o
+    // segundo termo, que desmonta a manhã inteira do inquérito (às cinco
+    // menos um quarto a porta já estava mordida no batente).
+    await abrirNo(page, 'A Cela do Posto');
+    // A descida oferece os quatro tons e desce até o terceiro beat, como a de
+    // todos os outros: a paridade da GR6-7 vista em tela.
+    await page.getByRole('button', { name: 'Interrogar Nathan Herrick' }).click();
+    await espera(page, 400);
+    checar('OS-S1: a cela abre o diálogo do sexto homem', (await page.locator('[data-opcoes-dialogo]').count()) >= 1);
+    checar('OS-S1: o beat do recoveiro oferece os quatro tons', (await page.locator('.opcao-dialogo[data-tom]').count()) === 4);
+    await extrairTermosVisiveis(page);
+    await page.locator('.opcao-dialogo[data-tom]').last().click(); // b1 — o paradeiro
+    await espera(page, 250);
+    await extrairTermosVisiveis(page);
+    await page.locator('.opcao-dialogo[data-tom]').last().click(); // b2 — a corrida das sacas
+    await espera(page, 250);
+    // O SEGUNDO TERMO, e o que ele desmonta: às cinco menos um quarto a porta
+    // do beco já estava mordida no batente. A manhã do inquérito cai aqui, e
+    // cai por depoimento, não por dedução do jogador.
+    checar(
+      'OS-S1: o segundo termo põe o recoveiro na vila antes de clarear',
+      (await page.locator('.termo-clicavel', { hasText: 'O Que o Recoveiro Achou de Madrugada' }).count()) === 1
+    );
+    const extraidasHerrick = await extrairTermosVisiveis(page);
+    checar('OS-S1: o segundo termo entra na mesa', extraidasHerrick >= 1);
+    await page.locator('.opcao-dialogo[data-tom]').last().click(); // b3 — a pressão
+    await espera(page, 250);
+    checar('OS-S1: a conversa do recoveiro desce até o beat 3', (await page.locator('[data-no-dialogo^="b3_"]').count()) === 1);
+    await fecharOverlay(page);
+    // ---- fim do bloco da OS-S1 ----
     // ---- OS-R4 — A TORRE, E O QUE A CIFRA ABRE ----
     // A torre nasce aberta no mapa (G10). O esconderijo é que não se acha por
     // tropeço: o parágrafo da câmara dos sinos é prosa CONDICIONAL e só entra
@@ -740,6 +785,21 @@ async function main() {
     await espera(page, 200);
     await page.getByRole('button', { name: 'Inocente', exact: true }).nth(3).click();
     await espera(page, 200);
+    // OS-S1: o sexto homem fecha pela MESMA régua dos outros dois que mentem
+    // por segredo. A meia pegada de argila põe-no na sala que ele jurou não
+    // ter pisado, e o que ela revela é o penhor que ele foi buscar.
+    await page.getByRole('button', { name: 'Inocente', exact: true }).nth(4).click();
+    await espera(page, 300);
+    checar(
+      'OS-S1: o lembrete aponta o paradeiro do recoveiro por confrontar',
+      (await page.locator('body').innerText()).includes('Paradeiro de Nathan Herrick por confrontar.')
+    );
+    await page.getByRole('button', { name: /Meia Pegada de Argila/ }).last().click();
+    await espera(page, 250);
+    checar(
+      'OS-S1: o rastro apaga a linha do lembrete do recoveiro',
+      !(await page.locator('body').innerText()).includes('Paradeiro de Nathan Herrick por confrontar.')
+    );
 
     let { texto, viuLacunas, reconstituicao, passosReconstituicao } = await julgar(page);
     checar('P0 §5: acusação completa sela sem passo extra', !viuLacunas);

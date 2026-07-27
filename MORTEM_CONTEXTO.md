@@ -1109,9 +1109,9 @@ inicial apresenta um único convite (`faseJogo: 'selecao' → 'abertura' →
 
 ## 13. Estrutura de progressão
 
-1. **Caso-escola — "A Hora Emprestada"** (fixo): cinco suspeitos, três mentirosos
-   inocentes, o relógio como pivô da dedução; **resubmissão da acusação permitida** —
-   a falha mostra o que faltou (exceção exclusiva do caso-escola).
+1. **Caso-escola — "A Hora Emprestada"** (fixo): **seis suspeitos** (OS-S1, 26/07/2026),
+   quatro mentirosos inocentes, o relógio como pivô da dedução; **resubmissão da
+   acusação permitida** — a falha mostra o que faltou (exceção exclusiva do caso-escola).
 2. **Campanha — arco mestre/aprendiz** (esqueleto pendente): o jogador começa como
    assistente de um mestre, que ensina **verbos e hábitos** (não fatos) e dá menos
    ajuda com o tempo; ao fim, o mestre morre e o jogador assume o lugar. A campanha é
@@ -1302,6 +1302,16 @@ aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
   fraude de Silas. Álibi corroborado (moinho, véspera de feira, três homens).
 - **Davey Tull** (15, aprendiz) — mente ensaiado pelo oficial ("saímos juntos às sete
   e meia"), por medo. Expô-lo é bônus, não pilar (`inocente_alibi`).
+- **Nathan Herrick** (41, recoveiro da estrada de Moorford; OS-S1, PD-01) — o **bode
+  expiatório**: móbil e acesso verdadeiros (dívida de março, o relógio do pai tomado
+  em penhor em setembro), preso no sábado por ser o forasteiro que o inquérito tem à
+  mão. Mente sobre a estrada porque a verdade o põe DENTRO da sala com o morto no
+  chão — voltou às 4h45 para a corrida das sacas que devia ao moleiro, achou a porta
+  já mordida no batente, recolheu o próprio penhor e fugiu. O rastro que o desmente
+  (`ev_pegada_argila`, meia sola de argila POR CIMA das lascas de tinta) é o mesmo que
+  o inocenta: revela o que ele foi buscar, não o que teria feito. `inocente_segredo`,
+  segredo `penhor_recolhido`. É também a boca da briga de Walter (PD-02) e o fio que
+  leva às cartas de Agnes (PD-18).
 - **Guarda Lemuel Wycliffe** (de ofício, *constable* da *county constabulary* no
   posto de um homem de Briarstone — a patente que a KB dá ao policial de vila,
   `demografia-e-sociedade.md` §3; a tabela de tradução de `inquerito-e-policia.md` §5
@@ -1324,6 +1334,29 @@ aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
 - `corrob_pettigrew` — nó distante (1h30 por trecho, por lead): a carta do morto
   ("queixa contra pessoa a meu serviço, com discrição") + o casamento que revogaria
   o testamento. Segunda carta de móbil; reforça as duas iscas. Opcional, nunca pilar.
+  Desde a OS-S1 o procurador diz também a **reversão da loja** (D4/PD-12): ela veio do
+  dote da primeira mulher e volta à família dela — o herdeiro barulhento do caso herda
+  menos do que anuncia.
+- `ev_livro_emprestimos` (OS-S1, PD-04/05) — na gaveta com chave da escrivaninha, que
+  a chave do molho do morto abre. **A agiotagem com carta própria**, reabrindo a
+  R5 §5(d): iniciais, soma emprestada e um penny por xelim somado semana a semana.
+  Sem a palavra «juros», e sem precisar dela — quem faz a conta descobre que a taxa
+  faz a dívida ficar PARADA, e que metade da High Street devia ao santo. Traz
+  "N.H." com o penhor de setembro (o móbil do sexto homem), "L.W." em dia até julho
+  e vazia depois (a **D15**, que enfim tem livro em que morar), "S.C." das primeiras
+  páginas com a soma repetida em cada fim de mês (PD-08), "A.R." riscada em setembro
+  e uma "—W." antiga e paga (a moeda da coação da Sra. Wick, PD-14).
+- `ev_pegada_argila` / `alibi_herrick` / `dep_cela_herrick` (OS-S1) — o sexto homem: o
+  rastro, o paradeiro que ele deu ao guarda, e o segundo termo que **desmonta a manhã
+  do inquérito** (às cinco menos um quarto a porta já estava forçada). O segundo termo
+  não traz hora nas tags, e de propósito: a hora que ele dá é verdadeira, e uma
+  alegação verdadeira que o corpo «refutasse» seria armadilha desleal.
+- `ev_cartas_do_passado` (OS-S1, PD-16/17/18) — o maço de Moorford, atado com fita de
+  luto, que só aparece no confronto de Agnes e só depois de a cela abrir a boca. A de
+  cima é de agosto e é uma despedida: era ela quem terminava, antes de qualquer papel
+  de igreja. O pretendente fica **sem nome e sem rosto** (PD-17). É também a carta que
+  abre o terceiro degrau de Walter — a única cadeia de confronto do jogo que atravessa
+  DUAS ÁRVORES (a ponte E15).
 
 ### As armadilhas pedagógicas
 1. **A história A** — relógio das 08h45 + luz das 05h15 + caixa vazada: cada tijolo é
@@ -1336,6 +1369,33 @@ aceso (a "luz do velho" que o moço do padeiro veria às 05h15).
    outro homem.
 5. **Silas sem provas** — "quem acha o corpo" por faro, sem janela/causa/buril =
    **Impunidade**. Acusar exige materialidade.
+6. **Herrick como bode** (OS-S1) — o inquérito o entrega pronto: forasteiro, dívida,
+   acesso, e uma prisão já lavrada quando o perito chega à cela. Aceitar a entrega é
+   Erro Judiciário; o rastro que parece cravá-lo é o que o descarta, porque ele está
+   POR CIMA das lascas e não por baixo. A lição é de ordem, e é a mesma que o caso
+   ensina no relógio: não é o que se acha, é em que camada.
+
+### As três interferências (OS-S1, Frente B)
+
+Até 26/07/2026 o caso-escola era o único sem interferência: o oficial matava na sexta
+e ficava parado o resto do inquérito. Passa a agir em três degraus — coagir, destruir,
+silenciar —, na máquina da FASE 4 que já existia e estava inerte (`interferencias` +
+`ecosInterferencia` no pacote; **nenhuma linha de motor mudou para isto**).
+
+| Evento | Gatilho observável | O que troca |
+|---|---|---|
+| `coacao_wick` | pôr o pé na papelaria (que é o correio da vila) | `dep_mulher_viela` → `dep_retratacao_wick` |
+| `corrida_a_torre` | pousar um papel diante do oficial | `ev_livro_ii` → `ev_esconderijo_vazio` |
+| `silenciar_herrick` | pousar um papel diante do preso | `dep_cela_herrick` → o auto de exame da cela |
+
+Regras que as governam, e todas já estavam escritas (`docs/game-design-simulacao.md` §5):
+**R1** o improviso é mais grosseiro que o crime original (o crime deixou uma lasca de
+vidro numa bainha; o esconderijo violado deixa quatro apoios na poeira, e a cela deixa
+dois sulcos e três dedadas de cera); **R2** saldo ≥ 0 — nada do que se destrói é pilar;
+**R3** o gatilho é sempre ação observável do jogador, e **nenhum anúncio nomeia
+ninguém**; **R4** quem chega primeiro não perde a peça. A cela é **auto de exame**, não
+segundo mural: o veredicto sobre aquela morte é do segundo inquérito do coroner, fora
+de cena (D12).
 
 ---
 
@@ -1406,7 +1466,10 @@ src/
                 aparencias.js (genótipo curado) · mapa_espacial.js (diorama) ·
                 hotspots_corpo.js (exame 3D) — os três últimos: camada VISUAL ·
                 procedencia.js (o `apontadaPor` da D17: quem pôs a alegação em
-                circulação — camada NARRATIVA, fora de tagsOcultas de propósito)
+                circulação — camada NARRATIVA, fora de tagsOcultas de propósito) ·
+                interferencias.js (OS-S1: os três degraus do oficial durante o
+                inquérito e os ecos pós-caso — o campo `interferencias` do pacote,
+                que até aqui só os casos gerados traziam)
   logic/        veredicto.js (calcularVeredictoCadeia) · acusacao.js (gramática das
                 ligações) · tempo_morte.js · cronos.js · falaDoMestre.js (dica) ·
                 monologo.js · epilogo.js · tempo.js · interpolar.js ·

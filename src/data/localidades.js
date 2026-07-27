@@ -84,6 +84,10 @@ export const LOCALIDADES = [
             rotulo: 'A escrivaninha',
             prosa: [
               'A escrivaninha está de través, uma gaveta meio puxada, o tinteiro seco e a pena atravessada no mata-borrão. Um par de óculos de aros finos repousa dobrado sobre o livro-razão aberto, ao lado de uma lupa de relojoeiro presa a um cordão; a servir de marca de página, um [[ev_bilhete_vigario]]. Ao pé da escrivaninha, no cesto de vime, entre aparas e um sobrescrito rasgado, uma [[ev_suplica_cesto]].',
+              // OS-S1 (PD-04): a gaveta que a chave abre. O molho sai do
+              // colete do morto no exame do corpo, e o que ele guarda é a
+              // espinha do caso — a agiotagem, com carta própria.
+              'A gaveta de baixo, do lado direito, não cede: tem fechadura de embutir e a chapa por dentro. O molho de chaves que o morto trazia no colete traz uma pequena, de palhetão fino, que entra e volta meia volta. Dentro, sobre um envelope de recibos e um estojo de lacre, o [[ev_livro_emprestimos]].',
             ],
           },
         ],
@@ -103,6 +107,9 @@ export const LOCALIDADES = [
             rotulo: 'A vitrine e a porta do beco',
             prosa: [
               'A loja da frente fica para além do vão do escritório. Ali, contra a parede, [[ev_vitrine]]. Junto à porta acanhada que dá para o beco, na moldura do trinco, [[ev_fechadura]].',
+              // OS-S1: o rastro do sexto homem, e a ordem em que as coisas
+              // pousaram no degrau é o que ele diz.
+              'Abre-se a porta do beco e o degrau fica à luz. Entre as lascas de tinta caídas do batente, [[ev_pegada_argila]].',
             ],
           },
         ],
@@ -211,7 +218,81 @@ export const LOCALIDADES = [
       'Entre os papéis do morto, recolhidos por precaução, está o [[dep_testamento]] e, presas a ele por um alfinete, [[dep_dividas_walter]].',
       'No livro de ocorrências, com a tinta de ontem, uma [[dep_queixa_grey]]; na página de sábado, os [[dep_briga_walter]] que um carroceiro veio contar por conta própria.',
       'Do registro da ronda consta a [[dep_visto_vivo]], na letra redonda do guarda Tobin. "Tobin faz a ronda de Caulfield e desce a nossa rua às oito, que é onde as duas se encontram… isto é, onde a dele acaba e a minha ainda não começou. Passa e segue. O que vê pelo caminho lavra no livro dele e copia no meu, e eu faço o mesmo com o que vejo do meu."',
-      'Wycliffe guarda para o fim os relatos da manhã: a [[dep_avistamento_padeiro]] — "se havia luz àquela hora, havia homem aceso dentro dela, digo eu" — e o de uma vizinha, [[dep_mulher_viela]]. "A senhora da viela não me tira o sono. A luz das cinco, essa me arruma o caso: ladrão de madrugada, relógio parado nas quase nove, caixa vazada. O palpite é meu; a perícia, essa, é {g:do senhor|da senhora}."',
+      'Wycliffe guarda para o fim os relatos da manhã. Da luz vista antes de clarear, a [[dep_avistamento_padeiro]]: "se havia luz àquela hora, havia homem aceso dentro dela, digo eu." E o palpite vem sem que se peça: "A luz das cinco arruma-me o caso. Ladrão de madrugada, relógio parado nas quase nove, caixa vazada. O palpite é meu; a perícia, essa, é {g:do senhor|da senhora}."',
+    ],
+    // OS-S1 · INTERFERÊNCIA `coacao_wick`. O relato da viela é o único papel
+    // do posto que muda de forma durante o inquérito: quem chega a tempo
+    // colhe o que a vizinha disse; quem chega depois acha o que ela desdisse.
+    // O marcador acompanha o papel — nenhum negrito fica na tela a apontar
+    // para uma carta que já não se pode colher.
+    blocosContingentes: [
+      {
+        eventoId: 'coacao_wick',
+        quando: 'nao_disparado',
+        paragrafos: [
+          'Dos fundos do nº 9, o relato de [[dep_mulher_viela]]. "A senhora da viela não me tira o sono; daquela janela não se vê rosto nenhum."',
+        ],
+      },
+      {
+        eventoId: 'coacao_wick',
+        quando: 'disparado',
+        paragrafos: [
+          'Onde estava o relato da vizinha há agora duas folhas presas pelo mesmo alfinete, e a de cima é [[dep_retratacao_wick]]. "Voltou atrás ainda agora, e fechou-me a janela na cara. Gente de fundos volta sempre atrás."',
+        ],
+      },
+    ],
+    // OS-S1 (PD-03, PD-15) — A PRISÃO, e o tique dos tipos. Lavrado o relato
+    // da luz, o inquérito de Wycliffe fecha-se num forasteiro. A regra de voz
+    // dele fica escrita na fala: a vila é um maço de fichas, e o único homem
+    // que ele nomeia por nome e ofício inteiros é aquele de quem nada consta
+    // no posto. O jogador que reparar nisso fecha o último nó da teia.
+    prosaCondicional: [
+      {
+        requerCartas: ['dep_avistamento_padeiro'],
+        paragrafos: [
+          'Lavrado o relato da luz, Wycliffe empurra a gaveta com o joelho. "Mandei buscar o recoveiro na estrada de Moorford. Argila até o cano da bota, dívida na vila e nenhum ofício desta rua que responda por ele. Está nos fundos, e lá fica até o coroner voltar."',
+          'Conta os nomes que o caso lhe deu como quem confere um maço de fichas: o negociante, a do correio, o moleiro, o sineiro, a estrada. "Do Sr. Crane, primeiro-oficial da relojoaria, não consta nada aqui. Doze anos nesta vila e nem uma linha lavrada."',
+        ],
+      },
+    ],
+  },
+  {
+    // OS-S1 (PD-01, PD-03) — A CELA. Nó do Ato III: nasce fechado e abre com
+    // a prisão. O recoveiro fala em diálogo próprio (dialogo_herrick); aqui
+    // ficam a moldura da visita e o que a interferência acrescenta.
+    id: 'cela',
+    rotuloMesa: 'A Cela do Posto',
+    titulo: 'A Cela — Fundos do Posto do Guarda',
+    subtitulo: 'Nathan Herrick, recoveiro, 41 anos',
+    acoesEspeciais: [],
+    prosa: [
+      'Um corredor de tijolo atrás da sala da frente, e ao fim dele um cubículo de porta gradeada: enxerga, balde, e uma tábua de tarimba fixa à parede. A janela alta é um postigo de duas grades cruzadas, à altura de um homem em pé. Cheira a cal e a palha molhada.',
+    ],
+    // OS-S1 · INTERFERÊNCIA `silenciar_herrick` (PD-11, §7.4 da proposta). A
+    // cela é AUTO DE EXAME, não segundo mural: duas cartas, e o veredicto
+    // sobre esta morte é do segundo inquérito do coroner, fora de cena (D12).
+    //
+    // O PRESO VIVO TAMBÉM É CONTINGENTE, e tem de ser: a prosa-base renderiza
+    // sempre, e sem esta separação o jogador lia o recoveiro sentado na tábua
+    // e, no parágrafo seguinte, o auto de exame do enforcamento dele (achado
+    // do `fiscal-continuidade` no gate desta OS). É o mesmo padrão com que o
+    // posto troca o relato da Sra. Wick pela retratação.
+    blocosContingentes: [
+      {
+        eventoId: 'silenciar_herrick',
+        quando: 'nao_disparado',
+        paragrafos: [
+          'Nathan Herrick está sentado na tábua, o casaco de estrada dobrado sobre os joelhos. As botas, por lavar, ficaram ao pé da enxerga, com a argila da estrada ainda nas solas.',
+        ],
+      },
+      {
+        eventoId: 'silenciar_herrick',
+        quando: 'disparado',
+        paragrafos: [
+          'A porta gradeada está aberta e o corredor tem mais gente do que da outra vez. Wycliffe fica de fora, à entrada, e não pergunta nada. O que houver a examinar examina-o quem veio para isso, e o termo lavra-se ali mesmo, sobre o joelho: [[dep_achado_cela]].',
+          'A tira de fazenda continua atada à grade do postigo, cortada de um lado. Na aresta da tábua da tarimba, do lado que dá para a porta, [[ev_cera_tarimba]].',
+        ],
+      },
     ],
   },
   {
@@ -238,8 +319,21 @@ export const LOCALIDADES = [
     prosaCondicional: [
       {
         requerCartas: ['ev_cuvette'],
+        // OS-S1: o bloco ganha a segunda condição. A cifra continua a ser o
+        // que ACHA o vão (sem ela o perito conta seis sinos e desce); o que
+        // está dentro dele depende de quem subiu primeiro.
+        eventoId: 'corrida_a_torre',
+        quando: 'nao_disparado',
         paragrafos: [
           'Sobre a armação, de quatro sobre as vigas, alcança-se o quarto cabeçote. No barrote fronteiro, de frente para o vão que o cabeçote de olmo deixa livre, uma chapa de latão de charneira fecha um vazio do tamanho de uma mão, presa por uma trava de cabeça serrilhada. A trava não cede para a direita. Meia-volta para a esquerda, e a chapa gira; dentro, embrulhado em oleado, o [[ev_livro_ii]].',
+        ],
+      },
+      {
+        requerCartas: ['ev_cuvette'],
+        eventoId: 'corrida_a_torre',
+        quando: 'disparado',
+        paragrafos: [
+          'Sobre a armação, de quatro sobre as vigas, alcança-se o quarto cabeçote. A chapa de latão do barrote fronteiro não precisa de meia-volta nenhuma: [[ev_esconderijo_vazio]].',
         ],
       },
     ],
@@ -284,6 +378,11 @@ export const LOCALIDADES = [
     prosa: [
       'Hora e meia de estrada, e o gabinete cheira a couro e lacre. O procurador Pettigrew já soube da morte; pousa os óculos e espera as perguntas de mãos cruzadas.',
       'Sobre o relojoeiro, entrega o que tem: [[corrob_pettigrew]]. "Guardo papéis, {detective.treatment}; opiniões, procuro não guardar."',
+      // OS-S1 (PD-12) — A REVERSÃO DA LOJA, em cena e pela boca do procurador.
+      // A D4 estava fixada nos documentos normativos e nunca fora dita a
+      // ninguém: o sobrinho herda menos do que a vila supõe, e o herdeiro
+      // barulhento do caso é herdeiro de menos do que ele próprio anuncia.
+      'Perguntado do que há de sobrar, alinha os dedos sobre a pasta. "A casa e as economias, sim. A loja da High Street veio do dote da primeira mulher, e o contrato de então manda-a de volta à família dela na falta de filhos. Não há filhos." Torna a alinhar os dedos. "O sobrinho herda o que o Sr. Arthurs juntou. A loja não estava entre o que ele podia dar."',
     ],
   },
 ];

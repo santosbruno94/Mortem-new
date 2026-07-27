@@ -1,7 +1,10 @@
 # MORTEM — Plano de sessões (rota de trabalho)
 
-**Atualizado em:** 26 de julho de 2026 (fecho da OS-R8 — a reforma do caso-escola encerrada,
-e a frente SG aberta no lugar dela)
+**Atualizado em:** 26 de julho de 2026 (fecho da **OS-S1** — a Proposta Mestra v4
+executada: o caso-escola deixa de ser estrela e passa a teia, com o sexto homem, o Livro
+dos Empréstimos e as três interferências do oficial. Ata em `historico-decisoes.md`; o que
+ficou aberto está lá, e o de maior rendimento são **os anéis do Ato I e do Ato II**,
+adiados por colidirem com a G10 e com o gate de QA da interface)
 **Marco de referência:** merge da PR #70 (`0f6b369`) — revisão de pendências + quick wins
 do playtest humano de 19/07/2026.
 

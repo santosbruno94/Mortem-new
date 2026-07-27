@@ -153,7 +153,13 @@ export function calcularVeredictoCadeia(acusacao, cartasRegistradas, seed) {
     else {
       testemunhasDesmentidas += 1;
       idsTestemunhasDesmentidas.push(alegacao.id);
-      if (alegacao.tagsOcultas.explicacao) explicacoesPagas.push(alegacao.tagsOcultas.explicacao);
+      // OS-S1 (PD-06): a tag aceita UMA explicação ou uma lista. A luz de
+      // madrugada passou a ter duas verdades por baixo — o lampião que ficou
+      // aceso e o homem que esteve mesmo lá antes do dia —, e o encerramento
+      // paga as duas pelo mesmo gesto. Só tag; nada aqui lê texto.
+      if (alegacao.tagsOcultas.explicacao) {
+        explicacoesPagas.push(...[].concat(alegacao.tagsOcultas.explicacao));
+      }
     }
   }
   const descuidosOk = !seed.cenaEncenada || encenacaoExposta;

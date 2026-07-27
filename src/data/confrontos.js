@@ -39,4 +39,10 @@ export const CONSEQUENCIAS_CONFRONTO = {
   agnes_rooke: {},
   caleb_grey: {},
   davey_tull: {},
+  // OS-S1: o recoveiro preso não pode ir a lado nenhum, e é essa a ironia do
+  // sexto homem — o único que a mecânica futura não conseguiria pôr em fuga é
+  // aquele a quem a fuga faria mais falta.
+  nathan_herrick: {
+    ev_pegada_argila: 'agita',
+  },
 };

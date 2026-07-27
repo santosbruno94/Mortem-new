@@ -106,15 +106,27 @@ export default function EventoLocalidade({ localidadeId }) {
   // exigidas já estão na mesa (ex.: o confronto da segunda visita ao réu,
   // depois de colhido o registro que o desmente). Camada narrativa — o
   // motor nunca lê; a condição usa só ids de carta registrada.
-  const paragrafosCondicionais = (localidade.prosaCondicional || [])
-    .filter((bloco) => bloco.requerCartas.every((id) => cartasRegistradas.some((c) => c.id === id)))
-    .flatMap((bloco) => bloco.paragrafos);
-
   // Blocos CONTINGENTES da interferência (FASE 6 do gerador): prosa que
   // aparece/some conforme o evento do pacote já disparou. Camada de UI
   // pura — lê o estado de disparo (interferenciasDisparadas), nunca decide
   // nada; o efeito mecânico continua nos gates de extrairCarta.
   const eventosDisparados = new Set(interferenciasDisparadas.map((d) => d.id));
+  // OS-S1: um bloco condicional pode acumular as DUAS condições. O
+  // esconderijo da torre é o caso que a pediu: o vão só se acha com a cifra
+  // na mesa (`requerCartas`), e o que está lá dentro depende de quem chegou
+  // primeiro (`eventoId`/`quando`). Sem as duas juntas, ou o esconderijo
+  // vazava para quem nunca leu a cifra, ou o livro continuava anunciado
+  // depois de já não estar lá. Campos ausentes ⇒ comportamento de sempre.
+  const eventoPermite = (bloco) =>
+    !bloco.eventoId ||
+    (bloco.quando === 'disparado'
+      ? eventosDisparados.has(bloco.eventoId)
+      : !eventosDisparados.has(bloco.eventoId));
+  const paragrafosCondicionais = (localidade.prosaCondicional || [])
+    .filter((bloco) => (bloco.requerCartas || []).every((id) => cartasRegistradas.some((c) => c.id === id)))
+    .filter(eventoPermite)
+    .flatMap((bloco) => bloco.paragrafos);
+
   const paragrafosContingentes = (localidade.blocosContingentes || [])
     .filter((bloco) =>
       bloco.quando === 'disparado'
@@ -151,8 +163,15 @@ export default function EventoLocalidade({ localidadeId }) {
 
   // Diálogos embutidos neste lugar (origemLocalidade): rendem um botão de
   // conversa ao pé da prosa. Camada narrativa — o motor não participa.
+  // OS-S1: um diálogo embutido pode DESAPARECER quando um evento de
+  // interferência o alcança. O botão de interrogar continuava de pé numa cela
+  // cujo ocupante o auto de exame acabara de declarar morto; o campo é
+  // opcional e genérico (o gerador pode usá-lo no dia em que silenciar
+  // alguém que tenha árvore própria).
   const dialogosEmbutidos = Object.entries(obterDialogos()).filter(
-    ([, d]) => d.origemLocalidade === localidade.id || (!!subAtivo && d.origemLocalidade === subAtivo)
+    ([, d]) =>
+      (d.origemLocalidade === localidade.id || (!!subAtivo && d.origemLocalidade === subAtivo)) &&
+      !(d.someSeEvento && eventosDisparados.has(d.someSeEvento))
   );
 
   const prosaEExames = (
